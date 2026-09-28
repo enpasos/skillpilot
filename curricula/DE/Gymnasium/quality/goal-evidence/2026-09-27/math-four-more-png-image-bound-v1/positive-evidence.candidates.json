@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-p-v2-m7-four-more-png-image-bound-20260927-v1",
+  "reviewedAt": "2026-09-27T13:01:13.000Z",
+  "reviewer": "Codex Mathematics exact-PNG P-v2 reinspection; AI candidate only",
+  "goals": [
+    {
+      "goalId": "21fa0c22-976e-59b3-a871-899f0c0177f3",
+      "reason": "DE: Das aktive Bild zeigt 4/10·3/9=2/15 für zweimal Rot ohne Zurücklegen. Der erste frische Fall verlangt stattdessen Rot-dann-Blau zu 3/5·2/4, der zweite ein Komplementereignis bei vier unabhängigen Würfen. Beide Konstruktionen und ihre Erklärungen sind eigenständige Leistungen; Bildwerte und Ereignis werden nicht kopiert. EN: The active image shows 4/10·3/9=2/15 for two reds without replacement. Fresh case one instead requires red-then-blue for 3/5·2/4; case two uses a complement event over four independent throws. Both constructions and explanations remain independent learner work. Exact bitmap bound; AI candidate only, no human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Ein Wahrscheinlichkeitsterm kodiert einen möglichen Versuch und ein genau beschriebenes Ereignis; Faktoren können bedingte Teilchancen, Potenzen unabhängige Wiederholungen und 1− die Ergänzung eines Ereignisses bedeuten.",
+            "essentialUnderstandingEn": "A probability expression encodes a possible experiment and a precisely described event; factors can denote conditional stages, powers independent repeats, and 1− an event's complement.",
+            "observablePerformanceDe": "Die Person konstruiert zu einem gegebenen Term einen stimmigen Zufallsversuch samt Ereignis und erläutert jeden Termbestandteil in diesem Versuch.",
+            "observablePerformanceEn": "The learner constructs a coherent experiment and event for a given expression and explains every component in that experiment."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Vom Rot–Blau-Ereignis mit bedingtem Produkt zu einem Komplementterm für vier unabhängige Würfe wechseln.",
+            "textEn": "Move from a red–blue event with a conditional product to a complement expression for four independent rolls."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "dependent-product-event",
+            "taskDemandDe": "Finde zu (3/5)·(2/4) einen passenden Zufallsversuch mit dem Ereignis „zuerst Rot, dann Blau“. Erkläre, weshalb der zweite Nenner 4 und der zweite Zähler 2 ist.",
+            "taskDemandEn": "Give an experiment for (3/5)·(2/4) with the event “red first, then blue”. Explain why the second denominator is 4 and numerator 2.",
+            "expectedPerformanceDe": "Urne mit 3 roten und 2 blauen Kugeln; zweimal ohne Zurücklegen ziehen; Ereignis Rot–Blau. Nach dem ersten Rot bleiben 4 Kugeln, darunter weiterhin 2 blaue, daher P(RB)=(3/5)(2/4)=3/10.",
+            "expectedPerformanceEn": "An urn has 3 red and 2 blue balls; draw twice without replacement; event red–blue. After the first red, 4 balls remain, still including 2 blue, so P(RB)=(3/5)(2/4)=3/10.",
+            "understandingFocusDe": "Die bedingte zweite Teilchance betrifft nun eine andere Farbe; die Bildlösung zweimal Rot ist nicht die Antwort.",
+            "understandingFocusEn": "The conditional second stage now concerns a different colour; the image solution for two reds is not the answer."
+          },
+          {
+            "id": "complement-event",
+            "taskDemandDe": "Finde zu 1−(5/6)^4 einen anderen Zufallsversuch und ein Ereignis. Erkläre die Potenz und das Minus-eins-Verfahren.",
+            "taskDemandEn": "Give a different experiment and event matching 1−(5/6)^4. Explain the power and the subtraction from one.",
+            "expectedPerformanceDe": "Vier unabhängige Würfe eines fairen Würfels; Ereignis mindestens eine Sechs. (5/6)^4 bedeutet in allen vier Würfen keine Sechs, also ist das Gegenereignis 1−(5/6)^4=671/1296.",
+            "expectedPerformanceEn": "Four independent rolls of a fair die; event at least one six. (5/6)^4 means no six on all four rolls, so the complement is 1−(5/6)^4=671/1296.",
+            "understandingFocusDe": "Ein Term mit Komplement und unabhängigen Wiederholungen wird in ein sprachlich eindeutiges Ereignis übersetzt.",
+            "understandingFocusEn": "An expression using complement and independent repetitions is translated into an unambiguous verbal event."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+      "reason": "DE: Das aktive Bild zeigt ausschließlich die Auswertung von 60 simulierten Würfelwürfen: 10+12+8+11+9+10=60 und h(2)=12/60=20 %. Es zeigt keine Softwarebedienung. Das Profil verlangt eigenständiges Aufsetzen einer 600er-Tabellenkalkulation und Transfer zu 400 Versuchen mit geordneten Münzpaaren samt korrekter Aggregation; das Bild liefert diese Ergebnisse nicht. EN: The active image shows only the analysis of 60 simulated die throws, with correct counts and 12/60=20%; it does not show software operation. The profile independently requires a 600-throw spreadsheet simulation and transfer to 400 trials with ordered coin pairs and correct aggregation. Exact bitmap bound; AI candidate only, no human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "simulate-explicit-outcomes",
+            "essentialUnderstandingDe": "Eine Softwaresimulation bildet einen ausdrücklich festgelegten Zufallsmechanismus durch unabhängige Versuche ab. Die Ergebnisgruppen müssen vollständig und überschneidungsfrei sein, damit absolute Häufigkeiten zusammen genau die Versuchszahl ergeben.",
+            "essentialUnderstandingEn": "A software simulation reproduces an explicitly specified random mechanism through independent trials. Outcome categories must be complete and non-overlapping so absolute frequencies sum exactly to the trial count.",
+            "observablePerformanceDe": "Die lernende Person richtet ein Zufallsexperiment in geeigneter Software selbst ein, benennt modellierte Ausgänge und zählt die Ergebnisse nach überprüfbaren Kategorien; sie kontrolliert die Summe der absoluten Häufigkeiten.",
+            "observablePerformanceEn": "The learner independently sets up a random experiment in suitable software, names the modelled outcomes, and counts results into auditable categories; they check the sum of absolute frequencies."
+          },
+          {
+            "id": "consistent-frequency-display",
+            "essentialUnderstandingDe": "Relative Häufigkeit h(E)=H(E)/n bezieht eine Ereigniszahl auf dieselbe Versuchszahl. Eine Grafik der Simulation muss dieselben Kategorien und Werte wie die Tabelle darstellen; Schwankungen endlicher Simulationen sind nicht mit einer Änderung des zugrunde liegenden Modells gleichzusetzen.",
+            "essentialUnderstandingEn": "Relative frequency h(E)=H(E)/n relates an event count to the same trial count. A simulation chart must use the same categories and values as its table; finite-run fluctuations do not themselves change the underlying model.",
+            "observablePerformanceDe": "Die lernende Person berechnet zu ihren Zählungen relative Häufigkeiten, erstellt eine dazu konsistente Grafik und erklärt eine beobachtete Abweichung vom Modellwert als Stichprobenergebnis.",
+            "observablePerformanceEn": "The learner computes relative frequencies from their counts, creates a matching chart, and explains an observed deviation from the model probability as a finite-sample result."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "simulate-explicit-outcomes",
+            "consistent-frequency-display"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "outcome-structure",
+            "textDe": "Vom sechsfachen einfachen Würfelausgang zu einem aus geordneten Münzpaaren gebildeten zusammengesetzten Ereignis wechseln.",
+            "textEn": "Change from a simple six-category die outcome to a compound event aggregated from ordered coin pairs."
+          },
+          {
+            "id": "chart-category",
+            "textDe": "Von sechs einzeln dargestellten Augenzahlen zu zwei Ereigniskategorien „genau einmal Kopf“ und „sonst“ wechseln.",
+            "textEn": "Change from six individually charted die faces to two event categories, 'exactly one head' and 'otherwise'."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "software-die-six-faces",
+            "taskDemandDe": "Simuliere in einer Tabellenkalkulation 600 unabhängige Würfe eines fairen Würfels. Erfasse die absoluten und relativen Häufigkeiten der Augenzahlen 1 bis 6 und erstelle daraus ein Balkendiagramm. Prüfe die Konsistenz; als Kontrollbeispiel für eine mögliche Ausgabe dienen H=(97,106,92,101,99,105).",
+            "taskDemandEn": "In a spreadsheet, simulate 600 independent throws of a fair die. Tally absolute and relative frequencies for faces 1 to 6 and create a bar chart. Check consistency; H=(97,106,92,101,99,105) is a control example of one possible output.",
+            "expectedPerformanceDe": "Die Simulation liefert pro Wurf genau eine Augenzahl 1–6, die Kategorien schließen einander aus, und die sechs H-Werte summieren sich auf 600. Für das Kontrollbeispiel ist h(2)=106/600≈0,177 der höchste und h(3)=92/600≈0,153 der niedrigste Balken; alle Balkenhöhen entsprechen H(k)/600. Etwaige Abweichungen von 1/6 sind als endliche Zufallsschwankungen eingeordnet.",
+            "expectedPerformanceEn": "Each simulated throw yields exactly one face 1–6, categories are disjoint, and six counts sum to 600. In the control example h(2)=106/600≈0.177 is the tallest and h(3)=92/600≈0.153 the shortest bar; every bar height equals H(k)/600. Deviations from 1/6 are interpreted as finite random variation.",
+            "understandingFocusDe": "Softwareerzeugung, Zählung, Nenner und Balkenhöhen beschreiben denselben Datensatz; die vorgegebene Beispielausgabe ist keine Lernendenvorlage für die eigenständige Simulation.",
+            "understandingFocusEn": "Software generation, counts, denominator, and bar heights describe one data set; the example output is an audit fixture, not a substitute for independent simulation."
+          },
+          {
+            "id": "ordered-coins-aggregate-event",
+            "taskDemandDe": "Simuliere unabhängig 400 Versuche mit zwei unterscheidbaren fairen Münzen. Notiere geordnete Paare (K,K), (K,Z), (Z,K), (Z,Z), fasse für das Ereignis „genau einmal Kopf“ die beiden passenden Paare zusammen und stelle dessen relative Häufigkeit neben „sonst“ grafisch dar. Prüfe Zählungen und vergleiche vorsichtig mit dem Modell.",
+            "taskDemandEn": "Independently simulate 400 trials with two distinguishable fair coins. Record ordered pairs (H,H), (H,T), (T,H), (T,T), aggregate the two matching pairs for 'exactly one head', and chart its relative frequency alongside 'otherwise'. Check counts and compare cautiously with the model.",
+            "expectedPerformanceDe": "Die vier Paarzählungen summieren sich auf 400. H(genau einmal Kopf)=H(K,Z)+H(Z,K); H(sonst)=400−H(genau einmal Kopf). Die beiden relativen Häufigkeiten summieren sich auf 1 und die zwei Balken entsprechen den Quotienten durch 400. Der Modellwert für „genau einmal Kopf“ ist 2/4=1/2, während das simulierte Ergebnis abweichen darf.",
+            "expectedPerformanceEn": "The four pair counts sum to 400. H(exactly one head)=H(H,T)+H(T,H); H(otherwise)=400−H(exactly one head). The two relative frequencies sum to 1 and both bars match the quotients by 400. The model probability for exactly one head is 2/4=1/2, while the simulated frequency may differ.",
+            "understandingFocusDe": "Ein zusammengesetztes Ereignis verlangt Aggregation von elementaren Ausgängen, ohne Versuche doppelt zu zählen oder den Modellwert als garantierte Häufigkeit auszugeben.",
+            "understandingFocusEn": "A compound event requires aggregating elementary outcomes without double counting trials or claiming the model probability as a guaranteed frequency."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "9023226b-fc17-412b-807c-2bb45cd551d5",
+      "reason": "DE: Das aktive Bild erklärt x²+4x+4=(x+2)² und grenzt die algebraische Nullstelle x=−2 ausdrücklich vom geometrischen Bereich x≥0 ab. Das Profil prüft eine andere Gleichung durch quadratische Ergänzung und ein 40-cm²-Rechteck per Lösungsformel einschließlich Verwerfung von −8 cm. Weder Term noch Lösung sind aus dem Bild übertragbar. EN: The active image correctly distinguishes the algebraic root x=−2 of (x+2)²=0 from the shown geometry domain x≥0. The profile checks a different equation by completing the square and a 40-cm² rectangle by formula, rejecting −8 cm. Its solutions are not copied from the image. Exact bitmap bound; AI candidate only, no human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "quadratic-solutions",
+            "essentialUnderstandingDe": "Lösungen einer quadratischen Gleichung sind Nullstellen des zugehörigen Graphen; quadratische Ergänzung oder Lösungsformel bestimmen Kandidaten, die in Sachaufgaben zusätzlich auf ihre Zulässigkeit geprüft werden.",
+            "essentialUnderstandingEn": "Solutions of a quadratic equation are zeros of the associated graph; completing the square or a formula finds candidates that also require contextual admissibility checks.",
+            "observablePerformanceDe": "Die lernende Person wählt einen geeigneten Lösungsweg, bestimmt die reellen Lösungen, verknüpft sie mit Graphschnittpunkten und deutet in einem Sachproblem nur zulässige Werte.",
+            "observablePerformanceEn": "The learner chooses a suitable solution route, finds real solutions, relates them to graph intersections, and interprets only admissible values in a contextual problem."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "quadratic-solutions"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "quadratic-solutions-variation",
+            "textDe": "Von einer rein algebraischen Gleichung mit zwei positiven Lösungen wird zu einer aus einer Flächenbedingung modellierten Gleichung mit einer unzulässigen negativen Lösung gewechselt.",
+            "textEn": "The task changes from a purely algebraic equation with two positive solutions to an area model whose negative algebraic solution is inadmissible."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "algebra-and-graph",
+            "taskDemandDe": "Löse x²−5x+6=0 durch quadratische Ergänzung und deute die Lösungen am Graphen.",
+            "taskDemandEn": "Solve x²−5x+6=0 by completing the square and interpret the solutions on the graph.",
+            "expectedPerformanceDe": "(x−5/2)²=1/4, also x=2 oder x=3. Der Parabelgraph schneidet die x-Achse bei 2 und 3.",
+            "expectedPerformanceEn": "(x−5/2)²=1/4, so x=2 or x=3. The parabola crosses the x-axis at 2 and 3.",
+            "understandingFocusDe": "Algebraische Lösungen und graphische Nullstellen bezeichnen dieselben x-Werte.",
+            "understandingFocusEn": "Algebraic solutions and graphical zeros are the same x values."
+          },
+          {
+            "id": "rectangle-model",
+            "taskDemandDe": "Ein Rechteck ist 3 cm länger als breit und hat Fläche 40 cm². Stelle die quadratische Gleichung auf, löse mit einer Lösungsformel und deute beide algebraischen Lösungen.",
+            "taskDemandEn": "A rectangle is 3 cm longer than it is wide and has area 40 cm². Form the quadratic equation, solve it using a formula, and interpret both algebraic roots.",
+            "expectedPerformanceDe": "Mit Breite x>0 gilt x(x+3)=40, also x²+3x−40=0. Die Diskriminante ist 3²+160=169; x=(−3±13)/2 liefert 5 und −8. Nur x=5 cm ist zulässig; Länge 8 cm ergibt 40 cm².",
+            "expectedPerformanceEn": "With width x>0, x(x+3)=40, so x²+3x−40=0. The discriminant is 3²+160=169; x=(−3±13)/2 gives 5 and −8. Only x=5 cm is admissible; length 8 cm gives 40 cm².",
+            "understandingFocusDe": "Die Sachbedingung entscheidet, welche algebraische Nullstelle eine Länge sein kann.",
+            "understandingFocusEn": "The context determines which algebraic root can represent a length."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2",
+      "reason": "DE: Das aktive Bild zeigt am Würfel eine vertikale Spiegelebene und eine zentrale 90°-Drehachse. Das Profil fordert dagegen drei Mittelebenen und 180°-Achsen eines ungleichkantigen Quaders sowie die vier vertikalen Ebenen einer quadratischen Pyramide ohne horizontale Spiegelebene. Das sind andere Körper und eigenständige Symmetrieargumente. EN: The active image shows a vertical cube mirror plane and central quarter-turn axis. The profile instead assesses three midplanes and half-turn axes of an unequal box, then four vertical planes of a square pyramid with no horizontal mirror plane. These are independent solid-symmetry arguments. Exact bitmap bound; AI candidate only, no human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "solid-symmetries",
+            "essentialUnderstandingDe": "Eine Symmetrieebene spiegelt den ganzen Körper auf sich selbst, eine Symmetrieachse erhält ihn bei einer passenden Drehung; ähnliche Formen können unterschiedlich viele solcher Symmetrien besitzen.",
+            "essentialUnderstandingEn": "A symmetry plane reflects a whole solid onto itself, while rotation about a symmetry axis maps it onto itself; related solids may have different symmetry counts.",
+            "observablePerformanceDe": "Die lernende Person lokalisiert Achsen und Ebenen am Körper, benennt die passende Spiegelung oder Drehung und verwirft eine scheinbare Symmetrie durch ein Gegenbeispiel an einer Ecke oder Kante.",
+            "observablePerformanceEn": "The learner locates axes and planes on a solid, specifies the reflection or rotation, and rejects a false symmetry by tracking a corner or edge."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "solid-symmetries"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "solid-symmetries-variation",
+            "textDe": "Ein Quader mit drei verschiedenen Kantenlängen wird mit einer geraden quadratischen Pyramide verglichen; insbesondere verschwindet deren horizontale Spiegelebene.",
+            "textEn": "A rectangular box with three distinct edge lengths is compared with a right square pyramid, notably without a horizontal mirror plane."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "unequal-box",
+            "taskDemandDe": "Ein Quader ist 2×3×4 cm groß. Beschreibe seine drei mittleren Symmetrieebenen und eine Drehachse; prüfe eine diagonale Spiegelebene.",
+            "taskDemandEn": "A 2×3×4 cm rectangular box is given. Describe its three central mirror planes and a rotation axis; test a diagonal mirror plane.",
+            "expectedPerformanceDe": "Die drei Ebenen durch den Mittelpunkt parallel zu jeweils zwei Flächen spiegeln den Quader auf sich. Durch gegenüberliegende Flächenmittelpunkte gehen zweizählige Achsen. Eine diagonale Vertauschung von 2- und 3-cm-Kanten ist keine Symmetrie.",
+            "expectedPerformanceEn": "The three midplanes parallel to pairs of faces are mirrors. Axes through opposite face centres allow half-turns. A diagonal swap of 2- and 3-cm edges is not a symmetry.",
+            "understandingFocusDe": "Unterschiedliche Kantenlängen schließen zusätzliche Würfelsymmetrien aus.",
+            "understandingFocusEn": "Unequal edge lengths rule out extra cube symmetries."
+          },
+          {
+            "id": "square-pyramid",
+            "taskDemandDe": "Bei einer geraden quadratischen Pyramide liegt die Spitze über dem Grundflächenzentrum. Nenne eine Drehachse und die senkrechten Symmetrieebenen; ist die Grundflächenebene eine Spiegelebene?",
+            "taskDemandEn": "A right square pyramid has its apex above the base centre. Give a rotation axis and the vertical mirror planes; is the base plane a mirror?",
+            "expectedPerformanceDe": "Die Achse Spitze–Grundflächenzentrum ist vierzählig; vier vertikale Ebenen gehen durch diese Achse und gegenüberliegende Ecken oder Seitenmitten. Die Grundebene ist keine Symmetrieebene, weil sie die Spitze unter den Körper spiegelte.",
+            "expectedPerformanceEn": "The apex-to-base-centre axis has order four; four vertical mirror planes pass through it and opposite vertices or side midpoints. The base plane is not a mirror because it would map the apex below the solid.",
+            "understandingFocusDe": "Eine Symmetrie muss den gesamten Körper, nicht nur die Grundfläche, erhalten.",
+            "understandingFocusEn": "A symmetry must preserve the entire solid, not merely its base."
+          }
+        ]
+      }
+    }
+  ]
+}

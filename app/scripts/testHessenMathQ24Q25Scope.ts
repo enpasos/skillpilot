@@ -60,6 +60,7 @@ const rotation = '7bd8f022-5002-5610-994c-a9cec1890558'
 const assessment = '42752317-6022-47f2-8b34-160db5ef01fb'
 const cluster = '6b0d2a97-cf9c-4778-9c68-16bb82b7afde'
 const q25 = 'b3d2284c-21e0-5af8-942a-a4c11390c84a'
+const centralDilation = '7d37513b-fa1a-54cc-9e2a-9279a381f0f0'
 const sharedAssessment = '81823f27-0c92-5444-ac4e-32b83169f318'
 const markovAssessment = 'e4656e83-3f33-5bda-b0bc-d4b63ec4653e'
 // KC HE pp. 43/44 put long-term matrix powers/limits and axis rotations in LK.
@@ -78,6 +79,20 @@ const q4LkPrerequisites = new Set([
   '163dd583-8308-53f0-b60d-34588787988d',
   '519660d0-85e5-57a6-a219-d0a253336649',
 ])
+// This archived September 22 fixture predates later, independent source-scope
+// corrections. Keep their current HE-GK removals explicit, so a new removal
+// cannot be mistaken for part of the original Q2.4/Q2.5 repair.
+const laterByOnlyContent = new Set([
+  '0b162cb0-8507-5ac2-b9d6-57f40f4d3f35',
+  '71fe4a39-38e8-5c6a-8eef-ff4783fe70c2',
+  'dc12f281-f161-572b-a973-8405ae9b2498',
+  '9b339361-7719-573d-a913-432246c502ee',
+])
+const laterLkOnlyContent = new Set([
+  '803d910d-96d1-5118-b9ca-29e93d0da76d',
+  'd3c42193-f1b7-5c6d-a991-bf034d99359f',
+])
+const knownLaterScopeRemovals = new Set([...laterByOnlyContent, ...laterLkOnlyContent])
 const excludedGk = new Set([...excludedContent, markovAssessment, assessment, cluster])
 const fixedStates = '8d893e63-d7de-52d9-8bcb-f48f47d1ccbf'
 const heGkFiles = new Set(['de-he-sekii-gk.view.json', 'de-he-gk.view.json', 'de-he-gk-g8.view.json', 'de-he-gk-g9.view.json'])
@@ -86,6 +101,15 @@ const oldContent = new Set(beforeKinds.decisions
   .map((entry) => entry.goalId))
 for (const id of excludedContent) assert(oldContent.has(id), `${id}: excluded item must be an ordinary content goal`)
 for (const id of q4LkPrerequisites) assert(oldContent.has(id), `${id}: Q4 LK-only prerequisite must be an ordinary content goal`)
+for (const id of knownLaterScopeRemovals) assert(oldContent.has(id), `${id}: later source-scope change must concern an old content goal`)
+for (const id of laterByOnlyContent) {
+  assert.deepEqual(rawById.get(id)?.applicability?.jurisdiction, ['DE-BY'], `${id}: later HE exclusion must remain BY-only`)
+}
+for (const id of laterLkOnlyContent) {
+  const scope = rawById.get(id)?.applicability
+  assert(scope?.jurisdiction?.includes('DE-HE'), `${id}: later LK-only goal must still apply in HE`)
+  assert.deepEqual(scope.courseProfile, ['LK'], `${id}: later HE-GK exclusion must remain LK-only`)
+}
 
 // Use the native local graph validator, then check requires too (the authoring
 // validator checks contains). Do not import validateGraph: it runs full-repo QS.
@@ -109,7 +133,10 @@ for (const edge of ['contains', 'requires'] as const) {
 assert.deepEqual(rawById.get(cluster)?.contains, [assessment], 'Rotation exam folder must contain only its actual endpoint')
 assert.deepEqual(rawById.get(cluster)?.requires, [], 'Do not impose cluster-wide prerequisites')
 assert.deepEqual(raw.goals.filter((goal) => goal.contains.includes(cluster)).map((goal) => goal.id), [q25], 'Place the endpoint inside Q2.5, not a broad Q2 ancestor')
-assert.deepEqual(rawById.get(q25)?.contains, [...beforeRawById.get(q25)!.contains, cluster], 'Preserve the existing Q2.5 children')
+const q25Children = rawById.get(q25)?.contains ?? []
+assert.equal(q25Children.filter((id) => id === centralDilation).length, 1, 'Place the HE-LK central-dilation application in Q2.5 exactly once')
+assert.equal(q25Children.indexOf(centralDilation), q25Children.indexOf('35558905-753d-5fcb-b25e-7f85ffdbff56') + 1, 'Place the application directly after its central-dilation foundation')
+assert.deepEqual(q25Children.filter((id) => id !== centralDilation), [...beforeRawById.get(q25)!.contains, cluster], 'Preserve the existing Q2.5 children apart from the separately reviewed central-dilation application')
 for (const id of [cluster, assessment]) {
   const entries = kinds.decisions.filter((entry) => entry.goalId === id)
   assert.equal(entries.length, 1, `${id}: expected one semantic classification`)
@@ -242,7 +269,7 @@ for (const name of files) {
   for (const id of excludedContent) assert(oldTargets.has(id), `${name}: fixture must reproduce the original scope fault`)
   for (const id of q4LkPrerequisites) assert(oldTargets.has(id), `${name}: fixture must reproduce the previous Q4 target projection`)
   const oldContentTargets = [...oldTargets].filter((id) => oldContent.has(id))
-  assert.deepEqual(oldContentTargets.filter((id) => !targets.has(id)).sort(), [...excludedContent, ...q4LkPrerequisites].sort(), `${name}: unrelated old content removed`)
+  assert.deepEqual(oldContentTargets.filter((id) => !targets.has(id)).sort(), [...excludedContent, ...q4LkPrerequisites, ...knownLaterScopeRemovals].sort(), `${name}: unrelated old content removed`)
   assert.deepEqual([...targets].filter((id) => oldContent.has(id) && !oldTargets.has(id)), [], `${name}: unrelated old content added`)
   assert(targets.has(fixedStates), `${name}: GK fixed-state competence must stay available`)
   for (const id of q4LkPrerequisites) {
@@ -261,4 +288,4 @@ assert.equal(endpointCount, 72)
 // These pre-existing GK choices outside HE are intentionally not reclassified.
 // This endpoint is HE-LK-only, not globally LK-only across the canonical views.
 assert.equal(otherGkEndpointCount, 34)
-console.log(`HE Q2.4/Q2.5 regression passed: ${files.length} valid views, ${heGkCount} corrected HE-GK scopes with only the separately reviewed Q4 LK branch removed from old content targets; ${endpointCount} exact rotation/endpoint placements including ${otherGkEndpointCount} existing non-HE/national GK views; DAGs, coverage, native binders and bilingual 20-point/13-rubric exam checked.`)
+console.log(`HE Q2.4/Q2.5 regression passed: ${files.length} valid views, ${heGkCount} corrected HE-GK scopes with explicitly enumerated later source-scope removals; ${endpointCount} exact rotation/endpoint placements including ${otherGkEndpointCount} existing non-HE/national GK views; DAGs, coverage, native binders and bilingual 20-point/13-rubric exam checked.`)

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-spatproduct-current-png-20260927-v1-first-pass-a-run-001",
+  "campaignId": "mathematik-m7-spatproduct-current-png-20260927-v1-a",
+  "roundId": "mathematik-m7-spatproduct-current-png-20260927-v1-first-pass-a",
+  "batchId": "mathematik-m7-spatproduct-current-png-20260927-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:be8b1bba36145a38de25996bda5823ae9f46e7ef48018dba9f1aee56fa1a6a3f",
+  "bundleFingerprint": "sha256:61942e361fd4bf44bc3ca2d75843e6ba02ae7ae3e6fbed4c43fbeb82a6186065",
+  "bookDigest": "sha256:dfb4ad4b8c2fe047b991eefdf153b50b2d70a3f3ddaa3caffae464836cdce5ff",
+  "provider": "OpenAI",
+  "model": "Codex session model identifier not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:c885c855396dcd9058a4dbc3c19bdf1b3c3d84194a6e321c9c69f00839c68c7f",
+  "independenceGroupId": "mathematik-m7-spatproduct-current-png-20260927-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": ["944dd479-9f30-5acb-ab32-3ea0b6dc8e06"],
+  "inputArtifacts": [
+    {"role": "description_review_batch_input_jsonl", "digest": "sha256:be8b1bba36145a38de25996bda5823ae9f46e7ef48018dba9f1aee56fa1a6a3f"},
+    {"role": "review_input_jsonl", "digest": "sha256:ece5ee4648fbcba12a57fea42254e54d1346fb69a731c1dd422cf644d4f6a20e"},
+    {"role": "review_markdown", "digest": "sha256:fc4d0bc55879818c5ea59c26217bcf5ffd303b7a21908268580712e29fdda9f0"},
+    {"role": "review_prompt", "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"},
+    {"role": "review_criteria", "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"}
+  ],
+  "startedAt": "2026-09-27T12:00:17Z",
+  "completedAt": "2026-09-27T12:02:16Z",
+  "status": "completed",
+  "outputDigest": "sha256:d7e4cf546e405392c3a0f0d5bae31380b10df0ff063551fe4928d1d63fd5f28c",
+  "toolchainVersion": "codex-api-opaque-parameters"
+}

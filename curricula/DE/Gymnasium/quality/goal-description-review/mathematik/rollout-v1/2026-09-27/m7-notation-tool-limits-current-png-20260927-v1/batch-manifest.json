@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-notation-tool-limits-current-png-20260927-v1.config.json",
+  "configDigest": "sha256:4bea08aef9d0f7c91651053153f3ea8d76d07cb71f5bd072071b186d9bb89316",
+  "goalIds": [
+    "aeae526e-b3a4-5a17-b177-351df0307cb9",
+    "c97a33d9-d5e4-56c5-ae4c-822bc4f54898"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:3e46a73050e7c2b3768881558f0f98949ce190e3aef5c92817838c0c5a2a8b8f"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:7f00e472ba425f08c2fc998ccbbf06fbeec4feeb1bd4ec419faec255e5b82f3c",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e32181970311f6ed2e74ffc3b0b3653dd843ea70ebccf657f2a0fef325f39b68",
+    "reviewInputFingerprint": "sha256:c925ab6302dfc08e0eb9e3810bd2890271482d6c58ab21b02727190d023e6115",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-a",
+        "campaignDigest": "sha256:cacfc9b233f1fcd81e38c092fcb923dd1ace1f92e6b4d71934511bb94a534a23",
+        "roundId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-independent-a",
+        "batchId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:8e5de2ffc0f7b08c380c4cbb46198a1869d24e73929e9a897bbbb83d81c3dfce"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-b",
+        "campaignDigest": "sha256:565ed7df1496ea357cf7b3570d4a0b1c56093e1cf033ae772afae054cefe88ac",
+        "roundId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-independent-b",
+        "batchId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:6ef770b2b5a5d261b89d9173c7265921db7e8ceda2562a58630651cfe5b47fe0"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -42,6 +42,7 @@ export const GOAL_BOOK_CONFIG_SCHEMA_VERSION = 1 as const
 export const GOAL_BOOK_GOAL_FINGERPRINT_RULE_VERSION = 'goal-evidence-v1' as const
 export const GOAL_BOOK_EDITION = 'curricular-atomic-v1' as const
 export const GOAL_BOOK_ATLAS_NAVIGATION_OWNERSHIP = 'canonical-composition-view-v1' as const
+export const GOAL_BOOK_ATLAS_COURSE_PROFILE_POLICY = 'canonical-course-markers-v1' as const
 
 export type GoalBookPublicationMode = 'review' | 'public'
 export type GoalBookVisualizationQaStatus = 'approved' | 'review_candidate' | 'rejected'
@@ -254,6 +255,7 @@ export interface GoalBookModel {
     navigationProjectionFingerprint?: string
     durationModelPolicyPath?: string
     durationModelPolicyDigest?: string
+    atlasCourseProfilePolicy?: typeof GOAL_BOOK_ATLAS_COURSE_PROFILE_POLICY
     externalLandscapes?: GoalBookExternalLandscapeSource[]
     evidenceReviewSources: GoalBookEvidenceReviewSource[]
     goalFingerprintRuleVersion: typeof GOAL_BOOK_GOAL_FINGERPRINT_RULE_VERSION
@@ -290,6 +292,7 @@ export interface GoalBookConfigFile {
   landscapePath: string
   compositionViewPath?: string
   compositionViewManifestPath?: string
+  atlasCourseProfilePolicy?: typeof GOAL_BOOK_ATLAS_COURSE_PROFILE_POLICY
   semanticKindLedgerPath: string
   goalVisualizationQaPath: string
   publicationMode: GoalBookPublicationMode
@@ -305,6 +308,7 @@ export interface GoalBookBuildConfig {
   landscapePath: string
   compositionViewPath?: string
   compositionViewManifestPath?: string
+  atlasCourseProfilePolicy?: typeof GOAL_BOOK_ATLAS_COURSE_PROFILE_POLICY
   semanticKindLedgerPath: string
   goalVisualizationQaPath: string
   publicationMode: GoalBookPublicationMode
@@ -1131,6 +1135,8 @@ const normalizeAtlasApplicability = (
   targetGoalIds: ReadonlySet<string>,
   expectedJurisdictions: string[],
   durationPolicyByJurisdiction: ReadonlyMap<string, GoalBookDurationModelPolicyDecision>,
+  goalById: ReadonlyMap<string, CanonicalAuthoringGoal>,
+  courseProfilePolicy?: typeof GOAL_BOOK_ATLAS_COURSE_PROFILE_POLICY,
 ): Map<string, GoalBookApplicabilityGroup[]> => {
   const jurisdictionSet = new Set(expectedJurisdictions)
   const sourceJurisdictions = new Set<string>()
@@ -1218,13 +1224,24 @@ const normalizeAtlasApplicability = (
       )) {
         fail(`atlas SekII source ${path} contradicts the duration-model policy.`)
       }
-      curricularAtomicGoalIds.forEach((goalId) => effectiveDurations.forEach((durationModel) => (
-        addScope(goalId, jurisdiction, {
+      curricularAtomicGoalIds.forEach((goalId) => {
+        const goal = goalById.get(goalId)
+          ?? fail(`atlas source ${path} references unknown goal ${goalId}.`)
+        // In Bavaria the Mathematics view assigns compulsory goals to GK and
+        // adds the separate Vertiefungskurs only in LK. Canonical course
+        // markers also serve other states and cannot narrow that BY view.
+        const bavarianMathematicsView = jurisdiction === 'DE-BY'
+          && view.landscapeId === '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
+        if (!bavarianMathematicsView) {
+          if (!canonicalGoalMatchesDeclaredCourseProfile(goal, profile)) return
+          if (courseProfilePolicy && !canonicalGoalMatchesCourseProfile(goal, profile)) return
+        }
+        effectiveDurations.forEach((durationModel) => addScope(goalId, jurisdiction, {
           stage: 'SekII',
           durationModel,
           courseProfile: profile,
-        })
-      )))
+        }))
+      })
       return
     }
     if (stage !== 'CrossStage') fail(`atlas source ${path} has unsupported stage ${stage}.`)
@@ -1272,6 +1289,40 @@ const normalizeAtlasApplicability = (
       .map(([jurisdiction, scopes]) => ({ jurisdiction, scopes })))
   })
   return result
+}
+
+/** Explicit per-goal applicability is binding even without the optional global tag policy. */
+export const canonicalGoalMatchesDeclaredCourseProfile = (
+  goal: CanonicalAuthoringGoal,
+  profile: 'GK' | 'LK',
+): boolean => {
+  if (goal.applicability === undefined) return true
+  const applicability = asRecord(goal.applicability, `goal ${goal.id}.applicability`)
+  const declared = applicability.courseProfile
+  if (declared === undefined) return true
+  if (!Array.isArray(declared) || declared.length === 0 || declared.some((value) => (
+    value !== 'GK' && value !== 'LK' && value !== 'GK+LK'
+  ))) {
+    fail(`goal ${goal.id}.applicability.courseProfile must contain GK, LK or GK+LK.`)
+  }
+  return declared.includes(profile) || declared.includes('GK+LK')
+}
+
+/** Mirrors LearnerService.matchesCourseFilter, including its legacy empty-tags case. */
+export const canonicalGoalMatchesCourseProfile = (
+  goal: CanonicalAuthoringGoal,
+  profile: 'GK' | 'LK',
+): boolean => {
+  const tags = (goal.tags ?? []).map((tag) => tag.trim().toUpperCase())
+  const release = goal.release && typeof goal.release === 'object' && !Array.isArray(goal.release)
+    ? goal.release as Record<string, unknown>
+    : {}
+  const releaseLevel = typeof release.courseLevel === 'string'
+    ? release.courseLevel.trim().toUpperCase()
+    : ''
+  if (tags.length === 0) return true
+  if (tags.includes(profile) || releaseLevel === profile) return true
+  return !tags.includes('GK') && !tags.includes('LK') && releaseLevel === ''
 }
 
 const directRequires = (
@@ -1759,6 +1810,13 @@ export const buildGoalBookModel = ({
   const landscapePath = nonEmptyString(config.landscapePath, 'config.landscapePath')
   const compositionViewPath = optionalString(config.compositionViewPath)
   const compositionViewManifestPath = optionalString(config.compositionViewManifestPath)
+  const atlasCourseProfilePolicy = config.atlasCourseProfilePolicy
+  if (atlasCourseProfilePolicy !== undefined && atlasCourseProfilePolicy !== GOAL_BOOK_ATLAS_COURSE_PROFILE_POLICY) {
+    fail(`config.atlasCourseProfilePolicy must be ${GOAL_BOOK_ATLAS_COURSE_PROFILE_POLICY}.`)
+  }
+  if (atlasCourseProfilePolicy && !compositionViewManifestPath) {
+    fail('config.atlasCourseProfilePolicy requires a composition-view source manifest.')
+  }
   if ((compositionViewPath ? 1 : 0) + (compositionViewManifestPath ? 1 : 0) !== 1) {
     fail('config must define exactly one of compositionViewPath or compositionViewManifestPath.')
   }
@@ -1926,6 +1984,8 @@ export const buildGoalBookModel = ({
       targetIds,
       sourceManifest.expectedJurisdictions,
       durationPolicyByJurisdiction!,
+      new Map(landscape.goals.map((goal) => [goal.id, goal])),
+      atlasCourseProfilePolicy,
     )
     : null
   const graph = buildCanonicalGraphIndex(landscape)
@@ -2081,6 +2141,7 @@ export const buildGoalBookModel = ({
       semanticKindLedgerDigest: digest(rawSemanticKindLedger),
       goalVisualizationQaDigest: digest(rawGoalVisualizationQa),
       ...(sourceManifest && compositionViewManifestPath ? {
+        ...(atlasCourseProfilePolicy ? { atlasCourseProfilePolicy } : {}),
         compositionViewManifestPath,
         compositionViewManifestDigest: digest(rawCompositionViewManifest),
         compositionViewSources: compiledViewSources.map((source) => ({
@@ -2158,6 +2219,9 @@ export const parseAndValidateGoalBookModel = (raw: unknown): GoalBookModel => {
 
   const pageByGoalId = new Map<string, GoalBookPage>()
   const hasManifestSources = (model.source.compositionViewSources?.length ?? 0) > 0
+  if (model.source.atlasCourseProfilePolicy && !hasManifestSources) {
+    fail('atlasCourseProfilePolicy requires composition-view manifest sources.')
+  }
   const manifestBindingFlags = [
     hasManifestSources,
     Boolean(model.source.compositionViewManifestPath),
@@ -2531,6 +2595,13 @@ const parseGoalBookConfig = (value: unknown): GoalBookConfigFile => {
   }
   const compositionViewPath = optionalString(record.compositionViewPath)
   const compositionViewManifestPath = optionalString(record.compositionViewManifestPath)
+  const atlasCourseProfilePolicy = record.atlasCourseProfilePolicy
+  if (atlasCourseProfilePolicy !== undefined && atlasCourseProfilePolicy !== GOAL_BOOK_ATLAS_COURSE_PROFILE_POLICY) {
+    fail(`config.atlasCourseProfilePolicy must be ${GOAL_BOOK_ATLAS_COURSE_PROFILE_POLICY}.`)
+  }
+  if (atlasCourseProfilePolicy && !compositionViewManifestPath) {
+    fail('config.atlasCourseProfilePolicy requires a composition-view source manifest.')
+  }
   if ((compositionViewPath ? 1 : 0) + (compositionViewManifestPath ? 1 : 0) !== 1) {
     fail('config must define exactly one of compositionViewPath or compositionViewManifestPath.')
   }
@@ -2541,6 +2612,7 @@ const parseGoalBookConfig = (value: unknown): GoalBookConfigFile => {
     landscapePath: nonEmptyString(record.landscapePath, 'config.landscapePath'),
     ...(compositionViewPath ? { compositionViewPath } : {}),
     ...(compositionViewManifestPath ? { compositionViewManifestPath } : {}),
+    ...(atlasCourseProfilePolicy ? { atlasCourseProfilePolicy: GOAL_BOOK_ATLAS_COURSE_PROFILE_POLICY } : {}),
     semanticKindLedgerPath: nonEmptyString(
       record.semanticKindLedgerPath,
       'config.semanticKindLedgerPath',

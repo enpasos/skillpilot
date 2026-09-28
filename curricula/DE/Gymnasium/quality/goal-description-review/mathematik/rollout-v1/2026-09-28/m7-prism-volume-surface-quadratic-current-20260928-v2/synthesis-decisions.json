@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-prism-quadratic-current-20260928-v2-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-math-m7-informed-a-b-synthesis",
+  "synthesizedAt": "2026-09-28T00:52:49.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2",
+    "batchManifestDigest": "sha256:2d7974be6150446c75f115e1781c0501cea4e9e78c0cea9a0c458d8be439851c",
+    "configDigest": "sha256:2175dc04ca28f1e400ee0db64a6541334b871ff7cfd77b75646b31a8f3dd3d16",
+    "bundleFingerprint": "sha256:087724606c372f6e583fefd4de588a8651e6ec7e4d7385fb73f72131571f71bb",
+    "bookDigest": "sha256:6328a0fc025e96d4f1cfb28cb2043b769dd04a1267347eef82c7a6ada00f8866",
+    "reviewInputFingerprint": "sha256:182c6309727530aadd5f06dd19bf3876a05d329d35b76ae20a04fae6418c9f39",
+    "dualSummaryDigest": "sha256:d02411742ecc3902ec0bbfd4267561fff13b73fa4e9ea6e3eacfde795f2d5f56",
+    "canonicalLandscapeDigest": "sha256:4065461f31594842cde6209c380f68f8a8af4a066e9b9263738064e7b390850f"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-a",
+      "campaignDigest": "sha256:82c00d60af6a948d7169c59ad66cb36c9f17e3c714b9ad88aa02db54c4619f3c",
+      "roundId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-independent-a",
+      "reviewInputFingerprint": "sha256:182c6309727530aadd5f06dd19bf3876a05d329d35b76ae20a04fae6418c9f39",
+      "batchId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:0466e97d24009753657d0588b96d2cb1f47c507361099d4e5d347499eef74a7d",
+      "runId": "math-m7-prism-quadratic-v2-a-astra-001",
+      "runManifestDigest": "sha256:516801d94dafeba658763bbf36f0f5c6ce5fa65f6c795f402c18ae0e4bf01445",
+      "resultsDigest": "sha256:49a3069c8bc6648f6c498c68e9a14d0eda4a9318099641274777a45b62905be5"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-b",
+      "campaignDigest": "sha256:e0cd0b04f40c9439ccaee5324e616375744d1c35f5363872c0250527bd8abf3f",
+      "roundId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-independent-b",
+      "reviewInputFingerprint": "sha256:182c6309727530aadd5f06dd19bf3876a05d329d35b76ae20a04fae6418c9f39",
+      "batchId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:66da9944da3f403bb58e227d9f0997347a5ca1a21075cf1fbcc8ca131ed7cb53",
+      "runId": "math-m7-prism-quadratic-v2-b-astra-001",
+      "runManifestDigest": "sha256:8cba3c38c0585f084af31a748d4fc14a24b02d7bb5ebc0889339ad5f357df95c",
+      "resultsDigest": "sha256:1966508edd895444e3231baa251da9401dd8fc92dfdd4a3a6e19424bb6d8ef32"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-prism-quadratic-current-20260928-v2-synthesis-decision-001",
+      "goalId": "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:750a79a8ddc0138bd16072602147cc37eeab9a4763084b510ad392ecbffcfdb7",
+      "pageFingerprint": "sha256:c6547a887bdc10a07ee5aa099064b00c9c8377f5fe08a0b14a2e274c33938012",
+      "goalReviewContextFingerprint": "sha256:6e5b5ce6b8815df67adba3c21bbab3d4c5c1a6438567df2a74b2ad30a4a0ec5b",
+      "finalText": {
+        "titleDe": "Volumen gerader Prismen berechnen",
+        "titleEn": "Calculate the volume of right prisms",
+        "descriptionDe": "Die lernende Person kann mithilfe der Schichtung kongruenter Grundflächen erklären, warum für das Volumen eines geraden Prismas V = G · h gilt, den Grundflächeninhalt G und die dazu senkrechte Körperhöhe h bestimmen, den Rauminhalt berechnen und mit passender Volumeneinheit im Sachkontext deuten.",
+        "descriptionEn": "The learner can use layers of congruent bases to explain why the volume of a right prism is V = G × h, determine the base area G and perpendicular height h, calculate the volume, and interpret it with an appropriate volume unit in context."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-prism-quadratic-v2-a-1",
+          "recordDigest": "sha256:603404daec2f1b1a81baa2de1ad6e7f46bd60f9cfa83bd4a0186c289d739c9a4"
+        },
+        "second": {
+          "recordId": "math-m7-prism-quadratic-v2-b-1",
+          "recordDigest": "sha256:13f5d00793b4772f0502f7fc9c58043b3eb24a884de23845f2b23379fc1a8e5e"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Prüfungen bestätigen den präzisierten Zieltext. Die Schichtung kongruenter Querschnitte erklärt nun ausdrücklich, warum V = G · h gilt; Grundflächeninhalt und senkrechte Körperhöhe werden unterschieden, berechnet und mit Volumeneinheit gedeutet. Die Schritte bilden eine zusammenhängende Prisma-Volumenkompetenz, keinen neuen Sammelauftrag. Runde A wird für den konkreten Nachweis gewählt, weil sie die Schichtdicke bei der Begründung benennt; Runde B ergänzt die Unterscheidung zwischen Grundflächenhöhe und Körperhöhe. Die vor der Revision abgegebenen Prüfurteile werden nicht als aktuelle Zustimmung umgedeutet. Diese D-Synthese erteilt weder Bildfreigabe noch menschliche P-Abnahme oder allgemeine Quellenbestätigung.",
+      "rationaleEn": "Both independent current reviews confirm the clarified description. Layering congruent cross-sections now explicitly explains why V = G × h; base area and perpendicular solid height are distinguished, calculated, and interpreted with a volume unit. These are connected parts of one prism-volume competence, not an additional bundle. Round A supplies the selected concrete evidence because it accounts for layer thickness in the explanation; round B adds the distinction between base altitude and solid height. Pre-revision reviews are not repurposed as current approval. This D synthesis grants neither image approval nor human P acceptance or general source validation."
+    },
+    {
+      "decisionId": "math-m7-prism-quadratic-current-20260928-v2-synthesis-decision-002",
+      "goalId": "f1348d40-3872-5e44-8892-3600c811796f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:51739cb9db399df5a450a030439e3e47142f961a925e4d0f80e71179ffb9b5d6",
+      "pageFingerprint": "sha256:42b97fa79cf69ad823cb369fdbf4684fd749fdb505d6ae292b410d7b6192a1b9",
+      "goalReviewContextFingerprint": "sha256:51c0552726a7c05e6b5a07baadf1cc6f16dd24d67f22bc765ee5bdeffbcabf4d",
+      "finalText": {
+        "titleDe": "Oberflächeninhalt gerader Prismen berechnen",
+        "titleEn": "Calculate the surface area of right prisms",
+        "descriptionDe": "Die lernende Person kann an einem geraden Prisma beide kongruenten Grundflächen und alle Mantelflächen identifizieren, ihre Flächeninhalte ohne Auslassung oder Doppelzählung zur gesamten äußeren Oberfläche addieren und das Ergebnis mit passender Flächeneinheit im Sachkontext deuten.",
+        "descriptionEn": "The learner can identify both congruent bases and all lateral faces of a right prism, add their areas without omission or double-counting to find its total exterior surface area, and interpret the result with an appropriate area unit in context."
+      },
+      "resolutionDecision": "current_after_split",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-m7-prism-quadratic-v2-a-2",
+          "recordDigest": "sha256:40f76757e70642608f42d688702ee2c8014b2669afecabc836fdce41803207a4"
+        },
+        "second": {
+          "recordId": "math-m7-prism-quadratic-v2-b-2",
+          "recordDigest": "sha256:1b76002ed04fe2365a129e9f288f60f402dff9c512d754217d7237900c7fd7b1"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Prüfungen bestätigen das eigenständige, nach der Prismensplit-Entscheidung geschaffene Oberflächenziel. Der Text verlangt die vollständige und einmalige Bilanz aus zwei kongruenten Grundflächen und sämtlichen Mantelflächen; Flächeneinheit und Sachdeutung gehören zu derselben Kompetenz. Eine verpflichtende Netzzeichnung oder zusätzliche Formel ist für den kanonischen Zieltext nicht nötig. Runde B wird als Nachweisakzent gewählt, weil sie den Wechsel von Körperzeichnung zu Netz und die verdeckten Außenflächen ausdrücklich operationalisiert; Runde A bestätigt die Zuordnung jeder Grundflächenkante zu einer Mantelfläche. Diese D-Synthese ersetzt keine unabhängige Bild- oder P-Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the separate surface-area goal created by the prism split. The description requires a complete, once-only account of two congruent bases and all lateral faces; the area unit and contextual interpretation belong to the same competence. A mandatory net drawing or an additional formula is unnecessary in the canonical wording. Round B is selected for its explicit transfer between a solid drawing and a net, including hidden exterior faces; round A confirms the correspondence between each base edge and a lateral face. This D synthesis does not substitute for independent image or P approval."
+    },
+    {
+      "decisionId": "math-m7-prism-quadratic-current-20260928-v2-synthesis-decision-003",
+      "goalId": "9023226b-fc17-412b-807c-2bb45cd551d5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:89cfb06512fbd42d0509af95c8807414c80b3cf5b5d2fa7aed351bc0a5135911",
+      "pageFingerprint": "sha256:57d1450e81e965e3ede30484d8ccbcf1e7e7ee830f0cb3e38214a57384596270",
+      "goalReviewContextFingerprint": "sha256:9b7371b3ffc9491f38d2277437127fd6975653e9ecc934e52127ef315042635a",
+      "finalText": {
+        "titleDe": "Quadratische Gleichungen lösen",
+        "titleEn": "Solve quadratic equations",
+        "descriptionDe": "Die lernende Person kann gegebene quadratische Gleichungen mit einem zur Form passenden rechnerischen Verfahren einschließlich der Lösungsformel lösen, grafische Lösungen bei Bedarf näherungsweise bestimmen, die Fälle null, eine oder zwei reelle Lösungen begründen und Ergebnisse durch Einsetzen sowie eine geeignete Skizze überprüfen.",
+        "descriptionEn": "The learner can solve given quadratic equations using an algebraic method suited to their form, including the quadratic formula, approximate solutions graphically when appropriate, justify whether there are zero, one, or two real solutions, and check the results by substitution and a suitable sketch."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-m7-prism-quadratic-v2-a-3",
+          "recordDigest": "sha256:cd1aa6f99c0bbf4c75fd852a1045bfec458de8113245479e705ffb63bc11833b"
+        },
+        "second": {
+          "recordId": "math-m7-prism-quadratic-v2-b-3",
+          "recordDigest": "sha256:faaff272df255016b7d6109094969a73225aa1ba04fd8a8364de31b595f9a1c1"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Prüfungen bestätigen den nach der Verfahrenspräzisierung geltenden Text. Formgerechte rechnerische Verfahrenswahl einschließlich Lösungsformel, Begründung von null, einer oder zwei reellen Lösungen und grafische Näherung beziehungsweise Kontrolle dienen zusammen der vollständigen reellen Lösungsmenge einer gegebenen quadratischen Gleichung. Runde B wird gewählt, weil sie die Rolle von Einsetzprobe, Skizze und algebraischer Vollständigkeitsbegründung sauber trennt; Runde A ergänzt die Diskriminante als einen möglichen Nachweis. Das Ziel fordert keine eigenständige Modellierung aus Sachtexten. Frühere, vor der Textänderung gebundene Reviews sind hierfür keine aktuelle D-Evidenz; P, Bild und externe Quellen bleiben getrennte Gates.",
+      "rationaleEn": "Both independent current reviews confirm the wording after its method clarification. Form-sensitive algebraic method choice including the quadratic formula, justification of zero, one, or two real solutions, and graphical approximation or checking all serve the complete real solution set of a given quadratic equation. Round B is selected because it distinguishes substitution, sketch-based plausibility, and algebraic completeness; round A adds the discriminant as one possible demonstration. The goal does not require independently modelling a word problem. Reviews bound before the wording change are not current D evidence; P, image, and external-source gates remain separate."
+    }
+  ],
+  "manifestFingerprint": "sha256:7e3d3805a0c0d3bc301c0cbd15862ffde158216ae062dd1a78ccc30aa42f3395"
+}

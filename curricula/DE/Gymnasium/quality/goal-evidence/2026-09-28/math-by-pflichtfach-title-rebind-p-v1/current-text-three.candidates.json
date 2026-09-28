@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewedAt": "2026-09-28T00:37:10Z",
+  "reviewer": "OpenAI Codex current-goal and case review; AI candidate only",
+  "reviewId": "canonical-math-by-pflichtfach-title-rebind-text-three-p-20260928-v1",
+  "goals": [
+    {
+      "goalId": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+      "reason": "Der irreführende LK-Zusatz wurde aus dem BY-Pflichtfach-Titel entfernt; Zielkern und Voraussetzungen blieben gleich. Beide bestehenden Aufgaben wurden erneut gerechnet: vorzeichenrichtige Tankänderung 3 L und Endbestand 13 L sowie Ortsänderung 1,5 m gegenüber Weg 2,5 m. Das Lehrbild zeigt einen anderen, rein positiven Tankzufluss von 20 L und liefert diese Antworten nicht. Textgebundener aktueller AI-Kandidat; keine menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "context-select-integral",
+            "essentialUnderstandingDe": "Ein Integral summiert kleine Beiträge mit ihrer Breite und liefert aus einer Rate eine vorzeichenbehaftete Gesamtänderung. Anfangsbestand, Nettoänderung und geometrische Fläche sind abhängig von der Frage auseinanderzuhalten.",
+            "essentialUnderstandingEn": "An integral accumulates width-weighted contributions and converts a rate into signed total change. Initial stock, net change and geometric area must be distinguished according to the question.",
+            "observablePerformanceDe": "Die lernende Person erkennt in einer Zuflussaufgabe die Rate, bestimmt die zugeflossene Menge über das Zeitintervall und unterscheidet sie ausdrücklich vom gesamten Behälterinhalt.",
+            "observablePerformanceEn": "The learner identifies the rate in an inflow problem, determines the amount added over the time interval and explicitly distinguishes it from total tank contents."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "context-select-integral"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Bei einer unabhängig vorgelegten Geschwindigkeitskurve mit Richtungswechsel wählt die Person für Ortsänderung ∫v, für zurückgelegte Strecke ∫|v| und begründet die Zerlegung sowie die jeweiligen Einheiten.",
+            "textEn": "For an independently presented velocity graph with a direction change, the learner chooses ∫v for displacement and ∫|v| for traveled distance, explaining subdivision and the corresponding units."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "net-flow-and-final-stock",
+            "taskDemandDe": "Ein Tank enthält anfangs 10 L. Seine Nettozuflussrate ist r(t)=4−2t L/min für 0≤t≤3; negative Werte bedeuten Nettoabfluss. Bestimme die Bestandsänderung und den Endbestand. Begründe den Ansatz und die Bedeutung des Vorzeichens.",
+            "taskDemandEn": "A tank initially contains 10 L. Its net inflow rate is r(t)=4−2t L/min for 0≤t≤3; negative values mean net outflow. Determine the stock change and final stock. Justify the integral setup and meaning of its sign.",
+            "expectedPerformanceDe": "∫₀³(4−2t)dt=[4t−t²]₀³=3 L ist die Nettoänderung, nicht der Endbestand. Mit Anfangswert sind es 13 L. Der positive Beitrag bis t=2 beträgt 4 L, der negative danach −1 L; beide sind vorzeichenrichtig zu addieren.",
+            "expectedPerformanceEn": "∫₀³(4−2t)dt=[4t−t²]₀³=3 L is net change, not final stock. Including the initial value gives 13 L. The positive contribution until t=2 is 4 L and the negative contribution afterward is −1 L; add them with their signs.",
+            "understandingFocusDe": "Rate, Nettoänderung und Endbestand durch passende Grenzen und Anfangswert unterscheiden.",
+            "understandingFocusEn": "Distinguish rate, net change and final stock through suitable bounds and the initial value."
+          },
+          {
+            "id": "displacement-versus-distance",
+            "taskDemandDe": "Ein Körper bewegt sich geradlinig mit v(t)=t−1 m/s für 0≤t≤3. Bestimme Ortsänderung und insgesamt zurückgelegte Strecke. Begründe, weshalb sich die Integralansätze unterscheiden.",
+            "taskDemandEn": "A body moves along a straight line with v(t)=t−1 m/s for 0≤t≤3. Determine displacement and total distance traveled. Explain why the integral setups differ.",
+            "expectedPerformanceDe": "Die Ortsänderung ist ∫₀³v=3/2 m. Für die Strecke wird bei t=1 zerlegt: ∫₀¹(1−t)dt+∫₁³(t−1)dt=1/2+2=5/2 m. Der Richtungswechsel erzeugt bei der Ortsänderung Aufhebung, bei der Strecke jedoch positive Teilbeiträge.",
+            "expectedPerformanceEn": "Displacement is ∫₀³v=3/2 m. For distance, split at t=1: ∫₀¹(1−t)dt+∫₁³(t−1)dt=1/2+2=5/2 m. Reversal causes cancellation in displacement, whereas distance sums positive contributions.",
+            "understandingFocusDe": "Ein neuer Kontext ändert die gesuchte Größe und damit die Behandlung negativer Beiträge.",
+            "understandingFocusEn": "A new context changes the requested quantity and therefore the handling of negative contributions."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+      "reason": "Der irreführende LK-Zusatz wurde aus dem BY-Pflichtfach-Titel entfernt; Zielkern und Voraussetzungen blieben gleich. Der alte Besucherfall war bereits vollständig im Lehrbild gelöst und wurde deshalb durch einen unabhängigen Flugbahnfall ersetzt: h(t)=20t−5t² ist nur bis t=4 sinnvoll, erreicht bei t=2 genau 20 m, und h(5)=−25 m ist keine physikalische Flughöhe. Der bestehende Tankkapazitäts-Transfer bleibt richtig. Textgebundener aktueller AI-Kandidat; keine menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "context-validate-model",
+            "essentialUnderstandingDe": "Ein korrekt berechnetes Ergebnis bestätigt nicht automatisch das Sachmodell. Definitionsbereich, Einheiten, Anfangswerte, Vorzeichen und Ressourcenbegrenzungen verknüpfen die mathematische Funktion mit einer zulässigen Interpretation.",
+            "essentialUnderstandingEn": "A correctly calculated result does not automatically validate a contextual model. Domain, units, initial values, signs and resource constraints link the mathematical function to an admissible interpretation.",
+            "observablePerformanceDe": "Die lernende Person prüft ein Höhenmodell auf zulässige Flugzeiten, ein plausibles Maximum und unmögliche negative Vorhersagen und begründet die zeitliche Begrenzung.",
+            "observablePerformanceEn": "The learner checks a height model for admissible flight times, a plausible maximum and impossible negative predictions, and justifies the time limit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "context-validate-model"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Bei einem neuen Befüllmodell überschreitet das berechnete Integral die Tankkapazität. Die Person unterscheidet Rechenfehler von verletzter Modellannahme und nennt Überlauf oder ein verkürztes Gültigkeitsintervall als notwendige Kontextprüfung.",
+            "textEn": "In a new filling model, the computed integral exceeds tank capacity. The learner distinguishes arithmetic error from a violated assumption and identifies overflow or a shorter validity interval as necessary contextual checks."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "flight-model-validity",
+            "taskDemandDe": "Für den Flug eines Balls bis zum Auftreffen auf den Boden wird die Höhe durch h(t)=20t−5t² in Metern modelliert; t ist die Zeit in Sekunden seit dem Abwurf. Bestimme das Höhenmaximum und den sinnvollen Zeitbereich. Prüfe, ob h(5)=−25 m eine sinnvolle Höhenangabe fünf Sekunden nach dem Start ist.",
+            "taskDemandEn": "During a ball flight until it hits the ground, height is modeled by h(t)=20t−5t² metres, where t is seconds since launch. Find the maximum height and the meaningful time interval. Assess whether h(5)=−25 m is a meaningful height five seconds after launch.",
+            "expectedPerformanceDe": "h′(t)=20−10t wird bei t=2 null; dort beträgt die Höhe h(2)=20 m. Aus h(t)=5t(4−t) folgen Start t=0 und Auftreffen t=4; für den Flug ist nur 0≤t≤4 sinnvoll. h(5)=−25 m ist rechnerisch richtig, liegt aber nach dem Auftreffen und ist keine physikalische Flughöhe.",
+            "expectedPerformanceEn": "h′(t)=20−10t vanishes at t=2; the maximum is h(2)=20 m. From h(t)=5t(4−t), launch is t=0 and landing t=4; only 0≤t≤4 is meaningful for the flight. h(5)=−25 m is arithmetically correct but lies after landing and is not a physical flight height.",
+            "understandingFocusDe": "Rechnerisch korrekte Extrapolation von der sachlich zulässigen Dauer eines Flugmodells unterscheiden.",
+            "understandingFocusEn": "Distinguish arithmetically correct extrapolation from the contextually valid duration of a flight model."
+          },
+          {
+            "id": "capacity-breaks-filling-model",
+            "taskDemandDe": "Ein 10-L-Tank enthält 8 L. Eine Pumpe liefert konstant 3 L/min, ein regulärer Abfluss ist geschlossen. Die Rechnung B(2)=8+∫₀²3 dt=14 L wird als Tankinhalt nach zwei Minuten präsentiert. Prüfe Rechnung und Modellannahmen; erläutere passende Konsequenzen für Abschaltung oder Überlauf.",
+            "taskDemandEn": "A 10-L tank contains 8 L. A pump supplies a constant 3 L/min and the regular outlet is closed. The calculation B(2)=8+∫₀²3 dt=14 L is presented as the contents after two minutes. Check the calculation and assumptions, explaining implications for shutoff or overflow.",
+            "expectedPerformanceDe": "14 L ist die korrekte rechnerische Summe aus Anfangsinhalt und gefördertem Wasser, aber kein zulässiger Tankinhalt. Die Kapazität wird bei 8+3t=10, also t=2/3 min erreicht. Danach muss die Pumpe stoppen oder es gibt zusätzlichen Überlauf; die ursprüngliche Bestandsformel gilt dann nicht unverändert.",
+            "expectedPerformanceEn": "14 L is the correct arithmetic sum of initial contents and pumped water but not an admissible tank stock. Capacity is reached at 8+3t=10, hence t=2/3 min. Afterward the pump must stop or additional overflow occurs; the original stock formula no longer applies unchanged.",
+            "understandingFocusDe": "Bei einer neuen Integral-Modellierung begrenzt eine reale Kapazität die Gültigkeit, obwohl die Rechnung stimmt.",
+            "understandingFocusEn": "In a new integral model, physical capacity limits validity even though the calculation is correct."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "49f9059a-876c-5051-8146-d008b5cc691c",
+      "reason": "Der irreführende LK-Zusatz wurde aus dem BY-Pflichtfach-Titel entfernt; Zielkern und Voraussetzungen blieben gleich. Beide Begründungsfälle wurden erneut geprüft: Mit e^x≥x³/6 folgt x²/e^x≤6/x→0 für x→∞; nach t=−x und e^t≥t⁴/24 gilt |x³e^x|≤24/t→0 mit Annäherung von unten. Das Bild behauptet nur die Dominanz im ersten Fall, führt aber keine dieser Abschätzungen aus. Textgebundener aktueller AI-Kandidat; keine menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Der frühere HE-Sek-I-Konflikt ist durch die separat dokumentierte, quellengebundene v3-Zuordnungsänderung behoben. Dieses LK-Profil bleibt beim asymptotischen Vergleich; es begründet nicht selbst die Quellenzuordnung."
+      ],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "eventual-comparison",
+            "essentialUnderstandingDe": "Für feste positive Potenzen wächst e^x bei x→∞ schließlich stärker als x^n; ein endliches Diagramm oder einzelner Vergleich beweist diese Aussage nicht.",
+            "essentialUnderstandingEn": "For fixed positive powers, e^x eventually outgrows x^n as x→∞; a finite diagram or isolated comparison does not prove this.",
+            "observablePerformanceDe": "Formuliert einen passenden Quotienten und begründet dessen Grenzverhalten mit einer tragfähigen Abschätzung.",
+            "observablePerformanceEn": "Forms a suitable ratio and justifies its limiting behaviour with a sound estimate."
+          },
+          {
+            "id": "direction-and-sign",
+            "essentialUnderstandingDe": "Bei x→−∞ wird e^x klein; eine Umbenennung t=−x verbindet diesen Fall mit dem Wachstum für t→∞ und erhält das Vorzeichen von Potenzfaktoren.",
+            "essentialUnderstandingEn": "As x→−∞, e^x becomes small; substituting t=−x connects this case to growth for t→∞ while preserving signs of power factors.",
+            "observablePerformanceDe": "Unterscheidet Grenzrichtung, Produkt und Quotient und erläutert das resultierende Vorzeichen.",
+            "observablePerformanceEn": "Distinguishes limiting direction, product, and ratio and explains the resulting sign."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "eventual-comparison",
+            "direction-and-sign"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "growth-ratio-and-decaying-product",
+            "textDe": "Einen Quotienten bei +∞ und ein vorzeichenbehaftetes Produkt bei −∞ vergleichen.",
+            "textEn": "Compare a ratio at +∞ and a signed product at −∞."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "quadratic-versus-exponential",
+            "taskDemandDe": "Vergleiche x² und e^x langfristig für x→∞. Als gültige Hilfsabschätzung für x>0 ist e^x≥x³/6 gegeben. Begründe mehr als das, was eine begrenzte Grafik zeigen könnte.",
+            "taskDemandEn": "Compare x² and e^x in the long run as x→∞. The valid supporting bound e^x≥x³/6 for x>0 is supplied. Justify more than a bounded graph could show.",
+            "expectedPerformanceDe": "0≤x²/e^x≤6/x→0. Damit wird das Verhältnis der Potenz zur Exponentialfunktion beliebig klein; kurzfristige Größenvergleiche sagen darüber allein nichts aus. Die Abschätzung ist ein bereitgestelltes Hilfsmittel, keine neu zu beweisende Reihenentwicklung.",
+            "expectedPerformanceEn": "0≤x²/e^x≤6/x→0. Thus the ratio of the power to the exponential becomes arbitrarily small; short-range size comparisons alone do not establish this. The estimate is supplied support, not a newly required series expansion.",
+            "understandingFocusDe": "Asymptotische Dominanz durch eine quantitativ verschwindende obere Schranke begründen.",
+            "understandingFocusEn": "Justify asymptotic dominance using a quantitatively vanishing upper bound."
+          },
+          {
+            "id": "negative-direction-product",
+            "taskDemandDe": "Bestimme und begründe das Verhalten von x³e^x für x→−∞ einschließlich der Annäherungsseite. Für t>0 darf e^t≥t⁴/24 verwendet werden.",
+            "taskDemandEn": "Determine and justify the behaviour of x³e^x as x→−∞, including the side of approach. For t>0 you may use e^t≥t⁴/24.",
+            "expectedPerformanceDe": "Mit t=−x→∞ wird x³e^x=−t³/e^t. Sein Betrag liegt zwischen 0 und 24/t und geht gegen 0; das Produkt nähert sich 0 von unten. Die wachsende Potenz im Betrag überwiegt nicht den exponentiellen Zerfall.",
+            "expectedPerformanceEn": "With t=−x→∞, x³e^x=−t³/e^t. Its magnitude lies between 0 and 24/t and tends to 0; the product approaches 0 from below. Growth of the power in magnitude does not dominate exponential decay.",
+            "understandingFocusDe": "Die Wachstumsrelation auf eine andere Grenzrichtung und ein Produkt übertragen, ohne das Vorzeichen zu verlieren.",
+            "understandingFocusEn": "Transfer the growth relation to another limiting direction and a product without losing the sign."
+          }
+        ]
+      }
+    }
+  ]
+}

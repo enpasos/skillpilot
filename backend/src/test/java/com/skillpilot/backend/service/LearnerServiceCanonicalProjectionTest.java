@@ -42,9 +42,16 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String LEARNER_ID = "canonical-projection-learner";
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String HESSEN_MATH_LANDSCAPE_ID = "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3";
+    private static final String LEGACY_HE_TRANSFORMATION_ID = "9f8fcb66-4cf0-4e65-a6cb-9d7f7cb0f2d6";
+    private static final String CANONICAL_HE_CENTRAL_DILATION_ID = "7d37513b-fa1a-54cc-9e2a-9279a381f0f0";
     private static final String BAYERN_MATH_LANDSCAPE_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
     private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_MATH_ROOT_ID = "c01b1ce9-a667-4a46-b251-ec33ae602b15";
+    private static final String LEGACY_HE_SPECIAL_POSITIONS_ID = "35aea485-3fa8-4d7f-984b-daf42973f971";
+    private static final String RETIRED_SPECIAL_POSITIONS_ID = "6b2a1c04-8c28-51ff-905b-9c9492a26cc3";
+    private static final String AXIS_PLANE_POSITIONS_ID = "58f613da-03be-5c6a-90a9-ff0958aa7849";
+    private static final String LINE_PLANE_POSITION_ID = "24174bba-a654-5f81-8de3-ca5bd09d9b6f";
+    private static final String PLANE_PLANE_POSITION_ID = "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd";
     private static final String CANONICAL_BW_EXPONENTIAL_CLUSTER_ID = "4047af71-de53-5dc3-80c6-a7c78fb4bfe4";
     private static final String CANONICAL_BW_EXPONENTIAL_COMBINATIONS_ID = "e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c";
     private static final String CANONICAL_BW_GEOMETRY_CLUSTER_ID = "6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44";
@@ -257,6 +264,49 @@ class LearnerServiceCanonicalProjectionTest {
 
         assertThat(mastery).containsEntry(CANONICAL_SYMMETRY_ID, 1.0);
         assertThat(mastery).containsEntry(LEGACY_SYMMETRY_ID, 1.0);
+    }
+
+    @Test
+    void narrowedCentralDilationDoesNotInheritPartialLegacyMasteryOrAliasItsWriteId() throws Exception {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_HE_TRANSFORMATION_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+        assertThat(mastery).containsEntry(LEGACY_HE_TRANSFORMATION_ID, 1.0);
+        assertThat(mastery).doesNotContainKey(CANONICAL_HE_CENTRAL_DILATION_ID);
+
+        Map<String, LearningGoal> visibleGoals = Map.of(
+                CANONICAL_HE_CENTRAL_DILATION_ID,
+                landscapeService.getGoalDefinition(CANONICAL_HE_CENTRAL_DILATION_ID),
+                CANONICAL_FUNCTION_CONCEPT_ID,
+                landscapeService.getGoalDefinition(CANONICAL_FUNCTION_CONCEPT_ID));
+        assertThat(invokeMapGoalIdForVisibleGoals(LEGACY_HE_TRANSFORMATION_ID, visibleGoals, false))
+                .isEqualTo(LEGACY_HE_TRANSFORMATION_ID);
+        assertThat(invokeMapGoalIdForVisibleGoals(LEGACY_HE_TRANSFORMATION_ID, visibleGoals, true))
+                .isEqualTo(CANONICAL_HE_CENTRAL_DILATION_ID);
+        assertThat(invokeMapGoalIdForVisibleGoals(LEGACY_FUNCTION_CONCEPT_ID, visibleGoals, false))
+                .isEqualTo(CANONICAL_FUNCTION_CONCEPT_ID);
+        assertThat(invokeMapGoalIdForVisibleGoals(LEGACY_BAYERN_FUNCTION_CONCEPT_ID, visibleGoals, false))
+                .isEqualTo(CANONICAL_FUNCTION_CONCEPT_ID);
+        assertThat(invokeMapGoalIdForVisibleGoals("unmapped-legacy-id", visibleGoals, false))
+                .isEqualTo("unmapped-legacy-id");
+    }
+
+    @Test
+    void retiredSpecialPositionsKeepsHistoricalMasteryWithoutGrantingSuccessorMastery() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_HE_SPECIAL_POSITIONS_ID, 1.0),
+                        new Mastery(learner, RETIRED_SPECIAL_POSITIONS_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(LEGACY_HE_SPECIAL_POSITIONS_ID, 1.0);
+        assertThat(mastery).containsEntry(RETIRED_SPECIAL_POSITIONS_ID, 1.0);
+        assertThat(mastery).doesNotContainKeys(
+                AXIS_PLANE_POSITIONS_ID,
+                LINE_PLANE_POSITION_ID,
+                PLANE_PLANE_POSITION_ID);
     }
 
     @Test
@@ -1050,6 +1100,14 @@ class LearnerServiceCanonicalProjectionTest {
         Method method = LearnerService.class.getDeclaredMethod("getFilteredGoals", String.class, String.class);
         method.setAccessible(true);
         return (Map<String, LearningGoal>) method.invoke(learnerService, curriculumId, personalCurriculumJson);
+    }
+
+    private String invokeMapGoalIdForVisibleGoals(String goalId, Map<String, LearningGoal> visibleGoals,
+            boolean allowPartial) throws Exception {
+        Method method = LearnerService.class.getDeclaredMethod("mapGoalIdForVisibleGoals", String.class, Map.class,
+                boolean.class);
+        method.setAccessible(true);
+        return (String) method.invoke(learnerService, goalId, visibleGoals, allowPartial);
     }
 
 }

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:a4c38e44c40c63b2e573a4feb9b5cbfee23cb1a753da5a5c97cd9aeea634c804",
+  "reviewInputFingerprint": "sha256:21503f7fc5bd7506d2ecfe8342a8f81272feb3a36a3ae2a653324fc18295b0d4",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-notation-derivative-two-current-20260927-v1-a",
+      "roundId": "mathematik-m7-notation-derivative-two-current-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-notation-derivative-two-current-20260927-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-notation-derivative-two-current-20260927-v1-run-a-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (exact runtime variant not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-notation-derivative-two-current-20260927-v1-b",
+      "roundId": "mathematik-m7-notation-derivative-two-current-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-notation-derivative-two-current-20260927-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-notation-derivative-two-current-20260927-v1-run-b-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (exact runtime variant not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::GPT-6 (exact runtime variant not exposed)::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "aeae526e-b3a4-5a17-b177-351df0307cb9",
+      "firstRecordId": "mathematik-m7-notation-derivative-two-current-20260927-v1-a-001-aeae526e",
+      "secondRecordId": "mathematik-m7-notation-derivative-two-current-20260927-v1-run-b-001.aeae526e-b3a4-5a17-b177-351df0307cb9",
+      "firstRunId": "mathematik-m7-notation-derivative-two-current-20260927-v1-run-a-001",
+      "secondRunId": "mathematik-m7-notation-derivative-two-current-20260927-v1-run-b-001",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+      "firstRecordId": "mathematik-m7-notation-derivative-two-current-20260927-v1-a-001-1a18dbb3",
+      "secondRecordId": "mathematik-m7-notation-derivative-two-current-20260927-v1-run-b-001.1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+      "firstRunId": "mathematik-m7-notation-derivative-two-current-20260927-v1-run-a-001",
+      "secondRunId": "mathematik-m7-notation-derivative-two-current-20260927-v1-run-b-001",
+      "firstDecision": "split_review",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

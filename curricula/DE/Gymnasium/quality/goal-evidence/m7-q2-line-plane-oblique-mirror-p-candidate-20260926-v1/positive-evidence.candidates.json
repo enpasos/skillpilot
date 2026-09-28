@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-q2-line-plane-oblique-mirror-p-candidate-20260926-v1",
+  "reviewedAt": "2026-09-26T13:14:13.000Z",
+  "reviewer": "Codex focused mathematics P-v2 authoring; AI candidate only",
+  "goals": [
+    {
+      "goalId": "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+      "reason": "Die aktuelle LK-Beschreibung und der hessische Q2.3-Quellaspekt beanspruchen allgemeine räumliche Spiegelungen von Geraden. Das aktuelle Bild erläutert nur eine zu x=2 parallele Gerade. Zwei neue Fälle prüfen eine schiefe Spiegelebene, veränderte Richtung bei Schnitt und erhaltene Richtung bei Parallelität; beide verlangen eine eigene Lot- und Mittelpunktprüfung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Der Quellausdruck 'Spiegeln von Punkten, Geraden und Ebenen allgemein' benennt das Spiegelobjekt nicht ausdrücklich. Dieses Profil prüft ausschließlich die Spiegelung einer Geraden an einer Ebene, wie es das aktuelle Zielbild konkretisiert; Punkt- oder Geradenspiegelungen werden daraus nicht abgeleitet."
+      ],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "reflect-line-in-mirror-plane",
+            "essentialUnderstandingDe": "Eine Ebene spiegelt jeden Geradenpunkt entlang ihrer Normalen auf die andere Seite: Der Mittelpunkt jedes Urbild-Bild-Paars liegt in der Spiegelebene. Der zur Spiegelebene parallele Richtungsanteil bleibt erhalten, der normale Anteil kehrt sich um; zwei gespiegelte Punkte bestimmen die Bildgerade.",
+            "essentialUnderstandingEn": "A plane reflects every point of a line along its normal to the other side: the midpoint of each original-image pair lies in the mirror plane. The direction component parallel to the mirror is preserved and the normal component reverses; two reflected points determine the image line.",
+            "observablePerformanceDe": "Die lernende Person bestimmt in einer neuen Raumkonfiguration aus zwei Punkten oder aus Aufpunkt und Richtung eine parametrische Bildgerade und bestätigt sie an einem weiteren korrespondierenden Punkt durch Ebenenzugehörigkeit des Mittelpunkts und Parallelität der Verbindungsstrecke zur Normalen.",
+            "observablePerformanceEn": "In a new spatial configuration, the learner obtains a parametric image line from two points or an anchor and direction, then verifies it with another corresponding point by checking that the midpoint belongs to the mirror plane and the connecting segment is parallel to its normal."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reflect-line-in-mirror-plane"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "crossing-versus-parallel-line",
+            "textDe": "Eine die schiefe Spiegelebene schneidende Gerade mit verändertem Richtungsvektor wechselt zu einer von der Spiegelebene verschiedenen, zu ihr parallelen Geraden mit unverändertem Richtungsvektor; im Schnittfall bleibt der Schnittpunkt fest.",
+            "textEn": "A line crossing an oblique mirror plane and changing direction switches to a line distinct from and parallel to the mirror plane whose direction stays unchanged; the intersection point is fixed in the crossing case."
+          },
+          {
+            "id": "oblique-normal-data",
+            "textDe": "Die Normalenrichtung wechselt von (1,1,0) zu (1,-1,1); beide Spiegelbedingungen koppeln mehrere Koordinaten und verlangen eine Lot- und Mittelpunktprüfung jenseits des Bildes mit x=2.",
+            "textEn": "The normal changes from (1,1,0) to (1,-1,1); both mirror conditions couple several coordinates and require perpendicular and midpoint checks beyond the image's x=2 example."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "oblique-mirror-crossing-line",
+            "taskDemandDe": "Spiegle g: X=(3,1,0)+t(1,0,1) an S:x+y=2. Bestimme g′, prüfe die Punktpaare für t=0 und t=2 und entscheide, was mit dem Schnittpunkt von g und S geschieht.",
+            "taskDemandEn": "Reflect g: X=(3,1,0)+t(1,0,1) in S:x+y=2. Find g′, check the point pairs at t=0 and t=2, and determine what happens to the intersection of g and S.",
+            "expectedPerformanceDe": "Für n=(1,1,0) ist die Spiegelung T(x,y,z)=(2-y,2-x,z). Daher g′:X=(1,-1,0)+t(0,-1,1). Zu P=(3,1,0) gehört P′=(1,-1,0) mit M=(2,0,0); zu Q=(5,1,2) gehört Q′=(1,-3,2) mit M=(3,-1,2). Beide Mittelpunkte erfüllen x+y=2, und PP′=(2,2,0), QQ′=(4,4,0) sind parallel zu n. Bei t=-2 liegt (1,1,-2) auf S und bleibt fest.",
+            "expectedPerformanceEn": "For n=(1,1,0), reflection is T(x,y,z)=(2-y,2-x,z). Hence g′:X=(1,-1,0)+t(0,-1,1). P=(3,1,0) maps to P′=(1,-1,0) with midpoint M=(2,0,0); Q=(5,1,2) maps to Q′=(1,-3,2) with midpoint M=(3,-1,2). Both midpoints satisfy x+y=2, and PP′=(2,2,0), QQ′=(4,4,0) are parallel to n. At t=-2, (1,1,-2) lies in S and remains fixed.",
+            "understandingFocusDe": "Die Bildrichtung entsteht durch Umkehr des normalen Richtungsanteils; ein Punkt in der Spiegelebene ist ein Fixpunkt.",
+            "understandingFocusEn": "The image direction results from reversing the normal direction component; a point in the mirror plane is fixed."
+          },
+          {
+            "id": "oblique-mirror-parallel-line",
+            "taskDemandDe": "Spiegle unabhängig davon h: X=(2,0,2)+t(1,1,0) an R:x-y+z=1. Bestimme h′, prüfe das Bild des Punkts bei t=1 und erkläre, weshalb die Geradenrichtung erhalten bleibt.",
+            "taskDemandEn": "Independently reflect h: X=(2,0,2)+t(1,1,0) in R:x-y+z=1. Find h′, check the image of the point at t=1, and explain why the line direction is preserved.",
+            "expectedPerformanceDe": "Mit n=(1,-1,1), |n|²=3 und n·(2,0,2)-1=3 wird der Aufpunkt zu (0,2,0). Weil n·(1,1,0)=0, gilt h′:X=(0,2,0)+t(1,1,0). Q=(3,1,2) wird zu Q′=(1,3,0); die Mittelpunkte (1,1,1) und (2,2,1) liegen in R, und die Punktverbindungen sind parallel zu n. h liegt in x-y+z=4, h′ in x-y+z=-2; beide sind echt parallel zu R.",
+            "expectedPerformanceEn": "With n=(1,-1,1), |n|²=3 and n·(2,0,2)-1=3, the anchor maps to (0,2,0). Since n·(1,1,0)=0, h′:X=(0,2,0)+t(1,1,0). Q=(3,1,2) maps to Q′=(1,3,0); midpoints (1,1,1) and (2,2,1) lie in R, and each point connector is parallel to n. h lies in x-y+z=4 and h′ in x-y+z=-2; both are distinct from and parallel to R.",
+            "understandingFocusDe": "Bei einer zur Spiegelebene parallelen Geraden bleibt die Richtung erhalten, obwohl alle Punkte entlang der schiefen Normalen versetzt werden.",
+            "understandingFocusEn": "A line parallel to the mirror keeps its direction although every point is displaced along the oblique normal."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "985d5529-a586-50eb-bd7f-2db2be8906d1",
+      "reason": "Die aktuelle LK-Beschreibung und der hessische Q2.3-Quellaspekt verlangen das Spiegeln von Ebenen in allgemeinen Raumkonfigurationen. Das aktuelle Bild zeigt nur drei parallele Ebenen x=5, x=2 und x=-1. Die neuen Fälle prüfen an einer schiefen Spiegelebene einmal eine sich schneidende Ebene mit gedrehter Bildorientierung und einmal eine echt parallele Ebene; beide Bildgleichungen werden aus mehreren Punktbildern oder einer äquivalenten Koordinatentransformation überprüft.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Der Quellausdruck 'Spiegeln von Punkten, Geraden und Ebenen allgemein' benennt das Spiegelobjekt nicht ausdrücklich. Dieses Profil prüft ausschließlich die Spiegelung einer Ebene an einer Ebene, wie es das aktuelle Zielbild konkretisiert; Punkt- oder Geradenspiegelungen werden daraus nicht abgeleitet."
+      ],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "reflect-plane-in-mirror-plane",
+            "essentialUnderstandingDe": "Das Bild einer Ebene unter einer Spiegelung an einer Ebene besteht aus den Bildern ihrer Punkte und ist wieder eine Ebene. Drei nicht kollineare Bildpunkte oder eine äquivalente transformierte Ebenenbedingung bestimmen sie; bei schneidenden Ebenen bleiben Punkte der Schnittgeraden fest, bei parallelen Ebenen wechseln gleich weit entfernte Punkte die Seite.",
+            "essentialUnderstandingEn": "The image of a plane reflected in a plane consists of its reflected points and is again a plane. Three non-collinear image points or an equivalent transformed plane condition determine it; where the planes intersect, points on the intersection line stay fixed, while parallel planes exchange equal-distance sides.",
+            "observablePerformanceDe": "Die lernende Person ermittelt für eine neue Lagebeziehung die Gleichung der Bildebene aus geeigneten Punktbildern oder einer Koordinatentransformation und prüft an nicht kollinearen Punktbildern Ebenenzugehörigkeit sowie die Lot- und Mittelpunktbedingung; bei einem Schnitt benennt sie einen Fixpunkt oder die feste Schnittgerade.",
+            "observablePerformanceEn": "For a new relative position, the learner derives the image-plane equation from suitable reflected points or a coordinate transformation and checks plane membership of non-collinear images together with perpendicular and midpoint conditions; for an intersection, the learner identifies a fixed point or the fixed intersection line."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reflect-plane-in-mirror-plane"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "intersecting-versus-parallel-planes",
+            "textDe": "Eine die Spiegelebene schneidende Ebene mit veränderter Normalenrichtung wechselt zu einer von der Spiegelebene verschiedenen, zu ihr parallelen Ebene mit gleicher Normalenrichtung bis auf das Vorzeichen; im Schnittfall bleibt die Schnittgerade punktweise fest.",
+            "textEn": "A plane intersecting the mirror and changing normal direction switches to a plane distinct from and parallel to the mirror plane with the same normal direction up to sign; in the intersecting case the intersection line is fixed pointwise."
+          },
+          {
+            "id": "oblique-mirror-condition",
+            "textDe": "Die Spiegelebene wechselt von x+y=2 zu x-y+z=1; die Bildgleichung kann nicht durch bloßes Austauschen einer einzigen Koordinate aus dem aktuellen x=2-Bild abgelesen werden.",
+            "textEn": "The mirror changes from x+y=2 to x-y+z=1; the image equation cannot be read from the current x=2 image by swapping just one coordinate."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "oblique-mirror-intersecting-plane",
+            "taskDemandDe": "Spiegle F:x+z=3 an S:x+y=2. Bestimme F′ aus einer geeigneten Transformation oder drei nicht kollinearen Bildpunkten. Prüfe die Bilder von A=(3,0,0), B=(2,0,1) und C=(3,1,0) und erkläre die feste Schnittgerade.",
+            "taskDemandEn": "Reflect F:x+z=3 in S:x+y=2. Find F′ using a suitable transformation or three non-collinear image points. Check the images of A=(3,0,0), B=(2,0,1), and C=(3,1,0), and explain the fixed intersection line.",
+            "expectedPerformanceDe": "T(x,y,z)=(2-y,2-x,z) liefert F′:z-y=1. A′=(2,-1,0), B′=(2,0,1)=B und C′=(1,-1,0) sind nicht kollinear und erfüllen F′. Ihre Mittelpunkte (5/2,-1/2,0), (2,0,1) und (2,0,0) liegen in S; AA′=(1,1,0), CC′=(2,2,0) sind parallel zu n=(1,1,0). Jeder Punkt von F∩S mit x+y=2 und x+z=3 bleibt fest und erfüllt auch F′.",
+            "expectedPerformanceEn": "T(x,y,z)=(2-y,2-x,z) gives F′:z-y=1. A′=(2,-1,0), B′=(2,0,1)=B, and C′=(1,-1,0) are non-collinear and satisfy F′. Their midpoints (5/2,-1/2,0), (2,0,1), and (2,0,0) lie in S; AA′=(1,1,0) and CC′=(2,2,0) are parallel to n=(1,1,0). Every point of F∩S with x+y=2 and x+z=3 stays fixed and also satisfies F′.",
+            "understandingFocusDe": "Die Spiegelung kann die Orientierung einer Ebene ändern; die Schnittgerade mit dem Spiegel bleibt dabei punktweise fest.",
+            "understandingFocusEn": "Reflection can change a plane's orientation while its intersection line with the mirror remains fixed pointwise."
+          },
+          {
+            "id": "oblique-mirror-parallel-plane",
+            "taskDemandDe": "Spiegle unabhängig davon F:x-y+z=4 an R:x-y+z=1. Bestimme F′ und überprüfe die Bilder von A=(4,0,0), B=(5,1,0) und C=(4,1,1) sowie die Lot- und Mittelpunktbedingung.",
+            "taskDemandEn": "Independently reflect F:x-y+z=4 in R:x-y+z=1. Find F′ and check the images of A=(4,0,0), B=(5,1,0), and C=(4,1,1), together with the perpendicular and midpoint conditions.",
+            "expectedPerformanceDe": "Für n=(1,-1,1) mit |n|²=3 haben alle Punkte von F den Überschuss 3; daher ist X′=X-2n und F′:x-y+z=-2. A′=(2,2,-2), B′=(3,3,-2), C′=(2,3,-1) sind nicht kollinear und erfüllen F′. Die drei Mittelpunkte (3,1,-1), (4,2,-1), (3,2,0) erfüllen x-y+z=1, und jede Verbindungsstrecke ist parallel zu n. F und F′ liegen in gleichem Abstand auf gegenüberliegenden Seiten von R.",
+            "expectedPerformanceEn": "For n=(1,-1,1) with |n|²=3, every point of F has excess 3, so X′=X-2n and F′:x-y+z=-2. A′=(2,2,-2), B′=(3,3,-2), and C′=(2,3,-1) are non-collinear and satisfy F′. The three midpoints (3,1,-1), (4,2,-1), and (3,2,0) satisfy x-y+z=1, and every connector is parallel to n. F and F′ are at equal distance on opposite sides of R.",
+            "understandingFocusDe": "Eine zur Spiegelebene parallele Ebene behält ihre Orientierung und erhält den entgegengesetzten signierten Abstand.",
+            "understandingFocusEn": "A plane parallel to the mirror retains its orientation and takes the opposite signed offset."
+          }
+        ]
+      }
+    }
+  ]
+}

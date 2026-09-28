@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-24T20:36:04.395Z",
+  "generatedAt": "2026-09-28T02:27:10.581Z",
   "generator": "app/scripts/reportGoalSourceRationaleGapIssues.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "allRelevantReportPath": "docs/qa-ci/status/goal-source-rationales-math-all-relevant.json"
   },
   "sourceReport": {
-    "generatedAt": "2026-09-24T18:54:31.917Z",
+    "generatedAt": "2026-09-28T02:23:10.486Z",
     "summary": {
-      "requestedGoals": 797,
-      "resolvedGoals": 797,
-      "goalsWithClassicSourceRoute": 741,
-      "goalsWithoutClassicSourceRoute": 56,
-      "goalsWithMemSparqlConsistentRoute": 227
+      "requestedGoals": 799,
+      "resolvedGoals": 799,
+      "goalsWithClassicSourceRoute": 745,
+      "goalsWithoutClassicSourceRoute": 54,
+      "goalsWithMemSparqlConsistentRoute": 230
     }
   },
   "summary": {
-    "totalClassicSourceGapIssues": 56,
-    "coveredSiblingMappingGaps": 25,
-    "isolatedSourceExpansionGaps": 31,
+    "totalClassicSourceGapIssues": 54,
+    "coveredSiblingMappingGaps": 22,
+    "isolatedSourceExpansionGaps": 32,
     "phases": 5,
     "areas": 3
   },
@@ -27,9 +27,9 @@
     "byPhase": [
       {
         "key": "Q4",
-        "issues": 40,
-        "coveredSiblingMappingGaps": 17,
-        "isolatedSourceExpansionGaps": 23
+        "issues": 39,
+        "coveredSiblingMappingGaps": 15,
+        "isolatedSourceExpansionGaps": 24
       },
       {
         "key": "E",
@@ -39,8 +39,8 @@
       },
       {
         "key": "Q2",
-        "issues": 4,
-        "coveredSiblingMappingGaps": 4,
+        "issues": 3,
+        "coveredSiblingMappingGaps": 3,
         "isolatedSourceExpansionGaps": 0
       },
       {
@@ -60,14 +60,14 @@
       {
         "key": "unknown",
         "issues": 48,
-        "coveredSiblingMappingGaps": 23,
-        "isolatedSourceExpansionGaps": 25
+        "coveredSiblingMappingGaps": 19,
+        "isolatedSourceExpansionGaps": 29
       },
       {
         "key": "Analysis",
-        "issues": 7,
-        "coveredSiblingMappingGaps": 1,
-        "isolatedSourceExpansionGaps": 6
+        "issues": 5,
+        "coveredSiblingMappingGaps": 2,
+        "isolatedSourceExpansionGaps": 3
       },
       {
         "key": "Stochastics",
@@ -79,104 +79,19 @@
     "byLane": [
       {
         "key": "isolated-source-expansion-gap",
-        "issues": 31,
+        "issues": 32,
         "coveredSiblingMappingGaps": 0,
-        "isolatedSourceExpansionGaps": 31
+        "isolatedSourceExpansionGaps": 32
       },
       {
         "key": "covered-sibling-mapping-gap",
-        "issues": 25,
-        "coveredSiblingMappingGaps": 25,
+        "issues": 22,
+        "coveredSiblingMappingGaps": 22,
         "isolatedSourceExpansionGaps": 0
       }
     ]
   },
   "issues": [
-    {
-      "id": "GSR-GAP-7D37513B",
-      "lane": "covered-sibling-mapping-gap",
-      "goalId": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
-      "shortKey": null,
-      "title": "Transformationsargumente für Flächen und Volumina nutzen (LK)",
-      "description": "Die lernende Person kann vektorielle Transformationsargumente auf räumliche Konfigurationen anwenden und daraus Folgerungen für Flächen- oder Volumenberechnungen begründet ableiten.",
-      "phase": "Q2",
-      "area": "unknown",
-      "topicCode": null,
-      "pathTitles": [
-        "Mathematik",
-        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
-        "Raum, Matrizen und lineare Modelle (Sek II)",
-        "Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum",
-        "Transformationsargumente für Flächen und Volumina nutzen (LK)"
-      ],
-      "parentGoalIds": [
-        "1a84cea4-d2a2-4527-b914-1a03e56e0814"
-      ],
-      "parentTitles": [
-        "Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum"
-      ],
-      "siblingGoals": 16,
-      "coveredSiblingGoals": 16,
-      "gapSiblingGoals": 0,
-      "coveredSiblingExamples": [
-        {
-          "goalId": "7bb3c312-f714-55e6-a31f-f31605a93760",
-          "title": "Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK)",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-BW",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
-          "sourceGoalId": "bw-math-sekii-bp2016-3-4-2-06",
-          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.2, Kompetenz 6, S. 40.",
-          "topicCode": null,
-          "matchType": "exact"
-        },
-        {
-          "goalId": "d8e56cfc-a58d-5529-ab9f-e5187e31dd34",
-          "title": "Flächeninhalte in räumlichen Sachzusammenhängen berechnen",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-BW",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
-          "sourceGoalId": "bw-math-sekii-bp2016-3-4-3-07c-flaecheninhalte-im-raum",
-          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.3, Kompetenz 7, S. 41.",
-          "topicCode": null,
-          "matchType": "exact"
-        },
-        {
-          "goalId": "c2c49659-5917-5be5-a3bd-e46f1b17126f",
-          "title": "Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-HE",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
-          "sourceGoalId": "he-math-sekii-q2-3-b13-a03-17099889",
-          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 13, Aspekt 3",
-          "topicCode": null,
-          "matchType": "exact"
-        },
-        {
-          "goalId": "54541d08-61cc-5a6d-b6d9-d0270a7d1949",
-          "title": "Vektorprodukt definieren (LK)",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-SH",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
-          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l1-algorithmus-und-zahl-T037-3a50eff6a6",
-          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 62",
-          "topicCode": "SH-SEKII-L1-ALGORITHMUS-UND-ZAHL-T037",
-          "matchType": "exact"
-        },
-        {
-          "goalId": "fac75b4a-4ec2-5d38-bbce-9b002c8a4904",
-          "title": "Abstandsverfahren im Raum auswählen und anwenden",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-HE",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
-          "sourceGoalId": "he-math-sekii-q2-3-b13-a03-17099889",
-          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 13, Aspekt 3",
-          "topicCode": "Q2.3",
-          "matchType": null
-        }
-      ],
-      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
-    },
     {
       "id": "GSR-GAP-3AEA4D33",
       "lane": "covered-sibling-mapping-gap",
@@ -212,7 +127,7 @@
           "jurisdiction": "DE-HE",
           "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
           "sourceGoalId": "he-math-sekii-q2-3-b13-a02-b3fca74f",
-          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 13, Aspekt 2",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 43, Spiegelstrich 13, Aspekt 2",
           "topicCode": null,
           "matchType": "exact"
         }
@@ -1113,7 +1028,7 @@
           "jurisdiction": "DE-HE",
           "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
           "sourceGoalId": "he-math-sekii-q4-2-b15-a02-c00e0db5",
-          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 15, Aspekt 2",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 52, Spiegelstrich 15, Aspekt 2",
           "topicCode": null,
           "matchType": "exact"
         },
@@ -1135,7 +1050,7 @@
           "jurisdiction": "DE-HE",
           "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
           "sourceGoalId": "he-math-sekii-q4-2-b13-a02-fd18df25",
-          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 13, Aspekt 2",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 52, Spiegelstrich 13, Aspekt 2",
           "topicCode": null,
           "matchType": "exact"
         }
@@ -1608,8 +1523,38 @@
       "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
     },
     {
+      "id": "GSR-GAP-07196E72",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "07196e72-ba47-54bf-a096-3a79bbb67e23",
+      "shortKey": null,
+      "title": "Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren",
+      "description": "Die lernende Person kann Beziehungen zwischen Größen als Gleichungen, Funktionen oder Ungleichungen formulieren und die Modellwahl begründen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Mathematische Modelle bilden",
+        "Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren"
+      ],
+      "parentGoalIds": [
+        "13f3bfd7-0363-5904-8f84-6b157f2f7210"
+      ],
+      "parentTitles": [
+        "Mathematische Modelle bilden"
+      ],
+      "siblingGoals": 3,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 3,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
       "id": "GSR-GAP-5C4B5AB1",
-      "lane": "covered-sibling-mapping-gap",
+      "lane": "isolated-source-expansion-gap",
       "goalId": "5c4b5ab1-aac9-5762-9ffc-94d047ba3cb6",
       "shortKey": null,
       "title": "Modell vollständig notieren",
@@ -1632,26 +1577,14 @@
         "Mathematische Modelle bilden"
       ],
       "siblingGoals": 3,
-      "coveredSiblingGoals": 1,
-      "gapSiblingGoals": 2,
-      "coveredSiblingExamples": [
-        {
-          "goalId": "07196e72-ba47-54bf-a096-3a79bbb67e23",
-          "title": "Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-HE",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
-          "sourceGoalId": "he-math-seki-g9-9-1-03-6c2d7b55",
-          "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 9.1 Algebra",
-          "topicCode": null,
-          "matchType": "exact"
-        }
-      ],
-      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 3,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
     },
     {
       "id": "GSR-GAP-C3CAD3F5",
-      "lane": "covered-sibling-mapping-gap",
+      "lane": "isolated-source-expansion-gap",
       "goalId": "c3cad3f5-f0e2-5caa-906a-f25d3044f7b1",
       "shortKey": null,
       "title": "Rand- und Anfangsbedingungen festlegen",
@@ -1674,26 +1607,14 @@
         "Mathematische Modelle bilden"
       ],
       "siblingGoals": 3,
-      "coveredSiblingGoals": 1,
-      "gapSiblingGoals": 2,
-      "coveredSiblingExamples": [
-        {
-          "goalId": "07196e72-ba47-54bf-a096-3a79bbb67e23",
-          "title": "Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-HE",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
-          "sourceGoalId": "he-math-seki-g9-9-1-03-6c2d7b55",
-          "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 9.1 Algebra",
-          "topicCode": null,
-          "matchType": "exact"
-        }
-      ],
-      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 3,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
     },
     {
       "id": "GSR-GAP-670286AA",
-      "lane": "covered-sibling-mapping-gap",
+      "lane": "isolated-source-expansion-gap",
       "goalId": "670286aa-c29d-560c-8fca-755e35f5d437",
       "shortKey": null,
       "title": "Variablen und Parameter definieren",
@@ -1716,22 +1637,10 @@
         "Mathematische Modelle bilden"
       ],
       "siblingGoals": 3,
-      "coveredSiblingGoals": 1,
-      "gapSiblingGoals": 2,
-      "coveredSiblingExamples": [
-        {
-          "goalId": "07196e72-ba47-54bf-a096-3a79bbb67e23",
-          "title": "Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-HE",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
-          "sourceGoalId": "he-math-seki-g9-9-1-03-6c2d7b55",
-          "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 9.1 Algebra",
-          "topicCode": null,
-          "matchType": "exact"
-        }
-      ],
-      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 3,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
     },
     {
       "id": "GSR-GAP-74F28CE7",
@@ -2182,41 +2091,11 @@
       "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
     },
     {
-      "id": "GSR-GAP-71FE4A39",
-      "lane": "isolated-source-expansion-gap",
-      "goalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
-      "shortKey": "canonical_math_sek2_q4_diff_integral_methods_context_validate_by_model_validation",
-      "title": "Analysis-Modelle in Sachzusammenhängen validieren (LK)",
-      "description": "Die lernende Person kann Modellannahmen und Resultate in Sachzusammenhängen der Differential- und Integralrechnung fachlich prüfen und Grenzen des Modells benennen.",
-      "phase": "Q4",
-      "area": "Analysis",
-      "topicCode": "CANONICAL.MATH.SEK2.Q4.DIFF_INTEGRAL_CONTEXT_VALIDATE_BY.MODEL_VALIDATION",
-      "pathTitles": [
-        "Mathematik",
-        "Integralrechnung und Differenzialgleichungen",
-        "Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II)",
-        "Anwendungen der Integralrechnung",
-        "Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK)",
-        "Analysis-Modelle in Sachzusammenhängen validieren (LK)"
-      ],
-      "parentGoalIds": [
-        "ead1f5ce-fdf4-5591-8982-395001017848"
-      ],
-      "parentTitles": [
-        "Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK)"
-      ],
-      "siblingGoals": 2,
-      "coveredSiblingGoals": 0,
-      "gapSiblingGoals": 2,
-      "coveredSiblingExamples": [],
-      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
-    },
-    {
       "id": "GSR-GAP-DC12F281",
-      "lane": "isolated-source-expansion-gap",
+      "lane": "covered-sibling-mapping-gap",
       "goalId": "dc12f281-f161-572b-a973-8405ae9b2498",
       "shortKey": "canonical_math_sek2_q4_diff_integral_methods_context_validate_by_differential_context",
-      "title": "Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK)",
+      "title": "Differentialrechnung in Sachzusammenhängen auswählen und anwenden",
       "description": "Die lernende Person kann in Sachzusammenhängen geeignete Methoden der Differentialrechnung auswählen, anwenden und die Ergebnisse im Kontext interpretieren.",
       "phase": "Q4",
       "area": "Analysis",
@@ -2226,50 +2105,43 @@
         "Integralrechnung und Differenzialgleichungen",
         "Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II)",
         "Anwendungen der Integralrechnung",
-        "Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK)",
-        "Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK)"
+        "Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden",
+        "Differentialrechnung in Sachzusammenhängen auswählen und anwenden"
       ],
       "parentGoalIds": [
         "ead1f5ce-fdf4-5591-8982-395001017848"
       ],
       "parentTitles": [
-        "Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK)"
+        "Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden"
       ],
       "siblingGoals": 2,
-      "coveredSiblingGoals": 0,
-      "gapSiblingGoals": 2,
-      "coveredSiblingExamples": [],
-      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
-    },
-    {
-      "id": "GSR-GAP-0B162CB0",
-      "lane": "isolated-source-expansion-gap",
-      "goalId": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
-      "shortKey": "canonical_math_sek2_q4_diff_integral_methods_context_validate_by_integral_context",
-      "title": "Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK)",
-      "description": "Die lernende Person kann in Sachzusammenhängen geeignete Methoden der Integralrechnung auswählen, anwenden und die Ergebnisse im Kontext interpretieren.",
-      "phase": "Q4",
-      "area": "Analysis",
-      "topicCode": "CANONICAL.MATH.SEK2.Q4.DIFF_INTEGRAL_CONTEXT_VALIDATE_BY.INTEGRAL_CONTEXT",
-      "pathTitles": [
-        "Mathematik",
-        "Integralrechnung und Differenzialgleichungen",
-        "Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II)",
-        "Anwendungen der Integralrechnung",
-        "Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK)",
-        "Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK)"
+      "coveredSiblingGoals": 2,
+      "gapSiblingGoals": 0,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+          "title": "Integralrechnung in Sachzusammenhängen auswählen und anwenden",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BY",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "sourceGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
+          "topicCode": "M13.4",
+          "matchType": "exact"
+        },
+        {
+          "goalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+          "title": "Analysis-Modelle in Sachzusammenhängen validieren",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BY",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "sourceGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
+          "topicCode": "M13.4",
+          "matchType": "exact"
+        }
       ],
-      "parentGoalIds": [
-        "ead1f5ce-fdf4-5591-8982-395001017848"
-      ],
-      "parentTitles": [
-        "Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK)"
-      ],
-      "siblingGoals": 2,
-      "coveredSiblingGoals": 0,
-      "gapSiblingGoals": 2,
-      "coveredSiblingExamples": [],
-      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
     },
     {
       "id": "GSR-GAP-6C26A00A",
@@ -2455,7 +2327,7 @@
         },
         {
           "goalId": "b431148b-526c-4bde-b04b-48d23101d0d3",
-          "title": "Annähernd normalverteilte Zufallsgrößen in Situationen erkennen (LK)",
+          "title": "Annähernd normalverteilte Zufallsgrößen in Situationen erkennen",
           "sourceRationaleStatus": "classic_source_reviewed",
           "jurisdiction": "DE-BY",
           "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:09c1c311b8459bfb76e9b391ddb99d78dab85422bbfa92b168f7b0bc21ebeb4a",
+  "reviewInputFingerprint": "sha256:a63f2b778b543bd2c5139c8c6c26298acbfdb19dfe86a01cbe734d08daa1a162",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-two-imagegen-current-20260927-v1-a",
+      "roundId": "mathematik-m7-two-imagegen-current-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-two-imagegen-current-20260927-v1-independent-a",
+      "runIds": [
+        "math-m7-two-imagegen-a-20260927-run-1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex active model::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-two-imagegen-current-20260927-v1-b",
+      "roundId": "mathematik-m7-two-imagegen-current-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-two-imagegen-current-20260927-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-two-imagegen-current-20260927-v1-first-pass-b.batch-001.codex-independent-b"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::Codex; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+      "firstRecordId": "math-m7-two-imagegen-a-4f64-20260927",
+      "secondRecordId": "mathematik-m7-two-imagegen-current-20260927-v1-first-pass-b.batch-001.codex-independent-b.001",
+      "firstRunId": "math-m7-two-imagegen-a-20260927-run-1",
+      "secondRunId": "mathematik-m7-two-imagegen-current-20260927-v1-first-pass-b.batch-001.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+      "firstRecordId": "math-m7-two-imagegen-a-a7fb-20260927",
+      "secondRecordId": "mathematik-m7-two-imagegen-current-20260927-v1-first-pass-b.batch-001.codex-independent-b.002",
+      "firstRunId": "math-m7-two-imagegen-a-20260927-run-1",
+      "secondRunId": "mathematik-m7-two-imagegen-current-20260927-v1-first-pass-b.batch-001.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

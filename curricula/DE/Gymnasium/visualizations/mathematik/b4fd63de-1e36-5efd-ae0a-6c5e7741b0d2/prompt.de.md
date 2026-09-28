@@ -8,46 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / Codex built-in image generation (reference-conditioned)
 - Status: pilot
-- Quellbild: `b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2/b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2.jpg`
+- Quellbild: `b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2/b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Symmetrien einfacher Körper untersuchen
-Beschreibung: Die lernende Person kann Symmetrieachsen und Symmetrieebenen einfacher geometrischer Körper bestimmen und fachsprachlich beschreiben.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Symmetrien einfacher Koerper untersuchen.
-- Verwende einen geraden Kreiszylinder als einfachen Koerper.
-- Zeige und beschrifte:
-  1. Drehachse: die senkrechte Mittelachse durch die Mittelpunkte von Deckkreis und Grundkreis.
-  2. Vertikale Symmetrieebenen: jede Ebene durch die Drehachse spiegelt den Zylinder auf sich selbst; zeige zwei Beispiele als halbtransparente Ebenen.
-  3. Horizontale Symmetrieebene: die Ebene in halber Hoehe parallel zu Grund- und Deckflaeche.
-- Kurzer Merksatz:
-  Beim geraden Kreiszylinder fuehren Achse und Symmetrieebenen durch die Mitte.
-- Zeige den Koerper eindeutig als geraden Zylinder, nicht als schiefen Zylinder.
-
-Vermeiden:
-- Nicht nur eine dekorative Achse ohne Bezug zu den Kreismittelpunkten zeigen.
-- Nicht behaupten, es gebe genau zwei vertikale Symmetrieebenen; es gibt unendlich viele, zwei Beispiele genuegen.
-- Nicht eine horizontale Ebene ausserhalb der Mitte als Symmetrieebene markieren.
-- Nicht Kegel oder Prisma statt Zylinder verwenden.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Produce a friendly 16:9 German educational comic illustration based on the attached EXACT geometry reference. The reference is mathematically precise: it contains ONE cube, ONE translucent blue vertical symmetry plane bisecting the cube through its middle, and ONE orange dashed vertical symmetry axis going through the exact centers of top and bottom cube faces. Preserve their positions and relationships; style only with warm cream paper, rounded ink contours, watercolor touches and very clear labels. The plane is the quadrilateral shown in blue, not a front cube face and not a second cube. The dashed axis is the single x=520 line in the reference; do not add any other dotted line or axis. A single orange curved rotation arrow shows a 90° turn around that axis. Text exactly 'Symmetrieebene', 'Symmetrieachse', '90° Drehung' in large error-free letters. The graphic must still read clearly at 360 px. Do not add any extra text or a second vertical axis.
 ```
 
 ## Review-Notiz

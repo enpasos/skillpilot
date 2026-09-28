@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024">
+  <rect width="1536" height="1024" fill="white"/>
+  <text x="60" y="90" font-family="sans-serif" font-size="46" font-weight="bold">Geometrie-Referenz: acht exakte Ecken</text>
+  <text x="60" y="145" font-family="sans-serif" font-size="25">Nur die linke Geometrie übernehmen; rechts später große Formelkarten.</text>
+  <!-- O=(430,680); a=(250,70), b=(-250,80), c=(0,-380).
+       A=(680,750), B=(180,760), C=(430,300), A+B=(430,830),
+       A+C=(680,370), B+C=(180,380), A+B+C=(430,450). -->
+  <g fill="#f9dc69" fill-opacity="0.26" stroke="none">
+    <path d="M430 680 L680 750 L430 830 L180 760 Z"/>
+    <path d="M430 300 L680 370 L430 450 L180 380 Z"/>
+    <path d="M680 750 L430 830 L430 450 L680 370 Z"/>
+    <path d="M180 760 L430 830 L430 450 L180 380 Z"/>
+  </g>
+  <g stroke="#666" stroke-width="5" fill="none" opacity="0.78" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M430 680 L680 750 M180 760 L430 830 M430 300 L680 370 M180 380 L430 450"/>
+    <path d="M430 680 L180 760 M680 750 L430 830 M430 300 L180 380 M680 370 L430 450"/>
+    <path d="M430 680 L430 300 M680 750 L680 370 M180 760 L180 380 M430 830 L430 450"/>
+  </g>
+  <defs>
+    <marker id="red" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L12 6 L0 12 Z" fill="#d73539"/></marker>
+    <marker id="green" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L12 6 L0 12 Z" fill="#188046"/></marker>
+    <marker id="blue" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L12 6 L0 12 Z" fill="#1975d2"/></marker>
+  </defs>
+  <g stroke-width="12" fill="none" stroke-linecap="round">
+    <path d="M430 680 L680 750" stroke="#d73539" marker-end="url(#red)"/>
+    <path d="M430 680 L180 760" stroke="#188046" marker-end="url(#green)"/>
+    <path d="M430 680 L430 300" stroke="#1975d2" marker-end="url(#blue)"/>
+  </g>
+  <circle cx="430" cy="680" r="14" fill="#111"/>
+  <g font-family="sans-serif" font-size="35" font-weight="bold">
+    <text x="450" y="680" fill="#111">O</text>
+    <text x="585" y="845" fill="#b51e29">a=(2,0,0) / x</text>
+    <text x="33" y="843" fill="#12683b">b=(0,3,0) / y</text>
+    <text x="448" y="280" fill="#1556a0">c=(0,0,4) / z</text>
+  </g>
+</svg>

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-first-pass-b.run-001",
+  "campaignId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-b",
+  "roundId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-first-pass-b",
+  "batchId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:eadb529ca051488b28972e3b3d2629685bb12e6a42b426f0026e007bbb78edc1",
+  "bundleFingerprint": "sha256:1c175cc14dd02a2d1c796f15faaf284463e3805da43839fce724602a3a614e96",
+  "bookDigest": "sha256:68ee96e62750a4e020d3f6930ef42a1ba97227bb1cbcbe97e83320e0ffcac327",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:25e0194ecbf9c9ac798231e143e310b92a6bee7ef046e5b9e380f5fee8bec083",
+  "independenceGroupId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+    "27bdc580-ba17-5399-bf02-48f354846d1d",
+    "18be713b-7d90-4f01-b60a-5582ac4df0e8"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:eadb529ca051488b28972e3b3d2629685bb12e6a42b426f0026e007bbb78edc1"
+    }
+  ],
+  "startedAt": "2026-09-27T15:51:31Z",
+  "completedAt": "2026-09-27T15:53:24Z",
+  "status": "completed",
+  "outputDigest": "sha256:1b67717c83e62145c9830f34ab748b5d065cfd19430101db86a7d00df3d28619",
+  "toolchainVersion": "codex-interactive-v1"
+}

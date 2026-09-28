@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-newton-revised-current-keep-20260927-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-27T10:31:58.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-newton-revised-current-20260927-v1",
+    "batchManifestDigest": "sha256:63cdab367827b7d8866df0144f999e7f6e8a0990b5ad496f9c93546e802775a5",
+    "configDigest": "sha256:71c42d977f2d08419b240704c9e1e29aaea2245a370d26bbc9a8c097bdc7e2f6",
+    "bundleFingerprint": "sha256:eae337c512b077985321708013e78707d439a6898dbdb2122937f0a88bf849d1",
+    "bookDigest": "sha256:a1c22e5d06fcaf27cdaf40feecd68740078bc0b074988cf9502b579e1fb207f5",
+    "reviewInputFingerprint": "sha256:2efc984bb81fd7643d86abadb45264fdc17dbb413ce694b64d09d22ecac7b6d3",
+    "dualSummaryDigest": "sha256:feea8290769f44995c55831254c859a6edf3e5be8c021bc9a3fcec9b53d030b7",
+    "canonicalLandscapeDigest": "sha256:063c38499760dca707cd566bc5f0c49d24e6640da20f8f1462a115dec06eb347"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-newton-revised-current-20260927-v1-a",
+      "campaignDigest": "sha256:f60a5755b52f818644b4e969c45fee6cff32f993a167bc4f823dff271cb8928e",
+      "roundId": "mathematik-m7-newton-revised-current-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-newton-revised-current-20260927-v1-independent-a",
+      "reviewInputFingerprint": "sha256:2efc984bb81fd7643d86abadb45264fdc17dbb413ce694b64d09d22ecac7b6d3",
+      "batchId": "mathematik-m7-newton-revised-current-20260927-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:29539960e0f47795499e3b72085a6dec6a175b053c5bf25ac820207fb7139178",
+      "runId": "mathematik-m7-newton-revised-current-20260927-v1-first-pass-a-batch-001-run-1",
+      "runManifestDigest": "sha256:5e1be3ff117f46772a19952cb7b4b44ed347f063e1380496134ec41a737254b4",
+      "resultsDigest": "sha256:f2de148294fa5a343819d3eec9a78e753241f8c9453298f66dc10a077c30bd08"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-newton-revised-current-20260927-v1-b",
+      "campaignDigest": "sha256:3298a81972188a9b3e5732ff8ef12209a4c7cd903092bba722cf9bf2f62ba435",
+      "roundId": "mathematik-m7-newton-revised-current-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-newton-revised-current-20260927-v1-independent-b",
+      "reviewInputFingerprint": "sha256:2efc984bb81fd7643d86abadb45264fdc17dbb413ce694b64d09d22ecac7b6d3",
+      "batchId": "mathematik-m7-newton-revised-current-20260927-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:3fcc247dab62e01fdc42278514d7aa7c9455da0458607f25c3d28d479f6acee0",
+      "runId": "mathematik-m7-newton-revised-current-20260927-v1-round-b-codex-20260927",
+      "runManifestDigest": "sha256:e2966566dea06f833a1f350eb754ce97f9ddbabce56d116b9cb45734d93c636b",
+      "resultsDigest": "sha256:38a0739db10bbaade2f0ab7e44843f545ffd92d97d4ff006c64e3b00a765b307"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-newton-revised-current-keep-20260927-v1-decision-001",
+      "goalId": "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:894a823e8f36ccafe063f2d1bd2ea9f24bd0ccf0ab03339d704956eb7e5371c8",
+      "pageFingerprint": "sha256:d63686134c82722112cf268098e8f4d6d20d013aaf594a980132bee9b87926fe",
+      "goalReviewContextFingerprint": "sha256:e239010a830ddb9af3685c963526f235d9ad966cb8a644bff0d057d83165c648",
+      "finalText": {
+        "titleDe": "Newton-Verfahren zur Nullstellennäherung anwenden",
+        "titleEn": "Apply Newton's method for root approximation",
+        "descriptionDe": "Die lernende Person kann beim Newton-Verfahren die Nullstelle der Tangente im aktuellen Graphpunkt als nächsten Näherungswert bestimmen, die Iteration bei geeigneten Funktionen und Startwerten anwenden und Grenzen anhand von Ableitung und Näherungsverlauf begründen.",
+        "descriptionEn": "The learner can determine the root of the tangent at the current point on the graph as the next approximation in Newton's method, iterate for suitable functions and starting values, and explain limitations using the derivative and the course of the approximations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-newton-revised-current-20260927-v1-first-pass-a-0c7bbd3f",
+          "recordDigest": "sha256:5b6968f81974f370f69558aed3a9a09c7e2e680ff5e12ffc3bea5055d76f1ea1"
+        },
+        "second": {
+          "recordId": "mathematik-m7-newton-revised-current-20260927-v1-b-0c7bbd3f",
+          "recordDigest": "sha256:6e8161854874f29283cda4c74ca521159c53e43d387ed2731e675d93dfb67aa7"
+        }
+      },
+      "rationaleDe": "Zwei unabhängige Runden halten den neu gebundenen deutschen und englischen Zieltext. Beide erkennen den Tangentenschnitt als Newton-Schritt und die Grenze fehlender Konvergenz trotz definierter Schritte; ihre unterschiedlichen freien Begründungen und Verständnisprofile widersprechen dem KEEP-Urteil nicht. Das unveränderte PNG zeigt die Annäherung an die positive Nullstelle von x²−2, und der korrigierte Alttext behauptet nicht mehr, es gebe keine negative Nullstelle. Das separat registrierte aktuelle E1/G1-P-v2-Profil prüft einen regulären Ablauf, den undefinierten Schritt bei f′=0 und einen Zweierzyklus; weil es nicht im D-Bundle eingebettet ist, ist die formale Profilempfehlung 'create' keine Aussage über das separate P-Gate. Weder KI-Review noch Visualisierung sind menschliche Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Two independent rounds keep the newly bound German and English goal wording. Both identify the tangent intercept as the Newton step and the possibility of non-convergence despite defined steps; differences in their free-form rationales and understanding profiles do not contradict their KEEP decisions. The unchanged PNG depicts approximation to the positive root of x²−2, and the corrected alt text no longer claims that there is no negative root. The separately registered current E1/G1 P-v2 profile tests a regular sequence, an undefined step when f′=0 and a two-cycle; because it is not embedded in the D bundle, the formal 'create' recommendation does not negate the separate P gate. Neither AI review nor visualization is observed learner performance or human approval."
+    }
+  ],
+  "manifestFingerprint": "sha256:0629b913750d953ae545ebd6438b79b60c9c65f59c4b261b4f4c66d2b0b66e48"
+}

@@ -503,6 +503,8 @@ const hesseMathLkView = JSON.parse(
   readFileSync('../curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json', 'utf8'),
 )
 const canonicalMathPrismGoalId = '59d5a330-61be-4590-ab46-cf7cefecd144'
+const canonicalMathPrismVolumeGoalId = '68fb0e78-34f2-5572-8db6-e7f5ebcff70f'
+const canonicalMathPrismSurfaceGoalId = 'f1348d40-3872-5e44-8892-3600c811796f'
 const canonicalMathJ8GoalId = 'd64516eb-9dd2-4808-91d0-0040ccdc281f'
 const canonicalMathJ8AxisInterceptGoalId = '0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43'
 
@@ -561,6 +563,25 @@ assert.ok(
   !visiblePrismPathTitles.some((title) => title.startsWith('Jahrgangsstufe 5')),
   'The supplemental route-goal path must not leak the later mathematics prism goal into J5.',
 )
+
+assert.equal(
+  mathGoalById.get(canonicalMathPrismGoalId)?.type,
+  'cluster',
+  'The historical combined prism ID must remain a non-atomic topic cluster.',
+)
+assert.deepEqual(
+  mathGoalById.get(canonicalMathPrismGoalId)?.contains,
+  [canonicalMathPrismVolumeGoalId, canonicalMathPrismSurfaceGoalId],
+  'The historical prism cluster must contain the two independent competencies exactly once.',
+)
+for (const prismChildId of [canonicalMathPrismVolumeGoalId, canonicalMathPrismSurfaceGoalId]) {
+  const childPath = findVisiblePath(prismChildId, mathRootGoal!.id)
+  assert.ok(childPath, 'Both independent prism competencies must remain reachable after the legacy atomic goal becomes a cluster.')
+  assert.ok(
+    childPath!.includes(canonicalMathPrismGoalId),
+    'Prism volume and surface-area goals must remain under the historical prism path.',
+  )
+}
 
 const genericVisibleJ8StructureId = 'composition:de-de-gym-seki-math:structure:j8'
 const genericJ8FractionsStructureId = 'composition:de-de-gym-seki-math:structure:j8-fractions'

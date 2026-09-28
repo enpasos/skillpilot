@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-newton-parallel-two-png-20260927-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-newton-parallel-two-png-20260927-v1.config.json",
+  "configDigest": "sha256:d42c8cd8bb8a677635fc508ff489c8a1099f502e5b95b624f45713243b8793c4",
+  "goalIds": [
+    "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+    "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:d8a178889e5099c329118b56f4297c828dbccd996d17f2edf83e872d2671cd02"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:837b71ede8085e78680a608edfe235fd612fadad5e72964b73e2c6896e844e97",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:668e849b4cbe070ac802604fbfa81e3f29198552b872e39d3be011b4c84323f5",
+    "reviewInputFingerprint": "sha256:a4a8bda49716cd0ec9c66f02f7da4bbd9cd84dfd24eaea4cbced1f20e0317e24",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-newton-parallel-two-png-20260927-v1-a",
+        "campaignDigest": "sha256:787e5e78de1d56d70aa2be35a5aba00ebb871c51d60060def8f399fedc558ca2",
+        "roundId": "mathematik-m7-newton-parallel-two-png-20260927-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-newton-parallel-two-png-20260927-v1-independent-a",
+        "batchId": "mathematik-m7-newton-parallel-two-png-20260927-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:49b16fd611ede158d0c863ab0b7e53f09678c0a09f0941bed1c565d8b2b36f35"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-newton-parallel-two-png-20260927-v1-b",
+        "campaignDigest": "sha256:468f78e5f0d0ba9b9e0ebeae8a244136355e80cee8b33d0e4af1a929e4fcfee0",
+        "roundId": "mathematik-m7-newton-parallel-two-png-20260927-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-newton-parallel-two-png-20260927-v1-independent-b",
+        "batchId": "mathematik-m7-newton-parallel-two-png-20260927-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:ebbd089f72959ac62b6c657bfb812dd1535a8670a28589c39a08cd09ab240c63"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

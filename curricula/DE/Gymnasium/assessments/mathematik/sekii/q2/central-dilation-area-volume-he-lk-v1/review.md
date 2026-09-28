@@ -1,0 +1,10 @@
+# Fachprüfung der Q2.5-LK-Aufgabe zur zentrischen Streckung
+
+Stand: 2026-09-28. Diese Freigabe betrifft **nur die Aufgabe**, nicht die M7-Qualität des zugehörigen Lernziels und nicht eine menschliche Erprobung. Der Entwurf wurde unabhängig durch einen zweiten KI-Agenten auf Rechnung, DE/EN-Gleichwertigkeit, Aufgabenklarheit und Bestehenslogik geprüft. Die dabei gefundenen Mängel wurden vor der Freigabe korrigiert.
+
+- Die Grundfläche ist eindeutig das von `OA` und `OB` aufgespannte Rechteck in der `xy`-Ebene; die Längen sind in Zentimetern angegeben.
+- Für `k=2/3` sind die Bildkanten `2`, `4`, `6` cm. Die Grundfläche ändert sich von `18` auf `8` cm², also mit `4/9 = k²`. Das Volumen ändert sich von `162` auf `48` cm³, also mit `8/27 = k³`. Die allgemeine Herleitung verwendet das Produkt von zwei bzw. drei mit `k` skalierten Kanten und gilt für jedes `k>0`.
+- Die 12 Bewertungseinheiten verteilen sich auf `1 + 4 + 1 + 4 + 1 + 1`. Bestanden wird ab 10. Pro vierpunktigem Begründungsblock ist ohne Herleitung des jeweiligen Gesetzes aus dem Kantenprodukt höchstens ein Punkt möglich. Wird in einem der Blöcke weniger als zwei Punkte erreicht, sind insgesamt höchstens neun Punkte möglich. Ein Bestehen setzt damit beide begründeten Skalierungsgesetze voraus; bloße Formelreproduktion genügt nicht.
+- Der kanonische Prüfungsknoten verlangt ausschließlich Lernziel `7d37513b-fa1a-54cc-9e2a-9279a381f0f0` und deckt ausschließlich dieses Ziel ab. Er ist direkter Endpunkt unter „Übungen Q2“ und in den Länderansichten nur in HE-LK Ziel, nicht in HE-GK oder einem anderen Bundesland. Die nationale LK-Ansicht bleibt eine aggregierte Länderansicht.
+
+Grenze: Das Backend erzwingt die Gesamtpunktgrenze, aber keine maschinenlesbare Mindestpunktzahl je Rubrikschritt. Die Obergrenze von einem Punkt ohne echte Herleitung ist deshalb eine verbindliche Bewertungsanweisung an die prüfende Instanz; die Freigabe behauptet keine technische Teilkriterien-Sperre und keine unabhängige menschliche Begutachtung.

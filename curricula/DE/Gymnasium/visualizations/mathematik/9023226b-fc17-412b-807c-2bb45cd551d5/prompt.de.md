@@ -8,40 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / Codex built-in image generation (edit)
 - Status: pilot
-- Quellbild: `9023226b-fc17-412b-807c-2bb45cd551d5.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/9023226b-fc17-412b-807c-2bb45cd551d5/9023226b-fc17-412b-807c-2bb45cd551d5.jpg`
+- Quellbild: `9023226b-fc17-412b-807c-2bb45cd551d5.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/9023226b-fc17-412b-807c-2bb45cd551d5/9023226b-fc17-412b-807c-2bb45cd551d5.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Quadratische Gleichungen lösen
-Beschreibung: Die lernende Person kann quadratische Gleichungen grafisch, durch quadratische Ergänzung oder mit einer Lösungsformel bearbeiten und Sachprobleme darauf zurückführen.
-
-Zusatzanweisung:
-Korrigiere im vorhandenen Bild nur den widersprüchlichen Untertitel.
-
-Pflichtinhalt:
-- Ersetze „Drei passende Lösungswege“ exakt durch „Vier passende Lösungswege“.
-- Erhalte die vier sichtbaren Bereiche: grafisch lösen, quadratische Ergänzung, Lösungsformel und Sachprobleme zurückführen.
-- Erhalte alle korrekten Formeln, Nullstellen, Zeichnungen und Beispiele unverändert.
-
-Vermeiden:
-- Kein Untertitel mit der Zahl drei.
-- Keine Änderung der vier Methoden oder ihrer Rechnungen.
-- Keine technischen Metadaten, Logos oder Wasserzeichen.
+Edit the supplied existing bitmap, preserving the friendly comic style, wide aspect ratio, color-block geometry, exact area labels x², 2x, 2x, 4, and the equations x²+4x+4=(x+2)² and (x+2)²=0 ⇒ x=−2. Preserve the heading "Seitenlänge x+2" and all proportions. The ONLY change is the small caveat under the equations on the right. Replace it with the short, large, bold, two-line German label: "Im Bild: x ≥ 0" on line one, "Algebraisch: x = −2" on line two. Make these two lines as large and readable at 360-pixel overall image width as the main equation labels; use the spare cream-colored right-side area. No other math, text, or drawing changes, no added decoration, no duplicate caveat, no logo. Final image must be a PNG bitmap.
 ```
 
 ## Review-Notiz

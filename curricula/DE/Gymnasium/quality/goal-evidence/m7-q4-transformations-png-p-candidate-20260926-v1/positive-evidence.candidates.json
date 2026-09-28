@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-q4-transformations-png-p-candidate-20260926-v1",
+  "reviewedAt": "2026-09-26T11:18:50.000Z",
+  "reviewer": "Codex focused mathematics P-v2 authoring; AI candidate only",
+  "goals": [
+    {
+      "goalId": "e33e75e3-eae5-5a09-862f-d1a11176373f",
+      "reason": "The current canonical DE/EN goal and HMKB KCGO Mathematik Q4.1, p. 51, bullet 3 restrict the family parameter to a pure stretch/compression or shift of a further known function class. The current PNG (sha256:3a203619107a9ea6eeb5ba9425ea6330fc6b6d5bf5667f0cd517089dc4c903c4) depicts two mathematically consistent parabola examples; it is teaching context, not evidence of mastery. Independent cases use the known square-root class instead, so the learner must carry the transformation principle beyond the pictured polynomial graph, respect the changed domain under a horizontal shift, and distinguish that from positive vertical scaling with an unchanged endpoint and domain.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "horizontal-shift-and-domain",
+            "essentialUnderstandingDe": "In g_a(x)=f(x−a) wird der Graph einer bekannten Funktion horizontal um a verschoben; bei f(x)=√x verschieben sich auch Startpunkt und Definitionsbereich, während die Kurvenform erhalten bleibt.",
+            "essentialUnderstandingEn": "In g_a(x)=f(x−a), the graph of a known function shifts horizontally by a; for f(x)=√x the starting point and domain shift as well, while the curve shape is preserved.",
+            "observablePerformanceDe": "Die lernende Person ordnet für neue positive und negative a die Wurzelgraphen aus Term, Startpunkt und einem weiteren Funktionswert zu, skizziert sie mit passend verschobenem Definitionsbereich und begründet die Verschiebungsrichtung aus x−a.",
+            "observablePerformanceEn": "For fresh positive and negative a values, the learner matches square-root graphs to their expressions, starting points, and another function value, sketches them with the correctly shifted domains, and explains the shift direction from x−a."
+          },
+          {
+            "id": "vertical-scale-with-invariant-domain",
+            "essentialUnderstandingDe": "In h_a(x)=a·f(x) mit a>0 werden alle y-Werte bei festem x mit a multipliziert; für f(x)=√x bleiben Startpunkt (0|0) und Definitionsbereich [0,∞) erhalten, bei a>1 liegen positive Werte höher und bei 0<a<1 niedriger.",
+            "essentialUnderstandingEn": "In h_a(x)=a·f(x) with a>0, every y-value at a fixed x is multiplied by a; for f(x)=√x the start (0,0) and domain [0,∞) stay fixed, with positive values higher for a>1 and lower for 0<a<1.",
+            "observablePerformanceDe": "Die lernende Person erschließt a aus einem neuen Graphpunkt, prüft die Wirkung an einem zweiten x-Wert und grenzt die Formänderung über unveränderten Startpunkt und Definitionsbereich von einer reinen Verschiebung ab.",
+            "observablePerformanceEn": "The learner infers a from a new graph point, verifies its effect at a second x-value, and distinguishes the changed shape from a pure shift using the unchanged starting point and domain."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "horizontal-shift-and-domain",
+            "vertical-scale-with-invariant-domain"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "function-class-and-domain",
+            "textDe": "Von den abgebildeten Parabeln zur Wurzelfunktion mit einseitigem Definitionsbereich wechseln; ein horizontaler Shift bewegt dessen Randpunkt mit.",
+            "textEn": "Move from the pictured parabolas to the square-root function with a one-sided domain; a horizontal shift moves its boundary point too."
+          },
+          {
+            "id": "transformation-and-information-direction",
+            "textDe": "Von vorgegebenem Parameter und gesuchter Graphlage zu gegebenem Graphpunkt und gesuchtem positiven Streckfaktor wechseln; Termverschiebung und y-Wert-Skalierung werden an ihren Invarianten unterschieden.",
+            "textEn": "Move from a given parameter and unknown graph location to a given graph point and unknown positive scale factor; distinguish an input shift from y-value scaling by their invariants."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "square-root-left-right-shifts",
+            "taskDemandDe": "Ausgehend von f(x)=√x untersuche g_a(x)=√(x−a) für a=−2 und a=3 ohne Parabelvorlage. Gib beide Terme, Definitionsbereiche, Startpunkte und je einen weiteren Graphpunkt an; skizziere beide Graphen mit gleicher Skalierung und erkläre, warum die Kurvenform gleich bleibt.",
+            "taskDemandEn": "Starting from f(x)=√x, investigate g_a(x)=√(x−a) for a=−2 and a=3 without a parabola template. Give both expressions, domains, starting points, and one additional graph point each; sketch both on the same scale and explain why the curve shape stays the same.",
+            "expectedPerformanceDe": "g_{−2}(x)=√(x+2) mit D=[−2,∞), Startpunkt (−2|0) und Punkt (−1|1) ist um 2 nach links verschoben. g_3(x)=√(x−3) mit D=[3,∞), Startpunkt (3|0) und Punkt (4|1) ist um 3 nach rechts verschoben. Beide sind reine horizontale Translationen von √x.",
+            "expectedPerformanceEn": "g_{−2}(x)=√(x+2) has domain [−2,∞), start (−2,0), and point (−1,1), so it shifts 2 left. g_3(x)=√(x−3) has domain [3,∞), start (3,0), and point (4,1), so it shifts 3 right. Both are pure horizontal translations of √x.",
+            "understandingFocusDe": "Verschiebungsrichtung und Definitionsbereich aus innerem Argument statt aus einer vorgegebenen Bildmarkierung erschließen.",
+            "understandingFocusEn": "Infer shift direction and domain from the inner argument rather than from a highlighted image."
+          },
+          {
+            "id": "square-root-scale-from-graph-points",
+            "taskDemandDe": "Zwei neue Graphen der Familie h_a(x)=a√x mit a>0 enthalten bei x=4 die Punkte (4|1) beziehungsweise (4|4). Bestimme beide Parameter aus diesen Graphdaten, skizziere sie zusammen mit f(x)=√x, prüfe die Werte bei x=1 und erkläre anhand von Startpunkt und Definitionsbereich, weshalb hier keine reine Verschiebung vorliegt.",
+            "taskDemandEn": "Two fresh graphs from h_a(x)=a√x with a>0 contain the points (4,1) and (4,4), respectively. Determine both parameters from those graph data, sketch them with f(x)=√x, check their values at x=1, and explain using starting point and domain why this is not a pure shift.",
+            "expectedPerformanceDe": "Aus √4=2 folgen a=1/2 beziehungsweise a=2. Bei x=1 sind die Werte 1/2 und 2 gegenüber f(1)=1; für x>0 liegt h_{1/2} unter und h_2 über f. Alle drei Graphen beginnen bei (0|0) und besitzen D=[0,∞). Der positive Faktor skaliert y-Werte vertikal, er versetzt keinen Startpunkt.",
+            "expectedPerformanceEn": "Because √4=2, the parameters are a=1/2 and a=2. At x=1 their values are 1/2 and 2 compared with f(1)=1; for x>0, h_{1/2} lies below f and h_2 above it. All three graphs start at (0,0) and have domain [0,∞). The positive factor scales y-values vertically rather than moving the start.",
+            "understandingFocusDe": "Parameter rückwärts aus Graphdaten erschließen und reine Skalierung durch mehrere Funktionswerte und Invarianten belegen.",
+            "understandingFocusEn": "Infer the parameter backwards from graph data and substantiate pure scaling using multiple function values and invariants."
+          }
+        ]
+      }
+    }
+  ]
+}

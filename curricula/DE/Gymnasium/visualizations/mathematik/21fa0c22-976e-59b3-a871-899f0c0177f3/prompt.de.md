@@ -8,48 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / Codex built-in image generation (edit of Gemini Pro bitmap)
 - Status: pilot
-- Quellbild: `21fa0c22-976e-59b3-a871-899f0c0177f3.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/21fa0c22-976e-59b3-a871-899f0c0177f3/21fa0c22-976e-59b3-a871-899f0c0177f3.jpg`
+- Quellbild: `21fa0c22-976e-59b3-a871-899f0c0177f3.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/21fa0c22-976e-59b3-a871-899f0c0177f3/21fa0c22-976e-59b3-a871-899f0c0177f3.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Zufallsexperimente und Ereignisse aus Termen formulieren
-Beschreibung: Die lernende Person kann zu gegebenen Wahrscheinlichkeitstermen passende Zufallsexperimente und Ereignisse formulieren und die Termbestandteile fachlich zuordnen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Zu einem Wahrscheinlichkeitsterm ein Zufallsexperiment und Ereignis formulieren.
-- Gegebener Term: (4/10)*(3/9).
-- Formuliere das passende Zufallsexperiment:
-  Urne mit 4 roten und 6 blauen Kugeln.
-  Es wird zweimal ohne Zuruecklegen gezogen.
-- Formuliere das Ereignis:
-  E: Beide gezogenen Kugeln sind rot.
-- Ordne die Termbestandteile zu:
-  4/10 = Wahrscheinlichkeit fuer rot bei der ersten Ziehung.
-  3/9 = Wahrscheinlichkeit fuer rot bei der zweiten Ziehung, nachdem eine rote Kugel entfernt wurde.
-- Ergebnis:
-  P(E) = (4/10)*(3/9) = 12/90 = 2/15.
-
-Vermeiden:
-- Nicht "mit Zuruecklegen" schreiben.
-- Keine zweite Wahrscheinlichkeit 4/10 verwenden.
-- Keine falsche Urnenzusammensetzung.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Edit the supplied wide comic-style probability bitmap. Preserve the German title, arrow, all text, probabilities, formula, colors, and especially the exact ball counts: first draw container has 4 red and 6 blue balls (10 total); one red ball is removed and depicted between containers; second container has 3 red and 6 blue balls (9 total); (4/10)·(3/9)=2/15. The ONLY requested change is on the LEFT first container: eliminate its large EMPTY lower compartment. Move its bottom outline directly below the second row of balls with a small cream margin, so it is one simple undivided urn/container containing only the ten visible balls. Do not create extra balls or change their colors or positions. Do not change the right container, the arrow, counts, texts, or math. Maintain a friendly, clean, readable bitmap PNG in wide landscape ratio; no logo or additional decoration.
 ```
 
 ## Review-Notiz

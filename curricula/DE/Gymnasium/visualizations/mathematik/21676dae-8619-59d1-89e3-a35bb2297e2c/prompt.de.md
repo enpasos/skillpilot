@@ -1,0 +1,36 @@
+# Lernzielvisualisierung: Aus dem Funktionsgraphen einen Stammfunktionsgraphen skizzieren
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `21676dae-8619-59d1-89e3-a35bb2297e2c`
+- Titel: Aus dem Funktionsgraphen einen Stammfunktionsgraphen skizzieren
+- Beschreibung: Die lernende Person kann aus dem Graphen einer Funktion f den Verlauf des Graphen einer möglichen Stammfunktion F skizzieren, diesen mithilfe der Beziehung F′ = f begründen und erklären, warum ein anderer gewählter Anfangswert den Graphen nur vertikal verschiebt.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)
+- Status: pilot
+- Quellbild: `21676dae-8619-59d1-89e3-a35bb2297e2c.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/21676dae-8619-59d1-89e3-a35bb2297e2c/21676dae-8619-59d1-89e3-a35bb2297e2c.png`
+
+## Prompt
+
+```text
+# Bildrevision: Stammfunktionsgraph aus dem Vorzeichen von f
+
+Ausgangspunkt ist `generated-prompt-v1.de.md` und dessen erster PNG-Kandidat. Die unabhängige Prüfung hielt ihn zurück: Die mit `F(x)=x²/2` und `(0,1)` beschriftete Kurve passte nicht zu den eigenen Achsenmarken. Die Revision bewahrt die anschauliche Grundidee, aber verzichtet bewusst auf numerische Aussagen, die der Bildgenerator nicht geometrisch exakt umgesetzt hat.
+
+Editierauftrag an OpenAI/ChatGPT-Codex `image_gen` (integriertes Bildwerkzeug; konkretes Bildmodell nicht offengelegt):
+
+> Edit this German math learning-goal illustration into a mathematically impeccable, aesthetically consistent revision. Preserve 16:9 wide friendly hand-drawn comic-like layout, pale blue background, blue left card, coral/red right card, bold playful typography, and three bottom sign cards. CRITICAL precise changes to avoid a measurable wrong graph: in the right red card REMOVE ALL numerical x/y axis tick marks and coordinate labels, REMOVE the red formula F(x)=x²/2 and the red dashed coordinate (0,1), and instead label the solid curve simply 'F' and the dashed vertical translation 'F+C'. Keep a solid smooth U-shaped red curve with vertex on the coordinate origin, a dashed identical curve shifted upward by a constant; their shape is schematic/qualitative only. Keep the x and y axes without tick marks. On the LEFT keep f(x)=x line going precisely through origin with negative left side and positive right side, but remove all explicit coordinate number markers except (0,0) if needed. Center arrow text F'=f. Bottom cards must read EXACTLY: left 'f < 0 → F fällt' and small '(für x < 0)'; center 'f = 0 → F hat eine waagerechte Tangente' and small '(bei x = 0)'; right 'f > 0 → F steigt' and small '(für x > 0)'. Check spelling, labels, logical direction and visual clarity at mobile width. Do not invent formulas or extra coordinates. The drawing explains how to sketch an antiderivative graph from derivative sign, and explicitly does NOT claim numerical graph scale.
+
+Erzeugt am 27. September 2026 als zweiter KI-Kandidat:
+`/home/enpasos/.codex/generated_images/01a03a32-5c3d-7122-a394-13d4f26b0054/exec-17dfb33c-b344-4a24-bfb7-192f9863c52b.png`.
+Noch keine Freigabe oder Integration; fachliche und mobile unabhängige Bildprüfung erforderlich.
+
+Eine eigene 360-Pixel-Vorschau zeigte: Graphen, `F′=f` und die drei Vorzeichenregeln bleiben erkennbar; die lange mittlere Tangentenregel ist klein und braucht eine unabhängige Lesbarkeitsentscheidung. Ein dritter Versuch, die Beschriftung weiter zu kürzen, erzeugte trotz Querformatvorgabe ein **Hochformat** und wurde verworfen (`exec-cc2975e5-5662-4f1e-b287-541770b79f44.png`). Er wird nicht als Lernzielbild eingebunden.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

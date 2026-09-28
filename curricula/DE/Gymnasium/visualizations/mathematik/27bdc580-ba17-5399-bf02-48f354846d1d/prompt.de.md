@@ -8,47 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)
 - Status: pilot
-- Quellbild: `27bdc580-ba17-5399-bf02-48f354846d1d.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/27bdc580-ba17-5399-bf02-48f354846d1d/27bdc580-ba17-5399-bf02-48f354846d1d.jpg`
+- Quellbild: `27bdc580-ba17-5399-bf02-48f354846d1d.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/27bdc580-ba17-5399-bf02-48f354846d1d/27bdc580-ba17-5399-bf02-48f354846d1d.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Heuristischen Stetigkeitsbegriff zum Argumentieren nutzen
-Beschreibung: Die lernende Person kann mit der Vorstellung eines Graphen ohne Sprung und mit der Zwischenwertidee argumentieren, ohne einen formalen Stetigkeitsbeweis zu führen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Heuristischer Stetigkeitsbegriff und Zwischenwertidee.
-- Verwende als risikoarmes Beispiel die lineare Funktion f(x) = 3x - 4 auf dem Intervall [1, 2].
-- Zeige:
-  f(1) = -1
-  f(2) = 2
-- Der Graph ist eine durchgehende Gerade ohne Sprung von (1|-1) nach (2|2).
-- Markiere die Nullstelle x = 4/3 ungefaehr als x ≈ 1.33.
-- Schlussfolgerung:
-  Weil der Graph ohne Sprung von einem negativen Wert zu einem positiven Wert geht, muss zwischen 1 und 2 eine Nullstelle liegen.
-- Beschrifte die Methode: "Zwischenwertidee, kein formaler Stetigkeitsbeweis".
-
-Vermeiden:
-- Keine Parabel zeichnen.
-- Kein lokales Minimum bei x=1.
-- Nicht "unterhalb der y-Achse" schreiben; korrekt ist "unterhalb der x-Achse".
-- Keine falschen Werte fuer f(1), f(2) oder die Nullstelle.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Use case: precise-object-edit. Edit target: prior 27bdc580 imagegen draft. Change ONLY the background/transparency: make the whole canvas fully opaque warm cream (#fff4d6 or close), with dark readable text and clean edges. Preserve the blue curve exactly as a continuous line passing through filled A, C, B; A stays below x-axis, C exactly on x-axis, B above. Preserve the three exact sign callouts f(a)<0, f(c)=0, f(b)>0 and the short German caption. Keep the friendly comic learner but no dark/black void anywhere. No new marks or altered mathematical relationships.
 ```
 
 ## Review-Notiz

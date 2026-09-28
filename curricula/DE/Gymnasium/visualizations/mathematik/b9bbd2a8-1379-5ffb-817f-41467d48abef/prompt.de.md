@@ -4,55 +4,23 @@
 
 - SkillPilot-ID: `b9bbd2a8-1379-5ffb-817f-41467d48abef`
 - Titel: Hauptsatz der Differential- und Integralrechnung nutzen
-- Beschreibung: Die lernende Person kann den Zusammenhang zwischen Ableitung und Integral beschreiben, Stammfunktionen bestimmen und das bestimmte Integral über $F(b) - F(a)$ berechnen und geometrisch deuten.
+- Beschreibung: Die lernende Person kann den Zusammenhang zwischen Ableitung und Integral beschreiben, mit einer passenden Stammfunktion das bestimmte Integral über $F(b) - F(a)$ berechnen und das Ergebnis als orientierte Flächenbilanz deuten.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)
 - Status: pilot
-- Quellbild: `b9bbd2a8-1379-5ffb-817f-41467d48abef.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/b9bbd2a8-1379-5ffb-817f-41467d48abef/b9bbd2a8-1379-5ffb-817f-41467d48abef.jpg`
+- Quellbild: `b9bbd2a8-1379-5ffb-817f-41467d48abef.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/b9bbd2a8-1379-5ffb-817f-41467d48abef/b9bbd2a8-1379-5ffb-817f-41467d48abef.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+# Bildauftrag für die orientierte Flächenbilanz (v2)
 
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Erzeuge ein mathematisch präzises, visuell ansprechendes deutschsprachiges Lernzielbild im Querformat 16:9, ruhiger moderner Comic-Infografik-Stil wie ein hochwertiges Schulbuch, große gut lesbare Beschriftungen. Thema: Hauptsatz der Differential- und Integralrechnung als ORIENTIERTE Flächenbilanz. Eine einzige große kartesische Grafik, x-Achse von 0 bis 3, y-Achse von -2 bis 4, gleichmäßige Skalierung, gerade blaue Linie exakt f(x)=2x−2 durch die Punkte (0,−2), (1,0), (3,4). Bereich zwischen Linie und x-Achse von x=0 bis x=1 orange unter der Achse und deutlich mit „−1“ beschriftet. Bereich von x=1 bis x=3 türkis über der Achse und mit „+4“ beschriftet. Senkrechte Begrenzungen x=0 und x=3. Ein schmales Formelfeld rechts mit mathematisch korrektem Text, exakt: „F(x)=x²−2x“, darunter „F′(x)=2x−2“, darunter „∫₀³ f(x) dx = F(3)−F(0) = 3“, und unten als große abschließende Bilanz „−1 + 4 = 3“. Diese Formeln und Zahlen müssen absolut korrekt geschrieben sein. Titel oben: „Hauptsatz: Flächen mit Vorzeichen bilanzieren“. Zeige keine weiteren Formeln, keine Schüler oder Maskottchen, keine Logos, keine Integral-gleich-immer-geometrischer-Flächeninhalt-Aussage. Ruhige Farben, große Typografie, klare Trennung von Graph und Formel, genügend Weißraum, mobil in 360 px Breite noch verständlich.
 
-Titel: Hauptsatz der Differential- und Integralrechnung nutzen
-Beschreibung: Die lernende Person kann den Zusammenhang zwischen Ableitung und Integral beschreiben, Stammfunktionen bestimmen und das bestimmte Integral über $F(b) - F(a)$ berechnen und geometrisch deuten.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Regeneration: Die graphische Flaeche muss exakt zum Intervall [1,3] passen.
-- Thema: Hauptsatz der Differential- und Integralrechnung nutzen.
-- Verwende genau f(x)=2x auf dem Intervall [1,3].
-- Zeige als Stammfunktion F(x)=x^2.
-- Zeige die Ableitungspruefung:
-  F'(x)=2x=f(x).
-- Zeige das bestimmte Integral:
-  integral_1^3 2x dx = F(3)-F(1)=3^2-1^2=9-1=8.
-- Visualisierung:
-  Graph von f(x)=2x.
-  Schattiere nur die Flaeche von x=1 bis x=3.
-  Markiere die senkrechten Grenzen bei x=1 und x=3.
-  Markiere optional die Randpunkte (1|2) und (3|6).
-- Ergebnisbox: Integral = Flaecheninhalt von 1 bis 3 = Aenderung der Stammfunktion = 8.
-
-Strikt vermeiden:
-- Keine Schattierung bis x=4.
-- Keine gestrichelte Grenze bei x=4.
-- Nicht F(3)+F(1) verwenden; es ist F(3)-F(1).
-- Kein falscher Integralwert; richtig ist 8.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Erzeugungsweg: OpenAI/ChatGPT-Codex `image_gen` (integriertes Bildwerkzeug; konkretes Bildmodell nicht offengelegt), 27. September 2026. Das Ergebnis ist ein KI-Kandidat; fachliche und technische V-Prüfung sind separat zu dokumentieren.
 ```
 
 ## Review-Notiz

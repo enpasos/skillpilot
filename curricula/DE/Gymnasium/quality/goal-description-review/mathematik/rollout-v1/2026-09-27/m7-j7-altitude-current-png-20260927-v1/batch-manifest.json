@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-j7-altitude-current-png-20260927-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-j7-altitude-current-png-20260927-v1.config.json",
+  "configDigest": "sha256:db177c0ebdccf945ac8219ae8b08ce9330ac15c258a01009d3cc65826c8fca72",
+  "goalIds": [
+    "d051857c-0707-544f-ae7a-f20690d182b2"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:2022222ded30979a916ce1b6b898fb3ae171a01cbc6557187ad3d4d33fae9607"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:e6d0ac38305420bd047263725449522c5c52b51d7c9ae53328a6f0cb3a278e2c",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:c864c7e1981fae1a74eff678e59b18cde10cd562bfdbe1fb3361352561f6ae81",
+    "reviewInputFingerprint": "sha256:36aa9fe7a5b5fc24d6f7288e7fd191e1290253c57284be5ad35292385f903812",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-j7-altitude-current-png-20260927-v1-a",
+        "campaignDigest": "sha256:f17dd1af0e2c331f7da75c88e48eb449ccf69a54161fa11751968ad468b638a3",
+        "roundId": "mathematik-m7-j7-altitude-current-png-20260927-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-j7-altitude-current-png-20260927-v1-independent-a",
+        "batchId": "mathematik-m7-j7-altitude-current-png-20260927-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:48daa977c6214f40a153a4e48e4bcd00c7b8c16202b5daa46fbd9b3b770bab8a"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-j7-altitude-current-png-20260927-v1-b",
+        "campaignDigest": "sha256:fd078f7565f8f5b7d429ca8d28e1bdf9d3b8031c7f72718894acd84799f9acd4",
+        "roundId": "mathematik-m7-j7-altitude-current-png-20260927-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-j7-altitude-current-png-20260927-v1-independent-b",
+        "batchId": "mathematik-m7-j7-altitude-current-png-20260927-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:4346a53f900d240d361665028007894407c5ecfca6e6f16c3920de6d032e09ce"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

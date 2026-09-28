@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "bundleFingerprint": "sha256:087724606c372f6e583fefd4de588a8651e6ec7e4d7385fb73f72131571f71bb",
+  "bookDigest": "sha256:6328a0fc025e96d4f1cfb28cb2043b769dd04a1267347eef82c7a6ada00f8866",
+  "provider": "OpenAI",
+  "model": "gpt-6-astra",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+    "f1348d40-3872-5e44-8892-3600c811796f",
+    "9023226b-fc17-412b-807c-2bb45cd551d5"
+  ],
+  "status": "completed",
+  "toolchainVersion": "codex-cli-0.155.0-alpha.16.3",
+  "runId": "math-m7-prism-quadratic-v2-a-astra-001",
+  "campaignId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-a",
+  "roundId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-first-pass-a",
+  "batchId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:0466e97d24009753657d0588b96d2cb1f47c507361099d4e5d347499eef74a7d",
+  "role": "subject_reviewer",
+  "independenceGroupId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-independent-a",
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:0466e97d24009753657d0588b96d2cb1f47c507361099d4e5d347499eef74a7d"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:d6811ccbbf8c2c155c89074ceef8cdea0399d5779e6cb25e57bc3c30e7edd437"
+    }
+  ],
+  "startedAt": "2026-09-28T00:50:18Z",
+  "completedAt": "2026-09-28T00:52:36Z",
+  "outputDigest": "sha256:49a3069c8bc6648f6c498c68e9a14d0eda4a9318099641274777a45b62905be5"
+}

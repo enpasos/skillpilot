@@ -1148,6 +1148,11 @@ class LandscapeServiceTest {
                 assertThat(landscape.getFilters())
                                 .extracting(LandscapeFilter::getId)
                                 .containsExactly("GK", "LK");
+                assertThat(landscapeService.getGoalDefinition("85eda551-cfc1-52c6-a252-4c7394c1f7e6"))
+                                .isNotNull()
+                                .extracting(LearningGoal::getDescription)
+                                .asString()
+                                .contains("Tangentensteigungen");
         }
 
         @Test

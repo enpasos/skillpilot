@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:30208611781911fdcbdb2f3142de23a922297e589b4adb58ef3b01b2fb9fcb7e",
+  "reviewInputFingerprint": "sha256:b18737758575a08e1776ef27511120c24406dabe2b45ec7bfac4f41f89c6beeb",
+  "goalCount": 9,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a",
+      "roundId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-b",
+      "roundId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 9,
+    "unavailable": 0,
+    "requiresSynthesis": 9
+  },
+  "goals": [
+    {
+      "goalId": "baf7276f-60a0-4d96-b959-d63acfb929de",
+      "firstRecordId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001-g1",
+      "secondRecordId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001.baf7276f-60a0-4d96-b959-d63acfb929de",
+      "firstRunId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "18be713b-7d90-4f01-b60a-5582ac4df0e8",
+      "firstRecordId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001-g2",
+      "secondRecordId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001.18be713b-7d90-4f01-b60a-5582ac4df0e8",
+      "firstRunId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6b2a1c04-8c28-51ff-905b-9c9492a26cc3",
+      "firstRecordId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001-g3",
+      "secondRecordId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001.6b2a1c04-8c28-51ff-905b-9c9492a26cc3",
+      "firstRunId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
+      "firstRecordId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001-g4",
+      "secondRecordId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001-0f4f9957",
+      "firstRunId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5f90df42-8a71-534d-b995-b8f7dcaf1661",
+      "firstRecordId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001-g5",
+      "secondRecordId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001.5f90df42-8a71-534d-b995-b8f7dcaf1661",
+      "firstRunId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c2c49659-5917-5be5-a3bd-e46f1b17126f",
+      "firstRecordId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001-g6",
+      "secondRecordId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001.c2c49659-5917-5be5-a3bd-e46f1b17126f",
+      "firstRunId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+      "firstRecordId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001-g7",
+      "secondRecordId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001.fcd1d180-ddce-5408-8c5d-70e417b179e7",
+      "firstRunId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+      "firstRecordId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001-g8",
+      "secondRecordId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001.a97c7cce-1343-5d04-926f-4a4f323b3c21",
+      "firstRunId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "985d5529-a586-50eb-bd7f-2db2be8906d1",
+      "firstRecordId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001-g9",
+      "secondRecordId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001.985d5529-a586-50eb-bd7f-2db2be8906d1",
+      "firstRunId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-spatial-nine-open-after-partial-keeps-20260926-v1-run-b-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

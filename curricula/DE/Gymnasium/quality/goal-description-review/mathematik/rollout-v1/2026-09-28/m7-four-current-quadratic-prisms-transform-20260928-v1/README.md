@@ -1,0 +1,5 @@
+# Diagnostischer Erstpass; kein strenger D-Abschluss
+
+Dieses Vierer-Bundle hält den Zustand **vor** der anschließenden Präzisierung des Prisma-Volumenziels fest. In zwei voneinander unabhängigen Erstprüfungen erhielten die Ziele `68fb0e78`, `f1348d40` und `9023226b` jeweils ein `keep` von diesem frühen Kontext; `7d37513b` wurde in Runde A wegen nicht eingegrenzter Transformationsart und unklarer Quellengrundlage `block` gesetzt. Die beiden Erstpass-Dateien bleiben als Triage-Evidenz erhalten, begründen aber keine strenge Auflösung des Vierer-Batches.
+
+Für `68fb0e78`, `f1348d40` und `9023226b` ist allein das spätere, **nach der Volumentext-Änderung** neu gebaute und unabhängig geprüfte Dreier-Bundle `../m7-prism-volume-surface-quadratic-current-20260928-v2/` maßgeblich. `7d37513b` bleibt fachlich offen: Die historische HE→Canonical-`exact`-Zuordnung reproduziert den alten Zieltext, beweist aber nicht, dass der amtliche Lehrplan eine allgemeine vektorielle Transformationsregel für Flächen oder Volumen fordert. Ein neuer D-Nachweis setzt zuerst eine eigenständige Quell-/Modellentscheidung und danach aktuelle Prüfungen voraus.

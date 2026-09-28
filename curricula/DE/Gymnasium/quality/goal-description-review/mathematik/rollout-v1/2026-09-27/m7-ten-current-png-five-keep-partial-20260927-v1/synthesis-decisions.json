@@ -1,0 +1,212 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-ten-current-png-five-keep-partial-20260927-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-27T09:40:14.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-ten-current-png-20260927-v1",
+    "batchManifestDigest": "sha256:d565caae234f687af7073054fb50cfe28ca137dc36547d0856fecd2a1e27a00b",
+    "configDigest": "sha256:43e82965be08d3f5d0ea13c2e9dd333900464789f202141297a72b1321886770",
+    "bundleFingerprint": "sha256:5f34f37629c0580baf7b6722996acceb6ea6bab99a901c38780a113bdfbe74f4",
+    "bookDigest": "sha256:f8300b2fec78a2ea8486efb5dfd61d9a1a476645cd6a248703bbc72ee57a23ed",
+    "reviewInputFingerprint": "sha256:f3d8160ec89c25c6a7947eb86bf26ceccbd9f2dd9fa2a219dbaf4701e76af80b",
+    "dualSummaryDigest": "sha256:65a648b33ea0f263fd625d912c9ee8efad40645bd8175d474fba2b46e9bf0529",
+    "canonicalLandscapeDigest": "sha256:892c5b1f487db3285606a8067aa8030f02800a2ca2d7accefe4395c7dad99c51"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-ten-current-png-20260927-v1-a",
+      "campaignDigest": "sha256:64fdfdfea2438a7d3e64555b00141a624d7171f3bbd418756265ef2388612445",
+      "roundId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-ten-current-png-20260927-v1-independent-a",
+      "reviewInputFingerprint": "sha256:f3d8160ec89c25c6a7947eb86bf26ceccbd9f2dd9fa2a219dbaf4701e76af80b",
+      "batchId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:184ff861f2176d4ea00c9b79909560cf14a26032bc2062ecf2215a594c66848c",
+      "runId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-a.batch-001.run-001",
+      "runManifestDigest": "sha256:c9a79331b98f84e807174eebc4d16f81e116687ff76ed5be73ba409132b12708",
+      "resultsDigest": "sha256:f4fa2f32c75b4d3aad96f0a29648899ff38d8947588f842345b1f06f531cfc59"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-ten-current-png-20260927-v1-b",
+      "campaignDigest": "sha256:24b5186a0c13e20b0b1d55f3e8985e91fc75ab6c11e3a6418ede40661db4d5a4",
+      "roundId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-ten-current-png-20260927-v1-independent-b",
+      "reviewInputFingerprint": "sha256:f3d8160ec89c25c6a7947eb86bf26ceccbd9f2dd9fa2a219dbaf4701e76af80b",
+      "batchId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:4b29be2f7a1c0140ecdb20041986b5bf68a89bd347d9aa7db381adf2b594ad46",
+      "runId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001",
+      "runManifestDigest": "sha256:7a892cb92de480d21263a8bc365210564ae4328a13570b83c9b158c618009c14",
+      "resultsDigest": "sha256:066e74f73cb87a7f19d6918b524c2b58bbfa890027387e61148647a38eefd46f"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-ten-current-png-five-keep-partial-20260927-v1-decision-001",
+      "goalId": "e02b994f-376d-5a8e-a14c-c4acacae57cf",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8db3d84fa7820b8d40a4a9e2d618792dbc59de9ab92318b8d8fd955b54f1bd48",
+      "pageFingerprint": "sha256:7f047824cf66594cc4c8cab38399db6fc47451ce256d2f4c7b90ce80b9c7f2da",
+      "goalReviewContextFingerprint": "sha256:4fcb22926043072bfa8108fd715b602c7e5ca704284400bd5c7709dae4cf9549",
+      "finalText": {
+        "titleDe": "Nebenbedingungen berücksichtigen",
+        "titleEn": "Incorporate constraints",
+        "descriptionDe": "Die lernende Person kann Nebenbedingungen und Definitionsbereiche im Modell berücksichtigen (z. B. x ≥ 0, ganzzahlig) und deren Auswirkungen auf mögliche Lösungen einschätzen.",
+        "descriptionEn": "The learner can incorporate constraints and domains (e.g. x ≥ 0, integer) and assess their impact on possible solutions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-ten-current-png-20260927-v1-a-goal-05",
+          "recordDigest": "sha256:8e79d75b80f2ac742ee51f67fa67dfc11ec0f69fa84a3d315b23c35b49fde582"
+        },
+        "second": {
+          "recordId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001.record-005",
+          "recordDigest": "sha256:dc6015baf216c2fb6f5c40c0a3f9962329e4d689b16f1ed4f0a733f1e8b3f497"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "first",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann Nebenbedingungen und Definitionsbereiche aus einer Sachsituation im Modell festlegen und begründen, welche rechnerischen Lösungen dadurch im Kontext zulässig sind.",
+        "proposedDescriptionEn": "The learner can specify constraints and domains from a real-world situation in a model and explain which mathematical solutions remain valid in that context.",
+        "rationaleDe": "Runde A verlangt expliziteres Festlegen und Begründen aus einer Sachsituation. Der aktuelle Text nennt bereits Nebenbedingungen, Definitionsbereiche und deren Wirkung auf mögliche Lösungen; das aktuelle P-v2-Profil prüft genau diese sachliche Zulässigkeit unabhängig an Kapazitätsgrenze und ganzzahligen Packungen. Eine weitere Engführung des allgemein verwendbaren Modellierungsziels ist für den unveränderten D-Kern nicht nötig. Das Busbild ist nur ein Beispiel, kein Q4-Leistungsnachweis.",
+        "rationaleEn": "Round A asks for more explicit derivation and justification from a real-world situation. The current text already names constraints, domains, and their effects on possible solutions; the current P-v2 profile independently tests contextual admissibility through a capacity limit and integer packages. Further narrowing of this generally applicable modeling goal is unnecessary for the unchanged D core. The bus image is an example, not evidence of Q4 mastery."
+      },
+      "rationaleDe": "Runde B hält den gegenwärtigen zweisprachigen Text zu Recht als eine zusammenhängende Modellierungskompetenz. Die aktuelle, bildhashgebundene P-v2-Registrierung konkretisiert das Prüfen zulässiger Lösungen; ihre E1/G1-KI-Kandidatur ist keine menschliche Freigabe. Die D-Bundle-Oberfläche mit evidenceReview=null erklärt die A/B-create-Empfehlung, widerlegt aber das registrierte P-Profil nicht. Der im Bundle fehlende direkte sourceRef wird nicht als bewiesene Länderabdeckung ausgegeben.",
+      "rationaleEn": "Round B correctly retains the current bilingual text as one coherent modeling competence. The current image-hash-bound P-v2 registration specifies how admissible solutions are assessed; its E1/G1 AI-candidate state is not human approval. The D bundle surface with evidenceReview=null explains the A/B create recommendation but does not negate the registered P profile. A direct sourceRef missing from the bundle is not presented as proven jurisdictional coverage."
+    },
+    {
+      "decisionId": "math-m7-ten-current-png-five-keep-partial-20260927-v1-decision-002",
+      "goalId": "909d8b16-5156-528b-a300-d9aee5405ba0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5aa97d95ef237de252c0abe802bf564762a7867834a670e01ca7da580ec06818",
+      "pageFingerprint": "sha256:c4bfdf4be9941ab5eabd1ad4a0a9bb97ae79f98229a7c23aa19bae8ef2a37ca7",
+      "goalReviewContextFingerprint": "sha256:f9d733f8cedce7e1360c6d530464098b413f2682a2f16d0c9fa4f22dd71d7084",
+      "finalText": {
+        "titleDe": "Modell gezielt anpassen",
+        "titleEn": "Adapt the model purposefully",
+        "descriptionDe": "Die lernende Person kann ein Modell gezielt anpassen (z. B. Parameter ändern, zusätzliche Bedingungen ergänzen) und die Änderung nachvollziehbar begründen.",
+        "descriptionEn": "The learner can adapt a model purposefully (e.g. change parameters, add constraints) and justify the change clearly."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-ten-current-png-20260927-v1-a-goal-06",
+          "recordDigest": "sha256:233d68c4a46784c7686d550bace160fb547b963042b4b9eb4b9b3274b325f77b"
+        },
+        "second": {
+          "recordId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001.record-006",
+          "recordDigest": "sha256:a60daecc97f123a871fbc138630af09bfa13078dcc3413a493d7c9c1f2f2edcf"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "first",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann ein Modell durch Änderungen von Parametern oder Bedingungen gezielt an eine Sachsituation anpassen und die Folgen für seine Ergebnisse begründen.",
+        "proposedDescriptionEn": "The learner can adapt a model to a real-world situation by purposefully changing parameters or conditions and justify the consequences for its results.",
+        "rationaleDe": "Runde A möchte die Sachlage und Ergebnisfolgen ausdrücklich im kurzen Zieltext sehen. Die gegenwärtige Forderung nach gezielter Anpassung und nachvollziehbarer Begründung schließt genau dies bereits ein; das aktuelle P-v2-Profil fordert in zwei frischen Fällen neue Annahme, gezielte Modelländerung, Vorhersagevergleich und Gültigkeitsprüfung. Die Ergänzung wäre sprachlich vertretbar, aber keine notwendige Korrektur für einen Keep.",
+        "rationaleEn": "Round A wants the situation and result effects stated explicitly in the short goal text. The current demand for purposeful adaptation and a traceable justification already entails these; the current P-v2 profile requires a new assumption, targeted model change, prediction comparison, and validity check in two fresh cases. The addition would be acceptable prose but is not a necessary correction for a keep."
+      },
+      "rationaleDe": "Runde B hält den aktuellen DE/EN-Text als eine prüfbare Modelländerungsleistung. Das Getränkepreis-PNG rechnet den Einstieg korrekt, trägt aber die Transferbehauptung nicht allein; diese wird im separaten aktuellen P-v2-Kandidaten mit Steigungs- und Kapazitätsfall operationalisiert. Keine P-Neuerstellung oder menschliche Freigabe wird aus der D-Runde abgeleitet; fehlender direkter sourceRef bleibt getrennt.",
+      "rationaleEn": "Round B retains the current DE/EN text as one assessable model-adjustment skill. The beverage-price PNG correctly illustrates the entry case but does not by itself prove transfer; the separate current P-v2 candidate operationalizes this with slope and capacity cases. No new P creation or human approval is inferred from the D review; the missing direct sourceRef remains a separate matter."
+    },
+    {
+      "decisionId": "math-m7-ten-current-png-five-keep-partial-20260927-v1-decision-003",
+      "goalId": "f2a12269-6bcb-564a-9fdb-45cfdbd704fc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:997904aac617d8687701d7d309f2894fe1d05f250051d86ab619bd09df1adf73",
+      "pageFingerprint": "sha256:0d24a26219780b775e10640a42a7a7adb4b0f53c9043b9302175fafeaf68181c",
+      "goalReviewContextFingerprint": "sha256:b12701ecb4834310206f3ab9f98b84eefe3dd13f158597ec54792c0dd93901c4",
+      "finalText": {
+        "titleDe": "Teilungsverhältnisse bei Volumina untersuchen",
+        "titleEn": "Analyze division ratios in volumes",
+        "descriptionDe": "Die lernende Person kann Teilungsverhältnisse bei Volumina in räumlichen Konfigurationen bestimmen, vergleichen und fachlich begründen.",
+        "descriptionEn": "The learner can determine, compare, and justify division ratios in volumes in spatial configurations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-ten-current-png-20260927-v1-a-goal-08",
+          "recordDigest": "sha256:32367ccdf88b4ba42dce92c31fbe15badaed50bbaf10345367ad3ada406c8d44"
+        },
+        "second": {
+          "recordId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001.record-008",
+          "recordDigest": "sha256:13fb99223924619e25761fdd956f9d7dcd3ca60533e23c854e6e80d88aff88d6"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten denselben aktuellen DE/EN-Zieltext als eine zusammenhängende Leistung: Teilvolumina bestimmen, vergleichen und ihre Verhältnisbeziehung begründen. Das Bild mit identischer Grundfläche zeigt korrekt den Spezialfall 36:108=1:3; das aktuelle P-v2-Profil prüft darüber hinaus einen Prisma- und einen Pyramidenfall, in dem ein bloßer Höhenquotient falsch wäre. Es wird weder eine allgemeine Höhenregel aus dem Bild noch menschliche Erprobung behauptet.",
+      "rationaleEn": "Both independent rounds keep the same current bilingual text as one coherent competence: determine, compare, and justify ratios of partial volumes. The image correctly shows the equal-base-area special case 36:108=1:3; the current P-v2 profile also tests a prism and a pyramid case where a height-only ratio would be wrong. Neither a universal height rule nor human trial is inferred from the image."
+    },
+    {
+      "decisionId": "math-m7-ten-current-png-five-keep-partial-20260927-v1-decision-004",
+      "goalId": "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f8c6d77b0b2e16c87ef25d26a6a554aa7a940bf4a3123c815a02e1fa85058254",
+      "pageFingerprint": "sha256:0035b879d59ea8aaf87edcd688419e75b68b315f85cb75f07312297cf244e2f4",
+      "goalReviewContextFingerprint": "sha256:831ef34763a03ea3c720ae7983a93806c13e006c70b5b53e371a236ece4176c6",
+      "finalText": {
+        "titleDe": "Zählverfahren und kombinatorische Überlegungen für Wahrscheinlichkeiten nutzen",
+        "titleEn": "Use counting procedures and combinatorial reasoning for probabilities",
+        "descriptionDe": "Die lernende Person kann Zählverfahren strukturieren, kombinatorische Überlegungen in Sachsituationen einsetzen und sie zur effizienten Bestimmung von Wahrscheinlichkeiten in endlichen Modellen nutzen.",
+        "descriptionEn": "The learner can structure counting procedures, use combinatorial reasoning in contextual situations, and apply it to determine probabilities efficiently in finite models."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-ten-current-png-20260927-v1-a-goal-09",
+          "recordDigest": "sha256:43fd31ba0cbc39747f9c6a4a7807b6286a75d5f272a7d34d70122b846ea59f27"
+        },
+        "second": {
+          "recordId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001.record-009",
+          "recordDigest": "sha256:5379c997a7f3e3328bf8263948bf9d80ad4883f76ae2a458103a4aaf8f1dd2a8"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "first",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann in endlichen Zufallsmodellen mögliche und günstige Fälle mit einem passenden Zählverfahren erfassen und bei gleichwahrscheinlichen Ergebnissen daraus Wahrscheinlichkeiten in Sachsituationen begründen.",
+        "proposedDescriptionEn": "The learner can count possible and favorable outcomes in finite random models with a suitable counting method and, when the outcomes are equally likely, use those counts to justify probabilities in real-world situations.",
+        "rationaleDe": "Runde A fordert die Voraussetzung gleichwahrscheinlicher Ergebnisse ausdrücklich im Zieltext und bemerkt kleine Bilddetails bei 360 px. Die aktuelle Formulierung behauptet aber keine universelle günstig/möglich-Formel; sie verlangt geeignete Zählverfahren in endlichen Modellen. Das aktuelle P-v2-Profil fordert ausdrücklich Gleichwahrscheinlichkeit, vollständiges Zählen und Vermeidung von Doppelzählung in zwei unabhängigen Fällen. Die vorgeschlagene Präzisierung ist fachlich richtig, aber für den unveränderten Zielkern nicht zwingend. Hauptgeschichte und Endbruch des korrekten Bildes bleiben bei 360 px lesbar; Detailzählzeilen sind begrenzt lesbar und im Alttext zugänglich.",
+        "rationaleEn": "Round A asks for the equal-likelihood assumption to be explicit in the goal text and notes small image details at 360 px. The current wording does not assert a universal favorable-over-possible formula; it requires suitable counting methods in finite models. The current P-v2 profile explicitly requires equal likelihood, complete counting, and avoidance of duplicate outcomes in two independent cases. The proposed precision is mathematically right but not essential to retain the current goal core. The correct image's main sequence and final fraction remain legible at 360 px; its counting details have limited legibility and are available in alt text."
+      },
+      "rationaleDe": "Runde B hält das zusammenhängende J10-Ziel, Zählstruktur für Wahrscheinlichkeiten in endlichen Sachsituationen zu nutzen. Das aktuelle PNG zeigt korrekt vier von zehn gleichwahrscheinlichen ungeordneten Paaren und 2/5; es ist Lehrhilfe, keine eigenständige Transferleistung. Der aktuelle P-v2-Kandidat prüft Reihenfolgewechsel und Voraussetzungen separat. Die Quellenzuordnung wird durch fehlenden direkten sourceRef im D-Bundle nicht als unabhängig bestätigt ausgegeben.",
+      "rationaleEn": "Round B retains the coherent J10 goal of using structured counts for probabilities in finite contexts. The current PNG correctly shows four of ten equally likely unordered pairs and 2/5; it is teaching support, not independent transfer evidence. The current P-v2 candidate separately tests order changes and model assumptions. The source mapping is not presented as independently confirmed when the D bundle lacks a direct sourceRef."
+    },
+    {
+      "decisionId": "math-m7-ten-current-png-five-keep-partial-20260927-v1-decision-005",
+      "goalId": "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:23691ece3c71e7fd248d55df6dc2acff9a3b56bee73d796f62dffcaa113c4da0",
+      "pageFingerprint": "sha256:5619ad2670b3c67475b304e35daba54580a350bc2a7698963e931f3536e4f171",
+      "goalReviewContextFingerprint": "sha256:b5317512431459f9219176dc4302693d740d62f9c764ace523791c729f39b91b",
+      "finalText": {
+        "titleDe": "Ableitungsbegriff aus mittleren und momentanen Änderungsraten entwickeln",
+        "titleEn": "Develop the derivative concept from average and instantaneous rates of change",
+        "descriptionDe": "Die lernende Person kann mittlere Änderungsraten als Differenzenquotienten bestimmen, als Sekantensteigungen deuten und daraus den Übergang zur momentanen Änderungsrate als Tangentensteigung motivieren.",
+        "descriptionEn": "The learner can determine average rates of change as difference quotients, interpret them as secant slopes, and use them to motivate the transition to instantaneous rates of change as tangent slopes."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-ten-current-png-20260927-v1-a-goal-10",
+          "recordDigest": "sha256:bb95f9c638810c5dde21e4fcdcf0578da5eba55e8bb6254c2453d67adbb6a9ef"
+        },
+        "second": {
+          "recordId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001.record-010",
+          "recordDigest": "sha256:c63b04f0bfeb3c9d4f7521991895df021b51920aedbeba835aa02783e48b016b"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten den gegenwärtigen DE/EN-Text: Differenzenquotient, Sekantensteigung und anschaulicher Übergang zur momentanen Rate bilden eine zusammenhängende J10-Kompetenz ohne formalen Grenzwertbeweis. Das aktuelle, zuvor fachlich falsch dargestellte Bild wurde durch eine korrekte Seite mit Sekantensteigung 5 und Tangentensteigung 4 ersetzt; die beiden P-v2-Transferfälle sind unabhängig vom Bild. Dies ist eine KI-Synthese, keine menschliche Erprobung oder Quellen-Vollprüfung.",
+      "rationaleEn": "Both independent rounds keep the current bilingual text: difference quotient, secant slope, and an intuitive transition to instantaneous rate form one coherent J10 competence without requiring a formal limit proof. The formerly erroneous image has been replaced by a correct current page with secant slope 5 and tangent slope 4; both P-v2 transfer cases are independent of the image. This is AI synthesis, not human trial or a complete source audit."
+    }
+  ],
+  "manifestFingerprint": "sha256:7a2426685c2f2c210355b899f0789a1a1f1443d6b8c8b3d5ccd8c19ea093f7e7"
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-notation-tool-limits-two-keep-20260927-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-27T17:15:56.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1",
+    "batchManifestDigest": "sha256:7adcf3a32b204580e1aed2d8706cf1993ca7e05de887a02a3b9f1bbc3eb2333e",
+    "configDigest": "sha256:4bea08aef9d0f7c91651053153f3ea8d76d07cb71f5bd072071b186d9bb89316",
+    "bundleFingerprint": "sha256:e32181970311f6ed2e74ffc3b0b3653dd843ea70ebccf657f2a0fef325f39b68",
+    "bookDigest": "sha256:7f00e472ba425f08c2fc998ccbbf06fbeec4feeb1bd4ec419faec255e5b82f3c",
+    "reviewInputFingerprint": "sha256:c925ab6302dfc08e0eb9e3810bd2890271482d6c58ab21b02727190d023e6115",
+    "dualSummaryDigest": "sha256:9cb6ddd4336bb33d598266b7d2e392dc361c8a7aa9603be4e2d4ed46fee01ee4",
+    "canonicalLandscapeDigest": "sha256:c0a7097b2723ac142e55ff727968079ab5d243dc96a0d866fdc948eefd3d9973"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-a",
+      "campaignDigest": "sha256:cacfc9b233f1fcd81e38c092fcb923dd1ace1f92e6b4d71934511bb94a534a23",
+      "roundId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-independent-a",
+      "reviewInputFingerprint": "sha256:c925ab6302dfc08e0eb9e3810bd2890271482d6c58ab21b02727190d023e6115",
+      "batchId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:8e5de2ffc0f7b08c380c4cbb46198a1869d24e73929e9a897bbbb83d81c3dfce",
+      "runId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-a.batch-001.codex-independent-a",
+      "runManifestDigest": "sha256:cd1e4481f8e4165ba3620808b4068f9d5d9eca6acfa4baabb4c4909497608da2",
+      "resultsDigest": "sha256:299ba20ecab161f9bcbeaf15517dd23c1b0c870b08ddb850c24d974d9e9c86b0"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-b",
+      "campaignDigest": "sha256:565ed7df1496ea357cf7b3570d4a0b1c56093e1cf033ae772afae054cefe88ac",
+      "roundId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-independent-b",
+      "reviewInputFingerprint": "sha256:c925ab6302dfc08e0eb9e3810bd2890271482d6c58ab21b02727190d023e6115",
+      "batchId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:6ef770b2b5a5d261b89d9173c7265921db7e8ceda2562a58630651cfe5b47fe0",
+      "runId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-b.reviewer-b.manual-20260927",
+      "runManifestDigest": "sha256:08f6ca0249c1d26646a49dc6a7edbc77b3d376e3d37cf2308e2f4310d04b2d50",
+      "resultsDigest": "sha256:544c905c4cfb94ee2f04dd819c1412a9f2094ab24098068bc1c2e494b42ee160"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-notation-tool-limits-two-keep-20260927-v1-decision-001",
+      "goalId": "aeae526e-b3a4-5a17-b177-351df0307cb9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3c7764333b2d5185eea9ac17373c521fde536bb0ce94b71450f33dfa0e344288",
+      "pageFingerprint": "sha256:8e03e0ba5f848f3fd36ecada4fcf640582e365410752c76fb006557fae14bcd9",
+      "goalReviewContextFingerprint": "sha256:a6097c91790c8f95967b405176c082247f6176db6ebd7793f862b84558f50f72",
+      "finalText": {
+        "titleDe": "Notation adressatengerecht erläutern",
+        "titleEn": "Explain notation for the audience",
+        "descriptionDe": "Die lernende Person kann verwendete Notation und Symbole adressatengerecht erläutern und passende Beispiele zur Verdeutlichung geben.",
+        "descriptionEn": "The learner can explain used notation and symbols for the audience and give suitable examples to clarify."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-a.batch-001.codex-independent-a.001",
+          "recordDigest": "sha256:1be3d7e7571ca02ef697b0a4b95e8d1d15bcd3b166ef56509f7ee9a5be989b1e"
+        },
+        "second": {
+          "recordId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-b.reviewer-b.manual-20260927.aeae526e-b3a4-5a17-b177-351df0307cb9",
+          "recordDigest": "sha256:4852a18c1207baeb4248bb601c59d1edacc1aaf475165f1ce929d7d73b028877"
+        }
+      },
+      "rationaleDe": "Zwei unabhängig validierte KI-Runden behalten den aktuellen DE/EN-Text als eine adressatengerechte Erklärleistung. Die neue exakt gebundene PNG-Fassung zeigt f(3)=7 und eine konsistente Wertetabelle; sie ist Lehrhilfe und kein Nachweis von Lernerfolg. Runde A formuliert einen andersartigen Intervall- und Mengenfall als Transfer; ihre frühere Bild-/P-Vorbefassung ist offengelegt, Runde B blieb unabhängig blind. Der D-Input zeigt kein eingebettetes P-Profil, doch das separat neu gebundene P-v2-Profil existiert bereits; create ist daher keine Aufforderung zu einer zweiten Profilanlage. Keine Humanfreigabe oder vollständige Quellen-/Länderprüfung wird behauptet.",
+      "rationaleEn": "Two independently validated AI rounds retain the current bilingual wording as one audience-aware explanation skill. The newly bound PNG shows f(3)=7 and a consistent value table; it is teaching support, not evidence of learner mastery. Round A gives a structurally different interval/set-notation transfer; its earlier image/P involvement is disclosed, while Round B remained independently blind. The D input does not embed a P profile, but a separately rebound P-v2 profile already exists, so create is not a request for a duplicate profile. No human approval or full source/jurisdiction audit is claimed."
+    },
+    {
+      "decisionId": "math-m7-notation-tool-limits-two-keep-20260927-v1-decision-002",
+      "goalId": "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:aad4ff2580dc783d195b4b8e4932e5d60bf53411bb5317525be2c7322fdb65d2",
+      "pageFingerprint": "sha256:acc1a99fb6416ef05e6e7a6d163c3819683993527942eb3f7729dd064fe92e80",
+      "goalReviewContextFingerprint": "sha256:87f4420e5ecb503ca9d95a9c689f6aae552c6764f39413e362d83d730b1332d9",
+      "finalText": {
+        "titleDe": "Grenzen der Werkzeugnutzung benennen",
+        "titleEn": "Name limitations of tool use",
+        "descriptionDe": "Die lernende Person kann Grenzen digitaler Werkzeuge benennen (z. B. Definitionsbereich, numerische Näherung, Mehrdeutigkeit) und geeignete Sicherungen wählen.",
+        "descriptionEn": "The learner can name limitations of digital tools (e.g. domain issues, numerical approximation, ambiguity) and choose suitable safeguards."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-a.batch-001.codex-independent-a.002",
+          "recordDigest": "sha256:f501f2ba1c0378e433341517fac620d934a079ad5ffd260098fc5f860be7b757"
+        },
+        "second": {
+          "recordId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-b.reviewer-b.manual-20260927.c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+          "recordDigest": "sha256:cedb3c33f620def314e67f2677b3c51de494019396407bc954ad798b0799b6c3"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KI-Runden behalten das Erkennen einer Werkzeuggrenze und das Wählen einer dazu passenden Sicherung als zusammenhängende Kompetenz. Das aktuelle Bild zeigt die Hauptwert-Mehrdeutigkeit korrekt; die ausgewählte Evidenz aus Runde A wechselt für den Transfer zu einer Definitionslücke einer gebrochenrationalen Funktion. Die Bildbetrachtung allein beweist keine eigenständige Entscheidung. Das separat registrierte P-v2-Profil bleibt maßgeblich; die create-Empfehlung beruht nur auf dem leeren P-Feld des D-Bundles. Keine menschliche Erprobung oder bundesweite Quellenabdeckung wird daraus abgeleitet.",
+      "rationaleEn": "Both independent AI rounds retain the recognition of a tool limitation and choice of a matching safeguard as one coherent competence. The current image correctly illustrates principal-value ambiguity; Round A's selected evidence changes the transfer to a rational function with an excluded domain point. Viewing the image alone does not prove independent judgment. The separately registered P-v2 profile remains authoritative; the create recommendation only reflects the empty P field in the D bundle. This does not imply human trial or nationwide source coverage."
+    }
+  ],
+  "manifestFingerprint": "sha256:1cb38b739d622287c6a7c61447ea17f92a98547b30fd1a85d14e51f75163c345"
+}

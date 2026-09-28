@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-31be-antiderivative-term-20260928-v2",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-31be-current-antiderivative-term-20260928-v2.config.json",
+  "configDigest": "sha256:c77c682b7577ed58aa217595a0ab9454b73c37e4cd20db58e2ad04f24d018841",
+  "goalIds": [
+    "31be24f0-3ab1-54d2-856d-fa9b7f36552f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 799,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:9ec69f256152d9d4dcb31ca817ae9a8b32f58519e2095f3b8beaf093999e48a0"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:9fcfd5539863075ee67665adb2c5344c1a9898a5461b9cb5ccf30de1567bbd69",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:f635604e30fda39a52f652b7829c80992894ecc262e99029d6d5772f67e73a68",
+    "reviewInputFingerprint": "sha256:11ce3e5d70ced2120019d5783f451cc8829ecce822a9088ddedceb3d481f51b0",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-31be-antiderivative-term-20260928-v2-a",
+        "campaignDigest": "sha256:9e1b118d02957789f84060aece1714276350fa51ecd7c08863cea31662e4318c",
+        "roundId": "mathematik-m7-31be-antiderivative-term-20260928-v2-first-pass-a",
+        "independenceGroupId": "mathematik-m7-31be-antiderivative-term-20260928-v2-independent-a",
+        "batchId": "mathematik-m7-31be-antiderivative-term-20260928-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:68ce111a852277df032437cef1bb5a089b070e1bb2907e5865c80da974a429e6"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-31be-antiderivative-term-20260928-v2-b",
+        "campaignDigest": "sha256:e2752533b8040ce28841a4edc70ea156381edfed37a24abf92629df2b9e4a4b0",
+        "roundId": "mathematik-m7-31be-antiderivative-term-20260928-v2-first-pass-b",
+        "independenceGroupId": "mathematik-m7-31be-antiderivative-term-20260928-v2-independent-b",
+        "batchId": "mathematik-m7-31be-antiderivative-term-20260928-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:53c21d34382b6ae5580ee20e43a95b19afb7594f16aafffa8decd0138df520b4"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

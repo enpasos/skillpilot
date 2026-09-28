@@ -8,58 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)
 - Status: pilot
-- Quellbild: `2041f4ec-620d-4a20-9922-6ebf16f8f8fa.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/2041f4ec-620d-4a20-9922-6ebf16f8f8fa/2041f4ec-620d-4a20-9922-6ebf16f8f8fa.jpg`
+- Quellbild: `2041f4ec-620d-4a20-9922-6ebf16f8f8fa.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/2041f4ec-620d-4a20-9922-6ebf16f8f8fa/2041f4ec-620d-4a20-9922-6ebf16f8f8fa.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Kongruente sowie maßstäblich vergrößerte und verkleinerte Figuren zeichnen und begründen
-Beschreibung: Die lernende Person kann kongruente sowie maßstäblich vergrößerte oder verkleinerte Figuren zeichnen, Geometriesoftware passend nutzen und Eigenschaften geometrischer Objekte mit Kongruenz und Ähnlichkeit begründen.
-
-Zusatzanweisung:
-Erzeuge eine fachlich genaue Infografik zum Zeichnen kongruenter und massstaeblich veraenderter Figuren.
-
-Pflichtinhalt:
-- Verwende ein sauberes quadratisches Raster.
-- Zeige ein Ausgangsdreieck `ABC`.
-- Zeige daneben:
-  1. eine kongruente Kopie `A'B'C'` mit gleicher Groesse, nur verschoben;
-  2. eine vergroesserte Kopie `A''B''C''` im Massstab `2:1`;
-  3. eine verkleinerte Kopie `A'''B'''C'''` im Massstab `1:2`.
-- Verwende einfache Laengen:
-  - Ausgangsdreieck als rechtwinkliges Dreieck mit Katheten `4 cm` und `2 cm`.
-  - kongruente Kopie wieder `4 cm` und `2 cm`.
-  - vergroesserte Kopie `8 cm` und `4 cm`.
-  - verkleinerte Kopie `2 cm` und `1 cm`.
-- Markiere gleiche Winkel bei Original und allen Bildfiguren.
-- Zeige kurz:
-  - `kongruent: alle Laengen gleich`
-  - `Massstab 2:1: alle Laengen verdoppeln`
-  - `Massstab 1:2: alle Laengen halbieren`
-
-Vermeiden:
-- Keine perspektivischen 3D-Koerper.
-- Keine inkonsistenten Rasterabstaende.
-- Keine verzerrten Figuren beim Vergroessern.
-- Keine fehlende Verkleinerung: die verkleinerte Kopie muss sichtbar sein.
-- Keine technischen IDs, keine Wasserzeichen.
-
-Layout:
-- Schuelerfreundlicher Cartoon-Tafelstil, wenige kurze deutsche Beschriftungen.
+Use case: scientific-educational image editing. Image 1 is an EXACT mathematical geometry reference, not a finished public asset. Turn it into an attractive warm-cream, lightly illustrated German learning image with friendly line art, subtle four-panel division, and carefully spaced headings. Preserve ALL twelve coloured line segments at exactly their current endpoints and lengths: the shared-scale triangles in Image 1 have side lengths 3-4-5, rotated 3-4-5, 6-8-10 and 1,5-2-2,5. Their vertex coordinates, line-colour-to-side correspondence, right-angle marks, baseline and relative sizes must remain fixed. Preserve each side number exactly with German decimal commas. Improve only line texture, typography, heading placement and subtle backdrop. Separate the four headings so they do not merge: "Original", "kongruent k=1", "vergrößert k=2", "verkleinert k=1/2". Make no new shapes or words, no watermark. Wide 16:9 educational bitmap. The math reference positions are binding: do not move, stretch or rescale any triangle.
 ```
 
 ## Review-Notiz

@@ -8,47 +8,19 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Gemini Nano Banana Pro; ChatGPT/Codex imagegen edit
 - Status: pilot
-- Quellbild: `74d29d0c-80b3-4d46-a5f5-3c2f609e8483.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/74d29d0c-80b3-4d46-a5f5-3c2f609e8483/74d29d0c-80b3-4d46-a5f5-3c2f609e8483.jpg`
+- Quellbild: `74d29d0c-80b3-4d46-a5f5-3c2f609e8483.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/74d29d0c-80b3-4d46-a5f5-3c2f609e8483/74d29d0c-80b3-4d46-a5f5-3c2f609e8483.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Pyramiden und Kegel darstellen, Netze nutzen und Fachbegriffe verwenden
-Beschreibung: Die lernende Person kann Pyramiden und Kegel in Schrägbildern und Netzen darstellen, Grund- und Mantelflächen fachsprachlich beschreiben und passende Darstellungen sicher nutzen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Pyramiden und Kegel darstellen, Netze nutzen und Fachbegriffe verwenden.
-- Erstelle eine zweigeteilte Infografik: links Pyramide, rechts Kegel.
-- Pyramide:
-  Schraegbild einer quadratischen Pyramide mit Spitze S, Grundflaeche ABCD, Hoehe h senkrecht zur Grundflaeche, Seitenkanten und Manteldreiecken.
-  Passendes Netz: ein Quadrat als Grundflaeche und vier Dreiecke als Mantelflaechen.
-- Kegel:
-  Schraegbild eines geraden Kreiskegels mit Spitze S, kreisfoermiger Grundflaeche, Radius r, Hoehe h senkrecht zur Grundflaeche und Mantellinie s.
-  Passendes Netz: ein Kreissektor als Mantelflaeche und ein Kreis als Grundflaeche.
-- Fachbegriffe sichtbar labeln:
-  Grundflaeche, Mantelflaeche, Spitze, Hoehe, Seitenkante bei der Pyramide, Mantellinie beim Kegel.
-
-Vermeiden:
-- Keine Volumen- oder Oberflaechenformeln in den Mittelpunkt stellen; es geht um Darstellung, Netze und Begriffe.
-- Beim Kegelnetz kein Dreieck als Mantelflaeche zeigen; korrekt ist ein Kreissektor.
-- Bei der Pyramidenhoehe nicht eine schräge Seitenkante als Hoehe markieren; die Hoehe steht senkrecht auf der Grundflaeche.
-- Keine Prismen- oder Zylinderform als Hauptfigur.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Use case: precise-object-edit
+Asset type: wide friendly German mathematics learning card, raster comic illustration.
+Input image 1: EDIT TARGET, the attempt-08 Pyramide/Kegel comic card. Input image 2: EXACT GEOMETRY REFERENCE for ONLY the right-hand purple semicircle and green circle; do not replace the non-net parts of Image 1 with its blank background.
+Primary request: Correct ONLY the HORIZONTAL width of the purple semicircle. In Image 1 its black outer arc at the diameter is approximately x=1251 to x=1623, too wide for its vertical radius and the green base circle. Move the purple left end about 6 pixels right and its right end about 6 pixels left, so its black diameter endpoints are around x=1257 and x=1617. Keep the sector's center, flat baseline near y=429, and top arc height near y=249 unchanged. This makes the purple shape a TRUE circular upper semicircle with horizontal and vertical radius about 180 pixels. The green base circle already has radius about 90 pixels: do not resize, move, or alter it. The semicircle radius must be twice the base-circle radius (s=2, r=1), so its arc and the base circumference are equal at 2π. Refit the sector's horizontal s=2 arrow to the new right endpoint, but do not alter its label.
+Invariants: Preserve all other pixels and content of Image 1 as closely as possible: pyramid, its net and all numeric 2 labels, cone, circle and its r=1 radius, the exact German headings and labels, 180° mark, Bogen = Umfang = 2π, colors, cream background, black outlines and comic quality. Preserve one curved arc and one straight diameter, not a lens, distorted ellipse, or extra curve. No extra text, tiny writing, logo, watermark, or new object. Output a newly edited raster bitmap, not an SVG or the bare reference.
 ```
 
 ## Review-Notiz

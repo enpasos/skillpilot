@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-0f4-plane-plane-current-20260927-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-0f4-plane-plane-current-20260927-v1.config.json",
+  "configDigest": "sha256:e14717d249077f2362f71f5f4cc49c389d31518dbc049053b1e992c576402fa0",
+  "goalIds": [
+    "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:893b67d18aeeb70797f05897f3455c27061f0278176fae9f47ca94c22f20159c"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:da5d175cd5a4234664bcb72f1ac6770589fe7b7c1f9de360d460c5aa89110e92",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:3dfbade820e6209deedc6ba402423b0a7949f5983ad122f891d640f0f44d221c",
+    "reviewInputFingerprint": "sha256:6b9d9f81dacf318c961042c01c7335cd85c2cf6ad575c0f9007cf23a43c749a4",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-0f4-plane-plane-current-20260927-v1-a",
+        "campaignDigest": "sha256:93b46b4201f275e42018074bd2585fec9dabc3f911054bb1532a55976ee5ec07",
+        "roundId": "mathematik-m7-0f4-plane-plane-current-20260927-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-0f4-plane-plane-current-20260927-v1-independent-a",
+        "batchId": "mathematik-m7-0f4-plane-plane-current-20260927-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:2e7f7822f53a73b8e219e5bbf458a3d6abac0677d373b01beaeddc100f5d2694"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-0f4-plane-plane-current-20260927-v1-b",
+        "campaignDigest": "sha256:b0175ec283e79189708c8646a6cf3348a64fdb6d68cc790afb1d93f73cd33ed4",
+        "roundId": "mathematik-m7-0f4-plane-plane-current-20260927-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-0f4-plane-plane-current-20260927-v1-independent-b",
+        "batchId": "mathematik-m7-0f4-plane-plane-current-20260927-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:41c9930649a14b3b436695a9cf871519cc117bb43cce901e47e7572918774653"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

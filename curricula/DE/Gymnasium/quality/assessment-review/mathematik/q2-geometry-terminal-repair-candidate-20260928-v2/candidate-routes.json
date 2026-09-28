@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 2,
+  "status": "AI-candidate-only; no canonical adoption, release or M7 approval",
+  "sourceExamGoalId": "1878f680-095c-511d-aaed-e98393f7fde9",
+  "baseline": {
+    "requiresCount": 42,
+    "coveredGoalIdsCount": 42,
+    "proposedRetainedCountAfterTaskRevision": 4,
+    "withdrawnDirectLinkCountAfterTaskRevision": 38,
+    "withdrawnIdsWithoutAnyCurrentTerminalPath": 16,
+    "courseProjectionPending": true
+  },
+  "sourceExamCoverageTriage": {
+    "safeInCurrentTask": [
+      "9460c3ff-e72d-4107-bc73-087d217200aa",
+      "5390691d-1b7c-5572-9589-a69c2bba9a27"
+    ],
+    "conditionalThirdInCurrentTask": "5f548596-9bc3-532e-88a0-81d5029809e9",
+    "requiresRevisedScoredPartThree": "288633c1-f61c-5b48-af7e-a80357f96cad",
+    "proposedCoveredGoalIdsOnlyAfterTaskAndCoverageReview": [
+      "9460c3ff-e72d-4107-bc73-087d217200aa",
+      "5390691d-1b7c-5572-9589-a69c2bba9a27",
+      "5f548596-9bc3-532e-88a0-81d5029809e9",
+      "288633c1-f61c-5b48-af7e-a80357f96cad"
+    ],
+    "requiresMustBeReviewedIndependently": true
+  },
+  "removedAlreadyBeforeThisCandidate": [
+    "7d37513b-fa1a-54cc-9e2a-9279a381f0f0"
+  ],
+  "priorityTasks": [
+    {
+      "candidateId": "q2-vector-combination-dependence-v2",
+      "scopeIntent": "Only SekII views in which all three goals are target-visible; currently 32 of 32 GK/LK views",
+      "requiresProposal": [
+        "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+        "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+        "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+      ],
+      "coveredGoalIdsProposal": [
+        "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+        "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+        "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+      ],
+      "stepPoints": [8, 6, 6],
+      "maxPoints": 20,
+      "reviewHold": "Independent task, solution, scoring, source and projected route review pending"
+    },
+    {
+      "candidateId": "q2-volume-five-solids-v2",
+      "scopeIntent": "Only common target scopes of all five goals; current diagnostic: 31 of 32 GK/LK SekII views, excluding DE-HE|SekII||LK",
+      "requiresProposal": [
+        "1e77bb2f-0cd6-5961-b0fb-230317c73fce",
+        "a594dec0-3977-5c43-9432-d4254a7f6130",
+        "c71ae268-f28e-59f0-982d-91db8f963378",
+        "e8237315-654e-5150-97de-49c4cb49b3d1",
+        "2f2c9f1a-07f0-59e4-b84a-60648c3b0bda"
+      ],
+      "coveredGoalIdsProposal": [
+        "1e77bb2f-0cd6-5961-b0fb-230317c73fce",
+        "a594dec0-3977-5c43-9432-d4254a7f6130",
+        "c71ae268-f28e-59f0-982d-91db8f963378",
+        "e8237315-654e-5150-97de-49c4cb49b3d1",
+        "2f2c9f1a-07f0-59e4-b84a-60648c3b0bda"
+      ],
+      "stepPoints": [5, 7, 4, 5, 4],
+      "maxPoints": 25,
+      "reviewHold": "Five simultaneous gates, each part's full goal coverage and 31-scope applicability need independent review; split if unfair"
+    },
+    {
+      "candidateId": "q2-spatproduct-he-lk-v2",
+      "scopeIntent": "DE-HE|SekII||LK only; recheck local Q2 route and target visibility before adoption",
+      "requiresProposal": [
+        "a594dec0-3977-5c43-9432-d4254a7f6130"
+      ],
+      "coveredGoalIdsProposal": [
+        "a594dec0-3977-5c43-9432-d4254a7f6130"
+      ],
+      "stepPoints": [3, 2, 2, 1, 2, 2],
+      "maxPoints": 12,
+      "reviewHold": "Distinct HE-LK task content and one-goal terminal scope need independent review"
+    }
+  ]
+}

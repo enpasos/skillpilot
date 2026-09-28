@@ -613,6 +613,19 @@ const extractBulletGoals = (passage: Passage): SourceGoal[] => {
 
   return bullets.flatMap((bullet, index) => {
     const bulletIndex = index + 1
+    // These topics span printed pages; the passage's start page is not the
+    // source page of every bullet.
+    if (passage.topicCode === 'Q2.3' && passage.page !== 42) {
+      throw new Error(`Unexpected Q2.3 starting page: ${passage.page}`)
+    }
+    if (passage.topicCode === 'Q4.2' && passage.page !== 51) {
+      throw new Error(`Unexpected Q4.2 starting page: ${passage.page}`)
+    }
+    const sourcePage = passage.topicCode === 'Q2.3' && bulletIndex >= 12
+      ? 43
+      : passage.topicCode === 'Q4.2' && bulletIndex >= 8
+        ? 52
+        : passage.page
     const courseTags = bullet.courseLevel === 'LK'
       ? ['LK']
       : bullet.courseLevel === 'GK_LK'
@@ -633,7 +646,7 @@ const extractBulletGoals = (passage: Passage): SourceGoal[] => {
         sourceText: bullet.text,
         sourceSpan: aspect.span,
         parentBulletText: normalizeBullet(bullet.text),
-        sourceRef: `HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, ${passage.topicCode}, S. ${passage.page}, Spiegelstrich ${bulletIndex}, Aspekt ${aspectIndex}`,
+        sourceRef: `HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, ${passage.topicCode}, S. ${sourcePage}, Spiegelstrich ${bulletIndex}, Aspekt ${aspectIndex}`,
         courseLevel: bullet.courseLevel,
         granularity: 'officialAspect',
         tags: ['source-goal', `topic:${passage.topicCode}`, `bullet:${bulletIndex}`, ...courseTags],
@@ -678,6 +691,21 @@ const renderedSourceGoals = sourceGoals.map((goal) => {
     parentBulletText: latexifyCurriculumMath(goal.parentBulletText),
   }
 })
+
+const q42Page51Goals = renderedSourceGoals.filter((goal) => goal.topicCode === 'Q4.2' && goal.bulletIndex < 8)
+const q42Page52Goals = renderedSourceGoals.filter((goal) => goal.topicCode === 'Q4.2' && goal.bulletIndex >= 8)
+const q23Page42Goals = renderedSourceGoals.filter((goal) => goal.topicCode === 'Q2.3' && goal.bulletIndex < 12)
+const q23Page43Goals = renderedSourceGoals.filter((goal) => goal.topicCode === 'Q2.3' && goal.bulletIndex >= 12)
+if (q23Page42Goals.length !== 24 || q23Page43Goals.length !== 10
+  || q23Page42Goals.some((goal) => !goal.sourceRef.includes(', S. 42,'))
+  || q23Page43Goals.some((goal) => !goal.sourceRef.includes(', S. 43,'))) {
+  throw new Error('Q2.3 page split changed; recheck the official PDF before generating source goals')
+}
+if (q42Page51Goals.length !== 9 || q42Page52Goals.length !== 18
+  || q42Page51Goals.some((goal) => !goal.sourceRef.includes(', S. 51,'))
+  || q42Page52Goals.some((goal) => !goal.sourceRef.includes(', S. 52,'))) {
+  throw new Error('Q4.2 page split changed; recheck the official PDF before generating source goals')
+}
 
 const hasSuspiciousText = (value: string): boolean =>
   /(?:Ã.|Â.|�|\uFFFD|[\uF000-\uF8FF])/u.test(value) || value !== value.normalize('NFC')
@@ -941,6 +969,25 @@ const output = {
   sourceGoals: renderedSourceGoals,
 }
 
-mkdirSync(path.dirname(outputPath), { recursive: true })
-writeFileSync(outputPath, `${JSON.stringify(output, null, 2)}\n`)
-console.log(`Wrote ${passages.length} passages and ${sourceGoals.length} source goals to ${toPosix(path.relative(repoRoot, outputPath))}`)
+const args = process.argv.slice(2)
+if (args.length > 1 || (args.length === 1 && !['--check-q42-pages', '--check-source-pages'].includes(args[0]))) {
+  throw new Error('Usage: tsx scripts/generateHeMathSekiiSourceExtraction.ts [--check-q42-pages|--check-source-pages]')
+}
+if (args[0] === '--check-q42-pages' || args[0] === '--check-source-pages') {
+  const existing = readJsonIfExists<typeof output>(outputPath)
+  if (!existing) throw new Error('Source-page check requires the existing extraction')
+  const topics = args[0] === '--check-source-pages' ? ['Q2.3', 'Q4.2'] : ['Q4.2']
+  const actual = existing.sourceGoals.filter((goal) => topics.includes(goal.topicCode))
+    .map((goal) => [goal.id, goal.sourceRef])
+  const expected = output.sourceGoals.filter((goal) => topics.includes(goal.topicCode))
+    .map((goal) => [goal.id, goal.sourceRef])
+  if (JSON.stringify(actual) !== JSON.stringify(expected)) {
+    throw new Error(`${topics.join(', ')} source goal IDs or page references differ from the official PDF extraction`)
+  }
+  if (topics.includes('Q2.3')) console.log('Q2.3 source pages verified: 24 aspects on p. 42, 10 aspects on p. 43')
+  console.log('Q4.2 source pages verified: 9 aspects on p. 51, 18 aspects on p. 52')
+} else {
+  mkdirSync(path.dirname(outputPath), { recursive: true })
+  writeFileSync(outputPath, `${JSON.stringify(output, null, 2)}\n`)
+  console.log(`Wrote ${passages.length} passages and ${sourceGoals.length} source goals to ${toPosix(path.relative(repoRoot, outputPath))}`)
+}

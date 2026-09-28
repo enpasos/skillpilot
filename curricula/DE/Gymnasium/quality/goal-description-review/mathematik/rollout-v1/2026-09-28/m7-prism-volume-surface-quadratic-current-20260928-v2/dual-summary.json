@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:087724606c372f6e583fefd4de588a8651e6ec7e4d7385fb73f72131571f71bb",
+  "reviewInputFingerprint": "sha256:182c6309727530aadd5f06dd19bf3876a05d329d35b76ae20a04fae6418c9f39",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-a",
+      "roundId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-independent-a",
+      "runIds": [
+        "math-m7-prism-quadratic-v2-a-astra-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-astra::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-b",
+      "roundId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-independent-b",
+      "runIds": [
+        "math-m7-prism-quadratic-v2-b-astra-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::gpt-6-astra::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+      "firstRecordId": "math-m7-prism-quadratic-v2-a-1",
+      "secondRecordId": "math-m7-prism-quadratic-v2-b-1",
+      "firstRunId": "math-m7-prism-quadratic-v2-a-astra-001",
+      "secondRunId": "math-m7-prism-quadratic-v2-b-astra-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f1348d40-3872-5e44-8892-3600c811796f",
+      "firstRecordId": "math-m7-prism-quadratic-v2-a-2",
+      "secondRecordId": "math-m7-prism-quadratic-v2-b-2",
+      "firstRunId": "math-m7-prism-quadratic-v2-a-astra-001",
+      "secondRunId": "math-m7-prism-quadratic-v2-b-astra-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9023226b-fc17-412b-807c-2bb45cd551d5",
+      "firstRecordId": "math-m7-prism-quadratic-v2-a-3",
+      "secondRecordId": "math-m7-prism-quadratic-v2-b-3",
+      "firstRunId": "math-m7-prism-quadratic-v2-a-astra-001",
+      "secondRunId": "math-m7-prism-quadratic-v2-b-astra-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

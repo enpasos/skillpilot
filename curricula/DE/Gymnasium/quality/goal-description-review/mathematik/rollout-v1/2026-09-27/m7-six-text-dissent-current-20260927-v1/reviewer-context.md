@@ -1,0 +1,14 @@
+# Current-context checks for the six-goal D bundle
+
+The bound `bundle/book.pdf`, `bundle/book-model.json`, and first-pass input are the exact current review surface. This note names questions to check; it is not a decision, and the two first-pass reviewers must decide independently. A correctly approved illustration is context, never evidence that a learner has mastered a goal or that a bundled description is semantically atomic.
+
+| PDF page | Goal | Specific question before `keep` |
+| --- | --- | --- |
+| 1 | `0b23413e-a334-5dd3-98e5-de067208819e` | Are axis intercepts and intersections of two graphs one coherent intersection competence at this level, or independently assessable outcomes? Compare `f(0)`, `f(x)=0`, and `f(x)=g(x)`; the goal has a direct E.1 source reference on p. 31. |
+| 2 | `1bc118c3-1f05-5f2a-b125-418017180d75` | Is addition, subtraction, and scaling of vectors one defensible introductory linear-operation goal, or does scaling require a separately mastered geometrical idea? The title omits subtraction while the DE/EN descriptions include it. |
+| 3 | `80956a2c-5811-4021-863e-95675bec31f5` | Does Pythagoras in a construction, its use to calculate lengths, and a figure-property justification form one assessment target, or can one part be mastered without the others? Do not infer general proof ability from one worked construction. |
+| 4 | `972cc7e8-be9c-444c-ba45-98e817b3cf14` | Check forward parameter effects against inverse parameter determination. The graph also contains `71683f37-24de-4e0f-badd-858b56fa4d64` (determine parameters from context conditions) and `91e2f564-3bc8-4924-af85-2a3fa84c1471` (investigate parameter effects in context). Keep only if the current goal has a distinct coherent scope. |
+| 5 | `f37b0a72-9e23-51c7-aad5-438c17a56899` | Does the Q2.2 p. 41 vector operation unite addition and scalar multiplication coherently for spatial vectors, or are these separate atomic targets? The present illustration shows one positive scaling example; the description is not restricted to positive factors. |
+| 6 | `fde351a8-98b1-5d75-b4df-813beb2bbe3c` | Does formulating one relationship between quantities and interpreting its terms count as one modelling step across equation, inequality, or function representations? The corrected current kiosk PNG treats 2 EUR per juice as variable material cost; image correctness alone does not settle description quality. |
+
+For each page, verify the current DE and EN text, the actual required source or mapping scope, the prerequisite and successor boundaries, and whether an independent unfamiliar task could test the claimed competence. A prior semantic-atomicity ledger flag or AI visual approval is not a substitute for this review. If any issue requires changing the graph, source mapping, scope, or canonical image, record a blocker or split proposal rather than silently converting it to a text-only `keep`.

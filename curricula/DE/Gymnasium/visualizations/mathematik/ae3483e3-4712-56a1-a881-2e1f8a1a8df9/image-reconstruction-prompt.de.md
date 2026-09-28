@@ -4,12 +4,12 @@
 
 - SkillPilot-ID: `ae3483e3-4712-56a1-a881-2e1f8a1a8df9`
 - Titel: Entscheidungsregel oder Stichprobenumfang aus Gütefunktionsgraphen bestimmen (LK)
-- Beschreibung: Die lernende Person kann aus dem Graphen der Operationscharakteristik beziehungsweise Gütefunktion eine passende Entscheidungsregel oder einen geeigneten Stichprobenumfang ablesen und fachlich begründen.
+- Beschreibung: Die lernende Person kann für vorgegebene Kandidaten von Entscheidungsregeln oder Stichprobenumfängen eindeutig gekennzeichnete Graphen der Operationscharakteristik oder Gütefunktion auswerten, die jeweiligen Nichtverwerfungs- beziehungsweise Verwerfungswahrscheinlichkeiten mit vorgegebenen Anforderungen vergleichen und eine passende Entscheidungsregel oder einen geeigneten Stichprobenumfang auswählen und fachlich begründen.
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
-- Quellbild: `ae3483e3-4712-56a1-a881-2e1f8a1a8df9.jpg`
+- Provider: ChatGPT/Codex imagegen (model/version not exposed)
+- Quellbild: `ae3483e3-4712-56a1-a881-2e1f8a1a8df9.png`
 
 ## Zweck
 
@@ -18,30 +18,5 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein Bild im Stil einer klaren, pädagogischen Infografik oder Präsentationsfolie. Der Hintergrund ist hellblau mit subtilen, stilisierten weißen Wolken in den oberen Ecken.
-
-Oben mittig steht der Titel in großer, fetter, schwarzer Schrift: "Entscheidungsregel oder Stichprobenumfang aus Gütefunktionsgraphen bestimmen (LK)".
-Direkt darunter, ebenfalls mittig, steht der Untertitel in kleinerer, schwarzer Schrift: "Thema: Stichprobenumfang aus Gütefunktion ablesen".
-
-Ein großes, rechteckiges Diagrammfeld mit abgerundeten Ecken und einem hellblauen Rand ist mittig unter dem Untertitel platziert. Dahinter befindet sich ein dezenter, orange-brauner Schattierungseffekt, der dem Feld Tiefe verleiht.
-
-Innerhalb des Diagrammfeldes befindet sich ein 2D-Koordinatensystem mit schwarzen Achsen.
-Die vertikale Y-Achse ist mit einem Pfeil nach oben versehen und trägt die Beschriftung "Güte G(n)", um 90 Grad gegen den Uhrzeigersinn gedreht. Entlang der Y-Achse sind blaue Zahlen "0,0", "0,5" und "1,0" an entsprechenden Teilstrichen markiert.
-Die horizontale X-Achse ist mit einem Pfeil nach rechts versehen und trägt die Beschriftung "Stichprobenumfang n". Entlang der X-Achse sind blaue Zahlen "20", "40", "60" und "80" an entsprechenden Teilstrichen markiert.
-
-Eine glatte, blaue Kurve beginnt am Ursprung (0,0) und steigt nach rechts oben an. Auf der Kurve sind vier Kreispunkte markiert:
-- Über dem X-Wert "20" ist ein blauer Kreispunkt mit der Beschriftung "G(20)=0.55" darunter.
-- Über dem X-Wert "40" ist ein blauer Kreispunkt mit der Beschriftung "G(40)=0.72" darunter.
-- Über dem X-Wert "60" ist ein grüner Kreispunkt mit der grünen Beschriftung "G(60)=0.85" darüber.
-- Über dem X-Wert "80" ist ein blauer Kreispunkt mit der Beschriftung "G(80)=0.93" darüber.
-
-Eine orangefarbene, gestrichelte horizontale Linie verläuft von der Y-Achse bei "0,80" über das gesamte Diagramm. Die Zahl "0,80" an der Y-Achse ist orange leuchtend hervorgehoben. Rechts von der gestrichelten Linie steht in schwarzer Schrift: "Mindestgüte: G(n)=0.80".
-
-Ein grüner Pfeil zeigt entlang der blauen Kurve nach rechts, beginnend vor dem G(60)-Punkt und endend am grünen G(60)=0.85-Punkt.
-Ein weiterer grüner Pfeil zeigt vertikal nach unten, beginnend am grünen G(60)=0.85-Punkt und endend am X-Wert "60" auf der X-Achse.
-Rechts neben dem vertikalen Pfeil steht in schwarzer Schrift: "n=60: Erreicht Mindestgüte".
-Unterhalb der blauen Kurve, im rechten Bereich des Diagramms, steht in schwarzer Schrift: "Gütefunktion G(n) für feste Alternative".
-
-Unterhalb des Hauptdiagramms befindet sich eine rechteckige "Ergebnisbox" mit abgerundeten Ecken, einem grünen Rand und einer hellgrünen Füllung.
-In dieser Box steht mittig in schwarzer Schrift: "Ergebnisbox: Mindestgüte 0.80 -> wähle n ≥ 60; kleinster gezeigter passender Stichprobenumfang: n=60."
+Erzeuge eine breite, freundlich handgezeichnete aber mathematisch sorgfältige deutsche Statistik-Lernkarte. Titel „Zwei Gütefunktionen gegen p“. Links ein Koordinatensystem mit p von 0 bis 1 horizontal und G(p) von 0 bis 1 vertikal. G(p) meint die Verwerfungswahrscheinlichkeit P_p(X≥k). Genau zwei glatte monotone binomiale Gütefunktionskurven: A blau mit n=40 und Verwerfungsregel X≥13, B rot mit n=80 und X≥23. Für p=0,2 gilt A≈0,043 und B≈0,039, also liegt Rot dort knapp unter Blau. Für p=0,4 gilt A≈0,871 und B≈0,986, also liegt Rot dort über Blau. Die Kurven dürfen dazwischen kreuzen; keine globale Ordnungsbehauptung. Rechts groß und lesbar die beiden Regeln, beide Wertepaare und die Anforderungen G(0,2)≤0,05 und G(0,4)≥0,90. Abschluss „Nur B erfüllt beide.“ Farbzuordnung und Zahlen müssen exakt sein. Sparsame Deko, keine Personen, keine weiteren Werte. Alle Texte auch bei 360 px Gesamtbreite lesbar.
 ```

@@ -19,6 +19,58 @@ class LandscapeServiceSourceRegistryTest {
     Path tempDir;
 
     @Test
+    void ignoresReviewCandidateWithSameLandscapeIdAsCanonicalRuntimeLandscape() throws IOException {
+        writeJson(tempDir.resolve("DE/Gymnasium/canonical/math.de.json"), """
+                {
+                  "landscapeId": "canonical-math",
+                  "title": "Current Mathematics",
+                  "goals": [{"id": "current-goal", "title": "Current goal"}]
+                }
+                """);
+        writeJson(tempDir.resolve("DE/Gymnasium/quality/review/candidate-canonical-math.de.json"), """
+                {
+                  "landscapeId": "canonical-math",
+                  "title": "Stale review candidate",
+                  "goals": [{"id": "stale-goal", "title": "Stale goal"}]
+                }
+                """);
+
+        LandscapeService service = createService(tempDir);
+
+        assertThat(service.getAll()).hasSize(1);
+        assertThat(service.getById("canonical-math").getTitle()).isEqualTo("Current Mathematics");
+        assertThat(service.getGoalDefinition("current-goal")).isNotNull();
+        assertThat(service.getGoalDefinition("stale-goal")).isNull();
+        assertThat(service.getLandscapeIdForGoal("current-goal")).isEqualTo("canonical-math");
+    }
+
+    @Test
+    void indexesOnlyFirstRuntimeLandscapeWhenAnIdIsDuplicated() throws IOException {
+        writeJson(tempDir.resolve("a/first.json"), """
+                {
+                  "landscapeId": "duplicate-id",
+                  "title": "First",
+                  "goals": [{"id": "first-goal", "title": "First goal"}]
+                }
+                """);
+        writeJson(tempDir.resolve("z/second.json"), """
+                {
+                  "landscapeId": "duplicate-id",
+                  "title": "Second",
+                  "goals": [{"id": "second-goal", "title": "Second goal"}]
+                }
+                """);
+
+        LandscapeService service = createService(tempDir);
+
+        assertThat(service.getAll()).hasSize(1);
+        assertThat(service.getById("duplicate-id").getTitle()).isEqualTo("First");
+        assertThat(service.getGoalDefinition("first-goal")).isNotNull();
+        assertThat(service.getGoalDefinition("second-goal")).isNull();
+        assertThat(service.getLandscapeIdForGoal("second-goal")).isNull();
+    }
+
+    @Test
     void resolvesJurisdictionFromSourceLandscapeRegistryWhenLoadedLandscapeHasNoRegion() throws IOException {
         writeJson(tempDir.resolve("legacy/math.json"), """
                 {

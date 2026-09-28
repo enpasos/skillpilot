@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-polynomial-antiderivative-current-p-20260927-v1",
+  "reviewedAt": "2026-09-27T21:15:04.000Z",
+  "reviewer": "OpenAI Codex targeted Mathematics subject review; AI candidate only",
+  "goals": [
+    {
+      "goalId": "31be24f0-3ab1-54d2-856d-fa9b7f36552f",
+      "reason": "Die verengte DE/EN-Fassung verlangt zu einer ganzrationalen Funktion ohne Hilfsmittel eine eigene Stammfunktion und ihre Ableitungsprüfung. HE Q1.1 und BY M12 Analysis stützen diese Konstruktion; die breitere NRW-Erwartung wird nur teilweise durch dieses Ziel gedeckt. Das aktuelle PNG zeigt als Lernhilfe f(x)=3x²+2x, F(x)=x³+x² und F′=f, jedoch keinen Integralwert. Beide frischen Prüfaufgaben verwenden andere Funktionen, verlangen selbständige Konstruktion und vollständige Ableitungsprüfung; die zweite wechselt von ausmultiplizierter zu faktorisierter Darstellung mit konstantem Summanden und verlangt eine weitere Stammfunktion samt Erklärung der gleichen Ableitung. Die frühere Prüfung eines bestimmten Integrals oder der Rekonstruktion aus vorgegebener F wird ausdrücklich nicht als Evidenz für dieses Ziel weitergeführt. E1/G1 KI-Kandidat, keine menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "construct-polynomial-antiderivative",
+            "essentialUnderstandingDe": "Für jeden Polynomterm a·xⁿ mit ganzzahligem n≥0 liefert a/(n+1)·xⁿ⁺¹ eine Stammfunktion; Summanden werden einzeln behandelt, und eine additive Konstante ändert die Ableitung nicht.",
+            "essentialUnderstandingEn": "For each polynomial term a·x^n with integer n≥0, a/(n+1)·x^(n+1) is an antiderivative; terms are handled separately, and an additive constant does not change the derivative.",
+            "observablePerformanceDe": "Die lernende Person formt einen gegebenen Polynomterm gegebenenfalls zunächst um und bestimmt ohne Hilfsmittel eine passende Stammfunktion für alle Summanden, einschließlich Vorzeichen und konstantem Summanden.",
+            "observablePerformanceEn": "The learner rewrites a given polynomial expression where necessary and, without aids, constructs an antiderivative for every term, including signs and any constant term."
+          },
+          {
+            "id": "verify-by-differentiating",
+            "essentialUnderstandingDe": "Ein selbst bestimmtes F ist genau dann eine Stammfunktion zu f, wenn F′(x)=f(x) für den betrachteten Polynom-Ausdruck gilt.",
+            "essentialUnderstandingEn": "A self-constructed F is an antiderivative of f exactly when F′(x)=f(x) for the polynomial expression considered.",
+            "observablePerformanceDe": "Die lernende Person leitet ihr eigenes F vollständig ab, vereinfacht bei Bedarf und vergleicht die resultierende Funktion ausdrücklich mit dem vorgegebenen f.",
+            "observablePerformanceEn": "The learner fully differentiates their own F, simplifies if needed, and explicitly compares the resulting function with the given f."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["construct-polynomial-antiderivative", "verify-by-differentiating"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "expanded-to-factored-with-constant",
+            "textDe": "Von einem bereits ausmultiplizierten Polynom ohne konstanten Summanden zu einer faktorisiert angegebenen Funktion mit konstantem Summanden; vor dem Bilden und Prüfen der Stammfunktion muss die Polynomstruktur sichtbar gemacht werden.",
+            "textEn": "From an expanded polynomial without a constant term to a function given in factored form with a constant term; the polynomial structure must first be made explicit before constructing and checking the antiderivative."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "expanded-polynomial",
+            "taskDemandDe": "Bestimme ohne Hilfsmittel eine Stammfunktion zu f(x)=8x³−6x und prüfe dein Ergebnis durch vollständiges Ableiten.",
+            "taskDemandEn": "Without aids, determine an antiderivative of f(x)=8x³−6x and check your result by full differentiation.",
+            "expectedPerformanceDe": "Zum Beispiel F(x)=2x⁴−3x²; die vollständige Ableitung F′(x)=8x³−6x stimmt mit f(x) überein.",
+            "expectedPerformanceEn": "For example F(x)=2x⁴−3x²; the full derivative F′(x)=8x³−6x equals f(x).",
+            "understandingFocusDe": "Die Potenzregel wird auf beide Summanden mit korrekten Koeffizienten und Vorzeichen umgekehrt und am eigenen Ergebnis geprüft.",
+            "understandingFocusEn": "The power rule is reversed for both terms with correct coefficients and signs, then checked on the learner's own result."
+          },
+          {
+            "id": "factored-polynomial-transfer",
+            "taskDemandDe": "Gegeben ist g(x)=2x(x²−3)+4. Bestimme ohne Hilfsmittel eine Stammfunktion und prüfe sie durch Ableiten gegen den ursprünglichen, faktorisiert geschriebenen Ausdruck. Gib eine davon verschiedene zweite Stammfunktion an und begründe durch Ableiten, warum auch sie passt.",
+            "taskDemandEn": "Given g(x)=2x(x²−3)+4, determine an antiderivative without aids and check it by differentiation against the original expression in factored form. Give a distinct second antiderivative and explain by differentiation why it also fits.",
+            "expectedPerformanceDe": "g(x)=2x³−6x+4. Zum Beispiel G₁(x)=½x⁴−3x²+4x mit G₁′(x)=2x³−6x+4=2x(x²−3)+4=g(x). Als zweite Stammfunktion passt G₂(x)=G₁(x)+5, weil die Konstante beim Ableiten entfällt und daher auch G₂′(x)=g(x) gilt.",
+            "expectedPerformanceEn": "g(x)=2x³−6x+4. For example G₁(x)=½x⁴−3x²+4x with G₁′(x)=2x³−6x+4=2x(x²−3)+4=g(x). A second antiderivative is G₂(x)=G₁(x)+5 because the constant vanishes on differentiation, so G₂′(x)=g(x) as well.",
+            "understandingFocusDe": "Auch bei anderer Darstellung und konstantem Summanden wird die ganze Funktion integriert und durch Ableiten geprüft; ein zusätzlicher konstanter Summand ändert diese Ableitung nicht.",
+            "understandingFocusEn": "Even with a different representation and a constant term, the entire function is integrated and checked by differentiation; adding a constant does not change that derivative."
+          }
+        ]
+      }
+    }
+  ]
+}

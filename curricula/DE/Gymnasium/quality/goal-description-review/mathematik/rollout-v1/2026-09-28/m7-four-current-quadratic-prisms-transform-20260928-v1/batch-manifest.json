@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-four-current-quadratic-prisms-transform-20260928-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-four-current-quadratic-prisms-transform-20260928-v1.config.json",
+  "configDigest": "sha256:654a4f7184097ab1469b1c1a38239ae5557557d1612309c5540e76991b850119",
+  "goalIds": [
+    "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+    "f1348d40-3872-5e44-8892-3600c811796f",
+    "9023226b-fc17-412b-807c-2bb45cd551d5",
+    "7d37513b-fa1a-54cc-9e2a-9279a381f0f0"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 799,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:83c0029b99b04f4fb134e12c8e0ee632f868bb9709a5b8c7292344b47336dc6a"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:46b9de467260c68e98406c21c0913b0be608ba9a44ba7b86b77fd686589ae6ee",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:b10282ca21c3c3783f0ef4531883b4eac58dae7916d905796588944dd1d4b92e",
+    "reviewInputFingerprint": "sha256:310ffb2bc06eeb4a92b08aa0a8b14c44c479bbffd2cf93afb0ff3fbfdc763abe",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-four-current-quadratic-prisms-transform-20260928-v1-a",
+        "campaignDigest": "sha256:8f8c7a2596a0d40d93e8e1d2b82cf769eb7cd4ac7f885008442d1dac4aa50403",
+        "roundId": "mathematik-m7-four-current-quadratic-prisms-transform-20260928-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-four-current-quadratic-prisms-transform-20260928-v1-independent-a",
+        "batchId": "mathematik-m7-four-current-quadratic-prisms-transform-20260928-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:0f44f43fb6edb4d0f08fd2e743787eac13f491d96a616eb5a2512b0976ce4e51"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-four-current-quadratic-prisms-transform-20260928-v1-b",
+        "campaignDigest": "sha256:3bbefa8fcf97d0a5612bc8beb59e25712242078b54a9ca568d1691eb01ce34d9",
+        "roundId": "mathematik-m7-four-current-quadratic-prisms-transform-20260928-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-four-current-quadratic-prisms-transform-20260928-v1-independent-b",
+        "batchId": "mathematik-m7-four-current-quadratic-prisms-transform-20260928-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:bba08063029835442dc4bc72d648ddca85449c58aa8e2a74c18465e289bd0b82"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

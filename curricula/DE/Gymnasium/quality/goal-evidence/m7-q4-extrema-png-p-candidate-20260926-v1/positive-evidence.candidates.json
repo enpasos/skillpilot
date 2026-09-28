@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-q4-extrema-png-p-candidate-20260926-v1",
+  "reviewedAt": "2026-09-26T11:18:50.000Z",
+  "reviewer": "Codex focused mathematics P-v2 authoring; AI candidate only",
+  "goals": [
+    {
+      "goalId": "7feaaebd-cc8d-522b-8b3a-ea22675c65dd",
+      "reason": "The current canonical DE/EN goal asks for derivative-based parameter-dependent extrema and checking. HMKB KCGO Mathematik Q4.1, p. 51, bullet 1 covers polynomial families at basic level; the earlier combined extrema/inflection legacy goal has been split, so this profile addresses extrema only. The bound PNG (sha256:b6febfc994fc347e2ed2c71543b5bca797a2059c7980f92d259eda367cd63920) correctly illustrates one quadratic minimum and the second-derivative check. Fresh quadratic and cubic cases require the learner to derive and classify parameter regimes independently, including the case where a stationary point is no extremum; the image is teaching support, not mastery evidence.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "derive-parameter-stationary-candidates",
+            "essentialUnderstandingDe": "Bei einer Schar wird beim Ableiten nach x der Parameter a als Konstante behandelt; Lösungen von f'_a(x)=0 sind zunächst stationäre Kandidaten, deren Anzahl und Lage vom zulässigen Parameterfall abhängen können.",
+            "essentialUnderstandingEn": "In a family, the parameter a is held constant when differentiating with respect to x; solutions of f'_a(x)=0 are initially stationary candidates whose number and location can depend on the admissible parameter regime.",
+            "observablePerformanceDe": "Die lernende Person leitet einen neuen Scharterm nach x ab, löst die Kandidatengleichung in den relevanten reellen Parameterfällen und setzt jede gefundene Stelle für die vollständigen Punktkoordinaten in die Ausgangsfunktion ein.",
+            "observablePerformanceEn": "The learner differentiates a fresh family with respect to x, solves the candidate equation across the relevant real parameter regimes, and substitutes each location into the original function for complete point coordinates."
+          },
+          {
+            "id": "verify-extremum-type-and-boundary",
+            "essentialUnderstandingDe": "Erst eine hinreichende Prüfung klassifiziert eine stationäre Stelle als Hoch- oder Tiefstelle; bei f''_a(x)=0 entscheidet das Vorzeichenverhalten von f'_a in der Umgebung, ob überhaupt ein Extremum vorliegt.",
+            "essentialUnderstandingEn": "Only a sufficient check classifies a stationary location as a maximum or minimum; when f''_a(x)=0, the sign behaviour of f'_a nearby determines whether there is an extremum at all.",
+            "observablePerformanceDe": "Die lernende Person wendet eine passende Ableitungsprüfung für jeden Parameterfall an, begründet den Typ oder das Fehlen eines Extremums und kontrolliert mindestens einen konkreten Scharwert am Term und Graphenverlauf.",
+            "observablePerformanceEn": "The learner applies a suitable derivative check in each parameter regime, justifies the type or absence of an extremum, and checks at least one concrete family member against the formula and graph behaviour."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "derive-parameter-stationary-candidates",
+            "verify-extremum-type-and-boundary"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "quadratic-to-coalescing-cubic",
+            "textDe": "Eine für alle a nach oben geöffnete quadratische Schar mit genau einem Tiefpunkt wird durch eine kubische Schar ersetzt, deren zwei stationäre Stellen bei a=0 zusammenfallen und ihren Typ bei Vorzeichenwechsel von a tauschen.",
+            "textEn": "A quadratic family opening upward for every a with exactly one minimum changes to a cubic family whose two stationary locations merge at a=0 and exchange types when a changes sign."
+          },
+          {
+            "id": "verification-criterion",
+            "textDe": "Von einer überall positiven zweiten Ableitung zur Fallgrenze mit verschwindender zweiter Ableitung wechseln; dort wird das Vorzeichen von f'_a links und rechts der Stelle geprüft.",
+            "textEn": "Move from an everywhere positive second derivative to a boundary case with zero second derivative; there the sign of f'_a to either side of the location is checked."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "shifted-quadratic-full-minimum",
+            "taskDemandDe": "Untersuche p_a(x)=2x²−8ax+3 für alle reellen a. Bestimme die Extremstelle und den vollständigen Extrempunkt, prüfe den Typ mit Ableitungen und kontrolliere das Ergebnis für a=−1 an einer geeigneten Termform und Skizze.",
+            "taskDemandEn": "Investigate p_a(x)=2x²−8ax+3 for all real a. Find the extremum location and complete point, check its type with derivatives, and verify the result for a=−1 with a suitable form of the expression and a sketch.",
+            "expectedPerformanceDe": "p'_a(x)=4x−8a liefert x=2a; p''_a(x)=4>0 und p_a(2a)=3−8a², also T_a=(2a|3−8a²) für jedes reelle a. Für a=−1 gilt p_{−1}(x)=2(x+2)²−5; der nach oben geöffnete Graph hat T=(−2|−5).",
+            "expectedPerformanceEn": "p'_a(x)=4x−8a gives x=2a; p''_a(x)=4>0 and p_a(2a)=3−8a², so T_a=(2a,3−8a²) for every real a. For a=−1, p_{−1}(x)=2(x+2)²−5; the upward-opening graph has T=(−2,−5).",
+            "understandingFocusDe": "Parametrische Ableitung, vollständiger Punkt statt bloßer x-Stelle und ein unabhängiger Graph-/Termcheck.",
+            "understandingFocusEn": "Parameter-aware differentiation, the complete point rather than only its x-location, and an independent graph/expression check."
+          },
+          {
+            "id": "cubic-merged-stationary-transfer",
+            "taskDemandDe": "Untersuche ohne Vorlage q_a(x)=x³−3ax² für a>0, a<0 und a=0. Bestimme alle Extrempunkte mit Typ und Koordinaten. Prüfe bei a=0 ausdrücklich anhand der ersten Ableitung, ob die stationäre Stelle ein Extremum ist, und kontrolliere die Typen für a=1 und a=−1 am Graphenverlauf.",
+            "taskDemandEn": "Without a worked template, investigate q_a(x)=x³−3ax² for a>0, a<0, and a=0. Find all extrema with types and coordinates. At a=0 use the first derivative explicitly to decide whether the stationary location is an extremum, and check the types for a=1 and a=−1 against graph behaviour.",
+            "expectedPerformanceDe": "q'_a(x)=3x(x−2a), q''_a(x)=6x−6a. Für a>0: H=(0|0) und T=(2a|−4a³); für a<0: T=(0|0) und H=(2a|−4a³). Bei a=0 ist q'_0(x)=3x² auf beiden Seiten von 0 positiv; x=0 ist stationär, aber kein Extremum. Die Beispiele a=1 mit H=(0|0), T=(2|−4) und a=−1 mit T=(0|0), H=(−2|4) stimmen mit den jeweiligen Verläufen überein.",
+            "expectedPerformanceEn": "q'_a(x)=3x(x−2a), q''_a(x)=6x−6a. For a>0: H=(0,0) and T=(2a,−4a³); for a<0: T=(0,0) and H=(2a,−4a³). At a=0, q'_0(x)=3x² is positive on both sides of 0; x=0 is stationary but not an extremum. The examples a=1 with H=(0,0), T=(2,−4) and a=−1 with T=(0,0), H=(−2,4) agree with their respective graph behaviour.",
+            "understandingFocusDe": "Parameterabhängige Kandidaten, Typwechsel und das Fehlen eines Extremums am zusammenfallenden Grenzfall eigenständig nachweisen.",
+            "understandingFocusEn": "Independently establish parameter-dependent candidates, the exchange of extrema types, and the absence of an extremum in the merged boundary case."
+          }
+        ]
+      }
+    }
+  ]
+}

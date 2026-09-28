@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-notation-derivative-two-current-20260927-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-notation-derivative-two-current-20260927-v1.config.json",
+  "configDigest": "sha256:b14a11973d801cf679af04c69b73ff35810ea54102da8e2ad8ad8a5c168fc0a6",
+  "goalIds": [
+    "aeae526e-b3a4-5a17-b177-351df0307cb9",
+    "1a18dbb3-f350-4766-9c8b-20ca018ccef1"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:863d8fda3e130adb49a34b593860cc1fbc1528768aa990e2d11db0e9b41fe5df"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:e8da7edbed2260ab708c3259e5bc2469ace40d9735b14257b4144f0fa529763d",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:a4c38e44c40c63b2e573a4feb9b5cbfee23cb1a753da5a5c97cd9aeea634c804",
+    "reviewInputFingerprint": "sha256:21503f7fc5bd7506d2ecfe8342a8f81272feb3a36a3ae2a653324fc18295b0d4",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-notation-derivative-two-current-20260927-v1-a",
+        "campaignDigest": "sha256:7989e14615216c58e8834af39a7962471b61aebdab8b7954d312f4ae7c993775",
+        "roundId": "mathematik-m7-notation-derivative-two-current-20260927-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-notation-derivative-two-current-20260927-v1-independent-a",
+        "batchId": "mathematik-m7-notation-derivative-two-current-20260927-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:d72357a7867fa638ae37da06845a0238403164e47233ba78dac155c6583aa058"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-notation-derivative-two-current-20260927-v1-b",
+        "campaignDigest": "sha256:7242f8bb87da0af29509aec9492c799ad140488fc541305d3a951149b7151eb6",
+        "roundId": "mathematik-m7-notation-derivative-two-current-20260927-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-notation-derivative-two-current-20260927-v1-independent-b",
+        "batchId": "mathematik-m7-notation-derivative-two-current-20260927-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:928289cf6e97a478777736c1b8f75b97e95ee6b677304ac3c26d9893ebfee7ed"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

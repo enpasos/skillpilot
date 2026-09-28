@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 
 import {
   hasCurrentGoalVisualizationApproval,
+  isExplicitOwnerPilotDisplayException,
   unapprovedActiveGoalVisualizations,
 } from './checkGoalVisualizationQaApprovalCoverage'
 
@@ -63,4 +64,20 @@ assert.deepEqual(unapprovedActiveGoalVisualizations([
   humanIssueIdentified: 'no',
 }], 'missing/deferred goals are outside the active-image approval gate')
 
-console.log('Goal-visualization approval coverage self-test passed: 5 approval guarantees.')
+const ownerPilot = {
+  ...baseRecord,
+  goalId: '121e3fdf-54d2-4d46-bc2d-f6e725f10f41',
+  assetSha256: 'sha256:9a388e26e0e16f2ade9a92f92545fe1e5457f90a35dd8e6eabecb37aa3b2a5c2',
+  humanApproved: 'no',
+  humanIssueIdentified: 'no',
+  aiApproved: 'no',
+  aiApprovedAssetSha256: 'sha256:9a388e26e0e16f2ade9a92f92545fe1e5457f90a35dd8e6eabecb37aa3b2a5c2',
+  aiReviewedAt: '2026-09-26T09:45:05Z',
+}
+assert.equal(hasCurrentGoalVisualizationApproval(ownerPilot), false, 'owner pilot must not be an image approval')
+assert.equal(isExplicitOwnerPilotDisplayException('mathematik', ownerPilot), true, 'exact owner pilot may be displayed')
+assert.equal(isExplicitOwnerPilotDisplayException('physik', ownerPilot), false, 'exception must be subject-scoped')
+assert.equal(isExplicitOwnerPilotDisplayException('mathematik', { ...ownerPilot, assetSha256: HASH_B }), false, 'replacement must be re-reviewed')
+assert.equal(isExplicitOwnerPilotDisplayException('mathematik', { ...ownerPilot, humanIssueIdentified: 'yes' }), false, 'human NOK must block display exception')
+
+console.log('Goal-visualization approval coverage self-test passed: strict approvals and one exact-hash display exception.')

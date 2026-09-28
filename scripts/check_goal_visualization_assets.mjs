@@ -15,6 +15,10 @@ const runtimeRoots = [
 ]
 const canonicalRoot = 'curricula/DE/Gymnasium/visualizations'
 const allowedExtensions = new Set(['.png', '.jpg', '.jpeg', '.webp'])
+const historicalAssetManifest = JSON.parse(fs.readFileSync(path.join(
+  repoRoot,
+  'scripts/config/historical-goal-visualization-assets.json',
+), 'utf8'))
 
 function repoRelative(filePath) {
   return path.relative(repoRoot, filePath).split(path.sep).join('/')
@@ -66,6 +70,23 @@ let checkedLinks = 0
 let checkedLandscapes = 0
 const expectedAssetRelativePaths = new Set()
 const assetOwners = new Map()
+const historicalAssets = new Map()
+
+if (historicalAssetManifest.schemaVersion !== 1 || !Array.isArray(historicalAssetManifest.assets)) {
+  fail('Historical visualization asset manifest has an unsupported format.')
+} else {
+  for (const entry of historicalAssetManifest.assets) {
+    const relativePath = entry?.path
+    if (typeof relativePath !== 'string'
+      || !/^([a-z0-9-]+)\/([0-9a-f-]{36})\/\2\.(png|jpe?g|webp)$/u.test(relativePath)
+      || !/^[0-9a-f]{64}$/u.test(entry?.sha256 ?? '')
+      || historicalAssets.has(relativePath)) {
+      fail(`Invalid or duplicate historical visualization asset: ${String(relativePath)}.`)
+      continue
+    }
+    historicalAssets.set(relativePath, entry.sha256)
+  }
+}
 
 const landscapePaths = fs.readdirSync(canonicalDir)
   .filter((name) => name.endsWith('.json'))
@@ -189,11 +210,28 @@ for (const landscapePath of landscapePaths) {
   }
 }
 
+// Exact, hash-bound exceptions retain old published URLs after a newer image
+// becomes the canonical primary. They are not evidence for current image QA.
+for (const [relativePath, expectedHash] of historicalAssets) {
+  if (expectedAssetRelativePaths.has(relativePath)) {
+    fail(`${relativePath}: historical asset is still a current primary link.`)
+  }
+  for (const root of [canonicalRoot, ...runtimeRoots]) {
+    const absoluteRoot = path.join(repoRoot, root)
+    const assetPath = resolveWithinRoot(absoluteRoot, relativePath)
+    if (!assetPath || !fs.existsSync(assetPath) || !realPathIsWithinRoot(absoluteRoot, assetPath)) {
+      fail(`${root}/${relativePath}: pinned historical asset is missing or escapes its root.`)
+    } else if (sha256(assetPath) !== expectedHash) {
+      fail(`${root}/${relativePath}: pinned historical asset hash changed.`)
+    }
+  }
+}
+
 for (const root of [canonicalRoot, ...runtimeRoots]) {
   const absoluteRoot = path.join(repoRoot, root)
   for (const imagePath of imageFilesBelow(absoluteRoot)) {
     const relativeAssetPath = path.relative(absoluteRoot, imagePath).split(path.sep).join('/')
-    if (!expectedAssetRelativePaths.has(relativeAssetPath)) {
+    if (!expectedAssetRelativePaths.has(relativeAssetPath) && !historicalAssets.has(relativeAssetPath)) {
       fail(`${repoRelative(imagePath)}: orphan image has no canonical primary goal-visualization link.`)
     }
   }

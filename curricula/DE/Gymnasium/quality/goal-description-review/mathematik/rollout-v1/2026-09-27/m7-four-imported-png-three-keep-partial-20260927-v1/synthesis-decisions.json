@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-four-imported-png-three-keep-partial-20260927-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-27T13:19:56.417Z",
+  "batch": {
+    "batchId": "mathematik-m7-four-imported-png-current-20260927-v1",
+    "batchManifestDigest": "sha256:4c353a35f1bfc1490370a77a730b042c7d39c3afb861ab8b139d853b43f44879",
+    "configDigest": "sha256:0df71df8a7694065976929aad58090af1ffa8e0a339b38fae3cc093e6a85f9dd",
+    "bundleFingerprint": "sha256:00b54e35a816cb5510a5a0a869f81cfc3ed27a81c2ab2ab82d314a5f3af0e1c5",
+    "bookDigest": "sha256:38ab29b83a98b231688ed5c1c2ae5ff5a2c8ce79b8e9c1af355f1c50f2e3455a",
+    "reviewInputFingerprint": "sha256:5d52c13142e15667e84d01b813b0905d58404df0738b64f0f893ab8b02df9138",
+    "dualSummaryDigest": "sha256:3a212fe00cad25eaa59e3d7424e940f8cbcd638d7c6c437106f81065a1bd3c06",
+    "canonicalLandscapeDigest": "sha256:b6ec47cb0981d4a2f64f35e76d0e2c1b79d42279fc99cab437e453a9dd023d48"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-four-imported-png-current-20260927-v1-a",
+      "campaignDigest": "sha256:3e5d64e14b8b3d7abe55ba8f9b4a9b9e2d65e00ee4d99cd31d53977d9587279a",
+      "roundId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-four-imported-png-current-20260927-v1-independent-a",
+      "reviewInputFingerprint": "sha256:5d52c13142e15667e84d01b813b0905d58404df0738b64f0f893ab8b02df9138",
+      "batchId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:c140fd39e2e2d1570fb5838d549ecc55b68c94edb90ae7b43573fc1550919df1",
+      "runId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a.reviewer-a",
+      "runManifestDigest": "sha256:ef77bd12bffc8a6a128978cf2b95a61c3818d6cc1b3b35c0130c7f74d6f1e5b7",
+      "resultsDigest": "sha256:b07f50d3fd6140c7bb3811aae97f1b4c76124e9f3af216e4226038b53b6601a1"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-four-imported-png-current-20260927-v1-b",
+      "campaignDigest": "sha256:810a2bd88f2dfa7cb472faf98388ea3db510f5c1e6b1d05d2e3265614ab3e9d9",
+      "roundId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-four-imported-png-current-20260927-v1-independent-b",
+      "reviewInputFingerprint": "sha256:5d52c13142e15667e84d01b813b0905d58404df0738b64f0f893ab8b02df9138",
+      "batchId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:4e4eb7822156d3c851d95482234b753119638c00e66ece271d70edc81e6fd172",
+      "runId": "codex-math-four-imported-png-current-20260927-b-01",
+      "runManifestDigest": "sha256:fea2dff0dec9ee9f33f0c0b97ff61843870c317580edc6bc53ddf07a389a6af7",
+      "resultsDigest": "sha256:eceb96e17f8fb8ca78e471932732b48af4efa71d9d34fddff05587491a0e3168"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-four-imported-png-three-keep-partial-20260927-v1-decision-001",
+      "goalId": "b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b7d79a05add53c31621e2d41cc657ac1ab04972835384ecc3351b61bc03a1cf8",
+      "pageFingerprint": "sha256:2bc9944b802835f91ac227899bb6bd64fe27eaa26bbd369a65a2fd5bff6bb96d",
+      "goalReviewContextFingerprint": "sha256:e650dd2357da71c021d647f4e3fbbc06b6c4db03d783c25850e7c4f015ea2cdc",
+      "finalText": {
+        "titleDe": "Symmetrien einfacher Körper untersuchen",
+        "titleEn": "Analyze symmetries of simple solids",
+        "descriptionDe": "Die lernende Person kann Symmetrieachsen und Symmetrieebenen einfacher geometrischer Körper bestimmen und fachsprachlich beschreiben.",
+        "descriptionEn": "The learner can determine and describe axes and planes of symmetry of simple geometric solids."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a.b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2",
+          "recordDigest": "sha256:c94757e6120b98ec770282dbb8b9a0f6cee068656e0791e172829142937df309"
+        },
+        "second": {
+          "recordId": "mathematik-m7-four-imported-png-current-20260927-v1-b.001",
+          "recordDigest": "sha256:84158e5388dc8c1e86aa378e6432e34a36e007e911232e2c07e6e6d239312a65"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten den aktuellen zweisprachigen Zieltext als eine zusammenhängende Kompetenz zum Bestimmen und fachsprachlichen Beschreiben von Symmetrieebenen und Drehachsen einfacher Körper. Die zweite Evidenzfassung prüft die Begriffe unabhängig an einem Quader mit drei verschiedenen Kantenlängen und verlangt eine Begründung dafür, weshalb die beim Würfel mögliche Vierteldrehung dort nicht mehr passt. Nach dem parallelen Import anderer Bilder sind kanonischer Kontext, vollständige GoalBook-Seite, Nachbarbeziehungen, Ziel- und Seitenfingerprint sowie das gebundene Würfel-PNG mit SHA-256 45772c3862767cfd98131dbcfd8c11fe343b0b7fe95358000d4d1e354c1620b9 unverändert. Der globale Buch-Digestwechsel ist deshalb ein ausdrücklich dokumentierter Provenienzwechsel und kein neuer Review; weder Bildfreigabe noch menschliche Zustimmung oder vollständige Länderquellenprüfung werden daraus abgeleitet.",
+      "rationaleEn": "Both independent rounds keep the current bilingual goal text as one coherent competence for determining and precisely describing planes and rotational axes of symmetry of simple solids. The second evidence version independently tests the concepts on a cuboid with three different edge lengths and requires an explanation of why the quarter-turn possible for a cube no longer works there. After the parallel import of other images, the canonical context, complete GoalBook page, neighboring relations, goal and page fingerprints, and the bound cube PNG with SHA-256 45772c3862767cfd98131dbcfd8c11fe343b0b7fe95358000d4d1e354c1620b9 remain unchanged. The global book-digest change is therefore recorded as a provenance change rather than a new review; it grants neither image approval, human approval, nor complete jurisdictional source verification."
+    },
+    {
+      "decisionId": "math-m7-four-imported-png-three-keep-partial-20260927-v1-decision-002",
+      "goalId": "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5d9c37b189464e5717872d15a42d3674732d0a77be77d916ed54b513ebe37434",
+      "pageFingerprint": "sha256:eee1a7a975012adeb58a4aefdcab68290a51c39572a0d3e7bf092d5d2d089451",
+      "goalReviewContextFingerprint": "sha256:435f0564fc7f2c320f1e54994ab5e9dd6ce011888fb47828f828396c6020d4a2",
+      "finalText": {
+        "titleDe": "Zufallsexperimente mit Software simulieren",
+        "titleEn": "Simulate random experiments with software",
+        "descriptionDe": "Die lernende Person kann Zufallsexperimente mit geeigneter Software (z. B. Tabellenkalkulation) simulieren, absolute und relative Häufigkeiten auswerten und die Ergebnisse grafisch darstellen.",
+        "descriptionEn": "The learner can simulate random experiments using suitable software, such as a spreadsheet, evaluate absolute and relative frequencies, and present the results graphically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a.4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+          "recordDigest": "sha256:b35467c9ec8026cac6cec3025ac5132e69c11301e3132873aa74b47451545503"
+        },
+        "second": {
+          "recordId": "mathematik-m7-four-imported-png-current-20260927-v1-b.002",
+          "recordDigest": "sha256:dfcfebe02017cff5334cf3ce97636db0d3a77e764c5ba670f6e4cac9b111e342"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten Softwaresimulation, Häufigkeitsauswertung und grafische Darstellung als einen kohärenten Arbeitsgang im aktuellen DE/EN-Text. Die zweite Evidenzfassung prüft zusätzlich in einem frischen Experiment mit ungleich wahrscheinlichen Ergebnissen, ob Ziehregel, Häufigkeitstabelle, Grafik und endliche Stichprobenschwankung zusammenpassen. Nach dem parallelen Import anderer Bilder sind kanonischer Kontext, vollständige GoalBook-Seite, Nachbarbeziehungen, Ziel- und Seitenfingerprint sowie das gebundene Würfel-PNG mit SHA-256 34387caf628357b0d265b94dcd0c0d2359d15265b7219532f9a918ecb8b92251 unverändert. Der globale Buch-Digestwechsel ist nur als Provenienzdrift übernommen; die korrekte Beispielgrafik ist Lehrhilfe und weder Leistungsnachweis noch Bild- oder Quellenfreigabe.",
+      "rationaleEn": "Both independent rounds keep software simulation, frequency analysis, and graphical representation as one coherent workflow in the current bilingual text. The second evidence version also tests, in a fresh experiment with unequal outcome probabilities, whether the sampling rule, frequency table, graph, and finite-sample variation fit together. After the parallel import of other images, the canonical context, complete GoalBook page, neighboring relations, goal and page fingerprints, and the bound dice PNG with SHA-256 34387caf628357b0d265b94dcd0c0d2359d15265b7219532f9a918ecb8b92251 remain unchanged. The global book-digest change is carried only as provenance drift; the correct example graphic is teaching support, not performance evidence or image or source approval."
+    },
+    {
+      "decisionId": "math-m7-four-imported-png-three-keep-partial-20260927-v1-decision-003",
+      "goalId": "21fa0c22-976e-59b3-a871-899f0c0177f3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:96728976a9ae256984d654ca8f65faafa1a3e6278faa1d6156199ec0c076aa00",
+      "pageFingerprint": "sha256:1165e8e4d8698c510df1662548be18f0df10f2963eff21a9fa6b4cd1377406a5",
+      "goalReviewContextFingerprint": "sha256:7916b7358015f10fcb991d16894ebb7f55e28745b993c2e41bc6a7cd5d0a19be",
+      "finalText": {
+        "titleDe": "Zufallsexperimente und Ereignisse aus Termen formulieren",
+        "titleEn": "Formulate random experiments and events from terms",
+        "descriptionDe": "Die lernende Person kann zu gegebenen Wahrscheinlichkeitstermen passende Zufallsexperimente und Ereignisse formulieren und die Termbestandteile fachlich zuordnen.",
+        "descriptionEn": "The learner can formulate matching random experiments and events for given probability terms and assign the term components mathematically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a.21fa0c22-976e-59b3-a871-899f0c0177f3",
+          "recordDigest": "sha256:d5e5ca323aee959d07e48973a22d25e57ca9556af36f3f36a737afda9f3da750"
+        },
+        "second": {
+          "recordId": "mathematik-m7-four-imported-png-current-20260927-v1-b.004",
+          "recordDigest": "sha256:d687f0afdff0e5bc08140370ef6ac17baae714ded9274936ffabaf7e05d76a1f"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten den aktuellen DE/EN-Text zur Rückübersetzung eines Wahrscheinlichkeitsterms in ein passendes Zufallsexperiment und Ereignis samt fachlicher Zuordnung seiner Bestandteile. Die zweite Evidenzfassung prüft den Transfer von einem einzelnen Pfadprodukt auf eine Summe disjunkter Pfade oder ein Gegenereignis und verlangt die Begründung der Termoperationen aus der Ereignisstruktur. Nach dem parallelen Import anderer Bilder sind kanonischer Kontext, vollständige GoalBook-Seite, Nachbarbeziehungen, Ziel- und Seitenfingerprint sowie das gebundene Urnen-PNG mit SHA-256 345954480f78d53665c8effba6d22e8019ae4aebc745960f01f111e86cc4c976 unverändert. Der globale Buch-Digestwechsel ist eine dokumentierte Provenienzdrift; das korrekte Beispiel 4/10 · 3/9 = 2/15 erteilt weder Bildfreigabe noch menschliche Zustimmung oder eine vollständige Quellenprüfung.",
+      "rationaleEn": "Both independent rounds keep the current bilingual text for translating a probability expression back into a matching random experiment and event while assigning mathematical meaning to its components. The second evidence version transfers from a single path product to a sum of disjoint paths or a complementary event and requires the expression's operations to be justified from the event structure. After the parallel import of other images, the canonical context, complete GoalBook page, neighboring relations, goal and page fingerprints, and the bound urn PNG with SHA-256 345954480f78d53665c8effba6d22e8019ae4aebc745960f01f111e86cc4c976 remain unchanged. The global book-digest change is documented provenance drift; the correct example 4/10 · 3/9 = 2/15 grants neither image approval, human approval, nor a complete source audit."
+    }
+  ],
+  "manifestFingerprint": "sha256:fe8b2083b48261227f598085731871a0786253691d281be76fcef394951921a8"
+}

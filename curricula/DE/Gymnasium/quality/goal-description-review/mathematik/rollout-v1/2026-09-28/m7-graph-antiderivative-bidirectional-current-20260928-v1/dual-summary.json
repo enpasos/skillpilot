@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:6e48259e73a7ef297842dd0330b6405bfa9614aa4ec82d7906807d26a4ef6b70",
+  "reviewInputFingerprint": "sha256:8467026e91d1f8359061f680e1b95b177ccb15b9fc8a7a2a98b95ac2547d2aac",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v1-a",
+      "roundId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v1-independent-a",
+      "runIds": [
+        "m7-graph-antiderivative-bidirectional-20260928-a-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v1-b",
+      "roundId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v1-independent-b",
+      "runIds": [
+        "math-m7-antiderivative-bidirectional-round-b-openai-gpt6-20260928"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "21676dae-8619-59d1-89e3-a35bb2297e2c",
+      "firstRecordId": "m7-graph-antiderivative-bidirectional-20260928-a-record-001",
+      "secondRecordId": "math-m7-antiderivative-bidirectional-round-b-openai-gpt6-20260928.21676dae",
+      "firstRunId": "m7-graph-antiderivative-bidirectional-20260928-a-run-001",
+      "secondRunId": "math-m7-antiderivative-bidirectional-round-b-openai-gpt6-20260928",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "85eda551-cfc1-52c6-a252-4c7394c1f7e6",
+      "firstRecordId": "m7-graph-antiderivative-bidirectional-20260928-a-record-002",
+      "secondRecordId": "math-m7-antiderivative-bidirectional-round-b-openai-gpt6-20260928.85eda551",
+      "firstRunId": "m7-graph-antiderivative-bidirectional-20260928-a-run-001",
+      "secondRunId": "math-m7-antiderivative-bidirectional-round-b-openai-gpt6-20260928",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

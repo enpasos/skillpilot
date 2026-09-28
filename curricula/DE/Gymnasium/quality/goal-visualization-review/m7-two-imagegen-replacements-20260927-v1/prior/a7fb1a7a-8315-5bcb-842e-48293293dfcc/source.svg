@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1300" viewBox="0 0 1000 1300" role="img" aria-labelledby="title desc">
+  <title id="title">Vier Rechenarten in der Gaußschen Zahlenebene</title>
+  <desc id="desc">Im gleichen Maßstab liegt z gleich u gleich 1+i beim Punkt (1,1). Die Summe 2+2i liegt bei (2,2), die Differenz 0 im Ursprung, das Produkt 2i bei (0,2) und der Quotient 1 bei (1,0).</desc>
+  <defs>
+    <marker id="arrow-blue" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 11 6 L 1 11 Z" fill="#1769aa"/></marker>
+    <marker id="arrow-violet" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 11 6 L 1 11 Z" fill="#8747a6"/></marker>
+    <marker id="arrow-green" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 11 6 L 1 11 Z" fill="#207c58"/></marker>
+    <marker id="arrow-axis" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 11 6 L 1 11 Z" fill="#203047"/></marker>
+  </defs>
+  <rect width="1000" height="1300" fill="#fffaf0"/>
+  <text x="500" y="78" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="43" font-weight="700" fill="#15273c">Vier Rechenarten – eine Zahlenebene</text>
+  <text x="500" y="140" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="39" font-weight="600" fill="#30455d">Ausgangswerte: z = u = 1 + i</text>
+
+  <rect x="62" y="186" width="876" height="626" rx="30" fill="#fffefb" stroke="#d6e3e7" stroke-width="3"/>
+  <g stroke="#d8e5e9" stroke-width="2" stroke-dasharray="9 10">
+    <path d="M 425 250 V 700 M 630 250 V 700 M 220 495 H 815 M 220 290 H 815"/>
+  </g>
+  <g stroke="#203047" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M 170 700 H 838" marker-end="url(#arrow-axis)"/>
+    <path d="M 220 756 V 241" marker-end="url(#arrow-axis)"/>
+  </g>
+  <g font-family="DejaVu Sans, sans-serif" font-size="29" font-weight="600" fill="#203047">
+    <text x="425" y="746" text-anchor="middle">1</text><text x="630" y="746" text-anchor="middle">2</text>
+    <text x="183" y="505" text-anchor="middle">1</text><text x="183" y="300" text-anchor="middle">2</text>
+    <text x="860" y="711">Re</text><text x="227" y="238">Im</text>
+  </g>
+
+  <!-- All endpoints use 205 px per real and imaginary unit. -->
+  <path d="M 220 700 L 630 290" fill="none" stroke="#1769aa" stroke-width="11" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+  <path d="M 220 700 L 220 290" fill="none" stroke="#8747a6" stroke-width="11" stroke-linecap="round" marker-end="url(#arrow-violet)"/>
+  <path d="M 220 700 L 425 700" fill="none" stroke="#207c58" stroke-width="11" stroke-linecap="round" marker-end="url(#arrow-green)"/>
+  <path d="M 220 700 L 425 495" fill="none" stroke="#33495f" stroke-width="7" stroke-dasharray="17 12" stroke-linecap="round"/>
+  <circle cx="220" cy="700" r="20" fill="#fffaf0" stroke="#cf7629" stroke-width="8"/>
+  <circle cx="425" cy="495" r="11" fill="#33495f" stroke="white" stroke-width="3"/>
+  <circle cx="630" cy="290" r="13" fill="#1769aa" stroke="white" stroke-width="3"/>
+  <circle cx="220" cy="290" r="13" fill="#8747a6" stroke="white" stroke-width="3"/>
+  <circle cx="425" cy="700" r="13" fill="#207c58" stroke="white" stroke-width="3"/>
+
+  <g font-family="DejaVu Sans, sans-serif" font-size="32" font-weight="700" style="paint-order: stroke; stroke: #fffefb; stroke-width: 8px; stroke-linejoin: round">
+    <text x="450" y="487" fill="#33495f">z = u = 1+i</text>
+    <text x="649" y="280" fill="#1769aa">z+u = 2+2i</text>
+    <text x="252" y="281" fill="#8747a6">zu = 2i</text>
+    <text x="453" y="679" fill="#207c58">z/u = 1</text>
+    <text x="265" y="768" fill="#b56520">z−u = 0</text>
+  </g>
+
+  <rect x="62" y="844" width="876" height="411" rx="30" fill="#f4f8f5" stroke="#d6e3e7" stroke-width="3"/>
+  <g font-family="DejaVu Sans, sans-serif" fill="#15273c">
+    <circle cx="105" cy="901" r="19" fill="#1769aa"/>
+    <text x="145" y="910" font-size="36" font-weight="700">Addition: z+u = 2+2i</text>
+    <text x="145" y="949" font-size="30">z wird um u verschoben.</text>
+
+    <circle cx="105" cy="997" r="19" fill="#cf7629"/>
+    <text x="145" y="1006" font-size="36" font-weight="700">Subtraktion: z−u = 0</text>
+    <text x="145" y="1045" font-size="30">z wird um −u verschoben.</text>
+
+    <circle cx="105" cy="1093" r="19" fill="#8747a6"/>
+    <text x="145" y="1102" font-size="36" font-weight="700">Multiplikation: zu = 2i</text>
+    <text x="145" y="1141" font-size="30">+45° drehen, mit √2 strecken.</text>
+
+    <circle cx="105" cy="1189" r="19" fill="#207c58"/>
+    <text x="145" y="1198" font-size="36" font-weight="700">Division: z/u = 1</text>
+    <text x="145" y="1237" font-size="30">−45° drehen, durch √2 teilen; u ≠ 0.</text>
+  </g>
+</svg>

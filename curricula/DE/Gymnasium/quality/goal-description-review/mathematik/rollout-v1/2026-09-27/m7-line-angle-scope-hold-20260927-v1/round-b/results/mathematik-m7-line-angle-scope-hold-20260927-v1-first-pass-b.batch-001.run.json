@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-line-angle-scope-hold-20260927-v1-first-pass-b.batch-001.codex-independent-b",
+  "campaignId": "mathematik-m7-line-angle-scope-hold-20260927-v1-b",
+  "roundId": "mathematik-m7-line-angle-scope-hold-20260927-v1-first-pass-b",
+  "batchId": "mathematik-m7-line-angle-scope-hold-20260927-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:a753f785cb88688e326948488cdf8810b2ca965f9bb1484dbf948bd70a2cfbfb",
+  "bundleFingerprint": "sha256:5c3d01795f80ee3ddb9ad00c47cf4be4c25613bd29dd076aa0985f53f81bc1a1",
+  "bookDigest": "sha256:73de299834dd88339c5298091b7252f699046b0fa460d0ad69e5bbf40fcc8570",
+  "provider": "openai",
+  "model": "Codex; exact serving model identifier not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:44f65aeb1d9726d624ae2f8a728ee971071b2aa37fb064161811e83e3cce1703",
+  "independenceGroupId": "mathematik-m7-line-angle-scope-hold-20260927-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "18be713b-7d90-4f01-b60a-5582ac4df0e8"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:10c7f0f5f2b5551f2520293547b109e70d57f28683a1e8f2c7c22404fc62be16"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:be3fc4796046361181c7b0db846ff2c0294eea1e5f7693d1937c8beaecdf55f7"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:a753f785cb88688e326948488cdf8810b2ca965f9bb1484dbf948bd70a2cfbfb"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-27T16:45:21.000Z",
+  "completedAt": "2026-09-27T16:46:43.891Z",
+  "status": "completed",
+  "outputDigest": "sha256:e03b94fac85c4ecaacb08df6d7c559e30afe1b786ee839376291bc89a6a8a8d5",
+  "toolchainVersion": "goal-description-review-v1"
+}

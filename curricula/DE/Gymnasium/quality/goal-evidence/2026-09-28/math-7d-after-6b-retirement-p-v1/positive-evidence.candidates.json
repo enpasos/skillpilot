@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-7d-after-6b-retirement-p-20260928-v1",
+  "reviewedAt": "2026-09-28T00:26:14Z",
+  "reviewer": "OpenAI Codex current-goal review; AI candidate only",
+  "goals": [
+    {
+      "goalId": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
+      "reason": "Der alte 6b-Voraussetzungsknoten bündelte bereits separat modellierte Lagebeziehungen und wurde fachlich begründet aus dem aktuellen 7d-Pfad entfernt. Das unveränderte 7d-Ziel verlangt weiterhin eigenständige vektorielle Transformationsargumente für Flächen und Volumina. Die zwei geprüften P-Fälle bleiben mathematisch korrekt und unabhängig vom alten 6b-Mastery-Wert: Bei T(X)=A+2(X−A) verdoppeln sich beide Spannvektoren und der Dreiecksinhalt vervierfacht sich von 3 auf 12; bei T(x,y,z)=(x+z,y,z) bleibt die Grundfläche 6 und die Höhe 4, also das Volumen 24. Die Fälle prüfen Begründung und Transfer statt Bildwiedergabe; es wird keine menschliche Freigabe behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die aktuelle Originaleingabe benennt keine abschließende Klasse zulässiger Transformationen und liefert dazu keine gebundene Originalquellenpassage. Zentrische Streckung und eine explizit gegebene einfache Scherung werden als begrenzte Fälle verwendet; eine allgemeine Kompetenz für beliebige lineare Abbildungen oder Determinanten wird nicht beansprucht. Die konkrete Quellenpassung bleibt menschlich zu prüfen."
+      ],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "vektorielle-wirkung",
+            "essentialUnderstandingDe": "Aus einer vektoriell beschriebenen Transformation lässt sich ableiten, wie relevante Verbindungsvektoren und die Lage von Grundflächen oder Höhen verändert werden. Die für eine Maßaussage benötigte Eigenschaft muss für die konkrete Abbildung begründet werden.",
+            "essentialUnderstandingEn": "A vector-described transformation allows one to derive how relevant displacement vectors and the positions of bases or heights change. The property needed for a measure statement must be justified for the specific mapping.",
+            "observablePerformanceDe": "Die lernende Person wendet die gegebene Abbildung auf geeignete Punkte oder Verbindungsvektoren an und benennt mit Rechnung oder geometrischer Begründung, welche für die Maßberechnung entscheidende Länge, Richtung, Grundfläche oder Höhe verändert beziehungsweise erhalten wird.",
+            "observablePerformanceEn": "The learner applies the given mapping to suitable points or displacement vectors and identifies, by calculation or geometric reasoning, which length, direction, base or height relevant to the measure is changed or preserved."
+          },
+          {
+            "id": "massfolge-begruenden",
+            "essentialUnderstandingDe": "Ein Längenskalierungsfaktor wirkt auf Flächen anders als auf Längen; bei einer Scherung kann das Volumen trotz veränderter Seitenrichtungen erhalten bleiben. Maßfolgen ergeben sich aus den jeweils nachgewiesenen geometrischen Eigenschaften.",
+            "essentialUnderstandingEn": "A length scale factor affects areas differently from lengths; under a shear, volume can be preserved despite changed side directions. Consequences for measures follow from the geometric properties established in each case.",
+            "observablePerformanceDe": "Die lernende Person leitet aus der Transformationswirkung einen begründeten Flächen- oder Volumenfaktor ab und nutzt ihn für die gefragte Maßberechnung. Sie erklärt die Tragweite des Arguments für die konkret betrachtete Figur, ohne eine bloße Zeichnung als Begründung zu verwenden.",
+            "observablePerformanceEn": "The learner derives a justified area or volume factor from the transformation's effect and uses it for the requested measure calculation. They explain the scope of the argument for the specific figure rather than using a drawing alone as justification."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "vektorielle-wirkung",
+            "massfolge-begruenden"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "skalierung-und-erhaltung",
+            "textDe": "Wechsel von einer gleichmäßigen Längenskalierung mit verändertem Flächeninhalt zu einer Scherung mit erhaltenem Volumen.",
+            "textEn": "Change from uniform length scaling with changed area to a shear with preserved volume."
+          },
+          {
+            "id": "geometrische-begruendung",
+            "textDe": "Das erste Argument nutzt zwei skalierte Spannvektoren, das zweite eine erhaltene Grundfläche und Höhe beziehungsweise verschobene gleich große Querschnitte.",
+            "textEn": "The first argument uses two scaled spanning vectors; the second uses a preserved base and height or translated equal-size cross-sections."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "dreieck-strecken",
+            "taskDemandDe": "Für A=(1,-1,0), B=(3,-1,0), C=(1,2,0) sei T(X)=A+2(X-A). Bestimme den Flächeninhalt des Bilddreiecks durch ein vektorielles Transformationsargument und erläutere den Flächenfaktor.",
+            "taskDemandEn": "For A=(1,-1,0), B=(3,-1,0), C=(1,2,0), let T(X)=A+2(X-A). Determine the area of the image triangle using a vector transformation argument and explain the area factor.",
+            "expectedPerformanceDe": "Die lernende Person zeigt, dass AB=(2,0,0) und AC=(0,3,0) unter T verdoppelt werden und ihr rechter Winkel erhalten bleibt. Der ursprüngliche Flächeninhalt ist 3 Flächeneinheiten, der Bildinhalt 12; der Faktor 4 folgt aus der Verdopplung beider Spannrichtungen und wird nicht allein aus Bildkoordinaten abgelesen.",
+            "expectedPerformanceEn": "The learner shows that AB=(2,0,0) and AC=(0,3,0) are doubled by T and their right angle is preserved. The original area is 3 square units and the image area is 12; factor 4 follows from doubling both spanning directions rather than merely reading image coordinates.",
+            "understandingFocusDe": "Vektorielle Transformationswirkung und daraus begründete Flächenskalierung in einem eigenständig bearbeiteten Fall.",
+            "understandingFocusEn": "The vector effect of the transformation and the resulting justified area scaling in an independently completed case."
+          },
+          {
+            "id": "quader-scheren",
+            "taskDemandDe": "Auf den Quader 0<=x<=2, 0<=y<=3, 0<=z<=4 wirkt T(x,y,z)=(x+z,y,z). Begründe mithilfe der Transformation das Volumen des Bildkörpers, obwohl seine Seitenkanten nicht mehr alle senkrecht auf der Grundfläche stehen.",
+            "taskDemandEn": "The cuboid 0<=x<=2, 0<=y<=3, 0<=z<=4 is transformed by T(x,y,z)=(x+z,y,z). Use the transformation to justify the image solid's volume, although its side edges are no longer all perpendicular to the base.",
+            "expectedPerformanceDe": "Die lernende Person zeigt, dass die Grundfläche bei z=0 unverändert bleibt und die Ebene z=4 um 4 Einheiten in x-Richtung verschoben wird, während die Höhe 4 bleibt. Mit Grundfläche 6 und Höhe 4 erhält sie 24 Volumeneinheiten. Alternativ begründet sie, dass jeder horizontale Querschnitt nur verschoben wird und seinen Flächeninhalt 6 behält; die Begründung bleibt auf diese Scherung bezogen.",
+            "expectedPerformanceEn": "The learner shows that the base at z=0 remains unchanged and the plane z=4 shifts by 4 units in the x direction while height remains 4. With base area 6 and height 4, they obtain 24 cubic units. Alternatively, they explain that each horizontal cross-section is merely translated and retains area 6; the justification remains tied to this shear.",
+            "understandingFocusDe": "Unabhängiger Transfer von Ähnlichkeitsskalierung zu Volumenerhaltung bei einer nicht längentreuen Abbildung; beide Erwartungen werden erneut gezeigt.",
+            "understandingFocusEn": "Independent transfer from similarity scaling to volume preservation under a mapping that does not preserve lengths; both expectations are demonstrated again."
+          }
+        ]
+      }
+    }
+  ]
+}

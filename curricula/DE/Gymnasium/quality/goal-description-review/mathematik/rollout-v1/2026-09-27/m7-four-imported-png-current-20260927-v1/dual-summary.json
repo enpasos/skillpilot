@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:00b54e35a816cb5510a5a0a869f81cfc3ed27a81c2ab2ab82d314a5f3af0e1c5",
+  "reviewInputFingerprint": "sha256:5d52c13142e15667e84d01b813b0905d58404df0738b64f0f893ab8b02df9138",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-four-imported-png-current-20260927-v1-a",
+      "roundId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-four-imported-png-current-20260927-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a.reviewer-a"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-four-imported-png-current-20260927-v1-b",
+      "roundId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-four-imported-png-current-20260927-v1-independent-b",
+      "runIds": [
+        "codex-math-four-imported-png-current-20260927-b-01"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact model not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2",
+      "firstRecordId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a.b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2",
+      "secondRecordId": "mathematik-m7-four-imported-png-current-20260927-v1-b.001",
+      "firstRunId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a.reviewer-a",
+      "secondRunId": "codex-math-four-imported-png-current-20260927-b-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+      "firstRecordId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a.4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+      "secondRecordId": "mathematik-m7-four-imported-png-current-20260927-v1-b.002",
+      "firstRunId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a.reviewer-a",
+      "secondRunId": "codex-math-four-imported-png-current-20260927-b-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9023226b-fc17-412b-807c-2bb45cd551d5",
+      "firstRecordId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a.9023226b-fc17-412b-807c-2bb45cd551d5",
+      "secondRecordId": "mathematik-m7-four-imported-png-current-20260927-v1-b.003",
+      "firstRunId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a.reviewer-a",
+      "secondRunId": "codex-math-four-imported-png-current-20260927-b-01",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "21fa0c22-976e-59b3-a871-899f0c0177f3",
+      "firstRecordId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a.21fa0c22-976e-59b3-a871-899f0c0177f3",
+      "secondRecordId": "mathematik-m7-four-imported-png-current-20260927-v1-b.004",
+      "firstRunId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a.reviewer-a",
+      "secondRunId": "codex-math-four-imported-png-current-20260927-b-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

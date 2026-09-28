@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:1c175cc14dd02a2d1c796f15faaf284463e3805da43839fce724602a3a614e96",
+  "reviewInputFingerprint": "sha256:f6e649268cef7516a65cda248aa64216a59a565069015ba4a74006777034e3fc",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-a",
+      "roundId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-ten-png-three-open-retained-20260927-v1-run-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-b",
+      "roundId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-ten-png-three-open-retained-20260927-v1-first-pass-b.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::GPT-6::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+      "firstRecordId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-a-0408ac7f",
+      "secondRecordId": "m7-ten-png-three-open-retained-20260927-v1-b.0408ac7f",
+      "firstRunId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-run-a",
+      "secondRunId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-first-pass-b.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "27bdc580-ba17-5399-bf02-48f354846d1d",
+      "firstRecordId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-a-27bdc580",
+      "secondRecordId": "m7-ten-png-three-open-retained-20260927-v1-b.27bdc580",
+      "firstRunId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-run-a",
+      "secondRunId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-first-pass-b.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "18be713b-7d90-4f01-b60a-5582ac4df0e8",
+      "firstRecordId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-a-18be713b",
+      "secondRecordId": "m7-ten-png-three-open-retained-20260927-v1-b.18be713b",
+      "firstRunId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-run-a",
+      "secondRunId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-first-pass-b.run-001",
+      "firstDecision": "block",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

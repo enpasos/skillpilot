@@ -1,0 +1,21 @@
+# HE Mathematik Sek I: Modellbeziehungen nicht aus LGS-Anwendungen ableiten
+
+Stand: 27.09.2026. Diese Korrektur betrifft ausschließlich die fachlich zu breiten HE-Sek-I-Zuordnungen zu den kanonischen Zielen `fde351a8-98b1-5d75-b4df-813beb2bbe3c` und `07196e72-ba47-54bf-a096-3a79bbb67e23`. Sie ist **keine D-Freigabe** und ändert weder Zieltexte noch Kompetenz-Tags.
+
+## Quellenbefund
+
+Die G8-Quelle 8G.1 und die G9-Quelle 9.1 nennen in den betroffenen Source-Zielen realitätsbezogene Sach- und Textaufgaben bei linearen Gleichungssystemen. Daraus folgt nicht als `exact`, dass Lernende beliebige Beziehungen als Gleichung, Ungleichung **oder** Funktion formulieren und die Modellwahl beziehungsweise Termbedeutung erklären. G9 9.1 führt lineare Ungleichungssysteme in diesem Abschnitt sogar unter fakultativen Inhalten; das sagt nichts über einfache Ungleichungen an anderen Stellen des G9-Lehrplans aus. Das amtliche [HE-Sek-I-Kerncurriculum](https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-07/kerncurriculum_mathematik_gymnasium.pdf) enthält allgemeine Modellierungs- und Darstellungsstandards, aber diese wurden nicht als Vollbeleg der zwei konkreten Drei-Formen-Ziele an die drei hier beanstandeten Source-Ziele gebunden. Der [G9-Lehrplan](https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-mathematik.pdf) und der [G8-Lehrplan](https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g8-mathematik.pdf) sind dafür die direkten Jahrgangsquellen.
+
+Die dritte beanstandete Kante verbindet G9 9.4 „Untersuchung realitätsbezogener Problemstellungen im Zusammenhang mit Ähnlichkeit“ mit `07196e72…`. Sie belegt Ähnlichkeitsanwendungen, nicht die allgemeine Wahl aus Gleichung, Funktion und Ungleichung. Die Source-Extraktion hat diesen Satz derzeit nach „im“ in zwei Source-Ziele getrennt. Eine lokale Korrektur nur des Zieltextes wäre nicht sicher: der Extraktor erzeugt stabile Source-IDs aus Position und Text, die Review-Mappings sind daran gebunden. Dieser Parser-/ID-Befund bleibt für eine gesonderte, vollständige Quellenkorrektur offen; die verbliebenen Ähnlichkeitskanten wurden hier nicht pauschal neu bewertet.
+
+## Enge Umsetzung und Wirkung
+
+- Aus der HE-Sek-I-Mapping-Review wurden die beiden `exact`-Kanten der G8-/G9-LGS-Anwendungsziele auf `fde351a8…` und die drei `exact`-Kanten der G8-/G9-LGS- und G9-Ähnlichkeitsziele auf `07196e72…` entfernt. `decisions[].canonicalGoalIds` und die jeweiligen Begründungen wurden synchronisiert. Die übrigen LGS- und Ähnlichkeitszuordnungen blieben stehen.
+- Die Dauer-Composition-Views wurden aus diesen korrigierten Mappings regeneriert. Nur `de-he-seki-g8.view.json` und `de-he-seki-g9.view.json` änderten sich: beide Q4-Atoms entfallen als direkte J8-/J9-Ziele. Ihre Q4-Voraussetzungen `7e1b43e2…` beziehungsweise `670286aa…` waren dort ohnehin nicht platziert. Die Bayern-Views wurden vom Generator weder adressiert noch verändert.
+- Der Generator bindet `mappings[]` unabhängig vom `matchType` in die Jahrgangsziele ein. Eine bloße Umstufung zu `partial` hätte den curricularen Overclaim in den HE-Sek-I-Views nicht beseitigt. Die entfallenen Kanten können nur mit einem engeren, quellenbelegten Ziel-/Platzierungsentscheid zurückkehren.
+
+## D- und M7-Folgen
+
+Für `fde351a8…` lauten die beiden unabhängigen aktuellen D-Kandidaten `revise` und `keep`; die Dual-Summary fordert Synthese und verbietet automatische Annahme. Der HE-Sek-II-Q4.2-Vollbeleg und der BW-2.3(5)-Vollbeleg wurden bereits separat als unhaltbar beziehungsweise nur partiell erkannt. Diese Sek-I-Korrektur liefert **keinen** neuen vollständigen HE-Sek-II-Quellennachweis, keine D-Synthese und keinen M7-Zuwachs. `07196e72…` behält zwar die ältere HE-Sek-II-Source-JSON-Zuordnung, doch die ist ein authored Snapshot und kein zusätzlicher amtlicher Vollbeleg. Nach neuer Atlas-/Lernzielbuch-Erzeugung sind Seiten-/Scope-Fingerprints sowie betroffene D-, A-, M-, P- und V-Bindungen gezielt zu prüfen; alte Kandidaten werden nicht auf einen geänderten Geltungsbereich übertragen.
+
+Die Extraktionslücke G9 9.4, weitere fachlich ähnliche Sek-I-Prozess-/Q4-Zuordnungen und ein vollständiger amtlicher Quellennachweis für die beiden kanonischen Formulierungsziele bleiben eigene offene Prüfungen. Striktes Mathematik-M7 wird aus dieser Teilkorrektur nicht als erfüllt erklärt.

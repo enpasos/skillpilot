@@ -14,6 +14,7 @@ import {
 } from '../src/utils/authoring/compositionViewAuthoring'
 import {
   buildGoalBookModel,
+  canonicalGoalMatchesDeclaredCourseProfile,
   fingerprintSemanticKindSourceGoal,
   loadGoalBookBuildInputs,
   parseAndValidateGoalBookModel,
@@ -25,6 +26,7 @@ import {
   fingerprintGoalEvidenceReviewInput,
   fingerprintGoalForEvidence,
 } from './goalEvidenceProfileModel'
+import { deriveBavariaOptionalOnlyGoalIds } from './mathBavariaOptionalCourseProjection'
 
 await testGoalBookInputIsolation()
 
@@ -60,9 +62,10 @@ const LEGACY_BOOK_MODEL_FIXTURE_PATH = (
   + 'calibration-v2/2026-08-25/thales-current/bundle/book-model.json'
 )
 const FIXTURE_ASSET_DIGEST = `sha256:${'1'.repeat(64)}`
-// Current authoring checkpoint, not a historical review/publication approval.
-// The BW Tangensquotient source reference was corrected from printed p. 33 to p. 34.
-const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:03d3f2a797149d485b852cc252c5b7076bb5d3a9ec890089a2390d27cd5c7253'
+// Current authoring checkpoint, not a review or publication approval. The
+// nationwide atlas keeps all current curricular-atomic page IDs; this digest binds current text,
+// visuals, exam edges and explicit LK applicability.
+const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:0f3c6dd7548a67240028a0f1d5f01e827ef419b45680ed10ef61b3f326c4a45d'
 
 const goal = ({
   id,
@@ -922,6 +925,19 @@ const curricularAtomicGoalIds = new Set(semanticKindLedger.decisions
   .map(({ goalId }) => goalId))
 const canonicalLandscapeForProjection = normalizeCanonicalLandscape(JSON.parse(canonicalLandscapeText))
 const canonicalGoalById = new Map(canonicalLandscapeForProjection.goals.map((item) => [item.id, item]))
+const complexQ4Assessment = canonicalGoalById.get('a8525adc-fad3-53f5-953f-213bd37b09e8') as
+  | { requires: string[]; examData?: { coveredGoalIds: string[]; taskContent: string } }
+  | undefined
+assert.ok(complexQ4Assessment?.examData)
+assert.deepEqual(
+  complexQ4Assessment.requires,
+  complexQ4Assessment.examData.coveredGoalIds,
+  'Q4 complex-number exam prerequisites must match its claimed assessment coverage',
+)
+assert.ok(
+  !complexQ4Assessment.requires.includes('9b339361-7719-573d-a913-432246c502ee'),
+  'The Q4 complex-number task does not assess optional Mandelbrot iterations',
+)
 const pilotGoal = canonicalGoalById.get(PILOT_GOAL_ID)
 assert.ok(pilotGoal)
 const pilotSemanticKind = semanticKindLedger.decisions.find(({ goalId }) => goalId === PILOT_GOAL_ID)
@@ -1002,10 +1018,105 @@ const publishedNationalAtlasText = await readFile(fileURLToPath(new URL(
 )), 'utf8')
 assert.equal(nationalAtlas.book.id, 'de-gym-mathematik-bundesweit')
 assert.equal(nationalAtlas.book.viewId, 'de-gym-math-national-atlas')
-assert.equal(nationalAtlas.book.pageCount, 797)
+assert.equal(nationalAtlas.book.pageCount, 799)
 assert.equal(nationalAtlas.book.scope.schoolForm, 'Gymnasium')
 assert.deepEqual(Object.keys(nationalAtlas.book.scope), ['schoolForm'])
-assert.equal(new Set(nationalAtlas.pages.map(({ goalId }) => goalId)).size, 797)
+assert.equal(new Set(nationalAtlas.pages.map(({ goalId }) => goalId)).size, 799)
+assert.deepEqual(
+  nationalAtlas.pages.map(({ goalId }) => goalId).sort(),
+  [...curricularAtomicGoalIds].sort(),
+  'The national atlas must contain every current curricularAtomic goal exactly once',
+)
+const retiredSpecialPositionsId = '6b2a1c04-8c28-51ff-905b-9c9492a26cc3'
+const retiredSpecialPositions = canonicalGoalById.get(retiredSpecialPositionsId)
+assert.ok(retiredSpecialPositions, 'retired goal ID must remain resolvable for historical mastery')
+assert.equal(retiredSpecialPositions.extendedData?.compatibilityOnly, true)
+assert.equal(retiredSpecialPositions.extendedData?.applicabilityProjection, 'excluded')
+assert.deepEqual(retiredSpecialPositions.contains, [
+  '58f613da-03be-5c6a-90a9-ff0958aa7849',
+  '24174bba-a654-5f81-8de3-ca5bd09d9b6f',
+  '0f4f9957-8afe-4aab-9dd8-c26c9aee2afd',
+])
+assert.equal(nationalAtlas.pages.some(({ goalId }) => goalId === retiredSpecialPositionsId), false)
+assert.ok(nationalAtlas.pages.some(({ goalId }) => goalId === '58f613da-03be-5c6a-90a9-ff0958aa7849'))
+assert.ok(nationalAtlas.pages.some(({ goalId }) => goalId === '24174bba-a654-5f81-8de3-ca5bd09d9b6f'))
+assert.ok(nationalAtlas.pages.some(({ goalId }) => goalId === '0f4f9957-8afe-4aab-9dd8-c26c9aee2afd'))
+assert.equal(canonicalGoalById.get('7d37513b-fa1a-54cc-9e2a-9279a381f0f0')?.requires?.includes(retiredSpecialPositionsId), false)
+for (const [goalId, jurisdiction] of [
+  ['d3c42193-f1b7-5c6d-a991-bf034d99359f', 'DE-HE'],
+  ['803d910d-96d1-5118-b9ca-29e93d0da76d', 'DE-HE'],
+  ['803d910d-96d1-5118-b9ca-29e93d0da76d', 'DE-NI'],
+] as const) {
+  const canonicalGoal = canonicalGoalById.get(goalId)
+  assert.ok(canonicalGoal)
+  assert.equal(canonicalGoalMatchesDeclaredCourseProfile(canonicalGoal, 'GK'), false)
+  assert.equal(canonicalGoalMatchesDeclaredCourseProfile(canonicalGoal, 'LK'), true)
+  const page = nationalAtlas.pages.find((candidate) => candidate.goalId === goalId)
+  assert.ok(page)
+  const scopes = page.applicability?.find((group) => group.jurisdiction === jurisdiction)?.scopes ?? []
+  assert.ok(scopes.some((scope) => scope.stage === 'SekII' && scope.courseProfile === 'LK'))
+  assert.equal(scopes.some((scope) => scope.stage === 'SekII' && scope.courseProfile === 'GK'), false)
+}
+const bavarianIntegralApplicationId = '0b162cb0-8507-5ac2-b9d6-57f40f4d3f35'
+const bavarianIntegralApplication = canonicalGoalById.get(bavarianIntegralApplicationId)
+assert.ok(bavarianIntegralApplication)
+assert.equal(canonicalGoalMatchesDeclaredCourseProfile(bavarianIntegralApplication, 'GK'), true)
+assert.equal(canonicalGoalMatchesDeclaredCourseProfile(bavarianIntegralApplication, 'LK'), true)
+assert.deepEqual(bavarianIntegralApplication.applicability?.jurisdiction, ['DE-BY'])
+const bavarianIntegralPage = nationalAtlas.pages.find(({ goalId }) => goalId === bavarianIntegralApplicationId)
+assert.ok(bavarianIntegralPage)
+assert.deepEqual(
+  bavarianIntegralPage.applicability?.map(({ jurisdiction }) => jurisdiction).sort(),
+  ['DE-BY'],
+  'M13.4 integral applications must not leak into another state through a shared subtree',
+)
+for (const goalId of [
+  '71fe4a39-38e8-5c6a-8eef-ff4783fe70c2',
+  '0b162cb0-8507-5ac2-b9d6-57f40f4d3f35',
+  'b431148b-526c-4bde-b04b-48d23101d0d3',
+  '49f9059a-876c-5051-8146-d008b5cc691c',
+]) {
+  const page = nationalAtlas.pages.find((candidate) => candidate.goalId === goalId)
+  assert.ok(page)
+  const scopes = page.applicability?.find((group) => group.jurisdiction === 'DE-BY')?.scopes ?? []
+  assert.ok(scopes.some((scope) => scope.stage === 'SekII' && scope.courseProfile === 'GK'),
+    `Bavarian compulsory goal ${goalId} must be in GK despite shared canonical LK markers`)
+  assert.ok(scopes.some((scope) => scope.stage === 'SekII' && scope.courseProfile === 'LK'),
+    `Bavarian compulsory goal ${goalId} must also be in LK`)
+}
+const mandelbrotPage = nationalAtlas.pages.find((candidate) => (
+  candidate.goalId === '9b339361-7719-573d-a913-432246c502ee'
+))
+assert.ok(mandelbrotPage)
+const mandelbrotByScopes = mandelbrotPage.applicability
+  ?.find((group) => group.jurisdiction === 'DE-BY')?.scopes ?? []
+assert.ok(mandelbrotByScopes.some((scope) => scope.stage === 'SekII' && scope.courseProfile === 'LK'))
+assert.equal(mandelbrotByScopes.some((scope) => scope.stage === 'SekII' && scope.courseProfile === 'GK'), false)
+const [bavariaSourceText, bavariaMappingText] = await Promise.all([
+  readFile(fileURLToPath(new URL(
+    '../../curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/'
+    + 'DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json',
+    import.meta.url,
+  )), 'utf8'),
+  readFile(fileURLToPath(new URL(
+    '../../curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/'
+    + 'bavaria_math_source_extraction_to_canonical_math.review.json',
+    import.meta.url,
+  )), 'utf8'),
+])
+const bavariaOptionalOnly = deriveBavariaOptionalOnlyGoalIds(
+  JSON.parse(bavariaSourceText), JSON.parse(bavariaMappingText),
+)
+const atlasPagesByGoalId = new Map(nationalAtlas.pages.map((page) => [page.goalId, page]))
+for (const goalId of bavariaOptionalOnly.optionalOnlyCanonicalIds) {
+  const page = atlasPagesByGoalId.get(goalId)
+  if (!page) continue // Source-mapped clusters are not curricularAtomic book pages.
+  const scopes = page.applicability?.find((group) => group.jurisdiction === 'DE-BY')?.scopes ?? []
+  assert.ok(scopes.some((scope) => scope.stage === 'SekII' && scope.courseProfile === 'LK'),
+    `Bavarian Vertiefungskurs goal ${goalId} must be a LK target`)
+  assert.equal(scopes.some((scope) => scope.stage === 'SekII' && scope.courseProfile === 'GK'), false,
+    `Bavarian Vertiefungskurs goal ${goalId} must not be a GK target`)
+}
 assert.equal(
   canonicalGoalById.get('4cba85d3-2e25-5c4b-9c4c-37e5b201dce7')?.sourceRef,
   'Bildungsplan BW Mathematik Gymnasium 2016, 3.3.3, Kompetenz 7, S. 34.',

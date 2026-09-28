@@ -1,0 +1,37 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-m7-four-current-b-run-001",
+  "campaignId": "mathematik-m7-four-current-quadratic-prisms-transform-20260928-v1-b",
+  "roundId": "mathematik-m7-four-current-quadratic-prisms-transform-20260928-v1-first-pass-b",
+  "batchId": "mathematik-m7-four-current-quadratic-prisms-transform-20260928-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:bba08063029835442dc4bc72d648ddca85449c58aa8e2a74c18465e289bd0b82",
+  "bundleFingerprint": "sha256:b10282ca21c3c3783f0ef4531883b4eac58dae7916d905796588944dd1d4b92e",
+  "bookDigest": "sha256:46b9de467260c68e98406c21c0913b0be608ba9a44ba7b86b77fd686589ae6ee",
+  "provider": "OpenAI",
+  "model": "Codex agent (runtime model identifier not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "mathematik-m7-four-current-quadratic-prisms-transform-20260928-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+    "f1348d40-3872-5e44-8892-3600c811796f",
+    "9023226b-fc17-412b-807c-2bb45cd551d5",
+    "7d37513b-fa1a-54cc-9e2a-9279a381f0f0"
+  ],
+  "inputArtifacts": [
+    {"role": "review_prompt", "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"},
+    {"role": "review_criteria", "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"},
+    {"role": "description_review_batch_input_jsonl", "digest": "sha256:bba08063029835442dc4bc72d648ddca85449c58aa8e2a74c18465e289bd0b82"},
+    {"role": "review_markdown", "digest": "sha256:de1086ddec370905338cd4d76ca80aa8c61413f6eda6e0df878858b276a36a65"}
+  ],
+  "startedAt": "2026-09-28T00:32:23Z",
+  "completedAt": "2026-09-28T00:33:22Z",
+  "status": "completed",
+  "outputDigest": "sha256:34317371a114907a3e01dd8e9acaba9c219583ea483831724f24a79d0373e216",
+  "toolchainVersion": "codex-manual-v1"
+}

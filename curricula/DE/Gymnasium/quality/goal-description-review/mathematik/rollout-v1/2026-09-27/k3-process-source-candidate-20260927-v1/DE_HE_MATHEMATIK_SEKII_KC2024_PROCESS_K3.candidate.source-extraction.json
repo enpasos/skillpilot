@@ -1,0 +1,371 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-HE-MATHEMATIK-SEKII-KC2024-PROCESS-K3-CANDIDATE",
+  "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+  "jurisdiction": "DE-HE",
+  "subject": "Mathematik",
+  "stage": "SekII",
+  "sourceDocument": {
+    "key": "KC_GOS_2024",
+    "title": "Kerncurriculum gymnasiale Oberstufe - Mathematik",
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+    "role": "binding-upper-secondary-core-2024",
+    "official": true,
+    "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+    "rightsNote": "Official HMKB source and excerpts retain third-party rights; no SkillPilot license or redistribution clearance is asserted."
+  },
+  "sourceDocuments": [
+    {
+      "key": "KC_GOS_2024",
+      "title": "Kerncurriculum gymnasiale Oberstufe - Mathematik",
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+      "role": "binding-upper-secondary-core-2024",
+      "official": true,
+      "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+      "rightsNote": "Official HMKB source and excerpts retain third-party rights; no SkillPilot license or redistribution clearance is asserted."
+    }
+  ],
+  "method": {
+    "passageExtraction": "pdftotext -f 14 -l 14 and -f 22 -l 22 -layout; exact K3 definition and K3.1–K3.8 wording and AB boundaries checked against pinned PDF",
+    "sourceGoalExtraction": "one source goal per official K3 standard; raw PDF text retained separately from normalized text",
+    "localPdfSha256": "d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953"
+  },
+  "expectedProcessStandardIds": [
+    "K3.1",
+    "K3.2",
+    "K3.3",
+    "K3.4",
+    "K3.5",
+    "K3.6",
+    "K3.7",
+    "K3.8"
+  ],
+  "pipelineStatus": {
+    "version": 1,
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Amtliche K3-Passagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "k3-context-page",
+            "label": "K3-Definition vollständig auf S. 14",
+            "passed": true,
+            "details": "Wortlaut und Seitenmarker geprüft"
+          },
+          {
+            "id": "k3-standard-page",
+            "label": "K3-Standards auf S. 22",
+            "passed": true,
+            "details": "Acht Standards und AB-Grenzen geprüft"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "K3.1–K3.8 als Source-Ziele erzeugt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "k3-source-goals",
+            "label": "Acht eindeutige Source-Ziele mit Quellenspan",
+            "passed": true,
+            "details": "8/8; keine kanonischen Ziele erzeugt"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Fachliches Mapping auf kanonische Ziele",
+        "status": "incomplete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "k3-mapping-review",
+            "label": "Separate Mapping-Collection fachlich geprüft",
+            "passed": false,
+            "details": "Kandidat; noch keine Mapping-Collection oder Publikationsprofil-Bindung"
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "he-math-sekii-process:k3:definition",
+      "topicCode": "K3.definition",
+      "title": "Mathematisch modellieren (K3): Kompetenzbeschreibung",
+      "text": "Diese Kompetenz umfasst den Wechsel zwischen Realsituationen und mathematischen Begriffen, Resultaten oder Methoden. Hierzu gehört sowohl das Konstruieren passender mathematischer Modelle als auch das Verstehen oder Bewerten vorgegebener Modelle. Typische Teilschritte des Modellierens sind das Strukturieren und Vereinfachen gegebener Realsituationen, das Übersetzen realer Gegebenheiten in mathematische Modelle, das Interpretieren mathematischer Ergebnisse in Bezug auf Realsituationen und das Überprüfen von Ergebnissen im Hinblick auf Stimmigkeit und Angemessenheit bezogen auf die Realsituation. Das Spektrum reicht von Standardmodellen (zum Beispiel bei linearen Zusammenhängen) bis hin zu komplexen Modellierungen.",
+      "rawText": "Diese Kompetenz umfasst den Wechsel zwischen Realsituationen und mathematischen Be-\ngriffen, Resultaten oder Methoden. Hierzu gehört sowohl das Konstruieren passender mathe-\nmatischer Modelle als auch das Verstehen oder Bewerten vorgegebener Modelle. Typische\nTeilschritte des Modellierens sind das Strukturieren und Vereinfachen gegebener Realsituati-\nonen, das Übersetzen realer Gegebenheiten in mathematische Modelle, das Interpretieren\nmathematischer Ergebnisse in Bezug auf Realsituationen und das Überprüfen von Ergebnis-\nsen im Hinblick auf Stimmigkeit und Angemessenheit bezogen auf die Realsituation. Das\nSpektrum reicht von Standardmodellen (zum Beispiel bei linearen Zusammenhängen) bis hin\nzu komplexen Modellierungen.",
+      "page": 14,
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Mathematisch modellieren (K3), S. 14",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+      "sourceDocumentKey": "KC_GOS_2024",
+      "sourceGoalIds": []
+    },
+    {
+      "id": "he-math-sekii-process:k3:standards",
+      "topicCode": "K3",
+      "title": "Mathematisch modellieren (K3): K3.1–K3.8",
+      "text": "Kompetenzbereich: Mathematisch modellieren (K3)\nK3.1 [AB1] – vertraute und direkt erkennbare Modelle anwenden,\nK3.2 [AB1] – eine Realsituation direkt in ein mathematisches Modell überführen,\nK3.3 [AB1] – ein mathematisches Resultat auf eine gegebene Realsituation übertragen.\nK3.4 [AB2] – mehrschrittige Modellierungen mit wenigen und klar formulierten Einschränkungen vornehmen,\nK3.5 [AB2] – Ergebnisse einer solchen Modellierung interpretieren,\nK3.6 [AB2] – ein mathematisches Modell an veränderte Umstände anpassen.\nK3.7 [AB3] – eine komplexe Realsituation modellieren, wobei Variablen und Bedingungen festgelegt werden müssen,\nK3.8 [AB3] – mathematische Modelle im Kontext einer Realsituation überprüfen, vergleichen und bewerten.",
+      "rawText": "Kompetenzbereich: Mathematisch modellieren (K3)\nAnforderungsbereich I\nDie Lernenden können\nK3.1  vertraute und direkt erkennbare Modelle anwenden,\nK3.2  eine Realsituation direkt in ein mathematisches Modell überführen,\nK3.3  ein mathematisches Resultat auf eine gegebene Realsituation übertragen.\n\n\nAnforderungsbereich II\nDie Lernenden können\nK3.4  mehrschrittige Modellierungen mit wenigen und klar formulierten Einschränkungen\n       vornehmen,\nK3.5  Ergebnisse einer solchen Modellierung interpretieren,\nK3.6  ein mathematisches Modell an veränderte Umstände anpassen.\n\n\nAnforderungsbereich III\nDie Lernenden können\nK3.7  eine komplexe Realsituation modellieren, wobei Variablen und Bedingungen fest-\n       gelegt werden müssen,\nK3.8  mathematische Modelle im Kontext einer Realsituation überprüfen, vergleichen\n       und bewerten.",
+      "page": 22,
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Kompetenzbereich K3, S. 22",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+      "sourceDocumentKey": "KC_GOS_2024",
+      "sourceGoalIds": [
+        "he-math-sekii-process-k3-1",
+        "he-math-sekii-process-k3-2",
+        "he-math-sekii-process-k3-3",
+        "he-math-sekii-process-k3-4",
+        "he-math-sekii-process-k3-5",
+        "he-math-sekii-process-k3-6",
+        "he-math-sekii-process-k3-7",
+        "he-math-sekii-process-k3-8"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "he-math-sekii-process-k3-1",
+      "passageId": "he-math-sekii-process:k3:standards",
+      "topicCode": "K3",
+      "standardId": "K3.1",
+      "demandLevel": "AB1",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "K3.1 – vertraute und direkt erkennbare Modelle anwenden",
+      "description": "Die Lernenden können vertraute und direkt erkennbare Modelle anwenden.",
+      "sourceText": "vertraute und direkt erkennbare Modelle anwenden,",
+      "rawSourceText": "K3.1  vertraute und direkt erkennbare Modelle anwenden,",
+      "sourceSpan": "vertraute und direkt erkennbare Modelle anwenden",
+      "rawSourceSpan": "vertraute und direkt erkennbare Modelle anwenden,",
+      "parentBulletText": "vertraute und direkt erkennbare Modelle anwenden,",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Kompetenzbereich K3, S. 22, K3.1, Anforderungsbereich I",
+      "sourcePage": 22,
+      "sourceDocumentKey": "KC_GOS_2024",
+      "courseLevel": "GK_LK",
+      "granularity": "officialStandard",
+      "tags": [
+        "source-goal",
+        "process:K3",
+        "standard:K3.1",
+        "AB1",
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "id": "he-math-sekii-process-k3-2",
+      "passageId": "he-math-sekii-process:k3:standards",
+      "topicCode": "K3",
+      "standardId": "K3.2",
+      "demandLevel": "AB1",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "K3.2 – eine Realsituation direkt in ein mathematisches Modell überführen",
+      "description": "Die Lernenden können eine Realsituation direkt in ein mathematisches Modell überführen.",
+      "sourceText": "eine Realsituation direkt in ein mathematisches Modell überführen,",
+      "rawSourceText": "K3.2  eine Realsituation direkt in ein mathematisches Modell überführen,",
+      "sourceSpan": "eine Realsituation direkt in ein mathematisches Modell überführen",
+      "rawSourceSpan": "eine Realsituation direkt in ein mathematisches Modell überführen,",
+      "parentBulletText": "eine Realsituation direkt in ein mathematisches Modell überführen,",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Kompetenzbereich K3, S. 22, K3.2, Anforderungsbereich I",
+      "sourcePage": 22,
+      "sourceDocumentKey": "KC_GOS_2024",
+      "courseLevel": "GK_LK",
+      "granularity": "officialStandard",
+      "tags": [
+        "source-goal",
+        "process:K3",
+        "standard:K3.2",
+        "AB1",
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "id": "he-math-sekii-process-k3-3",
+      "passageId": "he-math-sekii-process:k3:standards",
+      "topicCode": "K3",
+      "standardId": "K3.3",
+      "demandLevel": "AB1",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "K3.3 – ein mathematisches Resultat auf eine gegebene Realsituation übertragen",
+      "description": "Die Lernenden können ein mathematisches Resultat auf eine gegebene Realsituation übertragen.",
+      "sourceText": "ein mathematisches Resultat auf eine gegebene Realsituation übertragen.",
+      "rawSourceText": "K3.3  ein mathematisches Resultat auf eine gegebene Realsituation übertragen.",
+      "sourceSpan": "ein mathematisches Resultat auf eine gegebene Realsituation übertragen",
+      "rawSourceSpan": "ein mathematisches Resultat auf eine gegebene Realsituation übertragen.",
+      "parentBulletText": "ein mathematisches Resultat auf eine gegebene Realsituation übertragen.",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Kompetenzbereich K3, S. 22, K3.3, Anforderungsbereich I",
+      "sourcePage": 22,
+      "sourceDocumentKey": "KC_GOS_2024",
+      "courseLevel": "GK_LK",
+      "granularity": "officialStandard",
+      "tags": [
+        "source-goal",
+        "process:K3",
+        "standard:K3.3",
+        "AB1",
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "id": "he-math-sekii-process-k3-4",
+      "passageId": "he-math-sekii-process:k3:standards",
+      "topicCode": "K3",
+      "standardId": "K3.4",
+      "demandLevel": "AB2",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "K3.4 – mehrschrittige Modellierungen mit wenigen und klar formulierten Einschränkungen vornehmen",
+      "description": "Die Lernenden können mehrschrittige Modellierungen mit wenigen und klar formulierten Einschränkungen vornehmen.",
+      "sourceText": "mehrschrittige Modellierungen mit wenigen und klar formulierten Einschränkungen vornehmen,",
+      "rawSourceText": "K3.4  mehrschrittige Modellierungen mit wenigen und klar formulierten Einschränkungen\n       vornehmen,",
+      "sourceSpan": "mehrschrittige Modellierungen mit wenigen und klar formulierten Einschränkungen vornehmen",
+      "rawSourceSpan": "mehrschrittige Modellierungen mit wenigen und klar formulierten Einschränkungen\n       vornehmen,",
+      "parentBulletText": "mehrschrittige Modellierungen mit wenigen und klar formulierten Einschränkungen vornehmen,",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Kompetenzbereich K3, S. 22, K3.4, Anforderungsbereich II",
+      "sourcePage": 22,
+      "sourceDocumentKey": "KC_GOS_2024",
+      "courseLevel": "GK_LK",
+      "granularity": "officialStandard",
+      "tags": [
+        "source-goal",
+        "process:K3",
+        "standard:K3.4",
+        "AB2",
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "id": "he-math-sekii-process-k3-5",
+      "passageId": "he-math-sekii-process:k3:standards",
+      "topicCode": "K3",
+      "standardId": "K3.5",
+      "demandLevel": "AB2",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "K3.5 – Ergebnisse einer solchen Modellierung interpretieren",
+      "description": "Die Lernenden können Ergebnisse einer solchen Modellierung interpretieren.",
+      "sourceText": "Ergebnisse einer solchen Modellierung interpretieren,",
+      "rawSourceText": "K3.5  Ergebnisse einer solchen Modellierung interpretieren,",
+      "sourceSpan": "Ergebnisse einer solchen Modellierung interpretieren",
+      "rawSourceSpan": "Ergebnisse einer solchen Modellierung interpretieren,",
+      "parentBulletText": "Ergebnisse einer solchen Modellierung interpretieren,",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Kompetenzbereich K3, S. 22, K3.5, Anforderungsbereich II",
+      "sourcePage": 22,
+      "sourceDocumentKey": "KC_GOS_2024",
+      "courseLevel": "GK_LK",
+      "granularity": "officialStandard",
+      "tags": [
+        "source-goal",
+        "process:K3",
+        "standard:K3.5",
+        "AB2",
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "id": "he-math-sekii-process-k3-6",
+      "passageId": "he-math-sekii-process:k3:standards",
+      "topicCode": "K3",
+      "standardId": "K3.6",
+      "demandLevel": "AB2",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "K3.6 – ein mathematisches Modell an veränderte Umstände anpassen",
+      "description": "Die Lernenden können ein mathematisches Modell an veränderte Umstände anpassen.",
+      "sourceText": "ein mathematisches Modell an veränderte Umstände anpassen.",
+      "rawSourceText": "K3.6  ein mathematisches Modell an veränderte Umstände anpassen.",
+      "sourceSpan": "ein mathematisches Modell an veränderte Umstände anpassen",
+      "rawSourceSpan": "ein mathematisches Modell an veränderte Umstände anpassen.",
+      "parentBulletText": "ein mathematisches Modell an veränderte Umstände anpassen.",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Kompetenzbereich K3, S. 22, K3.6, Anforderungsbereich II",
+      "sourcePage": 22,
+      "sourceDocumentKey": "KC_GOS_2024",
+      "courseLevel": "GK_LK",
+      "granularity": "officialStandard",
+      "tags": [
+        "source-goal",
+        "process:K3",
+        "standard:K3.6",
+        "AB2",
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "id": "he-math-sekii-process-k3-7",
+      "passageId": "he-math-sekii-process:k3:standards",
+      "topicCode": "K3",
+      "standardId": "K3.7",
+      "demandLevel": "AB3",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "K3.7 – eine komplexe Realsituation modellieren, wobei Variablen und Bedingungen festgelegt werden müssen",
+      "description": "Die Lernenden können eine komplexe Realsituation modellieren, wobei Variablen und Bedingungen festgelegt werden müssen.",
+      "sourceText": "eine komplexe Realsituation modellieren, wobei Variablen und Bedingungen festgelegt werden müssen,",
+      "rawSourceText": "K3.7  eine komplexe Realsituation modellieren, wobei Variablen und Bedingungen fest-\n       gelegt werden müssen,",
+      "sourceSpan": "eine komplexe Realsituation modellieren, wobei Variablen und Bedingungen festgelegt werden müssen",
+      "rawSourceSpan": "eine komplexe Realsituation modellieren, wobei Variablen und Bedingungen fest-\n       gelegt werden müssen,",
+      "parentBulletText": "eine komplexe Realsituation modellieren, wobei Variablen und Bedingungen festgelegt werden müssen,",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Kompetenzbereich K3, S. 22, K3.7, Anforderungsbereich III",
+      "sourcePage": 22,
+      "sourceDocumentKey": "KC_GOS_2024",
+      "courseLevel": "GK_LK",
+      "granularity": "officialStandard",
+      "tags": [
+        "source-goal",
+        "process:K3",
+        "standard:K3.7",
+        "AB3",
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "id": "he-math-sekii-process-k3-8",
+      "passageId": "he-math-sekii-process:k3:standards",
+      "topicCode": "K3",
+      "standardId": "K3.8",
+      "demandLevel": "AB3",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "K3.8 – mathematische Modelle im Kontext einer Realsituation überprüfen, vergleichen und bewerten",
+      "description": "Die Lernenden können mathematische Modelle im Kontext einer Realsituation überprüfen, vergleichen und bewerten.",
+      "sourceText": "mathematische Modelle im Kontext einer Realsituation überprüfen, vergleichen und bewerten.",
+      "rawSourceText": "K3.8  mathematische Modelle im Kontext einer Realsituation überprüfen, vergleichen\n       und bewerten.",
+      "sourceSpan": "mathematische Modelle im Kontext einer Realsituation überprüfen, vergleichen und bewerten",
+      "rawSourceSpan": "mathematische Modelle im Kontext einer Realsituation überprüfen, vergleichen\n       und bewerten.",
+      "parentBulletText": "mathematische Modelle im Kontext einer Realsituation überprüfen, vergleichen und bewerten.",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Kompetenzbereich K3, S. 22, K3.8, Anforderungsbereich III",
+      "sourcePage": 22,
+      "sourceDocumentKey": "KC_GOS_2024",
+      "courseLevel": "GK_LK",
+      "granularity": "officialStandard",
+      "tags": [
+        "source-goal",
+        "process:K3",
+        "standard:K3.8",
+        "AB3",
+        "GK",
+        "LK"
+      ]
+    }
+  ]
+}

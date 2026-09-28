@@ -8,50 +8,17 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / Codex built-in image generation (reference-conditioned)
 - Status: pilot
-- Quellbild: `a594dec0-3977-5c43-9432-d4254a7f6130.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/a594dec0-3977-5c43-9432-d4254a7f6130/a594dec0-3977-5c43-9432-d4254a7f6130.jpg`
+- Quellbild: `a594dec0-3977-5c43-9432-d4254a7f6130.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/a594dec0-3977-5c43-9432-d4254a7f6130/a594dec0-3977-5c43-9432-d4254a7f6130.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Create a polished 16:9 German mathematics learning illustration from the attached EXACT mathematical layout. The attached image is the mathematical truth; preserve its coordinate topology, vertex labels, arrow directions, volumes, and wording exactly. Upgrade the style only to a friendly hand-drawn educational comic with warm cream paper, subtle watercolor shading, bold contour lines, and large legible labels.
 
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Volumen von Spaten und Tetraedern mit Spatprodukt berechnen
-Beschreibung: Die lernende Person kann Volumina von Spaten (Parallelepipeden) und Tetraedern aus Koordinaten mithilfe des Spatprodukts bestimmen ($V_{Spat} = |\vec{a} \cdot (\vec{b} \times \vec{c})|$, $V_{Tet} = \frac{1}{6} V_{Spat}$) und passende Kantenvektoren wählen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Volumen von Spat und Tetraeder mit dem Spatprodukt berechnen.
-- Zeige drei Kantenvektoren von einem gemeinsamen Punkt O:
-  a=(2,0,0),
-  b=(0,3,0),
-  c=(0,0,4).
-- Zeige links den aufgespannten Spat als transparenten Quader.
-- Zeige rechts das Tetraeder mit den Eckpunkten O, A, B, C.
-- Rechnung:
-  b x c=(12,0,0).
-  a*(b x c)=24.
-  V_Spat=|a*(b x c)|=24.
-  V_Tet=1/6*V_Spat=4.
-- Beschrifte die Kantenvektoren und die beiden Volumina klar.
-
-Vermeiden:
-- Das Tetraedervolumen nicht als 1/3 des Spatvolumens angeben.
-- Nicht den Betrag beim Spatvolumen vergessen.
-- Nicht 12 oder 24 als Tetraedervolumen angeben.
-- Keine Pyramidenformel ohne Bezug zum Spatprodukt als Hauptrechnung.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+The single origin O has +x diagonally down-right, +y diagonally down-left, +z straight up. From O red a=(2,0,0) goes on +x, green b=(0,3,0) on +y, blue c=(0,0,4) on +z. The full wireframe is one parallelepiped with correctly labelled vertices O, a, b, c, a+b, a+c, b+c, a+b+c. Inside, the amber translucent tetrahedron has exactly the four vertices O,a,b,c; its base is triangle O-a-b and its apex is c. There are NO extra tetrahedron vertices. Text exactly: 'Spat und Tetraeder', 'Spat: V = 2 · 3 · 4 = 24', 'Tetraeder: V = 24 / 6 = 4'. No other equations or invented symbols. Prior AI attempts swapped the x/y axes and mislabelled the upper vertices: do not repeat those errors. At card size, the important a,b,c labels and two volumes must remain readable.
 ```
 
 ## Review-Notiz

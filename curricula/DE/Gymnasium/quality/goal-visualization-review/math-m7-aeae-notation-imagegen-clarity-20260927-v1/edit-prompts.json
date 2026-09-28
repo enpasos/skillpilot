@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "goalId": "aeae526e-b3a4-5a17-b177-351df0307cb9",
+  "sourceOfPrompts": "The initiating root agent supplied the exact two imagegen tool prompt strings after generation; exact serving image model identifier is not exposed.",
+  "oldImage": "sha256:fd230b4a6ec4071bf78335622e3699a0c73502c8ed3635d84d349f015ca6f287",
+  "edits": [
+    {
+      "stage": 1,
+      "source": "Old canonical Google Gemini / Nano Banana Pro JPEG",
+      "promptVerbatim": "Use case: text-localization. Asset type: mathematics learning-goal illustration. Image 1 is the EDIT TARGET. Change ONLY the top-left speech bubble text from the mathematically false `f′ ist die Funktion` to EXACTLY `f ist die Funktion` (the lowercase italic f has NO prime mark, NO apostrophe, NO accent). Keep that bubble in the same place, same border, same white background, same black serif/math text style and comparable size. Preserve absolutely everything else in the image: the friendly comic teacher, classroom, headline `Notation adressatengerecht erläutern`, middle formula `f(3) = 7` (no prime), right bubble `7 ist der Funktionswert`, lower bubble `3 ist der eingesetzte x-Wert`, and the value table with x=3 and f(x)=7. Do not alter any other lettering, digits, mathematical signs, arrows, layouts, colors, or crop. Output a clean landscape raster image, sharp readable text. Invariant: the edited left bubble must refer to f, not f-prime/derivative.",
+      "result": "sha256:ca8b6ce933e055466b01e7de4949e3587f7ef7b1d1d74802776642d3a9d40c56"
+    },
+    {
+      "stage": 2,
+      "source": "Stage 1 PNG, not the old JPEG",
+      "promptVerbatim": "Use case: precise-object-edit. Image 1 is the edit target, a friendly mathematics classroom learning-goal illustration. Change ONLY the two thin black dashed/dotted connector arrows between the central equation `f(3) = 7` and the small `Wertetabelle` on its right: REMOVE those dashed arrows completely, leaving clean blank white space around the equation and table. These connectors misleadingly map output 7 to input 3; do not add any replacement arrows. Preserve all other pixels/composition as closely as possible, including exact German title, comic person, bubble borders and speech-bubble text `f ist die Funktion`, `3 ist der eingesetzte x-Wert`, `7 ist der Funktionswert`; central formula must remain exactly `f(3) = 7` with no prime; table exactly `x | f(x)` over `3 | 7`. Same landscape crop, typography, color palette, classroom, friendly comic style. No new symbols, marks, or labels.",
+      "result": "sha256:a04ca7f4853c4fff837d381c7c7851376285dae9a1d4a2291fc2347c89887281"
+    }
+  ],
+  "retrospectiveCorrection": "The stage-1 prompt called the old left label f-prime mathematically false. Enlarged direct review and the pre-existing 2026-09-23 AI QA show a pair of typographic quotation marks around f, not a proven derivative prime. The old asset was mathematically correct and AI-KEEP; the edits improve small-size clarity and remove potentially misleading connector arrows.",
+  "authority": "Generation instructions and independent AI image review are not human approval."
+}

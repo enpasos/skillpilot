@@ -1,14 +1,14 @@
-# J7 Mathematics Exam Blueprint v5
+# J7 Mathematics Exam Blueprint v6 candidate
 
-Status: Task 4 v5 promoted after focused method-neutral wording review; Task 7 remains on v4, Tasks 5 and 6 remain on v3, and Tasks 1-3 remain on v1
+Status: Task 2 v6 remains `needs_review`; Task 4 v5 is promoted, Task 7 remains on v4, Tasks 5 and 6 on v3, and Tasks 1 and 3 on v1.
 
-Total: 40 BE
+Total if Task 2 v6 is later released: 41 BE
 Time: 60 minutes
 
 | Task | Source | BE | Focus | Covered goals |
 | --- | --- | ---: | --- | --- |
 | 1 | `draft_v1.md` | 5 | Geschwindigkeit aus Messwerten berechnen, Einheiten wechseln und Messunsicherheit realistisch benennen. | 37bf2eb6-75a0-44c1-a988-ca0e203cb072 (Geschwindigkeit als abgeleitete Größe verwenden)<br>c3cce9a1-9adc-4470-b2d8-aea81d6d7b65 (Messungen in Umwelt und Quellenmaterial durchführen)<br>314854a0-4e97-462e-9486-9fd83652e91d (Taschenrechner situationsgerecht nutzen) |
-| 2 | `draft_v1.md` | 7 | Volumen, Oberfläche und Dichte eines geraden Prismas in einem plausiblen Materialkontext bestimmen. | 59d5a330-61be-4590-ab46-cf7cefecd144 (Volumen und Oberflächen gerader Prismen berechnen)<br>2345ae25-5805-4c72-b830-32e63cc6262a (Dichte als abgeleitete Größe verwenden) |
+| 2 | `draft_v6.md` – `needs_review` | 8 | Rauminhalt, äußeren Oberflächeninhalt und Dichte des geraden Prismas getrennt berechnen und deuten. | 68fb0e78-34f2-5572-8db6-e7f5ebcff70f (Volumen gerader Prismen berechnen)<br>f1348d40-3872-5e44-8892-3600c811796f (Oberflächeninhalt gerader Prismen berechnen)<br>2345ae25-5805-4c72-b830-32e63cc6262a (Dichte als abgeleitete Größe verwenden) |
 | 3 | `draft_v1.md` | 5 | Umfang und Flächeninhalt von Kreis und Kreisteilen berechnen und Ergebnisse mit Einheiten angeben. | 8064088b-dc0a-4a67-ad63-360fdcc9869d (Umfang und Flächeninhalt von Kreisen und Kreisteilen berechnen) |
 | 4 | `draft_v5.md` | 7 | Proportionale Funktionen, Dreisatz und Funktionsbegriff in einem linearen Kostenkontext nutzen. | 7dea79d2-67f2-4d92-b6cc-ad1b953dca3d (Funktionen als eindeutige Zuordnungen charakterisieren)<br>f3167cab-bb23-4bb9-8a27-22e3c5015d44 (Proportionale Funktionen als Ursprungsgeraden deuten und darstellen)<br>093397e0-eec8-45bb-9a5a-a24827876df5 (Dreisatz in proportionalen Sachsituationen anwenden) |
 | 5 | `draft_v3.md` | 7 | Termwerte berechnen, Terme äquivalent umformen und ein typisches Distributivgesetz-Missverständnis korrigieren. | 2c4830e6-a8d5-48d0-9202-3b7d18a419c2 (Terme im Bereich rationaler Zahlen äquivalent umformen)<br>a6469c01-6ca3-5eb2-a82c-94f3d0560b32 (Termwerte durch Einsetzen berechnen)<br>d668c22d-caeb-5e91-8980-721c931a2bcf (Missverständnisse erklären und korrigieren) |
@@ -24,5 +24,6 @@ Design notes:
 - The v3 change applies the same convention to every currency amount in Tasks 5 and 6 and their solutions.
 - The v4 change gives Task 7 an explicit table header and GFM delimiter row so its unchanged data render as a table in both cockpit and chat.
 - The v5 change removes only the unnecessary prescribed method `mit einem Dreisatz` from Task 4. The calculation, result, point allocation, prerequisites and covered goals stay unchanged.
+- The v6 candidate splits Task 2's volume and surface-area evidence, adds a context interpretation for each, and changes its score from 7 to 8 BE. Its passing rule still needs an independent per-goal adequacy review; v1's simulated release cannot be reused.
 - All other task wording, mathematical requirements and scoring remain unchanged.
 - Offene Altlast außerhalb dieses engen Splits: `d668c22d-caeb-5e91-8980-721c931a2bcf` bezeichnet derzeit Diagramm-Missverständnisse, während Aufgabe 5 einen Distributivgesetzfehler prüft. Der Verweis bleibt auf ausdrückliche Product-Owner-Entscheidung in diesem Split unverändert und benötigt eine separate fachliche Adjudikation.

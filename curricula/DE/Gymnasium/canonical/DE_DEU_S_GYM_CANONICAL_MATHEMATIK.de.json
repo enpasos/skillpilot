@@ -2722,7 +2722,7 @@
       "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die Baseline bündelt einen kanonischen Mathematik-Graphen über Sekundarstufe I und II mit Jahrgangsankern, fachlichen Korridoren und anschlussfähigen Oberstufenzielen.",
       "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The baseline bundles one canonical mathematics graph across lower and upper secondary with year anchors, content corridors, and upper-secondary continuation goals.",
       "core": true,
-      "weight": 932,
+      "weight": 940,
       "tags": [
         "root",
         "canonical",
@@ -3667,7 +3667,22 @@
         ]
       },
       "type": "atomic",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+          "title": "Visualisierung: Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen",
+          "url": "/assets/goal-visualizations/mathematik/121e3fdf-54d2-4d46-bc2d-f6e725f10f41/121e3fdf-54d2-4d46-bc2d-f6e725f10f41.png",
+          "provider": "Google Gemini / Nano Banana 2 (gemini-3.1-flash-image)",
+          "description": "Viereck mit vier exakten Eckpunkten im Koordinatensystem und demselben Umriss als Grundriss.",
+          "altText": "Links sind A(−3,−2), B(2,−1), C(3,2) und D(−1,3) im vierquadrantigen Koordinatensystem zu einem Viereck verbunden. Rechts zeigt ein Grundriss denselben Umriss mit den Ecken A, B, C und D.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
@@ -3721,7 +3736,22 @@
         ]
       },
       "type": "atomic",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+          "title": "Visualisierung: Parallele und senkrechte Lagebeziehungen erkennen und begründen",
+          "url": "/assets/goal-visualizations/mathematik/2231c29b-eb4e-51ae-9cb1-eb033bf16099/2231c29b-eb4e-51ae-9cb1-eb033bf16099.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)",
+          "description": "Parallele Geraden und ein rechter Winkel im direkten Vergleich.",
+          "altText": "Links verlaufen eine orange und eine grüne Gerade parallel. Rechts kreuzen sich eine rote und eine blaue Diagonale im rechten Winkel; ein Winkelzeichen markiert den Schnitt.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "3e53a39b-1c75-4034-a647-8de85719e1fb",
@@ -8728,10 +8758,62 @@
     {
       "id": "59d5a330-61be-4590-ab46-cf7cefecd144",
       "shortKey": "canonical_math_sek1_j7_right_prism_volume_surface",
-      "title": "Volumen und Oberflächen gerader Prismen berechnen",
-      "titleEn": "Calculate volumes and surfaces of right prisms",
-      "description": "Die lernende Person kann Volumen und Oberflächen gerader Prismen berechnen, dazu Grundflächeninhalte und Höhen bzw. Teilflächen passend bestimmen und Ergebnisse im Sachkontext deuten.",
-      "descriptionEn": "The learner can calculate volumes and surfaces of right prisms by determining base areas and heights or partial faces appropriately and interpreting results in context.",
+      "title": "Volumen und Oberflächeninhalt gerader Prismen",
+      "titleEn": "Volume and surface area of right prisms",
+      "description": "Dieser Ordner bündelt zwei getrennte Lernziele: den Rauminhalt und den gesamten äußeren Flächeninhalt gerader Prismen bestimmen und deuten.",
+      "descriptionEn": "This folder groups two separate goals: determining and interpreting the volume and total exterior surface area of right prisms.",
+      "core": true,
+      "weight": 2,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J7",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J7.MEASUREMENT.RIGHT_PRISMS"
+      },
+      "contains": [
+        "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+        "f1348d40-3872-5e44-8892-3600c811796f"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+      "shortKey": "canonical_math_sek1_j7_right_prism_volume",
+      "title": "Volumen gerader Prismen berechnen",
+      "titleEn": "Calculate the volume of right prisms",
+      "description": "Die lernende Person kann mithilfe der Schichtung kongruenter Grundflächen erklären, warum für das Volumen eines geraden Prismas V = G · h gilt, den Grundflächeninhalt G und die dazu senkrechte Körperhöhe h bestimmen, den Rauminhalt berechnen und mit passender Volumeneinheit im Sachkontext deuten.",
+      "descriptionEn": "The learner can use layers of congruent bases to explain why the volume of a right prism is V = G × h, determine the base area G and perpendicular height h, calculate the volume, and interpret it with an appropriate volume unit in context.",
       "core": true,
       "weight": 1,
       "tags": [
@@ -8749,7 +8831,7 @@
         ],
         "phase": "J7",
         "area": "Geometry",
-        "topicCode": "CANONICAL.MATH.SEK1.J7.MEASUREMENT.RIGHT_PRISMS"
+        "topicCode": "CANONICAL.MATH.SEK1.J7.MEASUREMENT.RIGHT_PRISMS.VOLUME"
       },
       "contains": [],
       "requires": [
@@ -8782,14 +8864,82 @@
           "type": "goal-visualization",
           "resourceType": "image",
           "role": "primary",
-          "skillpilotId": "59d5a330-61be-4590-ab46-cf7cefecd144",
-          "title": "Visualisierung: Volumen und Oberflächen gerader Prismen berechnen",
-          "url": "/assets/goal-visualizations/mathematik/59d5a330-61be-4590-ab46-cf7cefecd144/59d5a330-61be-4590-ab46-cf7cefecd144.jpg",
-          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
-          "description": "Visualisierung zum Lernziel: Volumen und Oberflächen gerader Prismen berechnen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Volumen und Oberflächen gerader Prismen berechnen\". Die lernende Person kann Volumen und Oberflächen gerader Prismen berechnen, dazu Grundflächeninhalte und Höhen bzw. Teilflächen passend bestimmen und Ergebnisse im Sachkontext deuten.",
+          "skillpilotId": "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+          "title": "Volumen eines geraden Dreiecksprismas als Grundfläche mal Körperhöhe",
+          "url": "/assets/goal-visualizations/mathematik/68fb0e78-34f2-5572-8db6-e7f5ebcff70f/68fb0e78-34f2-5572-8db6-e7f5ebcff70f.png",
+          "provider": "OpenAI imagegen",
+          "description": "Kongruente Dreiecksquerschnitte sind entlang eines geraden Prismas geschichtet; die große Formel zeigt V = G · h.",
+          "altText": "Grünes gerades Dreiecksprisma mit gelber Dreiecksgrundfläche und wiederholten kongruenten Querschnitten. Ein blauer Pfeil markiert die Körperhöhe; daneben steht V = G · h.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "f1348d40-3872-5e44-8892-3600c811796f",
+      "shortKey": "canonical_math_sek1_j7_right_prism_surface_area",
+      "title": "Oberflächeninhalt gerader Prismen berechnen",
+      "titleEn": "Calculate the surface area of right prisms",
+      "description": "Die lernende Person kann an einem geraden Prisma beide kongruenten Grundflächen und alle Mantelflächen identifizieren, ihre Flächeninhalte ohne Auslassung oder Doppelzählung zur gesamten äußeren Oberfläche addieren und das Ergebnis mit passender Flächeneinheit im Sachkontext deuten.",
+      "descriptionEn": "The learner can identify both congruent bases and all lateral faces of a right prism, add their areas without omission or double-counting to find its total exterior surface area, and interpret the result with an appropriate area unit in context.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J7",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J7.MEASUREMENT.RIGHT_PRISMS.SURFACE_AREA"
+      },
+      "contains": [],
+      "requires": [
+        "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "f1348d40-3872-5e44-8892-3600c811796f",
+          "title": "Oberflächeninhalt eines geraden Dreiecksprismas aus fünf Außenflächen",
+          "url": "/assets/goal-visualizations/mathematik/f1348d40-3872-5e44-8892-3600c811796f/f1348d40-3872-5e44-8892-3600c811796f.png",
+          "provider": "OpenAI imagegen",
+          "description": "Die Oberfläche eines Dreiecksprismas besteht aus zwei kongruenten Dreiecksflächen und drei Mantelrechtecken; die große Formel zeigt O = 2 · G + M.",
+          "altText": "Zwei kongruente gelbe rechtwinklige Dreiecke und drei grüne Rechtecke unterschiedlicher Breite stehen für die fünf Außenflächen eines Dreiecksprismas; darunter steht O = 2 · G + M.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -12521,7 +12671,7 @@
       "description": "Cluster für den späteren Sek-I-Korridor zu Flächeninhalten, Kreisberechnungen und Körpern. Der Korridor verbindet Flächen- und Kreisvorstellungen mit Volumen-, Oberflächen- und ersten räumlichen Körperberechnungen und hält den Körperstrang damit als eigene kanonische Arbeitseinheit sichtbar.",
       "descriptionEn": "Cluster for the later lower-secondary corridor on area concepts, circle calculations, and solids. The corridor connects area and circle ideas with volume, surface, and first spatial solid calculations and keeps the solids strand visible as its own canonical work package.",
       "core": true,
-      "weight": 8,
+      "weight": 9,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -13674,7 +13824,7 @@
       "description": "Cluster für geometrische Grundvorstellungen und Raumvorstellungen aus der gymnasialen Sekundarstufe I. Der Korridor ist jetzt explizit in frühe Geometrie und Raumvorstellungen, spätere Figuren-, Abbildungs- und Satzgeometrie, spätere Flächen-, Kreis- und Körpervorstellungen sowie die trigonometrische Brücke mit späteren Raumproblemen gegliedert und ist zusätzlich an die kanonischen Jahrgangsanker J5 bis J10 angebunden.",
       "descriptionEn": "Cluster for lower-secondary geometry and spatial reasoning in Gymnasium. The corridor is now explicitly structured into early geometry and spatial imagination, later figure/transformation/theorem geometry, later area/circle/solids concepts, and the trigonometric bridge with later spatial problems, and is additionally linked to the canonical year anchors J5 to J10.",
       "core": true,
-      "weight": 54,
+      "weight": 55,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -14135,7 +14285,7 @@
       "description": "Cluster für den fachlichen Korridor vom Einstieg in den Ableitungsbegriff bis zur weiterführenden Differentialrechnung in der Sekundarstufe II. Der Korridor bündelt den Ableitungseinstieg sowie derivativegestützte Untersuchungs- und Optimierungsroutinen.",
       "descriptionEn": "Cluster for the subject-matter corridor from the entry into the derivative concept to later differential calculus in upper secondary. The corridor bundles derivative entry with derivative-based investigation and optimisation routines.",
       "core": true,
-      "weight": 79,
+      "weight": 81,
       "tags": [
         "canonical",
         "phase:SekII",
@@ -14337,7 +14487,7 @@
       "description": "Cluster für den geometrisch-linearen Oberstufenkorridor in Q2. Die sichtbare Oberfläche gliedert sich nun in Punkte, Vektoren und Bewegungen im Raum, eine metrische Brücke über Skalarprodukt und Orthogonalität, Geraden und Ebenen mit Gleichungsformen, räumliche Lagebeziehungen und Schnittmengen sowie späte Distanz-, Winkel-, Spiegelungs- und Anwendungsarbeit; Matrizen- und lineare Modellkorridore bleiben als eigener Zweig sichtbar.",
       "descriptionEn": "Cluster for the geometric-linear upper-secondary corridor in Q2. Its visible surface is now structured into points, vectors, and motion in space, a metric bridge via scalar product and orthogonality, lines and planes with equation forms, spatial relations and intersections, and late work on distances, angles, reflections, and applications; matrix and linear-model corridors remain visible as a separate branch.",
       "core": true,
-      "weight": 121,
+      "weight": 120,
       "tags": [
         "canonical",
         "phase:SekII",
@@ -16996,12 +17146,12 @@
           "skillpilotId": "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
           "title": "Visualisierung: Ableitungsbegriff aus mittleren und momentanen Änderungsraten entwickeln",
           "url": "/assets/goal-visualizations/mathematik/7156558c-57f1-4372-9ba7-0640c3f7cb3a/7156558c-57f1-4372-9ba7-0640c3f7cb3a.png",
-          "provider": "Google Gemini / Nano Banana Pro (user-provided candidate)",
-          "description": "Visualisierung zum Lernziel: Ableitungsbegriff aus mittleren und momentanen Änderungsraten entwickeln.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Ableitungsbegriff aus mittleren und momentanen Änderungsraten entwickeln\". Die lernende Person kann mittlere Änderungsraten als Differenzenquotienten bestimmen, als Sekantensteigungen deuten und daraus den Übergang zur momentanen Änderungsrate als Tangentensteigung motivieren.",
+          "provider": "OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)",
+          "description": "Mathematische Lernzielvisualisierung; Details im Alternativtext.",
+          "altText": "Bei f(x)=x Quadrat liegen A=(2,4) und B=(3,9). Die rote Sekante durch beide Punkte hat Steigung 5, die grüne Tangente in A Steigung 4.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
-          "reviewStatus": "approved"
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
         }
       ]
     },
@@ -19933,7 +20083,23 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "d051857c-0707-544f-ae7a-f20690d182b2",
+          "title": "Visualisierung: Höhen in Dreiecken konstruieren",
+          "url": "/assets/goal-visualizations/mathematik/d051857c-0707-544f-ae7a-f20690d182b2/d051857c-0707-544f-ae7a-f20690d182b2.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Eine Höhe eines spitzwinkligen Dreiecks als Senkrechte von A auf die Gegenseite BC.",
+          "altText": "Spitzwinkliges Dreieck ABC mit waagerechter Seite BC. Die rote Höhe hₐ verläuft von A senkrecht zu BC und trifft die Seite im Punkt H; ein Rechtwinkelsymbol markiert den Lotfuß. Gezeigt ist eine von drei möglichen Höhen.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "dcda6fdf-108f-5ea1-bce7-6f30d6443517",
@@ -20173,8 +20339,8 @@
       "shortKey": "canonical_math_solve_quadratic_equations",
       "title": "Quadratische Gleichungen lösen",
       "titleEn": "Solve quadratic equations",
-      "description": "Die lernende Person kann quadratische Gleichungen grafisch, durch quadratische Ergänzung oder mit einer Lösungsformel bearbeiten und Sachprobleme darauf zurückführen.",
-      "descriptionEn": "The learner can solve quadratic equations graphically, by completing the square, or by using a formula and connect them to simple word problems.",
+      "description": "Die lernende Person kann gegebene quadratische Gleichungen mit einem zur Form passenden rechnerischen Verfahren einschließlich der Lösungsformel lösen, grafische Lösungen bei Bedarf näherungsweise bestimmen, die Fälle null, eine oder zwei reelle Lösungen begründen und Ergebnisse durch Einsetzen sowie eine geeignete Skizze überprüfen.",
+      "descriptionEn": "The learner can solve given quadratic equations using an algebraic method suited to their form, including the quadratic formula, approximate solutions graphically when appropriate, justify whether there are zero, one, or two real solutions, and check the results by substitution and a suitable sketch.",
       "core": true,
       "weight": 1,
       "tags": [
@@ -20204,6 +20370,20 @@
         ]
       },
       "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "9023226b-fc17-412b-807c-2bb45cd551d5",
+          "title": "Visualisierung: Quadratische Gleichungen lösen",
+          "url": "/assets/goal-visualizations/mathematik/9023226b-fc17-412b-807c-2bb45cd551d5/9023226b-fc17-412b-807c-2bb45cd551d5.png",
+          "provider": "OpenAI / Codex built-in image generation (edit)",
+          "description": "Visualisierung zum Lernziel: Quadratische Gleichungen lösen.",
+          "altText": "Ein Quadrat der Seitenlänge x+2 ist in die Flächen x², zweimal 2x und 4 geteilt. Daher gilt x²+4x+4=(x+2)². Die Gleichung (x+2)²=0 hat algebraisch die Lösung x=−2; die gezeigte geometrische Länge ist nur für x≥0 gemeint.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        },
         {
           "type": "tool",
           "title": "GeoGebra Graphing Calculator",
@@ -23827,7 +24007,23 @@
         ]
       },
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+          "title": "Visualisierung: Kongruente sowie maßstäblich vergrößerte und verkleinerte Figuren zeichnen und begründen",
+          "url": "/assets/goal-visualizations/mathematik/2041f4ec-620d-4a20-9922-6ebf16f8f8fa/2041f4ec-620d-4a20-9922-6ebf16f8f8fa.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)",
+          "description": "Mathematische Lernzielvisualisierung; Details im Alternativtext.",
+          "altText": "Ein rechtwinkliges 3-4-5-Dreieck mit waagerechter Kathete 3 und senkrechter Kathete 4. Daneben steht sein kongruentes Spiegelbild an der Winkelhalbierenden mit vertauschten Katheten 4 und 3. Weitere Dreiecke zeigen die Vergrößerung mit Faktor 2 auf 6-8-10 und die Verkleinerung mit Faktor ein halb auf 1,5-2-2,5.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "ffd1ae26-c461-4439-9b18-d835c8f38e1a",
@@ -27284,7 +27480,7 @@
       "titleEn": "Families of Functions, Reasoning and Complex Numbers",
       "description": "Zusammenfassender Cluster für Funktionenscharen und Parameteruntersuchungen, Problemlösen und Argumentieren sowie komplexe Zahlen.",
       "descriptionEn": "Summarizing cluster for families of functions and parameter analysis, problem solving and reasoning, and complex numbers.",
-      "weight": 162,
+      "weight": 163,
       "tags": [
         "GK",
         "LK"
@@ -29659,7 +29855,22 @@
         ]
       },
       "type": "atomic",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "bd637a72-6609-54f5-bb33-8a9e898bf7a0",
+          "title": "Visualisierung: Heuristik auswählen und begründen",
+          "url": "/assets/goal-visualizations/mathematik/bd637a72-6609-54f5-bb33-8a9e898bf7a0/bd637a72-6609-54f5-bb33-8a9e898bf7a0.png",
+          "provider": "Google Gemini / Nano Banana 2 (gemini-3.1-flash-image)",
+          "description": "Visualisierung zum Lernziel: Heuristik auswählen und begründen.",
+          "altText": "Aus einer unbekannten Zahl wird durch Verdoppeln und anschließendes Addieren von 3 das bekannte Ergebnis 11. Die Bildfolge arbeitet vom Ziel rückwärts: 11−3=8 und 8÷2=4; die Vorwärtsprobe 2·4+3=11 stimmt.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "295f61e0-0f47-515b-be57-27170a5eee7a",
@@ -29928,8 +30139,8 @@
       "id": "fde351a8-98b1-5d75-b4df-813beb2bbe3c",
       "title": "Beziehungen im Modell formulieren",
       "titleEn": "Formulate relationships in the model",
-      "description": "Die lernende Person kann Beziehungen zwischen Größen als Gleichungen, Ungleichungen oder Funktionen formulieren und die Bedeutung der Terme im Kontext deuten.",
-      "descriptionEn": "The learner can express relations between quantities as equations, inequalities or functions and interpret the meaning of terms in context.",
+      "description": "Die lernende Person kann eine Abhängigkeit zwischen Größen aus einem Sachkontext als passende Funktionsgleichung formulieren und die darin verwendeten Größen im Kontext benennen.",
+      "descriptionEn": "The learner can represent a dependency between quantities in a real-world situation with a suitable function equation and identify what the quantities mean in context.",
       "weight": 1,
       "tags": [
         "GK",
@@ -29943,7 +30154,7 @@
         "framework": "hessen-kc-2024",
         "demandLevel": "AB2",
         "processCompetencies": [
-          "K2.3"
+          "K3.2"
         ],
         "guidingIdeas": [
           "L2",
@@ -30037,7 +30248,22 @@
         ]
       },
       "type": "atomic",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "e02b994f-376d-5a8e-a14c-c4acacae57cf",
+          "title": "Visualisierung: Nebenbedingungen berücksichtigen",
+          "url": "/assets/goal-visualizations/mathematik/e02b994f-376d-5a8e-a14c-c4acacae57cf/e02b994f-376d-5a8e-a14c-c4acacae57cf.png",
+          "provider": "Google Gemini gemini-3-pro-image",
+          "description": "Mathematische Lernzielvisualisierung; Details im Alternativtext.",
+          "altText": "Für 73 Personen mit 30 Plätzen pro Bus gilt 30b mindestens 73 und b als ganze Zahl mindestens 3; zwei Busse reichen nicht, drei und vier schon.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "909d8b16-5156-528b-a300-d9aee5405ba0",
@@ -30087,7 +30313,22 @@
         ]
       },
       "type": "atomic",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "909d8b16-5156-528b-a300-d9aee5405ba0",
+          "title": "Visualisierung: Modell gezielt anpassen",
+          "url": "/assets/goal-visualizations/mathematik/909d8b16-5156-528b-a300-d9aee5405ba0/909d8b16-5156-528b-a300-d9aee5405ba0.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)",
+          "description": "Mathematische Lernzielvisualisierung; Details im Alternativtext.",
+          "altText": "Für 20 Getränke zu je 2 Euro und 10 weitere ab dem 21. zu 1,80 Euro kostet das neue Modell bei 30 Getränken 58 Euro; das bisherige Modell ergab 60 Euro.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "70f37fda-545f-51dc-a002-c8e435e5c4a5",
@@ -34606,7 +34847,22 @@
         ]
       },
       "type": "atomic",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "93fc4fbb-72f6-549b-b97a-a48aecb1534d",
+          "title": "Visualisierung: Hand- und Tool-Verfahren kombinieren",
+          "url": "/assets/goal-visualizations/mathematik/93fc4fbb-72f6-549b-b97a-a48aecb1534d/93fc4fbb-72f6-549b-b97a-a48aecb1534d.png",
+          "provider": "Gemini Nano Banana Pro; ChatGPT/Codex imagegen edit",
+          "description": "Exakte Handlösung, numerischer Tool-Wert und unabhängige Plausibilitätsprüfung.",
+          "altText": "Drei Schritte: Von Hand wird aus 2 hoch x gleich 5 die exakte Lösung x gleich ln 5 geteilt durch ln 2 hergeleitet. Ein Tool liefert x ungefähr 2,322. Eine eigene Kontrolle zeigt 2 hoch 2,322 ungefähr 5.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
@@ -34655,7 +34911,22 @@
         ]
       },
       "type": "atomic",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+          "title": "Visualisierung: Grenzen der Werkzeugnutzung benennen",
+          "url": "/assets/goal-visualizations/mathematik/c97a33d9-d5e4-56c5-ae4c-822bc4f54898/c97a33d9-d5e4-56c5-ae4c-822bc4f54898.png",
+          "provider": "Google Gemini / Nano Banana 2 (gemini-3.1-flash-image)",
+          "description": "Visualisierung zum Lernziel: Grenzen der Werkzeugnutzung benennen.",
+          "altText": "Ein Taschenrechner liefert für sin(x)=1/2 den Hauptwert π/6; Sinusbogen und Symmetrieprüfung zeigen im Intervall 0 bis π zusätzlich 5π/6. Das Beispiel veranschaulicht die Mehrdeutigkeit einer Werkzeugausgabe.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "f0f9c084-631f-5c04-a1c2-93b6b548dd32",
@@ -35530,12 +35801,12 @@
           "role": "primary",
           "skillpilotId": "aeae526e-b3a4-5a17-b177-351df0307cb9",
           "title": "Visualisierung: Notation adressatengerecht erläutern",
-          "url": "/assets/goal-visualizations/mathematik/aeae526e-b3a4-5a17-b177-351df0307cb9/aeae526e-b3a4-5a17-b177-351df0307cb9.jpg",
-          "provider": "Google Gemini / Nano Banana Pro",
+          "url": "/assets/goal-visualizations/mathematik/aeae526e-b3a4-5a17-b177-351df0307cb9/aeae526e-b3a4-5a17-b177-351df0307cb9.png",
+          "provider": "OpenAI imagegen edit of prior Google Gemini / Nano Banana Pro asset; exact model not exposed",
           "description": "Visualisierung zum Lernziel: Notation adressatengerecht erläutern.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Notation adressatengerecht erläutern\". Die lernende Person kann verwendete Notation und Symbole adressatengerecht erläutern und passende Beispiele zur Verdeutlichung geben.",
+          "altText": "Eine Lehrperson zeigt an der Tafel f(3)=7. Sprechblasen erklären f als Funktion, 3 als eingesetzten x-Wert und 7 als Funktionswert; daneben steht eine Wertetabelle mit x=3 und f(x)=7.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -37832,8 +38103,8 @@
     },
     {
       "id": "0dded9c1-043e-57cb-82fc-792b391e9cb0",
-      "title": "Aufgabe 2 (Jahrgangsstufe 7, 7 BE)",
-      "description": "Die lernende Person kann eine freigegebene Prüfungsaufgabe der Jahrgangsstufe 7 bearbeiten: Volumen, Oberfläche und Dichte eines geraden Prismas in einem plausiblen Materialkontext bestimmen.",
+      "title": "Aufgabe 2 (Jahrgangsstufe 7, 8 BE)",
+      "description": "Die lernende Person kann in einer Prüfungsaufgabe der Jahrgangsstufe 7 den Rauminhalt, den gesamten äußeren Flächeninhalt und die Dichte eines geraden Prismas getrennt bestimmen und deuten.",
       "weight": 1,
       "tags": [
         "GK",
@@ -37862,7 +38133,7 @@
           "DE-TH"
         ]
       },
-      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/seki/j7/draft_v1.md#task-2",
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/seki/j7/draft_v6.md#task-2",
       "dimensionTags": {
         "framework": "canonical-gymnasium-math",
         "demandLevel": "AB3",
@@ -37883,7 +38154,8 @@
       "shortKey": "canonical_math_sek1_practice_j7_task_2",
       "contains": [],
       "requires": [
-        "59d5a330-61be-4590-ab46-cf7cefecd144",
+        "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+        "f1348d40-3872-5e44-8892-3600c811796f",
         "2345ae25-5805-4c72-b830-32e63cc6262a"
       ],
       "phase": "J7",
@@ -37891,9 +38163,10 @@
       "nodeKind": "exam",
       "examData": {
         "reviewStatus": "released",
-        "reviewNote": "released after simulated internal review on 2026-06-28 for J7",
+        "reviewNote": "Machine-only independent assessment review 2026-09-28: prism area, layered G·h explanation, total surface and density recalculated; 7/8 plus step-zero core gates makes all three covered competencies necessary. No human or real-host trial; server enforces total score only.",
         "coveredGoalIds": [
-          "59d5a330-61be-4590-ab46-cf7cefecd144",
+          "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+          "f1348d40-3872-5e44-8892-3600c811796f",
           "2345ae25-5805-4c72-b830-32e63cc6262a"
         ],
         "coveredStrands": [
@@ -37905,17 +38178,32 @@
           "AB2",
           "AB3"
         ],
-        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j7/draft_v1.md",
-        "taskContent": "Im Technikraum wird ein Messkeil als gerades Prisma gebaut. Die Grundfläche ist ein rechtwinkliges Dreieck mit Katheten $6 cm$ und $8 cm$; die dritte Seite ist $10 cm$. Die Länge des Prismas beträgt $20 cm$. Die Masse beträgt $1200 g$.\n\n1. Berechne den Flächeninhalt der dreieckigen Grundfläche. (1 BE)\n2. Berechne das Volumen des Prismas. (2 BE)\n3. Berechne die Oberfläche des Prismas. (2 BE)\n4. Bestimme die Dichte des Materials in $g/cm^3$ und deute den Wert. (2 BE)",
-        "solutionContent": "Grundfläche: $A_G = 6 \\cdot 8 / 2 = 24 cm^2$.\n\nVolumen: $V = 24 \\cdot 20 = 480 cm^3$.\n\nMantelfläche: $(6 + 8 + 10) \\cdot 20 = 480 cm^2$; Oberfläche: $2 \\cdot 24 + 480 = 528 cm^2$.\n\nDichte: $1200/480 = 2.5 g/cm^3$. Das bedeutet, ein Kubikzentimeter des Materials hat rechnerisch eine Masse von $2.5 g$.",
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j7/draft_v6.md",
+        "taskContent": "Im Technikraum wird ein vollständig ausgefüllter Messkeil als gerades Prisma gebaut. Seine Grundfläche ist ein rechtwinkliges Dreieck mit Katheten $6 cm$ und $8 cm$; die dritte Seite ist $10 cm$. Der senkrechte Abstand der beiden Dreiecksflächen beträgt $20 cm$. Der Keil hat eine Masse von $1200 g$.\n\n1. Berechne den Flächeninhalt einer dreieckigen Grundfläche. (1 BE)\n2. Erkläre mit gedanklich übereinandergestapelten, kongruenten Dreiecksschichten, warum hier $V = G · h$ gilt. Berechne damit das Volumen des Keils und deute den Wert am Körper. (2 BE)\n3. Berechne den gesamten äußeren Oberflächeninhalt des Keils. Zeige, welche Flächen du zählst, und erkläre, wofür dieser Wert im Technikraum gebraucht werden könnte. (3 BE)\n4. Bestimme die Dichte des Materials in $g/cm^3$ und deute den Wert. (2 BE)",
+        "solutionContent": "Eine Grundfläche hat $G = 6 \\cdot 8 / 2 = 24 cm^2$.\n\nIn jeder zur Dreiecksgrundfläche parallelen Schicht bleibt die Dreiecksfläche $24 cm^2$ groß. Bei 1 cm dicken Schichten füllen 20 kongruente Schichten den Keil; daher wird die Grundfläche mit der senkrechten Körperhöhe $h = 20 cm$ multipliziert. Das Volumen ist $V = G \\cdot h = 24 \\cdot 20 = 480 cm^3$ und beschreibt den Rauminhalt des ausgefüllten Keils.\n\nDie Außenfläche besteht aus zwei kongruenten Dreiecken und drei Mantelrechtecken. Ihre Inhalte sind $2 \\cdot 24 = 48 cm^2$ und $(6 + 8 + 10) \\cdot 20 = 480 cm^2$. Damit ist $O = 48 + 480 = 528 cm^2$. Das ist die gesamte Fläche, die zum Beispiel bei vollständiger Beschichtung des Keils bedeckt werden müsste, nicht sein Innenraum.\n\nDie Dichte ist $1200 g / 480 cm^3 = 2{,}5 g/cm^3$. Ein Kubikzentimeter dieses Materials hat rechnerisch eine Masse von $2{,}5 g$.",
         "scoring": {
-          "maxPoints": 7,
-          "passingPoints": 4,
+          "maxPoints": 8,
+          "passingPoints": 7,
           "steps": [
             {
-              "id": "j7_released_v1_2",
-              "points": 7,
-              "description": "Volumen, Oberfläche und Dichte eines geraden Prismas in einem plausiblen Materialkontext bestimmen."
+              "id": "j7_prism_v6_base",
+              "points": 1,
+              "description": "Flächeninhalt der dreieckigen Grundfläche korrekt mit Quadrateinheit bestimmen."
+            },
+            {
+              "id": "j7_prism_v6_volume",
+              "points": 2,
+              "description": "0 Punkte ohne Begründung durch kongruente Dreiecksschichten und korrekte Rechnung G · h = 480 cm³; danach 1 Punkt für diesen Kern, 1 Punkt für die Deutung als Rauminhalt."
+            },
+            {
+              "id": "j7_prism_v6_surface",
+              "points": 3,
+              "description": "0 Punkte ohne beide Grundflächen, alle drei Mantelflächen und korrekt berechnete 528 cm²; danach 2 Punkte für diesen Kern und 1 Punkt für die Deutung als Beschichtungsfläche."
+            },
+            {
+              "id": "j7_prism_v6_density",
+              "points": 2,
+              "description": "0 Punkte ohne korrekte Rechnung 1200 g / 480 cm³ = 2,5 g/cm³; danach 1 Punkt für den Kern und 1 Punkt für die Deutung pro Kubikzentimeter."
             }
           ]
         }
@@ -39142,8 +39430,8 @@
     {
       "id": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
       "title": "Prüfungen Jahrgangsstufe 9",
-      "description": "Bündelt freigegebene Prüfungsaufgaben zur Jahrgangsstufe 9. Die einzelnen Aufgaben sind als eigene Exam-Knoten modelliert, damit Lernpfade sichtbar in passenden Prüfungsaufgaben enden.",
-      "weight": 8,
+      "description": "Bündelt die als eigene Exam-Knoten modellierten Prüfungsaufgaben zur Jahrgangsstufe 9, damit Lernpfade sichtbar in passenden Aufgaben enden. Neue Aufgaben bleiben bis zu ihrer Prüfung als Kandidaten gekennzeichnet.",
+      "weight": 9,
       "tags": [
         "GK",
         "LK",
@@ -39202,11 +39490,78 @@
         "4d46f8c4-b83a-5f7a-aba4-6d0e03dff998",
         "853905c5-e82b-592f-a485-1ff84c8bb22e",
         "567e352a-af31-53b0-ac9d-cbcafa0622b7",
-        "105027ea-45ec-5086-80a9-34a52e25e860"
+        "105027ea-45ec-5086-80a9-34a52e25e860",
+        "6224d04c-bc07-4b60-b4c2-a1c7223adc9f"
       ],
       "requires": [],
       "phase": "J9",
       "type": "cluster"
+    },
+    {
+      "id": "6224d04c-bc07-4b60-b4c2-a1c7223adc9f",
+      "shortKey": "canonical_math_sek1_j9_quadratic_equations_assessment",
+      "title": "Quadratische Gleichungen: Lösungsverfahren und Lösungsvielfalt",
+      "titleEn": "Quadratic equations: methods and real solutions",
+      "description": "Die lernende Person kann in einer eigenständigen Prüfung vier gegebene quadratische Gleichungen mit passenden rechnerischen Verfahren einschließlich der Lösungsformel lösen, null, eine oder zwei reelle Lösungen begründen und die Ergebnisse kontrollieren.",
+      "descriptionEn": "The learner can independently solve four given quadratic equations with suitable algebraic methods including the quadratic formula, justify zero, one, or two real solutions, and check the results in an assessment.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical",
+        "phase:SekI",
+        "ExamTask"
+      ],
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/seki/j9/quadratic-equation-solutions/draft_v1.md",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": ["K1", "K5"],
+        "guidingIdeas": ["L1", "L4"],
+        "phase": "J9",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J9.QUADRATIC.EQUATIONS"
+      },
+      "contains": [],
+      "requires": ["9023226b-fc17-412b-807c-2bb45cd551d5"],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB", "DE-BE", "DE-BW", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV",
+          "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"
+        ]
+      },
+      "phase": "J9",
+      "type": "atomic",
+      "nodeKind": "exam",
+      "examData": {
+        "reviewStatus": "released",
+        "reviewNote": "Machine-only content review 2026-09-28: all four equations and probes recalculated; 18/20 makes every case necessary. Rubric caps incomplete root-count cases at 1/4 and missing formula/exact roots at 3/6. No human or real-host trial; server enforces only total points.",
+        "coveredGoalIds": ["9023226b-fc17-412b-807c-2bb45cd551d5"],
+        "coveredStrands": ["L1", "L4"],
+        "demandLevels": ["AB1", "AB2"],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j9/quadratic-equation-solutions/draft_v1.md",
+        "taskContent": "Löse die vier gegebenen Gleichungen. Wähle jeweils einen zweckmäßigen rechnerischen Weg, begründe die Anzahl reeller Lösungen und kontrolliere die Ergebnisse durch Einsetzen und eine geeignete Skizze. Eine Skizze allein ersetzt die Rechnung nicht.\n\n1. x² − 5x + 6 = 0: Wähle einen kurzen Weg und bestimme alle Lösungen. (4 BE)\n2. 2x² + 4x + 5 = 0: Zeige, ob es reelle Lösungen gibt. (4 BE)\n3. x² − 4x + 4 = 0: Bestimme die Zahl verschiedener reeller Lösungen und erläutere die Berührung oder Kreuzung der x-Achse. (4 BE)\n4. 3x² + 2x − 2 = 0: Löse mit der Lösungsformel, gib exakte Werte an und überprüfe sie. (6 BE)\nBegründe abschließend die Verfahrenswahl und die graphischen Fälle null, eine und zwei reelle Lösungen. (2 BE)",
+        "taskContentEn": "Solve the four given equations. Choose a suitable algebraic method for each, justify the number of real solutions, and check the results by substitution and a suitable sketch. A sketch alone does not replace the calculation.\n\n1. x² − 5x + 6 = 0: Choose an efficient method and find all solutions. (4 points)\n2. 2x² + 4x + 5 = 0: Show whether there are real solutions. (4 points)\n3. x² − 4x + 4 = 0: Determine the number of distinct real solutions and explain whether the graph touches or crosses the x-axis. (4 points)\n4. 3x² + 2x − 2 = 0: Use the quadratic formula, give exact values, and check them. (6 points)\nFinally justify your method choices and the graphical cases of zero, one, and two real solutions. (2 points)",
+        "solutionContent": "1. x² − 5x + 6 = (x − 2)(x − 3), also x = 2 oder x = 3. Beide Einsetzproben ergeben 0; der Graph schneidet die x-Achse zweimal.\n\n2. 2x² + 4x + 5 = 2(x + 1)² + 3 > 0 für alle reellen x. Keine reelle Lösung; Scheitel (−1|3), kein x-Achsen-Schnitt.\n\n3. x² − 4x + 4 = (x − 2)². Genau eine verschiedene reelle Lösung x = 2 (doppelte Nullstelle). Die Probe ergibt 0; der Graph berührt die x-Achse in (2|0).\n\n4. Mit a = 3, b = 2, c = −2 gilt Δ = b² − 4ac = 28 > 0. Die Lösungsformel liefert x = (−2 ± √28)/6 = (−1 ± √7)/3. Für s = ±√7 und x = (−1+s)/3 ist 3x² + 2x − 2 = (s² − 7)/3 = 0. Der Graph schneidet die x-Achse zweimal.\n\nFaktorisieren ist in 1 besonders kurz; Ergänzung zeigt in 2 und 3 die Scheitellage; die Formel liefert in 4 die exakten irrationalen Werte. Abstand, Berührung und zwei Schnittpunkte des Graphen mit der x-Achse entsprechen null, einer und zwei verschiedenen reellen Lösungen.",
+        "solutionContentEn": "1. x² − 5x + 6 = (x − 2)(x − 3), so x = 2 or x = 3. Both values satisfy the equation and the graph crosses the x-axis twice.\n\n2. 2x² + 4x + 5 = 2(x + 1)² + 3 > 0 for every real x. No real solution; vertex (−1,3), no x-axis intersection.\n\n3. x² − 4x + 4 = (x − 2)². Exactly one distinct real solution x = 2 (a double root). Substitution gives 0; the graph touches the x-axis at (2,0).\n\n4. With a = 3, b = 2, c = −2, Δ = b² − 4ac = 28 > 0. The quadratic formula gives x = (−2 ± √28)/6 = (−1 ± √7)/3. For s = ±√7 and x = (−1+s)/3, substitution gives 3x² + 2x − 2 = (s² − 7)/3 = 0. The graph crosses the x-axis twice.\n\nFactoring is short in 1; completing the square shows the vertex in 2 and 3; the formula gives exact irrational values in 4. No contact, tangency, and two intersections with the x-axis correspond to zero, one, and two distinct real solutions.",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 18,
+          "steps": [
+            {"id": "j9_quadratic_two_roots", "points": 4, "description": "Beide Nullstellen 2 und 3 rechnerisch mit zwei reellen Lösungen begründen; ohne diesen Kern höchstens 1/4, weitere Punkte für Probe und Graph."},
+            {"id": "j9_quadratic_no_real_root", "points": 4, "description": "Positive Scheitelform und keine reelle Lösung rechnerisch begründen; ohne diesen Kern höchstens 1/4, weitere Punkte für Graphkontrolle."},
+            {"id": "j9_quadratic_double_root", "points": 4, "description": "Doppelte Nullstelle und genau eine verschiedene reelle Lösung rechnerisch belegen; ohne diesen Kern höchstens 1/4, weitere Punkte für Probe und Berührung."},
+            {"id": "j9_quadratic_formula", "points": 6, "description": "Lösungsformel mit korrekter Diskriminante anwenden und beide exakten Werte bestimmen; ohne diesen Kern höchstens 3/6, weitere Punkte für Kontrolle und Graph."},
+            {"id": "j9_quadratic_method_reasoning", "points": 2, "description": "Verfahrenswahl und graphischen Unterschied zwischen null, einer und zwei reellen Lösungen begründen."}
+          ]
+        }
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityFromRequires": true
+      }
     },
     {
       "id": "18db552f-4740-5a64-933b-839c8ad6a55d",
@@ -40574,7 +40929,7 @@
       "titleEn": "Foundations of Calculus and Mathematical Models",
       "description": "Cluster-Knoten für grundlegende Funktionen, den Ableitungsbegriff, exponentielle und trigonometrische Modelle, Folgen und Reihen sowie grundlegende Verfahren zum Lösen von Gleichungen.",
       "descriptionEn": "Cluster node for foundational functions, the concept of derivatives, exponential and trigonometric models, sequences and series, and core methods for solving equations.",
-      "weight": 124,
+      "weight": 128,
       "tags": [
         "GK",
         "LK",
@@ -40767,7 +41122,7 @@
       "titleEn": "Introduction to the derivative concept",
       "description": "Ableitung als Grenzprozess mittlerer Änderungsraten, Tangentensteigungen, Ableitung an einer Stelle und als Funktion sowie grundlegende Ableitungsregeln.",
       "descriptionEn": "Derivative as a limit process of average rates of change, tangent slopes, derivative at a point and as a function, and basic differentiation rules.",
-      "weight": 22,
+      "weight": 24,
       "tags": [
         "GK",
         "LK"
@@ -40820,7 +41175,7 @@
       "titleEn": "Entry Corridor for Derivative Concept and Rates of Change",
       "description": "Ableitung als Grenzprozess mittlerer und momentaner Änderungsraten deuten, Graph und Ableitungsgraph zusammen beschreiben, Ableitungsregeln anwenden und Tangenten sowie Normalen im Zusammenhang von Funktionsgraphen untersuchen.",
       "descriptionEn": "Interpret the derivative as a limit process of average and instantaneous rates of change, relate function graph and derivative graph, apply differentiation rules, and examine tangents and normals in the context of function graphs.",
-      "weight": 14,
+      "weight": 16,
       "tags": [
         "GK",
         "LK"
@@ -40837,6 +41192,8 @@
         "01acfcc8-7204-5c22-8774-13f6383f4fd4",
         "845440ce-f63f-5835-903f-739145ca27bd",
         "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+        "21676dae-8619-59d1-89e3-a35bb2297e2c",
+        "85eda551-cfc1-52c6-a252-4c7394c1f7e6",
         "bb979dbd-b080-432c-8cf1-067ba6eff381"
       ],
       "requires": [],
@@ -44346,8 +44703,8 @@
       "id": "09f47964-2cd0-410e-93ee-9632b582fc91",
       "title": "Funktionsbegriff und Darstellungen verstehen",
       "titleEn": "Understand function concept and representations",
-      "description": "Die lernende Person kann reellwertige Funktionen als Zuordnung zwischen Zahlenmengen beschreiben und zwischen Wertetabelle, Term und Graph wechseln.",
-      "descriptionEn": "The learner can describe real-valued functions as a mapping between sets of numbers and switch between value table, term, and graph.",
+      "description": "Die lernende Person kann eine reellwertige Funktion als Zuordnung erklären, die jedem zulässigen Eingabewert genau einen Funktionswert zuweist, und Term, Wertetabelle und Graph einer gegebenen Funktion als zusammengehörige Darstellungen verwenden.",
+      "descriptionEn": "The learner can explain a real-valued function as assigning exactly one function value to each permitted input and use the expression, value table, and graph of a given function as corresponding representations.",
       "weight": 1,
       "tags": [
         "GK",
@@ -44405,7 +44762,7 @@
           "url": "/assets/goal-visualizations/mathematik/09f47964-2cd0-410e-93ee-9632b582fc91/09f47964-2cd0-410e-93ee-9632b582fc91.jpg",
           "provider": "Google Gemini / Nano Banana Pro",
           "description": "Visualisierung zum Lernziel: Funktionsbegriff und Darstellungen verstehen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Funktionsbegriff und Darstellungen verstehen\". Die lernende Person kann reellwertige Funktionen als Zuordnung zwischen Zahlenmengen beschreiben und zwischen Wertetabelle, Term und Graph wechseln.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Funktionsbegriff und Darstellungen verstehen\". Die lernende Person kann eine reellwertige Funktion als Zuordnung erklären, die jedem zulässigen Eingabewert genau einen Funktionswert zuweist, und Term, Wertetabelle und Graph einer gegebenen Funktion als zusammengehörige Darstellungen verwenden.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -45176,7 +45533,22 @@
       "sourceRef": "HKM Kerncurriculum Mathematik gymnasiale Oberstufe, E.1, S. 31",
       "type": "atomic",
       "semanticAtomic": true,
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "1b70498a-62a0-5a84-99dd-476b8af68da6",
+          "title": "Visualisierung: Realsituationen mit linearen und quadratischen Funktionen modellieren",
+          "url": "/assets/goal-visualizations/mathematik/1b70498a-62a0-5a84-99dd-476b8af68da6/1b70498a-62a0-5a84-99dd-476b8af68da6.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Lineares und quadratisches Funktionsmodell aus Alltagssituationen deuten",
+          "altText": "Zwei Modellierungen: Ein Radfahrer mit s(t)=10+2t durch (0,10) und (2,14); ein senkrechter Ballwurf mit h(t)=−5t²+10t durch (0,0), (1,5) und (2,0).",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
@@ -46001,6 +46373,128 @@
           "altText": "Didaktische Visualisierung zum Lernziel \"Begriff der Stammfunktion verstehen\". Die lernende Person kann eine Stammfunktion als Funktion verstehen, deren Ableitung die gegebene Funktion ist, und diese Beziehung an einfachen Beispielen fachsprachlich beschreiben.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "21676dae-8619-59d1-89e3-a35bb2297e2c",
+      "title": "Aus dem Funktionsgraphen einen Stammfunktionsgraphen skizzieren",
+      "titleEn": "Sketch an antiderivative graph from a function graph",
+      "description": "Die lernende Person kann aus dem Graphen einer Funktion f den Verlauf des Graphen einer möglichen Stammfunktion F skizzieren, diesen mithilfe der Beziehung F′ = f begründen und erklären, warum ein anderer gewählter Anfangswert den Graphen nur vertikal verschiebt.",
+      "descriptionEn": "The learner can sketch the graph of a possible antiderivative F from the graph of a function f, justify its course using F′ = f, and explain why choosing a different initial value only shifts the graph vertically.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.4",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "E",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.E.ANTIDERIVATIVE_GRAPH"
+      },
+      "shortKey": "canonical_math_sek2_antiderivative_graph_from_function_graph",
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "sourceRef": "HKM Kerncurriculum Mathematik gymnasiale Oberstufe, E.2, S. 32; StMUK LehrplanPLUS Mathematik M12 1.1; BW Bildungsplan Gymnasium Mathematik 2016, Basisfach 3.5.4(12) und Leistungsfach 3.4.4(17)",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "21676dae-8619-59d1-89e3-a35bb2297e2c",
+          "title": "Visualisierung: Aus dem Funktionsgraphen einen Stammfunktionsgraphen skizzieren",
+          "url": "/assets/goal-visualizations/mathematik/21676dae-8619-59d1-89e3-a35bb2297e2c/21676dae-8619-59d1-89e3-a35bb2297e2c.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)",
+          "description": "Qualitative Skizze: Aus dem Graphen von f einen Stammfunktionsgraphen F ableiten.",
+          "altText": "Links steigt die Gerade f(x)=x durch den Ursprung. Rechts fällt ein möglicher Stammfunktionsgraph F links von null und steigt rechts von null; am Ursprung hat er eine waagerechte Tangente. Eine gestrichelte Kurve F+C zeigt dieselbe Form vertikal verschoben.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "85eda551-cfc1-52c6-a252-4c7394c1f7e6",
+      "shortKey": "canonical_math_sek2_function_graph_from_antiderivative_graph_bw",
+      "title": "Aus einem Stammfunktionsgraphen den Funktionsgraphen skizzieren",
+      "titleEn": "Sketch a function graph from an antiderivative graph",
+      "description": "Die lernende Person kann aus dem Graphen einer Stammfunktion F den Graphen von f = F′ skizzieren und dessen Werte, Vorzeichen und Nullstellen mit den Tangentensteigungen von F begründen.",
+      "descriptionEn": "The learner can sketch the graph of f = F′ from an antiderivative graph F and justify its values, signs, and zeros using the tangent slopes of F.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.4",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "E",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.E.FUNCTION_GRAPH_FROM_ANTIDERIVATIVE_GRAPH"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "sourceRef": "BW Bildungsplan Gymnasium Mathematik 2016, Basisfach 3.5.4(12) und Leistungsfach 3.4.4(17)",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "85eda551-cfc1-52c6-a252-4c7394c1f7e6",
+          "title": "Visualisierung: Aus einem Stammfunktionsgraphen den Funktionsgraphen skizzieren",
+          "url": "/assets/goal-visualizations/mathematik/85eda551-cfc1-52c6-a252-4c7394c1f7e6/85eda551-cfc1-52c6-a252-4c7394c1f7e6.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)",
+          "description": "Aus dem Stammfunktionsgraphen F den Ableitungsgraphen f=F′ skizzieren.",
+          "altText": "Links: Der rote Stammfunktionsgraph F(x)=x² fällt bis zum Ursprung und steigt danach. Rechts: Der blaue Graph f(x)=2x ist links negativ, am Ursprung null und rechts positiv. Drei Karten verbinden die Tangentensteigung von F mit dem Vorzeichen von f.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -47120,8 +47614,8 @@
       "id": "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76",
       "title": "Newton-Verfahren zur Nullstellennäherung anwenden",
       "titleEn": "Apply Newton's method for root approximation",
-      "description": "Die lernende Person kann das Newton-Verfahren als iteratives Näherungsverfahren erläutern, für geeignete Funktionen anwenden und die Einsatzgrenzen des Verfahrens reflektieren.",
-      "descriptionEn": "The learner can explain Newton's method as an iterative approximation procedure, apply it to suitable functions, and reflect on the method's limits of use.",
+      "description": "Die lernende Person kann beim Newton-Verfahren die Nullstelle der Tangente im aktuellen Graphpunkt als nächsten Näherungswert bestimmen, die Iteration bei geeigneten Funktionen und Startwerten anwenden und Grenzen anhand von Ableitung und Näherungsverlauf begründen.",
+      "descriptionEn": "The learner can determine the root of the tangent at the current point on the graph as the next approximation in Newton's method, iterate for suitable functions and starting values, and explain limitations using the derivative and the course of the approximations.",
       "weight": 1,
       "tags": [
         "GK",
@@ -47172,7 +47666,22 @@
       "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, E.6, S. 34",
       "type": "atomic",
       "semanticAtomic": true,
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76",
+          "title": "Visualisierung: Newton-Verfahren zur Nullstellennäherung anwenden",
+          "url": "/assets/goal-visualizations/mathematik/0c7bbd3f-0a04-4f0e-888b-40ab7841fb76/0c7bbd3f-0a04-4f0e-888b-40ab7841fb76.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)",
+          "description": "Newton-Schritte an f(x)=x²−2 mit zwei Tangenten und rechnerisch korrekten Näherungen.",
+          "altText": "Die Parabel f(x)=x²−2 hat den Punkt P₀=(2|2). Die erste Tangente führt von x₀=2 zu x₁=1,5. Eine zweite Tangente bei P₁=(1,5|0,25) führt zu x₂≈1,4167; die positive Nullstelle liegt bei √2≈1,4142. Daneben stehen die Iterationsformel und der Hinweis auf einen geeigneten Startwert.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "1eb7b2ce-f9b1-52dc-aa66-5543c946454b",
@@ -48185,8 +48694,8 @@
       "id": "70efdec0-110c-5564-849b-bc05cfff0f6a",
       "title": "Kombinationen ohne Zurücklegen mit Fakultäten berechnen",
       "titleEn": "Compute combinations without replacement using factorials",
-      "description": "Die lernende Person kann ungeordnete Stichproben ohne Zurücklegen mithilfe von Fakultäten berechnen (ohne Binomialkoeffizientenbegriff) und Ergebnisse an Beispielen prüfen.",
-      "descriptionEn": "The learner can compute unordered samples without replacement using factorials (without using the binomial coefficient term) and verify results with examples.",
+      "description": "Die lernende Person kann die Anzahl ungeordneter Auswahlen ohne Zurücklegen mit Fakultäten bestimmen, begründen, warum verschiedene Reihenfolgen nur einmal zählen, und das Ergebnis an kleinen Beispielen prüfen, ohne den Binomialkoeffizienten bereits zu benennen.",
+      "descriptionEn": "The learner can determine the number of unordered selections without replacement using factorials, explain why different orders count only once, and check the result in small examples without yet naming the binomial coefficient.",
       "weight": 1,
       "tags": [
         "GK",
@@ -48231,7 +48740,22 @@
       },
       "type": "atomic",
       "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.1, S. 46, Spiegelstrich 6",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "70efdec0-110c-5564-849b-bc05cfff0f6a",
+          "title": "Visualisierung: Kombinationen ohne Zurücklegen mit Fakultäten berechnen",
+          "url": "/assets/goal-visualizations/mathematik/70efdec0-110c-5564-849b-bc05cfff0f6a/70efdec0-110c-5564-849b-bc05cfff0f6a.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)",
+          "description": "Mathematische Lernzielvisualisierung; Details im Alternativtext.",
+          "altText": "Vier verschiedenfarbige Plättchen A, B, C und D ergeben sechs ungeordnete Paare AB, AC, AD, BC, BD und CD; 4! geteilt durch das Produkt aus 2! und 2! ergibt 6.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "1b67aeb4-2a55-531f-94da-283b4e3df5f1",
@@ -48283,7 +48807,22 @@
       },
       "type": "atomic",
       "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.1, S. 46, Spiegelstrich 6; Q3.1, S. 46, Spiegelstrich 7",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "1b67aeb4-2a55-531f-94da-283b4e3df5f1",
+          "title": "Visualisierung: Kombinationen mit Binomialkoeffizienten in Anwendungen berechnen",
+          "url": "/assets/goal-visualizations/mathematik/1b67aeb4-2a55-531f-94da-283b4e3df5f1/1b67aeb4-2a55-531f-94da-283b4e3df5f1.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Dreiergremium aus acht Personen: Die Reihenfolge derselben drei ändert die Auswahl nicht; 8 über 3 ergibt 56.",
+          "altText": "Acht Personen stehen zur Auswahl. Zwei gezeichnete Gremien zeigen dieselben drei Personen in anderer Reihenfolge. Deshalb zählt jede ungeordnete Dreierauswahl nur einmal; der Binomialkoeffizient 8 über 3 ist 56.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "e8d810de-95ed-52d6-ab1f-0560398e35c0",
@@ -48684,8 +49223,8 @@
       "id": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
       "title": "Laplace-Wahrscheinlichkeiten mit Zurücklegen (Binomialmodell)",
       "titleEn": "Laplace probabilities with replacement (binomial model)",
-      "description": "Die lernende Person kann bei Ziehungen mit Zurücklegen Wahrscheinlichkeiten mit dem Binomialkoeffizienten berechnen (z. B. Urne mit Zurücklegen) und Ergebnisse an konkreten Beispielen nachvollziehen.",
-      "descriptionEn": "The learner can compute probabilities for draws with replacement using the binomial coefficient (e.g., an urn with replacement) and work through concrete examples.",
+      "description": "Die lernende Person kann bei Ziehungen mit Zurücklegen die Wahrscheinlichkeit für genau k Treffer mit dem Binomialkoeffizienten berechnen und erklären, wie konstante Trefferwahrscheinlichkeit und mögliche Reihenfolgen das Ergebnis bestimmen.",
+      "descriptionEn": "The learner can calculate the probability of exactly k successes in draws with replacement using the binomial coefficient and explain how a constant success probability and the possible orders determine the result.",
       "weight": 1,
       "tags": [
         "GK",
@@ -48729,7 +49268,23 @@
         ]
       },
       "type": "atomic",
-      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.1, S. 46, Spiegelstrich 7"
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.1, S. 46, Spiegelstrich 7",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+          "title": "Visualisierung: Laplace-Wahrscheinlichkeiten mit Zurücklegen (Binomialmodell)",
+          "url": "/assets/goal-visualizations/mathematik/0408ac7f-0530-5de5-b248-cf581c9b5a17/0408ac7f-0530-5de5-b248-cf581c9b5a17.png",
+          "provider": "Google Gemini gemini-3-pro-image",
+          "description": "Mathematische Lernzielvisualisierung; Details im Alternativtext.",
+          "altText": "In einer Urne liegen zwei rote und eine blaue Kugel. Bei drei Ziehungen mit Zurücklegen sind RRB, RBR und BRR die drei Reihenfolgen für genau zweimal Rot; Wahrscheinlichkeit 4/9.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
@@ -49765,7 +50320,23 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "9de07e13-6a5f-5b49-a6d4-0decefb95784",
+          "title": "Visualisierung: Inverse Fragestellungen zu Binomialverteilungen lösen",
+          "url": "/assets/goal-visualizations/mathematik/9de07e13-6a5f-5b49-a6d4-0decefb95784/9de07e13-6a5f-5b49-a6d4-0decefb95784.png",
+          "provider": "OpenAI / Codex image generation (edit of Gemini gemini-3-pro-image output)",
+          "description": "Binomialverteilung: Die kleinste Grenze mit P(X≥k)≤0,20 ist k=7.",
+          "altText": "Zwei Karten vergleichen bei X binomialverteilt mit n=10 und p=0,5 die Grenzen k=6 und k=7 für P(X≥k)≤0,20. Bei k=6 ist P≈0,377 zu groß; bei k=7 ist P≈0,172 klein genug. Daher ist 7 die kleinste passende Grenze.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "f7879354-1a82-4195-8e3c-a339a820439c",
@@ -50339,7 +50910,23 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "c406d5a0-e81d-5ce9-b535-6512a38798de",
+          "title": "Visualisierung: Inverse Fragestellungen zur Normalverteilung lösen (LK)",
+          "url": "/assets/goal-visualizations/mathematik/c406d5a0-e81d-5ce9-b535-6512a38798de/c406d5a0-e81d-5ce9-b535-6512a38798de.png",
+          "provider": "Google Gemini / Nano Banana 2 (gemini-3.1-flash-image)",
+          "description": "Normalverteilung: Die Grenze zum 97,5-Prozent-Quantil liegt bei etwa 129,4.",
+          "altText": "Glockenkurve der Normalverteilung mit Mittelwert 100 und Standardabweichung 15. Gesucht ist b mit P(X≤b)=0,975. Die Grenze b≈129,4 liegt knapp links von 130; links davon liegen 97,5 Prozent der Fläche, im rechten Schwanz 2,5 Prozent.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "c92133c6-d5de-4902-936c-321915cf21e9",
@@ -50532,8 +51119,8 @@
     },
     {
       "id": "b431148b-526c-4bde-b04b-48d23101d0d3",
-      "title": "Annähernd normalverteilte Zufallsgrößen in Situationen erkennen (LK)",
-      "titleEn": "Recognize approximately normally distributed random variables in situations (advanced course)",
+      "title": "Annähernd normalverteilte Zufallsgrößen in Situationen erkennen",
+      "titleEn": "Recognize approximately normally distributed random variables in situations",
       "description": "Die lernende Person kann in stochastischen Situationen begründet einschätzen, ob eine Zufallsgröße annähernd normalverteilt sein kann.",
       "descriptionEn": "The learner can give reasons for judging whether a random variable in a stochastic situation may be approximately normally distributed.",
       "weight": 1,
@@ -50584,7 +51171,7 @@
           "resourceType": "image",
           "role": "primary",
           "skillpilotId": "b431148b-526c-4bde-b04b-48d23101d0d3",
-          "title": "Visualisierung: Annähernd normalverteilte Zufallsgrößen in Situationen erkennen (LK)",
+          "title": "Visualisierung: Annähernd normalverteilte Zufallsgrößen in Situationen erkennen",
           "url": "/assets/goal-visualizations/mathematik/b431148b-526c-4bde-b04b-48d23101d0d3/b431148b-526c-4bde-b04b-48d23101d0d3.png",
           "provider": "OpenAI/ChatGPT-Codex image generation",
           "description": "Comicvergleich zur begründeten Einschätzung, wann ein Binomialmodell annähernd normalverteilt sein kann.",
@@ -51391,7 +51978,22 @@
       "type": "atomic",
       "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.3, S. 47, Spiegelstrich 1",
       "semanticAtomic": true,
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "ae483d98-54e0-5985-96d2-fc1351d22e4f",
+          "title": "Visualisierung: Hypothesentests bei verändertem Stichprobenumfang variieren",
+          "url": "/assets/goal-visualizations/mathematik/ae483d98-54e0-5985-96d2-fc1351d22e4f/ae483d98-54e0-5985-96d2-fc1351d22e4f.png",
+          "provider": "Gemini Nano Banana Pro; ChatGPT/Codex imagegen edit",
+          "description": "Vergleich zweier einseitiger Binomialtests mit unterschiedlichem Stichprobenumfang.",
+          "altText": "Einseitiger Test H0 p gleich 0,5 gegen H1 p größer als 0,5. Bei n gleich 50 wird ab X größer gleich 32 verworfen; bei p1 gleich 0,6 ist β, die Nichtverwerfungswahrscheinlichkeit, ungefähr 0,664. Bei n gleich 200 wird ab X größer gleich 113 verworfen; β ist ungefähr 0,140. Beide Tests haben α höchstens 5 Prozent. Die waagerechten Balken vergleichen Trefferlagen schematisch und sind keine Wahrscheinlichkeitsdichten.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
@@ -53287,7 +53889,22 @@
       "type": "atomic",
       "semanticAtomic": true,
       "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.5, S. 48, Spiegelstrich 1",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+          "title": "Visualisierung: Zufallsexperimente mit Software simulieren",
+          "url": "/assets/goal-visualizations/mathematik/4aa70ad4-171d-5671-a864-c0c7758fa0ed/4aa70ad4-171d-5671-a864-c0c7758fa0ed.png",
+          "provider": "Google Gemini / Nano Banana 2 (gemini-3.1-flash-image)",
+          "description": "Visualisierung zum Lernziel: Zufallsexperimente mit Software simulieren.",
+          "altText": "Tabelle und Säulendiagramm zeigen 60 simulierte Würfelwürfe mit den Häufigkeiten 10, 12, 8, 11, 9 und 10 für die Augenzahlen 1 bis 6. Die Zwei kam zwölfmal vor, also mit einer relativen Häufigkeit von 20 Prozent.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "aeb947a2-2dd4-5017-a429-0d777e22db6a",
@@ -53879,7 +54496,22 @@
         ]
       },
       "type": "atomic",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "7feaaebd-cc8d-522b-8b3a-ea22675c65dd",
+          "title": "Visualisierung: Extremstellen parameterabhängig untersuchen",
+          "url": "/assets/goal-visualizations/mathematik/7feaaebd-cc8d-522b-8b3a-ea22675c65dd/7feaaebd-cc8d-522b-8b3a-ea22675c65dd.png",
+          "provider": "OpenAI / ChatGPT-Codex image_gen",
+          "description": "Beispiel einer Funktionenschar mit verschobenem Tiefpunkt und Ableitungsprüfung; kein allgemeiner Beweis für alle Scharen.",
+          "altText": "Drei Comic-Tafeln zum Beispiel f_a(x)=(x−a)²: Links verschiebt sich bei wachsendem a der Tiefpunkt zweier gleich geformter Parabeln auf der x-Achse nach rechts. In der Mitte führt f'_a(x)=2(x−a)=0 zur Stelle x=a. Rechts bestätigen f''_a(x)=2>0 und T_a=(a|0) den Tiefpunkt.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "fcf9af67-7abd-5f69-a22a-b436297d44c5",
@@ -54099,8 +54731,8 @@
       "id": "0e8417d7-effb-5314-93ba-a571b01726ce",
       "title": "Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen",
       "titleEn": "Compute integrals of linked exponential and polynomial functions",
-      "description": "Die lernende Person kann Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen und Stammfunktionen durch Ableiten nachweisen.",
-      "descriptionEn": "The learner can compute integrals of linked exponential and polynomial functions and verify antiderivatives by differentiating.",
+      "description": "Die lernende Person kann Integrale geeigneter Verknüpfungen von Exponential- und ganzrationalen Funktionen berechnen und die verwendeten Stammfunktionen durch Ableiten nachweisen.",
+      "descriptionEn": "The learner can compute integrals of suitable combinations of exponential and polynomial functions and verify the antiderivatives used by differentiating them.",
       "weight": 1,
       "tags": [
         "GK",
@@ -54159,7 +54791,7 @@
           "url": "/assets/goal-visualizations/mathematik/0e8417d7-effb-5314-93ba-a571b01726ce/0e8417d7-effb-5314-93ba-a571b01726ce.jpg",
           "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
           "description": "Visualisierung zum Lernziel: Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen\". Die lernende Person kann Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen und Stammfunktionen durch Ableiten nachweisen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen\". Die lernende Person kann Integrale geeigneter Verknüpfungen von Exponential- und ganzrationalen Funktionen berechnen und die verwendeten Stammfunktionen durch Ableiten nachweisen.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -54220,7 +54852,22 @@
       "type": "atomic",
       "semanticAtomic": true,
       "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 3",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "e33e75e3-eae5-5a09-862f-d1a11176373f",
+          "title": "Visualisierung: Transformationsscharen bekannter Funktionsklassen untersuchen",
+          "url": "/assets/goal-visualizations/mathematik/e33e75e3-eae5-5a09-862f-d1a11176373f/e33e75e3-eae5-5a09-862f-d1a11176373f.png",
+          "provider": "OpenAI / ChatGPT-Codex image_gen",
+          "description": "Schematische Parabelbeispiele: gₐ(x)=(x−a)² verschiebt bei a>0 die unveränderte Normalparabel nach rechts; hₐ(x)=a·x² ist bei a>1 schmaler und bei 0<a<1 breiter, mit gemeinsamem Scheitel im Ursprung.",
+          "altText": "Zweiteilige Grafik: Oben wird eine blaue Parabel f(x)=x² als starre Schablone bei a>0 nach rechts verschoben; gₐ(x)=(x−a)² hat die gleiche Form. Unten haben drei Parabeln denselben Scheitel im Ursprung: grün für a>1 schmaler, blau f(x)=x², orange für 0<a<1 breiter; hₐ(x)=a·x².",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "20843e23-cfc5-5ff8-96e0-e05a4f746fae",
@@ -54760,7 +55407,22 @@
         ]
       },
       "type": "atomic",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "87372f49-c832-50f6-921f-ec9a6804d58a",
+          "title": "Visualisierung: Eine heuristische Strategie anwenden",
+          "url": "/assets/goal-visualizations/mathematik/87372f49-c832-50f6-921f-ec9a6804d58a/87372f49-c832-50f6-921f-ec9a6804d58a.png",
+          "provider": "Google Gemini / Nano Banana 2 (gemini-3.1-flash-image)",
+          "description": "Systematisches Testen an einem Rechteckproblem: fünf Flächenwerte führen zu einer Vermutung, noch nicht zu einem Beweis.",
+          "altText": "Ein Rechteck mit Umfang 40 Metern hat Seiten x und 20 minus x. Seine Fläche A ist x multipliziert mit (20 minus x). Eine Tabelle zeigt für x gleich 8, 9, 10, 11 und 12 Meter die Flächen 96, 99, 100, 99 und 96 Quadratmeter. Die Testwerte legen x gleich 10 nahe; die Grafik kennzeichnet dies ausdrücklich als Vermutung, nicht als allgemeinen Beweis.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "499b8a0d-a5da-5cf7-8557-89e16152b752",
@@ -55173,8 +55835,8 @@
       "id": "27bdc580-ba17-5399-bf02-48f354846d1d",
       "title": "Heuristischen Stetigkeitsbegriff zum Argumentieren nutzen",
       "titleEn": "Use a heuristic continuity concept for argumentation",
-      "description": "Die lernende Person kann mit der Vorstellung eines Graphen ohne Sprung und mit der Zwischenwertidee argumentieren, ohne einen formalen Stetigkeitsbeweis zu führen.",
-      "descriptionEn": "The learner can argue using the idea of a graph without jumps and the intermediate value idea without giving a formal proof of continuity.",
+      "description": "Wenn der Funktionsgraph im betrachteten Intervall durchgehend verläuft, kann die lernende Person mit der Zwischenwertidee begründen, warum jeder Wert zwischen zwei gegebenen Funktionswerten angenommen wird, ohne einen formalen Stetigkeitsbeweis zu führen.",
+      "descriptionEn": "When a function graph is continuous throughout the interval under consideration, the learner can use the intermediate value idea to explain why every value between two given function values is attained, without giving a formal proof of continuity.",
       "weight": 1,
       "tags": [
         "GK",
@@ -55222,7 +55884,22 @@
       "type": "atomic",
       "semanticAtomic": true,
       "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 7",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "27bdc580-ba17-5399-bf02-48f354846d1d",
+          "title": "Visualisierung: Heuristischen Stetigkeitsbegriff zum Argumentieren nutzen",
+          "url": "/assets/goal-visualizations/mathematik/27bdc580-ba17-5399-bf02-48f354846d1d/27bdc580-ba17-5399-bf02-48f354846d1d.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)",
+          "description": "Mathematische Lernzielvisualisierung; Details im Alternativtext.",
+          "altText": "Ein durchgehender Funktionsgraph steigt von f(a) kleiner null über die Nullstelle c zu f(b) größer null; ohne Sprung liegt zwischen negativ und positiv der Wert null.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "e75ec65a-9692-5871-b90b-fbebe38ae0c3",
@@ -55464,7 +56141,22 @@
       "type": "atomic",
       "semanticAtomic": true,
       "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 13",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "21fa0c22-976e-59b3-a871-899f0c0177f3",
+          "title": "Visualisierung: Zufallsexperimente und Ereignisse aus Termen formulieren",
+          "url": "/assets/goal-visualizations/mathematik/21fa0c22-976e-59b3-a871-899f0c0177f3/21fa0c22-976e-59b3-a871-899f0c0177f3.png",
+          "provider": "OpenAI / Codex built-in image generation (edit of Gemini Pro bitmap)",
+          "description": "Visualisierung zum Lernziel: Zufallsexperimente und Ereignisse aus Termen formulieren.",
+          "altText": "Zweimal Rot ohne Zurücklegen: Im ersten Behälter liegen vier rote und sechs blaue Kugeln. Nach Entnahme einer roten Kugel liegen im zweiten drei rote und sechs blaue. Die Zugwahrscheinlichkeiten vier Zehntel und drei Neuntel ergeben zusammen zwei Fünfzehntel.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "ae3483e3-4712-56a1-a881-2e1f8a1a8df9",
@@ -55524,12 +56216,12 @@
           "role": "primary",
           "skillpilotId": "ae3483e3-4712-56a1-a881-2e1f8a1a8df9",
           "title": "Visualisierung: Entscheidungsregel oder Stichprobenumfang aus Gütefunktionsgraphen bestimmen (LK)",
-          "url": "/assets/goal-visualizations/mathematik/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/ae3483e3-4712-56a1-a881-2e1f8a1a8df9.jpg",
-          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
-          "description": "Visualisierung zum Lernziel: Entscheidungsregel oder Stichprobenumfang aus Gütefunktionsgraphen bestimmen (LK).",
-          "altText": "Die lernende Person kann für vorgegebene Kandidaten von Entscheidungsregeln oder Stichprobenumfängen eindeutig gekennzeichnete Graphen der Operationscharakteristik oder Gütefunktion auswerten, die jeweiligen Nichtverwerfungs- beziehungsweise Verwerfungswahrscheinlichkeiten mit vorgegebenen Anforderungen vergleichen und eine passende Entscheidungsregel oder einen geeigneten Stichprobenumfang auswählen und fachlich begründen.",
+          "url": "/assets/goal-visualizations/mathematik/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/ae3483e3-4712-56a1-a881-2e1f8a1a8df9.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Zwei Gütefunktionen G(p) als Verwerfungswahrscheinlichkeit im Vergleich.",
+          "altText": "G von p ist die Verwerfungswahrscheinlichkeit P bei Parameter p für X größer gleich Schwelle. Die blaue Regel A hat n gleich 40 und Schwelle 13, die rote Regel B n gleich 80 und Schwelle 23. Bei p gleich 0,2 sind A ungefähr 0,043 und B ungefähr 0,039; bei p gleich 0,4 sind A ungefähr 0,871 und B ungefähr 0,986. Nur B erfüllt die Anforderungen höchstens 0,05 beziehungsweise mindestens 0,90.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -55714,7 +56406,22 @@
       "type": "atomic",
       "semanticAtomic": true,
       "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.3, S. 52, Spiegelstrich 2",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+          "title": "Visualisierung: Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen",
+          "url": "/assets/goal-visualizations/mathematik/4f64f771-20ba-581a-86ba-bcdb1759e4d2/4f64f771-20ba-581a-86ba-bcdb1759e4d2.png",
+          "provider": "OpenAI imagegen, edited from prior SkillPilot mathematical raster",
+          "description": "Zwei Diagramme zeigen z=1+i als festen Punkt und eine zeitabhängige Drehung im Uhrzeigersinn.",
+          "altText": "Links liegt z=1+i bei (1,1) mit r=√2 und φ=45°=π/4. Rechts zeigen vier Positionen von z(t)=2e^(−iπt/2) die Drehung im Uhrzeigersinn: t=0 rechts, t=1 unten, t=2 links, t=3 oben. Unten steht die allgemeine Polarform; ein Argument ist nur für z≠0 angegeben.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "5922affd-b1f9-5ad9-963e-25d3734c3b72",
@@ -55838,8 +56545,8 @@
       "id": "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
       "title": "Grundrechenarten in der Gaußschen Zahlenebene deuten",
       "titleEn": "Interpret arithmetic operations in the Gaussian plane",
-      "description": "Die lernende Person kann Addition, Subtraktion, Multiplikation und Division komplexer Zahlen in der Gaußschen Zahlenebene geometrisch deuten, insbesondere als Verschiebung, Streckung oder Drehung.",
-      "descriptionEn": "The learner can interpret addition, subtraction, multiplication, and division of complex numbers geometrically in the Gaussian plane, especially as translation, scaling, or rotation.",
+      "description": "Die lernende Person kann Addition, Subtraktion und Multiplikation komplexer Zahlen sowie deren Division durch eine von null verschiedene komplexe Zahl in der Gaußschen Zahlenebene geometrisch deuten, insbesondere als Verschiebung, Streckung oder Drehung.",
+      "descriptionEn": "The learner can interpret addition, subtraction, multiplication, and division by a nonzero complex number geometrically in the Gaussian plane, especially as translation, scaling, or rotation.",
       "weight": 1,
       "tags": [
         "GK",
@@ -55887,7 +56594,22 @@
       "type": "atomic",
       "semanticAtomic": true,
       "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.3, S. 52, Spiegelstrich 2",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+          "title": "Visualisierung: Grundrechenarten in der Gaußschen Zahlenebene deuten",
+          "url": "/assets/goal-visualizations/mathematik/a7fb1a7a-8315-5bcb-842e-48293293dfcc/a7fb1a7a-8315-5bcb-842e-48293293dfcc.png",
+          "provider": "OpenAI imagegen, edited from prior SkillPilot mathematical raster",
+          "description": "Eine Zahlenebene zeigt Addition, Subtraktion, Multiplikation und Division am Beispiel z=u=1+i.",
+          "altText": "Für z=u=1+i liegen z+u=2+2i bei (2,2), z−u=0 am Ursprung, zu=2i bei (0,2) und z/u=1 bei (1,0). Der Divisor ist ungleich null. Die Legende erklärt Verschiebung bei Addition und Subtraktion sowie Drehung um ±45° und Streckung beziehungsweise Teilung durch √2 bei Multiplikation und Division.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
@@ -56610,8 +57332,8 @@
       "id": "b9bbd2a8-1379-5ffb-817f-41467d48abef",
       "title": "Hauptsatz der Differential- und Integralrechnung nutzen",
       "titleEn": "Use the Fundamental Theorem of Calculus",
-      "description": "Die lernende Person kann den Zusammenhang zwischen Ableitung und Integral beschreiben, Stammfunktionen bestimmen und das bestimmte Integral über $F(b) - F(a)$ berechnen und geometrisch deuten.",
-      "descriptionEn": "The learner can describe the relationship between derivative and integral, determine antiderivatives, and calculate and geometrically interpret the definite integral via $F(b) - F(a)$.",
+      "description": "Die lernende Person kann den Zusammenhang zwischen Ableitung und Integral beschreiben, mit einer passenden Stammfunktion das bestimmte Integral über $F(b) - F(a)$ berechnen und das Ergebnis als orientierte Flächenbilanz deuten.",
+      "descriptionEn": "The learner can describe the relationship between derivative and integral, use a suitable antiderivative to calculate the definite integral via $F(b) - F(a)$, and interpret the result as a signed area balance.",
       "weight": 1,
       "tags": [
         "GK",
@@ -56619,7 +57341,8 @@
       ],
       "contains": [],
       "requires": [
-        "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+        "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+        "31be24f0-3ab1-54d2-856d-fa9b7f36552f"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
@@ -56663,12 +57386,12 @@
           "role": "primary",
           "skillpilotId": "b9bbd2a8-1379-5ffb-817f-41467d48abef",
           "title": "Visualisierung: Hauptsatz der Differential- und Integralrechnung nutzen",
-          "url": "/assets/goal-visualizations/mathematik/b9bbd2a8-1379-5ffb-817f-41467d48abef/b9bbd2a8-1379-5ffb-817f-41467d48abef.jpg",
-          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "url": "/assets/goal-visualizations/mathematik/b9bbd2a8-1379-5ffb-817f-41467d48abef/b9bbd2a8-1379-5ffb-817f-41467d48abef.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)",
           "description": "Visualisierung zum Lernziel: Hauptsatz der Differential- und Integralrechnung nutzen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Hauptsatz der Differential- und Integralrechnung nutzen\". Die lernende Person kann den Zusammenhang zwischen Ableitung und Integral beschreiben, Stammfunktionen bestimmen und das bestimmte Integral über $F(b) - F(a)$ berechnen und geometrisch deuten.",
+          "altText": "Graph von f(x)=2x−2 auf [0,3] mit orientierten Flächen −1 und +4. Eine Stammfunktion F(x)=x²−2x liefert über F(3)−F(0) denselben Integralwert 3.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -56876,10 +57599,10 @@
     },
     {
       "id": "31be24f0-3ab1-54d2-856d-fa9b7f36552f",
-      "title": "Stammfunktionen ganzrationaler Funktionen bestimmen und vorgegebene Stammfunktionen nutzen",
-      "titleEn": "Determine Polynomial Antiderivatives and Use Given Antiderivatives",
-      "description": "Die lernende Person kann ohne Hilfsmittel Stammfunktionen ganzrationaler Funktionen bestimmen und vorgegebene Stammfunktionen für Integral- und Rekonstruktionsaufgaben sicher nutzen.",
-      "descriptionEn": "The learner can determine antiderivatives of polynomial functions without aids and use given antiderivatives reliably in integral and reconstruction tasks.",
+      "title": "Stammfunktionen ganzrationaler Funktionen ohne Hilfsmittel bestimmen",
+      "titleEn": "Determine Polynomial Antiderivatives without Aids",
+      "description": "Die lernende Person kann zu einer ganzrationalen Funktion ohne Hilfsmittel eine Stammfunktion bestimmen und das Ergebnis durch Ableiten prüfen.",
+      "descriptionEn": "The learner can determine an antiderivative of a polynomial function without aids and verify the result by differentiation.",
       "weight": 1,
       "tags": [
         "GK",
@@ -56887,7 +57610,8 @@
       ],
       "contains": [],
       "requires": [
-        "b9bbd2a8-1379-5ffb-817f-41467d48abef"
+        "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+        "623cd47f-6f9e-58a7-911c-69e4a8609a27"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-math",
@@ -56928,13 +57652,13 @@
           "resourceType": "image",
           "role": "primary",
           "skillpilotId": "31be24f0-3ab1-54d2-856d-fa9b7f36552f",
-          "title": "Visualisierung: Stammfunktionen ganzrationaler Funktionen bestimmen und vorgegebene Stammfunktionen nutzen",
-          "url": "/assets/goal-visualizations/mathematik/31be24f0-3ab1-54d2-856d-fa9b7f36552f/31be24f0-3ab1-54d2-856d-fa9b7f36552f.jpg",
-          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
-          "description": "Visualisierung zum Lernziel: Stammfunktionen ganzrationaler Funktionen bestimmen und vorgegebene Stammfunktionen nutzen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Stammfunktionen ganzrationaler Funktionen bestimmen und vorgegebene Stammfunktionen nutzen\". Die lernende Person kann ohne Hilfsmittel Stammfunktionen ganzrationaler Funktionen bestimmen und vorgegebene Stammfunktionen für Integral- und Rekonstruktionsaufgaben sicher nutzen.",
+          "title": "Visualisierung: Stammfunktionen ganzrationaler Funktionen ohne Hilfsmittel bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/31be24f0-3ab1-54d2-856d-fa9b7f36552f/31be24f0-3ab1-54d2-856d-fa9b7f36552f.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)",
+          "description": "Comicbild zum Bestimmen einer Polynom-Stammfunktion und zur Kontrolle durch Ableiten.",
+          "altText": "Drei Notizblätter zeigen: Aus f(x)=3x²+2x wird ohne Hilfsmittel F(x)=x³+x² bestimmt. Die Ableitung F′(x)=3x²+2x=f(x) bestätigt die Stammfunktion.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -58838,7 +59562,22 @@
       "contains": [],
       "type": "atomic",
       "semanticAtomic": true,
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "164921f6-3bf7-5efc-a438-ea4759dca9ef",
+          "title": "Visualisierung: Kettenlinien als Funktionsmodelle untersuchen (LK)",
+          "url": "/assets/goal-visualizations/mathematik/164921f6-3bf7-5efc-a438-ea4759dca9ef/164921f6-3bf7-5efc-a438-ea4759dca9ef.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Kettenlinie als Modell mit Parameterwirkung und Exponentialbezug",
+          "altText": "Links hängt eine Kette zwischen gleich hohen Halterungen. Rechts zeigen eine rote Kettenlinie für a=1 und eine flachere blaue für a=2 die Minima (0,1+c) und (0,2+c) der Funktion y=a·cosh(x/a)+c.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "b71c332f-ef9d-5c27-983b-7103269ff419",
@@ -59745,7 +60484,7 @@
       "titleEn": "Analytic Geometry, Linear Algebra and Advanced Analysis",
       "description": "Überblicksknoten für vertiefte Analysis, Orientieren und Bewegen im Raum, Geraden und Ebenen im Raum, ebene Figuren in Raumdarstellungen, Spiegelungen an Ebenen sowie Matrizen für Übergangsprozesse und lineare geometrische Abbildungen.",
       "descriptionEn": "Overview node for advanced analysis, orientation and movement in space, lines and planes in space, and matrices for transition processes and linear geometric mappings.",
-      "weight": 156,
+      "weight": 158,
       "tags": [
         "GK",
         "LK"
@@ -60640,7 +61379,22 @@
       "contains": [],
       "type": "atomic",
       "semanticAtomic": true,
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "06ce2b1b-e888-5322-9ed9-dfc6d322956a",
+          "title": "Visualisierung: Den natürlichen Logarithmus als Umkehrfunktion der e-Funktion erklären (LK)",
+          "url": "/assets/goal-visualizations/mathematik/06ce2b1b-e888-5322-9ed9-dfc6d322956a/06ce2b1b-e888-5322-9ed9-dfc6d322956a.png",
+          "provider": "ChatGPT image generation (user-provided via Astra)",
+          "description": "Graphen von e^x und ln(x) als Spiegelbilder an y=x.",
+          "altText": "Koordinatendiagramm mit gleich großen Einheiten auf beiden Achsen. Die Graphen y=e^x und y=ln(x) sind an der gestrichelten Geraden y=x gespiegelt. Markiert sind die vertauschten Punktpaare (0,1) und (1,0) sowie (1,e) und (e,1). Der ln-Graph verläuft nur rechts der y-Achse für x>0.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8",
@@ -60760,7 +61514,23 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "8b3ce429-e6bb-5d33-b6aa-6ded41afc74c",
+          "title": "Visualisierung: Transformationen von Logarithmusgraphen deuten (LK)",
+          "url": "/assets/goal-visualizations/mathematik/8b3ce429-e6bb-5d33-b6aa-6ded41afc74c/8b3ce429-e6bb-5d33-b6aa-6ded41afc74c.png",
+          "provider": "OpenAI / Codex built-in image generation (fresh attempt followed by two generated-image edits)",
+          "description": "Visualisierung zum Lernziel: Transformationen von Logarithmusgraphen deuten (LK).",
+          "altText": "Zwei Koordinatengraphen zeigen f(x)=log₂(x) und g(x)=log₂(x−2). Eine nach rechts gerichtete Pfeilmarkierung zeigt die Verschiebung um zwei Einheiten; die senkrechte Asymptote wandert von x=0 nach x=2, etwa der Punkt (1,0) nach (3,0).",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
@@ -62528,8 +63298,8 @@
       "id": "944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
       "title": "Spatprodukt korrekt definieren und deuten",
       "titleEn": "Define and interpret the scalar triple product correctly",
-      "description": "Die lernende Person kann das Spatprodukt als $[\\vec{a},\\vec{b},\\vec{c}] = \\vec{a} \\cdot (\\vec{b} \\times \\vec{c})$ korrekt angeben, die Orientierung deuten und für Volumenberechnungen den Betrag verwenden.",
-      "descriptionEn": "The learner can state the scalar triple product as $[\\vec{a},\\vec{b},\\vec{c}] = \\vec{a} \\cdot (\\vec{b} \\times \\vec{c})$, interpret its orientation and use the absolute value for volume calculations.",
+      "description": "Die lernende Person kann das Spatprodukt als $[\\vec{a},\\vec{b},\\vec{c}] = \\vec{a} \\cdot (\\vec{b} \\times \\vec{c})$ angeben, sein Vorzeichen als Orientierung deuten und seinen Betrag als Volumen des aufgespannten Spats verwenden.",
+      "descriptionEn": "The learner can state the scalar triple product as $[\\vec{a},\\vec{b},\\vec{c}] = \\vec{a} \\cdot (\\vec{b} \\times \\vec{c})$, interpret its sign as orientation and use its absolute value as the volume of the spanned parallelepiped.",
       "weight": 1,
       "tags": [
         "GK",
@@ -62573,7 +63343,22 @@
         ]
       },
       "type": "atomic",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
+          "title": "Visualisierung: Spatprodukt korrekt definieren und deuten",
+          "url": "/assets/goal-visualizations/mathematik/944dd479-9f30-5acb-ab32-3ea0b6dc8e06/944dd479-9f30-5acb-ab32-3ea0b6dc8e06.png",
+          "provider": "OpenAI / Codex built-in image generation (edit)",
+          "description": "Visualisierung zum Lernziel: Spatprodukt korrekt definieren und deuten.",
+          "altText": "Ein Spat wird von a=(2,0,0), b=(0,3,0) und c=(0,0,4) entlang der positiven Koordinatenachsen aufgespannt. Das Spatprodukt beträgt +24; beim Vertauschen von a und b wird es −24. Der Betrag und damit das Volumen bleiben 24.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "a594dec0-3977-5c43-9432-d4254a7f6130",
@@ -62623,7 +63408,22 @@
         ]
       },
       "type": "atomic",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "a594dec0-3977-5c43-9432-d4254a7f6130",
+          "title": "Visualisierung: Volumen von Spaten und Tetraedern mit Spatprodukt berechnen",
+          "url": "/assets/goal-visualizations/mathematik/a594dec0-3977-5c43-9432-d4254a7f6130/a594dec0-3977-5c43-9432-d4254a7f6130.png",
+          "provider": "OpenAI / Codex built-in image generation (reference-conditioned)",
+          "description": "Visualisierung zum Lernziel: Volumen von Spaten und Tetraedern mit Spatprodukt berechnen.",
+          "altText": "Ein Spat wird von a=(2,0,0), b=(0,3,0) und c=(0,0,4) aufgespannt. Ein gelber Tetraeder mit Ecken O, a, b, c belegt ein Sechstel: Der Spat hat Volumen 24, der Tetraeder Volumen 4.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "c71ae268-f28e-59f0-982d-91db8f963378",
@@ -62887,22 +63687,24 @@
     },
     {
       "id": "6b2a1c04-8c28-51ff-905b-9c9492a26cc3",
-      "title": "Spezielle Lagen von Geraden und Ebenen begründen (LK)",
-      "titleEn": "Justify special positions of lines and planes (advanced course)",
-      "description": "Die lernende Person kann besondere Lagebeziehungen von Geraden und Ebenen im Raum analysieren, rechnerisch begründen und die Ergebnisse geometrisch interpretieren.",
-      "descriptionEn": "The learner can analyze special positional relationships of lines and planes in space, justify them computationally, and interpret the results geometrically.",
-      "weight": 1,
+      "title": "Spezielle Lagen von Geraden und Ebenen (Bestands-ID)",
+      "titleEn": "Special positions of lines and planes (legacy ID)",
+      "description": "Kompatibilitätsknoten für die frühere, zu breite LK-Ziel-ID. Die belegten Kompetenzen zu besonderen Lagen einer Geraden an Koordinatenachsen und -ebenen, zur Lage einer Geraden zu einer Ebene und zur Lage zweier Ebenen sind als getrennte Lernziele modelliert.",
+      "descriptionEn": "Compatibility node for the former overly broad advanced-course goal ID. The evidenced competencies about special positions of a line relative to coordinate axes and planes, the position of a line relative to a plane, and the position of two planes are modeled as separate goals.",
+      "weight": 3,
       "tags": [
         "LK"
       ],
-      "contains": [],
-      "requires": [
-        "effe43eb-cabe-56cb-a228-35887d7915c1",
+      "contains": [
+        "58f613da-03be-5c6a-90a9-ff0958aa7849",
         "24174bba-a654-5f81-8de3-ca5bd09d9b6f",
-        "3def350a-c01c-51c3-be74-b3de20ee53e1",
-        "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5",
-        "fac75b4a-4ec2-5d38-bbce-9b002c8a4904"
+        "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd"
       ],
+      "requires": [],
+      "extendedData": {
+        "applicabilityProjection": "excluded",
+        "compatibilityOnly": true
+      },
       "dimensionTags": {
         "framework": "hessen-kc-2024",
         "demandLevel": "AB3",
@@ -62916,27 +63718,7 @@
         ],
         "phase": "Q2"
       },
-      "applicability": {
-        "jurisdiction": [
-          "DE-BB",
-          "DE-BE",
-          "DE-BW",
-          "DE-BY",
-          "DE-HB",
-          "DE-HE",
-          "DE-HH",
-          "DE-MV",
-          "DE-NI",
-          "DE-NW",
-          "DE-RP",
-          "DE-SH",
-          "DE-SL",
-          "DE-SN",
-          "DE-ST",
-          "DE-TH"
-        ]
-      },
-      "type": "atomic",
+      "type": "cluster",
       "resourceLinks": [
         {
           "type": "goal-visualization",
@@ -62956,20 +63738,19 @@
     },
     {
       "id": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
-      "title": "Transformationsargumente für Flächen und Volumina nutzen (LK)",
-      "titleEn": "Use transformation arguments for areas and volumes (advanced course)",
-      "description": "Die lernende Person kann vektorielle Transformationsargumente auf räumliche Konfigurationen anwenden und daraus Folgerungen für Flächen- oder Volumenberechnungen begründet ableiten.",
-      "descriptionEn": "The learner can apply vector transformation arguments to spatial configurations and derive justified conclusions for area or volume calculations.",
+      "title": "Flächen- und Volumenskalierung bei zentrischer Streckung begründen (LK)",
+      "titleEn": "Justify area and volume scaling under a central dilation (advanced course)",
+      "description": "Die lernende Person kann bei einer zentrischen Streckung am Koordinatenursprung mit positivem Faktor k aus der Skalierung von Kantenlängen begründen, warum Flächeninhalte mit k² und Volumina mit k³ wachsen oder schrumpfen, und dies an einem gegebenen Körper anwenden.",
+      "descriptionEn": "The learner can use the scaling of edge lengths under a central dilation at the coordinate origin with a positive factor k to justify why areas scale by k² and volumes by k³, and apply this to a given solid.",
       "weight": 1,
       "tags": [
         "LK"
       ],
       "contains": [],
       "requires": [
-        "6b2a1c04-8c28-51ff-905b-9c9492a26cc3",
-        "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
-        "3def350a-c01c-51c3-be74-b3de20ee53e1",
-        "fac75b4a-4ec2-5d38-bbce-9b002c8a4904"
+        "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+        "5f548596-9bc3-532e-88a0-81d5029809e9",
+        "35558905-753d-5fcb-b25e-7f85ffdbff56"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
@@ -62986,38 +63767,27 @@
       },
       "applicability": {
         "jurisdiction": [
-          "DE-BB",
-          "DE-BE",
-          "DE-BW",
-          "DE-BY",
-          "DE-HB",
-          "DE-HE",
-          "DE-HH",
-          "DE-MV",
-          "DE-NI",
-          "DE-NW",
-          "DE-RP",
-          "DE-SH",
-          "DE-SL",
-          "DE-SN",
-          "DE-ST",
-          "DE-TH"
+          "DE-HE"
         ]
       },
       "type": "atomic",
+      "sourceRef": "Didaktische Verbindung aus HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 4, Aspekt 3, und Q2.5, S. 44, Spiegelstrich 3, Aspekt 4; die Skalierungsfaktoren sind aus den beiden Aspekten abgeleitet, nicht wörtlicher Quellentext.",
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
       "resourceLinks": [
         {
           "type": "goal-visualization",
           "resourceType": "image",
           "role": "primary",
           "skillpilotId": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
-          "title": "Visualisierung: Transformationsargumente für Flächen und Volumina nutzen (LK)",
-          "url": "/assets/goal-visualizations/mathematik/7d37513b-fa1a-54cc-9e2a-9279a381f0f0/7d37513b-fa1a-54cc-9e2a-9279a381f0f0.jpg",
-          "provider": "Google Gemini / Nano Banana Pro",
-          "description": "Visualisierung zum Lernziel: Transformationsargumente für Flächen und Volumina nutzen (LK).",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Transformationsargumente für Flächen und Volumina nutzen (LK)\". Die lernende Person kann vektorielle Transformationsargumente auf räumliche Konfigurationen anwenden und daraus Folgerungen für Flächen- oder Volumenberechnungen begründet ableiten.",
+          "title": "Visualisierung: Flächen- und Volumenskalierung bei zentrischer Streckung begründen",
+          "url": "/assets/goal-visualizations/mathematik/7d37513b-fa1a-54cc-9e2a-9279a381f0f0/7d37513b-fa1a-54cc-9e2a-9279a381f0f0.png",
+          "provider": "OpenAI imagegen",
+          "description": "Quadrat und Würfel werden zentrisch mit k = 2 gestreckt: Aus Seitenlänge 1 wird 2, aus Fläche 1 wird 4 und aus Volumen 1 wird 8.",
+          "altText": "Links wird ein Einheitsquadrat bei k = 2 zum Quadrat der Seitenlänge 2 und Fläche 4; der Flächenfaktor ist k² = 4. Rechts wird ein Einheitswürfel zum Würfel der Kantenlänge 2 und Volumen 8; der Volumenfaktor ist k³ = 8.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -63090,7 +63860,7 @@
       "titleEn": "Distances, Intersection Angles, Reflections, and Applications in Space",
       "description": "Abstände und Winkel in Raumkonfigurationen berechnen, Punkte an Ebenen spiegeln und räumliche Sachsituationen mit Geraden und Ebenen modellierend bearbeiten.",
       "descriptionEn": "Calculate distances and angles in spatial configurations, reflect points across planes, and model spatial application contexts using lines and planes.",
-      "weight": 20,
+      "weight": 19,
       "tags": [
         "GK",
         "LK"
@@ -63106,7 +63876,6 @@
         "8eb14d81-353a-4909-9464-61be7b1ba5b8",
         "8cb5c712-9c58-5910-8c63-8c3736369b80",
         "bd3576b8-f4e5-542a-a8a2-74524d9cee21",
-        "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
         "bda6a659-9640-53a5-8be0-24705ab623ef",
         "5748633c-113f-5ea8-9041-24da55919de7",
         "d8e56cfc-a58d-5529-ab9f-e5187e31dd34",
@@ -63160,7 +63929,7 @@
       "titleEn": "Positional Relations and Intersections in Space",
       "description": "Lagebeziehungen von Geraden und Ebenen im Raum untersuchen, Schnittmengen bestimmen und räumliche Konfigurationen rechnerisch klassifizieren sowie geometrisch deuten.",
       "descriptionEn": "Investigate positional relations of lines and planes in space, determine intersections, and classify spatial configurations computationally while interpreting them geometrically.",
-      "weight": 10,
+      "weight": 9,
       "tags": [
         "GK",
         "LK"
@@ -63170,7 +63939,6 @@
         "24174bba-a654-5f81-8de3-ca5bd09d9b6f",
         "baf7276f-60a0-4d96-b959-d63acfb929de",
         "5da12e3a-9abb-4134-a0a3-f44aa8de0a03",
-        "6b2a1c04-8c28-51ff-905b-9c9492a26cc3",
         "424cca47-adb3-5718-8b62-2af6cef76107",
         "58f613da-03be-5c6a-90a9-ff0958aa7849",
         "5f90df42-8a71-534d-b995-b8f7dcaf1661"
@@ -64366,8 +65134,8 @@
     },
     {
       "id": "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
-      "title": "Lagebeziehungen von Ebenen sowie von Geraden und Ebenen untersuchen (LK)",
-      "titleEn": "Investigate positional relations of planes as well as of lines and planes (advanced course)",
+      "title": "Lagebeziehung zweier Ebenen untersuchen (LK)",
+      "titleEn": "Investigate the positional relationship of two planes (advanced course)",
       "description": "Die lernende Person kann die Lagebeziehung zweier Ebenen untersuchen, dazu das zugehörige lineare Gleichungssystem systematisch lösen und die Lösungsmenge geometrisch interpretieren.",
       "descriptionEn": "The learner can analyze the positional relationship of two planes, systematically solve the associated linear system, and interpret the solution set geometrically.",
       "weight": 1,
@@ -64378,7 +65146,6 @@
       "contains": [],
       "requires": [
         "fa02cf14-0411-4fe3-8be7-a62c69743e26",
-        "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
         "d76766a5-ce07-5c7a-987b-157f2998b05e",
         "ce491ec0-c558-5872-86fd-289e60a38403",
         "ea4bd128-17ab-5a8b-ae98-29552d774fb0",
@@ -64396,7 +65163,7 @@
         ],
         "phase": "Q2",
         "area": "LinearAlgebra",
-        "topicCode": "CANONICAL.MATH.SEK2.SPACE.PLANE_AND_LINE_PLANE_RELATIONS_ADVANCED"
+        "topicCode": "CANONICAL.MATH.SEK2.SPACE.PLANE_PLANE_RELATIONS_ADVANCED"
       },
       "applicability": {
         "jurisdiction": [
@@ -64427,13 +65194,13 @@
           "resourceType": "image",
           "role": "primary",
           "skillpilotId": "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
-          "title": "Visualisierung: Lagebeziehungen von Ebenen sowie von Geraden und Ebenen untersuchen (LK)",
-          "url": "/assets/goal-visualizations/mathematik/0f4f9957-8afe-4aab-9dd8-c26c9aee2afd/0f4f9957-8afe-4aab-9dd8-c26c9aee2afd.jpg",
-          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
-          "description": "Visualisierung zum Lernziel: Lagebeziehungen von Ebenen sowie von Geraden und Ebenen untersuchen (LK).",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Lagebeziehungen von Ebenen sowie von Geraden und Ebenen untersuchen (LK)\". Die lernende Person kann die Lagebeziehung zweier Ebenen untersuchen, dazu das zugehörige lineare Gleichungssystem systematisch lösen und die Lösungsmenge geometrisch interpretieren.",
+          "title": "Visualisierung: Lagebeziehung zweier Ebenen untersuchen (LK)",
+          "url": "/assets/goal-visualizations/mathematik/0f4f9957-8afe-4aab-9dd8-c26c9aee2afd/0f4f9957-8afe-4aab-9dd8-c26c9aee2afd.png",
+          "provider": "OpenAI imagegen edit; SkillPilot curated",
+          "description": "Zwei Ebenengleichungen werden als lineares Gleichungssystem gelöst; die unendlich vielen gemeinsamen Punkte bilden eine Schnittgerade.",
+          "altText": "Für E1: x + y + z = 3 und E2: x - y + z = 1 ergibt das Gleichungssystem y = 1 und x + z = 2. Mit z = t entsteht die Schnittgerade X = (2; 1; 0) + t · (-1; 0; 1). Zwei sich schneidende Ebenen sind dargestellt.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -64704,10 +65471,10 @@
     },
     {
       "id": "18be713b-7d90-4f01-b60a-5582ac4df0e8",
-      "title": "Schnittwinkel zwischen geometrischen Objekten berechnen",
-      "titleEn": "Calculate intersection angles between geometric objects",
-      "description": "Die lernende Person kann die Größe des Schnittwinkels zwischen zwei sich schneidenden geometrischen Objekten berechnen und das Ergebnis geometrisch deuten.",
-      "descriptionEn": "The learner can calculate the size of the intersection angle between two intersecting geometric objects and interpret the result geometrically.",
+      "title": "Schnittwinkel zweier Geraden berechnen",
+      "titleEn": "Calculate the intersection angle between two lines",
+      "description": "Die lernende Person kann den nichtstumpfen Schnittwinkel zweier sich schneidender Geraden mithilfe ihrer Richtungsvektoren berechnen und geometrisch deuten.",
+      "descriptionEn": "The learner can calculate the non-obtuse intersection angle between two intersecting lines using their direction vectors and interpret it geometrically.",
       "weight": 1,
       "tags": [
         "GK",
@@ -64716,12 +65483,7 @@
       ],
       "contains": [],
       "requires": [
-        "9460c3ff-e72d-4107-bc73-087d217200aa",
-        "fa02cf14-0411-4fe3-8be7-a62c69743e26",
-        "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
-        "d76766a5-ce07-5c7a-987b-157f2998b05e",
-        "ce491ec0-c558-5872-86fd-289e60a38403",
-        "ea4bd128-17ab-5a8b-ae98-29552d774fb0"
+        "265af6af-8eac-5632-b730-800aafcde26a"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-math",
@@ -64758,9 +65520,24 @@
         ]
       },
       "type": "atomic",
-      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 3 und 8",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 3",
       "semanticAtomic": true,
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "18be713b-7d90-4f01-b60a-5582ac4df0e8",
+          "title": "Visualisierung: Schnittwinkel zweier Geraden berechnen",
+          "url": "/assets/goal-visualizations/mathematik/18be713b-7d90-4f01-b60a-5582ac4df0e8/18be713b-7d90-4f01-b60a-5582ac4df0e8.png",
+          "provider": "Google Gemini gemini-3.1-flash-image (thinking_level=high)",
+          "description": "Mathematische Lernzielvisualisierung; Details im Alternativtext.",
+          "altText": "Die Gerade g mit Richtungsvektor u=(1,0) und die Gerade h mit v=(1,1) schneiden sich im Ursprung unter 45 Grad; die Skalarproduktformel ergibt cos alpha gleich 1 durch Wurzel 2.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "fac75b4a-4ec2-5d38-bbce-9b002c8a4904",
@@ -66560,7 +67337,7 @@
       "titleEn": "Linear Geometric Mappings and Mapping Matrices",
       "description": "Lineare geometrische Abbildungen wie Spiegelungen, Streckungen, Projektionen und Drehungen mit Matrizen darstellen, Bildpunkte berechnen, Abbildungsmatrizen bestimmen und Zusammensetzungen als Matrixprodukte interpretieren.",
       "descriptionEn": "Represent linear geometric mappings such as reflections, stretches, projections, and rotations with matrices, calculate image points, determine mapping matrices, and interpret compositions as matrix products.",
-      "weight": 14,
+      "weight": 15,
       "tags": [
         "GK",
         "LK"
@@ -66574,6 +67351,7 @@
         "b72d87d4-763e-54aa-940d-31f195b51700",
         "55039f9c-4ebc-5115-add5-fae95b915e46",
         "35558905-753d-5fcb-b25e-7f85ffdbff56",
+        "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
         "ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c",
         "168d8879-0412-5524-94c5-c1d8169dbd65",
         "7bd8f022-5002-5610-994c-a9cec1890558",
@@ -67189,6 +67967,9 @@
           "DE-SN",
           "DE-ST",
           "DE-TH"
+        ],
+        "courseProfile": [
+          "LK"
         ]
       },
       "type": "atomic",
@@ -67472,6 +68253,9 @@
           "DE-SN",
           "DE-ST",
           "DE-TH"
+        ],
+        "courseProfile": [
+          "LK"
         ]
       },
       "type": "atomic",
@@ -69739,7 +70523,7 @@
       "id": "28b45b93-11e1-5a96-97a1-4cfee171802b",
       "title": "Übungen E-Phase",
       "description": "Bündelt materialgestützte E-Phasen-Klausuraufgaben mit normalem Klausurcharakter zu Funktionen, Ableitung, exponentiellen Modellen, Trigonometrie, numerischen Verfahren und Folgen. Die globalen Abituraufgaben bleiben davon getrennt modelliert.",
-      "weight": 11,
+      "weight": 13,
       "tags": [
         "GK",
         "LK"
@@ -69764,6 +70548,7 @@
       "contains": [
         "e7013f6e-6051-5c88-8b4b-e054dc8db4cc",
         "296fdd9f-59a4-5d3d-9512-cfc78c8ac3e0",
+        "728fd537-40d3-5fdf-8b08-925cba0b2004",
         "450a77d6-2814-571a-af1e-78c9fa61ed2c",
         "c87597fd-4d54-5e9a-a3d0-9a2943d8153c",
         "9634bfe1-39ea-5428-a042-c3f970f811a3",
@@ -69772,7 +70557,8 @@
         "2c30949d-0381-5d32-81cf-c6eac7711399",
         "78f5003e-9578-545c-b6b3-4b02f31ffcd4",
         "b4a8ba81-d195-5413-bd98-516e7c76c8f3",
-        "c4cf4273-cadc-5eca-9b35-b3edd6de26ce"
+        "c4cf4273-cadc-5eca-9b35-b3edd6de26ce",
+        "22842d80-de9d-5dad-9819-6ae6e9ca61be"
       ],
       "examples": [],
       "applicability": {
@@ -69796,6 +70582,178 @@
         ]
       },
       "type": "cluster"
+    },
+    {
+      "id": "728fd537-40d3-5fdf-8b08-925cba0b2004",
+      "shortKey": "canonical_math_sek2_antiderivative_graph_assessment",
+      "title": "Stammfunktionsgraph aus gegebenem f-Graphen zeichnen",
+      "titleEn": "Draw an antiderivative graph from a given function graph",
+      "description": "Die lernende Person kann in einer eigenständigen Zeichenaufgabe aus einem gegebenen Graphen von f einen passenden Stammfunktionsgraphen F skizzieren und seine Steigungen, Extremstellen und vertikale Verschiebung begründen.",
+      "descriptionEn": "The learner can independently draw a suitable antiderivative graph F from a given graph of f and justify its slopes, extrema, and vertical shift.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.4",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "E",
+        "area": "Analysis"
+      },
+      "requires": [
+        "21676dae-8619-59d1-89e3-a35bb2297e2c"
+      ],
+      "contains": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "reviewNote": "Machine-only independent content review 2026-09-28: bilingual source/task/solution parity, graph geometry and 11/12 scoring checked; F drawing, F′=f reasoning and G drawing/shift are indispensable. No human or real-host trial; server enforces total score only.",
+        "coveredGoalIds": [
+          "21676dae-8619-59d1-89e3-a35bb2297e2c"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB2"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/e/antiderivative-graph-sketch/draft_v1.md",
+        "taskContent": "Der folgende Graph von f auf `0 ≤ x ≤ 6` besteht aus geraden Strecken. Der Plot ist nicht maßstabsgerecht; die Eckpunkte `(0|0), (1|2), (2|0), (3|−2), (4|0), (5|2), (6|0)` legen ihn genau fest. Ein Funktionsterm ist nicht gegeben.\n\n```text\n f(x)\n  2 |    ●               ●\n  1 |  ╱   ╲           ╱   ╲\n  0 |●       ●       ●       ●\n −1 |          ╲   ╱\n −2 |            ●\n    +-------------------------\n     0   1   2   3   4   5   6  x\n```\n\n1. Zeichne in ein Koordinatensystem mit derselben x-Skala den Graphen **einer möglichen Stammfunktion F** mit `F(0) = 0`. Zeichne eine passende gekrümmte Form und waagerechte Tangenten. Markiere die Intervalle, auf denen F steigt und fällt, sowie die inneren Hoch- und Tiefpunkte.\n2. Begründe anhand von `F′ = f` und den Vorzeichen von f die Form bei `x = 2` und `x = 4`. Vergleiche die Steigungen von F bei `x = 1` und `x = 2`.\n3. Zeichne in dasselbe Koordinatensystem den Graphen einer zweiten Stammfunktion G mit `G(0) = 1` und erkläre seine Lage zu F.\n\nGib deine **F- und G-Zeichnung** als Foto oder digitale Zeichnung ab. Eine bloße Beschreibung ersetzt die graphische Leistung nicht. Es wird weder ein Stammfunktionsterm noch ein bestimmtes Integral verlangt.",
+        "taskContentEn": "The following graph of f on `0 ≤ x ≤ 6` consists of straight segments. The plot is not to scale; its vertices `(0,0), (1,2), (2,0), (3,−2), (4,0), (5,2), (6,0)` specify it exactly. No formula for f is given.\n\n```text\n f(x)\n  2 |    ●               ●\n  1 |  ╱   ╲           ╱   ╲\n  0 |●       ●       ●       ●\n −1 |          ╲   ╱\n −2 |            ●\n    +-------------------------\n     0   1   2   3   4   5   6  x\n```\n\n1. In a coordinate system with the same x-scale, draw **one possible antiderivative graph F** with `F(0) = 0`. Draw an appropriate curved shape with horizontal tangents. Mark the intervals where F rises and falls and its interior maxima and minima.\n2. Using `F′ = f` and the signs of f, justify the shape at `x = 2` and `x = 4`. Compare the slopes of F at `x = 1` and `x = 2`.\n3. In the same coordinate system, draw a second antiderivative graph G with `G(0) = 1` and explain its position relative to F.\n\nSubmit your **F and G drawings** as a photo or digital drawing. A description alone does not demonstrate the graphical skill. Neither an antiderivative formula nor a definite integral is required.",
+        "solutionContent": "- Der f-Graph verbindet die angegebenen sieben Punkte mit sechs geraden Segmenten. Er ist auf `(0,2)` und `(4,6)` positiv, auf `(2,4)` negativ und bei x = 0, 2, 4, 6 null.\n- Für F gilt `F′ = f`. Deshalb steigt F auf `(0,2)`, fällt auf `(2,4)` und steigt auf `(4,6)`. Bei x = 2 liegt ein innerer Hochpunkt, bei x = 4 ein innerer Tiefpunkt; dort sind die Tangenten waagerecht. Auch bei den Randstellen x = 0 und x = 6 ist die Tangente waagerecht, soweit eine einseitige Tangente gemeint ist. Es gibt keinen inneren Hoch- oder Tiefpunkt allein wegen der Randnullstellen.\n- Ein maßstäblich möglicher F-Sketch durchläuft `(0|0), (1|1), (2|2), (3|1), (4|0), (5|1), (6|2)`. Er verbindet sie **nicht** geradlinig: Auf jedem linearen f-Segment ist F gekrümmt. Zum Beispiel ist `F′(1) = f(1) = 2`, aber `F′(2) = f(2) = 0`.\n- Die zweite Stammfunktion ist `G = F + 1`: gleiche Form und gleiche Steigungen an jeder Stelle, überall um eine Einheit nach oben verschoben.\n- Bei einer qualitativen Zeichnung sind die exakten Zwischenwerte von F nicht nötig. Entscheidend sind ein konsistenter, tatsächlich gezeichneter Kurvenverlauf, die Nullstellen-/Vorzeicheninformation und die vertikale Verschiebungsfreiheit.",
+        "solutionContentEn": "- The graph of f joins the seven vertices by straight segments. f is positive on `(0,2)` and `(4,6)`, negative on `(2,4)`, and zero at `x = 0, 2, 4, 6`.\n- Since `F′ = f`, F rises on `(0,2)`, falls on `(2,4)`, and rises on `(4,6)`. It has an interior maximum at `x = 2` and an interior minimum at `x = 4`, with horizontal tangents at both points. One-sided horizontal tangents at the endpoints do not create additional interior extrema.\n- One possible F graph with `F(0) = 0` passes through `(1,1), (2,2), (3,1), (4,0), (5,1), (6,2)`. It is **not** piecewise linear: F is curved on each straight segment of f. In particular, `F′(1) = f(1) = 2`, whereas `F′(2) = f(2) = 0`.\n- The second antiderivative is `G = F + 1`: it has the same shape and slopes and is shifted up by one unit everywhere.\n- Exact intermediate F values are not required for a qualitative sketch. What matters is a consistent, actually drawn curve, correct sign/zero implications, and the vertical-shift freedom.",
+        "scoring": {
+          "maxPoints": 12,
+          "passingPoints": 11,
+          "steps": [
+            {
+              "id": "antiderivative_graph_sketch",
+              "points": 7,
+              "description": "F tatsächlich mit F(0)=0, gekrümmter Form, Steig- und Fallintervallen, waagerechten Tangenten und inneren Extrema gezeichnet; ohne F-Zeichnung 0 Punkte."
+            },
+            {
+              "id": "antiderivative_graph_reasoning",
+              "points": 3,
+              "description": "Vorzeichen und Steigungen bei x=1,2,4 mit F′=f fachlich begründet; ohne erkennbaren Bezug von f-Wert zu F-Steigung 0 Punkte."
+            },
+            {
+              "id": "antiderivative_graph_shift",
+              "points": 2,
+              "description": "G tatsächlich gezeichnet und als reine vertikale Verschiebung G=F+1 erklärt; fehlt Zeichnung oder Erklärung, 0 Punkte."
+            }
+          ]
+        }
+      },
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/e/antiderivative-graph-sketch/draft_v1.md#aufgabe",
+      "phase": "E",
+      "type": "atomic"
+    },
+    {
+      "id": "22842d80-de9d-5dad-9819-6ae6e9ca61be",
+      "shortKey": "canonical_math_sek2_e_antiderivative_reverse_graph_assessment_bw",
+      "title": "Funktionsgraph aus gegebenen Stammfunktionsgraphen zeichnen",
+      "titleEn": "Draw function graphs from given antiderivative graphs",
+      "description": "Die lernende Person kann in einer eigenständigen Zeichenaufgabe aus zwei gegebenen Stammfunktionsgraphen die zugehörigen Funktionsgraphen ableiten, zeichnen und den Verlauf durch Tangentensteigungen und Vorzeichenwechsel begründen.",
+      "descriptionEn": "The learner can independently draw the corresponding function graphs from two given antiderivative graphs and justify their course using tangent slopes and sign changes.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.4",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "E",
+        "area": "Analysis"
+      },
+      "requires": [
+        "85eda551-cfc1-52c6-a252-4c7394c1f7e6"
+      ],
+      "contains": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "extendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "reviewNote": "Machine-only independent content review 2026-09-28: two SVG-backed DE/EN graph tasks and solutions checked; 11/12 requires both drawings plus F′=f tangent reasoning under explicit caps. No human or real-host trial; server enforces total score only.",
+        "coveredGoalIds": [
+          "85eda551-cfc1-52c6-a252-4c7394c1f7e6"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB2"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/e/antiderivative-reverse-graph/draft_v1.md",
+        "taskContent": "Die beiden Abbildungen zeigen tatsächlich gezeichnete Graphen von Stammfunktionen ohne Funktionsterme. Zeichne die zugehörigen Ableitungsgraphen. Gib **beide eigenen Zeichnungen** als Foto oder digitale Grafik ab; eine rein textliche Beschreibung genügt nicht.\n\n**Graph A:** Der sichtbare Ausschnitt `−2 ≤ x ≤ 4` einer Stammfunktion F besteht aus zwei glatten Parabelbögen, die sich bei `(0|4)` mit gemeinsamer Tangente treffen. Die Bögen setzen sich über die sichtbaren Intervallränder hinaus fort. Markierte Stützpunkte sind `(−2|0), (−1|1), (0|4), (1|7), (2|8), (3|7), (4|4)`; dazwischen verlaufen Kurven, keine Geraden.\n\n![Graph A: gegebener Stammfunktionsgraph F mit zwei glatten Parabelbögen](/assets/assessment-materials/mathematik/22842d80-de9d-5dad-9819-6ae6e9ca61be/graph-a-antiderivative.svg)\n\n1. Zeichne in ein eigenes Koordinatensystem mit derselben x-Skala den Graphen `f = F′`. Markiere seine Nullstellen sowie die Bereiche mit positiven und negativen f-Werten. Zeige, was bei `x = 0` am Verlauf von f geschieht.\n2. Untersuche f bei `x = 0` und `x = 2` und begründe deine Skizze mit den Tangentensteigungen von F.\n\n**Graph B (unabhängiger Transfer):** Der sichtbare Ausschnitt `0 ≤ x ≤ 2` einer anderen Stammfunktion H ist ein nach unten geöffneter Parabelbogen mit Scheitel `(1|3)` durch `(0|2)` und `(2|2)`. Der Bogen setzt sich über die sichtbaren Intervallränder hinaus fort.\n\n![Graph B: gegebener Stammfunktionsgraph H als nach unten geöffneter Parabelbogen](/assets/assessment-materials/mathematik/22842d80-de9d-5dad-9819-6ae6e9ca61be/graph-b-antiderivative.svg)\n\n3. Zeichne unabhängig zu Graph B den Graphen `h = H′`. Markiere `h(1)` sowie die Steigungen von H bei `x = 0` und `x = 2`.\n\nFunktionsterme von F und H müssen nicht rekonstruiert werden.",
+        "taskContentEn": "The two figures show actual graphs of antiderivatives without supplying function formulas. Draw the corresponding derivative graphs. Submit **both of your drawings** as a photo or digital graphic; a text-only answer is insufficient.\n\n**Graph A:** The visible section `−2 ≤ x ≤ 4` of an antiderivative F consists of two smooth parabolic arcs meeting at `(0,4)` with a common tangent. The arcs continue beyond the visible interval endpoints. Marked points are `(−2,0), (−1,1), (0,4), (1,7), (2,8), (3,7), (4,4)`; the points are joined by curves, not straight segments.\n\n![Graph A: given antiderivative F with two smooth parabolic arcs](/assets/assessment-materials/mathematik/22842d80-de9d-5dad-9819-6ae6e9ca61be/graph-a-antiderivative.svg)\n\n1. In a new coordinate system with the same x-scale, draw `f = F′`. Mark its zeros and the regions where f is positive or negative. Show what happens to the course of f at `x = 0`.\n2. Investigate f at `x = 0` and `x = 2`, and justify your sketch using the tangent slopes of F.\n\n**Graph B (independent transfer):** The visible section `0 ≤ x ≤ 2` of a different antiderivative H is a downward-opening parabolic arc with vertex `(1,3)` through `(0,2)` and `(2,2)`. The arc continues beyond the visible interval endpoints.\n\n![Graph B: given antiderivative H as a downward-opening parabolic arc](/assets/assessment-materials/mathematik/22842d80-de9d-5dad-9819-6ae6e9ca61be/graph-b-antiderivative.svg)\n\n3. Independently draw `h = H′` for Graph B. Mark `h(1)` and the slopes of H at `x = 0` and `x = 2`.\n\nYou need not reconstruct formulas for F and H.",
+        "solutionContent": "Nur zur Kontrolle, nicht als Vorgabe für Lernende: Graph A entspricht links `F(x)=(x+2)²` für `−2≤x≤0` und rechts `F(x)=8−(x−2)²` für `0≤x≤4`. Daraus folgen zwei tatsächlich zu zeichnende Geradenstücke: links `f(x)=2x+4` durch `(−2|0)` und `(0|4)`, rechts `f(x)=4−2x` durch `(0|4), (2|0), (4|−4)`. Bei `x=0` stimmen die Tangentensteigungen von F von beiden Seiten überein: `f(0)=4`; f ist dort stetig, hat aber einen Knick, weil seine eigene Steigung von `+2` zu `−2` wechselt. Bis `x=2` ist f, abgesehen von der Randnullstelle `x=−2`, positiv; bei `x=2` wechselt das Vorzeichen von positiv zu negativ.\n\nFür Graph B gilt nur zur Kontrolle `H(x)=3−(x−1)²`, also die unabhängig zu zeichnende fallende Gerade `h(x)=2−2x` durch `(0|2), (1|0), (2|−2)`. Die Ableitungsterme werden vor der Abgabe nicht gezeigt. Eine Termangabe ohne beide Zeichnungen und ohne Tangentenbegründung ersetzt die geforderte graphische Leistung nicht.",
+        "solutionContentEn": "For checking only, Graph A corresponds to `F(x)=(x+2)²` on `−2≤x≤0` and `F(x)=8−(x−2)²` on `0≤x≤4`. The required drawn f graph therefore has two straight branches: `f(x)=2x+4` through `(−2,0)` and `(0,4)` on the left, and `f(x)=4−2x` through `(0,4), (2,0), (4,−4)` on the right. At `x=0`, the tangent slopes of F agree from both sides, so `f(0)=4`; f is continuous there but has a corner because its own slope changes from `+2` to `−2`. Apart from the endpoint zero at `x=−2`, f is positive up to `x=2`, where it changes sign from positive to negative.\n\nFor Graph B, the checking formula is `H(x)=3−(x−1)²`. The independently drawn h graph is the descending line `h(x)=2−2x` through `(0,2), (1,0), (2,−2)`. These checking formulas are not shown before submission. Formula statements without both drawings and a tangent-based justification do not replace the required graphical work.",
+        "scoring": {
+          "maxPoints": 12,
+        "passingPoints": 11,
+        "steps": [
+          {
+            "id": "reverse_graph_a_draw",
+            "points": 5,
+            "description": "f zu A tatsächlich mit beiden linearen Ästen, f(0)=4, Nullstelle bei x=2, passenden Vorzeichen und Knick gezeichnet; ohne Zeichnung 0, bei falschem f(0) oder falscher Nullstelle/Vorzeichen höchstens 3/5 Punkte."
+          },
+          {
+            "id": "reverse_graph_b_transfer_draw",
+            "points": 5,
+            "description": "h zu B tatsächlich als fallende Gerade durch (0|2), (1|0), (2|−2) gezeichnet; ohne Zeichnung 0, bei falscher Richtung oder falschen markierten Werten höchstens 3/5 Punkte."
+            },
+            {
+              "id": "reverse_graph_tangent_reasoning",
+              "points": 2,
+              "description": "0 Punkte ohne richtigen Bezug von F-Tangentensteigung zu f-Wert; 1 Punkt für diesen Kern, 2 Punkte mit Vorzeichenwechsel bei x=2 und stetigem Knick bei x=0."
+            }
+          ]
+        }
+      },
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/e/antiderivative-reverse-graph/draft_v1.md",
+      "phase": "E",
+      "type": "atomic"
     },
     {
       "id": "e7013f6e-6051-5c88-8b4b-e054dc8db4cc",
@@ -71663,7 +72621,7 @@
       "id": "14b19ee4-364e-50bd-b6a3-499471356ef3",
       "title": "Übungen Q2",
       "description": "Bündelt materialgestützte Q2-Klausuraufgaben mit normalem Klausurcharakter zu Vertiefung der Analysis, Raumgeometrie und Matrizen. Die globalen Abituraufgaben bleiben davon getrennt modelliert.",
-      "weight": 9,
+      "weight": 12,
       "tags": [
         "GK",
         "LK"
@@ -71691,12 +72649,15 @@
         "bd2c5e29-31c6-58bf-9858-d08e9c8a32ad",
         "1878f680-095c-511d-aaed-e98393f7fde9",
         "2f8a3a90-717d-5ac1-b54e-facca26e9008",
+        "8d314e15-69e9-5af1-a10a-be820b2f821d",
         "57aff94e-91b8-5cc6-9f85-3f317ecf36ca",
         "e4656e83-3f33-5bda-b0bc-d4b63ec4653e",
         "81823f27-0c92-5444-ac4e-32b83169f318",
         "66d75e35-bcbc-5ec9-95f9-8e0558e75f14",
         "3db949bd-3091-5a25-a1a0-c8ff0369db94",
-        "e457af0b-e87f-5d61-9177-41daa6361dd3"
+        "e457af0b-e87f-5d61-9177-41daa6361dd3",
+        "338135aa-d5bb-5b53-8413-90fa8f1e4fb6",
+        "7d160e08-d987-4a63-873b-44496f6e11d3"
       ],
       "examples": [],
       "applicability": {
@@ -71720,6 +72681,208 @@
         ]
       },
       "type": "cluster"
+    },
+    {
+      "id": "338135aa-d5bb-5b53-8413-90fa8f1e4fb6",
+      "shortKey": "canonical_math_sek2_q2_line_line_angle_assessment",
+      "title": "Schnittwinkel zweier Geraden sicher beurteilen",
+      "titleEn": "Evaluate the intersection angle between two lines",
+      "description": "Die lernende Person kann in einer eigenständigen Q2-Aufgabe den nichtstumpfen Schnittwinkel zweier sich schneidender Geraden berechnen und begründen, warum die Wahl der Richtungsvektoren das Ergebnis nicht verändert.",
+      "descriptionEn": "The learner can independently calculate the non-obtuse angle between two intersecting lines and justify why the choice of direction vectors does not change the result.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra"
+      },
+      "requires": [
+        "18be713b-7d90-4f01-b60a-5582ac4df0e8"
+      ],
+      "contains": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "applicabilityFromRequires": true
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "reviewNote": "Machine-only independent content review 2026-09-28: vector angle 120°, unoriented line angle 60° and −v invariance recalculated; 8/9 requires calculation, supplement and orientation evidence. No human or real-host trial; server enforces total score only.",
+        "coveredGoalIds": [
+          "18be713b-7d90-4f01-b60a-5582ac4df0e8"
+        ],
+        "coveredStrands": [
+          "L3"
+        ],
+        "demandLevels": [
+          "AB2"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/line-line-angle/draft_v1.md",
+        "taskContent": "Zwei Geraden schneiden sich in P = (1|2|0). Ihre Richtungsvektoren sind u = (1|1|0) und v = (−1|0|−1). Berechne den nichtstumpfen Schnittwinkel der Geraden. Eine Mitschülerin erhält mit der Kosinusformel zunächst 120°. Erkläre, wie dieser Wert zustande kommt und warum er nicht der verlangte Geradenschnittwinkel ist. Prüfe deine Begründung, indem du v durch den gleichwertigen Richtungsvektor −v ersetzt.",
+        "taskContentEn": "Two lines intersect at P = (1,2,0). Their direction vectors are u = (1,1,0) and v = (−1,0,−1). Calculate the non-obtuse angle between the lines. A classmate initially obtains 120° using the cosine formula. Explain how that value arises and why it is not the requested angle between the lines. Check your reasoning by replacing v with the equivalent direction vector −v.",
+        "solutionContent": "u·v = −1 und ‖u‖ = ‖v‖ = √2. Der orientierte Vektorwinkel zu u und v ist arccos(−1/2) = 120°. Da Geraden keine bevorzugte Richtung haben, gilt für ihren nichtstumpfen Schnittwinkel cos α = |u·v|/(‖u‖‖v‖) = 1/2 und α = 60°. Der 120°-Wert ist der Supplementwinkel. Der gleichwertige Richtungsvektor −v = (1|0|1) ergibt u·(−v) = 1 und unmittelbar denselben Geradenschnittwinkel 60°.",
+        "solutionContentEn": "u·v = −1 and ‖u‖ = ‖v‖ = √2. The angle between the chosen vectors u and v is arccos(−1/2) = 120°. A line has no preferred direction, so the non-obtuse angle between the lines satisfies cos α = |u·v|/(‖u‖‖v‖) = 1/2, hence α = 60°. The 120° value is its supplementary angle. Replacing v with the equivalent direction vector −v = (1,0,1) gives u·(−v) = 1 and the same line angle of 60° directly.",
+        "scoring": {
+          "maxPoints": 9,
+          "passingPoints": 8,
+          "steps": [
+            {
+              "id": "line_angle_dot_norms",
+              "points": 2,
+              "description": "Skalarprodukt −1 und beide Normen √2 korrekt bestimmt"
+            },
+            {
+              "id": "line_angle_non_obtuse",
+              "points": 3,
+              "description": "Betrag in der Geradenschnittwinkel-Formel sinnvoll genutzt und 60° korrekt berechnet"
+            },
+            {
+              "id": "line_angle_supplement",
+              "points": 2,
+              "description": "120° als Winkel der gewählten Vektoren und nicht als Geradenschnittwinkel erklärt; erster Punkt nur mit dieser Unterscheidung, zweiter für die Supplementbeziehung zu 60°."
+            },
+            {
+              "id": "line_angle_orientation",
+              "points": 2,
+              "description": "Erster Punkt nur für die Rechnung mit −v UND die Erklärung, warum derselbe Geradenschnittwinkel entsteht; zweiter Punkt für vollständige fachliche Deutung der Richtungsfreiheit."
+            }
+          ]
+        }
+      },
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/line-line-angle/draft_v1.md#aufgabe",
+      "phase": "Q2",
+      "type": "atomic"
+    },
+    {
+      "id": "7d160e08-d987-4a63-873b-44496f6e11d3",
+      "shortKey": "canonical_math_he_lk_q25_central_dilation_area_volume_assessment",
+      "title": "Flächen- und Volumenfaktor einer zentrischen Streckung begründen",
+      "titleEn": "Justify the area and volume factors of a central dilation",
+      "description": "Die lernende Person kann in einer eigenständigen Q2.5-LK-Aufgabe bei einem Quader mit positivem Streckfaktor die Flächen- und Volumenfaktoren aus den skalierten Kantenlängen begründen, berechnen und einen typischen Fehlschluss beurteilen.",
+      "descriptionEn": "The learner can independently justify and calculate the area and volume factors of a centrally dilated rectangular prism with a positive scale factor from its scaled edge lengths, and assess a common misconception.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Practice",
+        "Assessment",
+        "ExamTask"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra"
+      },
+      "requires": [
+        "7d37513b-fa1a-54cc-9e2a-9279a381f0f0"
+      ],
+      "contains": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "7d37513b-fa1a-54cc-9e2a-9279a381f0f0"
+        ],
+        "coveredStrands": [
+          "L3"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/central-dilation-area-volume-he-lk-v1/task.de.md",
+        "taskContent": "Ein Quader mit O(0|0|0), A(3|0|0), B(0|6|0), C(0|0|9) wird am Ursprung mit k=2/3 zentrisch gestreckt. Die Grundfläche ist das von OA und OB aufgespannte Rechteck in der xy-Ebene; alle Längen sind in Zentimetern angegeben. 1. Bestimme die Bildpunkte A', B', C' und erkläre die Änderung der Kantenlängen. 2. Begründe für beliebiges k>0 aus den beiden skalierten Grundkanten den Flächenfaktor k² und berechne ursprüngliche und neue Grundfläche. 3. Begründe für beliebiges k>0 aus allen drei skalierten Kanten den Volumenfaktor k³ und berechne ursprüngliches und neues Volumen. 4. Beurteile die Behauptung, beide Größen schrumpften auf 2/3 des Ausgangswerts, mit den richtigen Bruchteilen und erkläre den Unterschied.",
+        "taskContentEn": "A rectangular prism with O(0,0,0), A(3,0,0), B(0,6,0), C(0,0,9) is dilated about the origin by k=2/3. Its base is the rectangle in the xy-plane spanned by OA and OB; all lengths are in centimetres. 1. Find the image points A', B', C' and explain how the edge lengths change. 2. For any k>0, justify the area factor k² from both scaled base edges and calculate the original and new base areas. 3. For any k>0, justify the volume factor k³ from all three scaled edges and calculate the original and new volumes. 4. Assess the claim that both quantities shrink to 2/3 of their original values, giving the correct fractions and explaining the difference.",
+        "solutionContent": "A'=(2|0|0), B'=(0|4|0), C'=(0|0|6). Allgemein sind die Grundkanten 3k und 6k, also A'_G=(3k)(6k)=18k² und A'_G/A_G=k²; A_G=18 cm² und A'_G=8 cm². Alle drei Kanten sind 3k, 6k, 9k, also V'=(3k)(6k)(9k)=162k³ und V'/V=k³; V=162 cm³ und V'=48 cm³. Die Behauptung ist falsch: Grundfläche 4/9, Volumen 8/27 des Ausgangswerts. Ein Längenfaktor wirkt zweimal in einer Fläche und dreimal in einem Volumen.",
+        "solutionContentEn": "A'=(2,0,0), B'=(0,4,0), C'=(0,0,6). In general the base edges are 3k and 6k, hence A'_B=(3k)(6k)=18k² and A'_B/A_B=k²; A_B=18 cm² and A'_B=8 cm². All three edges are 3k, 6k, 9k, so V'=(3k)(6k)(9k)=162k³ and V'/V=k³; V=162 cm³ and V'=48 cm³. The claim is false: base area is 4/9 and volume is 8/27 of the original. A length factor occurs twice in an area and three times in a volume.",
+        "scoring": {
+          "maxPoints": 12,
+          "passingPoints": 10,
+          "steps": [
+            {
+              "id": "dilation_image_edges",
+              "points": 1,
+              "description": "Drei Bildpunkte und zugehörige skalierte Kantenlängen korrekt bestimmt"
+            },
+            {
+              "id": "area_factor_reasoning",
+              "points": 4,
+              "description": "Aus beiden für beliebiges k>0 skalierten Grundkanten den allgemeinen Flächenfaktor k² nachvollziehbar hergeleitet; höchstens 1/4 ohne Herleitung von k² aus dem Kantenprodukt, bloße Formelnennung ergibt 0"
+            },
+            {
+              "id": "area_values",
+              "points": 1,
+              "description": "Ursprüngliche Grundfläche 18 cm² und neue Grundfläche 8 cm² korrekt berechnet"
+            },
+            {
+              "id": "volume_factor_reasoning",
+              "points": 4,
+              "description": "Aus allen drei für beliebiges k>0 skalierten Kanten den allgemeinen Volumenfaktor k³ nachvollziehbar hergeleitet; höchstens 1/4 ohne Herleitung von k³ aus dem Kantenprodukt, bloße Formelnennung ergibt 0"
+            },
+            {
+              "id": "volume_values",
+              "points": 1,
+              "description": "Ursprüngliches Volumen 162 cm³ und neues Volumen 48 cm³ korrekt berechnet"
+            },
+            {
+              "id": "misconception",
+              "points": 1,
+              "description": "Behauptung mit 4/9 und 8/27 samt Dimensionsunterschied begründet verworfen"
+            }
+          ]
+        }
+      },
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/central-dilation-area-volume-he-lk-v1/task.de.md#aufgabe",
+      "phase": "Q2",
+      "type": "atomic"
     },
     {
       "id": "bd2c5e29-31c6-58bf-9858-d08e9c8a32ad",
@@ -71890,7 +73053,6 @@
         "e8237315-654e-5150-97de-49c4cb49b3d1",
         "2f2c9f1a-07f0-59e4-b84a-60648c3b0bda",
         "e9181209-1506-59df-9053-17f36b91bb06",
-        "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
         "075f1ef2-6860-4b20-9df2-878157eb395e",
         "3016ec37-1c2e-47db-83f5-e767923bc97e",
         "9460c3ff-e72d-4107-bc73-087d217200aa",
@@ -71957,7 +73119,6 @@
           "e8237315-654e-5150-97de-49c4cb49b3d1",
           "2f2c9f1a-07f0-59e4-b84a-60648c3b0bda",
           "e9181209-1506-59df-9053-17f36b91bb06",
-          "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
           "075f1ef2-6860-4b20-9df2-878157eb395e",
           "3016ec37-1c2e-47db-83f5-e767923bc97e",
           "9460c3ff-e72d-4107-bc73-087d217200aa",
@@ -72073,8 +73234,6 @@
         "3aea4d33-4170-5ecc-82b0-3a3974cc2237",
         "fa02cf14-0411-4fe3-8be7-a62c69743e26",
         "f613634b-39fb-5021-9970-790ef34c9932",
-        "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
-        "18be713b-7d90-4f01-b60a-5582ac4df0e8",
         "68d4faef-1a56-5898-9c31-80b7d5d2e430",
         "27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6",
         "436532fe-cee6-5a13-a4be-05522435937b",
@@ -72126,8 +73285,6 @@
           "3aea4d33-4170-5ecc-82b0-3a3974cc2237",
           "fa02cf14-0411-4fe3-8be7-a62c69743e26",
           "f613634b-39fb-5021-9970-790ef34c9932",
-          "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
-          "18be713b-7d90-4f01-b60a-5582ac4df0e8",
           "68d4faef-1a56-5898-9c31-80b7d5d2e430",
           "27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6",
           "436532fe-cee6-5a13-a4be-05522435937b",
@@ -72195,6 +73352,120 @@
         "applicabilityMappingInheritance": "boundary",
         "applicabilityFromRequires": true
       }
+    },
+    {
+      "id": "8d314e15-69e9-5af1-a10a-be820b2f821d",
+      "shortKey": "canonical_math_sek2_q2_plane_plane_three_relations_assessment",
+      "title": "Zwei Ebenen: Schnittgerade, echte Parallelität oder Identität",
+      "titleEn": "Two planes: intersection line, distinct parallelism or coincidence",
+      "description": "Die lernende Person kann in einer eigenständigen Q2-Prüfungsaufgabe für drei Ebenenpaare jeweils das lineare Gleichungssystem lösen und aus seiner vollständigen Lösungsmenge die geometrische Lagebeziehung begründen.",
+      "descriptionEn": "The learner can independently solve the linear system for each of three pairs of planes in a Q2 assessment and justify their geometric relationship from the complete solution set.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra"
+      },
+      "requires": [
+        "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd"
+      ],
+      "contains": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB", "DE-BE", "DE-BW", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV",
+          "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"
+        ]
+      },
+      "examples": [],
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityFromRequires": true
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "reviewNote": "Machine-only independent content review 2026-09-28: all three LGS solution sets recalculated; 18/20 and incomplete-case caps of 5/8, 3/6, 3/6 require line, parallel and identical classifications. No human or real-host trial; server enforces only total points.",
+        "coveredGoalIds": [
+          "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd"
+        ],
+        "coveredStrands": [
+          "L3"
+        ],
+        "demandLevels": [
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-0f4-two-plane-q2-assessment-candidate-20260928.md",
+        "taskContent": "Untersuche die drei Ebenenpaare im Raum. Stelle jeweils das lineare Gleichungssystem auf, bestimme seine gesamte Lösungsmenge und begründe daraus, ob sich die Ebenen in einer Geraden schneiden, echt parallel oder identisch sind. Eine bloße Skizze oder Vermutung aus den Normalenvektoren genügt nicht.\n\nA (8 BE): E₁: x + y + z = 3 und E₂: x − y + z = 1. Bestimme alle gemeinsamen Punkte in Parameterform und prüfe durch Einsetzen, dass deine Gerade auf beiden Ebenen liegt.\n\nB (6 BE): E₃: x + 2y − z = 1 und E₄: 2x + 4y − 2z = 3. Untersuche das LGS und gib die genaue Lagebeziehung an.\n\nC (6 BE): Vergleiche E₃ aus B mit E₅: 2x + 4y − 2z = 2. Untersuche das LGS, beschreibe die gesamte gemeinsame Punktmenge mit zwei freien Parametern und erkläre, warum sie nicht nur eine Schnittgerade ist.",
+        "taskContentEn": "Investigate the three pairs of planes. Set up each linear system, determine its entire solution set, and use that set to justify whether the planes meet in a line, are distinct and parallel, or coincide. A sketch or a guess from the normal vectors alone is insufficient.\n\nA (8 points): E₁: x + y + z = 3 and E₂: x − y + z = 1. Give all common points in parametric form and check by substitution that your line lies on both planes.\n\nB (6 points): E₃: x + 2y − z = 1 and E₄: 2x + 4y − 2z = 3. Investigate the system and state the precise relationship.\n\nC (6 points): Compare E₃ from B with E₅: 2x + 4y − 2z = 2. Investigate the system, give the entire common point set with two free parameters, and explain why it is not merely an intersection line.",
+        "solutionContent": "A: Subtraktion der zweiten von der ersten Gleichung ergibt 2y = 2, also y = 1 und x + z = 2. Mit z = t ∈ ℝ ist die gesamte Lösungsmenge X = (2|1|0) + t(−1|0|1). Die Probe liefert (2 − t) + 1 + t = 3 und (2 − t) − 1 + t = 1 für jedes t: Die Ebenen schneiden sich in dieser Geraden.\n\nB: Die linke Seite von E₄ ist das Doppelte der linken Seite von E₃, die rechte Seite müsste dann aber 2 statt 3 sein. Das LGS liefert den Widerspruch 0 = 1 und hat keine Lösung. Die proportionalen Normalen bei unterschiedlichen Ebenengleichungen bedeuten echte Parallelität.\n\nC: E₅ ist einschließlich der rechten Seite genau 2E₃; die zweite LGS-Zeile ist redundant (0 = 0). Setze y = s und z = t, dann x = 1 − 2s + t. Die gesamte Lösungsmenge ist X = (1|0|0) + s(−2|1|0) + t(1|0|1), s,t ∈ ℝ. Die unabhängigen Richtungen spannen eine Ebene auf. Beide Ebenen sind identisch, nicht nur entlang einer Geraden gleich.",
+        "solutionContentEn": "A: Subtracting the second equation from the first gives 2y = 2, so y = 1 and x + z = 2. Letting z = t ∈ ℝ gives the entire solution set X = (2,1,0) + t(−1,0,1). Substitution gives (2 − t) + 1 + t = 3 and (2 − t) − 1 + t = 1 for every t: the planes intersect in this line.\n\nB: The left side of E₄ is twice that of E₃, but the right side would need to be 2 rather than 3. The system yields 0 = 1 and has no solution. Proportional normals with different plane equations mean the planes are distinct and parallel.\n\nC: E₅ is exactly 2E₃ including its right side, so the second system row is redundant (0 = 0). Let y = s and z = t; then x = 1 − 2s + t. The entire solution set is X = (1,0,0) + s(−2,1,0) + t(1,0,1), s,t ∈ ℝ. The independent directions span a plane. The two planes coincide, rather than meeting only in a line.",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 18,
+          "steps": [
+            {
+              "id": "plane_plane_a_system",
+              "points": 2,
+              "description": "A: LGS richtig kombiniert und y = 1, x + z = 2 hergeleitet"
+            },
+            {
+              "id": "plane_plane_a_line",
+              "points": 3,
+              "description": "A: Vollständige Parametergerade mit freiem t ∈ ℝ angegeben; ohne Parametergerade samt begründeter Schnittgeraden-Einordnung insgesamt höchstens 5/8 für A"
+            },
+            {
+              "id": "plane_plane_a_meaning",
+              "points": 3,
+              "description": "A: Beide Gleichungen geprüft und geometrisch als Schnittgerade gedeutet"
+            },
+            {
+              "id": "plane_plane_b_normals",
+              "points": 1,
+              "description": "B: Proportionale Koeffizienten oder Normalen erkannt"
+            },
+            {
+              "id": "plane_plane_b_contradiction",
+              "points": 3,
+              "description": "B: Widerspruch 2 ≠ 3 bzw. 0 = 1 im LGS belegt; ohne Widerspruch samt begründeter echter Parallelität insgesamt höchstens 3/6 für B"
+            },
+            {
+              "id": "plane_plane_b_meaning",
+              "points": 2,
+              "description": "B: Echte Parallelität und leere Schnittmenge unterschieden"
+            },
+            {
+              "id": "plane_plane_c_redundancy",
+              "points": 2,
+              "description": "C: Ganze Gleichung E₅ = 2E₃ und Redundanz gezeigt"
+            },
+            {
+              "id": "plane_plane_c_plane",
+              "points": 2,
+              "description": "C: Vollständige Zweiparameterdarstellung der gemeinsamen Ebene angegeben; ohne diese samt begründeter Ebenenidentität insgesamt höchstens 3/6 für C"
+            },
+            {
+              "id": "plane_plane_c_meaning",
+              "points": 2,
+              "description": "C: Identität und zweidimensionale Lösungsmenge gegenüber Schnittgerade erklärt"
+            }
+          ]
+        }
+      },
+      "phase": "Q2",
+      "type": "atomic"
     },
     {
       "id": "57aff94e-91b8-5cc6-9f85-3f317ecf36ca",
@@ -73228,7 +74499,7 @@
       "id": "57f07e66-800c-5f7e-99ab-11dd6e520eb1",
       "title": "Übungen Q4",
       "description": "Bündelt materialgestützte Q4-Klausuraufgaben mit normalem Klausurcharakter zu Funktionenscharen, Problemlösen, komplexen Zahlen und anwendungsbezogener Analysis. Die globalen Abituraufgaben bleiben davon getrennt modelliert.",
-      "weight": 14,
+      "weight": 15,
       "tags": [
         "GK",
         "LK"
@@ -73256,7 +74527,8 @@
         "d2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1",
         "74e9a588-cd05-5007-a715-f360fdea9989",
         "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
-        "c849eeab-e88f-5e82-89d9-761a1e17d97b"
+        "c849eeab-e88f-5e82-89d9-761a1e17d97b",
+        "34dc8c9b-f61b-50ca-8daa-0d46277c7b32"
       ],
       "examples": [],
       "applicability": {
@@ -73280,6 +74552,95 @@
         ]
       },
       "type": "cluster"
+    },
+    {
+      "id": "34dc8c9b-f61b-50ca-8daa-0d46277c7b32",
+      "shortKey": "canonical_math_sek2_q4_mandelbrot_software_assessment_by",
+      "title": "Mandelbrot-Parameterebene softwaregestützt untersuchen",
+      "titleEn": "Investigate the Mandelbrot parameter plane with software",
+      "description": "Die lernende Person kann in einer eigenständigen Q4-Aufgabe die Mandelbrot-Parameterebene softwaregestützt darstellen, ausgewählte komplexe Iterationsfolgen untersuchen und zwischen einem mathematischen Beschränktheitsbeweis und einer endlichen Pixelberechnung unterscheiden.",
+      "descriptionEn": "The learner can independently visualize the Mandelbrot parameter plane with software, investigate selected complex iteration sequences, and distinguish a mathematical proof of boundedness from a finite pixel computation.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K4.2",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "Q4",
+        "area": "Algebra"
+      },
+      "requires": [
+        "9b339361-7719-573d-a913-432246c502ee"
+      ],
+      "contains": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "applicabilityFromRequires": true
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "reviewNote": "Machine-only content review 2026-09-28: BY M12 complex-number source, both orbits and finite-iteration limit checked. 11/12 plus zero-if-missing-software-artifact and first-point core rules require software and mathematical evidence. No human or real-host trial; server enforces total score only.",
+        "coveredGoalIds": [
+          "9b339361-7719-573d-a913-432246c502ee"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q4/mandelbrot-software/draft_v1.md",
+        "taskContent": "Erzeuge mit einem geeigneten, frei wählbaren Programm eine Darstellung der Mandelbrot-Parameterebene für z₀ = 0 und zₙ₊₁ = zₙ² + c. Zeige −2,2 ≤ Re(c) ≤ 1,2 und −1,5 ≤ Im(c) ≤ 1,5; markiere c₁ = −2 und c₂ = 1+i. Gib einen Screenshot oder eine exportierte Grafik mit erkennbaren Achsen und beiden Punkten ab. Benenne das Programm und reiche eine Projekt-/Skriptdatei oder nachvollziehbare Einstellungen einschließlich Iterationsgrenze und Abbruchregel bei |zₙ| > 2 ein. Notiere für c₁ die Glieder z₀ bis z₃ und für c₂ die Glieder z₀ bis z₂. Begründe für beide Parameter die Zugehörigkeit oder Nichtzugehörigkeit zur Mandelbrot-Menge, vergleiche dieses Ergebnis mit deiner Softwaredarstellung und erkläre, was eine endliche Pixelberechnung darüber grundsätzlich nicht beweist.",
+        "taskContentEn": "Using suitable software of your choice, generate a view of the Mandelbrot parameter plane for z₀ = 0 and zₙ₊₁ = zₙ² + c. Show −2.2 ≤ Re(c) ≤ 1.2 and −1.5 ≤ Im(c) ≤ 1.5; mark c₁ = −2 and c₂ = 1+i. Submit a screenshot or exported graphic with visible axes and both points. Name the software and provide a project/script file or reproducible settings, including the iteration limit and the escape rule |zₙ| > 2. List z₀ through z₃ for c₁ and z₀ through z₂ for c₂. Justify whether each parameter belongs to the Mandelbrot set, compare this result with your software display, and explain what a finite pixel computation cannot prove in general.",
+        "solutionContent": "Für c₁ = −2 gilt z₀ = 0, z₁ = −2, z₂ = 2, z₃ = 2. Wegen 2²−2 = 2 bleibt die Bahn danach bei 2; sie ist beschränkt und c₁ gehört zur Mandelbrot-Menge. Betrag 2 allein ist kein Abbruch nach der Regel |zₙ| > 2. Für c₂ = 1+i gilt z₀ = 0, z₁ = 1+i und z₂ = 1+3i mit |z₂| = √10 > 2; damit entweicht die Bahn und c₂ gehört nicht zur Menge. Die Softwaregrafik zeigt beide markierten Punkte im verlangten Ausschnitt und dokumentiert Iterationsgrenze und Escape-Regel; die Auswertung genau dieser Parameter muss mit den berechneten Bahnen vereinbar sein. Ein noch nicht entwichener Pixel ist bei endlicher Iterationszahl im Allgemeinen kein Beweis für dauerhafte Beschränktheit; für c₁ liefert erst die explizit nachgewiesene Fixpunktbahn diesen Beweis.",
+        "solutionContentEn": "For c₁ = −2, z₀ = 0, z₁ = −2, z₂ = 2, and z₃ = 2. Since 2²−2 = 2, the orbit then remains at 2; it is bounded and c₁ belongs to the Mandelbrot set. Absolute value 2 alone does not trigger the strict escape rule |zₙ| > 2. For c₂ = 1+i, z₀ = 0, z₁ = 1+i, and z₂ = 1+3i with |z₂| = √10 > 2, so the orbit escapes and c₂ is not in the set. The software graphic shows both marked points in the required range and records the iteration limit and escape rule; the output at those exact parameters must agree with the computed orbits. A pixel that has not escaped within finitely many iterations is not, in general, proof of permanent boundedness; the explicit fixed-point orbit provides that proof for c₁.",
+        "scoring": {
+          "maxPoints": 12,
+          "passingPoints": 11,
+          "steps": [
+            {
+              "id": "mandelbrot_software_artifact",
+              "points": 6,
+              "description": "Softwarebefund mit passend skalierter Grafik, Achsen, beiden Markierungen und reproduzierbarer Dokumentation; Punkte nur, wenn sowohl eine tatsächlich erzeugte Grafik als auch ein Projekt/Skript oder nachvollziehbare Einstellungen vorliegen, sonst 0"
+            },
+            {
+              "id": "mandelbrot_orbits",
+              "points": 2,
+              "description": "Erster Punkt nur, wenn beide verlangten komplexen Iterationsfolgen korrekt berechnet sind; zweiter für den Vergleich mit der Softwaredarstellung."
+            },
+            {
+              "id": "mandelbrot_membership",
+              "points": 2,
+              "description": "Erster Punkt nur für beide aus den Bahnen richtig begründeten Zugehörigkeitsentscheidungen; zweiter für klare Abgrenzung vom bloßen Softwarebefund."
+            },
+            {
+              "id": "mandelbrot_finite_limit",
+              "points": 2,
+              "description": "Erster Punkt nur für den Unterschied zwischen endlicher Nichtflucht und bewiesener dauerhafter Beschränktheit; zweiter für die strenge Escape-Regel |zₙ| > 2 und den Sonderfall c = −2."
+            }
+          ]
+        }
+      },
+      "phase": "Q4",
+      "type": "atomic"
     },
     {
       "id": "1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf",
@@ -73559,8 +74920,7 @@
         "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
         "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
         "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
-        "8e18154d-41d6-592e-ba98-537edad338e8",
-        "9b339361-7719-573d-a913-432246c502ee"
+        "8e18154d-41d6-592e-ba98-537edad338e8"
       ],
       "contains": [],
       "examples": [],
@@ -73590,8 +74950,7 @@
           "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
           "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
           "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
-          "8e18154d-41d6-592e-ba98-537edad338e8",
-          "9b339361-7719-573d-a913-432246c502ee"
+          "8e18154d-41d6-592e-ba98-537edad338e8"
         ],
         "coveredStrands": [
           "L1",
@@ -74399,7 +75758,7 @@
       "title": "Pyramiden und Kegel darstellen, Netze nutzen und Fachbegriffe verwenden",
       "titleEn": "Represent pyramids and cones, use nets, and apply terminology",
       "description": "Die lernende Person kann Pyramiden und Kegel in Schrägbildern und Netzen darstellen, Grund- und Mantelflächen fachsprachlich beschreiben und passende Darstellungen sicher nutzen.",
-      "descriptionEn": "The learner can represent pyramids and cones in oblique drawings and nets, describe base and lateral faces using correct terminology, and use suitable representations reliably.",
+      "descriptionEn": "The learner can represent pyramids and cones in oblique drawings and nets, describe base and lateral surfaces using correct terminology, and use suitable representations reliably.",
       "core": true,
       "weight": 1,
       "tags": [
@@ -74448,7 +75807,22 @@
       },
       "type": "atomic",
       "semanticAtomic": true,
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "74d29d0c-80b3-4d46-a5f5-3c2f609e8483",
+          "title": "Visualisierung: Pyramiden und Kegel darstellen, Netze nutzen und Fachbegriffe verwenden",
+          "url": "/assets/goal-visualizations/mathematik/74d29d0c-80b3-4d46-a5f5-3c2f609e8483/74d29d0c-80b3-4d46-a5f5-3c2f609e8483.png",
+          "provider": "Gemini Nano Banana Pro; ChatGPT/Codex imagegen edit",
+          "description": "Beispielnetze von Pyramide und Kegel mit Grund- und Mantelflächen.",
+          "altText": "Links eine quadratische Pyramide und ihr Netz aus einer quadratischen Grundfläche mit vier anliegenden Dreiecken; mehrere äußere Dreieckskanten sind mit 2 beschriftet. Rechts ein Kegel und sein Netz: Halbkreissektor mit Radius s gleich 2 und Winkel 180 Grad plus Grundkreis mit Radius r gleich 1; Kreisbogen und Kreisumfang betragen beide 2 Pi.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
@@ -75211,7 +76585,22 @@
       },
       "type": "atomic",
       "semanticAtomic": true,
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+          "title": "Visualisierung: Zählverfahren und kombinatorische Überlegungen für Wahrscheinlichkeiten nutzen",
+          "url": "/assets/goal-visualizations/mathematik/3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6/3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6.png",
+          "provider": "Google Gemini gemini-3.1-flash-image (thinking_level=high)",
+          "description": "Mathematische Lernzielvisualisierung; Details im Alternativtext.",
+          "altText": "Aus drei roten und zwei blauen Kugeln werden zwei ohne Zurücklegen gezogen. Drei Rot-Rot- und ein Blau-Blau-Paar ergeben vier günstige von zehn ungeordneten Paaren, Wahrscheinlichkeit zwei Fünftel.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "a2fb8b31-4c8d-4b18-9f5a-7e38b8d0af18",
@@ -77408,7 +78797,22 @@
       "contains": [],
       "type": "atomic",
       "semanticAtomic": true,
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "7bb3c312-f714-55e6-a31f-f31605a93760",
+          "title": "Visualisierung: Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK)",
+          "url": "/assets/goal-visualizations/mathematik/7bb3c312-f714-55e6-a31f-f31605a93760/7bb3c312-f714-55e6-a31f-f31605a93760.png",
+          "provider": "OpenAI / Codex built-in image generation (reference-conditioned)",
+          "description": "Visualisierung zum Lernziel: Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK).",
+          "altText": "Koordinatenachsen mit a=(2,0,0) auf der x-Achse und b=(0,3,0) auf der y-Achse spannen ein Parallelogramm auf. Das Vektorprodukt a×b=(0,0,6) zeigt als Normalenvektor nach oben; Parallelogrammfläche 6 FE, Dreiecksfläche 3 FE.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
@@ -79139,8 +80543,8 @@
     {
       "id": "49f9059a-876c-5051-8146-d008b5cc691c",
       "shortKey": "canonical_math_sek2_q4_exp_power_asymptotic_comparison_by",
-      "title": "Exponential- und Potenzfunktionen asymptotisch vergleichen (LK)",
-      "titleEn": "Compare exponential and power functions asymptotically (advanced course)",
+      "title": "Exponential- und Potenzfunktionen asymptotisch vergleichen",
+      "titleEn": "Compare exponential and power functions asymptotically",
       "description": "Die lernende Person kann das Wachstum der natürlichen Exponentialfunktion mit Potenzfunktionen vergleichen und Grenzwertverhalten im Unendlichen plausibel begründen.",
       "descriptionEn": "The learner can compare the growth of the natural exponential function with power functions and justify limiting behavior at infinity plausibly.",
       "core": false,
@@ -79197,14 +80601,14 @@
           "resourceType": "image",
           "role": "primary",
           "skillpilotId": "49f9059a-876c-5051-8146-d008b5cc691c",
-          "title": "Visualisierung: Exponential- und Potenzfunktionen asymptotisch vergleichen (LK)",
-          "url": "/assets/goal-visualizations/mathematik/49f9059a-876c-5051-8146-d008b5cc691c/49f9059a-876c-5051-8146-d008b5cc691c.jpg",
-          "provider": "Google Gemini / Nano Banana Pro",
-          "description": "Visualisierung zum Lernziel: Exponential- und Potenzfunktionen asymptotisch vergleichen (LK).",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Exponential- und Potenzfunktionen asymptotisch vergleichen (LK)\". Die lernende Person kann das Wachstum der natürlichen Exponentialfunktion mit Potenzfunktionen vergleichen und Grenzwertverhalten im Unendlichen plausibel begründen.",
+          "title": "Visualisierung: Exponential- und Potenzfunktionen asymptotisch vergleichen",
+          "url": "/assets/goal-visualizations/mathematik/49f9059a-876c-5051-8146-d008b5cc691c/49f9059a-876c-5051-8146-d008b5cc691c.png",
+          "provider": "OpenAI imagegen",
+          "description": "Kursneutrales Diagramm: Die Kurve von e^x wächst langfristig schneller als die von x²; der Quotient e^x/x² strebt für x gegen unendlich gegen unendlich.",
+          "altText": "Zwei Kurven vergleichen e^x und x². Die rote Exponentialkurve wächst für große x deutlich schneller als die blaue Potenzkurve; darunter steht der Grenzwert e^x/x² gegen unendlich für x gegen unendlich.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
-          "reviewStatus": "accepted"
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
         }
       ]
     },
@@ -79514,27 +80918,31 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BB",
-          "DE-BE",
-          "DE-BW",
-          "DE-BY",
-          "DE-HB",
-          "DE-HE",
-          "DE-HH",
-          "DE-MV",
-          "DE-NI",
-          "DE-NW",
-          "DE-RP",
-          "DE-SL",
-          "DE-SN",
-          "DE-ST",
-          "DE-TH"
+          "DE-BY"
         ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
       },
       "type": "atomic",
       "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.1",
       "semanticAtomic": true,
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "9b339361-7719-573d-a913-432246c502ee",
+          "title": "Visualisierung: Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)",
+          "url": "/assets/goal-visualizations/mathematik/9b339361-7719-573d-a913-432246c502ee/9b339361-7719-573d-a913-432246c502ee.png",
+          "provider": "OpenAI / Codex built-in image generation (edit of generated bitmap)",
+          "description": "Visualisierung zum Lernziel: Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK).",
+          "altText": "Schematische, nicht maßstäbliche Silhouette der Mandelbrot-Menge neben zwei Iterationsbeispielen für z₀=0 und zₙ₊₁=zₙ²+c: Bei c=0 bleibt die Folge 0 und beschränkt, bei c=1 wächst sie 0, 1, 2, 5 und ist unbeschränkt.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "46a5ede1-db97-5f9d-87ab-cedaf8094058",
@@ -80301,13 +81709,14 @@
     {
       "id": "ead1f5ce-fdf4-5591-8982-395001017848",
       "shortKey": "canonical_math_sek2_q4_diff_integral_methods_context_validate_by",
-      "title": "Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK)",
-      "titleEn": "Apply differential and integral calculus reflectively in contextual problems (advanced course)",
+      "title": "Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden",
+      "titleEn": "Apply differential and integral calculus reflectively in contextual problems",
       "description": "Die lernende Person kann Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel auswählen, Ergebnisse interpretieren und Modellannahmen sowie Resultate validieren.",
       "descriptionEn": "The learner can flexibly choose methods from differential and integral calculus in contextual problems, interpret results, and validate model assumptions and outcomes.",
-      "core": false,
+      "core": true,
       "weight": 3,
       "tags": [
+        "GK",
         "LK",
         "canonical"
       ],
@@ -80336,37 +81745,30 @@
       "requires": [],
       "applicability": {
         "jurisdiction": [
-          "DE-BB",
-          "DE-BE",
-          "DE-BW",
-          "DE-BY",
-          "DE-HB",
-          "DE-HE",
-          "DE-HH",
-          "DE-MV",
-          "DE-NI",
-          "DE-NW",
-          "DE-RP",
-          "DE-SH",
-          "DE-SL",
-          "DE-SN",
-          "DE-ST",
-          "DE-TH"
+          "DE-BY"
+        ],
+        "courseProfile": [
+          "GK",
+          "LK"
         ]
       },
       "type": "cluster",
-      "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4"
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      }
     },
     {
       "id": "dc12f281-f161-572b-a973-8405ae9b2498",
       "shortKey": "canonical_math_sek2_q4_diff_integral_methods_context_validate_by_differential_context",
-      "title": "Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK)",
-      "titleEn": "Choose and apply differential calculus in contextual problems (advanced course)",
+      "title": "Differentialrechnung in Sachzusammenhängen auswählen und anwenden",
+      "titleEn": "Choose and apply differential calculus in contextual problems",
       "description": "Die lernende Person kann in Sachzusammenhängen geeignete Methoden der Differentialrechnung auswählen, anwenden und die Ergebnisse im Kontext interpretieren.",
       "descriptionEn": "The learner can choose and apply suitable differential-calculus methods in contextual problems and interpret the results in context.",
-      "core": false,
+      "core": true,
       "weight": 1,
       "tags": [
+        "GK",
         "LK",
         "canonical"
       ],
@@ -80394,38 +81796,44 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BB",
-          "DE-BE",
-          "DE-BW",
-          "DE-BY",
-          "DE-HB",
-          "DE-HE",
-          "DE-HH",
-          "DE-MV",
-          "DE-NI",
-          "DE-NW",
-          "DE-RP",
-          "DE-SH",
-          "DE-SL",
-          "DE-SN",
-          "DE-ST",
-          "DE-TH"
+          "DE-BY"
+        ],
+        "courseProfile": [
+          "GK",
+          "LK"
         ]
       },
       "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "dc12f281-f161-572b-a973-8405ae9b2498",
+          "title": "Visualisierung: Differentialrechnung in Sachzusammenhängen auswählen und anwenden",
+          "url": "/assets/goal-visualizations/mathematik/dc12f281-f161-572b-a973-8405ae9b2498/dc12f281-f161-572b-a973-8405ae9b2498.png",
+          "provider": "OpenAI / Codex image generation (edit of Gemini gemini-3-pro-image output)",
+          "description": "Wassertank und quadratische Füllhöhenfunktion: nach zwei Stunden liegt der Hochpunkt bei fünf Metern.",
+          "altText": "Ein Wassertank und der Graph der Füllhöhe h(t)=1+4t−t² für 0 bis 4 Stunden. Der Graph beginnt bei 1 Meter, erreicht bei t=2 Stunden den Hochpunkt (2|5) mit waagerechter Tangente und endet wieder bei 1 Meter. Die Ableitung h′(t)=4−2t liefert h′(2)=0.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
       "shortKey": "canonical_math_sek2_q4_diff_integral_methods_context_validate_by_integral_context",
-      "title": "Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK)",
-      "titleEn": "Choose and apply integral calculus in contextual problems (advanced course)",
+      "title": "Integralrechnung in Sachzusammenhängen auswählen und anwenden",
+      "titleEn": "Choose and apply integral calculus in contextual problems",
       "description": "Die lernende Person kann in Sachzusammenhängen geeignete Methoden der Integralrechnung auswählen, anwenden und die Ergebnisse im Kontext interpretieren.",
       "descriptionEn": "The learner can choose and apply suitable integral-calculus methods in contextual problems and interpret the results in context.",
-      "core": false,
+      "core": true,
       "weight": 1,
       "tags": [
+        "GK",
         "LK",
         "canonical"
       ],
@@ -80454,22 +81862,11 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BB",
-          "DE-BE",
-          "DE-BW",
-          "DE-BY",
-          "DE-HB",
-          "DE-HE",
-          "DE-HH",
-          "DE-MV",
-          "DE-NI",
-          "DE-NW",
-          "DE-RP",
-          "DE-SH",
-          "DE-SL",
-          "DE-SN",
-          "DE-ST",
-          "DE-TH"
+          "DE-BY"
+        ],
+        "courseProfile": [
+          "GK",
+          "LK"
         ]
       },
       "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
@@ -80481,11 +81878,11 @@
           "resourceType": "image",
           "role": "primary",
           "skillpilotId": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
-          "title": "Visualisierung: Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK)",
+          "title": "Visualisierung: Integralrechnung in Sachzusammenhängen auswählen und anwenden",
           "url": "/assets/goal-visualizations/mathematik/0b162cb0-8507-5ac2-b9d6-57f40f4d3f35/0b162cb0-8507-5ac2-b9d6-57f40f4d3f35.jpg",
           "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
-          "description": "Visualisierung zum Lernziel: Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK).",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK)\". Die lernende Person kann in Sachzusammenhängen geeignete Methoden der Integralrechnung auswählen, anwenden und die Ergebnisse im Kontext interpretieren.",
+          "description": "Visualisierung zum Lernziel: Integralrechnung in Sachzusammenhängen auswählen und anwenden.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Integralrechnung in Sachzusammenhängen auswählen und anwenden\". Die lernende Person kann in Sachzusammenhängen geeignete Methoden der Integralrechnung auswählen, anwenden und die Ergebnisse im Kontext interpretieren.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -80495,13 +81892,14 @@
     {
       "id": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
       "shortKey": "canonical_math_sek2_q4_diff_integral_methods_context_validate_by_model_validation",
-      "title": "Analysis-Modelle in Sachzusammenhängen validieren (LK)",
-      "titleEn": "Validate calculus models in contextual problems (advanced course)",
+      "title": "Analysis-Modelle in Sachzusammenhängen validieren",
+      "titleEn": "Validate calculus models in contextual problems",
       "description": "Die lernende Person kann Modellannahmen und Resultate in Sachzusammenhängen der Differential- und Integralrechnung fachlich prüfen und Grenzen des Modells benennen.",
       "descriptionEn": "The learner can evaluate model assumptions and outcomes in differential- and integral-calculus contexts and identify limits of the model.",
-      "core": false,
+      "core": true,
       "weight": 1,
       "tags": [
+        "GK",
         "LK",
         "canonical"
       ],
@@ -80530,22 +81928,11 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BB",
-          "DE-BE",
-          "DE-BW",
-          "DE-BY",
-          "DE-HB",
-          "DE-HE",
-          "DE-HH",
-          "DE-MV",
-          "DE-NI",
-          "DE-NW",
-          "DE-RP",
-          "DE-SH",
-          "DE-SL",
-          "DE-SN",
-          "DE-ST",
-          "DE-TH"
+          "DE-BY"
+        ],
+        "courseProfile": [
+          "GK",
+          "LK"
         ]
       },
       "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
@@ -80557,13 +81944,13 @@
           "resourceType": "image",
           "role": "primary",
           "skillpilotId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
-          "title": "Visualisierung: Analysis-Modelle in Sachzusammenhängen validieren (LK)",
-          "url": "/assets/goal-visualizations/mathematik/71fe4a39-38e8-5c6a-8eef-ff4783fe70c2/71fe4a39-38e8-5c6a-8eef-ff4783fe70c2.jpg",
-          "provider": "Google Gemini / Nano Banana Pro",
-          "description": "Visualisierung zum Lernziel: Analysis-Modelle in Sachzusammenhängen validieren (LK).",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Analysis-Modelle in Sachzusammenhängen validieren (LK)\". Die lernende Person kann Modellannahmen und Resultate in Sachzusammenhängen der Differential- und Integralrechnung fachlich prüfen und Grenzen des Modells benennen.",
+          "title": "Visualisierung: Analysis-Modelle in Sachzusammenhängen validieren",
+          "url": "/assets/goal-visualizations/mathematik/71fe4a39-38e8-5c6a-8eef-ff4783fe70c2/71fe4a39-38e8-5c6a-8eef-ff4783fe70c2.png",
+          "provider": "OpenAI imagegen",
+          "description": "Kursneutrales Beispiel für Modellvalidierung: Eine quadratische Besucherzahl-Kurve passt nur im positiven Bereich; eine negative Fortsetzung ist für Menschenzahlen unbrauchbar.",
+          "altText": "Vor einem Zelt stehen Besucher. Daneben zeigt ein Diagramm N(t) erst als grüne, positive Kurve und nach der Nullstelle gestrichelt in Rot unter der Zeitachse; ein rotes Kreuz markiert die unmögliche negative Besucherzahl.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -80987,7 +82374,22 @@
       "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 4",
       "type": "atomic",
       "semanticAtomic": true,
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2",
+          "title": "Visualisierung: Symmetrien einfacher Körper untersuchen",
+          "url": "/assets/goal-visualizations/mathematik/b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2/b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2.png",
+          "provider": "OpenAI / Codex built-in image generation (reference-conditioned)",
+          "description": "Visualisierung zum Lernziel: Symmetrien einfacher Körper untersuchen.",
+          "altText": "Ein transparent gezeichneter Würfel zeigt eine blaue senkrechte Spiegelebene durch seine Mitte. Eine orange gestrichelte Symmetrieachse führt durch die Mitten von Ober- und Unterseite; ein Pfeil kennzeichnet die 90-Grad-Drehung um diese Achse.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
@@ -83973,7 +85375,22 @@
       "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 10",
       "type": "atomic",
       "semanticAtomic": true,
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "f2a12269-6bcb-564a-9fdb-45cfdbd704fc",
+          "title": "Visualisierung: Teilungsverhältnisse bei Volumina untersuchen",
+          "url": "/assets/goal-visualizations/mathematik/f2a12269-6bcb-564a-9fdb-45cfdbd704fc/f2a12269-6bcb-564a-9fdb-45cfdbd704fc.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)",
+          "description": "Mathematische Lernzielvisualisierung; Details im Alternativtext.",
+          "altText": "Ein Prisma mit gleicher Grundfläche 12 Quadratzentimeter ist in Höhen 3 und 9 Zentimeter geteilt; die Volumina 36 und 108 Kubikzentimeter stehen im Verhältnis 1 zu 3.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "1842da92-ca2c-5fed-a946-e6413a6285bb",
@@ -87113,22 +88530,7 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BB",
-          "DE-BE",
-          "DE-BW",
-          "DE-BY",
-          "DE-HB",
-          "DE-HE",
-          "DE-HH",
-          "DE-MV",
-          "DE-NI",
-          "DE-NW",
-          "DE-RP",
-          "DE-SH",
-          "DE-SL",
-          "DE-SN",
-          "DE-ST",
-          "DE-TH"
+          "DE-BY"
         ]
       },
       "extendedData": {

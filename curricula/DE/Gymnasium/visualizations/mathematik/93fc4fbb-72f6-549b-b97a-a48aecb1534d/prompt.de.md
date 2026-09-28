@@ -8,44 +8,21 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Gemini Nano Banana Pro; ChatGPT/Codex imagegen edit
 - Status: pilot
-- Quellbild: `93fc4fbb-72f6-549b-b97a-a48aecb1534d.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/93fc4fbb-72f6-549b-b97a-a48aecb1534d/93fc4fbb-72f6-549b-b97a-a48aecb1534d.jpg`
+- Quellbild: `93fc4fbb-72f6-549b-b97a-a48aecb1534d.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/93fc4fbb-72f6-549b-b97a-a48aecb1534d/93fc4fbb-72f6-549b-b97a-a48aecb1534d.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Hand- und Tool-Verfahren kombinieren
-Beschreibung: Die lernende Person kann handschriftliche Schritte mit Tool-Unterstützung sinnvoll kombinieren (z. B. Umformen von Hand, Lösen per CAS) und die Vorgehensweise begründen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-
-- Zeige eine sinnvolle Kombination aus Handrechnung und digitalem Werkzeug.
-- Links ein Heftbereich "Hand": "2x + 3 = 11", "-3", "2x = 8", ":2", "x = 4".
-- Rechts ein Tablet oder Rechnerbereich "Tool": Graph von "y = 2x+3" und Linie "y = 11" mit Schnittpunkt bei "x=4".
-- In der Mitte ein Haken "Handschritte verstehen + Tool prueft Ergebnis".
-- Unten kurze Karte "Begruendung: Ergebnis passt zur Gleichung".
-- Alles soll wie ein ruhiger Lernarbeitsplatz wirken.
-
-Vermeiden:
-
-- Kein reines Tool-Bild ohne Handrechnung.
-- Keine falsche Schnittstelle oder falsches Ergebnis.
-- Keine unlesbaren App-Menues.
-- Keine Werbung, Logos oder Markennamen.
+Use case: scientific-educational
+Asset type: landscape German math learning-goal illustration, friendly warm-cream hand-drawn comic style, legible at 360-px width.
+Input image 1 is the EDIT TARGET. Preserve its three-panel page → laptop → checking-page layout, arrows, rounded outlines, color, and large headings. Replace the mathematical example throughout. The goal is a SENSIBLE division of labor: exact reasoning by hand, numerical approximation using a tool, independent check.
+Panel 1 heading exactly "Von Hand". On the paper show only two large, separate correct lines: "2ˣ = 5" and below "x = ln(5) / ln(2)". This is the exact symbolic answer obtained by taking logarithms. Keep the handwritten expression large and unambiguous.
+Panel 2 heading exactly "Tool". On the laptop screen show only "x ≈ 2,322" as the numerical evaluation of the logarithm quotient.
+Panel 3 heading exactly "Selbst prüfen". On its paper show only "2^2,322 ≈ 5" (the 2,322 is an exponent, visually superscript if possible) and a green check mark. This is a rounded numerical check, so use approximation signs, never equality.
+Keep formulas mathematically exact and readable. Do not retain the old linear equation. Avoid graphs, extra formulas, wrong superscripts, false equalities, stray letters, watermarks, or logos. If exact typesetting is difficult, render the formulas in plain large print without inventing alternatives.
 ```
 
 ## Review-Notiz

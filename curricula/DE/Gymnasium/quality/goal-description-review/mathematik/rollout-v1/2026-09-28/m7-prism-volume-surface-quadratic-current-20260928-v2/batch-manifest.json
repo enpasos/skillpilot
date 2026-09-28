@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-prism-volume-surface-quadratic-current-20260928-v2.config.json",
+  "configDigest": "sha256:2175dc04ca28f1e400ee0db64a6541334b871ff7cfd77b75646b31a8f3dd3d16",
+  "goalIds": [
+    "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+    "f1348d40-3872-5e44-8892-3600c811796f",
+    "9023226b-fc17-412b-807c-2bb45cd551d5"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 799,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:59012e8410e71ffc99ddf81c58274244d954e6f1d20a9f2dea50ab61be5564de"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:6328a0fc025e96d4f1cfb28cb2043b769dd04a1267347eef82c7a6ada00f8866",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:087724606c372f6e583fefd4de588a8651e6ec7e4d7385fb73f72131571f71bb",
+    "reviewInputFingerprint": "sha256:182c6309727530aadd5f06dd19bf3876a05d329d35b76ae20a04fae6418c9f39",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-a",
+        "campaignDigest": "sha256:82c00d60af6a948d7169c59ad66cb36c9f17e3c714b9ad88aa02db54c4619f3c",
+        "roundId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-first-pass-a",
+        "independenceGroupId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-independent-a",
+        "batchId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:0466e97d24009753657d0588b96d2cb1f47c507361099d4e5d347499eef74a7d"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-b",
+        "campaignDigest": "sha256:e0cd0b04f40c9439ccaee5324e616375744d1c35f5363872c0250527bd8abf3f",
+        "roundId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-first-pass-b",
+        "independenceGroupId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-independent-b",
+        "batchId": "mathematik-m7-prism-volume-surface-quadratic-current-20260928-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:66da9944da3f403bb58e227d9f0997347a5ca1a21075cf1fbcc8ca131ed7cb53"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

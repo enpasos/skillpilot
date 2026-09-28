@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-p-v2-m7-quadratic-revised-text-20260927-v1",
+  "reviewedAt": "2026-09-27T13:38:57.000Z",
+  "reviewer": "Codex targeted quadratic DE/EN revision and exact-PNG P-v2 reinspection; AI candidate only",
+  "goals": [
+    {
+      "goalId": "9023226b-fc17-412b-807c-2bb45cd551d5",
+      "reason": "DE: Das aktive Bild erklärt x²+4x+4=(x+2)² und grenzt die algebraische Nullstelle x=−2 ausdrücklich vom geometrischen Bereich x≥0 ab. Das Profil prüft eine andere Gleichung durch quadratische Ergänzung und ein 40-cm²-Rechteck per Lösungsformel einschließlich Verwerfung von −8 cm. Weder Term noch Lösung sind aus dem Bild übertragbar. EN: The active image correctly distinguishes the algebraic root x=−2 of (x+2)²=0 from the shown geometry domain x≥0. The profile checks a different equation by completing the square and a 40-cm² rectangle by formula, rejecting −8 cm. Its solutions are not copied from the image. Exact bitmap bound; AI candidate only, no human approval. The revised DE/EN goal now explicitly requires solving and translating simple word problems into equations; the two independent profile cases assess exactly those distinct demands without copying the pictured worked example. Semantic scope and E1/G1 AI-candidate authority are unchanged.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "quadratic-solutions",
+            "essentialUnderstandingDe": "Lösungen einer quadratischen Gleichung sind Nullstellen des zugehörigen Graphen; quadratische Ergänzung oder Lösungsformel bestimmen Kandidaten, die in Sachaufgaben zusätzlich auf ihre Zulässigkeit geprüft werden.",
+            "essentialUnderstandingEn": "Solutions of a quadratic equation are zeros of the associated graph; completing the square or a formula finds candidates that also require contextual admissibility checks.",
+            "observablePerformanceDe": "Die lernende Person wählt einen geeigneten Lösungsweg, bestimmt die reellen Lösungen, verknüpft sie mit Graphschnittpunkten und deutet in einem Sachproblem nur zulässige Werte.",
+            "observablePerformanceEn": "The learner chooses a suitable solution route, finds real solutions, relates them to graph intersections, and interprets only admissible values in a contextual problem."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "quadratic-solutions"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "quadratic-solutions-variation",
+            "textDe": "Von einer rein algebraischen Gleichung mit zwei positiven Lösungen wird zu einer aus einer Flächenbedingung modellierten Gleichung mit einer unzulässigen negativen Lösung gewechselt.",
+            "textEn": "The task changes from a purely algebraic equation with two positive solutions to an area model whose negative algebraic solution is inadmissible."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "algebra-and-graph",
+            "taskDemandDe": "Löse x²−5x+6=0 durch quadratische Ergänzung und deute die Lösungen am Graphen.",
+            "taskDemandEn": "Solve x²−5x+6=0 by completing the square and interpret the solutions on the graph.",
+            "expectedPerformanceDe": "(x−5/2)²=1/4, also x=2 oder x=3. Der Parabelgraph schneidet die x-Achse bei 2 und 3.",
+            "expectedPerformanceEn": "(x−5/2)²=1/4, so x=2 or x=3. The parabola crosses the x-axis at 2 and 3.",
+            "understandingFocusDe": "Algebraische Lösungen und graphische Nullstellen bezeichnen dieselben x-Werte.",
+            "understandingFocusEn": "Algebraic solutions and graphical zeros are the same x values."
+          },
+          {
+            "id": "rectangle-model",
+            "taskDemandDe": "Ein Rechteck ist 3 cm länger als breit und hat Fläche 40 cm². Stelle die quadratische Gleichung auf, löse mit einer Lösungsformel und deute beide algebraischen Lösungen.",
+            "taskDemandEn": "A rectangle is 3 cm longer than it is wide and has area 40 cm². Form the quadratic equation, solve it using a formula, and interpret both algebraic roots.",
+            "expectedPerformanceDe": "Mit Breite x>0 gilt x(x+3)=40, also x²+3x−40=0. Die Diskriminante ist 3²+160=169; x=(−3±13)/2 liefert 5 und −8. Nur x=5 cm ist zulässig; Länge 8 cm ergibt 40 cm².",
+            "expectedPerformanceEn": "With width x>0, x(x+3)=40, so x²+3x−40=0. The discriminant is 3²+160=169; x=(−3±13)/2 gives 5 and −8. Only x=5 cm is admissible; length 8 cm gives 40 cm².",
+            "understandingFocusDe": "Die Sachbedingung entscheidet, welche algebraische Nullstelle eine Länge sein kann.",
+            "understandingFocusEn": "The context determines which algebraic root can represent a length."
+          }
+        ]
+      }
+    }
+  ]
+}
