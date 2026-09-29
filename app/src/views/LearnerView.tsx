@@ -2467,9 +2467,36 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [sidebarWidth, setSidebarWidth] = useState(320)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [isDesktopSidebarOpen, setIsDesktopSidebarOpen] = useState(true)
+  const mobileEdgeTouchStart = useRef<{ identifier: number; x: number; y: number } | null>(null)
   const desktopHideButtonRef = useRef<HTMLButtonElement>(null)
   const desktopShowButtonRef = useRef<HTMLButtonElement>(null)
   const isResizing = useRef(false)
+
+  const startMobileEdgeSwipe = (event: React.TouchEvent<HTMLDivElement>) => {
+    if (!isMobile || isSidebarOpen || event.touches.length !== 1) {
+      mobileEdgeTouchStart.current = null
+      return
+    }
+    const touch = event.touches[0]
+    if (touch.clientX > 32) {
+      mobileEdgeTouchStart.current = null
+      return
+    }
+    mobileEdgeTouchStart.current = { identifier: touch.identifier, x: touch.clientX, y: touch.clientY }
+  }
+
+  const finishMobileEdgeSwipe = (event: React.TouchEvent<HTMLDivElement>) => {
+    const start = mobileEdgeTouchStart.current
+    mobileEdgeTouchStart.current = null
+    if (!start || event.touches.length > 0) return
+    const touch = Array.from(event.changedTouches).find((entry) => entry.identifier === start.identifier)
+    if (!touch) return
+    const horizontalDistance = touch.clientX - start.x
+    const verticalDistance = Math.abs(touch.clientY - start.y)
+    if (horizontalDistance >= 72 && horizontalDistance > verticalDistance * 1.5) {
+      setIsSidebarOpen(true)
+    }
+  }
 
   const resize = useCallback((e: MouseEvent) => {
     if (isResizing.current) {
@@ -3376,7 +3403,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
       <main
         data-testid="learner-main-content"
-        className="relative flex flex-1 flex-col items-center overflow-y-auto bg-chat-bg p-6 pt-16 md:pt-6"
+        className="relative flex flex-1 flex-col items-center overflow-y-auto bg-chat-bg p-6"
+        onTouchStart={startMobileEdgeSwipe}
+        onTouchEnd={finishMobileEdgeSwipe}
+        onTouchCancel={() => { mobileEdgeTouchStart.current = null }}
       >
         {!isDesktopSidebarOpen && (
           <div className="mb-4 hidden w-full md:flex">
@@ -3397,7 +3427,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             </button>
           </div>
         )}
-        {/* Mobile Toggle Button */}
+        {/* Keyboard and screen-reader access to the mobile drawer */}
         {isMobile && !isSidebarOpen && (
           <button
             type="button"
@@ -3406,7 +3436,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             aria-controls="learner-goal-sidebar"
             aria-expanded="false"
             title={learnerViewCopy.openGoalMenuLabel}
-            className="absolute left-4 top-4 z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-md border border-border-color bg-white/50 text-text-secondary shadow-sm backdrop-blur-sm hover:text-sky-400 dark:bg-slate-900/50"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:inline-flex focus:min-h-11 focus:min-w-11 focus:items-center focus:justify-center focus:rounded-md focus:border focus:border-border-color focus:bg-sidebar-bg focus:text-text-secondary focus:shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
             onClick={() => setIsSidebarOpen(true)}
           >
             <Menu size={20} aria-hidden="true" />

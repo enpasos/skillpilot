@@ -49,12 +49,43 @@ try {
     locale: 'de-DE',
     timezoneId: 'Europe/Berlin',
     viewport: { width: 390, height: 844 },
+    hasTouch: true,
+    isMobile: true,
   })
   await context.addInitScript({
     content: "localStorage.setItem('skillpilot_lang', 'de'); localStorage.setItem('skillpilot_theme', 'light');",
   })
 
   const page = await context.newPage()
+  const touchSession = await context.newCDPSession(page)
+  const swipe = async (startX: number, startY: number, endX: number, endY: number) => {
+    await touchSession.send('Input.dispatchTouchEvent', {
+      type: 'touchStart', touchPoints: [{ x: startX, y: startY, id: 1 }],
+    })
+    for (let step = 1; step <= 5; step += 1) {
+      await page.waitForTimeout(16)
+      await touchSession.send('Input.dispatchTouchEvent', {
+        type: 'touchMove',
+        touchPoints: [{
+          x: startX + (endX - startX) * step / 5,
+          y: startY + (endY - startY) * step / 5,
+          id: 1,
+        }],
+      })
+    }
+    await touchSession.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] })
+  }
+  const openGoalMenuBySwipe = async () => {
+    await swipe(15, 500, 220, 505)
+    await page.waitForFunction(() => {
+      const element = document.getElementById('learner-goal-sidebar')
+      return Boolean(element && element.getBoundingClientRect().left >= 0)
+    })
+  }
+  const waitForClosedGoalMenu = () => page.waitForFunction(() => {
+    const element = document.getElementById('learner-goal-sidebar')
+    return Boolean(element && element.getBoundingClientRect().right <= 0)
+  })
   const browserErrors: string[] = []
   const unexpectedRequests: string[] = []
   page.on('pageerror', (error) => browserErrors.push(error.message))
@@ -249,7 +280,6 @@ try {
   const overview = page.getByTestId('learner-plan-today-overview')
   assert.equal(await overview.getByRole('button', { name: 'Einstellungen öffnen' }).count(), 0)
   assert.equal(await overview.getByRole('button', { name: 'Weiterlernen' }).count(), 0)
-  await menuButton.waitFor()
   try {
     const heading = overview.getByRole('heading', { name: 'Lernplan', exact: true })
     await heading.waitFor({ timeout: 10_000 })
@@ -263,14 +293,16 @@ try {
   }
   await overview.getByTestId('learner-plan-subject-mathematik').getByText('0 von 2', { exact: true }).waitFor()
 
+  assert.equal(await menuButton.count(), 1, 'the mobile goal menu keeps a keyboard-accessible opener')
   const menuBox = await menuButton.boundingBox()
-  const overviewBox = await overview.boundingBox()
-  assert(menuBox && overviewBox, 'mobile menu and Today overview must have measurable boxes')
-  assert(menuBox.width >= 44 && menuBox.height >= 44, `mobile menu needs a 44px target: ${JSON.stringify(menuBox)}`)
-  assert(
-    menuBox.y + menuBox.height <= overviewBox.y,
-    `mobile menu must not overlap Today overview: menu=${JSON.stringify(menuBox)}, overview=${JSON.stringify(overviewBox)}`,
-  )
+  assert(!menuBox || (menuBox.width <= 2 && menuBox.height <= 2),
+    `the mobile goal menu opener must be screen-reader-only: ${JSON.stringify(menuBox)}`)
+  assert.equal(await menuButton.getAttribute('aria-controls'), 'learner-goal-sidebar')
+  await menuButton.focus()
+  const focusedMenuBox = await menuButton.boundingBox()
+  assert(focusedMenuBox && focusedMenuBox.width >= 44 && focusedMenuBox.height >= 44,
+    `the mobile opener must be usable with a keyboard: ${JSON.stringify(focusedMenuBox)}`)
+  await menuButton.evaluate((element) => (element as HTMLElement).blur())
   assert.equal(await overview.getByRole('button', { name: 'Zu Mathematik wechseln', exact: true }).count(), 0)
   const physicsSwitch = overview.getByTestId('learner-plan-subject-physik')
     .getByRole('button', { name: 'Zu Physik wechseln', exact: true })
@@ -280,23 +312,57 @@ try {
     'material configuration does not occupy the ordinary learning view')
   assert.equal(materialSelectionReads, 0, 'the selection catalog is loaded only when settings are opened')
   assert.equal(await page.getByText('Dein aktives Lernziel: Lineare Gleichungen lösen', { exact: true }).count(), 1)
-  assert.equal(await menuButton.getAttribute('aria-controls'), 'learner-goal-sidebar')
   assert.equal(
     await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
     true,
     'the real LearnerView must not overflow the 390px viewport',
   )
 
-  await menuButton.click()
   const sidebar = page.locator('#learner-goal-sidebar')
-  await page.waitForFunction(() => {
-    const element = document.getElementById('learner-goal-sidebar')
-    return Boolean(element && element.getBoundingClientRect().left >= 0)
+  await waitForClosedGoalMenu()
+  await swipe(110, 600, 300, 605)
+  await page.waitForTimeout(350)
+  assert(await sidebar.evaluate((element) => element.getBoundingClientRect().right <= 0),
+    'a horizontal gesture starting in the content must not open the goal menu')
+
+  const mainContent = page.getByTestId('learner-main-content')
+  assert.equal(await mainContent.evaluate((element) => getComputedStyle(element).paddingTop), '24px',
+    'the hidden mobile menu no longer reserves space above the learning content')
+  const addedScrollSpace = await mainContent.evaluate((element) => {
+    if (element.scrollHeight > element.clientHeight + 300) return false
+    const spacer = document.createElement('div')
+    spacer.dataset.testid = 'touch-scroll-spacer'
+    spacer.style.cssText = 'flex: 0 0 900px; width: 1px;'
+    element.appendChild(spacer)
+    return true
   })
+  const scrollTopBefore = await mainContent.evaluate((element) => element.scrollTop)
+  await swipe(15, 650, 22, 360)
+  await page.waitForTimeout(100)
+  assert(await mainContent.evaluate((element) => element.scrollTop) > scrollTopBefore,
+    'vertical scrolling from the left edge must keep scrolling the main content')
+  await page.waitForTimeout(350)
+  assert(await sidebar.evaluate((element) => element.getBoundingClientRect().right <= 0),
+    'vertical scrolling at the left edge must not open the goal menu')
+  if (addedScrollSpace) await mainContent.getByTestId('touch-scroll-spacer').evaluate((element) => element.remove())
+  await mainContent.evaluate((element) => { element.scrollTop = 0 })
+
+  await openGoalMenuBySwipe()
   assert.equal(await sidebar.getByRole('heading', { name: 'Meine Lernziele' }).isVisible(), true)
   const closeButton = sidebar.getByRole('button', { name: 'Lernzielmenü schließen' })
   const closeBox = await closeButton.boundingBox()
   assert(closeBox && closeBox.width >= 44 && closeBox.height >= 44, 'mobile close action needs a 44px target')
+  const desktopHideButton = sidebar.getByRole('button', { name: 'Lernziele ausblenden', includeHidden: true })
+  assert.equal(await desktopHideButton.isVisible(), false, 'the desktop sidebar toggle stays hidden on mobile')
+  assert.equal(await sidebar.locator('label[for="morph-toggle"]').count(), 0,
+    'the theme switch stays out of the goal menu on mobile')
+
+  await closeButton.click()
+  await waitForClosedGoalMenu()
+  await openGoalMenuBySwipe()
+  await page.mouse.click(370, 500)
+  await waitForClosedGoalMenu()
+  await openGoalMenuBySwipe()
 
   // Material selection belongs to the existing gear settings, not the learning area.
   await sidebar.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
@@ -335,11 +401,7 @@ try {
   await settings.getByRole('button', { name: 'Einstellungen schließen', exact: true }).click()
   await settings.waitFor({ state: 'detached' })
   await closeButton.click()
-  await menuButton.waitFor()
-  await page.waitForFunction(() => {
-    const element = document.getElementById('learner-goal-sidebar')
-    return Boolean(element && element.getBoundingClientRect().right <= 0)
-  })
+  await waitForClosedGoalMenu()
 
   const materialRegion = page.getByRole('region', { name: 'Materialien zu diesem Lernziel', exact: true })
   const materialLink = materialRegion.getByRole('link', { name: /Lineare Gleichungen verstehen/u })
@@ -360,7 +422,7 @@ try {
   }
 
   // Exercise the real settings-to-preferences-to-status path, including a fresh page load.
-  await menuButton.click()
+  await openGoalMenuBySwipe()
   await sidebar.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
   await materialSummary.waitFor()
   await materialSummary.click()
@@ -416,7 +478,7 @@ try {
   if (process.env.SKILLPILOT_ISSUE48_SCREENSHOTS) {
     await page.screenshot({ path: fileURLToPath(new URL('../../tmp/issue48/cockpit-week-mobile.png', import.meta.url)), fullPage: true })
   }
-  await menuButton.click()
+  await openGoalMenuBySwipe()
   await sidebar.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
   assert.equal(await page.getByRole('radio', { name: '1 Woche', exact: true }).isChecked(), true)
   await page.getByRole('button', { name: 'Fertig', exact: true }).click()
@@ -497,6 +559,21 @@ try {
   await page.getByRole('button', { name: 'Try again', exact: true }).click()
   await overview.getByTestId('learner-plan-period-gauge').first().getByText('This week', { exact: true }).waitFor()
   await overview.getByText('You are learning · Mathematics', { exact: true }).waitFor()
+
+  await page.setViewportSize({ width: 1280, height: 900 })
+  const desktopHide = sidebar.getByRole('button', { name: 'Hide learning goals' })
+  await desktopHide.waitFor({ state: 'visible' })
+  assert.equal(await desktopHide.getAttribute('aria-expanded'), 'true')
+  await desktopHide.click()
+  const desktopShow = page.getByRole('button', { name: 'Show learning goals' })
+  await desktopShow.waitFor({ state: 'visible' })
+  assert.equal(await desktopShow.getAttribute('aria-expanded'), 'false')
+  assert.equal(await sidebar.isVisible(), false, 'the desktop action hides the goal tree')
+  await page.waitForFunction(() => document.activeElement?.getAttribute('aria-label') === 'Show learning goals')
+  await desktopShow.click()
+  await desktopHide.waitFor({ state: 'visible' })
+  assert.equal(await desktopHide.getAttribute('aria-expanded'), 'true')
+  await page.waitForFunction(() => document.activeElement?.getAttribute('aria-label') === 'Hide learning goals')
 
   assert.equal(browserErrors.length, 0, `mobile LearnerView browser errors:\n${browserErrors.join('\n')}`)
   assert.deepEqual(unexpectedRequests, [], 'the full state already supplies focus; initial /planned must not be fetched')
