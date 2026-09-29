@@ -1,6 +1,7 @@
 # Fixpunkte einer affinen Spiegelung
 
 - Ziel: `1a63bf83-1dd5-4eb2-bd8e-f9cfa02f4c42`
+- Provider: OpenAI imagegen
 - Verfahren: eingebaute OpenAI / ChatGPT-Codex image generation; keine API-Modellversion behauptet
 - Finale Datei: `1a63bf83-1dd5-4eb2-bd8e-f9cfa02f4c42.png`
 - Fachliches Beispiel: Spiegelung an `x=2`, also `x'=4−x` und `y'=y`; die Fixpunktmenge ist die ganze Gerade `x=2`.

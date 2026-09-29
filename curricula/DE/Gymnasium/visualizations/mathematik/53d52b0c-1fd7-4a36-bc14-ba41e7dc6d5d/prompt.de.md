@@ -1,6 +1,7 @@
 # Als Menge invariante und punktweise fixe Gerade
 
 - Ziel: `53d52b0c-1fd7-4a36-bc14-ba41e7dc6d5d`
+- Provider: OpenAI imagegen
 - Verfahren: eingebaute OpenAI / ChatGPT-Codex image generation; keine API-Modellversion behauptet
 - Finale Datei: `53d52b0c-1fd7-4a36-bc14-ba41e7dc6d5d.png`
 - Fachliches Beispiel: links Verschiebung längs einer Geraden (Menge invariant, Punkte nicht fix), rechts Spiegelung an derselben Geraden (jeder Punkt der Geraden fix).
