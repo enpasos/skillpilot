@@ -431,10 +431,66 @@
       "provenanceStatus": "The files contain generic Google encoder and creation-time tags. Those tags do not establish the exact generation workflow or whether every voice segment is synthetic.",
       "files": [
         {
-          "role": "deployed-de",
+          "role": "active-de-v2",
+          "path": "app/public/audio/intro-de-v2.m4a",
+          "identicalRuntimeCopies": [
+            "backend/src/main/resources/static/audio/intro-de-v2.m4a"
+          ],
+          "bytes": 11556404,
+          "sha256": "9c82bb570e289d4b68c465a75687cd848f1470d92cbbe2e191d75ee1097505c8",
+          "durationSeconds": 359.050159,
+          "genericMetadata": {
+            "encoder": "Google",
+            "creationTime": "2026-09-29T09:07:47.000000Z"
+          }
+        },
+        {
+          "role": "active-en-v2",
+          "path": "app/public/audio/intro-en-v2.m4a",
+          "identicalRuntimeCopies": [
+            "backend/src/main/resources/static/audio/intro-en-v2.m4a"
+          ],
+          "bytes": 11241037,
+          "sha256": "102fc8e5010f10f4bc9cd9a192788d49c85de879a591278e54b9486e26d9a34b",
+          "durationSeconds": 349.251338,
+          "genericMetadata": {
+            "encoder": "Google",
+            "creationTime": "2026-09-29T13:00:51.000000Z"
+          }
+        },
+        {
+          "role": "compatibility-de",
           "path": "app/public/audio/intro-de.m4a",
           "identicalRuntimeCopies": [
             "backend/src/main/resources/static/audio/intro-de.m4a"
+          ],
+          "bytes": 11556404,
+          "sha256": "9c82bb570e289d4b68c465a75687cd848f1470d92cbbe2e191d75ee1097505c8",
+          "durationSeconds": 359.050159,
+          "genericMetadata": {
+            "encoder": "Google",
+            "creationTime": "2026-09-29T09:07:47.000000Z"
+          }
+        },
+        {
+          "role": "compatibility-en",
+          "path": "app/public/audio/intro-en.m4a",
+          "identicalRuntimeCopies": [
+            "backend/src/main/resources/static/audio/intro-en.m4a"
+          ],
+          "bytes": 11241037,
+          "sha256": "102fc8e5010f10f4bc9cd9a192788d49c85de879a591278e54b9486e26d9a34b",
+          "durationSeconds": 349.251338,
+          "genericMetadata": {
+            "encoder": "Google",
+            "creationTime": "2026-09-29T13:00:51.000000Z"
+          }
+        },
+        {
+          "role": "prior-de-v1",
+          "path": "app/public/audio/intro-de-v1.m4a",
+          "identicalRuntimeCopies": [
+            "backend/src/main/resources/static/audio/intro-de-v1.m4a"
           ],
           "bytes": 35259556,
           "sha256": "11af439ea19741567bd797d7b05314c2a1f5c416413beed5f781e2fd7d1cf196",
@@ -445,10 +501,10 @@
           }
         },
         {
-          "role": "deployed-en",
-          "path": "app/public/audio/intro-en.m4a",
+          "role": "prior-en-v1",
+          "path": "app/public/audio/intro-en-v1.m4a",
           "identicalRuntimeCopies": [
-            "backend/src/main/resources/static/audio/intro-en.m4a"
+            "backend/src/main/resources/static/audio/intro-en-v1.m4a"
           ],
           "bytes": 28724384,
           "sha256": "e4d53b9f15932b7b1ce863cf06a48b36323a8a1efa09f0238fe96407a471a923",

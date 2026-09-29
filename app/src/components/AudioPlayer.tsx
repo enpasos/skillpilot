@@ -6,8 +6,8 @@ import type { LabelLanguage } from '../utils/filterLabels'
 
 // Define the available audio sources
 const AUDIO_SOURCES = {
-  de: '/audio/intro-de.m4a',
-  en: '/audio/intro-en.m4a',
+  de: '/audio/intro-de-v2.m4a',
+  en: '/audio/intro-en-v2.m4a',
 }
 
 interface AudioPlayerProps {

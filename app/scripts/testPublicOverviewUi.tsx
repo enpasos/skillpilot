@@ -1463,7 +1463,7 @@ try {
     }
 
     const audio = page.locator('#audio audio')
-    assert.equal(await audio.getAttribute('src'), `/audio/intro-${language}.m4a`)
+    assert.equal(await audio.getAttribute('src'), `/audio/intro-${language}-v2.m4a`)
     const playButton = page.getByRole('button', { name: expected.audioPlayLabel, exact: true })
     assert.equal(await playButton.getAttribute('type'), 'button')
     const describedBy = await playButton.getAttribute('aria-describedby')
@@ -1556,7 +1556,7 @@ try {
     await switchedStoryResponse
     await page.getByText(`Visual story ${oppositeLanguage}`, { exact: true }).waitFor()
     await page.unroute(languageStoryRoute)
-    assert.equal(await page.locator('#audio audio').getAttribute('src'), `/audio/intro-${oppositeLanguage}.m4a`)
+    assert.equal(await page.locator('#audio audio').getAttribute('src'), `/audio/intro-${oppositeLanguage}-v2.m4a`)
     assert.equal(await page.locator('#video video').getAttribute('src'), `/whitepaper/SkillPilot_Whitepaper_${oppositeLanguage}.mp4`)
     await page.getByTestId('whitepaper-reading-mode-full').click()
     await page.locator('#whitepaper .prose table').waitFor()
