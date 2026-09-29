@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-vector-seven-current-20260929-v3",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-29/m7-vector-seven-current-20260929-v3.config.json",
+  "configDigest": "sha256:2d11b4a185bf28a2d4a938c07e3e12c5b40e1017dd1eae65541f0665e42176ea",
+  "goalIds": [
+    "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+    "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+    "d1352ce0-9502-5039-9af6-318fe385b6fd",
+    "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+    "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+    "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+    "235ae698-369f-4dbe-b46f-87e8b65bb03d"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 805,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:61f55da8acdaf94bc72fc3b096787f61a34f5499467edf4634a1836b45c3feb1"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:c9d327f77c12c980bd3a457b2707e4bc458e5e8e0727f6b34f6109884a22c3b3",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:63090ba94ff49dbb27b95eacce1255e021488e4a76428b3702c74e221dedd7ca",
+    "reviewInputFingerprint": "sha256:c1c687d38c75cfbd053b9f4049b303fbefecc84334046e469b464b1f2177bf5e",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-vector-seven-current-20260929-v3-a",
+        "campaignDigest": "sha256:6a5caae66b265c60ce4c2c40829ccdd9aa096b0fb1181e29d6c1aafa9f42eb80",
+        "roundId": "mathematik-m7-vector-seven-current-20260929-v3-first-pass-a",
+        "independenceGroupId": "mathematik-m7-vector-seven-current-20260929-v3-independent-a",
+        "batchId": "mathematik-m7-vector-seven-current-20260929-v3-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:6cabb24378880fbf6a99f007c9191c5494b08b950bf207da439d0c0f9137e155"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-vector-seven-current-20260929-v3-b",
+        "campaignDigest": "sha256:22dd9ec6111391714a20f1244f2c8995c6031c387148e89e790f640e4430b222",
+        "roundId": "mathematik-m7-vector-seven-current-20260929-v3-first-pass-b",
+        "independenceGroupId": "mathematik-m7-vector-seven-current-20260929-v3-independent-b",
+        "batchId": "mathematik-m7-vector-seven-current-20260929-v3-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:0dadfd74ac4f92c8f8208d366cd13bba3c1fe2f6020d0952bb3fd888c6f06d0a"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

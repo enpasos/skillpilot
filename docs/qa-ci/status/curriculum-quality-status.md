@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-09-28T14:34:40.353Z
+Generated: 2026-09-29T07:56:51.721Z
 Rules version: curriculum-quality-v5
 
 ## Summary
@@ -40,7 +40,7 @@ Rules version: curriculum-quality-v5
 | Informatik (Gymnasium, DE) | M6 | 282 | 237 | 29/29 | 16/16 | 1 | 0 | 0 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Latein (Gymnasium, DE) | M6 | 176 | 136 | 26/26 | 16/16 | 1 | 0 | 0 |
-| Mathematik (Gymnasium, DE) | M6 | 1231 | 958 | 31/31 | 16/16 | 2 | 1 | 0 |
+| Mathematik (Gymnasium, DE) | M6 | 1240 | 966 | 31/31 | 16/16 | 2 | 1 | 0 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Physik (Gymnasium, DE) | M7 | 764 | 639 | 25/25 | 16/16 | 2 | 0 | 0 |
 | Politik und Wirtschaft (Gymnasium, DE) | M6 | 512 | 439 | 33/33 | 16/16 | 1 | 0 | 0 |
@@ -230,9 +230,9 @@ Rules version: curriculum-quality-v5
 | Latein (Gymnasium, DE) | Latein Gymnasium (Sachsen, Lehrplan 2019 Source-Extraction) | DE-SN | 1/1 URL; local cache 0/1 | 4/4 | - | 95 | 880 | 185 | 695 | 21% | - |  |
 | Latein (Gymnasium, DE) | Latein Gymnasium (Sachsen-Anhalt, Fachlehrplan 2022 Source-Extraction) | DE-ST | 1/1 URL; local cache 0/1 | 4/4 | - | 48 | 264 | 60 | 204 | 23% | - |  |
 | Latein (Gymnasium, DE) | Latein Gymnasium (Thueringen, Lehrplan 2024 Source-Extraction) | DE-TH | 1/1 URL; local cache 0/1 | 4/4 | - | 159 | 906 | 258 | 648 | 28% | - |  |
-| Mathematik (Gymnasium, DE) | DE-BB - Mathematik Oberstufe (Brandenburg, GOST 2022 Source-Extraction) | DE-BB | 1/1 URL; local cache 0/1 | 4/4 | - | 14 | 196 | 39 | 157 | 20% | - |  |
+| Mathematik (Gymnasium, DE) | DE-BB - Mathematik Oberstufe (Brandenburg, GOST 2022 Source-Extraction) | DE-BB | 1/1 URL; local cache 0/1 | 4/4 | - | 14 | 196 | 38 | 158 | 19% | - |  |
 | Mathematik (Gymnasium, DE) | DE-BB - Mathematik Sekundarstufe I (Brandenburg, RLP 1-10 Source-Extraction) | DE-BB | 1/1 URL; local cache 0/1 | 4/4 | - | 19 | 289 | 45 | 244 | 16% | - |  |
-| Mathematik (Gymnasium, DE) | DE-BE - Mathematik Oberstufe (Berlin, GO 2014 Source-Extraction) | DE-BE | 1/1 URL; local cache 0/1 | 4/4 | - | 15 | 195 | 17 | 178 | 9% | - |  |
+| Mathematik (Gymnasium, DE) | DE-BE - Mathematik Oberstufe (Berlin, GO 2014 Source-Extraction) | DE-BE | 1/1 URL; local cache 0/1 | 4/4 | - | 15 | 195 | 16 | 179 | 8% | - |  |
 | Mathematik (Gymnasium, DE) | DE-BE - Mathematik Sekundarstufe I (Berlin, RLP 1-10 Source-Extraction) | DE-BE | 1/1 URL; local cache 0/1 | 4/4 | - | 19 | 289 | 45 | 244 | 16% | - |  |
 | Mathematik (Gymnasium, DE) | DE-BW - Mathematik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 16 | 221 | 69 | 152 | 31% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 20 | 278 | 90 | 188 | 32% | - |  |
@@ -240,7 +240,7 @@ Rules version: curriculum-quality-v5
 | Mathematik (Gymnasium, DE) | Mathematik Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 1/1 URL; local cache 0/1 | 3/3 | - | 122 | 275 | 0 | 275 | 0% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Bremen, Bildungsplan 2006 mit 2022-Einschraenkung Source-Extraction) | DE-HB | 2/2 URL; local cache 0/2 | 3/3 | - | 11 | 256 | 71 | 185 | 28% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 URL; local cache 0/1 | 3/3 | - | 25 | 316 | 286 | 30 | 91% | - |  |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hessen, G8/G9 Source-Extraction) | DE-HE | 4/4 URL; local cache 0/4 | 4/4 | - | 89 | 601 | 583 | 18 | 97% | 598/598; diff 118; open 0 |  |
+| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hessen, G8/G9 Source-Extraction) | DE-HE | 4/4 URL; local cache 0/4 | 4/4 | - | 89 | 601 | 582 | 19 | 97% | 598/598; diff 118; open 0 |  |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 43 | 438 | 131 | 307 | 30% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 15 | 189 | 0 | 189 | 0% | - |  |
 | Mathematik (Gymnasium, DE) | DE-MV - Mathematik Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 1/1 URL; local cache 0/1 | 3/3 | - | 15 | 219 | 0 | 219 | 0% | - |  |
@@ -253,7 +253,7 @@ Rules version: curriculum-quality-v5
 | Mathematik (Gymnasium, DE) | DE-RP - Mathematik Sekundarstufe I (Rheinland-Pfalz, Rahmenlehrplan 2007 Source-Extraction) | DE-RP | 1/1 URL; local cache 0/1 | 3/3 | - | 25 | 255 | 58 | 197 | 23% | - |  |
 | Mathematik (Gymnasium, DE) | DE-SH - Mathematik Oberstufe (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 URL; local cache 0/1 | 3/3 | - | 6 | 274 | 65 | 209 | 24% | - |  |
 | Mathematik (Gymnasium, DE) | DE-SH - Mathematik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 URL; local cache 0/1 | 3/3 | - | 6 | 346 | 120 | 226 | 35% | - |  |
-| Mathematik (Gymnasium, DE) | DE-SL - Mathematik Gymnasiale Oberstufe (Saarland, GOS 2014/2019 Source-Extraction) | DE-SL | 3/3 URL; local cache 0/3 | 3/3 | - | 23 | 743 | 0 | 743 | 0% | - |  |
+| Mathematik (Gymnasium, DE) | DE-SL - Mathematik Gymnasiale Oberstufe (Saarland, GOS 2014/2019 Source-Extraction) | DE-SL | 3/3 URL; local cache 0/3 | 3/3 | - | 24 | 744 | 0 | 744 | 0% | - |  |
 | Mathematik (Gymnasium, DE) | DE-SL - Mathematik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 5/5 URL; local cache 0/5 | 3/3 | - | 37 | 818 | 169 | 649 | 21% | - |  |
 | Mathematik (Gymnasium, DE) | DE-SN - Mathematik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-SN | 1/1 URL; local cache 0/1 | 3/3 | - | 31 | 243 | 0 | 243 | 0% | - |  |
 | Mathematik (Gymnasium, DE) | DE-SN - Mathematik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-SN | 1/1 URL; local cache 0/1 | 3/3 | - | 47 | 327 | 72 | 255 | 22% | - |  |
@@ -373,7 +373,7 @@ Rules version: curriculum-quality-v5
 | Informatik (Gymnasium, DE) | 16/16 | 209 | 237 | 16 | 3505 | 3505 | 3505 | 0 | 3505 | 0 | 0 | 0 | 0 | 0 | 207 (100%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
 | Latein (Gymnasium, DE) | 16/16 | 115 | 136 | 16 | 8481 | 8481 | 8481 | 0 | 8481 | 0 | 0 | 0 | 0 | 0 | 115 (100%) |
-| Mathematik (Gymnasium, DE) | 16/16 | 717 | 958 | 16 | 9977 | 9977 | 9977 | 0 | 9977 | 0 | 0 | 0 | 0 | 0 | 713 (100%) |
+| Mathematik (Gymnasium, DE) | 16/16 | 717 | 966 | 16 | 9978 | 9978 | 9978 | 0 | 9978 | 0 | 0 | 0 | 0 | 0 | 707 (100%) |
 | Musik (Gymnasium, DE) | 2/16 | 38 | 52 | 2 | 242 | 242 | 242 | 0 | 242 | 0 | 0 | 0 | 0 | 0 | 38 (100%) |
 | Physik (Gymnasium, DE) | 16/16 | 445 | 639 | 16 | 6289 | 6289 | 6289 | 0 | 6289 | 0 | 0 | 0 | 0 | 0 | 426 (100%) |
 | Politik und Wirtschaft (Gymnasium, DE) | 16/16 | 413 | 439 | 16 | 4169 | 4169 | 4169 | 0 | 4169 | 0 | 0 | 0 | 0 | 0 | 308 (100%) |

@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-pythagoras-four-current-20260929-v1",
+  "reviewedAt": "2026-09-29T03:04:54Z",
+  "reviewer": "Codex; independently reviewed and revised by GPT-6 Astra; AI candidate, no human approval",
+  "goals": [
+    {
+      "goalId": "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+      "reason": "Independent adversarial review: current canonical goal, direct relations, source PDFs and mappings, effective composition roles and actual PNG checked. Equality uses the converse; inequality uses the contrapositive of the original theorem. The two cases vary ordered data versus a conflicting non-scale sketch and positive versus negative classification. The profile remains an E1/G1 AI candidate.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "order-and-equality",
+            "essentialUnderstandingDe": "In einem rechtwinkligen Dreieck ist die Hypotenuse die eindeutig längste Seite. Für Seiten a ≤ b ≤ c eines gültigen Dreiecks gilt: Es ist genau dann rechtwinklig, wenn a²+b²=c².",
+            "essentialUnderstandingEn": "In a right triangle, the hypotenuse is the uniquely longest side. For sides a ≤ b ≤ c of a valid triangle, it is right-angled if and only if a²+b²=c².",
+            "observablePerformanceDe": "Ordnet die gegebenen Seitenlängen eines Dreiecks, vergleicht a²+b² mit c² und entscheidet anhand der Beziehung statt anhand der Zeichnung.",
+            "observablePerformanceEn": "Orders three valid side lengths, compares their squares correctly and decides from that comparison rather than the drawing."
+          },
+          {
+            "id": "direction-and-angle",
+            "essentialUnderstandingDe": "Der Kehrsatz schließt aus a²+b²=c² auf einen rechten Winkel gegenüber c. Bei a²+b²≠c² schließt die Kontraposition des ursprünglichen Satzes Rechtwinkligkeit aus: Ein rechtes Dreieck müsste die Gleichheit erfüllen.",
+            "essentialUnderstandingEn": "The converse infers a right angle opposite c from a²+b²=c². When a²+b²≠c², the contrapositive of the original theorem excludes a right angle: a right triangle would have to satisfy the equality.",
+            "observablePerformanceDe": "Begründet den positiven Fall mit dem Kehrsatz und nennt die Lage des rechten Winkels. Begründet den negativen Fall damit, dass bei Rechtwinkligkeit nach dem Satz die nicht erfüllte Gleichheit gelten müsste; der Fachbegriff Kontraposition ist dafür nicht erforderlich.",
+            "observablePerformanceEn": "Justifies the positive case with the converse and locates the right angle. Justifies the negative case by explaining that a right triangle would have to satisfy the equality required by the theorem; knowing the term contrapositive is not required."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "order-and-equality",
+            "direction-and-angle"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "information-form",
+            "textDe": "Unsortierte Maßangaben gegenüber beschriftetem Dreieck mit absichtlich unmaßstäblicher Skizze",
+            "textEn": "Unordered measurements versus a labelled triangle with a deliberately non-scale sketch"
+          },
+          {
+            "id": "criterion-result",
+            "textDe": "Quadratsummengleichheit gegenüber einer gültigen Dreiecksseitenmenge ohne Gleichheit",
+            "textEn": "Equality of squares versus a valid set of triangle sides without equality"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "unsorted-right-triangle",
+            "taskDemandDe": "Ein Dreieck hat Seiten 41 cm, 9 cm und 40 cm in dieser unsortierten Reihenfolge. Prüfe rechnerisch die Rechtwinkligkeit, gib die Lage des Winkels an und benenne die verwendete Schlussrichtung.",
+            "taskDemandEn": "A triangle has sides 41 cm, 9 cm and 40 cm in that unordered sequence. Check whether it is right-angled, locate the angle and name the direction of inference used.",
+            "expectedPerformanceDe": "41 cm ist am längsten; 9²+40²=81+1600=1681=41². Daher liegt der rechte Winkel gegenüber der Seite von 41 cm. Aus den Seiten auf den Winkel zu schließen benutzt den Kehrsatz.",
+            "expectedPerformanceEn": "41 cm is the longest side; 9²+40²=81+1600=1681=41². Therefore the right angle is opposite the 41 cm side. Inferring the angle from the sides uses the converse.",
+            "understandingFocusDe": "Längste Seite und Implikationsrichtung aus ungeordneten Daten selbst bestimmen.",
+            "understandingFocusEn": "Determine the longest side and implication direction independently from unordered data."
+          },
+          {
+            "id": "misleading-sketch-nonright",
+            "taskDemandDe": "Eine nicht maßstäbliche Skizze lässt einen rechten Winkel vermuten, enthält aber keine bestätigte Winkelangabe. Die Seiten sind mit 7 cm, 10 cm und 12 cm beschriftet. Entscheide, ob das Dreieck rechtwinklig sein kann, und begründe die Schlussrichtung beim Verwerfen der Vermutung.",
+            "taskDemandEn": "A non-scale sketch suggests a right angle but gives no confirmed angle measurement. Its sides are labelled 7 cm, 10 cm and 12 cm. Decide whether the triangle can be right-angled and justify the direction of inference used to reject the conjecture.",
+            "expectedPerformanceDe": "12 cm ist am längsten. 7²+10²=149, aber 12²=144. Wäre das Dreieck rechtwinklig, müsste nach dem Satz des Pythagoras 7²+10²=12² gelten. Der Widerspruch schließt Rechtwinkligkeit aus; das Aussehen der Skizze genügt nicht. Die drei vorgegebenen Längen sind miteinander als Dreiecksseiten vereinbar.",
+            "expectedPerformanceEn": "12 cm is the longest side. 7²+10²=149, whereas 12²=144. If the triangle were right-angled, the Pythagorean theorem would require 7²+10²=12². This contradiction excludes a right angle; the appearance of the sketch is insufficient. The three stated lengths are compatible as triangle sides.",
+            "understandingFocusDe": "Ein widersprechendes Bild anhand der notwendigen Quadratsummenbeziehung beurteilen und dabei die Kontraposition des Satzes vom Kehrsatz unterscheiden.",
+            "understandingFocusEn": "Judge a conflicting picture using the necessary sum-of-squares relation and distinguish the contrapositive of the theorem from its converse."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
+      "reason": "Independent adversarial review: current goal and Saarland source permit the target as a side, not only as a hypotenuse. The revised expectations accept valid hypotenuse or leg constructions and suitable equivalent tools. Case two changes the unknown side to a leg, uses an unnumbered unit segment and requires a square difference; this is structural transfer rather than another sum-of-two-squares number swap. Current source mappings, projection and PNG checked; E1/G1 AI candidate.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "construct-right-triangle",
+            "essentialUnderstandingDe": "Eine Wurzelstrecke kann als Hypotenuse oder Kathete eines passend konstruierten rechtwinkligen Dreiecks entstehen. Bei gegebener Kathetenlänge a und Hypotenuse c>a ist die andere Kathete durch b²=c²−a² bestimmt; bei zwei gegebenen Katheten gilt c²=a²+b².",
+            "essentialUnderstandingEn": "A square-root segment can arise as the hypotenuse or a leg of a suitably constructed right triangle. Given a leg a and hypotenuse c>a, the other leg satisfies b²=c²−a²; with both legs given, c²=a²+b².",
+            "observablePerformanceDe": "Wählt ein geeignetes rechtwinkliges Dreieck, konstruiert die gegebenen Längen und den rechten Winkel mit geeigneten Mitteln und kennzeichnet die gesuchte Seite. Die dokumentierten Schritte erlauben eine exakte Rekonstruktion; mathematisch gleichwertige Konstruktionen sind zulässig.",
+            "observablePerformanceEn": "Chooses a suitable right triangle, constructs the given lengths and right angle with suitable tools, and identifies the target side. The documented steps allow exact reconstruction; mathematically equivalent constructions are accepted."
+          },
+          {
+            "id": "justify-exact-length",
+            "essentialUnderstandingDe": "Der konstruierte rechte Winkel erlaubt den Satz des Pythagoras; daraus folgt die exakte positive Streckenlänge und nicht nur ein gemessener Näherungswert.",
+            "essentialUnderstandingEn": "The constructed right angle licenses the Pythagorean theorem; it yields the exact positive segment length, not merely a measured approximation.",
+            "observablePerformanceDe": "Benennt den konstruierten rechten Winkel sowie Hypotenuse und Katheten, verwendet ihre passende Quadratsummen- oder Quadratsummendifferenzbeziehung mit konsistenten Einheiten und begründet die positive exakte Länge der gesuchten Seite.",
+            "observablePerformanceEn": "Identifies the constructed right angle, hypotenuse and legs, uses the appropriate sum or difference of squares with consistent units, and justifies the positive exact length of the target side."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "construct-right-triangle",
+            "justify-exact-length"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "unknown-side-role",
+            "textDe": "Gesuchte Hypotenuse aus zwei Katheten gegenüber gesuchter Kathete aus Hypotenuse und einer Kathete; Quadratsumme gegenüber Quadratdifferenz.",
+            "textEn": "Unknown hypotenuse from two legs versus unknown leg from the hypotenuse and one leg; sum of squares versus difference of squares."
+          },
+          {
+            "id": "unit-representation",
+            "textDe": "Zentimeterangaben gegenüber einer als Segment gegebenen Einheit u, die ohne Maßstabswechsel übertragen wird.",
+            "textEn": "Centimetre measurements versus a unit u supplied as a segment and transferred without changing scale."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "root-ten-numeric",
+            "taskDemandDe": "Konstruiere ohne Dezimalnäherung eine Strecke der Länge √10 cm. Dokumentiere die Konstruktion und begründe ihre exakte Länge.",
+            "taskDemandEn": "Construct a segment of length √10 cm without a decimal approximation. Document the construction and justify its exact length.",
+            "expectedPerformanceDe": "Eine mögliche Konstruktion verwendet eine 3-cm-Strecke und in einem Endpunkt eine Senkrechte mit 1 cm; die Verbindung der freien Endpunkte ist die Hypotenuse c. Wegen des konstruierten rechten Winkels gilt c²=(3 cm)²+(1 cm)²=10 cm², also c=√10 cm. Jede andere exakte Pythagoras-Konstruktion mit vollständiger Begründung ist gleichwertig.",
+            "expectedPerformanceEn": "One possible construction uses a 3 cm segment and a perpendicular 1 cm segment at one endpoint; joining the free endpoints gives the hypotenuse c. Because the right angle was constructed, c²=(3 cm)²+(1 cm)²=10 cm², so c=√10 cm. Any other exact Pythagorean construction with a complete justification is equivalent.",
+            "understandingFocusDe": "Konstruktion und exakter Nachweis gehören zusammen; Ablesen mit dem Lineal genügt nicht.",
+            "understandingFocusEn": "Construction and exact justification belong together; reading a ruler is insufficient."
+          },
+          {
+            "id": "root-twentyone-leg-transfer",
+            "taskDemandDe": "Eine Einheitsstrecke u ist nur als gezeichnetes Segment gegeben. Konstruiere ein rechtwinkliges Dreieck mit Hypotenuse 5u und einer Kathete 2u. Kennzeichne die andere Kathete als gesuchte Wurzelstrecke, dokumentiere die Konstruktion und beweise ihre exakte Länge. Geeignete Konstruktionsmittel sind frei wählbar.",
+            "taskDemandEn": "A unit segment u is given only as a drawn segment. Construct a right triangle with hypotenuse 5u and one leg 2u. Identify the other leg as the target square-root segment, document the construction and prove its exact length. Suitable construction tools may be chosen freely.",
+            "expectedPerformanceDe": "Überträgt u zu AB=2u und errichtet in A eine Senkrechte auf AB. Ein Kreis um B mit Radius 5u schneidet die Senkrechte in C; jede der beiden spiegelbildlichen Lösungen ist zulässig. AB ist Kathete, BC=5u Hypotenuse und AC die gesuchte Kathete. Wegen ∠A=90° gilt AC²=(5u)²−(2u)²=21u²; folglich AC=√21·u. Andere gültige Konstruktionen mit demselben Nachweis sind zulässig.",
+            "expectedPerformanceEn": "Transfers u to AB=2u and constructs a perpendicular to AB at A. A circle centred at B with radius 5u intersects that perpendicular at C; either of the two reflected solutions is valid. AB is a leg, BC=5u is the hypotenuse and AC is the target leg. Since ∠A=90°, AC²=(5u)²−(2u)²=21u², hence AC=√21·u. Other valid constructions with the same justification are accepted.",
+            "understandingFocusDe": "Die gesuchte Strecke ist jetzt eine Kathete: Die Konstruktion muss die vorgegebene Hypotenuse sichern, und der Längennachweis verwendet eine Quadratdifferenz statt einer Quadratsumme.",
+            "understandingFocusEn": "The target segment is now a leg: the construction must secure the given hypotenuse, and the length justification uses a difference rather than a sum of squares."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "487ec508-f421-5a5a-a84c-98f88a8fb3e5",
+      "reason": "Independent adversarial review: the canonical goal and original source PDFs allow suitable geometric dissection or completion proofs; they do not mandate four triangles. Profile-wide expectations are now method-neutral. The two sample cases require justification of the inner-square geometry and construction of a changed two-square remainder layout, with a general area argument rather than numerical checks. Equivalent valid dissection or completion proofs remain accepted. Current source mappings, projections and actual PNG checked; E1/G1 AI candidate.",
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "area-invariant",
+            "essentialUnderstandingDe": "Eine lückenlose, überlappungsfreie Zerlegung oder Ergänzung erhält den Flächeninhalt. Für eine geeignete Beweisfigur zu einem beliebigen rechtwinkligen Dreieck lassen sich die Teilflächen aus den gegebenen Katheten a,b und der Hypotenuse c geometrisch begründen, ohne die zu beweisende Gleichheit vorauszusetzen.",
+            "essentialUnderstandingEn": "A dissection or completion without gaps or overlaps preserves area. For a suitable proof diagram based on an arbitrary right triangle, the component areas can be justified geometrically from its legs a,b and hypotenuse c without presupposing the equality to be proved.",
+            "observablePerformanceDe": "Beschreibt oder konstruiert eine geeignete Zerlegungs- oder Ergänzungsfigur, begründet die verwendeten Längen, rechten Winkel und Teilflächen und stellt die vollständige Flächenbilanz auf. Die Zahl der Teilfiguren und der konkrete Beweisweg sind nicht festgelegt.",
+            "observablePerformanceEn": "Describes or constructs a suitable dissection or completion diagram, justifies the lengths, right angles and component areas used, and states the complete area balance. Neither the number of pieces nor the particular proof route is fixed."
+          },
+          {
+            "id": "general-conclusion",
+            "essentialUnderstandingDe": "Der Vergleich zweier geometrisch begründeter Flächendarstellungen führt zu c²=a²+b². Die Schlussfolgerung gilt für beliebige positive Katheten eines rechtwinkligen Dreiecks, weil die verwendeten Beziehungen nicht von einzelnen Zahlen oder einer maßstäblichen Zeichnung abhängen.",
+            "essentialUnderstandingEn": "Comparing two geometrically justified area representations leads to c²=a²+b². The conclusion holds for arbitrary positive legs of a right triangle because the relationships used do not depend on particular numbers or a scale drawing.",
+            "observablePerformanceDe": "Leitet die Quadratsummengleichheit aus der Flächenbilanz her und erläutert die Rolle des rechten Winkels sowie die Allgemeingültigkeit. Beim inneren c-Quadrat begründet sie insbesondere die rechten Innenwinkel; bei einem anderen gültigen Flächenbeweis begründet sie dessen entsprechende geometrische Voraussetzungen.",
+            "observablePerformanceEn": "Derives the sum-of-squares equality from the area balance and explains the role of the right angle and the generality of the result. In the inner-c-square proof, specifically justifies its right interior angles; for another valid area proof, justifies its corresponding geometric conditions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "area-invariant",
+            "general-conclusion"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "dissection-layout",
+            "textDe": "Quadrat der Seite a+b mit gedrehtem c-Quadrat gegenüber zwei Anordnungen derselben vier Dreiecke mit Restflächen c² beziehungsweise a²+b²",
+            "textEn": "A square of side a+b with a rotated c-square versus two arrangements of the same four triangles leaving c² or a²+b²"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "inner-square-proof",
+            "taskDemandDe": "Entwickle für ein beliebiges rechtwinkliges Dreieck mit Katheten a,b>0 und Hypotenuse c einen Zerlegungs- oder Ergänzungsbeweis. Eine mögliche Idee ist ein Quadrat der Seite a+b mit vier kongruenten Eckdreiecken. Begründe die geometrischen Eigenschaften deiner Figur und leite die Gleichheit über Flächen her. Die ausgearbeitete Lehrgrafik wird dabei nicht vorgelegt.",
+            "taskDemandEn": "Develop a dissection or completion proof for an arbitrary right triangle with legs a,b>0 and hypotenuse c. One possible idea is a square of side a+b with four congruent corner triangles. Justify the geometric properties of your diagram and derive the equality using areas. The worked teaching graphic is not supplied.",
+            "expectedPerformanceDe": "Eine mögliche Lösung setzt in jede Ecke eines Quadrats der Seite a+b ein kongruentes rechtwinkliges Dreieck, so dass auf jeder Außenseite eine Kathete a und eine Kathete b aneinanderliegen. Die vier Hypotenusen begrenzen die Restfigur. An jedem ihrer Eckpunkte gilt Innenwinkel=180°−α−β=90°, da die spitzen Winkel des Ausgangsdreiecks α+β=90° erfüllen; alle vier Seiten haben Länge c. Daher (a+b)²=4·ab/2+c² und c²=a²+b² für beliebige positive Katheten. Andere schlüssige Zerlegungs- oder Ergänzungsbeweise sind gleichwertig.",
+            "expectedPerformanceEn": "One possible solution places a congruent right triangle in each corner of a square of side a+b, so that a leg a and a leg b meet along each outside edge. The four hypotenuses bound the remaining region. At each of its vertices the interior angle is 180°−α−β=90°, since the original triangle has acute angles satisfying α+β=90°; all four sides have length c. Thus (a+b)²=4·ab/2+c² and c²=a²+b² for arbitrary positive legs. Other sound dissection or completion proofs are equivalent.",
+            "understandingFocusDe": "Die Quadrat-Eigenschaft der Restfigur und die Allgemeinheit des Flächenbeweises begründen.",
+            "understandingFocusEn": "Justify the square property of the remaining figure and the generality of the area proof."
+          },
+          {
+            "id": "two-layout-transfer",
+            "taskDemandDe": "Ein Quadrat der Seite a+b enthält vier kongruente rechtwinklige Dreiecke mit Katheten a,b und lässt ein Quadrat mit Seite c frei. Konstruiere nun in einem zweiten gleich großen Rahmen eine andere Anordnung derselben Dreiecke, bei der genau zwei Quadrate mit Seiten a und b frei bleiben. Begründe die Form und Maße der beiden Restflächen sowie ihre Beziehung zur ersten Restfläche, ohne den Satz bereits vorauszusetzen.",
+            "taskDemandEn": "A square of side a+b contains four congruent right triangles with legs a,b and leaves a square of side c. In a second equal frame, construct a different arrangement of the same triangles that leaves exactly two squares of sides a and b. Justify the shape and dimensions of the two remaining regions and their relation to the first remaining region without presupposing the theorem.",
+            "expectedPerformanceDe": "Teilt den zweiten Rahmen durch eine waagerechte und eine senkrechte Linie im Abstand a von zwei benachbarten Seiten in ein a×a-Quadrat, ein b×b-Quadrat und zwei a×b-Rechtecke. Die beiden Quadrate liegen an gegenüberliegenden Ecken; jedes Rechteck wird durch eine Diagonale in zwei zum Ausgangsdreieck kongruente rechtwinklige Dreiecke zerlegt. Beide Rahmen sind damit lückenlos und ohne Überlappungen gefüllt und enthalten dieselbe Dreiecksfläche 4·ab/2. Die Restflächen sind gleich groß, also c²=a²+b². Der Aufbau funktioniert für alle a,b>0, auch a=b.",
+            "expectedPerformanceEn": "Divides the second frame with one horizontal and one vertical line at distance a from two adjacent sides into an a×a square, a b×b square and two a×b rectangles. The squares occupy opposite corners; each rectangle is split by a diagonal into two right triangles congruent to the original. Both frames are thus filled without gaps or overlaps and contain the same triangle area 4·ab/2. Their remaining areas are equal, so c²=a²+b². The construction works for every a,b>0, including a=b.",
+            "understandingFocusDe": "Flächenerhaltung in einer veränderten Zerlegung als eigenständigen allgemeinen Beweis nutzen.",
+            "understandingFocusEn": "Use area preservation in a changed dissection as an independent general proof."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "6a3502ee-b616-5db7-88fc-8951f33c9f63",
+      "reason": "Independent adversarial review: the general auxiliary-right-triangle/SSS proof and the repair case derive equality of the third sides before congruence. The repair task now explicitly withholds the converse that is being proved, so it distinguishes an invalid reversal of the original theorem from a legitimate application of an already established converse. Original source PDFs, current mappings and projections, and the actual PNG were checked. E1/G1 AI candidate; no learner performance or human approval is claimed.",
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "auxiliary-comparison",
+            "essentialUnderstandingDe": "Aus c²=a²+b² für positive Seiten a,b,c ist der rechte Winkel des Ausgangsdreiecks noch nicht vorausgesetzt; ein getrennt konstruiertes rechtwinkliges Hilfsdreieck mit Katheten a,b liefert d²=a²+b²=c² und deshalb d=c.",
+            "essentialUnderstandingEn": "Equality c²=a²+b² for positive sides a,b,c does not assume a right angle in the original triangle; a separately constructed right auxiliary triangle with legs a,b yields d²=a²+b²=c² and hence d=c.",
+            "observablePerformanceDe": "Konstruiert oder beschreibt das Hilfsdreieck unabhängig vom Ausgangsdreieck und begründet die Gleichheit der positiven dritten Seiten mit dem Satz des Pythagoras.",
+            "observablePerformanceEn": "Constructs or describes the auxiliary triangle independently of the original one and justifies equality of the positive third sides using the Pythagorean theorem."
+          },
+          {
+            "id": "sss-converse",
+            "essentialUnderstandingDe": "Drei übereinstimmende Seiten machen Ausgangs- und Hilfsdreieck nach SSS kongruent; erst dadurch wird der rechte Winkel des Hilfsdreiecks auf den gegenüber c liegenden Winkel des Ausgangsdreiecks übertragen.",
+            "essentialUnderstandingEn": "Three matching sides make the original and auxiliary triangles congruent by SSS; only then does the auxiliary triangle's right angle transfer to the angle opposite c in the original triangle.",
+            "observablePerformanceDe": "Nennt alle drei Seitenpaare, wendet SSS an und formuliert ausdrücklich die Schlussrichtung von der Seitenbedingung zur Rechtwinkligkeit des Ausgangsdreiecks.",
+            "observablePerformanceEn": "Names all three matching side pairs, applies SSS and explicitly states the inference from the side condition to the original triangle's right angle."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "auxiliary-comparison",
+            "sss-converse"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "proof-entry",
+            "textDe": "Allgemeiner Beweis aus symbolischen Seiten gegenüber Korrektur eines Zirkelschlusses an einem anderen Zahlenbeispiel mit anschließender Verallgemeinerung",
+            "textEn": "General proof from symbolic sides versus repair of circular reasoning in a different numerical example followed by generalization"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "general-auxiliary-proof",
+            "taskDemandDe": "In einem Dreieck sind positive Seiten a,b,c gegeben und es gilt c²=a²+b². Beweise für alle solchen Dreiecke mit einem rechtwinkligen Hilfsdreieck und SSS, dass der Winkel gegenüber c recht ist. Kennzeichne, wo der ursprüngliche Satz angewandt und durch welche Schlusskette der Kehrsatz bewiesen wird.",
+            "taskDemandEn": "A triangle has positive sides a,b,c satisfying c²=a²+b². Prove for every such triangle, using a right auxiliary triangle and SSS, that the angle opposite c is right. Identify where the original theorem is applied and which chain of inference proves the converse.",
+            "expectedPerformanceDe": "Konstruiert ein rechtes Hilfsdreieck mit Katheten a,b und Hypotenuse d. Der ursprüngliche Satz ergibt d²=a²+b²=c², also d=c wegen positiver Streckenlängen. Die drei Seitenpaare a,a; b,b; c,d stimmen überein, folglich SSS und rechter Winkel gegenüber c. Diese Gesamtkette beweist den Kehrsatz.",
+            "expectedPerformanceEn": "Constructs a right auxiliary triangle with legs a,b and hypotenuse d. The original theorem gives d²=a²+b²=c², hence d=c because lengths are positive. The three side pairs a,a; b,b; c,d match, so SSS transfers the right angle opposite c. The whole chain proves the converse.",
+            "understandingFocusDe": "Den Hilfsdreieck-Vergleich als allgemeines, nicht zirkuläres Argument führen.",
+            "understandingFocusEn": "Carry out the auxiliary-triangle comparison as a general, non-circular argument."
+          },
+          {
+            "id": "repair-circular-proof",
+            "taskDemandDe": "Der Kehrsatz soll erst bewiesen werden und darf noch nicht vorausgesetzt werden. Für ein Dreieck mit Seiten 8,15,17 schreibt jemand: 8²+15²=17²; mit dem ursprünglichen Wenn-dann-Satz des Pythagoras folgt, dass der gegenüber 17 liegende Winkel 90° ist. Erkläre die Lücke und repariere den Beweis mit dem Hilfsdreieck-/Kongruenzweg; erkläre anschließend, warum derselbe Weg nicht von diesen Zahlen abhängt.",
+            "taskDemandEn": "The converse is still to be proved and may not yet be assumed. For a triangle with sides 8,15,17, someone writes: 8²+15²=17²; the original if-then Pythagorean theorem implies that the angle opposite 17 is 90°. Explain the gap and repair the proof using the auxiliary-triangle/congruence route; then explain why the same route does not depend on these numbers.",
+            "expectedPerformanceDe": "Der ursprüngliche Satz darf nicht direkt auf das noch nicht als rechtwinklig bekannte Ausgangsdreieck angewandt werden. Im getrennten rechten Hilfsdreieck mit Katheten 8 und 15 ist d²=64+225=289=17², also d=17. SSS macht beide Dreiecke kongruent; der Ausgangswinkel gegenüber 17 ist recht. Der Beweis funktioniert für jedes positive a,b,c mit c²=a²+b² durch dieselbe Konstruktion und SSS.",
+            "expectedPerformanceEn": "The original theorem cannot be applied directly to the original triangle before its right angle is known. In a separate right auxiliary triangle with legs 8 and 15, d²=64+225=289=17², so d=17. SSS makes the triangles congruent and the original angle opposite 17 is right. The proof works for any positive a,b,c with c²=a²+b² through the same construction and SSS.",
+            "understandingFocusDe": "Satz und Kehrsatz logisch trennen und einen scheinbar plausiblen Zirkelschluss vollständig beheben.",
+            "understandingFocusEn": "Distinguish theorem and converse logically and fully repair a tempting circular argument."
+          }
+        ]
+      }
+    }
+  ]
+}

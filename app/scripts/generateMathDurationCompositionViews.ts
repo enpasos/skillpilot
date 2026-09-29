@@ -101,6 +101,7 @@ interface SplitLayoutTemplate {
   prerequisiteOnlyGoalIds?: string[]
   prerequisiteOnlyOverrideGoalIds?: string[]
   additionalTargetGoalIds?: string[]
+  primaryYearOverrides?: Record<string, string>
   placements: SplitLayoutPlacement[]
 }
 
@@ -117,6 +118,7 @@ interface SplitLayoutPlan {
       fileSha256: string
       adjudicationDigest: string
     }>
+    sourceScopeDecisions?: Array<{ path: string; sha256: string }>
   }
   counts: {
     sek1TemplateCount: number
@@ -350,7 +352,15 @@ const relabelStructureById = (
   }
 })
 
-const canonicalMath = readJson<{ goals?: LearningGoal[] }>(canonicalMathPath)
+const canonicalMath = readJson<{
+  goals?: LearningGoal[]
+  goalPlacements?: Array<{
+    goalId: string
+    unitId: string
+    relation: string
+    context?: Record<string, string>
+  }>
+}>(canonicalMathPath)
 const sourceExtraction = readJson<{ sourceGoals?: SourceGoal[] }>(sourceExtractionPath)
 const mappingReview = readJson<{ mappings?: MappingEntry[] }>(mappingPath)
 const baseGkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-he-gk.view.json'))
@@ -400,6 +410,11 @@ for (const input of splitLayoutPlan.inputs.additiveAdjudications ?? []) {
   ) {
     throw new Error(`Invalid additive split-layout adjudication ${input.path}`)
   }
+}
+
+for (const input of splitLayoutPlan.inputs.sourceScopeDecisions ?? []) {
+  const actual = createHash('sha256').update(readFileSync(resolve(repoRoot, input.path))).digest('hex')
+  if (actual !== input.sha256) throw new Error(`Stale source-scope decision ${input.path}`)
 }
 
 const splitLayoutTemplateByFileName = new Map(
@@ -706,7 +721,7 @@ for (const mapping of mappingReview.mappings ?? []) {
 
 const assignPrimaryGradeBuckets = (durationModel: DurationModel, excludedGoalIds: Set<string> = new Set()) => {
   const assigned = new Set<string>()
-  return Object.fromEntries(
+  const buckets = Object.fromEntries(
     yearLabelsByDuration[durationModel].map((year) => {
       const yearGoalIds = sortGoalIdsByTitle(rawBuckets[durationModel][year] ?? [], goalById)
         .filter((goalId) => {
@@ -719,6 +734,27 @@ const assignPrimaryGradeBuckets = (durationModel: DurationModel, excludedGoalIds
       return [year, yearGoalIds]
     }),
   ) as Record<string, string[]>
+  const template = splitLayoutTemplateByFileName.get(`de-he-seki-${durationModel.toLowerCase()}.view.json`)
+  for (const [goalId, year] of Object.entries(template?.primaryYearOverrides ?? {})) {
+    const isCanonicalPlacement = canonicalMath.goalPlacements?.some((placement) => (
+      placement.goalId === goalId
+      && placement.unitId === `de-gym-math-j${year}`
+      && placement.relation === 'primary'
+      && placement.context?.jurisdiction === 'DE-HE'
+      && placement.context?.stage === 'SekI'
+      && placement.context?.durationModel === durationModel
+    ))
+    if (!isCanonicalPlacement) {
+      throw new Error(`HE ${durationModel} year override ${goalId} contradicts canonical placements`)
+    }
+    if (excludedGoalIds.has(goalId)) continue
+    if (!assigned.has(goalId) || !buckets[year]) {
+      throw new Error(`Invalid source-backed HE ${durationModel} year override ${goalId}: ${year}`)
+    }
+    Object.keys(buckets).forEach((key) => { buckets[key] = buckets[key].filter((id) => id !== goalId) })
+    buckets[year] = sortGoalIdsByTitle([...buckets[year], goalId], goalById)
+  }
+  return buckets
 }
 
 const baseSek1SupplementIds = Array.from(new Set([
@@ -1031,12 +1067,16 @@ const createYearNode = (durationModel: DurationModel, year: string, goalIds: str
 
 const createSek1Node = (durationModel: DurationModel, excludedGoalIds: Set<string> = new Set()): CompositionNode => {
   const templateFileName = `de-he-seki-${durationModel.toLowerCase()}.view.json`
-  const routeContext = reviewedLayoutRouteContext(templateFileName, excludedGoalIds)
-  const initialBuckets = assignPrimaryGradeBuckets(durationModel, excludedGoalIds)
+  const effectiveExcludedGoalIds = new Set([
+    ...excludedGoalIds,
+    ...(splitLayoutTemplateByFileName.get(templateFileName)?.excludedGoalIds ?? []),
+  ])
+  const routeContext = reviewedLayoutRouteContext(templateFileName, effectiveExcludedGoalIds)
+  const initialBuckets = assignPrimaryGradeBuckets(durationModel, effectiveExcludedGoalIds)
   const assignedGoalIds = new Set(Object.values(initialBuckets).flat())
   const extraGoalIds = baseSek1SupplementIds.filter((goalId) => {
     if (!isGoalApplicableToJurisdiction(goalId, 'DE-HE')) return false
-    if (excludedGoalIds.has(goalId)) return false
+    if (effectiveExcludedGoalIds.has(goalId)) return false
     if (assignedGoalIds.has(goalId)) return false
     const evidenceDurations = evidenceDurationsByAtomicId.get(goalId)
     return !evidenceDurations || evidenceDurations.has(durationModel)
@@ -1051,7 +1091,7 @@ const createSek1Node = (durationModel: DurationModel, excludedGoalIds: Set<strin
       ...routeContext.replacementTargetGoalIds,
       ...legacyExamRouteSeedGoalIds('DE-HE', yearLabelsByDuration[durationModel]),
     ],
-    excludedGoalIds,
+    excludedGoalIds: effectiveExcludedGoalIds,
     blockedPrerequisiteGoalIds: routeContext.blockedPrerequisiteGoalIds,
     bucketForCanonicalYear: (year) => heBucketForCanonicalYear(durationModel, year),
   })
@@ -1081,7 +1121,7 @@ const createSek1Node = (durationModel: DurationModel, excludedGoalIds: Set<strin
   return applyReviewedSplitLayout(
     sek1Node,
     templateFileName,
-    excludedGoalIds,
+    effectiveExcludedGoalIds,
   )
 }
 
@@ -1230,8 +1270,12 @@ const createRpSek1Node = (
   durationModel: DurationModel,
   excludedGoalIds: Set<string> = new Set(),
 ): CompositionNode => {
-  const sek1ExcludedGoalIds = new Set([...excludedGoalIds, Q4_CATERER_ASSESSMENT_GOAL_ID])
   const templateFileName = `de-rp-seki-${durationModel.toLowerCase()}.view.json`
+  const sek1ExcludedGoalIds = new Set([
+    ...excludedGoalIds,
+    Q4_CATERER_ASSESSMENT_GOAL_ID,
+    ...(splitLayoutTemplateByFileName.get(templateFileName)?.excludedGoalIds ?? []),
+  ])
   const routeContext = reviewedLayoutRouteContext(templateFileName, sek1ExcludedGoalIds)
   const initialBuckets = assignRpStageBuckets(sek1ExcludedGoalIds)
   const assignedGoalIds = new Set(Object.values(initialBuckets).flat())
@@ -1443,18 +1487,22 @@ const createShSek1Node = (
   excludedGoalIds: Set<string> = new Set(),
 ): CompositionNode => {
   const templateFileName = `de-sh-seki-${durationModel.toLowerCase()}.view.json`
-  const routeContext = reviewedLayoutRouteContext(templateFileName, excludedGoalIds)
+  const effectiveExcludedGoalIds = new Set([
+    ...excludedGoalIds,
+    ...(splitLayoutTemplateByFileName.get(templateFileName)?.excludedGoalIds ?? []),
+  ])
+  const routeContext = reviewedLayoutRouteContext(templateFileName, effectiveExcludedGoalIds)
   const buckets = completeSek1RouteBuckets({
     jurisdiction: 'DE-SH',
     durationModel,
-    buckets: assignShBandBuckets(excludedGoalIds),
+    buckets: assignShBandBuckets(effectiveExcludedGoalIds),
     supplementGoalIds: shStageWideJ6GoalIds,
     additionalTargetGoalIds: routeContext.additionalTargetGoalIds,
     routeSeedGoalIds: [
       ...routeContext.replacementTargetGoalIds,
       ...legacyExamRouteSeedGoalIds('DE-SH', yearLabelsByDuration[durationModel]),
     ],
-    excludedGoalIds,
+    excludedGoalIds: effectiveExcludedGoalIds,
     blockedPrerequisiteGoalIds: routeContext.blockedPrerequisiteGoalIds,
     bucketForCanonicalYear: shBucketForCanonicalYear,
   })
@@ -1474,7 +1522,7 @@ const createShSek1Node = (
   return applyReviewedSplitLayout(
     sek1Node,
     templateFileName,
-    excludedGoalIds,
+    effectiveExcludedGoalIds,
   )
 }
 
@@ -1641,24 +1689,35 @@ const filterAssessmentsWithoutTargetPrerequisites = (view: CompositionView): Com
   )
   // The compiler does not filter jurisdiction. Even an inapplicable assessment
   // inherited from a shared exam folder needs an explicit non-target role.
-  const derivedAssessmentGoalIds = [...new Set([...sek1TargetGoalIds, ...authoredFolderAssessmentGoalIds])]
+  const assessmentGoalIds = [...new Set([...sek1TargetGoalIds, ...authoredFolderAssessmentGoalIds])]
     .filter((goalId) => {
       const goal = goalById.get(goalId)
-      if (!goal || (goal.nodeKind !== 'exam' && !goal.examData)) return false
-      return goal.extendedData?.applicabilityFromRequires === true
+      return goal && (goal.nodeKind === 'exam' || Boolean(goal.examData))
     })
-  const unavailableAssessmentGoalIds = derivedAssessmentGoalIds
-    .filter((goalId) => (goalById.get(goalId)?.requires ?? []).some((requiredId) => (
+  const derivedAssessmentGoalIds = assessmentGoalIds.filter((goalId) => (
+    goalById.get(goalId)?.extendedData?.applicabilityFromRequires === true
+  ))
+  const unavailableAssessmentGoalIds = assessmentGoalIds
+    .filter((goalId) => !isGoalApplicableToJurisdiction(goalId, view.scope.jurisdiction)
+      || (goalById.get(goalId)?.extendedData?.applicabilityFromRequires === true
+        && (goalById.get(goalId)?.requires ?? []).some((requiredId) => (
         semanticKindByGoalId.get(requiredId) === 'curricularAtomic'
         && !learnableCurricularAtomicGoalIds.has(requiredId)
-      )))
+      ))))
     .sort()
   const unavailableAssessmentGoalIdSet = new Set(unavailableAssessmentGoalIds)
   // A broader duration target projection can make a base-view exclusion stale.
   // Remove only its direct non-target override, leaving the task in its authored
   // year folder; never create a detached target or introduce another exam year.
+  const templateFileName = `${view.scope.jurisdiction.toLowerCase()}-seki-${view.scope.durationModel.toLowerCase()}.view.json`
+  const explicitPrerequisiteOnlyGoalIds = new Set(
+    splitLayoutTemplateByFileName.get(templateFileName)?.prerequisiteOnlyOverrideGoalIds ?? [],
+  )
   const restoredAssessmentGoalIds = new Set(derivedAssessmentGoalIds.filter((goalId) => (
-    authoredFolderAssessmentGoalIds.has(goalId) && !unavailableAssessmentGoalIdSet.has(goalId)
+    authoredFolderAssessmentGoalIds.has(goalId)
+    && !unavailableAssessmentGoalIdSet.has(goalId)
+    && !explicitPrerequisiteOnlyGoalIds.has(goalId)
+    && isGoalApplicableToJurisdiction(goalId, view.scope.jurisdiction)
   )))
   const reconciledView = {
     ...view,
@@ -1713,6 +1772,16 @@ const assertCompleteSek1DirectRequirements = (view: CompositionView) => {
 
   const allTargetGoalIds = collectProjectedTargetGoalIds(view.rootNodes, jurisdiction)
   const sek1TargetGoalIds = collectProjectedTargetGoalIds([sek1Node], jurisdiction)
+  const unfilteredTargetGoalIds = collectProjectedTargetGoalIds(view.rootNodes)
+  const foreignAssessmentGoalIds = [...collectProjectedTargetGoalIds([sek1Node])].filter((goalId) => {
+    const goal = goalById.get(goalId)
+    return unfilteredTargetGoalIds.has(goalId)
+      && (goal?.nodeKind === 'exam' || Boolean(goal?.examData))
+      && !isGoalApplicableToJurisdiction(goalId, jurisdiction)
+  })
+  if (foreignAssessmentGoalIds.length > 0) {
+    throw new Error(`${view.viewId} projects inapplicable Sek-I assessments: ${foreignAssessmentGoalIds.join(', ')}`)
+  }
   const missingEdges: string[] = []
   sek1TargetGoalIds.forEach((goalId) => {
     if (!isCanonicalSek1AtomicGoal(goalId)) return

@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync } from 'node:fs'
+import { readdirSync, readFileSync, type Dirent } from 'node:fs'
 import { dirname, extname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
@@ -18,6 +18,7 @@ import {
 import {
   collectCanonicalMathSek1ReviewedExamRouteFindings,
   hasUnavailableCurricularAtomicAssessmentPrerequisite,
+  isAssessmentExplicitlyOutsideJurisdiction,
 } from './lib/canonicalMathSek1ReviewedExamRoutes'
 
 interface CompositionViewValidationFinding extends CompositionViewFinding {
@@ -732,6 +733,12 @@ const collectCanonicalMathSek1ExamVisibilityFindings = (
 
     const missingTaskGoalIds = (folder?.contains ?? [])
       .filter((taskId) => !visibleGoalIds.has(taskId))
+      // Shared year folders contain land-specific exams. A resolved land scope
+      // must still require every applicable task, but not another land's task.
+      // The national catalog (no jurisdiction) continues to require all tasks.
+      .filter((taskId) => !isAssessmentExplicitlyOutsideJurisdiction(
+        goalById.get(taskId), view.scope.jurisdiction,
+      ))
       .filter((taskId) => !hasUnavailableCurricularAtomicAssessmentPrerequisite(
         goalById.get(taskId),
         curricularAtomicGoalIds,
@@ -797,7 +804,7 @@ const canonicalMathFallbackPolicy = JSON.parse(
 }
 
 const collectFiles = (directory: string, predicate: (fileName: string) => boolean, target: string[] = []): string[] => {
-  let entries: ReturnType<typeof readdirSync>
+  let entries: Dirent[]
   try {
     entries = readdirSync(directory, { withFileTypes: true })
   } catch {

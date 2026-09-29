@@ -1,0 +1,30 @@
+# Bildrekonstruktionsprompt: Kugelvolumen mit Cavalieri herleiten
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `baea3966-5d10-53bf-8193-3fcda7b1e73f`
+- Titel: Kugelvolumen mit Cavalieri herleiten
+- Beschreibung: Die lernende Person kann die Formel $V=\frac43\pi r^3$ für das Kugelvolumen mit dem Satz von Cavalieri herleiten, indem sie Kugelquerschnitte mit gleich hohen Schnitten eines Zylinders (Radius $r$, Höhe $2r$) nach Herausnahme zweier Kegel (je Radius und Höhe $r$) vergleicht und das Volumen des Restkörpers berechnet.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)
+- Quellbild: `baea3966-5d10-53bf-8193-3fcda7b1e73f.png`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+# Eigenständiger Rekonstruktionsprompt zum geprüften Bildkandidaten
+
+Erzeuge eine gut lesbare, freundliche, comicartige Lehrillustration im Querformat auf hellem cremefarbenem Hintergrund mit dunkelblauen Konturen, orangefarbener Kugel und türkisfarbenem Restkörper. Thema ist die Herleitung des Kugelvolumens ohne Integralrechnung mithilfe von Cavalieri.
+
+Oben links steht „Kugel“ über dem axialen Schnitt einer Kugel vom Radius r: ein Kreis mit Mittelpunkt und Durchmesser 2r, in einem gestrichelten umschließenden Quadrat. Oben rechts steht „Zylinder − 2 Kegel“ über dem axialen Schnitt eines gleich hohen Zylinders: ein Quadrat mit Seitenlänge 2r, aus dem zwei weiße Kegelquerschnitte als Dreiecke entfernt sind. Ihre Grundflächen liegen an Ober- und Unterkante, ihre Spitzen treffen exakt im Mittelpunkt. Der türkisfarbene Rest füllt die seitlichen Teile. Eine waagerechte gestrichelte Linie schneidet beide Körper in derselben Höhe z über dem Mittelpunkt; z ist der senkrechte Abstand von diesem Mittelpunkt zur Linie.
+
+Darunter sind die **waagerechten** Schnittflächen in Draufsicht zu sehen: links eine orange Kreisscheibe mit Radius √(r²−z²), rechts ein türkisfarbener Kreisring mit Außenradius r und weißem Innenloch vom Radius z. Der Pfeil für r muss **vom gemeinsamen Mittelpunkt bis zum Außenkreis** reichen und nicht bloß vom Lochrand zum Außenkreis; der z-Pfeil reicht vom Mittelpunkt bis zum Innenkreis. Die Kreisfläche und der Ring sind gleich groß, denn beide haben den Flächeninhalt π(r²−z²). Stelle dies mit einem lesbaren Gleichheitszeichen und der knappen Überschrift „gleiche Schnittfläche“ dar.
+
+Unten steht groß, exakt und gut lesbar: V = 2πr³ − 2·(⅓πr³) = ⁴⁄₃πr³. Verwende keine Integralzeichen, keine unpassenden Einheiten, keine dekorativen Fremdobjekte, keine technischen IDs, kein Wasserzeichen. Die beiden weißen Dreiecke sind Aussparungen, keine zum Restvolumen addierten Körper. Freundliche schulische Bildsprache, wenig Text und präzise Pfeile haben Vorrang vor Effekten.
+```

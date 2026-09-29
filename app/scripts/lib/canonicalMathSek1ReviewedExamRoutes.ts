@@ -1,6 +1,22 @@
 import type { CompositionViewFinding } from '../../src/utils/authoring/compositionViewAuthoring'
 import type { CanonicalAuthoringLandscape } from '../../src/utils/authoring/canonicalAuthoring'
 
+/** Only a nonempty, explicit jurisdiction list can waive another land's exam.
+ * Missing scope, missing tasks and malformed applicability remain required. */
+export const isAssessmentExplicitlyOutsideJurisdiction = (
+  assessment: Record<string, unknown> | undefined,
+  jurisdiction: string | undefined,
+): boolean => {
+  if (!jurisdiction) return false
+  const applicability = assessment?.applicability
+  if (!applicability || typeof applicability !== 'object' || Array.isArray(applicability)) return false
+  const jurisdictions = (applicability as Record<string, unknown>).jurisdiction
+  return Array.isArray(jurisdictions)
+    && jurisdictions.length > 0
+    && jurisdictions.every((value) => typeof value === 'string' && value.trim() !== '')
+    && !jurisdictions.includes(jurisdiction)
+}
+
 export const hasUnavailableCurricularAtomicAssessmentPrerequisite = (
   assessment: { requires?: string[]; extendedData?: Record<string, unknown> } | undefined,
   curricularAtomicGoalIds: ReadonlySet<string>,
@@ -9,6 +25,22 @@ export const hasUnavailableCurricularAtomicAssessmentPrerequisite = (
   && (assessment.requires ?? []).some((requiredId) => (
     curricularAtomicGoalIds.has(requiredId) && !targetGoalIds.has(requiredId)
   ))
+
+/** A support-only exam is intentionally outside this learner target. An exam
+ * absent from the view altogether remains required unless CPV-211's exact
+ * prerequisite rule proves that it cannot apply in this target projection. */
+export const shouldRequireCanonicalMathSek1AssessmentEndpoint = (
+  assessment: { id: string; requires?: string[]; extendedData?: Record<string, unknown> },
+  curricularAtomicGoalIds: ReadonlySet<string>,
+  visibleGoalIds: ReadonlySet<string>,
+  targetGoalIds: ReadonlySet<string>,
+): boolean => targetGoalIds.has(assessment.id)
+  || (!visibleGoalIds.has(assessment.id)
+    && !hasUnavailableCurricularAtomicAssessmentPrerequisite(
+      assessment,
+      curricularAtomicGoalIds,
+      targetGoalIds,
+    ))
 
 interface ReviewedExamRoute {
   year: string

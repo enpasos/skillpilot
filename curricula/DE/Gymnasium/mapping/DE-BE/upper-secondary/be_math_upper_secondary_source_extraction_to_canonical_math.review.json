@@ -13,8 +13,8 @@
     "reviewed": 195,
     "accepted": 195,
     "canonicalGaps": 0,
-    "exact": 18,
-    "partial": 177,
+    "exact": 16,
+    "partial": 179,
     "mapped": 195
   },
   "decisions": [
@@ -317,21 +317,31 @@
     {
       "sourceGoalId": "be-math-sekii-rlp-gost-q1-16-8fc4051d",
       "topicCode": "RLP-GOST-Q1",
-      "sourceSpan": "Die Ableitung mithilfe der Approximation durch lineare Funktionen deuten",
+      "sourceSpan": "Berlin Rahmenlehrplan Mathematik gymnasiale Oberstufe, Teil C (gültig ab 2014, Ausgabe 2022), 3.2.2 Funktionaler Zusammenhang [L4], zusätzlich Leistungskursfach, Q1, Druck-S. 27 / PDF-S. 29.",
       "decision": "mapped",
       "canonicalGoalIds": [
         "06bdbecb-53e0-5ac3-992f-d6fd20555b59"
       ],
-      "rationale": "Die Ableitung mithilfe der Approximation durch lineare Funktionen deuten ist inhaltlich durch die referenzierten kanonischen Mathematikziele abgedeckt; die Entscheidung wurde von der deckungsgleichen Berlin-Brandenburg-Standardstruktur uebernommen.",
-      "reviewedAt": "2026-05-07",
-      "reviewer": "codex",
+      "rationale": "Originalnachprüfung 2026-09-29: Die gebundene Berliner Originaldatei enthält auf Druck-S.27/PDF-S.29 unter „Zusätzlich: Leistungskursfach“ ausdrücklich die Ableitungsdeutung mithilfe linearer Approximation, Q1. Damit war die vorausgehende HOLD-Annahme eines nur brandenburgischen Belegs falsch. 06bdbecb operationalisiert den lokalen linearen Näherungszusammenhang als Tangentennäherung und dessen Deutung; die Kante ist partial, keine wortgleiche Vollabbildung des gesamten Originalbullets. Der weitere Bullet-Aspekt „Asymptoten ermitteln“ bleibt beim vorhandenen eigenen SourceGoal be-math-sekii-go-3-2-2-l4-38-308522454f und wird durch diese Kante nicht zusätzlich als gedeckt behauptet. Geltung nur BE/SekII/LK, nicht BE/SekI oder GK.",
+      "reviewedAt": "2026-09-29",
+      "reviewer": "OpenAI Codex independent original-source reinspection",
       "evidence": {
-        "method": "official-source-extraction-m3-review-transfer",
+        "method": "direct-original-pdf-source-reinspection",
         "sourceExtractionPath": "curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_MATHEMATIK_SEKII_GO_2014.source-extraction.json",
-        "transferredFromReview": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_math_upper_secondary_source_extraction_to_canonical_math.review.json",
-        "transferredFromSourceGoalId": "bb-math-sekii-rlp-gost-q1-16-8fc4051d"
+        "sourcePath": "curricula/DE/Gymnasium/input/BE/upper-secondary/rahmenlehrplan-mathematik_go-teil-c.pdf",
+        "sourceSha256": "17063893d874ea15073925d1c7f1e71e3926b849190b72b451eae097edb7065f",
+        "printedPages": [
+          27
+        ],
+        "pdfPages": [
+          29
+        ],
+        "originalQuote": "die Ableitung mithilfe der Approximation durch lineare Funktionen deuten und Asymptoten ermitteln",
+        "courseLevel": "LK",
+        "phase": "Q1",
+        "humanApproval": false
       },
-      "matchType": "exact"
+      "matchType": "partial"
     },
     {
       "sourceGoalId": "be-math-sekii-rlp-gost-q2-01-8e6d4f21",
@@ -4209,12 +4219,6 @@
       "reviewDecisionId": "be-math-sekii-rlp-gost-q1-15-9bd67e9a"
     },
     {
-      "legacyGoalId": "be-math-sekii-rlp-gost-q1-16-8fc4051d",
-      "canonicalGoalId": "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
-      "matchType": "exact",
-      "reviewDecisionId": "be-math-sekii-rlp-gost-q1-16-8fc4051d"
-    },
-    {
       "legacyGoalId": "be-math-sekii-rlp-gost-q2-01-8e6d4f21",
       "canonicalGoalId": "b559e2ea-60ef-4b3f-a37c-669b867ace29",
       "matchType": "partial",
@@ -7729,6 +7733,12 @@
       "canonicalGoalId": "90662398-a0fd-45bf-9ce9-2abbc20428ed",
       "matchType": "partial",
       "reviewDecisionId": "be-math-sekii-go-3-2-2-l4-26-31eaff8b1c"
+    },
+    {
+      "legacyGoalId": "be-math-sekii-rlp-gost-q1-16-8fc4051d",
+      "canonicalGoalId": "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+      "matchType": "partial",
+      "reviewDecisionId": "be-math-sekii-rlp-gost-q1-16-8fc4051d"
     }
   ],
   "sourceLandscapeId": "5aafcc55-e89f-4dd5-ab17-9455e3c103b7",

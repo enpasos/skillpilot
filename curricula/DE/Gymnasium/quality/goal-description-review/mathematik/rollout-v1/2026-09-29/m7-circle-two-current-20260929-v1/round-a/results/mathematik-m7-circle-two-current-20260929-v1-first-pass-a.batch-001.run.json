@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-circle-two-current-20260929-v1-first-pass-a.batch-001-codex-root",
+  "campaignId": "mathematik-m7-circle-two-current-20260929-v1-a",
+  "roundId": "mathematik-m7-circle-two-current-20260929-v1-first-pass-a",
+  "batchId": "mathematik-m7-circle-two-current-20260929-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:f918c7827a2f3dbf25aed27f02f7d37838f0c8b56e09fd8488be27e9c8e47548",
+  "bundleFingerprint": "sha256:9f24d226624a728a3d4d3f884f669415925918ee84fde585401711c4e5cd6900",
+  "bookDigest": "sha256:ebe578b47f7fadaf0dd0c913f760e1d4842741dba48557216248c49c1d089c6d",
+  "provider": "OpenAI",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:a92ca0b5185c7c5966a12f151dca50f6a59db535c93c4bed11872855da77ec1b",
+  "independenceGroupId": "mathematik-m7-circle-two-current-20260929-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "2f073195-52ef-5219-926c-f3f58ebdc556",
+    "4dbb8e8e-c0b5-5d51-8897-0024d77e8602"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:824053b99aad4a213f9c82422ac8b045e337f61a2cfd35762b627363111782c1"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:f918c7827a2f3dbf25aed27f02f7d37838f0c8b56e09fd8488be27e9c8e47548"
+    }
+  ],
+  "startedAt": "2026-09-29T03:09:00Z",
+  "completedAt": "2026-09-29T03:13:16Z",
+  "status": "completed",
+  "outputDigest": "sha256:0fe767c71640e4ebae06184c4956f7e59372aa8ac024473bc9c8cdce2218941e",
+  "toolchainVersion": "codex-root-independent-current-circle-review-v1"
+}

@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:523644cc9ee4a96c9557cf285a0e3f4e57b41d734d73df02772e9eeeac7b88a0",
+  "reviewInputFingerprint": "sha256:f68e38b6b3f65ec482160fcb3871ca4c979ec70f71850437753dc967764e49dd",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-a",
+      "roundId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-independent-a",
+      "runIds": [
+        "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a.batch-001.codex-current-pythagoras-independent-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-b",
+      "roundId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-independent-b",
+      "runIds": [
+        "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b-codex-independent-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex session (exact deployment identifier not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+      "firstRecordId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a.batch-001.codex-current-pythagoras-independent-a.081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+      "secondRecordId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b-codex-independent-b.081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+      "firstRunId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a.batch-001.codex-current-pythagoras-independent-a",
+      "secondRunId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b-codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
+      "firstRecordId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a.batch-001.codex-current-pythagoras-independent-a.3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
+      "secondRecordId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b-codex-independent-b.3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
+      "firstRunId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a.batch-001.codex-current-pythagoras-independent-a",
+      "secondRunId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b-codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "487ec508-f421-5a5a-a84c-98f88a8fb3e5",
+      "firstRecordId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a.batch-001.codex-current-pythagoras-independent-a.487ec508-f421-5a5a-a84c-98f88a8fb3e5",
+      "secondRecordId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b-codex-independent-b.487ec508-f421-5a5a-a84c-98f88a8fb3e5",
+      "firstRunId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a.batch-001.codex-current-pythagoras-independent-a",
+      "secondRunId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b-codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6a3502ee-b616-5db7-88fc-8951f33c9f63",
+      "firstRecordId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a.batch-001.codex-current-pythagoras-independent-a.6a3502ee-b616-5db7-88fc-8951f33c9f63",
+      "secondRecordId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b-codex-independent-b.6a3502ee-b616-5db7-88fc-8951f33c9f63",
+      "firstRunId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a.batch-001.codex-current-pythagoras-independent-a",
+      "secondRunId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b-codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

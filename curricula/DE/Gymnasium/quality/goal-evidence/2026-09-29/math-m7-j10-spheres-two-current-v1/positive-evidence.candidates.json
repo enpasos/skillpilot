@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-j10-spheres-two-current-20260929-v1",
+  "reviewedAt": "2026-09-29T03:37:13Z",
+  "reviewer": "Codex author; independently reviewed and revised by GPT-6 Astra against current Canon, actual PNGs, source scope and fresh mathematical cases; AI candidates, no human approval",
+  "goals": [
+    {
+      "goalId": "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+      "reason": "The current J10 bilingual goal and the actual PNG (sha256:071346fa7486250244bfae122614403c81cc6c0364b29f5d01eb75e15eed4ee8) were inspected. Its radius/diameter, 4πr², square unit, and fourfold scaling are correct; the painted sphere is a coating context, not a derivation. Both independent cases ask for an explicitly limited geometric plausibility argument, calculation, units, and quadratic scaling. AI candidate only. Independent Astra review: original/runtime bytes agree. Corrected peel premise to approximately complete area-preserving coverage and clarified the 5% allowance base. Both cases stay within geometric plausibility; equivalent valid arguments are admissible. Stronger SL derivation coverage is separately bounded in dissent.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "geometric-plausibility-not-proof",
+            "essentialUnderstandingDe": "Die Beziehung O=4πr² lässt sich durch einen geeigneten geometrischen Flächenvergleich plausibel machen. Beispielsweise können kleine dünne Schalenstücke näherungsweise vier Großkreisscheiben bedecken oder schmale Kugelgürtel mit den entsprechenden Mantelstreifen des eng umschließenden Zylinders verglichen werden. Grobe Legungen, Messungen oder endlich viele angenäherte Streifen beweisen die allgemeine Formel nicht.",
+            "essentialUnderstandingEn": "The relation O=4πr² can be made plausible through a suitable geometric area comparison. For example, small thin peel pieces may approximately cover four great-circle discs, or narrow spherical bands may be compared with corresponding lateral strips of a tight enclosing cylinder. Rough layouts, measurements, or finitely many approximate strips do not prove the general formula.",
+            "observablePerformanceDe": "Die lernende Person erklärt mit einem geeigneten geometrischen Vergleich die Struktur 4πr² und ordnet die Aussagekraft ihres Arguments ein. Bei einer experimentellen oder näherungsweisen Anordnung benennt sie deren Grenze; ein anderer gültiger geometrischer Begründungsweg ist ebenso zulässig, ein allgemeiner Beweis wird nicht verlangt.",
+            "observablePerformanceEn": "The learner explains the structure 4πr² using a suitable geometric comparison and assesses what the argument establishes. For an experimental or approximate arrangement, the learner states its limits; another valid geometric argument is equally acceptable, and a general proof is not required."
+          },
+          {
+            "id": "coating-area-units-and-scaling",
+            "essentialUnderstandingDe": "Oberfläche ist eine Hüllfläche in Quadrateinheiten. Bei gleicher Form vervielfacht ein Faktor k für den Radius die Oberfläche um k²; aus dem Durchmesser ist erst der Radius zu bestimmen.",
+            "essentialUnderstandingEn": "Surface area is the covering area in square units. For similar spheres, multiplying radius by k multiplies surface area by k²; a given diameter must first be halved.",
+            "observablePerformanceDe": "Löst eine Hüll- oder Beschichtungsfrage aus Radius oder Durchmesser, rechnet mit Flächeneinheit und begründet eine Änderung durch Radiusfaktor mit quadratischer Skalierung.",
+            "observablePerformanceEn": "Solves a covering or coating problem from a radius or diameter, uses an area unit, and explains a change in radius through quadratic scaling."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "geometric-plausibility-not-proof",
+            "coating-area-units-and-scaling"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "peel-four-discs",
+            "textDe": "Eine angenäherte Schalenlegung auf vier Großkreisscheiben mit Radiusangabe deuten und eine Farbschicht berechnen.",
+            "textEn": "Interpret an approximate peel layout over four great-circle discs with a given radius and compute one coat of paint."
+          },
+          {
+            "id": "enclosing-cylinder-and-diameter",
+            "textDe": "Einen zweiten geometrischen Vergleich mit schmalen Kugelgürteln und Zylindermantelstreifen aus Durchmesserangabe deuten; der Materialzuschlag bezieht sich auf die berechnete Hüllfläche.",
+            "textEn": "Interpret a second geometric comparison using narrow spherical bands and cylinder lateral strips from a diameter; the material allowance is based on the calculated covering area."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "orange-peel-and-coating",
+            "taskDemandDe": "Eine Kugel mit Radius 5 cm soll einmal vollständig lackiert werden. Bei einem Modellversuch bedecken kleine dünne Schalenstücke einer gleich großen Kugel näherungsweise vier Kreisscheiben mit Radius 5 cm, ohne große Lücken oder Überlappungen und ohne merkliche Dehnung. Erkläre, warum dies O=4πr² plausibel macht, was daran kein allgemeiner Beweis ist, und berechne die zu lackierende Fläche. Wie ändert sie sich bei doppeltem Radius?",
+            "taskDemandEn": "A sphere of radius 5 cm is to receive one full coat of paint. In a model experiment, small thin peel pieces from an equally sized sphere approximately cover four discs of radius 5 cm, without large gaps or overlaps or appreciable stretching. Explain why this makes O=4πr² plausible, why it is not a general proof, and compute the area to coat. How does it change when the radius doubles?",
+            "expectedPerformanceDe": "Vier Scheiben besitzen zusammen 4·π·5²=100π cm²≈314,2 cm². Eine angenähert vollständige, annähernd flächenerhaltende Überdeckung legt diesen Flächenvergleich nahe. Die gekrümmte Kugelfläche lässt sich nicht exakt als ebenes Netz abwickeln; Restlücken, Überlappungen, Verformung und Messfehler begrenzen den Modellversuch. Er beweist die allgemeine Formel nicht. Bei Radius 10 cm beträgt die Oberfläche 400π cm², also wegen (2r)²=4r² das Vierfache.",
+            "expectedPerformanceEn": "The four discs have total area 4·π·5²=100π cm²≈314.2 cm². Approximately complete coverage that approximately preserves area suggests this comparison. The curved sphere surface cannot be unfolded exactly into a planar net; remaining gaps, overlaps, deformation, and measurement error limit the model experiment. It does not prove the general formula. At radius 10 cm, surface area is 400π cm², four times as large because (2r)²=4r².",
+            "understandingFocusDe": "Empirische geometrische Plausibilität statt Scheinbeweis; Hüllfläche, Einheit und quadratische Skalierung.",
+            "understandingFocusEn": "Empirical geometric plausibility rather than a false proof; covering area, unit, and quadratic scaling."
+          },
+          {
+            "id": "sphere-cylinder-wrap",
+            "taskDemandDe": "Eine kugelförmige Hülle hat Durchmesser 1 m. In einer zweiten Vergleichsanordnung werden sehr schmale Kugelgürtel mit Mantelstreifen gleicher Höhe am eng umschließenden Zylinder verglichen. Die angenäherten Streifenflächen erweisen sich als etwa gleich groß; der Zylinder hat denselben Radius r und Höhe 2r. Erläutere daraus die Struktur der Kugeloberflächenformel und die Grenze dieser endlichen Näherung. Berechne die Hüllfläche und einen Materialbedarf mit 5 % Zuschlag bezogen auf die berechnete Kugelfläche. Welcher reine Kugelflächenfaktor ergäbe sich bei doppeltem Durchmesser?",
+            "taskDemandEn": "A spherical cover has diameter 1 m. In a second comparison, very narrow spherical bands are compared with lateral strips of the same height on a tight enclosing cylinder. The approximate strip areas turn out to be about equal; the cylinder has the same radius r and height 2r. Use this to explain the structure of the sphere surface-area formula and the limit of this finite approximation. Calculate the covering area and material needed with a 5% allowance based on the calculated sphere area. What factor changes the sphere area if the diameter doubles?",
+            "expectedPerformanceDe": "r=0,5 m; die verglichenen Streifen summieren sich am Zylinder zum Mantel 2πr·2r=4πr². Das macht O=π m² für die Kugel plausibel. Endlich viele näherungsweise verglichene Streifen beweisen die exakte Flächengleichheit nicht allgemein. Die 5 % sind ausdrücklich ein Zuschlag auf O, daher Materialbedarf 1,05π m²≈3,30 m². Verdoppelter Durchmesser bedeutet doppelten Radius und wegen (2r)²=4r² vierfache Kugelfläche.",
+            "expectedPerformanceEn": "r=0.5 m; the compared strips sum to the cylinder lateral area 2πr·2r=4πr². This makes O=π m² plausible for the sphere. Finitely many approximately compared strips do not generally prove exact area equality. The 5% is explicitly an allowance added to O, so material needed is 1.05π m²≈3.30 m². Doubling the diameter doubles the radius and quadruples sphere area because (2r)²=4r².",
+            "understandingFocusDe": "Transfer vom Schalenvergleich zum Streifenvergleich; Durchmesser, klar bezogener Materialzuschlag und quadratische Skalierung.",
+            "understandingFocusEn": "Transfer from a peel comparison to a strip comparison; diameter, an explicitly based material allowance, and quadratic scaling."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Source-scope boundary: SL Gymnasium year 10 (2026), Pyramide/Kegel/Kugel B23, requires deriving either the sphere-volume formula or the sphere-surface-area formula. These profiles assess the current Canon competence of geometric plausibility and do not by themselves establish full coverage of that stronger derivation requirement. The partial mappings to these atoms and to clusters must not turn empirical observations into a general proof. Full SL source coverage remains a separate review question."
+      ]
+    },
+    {
+      "goalId": "bb227e31-0b0b-544a-b5e0-548256a70dec",
+      "reason": "The current J10 bilingual goal and the actual PNG (sha256:631917ff46438f2deab8a00403455c8ba2654342a2657ee55a843587f71e5bb3) were inspected. Its tight-cylinder ratio 2/3, formula, cubic unit, and eightfold scaling are arithmetically correct; the central circular drawing is labelled as a cross-section and the ratio is not treated as a proof. Two independent fill/displacement cases require plausibility, units, and cubic scaling. AI candidate only. Independent Astra review: original/runtime bytes agree. The fresh second task changes the comparison cylinder from height 2r to 3r and uses an independent approximate ratio 4/9, preventing blind reuse of 2/3. Tank diameter is explicitly internal. Numerical, unit and bilingual checks pass; empirical plausibility is not called a general proof. Stronger SL derivation coverage is separately bounded in dissent.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "cylinder-comparison-plausibility",
+            "essentialUnderstandingDe": "Ein eng umschließender Zylinder zu einer Kugel mit Radius r hat denselben Radius und Höhe 2r, also Volumen 2πr³. Der beobachtete Kugelanteil von ungefähr 2/3 macht V=4πr³/3 plausibel. Ein anderer Vergleichszylinder kann einen anderen Volumenanteil haben; sein Radius und seine Höhe müssen zum Vergleich passen. Ein einzelner Füll- oder Verdrängungsversuch beweist die allgemeine Formel nicht.",
+            "essentialUnderstandingEn": "A tight enclosing cylinder around a sphere of radius r has the same radius and height 2r, hence volume 2πr³. An observed sphere fraction of about 2/3 makes V=4πr³/3 plausible. A different comparison cylinder can give a different volume fraction; its radius and height must fit the comparison. A single filling or displacement experiment does not prove the general formula.",
+            "observablePerformanceDe": "Die lernende Person erklärt die Struktur 4πr³/3 durch einen geeigneten geometrischen Vergleich und ordnet dessen Aussagekraft ein. Bei einem Zylindervergleich nennt sie die passenden Abmessungen und deutet den zugehörigen Volumenanteil. Experimentelle Näherungen werden von einem allgemeinen Beweis unterschieden; gleichwertige gültige geometrische Argumente sind zulässig.",
+            "observablePerformanceEn": "The learner explains the structure 4πr³/3 through a suitable geometric comparison and assesses what it establishes. When comparing with a cylinder, the learner specifies the matching dimensions and interprets the corresponding volume fraction. Experimental approximations are distinguished from a general proof; equivalent valid geometric arguments are admissible."
+          },
+          {
+            "id": "capacity-units-and-cubic-scaling",
+            "essentialUnderstandingDe": "Kugelvolumen ist Rauminhalt in Kubikeinheiten. Bei Radiusfaktor k wächst es mit k³; aus einem Durchmesser ist zuerst der Radius abzuleiten.",
+            "essentialUnderstandingEn": "Sphere volume is capacity in cubic units. With radius factor k it grows by k³; a given diameter must first be halved.",
+            "observablePerformanceDe": "Berechnet eine Füll- oder Rauminhaltsfrage mit Radius oder Durchmesser, deutet die Volumeneinheit und begründet die kubische Skalierung im Vergleich zweier Kugeln.",
+            "observablePerformanceEn": "Calculates a capacity or spatial-volume problem from a radius or diameter, interprets the volume unit, and explains cubic scaling when comparing two spheres."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "cylinder-comparison-plausibility",
+            "capacity-units-and-cubic-scaling"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "small-displacement-observation",
+            "textDe": "Eine Verdrängungsmessung an Kugel und passendem Zylinder mit Radiusangabe als Näherung auswerten.",
+            "textEn": "Interpret an approximate displacement measurement for a sphere and matching cylinder from a given radius."
+          },
+          {
+            "id": "taller-comparison-cylinder-and-inner-diameter",
+            "textDe": "Von einem eng umschließenden Zylinder der Höhe 2r zu einem unabhängigen Vergleich mit Höhe 3r und Anteil 4/9 wechseln; Tank-Innendurchmesser, Literumrechnung und Halbierung des Radius deuten.",
+            "textEn": "Change from a tight enclosing cylinder of height 2r to an independent comparison with height 3r and fraction 4/9; interpret a tank inner diameter, litre conversion, and halving the radius."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "displacement-to-two-thirds",
+            "taskDemandDe": "Eine massive Kugel mit Radius 6 cm passt gerade in einen Zylinder mit Radius 6 cm und Höhe 12 cm. Bei einem Verdrängungsversuch werden ungefähr 905 cm³ gemessen. Bestimme das Zylindervolumen und den näherungsweisen Volumenanteil der Kugel. Welcher einfache Bruch passt zur Messung? Erkläre damit die Struktur der Kugelvolumenformel und die Grenze dieser Beobachtung. Welchen Volumenfaktor hätte eine ähnliche Kugel mit doppeltem Radius?",
+            "taskDemandEn": "A solid sphere of radius 6 cm just fits a cylinder of radius 6 cm and height 12 cm. A displacement experiment measures about 905 cm³. Find the cylinder volume and the approximate fraction occupied by the sphere. What simple fraction fits the observation? Use it to explain the structure of the sphere-volume formula and the limit of the observation. What volume factor would a similar sphere with twice the radius have?",
+            "expectedPerformanceDe": "V_Z=π·6²·12=432π cm³≈1357,2 cm³. Der Messanteil 905/(432π)≈0,667 legt 2/3 nahe; zwei Drittel sind 288π cm³≈904,8 cm³. Weil 2πr³·2/3=4πr³/3, ist die Formelstruktur plausibel. Die einzelne Messung mit Unsicherheit beweist das Verhältnis nicht für alle r. Bei doppeltem Radius wächst das Volumen mit 2³=8; cm²·cm ergibt cm³.",
+            "expectedPerformanceEn": "V_cyl=π·6²·12=432π cm³≈1357.2 cm³. The measured fraction 905/(432π)≈0.667 suggests 2/3; two thirds are 288π cm³≈904.8 cm³. Since 2πr³·2/3=4πr³/3, the formula structure is plausible. A single uncertain measurement does not prove the ratio for every r. Doubling the radius multiplies volume by 2³=8; cm²·cm gives cm³.",
+            "understandingFocusDe": "Geometrisch-experimenteller Vergleich, Drittelfaktor, Kubikeinheit und kubische Skalierung ohne Scheinbeweis.",
+            "understandingFocusEn": "Geometric experimental comparison, two-thirds factor, cubic unit, and cubic scaling without a false proof."
+          },
+          {
+            "id": "spherical-tank-capacity",
+            "taskDemandDe": "Ein kugelförmiger Tank hat Innendurchmesser 2 m. In einem unabhängigen Modellversuch nimmt eine Kugel ungefähr 4/9 des Volumens eines Vergleichszylinders mit demselben Radius r und Höhe 3r ein. Erkläre, wie dieser Befund die Struktur der Kugelvolumenformel plausibel macht. Warum wäre 2/3 hier der falsche Anteil, und zu welchem Zylinder passt er? Berechne das Fassungsvermögen des Tanks in m³ und ungefähr in Litern. Ein zweiter Tank hat halben Innenradius: Bestimme sein Volumen und begründe den Faktor. Benenne die Grenze des Versuchs als allgemeiner Beweis.",
+            "taskDemandEn": "A spherical tank has an inner diameter of 2 m. In an independent model experiment, a sphere occupies about 4/9 of the volume of a comparison cylinder with the same radius r and height 3r. Explain how this makes the structure of the sphere-volume formula plausible. Why would 2/3 be the wrong fraction here, and which cylinder does it fit? Calculate the tank capacity in m³ and approximately in litres. A second tank has half the inner radius: find its volume and justify the factor. State the experiment's limit as a general proof.",
+            "expectedPerformanceDe": "Der Vergleichszylinder besitzt V_Z=πr²·3r=3πr³. Sein beobachteter Anteil 4/9 ergibt (4/9)·3πr³=4πr³/3. Der Anteil 2/3 gehört stattdessen zum eng umschließenden Zylinder mit Höhe 2r; beim höheren Zylinder ist er zu groß. Für den Tank ist r=1 m, daher V=4π/3 m³≈4,19 m³≈4190 L. Bei halbem Innenradius ist V/8=π/6 m³≈0,524 m³, weil (r/2)³=r³/8. 1 m³=1000 L; der Innendurchmesser legt den Füllraum fest. Der näherungsweise Modellbefund stützt die Formel, beweist sie aber nicht für alle Kugeln.",
+            "expectedPerformanceEn": "The comparison cylinder has V_cyl=πr²·3r=3πr³. Its observed fraction 4/9 gives (4/9)·3πr³=4πr³/3. The fraction 2/3 instead belongs to a tight enclosing cylinder of height 2r and is too large for the taller cylinder. For the tank, r=1 m, so V=4π/3 m³≈4.19 m³≈4190 L. Halving the inner radius gives V/8=π/6 m³≈0.524 m³ because (r/2)³=r³/8. One m³ equals 1000 L; the inner diameter defines the fillable space. The approximate model observation supports the formula but does not prove it for every sphere.",
+            "understandingFocusDe": "Unabhängiger Transfer mit verändertem Vergleichskörper: Volumenanteil an die Zylinderhöhe binden, Innenmaß und Liter deuten sowie kubische Skalierung begründen.",
+            "understandingFocusEn": "Independent transfer with a changed comparison solid: bind the volume fraction to cylinder height, interpret internal dimensions and litres, and justify cubic scaling."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Source-scope boundary: SL Gymnasium year 10 (2026), Pyramide/Kegel/Kugel B23, requires deriving either the sphere-volume formula or the sphere-surface-area formula. These profiles assess the current Canon competence of geometric plausibility and do not by themselves establish full coverage of that stronger derivation requirement. The partial mappings to these atoms and to clusters must not turn empirical observations into a general proof. Full SL source coverage remains a separate review question."
+      ]
+    }
+  ]
+}

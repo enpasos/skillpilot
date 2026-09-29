@@ -1,0 +1,57 @@
+{
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex session (exact deployment identifier not exposed)",
+  "execution": "independent delegated Codex review; no external model API call",
+  "samplingParameters": "not exposed by host",
+  "blindToOtherReviews": true,
+  "otherRoundResultsRead": false,
+  "priorDescriptionReviewResultsRead": false,
+  "reviewScope": "D; independent inspection of images does not grant V or human approval",
+  "canonDeEnMatchesPreparedInput": true,
+  "bookPdfGoalPagesVisuallyInspected": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "imageInspection": "All current PNG/JPG source bytes hashed against prepared bindings. Opened actual common PNG for goals1–2 (independently byte-identical) and three actual JPGs; visually inspected every rendered PDF goal page.",
+  "imageDigests": {
+    "5518ceb3-f668-5b52-a9b1-57653b16ca98": "sha256:e88426d1ac5bba09ec3ac51fb87380342fb29577f2da3f9b3d03e14871390fc2",
+    "2850e8f6-2330-50d3-a577-d519540d9924": "sha256:e88426d1ac5bba09ec3ac51fb87380342fb29577f2da3f9b3d03e14871390fc2",
+    "b43a1e45-f05c-4d78-8453-f6fa677dc24c": "sha256:a6abbdba508d1e636f018341b12f07a1bd0a03c54b13f8f0fe99abee4296ca29",
+    "06bdbecb-53e0-5ac3-992f-d6fd20555b59": "sha256:19fb53ac7a0093332e1eff84d890580282b4bd542c7cb3b52b7fde4320b11740",
+    "ad66009f-55fb-563f-ace0-dbfeae7c76c3": "sha256:a5311119a56918eb99be0178078bf8c4dc293f255bea340cc9a0fe7252c5a656"
+  },
+  "sourceArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.pdf",
+      "digest": "sha256:b085465143648b3f44c894f8eb0a5ee5d1928cbb1c4c60b3b249559709d26014"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+      "digest": "sha256:17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BB/lower-secondary/Teil_C_Mathematik_2015_10_13_Ma_14.08.2023_Berlin_23_11.pdf",
+      "digest": "sha256:eb191cca63670339a8d0e376ad192729bb3ab0d221107ced05e0df27838eb8b5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HH/mathematik-gym-seki-2022-data.pdf",
+      "digest": "sha256:cd58d4f764c6e7f30d617133b2c437a5b0b1edf7c8bc8599032cd67ff2fc9251"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HB/06-12-06_mathe_gy.pdf",
+      "digest": "sha256:76f230175a036f0819f9cab202770dd3a1f6d3631ced221b17d4b80e00cc3672"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HB/Gy_Mathe_2006_inhalt_Einschraenkungen.pdf",
+      "digest": "sha256:4b2e5bc478eb44ed54a0c0c5ce0776a3179b74cf24cd99404f9bbc1bc856a9b5"
+    }
+  ],
+  "sourceInspection": "BW printed35–36/PDF37–38 text and PDF38 visually; SH67–68/74 text and67/74 visually; BB SekI61 text and visually; HH95–96 text and96 visually; HB2006 p10 text and visually plus binding 2022 restriction pp1–2 text. Additional BB Oberstufe and HE G9 source inspection did not resolve broad SekI scope.",
+  "mappingInspection": "Enumerated direct current mapping edges for each of five goal IDs; checked relevant source-extraction clauses; did not read D results, round A or synthesis. Broad raw applicability and ancestor mapping are not counted as normative leaf support.",
+  "projectionCheck": "Fresh read-only national atlas compilation, 83 source views; current Canon DE/EN and every target row equal the prepared inputs by deep equality. Full model digest sha256:991ec2c5e7eb7e7d2ad57fd320dcd5b81878f7f7be02efe08894209e4e4cb9d4.",
+  "scopeDecision": "All five blocked for concrete unresolved effective SekI jurisdiction/stage scope; mathematical descriptions retained and understanding-profile candidates still supplied.",
+  "timestampMeaning": "startedAt records final record assembly after evidence inspection."
+}

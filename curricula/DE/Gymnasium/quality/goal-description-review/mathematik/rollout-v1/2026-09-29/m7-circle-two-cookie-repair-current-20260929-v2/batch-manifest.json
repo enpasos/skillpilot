@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-circle-two-cookie-repair-current-20260929-v2",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-29/m7-circle-two-cookie-repair-current-20260929-v2.config.json",
+  "configDigest": "sha256:d0512848cf1a9fd82c364a6686e858809bb16ad48287a236ab2334ce6fcdc6c4",
+  "goalIds": [
+    "2f073195-52ef-5219-926c-f3f58ebdc556",
+    "4dbb8e8e-c0b5-5d51-8897-0024d77e8602"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 803,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:de35767eb7e9ebbf10de96e0cab2079cccb1b375414ed815f757d6f84c7969ec"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:67cf696fb5c93a19e42042fa20068fff8cd468dc2857b0f2e9a3e323f687cbd7",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:2bb78b9e3fa2ef75ebaa373896d183d0671db80e36255cf6f9eebef2f2899b0b",
+    "reviewInputFingerprint": "sha256:7236598149d2fc6303a9c3b5f2d38845ad714019ee424912784bdc6158781e68",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-circle-two-cookie-repair-current-20260929-v2-a",
+        "campaignDigest": "sha256:e88b1c778faa42b2096ae1a75c2bda8efa792a9e8daf293bbcf2a51005878e04",
+        "roundId": "mathematik-m7-circle-two-cookie-repair-current-20260929-v2-first-pass-a",
+        "independenceGroupId": "mathematik-m7-circle-two-cookie-repair-current-20260929-v2-independent-a",
+        "batchId": "mathematik-m7-circle-two-cookie-repair-current-20260929-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:fbc8f44789b8d73fd99ae4328197757619e9ffa59a941d35d805cb8df9365b0f"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-circle-two-cookie-repair-current-20260929-v2-b",
+        "campaignDigest": "sha256:d429d8cee6f73fba15ce45208ffb40c1f8da0c361a1dd1b66d782a16633a1980",
+        "roundId": "mathematik-m7-circle-two-cookie-repair-current-20260929-v2-first-pass-b",
+        "independenceGroupId": "mathematik-m7-circle-two-cookie-repair-current-20260929-v2-independent-b",
+        "batchId": "mathematik-m7-circle-two-cookie-repair-current-20260929-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:4892cbebc70eadeeee5e4def81bc3041d1c0af8857751ac8d199bc03528f1326"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

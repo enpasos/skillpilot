@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-j10-analysis-five-current-20260929-v1-first-pass-a.batch-001-codex-independent-source-audit",
+  "campaignId": "mathematik-m7-j10-analysis-five-current-20260929-v1-a",
+  "roundId": "mathematik-m7-j10-analysis-five-current-20260929-v1-first-pass-a",
+  "batchId": "mathematik-m7-j10-analysis-five-current-20260929-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:001046a9442f14acf34ef805669923a67e2a30701cd417c1843031e5fe2ed505",
+  "bundleFingerprint": "sha256:899aefc94f46d91126fe40caac174c8922f8d1bb8519a92c7de85130a5cc8458",
+  "bookDigest": "sha256:70f279ec4ec1145e29e8db4ec5565804d3f32ccf8728cd3e7a7abd061617e957",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:e819b929513f97adf3303ffc8b45ba9a891f0420ef3bda4f377f229464d3c9f1",
+  "independenceGroupId": "mathematik-m7-j10-analysis-five-current-20260929-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+    "2850e8f6-2330-50d3-a577-d519540d9924",
+    "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+    "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+    "ad66009f-55fb-563f-ace0-dbfeae7c76c3"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:001046a9442f14acf34ef805669923a67e2a30701cd417c1843031e5fe2ed505"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:fcb7c80f22ce0abbe6d0d4725b9aa7543dfe75482d45a72d9b16bf36262f3810"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:47e8bee6303ce3889b38732fd1b061277f8bf224553a5e34213a39615342398b"
+    }
+  ],
+  "startedAt": "2026-09-29T04:18:31Z",
+  "completedAt": "2026-09-29T04:20:05Z",
+  "status": "completed",
+  "outputDigest": "sha256:c935f2dc169d05865640f7f80f3eba8f7af58be665b45c9e08b4e5b937932182",
+  "toolchainVersion": "skillpilot-goal-description-review-v2"
+}

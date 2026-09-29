@@ -1,0 +1,85 @@
+{
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex session (exact deployment identifier not exposed)",
+  "execution": "independent delegated Codex review; no external model API call",
+  "samplingParameters": "not exposed by host",
+  "blindToOtherReviews": true,
+  "otherRoundResultsRead": false,
+  "priorDescriptionReviewResultsRead": false,
+  "reviewScope": "D; image observations are separate V findings, not V approval",
+  "currentCanonCompared": true,
+  "bookPdfGoalPagesVisuallyInspected": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "actualImagesVisuallyInspected": [
+    {
+      "goalId": "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+      "digest": "sha256:8b51e4c6ce5b4ea22b5c99fea509255c270b7cdf1050e8a0c4b17559cfae1101"
+    },
+    {
+      "goalId": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+      "digest": "sha256:faa0b30c7d896ea59413c3fcff773e0c405e7b301e0c3718bbbf79c3860d91cc"
+    },
+    {
+      "goalId": "d1352ce0-9502-5039-9af6-318fe385b6fd",
+      "digest": "sha256:e4cdef9030e7c66f871c8cd10ebaac0b058a14fb3dd4a82da12c34591c0aeb7e"
+    },
+    {
+      "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+      "digest": "sha256:d0d3ef0810072d8b31874a70f9b3378e682f414aa527b955c0b7e4e40bee4fcc"
+    },
+    {
+      "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+      "digest": "sha256:0daaddf6f333f56d16fc7bad130358e93fbccdb7fa2ad2c11be1d6a0e918ed0b"
+    },
+    {
+      "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "digest": "sha256:6051d71316742e7083d6328eaac7f043329733b0a0c6705835283b3f25f49436"
+    },
+    {
+      "goalId": "bea0e5a0-4833-5337-b6f1-7251b8cf8089",
+      "digest": "sha256:a7e1ec3af922de59849a1c463aa06c725e3ead5ea6cb7b66a10acf40c060f77e"
+    },
+    {
+      "goalId": "235ae698-369f-4dbe-b46f-87e8b65bb03d",
+      "digest": "sha256:746f81f2827dfc60c390f95f6f5afc510ab5e5dd75bb946a774b16a64e441221"
+    }
+  ],
+  "sourceArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "digest": "sha256:1ffa69341cd697db09a48bab0707b38381340ef2b53a9dc359e06c13db9e8f56"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.pdf",
+      "digest": "sha256:b085465143648b3f44c894f8eb0a5ee5d1928cbb1c4c60b3b249559709d26014"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+      "digest": "sha256:d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+      "digest": "sha256:17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SL/LP_MA_gym9_5und6_2023.pdf",
+      "digest": "sha256:fd684fe9e30f4f072e98ed9dee7b28c8f1a7711dc9e104b0b390d33d418d950b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BB/upper-secondary/Teil_C_RLP_GOST_2022_Mathematik.pdf",
+      "digest": "sha256:3c8c0df6901b6a6e7a1dff4f2d563696c32c43b19c1d0bcf401a0dc4fd224d79"
+    }
+  ],
+  "mappingInspection": "Current BW, HE, SH, BB, SL mapping/source-extraction records; no prior D outcomes. Surrogate registry inspected only as current source-bridge context, never as wording authority.",
+  "sourceCoverageLimit": "Original source checks establish specific content and the concrete SL/BB midpoint conflict; this run is not a complete new audit of every source clause in all 16 jurisdictions.",
+  "projectionCheck": "Fresh read-only loadGoalBookBuildInputs on national atlas; 83 compiled source views; all 8 package goal descriptions and applicability arrays match live model. Live full atlas digest sha256:b1f5d7623975b03a6fb6621ed8c1dcef14e834d3628577a171a1bcba04d99676.",
+  "timestampMeaning": "startedAt records final record-assembly start after current-session evidence inspection; not a reconstructed wall-clock start of all reading."
+}

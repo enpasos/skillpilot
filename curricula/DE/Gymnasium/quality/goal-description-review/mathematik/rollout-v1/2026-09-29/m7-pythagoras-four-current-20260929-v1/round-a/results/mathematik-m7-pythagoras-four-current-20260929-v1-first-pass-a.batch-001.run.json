@@ -1,0 +1,45 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-pythagoras-four-current-20260929-v1-first-pass-a.batch-001.codex-independent-a",
+  "campaignId": "mathematik-m7-pythagoras-four-current-20260929-v1-a",
+  "roundId": "mathematik-m7-pythagoras-four-current-20260929-v1-first-pass-a",
+  "batchId": "mathematik-m7-pythagoras-four-current-20260929-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:b0c336a5eb528b27a47d7af3e308f04a476d879e3c60a5b2c6f610ccc61885a1",
+  "bundleFingerprint": "sha256:a325be49a571f3a28c4ec1d41736d47ab6a84ffb90644059ec534c250be8f52f",
+  "bookDigest": "sha256:63676fc8cdf437b23a221746db249da60c2d0dc1a00113ca26f1b2ae232cab4d",
+  "provider": "OpenAI",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:9d8eb722d799767c1cf186ffa0716ffcc43881deae04a023a1bd9c8e51917a8a",
+  "independenceGroupId": "mathematik-m7-pythagoras-four-current-20260929-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+    "3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
+    "487ec508-f421-5a5a-a84c-98f88a8fb3e5",
+    "6a3502ee-b616-5db7-88fc-8951f33c9f63"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:b0c336a5eb528b27a47d7af3e308f04a476d879e3c60a5b2c6f610ccc61885a1"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-29T03:07:26Z",
+  "completedAt": "2026-09-29T03:07:26Z",
+  "status": "completed",
+  "outputDigest": "sha256:11b8d035c756b13a67881b4c2446017fd35a40af65cd8ca8f27c330a466ec665",
+  "toolchainVersion": "codex-independent-description-review-v2"
+}

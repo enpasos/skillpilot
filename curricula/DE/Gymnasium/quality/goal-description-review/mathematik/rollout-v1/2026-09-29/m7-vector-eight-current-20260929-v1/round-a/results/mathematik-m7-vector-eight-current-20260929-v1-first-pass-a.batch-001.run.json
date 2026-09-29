@@ -1,0 +1,49 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-vector-eight-current-20260929-v1-first-pass-a.batch-001.codex-current-vector-independent-a",
+  "campaignId": "mathematik-m7-vector-eight-current-20260929-v1-a",
+  "roundId": "mathematik-m7-vector-eight-current-20260929-v1-first-pass-a",
+  "batchId": "mathematik-m7-vector-eight-current-20260929-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:92e616fcdded51cf8eaab272bbc551c87c3fac5acf6adb2fe4ce813b46766413",
+  "bundleFingerprint": "sha256:716c237f11500bf8b033f63832d35c50959f3b2622823834608d8174cbb926e4",
+  "bookDigest": "sha256:995e87163ea455b3865e5f1303075391153eb6653648622f0a942275ad7c370c",
+  "provider": "OpenAI",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:b7d2615d114c09a2cd8c83d93e115ebf70f59361185297bbeb4a6f7b718a48ea",
+  "independenceGroupId": "mathematik-m7-vector-eight-current-20260929-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+    "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+    "d1352ce0-9502-5039-9af6-318fe385b6fd",
+    "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+    "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+    "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+    "bea0e5a0-4833-5337-b6f1-7251b8cf8089",
+    "235ae698-369f-4dbe-b46f-87e8b65bb03d"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:92e616fcdded51cf8eaab272bbc551c87c3fac5acf6adb2fe4ce813b46766413"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-29T03:38:40Z",
+  "completedAt": "2026-09-29T03:38:40Z",
+  "status": "completed",
+  "outputDigest": "sha256:471cceece7cb2c5f8f2f80455cb0c9ce78a2987ed59361cda89c810977dbf290",
+  "toolchainVersion": "codex-current-vector-description-review-v1"
+}

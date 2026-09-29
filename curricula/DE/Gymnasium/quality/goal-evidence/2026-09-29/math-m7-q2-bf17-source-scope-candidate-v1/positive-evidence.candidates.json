@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-q2-bf17-source-scope-candidate-20260929-v1",
+  "reviewedAt": "2026-09-29T04:29:42Z",
+  "reviewer": "Codex AI author; current Canon, actual assets, source PDFs and route scope reviewed; AI candidate only, no human approval",
+  "goals": [
+    {
+      "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+      "reason": "Current Canon DE/EN asks choosing an extended function class for a situation and interpreting parameters. HE KC 2024 Q2.1 printed p.40 offers simple rational and square-root classes to GK/LK; its Q1.3 printed p.37 places logistic growth in LK. The opened JPEG gives a coherent logistic example N(t)=1000/(1+9e^(−0.4t)), N(0)=100 and capacity 1000, but this is only a special LK example and cannot supply broad GK source evidence. The fresh cases deliberately use rational and square-root choices within the shared GK scope. The old HE/NI legacy mapping has no current HE extraction edge for this exact target; source and image-scope dissent is recorded separately. AI candidate only.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Source and visualization scope unresolved: present HE/NI legacy mappings do not establish a current direct source-extraction binding for this broad 16-jurisdiction GK/LK target; HE logistic growth, shown in its sole image, is LK-only. This P profile tests the current Canon wording with GK-compatible rational and square-root cases, but neither the old map nor the image is approval of the broad source/visualization scope."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "class-choice-and-parameter-meaning",
+            "essentialUnderstandingDe": "Die Struktur einer Sachsituation und die Datenentwicklung begründen die Wahl einer Funktionsklasse; die Parameter beschreiben Größen im Kontext und ihr zulässiger Bereich folgt aus dem Kontext. Die Wahl ist am Verhalten der Werte prüfbar.",
+            "essentialUnderstandingEn": "The situation’s structure and data pattern justify the function-class choice; parameters represent contextual quantities and their admissible domain follows from the context. The choice is testable against the values.",
+            "observablePerformanceDe": "Die lernende Person wählt in zwei strukturell verschiedenen neuen Situationen eine passende erweiterte Funktionsklasse, formuliert ein einfaches Modell, begründet die Wahl anhand einer charakteristischen Beziehung und deutet die Parameter mit sinnvoller Domäne.",
+            "observablePerformanceEn": "The learner chooses a suitable extended function class in two structurally different new situations, formulates a simple model, justifies the choice using a characteristic relation, and interprets the parameters with a sensible domain."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "class-choice-and-parameter-meaning"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "function-family-and-variable-meaning",
+            "textDe": "Umgekehrt proportionale Arbeitszeit nach Anzahl identischer Pumpen gegenüber Wurzelbeziehung zwischen Kreisfläche und Radius.",
+            "textEn": "Inverse proportional work time versus number of identical pumps, compared with a square-root relation between circular area and radius."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "parallel-pumps-reciprocal",
+            "taskDemandDe": "Identische Pumpen brauchen gemeinsam für dasselbe Becken bei n=1,2,4 Pumpen jeweils 24,12,6 Stunden. Wähle zwischen einer linearen und einer einfachen gebrochenrationalen Klasse, gib T(n) an und deute den Parameter sowie die zulässigen n.",
+            "taskDemandEn": "Identical pumps need 24, 12, and 6 hours to fill the same pool when n=1,2,4 pumps work together. Choose between a linear and a simple rational class, give T(n), and interpret its parameter and valid n values.",
+            "expectedPerformanceDe": "Bei konstanter gemeinsamer Arbeit halbiert Verdoppeln der Pumpenzahl die Zeit; T(n)=24/n Stunden passt allen drei Werten. 24 Stunden ist die Zeit einer Pumpe bzw. die gesamte Arbeit in Pumpenstunden. n ist hier eine positive ganze Anzahl, n=0 ist nicht zulässig. Eine lineare Abnahme hätte konstante Zeitänderung pro zusätzlicher Pumpe und passt dem Halbierungsverhalten nicht.",
+            "expectedPerformanceEn": "With fixed total work, doubling the number of pumps halves the time; T(n)=24/n hours fits all three values. The parameter 24 hours is the single-pump time, or the total work in pump-hours. Here n is a positive integer and n=0 is inadmissible. A linear decrease would give a constant time change per extra pump and does not match the halving behavior.",
+            "understandingFocusDe": "Die Entscheidung für 1/n folgt aus der konstanten Gesamtarbeit und den Datenverhältnissen; der Parameter erhält eine Einheit und eine reale Bedeutung.",
+            "understandingFocusEn": "The 1/n choice follows from constant total work and the data ratios; the parameter has a unit and a contextual meaning."
+          },
+          {
+            "id": "circular-area-square-root",
+            "taskDemandDe": "Für kreisförmige Pflanzbeete werden Flächen A=9π m² und A=16π m² gemessen; die Radien sind 3 m und 4 m. Wähle für r als Funktion von A zwischen linearer und Wurzelklasse, bestimme r(A) und deute den Faktor und die Domäne. Sage den Radius bei A=25π m² voraus.",
+            "taskDemandEn": "Circular flowerbeds have measured areas A=9π m² and A=16π m² and radii 3 m and 4 m. For r as a function of A, choose between a linear and a square-root class, determine r(A), interpret its factor and domain, and predict r at A=25π m².",
+            "expectedPerformanceDe": "A=πr² für Kreise, daher r(A)=√(A/π)=(1/√π)√A für A≥0. Der Faktor 1/√π setzt Flächenmaß in Radiusmaß für die Kreisform um; bei A=25π m² ist r=5 m. Vierfache Fläche ergibt doppelten Radius, nicht vierfachen, und begründet die Wurzelklasse gegenüber einer linearen Klasse.",
+            "expectedPerformanceEn": "For circles A=πr², so r(A)=√(A/π)=(1/√π)√A for A≥0. The factor 1/√π converts area scale to radius scale for a circle; A=25π m² gives r=5 m. Quadrupling area doubles rather than quadruples radius, supporting the square-root rather than a linear class.",
+            "understandingFocusDe": "Die umgekehrte Flächenbeziehung bestimmt Funktionsklasse, Parameter und physikalisch sinnvolle Domäne unabhängig vom Pumpenfall.",
+            "understandingFocusEn": "The inverted area relation determines class, parameter, and physically meaningful domain independently of the pump case."
+          }
+        ]
+      }
+    }
+  ]
+}

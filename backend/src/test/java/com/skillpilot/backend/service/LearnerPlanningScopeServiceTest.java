@@ -187,6 +187,7 @@ class LearnerPlanningScopeServiceTest {
         String hessenFixedPoints = "d3c42193-f1b7-5c6d-a991-bf034d99359f";
         String bavariaModelValidation = "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2";
         String advancedParallelProjection = "803d910d-96d1-5118-b9ca-29e93d0da76d";
+        String advancedSequenceAnalysis = "b66d13c5-187e-530b-b4d3-efc7506a7f34";
         String advancedIntegralContext = "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35";
         String bavariaNormalDistribution = "b431148b-526c-4bde-b04b-48d23101d0d3";
         String bavariaExponentialGrowth = "49f9059a-876c-5051-8146-d008b5cc691c";
@@ -220,11 +221,11 @@ class LearnerPlanningScopeServiceTest {
 
         selectMathScope("DE-NI", "GK");
         assertThat(learnerService.getPlanningScope(LEARNER_ID, MATH_LANDSCAPE_ID).scopeAtomicGoalIds())
-                .doesNotContain(advancedParallelProjection, advancedIntegralContext);
+                .doesNotContain(advancedParallelProjection, advancedIntegralContext, advancedSequenceAnalysis);
         selectMathScope("DE-NI", "LK");
         assertThat(learnerService.getPlanningScope(LEARNER_ID, MATH_LANDSCAPE_ID).scopeAtomicGoalIds())
-                .contains(advancedParallelProjection)
-                .doesNotContain(advancedIntegralContext);
+                .contains(advancedSequenceAnalysis)
+                .doesNotContain(advancedParallelProjection, advancedIntegralContext);
     }
 
     @Test

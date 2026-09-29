@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: OpenAI imagegen (edited SkillPilot asset)
+- Provider: OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)
 - Status: pilot
 - Quellbild: `2f073195-52ef-5219-926c-f3f58ebdc556.png`
 - Public Asset: `/assets/goal-visualizations/mathematik/2f073195-52ef-5219-926c-f3f58ebdc556/2f073195-52ef-5219-926c-f3f58ebdc556.png`
@@ -16,7 +16,7 @@
 ## Prompt
 
 ```text
-Edit this German mathematics infographic with surgical precision. Fix exactly one visual error: on the RIGHT half-circle panel, the black curved pointer from the box 'b = π · r = 4π cm ≈ 12,57 cm' currently lands on the blue straight diameter. Make that pointer terminate clearly on the thick RED curved semicircle arc near its upper-left region instead. The other black pointer from the 'Gesamtumfang' box must still point to the combined outline/diameter as appropriate. Keep all printed numbers, symbols, geometry, red and blue color coding, layout, all other arrows, and all wording unchanged and legible. The half circle has r=4 cm and d=8 cm, the arc length is 4π cm and total perimeter is 4π+8 cm; the full circle has r=3cm, d=6cm, U=6πcm and A=9πcm². Preserve the original style and aspect ratio; do not add any new explanatory copy.
+Use case: ultra-local precise bitmap edit of the supplied German circle infographic. Change ONLY the thin red curved highlight above the SMALL stone bridge at upper right. The red highlight must follow the OUTER curved contour of the stone bridge continuously from the left bridge foot where the stone meets the green ground, up over the arch, and down to the right bridge foot where stone meets ground. Both red arrowheads/endpoints should be at ground level at the two bridge feet, NOT floating halfway up the sides. There must be NO red line along the horizontal ground, oval ground path, or inside the bridge opening. Keep the bridge masonry, green ground, path, labels 'Bogenlänge' and 'Brückenbogen', and all other details unchanged. Preserve the rest of the entire infographic exactly, including full circle, semicircle, pizza, garden, cookie, all formulas and values, art style and typography. No new elements.
 ```
 
 ## Review-Notiz

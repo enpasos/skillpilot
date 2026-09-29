@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-pythagoras-four-current-20260929-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-29/m7-pythagoras-four-current-20260929-v1.config.json",
+  "configDigest": "sha256:9ef31887a1e43547765b190b7194444843a792f0678b4af92822f48353e740fb",
+  "goalIds": [
+    "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+    "3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
+    "487ec508-f421-5a5a-a84c-98f88a8fb3e5",
+    "6a3502ee-b616-5db7-88fc-8951f33c9f63"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 803,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:170ddcb3705770d8f549d43eb37e72427db107058cfbcc942c6287e3b5be17a5"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:63676fc8cdf437b23a221746db249da60c2d0dc1a00113ca26f1b2ae232cab4d",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:a325be49a571f3a28c4ec1d41736d47ab6a84ffb90644059ec534c250be8f52f",
+    "reviewInputFingerprint": "sha256:705c1d4d3dc82ded18c0f252ae3f51b5d565e766ad0754faa8a0dbc815b4fc77",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-pythagoras-four-current-20260929-v1-a",
+        "campaignDigest": "sha256:44a9dba50b7f39082e457c3bc4fb3fed5b7f02a5419bc4b100f3e26f85910b54",
+        "roundId": "mathematik-m7-pythagoras-four-current-20260929-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-pythagoras-four-current-20260929-v1-independent-a",
+        "batchId": "mathematik-m7-pythagoras-four-current-20260929-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:b0c336a5eb528b27a47d7af3e308f04a476d879e3c60a5b2c6f610ccc61885a1"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-pythagoras-four-current-20260929-v1-b",
+        "campaignDigest": "sha256:b9eef3e38c7c232b8fe431a82c046cb40196fa99cf42bc21a316f26e745c5c7d",
+        "roundId": "mathematik-m7-pythagoras-four-current-20260929-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-pythagoras-four-current-20260929-v1-independent-b",
+        "batchId": "mathematik-m7-pythagoras-four-current-20260929-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:0c1201876cc98639a4e321cb7fb061360efdad11ce3f1686ebd7af33049df4ce"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

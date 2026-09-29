@@ -65,7 +65,7 @@ const FIXTURE_ASSET_DIGEST = `sha256:${'1'.repeat(64)}`
 // Current authoring checkpoint, not a review or publication approval. The
 // nationwide atlas keeps all current curricular-atomic page IDs; this digest binds current text,
 // visuals, exam edges and explicit LK applicability.
-const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:170ddcb3705770d8f549d43eb37e72427db107058cfbcc942c6287e3b5be17a5'
+const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:1633ca346ee8f2614a73999f44676d962e49c71194806cc7fa580631d5e16134'
 
 const goal = ({
   id,
@@ -1045,7 +1045,6 @@ assert.equal(canonicalGoalById.get('7d37513b-fa1a-54cc-9e2a-9279a381f0f0')?.requ
 for (const [goalId, jurisdiction] of [
   ['d3c42193-f1b7-5c6d-a991-bf034d99359f', 'DE-HE'],
   ['803d910d-96d1-5118-b9ca-29e93d0da76d', 'DE-HE'],
-  ['803d910d-96d1-5118-b9ca-29e93d0da76d', 'DE-NI'],
 ] as const) {
   const canonicalGoal = canonicalGoalById.get(goalId)
   assert.ok(canonicalGoal)
@@ -1057,6 +1056,22 @@ for (const [goalId, jurisdiction] of [
   assert.ok(scopes.some((scope) => scope.stage === 'SekII' && scope.courseProfile === 'LK'))
   assert.equal(scopes.some((scope) => scope.stage === 'SekII' && scope.courseProfile === 'GK'), false)
 }
+// The q2-matrix source-scope decision limits this full R³ projection goal to HE/LK.
+// NI's narrower 2×3 Schrägbild projection remains a prerequisite reference only.
+const niMatrixGoalId = '803d910d-96d1-5118-b9ca-29e93d0da76d'
+const niMatrixPage = nationalAtlas.pages.find(({ goalId }) => goalId === niMatrixGoalId)
+assert.ok(niMatrixPage)
+assert.equal(niMatrixPage.applicability?.some(({ jurisdiction }) => jurisdiction === 'DE-NI'), false)
+const niLkView = JSON.parse(await readFile(fileURLToPath(new URL(
+  '../../curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json',
+  import.meta.url,
+)), 'utf8')) as {
+  rootNodes: Array<{ kind: string; goalId?: string; projectionRole?: string }>
+}
+assert.equal(
+  niLkView.rootNodes.find(({ kind, goalId }) => kind === 'goalEntry' && goalId === niMatrixGoalId)?.projectionRole,
+  'prerequisiteOnly',
+)
 const bavarianIntegralApplicationId = '0b162cb0-8507-5ac2-b9d6-57f40f4d3f35'
 const bavarianIntegralApplication = canonicalGoalById.get(bavarianIntegralApplicationId)
 assert.ok(bavarianIntegralApplication)

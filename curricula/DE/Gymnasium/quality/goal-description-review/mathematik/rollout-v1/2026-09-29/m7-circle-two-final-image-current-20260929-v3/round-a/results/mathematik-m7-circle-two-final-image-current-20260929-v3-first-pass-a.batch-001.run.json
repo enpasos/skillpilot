@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-circle-two-final-image-current-20260929-v3-first-pass-a.batch-001-codex-root-final-image-reinspection",
+  "campaignId": "mathematik-m7-circle-two-final-image-current-20260929-v3-a",
+  "roundId": "mathematik-m7-circle-two-final-image-current-20260929-v3-first-pass-a",
+  "batchId": "mathematik-m7-circle-two-final-image-current-20260929-v3-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:e6a0d030007d260da16396ad3751b20e1d850a12f30f2c0d5a43f7f1e869e03f",
+  "bundleFingerprint": "sha256:11f9b08b0a6e6a5b721eb97e6e4ff71839709f8d479a043b2c94ef62ca304abc",
+  "bookDigest": "sha256:fa0146963cac29afa0f4760bd94f09ba663559ef9a267768bd85153b4ba2ed71",
+  "provider": "OpenAI",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:3b5c49d69e7cb19be9e2e7fb37b7cdda62395f7611e2d1178834a78f234ca38b",
+  "independenceGroupId": "mathematik-m7-circle-two-final-image-current-20260929-v3-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "2f073195-52ef-5219-926c-f3f58ebdc556",
+    "4dbb8e8e-c0b5-5d51-8897-0024d77e8602"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:e20faf6202be3c4af46cb758c81042c744106dcf031e37fbea3d06f77e179012"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e6a0d030007d260da16396ad3751b20e1d850a12f30f2c0d5a43f7f1e869e03f"
+    }
+  ],
+  "startedAt": "2026-09-29T03:43:00Z",
+  "completedAt": "2026-09-29T03:44:00Z",
+  "status": "completed",
+  "outputDigest": "sha256:8501f389cc954f89e64baf79f9afe68f15a8c96b1154f2336f4a74ca380b0e69",
+  "toolchainVersion": "codex-root-targeted-circle-final-image-v3"
+}

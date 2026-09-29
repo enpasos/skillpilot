@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `app/public/data/goal-source-rationales-math-public.json`
 
-Generated: 2026-09-28T14:49:24.882Z
+Generated: 2026-09-29T07:44:19.287Z
 
 Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.
 
@@ -16,27 +16,27 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Metric | Value |
 | --- | --- |
-| Alle Mathematik-Ziele | 1231 |
-| Atomare Blattleernziele | 958 |
-| Davon relevant fuer Quellenbegruendung | 803 |
-| Memory-/Nicht-Content-Blattziele | 155 |
-| Clusterziele | 273 |
-| Runtime-Quellenbegruendungen | 749 |
-| Runtime-Ziele mit klassischem Quellenweg | 749 |
+| Alle Mathematik-Ziele | 1240 |
+| Atomare Blattleernziele | 966 |
+| Davon relevant fuer Quellenbegruendung | 807 |
+| Memory-/Nicht-Content-Blattziele | 159 |
+| Clusterziele | 274 |
+| Runtime-Quellenbegruendungen | 753 |
+| Runtime-Ziele mit klassischem Quellenweg | 753 |
 | Runtime-Ziele mit MEM/FWU-konsistenter Route | 234 |
-| Relevante Blattziele mit klassischem Quellenweg | 749/803 (93.3%) |
-| Relevante Blattziele mit MEM/FWU-konsistenter Route | 234/803 (29.1%) |
+| Relevante Blattziele mit klassischem Quellenweg | 753/807 (93.3%) |
+| Relevante Blattziele mit MEM/FWU-konsistenter Route | 234/807 (29.0%) |
 | Relevante Blattziele ohne Runtime-Quellenbegruendung | 54 |
 | Relevante Blattziele mit Runtime-Classic-Gap | 0 |
-| Cluster mit direkter Runtime-Quellenbegruendung | 0/273 |
-| Cluster ohne direkte Runtime-Quellenbegruendung | 273 |
-| contains-Relationen mit Begruendungstext | 0/1366 |
-| requires-Relationen mit Begruendungstext | 0/2466 |
+| Cluster mit direkter Runtime-Quellenbegruendung | 0/274 |
+| Cluster ohne direkte Runtime-Quellenbegruendung | 274 |
+| contains-Relationen mit Begruendungstext | 0/1375 |
+| requires-Relationen mit Begruendungstext | 0/2482 |
 
 ## Interpretation
 
 - Die Runtime-Datei enthaelt aktuell direkte Quellenbegruendungen fuer alle bereits klassisch belegten relevanten Mathematik-Blattziele. Sie deckt Zielknoten ab, aber noch keine `requires`- oder `contains`-Relationstexte.
-- Die 749 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.
+- Die 753 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.
 - MEM/FWU-SPARQL ist nur dort als konsistent gezaehlt, wo der klassische Quellenweg bereits auf einen passenden MEM-Erwartungstext gematcht werden konnte.
 
 ## Gaps By Phase
@@ -45,10 +45,10 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | --- | --- | --- | --- | --- |
 | Q4 | 162 | 123 (75.9%) | 39 (24.1%) | 39 |
 | E | 96 | 88 (91.7%) | 25 (26.0%) | 8 |
-| Q2 | 138 | 135 (97.8%) | 20 (14.5%) | 3 |
+| Q2 | 141 | 138 (97.9%) | 20 (14.2%) | 3 |
 | Q3 | 76 | 73 (96.1%) | 16 (21.1%) | 3 |
 | J9 | 51 | 50 (98.0%) | 18 (35.3%) | 1 |
-| J10 | 60 | 60 (100.0%) | 23 (38.3%) | 0 |
+| J10 | 61 | 61 (100.0%) | 23 (37.7%) | 0 |
 | Q1 | 48 | 48 (100.0%) | 11 (22.9%) | 0 |
 | J7 | 47 | 47 (100.0%) | 19 (40.4%) | 0 |
 | J6 | 43 | 43 (100.0%) | 22 (51.2%) | 0 |
@@ -63,8 +63,8 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | unknown | 382 | 334 (87.4%) | 70 (18.3%) | 48 |
 | Analysis | 133 | 128 (96.2%) | 40 (30.1%) | 5 |
 | Stochastics | 2 | 1 (50.0%) | 1 (50.0%) | 1 |
-| Geometry | 88 | 88 (100.0%) | 43 (48.9%) | 0 |
-| LinearAlgebra | 67 | 67 (100.0%) | 7 (10.4%) | 0 |
+| Geometry | 89 | 89 (100.0%) | 43 (48.3%) | 0 |
+| LinearAlgebra | 70 | 70 (100.0%) | 7 (10.0%) | 0 |
 | Algebra | 56 | 56 (100.0%) | 33 (58.9%) | 0 |
 | Arithmetic | 46 | 46 (100.0%) | 24 (52.2%) | 0 |
 | Measurement | 11 | 11 (100.0%) | 4 (36.4%) | 0 |
@@ -165,6 +165,8 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Vektorprodukt definieren (LK) (canonical_math_q2_define_vector_product_lk) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.VECTOR_PRODUCT_DEFINITION_LK | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Vektorprodukt definieren (LK) |
 | Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK) (canonical_math_q2_apply_vector_product_for_normals_and_areas_lk) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.VECTOR_PRODUCT_NORMALS_AREAS_LK | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK) |
 | Winkel zwischen zwei Ebenen berechnen (canonical_math_q2_compute_angle_between_two_planes) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.PLANE_PLANE_ANGLE | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Winkel zwischen zwei Ebenen berechnen |
+| Fixgeraden affiner Abbildungen untersuchen (LK, A1) (canonical_math_rp_sek2_lk_a1_affine_invariant_lines) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.RP.LK.A1.AFFINE_INVARIANT_LINES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Affine Abbildungen – Wahlpflichtgebiet A1 (RP) > Fixgeraden affiner Abbildungen untersuchen (LK, A1) |
+| Fixpunktmengen affiner Abbildungen bestimmen (LK, A1) (canonical_math_rp_sek2_lk_a1_affine_fixed_point_sets) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.RP.LK.A1.AFFINE_FIXED_POINT_SETS | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Affine Abbildungen – Wahlpflichtgebiet A1 (RP) > Fixpunktmengen affiner Abbildungen bestimmen (LK, A1) |
 | Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen (canonical_math_q2_find_line_coordinate_plane_intersections_spur_points) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.LINE_COORDINATE_PLANE_SPUR_POINTS | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Geraden, Ebenen und Gleichungsformen im Raum > Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen |
 | Ebenen in Parameterform angeben und interpretieren | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Geraden, Ebenen und Gleichungsformen im Raum > Ebenen durch verschiedene Gleichungsformen beschreiben > Ebenen in Parameterform angeben und interpretieren |
 | Koordinatenform einer Ebene aufstellen und interpretieren | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Geraden, Ebenen und Gleichungsformen im Raum > Ebenen durch verschiedene Gleichungsformen beschreiben > Koordinatenform einer Ebene aufstellen und interpretieren |
@@ -215,16 +217,14 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Übergangsprozesse mit Zustandsvektoren und Übergangsmatrizen beschreiben (canonical_math_q2_describe_transition_processes_with_state_vectors_and_transition_matrices) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.4.STATE_VECTORS_TRANSITION_MATRICES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) > Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen > Übergangsprozesse mit Zustandsvektoren und Übergangsmatrizen beschreiben |
 | Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen (canonical_math_q2_assess_backward_markov_calculations_for_validity_and_uniqueness) | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) > Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen > Zustände in Markov-Ketten berechnen > Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen |
 | Zustände in Markov-Ketten vorwärts berechnen und deuten (canonical_math_q2_calculate_and_interpret_forward_markov_state_developments) | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) > Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen > Zustände in Markov-Ketten berechnen > Zustände in Markov-Ketten vorwärts berechnen und deuten |
+| Die Schwerpunktformel eines Dreiecks mit Ortsvektoren herleiten (LK) (canonical_math_sek2_sl_lk_triangle_centroid_derivation) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SL.LK.SPACE.TRIANGLE_CENTROID_DERIVATION | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Die Schwerpunktformel eines Dreiecks mit Ortsvektoren herleiten (LK) |
 | Geometriesoftware zur Raumorientierung nutzen (canonical_math_q2_use_geometry_software_for_spatial_orientation) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.GEOMETRY_SOFTWARE_SPATIAL_ORIENTATION | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Geometriesoftware zur Raumorientierung nutzen |
 | Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen |
 | Kollinearität von Vektoren im Raum prüfen (canonical_math_q2_check_collinearity_of_vectors_in_space) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.VECTOR_COLLINEARITY_SPACE | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Kollinearität von Vektoren im Raum prüfen |
 | Ähnlichkeitsbeziehungen ebener Figuren untersuchen (canonical_math_q2_analyze_plane_figures_area_congruence_similarity_similarity) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY.SIMILARITY | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften ebener Figuren für Flächenberechnungen untersuchen > Ähnlichkeitsbeziehungen ebener Figuren untersuchen |
 | Eigenschaften ebener Figuren für Flächenberechnungen nutzen (canonical_math_q2_analyze_plane_figures_area_congruence_similarity_area_properties) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY.AREA_PROPERTIES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften ebener Figuren für Flächenberechnungen untersuchen > Eigenschaften ebener Figuren für Flächenberechnungen nutzen |
-| Kongruenzbeziehungen ebener Figuren untersuchen (canonical_math_q2_analyze_plane_figures_area_congruence_similarity_congruence) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY.CONGRUENCE | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften ebener Figuren für Flächenberechnungen untersuchen > Kongruenzbeziehungen ebener Figuren untersuchen |
-| Längen- und Winkelbeziehungen einfacher Körper untersuchen (canonical_math_q2_analyze_properties_of_simple_solid_bodies_lengths_angles) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_SIMPLE_SOLID_BODY_PROPERTIES.LENGTHS_ANGLES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften einfacher geometrischer Körper untersuchen > Längen- und Winkelbeziehungen einfacher Körper untersuchen |
-| Parallelität und Orthogonalität einfacher Körper untersuchen (canonical_math_q2_analyze_properties_of_simple_solid_bodies_parallel_orthogonal) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_SIMPLE_SOLID_BODY_PROPERTIES.PARALLEL_ORTHOGONAL | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften einfacher geometrischer Körper untersuchen > Parallelität und Orthogonalität einfacher Körper untersuchen |
 
-Weitere 435 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 439 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Cluster Direct Rationale Pending
 
@@ -246,6 +246,7 @@ Weitere 435 Eintraege stehen in der JSON-Begleitdatei.
 | Lotfußpunktverfahren für Raumabstände (LK) (canonical_math_q2_apply_foot_point_methods_for_distances_between_points_lines_planes_lk) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.GENERAL_FOOT_POINT_DISTANCE_METHODS_LK | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Lotfußpunktverfahren für Raumabstände (LK) |
 | Punkt-Punkt- und Punkt-Ebene-Abstände im Raum bestimmen | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.POINT_POINT_AND_POINT_PLANE_DISTANCES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Punkt-Punkt- und Punkt-Ebene-Abstände im Raum bestimmen |
 | Punkte, Geraden und Ebenen allgemein spiegeln (LK) (canonical_math_q2_reflect_points_lines_and_planes_generally_lk) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.GENERAL_REFLECTION_POINTS_LINES_PLANES_LK | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Punkte, Geraden und Ebenen allgemein spiegeln (LK) |
+| Affine Abbildungen – Wahlpflichtgebiet A1 (RP) (canonical_math_rp_sek2_lk_a1_affine_transformations) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.RP.LK.A1.AFFINE_TRANSFORMATIONS | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Affine Abbildungen – Wahlpflichtgebiet A1 (RP) |
 | Geraden, Ebenen und Gleichungsformen im Raum | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.LINES_PLANES_AND_EQUATION_FORMS | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Geraden, Ebenen und Gleichungsformen im Raum |
 | Ebenen durch verschiedene Gleichungsformen beschreiben | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Geraden, Ebenen und Gleichungsformen im Raum > Ebenen durch verschiedene Gleichungsformen beschreiben |
 | Lagebeziehungen und Schnittmengen im Raum | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.RELATIONS_AND_INTERSECTIONS | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lagebeziehungen und Schnittmengen im Raum |
@@ -289,13 +290,12 @@ Weitere 435 Eintraege stehen in der JSON-Begleitdatei.
 | Funktionenscharen, Argumentieren und komplexe Zahlen | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen |
 | Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) (canonical_math_sek2_parameters_argumentation_complex) | GLOBAL | Analysis | CANONICAL.MATH.SEK2.PARAMETERS.ARGUMENTATION.COMPLEX | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) |
 | Funktionenscharen und Parameteruntersuchungen (Sek II) (canonical_math_sek2_function_families_parameters) | GLOBAL | Analysis | CANONICAL.MATH.SEK2.FUNCTION_FAMILIES.PARAMETERS | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Funktionenscharen und Parameteruntersuchungen (Sek II) |
-| Funktionenscharen und Parameteruntersuchungen | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Funktionenscharen und Parameteruntersuchungen (Sek II) > Funktionenscharen und Parameteruntersuchungen |
 
-Weitere 213 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 214 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Sources
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Runtime index: `app/public/data/goal-source-rationales-math-public.json`
-- Runtime index generated: 2026-09-28T14:49:13.211Z
+- Runtime index generated: 2026-09-29T07:22:21.468Z
 

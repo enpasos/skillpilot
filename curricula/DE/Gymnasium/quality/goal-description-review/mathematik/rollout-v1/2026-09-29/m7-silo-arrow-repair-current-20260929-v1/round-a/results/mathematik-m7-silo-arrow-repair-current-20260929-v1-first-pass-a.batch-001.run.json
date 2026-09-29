@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-silo-arrow-repair-current-20260929-v1-first-pass-a.batch-001-codex-root-current-silo-review",
+  "campaignId": "mathematik-m7-silo-arrow-repair-current-20260929-v1-a",
+  "roundId": "mathematik-m7-silo-arrow-repair-current-20260929-v1-first-pass-a",
+  "batchId": "mathematik-m7-silo-arrow-repair-current-20260929-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:79b2d989de729db188dd94605b2c6269d2d882dec9ec43f4cd23fa6add4abbeb",
+  "bundleFingerprint": "sha256:5f3c5c6d1abb3e0bfc2aaa06e9dc27de328c69e7b078d061ccc28d96902a1375",
+  "bookDigest": "sha256:7cdbe405c1b370b8be82fee98f36460076da50bc9fd340b02c146839d5087549",
+  "provider": "OpenAI",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:b2eb35d185fa6287b0062768e45d230e5380f4984cc9fa66b23e9d43b5519ac1",
+  "independenceGroupId": "mathematik-m7-silo-arrow-repair-current-20260929-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:108a426f311f3473ac5fb817a463e710b9b254aa48ac1068c916cd4129a3c741"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:79b2d989de729db188dd94605b2c6269d2d882dec9ec43f4cd23fa6add4abbeb"
+    }
+  ],
+  "startedAt": "2026-09-29T03:50:00Z",
+  "completedAt": "2026-09-29T03:57:00Z",
+  "status": "completed",
+  "outputDigest": "sha256:c589dd96cfcf26d26a990b0eb78d4aeb54e3df2dd82c901797b17de5e8bf6b55",
+  "toolchainVersion": "codex-root-targeted-silo-current-v1"
+}

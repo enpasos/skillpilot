@@ -1,0 +1,59 @@
+{
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex session (exact deployment identifier not exposed)",
+  "execution": "independent delegated Codex review; no external model API call",
+  "samplingParameters": "not exposed by host",
+  "blindToOtherReviews": true,
+  "otherRoundResultsRead": false,
+  "priorDescriptionReviewResultsRead": false,
+  "reviewScope": "D; separate image inspection does not grant V or human approval",
+  "bookPdfGoalPagesVisuallyInspected": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "imageInspection": "All four actual current PNGs opened and visually inspected; byte hashes equal prepared visualization bindings; all four PDF goal-page image renditions visually inspected.",
+  "imageDigests": {
+    "081c9802-6da7-5ae8-b78e-f99c2b2dbb14": "sha256:4d2d8170e20beca927eaa82696250221a1415439e4b3fdaa01b5b80b5d1996d7",
+    "3a69dab2-3fe8-5076-a980-5b7ac1bd1127": "sha256:c688cc8418d0481d20fa6684cd0b87dde683e969887617f39992307ac3579720",
+    "487ec508-f421-5a5a-a84c-98f88a8fb3e5": "sha256:bd98f29244650f931965ec217ab32ec0dae003ecb26c2b7f1a0b83b6495190fa",
+    "6a3502ee-b616-5db7-88fc-8951f33c9f63": "sha256:dd76447150b51af15d97264ef9eccd3d656ac51d2a380582a80028de145450c6"
+  },
+  "canonDeEnMatchesPreparedInput": true,
+  "sourceArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.pdf",
+      "digest": "sha256:b085465143648b3f44c894f8eb0a5ee5d1928cbb1c4c60b3b249559709d26014"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SL/LP_MA_gym9_9_2025.pdf",
+      "digest": "sha256:9589615f95f0728e6794abad3f85185a0ead8b69b63ba7dc96322aeca38571fd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "digest": "sha256:e9f33cbf4a9c7839670a98ce4b4676abc12d76536c7b7a113782f8c4c1ec05bd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+      "digest": "sha256:17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BB/lower-secondary/Teil_C_Mathematik_2015_10_13_Ma_14.08.2023_Berlin_23_11.pdf",
+      "digest": "sha256:eb191cca63670339a8d0e376ad192729bb3ab0d221107ced05e0df27838eb8b5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BE/lower-secondary/Teil_C_Mathematik_2015_10_13_Ma_14.08.2023_Berlin_23_11.pdf",
+      "digest": "sha256:eb191cca63670339a8d0e376ad192729bb3ab0d221107ced05e0df27838eb8b5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_I.pdf",
+      "digest": "sha256:005085fa940a3dfd7619ea274f5e16ee34c50ba452223774aca19fb4025abe61"
+    }
+  ],
+  "sourceInspection": "Original BW PDF36/printed34, SL pp20–21, HE KC p27, SH p41, BB p47 and RP PDF101/printed97 inspected directly as text and rendered pages. BE source independently hashed byte-identical to inspected BB source.",
+  "mappingInspection": "Current source-extraction mappings and direct normative clauses inspected without reading D review outcomes.",
+  "sourceCaveats": "BW criterion source page locator 33 should be printed34/PDF36; RP proof source located printed97/PDF101. Exact normative content found; no source or Canon edits made.",
+  "projectionCheck": "Fresh read-only national atlas compilation, 83 source views; current text and target applicability match all four prepared pages. Full atlas digest sha256:b1f5d7623975b03a6fb6621ed8c1dcef14e834d3628577a171a1bcba04d99676.",
+  "timestampMeaning": "startedAt records final record assembly after current-session evidence inspection."
+}

@@ -6,6 +6,8 @@ import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAut
 import {
   collectCanonicalMathSek1ReviewedExamRouteFindings,
   hasUnavailableCurricularAtomicAssessmentPrerequisite,
+  isAssessmentExplicitlyOutsideJurisdiction,
+  shouldRequireCanonicalMathSek1AssessmentEndpoint,
 } from './lib/canonicalMathSek1ReviewedExamRoutes'
 
 const canonicalPath = resolve(
@@ -96,4 +98,51 @@ assert.equal(hasUnavailableCurricularAtomicAssessmentPrerequisite(
   assessment, curricularAtomicGoalIds, new Set(['orientation-prerequisite']),
 ), true, 'A curricular goal available only as prerequisite support is still absent from the target projection.')
 
-console.log('Canonical Mathematics Sek-I reviewed exam-route regression tests passed, including exact assessment target applicability.')
+const terminal = { id: 'exam', requires: ['curricular-prerequisite'],
+  extendedData: { applicabilityFromRequires: true } }
+assert.equal(shouldRequireCanonicalMathSek1AssessmentEndpoint(
+  terminal, curricularAtomicGoalIds,
+  new Set(['exam', 'curricular-prerequisite']),
+  new Set(['curricular-prerequisite']),
+), false, 'A foreign exam explicitly shown only as prerequisite support is not a learner-facing terminal.')
+assert.equal(shouldRequireCanonicalMathSek1AssessmentEndpoint(
+  terminal, curricularAtomicGoalIds,
+  new Set(['exam', 'curricular-prerequisite']),
+  new Set(['exam', 'curricular-prerequisite']),
+), true, 'An authored target exam remains required.')
+assert.equal(shouldRequireCanonicalMathSek1AssessmentEndpoint(
+  terminal, curricularAtomicGoalIds,
+  new Set(['curricular-prerequisite']),
+  new Set(['curricular-prerequisite']),
+), true, 'A wholly missing exam must still fail route coverage when its assessed target is available.')
+assert.equal(shouldRequireCanonicalMathSek1AssessmentEndpoint(
+  terminal, curricularAtomicGoalIds, new Set(), new Set(),
+), false, 'Only exact unavailable curricular-atomic prerequisites may waive an absent derived exam.')
+assert.equal(shouldRequireCanonicalMathSek1AssessmentEndpoint(
+  { ...terminal, extendedData: {} }, curricularAtomicGoalIds, new Set(), new Set(),
+), true, 'An absent exam without applicabilityFromRequires must remain required.')
+
+for (const [goalId, homeJurisdiction] of [
+  ['5f6496ef-e4d2-5341-8a2c-3293b2e4e25a', 'DE-BW'],
+  ['79f5f4cc-10e1-56a5-8ed3-8cd51688db41', 'DE-SL'],
+] as const) {
+  const localAssessment = landscape.goals.find((goal) => goal.id === goalId)
+  assert.ok(localAssessment, `Missing regression assessment ${goalId}`)
+  assert.equal(isAssessmentExplicitlyOutsideJurisdiction(localAssessment, homeJurisdiction), false,
+    'A missing local assessment must remain a validation error in its own land.')
+  assert.equal(isAssessmentExplicitlyOutsideJurisdiction(localAssessment, 'DE-HE'), true,
+    'A foreign land need not display an explicitly land-specific assessment from a shared year folder.')
+  assert.equal(isAssessmentExplicitlyOutsideJurisdiction(localAssessment, undefined), false,
+    'The national catalog must still require every land-specific assessment.')
+}
+for (const unrestrictedAssessment of [undefined, {}, { applicability: {} },
+  { applicability: { jurisdiction: [] } }, { applicability: { jurisdiction: 'DE-BW' } },
+  { applicability: { jurisdiction: ['DE-BW', null] } }]) {
+  assert.equal(isAssessmentExplicitlyOutsideJurisdiction(unrestrictedAssessment, 'DE-HE'), false,
+    'Absent, unrestricted or malformed jurisdiction evidence must not waive a missing exam.')
+}
+assert.equal(isAssessmentExplicitlyOutsideJurisdiction(
+  { applicability: { jurisdiction: ['DE-BW', 'DE-SL'] } }, 'DE-SL',
+), false, 'Every explicitly included land retains its assessment requirement.')
+
+console.log('Canonical Mathematics Sek-I reviewed exam-route regression tests passed, including exact assessment target and jurisdiction applicability.')

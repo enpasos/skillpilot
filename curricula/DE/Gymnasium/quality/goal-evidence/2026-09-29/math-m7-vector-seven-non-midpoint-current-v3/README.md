@@ -1,0 +1,3 @@
+# Seven vector profiles retained after midpoint source-stage repair
+
+These seven current goals retain their reviewed positive-understanding v2 case semantics from `../math-m7-vector-eight-after-text-fixes-v2/`. Only `bea0e5a0` was separated because its current effective BW Sek-I and BB/SL Sek-II source placement required a targeted new rationale in `../math-m7-bea-crossstage-current-v1/`. The eight-goal package remains available as the earlier candidate record but is not registered because it would overlap the focused bea review. No human approval is claimed; all seven records remain `needs_human_review`.

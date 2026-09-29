@@ -1,0 +1,5 @@
+# Actual provider-facing targeted edit prompt for corrected PNG candidate 3
+
+Edit only the bottom “windschief” pictogram in the right-hand “Mögliche Fälle” box of the supplied PNG. The rest of the image is mathematically and visually correct and must remain unchanged, including every equation, number, label, main crossing, the “parallel” row and the single alternating-color path in the “identisch” row.
+
+The current windschief pictogram wrongly looks like another pair of parallel lines. Replace it with a tiny, friendly but geometrically clear 3D schematic: a blue line on a pale blue elevated tilted plane and a red line on a separate lower pale coral tilted plane. The two planes are visibly separated in depth; the blue and red lines have clearly **different** directions, are not parallel, and do not touch or share a point. Small perspective rhombi for the two planes are allowed. Keep the existing “windschief” label immediately below the icon. Do not make the lines cross at a yellow dot; this case has no intersection point. Preserve the rest of the right box and all main algebra perfectly.

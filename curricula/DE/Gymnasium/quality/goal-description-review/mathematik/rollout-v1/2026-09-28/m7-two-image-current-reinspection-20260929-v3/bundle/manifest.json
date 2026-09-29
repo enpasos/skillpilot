@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:87a974bb3a547e08df582260fa16fddd72b5752a15893348c8c7c14fa7dd327f",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "de-gym-math-m7-two-image-current-reinspection-20260929-v3",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/lernziel-feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 2,
+  "goals": [
+    {
+      "goalId": "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:fb041587b46b6fe78f4473584207a1cb0c59b52bec8aa501028950b4b8e91b18",
+      "pageFingerprint": "sha256:e48914de5e1e63bcd94120305e1ba6401ae466a408a8cac30fd37bef3b2fea23",
+      "evidenceReview": null
+    },
+    {
+      "goalId": "5619ca5b-dc2a-504e-ad89-2e0ca0a83822",
+      "pageNumber": 2,
+      "goalFingerprint": "sha256:abc26a3daa02fb105ebd31037ff94481889d19c5b2320164e72a1d0dd95ad529",
+      "pageFingerprint": "sha256:e8ee7523f62e3bb9ac1509ea2066c590ff1bd66094a874c4013721c43ae5ecd2",
+      "evidenceReview": null
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:b2c446332afa31450200b3aa4fe065cae39a0c4b9bc6e1d752254e6f4e806a33",
+      "bytes": 550885
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:1d7284dbf306e0622554de89f884e276702c029296a65d7d841e8fa5c570b3aa",
+      "bytes": 283459
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:6e89b506d9f2c15cd46ae855ebe388510ed7a3fc90f7b4f69bd4d79ba7216fcd",
+      "bytes": 6676
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:881323797ba24a5af669fb957e80936c8264f96dcbb17671c77962628dde5a50",
+      "bytes": 400934
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:a3abd26e4574aaf59fbae8acafb761be9f0c6a5bf278fb71b826b9c6e9aed615",
+      "bytes": 6677
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:324bc959051d3eb20693499e1148a1250e09124ce79fc7e1b2e303711cb13195",
+      "bytes": 17147
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:91f18d19b6e0a108ca15ddc8425a730609ded3ce001452e8a7f623aba9d8ebd0",
+      "bytes": 9755
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:96cf60d73021d870c5f292c17f352d968741ef64ce377b19cc51bd17414b1972",
+      "bytes": 3733
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+      "bytes": 4496
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:1a28775bf8c70acd24da50abe9a1fd791db3cf6b0fd99c72f0a64355e8aa8044"
+}

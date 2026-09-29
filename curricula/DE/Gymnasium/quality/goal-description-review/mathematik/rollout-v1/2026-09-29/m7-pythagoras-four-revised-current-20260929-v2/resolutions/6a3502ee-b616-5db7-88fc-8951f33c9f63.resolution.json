@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-resolution-6a3502ee-b616-5db7-88fc-8951f33c9f63",
+  "goal": {
+    "goalId": "6a3502ee-b616-5db7-88fc-8951f33c9f63",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:4e7c4258adecb50612e71cc91ec00905fbbbec444e2cc1ae81f14796ea7275a5",
+    "pageFingerprint": "sha256:8f6985a663f18d5de079b2f6fcb93b72b157a1d83d310b92ce0c56c1cb1c7174",
+    "goalReviewContextFingerprint": "sha256:fc10e5ca1f18464a75960959f30851f01e3f7993e17eeba64e12540262453f36",
+    "finalText": {
+      "titleDe": "Den Kehrsatz des Pythagoras beweisen",
+      "titleEn": "Prove the converse of the Pythagorean theorem",
+      "descriptionDe": "Die lernende Person kann für ein Dreieck mit Seiten $a,b,c$ aus $a^2+b^2=c^2$ den Kehrsatz des Pythagoras beweisen: Sie konstruiert ein rechtwinkliges Hilfsdreieck mit Katheten $a,b$, zeigt mit dem Satz des Pythagoras die Gleichheit der dritten Seiten und schließt mittels Kongruenz auf den rechten Winkel gegenüber $c$ im ursprünglichen Dreieck.",
+      "descriptionEn": "For a triangle with sides $a,b,c$, the learner can prove the converse of the Pythagorean theorem from $a^2+b^2=c^2$: they construct a right auxiliary triangle with legs $a,b$, use the Pythagorean theorem to establish equality of the third sides, and infer by congruence that the angle opposite $c$ in the original triangle is right."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-a",
+      "campaignDigest": "sha256:cfdbbd52e3d45618c43b6c0a2412b14e9b96d2be583343a0a9e5e3a8f5794ac0",
+      "roundId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-independent-a",
+      "reviewInputFingerprint": "sha256:f68e38b6b3f65ec482160fcb3871ca4c979ec70f71850437753dc967764e49dd",
+      "goalReviewContextFingerprint": "sha256:fc10e5ca1f18464a75960959f30851f01e3f7993e17eeba64e12540262453f36",
+      "batchId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a.batch-001",
+      "runId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a.batch-001.codex-current-pythagoras-independent-a",
+      "runManifestDigest": "sha256:c379e15e093df4bada3fddbbf625eb138baab7a19ebf3c9ee1fe2dfe00a8aa75",
+      "resultsDigest": "sha256:b5db321af2fc80818a36e44b4210123f0929b70bbea3e06ede698ab325a6b9c8",
+      "recordId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a.batch-001.codex-current-pythagoras-independent-a.6a3502ee-b616-5db7-88fc-8951f33c9f63",
+      "recordDigest": "sha256:be2df923532a6d3f6a40a5490e8947a088f8b57e357d2e53b43e0642f605ca5d"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-b",
+      "campaignDigest": "sha256:327fcccb63b32a518d596d56ff54bf1b04b763da072a6c7d4cc61429e8f0f4a4",
+      "roundId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-independent-b",
+      "reviewInputFingerprint": "sha256:f68e38b6b3f65ec482160fcb3871ca4c979ec70f71850437753dc967764e49dd",
+      "goalReviewContextFingerprint": "sha256:fc10e5ca1f18464a75960959f30851f01e3f7993e17eeba64e12540262453f36",
+      "batchId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b.batch-001",
+      "runId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b-codex-independent-b",
+      "runManifestDigest": "sha256:477ef75a9a84d631ac24ca0bda3087beb6a57660693d025bd3619720afecbbbc",
+      "resultsDigest": "sha256:f83263066917450f6246763af314d4ac572ec750a66674eb18132e931e740fe0",
+      "recordId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b-codex-independent-b.6a3502ee-b616-5db7-88fc-8951f33c9f63",
+      "recordDigest": "sha256:470ace0e55324d61cc8766849fc8f09912eed169773e7cbd77e2bade927b52ed"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:4a4435695e174d4b6401307937b1b0fdf9c95f90a02880c0684318ff1d2415fd"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "math-m7-pythagoras-four-revised-current-20260929-v2",
+    "manifestDigest": "sha256:09c94a0ca7695a5304f5eae0f73b13d0c045974f2db4f28395bcb92d58d40378",
+    "manifestFingerprint": "sha256:2b6623355acd2fa6f8d2b8145aa19882272b5ecb5b3041fe05cb08d818d05f21",
+    "decisionId": "math-m7-pythagoras-four-revised-current-20260929-v2-decision-004"
+  },
+  "synthesis": {
+    "synthesisId": "math-m7-pythagoras-four-revised-current-20260929-v2-decision-004",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex root; adjudication of two independent AI reviews with source, page and image checks; no human approval",
+    "synthesizedAt": "2026-09-29T04:02:14.740Z",
+    "rationaleDe": "Beide Runden halten die fachlich überarbeitete bilinguale Beschreibung. Aus a²+b²=c² wird ein rechtwinkliges Hilfsdreieck mit Katheten a,b konstruiert; Pythagoras liefert d=c, SSS die Kongruenz, daher ist der Winkel gegenüber c im Ausgangsdreieck recht. Die Schlusskette ist nicht zirkulär und erfüllt HE/SH/SL, ohne diese Hilfsmethode als einzig zulässigen Beweis auszugeben. Das aktuelle PNG stimmt mit dieser Kette überein; es ist keine bereits erbrachte Lernendenleistung. Dies ist maschinelle D-QS ohne menschliche Freigabe.",
+    "rationaleEn": "Both rounds retain the substantively revised bilingual description. From a²+b²=c², a right auxiliary triangle with legs a,b is constructed; Pythagoras yields d=c and SSS yields congruence, hence the angle opposite c in the original triangle is right. This is non-circular and meets HE/SH/SL without claiming that this method is the only valid proof. The current PNG agrees with the chain; it is not learner evidence. This is machine D QA without human approval.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Der Kehrsatz hat a²+b²=c² als Voraussetzung und Rechtwinkligkeit als Folgerung. Ein eigens konstruiertes rechtwinkliges Hilfsdreieck mit Katheten a,b besitzt eine positive Hypotenuse d mit d²=a²+b²=c²; daher d=c. SSS-Kongruenz überträgt dessen rechten Winkel auf den Winkel gegenüber c im ursprünglichen Dreieck, ohne den Kehrsatz schon vorauszusetzen.",
+      "essentialUnderstandingEn": "The converse starts from a²+b²=c² and concludes a right angle. A newly constructed right auxiliary triangle with legs a,b has positive hypotenuse d satisfying d²=a²+b²=c², hence d=c. SSS congruence transfers its right angle to the angle opposite c in the original triangle without presupposing the converse.",
+      "observablePerformanceDe": "Die lernende Person benennt Voraussetzung und Behauptung getrennt, konstruiert das Hilfsdreieck, begründet d=c aus gleichen Quadraten positiver Seiten, weist SSS-Kongruenz nach und schließt korrekt auf den rechten Winkel im Ausgangsdreieck.",
+      "observablePerformanceEn": "The learner separates assumption from conclusion, constructs the auxiliary triangle, justifies d=c from equal squares of positive lengths, establishes SSS congruence, and correctly concludes a right angle in the original triangle.",
+      "transferExpectationDe": "Zu einem Dreieck mit Seiten 9,12,15 prüft sie den Satz „9²+12²=15², also nach dem Satz des Pythagoras rechtwinklig“ als unzulässige Umkehrung des ursprünglichen Satzes. Sie ersetzt ihn durch ein rechtes Hilfsdreieck mit Katheten 9 und 12, erhält d=15 und beweist die Kongruenz und den rechten Winkel gegenüber 15.",
+      "transferExpectationEn": "For a triangle with sides 9,12,15, the learner identifies “9²+12²=15², so the Pythagorean theorem says it is right-angled” as an invalid reversal of the original theorem. They repair it using a right auxiliary triangle with legs 9 and 12, obtain d=15, and prove congruence and the right angle opposite 15."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-bc039d6a11e34a6dcc7f7b5f381d06ef8b3c91f377833a1692a8425135cdef6d",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:5fa91c0061c31c68ee16112c346fa7691f15660e32be7fa3b70e2f47e99ce3c1"
+}

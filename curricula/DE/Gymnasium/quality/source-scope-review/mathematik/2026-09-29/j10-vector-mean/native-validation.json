@@ -1,0 +1,2659 @@
+{
+  "reviewedAt": "2026-09-29",
+  "comparisonNote": "Comparison ignores nodePath-only index shifts introduced by explicit prerequisiteOnly entries; code/severity/message remain exact. Inputs frozen before the subsequent image import. Only b025 DE/EN goal descriptions intentionally changed. SL sphere duplicate reference removed with unchanged atomic target membership.",
+  "method": "Native normalizeCanonicalLandscape/validateCanonicalLandscape and compileCompositionView/collectCompositionProjectionRoleGoalIds against isolated immediate-before snapshot",
+  "canonical": {
+    "beforeSha256": "sha256:ca66d9a0a1d67d7d85b95ec8cfb6bc0a0012ae8204695da27e1b1b4bd90bbb23",
+    "afterSha256": "sha256:156d584266880f29e3ca90aa25577471df50df72a4234cb3270a06cc7273c736",
+    "findings": [],
+    "changedGoals": [
+      {
+        "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "fields": [
+          "description",
+          "descriptionEn",
+          "applicability",
+          "extendedData",
+          "sourceRef"
+        ]
+      },
+      {
+        "goalId": "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "fields": [
+          "applicability",
+          "extendedData",
+          "sourceRef"
+        ]
+      },
+      {
+        "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+        "fields": [
+          "applicability"
+        ]
+      }
+    ],
+    "goalPlacementsAdded": [
+      {
+        "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "unitId": "de-gym-math-j10",
+        "relation": "primary",
+        "context": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BW",
+          "stage": "SekI"
+        }
+      },
+      {
+        "goalId": "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "unitId": "de-gym-math-j10",
+        "relation": "primary",
+        "context": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BW",
+          "stage": "SekI"
+        }
+      },
+      {
+        "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+        "unitId": "de-gym-math-sek2",
+        "relation": "primary",
+        "context": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BW",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        }
+      },
+      {
+        "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+        "unitId": "de-gym-math-sek2",
+        "relation": "primary",
+        "context": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HB",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        }
+      },
+      {
+        "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+        "unitId": "de-gym-math-sek2",
+        "relation": "primary",
+        "context": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "SekII"
+        }
+      },
+      {
+        "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+        "unitId": "de-gym-math-sek2",
+        "relation": "primary",
+        "context": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SH",
+          "stage": "SekII"
+        }
+      },
+      {
+        "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+        "unitId": "de-gym-math-sek2",
+        "relation": "primary",
+        "context": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SL",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        }
+      }
+    ]
+  },
+  "views": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-BB",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:b24dc4eb028b0c6b89f00099b36d47da2d07b1a87cd6b562a4cab87e4bf10895",
+      "afterSha256": "sha256:76ef211f78aded0671499bb0d3f774d4bcd2d41522b09d85e88031cf5954dafd",
+      "beforeAtomicTargetCount": 807,
+      "afterAtomicTargetCount": 805,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-BB",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:0093b865ffd4cc3a3f0d0cbba7fae60e38e6d6ead44e07c6fecb3280264e14d1",
+      "afterSha256": "sha256:3b11debef26ea32709785d2e37b6d1b78b715fc57dd66a6286fa06b18aa69c10",
+      "beforeAtomicTargetCount": 814,
+      "afterAtomicTargetCount": 812,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-BB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:28405c65ec815850b98f91c7802d585dec3c890c136562d57c08e6ba4de20f17",
+      "afterSha256": "sha256:28405c65ec815850b98f91c7802d585dec3c890c136562d57c08e6ba4de20f17",
+      "beforeAtomicTargetCount": 565,
+      "afterAtomicTargetCount": 565,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-BB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:0d69d09d6aa888a45f31597cbdde57e3e3c247f3b0d95f21847234830a233073",
+      "afterSha256": "sha256:0d69d09d6aa888a45f31597cbdde57e3e3c247f3b0d95f21847234830a233073",
+      "beforeAtomicTargetCount": 572,
+      "afterAtomicTargetCount": 572,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-BE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:50f40ff264bde3fbef7baefdebdc528aafc2799c8b1120489d9ae586859e6481",
+      "afterSha256": "sha256:50f40ff264bde3fbef7baefdebdc528aafc2799c8b1120489d9ae586859e6481",
+      "beforeAtomicTargetCount": 790,
+      "afterAtomicTargetCount": 790,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-BE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:c4d9f772ce3ba5d364d7c282f218da6ebabc52767d7a633e581dfce138827a56",
+      "afterSha256": "sha256:c4d9f772ce3ba5d364d7c282f218da6ebabc52767d7a633e581dfce138827a56",
+      "beforeAtomicTargetCount": 796,
+      "afterAtomicTargetCount": 796,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-BE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:3b66328e76438ce03d34bb05eaff362872c5034629dcc7434ffb50f0f554dab3",
+      "afterSha256": "sha256:3b66328e76438ce03d34bb05eaff362872c5034629dcc7434ffb50f0f554dab3",
+      "beforeAtomicTargetCount": 563,
+      "afterAtomicTargetCount": 563,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-BE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:c11486f4074ad08450293e0d6f197cff2e4dd7604826230424d1cd87cc4f9559",
+      "afterSha256": "sha256:c11486f4074ad08450293e0d6f197cff2e4dd7604826230424d1cd87cc4f9559",
+      "beforeAtomicTargetCount": 569,
+      "afterAtomicTargetCount": 569,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:6f8fe157d5ce9195324af49cca324ae7f0007404a3b98ba309b98ef6ef2fa6e1",
+      "afterSha256": "sha256:fd9047b6e0b3a62394f5921d8000553c4d6c779c4d9ef74d07383c9a0d8acb18",
+      "beforeAtomicTargetCount": 780,
+      "afterAtomicTargetCount": 779,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "targetIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe I",
+            "Klassen 9/10: Daten, Geometrie, Trigonometrie und Funktionsuntersuchungen",
+            "Jahrgangsstufe 10",
+            "Lagebeziehungen und Schnittpunkte von Geraden im Raum untersuchen"
+          ]
+        },
+        {
+          "goalId": "ba343971-10e5-4b05-b005-405b9c1ce447",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe I",
+            "Klassen 9/10: Daten, Geometrie, Trigonometrie und Funktionsuntersuchungen",
+            "Jahrgangsstufe 10",
+            "Geradlinige Bewegungen mit Vektoren modellieren"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:2e3c1e9a0fae32fc62f4dbdd209c697e209e7aac849f1616954c835083c37067",
+      "afterSha256": "sha256:2e3c1e9a0fae32fc62f4dbdd209c697e209e7aac849f1616954c835083c37067",
+      "beforeAtomicTargetCount": 798,
+      "afterAtomicTargetCount": 798,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe I",
+            "Klassen 9/10: Daten, Geometrie, Trigonometrie und Funktionsuntersuchungen",
+            "Jahrgangsstufe 10",
+            "Lagebeziehungen und Schnittpunkte von Geraden im Raum untersuchen"
+          ]
+        },
+        {
+          "goalId": "ba343971-10e5-4b05-b005-405b9c1ce447",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe I",
+            "Klassen 9/10: Daten, Geometrie, Trigonometrie und Funktionsuntersuchungen",
+            "Jahrgangsstufe 10",
+            "Geradlinige Bewegungen mit Vektoren modellieren"
+          ]
+        },
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe II (LK)",
+            "Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "beforeSha256": "sha256:01468a5c21d4180cc4f43cb427477682dc15550383a5b7f86818b4084c50a692",
+      "afterSha256": "sha256:01468a5c21d4180cc4f43cb427477682dc15550383a5b7f86818b4084c50a692",
+      "beforeAtomicTargetCount": 270,
+      "afterAtomicTargetCount": 270,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
+          "path": [
+            "Sekundarstufe I",
+            "Klassen 9/10: Daten, Geometrie, Trigonometrie und Funktionsuntersuchungen",
+            "Jahrgangsstufe 10",
+            "Lagebeziehungen und Schnittpunkte von Geraden im Raum untersuchen"
+          ]
+        },
+        {
+          "goalId": "ba343971-10e5-4b05-b005-405b9c1ce447",
+          "path": [
+            "Sekundarstufe I",
+            "Klassen 9/10: Daten, Geometrie, Trigonometrie und Funktionsuntersuchungen",
+            "Jahrgangsstufe 10",
+            "Geradlinige Bewegungen mit Vektoren modellieren"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:042535d3217f16c6066eb91d37f0323a70e347a98e776837bbffe69ed107d7c6",
+      "afterSha256": "sha256:39147a353698350e16860fbb21d53ce305af8f9ad64b21047adeba23864ce6d7",
+      "beforeAtomicTargetCount": 554,
+      "afterAtomicTargetCount": 553,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:561b3831ff9469511b694fb5797d790547f60d76ef5feef34a1b49adf1f6f077",
+      "afterSha256": "sha256:561b3831ff9469511b694fb5797d790547f60d76ef5feef34a1b49adf1f6f077",
+      "beforeAtomicTargetCount": 567,
+      "afterAtomicTargetCount": 567,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Sekundarstufe II (LK)",
+            "Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-BY",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:f86e55b80a68abb64aefa782ed0541e09902a359238d331638a181d6c4a58709",
+      "afterSha256": "sha256:d6ad9dbf5eccffe02748ab85a58c8d58e480157ebd9235d1065fa75cdeeae174",
+      "beforeAtomicTargetCount": 462,
+      "afterAtomicTargetCount": 460,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-BY",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:efe956f6871366a4f4016637dc0a847ed7d20ec6e6a78e665f4216ba1bd003bc",
+      "afterSha256": "sha256:5f997eec63000fd9ca26169f74910b1bec47b03322a333080bba756a83265917",
+      "beforeAtomicTargetCount": 646,
+      "afterAtomicTargetCount": 644,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-BY",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:f81c6153860aa9e4d3e80b5135f6fffbcfed2c85c9ef83def75137a5a81e798a",
+      "afterSha256": "sha256:f81c6153860aa9e4d3e80b5135f6fffbcfed2c85c9ef83def75137a5a81e798a",
+      "beforeAtomicTargetCount": 201,
+      "afterAtomicTargetCount": 201,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-BY",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:d711de6c5a8ddbfbbc8819e2de4c2f837382a01456b0569322f84b39e9dc705f",
+      "afterSha256": "sha256:d711de6c5a8ddbfbbc8819e2de4c2f837382a01456b0569322f84b39e9dc705f",
+      "beforeAtomicTargetCount": 386,
+      "afterAtomicTargetCount": 386,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:42b450fb5dec1bd207be9c2486f3304dba12a4fa977bf026dff126fb4814a406",
+      "afterSha256": "sha256:42b450fb5dec1bd207be9c2486f3304dba12a4fa977bf026dff126fb4814a406",
+      "beforeAtomicTargetCount": 840,
+      "afterAtomicTargetCount": 840,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe I",
+            "Jahrgangsstufe 10",
+            "Geraden und Bewegungen mit Vektoren beschreiben",
+            "Lagebeziehungen und Schnittpunkte von Geraden im Raum untersuchen"
+          ]
+        },
+        {
+          "goalId": "ba343971-10e5-4b05-b005-405b9c1ce447",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe I",
+            "Jahrgangsstufe 10",
+            "Geraden und Bewegungen mit Vektoren beschreiben",
+            "Geradlinige Bewegungen mit Vektoren modellieren"
+          ]
+        },
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe II (GK)",
+            "Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:e02a6e3dcca365c1550335a448a8b6864422af8b62d625cb8b8a43ee14e0d0d8",
+      "afterSha256": "sha256:e02a6e3dcca365c1550335a448a8b6864422af8b62d625cb8b8a43ee14e0d0d8",
+      "beforeAtomicTargetCount": 848,
+      "afterAtomicTargetCount": 848,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe I",
+            "Jahrgangsstufe 10",
+            "Geraden und Bewegungen mit Vektoren beschreiben",
+            "Lagebeziehungen und Schnittpunkte von Geraden im Raum untersuchen"
+          ]
+        },
+        {
+          "goalId": "ba343971-10e5-4b05-b005-405b9c1ce447",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe I",
+            "Jahrgangsstufe 10",
+            "Geraden und Bewegungen mit Vektoren beschreiben",
+            "Geradlinige Bewegungen mit Vektoren modellieren"
+          ]
+        },
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe II (LK)",
+            "Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "beforeSha256": "sha256:883d20e483cae0fc0a6f4c8ab93df24f5f3b8fd92e98a500d45d685223b65a88",
+      "afterSha256": "sha256:883d20e483cae0fc0a6f4c8ab93df24f5f3b8fd92e98a500d45d685223b65a88",
+      "beforeAtomicTargetCount": 250,
+      "afterAtomicTargetCount": 250,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
+          "path": [
+            "Mathematik",
+            "Jahrgangsstufe 10",
+            "Geraden und Bewegungen mit Vektoren beschreiben",
+            "Lagebeziehungen und Schnittpunkte von Geraden im Raum untersuchen"
+          ]
+        },
+        {
+          "goalId": "ba343971-10e5-4b05-b005-405b9c1ce447",
+          "path": [
+            "Mathematik",
+            "Jahrgangsstufe 10",
+            "Geraden und Bewegungen mit Vektoren beschreiben",
+            "Geradlinige Bewegungen mit Vektoren modellieren"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:9a1fe7e1242d948e26edd086b8d7f3f73344134cbbbfc629f76258b4c19e7685",
+      "afterSha256": "sha256:9a1fe7e1242d948e26edd086b8d7f3f73344134cbbbfc629f76258b4c19e7685",
+      "beforeAtomicTargetCount": 566,
+      "afterAtomicTargetCount": 566,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:a25cc7ede590b42fb1dbd7f9df945bc2e2bb40af7308d8dcb23a480d95e17b3f",
+      "afterSha256": "sha256:a25cc7ede590b42fb1dbd7f9df945bc2e2bb40af7308d8dcb23a480d95e17b3f",
+      "beforeAtomicTargetCount": 574,
+      "afterAtomicTargetCount": 574,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-HB",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:ad8f96c3e5d523ff356b6cab55c1fde6ec86fe30a048137e8b294b740882bccd",
+      "afterSha256": "sha256:45561b7c7f858f431cfa14e3061f2748f00f64adecb4c81a0fb0fc39f8f67e5a",
+      "beforeAtomicTargetCount": 777,
+      "afterAtomicTargetCount": 776,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-HB",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:122fd55ff40286b3549aa2e95105e2bef24a03577c50a82b7d8654f30b14f5c0",
+      "afterSha256": "sha256:122fd55ff40286b3549aa2e95105e2bef24a03577c50a82b7d8654f30b14f5c0",
+      "beforeAtomicTargetCount": 781,
+      "afterAtomicTargetCount": 781,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe II (LK)",
+            "Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-HB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:bfe0425af0fce2fc56b3c54e897147f601691dfa101b42dc007e3d2f2f4671de",
+      "afterSha256": "sha256:54dc63e6671b82d14e82611da54aeef4212b7cbb23b15924f2a3fb36b6c09200",
+      "beforeAtomicTargetCount": 563,
+      "afterAtomicTargetCount": 562,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-HB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:26a2884b150ae5a37ec4fcc7f77214678bdaa69e814c0592b564a3fdcf1d6b39",
+      "afterSha256": "sha256:26a2884b150ae5a37ec4fcc7f77214678bdaa69e814c0592b564a3fdcf1d6b39",
+      "beforeAtomicTargetCount": 567,
+      "afterAtomicTargetCount": 567,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G8"
+      },
+      "beforeSha256": "sha256:ef996151cb7a2038886efb518d33326c175363c255599d4a51c623876a98036f",
+      "afterSha256": "sha256:ef996151cb7a2038886efb518d33326c175363c255599d4a51c623876a98036f",
+      "beforeAtomicTargetCount": 837,
+      "afterAtomicTargetCount": 837,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe II (GK)",
+            "Q1: Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G9"
+      },
+      "beforeSha256": "sha256:03e87c69a9060e77d54d7bb3d73f0af73ccf2065eb41788f5c53a5dd56efc341",
+      "afterSha256": "sha256:4c526294a0f205f58033e910a931461a0c6d59eef3773a3aa85b3f8a16e2af56",
+      "beforeAtomicTargetCount": 856,
+      "afterAtomicTargetCount": 854,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe II (GK)",
+            "Q1: Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:b732778f5bb4287cea3ee69d9d626b8d1cb110cdc057332c2148b1d46be0ecc0",
+      "afterSha256": "sha256:d69cae116fd4916d094ccc1ca79f63d624173ac1afbdf7c5489147ef1bd29725",
+      "beforeAtomicTargetCount": 848,
+      "afterAtomicTargetCount": 846,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe II (GK)",
+            "Q1: Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G8"
+      },
+      "beforeSha256": "sha256:e041c4a79e3f404c69f1eaa15c5c8dcdf37660ca851879c46c96deacd013023d",
+      "afterSha256": "sha256:e041c4a79e3f404c69f1eaa15c5c8dcdf37660ca851879c46c96deacd013023d",
+      "beforeAtomicTargetCount": 882,
+      "afterAtomicTargetCount": 882,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe II (LK)",
+            "Q1: Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G9"
+      },
+      "beforeSha256": "sha256:1bc237a9bab5dbf4657b8f60bdcadfe1ab083d789e393908ecf05db384660ec1",
+      "afterSha256": "sha256:6adf68ab90ae49be198cbee83300acbdd01ad36f9c4a2b64fb3da435fc916ae8",
+      "beforeAtomicTargetCount": 901,
+      "afterAtomicTargetCount": 899,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe II (LK)",
+            "Q1: Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:84ea4c2b36f05deec64af61a3706ac1e9c42023fc72835c7b451f27dd273f801",
+      "afterSha256": "sha256:5aa38dd3d0b8c9a83d682e4a27e0fa4c8af3aca9822f8322327d12054a1d4b1a",
+      "beforeAtomicTargetCount": 893,
+      "afterAtomicTargetCount": 891,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe II (LK)",
+            "Q1: Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g8.view.json",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G8"
+      },
+      "beforeSha256": "sha256:b24ddc1dcedd4a631e53014bd8ba46669234bab4163027446db23cc081097661",
+      "afterSha256": "sha256:b24ddc1dcedd4a631e53014bd8ba46669234bab4163027446db23cc081097661",
+      "beforeAtomicTargetCount": 327,
+      "afterAtomicTargetCount": 327,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g9.view.json",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G9"
+      },
+      "beforeSha256": "sha256:5808a47b208217fe37d0aa8e82afbe9840a7687aaf9fa6ba71f92afc08689497",
+      "afterSha256": "sha256:2470dee43a1f3e15c9eedc4e7e25d15b53dd7c8376f809e7b58d7f52065154dd",
+      "beforeAtomicTargetCount": 363,
+      "afterAtomicTargetCount": 361,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:02bdf696b9db2514cc21c250b2177283de457fb6de64b44b54c09d2591a7699c",
+      "afterSha256": "sha256:02bdf696b9db2514cc21c250b2177283de457fb6de64b44b54c09d2591a7699c",
+      "beforeAtomicTargetCount": 558,
+      "afterAtomicTargetCount": 558,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Sekundarstufe II (GK)",
+            "Q1: Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:0936d68c9e245f9b7899671e5a4eeab9ec3cddf6e44da94da727896dd069c403",
+      "afterSha256": "sha256:0936d68c9e245f9b7899671e5a4eeab9ec3cddf6e44da94da727896dd069c403",
+      "beforeAtomicTargetCount": 592,
+      "afterAtomicTargetCount": 592,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Sekundarstufe II (LK)",
+            "Q1: Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-HH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:5a80c061482e5a86c87f12a747f285defaedaf43893c85fca8233ef7f9b04399",
+      "afterSha256": "sha256:37c6c631553a3d000621d46ed65270085cedb1382157aadaa1f9d0881dc35654",
+      "beforeAtomicTargetCount": 804,
+      "afterAtomicTargetCount": 802,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-HH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:1d078d88ae059ef13a98652ec6751a5b8e422f3dc04fecd8291fd93af506946d",
+      "afterSha256": "sha256:789daea8bfada7c833dbf1e9384fbc339ed53fadbb30f91e1645a93af20df121",
+      "beforeAtomicTargetCount": 808,
+      "afterAtomicTargetCount": 806,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-HH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:1586efd3bcc715fb6a3568b1651683f6a2640aaa742ca7453676b2a96cafeabc",
+      "afterSha256": "sha256:1586efd3bcc715fb6a3568b1651683f6a2640aaa742ca7453676b2a96cafeabc",
+      "beforeAtomicTargetCount": 559,
+      "afterAtomicTargetCount": 559,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-HH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:5f26fb32d916b5e42514a2a75ec42adf3afdca8b6ed62d9f0b51d704331975c5",
+      "afterSha256": "sha256:5f26fb32d916b5e42514a2a75ec42adf3afdca8b6ed62d9f0b51d704331975c5",
+      "beforeAtomicTargetCount": 563,
+      "afterAtomicTargetCount": 563,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-MV",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:5e66cc83b2990b25ee8f599341e8b58146ee4ec3a28d2c9eb996963eb6611401",
+      "afterSha256": "sha256:5e66cc83b2990b25ee8f599341e8b58146ee4ec3a28d2c9eb996963eb6611401",
+      "beforeAtomicTargetCount": 730,
+      "afterAtomicTargetCount": 730,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-MV",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:08c2cd5f8a3c48d5b9575fd0663d30301f2867d1de5547f2a137efd2509e244c",
+      "afterSha256": "sha256:08c2cd5f8a3c48d5b9575fd0663d30301f2867d1de5547f2a137efd2509e244c",
+      "beforeAtomicTargetCount": 733,
+      "afterAtomicTargetCount": 733,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-MV",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:b5a9c5c6f919222697242818aaf1d096ff81f947792d92ea65358ecae0fdd878",
+      "afterSha256": "sha256:b5a9c5c6f919222697242818aaf1d096ff81f947792d92ea65358ecae0fdd878",
+      "beforeAtomicTargetCount": 532,
+      "afterAtomicTargetCount": 532,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-MV",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:415437158807ddf0db3e29dd0babc4776a33ba387cca25b073333891a6e864d6",
+      "afterSha256": "sha256:415437158807ddf0db3e29dd0babc4776a33ba387cca25b073333891a6e864d6",
+      "beforeAtomicTargetCount": 535,
+      "afterAtomicTargetCount": 535,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:b2f098c6a8fc55cc134bdd03e3d038be1fcd3fe9dfae7415453abd682ed50abe",
+      "afterSha256": "sha256:91aa5f35a7da2e4471158c6f67690da1b1a96cfa818e00462c56fa6d846589a1",
+      "beforeAtomicTargetCount": 785,
+      "afterAtomicTargetCount": 783,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:adb1db3b7bc10d8d06d4427f5cc2e66c8e7f6d9cfbeb1697e1568fb8afc31b36",
+      "afterSha256": "sha256:b316b0fd19a89287b4d3d520d65858bb617652ce46de31bd6f8fc4d36493c924",
+      "beforeAtomicTargetCount": 788,
+      "afterAtomicTargetCount": 786,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:244ee8febecc2247ea3dada000cf08f725b2137fb9edb447bc92d5784fc17743",
+      "afterSha256": "sha256:244ee8febecc2247ea3dada000cf08f725b2137fb9edb447bc92d5784fc17743",
+      "beforeAtomicTargetCount": 532,
+      "afterAtomicTargetCount": 532,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:aa1fcd710698068ef9e67ac6f8fdca6eb1dbe0e6b16d31f775cdcebda0f99bac",
+      "afterSha256": "sha256:aa1fcd710698068ef9e67ac6f8fdca6eb1dbe0e6b16d31f775cdcebda0f99bac",
+      "beforeAtomicTargetCount": 535,
+      "afterAtomicTargetCount": 535,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-NW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:8ce24640e9150b418c14cb6c03e69cf73d2ba3bf108a33561f6e269f8322843e",
+      "afterSha256": "sha256:6472c649b69fa2d0e793b2590c245fc902b094eaf3c7865c5419d586f602ebb1",
+      "beforeAtomicTargetCount": 780,
+      "afterAtomicTargetCount": 778,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-NW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:bb60e31c4c95a6a974cc4f4b11290397ecfdf3bd8b3a6f9131cde228dd6bf777",
+      "afterSha256": "sha256:f3f5dc5787f4bf53249fe61b2faad1df665fc5e4a2bfc252cbf243186a9ac2f3",
+      "beforeAtomicTargetCount": 783,
+      "afterAtomicTargetCount": 781,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-NW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:55353d53799217cfbac81d4585f18a3478938184515ed12b00b9e54a22228f7c",
+      "afterSha256": "sha256:55353d53799217cfbac81d4585f18a3478938184515ed12b00b9e54a22228f7c",
+      "beforeAtomicTargetCount": 532,
+      "afterAtomicTargetCount": 532,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-NW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:cc5f7ba7454b7b732ab666101037057ca266e5cc393677886b3d7029d1a6d8f5",
+      "afterSha256": "sha256:cc5f7ba7454b7b732ab666101037057ca266e5cc393677886b3d7029d1a6d8f5",
+      "beforeAtomicTargetCount": 535,
+      "afterAtomicTargetCount": 535,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G8"
+      },
+      "beforeSha256": "sha256:b41bd3e14ac788a9dc115f01f7a97c57fa303ba6e61f692cd61e2045b1491b0a",
+      "afterSha256": "sha256:b41bd3e14ac788a9dc115f01f7a97c57fa303ba6e61f692cd61e2045b1491b0a",
+      "beforeAtomicTargetCount": 790,
+      "afterAtomicTargetCount": 790,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G9"
+      },
+      "beforeSha256": "sha256:05253d8c76f4bb088e04e947ab99caca4a8a89c9d33fefffffaa76936efe24d5",
+      "afterSha256": "sha256:97fc3df59ffb57eb9eac557c4593abcd69826586ea378f8b6c62927bab05396f",
+      "beforeAtomicTargetCount": 811,
+      "afterAtomicTargetCount": 809,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:ec086ba37bf13d5e4a68cbcf0628be71aa1430c60dff4e4ea1021e49502dbc75",
+      "afterSha256": "sha256:765104cb8e695014354dbaebe259013aa902924cdba2a999be9bdd67ebbf6ca1",
+      "beforeAtomicTargetCount": 784,
+      "afterAtomicTargetCount": 782,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G8"
+      },
+      "beforeSha256": "sha256:9c2afb82ec56f345221a57964eb34bf611b7e044dde0e050ebad2abe21d8c47c",
+      "afterSha256": "sha256:9c2afb82ec56f345221a57964eb34bf611b7e044dde0e050ebad2abe21d8c47c",
+      "beforeAtomicTargetCount": 793,
+      "afterAtomicTargetCount": 793,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g9.view.json",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G9"
+      },
+      "beforeSha256": "sha256:3e8c512b6461e71208b79e38e9460f1cb5d3204b79541681a36bd7ff8e392a06",
+      "afterSha256": "sha256:96190f64dc8fb93751dd775b3ca6bf0ecdb65776811d7c4f252c311f2b59b165",
+      "beforeAtomicTargetCount": 814,
+      "afterAtomicTargetCount": 812,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:3b072c9f9cd8b458879b3ade1282f41f9bb58501ab2212208eecf20604ac9ae6",
+      "afterSha256": "sha256:229b2ad8da03eafc73c5ac14a1e4acebcb7bb31e06ef6b0c2dde6e18a7c676ee",
+      "beforeAtomicTargetCount": 787,
+      "afterAtomicTargetCount": 785,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G8"
+      },
+      "beforeSha256": "sha256:f6b929f3258125dffc29fe7111d7f60636bec85dc0d331833b7953deceea8f83",
+      "afterSha256": "sha256:f6b929f3258125dffc29fe7111d7f60636bec85dc0d331833b7953deceea8f83",
+      "beforeAtomicTargetCount": 268,
+      "afterAtomicTargetCount": 268,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g9.view.json",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G9"
+      },
+      "beforeSha256": "sha256:dfa73e3c90399ca4066b2e413e7a40f8952d6d690e3ec2ce36e77187b2bdc935",
+      "afterSha256": "sha256:f0e20dd881582c65ff71d6c36e5a6a346cf85256286dbfa40e8ad8c225d64385",
+      "beforeAtomicTargetCount": 290,
+      "afterAtomicTargetCount": 288,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:46497a57fa42cbbe95d2b3c6426b4dfcc328f81a2ea0576d36f4bdb64e484228",
+      "afterSha256": "sha256:46497a57fa42cbbe95d2b3c6426b4dfcc328f81a2ea0576d36f4bdb64e484228",
+      "beforeAtomicTargetCount": 532,
+      "afterAtomicTargetCount": 532,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:ccd109c00ef7981661b657b427ee56ca1cbcdc9312371b66be896014ac154133",
+      "afterSha256": "sha256:ccd109c00ef7981661b657b427ee56ca1cbcdc9312371b66be896014ac154133",
+      "beforeAtomicTargetCount": 535,
+      "afterAtomicTargetCount": 535,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G8"
+      },
+      "beforeSha256": "sha256:c7f553e4c852c578c246cf7c02abbab54b14fbe9ca842ca89755136fe4f60ffd",
+      "afterSha256": "sha256:6e83c6e1ee66152e9c051c58c4d121cd2bdb3a954663954ac80695081dfbfe8e",
+      "beforeAtomicTargetCount": 760,
+      "afterAtomicTargetCount": 758,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe II (GK)",
+            "Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G9"
+      },
+      "beforeSha256": "sha256:b42388d441fae8659c096461c805facae9334dfef43d2981f4e40760a3e25839",
+      "afterSha256": "sha256:165fc5925a171aa55430ddd420c0db593d337d6df98abd0744773c1c377edd97",
+      "beforeAtomicTargetCount": 769,
+      "afterAtomicTargetCount": 767,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe II (GK)",
+            "Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:8c2342eecf0702966686e9c94f30d91f21170d4bad5260863b36551bc9fdb3e5",
+      "afterSha256": "sha256:2fe0cb6ba95167aa3f2bf2c2f9cd115325d62d78411d90b3dfdfe2fb9fe4390d",
+      "beforeAtomicTargetCount": 759,
+      "afterAtomicTargetCount": 757,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe II (GK)",
+            "Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G8"
+      },
+      "beforeSha256": "sha256:9a84a58f85829d3535481e55ca47001dd4278d030392615c99adda77b0edf275",
+      "afterSha256": "sha256:937f9a3a19cf5de18d48152c4bd7312e54b1902447e686fd18e26364f40ce411",
+      "beforeAtomicTargetCount": 782,
+      "afterAtomicTargetCount": 780,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe II (LK)",
+            "Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G9"
+      },
+      "beforeSha256": "sha256:9bc3a9f30ea23b7530928230a761041e0abf0f378c728d841bacb9ab1395899a",
+      "afterSha256": "sha256:02abf64a4f50038d762e6690ea724a2fa7cb0d08ea3c9f40f12f801797cc9b42",
+      "beforeAtomicTargetCount": 791,
+      "afterAtomicTargetCount": 789,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe II (LK)",
+            "Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:213120f24875c8945d215890c18e368393142b563ecbf42fce7bf3c7fdfcb910",
+      "afterSha256": "sha256:f62a413c2ec51ba927cb6c7839bff2e90193db2f486a397454a633662546879e",
+      "beforeAtomicTargetCount": 781,
+      "afterAtomicTargetCount": 779,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe II (LK)",
+            "Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G8"
+      },
+      "beforeSha256": "sha256:4e0dedcddb887ffccb35fe0e24e8559125f990146803430c6648d2922d638e84",
+      "afterSha256": "sha256:353329c7ce48311ae84d37edbb070b3d6641007c6aa9dc0be9d26dc2bcd59aa1",
+      "beforeAtomicTargetCount": 277,
+      "afterAtomicTargetCount": 275,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G9"
+      },
+      "beforeSha256": "sha256:39e89a8cdd82ea4e56f5d7b2785986624869acd72a77a9a1cf72b33c7f9ec1f5",
+      "afterSha256": "sha256:f29bdf060dab65ac42426e50249878498641495be2a90c9c960042e8e8aab436",
+      "beforeAtomicTargetCount": 286,
+      "afterAtomicTargetCount": 284,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:26f2e65a7e7805c3c0a96debab77820b65cf44c87e457f2cdaa0a3d0df2daa5b",
+      "afterSha256": "sha256:26f2e65a7e7805c3c0a96debab77820b65cf44c87e457f2cdaa0a3d0df2daa5b",
+      "beforeAtomicTargetCount": 496,
+      "afterAtomicTargetCount": 496,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:fb21861c889d36ec5af67126d8ea77cc6f21d48a6ce3ef9cba876f9ded53422e",
+      "afterSha256": "sha256:fb21861c889d36ec5af67126d8ea77cc6f21d48a6ce3ef9cba876f9ded53422e",
+      "beforeAtomicTargetCount": 518,
+      "afterAtomicTargetCount": 518,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-SL",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:73dda2f95711c99529aac46cf60a42336125b89ecf9dc003a21c577747281b72",
+      "afterSha256": "sha256:99fd687fe902f3464b174412fc2dd1133eb1306f04fdc0530b22174bd1cd3f23",
+      "beforeAtomicTargetCount": 796,
+      "afterAtomicTargetCount": 793,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-SL",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:5769ce1df4a2f762752388134bad20b746e8554b092ad7611b1db881850b233b",
+      "afterSha256": "sha256:896052ca1b4e240066c50342ca6119d17474697bc7cd2188808383163a22c2fc",
+      "beforeAtomicTargetCount": 801,
+      "afterAtomicTargetCount": 799,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Sekundarstufe II (LK)",
+            "Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-SL",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:931ca5840fc278e737ddb08fd3ca0cefd9d8bf141e4761df0070beca943de806",
+      "afterSha256": "sha256:9fdcc9600d0c7d4def2881ad85d152234cd22a71a09052fd74477e551aafa6a0",
+      "beforeAtomicTargetCount": 535,
+      "afterAtomicTargetCount": 534,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-SL",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:71ca3fd8143f7da75b4a54775db06b4c23e779fe7f995cf6e267b30a5465765a",
+      "afterSha256": "sha256:71ca3fd8143f7da75b4a54775db06b4c23e779fe7f995cf6e267b30a5465765a",
+      "beforeAtomicTargetCount": 540,
+      "afterAtomicTargetCount": 540,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "prerequisiteOnlyIds": [],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": [
+        {
+          "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "path": [
+            "Mathematik",
+            "Integralrechnung und Differenzialgleichungen",
+            "Anwendungen der Integralrechnung",
+            "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-SN",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:2fa81dc4896bf7955c81301c195f1fd94c41e33b12d86d2949ba0c02acc3ca69",
+      "afterSha256": "sha256:27cb00b796ce91bb8553d76c34fd2c01f3faeaf7f9857de50d2ed5fa56570a88",
+      "beforeAtomicTargetCount": 784,
+      "afterAtomicTargetCount": 782,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-SN",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:a926e4b90b0216186cdd42541acefcfe3a41ff123787240fe46698acea3e63d7",
+      "afterSha256": "sha256:0adb33beded6f47f96770f34cf3034de9a872b95f2f3db666cbda66ff750bcdf",
+      "beforeAtomicTargetCount": 787,
+      "afterAtomicTargetCount": 785,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-SN",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:aca4a019bc3432c40c0f21f3c366c8dc94c6122f43186440753f03f90a242f54",
+      "afterSha256": "sha256:aca4a019bc3432c40c0f21f3c366c8dc94c6122f43186440753f03f90a242f54",
+      "beforeAtomicTargetCount": 532,
+      "afterAtomicTargetCount": 532,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-SN",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:59b1de4cfa5a004554eaae67dffc33906185de6ee785bb955828d8358845bdf1",
+      "afterSha256": "sha256:59b1de4cfa5a004554eaae67dffc33906185de6ee785bb955828d8358845bdf1",
+      "beforeAtomicTargetCount": 535,
+      "afterAtomicTargetCount": 535,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-ST",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:35622282f471114ea32a18d642c33fa57dae96b9ff604db626bf2286d7c7dcaf",
+      "afterSha256": "sha256:0267665c21de5288100db91942245d65881040d16226b84136e465f368be8854",
+      "beforeAtomicTargetCount": 778,
+      "afterAtomicTargetCount": 776,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-ST",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:a1a1c0fa9370b23e64d7a31af7268bcee1dc159871bc163be213f13855f0d5cb",
+      "afterSha256": "sha256:3f3019fb512a4cc27e71eca00ce4ddd1bb7dd8f09ecc202eeee538ff427d6e17",
+      "beforeAtomicTargetCount": 781,
+      "afterAtomicTargetCount": 779,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447"
+      ],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "b025df0c-994c-4807-9c5f-2d548905b73f",
+        "ba343971-10e5-4b05-b005-405b9c1ce447",
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-ST",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:954e15f8b254e50c7bfd06c6b11d6150bc9972ec32d1fb1f7f1900415441a84d",
+      "afterSha256": "sha256:954e15f8b254e50c7bfd06c6b11d6150bc9972ec32d1fb1f7f1900415441a84d",
+      "beforeAtomicTargetCount": 532,
+      "afterAtomicTargetCount": 532,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-ST",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:4e94f82b466881c1a863e7342d24e0cf0d9a3da35316609d1a5022d313d6f074",
+      "afterSha256": "sha256:4e94f82b466881c1a863e7342d24e0cf0d9a3da35316609d1a5022d313d6f074",
+      "beforeAtomicTargetCount": 535,
+      "afterAtomicTargetCount": 535,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-TH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:a8ae31f1a480e3ec5daa82acd8f861e6ffb0b7b2a77ac2ef3f6fa49921127a66",
+      "afterSha256": "sha256:a8ae31f1a480e3ec5daa82acd8f861e6ffb0b7b2a77ac2ef3f6fa49921127a66",
+      "beforeAtomicTargetCount": 719,
+      "afterAtomicTargetCount": 719,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-TH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:6fc9666fdd888b5efd89e3c121c024a0aa1f392696e3d8290368b201f3cecba0",
+      "afterSha256": "sha256:6fc9666fdd888b5efd89e3c121c024a0aa1f392696e3d8290368b201f3cecba0",
+      "beforeAtomicTargetCount": 722,
+      "afterAtomicTargetCount": 722,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json",
+      "scope": {
+        "jurisdiction": "DE-TH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:94a35c5b0a815b4cf27529114cef51fbe9dec7e73ebf9d407308779a5b969dc3",
+      "afterSha256": "sha256:94a35c5b0a815b4cf27529114cef51fbe9dec7e73ebf9d407308779a5b969dc3",
+      "beforeAtomicTargetCount": 532,
+      "afterAtomicTargetCount": 532,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-lk.view.json",
+      "scope": {
+        "jurisdiction": "DE-TH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:c4e319483a6ff83f8bb627264a9277c06474f4585cf7cd2fdb238026fee3821c",
+      "afterSha256": "sha256:c4e319483a6ff83f8bb627264a9277c06474f4585cf7cd2fdb238026fee3821c",
+      "beforeAtomicTargetCount": 535,
+      "afterAtomicTargetCount": 535,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "targetIds": [],
+      "prerequisiteOnlyIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
+      "newErrors": [],
+      "existingErrors": [],
+      "visiblePaths": []
+    }
+  ],
+  "unexpectedAtomicDeltas": [],
+  "unexpectedTargetScopes": [],
+  "onlyAuthorizedGoalContentChanges": true,
+  "atlas": {
+    "status": "blocked-before-mutation",
+    "reason": "Unrelated stale semantic-kind decision 14b19ee4-364e-50bd-b6a3-499471356ef3; expected sha256:8fc74382f93836ddcf4542585e2f76b57fdd97da72119acdfe1c80a4a7d01e97. No binding bypass or registry edits."
+  },
+  "summary": {
+    "views": 88,
+    "changedViews": 39,
+    "newCompileErrors": 0,
+    "unrelatedAtomicDeltas": 0,
+    "unsupportedAuthoredTargets": 0
+  }
+}

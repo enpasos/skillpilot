@@ -1,0 +1,5 @@
+# Actual provider-facing targeted edit prompt for corrected PNG candidate 4
+
+Edit the supplied German infographic **only inside the bottom right “windschief” pictogram**. Keep the two separated translucent spatial planes, the upper pale-blue plane and lower pale-coral plane, and all other image content and text pixel-close to the supplied image.
+
+The two line directions inside those planes are still almost parallel in the current pictogram. Make the blue line on the upper blue plane clearly slope upward to the right, while the red line on the lower coral plane clearly slopes **downward to the right**. They should form strongly different directions, roughly a wide X when imagined in one flat projection, but the two colored planes and the lines must stay visibly separated in depth, with no shared point. In the small right-panel icon, the blue line should remain above the red line and should not touch it. Keep the label “windschief”. Do not change the nearby “identisch” single shared path or “parallel” parallel strokes. Do not alter the main g/h example, formulas or solution.

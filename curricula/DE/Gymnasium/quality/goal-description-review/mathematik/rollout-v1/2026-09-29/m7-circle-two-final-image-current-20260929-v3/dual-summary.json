@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:11f9b08b0a6e6a5b721eb97e6e4ff71839709f8d479a043b2c94ef62ca304abc",
+  "reviewInputFingerprint": "sha256:5735fc6fcdb6e8b354c2f98b2919ad311e720c7e4b0d75e18c885271eb1608e8",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-circle-two-final-image-current-20260929-v3-a",
+      "roundId": "mathematik-m7-circle-two-final-image-current-20260929-v3-first-pass-a",
+      "independenceGroupId": "mathematik-m7-circle-two-final-image-current-20260929-v3-independent-a",
+      "runIds": [
+        "mathematik-m7-circle-two-final-image-current-20260929-v3-first-pass-a.batch-001-codex-root-final-image-reinspection"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-circle-two-final-image-current-20260929-v3-b",
+      "roundId": "mathematik-m7-circle-two-final-image-current-20260929-v3-first-pass-b",
+      "independenceGroupId": "mathematik-m7-circle-two-final-image-current-20260929-v3-independent-b",
+      "runIds": [
+        "mathematik-m7-circle-two-final-image-current-20260929-v3-first-pass-b-codex-independent-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex session (exact deployment identifier not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "2f073195-52ef-5219-926c-f3f58ebdc556",
+      "firstRecordId": "mathematik-m7-circle-two-final-image-current-20260929-v3-first-pass-a.batch-001-codex-root-final-image-reinspection.001",
+      "secondRecordId": "mathematik-m7-circle-two-final-image-current-20260929-v3-first-pass-b-codex-independent-b.2f073195-52ef-5219-926c-f3f58ebdc556",
+      "firstRunId": "mathematik-m7-circle-two-final-image-current-20260929-v3-first-pass-a.batch-001-codex-root-final-image-reinspection",
+      "secondRunId": "mathematik-m7-circle-two-final-image-current-20260929-v3-first-pass-b-codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+      "firstRecordId": "mathematik-m7-circle-two-final-image-current-20260929-v3-first-pass-a.batch-001-codex-root-final-image-reinspection.002",
+      "secondRecordId": "mathematik-m7-circle-two-final-image-current-20260929-v3-first-pass-b-codex-independent-b.4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+      "firstRunId": "mathematik-m7-circle-two-final-image-current-20260929-v3-first-pass-a.batch-001-codex-root-final-image-reinspection",
+      "secondRunId": "mathematik-m7-circle-two-final-image-current-20260929-v3-first-pass-b-codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

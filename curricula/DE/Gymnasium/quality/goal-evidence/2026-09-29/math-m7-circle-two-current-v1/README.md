@@ -1,0 +1,10 @@
+# Independent mathematics review: two current circle P-v2 candidates
+
+Scope: `2f073195-52ef-5219-926c-f3f58ebdc556` (circle and sector area) and `4dbb8e8e-c0b5-5d51-8897-0024d77e8602` (circumference, arc and closed boundary). Both current canonical descriptions, their prerequisite IDs, the Bavarian partial mapping to M8.7, and the actual shared PNG were inspected. The canonical phase is J7; the Bavarian source mapping points to year 8 and is not a claim about a Bavarian year-7 timetable.
+
+Both public PNG paths contain identical bytes, SHA-256 `18def74e82a3c161aaefbfea08116641f9d7f83f030fc8b7013838060b4fb576`. Visually, the left full circle has `r=3 cm`, `U=6π cm`, `A=9π cm²`; the right half-circle has `r=4 cm`, a `4π cm` arc and a full `4π+8 cm` boundary. The red arc arrow points to the arc. These are teaching aids, not independent learner evidence.
+
+- **Area: keep after substantive correction.** `A=π(d/2)²=πd²/4` now expresses the diameter relation positively and separates the factor-four magnitude issue from units. The 90° cut from a 10 cm diameter sheet gives `25π/4 cm² ≈ 19.63 cm²`; the independent 120° garden and complementary area give `12π m²` and `24π m²`. The cases change given quantity, angle and requested interpretation; they do not reproduce the image's worked numbers.
+- **Arc and boundary: keep after substantive correction.** The required concept now identifies all actual straight boundary edges without silently requiring a semicircle example. A 90° sector of a 12 m diameter circle has arc `3π m` and full boundary `3π+12 m ≈ 21.42 m`. The independent transfer removes a 90° sector from a 10 cm diameter disc: the remaining 270° arc is `15π/2 cm`, and the new two straight cut edges give `15π/2+10 cm` for the full boundary. This reverses the part sought and does not copy the illustrated semicircle.
+
+German and English expectations and case demands express the same mathematics. The generated records remain `needs_human_review` / `ai_candidate`, `E1` / `G1`; this review neither grants human approval nor changes the central registry or learner state.

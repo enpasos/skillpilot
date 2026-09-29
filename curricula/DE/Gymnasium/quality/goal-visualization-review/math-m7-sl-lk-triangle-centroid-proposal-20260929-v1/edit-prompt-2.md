@@ -1,0 +1,3 @@
+# Actual provider-facing targeted edit prompt for candidate 2
+
+Edit the supplied educational triangle-centroid diagram with a single text correction. In the coral rounded heading inside the right-side panel, replace the current German wording “2. Schwerpunkt auf einer Medianen” with the exact shorter wording “2. Schwerpunkt auf AM”. Keep that coral heading's size, position, color, font style and all other pixels as close as possible to the original. Preserve the exact geometry: A, B, C, side midpoints M, N, P, the three medians crossing at S, tick marks, blue 2:1 brace, and all three formulas without any other change. Do not add or remove anything else.

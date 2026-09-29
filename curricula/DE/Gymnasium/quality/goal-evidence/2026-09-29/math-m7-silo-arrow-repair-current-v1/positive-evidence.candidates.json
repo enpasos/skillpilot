@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-silo-arrow-repair-current-20260929-v1",
+  "reviewedAt": "2026-09-29T03:46:02Z",
+  "reviewer": "Codex AI mathematics re-review after silo bitmap correction; no human approval",
+  "goals": [
+    {
+      "goalId": "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+      "reason": "The current J10 DE/EN goal and BY M10.5 demand justified solid modeling plus lengths, angles, surface area and volume. I checked all three application-case calculations and bilingual equivalence against the current wording. I viewed the actual corrected PNG in full and at 360 px: the cone-volume and cone-mantle arrows that formerly pointed to the cylinder wall are gone, while the cylinder-mantle and paint arrows still point to the gray cylinder. Silo formulas remain correct: V=24π m³≈75.4 m³, s=√13 m and exposed-mantle paint area 20π+2π√13 m²≈85.5 m². The profile cases are fresh and do not copy the illustrated dimensions. This is a machine-QS AI candidate, not human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "context-is-idealized-as-solids-with-boundaries",
+            "essentialUnderstandingDe": "Eine räumliche Sachsituation wird mathematisch lösbar, indem reale Teile passenden Grundkörpern zugeordnet, gemeinsame Flächen und Maße identifiziert und Annahmen wie Wandstärke, Überlappung oder offene Flächen ausdrücklich festgelegt werden.",
+            "essentialUnderstandingEn": "A spatial context becomes mathematically tractable by matching real components to standard solids, identifying shared surfaces and dimensions, and explicitly stating assumptions such as wall thickness, overlap, or open surfaces.",
+            "observablePerformanceDe": "Die lernende Person fertigt für eine neue Situation eine beschriftete Zerlegungsskizze an, definiert die benötigten Größen und entscheidet begründet, welche Flächen oder Volumenteile addiert, abgezogen oder nicht gezählt werden.",
+            "observablePerformanceEn": "For a fresh situation, the learner produces a labelled decomposition sketch, defines the needed quantities, and justifiably decides which surfaces or volume parts are added, subtracted, or excluded."
+          },
+          {
+            "id": "geometric-relations-are-combined-coherently",
+            "essentialUnderstandingDe": "Unbekannte Längen und Winkel können über rechtwinklige Querschnitte bestimmt und anschließend in Oberflächen- und Volumenformeln der Teilkörper eingesetzt werden; gemeinsame Maße und Einheiten müssen über alle Teilschritte konsistent bleiben.",
+            "essentialUnderstandingEn": "Unknown lengths and angles can be determined from right-triangle cross-sections and then used in surface-area and volume formulas for component solids; shared dimensions and units must remain consistent throughout.",
+            "observablePerformanceDe": "Die lernende Person bestimmt und begründet in unabhängigen Modellierungsaufgaben sowohl unbekannte Längen als auch Winkel, legt die Bezugsrichtung des Winkels fest und verbindet die benötigten geometrischen Größen nachvollziehbar mit Flächen- und Volumenberechnungen. Längen- und Winkelbestimmung müssen insgesamt beide belegt sein.",
+            "observablePerformanceEn": "In independent modeling tasks, the learner determines and justifies both unknown lengths and angles, specifies the angle reference direction, and clearly connects the required geometric quantities to surface-area and volume calculations. Both length determination and angle determination must be evidenced overall."
+          },
+          {
+            "id": "model-results-are-interpreted-and-validated",
+            "essentialUnderstandingDe": "Ein geometrisches Modellergebnis gilt nur unter den gewählten Idealisierungen und muss durch Einheit, Größenordnung, Randvergleich und den Sachkontext geprüft sowie sinnvoll gerundet werden.",
+            "essentialUnderstandingEn": "A geometric model result is valid only under its chosen idealizations and must be checked through units, magnitude, bounds, and context and rounded appropriately.",
+            "observablePerformanceDe": "Die lernende Person interpretiert jedes Ergebnis mit Bezug zur Frage, führt eine unabhängige Plausibilitätsprüfung durch und benennt mindestens eine Modellgrenze, die das reale Ergebnis verändern könnte.",
+            "observablePerformanceEn": "The learner interprets each result in relation to the question, performs an independent plausibility check, and states at least one model limitation that could change the real result."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "context-is-idealized-as-solids-with-boundaries",
+            "geometric-relations-are-combined-coherently",
+            "model-results-are-interpreted-and-validated"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "solid-composition",
+            "textDe": "Zylinder mit Kegel, Dreiecksprisma oder Zylinder mit Halbkugeln",
+            "textEn": "cylinder with cone, triangular prism, or cylinder with hemispheres"
+          },
+          {
+            "id": "target-quantity",
+            "textDe": "hergeleitete Länge oder Winkel, Außenfläche oder Innenvolumen",
+            "textEn": "derived length or angle, external area, or internal volume"
+          },
+          {
+            "id": "model-boundary",
+            "textDe": "offene oder gemeinsame Flächen, Wandstärke, Nahtzugabe oder nutzbarer Innenraum",
+            "textEn": "open or shared surfaces, wall thickness, seam allowance, or usable interior"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cylindrical-silo-conical-roof",
+            "taskDemandDe": "Ein Silo wird als Zylinder mit Radius 3 m und Höhe 8 m sowie aufgesetztem geradem Kegeldach der senkrechten Höhe 2 m modelliert. Bestimme Dachschräglänge und Dachneigungswinkel gegen die Waagerechte, Außenfläche ohne Boden und gemeinsamer Kreisfläche sowie Innenvolumen; dokumentiere Annahmen. Prüfe Größenordnung und Gültigkeit des Modells.",
+            "taskDemandEn": "A silo is modelled as a cylinder of radius 3 m and height 8 m topped by a right conical roof of vertical height 2 m. Determine roof slant height and roof pitch relative to the horizontal, external area excluding the floor and shared circle, and interior volume; document assumptions. Check the results for plausibility and the model for validity.",
+            "expectedPerformanceDe": "Im Axialschnitt gilt s=√(3²+2²)=√13 m und tan α=2/3. Außenfläche ist 2π·3·8+π·3·√13, Volumen π·3²·8+⅓π·3²·2. Wandstärke, Dachüberstand und Naht werden als nicht modelliert benannt; gemeinsame Fläche und Boden werden nicht doppelt gezählt. Der Neigungswinkel gegen die Waagerechte beträgt arctan(2/3)≈33,7°. Außenfläche ≈184,8 m² und Innenvolumen 78π≈245,0 m³. Das Innenvolumen liegt zwischen dem Volumen des Zylinders (72π m³) und dem umschließenden Zylinder der Gesamthöhe 10 m (90π m³). Die Fläche und das Volumen gelten nur für das dünnwandige Idealmodell.",
+            "expectedPerformanceEn": "In the axial section, s=sqrt(3²+2²)=sqrt(13) m and tan alpha=2/3. External area is 2π·3·8+π·3·sqrt(13), and volume is π·3²·8+one third π·3²·2. Wall thickness, roof overhang, and seams are excluded; the shared circle and floor are not double-counted. The roof pitch relative to the horizontal is arctan(2/3)≈33.7°. External area is ≈184.8 m² and internal volume 78π≈245.0 m³. Interior volume lies between that of the cylinder (72π m³) and its enclosing cylinder of total height 10 m (90π m³). The area and volume apply only to the thin-walled idealization.",
+            "understandingFocusDe": "Mehrschritttransfer von Querschnittsgeometrie zu Winkel, Oberfläche und Volumen eines zusammengesetzten Körpers.",
+            "understandingFocusEn": "Multistep transfer from cross-sectional geometry to angle, surface area, and volume of a composite solid."
+          },
+          {
+            "id": "triangular-prism-tent",
+            "taskDemandDe": "Ein Zelt wird als 4 m langes gerades Prisma mit gleichschenkliger Dreiecksgrundfläche modelliert; Breite 3 m, Innenhöhe 1,8 m. Bestimme Länge und Neigungswinkel einer Dachseite gegen den waagerechten Boden, Stofffläche ohne Boden mit zwei Stirndreiecken und Innenvolumen. Prüfe Plausibilität, sinnvolle Rundung und Modellgrenzen.",
+            "taskDemandEn": "A tent is modelled as a 4 m long right prism with an isosceles triangular cross-section, width 3 m and interior height 1.8 m. Determine the length and angle of a roof side relative to the horizontal floor, fabric area excluding the floor but including two triangular ends, and interior volume. Check plausibility, sensible rounding, and model limitations.",
+            "expectedPerformanceDe": "Der halbe Querschnitt hat Katheten 1,5 m und 1,8 m, also Dachseite √(1,5²+1,8²) und tan α=1,8/1,5. Stofffläche sind zwei Dachrechtecke plus zwei Dreiecke; V=(½·3·1,8)·4. Nähte, Eingangsöffnung und Stoffdurchhang begrenzen das Modell. Der Neigungswinkel gegen den Boden ist arctan(1,8/1,5)≈50,2°. Dachseite ≈2,34 m, Stofffläche ≈24,1 m² und Volumen 10,8 m³. Das Volumen ist genau die Hälfte des umschließenden Quaders 3·4·1,8=21,6 m³; Fläche und Volumen gelten nur für das idealisierte, straff gespannte Zelt.",
+            "expectedPerformanceEn": "Half the cross-section has legs 1.5 m and 1.8 m, so the roof side is sqrt(1.5²+1.8²) and tan alpha=1.8/1.5. Fabric area consists of two roof rectangles plus two triangles; V=(one half times 3 times 1.8) times 4. Seams, doorway, and fabric sag limit the model. The roof angle relative to the floor is arctan(1.8/1.5)≈50.2°. Roof side ≈2.34 m, fabric area ≈24.1 m², and volume 10.8 m³. The volume is exactly half the enclosing box volume 3·4·1.8=21.6 m³; area and volume apply only to the idealized taut tent.",
+            "understandingFocusDe": "Unabhängiger Transfer zu einem Prisma mit anderer Zerlegung und kontextabhängiger Flächenauswahl.",
+            "understandingFocusEn": "Independent transfer to a prism with a different decomposition and context-dependent surface selection."
+          },
+          {
+            "id": "capsule-container-inverse-check",
+            "taskDemandDe": "Ein Behälter wird als Zylinder der Länge 10 cm mit zwei Halbkugeln Radius 2 cm modelliert. Bestimme Gesamtlänge, Außenfläche und Volumen, erkläre die Zusammenfassung der Halbkugeln und prüfe, ob ein Quader 15 cm×5 cm×5 cm als Verpackung ausreicht.",
+            "taskDemandEn": "A container is modelled as a cylinder of length 10 cm with two hemispherical ends of radius 2 cm. Determine total length, external area, and volume, explain combining the hemispheres, and check whether a 15 cm by 5 cm by 5 cm box is sufficient packaging.",
+            "expectedPerformanceDe": "Gesamtlänge 14 cm; die Halbkugeln bilden eine Kugel, daher Außenfläche 2π·2·10+4π·2² und Volumen π·2²·10+4/3π·2³. Die Maße 14×4×4 passen innerhalb 15×5×5, vorbehaltlich Polsterung und Wandstärke; das Verpackungsvolumen ist eine zusätzliche Plausibilitätsobergrenze. Außenfläche 56π≈175,9 cm² und Volumen (152/3)π≈159,2 cm³ liegen unter der Oberfläche bzw. dem Volumen des 15×5×5-cm-Verpackungsquaders; die Maßprüfung ist für die Passform entscheidend.",
+            "expectedPerformanceEn": "Total length is 14 cm; the hemispheres form a sphere, so external area is 2π·2·10+4π·2² and volume is π·2²·10+4/3π·2³. Dimensions 14 by 4 by 4 fit within 15 by 5 by 5, subject to padding and wall thickness; box volume provides an additional plausibility upper bound. External area is 56π≈175.9 cm² and volume (152/3)π≈159.2 cm³, below the surface area and volume of the 15 by 5 by 5 cm box; dimensions, rather than volume alone, establish physical fit.",
+            "understandingFocusDe": "Transfer zu einer dritten Körperkombination mit Dimensionsprüfung und expliziter Modellgrenze.",
+            "understandingFocusEn": "Transfer to a third solid combination with dimensional checking and an explicit model boundary."
+          }
+        ]
+      },
+      "dissent": [
+        "Independent Astra V hold: current JPG sha256:9150c34bb6f47eb1d5f9b3d6ca4132e619e2a94cb4cca9303bb0ff5b284fc9e8 has arrows from the cone-volume and cone-lateral-area labels pointing to the cylindrical wall. Correct image associations and regenerate current bindings before integrating this goal; correct numerical formulas do not resolve the visual defect."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+# Non-overlapping J10 vector and Q1 mean P profiles
+
+This package selects the three current, independently recalculated bilingual profiles `b025df0c`, `ba343971`, and `c1c80b80` from the four-goal candidate package `../math-m7-j10-vectors-q1-mean-four-current-v1/`. `235ae698` is intentionally excluded because a valid current P profile is already registered in `math-m7-vector-eight-after-text-fixes-v2`. The original four-goal candidate and its validation remain available for audit. The rollout owner independently checked all selected case calculations and reopened the corrected mean-stock PNG in original resolution. These are AI candidates (`needs_human_review`), not human approvals.

@@ -1,0 +1,160 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-pythagoras-four-revised-current-20260929-v2",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex root; adjudication of two independent AI reviews with source, page and image checks; no human approval",
+  "synthesizedAt": "2026-09-29T04:02:14.740Z",
+  "batch": {
+    "batchId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2",
+    "batchManifestDigest": "sha256:567b3405acd0a05597aa65e95d0fab67afd4676ea4a2a9ae3b7eabf805d8b8b5",
+    "configDigest": "sha256:19e92b60d27ea8b8b28da3432b41d86ad080d7f5209c51f7eb7ade8656c0fbba",
+    "bundleFingerprint": "sha256:523644cc9ee4a96c9557cf285a0e3f4e57b41d734d73df02772e9eeeac7b88a0",
+    "bookDigest": "sha256:af63bc9c5349468d0c697d8f2bc994e4d9a0b21312c7179784f863605ec51c99",
+    "reviewInputFingerprint": "sha256:f68e38b6b3f65ec482160fcb3871ca4c979ec70f71850437753dc967764e49dd",
+    "dualSummaryDigest": "sha256:4a4435695e174d4b6401307937b1b0fdf9c95f90a02880c0684318ff1d2415fd",
+    "canonicalLandscapeDigest": "sha256:1ffa69341cd697db09a48bab0707b38381340ef2b53a9dc359e06c13db9e8f56"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-a",
+      "campaignDigest": "sha256:cfdbbd52e3d45618c43b6c0a2412b14e9b96d2be583343a0a9e5e3a8f5794ac0",
+      "roundId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-independent-a",
+      "reviewInputFingerprint": "sha256:f68e38b6b3f65ec482160fcb3871ca4c979ec70f71850437753dc967764e49dd",
+      "batchId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:cef085def388a186acac56dd6196d8f619ae9b24ba8f924f745389d831ccb97f",
+      "runId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a.batch-001.codex-current-pythagoras-independent-a",
+      "runManifestDigest": "sha256:c379e15e093df4bada3fddbbf625eb138baab7a19ebf3c9ee1fe2dfe00a8aa75",
+      "resultsDigest": "sha256:b5db321af2fc80818a36e44b4210123f0929b70bbea3e06ede698ab325a6b9c8"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-b",
+      "campaignDigest": "sha256:327fcccb63b32a518d596d56ff54bf1b04b763da072a6c7d4cc61429e8f0f4a4",
+      "roundId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-independent-b",
+      "reviewInputFingerprint": "sha256:f68e38b6b3f65ec482160fcb3871ca4c979ec70f71850437753dc967764e49dd",
+      "batchId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:d6e306205f6d46e21a9dcd62b09a56d6e63186e5609f0bf80e47bcd28842699c",
+      "runId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b-codex-independent-b",
+      "runManifestDigest": "sha256:477ef75a9a84d631ac24ca0bda3087beb6a57660693d025bd3619720afecbbbc",
+      "resultsDigest": "sha256:f83263066917450f6246763af314d4ac572ec750a66674eb18132e931e740fe0"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-pythagoras-four-revised-current-20260929-v2-decision-001",
+      "goalId": "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8727340b0b30718ddd719190022fd06e3494753e0b824cf9e230d10d3af7589c",
+      "pageFingerprint": "sha256:af743fbd20278bfd09edab28961c11213a58a2b62d9b3f19d6163a38d0f33879",
+      "goalReviewContextFingerprint": "sha256:fbb75b3f8dca4d6989c2fe138bbda7758a6e456e7385af2c4bd7e3a8eab1111e",
+      "finalText": {
+        "titleDe": "Rechtwinkligkeit mit dem Kehrsatz des Pythagoras prüfen",
+        "titleEn": "Test right angles using the converse of the Pythagorean theorem",
+        "descriptionDe": "Die lernende Person kann bei einem Dreieck mit gegebenen Seitenlängen die längste Seite bestimmen und anhand der Quadratsummenbeziehung entscheiden, ob das Dreieck rechtwinklig ist, sowie gegebenenfalls die Lage des rechten Winkels angeben und ihre Entscheidung mit Satz und Kehrsatz begründen.",
+        "descriptionEn": "The learner can identify the longest side of a triangle with given side lengths, decide from the sum-of-squares relation whether it is right-angled, and locate the right angle where present, justifying the decision using the theorem and its converse."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a.batch-001.codex-current-pythagoras-independent-a.081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+          "recordDigest": "sha256:2345bd306b5a27b1325ae8bef06dac2710aec14a00f51a31124725ad2584e0bd"
+        },
+        "second": {
+          "recordId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b-codex-independent-b.081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+          "recordDigest": "sha256:df646a2d79a3ef3415accccff7688baa86948adef2fb25e15a0ce224931a1167"
+        }
+      },
+      "rationaleDe": "Beide Runden halten das aktuelle Rechtwinkligkeitskriterium einschließlich längster Seite und logischem Schluss. Der Negativfall ist die Kontraposition des ursprünglichen Satzes. Die direkten BB/BE-, BW-, HE-, SH- und SL-Quellen und die aktuelle Sek-I-Zielprojektion stützen die Kompetenz. Runde B hat den BW-Quellenlokator auf gedruckte S.34/PDF 36 präzisiert; dies ist Quellenpflege, kein Gegenbefund. Das aktuelle 5-12-13/5-12-14-Bild ist richtig, ersetzt aber keinen eigenen Schluss. Dies ist maschinelle D-QS ohne menschliche Freigabe.",
+      "rationaleEn": "Both rounds retain the current right-angle criterion, including the longest side and logical conclusion. The negative case uses contraposition of the original theorem. Direct BB/BE, BW, HE, SH and SL sources and the current lower-secondary target projection support the goal. Round B refined the BW source locator to printed page 34/PDF page 36; this is citation maintenance, not a substantive objection. The current 5-12-13/5-12-14 image is correct but does not replace independent reasoning. This is machine D QA without human approval."
+    },
+    {
+      "decisionId": "math-m7-pythagoras-four-revised-current-20260929-v2-decision-002",
+      "goalId": "3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:77df35fd143623f751ba67b33a79df81eeebe7ca1dde7ed10a984d61afa11c93",
+      "pageFingerprint": "sha256:748303f7d3460f2ac446cbceee410cdaac5a61566ecd330f39d989e747103c53",
+      "goalReviewContextFingerprint": "sha256:24302bc43796a3d2bdc1a6af255aacb863df3fb006f406868a88f773a173dfec",
+      "finalText": {
+        "titleDe": "Wurzelstrecken mit dem Satz des Pythagoras konstruieren",
+        "titleEn": "Construct square-root lengths using the Pythagorean theorem",
+        "descriptionDe": "Die lernende Person kann eine vorgegebene Wurzelstrecke als Seite eines geeigneten rechtwinkligen Dreiecks konstruieren, die Konstruktionsschritte dokumentieren und anhand des rechten Winkels und der zugehörigen Quadratsummenbeziehung nachweisen, dass die konstruierte Strecke die geforderte exakte Länge hat.",
+        "descriptionEn": "The learner can construct a given square-root length as a side of a suitable right triangle, document the construction steps, and use the right angle and the corresponding sum-of-squares relation to justify the exact length of the constructed segment."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a.batch-001.codex-current-pythagoras-independent-a.3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
+          "recordDigest": "sha256:35b94fe986d9ea0ebb85303d5f486751aac8f734008e30b0a5cdb55391033b64"
+        },
+        "second": {
+          "recordId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b-codex-independent-b.3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
+          "recordDigest": "sha256:75b1d6f548afc66515b94a5a88095e8ae7bcb47612ae2d05b58be36267724b56"
+        }
+      },
+      "rationaleDe": "Beide Runden halten die Konstruktion einer Wurzelstrecke mit Pythagoras und exakter Begründung. Die SL-J9-Quelle erlaubt Pythagoras oder Höhensatz; die aktuelle Beschreibung wählt zulässig die erste Methode. Das Bild zeigt 3²+2²=13 und √13 als Hypotenuse. Runde B notiert eine ausgelassene Zwischen-Quadrateinheit im Bild; die Rechnung und die Zielfähigkeit bleiben richtig. Ein unabhängiger Transfer muss eine neue Konstruktion selbst dokumentieren. Dies ist maschinelle D-QS ohne menschliche Freigabe.",
+      "rationaleEn": "Both rounds retain construction of a root-length segment by Pythagoras with exact justification. The SL year-9 source allows Pythagoras or the altitude theorem; the current description validly selects the former. The image shows 3²+2²=13 and √13 as hypotenuse. Round B notes an omitted intermediate square unit in the picture; the calculation and competence remain correct. Independent transfer must document a new construction. This is machine D QA without human approval."
+    },
+    {
+      "decisionId": "math-m7-pythagoras-four-revised-current-20260929-v2-decision-003",
+      "goalId": "487ec508-f421-5a5a-a84c-98f88a8fb3e5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e5c2946a89b35dc769421bcbf3a7e96bf108f193b0b502c62b388b118444c5b7",
+      "pageFingerprint": "sha256:0e9c08420038dc28f9e54b1ab346d18feaa830b7a7e3aa20b7e0b235a3819b3c",
+      "goalReviewContextFingerprint": "sha256:7dd74f933e0d5b71e1eb90120f13b95fd9dc54e1c665e5277be00f92099ebe72",
+      "finalText": {
+        "titleDe": "Den Satz des Pythagoras geometrisch beweisen",
+        "titleEn": "Prove the Pythagorean theorem geometrically",
+        "descriptionDe": "Die lernende Person kann den Satz des Pythagoras für ein beliebiges rechtwinkliges Dreieck an einer geeigneten Zerlegungs- oder Ergänzungsfigur geometrisch beweisen und dabei die verwendeten Flächenbeziehungen und die Allgemeingültigkeit der Schlussfolgerung nachvollziehbar begründen.",
+        "descriptionEn": "The learner can prove the Pythagorean theorem for an arbitrary right triangle using a suitable dissection or completion diagram and justify the area relations and the generality of the conclusion."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a.batch-001.codex-current-pythagoras-independent-a.487ec508-f421-5a5a-a84c-98f88a8fb3e5",
+          "recordDigest": "sha256:a18aae882045e7c653dc4af1fa6ee0e88e81a95d13eb7dd54a479dc07702aa6d"
+        },
+        "second": {
+          "recordId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b-codex-independent-b.487ec508-f421-5a5a-a84c-98f88a8fb3e5",
+          "recordDigest": "sha256:a143938b895d9ead0440c2c6716957faa765d2e1253f71f4ba3e9e9a709fc24f"
+        }
+      },
+      "rationaleDe": "Beide Runden halten den allgemeinen geometrischen Beweis, getrennt von bloßer Zahlenprüfung. HE, RP, SH und SL stützen den Beweis; Runde B präzisiert die RP-Normstelle auf gedruckte S.97/PDF 101 statt des ungenauen bisherigen Lokators. Das Vier-Dreiecke-Bild liefert eine korrekte Ergänzungsfigur; die lernende Person muss insbesondere die rechten Innenwinkel des c-Quadrats selbst begründen. Quellenlokatorpflege und Bildfreigabe bleiben getrennt. Dies ist maschinelle D-QS ohne menschliche Freigabe.",
+      "rationaleEn": "Both rounds retain the general geometric proof, distinct from a numeric check. HE, RP, SH and SL support a proof; round B refines the RP source locator to printed page 97/PDF page 101 rather than the imprecise old locator. The four-triangle image gives a valid completion figure; the learner must independently justify the right angles of the inner c-square. Citation maintenance and image release remain separate. This is machine D QA without human approval."
+    },
+    {
+      "decisionId": "math-m7-pythagoras-four-revised-current-20260929-v2-decision-004",
+      "goalId": "6a3502ee-b616-5db7-88fc-8951f33c9f63",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4e7c4258adecb50612e71cc91ec00905fbbbec444e2cc1ae81f14796ea7275a5",
+      "pageFingerprint": "sha256:8f6985a663f18d5de079b2f6fcb93b72b157a1d83d310b92ce0c56c1cb1c7174",
+      "goalReviewContextFingerprint": "sha256:fc10e5ca1f18464a75960959f30851f01e3f7993e17eeba64e12540262453f36",
+      "finalText": {
+        "titleDe": "Den Kehrsatz des Pythagoras beweisen",
+        "titleEn": "Prove the converse of the Pythagorean theorem",
+        "descriptionDe": "Die lernende Person kann für ein Dreieck mit Seiten $a,b,c$ aus $a^2+b^2=c^2$ den Kehrsatz des Pythagoras beweisen: Sie konstruiert ein rechtwinkliges Hilfsdreieck mit Katheten $a,b$, zeigt mit dem Satz des Pythagoras die Gleichheit der dritten Seiten und schließt mittels Kongruenz auf den rechten Winkel gegenüber $c$ im ursprünglichen Dreieck.",
+        "descriptionEn": "For a triangle with sides $a,b,c$, the learner can prove the converse of the Pythagorean theorem from $a^2+b^2=c^2$: they construct a right auxiliary triangle with legs $a,b$, use the Pythagorean theorem to establish equality of the third sides, and infer by congruence that the angle opposite $c$ in the original triangle is right."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-a.batch-001.codex-current-pythagoras-independent-a.6a3502ee-b616-5db7-88fc-8951f33c9f63",
+          "recordDigest": "sha256:be2df923532a6d3f6a40a5490e8947a088f8b57e357d2e53b43e0642f605ca5d"
+        },
+        "second": {
+          "recordId": "mathematik-m7-pythagoras-four-revised-current-20260929-v2-first-pass-b-codex-independent-b.6a3502ee-b616-5db7-88fc-8951f33c9f63",
+          "recordDigest": "sha256:470ace0e55324d61cc8766849fc8f09912eed169773e7cbd77e2bade927b52ed"
+        }
+      },
+      "rationaleDe": "Beide Runden halten die fachlich überarbeitete bilinguale Beschreibung. Aus a²+b²=c² wird ein rechtwinkliges Hilfsdreieck mit Katheten a,b konstruiert; Pythagoras liefert d=c, SSS die Kongruenz, daher ist der Winkel gegenüber c im Ausgangsdreieck recht. Die Schlusskette ist nicht zirkulär und erfüllt HE/SH/SL, ohne diese Hilfsmethode als einzig zulässigen Beweis auszugeben. Das aktuelle PNG stimmt mit dieser Kette überein; es ist keine bereits erbrachte Lernendenleistung. Dies ist maschinelle D-QS ohne menschliche Freigabe.",
+      "rationaleEn": "Both rounds retain the substantively revised bilingual description. From a²+b²=c², a right auxiliary triangle with legs a,b is constructed; Pythagoras yields d=c and SSS yields congruence, hence the angle opposite c in the original triangle is right. This is non-circular and meets HE/SH/SL without claiming that this method is the only valid proof. The current PNG agrees with the chain; it is not learner evidence. This is machine D QA without human approval."
+    }
+  ],
+  "manifestFingerprint": "sha256:2b6623355acd2fa6f8d2b8145aa19882272b5ecb5b3041fe05cb08d818d05f21"
+}

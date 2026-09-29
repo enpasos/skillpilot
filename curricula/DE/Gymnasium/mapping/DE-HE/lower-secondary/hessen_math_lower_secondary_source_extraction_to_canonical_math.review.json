@@ -4121,12 +4121,6 @@
     },
     {
       "legacyGoalId": "he-math-seki-g9-8-2-04-f7ced4ae",
-      "canonicalGoalId": "f65ab452-1884-57b0-9be3-c7d9e4944891",
-      "matchType": "exact",
-      "reviewDecisionId": "he-math-seki-g9-8-2-04-f7ced4ae"
-    },
-    {
-      "legacyGoalId": "he-math-seki-g9-8-2-04-f7ced4ae",
       "canonicalGoalId": "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
       "matchType": "exact",
       "reviewDecisionId": "he-math-seki-g9-8-2-04-f7ced4ae"
@@ -4151,14 +4145,14 @@
     },
     {
       "legacyGoalId": "he-math-seki-g9-8-2-06-11c4a06f",
-      "canonicalGoalId": "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
-      "matchType": "exact",
+      "canonicalGoalId": "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+      "matchType": "partial",
       "reviewDecisionId": "he-math-seki-g9-8-2-06-11c4a06f"
     },
     {
       "legacyGoalId": "he-math-seki-g9-8-2-06-11c4a06f",
-      "canonicalGoalId": "8e68f24a-8b0e-4ce6-9567-a49e706f83be",
-      "matchType": "exact",
+      "canonicalGoalId": "11c88ea2-8502-5008-bec2-3e491c75ace4",
+      "matchType": "partial",
       "reviewDecisionId": "he-math-seki-g9-8-2-06-11c4a06f"
     },
     {
@@ -6977,12 +6971,6 @@
     },
     {
       "legacyGoalId": "he-math-seki-g8-7g-3-04-19f0edba",
-      "canonicalGoalId": "f65ab452-1884-57b0-9be3-c7d9e4944891",
-      "matchType": "exact",
-      "reviewDecisionId": "he-math-seki-g8-7g-3-04-19f0edba"
-    },
-    {
-      "legacyGoalId": "he-math-seki-g8-7g-3-04-19f0edba",
       "canonicalGoalId": "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
       "matchType": "exact",
       "reviewDecisionId": "he-math-seki-g8-7g-3-04-19f0edba"
@@ -9116,6 +9104,18 @@
       "canonicalGoalId": "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee",
       "matchType": "exact",
       "reviewDecisionId": "he-math-seki-g8-8g-3-06-36fb2894"
+    },
+    {
+      "legacyGoalId": "he-math-seki-g8-8g-3-01-422796ef",
+      "canonicalGoalId": "f65ab452-1884-57b0-9be3-c7d9e4944891",
+      "matchType": "partial",
+      "reviewDecisionId": "he-math-seki-g8-8g-3-01-422796ef"
+    },
+    {
+      "legacyGoalId": "he-math-seki-g8-8g-3-02-f0dbbfbf",
+      "canonicalGoalId": "f65ab452-1884-57b0-9be3-c7d9e4944891",
+      "matchType": "partial",
+      "reviewDecisionId": "he-math-seki-g8-8g-3-02-f0dbbfbf"
     }
   ],
   "decisions": [
@@ -13440,10 +13440,9 @@
       "decision": "mapped",
       "canonicalGoalIds": [
         "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
-        "f65ab452-1884-57b0-9be3-c7d9e4944891",
         "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
       ],
-      "rationale": "Sehne, Sekante und Tangente werden durch Kreisbeziehungen und Lagebeziehungen zwischen Geraden und Kreisen abgedeckt.",
+      "rationale": "Die Quellzeile beschreibt Sehne, Sekante und Tangente am Kreis; die verbliebenen Kreis-/Geraden-Ziele decken sie ab. Der Zylindermantel aus dem Kreisumfang gehoert nicht zu dieser Quellzeile und wurde aus der Zuordnung entfernt (gezielte Quellenpruefung 2026-09-29).",
       "reviewedAt": "2026-05-06",
       "reviewer": "codex"
     },
@@ -13467,12 +13466,13 @@
       "sourceSpan": "Prismen Körpermodell, Netz, Schrägbild (Handskizze)",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
-        "8e68f24a-8b0e-4ce6-9567-a49e706f83be"
+        "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+        "11c88ea2-8502-5008-bec2-3e491c75ace4"
       ],
-      "rationale": "Die G9-Zeile fordert Körpermodell, Netz und Schrägbild eines Prismas, aber keine Volumen- oder Oberflächenberechnung. Sie bleibt den Körper- und Darstellungszielen zugeordnet.",
-      "reviewedAt": "2026-05-06",
-      "reviewer": "codex"
+      "rationale": "Die amtliche G9-8.2-Zeile „Prismen Körpermodell, Netz, Schrägbild (Handskizze)“ ist ein Darstellungsfokus ohne Kreis-, Zylindermantel-, Volumen- oder Oberflächenherleitung. c823b5a2 deckt das Erkennen von Prismen in Modellen/Darstellungen, 11c88ea2 den Zusammenhang von Netz, Schrägbild und Modell gerader Körper. Beides sind fachlich partielle direkte Bindungen; das eigenständige Zeichnen einer Prisma-Handskizze steht in diesen Zieltexten nicht ausdrücklich und darf nicht als gesondert geprüft behauptet werden. Die alten Kanten zu 5ecf51c3 (falsche Zylinder-/Flächenvererbung) und 8e68f24a (unspezifische frühe Punkt-/Quadergeometrie) sind entfernt. Der direkte amtliche G9-J9-Beleg für f65ab452 bleibt unberührt.",
+      "reviewedAt": "2026-09-29",
+      "reviewer": "OpenAI Codex AI targeted official-source and route review",
+      "matchType": "partial"
     },
     {
       "sourceGoalId": "he-math-seki-g9-8-2-07-c19ad76b",
@@ -14230,7 +14230,7 @@
         "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
         "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1"
       ],
-      "rationale": "Netz und Schraegsbild des Kreiszylinders werden durch Kreis-/Zylinderbeziehungen, Zylinderberechnung und den spaeteren Kreis-/Koerperkorridor abgedeckt.",
+      "rationale": "Das Kreiszylindernetz traegt die Mantelrechteck-Seiten Umfang und Hoehe sowie die weiteren Zylinder-Darstellungen. Die Quellzeile fordert das Herleiten der Formel nicht ausdruecklich; die kanonische Herleitung ist eine fachlich passende Konkretisierung, keine wortgleiche Forderung (gezielte Quellenpruefung 2026-09-29).",
       "reviewedAt": "2026-05-06",
       "reviewer": "codex"
     },
@@ -14244,7 +14244,7 @@
         "f65ab452-1884-57b0-9be3-c7d9e4944891",
         "63dae16c-8cc0-5400-bc0b-b2e9e7d28ffa"
       ],
-      "rationale": "Volumen und Oberflaecheninhalt des Kreiszylinders werden durch Zylindervolumen, Kreis-/Zylinderbeziehungen und das allgemeine Koerperziel zu Volumen und Oberflaechen abgedeckt.",
+      "rationale": "Volumen und Oberflaecheninhalt des Kreiszylinders werden durch die Zylinder- und Koerperziele sowie die Mantelflaeche abgedeckt. Die Quellzeile nennt die Formelherleitung nicht ausdruecklich; diese ist eine passende fachliche Konkretisierung (gezielte Quellenpruefung 2026-09-29).",
       "reviewedAt": "2026-05-06",
       "reviewer": "codex"
     },
@@ -15716,10 +15716,9 @@
       "decision": "mapped",
       "canonicalGoalIds": [
         "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
-        "f65ab452-1884-57b0-9be3-c7d9e4944891",
         "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
       ],
-      "rationale": "Der G8-Lehrplantext ist wortgleich mit dem bereits fachlich gemappten Source-Ziel he-math-seki-g9-8-2-04-f7ced4ae; deshalb wird dieselbe kanonische Abdeckung uebernommen.",
+      "rationale": "Die Quellzeile beschreibt Sehne, Sekante und Tangente am Kreis; die verbliebenen Kreis-/Geraden-Ziele decken sie ab. Der Zylindermantel aus dem Kreisumfang gehoert nicht zu dieser Quellzeile und wurde aus der Zuordnung entfernt (gezielte Quellenpruefung 2026-09-29).",
       "reviewedAt": "2026-05-21",
       "reviewer": "codex"
     },
@@ -15919,11 +15918,12 @@
       "decision": "mapped",
       "canonicalGoalIds": [
         "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
-        "f1348d40-3872-5e44-8892-3600c811796f"
+        "f1348d40-3872-5e44-8892-3600c811796f",
+        "f65ab452-1884-57b0-9be3-c7d9e4944891"
       ],
-      "rationale": "Die G8-Zeile Oberflächeninhalt, Volumen steht ebenfalls unter Prismen. Beide getrennten Berechnungsziele werden partiell gestützt; weder die Verfahren noch die Sachdeutung stehen vollständig in dieser Kurzzeile.",
-      "reviewedAt": "2026-09-28",
-      "reviewer": "codex-ai-prism-source-adjudication-2026-09-28",
+      "rationale": "Die G8-Zeile Oberflächeninhalt, Volumen steht ebenfalls unter Prismen. Beide getrennten Berechnungsziele werden partiell gestützt; weder die Verfahren noch die Sachdeutung stehen vollständig in dieser Kurzzeile. Quellen-/Jahrgangsprüfung 2026-09-29: Original G8-Lehrplan, 8G.3, Druck-S.30/PDF-S.31, stellt Prismen UND Kreiszylinder mit Körpermodell/Netz sowie Oberflächeninhalt/Volumen zusammen. Die zusätzliche Kante zu f65ab452 ist ein Teilbeleg für die geometrische Herleitung des Zylindermantels: Netz und Oberflächeninhalt tragen zusammen den Übergang vom Kreisumfang zur Rechteckseite. Die Einzelzeile ist weder ein wörtlicher Beweisauftrag noch eine volle Äquivalenz zum gesamten Zieltext. G8-Platzierung J8; kein Rückschluss aus G8 7G.3 Kreis/Geraden.",
+      "reviewedAt": "2026-09-29",
+      "reviewer": "codex-f65-he-source-stage-repair",
       "matchType": "partial"
     },
     {
@@ -17090,11 +17090,12 @@
       "canonicalGoalIds": [
         "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
         "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
-        "11c88ea2-8502-5008-bec2-3e491c75ace4"
+        "11c88ea2-8502-5008-bec2-3e491c75ace4",
+        "f65ab452-1884-57b0-9be3-c7d9e4944891"
       ],
-      "rationale": "Körpermodell, Netz und Schrägbild von Prisma und Kreiszylinder tragen Körpererkennung und Darstellungsformen, nicht die Berechnung von Volumen oder Oberflächeninhalt.",
-      "reviewedAt": "2026-05-21",
-      "reviewer": "codex"
+      "rationale": "Körpermodell, Netz und Schrägbild von Prisma und Kreiszylinder tragen Körpererkennung und Darstellungsformen, nicht die Berechnung von Volumen oder Oberflächeninhalt. Quellen-/Jahrgangsprüfung 2026-09-29: Original G8-Lehrplan, 8G.3, Druck-S.30/PDF-S.31, stellt Prismen UND Kreiszylinder mit Körpermodell/Netz sowie Oberflächeninhalt/Volumen zusammen. Die zusätzliche Kante zu f65ab452 ist ein Teilbeleg für die geometrische Herleitung des Zylindermantels: Netz und Oberflächeninhalt tragen zusammen den Übergang vom Kreisumfang zur Rechteckseite. Die Einzelzeile ist weder ein wörtlicher Beweisauftrag noch eine volle Äquivalenz zum gesamten Zieltext. G8-Platzierung J8; kein Rückschluss aus G8 7G.3 Kreis/Geraden.",
+      "reviewedAt": "2026-09-29",
+      "reviewer": "codex-f65-he-source-stage-repair"
     },
     {
       "sourceGoalId": "he-math-seki-g8-8g-3-07-0f3bfdcc",

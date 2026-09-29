@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-circle-two-examples-retained-final-current-20260929-v4",
+  "reviewedAt": "2026-09-29T05:45:00Z",
+  "reviewer": "OpenAI Codex, independent current image and exact case arithmetic review; AI candidate only",
+  "goals": [
+    {
+      "goalId": "2f073195-52ef-5219-926c-f3f58ebdc556",
+      "reason": "The actual final shared PNG sha256:75f10fcf70cc0e3b7c2c34a1cabd50eab3d6f10657256e207210b948c53968f5 was viewed at full resolution. User-valued pizza, fenced garden, bridge arch and bitten cookie remain. Labels at bridge/cookie no longer claim their irregular full outlines obey the exact semicircle formulas; the red bridge arc runs from ground to ground above the opening without tracing the ground path. For the area goal, green full-circle interior, r=3 cm, d=6 cm and A=9π cm² remain correct. The two independent fresh 90°/120° sector cases were recalculated: 25π/4 cm²≈19.63 cm² and 12π m² with 24π m² remainder. This is AI candidate evidence, not human approval.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "radius-and-square-area",
+            "essentialUnderstandingDe": "Die Kreisfläche hängt quadratisch vom Radius ab: A=πr²; ein gegebener Durchmesser muss vor dem Quadrieren halbiert werden.",
+            "essentialUnderstandingEn": "Circle area depends quadratically on the radius: A=πr²; a given diameter must be halved before squaring.",
+            "observablePerformanceDe": "Bestimmt aus Radius oder Durchmesser die Vollkreisfläche, erläutert bei gegebenem Durchmesser $A=π(d/2)^2=πd²/4$ und deutet die quadratische Abhängigkeit mit passender Flächeneinheit.",
+            "observablePerformanceEn": "Finds the full-circle area from a radius or diameter, explains $A=π(d/2)^2=πd²/4$ when a diameter is given, and interprets the quadratic dependence with suitable square units."
+          },
+          {
+            "id": "sector-fraction-context",
+            "essentialUnderstandingDe": "Ein Kreisausschnitt mit Mittelpunktswinkel α beansprucht den Anteil α/360° der Vollkreisfläche; das Ergebnis beschreibt die bedeckte Fläche, nicht den Bogen oder den Rand.",
+            "essentialUnderstandingEn": "A sector with central angle α occupies the fraction α/360° of the full-circle area; the result describes covered area, not arc or boundary length.",
+            "observablePerformanceDe": "Leitet aus dem Winkel den Flächenanteil ab, berechnet den Ausschnitt und deutet exakten oder gerundeten Wert mit passender Flächeneinheit im gegebenen Kontext.",
+            "observablePerformanceEn": "Derives the area fraction from the angle, calculates the sector and interprets the exact or rounded result with suitable square units in the given context."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "radius-and-square-area",
+            "sector-fraction-context"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "given-length",
+            "textDe": "Durchmesser als Ausgangsdaten gegenüber direkt gegebenem Radius",
+            "textEn": "Diameter supplied initially versus a directly given radius"
+          },
+          {
+            "id": "sector-role",
+            "textDe": "Viertelkreisfläche für einen Materialzuschnitt gegenüber einem 120°-Flächenanteil an einer runden Anlage",
+            "textEn": "Quarter-circle area for a material cut versus a 120° area share of a round site"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "quarter-sheet-from-diameter",
+            "taskDemandDe": "Aus einer runden Blechplatte mit Durchmesser 10 cm wird ein 90°-Sektor ausgeschnitten. Wie groß ist die Fläche dieses Stücks? Begründe die Radiusumrechnung und den Anteil; gib das Ergebnis exakt und sinnvoll gerundet in cm² an.",
+            "taskDemandEn": "A 90° sector is cut from a round metal sheet of diameter 10 cm. What is the area of the piece? Justify the radius conversion and fraction; give the result exactly and sensibly rounded in cm².",
+            "expectedPerformanceDe": "Aus d=10 cm folgt r=5 cm und die Vollfläche 25π cm². Der 90°-Sektor ist ein Viertel: A=25π/4 cm²≈19,63 cm². Die Angabe beschreibt Blechfläche, nicht Schnittkantenlänge.",
+            "expectedPerformanceEn": "From d=10 cm, r=5 cm and full area is 25π cm². The 90° sector is one quarter: A=25π/4 cm²≈19.63 cm². This is sheet area, not cut-edge length.",
+            "understandingFocusDe": "Durchmesser, quadratische Fläche und Winkelanteil in einem Materialkontext verknüpfen.",
+            "understandingFocusEn": "Connect diameter, quadratic area and angular share in a material context."
+          },
+          {
+            "id": "third-of-round-garden",
+            "taskDemandDe": "Eine runde Gartenfläche hat Radius 6 m. Ein 120°-Sektor wird bepflanzt. Bestimme die bepflanzte Fläche und die verbleibende Fläche; erkläre, wie die Winkelanteile deine Ergebnisse prüfen.",
+            "taskDemandEn": "A round garden has radius 6 m. A 120° sector is planted. Find the planted and remaining areas; explain how the angular shares check your results.",
+            "expectedPerformanceDe": "Die Vollfläche ist 36π m². 120°/360°=1/3 liefert 12π m² bepflanzte Fläche; 2/3 liefern 24π m² Restfläche. Beide addieren sich zu 36π m², mit m² als passender Einheit.",
+            "expectedPerformanceEn": "The full area is 36π m². 120°/360°=1/3 gives 12π m² planted area; 2/3 gives 24π m² remaining area. They add to 36π m², with m² as the suitable unit.",
+            "understandingFocusDe": "Einen ungewohnten Winkelanteil und eine komplementäre Fläche unabhängig deuten und prüfen.",
+            "understandingFocusEn": "Independently interpret and check a different angular fraction and its complementary area."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+      "reason": "The actual final shared PNG sha256:75f10fcf70cc0e3b7c2c34a1cabd50eab3d6f10657256e207210b948c53968f5 was viewed at full resolution. Pizza, garden fence, stone bridge and bitten cookie remain. On the small bridge the red arc follows the outer curve from foot to foot at ground level, not the ground path; its Bogenlänge caption is illustrative only. The cookie is labelled Randlänge/Keksrand, not Gesamtumfang. The exact main half-circle retains red b=4π cm and blue d=8 cm, b+d≈20.57 cm. The two independent sector-perimeter cases were recalculated: 3π+12 m≈21.42 m and 15π/2+10 cm. This is AI candidate evidence, not human approval.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "circumference-and-arc",
+            "essentialUnderstandingDe": "Der Vollkreisumfang ist U=2πr=πd; ein Bogen mit Mittelpunktswinkel α hat den Anteil α/360° dieses Umfangs.",
+            "essentialUnderstandingEn": "The full circumference is U=2πr=πd; an arc with central angle α has the fraction α/360° of that circumference.",
+            "observablePerformanceDe": "Wählt aus Radius oder Durchmesser den Vollumfang, berechnet den gefragten Bogen als Anteil und gibt eine Längeneinheit an.",
+            "observablePerformanceEn": "Finds the full circumference from radius or diameter, calculates the requested arc as a fraction and gives a length unit."
+          },
+          {
+            "id": "closed-boundary",
+            "essentialUnderstandingDe": "Der Umfang eines geschlossenen Kreisteils besteht aus dem zugehörigen Kreisbogen und allen tatsächlich vorhandenen geraden Randstücken; deren Zahl und Länge hängen von der Form des Kreisteils ab.",
+            "essentialUnderstandingEn": "The perimeter of a closed circle part consists of its corresponding arc and every straight boundary edge actually present; the number and lengths of those edges depend on the shape of the part.",
+            "observablePerformanceDe": "Identifiziert in einem neu dargestellten Kreisteil gekrümmte und gerade Randstücke, addiert ihre Längen zum vollständigen Umfang und deutet das Ergebnis im Kontext.",
+            "observablePerformanceEn": "Identifies the curved and straight boundary edges in a newly presented circle part, adds their lengths to find the complete perimeter, and interprets the result in context."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "circumference-and-arc",
+            "closed-boundary"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "part-geometry",
+            "textDe": "90°-Kreissektor gegenüber einer Kreisfläche, aus der ein 90°-Sektor entfernt wurde (verbleibender 270°-Bogen)",
+            "textEn": "A 90° sector versus a disc with a 90° sector removed (remaining 270° arc)"
+          },
+          {
+            "id": "boundary-question",
+            "textDe": "Zaun entlang des Randes eines Sektorbeets gegenüber Randband um die verbleibende Fläche nach einem Ausschnitt",
+            "textEn": "Fence along a sector garden bed versus edging around the remaining region after a cutout"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "quarter-bed-fence",
+            "taskDemandDe": "Ein 90°-Kreissektor eines Beets hat Durchmesser 12 m im zugehörigen Vollkreis. Wie lang ist der Kreisbogen, und wie viel Zaun braucht der gesamte Rand des Sektorbeets? Erläutere die geraden Randstücke.",
+            "taskDemandEn": "A 90° sector garden bed belongs to a full circle of diameter 12 m. How long is its arc, and how much fence is needed for the sector's entire boundary? Explain the straight edges.",
+            "expectedPerformanceDe": "r=6 m, Vollumfang U=12π m. Der Viertelbogen misst 3π m. Der geschlossene Sektorrand umfasst zusätzlich zwei Radien zu je 6 m: 3π+12 m≈21,42 m Zaun.",
+            "expectedPerformanceEn": "r=6 m and full circumference U=12π m. The quarter arc measures 3π m. The closed sector boundary adds two 6 m radii: 3π+12 m≈21.42 m of fence.",
+            "understandingFocusDe": "Bogenanteil und beide geraden Sektorränder zu einer realen Randlänge zusammensetzen.",
+            "understandingFocusEn": "Combine the arc fraction and both straight sector edges into a real boundary length."
+          },
+          {
+            "id": "three-quarter-disc-after-cutout",
+            "taskDemandDe": "Aus einer kreisförmigen Platte mit Durchmesser 10 cm wird ein 90°-Sektor vom Mittelpunkt bis zum Rand herausgeschnitten. Wie lang ist der verbleibende gekrümmte Außenrand, und wie lang ist der gesamte Rand des Reststücks? Begründe, welche geraden Schnittkanten dazugehören.",
+            "taskDemandEn": "A 90° sector is cut from the centre to the edge of a circular plate with diameter 10 cm. How long is the remaining curved outer edge, and how long is the entire boundary of the remaining piece? Explain which straight cut edges belong to it.",
+            "expectedPerformanceDe": "Der Radius ist 5 cm und der Vollumfang 10π cm. Der Restbogen umfasst 270°/360°=3/4 des Vollumfangs, also 15π/2 cm. Zwei neue gerade Schnittkanten zu je 5 cm ergeben insgesamt 15π/2+10 cm. Die entfernte Viertelbogenlänge gehört nicht zum Reststück.",
+            "expectedPerformanceEn": "The radius is 5 cm and the full circumference is 10π cm. The remaining arc covers 270°/360°=3/4 of the circumference, or 15π/2 cm. Two new straight cut edges of 5 cm each give a total boundary of 15π/2+10 cm. The removed quarter arc is not part of the remaining piece.",
+            "understandingFocusDe": "Aus dem herausgeschnittenen Viertel den verbliebenen Bogen und die neu entstandenen geraden Randstücke unabhängig bestimmen.",
+            "understandingFocusEn": "Independently infer the remaining arc and the newly created straight boundary edges after a quarter is cut out."
+          }
+        ]
+      }
+    }
+  ]
+}

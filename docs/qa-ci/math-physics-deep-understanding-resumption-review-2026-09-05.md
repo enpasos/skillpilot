@@ -10,8 +10,12 @@ maschinell und behauptet keine menschliche Freigabe.
 
 Der [Mathematik-Fortsetzungsstand vom 21. September](math-m7-resumed-2026-09-21.md)
 dokumentiert den aktuellen Auftrag, die Integration und die laufenden Deltas.
-**Aktuelle Nutzersteuerung vom 24. September:** Nach einem commitfähigen
-Zwischenstand ist die Mathematik-M7-Zielverfolgung zu pausieren. Der jüngste
+Der [Integrationscheckpoint vom 29. September](math-m7-commit-checkpoint-2026-09-29.md)
+enthält den neueren, maßgeblichen Fünf-Gate- und Reifegradstand; die Zahlen der
+folgenden älteren Fortsetzungsabschnitte bleiben historische Momentaufnahmen.
+**Historische Nutzersteuerung vom 24. September, inzwischen aufgehoben:**
+Nach einem commitfähigen Zwischenstand ist die Mathematik-M7-Zielverfolgung
+zu pausieren. Der damalige
 zentrale Fünf-Gate-Lauf bestätigt **723/797** Mathematikziele; Physik bleibt
 bei **478/478 und M7**. Mathematik bleibt **M6 / CQR-303 WARN**. Die
 begonnenen, noch offenen Pakete und ihre jeweils fehlenden fachlichen oder

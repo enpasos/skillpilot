@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-j8-cylinder-q4-function-two-current-20260929-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-29/m7-j8-cylinder-q4-function-two-current-20260929-v1.config.json",
+  "configDigest": "sha256:6efb4a38411c90c405888e62ec6316f70f24f4505fd58026ae9b7a151ab122d0",
+  "goalIds": [
+    "f65ab452-1884-57b0-9be3-c7d9e4944891",
+    "fde351a8-98b1-5d75-b4df-813beb2bbe3c"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 803,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:b7fab7805c87c91d7e8e3cf4480a4f2b5c0e6679b1137a0869990ca5072d45e2"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:1e102ba2cb4eebdc3d9a4373d57b590c3ca0739053aa7b4b0a902bda8b958d92",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:52877033b1d86b6287ef34916b43e929dc3e918eb3847799c2e5871e9db687cf",
+    "reviewInputFingerprint": "sha256:99715b38c5b97ade0d998ff85155f9c2fe757a4360b6df7abb525a07e2b5989a",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-j8-cylinder-q4-function-two-current-20260929-v1-a",
+        "campaignDigest": "sha256:2b48a983f4b2b5a383ce6abebad19c600963dd4e904b7810ba1dac04ecc31970",
+        "roundId": "mathematik-m7-j8-cylinder-q4-function-two-current-20260929-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-j8-cylinder-q4-function-two-current-20260929-v1-independent-a",
+        "batchId": "mathematik-m7-j8-cylinder-q4-function-two-current-20260929-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:f11af6f037c8d34602a3bf46688ddec9ab779d0befa50ce2747ab84b3e47ca0f"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-j8-cylinder-q4-function-two-current-20260929-v1-b",
+        "campaignDigest": "sha256:bb44f90fddfa1583ee2ab0702b0e473627855ed2e777b9b0bb2f552e86471bd7",
+        "roundId": "mathematik-m7-j8-cylinder-q4-function-two-current-20260929-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-j8-cylinder-q4-function-two-current-20260929-v1-independent-b",
+        "batchId": "mathematik-m7-j8-cylinder-q4-function-two-current-20260929-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:b33efd2972602d2908bc6354d5b4fed35dded28bdd06883b9abbe634f73240bc"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

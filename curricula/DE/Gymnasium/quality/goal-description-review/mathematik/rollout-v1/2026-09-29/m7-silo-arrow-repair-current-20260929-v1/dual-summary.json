@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:5f3c5c6d1abb3e0bfc2aaa06e9dc27de328c69e7b078d061ccc28d96902a1375",
+  "reviewInputFingerprint": "sha256:157da5c0e16d6cf52f5253b8eea64994623a203d63f1ff7a210fffdd992522bf",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-silo-arrow-repair-current-20260929-v1-a",
+      "roundId": "mathematik-m7-silo-arrow-repair-current-20260929-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-silo-arrow-repair-current-20260929-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-silo-arrow-repair-current-20260929-v1-first-pass-a.batch-001-codex-root-current-silo-review"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-silo-arrow-repair-current-20260929-v1-b",
+      "roundId": "mathematik-m7-silo-arrow-repair-current-20260929-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-silo-arrow-repair-current-20260929-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-silo-arrow-repair-current-20260929-v1-first-pass-b-codex-independent-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex session (exact deployment identifier not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+      "firstRecordId": "mathematik-m7-silo-arrow-repair-current-20260929-v1-first-pass-a.batch-001-codex-root-current-silo-review.001",
+      "secondRecordId": "mathematik-m7-silo-arrow-repair-current-20260929-v1-first-pass-b-codex-independent-b.6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+      "firstRunId": "mathematik-m7-silo-arrow-repair-current-20260929-v1-first-pass-a.batch-001-codex-root-current-silo-review",
+      "secondRunId": "mathematik-m7-silo-arrow-repair-current-20260929-v1-first-pass-b-codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

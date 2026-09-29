@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-q2-five-geometry-current-20260929-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-29/m7-q2-five-geometry-current-20260929-v1.config.json",
+  "configDigest": "sha256:3bc48c47c91ab4ece654e97a3e808960966122bc40ded6bdb7402cac698529dc",
+  "goalIds": [
+    "27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6",
+    "976def9e-c81c-5875-9d87-a1024318ce48",
+    "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+    "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+    "985d5529-a586-50eb-bd7f-2db2be8906d1"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 805,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:61f55da8acdaf94bc72fc3b096787f61a34f5499467edf4634a1836b45c3feb1"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:ace19d344db554fd11410f846c68e2c46d7d010f5182496309ea5512a443731b",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:6b6f17b36306c5658ed963874c52622c4c4bfed45ef185685966b8989c5310a5",
+    "reviewInputFingerprint": "sha256:c6be5b98e10cb72175d317f548c2bd87de0d3d6076e14bf18ed0e0065748ee58",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-q2-five-geometry-current-20260929-v1-a",
+        "campaignDigest": "sha256:ed025ada2f7d8fdc0d809766232f0f3e60307b497e2f11b643099ca34329b398",
+        "roundId": "mathematik-m7-q2-five-geometry-current-20260929-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-q2-five-geometry-current-20260929-v1-independent-a",
+        "batchId": "mathematik-m7-q2-five-geometry-current-20260929-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:f11740ae69ec612614f46f3bf3fa9dd531cdcba60b99d740b8faae303be66abf"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-q2-five-geometry-current-20260929-v1-b",
+        "campaignDigest": "sha256:e2f16c74f402c90ad67e863706228fcea49269028bd619a105120a68a8981bb6",
+        "roundId": "mathematik-m7-q2-five-geometry-current-20260929-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-q2-five-geometry-current-20260929-v1-independent-b",
+        "batchId": "mathematik-m7-q2-five-geometry-current-20260929-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:a29999fc3b4e0c0c4eddba9a0fd14bd84621f58ae3860301ddb32ed324a12b7a"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

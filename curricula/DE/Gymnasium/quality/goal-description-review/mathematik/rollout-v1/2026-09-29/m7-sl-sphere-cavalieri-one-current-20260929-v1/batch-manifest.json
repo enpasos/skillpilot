@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-sl-sphere-cavalieri-one-current-20260929-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-29/m7-sl-sphere-cavalieri-one-current-20260929-v1.config.json",
+  "configDigest": "sha256:d231fbaae773def9a96e27c16c8bd7c2f232c21b26cc6edfe3afd6cf2516eef6",
+  "goalIds": [
+    "baea3966-5d10-53bf-8193-3fcda7b1e73f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 805,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:61f55da8acdaf94bc72fc3b096787f61a34f5499467edf4634a1836b45c3feb1"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:9467dc747f1949f09c83409a003ce75c12fb52a98cc0037035ff08a1cd3a1f13",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:d3474b5fc768e5d2127a3741289f0d69834cbf5d398bb33015291d0f678f5810",
+    "reviewInputFingerprint": "sha256:4addfc721c7eec85c02ead00bc921f43263ee5c039dcc9638c326f0a4c16f69f",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-sl-sphere-cavalieri-one-current-20260929-v1-a",
+        "campaignDigest": "sha256:7ad834d71893c271a52acb93d678549ccbf187f67ce4bc2a7dac09a0c16c46b6",
+        "roundId": "mathematik-m7-sl-sphere-cavalieri-one-current-20260929-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-sl-sphere-cavalieri-one-current-20260929-v1-independent-a",
+        "batchId": "mathematik-m7-sl-sphere-cavalieri-one-current-20260929-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:b7134c023366c0fa82efdd0a2451498dfec0db4ea1bcb08367cab8d083cef91d"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-sl-sphere-cavalieri-one-current-20260929-v1-b",
+        "campaignDigest": "sha256:99c750f3fd77d499d6b663655ee41355346d0b3b0ccd8e46e6da6e5d3b9b57f5",
+        "roundId": "mathematik-m7-sl-sphere-cavalieri-one-current-20260929-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-sl-sphere-cavalieri-one-current-20260929-v1-independent-b",
+        "batchId": "mathematik-m7-sl-sphere-cavalieri-one-current-20260929-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:f734b2f175c687cabb14448c553991589d9f57118ab7b5db79951d0865b5373b"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

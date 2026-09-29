@@ -22,7 +22,7 @@ import {
 } from './memoryCardReviewConfigDiscovery'
 import { generateDeepUnderstandingRollout, type DeepUnderstandingRolloutReport } from './reportDeepUnderstandingRollout'
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
-import { hasUnavailableCurricularAtomicAssessmentPrerequisite } from './lib/canonicalMathSek1ReviewedExamRoutes'
+import { shouldRequireCanonicalMathSek1AssessmentEndpoint } from './lib/canonicalMathSek1ReviewedExamRoutes'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
 type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
@@ -2184,14 +2184,14 @@ function evaluateRouteEndpointCompositionVisibility(
         })
       }
       const expectedTerminalGoalIds = scopedTerminalGoals
-        // Match CPV-211: only an applicability-derived assessment with a
-        // missing direct curricular-atomic target prerequisite may be absent.
-        // Prerequisite-only support never promotes that atom into the target.
+        // An explicit prerequisite-only exam is support, not a route endpoint.
+        // A wholly missing exam still fails unless CPV-211's exact prerequisite
+        // condition makes it inapplicable in this target projection.
         .filter((goal) => !mathSek1CurricularAtomicGoalIds
-          || visibleTargetAtomicGoalIds.has(goal.id)
-          || !hasUnavailableCurricularAtomicAssessmentPrerequisite(
+          || shouldRequireCanonicalMathSek1AssessmentEndpoint(
             goal,
             mathSek1CurricularAtomicGoalIds,
+            visibleAtomicGoalIds,
             visibleTargetAtomicGoalIds,
           ))
         .filter((goal) => !useCompiledJurisdiction

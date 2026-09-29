@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-pythagoras-four-current-20260929-v1-first-pass-b.batch-001-gpt-6-astra",
+  "campaignId": "mathematik-m7-pythagoras-four-current-20260929-v1-b",
+  "roundId": "mathematik-m7-pythagoras-four-current-20260929-v1-first-pass-b",
+  "batchId": "mathematik-m7-pythagoras-four-current-20260929-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:0c1201876cc98639a4e321cb7fb061360efdad11ce3f1686ebd7af33049df4ce",
+  "bundleFingerprint": "sha256:a325be49a571f3a28c4ec1d41736d47ab6a84ffb90644059ec534c250be8f52f",
+  "bookDigest": "sha256:63676fc8cdf437b23a221746db249da60c2d0dc1a00113ca26f1b2ae232cab4d",
+  "provider": "OpenAI",
+  "model": "gpt-6-astra",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:10c375ace5532e1956659b8e88ca96873efd0534a066a193a2d0439440f17513",
+  "independenceGroupId": "mathematik-m7-pythagoras-four-current-20260929-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+    "3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
+    "487ec508-f421-5a5a-a84c-98f88a8fb3e5",
+    "6a3502ee-b616-5db7-88fc-8951f33c9f63"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:efb168c859f012d76988ce9846470ffcac4cdb809c9bd0057b068524d11fcdef"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:63346e3d2ddf5ee03f274c0ae87028143d699bfd825c5cf0df64cadc7e659960"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:0c1201876cc98639a4e321cb7fb061360efdad11ce3f1686ebd7af33049df4ce"
+    }
+  ],
+  "startedAt": "2026-09-29T03:08:36Z",
+  "completedAt": "2026-09-29T03:11:39Z",
+  "status": "completed",
+  "outputDigest": "sha256:1203c665eaa998842c3516d34446beb8ed93ba78b873a9925b0e8b71954800ce",
+  "toolchainVersion": "codex-independent-actual-image-review-v1"
+}

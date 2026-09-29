@@ -1,0 +1,10 @@
+# Zwei Mathematik-Prüfungen: unabhängige KI-Prüfung und maschineller Aufgabenstatus
+
+Am 29.09.2026 wurden die beiden zuvor mit `needs_review` geführten Aufgaben unabhängig von ihrer Erstellung anhand von Aufgabenblatt, kanonischem Ziel, Musterlösung, Scoring und Originalquelle geprüft. Die ungeänderten Entwürfe bleiben als `candidate.md` erhalten; der geprüfte operative Stand steht jeweils in `reviewed-v1.md`. Dies ist eine maschinelle Inhaltsprüfung und **keine menschliche Freigabe oder Erprobung**.
+
+| Prüfung | Quellen- und Rechenbefund | Bisheriger Bestehensfehler | Operativer Stand |
+| --- | --- | --- | --- |
+| `79f5f4cc`, SL J10 Kugelvolumen mit Cavalieri | SL J10 S. 34–36; die allgemeinen Querschnitte `π(r²−z²)` und das Restvolumen `4πr³/3` sind korrekt. | Bei 10/12 konnten die zwei eigentlichen Volumen-Herleitungs-BE fehlen und andere Teilaufgaben das Bestehen tragen. Auch 11/12 könnte ein bloßer Teilansatz kompensieren. | `reviewed-v1.md`, `examData.reviewStatus=released`, `passingPoints=12/12`. |
+| `990739f7`, SL LK Dreiecksschwerpunkt | SL LK Druck-S. 33; Koeffizientenvergleich liefert `λ=μ=2/3` und `s=(a+b+c)/3`; die Zahlenprobe und dritte Seitenhalbierende stimmen. | Bei 10/12 konnte die dritte Seitenhalbierende ganz fehlen. Bei 11/12 könnte bloß `M_c` ohne Lageprüfung genügen. | `reviewed-v1.md`, `examData.reviewStatus=released`, `passingPoints=12/12`. |
+
+Der Status `released` bedeutet hier die maschinell geprüfte Aufgabenbereitschaft im bestehenden Curriculum-Qualitätsmodell, keine Zustimmung durch Lehrkräfte oder Lernende. Die volle Punktgrenze ist didaktisch streng. Sie ist bis zu einer getrennt geprüften technischen Teilbedingung nötig, weil das aktuelle Backend beim Bestehen nur die Gesamtpunktzahl erzwingt; eine Rubriknotiz allein reicht nicht. Die Aufgaben sind nur für die jeweils angegebenen Ziele und Scopes gebunden. Ein künftiger milderer Bewertungsmaßstab erfordert eine eigene Prüfung und gegebenenfalls Runtime-Arbeit außerhalb dieses QS-Checkpoints.

@@ -46,9 +46,10 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_MATH_ROOT_ID = "c01b1ce9-a667-4a46-b251-ec33ae602b15";
-    // Champion totals count legacy-equivalent atoms. The reviewed 809ef split
-    // removes its exact legacy equivalence; new mean/reconstruction edges are partial.
-    private static final long HESSEN_GK_MATH_CHAMPION_TOPIC_GOALS = 291;
+    // Champion totals count current HE-GK targets with exact legacy equivalence.
+    // The reviewed 809ef split and the HE-GK prerequisite-only Spatprodukt
+    // leave 290 such atoms; new mean/reconstruction edges are partial.
+    private static final long HESSEN_GK_MATH_CHAMPION_TOPIC_GOALS = 290;
     private static final String CANONICAL_PHYSICS_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
     private static final String CANONICAL_PHYSICS_ROOT_ID = "bf980fff-b62b-4ea4-a20d-31681a7ad785";
     private static final String CANONICAL_CHEMISTRY_ID = "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0";
@@ -1337,26 +1338,27 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
-        // Reviewed 2026-09-28 content splits and year-specific source projections
-        // change the exact visible target sets. Totals include local assessments;
-        // excluded compatibility IDs and prerequisite-only goals do not count.
+        // Current canonical leaves were enumerated from each matched Sek-I view,
+        // applying projection-role precedence and jurisdiction applicability.
+        // Totals include local assessments; excluded and prerequisite-only goals
+        // do not count. The view-specific HE/RP/SH G8/G9 split remains explicit.
         String[][] scopes = {
-                { "DE-BB", "246", "246" },
-                { "DE-BE", "242", "242" },
-                { "DE-BW", "265", "265" },
-                { "DE-BY", "235", "235" },
-                { "DE-HB", "218", "218" },
-                { "DE-HE", "325", "366" },
-                { "DE-HH", "242", "242" },
-                { "DE-MV", "243", "243" },
-                { "DE-NI", "243", "243" },
-                { "DE-NW", "243", "243" },
-                { "DE-RP", "266", "293" },
-                { "DE-SH", "267", "276" },
-                { "DE-SL", "245", "245" },
-                { "DE-SN", "243", "243" },
-                { "DE-ST", "243", "243" },
-                { "DE-TH", "244", "244" }
+                { "DE-BB", "241", "241" },
+                { "DE-BE", "237", "237" },
+                { "DE-BW", "267", "267" },
+                { "DE-BY", "227", "227" },
+                { "DE-HB", "215", "215" },
+                { "DE-HE", "325", "352" },
+                { "DE-HH", "237", "237" },
+                { "DE-MV", "236", "236" },
+                { "DE-NI", "236", "236" },
+                { "DE-NW", "236", "236" },
+                { "DE-RP", "267", "279" },
+                { "DE-SH", "260", "266" },
+                { "DE-SL", "239", "239" },
+                { "DE-SN", "236", "236" },
+                { "DE-ST", "236", "236" },
+                { "DE-TH", "237", "237" }
         };
         SoftAssertions softly = new SoftAssertions();
 
@@ -1383,6 +1385,23 @@ public class LearnerControllerIntegrationTest {
 
             assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", "GK");
             assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", "GK");
+            if (Set.of("DE-BW", "DE-HE", "DE-SL").contains(jurisdiction)) {
+                Set<String> g9Targets = learnerService.getFilteredAtomicGoalIds(
+                        CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false);
+                if ("DE-BW".equals(jurisdiction)) {
+                    assertThat(g9Targets).contains(
+                            "ad66009f-55fb-563f-ace0-dbfeae7c76c3", // BW Sek-I derivative target
+                            "5f6496ef-e4d2-5341-8a2c-3293b2e4e25a", // BW J9 assessment
+                            "ea664a30-98be-508e-90ac-5304679814ee"); // BW J10 assessment
+                } else if ("DE-HE".equals(jurisdiction)) {
+                    assertThat(g9Targets).doesNotContain(
+                            "5f6496ef-e4d2-5341-8a2c-3293b2e4e25a",
+                            "ea664a30-98be-508e-90ac-5304679814ee");
+                } else {
+                    assertThat(g9Targets).doesNotContain(
+                            "baea3966-5d10-53bf-8193-3fcda7b1e73f"); // SL prerequisite-only atom
+                }
+            }
             softly.assertThat(g8Total).as(jurisdiction + " G8 total").isEqualTo(Integer.parseInt(scope[1]));
             softly.assertThat(g9Total).as(jurisdiction + " G9 total").isEqualTo(Integer.parseInt(scope[2]));
         }
@@ -1391,16 +1410,16 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
-        // Reviewed 2026-09-28 content splits, scoped year corrections and Q1
-        // assessment routes determine these cross-stage totals. Retain both exact
-        // counts and HE-GK membership assertions so compensating errors fail.
+        // Current cross-stage target leaves were counted from each matched view
+        // with projection roles, jurisdiction, course tags and G8/G9 applicability.
+        // Keep exact counts and selected membership checks to catch scope drift.
         String[][] scopes = {
-                { "DE-HE", "GK", "746", "770" },
-                { "DE-HE", "LK", "877", "901" },
-                { "DE-RP", "GK", "680", "706" },
-                { "DE-RP", "LK", "791", "817" },
-                { "DE-SH", "GK", "662", "671" },
-                { "DE-SH", "LK", "759", "768" }
+                { "DE-HE", "GK", "746", "756" },
+                { "DE-HE", "LK", "878", "888" },
+                { "DE-RP", "GK", "682", "693" },
+                { "DE-RP", "LK", "794", "805" },
+                { "DE-SH", "GK", "659", "666" },
+                { "DE-SH", "LK", "755", "763" }
         };
         SoftAssertions softly = new SoftAssertions();
 
@@ -1420,6 +1439,14 @@ public class LearnerControllerIntegrationTest {
             assertThat(g8Response.statusCode()).isEqualTo(HttpStatus.OK.value());
             JsonNode g8State = objectMapper.readTree(g8Response.body());
             int g8Total = g8State.path("goals").path("personalized").path("total_atomic").asInt();
+            if ("DE-RP".equals(jurisdiction) && "LK".equals(courseProfile)) {
+                assertThat(learnerService.getFilteredAtomicGoalIds(
+                        CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false))
+                        .contains(
+                                "1a63bf83-1dd5-4eb2-bd8e-f9cfa02f4c42",
+                                "53d52b0c-1fd7-4a36-bc14-ba41e7dc6d5d",
+                                "942de65f-e8cc-417c-a66b-5f597b26d965"); // RP-LK terminal assessment
+            }
             if ("DE-HE".equals(jurisdiction) && "GK".equals(courseProfile)) {
                 assertHessenGkQ21Projection(learner);
             }
@@ -1433,6 +1460,14 @@ public class LearnerControllerIntegrationTest {
             assertThat(g9Response.statusCode()).isEqualTo(HttpStatus.OK.value());
             JsonNode g9State = objectMapper.readTree(g9Response.body());
             int g9Total = g9State.path("goals").path("personalized").path("total_atomic").asInt();
+            if ("DE-RP".equals(jurisdiction) && "LK".equals(courseProfile)) {
+                assertThat(learnerService.getFilteredAtomicGoalIds(
+                        CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false))
+                        .contains(
+                                "1a63bf83-1dd5-4eb2-bd8e-f9cfa02f4c42",
+                                "53d52b0c-1fd7-4a36-bc14-ba41e7dc6d5d",
+                                "942de65f-e8cc-417c-a66b-5f597b26d965"); // RP-LK terminal assessment
+            }
             if ("DE-HE".equals(jurisdiction) && "GK".equals(courseProfile)) {
                 assertHessenGkQ21Projection(learner);
             }
@@ -1767,6 +1802,7 @@ public class LearnerControllerIntegrationTest {
                         "71683f37-24de-4e0f-badd-858b56fa4d64", // parameters from context
                         "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01", // extended function modeling
                         "bd2c5e29-31c6-58bf-9858-d08e9c8a32ad", // broad composition assessment
+                        "944dd479-9f30-5acb-ab32-3ea0b6dc8e06", // HE-GK Spatprodukt prerequisite only
                         "c72a8032-71f6-56ed-a896-06ae435ff2ec"); // LK exponential/log compositions
     }
 

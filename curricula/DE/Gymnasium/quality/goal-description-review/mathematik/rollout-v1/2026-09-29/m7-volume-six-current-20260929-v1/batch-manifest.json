@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-volume-six-current-20260929-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-29/m7-volume-six-current-20260929-v1.config.json",
+  "configDigest": "sha256:cc0822e0124c0a1601a3d9217064341a85e228583bf2e385be39d9c1a4b4940a",
+  "goalIds": [
+    "1e77bb2f-0cd6-5961-b0fb-230317c73fce",
+    "288633c1-f61c-5b48-af7e-a80357f96cad",
+    "2f2c9f1a-07f0-59e4-b84a-60648c3b0bda",
+    "c71ae268-f28e-59f0-982d-91db8f963378",
+    "e8237315-654e-5150-97de-49c4cb49b3d1",
+    "944dd479-9f30-5acb-ab32-3ea0b6dc8e06"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 803,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:b1f5d7623975b03a6fb6621ed8c1dcef14e834d3628577a171a1bcba04d99676"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:95e341b58f56fb6a36d8382a331470882dbcca1dcc7dc7da3a813060cb1c0114",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:96a74229882b544d35811fa79155d272e1806ca3ac9313f42ad7ce4e36629592",
+    "reviewInputFingerprint": "sha256:55f793009c1873f880f3abc3f500627282e91285cfc77fd7264dca0b89038161",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-volume-six-current-20260929-v1-a",
+        "campaignDigest": "sha256:5f8a9613144ba9ac096d2cdbc409cf87e48d5c9f6f8555a75ed13213b23174f8",
+        "roundId": "mathematik-m7-volume-six-current-20260929-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-volume-six-current-20260929-v1-independent-a",
+        "batchId": "mathematik-m7-volume-six-current-20260929-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:c1a7902fd86104df5511f28ee6fdf132a27dd13626c9fba54bf667ab96a6e748"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-volume-six-current-20260929-v1-b",
+        "campaignDigest": "sha256:271acb406fcdf9648fb478b8afa33df84e278460f355590dae4b7251589baaf4",
+        "roundId": "mathematik-m7-volume-six-current-20260929-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-volume-six-current-20260929-v1-independent-b",
+        "batchId": "mathematik-m7-volume-six-current-20260929-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:6c7ad9d6ff5a55ed2cb41180e50c3a5442bcb2bda87d828cdf73c7ae8ac4f2d4"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

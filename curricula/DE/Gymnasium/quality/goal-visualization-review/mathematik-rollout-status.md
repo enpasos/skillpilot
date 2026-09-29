@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-28T14:41:09.986Z
+Generated: 2026-09-29T07:51:39.894Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -16,11 +16,11 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 1231 |
-| Atomare Ziele im Visualisierungs-Scope | 803 |
-| Ziele mit primaerem Visualisierungslink | 803 |
+| Alle Ziele in der Landschaft | 1240 |
+| Atomare Ziele im Visualisierungs-Scope | 807 |
+| Ziele mit primaerem Visualisierungslink | 807 |
 | Coverage | 100.0% |
-| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 803 |
+| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 807 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
@@ -31,7 +31,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
 | Verlinkt ohne akzeptierende Ledger-Entscheidung oder aktuelle AI-QA | 0 |
-| Verlinkt mit aktueller hashgebundener AI-QA, ohne akzeptierende Ledger-Entscheidung | 66 |
+| Verlinkt mit aktueller hashgebundener AI-QA, ohne akzeptierende Ledger-Entscheidung | 70 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -41,7 +41,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted` | 4 |
 | `ai-reviewed` | 6 |
 | `approved` | 13 |
-| `pilot` | 780 |
+| `pilot` | 784 |
 
 ## Ledger Decisions
 
@@ -188,6 +188,7 @@ Weitere 27 Eintraege stehen in der JSON-Begleitdatei.
 | `6a3502ee-b616-5db7-88fc-8951f33c9f63` | Den Kehrsatz des Pythagoras beweisen | - | `sha256:dd76447150b51af15d97264ef9eccd3d656ac51d2a380582a80028de145450c6` |
 | `487ec508-f421-5a5a-a84c-98f88a8fb3e5` | Den Satz des Pythagoras geometrisch beweisen | - | `sha256:bd98f29244650f931965ec217ab32ec0dae003ecb26c2b7f1a0b83b6495190fa` |
 | `9b6f4d7d-a804-5666-b7ea-85bb3c73da4a` | Die Formel für Binomialwahrscheinlichkeiten an einem Beispiel begründen | `deferred_provider_limitation` | `sha256:cfc3330cbdeee3ec592a19662174cb7f4f80af70cb3c857c185baf2a5015ada0` |
+| `f257b71b-0250-5b4b-86bb-f317f79c355a` | Die Schwerpunktformel eines Dreiecks mit Ortsvektoren herleiten (LK) | - | `sha256:3bfabb593d9656f186c1338dfdd285eb738b20bf52581bb20251f444d5b411f6` |
 | `a7778885-17aa-5eeb-a6a7-fbf4c8d55a16` | Die Verteilungsfunktion der Normalverteilung als Integralfunktion deuten (LK) | `deferred_provider_limitation` | `sha256:0aab1d68fb4f8e45fa13525b19a836fb00a2efa921822f397ac7f32c7144ef94` |
 | `a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0` | Die Zahlbereichserweiterung zu komplexen Zahlen mathematisch begründen (LK) | `deferred_provider_limitation` | `sha256:ac42af07cb94d6131e20ee4d3de6a7011661b4a19f21c536615692372486f70b` |
 | `55d0474b-b82c-59b6-a62a-b6a0a34d9c4b` | Diskrete und stetige Zufallsgrößen unterscheiden (LK) | `deferred_provider_limitation` | `sha256:e4aa9210b0831521cbc1388ec9bf48e9fd4fee4658e3c6bde4e980e9e1491102` |
@@ -196,15 +197,14 @@ Weitere 27 Eintraege stehen in der JSON-Begleitdatei.
 | `976def9e-c81c-5875-9d87-a1024318ce48` | Eine Raumgerade an einem Punkt spiegeln (LK) | - | `sha256:fdc3c40b33180d1e6ea07a76380bfa855b08282e7e0ddf921e8701c18e100c63` |
 | `ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c` | Empirische und theoretische Wahrscheinlichkeit unterscheiden | `deferred_provider_limitation` | `sha256:4fbd8328581da6ab5f79903b9d874bcf0c5d2f765c4582897e222c4b4240332e` |
 | `a1c79897-6ded-57f8-bee1-2d365a5083c9` | Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen | - | `sha256:8697ead37c9f52e0dbf5474a6a2f964fb249118e0f52b3d29134dbf660d57a23` |
-| `2f073195-52ef-5219-926c-f3f58ebdc556` | Flächeninhalte von Kreisen und Kreisausschnitten bestimmen | - | `sha256:18def74e82a3c161aaefbfea08116641f9d7f83f030fc8b7013838060b4fb576` |
+| `53d52b0c-1fd7-4a36-bc14-ba41e7dc6d5d` | Fixgeraden affiner Abbildungen untersuchen (LK, A1) | - | `sha256:cf5253f1819d27b671c6d780fc3e22b46ff24b127508603bb069771aa890863c` |
+| `1a63bf83-1dd5-4eb2-bd8e-f9cfa02f4c42` | Fixpunktmengen affiner Abbildungen bestimmen (LK, A1) | - | `sha256:e8432615942c82fd684f6e33994eeaa20e7e278d40a8483c4e41cd4979cae88e` |
+| `2f073195-52ef-5219-926c-f3f58ebdc556` | Flächeninhalte von Kreisen und Kreisausschnitten bestimmen | - | `sha256:75f10fcf70cc0e3b7c2c34a1cabd50eab3d6f10657256e207210b948c53968f5` |
 | `5518ceb3-f668-5b52-a9b1-57653b16ca98` | Funktions- und Ableitungsgraphen in Beziehung setzen | - | `sha256:e88426d1ac5bba09ec3ac51fb87380342fb29577f2da3f9b3d03e14871390fc2` |
 | `74b5a01b-c086-51d0-bc66-046029c92ef7` | Geometrische Reihen untersuchen | - | `sha256:e8f80fe97fd829028eab68f82452aaf0cf98497b9baf11af8acd9310a14c96b9` |
 | `bc6e4c14-d4f7-537e-8e83-9b5c0086e807` | Graphen einfacher Hyperbeln mit Asymptoten zeichnen | `deferred_provider_limitation` | `sha256:0a92fbd2f1b3327e58d1e6dd05a6dbac7d426ba4e4cd4dc3e0a3d545ffe5d1d7` |
-| `ad26e4d9-b025-57ec-8f25-df4a2415cc62` | Größen mit geeigneten Messmitteln erfassen | `deferred_provider_limitation` | `sha256:110889b4aa70f56e8cc5803ca3cf482bb5400f2a48ea90d4abdf98dcc73f82c1` |
-| `04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8` | Grundlegende Eigenschaften der natürlichen Logarithmusfunktion erläutern (LK) | `deferred_provider_limitation` | `sha256:afef00903c8d8c8d60da5d9e1191b428ff421499e59159cd7d85401626e08056` |
-| `8823e26e-694c-581b-9adf-4db7db6f43c9` | Häufigkeiten bestimmen und Wahrscheinlichkeiten schätzen | `deferred_provider_limitation` | `sha256:1d1942cdde3d42dd8086ad98ded83431986b4f6e27487e9f88c450a3d0cfc8a7` |
 
-Weitere 36 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 40 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Linked Without Accepted Ledger Review or Current AI QA
 

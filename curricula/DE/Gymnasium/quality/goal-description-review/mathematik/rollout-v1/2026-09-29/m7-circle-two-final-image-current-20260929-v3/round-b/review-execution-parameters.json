@@ -1,0 +1,43 @@
+{
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex session (exact deployment identifier not exposed)",
+  "execution": "independent delegated Codex review; no external model API call",
+  "samplingParameters": "not exposed by host",
+  "blindToOtherReviews": true,
+  "otherRoundResultsRead": false,
+  "priorDescriptionReviewResultsRead": false,
+  "reviewScope": "D; separate image inspection does not grant V or human approval",
+  "bookPdfGoalPagesVisuallyInspected": [
+    1,
+    2
+  ],
+  "imageSha256": "18d6a0e406afbc756d459e6a78f6640f6b0e10d83014eca1676f1c1c8ca6171d",
+  "imageInspection": "Opened actual first PNG; both original files independently hashed and byte-identical; both PDF image renditions visually inspected.",
+  "canonDeEnMatchesPreparedInput": true,
+  "sourceArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.pdf",
+      "digest": "sha256:b085465143648b3f44c894f8eb0a5ee5d1928cbb1c4c60b3b249559709d26014"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/g8-mathematik.pdf",
+      "digest": "sha256:3f9df43b8b7f3b11bae47016ecc4f778f08c7d6588237e46cf10d57fc40ca6e9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf",
+      "digest": "sha256:9325e34d90626faa5c42e800b74ef78c61a315da56e7fe20b368807448ad5749"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_I.pdf",
+      "digest": "sha256:005085fa940a3dfd7619ea274f5e16ee34c50ba452223774aca19fb4025abe61"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+      "digest": "sha256:17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28"
+    }
+  ],
+  "mappingInspection": "Current BW, HE, RP and SH source-extraction mappings; direct source checks, no description outcomes.",
+  "sourceCaveat": "HE G9 9.6 labels circle parts facultative. D keep evaluates the stated mathematical competence and does not certify compulsory national content.",
+  "projectionCheck": "Fresh read-only national atlas compilation, 83 source views; text and target applicability match both prepared pages. Target BW/HE/RP/SH, SekI, G8/G9. Full atlas digest sha256:b1f5d7623975b03a6fb6621ed8c1dcef14e834d3628577a171a1bcba04d99676.",
+  "timestampMeaning": "startedAt records final record assembly after current-session evidence inspection."
+}

@@ -52,7 +52,7 @@
   },
   "method": {
     "passageExtraction": "completed: official Saarland GOS topic tables for Einfuehrungsphase, Hauptphase G-Kurs and Hauptphase LK were extracted from local PDF text.",
-    "sourceGoalExtraction": "completed: 743 source goals were derived one-to-one from 743 official competence-focus bullets; the old 39-goal snapshot is diagnostic only.",
+    "sourceGoalExtraction": "completed: 744 source goals were derived one-to-one from 744 official competence-focus bullets; the old 39-goal snapshot is diagnostic only. The GK midpoint bullet on printed S. 30 was added on 2026-09-29 after comparison with the original PDF.",
     "unitOfWork": "Ein Source-Ziel entspricht einem einzelnen amtlichen Kompetenz-Bullet. Dadurch bleiben fachliche Luecken pro offizieller Lehrplanaussage sichtbar.",
     "legacySnapshotPolicy": "Der alte Saarland-Pilot-Quellsnapshot bleibt Diagnosematerial und wird nicht als Source-Extraction gewertet."
   },
@@ -67,6 +67,7 @@
     "SL-SEKII-Q-GK-T02-INTEGRALRECHNUNG",
     "SL-SEKII-Q-GK-T03-WAHRSCHEINLICHKEITEN",
     "SL-SEKII-Q-GK-T04-VEKTOREN",
+    "SL-SEKII-Q-GK-T05-GEOMETRISCHE-GRUNDOBJEKTE",
     "SL-SEKII-Q-GK-T06-DIE-E-FUNKTION-UND-DIE-LN-FUNKTION",
     "SL-SEKII-Q-GK-T07-MODELLIEREN",
     "SL-SEKII-Q-GK-T08-ZUFALLSGROSSEN",
@@ -101,7 +102,7 @@
             "id": "official-passages-present",
             "label": "Originalpassagen aus amtlichen PDFs sind erfasst",
             "passed": true,
-            "details": "23/23 official Saarland topic passage groups extracted from PDF text."
+            "details": "24/24 official Saarland topic passage groups extracted from PDF text."
           },
           {
             "id": "snapshot-not-counted",
@@ -123,13 +124,13 @@
             "id": "mapping-1-complete",
             "label": "MAPPING-1 abgeschlossen",
             "passed": true,
-            "details": "23/23 official Saarland topic passage groups extracted from PDF text."
+            "details": "24/24 official Saarland topic passage groups extracted from PDF text."
           },
           {
             "id": "source-goals-derived-from-passages",
             "label": "Source-Ziele aus Lehrplanpassagen erzeugt",
             "passed": true,
-            "details": "743 source goals from 743 official competence bullets; old snapshot goals are not counted."
+            "details": "744 source goals from 744 official competence bullets; old snapshot goals are not counted."
           },
           {
             "id": "source-goal-ids-unique",
@@ -157,7 +158,7 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "743 Source-Ziele liegen vor; MAPPING-3 laeuft gegen diese Source-Extraction-IDs."
+            "details": "744 Source-Ziele liegen vor; MAPPING-3 laeuft gegen diese Source-Extraction-IDs."
           },
           {
             "id": "m3-review-file-present",
@@ -169,19 +170,19 @@
             "id": "m3-review-decisions-reference-source-goals",
             "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
             "passed": true,
-            "details": "Reviewed Source-Ziele: 743/743."
+            "details": "Reviewed Source-Ziele: 744/744."
           },
           {
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
             "passed": true,
-            "details": "743/743 Source-Ziele reviewed; offen: 0."
+            "details": "744/744 Source-Ziele reviewed; offen: 0."
           },
           {
             "id": "m3-all-source-goals-covered",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
             "passed": true,
-            "details": "Abgedeckt: 743/743; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+            "details": "744/744 Source-Ziele fachlich gedeckt; LK-Bullet T05-B01 ist durch getrennte Ortsvektor-Ziele fuer Streckenmittelpunkt und Dreiecksschwerpunkt vollstaendig gebunden."
           }
         ]
       }
@@ -630,6 +631,18 @@
         "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t04-vektoren-b78-56dba3aa2c",
         "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t04-vektoren-b79-f9f61e84d3",
         "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t04-vektoren-b80-8a6f9c01e0"
+      ]
+    },
+    {
+      "id": "de-sl-mathematik-sekii-gos-2014-2019-SL-SekII-Q-GK-T05-geometrische-grundobjekte",
+      "topicCode": "SL-SEKII-Q-GK-T05-GEOMETRISCHE-GRUNDOBJEKTE",
+      "title": "Q: Geometrische Grundobjekte – Mittelpunkt einer Strecke",
+      "sourcePath": "curricula/DE/Gymnasium/input/SL/LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.pdf",
+      "sourceDocumentKey": "SL_GOS_MATHEMATIK_GK_2019",
+      "sourceRef": "Lehrplan Mathematik Hauptphase G-Kurs der gymnasialen Oberstufe, Saarland, Juli 2019",
+      "text": "- leiten die Formel zur Berechnung des Mittelpunkts einer Strecke her",
+      "sourceGoalIds": [
+        "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t05-geometrische-grundobjekte-b01-57ac95fb00"
       ]
     },
     {
@@ -16787,6 +16800,27 @@
         "sourceDocument:SL_GOS_MATHEMATIK_LK_2019",
         "phase:Q",
         "courseLevel:LK"
+      ]
+    },
+    {
+      "id": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t05-geometrische-grundobjekte-b01-57ac95fb00",
+      "passageId": "de-sl-mathematik-sekii-gos-2014-2019-SL-SekII-Q-GK-T05-geometrische-grundobjekte",
+      "topicCode": "SL-SEKII-Q-GK-T05-GEOMETRISCHE-GRUNDOBJEKTE-B01",
+      "bulletIndex": 1,
+      "title": "Formel für den Mittelpunkt einer Strecke herleiten",
+      "description": "Die lernende Person kann die Formel zur Berechnung des Mittelpunkts einer Strecke aus Ortsvektoren herleiten.",
+      "sourceText": "leiten die Formel zur Berechnung des Mittelpunkts einer Strecke her",
+      "sourceSpan": "Lehrplan Mathematik Hauptphase G-Kurs der gymnasialen Oberstufe, Saarland, Juli 2019, Geometrische Grundobjekte, S. 30",
+      "sourceRef": "Lehrplan Mathematik Hauptphase G-Kurs der gymnasialen Oberstufe, Saarland, Juli 2019",
+      "category": "content-and-process-standard",
+      "granularity": "officialCompetencyBullet",
+      "courseLevel": "GK",
+      "tags": [
+        "source:DE-SL",
+        "stage:SekII",
+        "sourceDocument:SL_GOS_MATHEMATIK_GK_2019",
+        "phase:Q",
+        "courseLevel:GK"
       ]
     }
   ]

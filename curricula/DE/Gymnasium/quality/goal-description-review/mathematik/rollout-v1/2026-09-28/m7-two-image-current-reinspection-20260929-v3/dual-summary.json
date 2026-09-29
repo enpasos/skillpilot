@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:1a28775bf8c70acd24da50abe9a1fd791db3cf6b0fd99c72f0a64355e8aa8044",
+  "reviewInputFingerprint": "sha256:165157f56ce2572452b9a0515118134659f962cc19e5eedcb7bc20971811d0fe",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-two-image-current-reinspection-20260929-v3-a",
+      "roundId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-a",
+      "independenceGroupId": "mathematik-m7-two-image-current-reinspection-20260929-v3-independent-a",
+      "runIds": [
+        "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-a.batch-001-gpt-6-astra"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-astra::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-two-image-current-reinspection-20260929-v3-b",
+      "roundId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-b",
+      "independenceGroupId": "mathematik-m7-two-image-current-reinspection-20260929-v3-independent-b",
+      "runIds": [
+        "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-b.batch-001.codex-independent-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+      "firstRecordId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-a.batch-001-gpt-6-astra.001",
+      "secondRecordId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-b.batch-001.codex-independent-b.e105bad8-b4e5-53fc-b02e-604f1df5b503",
+      "firstRunId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-a.batch-001-gpt-6-astra",
+      "secondRunId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-b.batch-001.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5619ca5b-dc2a-504e-ad89-2e0ca0a83822",
+      "firstRecordId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-a.batch-001-gpt-6-astra.002",
+      "secondRecordId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-b.batch-001.codex-independent-b.5619ca5b-dc2a-504e-ad89-2e0ca0a83822",
+      "firstRunId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-a.batch-001-gpt-6-astra",
+      "secondRunId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-b.batch-001.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

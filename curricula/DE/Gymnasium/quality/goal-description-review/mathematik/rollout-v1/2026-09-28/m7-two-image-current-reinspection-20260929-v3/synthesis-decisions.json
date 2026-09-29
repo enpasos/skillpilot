@@ -1,0 +1,112 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-two-image-current-reinspection-20260929-v3",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex; adjudication of two independent AI review candidates with targeted original-source check, no human approval",
+  "synthesizedAt": "2026-09-29T02:56:20.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-two-image-current-reinspection-20260929-v3",
+    "batchManifestDigest": "sha256:a41f1bac706410a08d5cae3ba3f93bff29ff0e2a36a5c38bb4f6261dfbd1b3f2",
+    "configDigest": "sha256:c9e06ae415d941675ae19df764faecc542377992748a780b6b18b656fc7a602e",
+    "bundleFingerprint": "sha256:1a28775bf8c70acd24da50abe9a1fd791db3cf6b0fd99c72f0a64355e8aa8044",
+    "bookDigest": "sha256:87a974bb3a547e08df582260fa16fddd72b5752a15893348c8c7c14fa7dd327f",
+    "reviewInputFingerprint": "sha256:165157f56ce2572452b9a0515118134659f962cc19e5eedcb7bc20971811d0fe",
+    "dualSummaryDigest": "sha256:e031dd6f4b0e4beef39146b1494014233124ab3b02a66938a46b64ea6d98bcf1",
+    "canonicalLandscapeDigest": "sha256:1873ea31dd2b34d306b07826286e301b1815a8a115ac9236e355af54cd7c9eab"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-two-image-current-reinspection-20260929-v3-a",
+      "campaignDigest": "sha256:1d3be1f1c9b554c9dc7f8cec5f0d7ae04a5eeaea6a271d2c638a43868d33a48d",
+      "roundId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-a",
+      "independenceGroupId": "mathematik-m7-two-image-current-reinspection-20260929-v3-independent-a",
+      "reviewInputFingerprint": "sha256:165157f56ce2572452b9a0515118134659f962cc19e5eedcb7bc20971811d0fe",
+      "batchId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:d09fecdaaa678a86a5c4fe618a4c987e61115123ebcbd826f12b6de21f51086e",
+      "runId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-a.batch-001-gpt-6-astra",
+      "runManifestDigest": "sha256:ead4376b673298665d611e19c751cd971e4d6243e583c181deedca3a9c389b26",
+      "resultsDigest": "sha256:16320e441e3f30f5f790687e8395d8d4f58dab1067ed773b46ecabc7d3292e85"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-two-image-current-reinspection-20260929-v3-b",
+      "campaignDigest": "sha256:dfb532c72a78feefabb486f6792ef13dcdc870a7f342756a01df2b26f55b1a58",
+      "roundId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-b",
+      "independenceGroupId": "mathematik-m7-two-image-current-reinspection-20260929-v3-independent-b",
+      "reviewInputFingerprint": "sha256:165157f56ce2572452b9a0515118134659f962cc19e5eedcb7bc20971811d0fe",
+      "batchId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:a982930b4e0f17121ed4d5b6525f13759ec3256b6e185a9a39af583571a48325",
+      "runId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-b.batch-001.codex-independent-b",
+      "runManifestDigest": "sha256:97bd3c0d4f1b5afce42c1682dd25869401a3a28342866c26e4bc4eb9ac836f9b",
+      "resultsDigest": "sha256:56b1b262c0fc742b9549f51ef875a33ccaed1b2cd441b1dbb8d4030a14b284b1"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-two-image-current-reinspection-20260929-v3-decision-001",
+      "goalId": "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fb041587b46b6fe78f4473584207a1cb0c59b52bec8aa501028950b4b8e91b18",
+      "pageFingerprint": "sha256:e48914de5e1e63bcd94120305e1ba6401ae466a408a8cac30fd37bef3b2fea23",
+      "goalReviewContextFingerprint": "sha256:f73c5cf3db53af32761d977f68f0b16638a66ae48e53e34f328aefb2e370cf00",
+      "finalText": {
+        "titleDe": "Die kulturhistorische Bedeutung komplexer Zahlen einordnen (LK)",
+        "titleEn": "Contextualise the cultural and historical significance of complex numbers (advanced course)",
+        "descriptionDe": "Die lernende Person kann an einem fachhistorisch belegten Entwicklungsschritt erläutern, wie komplexe Zahlen von formalen Rechenhilfen zu einem anerkannten mathematischen Zahlbereich wurden.",
+        "descriptionEn": "Using a documented historical development, the learner can explain how complex numbers developed from formal calculation aids into an accepted mathematical number system."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-a.batch-001-gpt-6-astra.001",
+          "recordDigest": "sha256:e8b7ba06ae6925e8ff3280e54f8eabc0f085df1ae0be5130d58f3d8c982b090a"
+        },
+        "second": {
+          "recordId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-b.batch-001.codex-independent-b.e105bad8-b4e5-53fc-b02e-604f1df5b503",
+          "recordDigest": "sha256:651bdfdd972ed0c5e4e1984a95eacc57f8709398414e918cdb7ded1bac3f4318"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten die aktuelle zweisprachige Beschreibung. Die korrigierte Abbildung zeigt 1+i bei (1,1) und ordnet i, −i und i²=−1 widerspruchsfrei ein; sie behauptet keinen historischen Einzelfall. Das Lernziel verlangt ausdrücklich einen fachhistorisch belegten Entwicklungsschritt, der in der eigenen Lernleistung anhand einer Quelle erläutert werden muss. Die heutige Bildhilfe ersetzt diese Quellenleistung nicht. Die aktuellen Seiten-, Kontext- und Bildbytes sind gebunden; dies ist eine maschinelle D-Entscheidung ohne menschliche Freigabe.",
+      "rationaleEn": "Both independent rounds retain the current bilingual description. The corrected illustration places 1+i at (1,1) and consistently depicts i, −i and i²=−1; it claims no specific historical episode. The goal explicitly requires a documented historical development that the learner must explain using a source. The modern illustration does not replace that source-based performance. Current page, context and image bytes are bound; this is a machine D decision, not human approval."
+    },
+    {
+      "decisionId": "math-m7-two-image-current-reinspection-20260929-v3-decision-002",
+      "goalId": "5619ca5b-dc2a-504e-ad89-2e0ca0a83822",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:abc26a3daa02fb105ebd31037ff94481889d19c5b2320164e72a1d0dd95ad529",
+      "pageFingerprint": "sha256:e8ee7523f62e3bb9ac1509ea2066c590ff1bd66094a874c4013721c43ae5ecd2",
+      "goalReviewContextFingerprint": "sha256:0b01ca199b8ff1d18742f5b41838605531ea405d51918b4b3e555bbb7b19bcdd",
+      "finalText": {
+        "titleDe": "Die Volumenformel von Pyramiden begründen",
+        "titleEn": "Justify the volume formula for pyramids",
+        "descriptionDe": "Die lernende Person kann die Struktur der Formel $V=\\frac13G\\cdot h$ für eine Pyramide durch einen geeigneten Zerlegungs- oder Vergleichsgedanken begründen und den Faktor $\\frac13$ fachlich deuten.",
+        "descriptionEn": "The learner can justify the structure of $V=\\frac13G\\cdot h$ for a pyramid using a suitable decomposition or comparison and interpret the factor $\\frac13$ mathematically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-a.batch-001-gpt-6-astra.002",
+          "recordDigest": "sha256:7533c653a73d1003286d5accfd5ca20b37699f6126b52f06e9d739d909a7137b"
+        },
+        "second": {
+          "recordId": "mathematik-m7-two-image-current-reinspection-20260929-v3-first-pass-b.batch-001.codex-independent-b.5619ca5b-dc2a-504e-ad89-2e0ca0a83822",
+          "recordDigest": "sha256:6485a6a2b16dbbb9ca3ee8deada1c291adacb9bb7424a382cc03f01f22a09660"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann die Struktur der Formel $V=\\frac13G\\cdot h$ für Pyramiden mit einem geeigneten Zerlegungs- oder Vergleichsgedanken plausibel machen und den Faktor $\\frac13$ als Volumenverhältnis zu einem Prisma mit gleicher Grundfläche und Höhe deuten.",
+        "proposedDescriptionEn": "The learner can make the structure of $V=\\frac13G\\cdot h$ for pyramids plausible through a suitable decomposition or comparison and interpret the factor $\\frac13$ as the volume ratio to a prism with the same base area and height.",
+        "rationaleDe": "Runde B schlägt eine explizite Quellenangleichung mit „plausibel machen“ und dem Prismenvolumen als Vergleich vor. Bayern M10.5 fordert tatsächlich die Plausibilisierung der Formelstruktur, und Baden-Württemberg verlangt eine Plausibilitätsbetrachtung; der vorgeschlagene Text wäre fachlich möglich. Der aktuelle Text verlangt jedoch ausdrücklich nur einen geeigneten Zerlegungs- oder Vergleichsgedanken zur Struktur und eine Deutung des Drittelfaktors. „Begründen“ bezeichnet in diesem eingegrenzten Satz eine altersgemäße nachvollziehbare Argumentation, keinen allgemeinen Formalbeweis. Die Präzisierung ist daher nicht zwingend für die D-Gültigkeit; ihre sinnvolle Operator-Klarstellung bleibt als Dissens erhalten. Weder Bild noch Würfelspezialfall dürfen als Beweis für alle Pyramiden ausgegeben werden; Integralrechnung ist keine Voraussetzung.",
+        "rationaleEn": "Round B proposes an explicit source alignment using 'make plausible' and the comparison prism. Bavaria M10.5 does require plausibility of the formula's structure, and Baden-Württemberg also calls for a plausibility argument; the proposed wording would be mathematically acceptable. Yet the current sentence expressly asks only for a suitable decomposition or comparison idea about the structure and an interpretation of the one-third factor. In that bounded sentence, 'justify' means an age-appropriate reasoned argument, not a general formal proof. The clarification is therefore not required for D validity; its useful operator distinction is retained as dissent. Neither the image nor the special cube case proves the formula for every pyramid, and calculus is no prerequisite."
+      },
+      "rationaleDe": "Die unabhängigen Runden bestätigen die fachliche Eignung des aktuellen Würfelbilds als Spezialfall, unterscheiden sich aber beim Operator der Beschreibung. Der Würfel zerfällt mit einer gemeinsamen Ecke als Spitze und drei gegenüberliegenden Flächen als Grundflächen in drei kongruente Pyramiden; somit ist der Faktor 1/3 dort ohne Zirkelschluss plausibel. Die aktuelle Beschreibung begrenzt ihre Begründungsleistung durch „geeigneten Zerlegungs- oder Vergleichsgedanken“ und fordert keine Integralrechnung oder allgemeine Deduktion. Die bayerische und baden-württembergische Quelle verlangen Plausibilisierung; diese Grenze ist im positiven Evidenzprofil und Unterricht bei der Übertragung ausdrücklich zu wahren. B's redaktionell mögliche Präzisierung wird wörtlich und begründet verworfen, nicht als übernommen ausgegeben. Bild- und andere M7-Gates bleiben getrennt.",
+      "rationaleEn": "The independent rounds agree that the current cube image is suitable as a special case but differ over the description's verb. A cube partitions into three congruent pyramids with one shared vertex as apex and the three opposite faces as bases, making the one-third factor plausible there without circular reasoning. The current description bounds its justification to a suitable decomposition or comparison idea and requires neither calculus nor a general deductive proof. The Bavarian and Baden-Württemberg sources call for plausibility; the positive evidence profile and teaching must state the limit when transferring beyond the cube. Round B's editorially possible clarification is rejected verbatim with reasons, not presented as adopted. Image and other M7 gates remain separate."
+    }
+  ],
+  "manifestFingerprint": "sha256:9d1545db161a3b14cde45d42e2f43a86bf9f7c45c23aa92439ebeaec6965add6"
+}
