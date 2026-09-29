@@ -16,8 +16,8 @@ Die maschinelle Prüfung weist nur zusammenhängende Texttreffer nach. Sie ist k
 
 | Prüfschritt | Anzahl | Einordnung |
 | --- | ---: | --- |
-| Source-Ziele gesamt | 9977 | 31 gebundene Source-Extraction-Dateien |
-| Treffer in authored Passage-Carriern | 9491 | automatisch, keine Human-Freigabe |
+| Source-Ziele gesamt | 9978 | 31 gebundene Source-Extraction-Dateien |
+| Treffer in authored Passage-Carriern | 9492 | automatisch, keine Human-Freigabe |
 | zusätzliche Treffer in gebundener PDF-Projektion | 5 | automatisch, keine Human-Freigabe |
 | offene Human-Reviews | 481 | fachlich am Original prüfen |
 | abgeschlossene Human-Reviews | 0 | davon akzeptiert: 0, abgelehnt: 0 |
@@ -80,7 +80,7 @@ Reviewer, Zeitstempel und Begründung sind für jede abgeschlossene Entscheidung
 
 ## Evidenzbindung und technische Grenze
 
-- Profil: `contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json` (`sha256:8b00d68660ba052d21aee3be2f7dfec3629ecba9e1914b4c32c1fcb165d18946`)
+- Profil: `contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json` (`sha256:fb7c814c0e2b6cbd10a36c6fd2b911915c64efa1669c9c0aeb755b3d00ba3ff3`)
 - Source-Extraction-Dateien: 31
 - Source-Dokument-Referenzen: 55 auf 49 unterschiedliche PDF-Pfade
 - PDF-Projektions-Metadatensätze: 10
