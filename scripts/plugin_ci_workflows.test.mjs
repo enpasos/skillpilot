@@ -11,27 +11,37 @@ const marketplace = readWorkflow('claude-marketplace.yml')
 const dialogs = readWorkflow('openai-dialog-regression.yml')
 
 test('demo-video CI installs its own pinned browser before browser-dependent tests', () => {
-  const stepName = '      - name: Validate reproducible browser demo-video tool\n'
-  const step = ci.split(stepName)[1]?.split(/\n  [\w-]+:/u)[0]
-  assert.ok(step, 'Missing demo-video validation step')
-  assert.match(step, /working-directory: tools\/demo-video/u)
-  const commands = [
+  const installStepName = '      - name: Install browser demo-video tool dependencies\n'
+  const validationStepName = '      - name: Validate reproducible browser demo-video tool\n'
+  const installStep = ci.split(installStepName)[1]?.split(/\n  [\w-]+:/u)[0]
+  const validationStep = ci.split(validationStepName)[1]?.split(/\n  [\w-]+:/u)[0]
+  assert.ok(installStep, 'Missing demo-video dependency step')
+  assert.ok(validationStep, 'Missing demo-video validation step')
+  assert.match(installStep, /working-directory: tools\/demo-video/u)
+  assert.match(validationStep, /working-directory: tools\/demo-video/u)
+  for (const command of [
     'npm ci --ignore-scripts',
     'npx --no-install playwright install --with-deps chromium',
+  ]) assert.ok(installStep.includes(command), `Missing demo-video dependency command: ${command}`)
+  for (const command of [
     'npm run check',
     'npm run demo -- record --scenario scenarios/example.yaml',
     'npm run demo -- verify-recording --scenario scenarios/example.yaml',
-  ]
+  ]) assert.ok(validationStep.includes(command), `Missing demo-video validation command: ${command}`)
+  const dependencyPosition = ci.indexOf(installStepName)
+  const validationPosition = ci.indexOf(validationStepName)
+  assert.ok(dependencyPosition >= 0 && dependencyPosition < validationPosition,
+    'Demo-video dependencies must be installed before validation')
   let previous = -1
-  for (const command of commands) {
-    const position = step.indexOf(command)
+  for (const command of ['npm run check', 'npm run demo -- record --scenario scenarios/example.yaml', 'npm run demo -- verify-recording --scenario scenarios/example.yaml']) {
+    const position = validationStep.indexOf(command)
     assert.ok(position > previous, `Missing or out-of-order demo-video command: ${command}`)
     previous = position
   }
   // Keep the demo tool's independent browser/font installation after the
   // frontend build has consumed the verified goal-book publication artifact.
   const builtAssets = ci.indexOf('      - name: Check frontend shell assets in the built application\n')
-  assert.ok(builtAssets >= 0 && builtAssets < ci.indexOf(stepName))
+  assert.ok(builtAssets >= 0 && builtAssets < dependencyPosition)
 })
 
 test('paid dialogs run only on trusted default-branch code with bounded dedicated credentials', () => {
