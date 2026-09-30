@@ -372,6 +372,14 @@ class ClaudeV1McpContractTest {
 
     @Test
     void masteryIsCanonicalCompletionRatherThanAModelSelectedNumber() {
+        String description = tool(ClaudeV1Contract.TOOL_SET_MASTERY).description();
+        assertTrue(description.contains(
+                "learningSessionId, goalId, expectedStateVersion, clientRequestId, and optional language"));
+        assertTrue(description.contains(
+                "For a passing exam, also send evaluationCapability and earnedPoints"));
+        assertTrue(description.contains("There is no mastered field"));
+        assertTrue(description.contains("model-selected mastery score, learner work or feedback"));
+
         @SuppressWarnings("unchecked")
         Map<String, Object> properties =
                 (Map<String, Object>) schemaOf(ClaudeV1Contract.TOOL_SET_MASTERY).get("properties");
@@ -386,6 +394,7 @@ class ClaudeV1McpContractTest {
                         "learningSessionId"),
                 properties.keySet(),
                 "Completion accepts only structured state and concurrency data, never chat-derived text or progression input");
+        assertFalse(properties.containsKey("mastered"));
         assertEquals(
                 Set.of("goalId", "expectedStateVersion", "clientRequestId", "learningSessionId"),
                 Set.copyOf(requiredOf(ClaudeV1Contract.TOOL_SET_MASTERY)));
@@ -486,6 +495,20 @@ class ClaudeV1McpContractTest {
                     schemaOf(toolName).get("additionalProperties"),
                     () -> toolName + " must not accept free-form arguments");
         }
+    }
+
+    @Test
+    void masteryInstructionsGiveExactFieldsAndKeepVoiceSchemaRecoveryPrivate() {
+        String instructions = contractAdapter.serverInstructions().replaceAll("\\s+", " ");
+        assertTrue(instructions.contains(
+                "ordinary and orientation completion send only learningSessionId, goalId, expectedStateVersion and clientRequestId, with optional language"));
+        assertTrue(instructions.contains(
+                "A passing exam additionally sends evaluationCapability and earnedPoints"));
+        assertTrue(instructions.contains("Never add a mastered field, a model-selected mastery score"));
+        assertTrue(instructions.contains(
+                "including in Voice: never speak or write a schema field, proposed argument correction or retry plan"));
+        assertTrue(instructions.contains(
+                "if a proposed call is rejected, keep the correction private and follow the silent write-recovery procedure"));
     }
 
     @Test

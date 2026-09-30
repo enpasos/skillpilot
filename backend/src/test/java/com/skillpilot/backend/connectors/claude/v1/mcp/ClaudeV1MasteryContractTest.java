@@ -242,9 +242,14 @@ class ClaudeV1MasteryContractTest {
                             null);
                 });
 
-        Map<String, Object> resultPayload = payload(callMastery(Map.of(), UUID.randomUUID().toString()));
+        McpSchema.CallToolResult result = callMastery(Map.of(), UUID.randomUUID().toString());
+        assertThat(result.isError()).isFalse();
+        Map<String, Object> resultPayload = payload(result);
 
         assertThat(resultPayload)
+                .containsEntry("status", "SUCCESS")
+                .containsEntry("savedGoalId", ACTIVE_GOAL_ID)
+                .containsEntry("savedMastery", 1.0)
                 .containsEntry(
                         "presentationInstruction",
                         ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION)
@@ -263,6 +268,7 @@ class ClaudeV1MasteryContractTest {
                         .doesNotContain("already received feedback and agreed to close")
                         .doesNotContain("what went well", "what still needs practice")
                         .doesNotContain("previous orientation's completion"));
+        verify(coachToolFacade, times(1)).setMastery(eq(learnerId), any(MasteryUpdateRequest.class));
     }
 
     @Test
@@ -436,6 +442,25 @@ class ClaudeV1MasteryContractTest {
         verify(coachToolFacade, never()).setMastery(any(), any());
         verify(coachToolFacade, never()).getLearnerState(any());
         verify(coachToolFacade, never()).setActiveGoal(any(), any(ActiveGoalRequest.class));
+    }
+
+    @Test
+    void masteredFlagIsRejectedBeforeAnyCanonicalWrite() throws Exception {
+        String requestId = UUID.randomUUID().toString();
+        McpSchema.CallToolResult result = callMastery(Map.of("mastered", true), requestId);
+
+        assertThat(result.isError()).isTrue();
+        assertThat(payload(result))
+                .containsEntry("status", "ERROR")
+                .containsEntry("errorCode", "INVALID_INPUT")
+                .hasEntrySatisfying("message", message -> assertThat(message.toString())
+                        .contains("unsupported argument"));
+        assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
+        verify(coachToolFacade, never()).getLearnerState(any());
+        verify(coachToolFacade, never()).setMastery(any(), any());
+        assertThat(idempotencyRepository.findLive(
+                        sessionTokens.hash(connectionId), requestId, java.time.Instant.now()))
+                .isEmpty();
     }
 
     @ParameterizedTest

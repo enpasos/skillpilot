@@ -3,12 +3,71 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. Version 1.1.11 is published in
+Anthropic-curated or Anthropic-verified listing. Version 1.1.12 is published in
 the public personal Marketplace; its exact source, package and repository have
-been independently verified. The website serves the matching 1.1.11 archive.
+been independently verified. The website currently offers the matching 1.1.12
+archive.
 Full real-client acceptance remains pending; repository publication does not
 establish installation or synchronization in every account.
 Earlier published packages and their evidence remain immutable history.
+
+## 1.1.12 repository publication and observed clients
+
+On 30 September 2026, SkillPilot `main` at
+`9a10fd51011e390fbf83a8524454b024279825da` had green
+[CI](https://github.com/enpasos/skillpilot/actions/runs/36712405971) and its
+server rollout was confirmed before preparation began. The exact 1.1.11
+release dossier was copied unchanged to `release/history/1.1.11/`; published
+1.1.11 files and evidence were not modified. The 1.1.12 archive has
+**43,272 bytes**, SHA-256
+`d4d2f22a551bfd044d2eeaa36495fe96d62bc588552effecaef213a4e148afc0`.
+The twelve-file Marketplace export has tree SHA-256
+`923616375ea8a9593f38c4b00f42a6857c3c92b21828baaebf63b7a1847660cc`.
+Its workflow pins committed SkillPilot source
+`0861a33b2a0faee4ccca1fa0ca315920e0bcfbcb` and full Claude plugin
+source-tree SHA-256
+`286c80cfd90ba56270b3d69dbeca28454a1bff700077a8957735325b44634c48`.
+The release source was merged through
+[SkillPilot PR #66](https://github.com/enpasos/skillpilot/pull/66) as
+`0239cae6bf59df68014b8ad66d5f3bf9ab47b1ad`; its
+[CI](https://github.com/enpasos/skillpilot/actions/runs/36720520147) passed.
+
+[Marketplace PR #15](https://github.com/enpasos/skillpilot-claude-marketplace/pull/15)
+passed [PR validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/36720997088)
+and was squash-merged. The actual public Marketplace `main` is
+`eb047d16cae0226f8fa94d0db603e359fecb03c9`; its
+[main-branch validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/36721262030)
+passed. `verify-repository` independently checked that public revision, the
+exact twelve-file inventory and tree digest, both strict Claude validations,
+the rebuilt archive digest and isolated installation from the HTTPS repository.
+The deployed website index and public download were checked against the same
+1.1.12 archive digest and byte count. Only
+`public-repository-default-branch` is marked `pass` in
+`release/marketplace-publication.json`.
+
+In an authenticated Claude Pro **Claude Code** profile, an existing
+Marketplace installation was updated from 1.1.1 to 1.1.12 with `claude plugin
+marketplace update` followed by `claude plugin update`. Claude reported the
+installed plugin enabled with its bundled MCP URL and required a client
+restart. This is an observed CLI account update; it does not establish a new
+Claude Web installation, an uploaded-plugin migration or a completed learning
+flow. A clean eligible-account installation, Web update, and two consecutive
+learning-goal images in one new SkillPilot-started Claude session remain
+unobserved and pending. No first-party guide switch was approved.
+
+The Product Owner later reported a Claude **Android Voice** incident while
+using the newest plugin: a first mastery tool call failed after the coach
+audibly described an internal schema field and retry plan, and a second call
+succeeded. The supplied startup log shows a 1.1.12 archive download and a
+later mastery event, but does not link either uniquely to that screenshot.
+After updating the Android app, the Product Owner reported that the next
+mastery step succeeded and contained only normal learner-facing speech. This
+is one user-observed successful retry, without a captured installed version,
+model, tool payload or independent server-state correlation. The exact-client
+Web and Android Voice acceptance records therefore remain pending. The
+backend mastery contract was clarified separately without changing the
+published 1.1.12 plugin bytes; its effectiveness in future Voice sessions
+requires another real-client check.
 
 ## 1.1.11 repository publication
 
@@ -990,7 +1049,7 @@ bound in the marketplace lane.
 
 - Marketplace name: `skillpilot-marketplace`
 - Stable technical plugin name: `skillpilot-coach-v1`
-- Current candidate version: `1.1.11` (website download deployed; Marketplace publication pending)
+- Current published candidate version: `1.1.12` (website download and personal Marketplace verified)
 - Plugin source: `./plugins/skillpilot-coach-v1`
 - Version authority:
   `plugins/skillpilot-coach-v1/.claude-plugin/plugin.json` only
