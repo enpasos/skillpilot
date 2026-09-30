@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-lk-applicability-hold-two-current-20260929-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-29/m7-lk-applicability-hold-two-current-20260929-v1.config.json",
+  "configDigest": "sha256:1351c0d861e5924698c490a6757eaa376ce74109f6e1bd5da18aa2a582506c4a",
+  "goalIds": [
+    "803d910d-96d1-5118-b9ca-29e93d0da76d",
+    "d3c42193-f1b7-5c6d-a991-bf034d99359f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 807,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:90dd5488cac47a405508661e4a4a694268546cc182f00f6d58d09fc9a2d27d53"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:ee96f9363137b84fd9d295d7be393ff9d2b9e417374df0daf807ec4553e2b8d8",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:b405ebcc5e60325e857bd960d56662657b34e7c3adedfa277047bdb43d2d85ab",
+    "reviewInputFingerprint": "sha256:e00381c8cec1eb16b903d3f2448e7f7cb76144636b29ddd697669cbfb5ad4bb5",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-lk-applicability-hold-two-current-20260929-v1-a",
+        "campaignDigest": "sha256:f8c1976c8df747f231489237e44db79e3a637176e52f0f3781dd17c3352b1f2e",
+        "roundId": "mathematik-m7-lk-applicability-hold-two-current-20260929-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-lk-applicability-hold-two-current-20260929-v1-independent-a",
+        "batchId": "mathematik-m7-lk-applicability-hold-two-current-20260929-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:cef38c85481e7eea9e214bd72c314c59f171df5dfcc6733a588970bed7da254e"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-lk-applicability-hold-two-current-20260929-v1-b",
+        "campaignDigest": "sha256:386c9e1897e1f9386a59d194a30316eb6f7473b13b648f1ba41c8edd15595492",
+        "roundId": "mathematik-m7-lk-applicability-hold-two-current-20260929-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-lk-applicability-hold-two-current-20260929-v1-independent-b",
+        "batchId": "mathematik-m7-lk-applicability-hold-two-current-20260929-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:77fb5d60aad80a702fc954a6eca521bcaa6d809f4eb99e4746403f58a1b8745c"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

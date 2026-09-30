@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-affine-sphere-four-current-20260929-v1-b-001",
+  "campaignId": "mathematik-m7-affine-sphere-four-current-20260929-v1-b",
+  "roundId": "mathematik-m7-affine-sphere-four-current-20260929-v1-first-pass-b",
+  "batchId": "mathematik-m7-affine-sphere-four-current-20260929-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:b60449932e1de8ceb6c0863a95c5bb954ab2730c59ba1d17c864a4f6a8721a31",
+  "bundleFingerprint": "sha256:9729f71a36da75546f83136ade2b3c2abe9ef7fb64a35681f3deeb9d43ade42d",
+  "bookDigest": "sha256:a434d60f33363a7ad71ae221b1cd9a3ee36d46f592ff94f9b3184e9a3bddd4f9",
+  "provider": "OpenAI Codex agent runtime",
+  "model": "GPT-6 family (runtime model ID not exposed)",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:5eacdc55f4c62e166f9d14608b5d5f00f8200fef6c1f69b627bb57f15309c470",
+  "independenceGroupId": "mathematik-m7-affine-sphere-four-current-20260929-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "1a63bf83-1dd5-4eb2-bd8e-f9cfa02f4c42",
+    "53d52b0c-1fd7-4a36-bc14-ba41e7dc6d5d",
+    "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+    "bb227e31-0b0b-544a-b5e0-548256a70dec"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:77c5297508263f8a9415e1a1f9f1e87adf96a6863367b46c2327b8f5d81abf3a"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:b5e23cd57e7c5215a8757526a98c3d7fccaa0402282594199f0fe327563d1838"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:be04bf551dc8a082e2690130b30200c14ae32b65e9bc9002578aa1814d48230e"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:7fbcb1ef280afae2af107dac421f50b3b241076c9487755b0a2daaf9c152f59b"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:b60449932e1de8ceb6c0863a95c5bb954ab2730c59ba1d17c864a4f6a8721a31"
+    }
+  ],
+  "startedAt": "2026-09-29T20:43:19.472Z",
+  "completedAt": "2026-09-29T20:43:19.472Z",
+  "status": "completed",
+  "outputDigest": "sha256:3a4cdb44367d68f7b4da23e51f635a36511d91dc0ec992311c4838fd2e08ed9f",
+  "toolchainVersion": "goal-description-review-v1"
+}

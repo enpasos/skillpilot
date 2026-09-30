@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-29/m7-j10-analysis-five-source-repaired-current-20260929-v2.config.json",
+  "configDigest": "sha256:fc3492ef9a1be010e606d823845645ea9046c4dc42c7839b338dcdadf2d3000d",
+  "goalIds": [
+    "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+    "2850e8f6-2330-50d3-a577-d519540d9924",
+    "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+    "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+    "ad66009f-55fb-563f-ace0-dbfeae7c76c3"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 807,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:c6f0d641b1f69bda141202adc2679872d76c9cbfcca583426daa92ea00173c7a"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:30ea72a01915b1686b582c832f178a31b148f225b93af05f3ed166dd64eb4fd7",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:4ff03bbac50417ce3ef54ca06c21e912571f7cd250cdecf9021b2719b53d0a17",
+    "reviewInputFingerprint": "sha256:ac35fd37ee590f3c9990c52ea9dbfe6759043997e8c7bca72f717468cbc43857",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-a",
+        "campaignDigest": "sha256:195fb05c9f5d51d6dc6c0c57b7fb54c4c732056e0b79b52dfcfd1d6701690ab2",
+        "roundId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a",
+        "independenceGroupId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-independent-a",
+        "batchId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:945fbafa1ff4e8fa28cef03549c8f40712e0c7da6aff2d0bd1a6b32a16a43ab0"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-b",
+        "campaignDigest": "sha256:59316716d14cf2fd0ccb89fed73a8bc26fbf6151f061c3c8b0170b9276fea43f",
+        "roundId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b",
+        "independenceGroupId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-independent-b",
+        "batchId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:d2404aeb864aeab5b676f90e384b9da8c34ca7f3d66d9ebead9f12fb23644782"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

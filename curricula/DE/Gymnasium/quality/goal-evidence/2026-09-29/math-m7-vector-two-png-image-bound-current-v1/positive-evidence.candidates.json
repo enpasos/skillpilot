@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-vector-two-png-image-bound-current-20260929-v1",
+  "reviewedAt": "2026-09-29T19:43:20Z",
+  "reviewer": "Codex independent current PNG, goal, page and transfer P-v2 review 2026-09-29; no human approval",
+  "goals": [
+    {
+      "goalId": "d1352ce0-9502-5039-9af6-318fe385b6fd",
+      "reason": "DE: Aktuelles J9-Ziel und die tatsächlich aktive, unabhängig geprüfte PNG-Fassung sind fachlich abgeglichen. Die linke Bildhälfte deutet kollineare freie Vektoren als gleich- oder entgegengerichtet, unabhängig vom Startpunkt. Rechts liefert v=(2,4), w=(1,2) einen gemeinsamen Faktor 2; a=(3,1), b=(1,2) erzwingen dagegen getrennt k=3 bzw. k=0,5 und keinen gemeinsamen Faktor. Der vorherige KI-Entwurf mit 'Lösung: k=3 und k=0.5' wurde blockiert und korrigiert. Die beibehaltenen zwei P-Fälle verwenden neue ebene Vektoren und eine unbekannte Komponente; beide erfordern selbstständige Richtungs- und Komponentendeutung statt Bildablesen. KI-Kandidat E1/G1, keine menschliche Freigabe oder Lernendenleistung. EN: Current image correctly distinguishes a shared scalar from incompatible component scalars, while fresh independent cases test transfer beyond the image.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "common-factor-in-plane",
+            "essentialUnderstandingDe": "Zwei von null verschiedene ebene Vektoren sind kollinear, wenn ein einziger skalarer Faktor beide Komponenten gleichzeitig verknüpft; ein negativer Faktor beschreibt entgegengesetzte Richtungen.",
+            "essentialUnderstandingEn": "Two nonzero planar vectors are collinear when one scalar factor links both components simultaneously; a negative factor describes opposite directions.",
+            "observablePerformanceDe": "Bestimmt oder widerlegt einen gemeinsamen Faktor an beiden Komponenten und deutet eine bestätigte Kollinearität als parallele oder antiparallele Pfeilrichtung.",
+            "observablePerformanceEn": "Finds or refutes one common factor across both components and interprets confirmed collinearity as parallel or antiparallel arrow directions."
+          },
+          {
+            "id": "simple-counterexample-and-check",
+            "essentialUnderstandingDe": "In einfachen nicht kollinearen Fällen widerlegt bereits eine nicht passende zweite Komponente den vermuteten Faktor; die Prüfung betrifft die Vektorrichtungen unabhängig vom gewählten Startpunkt der Pfeile.",
+            "essentialUnderstandingEn": "In simple non-collinear cases, a second component that fails the proposed factor refutes it; the check concerns vector directions regardless of where arrows are drawn.",
+            "observablePerformanceDe": "Begründet eine Nein-Entscheidung mit dem Komponentenwiderspruch und kann in einem neuen ebenen Fall eine fehlende Komponente so wählen, dass beide Komponenten passen.",
+            "observablePerformanceEn": "Justifies a negative decision with the component contradiction and can choose a missing component in a new planar case so both components agree."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "common-factor-in-plane",
+            "simple-counterexample-and-check"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "classify-opposite-and-nonparallel",
+            "textDe": "Einen entgegengesetzt gerichteten kollinearen Pfeil mit einem nur teilweise passenden Gegenbeispiel vergleichen.",
+            "textEn": "Compare an oppositely directed collinear arrow with a counterexample that matches only one component."
+          },
+          {
+            "id": "unknown-component",
+            "textDe": "Von der Ja-Nein-Prüfung zur Bestimmung einer fehlenden ebenen Komponente wechseln.",
+            "textEn": "Switch from a yes-no check to finding a missing planar component."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "planar-arrow-trio",
+            "taskDemandDe": "Auf einer ebenen Karte sind die freien Verschiebungsvektoren a=(2,3), b=(-4,-6) und c=(-4,6) angegeben. Prüfe b und c jeweils gegen a auf Kollinearität und erkläre die Pfeilrichtungen; die Startpunkte der gezeichneten Pfeile dürfen verschieden sein.",
+            "taskDemandEn": "On a planar map, free displacement vectors a=(2,3), b=(-4,-6), and c=(-4,6) are given. Check b and c separately against a for collinearity and explain the arrow directions; the drawn arrows may start at different points.",
+            "expectedPerformanceDe": "b=-2a stimmt in beiden Komponenten, ist daher kollinear und zeigt entgegengesetzt zu a. Für c erzwingt x den Faktor -2, aber y müsste dann -6 statt 6 sein; c ist nicht kollinear zu a. Unterschiedliche Startpunkte ändern die freien Vektoren nicht.",
+            "expectedPerformanceEn": "b=-2a agrees in both components, so it is collinear and points opposite to a. For c, x forces factor -2, but y would then have to be -6 rather than 6; c is not collinear with a. Different starting points do not change free vectors.",
+            "understandingFocusDe": "Ein gemeinsamer Faktor und ein echter Komponentenwiderspruch werden geometrisch interpretiert.",
+            "understandingFocusEn": "A common factor and a genuine component contradiction are interpreted geometrically."
+          },
+          {
+            "id": "planar-parameter-completion",
+            "taskDemandDe": "In einer neuen ebenen Situation ist p=(3,-2) und q=(-9,h). Bestimme alle reellen h, für die p und q kollinear sind, und begründe Richtung und Längenverhältnis; prüfe als Gegenprobe h=-6.",
+            "taskDemandEn": "In a new planar situation, p=(3,-2) and q=(-9,h). Find every real h for which p and q are collinear, and justify direction and length ratio; use h=-6 as a countercheck.",
+            "expectedPerformanceDe": "Aus -9=λ·3 folgt λ=-3; deshalb muss h=(-3)·(-2)=6 sein. Dann q=-3p, also entgegengesetzte Richtung und dreifacher Betrag. Bei h=-6 passt die y-Komponente nicht zu λ=-3; dieses q ist nicht kollinear.",
+            "expectedPerformanceEn": "From -9=λ·3 follows λ=-3; thus h=(-3)·(-2)=6. Then q=-3p, so the direction is opposite and the magnitude triple. At h=-6, the y-component does not fit λ=-3; that q is not collinear.",
+            "understandingFocusDe": "Transfer zur inversen Festlegung einer ebenen Komponente statt bloßer Verhältnisprüfung.",
+            "understandingFocusEn": "Transfer to inversely determining a planar component rather than merely checking ratios."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "235ae698-369f-4dbe-b46f-87e8b65bb03d",
+      "reason": "DE: Aktuelles J10-Ziel und die tatsächlich aktive, unabhängig geprüfte PNG-Fassung sind fachlich abgeglichen. A=(1,2,0), B=(4,3,2) ergeben B−A=(3,1,2); die ganze Gerade hat t∈R, die Strecke genau 0≤t≤1. Die irreführenden grauen Koordinatenachsen des ersten Entwurfs wurden entfernt, sodass A nicht fälschlich auf einer Einzelachse liegt. Die beibehaltenen P-Fälle nutzen neue Endpunkte und einen anderen Stützvektor mit negativem Parameterintervall −3≤s≤0; sie prüfen Endpunkt, inneren Punkt und Darstellungsgrenze unabhängig vom Bild. KI-Kandidat E1/G1, keine menschliche Freigabe oder Lernendenleistung. EN: Corrected schematic image shows the line and finite segment without false axes; fresh cases require transfer to a nonstandard interval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "support-and-direction",
+            "essentialUnderstandingDe": "In r(t) = a + t v bezeichnet a den Ortsvektor eines Punktes der Geraden und v einen von null verschiedenen Richtungsvektor. Für zwei verschiedene Punkte A und B ist B - A ein möglicher Richtungsvektor; t durchläuft für die vollständige Gerade alle reellen Zahlen.",
+            "essentialUnderstandingEn": "In r(t) = a + t v, a is the position vector of a point on the line and v is a nonzero direction vector. For two distinct points A and B, B - A is one possible direction vector; t ranges over all real numbers for the complete line.",
+            "observablePerformanceDe": "Die lernende Person stellt aus zwei verschiedenen räumlichen Punkten eine gültige Geradengleichung auf, identifiziert Stütz- und Richtungsvektor und erläutert, wie die Parameterwerte Punkte auf der vollständigen Geraden erzeugen.",
+            "observablePerformanceEn": "The learner constructs a valid line equation from two distinct spatial points, identifies its support and direction vectors and explains how parameter values generate points on the complete line."
+          },
+          {
+            "id": "segment-parameter-domain",
+            "essentialUnderstandingDe": "Eine Strecke wird durch dieselbe affine Parametrisierung mit einem abgeschlossenen Parameterintervall beschrieben, dessen Randwerte die beiden Endpunkte ergeben. Das passende Intervall hängt vom gewählten Stütz- und Richtungsvektor ab.",
+            "essentialUnderstandingEn": "A segment is described by the same affine parametrization with a closed parameter interval whose endpoints produce the two segment endpoints. The appropriate interval depends on the chosen support and direction vectors.",
+            "observablePerformanceDe": "Die lernende Person bestimmt zu ihrer oder einer vorgegebenen Parametrisierung das Intervall einer angegebenen Strecke, überprüft die beiden Randwerte durch Einsetzen und deutet einen inneren Parameterwert als Punkt zwischen den Endpunkten.",
+            "observablePerformanceEn": "For their own or a given parametrization, the learner determines the interval describing a specified segment, checks both interval endpoints by substitution and interprets an interior parameter value as a point between the endpoints."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "support-and-direction",
+            "segment-parameter-domain"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "unbounded-to-bounded",
+            "textDe": "Mit denselben Punktdaten zwischen vollständiger Gerade und begrenzter Strecke wechseln und den veränderten Parameterbereich geometrisch erklären.",
+            "textEn": "Using the same point data, move between a complete line and a finite segment and explain the changed parameter domain geometrically."
+          },
+          {
+            "id": "parameter-scale-and-start",
+            "textDe": "Den Stützpunkt an das andere Streckenende legen und einen Richtungsvektor verwenden, dessen Länge nicht dem vollständigen Endpunktversatz entspricht; die Intervallgrenzen aus den Endpunkten bestimmen.",
+            "textEn": "Place the support point at the other endpoint and use a direction vector whose length differs from the complete endpoint displacement; determine the interval boundaries from the endpoints."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "line-and-segment-from-endpoints",
+            "taskDemandDe": "Gegeben sind A(1, 2, -1) und B(5, 0, 3). Stelle eine Parametergleichung für die Gerade durch A und B und eine für die Strecke AB auf. Erkläre Stützvektor, Richtungsvektor und Parameterbereich und prüfe die Endpunkte sowie einen inneren Streckenpunkt.",
+            "taskDemandEn": "A(1, 2, -1) and B(5, 0, 3) are given. Construct a parametric equation for the line through A and B and one for segment AB. Explain the support vector, direction vector and parameter domain, and check the endpoints and an interior point of the segment.",
+            "expectedPerformanceDe": "Ein gültiger Ansatz ist r(t) = (1, 2, -1) + t(4, -2, 4). Für die Gerade gilt t ∈ R, für die Strecke 0 ≤ t ≤ 1. Die lernende Person erhält bei t = 0 den Punkt A, bei t = 1 den Punkt B und beispielsweise bei t = 1/2 den inneren Punkt (3, 1, 1); gleichwertige Ansätze mit passend angepasstem Intervall sind möglich.",
+            "expectedPerformanceEn": "One valid equation is r(t) = (1, 2, -1) + t(4, -2, 4). For the line, t ∈ R; for the segment, 0 ≤ t ≤ 1. The learner obtains A at t = 0, B at t = 1 and, for example, the interior point (3, 1, 1) at t = 1/2; equivalent equations with appropriately adjusted intervals are also possible.",
+            "understandingFocusDe": "Die gleiche Punktbildungsregel beschreibt je nach Parameterbereich eine unbegrenzte Gerade oder genau die Strecke zwischen den Endpunkten.",
+            "understandingFocusEn": "The same point-generating rule describes either an unbounded line or exactly the segment between the endpoints, depending on the parameter domain."
+          },
+          {
+            "id": "negative-interval",
+            "taskDemandDe": "Gegeben sind C(0, 1, 2) und D(0, 7, -1). Verwende für die Gerade durch beide Punkte D als Stützpunkt und v = (0, 2, -1) als Richtungsvektor. Stelle die Parametergleichung auf und bestimme das Intervall, das genau die Strecke CD beschreibt. Prüfe die Randwerte und einen inneren Wert.",
+            "taskDemandEn": "C(0, 1, 2) and D(0, 7, -1) are given. For the line through both points, use D as the support point and v = (0, 2, -1) as the direction vector. Construct the parametric equation and determine the interval describing exactly segment CD. Check the boundary values and an interior value.",
+            "expectedPerformanceDe": "Die lernende Person gibt r(s) = (0, 7, -1) + s(0, 2, -1) an. s = 0 liefert D und s = -3 liefert C; deshalb ist -3 ≤ s ≤ 0 der Streckenbereich, während s ∈ R die Gerade beschreibt. Bei s = -3/2 liegt beispielsweise (0, 4, 1/2) zwischen C und D. Sie erklärt die negativen Grenzen aus der gewählten Richtung ab D.",
+            "expectedPerformanceEn": "The learner gives r(s) = (0, 7, -1) + s(0, 2, -1). s = 0 gives D and s = -3 gives C; therefore -3 ≤ s ≤ 0 is the segment domain, while s ∈ R describes the line. At s = -3/2, for example, (0, 4, 1/2) lies between C and D. They explain the negative boundaries using the chosen direction from D.",
+            "understandingFocusDe": "Die Parameterwerte kodieren die gewählte Darstellung; die Streckenbegrenzung wird aus den Endpunkten hergeleitet und nicht an ein bestimmtes Standardintervall gebunden.",
+            "understandingFocusEn": "Parameter values encode the chosen representation; the segment bounds are derived from the endpoints rather than tied to a particular standard interval."
+          }
+        ]
+      }
+    }
+  ]
+}

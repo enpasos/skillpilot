@@ -1,0 +1,11 @@
+# d3c42193: current R³ image and P/A/M binding review
+
+Date: 2026-09-29. Scope: current canonical goal `d3c42193-f1b7-5c6d-a991-bf034d99359f` only. This is machine-assisted curriculum quality review, not a human approval.
+
+The local official HMKB *Kerncurriculum Mathematik gymnasiale Oberstufe* PDF, physical and printed page 44, Q2.5, places determining fixed points of linear geometric mappings in three-dimensional Euclidean space under elevated LK level. The current German and English canonical descriptions explicitly specify three dimensions and solving `A v = v` as a linear system. The `curricularAtomic` classification remains apt: the single observable competence is to determine and interpret the full fixed-point set of a linear spatial mapping.
+
+I opened the active 1774 × 887 PNG. It displays `A = diag(1,1,−1)`, `(x,y,z) → (x,y,−z)`, `P=(0,0,1) → P′=(0,0,−1)` and the entire fixed plane `z=0`. This is mathematically correct: `Av=v` gives `−z=z`, hence `z=0`, while `x,y` remain free. The curriculum, app and backend copies have the same SHA-256 digest `54103114a99dfd9d8a296c808dedfe57a1afa668334427acac764e61974583bf`.
+
+The new image makes the previous first P case (`diag(1,1,−1)`) directly copyable. I therefore reviewed and changed that case to `diag(−1,1,1)`: `Av=v` yields `x=0`, with `y,z` free, so its complete fixed set is the `yz` plane. The other independently posed cases still yield the whole `z` axis for `(−y,x,z)` and only the origin for `2I₃`. All three cases require a complete equation, solution, geometric interpretation and substitution check. The current P-v2 profile binds the new image digest and remains `needs_human_review` with `reviewAuthority: ai_candidate`, `E1/G1`.
+
+The existing A record remains `atomic`, and the M record remains `no_memory_needed`: solving a new spatial system and explaining its fixed set is not merely a memorized formula, and no deck, card or visibility relation changed. Both records are current under their checks; they were not rewritten just to change hashes. Targeted checks after the P update: P 1/1 configured record, 0 blocking issues; A 807/807 current reviewed atomic, 0 stale; M 807 ordinary atoms covered by current decisions, 0 stale/card/visibility issues. No human approval is asserted.

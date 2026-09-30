@@ -1,10 +1,12 @@
 # Mathematik M7: Fortsetzung am 21. September 2026
 
-**Aktuelle Übergabe vom 28. September:** Die Goal-Verfolgung ist auf Wunsch
+**Historische Übergabe vom 28. September:** Die Goal-Verfolgung war auf Wunsch
 des Product Owners pausiert. Das [fachliche Abschlusskonzept samt Checkpoint-Plan](math-m7-concept-and-handoff-2026-09-28.md)
-hält die nächsten Schritte fest: zunächst Konzept, nach dem Modellwechsel
-commitfähiger Zwischenstand, danach erst auf ausdrücklichen Neustart weitere
-M7-Arbeit. Die nachstehenden Einträge dokumentieren den bisherigen Verlauf.
+hielt die damaligen nächsten Schritte fest. Die nachstehenden Einträge
+dokumentieren den bisherigen Verlauf; der [neuere Fünf-Gate-Stand vom
+29. September](math-m7-machine-closeout-2026-09-29.md) weist inzwischen
+807/807 aktuelle Mathematikziele aus und trennt den CQR-303-Befund von noch
+laufenden Integrationsprüfungen.
 
 Der Auftrag „Schließe Mathematik ab“ hebt die zuletzt dokumentierte
 Zwischenstandspause auf. Maßgeblich bleiben die aktuelle zentrale Registry,

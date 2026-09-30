@@ -1,0 +1,840 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "bf17-gk-fourteen-primary-source-audit-20260929",
+  "reviewKind": "machine-assisted-primary-source-scope-audit",
+  "reviewStatus": "open_candidate_not_m7_closure",
+  "humanApprovalClaim": false,
+  "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+  "currentCanon": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "303364bba3de28ad9311d2cde1894f78d3d1d30fc000379709923a1d5678188b",
+    "title": "Sachsituationen mit einer erweiterten Funktionsklasse modellieren",
+    "duplicateRequiresId": "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+  },
+  "effectiveProjection": {
+    "method": "collectCompositionProjectionRoleGoalIds over all current math composition view rootNodes",
+    "targetViewsTotal": 74,
+    "gkTargetViewsTotal": 34,
+    "stateGkTargetViews": 32,
+    "nationalGkTargetViews": 2,
+    "lkTargetViewsTotal": 40,
+    "gkTargetJurisdictions": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-HB",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ],
+    "heGkTarget": false,
+    "byGkTarget": false,
+    "nationalGkScopeDecision": "open: neither nationwide GK target view is established by a state-specific GK source alone"
+  },
+  "activePrimaryImage": {
+    "path": "curricula/DE/Gymnasium/visualizations/mathematik/bf17cada-3ccd-5d9a-b9e3-42065cfdbb01/bf17cada-3ccd-5d9a-b9e3-42065cfdbb01.jpg",
+    "sha256": "27a36363a0414cdde9a95c00ec57f0258f213509ec8cae7d685651d328253f37",
+    "visualContent": "Single logistic population model N(t)=1000/(1+9e^(-0.4t)), S curve, initial 100, ceiling 1000; formula and curve are internally consistent. Caption calls 0.4 a growth speed/rate without distinguishing intrinsic rate from actual slope.",
+    "gkScopeDecision": "open; the image is a logistic-only example and cannot by itself demonstrate every current GK jurisdiction requirement",
+    "currentQaPath": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+    "currentQaSha256": "c1c9376d1cb6dca0b4a6cc55de8982d7223a10b9924f527be96887bb04d2ed39",
+    "currentQaAiApproved": "yes",
+    "currentQaHumanApproved": "no"
+  },
+  "positiveEvidenceCandidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-29/math-m7-q2-six-current-v1/positive-evidence.candidates.json",
+    "sha256": "2a585ff98448ebc868bdf656594c20b195cca1d114ffc495c2df21cc7a252345",
+    "status": "AI candidate with explicit source/visual dissent; not registered strict P closure",
+    "exampleFamilies": [
+      "reciprocal pump time",
+      "square-root circle radius"
+    ],
+    "scopeRisk": "The two examples are not automatically curriculum-safe for every GK target; in BE and BB additional classes are expressly LK and in other jurisdictions the exact class set differs."
+  },
+  "sourceMappingNote": "The checked current upper-secondary source-extraction items are not exact BF17 mapping edges. The legacy HE goal map/provenance gives an exact old HE source-goal link, and the legacy NI goal map marks BF17 partial. Neither establishes current source applicability across the 14 GK jurisdictions. No broad ancestor provenance or generic K3 statement is accepted as sufficient by itself.",
+  "decisionBoundary": "A source item tagged GK/LK can support only its actual wording; a source item tagged LK or explicitly placed under an LK-only section cannot be used for GK. Optional/free-space logistic examples do not establish compulsory GK target or universal primary-image suitability.",
+  "repairSequence": [
+    "Resolve current GK target scope jurisdiction by jurisdiction; keep GK target only where the actual binding source supports the specific canonical competence.",
+    "If retaining a shared BF17 image in any GK scope, replace/rebind it with a source-safe class-choice illustration or establish a course-scoped visual resource. Preserve the coherent existing logistic image as an LK example/history if used there.",
+    "Remove exactly one duplicate requires ID in BF17 Canon when ready to rebind dependent evidence; do not merely alter hashes.",
+    "Refresh only BF17 affected D/P/source/context/image bindings after semantic decision and image inspection; keep human approval separate."
+  ],
+  "jurisdictions": [
+    {
+      "jurisdiction": "DE-BB",
+      "currentGkTargetViews": [
+        "de-bb-gk.view.json",
+        "de-bb-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_MATHEMATIK_SEKII_GOST_2022.source-extraction.json",
+        "sha256": "2018a2422d61d329d3cb1f7cb09ec120560de1b8ce559ecd512811bec5bc6c68"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/BB/upper-secondary/Teil_C_RLP_GOST_2022_Mathematik.pdf",
+          "role": "binding-core",
+          "official": true,
+          "officialUrl": "https://bildungsserver.berlin-brandenburg.de/rlp-online/c-faecher/mathematik",
+          "sha256": "3c8c0df6901b6a6e7a1dff4f2d563696c32c43b19c1d0bcf401a0dc4fd224d79"
+        }
+      ],
+      "sourceItems": [
+        {
+          "id": "bb-math-sekii-rlp-gost-q1-05-55cba690",
+          "courseLevel": "GK/LK",
+          "sourceRef": "RLP Brandenburg GOST Mathematik 2022, Q1, S. 23.",
+          "sourceSpan": "Funktionen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen",
+          "sourceText": "Funktionen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen"
+        },
+        {
+          "id": "bb-math-sekii-rlp-gost-q1-12-728af4b3",
+          "courseLevel": "LK",
+          "sourceRef": "RLP Brandenburg GOST Mathematik 2022, Q1, S. 23.",
+          "sourceSpan": "Funktionen weiterer Funktionsklassen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen",
+          "sourceText": "Funktionen weiterer Funktionsklassen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen"
+        }
+      ],
+      "supportForCurrentBf17": "insufficient_as_written",
+      "finding": "Q1 GK/LK uses functions for quantifiable relationships; the expressly additional use of further function classes is LK-only (primary PDF printed p. 25). The current extended-class wording cannot be sourced as a GK requirement.",
+      "minimumSafeAction": "Make BF17 prerequisiteOnly in BB GK views only, unless a separately reviewed narrower GK canonical goal is authored; retain the LK target. Do not borrow the LK bullet as GK evidence."
+    },
+    {
+      "jurisdiction": "DE-BE",
+      "currentGkTargetViews": [
+        "de-be-gk.view.json",
+        "de-be-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_MATHEMATIK_SEKII_GO_2014.source-extraction.json",
+        "sha256": "09a90dd3121b15ff84060853d58abcc7324862d17fa1d8b4b987d807864c792b"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/BE/upper-secondary/rahmenlehrplan-mathematik_go-teil-c.pdf",
+          "role": "binding-core",
+          "official": true,
+          "officialUrl": "https://www.berlin.de/sen/bildung/unterricht/faecher-rahmenlehrplaene/rahmenlehrplaene/rahmenlehrplan-mathematik_go-teil-c.pdf",
+          "sha256": "17063893d874ea15073925d1c7f1e71e3926b849190b72b451eae097edb7065f"
+        }
+      ],
+      "sourceItems": [
+        {
+          "id": "be-math-sekii-rlp-gost-q1-05-55cba690",
+          "courseLevel": "GK/LK",
+          "sourceRef": "RLP Berlin GOST Mathematik 2022, Q1, S. 24-28.",
+          "sourceSpan": "Funktionen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen",
+          "sourceText": "Funktionen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen"
+        },
+        {
+          "id": "be-math-sekii-rlp-gost-q1-12-728af4b3",
+          "courseLevel": "LK",
+          "sourceRef": "RLP Berlin GOST Mathematik 2022, Q1, S. 24-28.",
+          "sourceSpan": "Funktionen weiterer Funktionsklassen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen",
+          "sourceText": "Funktionen weiterer Funktionsklassen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen"
+        },
+        {
+          "id": "be-math-sekii-go-3-2-2-l4-31-e9aa93d233",
+          "courseLevel": "LK",
+          "sourceRef": "Berlin Rahmenlehrplan Mathematik GO, Teil C, 3.2.2 Funktionaler Zusammenhang [L4], S. 26-27.",
+          "sourceSpan": "Wurzelfunktionen, gebrochenrationale Funktionen und Funktionen wie ln, sin, cos zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen",
+          "sourceText": "Wurzelfunktionen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhaenge nutzen"
+        }
+      ],
+      "supportForCurrentBf17": "insufficient_as_written",
+      "finding": "The GK/LK base says use functions; the additional root, rational, logarithmic and trigonometric function classes appear under \"Zusätzlich: Leistungskursfach\" in the primary PDF (printed p. 20).",
+      "minimumSafeAction": "Make BF17 prerequisiteOnly in BE GK views only, unless a distinct narrower GK goal is reviewed; retain the LK target."
+    },
+    {
+      "jurisdiction": "DE-BW",
+      "currentGkTargetViews": [
+        "de-bw-gk.view.json",
+        "de-bw-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+        "sha256": "593973654aafc17e38370d2a9fcf537c80130e8a70fb011b11676e12b4ece2b4"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.pdf",
+          "role": "binding-core",
+          "official": true,
+          "officialUrl": "https://www.bildungsplaene-bw.de/site/bildungsplan-rebrush2024/get/documents/lsbw/export-pdf/depot-pdf/ALLG/BP2016BW_ALLG_GYM_M.pdf",
+          "sha256": "b085465143648b3f44c894f8eb0a5ee5d1928cbb1c4c60b3b249559709d26014"
+        }
+      ],
+      "sourceItems": [
+        {
+          "id": "bw-math-sekii-bp2016-2-3-07-063e3e2a",
+          "courseLevel": null,
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.3, Kompetenz 7, S. 14.",
+          "sourceSpan": "zu einer Situation passende mathematische Modelle (zum Beispiel arithmetische Operationen, geometrische Modelle, Terme und Gleichungen, stochastische Modelle) auswählen oder konstruieren",
+          "sourceText": "zu einer Situation passende mathematische Modelle (zum Beispiel arithmetische Operationen, geometrische Modelle, Terme und Gleichungen, stochastische Modelle) auswählen oder konstruieren"
+        },
+        {
+          "id": "bw-math-sekii-bp2016-3-5-4-07",
+          "courseLevel": "GK",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.5.4, Kompetenz 7, S. 48.",
+          "sourceSpan": "einen Funktionsterm ermitteln, falls dieser durch die Eigenschaften eines Graphen eindeutig festgelegt ist",
+          "sourceText": "einen Funktionsterm ermitteln, falls dieser durch die Eigenschaften eines Graphen eindeutig festgelegt ist"
+        },
+        {
+          "id": "bw-math-sekii-bp2016-3-4-1-04",
+          "courseLevel": "LK",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.1, Kompetenz 4, S. 39.",
+          "sourceSpan": "gebrochenrationale Funktionen durch Verbindung der Ableitungsregeln in einfachen Fällen ableiten",
+          "sourceText": "gebrochenrationale Funktionen durch Verbindung der Ableitungsregeln in einfachen Fällen ableiten"
+        }
+      ],
+      "supportForCurrentBf17": "partial",
+      "finding": "Shared modeling process permits choosing a suitable mathematical model; the basis course has function-term reconstruction from graph conditions. The checked extraction does not explicitly require choosing an extended function family and interpreting its model parameters in GK; an example of rational differentiation is in the advanced course.",
+      "minimumSafeAction": "Check a concrete basis-course family and parameter passage in the primary PDF before retaining GK BF17. If none, make BF17 prerequisiteOnly in BW GK and cover the supported modeling process by existing narrower goals."
+    },
+    {
+      "jurisdiction": "DE-HB",
+      "currentGkTargetViews": [
+        "de-hb-gk.view.json",
+        "de-hb-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+        "sha256": "edf90817fe8e9368a74a8af9258ec073b3b46b84652b39f63bfa833fac65d96e"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/HB/GyO_Mathematik_2022.pdf",
+          "role": "binding-core",
+          "official": true,
+          "officialUrl": "https://www.lis.bremen.de/sixcms/media.php/13/GyO_Mathematik_2022.pdf",
+          "sha256": "758fe3dff58f8b99e51b0806b17ee2eea2a0a2882d20df5fff6fff1bbad17cee"
+        }
+      ],
+      "sourceItems": [
+        {
+          "id": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-7-001-7251581b20",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 20",
+          "sourceSpan": "S. 20, BM 3.7",
+          "sourceText": "erkennen in Anwendungssituationen funktionale Zusammenhänge als Zuordnungen zwischen Zahlen bzw. Größen in Tabellen, Graphen, Diagrammen und Sachtexten, beschreiben diese verbal, erläutern und beurteilen sie."
+        },
+        {
+          "id": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-002-4753ee1746",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 21",
+          "sourceSpan": "S. 21, BM 3.10",
+          "sourceText": "die Wurzelfunktion mit dem Funktionsterm x,"
+        },
+        {
+          "id": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-003-6bc797f183",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 21",
+          "sourceSpan": "S. 21, BM 3.10",
+          "sourceText": "die gebrochenrationale Funktion mit dem Term."
+        },
+        {
+          "id": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-k3-004-16a2af9cb6",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 11",
+          "sourceSpan": "S. 11, K3 Mathematisch modellieren",
+          "sourceText": "mehrschrittige Modellierungen mit wenigen und klar formulierten Einschränkungen vornehmen"
+        },
+        {
+          "id": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-k3-005-bfe2128aee",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 11",
+          "sourceSpan": "S. 11, K3 Mathematisch modellieren",
+          "sourceText": "Ergebnisse einer solchen Modellierung interpretieren"
+        },
+        {
+          "id": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-8-001-aec1175c07",
+          "courseLevel": "LK",
+          "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 27",
+          "sourceSpan": "S. 27, A 3.8",
+          "sourceText": "untersuchen begrenzte Wachstums- und Zerfallsprozesse [LK: und logistische Wachstumsprozesse] in Anwendungssituationen. [LK: kennen Differentialgleichungen zur Untersuchung von exponentiellem, beschränktem und logistischem Wachstum: 28 theoretischen Fähigkeiten zur Problemlösung, erfassen komplexe stochastische Prozesse und verteilungen. Die Lernenden führen mit den Mitteln der Stochastik Berechnungen aus und int Sie erweitern ihr Allgemeinwissen um komplexe stochastische Strategien und vertiefen so ih Kompetenzen sollen in ausgewählten Beispielen in Anwendungskontexten wie Glücksspielen (Lo Roulette), Informatik (Verschlüsselung und andere Algorithmen), Medizin (Ausbreitung anste menten), Biologie (Aussterbe- und Wachstumsprozesse), Wirtschaft (Fehler bei Produktionspr ziologie (Auswertung von Umfragen) angewendet und vertieft werden. Für Leistungskurse enthält das Modul S 2 (Stochastik 2: Die Binomialverteilung als speziel Kompetenzen S 2.4 SP (Schätzung von Parametern) und S 2.5 HY (Hypothesentests). Es handelt dungsstandards – um Alternativen, von denen mit Blick auf die Themenschwerpunkte der Abitu Grundlagen der Statistik und der Wahrscheinlichkeitsrechnung"
+        }
+      ],
+      "supportForCurrentBf17": "bounded_combined",
+      "finding": "Shared process and BM3.7/3.10 cover contextual functions, simple root/rational classes and interpretation. A3.8 puts logistic growth expressly in [LK] (printed p. 27); its extraction courseLevel=LK is a split-content artifact, not evidence that the whole A3.8 is LK.",
+      "minimumSafeAction": "If retaining GK BF17, restrict its source binding and P cases to covered simple classes; the common primary image must not imply logistic is a GK target. Verify contextual parameter interpretation rather than treating generic result interpretation as identical."
+    },
+    {
+      "jurisdiction": "DE-HH",
+      "currentGkTargetViews": [
+        "de-hh-gk.view.json",
+        "de-hh-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+        "sha256": "6a6908eaada2b03f43d031a19abef607bc5a8d95d55048a840fbb88b3b6f73af"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/HH/mathematik-gyo-2022-data.pdf",
+          "role": "binding-core",
+          "official": true,
+          "officialUrl": "https://www.hamburg.de/resource/blob/123074/23276415bdfb32ba8bb652f7c1998a4c/mathematik-gyo-2022-data.pdf",
+          "sha256": "74c085e1320ec6dad5ca187ea7647e7b6eecbb0f25a495927f78d9e906252be7"
+        }
+      ],
+      "sourceItems": [
+        {
+          "id": "hh-math-sekii-2022-hh-sekii-k4-04-e6fbcfbdf0",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Bildungsplan Studienstufe Mathematik, Hamburg 2022, S. 18",
+          "sourceSpan": "S. 18, HH-SEKII-K4",
+          "sourceText": "wählen ein geeignetes mathematisches Modell aus."
+        },
+        {
+          "id": "hh-math-sekii-2022-hh-sekii-k4-06-1c6962e041",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Bildungsplan Studienstufe Mathematik, Hamburg 2022, S. 18",
+          "sourceSpan": "S. 18, HH-SEKII-K4",
+          "sourceText": "interpretieren Ergebnisse einer Modellierung."
+        },
+        {
+          "id": "hh-math-sekii-2022-hh-sekii-m1-1-03-6005fb0f1d",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Bildungsplan Studienstufe Mathematik, Hamburg 2022, S. 26",
+          "sourceSpan": "S. 26, Modul 1.1",
+          "sourceText": "Erstellung, Interpretation und Beurteilung von Modellen"
+        },
+        {
+          "id": "hh-math-sekii-2022-hh-sekii-m1-1-06-b924a9dc7c",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Bildungsplan Studienstufe Mathematik, Hamburg 2022, S. 26",
+          "sourceSpan": "S. 26, Modul 1.1",
+          "sourceText": "Erkennung von Punktsymmetrie zum Ursprung am Funktionsterm einfacher gebrochen-rationaler Funktionen"
+        },
+        {
+          "id": "hh-math-sekii-2022-hh-sekii-m4-01-49b1efa03d",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Bildungsplan Studienstufe Mathematik, Hamburg 2022, S. 33",
+          "sourceSpan": "S. 33, Modul 4",
+          "sourceText": "Erstellung und Modifizierung mathematischer Modelle zu Wachs-"
+        },
+        {
+          "id": "hh-math-sekii-2022-hh-sekii-m4-06-4feffbe970",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Bildungsplan Studienstufe Mathematik, Hamburg 2022, S. 33",
+          "sourceSpan": "S. 33, Modul 4",
+          "sourceText": "Beschreibung und Untersuchung von e-Funktionen sowie deren Verkettungen und Verknüpfungen mit den Funktionen aus Modul 1.1 auch in Sachsituationen"
+        }
+      ],
+      "supportForCurrentBf17": "bounded_combined",
+      "finding": "Shared K4 modeling and modules cover model choice and interpretation, simple rational functions, and contextual exponential-function combinations. This supports bounded GK class choice, but the literal logistic model is not named in the checked binding PDF.",
+      "minimumSafeAction": "Retain GK only with a source-bound class set and suitable P examples. Replace or scope the current logistic-only primary image before a general GK visualization claim."
+    },
+    {
+      "jurisdiction": "DE-MV",
+      "currentGkTargetViews": [
+        "de-mv-gk.view.json",
+        "de-mv-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_MATHEMATIK_SEKII_RAHMENPLAN_2019.source-extraction.json",
+        "sha256": "9132d7f40a76dd736e7cfe58b488312a1ac5408629d220c6dcbcd3f8e43ad7e7"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/MV/Mathematik_Gymnasium_11_12_2019.pdf",
+          "role": "binding-upper-secondary-11-12",
+          "official": true,
+          "officialUrl": "https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_MA_SEK2.pdf",
+          "sha256": "b634920997200114dce8e222ac3a6d7995d89353c247794a57b68ae8d34e486d"
+        }
+      ],
+      "sourceItems": [
+        {
+          "id": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-k3-001-8784315acd",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Rahmenplan Mathematik Qualifikationsphase Jahrgangsstufen 11/12, Mecklenburg-Vorpommern 2019, S. 15",
+          "sourceSpan": "S. 15, K3 Mathematisch modellieren",
+          "sourceText": "K3 Mathematisch modellieren: Hier geht es um den Wechsel zwischen Realsituationen und mathematischen Begriffen, Resultaten oder Methoden. Hierzu gehört sowohl das Konstruieren passender mathematischer Modelle als auch das Verstehen oder Bewerten vorgegebener Modelle. Typische Teilschritte des Modellierens sind das Strukturieren und Vereinfachen gegebener Realsituationen, das Übersetzen realer Gegebenheiten in mathematische Modelle, das Interpretieren mathematischer Ergebnisse in Bezug auf Realsituationen und das Überprüfen von Ergebnissen im Hinblick auf Stimmigkeit und Angemessenheit bezogen auf die Realsituation. Das Spektrum reicht von Standardmodellen, etwa bei linearen Zusammenhängen, bis zu komplexen Modellierungen."
+        },
+        {
+          "id": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-k3-006-73d45ddbea",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Rahmenplan Mathematik Qualifikationsphase Jahrgangsstufen 11/12, Mecklenburg-Vorpommern 2019, S. 15",
+          "sourceSpan": "S. 15, K3 Mathematisch modellieren",
+          "sourceText": "Ergebnisse einer solchen Modellierung interpretieren"
+        },
+        {
+          "id": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-anwendungen-der-differentialrechnung-004-e14ad938ba",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Rahmenplan Mathematik Qualifikationsphase Jahrgangsstufen 11/12, Mecklenburg-Vorpommern 2019, S. 23",
+          "sourceSpan": "S. 23, Anwendungen der Differentialrechnung",
+          "sourceText": "Regression"
+        },
+        {
+          "id": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-anwendungen-der-differentialrechnung-005-f272aa6e65",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Rahmenplan Mathematik Qualifikationsphase Jahrgangsstufen 11/12, Mecklenburg-Vorpommern 2019, S. 23",
+          "sourceSpan": "S. 23, Anwendungen der Differentialrechnung",
+          "sourceText": "Prozessbeispiel K1: Beurteilen der Brauchbarkeit einer Regressionsfunktion"
+        }
+      ],
+      "supportForCurrentBf17": "partial",
+      "finding": "Shared K3 describes model construction and interpretation; regression and judging a regression function are present. The checked passages do not yet establish choosing an extended function class plus parameter meaning in GK.",
+      "minimumSafeAction": "Perform a focused primary-PDF check for GK function-family selection and contextual parameters. If absent, do not retain BF17 as a GK target on generic K3 alone."
+    },
+    {
+      "jurisdiction": "DE-NI",
+      "currentGkTargetViews": [
+        "de-ni-gk.view.json",
+        "de-ni-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_MATHEMATIK_SEKII_KERNCURRICULUM_2019.source-extraction.json",
+        "sha256": "109a07ac3948937e26214da984f52406b1096a9df232cfb199ea72d1c5daa4f3"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/ma_go_kc_druck_2019.pdf",
+          "role": "binding-upper-secondary-gymnasium-2019",
+          "official": true,
+          "officialUrl": "https://cuvo.nibis.de/index.php?p=download&upload=208",
+          "sha256": "f550398fe6871e9ea8a52087fce19286b8d43997d82242e3fb87741233729481"
+        }
+      ],
+      "sourceItems": [
+        {
+          "id": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-e-lernbereich-kern-elementare-funktionenlehre-003-20d8ec6410",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 38",
+          "sourceSpan": "S. 38, Einführungsphase Lernbereich-Kern: Elementare Funktionenlehre",
+          "sourceText": "Wurzelfunktionen als spezielle Potenzfunktionen darstellen"
+        },
+        {
+          "id": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-e-lernbereich-kern-elementare-funktionenlehre-006-f044f4a6fd",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 38",
+          "sourceSpan": "S. 38, Einführungsphase Lernbereich-Kern: Elementare Funktionenlehre",
+          "sourceText": "funktionale Zusammenhänge in Anwendungssituationen unter Verwendung von Eigenschaften bestimmter Funktionen identifizieren"
+        },
+        {
+          "id": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-process-k3-002-b8bcac375e",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 18",
+          "sourceSpan": "S. 18, Qualifikationsphase Prozesskompetenz K3 Mathematisch modellieren",
+          "sourceText": "beschreiben Realsituationen durch mathematische Modelle wie z. B. durch Funktionen, Zufallsversuche, Wahrscheinlichkeitsverteilungen, Matrizen (Berufliches Gymnasium Gesundheit und Soziales, Berufliches Gymnasium Wirtschaft), Koordinaten und Vektoren."
+        },
+        {
+          "id": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-lernbereich-kern-kurvenanpassung-mit-ganzrationalen-funktionen-ga-001-4d10f20931",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 42",
+          "sourceSpan": "S. 42, Qualifikationsphase Lernbereich-Kern: Kurvenanpassung mit ganzrationalen Funktionen gA",
+          "sourceText": "zu vorgegebenen Eigenschaften in Sachkontexten Bedingungen für den Term einer Funktion formulieren"
+        },
+        {
+          "id": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-lernbereich-kern-kurvenanpassung-mit-ganzrationalen-funktionen-ga-005-a58355e06c",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 42",
+          "sourceSpan": "S. 42, Qualifikationsphase Lernbereich-Kern: Kurvenanpassung mit ganzrationalen Funktionen gA",
+          "sourceText": "Variation eines Parameters zur Anpassung an eine vorgegebene Eigenschaft durchführen"
+        },
+        {
+          "id": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-lernbereich-kern-wachstumsmodelle-exponentialfunktion-ea-001-dd24cffabb",
+          "courseLevel": "LK",
+          "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 48",
+          "sourceSpan": "S. 48, Qualifikationsphase Lernbereich-Kern: Wachstumsmodelle - Exponentialfunktion eA",
+          "sourceText": "begrenztes und logistisches Wachstum beschreiben, auch als Verkettung und Verknüpfung von Funktionen"
+        }
+      ],
+      "supportForCurrentBf17": "partial",
+      "finding": "gA core covers context-based polynomial curve fitting and parameter variation; the e-function gA core includes parameter fitting and bounded growth. The binding PDF printed p. 57 lists logistic growth under \"Fakultative Erweiterungen\" for gA, while the eA core explicitly includes logistic growth (printed p. 64). A legacy NI BF17 mapping is marked partial, not a current exact source edge.",
+      "minimumSafeAction": "Do not use logistic as mandatory GK image/evidence. Retain GK only if the Canon competence is narrowed to the actual gA class-choice and parameter scope with fresh source binding; otherwise project BF17 prerequisiteOnly for NI GK."
+    },
+    {
+      "jurisdiction": "DE-NW",
+      "currentGkTargetViews": [
+        "de-nw-gk.view.json",
+        "de-nw-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
+        "sha256": "b44bae1fdd2b42f9eb0e5759199562901c33fa01ab20cb5578e81b4b581acb34"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_m_2023_06_07.pdf",
+          "role": "binding-upper-secondary-2023",
+          "official": true,
+          "officialUrl": "https://lehrplannavigator.nrw.de/system/files/media/document/file/gost_klp_m_2023_06_07.pdf",
+          "sha256": "211bad803486637f541447546073d0c7678f527b366da1ba63c5b9edc5d28533"
+        }
+      ],
+      "sourceItems": [
+        {
+          "id": "de-nw-mathematik-sekii-klp-2023-nw-sekii-e-funktionen-und-analysis-a-009-ed2000b121",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 22",
+          "sourceSpan": "S. 22, Einführungsphase Funktionen und Analysis (A)",
+          "sourceText": "wenden Transformationen bezüglich beider Achsen auf Funktionen (ganzrationale Funktionen, Sinusfunktion) an und deuten die zugehörigen Parameter"
+        },
+        {
+          "id": "de-nw-mathematik-sekii-klp-2023-nw-sekii-gk-funktionen-und-analysis-a-006-562b69ba6d",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 24",
+          "sourceSpan": "S. 24, Grundkurs Funktionen und Analysis (A)",
+          "sourceText": "nutzen die Eigenschaften von ganzrationalen Funktionen, Exponentialfunktionen, der Sinusfunktion, der Kosinusfunktion, der Potenzfunktionen x und 1x sowie der Transformationen dieser Funktionen zur Beantwortung von Fragestellungen"
+        },
+        {
+          "id": "de-nw-mathematik-sekii-klp-2023-nw-sekii-gk-funktionen-und-analysis-a-007-e52c2763c6",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 24",
+          "sourceSpan": "S. 24, Grundkurs Funktionen und Analysis (A)",
+          "sourceText": "bestimmen Parameter einer Funktion mithilfe von Bedingungen, die sich aus dem Kontext ergeben"
+        },
+        {
+          "id": "de-nw-mathematik-sekii-klp-2023-nw-sekii-gk-funktionen-und-analysis-a-012-cf491eddc2",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 24",
+          "sourceSpan": "S. 24, Grundkurs Funktionen und Analysis (A)",
+          "sourceText": "nutzen in einfachen Fällen zusammengesetzte Funktionen (Summe, Produkt, Verkettung) zur Beschreibung quantifizierbarer Zusammenhänge"
+        },
+        {
+          "id": "de-nw-mathematik-sekii-klp-2023-nw-sekii-gk-funktionen-und-analysis-a-014-dd18b0c077",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 25",
+          "sourceSpan": "S. 25, Grundkurs Funktionen und Analysis (A)",
+          "sourceText": "verwenden Exponentialfunktionen zur Beschreibung von begrenzten und unbegrenzten Wachstums- sowie Zerfallsvorgängen und beurteilen die Qualität der Modellierung"
+        }
+      ],
+      "supportForCurrentBf17": "strong_bounded",
+      "finding": "Einführungsphase explicitly interprets transformation parameters (printed p. 22); Grundkurs functions-and-analysis printed pp. 24–25 names families, context-derived parameters, simple compositions for quantified relations, and bounded/unbounded exponential growth with model-quality judgment. It supports a bounded GK reading of BF17. Logistic itself is not named in the checked binding PDF.",
+      "minimumSafeAction": "Retain GK with exact source links to the GK bullets, and assess actual parameter meaning in context. Use a GK-safe common image or restrict the logistic example to sourced LK scopes."
+    },
+    {
+      "jurisdiction": "DE-RP",
+      "currentGkTargetViews": [
+        "de-rp-gk-g8.view.json",
+        "de-rp-gk-g9.view.json",
+        "de-rp-gk.view.json",
+        "de-rp-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_MATHEMATIK_SEKII_MSS_2015.source-extraction.json",
+        "sha256": "670f1a958cbc4d4a2a5dd36aa9e5ae9f8fcd42920de3dbb693e73589a1217b00"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_II_MSS.pdf",
+          "role": "binding-upper-secondary-mss-2015",
+          "official": true,
+          "officialUrl": "https://bildung.rlp.de/lehrplaene/?tx_rlpbase_download%5Baction%5D=download&tx_rlpbase_download%5Bcontroller%5D=Download&tx_rlpbase_download%5Bitem%5D=56486&type=432522&cHash=9d657e3ab0dc693de509d67c39f2a5b7",
+          "sha256": "764a2f6160cda3dde2dc97914e2c0a361ef1461a0a5fced0b1c100e69762c3fb"
+        }
+      ],
+      "sourceItems": [
+        {
+          "id": "de-rp-mathematik-sekii-mss-2015-rp-sekii-standards-l4-001-be8c53437f",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Lehrplan Mathematik Grund- und Leistungsfach in der gymnasialen Oberstufe, Rheinland-Pfalz, Maerz 2015, S. 5",
+          "sourceSpan": "S. 5, MSS Bildungsstandard-Kompetenzen L4",
+          "sourceText": "die sich aus den Funktionen der Sekundarstufe I ergebenden Funktionsklassen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen"
+        },
+        {
+          "id": "de-rp-mathematik-sekii-mss-2015-rp-sekii-gf-exponentialfunktionen-005-115d9f0d2f",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Lehrplan Mathematik Grund- und Leistungsfach in der gymnasialen Oberstufe, Rheinland-Pfalz, Maerz 2015, S. 27",
+          "sourceSpan": "S. 27, Grundfach Exponentialfunktionen",
+          "sourceText": "Sachaufgaben zu Wachstums- und Zerfallsprozessen lösen (4.15e)"
+        }
+      ],
+      "supportForCurrentBf17": "partial",
+      "finding": "The Grundfach covers function classes inherited from Sek I and exponential growth/decay applications. The PDF printed p. 46 puts logistic processes in \"pädagogischer Freiraum\"; this is not compulsory Grundfach content.",
+      "minimumSafeAction": "Ground any retained GK target in its actual Grundfach families and contextual parameter passage; do not treat optional logistic modeling as required. If full BF17 wording is not supported, narrow or project prerequisiteOnly in RP GK."
+    },
+    {
+      "jurisdiction": "DE-SH",
+      "currentGkTargetViews": [
+        "de-sh-gk-g8.view.json",
+        "de-sh-gk-g9.view.json",
+        "de-sh-gk.view.json",
+        "de-sh-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+        "sha256": "71b9b16473d16ae6d526bfdc56a7c39b03a1ad0512f4dfd19a007213e583ac87"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+          "role": "binding-upper-secondary-mathematics",
+          "official": true,
+          "officialUrl": "https://fachportal.lernnetz.de/sh/faecher/mathematik/fachanforderungen.html?file=files/Fachanforderungen%20und%20Leitf%C3%A4den/Sekundarstufe/Fachanforderungen/Fachanforderungen%20Mathematik%20Sekundarstufe%20%282024%29%2C%20barrierearm.pdf&cid=16990",
+          "sha256": "17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28"
+        }
+      ],
+      "sourceItems": [
+        {
+          "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K003-448a55c834",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 66",
+          "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 4: Funktionaler Zusammenhang, Zeile 3513",
+          "sourceText": "nutzen Funktionen verschiedener Funktionsklassen zur Modellierung, Beschreibung und Untersuchung quantifizierbarer Zusammenhänge"
+        },
+        {
+          "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K007-8a4428a341",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 66",
+          "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 4: Funktionaler Zusammenhang, Zeile 3533",
+          "sourceText": "bestimmen Funktionen oder Parameter in Funktionstermen aus Bedingungen an die Funktion oder deren Ableitungen"
+        },
+        {
+          "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T032-3079a52918",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 66",
+          "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 4: Funktionaler Zusammenhang, Zeile 3512",
+          "sourceText": "Wurzelfunktionen"
+        }
+      ],
+      "supportForCurrentBf17": "strong_bounded",
+      "finding": "Shared L4 requires functions of different classes for modeling quantifiable relationships and determining functions/parameters from conditions; root functions are named. This is the clearest broad GK source among the checked states, but the binding PDF does not name logistic.",
+      "minimumSafeAction": "Retain GK with direct L4 source links, contextual-meaning P evidence and a GK-safe image; do not infer logistic specifically from the general class wording."
+    },
+    {
+      "jurisdiction": "DE-SL",
+      "currentGkTargetViews": [
+        "de-sl-gk.view.json",
+        "de-sl-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_MATHEMATIK_SEKII_GOS_2014_2019.source-extraction.json",
+        "sha256": "8cbf125e9c938a37a58773eeae051ee3be5037dead129e24ea218f71fbc5dc4d"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/SL/LP_Ma_EP_GOS_2014.pdf",
+          "role": "binding-upper-secondary-entry-phase",
+          "official": true,
+          "officialUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Mathematik/LP_Ma_EP_GOS_2014.pdf?__blob=publicationFile&v=3",
+          "sha256": "0b23cf2551733db966d86e5ec5e349b17df5d50ad31cc9fa4e0680d015e54770"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/SL/LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.pdf",
+          "role": "binding-upper-secondary-basic-course",
+          "official": true,
+          "officialUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Mathematik/LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.pdf?__blob=publicationFile&v=4",
+          "sha256": "ee77ed726ee6be38a66a1830f0f69fd672883a2fb558cd6ceed41894fd0a5086"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/SL/LP_Ma_LK_HP_2019.pdf",
+          "role": "binding-upper-secondary-advanced-course",
+          "official": true,
+          "officialUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Mathematik/LP_Ma_LK_HP_2019.pdf?__blob=publicationFile&v=3",
+          "sha256": "9a4c674eab01edda713a9aef60f38f2d24df3031a7361dabeb6b0f9946f66134"
+        }
+      ],
+      "sourceItems": [
+        {
+          "id": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t07-modellieren-b01-8a1820562c",
+          "courseLevel": "GK",
+          "sourceRef": "Lehrplan Mathematik Hauptphase G-Kurs der gymnasialen Oberstufe, Saarland, Juli 2019",
+          "sourceSpan": "Lehrplan Mathematik Hauptphase G-Kurs der gymnasialen Oberstufe, Saarland, Juli 2019, Modellieren, Kompetenzbuendel 1",
+          "sourceText": "übersetzen eine Realsituation in ein mathematisches Modell"
+        },
+        {
+          "id": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t07-modellieren-b02-bd146c6468",
+          "courseLevel": "GK",
+          "sourceRef": "Lehrplan Mathematik Hauptphase G-Kurs der gymnasialen Oberstufe, Saarland, Juli 2019",
+          "sourceSpan": "Lehrplan Mathematik Hauptphase G-Kurs der gymnasialen Oberstufe, Saarland, Juli 2019, Modellieren, Kompetenzbuendel 2",
+          "sourceText": "nutzen Grundfunktionen sowie einfache Verknüpfungen von Funktionen zur Beschreibung quantifizierbarer Zusammenhänge"
+        },
+        {
+          "id": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t07-modellieren-b03-5ed63ce439",
+          "courseLevel": "GK",
+          "sourceRef": "Lehrplan Mathematik Hauptphase G-Kurs der gymnasialen Oberstufe, Saarland, Juli 2019",
+          "sourceSpan": "Lehrplan Mathematik Hauptphase G-Kurs der gymnasialen Oberstufe, Saarland, Juli 2019, Modellieren, Kompetenzbuendel 3",
+          "sourceText": "begründen die Wahl der dem Modell zugrunde liegenden Funktion"
+        },
+        {
+          "id": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t07-modellieren-b05-378c8332a0",
+          "courseLevel": "GK",
+          "sourceRef": "Lehrplan Mathematik Hauptphase G-Kurs der gymnasialen Oberstufe, Saarland, Juli 2019",
+          "sourceSpan": "Lehrplan Mathematik Hauptphase G-Kurs der gymnasialen Oberstufe, Saarland, Juli 2019, Modellieren, Kompetenzbuendel 5",
+          "sourceText": "interpretieren und validieren die Ergebnisse einer Modellierung"
+        },
+        {
+          "id": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t09-pflichtbereich-b05-c4b8d77a9c",
+          "courseLevel": "GK",
+          "sourceRef": "Lehrplan Mathematik Hauptphase G-Kurs der gymnasialen Oberstufe, Saarland, Juli 2019",
+          "sourceSpan": "Lehrplan Mathematik Hauptphase G-Kurs der gymnasialen Oberstufe, Saarland, Juli 2019, Pflichtbereich, Kompetenzbuendel 5",
+          "sourceText": "leiten gebrochenrationale Funktionen unter Nutzung der Quotientenregel ab"
+        }
+      ],
+      "supportForCurrentBf17": "strong_bounded",
+      "finding": "Binding G-Kurs Thema 7 (printed pp. 37–38) explicitly uses previously taught classes, basic functions/combinations, justifies function choice and interprets/validates model results. It even says the function type should not always be prescribed. Explicit parameter meaning still needs a narrower passage. The G-Kurs PDF does not name logistic. Lernbereich 9 is a rotating Pflichtbereich: only selected topics are obligatory for a cohort, so its rational-functions topic cannot serve as a universal G-Kurs source without the cohort selection (printed p. 43).",
+      "minimumSafeAction": "Retain GK only on the universally binding Thema-7 choice/interpretation scope. Do not use T09 rational functions as universal P evidence because the mandatory T09 topic rotates by cohort; check the selected topic when a specific cohort is claimed. Use an appropriate common image or scope logistic to supported LK."
+    },
+    {
+      "jurisdiction": "DE-SN",
+      "currentGkTargetViews": [
+        "de-sn-gk.view.json",
+        "de-sn-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+        "sha256": "70f65c212b5e036b20d4942aab26d3ba0f515ac5ffc834620a1b6f788c6048ff"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-mathematik-sachsen-2019.pdf",
+          "role": "binding-upper-secondary-classes-11-12",
+          "official": true,
+          "officialUrl": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/121/galmOUYkLcTVJh8Sk6g9",
+          "sha256": "de48e13d404cfb4d155f056efdc1a6888857ccda58cc03cf81bcdabb2141f8ae"
+        }
+      ],
+      "sourceItems": [
+        {
+          "id": "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb01-differentialrechnung-r012-3d896ca3a9",
+          "courseLevel": "GK",
+          "sourceRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "sourceSpan": "Lehrplan Gymnasium Mathematik, Sachsen, 2019, Jahrgangsstufen 11/12 - Grundkurs, Lernbereich 1, Zeile 2243",
+          "sourceText": "ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten, f ( x )  e x, f ( x )  ln x f ( x )  sin x einfache Verkettungen und Verknüpfungen"
+        },
+        {
+          "id": "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb01-differentialrechnung-r021-78f3fa9488",
+          "courseLevel": "GK",
+          "sourceRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "sourceSpan": "Lehrplan Gymnasium Mathematik, Sachsen, 2019, Jahrgangsstufen 11/12 - Grundkurs, Lernbereich 1, Zeile 2273",
+          "sourceText": "Beherrschen des Bestimmens von Funktionsgleichungen mithilfe von Regression"
+        },
+        {
+          "id": "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb08-weitere-anwendungen-r008-d346a26d54",
+          "courseLevel": "GK",
+          "sourceRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "sourceSpan": "Lehrplan Gymnasium Mathematik, Sachsen, 2019, Jahrgangsstufen 11/12 - Grundkurs, Lernbereich 8, Zeile 2426",
+          "sourceText": "Verwenden von Parametern"
+        },
+        {
+          "id": "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb08-weitere-anwendungen-r009-fb14f95213",
+          "courseLevel": "GK",
+          "sourceRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "sourceSpan": "Lehrplan Gymnasium Mathematik, Sachsen, 2019, Jahrgangsstufen 11/12 - Grundkurs, Lernbereich 8, Zeile 2427",
+          "sourceText": "einfache Funktionsscharen"
+        }
+      ],
+      "supportForCurrentBf17": "partial",
+      "finding": "Grundkurs 11/12 has regression and simple parameterized function families in compulsory Lernbereich 8 (printed p. 35). This is not yet direct evidence of selecting an extended family and interpreting parameters in a real context. The source PDF logistic examples occur elsewhere, including a Leistungskurs Wahlbereich; they cannot be copied into GK.",
+      "minimumSafeAction": "Bind only a checked Grundkurs regression/parameter competence or narrow BF17; do not use the active logistic image as GK proof without a specific compulsory GK source."
+    },
+    {
+      "jurisdiction": "DE-ST",
+      "currentGkTargetViews": [
+        "de-st-gk.view.json",
+        "de-st-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_MATHEMATIK_SEKII_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+        "sha256": "045cf9f2becf5e49bf80c46069697aa69a141f1c8b4244d3f10e011e08e52fa0"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/ST/Mathematik_FLP_Gym_01_07_2019.pdf",
+          "role": "binding-upper-secondary-qualification-phase",
+          "official": true,
+          "officialUrl": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung/Mathematik_FLP_Gym_01_07_2019.pdf",
+          "sha256": "317e0b55339ca687bf5c0401f57cafdab4e911cb14e5d5bf65696eeeadc73622"
+        }
+      ],
+      "sourceItems": [
+        {
+          "id": "de-st-mathematik-sekii-fachlehrplan-gymnasium-2019-st-sekii-11-12-gk-differentialrechnung-k007-269ee17f51",
+          "courseLevel": "GK",
+          "sourceRef": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019",
+          "sourceSpan": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019, Qualifikationsphase grundlegendes Anforderungsniveau, Differentialrechnung, Zeile 2480",
+          "sourceText": "Gleichungen von ganzrationalen Funktionen aus ihren Eigenschaften ermitteln"
+        },
+        {
+          "id": "de-st-mathematik-sekii-fachlehrplan-gymnasium-2019-st-sekii-11-12-gk-differentialrechnung-k008-fa1e4b8e3b",
+          "courseLevel": "GK",
+          "sourceRef": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019",
+          "sourceSpan": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019, Qualifikationsphase grundlegendes Anforderungsniveau, Differentialrechnung, Zeile 2481",
+          "sourceText": "Extremwertaufgaben sowie weitere inner- und außermathematische Anwendungsaufgaben mithilfe von Funktionen und deren Eigenschaften lösen"
+        }
+      ],
+      "supportForCurrentBf17": "insufficient_as_written",
+      "finding": "Grundkurs reconstructs polynomial equations from properties and solves application/extremum tasks with functions. The checked qualification-phase passages do not support an additional extended-class choice and contextual parameter interpretation as written.",
+      "minimumSafeAction": "Project BF17 prerequisiteOnly in ST GK unless a direct current primary source passage is found; keep narrower polynomial/application goals as targets."
+    },
+    {
+      "jurisdiction": "DE-TH",
+      "currentGkTargetViews": [
+        "de-th-gk.view.json",
+        "de-th-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+        "sha256": "ec548aaeb6743fc5fc25d2e328dd2faa4c232295ed5fa24beedadea4e3f21fbd"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/TH/lp_gy_mathematik_10.04.2019_TSP.pdf",
+          "role": "binding-transition-for-grade-7-10-and-11S",
+          "official": true,
+          "officialUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/19980?dateiname=lp_gy_mathematik_10.04.2019_TSP.pdf",
+          "sha256": "ee1fca0285f1c9d72edd990073dc4909b0ab5b127ddef59fc46d2c54932179b2"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/TH/LP_GY_Mathematik_Entwurfsfassung2025.pdf",
+          "role": "binding-for-grade-5-6-and-11-12-from-2025-26",
+          "official": true,
+          "officialUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/65648?dateiname=LP_GY_Mathematik_Entwurfsfassung2025.pdf",
+          "sha256": "992041c34dfd618bdb2b7621ee59fb577f036121e5ea2a55e2086c99e0a4817a"
+        }
+      ],
+      "sourceItems": [
+        {
+          "id": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-2-funktionen-015-3b30f219ce",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 35",
+          "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, Einfuehrungsphase 11S: Funktionen, Zeile 1493",
+          "sourceText": "aus Darstellungen von Funktionen auf einen möglichen Funktionstyp schließen und eine Funktionsgleichung angeben (in einfachen Fällen auch ohne Hilfsmittel),"
+        },
+        {
+          "id": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-2-funktionen-019-fd0ab3cdd4",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 35",
+          "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, Einfuehrungsphase 11S: Funktionen, Zeile 1503",
+          "sourceText": "Funktionen zum Lösen inner- und außermathematischer Probleme anwenden, dabei auch Zusammenhänge zwischen zwei Datenreihen durch eine geeignete Funktion annähernd mathematisch beschreiben."
+        },
+        {
+          "id": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2025-4-1-analysis-013-f0341e8827",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2025, S. 22",
+          "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2025, Qualifikationsphase: Analysis, Zeile 911",
+          "sourceText": "ganzrationale Funktionen und Exponentialfunktionen zur Basis e: Arten von Extrema untersuchen und den Einfluss eines reellen Parame- und eine Schar von Funktionen mit reelters auf Eigenschaften dieser Funktionen len Parametern auf Eigenschaften unterermitteln und beschreiben, suchen,"
+        }
+      ],
+      "supportForCurrentBf17": "partial_transition_sensitive",
+      "finding": "The 2018/2019 transitional 11S text supports selecting a function type from representations and approximating data with a suitable function; the 2025 qualification text covers parameter effects for polynomial/e-functions. The source documents have distinct cohort/grade binding roles and must not be merged into one uniform GK claim. No literal logistic in either checked PDF.",
+      "minimumSafeAction": "Resolve the cohort/grade transition first, then bind only the applicable source passages; absent a valid unified GK route, make BF17 prerequisiteOnly in affected TH GK views."
+    }
+  ],
+  "legacyMappingReferences": [
+    {
+      "jurisdiction": "DE-HE",
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_to_canonical_math.json",
+      "sha256": "f561cd0aa1c4a453d2d5d9c47a352f3c224e856a52df335dcab2201a9de8114b",
+      "legacyMatchType": "exact",
+      "status": "not-current-GK-source-proof"
+    },
+    {
+      "jurisdiction": "DE-NI",
+      "path": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_math_upper_secondary_to_canonical_math.json",
+      "sha256": "78e078c6f2f60891c449473de4950d5ccc17648ae972a11a2fa9ed35dffda879",
+      "legacyMatchType": "partial",
+      "status": "not-current-GK-source-proof"
+    }
+  ]
+}

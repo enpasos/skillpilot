@@ -155,6 +155,88 @@ const manifest = withFingerprint(manifestWithoutFingerprint)
 const valid = await validateGoalDescriptionRolloutSynthesisDecisionManifest({ manifest, expected })
 assert.deepEqual(valid.errors, [])
 
+const partialExpected = structuredClone(expected)
+const blockedGoal = structuredClone(partialExpected.goals[0])
+blockedGoal.goalId = 'goal-synthesis-blocked-02'
+blockedGoal.goalFingerprint = digest('6')
+blockedGoal.pageFingerprint = digest('7')
+blockedGoal.firstSource.binding.recordId = 'record-a-blocked'
+blockedGoal.firstSource.binding.recordDigest = digest('8')
+blockedGoal.firstSource.record!.goalId = blockedGoal.goalId
+blockedGoal.firstSource.record!.goalFingerprint = blockedGoal.goalFingerprint
+blockedGoal.firstSource.record!.pageFingerprint = blockedGoal.pageFingerprint
+blockedGoal.secondSource.binding.recordId = 'record-b-blocked'
+blockedGoal.secondSource.binding.recordDigest = digest('9')
+blockedGoal.secondSource.decision = 'block'
+blockedGoal.secondSource.record!.goalId = blockedGoal.goalId
+blockedGoal.secondSource.record!.goalFingerprint = blockedGoal.goalFingerprint
+blockedGoal.secondSource.record!.pageFingerprint = blockedGoal.pageFingerprint
+blockedGoal.secondSource.record!.decision = 'block'
+partialExpected.goals.push(blockedGoal)
+const partialPayload = structuredClone(manifestWithoutFingerprint)
+partialPayload.deferredGoals = [{
+  goalId: blockedGoal.goalId,
+  firstDecision: 'keep',
+  secondDecision: 'block',
+  rationaleDe: 'Die zweite unabhängige Runde blockiert die aktuelle Geltung; das Ziel bleibt ausdrücklich offen.',
+  rationaleEn: 'The second independent round blocks current applicability; the goal remains explicitly open.',
+}]
+const partialManifest = withFingerprint(partialPayload)
+assert.deepEqual(
+  (await validateGoalDescriptionRolloutSynthesisDecisionManifest({ manifest: partialManifest, expected: partialExpected })).errors,
+  [],
+  'A bound blocking review can remain deferred without invalidating an independently reviewed KEEP/KEEP goal.',
+)
+const revisionExpected = structuredClone(partialExpected)
+const revisionGoal = revisionExpected.goals[1]
+revisionGoal.secondSource.decision = 'revise'
+revisionGoal.secondSource.record!.decision = 'revise'
+revisionGoal.secondSource.record!.proposedDescriptionDe = 'Die lernende Person kann die fachliche Grenze der Darstellung erklären.'
+revisionGoal.secondSource.record!.proposedDescriptionEn = 'The learner can explain the mathematical boundary of the representation.'
+const revisionPayload = structuredClone(partialPayload)
+revisionPayload.deferredGoals![0].secondDecision = 'revise'
+revisionPayload.deferredGoals![0].rationaleDe = 'Die vorgeschlagene fachliche Präzisierung bleibt offen und ist kein strenger Abschluss.'
+revisionPayload.deferredGoals![0].rationaleEn = 'The proposed mathematical clarification remains open and is not a strict completion.'
+assert.deepEqual(
+  (await validateGoalDescriptionRolloutSynthesisDecisionManifest({
+    manifest: withFingerprint(revisionPayload),
+    expected: revisionExpected,
+  })).errors,
+  [],
+  'A current REVISE review can be explicitly deferred without converting the proposal into a KEEP decision.',
+)
+const noOpenDecisionExpected = structuredClone(revisionExpected)
+noOpenDecisionExpected.goals[1].secondSource.decision = 'keep'
+noOpenDecisionExpected.goals[1].secondSource.record!.decision = 'keep'
+const noOpenDecisionPayload = structuredClone(revisionPayload)
+noOpenDecisionPayload.deferredGoals![0].secondDecision = 'keep'
+assert.match(
+  (await validateGoalDescriptionRolloutSynthesisDecisionManifest({
+    manifest: withFingerprint(noOpenDecisionPayload),
+    expected: noOpenDecisionExpected,
+  })).errors.join('\n'),
+  /partial synthesis may defer only a goal with a current block or unresolved revise review/u,
+  'Two current KEEP decisions cannot be hidden as a deferred goal.',
+)
+const forgedDeferral = structuredClone(partialPayload)
+forgedDeferral.deferredGoals![0].secondDecision = 'keep'
+assert.match(
+  (await validateGoalDescriptionRolloutSynthesisDecisionManifest({
+    manifest: withFingerprint(forgedDeferral),
+    expected: partialExpected,
+  })).errors.join('\n'),
+  /deferred source decisions do not match/u,
+)
+const concealedBlock = structuredClone(partialPayload)
+delete concealedBlock.deferredGoals
+assert.match(
+  (await validateGoalDescriptionRolloutSynthesisDecisionManifest({
+    manifest: withFingerprint(concealedBlock),
+    expected: partialExpected,
+  })).errors.join('\n'),
+  /partition configured goals/u,
+)
+
 const summaryGoal = {
   goalId,
   firstRecordId: firstSource.binding.recordId,

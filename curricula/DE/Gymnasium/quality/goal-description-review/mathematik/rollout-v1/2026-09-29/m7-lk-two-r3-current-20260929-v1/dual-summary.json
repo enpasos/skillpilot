@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:e690ebb9991ce5cbe05113838a62f0e3eeea5715453d0a553c6c829a46303f47",
+  "reviewInputFingerprint": "sha256:ee8f3f81d51ff58faa22261df44e795a6528203002683ab1e55d9b05ac519e52",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-lk-two-r3-current-20260929-v1-a",
+      "roundId": "mathematik-m7-lk-two-r3-current-20260929-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-lk-two-r3-current-20260929-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-lk-two-r3-current-20260929-v1-first-pass-a-codex-root-independent-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex session (exact deployment identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-lk-two-r3-current-20260929-v1-b",
+      "roundId": "mathematik-m7-lk-two-r3-current-20260929-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-lk-two-r3-current-20260929-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-lk-two-r3-current-20260929-v1-b-001"
+      ],
+      "providers": [
+        "OpenAI Codex agent runtime"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex agent runtime::GPT-6 family (runtime model ID not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "803d910d-96d1-5118-b9ca-29e93d0da76d",
+      "firstRecordId": "mathematik-m7-lk-two-r3-current-20260929-v1-first-pass-a-codex-root-independent-a.803d910d",
+      "secondRecordId": "mathematik-m7-lk-two-r3-current-20260929-v1-b-001-record-001",
+      "firstRunId": "mathematik-m7-lk-two-r3-current-20260929-v1-first-pass-a-codex-root-independent-a",
+      "secondRunId": "mathematik-m7-lk-two-r3-current-20260929-v1-b-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+      "firstRecordId": "mathematik-m7-lk-two-r3-current-20260929-v1-first-pass-a-codex-root-independent-a.d3c42193",
+      "secondRecordId": "mathematik-m7-lk-two-r3-current-20260929-v1-b-001-record-002",
+      "firstRunId": "mathematik-m7-lk-two-r3-current-20260929-v1-first-pass-a-codex-root-independent-a",
+      "secondRunId": "mathematik-m7-lk-two-r3-current-20260929-v1-b-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

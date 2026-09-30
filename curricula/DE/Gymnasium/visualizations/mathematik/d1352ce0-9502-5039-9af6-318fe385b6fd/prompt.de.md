@@ -8,27 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `d1352ce0-9502-5039-9af6-318fe385b6fd.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/d1352ce0-9502-5039-9af6-318fe385b6fd/d1352ce0-9502-5039-9af6-318fe385b6fd.jpg`
+- Quellbild: `d1352ce0-9502-5039-9af6-318fe385b6fd.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/d1352ce0-9502-5039-9af6-318fe385b6fd/d1352ce0-9502-5039-9af6-318fe385b6fd.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Kollinearität von Vektoren prüfen
-Beschreibung: Die lernende Person kann in einfachen kollinearen und nicht kollinearen Fällen prüfen, ob Vektoren kollinear sind, und die Prüfung geometrisch oder rechnerisch begründen.
+Use case: precise educational bitmap edit. Edit target: supplied current PNG infographic about vector collinearity. Independent visual review found one remaining mathematical label error in the right RECHNERISCHE PRÜFUNG panel, in the NEIN example only. Replace the peach outlined box text 'Lösung: k = 3 und k = 0.5' with exactly 'Teilgleichungen: k = 3 bzw. k = 0,5' (German comma decimal); make it fit legibly inside the existing box, widening that box only if necessary. This explicitly says the two component equations demand incompatible scalars; there is no solution of the vector equation. Preserve all other math, examples, arrows, drawing, colors, title, and both corrected left-panel captions. The bottom NEIN message 'Kein gemeinsames k: Nicht Kollinear' remains readable. Return PNG, no redesign.
 ```
 
 ## Review-Notiz

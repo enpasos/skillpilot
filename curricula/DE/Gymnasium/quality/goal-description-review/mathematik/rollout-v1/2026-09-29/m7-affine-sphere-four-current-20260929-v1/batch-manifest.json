@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-affine-sphere-four-current-20260929-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-29/m7-affine-sphere-four-current-20260929-v1.config.json",
+  "configDigest": "sha256:79a4b1f816f2143b980ca42fdac9bbee91ffba5a41a9f9026f4b271595343921",
+  "goalIds": [
+    "1a63bf83-1dd5-4eb2-bd8e-f9cfa02f4c42",
+    "53d52b0c-1fd7-4a36-bc14-ba41e7dc6d5d",
+    "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+    "bb227e31-0b0b-544a-b5e0-548256a70dec"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 807,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:fec93ecac35122f1dc2daed4f4d71ce59cd86a24d49a9424bd2b271dbc4727b2"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:a434d60f33363a7ad71ae221b1cd9a3ee36d46f592ff94f9b3184e9a3bddd4f9",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:9729f71a36da75546f83136ade2b3c2abe9ef7fb64a35681f3deeb9d43ade42d",
+    "reviewInputFingerprint": "sha256:eaa271e911679140e3c0408e3ad095855ff6de968c6caff738770c51c93195a2",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-affine-sphere-four-current-20260929-v1-a",
+        "campaignDigest": "sha256:deb7f73d2fe57f661fb16ea58ca1e526d775370a327c1d103b6339da74786a13",
+        "roundId": "mathematik-m7-affine-sphere-four-current-20260929-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-affine-sphere-four-current-20260929-v1-independent-a",
+        "batchId": "mathematik-m7-affine-sphere-four-current-20260929-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:e1920b78192347f3e57d2e6b8bbe0bf382d593de902f0b8893362feabebc5586"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-affine-sphere-four-current-20260929-v1-b",
+        "campaignDigest": "sha256:f9eabd2744ef204f4021804afffc2f18e908c979422259e98cbdb1aac58e9e33",
+        "roundId": "mathematik-m7-affine-sphere-four-current-20260929-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-affine-sphere-four-current-20260929-v1-independent-b",
+        "batchId": "mathematik-m7-affine-sphere-four-current-20260929-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:b60449932e1de8ceb6c0863a95c5bb954ab2730c59ba1d17c864a4f6a8721a31"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-linear-fixed-points-r3-current-20260929-v1",
+  "reviewedAt": "2026-09-29T20:03:40.073295+00:00",
+  "reviewer": "GPT-6 Astra; independent current HE source and image inspection, authored and mathematically checked R3 evidence; AI candidate only",
+  "goals": [
+    {
+      "goalId": "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+      "reason": "HE KC Mathematik Q2.5, printed/physical page 44, places the determination of fixed points in the three-dimensional Euclidean space R3 under LK. The prior registered profile had only R2 cases and does not establish that spatial scope. This replacement uses a spatial reflection, a quarter-turn about a spatial axis, and a spatial dilation, with fixed-set dimensions two, one and zero. Each case sets up and fully solves all three equations and verifies the complete solution. The actual active PNG was independently opened: its planar reflection in y=x is correct illustrative support, not evidence of full R3 competence. The new tasks require independent spatial reasoning without copying that picture. AI candidate only; no human approval, learner-state decision or runtime change. Final binding review confirms the current bilingual Canon explicitly says three-dimensional space. The unchanged primary image was reopened and remains only a correct planar introduction; it does not replace the required fresh R3 performances. Source and runtime image bytes match.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "spatial-fixed-equation",
+            "essentialUnderstandingDe": "Ein räumlicher Punkt v=(x,y,z) bleibt bei einer linearen Abbildung mit einer 3×3-Matrix A genau dann fest, wenn A v=v gilt. Diese Gleichheit ist äquivalent zum homogenen System (A−I₃)v=0; es hat stets die Null-Lösung.",
+            "essentialUnderstandingEn": "A spatial point v=(x,y,z) remains fixed under a linear map with a 3×3 matrix A exactly when A v=v. This equality is equivalent to the homogeneous system (A−I₃)v=0, which always has the zero solution.",
+            "observablePerformanceDe": "Stellt aus der gegebenen räumlichen Abbildung alle drei Fixpunktgleichungen auf, begründet ihre Bedeutung als Gleichheit von Punkt und Bild und löst das homogene System mit einem gültigen Verfahren vollständig.",
+            "observablePerformanceEn": "Sets up all three fixed-point equations for the given spatial map, explains their meaning as equality of a point and its image, and completely solves the homogeneous system by a valid method."
+          },
+          {
+            "id": "complete-spatial-fixed-set",
+            "essentialUnderstandingDe": "Freie Variablen beschreiben räumliche Fixpunktmengen und sind kein fehlender Rechenschritt. Je nach Abbildung kann die Lösungsmenge nur der Ursprung, eine Gerade, eine Ebene oder der ganze Raum sein; alle diese Mengen enthalten den Ursprung.",
+            "essentialUnderstandingEn": "Free variables describe spatial fixed-point sets and are not unfinished calculation. Depending on the map, the solution set can be only the origin, a line, a plane, or the whole space; all these sets contain the origin.",
+            "observablePerformanceDe": "Gibt die vollständige Fixpunktmenge in Koordinaten- oder Parameterform an, deutet die freien Variablen geometrisch und überprüft die gesamte parametrisierte Lösung durch Einsetzen in die ursprüngliche Abbildung. Bei eindeutiger Lösung erklärt sie, warum nur der Ursprung bleibt.",
+            "observablePerformanceEn": "Gives the full fixed-point set in coordinate or parametric form, interprets free variables geometrically, and verifies the entire parametrized solution by substitution into the original map. For a unique solution, explains why only the origin remains."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "spatial-fixed-equation",
+            "complete-spatial-fixed-set"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "fixed-set-dimension",
+            "textDe": "Räumliche Spiegelung mit Fixebene, Achsendrehung mit Fixgerade und zentrische Streckung mit genau einem Fixpunkt verändern die Zahl freier Variablen.",
+            "textEn": "A spatial reflection with a fixed plane, an axial rotation with a fixed line, and a dilation with exactly one fixed point change the number of free variables."
+          },
+          {
+            "id": "matrix-and-coordinate-presentation",
+            "textDe": "Von einer vorgegebenen 3×3-Diagonalmatrix zu einer räumlichen Koordinatenvorschrift wechseln und in beiden Darstellungen dasselbe Fixpunktprinzip anwenden.",
+            "textEn": "Change from a given 3×3 diagonal matrix to a spatial coordinate rule and apply the same fixed-point principle in both representations."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "coordinate-plane-reflection",
+            "taskDemandDe": "Eine räumliche Spiegelung ist durch A=diag(1,1,−1) gegeben. Stelle A v=v als lineares Gleichungssystem für v=(x,y,z) auf und bestimme alle Fixpunkte. Deute die Lösungsmenge im Raum und überprüfe sie an ihrer allgemeinen Parameterdarstellung.",
+            "taskDemandEn": "A spatial reflection is given by A=diag(1,1,−1). Set up A v=v as a linear system for v=(x,y,z) and determine all fixed points. Interpret the solution set in space and verify its general parametrization.",
+            "expectedPerformanceDe": "Aus (x,y,−z)=(x,y,z) folgen 0=0, 0=0 und −2z=0. Also z=0, während x und y frei sind. Die Fixpunktmenge ist {(s,t,0):s,t∈R}, die gesamte xy-Ebene durch den Ursprung. A(s,t,0)=(s,t,0) bestätigt jeden Punkt der Ebene; die Gleichung −2z=0 schließt alle übrigen Punkte aus. Zwei freie Variablen bedeuten hier eine Fixebene.",
+            "expectedPerformanceEn": "The equality (x,y,−z)=(x,y,z) gives 0=0, 0=0, and −2z=0. Thus z=0, while x and y are free. The fixed-point set is {(s,t,0):s,t∈R}, the entire xy-plane through the origin. A(s,t,0)=(s,t,0) verifies every point of the plane; −2z=0 excludes every other point. Two free variables here represent a fixed plane.",
+            "understandingFocusDe": "Die vollständige räumliche Fixebene aus einem homogenen System bestimmen und alle ihre Punkte prüfen.",
+            "understandingFocusEn": "Determine the complete spatial fixed plane from a homogeneous system and verify all its points."
+          },
+          {
+            "id": "quarter-turn-fixed-axis",
+            "taskDemandDe": "In einer unabhängig gestellten Aufgabe beschreibt B die räumliche Abbildung B(x,y,z)=(−y,x,z). Bestimme über B v=v die gesamte Fixpunktmenge und deute sie geometrisch. Begründe insbesondere, ob außer dem Ursprung weitere Punkte festbleiben.",
+            "taskDemandEn": "In an independent task, B describes the spatial map B(x,y,z)=(−y,x,z). Use B v=v to determine the entire fixed-point set and interpret it geometrically. In particular, justify whether points other than the origin remain fixed.",
+            "expectedPerformanceDe": "Die Gleichungen −y=x, x=y und z=z liefern x=y=0 bei freiem z. Damit ist {(0,0,t):t∈R} die Fixpunktmenge: die ganze z-Achse der Vierteldrehung, nicht nur der Ursprung. B(0,0,t)=(0,0,t) bestätigt alle Achsenpunkte. Die ersten beiden Gleichungen schließen Punkte außerhalb der Achse aus; der freie dritte Parameter zeigt die räumliche Fixgerade.",
+            "expectedPerformanceEn": "The equations −y=x, x=y, and z=z give x=y=0 with z free. Hence {(0,0,t):t∈R} is the fixed-point set: the entire z-axis of the quarter-turn, not only the origin. B(0,0,t)=(0,0,t) verifies all axis points. The first two equations exclude points off the axis; the free third parameter describes the spatial fixed line.",
+            "understandingFocusDe": "Struktureller Transfer von zwei freien Variablen einer Fixebene zu einer freien Variablen einer Drehachse; R²-Drehungswissen darf nicht den freien Raumparameter beseitigen.",
+            "understandingFocusEn": "Structural transfer from two free variables in a fixed plane to one free variable on a rotation axis; knowledge of a planar rotation must not remove the free spatial parameter."
+          },
+          {
+            "id": "dilation-origin-only",
+            "taskDemandDe": "Eine weitere neue räumliche Abbildung ist C=2I₃. Stelle die Fixpunktbedingung auf, löse sie vollständig und erkläre, was die Lösung für die zentrische Streckung bedeutet.",
+            "taskDemandEn": "Another new spatial map is C=2I₃. Set up the fixed-point condition, solve it completely, and explain what the solution means for the dilation about the origin.",
+            "expectedPerformanceDe": "2x=x, 2y=y und 2z=z ergeben x=y=z=0. Es gibt keinen freien Parameter, also genau den Fixpunkt (0,0,0). Für ihn gilt C0=0. Jeder andere räumliche Punkt besitzt wenigstens eine von null verschiedene Koordinate, die verdoppelt wird; daher kann er nicht festbleiben.",
+            "expectedPerformanceEn": "The equations 2x=x, 2y=y, and 2z=z give x=y=z=0. There is no free parameter, so the sole fixed point is (0,0,0), for which C0=0. Every other spatial point has at least one nonzero coordinate that doubles, so it cannot remain fixed.",
+            "understandingFocusDe": "Vom positiven Dimensionsfall zur eindeutigen Null-Lösung wechseln und deren geometrische Bedeutung begründen.",
+            "understandingFocusEn": "Transfer from a positive-dimensional set to the unique zero solution and explain its geometric meaning."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-29/m7-q2-spatial-open-three-current-20260929-v1.config.json",
+  "configDigest": "sha256:63c4101d6deca221a7245d724bead8d4af22171fa2ab8679d23c8d6328a68c5c",
+  "goalIds": [
+    "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+    "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+    "985d5529-a586-50eb-bd7f-2db2be8906d1"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 807,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:90dd5488cac47a405508661e4a4a694268546cc182f00f6d58d09fc9a2d27d53"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:82f0ec89ecbe3aab4d1e691f4af4a2fd1aed81ca93f05b4060903419a28dca2d",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:419ac49524729ebf416f19bdff434d8de0658e27f0024bcbd7c28c5d40a4f02f",
+    "reviewInputFingerprint": "sha256:c313822f21db27fad2144337fd90ff897e9d4e71384b93de41a4f246234fbc63",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-a",
+        "campaignDigest": "sha256:48055e64a8c202e245cc79798f730575557764f51786bbc122921b30aac3da49",
+        "roundId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-independent-a",
+        "batchId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:1eff32bae1221d28764e33e8709d396e8b29923118a450adfb1c4041add99260"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-b",
+        "campaignDigest": "sha256:2f7eb715724c118b4399e31465d08e19483017bec643118be396067b3496e92b",
+        "roundId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-independent-b",
+        "batchId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:25f6631e23c7a3d70bda9d6852c926f9182ac26933af3040a3b2e07d6c413783"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -35,6 +35,8 @@ Use this page by role: start with the overview documents, then jump to a review 
   Aktueller Fünf-Gate-Stand, Bild- und Quellenreparaturen sowie lokale Prüfungen.
 - [Mathematik M7: Integrationscheckpoint vom 29. September](math-m7-commit-checkpoint-2026-09-29.md)
   Aktueller strenger Stand, Quellen- und Prüfungsrouten sowie lokale Checkpoint-Prüfungen.
+- [Mathematik: 100 % im maschinellen Fünf-Gate-Bericht](math-m7-machine-closeout-2026-09-29.md)
+  Aktuelle D/P/A/M/V-Bindungen, begrenzte Quellen- und Q2-Routenprüfung sowie getrennte Reifegrad- und Release-Gates.
 - [Curriculum Mapping Workbench](curriculum-mapping-workbench.md)
   Two-pane audit surface from source snapshots to learner-facing SkillPilot trees.
 - [Documentation Guidelines](../dev/documentation-guidelines.md)

@@ -605,15 +605,23 @@ assert.equal(
 const canonicalGoalById = new Map(
   canonicalMathEntry.goals.map((goal) => [goal.id, goal] as const),
 )
-assert.deepEqual(
-  formulaCollectionGoalIds.every((goalId) =>
-    canonicalGoalById
-      .get('1878f680-095c-511d-aaed-e98393f7fde9')
-      ?.requires.includes(goalId),
-  ),
-  true,
-  'Formula-collection goals must remain prerequisites of their genuine Sekundarstufe II target.',
+const q2VolumeExam = canonicalGoalById.get('1878f680-095c-511d-aaed-e98393f7fde9')
+assert.ok(q2VolumeExam)
+assert.deepEqual(q2VolumeExam.requires, [
+  '288633c1-f61c-5b48-af7e-a80357f96cad',
+  '9460c3ff-e72d-4107-bc73-087d217200aa',
+  '5f548596-9bc3-532e-88a0-81d5029809e9',
+  '5390691d-1b7c-5572-9589-a69c2bba9a27',
+], 'The Q2 pyramid task requires only competencies exercised by the actual task.')
+assert.deepEqual(q2VolumeExam.examData?.coveredGoalIds, q2VolumeExam.requires)
+assert.match(q2VolumeExam.examData?.taskContent ?? '', /Faktor \$1\/3\$.*Prisma/u)
+assert.match(q2VolumeExam.examData?.solutionContent ?? '', /Pyramidenvolumen ein Drittel/u)
+assert.match(
+  q2VolumeExam.examData?.scoring?.steps.find((step) => step.id === 'q2_geo_3')?.description ?? '',
+  /Drittelfaktor.*Prisma/u,
 )
+assert.match(q2VolumeExam.title, /Pyramidenvolumen/u)
+assert.doesNotMatch(q2VolumeExam.description, /materialgestützt|Orientierungsproblem/u)
 assert.equal(
   canonicalGoalById
     .get('7337049a-c85c-5b94-adaa-81dc93528bf8')

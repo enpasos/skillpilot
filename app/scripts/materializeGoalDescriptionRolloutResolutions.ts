@@ -237,9 +237,9 @@ const main = async () => {
   }
 
   const resolutionArtifacts: Array<{ path: string; bytes: Buffer }> = []
-  for (const [index, goalId] of dual.prepared.manifest.goalIds.entries()) {
-    const expectedGoal = expectedGoals[index]
-    const decision = synthesisManifest.decisions[index]
+  for (const decision of synthesisManifest.decisions) {
+    const goalId = decision.goalId
+    const expectedGoal = expectedGoals.find((goal) => goal.goalId === goalId)
     const summaryGoal = dual.summary.goals.find((goal) => goal.goalId === goalId)
     if (!expectedGoal || !decision || !summaryGoal) {
       throw new Error(`${goalId}: missing validated synthesis decision or dual-summary goal`)
@@ -299,7 +299,7 @@ const main = async () => {
   await writeAllOrRequireExact(resolutionArtifacts, args.write)
 
   console.log(
-    `Standalone manifest-bound resolutions ${args.write ? 'materialized' : 'valid'}: ${dual.prepared.manifest.batchId}; strict=${resolutionArtifacts.length}/${dual.prepared.manifest.goalIds.length}; manifest=${synthesisManifest.manifestFingerprint}`,
+    `Standalone manifest-bound resolutions ${args.write ? 'materialized' : 'valid'}: ${dual.prepared.manifest.batchId}; strict=${resolutionArtifacts.length}/${dual.prepared.manifest.goalIds.length}; deferred=${synthesisManifest.deferredGoals?.length ?? 0}; manifest=${synthesisManifest.manifestFingerprint}`,
   )
 }
 

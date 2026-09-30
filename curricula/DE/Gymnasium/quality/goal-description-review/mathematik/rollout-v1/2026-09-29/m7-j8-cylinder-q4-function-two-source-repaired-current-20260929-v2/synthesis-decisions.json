@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex root; synthesis of two independently recorded current D rounds; no human approval",
+  "synthesizedAt": "2026-09-29T19:20:46.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2",
+    "batchManifestDigest": "sha256:e1acedf6cc1be0ad82cf4d4f61d58a0352b4a6d4a08e1e4f07bf6583e03d722e",
+    "configDigest": "sha256:b2d127602cf3499ce1ef61a4cd23f2bd5113930ae1fc501e242ee7184383daff",
+    "bundleFingerprint": "sha256:c415cd23184dfb08513a35ca5655b1ae8a7e18d7d907eb8f73f8c98eb0f7fc7e",
+    "bookDigest": "sha256:7a475c13b20b0829fc931a0d37f6bdf43ce7a398363d6e93202ef3da2b54e294",
+    "reviewInputFingerprint": "sha256:afca108ca0322c8e41095cf0bef315ccd4b9d46dcc086cc5ad20502e6f38a18b",
+    "dualSummaryDigest": "sha256:2ce06e994a732f5310c255c36d3734b72250628a1287292746563e46bb267100",
+    "canonicalLandscapeDigest": "sha256:f6b6d96d18a91cc7ff88eefa89aacee568181c75ea737abba007e00aa3351d49"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-a",
+      "campaignDigest": "sha256:f6b967f26865b2d4cc43c059fc23682849a37896a6c99ab87a3a9a189dea5db8",
+      "roundId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-independent-a",
+      "reviewInputFingerprint": "sha256:afca108ca0322c8e41095cf0bef315ccd4b9d46dcc086cc5ad20502e6f38a18b",
+      "batchId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:a8644765654f194fa11f7edf5219f40090dbdda403011c92f81e942917c1a0ce",
+      "runId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-first-pass-a.batch-001.codex-gpt6-independent-a",
+      "runManifestDigest": "sha256:eff59289c2941ab8e70ac268bbbe6ff20c4dcf64c916e16c48f5929e2b65e87d",
+      "resultsDigest": "sha256:1fce0fadb1a80753562d9cbecfe149a4eaf83c47424575c97dd74475bff21d3a"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-b",
+      "campaignDigest": "sha256:050002a0ad5df75bffa84e1161dd1e681e73d012fef3ffaf0e86cfd7839be7e8",
+      "roundId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-independent-b",
+      "reviewInputFingerprint": "sha256:afca108ca0322c8e41095cf0bef315ccd4b9d46dcc086cc5ad20502e6f38a18b",
+      "batchId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:a70379088ccce153103da4567ce170cc5757b6a3888a33225efa4a6ba6b98e31",
+      "runId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-first-pass-b.batch-001.run",
+      "runManifestDigest": "sha256:5f76de1d575186648641d7dbb888323a9a926883b1fe0d266ea51f269a348c72",
+      "resultsDigest": "sha256:87220fc07b7cd06c773d8791d3c8b10d6ebfd3d895dfa636ab1b766d920c83a9"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-decision-001",
+      "goalId": "f65ab452-1884-57b0-9be3-c7d9e4944891",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8d412aad77004e31c9d3d474770fce553689370d81d1545129f439f1bf319756",
+      "pageFingerprint": "sha256:8cb46595e58873723d6ab59e9953151fd03968526e2fef66a8afd7035ad9b846",
+      "goalReviewContextFingerprint": "sha256:2f17c9b16cff2e5b6af836abc4fe7e0ea6baeb23d97132fb5fd8631ab3eb021f",
+      "finalText": {
+        "titleDe": "Zylindermantel aus dem Kreisumfang herleiten",
+        "titleEn": "Derive the lateral area of a cylinder from the circumference of its base",
+        "descriptionDe": "Die lernende Person kann im Netz eines geraden Kreiszylinders begründen, dass eine Seite des Mantelrechtecks dem Umfang 2πr der Grundfläche und die andere der Höhe h entspricht, und daraus die Mantelfläche M = 2πrh herleiten.",
+        "descriptionEn": "Using the net of a right circular cylinder, the learner can justify that one side of the lateral rectangle equals the circumference 2πr of the base and the other equals the height h, and thereby derive the lateral area M = 2πrh."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-first-pass-a.batch-001.codex-gpt6-independent-a.f65ab452-1884-57b0-9be3-c7d9e4944891",
+          "recordDigest": "sha256:c9fb30204af00207259406b8073d2a8f17a947ce3656546bb5aee0bd0a1b8733"
+        },
+        "second": {
+          "recordId": "m7-j8-cylinder-q4-function-v2-b-001-f65ab452-1884-57b0-9be3-c7d9e4944891",
+          "recordDigest": "sha256:7b52e96931a6dce00107d5c6bf9df0652ce4ecf8f23bae134d7817526403490a"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten die aktuelle Beschreibung: Im Netz eines geraden Kreiszylinders wird der Mantel zum Rechteck mit Umfang 2πr und Höhe h, woraus M=2πrh folgt. Runde A liefert den stärkeren Strukturtransfer: Dasselbe Rechteck ergibt bei vertauschter Rollrichtung verschiedene Radien und Höhen, aber dieselbe Mantelfläche. Runde B prüft ergänzend den Wechsel von Radius zu Durchmesser. Weder Grundkreise noch das Tangentenfeld des Bestandsbildes werden als Mantel oder als Leistungsnachweis ausgegeben. Die von Runde A benannten HE-Stellen stützen den fachlichen Kontext, ohne eine vollständige Landesquellenprüfung zu behaupten. Nur maschinelle D-Synthese, keine menschliche oder Bildfreigabe.",
+      "rationaleEn": "Both independent rounds retain the current description: in the net of a right circular cylinder, the lateral surface becomes a rectangle with circumference 2πr and height h, yielding M=2πrh. Round A offers the stronger structural transfer: rolling the same rectangle in either orientation changes radius and height but preserves lateral area. Round B additionally checks the change from radius to diameter. Neither the base circles nor the tangent panel in the existing image is treated as lateral area or learner evidence. The HE passages named by Round A support the subject context without claiming a complete audit of all state sources. Machine D synthesis only, with no human or image approval."
+    },
+    {
+      "decisionId": "math-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-decision-002",
+      "goalId": "fde351a8-98b1-5d75-b4df-813beb2bbe3c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2b7988779e99e81c28eee34d01f47fa9daea47f23bfafe0b04902325776bc034",
+      "pageFingerprint": "sha256:e914ef43e8df547ee507e7c6f305c1bee34a7a815706c75daad6d65a8b54d105",
+      "goalReviewContextFingerprint": "sha256:c13739e0fb944e3b58bfc41cd1c320696b943d817edaa26307b8e0c93d168b17",
+      "finalText": {
+        "titleDe": "Beziehungen im Modell formulieren",
+        "titleEn": "Formulate relationships in the model",
+        "descriptionDe": "Die lernende Person kann eine Abhängigkeit zwischen Größen aus einem Sachkontext als passende Funktionsgleichung formulieren und die darin verwendeten Größen im Kontext benennen.",
+        "descriptionEn": "The learner can represent a dependency between quantities in a real-world situation with a suitable function equation and identify what the quantities mean in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-first-pass-a.batch-001.codex-gpt6-independent-a.fde351a8-98b1-5d75-b4df-813beb2bbe3c",
+          "recordDigest": "sha256:3be8b4016a368c1f1f4250cfe3ca899aea11a4d06e93bdb4b6368575a6574002"
+        },
+        "second": {
+          "recordId": "m7-j8-cylinder-q4-function-v2-b-002-fde351a8-98b1-5d75-b4df-813beb2bbe3c",
+          "recordDigest": "sha256:800751003db22172abd0bf3d96dff7ac97cf84986480025d1cdf2e2e259abf31"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten die knappe zweisprachige Beschreibung: Eine Größenabhängigkeit wird als passende Funktionsgleichung formuliert und die Größen werden im Sachkontext benannt. Runde B vermeidet die zusätzliche Forderung, jeden einzelnen Term zu interpretieren; ihr quadratischer Flächenkontext prüft die Übertragung über das lineare Kioskbeispiel hinaus. Randbedingungen, Modellauswertung und Ergebnisdeutung bleiben eigenständige Folgeschritte. Das Kioskbild ist Anschauung, keine Lernleistung. Die von Runde A geprüfte HE-E.1-Stelle stützt den Modellierungskontext; SH-Sek-I-Teilbelege werden nicht als Sek-II-Geltungsnachweis ausgegeben. Nur maschinelle D-Synthese, keine menschliche oder Bildfreigabe.",
+      "rationaleEn": "Both independent rounds retain the concise bilingual description: a dependency between quantities is formulated as a suitable function equation and the quantities are named in context. Round B avoids adding a demand to interpret every separate term; its quadratic area context checks transfer beyond the linear kiosk example. Constraints, model evaluation and result interpretation remain separate subsequent steps. The kiosk image illustrates the idea but is not learner performance. The HE E.1 passage checked in Round A supports the modeling context; SH lower-secondary excerpts are not presented as upper-secondary applicability proof. Machine D synthesis only, with no human or image approval."
+    }
+  ],
+  "manifestFingerprint": "sha256:f9b0c5098ac9b4f8456da88283c3529e62079698893d3b945f4164c9389a97e1"
+}

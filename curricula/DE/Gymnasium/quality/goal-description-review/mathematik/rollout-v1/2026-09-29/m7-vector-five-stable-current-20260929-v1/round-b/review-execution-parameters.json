@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Independent blind round-B candidate description review for the five current vector goals",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "modelVersion": "not exposed by runtime",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "samplingParameters": "not exposed by runtime",
+  "reasoningEffort": "not exposed by runtime",
+  "humanApproval": false,
+  "blindToOtherRuns": true,
+  "independenceGroupId": "mathematik-m7-vector-five-stable-current-20260929-v1-independent-b",
+  "boundInputs": [
+    "round-b/batches/mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-b.batch-001.input.jsonl",
+    "round-b/prompt.md",
+    "round-b/criteria.md",
+    "round-b/contracts/goal-description-review-record.schema.json",
+    "bundle/book.pdf",
+    "bundle/book-model.json"
+  ],
+  "additionalReadOnlyEvidence": [
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.pdf",
+    "curricula/DE/Gymnasium/input/BB/upper-secondary/Teil_C_RLP_GOST_2022_Mathematik.pdf",
+    "curricula/DE/Gymnasium/input/BE/upper-secondary/rahmenlehrplan-mathematik_go-teil-c.pdf",
+    "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+    "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+    "app/public/assets/goal-visualizations/mathematik/571793bd-34f1-539e-969c-dfcc2dfa96b3/571793bd-34f1-539e-969c-dfcc2dfa96b3.png",
+    "app/public/assets/goal-visualizations/mathematik/c63bbffd-8d1c-5fe2-a428-db194e6fe592/c63bbffd-8d1c-5fe2-a428-db194e6fe592.png",
+    "app/public/assets/goal-visualizations/mathematik/72dfc164-455d-4b63-85f0-96e803c9a1d5/72dfc164-455d-4b63-85f0-96e803c9a1d5.png",
+    "app/public/assets/goal-visualizations/mathematik/54cfe5ce-693e-5d4a-ac1b-009570fbbc11/54cfe5ce-693e-5d4a-ac1b-009570fbbc11.png",
+    "app/public/assets/goal-visualizations/mathematik/fb7a4fa0-03b5-53b4-bd86-608480b748a1/fb7a4fa0-03b5-53b4-bd86-608480b748a1.jpg"
+  ],
+  "sourceVerificationLimit": "Selected passages in original PDFs and bound mappings checked; no claim of exhaustive national source or learner-facing applicability verification",
+  "sourceRoutingLookups": {
+    "purpose": "Locate relevant original PDF passages only; mapping and extraction claims were checked against original PDFs, not treated as final source approval",
+    "paths": [
+      "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_math_upper_secondary_source_extraction_to_canonical_math.review.json"
+    ]
+  }
+}

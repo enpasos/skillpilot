@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-lk-two-r3-current-20260929-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis of two independent current HE-source and actual-image reviews; no human approval",
+  "synthesizedAt": "2026-09-29T20:46:19.525Z",
+  "batch": {
+    "batchId": "mathematik-m7-lk-two-r3-current-20260929-v1",
+    "batchManifestDigest": "sha256:4da84df5a86438588a22b423a055e7c4df0bbbda24af6cf456c802b3d3a73388",
+    "configDigest": "sha256:8efc78377d36fd1a840d4c5a84e4cb31b73cd61fe6149c7f1fc416ec18e6701f",
+    "bundleFingerprint": "sha256:e690ebb9991ce5cbe05113838a62f0e3eeea5715453d0a553c6c829a46303f47",
+    "bookDigest": "sha256:e351fe7cbb8abb52529d4e8684b45f6e96475e0df619c1e50864da946bc7013a",
+    "reviewInputFingerprint": "sha256:ee8f3f81d51ff58faa22261df44e795a6528203002683ab1e55d9b05ac519e52",
+    "dualSummaryDigest": "sha256:210ea7033d5f3dc00a650618dd0356671d40d8df7ea6ed47237f4baaf6ca9964",
+    "canonicalLandscapeDigest": "sha256:303364bba3de28ad9311d2cde1894f78d3d1d30fc000379709923a1d5678188b"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-lk-two-r3-current-20260929-v1-a",
+      "campaignDigest": "sha256:2c14f9e7dcd853cdbf700f545da13bc1fc4ab4882956e06cd0e24b5bc1a462b8",
+      "roundId": "mathematik-m7-lk-two-r3-current-20260929-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-lk-two-r3-current-20260929-v1-independent-a",
+      "reviewInputFingerprint": "sha256:ee8f3f81d51ff58faa22261df44e795a6528203002683ab1e55d9b05ac519e52",
+      "batchId": "mathematik-m7-lk-two-r3-current-20260929-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:374c33c3a95af5b6ba2365f3131ea9811d0eadfb7ed3364fe26f396f5516787c",
+      "runId": "mathematik-m7-lk-two-r3-current-20260929-v1-first-pass-a-codex-root-independent-a",
+      "runManifestDigest": "sha256:d54a436fa2a58764ec184a569c7d5a6379e648d41fe5239eff3bc6fd5ab16462",
+      "resultsDigest": "sha256:b484ccd57e66daf73d39f50bc981ddae6b2997fa392ce3eb142979ffd06e6151"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-lk-two-r3-current-20260929-v1-b",
+      "campaignDigest": "sha256:c2c28c3ee202f310ba7dc57aa88d0549924cf49cf5996c2c49d7ace51a6a6a3a",
+      "roundId": "mathematik-m7-lk-two-r3-current-20260929-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-lk-two-r3-current-20260929-v1-independent-b",
+      "reviewInputFingerprint": "sha256:ee8f3f81d51ff58faa22261df44e795a6528203002683ab1e55d9b05ac519e52",
+      "batchId": "mathematik-m7-lk-two-r3-current-20260929-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:23eb4e5e9f73ff8ed0709894b6ff232886e830157ac3d92568dfe20ec496e2db",
+      "runId": "mathematik-m7-lk-two-r3-current-20260929-v1-b-001",
+      "runManifestDigest": "sha256:ec4f3f1ed0b8277230481365f3726c9aad7a0efe3f61853d2507f407938a8165",
+      "resultsDigest": "sha256:2500808e07595b672432f49f8d24ea40e0597d96c2ad750e99a8d5709cf0b1c4"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-lk-two-r3-current-20260929-v1-decision-001",
+      "goalId": "803d910d-96d1-5118-b9ca-29e93d0da76d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:73ced85e8f276c6853f33d151556a9873ecab279aab9425076b6f50be4d20e2e",
+      "pageFingerprint": "sha256:af063377229d28c6e40e60c334269b7727b66212643f0d5fc6143a96606f5691",
+      "goalReviewContextFingerprint": "sha256:bb1674d713882d2c1138cfc8dd30360b6ff890382d3099bbfaeee2a61c9a178f",
+      "finalText": {
+        "titleDe": "Parallelprojektionen auf Ursprungsebenen mit Matrizen darstellen (LK)",
+        "titleEn": "Represent parallel projections onto origin planes with matrices (advanced course)",
+        "descriptionDe": "Die lernende Person kann für eine Parallelprojektion entlang einer vorgegebenen Richtung, die nicht in der Zielebene liegt, auf eine beliebige Ursprungsebene im $\\mathbb{R}^3$ die Abbildungsmatrix bestimmen und untersuchen.",
+        "descriptionEn": "The learner can determine and analyze the mapping matrix for a parallel projection along a given direction that does not lie in the target plane onto an arbitrary plane through the origin in $\\mathbb{R}^3$."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-lk-two-r3-current-20260929-v1-first-pass-a-codex-root-independent-a.803d910d",
+          "recordDigest": "sha256:ccfa0183893b42e5127e3d2185d0abb4a4a85d2b38285ed4347b7f38c06da53d"
+        },
+        "second": {
+          "recordId": "mathematik-m7-lk-two-r3-current-20260929-v1-b-001-record-001",
+          "recordDigest": "sha256:ae58cc94ee397d07ff0415b7166c134325afc976c501f496dd47d73665b7c26c"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die beliebige Ursprungsebene im R³ und eine nicht parallele Projektionsrichtung als genauen LK-Scope aus HE KC Q2.5, Druckseite 44. Aus nᵀ(x+td)=0 folgt die Projektionsmatrix P=I−dnᵀ/(nᵀd); das tatsächlich geöffnete Bild zeigt Formel, Bildlage und P²=P korrekt. Der aktuelle DE/EN-Text ist zusammenhängend prüfbar; Bild und KI-Review ersetzen keine Lernleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both rounds confirm an arbitrary origin plane in R³ and a nonparallel projection direction as the exact advanced-course scope in HE KC Q2.5, printed p. 44. From nᵀ(x+td)=0 follows P=I−dnᵀ/(nᵀd); the opened image correctly shows the formula, image plane and P²=P. The current DE/EN text is coherently assessable; the image and AI review are neither learner work nor human approval."
+    },
+    {
+      "decisionId": "math-m7-lk-two-r3-current-20260929-v1-decision-002",
+      "goalId": "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c0212bf9b929bfc8016308465254cb5442a60b7e36d6c00fbfaa642f86c621d5",
+      "pageFingerprint": "sha256:817efe736bd6b2abf12965adbb398f4a1356f2687e8b5ca66a5a262cefadf288",
+      "goalReviewContextFingerprint": "sha256:7ec5213547cfa153e6baaab9cfa53470f1d88b1b8a706345aebd1e8ad6ba7b3e",
+      "finalText": {
+        "titleDe": "Fixpunkte linearer Abbildungen bestimmen (LK)",
+        "titleEn": "Determine fixed points of linear mappings (advanced course)",
+        "descriptionDe": "Die lernende Person kann Fixpunkte linearer geometrischer Abbildungen im dreidimensionalen Raum bestimmen, indem sie die Bedingung $A\\vec{x}=\\vec{x}$ als lineares Gleichungssystem aufstellt und löst.",
+        "descriptionEn": "The learner can determine fixed points of linear geometric mappings in three-dimensional space by setting up and solving the condition $A\\vec{x}=\\vec{x}$ as a system of linear equations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-lk-two-r3-current-20260929-v1-first-pass-a-codex-root-independent-a.d3c42193",
+          "recordDigest": "sha256:f42f0f0386ff444c701366994f718f1ea6c1764f7ba0ecd474d8a3cf17046759"
+        },
+        "second": {
+          "recordId": "mathematik-m7-lk-two-r3-current-20260929-v1-b-001-record-002",
+          "recordDigest": "sha256:45c0e96c140eebf4cc99b16fff8c3a19473d2611cea9aa28f4cd836d7e427092"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die aktuelle R³-Präzisierung gemäß HE KC Q2.5, Druckseite 44, und die homogene Fixpunktbedingung (A−I)x=0. Je nach Kerndimension entstehen Ursprung, Fixgerade, Fixebene oder ganzer Raum; das aktuelle P-v2-Profil prüft echte 3D-Fälle. Das gebundene 2D-PNG zeigt nur eine mathematisch richtige Analogie und ist für das R³-Ziel als Primärbild zu schwach. D-Wortlaut wird hier maschinell gehalten; die separate V-Bildbindung wird gezielt korrigiert und danach erneut geprüft, ohne menschliche Freigabe zu behaupten.",
+      "rationaleEn": "Both rounds confirm the current R³ specification under HE KC Q2.5, printed p. 44, and homogeneous fixed-point condition (A−I)x=0. Kernel dimension yields the origin, fixed line, fixed plane or all of space; the current P-v2 profile assesses genuine 3D cases. The bound 2D PNG is a mathematically valid analogy but too weak as the primary image for this R³ target. This is machine D wording retention; the separate V image binding will be corrected and rechecked, with no human approval claimed."
+    }
+  ],
+  "manifestFingerprint": "sha256:82f559e76a88846776e463c4eeee5acfcbaba3840b4fad03a4c9ef58666cf9d4"
+}

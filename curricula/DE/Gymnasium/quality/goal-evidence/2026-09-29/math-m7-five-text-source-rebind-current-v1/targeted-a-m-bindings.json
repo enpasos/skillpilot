@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-29",
+  "reviewAuthority": "ai_candidate",
+  "records": [
+    {
+      "gate": "A",
+      "goalId": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
+      "oldFingerprint": "sha256:7ebe40114eecffb38ca7ab1d05a8a4e09ea20dc9ca00d72144720c0aa974b6a4",
+      "newFingerprint": "sha256:abb7bc7346f27920160b8b0009e6eaa0a6740f82a751d9353ae3fdcc40ecb992",
+      "status": "atomic",
+      "reason": "Aktueller DE/EN-Text umfasst genau eine geometrische Skalierungsbegründung: Bei positivem k, auch k=1, ergeben zwei skalierten Kantenrichtungen k² für Flächen und drei k³ für Volumen. Der neutrale Fall ist jetzt korrekt eingeschlossen. Quadrat-/Würfelbild und unabhängige Dreiecks-/Pyramidentransfers wurden fachlich geprüft; kein zweites Kompetenzziel entsteht."
+    },
+    {
+      "gate": "A",
+      "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+      "oldFingerprint": "sha256:b5c1d38c6519602d732180532191d5842177c6ff66d4260db1302159ed486d24",
+      "newFingerprint": "sha256:28e087b953a41f05b63daa4cf6f2e5bb6d5c071767dfdddaf9a862626989e7d4",
+      "status": "atomic",
+      "reason": "Aktueller Q1-Text benennt genau denselben Integral-Mittelwert als Quotient aus Integralwert und Intervalllänge und als konstanten Funktionswert mit gleichem Integral. Bestands- und Ratenkontexte variieren nur Eingangseinheit und Bedeutung; der Wert bleibt eine zusammenhängende prüfbare Kompetenz. Das aktive B(t)=10+t²-Bild hat bei t=0 waagerechte Tangente und Integral 39 L·min."
+    },
+    {
+      "gate": "A",
+      "goalId": "d1352ce0-9502-5039-9af6-318fe385b6fd",
+      "oldFingerprint": "sha256:26c781dd9bfbd5fefc14f7f4152266dda5da336194a1c8ecaf0656719370cd94",
+      "newFingerprint": "sha256:747a7520a3c7e5250a1445b908db64adfe37c20adf1623bc50aea82dd5c1c67d",
+      "status": "atomic",
+      "reason": "Aktueller J9-Text prüft eine einzige Kollinearitätsentscheidung für ein Vektorpaar. Ein gemeinsamer Skalar muss für alle Komponenten gelten; die geometrische Richtungsdeutung gilt nur für Nichtnullvektoren. Nullvektor-Grenzfälle können rechnerisch ohne Richtung behandelt werden. Das aktive Zwei-Spalten-Bild zeigt positiven und negativen Fall korrekt; keine separate Teilkompetenz nötig."
+    },
+    {
+      "gate": "M",
+      "goalId": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
+      "oldFingerprint": "sha256:4b02c82c4fb933b4e0365ddfd38eb1f4fe44656246297e5dd6d59007b6e3241e",
+      "newFingerprint": "sha256:6930bef849e3db80c230bc091a7f80e045195ca904e297abeb6ba89fbfa48d49",
+      "status": "no_memory_needed",
+      "reason": "Die aktuellen Faktoren k² und k³ sind aus zwei beziehungsweise drei gestreckten Längenrichtungen zu begründen, einschließlich des neutralen Falls k=1. Reiner Formelabruf würde dieses Verständnis nicht prüfen. Kein eigenes Memory-Deck nötig."
+    },
+    {
+      "gate": "M",
+      "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+      "oldFingerprint": "sha256:fe35c117150d435be2b5f7fba91fea4d0e30f67dd0365b83bc6486fb7fdd4ff9",
+      "newFingerprint": "sha256:76492351dd8b618fd5a73985243d9fd981b61c177c5f2faf3ff0960537058579",
+      "status": "memory_required",
+      "reason": "Die vorhandene Karte math_analysis_c16 enthält nur die kompakte Formel 1/(b−a) mal bestimmtes Integral und passt unverändert zum aktuellen Text. Gleicher Integralwert, Einheiten und Bestands-/Rateninterpretation bleiben Aufgabenverständnis und werden durch die Karte nicht ersetzt. Memory-Ziel ca708087 und Deck de_gymnasium_math_analysis_core bleiben erforderlich und sichtbarkeitsgeprüft."
+    },
+    {
+      "gate": "M",
+      "goalId": "d1352ce0-9502-5039-9af6-318fe385b6fd",
+      "oldFingerprint": "sha256:af92d0fc2370980fcaa1f44e95a8ab21186de000cbb5d8cb936325981441946c",
+      "newFingerprint": "sha256:3d3bc2d557383c9f01d33720bfdb932f23192ad13e6b7662b5dda66d392e5e6b",
+      "status": "no_memory_needed",
+      "reason": "Der gemeinsame Skalar, widersprechende Komponenten und die fehlende Richtung des Nullvektors müssen an variierenden Paaren begründet werden. Ein Kartenabruf würde die aktuelle J9-Entscheidung nicht nachweisen; kein eigenes Deck."
+    },
+    {
+      "gate": "kind",
+      "goalId": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
+      "oldFingerprint": "sha256:474c6602e095b4564b87b1919f5b1a5dd883cad3e4ed6db46ad36d4f5d29782c",
+      "newFingerprint": "sha256:d727faa3e48a2517042e3aa8baeb24beca3646bd37135d61042b3b3a003417d6",
+      "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+    },
+    {
+      "gate": "kind",
+      "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+      "oldFingerprint": "sha256:cc55a5607d0389227716783b58bb05a5cf4e7c355d547551273dd889c4a2d234",
+      "newFingerprint": "sha256:8a1bf9a0c45d0caea602635ff0e13ada51d382d11b1dcc0ba59ac33027a54ebe",
+      "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+    },
+    {
+      "gate": "kind",
+      "goalId": "d1352ce0-9502-5039-9af6-318fe385b6fd",
+      "oldFingerprint": "sha256:c95f90219f0319c319d1e3687780afb74d6698639156728619587215213d1638",
+      "newFingerprint": "sha256:3cd57bf9ffc1c4709ff4d31e3a506d76d90d218e4ca5894bb367d60b48bd654a",
+      "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+    }
+  ]
+}

@@ -991,12 +991,13 @@ export const materializeGoalDescriptionRolloutBatchResolutionIndex = async (
   const resolutionFileNames = (await readdir(resolutionsDirectory))
     .filter((name) => name.endsWith('.resolution.json'))
     .sort()
-  const expectedFileNames = dual.prepared.manifest.goalIds
-    .map((goalId) => `${goalId}.resolution.json`)
-    .sort()
-  if (!sameOrderedValues(resolutionFileNames, expectedFileNames)) {
+  const resolutionGoalIds = resolutionFileNames.map((name) => name.slice(0, -'.resolution.json'.length))
+  if (
+    resolutionGoalIds.length === 0
+    || resolutionGoalIds.some((goalId) => !dual.prepared.manifest.goalIds.includes(goalId))
+  ) {
     throw new Error(
-      `A complete standalone batch requires exactly one resolution file per goal; expected ${expectedFileNames.length}, found ${resolutionFileNames.length}`,
+      'Standalone batch resolution files must cover a nonempty subset of the configured goals',
     )
   }
   const completedAtValues = [...dual.first.resultPairs, ...dual.second.resultPairs]
@@ -1011,7 +1012,7 @@ export const materializeGoalDescriptionRolloutBatchResolutionIndex = async (
     bytes: Buffer
     manifest: GoalDescriptionRolloutSynthesisDecisionManifest
   } | null = null
-  for (const goalId of dual.prepared.manifest.goalIds) {
+  for (const goalId of dual.prepared.manifest.goalIds.filter((id) => resolutionGoalIds.includes(id))) {
     const path = join(resolutionsDirectory, `${goalId}.resolution.json`)
     const bytes = await readFile(path)
     const resolution = parseJson<GoalDescriptionDualRoundResolution>(bytes, path)
@@ -1044,11 +1045,29 @@ export const materializeGoalDescriptionRolloutBatchResolutionIndex = async (
       if (structure.errors.length > 0) {
         throw new Error(structure.errors.join(' | '))
       }
-      if (!sameOrderedValues(
-        synthesisManifest.decisions.map(({ goalId: decisionGoalId }) => decisionGoalId),
-        dual.prepared.manifest.goalIds,
-      )) {
-        throw new Error('Standalone synthesis manifest must contain exactly the configured goal decisions in order')
+      const resolvedGoalIds = dual.prepared.manifest.goalIds.filter((id) => resolutionGoalIds.includes(id))
+      const deferredGoalIds = dual.prepared.manifest.goalIds.filter((id) => !resolutionGoalIds.includes(id))
+      if (
+        !sameOrderedValues(synthesisManifest.decisions.map(({ goalId: id }) => id), resolvedGoalIds)
+        || !sameOrderedValues((synthesisManifest.deferredGoals ?? []).map(({ goalId: id }) => id), deferredGoalIds)
+      ) {
+        throw new Error('Standalone synthesis manifest must partition configured goals into exact resolution files and explicit deferrals')
+      }
+      for (const deferred of synthesisManifest.deferredGoals ?? []) {
+        const summaryGoal = dual.summary.goals.find(({ goalId: id }) => id === deferred.goalId)
+        if (
+          !summaryGoal
+          || summaryGoal.firstDecision !== deferred.firstDecision
+          || summaryGoal.secondDecision !== deferred.secondDecision
+          || (
+            summaryGoal.firstDecision !== 'block'
+            && summaryGoal.secondDecision !== 'block'
+            && summaryGoal.firstDecision !== 'revise'
+            && summaryGoal.secondDecision !== 'revise'
+          )
+        ) {
+          throw new Error(`${deferred.goalId}: deferral is not bound to a current block or unresolved revise review`)
+        }
       }
       if (synthesisManifest.synthesizedAt !== expectedSynthesizedAt) {
         throw new Error(`Standalone synthesis manifest synthesizedAt must be ${expectedSynthesizedAt}`)
@@ -1212,6 +1231,9 @@ export const materializeGoalDescriptionRolloutBatchResolutionIndex = async (
       strictDescriptionComplete: true,
     })
   }
+  const deferredGoalIds = dual.prepared.manifest.goalIds.filter(
+    (goalId) => !entries.some((entry) => entry.goalId === goalId),
+  )
   const index: StandaloneBatchResolutionIndex = {
     $schema: 'https://skillpilot.com/schemas/goal-description-review/v1/goal-description-standalone-batch-resolution-index.schema.json',
     schemaVersion: 2,
@@ -1220,6 +1242,7 @@ export const materializeGoalDescriptionRolloutBatchResolutionIndex = async (
     subject: dual.prepared.manifest.subjectLabel,
     semanticKind: 'curricularAtomic',
     batchGoalIds: [...dual.prepared.manifest.goalIds],
+    ...(deferredGoalIds.length > 0 ? { deferredGoalIds } : {}),
     groups: [{
       groupId: dual.prepared.manifest.batchId,
       artifactDirectory: '.',

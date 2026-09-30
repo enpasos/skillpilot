@@ -244,6 +244,7 @@ export interface StandaloneBatchResolutionIndex extends ResolutionIndexBase {
   schemaVersion: 2
   indexContract: 'goal-description-standalone-batch-resolution-index-v1'
   batchGoalIds: string[]
+  deferredGoalIds?: string[]
 }
 
 type ResolutionIndex = AggregateResolutionIndex | StandaloneBatchResolutionIndex
@@ -433,6 +434,24 @@ const sameOrderedValues = (left: readonly string[], right: readonly string[]): b
   left.length === right.length && left.every((value, index) => value === right[index])
 )
 
+export const hasExactCurrentOpenDescriptionDeferral = (
+  deferred: Pick<NonNullable<GoalDescriptionRolloutSynthesisDecisionManifest['deferredGoals']>[number],
+    'goalId' | 'firstDecision' | 'secondDecision'>,
+  summaryGoal: Pick<GoalDescriptionDualRoundSummary['goals'][number],
+    'goalId' | 'firstDecision' | 'secondDecision'> | undefined,
+): boolean => Boolean(
+  summaryGoal
+  && summaryGoal.goalId === deferred.goalId
+  && summaryGoal.firstDecision === deferred.firstDecision
+  && summaryGoal.secondDecision === deferred.secondDecision
+  && (
+    summaryGoal.firstDecision === 'block'
+    || summaryGoal.secondDecision === 'block'
+    || summaryGoal.firstDecision === 'revise'
+    || summaryGoal.secondDecision === 'revise'
+  )
+)
+
 export const validateStandaloneResolutionIndexStructure = (
   index: StandaloneBatchResolutionIndex,
   currentAtomicGoalIds: ReadonlySet<string>,
@@ -453,11 +472,8 @@ export const validateStandaloneResolutionIndexStructure = (
   if (group.campaignGoalCount !== index.batchGoalIds.length) {
     errors.push('standalone group campaignGoalCount does not match batchGoalIds')
   }
-  if (
-    group.resolvedGoalCount !== index.resolutions.length
-    || index.resolutions.length !== index.batchGoalIds.length
-  ) {
-    errors.push('standalone batch must contain one strict resolution per batch goal')
+  if (group.resolvedGoalCount !== index.resolutions.length) {
+    errors.push('standalone group resolvedGoalCount does not match strict resolutions')
   }
   const batchGoalIdSet = new Set(index.batchGoalIds)
   index.batchGoalIds.forEach((goalId) => {
@@ -483,9 +499,14 @@ export const validateStandaloneResolutionIndexStructure = (
       errors.push(`resolution goal ${entry.goalId} must not reference a human attestation in a standalone AI batch`)
     }
   })
-  index.batchGoalIds.forEach((goalId) => {
-    if (!resolutionGoalIds.includes(goalId)) errors.push(`missing standalone resolution for ${goalId}`)
-  })
+  const expectedResolvedIds = index.batchGoalIds.filter((goalId) => resolutionGoalIds.includes(goalId))
+  const expectedDeferredIds = index.batchGoalIds.filter((goalId) => !resolutionGoalIds.includes(goalId))
+  if (!sameOrderedValues(resolutionGoalIds, expectedResolvedIds)) {
+    errors.push('standalone resolutions must follow configured batch goal order')
+  }
+  if (!sameOrderedValues(index.deferredGoalIds ?? [], expectedDeferredIds)) {
+    errors.push('standalone batch must explicitly list every unresolved goal as deferred in configured order')
+  }
   return errors
 }
 
@@ -989,11 +1010,7 @@ const validateResolutionIndex = async (
       }
     }
   }
-  const claimedGoalIds = new Set(
-    index.schemaVersion === 2
-      ? index.batchGoalIds
-      : index.resolutions.map(({ goalId }) => goalId),
-  )
+  const claimedGoalIds = new Set(index.resolutions.map(({ goalId }) => goalId))
   const indexScope = `${config.subject}:${index.artifactSetId || indexPath}`
   const indexGoalDuplicates = duplicateValues(index.resolutions?.map(({ goalId }) => goalId) ?? [])
   const groupDuplicates = duplicateValues(index.groups?.map(({ groupId }) => groupId) ?? [])
@@ -1136,6 +1153,30 @@ const validateResolutionIndex = async (
             }
           })()
         : undefined
+      if (index.schemaVersion === 2 && synthesisDecisionManifestArtifact) {
+        const manifest = synthesisDecisionManifestArtifact.manifest
+        if (
+          !sameOrderedValues(
+            manifest.decisions.map(({ goalId }) => goalId),
+            index.resolutions.map(({ goalId }) => goalId),
+          )
+          || !sameOrderedValues(
+            (manifest.deferredGoals ?? []).map(({ goalId }) => goalId),
+            index.deferredGoalIds ?? [],
+          )
+        ) {
+          addIssue(issues, indexScope, `${entry.goalId}: synthesis manifest does not match resolved and deferred index goals`)
+          continue
+        }
+        const invalidDeferral = (manifest.deferredGoals ?? []).find((deferred) => {
+          const summaryGoal = group.dualSummary.goals.find(({ goalId }) => goalId === deferred.goalId)
+          return !hasExactCurrentOpenDescriptionDeferral(deferred, summaryGoal)
+        })
+        if (invalidDeferral) {
+          addIssue(issues, indexScope, `${invalidDeferral.goalId}: deferred goal lacks an exact current block or unresolved revise review`)
+          continue
+        }
+      }
       const validation = await validateGoalDescriptionDualRoundResolution({
         resolution,
         dualSummary: group.dualSummary,

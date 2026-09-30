@@ -8,7 +8,7 @@
 > Source of truth: `docs/qa-ci/status/goal-source-rationales-math-all-relevant.json`
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 
-Generated: 2026-09-29T08:18:37.542Z
+Generated: 2026-09-29T22:15:01.521Z
 
 Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-Mathematikreport zu bearbeitbaren Issues. Sie ist kein Runtime-Gate; sie priorisiert die naechsten Source-Extraction- und Mapping-Arbeiten.
 
@@ -16,8 +16,8 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 
 | Metric | Value |
 | --- | --- |
-| Classic-source gap issues | 54 |
-| Mit belegten Geschwisterzielen | 22 |
+| Classic-source gap issues | 53 |
+| Mit belegten Geschwisterzielen | 21 |
 | Ohne belegten Elternkontext | 32 |
 | Phasen mit Gaps | 5 |
 | Bereiche mit Gaps | 3 |
@@ -33,15 +33,15 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 | --- | --- | --- | --- |
 | Q4 | 39 | 15 | 24 |
 | E | 8 | 0 | 8 |
-| Q2 | 3 | 3 | 0 |
 | Q3 | 3 | 3 | 0 |
+| Q2 | 2 | 2 | 0 |
 | J9 | 1 | 1 | 0 |
 
 ## By Area
 
 | Bucket | Issues | Sibling-supported | Isolated |
 | --- | --- | --- | --- |
-| unknown | 48 | 19 | 29 |
+| unknown | 47 | 18 | 29 |
 | Analysis | 5 | 2 | 3 |
 | Stochastics | 1 | 1 | 0 |
 
@@ -51,7 +51,6 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | GSR-GAP-3AEA4D33 | Geschwister-Mapping pruefen | Q2 | unknown | Schnittfiguren von Ebenen mit Polyedern bestimmen (LK) | 1 | Schnittgerade zweier Ebenen bestimmen (LK) (DE-BB \| RLP Berlin/Brandenburg Mathematik GOST (2022), 3.4.3, Inhalte \| bb-math-sekii-gost-q3-inhalt-93e28689e1) | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lagebeziehungen und Schnittmengen im Raum > Vertiefende Untersuchungen im Raum (LK) > Schnittfiguren von Ebenen mit Polyedern bestimmen (LK) |
 | GSR-GAP-D8F1FD06 | Geschwister-Mapping pruefen | Q2 | unknown | Zusammengesetzte Funktionen für quantifizierbare Zusammenhänge nutzen (LK) (canonical_math_q2_use_composed_functions_for_quantifiable_models_lk) | 2 | Kettenregel beim Ableiten anwenden (LK) (DE-BY \| LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.4.2 \| b2650cbe-490c-547e-a55a-d5916c3c0647) | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Vertiefung der Analysis > Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK) > Zusammengesetzte Funktionen für quantifizierbare Zusammenhänge nutzen (LK) |
-| GSR-GAP-BF17CADA | Geschwister-Mapping pruefen | Q2 | unknown | Sachsituationen mit einer erweiterten Funktionsklasse modellieren | 6 | Umkehrbarkeit untersuchen und Umkehrfunktionen bestimmen (DE-SH \| Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 66 \| de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K005-fd01e50e5f) | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Vertiefung der Analysis > Sachsituationen mit einer erweiterten Funktionsklasse modellieren |
 | GSR-GAP-5E615E88 | Geschwister-Mapping pruefen | Q4 | unknown | Parameter für vorgegebene Nullstellen bestimmen | 8 | Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen (DE-HE \| HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 2, Aspekt 2 \| he-math-sekii-q4-1-b02-a02-eebba818) | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Funktionenscharen und Parameteruntersuchungen (Sek II) > Funktionenscharen und Parameteruntersuchungen > Parameter für vorgegebene Nullstellen bestimmen |
 | GSR-GAP-6CA8AD6B | Geschwister-Mapping pruefen | Q4 | unknown | Parameter zur Modellierung von Sachsituationen bestimmen | 8 | Parameter in Funktionenscharen deuten (DE-HE \| HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1, Aspekt 2 \| he-math-sekii-q4-1-b01-a02-825e2758) | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Funktionenscharen und Parameteruntersuchungen (Sek II) > Funktionenscharen und Parameteruntersuchungen > Parameter zur Modellierung von Sachsituationen bestimmen |
 | GSR-GAP-1BDAC3D8 | Geschwister-Mapping pruefen | Q4 | unknown | Parameterbereiche für Lösungsexistenz analysieren (LK) | 8 | Parameter in Funktionenscharen deuten (DE-HE \| HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1, Aspekt 2 \| he-math-sekii-q4-1-b01-a02-825e2758) | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Funktionenscharen und Parameteruntersuchungen (Sek II) > Funktionenscharen und Parameteruntersuchungen > Parameterbereiche für Lösungsexistenz analysieren (LK) |
@@ -108,5 +107,5 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - All-relevant report: `docs/qa-ci/status/goal-source-rationales-math-all-relevant.json`
-- All-relevant generated: 2026-09-29T07:22:20.985Z
+- All-relevant generated: 2026-09-29T22:14:48.610Z
 

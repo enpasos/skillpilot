@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-vector-five-open-current-20260929-v1-resolution-54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+  "goal": {
+    "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:6c03ef470ff29da76ee4dbd67538633723576c9a5e4d31bc1266b5832a187b20",
+    "pageFingerprint": "sha256:ab8af1032275d8af1e9c0baef7b6ebc7eee18b9417bb37afeca1f80522afc76c",
+    "goalReviewContextFingerprint": "sha256:d4bbb975805946fa7db637fd45434c09a6d05e59f236d0e57b57d401cdcf1b29",
+    "finalText": {
+      "titleDe": "Kollinearität von Vektoren im Raum prüfen",
+      "titleEn": "Check collinearity of vectors in space",
+      "descriptionDe": "Die lernende Person kann bei zwei Vektoren im Raum prüfen, ob einer ein skalares Vielfaches des anderen ist, den Nullvektor dabei als kollinear zu jedem Vektor, aber ohne Richtung behandeln und die Entscheidung für zwei Nichtnullvektoren geometrisch deuten.",
+      "descriptionEn": "The learner can check whether either of two vectors in space is a scalar multiple of the other, treat the zero vector as collinear with every vector but without a direction, and interpret the result geometrically when both vectors are nonzero."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-vector-five-open-current-20260929-v1-a",
+      "campaignDigest": "sha256:b70bca19fee371a737c7147d04cb5264cd1abaa58b443bf1a21d69a9b9064054",
+      "roundId": "mathematik-m7-vector-five-open-current-20260929-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-vector-five-open-current-20260929-v1-independent-a",
+      "reviewInputFingerprint": "sha256:8a154849ae7dddc207e4634ac93078107ac799103dd0cdd0febdc7b29673591f",
+      "goalReviewContextFingerprint": "sha256:d4bbb975805946fa7db637fd45434c09a6d05e59f236d0e57b57d401cdcf1b29",
+      "batchId": "mathematik-m7-vector-five-open-current-20260929-v1-first-pass-a.batch-001",
+      "runId": "mathematik-m7-vector-five-open-current-20260929-v1-a-batch-001-gpt6",
+      "runManifestDigest": "sha256:24000d28d9f6e87d14d43990fcb63a42a625f781186e05bc2dc56c39de93efb7",
+      "resultsDigest": "sha256:45e20dab31a567e0740ee7230b33fb14a8f76fbb36882c38506d90bf983bc22a",
+      "recordId": "math-m7-vector-five-a-54cfe5ce",
+      "recordDigest": "sha256:cd0c650512c5f00aca72ea70e6158ac1a428529c0433616d45c4f6f96c009894"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-vector-five-open-current-20260929-v1-b",
+      "campaignDigest": "sha256:592c5aeae38c1e3a707668d5bd81801be68a26eb2ac9bf4629666b62ef15d248",
+      "roundId": "mathematik-m7-vector-five-open-current-20260929-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-vector-five-open-current-20260929-v1-independent-b",
+      "reviewInputFingerprint": "sha256:8a154849ae7dddc207e4634ac93078107ac799103dd0cdd0febdc7b29673591f",
+      "goalReviewContextFingerprint": "sha256:d4bbb975805946fa7db637fd45434c09a6d05e59f236d0e57b57d401cdcf1b29",
+      "batchId": "mathematik-m7-vector-five-open-current-20260929-v1-first-pass-b.batch-001",
+      "runId": "mathematik-m7-vector-five-open-current-20260929-v1-b-run-001",
+      "runManifestDigest": "sha256:22b6940a26da6e82b41dbe5957468219fcb0f62403d4f48e0b61f1452e1c800c",
+      "resultsDigest": "sha256:e31dcd2446ee43d2e635038a7e7a695a8d11bb91ebf37ae85b3b402e90e858a1",
+      "recordId": "mathematik-m7-vector-five-open-current-20260929-v1-b-run-001.54cfe5ce",
+      "recordDigest": "sha256:ccb773ba70de1428aa724de8f2c2d099f8bed88cfeed61728639fc78f47b5188"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:f93512ea5ceb4c45ba36bbb4440d3013690b16f8ee217bfa738b9d587abfb12d"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "math-m7-vector-five-four-resolved-one-deferred-20260929-v1",
+    "manifestDigest": "sha256:096ef8b14e75af1cc293e869765c221d4c27752f28dcd4fedbc04729402bcc04",
+    "manifestFingerprint": "sha256:c7d7af343d1198e6259b7138097236d78e8b2f265aa7c4dc8b56021f0c49a92d",
+    "decisionId": "math-m7-vector-five-four-resolved-one-deferred-20260929-v1-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "math-m7-vector-five-four-resolved-one-deferred-20260929-v1-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis of two independent current primary-source and actual-image reviews; no human approval",
+    "synthesizedAt": "2026-09-29T20:45:24.000Z",
+    "rationaleDe": "Beide Runden halten den gemeinsamen Skalarfaktor samt Nullvektor-Sonderfall und die auf Nichtnullvektoren begrenzte Richtungsdeutung für eine atomare Raumkompetenz. HE Q2.2, Druckseite 41, nennt Kollinearität im Grundniveau. Das korrigierte aktuelle PNG rechnet den positiven Faktor und ein Gegenbeispiel richtig, ohne den Nullfall vorzutäuschen; der P-v2-Nachweis prüft ihn separat. Kein Anspruch auf pauschale Ländergeltung oder menschliche Freigabe.",
+    "rationaleEn": "Both rounds retain the common scalar, the zero-vector special case and direction interpretation restricted to nonzero vectors as one spatial competence. HE Q2.2, printed p. 41, includes collinearity at the basic level. The corrected current PNG computes a positive factor and counterexample correctly without pretending to show the zero case; P-v2 assesses it separately. No blanket jurisdictional or human approval is claimed.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Für zwei nichtverschwindende Raumvektoren entscheidet ein einziger Skalar für alle drei Komponenten über Kollinearität; sein Vorzeichen bestimmt gleiche oder entgegengesetzte Richtung. Unter der im Text gewählten Konvention ist der Nullvektor mit jedem Vektor kollinear, besitzt aber selbst keine Richtung.",
+      "essentialUnderstandingEn": "For two nonzero spatial vectors, one scalar must fit all three components for collinearity; its sign determines the same or opposite direction. Under the convention stated in the text, the zero vector is collinear with every vector but has no direction itself.",
+      "observablePerformanceDe": "Die lernende Person prüft alle Komponenten eines vorgegebenen Vektorpaares, begründet einen gemeinsamen Faktor oder dessen Unmöglichkeit und trennt beim Nullvektor die algebraische Beziehung von einer unzulässigen Richtungsdeutung.",
+      "observablePerformanceEn": "The learner checks every component of a given vector pair, justifies a common factor or its impossibility, and distinguishes the zero vector’s algebraic relation from an invalid direction claim.",
+      "transferExpectationDe": "Bei einer neuen Raumvektorpaarung mit Nullkomponente oder negativem Faktor bestimmt die lernende Person den Faktor ohne Division durch null und deutet die Richtung nur für zwei Nichtnullvektoren.",
+      "transferExpectationEn": "For a new spatial vector pair with a zero component or a negative factor, the learner determines the factor without dividing by zero and interprets direction only when both vectors are nonzero."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-451da8b3ca90fd01a39086f3ba6ee37aaea410ec5315bf1c612b357adf12ae41",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:6970a85ec312bf0d4fbb3f7cdfb6d42a84608f4e84e5a701f3f96e7956a4c3fc"
+}

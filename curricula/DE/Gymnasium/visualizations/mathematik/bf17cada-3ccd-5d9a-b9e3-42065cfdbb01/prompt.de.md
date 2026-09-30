@@ -8,41 +8,23 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `bf17cada-3ccd-5d9a-b9e3-42065cfdbb01.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/bf17cada-3ccd-5d9a-b9e3-42065cfdbb01/bf17cada-3ccd-5d9a-b9e3-42065cfdbb01.jpg`
+- Quellbild: `bf17cada-3ccd-5d9a-b9e3-42065cfdbb01.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/bf17cada-3ccd-5d9a-b9e3-42065cfdbb01/bf17cada-3ccd-5d9a-b9e3-42065cfdbb01.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Sachsituationen mit einer erweiterten Funktionsklasse modellieren
-Beschreibung: Die lernende Person kann für eine Sachsituation eine passende erweiterte Funktionsklasse auswählen und die Parameter des Modells im Kontext deuten.
-
-Zusatzanweisung:
-Überarbeite die vorhandene Exponentialmodell-Infografik nur typografisch; erhalte Situation, Funktion und Graph.
-
-Pflichtinhalt:
-- Ersetze den sichtbaren Ausdruck „−0.4t“ überall durch „−0,4t“.
-- Verwende in allen Dezimalzahlen ausschließlich deutsche Dezimalkommas.
-- Funktion, Parameterbedeutung und gezeichneter Verlauf müssen weiterhin zueinander passen.
-- Minuszeichen und Exponent müssen eindeutig gesetzt und gut lesbar sein.
-
-Vermeiden:
-- Kein Dezimalpunkt und kein positives Vorzeichen anstelle von −0,4t.
-- Keine Änderung korrekter Anfangs- oder Grenzwerte.
-- Keine technischen Metadaten, Logos oder Wasserzeichen.
+Use case: educational-infographic
+Asset type: one wide landscape PNG card for a German upper-secondary mathematics learning goal
+Primary request: A single mathematically coherent scene showing data, selection of a suitable curved model, and interpretation of a start-value parameter in a water-volume context. This is an illustration of model choice, not a claim that any named function family is compulsory.
+Scene/backdrop: SOLID fully opaque warm cream background filling every pixel edge-to-edge; no transparency or holes anywhere. One softly rounded pale-blue chart panel, with a tiny friendly water-container icon in one corner.
+Composition/framing: ONE large coordinate graph only, ample white space and bold card-size labels. Horizontal axis Zeit, vertical axis Menge. At time zero on the vertical axis is an orange starting point clearly ABOVE the horizontal axis. A smooth blue rising curve A starts EXACTLY at this orange starting point and bends gently downward as it rises. Five orange measurement dots lie on or very close to blue curve A at later times. A thin dashed gray STRAIGHT line B starts at the same orange starting point but clearly misses the later orange dots. Place a neat checkmark next to label A. A callout arrow points EXACTLY to the orange starting point and says f(0) = a; a = Anfangsmenge. The same graph simultaneously explains both model choice and parameter meaning.
+Style/medium: friendly abstract clear comic-like school illustration, soft blue and orange flat colors, clean dark navy hand-inked outlines; precise diagram; not photorealistic and not sterile technical.
+Text (verbatim, and NO OTHER visible words): "Messdaten und Modell", "Zeit", "Menge", "A", "B", "f(0) = a", "a = Anfangsmenge".
+Constraints: The marked point's positive height above x-axis is unmistakable. The blue and gray curves begin at that same point; the blue curve fits the dots, the gray line does not. No numeric ticks. All labels large, correct German spelling and readable at card size. Opaque RGB-looking background; do NOT generate transparency, alpha cutouts, black voids, checkerboards or patchy halos.
+Avoid: formula for any named function family; double graphs; unrelated captions; clipped labels; extra text; wrong y-intercept; watermarks; logos; technical IDs.
 ```
 
 ## Review-Notiz

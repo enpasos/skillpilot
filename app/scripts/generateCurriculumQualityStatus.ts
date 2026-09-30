@@ -4457,9 +4457,13 @@ function formatCourseLevelSet(levels: Set<CourseLevelTag>): string {
   return Array.from(levels).sort().join('+') || '-'
 }
 
-function evaluateCourseLevelMappingConsistency(landscape: SkillLandscape): RuleResult {
+export function evaluateCourseLevelMappingConsistency(
+  landscape: SkillLandscape,
+  mappingFiles: Array<GoalMappingFile & { file: string }> = readAllGoalMappingFiles(),
+  sourceExtractionsByPath?: ReadonlyMap<string, SourceExtractionDocument>,
+): RuleResult {
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
-  const configuredMappingFiles = readAllGoalMappingFiles()
+  const configuredMappingFiles = mappingFiles
     .filter((mappingFile) =>
       mappingFile.targetLandscapeId === landscape.landscapeId
       && typeof mappingFile.sourceExtractionPath === 'string'
@@ -4486,26 +4490,32 @@ function evaluateCourseLevelMappingConsistency(landscape: SkillLandscape): RuleR
   let unmappedCourseLevelSourceGoals = 0
   const mismatches: string[] = []
   const details: string[] = []
+  const mappingFilesByExtractionPath = new Map<string, typeof configuredMappingFiles>()
+  configuredMappingFiles.forEach((mappingFile) => {
+    const sourcePath = mappingFile.sourceExtractionPath!
+    const group = mappingFilesByExtractionPath.get(sourcePath) ?? []
+    group.push(mappingFile)
+    mappingFilesByExtractionPath.set(sourcePath, group)
+  })
+  const countedSourcePaths = new Set<string>()
 
   configuredMappingFiles.forEach((mappingFile) => {
-    const extractionPath = resolve(repoRoot, mappingFile.sourceExtractionPath!)
-    if (!existsSync(extractionPath)) {
+    const sourcePath = mappingFile.sourceExtractionPath!
+    const extractionPath = resolve(repoRoot, sourcePath)
+    if (!sourceExtractionsByPath?.has(sourcePath) && !existsSync(extractionPath)) {
       details.push(`${mappingFile.file}: missing source-extraction file ${mappingFile.sourceExtractionPath}`)
       return
     }
 
-    const extraction = loadJson<SourceExtractionDocument>(extractionPath)
+    const extraction = sourceExtractionsByPath?.get(sourcePath)
+      ?? loadJson<SourceExtractionDocument>(extractionPath)
     const sourceGoalById = new Map(
       (extraction.sourceGoals ?? [])
         .filter((goal): goal is SourceExtractionGoal & { id: string } =>
           typeof goal.id === 'string' && goal.id.trim().length > 0)
         .map((goal) => [goal.id, goal]),
     )
-    const mappedSourceGoalIds = new Set(
-      (mappingFile.mappings ?? [])
-        .map((mapping) => mapping.legacyGoalId)
-        .filter((goalId): goalId is string => typeof goalId === 'string' && goalId.trim().length > 0),
-    )
+    const siblingMappingFiles = mappingFilesByExtractionPath.get(sourcePath) ?? [mappingFile]
     const decisionBySourceGoalId = new Map(
       (mappingFile.decisions ?? [])
         .filter((decision): decision is SourceMappingReviewDecision & { sourceGoalId: string } =>
@@ -4513,22 +4523,46 @@ function evaluateCourseLevelMappingConsistency(landscape: SkillLandscape): RuleR
         .map((decision) => [decision.sourceGoalId, decision]),
     )
 
-    const upperSecondarySourceGoals = Array.from(sourceGoalById.values()).filter(isUpperSecondarySourceGoal)
-    sourceGoals += upperSecondarySourceGoals.length
-    upperSecondarySourceGoals.forEach((sourceGoal) => {
-      const expected = expectedCourseLevelsForSourceGoal(sourceGoal, {}, decisionBySourceGoalId)
-      if (!expected) return
-      sourceGoalsWithCourseLevel += 1
-      if (expected.levels.has('GK') && expected.levels.has('LK')) gkLkSourceGoals += 1
-      if (!expected.levels.has('GK') && expected.levels.has('LK')) lkSourceGoals += 1
-      if (String(sourceGoal.courseLevel ?? '').trim().toUpperCase() === 'UNSPECIFIED') unspecifiedSourceGoals += 1
-      if (!mappedSourceGoalIds.has(sourceGoal.id!)) {
-        const decision = decisionBySourceGoalId.get(sourceGoal.id!)
-        if (decision?.decision === 'needsCanonicalGoal') return
-        unmappedCourseLevelSourceGoals += 1
-        if (details.length < 20) details.push(`${sourceGoal.id}: no canonical mapping exists for course-level checked source goal`)
-      }
-    })
+    if (!countedSourcePaths.has(sourcePath)) {
+      countedSourcePaths.add(sourcePath)
+      // A focused review can add mappings for a few source goals. Coverage is
+      // a property of the source extraction across all its review files, while
+      // every individual mapping edge is still checked below.
+      const mappedSourceGoalIds = new Set(
+        siblingMappingFiles.flatMap((file) => file.mappings ?? [])
+          .map((mapping) => mapping.legacyGoalId)
+          .filter((goalId): goalId is string => typeof goalId === 'string' && goalId.trim().length > 0),
+      )
+      const groupedDecisions = new Map<string, SourceMappingReviewDecision>()
+      siblingMappingFiles.forEach((file) => {
+        ;(file.decisions ?? []).forEach((decision) => {
+          if (typeof decision.sourceGoalId !== 'string' || !decision.sourceGoalId.trim()) return
+          const previous = groupedDecisions.get(decision.sourceGoalId)
+          if (!previous || (!previous.courseLevelDecision && decision.courseLevelDecision)) {
+            groupedDecisions.set(decision.sourceGoalId, decision)
+          }
+        })
+      })
+
+      const upperSecondarySourceGoals = Array.from(sourceGoalById.values()).filter(isUpperSecondarySourceGoal)
+      sourceGoals += upperSecondarySourceGoals.length
+      upperSecondarySourceGoals.forEach((sourceGoal) => {
+        const expected = expectedCourseLevelsForSourceGoal(sourceGoal, {}, groupedDecisions)
+        if (!expected) return
+        sourceGoalsWithCourseLevel += 1
+        if (expected.levels.has('GK') && expected.levels.has('LK')) gkLkSourceGoals += 1
+        if (!expected.levels.has('GK') && expected.levels.has('LK')) lkSourceGoals += 1
+        if (String(sourceGoal.courseLevel ?? '').trim().toUpperCase() === 'UNSPECIFIED') unspecifiedSourceGoals += 1
+        if (!mappedSourceGoalIds.has(sourceGoal.id!)) {
+          const hasNeedsCanonicalGoalDecision = siblingMappingFiles.some((file) =>
+            (file.decisions ?? []).some((decision) =>
+              decision.sourceGoalId === sourceGoal.id && decision.decision === 'needsCanonicalGoal'))
+          if (hasNeedsCanonicalGoalDecision) return
+          unmappedCourseLevelSourceGoals += 1
+          if (details.length < 20) details.push(`${sourceGoal.id}: no canonical mapping exists for course-level checked source goal`)
+        }
+      })
+    }
 
     ;(mappingFile.mappings ?? []).forEach((mapping) => {
       if (mapping.matchType === 'partial') return

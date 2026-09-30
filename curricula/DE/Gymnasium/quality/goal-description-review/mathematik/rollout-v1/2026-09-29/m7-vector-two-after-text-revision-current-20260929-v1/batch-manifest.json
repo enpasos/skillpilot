@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-vector-two-after-text-revision-current-20260929-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-29/m7-vector-two-after-text-revision-current-20260929-v1.config.json",
+  "configDigest": "sha256:f45f2cb3aa37e1e8e48af6f164ce1e80f49b834d4f42e7452d7276664a80d58e",
+  "goalIds": [
+    "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+    "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 807,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:75b5365b9046574e627d5eb05893835c5b923e9215338e6d0eebbc3012c30712"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:a3759846303fdc0ae53036568ae8eff776ddca2e683a5f59c8507689f50fd898",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:026648ebb4f7e701c2803c4df704b27e133740f39f5fee26c6e0780fc86fd044",
+    "reviewInputFingerprint": "sha256:4fbaaa8a1b6d917cb01fd3bee5eb658f0349ead2428db3d26fd99b212d09e8ea",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-vector-two-after-text-revision-current-20260929-v1-a",
+        "campaignDigest": "sha256:3d25a7efb7ae8b128487e18ac7ff9db9534f9eac347a70c532a00b3ab77f583c",
+        "roundId": "mathematik-m7-vector-two-after-text-revision-current-20260929-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-vector-two-after-text-revision-current-20260929-v1-independent-a",
+        "batchId": "mathematik-m7-vector-two-after-text-revision-current-20260929-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:78fc367b4ad7b9c38efc10ce1d7beaa5a736fcd1a359a31d55457cf1c91cf076"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-vector-two-after-text-revision-current-20260929-v1-b",
+        "campaignDigest": "sha256:778bf2621d7be5f9dc5e4566f4c9fb5d4bc8456bd58d6936b3fddd57c5a48fed",
+        "roundId": "mathematik-m7-vector-two-after-text-revision-current-20260929-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-vector-two-after-text-revision-current-20260929-v1-independent-b",
+        "batchId": "mathematik-m7-vector-two-after-text-revision-current-20260929-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:ea4c96ffca0f1fbd6be4375d79df9edb957e10e708ef1d495c8e3a4528a91122"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,347 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-five-text-source-rebind-current-20260929-v1",
+  "reviewedAt": "2026-09-29T21:02:47Z",
+  "reviewer": "codex-m7-five-text-source-targeted-positive-evidence-ai",
+  "goals": [
+    {
+      "goalId": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
+      "reason": "Die neue DE/EN-Formulierung „mit k² bzw. k³ multipliziert“ ist für alle k>0 korrekt, insbesondere k=1; das alte „wachsen oder schrumpfen“ ließ den neutralen Fall aus. Das aktive PNG mit k=2 wurde tatsächlich geprüft: Quadratflächen 1→4 und Würfelvolumina 1→8 stimmen. HE KC 2024 Q2.5 nennt zentrische Streckungen am Ursprung; die Faktoren sind mathematische Folgerungen zusammen mit Flächen-/Volumenbegründungen aus Q2.2, kein wörtliches Curriculumzitat. Drei neue unabhängige Transfers prüfen k=3, k=1/2 und k=1. KI-Profil E1/G1; keine menschliche Freigabe und keine konkrete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "kantenwirkung",
+            "essentialUnderstandingDe": "Bei einer zentrischen Streckung am Koordinatenursprung mit k>0 werden jeder Orts- und jeder Verbindungsvektor sowie jede Kantenlänge mit demselben Faktor k skaliert; Winkel und Form bleiben erhalten. Für k=1 bleibt jede Länge unverändert; dies ist ebenfalls eine positive Streckung mit neutraler Wirkung.",
+            "essentialUnderstandingEn": "Under a central dilation at the coordinate origin with k>0, every position and displacement vector and every edge length is scaled by the same factor k; angles and shape are preserved. At k=1 every length is unchanged; this is the neutral case of a positive dilation.",
+            "observablePerformanceDe": "Die lernende Person bestimmt an gegebenen Punkten oder Kantenvektoren selbstständig die Bildvektoren und begründet daraus die für die Figur benötigten skalierten Längen, statt nur einen Faktor aus einer Zeichnung abzulesen.",
+            "observablePerformanceEn": "The learner independently determines image vectors from given points or edge vectors and uses them to justify the scaled lengths needed for the figure rather than reading a factor from a drawing."
+          },
+          {
+            "id": "flaechenfaktor",
+            "essentialUnderstandingDe": "Ein Flächeninhalt hängt von zwei unabhängigen Längenrichtungen ab; werden beide mit k skaliert, entsteht der Faktor k², auch bei einer Dreiecksfläche mit dem zusätzlichen Faktor 1/2.",
+            "essentialUnderstandingEn": "An area depends on two independent length directions; scaling both by k gives a factor of k², including for a triangular face with its additional factor of 1/2.",
+            "observablePerformanceDe": "Die lernende Person leitet den Faktor k² an einer gegebenen Fläche aus zwei skalierten Spannrichtungen her und berechnet den Bildflächeninhalt mit passenden Flächeneinheiten.",
+            "observablePerformanceEn": "The learner derives the factor k² for a given face from two scaled spanning directions and calculates the image area with appropriate square units."
+          },
+          {
+            "id": "volumenfaktor",
+            "essentialUnderstandingDe": "Bei einem Körper werden Grundfläche und senkrechte Höhe mit k² beziehungsweise k skaliert; deshalb wird sein Volumen mit k³ skaliert, während ein konstanter Formelfaktor wie 1/3 erhalten bleibt.",
+            "essentialUnderstandingEn": "For a solid, base area and perpendicular height scale by k² and k respectively; therefore its volume scales by k³, while a constant formula factor such as 1/3 remains unchanged.",
+            "observablePerformanceDe": "Die lernende Person begründet an einem gegebenen Körper die skalierten Grundflächen- und Höhenmaße, leitet daraus k³ ab, berechnet das Bildvolumen und prüft, ob Wachstum oder Schrumpfung zum positiven k passt.",
+            "observablePerformanceEn": "For a given solid, the learner justifies the scaled base and height measures, derives k³, calculates the image volume, and checks that growth or shrinkage matches the positive value of k."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "kantenwirkung",
+            "flaechenfaktor",
+            "volumenfaktor"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "dimension-und-koerperform",
+            "textDe": "Wechsel von der zweidimensionalen Dreiecksfläche zur dreidimensionalen Pyramide; der Faktor 1/3 bleibt trotz Skalierung bestehen.",
+            "textEn": "Move from a two-dimensional triangular face to a three-dimensional pyramid; the factor 1/3 remains unchanged under dilation."
+          },
+          {
+            "id": "wachstum-und-schrumpfung",
+            "textDe": "Ein Fall nutzt k>1 und begründet vergrößerte Fläche, der andere 0<k<1 und begründet verkleinerte Grundfläche, Höhe und Volumen.",
+            "textEn": "One case uses k>1 and justifies an enlarged area; the other uses 0<k<1 and justifies a reduced base area, height, and volume."
+          },
+          {
+            "id": "neutral-factor",
+            "textDe": "Vergrößerung, Verkleinerung oder unveränderte Figur bei k=1",
+            "textEn": "enlargement, reduction, or unchanged figure at k=1"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "ursprungsdreieck-k3",
+            "taskDemandDe": "Das Dreieck hat die Eckpunkte O=(0,0,0), A=(2,0,0), B=(0,3,0). Unter T(x)=3x soll die lernende Person den Bildflächeninhalt bestimmen und den Flächenfaktor aus den Bildvektoren begründen.",
+            "taskDemandEn": "The triangle has vertices O=(0,0,0), A=(2,0,0), B=(0,3,0). Under T(x)=3x, the learner must determine the image area and justify the area factor from the image vectors.",
+            "expectedPerformanceDe": "Sie bestimmt OA'=(6,0,0) und OB'=(0,9,0), begründet die Verdreifachung beider senkrechter Spannrichtungen und damit den Faktor 3²=9. Aus dem Ausgangsinhalt 1/2 mal 2 mal 3=3 folgen 27 Flächeneinheiten; sie erklärt, warum nicht der Längenfaktor 3 für den Inhalt gilt.",
+            "expectedPerformanceEn": "They determine OA'=(6,0,0) and OB'=(0,9,0), justify the tripling of both perpendicular spanning directions and thus the factor 3²=9. The original area is 1/2 times 2 times 3=3, so the image area is 27 square units; they explain why the length factor 3 is not the area factor.",
+            "understandingFocusDe": "Eigene Ableitung des Flächenfaktors aus zwei veränderten Kantenvektoren, ohne die Quadratfigur oder k=2 aus dem Bild zu wiederholen.",
+            "understandingFocusEn": "Independent derivation of the area factor from two changed edge vectors, without repeating the square or k=2 shown in the image."
+          },
+          {
+            "id": "rechteckpyramide-khalb",
+            "taskDemandDe": "Eine Pyramide hat die rechteckige Grundfläche mit Ecken (0,0,0), (4,0,0), (4,2,0), (0,2,0) und die Spitze (0,0,6). Unter T(x)=x/2 soll die lernende Person Bildgrundfläche, Bildhöhe und Bildvolumen bestimmen und den Volumenfaktor begründen.",
+            "taskDemandEn": "A pyramid has a rectangular base with corners (0,0,0), (4,0,0), (4,2,0), (0,2,0) and apex (0,0,6). Under T(x)=x/2, the learner must determine the image base area, image height, and image volume and justify the volume factor.",
+            "expectedPerformanceDe": "Sie zeigt, dass die beiden Grundkanten zu 2 und 1 werden, somit die Grundfläche von 8 auf 2 sinkt, während die senkrechte Höhe von 6 auf 3 sinkt. Der Ausgangskörper hat Volumen 1/3 mal 8 mal 6=16, das Bild Volumen 1/3 mal 2 mal 3=2. Sie leitet den Faktor (1/2)³=1/8 aus k² für die Grundfläche und k für die Höhe ab; 1/3 bleibt unverändert.",
+            "expectedPerformanceEn": "They show that the two base edges become 2 and 1, so base area decreases from 8 to 2 while perpendicular height decreases from 6 to 3. The original volume is 1/3 times 8 times 6=16, and the image volume is 1/3 times 2 times 3=2. They derive the factor (1/2)³=1/8 from k² for the base and k for the height; 1/3 remains unchanged.",
+            "understandingFocusDe": "Unabhängiger Transfer vom Flächenargument zum Volumen einer nicht würfelförmigen Raumfigur mit 0<k<1 und begründeter Grundfläche-Höhe-Zerlegung.",
+            "understandingFocusEn": "Independent transfer from the area argument to the volume of a non-cubic solid with 0<k<1 and a justified base-area-times-height decomposition."
+          },
+          {
+            "id": "neutral-dilation-k1",
+            "taskDemandDe": "Ein Quader mit Kantenlängen 2 cm, 3 cm und 5 cm wird am Ursprung mit k=1 zentrisch gestreckt. Bestimme Flächen- und Volumenfaktor, begründe sie aus den Bildkanten und grenze diesen Fall gegen k=2 ab.",
+            "taskDemandEn": "A cuboid with edges 2 cm, 3 cm, and 5 cm is centrally dilated about the origin with k=1. Find its area and volume factors, justify them from the image edges, and compare with k=2.",
+            "expectedPerformanceDe": "Alle Bildkanten bleiben 2, 3 und 5 cm. Jede Seitenfläche behält ihren Inhalt, weil 1²=1; das Volumen bleibt 30 cm³, weil 1³=1. Erst k=2 würde Flächen vervierfachen und Volumen verachtfachen. „Wachsen oder schrumpfen“ ist bei k=1 falsch, die Multiplikatorform gilt immer.",
+            "expectedPerformanceEn": "All image edges remain 2, 3, and 5 cm. Each face retains its area because 1²=1; the volume remains 30 cm³ because 1³=1. At k=2 instead, areas quadruple and volume is multiplied by eight. “Grow or shrink” is false at k=1, while the multiplier formulation remains valid.",
+            "understandingFocusDe": "Eigenständiger neutraler Grenzfall der neuen Formulierung; Formelverständnis statt Bildablesen.",
+            "understandingFocusEn": "Independent neutral boundary case for the revised wording; understanding of the multiplier rather than image recall."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d1352ce0-9502-5039-9af6-318fe385b6fd",
+      "reason": "Die neue DE/EN-J9-Formulierung benennt den einen gemeinsamen Komponentenfaktor und schränkt die geometrische Richtungsprüfung auf Nichtnullvektoren ein. Im tatsächlich geöffneten aktuellen PNG stimmen v=(2,4)=2(1,2) und die widersprüchlichen Faktoren für (3,1)/(1,2); das korrigierte Bild ist ein Anstoß, kein Lernendennachweis. Die zwei frischen ebenen Transferfälle bleiben korrekt; ein dritter neuer Fall prüft die Nullvektor-Konvention mit 0=0·u ohne zugeschriebene Richtung. KI-Profil E1/G1, keine menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "common-factor-in-plane",
+            "essentialUnderstandingDe": "Zwei von null verschiedene ebene Vektoren sind kollinear, wenn ein einziger skalarer Faktor beide Komponenten gleichzeitig verknüpft; ein negativer Faktor beschreibt entgegengesetzte Richtungen.",
+            "essentialUnderstandingEn": "Two nonzero planar vectors are collinear when one scalar factor links both components simultaneously; a negative factor describes opposite directions.",
+            "observablePerformanceDe": "Bestimmt oder widerlegt einen gemeinsamen Faktor an beiden Komponenten und deutet eine bestätigte Kollinearität als parallele oder antiparallele Pfeilrichtung.",
+            "observablePerformanceEn": "Finds or refutes one common factor across both components and interprets confirmed collinearity as parallel or antiparallel arrow directions."
+          },
+          {
+            "id": "simple-counterexample-and-check",
+            "essentialUnderstandingDe": "In einfachen nicht kollinearen Fällen widerlegt bereits eine nicht passende zweite Komponente den vermuteten Faktor; die Prüfung betrifft die Vektorrichtungen unabhängig vom gewählten Startpunkt der Pfeile.",
+            "essentialUnderstandingEn": "In simple non-collinear cases, a second component that fails the proposed factor refutes it; the check concerns vector directions regardless of where arrows are drawn.",
+            "observablePerformanceDe": "Begründet eine Nein-Entscheidung mit dem Komponentenwiderspruch und kann in einem neuen ebenen Fall eine fehlende Komponente so wählen, dass beide Komponenten passen.",
+            "observablePerformanceEn": "Justifies a negative decision with the component contradiction and can choose a missing component in a new planar case so both components agree."
+          },
+          {
+            "id": "zero-vector-algebraic-boundary",
+            "essentialUnderstandingDe": "Der Nullvektor hat keine Richtung. Unter der expliziten algebraischen Konvention „einer ist ein skalares Vielfaches des anderen“ ist 0=0·u für jeden Nichtnullvektor u ein kollinearer Grenzfall; die Faktorrichtung muss passend gewählt werden.",
+            "essentialUnderstandingEn": "The zero vector has no direction. Under the explicit algebraic convention “one vector is a scalar multiple of the other”, 0=0·u is a collinear boundary case for any nonzero u; the direction of the scalar relation matters.",
+            "observablePerformanceDe": "Die lernende Person prüft eine Nullvektor-Paarung mit einem gemeinsamen Faktor 0 in allen Komponenten und behauptet für den Nullvektor keine geometrische Richtung.",
+            "observablePerformanceEn": "The learner checks a pair involving the zero vector with one shared factor 0 in every component and does not assign a geometric direction to the zero vector."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "common-factor-in-plane",
+            "simple-counterexample-and-check",
+            "zero-vector-algebraic-boundary"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "classify-opposite-and-nonparallel",
+            "textDe": "Einen entgegengesetzt gerichteten kollinearen Pfeil mit einem nur teilweise passenden Gegenbeispiel vergleichen.",
+            "textEn": "Compare an oppositely directed collinear arrow with a counterexample that matches only one component."
+          },
+          {
+            "id": "unknown-component",
+            "textDe": "Von der Ja-Nein-Prüfung zur Bestimmung einer fehlenden ebenen Komponente wechseln.",
+            "textEn": "Switch from a yes-no check to finding a missing planar component."
+          },
+          {
+            "id": "zero-boundary",
+            "textDe": "Nichtnullvektor-Paar versus Paar mit Nullvektor",
+            "textEn": "nonzero-vector pair versus pair containing the zero vector"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "planar-arrow-trio",
+            "taskDemandDe": "Auf einer ebenen Karte sind die freien Verschiebungsvektoren a=(2,3), b=(-4,-6) und c=(-4,6) angegeben. Prüfe b und c jeweils gegen a auf Kollinearität und erkläre die Pfeilrichtungen; die Startpunkte der gezeichneten Pfeile dürfen verschieden sein.",
+            "taskDemandEn": "On a planar map, free displacement vectors a=(2,3), b=(-4,-6), and c=(-4,6) are given. Check b and c separately against a for collinearity and explain the arrow directions; the drawn arrows may start at different points.",
+            "expectedPerformanceDe": "b=-2a stimmt in beiden Komponenten, ist daher kollinear und zeigt entgegengesetzt zu a. Für c erzwingt x den Faktor -2, aber y müsste dann -6 statt 6 sein; c ist nicht kollinear zu a. Unterschiedliche Startpunkte ändern die freien Vektoren nicht.",
+            "expectedPerformanceEn": "b=-2a agrees in both components, so it is collinear and points opposite to a. For c, x forces factor -2, but y would then have to be -6 rather than 6; c is not collinear with a. Different starting points do not change free vectors.",
+            "understandingFocusDe": "Ein gemeinsamer Faktor und ein echter Komponentenwiderspruch werden geometrisch interpretiert.",
+            "understandingFocusEn": "A common factor and a genuine component contradiction are interpreted geometrically."
+          },
+          {
+            "id": "planar-parameter-completion",
+            "taskDemandDe": "In einer neuen ebenen Situation ist p=(3,-2) und q=(-9,h). Bestimme alle reellen h, für die p und q kollinear sind, und begründe Richtung und Längenverhältnis; prüfe als Gegenprobe h=-6.",
+            "taskDemandEn": "In a new planar situation, p=(3,-2) and q=(-9,h). Find every real h for which p and q are collinear, and justify direction and length ratio; use h=-6 as a countercheck.",
+            "expectedPerformanceDe": "Aus -9=λ·3 folgt λ=-3; deshalb muss h=(-3)·(-2)=6 sein. Dann q=-3p, also entgegengesetzte Richtung und dreifacher Betrag. Bei h=-6 passt die y-Komponente nicht zu λ=-3; dieses q ist nicht kollinear.",
+            "expectedPerformanceEn": "From -9=λ·3 follows λ=-3; thus h=(-3)·(-2)=6. Then q=-3p, so the direction is opposite and the magnitude triple. At h=-6, the y-component does not fit λ=-3; that q is not collinear.",
+            "understandingFocusDe": "Transfer zur inversen Festlegung einer ebenen Komponente statt bloßer Verhältnisprüfung.",
+            "understandingFocusEn": "Transfer to inversely determining a planar component rather than merely checking ratios."
+          },
+          {
+            "id": "zero-vector-relation-convention",
+            "taskDemandDe": "Unter der Konvention „zwei Vektoren sind kollinear, wenn einer ein skalares Vielfaches des anderen ist“ prüfe u=(4|−2) und z=(0|0). Gib eine gültige Komponentengleichung an und erkläre, ob du für z eine gleiche oder entgegengesetzte Richtung zeichnen darfst.",
+            "taskDemandEn": "Under the convention “two vectors are collinear if one is a scalar multiple of the other”, test u=(4,−2) and z=(0,0). Give a valid component relation and explain whether z may be drawn with the same or opposite direction.",
+            "expectedPerformanceDe": "z=0·u gilt mit demselben Skalar 0 in beiden Komponenten; damit ist das Paar nach der gesetzten algebraischen Konvention kollinear. Die Umkehrung u=λz ist für u≠0 unmöglich, was die gewählte Faktorrichtung erklärt. z besitzt keine Richtung, also entfällt die geometrische Richtungsprüfung.",
+            "expectedPerformanceEn": "z=0·u holds with the same scalar 0 in both components; hence the pair is collinear under the stated algebraic convention. The reverse relation u=λz is impossible for u≠0, explaining the chosen direction of the scalar relation. z has no direction, so the geometric direction check does not apply.",
+            "understandingFocusDe": "Prüft die fachliche Geltungsgrenze der neuen J9-Formulierung unabhängig vom aktiven Bild.",
+            "understandingFocusEn": "Tests the mathematical boundary of the revised J9 wording independently of the active image."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+      "reason": "Die neue DE/EN-Beschreibung macht das Verständnis exakt: Der Mittelwert ist Integralwert geteilt durch Intervalllänge und der konstante Funktionswert mit demselben Integral. Das aktuelle Bild wurde fachlich und visuell geprüft: B(t)=10+t² hat bei t=0 Steigung 0, B(3)=19 L, Integral 39 L·min und Mittelwert 13 L. HE KC 2024 Q1.2 nennt mittleren Bestand und mittlere Änderungsrate. Die bestehenden unabhängigen linearen Bestands-, quadratischen Zufluss- und vorzeichenwechselnden Ratenfälle wurden nachgerechnet; sie prüfen die beiden Einheitsarten und die Netto-Grenze. KI-Profil E1/G1, keine menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "integral-mean-equal-effect",
+            "essentialUnderstandingDe": "Für a<b ist der konstante Mittelwert f̄=(1/(b−a))∫ₐᵇf(x)dx; sein Rechteck über derselben Intervalllänge besitzt dieselbe vorzeichenbehaftete Gesamtwirkung wie die gegebene Funktion.",
+            "essentialUnderstandingEn": "For a<b, the constant mean is f̄=(1/(b−a))∫ₐᵇf(x)dx; its rectangle over the same interval length has the same signed accumulated effect as the given function.",
+            "observablePerformanceDe": "Die lernende Person berechnet in einer neuen Aufgabe Integral und Intervalllänge, teilt richtig und überprüft durch f̄·(b−a)=∫ₐᵇf die Gleichwirkung.",
+            "observablePerformanceEn": "In a fresh task, the learner computes the integral and interval length, divides correctly, and checks equal effect via f̄·(b−a)=∫ₐᵇf."
+          },
+          {
+            "id": "stock-mean-units",
+            "essentialUnderstandingDe": "Bei einer Bestandsfunktion mit Einheit L und Zeitachse min hat das Integral die Einheit L·min und der mittlere Bestand wieder L; er ist der konstante Bestand mit demselben Zeitflächeninhalt.",
+            "essentialUnderstandingEn": "For a stock function in litres over minutes, the integral has unit L·min and the mean stock has unit L again; it is the constant stock with the same time-area.",
+            "observablePerformanceDe": "Die lernende Person deutet einen neuen Bestandsmittelwert als Bestandshöhe, nicht als gesamte Bestandsmenge, und erklärt die Einheitenkürzung sowie den Ausgleich.",
+            "observablePerformanceEn": "The learner interprets a fresh stock mean as a stock level rather than a total stock quantity and explains the unit cancellation and equal-area balance."
+          },
+          {
+            "id": "rate-mean-units-and-net-change",
+            "essentialUnderstandingDe": "Bei einer Änderungsratenfunktion in L/min liefert das vorzeichenbehaftete Integral die Netto-Bestandsänderung in L; Division durch die Zeit ergibt die mittlere Rate in L/min. Positive und negative Beiträge können sich ausgleichen.",
+            "essentialUnderstandingEn": "For a rate-of-change function in L/min, the signed integral yields net stock change in L; division by time yields the mean rate in L/min. Positive and negative contributions can cancel.",
+            "observablePerformanceDe": "Die lernende Person deutet in frischen Ratenfällen Integral, Mittelwert und Vorzeichen getrennt und prüft, dass die konstante mittlere Rate über das Intervall dieselbe Nettoänderung erzeugt.",
+            "observablePerformanceEn": "In fresh rate cases, the learner separately interprets integral, mean, and signs and checks that the constant mean rate gives the same net change over the interval."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "integral-mean-equal-effect",
+            "stock-mean-units",
+            "rate-mean-units-and-net-change"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "quantity-type",
+            "textDe": "Bestandsfunktion in L versus Änderungsratenfunktion in L/min",
+            "textEn": "stock function in L versus rate function in L/min"
+          },
+          {
+            "id": "function-shape",
+            "textDe": "lineare Bestandsfunktion versus quadratische und vorzeichenwechselnde Ratenfunktionen",
+            "textEn": "linear stock function versus quadratic and sign-changing rate functions"
+          },
+          {
+            "id": "accumulation-meaning",
+            "textDe": "Zeitflächeninhalt L·min versus Nettoänderung L mit möglichem Vorzeichenausgleich",
+            "textEn": "time-area L·min versus net change L with possible signed cancellation"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "linear-stock-over-four-minutes",
+            "taskDemandDe": "Ein idealisierter Bestand ist B(t)=6+2t Liter für 0≤t≤4 Minuten. Bestimme den mittleren Bestand mit einem Integral und begründe anhand eines konstanten Bestands die Division durch die Intervalllänge.",
+            "taskDemandEn": "An idealized stock is B(t)=6+2t litres for 0≤t≤4 minutes. Determine the mean stock using an integral and justify division by interval length using a constant stock.",
+            "expectedPerformanceDe": "∫₀⁴(6+2t)dt=[6t+t²]₀⁴=40 L·min. Die Intervalllänge beträgt 4 min, daher B̄=40/4=10 L. Ein konstanter Bestand von 10 L ergibt über 4 min dieselben 40 L·min; 40 L·min ist die Zeitfläche und nicht der mittlere Bestand.",
+            "expectedPerformanceEn": "∫₀⁴(6+2t)dt=[6t+t²]₀⁴=40 L·min. The interval is 4 min long, so B̄=40/4=10 L. A constant stock of 10 L yields the same 40 L·min over 4 min; 40 L·min is the time-area, not the mean stock.",
+            "understandingFocusDe": "Frischer linearer Bestand mit Einheiten- und Ausgleichsdeutung statt Kopie der Bildparabel.",
+            "understandingFocusEn": "Fresh linear stock with units and equal-area meaning rather than copying the pictured parabola."
+          },
+          {
+            "id": "quadratic-inflow-rate",
+            "taskDemandDe": "Eine Zuflussrate ist r(t)=2+t² L/min für 0≤t≤3 min. Bestimme die mittlere Rate per Integral, die gesamte zugeflossene Menge und die konstante Rate mit derselben Wirkung.",
+            "taskDemandEn": "An inflow rate is r(t)=2+t² L/min for 0≤t≤3 min. Determine the mean rate by integration, the total inflow, and the constant rate with the same effect.",
+            "expectedPerformanceDe": "∫₀³(2+t²)dt=[2t+t³/3]₀³=15 L Zufluss. Die mittlere Rate ist r̄=15 L/(3 min)=5 L/min. Eine konstante Rate von 5 L/min liefert in 3 min dieselben 15 L. Das Integral und der Ratenmittelwert haben unterschiedliche Einheiten und Bedeutungen.",
+            "expectedPerformanceEn": "∫₀³(2+t²)dt=[2t+t³/3]₀³=15 L inflow. The mean rate is r̄=15 L/(3 min)=5 L/min. A constant rate of 5 L/min supplies the same 15 L in 3 min. The integral and the mean rate have different units and meanings.",
+            "understandingFocusDe": "Unabhängiger Transfer von Bestandsmittelwert zu mittlerer Änderungsrate.",
+            "understandingFocusEn": "Independent transfer from mean stock to mean rate of change."
+          },
+          {
+            "id": "signed-rate-zero-net-effect",
+            "taskDemandDe": "Eine Netto-Änderungsrate lautet q(t)=4−2t L/min für 0≤t≤4 min. Bestimme die mittlere Rate und erkläre, was der Wert über die Änderung des Bestands aussagt und was nicht.",
+            "taskDemandEn": "A net rate of change is q(t)=4−2t L/min for 0≤t≤4 min. Find its mean and explain what it does and does not say about the stock change.",
+            "expectedPerformanceDe": "∫₀⁴(4−2t)dt=[4t−t²]₀⁴=0 L; daher q̄=0 L/(4 min)=0 L/min. Die konstante Nullrate hat dieselbe Nettoänderung 0 L, obwohl q(t) zunächst positiv und nach t=2 min negativ ist. Null als Mittelwert bedeutet keinen Nettozuwachs, nicht Stillstand in jedem Augenblick.",
+            "expectedPerformanceEn": "∫₀⁴(4−2t)dt=[4t−t²]₀⁴=0 L; hence q̄=0 L/(4 min)=0 L/min. The constant zero rate has the same net change 0 L, although q(t) is positive at first and negative after t=2 min. A zero mean means no net gain, not zero activity at every instant.",
+            "understandingFocusDe": "Zusätzlicher Vorzeichentransfer als fachliche Grenze der Gleichwirkungsdeutung.",
+            "understandingFocusEn": "Additional signed transfer showing the precise limit of equal-effect interpretation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f257b71b-0250-5b4b-86bb-f317f79c355a",
+      "reason": "Amtlicher Saarland-LK-Lehrplan LP_Ma_LK_HP_2019.pdf, PDF-/Druckseite 34, nennt die Herleitung der Formeln für Streckenmittelpunkt und Dreiecksschwerpunkt ausdrücklich. Der kanonische Bezug ist auf S.34 berichtigt; die alte P-Begründung mit S.33 wird historisch erhalten, aber nicht weiter als aktuelle Quellenbindung genutzt. Das aktive PNG wurde visuell geprüft: M/N/P sind korrekte Seitenmittelpunkte, AS:SM=2:1 und die drei Ortsvektorformeln stimmen. Beide unabhängigen Raumkoordinaten-Transferfälle wurden nachgerechnet und verlangen echte Herleitung und Prüfung auf Seitenhalbierenden. KI-Profil E1/G1, keine menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "centroid-derivation-from-medians",
+            "essentialUnderstandingDe": "Für nicht kollineare Eckpunkte A,B,C sind die Differenzvektoren b−a und c−a unabhängig. Die beiden Ansätze S=A+λ(M_a−A)=B+μ(M_b−B) liefern durch Koeffizientenvergleich λ=μ=2/3 und damit s=(a+b+c)/3; eine bloße zitierte Formel zeigt diese Herleitung nicht.",
+            "essentialUnderstandingEn": "For non-collinear vertices A,B,C, the difference vectors b−a and c−a are independent. Equating S=A+λ(M_a−A)=B+μ(M_b−B) and comparing coefficients yields λ=μ=2/3 and s=(a+b+c)/3; merely citing the formula does not demonstrate the derivation.",
+            "observablePerformanceDe": "Die lernende Person setzt Seitenmittelpunkte und zwei Seitenhalbierende allgemein an, führt den unabhängigen Koeffizientenvergleich korrekt aus und begründet die Schwerpunktformel.",
+            "observablePerformanceEn": "The learner sets up side midpoints and two medians in general, correctly compares independent coefficients, and justifies the centroid formula."
+          },
+          {
+            "id": "third-median-and-two-to-one-check",
+            "essentialUnderstandingDe": "Der so gefundene S liegt auf jeder der drei Seitenhalbierenden und teilt jede vom Eckpunkt aus im Verhältnis 2:1; bei Raumkoordinaten ist dies durch gerichtete Vektoren und einen dritten Seitenmittelpunkt prüfbar.",
+            "essentialUnderstandingEn": "The resulting S lies on all three medians and divides each from the vertex in a 2:1 ratio; in spatial coordinates this can be checked with directed vectors and the third side midpoint.",
+            "observablePerformanceDe": "Die lernende Person berechnet S und Seitenmittelpunkte für eine neue nicht kollineare Raumkonfiguration, prüft S auf der dritten Seitenhalbierenden und zeigt das Teilungsverhältnis mit gerichteten Vektoren.",
+            "observablePerformanceEn": "The learner calculates S and side midpoints for a new non-collinear spatial configuration, checks S on the third median, and proves the division ratio using directed vectors."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "centroid-derivation-from-medians",
+            "third-median-and-two-to-one-check"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "construction-direction",
+            "textDe": "Schwerpunkt aus drei gegebenen Eckpunkten herleiten gegenüber dritten Eckpunkt aus Schwerpunkt und zwei Eckpunkten rekonstruieren.",
+            "textEn": "Derive the centroid from three given vertices versus reconstruct the third vertex from the centroid and two vertices."
+          },
+          {
+            "id": "spatial-configuration",
+            "textDe": "geneigtes Dreieck mit verschobenen positiven Koordinaten gegenüber Dreieck mit negativen Koordinaten und umgekehrter Kontrolle",
+            "textEn": "tilted triangle with shifted positive coordinates versus a triangle with negative coordinates and reverse verification"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "tilted-triangle-direct-derivation",
+            "taskDemandDe": "Für A=(1|1|1), B=(7|1|1), C=(1|7|4): Leite den allgemeinen Schwerpunktansatz aus zwei Seitenmittelpunkten und unabhängigen Vektoren her, berechne S, M_a und M_c und prüfe sowohl AS:SM_a=2:1 als auch die dritte Seitenhalbierende.",
+            "taskDemandEn": "For A=(1,1,1), B=(7,1,1), C=(1,7,4): derive the general centroid relation from two side midpoints and independent vectors, calculate S, M_a and M_c, and check both AS:SM_a=2:1 and the third median.",
+            "expectedPerformanceDe": "Allgemein m_a=(b+c)/2, m_b=(a+c)/2. Mit u=b−a,v=c−a folgt s−a=(λ/2)u+(λ/2)v=(1−μ)u+(μ/2)v; somit λ=μ=2/3 und s=(a+b+c)/3. Konkret S=(3|3|2), M_a=(4|4|2,5), M_c=(4|1|1). AS=(2|2|1)=2(1|1|0,5)=2 SM_a. CS=(2|−4|−2)=(2/3)(3|−6|−3)=(2/3) CM_c.",
+            "expectedPerformanceEn": "In general m_a=(b+c)/2, m_b=(a+c)/2. With u=b−a,v=c−a, s−a=(λ/2)u+(λ/2)v=(1−μ)u+(μ/2)v, yielding λ=μ=2/3 and s=(a+b+c)/3. Here S=(3,3,2), M_a=(4,4,2.5), M_c=(4,1,1). AS=(2,2,1)=2(1,1,0.5)=2 SM_a. CS=(2,−4,−2)=(2/3)(3,−6,−3)=(2/3) CM_c.",
+            "understandingFocusDe": "Symbolische Herleitung wird an einer räumlich geneigten Konfiguration überprüft.",
+            "understandingFocusEn": "The symbolic derivation is checked in a tilted spatial configuration."
+          },
+          {
+            "id": "reconstruct-third-vertex-from-centroid",
+            "taskDemandDe": "Ein Dreieck hat A=(2|−1|3), B=(−1|5|3) und den Schwerpunkt S=(2|2|5). Leite mit Seitenhalbierenden und Koeffizientenvergleich zunächst die allgemeine Formel her. Rekonstruiere daraus C, prüfe Nichtkollinearität, berechne M_a und M_c und zeige S auf beiden zugehörigen Seitenhalbierenden mit Faktor 2/3 vom Eckpunkt.",
+            "taskDemandEn": "A triangle has A=(2,−1,3), B=(−1,5,3) and centroid S=(2,2,5). First derive the general formula from medians and coefficient comparison. Reconstruct C, check non-collinearity, calculate M_a and M_c, and show S on both corresponding medians at factor 2/3 from the vertex.",
+            "expectedPerformanceDe": "Die allgemeine Herleitung ergibt s=(a+b+c)/3. Daher c=3s−a−b=(5|2|9). Die Differenzen b−a=(−3|6|0) und c−a=(3|3|6) sind unabhängig. M_a=(2|3,5|6), M_c=(0,5|2|3). AS=(0|3|2)=(2/3)(0|4,5|3)=(2/3) AM_a; CS=(−3|0|−4)=(2/3)(−4,5|0|−6)=(2/3) CM_c.",
+            "expectedPerformanceEn": "The general derivation gives s=(a+b+c)/3. Thus c=3s−a−b=(5,2,9). Difference vectors b−a=(−3,6,0) and c−a=(3,3,6) are independent. M_a=(2,3.5,6), M_c=(0.5,2,3). AS=(0,3,2)=(2/3)(0,4.5,3)=(2/3) AM_a; CS=(−3,0,−4)=(2/3)(−4.5,0,−6)=(2/3) CM_c.",
+            "understandingFocusDe": "Die umgekehrte Rekonstruktion prüft Strukturverständnis statt bloßes Einsetzen in dieselbe Aufgabenform.",
+            "understandingFocusEn": "Reverse reconstruction checks structural understanding rather than substituting in the same task form."
+          }
+        ]
+      }
+    }
+  ]
+}

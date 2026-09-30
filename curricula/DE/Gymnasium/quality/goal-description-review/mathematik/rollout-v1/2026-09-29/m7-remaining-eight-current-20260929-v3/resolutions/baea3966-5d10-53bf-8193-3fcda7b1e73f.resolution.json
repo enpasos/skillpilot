@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-remaining-eight-current-20260929-v3-resolution-baea3966-5d10-53bf-8193-3fcda7b1e73f",
+  "goal": {
+    "goalId": "baea3966-5d10-53bf-8193-3fcda7b1e73f",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:637e330e2a46db10dca4e7084c92bde54c70a6f312a3226b921861b4935eef72",
+    "pageFingerprint": "sha256:457b41ba5c7f52d1a99c6e3a5212a02caaee7e5b1ec8119acb14704e9e30d554",
+    "goalReviewContextFingerprint": "sha256:74edc309078d20ca5bb1f6a69ff36b5d6b1af17df54fa6c177ed7ff05a767ec7",
+    "finalText": {
+      "titleDe": "Kugelvolumen mit Cavalieri herleiten",
+      "titleEn": "Derive the volume of a sphere using Cavalieri's principle",
+      "descriptionDe": "Die lernende Person kann die Formel $V=\\frac43\\pi r^3$ für das Kugelvolumen mit dem Satz von Cavalieri herleiten, indem sie Kugelquerschnitte mit gleich hohen Schnitten eines Zylinders (Radius $r$, Höhe $2r$) nach Herausnahme zweier Kegel (je Radius und Höhe $r$) vergleicht und das Volumen des Restkörpers berechnet.",
+      "descriptionEn": "The learner can derive the sphere-volume formula $V=\\frac43\\pi r^3$ using Cavalieri's principle by comparing each horizontal sphere section with the corresponding section of a cylinder (radius $r$, height $2r$) after removing two cones (each of radius and height $r$), then calculating the remaining volume."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-remaining-eight-current-20260929-v3-a",
+      "campaignDigest": "sha256:04b5e83ae3e64cdb72b76d7540c8ad4331b81549b7ff23099bf571def4f9f679",
+      "roundId": "mathematik-m7-remaining-eight-current-20260929-v3-first-pass-a",
+      "independenceGroupId": "mathematik-m7-remaining-eight-current-20260929-v3-independent-a",
+      "reviewInputFingerprint": "sha256:2c244664c21b86541d99da7ed2623df9053ae87023ab5077ac3fede244d5eb13",
+      "goalReviewContextFingerprint": "sha256:74edc309078d20ca5bb1f6a69ff36b5d6b1af17df54fa6c177ed7ff05a767ec7",
+      "batchId": "mathematik-m7-remaining-eight-current-20260929-v3-first-pass-a.batch-001",
+      "runId": "mathematik-m7-remaining-eight-current-20260929-v3-first-pass-a-gpt6",
+      "runManifestDigest": "sha256:2f2e67cc327db88cf17e5e4d1a05f44f83d9ab971f41b1c2c199eea5137c799e",
+      "resultsDigest": "sha256:2971f6405bb6ea141e0744e61ceb3183e32e4d53abb3ef88dff3e83760a8c93e",
+      "recordId": "mathematik-m7-remaining-eight-current-20260929-v3-first-pass-a-gpt6.06",
+      "recordDigest": "sha256:47ac731453096f6478acaa1c281a87e53040b916acdae1d031b8f2acb4880bf0"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-remaining-eight-current-20260929-v3-b",
+      "campaignDigest": "sha256:7413acc3cb0ce934eef623db6fd36dc1fc8db7b6c4b5f67182c1e60bf0268a43",
+      "roundId": "mathematik-m7-remaining-eight-current-20260929-v3-first-pass-b",
+      "independenceGroupId": "mathematik-m7-remaining-eight-current-20260929-v3-independent-b",
+      "reviewInputFingerprint": "sha256:2c244664c21b86541d99da7ed2623df9053ae87023ab5077ac3fede244d5eb13",
+      "goalReviewContextFingerprint": "sha256:74edc309078d20ca5bb1f6a69ff36b5d6b1af17df54fa6c177ed7ff05a767ec7",
+      "batchId": "mathematik-m7-remaining-eight-current-20260929-v3-first-pass-b.batch-001",
+      "runId": "mathematik-m7-remaining-eight-current-20260929-v3-b-run-001",
+      "runManifestDigest": "sha256:65631e6be0f18188950122295ca87e252aaac7fc8ef7e28de91d670ce1f0a2f1",
+      "resultsDigest": "sha256:f4f9fd585678fc0706c073f18da342697df76b9ea02de50e1fdbf41c248306e8",
+      "recordId": "mathematik-m7-remaining-eight-current-20260929-v3-b-run-001-baea3966",
+      "recordDigest": "sha256:4868eba5492572ae86c88fa4874c9c47f804cdfdb59646683fb61a24de074e22"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:91b7f4df061f0aaf95c01b8889b1c4b800bb93890f0dd5bd5b978ef5f92729c7"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "math-m7-remaining-eight-five-resolved-three-deferred-20260929-v1",
+    "manifestDigest": "sha256:c1060a156ffbab9618374da9d1d2a233bf925108287b250a66932706bacf5444",
+    "manifestFingerprint": "sha256:ddd4d4bab3cbcd90093cdf1dda395a8e3fd0b931a2ac07e95e13dd1fe6b263f2",
+    "decisionId": "math-m7-remaining-eight-five-resolved-three-deferred-20260929-v1-decision-005"
+  },
+  "synthesis": {
+    "synthesisId": "math-m7-remaining-eight-five-resolved-three-deferred-20260929-v1-decision-005",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis of two independent current reviews with primary-source, page and actual-image checks; no human approval",
+    "synthesizedAt": "2026-09-29T20:33:13.000Z",
+    "rationaleDe": "Beide unabhängigen Runden prüfen den konkreten Cavalieri-Beweis und das tatsächliche Bild fachlich und finden die Kompetenz in der amtlichen SL-J10-Quelle, Druckseiten 33 bis 35. Kugel- und Kreisringquerschnitt stimmen in jeder Höhe überein; Zylindervolumen minus zwei Kegel ergibt 4πr³/3. Die noch leere kanonische sourceRef-Zeile ist eine getrennte Quellenbindung, die gezielt ergänzt und danach neu geprüft werden muss. Die aktuelle Wortlautentscheidung ist ausschließlich maschinelle D-QS.",
+    "rationaleEn": "Both independent rounds check the concrete Cavalieri proof and actual image and locate the competence in the official SL year-10 source, printed pp. 33 to 35. Sphere and annular sections agree at every height; cylinder volume minus two cones gives 4πr³/3. The still-empty canonical sourceRef is a separate source binding that must be added and rechecked specifically afterward. This current wording decision is machine-only D QA.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "In Höhe z hat der Kugelschnitt den Radius √(r²−z²), der Restkörper aus Zylinder ohne zwei Kegel einen Kreisring mit innerem Radius |z|. Die Flächen beider Schnitte sind in jeder Höhe gleich; Cavalieri setzt deshalb ihre Volumina gleich.",
+      "essentialUnderstandingEn": "At height z the sphere section has radius √(r²−z²), while the cylinder with two cones removed has an annular section with inner radius |z|. The areas agree at every height, so Cavalieri’s principle equates their volumes.",
+      "observablePerformanceDe": "Die lernende Person leitet die beiden Schnittflächen für beliebiges z mit Pythagoras und ähnlichen Dreiecken her, begründet die Voraussetzung „in jeder gleichen Höhe“ und berechnet aus Zylindervolumen minus zwei Kegelvolumina V=4πr³/3.",
+      "observablePerformanceEn": "The learner derives both section areas for arbitrary z using Pythagoras and similar triangles, justifies the condition “at every corresponding height”, and calculates V=4πr³/3 from the cylinder volume minus two cone volumes.",
+      "transferExpectationDe": "Für eine Halbkugel und den passenden halben Restkörper mit nur einem herausgenommenen Kegel führt sie denselben Schnittvergleich für die halbe Höhe aus und begründet die halbe Kugelvolumenformel.",
+      "transferExpectationEn": "For a hemisphere and the matching half of the remaining solid with one cone removed, the learner repeats the section comparison over half the height and justifies the hemisphere-volume formula."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-3817805a867b466d8b39d322aebe5a72a73c9f13d5f02b01c903d7c1e829961e",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:9978523ef2ce4adfd7bb0af18f395bc959315d88b379294b81ebdb0e75146f4d"
+}

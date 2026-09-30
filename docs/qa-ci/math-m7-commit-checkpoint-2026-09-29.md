@@ -2,6 +2,8 @@
 
 Dieser Checkpoint setzt den [geprüften Stand vom 28. September](math-m7-commit-checkpoint-2026-09-28-v2.md) auf dem vorhandenen Arbeitsbaum fort. Er beschreibt maschinelle Curriculum-QS, keine menschliche Prüfung, Freigabe, Erprobung, Veröffentlichung oder GitHub-CI des uncommitteten Stands. Die historischen Reviews und Kandidaten bleiben erhalten.
 
+Der [spätere maschinelle Fünf-Gate-Abschluss](math-m7-machine-closeout-2026-09-29.md) führt diesen historischen Zwischenstand bis 807/807 fort.
+
 ## Strenger Stand
 
 | Fach | Aktuelle `curricularAtomic`-Ziele mit allen fünf Gates | Einzelgates D/P/A/M/V | Abschlusschecks | Curriculum-Reifegrad |

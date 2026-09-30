@@ -157,7 +157,7 @@ ACTIVE_PROMPT_OVERRIDES = {
     "goal-resource:5518ceb3-f668-5b52-a9b1-57653b16ca98:0": "curricula/DE/Gymnasium/visualizations/mathematik/5518ceb3-f668-5b52-a9b1-57653b16ca98/prompt.imagegen-correction.de.md",
     "goal-resource:2850e8f6-2330-50d3-a577-d519540d9924:0": "curricula/DE/Gymnasium/visualizations/mathematik/2850e8f6-2330-50d3-a577-d519540d9924/prompt.imagegen-correction.de.md",
     "goal-resource:803d910d-96d1-5118-b9ca-29e93d0da76d:0": "curricula/DE/Gymnasium/visualizations/mathematik/803d910d-96d1-5118-b9ca-29e93d0da76d/prompt.imagegen-correction.de.md",
-    "goal-resource:d3c42193-f1b7-5c6d-a991-bf034d99359f:0": "curricula/DE/Gymnasium/visualizations/mathematik/d3c42193-f1b7-5c6d-a991-bf034d99359f/prompt.imagegen-correction.de.md",
+    "goal-resource:d3c42193-f1b7-5c6d-a991-bf034d99359f:0": "curricula/DE/Gymnasium/visualizations/mathematik/d3c42193-f1b7-5c6d-a991-bf034d99359f/prompt.imagegen-r3.de.md",
     "goal-resource:5619ca5b-dc2a-504e-ad89-2e0ca0a83822:0": "curricula/DE/Gymnasium/visualizations/mathematik/5619ca5b-dc2a-504e-ad89-2e0ca0a83822/prompt.imagegen-cube-choice.de.md",
     "goal-resource:e105bad8-b4e5-53fc-b02e-604f1df5b503:0": "curricula/DE/Gymnasium/visualizations/mathematik/e105bad8-b4e5-53fc-b02e-604f1df5b503/prompt.imagegen-coordinate-correction.de.md",
     "goal-resource:985d5529-a586-50eb-bd7f-2db2be8906d1:0": "curricula/DE/Gymnasium/visualizations/mathematik/985d5529-a586-50eb-bd7f-2db2be8906d1/prompt.imagegen-final.de.md",

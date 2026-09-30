@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "manifestId": "math-m7-j10-analysis-five-source-repaired-current-20260929-v2",
+  "synthesizedBy": "OpenAI Codex root; explicit adjudication of two independent current D rounds; no human approval",
+  "decisions": [
+    {
+      "goalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "rationaleDe": "Beide Runden halten die aktuelle DE/EN-Beschreibung. Funktions- und Ableitungsgraph sind über Steigung, Vorzeichen und Nullstellen wechselseitig zugeordnet; aus dem Ableitungsgraphen folgt nur ein möglicher Funktionsgraph bis auf vertikale Verschiebung. Die A-Evidenz prüft zusätzlich eine Nullstelle ohne Extremum und verhindert die Fehldeutung f′=0 als hinreichenden Extrembeweis. Das bestehende Bild ist ein passendes Beispiel für f(x)=−x²+4, aber kein Leistungsnachweis. Nur maschinelle D-Synthese; keine menschliche oder V-Freigabe.",
+      "rationaleEn": "Both rounds retain the current German and English description. Function and derivative graphs correspond through slope, sign and zeros; a derivative graph determines only a possible function graph up to vertical translation. Round A evidence also tests a zero without an extremum, avoiding the false inference that f′=0 alone proves an extremum. The existing image is a valid example for f(x)=−x²+4 but is not learner evidence. Machine D synthesis only; no human or V approval."
+    },
+    {
+      "goalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "rationaleDe": "Beide Runden halten die Beschreibung. Vorzeichen von f′, lokale Extrema und Vergleich relevanter Werte für globale Extrema bilden eine zusammenhängende Untersuchung auf dem angegebenen Bereich. Die A-Evidenz verlangt den erneuten Randwertvergleich bei geändertem Definitionsbereich und behandelt f′=0 allein nicht als Extrembeweis. Das gemeinsame Bestandsbild zu f(x)=−x²+4 veranschaulicht nur einen Fall. Nur maschinelle D-Synthese; keine menschliche oder V-Freigabe.",
+      "rationaleEn": "Both rounds retain the description. Signs of f′, local extrema and comparison of relevant values for global extrema form one coherent investigation on the stated domain. Round A evidence requires a renewed endpoint comparison when the domain changes and does not treat f′=0 alone as proof of an extremum. The shared existing image for f(x)=−x²+4 illustrates one case only. Machine D synthesis only; no human or V approval."
+    },
+    {
+      "goalId": "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann an gegebenen Punkten einfacher differenzierbarer Funktionsgraphen Tangenten- und Normalengleichungen aufstellen und die Tangentensteigung sowie die dazu senkrechte Richtung der Normalen deuten.",
+        "proposedDescriptionEn": "The learner can write tangent and normal equations at given points on the graphs of simple differentiable functions and interpret the tangent slope and the perpendicular direction of the normal.",
+        "rationaleDe": "Die B-Revision weist berechtigt auf die senkrechte Normale bei waagerechter Tangente hin. Der aktuelle Text behauptet aber keine überall vorhandene endliche Normalensteigung: Er verlangt die Deutung der jeweils verwendeten Steigungen, und bei x=x₀ wird keine Normalensteigung verwendet. A-Evidenz benennt und prüft genau diesen Grenzfall ausdrücklich. Die neue Fassung streicht zudem die Deutung einer tatsächlich vorhandenen Normalensteigung zugunsten einer allgemeineren Richtung; für die benannten einfachen Fälle ist das kein notwendiger Qualitätsgewinn. Der Vorschlag wird fachlich und nicht aus Bindungsgründen verworfen.",
+        "rationaleEn": "Round B rightly flags the vertical normal at a horizontal tangent. The current text does not claim that a finite normal slope always exists: it asks for interpretation of slopes actually used, and no normal slope is used for x=x₀. Round A evidence explicitly names and tests this edge case. The proposal also drops interpretation of an available normal slope in favor of a more general direction, so it is not a necessary improvement for the stated simple cases. The proposal is rejected for substantive reasons, not to preserve bindings."
+      },
+      "rationaleDe": "Die aktuelle DE/EN-Beschreibung bleibt für einfache differenzierbare Fälle tragfähig. Tangente und Normale teilen den Berührpunkt und sind senkrecht; bei nicht waagerechter Tangente können beide Steigungen gedeutet werden, bei waagerechter Tangente ist die Normale x=x₀ ohne endliche Steigung. Die A-Evidenz prüft beides. Der B-Vorschlag ist als begründeter Dissens gebunden und ausdrücklich fachlich verworfen. Das Bestandsbild zeigt P(1|1) mit mₜ=2 und mₙ=−1/2 korrekt. Nur maschinelle D-Synthese; keine menschliche oder V-Freigabe.",
+      "rationaleEn": "The current bilingual description remains sound for simple differentiable cases. Tangent and normal share the contact point and are perpendicular; for a nonhorizontal tangent both slopes can be interpreted, while for a horizontal tangent the normal is x=x₀ and has no finite slope. Round A evidence checks both. Round B's proposal is bound as explicit dissent and rejected on the merits. The existing image correctly shows P(1,1) with tangent slope 2 and normal slope −1/2. Machine D synthesis only; no human or V approval."
+    },
+    {
+      "goalId": "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann Tangentenwerte zur Näherung benachbarter Funktionswerte nutzen und die Näherung als lokale Schätzung deuten.",
+        "proposedDescriptionEn": "The learner can use tangent values to approximate nearby function values and interpret the approximation as a local estimate.",
+        "rationaleDe": "Der B-Vorschlag nennt eine mögliche Leistung ausdrücklich, verengt aber die allgemeine Kompetenz der Tangente als lokaler linearer Approximation auf das Ablesen benachbarter Funktionswerte. Die aktuelle Beschreibung enthält bereits den lokalen Charakter und das fachliche Deuten; die A-Evidenz konkretisiert daraus eigenständige nahe Wertschätzung, Vergleich mit ferner Extrapolation und Krümmungsgrenze. Eine enger formulierte Beschreibung ist dafür nicht erforderlich. Der Vorschlag wird inhaltlich verworfen, nicht zur Schonung bestehender Bindungen.",
+        "rationaleEn": "Round B's proposal states one valid performance explicitly, but narrows the broader competence of using a tangent as a local linear approximation to reading neighboring function values. The current description already states local scope and interpretation; Round A evidence concretizes independent nearby estimation, comparison with farther extrapolation and the curvature limit. A narrower description is not needed for that performance. The proposal is rejected on content grounds, not to spare existing bindings."
+      },
+      "rationaleDe": "Die aktuelle Beschreibung hält die lokale lineare Approximation und ihre fachliche Deutung als kohärente J10-Kompetenz zusammen. Die A-Evidenz macht die Wertschätzung aus Berührpunkt und Steigung und den Unterschied zwischen Nähe und ferner Fortsetzung überprüfbar. Das Bestandsbild zeigt f(x)=x², die Tangente L(x)=4x−4 in x=2 und die größeren Abweichungen bei x=3 korrekt; es ersetzt keine eigenständige Schätzung. B-Revision als Dissens fachlich aufgelöst. Nur maschinelle D-Synthese; keine menschliche oder V-Freigabe.",
+      "rationaleEn": "The current description unites local linear approximation and its interpretation as one coherent Year 10 competence. Round A evidence makes estimation from contact point and slope, and the difference between nearby and farther continuation, observable. The existing image correctly shows f(x)=x², tangent L(x)=4x−4 at x=2 and larger error at x=3; it does not replace independent estimation. Round B's revision is resolved as substantive dissent. Machine D synthesis only; no human or V approval."
+    },
+    {
+      "goalId": "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "rationaleDe": "Beide Runden halten die Beschreibung. In einfachen Fällen ordnet das Vorzeichen von f″ das Krümmungsverhalten zu; eine Wendestelle wird durch einen Vorzeichenwechsel statt durch f″=0 allein begründet. Die A-Evidenz vergleicht x³ mit x⁴ und prüft damit den entscheidenden Unterschied. Das Bestandsbild zeigt den x³-Fall korrekt. Nur maschinelle D-Synthese; keine menschliche oder V-Freigabe.",
+      "rationaleEn": "Both rounds retain the description. In simple cases the sign of f″ indicates curvature behavior; an inflection point is justified by a sign change rather than f″=0 alone. Round A evidence compares x³ with x⁴ and thus tests the decisive distinction. The existing image correctly shows the x³ case. Machine D synthesis only; no human or V approval."
+    }
+  ]
+}

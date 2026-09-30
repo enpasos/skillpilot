@@ -1,0 +1,19 @@
+# Round B execution note — 2026-09-29
+
+This is an independent blind first pass over the five bound J10 Analysis goals. All five records are `candidate` / `ai_candidate`; all recommend creating a separate `positive-understanding-evidence-v2` profile. The records do not change canonical descriptions or create authoritative profiles.
+
+| Goal | Decision | Finding |
+| --- | --- | --- |
+| `5518ceb3-f668-5b52-a9b1-57653b16ca98` | `keep` | The bilingual description already states both qualitative graph directions, limits reverse inference to a possible function graph, and names slope, sign, and derivative zeros. The evidence chain checks a derivative zero with and without a sign change. |
+| `2850e8f6-2330-50d3-a577-d519540d9924` | `keep` | The description already separates derivative-based local conclusions from the whole-domain comparison for global extrema. The evidence chain checks attained endpoint values and a changed domain. |
+| `b43a1e45-f05c-4d78-8453-f6fa677dc24c` | `revise` | The current plural “Steigungen” can imply a finite normal slope at a horizontal tangent, although the normal is vertical. The proposed bilingual text names the tangent slope and perpendicular normal direction. |
+| `06bdbecb-53e0-5ac3-992f-d6fd20555b59` | `revise` | The current “Tangenten nutzen” leaves the approximation action vague. The proposed bilingual text names nearby function values and the local estimate. |
+| `ad66009f-55fb-563f-ace0-dbfeae7c76c3` | `keep` | The description already requires a sign change in the second derivative to justify an inflection point. The evidence chain checks a zero without a sign change as a contrasting case. |
+
+I inspected the bound prompt, criteria, bilingual input, schema, campaign, and all five rendered goal pages of the seven-page PDF. I opened the five referenced local visualization assets and checked their SHA-256 values against the page bindings. The first two goals reuse the same image digest `e88426d1…`; the second PDF goal page has no rendered image, so I opened that bound PNG separately. All five image bindings are `review_candidate` and `approvedForPublication: false`. Images informed the review but were not treated as learner evidence or image QA approval.
+
+For curricular context, I read the current source and stage decision note and relevant original PDF passages from BW, SH, HH, BB, and BE. The BW source directly names graph correspondence, tangent and normal, tangent approximation, extrema, curvature, and inflection; SH distinguishes local approximation by level. The source and stage decision note is outside this campaign's bound artifacts. This pass therefore does not certify complete source coverage or the effective learner-facing composition projection. In particular, the documented BY coverage gap for the full global-extrema atom and HH extraction gap remain external follow-up, not grounds to invent a broader description here.
+
+I did not inspect Round A results, earlier D records or synthesis, and I did not change the central registry or in-flight ledger. The host exposed the model family as GPT-6 but no exact checkpoint or decoding parameters. The run manifest's generation-parameter fingerprint binds the UTF-8 JSON `{"decodingParameters":"not exposed by host","model":"GPT-6","provider":"OpenAI","reviewMode":"interactive blind first pass"}` rather than an invented temperature or seed.
+
+Validation: `npm --prefix app run validate:goal-description-review-campaign` with absolute paths to this round's bound manifest, input, campaign, batches and results returned `Goal-description review campaign results valid: 5`. The first invocation with project-relative paths failed only because `npm --prefix app` runs from `app/`; the absolute-path invocation passed. The `results/` directory contains exactly the bound `.records.jsonl` and `.run.json` pair.

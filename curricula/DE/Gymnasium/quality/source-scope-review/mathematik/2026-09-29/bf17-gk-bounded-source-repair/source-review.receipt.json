@@ -1,0 +1,1416 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "bf17-gk-bounded-source-repair-20260929",
+  "reviewKind": "machine-assisted-bounded-primary-source-scope-repair",
+  "status": "source-scope-repair-with-explicit-partial-dissent",
+  "humanApprovalClaim": false,
+  "strictM7ApprovalClaim": false,
+  "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+  "priorAudit": {
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-09-29/bf17-gk-fourteen-primary-source-audit/scope-audit.json",
+    "sha256": "76ae55f0d4725c6948e3be938a96d7f209e2143207778421a9ccdd0b089ee485"
+  },
+  "canonicalCompetence": {
+    "title": "Sachsituationen mit einer erweiterten Funktionsklasse modellieren",
+    "description": "Die lernende Person kann für eine Sachsituation eine passende erweiterte Funktionsklasse auswählen und die Parameter des Modells im Kontext deuten."
+  },
+  "decisions": [
+    {
+      "jurisdiction": "DE-BB",
+      "views": [
+        "de-bb-gk.view.json",
+        "de-bb-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_MATHEMATIK_SEKII_GOST_2022.source-extraction.json",
+        "sha256": "2018a2422d61d329d3cb1f7cb09ec120560de1b8ce559ecd512811bec5bc6c68"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/BB/upper-secondary/Teil_C_RLP_GOST_2022_Mathematik.pdf",
+          "role": "binding-core",
+          "official": true,
+          "officialUrl": "https://bildungsserver.berlin-brandenburg.de/rlp-online/c-faecher/mathematik",
+          "sha256": "3c8c0df6901b6a6e7a1dff4f2d563696c32c43b19c1d0bcf401a0dc4fd224d79"
+        }
+      ],
+      "action": "prerequisiteOnly",
+      "rationale": "Additional function classes and one-parameter families appear expressly under LK on printed p.25; ordinary GK function modeling remains targeted.",
+      "sourceItems": [
+        {
+          "id": "bb-math-sekii-rlp-gost-q1-05-55cba690",
+          "courseLevel": "GK/LK",
+          "sourceRef": "RLP Brandenburg GOST Mathematik 2022, Q1, S. 23.",
+          "sourceSpan": "Funktionen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen",
+          "sourceText": "Funktionen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen"
+        },
+        {
+          "id": "bb-math-sekii-rlp-gost-q1-12-728af4b3",
+          "courseLevel": "LK",
+          "sourceRef": "RLP Brandenburg GOST Mathematik 2022, Q1, S. 23.",
+          "sourceSpan": "Funktionen weiterer Funktionsklassen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen",
+          "sourceText": "Funktionen weiterer Funktionsklassen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen"
+        }
+      ]
+    },
+    {
+      "jurisdiction": "DE-BE",
+      "views": [
+        "de-be-gk.view.json",
+        "de-be-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_MATHEMATIK_SEKII_GO_2014.source-extraction.json",
+        "sha256": "09a90dd3121b15ff84060853d58abcc7324862d17fa1d8b4b987d807864c792b"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/BE/upper-secondary/rahmenlehrplan-mathematik_go-teil-c.pdf",
+          "role": "binding-core",
+          "official": true,
+          "officialUrl": "https://www.berlin.de/sen/bildung/unterricht/faecher-rahmenlehrplaene/rahmenlehrplaene/rahmenlehrplan-mathematik_go-teil-c.pdf",
+          "sha256": "17063893d874ea15073925d1c7f1e71e3926b849190b72b451eae097edb7065f"
+        }
+      ],
+      "action": "prerequisiteOnly",
+      "rationale": "Primary printed p.27 places roots, rational/log/trigonometric functions and the relevant extra composition/family demand under additional LK; ordinary GK modeling remains targeted.",
+      "sourceItems": [
+        {
+          "id": "be-math-sekii-rlp-gost-q1-05-55cba690",
+          "courseLevel": "GK/LK",
+          "sourceRef": "RLP Berlin GOST Mathematik 2022, Q1, S. 24-28.",
+          "sourceSpan": "Funktionen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen",
+          "sourceText": "Funktionen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen"
+        },
+        {
+          "id": "be-math-sekii-rlp-gost-q1-12-728af4b3",
+          "courseLevel": "LK",
+          "sourceRef": "RLP Berlin GOST Mathematik 2022, Q1, S. 24-28.",
+          "sourceSpan": "Funktionen weiterer Funktionsklassen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen",
+          "sourceText": "Funktionen weiterer Funktionsklassen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen"
+        },
+        {
+          "id": "be-math-sekii-go-3-2-2-l4-31-e9aa93d233",
+          "courseLevel": "LK",
+          "sourceRef": "Berlin Rahmenlehrplan Mathematik GO, Teil C, 3.2.2 Funktionaler Zusammenhang [L4], S. 26-27.",
+          "sourceSpan": "Wurzelfunktionen, gebrochenrationale Funktionen und Funktionen wie ln, sin, cos zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen",
+          "sourceText": "Wurzelfunktionen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhaenge nutzen"
+        }
+      ]
+    },
+    {
+      "jurisdiction": "DE-BW",
+      "views": [
+        "de-bw-gk.view.json",
+        "de-bw-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+        "sha256": "593973654aafc17e38370d2a9fcf537c80130e8a70fb011b11676e12b4ece2b4"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.pdf",
+          "role": "binding-core",
+          "official": true,
+          "officialUrl": "https://www.bildungsplaene-bw.de/site/bildungsplan-rebrush2024/get/documents/lsbw/export-pdf/depot-pdf/ALLG/BP2016BW_ALLG_GYM_M.pdf",
+          "sha256": "b085465143648b3f44c894f8eb0a5ee5d1928cbb1c4c60b3b249559709d26014"
+        }
+      ],
+      "action": "retain-target-bounded",
+      "primaryPageReading": "Basisfach 3.5.4, printed p.48; inherited 3.3.4(5),(8),(9), printed pp.35–36; modeling 2.3(7),(10).",
+      "rationale": "Retain only simple sums/products or linear-inner compositions of taught families. Basisfach introduction explicitly applies these new functions to real-context modeling; prior required parameter transformations and contextual interpretation support the parameter aspect jointly.",
+      "openDissent": "Combined partial inference, not a literal single competence. No arbitrary rational/logistic family or LK-only rational differentiation; grade 9/10 clauses are preparation, not a second Sek-II obligation.",
+      "directPartialBindings": [
+        {
+          "sourceGoalId": "bw-math-sekii-bp2016-2-3-07-063e3e2a",
+          "sourceText": "zu einer Situation passende mathematische Modelle (zum Beispiel arithmetische Operationen, geometrische Modelle, Terme und Gleichungen, stochastische Modelle) auswählen oder konstruieren",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.3, Kompetenz 7, S. 14.",
+          "courseLevel": null,
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "bw-math-sekii-bp2016-3-5-4-05b-produktfunktionen-untersuchen",
+          "sourceText": "Graphen von zusammengesetzten Funktionen als Produkt untersuchen",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.5.4, Kompetenz 5, S. 48.",
+          "courseLevel": "GK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "bw-math-sekii-bp2016-3-5-4-07",
+          "sourceText": "einen Funktionsterm ermitteln, falls dieser durch die Eigenschaften eines Graphen eindeutig festgelegt ist",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.5.4, Kompetenz 7, S. 48.",
+          "courseLevel": "GK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        }
+      ],
+      "directMappingPath": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/de-bw_math_upper_secondary_bf17_bounded_source.review.json",
+      "directMappingSha256": "77967d6c5a54bcada21378c4523d8b1433204258a8ecee24d27b49fa00425d16"
+    },
+    {
+      "jurisdiction": "DE-HB",
+      "views": [
+        "de-hb-gk.view.json",
+        "de-hb-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+        "sha256": "edf90817fe8e9368a74a8af9258ec073b3b46b84652b39f63bfa833fac65d96e"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/HB/GyO_Mathematik_2022.pdf",
+          "role": "binding-core",
+          "official": true,
+          "officialUrl": "https://www.lis.bremen.de/sixcms/media.php/13/GyO_Mathematik_2022.pdf",
+          "sha256": "758fe3dff58f8b99e51b0806b17ee2eea2a0a2882d20df5fff6fff1bbad17cee"
+        }
+      ],
+      "action": "retain-target-bounded",
+      "primaryPageReading": "BM3.4–BM3.10, printed pp.20–21; A3.1/A3.6, printed pp.25–27.",
+      "rationale": "Retain bounded simple root/reciprocal and elementary combinations: BM3.7 contextual functions explicitly transfers to BM3.10; A3.6 explicitly connects transformed parameters and application situations.",
+      "openDissent": "Partial combined support; compound extraction A3.6 includes explicit LK brackets which are excluded. Logistic growth under A3.8 remains LK-only.",
+      "directPartialBindings": [
+        {
+          "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-7-001-7251581b20",
+          "sourceText": "erkennen in Anwendungssituationen funktionale Zusammenhänge als Zuordnungen zwischen Zahlen bzw. Größen in Tabellen, Graphen, Diagrammen und Sachtexten, beschreiben diese verbal, erläutern und beurteilen sie.",
+          "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 20",
+          "courseLevel": "GK_LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-003-6bc797f183",
+          "sourceText": "die gebrochenrationale Funktion mit dem Term.",
+          "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 21",
+          "courseLevel": "GK_LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-001-3ca49a3763",
+          "sourceText": "wenden für die unter A 3.1 [LK: und A 3.2] genannten Funktionen die folgenden Verfahren an: o einem Argument den zugehörigen Funktionswert zuordnen und umgekehrt; Schnittpunkte von Funktionsgraphen mit den Koordinatenachsen bestimmen; Symmetriebetrachtungen; Transformationen von Funktionsgraphen und zugehörige Parameter; Verhalten im Unendlichen und Asymptoten; funktionale Zusammenhänge in Anwendungssituationen. o Steigungswinkel von Tangenten sowie Tangenten- und Normalengleichungen ermitteln; Monotonie- und Krümmungsverhalten mithilfe von Ableitungen beschreiben; Betrachtungen zu Extrem- und Wendepunkten; Betrachtungen zu abschnittweise definierten Funktionen; Ableitun gen in Anwendungssituationen; Bestimmung von Funktionstermen. o Bestimmte Integrale unter Beachtung relevanter Rechenregeln ermitteln; Flächeninhalte [LK: sowie Mittelwerte und Volumina von Rotation körpern] ermitteln; Integrale im Zusammenhang mit Anwendungssituationen.",
+          "sourceRef": "Bildungsplan Gymnasiale Oberstufe Mathematik, Bremen 2022, S. 26",
+          "courseLevel": "LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        }
+      ],
+      "directMappingPath": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/de-hb_math_upper_secondary_bf17_bounded_source.review.json",
+      "directMappingSha256": "504f2da65df935f0af8c8725372f08d56fa6b31ca16a1ccf93fe203a7c90caef"
+    },
+    {
+      "jurisdiction": "DE-HH",
+      "views": [
+        "de-hh-gk.view.json",
+        "de-hh-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+        "sha256": "6a6908eaada2b03f43d031a19abef607bc5a8d95d55048a840fbb88b3b6f73af"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/HH/mathematik-gyo-2022-data.pdf",
+          "role": "binding-core",
+          "official": true,
+          "officialUrl": "https://www.hamburg.de/resource/blob/123074/23276415bdfb32ba8bb652f7c1998a4c/mathematik-gyo-2022-data.pdf",
+          "sha256": "74c085e1320ec6dad5ca187ea7647e7b6eecbb0f25a495927f78d9e906252be7"
+        }
+      ],
+      "action": "retain-target-bounded",
+      "primaryPageReading": "Module 1.1, printed p.26; K4 modeling, printed pp.18–19.",
+      "rationale": "Retain simple root/rational contextual models. Module 1.1 explicitly names these families, use in real contexts, parameter variation and model interpretation; K4 supplies choice.",
+      "openDissent": "Partial combined support; source extraction first item is truncated, so its family list is verified in the primary PDF. No unrestricted rational or logistic family.",
+      "directPartialBindings": [
+        {
+          "sourceGoalId": "hh-math-sekii-2022-hh-sekii-m1-1-01-e7dba2f0d2",
+          "sourceText": "Darstellen und Anwenden funktionaler Zusammenhänge mit den",
+          "sourceRef": "Bildungsplan Studienstufe Mathematik, Hamburg 2022, S. 26",
+          "courseLevel": "GK_LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "hh-math-sekii-2022-hh-sekii-m1-1-02-81f0e5a9de",
+          "sourceText": "Beschreibung und Nutzung der Auswirkung von Parametervariationen in einer Funktionsvorschrift für den Graphen einer Funktion",
+          "sourceRef": "Bildungsplan Studienstufe Mathematik, Hamburg 2022, S. 26",
+          "courseLevel": "LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "hh-math-sekii-2022-hh-sekii-m1-1-03-6005fb0f1d",
+          "sourceText": "Erstellung, Interpretation und Beurteilung von Modellen",
+          "sourceRef": "Bildungsplan Studienstufe Mathematik, Hamburg 2022, S. 26",
+          "courseLevel": "GK_LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "hh-math-sekii-2022-hh-sekii-k4-04-e6fbcfbdf0",
+          "sourceText": "wählen ein geeignetes mathematisches Modell aus.",
+          "sourceRef": "Bildungsplan Studienstufe Mathematik, Hamburg 2022, S. 18",
+          "courseLevel": "GK_LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        }
+      ],
+      "directMappingPath": "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/de-hh_math_upper_secondary_bf17_bounded_source.review.json",
+      "directMappingSha256": "8bad0b5a739de4d8958f018e593cf94f2c145c88c0bbe29232a0964558fbaf2b"
+    },
+    {
+      "jurisdiction": "DE-MV",
+      "views": [
+        "de-mv-gk.view.json",
+        "de-mv-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_MATHEMATIK_SEKII_RAHMENPLAN_2019.source-extraction.json",
+        "sha256": "9132d7f40a76dd736e7cfe58b488312a1ac5408629d220c6dcbcd3f8e43ad7e7"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/MV/Mathematik_Gymnasium_11_12_2019.pdf",
+          "role": "binding-upper-secondary-11-12",
+          "official": true,
+          "officialUrl": "https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_MA_SEK2.pdf",
+          "sha256": "b634920997200114dce8e222ac3a6d7995d89353c247794a57b68ae8d34e486d"
+        }
+      ],
+      "action": "retain-target-bounded",
+      "primaryPageReading": "Untersuchungen von Funktionen und ihrer Graphen, printed p.19; Anwendungen der Differentialrechnung, printed p.20; K3 printed p.12 (PDF page 15).",
+      "rationale": "Retain only simple rational-power/sine or polynomial/e combinations with one parameter. The compulsory right-column family restriction applies to inner- and outer-mathematical problems and is explicitly inherited by reconstruction on p.20. K3 supports model construction and contextual reading.",
+      "openDissent": "Partial combined inference; the parameter example alone does not establish context interpretation. Regression and Ortskurven follow the LK-only heading on p.20, despite misleading GK_LK extraction tags; neither is used as GK evidence. General logarithmic functions and multi-parameter families are excluded.",
+      "directPartialBindings": [
+        {
+          "sourceGoalId": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-k3-003-1d5f7dd931",
+          "sourceText": "eine Realsituation direkt in ein mathematisches Modell überführen",
+          "sourceRef": "Rahmenplan Mathematik Qualifikationsphase Jahrgangsstufen 11/12, Mecklenburg-Vorpommern 2019, S. 15",
+          "courseLevel": "GK_LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-untersuchungen-von-funktionen-und-ihrer-graphen-017-8c63bf161c",
+          "sourceText": "Prozessbeispiel K2: Untersuchen der Periodizität einer Sinusfunktion, auch unter Einbeziehung von Parametern",
+          "sourceRef": "Rahmenplan Mathematik Qualifikationsphase Jahrgangsstufen 11/12, Mecklenburg-Vorpommern 2019, S. 22",
+          "courseLevel": "GK_LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        }
+      ],
+      "directMappingPath": "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/de-mv_math_upper_secondary_bf17_bounded_source.review.json",
+      "directMappingSha256": "111d639ad9f106da385342d82dbfa569edbec75ab57438132d801b29a2c8ba29"
+    },
+    {
+      "jurisdiction": "DE-NI",
+      "views": [
+        "de-ni-gk.view.json",
+        "de-ni-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_MATHEMATIK_SEKII_KERNCURRICULUM_2019.source-extraction.json",
+        "sha256": "109a07ac3948937e26214da984f52406b1096a9df232cfb199ea72d1c5daa4f3"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/ma_go_kc_druck_2019.pdf",
+          "role": "binding-upper-secondary-gymnasium-2019",
+          "official": true,
+          "officialUrl": "https://cuvo.nibis.de/index.php?p=download&upload=208",
+          "sha256": "f550398fe6871e9ea8a52087fce19286b8d43997d82242e3fb87741233729481"
+        }
+      ],
+      "action": "retain-target-bounded",
+      "primaryPageReading": "L4 gA, printed pp.26–27; Lernbereich e-Funktion gA Gymnasium, printed p.45; K3 printed p.16.",
+      "rationale": "Retain simple e-function sums/products with polynomials and linear-inner compositions, used in context with parameter fitting to data; K3 explicitly chooses/varies models and parameters for applications.",
+      "openDissent": "Partial combined support; extraction sourceRef p.44 is not the primary printed location of this learner-area table. The logistic optional extension on printed p.57 belongs to Berufliches Gymnasium; general Gymnasium gA p.45 lists only ln as an optional extension. Neither establishes compulsory logistic modeling.",
+      "directPartialBindings": [
+        {
+          "sourceGoalId": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-e-process-k3-001-604aa1a0e3",
+          "sourceText": "wählen, variieren und verknüpfen Modelle zur Beschreibung von Anwendungssituationen.",
+          "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 15",
+          "courseLevel": "GK_LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-e-process-k3-003-6176f547d4",
+          "sourceText": "erkennen funktionale Zusammenhänge in Anwendungssituationen, beschreiben diese und nutzen die globalen und lokalen Eigenschaften bestimmter Funktionen sowie die Variation von Parametern zur Modellierung.",
+          "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 15",
+          "courseLevel": "GK_LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-lernbereich-kern-die-e-funktion-ga-004-7375a88953",
+          "sourceText": "in einfachen Fällen additive und multiplikative Verknüpfungen mit ganzrationalen Funktionen beschreiben, untersuchen und in Sachproblemen anwenden",
+          "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 44",
+          "courseLevel": "GK_LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-lernbereich-kern-die-e-funktion-ga-007-d87efc036a",
+          "sourceText": "Parameterbestimmungen zur Angleichung an Daten durchführen",
+          "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 44",
+          "courseLevel": "GK_LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        }
+      ],
+      "directMappingPath": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/de-ni_math_upper_secondary_bf17_bounded_source.review.json",
+      "directMappingSha256": "0431226a45618674738a9be8fea22d5f3e72882798df03dd3f81b84801a5ed8f"
+    },
+    {
+      "jurisdiction": "DE-NW",
+      "views": [
+        "de-nw-gk.view.json",
+        "de-nw-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
+        "sha256": "b44bae1fdd2b42f9eb0e5759199562901c33fa01ab20cb5578e81b4b581acb34"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_m_2023_06_07.pdf",
+          "role": "binding-upper-secondary-2023",
+          "official": true,
+          "officialUrl": "https://lehrplannavigator.nrw.de/system/files/media/document/file/gost_klp_m_2023_06_07.pdf",
+          "sha256": "211bad803486637f541447546073d0c7678f527b366da1ba63c5b9edc5d28533"
+        }
+      ],
+      "action": "retain-target-bounded",
+      "primaryPageReading": "Grundkurs Funktionen und Analysis, printed pp.24–25; E-phase parameters, printed p.22.",
+      "rationale": "Retain simple compositions/sums/products of the named GK classes; context-derived parameter conditions and function analysis in context are explicit.",
+      "openDissent": "Partial combined support. Selection/parameter interpretation is a synthesis of source clauses, not an exact synonym of any single clause; no compulsory logistic example.",
+      "directPartialBindings": [
+        {
+          "sourceGoalId": "de-nw-mathematik-sekii-klp-2023-nw-sekii-gk-funktionen-und-analysis-a-007-e52c2763c6",
+          "sourceText": "bestimmen Parameter einer Funktion mithilfe von Bedingungen, die sich aus dem Kontext ergeben",
+          "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 24",
+          "courseLevel": "GK_LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "de-nw-mathematik-sekii-klp-2023-nw-sekii-gk-funktionen-und-analysis-a-011-3c3e9e6d07",
+          "sourceText": "untersuchen Funktionen auch in Abhängigkeit von Parametern mithilfe von vorgegebenen und mit dem MMS ermittelten Ableitungen im Kontext der Fragestellung",
+          "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 24",
+          "courseLevel": "GK_LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "de-nw-mathematik-sekii-klp-2023-nw-sekii-gk-funktionen-und-analysis-a-012-cf491eddc2",
+          "sourceText": "nutzen in einfachen Fällen zusammengesetzte Funktionen (Summe, Produkt, Verkettung) zur Beschreibung quantifizierbarer Zusammenhänge",
+          "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 24",
+          "courseLevel": "GK_LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        }
+      ],
+      "directMappingPath": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/de-nw_math_upper_secondary_bf17_bounded_source.review.json",
+      "directMappingSha256": "85663d239cb803eab3b01a50d393b14bc59851dbd171f528dffe77aa985e8a90"
+    },
+    {
+      "jurisdiction": "DE-RP",
+      "views": [
+        "de-rp-gk-g8.view.json",
+        "de-rp-gk-g9.view.json",
+        "de-rp-gk.view.json",
+        "de-rp-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_MATHEMATIK_SEKII_MSS_2015.source-extraction.json",
+        "sha256": "670f1a958cbc4d4a2a5dd36aa9e5ae9f8fcd42920de3dbb693e73589a1217b00"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_II_MSS.pdf",
+          "role": "binding-upper-secondary-mss-2015",
+          "official": true,
+          "officialUrl": "https://bildung.rlp.de/lehrplaene/?tx_rlpbase_download%5Baction%5D=download&tx_rlpbase_download%5Bcontroller%5D=Download&tx_rlpbase_download%5Bitem%5D=56486&type=432522&cHash=9d657e3ab0dc693de509d67c39f2a5b7",
+          "sha256": "764a2f6160cda3dde2dc97914e2c0a361ef1461a0a5fced0b1c100e69762c3fb"
+        }
+      ],
+      "action": "prerequisiteOnly",
+      "rationale": "Printed pp.4,26 support inherited classes, simple compositions and exponential applications, but no sufficiently specific compulsory contextual-parameter clause for the current additional-family competence was established. Logistic free-space material on p.46 is excluded. This defers BF17 target proof; it does not remove ordinary function modeling.",
+      "sourceItems": [
+        {
+          "id": "de-rp-mathematik-sekii-mss-2015-rp-sekii-standards-l4-001-be8c53437f",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Lehrplan Mathematik Grund- und Leistungsfach in der gymnasialen Oberstufe, Rheinland-Pfalz, Maerz 2015, S. 5",
+          "sourceSpan": "S. 5, MSS Bildungsstandard-Kompetenzen L4",
+          "sourceText": "die sich aus den Funktionen der Sekundarstufe I ergebenden Funktionsklassen zur Beschreibung und Untersuchung quantifizierbarer Zusammenhänge nutzen"
+        },
+        {
+          "id": "de-rp-mathematik-sekii-mss-2015-rp-sekii-gf-exponentialfunktionen-005-115d9f0d2f",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Lehrplan Mathematik Grund- und Leistungsfach in der gymnasialen Oberstufe, Rheinland-Pfalz, Maerz 2015, S. 27",
+          "sourceSpan": "S. 27, Grundfach Exponentialfunktionen",
+          "sourceText": "Sachaufgaben zu Wachstums- und Zerfallsprozessen lösen (4.15e)"
+        }
+      ]
+    },
+    {
+      "jurisdiction": "DE-SH",
+      "views": [
+        "de-sh-gk-g8.view.json",
+        "de-sh-gk-g9.view.json",
+        "de-sh-gk.view.json",
+        "de-sh-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+        "sha256": "71b9b16473d16ae6d526bfdc56a7c39b03a1ad0512f4dfd19a007213e583ac87"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+          "role": "binding-upper-secondary-mathematics",
+          "official": true,
+          "officialUrl": "https://fachportal.lernnetz.de/sh/faecher/mathematik/fachanforderungen.html?file=files/Fachanforderungen%20und%20Leitf%C3%A4den/Sekundarstufe/Fachanforderungen/Fachanforderungen%20Mathematik%20Sekundarstufe%20%282024%29%2C%20barrierearm.pdf&cid=16990",
+          "sha256": "17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28"
+        }
+      ],
+      "action": "retain-target-bounded",
+      "primaryPageReading": "L4, printed pp.66–67.",
+      "rationale": "Retain taught function families including roots: contextual modeling with different classes and determination of functions/parameters from conditions are explicit.",
+      "openDissent": "Partial combined support. Only covered classes and simple cases; no compulsory logistic example.",
+      "directPartialBindings": [
+        {
+          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K003-448a55c834",
+          "sourceText": "nutzen Funktionen verschiedener Funktionsklassen zur Modellierung, Beschreibung und Untersuchung quantifizierbarer Zusammenhänge",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 66",
+          "courseLevel": "GK_LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K007-8a4428a341",
+          "sourceText": "bestimmen Funktionen oder Parameter in Funktionstermen aus Bedingungen an die Funktion oder deren Ableitungen",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 66",
+          "courseLevel": "GK_LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T032-3079a52918",
+          "sourceText": "Wurzelfunktionen",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 66",
+          "courseLevel": "GK_LK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        }
+      ],
+      "directMappingPath": "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/de-sh_math_upper_secondary_bf17_bounded_source.review.json",
+      "directMappingSha256": "cde2809d83e36e48b3d25bf2f625a377184a1382449d3cf79e4fd7fb28c22f03"
+    },
+    {
+      "jurisdiction": "DE-SL",
+      "views": [
+        "de-sl-gk.view.json",
+        "de-sl-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_MATHEMATIK_SEKII_GOS_2014_2019.source-extraction.json",
+        "sha256": "8cbf125e9c938a37a58773eeae051ee3be5037dead129e24ea218f71fbc5dc4d"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/SL/LP_Ma_EP_GOS_2014.pdf",
+          "role": "binding-upper-secondary-entry-phase",
+          "official": true,
+          "officialUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Mathematik/LP_Ma_EP_GOS_2014.pdf?__blob=publicationFile&v=3",
+          "sha256": "0b23cf2551733db966d86e5ec5e349b17df5d50ad31cc9fa4e0680d015e54770"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/SL/LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.pdf",
+          "role": "binding-upper-secondary-basic-course",
+          "official": true,
+          "officialUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Mathematik/LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.pdf?__blob=publicationFile&v=4",
+          "sha256": "ee77ed726ee6be38a66a1830f0f69fd672883a2fb558cd6ceed41894fd0a5086"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/SL/LP_Ma_LK_HP_2019.pdf",
+          "role": "binding-upper-secondary-advanced-course",
+          "official": true,
+          "officialUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Mathematik/LP_Ma_LK_HP_2019.pdf?__blob=publicationFile&v=3",
+          "sha256": "9a4c674eab01edda713a9aef60f38f2d24df3031a7361dabeb6b0f9946f66134"
+        }
+      ],
+      "action": "retain-target-bounded",
+      "primaryPageReading": "G-Kurs Thema 1, printed p.13a/14 (one-parameter insertion); Thema 7, printed pp.38–39.",
+      "rationale": "Retain previously taught basic classes and simple combinations: explicit justified choice of function and interpretation/validation, connected with the compulsory one-parameter insertion and transformation reading in Thema 1.",
+      "openDissent": "Partial combined support. The extraction omits the inserted one-parameter bullet; PDF is the authoritative supplement. Thema 9 rational-functions selection is cohort-dependent and is not used as universal evidence. No logistic example.",
+      "directPartialBindings": [
+        {
+          "sourceGoalId": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t07-modellieren-b02-bd146c6468",
+          "sourceText": "nutzen Grundfunktionen sowie einfache Verknüpfungen von Funktionen zur Beschreibung quantifizierbarer Zusammenhänge",
+          "sourceRef": "Lehrplan Mathematik Hauptphase G-Kurs der gymnasialen Oberstufe, Saarland, Juli 2019",
+          "courseLevel": "GK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t07-modellieren-b03-5ed63ce439",
+          "sourceText": "begründen die Wahl der dem Modell zugrunde liegenden Funktion",
+          "sourceRef": "Lehrplan Mathematik Hauptphase G-Kurs der gymnasialen Oberstufe, Saarland, Juli 2019",
+          "courseLevel": "GK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t07-modellieren-b05-378c8332a0",
+          "sourceText": "interpretieren und validieren die Ergebnisse einer Modellierung",
+          "sourceRef": "Lehrplan Mathematik Hauptphase G-Kurs der gymnasialen Oberstufe, Saarland, Juli 2019",
+          "courseLevel": "GK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t01-grundlegende-funktionen-und-ableitungen-b25-3eaae5aa04",
+          "sourceText": "erläutern anhand der Funktionsgleichung die Entstehung des zugehörigen Graphen aus dem Graph der entsprechenden Grundfunktion",
+          "sourceRef": "Lehrplan Mathematik Hauptphase G-Kurs der gymnasialen Oberstufe, Saarland, Juli 2019",
+          "courseLevel": "GK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        }
+      ],
+      "directMappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/de-sl_math_upper_secondary_bf17_bounded_source.review.json",
+      "directMappingSha256": "e598c293232025f4a675c349841d5bb033cd6458e35af111ea5b8d562117c181"
+    },
+    {
+      "jurisdiction": "DE-SN",
+      "views": [
+        "de-sn-gk.view.json",
+        "de-sn-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+        "sha256": "70f65c212b5e036b20d4942aab26d3ba0f515ac5ffc834620a1b6f788c6048ff"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-mathematik-sachsen-2019.pdf",
+          "role": "binding-upper-secondary-classes-11-12",
+          "official": true,
+          "officialUrl": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/121/galmOUYkLcTVJh8Sk6g9",
+          "sha256": "de48e13d404cfb4d155f056efdc1a6888857ccda58cc03cf81bcdabb2141f8ae"
+        }
+      ],
+      "action": "retain-target-bounded",
+      "primaryPageReading": "Grundkurs LB1, printed p.33; LB8, printed p.36.",
+      "rationale": "Retain simple taught rational-power/log/sine families or their simple combinations, tied to contextual problems, function fitting and the explicit simple parameter-family application.",
+      "openDissent": "Partial combined inference rather than an exact BF17 phrase. Context-specific parameter meaning must be assessed explicitly; neither grade-10 nor LK optional logistic material is used.",
+      "directPartialBindings": [
+        {
+          "sourceGoalId": "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb01-differentialrechnung-r012-3d896ca3a9",
+          "sourceText": "ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten, f ( x )  e x, f ( x )  ln x f ( x )  sin x einfache Verkettungen und Verknüpfungen",
+          "sourceRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "courseLevel": "GK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb01-differentialrechnung-r021-78f3fa9488",
+          "sourceText": "Beherrschen des Bestimmens von Funktionsgleichungen mithilfe von Regression",
+          "sourceRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "courseLevel": "GK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb08-weitere-anwendungen-r001-c44c35bb74",
+          "sourceText": "Anwenden der mathematischen Kenntnisse beim Lösen inner- und außermathematischer Problemstellungen",
+          "sourceRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "courseLevel": "GK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        },
+        {
+          "sourceGoalId": "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb08-weitere-anwendungen-r009-fb14f95213",
+          "sourceText": "einfache Funktionsscharen",
+          "sourceRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "courseLevel": "GK",
+          "matchType": "partial",
+          "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+        }
+      ],
+      "directMappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/de-sn_math_upper_secondary_bf17_bounded_source.review.json",
+      "directMappingSha256": "f062aa64b38d84996bf6a19ecdb461c7df65b77889717ade4ec77c64207cacc1"
+    },
+    {
+      "jurisdiction": "DE-ST",
+      "views": [
+        "de-st-gk.view.json",
+        "de-st-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_MATHEMATIK_SEKII_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+        "sha256": "045cf9f2becf5e49bf80c46069697aa69a141f1c8b4244d3f10e011e08e52fa0"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/ST/Mathematik_FLP_Gym_01_07_2019.pdf",
+          "role": "binding-upper-secondary-qualification-phase",
+          "official": true,
+          "officialUrl": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung/Mathematik_FLP_Gym_01_07_2019.pdf",
+          "sha256": "317e0b55339ca687bf5c0401f57cafdab4e911cb14e5d5bf65696eeeadc73622"
+        }
+      ],
+      "action": "prerequisiteOnly",
+      "rationale": "Qualification gA differential-reckoning clauses support polynomial reconstruction and contextual/extremum problems, not a proven additional-class choice plus context parameters. Ordinary modeling remains targeted.",
+      "sourceItems": [
+        {
+          "id": "de-st-mathematik-sekii-fachlehrplan-gymnasium-2019-st-sekii-11-12-gk-differentialrechnung-k007-269ee17f51",
+          "courseLevel": "GK",
+          "sourceRef": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019",
+          "sourceSpan": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019, Qualifikationsphase grundlegendes Anforderungsniveau, Differentialrechnung, Zeile 2480",
+          "sourceText": "Gleichungen von ganzrationalen Funktionen aus ihren Eigenschaften ermitteln"
+        },
+        {
+          "id": "de-st-mathematik-sekii-fachlehrplan-gymnasium-2019-st-sekii-11-12-gk-differentialrechnung-k008-fa1e4b8e3b",
+          "courseLevel": "GK",
+          "sourceRef": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019",
+          "sourceSpan": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019, Qualifikationsphase grundlegendes Anforderungsniveau, Differentialrechnung, Zeile 2481",
+          "sourceText": "Extremwertaufgaben sowie weitere inner- und außermathematische Anwendungsaufgaben mithilfe von Funktionen und deren Eigenschaften lösen"
+        }
+      ]
+    },
+    {
+      "jurisdiction": "DE-TH",
+      "views": [
+        "de-th-gk.view.json",
+        "de-th-sekii-gk.view.json"
+      ],
+      "sourceExtraction": {
+        "path": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+        "sha256": "ec548aaeb6743fc5fc25d2e328dd2faa4c232295ed5fa24beedadea4e3f21fbd"
+      },
+      "primaryDocuments": [
+        {
+          "path": "curricula/DE/Gymnasium/input/TH/lp_gy_mathematik_10.04.2019_TSP.pdf",
+          "role": "binding-transition-for-grade-7-10-and-11S",
+          "official": true,
+          "officialUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/19980?dateiname=lp_gy_mathematik_10.04.2019_TSP.pdf",
+          "sha256": "ee1fca0285f1c9d72edd990073dc4909b0ab5b127ddef59fc46d2c54932179b2"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/TH/LP_GY_Mathematik_Entwurfsfassung2025.pdf",
+          "role": "binding-for-grade-5-6-and-11-12-from-2025-26",
+          "official": true,
+          "officialUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/65648?dateiname=LP_GY_Mathematik_Entwurfsfassung2025.pdf",
+          "sha256": "992041c34dfd618bdb2b7621ee59fb577f036121e5ea2a55e2086c99e0a4817a"
+        }
+      ],
+      "action": "prerequisiteOnly",
+      "rationale": "2025 printed pp.21–23 is the applicable qualification source: real-process modeling and one-parameter polynomial/e combinations are supported, but the current additional-class choice/context-parameter combination is not explicit. Do not combine with transitional 2018/2019 grade-11S clauses or merged eA text to construct a uniform GK requirement. Ordinary modeling stays targeted.",
+      "sourceItems": [
+        {
+          "id": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-2-funktionen-015-3b30f219ce",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 35",
+          "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, Einfuehrungsphase 11S: Funktionen, Zeile 1493",
+          "sourceText": "aus Darstellungen von Funktionen auf einen möglichen Funktionstyp schließen und eine Funktionsgleichung angeben (in einfachen Fällen auch ohne Hilfsmittel),"
+        },
+        {
+          "id": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-2-funktionen-019-fd0ab3cdd4",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 35",
+          "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, Einfuehrungsphase 11S: Funktionen, Zeile 1503",
+          "sourceText": "Funktionen zum Lösen inner- und außermathematischer Probleme anwenden, dabei auch Zusammenhänge zwischen zwei Datenreihen durch eine geeignete Funktion annähernd mathematisch beschreiben."
+        },
+        {
+          "id": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2025-4-1-analysis-013-f0341e8827",
+          "courseLevel": "GK_LK",
+          "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2025, S. 22",
+          "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2025, Qualifikationsphase: Analysis, Zeile 911",
+          "sourceText": "ganzrationale Funktionen und Exponentialfunktionen zur Basis e: Arten von Extrema untersuchen und den Einfluss eines reellen Parame- und eine Schar von Funktionen mit reelters auf Eigenschaften dieser Funktionen len Parametern auf Eigenschaften unterermitteln und beschreiben, suchen,"
+        }
+      ]
+    }
+  ],
+  "changedFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+      "beforeSha256": "3c05d89e36a23b504e0d4dd93f4d3f412673070c6c8b27de6b7ca912b8c6637d",
+      "afterSha256": "a3ead5281cf50409a6fb10fcc2bde5aff7724b7fdb90bdaedfba5ae8026d8cfa",
+      "change": "Direct BF17 prerequisiteOnly override; other authored references unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json",
+      "beforeSha256": "28405c65ec815850b98f91c7802d585dec3c890c136562d57c08e6ba4de20f17",
+      "afterSha256": "9fc5122c2d1ebe98ac6e82669b8bf2dc52dcb84c0ec03da65b948bf8bc264236",
+      "change": "Direct BF17 prerequisiteOnly override; other authored references unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json",
+      "beforeSha256": "6bd9202603a220ee1384524f79d41a2a7961b4177501ee42128a7de465b627b7",
+      "afterSha256": "b0a9d457d1f0a986a1372b8317099a7ae79b18daff7073bd146aeb1836131666",
+      "change": "Direct BF17 prerequisiteOnly override; other authored references unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-gk.view.json",
+      "beforeSha256": "3b66328e76438ce03d34bb05eaff362872c5034629dcc7434ffb50f0f554dab3",
+      "afterSha256": "bdee1d268d7c434da1df6160ae8b6f93008e217fb283bc07b7727da55460e480",
+      "change": "Direct BF17 prerequisiteOnly override; other authored references unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/de-bw_math_upper_secondary_bf17_bounded_source.review.json",
+      "afterSha256": "77967d6c5a54bcada21378c4523d8b1433204258a8ecee24d27b49fa00425d16",
+      "change": "New direct partial source bindings; legacy mappings unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/de-hb_math_upper_secondary_bf17_bounded_source.review.json",
+      "afterSha256": "504f2da65df935f0af8c8725372f08d56fa6b31ca16a1ccf93fe203a7c90caef",
+      "change": "New direct partial source bindings; legacy mappings unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/de-hh_math_upper_secondary_bf17_bounded_source.review.json",
+      "afterSha256": "8bad0b5a739de4d8958f018e593cf94f2c145c88c0bbe29232a0964558fbaf2b",
+      "change": "New direct partial source bindings; legacy mappings unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/de-mv_math_upper_secondary_bf17_bounded_source.review.json",
+      "afterSha256": "111d639ad9f106da385342d82dbfa569edbec75ab57438132d801b29a2c8ba29",
+      "change": "New direct partial source bindings; legacy mappings unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/de-ni_math_upper_secondary_bf17_bounded_source.review.json",
+      "afterSha256": "0431226a45618674738a9be8fea22d5f3e72882798df03dd3f81b84801a5ed8f",
+      "change": "New direct partial source bindings; legacy mappings unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/de-nw_math_upper_secondary_bf17_bounded_source.review.json",
+      "afterSha256": "85663d239cb803eab3b01a50d393b14bc59851dbd171f528dffe77aa985e8a90",
+      "change": "New direct partial source bindings; legacy mappings unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+      "beforeSha256": "91e379da0368c9a160980097e9de03b0320622743015f8bd5a51e5b61684ecb0",
+      "afterSha256": "00fcc7e9d94b16ec918b62e89fe0f112e3bb27a38595a49acc8eacd5b8231e52",
+      "change": "Direct BF17 prerequisiteOnly override; other authored references unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+      "beforeSha256": "e504567c51ba3155085c9fea1e3a89ea4bc04549ee5668c3ef0b7d3e524af1b5",
+      "afterSha256": "960a350ab26d29ce97d4ac7533aff51401bcef2ebb7be37c2da1ee987cc25a29",
+      "change": "Direct BF17 prerequisiteOnly override; other authored references unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+      "beforeSha256": "3d799dc8e4a8c75f66fa3378215abe573f641696be561e99d2f2f35309f0d104",
+      "afterSha256": "87fd03463d8704545b5f8a37a37430d985ac3ee39b05c219d3c1f10510f2a608",
+      "change": "Direct BF17 prerequisiteOnly override; other authored references unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json",
+      "beforeSha256": "46497a57fa42cbbe95d2b3c6426b4dfcc328f81a2ea0576d36f4bdb64e484228",
+      "afterSha256": "70e1ce455c22301b670422b3e7364696e1098bf2e7fa1fd60dae7149babe2a1f",
+      "change": "Direct BF17 prerequisiteOnly override; other authored references unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/de-sh_math_upper_secondary_bf17_bounded_source.review.json",
+      "afterSha256": "cde2809d83e36e48b3d25bf2f625a377184a1382449d3cf79e4fd7fb28c22f03",
+      "change": "New direct partial source bindings; legacy mappings unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/de-sl_math_upper_secondary_bf17_bounded_source.review.json",
+      "afterSha256": "e598c293232025f4a675c349841d5bb033cd6458e35af111ea5b8d562117c181",
+      "change": "New direct partial source bindings; legacy mappings unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/de-sn_math_upper_secondary_bf17_bounded_source.review.json",
+      "afterSha256": "f062aa64b38d84996bf6a19ecdb461c7df65b77889717ade4ec77c64207cacc1",
+      "change": "New direct partial source bindings; legacy mappings unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
+      "beforeSha256": "5a399a833d9c12cc5e657ef5bf5252bb2a1146773a3231bae2af8098c6a32589",
+      "afterSha256": "6f63781885f5f2477c29d2bb01c290fe4de45c9eefcd10626a70f9134c08bb80",
+      "change": "Direct BF17 prerequisiteOnly override; other authored references unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json",
+      "beforeSha256": "954e15f8b254e50c7bfd06c6b11d6150bc9972ec32d1fb1f7f1900415441a84d",
+      "afterSha256": "8f7b59818d770ea44d33b63c9a563453e2e46acca98f8f9d5d63cb2f54eb25dd",
+      "change": "Direct BF17 prerequisiteOnly override; other authored references unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
+      "beforeSha256": "36a00b566bee2b6b1e914b8b076cd09a89dc93d43a8fa926d75ece27bd3891b2",
+      "afterSha256": "528bc765205c705dbcdbd77a33740f2e758fc069ecc30902dc823d79e1170e57",
+      "change": "Direct BF17 prerequisiteOnly override; other authored references unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json",
+      "beforeSha256": "94a35c5b0a815b4cf27529114cef51fbe9dec7e73ebf9d407308779a5b969dc3",
+      "afterSha256": "06aae5492828f88e7c2dcde3add6b0f464280f9202c493034607c8e98df5fb70",
+      "change": "Direct BF17 prerequisiteOnly override; other authored references unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-gk.view.json",
+      "beforeSha256": "2e170b85d0c9b422f259e4814ccb7daa27e47eb622dec4ab7efc86dfb2c310cb",
+      "afterSha256": "22a82b53a867fb3095e7023f5d6157311a775e8abd465699095a229eb956f090",
+      "change": "Direct BF17 prerequisiteOnly override; other authored references unchanged."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-sekii-gk.view.json",
+      "beforeSha256": "9a1fe7e1242d948e26edd086b8d7f3f73344134cbbbfc629f76258b4c19e7685",
+      "afterSha256": "6f1d0e37a00f96e8df8e0787b672881446de2e68eaf64d3e95700292bb79d3b6",
+      "change": "Direct BF17 prerequisiteOnly override; other authored references unchanged."
+    }
+  ],
+  "openDissent": [
+    "All retained bindings are partial combined-source readings; no single source item is upgraded to exact BF17 equivalence.",
+    "Extended function class is read only within each retained jurisdiction's explicitly taught family set. No one GK example automatically fits every retained scope.",
+    "This source repair does not approve the active logistic-only image, D, P, V or strict M7.",
+    "MV/TH contain pre-existing broken extraction columns; their unsupported GK_LK tags are not authoritative evidence. A broader extraction repair is outside this bounded change."
+  ],
+  "nationalDecision": {
+    "views": [
+      "de-de-gk.view.json",
+      "de-de-sekii-gk.view.json"
+    ],
+    "action": "prerequisiteOnly",
+    "officialUrl": "https://www.kmk.org/fileadmin/Dateien/veroeffentlichungen_beschluesse/2012/2012_10_18-Bildungsstandards-Mathe-Abi.pdf",
+    "sha256": "a636ec6947dca2044618787a9e29116d88f68909d02e4547050e4d3fc9c77546",
+    "sourceRef": "KMK Bildungsstandards Mathematik Allgemeine Hochschulreife, 18.10.2012, printed p.20 (PDF page 17), L4; K3 printed p.17.",
+    "rationale": "L4 gA requires use of inherited Sek-I function classes and simple combinations/compositions; K3 supplies general modeling. These clauses establish ordinary modeling, but no particular extended family with contextual parameters as a separate nationally required target. Both jurisdiction-free GK views therefore defer BF17 as prerequisiteOnly instead of borrowing a state-specific target decision.",
+    "openDissent": "Conservative authoring decision for this current additional-family formulation, not a claim that KMK prohibits extended models or that nationwide views are an intersection of every state curriculum."
+  },
+  "commonGkExampleBoundary": {
+    "status": "no-single-concrete-family-proved-as-identical-compulsory-context-parameter-example-in-all-nine-retained-jurisdictions",
+    "plausibleCombinedFamily": "Simple polynomial/e-function combinations, within each jurisdiction's taught family restrictions. This is a combined-source inference, not nine matching explicit compulsory BF17 instances.",
+    "pGuidance": "Use two independent fresh class-choice/context-parameter cases only within the actual learner scope's allowed family set; do not reclassify examples as universally compulsory. A source-neutral model-choice illustration avoids a misleading universal logistic, root or reciprocal example."
+  },
+  "verification": {
+    "effectiveProjection": {
+      "method": "collectAuthoritativeTargetAtomicGoalIds using actual composition runtime; full before/after target-set comparison",
+      "totalViews": 88,
+      "changedViews": [
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+          "removed": [
+            "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+          ],
+          "added": []
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json",
+          "removed": [
+            "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+          ],
+          "added": []
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json",
+          "removed": [
+            "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+          ],
+          "added": []
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-gk.view.json",
+          "removed": [
+            "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+          ],
+          "added": []
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-gk.view.json",
+          "removed": [
+            "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+          ],
+          "added": []
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-sekii-gk.view.json",
+          "removed": [
+            "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+          ],
+          "added": []
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+          "removed": [
+            "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+          ],
+          "added": []
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+          "removed": [
+            "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+          ],
+          "added": []
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+          "removed": [
+            "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+          ],
+          "added": []
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json",
+          "removed": [
+            "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+          ],
+          "added": []
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
+          "removed": [
+            "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+          ],
+          "added": []
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json",
+          "removed": [
+            "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+          ],
+          "added": []
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
+          "removed": [
+            "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+          ],
+          "added": []
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json",
+          "removed": [
+            "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+          ],
+          "added": []
+        }
+      ],
+      "gkTargets": 20,
+      "lkTargets": 40,
+      "onlyBf17Removed": true,
+      "ordinaryModelingPreserved": true
+    },
+    "sourceRouting": {
+      "method": "Actual buildApplicabilityCompilation plus actual generateGoalSourceRationales.ts --jurisdiction=all --goal=bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+      "routes": [
+        {
+          "jurisdiction": "DE-BW",
+          "mappingPath": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/de-bw_math_upper_secondary_bf17_bounded_source.review.json",
+          "applicabilityEvidenceCount": 1,
+          "classicSourceRouteCount": 3,
+          "sourceGoalIds": [
+            "bw-math-sekii-bp2016-2-3-07-063e3e2a",
+            "bw-math-sekii-bp2016-3-5-4-05b-produktfunktionen-untersuchen",
+            "bw-math-sekii-bp2016-3-5-4-07"
+          ],
+          "officialPrimarySource": true,
+          "matchType": "partial"
+        },
+        {
+          "jurisdiction": "DE-HB",
+          "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/de-hb_math_upper_secondary_bf17_bounded_source.review.json",
+          "applicabilityEvidenceCount": 1,
+          "classicSourceRouteCount": 3,
+          "sourceGoalIds": [
+            "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-7-001-7251581b20",
+            "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-003-6bc797f183",
+            "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-001-3ca49a3763"
+          ],
+          "officialPrimarySource": true,
+          "matchType": "partial"
+        },
+        {
+          "jurisdiction": "DE-HH",
+          "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/de-hh_math_upper_secondary_bf17_bounded_source.review.json",
+          "applicabilityEvidenceCount": 1,
+          "classicSourceRouteCount": 4,
+          "sourceGoalIds": [
+            "hh-math-sekii-2022-hh-sekii-m1-1-01-e7dba2f0d2",
+            "hh-math-sekii-2022-hh-sekii-m1-1-02-81f0e5a9de",
+            "hh-math-sekii-2022-hh-sekii-m1-1-03-6005fb0f1d",
+            "hh-math-sekii-2022-hh-sekii-k4-04-e6fbcfbdf0"
+          ],
+          "officialPrimarySource": true,
+          "matchType": "partial"
+        },
+        {
+          "jurisdiction": "DE-MV",
+          "mappingPath": "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/de-mv_math_upper_secondary_bf17_bounded_source.review.json",
+          "applicabilityEvidenceCount": 1,
+          "classicSourceRouteCount": 2,
+          "sourceGoalIds": [
+            "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-k3-003-1d5f7dd931",
+            "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-untersuchungen-von-funktionen-und-ihrer-graphen-017-8c63bf161c"
+          ],
+          "officialPrimarySource": true,
+          "matchType": "partial"
+        },
+        {
+          "jurisdiction": "DE-NI",
+          "mappingPath": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/de-ni_math_upper_secondary_bf17_bounded_source.review.json",
+          "applicabilityEvidenceCount": 1,
+          "classicSourceRouteCount": 4,
+          "sourceGoalIds": [
+            "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-e-process-k3-001-604aa1a0e3",
+            "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-e-process-k3-003-6176f547d4",
+            "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-lernbereich-kern-die-e-funktion-ga-004-7375a88953",
+            "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-lernbereich-kern-die-e-funktion-ga-007-d87efc036a"
+          ],
+          "officialPrimarySource": true,
+          "matchType": "partial"
+        },
+        {
+          "jurisdiction": "DE-NW",
+          "mappingPath": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/de-nw_math_upper_secondary_bf17_bounded_source.review.json",
+          "applicabilityEvidenceCount": 1,
+          "classicSourceRouteCount": 3,
+          "sourceGoalIds": [
+            "de-nw-mathematik-sekii-klp-2023-nw-sekii-gk-funktionen-und-analysis-a-007-e52c2763c6",
+            "de-nw-mathematik-sekii-klp-2023-nw-sekii-gk-funktionen-und-analysis-a-011-3c3e9e6d07",
+            "de-nw-mathematik-sekii-klp-2023-nw-sekii-gk-funktionen-und-analysis-a-012-cf491eddc2"
+          ],
+          "officialPrimarySource": true,
+          "matchType": "partial"
+        },
+        {
+          "jurisdiction": "DE-SH",
+          "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/de-sh_math_upper_secondary_bf17_bounded_source.review.json",
+          "applicabilityEvidenceCount": 1,
+          "classicSourceRouteCount": 3,
+          "sourceGoalIds": [
+            "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K003-448a55c834",
+            "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K007-8a4428a341",
+            "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T032-3079a52918"
+          ],
+          "officialPrimarySource": true,
+          "matchType": "partial"
+        },
+        {
+          "jurisdiction": "DE-SL",
+          "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/de-sl_math_upper_secondary_bf17_bounded_source.review.json",
+          "applicabilityEvidenceCount": 1,
+          "classicSourceRouteCount": 4,
+          "sourceGoalIds": [
+            "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t07-modellieren-b02-bd146c6468",
+            "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t07-modellieren-b03-5ed63ce439",
+            "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t07-modellieren-b05-378c8332a0",
+            "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t01-grundlegende-funktionen-und-ableitungen-b25-3eaae5aa04"
+          ],
+          "officialPrimarySource": true,
+          "matchType": "partial"
+        },
+        {
+          "jurisdiction": "DE-SN",
+          "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/de-sn_math_upper_secondary_bf17_bounded_source.review.json",
+          "applicabilityEvidenceCount": 1,
+          "classicSourceRouteCount": 4,
+          "sourceGoalIds": [
+            "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb01-differentialrechnung-r012-3d896ca3a9",
+            "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb01-differentialrechnung-r021-78f3fa9488",
+            "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb08-weitere-anwendungen-r001-c44c35bb74",
+            "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb08-weitere-anwendungen-r009-fb14f95213"
+          ],
+          "officialPrimarySource": true,
+          "matchType": "partial"
+        }
+      ],
+      "classicSourceStatus": "classic_source_partial",
+      "limitation": "Generated local route verified; existing deployed public JSON is not regenerated or deployed by this source-only change."
+    },
+    "prerequisiteRoute": {
+      "method": "Current authored composition roles and complete direct prerequisite closure, checked against LearnerService.java rich-frontier guard (0.9 mastery threshold). No live learner or server integration test is claimed.",
+      "views": [
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-gk.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-gk.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        },
+        {
+          "view": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json",
+          "parameterPrerequisiteTarget": true,
+          "parameterContextPrerequisiteTarget": true,
+          "transitivePrerequisiteIds": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+          ],
+          "unavailablePrerequisiteIds": []
+        }
+      ],
+      "parameterGoalId": "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+      "parameterPredecessorId": "71683f37-24de-4e0f-badd-858b56fa4d64",
+      "frontierRule": "Within the full retained GK target scope, BF17 stays blocked while 91e2f564 is below 0.9; 91e2f564 itself remains available and requires its own contextual-parameter predecessor plus orientation. Once both direct prerequisites of BF17 are mastered, this edge no longer blocks it. Focus-specific optimistic behavior remains the backend rule."
+    },
+    "checks": [
+      {
+        "command": "npm --prefix app run validate:composition-views",
+        "result": "PASS: 297 views, 21 canonical landscapes; before duplicate-only Canon cleanup, whose target sets were separately confirmed identical."
+      },
+      {
+        "command": "npm --prefix app run check:source-landscape-registry",
+        "result": "PASS: 302 registry entries"
+      },
+      {
+        "command": "npm --prefix app run quality:source-coverage-evidence:test",
+        "result": "PASS: 6 tests"
+      },
+      {
+        "command": "git diff --check -- curricula/DE/Gymnasium/composition-views/mathematik",
+        "result": "PASS"
+      }
+    ],
+    "changedFileHashesMatch": true
+  },
+  "canonicalDeduplication": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+    "change": "Removed exactly one repeated direct prerequisite after root explicitly authorized the narrow Canon fix.",
+    "requiresBefore": [
+      "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+      "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+      "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+    ],
+    "requiresAfter": [
+      "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+      "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+    ],
+    "targetSetsIdenticalAfterDeduplication": true,
+    "goalTextAndImagesChanged": false
+  },
+  "primaryLocatorCorrections": {
+    "reviewedAt": "2026-09-29",
+    "method": "Independently reconfirmed in the locally retained official PDFs with pdftotext -layout; printed footer/page labels checked. No semantic scope change.",
+    "originReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-29/bf17-bounded-source-p-v2/p-source-audit.receipt.json",
+    "corrections": [
+      {
+        "jurisdiction": "DE-NI",
+        "clause": "K3 Mathematisch modellieren",
+        "priorLocator": "printed p.15",
+        "correctLocator": "printed p.16",
+        "sourceWordingUnchanged": true
+      },
+      {
+        "jurisdiction": "DE-MV",
+        "clause": "K3 Mathematisch modellieren",
+        "priorLocator": "printed p.11",
+        "correctLocator": "printed p.12; PDF page 15",
+        "sourceWordingUnchanged": true
+      }
+    ],
+    "bindingBoundary": "These corrected primary locators supersede inherited page locators for these two K3 clauses in this source receipt. Source-extraction and mapping files are unchanged in this narrowly authorized A/M/kind step."
+  }
+}

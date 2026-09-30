@@ -1,0 +1,1054 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "math-bf17-bounded-source-p-20260929-v2",
+  "reviewKind": "independent-bounded-p-source-review",
+  "status": "validated-ai-candidate-with-source-faithful-bounded-nine-gk-decision",
+  "humanApprovalClaim": false,
+  "strictM7ApprovalClaim": false,
+  "universalConcreteFamilyClaim": false,
+  "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+  "sourceRepairReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-09-29/bf17-gk-bounded-source-repair/source-review.receipt.json",
+    "sha256": "7d8628dbda0af2d79908d6f7e93679bb4f225012e5da97842e1111ed84015aef"
+  },
+  "currentGoalBindings": {
+    "goalFingerprint": "sha256:5a57c35cbee6162bd0c3cb203d5a8d26600ce710be105733b9a755afa96bc03e",
+    "reviewInputFingerprint": "sha256:1a731a391d8c8728537e29bf6b17790fceb5229aab3873a7e8944873d36b68ba",
+    "profileFingerprint": "sha256:115f025bf6dc51f41bbe155c68956f3cda2f786c505d112886ff625aaf0862d5",
+    "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+  },
+  "currentProjection": {
+    "method": "collectCompositionProjectionRoleGoalIds(normalizeCompositionView(view).rootNodes, current Canon goals) for every current mathematics view; computed independently in this review",
+    "totalTargets": 60,
+    "gkTargets": 20,
+    "lkTargets": 40,
+    "gkJurisdictions": [
+      "DE-BW",
+      "DE-HB",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN"
+    ],
+    "targetViews": [
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-BB",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "sha256": "1e852ef6fa714f73625f46e7d6bd3491fc2405d7204b14af53ac05bff51b200e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-BB",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "sha256": "0d69d09d6aa888a45f31597cbdde57e3e3c247f3b0d95f21847234830a233073"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-BE",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "sha256": "66b6d463d64a392c33127cdda9007cfda468908ad110e464e318383abe8945d9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-BE",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "sha256": "94138a0856f03062327c1e71e344305d53520cc8cdca30e211f6a81f3290dc50"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+        "scope": {
+          "jurisdiction": "DE-BW",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "sha256": "c5631e9d74c9d962c77b2350e6325cb4d8b9b219747d243f5982df483f4b28b0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-BW",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "sha256": "34aa6f9b6fe958d3ca16a117fd2f11382508e308e94be865fa6041a5796d0de2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
+        "scope": {
+          "jurisdiction": "DE-BW",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "sha256": "39147a353698350e16860fbb21d53ce305af8f9ad64b21047adeba23864ce6d7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-BW",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "sha256": "561b3831ff9469511b694fb5797d790547f60d76ef5feef34a1b49adf1f6f077"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-BY",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "sha256": "7776fbee37ed5c7150628ca0417cf189291540ac5fade4e311681513288d5cae"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-BY",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "sha256": "d711de6c5a8ddbfbbc8819e2de4c2f837382a01456b0569322f84b39e9dc705f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "sha256": "1e651b4e6809eb7072974b9bd46bd7abc3e3ac419cbab69e6758d69a4bd448be"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-sekii-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "sha256": "a25cc7ede590b42fb1dbd7f9df945bc2e2bb40af7308d8dcb23a480d95e17b3f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
+        "scope": {
+          "jurisdiction": "DE-HB",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "sha256": "30c75f5c88c6cf6528c1b0846f5978770cebf8836999704cd185efdca8b21ae1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-HB",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "sha256": "e5b3a671bc2248423d08b153e32ffceb1c7f2808b6a404f019a8eb4e8d30a00c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+        "scope": {
+          "jurisdiction": "DE-HB",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "sha256": "54dc63e6671b82d14e82611da54aeef4212b7cbb23b15924f2a3fb36b6c09200"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-HB",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "sha256": "26a2884b150ae5a37ec4fcc7f77214678bdaa69e814c0592b564a3fdcf1d6b39"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+        "scope": {
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK",
+          "durationModel": "G8"
+        },
+        "sha256": "fc75caa49aa594641e5d61da05bd6a304f0be555d3ff8af1799cc1f06041f030"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+        "scope": {
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK",
+          "durationModel": "G9"
+        },
+        "sha256": "ecb574efde3adc330cfe4c6ef470fc5eac587c67c1e504b473032370fc31c32a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "sha256": "fc0daf86880b63c624816c592401593aea18dc57a733379699188df5f0d60b89"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "sha256": "0936d68c9e245f9b7899671e5a4eeab9ec3cddf6e44da94da727896dd069c403"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-gk.view.json",
+        "scope": {
+          "jurisdiction": "DE-HH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "sha256": "c37fbe9340ed6ada5dd5ba08450ebcb9e5c56baa664b27bf3fbf68154cc21eac"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-HH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "sha256": "2a1f6a4b8ab66d6689fc822fa675d51772d141d8c1f850167905e9cc96eaa97c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-gk.view.json",
+        "scope": {
+          "jurisdiction": "DE-HH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "sha256": "1586efd3bcc715fb6a3568b1651683f6a2640aaa742ca7453676b2a96cafeabc"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-HH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "sha256": "5f26fb32d916b5e42514a2a75ec42adf3afdca8b6ed62d9f0b51d704331975c5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+        "scope": {
+          "jurisdiction": "DE-MV",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "sha256": "efe03b294b60e0dfcd9ba75972676ccc7f1e32fcbcc67008e3bcbf44b1c8b292"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-MV",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "sha256": "1ba27bad08cac4c46e269b5b6f3790dc81b1e23ac8fdc8d677e0b8609c898d8d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json",
+        "scope": {
+          "jurisdiction": "DE-MV",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "sha256": "b5a9c5c6f919222697242818aaf1d096ff81f947792d92ea65358ecae0fdd878"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-MV",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "sha256": "415437158807ddf0db3e29dd0babc4776a33ba387cca25b073333891a6e864d6"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+        "scope": {
+          "jurisdiction": "DE-NI",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "sha256": "695db8766a71134543a6f46a92adad75d9da51b4e7defa7495e8546f39d25019"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-NI",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "sha256": "277b4b4de1b76765a1c9be65ce6d07944da47a93e83c6aaf0b22a6fe4246e96e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+        "scope": {
+          "jurisdiction": "DE-NI",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "sha256": "244ee8febecc2247ea3dada000cf08f725b2137fb9edb447bc92d5784fc17743"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-NI",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "sha256": "aa1fcd710698068ef9e67ac6f8fdca6eb1dbe0e6b16d31f775cdcebda0f99bac"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+        "scope": {
+          "jurisdiction": "DE-NW",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "sha256": "412f1e740791adabd1c878b98e30491fec2231d080cef7e26f99002813099d97"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-NW",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "sha256": "a27ac6950fe571c0f5aec8532c8d9bdd140a0a7eac10d987f934c37f6c3e4e6c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
+        "scope": {
+          "jurisdiction": "DE-NW",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "sha256": "55353d53799217cfbac81d4585f18a3478938184515ed12b00b9e54a22228f7c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-NW",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "sha256": "cc5f7ba7454b7b732ab666101037057ca266e5cc393677886b3d7029d1a6d8f5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+        "scope": {
+          "jurisdiction": "DE-RP",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK",
+          "durationModel": "G8"
+        },
+        "sha256": "4a34edcaaf34b7db73ab28c6ba49014d68d7a4a2ab614882e64386186bb863f5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g9.view.json",
+        "scope": {
+          "jurisdiction": "DE-RP",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK",
+          "durationModel": "G9"
+        },
+        "sha256": "11dd248a8b968814add796084f6dd47fedc20bcf432f865985c165ffe7747a46"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-RP",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "sha256": "434b448e69892c495f8254461b510d6d6202cffee2c4a64c7fbb44d5991317d4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-RP",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "sha256": "7d8e3c88f3cc3847c853917fcccb7569649d33a689b0d9779f8764f80ebee385"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+        "scope": {
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK",
+          "durationModel": "G8"
+        },
+        "sha256": "7f142ddf2467f3dd13eb05b889daa8a87053f4922d4209508cb31d28e8a1d860"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+        "scope": {
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK",
+          "durationModel": "G9"
+        },
+        "sha256": "c79f7612c75c7260f4e4a3e4273d135bc6bfd3df0936672624be8297ffe1896d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+        "scope": {
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "sha256": "a6e28fd88e7a8ee8bb00912abeaff3c94a44b29b073bc837630d12d45723021b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+        "scope": {
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK",
+          "durationModel": "G8"
+        },
+        "sha256": "c6b8219d6e28af68c40ffaee9fc2d6f2d81c1a25452f508e74b27aeab4291781"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+        "scope": {
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK",
+          "durationModel": "G9"
+        },
+        "sha256": "12e82b6d0782352c96697b8e1a943e7a636fd62ebdc78480d839165e28d94046"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "sha256": "fd98459785973674aecfa25f9f635f2eabd553d4db55f8787e8ff848dccf1c0a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+        "scope": {
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "sha256": "26f2e65a7e7805c3c0a96debab77820b65cf44c87e457f2cdaa0a3d0df2daa5b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "sha256": "fb21861c889d36ec5af67126d8ea77cc6f21d48a6ce3ef9cba876f9ded53422e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+        "scope": {
+          "jurisdiction": "DE-SL",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "sha256": "97769beb022ab47a2e773dc929c824c799e4670ca4a2873b4a712b72e46f8a92"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-SL",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "sha256": "d49041d0b5ba7abfb1c72e1390e7d70a36da3da9e7c0a85eef4796ef44e41e77"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json",
+        "scope": {
+          "jurisdiction": "DE-SL",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "sha256": "9fdcc9600d0c7d4def2881ad85d152234cd22a71a09052fd74477e551aafa6a0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-SL",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "sha256": "71ca3fd8143f7da75b4a54775db06b4c23e779fe7f995cf6e267b30a5465765a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+        "scope": {
+          "jurisdiction": "DE-SN",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "sha256": "811a39f01f5d58e9d9e00081eb7d24126148c99856e2ded087c823f89135aa58"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-SN",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "sha256": "5bc7428807291ce693e37e6136c9385c41372413473e5e6912ead38b1f131d6f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json",
+        "scope": {
+          "jurisdiction": "DE-SN",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "sha256": "aca4a019bc3432c40c0f21f3c366c8dc94c6122f43186440753f03f90a242f54"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-SN",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "sha256": "59b1de4cfa5a004554eaae67dffc33906185de6ee785bb955828d8358845bdf1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-ST",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "sha256": "187115fd74b6e3746badacd4f107275bdc5662d12908784bed01e0a6314bde1f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-ST",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "sha256": "4e94f82b466881c1a863e7342d24e0cf0d9a3da35316609d1a5022d313d6f074"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-TH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "sha256": "544d08fbc80fa8ccb8dc353a0c16a776708863e234f2632916313378c68dfdae"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-lk.view.json",
+        "scope": {
+          "jurisdiction": "DE-TH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "sha256": "c4e319483a6ff83f8bb627264a9277c06474f4585cf7cd2fdb238026fee3821c"
+      }
+    ]
+  },
+  "nineRetainedSourceExtractsChecked": [
+    {
+      "jurisdiction": "DE-BW",
+      "extraction": {
+        "path": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+        "sha256": "593973654aafc17e38370d2a9fcf537c80130e8a70fb011b11676e12b4ece2b4"
+      },
+      "extractionHashMatches": true,
+      "directMapping": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/de-bw_math_upper_secondary_bf17_bounded_source.review.json",
+        "sha256": "77967d6c5a54bcada21378c4523d8b1433204258a8ecee24d27b49fa00425d16"
+      },
+      "boundSourceItemsExist": true,
+      "boundSourceIds": [
+        "bw-math-sekii-bp2016-2-3-07-063e3e2a",
+        "bw-math-sekii-bp2016-3-5-4-05b-produktfunktionen-untersuchen",
+        "bw-math-sekii-bp2016-3-5-4-07"
+      ],
+      "sourceBoundary": "Retain only simple sums/products or linear-inner compositions of taught families. Basisfach introduction explicitly applies these new functions to real-context modeling; prior required parameter transformations and contextual interpretation support the parameter aspect jointly.",
+      "retainedDissent": "Combined partial inference, not a literal single competence. No arbitrary rational/logistic family or LK-only rational differentiation; grade 9/10 clauses are preparation, not a second Sek-II obligation."
+    },
+    {
+      "jurisdiction": "DE-HB",
+      "extraction": {
+        "path": "curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+        "sha256": "edf90817fe8e9368a74a8af9258ec073b3b46b84652b39f63bfa833fac65d96e"
+      },
+      "extractionHashMatches": true,
+      "directMapping": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/de-hb_math_upper_secondary_bf17_bounded_source.review.json",
+        "sha256": "504f2da65df935f0af8c8725372f08d56fa6b31ca16a1ccf93fe203a7c90caef"
+      },
+      "boundSourceItemsExist": true,
+      "boundSourceIds": [
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-7-001-7251581b20",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-10-003-6bc797f183",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-6-001-3ca49a3763"
+      ],
+      "sourceBoundary": "Retain bounded simple root/reciprocal and elementary combinations: BM3.7 contextual functions explicitly transfers to BM3.10; A3.6 explicitly connects transformed parameters and application situations.",
+      "retainedDissent": "Partial combined support; compound extraction A3.6 includes explicit LK brackets which are excluded. Logistic growth under A3.8 remains LK-only."
+    },
+    {
+      "jurisdiction": "DE-HH",
+      "extraction": {
+        "path": "curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+        "sha256": "6a6908eaada2b03f43d031a19abef607bc5a8d95d55048a840fbb88b3b6f73af"
+      },
+      "extractionHashMatches": true,
+      "directMapping": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/de-hh_math_upper_secondary_bf17_bounded_source.review.json",
+        "sha256": "8bad0b5a739de4d8958f018e593cf94f2c145c88c0bbe29232a0964558fbaf2b"
+      },
+      "boundSourceItemsExist": true,
+      "boundSourceIds": [
+        "hh-math-sekii-2022-hh-sekii-m1-1-01-e7dba2f0d2",
+        "hh-math-sekii-2022-hh-sekii-m1-1-02-81f0e5a9de",
+        "hh-math-sekii-2022-hh-sekii-m1-1-03-6005fb0f1d",
+        "hh-math-sekii-2022-hh-sekii-k4-04-e6fbcfbdf0"
+      ],
+      "sourceBoundary": "Retain simple root/rational contextual models. Module 1.1 explicitly names these families, use in real contexts, parameter variation and model interpretation; K4 supplies choice.",
+      "retainedDissent": "Partial combined support; source extraction first item is truncated, so its family list is verified in the primary PDF. No unrestricted rational or logistic family."
+    },
+    {
+      "jurisdiction": "DE-MV",
+      "extraction": {
+        "path": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_MATHEMATIK_SEKII_RAHMENPLAN_2019.source-extraction.json",
+        "sha256": "9132d7f40a76dd736e7cfe58b488312a1ac5408629d220c6dcbcd3f8e43ad7e7"
+      },
+      "extractionHashMatches": true,
+      "directMapping": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/de-mv_math_upper_secondary_bf17_bounded_source.review.json",
+        "sha256": "111d639ad9f106da385342d82dbfa569edbec75ab57438132d801b29a2c8ba29"
+      },
+      "boundSourceItemsExist": true,
+      "boundSourceIds": [
+        "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-k3-003-1d5f7dd931",
+        "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-untersuchungen-von-funktionen-und-ihrer-graphen-017-8c63bf161c"
+      ],
+      "sourceBoundary": "Retain only simple rational-power/sine or polynomial/e combinations with one parameter. The compulsory right-column family restriction applies to inner- and outer-mathematical problems and is explicitly inherited by reconstruction on p.20. K3 supports model construction and contextual reading.",
+      "retainedDissent": "Partial combined inference; the parameter example alone does not establish context interpretation. Regression and Ortskurven follow the LK-only heading on p.20, despite misleading GK_LK extraction tags; neither is used as GK evidence. General logarithmic functions and multi-parameter families are excluded."
+    },
+    {
+      "jurisdiction": "DE-NI",
+      "extraction": {
+        "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_MATHEMATIK_SEKII_KERNCURRICULUM_2019.source-extraction.json",
+        "sha256": "109a07ac3948937e26214da984f52406b1096a9df232cfb199ea72d1c5daa4f3"
+      },
+      "extractionHashMatches": true,
+      "directMapping": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/de-ni_math_upper_secondary_bf17_bounded_source.review.json",
+        "sha256": "0431226a45618674738a9be8fea22d5f3e72882798df03dd3f81b84801a5ed8f"
+      },
+      "boundSourceItemsExist": true,
+      "boundSourceIds": [
+        "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-e-process-k3-001-604aa1a0e3",
+        "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-e-process-k3-003-6176f547d4",
+        "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-lernbereich-kern-die-e-funktion-ga-004-7375a88953",
+        "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-lernbereich-kern-die-e-funktion-ga-007-d87efc036a"
+      ],
+      "sourceBoundary": "Retain simple e-function sums/products with polynomials and linear-inner compositions, used in context with parameter fitting to data; K3 explicitly chooses/varies models and parameters for applications.",
+      "retainedDissent": "Partial combined support; extraction sourceRef p.44 is not the primary printed location of this learner-area table. The logistic optional extension on printed p.57 belongs to Berufliches Gymnasium; general Gymnasium gA p.45 lists only ln as an optional extension. Neither establishes compulsory logistic modeling."
+    },
+    {
+      "jurisdiction": "DE-NW",
+      "extraction": {
+        "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
+        "sha256": "b44bae1fdd2b42f9eb0e5759199562901c33fa01ab20cb5578e81b4b581acb34"
+      },
+      "extractionHashMatches": true,
+      "directMapping": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/de-nw_math_upper_secondary_bf17_bounded_source.review.json",
+        "sha256": "85663d239cb803eab3b01a50d393b14bc59851dbd171f528dffe77aa985e8a90"
+      },
+      "boundSourceItemsExist": true,
+      "boundSourceIds": [
+        "de-nw-mathematik-sekii-klp-2023-nw-sekii-gk-funktionen-und-analysis-a-007-e52c2763c6",
+        "de-nw-mathematik-sekii-klp-2023-nw-sekii-gk-funktionen-und-analysis-a-011-3c3e9e6d07",
+        "de-nw-mathematik-sekii-klp-2023-nw-sekii-gk-funktionen-und-analysis-a-012-cf491eddc2"
+      ],
+      "sourceBoundary": "Retain simple compositions/sums/products of the named GK classes; context-derived parameter conditions and function analysis in context are explicit.",
+      "retainedDissent": "Partial combined support. Selection/parameter interpretation is a synthesis of source clauses, not an exact synonym of any single clause; no compulsory logistic example."
+    },
+    {
+      "jurisdiction": "DE-SH",
+      "extraction": {
+        "path": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+        "sha256": "71b9b16473d16ae6d526bfdc56a7c39b03a1ad0512f4dfd19a007213e583ac87"
+      },
+      "extractionHashMatches": true,
+      "directMapping": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/de-sh_math_upper_secondary_bf17_bounded_source.review.json",
+        "sha256": "cde2809d83e36e48b3d25bf2f625a377184a1382449d3cf79e4fd7fb28c22f03"
+      },
+      "boundSourceItemsExist": true,
+      "boundSourceIds": [
+        "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K003-448a55c834",
+        "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K007-8a4428a341",
+        "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T032-3079a52918"
+      ],
+      "sourceBoundary": "Retain taught function families including roots: contextual modeling with different classes and determination of functions/parameters from conditions are explicit.",
+      "retainedDissent": "Partial combined support. Only covered classes and simple cases; no compulsory logistic example."
+    },
+    {
+      "jurisdiction": "DE-SL",
+      "extraction": {
+        "path": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_MATHEMATIK_SEKII_GOS_2014_2019.source-extraction.json",
+        "sha256": "8cbf125e9c938a37a58773eeae051ee3be5037dead129e24ea218f71fbc5dc4d"
+      },
+      "extractionHashMatches": true,
+      "directMapping": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/de-sl_math_upper_secondary_bf17_bounded_source.review.json",
+        "sha256": "e598c293232025f4a675c349841d5bb033cd6458e35af111ea5b8d562117c181"
+      },
+      "boundSourceItemsExist": true,
+      "boundSourceIds": [
+        "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t07-modellieren-b02-bd146c6468",
+        "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t07-modellieren-b03-5ed63ce439",
+        "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t07-modellieren-b05-378c8332a0",
+        "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-q-gk-t01-grundlegende-funktionen-und-ableitungen-b25-3eaae5aa04"
+      ],
+      "sourceBoundary": "Retain previously taught basic classes and simple combinations: explicit justified choice of function and interpretation/validation, connected with the compulsory one-parameter insertion and transformation reading in Thema 1.",
+      "retainedDissent": "Partial combined support. The extraction omits the inserted one-parameter bullet; PDF is the authoritative supplement. Thema 9 rational-functions selection is cohort-dependent and is not used as universal evidence. No logistic example."
+    },
+    {
+      "jurisdiction": "DE-SN",
+      "extraction": {
+        "path": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+        "sha256": "70f65c212b5e036b20d4942aab26d3ba0f515ac5ffc834620a1b6f788c6048ff"
+      },
+      "extractionHashMatches": true,
+      "directMapping": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/de-sn_math_upper_secondary_bf17_bounded_source.review.json",
+        "sha256": "f062aa64b38d84996bf6a19ecdb461c7df65b77889717ade4ec77c64207cacc1"
+      },
+      "boundSourceItemsExist": true,
+      "boundSourceIds": [
+        "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb01-differentialrechnung-r012-3d896ca3a9",
+        "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb01-differentialrechnung-r021-78f3fa9488",
+        "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb08-weitere-anwendungen-r001-c44c35bb74",
+        "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb08-weitere-anwendungen-r009-fb14f95213"
+      ],
+      "sourceBoundary": "Retain simple taught rational-power/log/sine families or their simple combinations, tied to contextual problems, function fitting and the explicit simple parameter-family application.",
+      "retainedDissent": "Partial combined inference rather than an exact BF17 phrase. Context-specific parameter meaning must be assessed explicitly; neither grade-10 nor LK optional logistic material is used."
+    }
+  ],
+  "concreteCaseSourceSupport": {
+    "jurisdictions": [
+      "DE-NI",
+      "DE-BW"
+    ],
+    "meaning": "Two independent examples admissible within NI gA/BW Basisfach taught sets; no assertion that these invented situations or formulas are compulsory or universal. Their being illustrative rather than universal does not invalidate the scope-qualified common competence. Other scopes use their own taught classes.",
+    "primaryReads": [
+      {
+        "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/ma_go_kc_druck_2019.pdf",
+        "sha256": "f550398fe6871e9ea8a52087fce19286b8d43997d82242e3fb87741233729481",
+        "readMethod": "pdftotext -layout on the local official PDF; primary column and course boundaries checked",
+        "pages": "Printed pp.27 and 45: Gymnasium gA, simple polynomial/e combinations, contextual applications, parameter fitting; not optional ln or vocational logistics."
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.pdf",
+        "sha256": "b085465143648b3f44c894f8eb0a5ee5d1928cbb1c4c60b3b249559709d26014",
+        "readMethod": "pdftotext -layout on the local official PDF; primary column and course boundaries checked",
+        "pages": "Printed p.48 (PDF page 50): Basisfach 3.5.4, simple sums/products, linear-inner compositions and application to real-context modeling."
+      }
+    ]
+  },
+  "mathematicalReview": {
+    "method": "Independent analytic check of initial values, trend and parameter roles, with numeric evaluation of turning times for the sum; no mastery claim",
+    "results": {
+      "productAtZero": 0,
+      "productDerivativeAtZeroForA6": 6,
+      "productPeakTimeHours": 2,
+      "productReturnLimit": 0,
+      "sumAtZeroWatts": 20,
+      "sumInitialDerivativeForA2": -8,
+      "sumInitialDerivativeForA4": -6,
+      "sumMinimumTimeForA2Minutes": 3.2188758248682006,
+      "sumMinimumTimeForA4Minutes": 1.8325814637483102,
+      "sumLongRunSlopeForA2": 2,
+      "sumLongRunSlopeForA4": 4
+    },
+    "units": "Runoff product a has m³/h²; additive power coefficient a has W/min. Fixed time constants are 2 h and 2 min. Each candidate class has one free parameter.",
+    "scope": "Selection, contextual interpretation and justified qualitative parameter effect; no compulsory derivative method, regression procedure, equation solving or full curve discussion."
+  },
+  "openDissent": [
+    "The goal wording is acceptable only with the explicitly scoped meaning recorded in fachlicheEntscheidung; it cannot confer universal support on a particular concrete family.",
+    "Partial combined-source support is a substantive synthesis, not literal single-item equivalence. A human may disagree with that operationalization; this record remains needs_human_review and ai_candidate.",
+    "This review accepts the bounded nine-GK competence; it does not certify every one of the 40 LK source routes, image QA, D review, learner performance or strict M7 completion."
+  ],
+  "validation": {
+    "command": "npm --prefix app run quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-09-29/bf17-bounded-source-p-v2/positive-evidence.config.json",
+    "exitCode": 0,
+    "approved": 0,
+    "needsHumanReview": 1,
+    "blockingIssues": 0,
+    "meaning": "Schema, declared coverage and current goal/profile fingerprints validate. The separate primary-source decision substantively supports all nine GK routes under its stated restrictions. Neither is human approval."
+  },
+  "artifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-29/bf17-bounded-source-p-v2/positive-evidence.config.json",
+      "sha256": "51dff186165c8d4126b5d7fc67af5115af418f51025f5ca64b032c7c4d306153"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-29/bf17-bounded-source-p-v2/positive-evidence.candidates.json",
+      "sha256": "f68fbe72219376b10b68f4c46bf41d4df9957a3d29f65704540b5235fb54deb2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-29/bf17-bounded-source-p-v2/positive-evidence.review.jsonl",
+      "sha256": "7db3e04f3702ca87a7a2e225b7eb980654592297a47f64a9820fb12f15159e81"
+    }
+  ],
+  "historicalCandidatePreserved": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-29/math-m7-q2-six-current-v1/positive-evidence.candidates.json",
+    "sha256": "2a585ff98448ebc868bdf656594c20b195cca1d114ffc495c2df21cc7a252345",
+    "modifiedByThisReview": false
+  },
+  "ownership": "Created only new bounded P candidate/config/materialized record and this audit receipt. No Canon, view, mapping, D, image, visualization QA or registry edits.",
+  "fachlicheEntscheidung": {
+    "decision": "ja-quellentreu-in-der-explizit-begrenzten-lesart",
+    "scope": "All nine retained GK jurisdictions, within their own explicitly taught classes and simple parameter restrictions; 40 LK target routes are counted but not independently reviewed for source acceptance.",
+    "interpretation": "Die lernende Person wählt für eine Sachsituation eine passende Klasse aus dem im jeweiligen Curriculum behandelten erweiterten Klassenbereich und deutet die Parameter dieses Modells im Kontext. Es wird nicht das Beherrschen aller zusätzlichen Klassen oder eines bestimmten universellen Modells verlangt.",
+    "reason": "Fachliche Quellentreue verlangt keine wortgleiche Einzelzeile. Hier ergänzen sich tatsächlich geltende Klassen-, Modellierungs- und Parameteranforderungen zu genau der einheitlichen Kompetenz. Die Pflichtfamilien werden dabei weder zwischen Ländern übertragen noch aus LK/Optionalbereichen geliehen. Kontextdeutung operationalisiert das geforderte Modellieren und ist keine zusätzliche unabhängige Stofffamilie.",
+    "unsubstantiatedRequiredFacetsWithinBoundedReading": [],
+    "retainedRestrictions": "The boundary is part of this decision and the profile expectations. Removing it would invalidate the decision. Partial mapping remains partial; this review does not upgrade individual edges to exact.",
+    "minimalCorrectionPath": "No additional Canon or projection change is needed for the bounded reading. If downstream teaching interprets extended as unrestricted, add the local taught-family restriction to that task selection; use a scope-appropriate concrete case. A universal concrete example or arbitrary extra-family requirement must be removed rather than asserted to be source-backed. No runtime change is claimed here.",
+    "humanApprovalClaim": false,
+    "strictM7ClosureClaim": false
+  },
+  "independentPrimarySourceDecisions": [
+    {
+      "jurisdiction": "DE-BW",
+      "decision": "source-faithful-bounded-operationalization",
+      "primaryDocument": {
+        "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.pdf",
+        "sha256": "b085465143648b3f44c894f8eb0a5ee5d1928cbb1c4c60b3b249559709d26014",
+        "officialUrl": "https://www.bildungsplaene-bw.de/site/bildungsplan-rebrush2024/get/documents/lsbw/export-pdf/depot-pdf/ALLG/BP2016BW_ALLG_GYM_M.pdf"
+      },
+      "primaryPagesRead": "Printed p.48, Basisfach 3.5.4; prior 3.3.4 and process 2.3",
+      "readMethod": "Local official PDF read using pdftotext -layout; primary headings and columns checked against current extraction and source repair.",
+      "positiveSupport": "Simple sums/products and linear-inner compositions are explicitly linked to real-context modeling; selection and contextual reading follow the modeling competencies, with parameter transformations as learned preparation. Current BF17 combines these into one model-choice/context-meaning performance.",
+      "excludedOverclaims": "No arbitrary rational/logistic classes or imported LK differentiation.",
+      "unsubstantiatedRequiredFacets": []
+    },
+    {
+      "jurisdiction": "DE-HB",
+      "decision": "source-faithful-bounded-operationalization",
+      "primaryDocument": {
+        "path": "curricula/DE/Gymnasium/input/HB/GyO_Mathematik_2022.pdf",
+        "sha256": "758fe3dff58f8b99e51b0806b17ee2eea2a0a2882d20df5fff6fff1bbad17cee",
+        "officialUrl": "https://www.lis.bremen.de/sixcms/media.php/13/GyO_Mathematik_2022.pdf"
+      },
+      "primaryPagesRead": "Printed pp.20–21 BM3.4/3.7/3.10 and pp.25–27 A3.1/A3.6",
+      "readMethod": "Local official PDF read using pdftotext -layout; primary headings and columns checked against current extraction and source repair.",
+      "positiveSupport": "BM3 explicitly transfers transformations and context interpretation to root/reciprocal cases. A3.1 adds elementary combinations and parameter functions; A3.6 transfers parameter transformations and applications. Choosing a contextual instance and interpreting its parameter is a legitimate synthesis of these common GK clauses.",
+      "excludedOverclaims": "Ignore LK brackets, unrestricted natural-log families and logistic growth under A3.8.",
+      "unsubstantiatedRequiredFacets": []
+    },
+    {
+      "jurisdiction": "DE-HH",
+      "decision": "source-faithful-bounded-operationalization",
+      "primaryDocument": {
+        "path": "curricula/DE/Gymnasium/input/HH/mathematik-gyo-2022-data.pdf",
+        "sha256": "74c085e1320ec6dad5ca187ea7647e7b6eecbb0f25a495927f78d9e906252be7",
+        "officialUrl": "https://www.hamburg.de/resource/blob/123074/23276415bdfb32ba8bb652f7c1998a4c/mathematik-gyo-2022-data.pdf"
+      },
+      "primaryPagesRead": "Printed p.26, Module 1.1 before increased-level heading; K4 pp.18–19",
+      "readMethod": "Local official PDF read using pdftotext -layout; primary headings and columns checked against current extraction and source repair.",
+      "positiveSupport": "The same compulsory module binds simple root/reciprocal transformations to contextual use, parameter variation, and model creation/interpretation; K4 supplies model selection. The combined BF17 demand is directly coherent, despite separate extraction rows.",
+      "excludedOverclaims": "Simple rational/root means transformations of 1/x or sqrt(x), not arbitrary rational functions; extra increased-level rows are excluded.",
+      "unsubstantiatedRequiredFacets": []
+    },
+    {
+      "jurisdiction": "DE-MV",
+      "decision": "source-faithful-bounded-operationalization",
+      "primaryDocument": {
+        "path": "curricula/DE/Gymnasium/input/MV/Mathematik_Gymnasium_11_12_2019.pdf",
+        "sha256": "b634920997200114dce8e222ac3a6d7995d89353c247794a57b68ae8d34e486d",
+        "officialUrl": "https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_MA_SEK2.pdf"
+      },
+      "primaryPagesRead": "Printed pp.19–20, common column above additional-LK heading; K3 primary printed p.12 (PDF page 15), not the earlier receipt p.11 locator.",
+      "readMethod": "Local official PDF read using pdftotext -layout; primary headings and columns checked against current extraction and source repair.",
+      "positiveSupport": "The required named families and simple polynomial/e combinations explicitly include one parameter and inner/outer-mathematical problems. The following applications table inherits the family boundary. Interpreting the parameter in a selected contextual model is a bounded modeling operationalization; isolated periodicity or regression is not the argument.",
+      "excludedOverclaims": "At most one free parameter; no general additional compositions, logarithmic families, regression or locus work borrowed from LK.",
+      "unsubstantiatedRequiredFacets": []
+    },
+    {
+      "jurisdiction": "DE-NI",
+      "decision": "source-faithful-bounded-operationalization",
+      "primaryDocument": {
+        "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/ma_go_kc_druck_2019.pdf",
+        "sha256": "f550398fe6871e9ea8a52087fce19286b8d43997d82242e3fb87741233729481",
+        "officialUrl": "https://cuvo.nibis.de/index.php?p=download&upload=208"
+      },
+      "primaryPagesRead": "Printed pp.27 and 45, Gymnasium gA; K3 primary printed p.16 (the extraction/source receipt p.15 reference is off by one).",
+      "readMethod": "Local official PDF read using pdftotext -layout; primary headings and columns checked against current extraction and source repair.",
+      "positiveSupport": "Simple polynomial/e combinations, linear-inner compositions, contextual applications and data-related parameter determination are explicit. K3 selection/variation plus this family clause supports independent selection and contextual meaning rather than only substitution.",
+      "excludedOverclaims": "Do not import vocational optional logistics on p.57 or optional ln as a compulsory family.",
+      "unsubstantiatedRequiredFacets": []
+    },
+    {
+      "jurisdiction": "DE-NW",
+      "decision": "source-faithful-bounded-operationalization",
+      "primaryDocument": {
+        "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_m_2023_06_07.pdf",
+        "sha256": "211bad803486637f541447546073d0c7678f527b366da1ba63c5b9edc5d28533",
+        "officialUrl": "https://lehrplannavigator.nrw.de/system/files/media/document/file/gost_klp_m_2023_06_07.pdf"
+      },
+      "primaryPagesRead": "Printed p.24 GK Functions/Analysis, clauses 2/3/7/8",
+      "readMethod": "Local official PDF read using pdftotext -layout; primary headings and columns checked against current extraction and source repair.",
+      "positiveSupport": "Named transformed families, contextual parameter conditions and parameter-dependent investigation join an explicit simple sum/product/composition modeling clause. This supports the two components of BF17 jointly.",
+      "excludedOverclaims": "Keep to named classes and simple combinations; no universally required logistic model.",
+      "unsubstantiatedRequiredFacets": []
+    },
+    {
+      "jurisdiction": "DE-SH",
+      "decision": "source-faithful-bounded-operationalization",
+      "primaryDocument": {
+        "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+        "sha256": "17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28",
+        "officialUrl": "https://fachportal.lernnetz.de/sh/faecher/mathematik/fachanforderungen.html?file=files/Fachanforderungen%20und%20Leitf%C3%A4den/Sekundarstufe/Fachanforderungen/Fachanforderungen%20Mathematik%20Sekundarstufe%20%282024%29%2C%20barrierearm.pdf&cid=16990"
+      },
+      "primaryPagesRead": "Printed pp.66–67, L4 functional relations",
+      "readMethod": "Local official PDF read using pdftotext -layout; primary headings and columns checked against current extraction and source repair.",
+      "positiveSupport": "The table places named families alongside modeling quantifiable relations and parameter determination/transformations. These complementary required clauses support selecting a taught extended family and contextual parameter meaning.",
+      "excludedOverclaims": "Only taught classes, with basic-level simple-case restrictions; no universal complex combination or logistic demand.",
+      "unsubstantiatedRequiredFacets": []
+    },
+    {
+      "jurisdiction": "DE-SL",
+      "decision": "source-faithful-bounded-operationalization",
+      "primaryDocument": {
+        "path": "curricula/DE/Gymnasium/input/SL/LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.pdf",
+        "sha256": "ee77ed726ee6be38a66a1830f0f69fd672883a2fb558cd6ceed41894fd0a5086",
+        "officialUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Mathematik/LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.pdf?__blob=publicationFile&v=4"
+      },
+      "primaryPagesRead": "Printed p.13a inserted one-parameter block and p.38 Thema 7",
+      "readMethod": "Local official PDF read using pdftotext -layout; primary headings and columns checked against current extraction and source repair.",
+      "positiveSupport": "The binding inserted parameter block plus Thema 7 explicitly justified function choice, simple combinations and interpretation/validation substantiate BF17. The old method note against extensive family investigations does not negate the later inserted bounded parameter requirement.",
+      "excludedOverclaims": "Do not turn parameter interpretation into unrestricted family/locus investigation or borrow cohort-dependent rational-functions content as universal.",
+      "unsubstantiatedRequiredFacets": []
+    },
+    {
+      "jurisdiction": "DE-SN",
+      "decision": "source-faithful-bounded-operationalization",
+      "primaryDocument": {
+        "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-mathematik-sachsen-2019.pdf",
+        "sha256": "de48e13d404cfb4d155f056efdc1a6888857ccda58cc03cf81bcdabb2141f8ae",
+        "officialUrl": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/121/galmOUYkLcTVJh8Sk6g9"
+      },
+      "primaryPagesRead": "Printed p.33 GK LB1 and p.36 GK LB8",
+      "readMethod": "Local official PDF read using pdftotext -layout; primary headings and columns checked against current extraction and source repair.",
+      "positiveSupport": "The named elementary classes and simple combinations support contextual problem solving and interpretation. LB8 explicitly connects inner/outer-mathematical applications with parameters and simple families. Model choice and contextual parameter explanation operationalize this combination without a new family demand.",
+      "excludedOverclaims": "No optional logistics or LK demand; no universal unrestricted functions inferred from the tool-assisted differentiation row.",
+      "unsubstantiatedRequiredFacets": []
+    }
+  ],
+  "primaryLocatorCorrections": [
+    "NI K3 primary printed p.16; previous extraction/receipt locator p.15 is off by one. Source wording verified, no semantic scope change.",
+    "MV K3 primary printed p.12, PDF page 15; prior repair receipt names p.11. Source wording verified, no semantic scope change."
+  ],
+  "imageRebind": {
+    "date": "2026-09-29",
+    "currentPrimaryPng": "curricula/DE/Gymnasium/visualizations/mathematik/bf17cada-3ccd-5d9a-b9e3-42065cfdbb01/bf17cada-3ccd-5d9a-b9e3-42065cfdbb01.png",
+    "sha256": "971e05a64fd0982071ff3e7d574a5c1e385e2b2e560e66c909da6663d13c1f6c",
+    "actualInspection": "The new source-neutral graph was inspected at original 1536×1024 resolution: all five measured points lie on the rising concave model A; linear model B diverges; the y-axis intercept is positive and correctly identified as f(0)=a, an initial quantity. No particular family is asserted as universally compulsory. The old logistic JPG remains in a historical review record.",
+    "reviewAuthority": "ai_candidate",
+    "humanApproved": false,
+    "result": "P reviewInputFingerprint regenerated from unchanged candidate substance after current PNG binding; no source or mathematical case was silently altered."
+  }
+}

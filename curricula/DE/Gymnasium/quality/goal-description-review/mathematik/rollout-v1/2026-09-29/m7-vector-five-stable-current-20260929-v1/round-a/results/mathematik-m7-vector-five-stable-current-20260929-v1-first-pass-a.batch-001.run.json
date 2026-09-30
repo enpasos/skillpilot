@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-a.batch-001.codex-current-vector-targeted-a",
+  "campaignId": "mathematik-m7-vector-five-stable-current-20260929-v1-a",
+  "roundId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-a",
+  "batchId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:d95b421d58fc8a0f48f2e74f64864c436c79a479d806abbb7a4dfb394b875878",
+  "bundleFingerprint": "sha256:84b085bd83389fa25713e4f172d37a5d91ebc2c2b50186bf95579a4b214c19bb",
+  "bookDigest": "sha256:a2b725cf1ba43a0de092a7109c1677efefd5e799309f021a33a09ba0f6e3ddf3",
+  "provider": "OpenAI",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:dac1904453f2f7a5ed3d9b85f552c0a57193b718b27f8d42eef4d89a9072c051",
+  "independenceGroupId": "mathematik-m7-vector-five-stable-current-20260929-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+    "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+    "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+    "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+    "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:d95b421d58fc8a0f48f2e74f64864c436c79a479d806abbb7a4dfb394b875878"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-29T19:21:17Z",
+  "completedAt": "2026-09-29T19:29:50Z",
+  "status": "completed",
+  "outputDigest": "sha256:ea53e4573d512a696b1fd953c8a61805ea46aec0e65cdf2abfc99694702f2302",
+  "toolchainVersion": "codex-vector-five-targeted-review-a-v1"
+}

@@ -80,6 +80,13 @@ export type GoalDescriptionRolloutSynthesisDecisionManifest = {
     rationaleDe: string
     rationaleEn: string
   }>
+  deferredGoals?: Array<{
+    goalId: string
+    firstDecision: GoalDescriptionDualRoundResolutionSource['decision']
+    secondDecision: GoalDescriptionDualRoundResolutionSource['decision']
+    rationaleDe: string
+    rationaleEn: string
+  }>
 }
 
 export type GoalDescriptionRolloutSynthesisExpectedGoal = {
@@ -224,14 +231,56 @@ export const validateGoalDescriptionRolloutSynthesisDecisionManifest = async ({
   duplicateValues(manifest.decisions.map(({ goalId }) => goalId)).forEach((goalId) => {
     errors.push(`Synthesis decision manifest contains duplicate goalId ${goalId}`)
   })
+  duplicateValues((manifest.deferredGoals ?? []).map(({ goalId }) => goalId)).forEach((goalId) => {
+    errors.push(`Synthesis decision manifest contains duplicate deferred goalId ${goalId}`)
+  })
   const actualGoalIds = manifest.decisions.map(({ goalId }) => goalId)
   const expectedGoalIds = expected.goals.map(({ goalId }) => goalId)
-  if (!same(actualGoalIds, expectedGoalIds)) {
-    errors.push('Synthesis decision manifest must contain exactly one decision per configured goal in configured order')
+  const deferredGoalIds = (manifest.deferredGoals ?? []).map(({ goalId }) => goalId)
+  const expectedResolvedGoalIds = expectedGoalIds.filter((goalId) => !deferredGoalIds.includes(goalId))
+  const expectedDeferredGoalIds = expectedGoalIds.filter((goalId) => deferredGoalIds.includes(goalId))
+  if (
+    !same(actualGoalIds, expectedResolvedGoalIds)
+    || !same(deferredGoalIds, expectedDeferredGoalIds)
+    || actualGoalIds.length + deferredGoalIds.length !== expectedGoalIds.length
+  ) {
+    errors.push('Synthesis decision manifest must partition configured goals into ordered resolved decisions and explicitly deferred goals')
   }
 
-  expected.goals.forEach((goal, index) => {
-    const decision = manifest.decisions[index]
+  expected.goals.forEach((goal) => {
+    const deferred = manifest.deferredGoals?.find(({ goalId }) => goalId === goal.goalId)
+    if (deferred) {
+      const { firstSource, secondSource } = goal
+      if (
+        firstSource.decision !== deferred.firstDecision
+        || secondSource.decision !== deferred.secondDecision
+      ) {
+        errors.push(`${goal.goalId}: deferred source decisions do not match the exact current review records`)
+      }
+      if (
+        firstSource.decision !== 'block'
+        && secondSource.decision !== 'block'
+        && firstSource.decision !== 'revise'
+        && secondSource.decision !== 'revise'
+      ) {
+        errors.push(`${goal.goalId}: partial synthesis may defer only a goal with a current block or unresolved revise review`)
+      }
+      for (const [label, source] of [['first', firstSource], ['second', secondSource]] as const) {
+        if (
+          !source.record
+          || source.record.goalId !== goal.goalId
+          || source.record.goalFingerprint !== goal.goalFingerprint
+          || source.record.pageFingerprint !== goal.pageFingerprint
+          || source.binding.goalReviewContextFingerprint !== goal.goalReviewContextFingerprint
+          || !same(recordCurrentText(source), goal.finalText)
+          || !same(manifest.rounds[label], withoutRecordBinding(source.binding, expected.rounds[label].batchInputFingerprint))
+        ) {
+          errors.push(`${goal.goalId}: deferred ${label} review is stale or foreign to the exact current goal context`)
+        }
+      }
+      return
+    }
+    const decision = manifest.decisions.find(({ goalId }) => goalId === goal.goalId)
     if (!decision || decision.goalId !== goal.goalId) return
     const expectedGoalBinding = {
       effectiveSemanticKind: goal.effectiveSemanticKind,

@@ -325,7 +325,26 @@ assert.match(
     ...standaloneIndex,
     resolutions: standaloneIndex.resolutions.slice(1),
   }, new Set(['goal-1', 'goal-2'])).join('\n'),
-  /one strict resolution per batch goal|missing standalone resolution/u,
+  /resolvedGoalCount does not match strict resolutions|explicitly list every unresolved goal as deferred/u,
+)
+const partialStandaloneIndex: StandaloneBatchResolutionIndex = {
+  ...standaloneIndex,
+  deferredGoalIds: ['goal-2'],
+  groups: [{ ...standaloneIndex.groups[0], resolvedGoalCount: 1 }],
+  resolutions: standaloneIndex.resolutions.slice(0, 1),
+}
+assert.deepEqual(validateStandaloneResolutionIndexSchema(partialStandaloneIndex), [])
+assert.deepEqual(
+  validateStandaloneResolutionIndexStructure(partialStandaloneIndex, new Set(['goal-1', 'goal-2'])),
+  [],
+  'A blocked goal may remain explicitly deferred while another goal retains a strict resolution.',
+)
+assert.match(
+  validateStandaloneResolutionIndexStructure({
+    ...partialStandaloneIndex,
+    deferredGoalIds: ['goal-1'],
+  }, new Set(['goal-1', 'goal-2'])).join('\n'),
+  /explicitly list every unresolved goal as deferred/u,
 )
 const legacySnapshot: AggregateResolutionIndex = {
   schemaVersion: 1,

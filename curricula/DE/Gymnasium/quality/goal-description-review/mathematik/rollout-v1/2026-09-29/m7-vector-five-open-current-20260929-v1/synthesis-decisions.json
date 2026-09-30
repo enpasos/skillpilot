@@ -1,0 +1,169 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-vector-five-four-resolved-one-deferred-20260929-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis of two independent current primary-source and actual-image reviews; no human approval",
+  "synthesizedAt": "2026-09-29T20:45:24.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-vector-five-open-current-20260929-v1",
+    "batchManifestDigest": "sha256:41ac5f64cf1bf5ee27c9dbe941feb55182be41ed3606e44a84b36f39628337a5",
+    "configDigest": "sha256:be98bb1dfef6d5289edb500aa144f04713f1d06d55ff918851aa95b0c7d5c23d",
+    "bundleFingerprint": "sha256:7c64d4d3b8a9f4beb9149ac8b86c20deb77be21d435585ee3db0d511af17d28c",
+    "bookDigest": "sha256:16d42b39575d3aeedacec6dd4b9851877721ffe0b216d14344b777c2d26dc1a3",
+    "reviewInputFingerprint": "sha256:8a154849ae7dddc207e4634ac93078107ac799103dd0cdd0febdc7b29673591f",
+    "dualSummaryDigest": "sha256:f93512ea5ceb4c45ba36bbb4440d3013690b16f8ee217bfa738b9d587abfb12d",
+    "canonicalLandscapeDigest": "sha256:303364bba3de28ad9311d2cde1894f78d3d1d30fc000379709923a1d5678188b"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-vector-five-open-current-20260929-v1-a",
+      "campaignDigest": "sha256:b70bca19fee371a737c7147d04cb5264cd1abaa58b443bf1a21d69a9b9064054",
+      "roundId": "mathematik-m7-vector-five-open-current-20260929-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-vector-five-open-current-20260929-v1-independent-a",
+      "reviewInputFingerprint": "sha256:8a154849ae7dddc207e4634ac93078107ac799103dd0cdd0febdc7b29673591f",
+      "batchId": "mathematik-m7-vector-five-open-current-20260929-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:49dce7dba63c379b93225c70b90b040a0fce37063ac08a91612b0e9fde58db98",
+      "runId": "mathematik-m7-vector-five-open-current-20260929-v1-a-batch-001-gpt6",
+      "runManifestDigest": "sha256:24000d28d9f6e87d14d43990fcb63a42a625f781186e05bc2dc56c39de93efb7",
+      "resultsDigest": "sha256:45e20dab31a567e0740ee7230b33fb14a8f76fbb36882c38506d90bf983bc22a"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-vector-five-open-current-20260929-v1-b",
+      "campaignDigest": "sha256:592c5aeae38c1e3a707668d5bd81801be68a26eb2ac9bf4629666b62ef15d248",
+      "roundId": "mathematik-m7-vector-five-open-current-20260929-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-vector-five-open-current-20260929-v1-independent-b",
+      "reviewInputFingerprint": "sha256:8a154849ae7dddc207e4634ac93078107ac799103dd0cdd0febdc7b29673591f",
+      "batchId": "mathematik-m7-vector-five-open-current-20260929-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:7f47ef7abee2895c3d0a431efec5ba5eec2266beb0b469340ee23568a9b8bec7",
+      "runId": "mathematik-m7-vector-five-open-current-20260929-v1-b-run-001",
+      "runManifestDigest": "sha256:22b6940a26da6e82b41dbe5957468219fcb0f62403d4f48e0b61f1452e1c800c",
+      "resultsDigest": "sha256:e31dcd2446ee43d2e635038a7e7a695a8d11bb91ebf37ae85b3b402e90e858a1"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-vector-five-four-resolved-one-deferred-20260929-v1-decision-001",
+      "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6c03ef470ff29da76ee4dbd67538633723576c9a5e4d31bc1266b5832a187b20",
+      "pageFingerprint": "sha256:ab8af1032275d8af1e9c0baef7b6ebc7eee18b9417bb37afeca1f80522afc76c",
+      "goalReviewContextFingerprint": "sha256:d4bbb975805946fa7db637fd45434c09a6d05e59f236d0e57b57d401cdcf1b29",
+      "finalText": {
+        "titleDe": "Kollinearität von Vektoren im Raum prüfen",
+        "titleEn": "Check collinearity of vectors in space",
+        "descriptionDe": "Die lernende Person kann bei zwei Vektoren im Raum prüfen, ob einer ein skalares Vielfaches des anderen ist, den Nullvektor dabei als kollinear zu jedem Vektor, aber ohne Richtung behandeln und die Entscheidung für zwei Nichtnullvektoren geometrisch deuten.",
+        "descriptionEn": "The learner can check whether either of two vectors in space is a scalar multiple of the other, treat the zero vector as collinear with every vector but without a direction, and interpret the result geometrically when both vectors are nonzero."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-vector-five-a-54cfe5ce",
+          "recordDigest": "sha256:cd0c650512c5f00aca72ea70e6158ac1a428529c0433616d45c4f6f96c009894"
+        },
+        "second": {
+          "recordId": "mathematik-m7-vector-five-open-current-20260929-v1-b-run-001.54cfe5ce",
+          "recordDigest": "sha256:ccb773ba70de1428aa724de8f2c2d099f8bed88cfeed61728639fc78f47b5188"
+        }
+      },
+      "rationaleDe": "Beide Runden halten den gemeinsamen Skalarfaktor samt Nullvektor-Sonderfall und die auf Nichtnullvektoren begrenzte Richtungsdeutung für eine atomare Raumkompetenz. HE Q2.2, Druckseite 41, nennt Kollinearität im Grundniveau. Das korrigierte aktuelle PNG rechnet den positiven Faktor und ein Gegenbeispiel richtig, ohne den Nullfall vorzutäuschen; der P-v2-Nachweis prüft ihn separat. Kein Anspruch auf pauschale Ländergeltung oder menschliche Freigabe.",
+      "rationaleEn": "Both rounds retain the common scalar, the zero-vector special case and direction interpretation restricted to nonzero vectors as one spatial competence. HE Q2.2, printed p. 41, includes collinearity at the basic level. The corrected current PNG computes a positive factor and counterexample correctly without pretending to show the zero case; P-v2 assesses it separately. No blanket jurisdictional or human approval is claimed."
+    },
+    {
+      "decisionId": "math-m7-vector-five-four-resolved-one-deferred-20260929-v1-decision-002",
+      "goalId": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:eb448c8bb5149d4793213aa424bec064ad324d0ff2840e8b2871153ec9c5ffe5",
+      "pageFingerprint": "sha256:0d7150ad5f8f2cc5d5aa5db74a25d872162341a8abe23a9ae46de6f826e7fd51",
+      "goalReviewContextFingerprint": "sha256:8c29ee05d1808c012e155314e88e88b22a2e7d32d91a376dcecd04d3b702fc39",
+      "finalText": {
+        "titleDe": "Vektoren komponentenweise addieren und subtrahieren",
+        "titleEn": "Add and subtract vectors component-wise",
+        "descriptionDe": "Die lernende Person kann Vektoren in Ebene und Raum komponentenweise addieren und subtrahieren und geometrisch erklären, dass Addition Verschiebungen verknüpft und Subtraktion die Addition des Gegenvektors ist.",
+        "descriptionEn": "The learner can add and subtract vectors in the plane and in space component-wise and explain geometrically that addition combines displacements and subtraction adds the opposite vector."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-vector-five-a-c63bbffd",
+          "recordDigest": "sha256:8230edfc78a79aa3a5c88e75bbba9a55c0d3c05e3ab0d9a0495c5499ff5799a4"
+        },
+        "second": {
+          "recordId": "mathematik-m7-vector-five-open-current-20260929-v1-b-run-001.c63bbffd",
+          "recordDigest": "sha256:5b1c408415703c5f6a0265f877425c28f1a763392d412fa1ba9b66ea03320acb"
+        }
+      },
+      "rationaleDe": "Beide Runden halten komponentenweises Addieren und Subtrahieren samt geometrischer Umkehrbeziehung in Ebene und Raum für eine zusammenhängende Kompetenz. Das tatsächliche PNG zeigt (2,1)+(-1,2)=(1,3), (2,1)-(-1,2)=(3,-1) und die Raumaddition korrekt. Die frische Transferaufgabe muss die Umkehrbeziehung selbst erklären lassen; Bildrechnung ist keine Lernleistung. DE/EN und aktuelle Zielseite stimmen.",
+      "rationaleEn": "Both rounds treat componentwise addition and subtraction with their geometric inverse relation in plane and space as one coherent competence. The actual PNG correctly shows (2,1)+(-1,2)=(1,3), (2,1)-(-1,2)=(3,-1), and spatial addition. A fresh transfer task must elicit the inverse relation; an image calculation is not learner performance. DE/EN and the current goal page agree."
+    },
+    {
+      "decisionId": "math-m7-vector-five-four-resolved-one-deferred-20260929-v1-decision-003",
+      "goalId": "235ae698-369f-4dbe-b46f-87e8b65bb03d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:40b1d677bff27886bae50604a3deb4fd133f828ab51ecbf3684d5a01abc2fba3",
+      "pageFingerprint": "sha256:cd6c2eaed018a288ec661cff373ebd5c9f3d0f230e1807e4abe32bb1e446b829",
+      "goalReviewContextFingerprint": "sha256:c148659444605cd29e8d79f7bf483adc80a7e1610461c0899ea782037d2b3bb0",
+      "finalText": {
+        "titleDe": "Geraden und Strecken im Raum parametrisch beschreiben",
+        "titleEn": "Describe lines and segments in space parametrically",
+        "descriptionDe": "Die lernende Person kann Geraden im Raum in einfachen Fällen mit Stütz- und Richtungsvektor parametrisch angeben, begrenzte Strecken zusätzlich durch einen passenden beschränkten Parameterbereich beschreiben und beide Darstellungen aus Punktangaben aufstellen.",
+        "descriptionEn": "The learner can represent lines in space parametrically in simple cases using a support vector and a direction vector, describe finite segments by additionally specifying an appropriate bounded parameter interval, and construct both representations from point descriptions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-vector-five-a-235ae698",
+          "recordDigest": "sha256:0a02b71fb3cb17198128127dea95c53032dd9761a21519effe5d0595f3f724f0"
+        },
+        "second": {
+          "recordId": "mathematik-m7-vector-five-open-current-20260929-v1-b-run-001.235ae698",
+          "recordDigest": "sha256:73866cd0d1027fd8c029ab92f8d32d9ff49fd250e48857328dd856f614a22ce2"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen, dass Stütz-/Richtungsvektor aus zwei Raumpunkten und der Unterschied t∈R gegenüber 0≤t≤1 eine zusammenhängende Kompetenz bilden; BW 3.3.3(12) nennt Geraden und Strecken parametrisch. Das korrigierte PNG zeigt A(1|2|0), B(4|3|2), B−A=(3|1|2) und beide Parameterbereiche mathematisch richtig. Der neue Bildhash wurde fachlich/visuell gebunden, nicht nur technisch ersetzt; keine menschliche Freigabe.",
+      "rationaleEn": "Both rounds confirm that support/direction vectors from two spatial points and the difference between t∈R and 0≤t≤1 form one coherent competence; BW 3.3.3(12) names parametric lines and segments. The corrected PNG correctly shows A(1,2,0), B(4,3,2), B−A=(3,1,2) and both parameter domains. The new image binding has substantive mathematical and visual review, not merely a hash replacement; no human approval."
+    },
+    {
+      "decisionId": "math-m7-vector-five-four-resolved-one-deferred-20260929-v1-decision-004",
+      "goalId": "bea0e5a0-4833-5337-b6f1-7251b8cf8089",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:52a335d43c8bb89b40e6c70a5343ca14e3d17da27babe7b83b4b72e925b2d67c",
+      "pageFingerprint": "sha256:e599a0df185a7641b95a5c4b01f926db167b42b1ae62cc6089d7bdb73da924f4",
+      "goalReviewContextFingerprint": "sha256:c3c51e9c11d25bdcd79e170d40110466d5c5a15a0c7248791a460167aa9f8ce1",
+      "finalText": {
+        "titleDe": "Mittelpunkte von Raumstrecken aus Koordinaten bestimmen",
+        "titleEn": "Determine midpoints of spatial segments from coordinates",
+        "descriptionDe": "Die lernende Person kann für eine Raumstrecke mit Endpunkten A und B den Mittelpunkt M aus den Koordinaten bestimmen, ihn als Mittel der beiden Ortsvektoren deuten und seine Lage durch $\\overrightarrow{AM}=\\overrightarrow{MB}$ prüfen.",
+        "descriptionEn": "The learner can determine the midpoint M of a spatial segment with endpoints A and B from their coordinates, interpret it as the mean of the two position vectors, and check its position using $\\overrightarrow{AM}=\\overrightarrow{MB}$."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-vector-five-a-bea0e5a0",
+          "recordDigest": "sha256:434ceeeb41ef038a013262bf7cd0628812ae6c2a456e17acae843f261e0fc9d2"
+        },
+        "second": {
+          "recordId": "mathematik-m7-vector-five-open-current-20260929-v1-b-run-001.bea0e5a0",
+          "recordDigest": "sha256:e03949ca6ec3850ee4b678f61ed831af7d8cee352f731bbd6f600008e0b047bc"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Mittelpunktberechnung, Ortsvektormittel und AM=MB als eine Kompetenz. BW 3.3.3(10), BB GOST Q3 S.29 und SL G-Kurs S.30 tragen die Platzierung. Das vorhandene PNG rechnet M=(3|3|5) aus A=(1|2|3), B=(5|4|7) und den zusätzlichen Abstand 6 korrekt; dieser Abstand wird nicht als Teil der Zielkompetenz gezählt. DE/EN und aktuelle Seite stimmen; keine menschliche Freigabe.",
+      "rationaleEn": "Both rounds confirm midpoint calculation, mean position vector and AM=MB as one competence. BW 3.3.3(10), BB GOST Q3 p.29 and SL basic course p.30 support placement. The existing PNG correctly computes M=(3,3,5) from A=(1,2,3), B=(5,4,7), plus an ancillary distance of 6; that distance is not counted as part of the target competence. DE/EN and the current page agree; no human approval."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "d1352ce0-9502-5039-9af6-318fe385b6fd",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "rationaleDe": "Runde A findet die Beschreibung als eigenständige Kollinearitätsprüfung zu tautologisch und schlägt den einheitlichen Skalarfaktor sowie eine nur für Nichtnullvektoren geltende Richtungsdeutung vor. Runde B hält die knappe Fassung für ausreichend. Das korrigierte PNG ist fachlich richtig, löst den Wortlautdissens aber nicht. Nach gezielter DE/EN-Präzisierung und frischer D/P/A/M-/Seitenbindung kann dieses Ziel streng geschlossen werden.",
+      "rationaleEn": "Round A finds the description too tautological for an independently assessable collinearity check and proposes one common scalar together with direction language valid only for nonzero vectors. Round B considers the shorter wording adequate. The corrected PNG is mathematically correct but does not resolve the wording dissent. Strict closure follows a targeted DE/EN clarification and fresh D/P/A/M/page binding."
+    }
+  ],
+  "manifestFingerprint": "sha256:c7d7af343d1198e6259b7138097236d78e8b2f265aa7c4dc8b56021f0c49a92d"
+}

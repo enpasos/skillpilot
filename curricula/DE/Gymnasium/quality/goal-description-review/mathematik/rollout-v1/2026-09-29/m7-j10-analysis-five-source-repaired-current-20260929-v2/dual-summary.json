@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:4ff03bbac50417ce3ef54ca06c21e912571f7cd250cdecf9021b2719b53d0a17",
+  "reviewInputFingerprint": "sha256:ac35fd37ee590f3c9990c52ea9dbfe6759043997e8c7bca72f717468cbc43857",
+  "goalCount": 5,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-a",
+      "roundId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-independent-a",
+      "runIds": [
+        "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a-codex-independent-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex session (exact deployment identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-b",
+      "roundId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-independent-b",
+      "runIds": [
+        "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.batch-001.run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 5,
+    "unavailable": 0,
+    "requiresSynthesis": 5
+  },
+  "goals": [
+    {
+      "goalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+      "firstRecordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a-codex-independent-a.5518ceb3-f668-5b52-a9b1-57653b16ca98",
+      "secondRecordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.5518ceb3-f668-5b52-a9b1-57653b16ca98",
+      "firstRunId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a-codex-independent-a",
+      "secondRunId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.batch-001.run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "firstRecordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a-codex-independent-a.2850e8f6-2330-50d3-a577-d519540d9924",
+      "secondRecordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.2850e8f6-2330-50d3-a577-d519540d9924",
+      "firstRunId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a-codex-independent-a",
+      "secondRunId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.batch-001.run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+      "firstRecordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a-codex-independent-a.b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+      "secondRecordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+      "firstRunId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a-codex-independent-a",
+      "secondRunId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.batch-001.run",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+      "firstRecordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a-codex-independent-a.06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+      "secondRecordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+      "firstRunId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a-codex-independent-a",
+      "secondRunId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.batch-001.run",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+      "firstRecordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a-codex-independent-a.ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+      "secondRecordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+      "firstRunId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a-codex-independent-a",
+      "secondRunId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.batch-001.run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

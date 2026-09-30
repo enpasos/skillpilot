@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-29T20:03:03.852483+00:00",
+  "authority": "ai_candidate",
+  "humanApproval": false,
+  "method": "Independent authored mathematical derivation, then exact rational symbolic linsolve and rank/nullspace checks",
+  "tool": "SymPy 1.14.0",
+  "checks": [
+    {
+      "caseId": "coordinate-plane-reflection",
+      "matrix": [
+        [
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "-1"
+        ]
+      ],
+      "fixedSet": "{(x, y, 0)}",
+      "dimension": 2,
+      "allBasisVectorsFixed": true
+    },
+    {
+      "caseId": "quarter-turn-fixed-axis",
+      "matrix": [
+        [
+          "0",
+          "-1",
+          "0"
+        ],
+        [
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "fixedSet": "{(0, 0, z)}",
+      "dimension": 1,
+      "allBasisVectorsFixed": true
+    },
+    {
+      "caseId": "dilation-origin-only",
+      "matrix": [
+        [
+          "2",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "2",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "2"
+        ]
+      ],
+      "fixedSet": "{(0, 0, 0)}",
+      "dimension": 0,
+      "allBasisVectorsFixed": true
+    }
+  ],
+  "inspectedInputs": [
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+      "sha256": "sha256:d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/mathematik/d3c42193-f1b7-5c6d-a991-bf034d99359f/d3c42193-f1b7-5c6d-a991-bf034d99359f.png",
+      "sha256": "sha256:48c574d439a89bb8ef221be70781ed83f1ef4815836920cd48d3b1896702d978"
+    }
+  ],
+  "notes": [
+    "Official HE KC Q2.5 page 44 read; R3 LK scope explicit.",
+    "Actual image opened independently; its correct R2 reflection is an introductory example, not complete R3 evidence.",
+    "Every fresh task requires all three equations and full geometric interpretation. No eigenvalue theory, affine translation or invariant-line classification is imposed.",
+    "Candidates are non-authoritative. Config and candidates prepared before current Canon binding; materialization follows only after stable bilingual R3 wording.",
+    "Final current DE/EN Canon explicitly names three-dimensional space; active PNG reopened at final binding. Materializer write and exact reproduction check both passed, followed by positive-goal-evidence validator: 1 needs_human_review, 0 blocking issues, 0 approved."
+  ],
+  "finalBindingCheckedAt": "2026-09-29T20:03:51.627164+00:00",
+  "currentGoalFingerprint": "sha256:c0212bf9b929bfc8016308465254cb5442a60b7e36d6c00fbfaa642f86c621d5",
+  "currentReviewInputFingerprint": "sha256:e880c40748770741c299d5eaa486737a6d7f2e3f6bb6c662dc3bd852b61f907d",
+  "currentProfileFingerprint": "sha256:43af8245cfd8a9d05836bc528404ffd579f1bc037aa0930c20926e2e4b001ba6"
+}

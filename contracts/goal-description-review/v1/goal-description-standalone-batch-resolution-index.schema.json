@@ -32,6 +32,13 @@
       "uniqueItems": true,
       "items": { "$ref": "#/$defs/stableId" }
     },
+    "deferredGoalIds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 19,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/stableId" }
+    },
     "groups": {
       "type": "array",
       "minItems": 1,

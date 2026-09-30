@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:a5458fc234226c7d9603e3f2da86ca7df295eced5279843a3a45aa9246e2b5b0",
+  "reviewInputFingerprint": "sha256:23faf15ecfa7dbc8199f6339330fbcbc15593e1771cec9c8ac8d8ee71603ee14",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-spatproduct-source-scope-current-20260929-v4-a",
+      "roundId": "mathematik-m7-spatproduct-source-scope-current-20260929-v4-first-pass-a",
+      "independenceGroupId": "mathematik-m7-spatproduct-source-scope-current-20260929-v4-independent-a",
+      "runIds": [
+        "mathematik-m7-spatproduct-source-scope-current-20260929-v4-first-pass-a-codex-root-independent-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex session (exact deployment identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-spatproduct-source-scope-current-20260929-v4-b",
+      "roundId": "mathematik-m7-spatproduct-source-scope-current-20260929-v4-first-pass-b",
+      "independenceGroupId": "mathematik-m7-spatproduct-source-scope-current-20260929-v4-independent-b",
+      "runIds": [
+        "mathematik-m7-spatproduct-source-scope-current-20260929-v4-first-pass-b.batch-001.codex-gpt6"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::GPT-6::GPT-6"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
+      "firstRecordId": "mathematik-m7-spatproduct-source-scope-current-20260929-v4-first-pass-a-codex-root-independent-a.944dd479",
+      "secondRecordId": "mathematik-m7-spatproduct-source-scope-current-20260929-v4-first-pass-b.batch-001.codex-gpt6.944dd479",
+      "firstRunId": "mathematik-m7-spatproduct-source-scope-current-20260929-v4-first-pass-a-codex-root-independent-a",
+      "secondRunId": "mathematik-m7-spatproduct-source-scope-current-20260929-v4-first-pass-b.batch-001.codex-gpt6",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

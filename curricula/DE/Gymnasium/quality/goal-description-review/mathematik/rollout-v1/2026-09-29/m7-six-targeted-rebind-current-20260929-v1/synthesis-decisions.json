@@ -1,0 +1,216 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-six-targeted-text-source-image-rebind-20260929-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis after two independent current page, primary-source and actual-PNG reviews; no human approval",
+  "synthesizedAt": "2026-09-29T21:21:53.616Z",
+  "batch": {
+    "batchId": "mathematik-m7-six-targeted-rebind-current-20260929-v1",
+    "batchManifestDigest": "sha256:01b43f8e37bcc9f4aaadd3dce8fc52658f06c0fc29c3914fb78a9d7ff5719b4c",
+    "configDigest": "sha256:41fca726148be0f8146a9d41011e0220ecb49c913d3424921f39204dae301fb1",
+    "bundleFingerprint": "sha256:7692f436b9a11dae053cb99064894b122c0a3889a5a101ec0b5cad6075c7ee81",
+    "bookDigest": "sha256:4960a1bbe28bd259bb47c3b0200b1a1169389fea86cc2c05b95be99548782609",
+    "reviewInputFingerprint": "sha256:c4c9e660afe8b01e29f19f720df3aac846e5dd1b468863c7cbc151bf4f77d8ac",
+    "dualSummaryDigest": "sha256:31959409d1b0f994a9a5c1f677df9bd5591656570a272c485363b62522b92807",
+    "canonicalLandscapeDigest": "sha256:156830081c2dde9f107dfaad477a80764382fbe45df7af7985e186941710c48c"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-six-targeted-rebind-current-20260929-v1-a",
+      "campaignDigest": "sha256:149d04958e90a90a22093b1048a8a4af1670b3d902d2270daf84bd5afb7af274",
+      "roundId": "mathematik-m7-six-targeted-rebind-current-20260929-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-six-targeted-rebind-current-20260929-v1-independent-a",
+      "reviewInputFingerprint": "sha256:c4c9e660afe8b01e29f19f720df3aac846e5dd1b468863c7cbc151bf4f77d8ac",
+      "batchId": "mathematik-m7-six-targeted-rebind-current-20260929-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:a9ca4e55862446152892b234f6d56f8cd1d01fd49230aad5dfd5546a2580355b",
+      "runId": "mathematik-m7-six-targeted-rebind-current-20260929-v1-first-pass-a-codex-root-source-image-a",
+      "runManifestDigest": "sha256:8125328fb5fff54ec469b029b2f2aeeb61838bfe34904773be2b4fc4c7ebce63",
+      "resultsDigest": "sha256:8c20179a63aec7eea2614c422479fb760e4490aaff1cafc5c34ed43f6e305a46"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-six-targeted-rebind-current-20260929-v1-b",
+      "campaignDigest": "sha256:e1db8efaa6b254ff935042fc738efba03513d3a647afe097e1aabe80f945c59d",
+      "roundId": "mathematik-m7-six-targeted-rebind-current-20260929-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-six-targeted-rebind-current-20260929-v1-independent-b",
+      "reviewInputFingerprint": "sha256:c4c9e660afe8b01e29f19f720df3aac846e5dd1b468863c7cbc151bf4f77d8ac",
+      "batchId": "mathematik-m7-six-targeted-rebind-current-20260929-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:965440d1993d5acaf5b192e8064652dde8c438296aa12881f64a76010b3a66ac",
+      "runId": "mathematik-m7-six-targeted-rebind-current-20260929-v1-first-pass-b.batch-001-run",
+      "runManifestDigest": "sha256:343799fb0e0faaa312fdbce5bb7fa43df3b4b249d971e1aafa030293df8938c1",
+      "resultsDigest": "sha256:30be8f9b0032e753ebd6f8649658df6a409561e2b3be5b1645760efb6c861c07"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-six-targeted-text-source-image-rebind-20260929-v1-decision-001",
+      "goalId": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:56a543b2d633da1fe969d9e19423b2e09b0cdc14e52ad8cdd884a9309d235cc9",
+      "pageFingerprint": "sha256:1a4603354dd220223b356b0bbaf05660d0d347d78bbf85c0f46c26f09394235c",
+      "goalReviewContextFingerprint": "sha256:4d174d8a344414247359a5dfc5092b971791584510b815ee83ecd956e1be438a",
+      "finalText": {
+        "titleDe": "Flächen- und Volumenskalierung bei zentrischer Streckung begründen (LK)",
+        "titleEn": "Justify area and volume scaling under a central dilation (advanced course)",
+        "descriptionDe": "Die lernende Person kann bei einer zentrischen Streckung am Koordinatenursprung mit positivem Faktor k aus der Skalierung von Kantenlängen begründen, warum Flächeninhalte mit k² und Volumina mit k³ multipliziert werden, und dies an einem gegebenen Körper anwenden.",
+        "descriptionEn": "The learner can use the scaling of edge lengths under a central dilation at the coordinate origin with a positive factor k to justify why areas are multiplied by k² and volumes by k³, and apply this to a given solid."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-six-targeted-rebind-current-20260929-v1-first-pass-a-codex-root-source-image-a.7d37513b",
+          "recordDigest": "sha256:9a1ed30d1218deefb81e19548f47db6f4836627fd9f7760d3cccbca02aa779ed"
+        },
+        "second": {
+          "recordId": "m7-six-targeted-rebind-b-01-7d37513b",
+          "recordDigest": "sha256:a525549b9fc04e75d428d2c78774c63bd141933cf91a7c55074f1979fd6f86b7"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen denselben begründbaren LK-Skalierungsvergleich. HE Q2.2 S.41 und Q2.5 S.44 tragen die ausdrücklich als didaktische Ableitung gekennzeichneten Faktoren k² und k³, nicht als wörtliches Zitat. Der revidierte Text erfasst auch k=1. Das aktuelle PNG zeigt k=2 mit Flächenfaktor 4 und Volumenfaktor 8 korrekt. 7d160e08 bleibt ein getrenntes examData-Ziel; die Bildkopie allein ist kein P-Nachweis. KI-Kandidat ohne menschliche Freigabe.",
+      "rationaleEn": "Both independent rounds support one reasoned advanced-course scaling comparison. HE Q2.2 p.41 and Q2.5 p.44 support k² and k³ as an explicitly marked didactic inference, not a verbatim quotation. The revised text also covers k=1. The current PNG correctly shows area factor 4 and volume factor 8 for k=2. 7d160e08 remains a separate examData goal; copying the image is not positive learner evidence. AI candidate, no human approval."
+    },
+    {
+      "decisionId": "math-m7-six-targeted-text-source-image-rebind-20260929-v1-decision-002",
+      "goalId": "d1352ce0-9502-5039-9af6-318fe385b6fd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:92469f0f8be013e296c684edda54fd2d23f23c9095bf58f8e674fef42a20896a",
+      "pageFingerprint": "sha256:4d1649ef20a55f64392add8f1dfdd20563004e6cb0bf3d989bd26d92bf24f21a",
+      "goalReviewContextFingerprint": "sha256:286702d3a6f4cc2e0bf57e6aa87fdc2946dc0377ecd8a56b2fbfd099f3ec935c",
+      "finalText": {
+        "titleDe": "Kollinearität von Vektoren prüfen",
+        "titleEn": "Check collinearity of vectors",
+        "descriptionDe": "Die lernende Person kann in einfachen Fällen prüfen und begründen, ob zwei Vektoren kollinear sind: rechnerisch anhand eines einheitlichen Skalarfaktors für alle Komponenten oder bei Nichtnullvektoren geometrisch anhand gleicher oder entgegengesetzter Richtung.",
+        "descriptionEn": "The learner can check and justify in simple cases whether two vectors are collinear: algebraically using one common scalar factor for all components or, for nonzero vectors, geometrically using the same or opposite direction."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-six-targeted-rebind-current-20260929-v1-first-pass-a-codex-root-source-image-a.d1352ce0",
+          "recordDigest": "sha256:294b2debe642619edf926ab54b387bade149645d03f2e8673038536defc61e44"
+        },
+        "second": {
+          "recordId": "m7-six-targeted-rebind-b-02-d1352ce0",
+          "recordDigest": "sha256:d1646891c50a79fbca49c8a171da95fd38cbf0d9ba3ea36eca4862fdb3964fe1"
+        }
+      },
+      "rationaleDe": "Beide Runden stimmen der einheitlichen Kollinearitätsentscheidung zu. Die BW-J9/10-Quelle 3.3.3(11) belegt das Prüfen; der korrigierte DE/EN-Text verlangt rechnerisch EINEN gemeinsamen Skalar und verwendet die geometrische Richtung nur für Nichtnullvektoren. Das PNG zeigt (2,4)=2(1,2) und ein Gegenbeispiel mit widersprüchlichen Faktoren 3 bzw. 0,5 richtig. Der Nullvektor wird über Algebra geprüft, nicht über eine erfundene Richtung. KI-Kandidat ohne menschliche Freigabe.",
+      "rationaleEn": "Both rounds agree on one collinearity decision. BW J9/10 source 3.3.3(11) supports the check; the corrected bilingual text requires one common scalar and uses geometric direction only for nonzero vectors. The PNG correctly shows (2,4)=2(1,2) and a counterexample with incompatible factors 3 and 0.5. A zero-vector case is checked algebraically, without inventing a direction. AI candidate, no human approval."
+    },
+    {
+      "decisionId": "math-m7-six-targeted-text-source-image-rebind-20260929-v1-decision-003",
+      "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a4b730cd581400a0e3ad4cd972312556c2e03706d55d0618935dbf0693959b5a",
+      "pageFingerprint": "sha256:152bb6341c13062f81f729ad3f2cc100ecab9381bbd94a7cfcf94c5609060d4c",
+      "goalReviewContextFingerprint": "sha256:21f08cbb1ae66b2bfd74c32cdc5396b3348393297bb26e7426fdf6edfaab3947",
+      "finalText": {
+        "titleDe": "Mittelwerte von Funktionen mit Integralen bestimmen und deuten",
+        "titleEn": "Determine and interpret mean values of functions using integrals",
+        "descriptionDe": "Die lernende Person kann den Mittelwert einer gegebenen Funktion auf einem Intervall als Integralwert geteilt durch die Intervalllänge bestimmen, seine Bedeutung als konstanter Funktionswert mit demselben Integralwert begründen und ihn mit passender Einheit im Kontext deuten, auch bei Bestands- und Änderungsratenfunktionen.",
+        "descriptionEn": "The learner can determine the mean value of a given function on an interval by dividing its definite integral by the interval length, justify its meaning as a constant function value with the same integral, and interpret it with the appropriate unit in context, including stock and rate-of-change functions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-six-targeted-rebind-current-20260929-v1-first-pass-a-codex-root-source-image-a.c1c80b80",
+          "recordDigest": "sha256:0d50ff66d5a828155c413d11e2abcc1e1d97146f88c4eda9b6202a49e3c08232"
+        },
+        "second": {
+          "recordId": "m7-six-targeted-rebind-b-03-c1c80b80",
+          "recordDigest": "sha256:f5cf7ce80ab141aff78178e37969b73a7a3679b2d9761fb18e0ef739c578d44a"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen den Integral-Mittelwert als eine zusammenhängende Berechnungs-, Begründungs- und Deutungskompetenz in HE Q1.2 S.37. Der neue Wortlaut stellt ausdrücklich den konstanten Funktionswert mit demselben Integralwert klar. Das aktuelle B(t)=10+t²-PNG hat bei t=0 waagerechte Tangente, zeigt 39 L·min Integral und 13 L Mittelwert korrekt. Der Transfer auf Änderungsraten bleibt eine andere Kontexteinheit, keine zweite Formel. KI-Kandidat ohne menschliche Freigabe.",
+      "rationaleEn": "Both rounds confirm one compute-justify-interpret competence for the integral mean in HE Q1.2 p.37. The new wording explicitly identifies the constant function value with the same integral. The current B(t)=10+t² PNG starts with a horizontal tangent at t=0 and correctly shows integral 39 L·min and mean 13 L. Transfer to rate functions changes context and units, not the formula. AI candidate, no human approval."
+    },
+    {
+      "decisionId": "math-m7-six-targeted-text-source-image-rebind-20260929-v1-decision-004",
+      "goalId": "f257b71b-0250-5b4b-86bb-f317f79c355a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5fe8892ca6d13b0ac2c4fcc8bb789a7fef1e0cd8dd182a845b7f8a9c2b4c5262",
+      "pageFingerprint": "sha256:a34d88051851692b56e7ddf1b7955fe2f0d2afa1d7d3e544e1c34a1e6b2693b5",
+      "goalReviewContextFingerprint": "sha256:4945cfbca343abe537467b1b0d6c5604cdb22c27bbb181ab1b7fb3e3f5281d01",
+      "finalText": {
+        "titleDe": "Die Schwerpunktformel eines Dreiecks mit Ortsvektoren herleiten (LK)",
+        "titleEn": "Derive the triangle-centroid formula with position vectors (advanced)",
+        "descriptionDe": "Die lernende Person kann für ein Dreieck mit nicht kollinearen räumlichen Eckpunkten A, B und C aus Seitenmittelpunkten und Seitenhalbierenden die Formel $\\overrightarrow{OS}=(\\overrightarrow{OA}+\\overrightarrow{OB}+\\overrightarrow{OC})/3$ für den Schwerpunkt S herleiten und durch die Lage auf allen drei Seitenhalbierenden prüfen.",
+        "descriptionEn": "The learner can derive the formula $\\overrightarrow{OS}=(\\overrightarrow{OA}+\\overrightarrow{OB}+\\overrightarrow{OC})/3$ for the centroid S of a triangle with non-collinear spatial vertices A, B and C from side midpoints and medians, and check that S lies on all three medians."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-six-targeted-rebind-current-20260929-v1-first-pass-a-codex-root-source-image-a.f257b71b",
+          "recordDigest": "sha256:27f117a050655a3b9348a1322c14a1d07e89ae60265a1e266af8587474f9b67f"
+        },
+        "second": {
+          "recordId": "m7-six-targeted-rebind-b-04-f257b71b",
+          "recordDigest": "sha256:325e31bde86038ed0a1343b23d307891d73ccba31abe5988bba7e9ed55f36b8d"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die Herleitung als ein LK-Ziel. Die amtliche Saarland-Hauptphase-LK-Quelle nennt Schwerpunktformel und Herleitung tatsächlich auf gedruckter/PDF-Seite 34; die frühere Seitenzahl 33 war falsch. Das aktuelle PNG markiert Mittelpunkte, alle drei Seitenhalbierenden und das 2:1-Verhältnis korrekt. Der Text fordert eine räumlich gültige Ortsvektorherleitung und eine Prüfung auf allen Medianen. KI-Kandidat ohne menschliche Freigabe.",
+      "rationaleEn": "Both rounds confirm one advanced-course derivation. The official Saarland advanced-course source gives the centroid formula and derivation on printed/PDF p.34; the former p.33 locator was wrong. The current PNG correctly marks midpoints, all three medians, and their 2:1 division. The text requires a spatially valid position-vector derivation and a check on every median. AI candidate, no human approval."
+    },
+    {
+      "decisionId": "math-m7-six-targeted-text-source-image-rebind-20260929-v1-decision-005",
+      "goalId": "baea3966-5d10-53bf-8193-3fcda7b1e73f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:637e330e2a46db10dca4e7084c92bde54c70a6f312a3226b921861b4935eef72",
+      "pageFingerprint": "sha256:83b3b27e03ffc56dae260958dfd308c2195de64f06bc83832eb150b8114ab64e",
+      "goalReviewContextFingerprint": "sha256:7b350e89d8c6234912977ca62739a480e893c7962a30dafd5da3dc14eff35b7e",
+      "finalText": {
+        "titleDe": "Kugelvolumen mit Cavalieri herleiten",
+        "titleEn": "Derive the volume of a sphere using Cavalieri's principle",
+        "descriptionDe": "Die lernende Person kann die Formel $V=\\frac43\\pi r^3$ für das Kugelvolumen mit dem Satz von Cavalieri herleiten, indem sie Kugelquerschnitte mit gleich hohen Schnitten eines Zylinders (Radius $r$, Höhe $2r$) nach Herausnahme zweier Kegel (je Radius und Höhe $r$) vergleicht und das Volumen des Restkörpers berechnet.",
+        "descriptionEn": "The learner can derive the sphere-volume formula $V=\\frac43\\pi r^3$ using Cavalieri's principle by comparing each horizontal sphere section with the corresponding section of a cylinder (radius $r$, height $2r$) after removing two cones (each of radius and height $r$), then calculating the remaining volume."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-six-targeted-rebind-current-20260929-v1-first-pass-a-codex-root-source-image-a.baea3966",
+          "recordDigest": "sha256:16ca0f9456d6e92f468e324d18e92db6131bbb3c096263325d7a272863f78599"
+        },
+        "second": {
+          "recordId": "m7-six-targeted-rebind-b-05-baea3966",
+          "recordDigest": "sha256:4ade30c83ef118961e2655a5f250f36780af6700973ec375f26ed9f3a207abbb"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen den Cavalieri-Vergleich als eine prüfbare J10-Herleitung. Der Saarland-Lehrplan 2026 S.33–35 fordert Cavalieri und Kugelvolumen; der Zylinder-minus-zwei-Kegel-Restkörper ist ein dort vorgeschlagener Weg und wird im sourceRef so bezeichnet. Das aktive PNG zeigt in jeder Höhe gleiche Querschnitte π(r²−z²) und berechnet 4πr³/3 richtig. Es setzt keine Integralrechnung voraus. KI-Kandidat ohne menschliche Freigabe.",
+      "rationaleEn": "Both rounds support one assessable year-10 Cavalieri derivation. The 2026 Saarland curriculum pp.33–35 requires Cavalieri and the sphere-volume formula; cylinder minus two cones is a suggested route and is identified as such in sourceRef. The active PNG shows equal sections π(r²−z²) at every height and computes 4πr³/3 correctly. Integral calculus is not a prerequisite. AI candidate, no human approval."
+    },
+    {
+      "decisionId": "math-m7-six-targeted-text-source-image-rebind-20260929-v1-decision-006",
+      "goalId": "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c0212bf9b929bfc8016308465254cb5442a60b7e36d6c00fbfaa642f86c621d5",
+      "pageFingerprint": "sha256:07a5800a172a2a07fbaa4819b2bed46e2919773c7bdb6054f4e4de9f0a4c01f8",
+      "goalReviewContextFingerprint": "sha256:3b10eda7c5ab08815a332c8f8c0c6c75a0ab34284b166dd5edd542f1e2edad1d",
+      "finalText": {
+        "titleDe": "Fixpunkte linearer Abbildungen bestimmen (LK)",
+        "titleEn": "Determine fixed points of linear mappings (advanced course)",
+        "descriptionDe": "Die lernende Person kann Fixpunkte linearer geometrischer Abbildungen im dreidimensionalen Raum bestimmen, indem sie die Bedingung $A\\vec{x}=\\vec{x}$ als lineares Gleichungssystem aufstellt und löst.",
+        "descriptionEn": "The learner can determine fixed points of linear geometric mappings in three-dimensional space by setting up and solving the condition $A\\vec{x}=\\vec{x}$ as a system of linear equations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-six-targeted-rebind-current-20260929-v1-first-pass-a-codex-root-source-image-a.d3c42193",
+          "recordDigest": "sha256:dadc8e6aacb6970b42ef4d4161866c0ed876a9954e38ba3726bc96c58cf5ce29"
+        },
+        "second": {
+          "recordId": "m7-six-targeted-rebind-b-06-d3c42193",
+          "recordDigest": "sha256:fbd8e7bdc80f06d90bd85b4f69f0f3ffb3be833aac230fde06055aa9506e3e81"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die HE-LK-Q2.5-Quelle S.44 für Fixpunkte linearer Raumabbildungen. Das neue primäre PNG ist jetzt R³-treu: diag(1,1,−1) spiegelt z, P=(0,0,1) geht nach P′=(0,0,−1), und genau z=0 bleibt fest. Die alte 2D-Grafik ist historisch erhalten. Der Zieltext verlangt das Gleichungssystem A x=x; Transfer muss an einer anderen 3×3-Abbildung geprüft werden. KI-Kandidat ohne menschliche Freigabe.",
+      "rationaleEn": "Both rounds confirm HE advanced-course Q2.5 p.44 for fixed points of spatial linear mappings. The new primary PNG now depicts R³ faithfully: diag(1,1,−1) reflects z, maps P=(0,0,1) to P′=(0,0,−1), and fixes exactly z=0. The old 2D image is retained historically. The goal asks for the system A x=x; transfer requires a different 3×3 map. AI candidate, no human approval."
+    }
+  ],
+  "manifestFingerprint": "sha256:3f5e7a7b39aaae65ddb7bdb6568f811330648e9b8d591a474523f27ce0123806"
+}

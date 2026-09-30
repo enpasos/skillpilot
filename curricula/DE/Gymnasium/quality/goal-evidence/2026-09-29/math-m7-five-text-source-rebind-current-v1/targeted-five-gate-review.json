@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-29",
+  "reviewAuthority": "ai_candidate",
+  "humanApprovalClaimed": false,
+  "scope": "Five targeted Math M7 goals; no historical unrelated goal re-review",
+  "sourceFiles": [
+    "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+    "curricula/DE/Gymnasium/input/SL/LP_Ma_LK_HP_2019.pdf",
+    "curricula/DE/Gymnasium/input/SL/LP_MA_gym9_10_2026.pdf"
+  ],
+  "memoryCardFinding": "math_analysis_c16 remains an unchanged compact integral-mean recall card; canonical-math-full memory checker reports 64/64 kept primary cards, 0 missing/stale card rows and 0 missing visible memory goals in its two configured views. No new visibility route was authored.",
+  "records": [
+    {
+      "goalId": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
+      "currentDescriptionDe": "Die lernende Person kann bei einer zentrischen Streckung am Koordinatenursprung mit positivem Faktor k aus der Skalierung von Kantenlängen begründen, warum Flächeninhalte mit k² und Volumina mit k³ multipliziert werden, und dies an einem gegebenen Körper anwenden.",
+      "sourceFinding": "HE Kerncurriculum Mathematik gymnasiale Oberstufe 2024, Q2.5 nennt zentrische Streckungen am Ursprung, Q2.2 geometrische Flächen-/Volumenbegründung. k²/k³ sind mathematisch abgeleitet; die neue Formulierung ist auch für k=1 korrekt.",
+      "imageFinding": "Original-PNG gesehen: k=2, Quadrat 1→4, Würfel 1→8; Bild zeigt Beispiel, allgemeines k und Zentrum müssen von Lernenden begründet werden.",
+      "A": {
+        "status": "atomic",
+        "fingerprint": "sha256:abb7bc7346f27920160b8b0009e6eaa0a6740f82a751d9353ae3fdcc40ecb992"
+      },
+      "M": {
+        "status": "no_memory_needed",
+        "fingerprint": "sha256:6930bef849e3db80c230bc091a7f80e045195ca904e297abeb6ba89fbfa48d49",
+        "deckIds": []
+      },
+      "P": {
+        "status": "needs_human_review",
+        "authority": "ai_candidate",
+        "reviewId": "canonical-math-m7-five-text-source-rebind-current-20260929-v1",
+        "caseCount": 3
+      },
+      "V": {
+        "status": "machine_approved",
+        "assetSha256": "sha256:383937064add42e5ae9a264081897cc6a6d8bda53b258398fdef258d7f6c6d1f",
+        "humanApproved": false
+      },
+      "changeType": "text_and_evidence_rebound"
+    },
+    {
+      "goalId": "d1352ce0-9502-5039-9af6-318fe385b6fd",
+      "currentDescriptionDe": "Die lernende Person kann in einfachen Fällen prüfen und begründen, ob zwei Vektoren kollinear sind: rechnerisch anhand eines einheitlichen Skalarfaktors für alle Komponenten oder bei Nichtnullvektoren geometrisch anhand gleicher oder entgegengesetzter Richtung.",
+      "sourceFinding": "J9-Vektoratom: Ein gemeinsamer Skalar muss in allen Komponenten gelten. Geometrische Richtungsprüfung nur für Nichtnullvektoren; der Nullvektor wird im P-Fall unter ausdrücklich genannter algebraischer Konvention behandelt.",
+      "imageFinding": "Original-PNG gesehen: v=(2,4)=2(1,2); für a=(3,1), b=(1,2) ergeben Komponentenfaktoren 3 und 0,5, also kein gemeinsamer Skalar. Nullvektor ist im Bild nicht abgebildet und wird im P-Fall separat geprüft.",
+      "A": {
+        "status": "atomic",
+        "fingerprint": "sha256:747a7520a3c7e5250a1445b908db64adfe37c20adf1623bc50aea82dd5c1c67d"
+      },
+      "M": {
+        "status": "no_memory_needed",
+        "fingerprint": "sha256:3d3bc2d557383c9f01d33720bfdb932f23192ad13e6b7662b5dda66d392e5e6b",
+        "deckIds": []
+      },
+      "P": {
+        "status": "needs_human_review",
+        "authority": "ai_candidate",
+        "reviewId": "canonical-math-m7-five-text-source-rebind-current-20260929-v1",
+        "caseCount": 3
+      },
+      "V": {
+        "status": "machine_approved",
+        "assetSha256": "sha256:3922a8d84e65101d7bff8709e8344665d38a1bce4035011f25343e0131c1eb40",
+        "humanApproved": false
+      },
+      "changeType": "text_and_evidence_rebound"
+    },
+    {
+      "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+      "currentDescriptionDe": "Die lernende Person kann den Mittelwert einer gegebenen Funktion auf einem Intervall als Integralwert geteilt durch die Intervalllänge bestimmen, seine Bedeutung als konstanter Funktionswert mit demselben Integralwert begründen und ihn mit passender Einheit im Kontext deuten, auch bei Bestands- und Änderungsratenfunktionen.",
+      "sourceFinding": "HE Kerncurriculum Mathematik gymnasiale Oberstufe 2024, Q1.2 nennt mittleren Bestand und mittlere Änderungsrate. Integral geteilt durch Intervalllänge hat den gleichen Integralwert als konstante Funktion und die zum Kontext passende Einheit.",
+      "imageFinding": "Original-PNG gesehen: B(t)=10+t²; Graph startet bei t=0 waagerecht, B(3)=19 L, Integral 39 L·min, konstanter Mittelwert 13 L.",
+      "A": {
+        "status": "atomic",
+        "fingerprint": "sha256:28e087b953a41f05b63daa4cf6f2e5bb6d5c071767dfdddaf9a862626989e7d4"
+      },
+      "M": {
+        "status": "memory_required",
+        "fingerprint": "sha256:76492351dd8b618fd5a73985243d9fd981b61c177c5f2faf3ff0960537058579",
+        "deckIds": [
+          "de_gymnasium_math_analysis_core"
+        ]
+      },
+      "P": {
+        "status": "needs_human_review",
+        "authority": "ai_candidate",
+        "reviewId": "canonical-math-m7-five-text-source-rebind-current-20260929-v1",
+        "caseCount": 3
+      },
+      "V": {
+        "status": "machine_approved",
+        "assetSha256": "sha256:ed8d74154977fe4a943bf4e77c759003c34e38f4ab61f2d19cbba98d7b1e024e",
+        "humanApproved": false
+      },
+      "changeType": "text_and_evidence_rebound"
+    },
+    {
+      "goalId": "f257b71b-0250-5b4b-86bb-f317f79c355a",
+      "currentDescriptionDe": "Die lernende Person kann für ein Dreieck mit nicht kollinearen räumlichen Eckpunkten A, B und C aus Seitenmittelpunkten und Seitenhalbierenden die Formel $\\overrightarrow{OS}=(\\overrightarrow{OA}+\\overrightarrow{OB}+\\overrightarrow{OC})/3$ für den Schwerpunkt S herleiten und durch die Lage auf allen drei Seitenhalbierenden prüfen.",
+      "sourceFinding": "Amtlicher Saarland-Lehrplan Mathematik Hauptphase Leistungskurs 2019, PDF-/Druckseite 34: Formeln für Streckenmittelpunkt und Dreiecksschwerpunkt herleiten. Die ältere P-Quellenangabe S.33 ist sachlich falsch und wird durch den neuen P-Nachweis ersetzt.",
+      "imageFinding": "Original-PNG gesehen: Seitenmittelpunkte M/N/P und alle drei Seitenhalbierenden stimmen; S teilt AM 2:1 und die dargestellte Ortsvektorgleichung ist korrekt.",
+      "A": {
+        "status": "atomic",
+        "fingerprint": "sha256:50bd899d0c68717c58278a4e7df06df6f38993b0de87fd8dc919601ecfc91f1c"
+      },
+      "M": {
+        "status": "no_memory_needed",
+        "fingerprint": "sha256:8360f44dea93ce25d030cc481af49c53a802a5e990354fb4ccb553a2f2e54b88",
+        "deckIds": []
+      },
+      "P": {
+        "status": "needs_human_review",
+        "authority": "ai_candidate",
+        "reviewId": "canonical-math-m7-five-text-source-rebind-current-20260929-v1",
+        "caseCount": 2
+      },
+      "V": {
+        "status": "machine_approved",
+        "assetSha256": "sha256:3bfabb593d9656f186c1338dfdd285eb738b20bf52581bb20251f444d5b411f6",
+        "humanApproved": false
+      },
+      "changeType": "source_reference_corrected_and_p_rebound"
+    },
+    {
+      "goalId": "baea3966-5d10-53bf-8193-3fcda7b1e73f",
+      "currentDescriptionDe": "Die lernende Person kann die Formel $V=\\frac43\\pi r^3$ für das Kugelvolumen mit dem Satz von Cavalieri herleiten, indem sie Kugelquerschnitte mit gleich hohen Schnitten eines Zylinders (Radius $r$, Höhe $2r$) nach Herausnahme zweier Kegel (je Radius und Höhe $r$) vergleicht und das Volumen des Restkörpers berechnet.",
+      "sourceFinding": "Amtlicher Saarland-Lehrplan Mathematik Gymnasium G9 J10 2026, PDF-/Druckseiten 33–36: Satz von Cavalieri, Kugelvolumenformel, archimedischer Restkörper und Herleitung. Der bestehende P-Nachweis ist aktuell und wird unverändert beibehalten.",
+      "imageFinding": "Original-PNG gesehen: Kugelscheibe π(r²−z²), Restkörperring mit Radii r und |z|, gleiche Schnittfläche; Zylinder minus zwei Kegel gibt 4πr³/3.",
+      "A": {
+        "status": "atomic",
+        "fingerprint": "sha256:659a82f302b8ea394ebcfceb778808a0d2f59c468607d15272542e961d314724"
+      },
+      "M": {
+        "status": "no_memory_needed",
+        "fingerprint": "sha256:029f801fe7de18146a5de6e814f41624f16968a4c249e93128fc6e0f861d6e03",
+        "deckIds": []
+      },
+      "P": {
+        "status": "needs_human_review",
+        "authority": "ai_candidate",
+        "reviewId": "canonical-math-m7-sl-j10-sphere-cavalieri-current-20260929-v1",
+        "caseCount": 2
+      },
+      "V": {
+        "status": "machine_approved",
+        "assetSha256": "sha256:3274887ab797e069979654ac94c0aec986e598d1ebcfccbd0cb0f4779af99034",
+        "humanApproved": false
+      },
+      "changeType": "unchanged_valid_binding_retained"
+    }
+  ]
+}

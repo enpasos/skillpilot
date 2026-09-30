@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
   "title": "SkillPilot standalone rollout synthesis-decision manifest v1",
-  "description": "An explicit, fingerprint-bound AI synthesis decision for every goal in one standalone rollout batch. It normally selects current canonical text and one of two independently validated current keep records. For keep_current only, one current revise record may instead be rejected explicitly while its proposal and evidence remain bound as dissent. The manifest never grants human authority.",
+  "description": "Explicit, fingerprint-bound AI synthesis decisions for the resolved goals in one standalone rollout batch. Goals with a current block or unresolved revision review can remain explicitly deferred while the other goals are resolved. The manifest never grants human authority.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -68,6 +68,13 @@
       "maxItems": 20,
       "uniqueItems": true,
       "items": { "$ref": "#/$defs/decision" }
+    },
+    "deferredGoals": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 19,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/deferredGoal" }
     }
   },
   "$defs": {
@@ -180,6 +187,18 @@
           }
         },
         "revisionDissent": { "$ref": "#/$defs/revisionDissent" },
+        "rationaleDe": { "$ref": "#/$defs/longText" },
+        "rationaleEn": { "$ref": "#/$defs/longText" }
+      }
+    },
+    "deferredGoal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["goalId", "firstDecision", "secondDecision", "rationaleDe", "rationaleEn"],
+      "properties": {
+        "goalId": { "$ref": "#/$defs/stableId" },
+        "firstDecision": { "enum": ["keep", "revise", "split_review", "block"] },
+        "secondDecision": { "enum": ["keep", "revise", "split_review", "block"] },
         "rationaleDe": { "$ref": "#/$defs/longText" },
         "rationaleEn": { "$ref": "#/$defs/longText" }
       }

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-volume-six-current-20260929-v1-resolution-2f2c9f1a-07f0-59e4-b84a-60648c3b0bda",
+  "goal": {
+    "goalId": "2f2c9f1a-07f0-59e4-b84a-60648c3b0bda",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:413f8acbcd0fd3c8b4777d9f84e9ee9f40df602bcf34a0de1c6aadcd7f3fd0a3",
+    "pageFingerprint": "sha256:93e00b00c5a1fed4d087d5d50bc4f26cc379a3d5ef5c781be55239ed6e2e4876",
+    "goalReviewContextFingerprint": "sha256:fba33c4e75fb19ce1b50a2fbd41dcb7f06d2bc38a78701a2db68995c83b0b7ac",
+    "finalText": {
+      "titleDe": "Volumen von Kugeln aus dem Radius bestimmen",
+      "titleEn": "Determine sphere volumes from the radius",
+      "descriptionDe": "Die lernende Person kann die kubische Abhängigkeit des Kugelvolumens vom Radius beschreiben und den Zusammenhang V = (4/3)πr³ nutzen, um Kugelvolumina aus Skizzen oder Koordinaten zu bestimmen.",
+      "descriptionEn": "The learner can describe the cubic dependence of sphere volume on the radius and use V = (4/3)πr³ to determine sphere volumes from sketches or coordinates."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-volume-six-current-20260929-v1-a",
+      "campaignDigest": "sha256:5f8a9613144ba9ac096d2cdbc409cf87e48d5c9f6f8555a75ed13213b23174f8",
+      "roundId": "mathematik-m7-volume-six-current-20260929-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-volume-six-current-20260929-v1-independent-a",
+      "reviewInputFingerprint": "sha256:55f793009c1873f880f3abc3f500627282e91285cfc77fd7264dca0b89038161",
+      "goalReviewContextFingerprint": "sha256:fba33c4e75fb19ce1b50a2fbd41dcb7f06d2bc38a78701a2db68995c83b0b7ac",
+      "batchId": "mathematik-m7-volume-six-current-20260929-v1-first-pass-a.batch-001",
+      "runId": "mathematik-m7-volume-six-current-20260929-v1-first-pass-a.batch-001.codex-current-volume-independent-a",
+      "runManifestDigest": "sha256:5b67e570428bc350e51e11b107fdc99f16954c6abc58462bc53167d74a6762f1",
+      "resultsDigest": "sha256:f85023940f323982f8e4ef848dad690a90038a88b20bde0549df8b353b92e1d8",
+      "recordId": "mathematik-m7-volume-six-current-20260929-v1-first-pass-a.batch-001.codex-current-volume-independent-a.2f2c9f1a-07f0-59e4-b84a-60648c3b0bda",
+      "recordDigest": "sha256:19f2d0ec4e724b2206ae6fad6dfeb192b3439ca942ba9bf7df5dc836cbe9b1ea"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-volume-six-current-20260929-v1-b",
+      "campaignDigest": "sha256:271acb406fcdf9648fb478b8afa33df84e278460f355590dae4b7251589baaf4",
+      "roundId": "mathematik-m7-volume-six-current-20260929-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-volume-six-current-20260929-v1-independent-b",
+      "reviewInputFingerprint": "sha256:55f793009c1873f880f3abc3f500627282e91285cfc77fd7264dca0b89038161",
+      "goalReviewContextFingerprint": "sha256:fba33c4e75fb19ce1b50a2fbd41dcb7f06d2bc38a78701a2db68995c83b0b7ac",
+      "batchId": "mathematik-m7-volume-six-current-20260929-v1-first-pass-b.batch-001",
+      "runId": "mathematik-m7-volume-six-current-20260929-v1-first-pass-b-codex-independent-b",
+      "runManifestDigest": "sha256:59050c7b8eaa03245b858b7fe4338387813ecd97412e034d63ae4e28af3eac4a",
+      "resultsDigest": "sha256:27a93c3b5a2cb19699a4c3b6235a2ae6a9ebfae05ed1c946a57455cef58b3617",
+      "recordId": "mathematik-m7-volume-six-current-20260929-v1-first-pass-b-codex-independent-b.2f2c9f1a-07f0-59e4-b84a-60648c3b0bda",
+      "recordDigest": "sha256:438f77c36eb649f53ca67ca4cef309d096f7e031ee4e2cbdf03bb305c4b1647c"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:0ee8d57d66e447ca5c6fd8cdf429ecc7cbb5cede9d76f1396f9f6a41e7c02e85"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "math-m7-volume-six-five-resolved-one-deferred-20260929-v1",
+    "manifestDigest": "sha256:52832da97ec09226e77133aec47bb8bb8185195abbce22186bad30879531abc8",
+    "manifestFingerprint": "sha256:cf44e815ca4ab262f25032479e416a4f9857fb8f0420b3cad6bc25fe66aae16d",
+    "decisionId": "math-m7-volume-six-five-resolved-one-deferred-20260929-v1-decision-003"
+  },
+  "synthesis": {
+    "synthesisId": "math-m7-volume-six-five-resolved-one-deferred-20260929-v1-decision-003",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis of two independent current reviews with targeted Canon, source, page, and actual PNG checks; no human approval",
+    "synthesizedAt": "2026-09-29T04:10:04.475Z",
+    "rationaleDe": "Beide Runden halten die kubische Radiusabhängigkeit und die selbstständige Bestimmung eines Kugelvolumens aus Skizze oder Raumkoordinaten. SL Einführungsphase S. 15/17 und BW 3.3.2(5,7) stützen Volumen und Skalierung; HE S. 41 ist nur allgemeine Raumgeometrie und kein ausdrücklich kugelspezifischer Quellenbeleg. Die Beschreibung verlangt keine Integral-Herleitung. Das aktuelle PNG zeigt r = 3/6 cm, V = 36π/288π cm³ und den Faktor acht korrekt. Die erste Runde liefert einen konkreten Koordinatentransfer; die zweite prüft zusätzlich die inverse Skalierung. Canon-Text, Seite und Bildhash sind aktuell. Dies ist keine menschliche Freigabe.",
+    "rationaleEn": "Both rounds retain cubic radius dependence and independent sphere-volume determination from a sketch or spatial coordinates. SL introductory phase pp. 15/17 and BW 3.3.2(5,7) support volume and scaling; HE p. 41 is general spatial geometry, not explicit sphere-specific source evidence. The description requires no integral derivation. The current PNG correctly shows r = 3/6 cm, V = 36π/288π cm³, and an eightfold volume change. Round A gives a concrete coordinate transfer, while round B also examines inverse scaling. Canon text, page, and image hash are current. This grants no human approval.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Das Kugelvolumen hängt von der dritten Potenz des Radius ab: Wird r mit k>0 skaliert, wächst V mit k³. Aus Koordinaten muss r als Abstand vom Mittelpunkt zu einem Kugelpunkt bestimmt werden; das Volumen ist eine Kubikeinheit, nicht eine Flächenangabe.",
+      "essentialUnderstandingEn": "Sphere volume depends on the third power of radius: scaling r by k>0 scales V by k³. From coordinates, r must be found as the distance from center to a point on the sphere; volume uses cubic, not area, units.",
+      "observablePerformanceDe": "Die lernende Person liest oder bestimmt den Radius aus Skizzen oder Koordinaten, berechnet V=(4/3)πr³ mit Einheit und erklärt anhand einer Radiusänderung die kubische Volumenskalierung.",
+      "observablePerformanceEn": "The learner reads or derives radius from a sketch or coordinates, calculates V=(4/3)πr³ with units, and explains cubic volume scaling under a radius change.",
+      "transferExpectationDe": "Für Kugelmittelpunkt O=(0,0,0) cm und Oberflächenpunkt P=(2,3,6) cm ermittelt sie r=7 cm und V=(1372/3)π cm³. Bei halbiertem Radius erklärt sie, dass das neue Volumen nur ein Achtel beträgt, ohne die Formel als lineare Beziehung misszuverstehen.",
+      "transferExpectationEn": "For sphere center O=(0,0,0) cm and surface point P=(2,3,6) cm, the learner finds r=7 cm and V=(1372/3)π cm³. If the radius is halved, they explain that volume becomes one eighth rather than treating the formula as linear."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-7ae41fffa6121b9f2dbe1fbf41cef9659245384c58743f8bb60822b51620e13b",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:0a9ab16706def101f125ecb52b50fa73b8549355c1e626c4e922aae900dc8d36"
+}

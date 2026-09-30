@@ -33,6 +33,11 @@ type AuthoringSpec = {
   manifestId: string
   synthesizedBy: string
   decisions: AuthoringDecision[]
+  deferredGoals?: Array<{
+    goalId: string
+    rationaleDe: string
+    rationaleEn: string
+  }>
 }
 
 const parseArgs = (args: string[]) => {
@@ -114,9 +119,19 @@ const assertAuthoringSpec = (spec: AuthoringSpec, expectedGoalIds: string[]) => 
     throw new Error('Synthesis authoring synthesizedBy must be non-blank and trimmed')
   }
   if (!Array.isArray(spec.decisions)) throw new Error('Synthesis authoring decisions must be an array')
+  if (spec.deferredGoals !== undefined && !Array.isArray(spec.deferredGoals)) {
+    throw new Error('Synthesis authoring deferredGoals must be an array')
+  }
   const goalIds = spec.decisions.map(({ goalId }) => goalId)
-  if (JSON.stringify(goalIds) !== JSON.stringify(expectedGoalIds)) {
-    throw new Error('Synthesis authoring decisions must contain configured goalIds in configured order')
+  const deferredGoalIds = (spec.deferredGoals ?? []).map(({ goalId }) => goalId)
+  if (
+    goalIds.length === 0
+    || (spec.deferredGoals !== undefined && deferredGoalIds.length === 0)
+    || JSON.stringify(goalIds) !== JSON.stringify(expectedGoalIds.filter((goalId) => !deferredGoalIds.includes(goalId)))
+    || JSON.stringify(deferredGoalIds) !== JSON.stringify(expectedGoalIds.filter((goalId) => deferredGoalIds.includes(goalId)))
+    || goalIds.length + deferredGoalIds.length !== expectedGoalIds.length
+  ) {
+    throw new Error('Synthesis authoring must partition configured goalIds into ordered decisions and explicitly deferred goals')
   }
   for (const decision of spec.decisions) {
     if (decision.evidenceRound !== 'first' && decision.evidenceRound !== 'second') {
@@ -131,6 +146,18 @@ const assertAuthoringSpec = (spec: AuthoringSpec, expectedGoalIds: string[]) => 
       || !decision.rationaleEn
     ) {
       throw new Error(`${decision.goalId}: bilingual synthesis rationale must be non-blank and trimmed`)
+    }
+  }
+  for (const deferred of spec.deferredGoals ?? []) {
+    if (
+      typeof deferred.rationaleDe !== 'string'
+      || deferred.rationaleDe.trim() !== deferred.rationaleDe
+      || !deferred.rationaleDe
+      || typeof deferred.rationaleEn !== 'string'
+      || deferred.rationaleEn.trim() !== deferred.rationaleEn
+      || !deferred.rationaleEn
+    ) {
+      throw new Error(`${deferred.goalId}: bilingual deferral rationale must be non-blank and trimmed`)
     }
   }
 }
@@ -242,11 +269,9 @@ const main = async () => {
     synthesizedAt: expected.synthesizedAt,
     batch: expected.batch,
     rounds: expected.rounds,
-    decisions: expectedGoals.map((goal, index) => {
-      const authored = authoring.decisions[index]
-      if (!authored || authored.goalId !== goal.goalId) {
-        throw new Error(`${goal.goalId}: missing aligned authoring decision`)
-      }
+    decisions: authoring.decisions.map((authored, index) => {
+      const goal = expectedGoals.find(({ goalId }) => goalId === authored.goalId)
+      if (!goal) throw new Error(`${authored.goalId}: missing configured goal`)
       return {
         decisionId: `${authoring.manifestId}-decision-${String(index + 1).padStart(3, '0')}`,
         goalId: goal.goalId,
@@ -272,6 +297,19 @@ const main = async () => {
         rationaleEn: authored.rationaleEn,
       }
     }),
+    ...(authoring.deferredGoals ? {
+      deferredGoals: authoring.deferredGoals.map((authored) => {
+        const goal = expectedGoals.find(({ goalId }) => goalId === authored.goalId)
+        if (!goal) throw new Error(`${authored.goalId}: missing configured deferred goal`)
+        return {
+          goalId: goal.goalId,
+          firstDecision: goal.firstSource.decision,
+          secondDecision: goal.secondSource.decision,
+          rationaleDe: authored.rationaleDe,
+          rationaleEn: authored.rationaleEn,
+        }
+      }),
+    } : {}),
   }
   const manifest: GoalDescriptionRolloutSynthesisDecisionManifest = {
     ...payload,

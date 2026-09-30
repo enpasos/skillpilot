@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-29T07:44:19.287Z",
+  "generatedAt": "2026-09-29T22:15:01.457Z",
   "generator": "app/scripts/reportGoalSourceRationaleCoverage.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "runtimeIndexPath": "app/public/data/goal-source-rationales-math-public.json"
   },
   "sourceIndex": {
-    "generatedAt": "2026-09-29T07:22:21.468Z",
+    "generatedAt": "2026-09-29T22:14:49.167Z",
     "generator": "app/scripts/generateGoalSourceRationales.ts",
     "summary": {
-      "requestedGoals": 753,
-      "resolvedGoals": 753,
-      "goalsWithClassicSourceRoute": 753,
+      "requestedGoals": 754,
+      "resolvedGoals": 754,
+      "goalsWithClassicSourceRoute": 754,
       "goalsWithoutClassicSourceRoute": 0,
       "goalsWithMemSparqlConsistentRoute": 234
     },
@@ -151,6 +151,7 @@
         "8b3ce429-e6bb-5d33-b6aa-6ded41afc74c",
         "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
         "cf48c918-f6c1-5429-8da6-14df43f2f550",
+        "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
         "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
         "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
         "772b11c9-1348-5ab9-bc3f-458c46b312b6",
@@ -782,27 +783,27 @@
     }
   },
   "summary": {
-    "totalGoals": 1240,
-    "atomicLeaves": 966,
+    "totalGoals": 1252,
+    "atomicLeaves": 978,
     "relevantAtomicLeaves": 807,
-    "memoryOrNonContentLeaves": 159,
+    "memoryOrNonContentLeaves": 171,
     "clusters": 274,
-    "containsRelations": 1375,
-    "requiresRelations": 2482,
-    "runtimeItems": 753,
-    "runtimeItemsInLandscape": 753,
+    "containsRelations": 1387,
+    "requiresRelations": 2460,
+    "runtimeItems": 754,
+    "runtimeItemsInLandscape": 754,
     "runtimeItemsMissingFromLandscape": 0,
-    "runtimeGoalsWithClassicSourceRationale": 753,
+    "runtimeGoalsWithClassicSourceRationale": 754,
     "runtimeGoalsWithMemSparqlConsistentRoute": 234,
-    "relevantLeavesWithClassicSourceRationale": 753,
+    "relevantLeavesWithClassicSourceRationale": 754,
     "relevantLeavesWithMemSparqlConsistentRoute": 234,
-    "relevantLeavesMissingRuntimeSourceRationale": 54,
+    "relevantLeavesMissingRuntimeSourceRationale": 53,
     "relevantLeavesWithRuntimeClassicGap": 0,
     "clustersWithDirectRuntimeSourceRationale": 0,
     "clustersWithoutDirectRuntimeSourceRationale": 274,
     "containsRelationRationalesImplemented": 0,
     "requiresRelationRationalesImplemented": 0,
-    "relevantLeafClassicCoveragePercent": 93.3,
+    "relevantLeafClassicCoveragePercent": 93.4,
     "relevantLeafMemCoveragePercent": 29
   },
   "buckets": {
@@ -822,18 +823,18 @@
         "missingRelevantLeaves": 8
       },
       {
-        "key": "Q2",
-        "totalRelevantLeaves": 141,
-        "leavesWithClassicSourceRationale": 138,
-        "leavesWithMemSparqlConsistentRoute": 20,
-        "missingRelevantLeaves": 3
-      },
-      {
         "key": "Q3",
         "totalRelevantLeaves": 76,
         "leavesWithClassicSourceRationale": 73,
         "leavesWithMemSparqlConsistentRoute": 16,
         "missingRelevantLeaves": 3
+      },
+      {
+        "key": "Q2",
+        "totalRelevantLeaves": 141,
+        "leavesWithClassicSourceRationale": 139,
+        "leavesWithMemSparqlConsistentRoute": 20,
+        "missingRelevantLeaves": 2
       },
       {
         "key": "J9",
@@ -896,9 +897,9 @@
       {
         "key": "unknown",
         "totalRelevantLeaves": 382,
-        "leavesWithClassicSourceRationale": 334,
+        "leavesWithClassicSourceRationale": 335,
         "leavesWithMemSparqlConsistentRoute": 70,
-        "missingRelevantLeaves": 48
+        "missingRelevantLeaves": 47
       },
       {
         "key": "Analysis",
@@ -1012,25 +1013,6 @@
           "Vertiefung der Analysis",
           "Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK)",
           "Zusammengesetzte Funktionen für quantifizierbare Zusammenhänge nutzen (LK)"
-        ],
-        "runtimeCovered": false,
-        "classicSourceRoute": false,
-        "memSparqlStatus": null,
-        "classification": "missing_runtime_leaf"
-      },
-      {
-        "id": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
-        "shortKey": null,
-        "title": "Sachsituationen mit einer erweiterten Funktionsklasse modellieren",
-        "type": "atomic",
-        "phase": "Q2",
-        "area": "unknown",
-        "topicCode": null,
-        "pathTitles": [
-          "Mathematik",
-          "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
-          "Vertiefung der Analysis",
-          "Sachsituationen mit einer erweiterten Funktionsklasse modellieren"
         ],
         "runtimeCovered": false,
         "classicSourceRoute": false,
@@ -4398,6 +4380,25 @@
           "Natürlichen Logarithmus als Umkehrfunktion und Stammfunktion untersuchen (LK)",
           "Natürlichen Logarithmus als Umkehrfunktion verstehen (LK)",
           "Transformationen von Logarithmusgraphen deuten (LK)"
+        ],
+        "runtimeCovered": true,
+        "classicSourceRoute": true,
+        "memSparqlStatus": "mem_sparql_not_configured",
+        "classification": "covered_runtime_classic_mem_pending"
+      },
+      {
+        "id": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+        "shortKey": null,
+        "title": "Sachsituationen mit einer erweiterten Funktionsklasse modellieren",
+        "type": "atomic",
+        "phase": "Q2",
+        "area": "unknown",
+        "topicCode": null,
+        "pathTitles": [
+          "Mathematik",
+          "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+          "Vertiefung der Analysis",
+          "Sachsituationen mit einer erweiterten Funktionsklasse modellieren"
         ],
         "runtimeCovered": true,
         "classicSourceRoute": true,
@@ -17671,8 +17672,8 @@
       }
     ],
     "relationRationales": {
-      "containsRelationsPending": 1375,
-      "requiresRelationsPending": 2482
+      "containsRelationsPending": 1387,
+      "requiresRelationsPending": 2460
     }
   },
   "rows": [
@@ -21423,6 +21424,25 @@
       "classification": "cluster_aggregate_pending"
     },
     {
+      "id": "60dbe2ed-55fb-5352-8829-1ea23fbee024",
+      "shortKey": "canonical_math_sek2_q2_m7_route_skew_lines_distance",
+      "title": "Abstand windschiefer Geraden bestimmen",
+      "type": "atomic",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "topicCode": "CANONICAL.MATH.SEK2.Q2.PRACTICE.SKEW_LINES_DISTANCE",
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Übungen Q2",
+        "Abstand windschiefer Geraden bestimmen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
       "id": "942de65f-e8cc-417c-a66b-5f597b26d965",
       "shortKey": "canonical_math_rp_sek2_lk_a1_affine_fixelemente_assessment",
       "title": "Affine Fixelemente in einer Prüfungsaufgabe untersuchen (LK, A1)",
@@ -21480,6 +21500,25 @@
       "classification": "non_content_or_memory"
     },
     {
+      "id": "03b00864-7001-5c6a-875b-dc269b3484d9",
+      "shortKey": "canonical_math_sek2_q2_m7_route_plane_coordinates",
+      "title": "Eine Koordinatenebene räumlich beschreiben",
+      "type": "atomic",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "topicCode": "CANONICAL.MATH.SEK2.Q2.PRACTICE.PLANE_COORDINATES",
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Übungen Q2",
+        "Eine Koordinatenebene räumlich beschreiben"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
       "id": "440edf01-1824-597a-9afa-2f23f5becfba",
       "shortKey": null,
       "title": "Eine Stabgerade am Zentrum spiegeln und das Bild prüfen (LK)",
@@ -21511,6 +21550,25 @@
         "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
         "Übungen Q2",
         "Einen quantifizierbaren Zusammenhang durch Verkettung modellieren (LK)"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "9809780d-c860-5a79-87ec-2a3479cc7f1f",
+      "shortKey": "canonical_math_sek2_q2_m7_route_figure_properties",
+      "title": "Figureneigenschaften mit Winkeln und Ähnlichkeit begründen",
+      "type": "atomic",
+      "phase": "Q2",
+      "area": "Geometry",
+      "topicCode": "CANONICAL.MATH.SEK2.Q2.PRACTICE.FIGURE_PROPERTIES",
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Übungen Q2",
+        "Figureneigenschaften mit Winkeln und Ähnlichkeit begründen"
       ],
       "runtimeCovered": false,
       "classicSourceRoute": false,
@@ -21556,6 +21614,25 @@
       "classification": "non_content_or_memory"
     },
     {
+      "id": "240f7716-7c6f-5705-876e-8046fd8a6720",
+      "shortKey": "canonical_math_sek2_q2_m7_route_parallel_planes_distance",
+      "title": "Gerade–Ebene- und Ebene–Ebene-Abstände bestimmen",
+      "type": "atomic",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "topicCode": "CANONICAL.MATH.SEK2.Q2.PRACTICE.PARALLEL_PLANES_DISTANCE",
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Übungen Q2",
+        "Gerade–Ebene- und Ebene–Ebene-Abstände bestimmen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
       "id": "2f8a3a90-717d-5ac1-b54e-facca26e9008",
       "shortKey": null,
       "title": "Geraden, Ebenen und Schnittfiguren analysieren",
@@ -21568,6 +21645,25 @@
         "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
         "Übungen Q2",
         "Geraden, Ebenen und Schnittfiguren analysieren"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "bc244d82-bac0-5b13-8a33-d7b101835480",
+      "shortKey": "canonical_math_sek2_q2_m7_route_line_plane_intersection",
+      "title": "Geradenschnitt mit einer Ebene deuten",
+      "type": "atomic",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "topicCode": "CANONICAL.MATH.SEK2.Q2.PRACTICE.LINE_PLANE_INTERSECTION",
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Übungen Q2",
+        "Geradenschnitt mit einer Ebene deuten"
       ],
       "runtimeCovered": false,
       "classicSourceRoute": false,
@@ -21594,6 +21690,25 @@
       "classification": "non_content_or_memory"
     },
     {
+      "id": "e3c70a12-7886-51f7-8bcd-ed54865415d6",
+      "shortKey": "canonical_math_sek2_q2_m7_route_linear_projection",
+      "title": "Orthogonale Projektion als lineare Abbildung prüfen",
+      "type": "atomic",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "topicCode": "CANONICAL.MATH.SEK2.Q2.PRACTICE.LINEAR_PROJECTION",
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Übungen Q2",
+        "Orthogonale Projektion als lineare Abbildung prüfen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
       "id": "3db949bd-3091-5a25-a1a0-c8ff0369db94",
       "shortKey": "canonical_math_q2_structural_split_follow_up_q2_product_chain_rules",
       "title": "Produkt- und Kettenregel sicher anwenden (LK)",
@@ -21613,9 +21728,28 @@
       "classification": "non_content_or_memory"
     },
     {
+      "id": "938d47a2-5d7c-52d6-8644-5cc6060d76a1",
+      "shortKey": "canonical_math_sek2_q2_m7_route_volume_derivation_lk",
+      "title": "Pyramidenvolumen aus Querschnitten herleiten (LK)",
+      "type": "atomic",
+      "phase": "Q2",
+      "area": "Geometry",
+      "topicCode": "CANONICAL.MATH.SEK2.Q2.PRACTICE.VOLUME_DERIVATION_LK",
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Übungen Q2",
+        "Pyramidenvolumen aus Querschnitten herleiten (LK)"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
       "id": "1878f680-095c-511d-aaed-e98393f7fde9",
       "shortKey": null,
-      "title": "Raumorientierung und Volumenprobleme lösen",
+      "title": "Pyramidenvolumen und Volumenänderung bei Streckung untersuchen",
       "type": "atomic",
       "phase": "Q2",
       "area": "unknown",
@@ -21624,7 +21758,26 @@
         "Mathematik",
         "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
         "Übungen Q2",
-        "Raumorientierung und Volumenprobleme lösen"
+        "Pyramidenvolumen und Volumenänderung bei Streckung untersuchen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "6cff2b2e-be7f-531a-8849-e5fb3a55978a",
+      "shortKey": "canonical_math_sek2_q2_m7_route_geometry_software",
+      "title": "Quader mit Geometriesoftware aus zwei Ansichten prüfen",
+      "type": "atomic",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "topicCode": "CANONICAL.MATH.SEK2.Q2.PRACTICE.GEOMETRY_SOFTWARE",
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Übungen Q2",
+        "Quader mit Geometriesoftware aus zwei Ansichten prüfen"
       ],
       "runtimeCovered": false,
       "classicSourceRoute": false,
@@ -21644,6 +21797,44 @@
         "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
         "Übungen Q2",
         "Schnittwinkel zweier Geraden sicher beurteilen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "e98672c6-871a-5d0b-889c-5afc51040f0d",
+      "shortKey": "canonical_math_sek2_q2_m7_route_dot_projection",
+      "title": "Skalarprodukt über eine orthogonale Projektion erklären",
+      "type": "atomic",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "topicCode": "CANONICAL.MATH.SEK2.Q2.PRACTICE.DOT_PROJECTION",
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Übungen Q2",
+        "Skalarprodukt über eine orthogonale Projektion erklären"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "b321e32c-1dff-5529-8200-6879ee8fb10b",
+      "shortKey": "canonical_math_sek2_q2_m7_route_spat_volume",
+      "title": "Spatprodukt, Orientierung und Tetraedervolumen prüfen",
+      "type": "atomic",
+      "phase": "Q2",
+      "area": "Geometry",
+      "topicCode": "CANONICAL.MATH.SEK2.Q2.PRACTICE.SPAT_VOLUME",
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Übungen Q2",
+        "Spatprodukt, Orientierung und Tetraedervolumen prüfen"
       ],
       "runtimeCovered": false,
       "classicSourceRoute": false,
@@ -21708,6 +21899,25 @@
       "classification": "non_content_or_memory"
     },
     {
+      "id": "4f85d29a-bd52-5f21-8b57-55def4440e1b",
+      "shortKey": "canonical_math_sek2_q2_m7_route_vector_relations",
+      "title": "Vektorabhängigkeit und Kollinearität begründen",
+      "type": "atomic",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "topicCode": "CANONICAL.MATH.SEK2.Q2.PRACTICE.VECTOR_RELATIONS",
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Übungen Q2",
+        "Vektorabhängigkeit und Kollinearität begründen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
       "id": "8d314e15-69e9-5af1-a10a-be820b2f821d",
       "shortKey": "canonical_math_sek2_q2_plane_plane_three_relations_assessment",
       "title": "Zwei Ebenen: Schnittgerade, echte Parallelität oder Identität",
@@ -21720,6 +21930,25 @@
         "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
         "Übungen Q2",
         "Zwei Ebenen: Schnittgerade, echte Parallelität oder Identität"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "d110ab96-275e-5ccb-8851-e02725baf31c",
+      "shortKey": "canonical_math_sek2_q2_m7_route_round_solids",
+      "title": "Zylinder-, Kegel- und Kugelvolumen vergleichen",
+      "type": "atomic",
+      "phase": "Q2",
+      "area": "Geometry",
+      "topicCode": "CANONICAL.MATH.SEK2.Q2.PRACTICE.ROUND_SOLIDS",
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Übungen Q2",
+        "Zylinder-, Kegel- und Kugelvolumen vergleichen"
       ],
       "runtimeCovered": false,
       "classicSourceRoute": false,
@@ -22095,10 +22324,10 @@
         "Vertiefung der Analysis",
         "Sachsituationen mit einer erweiterten Funktionsklasse modellieren"
       ],
-      "runtimeCovered": false,
-      "classicSourceRoute": false,
-      "memSparqlStatus": null,
-      "classification": "missing_runtime_leaf"
+      "runtimeCovered": true,
+      "classicSourceRoute": true,
+      "memSparqlStatus": "mem_sparql_not_configured",
+      "classification": "covered_runtime_classic_mem_pending"
     },
     {
       "id": "bf922603-bfb7-5107-9aa9-e270b519d239",

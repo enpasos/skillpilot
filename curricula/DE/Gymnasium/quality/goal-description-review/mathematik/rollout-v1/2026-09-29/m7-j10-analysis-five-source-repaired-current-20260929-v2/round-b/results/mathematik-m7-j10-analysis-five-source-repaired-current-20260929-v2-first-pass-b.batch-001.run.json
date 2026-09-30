@@ -1,0 +1,66 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.batch-001.run",
+  "campaignId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-b",
+  "roundId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b",
+  "batchId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:d2404aeb864aeab5b676f90e384b9da8c34ca7f3d66d9ebead9f12fb23644782",
+  "bundleFingerprint": "sha256:4ff03bbac50417ce3ef54ca06c21e912571f7cd250cdecf9021b2719b53d0a17",
+  "bookDigest": "sha256:30ea72a01915b1686b582c832f178a31b148f225b93af05f3ed166dd64eb4fd7",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:5935ebdf787104dfa70df13b25b267518ee256da2c20245651597a31bbbf21fd",
+  "independenceGroupId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+    "2850e8f6-2330-50d3-a577-d519540d9924",
+    "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+    "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+    "ad66009f-55fb-563f-ace0-dbfeae7c76c3"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:d2404aeb864aeab5b676f90e384b9da8c34ca7f3d66d9ebead9f12fb23644782"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:e1b5497d980b83780228aae02ea6fa900a20c1068db661450d3c4c174c959868"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:22eafa3dddad524a3e52ad446dfad8f4a409f8a302bda0f08ec6b081d8727cd9"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:ebce24388e316c508a6d0079a4c35d5280d46677fbaf2d0c826f485cc2e5747c"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:46699c6dd8fff8323096308db0abc766207533c45af0b00e2f98bc795ca43076"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-29T19:26:55Z",
+  "completedAt": "2026-09-29T19:28:06Z",
+  "status": "completed",
+  "outputDigest": "sha256:6b5da56a9bbe80cd33babc5aeb39f5fdc600351b729417cdf696e1f23e395278",
+  "toolchainVersion": "codex-gpt6-goal-description-review-v2"
+}

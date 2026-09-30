@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:47bcc3e91cb45d4305ad23acbb17a5848ac8bfd2a286017d012b82306385a949",
+  "reviewInputFingerprint": "sha256:1625195d7380592848a8ddf176bdfd14fedcfa241163c926faccff18fac32667",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-bf17-functions-source-current-20260929-v1-a",
+      "roundId": "mathematik-m7-bf17-functions-source-current-20260929-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-bf17-functions-source-current-20260929-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-bf17-functions-source-current-20260929-v1-first-pass-a-codex-root-bounded-source-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex session (exact deployment identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-bf17-functions-source-current-20260929-v1-b",
+      "roundId": "mathematik-m7-bf17-functions-source-current-20260929-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-bf17-functions-source-current-20260929-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-bf17-functions-source-current-20260929-v1-first-pass-b.independent-review"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex (exact serving version not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+      "firstRecordId": "mathematik-m7-bf17-functions-source-current-20260929-v1-first-pass-a-codex-root-bounded-source-a.bf17cada",
+      "secondRecordId": "mathematik-m7-bf17-functions-source-current-20260929-v1-first-pass-b.independent-review.bf17",
+      "firstRunId": "mathematik-m7-bf17-functions-source-current-20260929-v1-first-pass-a-codex-root-bounded-source-a",
+      "secondRunId": "mathematik-m7-bf17-functions-source-current-20260929-v1-first-pass-b.independent-review",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

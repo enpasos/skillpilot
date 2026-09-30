@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "reviewId": "DE-MV-MATHEMATIK-SEKII-BF17-BOUNDED-SOURCE-20260929",
+  "sourceLandscapeId": "9d420a46-b007-44ce-a4b4-453ef4e38523",
+  "targetLandscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+  "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_MATHEMATIK_SEKII_RAHMENPLAN_2019.source-extraction.json",
+  "status": "machine-assisted-bounded-partial-source-review",
+  "humanApprovalClaim": false,
+  "scopeReviewReceipt": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-09-29/bf17-gk-bounded-source-repair/source-review.receipt.json",
+  "scopeRestriction": {
+    "courseProfile": "GK",
+    "primaryPageReading": "Untersuchungen von Funktionen und ihrer Graphen, printed p.19; Anwendungen der Differentialrechnung, printed p.20; K3 printed p.11.",
+    "rationale": "Retain only simple rational-power/sine or polynomial/e combinations with one parameter. The compulsory right-column family restriction applies to inner- and outer-mathematical problems and is explicitly inherited by reconstruction on p.20. K3 supports model construction and contextual reading.",
+    "openDissent": "Partial combined inference; the parameter example alone does not establish context interpretation. Regression and Ortskurven follow the LK-only heading on p.20, despite misleading GK_LK extraction tags; neither is used as GK evidence. General logarithmic functions and multi-parameter families are excluded."
+  },
+  "mappings": [
+    {
+      "legacyGoalId": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-k3-003-1d5f7dd931",
+      "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+      "matchType": "partial",
+      "reviewDecisionId": "bf17-de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-k3-003-1d5f7dd931"
+    },
+    {
+      "legacyGoalId": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-untersuchungen-von-funktionen-und-ihrer-graphen-017-8c63bf161c",
+      "canonicalGoalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+      "matchType": "partial",
+      "reviewDecisionId": "bf17-de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-untersuchungen-von-funktionen-und-ihrer-graphen-017-8c63bf161c"
+    }
+  ],
+  "decisions": [
+    {
+      "reviewDecisionId": "bf17-de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-k3-003-1d5f7dd931",
+      "sourceGoalId": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-k3-003-1d5f7dd931",
+      "topicCode": "MV-SEKII-K3",
+      "sourceSpan": "S. 15, K3 Mathematisch modellieren",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+      ],
+      "matchType": "partial",
+      "rationale": "Partial aspect binding, read jointly with the other clauses. Retain only simple rational-power/sine or polynomial/e combinations with one parameter. The compulsory right-column family restriction applies to inner- and outer-mathematical problems and is explicitly inherited by reconstruction on p.20. K3 supports model construction and contextual reading. Bound: Partial combined inference; the parameter example alone does not establish context interpretation. Regression and Ortskurven follow the LK-only heading on p.20, despite misleading GK_LK extraction tags; neither is used as GK evidence. General logarithmic functions and multi-parameter families are excluded. Primary pages: Untersuchungen von Funktionen und ihrer Graphen, printed p.19; Anwendungen der Differentialrechnung, printed p.20; K3 printed p.11.",
+      "reviewedAt": "2026-09-29",
+      "reviewer": "codex-machine-assisted",
+      "evidence": {
+        "method": "primary-pdf-and-current-source-extraction-bounded-review",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_MATHEMATIK_SEKII_RAHMENPLAN_2019.source-extraction.json",
+        "sourceExtractionSha256": "9132d7f40a76dd736e7cfe58b488312a1ac5408629d220c6dcbcd3f8e43ad7e7",
+        "sourceReviewReceipt": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-09-29/bf17-gk-bounded-source-repair/source-review.receipt.json",
+        "primaryPageReading": "Untersuchungen von Funktionen und ihrer Graphen, printed p.19; Anwendungen der Differentialrechnung, printed p.20; K3 printed p.11."
+      }
+    },
+    {
+      "reviewDecisionId": "bf17-de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-untersuchungen-von-funktionen-und-ihrer-graphen-017-8c63bf161c",
+      "sourceGoalId": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-untersuchungen-von-funktionen-und-ihrer-graphen-017-8c63bf161c",
+      "topicCode": "MV-SEKII-UNTERSUCHUNGEN-VON-FUNKTIONEN-UND-IHRER-GRAPHEN",
+      "sourceSpan": "S. 22, Untersuchungen von Funktionen und ihrer Graphen",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+      ],
+      "matchType": "partial",
+      "rationale": "Partial aspect binding, read jointly with the other clauses. Retain only simple rational-power/sine or polynomial/e combinations with one parameter. The compulsory right-column family restriction applies to inner- and outer-mathematical problems and is explicitly inherited by reconstruction on p.20. K3 supports model construction and contextual reading. Bound: Partial combined inference; the parameter example alone does not establish context interpretation. Regression and Ortskurven follow the LK-only heading on p.20, despite misleading GK_LK extraction tags; neither is used as GK evidence. General logarithmic functions and multi-parameter families are excluded. Primary pages: Untersuchungen von Funktionen und ihrer Graphen, printed p.19; Anwendungen der Differentialrechnung, printed p.20; K3 printed p.11.",
+      "reviewedAt": "2026-09-29",
+      "reviewer": "codex-machine-assisted",
+      "evidence": {
+        "method": "primary-pdf-and-current-source-extraction-bounded-review",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_MATHEMATIK_SEKII_RAHMENPLAN_2019.source-extraction.json",
+        "sourceExtractionSha256": "9132d7f40a76dd736e7cfe58b488312a1ac5408629d220c6dcbcd3f8e43ad7e7",
+        "sourceReviewReceipt": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-09-29/bf17-gk-bounded-source-repair/source-review.receipt.json",
+        "primaryPageReading": "Untersuchungen von Funktionen und ihrer Graphen, printed p.19; Anwendungen der Differentialrechnung, printed p.20; K3 printed p.11."
+      }
+    }
+  ]
+}

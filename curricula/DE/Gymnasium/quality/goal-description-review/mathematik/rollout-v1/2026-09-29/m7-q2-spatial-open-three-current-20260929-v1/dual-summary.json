@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:419ac49524729ebf416f19bdff434d8de0658e27f0024bcbd7c28c5d40a4f02f",
+  "reviewInputFingerprint": "sha256:c313822f21db27fad2144337fd90ff897e9d4e71384b93de41a4f246234fbc63",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-a",
+      "roundId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-a-codex-independent-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex session (exact deployment identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-b",
+      "roundId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-b-gpt6"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+      "firstRecordId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-a-codex-independent-a.fcd1d180-ddce-5408-8c5d-70e417b179e7",
+      "secondRecordId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-b.fcd1d180-ddce-5408-8c5d-70e417b179e7",
+      "firstRunId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-a-codex-independent-a",
+      "secondRunId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-b-gpt6",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+      "firstRecordId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-a-codex-independent-a.a97c7cce-1343-5d04-926f-4a4f323b3c21",
+      "secondRecordId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-b.a97c7cce-1343-5d04-926f-4a4f323b3c21",
+      "firstRunId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-a-codex-independent-a",
+      "secondRunId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-b-gpt6",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "985d5529-a586-50eb-bd7f-2db2be8906d1",
+      "firstRecordId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-a-codex-independent-a.985d5529-a586-50eb-bd7f-2db2be8906d1",
+      "secondRecordId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-b.985d5529-a586-50eb-bd7f-2db2be8906d1",
+      "firstRunId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-a-codex-independent-a",
+      "secondRunId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-b-gpt6",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "goalId": "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+  "reviewedAt": "2026-09-29",
+  "reviewer": "Codex independent visual and mathematical reviewer / d3_image_audit",
+  "reviewKind": "AI candidate review; not human approval",
+  "candidate": "candidate.png",
+  "candidateSha256": "54103114a99dfd9d8a296c808dedfe57a1afa668334427acac764e61974583bf",
+  "candidateDimensions": [
+    1774,
+    887
+  ],
+  "activeImageSha256AtReview": "48c574d439a89bb8ef221be70781ed83f1ef4815836920cd48d3b1896702d978",
+  "decision": "KEEP",
+  "pilotDecision": "accepted_pilot",
+  "safeToBind": true,
+  "safeToBindScope": "Mathematical and visual candidate suitability. Import metadata, exact-hash QA bindings, affected page/context checks and runtime rendering remain separate integration work.",
+  "independenceDisclosure": "Before viewing the image, a broad rg search accidentally surfaced README lines 3 and 14, including the generator prompt. The full README and generator assessment were not read. This is an independent judgment, but not a blind review.",
+  "inputsInspected": [
+    "AGENTS.md",
+    "docs/concept/skill-graph/atomic-goal-visualizations.md",
+    "Canonical Mathematics current goal JSON",
+    "candidate.png at original resolution",
+    "Existing primary image at original resolution"
+  ],
+  "findings": [
+    {
+      "check": "Current Canon fit",
+      "result": "PASS",
+      "detail": "Canon explicitly requires fixed points of linear geometric maps in three-dimensional space via A x = x. Candidate illustrates one admissible R3 reflection and its fixed plane; it supports orientation without purporting to assess or teach every possible fixed-point system."
+    },
+    {
+      "check": "Matrix and transformation",
+      "result": "PASS",
+      "detail": "The visible 3-by-3 matrix is diag(1,1,-1), matching (x,y,z) -> (x,y,-z). All six off-diagonal entries are zero."
+    },
+    {
+      "check": "Fixed-point condition",
+      "result": "PASS",
+      "detail": "A x-vector = x-vector iff z=0 is correct for this matrix: x=x and y=y impose no restrictions; -z=z forces z=0. The statement that every point of that plane stays fixed is exact."
+    },
+    {
+      "check": "3D geometry and labels",
+      "result": "PASS",
+      "detail": "Two independent oblique axes x and y lie in the translucent green z=0 plane. The vertical z-axis intersects that plane at the green origin O. The perspective clearly represents a plane, rather than a fixed line."
+    },
+    {
+      "check": "P, P-prime and arrow",
+      "result": "PASS",
+      "detail": "P=(0,0,1) and P-prime=(0,0,-1) lie on the positive and negative z-axis, approximately equally spaced from O. The orange arrow points downward from the vicinity of P toward P-prime. It clearly depicts the reflection image; its slight horizontal offset preserves axis legibility."
+    },
+    {
+      "check": "Typography and image style",
+      "result": "PASS",
+      "detail": "At original size all signs, primes, vectors and coordinates are clear. Navy text, blue axes, orange moving points and green fixed set retain the existing primary visual vocabulary. Serif typography is more formal than the old sans-serif reference, but the soft plane, simple geometry and whitespace remain appropriate to upper-secondary mathematics. No visible technical ID, watermark or extraneous topic."
+    },
+    {
+      "check": "Existing primary comparison",
+      "result": "PASS",
+      "detail": "The old reflection at y=x with a 2-by-2 matrix is mathematically valid in R2 but is not a sufficient primary visualization of the current explicit R3 goal. Replacement addresses scope, not a fabricated mathematical error in the old asset."
+    }
+  ],
+  "blockingFindings": [],
+  "limitations": [
+    "No live cockpit or host renderer was exercised by this reviewer. Card-width readability and actual asset delivery must be verified during integration; original-resolution visual review alone is not a claim of those checks.",
+    "No human approval, release approval, strict M7 closure or learner-trial completion is asserted."
+  ],
+  "bindingRequirements": [
+    "Use fresh R3-specific description and altText; do not carry forward y=x text.",
+    "Bind any AI QA evidence to the exact reviewed candidate hash and recheck affected page/context evidence.",
+    "Preserve previous immutable/historical evidence according to repository rules."
+  ]
+}

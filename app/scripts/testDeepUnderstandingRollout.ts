@@ -8,6 +8,7 @@ import {
   duplicateValues,
   formatRolloutPercentage,
   generateDeepUnderstandingRollout,
+  hasExactCurrentOpenDescriptionDeferral,
   hasCompletedDeepUnderstandingVisualizationReview,
   hasStrictDeepUnderstandingCompletion,
   intersectStrictGoalGates,
@@ -59,6 +60,29 @@ assert.equal(formatRolloutPercentage(2999, 3000), '100.0%')
 assert.equal(hasStrictDeepUnderstandingCompletion({
   ...completeReport, denominator: 3000, currentGoalIds: roundedIds, strictCompleteGoalIds: roundedIds.slice(1),
 }), false, 'A rounded 100% must never grant M7.')
+
+const deferredDescription = { goalId: 'goal-open', firstDecision: 'keep' as const, secondDecision: 'revise' as const }
+assert.equal(hasExactCurrentOpenDescriptionDeferral(deferredDescription, deferredDescription), true)
+assert.equal(hasExactCurrentOpenDescriptionDeferral(
+  { ...deferredDescription, firstDecision: 'revise', secondDecision: 'keep' },
+  { ...deferredDescription, firstDecision: 'revise', secondDecision: 'keep' },
+), true)
+assert.equal(hasExactCurrentOpenDescriptionDeferral(
+  { ...deferredDescription, secondDecision: 'block' },
+  { ...deferredDescription, secondDecision: 'block' },
+), true)
+assert.equal(hasExactCurrentOpenDescriptionDeferral(
+  { ...deferredDescription, secondDecision: 'keep' },
+  { ...deferredDescription, secondDecision: 'keep' },
+), false, 'Two KEEP reviews cannot be concealed as a deferred goal.')
+assert.equal(hasExactCurrentOpenDescriptionDeferral(
+  { ...deferredDescription, secondDecision: 'split_review' },
+  { ...deferredDescription, secondDecision: 'split_review' },
+), false, 'A split review needs its separate identity decision.')
+assert.equal(hasExactCurrentOpenDescriptionDeferral(deferredDescription, {
+  ...deferredDescription, secondDecision: 'keep',
+}), false, 'A forged deferral decision must fail closed.')
+assert.equal(hasExactCurrentOpenDescriptionDeferral(deferredDescription, undefined), false)
 
 const imageReview = {
   goalId: 'goal-a', visualizationState: 'available' as const, missingReason: '',

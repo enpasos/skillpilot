@@ -1,0 +1,204 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-j10-analysis-five-source-repaired-current-20260929-v2",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex root; explicit adjudication of two independent current D rounds; no human approval",
+  "synthesizedAt": "2026-09-29T19:28:07.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2",
+    "batchManifestDigest": "sha256:c4e2785518aa5b42c458ec7b852caf776bcc996e688a6d381e7607a09273483f",
+    "configDigest": "sha256:fc3492ef9a1be010e606d823845645ea9046c4dc42c7839b338dcdadf2d3000d",
+    "bundleFingerprint": "sha256:4ff03bbac50417ce3ef54ca06c21e912571f7cd250cdecf9021b2719b53d0a17",
+    "bookDigest": "sha256:30ea72a01915b1686b582c832f178a31b148f225b93af05f3ed166dd64eb4fd7",
+    "reviewInputFingerprint": "sha256:ac35fd37ee590f3c9990c52ea9dbfe6759043997e8c7bca72f717468cbc43857",
+    "dualSummaryDigest": "sha256:f674c120d17669037da1568a64c04af91ff25cb11225dece4aa70237db7c6590",
+    "canonicalLandscapeDigest": "sha256:f6b6d96d18a91cc7ff88eefa89aacee568181c75ea737abba007e00aa3351d49"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-a",
+      "campaignDigest": "sha256:195fb05c9f5d51d6dc6c0c57b7fb54c4c732056e0b79b52dfcfd1d6701690ab2",
+      "roundId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-independent-a",
+      "reviewInputFingerprint": "sha256:ac35fd37ee590f3c9990c52ea9dbfe6759043997e8c7bca72f717468cbc43857",
+      "batchId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:945fbafa1ff4e8fa28cef03549c8f40712e0c7da6aff2d0bd1a6b32a16a43ab0",
+      "runId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a-codex-independent-a",
+      "runManifestDigest": "sha256:fa65d6fc1a719d86030e4b03f151e2e20cfdac9f26b21daf3c79991ff19707d0",
+      "resultsDigest": "sha256:bb68fefa9bb6f1101b9ab55d169c745f0b6f330a654b1874894f28d0088cdd6c"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-b",
+      "campaignDigest": "sha256:59316716d14cf2fd0ccb89fed73a8bc26fbf6151f061c3c8b0170b9276fea43f",
+      "roundId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-independent-b",
+      "reviewInputFingerprint": "sha256:ac35fd37ee590f3c9990c52ea9dbfe6759043997e8c7bca72f717468cbc43857",
+      "batchId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:d2404aeb864aeab5b676f90e384b9da8c34ca7f3d66d9ebead9f12fb23644782",
+      "runId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.batch-001.run",
+      "runManifestDigest": "sha256:443b88d73711fc47fd56a0a4d9031a712700f3a95e4e03ceec94375076fd6d12",
+      "resultsDigest": "sha256:6b5da56a9bbe80cd33babc5aeb39f5fdc600351b729417cdf696e1f23e395278"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-j10-analysis-five-source-repaired-current-20260929-v2-decision-001",
+      "goalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2f42732cbde98d8fc54679ca696fa812eafe1c99b1fd7ca724585e28d7593fa9",
+      "pageFingerprint": "sha256:8a7902e722b8161e851e5e0bbb8d5f96ff17fc0e71978e431d98eb54cd0dbc71",
+      "goalReviewContextFingerprint": "sha256:baf05e03d7ab730daa78ed213ea05eb6af21f22b2b149156a7733332a23fe58e",
+      "finalText": {
+        "titleDe": "Funktions- und Ableitungsgraphen in Beziehung setzen",
+        "titleEn": "Relate function and derivative graphs",
+        "descriptionDe": "Die lernende Person kann bei einfachen Funktionen vom Graphen der Funktion auf den Graphen ihrer Ableitungsfunktion und umgekehrt auf einen möglichen Funktionsgraphen qualitativ schließen und die Zuordnung anhand von Steigungen, Vorzeichen und Nullstellen der Ableitung begründen.",
+        "descriptionEn": "The learner can qualitatively infer the derivative graph from the graph of a simple function and, conversely, a possible function graph from its derivative graph, and justify the correspondence using slopes, signs, and zeros of the derivative."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a-codex-independent-a.5518ceb3-f668-5b52-a9b1-57653b16ca98",
+          "recordDigest": "sha256:351d9b5df56b6d59aaddef1d23380b56fa3384d94952bfbebeb314bdd18a5f1e"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.5518ceb3-f668-5b52-a9b1-57653b16ca98",
+          "recordDigest": "sha256:1df1067f0b96d012dfa3499b9e3bca4fd754c46ffd68216390438fd585c418f7"
+        }
+      },
+      "rationaleDe": "Beide Runden halten die aktuelle DE/EN-Beschreibung. Funktions- und Ableitungsgraph sind über Steigung, Vorzeichen und Nullstellen wechselseitig zugeordnet; aus dem Ableitungsgraphen folgt nur ein möglicher Funktionsgraph bis auf vertikale Verschiebung. Die A-Evidenz prüft zusätzlich eine Nullstelle ohne Extremum und verhindert die Fehldeutung f′=0 als hinreichenden Extrembeweis. Das bestehende Bild ist ein passendes Beispiel für f(x)=−x²+4, aber kein Leistungsnachweis. Nur maschinelle D-Synthese; keine menschliche oder V-Freigabe.",
+      "rationaleEn": "Both rounds retain the current German and English description. Function and derivative graphs correspond through slope, sign and zeros; a derivative graph determines only a possible function graph up to vertical translation. Round A evidence also tests a zero without an extremum, avoiding the false inference that f′=0 alone proves an extremum. The existing image is a valid example for f(x)=−x²+4 but is not learner evidence. Machine D synthesis only; no human or V approval."
+    },
+    {
+      "decisionId": "math-m7-j10-analysis-five-source-repaired-current-20260929-v2-decision-002",
+      "goalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:364e37965bfe5114e684be8a2ca7cae70f5c220b4a898ed21b5a14270ee09f4f",
+      "pageFingerprint": "sha256:5f9f31a43931c9db5d726d0ae8792ee72aa81acf3a1a68b97a4af1822c598b95",
+      "goalReviewContextFingerprint": "sha256:a652c0f60fc7fa19140fe13f634daf14e15d6a8e9066813ec0dc8811ca7bc611",
+      "finalText": {
+        "titleDe": "Monotonie und Extrema mit der ersten Ableitung untersuchen",
+        "titleEn": "Investigate monotonicity and extrema using the first derivative",
+        "descriptionDe": "Die lernende Person kann bei einer einfachen differenzierbaren Funktion auf einem angegebenen Bereich mit dem Vorzeichen der ersten Ableitung Monotonieintervalle und lokale Extremstellen begründen und durch Vergleich relevanter Funktionswerte entscheiden, ob und wo globale Extremwerte vorliegen.",
+        "descriptionEn": "The learner can use the sign of the first derivative to justify intervals of monotonicity and local extrema of a simple differentiable function on a specified domain, and compare the relevant function values to decide whether and where global extrema occur."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a-codex-independent-a.2850e8f6-2330-50d3-a577-d519540d9924",
+          "recordDigest": "sha256:561bc8fa6777bf9e7f203912497cec889de447a49c39ef6f74162fe86f7aa7c0"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.2850e8f6-2330-50d3-a577-d519540d9924",
+          "recordDigest": "sha256:6b0410026957b04313df4df08ce38e42f4aa46873c8b764c2206e981ae4c896e"
+        }
+      },
+      "rationaleDe": "Beide Runden halten die Beschreibung. Vorzeichen von f′, lokale Extrema und Vergleich relevanter Werte für globale Extrema bilden eine zusammenhängende Untersuchung auf dem angegebenen Bereich. Die A-Evidenz verlangt den erneuten Randwertvergleich bei geändertem Definitionsbereich und behandelt f′=0 allein nicht als Extrembeweis. Das gemeinsame Bestandsbild zu f(x)=−x²+4 veranschaulicht nur einen Fall. Nur maschinelle D-Synthese; keine menschliche oder V-Freigabe.",
+      "rationaleEn": "Both rounds retain the description. Signs of f′, local extrema and comparison of relevant values for global extrema form one coherent investigation on the stated domain. Round A evidence requires a renewed endpoint comparison when the domain changes and does not treat f′=0 alone as proof of an extremum. The shared existing image for f(x)=−x²+4 illustrates one case only. Machine D synthesis only; no human or V approval."
+    },
+    {
+      "decisionId": "math-m7-j10-analysis-five-source-repaired-current-20260929-v2-decision-003",
+      "goalId": "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:42f95a9e08c38358b89ce225726f4140132bacc121c5601bb69ccf4a88d4bef2",
+      "pageFingerprint": "sha256:9c2cc0edebfbfd213204e4b84fbbf758eb8325a2d8ed6f70ea1b22636ed366d1",
+      "goalReviewContextFingerprint": "sha256:0db61cbcde936e2e9b520a454937a0249cab3f62aae9e42afd30410f8a6b8acc",
+      "finalText": {
+        "titleDe": "Tangenten- und Normalengleichungen in einfachen Fällen aufstellen",
+        "titleEn": "Set up tangent and normal equations in simple cases",
+        "descriptionDe": "Die lernende Person kann zu einfachen differenzierbaren Funktionen in gegebenen Punkten Tangenten- und Normalengleichungen bestimmen und die dabei verwendeten Steigungen fachsprachlich deuten.",
+        "descriptionEn": "The learner can determine tangent and normal equations for simple differentiable functions at given points and interpret the slopes using mathematical language."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a-codex-independent-a.b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+          "recordDigest": "sha256:d865de3299d84b731bd1e249635352370d795c9f5fa70e42ca0bc12cad4ca4d5"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+          "recordDigest": "sha256:52d8193dd24b08382c1d4847309b1a1f565f70a2f4abe0b7baff888012f7f095"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann an gegebenen Punkten einfacher differenzierbarer Funktionsgraphen Tangenten- und Normalengleichungen aufstellen und die Tangentensteigung sowie die dazu senkrechte Richtung der Normalen deuten.",
+        "proposedDescriptionEn": "The learner can write tangent and normal equations at given points on the graphs of simple differentiable functions and interpret the tangent slope and the perpendicular direction of the normal.",
+        "rationaleDe": "Die B-Revision weist berechtigt auf die senkrechte Normale bei waagerechter Tangente hin. Der aktuelle Text behauptet aber keine überall vorhandene endliche Normalensteigung: Er verlangt die Deutung der jeweils verwendeten Steigungen, und bei x=x₀ wird keine Normalensteigung verwendet. A-Evidenz benennt und prüft genau diesen Grenzfall ausdrücklich. Die neue Fassung streicht zudem die Deutung einer tatsächlich vorhandenen Normalensteigung zugunsten einer allgemeineren Richtung; für die benannten einfachen Fälle ist das kein notwendiger Qualitätsgewinn. Der Vorschlag wird fachlich und nicht aus Bindungsgründen verworfen.",
+        "rationaleEn": "Round B rightly flags the vertical normal at a horizontal tangent. The current text does not claim that a finite normal slope always exists: it asks for interpretation of slopes actually used, and no normal slope is used for x=x₀. Round A evidence explicitly names and tests this edge case. The proposal also drops interpretation of an available normal slope in favor of a more general direction, so it is not a necessary improvement for the stated simple cases. The proposal is rejected for substantive reasons, not to preserve bindings."
+      },
+      "rationaleDe": "Die aktuelle DE/EN-Beschreibung bleibt für einfache differenzierbare Fälle tragfähig. Tangente und Normale teilen den Berührpunkt und sind senkrecht; bei nicht waagerechter Tangente können beide Steigungen gedeutet werden, bei waagerechter Tangente ist die Normale x=x₀ ohne endliche Steigung. Die A-Evidenz prüft beides. Der B-Vorschlag ist als begründeter Dissens gebunden und ausdrücklich fachlich verworfen. Das Bestandsbild zeigt P(1|1) mit mₜ=2 und mₙ=−1/2 korrekt. Nur maschinelle D-Synthese; keine menschliche oder V-Freigabe.",
+      "rationaleEn": "The current bilingual description remains sound for simple differentiable cases. Tangent and normal share the contact point and are perpendicular; for a nonhorizontal tangent both slopes can be interpreted, while for a horizontal tangent the normal is x=x₀ and has no finite slope. Round A evidence checks both. Round B's proposal is bound as explicit dissent and rejected on the merits. The existing image correctly shows P(1,1) with tangent slope 2 and normal slope −1/2. Machine D synthesis only; no human or V approval."
+    },
+    {
+      "decisionId": "math-m7-j10-analysis-five-source-repaired-current-20260929-v2-decision-004",
+      "goalId": "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:15e8a3f3be236d7e2aa2b62edc806067d41292920a541a80caf5ead5f1969091",
+      "pageFingerprint": "sha256:44dfecb20486a4e8405a8ec2ea02bc32ec8e4432ffe319bf519dbac3e13679a1",
+      "goalReviewContextFingerprint": "sha256:cfc49bb4e2247fbf048ff4c8854aa151baf35f97a90f9ba4e96f2091abccbe48",
+      "finalText": {
+        "titleDe": "Tangenten als lineare Approximationen nutzen",
+        "titleEn": "Use tangents as linear approximations",
+        "descriptionDe": "Die lernende Person kann Tangenten in einfachen Situationen als lokale lineare Approximationen nutzen und die Näherung fachsprachlich deuten.",
+        "descriptionEn": "The learner can use tangents as local linear approximations in simple situations and interpret the approximation using mathematical language."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a-codex-independent-a.06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+          "recordDigest": "sha256:d13cf498800acaa0bbdd59c6479e65f3b8891efe277b91a971c758dc75ab302a"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+          "recordDigest": "sha256:40b8e05de25a4ea4e28f38edfd141f81f8b76b7b9d0617b89823922ea56b705e"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann Tangentenwerte zur Näherung benachbarter Funktionswerte nutzen und die Näherung als lokale Schätzung deuten.",
+        "proposedDescriptionEn": "The learner can use tangent values to approximate nearby function values and interpret the approximation as a local estimate.",
+        "rationaleDe": "Der B-Vorschlag nennt eine mögliche Leistung ausdrücklich, verengt aber die allgemeine Kompetenz der Tangente als lokaler linearer Approximation auf das Ablesen benachbarter Funktionswerte. Die aktuelle Beschreibung enthält bereits den lokalen Charakter und das fachliche Deuten; die A-Evidenz konkretisiert daraus eigenständige nahe Wertschätzung, Vergleich mit ferner Extrapolation und Krümmungsgrenze. Eine enger formulierte Beschreibung ist dafür nicht erforderlich. Der Vorschlag wird inhaltlich verworfen, nicht zur Schonung bestehender Bindungen.",
+        "rationaleEn": "Round B's proposal states one valid performance explicitly, but narrows the broader competence of using a tangent as a local linear approximation to reading neighboring function values. The current description already states local scope and interpretation; Round A evidence concretizes independent nearby estimation, comparison with farther extrapolation and the curvature limit. A narrower description is not needed for that performance. The proposal is rejected on content grounds, not to spare existing bindings."
+      },
+      "rationaleDe": "Die aktuelle Beschreibung hält die lokale lineare Approximation und ihre fachliche Deutung als kohärente J10-Kompetenz zusammen. Die A-Evidenz macht die Wertschätzung aus Berührpunkt und Steigung und den Unterschied zwischen Nähe und ferner Fortsetzung überprüfbar. Das Bestandsbild zeigt f(x)=x², die Tangente L(x)=4x−4 in x=2 und die größeren Abweichungen bei x=3 korrekt; es ersetzt keine eigenständige Schätzung. B-Revision als Dissens fachlich aufgelöst. Nur maschinelle D-Synthese; keine menschliche oder V-Freigabe.",
+      "rationaleEn": "The current description unites local linear approximation and its interpretation as one coherent Year 10 competence. Round A evidence makes estimation from contact point and slope, and the difference between nearby and farther continuation, observable. The existing image correctly shows f(x)=x², tangent L(x)=4x−4 at x=2 and larger error at x=3; it does not replace independent estimation. Round B's revision is resolved as substantive dissent. Machine D synthesis only; no human or V approval."
+    },
+    {
+      "decisionId": "math-m7-j10-analysis-five-source-repaired-current-20260929-v2-decision-005",
+      "goalId": "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fd157c15cdab93af0b36c887cbe4c1fa5f9212fa0857fbea0e353c75740518f8",
+      "pageFingerprint": "sha256:5e3270941bd9af8620cc25333eb495be0fbd42669e23b76e84a1f06142a237ca",
+      "goalReviewContextFingerprint": "sha256:a81eff3cba04ca312fcd63ee26c9dba945fb066ad8f21a83ed3cb0f9431d82bf",
+      "finalText": {
+        "titleDe": "Wendestellen und Krümmungsverhalten mit Ableitungen beschreiben",
+        "titleEn": "Describe inflection points and curvature behavior with derivatives",
+        "descriptionDe": "Die lernende Person kann in einfachen Fällen das Krümmungsverhalten über das Vorzeichen der zweiten Ableitung beschreiben und Wendestellen durch einen Wechsel dieses Vorzeichens begründen.",
+        "descriptionEn": "The learner can describe curvature in simple cases using the sign of the second derivative and justify inflection points by a change in that sign."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-a-codex-independent-a.ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+          "recordDigest": "sha256:5951d2a8ea65e752dadaf3bb330f974358f8927295ed6c738a3184a945d6bbd5"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j10-analysis-five-source-repaired-current-20260929-v2-first-pass-b.ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+          "recordDigest": "sha256:f8cae4ac99ef7a872e4d6f94d3e6b5499f2576982082a18cbe998ff769af5b84"
+        }
+      },
+      "rationaleDe": "Beide Runden halten die Beschreibung. In einfachen Fällen ordnet das Vorzeichen von f″ das Krümmungsverhalten zu; eine Wendestelle wird durch einen Vorzeichenwechsel statt durch f″=0 allein begründet. Die A-Evidenz vergleicht x³ mit x⁴ und prüft damit den entscheidenden Unterschied. Das Bestandsbild zeigt den x³-Fall korrekt. Nur maschinelle D-Synthese; keine menschliche oder V-Freigabe.",
+      "rationaleEn": "Both rounds retain the description. In simple cases the sign of f″ indicates curvature behavior; an inflection point is justified by a sign change rather than f″=0 alone. Round A evidence compares x³ with x⁴ and thus tests the decisive distinction. The existing image correctly shows the x³ case. Machine D synthesis only; no human or V approval."
+    }
+  ],
+  "manifestFingerprint": "sha256:f603173890688aff6b991a7f46f73577061fcfe08c5987656ede144bf442089c"
+}

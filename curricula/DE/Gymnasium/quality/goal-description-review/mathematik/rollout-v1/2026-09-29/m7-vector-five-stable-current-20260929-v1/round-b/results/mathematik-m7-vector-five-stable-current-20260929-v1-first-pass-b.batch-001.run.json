@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-b-gpt6",
+  "campaignId": "mathematik-m7-vector-five-stable-current-20260929-v1-b",
+  "roundId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-b",
+  "batchId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:fd827259d26a4cac8ac1eb485e6ae5abc73f724d7bb16e55695747d2bedacf7a",
+  "bundleFingerprint": "sha256:84b085bd83389fa25713e4f172d37a5d91ebc2c2b50186bf95579a4b214c19bb",
+  "bookDigest": "sha256:a2b725cf1ba43a0de092a7109c1677efefd5e799309f021a33a09ba0f6e3ddf3",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:0d2bd9947337b93efcb8a1806626bd3375bcade5d4fdd71550f1e81fd2258fec",
+  "independenceGroupId": "mathematik-m7-vector-five-stable-current-20260929-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+    "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+    "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+    "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+    "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:db63f53ce097343cda1be984e979357721f1e5edb6f20ade2eadb45988df43f1"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:6135b898f0715ddc43cad8606ab2ed38e92094395ac819156239b867236293e4"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:81e74c758779d7384d33e4db43034fa02e208b4eba0c424017a8029784d7be5e"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:fd827259d26a4cac8ac1eb485e6ae5abc73f724d7bb16e55695747d2bedacf7a"
+    }
+  ],
+  "startedAt": "2026-09-29T19:35:04Z",
+  "completedAt": "2026-09-29T19:37:04Z",
+  "status": "completed",
+  "outputDigest": "sha256:12e8febe3f5d2eac25896ccae35493d0a1d286399023e175a82d12c39493ae3a",
+  "toolchainVersion": "codex-gpt6-goal-description-review-v1"
+}

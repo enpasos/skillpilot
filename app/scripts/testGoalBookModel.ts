@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import Ajv2020 from 'ajv/dist/2020.js'
@@ -27,6 +28,7 @@ import {
   fingerprintGoalForEvidence,
 } from './goalEvidenceProfileModel'
 import { deriveBavariaOptionalOnlyGoalIds } from './mathBavariaOptionalCourseProjection'
+import { parseGoalBookPublicationIndex } from './checkGoalBookPublication'
 
 await testGoalBookInputIsolation()
 
@@ -62,10 +64,6 @@ const LEGACY_BOOK_MODEL_FIXTURE_PATH = (
   + 'calibration-v2/2026-08-25/thales-current/bundle/book-model.json'
 )
 const FIXTURE_ASSET_DIGEST = `sha256:${'1'.repeat(64)}`
-// Current authoring checkpoint, not a review or publication approval. The
-// nationwide atlas keeps all current curricular-atomic page IDs; this digest binds current text,
-// visuals, exam edges and explicit LK applicability.
-const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:c6f0d641b1f69bda141202adc2679872d76c9cbfcca583426daa92ea00173c7a'
 
 const goal = ({
   id,
@@ -1016,6 +1014,22 @@ const publishedNationalAtlasText = await readFile(fileURLToPath(new URL(
   '../public/lernzielbuch/de-gym-mathematik-bundesweit.book-model.json',
   import.meta.url,
 )), 'utf8')
+const publicationIndex = parseGoalBookPublicationIndex(await readFile(fileURLToPath(new URL(
+  '../public/lernzielbuch/index.json',
+  import.meta.url,
+)), 'utf8'))
+const publishedNationalAtlas = parseAndValidateGoalBookModel(publishedNationalAtlasText)
+const publicationEntry = publicationIndex.books.find(({ bookId }) => (
+  bookId === 'de-gym-mathematik-bundesweit'
+))
+assert.ok(publicationEntry)
+assert.equal(publishedNationalAtlas.book.id, publicationEntry.bookId)
+assert.equal(publishedNationalAtlas.digest, publicationEntry.model.modelDigest)
+assert.equal(
+  `sha256:${createHash('sha256').update(publishedNationalAtlasText).digest('hex')}`,
+  publicationEntry.model.sha256,
+  'the available mathematics publication must remain bound to its index',
+)
 assert.equal(nationalAtlas.book.id, 'de-gym-mathematik-bundesweit')
 assert.equal(nationalAtlas.book.viewId, 'de-gym-math-national-atlas')
 assert.equal(nationalAtlas.book.pageCount, curricularAtomicGoalIds.size)
@@ -1136,12 +1150,9 @@ assert.equal(
   canonicalGoalById.get('4cba85d3-2e25-5c4b-9c4c-37e5b201dce7')?.sourceRef,
   'Bildungsplan BW Mathematik Gymnasium 2016, 3.3.3, Kompetenz 7, S. 34.',
 )
-assert.equal(nationalAtlas.digest, EXPECTED_NATIONAL_MATH_MODEL_DIGEST)
-assert.equal(
-  `${JSON.stringify(nationalAtlas, null, 2)}\n`,
-  publishedNationalAtlasText,
-  'subject-neutral atlas refactors must leave the published mathematics BookModel byte-exact',
-)
+// The authoring model may advance before the next publication build. Its
+// page coverage, source scope and digest are checked here; the publication
+// build/check separately requires byte-exact current model, PDF and index.
 assert.equal(nationalAtlas.source.compositionViewSources?.length, 83)
 assert.match(nationalAtlas.source.compositionViewManifestDigest ?? '', /^sha256:[0-9a-f]{64}$/u)
 assert.equal(nationalAtlas.source.navigationOwnership, 'canonical-composition-view-v1')

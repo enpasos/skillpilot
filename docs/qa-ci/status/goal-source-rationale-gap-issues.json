@@ -1,24 +1,24 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-29T08:18:37.542Z",
+  "generatedAt": "2026-09-29T22:15:01.521Z",
   "generator": "app/scripts/reportGoalSourceRationaleGapIssues.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "allRelevantReportPath": "docs/qa-ci/status/goal-source-rationales-math-all-relevant.json"
   },
   "sourceReport": {
-    "generatedAt": "2026-09-29T07:22:20.985Z",
+    "generatedAt": "2026-09-29T22:14:48.610Z",
     "summary": {
       "requestedGoals": 807,
       "resolvedGoals": 807,
-      "goalsWithClassicSourceRoute": 753,
-      "goalsWithoutClassicSourceRoute": 54,
+      "goalsWithClassicSourceRoute": 754,
+      "goalsWithoutClassicSourceRoute": 53,
       "goalsWithMemSparqlConsistentRoute": 234
     }
   },
   "summary": {
-    "totalClassicSourceGapIssues": 54,
-    "coveredSiblingMappingGaps": 22,
+    "totalClassicSourceGapIssues": 53,
+    "coveredSiblingMappingGaps": 21,
     "isolatedSourceExpansionGaps": 32,
     "phases": 5,
     "areas": 3
@@ -38,15 +38,15 @@
         "isolatedSourceExpansionGaps": 8
       },
       {
-        "key": "Q2",
+        "key": "Q3",
         "issues": 3,
         "coveredSiblingMappingGaps": 3,
         "isolatedSourceExpansionGaps": 0
       },
       {
-        "key": "Q3",
-        "issues": 3,
-        "coveredSiblingMappingGaps": 3,
+        "key": "Q2",
+        "issues": 2,
+        "coveredSiblingMappingGaps": 2,
         "isolatedSourceExpansionGaps": 0
       },
       {
@@ -59,8 +59,8 @@
     "byArea": [
       {
         "key": "unknown",
-        "issues": 48,
-        "coveredSiblingMappingGaps": 19,
+        "issues": 47,
+        "coveredSiblingMappingGaps": 18,
         "isolatedSourceExpansionGaps": 29
       },
       {
@@ -85,8 +85,8 @@
       },
       {
         "key": "covered-sibling-mapping-gap",
-        "issues": 22,
-        "coveredSiblingMappingGaps": 22,
+        "issues": 21,
+        "coveredSiblingMappingGaps": 21,
         "isolatedSourceExpansionGaps": 0
       }
     ]
@@ -181,90 +181,6 @@
           "sourceGoalId": "b2650cbe-490c-547e-a55a-d5916c3c0647",
           "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.4.2",
           "topicCode": "M12-EA.4.2",
-          "matchType": "partial"
-        }
-      ],
-      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
-    },
-    {
-      "id": "GSR-GAP-BF17CADA",
-      "lane": "covered-sibling-mapping-gap",
-      "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
-      "shortKey": null,
-      "title": "Sachsituationen mit einer erweiterten Funktionsklasse modellieren",
-      "description": "Die lernende Person kann für eine Sachsituation eine passende erweiterte Funktionsklasse auswählen und die Parameter des Modells im Kontext deuten.",
-      "phase": "Q2",
-      "area": "unknown",
-      "topicCode": null,
-      "pathTitles": [
-        "Mathematik",
-        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
-        "Vertiefung der Analysis",
-        "Sachsituationen mit einer erweiterten Funktionsklasse modellieren"
-      ],
-      "parentGoalIds": [
-        "5ebfc509-0b4c-5c60-befb-2477eb24d4b5"
-      ],
-      "parentTitles": [
-        "Vertiefung der Analysis"
-      ],
-      "siblingGoals": 6,
-      "coveredSiblingGoals": 6,
-      "gapSiblingGoals": 0,
-      "coveredSiblingExamples": [
-        {
-          "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
-          "title": "Umkehrbarkeit untersuchen und Umkehrfunktionen bestimmen",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-SH",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
-          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K005-fd01e50e5f",
-          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 66",
-          "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-K005",
-          "matchType": "exact"
-        },
-        {
-          "goalId": "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
-          "title": "Wurzelfunktionen beschreiben und darstellen",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-HE",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
-          "sourceGoalId": "he-math-seki-g9-10-1-01-032d27f1",
-          "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 10.1 Funktionen",
-          "topicCode": null,
-          "matchType": "exact"
-        },
-        {
-          "goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c",
-          "title": "Einfache gebrochen rationale und Wurzelfunktionen ableiten",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-HE",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
-          "sourceGoalId": "he-math-sekii-q2-1-b01-a02-caa4b3e0",
-          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 40, Spiegelstrich 1, Aspekt 2",
-          "topicCode": null,
-          "matchType": "exact"
-        },
-        {
-          "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce",
-          "title": "Einfache gebrochen rationale Funktionen untersuchen",
-          "sourceRationaleStatus": "classic_source_partial",
-          "jurisdiction": "DE-BY",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
-          "sourceGoalId": "2cee715f-0523-59ca-b167-4e4c00714656",
-          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M11.2",
-          "topicCode": "M11.2",
-          "matchType": "partial"
-        },
-        {
-          "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
-          "title": "Zusammenhang von Funktionsgraph und Umkehrgraph erläutern",
-          "sourceRationaleStatus": "classic_source_partial",
-          "jurisdiction": "DE-HE",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
-          "sourceGoalId": "he-math-seki-g9-10-2-07-5e841891",
-          "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 10.2 Funktionen",
-          "topicCode": "G9-10.2",
           "matchType": "partial"
         }
       ],

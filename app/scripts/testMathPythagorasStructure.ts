@@ -8,7 +8,13 @@ import { collectCompositionProjectionRoleGoalIds, compileCompositionView, normal
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const read = (path: string) => JSON.parse(readFileSync(resolve(root, path), 'utf8'))
 type MappingEdge = { legacyGoalId: string; canonicalGoalId: string; matchType?: string }
-type ExamData = { coveredGoalIds: string[]; scoring: { maxPoints: number }; solutionContent: string }
+type ExamData = {
+  coveredGoalIds: string[]
+  taskContent: string
+  solutionContent: string
+  scoring: { maxPoints: number; passingPoints: number; steps: Array<{ points: number }> }
+  sourceArtifactPath: string
+}
 const landscape = normalizeCanonicalLandscape(read('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'))
 const byId = new Map(landscape.goals.map(goal => [goal.id, goal]))
 const old = '80956a2c-5811-4021-863e-95675bec31f5'
@@ -35,10 +41,32 @@ const oldExam = byId.get('fbd97592-d8cc-5de9-a92d-ed2ca4278ce3')!
 assert.ok(!(oldExam.examData as ExamData).coveredGoalIds.includes(old))
 assert.ok((oldExam.examData as ExamData).coveredGoalIds.includes(calculation))
 for (const [goal, exam] of Object.entries(exams)) {
-  assert.deepEqual(byId.get(exam)?.requires, [goal])
-  assert.deepEqual((byId.get(exam)?.examData as ExamData).coveredGoalIds, [goal])
-  assert.equal((byId.get(exam)?.examData as ExamData).scoring.maxPoints, 10)
-  assert.ok((byId.get(exam)?.examData as ExamData).solutionContent.includes('7/10'))
+  const examGoal = byId.get(exam)!
+  const examData = examGoal.examData as ExamData
+  assert.deepEqual(examGoal.requires, [goal])
+  assert.deepEqual(examData.coveredGoalIds, [goal])
+  assert.equal(examData.scoring.maxPoints, 10)
+  assert.ok(examData.solutionContent.includes('7/10'))
+
+  const sourceBase = `curricula/DE/Gymnasium/assessments/mathematik/m7-pythagoras-structure-20260928-v1/${exam}.assessment`
+  const markdownPath = `${sourceBase}.md`
+  const original = read(`${sourceBase}.json`)
+  const markdown = readFileSync(resolve(root, markdownPath), 'utf8')
+  const sections = /^# (?<title>[^\n]+)\n\n(?<metadata>.*?)\n\n## Aufgabe\n\n(?<task>.*?)\n\n## Musterlösung\n\n(?<solution>.*?)\n\n## Bewertung\n\n```json\n(?<scoring>.*?)\n```\n$/su.exec(markdown)?.groups
+  assert.ok(sections, `${markdownPath}: incomplete assessment source`)
+  assert.equal(examGoal.sourceRef, markdownPath)
+  assert.equal(examData.sourceArtifactPath, markdownPath)
+  assert.equal(sections.title, examGoal.title)
+  assert.ok(sections.metadata.includes(`SkillPilot-ID: \`${exam}\``))
+  assert.ok(sections.metadata.includes('keine menschliche Freigabe'))
+  assert.equal(sections.task, examData.taskContent.trimEnd())
+  assert.equal(sections.solution, examData.solutionContent.trimEnd())
+  assert.deepEqual(JSON.parse(sections.scoring), examData.scoring)
+  for (const field of ['taskContent', 'solutionContent', 'scoring', 'coveredGoalIds'] as const) {
+    assert.deepEqual(examData[field], (original.examData as ExamData)[field], `${exam}: ${field} differs from historical JSON`)
+  }
+  assert.equal(examData.scoring.steps.reduce((sum, step) => sum + step.points, 0), examData.scoring.maxPoints)
+  assert.ok(examData.scoring.passingPoints > 0 && examData.scoring.passingPoints <= examData.scoring.maxPoints)
 }
 let views = 0
 const viewErrors: Array<{ view: string; findings: unknown[] }> = []

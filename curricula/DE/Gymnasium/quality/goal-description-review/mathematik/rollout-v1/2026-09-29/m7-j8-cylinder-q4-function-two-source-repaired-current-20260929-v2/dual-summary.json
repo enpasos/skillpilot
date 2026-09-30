@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:c415cd23184dfb08513a35ca5655b1ae8a7e18d7d907eb8f73f8c98eb0f7fc7e",
+  "reviewInputFingerprint": "sha256:afca108ca0322c8e41095cf0bef315ccd4b9d46dcc086cc5ad20502e6f38a18b",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-a",
+      "roundId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-independent-a",
+      "runIds": [
+        "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-first-pass-a.batch-001.codex-gpt6-independent-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-b",
+      "roundId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-independent-b",
+      "runIds": [
+        "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-first-pass-b.batch-001.run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "f65ab452-1884-57b0-9be3-c7d9e4944891",
+      "firstRecordId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-first-pass-a.batch-001.codex-gpt6-independent-a.f65ab452-1884-57b0-9be3-c7d9e4944891",
+      "secondRecordId": "m7-j8-cylinder-q4-function-v2-b-001-f65ab452-1884-57b0-9be3-c7d9e4944891",
+      "firstRunId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-first-pass-a.batch-001.codex-gpt6-independent-a",
+      "secondRunId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-first-pass-b.batch-001.run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fde351a8-98b1-5d75-b4df-813beb2bbe3c",
+      "firstRecordId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-first-pass-a.batch-001.codex-gpt6-independent-a.fde351a8-98b1-5d75-b4df-813beb2bbe3c",
+      "secondRecordId": "m7-j8-cylinder-q4-function-v2-b-002-fde351a8-98b1-5d75-b4df-813beb2bbe3c",
+      "firstRunId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-first-pass-a.batch-001.codex-gpt6-independent-a",
+      "secondRunId": "mathematik-m7-j8-cylinder-q4-function-two-source-repaired-current-20260929-v2-first-pass-b.batch-001.run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "bf17-am-kind-current-reinspection-20260929",
+  "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+  "reviewedAt": "2026-09-29T21:15:42.173Z",
+  "reviewer": "OpenAI Codex; targeted BF17 semantic reinspection after duplicate-requires cleanup (AI only)",
+  "humanApprovalClaim": false,
+  "strictM7ApprovalClaim": false,
+  "sourceReviewReceipt": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-09-29/bf17-gk-bounded-source-repair/source-review.receipt.json",
+  "canonicalGoal": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "title": "Sachsituationen mit einer erweiterten Funktionsklasse modellieren",
+    "description": "Die lernende Person kann für eine Sachsituation eine passende erweiterte Funktionsklasse auswählen und die Parameter des Modells im Kontext deuten.",
+    "requires": [
+      "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+      "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+    ],
+    "semanticKindFingerprint": "sha256:0b7e149df5a4cce31cc28d63aa6f7a5f861539a8deb7821748807ff78605e3c2"
+  },
+  "assessment": "Fresh semantic reasons confirm one coherent model-choice/context-parameter competence and no own memorization requirement. A/M fingerprints remain unchanged because their contracts exclude requires; their decision reasons and timestamps are freshly reviewed. Only the semantic-kind fingerprint changes under duplicate-requires cleanup.",
+  "changedRecords": [
+    {
+      "gate": "A",
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+      "before": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+        "fingerprint": "sha256:15ad6782956ee11ab7979a6c937bcfadc6ca4d2db0d4c2cc75e259d62389dcf4",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-05",
+        "reviewer": "codex",
+        "reason": "Q2-Review: Als eine zusammenhaengende, pruefbare Analysis- oder Lineare-Algebra-Routine bewertet; auffaellige Sammelziele wurden vor dem Review textlich geschaerft.",
+        "suggestedSplit": []
+      },
+      "after": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+        "fingerprint": "sha256:15ad6782956ee11ab7979a6c937bcfadc6ca4d2db0d4c2cc75e259d62389dcf4",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-09-29T21:15:42.173Z",
+        "reviewer": "OpenAI Codex; targeted BF17 semantic reinspection after duplicate-requires cleanup (AI only)",
+        "reason": "Eine zusammenhängende prüfbare Modellwahlleistung: Für dieselbe Sachsituation eine quellenzulässige erweiterte Funktionsklasse begründet wählen und die Parameter genau dieses Modells im Kontext deuten. Die Parameterdeutung ist der notwendige semantische Abschluss der Wahl, kein unabhängiges zweites Themenziel. Mehrere voneinander unabhängige Klassen oder eine vollständige Kurvendiskussion werden nicht verlangt. Die Scope-Reparatur begrenzt die zulässigen Familien; das Entfernen eines identischen requires-Eintrags ändert weder Kompetenz noch Voraussetzung. Fachlich erneut geprüft, KI-Review; keine menschliche Freigabe und keine eigenständige D/P/V- oder M7-Freigabe.",
+        "suggestedSplit": []
+      },
+      "onlyGoalIdChanged": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+    },
+    {
+      "gate": "M",
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "before": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+        "fingerprint": "sha256:e7c04af928a52c099c94b29b03bdc6c8d0ca581370c3e315d1f73af72e72b51f",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+      },
+      "after": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+        "fingerprint": "sha256:e7c04af928a52c099c94b29b03bdc6c8d0ca581370c3e315d1f73af72e72b51f",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-09-29T21:15:42.173Z",
+        "reviewer": "OpenAI Codex; targeted BF17 semantic reinspection after duplicate-requires cleanup (AI only)",
+        "reason": "Kein eigener Memory-Anteil nötig: Das Ziel verlangt begründete Auswahl einer im aktuellen Lehrplan zulässigen Modellfamilie und situationsabhängige Bedeutung ihrer Parameter einschließlich Größen, Einheiten und Modellannahmen. Eine auswendig gelernte Universalformel oder ein Kartenrezept würde die Modellwahl ersetzen und unzulässige Familien verallgemeinern. Grundlegende Funktionskenntnisse und die Parameterkompetenz 91e2f564 bleiben Voraussetzungen; hier werden sie verständnisorientiert verbunden. no_memory_needed ist eine zielbezogene didaktische Entscheidung, keine Aussage gegen Übung oder bestehende Grundlagenkarten. KI-Review, keine menschliche Freigabe."
+      },
+      "onlyGoalIdChanged": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+    },
+    {
+      "gate": "semanticKind",
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "before": {
+        "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+        "sourceFingerprint": "sha256:54770eac56ab0e6be969e7898e42b22542ff441001fed82d2fcc6fc26402254f",
+        "semanticKind": "curricularAtomic",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+      },
+      "after": {
+        "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+        "sourceFingerprint": "sha256:0b7e149df5a4cce31cc28d63aa6f7a5f861539a8deb7821748807ff78605e3c2",
+        "semanticKind": "curricularAtomic",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+      },
+      "onlyGoalIdChanged": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+      "reason": "Assessable ordinary content competence at one situation/model; contains is empty, no examData, orientation, structural or memory role. Course-specific family restriction does not create a cluster or assessment node. Identical prerequisite deduplication changes the source fingerprint, not semanticKind."
+    }
+  ],
+  "validation": {
+    "status": "passed",
+    "atomicity": {
+      "command": "tsx app/scripts/semanticAtomicityReview.ts --config=/tmp/bf17-A.config.json --mode=check",
+      "scope": "One copied current BF17 record against actual current Canon; no stale/missing/obsolete record",
+      "result": "PASS"
+    },
+    "memory": {
+      "command": "tsx app/scripts/memoryCardReview.ts --config=/tmp/bf17-M.config.json --mode=check",
+      "scope": "One copied current BF17 record against actual current Canon; empty scoped card review because no own memory cards are required",
+      "result": "PASS: one current no_memory_needed, zero stale/missing records and zero required cards"
+    },
+    "semanticKind": {
+      "method": "Closed ledger JSON Schema plus production fingerprintSemanticKindSourceGoal, exactly one BF17 decision, curricularAtomic and authoritative schema status, allowed semantic-recheck decision basis, no duplicate requires",
+      "result": "PASS"
+    },
+    "mutationBoundary": "Only the BF17 record changed in each of the three A/M/kind review files. The two source locator corrections and this receipt are supporting documentation; no Canon, image, registry, D or mapping edits."
+  },
+  "sourceReviewReceiptSha256": "sha256:7d8628dbda0af2d79908d6f7e93679bb4f225012e5da97842e1111ed84015aef",
+  "primaryLocatorCorrectionsConfirmed": true
+}

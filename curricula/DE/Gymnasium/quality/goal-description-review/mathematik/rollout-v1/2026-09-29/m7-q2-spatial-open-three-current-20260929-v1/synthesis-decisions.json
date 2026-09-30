@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-q2-spatial-open-three-current-20260929-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex root; explicit synthesis of two independent current Q2 D rounds; no human approval",
+  "synthesizedAt": "2026-09-29T19:48:10.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1",
+    "batchManifestDigest": "sha256:0b65cf9256e6d25524b2b85c4e50bb1c386e05187ac873c18a369c670b576446",
+    "configDigest": "sha256:63c4101d6deca221a7245d724bead8d4af22171fa2ab8679d23c8d6328a68c5c",
+    "bundleFingerprint": "sha256:419ac49524729ebf416f19bdff434d8de0658e27f0024bcbd7c28c5d40a4f02f",
+    "bookDigest": "sha256:82f0ec89ecbe3aab4d1e691f4af4a2fd1aed81ca93f05b4060903419a28dca2d",
+    "reviewInputFingerprint": "sha256:c313822f21db27fad2144337fd90ff897e9d4e71384b93de41a4f246234fbc63",
+    "dualSummaryDigest": "sha256:59fe6fe123e069091be09d213a15c5fbd212aa2be1a0272094eedb91db96659f",
+    "canonicalLandscapeDigest": "sha256:23074964a10029cd6227d73928ab4a13662f64dea81924b10e23a47308221b08"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-a",
+      "campaignDigest": "sha256:48055e64a8c202e245cc79798f730575557764f51786bbc122921b30aac3da49",
+      "roundId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-independent-a",
+      "reviewInputFingerprint": "sha256:c313822f21db27fad2144337fd90ff897e9d4e71384b93de41a4f246234fbc63",
+      "batchId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:1eff32bae1221d28764e33e8709d396e8b29923118a450adfb1c4041add99260",
+      "runId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-a-codex-independent-a",
+      "runManifestDigest": "sha256:30540237d44de1a8d8279b69305cb180b210ed63bc86d2c9a259ba3d5b1f4717",
+      "resultsDigest": "sha256:01a200ec025b11fc2816bed6daa592aeedf4dc4279cad4cbbc8accb971b845c2"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-b",
+      "campaignDigest": "sha256:2f7eb715724c118b4399e31465d08e19483017bec643118be396067b3496e92b",
+      "roundId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-independent-b",
+      "reviewInputFingerprint": "sha256:c313822f21db27fad2144337fd90ff897e9d4e71384b93de41a4f246234fbc63",
+      "batchId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:25f6631e23c7a3d70bda9d6852c926f9182ac26933af3040a3b2e07d6c413783",
+      "runId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-b-gpt6",
+      "runManifestDigest": "sha256:7a6aefffdfd88c3d0f602c8c50f321332b3d869475dd131f29bb1853d1f82efd",
+      "resultsDigest": "sha256:64c3237410b0d16e88ba467e6066bc719f4cba6827eb883146b1b5ccf9ea8b7d"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-q2-spatial-open-three-current-20260929-v1-decision-001",
+      "goalId": "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3e1ff5ab87d58ac432d6ccafaca80b710a3fd94ca9c14e47c335cd3562c02c9f",
+      "pageFingerprint": "sha256:678e0fed17f1ab201318d92464bf8f68f61509a517a6a00f382601aaf59585e2",
+      "goalReviewContextFingerprint": "sha256:4d93ace402d2060a3f489026441241ef33a50a68e92f132d47ca131876a8ef11",
+      "finalText": {
+        "titleDe": "Punkte an vorgegebenen Spiegelträgern im Raum spiegeln (LK)",
+        "titleEn": "Reflect points in specified spatial mirror sets (advanced course)",
+        "descriptionDe": "Die lernende Person kann zu einem vorgegebenen Spiegelzentrum, einer Spiegelachse als Halbdrehung oder einer Spiegelebene die passende Mittelpunkt- beziehungsweise Lotbedingung begründen, damit den Bildpunkt bestimmen und die Spiegelung prüfen.",
+        "descriptionEn": "Given a centre of reflection, an axis of half-turn or a mirror plane, the learner can justify the appropriate midpoint or perpendicular-foot condition, determine the image point and check the reflection."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-a-codex-independent-a.fcd1d180-ddce-5408-8c5d-70e417b179e7",
+          "recordDigest": "sha256:8577121773f6e808e6b88fc2ebece46d583395f7feb3df8c49cc5216370203d5"
+        },
+        "second": {
+          "recordId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-b.fcd1d180-ddce-5408-8c5d-70e417b179e7",
+          "recordDigest": "sha256:cd234e04c3dd2f16b0bc11604249a295607e101d4d8a995e599b4694cfb7bcb9"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten die aktuelle Punktbeschreibung. Für Zentrum, Achse als Halbdrehung und Ebene trägt die jeweils passende Mittelpunkt- oder Lotfußbedingung die Konstruktion und Gegenprobe. Runde B prüft den Transfer vom achsenparallelen Bildbeispiel E:x=2 zu einer schiefen Achse und verhindert bloßen Koordinatenersatz. HE KCGO Q2.3 S.43 nennt allgemeines Spiegeln von Punkten im LK; die drei Träger sind dokumentierte didaktische Operationalisierung einer partiellen Quellenkante, keine amtliche 3×3-Pflichtmatrix. Das Bestandsbild zeigt einen rechnerisch korrekten Spezialfall, keine unabhängige Leistung. Nur maschinelle D-Synthese, keine menschliche oder V-Freigabe.",
+      "rationaleEn": "Both independent rounds retain the current point-reflection description. For a centre, axis as a half-turn and plane, the appropriate midpoint or perpendicular-foot condition supports construction and checking. Round B tests transfer from the axis-aligned image example E:x=2 to an oblique axis, preventing mere coordinate replacement. HE KCGO Q2.3 p.43 names general reflection of points at advanced level; the three carriers are a documented didactic operationalization of a partial source link, not an official 3×3 requirement. The existing image shows a numerically correct special case, not independent performance. Machine D synthesis only; no human or V approval."
+    },
+    {
+      "decisionId": "math-m7-q2-spatial-open-three-current-20260929-v1-decision-002",
+      "goalId": "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:16ccf4676bd91f5a5187ca4badd91b888ebc248b956baab645438f983fcca0af",
+      "pageFingerprint": "sha256:fdb0280be8ec3839a9084243f1a4af4a67f263c2ab93c1f78dd7cd41e81d7472",
+      "goalReviewContextFingerprint": "sha256:f12622363a2b2151f7911f3249b84790ac80afd20701cd1cc2658df6200672e3",
+      "finalText": {
+        "titleDe": "Geraden an vorgegebenen Spiegelträgern im Raum spiegeln (LK)",
+        "titleEn": "Reflect lines in specified spatial mirror sets (advanced course)",
+        "descriptionDe": "Die lernende Person kann eine Raumgerade an einem vorgegebenen Zentrum, einer Achse als Halbdrehung oder einer Ebene spiegeln, indem sie zwei verschiedene Geradenpunkte abbildet, daraus die Bildgerade bestimmt und die passende Symmetriebedingung prüft.",
+        "descriptionEn": "Given a centre, an axis of half-turn or a mirror plane, the learner can reflect a spatial line by mapping two distinct points on it, determining the image line and checking the appropriate symmetry condition."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-a-codex-independent-a.a97c7cce-1343-5d04-926f-4a4f323b3c21",
+          "recordDigest": "sha256:3eeef9340863dfba476a14807057086fb6e6ac61658c272d81aa2c86bc72c2b9"
+        },
+        "second": {
+          "recordId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-b.a97c7cce-1343-5d04-926f-4a4f323b3c21",
+          "recordDigest": "sha256:e5f5ce54b4495ab34becfb937ddf91c57c1edeeb86fc14a3826b793d10069578"
+        }
+      },
+      "rationaleDe": "Beide Runden halten die Geradenbeschreibung. Zwei verschiedene Punktbilder bestimmen die Bildgerade; die trägerspezifische Symmetrie und ein weiterer Punkt können sie prüfen. Runde B wechselt vom parallelen Beispiel zu einer die Spiegelebene schneidenden Geraden, deren Schnittpunkt fest bleibt. HE KCGO Q2.3 S.43 nennt allgemeines Spiegeln von Geraden im LK; Zentrum, Halbdrehungsachse und Ebene sind als didaktische Auswahl, nicht als amtliche Einzelpflicht, dokumentiert. Das Bestands-JPG zeigt für E:x=2 die Koordinaten und den in diesem Sonderfall unveränderten Richtungsvektor korrekt, verallgemeinert Letzteres aber nicht. Nur maschinelle D-Synthese, keine menschliche oder V-Freigabe.",
+      "rationaleEn": "Both rounds retain the line-reflection description. Two distinct image points determine the image line; carrier-specific symmetry and another point can check it. Round B changes the parallel example to a line intersecting the mirror plane, whose intersection point remains fixed. HE KCGO Q2.3 p.43 names general reflection of lines at advanced level; centre, half-turn axis and plane are documented as a didactic choice, not separate official requirements. The existing JPG correctly shows coordinates and, in this special case, an unchanged direction vector for E:x=2, without generalizing that behavior. Machine D synthesis only; no human or V approval."
+    },
+    {
+      "decisionId": "math-m7-q2-spatial-open-three-current-20260929-v1-decision-003",
+      "goalId": "985d5529-a586-50eb-bd7f-2db2be8906d1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0fbc1d5a958a4fa080be1bc038ca51542b68b04ca59c9094d3f410fd37032f70",
+      "pageFingerprint": "sha256:1702e7b8894ac4471a3f9085b1cf642bf8c10fe446f3edccd19f5b79da2eeb50",
+      "goalReviewContextFingerprint": "sha256:f6b611f4bc2af872a8087e06045f8c371abed9916779667b1c2414d958b82d3c",
+      "finalText": {
+        "titleDe": "Ebenen an vorgegebenen Spiegelträgern im Raum spiegeln (LK)",
+        "titleEn": "Reflect planes in specified spatial mirror sets (advanced course)",
+        "descriptionDe": "Die lernende Person kann eine Ebene an einem vorgegebenen Zentrum, einer Achse als Halbdrehung oder einer Ebene spiegeln, die Bildebene aus drei nicht kollinearen Bildpunkten bestimmen und sie mit einem weiteren Bildpunkt kontrollieren.",
+        "descriptionEn": "Given a centre, an axis of half-turn or a mirror plane, the learner can reflect a plane, determine its image from three non-collinear image points and check it using an additional image point."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-a-codex-independent-a.985d5529-a586-50eb-bd7f-2db2be8906d1",
+          "recordDigest": "sha256:b5b39f9c00920d48fa098895f24dd9f32ad9f1f27d4272b18eb1c4a4e5288af5"
+        },
+        "second": {
+          "recordId": "mathematik-m7-q2-spatial-open-three-current-20260929-v1-first-pass-b.985d5529-a586-50eb-bd7f-2db2be8906d1",
+          "recordDigest": "sha256:ad4cd7b6d6622179a0ae19a88149afb81e721a34d33f25fb784d1a12ba0c5e01"
+        }
+      },
+      "rationaleDe": "Beide Runden halten die Ebenenbeschreibung. Drei nicht kollineare Bildpunkte legen die Bildebene eindeutig fest; ein vierter Punkt ist eine unabhängige Gegenprobe. Runde B prüft schneidende statt parallele Ebenen und nutzt die bei Spiegelung an S festbleibende Schnittgerade. HE KCGO Q2.3 S.43 nennt allgemeines Spiegeln von Ebenen im LK; die vorgegebenen Träger sind dokumentierte didaktische Operationalisierung, keine amtliche 3×3-Pflichtmatrix. Das Bestands-PNG rechnet F:x=5 an S:x=2 zu F′:x=−1 korrekt, zeigt aber weder den allgemeinen Fall noch die vierte Probe. Nur maschinelle D-Synthese, keine menschliche oder V-Freigabe.",
+      "rationaleEn": "Both rounds retain the plane-reflection description. Three noncollinear image points uniquely determine the image plane; a fourth point is an independent check. Round B tests intersecting rather than parallel planes and uses their intersection line, which remains fixed under reflection in S. HE KCGO Q2.3 p.43 names general reflection of planes at advanced level; the specified carriers are a documented didactic operationalization, not an official 3×3 requirement. The existing PNG correctly maps F:x=5 through S:x=2 to F′:x=−1 but shows neither the general case nor the fourth check. Machine D synthesis only; no human or V approval."
+    }
+  ],
+  "manifestFingerprint": "sha256:6aecf7ac94d0227005ef258363eb0214f75a1986673acd396b3b15998a9065d1"
+}

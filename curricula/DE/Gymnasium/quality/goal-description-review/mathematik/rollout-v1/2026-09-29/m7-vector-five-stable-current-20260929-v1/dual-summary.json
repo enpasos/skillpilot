@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:84b085bd83389fa25713e4f172d37a5d91ebc2c2b50186bf95579a4b214c19bb",
+  "reviewInputFingerprint": "sha256:0578bb0002058b965dabe75dbd21091a9f85d83fb6688810a49f9087733a2d31",
+  "goalCount": 5,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-vector-five-stable-current-20260929-v1-a",
+      "roundId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-vector-five-stable-current-20260929-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-a.batch-001.codex-current-vector-targeted-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-vector-five-stable-current-20260929-v1-b",
+      "roundId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-vector-five-stable-current-20260929-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-b-gpt6"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 5,
+    "unavailable": 0,
+    "requiresSynthesis": 5
+  },
+  "goals": [
+    {
+      "goalId": "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+      "firstRecordId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-a.batch-001.codex-current-vector-targeted-a.571793bd-34f1-539e-969c-dfcc2dfa96b3",
+      "secondRecordId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-b.571793bd-34f1-539e-969c-dfcc2dfa96b3",
+      "firstRunId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-a.batch-001.codex-current-vector-targeted-a",
+      "secondRunId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-b-gpt6",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+      "firstRecordId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-a.batch-001.codex-current-vector-targeted-a.c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+      "secondRecordId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-b.c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+      "firstRunId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-a.batch-001.codex-current-vector-targeted-a",
+      "secondRunId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-b-gpt6",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+      "firstRecordId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-a.batch-001.codex-current-vector-targeted-a.72dfc164-455d-4b63-85f0-96e803c9a1d5",
+      "secondRecordId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-b.72dfc164-455d-4b63-85f0-96e803c9a1d5",
+      "firstRunId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-a.batch-001.codex-current-vector-targeted-a",
+      "secondRunId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-b-gpt6",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+      "firstRecordId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-a.batch-001.codex-current-vector-targeted-a.54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+      "secondRecordId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-b.54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+      "firstRunId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-a.batch-001.codex-current-vector-targeted-a",
+      "secondRunId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-b-gpt6",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "firstRecordId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-a.batch-001.codex-current-vector-targeted-a.fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "secondRecordId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-b.fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "firstRunId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-a.batch-001.codex-current-vector-targeted-a",
+      "secondRunId": "mathematik-m7-vector-five-stable-current-20260929-v1-first-pass-b-gpt6",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}
