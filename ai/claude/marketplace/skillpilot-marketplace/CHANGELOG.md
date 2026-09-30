@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.1.12 - 2026-09-30
+
+- Pair the unchanged coaching flow with SkillPilot's updated goal-image renderer.
+  The server keeps an image visible while it loads, and the carousel evidence
+  binds to the revised image resource.
+- Retain the one-shot image call for each newly authorized goal after the learner
+  agrees to continue. Verify the first and successor images in the same real
+  Claude session before recording client acceptance.
+- Keep every published 1.1.11 package, download and evidence binding intact.
+  Marketplace publication, account installation, update and visual acceptance
+  remain separate, version-bound checks.
+
 ## 1.1.11 - 2026-09-28
 
 - Judge mastery privately from the learner's evidence. Genuine transfer within

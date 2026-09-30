@@ -34,13 +34,19 @@ import {
 const scriptRoot = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(scriptRoot, "..");
 const canonicalPluginRoot = resolve(repositoryRoot, "ai/claude/plugin/skillpilot-coach-v1");
-const pinnedCanonicalRevision = "70a2a25adb77ebfd8b1749fd50d93fc4aa35d301";
+const pinnedCanonicalRevision = "0861a33b2a0faee4ccca1fa0ca315920e0bcfbcb";
 const marketplaceWorkflow = readFileSync(resolve(repositoryRoot,
   "ai/claude/marketplace/skillpilot-marketplace/validate.yml"), "utf8");
 function loadHistorical110MarketplaceLane() {
   return JSON.parse(readFileSync(resolve(
     repositoryRoot,
     "ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.10/marketplace-publication.json",
+  ), "utf8"));
+}
+function loadHistorical1_1_11MarketplaceLane() {
+  return JSON.parse(readFileSync(resolve(
+    repositoryRoot,
+    "ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.11/marketplace-publication.json",
   ), "utf8"));
 }
 function loadHistorical111MarketplaceLane() {
@@ -208,7 +214,7 @@ test("published 1.1.3 marketplace does not imply guide approval or real-client a
 });
 
 test("published 1.1.11 repository evidence stays bound without client acceptance", () => {
-  const lane = loadClaudeMarketplaceLane(repositoryRoot);
+  const lane = loadHistorical1_1_11MarketplaceLane();
   validateClaudeMarketplaceLane(lane);
   assert.equal(lane.plugin.version, "1.1.11");
   assert.equal(lane.activation.state, "published_pending_acceptance");
@@ -630,7 +636,7 @@ candidateExportTest("prepare exports exactly the reviewed plugin allowlist and v
       marketplaceRoot: outputRoot,
     });
     assert.equal(prepared.pluginName, "skillpilot-coach-v1");
-    assert.equal(prepared.version, "1.1.11");
+    assert.equal(prepared.version, "1.1.12");
     assert.equal(prepared.files.length, 12);
     assert.deepEqual(prepared.files, verified.files);
     assert.equal(prepared.treeSha256, verified.treeSha256);
@@ -707,9 +713,9 @@ candidateExportTest("actual CI gate rebuilds the PR package with exact dossier b
     assert.equal(result.status, 0,
       JSON.stringify({ stderr: result.stderr, signal: result.signal, error: result.error?.message }));
     const archive = readFileSync(artifactPath);
-    assert.equal(archive.length, 42633);
+    assert.equal(archive.length, 43272);
     assert.equal(createHash("sha256").update(archive).digest("hex"),
-      "0648c174c52f057aca123cbcef8c1285c9d655bd81175382ce66155a9267f884");
+      "d4d2f22a551bfd044d2eeaa36495fe96d62bc588552effecaef213a4e148afc0");
     const extracted = resolve(root, "extracted");
     const unzip = spawnSync("unzip", ["-q", artifactPath, "-d", extracted], { encoding: "utf8" });
     const extraction = unzip.error?.code === "ENOENT"
@@ -835,7 +841,7 @@ candidateExportTest("local smoke test installs the expected version in an isolat
             stdout: JSON.stringify([
               {
                 id: "skillpilot-coach-v1@skillpilot-marketplace",
-                version: "1.1.11",
+                version: "1.1.12",
                 enabled: true,
                 mcpServers: {
                   skillpilot: {
@@ -918,10 +924,10 @@ test("published verification is pinned to the configured repository", () => {
   );
 });
 
-test("committed source check produces the eligible 1.1.11 export", () => {
+test("committed source check produces the eligible 1.1.12 export", () => {
   const result = checkClaudeMarketplace({ repositoryRoot });
   assert.equal(result.pluginName, "skillpilot-coach-v1");
-  assert.equal(result.version, "1.1.11");
+  assert.equal(result.version, "1.1.12");
   assert.equal(result.pendingCandidateVersion, undefined);
   assert.match(result.treeSha256, /^[0-9a-f]{64}$/u);
   assert.ok(result.outputRoot);
