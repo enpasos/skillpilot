@@ -266,6 +266,58 @@ html.light {
   }
 }
 
+/* Use the main area's width so an open or resized goal tree cannot squeeze the cards. */
+.learner-cockpit-layout {
+  container: learner-cockpit / inline-size;
+  width: 100%;
+  max-width: 79.5rem;
+}
+
+.learner-cockpit-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.learner-cockpit-selection,
+.learner-cockpit-progress {
+  min-width: 0;
+}
+
+.learner-cockpit-selection {
+  container: learner-goal-content / inline-size;
+}
+
+.learner-cockpit-layout-gated {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.learner-cockpit-layout-gated > .learner-cockpit-grid {
+  width: 100%;
+  justify-items: center;
+}
+
+.learner-cockpit-grid:not(.learner-cockpit-grid-with-progress) > .learner-cockpit-selection {
+  width: 100%;
+  max-width: 48rem;
+  justify-self: center;
+}
+
+@container learner-cockpit (min-width: 781px) {
+  .learner-cockpit-grid-with-progress {
+    grid-template-columns: minmax(0, 1fr) 370px;
+  }
+}
+
+@container learner-goal-content (min-width: 640px) {
+  .learner-cockpit-goal-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 /* The cockpit can be narrow even when the browser window is wide. */
 .learner-plan-subject-row {
   container: learner-plan-subject / inline-size;
