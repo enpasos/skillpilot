@@ -2,18 +2,18 @@
 
 SkillPilot Coach v1 is the public-plugin candidate for curriculum-grounded
 SkillPilot learning coaching. Its product scope is limited to eligible paid
-Claude Chat on the Web and the native Android app. Version 1.1.11 is the sole
+Claude Chat on the Web and the native Android app. Version 1.1.12 is the sole
 current replacement candidate. Local preparation does not establish deployment,
-Marketplace publication or real-client acceptance. The published 1.1.10
+Marketplace publication or real-client acceptance. The published 1.1.11
 Marketplace package and website download remain immutable; older
 packages are not a fallback for testing this candidate.
 
 Earlier v1 direct-install packages were demonstrated in paid Claude Web chat.
 The Product Owner also used an earlier account-level direct installation with a
 Claude Pro account in the native Claude app on Android. Those observations do
-not transfer to the 1.1.11 candidate. Exact-candidate direct-install,
+not transfer to the 1.1.12 candidate. Exact-candidate direct-install,
 public-listing installation and the complete Android learning flow remain
-pending until they are verified for 1.1.11. The earlier Android observation also
+pending until they are verified for 1.1.12. The earlier Android observation also
 does not establish that the package can be installed from Android itself or
 that a public listing will reach Android. iOS, Claude Desktop Chat, Cowork and
 public Claude Code remain outside this candidate's claims.
@@ -44,7 +44,7 @@ remote SkillPilot connector. All fourteen MCP tools and both interactive MCP App
 come from that connector; the plugin does not duplicate their schemas,
 resources, or UI bytes.
 
-Version 1.1.11 checks the evidence before reporting task or goal completion. It
+Version 1.1.12 retains the evidence check before reporting task or goal completion. It
 keeps internal assessment deliberation out of learner-facing text and speech.
 For an ordinary goal or a passed exam, the coach decides privately from the
 learner's work and saves demonstrated mastery immediately. After the write is
@@ -74,7 +74,7 @@ plugin version. Old cached inputs are rejected; they must not be reintroduced
 to make an old installation work. OAuth, learner-session, tool identity and
 backend-owned progression boundaries remain unchanged.
 
-Version 1.1.11 keeps the chat plan-first with a compact plan status formulated by
+Version 1.1.12 keeps the chat plan-first with a compact plan status formulated by
 the backend. Claude quotes `learningPlanToday.text` verbatim and adds no counts
 or judgement of its own, for example:
 “Mathematik: Tagesziel 2 von 3 · im Plan” and
@@ -111,12 +111,18 @@ successor. When the period targets are reached, it celebrates them;
 this does not mean that the entire plan or all remaining backlog is complete.
 Blocked or unavailable work is not presented as completed.
 
+When teaching a goal with an approved visualization, the coach requests that
+goal's image using the current context. After a mastered goal, it waits for the
+learner to choose continuation before requesting the successor's image. The
+image must be checked in the Claude chat; a successful renderer response alone
+does not prove that the learner saw it.
+
 SkillPilot Coach v1 does not claim support for Claude Free, iOS, installation
 from inside the Android app, Claude Desktop Chat, Cowork, hooks, subagents, or
 public Claude Code. Those surfaces require their own acceptance evidence and a
 later reviewed release before SkillPilot can advertise them.
 
-The historical direct-install observations are not evidence for 1.1.11 or public
+The historical direct-install observations are not evidence for 1.1.12 or public
 Directory availability. Submission readiness requires this exact candidate to
 complete the dedicated Web and Android real-client acceptance gates.
 Public-listing reach on Android remains a publication verification, not a

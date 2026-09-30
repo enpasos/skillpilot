@@ -42,10 +42,10 @@ const expectedExternalEvidence = [
   "uploaded-plugin-migration-and-marketplace-refresh",
 ];
 const expectedRepositoryName = "skillpilot-claude-marketplace";
-// Pin the Marketplace export to the exact committed and deployed 1.1.11 source.
+// Pin the Marketplace export to the exact committed 1.1.12 source.
 const canonicalSourceRevision = "70a2a25adb77ebfd8b1749fd50d93fc4aa35d301";
 const canonicalSourceTreeSha256 = "237c3d0d7deae66b0b0b4757f3f69eac98c15430a4c0cff1f3d868644375a9af";
-const pinnedTemplateVersion = "1.1.11";
+const pinnedTemplateVersion = "1.1.12";
 const legacyInstructionVersions = new Set([
   "1.0.2", "1.0.3", "1.0.4", "1.1.0", "1.1.1", "1.1.2", "1.1.3", "1.1.4",
 ]);

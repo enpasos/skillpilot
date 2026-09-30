@@ -12,8 +12,8 @@
 | Field | Value |
 | --- | --- |
 | Drill status | `pending` |
-| Candidate version | `1.1.12` |
-| Candidate SHA-256 | `d4d2f22a551bfd044d2eeaa36495fe96d62bc588552effecaef213a4e148afc0` |
+| Candidate version | `1.1.11` |
+| Candidate SHA-256 | `0648c174c52f057aca123cbcef8c1285c9d655bd81175382ce66155a9267f884` |
 | Source commit (40 characters) | `UNASSIGNED - BLOCKING` |
 | Remote marketplace revision (40 characters) | `NOT YET AVAILABLE - PREPUBLICATION`; replace in later activation evidence |
 | Marketplace tree SHA-256 | `UNASSIGNED - BLOCKING` |
@@ -84,7 +84,7 @@ check. The personal-marketplace beta has no proactive per-operation monitor,
 real-time detection promise or SLA. This template neither satisfies nor
 duplicates the separate exact-client acceptance gate.
 
-The 1.1.12 exact-client gate remains `pending` until a fresh Marketplace or
+The 1.1.11 exact-client gate remains `pending` until a fresh Marketplace or
 explicit exact-candidate install on the controlled Web and Android Voice
 clients independently completes the daily-plan, automatic-resume and
 orientation scenarios. No earlier package or evidence satisfies this gate.
@@ -122,9 +122,6 @@ rendered card, or a conversational claim alone.
 - [ ] Claude Web exposed no lazy-loading, schema, parameter or retry mechanics.
 - [ ] Claude Web persisted the clear start intent without another confirmation
       and continued only with the backend-selected successor.
-- [ ] In one new SkillPilot-started Claude session, Claude Web showed the image
-      for the current goal and then the correct image for the next goal after
-      the learner agreed to continue; the evidence was sanitized.
 - [ ] Claude Web made no unsupported durable anchor-memory promise.
 - [ ] Native Claude Android Voice completed all checks independently.
 

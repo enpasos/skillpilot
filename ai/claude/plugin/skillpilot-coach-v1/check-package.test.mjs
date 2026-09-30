@@ -18,15 +18,15 @@ test("validates the checked-in Claude plugin package", () => {
   assert.deepEqual(validateClaudePluginPackage(packageRoot), { errors: [], toolCount: 14 });
 });
 
-test("rejects a replacement candidate version other than 1.1.11", () => {
+test("rejects a replacement candidate version other than 1.1.12", () => {
   withPackageCopy((root) => {
     mutate(root, ".claude-plugin/plugin.json", (value) => value.replace(
-      '"version": "1.1.11"',
+      '"version": "1.1.12"',
       '"version": "1.0.4"',
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /replacement candidate must be version 1\.1\.11/u,
+      /replacement candidate must be version 1\.1\.12/u,
     );
   });
 });
@@ -348,7 +348,7 @@ test("rejects loss of same-server coexistence and custom-connector boundaries", 
   });
 });
 
-test("rejects conflation of historical observations with 1.1.11 acceptance", () => {
+test("rejects conflation of historical observations with 1.1.12 acceptance", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
       /Earlier packages were\s+observed in paid Claude Web chat and, after account-level direct installation\s+on Claude Pro, in the native Claude app on Android/u,
@@ -356,7 +356,7 @@ test("rejects conflation of historical observations with 1.1.11 acceptance", () 
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /distinguish historical observations from pending 1\.1\.11 exact-candidate acceptance/u,
+      /distinguish historical observations from pending 1\.1\.12 exact-candidate acceptance/u,
     );
   });
 });

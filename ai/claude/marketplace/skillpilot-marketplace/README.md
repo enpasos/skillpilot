@@ -1,11 +1,11 @@
 # SkillPilot Claude Marketplace
 
-**SkillPilot Coach v1 · Version 1.1.11** provides curriculum-grounded learning
-coaching for Claude. SkillPilot's website serves the exact 1.1.11 download.
+**SkillPilot Coach v1 · Version 1.1.12** provides curriculum-grounded learning
+coaching for Claude. SkillPilot's website serves the exact 1.1.12 download.
 Publication through this Git Marketplace and installation in individual Claude
 accounts are checked separately.
 
-Version 1.1.11 keeps daily and weekly plan status and self-contained exam
+Version 1.1.12 keeps daily and weekly plan status and self-contained exam
 instructions. The coach decides privately when the learner has shown enough
 evidence for a goal, saves demonstrated mastery immediately, then reports the
 confirmed save and offers the backend-selected next topic. It waits for the
@@ -13,7 +13,7 @@ learner's answer before starting that topic. Acceptance in real Claude accounts,
 including Web and Android Voice, remains pending; earlier published packages
 and their evidence remain immutable history.
 
-### In version 1.1.11
+### In version 1.1.12
 
 - The coach quotes SkillPilot's plan status word for word, exactly as the
   SkillPilot cockpit shows it: one line per subject with its daily or weekly
@@ -33,6 +33,9 @@ and their evidence remain immutable history.
   work is not reversed merely by further reflection.
 - You can ask questions, pause or stay for optional practice after mastery;
   this does not reopen the saved result.
+- Goal images use the updated SkillPilot renderer, including when a learner
+  agrees to continue to the next goal. Visible client behavior is checked
+  separately in Claude Web.
 - A failed exam still receives its score, feedback and solution discussion,
   without storing a failed learning result. Private deliberation stays out of
   learner-facing text and speech, including voice mode.
@@ -74,27 +77,27 @@ observed in two Claude accounts.
 An upload-only installation is not the same as a marketplace installation.
 
 Update timing and available synchronization controls can vary by Claude client.
-After 1.1.11 is published, check that your installed plugin shows **1.1.11**,
+After 1.1.12 is published, check that your installed plugin shows **1.1.12**,
 then start a fresh learning session from SkillPilot. If an update has not
 arrived, use the refresh control where available or contact
 <support@skillpilot.com>.
 
 The observed automatic update mechanism does not mean that every account has
-already received 1.1.11. Verification of this version in individual clients
+already received 1.1.12. Verification of this version in individual clients
 remains separate from publication.
 
 ## About this beta
 
 This personal marketplace is published independently by SkillPilot; it is not
 reviewed, endorsed, curated, or verified by Anthropic. The seven packaged plugin
-files match the prepared 1.1.11 direct-install candidate byte for byte.
+files match the prepared 1.1.12 direct-install candidate byte for byte.
 For supported clients, setup and the security boundary, see the
 [plugin README](./plugins/skillpilot-coach-v1/README.md) and
 [setup guide](./plugins/skillpilot-coach-v1/SETUP.md).
 
 Those packaged documents retain their canonical pre-publication snapshot;
 their preparation-time release notes are not a live availability indicator.
-This Marketplace export contains **1.1.11**, matching the exact archive served
+This Marketplace export contains **1.1.12**, matching the exact archive served
 by the SkillPilot website. Repository publication alone will not prove that an
 installed Claude account has updated.
 

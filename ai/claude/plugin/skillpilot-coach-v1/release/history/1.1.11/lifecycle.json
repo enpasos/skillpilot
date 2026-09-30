@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "lane": "CLAUDE_PUBLIC_PLUGIN_V1",
   "pluginIdentity": "skillpilot-coach-v1",
-  "pluginVersion": "1.1.12",
+  "pluginVersion": "1.1.11",
   "state": "PRE_SUBMISSION",
   "submissionTarget": "ANTHROPIC_PLUGIN_CONSOLE",
   "connectorDirectoryDependency": "none",
@@ -28,12 +28,12 @@
     "subagents"
   ],
   "productOwnerAuthorization": {
-    "approvedAt": "2026-09-30",
+    "approvedAt": "2026-09-28",
     "approvedBy": "product-owner",
-    "scope": "After green CI and confirmed server rollout of SkillPilot main at 9a10fd51011e390fbf83a8524454b024279825da, the Product Owner authorized preparation and publication of the exact SkillPilot Coach v1.1.12 candidate through the existing personal Git Marketplace pull-request path. The website download and Marketplace must offer the same verified 1.1.12 package. Preserve all published 1.1.11 files and evidence. Verify the public main revision and hashes, a clean eligible Claude-account installation, an update from an existing Marketplace installation, and two consecutive learning-goal images in one new SkillPilot-started Claude session, especially the image after the goal change. Record sanitized results only for checks actually observed; all other acceptance remains pending.",
+    "scope": "The Product Owner reported that the coach reversed an offered goal-mastery decision without new learner information and clarified the required sequence: privately judge independent evidence, persist demonstrated mastery immediately, announce that mastery was saved only after write confirmation, offer the next topic and wait for the learner's agreement; when the evidence is incomplete, guide a specific further check before making that offer. Prepare a local unpublished 1.1.11 successor, archive the published 1.1.10 dossier, and preserve tool input, privacy, authorization and scoring contracts. This scope authorizes local fixes and validation, not deployment, Marketplace publication, guide activation or transferred acceptance.",
     "excludes": [
       "Connector Directory lifecycle, gates and Team/Enterprise submission access",
-      "Credential changes, Anthropic Console submission, unsupported client claims, blanket acceptance of untested flows and inherited candidate acceptance"
+      "Deployment, Marketplace publication, guide activation, credential changes, Anthropic Console submission, general public activation and inherited candidate acceptance"
     ]
   },
   "externalStateEvidence": {
@@ -42,9 +42,9 @@
   },
   "releaseLine": {
     "major": 1,
-    "version": "1.1.12",
+    "version": "1.1.11",
     "status": "pre_submission_candidate",
-    "compatibilityPolicy": "Version 1.1.12 retains the 1.1.11 coaching, tool, OAuth, learner-session, privacy, scoring and backend-owned state contracts while binding a new exact plugin package to the deployed goal-image resource correction. Verify image rendering for two consecutive goals in the same Claude session before recording that client check as passed. Published 1.1.11 bytes and evidence remain immutable; no earlier client acceptance transfers."
+    "compatibilityPolicy": "Version 1.1.11 requires the coach to settle mastery privately from learner evidence and persist positive mastery immediately. Only after write confirmation may it say the goal is mastered and saved, offer the next topic and wait for learner agreement; an exceptional request to stay keeps the saved mastery. Incomplete evidence receives a targeted further check before any mastery offer. Failed exams receive a full evaluation without a failure write, and internal deliberation stays out of learner-facing text and speech. Existing tool identities and schemas, OAuth, session, privacy, scoring and backend-owned state remain unchanged. Published 1.1.10 bytes and prior evidence remain immutable; no earlier acceptance transfers."
   },
   "stateTransitions": [
     {
