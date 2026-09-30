@@ -16,6 +16,7 @@ import {
   formatLearnerLearningPlanPeriod,
 } from '../utils/learnerLearningPlanReadModel'
 import { LearnerPlanDailyProgress } from './LearnerPlanDailyProgress'
+import { LearnerActiveGoalBanner } from './LearnerActiveGoalBanner'
 
 export interface LearnerPlanTodayOverviewProps {
   /** The one backend-formulated status; the cockpit renders it and derives nothing from metrics. */
@@ -27,6 +28,8 @@ export interface LearnerPlanTodayOverviewProps {
   goalLabel: (goalId: string) => string | undefined
   activeGoalId?: string | null
   activeLandscapeId?: string | null
+  /** The cockpit renders this separately above the selected goal and progress columns. */
+  showActiveGoal?: boolean
   actionsDisabled?: boolean
   navigationAvailable?: (landscapeId: string) => boolean
   isReconciling?: boolean
@@ -109,6 +112,7 @@ export const LearnerPlanTodayOverview = ({
   goalLabel,
   activeGoalId = null,
   activeLandscapeId = null,
+  showActiveGoal = true,
   actionsDisabled = false,
   navigationAvailable = () => true,
   isReconciling = false,
@@ -166,23 +170,16 @@ export const LearnerPlanTodayOverview = ({
           <p className="mt-1 text-text-secondary">{copy.planModeOffBody}</p>
         </div>
       ) : activeGoalId && activeLandscapeId ? (
-        <div className="mt-4 rounded-xl border border-sky-200 bg-sky-50/70 p-3 dark:border-sky-900/60 dark:bg-sky-950/20">
-          <div className="min-w-0">
-            <p className="text-xs font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-300">
-              {copy.currentGoalLabel} · {activeSubject}
-            </p>
-            {/* The backend announces the active goal neutrally; the cockpit does not rephrase it. */}
-            {status?.activeGoal?.announcement ?? activeGoalLabel ? (
-              <p
-                data-testid="learner-plan-active-goal"
-                className="mt-1 whitespace-normal break-words font-medium text-text-primary"
-                title={status?.activeGoal?.title ?? activeGoalLabel}
-              >
-                {status?.activeGoal?.announcement ?? activeGoalLabel}
-              </p>
-            ) : null}
+        showActiveGoal ? (
+          <div className="mt-4">
+            <LearnerActiveGoalBanner
+              language={language}
+              subjectLabel={activeSubject}
+              title={status?.activeGoal?.title ?? activeGoalLabel}
+              announcement={status?.activeGoal?.announcement}
+            />
           </div>
-        </div>
+        ) : null
       ) : isReconciling ? (
         <p className="mt-4 rounded-xl border border-sky-200 bg-sky-50/70 px-4 py-3 text-sm text-sky-900 dark:border-sky-900/60 dark:bg-sky-950/20 dark:text-sky-100" role="status">
           {copy.preparingNextGoal}

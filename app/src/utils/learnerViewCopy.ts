@@ -9,6 +9,8 @@ export interface LearnerViewCopy {
   importSystemMessage: string
   revealMarkedScopeTitle: string
   revealActiveGoalTitle: string
+  selectedGoalHeading: string
+  learningProgressHeading: string
   openGoalMenuLabel: string
   closeGoalMenuLabel: string
   showGoalSidebarLabel: string
@@ -46,6 +48,8 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         importSystemMessage: 'Ein Netzwerk- oder Systemfehler ist während des Imports aufgetreten.',
         revealMarkedScopeTitle: 'Gehe zum markierten Scope',
         revealActiveGoalTitle: 'Gehe zum aktiven Ziel',
+        selectedGoalHeading: 'Im Menü ausgewählt',
+        learningProgressHeading: 'Dein Lernstand',
         openGoalMenuLabel: 'Lernzielmenü öffnen',
         closeGoalMenuLabel: 'Lernzielmenü schließen',
         showGoalSidebarLabel: 'Lernziele anzeigen',
@@ -80,6 +84,8 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         importSystemMessage: 'A network or system error occurred during import.',
         revealMarkedScopeTitle: 'Go to marked scope',
         revealActiveGoalTitle: 'Go to active goal',
+        selectedGoalHeading: 'Selected in the menu',
+        learningProgressHeading: 'Your learning progress',
         openGoalMenuLabel: 'Open learning-goal menu',
         closeGoalMenuLabel: 'Close learning-goal menu',
         showGoalSidebarLabel: 'Show learning goals',

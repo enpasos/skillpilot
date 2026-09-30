@@ -6,6 +6,7 @@ import { CompetenceTree } from '../components/CompetenceTree'
 import type { TreeStructureMode } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
 import { LearnerPlanTodayOverview } from '../components/LearnerPlanTodayOverview'
+import { LearnerActiveGoalBanner } from '../components/LearnerActiveGoalBanner'
 import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck, PanelLeftClose, PanelLeftOpen } from 'lucide-react'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
@@ -3225,6 +3226,25 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [learnerDataManagementCopy.deleteMissing, learnerDataManagementCopy.deleteSuccess, onLogout, onNotify, skillpilotId])
 
+  const showLearningProgress = !isGuidedPersonalizationRequired && (
+    learningPlansLoadStatus !== 'ready'
+    || learningPlanLanguagePending
+    || (localizedLearningPlans?.status.subjects.length ?? 0) > 0
+    || (localizedLearningPlans?.plans.length ?? 0) > 0
+    || (localizedLearningPlans?.status.unavailablePlanCount ?? 0) > 0
+    || localizedLearningPlans?.followLearningPlans === true
+  )
+  const activeGoalTitle = effectiveActiveGoalId ? goalIndexAll.get(effectiveActiveGoalId)?.title : undefined
+  const showActiveGoalBanner = !isGuidedPersonalizationRequired
+    && Boolean(skillpilotId)
+    && learnerStateLoadState.scopeKey === learnerStateScopeKey
+    && learnerStateLoadStatus === 'ready'
+    && Boolean(effectiveActiveGoalId)
+  const activeLearningPlanSubjectLabel = activeLearningPlanLandscapeId
+    ? localizedLearningPlans?.status.subjects.find((subject) => subject.landscapeIds.includes(activeLearningPlanLandscapeId))?.subjectLabel
+      ?? learningPlanSubjectLabels.get(activeLearningPlanLandscapeId)
+    : undefined
+
   return (
     <div className="flex h-screen bg-chat-bg text-text-primary overflow-hidden transition-colors">
 
@@ -3442,334 +3462,346 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             <Menu size={20} aria-hidden="true" />
           </button>
         )}
-        {!isGuidedPersonalizationRequired && (
-          learningPlansLoadStatus !== 'ready'
-          || learningPlanLanguagePending
-          || (localizedLearningPlans?.status.subjects.length ?? 0) > 0
-          || (localizedLearningPlans?.plans.length ?? 0) > 0
-          || (localizedLearningPlans?.status.unavailablePlanCount ?? 0) > 0
-          || localizedLearningPlans?.followLearningPlans === true
-        ) && (
-          <section
-            aria-label={localizedLanguage === 'de' ? 'Meine Fachpläne' : 'My subject plans'}
-            aria-busy={learningPlansLoadStatus === 'loading' || learningPlanLanguagePending}
-            className="mb-6 flex w-full max-w-3xl flex-col gap-4"
-          >
-            {(learningPlansLoadStatus === 'loading' || learningPlanLanguagePending)
-              && learningPlansLoadStatus !== 'error'
-              && !localizedLearningPlans ? (
-              <p className="rounded-xl border border-border-color bg-sidebar-bg p-4 text-sm text-text-secondary" role="status">
-                {learnerLearningPlanCopy.loading}
-              </p>
-            ) : null}
-            {learningPlansLoadStatus === 'error' && !localizedLearningPlans ? (
-              <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950 dark:border-amber-900/70 dark:bg-amber-950/20 dark:text-amber-100" role="alert">
-                <span>{learnerLearningPlanCopy.loadFailed}</span>
-                <button
-                  type="button"
-                  onClick={() => { void retryLearningPlans() }}
-                  className="min-h-10 rounded-lg border border-current px-3 py-2 font-semibold"
-                >
-                  {learnerLearningPlanCopy.retryAction}
-                </button>
-              </div>
-            ) : null}
-            {learningPlansLoadStatus === 'ready'
-              && localizedLearningPlans
-              && (localizedLearningPlans.followLearningPlans || localizedLearningPlans.status.unavailablePlanCount > 0)
-              && localizedLearningPlans.plans.length === 0
-              && localizedLearningPlans.status.subjects.length === 0 ? (
-                <div
-                  data-testid={localizedLearningPlans.status.unavailablePlanCount > 0 ? 'learner-plan-notice' : 'learner-plan-empty'}
-                  className="rounded-xl border border-border-color bg-sidebar-bg p-5 text-sm text-text-secondary shadow-sm"
-                  role="status"
-                >
-                  <p className="whitespace-pre-line leading-6">{localizedLearningPlans.status.statusText}</p>
-                </div>
-              ) : null}
-            {localizedLearningPlans && localizedLearningPlans.status.subjects.length > 0 ? (
-              <LearnerPlanTodayOverview
-                status={localizedLearningPlans.status}
-                plans={sortedLearningPlans}
+        <div className={`learner-cockpit-layout${isGuidedPersonalizationRequired ? ' learner-cockpit-layout-gated' : ''}`}>
+          {showActiveGoalBanner ? (
+            <div className="mb-6">
+              <LearnerActiveGoalBanner
                 language={localizedLanguage}
-                planModeEnabled={localizedLearningPlans.followLearningPlans}
-                subjectLabel={(planLandscapeId) => (
-                  learningPlanSubjectLabels.get(planLandscapeId) ?? planLandscapeId
-                )}
-                goalLabel={(goalId) => goalIndexAll.get(goalId)?.title}
-                activeGoalId={effectiveActiveGoalId}
-                activeLandscapeId={activeLearningPlanLandscapeId}
-                actionsDisabled={
-                  !isLearnerPlanActionAvailable(
-                    learningPlansLoadStatus,
-                    learningPlansRefreshInFlightRef.current,
-                  )
-                  || learningPlanActionsBlocked
-                }
-                navigationAvailable={(planLandscapeId) => (
-                  planLandscapeId === landscapeId || !!onSelectGoalInLandscape
-                )}
-                isReconciling={learningPlanActionId === 'reconcile'}
-                switchingPlanId={learningPlanActionId === 'reconcile' ? null : learningPlanActionId}
-                staleDataMessage={learningPlansLoadStatus === 'error'
-                  ? learnerLearningPlanCopy.staleData(formatLearnerLearningPlanDate(localizedLearningPlans.asOf, localizedLanguage))
-                  : undefined}
-                actionError={learningPlanActionError ?? undefined}
-                onSwitch={(planId) => { void handleSwitchLearningPlan(planId) }}
-                onRetry={() => { void retryLearningPlans() }}
+                subjectLabel={activeLearningPlanSubjectLabel}
+                title={localizedLearningPlans?.status.activeGoal?.title ?? activeGoalTitle}
+                announcement={localizedLearningPlans?.status.activeGoal?.announcement}
+                onReveal={revealActiveGoal}
               />
-            ) : null}
-          </section>
-        )}
-        {guidedPersonalizationGateReason === 'scopeLoading' ? (
-          <div className="flex min-h-full w-full max-w-xl items-center justify-center" role="status">
-            <p className="text-sm text-text-secondary">
-              {localizedLanguage === 'de' ? 'Dein Cockpit wird geladen …' : 'Loading your cockpit …'}
-            </p>
-          </div>
-        ) : isGuidedPersonalizationRequired ? (
-          <div className="flex min-h-full w-full max-w-xl items-center justify-center">
-            <div className="rounded-2xl border border-sky-300 bg-white p-6 text-center shadow-sm dark:border-sky-900/60 dark:bg-slate-900">
-              <h2 className="text-xl font-bold text-text-primary">{personalizationGateCopy.title}</h2>
-              <p className="mt-2 text-sm text-text-secondary">{personalizationGateCopy.body}</p>
-              <button
-                type="button"
-                onClick={handlePersonalizationGateAction}
-                className="mt-5 rounded-full bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-wait disabled:opacity-60"
-              >
-                {personalizationGateCopy.action}
-              </button>
             </div>
-          </div>
-        ) : currentGoal ? (
-          <div
-            ref={learnerGoalContentRef}
-            data-testid="learner-current-goal"
-            tabIndex={-1}
-            className="w-full max-w-3xl scroll-mt-6 animate-in fade-in slide-in-from-bottom-4 duration-500 focus:outline-none"
-          >
-            {/* Check for SRS Tag */}
-            {currentGoal.tags && currentGoal.tags.some(t => t.startsWith('srs-deck')) ? (
-                <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6">
-                  <div className="mb-6 border-b border-border-color pb-4">
-                    <h1 className="text-2xl font-bold text-sky-600 dark:text-sky-400 mb-2">
-                      <InlineMathText text={getLearnerGoalTitle(currentGoal)} />
-                    </h1>
-                    {currentGoal.description ? (
-                      <p className="text-text-secondary">{currentGoal.description}</p>
-                    ) : null}
-                  </div>
-                  {memoryPracticeGoalId === currentGoal.id ? (
-                    <>
-                      <button
-                        type="button"
-                        onClick={() => setMemoryPracticeGoalId(null)}
-                        className="mb-4 inline-flex items-center gap-2 rounded-lg border border-border-color px-3 py-2 text-sm font-medium text-text-secondary transition-colors hover:bg-slate-50 dark:hover:bg-slate-800"
-                      >
-                        <MoveRight size={16} className="rotate-180" />
-                        {learnerViewCopy.memoryPracticeBackAction}
-                      </button>
-                      <FlashcardDrill
-                        key={currentGoal.id}
-                        goalId={currentGoal.id}
-                        dataSourceUrl={getSrsSource(currentGoal)}
-                        skillPilotId={skillpilotId}
-                        titleOverride={getLearnerGoalTitle(currentGoal)}
-                        onSync={syncClientData}
-                        reloadSignal={srsReloadCounter}
-                        filterTags={getSrsFilterTagsForGoal(currentGoal)}
-                        onStateChange={({ goalId, mastery }) => {
-                          setOptimisticSrsMasteryByGoal((current) => {
-                            if (current[goalId] === mastery) return current
-                            return { ...current, [goalId]: mastery }
-                          })
-                          setSrsMasteryTick(c => c + 1)
-                        }}
-                      />
-                    </>
-                  ) : (
-                    <div className="space-y-5">
-                      <div>
-                        <div className="text-sm font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-300">
-                          {learnerViewCopy.memoryGoalModeTitle}
-                        </div>
-                        <p className="mt-2 max-w-3xl text-sm text-text-secondary">
-                          {learnerViewCopy.memoryGoalModeBody}
-                        </p>
+          ) : null}
+          <div className={`learner-cockpit-grid${showLearningProgress ? ' learner-cockpit-grid-with-progress' : ''}`}>
+            {guidedPersonalizationGateReason === 'scopeLoading' ? (
+              <div className="flex min-h-full w-full max-w-xl items-center justify-center" role="status">
+                <p className="text-sm text-text-secondary">
+                  {localizedLanguage === 'de' ? 'Dein Cockpit wird geladen …' : 'Loading your cockpit …'}
+                </p>
+              </div>
+            ) : isGuidedPersonalizationRequired ? (
+              <div className="flex min-h-full w-full max-w-xl items-center justify-center">
+                <div className="rounded-2xl border border-sky-300 bg-white p-6 text-center shadow-sm dark:border-sky-900/60 dark:bg-slate-900">
+                  <h2 className="text-xl font-bold text-text-primary">{personalizationGateCopy.title}</h2>
+                  <p className="mt-2 text-sm text-text-secondary">{personalizationGateCopy.body}</p>
+                  <button
+                    type="button"
+                    onClick={handlePersonalizationGateAction}
+                    className="mt-5 rounded-full bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-wait disabled:opacity-60"
+                  >
+                    {personalizationGateCopy.action}
+                  </button>
+                </div>
+              </div>
+            ) : currentGoal ? (
+              <div
+                ref={learnerGoalContentRef}
+                data-testid="learner-current-goal"
+                tabIndex={-1}
+                className="learner-cockpit-selection w-full scroll-mt-6 animate-in fade-in slide-in-from-bottom-4 duration-500 focus:outline-none"
+              >
+                <h2 className="mb-3 text-sm font-semibold text-text-secondary">{learnerViewCopy.selectedGoalHeading}</h2>
+                {/* Check for SRS Tag */}
+                {currentGoal.tags && currentGoal.tags.some(t => t.startsWith('srs-deck')) ? (
+                    <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6">
+                      <div className="mb-6 border-b border-border-color pb-4">
+                        <h1 className="text-2xl font-bold text-sky-600 dark:text-sky-400 mb-2">
+                          <InlineMathText text={getLearnerGoalTitle(currentGoal)} />
+                        </h1>
+                        {currentGoal.description ? (
+                          <p className="text-text-secondary">{currentGoal.description}</p>
+                        ) : null}
                       </div>
-                      <div className="grid gap-4 md:grid-cols-2">
-                        <button
-                          type="button"
-                          onClick={() => setMemoryPracticeGoalId(currentGoal.id)}
-                          className="flex min-h-32 items-start gap-4 rounded-xl border border-border-color bg-slate-50/70 p-5 text-left transition-colors hover:border-sky-300 hover:bg-sky-50/80 dark:bg-slate-950/30 dark:hover:border-sky-800 dark:hover:bg-sky-950/30"
-                        >
-                          <span className="rounded-lg bg-white p-2 text-sky-700 shadow-sm dark:bg-slate-900 dark:text-sky-300">
-                            <BookOpen size={22} />
-                          </span>
-                          <span>
-                            <span className="block text-base font-semibold text-text-primary">
-                              {learnerViewCopy.memoryPracticeAction}
-                            </span>
-                            {currentFlashcardSetStatus && currentFlashcardSetStatus.total > 0 ? (
-                              <span className="mt-1 block text-sm font-semibold text-sky-700 dark:text-sky-300">
-                                {interpolateTemplate(learnerViewCopy.memoryPracticeDueStatus, [
-                                  currentFlashcardSetStatus.due,
-                                  currentFlashcardSetStatus.total,
-                                ])}
+                      {memoryPracticeGoalId === currentGoal.id ? (
+                        <>
+                          <button
+                            type="button"
+                            onClick={() => setMemoryPracticeGoalId(null)}
+                            className="mb-4 inline-flex items-center gap-2 rounded-lg border border-border-color px-3 py-2 text-sm font-medium text-text-secondary transition-colors hover:bg-slate-50 dark:hover:bg-slate-800"
+                          >
+                            <MoveRight size={16} className="rotate-180" />
+                            {learnerViewCopy.memoryPracticeBackAction}
+                          </button>
+                          <FlashcardDrill
+                            key={currentGoal.id}
+                            goalId={currentGoal.id}
+                            dataSourceUrl={getSrsSource(currentGoal)}
+                            skillPilotId={skillpilotId}
+                            titleOverride={getLearnerGoalTitle(currentGoal)}
+                            onSync={syncClientData}
+                            reloadSignal={srsReloadCounter}
+                            filterTags={getSrsFilterTagsForGoal(currentGoal)}
+                            onStateChange={({ goalId, mastery }) => {
+                              setOptimisticSrsMasteryByGoal((current) => {
+                                if (current[goalId] === mastery) return current
+                                return { ...current, [goalId]: mastery }
+                              })
+                              setSrsMasteryTick(c => c + 1)
+                            }}
+                          />
+                        </>
+                      ) : (
+                        <div className="space-y-5">
+                          <div>
+                            <div className="text-sm font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-300">
+                              {learnerViewCopy.memoryGoalModeTitle}
+                            </div>
+                            <p className="mt-2 max-w-3xl text-sm text-text-secondary">
+                              {learnerViewCopy.memoryGoalModeBody}
+                            </p>
+                          </div>
+                          <div className="learner-cockpit-goal-options grid gap-4">
+                            <button
+                              type="button"
+                              onClick={() => setMemoryPracticeGoalId(currentGoal.id)}
+                              className="flex min-h-32 items-start gap-4 rounded-xl border border-border-color bg-slate-50/70 p-5 text-left transition-colors hover:border-sky-300 hover:bg-sky-50/80 dark:bg-slate-950/30 dark:hover:border-sky-800 dark:hover:bg-sky-950/30"
+                            >
+                              <span className="rounded-lg bg-white p-2 text-sky-700 shadow-sm dark:bg-slate-900 dark:text-sky-300">
+                                <BookOpen size={22} />
                               </span>
-                            ) : null}
-                            <span className="mt-2 block text-sm text-text-secondary">
-                              {learnerViewCopy.memoryPracticeBody}
-                            </span>
-                          </span>
-                        </button>
-                        <div
-                          className={`flex min-h-32 items-start gap-4 rounded-xl border border-sky-200 bg-sky-50/70 p-5 text-left transition-colors dark:border-sky-900/60 dark:bg-sky-950/20 ${
-                            currentFlashcardVerificationDisabled
-                              ? 'opacity-70'
-                              : 'hover:border-sky-400 hover:bg-sky-100/80 dark:hover:border-sky-700 dark:hover:bg-sky-950/40'
-                          }`}
-                        >
-                          <span className="rounded-lg bg-white p-2 text-sky-700 shadow-sm dark:bg-slate-900 dark:text-sky-300">
-                            <ClipboardCheck size={22} />
-                          </span>
-                          <div className="min-w-0 flex-1">
-                            <span className="block text-base font-semibold text-text-primary">
-                              {currentFlashcardVerificationComplete
-                                ? learnerViewCopy.memoryVerificationCompleteStatus
-                                : currentFlashcardVerificationWaiting
-                                  ? learnerViewCopy.memoryVerificationWaitingStatus
-                                  : learnerViewCopy.memoryVerifiedRecallAction}
-                            </span>
-                            {currentFlashcardSetStatus && currentFlashcardSetStatus.total > 0 ? (
-                              <span className="mt-1 block text-sm font-semibold text-sky-700 dark:text-sky-300">
-                                {interpolateTemplate(learnerViewCopy.memoryVerificationPassedStatus, [
-                                  currentFlashcardSetStatus.verifiedPassed,
-                                  currentFlashcardSetStatus.total,
-                                ])}
-                                {' · '}
-                                {interpolateTemplate(learnerViewCopy.memoryVerificationEligibleStatus, [
-                                  currentFlashcardSetStatus.verificationEligible,
-                                ])}
-                                {currentFlashcardSetStatus.verificationBlockedToday > 0 ? (
-                                  <>
-                                    {' · '}
-                                    {interpolateTemplate(learnerViewCopy.memoryVerificationBlockedStatus, [
-                                      currentFlashcardSetStatus.verificationBlockedToday,
+                              <span>
+                                <span className="block text-base font-semibold text-text-primary">
+                                  {learnerViewCopy.memoryPracticeAction}
+                                </span>
+                                {currentFlashcardSetStatus && currentFlashcardSetStatus.total > 0 ? (
+                                  <span className="mt-1 block text-sm font-semibold text-sky-700 dark:text-sky-300">
+                                    {interpolateTemplate(learnerViewCopy.memoryPracticeDueStatus, [
+                                      currentFlashcardSetStatus.due,
+                                      currentFlashcardSetStatus.total,
                                     ])}
-                                  </>
+                                  </span>
                                 ) : null}
+                                <span className="mt-2 block text-sm text-text-secondary">
+                                  {learnerViewCopy.memoryPracticeBody}
+                                </span>
                               </span>
-                            ) : null}
-                            <span className="mt-2 block text-sm text-text-secondary">
-                              {learnerViewCopy.memoryVerifiedRecallBody}
-                            </span>
-                            <span className="mt-4 flex flex-wrap items-center gap-3">
-                              <label className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">
-                                {learnerViewCopy.memoryVerifiedRecallBatchLabel}
-                                <input
-                                  type="number"
-                                  min={VERIFIED_RECALL_MIN_BATCH_SIZE}
-                                  max={VERIFIED_RECALL_MAX_BATCH_SIZE}
-                                  step={1}
-                                  value={currentVerifiedRecallBatchSize}
-                                  onChange={(event) => handleVerifiedRecallBatchSizeChange(currentGoal.id, Number(event.target.value))}
-                                  className="h-8 w-16 rounded-lg border border-sky-200 bg-white px-2 text-sm font-semibold text-text-primary outline-none transition-colors focus:border-sky-500 dark:border-sky-900/60 dark:bg-slate-950"
-                                  disabled={currentFlashcardVerificationComplete}
-                                />
-                              </label>
-                              <button
-                                type="button"
-                                onClick={() => handleStartVerifiedRecall(currentGoal)}
-                                disabled={currentFlashcardVerificationDisabled}
-                                className="inline-flex items-center justify-center rounded-lg bg-sky-600 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-sky-700 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-600 dark:disabled:bg-slate-800 dark:disabled:text-slate-300"
-                              >
-                                {learnerViewCopy.memoryVerifyMode}
-                              </button>
-                            </span>
+                            </button>
+                            <div
+                              className={`flex min-h-32 items-start gap-4 rounded-xl border border-sky-200 bg-sky-50/70 p-5 text-left transition-colors dark:border-sky-900/60 dark:bg-sky-950/20 ${
+                                currentFlashcardVerificationDisabled
+                                  ? 'opacity-70'
+                                  : 'hover:border-sky-400 hover:bg-sky-100/80 dark:hover:border-sky-700 dark:hover:bg-sky-950/40'
+                              }`}
+                            >
+                              <span className="rounded-lg bg-white p-2 text-sky-700 shadow-sm dark:bg-slate-900 dark:text-sky-300">
+                                <ClipboardCheck size={22} />
+                              </span>
+                              <div className="min-w-0 flex-1">
+                                <span className="block text-base font-semibold text-text-primary">
+                                  {currentFlashcardVerificationComplete
+                                    ? learnerViewCopy.memoryVerificationCompleteStatus
+                                    : currentFlashcardVerificationWaiting
+                                      ? learnerViewCopy.memoryVerificationWaitingStatus
+                                      : learnerViewCopy.memoryVerifiedRecallAction}
+                                </span>
+                                {currentFlashcardSetStatus && currentFlashcardSetStatus.total > 0 ? (
+                                  <span className="mt-1 block text-sm font-semibold text-sky-700 dark:text-sky-300">
+                                    {interpolateTemplate(learnerViewCopy.memoryVerificationPassedStatus, [
+                                      currentFlashcardSetStatus.verifiedPassed,
+                                      currentFlashcardSetStatus.total,
+                                    ])}
+                                    {' · '}
+                                    {interpolateTemplate(learnerViewCopy.memoryVerificationEligibleStatus, [
+                                      currentFlashcardSetStatus.verificationEligible,
+                                    ])}
+                                    {currentFlashcardSetStatus.verificationBlockedToday > 0 ? (
+                                      <>
+                                        {' · '}
+                                        {interpolateTemplate(learnerViewCopy.memoryVerificationBlockedStatus, [
+                                          currentFlashcardSetStatus.verificationBlockedToday,
+                                        ])}
+                                      </>
+                                    ) : null}
+                                  </span>
+                                ) : null}
+                                <span className="mt-2 block text-sm text-text-secondary">
+                                  {learnerViewCopy.memoryVerifiedRecallBody}
+                                </span>
+                                <span className="mt-4 flex flex-wrap items-center gap-3">
+                                  <label className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">
+                                    {learnerViewCopy.memoryVerifiedRecallBatchLabel}
+                                    <input
+                                      type="number"
+                                      min={VERIFIED_RECALL_MIN_BATCH_SIZE}
+                                      max={VERIFIED_RECALL_MAX_BATCH_SIZE}
+                                      step={1}
+                                      value={currentVerifiedRecallBatchSize}
+                                      onChange={(event) => handleVerifiedRecallBatchSizeChange(currentGoal.id, Number(event.target.value))}
+                                      className="h-8 w-16 rounded-lg border border-sky-200 bg-white px-2 text-sm font-semibold text-text-primary outline-none transition-colors focus:border-sky-500 dark:border-sky-900/60 dark:bg-slate-950"
+                                      disabled={currentFlashcardVerificationComplete}
+                                    />
+                                  </label>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleStartVerifiedRecall(currentGoal)}
+                                    disabled={currentFlashcardVerificationDisabled}
+                                    className="inline-flex items-center justify-center rounded-lg bg-sky-600 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-sky-700 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-600 dark:disabled:bg-slate-800 dark:disabled:text-slate-300"
+                                  >
+                                    {learnerViewCopy.memoryVerifyMode}
+                                  </button>
+                                </span>
+                              </div>
+                            </div>
                           </div>
                         </div>
+                      )}
+                    </div>
+                  ) : (
+                    <GoalCard
+                      goal={currentGoal}
+                      masteryValue={
+                        currentGoal.contains && currentGoal.contains.length > 0
+                          ? getFilteredMastery(currentGoal.id)
+                          : getEffectiveMastery(currentGoal.id)
+                      }
+                      showLearnerTools={true}
+                      hideTechnicalStructureUi
+                      hideTitleWhenPrimaryVisualizationVisible
+                      isPlanned={plannedGoals.has(currentGoal.id)}
+                      isActive={effectiveActiveGoalId === currentGoal.id}
+                      onSetActive={handleSetActiveGoal}
+                      onRevealActive={revealActiveGoal}
+                      isFrontier={backendFrontierIds.has(currentGoal.id)}
+                      useRawGoalTitles={currentLandscapeHasMatchedCompositionView}
+                      activeFilter={effectiveActiveFilter}
+                    />
+                  )}
+
+                <GoalAdditionalMaterials
+                  skillpilotId={skillpilotId}
+                  goalId={currentGoal.id}
+                  language={localizedLanguage}
+                  refreshKey={materialSelectionRefresh}
+                />
+                <LearnerGoalFeedbackAction
+                  key={`${currentGoal.landscapeId ?? 'unknown'}:${currentGoal.id}`}
+                  goal={currentGoal}
+                />
+
+                {/* Extended Frontier Panel (Below GoalCard) */}
+                {shouldShowNextSteps && (
+                  <div className="mt-8 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="p-2 bg-sky-100 dark:bg-sky-900/30 rounded-lg text-sky-600 dark:text-sky-400">
+                        <Send size={24} />
+                      </div>
+                      <div>
+                        <h2 className="text-lg font-bold text-text-primary">
+                          {t.learner?.nextSteps || "Als nächste Lernziele stehen dir offen:"}
+                        </h2>
+                        <p className="text-sm text-text-secondary">
+                          {t.learner?.chooseNext || "Welches möchtest du als Nächstes angehen?"}
+                        </p>
                       </div>
                     </div>
-                  )}
-                </div>
-              ) : (
-                <GoalCard
-                  goal={currentGoal}
-                  masteryValue={
-                    currentGoal.contains && currentGoal.contains.length > 0
-                      ? getFilteredMastery(currentGoal.id)
-                      : getEffectiveMastery(currentGoal.id)
-                  }
-                  showLearnerTools={true}
-                  hideTechnicalStructureUi
-                  hideTitleWhenPrimaryVisualizationVisible
-                  isPlanned={plannedGoals.has(currentGoal.id)}
-                  isActive={effectiveActiveGoalId === currentGoal.id}
-                  onSetActive={handleSetActiveGoal}
-                  onRevealActive={revealActiveGoal}
-                  isFrontier={backendFrontierIds.has(currentGoal.id)}
-                  useRawGoalTitles={currentLandscapeHasMatchedCompositionView}
-                  activeFilter={effectiveActiveFilter}
-                />
-              )}
-
-            <GoalAdditionalMaterials
-              skillpilotId={skillpilotId}
-              goalId={currentGoal.id}
-              language={localizedLanguage}
-              refreshKey={materialSelectionRefresh}
-            />
-            <LearnerGoalFeedbackAction
-              key={`${currentGoal.landscapeId ?? 'unknown'}:${currentGoal.id}`}
-              goal={currentGoal}
-            />
-
-            {/* Extended Frontier Panel (Below GoalCard) */}
-            {shouldShowNextSteps && (
-              <div className="mt-8 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="p-2 bg-sky-100 dark:bg-sky-900/30 rounded-lg text-sky-600 dark:text-sky-400">
-                    <Send size={24} />
+                    <div className="learner-cockpit-goal-options grid grid-cols-1 gap-3">
+                      {nextStepOptions
+                        .map((candidate, idx) => (
+                          <button
+                            key={candidate.id}
+                            onClick={() => handleSetActiveGoal(candidate.id)}
+                            className="flex items-start gap-3 p-4 bg-gray-50 dark:bg-slate-800/50 rounded-xl border border-border-color hover:border-sky-400 dark:hover:border-sky-500 hover:shadow-md transition-all text-left group"
+                          >
+                            <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-700 text-xs font-bold text-text-secondary border border-border-color group-hover:border-sky-400 group-hover:text-sky-500 transition-colors shrink-0 mt-0.5">
+                              {idx + 1}
+                            </span>
+                            <div>
+                              <InlineMathText
+                                text={getLearnerGoalTitle(candidate)}
+                                className="font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors line-clamp-2"
+                              />
+                            </div>
+                          </button>
+                        ))}
+                    </div>
                   </div>
-                  <div>
-                    <h2 className="text-lg font-bold text-text-primary">
-                      {t.learner?.nextSteps || "Als nächste Lernziele stehen dir offen:"}
-                    </h2>
-                    <p className="text-sm text-text-secondary">
-                      {t.learner?.chooseNext || "Welches möchtest du als Nächstes angehen?"}
-                    </p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {nextStepOptions
-                    .map((candidate, idx) => (
-                      <button
-                        key={candidate.id}
-                        onClick={() => handleSetActiveGoal(candidate.id)}
-                        className="flex items-start gap-3 p-4 bg-gray-50 dark:bg-slate-800/50 rounded-xl border border-border-color hover:border-sky-400 dark:hover:border-sky-500 hover:shadow-md transition-all text-left group"
-                      >
-                        <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-700 text-xs font-bold text-text-secondary border border-border-color group-hover:border-sky-400 group-hover:text-sky-500 transition-colors shrink-0 mt-0.5">
-                          {idx + 1}
-                        </span>
-                        <div>
-                          <InlineMathText
-                            text={getLearnerGoalTitle(candidate)}
-                            className="font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors line-clamp-2"
-                          />
-                        </div>
-                      </button>
-                    ))}
-                </div>
+                )}
+
+              </div>
+            ) : (
+              <div className="flex flex-col items-center justify-center h-full text-text-secondary">
+                <p>Select a goal to start learning</p>
               </div>
             )}
-
+            {showLearningProgress && (
+              <section
+                data-testid="learner-learning-progress"
+                aria-label={learnerViewCopy.learningProgressHeading}
+                aria-busy={learningPlansLoadStatus === 'loading' || learningPlanLanguagePending}
+                className="learner-cockpit-progress flex w-full flex-col gap-4"
+              >
+                <h2 className="text-sm font-semibold text-text-secondary">{learnerViewCopy.learningProgressHeading}</h2>
+                {(learningPlansLoadStatus === 'loading' || learningPlanLanguagePending)
+                  && learningPlansLoadStatus !== 'error'
+                  && !localizedLearningPlans ? (
+                  <p className="rounded-xl border border-border-color bg-sidebar-bg p-4 text-sm text-text-secondary" role="status">
+                    {learnerLearningPlanCopy.loading}
+                  </p>
+                ) : null}
+                {learningPlansLoadStatus === 'error' && !localizedLearningPlans ? (
+                  <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950 dark:border-amber-900/70 dark:bg-amber-950/20 dark:text-amber-100" role="alert">
+                    <span>{learnerLearningPlanCopy.loadFailed}</span>
+                    <button
+                      type="button"
+                      onClick={() => { void retryLearningPlans() }}
+                      className="min-h-10 rounded-lg border border-current px-3 py-2 font-semibold"
+                    >
+                      {learnerLearningPlanCopy.retryAction}
+                    </button>
+                  </div>
+                ) : null}
+                {learningPlansLoadStatus === 'ready'
+                  && localizedLearningPlans
+                  && (localizedLearningPlans.followLearningPlans || localizedLearningPlans.status.unavailablePlanCount > 0)
+                  && localizedLearningPlans.plans.length === 0
+                  && localizedLearningPlans.status.subjects.length === 0 ? (
+                    <div
+                      data-testid={localizedLearningPlans.status.unavailablePlanCount > 0 ? 'learner-plan-notice' : 'learner-plan-empty'}
+                      className="rounded-xl border border-border-color bg-sidebar-bg p-5 text-sm text-text-secondary shadow-sm"
+                      role="status"
+                    >
+                      <p className="whitespace-pre-line leading-6">{localizedLearningPlans.status.statusText}</p>
+                    </div>
+                  ) : null}
+                {localizedLearningPlans && localizedLearningPlans.status.subjects.length > 0 ? (
+                  <LearnerPlanTodayOverview
+                    status={localizedLearningPlans.status}
+                    plans={sortedLearningPlans}
+                    language={localizedLanguage}
+                    planModeEnabled={localizedLearningPlans.followLearningPlans}
+                    subjectLabel={(planLandscapeId) => (
+                      learningPlanSubjectLabels.get(planLandscapeId) ?? planLandscapeId
+                    )}
+                    goalLabel={(goalId) => goalIndexAll.get(goalId)?.title}
+                    showActiveGoal={false}
+                    activeGoalId={effectiveActiveGoalId}
+                    activeLandscapeId={activeLearningPlanLandscapeId}
+                    actionsDisabled={
+                      !isLearnerPlanActionAvailable(
+                        learningPlansLoadStatus,
+                        learningPlansRefreshInFlightRef.current,
+                      )
+                      || learningPlanActionsBlocked
+                    }
+                    navigationAvailable={(planLandscapeId) => (
+                      planLandscapeId === landscapeId || !!onSelectGoalInLandscape
+                    )}
+                    isReconciling={learningPlanActionId === 'reconcile'}
+                    switchingPlanId={learningPlanActionId === 'reconcile' ? null : learningPlanActionId}
+                    staleDataMessage={learningPlansLoadStatus === 'error'
+                      ? learnerLearningPlanCopy.staleData(formatLearnerLearningPlanDate(localizedLearningPlans.asOf, localizedLanguage))
+                      : undefined}
+                    actionError={learningPlanActionError ?? undefined}
+                    onSwitch={(planId) => { void handleSwitchLearningPlan(planId) }}
+                    onRetry={() => { void retryLearningPlans() }}
+                  />
+                ) : null}
+              </section>
+            )}
           </div>
-        ) : (
-          <div className="flex flex-col items-center justify-center h-full text-text-secondary">
-            <p>Select a goal to start learning</p>
-          </div>
-        )}
+        </div>
       </main>
 
       <LearnerDataManagementDialog

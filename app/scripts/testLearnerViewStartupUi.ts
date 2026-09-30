@@ -123,17 +123,24 @@ try {
     headless: true,
     args: ['--disable-background-networking', '--disable-dev-shm-usage', '--disable-gpu', '--no-sandbox'],
   })
-  const open = async (initial?: Partial<Record<Endpoint, Reply | Promise<Reply>>>) => {
+  const open = async (
+    initial?: Partial<Record<Endpoint, Reply | Promise<Reply>>>,
+    root: 'canonical' | 'legacy' = 'canonical',
+  ) => {
     const context = await browser!.newContext({ viewport: { width: 1280, height: 900 }, locale: 'de-DE' })
     contexts.push(context)
     await context.addInitScript(() => {
       localStorage.setItem('skillpilot_lang', 'de')
       localStorage.setItem('skillpilot_theme', 'light')
       // The observer records transient regressions too, not just the final UI.
-      Object.assign(window, { startupFixtureTexts: [] as string[] })
+      Object.assign(window, { startupFixtureTexts: [] as string[], startupFixtureActiveGoals: [] as string[] })
       document.addEventListener('DOMContentLoaded', () => {
-        const texts = (window as unknown as { startupFixtureTexts: string[] }).startupFixtureTexts
-        new MutationObserver(() => texts.push(document.body.innerText)).observe(document.body, {
+        const snapshots = window as unknown as { startupFixtureTexts: string[]; startupFixtureActiveGoals: string[] }
+        new MutationObserver(() => {
+          snapshots.startupFixtureTexts.push(document.body.innerText)
+          const banner = document.querySelector<HTMLElement>('[data-testid="learner-active-goal-banner"]')
+          if (banner) snapshots.startupFixtureActiveGoals.push(banner.innerText)
+        }).observe(document.body, {
           childList: true, subtree: true, characterData: true,
         })
       })
@@ -180,7 +187,7 @@ try {
       unexpected.push(`${request.method()} ${path}`)
       return json({ status: 404, body: { error: 'Unexpected local fixture request' } })
     })
-    await page.goto(`${server.baseUrl}/scripts/fixtures/learnerViewStartupUi.html`)
+    await page.goto(`${server.baseUrl}/scripts/fixtures/learnerViewStartupUi.html?root=${root}`)
     return { context, page, replies, errors, unexpected, requests, contentRequests }
   }
   const assertNoFalseSetup = async (page: Page) => {
@@ -246,13 +253,29 @@ try {
       'learning reads only goal links; material configuration loads lazily when settings open')
 
     if (first === 'profile') {
-      const section = h.page.getByRole('region', { name: 'Meine Fachpläne' })
+      const activeBanner = h.page.getByTestId('learner-active-goal-banner')
+      const activeText = await activeBanner.getByTestId('learner-plan-active-goal').innerText()
+      const progressText = await h.page.getByTestId('learner-plan-today-overview').innerText()
+      await h.page.locator('#learner-goal-sidebar').getByText('Physik', { exact: true }).click()
+      await h.page.getByTestId('learner-current-goal').getByRole('heading', { name: 'Physik', exact: true }).waitFor()
+      assert.equal(await activeBanner.getByTestId('learner-plan-active-goal').innerText(), activeText,
+        'browsing another goal does not replace the active learning goal')
+      assert.equal(await h.page.getByTestId('learner-plan-today-overview').innerText(), progressText,
+        'learning progress remains independent of the selected goal')
+      await activeBanner.getByRole('button').click()
+      await h.page.getByTestId('learner-current-goal').getByRole('heading', { name: mathTitle, exact: true }).waitFor()
+      assert.equal(await focus.count(), 1)
+      assert.match(await focus.locator('..').innerText(), /Ableitungen/u,
+        'returning from browsing preserves the saved learning focus')
+      assert.deepEqual(h.unexpected, [], 'revealing the active goal is navigation without a learner-state write')
+
+      const section = h.page.getByTestId('learner-learning-progress')
       const before = await h.page.getByTestId('learner-plan-today-overview').innerText()
       const beforeBox = await h.page.getByTestId('learner-plan-today-overview').boundingBox()
       const refreshGate = gate()
       h.replies[learnerA]!.plans = refreshGate.promise
       await emit(h.page, learnerA, 'CLIENT_STATE_UPDATED', 'unrelated-memory-goal')
-      await h.page.waitForFunction(() => document.querySelector('[aria-label="Meine Fachpläne"]')?.getAttribute('aria-busy') === 'true')
+      await h.page.waitForFunction(() => document.querySelector('[data-testid="learner-learning-progress"]')?.getAttribute('aria-busy') === 'true')
       assert.equal(await section.getAttribute('aria-busy'), 'true')
       assert.equal(await section.getByRole('button', { name: 'Zu Physik wechseln' }).isDisabled(), true)
       assert.equal(await section.getByRole('button', { name: 'Weiterlernen' }).count(), 0)
@@ -333,8 +356,49 @@ try {
     assert.equal(await focus.count(), 1)
     assert.match(await focus.locator('..').innerText(), /Elektrische Felder/u,
       'an older same-scope /state response must not restore the previous focus after a plan switch')
-    await h.page.getByTestId('learner-plan-today-overview').getByText(/Du lernst gerade · Physik/u).waitFor()
+    await h.page.getByTestId('learner-active-goal-banner').getByText(/Du lernst gerade · Physik/u).waitFor()
     await assertNoFalseSetup(h.page)
+    assert.deepEqual(h.unexpected, [])
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+
+  // Legacy landscapes do not use the canonical scope-loading screen. The
+  // independently placed banner must still wait for the new learner's state.
+  {
+    const h = await open(undefined, 'legacy')
+    await waitReady(h.page, mathTitle)
+    const banner = h.page.getByTestId('learner-active-goal-banner')
+    await banner.getByText(mathTitle, { exact: true }).waitFor()
+    const newStateGate = gate()
+    h.replies[learnerB]!.state = newStateGate.promise
+    await h.page.evaluate(() => {
+      (window as unknown as { startupFixtureActiveGoals: string[] }).startupFixtureActiveGoals = []
+    })
+    const newStateRequest = h.page.waitForRequest((request) => (
+      new URL(request.url()).pathname === `/api/ui/learners/${learnerB}/state`
+    ))
+    await h.page.getByTestId('fixture-switch-learner').click()
+    await newStateRequest
+    await settledFrame(h.page)
+    assert.equal(await banner.count(), 0,
+      'the previous learner active-goal banner must disappear while the new state is pending')
+    const failedStateResponse = h.page.waitForResponse((response) => (
+      new URL(response.url()).pathname === `/api/ui/learners/${learnerB}/state`
+    ))
+    newStateGate.resolve({ status: 503, body: { error: 'Controlled learner state outage' } })
+    await failedStateResponse
+    await settledFrame(h.page)
+    assert.equal(await banner.count(), 0,
+      'a failed new-learner state read must not restore the previous learner active-goal banner')
+    h.replies[learnerB]!.state = state(learnerB)
+    await emit(h.page, learnerB, 'ACTIVE_GOAL_CHANGED')
+    await banner.getByText(physicsTitle, { exact: true }).waitFor()
+    const snapshots = await h.page.evaluate(() => (
+      window as unknown as { startupFixtureActiveGoals: string[] }
+    ).startupFixtureActiveGoals)
+    assert(!snapshots.some((text) => text.includes(mathTitle)),
+      'the previous learner active goal must never flash during the learner transition or retry')
     assert.deepEqual(h.unexpected, [])
     assert.deepEqual(h.errors, [])
     await h.context.close()

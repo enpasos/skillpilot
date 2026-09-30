@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { mkdir } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 
 import tailwindcss from '@tailwindcss/vite'
@@ -12,6 +13,8 @@ const server = await startViteTestServer(
   'scripts/fixtures/learnerViewMobilePlanChromeUi.html',
   { plugins: [tailwindcss()] },
 )
+const screenshotDir = process.env.SKILLPILOT_COCKPIT_LAYOUT_SCREENSHOTS
+if (screenshotDir) await mkdir(screenshotDir, { recursive: true })
 
 const plan = (
   planId: string,
@@ -110,6 +113,7 @@ try {
     }),
   }))
   let storedPeriodBasis: 'DAY' | 'WEEK' = 'DAY'
+  let followLearningPlans = true
   let unavailableStatus = false
   let omitStatus = false
   let returnWrongStatusLanguage = false
@@ -240,14 +244,14 @@ try {
         activeGoal: english
           ? { title: 'Solve linear equations', announcement: 'Your active learning goal: Solve linear equations' }
           : { title: 'Lineare Gleichungen lösen', announcement: 'Dein aktives Lernziel: Lineare Gleichungen lösen' },
-        followLearningPlans: true, resumeAvailable: true,
-        subjects: unavailableStatus ? subjects.map((entry) => ({ ...entry, evaluable: false, periodText: null, planStatusText: null, subjectLine: null, statusDirection: null, periodGauge: null, balanceGauge: null, canContinue: false })) : subjects, unavailablePlanCount: unavailableStatus ? 2 : 0,
+        followLearningPlans, resumeAvailable: true,
+        subjects: !followLearningPlans ? [] : unavailableStatus ? subjects.map((entry) => ({ ...entry, evaluable: false, periodText: null, planStatusText: null, subjectLine: null, statusDirection: null, periodGauge: null, balanceGauge: null, canContinue: false })) : subjects, unavailablePlanCount: unavailableStatus ? 2 : 0,
       }
       return json({
         asOf: '2026-09-04',
-        followLearningPlans: true,
+        followLearningPlans,
         status: omitStatus ? undefined : status,
-        plans: unavailableStatus ? [] : [
+        plans: unavailableStatus || !followLearningPlans ? [] : [
           plan('math-plan', 'math/sek-i', 'Mathematik bis Klasse 10', 'math-goal-1'),
           plan('physics-plan', 'physics/sek-ii', 'Physik Oberstufe', 'physics-goal-1'),
         ],
@@ -261,7 +265,7 @@ try {
         personalCurriculum: JSON.stringify({ 'math/sek-i': { selected: true }, 'physics/sek-ii': { selected: true } }),
         learningStrategy: 'SEQUENTIAL',
         autoPilot: false,
-        followLearningPlans: true,
+        followLearningPlans,
         learningPlanPeriodBasis: storedPeriodBasis,
         strictMode: false,
         showGoalVisualizationsInChat: true,
@@ -278,6 +282,9 @@ try {
   await page.goto(`${server.baseUrl}/scripts/fixtures/learnerViewMobilePlanChromeUi.html`)
   const menuButton = page.getByRole('button', { name: 'Lernzielmenü öffnen' })
   const overview = page.getByTestId('learner-plan-today-overview')
+  const activeGoalBanner = page.getByTestId('learner-active-goal-banner')
+  const selectedGoal = page.getByTestId('learner-current-goal')
+  const learningProgress = page.getByTestId('learner-learning-progress')
   assert.equal(await overview.getByRole('button', { name: 'Einstellungen öffnen' }).count(), 0)
   assert.equal(await overview.getByRole('button', { name: 'Weiterlernen' }).count(), 0)
   try {
@@ -312,11 +319,25 @@ try {
     'material configuration does not occupy the ordinary learning view')
   assert.equal(materialSelectionReads, 0, 'the selection catalog is loaded only when settings are opened')
   assert.equal(await page.getByText('Dein aktives Lernziel: Lineare Gleichungen lösen', { exact: true }).count(), 1)
-  assert.equal(
-    await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
-    true,
-    'the real LearnerView must not overflow the 390px viewport',
-  )
+  assert.equal(await overview.getByTestId('learner-plan-active-goal').count(), 0,
+    'the active goal has its own place above the selected content, outside the progress overview')
+  await learningProgress.getByRole('heading', { name: 'Dein Lernstand', exact: true }).waitFor()
+  for (const width of [320, 390]) {
+    await page.setViewportSize({ width, height: 844 })
+    const activeBox = await activeGoalBanner.boundingBox()
+    const selectedBox = await selectedGoal.boundingBox()
+    const progressBox = await learningProgress.boundingBox()
+    assert(activeBox && selectedBox && progressBox)
+    assert(activeBox.y + activeBox.height <= selectedBox.y + 1,
+      `the active goal comes before selected content at ${width}px`)
+    assert(selectedBox.y + selectedBox.height <= progressBox.y + 1,
+      `selected content comes before learning progress at ${width}px`)
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), true,
+      `the real LearnerView must not overflow the ${width}px viewport`)
+    assert(await overview.evaluate((element) => element.scrollWidth <= element.clientWidth),
+      `the original needle displays must fit inside the learning progress card at ${width}px`)
+    if (screenshotDir) await page.screenshot({ path: `${screenshotDir}/mobile-${width}.png`, fullPage: true })
+  }
 
   const sidebar = page.locator('#learner-goal-sidebar')
   await waitForClosedGoalMenu()
@@ -459,7 +480,7 @@ try {
   assert.equal(await weeklyMathRow.getByTestId('learner-plan-period-gauge').getAttribute('data-needle-position'), '0.125')
   await weeklyMathRow.getByText('1 von 8', { exact: true }).waitFor()
   assert.equal(await weeklyMathRow.getByText(/Typisch:/u).count(), 0)
-  const announcementLayout = await overview.getByTestId('learner-plan-active-goal').evaluate((element) => {
+  const announcementLayout = await activeGoalBanner.getByTestId('learner-plan-active-goal').evaluate((element) => {
     const box = element.getBoundingClientRect()
     const range = document.createRange()
     range.selectNodeContents(element)
@@ -522,8 +543,8 @@ try {
   const englishPlanRequest = new Promise<void>((resolve) => { englishPlanRequestStarted = resolve })
   await page.evaluate(() => window.dispatchEvent(new Event('fixture-switch-language')))
   await englishPlanRequest
-  await page.getByRole('region', { name: 'My subject plans' }).waitFor()
-  assert.equal(await page.getByRole('region', { name: 'My subject plans' })
+  await learningProgress.getByRole('heading', { name: 'Your learning progress', exact: true }).waitFor()
+  assert.equal(await learningProgress
     .getByText('2 Lernziele im Rückstand', { exact: true }).count(), 0,
   'German backend status must disappear while the English status is loading')
   releaseEnglishPlan()
@@ -536,8 +557,8 @@ try {
   const englishMathRow = overview.getByTestId('learner-plan-subject-mathematik')
   await englishMathRow.getByText('1 of 8', { exact: true }).waitFor()
   await englishMathRow.getByText('2 learning goals behind', { exact: true }).waitFor()
-  await overview.getByText('You are learning · Mathematics', { exact: true }).waitFor()
-  await overview.getByText('Your active learning goal: Solve linear equations', { exact: true }).waitFor()
+  await activeGoalBanner.getByText('You are learning · Mathematics', { exact: true }).waitFor()
+  await activeGoalBanner.getByText('Your active learning goal: Solve linear equations', { exact: true }).waitFor()
   await overview.getByText('Current subject', { exact: true }).waitFor()
   assert.equal(await overview.getByRole('button', { name: 'Switch to Physics' }).count(), 1)
   assert.equal(await overview.getByLabel('Plan details: Mathematics').count(), 1)
@@ -547,7 +568,7 @@ try {
 
   await page.evaluate(() => window.dispatchEvent(new Event('fixture-switch-language')))
   await overview.getByTestId('learner-plan-period-gauge').first().getByText('Diese Woche', { exact: true }).waitFor()
-  await overview.getByText('Du lernst gerade · Mathematik', { exact: true }).waitFor()
+  await activeGoalBanner.getByText('Du lernst gerade · Mathematik', { exact: true }).waitFor()
   assert.equal(requestedPlanLanguages.at(-1), 'de', 'switching back reloads German backend status')
 
   returnWrongStatusLanguage = true
@@ -558,9 +579,24 @@ try {
   returnWrongStatusLanguage = false
   await page.getByRole('button', { name: 'Try again', exact: true }).click()
   await overview.getByTestId('learner-plan-period-gauge').first().getByText('This week', { exact: true }).waitFor()
-  await overview.getByText('You are learning · Mathematics', { exact: true }).waitFor()
+  await activeGoalBanner.getByText('You are learning · Mathematics', { exact: true }).waitFor()
 
   await page.setViewportSize({ width: 1280, height: 900 })
+  const desktopActiveBox = await activeGoalBanner.boundingBox()
+  const desktopSelectedBox = await selectedGoal.boundingBox()
+  const desktopProgressBox = await learningProgress.boundingBox()
+  assert(desktopActiveBox && desktopSelectedBox && desktopProgressBox)
+  assert(desktopActiveBox.y + desktopActiveBox.height <= desktopSelectedBox.y + 1,
+    'the active goal stays above the desktop content columns')
+  assert(desktopSelectedBox.x + desktopSelectedBox.width <= desktopProgressBox.x,
+    'selected content occupies the left column and learning progress the right column')
+  assert(Math.abs(desktopSelectedBox.y - desktopProgressBox.y) <= 1,
+    'desktop content and progress start on the same row')
+  assert.equal(await overview.getByTestId('learner-plan-period-gauge').count(), 2,
+    'the new arrangement retains the original per-subject needle displays')
+  assert(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
+    'the desktop cockpit fits without horizontal overflow')
+  if (screenshotDir) await page.screenshot({ path: `${screenshotDir}/desktop.png`, fullPage: true })
   const desktopHide = sidebar.getByRole('button', { name: 'Hide learning goals' })
   await desktopHide.waitFor({ state: 'visible' })
   assert.equal(await desktopHide.getAttribute('aria-expanded'), 'true')
@@ -574,6 +610,14 @@ try {
   await desktopHide.waitFor({ state: 'visible' })
   assert.equal(await desktopHide.getAttribute('aria-expanded'), 'true')
   await page.waitForFunction(() => document.activeElement?.getAttribute('aria-label') === 'Hide learning goals')
+
+  followLearningPlans = false
+  await page.reload()
+  await activeGoalBanner.getByText('Dein aktives Lernziel: Lineare Gleichungen lösen', { exact: true }).waitFor()
+  assert.equal(await overview.count(), 0)
+  assert.equal(await learningProgress.count(), 0,
+    'an active goal remains visible when plan mode is off and there are no subject plans')
+  await selectedGoal.getByRole('heading', { name: 'Lineare Gleichungen lösen', exact: true }).waitFor()
 
   assert.equal(browserErrors.length, 0, `mobile LearnerView browser errors:\n${browserErrors.join('\n')}`)
   assert.deepEqual(unexpectedRequests, [], 'the full state already supplies focus; initial /planned must not be fetched')

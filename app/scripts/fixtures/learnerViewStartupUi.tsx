@@ -61,6 +61,9 @@ const allGoals = new Map([
 const rootGoals = [mathRoot, physicsRoot]
 const landscapes = [{ landscapeId: mathId, title: 'Mathematik' }, { landscapeId: physicsId, title: 'Physik' }]
 const getMastery = () => 0
+const fixtureRootLandscapeId = new URLSearchParams(window.location.search).get('root') === 'legacy'
+  ? 'legacy-school-root'
+  : CANONICAL_GYMNASIUM_ROOT_ID
 
 const Fixture = () => {
   const [learnerId, setLearnerId] = useState('fixture-learner-a')
@@ -87,7 +90,7 @@ const Fixture = () => {
           routeGoalId={currentGoal.id}
           skillpilotId={learnerId}
           landscapeId={CANONICAL_GYMNASIUM_ROOT_ID}
-          rootLandscapeId={CANONICAL_GYMNASIUM_ROOT_ID}
+          rootLandscapeId={fixtureRootLandscapeId}
           currentLandscapeHasMatchedCompositionView
           availableLandscapes={landscapes}
         />
