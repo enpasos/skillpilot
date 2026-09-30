@@ -442,7 +442,7 @@ test('authored oPhysics expansion stays within reviewed simulations and their ac
   assert.ok(!mapped.has('b1f00a6d-1a03-496c-b1bd-c1f2259f59a8'), 'energy-level animation does not model orbital probability')
 })
 
-test('curated successors retain pilot links and LEIFIphysik remains inactive until access is verified', () => {
+test('curated successors retain pilot links and LEIFIphysik exposes both touch-tested activities', () => {
   for (const [directory, packageId] of [
     ['enpasos-mathe', 'enpasos-mathe-oberstufe'],
     ['enpasos-physik', 'enpasos-physik'],
@@ -463,9 +463,24 @@ test('curated successors retain pilot links and LEIFIphysik remains inactive unt
   }
 
   const leifi = JSON.parse(readFileSync(new URL('../content/enpasos-leifiphysik/1.0.0/package.json', import.meta.url)))
-  assert.equal(leifi.status, 'inactive')
-  assert.ok(leifi.materials.length > 0)
-  assert.ok(leifi.materials.every((material) => material.status === 'inactive'))
-  assert.ok(!packages.some((pkg) => pkg.packageId === leifi.packageId), 'unverified LEIFI pages must not appear in the catalog')
+  assert.equal(leifi.status, 'active')
+  assert.equal(leifi.curator.name, 'enpasos')
+  assert.equal(leifi.provider.name, 'LEIFIphysik – FWU Institut für Film und Bild')
+  assert.equal(leifi.access, 'public-link')
+  assert.equal(leifi.aiUsage, 'link-only')
+  assert.deepEqual(leifi.materials.map((material) => [material.id, material.status]), [
+    ['leifi-dc-circuits-phet-guided', 'active'],
+    ['leifi-centripetal-force-speed-guided', 'active'],
+  ])
+  assert.ok(packages.some((pkg) => pkg.packageId === leifi.packageId))
+  assert.deepEqual(leifi.materials[1].goalIds, [
+    'e918b31f-6f39-5dee-ade6-3617080fb24f',
+    'accb1d9e-cd48-5983-bcef-9b9bca4a9114',
+  ])
+  const combinedCircuitLinks = packages
+    .filter((pkg) => pkg.status === 'active')
+    .flatMap((pkg) => pkg.materials.filter((material) => material.status === 'active'))
+    .filter((material) => material.goalIds.includes('01bebdfc-5819-4610-a03e-ea5e794fc954'))
+  assert.equal(combinedCircuitLinks.length, 4, 'LEIFI must fit the four-link resolver limit')
   assert.doesNotThrow(() => validatePackage(leifi, goals))
 })

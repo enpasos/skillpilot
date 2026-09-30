@@ -111,6 +111,39 @@ class ContentMaterialResolverTest {
     }
 
     @Test
+    void bundledLeifiPackageExposesBothTouchTestedActivities() {
+        ContentCatalog bundled = new ContentCatalog(new ObjectMapper());
+        assertThat(bundled.packages("de").stream()
+                .filter(item -> item.packageId().equals("enpasos-leifiphysik")))
+                .singleElement().satisfies(item -> {
+                    assertThat(item.materialCount()).isEqualTo(2);
+                    assertThat(item.providerName()).isEqualTo("LEIFIphysik – FWU Institut für Film und Bild");
+                    assertThat(item.curatorName()).isEqualTo("enpasos");
+                });
+        ContentMaterialResolver resolver = new ContentMaterialResolver(bundled, selections, true);
+        when(selections.selectedPackageIds("learner")).thenReturn(Set.of("enpasos-leifiphysik"));
+        for (String goalId : List.of("e918b31f-6f39-5dee-ade6-3617080fb24f",
+                "accb1d9e-cd48-5983-bcef-9b9bca4a9114")) {
+            assertThat(resolver.resolve("learner", goalId, "de"))
+                    .singleElement().satisfies(material -> {
+                        assertThat(material.url()).contains("betrag-der-zentripetalkraft-mit-bahngeschwindigkeit");
+                        assertThat(material.language()).isEqualTo("de");
+                        assertThat(material.aiUsage()).isEqualTo("link-only");
+                    });
+        }
+        for (String goalId : List.of("7ca44ba0-b77e-52bf-8562-f67b44767172",
+                "01bebdfc-5819-4610-a03e-ea5e794fc954",
+                "69f8f59c-b0c3-5b0b-82db-834a0e655736")) {
+            assertThat(resolver.resolve("learner", goalId, "de"))
+                    .singleElement().satisfies(material -> {
+                        assertThat(material.url()).contains("stromkreise-schalten-gleichstrom-simulation-von-phet");
+                        assertThat(material.language()).isEqualTo("de");
+                        assertThat(material.aiUsage()).isEqualTo("link-only");
+                    });
+        }
+    }
+
+    @Test
     void bundledRefractionGoalRetainsAllFourSelectedProviders() {
         ContentMaterialResolver resolver = new ContentMaterialResolver(
                 new ContentCatalog(new ObjectMapper()), selections, true);

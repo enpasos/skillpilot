@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "title": "enpasos – Physik mit LEIFIphysik",
   "titleEn": "enpasos – Physics with LEIFIphysik",
-  "description": "Zwei deutschsprachige LEIFIphysik-Versuchsseiten zu Gleichstromkreisen und Zentripetalkraft. Von enpasos fachlich zugeordnet; bis zur Prüfung des anonymen Browserstarts und der Smartphone-Bedienung inaktiv.",
-  "descriptionEn": "Two German LEIFIphysik activity pages on direct-current circuits and centripetal force. Mapped by enpasos; inactive until anonymous browser start and mobile interaction can be verified.",
+  "description": "Zwei deutschsprachige LEIFIphysik-Aktivitäten zu Gleichstromkreisen und Zentripetalkraft mit Arbeitsaufträgen. Mobil ohne Konto bedienbar; Desktop-Zugang kann eingeschränkt sein.",
+  "descriptionEn": "Two German LEIFIphysik activities on DC circuits and centripetal force, with exercises. Usable on mobile without an account; desktop access may be limited.",
   "curator": {"name": "enpasos", "url": "https://github.com/enpasos"},
   "provider": {
     "name": "LEIFIphysik – FWU Institut für Film und Bild",
@@ -14,7 +14,7 @@
   },
   "access": "public-link",
   "aiUsage": "link-only",
-  "status": "inactive",
+  "status": "active",
   "materials": [
     {
       "id": "leifi-dc-circuits-phet-guided",
@@ -22,7 +22,7 @@
       "url": "https://www.leifiphysik.de/elektrizitaetslehre/einfache-stromkreise/versuche/stromkreise-schalten-gleichstrom-simulation-von-phet",
       "resourceType": "simulation",
       "language": "de",
-      "status": "inactive",
+      "status": "active",
       "goalIds": [
         "7ca44ba0-b77e-52bf-8562-f67b44767172",
         "01bebdfc-5819-4610-a03e-ea5e794fc954",
@@ -30,9 +30,9 @@
       ],
       "sections": ["Simulation", "Aufgaben"],
       "review": {
-        "checkedAt": "2026-09-23",
+        "checkedAt": "2026-09-30",
         "authority": "ai",
-        "rationale": "Die LEIFIphysik-Seite nennt PhET/University of Colorado Boulder als Quelle der eingebetteten Simulation und bietet eigene deutschsprachige Aufträge zu Reihen- und Parallelschaltungen, Messwerten und Aufbau nach Schaltplan. Das ergänzt den bereits separat verlinkten direkten PhET-Start um einen Arbeitskontext, ist aber keine neue Simulation. Zuordnungen unterstützen Stromwege, Schaltungswahl und Übersetzung von Schaltplan zu Aufbau nur teilweise; virtuelles Aufbauen belegt keine reale Gerätekompetenz, und die Seite fordert die Erklärung räumlicher Anordnung nicht ausdrücklich. Messziele werden wegen realem Anschluss und Messbereich nicht zugeordnet. Quelltext über Webansicht geprüft; direkter anonymer Chromium- und HTTP-Abruf aus der Prüfungsumgebung endet mit Cloudflare 403. Interaktion und Smartphone-Bedienung daher nicht bestätigt; Material bleibt inaktiv."
+        "rationale": "Die LEIFIphysik-Seite nennt PhET/University of Colorado Boulder als Quelle der eingebetteten Simulation und bietet eigene deutschsprachige Aufträge zu Reihen- und Parallelschaltungen, Messwerten und Aufbau nach Schaltplan. Das ergänzt den bereits separat verlinkten direkten PhET-Start um einen Arbeitskontext, ist aber keine neue Simulation. Zuordnungen unterstützen Stromwege, Schaltungswahl und Übersetzung von Schaltplan zu Aufbau nur teilweise; virtuelles Aufbauen belegt keine reale Gerätekompetenz, und die Seite fordert die Erklärung räumlicher Anordnung nicht ausdrücklich. Messziele werden wegen realem Anschluss und Messbereich nicht zugeordnet. Erneute anonyme Playwright-Chromium-Prüfung am 30.09.2026: regulärer Desktop-UA wiederholt Cloudflare 403; 390×844 Touch und Desktop mit mobilem UA zeigen HTTP 200, Aufgaben und geladenes PhET-Iframe. Direkter Touch startete die Intro-Simulation. Touch-Drags setzten Batterie, Lampe und zwei Drähte auf die Fläche und verbanden beide Batteriepole über die Drähte mit beiden Lampenklemmen. PhET meldete Stromfluss in einer Gruppe und eine leuchtende Lampe mit 21 % Helligkeit. Die LEIFI-Aufträge waren ohne Konto lesbar, ihre vollständige Bearbeitung wurde nicht geprüft. Mobil bedienbar; normaler Desktop-Zugang aus dieser Umgebung unbestätigt."
       }
     },
     {
@@ -41,16 +41,16 @@
       "url": "https://www.leifiphysik.de/mechanik/kreisbewegung/versuche/betrag-der-zentripetalkraft-mit-bahngeschwindigkeit-simulation-mit-versuchsanleitung",
       "resourceType": "simulation",
       "language": "de",
-      "status": "inactive",
+      "status": "active",
       "goalIds": [
         "e918b31f-6f39-5dee-ade6-3617080fb24f",
         "accb1d9e-cd48-5983-bcef-9b9bca4a9114"
       ],
       "sections": ["Aufbau und Durchführung", "1. Teilversuch", "2. Teilversuch", "3. Teilversuch"],
       "review": {
-        "checkedAt": "2026-09-23",
+        "checkedAt": "2026-09-30",
         "authority": "ai",
-        "rationale": "LEIFIphysik veröffentlicht auf dieser Seite eine Canvas-Simulation mit Reglern für Masse, Bahngeschwindigkeit und Bahnradius, Tabellen und Auswertungsaufträgen zum Modell F_z = mv²/r. Die Seite nennt hier keinen PhET-Urheber. Gegenüber dem Physik-Libre-Text ist die Variation von Parametern mit angeleiteter Datenauswertung ein zusätzlicher Lernweg. Für das Herleitungsziel muss der Coach die zum Kreismittelpunkt gerichtete Kraft als resultierende Kraft fachlich erklären; die idealisierte gleichförmige Kreisbewegung behandelt keine Kräfteursache in einer konkreten Kurvenfahrt. Quelltext über Webansicht geprüft; direkter anonymer Chromium- und HTTP-Abruf aus der Prüfungsumgebung endet mit Cloudflare 403. Interaktion und Smartphone-Bedienung daher nicht bestätigt; Material bleibt inaktiv."
+        "rationale": "LEIFIphysik veröffentlicht auf dieser Seite eine Canvas-Simulation mit Reglern für Masse, Bahngeschwindigkeit und Bahnradius, Tabellen und Auswertungsaufträgen zum Modell F_z = mv²/r. Die Seite nennt hier keinen PhET-Urheber. Gegenüber dem Physik-Libre-Text ist die Variation von Parametern mit angeleiteter Datenauswertung ein zusätzlicher Lernweg. Für das Herleitungsziel muss der Coach die zum Kreismittelpunkt gerichtete Kraft als resultierende Kraft fachlich erklären; die idealisierte gleichförmige Kreisbewegung behandelt keine Kräfteursache in einer konkreten Kurvenfahrt. Erneute anonyme Playwright-Chromium-Prüfung am 30.09.2026: regulärer Desktop-UA wiederholt Cloudflare 403; 390×844 Touch und Desktop mit mobilem UA zeigen HTTP 200 und die Aufgaben. Mobil änderte Touch auf Start das Canvas-Bild, Touch auf den Masse-Regler den sichtbaren Wert von 1,1 auf 1,8 kg und erneut das Canvas-Bild. Dieses Material ist aktiv; normaler Desktop-Zugang bleibt aus dieser Umgebung unbestätigt."
       }
     }
   ]
