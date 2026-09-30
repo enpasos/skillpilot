@@ -219,8 +219,10 @@ jobs:
       - name: Test CI package source isolation
         run: node --test ../scripts/ci_ubuntu_apt.test.mjs
       - name: Install PDF and font tools
+        timeout-minutes: 10
         run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig fonts-liberation
       - name: Install pinned Playwright Chromium
+        timeout-minutes: 10
         run: npx --no-install playwright install --with-deps chromium
       - name: Prepare generated curriculum runtime assets
         run: npm run prepare:runtime-assets
@@ -275,8 +277,10 @@ jobs:
       - name: Use Ubuntu package sources
         uses: ./.github/actions/ubuntu-apt
       - name: Install FFmpeg and PDF validation tools
+        timeout-minutes: 10
         run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends ffmpeg poppler-utils fontconfig fonts-liberation
       - name: Install pinned Playwright Chromium
+        timeout-minutes: 10
         run: npx --no-install playwright install --with-deps chromium
       - name: Restore same-run verified goal-book publications
         uses: actions/download-artifact@v7
@@ -375,11 +379,15 @@ jobs:
       # The demo tool has its own Playwright version. Install its OS/font
       # dependencies only after consuming the books, keeping the publication
       # producer's pinned browser/font fingerprint valid for cache reuse.
-      - name: Validate reproducible browser demo-video tool
+      - name: Install browser demo-video tool dependencies
         working-directory: tools/demo-video
+        timeout-minutes: 10
         run: |
           npm ci --ignore-scripts
           npx --no-install playwright install --with-deps chromium
+      - name: Validate reproducible browser demo-video tool
+        working-directory: tools/demo-video
+        run: |
           npm run check
           npm run demo -- validate --scenario scenarios/example.yaml
           npm run demo -- validate --scenario scenarios/skillpilot-openai-review.template.yaml
@@ -409,8 +417,10 @@ jobs:
       - name: Use Ubuntu package sources
         uses: ./.github/actions/ubuntu-apt
       - name: Install PDF validation tools
+        timeout-minutes: 10
         run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig fonts-liberation
       - name: Install pinned Playwright Chromium
+        timeout-minutes: 10
         run: npx --no-install playwright install --with-deps chromium
       - name: Restore same-run verified goal-book publications
         uses: actions/download-artifact@v7
@@ -553,6 +563,7 @@ jobs:
           echo "${install_dir}/bin" >> "${GITHUB_PATH}"
           "${install_dir}/bin/java" -version
       - name: Install package-consumer isolation tools
+        timeout-minutes: 10
         run: sudo apt-get update && sudo apt-get install -y bubblewrap strace
       - name: Enable and verify bubblewrap isolation
         run: bash ../scripts/configure_github_bubblewrap.sh
