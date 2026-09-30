@@ -43,8 +43,9 @@ parameters and credentials are not allowed. No learner-specific data is appended
 to a provider URL. The runtime does not scrape or proxy these pages.
 
 Changes to a published package require a new version. The catalog selects
-`1.1.0` successors for Physik Libre, mathematics, PhET physics, LabXchange and oPhysics;
-their `1.0.0` pilot files remain intact. Stable package IDs keep existing
+`1.1.0` successors for Physik Libre, mathematics, PhET physics, LabXchange and oPhysics,
+plus the previously unpublished LEIFIphysik `1.0.0` candidate with two active materials;
+the earlier `1.0.0` pilot files remain intact. Stable package IDs keep existing
 explicit selections valid after deployment; new profiles still start without a
 selection. A local catalog change is not a deployment or live-Claude acceptance
 claim.
@@ -62,9 +63,13 @@ must not produce recommendations.
   English-language OpenStax readings hosted on LabXchange, for learners aged 13+.
 - [Physics with oPhysics](enpasos-ophysics/1.1.0/README.md): English-language
   interactive activities authored and hosted by Tom Walsh, using GeoGebra.
+- [Physics with LEIFIphysik](enpasos-leifiphysik/1.0.0/README.md): two German
+  activity pages on DC circuits and centripetal force with instructions.
 
-`enpasos` selects the links; GeoGebra, Desmos, PhET, LabXchange and oPhysics supply the
-linked services. The LabXchange package also attributes OpenStax as text author.
+`enpasos` selects the links; GeoGebra, Desmos, PhET, LabXchange, oPhysics and
+LEIFIphysik supply the linked services. The LabXchange package also attributes
+OpenStax as text author; LEIFIphysik hosts both activity pages and PhET authors
+only the DC-circuits embedding.
 The settings show the curator, while resolved material metadata keeps the actual
 provider. Links at learning goals remain compact, with a content-type icon.
 Use direct activity/tool URLs, not collection or search pages. The PhET choices
@@ -72,11 +77,13 @@ are standard simulations available without payment or login for non-commercial
 learning, not paid Studio/iO offerings; their checked scope and terms are recorded
 in the package READMEs. This is link-only access, not a redistribution license.
 
-The [LEIFIphysik candidate](enpasos-leifiphysik/1.0.0/README.md) is staged
-`inactive` and not cataloged: automated anonymous and mobile checks received a
-Cloudflare 403 page. Its required real-browser check remains open and is tracked in
-[issue #54](https://github.com/enpasos/skillpilot/issues/54). These local
-packages are not a claim of full provider coverage or production availability.
+The LEIFIphysik package is cataloged with both mobile-tested activities active.
+On the DC-circuits page, touch gestures built a battery-wire-bulb circuit; PhET
+reported current flowing and bulb brightness of 21%. Regular desktop Chromium
+requests for both LEIFI pages received Cloudflare 403 in this environment; a mobile
+user agent loaded them. This access limitation is tracked in
+[issue #54](https://github.com/enpasos/skillpilot/issues/54). These local packages
+are not a claim of full provider coverage or production availability.
 
 ## Validation
 
