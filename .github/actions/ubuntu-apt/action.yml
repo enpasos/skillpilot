@@ -1,16 +1,18 @@
 name: Use Ubuntu package sources
-description: Keep CI package installation independent of unused third-party repositories
+description: Keep CI package installation independent of unused third-party repositories and the Azure Ubuntu mirror
 runs:
   using: composite
   steps:
-    - name: Restrict APT to the runner's Ubuntu sources
+    - name: Restrict APT to direct Ubuntu sources
       shell: bash
       env:
         SKILLPILOT_APT_POLICY: ${{ github.action_path }}/apt.conf
+        SKILLPILOT_APT_RENDER: ${{ github.action_path }}/render-ubuntu-sources.sh
       run: |
         set -euo pipefail
         # GitHub's Ubuntu runners also enable third-party Chrome/Microsoft
-        # repositories. Our OS packages (including Playwright dependencies)
-        # need only Ubuntu. Preserve all source files and signature/hash checks.
-        test -s /etc/apt/sources.list.d/ubuntu.sources
+        # repositories and route Ubuntu through the Azure mirror list. Our OS
+        # packages (including Playwright dependencies) need only Ubuntu.
+        # Preserve all original source files and signature/hash checks.
+        sudo bash "$SKILLPILOT_APT_RENDER" /etc/apt/sources.list.d/ubuntu.sources /etc/apt/skillpilot-ubuntu.sources
         sudo install -m 644 "$SKILLPILOT_APT_POLICY" /etc/apt/apt.conf.d/99skillpilot-ubuntu-sources

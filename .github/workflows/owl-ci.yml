@@ -64,11 +64,13 @@ jobs:
       - name: Use Ubuntu package sources
         uses: ./.github/actions/ubuntu-apt
       - name: Install isolation and archive tools
+        timeout-minutes: 10
         run: sudo apt-get update && sudo apt-get install -y bubblewrap strace zip unzip
       - name: Enable and verify bubblewrap isolation
         run: bash scripts/configure_github_bubblewrap.sh
       - name: Install pinned package-consumer browser
         working-directory: app
+        timeout-minutes: 10
         run: npx playwright install --with-deps chromium
       - name: Install package validation dependencies
         run: python -m pip install -r scripts/curriculum_package_validation_requirements.txt
@@ -140,6 +142,7 @@ jobs:
       - name: Use Ubuntu package sources
         uses: ./.github/actions/ubuntu-apt
       - name: Install isolation and archive tools
+        timeout-minutes: 10
         run: sudo apt-get update && sudo apt-get install -y bubblewrap strace zip unzip
       - name: Enable and verify bubblewrap isolation
         run: bash scripts/configure_github_bubblewrap.sh

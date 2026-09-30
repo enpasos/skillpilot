@@ -139,6 +139,7 @@ jobs:
       - name: Use Ubuntu package sources
         uses: ./.github/actions/ubuntu-apt
       - name: Install PostgreSQL client
+        timeout-minutes: 10
         run: |
           sudo apt-get update
           sudo apt-get install --yes postgresql-client
