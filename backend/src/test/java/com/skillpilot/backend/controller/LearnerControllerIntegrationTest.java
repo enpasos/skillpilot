@@ -47,9 +47,9 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_MATH_ROOT_ID = "c01b1ce9-a667-4a46-b251-ec33ae602b15";
     // Champion totals count current HE-GK targets with exact legacy equivalence.
-    // The reviewed 809ef split and the HE-GK prerequisite-only Spatprodukt
-    // leave 290 such atoms; new mean/reconstruction edges are partial.
-    private static final long HESSEN_GK_MATH_CHAMPION_TOPIC_GOALS = 290;
+    // The reviewed 809ef split and the HE-GK prerequisite-only Q2 Spatprodukt
+    // leave 289 such atoms; new Q2 assessment endpoints have no legacy equivalent.
+    private static final long HESSEN_GK_MATH_CHAMPION_TOPIC_GOALS = 289;
     private static final String CANONICAL_PHYSICS_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
     private static final String CANONICAL_PHYSICS_ROOT_ID = "bf980fff-b62b-4ea4-a20d-31681a7ad785";
     private static final String CANONICAL_CHEMISTRY_ID = "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0";
@@ -1414,12 +1414,12 @@ public class LearnerControllerIntegrationTest {
         // with projection roles, jurisdiction, course tags and G8/G9 applicability.
         // Keep exact counts and selected membership checks to catch scope drift.
         String[][] scopes = {
-                { "DE-HE", "GK", "746", "756" },
-                { "DE-HE", "LK", "878", "888" },
-                { "DE-RP", "GK", "682", "693" },
-                { "DE-RP", "LK", "794", "805" },
-                { "DE-SH", "GK", "659", "666" },
-                { "DE-SH", "LK", "755", "763" }
+                { "DE-HE", "GK", "751", "761" },
+                { "DE-HE", "LK", "889", "899" },
+                { "DE-RP", "GK", "688", "699" },
+                { "DE-RP", "LK", "802", "813" },
+                { "DE-SH", "GK", "667", "674" },
+                { "DE-SH", "LK", "764", "772" }
         };
         SoftAssertions softly = new SoftAssertions();
 
