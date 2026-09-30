@@ -98,6 +98,8 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
   Begrenzter Pilot, Quellenprüfung, bestehende Linkbindungen und Abnahmegrenzen zu Issue #50.
 - [Contentanbindung: Betrieb und Abnahme des PoC](content-integration-poc.md)
   Normale Cockpit-Materialauswahl mit bestehendem Profilzugang, Betriebsschalter und lokale sowie echte Host-Abnahme.
+- [Content-Pakete: Ausbau und Abnahme zu Issue #54](content-packages-issue-54.md)
+  Direkte Materialien für Mathematik und Physik, LEIFIphysik-Browserprüfung sowie getrennte lokale, CI- und Produktionsnachweise.
 - [Auto-Update Mechanism Architecture](auto-update.md)
 - [AIS.chat x SkillPilot Integration Plan](ais-chat-skillpilot-integration-plan.md)
 - [Working with Liquibase in SkillPilot](liquibase.md)
