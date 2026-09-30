@@ -2,9 +2,6 @@ import css from "./goal-visualization.css";
 import { SkillPilotMcpAppBridge } from "./mcp-app-bridge.js";
 import { retainGoalVisualization } from "./goal-visualization.js";
 
-const BOOTSTRAP_TIMEOUT_MS = 10_000;
-const IMAGE_TIMEOUT_MS = 15_000;
-
 const style = document.createElement("style");
 style.textContent = css;
 document.head.append(style);
@@ -15,8 +12,9 @@ if (!(root instanceof HTMLElement)) throw new Error("Missing app root");
 let visualization;
 let image;
 let teardownRequested = false;
-let imageTimer;
-const bootstrapTimer = window.setTimeout(dismiss, BOOTSTRAP_TIMEOUT_MS);
+// The host can mount the app before the tool finishes. Keep it collapsed
+// while waiting: a local deadline must not tear down a still-pending result
+// or image request, because the host may then discard its eventual result.
 const bridge = new SkillPilotMcpAppBridge(
   "skillpilot-claude-goal-visualization",
   (result) => accept(result?.structuredContent)
@@ -25,11 +23,13 @@ void bridge.ready.catch(() => dismiss());
 
 function accept(structuredContent) {
   const next = retainGoalVisualization(visualization, structuredContent);
-  if (!next || next === visualization) return;
+  if (!next) {
+    dismiss();
+    return;
+  }
+  if (next === visualization) return;
   visualization = next;
   teardownRequested = false;
-  window.clearTimeout(bootstrapTimer);
-  window.clearTimeout(imageTimer);
   root.hidden = true;
 
   const nextImage = document.createElement("img");
@@ -41,19 +41,16 @@ function accept(structuredContent) {
   nextImage.addEventListener("error", () => dismiss(nextImage));
   image = nextImage;
   root.replaceChildren(nextImage);
-  imageTimer = window.setTimeout(() => dismiss(nextImage), IMAGE_TIMEOUT_MS);
   nextImage.src = next.imageUrl;
 }
 
 function show(candidate) {
   if (candidate !== image || !root.contains(candidate)) return;
-  window.clearTimeout(imageTimer);
   root.hidden = false;
 }
 
 function dismiss(candidate) {
   if (candidate && (candidate !== image || !root.contains(candidate))) return;
-  window.clearTimeout(imageTimer);
   root.replaceChildren();
   root.hidden = true;
   visualization = undefined;

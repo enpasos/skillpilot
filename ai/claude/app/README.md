@@ -73,3 +73,17 @@ Every generated HTML resource embeds the complete license texts for exactly
 the production dependencies reported by esbuild. The pinned notice catalog
 fails the build if a bundled package, declared license, or license text changes
 without review.
+
+## Image loading lifecycle
+
+The image app stays collapsed until a valid image has loaded. It waits for the
+host's tool result and the image request without a local timeout that destroys
+the app. MCP Apps hosts can initialize a view before the tool completes; after
+a view closes, the host may skip delivery of its result. See the
+[MCP Apps tool-result lifecycle](https://apps.extensions.modelcontextprotocol.io/api/classes/app-bridge.AppBridge.html#sendtoolresult).
+Actual connection or image errors and an unusable initial tool result still
+collapse the app and request teardown.
+
+Lifecycle tests cover delayed results, slow images and successive learning
+goals. They check local behavior; visibility in a real Claude conversation
+still requires a client check.
