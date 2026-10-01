@@ -1,0 +1,5982 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/concept/didactic/unified-learning-plan-status/">
+      
+      
+        <link rel="prev" href="../../runtime-workflows/chatgpt-startcode-session-flow/">
+      
+      
+        <link rel="next" href="../feynman-rules/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Einheitlicher Lernplanstatus - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#einheitlicher-backendgesteuerter-lernplanstatus" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Einheitlicher Lernplanstatus
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-quality-and-human-trial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum-Qualität: QS-Reifegrade und menschliche Erprobung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/daily-learning-progress/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tagesfortschritt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Einheitlicher Lernplanstatus
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Einheitlicher Lernplanstatus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gesamtkonzept-fur-skillpilot-cockpit-chat-und-planung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gesamtkonzept für SkillPilot: Cockpit, Chat und Planung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ziel-und-leitprinzipien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ziel und Leitprinzipien
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Ziel und Leitprinzipien">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#einfachheit-als-entwurfsziel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Einfachheit als Entwurfsziel
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fachliche-bedeutung-des-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Fachliche Bedeutung des Status
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Fachliche Bedeutung des Status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-periodenpensum-planstand-und-aktives-lernziel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Periodenpensum, Planstand und aktives Lernziel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-mengenbilanz-je-fach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Mengenbilanz je Fach
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-keine-verrechnung-zwischen-fachern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Keine Verrechnung zwischen Fächern
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-verbindliche-datengrundlage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Verbindliche Datengrundlage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Verbindliche Datengrundlage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gemeinsame-ergebnisquelle-in-der-gesamten-anwendung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gemeinsame Ergebnisquelle in der gesamten Anwendung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31-bereinigte-planmenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Bereinigte Planmenge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-eindeutige-zuordnung-und-zahlung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Eindeutige Zuordnung und Zählung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-plananderungen-und-bestandsdaten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Planänderungen und Bestandsdaten
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tages-und-wochenbasis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tages- und Wochenbasis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Tages- und Wochenbasis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#die-laufende-woche-bildet-eine-einheit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Die laufende Woche bildet eine Einheit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-verbindliche-rechenregel-pro-fach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Verbindliche Rechenregel pro Fach
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Verbindliche Rechenregel pro Fach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-eingangsgroen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Eingangsgrößen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-abschlussereignisse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Abschlussereignisse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-berechnung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Berechnung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-statusrichtung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Statusrichtung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-referenzfalle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Referenzfälle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-verbindlicher-ausgabestandard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Verbindlicher Ausgabestandard
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Verbindlicher Ausgabestandard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-eine-zeile-pro-fach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Eine Zeile pro Fach
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-periodentext" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Periodentext
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-planstandtext" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Planstandtext
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-sprache-und-tonalitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Sprache und Tonalität
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-aktives-lernziel-separat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Aktives Lernziel separat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-backend-architektur-und-datenvertrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Backend-Architektur und Datenvertrag
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Backend-Architektur und Datenvertrag">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-ein-gemeinsamer-baustein" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Ein gemeinsamer Baustein
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-gemeinsames-ergebnis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Gemeinsames Ergebnis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 Gemeinsames Ergebnis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cockpit-projektion-je-fach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cockpit-Projektion je Fach
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-reduzierte-chat-projektion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Reduzierte Chat-Projektion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-konsistenz-und-aktualitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Konsistenz und Aktualität
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-verhalten-von-chat-cockpit-und-planung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Verhalten von Chat, Cockpit und Planung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Verhalten von Chat, Cockpit und Planung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-chat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Chat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-cockpit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Cockpit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-planung-und-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Planung und Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-zielauswahl-und-fokussteuerung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Zielauswahl und Fokussteuerung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Zielauswahl und Fokussteuerung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fokuswechsel-im-rahmen-der-planfortsetzung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fokuswechsel im Rahmen der Planfortsetzung
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-nicht-auswertbare-situationen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Nicht auswertbare Situationen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-umsetzungsumfang-und-einfuhrung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Umsetzungsumfang und Einführung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Umsetzungsumfang und Einführung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abgestimmte-vertragsumstellung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgestimmte Vertragsumstellung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ablosung-statt-zusatzlicher-schicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ablösung statt zusätzlicher Schicht
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-tests-und-abnahme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Tests und Abnahme
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Tests und Abnahme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abnahmekriterium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abnahmekriterium
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../qa-ci/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../deploy/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/openai-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot ChatGPT Experimental Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gesamtkonzept-fur-skillpilot-cockpit-chat-und-planung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gesamtkonzept für SkillPilot: Cockpit, Chat und Planung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ziel-und-leitprinzipien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ziel und Leitprinzipien
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Ziel und Leitprinzipien">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#einfachheit-als-entwurfsziel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Einfachheit als Entwurfsziel
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fachliche-bedeutung-des-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Fachliche Bedeutung des Status
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Fachliche Bedeutung des Status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-periodenpensum-planstand-und-aktives-lernziel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Periodenpensum, Planstand und aktives Lernziel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-mengenbilanz-je-fach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Mengenbilanz je Fach
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-keine-verrechnung-zwischen-fachern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Keine Verrechnung zwischen Fächern
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-verbindliche-datengrundlage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Verbindliche Datengrundlage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Verbindliche Datengrundlage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gemeinsame-ergebnisquelle-in-der-gesamten-anwendung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gemeinsame Ergebnisquelle in der gesamten Anwendung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31-bereinigte-planmenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Bereinigte Planmenge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-eindeutige-zuordnung-und-zahlung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Eindeutige Zuordnung und Zählung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-plananderungen-und-bestandsdaten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Planänderungen und Bestandsdaten
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tages-und-wochenbasis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tages- und Wochenbasis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Tages- und Wochenbasis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#die-laufende-woche-bildet-eine-einheit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Die laufende Woche bildet eine Einheit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-verbindliche-rechenregel-pro-fach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Verbindliche Rechenregel pro Fach
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Verbindliche Rechenregel pro Fach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-eingangsgroen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Eingangsgrößen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-abschlussereignisse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Abschlussereignisse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-berechnung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Berechnung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-statusrichtung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Statusrichtung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-referenzfalle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Referenzfälle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-verbindlicher-ausgabestandard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Verbindlicher Ausgabestandard
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Verbindlicher Ausgabestandard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-eine-zeile-pro-fach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Eine Zeile pro Fach
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-periodentext" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Periodentext
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-planstandtext" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Planstandtext
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-sprache-und-tonalitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Sprache und Tonalität
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-aktives-lernziel-separat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Aktives Lernziel separat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-backend-architektur-und-datenvertrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Backend-Architektur und Datenvertrag
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Backend-Architektur und Datenvertrag">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-ein-gemeinsamer-baustein" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Ein gemeinsamer Baustein
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-gemeinsames-ergebnis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Gemeinsames Ergebnis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 Gemeinsames Ergebnis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cockpit-projektion-je-fach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cockpit-Projektion je Fach
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-reduzierte-chat-projektion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Reduzierte Chat-Projektion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-konsistenz-und-aktualitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Konsistenz und Aktualität
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-verhalten-von-chat-cockpit-und-planung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Verhalten von Chat, Cockpit und Planung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Verhalten von Chat, Cockpit und Planung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-chat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Chat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-cockpit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Cockpit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-planung-und-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Planung und Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-zielauswahl-und-fokussteuerung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Zielauswahl und Fokussteuerung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Zielauswahl und Fokussteuerung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fokuswechsel-im-rahmen-der-planfortsetzung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fokuswechsel im Rahmen der Planfortsetzung
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-nicht-auswertbare-situationen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Nicht auswertbare Situationen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-umsetzungsumfang-und-einfuhrung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Umsetzungsumfang und Einführung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Umsetzungsumfang und Einführung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abgestimmte-vertragsumstellung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgestimmte Vertragsumstellung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ablosung-statt-zusatzlicher-schicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ablösung statt zusätzlicher Schicht
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-tests-und-abnahme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Tests und Abnahme
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Tests und Abnahme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abnahmekriterium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abnahmekriterium
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="einheitlicher-backendgesteuerter-lernplanstatus">Einheitlicher, backendgesteuerter Lernplanstatus</h1>
+<h2 id="gesamtkonzept-fur-skillpilot-cockpit-chat-und-planung">Gesamtkonzept für SkillPilot: Cockpit, Chat und Planung</h2>
+<h2 id="1-ziel-und-leitprinzipien">1. Ziel und Leitprinzipien</h2>
+<p>SkillPilot verwendet einen gemeinsamen Lernplanstatus, der drei Fragen beantwortet:</p>
+<p><strong>Welches Pensum ist für die laufende Periode vorgesehen? Wie steht der Lernfortschritt gegenüber dem Plan? Woran wird als Nächstes weitergelernt?</strong></p>
+<p>Die Berechnung und die sprachliche Formulierung liegen vollständig im Backend. Cockpit, Chat und lernendenbezogene Planung übernehmen die bereitgestellten Aussagen. Sie rechnen den Status nicht selbst nach und erzeugen keine abweichenden Bewertungen.</p>
+<blockquote>
+<p><strong>Eine fachliche Berechnung, eine verbindliche Formulierung, mehrere Ausgabekanäle.</strong></p>
+</blockquote>
+<p>Eine typische Statusausgabe lautet:</p>
+<blockquote>
+<p>Mathematik: Tagesziel erreicht · 3 Lernziele im Rückstand<br />
+Physik: Heute kein Tagesziel · 2 Lernziele im Rückstand</p>
+</blockquote>
+<p>Beim anschließenden Einstieg in die Lernaufgabe folgt separat:</p>
+<blockquote>
+<p><strong>Dein aktives Lernziel: Potenzfunktionen mit ganzzahligen Exponenten beschreiben</strong></p>
+</blockquote>
+<h3 id="einfachheit-als-entwurfsziel">Einfachheit als Entwurfsziel</h3>
+<p>Die Umsetzung bevorzugt eine einfache, verlässliche Lösung für die üblichen Anwendungssituationen gegenüber einer umfassenden Behandlung sämtlicher denkbaren Sonderfälle.</p>
+<p><strong>Die bewusste Begrenzung betrifft den Funktionsumfang, nicht die Richtigkeit der unterstützten Fälle.</strong> Nicht zuverlässig auswertbare Situationen werden verständlich benannt, statt durch geschätzte Ergebnisse oder aufwendige Sonderfallmechanismen verdeckt zu werden.</p>
+<p>Vorhandene Planstrukturen, Lernzustände und Aktualisierungsmechanismen werden weiterverwendet. Zusätzliche Einstellungen, Darstellungsvarianten und technische Abstraktionen benötigen einen konkreten Nutzen.</p>
+<p>Das Vorhaben schafft kein neues allgemeines Planungssystem. Es vereinheitlicht die Auswertung vorhandener Lernpläne und ersetzt verteilte Berechnungen durch einen gemeinsamen Backend-Baustein.</p>
+<h2 id="2-fachliche-bedeutung-des-status">2. Fachliche Bedeutung des Status</h2>
+<h3 id="21-periodenpensum-planstand-und-aktives-lernziel">2.1 Periodenpensum, Planstand und aktives Lernziel</h3>
+<p>Der Status unterscheidet drei voneinander unabhängige Aussagen: das Pensum der laufenden Periode, den mengenmäßigen Planstand und das aktive Lernziel.</p>
+<table>
+<thead>
+<tr>
+<th>Aussage</th>
+<th>Daraus darf nicht abgeleitet werden</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tages- oder Wochenziel erreicht</td>
+<td>Es ist nichts mehr offen.</td>
+</tr>
+<tr>
+<td>Kein Pensum für die laufende Periode</td>
+<td>Es besteht kein Rückstand.</td>
+</tr>
+<tr>
+<td>Mengenmäßig im Plan</td>
+<td>Alle früher eingeplanten Inhalte werden beherrscht.</td>
+</tr>
+<tr>
+<td>Aktives Lernziel vorhanden</td>
+<td>Das Periodenziel ist noch nicht erreicht.</td>
+</tr>
+<tr>
+<td>Weiterlernen möglich</td>
+<td>Zusätzliches Lernen wurde bereits vereinbart.</td>
+</tr>
+</tbody>
+</table>
+<p>Ein erfülltes Tagesziel kann mit einem verbleibenden Rückstand zusammenfallen. Ein aktives Lernziel kann dem Aufholen, dem Vorarbeiten oder der Fortsetzung einer begonnenen Lerneinheit dienen.</p>
+<p>Die Statuskommunikation stellt diese Situationen nicht als Widerspruch dar.</p>
+<h3 id="22-mengenbilanz-je-fach">2.2 Mengenbilanz je Fach</h3>
+<p>Jedes fortschrittswirksame Planziel zählt als eine Einheit. Die Anzeige misst weder tatsächliche Lernzeit noch nach Schwierigkeit gewichteten Aufwand.</p>
+<p>Bereits beherrschte, später eingeplante Ziele werden als Vorarbeit berücksichtigt. Diese Vorarbeit kann einen mengenmäßigen Rückstand innerhalb desselben Fachs ausgleichen.</p>
+<p>Beispiel: Drei früher eingeplante Ziele sind noch offen, fünf später eingeplante Ziele bereits beherrscht. Mengenmäßig besteht ein Vorsprung von zwei Zielen. Die drei früher eingeplanten Ziele bleiben dennoch inhaltlich offen und werden bei der weiteren Zielauswahl berücksichtigt.</p>
+<blockquote>
+<p><strong>„Im Plan“ beschreibt den Umfang des Lernfortschritts. Es bestätigt nicht die Beherrschung sämtlicher bis dahin vorgesehener Inhalte.</strong></p>
+</blockquote>
+<p>Der angezeigte Rückstand ist entsprechend eine Größe dieser Mengenbilanz. Er ist nicht mit der Anzahl aller konkreten, früher vorgesehenen und noch offenen Ziel-IDs gleichzusetzen.</p>
+<p>Eine detaillierte Zielübersicht darf diese inhaltlichen Lücken zusätzlich sichtbar machen. Sie beantwortet eine andere Frage als die kompakte Mengenbilanz.</p>
+<h3 id="23-keine-verrechnung-zwischen-fachern">2.3 Keine Verrechnung zwischen Fächern</h3>
+<p>Jedes Fach wird unabhängig ausgewertet. Vorarbeit in Mathematik gleicht keinen Rückstand in Physik aus.</p>
+<p>Es gibt keinen fachübergreifenden Gesamtsaldo, keine Gesamtquote und keine daraus abgeleitete Gesamtampel.</p>
+<h2 id="3-verbindliche-datengrundlage">3. Verbindliche Datengrundlage</h2>
+<h3 id="gemeinsame-ergebnisquelle-in-der-gesamten-anwendung">Gemeinsame Ergebnisquelle in der gesamten Anwendung</h3>
+<p>Erreichte Ziele werden ausschließlich aus den gespeicherten Lernzielergebnissen
+des jeweiligen Lernenden bestimmt. Cockpit, Lernzielbaum und Lehrkraftplanung
+dürfen dafür keinen abweichenden manuellen Unterrichtsstand führen. Die frühere
+Unterrichtsabdeckung samt Bestätigungs- und Attestierungsablauf ist als
+Fortschrittsmodell abgelöst. Altdaten bleiben erhalten, sind aber keine Quelle
+für Zielerreichung. Planung legt Umfang und Termine fest; sie bestätigt keine
+Ergebnisse und verändert sie nicht.</p>
+<p>Die vollständige persönliche Zielmenge und die nachfolgend definierte Planmenge
+<strong>G</strong> sind nicht zwangsläufig identisch. Ein vor Planbeginn abgeschlossenes Ziel
+kann zur persönlichen Zielerreichung zählen, ohne in G enthalten zu sein.
+Gleicher Lernender und gleicher Zielumfang müssen dieselben Ergebnisregeln
+verwenden; bei unterschiedlichen Umfängen benennt die Anzeige ihren Bezug.
+Abgeschlossene Orientierungsziele werden innerhalb ihres jeweiligen Umfangs
+konsistent mitgezählt, ohne sie als fachlichen Beherrschungsnachweis auszugeben.
+Nicht verfügbare oder veraltete Ergebnisdaten werden als solche gezeigt, nicht
+als null erreichte Ziele. Ein Abruf dieser Werte bleibt rein lesend.</p>
+<h3 id="31-bereinigte-planmenge">3.1 Bereinigte Planmenge</h3>
+<p>Die bei Planerstellung erfasste Ausgangsbasis hält fest, welche vorgesehenen Ziele für den Lernenden noch offen waren. Diese Ziele bilden die fortschrittswirksame Planmenge <strong>G</strong>.</p>
+<p><strong>Alle Größen der Statusrechnung beziehen sich ausschließlich auf dieselbe bereinigte Planmenge G.</strong></p>
+<p>Bereits vor Planerstellung beherrschte Ziele tragen weder zum Soll noch zum IST noch zu den angerechneten Periodenabschlüssen dieses Plans bei.</p>
+<p>Beispiel: Ein Cluster enthält 50 Ziele, davon sind bei Planerstellung bereits 20 beherrscht. Die verbleibenden 30 bilden die Planmenge. Werden fünf davon für die erste Woche vorgesehen, beträgt das Wochenpensum fünf.</p>
+<p>Wird später eines dieser 30 Ziele beherrscht, bleibt es Bestandteil der Planmenge und zählt zum IST. Die Ausgangsbasis wird nicht bei jeder Anzeige auf die aktuell noch offenen Ziele reduziert.</p>
+<p>Ein zusätzlicher Abschluss-Stichtag zur Abgrenzung des Vorwissens ist nicht erforderlich. Entscheidend ist die festgehaltene Planmenge.</p>
+<h3 id="32-eindeutige-zuordnung-und-zahlung">3.2 Eindeutige Zuordnung und Zählung</h3>
+<p>Die Auswertung verwendet vorhandene stabile Fach- und Zielkennungen. Anzeigenamen und Übersetzungen dienen nicht als fachliche Identität.</p>
+<p>Mehrere aktive Pläne desselben Fachs werden vor der Berechnung zu einer Zielmenge zusammengeführt. Dieselbe Ziel-ID zählt innerhalb des Fachs nur einmal; maßgeblich ist ihr frühester gültiger, fortschrittswirksamer Solltermin.</p>
+<p>Wiederholungs- und Prüfungsblöcke erzeugen keinen zweiten Sollbeitrag für dasselbe Lernziel. Ein Cluster zählt nicht zusätzlich zu seinen bereits gezählten atomaren Zielen.</p>
+<p>Die Auswertung verwendet die gültige Planfassung und deren festgehaltene Zuordnungen. Dafür wird keine neue allgemeine Planversions- oder Konfliktverwaltungsinfrastruktur eingeführt.</p>
+<h3 id="33-plananderungen-und-bestandsdaten">3.3 Planänderungen und Bestandsdaten</h3>
+<p>Änderungen von Umfang, Terminen oder Ausgangsbasis erfolgen als ausdrückliche Planänderung. Eine Statusabfrage verändert keine Planvorgaben.</p>
+<p>Ein überschrittenes Planende entfernt offene Ziele nicht automatisch aus der Bilanz eines weiterhin aktiven Plans.</p>
+<p>Bestandspläne werden unterstützt, soweit ihre Grundlage zuverlässig interpretierbar ist. Eine unklare Ausgangsbasis wird nicht heuristisch aus dem heutigen Lernstand rekonstruiert. Ist eine verlässliche Auswertung nicht möglich, wird dies kenntlich gemacht.</p>
+<h2 id="4-tages-und-wochenbasis">4. Tages- und Wochenbasis</h2>
+<p>In der Lernkonfiguration im Cockpit wird pro SkillPilot-ID dauerhaft zwischen <strong>1 Tag</strong> und <strong>1 Woche</strong> gewählt. Ohne ausdrückliche Auswahl gilt <strong>1 Woche</strong>. Eine zuvor ausdrücklich gewählte Tagesbasis bleibt erhalten.</p>
+<table>
+<thead>
+<tr>
+<th>Einstellung</th>
+<th>Laufende Periode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 Tag</strong></td>
+<td>Aktueller Kalendertag</td>
+</tr>
+<tr>
+<td><strong>1 Woche</strong></td>
+<td>Aktuelle Kalenderwoche von Montag bis Sonntag</td>
+</tr>
+</tbody>
+</table>
+<p>Die maßgebliche Zeitzone ist zunächst <strong>Europe/Berlin</strong>. Es gibt keine zusätzliche Einstellung für Wochenbeginn oder Zeitzone. Kalendergrenzen werden anhand lokaler Datumsgrenzen bestimmt.</p>
+<p>Die Periodenbasis gilt einheitlich für Statusberechnung, Cockpit, Chat, lernendenbezogene Planung und planbezogene Zielauswahl. Sie ist keine lokale Anzeigeoption eines Clients.</p>
+<h3 id="die-laufende-woche-bildet-eine-einheit">Die laufende Woche bildet eine Einheit</h3>
+<p>Im Wochenmodus wird das gesamte Wochenpensum betrachtet. Es kann zu Wochenbeginn, am Wochenende oder verteilt erfüllt werden.</p>
+<p><strong>Vergangene Tage innerhalb der laufenden Woche erzeugen keinen zusätzlichen Vergangenheitsrückstand.</strong> Erst beim Periodenwechsel wird ein verbleibendes Defizit entsprechend der Rechenregel in die neue Bewertung übernommen.</p>
+<p>Angefangene Wochen bei Planbeginn oder Planende berücksichtigen nur die tatsächlich eingeplanten Ziele. Das Wochenpensum ist nicht pauschal das Siebenfache eines Tagespensums.</p>
+<p>Ein Wechsel zwischen Tages- und Wochenbasis verändert weder Lernfortschritt noch Plantermine. Er verändert den zeitlichen Bezug der Auswertung und damit gegebenenfalls die Aufteilung zwischen laufendem Pensum und Rückstand.</p>
+<h2 id="5-verbindliche-rechenregel-pro-fach">5. Verbindliche Rechenregel pro Fach</h2>
+<h3 id="51-eingangsgroen">5.1 Eingangsgrößen</h3>
+<p>Alle Mengen beziehen sich auf die gültige, bereinigte und zusammengeführte Planmenge <strong>G</strong> des Fachs.</p>
+<table>
+<thead>
+<tr>
+<th>Größe</th>
+<th>Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S</strong></td>
+<td>Anzahl der Ziele aus G, die bis einschließlich zum <strong>Ende der laufenden Periode</strong> vorgesehen sind.</td>
+</tr>
+<tr>
+<td><strong>P</strong></td>
+<td>Anzahl der Ziele aus G, die innerhalb der laufenden Periode neu fällig werden. Dies ist das geplante Tages- oder Wochenpensum.</td>
+</tr>
+<tr>
+<td><strong>I</strong></td>
+<td>Anzahl der aktuell beherrschten Ziele aus G, unabhängig von ihrem vorgesehenen Termin.</td>
+</tr>
+<tr>
+<td><strong>H</strong></td>
+<td>Anzahl unterschiedlicher Ziele aus G mit einem verlässlich belegten Abschluss innerhalb der laufenden Periode, die aktuell weiterhin als beherrscht gelten.</td>
+</tr>
+</tbody>
+</table>
+<p>Im Wochenmodus reicht <strong>S bis zum Ende der Woche</strong>, nicht nur bis zum aktuellen Tag.</p>
+<p>Für einen gültigen Datenstand gelten:</p>
+<div class="highlight"><pre><span></span><code>0 ≤ P ≤ S ≤ |G|
+0 ≤ H ≤ I ≤ |G|
+</code></pre></div>
+<p>Alle Größen sind ganzzahlig. Ungültige Eingaben werden nicht durch die nachfolgenden Rechenoperationen stillschweigend korrigiert.</p>
+<h3 id="52-abschlussereignisse">5.2 Abschlussereignisse</h3>
+<p>Für <strong>H</strong> zählen tatsächliche, gültige Abschlussereignisse. Ein Importzeitpunkt, allgemeiner Änderungszeitpunkt oder die erneute Übermittlung eines bestehenden Beherrschungszustands ist kein neuer Abschluss.</p>
+<p>Dasselbe Ziel zählt innerhalb einer Periode höchstens einmal. Bei Rücknahme der Beherrschung wird es aus <strong>I</strong> und gegebenenfalls <strong>H</strong> entfernt.</p>
+<p>Ein verlässlich bekannter Beherrschungszustand ohne verlässlichen Abschlusszeitpunkt darf zu <strong>I</strong>, aber nicht zu <strong>H</strong> beitragen.</p>
+<p>Ein technischer Fehler beim Laden der Abschlussereignisse ist dagegen nicht gleichbedeutend mit <strong>H = 0</strong>. Sind erforderliche Daten nicht zuverlässig verfügbar, wird die Auswertung als eingeschränkt beziehungsweise nicht auswertbar behandelt.</p>
+<h3 id="53-berechnung">5.3 Berechnung</h3>
+<div class="highlight"><pre><span></span><code>Rohsaldo                  = I − S
+
+Noch zu deckendes Soll    = max(0, −Rohsaldo)
+
+Offenes Periodenpensum    = min(
+                               Noch zu deckendes Soll,
+                               max(0, P − H)
+                            )
+
+Rückstand                 = Noch zu deckendes Soll
+                            − Offenes Periodenpensum
+
+Vorsprung                 = max(0, Rohsaldo)
+
+Erfülltes Periodenziel    = P − Offenes Periodenpensum
+</code></pre></div>
+<p>Die Zurechnungsregel lautet:</p>
+<blockquote>
+<p><strong>Abschlüsse der laufenden Periode erfüllen zunächst deren Pensum. Darüber hinausgehende Leistung reduziert den Rückstand oder erzeugt Vorarbeit.</strong></p>
+</blockquote>
+<p>Bereits vorhandene Vorarbeit kann das Periodenziel ebenfalls ganz oder teilweise abdecken.</p>
+<p><strong>Das geplante Pensum P wird nicht aufgrund bereits beherrschter Ziele gekappt.</strong> Ein vorgesehenes, durch Vorarbeit abgedecktes Pensum wird als erreicht dargestellt und nicht nachträglich als „kein Pensum“.</p>
+<h3 id="54-statusrichtung">5.4 Statusrichtung</h3>
+<div class="highlight"><pre><span></span><code>behind     bei Rückstand &gt; 0
+ahead      bei Vorsprung &gt; 0
+on_track   ansonsten
+</code></pre></div>
+<p>Die Richtung wird nicht allein aus dem Vorzeichen des Rohsaldos bestimmt. Ein negatives Ergebnis kann vollständig zum noch laufenden Periodenpensum gehören.</p>
+<h3 id="55-referenzfalle">5.5 Referenzfälle</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>S / P / I / H</th>
+<th>Ausgabe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tagesbeginn ohne Rückstand</td>
+<td>13 / 3 / 10 / 0</td>
+<td>Tagesziel 0 von 3 · im Plan</td>
+</tr>
+<tr>
+<td>Rückstand, ein Ziel heute erledigt</td>
+<td>13 / 3 / 9 / 1</td>
+<td>Tagesziel 1 von 3 · 2 Lernziele im Rückstand</td>
+</tr>
+<tr>
+<td>Tagesziel erfüllt, Rückstand verbleibt</td>
+<td>13 / 3 / 12 / 4</td>
+<td>Tagesziel erreicht · 1 Lernziel im Rückstand</td>
+</tr>
+<tr>
+<td>Über das Soll hinaus gelernt</td>
+<td>13 / 3 / 15 / 6</td>
+<td>Tagesziel erreicht · 2 Lernziele vorgearbeitet</td>
+</tr>
+<tr>
+<td>Tagespensum durch Vorarbeit abgedeckt</td>
+<td>13 / 3 / 13 / 0</td>
+<td>Tagesziel erreicht · im Plan</td>
+</tr>
+<tr>
+<td>Kein Tagespensum, Rückstand vorhanden</td>
+<td>10 / 0 / 8 / 0</td>
+<td>Heute kein Tagesziel · 2 Lernziele im Rückstand</td>
+</tr>
+</tbody>
+</table>
+<p>Dieselbe Rechnung gilt im Wochenmodus mit entsprechend abgegrenzten Eingangsgrößen und Wochenformulierungen.</p>
+<h2 id="6-verbindlicher-ausgabestandard">6. Verbindlicher Ausgabestandard</h2>
+<h3 id="61-eine-zeile-pro-fach">6.1 Eine Zeile pro Fach</h3>
+<p>Das gemeinsame Format lautet:</p>
+<div class="highlight"><pre><span></span><code>&lt;Fach&gt;: &lt;Periodenteil&gt; · &lt;Planstand&gt;
+</code></pre></div>
+<p>Das Backend erzeugt die Textbestandteile und die vollständige Fachzeile. Aus den Fachzeilen und gegebenenfalls erforderlichen Auswertungshinweisen entsteht <strong><code>status.text</code></strong>.</p>
+<p>Alle Fächer mit einem aktiven Lernplan werden in einer stabilen, kanalübergreifend gleichen Reihenfolge berücksichtigt. Es gibt keine gesonderte Chat-Kurzfassung und keine automatische Auswahl vermeintlich wichtiger Fächer durch das Sprachmodell.</p>
+<p>Die Ausgabe bleibt durch kurze Fachzeilen und begrenzte Wiederholung kompakt.</p>
+<h3 id="62-periodentext">6.2 Periodentext</h3>
+<p>Bei <strong>P = 0</strong> wird ein fehlendes Periodenpensum benannt. Bei <strong>P &gt; 0</strong> wird entweder der erfüllte Anteil oder das erreichte Periodenziel angezeigt.</p>
+<table>
+<thead>
+<tr>
+<th>Bedeutung</th>
+<th>Deutsch</th>
+<th>Englisch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tagesfortschritt</td>
+<td>Tagesziel N von P</td>
+<td>Daily target N of P</td>
+</tr>
+<tr>
+<td>Tagesziel erfüllt</td>
+<td>Tagesziel erreicht</td>
+<td>Daily target reached</td>
+</tr>
+<tr>
+<td>Kein Tagespensum</td>
+<td>Heute kein Tagesziel</td>
+<td>No daily target today</td>
+</tr>
+<tr>
+<td>Wochenfortschritt</td>
+<td>Wochenziel N von P</td>
+<td>Weekly target N of P</td>
+</tr>
+<tr>
+<td>Wochenziel erfüllt</td>
+<td>Wochenziel erreicht</td>
+<td>Weekly target reached</td>
+</tr>
+<tr>
+<td>Kein Wochenpensum</td>
+<td>Diese Woche kein Wochenziel</td>
+<td>No weekly target this week</td>
+</tr>
+</tbody>
+</table>
+<p>Der Zielstand kann durch Vorarbeit erfüllt sein. Deshalb darf aus „Tagesziel erreicht“ nicht automatisch „Heute P Lernziele abgeschlossen“ werden.</p>
+<p>Eine Statistik tatsächlicher Abschlüsse ist eine eigenständige Aktivitätsauswertung und nicht Bestandteil dieser Statuszeile.</p>
+<h3 id="63-planstandtext">6.3 Planstandtext</h3>
+<table>
+<thead>
+<tr>
+<th>Bedeutung</th>
+<th>Deutsch</th>
+<th>Englisch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rückstand</td>
+<td>N Lernziele im Rückstand</td>
+<td>N learning goals behind</td>
+</tr>
+<tr>
+<td>Vorsprung</td>
+<td>N Lernziele vorgearbeitet</td>
+<td>N learning goals ahead</td>
+</tr>
+<tr>
+<td>Weder Rückstand noch Vorsprung</td>
+<td>im Plan</td>
+<td>on track</td>
+</tr>
+</tbody>
+</table>
+<p>Einzahl und Mehrzahl werden im Backend korrekt behandelt.</p>
+<p>Der Rohsaldo wird nicht zusätzlich ausgegeben. „Zusätzlich +N“ entfällt, da Mehrleistung bereits in der Mengenbilanz enthalten ist.</p>
+<h3 id="64-sprache-und-tonalitat">6.4 Sprache und Tonalität</h3>
+<p>Die Texte entstehen aus festen deutschen und englischen Vorlagen. Die Ausgabesprache wird explizit übergeben; ohne Angabe gilt die hinterlegte Lernsprache, ersatzweise Deutsch.</p>
+<p>Ein Sprachwechsel verändert ausschließlich die Formulierung, nicht die Berechnung. Der KI-Coach übersetzt oder formuliert den verbindlichen Status nicht selbst.</p>
+<p>Es gibt keine zusätzliche Alters- oder Tonalitätskonfiguration. Der Status bleibt sachlich; individuelle Ermutigung gehört in die anschließende Lernbegleitung.</p>
+<h3 id="65-aktives-lernziel-separat">6.5 Aktives Lernziel separat</h3>
+<p><strong><code>status.text</code> enthält keine Ankündigung des aktiven Lernziels.</strong></p>
+<p>Das Backend stellt die lokalisierte Ankündigung separat mit dem exakten lokalisierten Zieltitel bereit:</p>
+<blockquote>
+<p><strong>Dein aktives Lernziel: …</strong></p>
+</blockquote>
+<p>Englisch:</p>
+<blockquote>
+<p><strong>Your active learning goal: …</strong></p>
+</blockquote>
+<p>Diese Ankündigung erscheint einmal zu Beginn des entsprechenden Unterrichtsabschnitts. Eine zweite gleichlautende Überschrift entfällt.</p>
+<p>Bei einer reinen Statusfrage werden weder eine neue Aufgabe begonnen noch eine Lernzielankündigung erzwungen. Formulierungen wie „trotzdem noch nicht abgeschlossen“ werden nicht verwendet.</p>
+<h2 id="7-backend-architektur-und-datenvertrag">7. Backend-Architektur und Datenvertrag</h2>
+<h3 id="71-ein-gemeinsamer-baustein">7.1 Ein gemeinsamer Baustein</h3>
+<p>Ein klar abgegrenzter Baustein im vorhandenen Backend berechnet den Status und erzeugt die Texte.</p>
+<p>Berechnung und Textgenerierung werden intern nachvollziehbar getrennt, beispielsweise durch separate Funktionen. Dafür sind weder ein eigener Dienst noch eine allgemeine Regel-Engine erforderlich.</p>
+<p>Die Statusberechnung ist eine Leseoperation. Sie verändert keine Pläne, Lernziele, Beherrschungswerte oder Fokuseinstellungen.</p>
+<h3 id="72-gemeinsames-ergebnis">7.2 Gemeinsames Ergebnis</h3>
+<p>Das Backend stellt die für Darstellung und Lernsteuerung erforderlichen Informationen bereit:</p>
+<table>
+<thead>
+<tr>
+<th>Bereich</th>
+<th>Inhalt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zeitbezug</td>
+<td>Periodenbasis, Beginn, Ende, Zeitzone und Bezugszeitpunkt</td>
+</tr>
+<tr>
+<td>Gesamtstatus</td>
+<td>Auswertbarkeit und vollständiger <code>status.text</code>, ohne Gesamtbilanz</td>
+</tr>
+<tr>
+<td>Je Fach</td>
+<td>Fachkennung, Fachname, Textbestandteile, Fachzeile, Auswertbarkeit, gegebenenfalls Statusrichtung und die Cockpit-Projektion für die beiden Scheibenanzeigen</td>
+</tr>
+<tr>
+<td>Lernsteuerung</td>
+<td>Aktuelles Fach, Fortsetzungsmöglichkeiten und autorisierte nächste Handlungen</td>
+</tr>
+<tr>
+<td>Unterrichtseinstieg</td>
+<td>Aktives Lernziel und separate lokalisierte Ankündigung</td>
+</tr>
+</tbody>
+</table>
+<p>Die Eingangsgrößen und internen Rechenschritte bleiben für Berechnung, Tests,
+Diagnose und Zielauswahl im Backend. Für die Scheibenanzeigen erhält das Cockpit
+gezielt die abgeleiteten Zahlen und Nadelpositionen. Es berechnet weder Pensum
+noch Planstand oder Skalierung selbst. Andere normale Statusausgaben können
+weiterhin allein den gelieferten Text und die Statusrichtung verwenden.</p>
+<h4 id="cockpit-projektion-je-fach">Cockpit-Projektion je Fach</h4>
+<p>Die erste Scheibe erhält <code>periodGauge</code> mit <code>completed</code> (erfülltes
+Periodenziel), <code>target</code> (<strong>P</strong>) und <code>needlePosition</code> im Bereich 0 bis 1. Ihr
+Titel richtet sich nach der gespeicherten Periodenbasis: „Heute“ oder „Diese
+Woche“. Die Zähleinheit sind <strong>fortschrittswirksame Lernziele der bereinigten
+Planmenge G</strong>, nicht einzelne Übungsaufgaben im Chat. <code>completed</code> kann auch
+durch früher erbrachte Vorarbeit größer als die Zahl der in der laufenden
+Periode neu abgeschlossenen Ziele sein. Bei <strong>P &gt; 0</strong> berechnet das Backend
+<code>needlePosition = completed / target</code>. Bei <strong>P = 0</strong> liefert das Backend
+<code>completed = 0</code>, <code>target = 0</code> und <code>needlePosition = null</code>; die Anzeige benennt
+den fehlenden Tages- oder Wochenzielwert, statt einen Fortschrittsanteil zu
+erfinden. Bei einem nicht auswertbaren Fach ist <code>periodGauge = null</code>.</p>
+<p>Die zweite Scheibe trägt im Cockpit den Titel „Gesamt“ und erhält
+<code>balanceGauge</code> mit <code>net</code>, <code>typicalAmount</code>,
+<code>scaleLimit</code>, <code>needlePosition</code>, <code>severeBehind</code> und <code>strongAhead</code>. Hier gilt
+<code>net = Vorsprung − Rückstand</code>, <strong>nicht</strong> <code>I − S</code>. Ein allein noch offenes Pensum
+der laufenden Periode erzeugt dadurch keinen angezeigten Rückstand. Die
+Neutralstellung <code>needlePosition = 0</code> bedeutet „im Plan“. Auf der positiven
+Seite gilt <code>needlePosition = min(1, net / scaleLimit)</code>, auf der negativen
+<code>needlePosition = max(−1, net / (scaleLimit + 1))</code>. Dadurch bleibt ein Rückstand
+von genau 2 × M noch knapp vor dem linken Skalenende und erreicht es erst bei
+mehr als 2 × M; Vorsprung erreicht das rechte Skalenende bereits bei genau
+2 × M. Der gelieferte Planstatustext hält die tatsächliche Bilanz auch jenseits
+der Skala sichtbar.
+Bei einem nicht auswertbaren Fach ist <code>balanceGauge = null</code>.</p>
+<p>Die typische Menge <strong>M = <code>typicalAmount</code></strong> wird für das ausgewertete Fach aus
+der <strong>vollständigen</strong>, gültigen, zusammengeführten und nach Ziel-ID
+deduplizierten Planung bestimmt. Jedes fortschrittswirksame Ziel zählt mit
+seinem frühesten gültigen Solltermin genau einmal. Das Backend gruppiert diese
+Termine je nach gespeicherter Basis nach Berliner Kalendertag oder
+Montag-bis-Sonntag-Kalenderwoche und bildet aus den <strong>positiven</strong>
+Periodenpensen den Median. Bei gerader Anzahl wird das arithmetische Mittel der
+beiden mittleren Werte auf die nächste ganze Zahl aufgerundet. Perioden ohne
+Soll zählen nicht zur Stichprobe: Ein freier Tag macht die Skala daher nicht
+null. <strong><code>scaleLimit = 2 × M</code></strong>. Fehlt in der gesamten Planung ein positives
+Periodenpensum, ist M nicht belastbar bestimmbar und <code>balanceGauge = null</code>;
+die fachliche Auswertbarkeit und der vorhandene Planstatustext bleiben davon
+getrennt.</p>
+<p><code>severeBehind</code> gilt genau bei <code>net &lt; −2 × M</code>, <code>strongAhead</code> genau bei
+<code>net ≥ 2 × M</code>. Die erste Grenze ist also strikt, die zweite einschließlich.
+Zwischen den Grenzen bewegt sich die Nadel proportional zum Saldo. Das
+Backend liefert diese Schwellenentscheidung und beide Nadelpositionen zusammen
+mit den zugrunde liegenden Fachwerten aus demselben Datenstand.</p>
+<h3 id="73-reduzierte-chat-projektion">7.3 Reduzierte Chat-Projektion</h3>
+<p>Der Chat erhält den fertigen Status und die erforderlichen Steuerungsinformationen. Separate Plan-Zählfelder wie <code>dueToday</code>, <code>completedToday</code>, <code>openToday</code>, <code>openOverdue</code> oder <code>extraCompletedToday</code> werden nicht zusätzlich übertragen.
+Auch <code>periodGauge</code> und <code>balanceGauge</code> sind ausschließlich Cockpit-Darstellungswerte und gehören nicht in die Chat-Projektion.</p>
+<p>Die Reduktion gilt für die tatsächlich gesendeten Daten, nicht nur für deren Schema. Strukturierte Tool-Ergebnisse und gegebenenfalls zusätzlich übertragene Textdarstellungen derselben Daten verwenden die gleiche reduzierte Projektion.</p>
+<p>Die Guidance enthält Handlungsanweisungen, aber keine eigene Statuszusammenfassung und keine Rechenregeln.</p>
+<h3 id="74-konsistenz-und-aktualitat">7.4 Konsistenz und Aktualität</h3>
+<p>Eine Auswertung verwendet einen konsistenten Stand von Plan, Beherrschung, Abschlussereignissen und Konfiguration.</p>
+<p>Vorhandene Zustands- und Aktualisierungsmechanismen werden weiterverwendet. Eine zusätzliche Statushistorie oder eigenständige Statusversionierungsinfrastruktur wird nicht eingeführt.</p>
+<p>Ein Periodenwechsel kann den Status auch ohne neuen Lernabschluss verändern. Deshalb müssen Bezugsdatum und Periodengrenzen bei der Auswertung und einer etwaigen Zwischenspeicherung berücksichtigt werden.</p>
+<p>Neue Periodenwerte dürfen nicht mit einem alten Rückstand kombiniert werden.</p>
+<h2 id="8-verhalten-von-chat-cockpit-und-planung">8. Verhalten von Chat, Cockpit und Planung</h2>
+<h3 id="81-chat">8.1 Chat</h3>
+<p>Der Chat gibt den Backendstatus wörtlich aus: beim Lernstart oder Fortsetzen, auf eine Statusfrage und nach einer statusrelevanten Änderung.</p>
+<p>Der Status erscheint höchstens einmal pro Antwort. Werden mehrere Änderungen verarbeitet, ist der abschließend gültige Stand maßgeblich. Unveränderte Statusangaben werden nicht vor jeder Aufgabe wiederholt.</p>
+<p>Der Coach ergänzt keine eigene Mengenbilanz und keine widersprechende Zusammenfassung wie „Du hast nichts mehr offen“.</p>
+<p>Nach der Statusausgabe folgt bei einer Lernfortsetzung der eigentliche Unterricht. Nach einem erfolgreichen Zielabschluss bleibt die didaktische Reihenfolge erhalten: Rückmeldung zum abgeschlossenen Ziel, gegebenenfalls aktualisierter Planstatus, anschließend Ankündigung und Einstieg in das nächste Lernziel.</p>
+<p>Bei externen KI-Hosts ist die wortgetreue Wiedergabe eine zu prüfende Integrationsanforderung. Der deterministische Backendtext allein garantiert sie nicht. In einer direkt kontrollierten Oberfläche wird der Text unmittelbar gerendert.</p>
+<h3 id="82-cockpit">8.2 Cockpit</h3>
+<p>Das Cockpit zeigt im Plan-Modus <strong>je Fach zwei Scheiben mit sichtbaren Nadeln</strong>:
+das laufende Tages- oder Wochenpensum und den kumulierten Planstand. Die
+Backendwerte <code>periodGauge</code> und <code>balanceGauge</code> steuern die Nadeln. Die erste
+Scheibe zeigt „x von y Zielen“: Erreichtes ist blau, der noch offene Teil der
+Skala grau. Die zweite Scheibe hat links einen klar roten Bereich für starken
+Rückstand, eine neutrale graue Mitte und rechts einen klar grünen Bereich für
+Vorarbeit. Ihre Nadel ist bei starkem Rückstand rot, bei Vorarbeit grün und
+sonst neutral. Sie zeigt den gelieferten Planstatustext direkt unter
+der Nadel, zum Beispiel „1 Lernziel im Rückstand“ oder „im Plan“; Rückstand
+liegt links und Vorarbeit rechts. Die tatsächliche Bilanz bleibt bei einem
+Skalenanschlag durch diesen Text sichtbar. Die Skalierungswerte und die
+typische Menge dienen der Berechnung, erscheinen aber nicht als zusätzliche
+Beschriftung der Scheibe. Die Fachzeile wiederholt weder das Periodenpensum
+noch den Planstand.
+Die beiden Scheiben eines Fachs sind gleich hoch. Fach, Bezugszeit, Zahlen und
+Status müssen auch auf kleinen Bildschirmen eindeutig erkennbar sein. Die
+Nadelposition und der Text tragen die Bedeutung zusätzlich zur Farbe.
+Das „Heute“-Panel enthält weder einen zweiten Einstellungen-Knopf noch eine
+Schaltfläche „Weiterlernen“: Einstellungen sind über die vorhandene
+Seitenleiste erreichbar, und das aktive Lernziel steht im Lernbereich.</p>
+<p>Ein fehlendes Periodenpensum und fehlende Auswertungsdaten sind unterschiedlich
+darzustellen. Falls ausschließlich die typische Menge für die zweite Skala
+fehlt, zeigt das Cockpit diese Grenze verständlich an, ohne die erste Scheibe
+oder den verfügbaren Statustext als nicht auswertbar zu behandeln.</p>
+<p>Lokale Rückstandsberechnungen, eigene Pensumskappungen und konkurrierende
+Statusdarstellungen entfallen.</p>
+<h3 id="83-planung-und-details">8.3 Planung und Details</h3>
+<p>Unter „Plandetails“ steht der Planzeitraum. Aktueller Abschnitt, nächster
+Termin, Puffer und konkrete Zielzuordnungen erscheinen nur, wenn die jeweilige
+Information tatsächlich vorhanden ist. Ein nicht geplanter Termin oder Puffer
+wird nicht durch eine leere oder Null-Angabe ersetzt. Ein geplanter Puffer mit
+null verbleibenden Werktagen bleibt sichtbar.</p>
+<p>Aus der normalen Statusdarstellung entfallen die parallele Bilanz „Bis heute insgesamt …“, der zusätzliche Mehrarbeitswert, der Erklärungstext zur Anrechnung nachgeholter Ziele und die frühere Anzeige „Tempo der letzten 7 Tage“. Die beiden Cockpit-Scheiben zeigen stattdessen die aktuelle backendseitige Fachbilanz.</p>
+<p>Eine vorhandene lernendenbezogene Vorschau verwendet dieselbe Berechnung. Neue historische Rekonstruktionen, Simulationsmodelle oder umfassende Berichtsfunktionen gehören nicht zum Umfang dieses Vorhabens.</p>
+<p>Eigenständige Informationen wie Unterrichtsabdeckung oder konkrete Prüfungsvoraussetzungen bleiben fachlich getrennt. Sie werden nicht aus der Mengenbilanz abgeleitet.</p>
+<h2 id="9-zielauswahl-und-fokussteuerung">9. Zielauswahl und Fokussteuerung</h2>
+<p>Die gewählte Periodenbasis gilt auch für die planbezogene Zielauswahl.</p>
+<p>Im Wochenmodus müssen geeignete Ziele der gesamten laufenden Woche bereits zu Wochenbeginn angeboten werden können. Eine Wochenanzeige mit ausschließlich tagesbezogener Auswahl ist nicht zulässig.</p>
+<p>Das Backend bevorzugt fachlich zugängliche, früher eingeplante offene Ziele, danach geeignete Ziele der laufenden Periode. Weiteres Vorarbeiten bleibt möglich.</p>
+<p>Fachliche Voraussetzungen und das gültige Personal Curriculum bleiben maßgeblich. Die Mengenbilanz ersetzt keine Prüfung konkreter Voraussetzungen. Ein bereits begonnenes, weiterhin zulässiges Lernziel wird nicht allein wegen eines Periodenwechsels verdrängt.</p>
+<h3 id="fokuswechsel-im-rahmen-der-planfortsetzung">Fokuswechsel im Rahmen der Planfortsetzung</h3>
+<p>Die vorhandenen Regeln für Fokusnavigation und Lernzustandsänderungen bleiben bestehen.</p>
+<p>Eine autorisierte Fortsetzung eines bereits akzeptierten Lernplans darf den temporären Fokus auf den erforderlichen Planabschnitt setzen. Sie verändert weder das Personal Curriculum noch die konfigurierte Fächerauswahl.</p>
+<p>Eine reine Statusabfrage löst keinen Fokuswechsel aus. Auch Pause, Stopp, ein aktiver Prüfungsmodus oder ein ungeklärter Fachwechsel werden nicht durch automatische Planfortsetzung übergangen.</p>
+<p>Ein erreichtes Periodenziel sperrt weiteres Lernen nicht. Zusätzliche Arbeit wird jedoch nicht allein wegen eines vorhandenen Rückstands ungefragt begonnen. Eine bereits laufende zulässige Lerneinheit kann fortgesetzt werden; weitere Arbeit ist auf ausdrücklichen Wunsch möglich.</p>
+<p>Dafür werden die vorhandenen Steuerungs- und Konfliktmechanismen genutzt, kein neues paralleles Navigationssystem.</p>
+<h2 id="10-nicht-auswertbare-situationen">10. Nicht auswertbare Situationen</h2>
+<p>Auswertbarkeit ist unabhängig von den Richtungen <code>behind</code>, <code>on_track</code> und <code>ahead</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Verhalten</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kein Lernplan eingerichtet</td>
+<td>Eindeutige Meldung ohne erfundene Nullbilanz</td>
+</tr>
+<tr>
+<td>Fach vollständig auswertbar</td>
+<td>Normale Statuszeile</td>
+</tr>
+<tr>
+<td>Fach durch einen ungültigen Teilplan nicht vollständig auswertbar</td>
+<td>Keine scheinbar vollständige Fachbilanz</td>
+</tr>
+<tr>
+<td>Andere Fächer weiterhin auswertbar</td>
+<td>Deren gültige Statuszeilen bleiben sichtbar</td>
+</tr>
+<tr>
+<td>Nur ein älterer Status verfügbar</td>
+<td>Datenstand ausdrücklich kennzeichnen</td>
+</tr>
+</tbody>
+</table>
+<p>Ein Hinweis kann beispielsweise lauten:</p>
+<blockquote>
+<p>1 Fachplan nicht auswertbar (Physik).</p>
+</blockquote>
+<p>Fehlende oder fehlerhafte Daten werden nicht als <code>0 von 0</code>, erreichtes Periodenziel oder „im Plan“ interpretiert.</p>
+<p>Unklare Altbestände oder widersprüchliche Pläne dürfen zunächst eine solche Einschränkung auslösen. Eine automatische Reparatur oder umfassende Sonderfallbehandlung ist nicht Bestandteil der Statusfunktion.</p>
+<p>Weiterlernen kann trotzdem möglich sein. Die Verfügbarkeit einer Lernhandlung und die Verlässlichkeit der Planbilanz bleiben getrennt.</p>
+<h2 id="11-umsetzungsumfang-und-einfuhrung">11. Umsetzungsumfang und Einführung</h2>
+<p>Die Umsetzung umfasst den gemeinsamen Rechenkern, feste Textvorlagen, die Tages-/Wochenkonfiguration, die erforderliche Anpassung der Zielauswahl sowie die Umstellung von Cockpit und Coach-Verträgen.</p>
+<p>Vorhandene Datenstrukturen werden soweit möglich weiterverwendet. Nicht vorgesehen sind eine allgemeine Regel-Engine, zusätzliche Tonalitätsoptionen, individuelle Wochenstarts, Chat-spezifische Filter, neue historische Berichtssysteme oder eine dauerhafte Parallelpflege mehrerer Statusmodelle.</p>
+<h3 id="abgestimmte-vertragsumstellung">Abgestimmte Vertragsumstellung</h3>
+<p>Die Entfernung bestehender Zählfelder ist eine ausdrückliche Vertragsänderung. Schema, tatsächliche Antworten, Server-Instructions, Coach-Richtlinien und Tests werden gemeinsam angepasst und entsprechend versioniert beziehungsweise freigegeben.</p>
+<p>Dabei werden auch vollständige Folgezustände nach Fortschrittsänderungen, Planfortsetzung und Fachwechsel berücksichtigt.</p>
+<p>Ein erforderlicher Übergangsadapter bleibt klein und befristet. Alte Felder erhalten nicht stillschweigend eine neue Bedeutung.</p>
+<p>Die Einführung erfolgt abgestimmt, sodass Cockpit und Chat innerhalb derselben Nutzungskette nicht dauerhaft unterschiedliche Statusmodelle verwenden.</p>
+<h3 id="ablosung-statt-zusatzlicher-schicht">Ablösung statt zusätzlicher Schicht</h3>
+<p>Die neue Berechnung ersetzt die bisherigen verteilten Statusregeln. Alte Berechnungen, überflüssige Felder und widersprüchliche Coach-Anweisungen werden entfernt.</p>
+<p><strong>Die Umstellung soll die Zahl der fachlich entscheidenden Stellen reduzieren, nicht lediglich eine weitere Berechnung hinzufügen.</strong></p>
+<h2 id="12-tests-und-abnahme">12. Tests und Abnahme</h2>
+<p>Die Qualitätssicherung konzentriert sich auf den deterministischen Kern, die bekannten Fehlerfälle und die relevanten Übergänge.</p>
+<table>
+<thead>
+<tr>
+<th>Prüfbereich</th>
+<th>Wesentliche Anforderungen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ausgangsbasis</strong></td>
+<td>Vorab beherrschte Ziele bleiben aus S, P, I und H ausgeschlossen; später beherrschte Planziele bleiben enthalten.</td>
+</tr>
+<tr>
+<td><strong>Rechnung</strong></td>
+<td>Alle Referenzfälle stimmen; Zielstand liegt zwischen null und P; Rückstand und Vorsprung sind nicht negativ und niemals gleichzeitig positiv.</td>
+</tr>
+<tr>
+<td><strong>Fortschritt</strong></td>
+<td>Bei unverändertem Plan und Zeitraum verschlechtert ein zusätzlicher gültiger Abschluss weder Zielstand noch Rückstand.</td>
+</tr>
+<tr>
+<td><strong>Zählung und Ereignisse</strong></td>
+<td>Keine Doppelzählung; korrekte Behandlung von Importen, fehlenden Zeitstempeln, Beherrschungsrücknahmen und Lesefehlern.</td>
+</tr>
+<tr>
+<td><strong>Zeitbezug</strong></td>
+<td>Tages- und Wochenwechsel, angebrochene Perioden, Zeitumstellungen und Wechsel der Basis funktionieren korrekt.</td>
+</tr>
+<tr>
+<td><strong>Fächer und Pläne</strong></td>
+<td>Eindeutige Zielzählung innerhalb eines Fachs; keine Verrechnung zwischen Fächern.</td>
+</tr>
+<tr>
+<td><strong>Texte und Verträge</strong></td>
+<td>Feste deutsche und englische Ausgaben; keine doppelte Lernzielankündigung; keine alten Zählfelder in der neuen Chat-Projektion.</td>
+</tr>
+<tr>
+<td><strong>Lernsteuerung</strong></td>
+<td>Wochenziele sind frühzeitig zugänglich; Fokuswechsel bleiben autorisiert; Status- und Pausenanfragen lösen keine Lernzustandsänderung aus.</td>
+</tr>
+<tr>
+<td><strong>Integration</strong></td>
+<td>Derselbe Datenstand, Zeitraum und dieselbe Sprache ergeben in Cockpit, Chat und Planung dieselbe Statusaussage.</td>
+</tr>
+</tbody>
+</table>
+<p>Dafür genügen gezielte Unit-, Vertrags- und Integrationstests sowie überprüfbare Chat-Testfälle. Eine neue umfassende Testplattform oder ein pauschales Ziel vollständiger Codeabdeckung ist nicht erforderlich.</p>
+<h3 id="abnahmekriterium">Abnahmekriterium</h3>
+<p>Die Umsetzung ist abgenommen, wenn der Planstatus für die unterstützten Fälle korrekt im Backend berechnet und formuliert wird, die Tages-/Wochenbasis bis in die Zielauswahl gilt und alle Ausgabekanäle dieselbe Aussage ohne eigene Nachberechnung übernehmen.</p>
+<p>Zusätzlich muss das Gesamtsystem einfacher geworden sein:</p>
+<blockquote>
+<p><strong>Das Backend rechnet und formuliert. Das Cockpit zeigt an. Der Coach übernimmt den Status und unterrichtet.</strong></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
