@@ -1089,9 +1089,11 @@ export const materializeGoalDescriptionRolloutBatchResolutionIndex = async (
       // resolved goal is checked against its current text, page and review
       // context below. Source provenance and resource-link metadata that the
       // review input does not encode still need a separate targeted audit.
-      const { canonicalLandscapeDigest: _historicalLandscapeDigest, ...historicalBatchBinding } = synthesisManifest.batch
-      const { canonicalLandscapeDigest: _currentLandscapeDigest, ...currentBatchBinding } = expectedBatchBinding
-      if (stableGoalBookJson(historicalBatchBinding) !== stableGoalBookJson(currentBatchBinding)) {
+      const currentBatchBinding = {
+        ...expectedBatchBinding,
+        canonicalLandscapeDigest: synthesisManifest.batch.canonicalLandscapeDigest,
+      }
+      if (stableGoalBookJson(synthesisManifest.batch) !== stableGoalBookJson(currentBatchBinding)) {
         throw new Error('Standalone synthesis manifest batch digests are stale or foreign')
       }
       synthesisManifestArtifact = {
