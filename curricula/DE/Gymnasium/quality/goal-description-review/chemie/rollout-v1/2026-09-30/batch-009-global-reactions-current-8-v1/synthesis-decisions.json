@@ -1,0 +1,190 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-b009-global-reactions-20260930-partial-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis of independent A/B; four dual keeps and four substantive deferrals, no human approval or image approval",
+  "synthesizedAt": "2026-09-30T19:40:31.611Z",
+  "batch": {
+    "batchId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930",
+    "batchManifestDigest": "sha256:c825170297688c881e79864f066867dc52774f695b50d96d4a8e2dfe36b97e38",
+    "configDigest": "sha256:1c7d62b2978d10c5e28f8438ecb973b543ac9e4076b89d054a746d7c747afc65",
+    "bundleFingerprint": "sha256:677860c202d92a4d5b1a6f1f423d4a62c66d3ac118fd5457ac4f1242aa25f894",
+    "bookDigest": "sha256:806751fabc3cf822fea70c2ccffb6da71c274eba5fa7cc2c90b569dd7f39c2c6",
+    "reviewInputFingerprint": "sha256:32ecbb03b0eded14d66cd3a2989ff61c3ee71177ec53d72e10c96a106b9fa210",
+    "dualSummaryDigest": "sha256:64845805c1910516bd363bfa806b32821196a703357372e99251ded5268303c0",
+    "canonicalLandscapeDigest": "sha256:c0736f503afbeb2d6a6375bbcebbe63f4b69b9cae04309073a0c183043d27590"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-a",
+      "campaignDigest": "sha256:564e8ba4894672d9976b1e1791687d2e13c88bc2090a5e6f5484101d0bc32279",
+      "roundId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:32ecbb03b0eded14d66cd3a2989ff61c3ee71177ec53d72e10c96a106b9fa210",
+      "batchId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:71b08c649817abcbdd06a4589e9b845a89a9d7502a01ca25290d43f36e429002",
+      "runId": "codex-gpt-6-round-a-chemie-b009-20260930",
+      "runManifestDigest": "sha256:92b23f5e796908c233e3c44795d65d8090599ea903afb0cb1f18d28616fb6dec",
+      "resultsDigest": "sha256:09ac18519d9930c00e00dd083172993ebbb36672d07428413a08f8ce826fdac1"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-b",
+      "campaignDigest": "sha256:be3d6dffaf9142ee0fd8634a27f6e97fea4175dcb95c5deeafdcbdb649507cca",
+      "roundId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:32ecbb03b0eded14d66cd3a2989ff61c3ee71177ec53d72e10c96a106b9fa210",
+      "batchId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:d341a5643d880d5833096e1fc9ad07e5feff3ccf9567e169cf6d156a67ee92c4",
+      "runId": "chemie-b009-global-reactions-20260930-blind-b-run-001",
+      "runManifestDigest": "sha256:7ff826ae46c4258bcdac12f3792912fe200805d3fd3c3a6ce11d4bce16ad3e41",
+      "resultsDigest": "sha256:18aea5bc6886b274fd9fdf5693b81e68d1cacb81435f1df4b2ef01bb26956926"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-b009-global-reactions-20260930-partial-synthesis-decision-001",
+      "goalId": "350a394f-e0d4-5e42-8e9a-39da9df33518",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e60a172e07d08d29e89b02bc8c75092d9ad5609aa5d40da625caf6939eb52c8f",
+      "pageFingerprint": "sha256:6d908d7fc73a446cc6c5558f217ee54e1b8de15370c4295a6ab22d5cd4bcbe08",
+      "goalReviewContextFingerprint": "sha256:b345f14ff59da60ad3a64b4a4bbf67b341c4472d351b175e5d481b5e2582d4b3",
+      "finalText": {
+        "titleDe": "Wirkung geeigneter Löschmittel erklären",
+        "titleEn": "Explain the effect of suitable extinguishing agents",
+        "descriptionDe": "Die lernende Person kann die Wirkung geeigneter Löschmittel bei einfachen Bränden über das Unterbrechen von Verbrennungsbedingungen fachlich erklären.",
+        "descriptionEn": "The learner can explain the effect of suitable extinguishing agents in simple fires by referring to the interruption of combustion conditions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b009-round-a-350a394f-20260930",
+          "recordDigest": "sha256:fbb3e29ff7e3b44fc50bb08b8b1ada6e204497c738bb22555f840c93ea22d5e4"
+        },
+        "second": {
+          "recordId": "chemie-b009-b-03-350a394f",
+          "recordDigest": "sha256:531fdd725275fbb83b8dc61bba848d64c6aa4ac4bf002b209ac4df74151c9391"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten die eine Kompetenz bei, ein zur einfachen Brandsituation passendes Löschmittel über die unterbrochene Verbrennungsbedingung zu erklären. Die direkte HE-J8-Herkunft trägt Löschmittel; der aktuelle Text fordert keine praktische Brandbekämpfung. Der P-Nachweis muss Papier-/Fett-/Elektroszenarien ausschließlich als sichere Daten- oder Lehrkraftfälle behandeln und die Gefahr von Wasser auf Fett ausdrücklich erkennen. Das bestehende Bild wurde angesehen, bleibt aber als eigener V-Nachweis zu prüfen; D erteilt keine Handlungserlaubnis.",
+      "rationaleEn": "Both rounds retain one competence: explain a suitable extinguishing agent for a simple fire through the combustion condition it interrupts. Direct Hessian J8 provenance supports extinguishing agents; the current wording does not require practical firefighting. P evidence must treat paper, grease and electrical scenarios only as safe data or teacher-run cases and explicitly recognise the danger of water on grease. The existing image was inspected but remains a separate V decision; D grants no permission to act."
+    },
+    {
+      "decisionId": "chemie-b009-global-reactions-20260930-partial-synthesis-decision-002",
+      "goalId": "1286f2fe-89b7-4454-8e11-85b6abd6e278",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5adf3fce882dc3e0ca28decb4918a92b2b9c0a2aa2b065ffedea1c1e828259e3",
+      "pageFingerprint": "sha256:9e1e151713358d35b4794925c7b8e85eb5a291885f3345bea7b2c347a47434ca",
+      "goalReviewContextFingerprint": "sha256:98488aef0f047fbfd7cd6cbf894c93d835518b9ee60b544866a5e6c4b1b9bf1e",
+      "finalText": {
+        "titleDe": "Exotherme und endotherme Reaktionen unterscheiden",
+        "titleEn": "Distinguish exothermic and endothermic reactions",
+        "descriptionDe": "Die lernende Person kann exotherme und endotherme Reaktionen unterscheiden und typische Beispiele dem Energieumsatz fachlich zuordnen.",
+        "descriptionEn": "The learner can distinguish exothermic and endothermic reactions and classify typical examples by their energy turnover."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b009-round-a-1286f2fe-20260930",
+          "recordDigest": "sha256:d119b0a41047cbe16421bbd3fc504f03a163c9bf96d8b0470fdce5ddf562807c"
+        },
+        "second": {
+          "recordId": "chemie-b009-b-04-1286f2fe",
+          "recordDigest": "sha256:15196c0e5072f1776abee77102db55f424062dd8e5649eae5218747d3019657c"
+        }
+      },
+      "rationaleDe": "A und B sehen exotherm/endotherm unterscheiden und Beispiele nach Nettowärmefluss zuordnen als eine Klassifikationskompetenz der direkten HE-J8-Quelle. A macht die Trennung von Aktivierungsenergie und Nettoenergie deutlich. Das tatsächlich geprüfte Bestandsbild benutzt jedoch die Abkühlung einer Brausetablette unmittelbar als Beleg für eine endotherme chemische Reaktion, obwohl Mischen/Lösen mitwirken kann; dieser konkrete V-/Seiten-HOLD bleibt offen. Diese historische D-Entscheidung darf bis zu echter Bildkorrektur und zielgenauer D/P/V-Neubindung nicht zentral streng zählen.",
+      "rationaleEn": "A and B view distinguishing exothermic from endothermic reactions and classifying examples by net heat flow as one competence under the direct Hessian J8 source. A makes the activation-versus-net-energy distinction explicit. The inspected existing image, however, treats cooling of an effervescent tablet as direct proof of an endothermic chemical reaction although mixing and dissolution may contribute; this specific V/page HOLD remains open. This historical D decision must not count centrally as strict until the image is substantively corrected and D/P/V are rebound for the goal."
+    },
+    {
+      "decisionId": "chemie-b009-global-reactions-20260930-partial-synthesis-decision-003",
+      "goalId": "9198b4cf-e454-562f-83f0-b1b74e68765d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3b0d53f10dbdeb91379cff1bd859900fb70645c84665d121186834093536da84",
+      "pageFingerprint": "sha256:9fd10f573a8fedada00c65b025a31bd4791241ae43707a56d1175bef7eaa651c",
+      "goalReviewContextFingerprint": "sha256:5496b50a7e1aacad1bc798e56a128209e8a7c230df61d31a62ba1e78f793d2ea",
+      "finalText": {
+        "titleDe": "Energieträger kriteriengeleitet bewerten",
+        "titleEn": "Evaluate energy carriers using criteria",
+        "descriptionDe": "Die lernende Person kann Energieträger auf Grundlage chemischer, ökologischer und nutzungsbezogener Kriterien begründet bewerten.",
+        "descriptionEn": "The learner can evaluate energy carriers based on chemical, ecological, and usage-related criteria."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b009-round-a-9198b4cf-20260930",
+          "recordDigest": "sha256:f612da9f56f313351613d753b89daf0f4e6854bde4a94c03f5fbe902bcd1a73b"
+        },
+        "second": {
+          "recordId": "chemie-b009-b-07-9198b4cf",
+          "recordDigest": "sha256:f97fe64ec1ae0d139ed2bb4d57646d6cceb88d9e8676e7a9fe9651f7d80122b5"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten die kontextgebundene Mehrkriterienbewertung als eine Urteilsleistung bei. BY C8.3.8 benennt CO2-/Wärmevergleich als Grundlage der Energieträgerbewertung; die Nachbarziele behandeln die analytischen Vorleistungen. P muss Daten, Kriteriengewichte und begrenztes Urteil trennen. Das tatsächlich gesichtete Bestandsbild ist wegen kleiner Pflichtfelder bei 360 px und pauschal wirkender Häkchen/Kreuze trotz variabler Herstellung/Verfügbarkeit V-/Seiten-HOLD. D allein zählt dieses Ziel nicht streng; Bild und P benötigen gezielte Prüfung.",
+      "rationaleEn": "Both rounds retain contextual multi-criteria evaluation as one judgment competence. Bavarian C8.3.8 names CO2/heat comparison as the basis for assessing energy carriers; adjacent goals handle analytical prerequisites. P must separate data, criterion weights and bounded judgment. The inspected existing image is a V/page HOLD because essential small fields are unreadable at 360 px and its ticks and crosses appear categorical despite variable production and availability. D alone does not complete this goal strictly; image and P require targeted review."
+    },
+    {
+      "decisionId": "chemie-b009-global-reactions-20260930-partial-synthesis-decision-004",
+      "goalId": "a530ee7d-1002-5f02-ae05-a9d46410ac78",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bb7d85e7c7d7644bbb970846f400ff133a0037f1b99506c2b40d135fc3508abd",
+      "pageFingerprint": "sha256:183a05232ac586adc375ebc5e335e6550deb73f45f4da385ac0e253bdfbdd115",
+      "goalReviewContextFingerprint": "sha256:ba8e657db73342ecc25c08f4a18d64471358f400cf794793f622f7a052adf36a",
+      "finalText": {
+        "titleDe": "Energieumsatz mit Bindungsänderungen erklären",
+        "titleEn": "Explain energy transfer using bond changes",
+        "descriptionDe": "Die lernende Person kann Energieänderungen bei chemischen Reaktionen qualitativ mit dem Spalten und Bilden chemischer Bindungen erklären.",
+        "descriptionEn": "The learner can qualitatively explain energy changes in chemical reactions by bond breaking and bond formation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b009-round-a-a530ee7d-20260930",
+          "recordDigest": "sha256:7685a111ff9862ad6463897adbf03d29a3f6f737bbd70f212deba89a42442211"
+        },
+        "second": {
+          "recordId": "chemie-b009-b-08-a530ee7d",
+          "recordDigest": "sha256:9b51fe48d18053d4d1c00d9017dc01e50d99e833e1b4f3e629d03a334f27473c"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten die qualitative Nettobilanz aus Energiebedarf beim Bindungsspalten und Energiefreisetzung beim Bindungsbilden als eine Erklärungskompetenz gemäß BY C8.3.5. A prüfte das tatsächliche H2/Cl2→2HCl-Bild und die erhaltenen Atome. Die darin gezeigten freien Atome sind nur gedankliche Bilanzstufe, kein behaupteter realer Mechanismus; P muss diese Modellgrenze ausdrücklich prüfen. B hat das Bild nicht als V-Freigabe beurteilt, und menschliche Freigabe bleibt getrennt.",
+      "rationaleEn": "Both rounds retain the qualitative net balance of energy input for bond breaking and energy release for bond formation as one explanatory competence under Bavarian C8.3.5. A inspected the actual H2/Cl2→2HCl image and conserved atoms. Its free atoms are only a hypothetical bookkeeping stage, not a claimed real mechanism; P must test this model limit explicitly. B did not approve the image as a V gate, and human approval remains separate."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "A hielt den aktuellen Text mit der Evidenzbedingung neuer Stoffe für tragfähig; B fordert diese Bedingung explizit im Satz, weil Wärme, Blasen oder Farbe auch physikalische Ursachen haben können. Der konkrete B-Vorschlag wird fachlich übernommen, aber eine neue aktuelle DE/EN-Beschreibung und zwei darauf bezogene Reviews fehlen; kein strict D.",
+      "rationaleEn": "A considered the current wording workable when evidence requires new substances; B asks that condition to be explicit because heat, bubbles or colour can have physical causes. The specific B proposal is accepted as a substantive revision direction, but a new current German/English description and two reviews of it are absent; no strict D."
+    },
+    {
+      "goalId": "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "A hielt die breite Redoxdeutung mit gekoppeltem Elektronentransfer in der Evidence für möglich; B will das Deutungsmodell im Zieltext auf einfache Metall/Nichtmetall-Reaktionen zuschneiden. Dieser Dissens bleibt offen, zumal das aktive MgO-Bild ein irreführendes, überfrachtetes Ionengitter und kleine Pflichtgleichungen zeigt. Ziel-, J8-Quellen-, Seiten- und V-Grenze gezielt neu prüfen; kein strict D.",
+      "rationaleEn": "A considered broad redox interpretation viable when coupled electron transfer is required in evidence; B asks to bind the model explicitly in the text for simple metal/non-metal reactions. This dissent remains open, especially because the active MgO image shows a misleading crowded ion lattice and small essential equations. Recheck the goal, J8 source, page and V boundary; no strict D."
+    },
+    {
+      "goalId": "4dab7d52-5b89-52ab-a425-17a7707f44c8",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "A wollte den aktuellen Vergleich durch P auf gleiche Systemgrenze/Bezugsgröße begrenzen. B belegt zusätzlich eine echte Überlappung mit dem eigenständigen Bewertungsziel 9198b4cf und schlägt vor, dessen Bewertungssatzteil aus diesem Vergleichsziel zu entfernen. Der B-Vorschlag ist fachlich plausibel und noch nicht am Kanon neu geprüft. Das Bestandsbild mischt CO2 pro Mol mit vager Wärme und pauschalen Bewertungen; V-HOLD. Keine strict-Zählung.",
+      "rationaleEn": "A proposed to constrain the current comparison through P to a common system boundary and basis. B additionally identifies real overlap with separate evaluation goal 9198b4cf and proposes removing the evaluation clause from this comparison goal. That B proposal is plausible but has not been reviewed on a revised canon. The image mixes CO2 per mole with vague heat and categorical ratings; V HOLD. No strict count."
+    },
+    {
+      "goalId": "0503c975-3934-5206-962e-b1c247de0c12",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "A hielt den fossilen Kohlenstoffzufluss bei expliziter Bestands-/Flussprüfung für einen einheitlichen Kern. B fordert im Wortlaut die Trennung von langfristigem Speicher, zusätzlichem atmosphärischem Zufluss und unzureichendem Senkenausgleich. Dies ist eine fachlich begründete Präzisierung, deren aktuelle Quellen-/Text-/Bildbindung erst nach Kanonänderung erneut zu prüfen ist; kein strict D.",
+      "rationaleEn": "A found one coherent fossil-carbon-flux core when stock versus flow is tested explicitly. B requests that the wording state long-term storage, added atmospheric input and insufficient sink offset. This is a substantive clarification requiring fresh source, text and image bindings after a canonical revision; no strict D."
+    }
+  ],
+  "manifestFingerprint": "sha256:e1c0164e47a5f1c9ab2ef93c469475679437f46c8da4dbeb913db3a3a0f6591b"
+}

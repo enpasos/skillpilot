@@ -1,0 +1,5 @@
+# 2eaabe90: korrigierte V2-Bindung und fachliche P-Neusichtung
+
+Der vorherige Kandidaten-Record enthielt einen unmöglichen Prüfzeitpunkt (16:12 UTC vor Erzeugung des korrigierten V2-PNGs). Seine unveränderte Kopie ist als `positive-evidence.review.before-2ea-v2-chronology-recheck.invalid.jsonl` nur zur Fehlernachvollziehbarkeit erhalten und darf nicht registriert werden.
+
+Neusichtung: 2026-09-30T16:51:46Z; aktueller Bild-SHA256 `bfbdb93024337ab5e7c9de2355036c7208bedc9a5283b185b44b8627e0604776`. Tatsächliches 1672×941-Bild in Originalauflösung geprüft: Die Skizzen im Heft sind aus Sicht der sitzenden Lernenden aufrecht; zwei Keimlingsschalen stellen eine offene Wasserfrage dar, keine Messdaten oder Kausalbestätigung. Profilfall 1: 6/10 und 3/5 Fraßblätter ergeben denselben Anteil, die kleinen Stichproben begrenzen die Hypothese. Profilfall 2: 9/10 min gegen 6/5 min erfordert Zeitnormierung; B hat im beobachteten Abschnitt die höhere Rate, eine Artenpräferenz ist unbelegt. Beide Fälle prüfen unabhängig Muster, Eingangshypothese und konkrete Vergleichsfehler. `needs_human_review` und `ai_candidate` bleiben wahrheitsgemäß; kein Lernenden- oder Humanbeleg.

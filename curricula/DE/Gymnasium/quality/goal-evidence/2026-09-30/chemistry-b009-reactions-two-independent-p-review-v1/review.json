@@ -1,0 +1,38 @@
+{
+  "reviewKind": "independent-ai-content-and-visual-context-qa",
+  "reviewedAt": "2026-09-30T20:01:49Z",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "sourceConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b009-reactions-current-2-v1.config.json",
+  "sourceConfigSha256": "sha256:49a252d2b7c3ab316d5cc2795af8d67b9031d187d566a8c5b9e10d0e50cc28da",
+  "sourceRecordsSha256": "sha256:762cb255c79eb03e6db90f1a7b78201e7be0c7a67b2b6255e19699d91269e384",
+  "technicalCheck": "PASS 2 current, 0 blockers, both needs_human_review",
+  "goals": [
+    {
+      "goalId": "350a394f-e0d4-5e42-8e9a-39da9df33518",
+      "positiveEvidenceDecision": "HOLD_AI_CANDIDATE",
+      "visualizationDecision": "HOLD_VISUAL_MACHINE_QA",
+      "activeImageSha256": "sha256:8a4df57bf5da7a0fe933ec1e186bf7b5b27023e0d056f44bae04088b20030cbd",
+      "findings": [
+        "The profile appropriately uses supplied cards or teacher data and forbids learner firefighting. It correctly rejects water on hot cooking fat.",
+        "The mandatory first case recommends 'Abdecken/geeignete Löschdecke' for a burning-fat pan. DGUV Information 205-001, section 8.4.9, reports flame breakthrough and burn risk with fire blankets on cooking-oil/fat fires and rejects them particularly in commercial and public settings. The profile therefore does not establish a safe, transferable blanket rule for a school curriculum.",
+        "The active JPG explicitly captions the fat-pan panel 'Löschdecke bei Pfannenbrand' without a context limit and depicts a person approaching the flame. At 360 px the explanatory captions are largely unreadable; the central Branddreieck labels are marginal. This is a separate V concern, not repaired merely by P text."
+      ],
+      "repairSuggestion": "Revise the paper/fat scenario to teach the interruption principle without a fire-blanket recommendation or learner action; use an official, context-specific safe response such as a suitable lid only if the case limits it appropriately, or replace the scenario with protected teacher data. Correct the active image separately and inspect its original plus 680/360 previews before V registration.",
+      "primarySafetySource": "https://publikationen.dguv.de/widgets/pdf/download/article/324"
+    },
+    {
+      "goalId": "a530ee7d-1002-5f02-ae05-a9d46410ac78",
+      "positiveEvidenceDecision": "HOLD_AI_CANDIDATE",
+      "visualizationDecision": "HOLD_VISUAL_MACHINE_QA",
+      "activeImageSha256": "sha256:e9f72f30cf18daa0b11357f4a5d7c5dac2656103114a802b3768dff591d93f9c",
+      "findings": [
+        "Both equations and bond counts are balanced; the given energy inputs/releases have a common reaction basis and correctly imply exothermic net changes. The profile explicitly warns that the free-atom middle panel is an energy-accounting model, not a proven mechanism.",
+        "The current goal and its direct Bavarian Chemistry 9 source demand qualitative explanation using bond breaking and formation, and the profile observable also says 'qualitativ'. Yet the second mandatory expected performance requires a computed excess of 'rund 800 Einheiten'. A learner who correctly explains the larger release and exothermic net effect without that subtraction should satisfy the stated goal.",
+        "The active JPG depicts 'freie Atome' between two forward reaction arrows without labeling that panel as a hypothetical accounting model. On its own, it can teach a free-atom reaction intermediate as fact. The P text's model-limit prompt does not retroactively make the standalone image correct."
+      ],
+      "repairSuggestion": "Make the numerical difference optional in the mandatory expected performance; require a qualitative comparison on the same reaction amount. Review or correct the image as a separate visualization issue so its free-atom panel is unmistakably a model, not a reaction stage.",
+      "primaryCurriculumSource": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/9/chemie/ch"
+    }
+  ]
+}

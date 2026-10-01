@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "biologie-m7-e198-controlled-concentration-v4-independent-qa",
+  "goalId": "1984fd66-c117-5c29-87b3-1c1626e4ba81",
+  "reviewAuthority": "ai_candidate",
+  "reviewer": "Codex independent P/source/image QA 2026-09-30",
+  "decision": "pass",
+  "humanApproval": false,
+  "descriptionReview": "Not performed here; two fresh blind D reviewers remain required.",
+  "source": {
+    "officialDocument": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+    "printedPage": 34,
+    "section": "E.2 Struktur und Funktion von Proteinen und Enzymen",
+    "sourceStatement": "Abhängigkeit der Enzymaktivität von Temperatur (RGT-Regel), pH-Wert und Substratkonzentration",
+    "extractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_BIOLOGIE_SEKII_KC2024.source-extraction.json",
+    "sourceGoalId": "cdc790d0-db8e-4eed-8719-e10d2fba1f97",
+    "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-20260930-v2.review.json",
+    "mappingDecision": "The source's three factors are split 1:n into temperature, pH and substrate-concentration goals; this goal is the substrate-concentration branch. The saturation explanation is a bounded operationalization of that branch, not a verbatim source requirement.",
+    "learnerFacingScope": "The target goal is explicitly present in the HE SekII GK and LK source views."
+  },
+  "positiveEvidence": {
+    "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-e198-controlled-concentration-v4/positive-evidence.config.json",
+    "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-e198-controlled-concentration-v4/candidates.authoring.json",
+    "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-e198-controlled-concentration-v4/positive-evidence.review.jsonl",
+    "status": "needs_human_review",
+    "check": "1 current AI candidate, 0 blocking issues",
+    "contentFinding": "Two independent controlled initial-rate cases use different enzyme/substrate pairs; the second also tests a pH confounder. Both require interpreting the plateau through limited active-site capacity and reject causal claims when other conditions vary. No observed learner performance or human approval is asserted.",
+    "correction": "Corrected the source-page claim from printed p.36 to printed p.34 and rematerialized the profile; also regenerated the stale review record after its application-case identifier disagreed with the lowercase authoring candidate."
+  },
+  "image": {
+    "assetPath": "app/public/assets/goal-visualizations/biologie/1984fd66-c117-5c29-87b3-1c1626e4ba81/1984fd66-c117-5c29-87b3-1c1626e4ba81.png",
+    "sha256": "98da9260d27214572f7e1fd9fb1ea9dee3730a13bfad3bbc2e7a04cdeb70ae54",
+    "pixels": [1672, 941],
+    "decision": "keep",
+    "finding": "Viewed original and an actual 360 px wide preview. The equal enzyme count, greater substrate concentration, concentration-axis label and qualitative plateau are discernible; the large labels remain readable. The image is a schematic teaching aid, not measured evidence. Public and canonical PNG copies exactly match the V-ledger hash; AI approval yes, human approval no."
+  }
+}

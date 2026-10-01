@@ -1,0 +1,155 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-root-biology-q1-a-b-reconciler-2026-09-30",
+  "synthesizedAt": "2026-09-30T20:12:49.000Z",
+  "batch": {
+    "batchId": "biologie-m7-q1-genetics-twelve-current-20260930-v1",
+    "batchManifestDigest": "sha256:7d74410cfe951b92b810c02f0387792320f8be9d019c36cadf00952219b87788",
+    "configDigest": "sha256:9e1f329b3cf3e2a41484c867e174c9394a519d26f0c5e38a0cf24bd36f855690",
+    "bundleFingerprint": "sha256:a0dc61cd61ff0c61e7a759966b0e566d452d8af265ad9b4ccf621cabaa288091",
+    "bookDigest": "sha256:864d6891c12a346e991fbf50ffd3bc213aa99169dda4a8251ad5964d8165ad73",
+    "reviewInputFingerprint": "sha256:ae92a05e686b176cd5a413d8738f6ba95453a7f3460feb78d9fac1d359bdc652",
+    "dualSummaryDigest": "sha256:32b8993a980b8ca2a07938644cc6a9e0834c96955ad2be68f702f9dccf0168e0",
+    "canonicalLandscapeDigest": "sha256:a979c1b0c498d839da09e918f1f15d39f351286a716cce3d112d0176a8b80ea0"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-a",
+      "campaignDigest": "sha256:d448c7b4a367445186a243964a0e284a3bb635a73f2a5cda8a182a563ca886d9",
+      "roundId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-first-pass-a",
+      "independenceGroupId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-independent-a",
+      "reviewInputFingerprint": "sha256:ae92a05e686b176cd5a413d8738f6ba95453a7f3460feb78d9fac1d359bdc652",
+      "batchId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:6197c3b97c714a91152ea12bcdb7af57e9541c28ad431563b694e301a8a6c60a",
+      "runId": "codex-gpt-6-biology-q1-round-a-20260930",
+      "runManifestDigest": "sha256:0e11994d9fbfd7a554cb2eab8e16016620e9b26245b7473cd9ca6a2dad495b5c",
+      "resultsDigest": "sha256:72d1300919c2608da0fcfb03bd81f130c4e44a03289bb9dd41d48a8354e9d2e2"
+    },
+    "second": {
+      "campaignId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-b",
+      "campaignDigest": "sha256:faaedfda362b2e17cf275041a969ee8da3a6824d6593691fabaec86e51269297",
+      "roundId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-first-pass-b",
+      "independenceGroupId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-independent-b",
+      "reviewInputFingerprint": "sha256:ae92a05e686b176cd5a413d8738f6ba95453a7f3460feb78d9fac1d359bdc652",
+      "batchId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:eb4c15d722c15e40d908729ba703df27fd6238b1ef0b5b5115cea1b0dc2c7b50",
+      "runId": "biologie-q1-genetics-twelve-20260930-blind-b-run-001",
+      "runManifestDigest": "sha256:2a89e98b47355cd97c7afd7490184510d6ee87b5df6df81b5fd4e202a9e0a0b3",
+      "resultsDigest": "sha256:1da543213d0aabcc1856ae6fc247e4738bb82f7829e037b883d8f7c93ec6fec7"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-synthesis-decision-001",
+      "goalId": "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:595115e302ad0e30c85b53383eaba67b31f4a834f006c227b4c0a6001ead46b8",
+      "pageFingerprint": "sha256:58cf488def5c1a9e9ad76f13c62b1c2f57c4bbcdfb887e5ce013138cf5029918",
+      "goalReviewContextFingerprint": "sha256:fb3a5261ae8d9f40db5094d23c24011423bfcf68895013a2d9ba0360690a25fa",
+      "finalText": {
+        "titleDe": "CRISPR/Cas erläutern",
+        "titleEn": "Explain CRISPR/Cas",
+        "descriptionDe": "Die lernende Person kann Funktionsweise und Einsatz der CRISPR/Cas-Methode beschreiben.",
+        "descriptionEn": "The learner can describe the mode of action and application of the CRISPR/Cas method."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "bio-q1-round-a-f53d0a0b-20260930",
+          "recordDigest": "sha256:6f55c662c83deeb3226e4f2b06ed24dabe8ed258161e823a5397206440fe5acb"
+        },
+        "second": {
+          "recordId": "biologie-q1-b-12-f53d0a0b",
+          "recordDigest": "sha256:2048809f9e5cbce35bb00d7bc119ad349e9c8d3256fc2441d3de5f28439c2845"
+        }
+      },
+      "rationaleDe": "Beide unabhängig blinden Runden behalten das aktuelle LK-Ziel: Funktionsweise und begrenzter Einsatz der CRISPR/Cas-Methode bilden eine zusammenhängende Methodenkompetenz. Das aktuelle Bild zeigt Leit-RNA, PAM und Schnitt, aber keine Reparatur; ein präzises Editierergebnis wird durch die Beschreibung nicht behauptet. Quellen-, P- und V-Gates bleiben separat.",
+      "rationaleEn": "Both independent blind rounds keep the current LK goal: mechanism and bounded use of CRISPR/Cas form one coherent method competency. The current image shows guide RNA, PAM, and cleavage but no repair; the description does not promise a precise edit. Source, positive-evidence, and image gates remain separate."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "0daa79f6-8f61-5506-98f9-65db83062ba8",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "rationaleDe": "Beide Runden verlangen eine semantische Teilung: DNA-Struktur aus Nukleotiden/Doppelhelix und Replikationsmechanismus sind getrennt prüfbar. Ziel- und Quellenbindung nach Teilung erneut prüfen; kein aktuelles Bild ist gebunden.",
+      "rationaleEn": "Both rounds require a semantic split: DNA structure from nucleotides/double helix and the replication mechanism are independently assessable. Recheck goal and source bindings after splitting; no current image is bound."
+    },
+    {
+      "goalId": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+      "firstDecision": "keep",
+      "secondDecision": "split_review",
+      "rationaleDe": "A bewertet Transkription und Translation als Prozesskette, B zeigt zwei unabhängig nachweisbare Molekül- und Regelkompetenzen. Bis zur fachlichen Auflösung dieser Atomaritätsgrenze bleibt das Ziel offen; kein Bild ist gebunden.",
+      "rationaleEn": "Round A treats transcription and translation as one process chain, while round B identifies independently demonstrable molecular and rule competencies. The atomicity disagreement remains open until resolved; no image is bound."
+    },
+    {
+      "goalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "A behält die Mutationstyp-/Folgenanalyse, B belegt die mögliche Fehldeutung einer sicheren Folge aus dem Mutationsnamen. Die lokale Präzisierung auf einen gegebenen Genkontext und begründete mögliche Folgen muss vor Abschluss geprüft werden; Bildbindung fehlt.",
+      "rationaleEn": "Round A keeps the mutation-type/consequence analysis, while round B identifies a possible false inference of a certain consequence from the mutation label. The local restriction to a given gene context and reasoned possible consequences needs review before closure; image binding is absent."
+    },
+    {
+      "goalId": "946ce2e7-c30d-5670-839d-003b0619c284",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "rationaleDe": "Beide Runden trennen die Wirkung von Transkriptionsfaktoren und DNA-Methylierung als eigenständige Regulationsleistungen. Eine allgemeine Methylierungs-An/Aus-Regel wäre zusätzlich fachlich zu grob; Teilziele und Quellenbindungen stehen aus.",
+      "rationaleEn": "Both rounds separate transcription-factor action and DNA methylation as distinct regulatory competencies. A universal methylation on/off rule would also overstate the biology; split goals and source bindings remain open."
+    },
+    {
+      "goalId": "8f6933b1-6e02-5512-acf2-a90a7fb9cb75",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "rationaleDe": "B behält die Histonmarkierungs-Kompetenz, A findet eine reale Diskrepanz zwischen dem Titel 'analysieren' und der Beschreibung 'erläutern'. Eine befundbezogene lokale Textkorrektur samt aktueller Bild-/Quellen-/P-Bindung ist vor D-Abschluss nötig; pauschale Wirkungsrichtung von Histonmethylierung vermeiden.",
+      "rationaleEn": "Round B keeps the histone-mark competency, while round A finds a real mismatch between the title 'analyze' and description 'explain'. A data-bound local wording correction and current image/source/positive-evidence bindings are needed before D closure; avoid a universal effect direction for histone methylation."
+    },
+    {
+      "goalId": "ceb54223-197c-5289-a9c6-19358912e144",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "A hält Prinzip und Anwendung zusammen, B begrenzt den offenen Anwendungsbegriff auf kleine RNA und eine Ziel-mRNA in einem vorgegebenen Fall. Die lokale Fassung muss fachlich und gegen das aktuelle Ago2/RISC-Bild geprüft werden, bevor D geschlossen wird.",
+      "rationaleEn": "Round A keeps principle and application together, while round B limits the open application wording to a small RNA and target mRNA in a given case. The local revision needs content and current Ago2/RISC image review before D closure."
+    },
+    {
+      "goalId": "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "rationaleDe": "Beide Runden sehen bakteriellen Zellbau und Vermehrung als getrennt prüfbare Leistungen trotz gemeinsamem Gentechnik-Kontext. Semantische Teilung, Quellen-/Seitenrebindung und Bilder stehen aus.",
+      "rationaleEn": "Both rounds find bacterial cell structure and reproduction independently assessable despite a shared genetic-engineering context. Semantic splitting, source/page rebinding, and images remain open."
+    },
+    {
+      "goalId": "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "rationaleDe": "Beide Runden trennen praktische DNA-Fragmenttrennung im Gel von der Interpretation des Bandenmusters. Eine reine Bildaufgabe kann die Durchführung nicht nachweisen; die fachliche Teilung und passende Sicherheits-/Quellenbindung bleiben offen.",
+      "rationaleEn": "Both rounds separate practical DNA-fragment separation in a gel from interpretation of band patterns. An image-only task cannot prove practical execution; the split and suitable safety/source bindings remain open."
+    },
+    {
+      "goalId": "440854be-7f06-5678-91cb-ba8dcab56959",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "A sieht Erbgang und Risiko als zusammenhängende Stammbaumanalyse, B zeigt, dass 'Risiken einschätzen' eine nicht belegte individuelle Prognose nahelegt. Die lokale Einschränkung auf begründete Erbgangszuordnung und Unsicherheit kleiner Stammbäume ist vor D-Abschluss zu prüfen; das aktuelle Bild allein entscheidet keinen Erbgang.",
+      "rationaleEn": "Round A sees inheritance and risk as one pedigree analysis, while round B shows that 'assess risks' can imply unsupported individual prognosis. A local restriction to reasoned inheritance classification and uncertainty in small pedigrees needs review before D closure; the current image alone cannot establish an inheritance mode."
+    },
+    {
+      "goalId": "73b66ead-e44a-5486-98e3-1fb3f99620a6",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "A behält Anlass, Aussagekraft und Grenzen als ein Urteil, B zeigt die offene Breite von 'verschiedenen Gentests'. Ein vorgegebener Testfall und datenschutzarme, nicht persönliche Beratungssituation müssen die Leistung vor D-Abschluss begrenzen; Bild fehlt.",
+      "rationaleEn": "Round A keeps purpose, informativeness, and limits as one judgment, while round B identifies the open breadth of 'various genetic tests'. A specified test case and privacy-preserving, nonpersonal counseling context must bound the competency before D closure; an image is missing."
+    },
+    {
+      "goalId": "3891b735-9d0d-5eef-b653-6ad58b9181f6",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "A behält die grundlegenden Gentherapie-Strategien, B begründet, dass der amtliche Q1.3-Punkt nur das Prinzip verlangt. Eine Fassung mit gegebenem Beispiel, Zielzelle, beabsichtigter Änderung und Wirkungsgrenze ist vor D-Abschluss fachlich zu prüfen; Bild fehlt.",
+      "rationaleEn": "Round A keeps basic gene-therapy strategies, while round B notes that the official Q1.3 point only requires the principle. A version using a given example, target cell, intended change, and effect limit needs content review before D closure; an image is missing."
+    }
+  ],
+  "manifestFingerprint": "sha256:90345f8c7ddf5ca39146c99b024489f1c97b65bd84563cdeb0fbfd8d728e8f7c"
+}

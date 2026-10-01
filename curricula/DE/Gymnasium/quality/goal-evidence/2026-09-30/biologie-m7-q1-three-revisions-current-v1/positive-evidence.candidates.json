@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "biologie-m7-q1-three-revisions-current-20260930-v1",
+  "reviewedAt": "2026-09-30T21:18:42.000Z",
+  "reviewer": "codex-biology-q1-three-post-d-positive-profile-recheck-2026-09-30",
+  "goals": [
+    {
+      "goalId": "8f6933b1-6e02-5512-acf2-a90a7fb9cb75",
+      "reason": "Current AI candidate for the revised LK histone-data goal, grounded in HE KC 2024 Q1.2 (printed p. 39) and the unchanged reviewed active PNG. Interpretation is tied to supplied mark, accessibility and transcription data; no universal methylation direction, human approval or learner achievement is claimed.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "histone-marks",
+            "essentialUnderstandingDe": "Acetyl- und Methylgruppen können an Histonen beziehungsweise Histonschwänzen sitzen; solche Markierungen verändern nicht die Basenfolge der DNA.",
+            "essentialUnderstandingEn": "Acetyl and methyl groups can occur on histones or histone tails; these marks do not change the DNA base sequence.",
+            "observablePerformanceDe": "Die lernende Person erkennt in einem neuen Nukleosomenschema Histonmarkierungen und trennt sie von einer DNA-Mutation oder DNA-Methylierung.",
+            "observablePerformanceEn": "In a new nucleosome diagram, the learner identifies histone marks and distinguishes them from a DNA mutation or DNA methylation."
+          },
+          {
+            "id": "contextual-regulation",
+            "essentialUnderstandingDe": "Histonmodifikationen können Chromatinzugänglichkeit und Genaktivität mitregulieren; die Richtung hängt unter anderem von Art und Position der Markierung und vom untersuchten Kontext ab.",
+            "essentialUnderstandingEn": "Histone modifications can regulate chromatin accessibility and gene activity; the direction depends in part on the type and position of the mark and the investigated context.",
+            "observablePerformanceDe": "Die lernende Person deutet für zwei neue Datensätze Markierung, Zugänglichkeit und Transkription gemeinsam und vermeidet eine universelle Regel 'Methylierung aus, Acetylierung an'.",
+            "observablePerformanceEn": "The learner interprets mark, accessibility, and transcription together in two new data sets and avoids a universal 'methylation off, acetylation on' rule."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "histone-marks",
+            "contextual-regulation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "mark-position",
+            "textDe": "Art oder Position der Histonmarkierung wechseln.",
+            "textEn": "Change the type or position of the histone mark."
+          },
+          {
+            "id": "data-direction",
+            "textDe": "Zugänglichkeit und Transkriptionsbefund in einem neuen Datensatz variieren.",
+            "textEn": "Vary accessibility and transcription findings in a new data set."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "acetylation-observation",
+            "taskDemandDe": "Zwei sonst vergleichbare Zellproben haben dieselbe DNA-Sequenz. An einer untersuchten Histonstelle ist in Probe B mehr Acetylierung gemessen; dort sind Chromatinzugänglichkeit und Transkriptmenge höher. Erkläre eine passende epigenetische Deutung und ihre Grenze.",
+            "taskDemandEn": "Two otherwise comparable cell samples have the same DNA sequence. Sample B has more acetylation at a studied histone site, with higher chromatin accessibility and transcript abundance. Explain a fitting epigenetic interpretation and its limit.",
+            "expectedPerformanceDe": "Die lernende Person lokalisiert die Änderung am Histon, verbindet den gemessenen Zugänglichkeits- und Transkriptionsanstieg als plausible Regulation und behauptet weder eine DNA-Mutation noch eine allgemeingültige Wirkung jeder Acetylierung.",
+            "expectedPerformanceEn": "The learner locates the change on the histone and links the measured accessibility and transcript rise as plausible regulation, without claiming a DNA mutation or a universal effect of every acetylation.",
+            "understandingFocusDe": "Gemessener Zusammenhang im konkreten Kontext statt pauschaler Schalterregel.",
+            "understandingFocusEn": "Measured relation in the given context rather than a universal switch rule."
+          },
+          {
+            "id": "methylation-transfer",
+            "taskDemandDe": "An einer anderen Histonstelle steigt in einem neuen Zellvergleich die Methylierung, während Zugänglichkeit und Transkriptmenge sinken; die DNA-Sequenz bleibt gleich. Erkläre den Befund und beurteile, ob er jede Histonmethylierung festlegt.",
+            "taskDemandEn": "At another histone site in a new cell comparison, methylation rises while accessibility and transcript abundance fall; the DNA sequence stays the same. Explain the observation and judge whether it fixes the effect of all histone methylation.",
+            "expectedPerformanceDe": "Die lernende Person beschreibt die histongebundene epigenetische Regulation dieses Falls, trennt sie von DNA-Methylierung und verneint eine allgemeine Wirkungsrichtung ohne Orts- und Kontextdaten.",
+            "expectedPerformanceEn": "The learner describes histone-bound epigenetic regulation in this case, distinguishes it from DNA methylation, and rejects a general effect direction without site and context data.",
+            "understandingFocusDe": "Transfer auf eine andere Markierung und auf die Geltungsgrenze der Deutung.",
+            "understandingFocusEn": "Transfer to another mark and to the interpretation's scope limit."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ceb54223-197c-5289-a9c6-19358912e144",
+      "reason": "Fresh AI candidate for the revised LK RNAi example goal. HE KC 2024 Q1.2 (printed p. 39 in the 2025-10 edition) requires RNA interference; the active image supports one siRNA/Ago2 cleavage example only. After independent P review, the second fresh case now includes a newly matching siRNA with lower measured target mRNA and protein, alongside the nonmatching control; it therefore asks for a second positive explanation of the sequence-dependent effect. No universal RNAi path, therapy outcome, human approval or learner achievement is claimed.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "sequence-guided-targeting",
+            "essentialUnderstandingDe": "Eine kleine RNA kann in einem Silencing-Komplex eine ausreichend passende Ziel-mRNA über Basenpaarung erkennen; die kleine RNA verändert dabei nicht die DNA-Sequenz.",
+            "essentialUnderstandingEn": "A small RNA in a silencing complex can recognize a sufficiently matching target mRNA through base pairing; the small RNA does not change the DNA sequence.",
+            "observablePerformanceDe": "Die lernende Person ordnet in einem neuen RNAi-Schema kleine RNA, Silencing-Komplex und Ziel-mRNA zu und begründet die Zielerkennung mit einer vorgegebenen Sequenzpassung.",
+            "observablePerformanceEn": "In a fresh RNAi diagram, the learner assigns the small RNA, silencing complex and target mRNA and explains targeting from a supplied sequence match."
+          },
+          {
+            "id": "expression-effect-and-limit",
+            "essentialUnderstandingDe": "Passende kleine RNA kann über Spaltung oder gehemmte Nutzung der Ziel-mRNA die Bildung des Genprodukts vermindern; die konkrete Wirkung muss am Befund geprüft werden und ist kein automatischer Therapieerfolg.",
+            "essentialUnderstandingEn": "Matching small RNA can reduce gene-product formation through target-mRNA cleavage or inhibited use; the effect must be checked against evidence and is not an automatic treatment success.",
+            "observablePerformanceDe": "Die lernende Person verbindet in einem neuen Fall die passende Bindung mit gemessener mRNA- oder Proteinabnahme und erklärt, weshalb ein nicht passendes Ziel nicht denselben Befund erwarten lässt.",
+            "observablePerformanceEn": "In a new case, the learner connects matching targeting with a measured mRNA or protein decrease and explains why a nonmatching target does not predict the same finding."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "sequence-guided-targeting",
+            "expression-effect-and-limit"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "target-match",
+            "textDe": "Sequenzpassung zwischen kleiner RNA und Ziel-mRNA variieren.",
+            "textEn": "Vary the sequence match between small RNA and target mRNA."
+          },
+          {
+            "id": "readout",
+            "textDe": "mRNA- und Proteinmessungen in zwei neuen Fallkontexten vergleichen.",
+            "textEn": "Compare mRNA and protein measurements in two fresh cases."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "matched-sirna-slicing",
+            "taskDemandDe": "Ein Zellversuch zeigt eine siRNA mit passender Zielstelle in einer mRNA. Im Schema enthält ein Ago2-Komplex eine Leitkette; nach der Behandlung sind Ziel-mRNA und Protein seltener nachweisbar. Erkläre den möglichen Wirkweg und die Aussagegrenze.",
+            "taskDemandEn": "A cell experiment shows an siRNA matching a target site in an mRNA. A diagram shows a guide strand in an Ago2 complex; after treatment, target mRNA and protein are measured at lower levels. Explain a possible pathway and its evidence limit.",
+            "expectedPerformanceDe": "Die lernende Person erklärt die sequenzgeleitete Zielerkennung, eine mögliche Ago2-Spaltung und die gemessene geringere Proteinbildung, ohne DNA-Veränderung oder garantierte Wirkung in anderen Zellen zu behaupten.",
+            "expectedPerformanceEn": "The learner explains sequence-guided targeting, possible Ago2 cleavage and measured lower protein production without claiming a DNA change or a guaranteed effect in other cells.",
+            "understandingFocusDe": "RNAi wirkt in diesem Beispiel nach der Transkription auf die passende mRNA; die Messung begrenzt die Aussage.",
+            "understandingFocusEn": "In this example, RNAi acts after transcription on matching mRNA; the measurement bounds the claim."
+          },
+          {
+            "id": "altered-target-new-matching-sirna",
+            "taskDemandDe": "In einem zweiten, vom ersten unabhängigen Zellversuch ist die Zielstelle der mRNA verändert. Ein bereitgestellter Sequenzvergleich zeigt mehrere fehlende Basenpaarungen zur bisherigen siRNA, aber eine passende Paarung über die Zielregion mit einer neu entworfenen siRNA. Ziel-mRNA und zugehöriges Protein liegen bei der unbehandelten Kontrolle jeweils bei 100 %, nach der bisherigen siRNA etwa bei 96 % beziehungsweise 98 % und nach der neu passenden siRNA bei etwa 42 % beziehungsweise 45 %. Erkläre anhand von Sequenzvergleich und Messwerten den möglichen RNAi-Weg im neuen Fall, den Unterschied zur nicht passenden Kontrolle und die Grenze der Aussage.",
+            "taskDemandEn": "In a second cell experiment independent of the first, the mRNA target site has changed. A supplied sequence comparison shows several missing base pairs with the original siRNA but a matching alignment across the target region with a newly designed siRNA. Target mRNA and its protein each measure 100% in the untreated control, about 96% and 98% with the original siRNA, and about 42% and 45% with the newly matching siRNA. Use the sequence comparison and measurements to explain a possible RNAi pathway in this new case, the difference from the nonmatching control, and the claim's limit.",
+            "expectedPerformanceDe": "Die lernende Person erkennt die fehlende Passung der bisherigen und die Passung der neuen siRNA zur veränderten Ziel-mRNA. Sie erklärt, wie die neu passende kleine RNA im Silencing-Komplex die Nutzung beziehungsweise Menge dieser mRNA vermindern kann, und verbindet dies mit der gemessenen Abnahme des zugehörigen Proteins. Die fast unveränderten Kontrollwerte stützen die Sequenzabhängigkeit in diesem Versuch; daraus folgen weder DNA-Veränderung noch garantierte Wirkung in anderen Zellen.",
+            "expectedPerformanceEn": "The learner identifies that the original siRNA no longer matches the altered target mRNA while the new siRNA does. They explain how the newly matching small RNA in a silencing complex can reduce use or abundance of this mRNA and connect this with the measured fall in its protein. The nearly unchanged control measurements support sequence dependence in this experiment; they do not imply a DNA change or guaranteed effects in other cells.",
+            "understandingFocusDe": "Zweiter positiver RNAi-Transfer auf eine neue passende siRNA mit Messbefund und nicht passender Kontrolle statt bloßem Wiedererkennen des Bildes.",
+            "understandingFocusEn": "A second positive RNAi transfer to a newly matching siRNA with measured effects and a nonmatching control, rather than mere recognition of the image."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "440854be-7f06-5678-91cb-ba8dcab56959",
+      "reason": "Fresh AI candidate for the revised GK/LK pedigree-analysis goal. The official HE KC 2024 Q1.3 (printed p. 39) specifies monohybrid, autosomal/sex-linked, dominant/recessive pedigree patterns and separates genetic testing/counselling. Fresh family patterns require bounded inheritance reasoning; the small active image is only orientation. No individual diagnosis, numeric risk, human approval or learner achievement is claimed.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "read-family-pattern",
+            "essentialUnderstandingDe": "Die Symbolfolge im Familienstammbaum zeigt beobachtete Merkmale und Eltern-Kind-Beziehungen über Generationen; ein Symbol legt den Genotyp nicht automatisch fest.",
+            "essentialUnderstandingEn": "Symbols in a family pedigree show observed traits and parent-child relations across generations; a symbol does not automatically establish a genotype.",
+            "observablePerformanceDe": "Die lernende Person liest in einem neuen Familienstammbaum Generationen, Verwandtschaft und betroffene sowie nicht betroffene Personen richtig ab.",
+            "observablePerformanceEn": "The learner correctly reads generations, kinship and affected versus unaffected people in a new family pedigree."
+          },
+          {
+            "id": "test-inheritance-models",
+            "essentialUnderstandingDe": "Unter offengelegten einfachen monohybriden Modellannahmen können Verteilung nach Generation und Geschlecht Erbgänge stützen oder ausschließen; kleine Stammbäume können mehrere Erklärungen offenlassen.",
+            "essentialUnderstandingEn": "Under stated simple single-trait model assumptions, patterns by generation and sex can support or exclude inheritance models; small pedigrees can leave several explanations open.",
+            "observablePerformanceDe": "Die lernende Person prüft für einen neuen Stammbaum dominante/rezessive und autosomale/gonosomale Erklärungen an konkreten Personen und begründet, welche Deutung sicher, plausibel oder offen ist.",
+            "observablePerformanceEn": "For a new pedigree, the learner tests dominant/recessive and autosomal/sex-linked explanations against specific individuals and explains which interpretation is supported, plausible or unresolved."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "read-family-pattern",
+            "test-inheritance-models"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "parent-child-pattern",
+            "textDe": "Betroffenheitsmuster von Eltern und Kindern in einem neuen Stammbaum wechseln.",
+            "textEn": "Change affected parent-child patterns in a new pedigree."
+          },
+          {
+            "id": "sex-pattern",
+            "textDe": "Geschlechterverteilung und Zahl beobachteter Verwandter ändern.",
+            "textEn": "Change sex distribution and the number of observed relatives."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "unaffected-parents-affected-daughter",
+            "taskDemandDe": "Ein neuer kleiner Stammbaum zeigt zwei nicht betroffene Eltern und eine betroffene Tochter. Prüfe unter der ausdrücklich vereinfachten Annahme eines monohybriden Merkmals mit vollständiger Penetranz autosomal-rezessive, autosomal-dominante und X-chromosomal-rezessive Erklärungen; benenne die Grenze der Deutung.",
+            "taskDemandEn": "A fresh small pedigree shows two unaffected parents and an affected daughter. Under the stated simplified assumption of a single-trait model with complete penetrance, test autosomal recessive, autosomal dominant and X-linked recessive explanations and state the interpretation limit.",
+            "expectedPerformanceDe": "Die lernende Person erkennt autosomal-rezessiv als passend, während ein erbliches autosomal-dominantes Modell mit vollständiger Penetranz und X-chromosomal-rezessiv bei nicht betroffenem Vater im einfachen Modell nicht passen; sie erklärt, warum der reale Erbgang aus einem kleinen Stammbaum nicht klinisch sicher feststeht.",
+            "expectedPerformanceEn": "The learner identifies autosomal recessive as fitting, while a fully penetrant inherited autosomal dominant pattern and X-linked recessive inheritance with an unaffected father do not fit the simple model; they explain why a small real pedigree does not establish a clinical diagnosis.",
+            "understandingFocusDe": "Ein konkretes Muster wird gegen Modellannahmen geprüft, ohne individuelle Vorhersage.",
+            "understandingFocusEn": "A concrete pattern is tested against stated model assumptions without an individual prediction."
+          },
+          {
+            "id": "affected-father-mixed-children",
+            "taskDemandDe": "Ein zweiter Stammbaum zeigt einen betroffenen Vater, eine nicht betroffene Mutter, einen betroffenen Sohn und eine nicht betroffene Tochter. Vergleiche unter vollständiger Penetranz plausible monohybride Erbgänge und prüfe, ob die Beobachtung einen davon eindeutig beweist.",
+            "taskDemandEn": "A second pedigree shows an affected father, an unaffected mother, an affected son and an unaffected daughter. Under complete penetrance, compare plausible single-trait inheritance models and check whether the observation proves any one model uniquely.",
+            "expectedPerformanceDe": "Die lernende Person erkennt, dass X-chromosomal-dominant wegen der nicht betroffenen Tochter im einfachen Modell nicht passt, während autosomal-dominant sowie autosomal-rezessiv oder X-chromosomal-rezessiv mit passenden mütterlichen Trägerannahmen möglich bleiben; Vater und Sohn allein beweisen keine direkte X-Weitergabe.",
+            "expectedPerformanceEn": "The learner recognizes that X-linked dominant inheritance does not fit the unaffected daughter under the simple model, while autosomal dominant and autosomal or X-linked recessive models remain possible with suitable maternal carrier assumptions; an affected father and son alone do not prove direct paternal X transmission.",
+            "understandingFocusDe": "Transfer auf ein mehrdeutiges Muster mit begründeter Ausschluss- und Unsicherheitsaussage.",
+            "understandingFocusEn": "Transfer to an ambiguous pattern with justified exclusion and uncertainty."
+          }
+        ]
+      }
+    }
+  ]
+}

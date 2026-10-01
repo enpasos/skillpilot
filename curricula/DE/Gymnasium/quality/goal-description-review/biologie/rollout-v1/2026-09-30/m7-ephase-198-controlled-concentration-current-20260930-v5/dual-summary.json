@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:47fab0a274537f3decaf02d35759b148716e63a4810a1444e2e5cbb5052c86a1",
+  "reviewInputFingerprint": "sha256:3271ea85e590a020b2fd951e297176aa4a6d20a6a84baacdba6bcfd4a1ff1b5f",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-a",
+      "roundId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-first-pass-a",
+      "independenceGroupId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-independent-a",
+      "runIds": [
+        "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-a-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-b",
+      "roundId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-first-pass-b",
+      "independenceGroupId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-independent-b",
+      "runIds": [
+        "biologie-m7-ephase-198-v5-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "1984fd66-c117-5c29-87b3-1c1626e4ba81",
+      "firstRecordId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-a-1984fd66",
+      "secondRecordId": "biologie-m7-ephase-198-v5-b-record-1984fd66-c117-5c29-87b3-1c1626e4ba81",
+      "firstRunId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-a-run-001",
+      "secondRunId": "biologie-m7-ephase-198-v5-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-b009-reaction-vs-physical-current-1-v1-20261001-resolution-8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+  "goal": {
+    "goalId": "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:f03f64e09311da797361de9f7b3d1a384aa255e653bcf9a85a013cf866bf5311",
+    "pageFingerprint": "sha256:1a66ed3b43805cc356bf0d3fddcc474b404f70280f4e2ea5f41f3a3f8172d5c4",
+    "goalReviewContextFingerprint": "sha256:70e8e246c3641d46fa0bc41e77e01bec24bd64dea60c3854cdacaae4561a3d60",
+    "finalText": {
+      "titleDe": "Chemische Reaktionen von physikalischen Vorgängen unterscheiden",
+      "titleEn": "Distinguish chemical reactions from physical processes",
+      "descriptionDe": "Die lernende Person kann chemische Reaktionen anhand neu entstehender Stoffe von physikalischen Vorgängen unterscheiden und Beobachtungen wie Temperatur- oder Farbänderungen als mögliche, allein nicht beweiskräftige Hinweise einordnen.",
+      "descriptionEn": "The learner can distinguish chemical reactions from physical processes by the formation of new substances and interpret observations such as temperature or colour changes as possible clues that are not conclusive on their own."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-b009-reaction-vs-physical-current-1-v1-20261001-a",
+      "campaignDigest": "sha256:bd0a976313d8f02dd9efd55c9e0c5895cb90fe3517f47caff5e3f0f2f002f973",
+      "roundId": "chemie-b009-reaction-vs-physical-current-1-v1-20261001-first-pass-a",
+      "independenceGroupId": "chemie-b009-reaction-vs-physical-current-1-v1-20261001-independent-a",
+      "reviewInputFingerprint": "sha256:f0722c11cd1692adf2e14a8a146578148fff4b8cb50a2f14cf918205bb78b1ff",
+      "goalReviewContextFingerprint": "sha256:70e8e246c3641d46fa0bc41e77e01bec24bd64dea60c3854cdacaae4561a3d60",
+      "batchId": "chemie-b009-reaction-vs-physical-current-1-v1-20261001-first-pass-a.batch-001",
+      "runId": "chemie-b009-reaction-physical-a-run-20261001",
+      "runManifestDigest": "sha256:14c9e49b5a373a1647ab2c1151bba3ccf59aa38cd70021e8d051bfe7b82e6ab8",
+      "resultsDigest": "sha256:6b962b8de11bd75ea78c5ef26f335dde6918f454865d3a830a2c42ef0e696c2d",
+      "recordId": "chemie-b009-reaction-physical-8d4ef102-a-20261001",
+      "recordDigest": "sha256:1a5e63f6d2fec4b6fead78f13f8e89bb543af0051d9714cfd74ca114e6cf9db5"
+    },
+    "second": {
+      "campaignId": "chemie-b009-reaction-vs-physical-current-1-v1-20261001-b",
+      "campaignDigest": "sha256:0b8e3ccfa3ab69cdb93a70ba0b057c4f374a1985bf4d289e027486295a0f8471",
+      "roundId": "chemie-b009-reaction-vs-physical-current-1-v1-20261001-first-pass-b",
+      "independenceGroupId": "chemie-b009-reaction-vs-physical-current-1-v1-20261001-independent-b",
+      "reviewInputFingerprint": "sha256:f0722c11cd1692adf2e14a8a146578148fff4b8cb50a2f14cf918205bb78b1ff",
+      "goalReviewContextFingerprint": "sha256:70e8e246c3641d46fa0bc41e77e01bec24bd64dea60c3854cdacaae4561a3d60",
+      "batchId": "chemie-b009-reaction-vs-physical-current-1-v1-20261001-first-pass-b.batch-001",
+      "runId": "chemie-b009-reaction-vs-physical-current-b-codex-gpt6-20260930t232627z",
+      "runManifestDigest": "sha256:19d4a53649c629eae322540617f8b19fce80fc53a73d2829965661325e6d1343",
+      "resultsDigest": "sha256:4e970c2cf7f4efb1868c9bb1b11a39340171aa16d36bb7117768ab9d4520651d",
+      "recordId": "chemie-b009-reaction-vs-physical-8d4ef102-b-20260930t232627z",
+      "recordDigest": "sha256:bb881a9eadc716f6c0ae345c358b4db96393762386d3be31e787ca0180465b80"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:07c65c7a69c5fd2fd046ac2cc92a90eea472f043122a8b5b708833238ae2d28c"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-b009-reaction-vs-physical-current-20261001-synthesis",
+    "manifestDigest": "sha256:27ec9ffc7686ba4a7c64d4e465f60f29ce7dd3bf6ade56e33a3d6c01f8f257a4",
+    "manifestFingerprint": "sha256:52526b603c2888c0f0ef1135012e5933e846708bcce3a80b6576b978d86180d4",
+    "decisionId": "chemie-b009-reaction-vs-physical-current-20261001-synthesis-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-b009-reaction-vs-physical-current-20261001-synthesis-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex GPT-6 bounded synthesis of two independent current-goal reviews A and blind B; AI candidate only, P/V and human approval separate",
+    "synthesizedAt": "2026-09-30T23:31:23.000Z",
+    "rationaleDe": "Die frisch unabhängigen Reviews A und B bestätigen den aktuellen DE/EN-Zieltext. Die lernende Person unterscheidet chemische Reaktion und physikalischen Vorgang am Entstehen neuer Stoffe; Farbe und Temperatur allein sind Hinweise, keine Beweise. Der amtliche bayerische Chemie-8-Lehrplan nennt Stoffneubildung und Energieumsatz, während der eigenständige Nachfolger 1286f2fe die Energieklassifikation prüft. Das bestehende Bild zeigt Eis/Wasser mit unverändertem H₂O gegenüber der ausgeglichenen Bildung von MgO und bleibt in der tatsächlich geprüften 360/680-Pixel-Ansicht verständlich. Die gezielte HE/BY-Quellen-, Seiten- und Kontextprüfung ist zusätzlich dokumentiert. Das unabhängig geprüfte P-v2-Profil bleibt needs_human_review und fordert zwei neue papierbasierte Transferfälle. Keine menschliche Freigabe oder nachgewiesene Lernleistung wird behauptet.",
+    "rationaleEn": "Fresh independent reviews A and blind B confirm the current German and English goal. The learner distinguishes chemical reactions from physical changes by formation of new substances; colour and temperature alone are clues, not proof. The official Bavarian Chemistry 8 curriculum names new-substance formation and energy turnover, while the separate successor 1286f2fe tests energy classification. The existing image shows ice/water retaining H₂O versus balanced MgO formation and remains understandable in actual 360/680-pixel views. A targeted Hessian/Bavarian source, page and context audit is documented separately. The independently checked P-v2 profile remains needs_human_review and requires two fresh paper-data transfer cases. No human approval or observed learner performance is claimed.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Bei einer chemischen Reaktion entstehen Stoffe mit neuer Stoffidentität; bei einer bloßen Zustandsänderung bleibt der Stoff derselbe. Wärme- oder Farbänderungen können beide Vorgänge begleiten und belegen für sich keine Stoffumwandlung.",
+      "essentialUnderstandingEn": "A chemical reaction forms substances with a new identity; a mere change of state leaves the substance unchanged. Heat or colour changes can accompany either process and do not by themselves establish a substance transformation.",
+      "observablePerformanceDe": "Die lernende Person ordnet vorgelegte Vorher-Nachher-Angaben zu einem Phasenwechsel und zu einer Reaktion mit belegtem Produkt begründet zu, benennt die Stoffe vor und nach dem Vorgang und trennt beobachtete Hinweise von der Schlussfolgerung, dass ein neuer Stoff entstanden ist.",
+      "observablePerformanceEn": "Given before-and-after information for a phase change and for a reaction with an identified product, the learner classifies both with reasons, names the substances before and after, and separates observed clues from the conclusion that a new substance has formed.",
+      "transferExpectationDe": "In einem neuen Fall vergleicht die lernende Person das Lösen von Zucker in Wasser mit dem Rosten eines Eisennagels, nutzt Angaben zur Rückgewinnung von Zucker beziehungsweise zum neu gebildeten Eisenoxid und begründet die Einordnung ohne eine bloße Farbänderung als Beweis zu behandeln.",
+      "transferExpectationEn": "In a fresh case, the learner compares sugar dissolving in water with an iron nail rusting, uses evidence that sugar can be recovered and that iron oxide has formed, and justifies the classification without treating a colour change alone as proof."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-a5a366269a521a47ad9eb9bcff1fdd91b1698aeae88d08b187f7a76796bfe604",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:f7c4649d187b37a24ff12444863ab72905e93c868e029b715d17424059289c7a"
+}

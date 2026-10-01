@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "biologie-e1-organelle-em-current-20261001-v2-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex GPT-6 bounded synthesis of independent A and blind B on the current EM goal page; AI candidate only, P/V and human approval separate",
+  "synthesizedAt": "2026-09-30T22:45:57.000Z",
+  "batch": {
+    "batchId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2",
+    "batchManifestDigest": "sha256:09930fb6db3b6adb1a32c3a314f2cee639ac61d9a1a0d21a1d279149544eaac3",
+    "configDigest": "sha256:69d09354bd747a09205ab93be6b7f87bc2db117eafbf201c0d7a75bcbfd2bc7b",
+    "bundleFingerprint": "sha256:7c2ea10b9291a8b4d1427518dc6280e548be7344b6e1343ab44d6f8ca5f3432e",
+    "bookDigest": "sha256:030867ddf6191680d362616d84f77a0a53f0fa4e8669cff62dfa1e69d23380f7",
+    "reviewInputFingerprint": "sha256:ed0c6281742b6af901f9e217fe569e4b93bbfae752687a80f6a0d3635d3f39e3",
+    "dualSummaryDigest": "sha256:ece7580130de87a0a2289afd91236b41703e501cb04166da020edd6a2cb2005b",
+    "canonicalLandscapeDigest": "sha256:69d3fa8f795bcfe05bf837a25edf5554b7063ce9ab92f42a457a5235e0675edc"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-a",
+      "campaignDigest": "sha256:11ed4774236f95a7d5548c0bb98dbade7bfa82bceb6378ab3a430f86190a5703",
+      "roundId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-first-pass-a",
+      "independenceGroupId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-independent-a",
+      "reviewInputFingerprint": "sha256:ed0c6281742b6af901f9e217fe569e4b93bbfae752687a80f6a0d3635d3f39e3",
+      "batchId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:dade33e6f4080ea60514c5bb090ed5f46ddf481f29c0416f811fa7536b9906f7",
+      "runId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-a-run-001",
+      "runManifestDigest": "sha256:2996d0cfde0e756915c79c6220772c3b7ef4daf4174f83f696071d008305b4f7",
+      "resultsDigest": "sha256:8195839996fc5c6508e4f5345a57aeee70402f2b15133bf16bfb8a394547db45"
+    },
+    "second": {
+      "campaignId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-b",
+      "campaignDigest": "sha256:8823373ba9a32901c9f470291c004f35639bb37f9f20e16ee1186d027c58498a",
+      "roundId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-first-pass-b",
+      "independenceGroupId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-independent-b",
+      "reviewInputFingerprint": "sha256:ed0c6281742b6af901f9e217fe569e4b93bbfae752687a80f6a0d3635d3f39e3",
+      "batchId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:c5f3ec7145803f6dbe0ba816c5504792ab6243ba325d20eac1cb7c473fec9120",
+      "runId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-b-run-001",
+      "runManifestDigest": "sha256:8d3a2450d92e00ebb0381197d0339f46223d3402807b123bc053c393ee00370a",
+      "resultsDigest": "sha256:f50853b0728b0bbbb373538333ae20b6f3cf86ca10b6d6820f096e6dbe65ee9e"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "biologie-e1-organelle-em-current-20261001-v2-synthesis-decision-001",
+      "goalId": "fc8c4b02-02f2-5ad6-b481-224d36121da1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2ce288a498be400c2368003662895c231ea656dc9761d3cc9963f60f49520200",
+      "pageFingerprint": "sha256:d30bf925d529695626c933356afb8ee4ed8a579b7c940c8b787efa88ed8269e4",
+      "goalReviewContextFingerprint": "sha256:9e427937f7198c3f6beb8792714b34cec11de0fc34a1ab19ab50230f008153c8",
+      "finalText": {
+        "titleDe": "Zellorganellen zuordnen",
+        "titleEn": "Classify cell organelles",
+        "descriptionDe": "Die lernende Person kann ausgewählte Zellorganellen in einem elektronenmikroskopischen Zellbild anhand ihres Baus erkennen und ihre zentralen Funktionen begründet zuordnen.",
+        "descriptionEn": "The learner can identify selected cell organelles in an electron micrograph from their structures and relate them to their main functions with reasons."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-a-fc8c4b02",
+          "recordDigest": "sha256:6e2a84c15241a0fe519cf6c0a48c945d1fd118886ac7a32394856964d4f97426"
+        },
+        "second": {
+          "recordId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-b-fc8c4b02",
+          "recordDigest": "sha256:3937d23c96ad501b0be3e5b91137d46a013cc92365b40210e2f3071401450c19"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen den aktuellen deutschen und englischen Zieltext als eine eng begrenzte Struktur-Funktions-Kompetenz an ausgewählten Organellen im elektronenmikroskopischen Zellbild. Die amtliche HE-E.1-Vorgabe verlangt genau diese Bildform und Übersicht; Endosymbiontentheorie bleibt ein getrenntes Ziel. Beide Evidenzfassungen sind vereinbar: In neuen, zunächst unbeschrifteten echten EM-Aufnahmen müssen sichtbare Bauhinweise die Organellzuordnung tragen, während die Funktionszuordnung als Fachwissen begründet wird. Die erste Fassung konkretisiert Pflanzen- und Tierzelltransfer und wird für den Nachweis gewählt. Das aktive 4:3-PNG wurde als lesbares, beschriftetes EM-Schema geprüft; es ist keine authentische EM-Aufnahme und ersetzt kein P-Profil oder eine Lernleistung. Keine menschliche Freigabe.",
+      "rationaleEn": "Both independent rounds confirm the current German and English text as one bounded structure-function competence for selected organelles in an electron micrograph. Official Hessian E.1 specifies this image form and overview; endosymbiosis remains a separate goal. The evidence versions are compatible: in fresh, initially unlabelled authentic electron micrographs, visible structural clues must support identification while functions are justified using subject knowledge. The first version specifies transfer between plant and animal cells and is selected for this record. The active 4:3 PNG was inspected as a legible labelled EM schema; it is not an authentic micrograph and does not replace a P profile or learner performance. No human approval is claimed."
+    }
+  ],
+  "manifestFingerprint": "sha256:4bb2b87b5e55bcb4ce135b4cd7a3b254e6463c1495838bb96009b51ca0f1786e"
+}

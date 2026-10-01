@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-resolution-c98683ae-3309-581e-b02b-b10ad703d8a0",
+  "goal": {
+    "goalId": "c98683ae-3309-581e-b02b-b10ad703d8a0",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:8360812ef8c05d90b3dc58d0c4746d785538020565040f165bbee4524898b01e",
+    "pageFingerprint": "sha256:0855fef73f042a215e6c08ae227ca01ceee36c85398b9b543f6973400b48bfab",
+    "goalReviewContextFingerprint": "sha256:b3fc04b05cefc8f3b7d8430569f89d697527aa50d6f4cfcbb7910007a5c9bcce",
+    "finalText": {
+      "titleDe": "Organische Moleküle mit dem Hybridisierungsmodell darstellen",
+      "titleEn": "Represent organic molecules with the hybridization model",
+      "descriptionDe": "Die lernende Person kann einfache organische Moleküle mit dem Hybridisierungsmodell darstellen.",
+      "descriptionEn": "The learner can represent simple organic molecules using the hybridization model."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-a",
+      "campaignDigest": "sha256:4d4a6506908f6e94424077022b3055aa200ca0b787ff7386b92a6d57549f2a76",
+      "roundId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:c07e8027610ce7b898ef3ee8592f3d2835d19ca3aa33329fa31538af54006475",
+      "goalReviewContextFingerprint": "sha256:b3fc04b05cefc8f3b7d8430569f89d697527aa50d6f4cfcbb7910007a5c9bcce",
+      "batchId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-a.batch-001",
+      "runId": "codex-gpt-6-round-a-chemie-b003-20260930",
+      "runManifestDigest": "sha256:5f8f63c26aca5bc62c9e5780cd4bf89a9edeb70b1e5ddf43c433db492a823a8b",
+      "resultsDigest": "sha256:b305ec1bb952e3d06edb174aa07446041c95eaec2392680b413529e1a666530a",
+      "recordId": "chemie-b003-round-a-c98683ae-20260930",
+      "recordDigest": "sha256:3f992e0e4061880a9b26ce809a53de25778fc1e5676c0da8635f05b49f640123"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-b",
+      "campaignDigest": "sha256:169af5a705d3c5cb4531b1291386fb63242cdd5cab7d2510c4bdf2c8c5fc5abd",
+      "roundId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:c07e8027610ce7b898ef3ee8592f3d2835d19ca3aa33329fa31538af54006475",
+      "goalReviewContextFingerprint": "sha256:b3fc04b05cefc8f3b7d8430569f89d697527aa50d6f4cfcbb7910007a5c9bcce",
+      "batchId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-b.batch-001",
+      "runId": "chemie-b003-q1-round-b-20260930-gpt6-v1",
+      "runManifestDigest": "sha256:e1cf816bbd5bfd6fd6a1a99356fddd1a27a05061a1fd0ec7128ce16e82232390",
+      "resultsDigest": "sha256:4f99b000e7cda824f3b3c3e9eb8215295ae0c11f4d62fda796e3aaa69e6f2c06",
+      "recordId": "chemie-b003-b-18",
+      "recordDigest": "sha256:47e0601cac2327d0e664de5746e58d96ae90f60ed04d9521bfae0cd19364e215"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:7063fb382e703af7de74e31bd6ff248e785a6cf733eedfd1dc690f7738914cf7"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis",
+    "manifestDigest": "sha256:15f39431398815d03ec171b914e160b7cd26f501179ef5f673c8f0fa206132ea",
+    "manifestFingerprint": "sha256:a9a373bd26c56d438f7cbbbbc49e1cfdc523af21495f0e401609ceabb4aa0534",
+    "decisionId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-010"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-010",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis; eleven current dual-round keeps, nine explicit deferrals; no human approval",
+    "synthesizedAt": "2026-09-30T16:18:39.625Z",
+    "rationaleDe": "Beide Runden behalten die Darstellung einfacher organischer Moleküle mit Hybridisierung bei. A verlangt valenz- und geometriegerechte lokale Zentren in einem neuen Molekül.",
+    "rationaleEn": "Both rounds retain representation of simple organic molecules with hybridization. A requires locally correct valence and geometry in a fresh molecule.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Im Hybridisierungsmodell bestimmt die Zahl und Art der Elektronendomänen am C die räumliche Anordnung von σ-Bindungen; nicht hybridisierte p-Orbitale tragen π-Bindungen.",
+      "essentialUnderstandingEn": "In the hybridization model, the number and kind of electron domains at carbon determine sigma-bond geometry; unhybridized p orbitals contribute pi bonds.",
+      "observablePerformanceDe": "Die lernende Person stellt ein gegebenes kleines organisches Molekül mit passenden sp3-, sp2- oder sp-Zentren und korrekter Bindungsgeometrie dar.",
+      "observablePerformanceEn": "The learner represents a supplied small organic molecule with suitable sp3, sp2, or sp centers and correct bonding geometry.",
+      "transferExpectationDe": "Für ein neues Molekül mit Einfach- und Doppelbindung markiert sie verschiedene lokale C-Geometrien und begründet die verbleibende π-Bindung.",
+      "transferExpectationEn": "For a new molecule with single and double bonds, they mark different local carbon geometries and explain the remaining pi bond."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-3b047c1dc257f479af5f6a885463159a18e3c5780239be7cca06769dd46f0c48",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:b80d9bfc8bdaed6ddaa19a90a0af6dabc6885d5596adaceec80afcffc1dec297"
+}

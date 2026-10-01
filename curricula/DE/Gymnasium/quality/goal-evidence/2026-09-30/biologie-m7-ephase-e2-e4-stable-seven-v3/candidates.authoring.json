@@ -1,0 +1,429 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "biologie-m7-ephase-e2-e4-stable-seven-current-20260930-v3",
+  "reviewedAt": "2026-09-30T19:46:36Z",
+  "reviewer": "codex-gpt-6-biology-e2e4-protein-model-correction-author-2026-09-30",
+  "goals": [
+    {
+      "goalId": "28850d2e-062d-5341-ac66-bd787a8fc84f",
+      "reason": "Substantive correction after independent content review: the first case now uses an 80-residue protein with a 12-residue enlarged segment and four consecutive marked residues. This supports the local helix and whole-chain tertiary model while still testing three marked peptide bonds. Current goal/image remain bound; AI candidate, no human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "peptide-chain-and-four-levels",
+            "essentialUnderstandingDe": "Peptidbindungen verknüpfen Aminosäuren in einer bestimmten Reihenfolge zur Polypeptidkette (Primärstruktur); lokale Faltungen, Gesamtfaltung einer Kette und Anordnung mehrerer Ketten sind Sekundär-, Tertiär- und gegebenenfalls Quartärstruktur. Nicht jedes Protein hat eine Quartärstruktur.",
+            "essentialUnderstandingEn": "Peptide bonds join amino acids in a particular order to form a polypeptide (primary structure); local folds, the overall fold of one chain and the arrangement of several chains are secondary, tertiary and, where present, quaternary structure. Not every protein has a quaternary structure.",
+            "observablePerformanceDe": "Die lernende Person baut oder ergänzt ein neues Kettenmodell, markiert Peptidbindungen und ordnet anhand der Zahl der Ketten die vier Strukturebenen mit Modellgrenze zu.",
+            "observablePerformanceEn": "The learner builds or completes a new chain model, marks peptide bonds and assigns the four structure levels using chain count and a model limit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "peptide-chain-and-four-levels"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "chain-count",
+            "textDe": "Eine gefaltete Einzelkette und ein Protein aus mehreren gefalteten Ketten vergleichen.",
+            "textEn": "Compare one folded chain with a protein made of several folded chains."
+          },
+          {
+            "id": "representation",
+            "textDe": "Baustein- und Faltungsschema mit angegebenen Modellgrenzen lesen.",
+            "textEn": "Read bead and folding diagrams with stated model limits."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "long-chain-marked-residues",
+            "taskDemandDe": "Ein neues vereinfachtes Modell zeigt eine gefaltete Polypeptidkette aus 80 Aminosäureresten. Ein Ausschnitt mit zwölf Resten ist vergrößert; vier direkt aufeinanderfolgende Reste A–D sind darin markiert. Daneben sind ein lokaler Helixabschnitt und die ganze gefaltete Einzelkette dargestellt. Markiere die Bindungen zwischen A–D und erläutere die gezeigten Strukturebenen samt Modellgrenze.",
+            "taskDemandEn": "A new simplified model shows a folded polypeptide of 80 amino-acid residues. A segment of twelve residues is enlarged, with four consecutive residues A–D marked. A local helix segment and the entire folded single chain are also shown. Mark the bonds between A–D and explain the structure levels shown and the model limit.",
+            "expectedPerformanceDe": "Zwischen den vier markierten Resten liegen drei Peptidbindungen; die Reihenfolge aller Reste ist die Primärstruktur. Der lokale Helixabschnitt ist eine Sekundärstruktur, die Gesamtfaltung der längeren Einzelkette ihre Tertiärstruktur. Für eine einzelne Kette wird keine Quartärstruktur behauptet; aus dem Schema folgen keine exakten Atompositionen.",
+            "expectedPerformanceEn": "Three peptide bonds join the four marked residues; the order of all residues is the primary structure. The local helix is secondary structure and the overall fold of the longer single chain is its tertiary structure. No quaternary structure is claimed for one chain, and the diagram gives no exact atomic positions.",
+            "understandingFocusDe": "Drei lokale Peptidbindungen werden an einer ausreichend langen Kette erkannt; Helix und Tertiärfaltung werden nicht einer Vierer-Kette zugeschrieben.",
+            "understandingFocusEn": "Three local peptide bonds are identified within a sufficiently long chain; helix and tertiary folding are not attributed to a four-residue chain."
+          },
+          {
+            "id": "two-chain-protein",
+            "taskDemandDe": "Ein anderes Schema zeigt zwei getrennte, jeweils gefaltete Polypeptidketten A und B, die zusammen ein Protein bilden; in A ist ein kurzer Faltblattabschnitt markiert. Ergänze je ein Bindungsschema für drei aufeinanderfolgende Aminosäuren und ordne alle vier Strukturebenen zu.",
+            "taskDemandEn": "Another diagram shows two separate, individually folded polypeptide chains A and B forming one protein; a short beta-sheet segment is marked in A. Add a bonding diagram for three consecutive amino acids and assign all four structure levels.",
+            "expectedPerformanceDe": "Je drei aufeinanderfolgende Aminosäuren werden durch zwei Peptidbindungen verbunden. Die jeweilige Reihenfolge ist primär, das Faltblatt sekundär, die Faltung jeder Kette tertiär und die gemeinsame Anordnung von A und B quartär; aus dem Schema wird keine genaue Faltung vorhergesagt.",
+            "expectedPerformanceEn": "Two peptide bonds join each set of three consecutive amino acids. Each sequence is primary, the beta sheet secondary, each chain's fold tertiary and the arrangement of A and B quaternary; the diagram does not predict an exact fold.",
+            "understandingFocusDe": "Mehrkettenfall verlangt eigene Verknüpfung und echte Quartärstruktur statt Bildwiederholung.",
+            "understandingFocusEn": "The multi-chain case requires independent bonding and genuine quaternary structure rather than image recall."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "0dbe758c-73c8-530b-bbbd-fb55540f942f",
+      "reason": "Current HE KCGO 2024 E.2-E.4 goal and active PNG inspected. This newly bounded AI profile asks for two distinct independent bilingual learner performances, respects the post-split goal scope and image model limit; it is not learner evidence or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "bounded-enzyme-catalysis",
+            "essentialUnderstandingDe": "Ein passendes Substrat bindet am aktiven Zentrum eines Enzyms, wird zu Produkten umgesetzt und das Enzym kann danach erneut wirken; ein einfaches Formmodell zeigt den Ablauf, aber keinen direkt beobachteten molekularen Mechanismus.",
+            "essentialUnderstandingEn": "A suitable substrate binds at an enzyme's active site, is converted into products and the enzyme can act again; a simple shape model shows the sequence but is not a directly observed molecular mechanism.",
+            "observablePerformanceDe": "Die lernende Person ordnet in einem neuen biologischen Beispiel Enzym, Substrat, aktives Zentrum und Produkte zu und erklärt die wiederholte Katalyse mit begrenzter Aussage über Beobachtungsdaten.",
+            "observablePerformanceEn": "The learner identifies enzyme, substrate, active site and products in a new biological example and explains repeated catalysis while limiting what observations alone establish."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "bounded-enzyme-catalysis"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "reaction",
+            "textDe": "Lactase-Lactose-Spaltung und Katalase-Peroxid-Zerlegung unterscheiden.",
+            "textEn": "Distinguish lactase splitting lactose from catalase decomposing peroxide."
+          },
+          {
+            "id": "evidence",
+            "textDe": "Stoffschema und sicher bereitgestellten Vergleich mit Gasblasen getrennt deuten.",
+            "textEn": "Interpret a substance diagram and a safely supplied bubble comparison separately."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "lactase-lactose",
+            "taskDemandDe": "Ein neues Schema zeigt Lactose, die in das aktive Zentrum von Lactase passt, sowie Glucose und Galactose als getrennte Produkte. Erkläre den Ablauf und was nach Freisetzung der Produkte mit Lactase geschieht.",
+            "taskDemandEn": "A new diagram shows lactose fitting the active site of lactase and glucose and galactose as separate products. Explain the sequence and what happens to lactase after product release.",
+            "expectedPerformanceDe": "Lactose ist Substrat, Lactase das katalysierende Enzym, Glucose und Galactose die Produkte. Lactase wird im vereinfachten Modell nicht verbraucht und kann erneut ein passendes Substrat umsetzen; die Zeichnung ist kein atomgenauer Nachweis.",
+            "expectedPerformanceEn": "Lactose is the substrate, lactase the catalytic enzyme, and glucose and galactose the products. Lactase is not consumed in the simplified model and can act again on a suitable substrate; the drawing is not atom-level proof.",
+            "understandingFocusDe": "Substrat-Produkt-Zuordnung und Wiederverwendung werden am neuen Spaltungsfall erklärt.",
+            "understandingFocusEn": "Substrate-product assignment and reuse are explained in a new cleavage case."
+          },
+          {
+            "id": "catalase-supplied-data",
+            "taskDemandDe": "Ein sicher bereitgestellter Vergleich zeigt bei Katalase plus Wasserstoffperoxid viele Gasblasen, bei derselben Lösung ohne aktives Enzym kaum Blasen. Beschreibe den passenden Enzymablauf und eine Grenze der Beobachtung; führe keinen eigenen Peroxidversuch durch.",
+            "taskDemandEn": "A safely supplied comparison shows many bubbles with catalase plus hydrogen peroxide and very few in the same solution without active enzyme. Describe the matching enzyme sequence and one limit of the observation; do not perform a peroxide experiment.",
+            "expectedPerformanceDe": "Wasserstoffperoxid ist Substrat; Katalase erleichtert an ihrem aktiven Zentrum die Zerlegung zu Wasser und Sauerstoff und bleibt als Katalysator verfügbar. Der Vergleich stützt die Aktivität, aber Blasen allein identifizieren das Gas nicht sicher und zeigen keine atomaren Zwischenschritte.",
+            "expectedPerformanceEn": "Hydrogen peroxide is the substrate; catalase facilitates its decomposition to water and oxygen at its active site and remains available as a catalyst. The comparison supports activity, but bubbles alone do not identify the gas with certainty or reveal atomic intermediates.",
+            "understandingFocusDe": "Ein anderer Umsatz und ein Vergleichssignal prüfen den Mechanismus unabhängig.",
+            "understandingFocusEn": "Another reaction and a comparative signal test the mechanism independently."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f539fe51-1f6f-5e04-abfe-af3d2e4d2aad",
+      "reason": "Current HE KCGO 2024 E.2-E.4 goal and active PNG inspected. This newly bounded AI profile asks for two distinct independent bilingual learner performances, respects the post-split goal scope and image model limit; it is not learner evidence or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "controlled-temperature-activity",
+            "essentialUnderstandingDe": "Bei konstanten übrigen Bedingungen kann sich Enzymaktivität mit der Temperatur ändern; ein Maximum gilt nur für die untersuchten Werte. Aktivitätsverlust nach starker Erwärmung kann auf Denaturierung hindeuten, während bloße Kälteaktivität nach Erwärmen zurückkehren kann.",
+            "essentialUnderstandingEn": "With other conditions controlled, enzyme activity can vary with temperature; an observed maximum applies only to tested values. Loss of activity after strong heating can suggest denaturation, whereas activity slowed by cold may return after warming.",
+            "observablePerformanceDe": "Die lernende Person deutet neue kontrollierte Temperaturdaten, benennt das beobachtete Maximum und prüft anhand eines Erholungsvergleichs, wie stark eine Denaturierungsdeutung gestützt ist.",
+            "observablePerformanceEn": "The learner interprets new controlled temperature data, names the observed maximum and uses a recovery comparison to judge support for a denaturation interpretation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "controlled-temperature-activity"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "design",
+            "textDe": "Aktivitätsreihe bei verschiedenen Messtemperaturen und Vorbehandlung mit anschließender gleicher Messtemperatur unterscheiden.",
+            "textEn": "Distinguish an activity series at varying assay temperatures from pretreatment followed by one assay temperature."
+          },
+          {
+            "id": "inference",
+            "textDe": "Mögliches Optimum und mögliche bleibende Hitzeschädigung mit ihrer jeweiligen Evidenzgrenze deuten.",
+            "textEn": "Interpret a possible optimum and lasting heat damage with their different evidence limits."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "amylase-temperature-table",
+            "taskDemandDe": "Amylase-Aktivität wird bei 10, 25, 37 und 65 °C unter gleichem pH, gleicher Enzym- und Stärkemenge gemessen: 1, 4, 9, 0,5 Einheiten. Deute den Verlauf und die geringe Aktivität bei 65 °C.",
+            "taskDemandEn": "Amylase activity is measured at 10, 25, 37 and 65 °C with the same pH, enzyme amount and starch amount: 1, 4, 9 and 0.5 units. Interpret the pattern and the low activity at 65 °C.",
+            "expectedPerformanceDe": "Unter den getesteten Temperaturen ist 37 °C am höchsten; 10 °C ist langsamer, 65 °C deutlich schwächer. Starke Hitze kann die Struktur schädigen, doch diese Reihe allein beweist weder irreversible Denaturierung noch ein exaktes Optimum zwischen Messpunkten.",
+            "expectedPerformanceEn": "Among tested temperatures, 37 °C gives the highest activity; 10 °C is slower and 65 °C much lower. High heat can damage structure, but this series alone proves neither irreversible denaturation nor an exact optimum between data points.",
+            "understandingFocusDe": "Kontrollierte Temperaturdaten werden ohne universelle Temperaturbehauptung gedeutet.",
+            "understandingFocusEn": "Controlled temperature data are interpreted without a universal temperature claim."
+          },
+          {
+            "id": "heat-and-cold-recovery",
+            "taskDemandDe": "Ein anderes Enzym wird getrennt bei 5 °C oder 70 °C vorbehandelt und dann jeweils zusammen mit einer unbehandelten Kontrolle bei 25 °C gemessen; pH, Substrat und Enzymmenge sind beim Messen gleich. Aktivitäten: Kontrolle 6, kalt vorbehandelt 5,8, heiß vorbehandelt 0,2 Einheiten. Was stützen die Daten?",
+            "taskDemandEn": "Another enzyme is pretreated separately at 5 °C or 70 °C and then assayed along with an untreated control at 25 °C; pH, substrate and enzyme amount are the same during assay. Activities are 6 for control, 5.8 after cold pretreatment and 0.2 after hot pretreatment. What do the data support?",
+            "expectedPerformanceDe": "Kälte-Vorbehandlung hat dieses Enzym nicht dauerhaft stark geschädigt; über seine Aktivität während der Kälte sagt die spätere Messung nichts Sicheres. Anhaltend geringe Aktivität nach Hitze stützt eine Hitzeschädigung oder Denaturierung, ohne die molekulare Form direkt zu zeigen. Die gemeinsame Messtemperatur trennt Vorbehandlung vom Messeffekt.",
+            "expectedPerformanceEn": "Cold pretreatment has not caused substantial lasting damage to this enzyme; the later assay does not establish its activity during cold exposure. Persistently low activity after heat supports heat damage or denaturation without directly showing molecular shape. The common assay temperature separates pretreatment from the measurement effect.",
+            "understandingFocusDe": "Unabhängiger Erholungsvergleich prüft die Denaturierungsdeutung statt bloß Kurvenformen wiederzuerkennen.",
+            "understandingFocusEn": "A separate recovery comparison tests denaturation reasoning rather than curve recognition."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d06adc48-b845-54af-b17c-06b5cb910b11",
+      "reason": "Current HE KCGO 2024 E.2-E.4 goal and active PNG inspected. This newly bounded AI profile asks for two distinct independent bilingual learner performances, respects the post-split goal scope and image model limit; it is not learner evidence or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "controlled-ph-optimum",
+            "essentialUnderstandingDe": "Enzymaktivität kann vom pH-Wert abhängen; ein Maximum wird aus kontrollierten Daten nur für den getesteten pH-Bereich bestimmt und ist nicht für alle Enzyme gleich.",
+            "essentialUnderstandingEn": "Enzyme activity can depend on pH; a maximum inferred from controlled data applies only to the tested pH range and is not the same for every enzyme.",
+            "observablePerformanceDe": "Die lernende Person beschreibt aus neuen Daten ein Aktivitätsmaximum und Abnahmen bei anderen pH-Werten und grenzt die Aussage auf das untersuchte Enzym und die konstanten Versuchsbedingungen ein.",
+            "observablePerformanceEn": "The learner describes an activity maximum and declines at other pH values from new data, limiting the conclusion to the tested enzyme and controlled conditions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "controlled-ph-optimum"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "enzyme",
+            "textDe": "Ein neutralnahes Enzym und Pepsin im sauren Milieu vergleichen.",
+            "textEn": "Compare an enzyme with a near-neutral maximum with pepsin in acid."
+          },
+          {
+            "id": "representation",
+            "textDe": "Tabelle und anders skalierte Kurve getrennt auswerten.",
+            "textEn": "Interpret a table and a differently scaled curve separately."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "neutral-range-table",
+            "taskDemandDe": "Bei gleicher Temperatur sowie gleicher Substrat- und Enzymmenge zeigt ein Enzym bei pH 3, 5, 7 und 9 die Aktivitäten 0,5, 4, 8 und 2 Einheiten. Beschreibe die pH-Abhängigkeit und das aus diesen Werten ableitbare Optimum.",
+            "taskDemandEn": "At the same temperature and with equal substrate and enzyme amounts, an enzyme gives activities of 0.5, 4, 8 and 2 units at pH 3, 5, 7 and 9. Describe the pH dependence and the optimum supported by these values.",
+            "expectedPerformanceDe": "pH 7 hat unter den gemessenen Werten die höchste Aktivität, pH 3 und 9 weniger; die genaue Lage zwischen Messpunkten ist offen. Die anderen Bedingungen sind kontrolliert, daher wird die beobachtete Änderung dem variierten pH zugeordnet.",
+            "expectedPerformanceEn": "pH 7 has the highest activity among measured values, while pH 3 and 9 are lower; the exact location between data points remains unknown. Other conditions are controlled, so the observed change is related to varied pH.",
+            "understandingFocusDe": "Ein beobachtetes statt behauptetes allgemeines pH-Optimum wird aus Daten bestimmt.",
+            "understandingFocusEn": "An observed rather than universal pH optimum is determined from data."
+          },
+          {
+            "id": "pepsin-acid-curve",
+            "taskDemandDe": "Eine neue Pepsin-Kurve bei konstantem Substrat, konstanter Temperatur und gleicher Enzymmenge hat bei pH 2 eine Aktivität von 10, bei pH 4 von 4 und bei pH 7 von 0,5 Einheiten. Deute die Kurve und prüfe die Aussage: ‚Alle Enzyme arbeiten bei pH 7 am besten.‘",
+            "taskDemandEn": "A new pepsin curve at fixed substrate, temperature and enzyme amount shows activity 10 at pH 2, 4 at pH 4 and 0.5 at pH 7. Interpret it and assess: 'All enzymes work best at pH 7.'",
+            "expectedPerformanceDe": "Pepsin hat im untersuchten Bereich bei pH 2 die höchste Aktivität; die allgemeine pH-7-Behauptung wird anhand dieses Gegenbeispiels verworfen. Ein exaktes Optimum außerhalb oder zwischen getesteten Werten wird nicht erfunden.",
+            "expectedPerformanceEn": "Pepsin has its highest measured activity at pH 2 in the tested range; this counterexample rejects the universal pH-7 claim. No exact optimum outside or between measured points is invented.",
+            "understandingFocusDe": "Anderes Enzym und Gegenbehauptung fordern einen unabhängigen Transfer.",
+            "understandingFocusEn": "Another enzyme and a counterclaim require independent transfer."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e1484671-208b-5ad1-a71d-7d994fb2174b",
+      "reason": "Current HE KCGO 2024 E.2-E.4 goal and active PNG inspected. This newly bounded AI profile asks for two distinct independent bilingual learner performances, respects the post-split goal scope and image model limit; it is not learner evidence or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "cell-cycle-order-and-replication",
+            "essentialUnderstandingDe": "Im eukaryotischen Zellzyklus folgen G1, S, G2 und M aufeinander; DNA wird in S vor der Teilung verdoppelt und in M auf Tochterzellen verteilt. DNA-Verdopplung ist nicht gleich Verdopplung der Chromosomenzahl in der Zelle.",
+            "essentialUnderstandingEn": "In a eukaryotic cell cycle, G1, S, G2 and M occur in order; DNA is replicated in S before division and distributed to daughter cells in M. DNA replication does not itself double the cell's chromosome count.",
+            "observablePerformanceDe": "Die lernende Person ordnet neue Phasenhinweise, verortet die DNA-Verdopplung und erklärt anhand eines zweiten Datenmusters, weshalb beide Tochterzellen nach M wieder die Ausgangsmenge DNA erhalten können.",
+            "observablePerformanceEn": "The learner orders new phase clues, locates DNA replication and uses a second data pattern to explain how both daughter cells can receive the starting DNA amount after M."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "cell-cycle-order-and-replication"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation",
+            "textDe": "Beschriebene Zellereignisse und DNA-Mengenverlauf wechseln.",
+            "textEn": "Switch between described cell events and a DNA-content time course."
+          },
+          {
+            "id": "direction",
+            "textDe": "Vorbereitung vor Teilung von Verteilung während Teilung trennen.",
+            "textEn": "Separate preparation before division from distribution during division."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "phase-cards",
+            "taskDemandDe": "Vier ungeordnete Karten beschreiben: Wachstum der Zelle, DNA-Verdopplung, Vorbereitung auf Teilung nach der Verdopplung und Verteilung des Erbmaterials auf zwei Tochterzellen. Ordne sie G1, S, G2, M zu und begründe die Reihenfolge.",
+            "taskDemandEn": "Four shuffled cards describe cell growth, DNA replication, preparation for division after replication and distribution of genetic material into two daughter cells. Match them to G1, S, G2 and M and justify the order.",
+            "expectedPerformanceDe": "Wachstum wird G1, DNA-Verdopplung S, spätere Vorbereitung G2 und Verteilung M zugeordnet. Die DNA muss vor der Teilung kopiert sein; M wird nicht als zweite DNA-Verdopplung bezeichnet.",
+            "expectedPerformanceEn": "Growth is assigned to G1, DNA replication to S, later preparation to G2 and distribution to M. DNA must be copied before division; M is not described as a second replication.",
+            "understandingFocusDe": "Ereignisse werden in eigener Phasenfolge erklärt statt Bildetiketten zu kopieren.",
+            "understandingFocusEn": "Events are explained in an independently ordered phase sequence rather than copied from image labels."
+          },
+          {
+            "id": "dna-content-series",
+            "taskDemandDe": "Bei einer anderen eukaryotischen Zellpopulation misst man pro Zelle nacheinander 2C, einen Übergang von 2C auf 4C, 4C und nach der Zellteilung je Tochterzelle 2C DNA. Ordne den Abschnitten G1, S, G2 und M zu und erkläre die 4C-Phase.",
+            "taskDemandEn": "In another eukaryotic cell population, DNA per cell is measured successively as 2C, a transition from 2C to 4C, 4C and then 2C in each daughter after division. Assign G1, S, G2 and M and explain the 4C stage.",
+            "expectedPerformanceDe": "G1 liegt bei 2C, S umfasst die Zunahme, G2 bleibt bei 4C und M verteilt das zuvor kopierte Material auf zwei Töchter mit je 2C. 4C vor M bedeutet mehr DNA pro Zelle, nicht automatisch doppelt so viele Chromosomen.",
+            "expectedPerformanceEn": "G1 has 2C, S contains the increase, G2 stays at 4C and M distributes the previously copied material to two daughters with 2C each. Pre-M 4C means more DNA per cell, not automatically twice as many chromosomes.",
+            "understandingFocusDe": "DNA-Messdaten prüfen den Phasenbegriff unabhängig vom gezeigten Zellcomic.",
+            "understandingFocusEn": "DNA measurements test the phase concept independently of the supplied cell cartoon."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ec88fc1d-ee0f-5a01-9464-dc358241050e",
+      "reason": "Current HE KCGO 2024 E.2-E.4 goal and active PNG inspected. This newly bounded AI profile asks for two distinct independent bilingual learner performances, respects the post-split goal scope and image model limit; it is not learner evidence or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "division-outcomes",
+            "essentialUnderstandingDe": "Mitose umfasst eine Teilung mit zwei Tochterzellen und bei normaler diploider Ausgangszelle gleichem Chromosomensatz; Meiose umfasst zwei aufeinanderfolgende Teilungen mit vier Zellen halben Chromosomensatzes.",
+            "essentialUnderstandingEn": "Mitosis has one division and two daughter cells with the same chromosome set for an ordinary diploid starting cell; meiosis has two consecutive divisions and four cells with half the chromosome set.",
+            "observablePerformanceDe": "Die lernende Person stellt Teilungszahl, Tochterzellzahl und Chromosomensatz an neuen Ausgangszellen gegenüber und korrigiert eine falsche Zuordnung eines Teilungsprodukts.",
+            "observablePerformanceEn": "The learner compares division count, daughter-cell count and chromosome set for new starting cells and corrects a false assignment of a division product."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "division-outcomes"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "context",
+            "textDe": "Körperzell-Erneuerung und Gametenbildung kontrastieren.",
+            "textEn": "Contrast somatic-cell renewal and gamete formation."
+          },
+          {
+            "id": "performance",
+            "textDe": "Vergleichstabelle erstellen und einen fehlerhaften Laborbericht prüfen.",
+            "textEn": "Build a comparison table and critique a faulty lab report."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "diploid-six-cells",
+            "taskDemandDe": "Eine diploide Körperzelle einer Tierart hat 2n=6. Vergleiche den Ausgang nach Mitose mit dem einer diploiden Keimbahnzelle derselben Art nach Meiose in einer eigenen Tabelle: Zahl der Teilungen, Zahl der Zellen und Chromosomensatz.",
+            "taskDemandEn": "A diploid somatic cell of an animal species has 2n=6. In your own table, compare its outcome after mitosis with that of a diploid germline cell of the same species after meiosis: number of divisions, cells and chromosome set.",
+            "expectedPerformanceDe": "Mitose: eine Teilung, zwei Zellen mit je 2n=6. Meiose: zwei Teilungen, vier Zellen mit je n=3; die drei Vergleichsgrößen werden getrennt benannt.",
+            "expectedPerformanceEn": "Mitosis: one division, two cells each with 2n=6. Meiosis: two divisions, four cells each with n=3; all three comparison properties are named separately.",
+            "understandingFocusDe": "Alle drei Vergleichsachsen werden selbst an einem neuen 2n-Wert ausgefüllt.",
+            "understandingFocusEn": "All three comparison axes are completed independently for a new 2n value."
+          },
+          {
+            "id": "faulty-gamete-report",
+            "taskDemandDe": "Ein Bericht behauptet: ‚Bei 2n=8 entstehen durch eine Mitose vier Gameten mit n=4.‘ Prüfe die Aussage und beschreibe den passenden Prozess anhand von Teilungszahl, Zellzahl und Chromosomensatz.",
+            "taskDemandEn": "A report claims: 'At 2n=8, one mitosis produces four gametes with n=4.' Assess the claim and describe the matching process using division count, cell count and chromosome set.",
+            "expectedPerformanceDe": "Eine Mitose ergibt zwei Zellen mit gleichem Satz, nicht vier haploide Gameten. Meiose umfasst zwei Teilungen und ergibt aus einer diploiden Ausgangszelle vier Zellen mit n=4.",
+            "expectedPerformanceEn": "One mitosis yields two cells with the same set, not four haploid gametes. Meiosis has two divisions and yields four cells with n=4 from one diploid starter.",
+            "understandingFocusDe": "Fehlerdiagnose verlangt Transfer der drei Vergleichsmerkmale ohne zusätzliche Replikationspflicht.",
+            "understandingFocusEn": "Diagnosing the error transfers the three comparison properties without requiring extra replication knowledge."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "9344c5ce-a07a-5d02-8c56-35320f19a934",
+      "reason": "Current HE KCGO 2024 E.2-E.4 goal and active PNG inspected. This newly bounded AI profile asks for two distinct independent bilingual learner performances, respects the post-split goal scope and image model limit; it is not learner evidence or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "model-organism-choice-and-limit",
+            "essentialUnderstandingDe": "Ein Modellorganismus wird für eine konkrete entwicklungsbiologische Frage nach passenden beobachtbaren Merkmalen und praktischen Forschungsbedingungen ausgewählt; Ergebnisse übertragbarer Prozesse sind kein Beweis für identische menschliche Entwicklung.",
+            "essentialUnderstandingEn": "A model organism is selected for a specific developmental-biology question using suitable observable features and practical research conditions; findings about potentially shared processes do not prove identical human development.",
+            "observablePerformanceDe": "Die lernende Person wählt für eine neue einfache Frage Drosophila oder C. elegans, begründet die Eignung mit mindestens zwei fallbezogenen Merkmalen und benennt eine konkrete Übertragungsgrenze.",
+            "observablePerformanceEn": "For a new simple question, the learner chooses Drosophila or C. elegans, justifies suitability with at least two case-related features and states a concrete transfer limit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "model-organism-choice-and-limit"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "organism",
+            "textDe": "Fruchtfliege und Fadenwurm für unterschiedliche Entwicklungsfragen auswählen.",
+            "textEn": "Select fruit fly and nematode for different developmental questions."
+          },
+          {
+            "id": "observation",
+            "textDe": "Sichtbare Körpermuster und verfolgbares Zellschicksal unterscheiden.",
+            "textEn": "Distinguish visible body patterns from traceable cell fates."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fly-body-pattern",
+            "taskDemandDe": "Eine Forschungsgruppe fragt, wie eine Veränderung eines Gens das frühe Körpermuster vieler Embryonen beeinflusst. Wähle zwischen Drosophila und C. elegans einen passenden Modellorganismus; begründe mit beobachtbaren Nachkommen und Generationsdauer und nenne eine Grenze für Aussagen über Menschen.",
+            "taskDemandEn": "A research group asks how a gene change affects early body pattern in many embryos. Choose between Drosophila and C. elegans as a suitable model; justify using observable offspring and generation time and state a limit for claims about humans.",
+            "expectedPerformanceDe": "Drosophila ist für den Vergleich vieler Embryonen und Körpermuster gut begründbar: viele Nachkommen, kurze Generationszeit und sichtbare Entwicklungsmerkmale. Ein dort gefundener Zusammenhang darf nicht ohne weitere Prüfung als identischer Ablauf der menschlichen Embryonalentwicklung gelten.",
+            "expectedPerformanceEn": "Drosophila is well justified for comparing many embryos and body patterns: many offspring, a short generation time and visible developmental traits. A relation found there cannot, without further study, be treated as the identical course of human embryonic development.",
+            "understandingFocusDe": "Eignung und menschliche Transfergrenze werden an einer konkreten Körpermusterfrage begründet.",
+            "understandingFocusEn": "Suitability and limits of human transfer are justified for a specific body-pattern question."
+          },
+          {
+            "id": "worm-cell-lineage",
+            "taskDemandDe": "Eine andere Forschungsgruppe will beobachten, welche frühen Zellen eines kleinen Tieres später bestimmte Gewebe bilden. Wähle einen Modellorganismus und erkläre, warum Beobachtbarkeit und Entwicklungsablauf helfen; begrenze die Übertragung auf menschliche Organe.",
+            "taskDemandEn": "Another group wants to observe which early cells of a small animal later form particular tissues. Choose a model organism and explain why visibility and development help; limit transfer to human organs.",
+            "expectedPerformanceDe": "C. elegans ist wegen seines durchsichtigen Körpers, der gut verfolgbaren Zelllinie und kurzen Entwicklung passend. Ein verfolgtes Zellschicksal im Wurm zeigt nicht direkt, wie komplexe menschliche Organe entstehen; dafür braucht es eigene Evidenz.",
+            "expectedPerformanceEn": "C. elegans is suitable because of its transparent body, traceable cell lineage and short development. A tracked cell fate in the worm does not directly show how complex human organs form; that needs separate evidence.",
+            "understandingFocusDe": "Anderer Organismus und anderer Beobachtungsgegenstand prüfen die Begründung unabhängig.",
+            "understandingFocusEn": "Another organism and observation target test the rationale independently."
+          }
+        ]
+      }
+    }
+  ]
+}

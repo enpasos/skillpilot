@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "independent-d-synthesis-and-page-context-review",
+  "reviewedAt": "2026-09-30T18:22:35Z",
+  "authority": "ai_candidate",
+  "subject": "Chemie",
+  "batchId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930",
+  "reviewedArtifacts": [
+    "synthesis-decisions.json",
+    "resolution-index.json",
+    "resolutions/*.resolution.json",
+    "round-a/results/*.records.jsonl",
+    "round-b/results/*.records.jsonl",
+    "bundle/book-model.json",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "actual active image files and direct source-extraction entries"
+  ],
+  "targetedTechnicalCheck": {
+    "command": "npm --prefix app run -s quality:goal-description-rollout-resolutions -- --config curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-006-ions-atoms-bonding-current-20-v1.config.json --synthesis-manifest curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-006-ions-atoms-bonding-current-20-v1/synthesis-decisions.json",
+    "result": "PASS: technical standalone manifest-bound resolution check reports strict=7/20, deferred=13. The content HOLD below is additional to that technical result."
+  },
+  "decisions": [
+    {
+      "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+      "verdict": "PASS",
+      "imageSha256": "ea2edb9651968aa69ea461942ce49dc943fa7b9e7a1bc35a6246c7c470af7f1e",
+      "finding": "Both independent records keep one comparison competence. The synthesis correctly distinguishes electron conduction in metals, mobile ions in aqueous salt solution or melt, and poor conduction by solid salt or molecular sugar solution. The actual four-panel image is coherent with these distinctions. HE 9.3 source extraction explicitly names conductivity measurements in solids, liquids and solutions; the rationale confines hot melts to supplied data."
+    },
+    {
+      "goalId": "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+      "verdict": "PASS",
+      "imageSha256": "c58f56c0969a71353fbfd64136eeaa9d53a326fb54c77519a4a4bc13307becdb",
+      "finding": "Both rounds and the chosen synthesis treat successive ionization energies as bounded evidence for shells, not proof of literal Bohr orbits. The actual sodium image labels 2|8|1; the break and large-jump annotation are on the second-ionization-energy bar, correctly indicating the large rise after removing the first valence electron. This was checked at original resolution after an initial mistaken reading. HE 10.1 supports Bohr/shell-model work, and mapped BY C9-HG_SG_MUG_WWG_SWG.5.1 explicitly links ionization-energy findings to the energy-level model."
+    },
+    {
+      "goalId": "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+      "verdict": "PASS",
+      "imageSha256": "2c36e518cfe1c229b97fafba32ebb8c0d7528f4aecd8b0b79c0918d682e4a3a1",
+      "finding": "Both rounds and the synthesis keep one bounded main-group periodic-table interpretation. The active image correctly places Li/Na/K in the first main group and F/Cl/Br/I in the seventh, with atomic numbers 11 and 17 and corresponding valence counts 1 and 7. HE 10.1 source extraction includes the periodic-table ordering principle; mapped BY C9-HG_SG_MUG_WWG_SWG.5.2 explicitly supports valence/proton reading. Transition-metal generalization is excluded. Separate V approval is not inferred from the page's pilot status."
+    },
+    {
+      "goalId": "fcaf8c9b-bd81-552e-9d91-43649895471e",
+      "verdict": "PASS",
+      "imageSha256": "019955f9c8ea98d02d562ed88665b0781081abda89e5b4e97fcd460f5085d3fc",
+      "finding": "The two records and synthesis join metal-property observations to one model-building act and preserve the Dalton-model limitation. The image contrasts isolated Dalton spheres with positive metal cores and mobile electrons for conduction and malleability; its gloss/reflection sketch stays a simple model. Direct BY C8.4.2 source requires exactly this property-to-model development. Pilot image metadata is a separate V gate."
+    },
+    {
+      "goalId": "7964cb36-e9b1-5176-9426-a82041a5b72f",
+      "verdict": "PASS",
+      "imageSha256": "0bcba12a6ce465a4fb87a26f6d9830951618494055fb1c3cdbab69860a48464f",
+      "finding": "Both rounds and the synthesis distinguish a discrete molecule from an extended ionic lattice, using formula types as consequences of particle models. The active H2O/NaCl image shows two H per one O and an extended 1:1 Na+/Cl− lattice, with no NaCl molecule. Direct BY C8.4.4 source makes the same directed/non-directed model distinction. Pilot image metadata does not imply V clearance."
+    },
+    {
+      "goalId": "92c99237-1c74-54fc-bf08-9191656afaa6",
+      "verdict": "HOLD",
+      "imageSha256": "b32312297218eaf6d8a07a25613e10738b7e9516acb92864c1ebc8e907223bab",
+      "finding": "The two text reviews, chosen synthesis and direct BY C9-NTG.4.6/C10-HG_SG_MUG_WWG_SWG.2.6 source support conversion and contextual choice of molecular representations. The actual bound JPG, however, labels the C2H6O molecular formula `Summenformel: Stoffmengen`. A molecular formula gives element types and atom counts in one molecule; it does not give amount of substance in mol. This contradicts the synthesis's correct atom-count explanation on the reviewed page. The current image-bound D resolution must not be counted as independently verified.",
+      "requiredResolution": "Correct only the demonstrably wrong picture content as a friendly clear PNG, inspect its actual chemistry and legibility, update the page binding, and perform targeted fresh D reviews of the changed image/page context. Do not merely replace a hash. Preserve the historical bundle and resolution."
+    },
+    {
+      "goalId": "67cd332f-9db7-50e1-87f6-172ef3714300",
+      "verdict": "PASS",
+      "imageSha256": "0f01bbbd432f46d431eeb2c07353521958af981ffc1c6397decd41d93175bd4d",
+      "finding": "The rounds and synthesis connect a supplied Lewis/valence-line representation with one VSEPR explanation of simple molecule shape, including a lone-pair transfer. The active CH4 image has four C-H bonds, four domains and a tetrahedral wedge sketch around 109.5 degrees. Direct BW 3.2.1.3 (5) source asks for spatial molecular structure using the electron-pair-repulsion model. Pilot image metadata does not imply V clearance."
+    }
+  ],
+  "summary": {
+    "contentPass": 6,
+    "contentHold": 1,
+    "technicalStrictDInIndex": 7,
+    "independentlyConfirmedCurrentImageBoundD": 6,
+    "newCentralM7ClosuresClaimed": 0,
+    "humanApprovalsClaimed": 0,
+    "sourceScopeLimit": "Direct supporting source entries were checked for these goals. This targeted review does not certify every jurisdiction and course projection or the separate P/A/M/V gates."
+  }
+}

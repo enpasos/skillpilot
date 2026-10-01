@@ -1,0 +1,127 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-b007-global-foundations-current-5-20260930-partial-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis; two dual keeps in historical base context, three explicit deferrals; fcc image correction requires targeted supersession before integration; no human approval",
+  "synthesizedAt": "2026-09-30T18:54:28.143Z",
+  "batch": {
+    "batchId": "chemie-rollout-v1-batch-007-global-foundations-current-5-v1-20260930",
+    "batchManifestDigest": "sha256:cdc327ddbc634187958ccac878cb6f5f6f621375dd0757707f916e600b2b2cd0",
+    "configDigest": "sha256:a21f40fb01828f3907469ea3e3b400fedd3e0f2041257a4333468461db6ba05d",
+    "bundleFingerprint": "sha256:17b1b9a3a21c0dd1ff6be3c72dd3d296b8162c731d01bf5dc460c13508ba2a0e",
+    "bookDigest": "sha256:eb855d8df41cc2c7f84c31ebf2c913702bc2439260141f704439e8a1d3f94757",
+    "reviewInputFingerprint": "sha256:9d9a97593428d410cbeb43b9bedf02c4d5bee58be3c2eb05ea19052b02bb01d1",
+    "dualSummaryDigest": "sha256:61b68ce2cddbd1ffac9efcae60a0b3a327d24d793a07a9e7568efa0d49159e34",
+    "canonicalLandscapeDigest": "sha256:fe43290863c32750660e1f99ee127f170af2cbb96833165a4dde031a561ee63c"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-007-global-foundations-current-5-v1-20260930-a",
+      "campaignDigest": "sha256:2bfffb786b4052f19b4e46b2704255f805dacbd3b8cd406fb2f23f56acd6b93a",
+      "roundId": "chemie-rollout-v1-batch-007-global-foundations-current-5-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-007-global-foundations-current-5-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:9d9a97593428d410cbeb43b9bedf02c4d5bee58be3c2eb05ea19052b02bb01d1",
+      "batchId": "chemie-rollout-v1-batch-007-global-foundations-current-5-v1-20260930-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:a202f780adeff4ea73de6041b041c5ea4e5a42d3ae3feae9e53550b61b775f92",
+      "runId": "codex-gpt-6-round-a-chemie-b007-20260930",
+      "runManifestDigest": "sha256:bdf87b4a11d1bf7d1ccc840ad929f7f4bef8c7c5c42b8eec9ed6737bc14ff9ac",
+      "resultsDigest": "sha256:94299910c95c23618cf1b3b124e35d47ef0d9e6cfc634ce74d2167dc1d0220dd"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-007-global-foundations-current-5-v1-20260930-b",
+      "campaignDigest": "sha256:231b4626f72b302d36c4a1b353b5fe242e3d754d689ad29d1942c957a5dc4bcc",
+      "roundId": "chemie-rollout-v1-batch-007-global-foundations-current-5-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-007-global-foundations-current-5-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:9d9a97593428d410cbeb43b9bedf02c4d5bee58be3c2eb05ea19052b02bb01d1",
+      "batchId": "chemie-rollout-v1-batch-007-global-foundations-current-5-v1-20260930-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:d08c23576c0da12eddb7151505222645cadeffa99315d749deb47d60a1c9d68f",
+      "runId": "chemie-b007-global-foundations-20260930-blind-b-run-001",
+      "runManifestDigest": "sha256:7c3f93232b2b27a5eaffe2d60f8da6e11e83a1f42f7d5edf2e9747b49c686296",
+      "resultsDigest": "sha256:1594d774f73dfeec314ba03b1c63ac89dfbe30ae115d85f60bc08773e95f695b"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-b007-global-foundations-current-5-20260930-partial-synthesis-decision-001",
+      "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6f0e432626ddfe21d61e8ebfa35fc812211258768ea5091c872b269a6319cf1f",
+      "pageFingerprint": "sha256:7bd7e6317873206cd80570ef63ae43382f7f16b81447e69082937a3821157005",
+      "goalReviewContextFingerprint": "sha256:efa103407baf6423d4892418bd6d153cd6ced5c92ab94fa6a5afeccab550ef39",
+      "finalText": {
+        "titleDe": "Stoffe und Eigenschaften beschreiben",
+        "titleEn": "Describe substances and properties",
+        "descriptionDe": "Die lernende Person kann Stoffe anhand von Eigenschaftsmerkmalen beschreiben und ordnen.",
+        "descriptionEn": "The learner can describe and classify substances based on properties."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b007-round-a-fcc73fb5-20260930",
+          "recordDigest": "sha256:d4d59d7fbfde38eb2c5c7ac86b8edfd1d1d038e8334f68c8ca972c7df846f5ca"
+        },
+        "second": {
+          "recordId": "chemie-b007-b-03-fcc73fb5",
+          "recordDigest": "sha256:602be935b750496cdc7cc5b3b4ec66cf3bbd382f75b5bea62e7d5cc407266a33"
+        }
+      },
+      "rationaleDe": "A und B behalten die einheitliche Stoffeigenschafts-Klassifikation der aktuellen Beschreibung bei. Das tatsächlich gesichtete Bestandsbild nennt Wasser jedoch unter „Farbe“ nur „Klar“, was keine Farbangabe ist; außerdem ist die zentrale große Tabelle bei 360 px nicht lesbar. Dieser historische Basisentscheid darf erst nach gezielter PNG-Korrektur, aktueller D/P/V-Neubindung und expliziter Supersession integriert werden.",
+      "rationaleEn": "A and B retain the current coherent property-based classification description. The inspected existing image, however, labels water as 'clear' under 'color', which is not a color, and its essential large table is unreadable at 360 px. This historical base decision must be integrated only after a targeted PNG correction, current D/P/V rebinding and explicit supersession."
+    },
+    {
+      "decisionId": "chemie-b007-global-foundations-current-5-20260930-partial-synthesis-decision-002",
+      "goalId": "5a709938-e0f5-42b7-94f0-cfded08963a2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:75730bb9a4cf8a4a523f0c7565b2b6656194ba67756b799de52ac926334f607c",
+      "pageFingerprint": "sha256:80baa0dc8be6b6cf2d27ac1cb4f9e7ee75d78e0a6b61d4a996d03a6b91bd50d6",
+      "goalReviewContextFingerprint": "sha256:b77334402fd5b57d119f9546f17a60ac56538eba9bb754d86ca1cd1bbc46cf62",
+      "finalText": {
+        "titleDe": "Stoffgemische mit Trennverfahren trennen",
+        "titleEn": "Separate mixtures using separation methods",
+        "descriptionDe": "Die lernende Person kann Stoffgemische mit Verfahren wie Filtration, Destillation und Extraktion trennen und die Verfahrenswahl begründen.",
+        "descriptionEn": "The learner can separate mixtures using methods such as filtration, distillation, and extraction and justify the choice of method."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b007-round-a-5a709938-20260930",
+          "recordDigest": "sha256:0a83bb2b5cf052f0ae1dd66bb64b5e287c4211220e71ce52487ee069b19a8f4d"
+        },
+        "second": {
+          "recordId": "chemie-b007-b-04-5a709938",
+          "recordDigest": "sha256:c74f78863261f511b27fb3370a3ca16c0fa0ad87ae0a058e84479dab7b46648b"
+        }
+      },
+      "rationaleDe": "A und B behalten die Verfahrenswahl nach Stoffeigenschaften als eine Kompetenz. Filtration, Destillation und Extraktion sind Beispiele für das begründete Auswählen; die sichere Filtration eines Sand-Wasser-Modells und neue Datensituationen können Verständnis zeigen, ohne unbeaufsichtigtes Erhitzen oder Lösungsmittelarbeit zu verlangen. Das aktive Bestandsbild wurde tatsächlich geprüft und ist fachlich passend; frühere gültige Bildfreigabe bleibt gebunden.",
+      "rationaleEn": "A and B retain method selection from material properties as one competence. Filtration, distillation and extraction illustrate justified choice; safe sand-water filtration and fresh data cases can show understanding without unsupervised heating or solvent work. The active existing image was actually inspected and is scientifically suitable; its earlier valid visual approval remains bound."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "rationaleDe": "A fordert eine enger quellengebundene Kennzeichnungsdeutung statt der zusätzlich ungebundenen Rechercheleistung, während B den aktuellen Text hält. Dieser Dissens ist fachlich offen. Im tatsächlich gesichteten Bestandsbild überkreuzt ein rotes Verbotszeichen das Etikettlesen trotz Beschriftung „Etikett lesen“; Bild-/Seitenkorrektur und gezielte D-Neubindung sind nötig.",
+      "rationaleEn": "A asks for label interpretation within the bound source rather than an additional unbound research task, while B keeps the current text. This dissent remains substantive. In the inspected existing image, a red prohibition mark crosses label reading despite the caption 'read label'; visual/page correction and targeted D rebinding are required."
+    },
+    {
+      "goalId": "7be6f951-a614-52dc-94d3-2ce0d33765ff",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "rationaleDe": "Beide Runden verlangen einen echten Split zwischen sicherem Umgang und stoff-/ortsabhängiger Entsorgung. Die direkte HE-Herkunft belegt Gefahrensymbole und Sicherheitsregeln, aber nicht den pauschalen Entsorgungsumfang; neue Ziel- und Quellenbindung müssen fachlich geprüft werden.",
+      "rationaleEn": "Both rounds require a real split between safe handling and substance/site-dependent disposal. Direct Hessian provenance supports hazard symbols and safety rules, but not a general disposal scope; goal and source bindings need substantive review."
+    },
+    {
+      "goalId": "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+      "firstDecision": "keep",
+      "secondDecision": "split_review",
+      "rationaleDe": "A sah eine integrierte Lösungsreihe, B trennte die praktische Herstellung von der begrifflichen Löslichkeits-/Sättigungsdeutung. Das sind getrennt prüfbare Leistungen und der Dissens bleibt offen. Zusätzlich zeigt das Bestandsbild bei gleicher Temperatur und scheinbar gleicher Wassermenge in ungesättigter und gesättigter Probe identische gelöste Teilchenzahlen; die Visualisierung ist zu klären, bevor D/P/V abgeschlossen wird.",
+      "rationaleEn": "A viewed a solution series as integrated; B separated practical preparation from the conceptual solubility/saturation explanation. These performances can be assessed independently, so the dissent remains open. The existing image also shows apparently identical dissolved-particle counts in unsaturated and saturated samples at the same temperature and seemingly same water volume; the visual must be resolved before D/P/V closure."
+    }
+  ],
+  "manifestFingerprint": "sha256:62985ccb8fd0c8260068461f18d75769363394263d11d0afd6c4bd6e6df32aae"
+}

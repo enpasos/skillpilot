@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:5be3db8510c990d1a2abb8d6bf756e19544b4ad8f437eedbb5082bf73926487b",
+  "reviewInputFingerprint": "sha256:06fc5ddd6e0ff9a4ba8399baca56fb4a3fffe169faf70e110d01e227aa02a0a3",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-004w-states-corrected-image-current-1-v1-20260930-a",
+      "roundId": "chemie-rollout-v1-batch-004w-states-corrected-image-current-1-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-004w-states-corrected-image-current-1-v1-20260930-independent-a",
+      "runIds": [
+        "chemie-rollout-v1-batch-004w-states-corrected-image-current-1-v1-20260930-first-pass-a.batch-001-gpt6-astra-d"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-astra::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-004w-states-corrected-image-current-1-v1-20260930-b",
+      "roundId": "chemie-rollout-v1-batch-004w-states-corrected-image-current-1-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-004w-states-corrected-image-current-1-v1-20260930-independent-b",
+      "runIds": [
+        "chemie-b004w-326d45bf-round-b-gpt6-20260930"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+      "firstRecordId": "chemie-b004w-326-round-a-d-20260930",
+      "secondRecordId": "chemie-b004w-326d45bf-round-b-record-20260930",
+      "firstRunId": "chemie-rollout-v1-batch-004w-states-corrected-image-current-1-v1-20260930-first-pass-a.batch-001-gpt6-astra-d",
+      "secondRunId": "chemie-b004w-326d45bf-round-b-gpt6-20260930",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

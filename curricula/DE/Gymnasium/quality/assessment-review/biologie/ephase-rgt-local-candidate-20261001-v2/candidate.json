@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "status": "inactive_ai_candidate_pending_independent_subject_review",
+  "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+  "canonicalSha256": "24373ad723ddbc23c90dd5ebe12365cc7a760365ad13ea49103c3a799abe7f7e",
+  "officialSource": {
+    "title": "Kerncurriculum gymnasiale Oberstufe Biologie Hessen, Stand 01.08.2025",
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+    "printedPage": 36,
+    "topicCode": "E.2"
+  },
+  "proposedParentClusterId": "625aa68d-71cd-597f-b4c1-e1066eed2830",
+  "scope": "DE-HE SekII E-Phase GK/LK only",
+  "candidate": {
+    "id": "a204de19-2f8b-5f48-869e-3d6205a7dc18",
+    "title": "Katalase-Messreihe und RGT-Grenze",
+    "titleEn": "Catalase data and the limits of the temperature-rate rule",
+    "description": "Die lernende Person kann aus einer materialgestützten Katalase-Messreihe RGT-Faktoren berechnen, einen begrenzten Vorhersagebereich prüfen und die Grenze der Regel an einem Gegenbefund beurteilen.",
+    "descriptionEn": "The learner can calculate temperature-rate factors from catalase data, check a bounded prediction range, and assess the rule’s limit against a counterexample.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment"
+    ],
+    "contains": [],
+    "requires": [
+      "e566ae2f-1294-55c0-ba4c-6aeb4954118c"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-biology",
+      "demandLevel": "AB2",
+      "phase": "E"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-HE"
+      ]
+    },
+    "extendedData": {
+      "treeOrder": 8,
+      "applicabilityMappingInheritance": "boundary"
+    },
+    "type": "atomic",
+    "examData": {
+      "reviewStatus": "draft",
+      "coveredGoalIds": [
+        "e566ae2f-1294-55c0-ba4c-6aeb4954118c"
+      ],
+      "coveredStrands": [
+        "BIO_STOFF_ENERGIE",
+        "BIO_STRUKTUR_FUNKTION"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "sourceArtifactPath": "curricula/DE/Gymnasium/quality/assessment-review/biologie/ephase-rgt-local-candidate-20261001-v2/candidate.json",
+      "taskContent": "**Kontext:** Ein Kurs untersucht eine Katalase-Lösung. Die Zahlen sind fiktive, in sich stimmige Unterrichtsdaten und keine allgemeine Enzymkurve. Vier gleich große Katalaseproben und vier getrennte Wasserstoffperoxidproben mit derselben Konzentration und Menge werden bei der jeweiligen Temperatur gleich lang temperiert. **Erst zu Beginn** jeder 60-Sekunden-Messung werden Enzym und Substrat gemischt; das Wasserstoffperoxid bleibt während dieser Minute in ausreichendem Überschuss. Gemessen wird das in diesen ersten 60 Sekunden gebildete Sauerstoffvolumen. Ein kleiner Messfehler ist möglich.\n\n**Material – gleiche Messzeit, nur die Temperatur variiert:**\n\n| Ansatztemperatur | O₂-Volumen in 60 s |\n| --- | --- |\n| 10 °C | 2,0 mL |\n| 20 °C | 4,8 mL |\n| 30 °C | 11,5 mL |\n| 40 °C | 6,0 mL |\n\nFür das geeignete Temperaturintervall beschreibt die RGT-Regel als Näherung: Bei einer Erhöhung um **10 °C** kann eine Reaktionsgeschwindigkeit ungefähr auf das **Zwei- bis Dreifache** steigen. Außerhalb dieses Bereichs darf die Regel nicht einfach fortgesetzt werden. Bei gleicher Messdauer können die gemessenen O₂-Volumina hier als Vergleichsmaß der Reaktionsgeschwindigkeit verwendet werden.\n\n**Aufgaben:**\n\n1. Berechnen Sie die Geschwindigkeitsverhältnisse für 10→20 °C und 20→30 °C aus den Messwerten. Geben Sie den Rechenweg und eine sinnvolle Rundung an. Erläutern Sie, ob beide Intervalle mit der angegebenen RGT-Näherung vereinbar sind. (8 BE)\n2. Leiten Sie allein aus dem 20-°C-Wert und dem angegebenen RGT-Bereich eine begründete Spanne für das O₂-Volumen bei 30 °C ab. Prüfen Sie den tatsächlichen 30-°C-Wert an dieser Spanne und erklären Sie, weshalb die Regel keine genaue Vorhersage von 11,5 mL liefert. (6 BE)\n3. Berechnen Sie das Verhältnis 30→40 °C und beurteilen Sie, ob man aus der RGT-Näherung für 40 °C eine weitere Zunahme fordern darf. Nennen Sie eine mögliche biologische Ursache des Rückgangs und eine zusätzliche Untersuchung, mit der Sie diese Vermutung von einem bloßen Mess- oder Versuchsfehler abgrenzen würden. (6 BE)",
+      "solutionContent": "1. Bei gleicher Messzeit sind die Volumina vergleichbar: 4,8/2,0 = **2,4** und 11,5/4,8 ≈ **2,40**. Beide Faktoren liegen zwischen 2 und 3; für diese beiden 10-°C-Schritte passen die Daten zur RGT-Näherung. **8 BE:** je Intervall 2 für korrekten Quotienten und Wert, 2 für die eingegrenzte Deutung beider Faktoren, 2 für passende Rechen-/Messzeitbegründung.\n\n2. Für 30 °C wäre aus 4,8 mL bei 20 °C und Faktor 2–3 die Spanne **9,6–14,4 mL in derselben Minute** abzuleiten. 11,5 mL liegt darin. Die RGT-Regel gibt einen ungefähren Faktorbereich, keinen für jedes Enzym exakten Faktor; Messstreuung kommt hinzu. **6 BE:** 2 für untere, 2 für obere Grenze, 1 für Vergleich mit 11,5, 1 für die Grenze der Genauigkeit.\n\n3. 6,0/11,5 ≈ **0,52**. Statt einer Verdoppelung oder Verdreifachung nimmt das Volumen ab; die Näherung wird hier nicht weiter extrapoliert. Eine temperaturbedingte Veränderung der Enzymstruktur oder Aktivität ist eine mögliche Hypothese, aus diesen vier Zahlen allein aber nicht bewiesen. Wiederholte Messungen mit mehreren gleich behandelten Ansätzen und einer Kontrolle, etwa nach Abkühlen auf 20 °C, können Messstreuung und bleibende Aktivitätsänderung besser unterscheiden. **6 BE:** 2 Quotient, 1 korrekte Nicht-Extrapolation, 1 begrenzte Hypothese, 2 sinnvoller Kontroll-/Wiederholungsversuch.",
+      "scoring": {
+        "maxPoints": 20,
+        "passingPoints": 18,
+        "steps": [
+          {
+            "id": "s1",
+            "points": 8,
+            "description": "RGT-Faktoren für 10→20 und 20→30 °C korrekt berechnet und innerhalb des geeigneten Bereichs gedeutet"
+          },
+          {
+            "id": "s2",
+            "points": 6,
+            "description": "30-°C-Spanne aus 20-°C-Wert und Faktor 2–3 abgeleitet und mit Messwert verglichen"
+          },
+          {
+            "id": "s3",
+            "points": 6,
+            "description": "30→40-°C-Rückgang quantifiziert, Nicht-Extrapolation begründet und prüfbare Ursache begrenzt vorgeschlagen"
+          }
+        ]
+      }
+    }
+  },
+  "evidenceRequirements": [
+    {
+      "goalId": "e566ae2f-1294-55c0-ba4c-6aeb4954118c",
+      "required": "Beide geeigneten 10-°C-Faktoren mit Daten/gleicher Messzeit berechnen, 30-°C-Spanne fachlich prüfen und 40-°C-Gegenbefund als Gültigkeitsgrenze quantifizieren. Eine Gesamtpunktzahl genügt nur zusammen mit ausdrücklicher, fachlich korrekter Nicht-Extrapolation beim 30→40-°C-Befund."
+    }
+  ]
+}

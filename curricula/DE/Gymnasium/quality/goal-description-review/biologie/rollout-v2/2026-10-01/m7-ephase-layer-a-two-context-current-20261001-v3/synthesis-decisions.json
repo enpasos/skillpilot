@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex GPT-6 current session; independent AI A/B review synthesis; no human approval",
+  "synthesizedAt": "2026-10-01T02:26:50.999Z",
+  "batch": {
+    "batchId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3",
+    "batchManifestDigest": "sha256:6b918e7e56bf887fd0d10e48e9ef40851067d521b0bf14c893a609e09b7adb45",
+    "configDigest": "sha256:ff83fc9ffd104568ff846b4fb743187a16ef77cc2b37612edab5ff0fd138d3da",
+    "bundleFingerprint": "sha256:57655238632118a600ced8de15b1f5a0fee0aaaf7c015bb47e75595c082d93a6",
+    "bookDigest": "sha256:a399d04cb14a31f01846e137042d6aacbd170a7a089d1cdfba6620113d946d46",
+    "reviewInputFingerprint": "sha256:0e512b330d60cdd5b6a4360a8846dbebd061c8e27d4e20740bc1d2378c2d2ae5",
+    "dualSummaryDigest": "sha256:e8478ceb2df65628736b2d732baa52efc4deb27422447e335575d22fce7eba9b",
+    "canonicalLandscapeDigest": "sha256:24373ad723ddbc23c90dd5ebe12365cc7a760365ad13ea49103c3a799abe7f7e"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3-a",
+      "campaignDigest": "sha256:87f7288c50e4f3287e8b6c376e0805443faeffe6e639dd4525a135c24a7e9159",
+      "roundId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3-first-pass-a",
+      "independenceGroupId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3-independent-a",
+      "reviewInputFingerprint": "sha256:0e512b330d60cdd5b6a4360a8846dbebd061c8e27d4e20740bc1d2378c2d2ae5",
+      "batchId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:f1e41281910c43ba29372dcf7eb342bd0a6b64f00aa8917792c58465e6d7956c",
+      "runId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3-first-pass-a-codex-independent-a",
+      "runManifestDigest": "sha256:8f80d4920d1821243811561bbc5626c412f3696b46a711999d96af99beab6735",
+      "resultsDigest": "sha256:00d04294b8c818168a3c7bdaf601522cfe96fde5b82fe5c2cf9a6c4420b0f76c"
+    },
+    "second": {
+      "campaignId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3-b",
+      "campaignDigest": "sha256:3fe5e6478bff321abf442175f3b5ea4cb709df6eae174231d32cdb70b1f68348",
+      "roundId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3-first-pass-b",
+      "independenceGroupId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3-independent-b",
+      "reviewInputFingerprint": "sha256:0e512b330d60cdd5b6a4360a8846dbebd061c8e27d4e20740bc1d2378c2d2ae5",
+      "batchId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:40091ef0c6878feb8f9501f76651baa07941546b1fcb6d7d32ac118150976ce0",
+      "runId": "bio-layer-a-two-context-b-codex-20261001-v3-01",
+      "runManifestDigest": "sha256:88f201e42d315802efdf11a31d53b8c910b720f26474853b37563d3ee1f6fa01",
+      "resultsDigest": "sha256:04dcc728592a73a05a733ca4b476c5e8d4406f417142dfa0d8bde68dc1d7dda9"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3-synthesis-decision-001",
+      "goalId": "1984fd66-c117-5c29-87b3-1c1626e4ba81",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e555e241c17241a2ab326a9b699ecfb11db291105242189939abdbb05ae209f8",
+      "pageFingerprint": "sha256:f9749b674d44908e09db3d269016e367d4d573b8367f40b3b4763f42cc7399d4",
+      "goalReviewContextFingerprint": "sha256:6fb38292815991b323b67d90dce55eb9901629ca87bf5ff55c36398bed6090f4",
+      "finalText": {
+        "titleDe": "Substratabhängigkeit der Enzymaktivität deuten",
+        "titleEn": "Interpret substrate dependence of enzyme activity",
+        "descriptionDe": "Die lernende Person kann aus Daten bei konstanter Enzymmenge und sonst gleichen Bedingungen erklären, warum die Enzymaktivität mit steigender Substratkonzentration im einfachen Sättigungsmodell ein Plateau erreicht.",
+        "descriptionEn": "The learner can use data at a fixed enzyme amount and otherwise equal conditions to explain why enzyme activity reaches a plateau as substrate concentration rises in a simple saturation model."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3-first-pass-a-codex-independent-a.1984fd66-c117-5c29-87b3-1c1626e4ba81",
+          "recordDigest": "sha256:564a19a9c39e68cbb5f32f561b1fb21ad02c43a4ef91db3856da85b13a2e9484"
+        },
+        "second": {
+          "recordId": "bio-layer-a-two-context-b-v3-1984-20261001",
+          "recordDigest": "sha256:5c0043ac8f231637fdff2776d5c87cb2a8d6be774993634b0d66c41137425fbc"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden behalten die HE-E.2-gebundene Deutung der Substratabhängigkeit bei fester Enzymmenge im einfachen Sättigungsmodell. Der DE/EN-Text, die aktuelle HE-GK/LK-Buchseite und das Plateau-Bild wurden im v3-Kontext geprüft; dies stellt eine aktuelle D-Bindung wieder her, keinen neuen fachlichen Abschluss.",
+      "rationaleEn": "Both independent rounds retain the HE E.2 interpretation of substrate dependence at a fixed enzyme amount in a simple saturation model. The German and English text, current HE general and advanced course page, and plateau image were checked in v3; this restores a current D binding rather than adding a new substantive completion."
+    },
+    {
+      "decisionId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3-synthesis-decision-002",
+      "goalId": "5c2ce7b1-30ba-5e9c-99de-1ffac126ec13",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d06b3911a71e2e9c6f03045f3032fd244ce4785cf04784503377c5b876ad3589",
+      "pageFingerprint": "sha256:f255fd03d9a103838a6cca4504a3a64f913f539621b2a27da608f714ca0768da",
+      "goalReviewContextFingerprint": "sha256:56a1eaefab6c112a72e9ebf4000ab271882bbe3bf054def5b3507ed601cfc887",
+      "finalText": {
+        "titleDe": "Proteinvermittelten Membrantransport erklären",
+        "titleEn": "Explain protein-mediated membrane transport",
+        "descriptionDe": "Die lernende Person kann passiven Stofftransport durch Kanal- oder Carrierproteine und aktiven Stofftransport durch energiegekoppelte Transportproteine anhand von Konzentrationsgefälle und Energieeinsatz unterscheiden.",
+        "descriptionEn": "The learner can distinguish passive solute transport through channel or carrier proteins from active solute transport through energy-coupled transport proteins using concentration gradients and energy input."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3-first-pass-a-codex-independent-a.5c2ce7b1-30ba-5e9c-99de-1ffac126ec13",
+          "recordDigest": "sha256:dc74530fb9c8d60475cfe53694cdc264328209cbd0862b9fba1f17434f083113"
+        },
+        "second": {
+          "recordId": "bio-layer-a-two-context-b-v3-5c2-20261001",
+          "recordDigest": "sha256:239222d891a535b777725c0d8c981a89fa01f1b385d92385d6ecd37bb3056488"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden prüfen den aktuellen Vergleich von passivem Kanal- oder Carriertransport mit energiegekoppeltem aktivem Pumpentransport erneut und behalten ihn. HE E.1 gedruckte S. 36 trägt die Kompetenz; Kanon und tatsächlich neu erzeugte Buchseite zeigen nur DE-HE/Sek II/GK,LK. Das neue Bild samt Alttext zeigt gelöste Teilchen mit dem Gefälle durch ein Protein und gegen das Gefälle unter ATP-Einsatz. Die früheren ungestützten Sek-I-Quellenprojektionen und das unpassende Bild sind aus der aktuellen Bindung entfernt; P-, V- und Assessment-Gates bleiben eigenständig.",
+      "rationaleEn": "Both independent rounds rechecked and retained the current comparison of passive channel or carrier transport with energy-coupled active pump transport. HE E.1, printed page 36, supports it; both canonical scope and the rebuilt learner page show only DE-HE upper secondary general and advanced courses. The new image and alt text show a solute moving down its gradient through a protein and against its gradient with ATP. Unsupported former lower-secondary source projections and the mismatched image have been removed from the current binding; P, V, and assessment gates remain separate."
+    }
+  ],
+  "manifestFingerprint": "sha256:0e0bc9331ecbdc7ac46bd71b01f68fa9e94bf4fa723ee3e3e1c6871986483d52"
+}

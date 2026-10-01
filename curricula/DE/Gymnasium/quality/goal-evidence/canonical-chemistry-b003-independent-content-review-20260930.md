@@ -1,0 +1,9 @@
+# Independent content check: chemistry B003
+
+Date: 2026-09-30. Scope: eleven current Q1 bonding-model goals that both independent description rounds marked KEEP. Nine further B003 goals remain deferred for wording revisions. This is machine-side quality assurance only; the evidence records retain `ai_candidate` / `needs_human_review`.
+
+I compared the eleven positive-understanding-evidence-v2 profiles with the current goals and read both transfer cases for each. The cases distinguish aromatic substitution, radical substitution and alkene addition, ionic and radical addition pathways, LCAO, bond order, polarity and intermolecular interaction through fresh examples. The N2/O2/O2+ case maintains the expected electron counts and bond-order direction; the propene/HBr case specifies the conditions for the ionic pathway. The existing visualizations remain separate supports, not answers to the fresh cases.
+
+I held the first version of two profiles. For `70bcb6bd`, its reference to perpendicular orbital alignment could incorrectly rule out π overlap. In v2, the fresh case explicitly distinguishes two parallel p orbitals transverse to the internuclear axis (possible π overlap) from mutually orthogonal p orbitals (symmetry mismatch). For `85342c52`, the first cases tested E/Z but omitted the R/S part expressly named in the goal. In v2, an additional butan-2-ol wedge-dash case provides unambiguous CIP priorities and the lowest-priority group pointing away, so the R/S assignment and its difference from conformational rotation can be checked. I read the revised German and English cases. Both holds are resolved in v2; v1 stays unregistered history.
+
+The targeted production P check reports eleven current profiles and zero blockers. This does not claim human acceptance or close the nine deferred description goals.

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-001-sek1-reactions-energy-current-7-v1.config.json",
+  "configDigest": "sha256:281d2ce16baa48f61cb8e77313f76359583d5155acb8e0d7406abc4c6d2b52cc",
+  "goalIds": [
+    "2dae4132-40a9-5ee3-ac0c-11c5d1302f36",
+    "fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3",
+    "1bdaf7f2-ff3b-455a-a7fb-95a44642762a",
+    "542d88e9-4cd3-5f90-bd20-b50ab030d72a",
+    "17fe22c4-1248-5f37-9d0c-52ee4571d09f",
+    "945d69d5-92a7-5195-8f78-4e56f8e7b633",
+    "8576b82b-811a-5e13-b5dc-ec5d42030565"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 376,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/review-book-full.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:6e4883b473cd9e977767ac46aae4b7d327a44b16192d8ff02032eb94d1a6ffb2"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:27b0305b950f50f7e0cf042f3cab94e5ee79fe019d9a68eae349011f46cf679a",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:b14b7d77e88869403b92e3a33ba1bd343bdf94a760a187428b17b31e9f3dec86",
+    "reviewInputFingerprint": "sha256:244f486e6577fe03fa802589881658c63d580bb5e24c4e8e589b9be0e1f22d56",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-a",
+        "campaignDigest": "sha256:2a38a6cb5179f745ace8ff0af5d6044fa6c3a1ae9fdf85e09564adea062a7c0d",
+        "roundId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-first-pass-a",
+        "independenceGroupId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-independent-a",
+        "batchId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:279cc309aca68538a2da8a743e1f3b86fa7bcf0be5c146c5964aceb77096a439"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-b",
+        "campaignDigest": "sha256:fd8bae2e2a9de73168489e6bd24abfc405eb841e980764ef4c0ba5687a382d2d",
+        "roundId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-first-pass-b",
+        "independenceGroupId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-independent-b",
+        "batchId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:693e0f5822a86b60e0563c3e08b66011599297049525c2fb4db42066070d5cea"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,1 @@
+Historical unregistered B009 synthesis chain before correction of local Berlin time accidentally marked as UTC. The archived A-run manifest reconstructs the earlier bytes; actual A result file was written at 2026-09-30 19:23:30 UTC. Current run manifest and generated synthesis use 19:23 UTC. The substantive review records and independent B round are unchanged.

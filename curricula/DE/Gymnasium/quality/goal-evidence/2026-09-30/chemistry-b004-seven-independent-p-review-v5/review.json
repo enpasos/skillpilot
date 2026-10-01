@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "independent-positive-understanding-evidence-current-v5-recheck",
+  "reviewedAt": "2026-09-30T18:49:58Z",
+  "reviewer": "Codex independent chemistry P counterreview",
+  "authority": "ai_candidate",
+  "config": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004-sek1-foundations-current-7-v5.config.json",
+  "priorFullIndependentReview": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/chemistry-b004-seven-independent-p-review-v3/review.json",
+  "priorTargetedSourceAndScopeReview": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/chemistry-b004-seven-independent-p-review-v4/review.json",
+  "method": "Compared complete v5 with v4: only 42a body and reason changed; the 13d source-corrected body/reason and five prior PASS profiles are identical. Re-read all 42a expectations and both bilingual cases against canonical goal, BY C8.3.3 age/source scope and active molecular-example image. Reused the prior current-hash image checks because no image bytes changed.",
+  "targetedCheck": {
+    "command": "npm --prefix app run -s quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004-sek1-foundations-current-7-v5.config.json",
+    "result": "PASS: configured 7, blocking issues 0, needs human review 7, approved 0."
+  },
+  "decisions": [
+    {
+      "goalId": "42a84bca-d27e-581f-a43a-eee424f0504d",
+      "verdict": "PASS",
+      "profileFingerprint": "sha256:f71e609109780a7c4a8ebae8ea27e3f1922f91d80ff731b71847a6a0cdff1610",
+      "finding": "The v5 core now correctly defines a pure substance as one substance of defined composition, restricts the one-atom/molecule-type heuristic to the pictured Dalton-era molecular cases and explicitly labels ionic lattices a later model boundary rather than required mastery. O2/H2O/mix and fresh H2O+CO2 versus Cl2 cases distinguish elemental molecules, molecular compounds and mixtures without importing ionic-bonding skill. German/English are equivalent, the second task wording is unambiguous, and the active four-jar image is used only for its molecular examples. The direct BY C8.3.3 classification scope is preserved."
+    },
+    {
+      "goalId": "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+      "verdict": "PASS_FROM_UNCHANGED_FULL_REVIEW",
+      "profileFingerprint": "sha256:0eaade3efed643061fc0ea3ade9a879471b75db256d1aa347f7ce664384b35f0"
+    },
+    {
+      "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+      "verdict": "PASS_FROM_UNCHANGED_V4_SOURCE_REVIEW",
+      "profileFingerprint": "sha256:e598d69823c5983794d54da0fc6196c66f89f177a2585cd99eea8d86e0e356e0",
+      "finding": "The corrected v4/v5 reason accurately cites school-chemistry DGUV Regel 113-018, part I-3.14 and III-2.1, for contaminated clothing and prompt skin rinsing, with teacher/first-aider and local procedure roles; the unsafe-context cleaning-products citation remains removed."
+    },
+    {
+      "goalId": "988888bb-1f88-55f9-9a44-f3f60469a297",
+      "verdict": "PASS_FROM_UNCHANGED_FULL_REVIEW",
+      "profileFingerprint": "sha256:9699c7f165dbe06a79f25d566dd541c9c8700bb5bb1a258fad890ac8267fb21d"
+    },
+    {
+      "goalId": "5338b54c-68bc-5892-907c-e025351ffde6",
+      "verdict": "PASS_FROM_UNCHANGED_FULL_REVIEW",
+      "profileFingerprint": "sha256:ff622eab970930ccf257a05cbf7aeb17057925727ed3945b49d7d414324fed3c"
+    },
+    {
+      "goalId": "5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf",
+      "verdict": "PASS_FROM_UNCHANGED_FULL_REVIEW",
+      "profileFingerprint": "sha256:416cc1e6057e1075746f598b932d26270a5268309c31f681a972f0a8ce62e512"
+    },
+    {
+      "goalId": "78109f6d-c415-52c4-8314-07c0dd888a80",
+      "verdict": "PASS_FROM_UNCHANGED_FULL_REVIEW",
+      "profileFingerprint": "sha256:34954c6e77e83f128bb80d93586c112f7ccaa83dfb03138ccd0303cdb951bc9e"
+    }
+  ],
+  "summary": {
+    "contentAndSourcePass": 7,
+    "contentOrSourceHold": 0,
+    "technicalPass": 7,
+    "newStrictM7ClosureClaimed": 0,
+    "humanApprovalsClaimed": 0
+  }
+}

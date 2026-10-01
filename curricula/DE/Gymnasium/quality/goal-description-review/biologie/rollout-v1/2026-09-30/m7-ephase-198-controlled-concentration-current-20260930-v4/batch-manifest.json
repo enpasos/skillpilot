@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v4",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/biologie/rollout-v1/2026-09-30/m7-ephase-198-controlled-concentration-current-20260930-v4.config.json",
+  "configDigest": "sha256:779db909f6e08809c790b2125db279ce4a21668765347d828dd0c3e7ca9c7f29",
+  "goalIds": [
+    "1984fd66-c117-5c29-87b3-1c1626e4ba81"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 362,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/biologie/rollout-v1/2026-09-30/m7-ephase-198-controlled-concentration-current-20260930-v4.book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:81f627bc7e80aa28e1ae9e6ed5946202ab002828db42388f74162df5f76c304c"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:7cebfccf98640d648154c26df6e21e89074ccf657179ef66a22b3170b355ab73",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:283e2f1c5c65cc90b3be31bc8b0eee73e976a800c636a5149bb1e81e0b8cf490",
+    "reviewInputFingerprint": "sha256:c44aea919a2b346a46425c40f632d0318305c2e75799864429690f0114ba5085",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v4-a",
+        "campaignDigest": "sha256:7d9f04df3ffa2d5be30b406872a761de6d8da5eb06e009b4161bd83008ab5b03",
+        "roundId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v4-first-pass-a",
+        "independenceGroupId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v4-independent-a",
+        "batchId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v4-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:362c43415000134113cdcf1d1988b7c92da5c340247976b422058f4755c9f98e"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v4-b",
+        "campaignDigest": "sha256:b81cc7413e422ecda8cf0f958ae199a6be7befb365203cb246c93c0b963226da",
+        "roundId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v4-first-pass-b",
+        "independenceGroupId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v4-independent-b",
+        "batchId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v4-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:beef4a077fab54636cf75442a33ee235cf981b2be8e3c1cc8a83c08afd84a319"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

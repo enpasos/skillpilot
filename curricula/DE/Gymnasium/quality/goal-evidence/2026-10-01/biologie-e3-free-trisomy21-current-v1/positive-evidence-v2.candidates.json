@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "biologie-m7-e3-free-trisomy21-current-20261001-v2",
+  "reviewedAt": "2026-09-30T22:40:13Z",
+  "reviewer": "codex-biology-e3-trisomy-p-revision-after-independent-hold-20261001",
+  "goals": [
+    {
+      "goalId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+      "reason": "Versionierte Revision nach unabhängigem HOLD der ersten P-Kandidatin: neutrale, präzise Sprache ersetzt pathologisierende und normative Formulierungen; beide Aufgaben verlangen nun eigenständige Ableitung von Chromosomenzahl, möglicher Fehlverteilung und Genommutationsbegriff aus verschieden gerichteten Modellen. Amtliches HE E.3 und MedlinePlus Genetics zur freien Trisomie/Nondisjunction fachlich abgeglichen. KI-Kandidat needs_human_review; neue unabhängige Inhalts-QA erforderlich.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "number-change-is-genome-mutation",
+            "essentialUnderstandingDe": "Bei einer freien Trisomie 21 liegen drei einzelne Chromosomen 21 statt zwei vor. Die veränderte Chromosomenzahl ist eine Genommutation und keine bloße Änderung der Basenfolge eines einzelnen Gens.",
+            "essentialUnderstandingEn": "In free trisomy 21, three separate chromosome 21 copies are present instead of two. The altered chromosome number is a genome mutation, not merely a change in the base sequence of one gene.",
+            "observablePerformanceDe": "Die lernende Person deutet in einem einfachen Chromosomenmodell die drei Chromosomen 21 als Zahlenänderung und erklärt, weshalb damit das Genom und nicht nur die Sequenz eines einzelnen Gens betroffen ist.",
+            "observablePerformanceEn": "In a simple chromosome model, the learner interprets three chromosome 21 copies as a number change and explains why the genome, rather than just one gene sequence, is affected."
+          },
+          {
+            "id": "possible-missegregation-pathway",
+            "essentialUnderstandingDe": "Wenn Chromosomen bei einer Zellteilung nicht richtig getrennt werden, kann eine Keimzelle zwei Chromosomen 21 erhalten. Zusammen mit einem Chromosom 21 aus einer Keimzelle mit einer Kopie kann daraus eine Zelle mit drei getrennten Chromosomen 21 entstehen; dies beschreibt einen möglichen Entstehungsweg der freien Trisomie 21, ohne andere Trisomie-21-Formen gleichzusetzen.",
+            "essentialUnderstandingEn": "If chromosomes fail to separate during cell division, a reproductive cell can receive two chromosome 21 copies. Together with one chromosome 21 from a reproductive cell carrying one copy, this may yield a cell with three separate chromosome 21 copies; it is one possible route to free trisomy 21 without equating all trisomy 21 forms.",
+            "observablePerformanceDe": "Die lernende Person leitet aus einem neuen, vereinfachten Teilungs- und Befruchtungsschema einen möglichen Weg von der Fehlverteilung über eine Keimzelle mit zwei Chromosomen 21 zu drei Chromosomen 21 nach der Befruchtung ab.",
+            "observablePerformanceEn": "From a new simplified cell-division and fertilization diagram, the learner derives a possible path from missegregation through a reproductive cell with two chromosome 21 copies to three copies after fertilization."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "number-change-is-genome-mutation",
+            "possible-missegregation-pathway"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "reasoning-direction",
+            "textDe": "Einmal von der beobachteten Chromosomenzahl auf einen möglichen Entstehungsweg schließen, einmal von einer vorgegebenen Fehlverteilung die Zahl nach der Befruchtung ableiten.",
+            "textEn": "Reason once from an observed chromosome count to a possible origin, and once from a given missegregation to the chromosome count after fertilization."
+          },
+          {
+            "id": "representation",
+            "textDe": "Vereinfachte Chromosomenkarten und ein neues Teilungsschema mit anders angeordneten Chromosomen 21 verwenden; keine formale Karyogramm-Diagnose verlangen.",
+            "textEn": "Use simplified chromosome cards and a new division diagram with chromosome 21 copies arranged differently; do not require a formal karyogram diagnosis."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "three-copies-to-possible-origin",
+            "taskDemandDe": "Eine neue Modellkarte einer befruchteten Zelle zeigt drei getrennte Chromosomen 21; zwei Herkunftsfarben markieren die beteiligten Keimzellen. Erkläre, auf welcher Ebene sich das Erbmaterial verändert hat, benenne die Chromosomenzahl-Konstellation und skizziere einen möglichen Weg über eine Keimzelle mit zwei Chromosomen 21. Eine genetische Diagnose wird nicht verlangt.",
+            "taskDemandEn": "A fresh model card of a fertilized cell shows three separate chromosome 21 copies; two origin colors mark the contributing reproductive cells. Explain at which level the genetic material changed, name the chromosome-number arrangement and sketch one possible route involving a reproductive cell with two chromosome 21 copies. No genetic diagnosis is requested.",
+            "expectedPerformanceDe": "Die lernende Person zählt drei statt zwei Chromosomen 21, begründet die Änderung der Chromosomenzahl als Genommutation am Beispiel der freien Trisomie 21 und erklärt, wie eine Fehlverteilung zu einer Keimzelle mit zwei Kopien und danach zusammen mit einer Keimzelle mit einer Kopie zu drei Kopien führen kann.",
+            "expectedPerformanceEn": "The learner counts three rather than two chromosome 21 copies, justifies the number change as a genome mutation illustrated by free trisomy 21, and explains how missegregation can yield a reproductive cell with two copies and then, with a cell carrying one copy, three copies.",
+            "understandingFocusDe": "Vom beobachteten Resultat zu einer möglichen Ursache; zusätzliche Chromosomenzahl statt Genänderung.",
+            "understandingFocusEn": "From an observed result to one possible cause; extra chromosome number rather than a gene change."
+          },
+          {
+            "id": "missegregation-to-three-copies",
+            "taskDemandDe": "Ein neues, unbeschriftetes Papiermodell zeigt eine vereinfachte Teilung: Zwei separat erkennbare Chromosomen-21-Symbole gelangen in eine der entstehenden Keimzellen, in die andere keines. Eine weitere Keimzelle ist mit einem Chromosom 21 gezeichnet. Bestimme selbst, welche erste Keimzelle für den gezeigten möglichen Befruchtungsweg relevant ist, sage die Zahl getrennter Chromosomen 21 in der befruchteten Zelle voraus, benenne die Veränderungsebene und erkläre den möglichen Teilungsfehler. Die Karte nennt weder den Fehler noch die Trisomie-Klasse; es geht um ein Modell, nicht um Diagnose oder alle Entstehungswege.",
+            "taskDemandEn": "A fresh unlabelled paper model shows simplified division: two distinct chromosome 21 symbols end up in one resulting reproductive cell and none in the other. A second reproductive cell is drawn with one chromosome 21 copy. Determine which first cell is relevant for the possible fertilization shown, predict the number of separate chromosome 21 copies in the fertilized cell, name the level of genetic change and explain the possible division error. The card names neither the error nor the trisomy class; this is a model, not a diagnosis or a claim about every route.",
+            "expectedPerformanceDe": "Die lernende Person erkennt die Keimzelle mit zwei Chromosomen 21 und die Fehlverteilung bei der Teilung, leitet nach Vereinigung mit der Ein-Kopie-Keimzelle drei getrennte Chromosomen 21 ab und ordnet die Zahlenänderung als Genommutation am Beispiel der freien Trisomie 21 ein. Sie unterscheidet dies von einer Änderung innerhalb eines Gens und behauptet keinen universellen Entstehungsweg.",
+            "expectedPerformanceEn": "The learner identifies the reproductive cell with two chromosome 21 copies and the division missegregation, derives three separate copies after joining the one-copy cell, and classifies the number change as a genome mutation illustrated by free trisomy 21. They distinguish it from a change within a gene and do not claim a universal origin.",
+            "understandingFocusDe": "Vom Teilungsschema zum möglichen Ergebnis; selbstständiger Transfer in neuer Darstellung.",
+            "understandingFocusEn": "From a division diagram to a possible outcome; independent transfer in a new representation."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:69640bde70819431a8ef8a620d19c964297276e120fb051fad571037c77a5129",
+  "reviewInputFingerprint": "sha256:4d1d9770748458e27ad7d1115e402822a147560be1dbae6bc89b33ce3ec98a50",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-m7-global-methods-four-current-20260930-v1-a",
+      "roundId": "biologie-m7-global-methods-four-current-20260930-v1-first-pass-a",
+      "independenceGroupId": "biologie-m7-global-methods-four-current-20260930-v1-independent-a",
+      "runIds": [
+        "biologie-m7-global-methods-four-current-20260930-v1-first-pass-a-codex-independent-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex session (exact deployment identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-m7-global-methods-four-current-20260930-v1-b",
+      "roundId": "biologie-m7-global-methods-four-current-20260930-v1-first-pass-b",
+      "independenceGroupId": "biologie-m7-global-methods-four-current-20260930-v1-independent-b",
+      "runIds": [
+        "biologie-global-methods-four-b-20260930-gpt6-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "d97f6957-fbc9-569c-8648-f7df5eb9dfd8",
+      "firstRecordId": "biologie-m7-global-methods-four-current-20260930-v1-first-pass-a-codex-independent-a.d97f6957-fbc9-569c-8648-f7df5eb9dfd8",
+      "secondRecordId": "biologie-methods-four-b-01",
+      "firstRunId": "biologie-m7-global-methods-four-current-20260930-v1-first-pass-a-codex-independent-a",
+      "secondRunId": "biologie-global-methods-four-b-20260930-gpt6-v1",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+      "firstRecordId": "biologie-m7-global-methods-four-current-20260930-v1-first-pass-a-codex-independent-a.26aa47b7-e5cc-5131-8980-0ec3271758b6",
+      "secondRecordId": "biologie-methods-four-b-02",
+      "firstRunId": "biologie-m7-global-methods-four-current-20260930-v1-first-pass-a-codex-independent-a",
+      "secondRunId": "biologie-global-methods-four-b-20260930-gpt6-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0f1549f6-8341-53b0-8161-5eaeb2b37809",
+      "firstRecordId": "biologie-m7-global-methods-four-current-20260930-v1-first-pass-a-codex-independent-a.0f1549f6-8341-53b0-8161-5eaeb2b37809",
+      "secondRecordId": "biologie-methods-four-b-03",
+      "firstRunId": "biologie-m7-global-methods-four-current-20260930-v1-first-pass-a-codex-independent-a",
+      "secondRunId": "biologie-global-methods-four-b-20260930-gpt6-v1",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0380f992-723a-513d-8c3f-8ca7f8e0394f",
+      "firstRecordId": "biologie-m7-global-methods-four-current-20260930-v1-first-pass-a-codex-independent-a.0380f992-723a-513d-8c3f-8ca7f8e0394f",
+      "secondRecordId": "biologie-methods-four-b-04",
+      "firstRunId": "biologie-m7-global-methods-four-current-20260930-v1-first-pass-a-codex-independent-a",
+      "secondRunId": "biologie-global-methods-four-b-20260930-gpt6-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

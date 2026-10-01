@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "codex-gpt-6-round-a-chemie-b006-20260930",
+  "campaignId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-a",
+  "roundId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-first-pass-a",
+  "batchId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:8a87e69e99fdab45548079305cbd383a6b3e3f852fcaa01e55d02152fbd95bb0",
+  "bundleFingerprint": "sha256:a6ad45a16e16417cfebf9dddd198781b067744756e7b032e195c63de8b9f9250",
+  "bookDigest": "sha256:c9d91c557411704b5af49a07581b5002b3930903feb41a51712443db411b8ac2",
+  "provider": "openai",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:02aae9aee963e9025746ab554eeaa89a03cb1065c5d12a683127059a270ccd19",
+  "independenceGroupId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "018bec90-445f-4a88-b8bc-228f8335dee6",
+    "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+    "70b12d1c-abaf-45c6-ae9e-b571e9cbc126",
+    "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+    "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+    "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+    "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+    "fcaf8c9b-bd81-552e-9d91-43649895471e",
+    "79db6d68-b402-5563-a348-f2784fed8867",
+    "7964cb36-e9b1-5176-9426-a82041a5b72f",
+    "965ca297-5dbf-5e58-b5f0-6559a4433646",
+    "c441d9e8-d9d9-5e55-a189-a37345541321",
+    "e74f5301-70d3-5869-bd3d-79a5763a1718",
+    "bbe038e9-86ed-5ec6-ab33-316758ddb16d",
+    "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+    "92c99237-1c74-54fc-bf08-9191656afaa6",
+    "747c5777-07d7-51a9-9be3-7d0d6f51d4e2",
+    "67cd332f-9db7-50e1-87f6-172ef3714300",
+    "49235cbe-6658-5e7e-8bd4-398416bcebdc",
+    "a138d7bf-163a-59e0-a50a-8438ef4f5168"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:8a87e69e99fdab45548079305cbd383a6b3e3f852fcaa01e55d02152fbd95bb0"
+    }
+  ],
+  "startedAt": "2026-09-30T18:01:06Z",
+  "completedAt": "2026-09-30T18:01:06Z",
+  "status": "completed",
+  "outputDigest": "sha256:9e86e842e1cac983ed3bae2fda89f2ffc7e5daf6d3a91faaf6ca07bc43c74268",
+  "toolchainVersion": "codex-agent-v1"
+}

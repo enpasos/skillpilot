@@ -1,0 +1,45 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-global-methods-four-b-20260930-gpt6-v1",
+  "campaignId": "biologie-m7-global-methods-four-current-20260930-v1-b",
+  "roundId": "biologie-m7-global-methods-four-current-20260930-v1-first-pass-b",
+  "batchId": "biologie-m7-global-methods-four-current-20260930-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:25ce19d5429592e18cb5fc92d6e73d20aca3577f88964f02ec1ba8758a9fc1d9",
+  "bundleFingerprint": "sha256:69640bde70819431a8ef8a620d19c964297276e120fb051fad571037c77a5129",
+  "bookDigest": "sha256:77a0fcb63109c0825f0b9451522fc0036fb37843b7138d4bfede1c4212a418cc",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:8b0568ea59a6b441b125e14dfb3aac14424fb3e9364d4b3f1bfe751f7913df7f",
+  "independenceGroupId": "biologie-m7-global-methods-four-current-20260930-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "d97f6957-fbc9-569c-8648-f7df5eb9dfd8",
+    "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+    "0f1549f6-8341-53b0-8161-5eaeb2b37809",
+    "0380f992-723a-513d-8c3f-8ca7f8e0394f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:25ce19d5429592e18cb5fc92d6e73d20aca3577f88964f02ec1ba8758a9fc1d9"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    }
+  ],
+  "startedAt": "2026-09-30T15:28:29.000Z",
+  "completedAt": "2026-09-30T15:33:42.767Z",
+  "status": "completed",
+  "outputDigest": "sha256:9f2a8c8eef1878cabc4a38cbb6ca8cca1f49695741462e4ca26d4493fbcc3dd5",
+  "toolchainVersion": "codex-api-gpt6-review-v1"
+}

@@ -1,0 +1,35 @@
+{
+  "reviewKind": "independent-ai-content-and-current-image-qa",
+  "reviewedAt": "2026-09-30T20:27:00Z",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "sourceConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b009r-current-png-2-v2.config.json",
+  "sourceConfigSha256": "sha256:c35afb16973459ae32eef0b109e6450fd481c0799e6ae229bcd2180ea284e7bd",
+  "sourceRecordsSha256": "sha256:8ec6632f8542d67d8ac26ea6037a0e531453c5b5982bdd384c45cacd7de69b66",
+  "technicalCheck": "PASS 2 current, 0 blockers, both needs_human_review",
+  "goals": [
+    {
+      "goalId": "350a394f-e0d4-5e42-8e9a-39da9df33518",
+      "positiveEvidenceDecision": "PASS_AI_CANDIDATE",
+      "activeImageSha256": "sha256:651be163a940a0fec2953827fc4dbb29138b9a12ca22aabd0025cc3c67f7bfc2",
+      "findings": [
+        "The current page and corrected PNG show a class-F extinguisher used by staff for hot cooking fat, a protected oxygen-limitation model, and the prominent warning against water; the active public image hash matches the reviewed PNG.",
+        "The first paper/fat response-card case asks for heat removal versus an oxygen-blocking class-F agent, rejects both water and a blanket as general fat-fire advice, and asks learners to perform no firefighting. This repairs the specific prior DGUV safety defect without replacing it with learner action.",
+        "The second independent case uses supplied protected-model data and distinguishes low oxygen from inadequate temperature. It tests the same fire triangle by a different observation, with no ignition procedure. German and English demands and expected inferences agree."
+      ],
+      "primarySafetySource": "https://publikationen.dguv.de/widgets/pdf/download/article/324"
+    },
+    {
+      "goalId": "a530ee7d-1002-5f02-ae05-a9d46410ac78",
+      "positiveEvidenceDecision": "PASS_AI_CANDIDATE",
+      "activeImageSha256": "sha256:ac91fdd60a0d559b6613d3490574f073ca437ab7895562cc08578695e297bc54",
+      "findings": [
+        "The current page and corrected PNG show H2 + Cl2 to 2 HCl with separate qualitative energy-accounting cards and no depicted free-atom reaction intermediate; the active public image hash matches the reviewed PNG.",
+        "Methane combustion is atom-balanced and has correct broken and formed bond counts; supplied qualitative bars on the same reaction amount imply exothermic net release. The independent water-splitting case has the reverse energy direction and correctly avoids a claim of spontaneous reaction. Neither case requires a numerical result.",
+        "The profile correctly distinguishes energy bookkeeping from a demonstrated stepwise mechanism. Its free-atom caveat is chemically sound, although the corrected image itself no longer contains such a schematic. Both languages state the same competence and transfer limits."
+      ],
+      "nonBlockingPrecisionNote": "A later profile edit could describe the model boundary as 'an energy balance does not establish the reaction pathway' instead of naming free atoms in observablePerformance, because the corrected image no longer depicts a free-atom panel. This is not a new mandatory competence or blocker here.",
+      "primaryCurriculumSource": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/9/chemie/ch"
+    }
+  ]
+}

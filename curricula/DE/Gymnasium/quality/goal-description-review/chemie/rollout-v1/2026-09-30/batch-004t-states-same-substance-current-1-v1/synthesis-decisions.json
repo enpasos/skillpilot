@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-b004t-same-substance-current-20260930-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis of two independent current description reviews; no human approval",
+  "synthesizedAt": "2026-09-30T21:19:47.000Z",
+  "batch": {
+    "batchId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930",
+    "batchManifestDigest": "sha256:24a8c0deb1611937b5cebeffbe1240ab30e65b24c8107d9aacf35373a6272cfe",
+    "configDigest": "sha256:67e0d054feb94b3292a3fff6db6c3bac1704bf27c145ed3faef38435c2d9cfb3",
+    "bundleFingerprint": "sha256:5e20145b879074aec12e75ae868d38667f26569a835dd59c730cef132447502d",
+    "bookDigest": "sha256:a7e75a1187f469569efc59e9d7643f34569574822965f28f6513ee4690d8b70c",
+    "reviewInputFingerprint": "sha256:5bc1606b0473218b1e317709cde3a1005b9a86e6313b1328f7d518f08ed7f83c",
+    "dualSummaryDigest": "sha256:7678fb3cbb337a3870e351c6c60a6c9bc8d3424f2f288764998673345ed0dde0",
+    "canonicalLandscapeDigest": "sha256:b3dae74750a2d3a814bd0975f883bd7e45bd554ef719966059d5617d1ac49963"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-a",
+      "campaignDigest": "sha256:6fbaf2ad91aeed8628dcc859abae49b78ff87d68b4d16f40cc6b48374154ee60",
+      "roundId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:5bc1606b0473218b1e317709cde3a1005b9a86e6313b1328f7d518f08ed7f83c",
+      "batchId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:7d9b470bedb02d014b2d51e40798e8af2b92422642878ddf70763ae8dec72cd2",
+      "runId": "codex-gpt-6-chemie-b004t-first-pass-a-20260930",
+      "runManifestDigest": "sha256:57c667240a1272972c72935fb0061d7ccb04a39352ec81d6396a87cc65120fda",
+      "resultsDigest": "sha256:29567de5573a2c212dc52c8be7f6447759f93ed6814d78f280e26483ffa5a63d"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-b",
+      "campaignDigest": "sha256:56202b6e95f0f0e9237b683277915b4dcc3c7ad1cd6f91017bdcbb6c7fb3903b",
+      "roundId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:5bc1606b0473218b1e317709cde3a1005b9a86e6313b1328f7d518f08ed7f83c",
+      "batchId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:7b64bae329158d34f3aec9c92af2d0038278bf1041a8ca6712f33e62544c19e9",
+      "runId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-first-pass-b.run-001",
+      "runManifestDigest": "sha256:4db20554e58f2d2e3947256ba65b384c773687848dc502e16427431f91995781",
+      "resultsDigest": "sha256:30ec2c02f9401a5a0c650db9aeb441de68c936e4290a22f0ef3d46456f8b9d24"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-b004t-same-substance-current-20260930-synthesis-decision-001",
+      "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4a75a803c32e0f9a037a138d260a91da0eec7233f800c94e7b5e8c81207b3f39",
+      "pageFingerprint": "sha256:d7a6482e77242369fede3cfe782cddb55600f299ea5b21af6f15c3b6b72b8683",
+      "goalReviewContextFingerprint": "sha256:9af341cb0e2d7eb9a46aff129f40c1b1de9a74bf6680cb9440f82aa45160f865",
+      "finalText": {
+        "titleDe": "Aggregatzustände und Übergänge deuten",
+        "titleEn": "Interpret states of matter and transitions",
+        "descriptionDe": "Die lernende Person kann feste, flüssige und gasförmige Zustände anhand beobachtbarer Eigenschaften unterscheiden und Übergänge zwischen ihnen als Zustandsänderungen desselben Stoffes erklären.",
+        "descriptionEn": "The learner can distinguish solid, liquid and gaseous states by observable properties and explain transitions between them as changes in the state of the same substance."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "codex-gpt-6-chemie-b004t-first-pass-a-20260930-goal-326d45bf",
+          "recordDigest": "sha256:b711f6fd2fea48be9ce7fa96d6c7ee5d538b53131a7a7913ea042c46be26a112"
+        },
+        "second": {
+          "recordId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-first-pass-b.run-001.goal-326d45bf",
+          "recordDigest": "sha256:182772572c657316d666980124e58d034e8b85a715ef54c103e4765839958215"
+        }
+      },
+      "rationaleDe": "Beide aktuellen unabhängigen Runden behalten das Ziel als eine prüfbare Sek-I-Kompetenz bei: beobachtbare Merkmale der drei Aggregatzustände unterscheiden und Übergänge als Änderung des Zustands desselben Stoffes deuten. Die amtliche HE-G9-Quelle nennt auch Sieden, Verdunsten und direkte fest-gasförmige Übergänge. B beschreibt diese Transfergrenzen genauer; eine Teilchenerklärung gehört zum getrennten Folgeziel. Das vorhandene Bild ist geprüfter Unterrichtskontext und kein Lernnachweis. Die Reichweite weiterer Bundesländer wird durch diese D-Synthese nicht behauptet; A, P, M und V bleiben eigenständige Gates.",
+      "rationaleEn": "Both current independent rounds retain this as one assessable lower-secondary competence: distinguish observable properties of the three states and interpret transitions as a change of state of the same substance. The official Hessian G9 source also names boiling, evaporation and direct solid-gas transitions. Round B states these transfer boundaries more precisely; particle-level explanation belongs to a separate successor goal. The existing image is reviewed teaching context, not learner evidence. This D synthesis does not assert source coverage for every jurisdiction; A, P, M and V remain separate gates."
+    }
+  ],
+  "manifestFingerprint": "sha256:f3de85b878143fd7e96ad7ba5d7c72a2160d628a7d0cf746dc83fa04259ddd4c"
+}

@@ -1,0 +1,246 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-b005-sek1-symbols-stoichiometry-current-16-20260930-partial-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis; four current dual-round keeps, twelve explicit deferrals; no human approval",
+  "synthesizedAt": "2026-09-30T17:16:14.301Z",
+  "batch": {
+    "batchId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930",
+    "batchManifestDigest": "sha256:1366e80c0d5155ed7536fddafdb506d4f43af4911383df4b63a328ef7348f043",
+    "configDigest": "sha256:f6654b0db6ea12801476d6ee936a7fa1824980ecc6ce1b502477adf70e13ecb8",
+    "bundleFingerprint": "sha256:0d73a48d389e7486e046bf16adcaf39b76aa0082301613b7603509d84ad173cf",
+    "bookDigest": "sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715",
+    "reviewInputFingerprint": "sha256:5414438765ed8908f04d317773d444b0fa1c51eb08dde8e44e735120dc0cd3e2",
+    "dualSummaryDigest": "sha256:68358091eb1dee395b0c22e52fff56e0a820e4213eb3913c0b3d376adcb7873a",
+    "canonicalLandscapeDigest": "sha256:836992150dd1b7ed6e1391052689623743d4d007acfbbb91b389df0fd78ebeb0"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-a",
+      "campaignDigest": "sha256:a41b13e08cefc84a9697692a4c9dee8dfe97aed5dfcd05a3c9a330d8b117e097",
+      "roundId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:5414438765ed8908f04d317773d444b0fa1c51eb08dde8e44e735120dc0cd3e2",
+      "batchId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:521e52644749eb5dfbeee79e63cbf5d70d6def8501574b29a7ba7ec9aff39718",
+      "runId": "codex-gpt-6-round-a-chemie-b005-20260930",
+      "runManifestDigest": "sha256:096928239aaf7a90a0b7ffd7d9166a17afb9376b77067984561ecb5fe26ebcc2",
+      "resultsDigest": "sha256:a0f64ab745682ad73bbb3a6222664bc2ac67449de42e33fa71275791cf33d833"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-b",
+      "campaignDigest": "sha256:bacfaa96f31514b8827fe9961dd1a59356f5b8e297e3d689b20566407e494cdc",
+      "roundId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:5414438765ed8908f04d317773d444b0fa1c51eb08dde8e44e735120dc0cd3e2",
+      "batchId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:379feda40a8579a2898646827094cb8a85e997b6a856ccf15d2f73ced3b490d9",
+      "runId": "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001",
+      "runManifestDigest": "sha256:74900ed4b6979a90a65144586ea1c81ecccea91c54c2bd82482ddb49dac2195a",
+      "resultsDigest": "sha256:c8749f82293d488b51a6fc197a27eaa28fe09e5d43c8cb212f26653bdb24b933"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-b005-sek1-symbols-stoichiometry-current-16-20260930-partial-synthesis-decision-001",
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c525e885c9961f5a873940be26d6fdb55db0eaed9fc3d08cf5c5e2fdaa3b4c63",
+      "pageFingerprint": "sha256:817dad73670ca2f668d8a8053814eb8c6562b4814512e876f9b768172abd0210",
+      "goalReviewContextFingerprint": "sha256:7c907012961e77d71e0fca4c3c6910ce27367e86982ffc615ce7d1e0fd08cb1c",
+      "finalText": {
+        "titleDe": "Konstante Massenverhältnisse beschreiben",
+        "titleEn": "Describe constant mass proportions",
+        "descriptionDe": "Die lernende Person kann konstante Massenverhältnisse an einfachen Oxid- und Sulfidbildungen erkennen und fachlich beschreiben.",
+        "descriptionEn": "The learner can recognize and describe constant mass proportions in simple oxide and sulfide formation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b005-round-a-e0d05c36-20260930",
+          "recordDigest": "sha256:b48212fd31953ada53cf93a0121f1d4401a9822b9e1ba491ddb065413fd38fd6"
+        },
+        "second": {
+          "recordId": "chemie-b005-b-01-e0d05c36",
+          "recordDigest": "sha256:fedf1e8031157ecf5cbc81e30725d68a19a966a70531e7a09931d9ec141af738"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten die Verhältnisdeutung für einfache Oxid- und Sulfidbildungen bei. A fordert normierte Messdaten und einen neuen Überschussfall; das Bild liefert nur das Magnesium-Beispiel.",
+      "rationaleEn": "Both rounds retain proportional reasoning for simple oxide and sulfide formation. A requires normalized data and a fresh excess-reactant case; the image only supplies magnesium."
+    },
+    {
+      "decisionId": "chemie-b005-sek1-symbols-stoichiometry-current-16-20260930-partial-synthesis-decision-002",
+      "goalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0e8bfe30c9724c2e806c68df8a187185fbcf22afaddfda50281beeb8c26a36e9",
+      "pageFingerprint": "sha256:8b5823cd8bee66baac11a828a7ad384a69ed2a921e223675ab36b838b346ef17",
+      "goalReviewContextFingerprint": "sha256:28b928ebd32b8e3dd955f1f3ee20e015a500077024302b0fa75d4448dfe87598",
+      "finalText": {
+        "titleDe": "Chemische Symbole und Formeln sicher nutzen",
+        "titleEn": "Use chemical symbols and formulas confidently",
+        "descriptionDe": "Die lernende Person kann chemische Symbole deuten und Molekülformeln einfacher Verbindungen fachlich korrekt bilden.",
+        "descriptionEn": "The learner can interpret chemical symbols and correctly form molecular formulas of simple compounds."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b005-round-a-e7c363d4-20260930",
+          "recordDigest": "sha256:ef7afc2c73c7af61fcb96d6107b187197cf00bdec94149d1e0fc4927d5e8e988"
+        },
+        "second": {
+          "recordId": "chemie-b005-b-03-e7c363d4",
+          "recordDigest": "sha256:3cf96d5ef1653a42b7c0a5302cc31ae702e069c43bccdd6011273952087ed885"
+        }
+      },
+      "rationaleDe": "Beide Runden tragen den Wechsel zwischen Elementsymbol und einfacher Molekülformel. A prüft Atome pro Molekül sowie Index gegen Koeffizient an einer neuen Darstellung.",
+      "rationaleEn": "Both rounds support the shift between element symbol and simple molecular formula. A tests atoms per molecule and subscript versus coefficient in a fresh representation."
+    },
+    {
+      "decisionId": "chemie-b005-sek1-symbols-stoichiometry-current-16-20260930-partial-synthesis-decision-003",
+      "goalId": "5c4788a7-6760-53dc-894e-e04bca6f8cd9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:618cc37abe7c18275b88f403c5f6b4d617c9ff68260581df8161421137148e1b",
+      "pageFingerprint": "sha256:2d61b1a601ad816f7510b159303f1225a1e736c846cd9a6ae73a0139a0ff8d53",
+      "goalReviewContextFingerprint": "sha256:370c07d6628e712e679102fee64c1588f387595548004baa0a37e48f14425d34",
+      "finalText": {
+        "titleDe": "Gasverhalten mit dem kinetischen Teilchenmodell deuten",
+        "titleEn": "Interpret gas behavior with the kinetic particle model",
+        "descriptionDe": "Die lernende Person kann Druck, Temperatur und Volumen von Gasen mit einem kinetischen Teilchenmodell qualitativ deuten.",
+        "descriptionEn": "The learner can qualitatively interpret pressure, temperature, and volume of gases using a kinetic particle model."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b005-round-a-5c4788a7-20260930",
+          "recordDigest": "sha256:bbaab1c5c6a150a56217ac116ca1f3d76d23a12c63abf1ed9c8080df9b6f884a"
+        },
+        "second": {
+          "recordId": "chemie-b005-b-10-5c4788a7",
+          "recordDigest": "sha256:13d1474f8d41ad7a052176e476b544c7689cc72c49fe3bf573ccbd78194e14c8"
+        }
+      },
+      "rationaleDe": "Beide Runden halten Druck, Temperatur und Volumen für eine zusammenhängende qualitative kinetische Modellleistung. A variiert festgehaltene Größen und verlangt eine neue Stoßdeutung.",
+      "rationaleEn": "Both rounds find pressure, temperature and volume one coherent qualitative kinetic-model competence. A varies held-constant quantities and requires fresh collision reasoning."
+    },
+    {
+      "decisionId": "chemie-b005-sek1-symbols-stoichiometry-current-16-20260930-partial-synthesis-decision-004",
+      "goalId": "9f355f63-4fb7-5638-9538-6e8a246ec4b2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:db331af99ad23d7bd35483cdfeb5c603576ba334f6d325f1ff4a08ca8f9258df",
+      "pageFingerprint": "sha256:e21479e3358026b40d0360ea3e8efd1c081acde6ff77ce8992ddc4daa84ebc61",
+      "goalReviewContextFingerprint": "sha256:0974aa11f6d8eddb528a34cb83fa635be48ddef56550d573f4d5bb70a38a4bc6",
+      "finalText": {
+        "titleDe": "Stoffumsätze einfacher Molekülreaktionen berechnen",
+        "titleEn": "Calculate conversions in simple molecular reactions",
+        "descriptionDe": "Die lernende Person kann Reaktionsgleichungen und Größengleichungen nutzen, um Stoffumsätze bei einfachen Molekülreaktionen zu berechnen.",
+        "descriptionEn": "The learner can use reaction equations and quantity equations to calculate conversions in simple molecular reactions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b005-round-a-9f355f63-20260930",
+          "recordDigest": "sha256:b0c5c996cc302fa88ca5a57d6e6bd8285a8a1471e351ada5ef6182977daab0f4"
+        },
+        "second": {
+          "recordId": "chemie-b005-b-16-9f355f63",
+          "recordDigest": "sha256:047587fa623b644a333a98a5333faddefce2ba8ff0c49e78b79072a2a9622874"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten den begrenzten Stoffmengenumsatz aus ausgeglichener Molekülreaktion bei. A prüft Koeffizienten und einen neuen limitierenden Eduktfall statt Bildabschrift.",
+      "rationaleEn": "Both rounds retain a bounded amount-of-substance calculation from a balanced molecular reaction. A tests coefficients and a fresh limiting-reactant case rather than image copying."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "B präzisiert die Beziehung von empirischem Gesetz, hypothesenhafter Erklärung und Modell: Das Dalton-Modell ist nicht von Hypothesen trennscharf isoliert. Kanonischen Text ändern.",
+      "rationaleEn": "B clarifies the relationship between empirical law, hypothetical explanation and model: Dalton’s model is not neatly separate from hypotheses. Revise canonical wording."
+    },
+    {
+      "goalId": "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "A und B finden die unklare Teilgleichungsforderung und die DE/EN-Asymmetrie; Redoxteilgleichungen liegen im eigenen Ziel. Auf einfache ausgeglichene Gesamtgleichungen eingrenzen.",
+      "rationaleEn": "A and B find an unclear half-equation demand and DE/EN asymmetry; redox half-equations are a separate goal. Bound wording to simple balanced overall equations."
+    },
+    {
+      "goalId": "22133f29-ef02-4408-8f8d-2bbea3275d91",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "B verlangt die englisch fehlende wässrige Bedingung sowie benanntes Reaktionsmilieu und Ladungsbilanz für Teilgleichungen. Diese fachlichen Grenzen in beiden Sprachen nachtragen.",
+      "rationaleEn": "B requires aqueous conditions missing in English plus specified reaction medium and charge balance for half-equations. Add these scientific bounds in both languages."
+    },
+    {
+      "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "B findet den ungenauen „Teilchenanzahl-bezogene Groesse“-Begriff und fehlende gezählte Teilchenart. Zieltext vor positivem Profil konkretisieren.",
+      "rationaleEn": "B finds an imprecise “particle-count-related quantity” phrase and missing entity type. Clarify wording before a positive profile."
+    },
+    {
+      "goalId": "8a2ad724-df5e-5986-8de9-560ba43caac2",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "B fordert einen konkreten Massen-/Stoffmengenbezug statt „einfacher Bezüge“ und bemängelt deutsche Schreibungen. M = m/n und Einheiten im Ziel explizieren.",
+      "rationaleEn": "B requires a concrete mass/amount relationship instead of “simple relationships” and flags German spelling. State M = m/n and units in the goal."
+    },
+    {
+      "goalId": "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "B zeigt, dass u und g ohne Bezug auf Einzelteilchen beziehungsweise Stoffportion missverständlich sind; deutsche Schreibungen korrigieren.",
+      "rationaleEn": "B shows u and g are ambiguous without specifying an individual particle versus a substance sample; correct German spelling."
+    },
+    {
+      "goalId": "e45c0022-ac0d-5c83-b433-5f68655e382f",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "B fordert den konkreten Teilchenzahl-/Stoffmengenquotienten statt bloßem abstrakten „Proportionalitaetsfaktor“ und korrekte deutsche Schreibung.",
+      "rationaleEn": "B requires the concrete particle-count/amount quotient instead of only an abstract “proportionality factor” and correct German spelling."
+    },
+    {
+      "goalId": "1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "B fordert die eigentliche Avogadro-Aussage mit gleicher Teilchenzahl bei gleichem V, T und p; „gleiche Bedingungen“ ohne Benennung reicht nicht.",
+      "rationaleEn": "B requires the actual Avogadro statement of equal particle counts at equal V, T and p; unnamed “same conditions” is insufficient."
+    },
+    {
+      "goalId": "2924f784-5261-54e8-93ee-49ac3b3cd300",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "B nennt Temperatur und Druck als notwendige Bedingungen für den V_m-Wert und präzisiert den Umrechnungsbezug; deutsche Schreibungen korrigieren.",
+      "rationaleEn": "B names temperature and pressure as necessary conditions for V_m and clarifies the conversion; correct German spelling."
+    },
+    {
+      "goalId": "199570f4-b3c3-5e12-877d-ced97e9f6968",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "B konkretisiert Messgrößen für Gas-Molmasse (Dichte und molares Volumen bei gleichem T,p) und schließt die unbemerkte Übertragung auf Gemische aus.",
+      "rationaleEn": "B specifies measurements for gas molar mass (density and molar volume at common T,p) and prevents unqualified transfer to mixtures."
+    },
+    {
+      "goalId": "d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a",
+      "firstDecision": "revise",
+      "secondDecision": "block",
+      "rationaleDe": "B blockiert die verlangte Begründung der Zweiatomigkeit ohne gebundenen empirischen oder Bindungsmodell-Begründungsweg; A verlangt bereits eine engere Formulierung. Quellen und Voraussetzungen gezielt klären.",
+      "rationaleEn": "B blocks justification of diatomicity without a bound empirical or bonding-model route; A already asks for narrower wording. Clarify sources and prerequisites."
+    },
+    {
+      "goalId": "e675fa94-6e23-59c0-b376-4340bf44c00e",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "rationaleDe": "A und B verlangen die Trennung von relativen Atommassen aus Vergleichsdaten und Molekülformeln aus Massen-/Gasdaten. Zwei unabhängige inverse Leistungen; nicht strict zählen.",
+      "rationaleEn": "A and B require separating relative atomic masses from comparative data and molecular formulas from mass/gas data. They are independent inverse tasks; do not count strict."
+    }
+  ],
+  "manifestFingerprint": "sha256:11fc7960cd614e4e646b41ac31c0ac5bfec7e9fb97c70c827e06b8d2fffa9b11"
+}

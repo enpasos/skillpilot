@@ -1,0 +1,113 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "biologie-m7-ephase-post-b-three-current-20260930-v3-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex QA agent; explicit synthesis of two current AI candidate reviews; no human approval",
+  "synthesizedAt": "2026-09-30T20:10:13.400Z",
+  "batch": {
+    "batchId": "biologie-m7-ephase-post-b-three-current-20260930-v3",
+    "batchManifestDigest": "sha256:0eade936a638bcc35b11c9bbafa4e0cccad83ed654e73490ecc1319226ef6ed6",
+    "configDigest": "sha256:0304db52eab3bea3710afae18faaeec0100afc8a39709e8ed8f722ecf267fc62",
+    "bundleFingerprint": "sha256:85be3fd50dd86cef6c5294c6d5e5426b328eaf231cd8859eb0a5686e15a3dcff",
+    "bookDigest": "sha256:2856c15779d4d6c4492878396257b0cae25b7ab33af2bf4fedff8f31836e5639",
+    "reviewInputFingerprint": "sha256:b61d11705043383c953cb5f958241beae137f79144d9e15b7a4b02daecfae56a",
+    "dualSummaryDigest": "sha256:c3d278550f255a2bbaeefab99de82e475ba124b79c6ce4d79f81cee9a245453b",
+    "canonicalLandscapeDigest": "sha256:a979c1b0c498d839da09e918f1f15d39f351286a716cce3d112d0176a8b80ea0"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-m7-ephase-post-b-three-current-20260930-v3-a",
+      "campaignDigest": "sha256:a4bc4c101a12d26f406335554b398d79d59a9c14f5037a28342f60cb0a1ffaea",
+      "roundId": "biologie-m7-ephase-post-b-three-current-20260930-v3-first-pass-a",
+      "independenceGroupId": "biologie-m7-ephase-post-b-three-current-20260930-v3-independent-a",
+      "reviewInputFingerprint": "sha256:b61d11705043383c953cb5f958241beae137f79144d9e15b7a4b02daecfae56a",
+      "batchId": "biologie-m7-ephase-post-b-three-current-20260930-v3-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:fd812c01d0f6703308b540a7ff8106aaad3c7acd0537d4167c2304fe81dcf9b2",
+      "runId": "biologie-m7-ephase-post-b-three-current-20260930-v3-first-pass-a-codex-biology-e-repair-independent-a",
+      "runManifestDigest": "sha256:d35fd6123b4c1cb46d927eec4f3856f60e225b0816d81c464633c7f501665fcd",
+      "resultsDigest": "sha256:c9998982bd5b973a9e0038b5d9895b69ada8bbfccbb1569c1671ee6928c320b9"
+    },
+    "second": {
+      "campaignId": "biologie-m7-ephase-post-b-three-current-20260930-v3-b",
+      "campaignDigest": "sha256:60b6d4084324847d049b3d42fea42566a4ab1b499ca80c032c53b0c3e73a049b",
+      "roundId": "biologie-m7-ephase-post-b-three-current-20260930-v3-first-pass-b",
+      "independenceGroupId": "biologie-m7-ephase-post-b-three-current-20260930-v3-independent-b",
+      "reviewInputFingerprint": "sha256:b61d11705043383c953cb5f958241beae137f79144d9e15b7a4b02daecfae56a",
+      "batchId": "biologie-m7-ephase-post-b-three-current-20260930-v3-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:a4f65c54f0f35d0482ae2ecf6fbb2e64726872c293c97347dd98d6d83a6a5e9a",
+      "runId": "biologie-ephase-post-b-three-20260930-blind-b-run-001",
+      "runManifestDigest": "sha256:2001577553952c9ef9b0d33c300812cb3c830ae7428340d1d99ae00d141b409d",
+      "resultsDigest": "sha256:f8bb4bc0f25567e7a7f0fd80edde7a4acc4590254a775db19bb3862a92008e29"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "biologie-m7-ephase-post-b-three-current-20260930-v3-synthesis-decision-001",
+      "goalId": "5c2ce7b1-30ba-5e9c-99de-1ffac126ec13",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d06b3911a71e2e9c6f03045f3032fd244ce4785cf04784503377c5b876ad3589",
+      "pageFingerprint": "sha256:3abb204eb6ca6c42803b8efcd5724fa0294816a0453dc613d248abdbde547e67",
+      "goalReviewContextFingerprint": "sha256:762e9700e7e4a9429b5c8bef9522b5de1bc9cfcf7fdedc77450e36a1a87d18e4",
+      "finalText": {
+        "titleDe": "Proteinvermittelten Membrantransport erklären",
+        "titleEn": "Explain protein-mediated membrane transport",
+        "descriptionDe": "Die lernende Person kann passiven Stofftransport durch Kanal- oder Carrierproteine und aktiven Stofftransport durch energiegekoppelte Transportproteine anhand von Konzentrationsgefälle und Energieeinsatz unterscheiden.",
+        "descriptionEn": "The learner can distinguish passive solute transport through channel or carrier proteins from active solute transport through energy-coupled transport proteins using concentration gradients and energy input."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "biologie-m7-ephase-post-b-three-current-20260930-v3-first-pass-a-codex-biology-e-repair-independent-a.5c2ce7b1-30ba-5e9c-99de-1ffac126ec13",
+          "recordDigest": "sha256:4412d51453ec3519a01d3a10c6cfd8e19feaafa802574b1292b9c5096d5d33f4"
+        },
+        "second": {
+          "recordId": "biologie-e-post-b-01-5c2ce7b1",
+          "recordDigest": "sha256:45603aa6ed25c302e3b6a1d46dbd54b2e894132a08b57e8ff4fb1d43e9a89168"
+        }
+      },
+      "rationaleDe": "Beide aktuellen unabhängigen Runden halten die präzisierte Unterscheidung zwischen passivem Kanal-/Carriertransport und energiegekoppeltem aktivem Proteintransport. Die A-Runde prüft den Ausfall der Pumpenenergie; B verlangt eine erneute Entscheidung bei umgekehrtem Ionengefälle. Das Bild liefert nur Anschauung. Die Synthese ist maschinell und keine menschliche Freigabe.",
+      "rationaleEn": "Both current independent rounds retain the clarified distinction between passive channel/carrier transport and energy-coupled active protein transport. Round A tests loss of pump energy; round B requires a fresh decision under a reversed ion gradient. The image only illustrates the idea. This is machine synthesis, not human approval."
+    },
+    {
+      "decisionId": "biologie-m7-ephase-post-b-three-current-20260930-v3-synthesis-decision-002",
+      "goalId": "01819a6c-f965-5b33-8c4e-07affb3c659f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:efc61ddd46a163a3665ebe8efde4dde7553532ff807d73ba149a433f0325a8fe",
+      "pageFingerprint": "sha256:473768a319f315dbcf4e75a4d0ba6a49d002beacffa1ba4f40d226f627b1632e",
+      "goalReviewContextFingerprint": "sha256:0ee85034a09f274b5e1ba8800c7fa0b4a008b49d8123de8b4990f624169bf02a",
+      "finalText": {
+        "titleDe": "Enzymhemmung erklären",
+        "titleEn": "Explain enzyme inhibition",
+        "descriptionDe": "Die lernende Person kann das Prinzip kompetitiver und allosterischer Enzymhemmung an jeweils einem geeigneten Hemmstoffbeispiel erklären.",
+        "descriptionEn": "The learner can explain the principles of competitive and allosteric enzyme inhibition using one suitable inhibitor example for each."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "biologie-m7-ephase-post-b-three-current-20260930-v3-first-pass-a-codex-biology-e-repair-independent-a.01819a6c-f965-5b33-8c4e-07affb3c659f",
+          "recordDigest": "sha256:ea0768d4523a4c66e3637af129d568b9a3da59e0323726e2b75e55d1f732ead7"
+        },
+        "second": {
+          "recordId": "biologie-e-post-b-03-01819a6c",
+          "recordDigest": "sha256:d7806916ec8e30e5c2854905b92b76afb0c8ae70c0ad44fcf220f9349bc8b5e6"
+        }
+      },
+      "rationaleDe": "Beide aktuellen unabhängigen Runden halten die zwei Hemmungsprinzipien als eine Vergleichskompetenz: Konkurrenz am aktiven Zentrum gegenüber Wirkung nach Bindung an anderer Stelle. A begrenzt Beispiele auf geeignete Strukturangaben; B trennt Messbefund und Modell und fordert keinen benannten Hemmstoff. Das Bild ist kein Lernnachweis. Nur maschinelle D-Synthese.",
+      "rationaleEn": "Both current independent rounds retain the two inhibition principles as one comparison: competition at the active site versus an effect after binding elsewhere. A limits examples to suitable structural information; B separates measured findings from the model and requires no named inhibitor. The image is not learner evidence. Machine D synthesis only."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "1984fd66-c117-5c29-87b3-1c1626e4ba81",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "Runde B belegt eine verbliebene Kausallücke: Konstante Enzymmenge allein hält pH, Temperatur und weitere Messbedingungen nicht fest. Der vorgeschlagene Zusatz ‚und sonst gleichen Bedingungen‘ ist fachlich nötig; die A-KEEP-Entscheidung reicht deshalb nicht zur Zurückweisung dieser Revision. Aktuellen Kanontext gezielt korrigieren und nur betroffene D-/Seiten-/Bild-/P-Bindungen erneut prüfen; bis dahin kein strenger D-Abschluss.",
+      "rationaleEn": "Round B identifies a remaining causal gap: a fixed enzyme amount alone does not hold pH, temperature and other measurement conditions constant. Its proposed addition 'and otherwise equal conditions' is scientifically needed, so the A keep record does not justify rejecting it. Revise the current canonical wording and recheck only affected D/page/image/P bindings; no strict D closure meanwhile."
+    }
+  ],
+  "manifestFingerprint": "sha256:91eff958222c642b755dcabb0e5ea3308e505af91b9d7bb3c625c9cab0d68954"
+}

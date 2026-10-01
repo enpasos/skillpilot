@@ -885,6 +885,7 @@ const canonicalRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/canonical')
 const sourceExtractionRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/input')
 const semanticAtomicityRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/quality/semantic-atomicity')
 const memoryCardReviewRoot = resolve(repoRoot, defaultMemoryCardReviewConfigDir)
+const deepUnderstandingRegistryPath = resolve(repoRoot, 'curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json')
 const goalVisualizationQaRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/quality/goal-visualization-qa')
 const compositionViewRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/composition-views')
 const acceptedWarningsPath = resolve(repoRoot, 'docs/qa-ci/applicability-accepted-warnings.json')
@@ -3342,10 +3343,49 @@ function evaluateSemanticAtomicity(landscape: SkillLandscape, configs: ReviewCon
   )
 }
 
+interface ActiveDeepUnderstandingReviewConfigs {
+  semanticAtomicityConfigPaths: string[]
+  memoryReviewConfigPath: string
+}
+
+// The rollout registry selects current review evidence; versioned predecessors remain on disk as history.
+function readActiveDeepUnderstandingReviewConfigs(): Map<string, ActiveDeepUnderstandingReviewConfigs> {
+  const registry = loadJson<{
+    subjects: Array<{
+      landscapePath: string
+      semanticAtomicityConfigPath?: string
+      semanticAtomicityConfigPaths?: string[]
+      memoryReviewConfigPath: string
+    }>
+  }>(deepUnderstandingRegistryPath)
+  const activeByLandscapeId = new Map<string, ActiveDeepUnderstandingReviewConfigs>()
+  for (const subject of registry.subjects) {
+    const landscape = loadJson<SkillLandscape>(resolve(repoRoot, subject.landscapePath))
+    const semanticAtomicityConfigPaths = [
+      ...(subject.semanticAtomicityConfigPath ? [subject.semanticAtomicityConfigPath] : []),
+      ...(subject.semanticAtomicityConfigPaths ?? []),
+    ]
+    if (semanticAtomicityConfigPaths.length === 0 || !subject.memoryReviewConfigPath) {
+      throw new Error(`Incomplete active review config for ${landscape.landscapeId}`)
+    }
+    if (activeByLandscapeId.has(landscape.landscapeId)) {
+      throw new Error(`Duplicate active review config for ${landscape.landscapeId}`)
+    }
+    activeByLandscapeId.set(landscape.landscapeId, {
+      semanticAtomicityConfigPaths,
+      memoryReviewConfigPath: subject.memoryReviewConfigPath,
+    })
+  }
+  return activeByLandscapeId
+}
+
 function readSemanticConfigs(): Map<string, ReviewConfig[]> {
   const configsByLandscapeId = new Map<string, ReviewConfig[]>()
+  const activeByLandscapeId = readActiveDeepUnderstandingReviewConfigs()
   collectFiles(semanticAtomicityRoot, (fileName) => /\.config\.json$/i.test(fileName)).forEach((file) => {
     const config = loadJson<ReviewConfig>(file)
+    const active = activeByLandscapeId.get(config.landscapeId)
+    if (active && !active.semanticAtomicityConfigPaths.includes(toRepoPath(file))) return
     const existing = configsByLandscapeId.get(config.landscapeId) ?? []
     existing.push(config)
     configsByLandscapeId.set(config.landscapeId, existing)
@@ -3620,8 +3660,17 @@ function evaluateMemoryCardReview(landscape: SkillLandscape, configs: MemoryCard
 
 function readMemoryCardReviewConfigs(): Map<string, MemoryCardReviewConfig[]> {
   const configsByLandscapeId = new Map<string, MemoryCardReviewConfig[]>()
+  const activeByLandscapeId = readActiveDeepUnderstandingReviewConfigs()
+  for (const [landscapeId, active] of activeByLandscapeId) {
+    const config = loadJson<MemoryCardReviewConfig>(resolve(repoRoot, active.memoryReviewConfigPath))
+    if (config.landscapeId !== landscapeId) {
+      throw new Error(`Active memory-card review config has wrong landscape ID: ${active.memoryReviewConfigPath}`)
+    }
+    configsByLandscapeId.set(landscapeId, [config])
+  }
   discoverMemoryCardReviewConfigs(defaultMemoryCardReviewConfigDir, { allowEmpty: true }).forEach(({ configPath }) => {
     const config = loadJson<MemoryCardReviewConfig>(resolve(repoRoot, configPath))
+    if (activeByLandscapeId.has(config.landscapeId)) return
     const existing = configsByLandscapeId.get(config.landscapeId) ?? []
     existing.push(config)
     configsByLandscapeId.set(config.landscapeId, existing)

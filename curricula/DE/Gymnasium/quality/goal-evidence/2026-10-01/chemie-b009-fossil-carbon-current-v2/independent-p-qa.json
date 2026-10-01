@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "reviewKind": "independent-positive-understanding-evidence-v2-content-qa",
+  "reviewedAt": "2026-09-30T23:52:43Z",
+  "reviewer": "codex-chemistry-b009-0503-independent-p-qa",
+  "goalId": "0503c975-3934-5206-962e-b1c247de0c12",
+  "reviewId": "chemie-b009-fossil-carbon-total-flow-current-20261001-v2",
+  "verdict": "PASS_AI_CANDIDATE",
+  "humanApprovalClaimed": false,
+  "learnerMasteryClaimed": false,
+  "reviewedInputs": {
+    "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/chemie-b009-fossil-carbon-current-v2/positive-evidence.config.json",
+    "configSha256": "sha256:b970b3eca32c7f084b845e505dc428ba41ea284310f3262eeaa58aa4bb34667d",
+    "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/chemie-b009-fossil-carbon-current-v2/positive-evidence.candidates.json",
+    "candidateSha256": "sha256:8f5caf315c246e11ce2c50ee6ab36bfeb8041380edea1e444aa0e51610bc5442",
+    "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/chemie-b009-fossil-carbon-current-v2/positive-evidence.review.jsonl",
+    "reviewSha256": "sha256:33d420a51907961c52a6384cbc8899e35bd3cbb95e404662a4829265b9d46d09",
+    "currentGoalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "currentGoalFingerprint": "sha256:d3b1ac261a49ceb7637dbbcfb00ecacc3f62e602144f56d51335232a72cf385c",
+    "currentProfileFingerprint": "sha256:44850b9e5cc8551d6f9fb24e85b5427189ecdf10527df8ed7a351ab9570d3243",
+    "activeGoalImageSha256": "sha256:e3f03ecac344cbd713f8102cc58b6f98456bb71cc2b245174c54d566f1d65625",
+    "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_CHEMIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+    "sourceMappingPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.review.json",
+    "officialCurriculumUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/8/chemie",
+    "scientificReferenceUrl": "https://www.earthobservatory.nasa.gov/Features/CarbonCycle/page4.php"
+  },
+  "findings": [
+    {
+      "area": "current-goal-and-source-scope",
+      "verdict": "PASS",
+      "detail": "Die aktuelle kanonische DE/EN-Beschreibung verlangt den Weg langfristig gespeicherten fossilen Kohlenstoffs als CO₂ in die Atmosphäre und die bedingte Bestandszunahme bei gesamtem Zufluss über gesamter Aufnahme. Der P-v2-Text prüft genau diese zwei Aspekte. LehrplanPLUS Bayern Chemie 8 C8.3.8 nennt die Erklärung des durch fossile Verbrennung ausgelösten CO₂-Anstiegs am Kohlenstoffatomkreislauf. Die BY-Quellenentscheidung bindet den breiten Ursprungsbullet an den kanonischen Elternknoten 871eabde-6e19-59d3-bc7c-60977a9837db; die Projektion auf 0503 ist geerbt, nicht als direkte Einzelquellenentscheidung ausgegeben. Aus kanonischer Bundesland-Anwendbarkeit wird hier keine separat geprüfte bundesweite Quellenabdeckung behauptet."
+    },
+    {
+      "area": "carbon-conservation-and-stock-flow-science",
+      "verdict": "PASS",
+      "detail": "Beide Erwartungen unterscheiden den langfristigen fossilen Speicher, biologischen Rückfluss, Fotosynthese-Aufnahme und atmosphärischen CO₂-Bestand. Der Satz 'gesamter Zufluss > gesamte Aufnahme' ist für den abgegrenzten Zeitraum und das vereinfachte Reservoir-Modell die richtige Bestandsbedingung; fossile Verbrennung erzwingt bei hypothetisch entsprechend größerer Aufnahme keine sofortige Bestandszunahme. Das entspricht der Trennung von langsamem fossilem und schnellem biologischem Kohlenstoffkreislauf. Das Profil macht keine Behauptung, dass dieser vollständige Ausgleich derzeit real beobachtet werde."
+    },
+    {
+      "area": "application-case-arithmetic-and-conservation",
+      "verdict": "PASS",
+      "detail": "Fall 1: Atmosphäre 11 biologischer Rückfluss + 3 fossiler Zufluss − 12 Fotosynthese = +2 Kohlenstoffeinheiten; zugleich Kohleflöz −3 und Biomasse +1, sodass Kohlenstoff erhalten bleibt. Fall 2: Jahr 1 ergibt 7 + 4 − 11 = 0 und Biomasse +4; Jahr 2 ergibt 7 + 4 − 9 = +2 und Biomasse +2. Die erwarteten Antworten und die DE/EN-Aufgabentexte stimmen mit diesen Bilanzen überein. Die Einheiten sind ausdrücklich Modellwerte, keine realen Emissions- oder Klimadaten."
+    },
+    {
+      "area": "independent-evidence-and-transfer",
+      "verdict": "PASS",
+      "detail": "Zwei getrennte Leistungen sind gefordert. Fall 1 verlangt eine neue Zuordnung unbeschrifteter Speicher- und Flusskarten sowie den Weg der Kohlenstoffatome; Fall 2 wechselt zu Erdgas, zwei Zeiträumen, verändertem Senkenfluss und der Prüfung einer pauschalen Behauptung. Damit geht der zweite Fall über einen bloßen Zahlentausch hinaus und verlangt eine neue bedingte Bilanzentscheidung. Beide Fälle stehen ohne die beschriftete aktive Zielgrafik; die Grafik selbst verrät bereits die Regel und zählt nicht als Lernleistungsnachweis. Die tatsächliche Frische und Selbstständigkeit müssen bei späterer Durchführung geprüft werden."
+    },
+    {
+      "area": "status-fingerprints-and-checker",
+      "verdict": "PASS",
+      "detail": "Der materialisierte Datensatz ist an die aktuellen Ziel- und Profilfingerprints sowie das aktive 4:3-PNG gebunden. Er bleibt wahrheitsgemäß needs_human_review, reviewAuthority=ai_candidate, E1/G1, mit leeren reviewRunIds und ohne menschliche Freigabe oder behauptete Lernendenleistung. Der gezielte Checker meldet 1 konfiguriertes Ziel, 0 approved, 1 needs human review und 0 Blocker."
+    }
+  ],
+  "openMaterialIssues": [],
+  "nonBlockingQualification": "Das vereinfachte Aufgabenmodell schließt Ozean und weitere Kohlenstoffspeicher ausdrücklich aus; deshalb darf eine spätere Aufgabe die Modellwerte nicht als reale Klimabilanz präsentieren. Die zukünftigen Aufgaben müssen die Zahlen, Reservoir-Grenzen und getrennten Lernleistungen tatsächlich bereitstellen und erfassen. Dieser Inhaltsreview prüft nicht die fachliche Quellenabdeckung aller 16 Bundesländer oder eine menschliche Release-Freigabe.",
+  "checker": {
+    "command": "npm --prefix app run -s quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/chemie-b009-fossil-carbon-current-v2/positive-evidence.config.json",
+    "exitCode": 0,
+    "configuredGoals": 1,
+    "approved": 0,
+    "needsHumanReview": 1,
+    "blockingIssues": 0
+  }
+}

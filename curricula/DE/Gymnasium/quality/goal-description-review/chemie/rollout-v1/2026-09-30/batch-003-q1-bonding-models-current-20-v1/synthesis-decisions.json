@@ -1,0 +1,421 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis; eleven current dual-round keeps, nine explicit deferrals; no human approval",
+  "synthesizedAt": "2026-09-30T16:18:39.625Z",
+  "batch": {
+    "batchId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930",
+    "batchManifestDigest": "sha256:b83dd8754a38040755232e1738a2f27d732ef5347d7aa33ea1a3bc19ed5efa9b",
+    "configDigest": "sha256:2acb767d1c4f32709990eb58df182b3ef0650e76b8868c1da1a67916b1976cdf",
+    "bundleFingerprint": "sha256:2496da73c85893a59a73364e57d9e57b8075fb34c9f8983219f3fce607b92c6e",
+    "bookDigest": "sha256:c5251b902d4046f9a72bf347e9bede92f06424d2ced1f9df55f776dd4a7eb504",
+    "reviewInputFingerprint": "sha256:c07e8027610ce7b898ef3ee8592f3d2835d19ca3aa33329fa31538af54006475",
+    "dualSummaryDigest": "sha256:7063fb382e703af7de74e31bd6ff248e785a6cf733eedfd1dc690f7738914cf7",
+    "canonicalLandscapeDigest": "sha256:65449e97c5f1a65d8eef11fd9730a2e0744947f50f8b15e6385164958fb6e30a"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-a",
+      "campaignDigest": "sha256:4d4a6506908f6e94424077022b3055aa200ca0b787ff7386b92a6d57549f2a76",
+      "roundId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:c07e8027610ce7b898ef3ee8592f3d2835d19ca3aa33329fa31538af54006475",
+      "batchId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:7b256fc07fa3ac97b4f1e9b1b1da8c06f9a519427016f4f8b5df679028b95fbd",
+      "runId": "codex-gpt-6-round-a-chemie-b003-20260930",
+      "runManifestDigest": "sha256:5f8f63c26aca5bc62c9e5780cd4bf89a9edeb70b1e5ddf43c433db492a823a8b",
+      "resultsDigest": "sha256:b305ec1bb952e3d06edb174aa07446041c95eaec2392680b413529e1a666530a"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-b",
+      "campaignDigest": "sha256:169af5a705d3c5cb4531b1291386fb63242cdd5cab7d2510c4bdf2c8c5fc5abd",
+      "roundId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:c07e8027610ce7b898ef3ee8592f3d2835d19ca3aa33329fa31538af54006475",
+      "batchId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:adc755700be7960161fd03f881616999e22c02957537b8e57b3069b42a9da963",
+      "runId": "chemie-b003-q1-round-b-20260930-gpt6-v1",
+      "runManifestDigest": "sha256:e1cf816bbd5bfd6fd6a1a99356fddd1a27a05061a1fd0ec7128ce16e82232390",
+      "resultsDigest": "sha256:4f99b000e7cda824f3b3c3e9eb8215295ae0c11f4d62fda796e3aaa69e6f2c06"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-001",
+      "goalId": "17ab1148-7383-5cab-8b91-73aff795f1e4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:baf88eceefd026bec0d0048c44e425277a9e5f8bf38b0e445e4b3d2320abdc63",
+      "pageFingerprint": "sha256:402c5f6f91a2c297202b8bdb91300c3d0bd6d408fc16e0b34c31249317483984",
+      "goalReviewContextFingerprint": "sha256:41f78f0e68ee175ae1841913efabf99c3c2ad01d9227e844ed74e168dbbd274a",
+      "finalText": {
+        "titleDe": "Elektrophile Substitution am Aromaten modellieren",
+        "titleEn": "Model electrophilic substitution on aromatics",
+        "descriptionDe": "Die lernende Person kann elektrophile Substitutionen am aromatischen Ring modellieren.",
+        "descriptionEn": "The learner can model electrophilic substitutions on aromatic rings."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b003-round-a-17ab1148-20260930",
+          "recordDigest": "sha256:cabf2cb5c33512d1fb9af9d19a24179fd9d6757a6867f8cc0fa1c2c4005b8db9"
+        },
+        "second": {
+          "recordId": "chemie-b003-b-03",
+          "recordDigest": "sha256:15e2f6895b3c23c48c66bc9ee32f890210b7de65964e34a09238f5ba4f47a420"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten den begrenzten aromatischen Substitutionsmechanismus bei. Die A-Evidenz prüft Angriff, Sigma-Zwischenstufe und erneute Aromatisierung in einem neuen Fall.",
+      "rationaleEn": "Both rounds retain the bounded aromatic substitution mechanism. A evidence checks attack, sigma intermediate, and restored aromaticity in a fresh case."
+    },
+    {
+      "decisionId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-002",
+      "goalId": "17acbdec-5274-510f-8588-0eac164ebbe5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8de1c39753b2b902f15e5e13506b5a1dac45cbc2ab140abed849d9de31766cbf",
+      "pageFingerprint": "sha256:f2956e420cdb3df9d4fc255d4d2232ac5fca0a04b7c931916ead0be3e6d5b0f7",
+      "goalReviewContextFingerprint": "sha256:014006a603c357ff4c3502d064848cabb39929926094bb0d7a992b6517f742bb",
+      "finalText": {
+        "titleDe": "Halogenreaktionen von Kohlenwasserstoffen vergleichen",
+        "titleEn": "Compare halogen reactions of hydrocarbons",
+        "descriptionDe": "Die lernende Person kann typische Reaktionen gesättigter und ungesättigter Kohlenwasserstoff-Moleküle mit Halogen-Molekülen vergleichen.",
+        "descriptionEn": "The learner can compare typical reactions of saturated and unsaturated hydrocarbon molecules with halogen molecules."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b003-round-a-17acbdec-20260930",
+          "recordDigest": "sha256:9fe6654b0cb597060b28819e3d06b66f9ae905ade03229e2f585c611938eabb7"
+        },
+        "second": {
+          "recordId": "chemie-b003-b-04",
+          "recordDigest": "sha256:07da37f6aef01f864c6c56961468d1bfcb003846f2546f3f4987a7136d6e108d"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten den Vergleich von Halogenreaktionen an Alkanen und Alkenen bei. Die A-Evidenz trennt radikalische Substitution und elektrophile Addition samt Bedingungen.",
+      "rationaleEn": "Both rounds retain the comparison of halogen reactions of alkanes and alkenes. A evidence distinguishes radical substitution from electrophilic addition and their conditions."
+    },
+    {
+      "decisionId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-003",
+      "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9ffb4363e6e864a302afd1ae4ae743606b402cdde234375ccc281b9043c34ac8",
+      "pageFingerprint": "sha256:9ed74d01035b8ecf8aaf61fd7790f9322364a435a52b30fec1fcf9da6eb2aa12",
+      "goalReviewContextFingerprint": "sha256:1486d36dc3ec62f3f97fc7e658af3fc605c5fca9f61c77975c2c4f89cb7faef2",
+      "finalText": {
+        "titleDe": "Molekülorbital-Modelle anwenden",
+        "titleEn": "Apply molecular orbital models",
+        "descriptionDe": "Die lernende Person kann einfache MO-Diagramme (z. B. O2, N2) interpretieren und Bindungsordnung ableiten.",
+        "descriptionEn": "The learner can interpret simple MO diagrams (e.g. O2, N2) and derive bond order."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b003-round-a-f85b4651-20260930",
+          "recordDigest": "sha256:e8700fc83558c5f468df413297f51427ffea8ad4be3032f8174bd93d7716f8be"
+        },
+        "second": {
+          "recordId": "chemie-b003-b-05",
+          "recordDigest": "sha256:63f223fb67b650105ca1c5848aa0263714d656a3e7522c17fe4ffdfa05d0e84c"
+        }
+      },
+      "rationaleDe": "Beide Runden prüfen dieselbe MO-Modellleistung: Besetzung lesen und Bindungsordnung ableiten. Der A-Transfer variiert die Elektronenzahl und vermeidet eine ungestützte exakte Bindungsenergie.",
+      "rationaleEn": "Both rounds assess the same MO-model competence: reading occupancy and deriving bond order. A transfer changes electron count and avoids an unsupported exact bond energy."
+    },
+    {
+      "decisionId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-004",
+      "goalId": "3fb7dea4-f832-5e23-b518-68b13a655b92",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:722e36aa5ac92e9b1f2376fbc3de71cb5899b87363325c9772a0bcf5ed6ec030",
+      "pageFingerprint": "sha256:3fee08b57e42bece96371ec02961e9fec095961d62f047d59354d4feb9dd0ef7",
+      "goalReviewContextFingerprint": "sha256:fbad6b7164c31cd0d1df902a213a390786f7b0244769f3209554faf04df443b8",
+      "finalText": {
+        "titleDe": "Elektrophile Addition mechanistisch darstellen",
+        "titleEn": "Represent electrophilic addition mechanistically",
+        "descriptionDe": "Die lernende Person kann elektrophile Additionen an ungesättigten Kohlenwasserstoffen mechanistisch darstellen.",
+        "descriptionEn": "The learner can represent electrophilic additions to unsaturated hydrocarbons mechanistically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b003-round-a-3fb7dea4-20260930",
+          "recordDigest": "sha256:d456f3d29fb061f52d8d586a8d9ff2ed9857b20c0b24ac7e55a6596a6b1a9332"
+        },
+        "second": {
+          "recordId": "chemie-b003-b-07",
+          "recordDigest": "sha256:2c2a4678a20cacb7ebe09a7fa45f83ad304eab7b2064d6dd01ffb743c537802b"
+        }
+      },
+      "rationaleDe": "Beide Runden halten die mechanistische Darstellung einer einfachen elektrophilen Addition für atomar. A fordert Elektronenpfeile und eine bedingte neue Produktprognose.",
+      "rationaleEn": "Both rounds find a simple electrophilic-addition mechanism atomic. A requires electron arrows and a conditional prediction for a fresh product."
+    },
+    {
+      "decisionId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-005",
+      "goalId": "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:22b338504507f3ec9893daf0dadc769464695a6d6246406e8b7eeceeea4de49d",
+      "pageFingerprint": "sha256:70fd3cacb36d966f7b93cc57ce95bb9a9915c024824d806c09f5a3a18b521f7b",
+      "goalReviewContextFingerprint": "sha256:c80419dfa25b589dca6e8a8120871bfb531a1985cdcf778269beec232e3589ba",
+      "finalText": {
+        "titleDe": "Molekülgeometrien mit dem EPA-Modell erklären",
+        "titleEn": "Explain molecular geometries with the VSEPR model",
+        "descriptionDe": "Die lernende Person kann Molekülgeometrien und einfache Bindungswinkel mit dem EPA-Modell erläutern.",
+        "descriptionEn": "The learner can explain molecular geometries and simple bond angles using the VSEPR model."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b003-round-a-9b56d01e-20260930",
+          "recordDigest": "sha256:87728863bb12a256dcbefd9480cbc9fde8521e89650e486f8891be91943b6b48"
+        },
+        "second": {
+          "recordId": "chemie-b003-b-08",
+          "recordDigest": "sha256:80e2a16703b7c5d19aca03575761f67877c0e991948fd16d200bf5cd521ace5a"
+        }
+      },
+      "rationaleDe": "Beide Runden binden Geometrie und einfache Winkel an ein EPA-Modell. A prüft freie Elektronenpaare im neuen NH3-Fall und begrenzt idealisierte Winkel.",
+      "rationaleEn": "Both rounds bind geometry and simple angles to one VSEPR model. A tests lone pairs in a fresh NH3 case and qualifies idealized angles."
+    },
+    {
+      "decisionId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-006",
+      "goalId": "e5aefd51-2de4-590c-903f-286d043a8c30",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:693e86a86c6a847b7e4c5ed68f83f1a103a1e8688d27a32d4517ecffdfc6b233",
+      "pageFingerprint": "sha256:5844db4805b5a0e33f442ad7794df527158ccca7edf62b3a07927b7d5d342d63",
+      "goalReviewContextFingerprint": "sha256:64552e282d1990cb1d93da01221de64f9bc07476d870e100df1e5595b2bd2f28",
+      "finalText": {
+        "titleDe": "Radikalische Substitution mechanistisch darstellen",
+        "titleEn": "Represent radical substitution mechanistically",
+        "descriptionDe": "Die lernende Person kann radikalische Substitutionen mechanistisch darstellen.",
+        "descriptionEn": "The learner can represent radical substitutions mechanistically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b003-round-a-e5aefd51-20260930",
+          "recordDigest": "sha256:d82c9d6955025a99d29e806c76c5519d530b48f867a732580136755b832a49cc"
+        },
+        "second": {
+          "recordId": "chemie-b003-b-10",
+          "recordDigest": "sha256:c1663bc13f15bb2763099676e960aba5ee343ad000292fb1a8dcceedb22ec8b3"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten den zusammenhängenden Radikal-Kettenmechanismus bei. A trennt Initiation, Fortpflanzung und Abbruch und verlangt einen neuen Fehlercheck.",
+      "rationaleEn": "Both rounds retain the coherent radical chain mechanism. A separates initiation, propagation, and termination and requires a fresh error check."
+    },
+    {
+      "decisionId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-007",
+      "goalId": "85342c52-9722-54b0-8fbb-513d9d648363",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b3cf84dd3646af2f70f38d0775a12cd48871c3f6aea46e14076bb03c0201b64d",
+      "pageFingerprint": "sha256:3125fa496ae957228e0bcaa44f63ec5523d010e826180c57105c30d0b3320534",
+      "goalReviewContextFingerprint": "sha256:c391d2568510358bfb430d8f83f7a5fa56372792080c186ddc8a36b83147fc03",
+      "finalText": {
+        "titleDe": "Konfiguration und Konformation unterscheiden",
+        "titleEn": "Distinguish configuration and conformation",
+        "descriptionDe": "Die lernende Person kann Konstitution, Konfiguration (R/S, E/Z) und Konformation unterscheiden und darstellen.",
+        "descriptionEn": "The learner can distinguish and represent constitution, configuration (R/S, E/Z), and conformation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b003-round-a-85342c52-20260930",
+          "recordDigest": "sha256:d712e7f5997c079ea4e43a42fc598b62184818cbf8233ca72e80d98d7887650c"
+        },
+        "second": {
+          "recordId": "chemie-b003-b-12",
+          "recordDigest": "sha256:83dc437fcb8ea266afb65c2c9bf0b160a4f39871992efdb31a0ebadb34ccc27c"
+        }
+      },
+      "rationaleDe": "Beide Runden halten Konstitution, Konfiguration und Konformation für eine gemeinsame Abgrenzungskompetenz. A prüft Bindungserhalt und einen neuen Darstellungswechsel.",
+      "rationaleEn": "Both rounds treat constitution, configuration, and conformation as one distinction competence. A tests bond preservation and a fresh representation change."
+    },
+    {
+      "decisionId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-008",
+      "goalId": "70bcb6bd-b7f8-5e23-b466-f9bc270a9c67",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6a993f6a4a737baf55a4a18d8d138bba9dc5f0ba62a262241bb2065c61e396f9",
+      "pageFingerprint": "sha256:d23addd05214453f1c404d5142b8e36a9678fc2068d90afa5a9ba0e17d67b3fa",
+      "goalReviewContextFingerprint": "sha256:463d538045eb9fccf52fc3ba69ded0104ea2ce7c3612fea3d4f540b61a18aed6",
+      "finalText": {
+        "titleDe": "MO-Schemata durch Linearkombination von Atomorbitalen erklären",
+        "titleEn": "Explain molecular-orbital schemes by linear combination of atomic orbitals",
+        "descriptionDe": "Die lernende Person kann das Zustandekommen von Energieniveauschemata einfacher zweiatomiger Element-Moleküle durch Linearkombination von Atomorbitalen vergleichbarer Energie und Symmetrie erläutern.",
+        "descriptionEn": "The learner can explain how energy-level schemes of simple diatomic elemental molecules arise through linear combination of atomic orbitals with comparable energy and symmetry."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b003-round-a-70bcb6bd-20260930",
+          "recordDigest": "sha256:fe401b404f36991dc155362756f8d25d19beefcc831c732939016866c59862f1"
+        },
+        "second": {
+          "recordId": "chemie-b003-b-16",
+          "recordDigest": "sha256:2281bb6be5bebaa192b90fd4cb35e63ff6e718c36b546febdc5291eabb748ad1"
+        }
+      },
+      "rationaleDe": "Beide Runden tragen das LCAO-Prinzip für passende Atomorbitale. A fordert Phasen- und Symmetriebegründung an einem neuen Orbitalpaar.",
+      "rationaleEn": "Both rounds support LCAO for suitable atomic orbitals. A requires phase and symmetry reasoning for a fresh orbital pair."
+    },
+    {
+      "decisionId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-009",
+      "goalId": "37b4081a-244a-58d8-b448-88ed83344210",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f3178e0ad69bc77f223fd200cc5f976af0f8088114774d65ccd8b2048579eef4",
+      "pageFingerprint": "sha256:b3d81b3a1206d5a4ba66f12e64fe21bbce7cb0f7065d951384cd5b567a9386d9",
+      "goalReviewContextFingerprint": "sha256:bc2bf7e41618d775e191536f084c0476b8b16df41d7b4688d543daeb7e171c66",
+      "finalText": {
+        "titleDe": "Hybridisierung zur Vorhersage organischer Bindungsverhältnisse nutzen",
+        "titleEn": "Use hybridization to predict organic bonding relationships",
+        "descriptionDe": "Die lernende Person kann Hybridisierung als Näherungsverfahren zur Linearkombination von Atomorbitalen am selben Atom beschreiben und Hybridorbitale zur modellhaften Vorhersage der Bindungsverhältnisse in einfachen organischen Molekülen nutzen.",
+        "descriptionEn": "The learner can describe hybridization as an approximation method for linear combination of atomic orbitals at the same atom and use hybrid orbitals to model bonding relationships in simple organic molecules."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b003-round-a-37b4081a-20260930",
+          "recordDigest": "sha256:ede4d4bc4c009abef542359703334024e60f761813df5b4351f040c4f319b44f"
+        },
+        "second": {
+          "recordId": "chemie-b003-b-17",
+          "recordDigest": "sha256:619ff80282aaf18ded756682ac6dfe220bf63f440c46d393043e7e0a57912076"
+        }
+      },
+      "rationaleDe": "Beide Runden lesen Modellbeschreibung und Vorhersage als eine Hybridisierungsleistung. A prüft sp3/sp2/sp lokal und σ/π-Bindungen in einem neuen Fragment.",
+      "rationaleEn": "Both rounds read model description and prediction as one hybridization competence. A checks local sp3/sp2/sp and sigma/pi bonds in a fresh fragment."
+    },
+    {
+      "decisionId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-010",
+      "goalId": "c98683ae-3309-581e-b02b-b10ad703d8a0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8360812ef8c05d90b3dc58d0c4746d785538020565040f165bbee4524898b01e",
+      "pageFingerprint": "sha256:0855fef73f042a215e6c08ae227ca01ceee36c85398b9b543f6973400b48bfab",
+      "goalReviewContextFingerprint": "sha256:b3fc04b05cefc8f3b7d8430569f89d697527aa50d6f4cfcbb7910007a5c9bcce",
+      "finalText": {
+        "titleDe": "Organische Moleküle mit dem Hybridisierungsmodell darstellen",
+        "titleEn": "Represent organic molecules with the hybridization model",
+        "descriptionDe": "Die lernende Person kann einfache organische Moleküle mit dem Hybridisierungsmodell darstellen.",
+        "descriptionEn": "The learner can represent simple organic molecules using the hybridization model."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b003-round-a-c98683ae-20260930",
+          "recordDigest": "sha256:3f992e0e4061880a9b26ce809a53de25778fc1e5676c0da8635f05b49f640123"
+        },
+        "second": {
+          "recordId": "chemie-b003-b-18",
+          "recordDigest": "sha256:47e0601cac2327d0e664de5746e58d96ae90f60ed04d9521bfae0cd19364e215"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten die Darstellung einfacher organischer Moleküle mit Hybridisierung bei. A verlangt valenz- und geometriegerechte lokale Zentren in einem neuen Molekül.",
+      "rationaleEn": "Both rounds retain representation of simple organic molecules with hybridization. A requires locally correct valence and geometry in a fresh molecule."
+    },
+    {
+      "decisionId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-011",
+      "goalId": "321d801d-28e4-54a2-bd31-8c07bda2f392",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:389a0a30d96916874c9aec75f657c191745ca11d3e2bc99f0712816805c6dbac",
+      "pageFingerprint": "sha256:b7117b0c23c0da19f74ddb305aa871ed2d241a8ec757388b232708debb1262f3",
+      "goalReviewContextFingerprint": "sha256:e72c25d3ce9be82d03f673db1fb6c9076f7784ed7ca476341512c2562ad7acae",
+      "finalText": {
+        "titleDe": "Hybridisierungsmodell und Molecular Modelling vergleichen",
+        "titleEn": "Compare the hybridization model and molecular modelling",
+        "descriptionDe": "Die lernende Person kann Darstellungen organischer Moleküle aus Hybridisierungsmodell und Molecular Modelling hinsichtlich Aussagekraft, Vor- und Nachteilen vergleichen.",
+        "descriptionEn": "The learner can compare representations of organic molecules from the hybridization model and molecular modelling with respect to explanatory power, advantages, and disadvantages."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b003-round-a-321d801d-20260930",
+          "recordDigest": "sha256:33021cce71cc686dfc0eb9b2b1f991b12db4ba0243e9e4f3a0fdef616446eba3"
+        },
+        "second": {
+          "recordId": "chemie-b003-b-20",
+          "recordDigest": "sha256:054da14dcaf29d1dbbeb3f1a4bd5441c8cb3a81de07c654b12565c6a7805448b"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten den Vergleich zweier Modelle nach Aussagekraft und Grenzen bei. A fordert die Auswahl eines passenden Modells für eine neue stereochemische Frage.",
+      "rationaleEn": "Both rounds retain comparison of the two models by explanatory power and limits. A requires choosing a suitable model for a fresh stereochemical question."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "73547696-e225-5f14-839b-c77f54c32bae",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "A und B finden dieselbe falsche Gleichsetzung: Unbestimmtheit begründet keine konkrete Antreffwahrscheinlichkeitsdichte. Kanonischen Text zielgenau korrigieren und neu binden.",
+      "rationaleEn": "A and B find the same false equivalence: uncertainty does not derive a particular probability density. Correct canonical wording and rebind."
+    },
+    {
+      "goalId": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "B weist nach, dass „sicher erläutern“ drei getrennte Routinen verdecken kann. Ein gemeinsames Kriterium über Teilchen und Elektronenverteilung gehört in den Zieltext.",
+      "rationaleEn": "B shows that “explain confidently” may hide three separate routines. The common criterion of particles and electron distribution belongs in the goal wording."
+    },
+    {
+      "goalId": "b92bfa45-b500-5647-8fd2-a14b708aaf59",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "B präzisiert das für Lernende nötige Kriterium vier verschiedener Substituenten am tetraedrischen C. A-Evidenz prüft es bereits, aber der aktuelle Text bleibt unpräzise.",
+      "rationaleEn": "B specifies the learner-facing criterion of four different substituents at tetrahedral carbon. A evidence tests it, but the current wording stays imprecise."
+    },
+    {
+      "goalId": "0acc8cd2-be6d-567e-a023-1d9e90475510",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "A und B finden denselben Kategorienfehler: Ein Orbital ist nicht „Lösung der Wellenfunktion“. Korrekte Ein-Elektronen-Wellenfunktion und |ψ|² neu binden.",
+      "rationaleEn": "A and B find the same category error: an orbital is not a “solution of the wavefunction”. Rebind corrected one-electron wavefunction and |ψ|²."
+    },
+    {
+      "goalId": "9decc36b-a69a-5599-a9f0-fcebdf0203d8",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "B benennt den echten Relationsfehler: Ein einzelnes Molekül ist ohne Vergleich keinem Stereoisomerietyp zugeordnet. Zieltext auf Molekülpaare und Kriterien ändern.",
+      "rationaleEn": "B identifies a real relation error: a single molecule cannot be assigned an isomerism type without comparison. Revise wording to molecular pairs and criteria."
+    },
+    {
+      "goalId": "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "A und B finden „Reaktivität aromatischer Systeme“ ohne Reaktionstyp zu weit. Substitution-versus-Addition mit Aromatizität fachlich eingrenzen.",
+      "rationaleEn": "A and B find “reactivity of aromatic systems” too broad without reaction type. Bound it to substitution versus addition using aromaticity."
+    },
+    {
+      "goalId": "fbc5a920-05d6-53c8-9fc0-a5f4e57f2c6d",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "B zeigt, dass eine 2D-Skizze nicht ohne Annahme eine 3D-Dichte bestimmt und H2-Molekülorbital/ Gesamtwellenfunktion zu trennen sind. Aktuellen Text präzisieren.",
+      "rationaleEn": "B shows a 2D sketch does not determine a 3D density without assumptions and H2 molecular orbital differs from the full wavefunction. Clarify current wording."
+    },
+    {
+      "goalId": "386e28af-505a-5eb9-87fe-9c6946f10433",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "A und B verwerfen die absolute Existenzbehauptung aus einem MO-Schema. Bindungsordnung und modellhafte Bindungsfähigkeit sind die tragfähige Kompetenz.",
+      "rationaleEn": "A and B reject an absolute existence claim from an MO diagram. Bond order and model-bounded bonding tendency are the defensible competence."
+    },
+    {
+      "goalId": "707998c1-872d-582d-a2d6-14e7d967cbdb",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "B verlangt eine fachliche Prüfung des digitalen Modells aus Eingabestruktur und Geometrie. Bloßes Erzeugen einer 3D-Ansicht genügt dem aktuellen Ziel nicht.",
+      "rationaleEn": "B requires scientific checking of the digital model against input structure and geometry. Merely generating a 3D view is insufficient."
+    }
+  ],
+  "manifestFingerprint": "sha256:a9a373bd26c56d438f7cbbbbc49e1cfdc523af21495f0e401609ceabb4aa0534"
+}

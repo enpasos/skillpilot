@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:5e20145b879074aec12e75ae868d38667f26569a835dd59c730cef132447502d",
+  "reviewInputFingerprint": "sha256:5bc1606b0473218b1e317709cde3a1005b9a86e6313b1328f7d518f08ed7f83c",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-a",
+      "roundId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-independent-a",
+      "runIds": [
+        "codex-gpt-6-chemie-b004t-first-pass-a-20260930"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-b",
+      "roundId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-independent-b",
+      "runIds": [
+        "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-first-pass-b.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+      "firstRecordId": "codex-gpt-6-chemie-b004t-first-pass-a-20260930-goal-326d45bf",
+      "secondRecordId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-first-pass-b.run-001.goal-326d45bf",
+      "firstRunId": "codex-gpt-6-chemie-b004t-first-pass-a-20260930",
+      "secondRunId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-first-pass-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

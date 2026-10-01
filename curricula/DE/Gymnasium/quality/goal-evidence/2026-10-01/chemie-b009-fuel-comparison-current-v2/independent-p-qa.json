@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "reviewKind": "independent-positive-understanding-evidence-v2-content-qa",
+  "reviewedAt": "2026-10-01T00:05:49Z",
+  "reviewer": "codex-root-independent-of-p-author",
+  "goalId": "4dab7d52-5b89-52ab-a425-17a7707f44c8",
+  "reviewId": "chemie-b009-fuel-comparison-direct-combustion-current-20261001-v2",
+  "verdict": "PASS_AI_CANDIDATE",
+  "humanApprovalClaimed": false,
+  "learnerMasteryClaimed": false,
+  "reviewedInputs": {
+    "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/chemie-b009-fuel-comparison-current-v2/positive-evidence.config.json",
+    "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/chemie-b009-fuel-comparison-current-v2/positive-evidence.review.jsonl",
+    "currentGoalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "officialSourceUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/8/chemie",
+    "officialSourceSection": "C8 Lernbereich 3: comparison of CO2 balance and reaction heat when burning different fuels"
+  },
+  "findings": [
+    {
+      "area": "source-and-current-goal-scope",
+      "verdict": "PASS",
+      "detail": "The current German/English goal and the official C8.3 combustion clause support comparison of direct CO2 and released reaction heat on a consistent basis for each quantity. The profile stays inside direct complete combustion; it requires no whole-life comparison or overall energy-carrier judgment."
+    },
+    {
+      "area": "case-1-ethanol-propane",
+      "verdict": "PASS",
+      "detail": "Stoichiometric CO2 per mol is 88 g for ethanol and 132 g for propane. With the supplied same-convention teaching heat values, 88/1.37 is about 64 g/MJ and 132/2.22 about 59 g/MJ. The case checks why raw per-mol order cannot answer the equal-heat question; it does not require balancing an equation."
+    },
+    {
+      "area": "case-2-hydrogen-butane",
+      "verdict": "PASS",
+      "detail": "The supplied 0.50 kg hydrogen and 1.00 kg butane samples yield 120 and 46 MJ/kg respectively; direct CO2 is 0 and about 65 g/MJ (3000/46). Zero direct CO2 follows from hydrogen containing no carbon, while the separate upstream rows prevent a claim of total emission freedom or climate neutrality. The rounded butane CO2 figure is compatible with the stoichiometric order of magnitude."
+    },
+    {
+      "area": "independent-transfer-and-image",
+      "verdict": "PASS",
+      "detail": "Two data-only cases use different fuel pairs, per-mole versus unequal-mass inputs, and different reasoning traps. Neither can be solved from the active methane/pure-carbon comparison image. The cases are briefs for future independent learner work, not observed demonstrations."
+    },
+    {
+      "area": "status-and-current-binding",
+      "verdict": "PASS",
+      "detail": "The materialized record is bound to the current direct-combustion DE/EN goal and carries needs_human_review, reviewAuthority ai_candidate, E1/G1, and no reviewRunIds or human/learner claim. The targeted checker reports 1 configured goal, 0 approved, 1 needs human review, and 0 blockers."
+    }
+  ],
+  "openMaterialIssues": [],
+  "nonBlockingQualification": "The numbers are explicitly rounded teaching data; each case says its heat figures share one convention. A later task must retain the separate upstream row and direct-only boundary when using the hydrogen case. This QA does not approve a real-world fuel ranking.",
+  "checker": {
+    "command": "npm --prefix app run -s quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/chemie-b009-fuel-comparison-current-v2/positive-evidence.config.json",
+    "exitCode": 0,
+    "configuredGoals": 1,
+    "approved": 0,
+    "needsHumanReview": 1,
+    "blockingIssues": 0
+  }
+}

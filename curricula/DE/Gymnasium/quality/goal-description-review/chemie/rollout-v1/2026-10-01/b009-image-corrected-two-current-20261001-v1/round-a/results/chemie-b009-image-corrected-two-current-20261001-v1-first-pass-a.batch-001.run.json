@@ -1,0 +1,43 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "codex-chemie-b009-images-20261001-independent-a",
+  "campaignId": "chemie-b009-image-corrected-two-current-20261001-v1-a",
+  "roundId": "chemie-b009-image-corrected-two-current-20261001-v1-first-pass-a",
+  "batchId": "chemie-b009-image-corrected-two-current-20261001-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:9441fbc2862a12d275a7b1f27c15780284e6275b6b1f65bc3bd6b280a05f4d81",
+  "bundleFingerprint": "sha256:6e550cc5dda90b4b0508fb105d2419db3ae7b3d31999928a2259a0985645dcf1",
+  "bookDigest": "sha256:eada8ca63bf4cda81591a8c03ef7046f32f9969cbd1bc16138d4f2789e291752",
+  "provider": "openai",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:02aae9aee963e9025746ab554eeaa89a03cb1065c5d12a683127059a270ccd19",
+  "independenceGroupId": "chemie-b009-image-corrected-two-current-20261001-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "1286f2fe-89b7-4454-8e11-85b6abd6e278",
+    "9198b4cf-e454-562f-83f0-b1b74e68765d"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:9441fbc2862a12d275a7b1f27c15780284e6275b6b1f65bc3bd6b280a05f4d81"
+    }
+  ],
+  "startedAt": "2026-09-30T22:24:28Z",
+  "completedAt": "2026-09-30T22:24:28Z",
+  "status": "completed",
+  "outputDigest": "sha256:4721365ce1b799e9f47eb3fa8e4e50b5e79911e013ca3e48f611b022c809f87c",
+  "toolchainVersion": "codex-agent-v1"
+}

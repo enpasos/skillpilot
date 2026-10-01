@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "status": "inactive_ai_candidate_pending_independent_subject_review",
+  "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+  "proposedParentClusterId": "625aa68d-71cd-597f-b4c1-e1066eed2830",
+  "scope": "DE-HE SekII E-Phase GK/LK only; no other jurisdiction inferred from canonical target applicability",
+  "canonicalSha256": "24373ad723ddbc23c90dd5ebe12365cc7a760365ad13ea49103c3a799abe7f7e",
+  "officialSource": {
+    "title": "Kerncurriculum gymnasiale Oberstufe Biologie Hessen, Stand 01.08.2025",
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+    "printedPages": [
+      36
+    ],
+    "topicCodes": [
+      "E.2"
+    ]
+  },
+  "candidates": [
+    {
+      "id": "91dc8e36-42e6-5da4-8037-fae07da30cf9",
+      "title": "Kompetitive und allosterische Enzymhemmung im Amylase-Modell prüfen",
+      "titleEn": "Assess competitive and allosteric enzyme inhibition in an amylase model",
+      "description": "Die lernende Person kann Bindungs- und Aktivitätsdaten zu kompetitiver sowie allosterischer beziehungsweise nichtkompetitiver Enzymhemmung auswerten und eine Alltagsbehauptung zu Enzymwaschmitteln begründet prüfen.",
+      "descriptionEn": "The learner can evaluate binding and activity data for competitive and allosteric or non-competitive enzyme inhibition and assess an everyday claim about enzyme detergents with reasons.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "01819a6c-f965-5b33-8c4e-07affb3c659f",
+        "dd196715-a463-5379-8cdb-7a951372f5fd"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-biology",
+        "demandLevel": "AB2",
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "treeOrder": 8,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "type": "atomic",
+      "examData": {
+        "reviewStatus": "draft",
+        "coveredGoalIds": [
+          "01819a6c-f965-5b33-8c4e-07affb3c659f",
+          "dd196715-a463-5379-8cdb-7a951372f5fd"
+        ],
+        "coveredStrands": [
+          "BIO_STRUKTUR_FUNKTION",
+          "BIO_STOFF_ENERGIE"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/quality/assessment-review/biologie/ephase-enzyme-inhibition-local-candidate-20261001-v1/candidates.json",
+        "taskContent": "**Kontext:** Ein Schullabor untersucht als vereinfachtes Modell eine Amylase, wie sie grundsätzlich auch in enzymhaltigen Waschmitteln vorkommen kann. Das Enzym spaltet lösliche Stärke. K und N sind ausschließlich fiktive Test-Hemmstoffe; die Materialien behaupten nicht, dass sie Bestandteile eines realen Waschmittels sind.\n\n**Material 1 – beobachtete Bindung im Modell:**\n\n- In allen Ansätzen bleiben Amylasemenge, pH-Wert, Temperatur und Messdauer gleich. Nur die Stärkekonzentration und der jeweils angegebene Hemmstoff werden verändert. Gemessen wird die Anfangsaktivität, nicht die gesamte Fleckentfernung.\n- K ist im Modell ein nicht spaltbares stärkeähnliches Oligosaccharid. Es bindet an das aktive Zentrum der Amylase, wird selbst nicht umgesetzt und verhindert während seiner Bindung die gleichzeitige Bindung von Stärke am aktiven Zentrum.\n- N ist im Modell ein kleiner Regulatorstoff. Er bindet an eine andere Stelle der Amylase und verändert die Wahrscheinlichkeit der Stärkebindung nicht; die Umsetzung gebundener Stärke wird durch N jedoch langsamer.\n\n**Material 2 – Anfangsaktivität (relative Einheiten pro Minute):**\n\n| Stärkekonzentration (relative Einheiten) | 1 | 2 | 4 | 8 | 16 | 32 |\n| --- | ---: | ---: | ---: | ---: | ---: | ---: |\n| Ohne Hemmstoff | 8 | 15 | 24 | 32 | 38 | 40 |\n| Mit gleichbleibender Menge K | 3 | 7 | 15 | 27 | 36 | 39 |\n| Mit gleichbleibender Menge N | 4 | 7 | 12 | 16 | 19 | 20 |\n\nDie Werte sind schematische, in sich konsistente Unterrichtsdaten. Ein mathematisch exakter Grenzwert wird daraus nicht bestimmt.\n\n**Material 3 – neuer Fall L:** L bindet ebenfalls an eine Stelle außerhalb des aktiven Zentrums. Anders als bei N verringert L die Wahrscheinlichkeit, dass Stärke an das aktive Zentrum bindet. Für L liegt keine vollständige Konzentrations-Aktivitäts-Reihe vor.\n\n**Material 4 – Alltagsbehauptung:** In enzymhaltigen Waschmitteln kann Amylase stärkereiche Fleckbestandteile zerlegen. Eine fiktive Produktkarte behauptet: „Ein stärkerer Stärkefleck hebt jede Hemmung unserer Amylase auf; auf die Art der Hemmung kommt es nicht an.“ Über das konkrete Produkt, seine Enzyme, möglichen Hemmstoffe oder Waschbedingungen werden keine Messdaten geliefert.\n\n**Aufgaben:**\n\n1. Ordnen Sie K einer Hemmungsart zu. Erklären Sie den Bindungsmechanismus und begründen Sie mit zwei geeigneten Zahlenpaaren aus Material 2, weshalb bei viel Stärke eine weitgehende Überwindung der K-Wirkung im Modell plausibel ist. (8 BE)\n2. Erklären Sie an N sowohl den **allosterischen Bindungsort** als auch das hier **nichtkompetitive Aktivitätsverhalten**. Vergleichen Sie die hohen Stärkekonzentrationen in Material 2 und erläutern Sie, weshalb mehr Stärke die N-Wirkung nicht wie bei K aufhebt. Unterscheiden Sie dabei Bindungsort und kinetisches Verhalten als zwei Aussagen. (10 BE)\n3. Übertragen Sie die Begriffe auf L: Was lässt sich aus Material 3 über den Bindungsort und die Wirkungsfolge sicher sagen? Begründen Sie, weshalb man L ohne weitere Aktivitätsdaten nicht automatisch als rein nichtkompetitiv im selben Sinn wie N einstufen darf. (6 BE)\n4. Beurteilen Sie die Produktbehauptung aus Material 4 anhand **beider** Hemmstofffälle. Nennen Sie zwei Grenzen der Übertragung der Laborwerte auf eine reale Wäsche und sagen Sie, welche Art von Daten nötig wäre, um die konkrete Produktbehauptung zu prüfen. (8 BE)",
+        "solutionContent": "1. K ist im Modell ein kompetitiver Hemmstoff: K und Stärke beanspruchen denselben Bindungsplatz am aktiven Zentrum, sodass ihre Bindung sich gegenseitig ausschließt. Bei relativer Stärkekonzentration 1 liegt die Aktivität mit K bei 3 statt 8; bei 32 liegt sie bei 39 statt 40. Auch 16 mit 36 statt 38 zeigt die Annäherung. Höhere Stärkekonzentration erhöht im Modell die Chance, dass Stärke statt K bindet; das Enzym wird durch K nicht verbraucht. Aus den diskreten Werten folgt kein exakt bestimmter Grenzwert. **8 BE:** 2 Hemmungsart/Bindungsort, 2 Konkurrenzmechanismus, 2 passende Zahlenpaare, 2 begründete Annäherung samt Modellgrenze.\n\n2. N bindet allosterisch, also außerhalb des aktiven Zentrums. Stärke bindet im Modell weiterhin mit unveränderter Wahrscheinlichkeit, aber die Umsetzungsrate des gebundenen Substrats sinkt. Unter den gegebenen Modellannahmen ist das Verhalten nichtkompetitiv: selbst bei Konzentration 32 bleibt die Aktivität mit N bei 20 statt 40, während K dort 39 erreicht. Eine bloße Erhöhung der Substratmenge verdrängt N von seiner getrennten Bindungsstelle nicht. „Allosterisch“ beschreibt den Bindungsort bzw. die dadurch ausgelöste Regulation; „nichtkompetitiv“ beschreibt hier das beobachtete Hemmungsverhalten. Nicht jede allosterische Bindung ist zwangsläufig rein nichtkompetitiv. **10 BE:** 2 anderer Bindungsort, 2 trotz Substratbindung geringere Umsetzung, 2 Datenvergleich bei hohen Konzentrationen, 2 Erklärung der fehlenden Verdrängung, 2 saubere Unterscheidung der Begriffe.\n\n3. L ist hinsichtlich seines Bindungsorts allosterisch. Aus Material 3 folgt zusätzlich eine verringerte Substratbindung, also ein anderer Wirkungsaspekt als bei N. Ob seine gesamte Aktivitätskurve einem rein nichtkompetitiven Fall entspricht, lässt sich ohne passende Konzentrations- und Bindungsdaten nicht entscheiden; allosterischer Bindungsort allein reicht dafür nicht. **6 BE:** 2 korrekter Bindungsort, 2 Wirkung auf Substratbindung, 2 begründete Aussagegrenze.\n\n4. Die Pauschalbehauptung ist durch das Modell widerlegt: Eine hohe Stärkekonzentration mindert die K-Wirkung weitgehend, hebt die N-Wirkung aber nicht auf. Ein Fleck ist zudem kein geregelter Laboransatz: pH-Wert/Temperatur/Waschdauer, Enzymmenge oder Zugänglichkeit der Stärke können anders sein; zwei davon genügen. Aus Modell-Anfangsraten folgt weder die tatsächliche Hemmstoffart im Produkt noch die gesamte Reinigungswirkung. Erforderlich wären produktbezogene Aktivitäts- und Reinigungsmessungen unter realistischen Waschbedingungen, mit Kontrolle und mehreren Substratkonzentrationen sowie identifizierten möglichen Hemmstoffen. Die Aufgabe empfiehlt keine Zugabe von Stoffen zur Wäsche. **8 BE:** 2 K-Befund, 2 N-Gegenbeleg, 2 zwei konkrete Übertragungsgrenzen, 2 nötige Produktprüfung.",
+        "scoring": {
+          "maxPoints": 32,
+          "passingPoints": 20,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 8,
+              "description": "kompetitive K-Hemmung anhand Bindungsort, Konkurrenz und Daten mit Modellgrenze erklärt"
+            },
+            {
+              "id": "s2",
+              "points": 10,
+              "description": "allosterische Bindung und nichtkompetitives N-Verhalten mit Daten und Begriffstrennung erklärt"
+            },
+            {
+              "id": "s3",
+              "points": 6,
+              "description": "neuen L-Fall samt Aussagegrenze zu nichtkompetitiver Kinetik übertragen"
+            },
+            {
+              "id": "s4",
+              "points": 8,
+              "description": "Alltagsbehauptung mit K/N-Kontrast, zwei Übertragungsgrenzen und nötiger Produktprüfung beurteilt"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "evidenceRequirements": [
+    {
+      "goalId": "01819a6c-f965-5b33-8c4e-07affb3c659f",
+      "required": "Aufgaben 1 und 2: K am aktiven Zentrum als kompetitiven Fall und N an anderer Bindungsstelle als allosterischen Fall jeweils mechanistisch mit geeigneten Daten erklären. Ein Gesamtscore oder nur eine Hemmungsart genügt nicht."
+    },
+    {
+      "goalId": "dd196715-a463-5379-8cdb-7a951372f5fd",
+      "required": "Aufgaben 2–4: an N allosterischen Bindungsort und nichtkompetitives Modellverhalten unterscheiden, am neuen L-Fall die Aussagegrenze zeigen und die Waschmittelbehauptung mit K/N-Daten sowie realen Übertragungsgrenzen begründet prüfen."
+    }
+  ]
+}

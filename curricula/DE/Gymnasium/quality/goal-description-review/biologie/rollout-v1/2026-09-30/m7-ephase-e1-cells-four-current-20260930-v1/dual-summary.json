@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:1c8eb54def40162241d6e4bd65f80446a505aca89fde89f30ed2ea6ced151ca5",
+  "reviewInputFingerprint": "sha256:e9a93d37a2c635aec6081ee234e1ff8d95d50f9d6ba18ae6a69f6cecf13b0c37",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-a",
+      "roundId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-first-pass-a",
+      "independenceGroupId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-independent-a",
+      "runIds": [
+        "biologie-m7-ephase-e1-cells-four-current-20260930-v1-first-pass-a-codex-biology-e1-independent-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex session (exact deployment identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-b",
+      "roundId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-first-pass-b",
+      "independenceGroupId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-independent-b",
+      "runIds": [
+        "biologie-e1-cells-four-20260930-blind-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "11e90f71-a9a4-5a57-b619-ad5d81e81f96",
+      "firstRecordId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-first-pass-a-codex-biology-e1-independent-a.11e90f71-a9a4-5a57-b619-ad5d81e81f96",
+      "secondRecordId": "biologie-e1-b-01-11e90f71",
+      "firstRunId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-first-pass-a-codex-biology-e1-independent-a",
+      "secondRunId": "biologie-e1-cells-four-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f",
+      "firstRecordId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-first-pass-a-codex-biology-e1-independent-a.7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f",
+      "secondRecordId": "biologie-e1-b-02-7c6bf0cc",
+      "firstRunId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-first-pass-a-codex-biology-e1-independent-a",
+      "secondRunId": "biologie-e1-cells-four-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fc8c4b02-02f2-5ad6-b481-224d36121da1",
+      "firstRecordId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-first-pass-a-codex-biology-e1-independent-a.fc8c4b02-02f2-5ad6-b481-224d36121da1",
+      "secondRecordId": "biologie-e1-b-03-fc8c4b02",
+      "firstRunId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-first-pass-a-codex-biology-e1-independent-a",
+      "secondRunId": "biologie-e1-cells-four-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5c2ce7b1-30ba-5e9c-99de-1ffac126ec13",
+      "firstRecordId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-first-pass-a-codex-biology-e1-independent-a.5c2ce7b1-30ba-5e9c-99de-1ffac126ec13",
+      "secondRecordId": "biologie-e1-b-04-5c2ce7b1",
+      "firstRunId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-first-pass-a-codex-biology-e1-independent-a",
+      "secondRunId": "biologie-e1-cells-four-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

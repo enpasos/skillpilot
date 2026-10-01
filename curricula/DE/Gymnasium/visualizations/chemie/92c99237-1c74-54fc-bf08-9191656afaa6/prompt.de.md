@@ -1,43 +1,13 @@
 # Lernzielvisualisierung: Moleküldarstellungen situationsgerecht umwandeln
 
-## SkillPilot-Ziel
-
 - SkillPilot-ID: `92c99237-1c74-54fc-bf08-9191656afaa6`
-- Titel: Moleküldarstellungen situationsgerecht umwandeln
-- Beschreibung: Die lernende Person kann verschiedene Formeldarstellungen von Molekülen ineinander überführen und situationsgerecht eine geeignete Darstellung auswählen.
+- Aktives Bild: `92c99237-1c74-54fc-bf08-9191656afaa6.png`, 1672 × 941 Pixel, SHA-256 `6ed140213988f015f57de3ac647b0d8bbf0f9d9c4806d3a13b162cfa3e8e0bba`
+- Public Asset: `/assets/goal-visualizations/chemie/92c99237-1c74-54fc-bf08-9191656afaa6/92c99237-1c74-54fc-bf08-9191656afaa6.png`
+- Generator: ChatGPT/Codex `image_gen`, gezielte Bearbeitung des bisherigen Nano-Banana-Pro-JPG
+- Lizenz des SkillPilot-eigenen Bildes: CC-BY-4.0
 
-## Generator
+## Korrekturauftrag und Prüfung
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
-- Quellbild: `92c99237-1c74-54fc-bf08-9191656afaa6.jpg`
-- Public Asset: `/assets/goal-visualizations/chemie/92c99237-1c74-54fc-bf08-9191656afaa6/92c99237-1c74-54fc-bf08-9191656afaa6.jpg`
+Der [dokumentierte Korrekturauftrag](correction-prompt-20260930.md) ersetzt die fachlich falsche frühere Beschriftung `Summenformel: Stoffmengen` durch `Atomarten und -zahlen`. Das aktuelle Bild zeigt für Ethanol die zueinander passenden Summen-, Struktur-, Lewis- und Kugel-Stab-Darstellungen. Der zweite Bilddurchgang vergrößerte Motive und Labels für die Sichtbarkeit bei 360 und 680 Pixeln.
 
-## Prompt
-
-```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Moleküldarstellungen situationsgerecht umwandeln
-Beschreibung: Die lernende Person kann verschiedene Formeldarstellungen von Molekülen ineinander überführen und situationsgerecht eine geeignete Darstellung auswählen.
-
-Zusatzanweisung:
-Use case: scientific-educational
-Use ethanol as the only molecule and show four mutually consistent representations.
-Show exactly: molecular formula "C₂H₆O"; condensed structural formula "CH₃–CH₂–OH"; a complete displayed formula with two carbon atoms, one oxygen atom, six hydrogen atoms and two lone pairs on oxygen; and a ball-and-stick model containing exactly two carbon atoms, one oxygen atom and six hydrogen atoms.
-Add three short purpose labels: "Summenformel: Stoffmengen", "Strukturformel: Bindungen", "Kugel-Stab-Modell: räumliche Anordnung".
-Do not show acetic acid, methanol, propanol or butanol. Do not use an inconsistent skeletal formula. No decorative conversion arrows, logos or watermark.
-```
-
-## Review-Notiz
-
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Der ursprüngliche Nano-Banana-Pro-Prompt und das alte JPG bleiben im [Reviewpaket](../../../quality/goal-visualization-review/chemie-b006-92c-correction-20260930-v1/README.md) bytegleich archiviert; die unabhängige Bildprüfung dort bindet das aktive PNG an seinen Hash. Die maschinelle Bildentscheidung ersetzt weder D-/P-Nachweise noch menschliche Freigabe; `humanApproved=no`.

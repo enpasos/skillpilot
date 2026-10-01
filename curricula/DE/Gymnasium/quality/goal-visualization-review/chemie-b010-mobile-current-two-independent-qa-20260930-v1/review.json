@@ -1,0 +1,31 @@
+{
+  "reviewKind": "independent-current-image-chemistry-and-mobile-legibility-qa",
+  "reviewedAt": "2026-09-30T20:28:21Z",
+  "authority": "ai_machine_qa_only",
+  "humanApprovalClaim": false,
+  "goals": [
+    {
+      "goalId": "b5086548-169e-5d63-a14a-dabf631fa013",
+      "decision": "PASS_CURRENT_IMAGE_MACHINE_QA",
+      "activeImageSha256": "sha256:9e9987acbd4199480770fd2f3e48d8d61fca14cc1c49998cf4f8ca85fa68708f",
+      "mobilePreviewSha256": "sha256:d07ba9f0a71e896da7e40011012eb77d535d32b31dd7c0ef59952df53ce7d829",
+      "mobilePreviewSize": "360x201",
+      "findings": [
+        "The current JPG was viewed at original 2752x1536 and actual 360x201 width. At 360 px, the four class names and diagnostic anions remain readable, including ionic charges and subscripts, as do the example formulas.",
+        "Halide Cl-/Br-/I-, sulfate SO4(2-), nitrate NO3(-), carbonate CO3(2-) and the NaCl, CaSO4, KNO3, CaCO3 examples match the stated classification by anion. The bottom note explicitly ties the class name to the anion."
+      ]
+    },
+    {
+      "goalId": "d726e00e-1f87-5ba5-8c79-76ad4022365e",
+      "decision": "HOLD_CURRENT_IMAGE_MACHINE_QA_MOBILE_LEGIBILITY",
+      "activeImageSha256": "sha256:2525c341d337487a57622edaf3dff853a5564e2c5f26d2cc82c40683168cf79e",
+      "mobilePreviewSha256": "sha256:599e10b450c0a1b31bc394e014d99762cd6cf010b2b96fa689e76dab113958fd",
+      "mobilePreviewSize": "360x201",
+      "findings": [
+        "The original 2752x1536 JPG is friendly and chemically accurate: CaCO3 -> CaO + CO2, CaO + H2O -> Ca(OH)2, and Ca(OH)2 + CO2 -> CaCO3 + H2O, with a coherent burn/slake/set cycle.",
+        "At actual 360x201 display, the equations shrink to very small characters. The long setting equation is particularly difficult to resolve; its subscripts and Ca(OH)2 versus CaCO3 cannot be read reliably without enlargement. The equations carry the exact transformations required by this goal, so title and pictograms alone do not satisfy mobile legibility."
+      ],
+      "repairBoundary": "Preserve the comic style and correct chemistry; enlarge/simplify the equation layout in a corrected PNG, then inspect the actual asset at original and 360 px before changing V registration. The existing JPG remains active and historical."
+    }
+  ]
+}

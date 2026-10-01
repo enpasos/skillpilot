@@ -1,0 +1,155 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-b010-ions-element-groups-salts-20260930-partial-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis of independently fixed A/B reviews; no human approval or visualization approval",
+  "synthesizedAt": "2026-09-30T20:15:49.000Z",
+  "batch": {
+    "batchId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930",
+    "batchManifestDigest": "sha256:522dcad308fd3961f900083fe365ac927cb53dac142661da57cbd4da5cc38f91",
+    "configDigest": "sha256:315ce5403dcb47aa9828309ce2c491f614afaa1e0c4aca6f5f8940b182b220ae",
+    "bundleFingerprint": "sha256:8043239ef59d76143cc1e5e26e47e4f6294f37702e9ca50d4e71d240bc32b2c0",
+    "bookDigest": "sha256:10193b17302201a403e9ad2d89672e6a2cd4d2aa1b5b8ddc70b2dc84401a8440",
+    "reviewInputFingerprint": "sha256:a6be4ae9d39d0f03b23edf80a480067784a14d03f6d2e08343ba73c052655669",
+    "dualSummaryDigest": "sha256:c423990a457e7d8c3b61a81f2b8ad970953462f2a1787e380e0101082b4b8769",
+    "canonicalLandscapeDigest": "sha256:26c5541a4d9e1658f2de3987680fef1dd596d807fa511ce025cd10cc4ca6ba44"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-a",
+      "campaignDigest": "sha256:9955c26c1875abf55fae6439ac606049c895aac7c24adab3a06faa0e983ebd9b",
+      "roundId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:a6be4ae9d39d0f03b23edf80a480067784a14d03f6d2e08343ba73c052655669",
+      "batchId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:da2688fa6e729fb67b3e3d2966268e01353c1d5d643a4c04511b451d67428b36",
+      "runId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a",
+      "runManifestDigest": "sha256:ddf26fbb4700dade6845d1b878d951f81dba5887db35369b60c5c01af17474b8",
+      "resultsDigest": "sha256:16ec838a5537996b936af619a963b6f35d187c18edab96703494a3af793c3991"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-b",
+      "campaignDigest": "sha256:fee08061760a0f02d8398a2dc80a9b6cecfea6e713be5907656db66cc5bf0ccf",
+      "roundId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:a6be4ae9d39d0f03b23edf80a480067784a14d03f6d2e08343ba73c052655669",
+      "batchId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:1166b3d52a7577490d0a34b7b21c33a811bc0eb86cff63a9571b16ebae7dd031",
+      "runId": "chemie-b010-ions-elements-salts-20260930-blind-b-run-001",
+      "runManifestDigest": "sha256:8dfc6ffbdc3798965b6f3055f1e78f019218236fd0531d551a5f0d8873c7a691",
+      "resultsDigest": "sha256:0fdb7aa1f1e56462e98ba66b69be0088dcd20fc2512d641feed2c86c3cae64f8"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-b010-ions-element-groups-salts-20260930-partial-synthesis-decision-001",
+      "goalId": "b5086548-169e-5d63-a14a-dabf631fa013",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ce2e0341e7253b66b4c7fd8623e291a9876d9d6a07bc38ff1a457d188b8856e9",
+      "pageFingerprint": "sha256:cb2c92dc06158045bcd1e364cb2f3b323eed6d435c6925fc770cb388794debcd",
+      "goalReviewContextFingerprint": "sha256:34b0ef4ec0d2c0fd1f86a282cdcafa8f30dea309148c4b8d402515d0c13da3f4",
+      "finalText": {
+        "titleDe": "Halogenide, Sulfate, Nitrate und Carbonate einordnen",
+        "titleEn": "Classify halides, sulfates, nitrates, and carbonates",
+        "descriptionDe": "Die lernende Person kann ausgewaehlte Salzklassen wie Halogenide, Sulfate, Nitrate und Carbonate anhand ihrer Ionen fachlich einordnen.",
+        "descriptionEn": "The learner can classify selected salt classes such as halides, sulfates, nitrates, and carbonates by their ions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a.b5086548-169e-5d63-a14a-dabf631fa013",
+          "recordDigest": "sha256:ce094457c0a9399a36192e85cd6910fa0e4004007deaaf75372344f9fe2562a4"
+        },
+        "second": {
+          "recordId": "chemie-b010-b-06-b5086548",
+          "recordDigest": "sha256:9fb128bb971001f9247388504a789334f0d16f8850442d16e88d9a33701b060f"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden behalten die Einordnung ausgewählter Halogenide, Sulfate, Nitrate und Carbonate nach ihrem charakteristischen Anion als eine prüfbare Klassifikationsleistung bei. A prüft den Transfer trotz anderer Kationen und Formelverhältnisse; B ergänzt Ladungsneutralität der ganzen Salzformel. Weder der Klassenname noch die Formel allein beweist eine konkrete Stoffeigenschaft. Die amtliche HE-G9-Quelle nennt diese Salzklassen; P und V bleiben eigene Gates.",
+      "rationaleEn": "Both independent rounds retain classifying selected halides, sulfates, nitrates and carbonates by their characteristic anion as one assessable classification skill. A tests transfer across different cations and formula ratios; B adds charge neutrality of the whole salt formula. Neither a class name nor a formula alone proves a material property. The official Hessian G9 source names these salt classes; P and V remain separate gates."
+    },
+    {
+      "decisionId": "chemie-b010-ions-element-groups-salts-20260930-partial-synthesis-decision-002",
+      "goalId": "d726e00e-1f87-5ba5-8c79-76ad4022365e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fc47e3a48f79697f198f61d9c0e8a204257fe1a0438b590882838132f4ed483a",
+      "pageFingerprint": "sha256:b43e79518d336522592086603368729e74bab3ee5dd89e27a58360c6175e4589",
+      "goalReviewContextFingerprint": "sha256:9a284441e0aef0bdfe4d7785e8156c5b27041882cae075f2c07bd492fea0fe45",
+      "finalText": {
+        "titleDe": "Kalkkreislauf chemisch beschreiben",
+        "titleEn": "Describe the lime cycle chemically",
+        "descriptionDe": "Die lernende Person kann die wesentlichen Stoffumwandlungen im Kalkkreislauf chemisch beschreiben und mit Carbonaten verknuepfen.",
+        "descriptionEn": "The learner can chemically describe the essential transformations in the lime cycle and connect them to carbonates."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a.d726e00e-1f87-5ba5-8c79-76ad4022365e",
+          "recordDigest": "sha256:99ffb803fff7ebdff8087af16009874cb0cab89af50b28c1beef72f3a4f5a350"
+        },
+        "second": {
+          "recordId": "chemie-b010-b-07-d726e00e",
+          "recordDigest": "sha256:eeffd9c3265092cd0cffe1a5bf94697c8f273bc8a9fc4b758ed3cc2289a42356"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden behalten die Deutung des vereinfachten Kalkkreislaufs als eine zusammenhängende Reaktionsfolge bei: Brennen von Calciumcarbonat, Löschen von Calciumoxid und Abbinden von Calciumhydroxid. A fordert die Unterscheidung vom bloßen Phasenwechsel; B prüft CO₂-Abgabe und -Aufnahme sowie den gehemmten Abbindeprozess bei fehlendem Luftzutritt. Die amtliche HE-G9-Quelle nennt den Kalkkreislauf; die maschinelle D-Synthese ist keine P-, V- oder menschliche Freigabe.",
+      "rationaleEn": "Both independent rounds retain interpreting the simplified lime cycle as one connected reaction sequence: calcining calcium carbonate, slaking calcium oxide and setting calcium hydroxide. A requires distinguishing this from a mere phase change; B tests CO₂ release and uptake and the impeded setting step without air access. The official Hessian G9 source names the lime cycle; this machine D synthesis is no P, V or human approval."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "72236f2c-771e-4ab6-933a-e549ee49d15b",
+      "firstDecision": "keep",
+      "secondDecision": "split_review",
+      "rationaleDe": "A wollte Streubefund und ergänzte Teilchenzuordnung als ein begrenztes Modellziel behalten; B trennt die aus Rutherford ableitbare Kern-Hülle-Aussage von Proton-/Neutron-/Elektronenwissen. Neutronen folgen nicht aus dem Streubefund. Dieser echte Atomaritäts- und Quellenbindungsdissens ist nicht aufgelöst; zudem fehlt die Provenienz-ID in der aktuellen Source-Extraction trotz fachlicher Stütze im amtlichen G9-PDF. Ziel und Quellenentscheidung gezielt prüfen, kein strenger D-Abschluss.",
+      "rationaleEn": "A would retain scattering inference plus additional particle placement as one bounded model goal; B separates what Rutherford scattering supports from proton, neutron and electron knowledge. Neutrons do not follow from the scattering result. This substantive atomicity and source-binding dissent remains unresolved; the provenance ID is also absent from the current source extraction although the official G9 PDF supports the content. Recheck the goal and source decision; no strict D closure."
+    },
+    {
+      "goalId": "950c73c6-4ed1-488a-9267-1142e95e0055",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "Beide Runden fordern eine fachliche Neufassung: regelmäßiges Ionengitter und elektrostatische Anziehung entgegengesetzter Ionen müssen ausdrücklich den Zusammenhalt erklären; Stoffeigenschaften werden aus Ionenbeweglichkeit begründet, nicht aus einzelnen NaCl-Molekülen. A und B schlagen unterschiedliche Reichweiten vor. Der aktuelle Kanontext ist unverändert; auch diese Provenienz-ID fehlt in der aktuellen Source-Extraction. Erst Ziel- und Quellenkorrektur, dann frische unabhängige D-Reviews.",
+      "rationaleEn": "Both rounds require a substantive revision: a regular ionic lattice and electrostatic attraction between opposite ions must explicitly explain cohesion; properties follow from ion mobility, not individual NaCl molecules. A and B propose different scopes. The current canonical text is unchanged, and this provenance ID is also absent from the current source extraction. Revise goal and source binding, then perform fresh independent D reviews."
+    },
+    {
+      "goalId": "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "rationaleDe": "A und B finden zwei trennbare Leistungen im aktuellen Ziel: Eigenschaften des elementaren Alkalimetalls und Eigenschaften beziehungsweise Verwendung seiner Verbindungen. Die Beispiele dürfen nicht als derselbe Stoff behandelt werden. Der Kanon wurde noch nicht atomar aufgeteilt; betroffene IDs, Quellen-, Seiten-, A/M- und Bildbindungen sind vor neuen D-Reviews zu prüfen. Kein strenger Abschluss.",
+      "rationaleEn": "A and B find two separable performances in the current goal: properties of an elemental alkali metal and properties or uses of its compounds. The examples cannot be treated as the same substance. The canon has not yet been split into atomic goals; affected IDs, source, page, A/M and image bindings need review before fresh D reviews. No strict closure."
+    },
+    {
+      "goalId": "16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "Beide Runden verlangen, Metall/Wasser und Oxid/Wasser ausdrücklich zu vergleichen: Beide Wege liefern Hydroxid und alkalische Lösung, nur beim Metallweg entsteht Wasserstoff. Der aktuelle Text macht den Vergleich und die Produktdifferenz nicht ausreichend prüfbar. A und B nutzen sichere vorgegebene Daten statt praktischer Lernendenreaktionen mit Alkalimetall. Nach fachlicher Zielkorrektur sind Seite, Bild und D/P neu zu binden.",
+      "rationaleEn": "Both rounds require an explicit comparison of metal/water and oxide/water: both routes produce hydroxide and an alkaline solution, but only the metal route produces hydrogen. The current wording does not make the comparison and product difference assessable enough. A and B use safe supplied data rather than learner-run alkali-metal reactions. After a substantive goal revision, page, image and D/P must be rebound."
+    },
+    {
+      "goalId": "58486300-3f84-5aa1-9ed4-66186af62669",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "Beide Runden verlangen eine präzisere Stoffidentität und begründete Verwendung: Elementare Halogene und ihre Halogenid-Verbindungen besitzen nicht austauschbare Eigenschaften und Risiken. Die Vorschläge unterscheiden die Gewichtung von Eigenschaft und Anwendung; der unveränderte Kanontext ist dafür zu pauschal. Aktuelles Bild, Seite und neue D/P-Fälle müssen nach Zielkorrektur geprüft werden.",
+      "rationaleEn": "Both rounds require clearer substance identity and justified use: elemental halogens and their halide compounds do not share interchangeable properties or risks. The proposals differ in how they weight property versus application; the unchanged canonical wording is too broad. Recheck the current image, page and new D/P cases after revising the goal."
+    },
+    {
+      "goalId": "414489cb-453e-5de4-ab0f-0fc01175e522",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "A und B verlangen eine fachlich korrekte, vereinfachte Stoffspur der Rauchgaswäsche: SO₂ wird unter Beteiligung von Calcium und Oxidation als Sulfat im Gips gebunden, nicht unmittelbar vernichtet oder ohne Zwischenschritte zu Gips. Die vorgeschlagenen Formulierungen sind nicht gleich, und der aktuelle Kanontext trägt diese Grenze nicht klar genug. Ziel, Prozessbild, Quellen- und Seitenbindung gezielt korrigieren und neu prüfen.",
+      "rationaleEn": "A and B require a chemically sound simplified path through flue-gas scrubbing: SO₂ is captured as sulfate in gypsum with calcium and oxidation, not destroyed or directly turned into gypsum without intermediate steps. Their proposed wordings differ, and the current canonical text does not state this limit clearly enough. Revise and recheck the goal, process image, source and page bindings."
+    },
+    {
+      "goalId": "1f5ee84f-245a-5a1e-a260-f960f26523e9",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "Beide Runden fordern eine auf ein ausgewähltes mineralisches Düngemittel oder Düngesalz begrenzte Leistung: Nährstoffionen identifizieren und Nutzen/Risiko mit Pflanzenbedarf, Dosis und Auswaschungsbedingungen begründen. Eine Formel belegt weder Nutzen noch Schaden; nicht jedes Düngemittel ist ein einfaches Salz. Die Varianten unterscheiden den Stoffumfang. Kanontext und darauf bezogene P-/Bildfälle erst fachlich festlegen, dann frische D-Reviews.",
+      "rationaleEn": "Both rounds require a task bounded to a selected mineral fertilizer or fertilizer salt: identify nutrient ions and justify benefit or risk using crop demand, dose and leaching conditions. A formula proves neither benefit nor harm, and not every fertilizer is a simple salt. The proposals differ in substance scope. Fix the canonical wording and related P/image cases substantively, then perform fresh D reviews."
+    }
+  ],
+  "manifestFingerprint": "sha256:6b190b3eacb753551b7f65db04694585abf8b428776d60ec30f20ff4f8bf8d2e"
+}

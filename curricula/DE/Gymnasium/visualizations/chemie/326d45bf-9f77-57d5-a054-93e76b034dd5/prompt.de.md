@@ -1,57 +1,22 @@
-# Lernzielvisualisierung: Aggregatzustände und Übergänge deuten
+# Generation prompt — 326d45bf-9f77-57d5-a054-93e76b034dd5
 
-## SkillPilot-Ziel
-
-- SkillPilot-ID: `326d45bf-9f77-57d5-a054-93e76b034dd5`
-- Titel: Aggregatzustände und Übergänge deuten
-- Beschreibung: Die lernende Person kann Aggregatzustände und Zustandsänderungen beschreiben und deuten.
-
-## Generator
-
-- Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
-- Quellbild: `326d45bf-9f77-57d5-a054-93e76b034dd5.jpg`
-- Public Asset: `/assets/goal-visualizations/chemie/326d45bf-9f77-57d5-a054-93e76b034dd5/326d45bf-9f77-57d5-a054-93e76b034dd5.jpg`
-
-## Prompt
+Built-in `image_gen` edit with the active JPG as input image. This is the exact prompt used for the candidate.
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Aggregatzustände und Übergänge deuten
-Beschreibung: Die lernende Person kann Aggregatzustände und Zustandsänderungen beschreiben und deuten.
-
-Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Aggregatzustaende deuten`.
-- Show three particle-model boxes side by side:
-  1. `fest`: particles tightly packed in a regular arrangement.
-  2. `fluessig`: particles still close together but disordered and able to move past each other.
-  3. `gasfoermig`: particles far apart with motion arrows.
-- Between `fest` and `fluessig`, show two opposite arrows: `Schmelzen` toward liquid and `Erstarren` toward solid.
-- Between `fluessig` and `gasfoermig`, show two opposite arrows: `Verdampfen` toward gas and `Kondensieren` toward liquid.
-- Add small heat icons only on the arrows toward liquid/gas and small cooling icons only on arrows toward solid/liquid.
-- Visible learner text must be limited to title, state labels, transition labels, and small `Waerme` / `Kuehlen` cues.
-
-Vermeiden:
-
-- Do not show new substances, flames as a chemical reaction, or particles changing identity.
-- Do not reverse the transition arrows.
-- Do not make gas particles close-packed or solid particles far apart.
-- Do not add sublimation arrows unless they are perfectly clear and correct.
+Use case: scientific-educational
+Asset type: German learner-facing chemistry goal visualization, readable when displayed at only 360 pixels wide.
+Input image: the supplied JPG is the edit target and visual reference. Preserve its friendly clean comic infographic style, white and pale blue background, blue identical round particles, clear dark outlines, red warming arrows and blue cooling arrows. Recompose the layout for mobile readability.
+Primary request: Make a corrected 4:3 landscape PNG. Show exactly three clear particle-model boxes in one row across the upper half, each with one bold state label: "fest", "flüssig", "gasförmig". Solid particles densely and regularly packed; liquid particles still close together but irregular and able to slide; gas particles widely spaced with sparse small motion arrows. Every particle represents the SAME unchanged substance and has the SAME blue color and appearance in all three boxes.
+Below the boxes, use the full image width for two clean horizontal arrow rows. The upper warming row has two separate thick RED right-pointing arrows: from fest to flüssig labeled "Schmelzen", and from flüssig to gasförmig labeled "Verdampfen". The lower cooling row has two separate thick BLUE left-pointing arrows: from gasförmig to flüssig labeled "Kondensieren", and from flüssig to fest labeled "Erstarren". Each transition label must be very large, high-contrast bold black German text, visually readable in a 360-pixel-wide thumbnail. Place the word directly above or inside its own arrow with generous clear space. The arrow direction must be unmistakeable. A tiny red sun and blue snowflake may mark the rows but are optional.
+At top, a compact title "Aggregatzustände" if it fits without reducing transition-label size. Prioritize the four transition labels over title/decorations. Exact visible words only: "Aggregatzustände", "fest", "flüssig", "gasförmig", "Schmelzen", "Erstarren", "Verdampfen", "Kondensieren". Use correct umlauts and spelling.
+Composition: carefully balanced educational diagram; 4:3 landscape rather than wide 16:9 so the two arrow rows have vertical room, yet keep generous horizontal margins. Flat illustration, sharp lettering, simple geometry, pale blue and white.
+Scientific constraints: show only physical state changes of one substance, no chemical reaction, no molecule identity changes; do not reverse any arrows; avoid any sublimation/deposition arrows or extra state; no flames or beakers needed. No photorealism, no logos, no watermarks, no English text, no decorative small lettering.
 ```
 
-## Review-Notiz
+## Aktive Fassung und Prüfung
 
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+- Generator: OpenAI / ChatGPT Codex imagegen als gezielte Bearbeitung des archivierten JPG.
+- Aktives PNG: `326d45bf-9f77-57d5-a054-93e76b034dd5.png`, 1448 × 1086 Pixel (4:3), SHA-256 `28c7efb897e8baeffa23afb3807341180e70409dba2afa473d1566f1379f2190`.
+- Formatentscheidung: Das höhere 4:3-Bild macht die vier Übergangsnamen bei 360 Pixel Breite lesbar; die alte 16:9-Fassung hatte dafür zu schmale Zwischenräume.
+- Unabhängige fachliche und visuelle KI-Kandidatenprüfung in Originalgröße und bei 680/360 Pixeln: `quality/goal-visualization-review/chemie-b004t-326-mobile-correction-20260930-v1/independent-candidate-qa.json`. Keine menschliche Freigabe der neuen Fassung.
+- Altes JPG, Prompt und damaliger QA-Record sind unter `quality/goal-visualization-review/chemie-b004t-326-mobile-correction-20260930-v1/historical-active-before-correction/` erhalten.

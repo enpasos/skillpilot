@@ -1,0 +1,26 @@
+# Lernzielvisualisierung: Proteinaufbau modellieren
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `28850d2e-062d-5341-ac66-bd787a8fc84f`
+- Titel: Proteinaufbau modellieren
+- Beschreibung: Die lernende Person kann Aminosäuren, Peptidbindung und Proteinstrukturebenen erläutern.
+
+## Generator
+
+- Provider: ChatGPT/Codex image_gen
+- Status: ai_candidate
+- Quellbild: `28850d2e-062d-5341-ac66-bd787a8fc84f.png`
+- Public Asset: `/assets/goal-visualizations/biologie/28850d2e-062d-5341-ac66-bd787a8fc84f/28850d2e-062d-5341-ac66-bd787a8fc84f.png`
+
+## Prompt
+
+```text
+Generator: ChatGPT/Codex built-in image_gen, 2026-09-30. New PNG.
+
+Create a single final PNG learning-goal illustration for SkillPilot German Gymnasium biology, wide landscape around 16:9 (native generator size near 1600 × 900 is fine). Friendly warm abstract hand-drawn comic schoolbook style, softly textured, clear bold shapes and generous whitespace, consistent with a colorful illustrated educational app; no photorealism, no sterile technical chart, no watermark. Topic: how amino acids form a protein. Three left-to-right stages connected by simple arrows: several distinct colored amino-acid units; a single continuous chain in which neighboring units are joined by one recognizable connector representing each peptide bond; the same chain folding into a larger three-dimensional protein shape with one short helix and one pleated region. Keep it a clearly marked conceptual model, not a literal atomic structure. Do not draw molecular formulas, atom labels, impossible bonds, free-floating organelles, or misleading extra strands. One dominant visual motif per stage, coherent color continuity across stages. No paragraphs or tiny writing; if any German words are used, only large short labels 'Aminosäuren', 'Peptidkette', 'gefaltetes Protein'. Important parts must stay obvious when downscaled to 360 px-wide mobile and 680 px desktop.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

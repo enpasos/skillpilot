@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "independent-positive-understanding-evidence-targeted-v2-recheck",
+  "reviewedAt": "2026-09-30T18:27:05Z",
+  "reviewer": "Codex independent chemistry P counterreview",
+  "authority": "ai_candidate",
+  "scope": {
+    "config": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b005-sek1-symbols-stoichiometry-current-4-v2.config.json",
+    "priorIndependentReview": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/chemistry-b004r-b005-independent-p-review-v1/review.json",
+    "method": "Substantively rechecked the changed 9f profile, including both worked transfer cases and variation claims. For e0, e7 and 5c, compared profile bodies and current page/image hashes with the earlier full independent review; all three remain unchanged. Compared all four actual public image hashes against their current AI visualization-QA bindings and rollout metadata. No historical review was overwritten.",
+    "limits": "This is machine curriculum QA for P profiles and direct image context. It does not grant human approval, certify D/A/M or assert central five-gate M7 closure."
+  },
+  "targetedCheck": {
+    "command": "npm --prefix app run -s quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b005-sek1-symbols-stoichiometry-current-4-v2.config.json",
+    "result": "PASS: configured 4, blocking issues 0, needs human review 4, approved 0."
+  },
+  "visualizationQaLedger": "curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json",
+  "visualizationRolloutStatus": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.json",
+  "decisions": [
+    {
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "profileVerdict": "PASS",
+      "profileFingerprint": "sha256:fb9dc940130172c91b1188efa22739a0c6da2b2855c60635d4cb82c4fbd36429",
+      "imageSha256": "sha256:f7a2507d8984d03d4075b3bbd48ce9baa15ba9148c76cf0e97c500b4b5ec0fc6",
+      "imageContentVerdict": "PASS_FROM_UNCHANGED_PRIOR_REVIEW",
+      "visualizationMetadataStatus": "accepted",
+      "aiVisualizationQa": "yes_current_hash",
+      "humanApproved": "no",
+      "finding": "Profile and MgO image bytes match the earlier independent review: the approximate 3:2 Mg:O masses and the CuO/FeS transfer calculations remain coherent. The AI visualization-QA record matches the active image hash."
+    },
+    {
+      "goalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+      "profileVerdict": "PASS",
+      "profileFingerprint": "sha256:6b1392e002721be0b16d11c24b4bb2cd146d58dff9c05fdab017b5eef341b630",
+      "imageSha256": "sha256:249ef9c54f1f62e65e1bab38cef98dc2d6bdef76bd5e294085a833004bc1ab90",
+      "imageContentVerdict": "PASS_FROM_UNCHANGED_PRIOR_REVIEW",
+      "visualizationMetadataStatus": "accepted",
+      "aiVisualizationQa": "yes_current_hash",
+      "humanApproved": "no",
+      "finding": "Unchanged profile and image preserve the correct H2O/CO2/CH4 particle counts; fresh NH3 and coefficient-versus-index demonstrations remain valid. The AI visualization-QA record matches the active image hash."
+    },
+    {
+      "goalId": "5c4788a7-6760-53dc-894e-e04bca6f8cd9",
+      "profileVerdict": "PASS",
+      "profileFingerprint": "sha256:16b7a1d4cbe25d0f244970e2bc57ef8d7b025cf063877b8eb2419cbd6ba1a5ea",
+      "imageSha256": "sha256:0be30232f2e9da86a08a02a2745c48316486b267007a2a6892bd0e590221a4eb",
+      "imageContentVerdict": "PASS_FROM_UNCHANGED_PRIOR_REVIEW",
+      "visualizationMetadataStatus": "pilot",
+      "aiVisualizationQa": "yes_current_hash",
+      "humanApproved": "no",
+      "finding": "Unchanged fixed-N,V heating and fixed-N,T compression cases retain correct qualitative particle reasoning. The active image is the same fachlich sound JPG as in the prior review. Its rollout label remains pilot, while the distinct AI visualization-QA record says yes for exactly the active hash. Pilot does not establish human release approval; it does not by itself negate the current machine QA binding."
+    },
+    {
+      "goalId": "9f355f63-4fb7-5638-9538-6e8a246ec4b2",
+      "profileVerdict": "PASS",
+      "profileFingerprint": "sha256:d27450ca48369200b4dfdeb27fe904f5e88cde6e3db604703d5ad11eebc6098f",
+      "imageSha256": "sha256:6f633fde5ddf96c717c852816839edb73c62617bedc43d1060c71cd07ae7611a",
+      "imageContentVerdict": "PASS_FROM_UNCHANGED_PRIOR_REVIEW",
+      "visualizationMetadataStatus": "accepted",
+      "aiVisualizationQa": "yes_current_hash",
+      "humanApproved": "no",
+      "finding": "The previous false variation claim is repaired: both 2 H2 + O2 -> 2 H2O and 2 CO + O2 -> 2 CO2 have the same 2:1:2 coefficient ratio. The water case correctly gives 2 mol/36 g product and 1 mol H2 residue; the CO case converts 56/28 to 2 mol CO, gives 2 mol/88 g CO2 and 0.5 mol O2 residue. The limiting reactant changes, as stated; neither case asks for real CO handling. The unchanged H2/Cl2 image is balanced, and the AI visualization-QA record matches its active hash."
+    }
+  ],
+  "summary": {
+    "profilePass": 4,
+    "profileHold": 0,
+    "currentAiVisualizationQaBindings": 4,
+    "pilotVisualizationMetadata": 1,
+    "newStrictM7ClosureClaimed": 0,
+    "humanApprovalsClaimed": 0
+  }
+}

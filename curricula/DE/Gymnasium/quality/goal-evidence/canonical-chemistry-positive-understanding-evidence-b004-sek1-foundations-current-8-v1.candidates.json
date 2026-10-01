@@ -1,0 +1,465 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-chemistry-positive-evidence-b004-sek1-foundations-current-8-v1",
+  "reviewedAt": "2026-09-30T16:59:31Z",
+  "reviewer": "codex-gpt-6-chemistry-b004-positive-profile-author",
+  "goals": [
+    {
+      "goalId": "42a84bca-d27e-581f-a43a-eee424f0504d",
+      "reason": "Ein hierarchisches Klassifikationsziel mit Teilchenbegründung; bloßes Benennen von Bildetiketten reicht nicht. Zwei voneinander unabhängige Fälle prüfen eine neue Darstellung oder Situation, die nicht aus dem vorhandenen Bild ablesbar ist. KI-Kandidat bleibt needs_human_review; keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "b004-42a84bca-core",
+            "essentialUnderstandingDe": "Ein Reinstoff besteht aus einer Teilchensorte; Elemente enthalten nur eine Atomsorte, Verbindungen mindestens zwei chemisch gebundene Atomsorten. Ein Gemisch enthält mehrere Stoffe und damit verschiedene Teilchensorten, auch wenn diese jeweils Verbindungen sind.",
+            "essentialUnderstandingEn": "A pure substance consists of one particle type; elements contain one atom type, whereas compounds contain at least two chemically bonded atom types. A mixture contains multiple substances and hence multiple particle types, even when each is a compound.",
+            "observablePerformanceDe": "Die lernende Person ordnet neue Teilchenbilder zuerst Reinstoff/Gemisch und dann Element/Verbindung zu und begründet Atomsorten, Bindungen und Teilchensorten.",
+            "observablePerformanceEn": "The learner first classifies fresh particle diagrams as pure substance or mixture, then as element or compound, and justifies atom types, bonds, and particle types."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b004-42a84bca-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "particle-types",
+            "textDe": "Einheitliche Teilchensorte und zwei verschiedene Teilchensorten wechseln.",
+            "textEn": "One particle type is contrasted with two different particle types."
+          },
+          {
+            "id": "atom-composition",
+            "textDe": "Einatomige und mehratomige Elementteilchen sowie Verbindungsteilchen werden verglichen.",
+            "textEn": "Monatomic and molecular elemental particles are compared with compound particles."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "element-compound-mixture-cards",
+            "taskDemandDe": "Drei neue Karten zeigen nur gleiche O2-Moleküle, nur gleiche H2O-Moleküle oder eine Mischung aus O2- und H2O-Molekülen. Ordne jede Karte in die Reinstoff/Gemisch-Hierarchie ein und begründe.",
+            "taskDemandEn": "Three fresh cards show only identical O2 molecules, only identical H2O molecules, or a mixture of O2 and H2O molecules. Classify each in the pure-substance/mixture hierarchy and explain.",
+            "expectedPerformanceDe": "Die lernende Person ordnet O2 als elementaren Reinstoff, H2O als Verbindungs-Reinstoff und die gemeinsame Karte als Gemisch ein; sie nennt gleiche bzw. verschiedene Teilchensorten und Atomsorten.",
+            "expectedPerformanceEn": "The learner classifies O2 as a pure element, H2O as a pure compound and the combined card as a mixture, citing particle and atom types.",
+            "understandingFocusDe": "Hierarchie und Bindungen begründen die Einordnung.",
+            "understandingFocusEn": "Hierarchy and bonding justify the classification."
+          },
+          {
+            "id": "fresh-two-compound-mixture",
+            "taskDemandDe": "Eine neue Karte zeigt Wasser- und Kohlenstoffdioxid-Moleküle zusammen, eine zweite nur Chlor-Moleküle Cl2. Ist eine Karte ein reines Element oder beide eine Verbindung? Erkläre auch, warum zwei Verbindungen zusammen kein Reinstoff sind.",
+            "taskDemandEn": "A fresh card combines water and carbon dioxide molecules; another contains only chlorine molecules Cl2. Is either a pure element, or are both compounds? Explain why two compounds together are not a pure substance.",
+            "expectedPerformanceDe": "Die lernende Person erkennt das Wasser/CO2-System als Gemisch zweier Verbindungen und Cl2 als elementaren Reinstoff; zwei gleiche Chloratome bilden keine Verbindung verschiedener Elemente.",
+            "expectedPerformanceEn": "The learner identifies water/CO2 as a mixture of two compounds and Cl2 as a pure element; two identical chlorine atoms do not form a compound of different elements.",
+            "understandingFocusDe": "Neuer Fall widerlegt die Abkürzungen „Molekül gleich Verbindung“ und „nur Verbindungen gleich Reinstoff“.",
+            "understandingFocusEn": "The fresh case defeats the shortcuts “molecule means compound” and “only compounds means pure substance”."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+      "reason": "Gefahr und Risiko werden anhand bereitgestellter Gefahrstoffinformationen und Exposition getrennt; keine reale gefährliche Eigenhandlung wird gefordert. Zwei voneinander unabhängige Fälle prüfen eine neue Darstellung oder Situation, die nicht aus dem vorhandenen Bild ablesbar ist. KI-Kandidat bleibt needs_human_review; keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "b004-ebaae4f5-core",
+            "essentialUnderstandingDe": "Ein Gefahrmerkmal beschreibt die mögliche Schädigung durch Stoff oder Verfahren; das konkrete Risiko hängt von Exposition, Menge, Arbeitsweise und Schutzmaßnahmen ab. Eine Maßnahme muss zum jeweiligen Expositionsweg passen.",
+            "essentialUnderstandingEn": "A hazard describes a substance or procedure’s harmful potential; actual risk also depends on exposure, amount, procedure and controls. A control must address the relevant exposure route.",
+            "observablePerformanceDe": "Die lernende Person liest vorgegebene Schulinformationen zu einem Stoff, benennt einen konkreten Kontaktweg und entwickelt begründete Maßnahmen, die genau diesen Weg verringern.",
+            "observablePerformanceEn": "The learner reads supplied school-lab information, identifies a specific exposure route and proposes justified controls that reduce it."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b004-ebaae4f5-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "exposure-route",
+            "textDe": "Spritzer und Dampf werden als unterschiedliche Kontaktwege betrachtet.",
+            "textEn": "Splash and vapor are treated as different exposure routes."
+          },
+          {
+            "id": "procedure",
+            "textDe": "Menge und Arbeitsweise verändern das Risiko bei gleichem Gefahrmerkmal.",
+            "textEn": "Amount and procedure change risk under the same hazard classification."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "dilute-acid-splash-card",
+            "taskDemandDe": "Eine bereitgestellte Schullaborkarte beschreibt eine verdünnte saure Lösung und ein mögliches Spritzrisiko beim Umfüllen. Beurteile den Kontaktweg und schlage vor Beginn zwei passende Schutzmaßnahmen vor; es wird nicht umgefüllt.",
+            "taskDemandEn": "A supplied school-lab card describes a dilute acidic solution and a possible splash while transferring it. Assess the exposure route and propose two suitable controls before starting; no transfer is performed.",
+            "expectedPerformanceDe": "Die lernende Person trennt das Gefahrmerkmal vom konkreten Spritzrisiko und begründet z. B. Schutzbrille sowie kleine Mengen/geeignete Handhabung unter Lehrkraftanweisung; sie erklärt, warum ein bloßes Symbol keine Freigabe ist.",
+            "expectedPerformanceEn": "The learner separates hazard from the specific splash risk and justifies eye protection plus small amounts/suitable handling under teacher direction; a symbol alone grants no permission.",
+            "understandingFocusDe": "Maßnahmen adressieren Spritzer und Exposition.",
+            "understandingFocusEn": "Controls address splashes and exposure."
+          },
+          {
+            "id": "fresh-vapor-comparison",
+            "taskDemandDe": "Ein neues Papierprotokoll vergleicht denselben flüchtigen Stoff in einem offenen großen Gefäß und in einer kleinen geschlossenen Demonstration der Lehrkraft. Welche Situation birgt eher Einatmerisiko und welche Änderung mindert es? Keine reale Durchführung.",
+            "taskDemandEn": "A fresh paper protocol compares the same volatile substance in a large open vessel and in a small teacher-run closed demonstration. Which situation has greater inhalation risk and what change reduces it? No experiment is performed.",
+            "expectedPerformanceDe": "Die lernende Person nennt Verdunstung und Einatmen als konkreten Weg, bevorzugt geschlossene/kleine Lehrkraftdemonstration beziehungsweise geeignete Lüftung nach lokalen Vorgaben und behauptet nicht, dass das Stoffmerkmal verschwunden sei.",
+            "expectedPerformanceEn": "The learner identifies evaporation and inhalation, prefers the small closed teacher demonstration or suitable ventilation under local rules, and does not claim the substance’s hazard has vanished.",
+            "understandingFocusDe": "Gleicher Stoff, anderes Expositionsrisiko.",
+            "understandingFocusEn": "Same substance, different exposure risk."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d8bdf486-7295-5393-b6f7-54f6e485c848",
+      "reason": "Reversibilität muss aus wiederholbaren Beobachtungen plus konjugierten Säure-Base-Paaren abgeleitet werden; Indikatorfarbe allein ist kein Teilchenbeweis. Zwei voneinander unabhängige Fälle prüfen eine neue Darstellung oder Situation, die nicht aus dem vorhandenen Bild ablesbar ist. KI-Kandidat bleibt needs_human_review; keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "b004-d8bdf486-core",
+            "essentialUnderstandingDe": "Für ein schwaches Indikator-Säure-Base-Paar HIn/In− kann ein Protonenübergang in beide Richtungen stattfinden; Säure- und Basenzugabe verändern die Gleichgewichtslage. Umkehrbare Farbbeobachtungen stützen zusammen mit geeigneten Kontrollen diese modellhafte Deutung, beweisen sie nicht isoliert.",
+            "essentialUnderstandingEn": "For a weak indicator acid-base pair HIn/In−, proton transfer can proceed in either direction; adding acid or base shifts the balance. Reversible color observations plus suitable controls support this model interpretation but do not prove it alone.",
+            "observablePerformanceDe": "Die lernende Person wertet ein protokolliertes Hin-und-zurück-Experiment aus, benennt HIn/In− und die Rolle von H3O+ bzw. Base und grenzt bloße Verdünnung als Alternativerklärung ab.",
+            "observablePerformanceEn": "The learner interprets a recorded back-and-forth experiment, names HIn/In− and the role of H3O+ or base, and considers dilution as an alternative explanation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b004-d8bdf486-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "direction",
+            "textDe": "Säurezugabe und anschließende Basenzugabe wechseln die bevorzugte Richtung.",
+            "textEn": "Acid addition and subsequent base addition change the favored direction."
+          },
+          {
+            "id": "evidence",
+            "textDe": "Wiederholte Farbumkehr und Volumenkontrolle werden von einer einmaligen Farbänderung unterschieden.",
+            "textEn": "Repeated color reversal and a volume control are distinguished from a single color change."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "teacher-indicator-cycle",
+            "taskDemandDe": "Ein lehrkraftbetreutes Protokoll eines geeigneten Schulindikators zeigt: dieselbe Probe wechselt nach kleiner Säurezugabe Farbe und kehrt nach passender Basenzugabe zurück; eine gleich stark verdünnte Kontrolle bleibt unverändert. Deute die Beobachtung mit HIn ⇌ In− + H+ als vereinfachtem Modell.",
+            "taskDemandEn": "A teacher-supervised protocol for a suitable school indicator shows the same sample changing color after a small acid addition and reversing after suitable base addition; an equally diluted control stays unchanged. Interpret using simplified HIn ⇌ In− + H+.",
+            "expectedPerformanceDe": "Die lernende Person ordnet Säurezugabe der protonierten Form HIn und Basenzugabe der deprotonierten Form In− zu, nennt dieselbe Probe und die Verdünnungskontrolle als Indizien und vermeidet die Behauptung eines isolierten direkten Teilchenbeweises.",
+            "expectedPerformanceEn": "The learner links acid addition to protonated HIn and base addition to deprotonated In−, cites the same sample and dilution control as evidence, and avoids claiming direct particle proof.",
+            "understandingFocusDe": "Hin- und Rückrichtung aus kontrollierten Daten.",
+            "understandingFocusEn": "Forward and reverse directions from controlled data."
+          },
+          {
+            "id": "fresh-absorbance-pair",
+            "taskDemandDe": "Ein neues Datenset zu einem anderen schwachen Farbstoff HA/A− zeigt bei saurer Zugabe mehr HA-Signal, nach Basenzugabe wieder mehr A−-Signal; eine Kontrollprobe ohne Säure/Base zeigt keine Umkehr. Welche Protonenübergänge passen dazu, und was lässt sich daraus nicht über jede Säure-Base-Reaktion schließen?",
+            "taskDemandEn": "A fresh data set for a different weak dye HA/A− shows more HA signal after acid addition and more A− signal after base addition; a control without acid/base shows no reversal. Which proton transfers fit, and what cannot be concluded about every acid-base reaction?",
+            "expectedPerformanceDe": "Die lernende Person formuliert HA ⇌ H+ + A− als vereinfachtes Paar, beschreibt Vor- und Rückverschiebung und leitet keine pauschale Gleichgewichtslage oder universelle Rückläufigkeit aller Reaktionen ab.",
+            "expectedPerformanceEn": "The learner writes simplified HA ⇌ H+ + A−, describes forward and reverse shifts, and does not infer a universal equilibrium position or reversibility under all conditions.",
+            "understandingFocusDe": "Neues Messsignal prüft Transfer und Modellgrenze.",
+            "understandingFocusEn": "A fresh signal tests transfer and model limits."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+      "reason": "Situationsbezogene Sicherheitsregeln verlangen eine echte sichere Handlung im betreuten Schulrahmen und eine neue begründete Reaktion auf eine Störung. Zwei voneinander unabhängige Fälle prüfen eine neue Darstellung oder Situation, die nicht aus dem vorhandenen Bild ablesbar ist. KI-Kandidat bleibt needs_human_review; keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "b004-13d4f336-core",
+            "essentialUnderstandingDe": "Schutzregeln haben konkrete Anlässe: Augenschutz gegen Spritzer, freie Arbeitsfläche und geeignete Kennzeichnung gegen Verwechslung sowie Lehrkraftanweisung bei Unsicherheit oder Zwischenfall. Sicheres Arbeiten beginnt vor der Materialhandlung.",
+            "essentialUnderstandingEn": "Safety rules address particular risks: eye protection for splashes, clear workspace and labeling against mix-ups, and teacher direction when uncertain or after an incident. Safe work starts before handling materials.",
+            "observablePerformanceDe": "Die lernende Person bereitet an einem ungefährlichen, lehrkraftbetreuten Modellplatz ihren Arbeitsplatz vor, prüft Brille und Beschriftung und meldet einen unklaren Behälter, statt eigenmächtig weiterzumachen.",
+            "observablePerformanceEn": "At a harmless teacher-supervised model station, the learner prepares the workspace, checks eye protection and labeling, and reports an unclear vessel rather than proceeding independently."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b004-13d4f336-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "phase",
+            "textDe": "Vorbereitung und Reaktion auf einen Zwischenfall werden getrennt geprüft.",
+            "textEn": "Preparation and response to an incident are tested separately."
+          },
+          {
+            "id": "risk",
+            "textDe": "Verwechslung und Spritzer erfordern unterschiedliche unmittelbare Handlungen.",
+            "textEn": "Mix-up and splash call for different immediate actions."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "supervised-water-model-station",
+            "taskDemandDe": "An einem lehrkraftbetreuten Modellplatz stehen nur Wasser, zwei klar beschriftete Becher und ein unbeschrifteter Becher. Zeige vor Beginn eine sichere Vorbereitung: Schutzbrille korrekt tragen, Arbeitsplatz freimachen, Beschriftung prüfen und den unklaren Becher der Lehrkraft melden; keine Chemikalien oder Flammen.",
+            "taskDemandEn": "At a teacher-supervised model station there are only water, two labeled beakers and one unlabeled beaker. Demonstrate safe preparation: wear eye protection correctly, clear the workspace, check labels and report the unlabeled beaker to the teacher; no chemicals or flames.",
+            "expectedPerformanceDe": "Die lernende Person führt die sicheren Vorbereitungsschritte tatsächlich aus, verwendet den unbeschrifteten Becher nicht und erläutert die Verwechslungsgefahr.",
+            "expectedPerformanceEn": "The learner actually performs the safe preparation, does not use the unlabeled beaker and explains the mix-up risk.",
+            "understandingFocusDe": "Beobachtete Anwendung statt Regelaufsagen.",
+            "understandingFocusEn": "Observed application rather than rule recitation."
+          },
+          {
+            "id": "fresh-splash-response-card",
+            "taskDemandDe": "Eine neue Situationskarte schildert einen unerwarteten Spritzer bei einer lehrkraftgeleiteten Schulübung auf Arbeitsfläche und Kleidung; Art der Lösung ist unklar. Entscheide die ersten sicheren Schritte und begründe, weshalb Du nicht eigenmächtig weiterarbeitest.",
+            "taskDemandEn": "A fresh situation card describes an unexpected splash during a teacher-run school exercise onto bench and clothing; the solution identity is unclear. Decide the first safe steps and why you do not continue on your own.",
+            "expectedPerformanceDe": "Die lernende Person stoppt, hält Abstand, informiert sofort die Lehrkraft und folgt den örtlichen Anweisungen; sie wählt keine ungesicherte Neutralisation oder Entsorgung und beachtet Schutz und betroffene Person.",
+            "expectedPerformanceEn": "The learner stops, keeps clear, immediately informs the teacher and follows local instructions; they do not improvise neutralization or disposal and attend to protection and affected person.",
+            "understandingFocusDe": "Neue Störung prüft sichere Entscheidung.",
+            "understandingFocusEn": "A new incident tests safe decision-making."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "988888bb-1f88-55f9-9a44-f3f60469a297",
+      "reason": "Ein zusammenhängendes Teilchenmodell erklärt Anordnung, Bewegung und Erhaltung bei Phasenwechseln; Stoffebene allein genügt nicht. Zwei voneinander unabhängige Fälle prüfen eine neue Darstellung oder Situation, die nicht aus dem vorhandenen Bild ablesbar ist. KI-Kandidat bleibt needs_human_review; keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "b004-988888bb-core",
+            "essentialUnderstandingDe": "Beim Phasenwechsel bleiben die Stoffteilchen dieselben. In festen, flüssigen und gasförmigen Zuständen ändern sich vor allem Anordnung, Abstand und Bewegungsmöglichkeiten; Energieübertragung ändert das Verhalten, nicht die Größe oder Identität der Teilchen.",
+            "essentialUnderstandingEn": "In a phase change, the substance particles remain the same. Solids, liquids and gases differ mainly in arrangement, spacing and mobility; energy transfer changes behavior, not particle size or identity.",
+            "observablePerformanceDe": "Die lernende Person zeichnet und erläutert Teilchenbilder für einen Übergang und prüft, ob Zahl, Art, Abstand und Bewegung zu Beobachtung und Energiefluss passen.",
+            "observablePerformanceEn": "The learner draws and explains particle diagrams for a transition and checks whether number, kind, spacing and motion agree with observation and energy flow."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b004-988888bb-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "transition",
+            "textDe": "Schmelzen/Verdampfen und Sublimieren/Kondensieren variieren den Übergang.",
+            "textEn": "Melting/evaporation and sublimation/condensation vary the transition."
+          },
+          {
+            "id": "representation",
+            "textDe": "Teilchenzeichnung und Fehlerdiagnose werden kombiniert.",
+            "textEn": "Particle drawing and error diagnosis are combined."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "water-particle-sequence",
+            "taskDemandDe": "Zeichne für dieselbe Wassermenge Eis, flüssiges Wasser und Wasserdampf in getrennten Kästen. Erkläre beim Verdampfen Teilchenart, Abstände und Energiezufuhr; die Skizze ist ein Modell, kein Foto.",
+            "taskDemandEn": "Draw separate particle boxes for the same amount of ice, liquid water and water vapor. Explain particle type, spacing and energy uptake during evaporation; the sketch is a model, not a photo.",
+            "expectedPerformanceDe": "Die lernende Person zeichnet gleichartige H2O-Teilchen mit erhaltener Anzahl, im Gas weiter auseinander und beweglicher; sie vergrößert nicht die Moleküle und erfindet keine H- und O-Atome als neue Stoffe.",
+            "expectedPerformanceEn": "The learner draws the same number and kind of H2O particles, farther apart and more mobile in gas; they do not enlarge molecules or invent new H and O substances.",
+            "understandingFocusDe": "Erhaltung und Bewegung tragen den Phasenwechsel.",
+            "understandingFocusEn": "Conservation and movement explain the phase change."
+          },
+          {
+            "id": "fresh-iodine-sublimation-error",
+            "taskDemandDe": "Ein neues Papierbild zu festem Iod und Ioddampf behauptet, beim Sublimieren zerfielen I2-Moleküle zu einzelnen I-Atomen und würden größer. Korrigiere die Teilchenskizze und nenne die Energie-Richtung.",
+            "taskDemandEn": "A fresh paper diagram for solid iodine and iodine vapor claims sublimation splits I2 molecules into individual I atoms and enlarges them. Correct the particle diagram and state the energy direction.",
+            "expectedPerformanceDe": "Die lernende Person lässt I2-Moleküle erhalten, zeigt größeren Abstand und freie Bewegung im Gas und nennt Energieaufnahme beim Sublimieren; sie trennt Phasenwechsel von chemischer Zerlegung.",
+            "expectedPerformanceEn": "The learner preserves I2 molecules, shows greater spacing and freer gas motion, and states that sublimation takes in energy; they distinguish phase change from chemical decomposition.",
+            "understandingFocusDe": "Neuer Stoff prüft Modelltransfer und Fehlervorstellung.",
+            "understandingFocusEn": "A new substance tests model transfer and misconception."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "5338b54c-68bc-5892-907c-e025351ffde6",
+      "reason": "Zwei unterschiedliche gelöste Stoffarten verhindern ein unzulässiges Einheitsbild; Erhaltung und Verteilung bilden die gemeinsame Modellleistung. Zwei voneinander unabhängige Fälle prüfen eine neue Darstellung oder Situation, die nicht aus dem vorhandenen Bild ablesbar ist. KI-Kandidat bleibt needs_human_review; keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "b004-5338b54c-core",
+            "essentialUnderstandingDe": "Beim Lösen verteilen sich gelöste Teilchen im Lösungsmittel, statt zu verschwinden. Molekulare Stoffe können als Moleküle bleiben; geeignete Ionenkristalle liefern beim Lösen Ionen. Eine klare Lösung kann weiterhin gelösten Stoff enthalten.",
+            "essentialUnderstandingEn": "During dissolution, solute particles disperse in the solvent rather than vanish. Molecular solutes can remain molecules; suitable ionic crystals yield ions when dissolved. A clear solution can still contain solute.",
+            "observablePerformanceDe": "Die lernende Person zeichnet vor und nach dem Lösen eine passende Teilchenverteilung, bewahrt die Stoffmenge und unterscheidet gelöste Moleküle von Ionen.",
+            "observablePerformanceEn": "The learner draws an appropriate before-and-after particle distribution, conserves the solute amount and distinguishes dissolved molecules from ions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b004-5338b54c-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "solute",
+            "textDe": "Molekularer Zucker und ionisches Salz werden unterschieden.",
+            "textEn": "Molecular sugar and ionic salt are distinguished."
+          },
+          {
+            "id": "observation",
+            "textDe": "Unsichtbarkeit und Trennung durch Filtern werden fachlich gedeutet.",
+            "textEn": "Invisibility and filtration are interpreted scientifically."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "sugar-water-particles",
+            "taskDemandDe": "Ein neues Teilchenbild zeigt Zuckerkristalle vor dem Mischen mit Wasser. Zeichne eine klare Zuckerlösung: Wo sind die Zuckermoleküle, und was geschieht mit ihrer Anzahl?",
+            "taskDemandEn": "A fresh particle diagram shows sugar crystals before mixing with water. Draw a clear sugar solution: where are the sugar molecules and what happens to their number?",
+            "expectedPerformanceDe": "Die lernende Person verteilt unveränderte Zuckermoleküle zwischen Wassermolekülen und erhält ihre Anzahl; sie erklärt Klarheit ohne chemisches Verschwinden.",
+            "expectedPerformanceEn": "The learner distributes unchanged sugar molecules among water molecules and conserves their number; clarity does not mean chemical disappearance.",
+            "understandingFocusDe": "Molekulares Lösen als Teilchenverteilung.",
+            "understandingFocusEn": "Molecular dissolution as particle distribution."
+          },
+          {
+            "id": "fresh-salt-filter-model",
+            "taskDemandDe": "Ein neuer Papierfall zeigt NaCl-Kristalle, Wasser und danach eine klare Lösung, die durch Papierfilter läuft. Skizziere passende gelöste Teilchen und sage voraus, warum der Filter das Salz nicht wie Sand zurückhält. Keine Durchführung.",
+            "taskDemandEn": "A fresh paper case shows NaCl crystals, water and then a clear solution passing through paper filter. Sketch suitable dissolved particles and predict why the filter does not retain the salt like sand. No experiment is requested.",
+            "expectedPerformanceDe": "Die lernende Person zeigt getrennte Na+ und Cl−-Ionen im Wasser im richtigen Verhältnis, keine verschwundenen Atome und kein Herausfiltern wie grobe unlösliche Sandkörner; sie behauptet nicht, die Ionen seien zu H2O geworden.",
+            "expectedPerformanceEn": "The learner shows separate Na+ and Cl− ions in water in the correct ratio, no vanished atoms and no retention like coarse insoluble sand; they do not claim the ions became H2O.",
+            "understandingFocusDe": "Ionisches Lösen und Filtergrenze als Transfer.",
+            "understandingFocusEn": "Ionic dissolution and filter limit as transfer."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf",
+      "reason": "Das gleiche Bewegungsmodell wird auf zwei beobachtbar verschiedene Erscheinungen bezogen; Strömung wird als alternative Ursache kontrolliert. Zwei voneinander unabhängige Fälle prüfen eine neue Darstellung oder Situation, die nicht aus dem vorhandenen Bild ablesbar ist. KI-Kandidat bleibt needs_human_review; keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "b004-5dd180f1-core",
+            "essentialUnderstandingDe": "Brownsche Bewegung ist unregelmäßige Bewegung suspendierter sichtbarer Teilchen durch Stöße kleinerer Flüssigkeits- oder Gasteilchen. Diffusion ist die Durchmischung durch zufällige Teilchenbewegung und zeigt im Mittel einen Konzentrationsausgleich; makroskopische Strömung ist davon zu unterscheiden.",
+            "essentialUnderstandingEn": "Brownian motion is irregular movement of visible suspended particles caused by collisions with smaller liquid or gas particles. Diffusion is mixing by random particle motion, producing net concentration equalization; bulk flow must be distinguished.",
+            "observablePerformanceDe": "Die lernende Person deutet eine mikroskopische Zickzackbahn und eine sich verteilende Farb- oder Duftstoffkonzentration mit dem Modell und benennt den Unterschied.",
+            "observablePerformanceEn": "The learner interprets a microscopic zigzag track and a spreading dye or scent concentration with the model and states the difference."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b004-5dd180f1-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "phenomenon",
+            "textDe": "Einzelteilchenbahn und Konzentrationsverteilung werden verglichen.",
+            "textEn": "A single-particle track and a concentration distribution are compared."
+          },
+          {
+            "id": "flow-control",
+            "textDe": "Ruhige Probe und gerichtete Strömung werden unterschieden.",
+            "textEn": "A still sample and directed flow are distinguished."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "bead-track-and-dye-data",
+            "taskDemandDe": "Zwei vorgegebene Beobachtungsreihen stammen aus ruhigem Wasser: Ein feines suspendiertes Kügelchen zittert unregelmäßig; ein Farbstofffleck wird ohne Rühren breiter. Erkläre beide Befunde und ihren Unterschied.",
+            "taskDemandEn": "Two supplied observations come from still water: a fine suspended bead jitters irregularly; a dye patch broadens without stirring. Explain both and their difference.",
+            "expectedPerformanceDe": "Die lernende Person deutet die Kügelchenbahn durch ungleichmäßige Stöße kleinerer Wasserteilchen und den Farbstofftransport als allmähliche Durchmischung vieler Farbstoffteilchen; sie setzt beide Bilder nicht gleich.",
+            "expectedPerformanceEn": "The learner explains the bead track by uneven impacts from smaller water particles and dye spreading as mixing of many dye particles over time; they do not equate the observations.",
+            "understandingFocusDe": "Gemeinsamer Bewegungsgrund, verschiedene beobachtete Größen.",
+            "understandingFocusEn": "Common motion basis, different observables."
+          },
+          {
+            "id": "fresh-scent-and-airflow",
+            "taskDemandDe": "Ein frischer Klassenraum-Datensatz zeigt einen Duftstoff, der sich bei ausgeschaltetem Ventilator langsam ausbreitet, aber bei eingeschaltetem Ventilator bevorzugt in eine Richtung gelangt. Welche Beobachtung stützt Diffusion, welche zeigt zusätzlich Strömung? Wie unterscheidet sich das von Brownscher Bewegung eines sichtbaren Rauchteilchens? Nur Datenauswertung.",
+            "taskDemandEn": "A fresh classroom data set shows a scent spreading slowly with a fan off but traveling preferentially one way with a fan on. Which observation supports diffusion, which also shows flow? How does this differ from Brownian motion of a visible smoke particle? Data interpretation only.",
+            "expectedPerformanceDe": "Die lernende Person erklärt langsame Durchmischung als Diffusion, die gerichtete Ausbreitung als Strömung plus mögliche Diffusion und die unregelmäßige Einzelteilchenbahn als Brownsche Bewegung; sie folgert nicht, dass jedes Lüftermuster reine Diffusion sei.",
+            "expectedPerformanceEn": "The learner explains slow mixing as diffusion, directional transport as airflow with possible diffusion, and an irregular single-particle track as Brownian motion; not every fan pattern is pure diffusion.",
+            "understandingFocusDe": "Neue Strömungsbedingung prüft Modellgrenze.",
+            "understandingFocusEn": "A fresh flow condition tests the model boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "78109f6d-c415-52c4-8314-07c0dd888a80",
+      "reason": "Ein Zielwechsel zwischen beobachtbarem Befund und erklärendem Teilchenmodell; ein neues Reaktionsbild prüft die Grenze gegen bloße Wortübersetzung. Zwei voneinander unabhängige Fälle prüfen eine neue Darstellung oder Situation, die nicht aus dem vorhandenen Bild ablesbar ist. KI-Kandidat bleibt needs_human_review; keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "b004-78109f6d-core",
+            "essentialUnderstandingDe": "Die Stoffebene beschreibt beobachtbare Eigenschaften und Vorgänge, die Teilchenebene ein Modell unsichtbarer Teilchen und ihrer Erhaltung. Ein passendes Teilchenbild muss den Befund erklären, ohne Beobachtung und Modell zu verwechseln oder Atome verschwinden zu lassen.",
+            "essentialUnderstandingEn": "The substance level reports observable properties and events; the particle level models unseen particles and their conservation. A valid particle representation must explain observations without confusing observation with model or losing atoms.",
+            "observablePerformanceDe": "Die lernende Person formuliert erst einen Stoffbefund, dann eine passende Teilchenhypothese und prüft an einer neuen Skizze deren Erklärungskraft und Erhaltung.",
+            "observablePerformanceEn": "The learner first states a substance-level observation, then a matching particle hypothesis, and checks a fresh diagram for explanatory fit and conservation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b004-78109f6d-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "phenomenon",
+            "textDe": "Lösen und Gasbildung variieren den chemischen Kontext.",
+            "textEn": "Dissolving and gas formation vary the chemistry context."
+          },
+          {
+            "id": "direction",
+            "textDe": "Beobachtung→Modell und Modell→Prüfung am Befund wechseln.",
+            "textEn": "Observation-to-model and model-to-observation checking alternate."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "clear-salt-solution-levels",
+            "taskDemandDe": "Ein neues Protokoll meldet, dass Salzkristalle in Wasser nicht mehr sichtbar sind und die Flüssigkeit klar bleibt. Schreibe eine reine Stoffebenen-Aussage und ein Teilchenmodell, das den Befund erklärt; markiere, welche Aussage beobachtet und welche modelliert ist.",
+            "taskDemandEn": "A fresh record says salt crystals are no longer visible in water and the liquid is clear. Write one substance-level statement and a particle model that explains it; identify observation versus model.",
+            "expectedPerformanceDe": "Die lernende Person benennt die Klarheit als Beobachtung und verteilte gelöste Ionen als Modell, behauptet weder das direkte Sehen von Ionen noch das Verschwinden des Salzes.",
+            "expectedPerformanceEn": "The learner labels clarity as observation and dispersed dissolved ions as model, claiming neither direct sight of ions nor disappearance of salt.",
+            "understandingFocusDe": "Ebenenwechsel und Erklärung derselben Beobachtung.",
+            "understandingFocusEn": "Switching levels to explain the same observation."
+          },
+          {
+            "id": "fresh-gas-in-closed-bag",
+            "taskDemandDe": "Ein neuer vorgegebener Datensatz beschreibt Essig und Natron im verschlossenen Beutel: Blasen und aufgeblähter Beutel, gleiche Gesamtmasse vorher/nachher. Eine Teilchenskizze lässt einige C- und O-Atome verschwinden. Korrigiere die Skizze qualitativ und erkläre den Befund; keine Durchführung.",
+            "taskDemandEn": "A new supplied data set describes vinegar and baking soda in a closed bag: bubbles and an inflated bag, same total mass before/after. A particle diagram makes some C and O atoms vanish. Correct it qualitatively and explain the observation; no experiment is requested.",
+            "expectedPerformanceDe": "Die lernende Person ergänzt eine Gasphase mit den zuvor fehlenden Atomen, erhält jede Atomsorte qualitativ und trennt beobachtete Blasen/Masse vom modellhaften Teilchenumbau; keine vollständige Reaktionsformel ist gefordert.",
+            "expectedPerformanceEn": "The learner adds a gas phase containing the missing atoms, conserves each atom type qualitatively and separates observed bubbles/mass from modeled particle rearrangement; no full reaction equation is required.",
+            "understandingFocusDe": "Neuer Gasbefund prüft Modellkonsistenz und Erhaltung.",
+            "understandingFocusEn": "A new gas observation tests model consistency and conservation."
+          }
+        ]
+      }
+    }
+  ]
+}

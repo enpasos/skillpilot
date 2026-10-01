@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:51a3f6c3c76a321e4c10e795d537e0d8b11646aca184ad09f3d4070cf556fd35",
+  "reviewInputFingerprint": "sha256:5a9f6c4c413418a86c67ba363d0712b70c32922fdef966fab7451aaa2be147b4",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-b009-fossil-carbon-current-1-20261001-v2-a",
+      "roundId": "chemie-b009-fossil-carbon-current-1-20261001-v2-first-pass-a",
+      "independenceGroupId": "chemie-b009-fossil-carbon-current-1-20261001-v2-independent-a",
+      "runIds": [
+        "chemie-b009-fossil-carbon-current-1-20261001-v2-a-codex-gpt6"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-b009-fossil-carbon-current-1-20261001-v2-b",
+      "roundId": "chemie-b009-fossil-carbon-current-1-20261001-v2-first-pass-b",
+      "independenceGroupId": "chemie-b009-fossil-carbon-current-1-20261001-v2-independent-b",
+      "runIds": [
+        "chemie-b009-fossil-carbon-current-1-20261001-v2-first-pass-b.batch-001.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::GPT-6::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "0503c975-3934-5206-962e-b1c247de0c12",
+      "firstRecordId": "chemie-b009-fossil-carbon-current-1-20261001-v2-a-codex-gpt6-0503c975-3934-5206-962e-b1c247de0c12",
+      "secondRecordId": "chemie-b009-fossil-carbon-current-1-20261001-v2-first-pass-b.0503c975-3934-5206-962e-b1c247de0c12",
+      "firstRunId": "chemie-b009-fossil-carbon-current-1-20261001-v2-a-codex-gpt6",
+      "secondRunId": "chemie-b009-fossil-carbon-current-1-20261001-v2-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-b009-fossil-carbon-current-1-20261001-v2",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-01/b009-fossil-carbon-current-1-20261001-v2.config.json",
+  "configDigest": "sha256:714b7db247f8921e5f2ed580791a0d4cbf933fee74a00b6b591260392b72ae80",
+  "goalIds": [
+    "0503c975-3934-5206-962e-b1c247de0c12"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 376,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/review-book-full.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:29b94d9a891c001b916c1247d179b15bd9d12fac07a7d70c64e700be9373b7e0"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:545bfede71c34a4eb11fa87de88b8225a65ea615aec4f07c5899987bcba34794",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:51a3f6c3c76a321e4c10e795d537e0d8b11646aca184ad09f3d4070cf556fd35",
+    "reviewInputFingerprint": "sha256:5a9f6c4c413418a86c67ba363d0712b70c32922fdef966fab7451aaa2be147b4",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-b009-fossil-carbon-current-1-20261001-v2-a",
+        "campaignDigest": "sha256:2f614dfd3614a3b99da59e992f5ffecb103b1f24fe1298663d1d712d23b174f5",
+        "roundId": "chemie-b009-fossil-carbon-current-1-20261001-v2-first-pass-a",
+        "independenceGroupId": "chemie-b009-fossil-carbon-current-1-20261001-v2-independent-a",
+        "batchId": "chemie-b009-fossil-carbon-current-1-20261001-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:bb68ecdfc74b27fbc43df8cc0ecbcad8062cd9c79120e18ac942dc0eaa9f10ee"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-b009-fossil-carbon-current-1-20261001-v2-b",
+        "campaignDigest": "sha256:427e1f025b0908c1d991f700046394d3e6fa902970f2bda476d25aa7fa584021",
+        "roundId": "chemie-b009-fossil-carbon-current-1-20261001-v2-first-pass-b",
+        "independenceGroupId": "chemie-b009-fossil-carbon-current-1-20261001-v2-independent-b",
+        "batchId": "chemie-b009-fossil-carbon-current-1-20261001-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:6dede6a80e2069b3303339c372e6640a94194eaa22a2430141f9cad5f091c418"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

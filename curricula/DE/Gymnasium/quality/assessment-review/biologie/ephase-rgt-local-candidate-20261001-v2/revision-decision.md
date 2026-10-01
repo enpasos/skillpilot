@@ -1,0 +1,5 @@
+# RGT-Lokalaufgabe: gezielte v2-Korrektur
+
+Der unabhängige v1-Erstbefund hielt zwei Stellen zurück. Das Versuchsprotokoll ließ offen, ob Katalase und Wasserstoffperoxid schon während der Temperierung zusammen waren; dann wäre die definierte erste Messminute fachlich nicht vergleichbar. Außerdem konnten bei `passingPoints: 12` alle 6 BE der Gültigkeitsgrenze fehlen und die Aufgabe trotzdem als bestanden gelten. Die unveränderte v1-Datei bleibt erhalten.
+
+In v2 werden Enzym und Substrat **getrennt** bei der jeweiligen Temperatur temperiert und erst beim Beginn der 60-Sekunden-Messung gemischt; das Substrat bleibt für diese Minute im Überschuss. Der Grenzwert für das Gesamtbestehen ist auf **18/20 BE** angehoben, sodass kein Bestehen mit 0/6 BE im dritten Aufgabenteil möglich ist. Zusätzlich verlangen die zielbezogenen `evidenceRequirements` ausdrücklich die korrekte Nicht-Extrapolation des 30→40-°C-Rückgangs. Die Werte, Rechnungen und Musterlösungen wurden nicht nur umetikettiert; sie waren im unabhängigen Erstbefund fachlich korrekt. Die v2-Fassung bleibt `draft` und inaktiv, bis ihr vollständiger unabhängiger Nachreview abgeschlossen ist.

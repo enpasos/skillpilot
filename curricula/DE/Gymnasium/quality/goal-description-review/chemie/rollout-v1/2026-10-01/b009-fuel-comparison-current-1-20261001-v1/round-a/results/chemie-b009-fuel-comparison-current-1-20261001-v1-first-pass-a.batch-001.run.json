@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-b009-fuel-comparison-current-1-20261001-v1-a-run-001",
+  "campaignId": "chemie-b009-fuel-comparison-current-1-20261001-v1-a",
+  "roundId": "chemie-b009-fuel-comparison-current-1-20261001-v1-first-pass-a",
+  "batchId": "chemie-b009-fuel-comparison-current-1-20261001-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:223cb819440c4565d1848e456663bb0a835f91efb018ecf5742e818f37f558ce",
+  "bundleFingerprint": "sha256:e31239bc7c702a6d31002f86dde0cd720a9159662a3523fb46274f6f6f4e622c",
+  "bookDigest": "sha256:6fa04296875067a4442b398bcaa4a1255c8042911781fa611214aa36851ab961",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex agent",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "chemie-b009-fuel-comparison-current-1-20261001-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "4dab7d52-5b89-52ab-a425-17a7707f44c8"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:a7435ec68b97ba86ff54081f343061e7ff1e7ee065a0c3abf380c86333e53d06"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:223cb819440c4565d1848e456663bb0a835f91efb018ecf5742e818f37f558ce"
+    }
+  ],
+  "startedAt": "2026-09-30T23:45:47Z",
+  "completedAt": "2026-09-30T23:46:37Z",
+  "status": "completed",
+  "outputDigest": "sha256:3ef52c8124393876cc44137ae76ce0aa91b50010a4be5b5711f9eae127000d5f",
+  "toolchainVersion": "codex-agent-2026-10-01"
+}

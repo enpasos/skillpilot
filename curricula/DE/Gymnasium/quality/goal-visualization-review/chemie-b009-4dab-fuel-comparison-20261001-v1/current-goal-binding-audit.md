@@ -1,0 +1,23 @@
+# 4dab current semantic/source binding audit
+
+Targeted review on 2026-10-01 for `4dab7d52-5b89-52ab-a425-17a7707f44c8`; AI machine QA only.
+
+The previous description mixed the analytical comparison of CO₂ balance and reaction heat with a separate energy-carrier evaluation. The current German and English descriptions retain **one** assessable analytical performance: compare both measures on a compatible reference basis inside the same stated system boundary. The separate goal `9198b4cf-e454-562f-83f0-b1b74e68765d` still covers the multi-criteria judgement. This is substantively `curricularAtomic`, not a new structural, orientation, assessment or memorization node. The existing prerequisite skills for reaction/energy data remain relevant; no DAG edge was changed.
+
+The official [Bavarian Gymnasium Chemistry 8, C8.3.8](https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/8/chemie) explicitly requires comparing CO₂ balance and reaction heat across fuels. It places evaluation and the fossil carbon-cycle explanation in the same larger bullet; the existing canonical split assigns those to separate `9198b4cf` and `0503c975`. The source-extraction text and historical BY mapping are unchanged; this target narrows a supported part of the official bullet. The applicable BY page/source linkage and the affected 4dab/0503 contextual page must be checked after the new image activation.
+
+The old 4dab table has materially misleading comparison bases at phone size. Candidate V3 now uses a shared released-heat basis and branches separately from each combustion flame to heat and CO₂; independent original/360/680 review is in `independent-candidate-qa-v3.json`. The image is limited to direct complete combustion of pure methane and carbon, with no full lifecycle accounting. The current alt text states these limits.
+
+The semantic-kind source fingerprint was recomputed with `fingerprintSemanticKindSourceGoal` only after the above classification review; its current value is `sha256:467aced066cfa60a57fd7272c4016fe68abda79ffeb4b9241726777df2ae246f`. Atomicity, Memory, D and P gates still need their own current decisions. Human approval and observed learner performance are not asserted.
+
+## Targeted description revision after independent review A
+
+Independent description review A found that `CO₂-Bilanzen` without specifying combustion could be read as a complete fuel life-cycle balance. Review B found the earlier wording defensible, but the official C8.3.8 sentence expressly places the CO₂ and reaction-heat comparison **at combustion**, and the active image explicitly depicts only direct combustion. The current DE/EN descriptions therefore name direct CO₂ released during combustion and retain a comparable reference basis and the same system boundary. This resolves the narrower, evidence-backed A finding; it does not change the distinct carbon-cycle goal `0503c975` or energy-carrier evaluation goal `9198b4cf`.
+
+The revision leaves the node a single assessable analytical `curricularAtomic` goal. Its source ancestry, prerequisites, image, card/memory decision and learner-facing position did not change. The current semantic-kind fingerprint `sha256:53c91bbab4a00862a0e2449e7860df9c812372e5874d02c0369017709da3423c` is recorded only after this substantive classification and source-scope check; current D/P/A/M/V evidence must still be validated separately. The earlier audit and first-round reviews remain historical evidence of the change, not current approvals.
+
+## Targeted reference-basis clarification after the next independent A review
+
+The independent v2 A reviewer identified a narrower wording problem: `jeweils auf vergleichbarer Bezugsgröße` could leave unclear whether the basis is consistent **across fuels for each quantity**. The current DE/EN text now says exactly that and names the heat released in combustion. This is a clarification within the same single fuel-comparison performance supported by C8.3.8; it does not add a lifecycle claim, another source topic, a new prerequisite, or a memory-card requirement. The v2 B reviewer found the former wording usable, but the concrete A clarification improves what a learner must actually compare. The active image remains a qualitative equal-heat example rather than a numeric or lifecycle claim.
+
+After this substantive check, the semantic-kind source fingerprint for the current text was recomputed as `sha256:ec56d1a023b5199502acb29c4e7e099dd90d8c31e98ed56b13e011363ecec68e`. A new current-description review and P/A/M bindings are still required; neither earlier review round is relabeled as current.

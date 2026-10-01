@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "biologie-m7-q1-crispr-current-20260930-v1",
+  "reviewedAt": "2026-09-30T20:12:36Z",
+  "reviewer": "codex-root-biology-q1-two-positive-profile-author-2026-09-30",
+  "goals": [
+    {
+      "goalId": "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+      "reason": "Fresh AI-authored bilingual profile for the current Q1 LK CRISPR/Cas goal and exact active PNG. It requires a guide-RNA/PAM/Cas9 cleavage explanation and a bounded application; cellular repair and verification are separate from the cut, so the image is not misread as proof of a precise edit. Human approval and learner achievement remain open.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "target-and-cut",
+            "essentialUnderstandingDe": "Bei einem passenden Ziel neben einer für das verwendete Cas9 geeigneten PAM-Stelle führt eine Leit-RNA Cas9 zur DNA; Cas9 kann beide Stränge schneiden. Die Leit-RNA schneidet nicht selbst.",
+            "essentialUnderstandingEn": "At a matching target next to a PAM suitable for the Cas9 used, a guide RNA directs Cas9 to DNA; Cas9 can cut both strands. The guide RNA does not cut by itself.",
+            "observablePerformanceDe": "Die lernende Person ordnet in einem neuen Schema Leit-RNA, Zielsequenz, PAM und Cas9 funktional zu und benennt den Schnitt als unmittelbaren Schritt.",
+            "observablePerformanceEn": "In a new diagram, the learner assigns functional roles to guide RNA, target sequence, PAM, and Cas9 and identifies cleavage as the immediate step."
+          },
+          {
+            "id": "application-and-repair-limit",
+            "essentialUnderstandingDe": "Ein Einsatz zur Untersuchung oder Veränderung eines Gens benötigt nach dem Schnitt zelluläre Reparatur und die Prüfung des tatsächlichen Ergebnisses; der Schnitt allein garantiert weder Ausschaltung noch präzise Korrektur.",
+            "essentialUnderstandingEn": "Using the method to study or change a gene requires cellular repair after cutting and verification of the actual outcome; a cut alone guarantees neither disruption nor precise correction.",
+            "observablePerformanceDe": "Die lernende Person beschreibt in einem neuen Anwendungsfall Zweck, gezielten Schnitt, möglichen Reparaturausgang und eine passende Ergebniskontrolle ohne Erfolgsgarantie.",
+            "observablePerformanceEn": "In a new application, the learner describes purpose, targeted cut, a possible repair outcome, and a fitting outcome check without promising success."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "target-and-cut",
+            "application-and-repair-limit"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "target-context",
+            "textDe": "Zielsequenz und benachbarte PAM-Vorgabe in neuen Schemata variieren.",
+            "textEn": "Vary target sequence and adjacent PAM requirement in new diagrams."
+          },
+          {
+            "id": "repair-outcome",
+            "textDe": "Ausschaltung durch kleine Änderung und angestrebte präzise Änderung mit Ergebniskontrolle vergleichen.",
+            "textEn": "Compare disruption by a small change with an intended precise change and outcome checking."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "research-knockout",
+            "taskDemandDe": "Ein Forschungsteam will die Funktion eines Gens in Pflanzenzellen prüfen. Ein neues Schema zeigt eine passende Leit-RNA und eine benachbarte PAM für das verwendete Cas9; nach dem Schnitt werden in einigen Zellen kleine Einfügungen oder Verluste gemessen. Erkläre Methode, Zweck und nötige Kontrolle.",
+            "taskDemandEn": "A research team wants to test a gene's function in plant cells. A new diagram shows a matching guide RNA and an adjacent PAM for the Cas9 used; after cutting, small insertions or deletions are measured in some cells. Explain the method, purpose, and needed check.",
+            "expectedPerformanceDe": "Die lernende Person erklärt RNA-geführtes Cas9-Schneiden, mögliche Genunterbrechung durch Reparatur und die Prüfung von Sequenz und beobachteter Funktion; sie behauptet nicht, alle Zellen seien verändert.",
+            "expectedPerformanceEn": "The learner explains RNA-guided Cas9 cleavage, possible gene disruption during repair, and checks of sequence and observed function, without claiming that every cell was changed.",
+            "understandingFocusDe": "Gezielter Schnitt und nachfolgende, zu prüfende Genfunktionsänderung sind getrennt.",
+            "understandingFocusEn": "Targeted cutting and the subsequent gene-function change to be verified are separate."
+          },
+          {
+            "id": "precise-change-limit",
+            "taskDemandDe": "In einem zweiten Zellversuch soll eine bestimmte Basenänderung korrigiert werden. Leit-RNA, geeignete PAM, Cas9 und eine Reparaturvorlage sind vorhanden; nach der Behandlung zeigt Sequenzierung nur bei einem Teil der Zellen die gewünschte Änderung. Beschreibe Einsatz und erkläre, warum die Skizze mit dem Schnitt den Erfolg nicht beweist.",
+            "taskDemandEn": "In a second cell experiment, a particular base change is intended to be corrected. Guide RNA, suitable PAM, Cas9, and a repair template are present; sequencing after treatment shows the intended change in only some cells. Describe the use and explain why the cutting diagram does not prove success.",
+            "expectedPerformanceDe": "Die lernende Person benennt Zielerkennung und Schnitt, erklärt die Abhängigkeit der präzisen Änderung von Reparatur und liest die Teil-Erfolgsquote aus dem Befund statt eine garantierte Korrektur zu behaupten.",
+            "expectedPerformanceEn": "The learner names target recognition and cleavage, explains that precise change depends on repair, and uses the partial outcome in the data rather than claiming guaranteed correction.",
+            "understandingFocusDe": "Übertragung auf eine andere Anwendung mit ausdrücklich begrenztem Reparaturergebnis.",
+            "understandingFocusEn": "Transfer to another application with an explicitly bounded repair outcome."
+          }
+        ]
+      }
+    }
+  ]
+}

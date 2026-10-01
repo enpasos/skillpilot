@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-chemistry-positive-evidence-b007s-5a-current-png-v2",
+  "reviewedAt": "2026-09-30T19:38:00Z",
+  "reviewer": "codex-gpt-6-chemistry-b007s-5a-p-v2",
+  "goals": [
+    {
+      "goalId": "5a709938-e0f5-42b7-94f0-cfded08963a2",
+      "reason": "Die drei inhaltlich unabhängig geprüften P-v1-Fälle bleiben unverändert: tatsächliche ungefährliche Sand-Wasser-Filtration unter Lehrkraftaufsicht und neue Daten-/Demonstrationsfälle für Destillation, Extraktion und Trennfolge. Die frühere positive Bildaussage war nach unabhängiger Sichtung falsch: das aktive Alt-JPG zeigte zwei widersprüchliche Thermometer-Messkugeln. Es wurde als historischer Befund archiviert. Aktuelles PNG SHA256 bd0c0ee87fa3929a90a9768d59e085536f594792bb2d19cfbd3467a4df0540d1 wurde in Original-, 680- und 360-px-Ansicht fachlich geprüft und unabhängig als Kandidat bestanden: kontinuierliche Dampf-/Kondensatstrecke, Kühlwasser rechts unten hinein und links oben heraus, klare Filtration und Tee-Extraktion. Neuer P-v2-Nachweis bindet Ziel, Seite, direkte HE-Herkunft und aktuelles Bild; KI-Kandidat mit needs_human_review, kein menschlicher Abschluss.",
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "b007-5a709938-core",
+            "essentialUnderstandingDe": "Filtration trennt einen unlöslichen Feststoff aufgrund von Teilchengröße und Phasenzustand von einer Flüssigkeit, aber keine gelösten Stoffe. Destillation nutzt geeignetes Siedeverhalten und Kondensation; Extraktion nutzt unterschiedliche Löslichkeit in einem gewählten Lösungsmittel. Die Wahl hängt vom Gemisch und dem gewünschten zurückgewonnenen Stoff ab.",
+            "essentialUnderstandingEn": "Filtration separates an insoluble solid from a liquid by particle size and phase, but does not remove dissolved substances. Distillation uses suitable boiling behavior and condensation; extraction uses differing solubility in a chosen solvent. The choice depends on the mixture and the material to be recovered.",
+            "observablePerformanceDe": "Die lernende Person führt an einer lehrkraftbetreuten ungefährlichen Sand-Wasser-Probe eine Filtration aus, dokumentiert Rückstand und Filtrat und wählt anhand neuer Stoffdaten für weitere Gemische begründet ein anderes Verfahren.",
+            "observablePerformanceEn": "The learner filters a harmless sand-water sample under teacher supervision, records residue and filtrate, and uses fresh material data to justify another method for other mixtures."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b007-5a709938-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "separating-property",
+            "textDe": "Teilchengröße/Unlöslichkeit, Siedeverhalten und Löslichkeit sind unterschiedliche Trennursachen.",
+            "textEn": "Particle size/insolubility, boiling behavior and solubility provide different separation mechanisms."
+          },
+          {
+            "id": "target-material",
+            "textDe": "Zu gewinnender Rückstand, Filtrat, Destillat und Extrakt wechseln.",
+            "textEn": "The desired residue, filtrate, distillate and extract vary."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "supervised-sand-water-filter",
+            "taskDemandDe": "Eine ungefährliche Sand-Wasser-Probe soll unter Lehrkraftaufsicht getrennt werden. Wähle und führe mit bereitgestelltem Filtertrichter/Papier die geeignete Trennung aus; protokolliere, was im Papier und im Auffanggefäß landet und warum.",
+            "taskDemandEn": "A harmless sand-water sample is to be separated under teacher supervision. Choose and use the supplied filter funnel and paper; record what remains on the paper and what reaches the receiver, and why.",
+            "expectedPerformanceDe": "Die lernende Person filtriert sicher, benennt Sand als Rückstand und Wasser als Filtrat und erklärt, dass die unlöslichen Sandkörner zurückgehalten werden. Sie nennt Filtration nicht als Verfahren für in Wasser gelöstes Salz.",
+            "expectedPerformanceEn": "The learner filters safely, names sand as the residue and water as the filtrate, and explains retention of insoluble sand grains. They do not claim filtration removes salt dissolved in water.",
+            "understandingFocusDe": "Tatsächliche sichere Trennung und begründete Filtergrenze.",
+            "understandingFocusEn": "Actual safe separation and a justified limit of filtration."
+          },
+          {
+            "id": "fresh-saltwater-tea-choice",
+            "taskDemandDe": "Zwei neue Datensätze liegen vor: (A) Salz ist vollständig in Wasser gelöst; eine Lehrkraftdemonstration liefert beim Erhitzen einen Kondensatstrom und einen salzhaltigen Rückstand. (B) Aus getrockneten Teeblättern gehen Farbstoffe in Wasser über, die Blätter bleiben zurück. Entscheide, welches Verfahren bei A Wasser zurückgewinnt und welches bei B Farbstoffe herauslöst; begründe jeweils mit der Stoffeigenschaft. Nur Daten-/Demonstrationsauswertung, keine eigene Erhitzung.",
+            "taskDemandEn": "Two fresh data sets are supplied: (A) salt is fully dissolved in water; a teacher demonstration yields condensate and a salty residue upon heating. (B) pigments move from dried tea leaves into water while leaves remain. Decide which method recovers water in A and which extracts pigments in B, justifying each by the relevant property. Interpret data/demonstrations only; do not heat anything yourself.",
+            "expectedPerformanceDe": "Die lernende Person wählt Destillation für A, deutet Wasserdampf/Kondensation als Destillat und Salz als Rückstand; einfache Filtration entfernt gelöstes Salz nicht. Für B benennt sie Wasser als Extraktionsmittel für lösliche Blattbestandteile und trennt die verbliebenen Blätter bei Bedarf danach mechanisch.",
+            "expectedPerformanceEn": "The learner selects distillation for A, interprets condensed vapor as the water distillate and salt as residue; simple filtration does not remove dissolved salt. For B, they identify water as the extraction solvent for soluble leaf components and may then mechanically remove the remaining leaves.",
+            "understandingFocusDe": "Eigenschaftsbasierte Wahl zwischen Destillation und Extraktion, getrennt vom bloßen Apparatenamen.",
+            "understandingFocusEn": "Property-based choice between distillation and extraction, beyond apparatus names."
+          },
+          {
+            "id": "fresh-salt-sand-water-sequence",
+            "taskDemandDe": "Ein neues Papierprotokoll enthält Sand, gelöstes Salz und Wasser. Gesucht sind getrenntes Sandmaterial, Salz und möglichst zurückgewonnenes Wasser. Plane die Reihenfolge der Trennschritte und erkläre, weshalb nur ein Filter nicht genügt. Keine reale Destillation.",
+            "taskDemandEn": "A fresh paper protocol contains sand, dissolved salt and water. The aim is to recover sand, salt and as much water as possible separately. Plan the order of separation steps and explain why a filter alone is insufficient. No actual distillation.",
+            "expectedPerformanceDe": "Die lernende Person plant zuerst Filtration für Sand, danach eine betreute Destillation der Salzlösung für Wasser als Destillat und Salz als Rückstand. Sie begründet jeden Schritt mit der jeweils genutzten Eigenschaft und vermischt Filtration nicht mit dem Entfernen gelöster Teilchen.",
+            "expectedPerformanceEn": "The learner first filters out sand, then proposes teacher-run distillation of the salt solution to collect water as distillate and salt as residue. They justify each step by the relevant property and do not confuse filtration with removing dissolved particles.",
+            "understandingFocusDe": "Neue Gemischkombination prüft das Übertragen und Kombinieren geeigneter Verfahren.",
+            "understandingFocusEn": "A new mixture tests transfer and combination of appropriate methods."
+          }
+        ]
+      }
+    }
+  ]
+}

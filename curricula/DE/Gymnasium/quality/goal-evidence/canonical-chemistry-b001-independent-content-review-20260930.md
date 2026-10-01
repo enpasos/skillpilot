@@ -1,0 +1,9 @@
+# Independent content check: chemistry B001
+
+Date: 2026-09-30. Scope: seven current Sek-I reactions and energy goals in batch B001. This is a separate machine-side content check, not a human approval.
+
+The dual description rounds and their recorded dissent were read against the current goal texts. Four goals received KEEP in both rounds. For 1bdaf7f2 (mass conservation in open/closed systems), 945d69d5 (activation barrier versus reaction energy), and 8576b82b (fire conditions), the B-round's proposed revision was retained as a documented finding; the current wording can remain because the required distinctions are made assessable by the positive-evidence profiles. The synthesis resolves the disagreement as keep_current rather than silently treating the B-round as approval.
+
+The v1 positive-evidence profile for 8576b82b was held: interpreting a supplied protocol did not show the goal's own experimental investigation. The v2 profile now requires the learner to choose an open-candle comparison, personally observe and document the result in a small supervised model, distinguish model limits from an exact oxygen threshold, then transfer the fire-condition reasoning to a paper-only grease-fire case. The teacher handles ignition, the glass bell, and every hazardous action. This meets the goal without suggesting an unsupervised fire activity. The other six profiles were checked for conceptual understanding, independent variation and honest status; no content hold remains for this seven-goal scope.
+
+The current v2 config is canonical-chemistry-positive-understanding-evidence-b001-sek1-reactions-energy-current-7-v2.config.json. Its targeted production check reports seven current AI candidates, seven needs_human_review, zero blocking issues. The v1 candidate is retained as history and is not registered. Asset and five-gate status remain independently controlled by the central report; this note does not grant human release approval.

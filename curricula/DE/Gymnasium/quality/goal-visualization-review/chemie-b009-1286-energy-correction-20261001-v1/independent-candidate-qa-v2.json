@@ -1,0 +1,56 @@
+{
+  "reviewKind": "independent-ai-image-candidate-review",
+  "reviewedAt": "2026-09-30T22:16:35Z",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "goalId": "1286f2fe-89b7-4454-8e11-85b6abd6e278",
+  "decision": "PASS_CANDIDATE_ONLY",
+  "supersedesCandidateReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b009-1286-energy-correction-20261001-v1/independent-candidate-qa.json",
+  "oldActivePath": "app/public/assets/goal-visualizations/chemie/1286f2fe-89b7-4454-8e11-85b6abd6e278/1286f2fe-89b7-4454-8e11-85b6abd6e278.jpg",
+  "oldActiveSha256": "sha256:665718cfa492661b83362f5c45f46f271d7ce33363d61cd16c7a137ac8489280",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b009-1286-energy-correction-20261001-v1/candidate-1286f2fe-v2.png",
+  "candidateSha256": "sha256:46f0e6695c797aeb57ea5892fd45e2584be8f988aa91068f2edf476f3639adc0",
+  "candidateDimensions": "1672x941 RGB PNG",
+  "candidateAspectRatio": "1.777:1, approximately 16:9",
+  "inspectedAtWidthsPx": [1672, 680, 360],
+  "previewFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b009-1286-energy-correction-20261001-v1/candidate-1286f2fe-v2-680px.png",
+      "sha256": "sha256:07e8eb0cdf2de80da554780c3f4c9cda77e4936c7d356ad57ec1104e12234675",
+      "dimensions": "680x383"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b009-1286-energy-correction-20261001-v1/candidate-1286f2fe-v2-360px.png",
+      "sha256": "sha256:e50d19463d7b8352652181d2edcf6f93d600f8bcb7f40e7d19c912ecaef1f248",
+      "dimensions": "360x203"
+    }
+  ],
+  "previewMethod": "ffmpeg proportional resize of the actual v2 PNG; all three raster images were visually inspected",
+  "findings": [
+    {
+      "severity": "pass",
+      "area": "resolved-prior-blockers",
+      "detail": "The right endothermic panel has neither outward orange heat/radiation marks nor the unexplained particle-transformation vignette. Its blue 'Energie hinein' arrow and higher product energy level now agree. The previous energy-direction contradiction and implied atom-count ambiguity are resolved in the actual pixels."
+    },
+    {
+      "severity": "pass",
+      "area": "chemistry-and-diagrams",
+      "detail": "The exothermic panel places Edukte above Produkte and shows energy leaving; the endothermic panel places Produkte above Edukte and shows energy entering. Both axes point upward for increasing energy, and the reaction-path arrows follow the correct net direction. The panels are explicitly schematic and make no numerical energy claim."
+    },
+    {
+      "severity": "pass",
+      "area": "text-style-and-form-factor",
+      "detail": "The German labels are correctly spelled and remain identifiable in the native 1672-pixel image and at actual 680- and 360-pixel widths. The main arrows and energy levels remain distinguishable on the narrow preview. The 16:9 PNG retains the friendly, warm comic style of the old active image rather than introducing a photorealistic or technical redesign."
+    },
+    {
+      "severity": "limitation",
+      "area": "scope-of-illustration",
+      "detail": "The flame and red thermometer illustrate one exothermic example; they should not be read as necessary signs of every exothermic reaction. The simplified start/end energy levels do not depict activation energy or supply an endothermic everyday example. Those broader points belong in the learning evidence and are not falsely claimed by this image."
+    }
+  ],
+  "canonicalGoalScope": "Die lernende Person kann exotherme und endotherme Reaktionen unterscheiden und typische Beispiele dem Energieumsatz fachlich zuordnen.",
+  "primaryCurriculumSource": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf",
+  "sourceScope": "Hessen G9 Chemie section 8.2, printed page 14, names energy diagrams for exothermic and endothermic reactions; the image's net energy directions were independently checked against that scope and the current canonical goal. Activation energy is in the wider source scope but is not asserted by this simplified illustration.",
+  "nextStep": "The corrected bitmap is suitable as an AI-reviewed candidate. Before counting a V gate, bind this exact PNG/hash to the active asset, canonical resource and current visualization QA, then run affected asset/QA and central five-gate checks. Keep human release approval separate.",
+  "scopeLimit": "This review only assessed the v2 candidate. It changed no active image, visualization approval, description resolution, P evidence, central M7 count or human release gate."
+}

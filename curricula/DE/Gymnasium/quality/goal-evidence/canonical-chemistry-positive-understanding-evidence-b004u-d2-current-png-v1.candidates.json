@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-chemistry-positive-evidence-b004u-d2-current-png-v1",
+  "reviewedAt": "2026-09-30T21:20:00Z",
+  "reviewer": "codex-gpt-6-chemistry-b004u-d2-p-candidate",
+  "goals": [
+    {
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "reason": "Gezielte aktuelle P-Prüfung zum überarbeiteten Indikatorziel und korrigierten aktiven PNG. Die amtliche HE-G9-Quelle 8.1.2 nennt geeignete Alltags- und Laborproben, natürliche und künstliche Indikatoren sowie die pH-Skala. Indikatorfarben werden mit der Skala des verwendeten Indikators verglichen und rechtfertigen grobe Bereiche, keine exakten Messwerte. Die Karte chem_basics_012 bleibt für pH < 7, = 7 und > 7 erforderlich und in GK/LK/Sek I sichtbar. Das korrigierte ChatGPT/Codex-PNG SHA256 cf6f69ccb31591750a925603b9930d57edb0f9f0112c6512b28ad674a561f7f8 zeigt genau diese Bereichskategorien statt der alten unbelegten Einzelwerte; tatsächliche 1672/680/360-Pixel-Prüfung und unabhängiger Bildbefund liegen vor. Beide Aufgaben fordern unabhängige Auswertung neuer vorgegebener Beobachtungsdaten samt indikatorabhängiger Referenz und Genauigkeitsgrenze, ohne Bildhilfe. KI-Kandidat needs_human_review; menschliche Freigabe ist offen.",
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "b004s-d2cc-indicator-range",
+            "essentialUnderstandingDe": "Geeignete Indikatoren ändern ihre Farbe abhängig vom pH-Bereich einer wässrigen Probe. Sauer, neutral und alkalisch entsprechen im schulischen Bezugsfall unter 7, 7 und über 7; die Farben müssen mit der Skala des tatsächlich verwendeten Indikators verglichen werden. Eine Farbe allein liefert in der Regel nur einen Bereich und keinen exakten pH-Wert. Geeignete Proben, gleiche Tropfenzahl und ein Vergleich mit einer bekannten Referenz stützen eine sichere Deutung.",
+            "essentialUnderstandingEn": "Suitable indicators change colour according to the pH range of an aqueous sample. In the school reference case, acidic, neutral and alkaline correspond to below 7, 7 and above 7; colours must be compared with the scale for the particular indicator used. A colour alone normally gives a range, not an exact pH value. Suitable samples, the same drop count and comparison with a known reference support a safe interpretation.",
+            "observablePerformanceDe": "Die lernende Person wertet neue, sicher bereitgestellte Indikatorbeobachtungen mit passender Referenzskala aus, klassifiziert die Proben und begründet die pH-Bereichsangabe samt Grenze der Genauigkeit. Sie trennt Beobachtung, Vergleich und Schlussfolgerung.",
+            "observablePerformanceEn": "The learner evaluates fresh, safely supplied indicator observations against the matching reference scale, classifies the samples and justifies the pH-range claim and its precision limit. They distinguish observation, comparison and inference."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b004s-d2cc-indicator-range"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "indicator-reference",
+            "textDe": "Universalindikator mit abgestufter Referenz wird durch einen anderen Indikator mit eigener Farbkarte ersetzt; Farben dürfen nicht unverändert übertragen werden.",
+            "textEn": "A graded universal-indicator reference is replaced by a different indicator with its own colour chart; colours cannot simply be transferred."
+          },
+          {
+            "id": "sample-and-control",
+            "textDe": "Geeignete Schulproben und eine bekannte neutrale Referenz wechseln; gleiche Indikatormenge und sichere bereitgestellte Daten bleiben als Vergleichsbedingungen erhalten.",
+            "textEn": "Suitable school samples and a known neutral reference vary; equal indicator amount and safely supplied data remain comparison conditions."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "universal-indicator-three-unknowns",
+            "taskDemandDe": "Eine Lehrkraft liefert Beobachtungsdaten für drei geeignete wässrige Schulproben A, B und C bei gleicher Menge Universalindikator sowie eine Referenzkarte: A orange (Bereich pH 3–5), B grün (um pH 7), C blau (Bereich pH 9–11). Ordne sauer, neutral, alkalisch zu, nenne die belegten Bereiche und erkläre, weshalb 'A hat genau pH 4' aus diesen Daten nicht folgt. Keine unbekannte Probe selbst prüfen oder kosten.",
+            "taskDemandEn": "A teacher supplies observations for three suitable aqueous school samples A, B and C using the same amount of universal indicator, with a reference card: A orange (pH range 3–5), B green (around pH 7), C blue (pH range 9–11). Classify them as acidic, neutral or alkaline, state the supported ranges and explain why 'A has exactly pH 4' does not follow. Do not test or taste an unknown sample yourself.",
+            "expectedPerformanceDe": "A ist sauer und nur grob pH 3–5, B neutral im schulischen Referenzfall, C alkalisch und grob pH 9–11. Die gleiche Indikatormenge macht die vorgegebenen Farben vergleichbar; eine Farbe innerhalb eines Bereichs misst keinen exakten Wert.",
+            "expectedPerformanceEn": "A is acidic and only approximately pH 3–5, B is neutral in the school reference case, and C is alkaline and approximately pH 9–11. The equal indicator amount makes the supplied colours comparable; a colour within a range does not measure an exact value.",
+            "understandingFocusDe": "Sichere Auswertung von Beobachtung und Referenz mit begrenzter Genauigkeit, unabhängig vom vorhandenen Bild.",
+            "understandingFocusEn": "Safe interpretation of observation and reference with limited precision, independent of the existing image."
+          },
+          {
+            "id": "fresh-red-cabbage-reference",
+            "taskDemandDe": "Ein zweiter, anderer Indikator aus Rotkohlsaft hat laut neuer, bereitgestellter Vergleichskarte für die Schulproben die Farben rot (sauer), violett (neutral) und grün (alkalisch). Eine bekannte pH-neutrale Referenzlösung und zwei neue geeignete Proben werden mit gleicher Menge dieses Indikators untersucht; die übermittelten Farben sind violett, rot und grün. Ordne die Proben zu und erkläre, warum die alte Universalindikator-Farbkarte und exakte pH-Zahlen hier nicht übernommen werden dürfen.",
+            "taskDemandEn": "A second, different red-cabbage indicator has a newly supplied comparison chart for the school samples: red (acidic), purple (neutral) and green (alkaline). A known pH-neutral reference solution and two fresh suitable samples are tested with equal amounts of this indicator; the supplied colours are purple, red and green. Classify them and explain why the earlier universal-indicator colour chart and exact pH numbers cannot be reused here.",
+            "expectedPerformanceDe": "Die violette Referenz wird neutral eingeordnet, die rote neue Probe sauer und die grüne alkalisch. Die Farbzuordnung ist indikatorabhängig und belegt ohne passende Kalibrierung nur die Bereiche; die Person behauptet keine exakten pH-Werte und keine sichere Eigenprüfung unbekannter Chemikalien.",
+            "expectedPerformanceEn": "The purple reference is neutral, the new red sample acidic and the green sample alkaline. Colour interpretation depends on the indicator and supports only ranges without suitable calibration; the learner claims neither exact pH values nor safe independent testing of unknown chemicals.",
+            "understandingFocusDe": "Transfer auf einen anderen Indikator mit eigenem Vergleich und kontrollierter Beobachtung.",
+            "understandingFocusEn": "Transfer to a different indicator with its own reference and controlled observation."
+          }
+        ]
+      }
+    }
+  ]
+}

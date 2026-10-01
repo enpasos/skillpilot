@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "independent-positive-understanding-evidence-body-source-and-image-binding-review",
+  "reviewedAt": "2026-09-30T18:46:27Z",
+  "reviewer": "Codex independent chemistry P counterreview",
+  "authority": "ai_candidate",
+  "config": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004-sek1-foundations-current-7-v3.config.json",
+  "method": "Read all seven full bilingual P-v2 bodies and current canonical goals; checked direct BY/HE/BW source contexts, all seven current image hashes against the active chemistry AI visualization-QA ledger, and actual original images for 42a84bca, 13d4f336 and 78109f6d. Opened and identified the cited DGUV PDF itself and compared relevant official DGUV school/first-aid publications. Content/source HOLDs are independent of the technical checker.",
+  "targetedCheck": {
+    "command": "npm --prefix app run -s quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004-sek1-foundations-current-7-v3.config.json",
+    "result": "Technical PASS: configured 7, blocking issues 0, needs human review 7, approved 0."
+  },
+  "decisions": [
+    {
+      "goalId": "42a84bca-d27e-581f-a43a-eee424f0504d",
+      "verdict": "HOLD",
+      "profileFingerprint": "sha256:0a8eb31533e8e90cd2eaaa5c00a97604ab69c6559fe37ebddced40eacd669854",
+      "imageSha256": "395a6ff0bd5142b2e7ac7cc505b616843ccfa14f69702bde96019aa3b2737c0f",
+      "finding": "The O2/H2O/Cl2 and H2O+CO2 examples are individually classified correctly and fit the direct BY C8.3.3 element/compound/mixture clause. The essential understanding, however, universally defines a pure substance as one particle species and a compound as chemically bound atom species. A pure ionic compound such as NaCl has Na+ and Cl− ion species in one lattice; its purity is one substance/fixed composition, not literally one molecular or ionic particle type. The molecular-example image uses the same simplified caption, so the corrected P must identify its model scope rather than repeating it as a universal law. The image itself was not changed or newly V-approved by this P review.",
+      "requiredResolution": "Qualify one-particle-species language as applying to the depicted atomic/molecular examples, give a chemically general pure-substance definition, and keep ionic compounds in scope without inventing discrete salt molecules. Recheck the affected P body and page-image context."
+    },
+    {
+      "goalId": "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+      "verdict": "PASS",
+      "profileFingerprint": "sha256:0eaade3efed643061fc0ea3ade9a879471b75db256d1aa347f7ce664384b35f0",
+      "imageSha256": "4cb18ebdc797a7589dee07b26ca51bcb647cb38b70def24474e385f347e2c538",
+      "finding": "The supplied-card acid-splash and fresh volatile-vapor cases distinguish substance hazard from route/amount/procedure-dependent exposure risk. Eye protection, small quantities, teacher control and ventilation/closure address the specified routes. Neither case asks a learner to handle a hazardous substance. This concretizes the canonical risk-minimization goal and HE 8.1 hazard labeling/protection context without claiming that a symbol itself grants permission."
+    },
+    {
+      "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+      "verdict": "HOLD",
+      "profileFingerprint": "sha256:e598d69823c5983794d54da0fc6196c66f89f177a2585cd99eea8d86e0e356e0",
+      "imageSha256": "f8dba4be52feceafcd6c283ed8481c7bde5a69b96b2b2c97393a16564a746f55",
+      "bodyFinding": "The supervised water-only preparation case tests actual safe action, not memorized rules. The separate paper splash case addresses immediate stop/teacher alert, possible skin and clothing contamination, prompt skin rinsing, contaminated-clothing removal with help, local first-aid response and no improvised neutralization. This is broadly compatible with school chemical first-aid guidance; the active generic safety image does not itself depict first aid and is not used as proof of mastery.",
+      "blockingSourceFinding": "The v3 candidate reason cites DGUV article/1358 as information for skin contact and contaminated clothing. The actual PDF is DGUV Regel 101-019, 'Umgang mit Reinigungs- und Pflegemitteln', issued for building-cleaning work, not school chemistry. That link does not substantiate the claimed school-lab context. School-specific DGUV Regel 113-018 section III-2.1 explicitly treats classroom chemical accidents, contaminated clothing and prompt water rinsing; DGUV Information 204-022 p.82 separately supports clothing removal and thorough water rinsing for toxic/corrosive skin exposure. The source claim must be corrected substantively, not just given a new hash.",
+      "verifiedPrimarySources": [
+        "https://publikationen.dguv.de/widgets/pdf/download/article/1358",
+        "https://publikationen.dguv.de/widgets/pdf/download/article/28",
+        "https://publikationen.dguv.de/widgets/pdf/download/article/759"
+      ],
+      "requiredResolution": "Replace the cleaning-products citation with an accurately identified school chemical first-aid source and keep the response wording within what that source supports; rematerialize/recheck the affected current P record."
+    },
+    {
+      "goalId": "988888bb-1f88-55f9-9a44-f3f60469a297",
+      "verdict": "PASS",
+      "profileFingerprint": "sha256:9699c7f165dbe06a79f25d566dd541c9c8700bb5bb1a258fad890ac8267fb21d",
+      "imageSha256": "23f86170d90cdbd36e558c13b780c2492bf55cbb08e68f3344c4d56a02f14ca3",
+      "finding": "Water phase-change diagrams conserve H2O molecules rather than enlarging or decomposing them. The fresh I2 sublimation error case conserves I2, changes spacing/motion and correctly identifies energy uptake. This stays within the split BW 3.2.1.2 (3) state-change clause; no chemical reaction is asserted."
+    },
+    {
+      "goalId": "5338b54c-68bc-5892-907c-e025351ffde6",
+      "verdict": "PASS",
+      "profileFingerprint": "sha256:ff622eab970930ccf257a05cbf7aeb17057925727ed3945b49d7d414324fed3c",
+      "imageSha256": "4958160414480714f31937dc52a046b4fd5fb880c84293bfb46f0f02de63ed0f",
+      "finding": "The two cases deliberately distinguish dissolved sugar molecules from separated Na+/Cl− ions in salt solution, conserve solute components and explain why clear solution passes ordinary paper filtration. No hands-on salt experiment is required. This fits the split BW solution-process modeling clause."
+    },
+    {
+      "goalId": "5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf",
+      "verdict": "PASS",
+      "profileFingerprint": "sha256:416cc1e6057e1075746f598b932d26270a5268309c31f681a972f0a8ce62e512",
+      "imageSha256": "b5122aa90115e0bae0422cba2c6f3e79e5cda86978d8b5e604ccb03219bcda55",
+      "finding": "The still-water bead track and spreading dye distinguish Brownian motion of one suspended particle from net diffusion of many molecules. Fresh scent/fan data add a directed-flow control and avoid calling bulk airflow pure diffusion. This matches the split BW 3.2.1.2 (3) diffusion/Brownian clause."
+    },
+    {
+      "goalId": "78109f6d-c415-52c4-8314-07c0dd888a80",
+      "verdict": "PASS",
+      "profileFingerprint": "sha256:34954c6e77e83f128bb80d93586c112f7ccaa83dfb03138ccd0303cdb951bc9e",
+      "imageSha256": "8e0234a33e49af64a52ff586ff3073735d6e08862ca7c4d03568b3328de1e1a3",
+      "finding": "The salt-solution case separates observed clarity from an inferred ion model. The independent closed-bag vinegar/baking-soda data show gas formation with unchanged total mass and require correcting a particle sketch without disappearing C/O atoms; no full equation or hands-on experiment is demanded. The active sugar image illustrates the level distinction but is not treated as learner evidence."
+    }
+  ],
+  "summary": {
+    "contentAndSourcePass": 5,
+    "contentOrSourceHold": 2,
+    "technicalPass": 7,
+    "currentAiVisualizationQaBindings": 7,
+    "newStrictM7ClosureClaimed": 0,
+    "humanApprovalsClaimed": 0
+  }
+}

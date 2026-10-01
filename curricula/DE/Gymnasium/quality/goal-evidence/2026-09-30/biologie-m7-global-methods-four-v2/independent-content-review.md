@@ -1,0 +1,7 @@
+# Independent content check: biology GLOBAL methods four
+
+Date: 2026-09-30. Scope: the four current GLOBAL methods goals. This is machine-side content review only; all profile statuses remain ai_candidate / needs_human_review.
+
+I read the complete positive-understanding-evidence-v2 profiles against the current German goal descriptions and their two application cases each. For d97f6957, both planning cases now request primarily qualitative answers, a falsifiable expectation and relevant comparison conditions, matching the corrected B8.1.1 scope. For 26aa47b7, both cases require the learner to perform the observation and record actual steps; the allowed help is tied to the protocol, and the current revised image shows the notebook sketches upright to the learner. For 0f1549f6, the cases together cover given and learner-chosen observable criteria, outdoor living phenomena, structured documentation with aid, and an inference limited to the observations. For 0380f992, two distinct analog/digital key uses retain a justified, provisional identification when traits are missing.
+
+The former v1 profiles remain unregistered history after the goal-text and 26-image changes. The v2 records are substantive rechecks of the affected goal, page and visual context, plus an unchanged-profile binding carryover for 0380f992; they do not claim human approval. A targeted production check is required before central registration.

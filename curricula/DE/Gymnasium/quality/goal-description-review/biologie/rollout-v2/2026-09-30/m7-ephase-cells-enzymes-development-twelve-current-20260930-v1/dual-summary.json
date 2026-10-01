@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:9489b0f0f02b59e7b05308f577f0b516a084e90ec5fa25ab75b0bbe6bd5971e9",
+  "reviewInputFingerprint": "sha256:d2085bcbeec0841aa5497b3c1ddfcb7913c54bd241bc7bbf071cc40f25a812ad",
+  "goalCount": 12,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-a",
+      "roundId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a",
+      "independenceGroupId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-independent-a",
+      "runIds": [
+        "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex session (exact deployment identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-b",
+      "roundId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-b",
+      "independenceGroupId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-independent-b",
+      "runIds": [
+        "bio-e12-20260930-v2-first-pass-b-codex-20261001-01"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 12,
+    "unavailable": 0,
+    "requiresSynthesis": 12
+  },
+  "goals": [
+    {
+      "goalId": "11e90f71-a9a4-5a57-b619-ad5d81e81f96",
+      "firstRecordId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a.11e90f71-a9a4-5a57-b619-ad5d81e81f96",
+      "secondRecordId": "bio-e12-v2-b-01-20261001",
+      "firstRunId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a",
+      "secondRunId": "bio-e12-20260930-v2-first-pass-b-codex-20261001-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f",
+      "firstRecordId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a.7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f",
+      "secondRecordId": "bio-e12-v2-b-02-20261001",
+      "firstRunId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a",
+      "secondRunId": "bio-e12-20260930-v2-first-pass-b-codex-20261001-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fc8c4b02-02f2-5ad6-b481-224d36121da1",
+      "firstRecordId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a.fc8c4b02-02f2-5ad6-b481-224d36121da1",
+      "secondRecordId": "bio-e12-v2-b-03-20261001",
+      "firstRunId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a",
+      "secondRunId": "bio-e12-20260930-v2-first-pass-b-codex-20261001-01",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5c2ce7b1-30ba-5e9c-99de-1ffac126ec13",
+      "firstRecordId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a.5c2ce7b1-30ba-5e9c-99de-1ffac126ec13",
+      "secondRecordId": "bio-e12-v2-b-04-20261001",
+      "firstRunId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a",
+      "secondRunId": "bio-e12-20260930-v2-first-pass-b-codex-20261001-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "28850d2e-062d-5341-ac66-bd787a8fc84f",
+      "firstRecordId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a.28850d2e-062d-5341-ac66-bd787a8fc84f",
+      "secondRecordId": "bio-e12-v2-b-05-20261001",
+      "firstRunId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a",
+      "secondRunId": "bio-e12-20260930-v2-first-pass-b-codex-20261001-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0dbe758c-73c8-530b-bbbd-fb55540f942f",
+      "firstRecordId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a.0dbe758c-73c8-530b-bbbd-fb55540f942f",
+      "secondRecordId": "bio-e12-v2-b-06-20261001",
+      "firstRunId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a",
+      "secondRunId": "bio-e12-20260930-v2-first-pass-b-codex-20261001-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f539fe51-1f6f-5e04-abfe-af3d2e4d2aad",
+      "firstRecordId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a.f539fe51-1f6f-5e04-abfe-af3d2e4d2aad",
+      "secondRecordId": "bio-e12-v2-b-07-20261001",
+      "firstRunId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a",
+      "secondRunId": "bio-e12-20260930-v2-first-pass-b-codex-20261001-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "01819a6c-f965-5b33-8c4e-07affb3c659f",
+      "firstRecordId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a.01819a6c-f965-5b33-8c4e-07affb3c659f",
+      "secondRecordId": "bio-e12-v2-b-08-20261001",
+      "firstRunId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a",
+      "secondRunId": "bio-e12-20260930-v2-first-pass-b-codex-20261001-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ec88fc1d-ee0f-5a01-9464-dc358241050e",
+      "firstRecordId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a.ec88fc1d-ee0f-5a01-9464-dc358241050e",
+      "secondRecordId": "bio-e12-v2-b-09-20261001",
+      "firstRunId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a",
+      "secondRunId": "bio-e12-20260930-v2-first-pass-b-codex-20261001-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+      "firstRecordId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a.0dd8380d-b542-5126-8d8e-f95d9ccded90",
+      "secondRecordId": "bio-e12-v2-b-10-20261001",
+      "firstRunId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a",
+      "secondRunId": "bio-e12-20260930-v2-first-pass-b-codex-20261001-01",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2517be3f-e42f-5e41-889d-70f00dc24686",
+      "firstRecordId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a.2517be3f-e42f-5e41-889d-70f00dc24686",
+      "secondRecordId": "bio-e12-v2-b-11-20261001",
+      "firstRunId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a",
+      "secondRunId": "bio-e12-20260930-v2-first-pass-b-codex-20261001-01",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9344c5ce-a07a-5d02-8c56-35320f19a934",
+      "firstRecordId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a.9344c5ce-a07a-5d02-8c56-35320f19a934",
+      "secondRecordId": "bio-e12-v2-b-12-20261001",
+      "firstRunId": "biologie-m7-ephase-cells-enzymes-development-twelve-current-20260930-v2-first-pass-a-codex-independent-a",
+      "secondRunId": "bio-e12-20260930-v2-first-pass-b-codex-20261001-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

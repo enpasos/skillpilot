@@ -205,6 +205,21 @@ assert.deepEqual(
   [],
   'A current REVISE review can be explicitly deferred without converting the proposal into a KEEP decision.',
 )
+const splitExpected = structuredClone(partialExpected)
+splitExpected.goals[1].secondSource.decision = 'split_review'
+splitExpected.goals[1].secondSource.record!.decision = 'split_review'
+const splitPayload = structuredClone(partialPayload)
+splitPayload.deferredGoals![0].secondDecision = 'split_review'
+splitPayload.deferredGoals![0].rationaleDe = 'Die aktuelle Split-Prüfung bleibt offen und wird nicht als Abschluss gezählt.'
+splitPayload.deferredGoals![0].rationaleEn = 'The current split review remains open and is not counted as completion.'
+assert.deepEqual(
+  (await validateGoalDescriptionRolloutSynthesisDecisionManifest({
+    manifest: withFingerprint(splitPayload),
+    expected: splitExpected,
+  })).errors,
+  [],
+  'A current SPLIT_REVIEW can be explicitly deferred without granting strict description completion.',
+)
 const noOpenDecisionExpected = structuredClone(revisionExpected)
 noOpenDecisionExpected.goals[1].secondSource.decision = 'keep'
 noOpenDecisionExpected.goals[1].secondSource.record!.decision = 'keep'
@@ -215,7 +230,7 @@ assert.match(
     manifest: withFingerprint(noOpenDecisionPayload),
     expected: noOpenDecisionExpected,
   })).errors.join('\n'),
-  /partial synthesis may defer only a goal with a current block or unresolved revise review/u,
+  /partial synthesis may defer only a goal with a current block, unresolved revise review, or split review/u,
   'Two current KEEP decisions cannot be hidden as a deferred goal.',
 )
 const forgedDeferral = structuredClone(partialPayload)

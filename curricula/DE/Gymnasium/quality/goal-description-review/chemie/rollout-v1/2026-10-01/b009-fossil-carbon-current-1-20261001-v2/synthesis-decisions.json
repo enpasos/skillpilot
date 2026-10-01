@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-b009-fossil-carbon-current-20261001-v2-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex GPT-6 bounded synthesis of two independent current-goal description reviews A and B; AI candidate only, human approval separate",
+  "synthesizedAt": "2026-09-30T23:56:03.000Z",
+  "batch": {
+    "batchId": "chemie-b009-fossil-carbon-current-1-20261001-v2",
+    "batchManifestDigest": "sha256:0f2a2b17228fb2015dd574101baed5b7f78bf041295114f41d56639905fad687",
+    "configDigest": "sha256:714b7db247f8921e5f2ed580791a0d4cbf933fee74a00b6b591260392b72ae80",
+    "bundleFingerprint": "sha256:51a3f6c3c76a321e4c10e795d537e0d8b11646aca184ad09f3d4070cf556fd35",
+    "bookDigest": "sha256:545bfede71c34a4eb11fa87de88b8225a65ea615aec4f07c5899987bcba34794",
+    "reviewInputFingerprint": "sha256:5a9f6c4c413418a86c67ba363d0712b70c32922fdef966fab7451aaa2be147b4",
+    "dualSummaryDigest": "sha256:2006c18c495aec1fdc2297f7284602c000716957c4b3776539e31ba83916cee5",
+    "canonicalLandscapeDigest": "sha256:a853f5b4617fe8f0c51a75504ea20fa9ff038c99bbba2ada7f8a53a3e3993732"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-b009-fossil-carbon-current-1-20261001-v2-a",
+      "campaignDigest": "sha256:2f614dfd3614a3b99da59e992f5ffecb103b1f24fe1298663d1d712d23b174f5",
+      "roundId": "chemie-b009-fossil-carbon-current-1-20261001-v2-first-pass-a",
+      "independenceGroupId": "chemie-b009-fossil-carbon-current-1-20261001-v2-independent-a",
+      "reviewInputFingerprint": "sha256:5a9f6c4c413418a86c67ba363d0712b70c32922fdef966fab7451aaa2be147b4",
+      "batchId": "chemie-b009-fossil-carbon-current-1-20261001-v2-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:bb68ecdfc74b27fbc43df8cc0ecbcad8062cd9c79120e18ac942dc0eaa9f10ee",
+      "runId": "chemie-b009-fossil-carbon-current-1-20261001-v2-a-codex-gpt6",
+      "runManifestDigest": "sha256:cc46c9b2b891e6d5045d8f59569f6c0ca23a0dc115d50391a63314ab78cda3c6",
+      "resultsDigest": "sha256:58930de12ba4079458873cf72607a8a587e5383d3a3a8db05f29481b309be24f"
+    },
+    "second": {
+      "campaignId": "chemie-b009-fossil-carbon-current-1-20261001-v2-b",
+      "campaignDigest": "sha256:427e1f025b0908c1d991f700046394d3e6fa902970f2bda476d25aa7fa584021",
+      "roundId": "chemie-b009-fossil-carbon-current-1-20261001-v2-first-pass-b",
+      "independenceGroupId": "chemie-b009-fossil-carbon-current-1-20261001-v2-independent-b",
+      "reviewInputFingerprint": "sha256:5a9f6c4c413418a86c67ba363d0712b70c32922fdef966fab7451aaa2be147b4",
+      "batchId": "chemie-b009-fossil-carbon-current-1-20261001-v2-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:6dede6a80e2069b3303339c372e6640a94194eaa22a2430141f9cad5f091c418",
+      "runId": "chemie-b009-fossil-carbon-current-1-20261001-v2-first-pass-b.batch-001.run-001",
+      "runManifestDigest": "sha256:2d7646b692443dc68372d4de2e31787d1181d5a22a24f645da5436558d47c29a",
+      "resultsDigest": "sha256:0123454e52bc547a2583ea2d68154f11e19d58be0c01077458b1447715feac85"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-b009-fossil-carbon-current-20261001-v2-synthesis-decision-001",
+      "goalId": "0503c975-3934-5206-962e-b1c247de0c12",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d3b1ac261a49ceb7637dbbcfb00ecacc3f62e602144f56d51335232a72cf385c",
+      "pageFingerprint": "sha256:c612cb0b875e8ec46a9502767dd1947eeb908150540f27f0d24784104f0f0202",
+      "goalReviewContextFingerprint": "sha256:96b7affd464a44c41806c0307124e0f5e4c2d9f9384ee445c3c31ef5c92976aa",
+      "finalText": {
+        "titleDe": "Fossilen CO2-Anstieg mit dem Kohlenstoffkreislauf begründen",
+        "titleEn": "Explain fossil CO2 increase with the carbon cycle",
+        "descriptionDe": "Die lernende Person kann anhand eines einfachen Kohlenstoffatomkreislaufs erklären, wie die Verbrennung fossiler Brennstoffe Kohlenstoff aus einem langfristigen Speicher als CO₂ in die Atmosphäre überführt und warum deren CO₂-Gehalt steigt, wenn der gesamte Zufluss die gesamte Aufnahme übersteigt.",
+        "descriptionEn": "Using a simple carbon atom cycle, the learner can explain how burning fossil fuels transfers carbon from long-term storage into the atmosphere as CO₂ and why atmospheric CO₂ rises when total input exceeds total uptake."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b009-fossil-carbon-current-1-20261001-v2-a-codex-gpt6-0503c975-3934-5206-962e-b1c247de0c12",
+          "recordDigest": "sha256:b69e4d28525517e1776e7ab29543d258b826dc9b7df03a623b93dbcb836f437b"
+        },
+        "second": {
+          "recordId": "chemie-b009-fossil-carbon-current-1-20261001-v2-first-pass-b.0503c975-3934-5206-962e-b1c247de0c12",
+          "recordDigest": "sha256:7e32bbd6eba00a6d613e87cd7a30474b476e40189872ffd87d408745d262d222"
+        }
+      },
+      "rationaleDe": "Die beiden unabhängigen aktuellen Beschreibungsreviews A und B bestätigen den präzisierten DE/EN-Zieltext. Er verfolgt Kohlenstoff aus langfristigem fossilem Speicher über die Verbrennung in atmosphärisches CO₂ und erklärt eine Bestandszunahme ausdrücklich nur bei größerem gesamten Zufluss als gesamter Aufnahme. Damit ist der zuvor beanstandete biologische Rückfluss nicht ausgeblendet. Der amtliche bayerische Chemie-8-Lehrplan enthält die Begründung des CO₂-Anstiegs am Kohlenstoffatomkreislauf; die gezielte Quellen-, Seiten- und Kontextprüfung ist separat dokumentiert. Das neue 4:3-PNG wurde tatsächlich bei 360 Pixel, 680 Pixel und begrenzter Desktopgröße geprüft und ersetzt ein Bild mit belegtem Schreibfehler. Das unabhängig geprüfte positive-understanding-evidence-v2-Profil bleibt needs_human_review und verlangt zwei neue, vom Bild unabhängige Flussbilanzfälle. Weder menschliche Freigabe noch beobachtete Lernleistung wird behauptet.",
+      "rationaleEn": "Two independent current description reviews A and B support the revised German and English goal. It traces carbon from long-term fossil storage through burning to atmospheric CO₂ and conditions a stock increase on total inflow exceeding total uptake, including biological return. Bavaria's official Chemistry 8 curriculum includes explaining the atmospheric CO₂ increase through the carbon atom cycle; a targeted source, page and context audit is documented separately. The new 4:3 PNG was actually inspected at 360 and 680 pixels and the capped desktop size and replaces an image with a documented spelling error. The independently checked positive-understanding-evidence-v2 profile remains needs_human_review and requires two fresh flow-balance cases independent of the image. No human approval or observed learner performance is claimed."
+    }
+  ],
+  "manifestFingerprint": "sha256:b2ee98144d92872f42a370da3f84d285aecd78e5a31f83520ec036467c33a6dc"
+}

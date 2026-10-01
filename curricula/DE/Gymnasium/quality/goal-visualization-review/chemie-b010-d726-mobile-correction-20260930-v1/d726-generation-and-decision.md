@@ -1,0 +1,11 @@
+# Kalkkreislauf: mobile Bildkorrektur als Kandidat
+
+- Ziel: `d726e00e-1f87-5ba5-8c79-76ad4022365e`, „Kalkkreislauf chemisch beschreiben“.
+- Anlass: Die unabhängige Prüfung des aktiven 2752 × 1536 JPG ergab, dass besonders die lange Abbinden-Gleichung bei 360 Pixel Bildbreite zu klein ist. Das alte Bild bleibt bis zu einer geprüften Integration aktiv.
+- Herkunft: ChatGPT/Codex-Bildgenerierung, Bearbeitung des tatsächlich angesehenen bestehenden JPG. Erster Kandidat: `d726-first-candidate.png`; zweiter gezielter Pfeilkorrektur-Kandidat: `d726-second-candidate.png`, SHA-256 `51341eaf35f02e3bf70b9a65d9187895189c9d98daba97413c97b9eed992f6eb`.
+- Formatentscheidung: 1672 × 941 PNG, praktisch 16:9. Drei breite Zeilen stellen Brennen, Löschen und Abbinden mit den fachlich notwendigen Gleichungen dar. Die tatsächlichen Vorschauen `d726-second-360-preview.png` und `d726-second-680-preview.png` dienen der Sichtprüfung; sie sind keine auszuliefernden Assets.
+- Fachliche Soll-Aussagen: `CaCO₃ → CaO + CO₂`; `CaO + H₂O → Ca(OH)₂`; `Ca(OH)₂ + CO₂ → CaCO₃ + H₂O`. Pfeile: Brennen → Löschen → Abbinden → Brennen.
+- Eigene Sichtprüfung des zweiten Kandidaten: Die Formeln sind bei 360 Pixel Breite wesentlich größer als im alten JPG; die drei Gleichungen und Indizes erscheinen korrekt. Die unabhängige [fachliche und visuelle Prüfung](independent-second-candidate-review.json) bestätigt dies für 360 und 680 Pixel sowie die richtige Pfeilrichtung.
+- Integration: Der zweite Kandidat ist als aktives PNG in Canonical, Web und Backend bytegleich eingebunden. Der V-Record ist an genau den neuen Hash gebunden (`aiApproved=yes`, `humanApproved=no`). Das alte JPG und sein Prompt/QA-Record liegen unverändert unter `historical-active-before-correction/`. D- und P-Nachweise für dieses Ziel benötigen nach der Bildänderung noch eine gezielte aktuelle Neubindung; diese Bildintegration allein zählt daher **nicht** als strenger M7-Abschluss.
+
+Generierungsanweisung des ersten Kandidaten: bestehende freundliche Comic-Illustration als Referenz; drei horizontale, großzügige Stufen mit je einem Piktogramm und einer großen Gleichung; exakte chemische Schreibweise; keine weitere fachliche Kleinschrift. Zweite Anweisung: nur die äußeren Kreislaufpfeile korrigieren, links zweimal abwärts und rechts ein Rückpfeil vom unteren zum oberen Feld, alle Formeln und Motive erhalten.

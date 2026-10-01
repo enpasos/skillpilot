@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Daten, Hypothesen und Fehlerquellen deuten
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `2eaabe90-46bf-555e-876b-d853434a322d`
+- Titel: Daten, Hypothesen und Fehlerquellen deuten
+- Beschreibung: Die lernende Person kann erhobene oder recherchierte Daten unter Einbezug möglicher Fehlerquellen interpretieren und zur Eingangshypothese in Beziehung setzen.
+
+## Generator
+
+- Provider: OpenAI image_gen (Codex built-in)
+- Status: pilot
+- Quellbild: `2eaabe90-46bf-555e-876b-d853434a322d.png`
+- Public Asset: `/assets/goal-visualizations/biologie/2eaabe90-46bf-555e-876b-d853434a322d/2eaabe90-46bf-555e-876b-d853434a322d.png`
+
+## Prompt
+
+```text
+Edit this existing friendly 16:9 comic educational illustration for a biology learning goal about forming a testable hypothesis from observations and recognizing uncertainty. Preserve the same warm hand-drawn character, two seedling trays, water/drop versus dry-soil comparison, large question mark, palette and wide composition. Correct ONE concrete perspective error in the private open notebook on the table: the girl sits BEHIND the notebook (far side of the image), so every plant icon, water/drop symbol, dry-soil symbol and sketch she has drawn on its pages must be UPRIGHT TO HER from her seated viewpoint. To the outside viewer at the near edge of the table those notebook marks should look upside down, with the seedlings' roots/bases toward the girl and leaf tips toward the near edge. Keep any notebook symbols qualitative and sparse, not a claimed exact data count. The girl can compare the two trays and consider a possible explanation; no causal conclusion or numeric result is asserted. The scene must remain readable when reduced to 360px width; foreground notebook and trays should be large. No written words, numbers or tiny necessary text, no photorealism or sterile technical style. Output a PNG at a native wide 16:9 aspect ratio.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

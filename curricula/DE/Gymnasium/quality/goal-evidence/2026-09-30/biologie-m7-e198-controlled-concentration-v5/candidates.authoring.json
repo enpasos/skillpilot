@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "biologie-m7-e198-controlled-concentration-current-20260930-v5",
+  "reviewedAt": "2026-09-30T20:57:52.217Z",
+  "reviewer": "codex-biology-e198-simple-saturation-model-substantive-p-review-20260930",
+  "goals": [
+    {
+      "goalId": "1984fd66-c117-5c29-87b3-1c1626e4ba81",
+      "reason": "Substantive current-goal review after independent v4 A identified an overbroad universal plateau claim. The revised DE/EN goal explicitly limits the causal account to the simple saturation model. The unchanged active PNG is a schematic model, not measured evidence. Case 1 contains an observed plateau under controlled conditions; case 2 has only flattening and asks for a model prediction instead of falsely claiming a measured plateau, while a pH confounder tests attribution. Official HE KC 2024 E.2 printed p.34 names substrate-concentration dependence. Human approval and learner achievement unclaimed.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "controlled-variable",
+            "essentialUnderstandingDe": "Nur wenn Enzymmenge, Reaktionsvolumen, Temperatur, pH-Wert und Messzeit innerhalb der Reihe gleich bleiben, lässt sich ein Aktivitätsverlauf der variierten Substratkonzentration zuordnen.",
+            "essentialUnderstandingEn": "Only when enzyme amount, reaction volume, temperature, pH and measurement time remain equal within the series can an activity trend be attributed to the varied substrate concentration.",
+            "observablePerformanceDe": "Die lernende Person erkennt in neuen Datentabellen die Substratkonzentration als variierte Größe und prüft die anderen Bedingungen, bevor sie eine Konzentrationswirkung behauptet.",
+            "observablePerformanceEn": "The learner identifies substrate concentration as the varied factor in new data tables and checks the other conditions before claiming a concentration effect."
+          },
+          {
+            "id": "saturation-mechanism",
+            "essentialUnderstandingDe": "Im einfachen Sättigungsmodell können bei fester funktionsfähiger Enzymmenge zunehmend besetzte aktive Zentren erst einen Aktivitätsanstieg und dann ein Plateau der Anfangsrate erklären. Ein Plateau in Messdaten und ein vom Modell erwartetes Plateau sind verschiedene Aussagen; das Modell gilt nicht ohne seine Bedingungen.",
+            "essentialUnderstandingEn": "In a simple saturation model with a fixed amount of functioning enzyme, increasingly occupied active sites can explain an initial rise and then a plateau in initial rate. A plateau observed in data and one predicted by the model are different claims; the model does not apply without its conditions.",
+            "observablePerformanceDe": "Die lernende Person beschreibt an neuen kontrollierten Daten Anstieg und ein tatsächlich beobachtetes Plateau, falls vorhanden, und kennzeichnet bei bloßer Abflachung das weitere Plateau ausdrücklich als Modellvorhersage.",
+            "observablePerformanceEn": "The learner describes the rise and any plateau actually observed in new controlled data; where the data merely flatten, they explicitly mark a later plateau as a model prediction."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "controlled-variable",
+            "saturation-mechanism"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "enzyme-system",
+            "textDe": "Eine zweite Enzym-Substrat-Kombination unter eigenen kontrollierten Bedingungen prüfen; eine nur abflachende Reihe vom tatsächlich gemessenen Plateau unterscheiden.",
+            "textEn": "Check a second enzyme-substrate combination under its own controlled conditions, distinguishing a merely flattening series from an actually observed plateau."
+          },
+          {
+            "id": "confounder",
+            "textDe": "Einen zusätzlich veränderten pH-Wert als Grenze einer Konzentrationsbehauptung erkennen.",
+            "textEn": "Recognise an additionally changed pH as a limit to a concentration claim."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "controlled-amylase-series",
+            "taskDemandDe": "Didaktisch erfundene Anfangsraten für Amylase bei steigenden Stärkekonzentrationen steigen zunächst deutlich und zeigen dann innerhalb der Messgenauigkeit ein Plateau. Enzymmenge, Volumen, Temperatur, pH-Wert und Messzeit sind gleich. Deute die Daten und erkläre den Verlauf im einfachen Sättigungsmodell.",
+            "taskDemandEn": "Illustrative initial rates for amylase at increasing starch concentrations rise clearly at first and then show a plateau within measurement precision. Enzyme amount, volume, temperature, pH and measurement time are equal. Interpret the data and explain the trend using the simple saturation model.",
+            "expectedPerformanceDe": "Die lernende Person identifiziert die allein variierte Substratkonzentration, benennt das tatsächlich beobachtete Plateau und erklärt es im einfachen Modell durch weitgehend ausgelastete aktive Zentren bei fester Enzymmenge; sie behauptet weder exakt gleiche Raten noch verbrauchtes Substrat.",
+            "expectedPerformanceEn": "The learner identifies substrate concentration as the only varied factor, names the actually observed plateau and explains it in the simple model through largely occupied active sites at fixed enzyme amount; they claim neither exactly equal rates nor depleted substrate.",
+            "understandingFocusDe": "Eine kontrollierte Messreihe trägt eine begrenzte mechanistische Sättigungsdeutung.",
+            "understandingFocusEn": "A controlled data series supports a bounded mechanistic saturation interpretation."
+          },
+          {
+            "id": "controlled-lactase-versus-confounded-ph",
+            "taskDemandDe": "Eine zweite, didaktisch erfundene Lactase-Reihe zeigt bei steigender Lactosekonzentration einen Anstieg und zuletzt nur eine Abflachung der Anfangsrate, noch kein gemessenes Plateau. Enzymmenge, Volumen, Temperatur, pH und Messzeit bleiben gleich. Eine Vergleichsreihe verändert am letzten Punkt zusätzlich den pH-Wert und zeigt dort einen Rateabfall. Was belegen die Lactase-Daten, was sagt das einfache Sättigungsmodell für höhere Konzentration voraus, und warum erlaubt der pH-veränderte Punkt keine gleiche Schlussfolgerung?",
+            "taskDemandEn": "A second illustrative lactase series shows a rise and then only flattening of initial rate as lactose concentration increases, with no measured plateau yet. Enzyme amount, volume, temperature, pH and measurement time remain equal. A comparison series also changes pH at the final point and shows a rate decrease. What do the lactase data establish, what does the simple saturation model predict at higher concentration, and why does the changed-pH point not support the same inference?",
+            "expectedPerformanceDe": "Die lernende Person beschreibt den beobachteten Anstieg und die Abflachung, bezeichnet ein weiteres Plateau ausdrücklich als Vorhersage des einfachen Sättigungsmodells und weist den pH-veränderten Punkt als mehrdeutig zurück. Sie überträgt keine exakte Plateauhöhe von Amylase auf Lactase.",
+            "expectedPerformanceEn": "The learner describes the observed rise and flattening, explicitly labels any later plateau as a prediction of the simple saturation model, and rejects the pH-changed point as ambiguous. They do not transfer an exact plateau height from amylase to lactase.",
+            "understandingFocusDe": "Der zweite Fall prüft neue Enzymdaten, die Grenze sonst gleicher Bedingungen und die Trennung von Beobachtung und Modellvorhersage.",
+            "understandingFocusEn": "The second case tests fresh enzyme data, the limit set by otherwise equal conditions, and the distinction between observation and model prediction."
+          }
+        ]
+      }
+    }
+  ]
+}

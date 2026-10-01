@@ -1,39 +1,13 @@
-# Lernzielvisualisierung: Fossilen CO2-Anstieg mit dem Kohlenstoffkreislauf begründen
-
-## SkillPilot-Ziel
+# Lernzielvisualisierung: Fossilen CO₂-Anstieg mit dem Kohlenstoffkreislauf begründen
 
 - SkillPilot-ID: `0503c975-3934-5206-962e-b1c247de0c12`
-- Titel: Fossilen CO2-Anstieg mit dem Kohlenstoffkreislauf begründen
-- Beschreibung: Die lernende Person kann den fossilen CO2-Anstieg mit dem Kreislauf von Kohlenstoffatomen und der Nutzung fossiler Brennstoffe fachlich begründen.
+- Aktives Bild: `0503c975-3934-5206-962e-b1c247de0c12.png`, 1448 × 1086 Pixel (4:3), SHA-256 `e3f03ecac344cbd713f8102cc58b6f98456bb71cc2b245174c54d566f1d65625`
+- Public Asset: `/assets/goal-visualizations/chemie/0503c975-3934-5206-962e-b1c247de0c12/0503c975-3934-5206-962e-b1c247de0c12.png`
+- Generator: ChatGPT/Codex `image_gen`; Bearbeitung und anschließende Neugestaltung auf Grundlage des bisherigen Nano-Banana-Pro-JPG
+- Lizenz des SkillPilot-eigenen Bildes: CC-BY-4.0
 
-## Generator
+## Bildauftrag und Inhalt
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
-- Quellbild: `0503c975-3934-5206-962e-b1c247de0c12.jpg`
-- Public Asset: `/assets/goal-visualizations/chemie/0503c975-3934-5206-962e-b1c247de0c12/0503c975-3934-5206-962e-b1c247de0c12.jpg`
+Die vollständigen, tatsächlich dokumentierten Eingaben der vier Bilddurchgänge stehen im [Erzeugungsprotokoll](../../../quality/goal-visualization-review/chemie-m7-b009-fossil-carbon-20261001-v1/generation-prompt.md). Das aktivierte V4-Bild zeigt in einem vereinfachten Modell CO₂-Aufnahme durch Fotosynthese, CO₂-Rückgabe durch Atmung und Zersetzung, langfristige fossile Speicherung eines kleinen Teils organischen Kohlenstoffs und den zusätzlichen CO₂-Zufluss durch fossile Verbrennung. Der atmosphärische CO₂-Gehalt steigt, wenn der gesamte Zufluss die gesamte Aufnahme übersteigt. Ozeane und quantitative Flüsse sind nicht dargestellt.
 
-## Prompt
-
-```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Fossilen CO2-Anstieg mit dem Kohlenstoffkreislauf begründen
-Beschreibung: Die lernende Person kann den fossilen CO2-Anstieg mit dem Kreislauf von Kohlenstoffatomen und der Nutzung fossiler Brennstoffe fachlich begründen.
-
-Zusatzanweisung:
-Korrigiere das Referenzbild mit minimalen Änderungen. Entferne aus dem gesamten Bereich außerhalb der Speicher alle einzelnen runden „C“-Marker. Insbesondere dürfen auf dem Photosynthesepfeil, neben „zusätzlicher Zufluss“, auf den roten Rückpfeilen und in der Atmosphäre keine isolierten C-Kreise stehen. In der Atmosphäre und auf dem eintretenden Verbrennungsfluss dürfen nur vollständige CO₂-Moleküle erscheinen. Einzelne C-Marker sind ausschließlich innerhalb der vier klar abgegrenzten Speicher „Pflanzen und Tiere“, „Boden“ und „Fossiler Kohlenstoff“ zulässig. Behalte alle korrekten deutschen Beschriftungen mit Umlauten und die korrekten Pfeilrichtungen bei. Der zusätzliche rote Fluss muss eindeutig vom fossilen Kohlenstoff über „Verbrennung“ zur „Atmosphäre: CO₂“ führen; der kurze Kreislauf führt über „Photosynthese“ zu Pflanzen und über „Atmung und Zersetzung“ als CO₂ zurück.
-```
-
-## Review-Notiz
-
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Die 4:3-Ausnahme lässt die Speicher, Pfeilrichtungen und notwendigen Beschriftungen bei 360 Pixel Bildbreite lesbar. Das [Reviewpaket](../../../quality/goal-visualization-review/chemie-m7-b009-fossil-carbon-20261001-v1/integration-receipt.md) enthält Kandidaten und die unabhängige Sichtprüfung des tatsächlichen PNG. Der frühere Prompt und das JPG bleiben im dortigen `historical-active-before-correction/` bytegleich erhalten. Die aktuelle maschinelle Bildentscheidung ist an den obigen Hash gebunden; `humanApproved=no`. Bildgenerierung ist keine Freigabe.

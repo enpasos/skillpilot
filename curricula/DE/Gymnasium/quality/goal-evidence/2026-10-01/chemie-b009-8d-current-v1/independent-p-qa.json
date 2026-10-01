@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "reviewKind": "independent-positive-understanding-evidence-v2-content-qa",
+  "reviewedAt": "2026-10-01T01:26:00+02:00",
+  "reviewer": "codex-chemistry-b009-8d-independent-p-qa",
+  "goalId": "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+  "reviewId": "canonical-chemistry-positive-evidence-b009-8d-current-v1",
+  "verdict": "PASS_AI_CANDIDATE",
+  "humanApprovalClaimed": false,
+  "learnerMasteryClaimed": false,
+  "reviewedInputs": {
+    "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/chemie-b009-8d-current-v1/positive-evidence.config.json",
+    "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/chemie-b009-8d-current-v1/positive-evidence.review.jsonl",
+    "candidatesPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/chemie-b009-8d-current-v1/positive-evidence.candidates.json",
+    "currentGoalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "officialSourceUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/8/chemie",
+    "officialSourceSection": "C8 Lernbereich 3, Kompetenzerwartungen; physikalische Vorgänge von chemischen Reaktionen anhand verschwindender und neu entstehender Stoffe sowie des Energieumsatzes abgrenzen"
+  },
+  "findings": [
+    {
+      "area": "source-and-goal-scope",
+      "verdict": "PASS",
+      "detail": "Das aktuelle Ziel fordert Stoffneubildung als Unterscheidungskriterium und relativiert Temperatur- und Farbänderungen als Einzelhinweise. Das trifft den stofflichen Kern der bayerischen C8-Kompetenzerwartung. Der Profilhinweis auf möglichen Energieumsatz ist fachlich richtig; die beiden Leistungen prüfen die atomare Unterscheidung und verlangen keine zusätzliche Energiebilanz."
+    },
+    {
+      "area": "case-1-bubbles",
+      "verdict": "PASS",
+      "detail": "Vorgegebenes gelöstes CO₂, das aus Wasser entweicht, ist für diese Stoffdaten ein physikalischer Fall. Essig und Natriumhydrogencarbonat können CO₂ und ein neues gelöstes Produkt bilden. Die Aufgabe verlangt eine Begründung aus den explizit bereitgestellten Vorher-/Nachher-Analysen; Blasen allein werden korrekt als unzureichend behandelt. Die stipulierten unveränderten sonstigen Stoffdaten sind für die Mineralwasser-Einordnung wesentlich."
+    },
+    {
+      "area": "case-2-colour",
+      "verdict": "PASS",
+      "detail": "Unveränderter Lebensmittelfarbstoff im Wasser ist ein physikalisches Mischen. Aus Kupfer und Sauerstoff kann beim Erhitzen schwarzes Kupfer(II)-oxid entstehen. Die Aufgabe nennt verbrauchte Ausgangsstoffe und ein nachgewiesenes Produkt mit anderen Eigenschaften; bloße Farbe oder Wärmezufuhr würden richtigerweise nicht genügen."
+    },
+    {
+      "area": "fresh-independent-transfer",
+      "verdict": "PASS",
+      "detail": "Die zwei Fallpaare wechseln sowohl das irreführende Signal (Gasblasen gegenüber Farbe) als auch Stoffe und Reaktionsart. Beide stehen unabhängig vom bestehenden Eis/Magnesium-Bild und fordern eine neue Stoffdaten-Deutung. minimumIndependentDemonstrations=2, freshVariationRequired=true und independentTransferRequired=true sind gesetzt. Die tatsächliche Frische und zwei getrennte Lernleistungen müssen bei einer späteren Anwendung geprüft werden; der Profiltext behauptet sie nicht als bereits erfolgt."
+    },
+    {
+      "area": "status-and-binding",
+      "verdict": "PASS",
+      "detail": "Der aktuelle Datensatz trägt needs_human_review, reviewAuthority=ai_candidate, E1/G1, keine reviewRunIds und keine menschliche oder Lernleistungsbehauptung. Der gezielte positive-evidence-Checker meldete 1 konfiguriertes Ziel, 0 approved, 1 needs human review und 0 blocking issues für diese aktuelle Konfiguration."
+    }
+  ],
+  "openMaterialIssues": [],
+  "nonBlockingQualification": "Bei Fall 1 darf die spätere Aufgabe die vorgegebenen Stoffanalysen nicht weglassen: Erwärmtes reales Mineralwasser kann zusätzliche Gleichgewichts- und Fällungseffekte zeigen. Ohne diese Daten wäre eine pauschale Aussage über jedes Mineralwasser nicht belegt.",
+  "checker": {
+    "command": "npm --prefix app run -s quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/chemie-b009-8d-current-v1/positive-evidence.config.json",
+    "exitCode": 0,
+    "configuredGoals": 1,
+    "approved": 0,
+    "needsHumanReview": 1,
+    "blockingIssues": 0
+  }
+}

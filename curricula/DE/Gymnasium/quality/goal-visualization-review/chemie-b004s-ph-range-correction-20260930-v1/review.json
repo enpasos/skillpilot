@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "chemie-b004s-states-ph-current-image-20260930-v1",
+  "authority": "ai_candidate",
+  "reviewedAt": "2026-09-30T20:58:00Z",
+  "subject": "chemie",
+  "records": [
+    {
+      "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+      "currentAssetPath": "app/public/assets/goal-visualizations/chemie/326d45bf-9f77-57d5-a054-93e76b034dd5/326d45bf-9f77-57d5-a054-93e76b034dd5.jpg",
+      "sha256": "254e46accdc2ef4a9e53821502c3a14d24d1861b8c4f3268d95f7651ee9ca2f7",
+      "dimensions": "2752x1536",
+      "format": "JPEG (existing; KEEP is format-independent)",
+      "inspectedAtWidths": [2752, 360],
+      "decision": "KEEP",
+      "finding": "Feste, flüssige und gasförmige Zustände und Schmelzen, Erstarren, Verdampfen und Kondensieren sind fachlich sinnvoll als Teilillustration. Gleichartige blaue Teilchen in allen Zuständen stützen die Aussage desselben Stoffes, ohne selbst Lernnachweis zu sein. Hauptmotiv und wesentliche Beschriftungen bleiben bei 360 px erkennbar. Das Bild muss nicht alle im HE-Quelltext genannten Übergänge zeigen; das P-Profil prüft auch Verdunsten, Sieden und direkte fest-gasförmig-Übergänge unabhängig vom Bild."
+    },
+    {
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "currentAssetPath": "app/public/assets/goal-visualizations/chemie/d2ccd1d5-56f7-583f-9724-e97441367f91/d2ccd1d5-56f7-583f-9724-e97441367f91.jpg",
+      "sha256": "07d2f012106dde018a933ca999fb558db818a8d394da76f05aeaa108817aa207",
+      "dimensions": "2752x1536",
+      "format": "JPEG (existing)",
+      "inspectedAtWidths": [2752, 360],
+      "decision": "HOLD",
+      "finding": "Das JPG verbindet drei Indikatorfarben mit Bechern, die pH 2, pH 7 und pH 11 als exakte Einzelwerte tragen. Die aktuelle Beschreibung und B004-Fachprüfung verlangen nur grobe pH-Bereiche; die Grafik kann eine aus der Farbe nicht belegte Messgenauigkeit vermitteln. Lesbarkeit allein behebt diesen fachlichen Fehler nicht. Die frühere KI-/menschliche Bildsichtung bleibt historische Evidenz, begründet aber keine aktuelle maschinelle V-Freigabe.",
+      "candidate": {
+        "assetPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b004s-ph-range-correction-20260930-v1/d2ccd1d5-candidate.png",
+        "sha256": "cf6f69ccb31591750a925603b9930d57edb0f9f0112c6512b28ad674a561f7f8",
+        "dimensions": "1672x941",
+        "format": "PNG, approximately 16:9",
+        "provenance": "OpenAI image_gen edit from the active JPG as style reference, prompted to retain the friendly comic style and replace falsely exact beaker pH labels with broad acidic, neutral, and alkaline ranges",
+        "inspectedAtWidths": [1672, 680, 360],
+        "preliminaryFinding": "The generated raster image has three clearly separated beakers with the readable range labels 'sauer pH < 7', 'neutral pH = 7', and 'alkalisch pH > 7'. The person, indicator strip, and color groups remain visible at mobile width. The labels express category boundaries rather than measured values for individual samples. No photorealistic or vector replacement style was introduced.",
+        "decision": "CANDIDATE_PENDING_INDEPENDENT_QA"
+      }
+    }
+  ]
+}

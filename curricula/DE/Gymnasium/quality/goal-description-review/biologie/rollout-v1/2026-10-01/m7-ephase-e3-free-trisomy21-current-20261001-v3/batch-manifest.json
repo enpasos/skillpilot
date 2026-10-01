@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/biologie/rollout-v1/2026-10-01/m7-ephase-e3-free-trisomy21-current-20261001-v3.config.json",
+  "configDigest": "sha256:add9d35ffea7f98eda9335c67ab3a56374e53625d04d9d582b2e7b335cbb2868",
+  "goalIds": [
+    "0dd8380d-b542-5126-8d8e-f95d9ccded90"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 362,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/biologie/rollout-v1/2026-09-30/m7-ephase-cells-enzymes-development-twelve-current-20260930-v1.book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:d0a78c3183baf271348c0ea8a48b098e0855cd2e6ec7dc5efe0ff6d3f8422ab6"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:294b818449a24a145160075f8969898af56e238795d8e94b64e18d61ebcf9674",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:46992d65b9d816b815370dbd4db740f63341937651904f129c1d2dfbdf641e78",
+    "reviewInputFingerprint": "sha256:7fe7ef12ec283c0b12bc8bde2dec9cb2094f0fbb96e0771b2c5a8d91f662a749",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-a",
+        "campaignDigest": "sha256:9057070fd0d8c711340e8c724875fc9026287ede80ab530da8770968adb6d3f2",
+        "roundId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-first-pass-a",
+        "independenceGroupId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-independent-a",
+        "batchId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:352bc68e858891d3b5103aa99e54404963ed6c7746d90af5f7de7c2b5fce0d6a"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-b",
+        "campaignDigest": "sha256:fddbea4f9fd65208d3fc376be513e709985db1d7c138cc274a9846199f361b6b",
+        "roundId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-first-pass-b",
+        "independenceGroupId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-independent-b",
+        "batchId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:6f0ed8f983b51a83c973af534f3f243a0f1531b2c6ae1cae497bd5e6943ebab0"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

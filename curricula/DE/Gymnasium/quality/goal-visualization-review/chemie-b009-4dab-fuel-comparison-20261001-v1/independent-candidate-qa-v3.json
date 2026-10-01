@@ -1,0 +1,59 @@
+{
+  "reviewKind": "independent-ai-image-candidate-review",
+  "reviewedAt": "2026-09-30T23:32:51Z",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "goalId": "4dab7d52-5b89-52ab-a425-17a7707f44c8",
+  "decision": "PASS_CANDIDATE_ONLY",
+  "supersedesCandidateReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b009-4dab-fuel-comparison-20261001-v1/independent-candidate-qa-v2.json",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b009-4dab-fuel-comparison-20261001-v1/candidate-v3.png",
+  "candidateSha256": "sha256:5609098698338b309970b092bd751524fadbe52724576613a4d5b300b9b348cd",
+  "candidateDimensions": "1448x1086 RGB PNG",
+  "candidateAspectRatio": "4:3",
+  "inspectedAtWidthsPx": [1448, 680, 360],
+  "previewFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b009-4dab-fuel-comparison-20261001-v1/candidate-v3-680px.png",
+      "sha256": "sha256:ab9972e91610cfd73e09f7011cb36d82a3bf73fa608a3e0c40788c82844421cd",
+      "dimensions": "680x510"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b009-4dab-fuel-comparison-20261001-v1/candidate-v3-360px.png",
+      "sha256": "sha256:03c7e49eacde2b723c9400f84b5a5c2c592584c096e6d9d31f979a4f2c65fa5b",
+      "dimensions": "360x270"
+    }
+  ],
+  "currentCanonicalDescriptionDe": "Die lernende Person kann CO₂-Bilanzen und Reaktionswärmen verschiedener Brennstoffe auf einer vergleichbaren Bezugsgröße und innerhalb derselben Systemgrenze gegenüberstellen.",
+  "findings": [
+    {
+      "severity": "pass",
+      "area": "resolved-v2-causality-blocker",
+      "detail": "Both rows now show fuel pointing to a combustion flame, with two separate arrows branching from that flame to heat waves and CO₂. The former visible heat → CO₂ causal chain is absent. The image correctly treats heat release and CO₂ as concurrent outputs of complete combustion."
+    },
+    {
+      "severity": "pass",
+      "area": "equal-heat-direct-emissions",
+      "detail": "The identical heat motifs in both rows make the 'GLEICHE WÄRME' basis visible. The methane row has the smaller CO₂ cloud and the pure-carbon row the larger one. This is the correct qualitative direction for the same released heat from complete combustion: CH₄ and C each yield one CO₂ per mole of fuel, while a mole of CH₄ releases more heat than a mole of C. The clouds do not assert a numerical ratio."
+    },
+    {
+      "severity": "pass",
+      "area": "form-factor-legibility-and-style",
+      "detail": "Actual native 1448x1086, 680x510 and 360x270 pixels were inspected. The title, 'METHAN (CH₄)', 'KOHLENSTOFF (C)' and CO₂ labels remain readable at 360 px; the branching arrows, equal heat symbols and cloud-size difference remain distinct. There is no crop, required tiny type or visual crowding. The 4:3 image gives two rows enough height on a phone and is a justified exception to the 16:9 default. Its warm, abstract comic style fits the existing visual landscape."
+    },
+    {
+      "severity": "pass",
+      "area": "old-active-comparison",
+      "detail": "The active 2752x1536 JPG was also inspected at native width and proportionally reduced to 360x201. Its table writing is mostly too small at phone width. More seriously, it juxtaposes CO₂ per mole with unquantified 'hoch'/'mittel' reaction heat and unsupported categorical suitability marks. Replacing it is justified by specific weaknesses rather than by format normalization."
+    },
+    {
+      "severity": "limitation",
+      "area": "simplified-system-boundary",
+      "detail": "The drawing is a qualitative direct-combustion comparison, not a full CO₂ balance or lifecycle assessment. It omits the methane combustion water product because it selects the two outputs relevant to this contrast; it must not be presented as a complete reaction equation. The lower black solid resembles coal, but the visible 'KOHLENSTOFF (C)' label identifies the intended pure-carbon model. Prospective alt text and P evidence should explicitly distinguish pure C from compositionally variable coal, name equal released heat and direct CO₂, and address wider system boundaries separately."
+    }
+  ],
+  "primaryCurriculumSource": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/8/chemie",
+  "supportingFuelFactorSource": "https://www.eia.gov/environment/emissions/co2_vol_mass.php",
+  "sourceScope": "Bavaria Chemie 8 provides the curricular setting for comparing fuel CO₂ and reaction energy; the EIA heat-content table supports the qualitative natural-gas versus coal direction but is not treated as data for pure C. The pure-CH₄ versus pure-C comparison was checked from complete-combustion stoichiometry and relative heat release.",
+  "nextStep": "Suitable as an independently AI-reviewed image candidate. Before any V gate or strict closure, activate this exact PNG/hash in all required copies, bind the current canonical resource and truthful visualization QA, supply scope-accurate alt text, recheck affected goal/page/source/image bindings and P evidence, then run targeted and central checks. Human release approval remains separate.",
+  "scopeLimit": "This review only assessed the v3 candidate. It changed no active image, registry, description resolution, positive evidence, central M7 count or human release gate."
+}

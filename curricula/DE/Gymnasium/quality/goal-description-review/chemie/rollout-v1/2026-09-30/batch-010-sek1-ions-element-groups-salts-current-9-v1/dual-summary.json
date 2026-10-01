@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:8043239ef59d76143cc1e5e26e47e4f6294f37702e9ca50d4e71d240bc32b2c0",
+  "reviewInputFingerprint": "sha256:a6be4ae9d39d0f03b23edf80a480067784a14d03f6d2e08343ba73c052655669",
+  "goalCount": 9,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-a",
+      "roundId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-independent-a",
+      "runIds": [
+        "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex session (exact deployment identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-b",
+      "roundId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-independent-b",
+      "runIds": [
+        "chemie-b010-ions-elements-salts-20260930-blind-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 9,
+    "unavailable": 0,
+    "requiresSynthesis": 9
+  },
+  "goals": [
+    {
+      "goalId": "72236f2c-771e-4ab6-933a-e549ee49d15b",
+      "firstRecordId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a.72236f2c-771e-4ab6-933a-e549ee49d15b",
+      "secondRecordId": "chemie-b010-b-01-72236f2c",
+      "firstRunId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a",
+      "secondRunId": "chemie-b010-ions-elements-salts-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "950c73c6-4ed1-488a-9267-1142e95e0055",
+      "firstRecordId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a.950c73c6-4ed1-488a-9267-1142e95e0055",
+      "secondRecordId": "chemie-b010-b-02-950c73c6",
+      "firstRunId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a",
+      "secondRunId": "chemie-b010-ions-elements-salts-20260930-blind-b-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+      "firstRecordId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a.e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+      "secondRecordId": "chemie-b010-b-03-e0e201bd",
+      "firstRunId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a",
+      "secondRunId": "chemie-b010-ions-elements-salts-20260930-blind-b-run-001",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+      "firstRecordId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a.16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+      "secondRecordId": "chemie-b010-b-04-16a80de2",
+      "firstRunId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a",
+      "secondRunId": "chemie-b010-ions-elements-salts-20260930-blind-b-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "58486300-3f84-5aa1-9ed4-66186af62669",
+      "firstRecordId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a.58486300-3f84-5aa1-9ed4-66186af62669",
+      "secondRecordId": "chemie-b010-b-05-58486300",
+      "firstRunId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a",
+      "secondRunId": "chemie-b010-ions-elements-salts-20260930-blind-b-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b5086548-169e-5d63-a14a-dabf631fa013",
+      "firstRecordId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a.b5086548-169e-5d63-a14a-dabf631fa013",
+      "secondRecordId": "chemie-b010-b-06-b5086548",
+      "firstRunId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a",
+      "secondRunId": "chemie-b010-ions-elements-salts-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d726e00e-1f87-5ba5-8c79-76ad4022365e",
+      "firstRecordId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a.d726e00e-1f87-5ba5-8c79-76ad4022365e",
+      "secondRecordId": "chemie-b010-b-07-d726e00e",
+      "firstRunId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a",
+      "secondRunId": "chemie-b010-ions-elements-salts-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "414489cb-453e-5de4-ab0f-0fc01175e522",
+      "firstRecordId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a.414489cb-453e-5de4-ab0f-0fc01175e522",
+      "secondRecordId": "chemie-b010-b-08-414489cb",
+      "firstRunId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a",
+      "secondRunId": "chemie-b010-ions-elements-salts-20260930-blind-b-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1f5ee84f-245a-5a1e-a260-f960f26523e9",
+      "firstRecordId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a.1f5ee84f-245a-5a1e-a260-f960f26523e9",
+      "secondRecordId": "chemie-b010-b-09-1f5ee84f",
+      "firstRunId": "chemie-rollout-v1-batch-010-sek1-ions-element-groups-salts-current-9-v1-20260930-first-pass-a-codex-independent-a",
+      "secondRunId": "chemie-b010-ions-elements-salts-20260930-blind-b-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

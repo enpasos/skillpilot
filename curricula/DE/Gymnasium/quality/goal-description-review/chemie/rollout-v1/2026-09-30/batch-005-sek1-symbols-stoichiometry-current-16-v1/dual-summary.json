@@ -1,0 +1,344 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:0d73a48d389e7486e046bf16adcaf39b76aa0082301613b7603509d84ad173cf",
+  "reviewInputFingerprint": "sha256:5414438765ed8908f04d317773d444b0fa1c51eb08dde8e44e735120dc0cd3e2",
+  "goalCount": 16,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-a",
+      "roundId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-independent-a",
+      "runIds": [
+        "codex-gpt-6-round-a-chemie-b005-20260930"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-b",
+      "roundId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-independent-b",
+      "runIds": [
+        "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 16,
+    "unavailable": 0,
+    "requiresSynthesis": 16
+  },
+  "goals": [
+    {
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "firstRecordId": "chemie-b005-round-a-e0d05c36-20260930",
+      "secondRecordId": "chemie-b005-b-01-e0d05c36",
+      "firstRunId": "codex-gpt-6-round-a-chemie-b005-20260930",
+      "secondRunId": "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "firstRecordId": "chemie-b005-round-a-9b5d6326-20260930",
+      "secondRecordId": "chemie-b005-b-02-9b5d6326",
+      "firstRunId": "codex-gpt-6-round-a-chemie-b005-20260930",
+      "secondRunId": "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+      "firstRecordId": "chemie-b005-round-a-e7c363d4-20260930",
+      "secondRecordId": "chemie-b005-b-03-e7c363d4",
+      "firstRunId": "codex-gpt-6-round-a-chemie-b005-20260930",
+      "secondRunId": "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+      "firstRecordId": "chemie-b005-round-a-11bea4c6-20260930",
+      "secondRecordId": "chemie-b005-b-04-11bea4c6",
+      "firstRunId": "codex-gpt-6-round-a-chemie-b005-20260930",
+      "secondRunId": "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "22133f29-ef02-4408-8f8d-2bbea3275d91",
+      "firstRecordId": "chemie-b005-round-a-22133f29-20260930",
+      "secondRecordId": "chemie-b005-b-05-22133f29",
+      "firstRunId": "codex-gpt-6-round-a-chemie-b005-20260930",
+      "secondRunId": "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "firstRecordId": "chemie-b005-round-a-1dc15fa2-20260930",
+      "secondRecordId": "chemie-b005-b-06-1dc15fa2",
+      "firstRunId": "codex-gpt-6-round-a-chemie-b005-20260930",
+      "secondRunId": "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8a2ad724-df5e-5986-8de9-560ba43caac2",
+      "firstRecordId": "chemie-b005-round-a-8a2ad724-20260930",
+      "secondRecordId": "chemie-b005-b-07-8a2ad724",
+      "firstRunId": "codex-gpt-6-round-a-chemie-b005-20260930",
+      "secondRunId": "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+      "firstRecordId": "chemie-b005-round-a-dd3fc8fe-20260930",
+      "secondRecordId": "chemie-b005-b-08-dd3fc8fe",
+      "firstRunId": "codex-gpt-6-round-a-chemie-b005-20260930",
+      "secondRunId": "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e45c0022-ac0d-5c83-b433-5f68655e382f",
+      "firstRecordId": "chemie-b005-round-a-e45c0022-20260930",
+      "secondRecordId": "chemie-b005-b-09-e45c0022",
+      "firstRunId": "codex-gpt-6-round-a-chemie-b005-20260930",
+      "secondRunId": "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5c4788a7-6760-53dc-894e-e04bca6f8cd9",
+      "firstRecordId": "chemie-b005-round-a-5c4788a7-20260930",
+      "secondRecordId": "chemie-b005-b-10-5c4788a7",
+      "firstRunId": "codex-gpt-6-round-a-chemie-b005-20260930",
+      "secondRunId": "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+      "firstRecordId": "chemie-b005-round-a-1e5a4b89-20260930",
+      "secondRecordId": "chemie-b005-b-11-1e5a4b89",
+      "firstRunId": "codex-gpt-6-round-a-chemie-b005-20260930",
+      "secondRunId": "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2924f784-5261-54e8-93ee-49ac3b3cd300",
+      "firstRecordId": "chemie-b005-round-a-2924f784-20260930",
+      "secondRecordId": "chemie-b005-b-12-2924f784",
+      "firstRunId": "codex-gpt-6-round-a-chemie-b005-20260930",
+      "secondRunId": "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "199570f4-b3c3-5e12-877d-ced97e9f6968",
+      "firstRecordId": "chemie-b005-round-a-199570f4-20260930",
+      "secondRecordId": "chemie-b005-b-13-199570f4",
+      "firstRunId": "codex-gpt-6-round-a-chemie-b005-20260930",
+      "secondRunId": "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a",
+      "firstRecordId": "chemie-b005-round-a-d629220a-20260930",
+      "secondRecordId": "chemie-b005-b-14-d629220a",
+      "firstRunId": "codex-gpt-6-round-a-chemie-b005-20260930",
+      "secondRunId": "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e675fa94-6e23-59c0-b376-4340bf44c00e",
+      "firstRecordId": "chemie-b005-round-a-e675fa94-20260930",
+      "secondRecordId": "chemie-b005-b-15-e675fa94",
+      "firstRunId": "codex-gpt-6-round-a-chemie-b005-20260930",
+      "secondRunId": "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9f355f63-4fb7-5638-9538-6e8a246ec4b2",
+      "firstRecordId": "chemie-b005-round-a-9f355f63-20260930",
+      "secondRecordId": "chemie-b005-b-16-9f355f63",
+      "firstRunId": "codex-gpt-6-round-a-chemie-b005-20260930",
+      "secondRunId": "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

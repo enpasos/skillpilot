@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/biologie/rollout-v1/2026-10-01/m7-ephase-e1-organelle-em-current-20261001-v2.config.json",
+  "configDigest": "sha256:69d09354bd747a09205ab93be6b7f87bc2db117eafbf201c0d7a75bcbfd2bc7b",
+  "goalIds": [
+    "fc8c4b02-02f2-5ad6-b481-224d36121da1"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 362,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/biologie/rollout-v1/2026-09-30/m7-ephase-cells-enzymes-development-twelve-current-20260930-v1.book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:23f9ad4422fb3748c56055d7e815905ea528e6e1e3e6dfdba0c6c7f9ffdbed69"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:030867ddf6191680d362616d84f77a0a53f0fa4e8669cff62dfa1e69d23380f7",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:7c2ea10b9291a8b4d1427518dc6280e548be7344b6e1343ab44d6f8ca5f3432e",
+    "reviewInputFingerprint": "sha256:ed0c6281742b6af901f9e217fe569e4b93bbfae752687a80f6a0d3635d3f39e3",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-a",
+        "campaignDigest": "sha256:11ed4774236f95a7d5548c0bb98dbade7bfa82bceb6378ab3a430f86190a5703",
+        "roundId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-first-pass-a",
+        "independenceGroupId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-independent-a",
+        "batchId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:dade33e6f4080ea60514c5bb090ed5f46ddf481f29c0416f811fa7536b9906f7"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-b",
+        "campaignDigest": "sha256:8823373ba9a32901c9f470291c004f35639bb37f9f20e16ee1186d027c58498a",
+        "roundId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-first-pass-b",
+        "independenceGroupId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-independent-b",
+        "batchId": "biologie-m7-ephase-e1-organelle-em-current-20261001-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:c5f3ec7145803f6dbe0ba816c5504792ab6243ba325d20eac1cb7c473fec9120"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

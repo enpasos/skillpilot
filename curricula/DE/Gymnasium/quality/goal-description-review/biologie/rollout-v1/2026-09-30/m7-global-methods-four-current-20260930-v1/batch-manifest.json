@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-m7-global-methods-four-current-20260930-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/biologie/rollout-v1/2026-09-30/m7-global-methods-four-current-20260930-v1.config.json",
+  "configDigest": "sha256:c5131b93ebf6f4290ff9aba1ac11605409e4928414f9cff58040ec902eb47e1b",
+  "goalIds": [
+    "d97f6957-fbc9-569c-8648-f7df5eb9dfd8",
+    "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+    "0f1549f6-8341-53b0-8161-5eaeb2b37809",
+    "0380f992-723a-513d-8c3f-8ca7f8e0394f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 355,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/biologie/rollout-v1/2026-09-30/m7-global-methods-four-current-20260930-v1.book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:f6242bb649f2daf22d5666264652a7a6dc751056ff53092dbd84368a638d5d58"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:77a0fcb63109c0825f0b9451522fc0036fb37843b7138d4bfede1c4212a418cc",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:69640bde70819431a8ef8a620d19c964297276e120fb051fad571037c77a5129",
+    "reviewInputFingerprint": "sha256:4d1d9770748458e27ad7d1115e402822a147560be1dbae6bc89b33ce3ec98a50",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-m7-global-methods-four-current-20260930-v1-a",
+        "campaignDigest": "sha256:2b4a0ee3599dcb301714e428144cd3ea6cbe3e1cc3246b27fd0caf86dafaf08e",
+        "roundId": "biologie-m7-global-methods-four-current-20260930-v1-first-pass-a",
+        "independenceGroupId": "biologie-m7-global-methods-four-current-20260930-v1-independent-a",
+        "batchId": "biologie-m7-global-methods-four-current-20260930-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:2fae21a66e25f3569c439ff8f83662aacd316131fb950b2af2695755559ac196"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-m7-global-methods-four-current-20260930-v1-b",
+        "campaignDigest": "sha256:3f2f51279c3f6423f411d19b883c947b5071fe819dee1844b10d085e43fbfb7f",
+        "roundId": "biologie-m7-global-methods-four-current-20260930-v1-first-pass-b",
+        "independenceGroupId": "biologie-m7-global-methods-four-current-20260930-v1-independent-b",
+        "batchId": "biologie-m7-global-methods-four-current-20260930-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:25ce19d5429592e18cb5fc92d6e73d20aca3577f88964f02ec1ba8758a9fc1d9"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

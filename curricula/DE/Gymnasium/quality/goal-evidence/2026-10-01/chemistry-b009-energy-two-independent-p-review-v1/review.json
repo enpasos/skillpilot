@@ -1,0 +1,42 @@
+{
+  "reviewKind": "independent-ai-positive-understanding-evidence-v2-content-qa",
+  "reviewedAt": "2026-09-30T22:29:37Z",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "sourceConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b009-energy-two-current-png-v1.config.json",
+  "sourceConfigSha256": "sha256:8ded57fb698f6d3f585b2059097ef4e5bf663e953431871d4d496930189d24fa",
+  "sourceCandidatesSha256": "sha256:def04c2a31f17859276d6edb3e7f646f9794507ed8f8121f4b18c0f2f6474a4b",
+  "sourceRecordsSha256": "sha256:a7f145b9e4d56c813a64779495017818c756d9fb2c27f222f22b6a32ead6905b",
+  "technicalCheck": "PASS: 2 current records, 0 technical blockers, 2 needs_human_review; this does not establish independent content quality",
+  "primaryCurriculumSources": [
+    "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf",
+    "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/8/chemie"
+  ],
+  "goals": [
+    {
+      "goalId": "1286f2fe-89b7-4454-8e11-85b6abd6e278",
+      "positiveEvidenceDecision": "PASS_AI_CANDIDATE",
+      "activeImageSha256": "sha256:46f0e6695c797aeb57ea5892fd45e2584be8f988aa91068f2edf476f3639adc0",
+      "findings": [
+        "The canonical goal, current book page and actual PNG were checked; the active hash matches the reviewed image, which remains legible at 360 and 680 pixels and no longer asserts that an effervescent tablet proves an endothermic chemical reaction.",
+        "The methane equation CH4 + 2 O2 -> CO2 + 2 H2O and calcium-carbonate decomposition CaCO3 -> CaO + CO2 are atom-balanced. Supplied paper data support opposite net energy directions for genuine chemical reactions; neither case asks a learner to ignite methane or thermally decompose carbonate.",
+        "The cases demand independent explanations of reactant/product energy levels, outward versus inward net transfer, start energy versus reaction energy, and why cooling of a mixed effervescent sample is confounded. The second case changes the reaction and representation and does not depend on copying the visualization. German and English demands and expected responses agree.",
+        "The current record truthfully says needs_human_review with ai_candidate authority and E1/G1 bounds. This review grants no learner mastery or human release approval."
+      ],
+      "nonBlockingPrecisionNote": "In a later case edit, state reactant/product energy difference or measured reaction heat on a common amount and system boundary directly. The first case's comparison of released heat with ignition input is valid for its supplied scenario but must not become a general classification rule: the reaction's exothermic character is not defined by the particular ignition apparatus or fuel quantity. The expected performance already separates ignition from the net reaction change, so this is not a blocker for these two cases together."
+    },
+    {
+      "goalId": "9198b4cf-e454-562f-83f0-b1b74e68765d",
+      "positiveEvidenceDecision": "HOLD_AI_CANDIDATE",
+      "activeImageSha256": "sha256:0ceb7e98ebd52a922f549697459d60abe6a5c056dad0766d665d39fee11cab45",
+      "findings": [
+        "The canonical goal, current book page and actual 4:3 PNG were checked; the active hash matches the image. The old CH2 error and fixed verdict matrix are absent, and labels remain readable at 360 and 680 pixels. The image is teaching support, not positive evidence.",
+        "Case 1 is decided by a hard 24-hour minimum: the stated hydrogen stock lasts 18 hours and methane 48 hours. A learner can select methane without weighing chemical energy against ecological and use criteria; the card supplies no comparable reaction heat, usable energy per common unit or delivered-energy basis.",
+        "Case 2 deliberately omits production and transport emission data. Saying that no certain CO2 winner can be named is scientifically honest, but does not demonstrate the profile's promised explicit multi-criteria weighting or a positive evaluation from comparable chemical and environmental evidence. Equal vehicle range alone is not a chemical energy comparison.",
+        "The two cases therefore do not jointly prove the required observable performance, even though the record is technically current, has two case briefs, and truthfully remains needs_human_review with ai_candidate authority."
+      ],
+      "requiredCorrection": "Revise the case briefs and expected performances so at least one decision has two feasible carriers, a stated common use/energy basis with chemical energy or reaction-heat information, production-plus-use CO2 information under an explicit system boundary, and transport/storage data that create a real trade-off. Require the learner to explain criterion weighting and a conditional conclusion. Use a meaningfully changed second supply route or use case with enough comparable data to reassess that weighting while acknowledging uncertainty. Mark any invented scenario values as supplied hypothetical data, keep all work on paper, then rematerialize the current records and obtain a fresh independent content review."
+    }
+  ],
+  "scopeLimit": "No candidate, canonical, active image, visualization ledger or central registry file was changed by this independent review. Human review remains separate."
+}

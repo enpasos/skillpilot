@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-b007s-5a-corrected-image-20260930-current-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis of two independent current reviews; no human approval",
+  "synthesizedAt": "2026-09-30T19:43:53.974Z",
+  "batch": {
+    "batchId": "chemie-rollout-v1-batch-007s-5a-corrected-image-current-1-v1-20260930",
+    "batchManifestDigest": "sha256:872f44aa2f5060910bc2f416695d838f50cd19ea776f782042346589fe54a1f7",
+    "configDigest": "sha256:f7b9ec97e85a04952035ea6b02ecf316b9e447ab6b803e8b16994670e9604eb0",
+    "bundleFingerprint": "sha256:a868cd1a0da1a4f3fb86127b98978f6d072d08306320e9f0c17c316679ecf698",
+    "bookDigest": "sha256:808bbfb201a5b768d6cd64600abff69724d76ad07e8b3263c3784ebdf3ae85fd",
+    "reviewInputFingerprint": "sha256:655da57fd8e14c42be6c93b4bdd3c2ee259928641425e829d254092bebcc0711",
+    "dualSummaryDigest": "sha256:46a2d803f67d64ca28d22fd93b20c8b52340848c5425714e727539e9e836c979",
+    "canonicalLandscapeDigest": "sha256:c0736f503afbeb2d6a6375bbcebbe63f4b69b9cae04309073a0c183043d27590"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-007s-5a-corrected-image-current-1-v1-20260930-a",
+      "campaignDigest": "sha256:ae4cbcd17bfbea94f3f89e9da751bc8f184a40bd4b9ea45907abd90db92ef841",
+      "roundId": "chemie-rollout-v1-batch-007s-5a-corrected-image-current-1-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-007s-5a-corrected-image-current-1-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:655da57fd8e14c42be6c93b4bdd3c2ee259928641425e829d254092bebcc0711",
+      "batchId": "chemie-rollout-v1-batch-007s-5a-corrected-image-current-1-v1-20260930-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:2baefab7ad1999d3ef4b8deb1c9813693b8f9aee4057cb65b831e1e278e9f85a",
+      "runId": "codex-gpt-6-round-a-chemie-b007s-5a-20260930",
+      "runManifestDigest": "sha256:594b261558316a9029781ca7b60f46db343acdc0401f7c950c0359e74c722fae",
+      "resultsDigest": "sha256:4f48759cc533e7c46d21a8af525417d24f33f933714fcaca14b6b91c25a1d860"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-007s-5a-corrected-image-current-1-v1-20260930-b",
+      "campaignDigest": "sha256:e3d8276d737998b43fa6907ac2625b69fd6f2a904ac42fb475b553b13b9256d2",
+      "roundId": "chemie-rollout-v1-batch-007s-5a-corrected-image-current-1-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-007s-5a-corrected-image-current-1-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:655da57fd8e14c42be6c93b4bdd3c2ee259928641425e829d254092bebcc0711",
+      "batchId": "chemie-rollout-v1-batch-007s-5a-corrected-image-current-1-v1-20260930-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:45219fe30ff9d5301d7cb3ccb200a1191ade9c5b0f85b50f9b9d128df4c55b5c",
+      "runId": "chemie-b007s-5a-corrected-png-20260930-blind-b-run-001",
+      "runManifestDigest": "sha256:0b751892b40dced58a23a31aac8ae85119027553d844bdbc195f52f2e4a880a6",
+      "resultsDigest": "sha256:860f0693252ca2a24c300d3f75e6933e34d24f2b1e4fbb3622766b9b6a07f0b3"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-b007s-5a-corrected-image-20260930-current-synthesis-decision-001",
+      "goalId": "5a709938-e0f5-42b7-94f0-cfded08963a2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:75730bb9a4cf8a4a523f0c7565b2b6656194ba67756b799de52ac926334f607c",
+      "pageFingerprint": "sha256:de5a105344c53ef14590779926c082ccc6fa80102fd26749c471d1417bbf823d",
+      "goalReviewContextFingerprint": "sha256:c8e9ca2280fb2496303ea5dadbbc76a6cad1002c1ebb246624cde7dd37641675",
+      "finalText": {
+        "titleDe": "Stoffgemische mit Trennverfahren trennen",
+        "titleEn": "Separate mixtures using separation methods",
+        "descriptionDe": "Die lernende Person kann Stoffgemische mit Verfahren wie Filtration, Destillation und Extraktion trennen und die Verfahrenswahl begründen.",
+        "descriptionEn": "The learner can separate mixtures using methods such as filtration, distillation, and extraction and justify the choice of method."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b007s-5a-round-a-20260930",
+          "recordDigest": "sha256:fcc04e754bf16d5854fda4534330fb6bb1dfa58b9e164d820fae367751807ff3"
+        },
+        "second": {
+          "recordId": "chemie-b007s-5a-b-01-5a709938",
+          "recordDigest": "sha256:d31152e8e1a9316fc143eef09d2a053953e5d237b2297fff4f903624f6a2b4a5"
+        }
+      },
+      "rationaleDe": "A und die blinde B-Runde behalten die eigenschaftsbegründete Wahl und Anwendung geeigneter Trennverfahren als eine Kompetenz bei. Die direkte HE-Sek-I-Herkunft trägt diesen Kern, ohne jeden Quellbulletbestandteil im kanonischen Ziel zu verlangen. Das frühere JPG mit widersprüchlichen Thermometer-Messkugeln wurde unverändert archiviert. Beide aktuellen Runden beziehen die neue Seite mit PNG SHA256 bd0c0ee87fa3929a90a9768d59e085536f594792bb2d19cfbd3467a4df0540d1 in die fachliche Prüfung ein: Sand bleibt im Papierfilter, Wasser läuft durch; Wasserdampf kondensiert in einer durchgehenden Strecke, Salz bleibt zurück, Kühlwasser fließt rechts unten hinein und links oben hinaus; beim Teebeutel gehen lösliche Stoffe ins Wasser. Unabhängige Bild- und P-Gegenprüfung liegen vor, ohne menschliche Freigabe. Reale Filtration nur mit ungefährlicher Probe unter Lehrkraftaufsicht; Destillation/Extraktion als Daten- oder Demonstrationsfälle.",
+      "rationaleEn": "A and the blind B round retain property-based choice and application of suitable separation methods as one competence. Direct Hessian Sek I provenance supports this core without requiring every item in the broader source bullet to appear in the canonical goal. The old JPG with contradictory thermometer bulbs was archived unchanged. Both current rounds substantively review the new page with PNG SHA256 bd0c0ee87fa3929a90a9768d59e085536f594792bb2d19cfbd3467a4df0540d1: sand remains in filter paper while water passes; vapour condenses through a continuous path, salt remains, cooling water enters lower right and leaves upper left; soluble tea components enter water. Independent image and P reviews are available without human approval. Actual filtration is limited to a harmless teacher-supervised sample; distillation and extraction use data or demonstrations."
+    }
+  ],
+  "manifestFingerprint": "sha256:0232ed40ae764fbaeaedcac1ba69119ac4696ad9ab9c9df3e7d282919ae52b6d"
+}

@@ -1,0 +1,5 @@
+# Selbstprüfung des Bildkandidaten
+
+Geöffnet und betrachtet: `candidate-3891b735-360px.png` (360 × 203 px) und `candidate-3891b735-680px.png` (680 × 383 px). Die breite Comic-Anordnung ist in beiden Größen erkennbar. Es gibt keine Kleinschrift, Legende oder beschriftete Details. Blau kennzeichnet die vorhandene DNA; Orange zeigt eine zusätzliche Genkopie in nur einer Zielzelle; Grün liegt im Zellplasma dieser Zelle. Die zwei übrigen Zellen behalten den Ausgangszustand. Das Bild zeigt weder Schere, Vektor noch Spritze und behauptet keinen Heilungserfolg.
+
+**Fachliche Grenze:** Die Darstellung ist ein vereinfachtes Modell der Gen-Ergänzung in Körperzellen. Sie erklärt weder Transport, Genomintegration, Genexpression im Detail, Dauerhaftigkeit noch klinische Wirksamkeit. Die nur teilweise erreichten Zellen veranschaulichen eine mögliche Wirkungsgrenze, ersetzen aber keine Fallangaben oder unabhängige Lernendenleistung. Die Bildprüfung hier ist eine Autorenselbstprüfung; unabhängige Fach-/V-QA und Bindung an einen späteren Kanontext stehen aus.

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-resolution-17ab1148-7383-5cab-8b91-73aff795f1e4",
+  "goal": {
+    "goalId": "17ab1148-7383-5cab-8b91-73aff795f1e4",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:baf88eceefd026bec0d0048c44e425277a9e5f8bf38b0e445e4b3d2320abdc63",
+    "pageFingerprint": "sha256:402c5f6f91a2c297202b8bdb91300c3d0bd6d408fc16e0b34c31249317483984",
+    "goalReviewContextFingerprint": "sha256:41f78f0e68ee175ae1841913efabf99c3c2ad01d9227e844ed74e168dbbd274a",
+    "finalText": {
+      "titleDe": "Elektrophile Substitution am Aromaten modellieren",
+      "titleEn": "Model electrophilic substitution on aromatics",
+      "descriptionDe": "Die lernende Person kann elektrophile Substitutionen am aromatischen Ring modellieren.",
+      "descriptionEn": "The learner can model electrophilic substitutions on aromatic rings."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-a",
+      "campaignDigest": "sha256:4d4a6506908f6e94424077022b3055aa200ca0b787ff7386b92a6d57549f2a76",
+      "roundId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:c07e8027610ce7b898ef3ee8592f3d2835d19ca3aa33329fa31538af54006475",
+      "goalReviewContextFingerprint": "sha256:41f78f0e68ee175ae1841913efabf99c3c2ad01d9227e844ed74e168dbbd274a",
+      "batchId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-a.batch-001",
+      "runId": "codex-gpt-6-round-a-chemie-b003-20260930",
+      "runManifestDigest": "sha256:5f8f63c26aca5bc62c9e5780cd4bf89a9edeb70b1e5ddf43c433db492a823a8b",
+      "resultsDigest": "sha256:b305ec1bb952e3d06edb174aa07446041c95eaec2392680b413529e1a666530a",
+      "recordId": "chemie-b003-round-a-17ab1148-20260930",
+      "recordDigest": "sha256:cabf2cb5c33512d1fb9af9d19a24179fd9d6757a6867f8cc0fa1c2c4005b8db9"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-b",
+      "campaignDigest": "sha256:169af5a705d3c5cb4531b1291386fb63242cdd5cab7d2510c4bdf2c8c5fc5abd",
+      "roundId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:c07e8027610ce7b898ef3ee8592f3d2835d19ca3aa33329fa31538af54006475",
+      "goalReviewContextFingerprint": "sha256:41f78f0e68ee175ae1841913efabf99c3c2ad01d9227e844ed74e168dbbd274a",
+      "batchId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-b.batch-001",
+      "runId": "chemie-b003-q1-round-b-20260930-gpt6-v1",
+      "runManifestDigest": "sha256:e1cf816bbd5bfd6fd6a1a99356fddd1a27a05061a1fd0ec7128ce16e82232390",
+      "resultsDigest": "sha256:4f99b000e7cda824f3b3c3e9eb8215295ae0c11f4d62fda796e3aaa69e6f2c06",
+      "recordId": "chemie-b003-b-03",
+      "recordDigest": "sha256:15e2f6895b3c23c48c66bc9ee32f890210b7de65964e34a09238f5ba4f47a420"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:7063fb382e703af7de74e31bd6ff248e785a6cf733eedfd1dc690f7738914cf7"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis",
+    "manifestDigest": "sha256:15f39431398815d03ec171b914e160b7cd26f501179ef5f673c8f0fa206132ea",
+    "manifestFingerprint": "sha256:a9a373bd26c56d438f7cbbbbc49e1cfdc523af21495f0e401609ceabb4aa0534",
+    "decisionId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis; eleven current dual-round keeps, nine explicit deferrals; no human approval",
+    "synthesizedAt": "2026-09-30T16:18:39.625Z",
+    "rationaleDe": "Beide Runden behalten den begrenzten aromatischen Substitutionsmechanismus bei. Die A-Evidenz prüft Angriff, Sigma-Zwischenstufe und erneute Aromatisierung in einem neuen Fall.",
+    "rationaleEn": "Both rounds retain the bounded aromatic substitution mechanism. A evidence checks attack, sigma intermediate, and restored aromaticity in a fresh case.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Elektrophile aromatische Substitution umfasst Angriff eines Elektrophils, ein nichtaromatisches Sigma-Zwischenstadium und Deprotonierung zur Wiederherstellung der Aromatizität.",
+      "essentialUnderstandingEn": "Electrophilic aromatic substitution involves electrophile attack, a nonaromatic sigma intermediate, and deprotonation restoring aromaticity.",
+      "observablePerformanceDe": "Die lernende Person ergänzt in einem vorgegebenen Benzol-Substitutionsschema plausible Elektronenpfeile und erklärt, weshalb am Ende ein Ring-H ersetzt wurde.",
+      "observablePerformanceEn": "The learner completes plausible electron arrows in a supplied benzene substitution and explains why a ring H is replaced in the end.",
+      "transferExpectationDe": "Bei einem neuen Elektrophil erkennt sie, dass eine dauerhafte Addition die Aromatizität nicht wiederherstellt, und korrigiert den vorgeschlagenen Endschritt.",
+      "transferExpectationEn": "With a fresh electrophile, they see that permanent addition would not restore aromaticity and correct the proposed final step."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-32b449bf0dd1f91ed7fae7f97b1867b4e054cd5b03f1f6cb0440125a9bf3078e",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:ae7062e2ccedeebde64b73de5f9307385043c0496429b9b58b6ed7913e6ac217"
+}

@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-chemistry-positive-evidence-b004r-d8-current-png-v3",
+  "reviewedAt": "2026-09-30T17:24:00Z",
+  "reviewer": "codex-gpt-6-chemistry-d8-targeted-positive-evidence-recheck",
+  "goals": [
+    {
+      "goalId": "d8bdf486-7295-5393-b6f7-54f6e485c848",
+      "reason": "Gezielte inhaltliche P-Revalidierung nach dem neuen aktiven PNG SHA-256 515cc8d4…: Das Comic trennt Beobachtung und Modell und warnt ausdrücklich, dass Farbe allein nichts beweist. Dieses Profil verlangt deshalb zusätzlich artbezogene beziehungsweise Spektral-Messdaten, einen Rückwechsel derselben Probe und Kontrollen. Es behauptet keine menschliche Freigabe; Status bleibt ai_candidate/needs_human_review.",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "b004r-d8-observations",
+            "essentialUnderstandingDe": "Gegenläufige und wiederholte Änderungen von Acetat-/Essigsäure-Anteilen in einer bekannten Pufferprobe nach Säure-, Base- und erneuter Säurezugabe stützen einen umkehrbaren Protonenübergang. Ein Indikator zeigt allein nur pH-Änderungen; eine Probe ohne Acetat und unabhängig bestimmte Stoffanteile trennen Beobachtung von Modell.",
+            "essentialUnderstandingEn": "Opposing repeated changes in acetate/acetic-acid fractions in a known buffer after acid, base and renewed acid addition support reversible proton transfer. An indicator alone shows pH changes only; a no-acetate control and independently measured species fractions separate observation from model.",
+            "observablePerformanceDe": "Die lernende Person ordnet beobachtete pH- und Anteilsdaten den beiden Richtungen des Essigsäure/Acetat-Protonenübergangs zu und begründet, was Vergleichsprobe und Wiederholung tatsächlich zeigen.",
+            "observablePerformanceEn": "The learner maps observed pH and fraction data to both directions of the acetic-acid/acetate proton transfer and explains what the control and repeated cycle actually support."
+          },
+          {
+            "id": "b004r-d8-model-limits",
+            "essentialUnderstandingDe": "Die fachliche Ableitung hängt vom benannten konjugierten Säure-Base-Paar und den Versuchskontrollen ab; eine Farbrückkehr allein beweist weder die Teilchenart noch, dass alle Säure-Base-Reaktionen unter allen Bedingungen reversibel sind.",
+            "essentialUnderstandingEn": "The inference depends on the named conjugate acid-base pair and experimental controls; color returning alone proves neither species identity nor that every acid-base reaction is reversible under all conditions.",
+            "observablePerformanceDe": "Die lernende Person weist in einem neuen Indikator-System eine bloße Farbdeutung zurück und fordert passende artspezifische oder Spektral-Messdaten für die modellhafte Rückreaktion.",
+            "observablePerformanceEn": "In a fresh indicator system, the learner rejects color-only reasoning and calls for appropriate species-specific or spectral measurements to support the modeled reverse reaction."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b004r-d8-observations",
+            "b004r-d8-model-limits"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "pair",
+            "textDe": "Essigsäure/Acetat und ein neues schwaches Indikatorpaar werden verglichen.",
+            "textEn": "Acetic acid/acetate and a fresh weak indicator pair are compared."
+          },
+          {
+            "id": "observation",
+            "textDe": "pH-/Stoffanteilsdaten und Spektral-/Farbbeobachtungen werden hinsichtlich ihrer Aussagekraft getrennt.",
+            "textEn": "pH/species-fraction data and spectral/color observations are separated by evidential strength."
+          },
+          {
+            "id": "control",
+            "textDe": "Gleiche Probe mit Rückwechsel und stofffreie/dilutionsgeprüfte Kontrolle variieren.",
+            "textEn": "A repeated same-sample cycle and a no-pair/dilution control are varied."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "acetate-buffer-measured-cycle",
+            "taskDemandDe": "Ein bereitgestellter Datensatz einer lehrkraftgeführten Untersuchung enthält für dieselbe Essigsäure/Acetat-Probe pH-Werte und unabhängig gemessene relative Anteile von CH3COOH/CH3COO− vor und nach Säure→Base→Säure. Eine gleich behandelte Probe ohne Acetat zeigt ebenfalls Indikator-Farbwechsel, aber keine Acetat-Anteilsdaten. Leite den gestützten Protonenübergang ab und unterscheide Daten und Modell; keine eigene Durchführung.",
+            "taskDemandEn": "A supplied data set from a teacher-run investigation gives pH and independently measured CH3COOH/CH3COO− fractions in the same buffer sample before and after acid→base→acid. A similarly treated no-acetate sample also changes indicator color but has no acetate fractions. Infer the supported proton transfer and distinguish data from model; no learner experiment is requested.",
+            "expectedPerformanceDe": "Die lernende Person verknüpft erhöhtes CH3COOH nach Säure, erhöhtes CH3COO− nach Base und erneute CH3COOH-Zunahme nach Säure mit den Richtungen des Protonenübergangs. Sie führt die spezifische Deutung auf die Anteile und bekannte Zusammensetzung zurück, nicht auf die Indikatorfarbe allein; die Kontrolle zeigt deren fehlende Spezifität.",
+            "expectedPerformanceEn": "The learner links increased CH3COOH after acid, increased CH3COO− after base and renewed CH3COOH after acid to opposite proton-transfer directions. They ground the specific interpretation in species fractions and known composition, not indicator color alone; the control shows color is nonspecific.",
+            "understandingFocusDe": "Aktuelles korrigiertes PNG liefert die Beobachtung/Modell-Trennung, aber nicht die unabhängigen Stoffanteilsdaten des Transfers.",
+            "understandingFocusEn": "The corrected current PNG distinguishes observation from model but does not supply the independent species-fraction data used for transfer."
+          },
+          {
+            "id": "fresh-indicator-spectral-cycle",
+            "taskDemandDe": "Ein frischer Lehrer-Datensatz zu einem anderen schwachen Indikatorpaar HIn/In− zeigt in derselben Probe nach Säurezugabe mehr HIn-Spektralsignal, nach Base mehr In− und nach erneuter Säure wieder mehr HIn. Eine nur verdünnte Kontrolle verändert das Verhältnis nicht. Erkläre die Reversibilität und sage, warum reine Farbaufzeichnungen nicht genügen.",
+            "taskDemandEn": "A fresh teacher data set for a different weak indicator pair HIn/In− shows more HIn spectral signal after acid addition, more In− after base and more HIn again after renewed acid. A dilution-only control leaves the ratio unchanged. Explain reversibility and why color records alone do not suffice.",
+            "expectedPerformanceDe": "Die lernende Person modelliert HIn + H2O ⇌ In− + H3O+ als Paar, ordnet die gemessenen Spektralanteile den Richtungen zu und trennt sie von Farbbeobachtung und Verdünnung. Sie verallgemeinert nicht auf jedes Säure-Base-System.",
+            "expectedPerformanceEn": "The learner models HIn + H2O ⇌ In− + H3O+ as a pair, maps measured spectral fractions to the directions and separates these from color and dilution. They do not generalize to every acid-base system.",
+            "understandingFocusDe": "Neues konjugiertes Paar und unabhängiges Messsignal prüfen echten Transfer.",
+            "understandingFocusEn": "A fresh conjugate pair and independent signal test genuine transfer."
+          }
+        ]
+      }
+    }
+  ]
+}

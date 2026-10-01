@@ -1,0 +1,7 @@
+# Chemie B009 bcf: Bildkorrektur v2
+
+Tool: OpenAI built-in `image_gen`, model version not exposed. The [v1 candidate](../chemie-b009-bcf-redox-candidate-20261001-v1/bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a.png) was supplied as the **edit target**, after its [independent HOLD](../chemie-b009-bcf-redox-candidate-20261001-v1/independent-qa.md) found isolated product ion pairs. The v1 candidate and review remain unchanged.
+
+> Use case: precise-object-edit for a scientific-educational chemistry illustration. Edit the supplied 16:9 friendly comic image with ONE targeted scientific correction. KEEP the left stage exactly as two Mg atoms and one O2 molecule. KEEP the middle stage exactly as two Mg atoms giving four golden electron dots in total, two reaching each oxygen atom. KEEP the same color, style, labels, panel spacing, and arrows. CHANGE ONLY THE RIGHT PRODUCT STAGE: replace the two separate touching Mg2+/O2- pairs with ONE compact, visibly continuous, cropped segment of a magnesium oxide IONIC SOLID. Show alternating silver Mg2+ ions and red O2- ions in a small checkerboard lattice continuing past the panel edges, clearly not discrete MgO molecules; keep the 1:1 ratio and legible correct ion labels. Do not add new molecules, equations, words, or tiny text. Must be understandable at 360px width. Chemistry priority: ionic lattice, not isolated pairs.
+
+The 1672 × 941 px PNG was copied unchanged from `/home/enpasos/.codex/generated_images/01a0f2c0-2182-78f3-8b44-9fcdfd2c8634/exec-74cd7d08-6b5b-4061-b573-1a0c1f7385e3.png` to this inactive candidate directory.

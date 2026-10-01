@@ -1,39 +1,17 @@
 # Lernzielvisualisierung: Stoffgemische mit Trennverfahren trennen
 
-## SkillPilot-Ziel
-
 - SkillPilot-ID: `5a709938-e0f5-42b7-94f0-cfded08963a2`
-- Titel: Stoffgemische mit Trennverfahren trennen
-- Beschreibung: Die lernende Person kann Stoffgemische mit Verfahren wie Filtration, Destillation und Extraktion trennen und die Verfahrenswahl begründen.
+- Provider: OpenAI / ChatGPT-Codex `image_gen`
+- Aktives Bild: `5a709938-e0f5-42b7-94f0-cfded08963a2.png` (1672 × 941)
+- SHA-256: `bd0c0ee87fa3929a90a9768d59e085536f594792bb2d19cfbd3467a4df0540d1`
+- Status: KI-Bildfreigabe für Curriculum-QS; menschliche Freigabe offen.
 
-## Generator
+Das aktive PNG entstand nach vier gezielten Bildrunden aus dem historischen JPG als Stilreferenz. Die ersten drei Ergebnisse wurden wegen nachgewiesener fachlicher Bildfehler verworfen. Originalprompts, Hashes, Fehler und unabhängige Kandidatenprüfung stehen in `../../../quality/goal-visualization-review/chemie-b007-5a-correction-20260930-v1/5a709938-e0f5-42b7-94f0-cfded08963a2.correction-prompt.md` und `independent-candidate-v4-review.json`. Das ursprüngliche JPG und seine ursprünglichen Prompts liegen dort unverändert unter `historical-active-before-correction/`.
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
-- Quellbild: `5a709938-e0f5-42b7-94f0-cfded08963a2.jpg`
-- Public Asset: `/assets/goal-visualizations/chemie/5a709938-e0f5-42b7-94f0-cfded08963a2/5a709938-e0f5-42b7-94f0-cfded08963a2.jpg`
-
-## Prompt
+## Letzter tatsächlicher Edit-Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Stoffgemische mit Trennverfahren trennen
-Beschreibung: Die lernende Person kann Stoffgemische mit Verfahren wie Filtration, Destillation und Extraktion trennen und die Verfahrenswahl begründen.
-
-Zusatzanweisung:
-Die Thermometer-Messkugel ist noch zu tief. Korrigiere sie zwingend: Der rote Thermometerfaden darf nicht in den Kolbenhals hinunterlaufen. Zeichne das Thermometer kurz und senkrecht von oben in einen T-förmigen Destillierkopf. Seine kleine rote Messkugel endet oben im T-Stück genau auf der gedachten horizontalen Mittellinie des seitlichen Kondensatoranschlusses. Unterhalb des seitlichen Abgangs ist kein Thermometerteil sichtbar. Füge eine kleine gestrichelte waagerechte Hilfslinie von der Messkugel zum Eingang des Kühlers hinzu und beschrifte „Messkugel auf Höhe des Seitenabgangs“. Der Siedekolben darunter bleibt frei von jeder Messsonde. Alle übrigen Teile und Beschriftungen unverändert korrekt lassen. Keine Logos, keine Wasserzeichen, keine technischen Kennungen.
+Make a tiny, precise scientific correction to the attached 16:9 chemistry comic image. Preserve ALL imagery, color, size, composition, text, glassware, filtration, tea extraction and condenser positions. ONLY correct the TOP blue cooling-water arrow at the condenser's upper LEFT end, near the boiling flask: it currently points LEFT into that upper cooling-water spout, falsely showing another inlet. Reverse it so the arrow points RIGHT, visibly AWAY from the upper-left cooling-water spout, showing cooling water EXITING the jacket at that port. The LOWER RIGHT blue arrow near the receiving flask must continue pointing UP INTO the condenser jacket and must remain unchanged. Water must enter LOWER RIGHT, travel countercurrent inside the outer jacket to UPPER LEFT, and exit the upper-left port. If exact arrow reversal is difficult, remove the TOP arrowhead completely while preserving the outlet tube, but never leave a top arrow pointing INTO the jacket. Keep exactly the three large labels 'Filtration', 'Destillation', 'Extraktion'. No thermometer, no red bulb, no other edits.
 ```
 
-## Review-Notiz
-
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Die korrigierte Seite braucht nach dem Bildimport eigene aktuelle D/P-Bindungen; das Bild selbst belegt kein Lernen.

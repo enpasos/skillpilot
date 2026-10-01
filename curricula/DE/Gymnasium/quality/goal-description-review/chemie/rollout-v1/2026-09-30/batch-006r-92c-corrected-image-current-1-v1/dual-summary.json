@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:85ca9c62069fb1cf8e99b9b60c6453231c96c98f1c26e22149483bfc23817efc",
+  "reviewInputFingerprint": "sha256:96109dc5c377745b82196140c00f8ae67b7e66bc2e98bd7a889f5534a62aa442",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-006r-92c-corrected-image-current-1-v1-20260930-a",
+      "roundId": "chemie-rollout-v1-batch-006r-92c-corrected-image-current-1-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-006r-92c-corrected-image-current-1-v1-20260930-independent-a",
+      "runIds": [
+        "codex-gpt-6-round-a-chemie-b006r-92c-20260930"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-006r-92c-corrected-image-current-1-v1-20260930-b",
+      "roundId": "chemie-rollout-v1-batch-006r-92c-corrected-image-current-1-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-006r-92c-corrected-image-current-1-v1-20260930-independent-b",
+      "runIds": [
+        "chemie-b006r-92c-image-20260930-blind-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "92c99237-1c74-54fc-bf08-9191656afaa6",
+      "firstRecordId": "chemie-b006r-92c-round-a-92c99237-20260930",
+      "secondRecordId": "chemie-b006r-92c-b-01-92c99237",
+      "firstRunId": "codex-gpt-6-round-a-chemie-b006r-92c-20260930",
+      "secondRunId": "chemie-b006r-92c-image-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

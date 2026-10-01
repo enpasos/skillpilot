@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-resolution-92c99237-1c74-54fc-bf08-9191656afaa6",
+  "goal": {
+    "goalId": "92c99237-1c74-54fc-bf08-9191656afaa6",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:881145bade294b8ab9fb539bfffa367e011bf836eaef4524badd3fe1eaae7246",
+    "pageFingerprint": "sha256:c3b277c3488be85bf1703df75fc7bedb81626e73d3655bfc68e1eeb43d822bce",
+    "goalReviewContextFingerprint": "sha256:29fa0a733e8fd26beaee0f5a0fb65019bb8d6355955b6502db389b1252c357e1",
+    "finalText": {
+      "titleDe": "Moleküldarstellungen situationsgerecht umwandeln",
+      "titleEn": "Convert molecular representations appropriately",
+      "descriptionDe": "Die lernende Person kann verschiedene Formeldarstellungen von Molekülen ineinander überführen und situationsgerecht eine geeignete Darstellung auswählen.",
+      "descriptionEn": "The learner can convert different formula representations of molecules into one another and select an appropriate representation for the situation."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-a",
+      "campaignDigest": "sha256:70217b50aa2e9813d5cd6dab5b8d6f2878d02532b1b2e44f64677a19cd9d45b6",
+      "roundId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:95f019ff7673a6df71ce8eb54ec61e64f8c89797899284ef332d25fcff57465e",
+      "goalReviewContextFingerprint": "sha256:29fa0a733e8fd26beaee0f5a0fb65019bb8d6355955b6502db389b1252c357e1",
+      "batchId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-first-pass-a.batch-001",
+      "runId": "codex-gpt-6-round-a-chemie-b006-20260930",
+      "runManifestDigest": "sha256:fafafb74d8c4cb39efa3b4f3e2dcb984e6b2e112b0bb949ae1ab62099abf205f",
+      "resultsDigest": "sha256:9e86e842e1cac983ed3bae2fda89f2ffc7e5daf6d3a91faaf6ca07bc43c74268",
+      "recordId": "chemie-b006-round-a-92c99237-20260930",
+      "recordDigest": "sha256:3a9534f03e7b81246b8ab28b6c919aef3a0713fd3f76e49d7325dfd9d4f209a6"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-b",
+      "campaignDigest": "sha256:c25311aca90da7815621cdc56088f0c05a8fe844c50dcd6a986816350efa0b76",
+      "roundId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:95f019ff7673a6df71ce8eb54ec61e64f8c89797899284ef332d25fcff57465e",
+      "goalReviewContextFingerprint": "sha256:29fa0a733e8fd26beaee0f5a0fb65019bb8d6355955b6502db389b1252c357e1",
+      "batchId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-first-pass-b.batch-001",
+      "runId": "chemie-b006-ions-atoms-bonding-20260930-blind-b-run-001",
+      "runManifestDigest": "sha256:804927f4edd5823732423a152e8f6450b1ea00a70ad2e61680ca5e9445a21428",
+      "resultsDigest": "sha256:c2cad3620508dba0e5d511dff89f08ce70182756be77b1867bd3eb5a4403977a",
+      "recordId": "chemie-b006-b-16-92c99237",
+      "recordDigest": "sha256:3326cef943beb08a899a6894d834e29af9f6f0f0873257e5942196fb5e85c736"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:97ab8c47344472fd506d42215772a29d750107901ea7f8b2f9cf433bb2abcaf3"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-b006-ions-atoms-bonding-current-20-20260930-partial-synthesis",
+    "manifestDigest": "sha256:34bad8649ea535983d701ee9db872648de93b028ca0001d1f9590435cfefd6af",
+    "manifestFingerprint": "sha256:3253d8361ad94f7605762a486e35ba65528828446d32552a0f5b776602c17061",
+    "decisionId": "chemie-b006-ions-atoms-bonding-current-20-20260930-partial-synthesis-decision-006"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-b006-ions-atoms-bonding-current-20-20260930-partial-synthesis-decision-006",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis; seven current dual-round keeps, thirteen explicit deferrals; no human approval",
+    "synthesizedAt": "2026-09-30T18:01:07.000Z",
+    "rationaleDe": "Beide Runden behalten den Wechsel und die begründete Wahl molekularer Darstellungen als eine Modellkompetenz. Ein neuer Molekülfall prüft die Aussagekraft der jeweiligen Formel, ohne Strukturaufklärung vorauszusetzen.",
+    "rationaleEn": "Both rounds retain conversion and justified selection of molecular representations as one model competence. A fresh molecule tests each formula's information content without requiring structure elucidation.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Summen-, Struktur-, Lewis- und räumliche Darstellungen geben verschiedene Informationen über dasselbe Molekül. Eine geeignete Darstellung richtet sich nach der Frage, etwa Atomzahl, Bindungsverknüpfung oder Geometrie.",
+      "essentialUnderstandingEn": "Molecular, structural, Lewis and spatial representations convey different information about the same molecule. The suitable one depends on the question, such as atom count, connectivity or geometry.",
+      "observablePerformanceDe": "Die lernende Person überführt ein einfaches Strukturmodell in zwei Darstellungen und begründet, welche davon freie Elektronenpaare oder Verknüpfungen sichtbar macht.",
+      "observablePerformanceEn": "The learner converts a simple structural model into two representations and explains which shows lone pairs or connectivity.",
+      "transferExpectationDe": "Bei einem neuen Isomer-Paar verwirft sie die bloße Summenformel als Beleg für gleiche Verknüpfung.",
+      "transferExpectationEn": "For a fresh isomer pair, they reject molecular formula alone as proof of identical connectivity."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-497de4326bc895182dff78607b3a4db79201e61ce110662efd850fd7a752fde9",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:a17c3c7f0f10cd0591278cfb67abe9f44e3f93cbc94931958e99b8e2554e79de"
+}

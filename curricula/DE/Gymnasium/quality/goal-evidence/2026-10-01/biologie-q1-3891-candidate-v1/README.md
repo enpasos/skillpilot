@@ -1,0 +1,11 @@
+# Biologie Q1: Gentherapie prinzipiell erklären — Autorenkandidat v1
+
+**Status:** nichtblinder KI-Autorenvorschlag für das aktuelle Ziel `3891b735-9d0d-5eef-b653-6ad58b9181f6`. Kein D-Beschluss, keine P-Freigabe, keine Änderung an Kanon, Mapping, Views, Registry oder Lernendenstand. Der Q1-Zwölfer-Batch bleibt im In-flight-Ledger offen.
+
+Eigener didaktischer Inhalt: CC-BY-4.0, SkillPilot. Die amtlichen Quelltexte behalten ihre eigenen Rechte.
+
+Die [DE/EN-Textfassung](description-proposal.json) macht das gemeinsame GK/LK-Prinzip an einem vorgegebenen Beispiel prüfbar: geeignete Körperzellen, Ergänzung einer funktionsfähigen Genkopie **oder** Änderung vorhandener genetischer Information, beabsichtigte Zellfunktion und mögliche Wirkungsgrenze. Sie verlangt weder eine bestimmte Einschleusungstechnik noch LK-Verfahrensschritte oder einen Heilungsnachweis. Der [ursprüngliche V2-Evidenzprofilentwurf](positive-evidence.candidate.json) nutzt zwei fiktive, voneinander verschiedene Fälle; Gen-Ergänzung ist im ersten ausdrücklich enthalten. Die unabhängige Prüfung fand darin einen unzulässigen Schema-Archetyp. Der [korrigierte, schema-geprüfte v2-Entwurf](positive-evidence.candidate-v2.json) verwendet `concept`; der ursprüngliche Entwurf bleibt als Befund erhalten. Die [Quellen- und View-Notizen](source-view-impact.md) trennen den amtlichen HE-Stichpunkt von seiner lokalen Paraphrase und von der breiteren BY-Quelle.
+
+Das separat versionierte [PNG-Bildkandidat](../../../goal-visualization-review/biology-m7-q1-3891-candidate-20261001-v1/candidate-3891b735.png) zeigt nur die Gen-Ergänzung als vereinfachtes Beispiel. 360-px- und 680-px-Prüfansichten sowie Prompt und Selbstprüfung liegen daneben. Das Bild erklärt kein technisches Verfahren und ist kein Leistungsnachweis.
+
+Vor einer Übernahme sind die Quellenbindung einschließlich der bisherigen HE-`exact`-Zuordnung, die BY-Reichweite, die GK/LK-Projektion sowie eine unabhängige Fachprüfung des neuen Textes und Profils erforderlich. Eine Kanonrevision würde neue Text- und Seitenfingerprints erzeugen; D/A/M/P/V sind dafür neu zu prüfen beziehungsweise zu binden. Fehlendes aktives Primärbild und menschliche Freigabe bleiben getrennte offene Punkte. Dieses Paket verändert keine M7-Zahl.

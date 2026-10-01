@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-a-run-001",
+  "campaignId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-a",
+  "roundId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-first-pass-a",
+  "batchId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:352bc68e858891d3b5103aa99e54404963ed6c7746d90af5f7de7c2b5fce0d6a",
+  "bundleFingerprint": "sha256:46992d65b9d816b815370dbd4db740f63341937651904f129c1d2dfbdf641e78",
+  "bookDigest": "sha256:294b818449a24a145160075f8969898af56e238795d8e94b64e18d61ebcf9674",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:df3646c8823d3f3b83d99090eab34dfa41af76780dc8c6fe4c7de31150d6abeb",
+  "independenceGroupId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "0dd8380d-b542-5126-8d8e-f95d9ccded90"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:28901786278c69d21804966a677279a80cad94f88a7d82b291d175caca6d754f"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:5564a5182443b3fcc129926182971b17dcdbe836949806efb8dda79ce4b2213f"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:456e3c3fe01ccb18ed16961670d7b35f96ce8e38a1d36667101629fceb858f4e"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:352bc68e858891d3b5103aa99e54404963ed6c7746d90af5f7de7c2b5fce0d6a"
+    }
+  ],
+  "startedAt": "2026-09-30T23:01:02.094Z",
+  "completedAt": "2026-09-30T23:01:02.094Z",
+  "status": "completed",
+  "outputDigest": "sha256:9d772e6bda59ec5660825ff511a234794f89af86fde8f41e0329444d241a5a07",
+  "toolchainVersion": "codex-gpt-6-20261001"
+}

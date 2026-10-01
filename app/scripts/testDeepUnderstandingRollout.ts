@@ -14,6 +14,7 @@ import {
   intersectStrictGoalGates,
   loadDeepUnderstandingRolloutConfig,
   resolveResolutionBatchArtifactPath,
+  validateStandaloneResolutionIndexStructure,
   type DeepUnderstandingSubjectReport,
 } from './reportDeepUnderstandingRollout'
 import {
@@ -78,11 +79,34 @@ assert.equal(hasExactCurrentOpenDescriptionDeferral(
 assert.equal(hasExactCurrentOpenDescriptionDeferral(
   { ...deferredDescription, secondDecision: 'split_review' },
   { ...deferredDescription, secondDecision: 'split_review' },
-), false, 'A split review needs its separate identity decision.')
+), true, 'A current split review remains an open description deferral, not a completion.')
 assert.equal(hasExactCurrentOpenDescriptionDeferral(deferredDescription, {
   ...deferredDescription, secondDecision: 'keep',
 }), false, 'A forged deferral decision must fail closed.')
 assert.equal(hasExactCurrentOpenDescriptionDeferral(deferredDescription, undefined), false)
+
+const historicalDeferredIndex = {
+  $schema: 'https://skillpilot.com/schemas/goal-description-review/v1/goal-description-standalone-batch-resolution-index.schema.json' as const,
+  schemaVersion: 2 as const,
+  indexContract: 'goal-description-standalone-batch-resolution-index-v1' as const,
+  artifactSetId: 'fixture', subject: 'fixture', semanticKind: 'curricularAtomic',
+  batchGoalIds: ['retired-split-goal', 'goal-current'], deferredGoalIds: ['retired-split-goal'],
+  groups: [{
+    groupId: 'fixture-group', artifactDirectory: '.', dualSummaryPath: 'dual-summary.json',
+    dualSummaryDigest: `sha256:${'a'.repeat(64)}`, campaignGoalCount: 2, resolvedGoalCount: 1,
+  }],
+  resolutions: [{
+    goalId: 'goal-current', titleDe: 'Current', groupId: 'fixture-group', decision: 'keep_current',
+    resolutionPath: 'resolution.json', resolutionDigest: `sha256:${'b'.repeat(64)}`,
+    resolutionFingerprint: `sha256:${'c'.repeat(64)}`, strictDescriptionComplete: true,
+  }],
+}
+assert.deepEqual(validateStandaloneResolutionIndexStructure(
+  historicalDeferredIndex, new Set(['goal-current']),
+), [], 'A retired deferred input must not invalidate an unchanged current resolution.')
+assert.ok(validateStandaloneResolutionIndexStructure(
+  historicalDeferredIndex, new Set<string>(),
+).some((error) => error.includes('resolution goal goal-current is not current curricularAtomic')))
 
 const imageReview = {
   goalId: 'goal-a', visualizationState: 'available' as const, missingReason: '',

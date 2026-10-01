@@ -1,0 +1,337 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-b006-ions-atoms-bonding-current-20-20260930-partial-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis; seven current dual-round keeps, thirteen explicit deferrals; no human approval",
+  "synthesizedAt": "2026-09-30T18:01:07.000Z",
+  "batch": {
+    "batchId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930",
+    "batchManifestDigest": "sha256:b38c79a22e04d2a3df505b7efd5351e32458fa25ccd7a5c3ae46ee62273202af",
+    "configDigest": "sha256:1e12ae007b2e46b41dfc7ce2688673ed2ffa28e10364f57f64eeaf7ef34f5f73",
+    "bundleFingerprint": "sha256:a6ad45a16e16417cfebf9dddd198781b067744756e7b032e195c63de8b9f9250",
+    "bookDigest": "sha256:c9d91c557411704b5af49a07581b5002b3930903feb41a51712443db411b8ac2",
+    "reviewInputFingerprint": "sha256:95f019ff7673a6df71ce8eb54ec61e64f8c89797899284ef332d25fcff57465e",
+    "dualSummaryDigest": "sha256:97ab8c47344472fd506d42215772a29d750107901ea7f8b2f9cf433bb2abcaf3",
+    "canonicalLandscapeDigest": "sha256:836992150dd1b7ed6e1391052689623743d4d007acfbbb91b389df0fd78ebeb0"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-a",
+      "campaignDigest": "sha256:70217b50aa2e9813d5cd6dab5b8d6f2878d02532b1b2e44f64677a19cd9d45b6",
+      "roundId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:95f019ff7673a6df71ce8eb54ec61e64f8c89797899284ef332d25fcff57465e",
+      "batchId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:8a87e69e99fdab45548079305cbd383a6b3e3f852fcaa01e55d02152fbd95bb0",
+      "runId": "codex-gpt-6-round-a-chemie-b006-20260930",
+      "runManifestDigest": "sha256:fafafb74d8c4cb39efa3b4f3e2dcb984e6b2e112b0bb949ae1ab62099abf205f",
+      "resultsDigest": "sha256:9e86e842e1cac983ed3bae2fda89f2ffc7e5daf6d3a91faaf6ca07bc43c74268"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-b",
+      "campaignDigest": "sha256:c25311aca90da7815621cdc56088f0c05a8fe844c50dcd6a986816350efa0b76",
+      "roundId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:95f019ff7673a6df71ce8eb54ec61e64f8c89797899284ef332d25fcff57465e",
+      "batchId": "chemie-rollout-v1-batch-006-ions-atoms-bonding-current-20-v1-20260930-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:49aa0e292a53b5c93c0250b1032f165840d0ce555926fc7f1e47df6afcc777bb",
+      "runId": "chemie-b006-ions-atoms-bonding-20260930-blind-b-run-001",
+      "runManifestDigest": "sha256:804927f4edd5823732423a152e8f6450b1ea00a70ad2e61680ca5e9445a21428",
+      "resultsDigest": "sha256:c2cad3620508dba0e5d511dff89f08ce70182756be77b1867bd3eb5a4403977a"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-b006-ions-atoms-bonding-current-20-20260930-partial-synthesis-decision-001",
+      "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:48b31d2af3d8bad4d8bca60b9f2207bd26e94f4a5f47ac324424b3c19f0561f6",
+      "pageFingerprint": "sha256:fc03eec85c9b95d61095fdc486a8de145eee17c78c7f0b063d9e46968217cffb",
+      "goalReviewContextFingerprint": "sha256:b0fcc4e63a821a0975f1810aacfdbc1feb6eca19c7bf3b9dbd2d63e90ac667f2",
+      "finalText": {
+        "titleDe": "Leitfähigkeit von Stoffen vergleichen",
+        "titleEn": "Compare conductivity of substances",
+        "descriptionDe": "Die lernende Person kann feste, flüssige und gelöste Stoffe im Hinblick auf elektrische Leitfähigkeit vergleichen und Leiter sowie Nichtleiter fachlich unterscheiden.",
+        "descriptionEn": "The learner can compare solid, liquid, and dissolved substances with respect to electrical conductivity and distinguish conductors from insulators."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b006-round-a-018bec90-20260930",
+          "recordDigest": "sha256:09d6e5e2c9911dd3d368929376037e52f04bf56a5e654631d030ca97689c91e5"
+        },
+        "second": {
+          "recordId": "chemie-b006-b-01-018bec90",
+          "recordDigest": "sha256:f002c8c4ae2ef6c84062826e52d97ade286ee5aefdda619d7353c4d5a15e4d08"
+        }
+      },
+      "rationaleDe": "A und B behalten den zusammenhängenden Leitfähigkeitsvergleich bei. Stoffzustand, gelöste Stoffe und bewegliche Ladungsträger werden an neuen Daten geprüft; heiße Schmelzen werden nicht praktisch verlangt.",
+      "rationaleEn": "A and B retain the coherent conductivity comparison. State, dissolved substances and mobile charge carriers are tested on fresh data; no practical work with hot melts is demanded."
+    },
+    {
+      "decisionId": "chemie-b006-ions-atoms-bonding-current-20-20260930-partial-synthesis-decision-002",
+      "goalId": "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a7523909fddb3718179c6dc6c09c47dde83c6e6a61c789c75cf096af11922775",
+      "pageFingerprint": "sha256:b4269587457860e6fa1c60476af1a63ee169271777056ecc4bd0090c5ae2eaae",
+      "goalReviewContextFingerprint": "sha256:a472d4b030ed7b30f8e1e1c4f35f8ab1b1488a4735234e0ceec4d4a03826b7d9",
+      "finalText": {
+        "titleDe": "Energiestufenmodell und Elektronenverteilung anwenden",
+        "titleEn": "Apply the energy level model and electron distribution",
+        "descriptionDe": "Die lernende Person kann das Bohrsche Energiestufenmodell nutzen, Elektronenverteilungen einfacher Atome fachlich korrekt angeben und Ionisierungsenergien als experimentellen Hinweis auf Energiestufen deuten.",
+        "descriptionEn": "The learner can use Bohr's energy level model, correctly state electron distributions of simple atoms, and interpret ionization energies as experimental evidence for energy levels."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b006-round-a-f5efab9d-20260930",
+          "recordDigest": "sha256:86712c781bf2a608daaefaddd2434b397db1898567fba1e681de46babc82c504"
+        },
+        "second": {
+          "recordId": "chemie-b006-b-05-f5efab9d",
+          "recordDigest": "sha256:2e7006efe62b6625bad81c89f0ce9d76055681f54f4255cc96fde4c430f5c272"
+        }
+      },
+      "rationaleDe": "Beide Runden tragen die Verbindung einfacher Elektronenverteilungen mit Ionisierungsdaten als begrenzten Energiestufenmodell-Check. Die Daten werden nicht als direkter Beweis für Bohrbahnen oder genaue Orbitale ausgegeben.",
+      "rationaleEn": "Both rounds support linking simple electron distributions and ionization data as a bounded energy-level model check. The data are not presented as direct proof of Bohr paths or exact orbitals."
+    },
+    {
+      "decisionId": "chemie-b006-ions-atoms-bonding-current-20-20260930-partial-synthesis-decision-003",
+      "goalId": "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7dbc505266696e9687e2ff526b1afd2bdedd67bb9a817074ce5ff7ae560f6a48",
+      "pageFingerprint": "sha256:c2f4b82d2b209d0b61a4d34a0d62015da74a3abbeab039cdc3b6dac832f7d04e",
+      "goalReviewContextFingerprint": "sha256:a78ae49e51a2472a8c8d4db9798c360170086fbf897cf27f798cf23a75d3e678",
+      "finalText": {
+        "titleDe": "Periodensystem zur Strukturdeutung nutzen",
+        "titleEn": "Use the periodic table for structural interpretation",
+        "descriptionDe": "Die lernende Person kann Ordnungsprinzipien des Periodensystems anwenden, Ordnungszahl, Protonenzahl, Hauptgruppen und Valenzelektronenzahl entnehmen und daraus einfache Aussagen über Atome ableiten.",
+        "descriptionEn": "The learner can apply ordering principles of the periodic table, read atomic number, proton number, main groups, and valence electron count, and derive simple statements about atoms from them."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b006-round-a-e9d74940-20260930",
+          "recordDigest": "sha256:21417ad2a0458bbeded655b51ae9ad16dd0a87a9516ba0c7131d0b4d31f8a11d"
+        },
+        "second": {
+          "recordId": "chemie-b006-b-06-e9d74940",
+          "recordDigest": "sha256:c7ec556aa4df998c89ea42d83977b3f0dc92b824cc758580100c11a5e4886a37"
+        }
+      },
+      "rationaleDe": "A und B beurteilen Ordnungszahl, Protonenzahl, Hauptgruppe und Valenzelektronen bei einfachen Hauptgruppenatomen als eine PSE-Deutung. Der Geltungsbereich wird nicht auf Übergangsmetalle übertragen.",
+      "rationaleEn": "A and B judge atomic number, proton count, main group and valence electrons in simple main-group atoms as one periodic-table interpretation. The scope is not extended to transition metals."
+    },
+    {
+      "decisionId": "chemie-b006-ions-atoms-bonding-current-20-20260930-partial-synthesis-decision-004",
+      "goalId": "fcaf8c9b-bd81-552e-9d91-43649895471e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e0ebbc5d24f20e56a1ed3245d0d0fd2a6c10a59ec8ce4957c3fbeb1c1a92606c",
+      "pageFingerprint": "sha256:6e3c0993ae5324a5e69302488dece073d85a56014187573b14292eab9a1ba66d",
+      "goalReviewContextFingerprint": "sha256:acfac0b40ba6c41d0e3a7b1a98528f88b8beab723094dcff192a1bfb31758c21",
+      "finalText": {
+        "titleDe": "Metallmodell aus Stoffeigenschaften entwickeln",
+        "titleEn": "Develop a metal model from substance properties",
+        "descriptionDe": "Die lernende Person kann Eigenschaften von Metallen nutzen, um Grenzen des Dalton-Modells zu begründen und ein einfaches Modell für den Bau von Metallen zu entwickeln.",
+        "descriptionEn": "The learner can use properties of metals to justify limitations of Dalton’s model and develop a simple model of metallic structure."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b006-round-a-fcaf8c9b-20260930",
+          "recordDigest": "sha256:ca1864ba607569bc245a7c2eff38c5c0faf7eeaa73409dcb2fdbad3c6245e768"
+        },
+        "second": {
+          "recordId": "chemie-b006-b-08-fcaf8c9b",
+          "recordDigest": "sha256:29f2d690f27cf106efc78659738ee7e703ea87522135db5b66f52e578bffcecb"
+        }
+      },
+      "rationaleDe": "Beide Runden halten Leitfähigkeit und Verformbarkeit als Beobachtungen für ein einfaches Metallmodell mit ausdrücklicher Dalton-Grenze zusammen. Eine vollständige Bandtheorie wird nicht behauptet.",
+      "rationaleEn": "Both rounds retain conductivity and malleability as observations for a simple metal model with an explicit Dalton-model limit. A full band theory is not claimed."
+    },
+    {
+      "decisionId": "chemie-b006-ions-atoms-bonding-current-20-20260930-partial-synthesis-decision-005",
+      "goalId": "7964cb36-e9b1-5176-9426-a82041a5b72f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ae36d1a4b6e48ed652f3f08f38d04432c555d42c9dc1733575728032d8309254",
+      "pageFingerprint": "sha256:a2f2198ee440528315c56932429f3f6f281027984e854c7347490dacc16fd088",
+      "goalReviewContextFingerprint": "sha256:3f2bd5945242af7906b7cf6e356aba34836c3d2fcc0514a19faa73d9416494d0",
+      "finalText": {
+        "titleDe": "Molekülformeln und Verhältnisformeln unterscheiden",
+        "titleEn": "Distinguish molecular formulas and empirical ionic formulas",
+        "descriptionDe": "Die lernende Person kann gerichtete Anziehung in Molekülen und ungerichtete Anziehung in Ionengittern nutzen, um Molekülformeln von Verhältnisformeln zu unterscheiden.",
+        "descriptionEn": "The learner can use directed attraction in molecules and non-directional attraction in ionic lattices to distinguish molecular formulas from ionic ratio formulas."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b006-round-a-7964cb36-20260930",
+          "recordDigest": "sha256:1ba10a5fbcc20c2d485047622a1757f2594a9fc0d5ecc2384cfe1c8d38d3d1fb"
+        },
+        "second": {
+          "recordId": "chemie-b006-b-10-7964cb36",
+          "recordDigest": "sha256:fc18cfbf11adb8c8c109fc317a3e7847f527e5d804c22df82763c81294c7d49a"
+        }
+      },
+      "rationaleDe": "A und B tragen den gemeinsamen Darstellungsunterschied zwischen abgegrenztem Molekül und ausgedehntem Ionengitter. Verhältnis- und Molekülformeln werden aus dem Teilchenmodell erklärt, nicht als alleiniger Strukturbeweis verwendet.",
+      "rationaleEn": "A and B support the shared representation distinction between a discrete molecule and an extended ionic lattice. Empirical and molecular formulas are explained from particle models, not used as sole structural proof."
+    },
+    {
+      "decisionId": "chemie-b006-ions-atoms-bonding-current-20-20260930-partial-synthesis-decision-006",
+      "goalId": "92c99237-1c74-54fc-bf08-9191656afaa6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:881145bade294b8ab9fb539bfffa367e011bf836eaef4524badd3fe1eaae7246",
+      "pageFingerprint": "sha256:c3b277c3488be85bf1703df75fc7bedb81626e73d3655bfc68e1eeb43d822bce",
+      "goalReviewContextFingerprint": "sha256:29fa0a733e8fd26beaee0f5a0fb65019bb8d6355955b6502db389b1252c357e1",
+      "finalText": {
+        "titleDe": "Moleküldarstellungen situationsgerecht umwandeln",
+        "titleEn": "Convert molecular representations appropriately",
+        "descriptionDe": "Die lernende Person kann verschiedene Formeldarstellungen von Molekülen ineinander überführen und situationsgerecht eine geeignete Darstellung auswählen.",
+        "descriptionEn": "The learner can convert different formula representations of molecules into one another and select an appropriate representation for the situation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b006-round-a-92c99237-20260930",
+          "recordDigest": "sha256:3a9534f03e7b81246b8ab28b6c919aef3a0713fd3f76e49d7325dfd9d4f209a6"
+        },
+        "second": {
+          "recordId": "chemie-b006-b-16-92c99237",
+          "recordDigest": "sha256:3326cef943beb08a899a6894d834e29af9f6f0f0873257e5942196fb5e85c736"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten den Wechsel und die begründete Wahl molekularer Darstellungen als eine Modellkompetenz. Ein neuer Molekülfall prüft die Aussagekraft der jeweiligen Formel, ohne Strukturaufklärung vorauszusetzen.",
+      "rationaleEn": "Both rounds retain conversion and justified selection of molecular representations as one model competence. A fresh molecule tests each formula's information content without requiring structure elucidation."
+    },
+    {
+      "decisionId": "chemie-b006-ions-atoms-bonding-current-20-20260930-partial-synthesis-decision-007",
+      "goalId": "67cd332f-9db7-50e1-87f6-172ef3714300",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5c261ab5f972606410b910dc51a1474146745b34de13192b6ec14d3c26e51002",
+      "pageFingerprint": "sha256:bdfbe626b3d820326daad0bd81f74423bcc99cfc427f1a37745d31e8aa3ebeca",
+      "goalReviewContextFingerprint": "sha256:1261d4f58b0c974ffb49f4fd45f18d155b6d181ed6a2de3cd76d94016cf86c78",
+      "finalText": {
+        "titleDe": "Molekülgeometrien mit dem EPA-Modell erklären",
+        "titleEn": "Explain molecular geometry using the VSEPR model",
+        "descriptionDe": "Die lernende Person kann den räumlichen Bau einfacher Moleküle mithilfe des Elektronenpaarabstoßungsmodells erklären und mit Lewis- beziehungsweise Valenzstrichdarstellungen verknüpfen.",
+        "descriptionEn": "The learner can explain the spatial structure of simple molecules using the valence-shell electron-pair repulsion model and connect it with Lewis and valence-line representations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b006-round-a-67cd332f-20260930",
+          "recordDigest": "sha256:bacf39d57c2b0d29258eed30786cae5834b94a1643f8fbd39ad6394758f9e509"
+        },
+        "second": {
+          "recordId": "chemie-b006-b-18-67cd332f",
+          "recordDigest": "sha256:6f12b3aa3e7a2620b96ca6b31a5f673bf1929b80134786a7dec1cd0d49e27616"
+        }
+      },
+      "rationaleDe": "Beide Runden verbinden eine gegebene Lewis-Formel und die räumliche Gestalt einfacher Moleküle im EPA-Modell. Bindende und freie Elektronenpaare sowie Modellgrenzen sind prüfbar; eigene Q1-Geometrieziele bleiben getrennt.",
+      "rationaleEn": "Both rounds link a supplied Lewis formula to simple molecular geometry through VSEPR. Bonding and lone pairs and model limits are assessable; separate Q1 geometry goals remain distinct."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "B trennt Ionenentstehung von der Erklärung beweglicher Ladungsträger in Salzlösungen; die kanonische Beschreibung muss auf den Titelbereich eingegrenzt werden.",
+      "rationaleEn": "B separates ion formation from mobile charge carriers in salt solutions; the canonical description must be narrowed to the title's scope."
+    },
+    {
+      "goalId": "70b12d1c-abaf-45c6-ae9e-b571e9cbc126",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "A und B beanstanden die pauschale Gleichsetzung von Salzschmelze und wässriger Elektrolyse; Wasser, Elektroden und Bedingungen ändern mögliche Produkte.",
+      "rationaleEn": "A and B reject treating molten-salt and aqueous electrolysis alike; water, electrodes and conditions change possible products."
+    },
+    {
+      "goalId": "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "rationaleDe": "Beide Runden verlangen eine fachliche Aufteilung: Ionennachweis, Gemischzusammensetzung, saure/basische Lösungen und Produktprüfung sind unabhängige Nachweise mit Grenzen qualitativer Tests.",
+      "rationaleEn": "Both rounds require a split: ion detection, mixture composition, acidic/basic solutions and product claims are independent assessments with limits to qualitative tests."
+    },
+    {
+      "goalId": "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "B begrenzt die Edelgasregel auf einfache Hauptgruppenionen; sie erklärt nicht alle Ionenladungen als universelle Energieursache.",
+      "rationaleEn": "B limits the octet rule to simple main-group ions; it does not provide a universal energetic cause of all ionic charges."
+    },
+    {
+      "goalId": "79db6d68-b402-5563-a348-f2784fed8867",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "A und B verwerfen Elementarten und Reaktionstyp allein als verlässliches Strukturkriterium; Teilchenmodell und geeignete Stoffeigenschaften müssen tragen.",
+      "rationaleEn": "A and B reject element types and reaction type alone as reliable structural criteria; particle models and suitable substance properties must carry the distinction."
+    },
+    {
+      "goalId": "965ca297-5dbf-5e58-b5f0-6559a4433646",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "rationaleDe": "Beide Runden sehen mehrere eigenständige Leistungen: Ladungsausgleich in Salzformeln, Namen/Formeln und Eigenschaften aus dem Ionengitter; ein Split ist offen.",
+      "rationaleEn": "Both rounds find distinct performances: charge balancing in salt formulas, names and formulas, and properties from the ionic lattice; a split remains open."
+    },
+    {
+      "goalId": "c441d9e8-d9d9-5e55-a189-a37345541321",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "Beide Runden verlangen eine vollständige Energiebilanz: Gitterbildung allein begründet keinen exothermen Gesamtverlauf aus Elementen.",
+      "rationaleEn": "Both rounds require a full energy balance: lattice formation alone does not establish an exothermic net reaction from the elements."
+    },
+    {
+      "goalId": "e74f5301-70d3-5869-bd3d-79a5763a1718",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "B begrenzt vereinfachte Orbital- und Valenzstrichdarstellungen auf ausgewählte Hauptgruppenatome und einfache Ionen; komplexe Übergangsmetall-Ionen sind nicht abgedeckt.",
+      "rationaleEn": "B limits simplified orbital and Lewis representations to selected main-group atoms and simple ions; complex transition-metal ions are not covered."
+    },
+    {
+      "goalId": "bbe038e9-86ed-5ec6-ab33-316758ddb16d",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "B begrenzt Überlappung einfach besetzter Orbitale auf einfache Elektronenpaarbindungen; der aktuelle Text klingt für alle Molekülbindungen zu allgemein.",
+      "rationaleEn": "B limits overlap of singly occupied orbitals to simple electron-pair bonds; the current text is too general for all molecular bonds."
+    },
+    {
+      "goalId": "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "rationaleDe": "Beide Runden fordern eine Aufteilung von Bindigkeit, einfachen Lewis-Formeln und mesomeren Grenzstrukturen, weil dies getrennt nachweisbare Leistungen sind.",
+      "rationaleEn": "Both rounds require separating valency, simple Lewis formulas and resonance structures because they are independently assessable performances."
+    },
+    {
+      "goalId": "747c5777-07d7-51a9-9be3-7d0d6f51d4e2",
+      "firstDecision": "keep",
+      "secondDecision": "split_review",
+      "rationaleDe": "B identifiziert getrennte Nachweise für Bindungsdipol, Gesamtmolekülpolarität und ladungscodierte Oberflächen; A-KEEP hebt diesen offenen Split nicht auf.",
+      "rationaleEn": "B identifies separate assessments for bond dipoles, whole-molecule polarity and charge-coded surfaces; A's KEEP does not resolve this split."
+    },
+    {
+      "goalId": "49235cbe-6658-5e7e-8bd4-398416bcebdc",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "rationaleDe": "Beide Runden blockieren die eindeutige Ableitung von Haupt- und Nebenquantenzahl allein aus Flammenfarbe, Emissionslinien und erster Ionisierungsenergie; Modell- und Quellenbindung fehlen.",
+      "rationaleEn": "Both rounds block unique derivation of principal and azimuthal quantum numbers from flame color, emission lines and first ionization energy alone; model and source bindings are missing."
+    },
+    {
+      "goalId": "a138d7bf-163a-59e0-a50a-8438ef4f5168",
+      "firstDecision": "revise",
+      "secondDecision": "block",
+      "rationaleDe": "B blockiert die pauschale Ladungsbegründung aus d5/d10: verbreitete Fe2+ und Cu2+ widersprechen ihr; konkurrierende Energien und Geltungsbereich müssen geklärt werden.",
+      "rationaleEn": "B blocks the blanket d5/d10 charge explanation: common Fe2+ and Cu2+ contradict it; competing energies and scope need clarification."
+    }
+  ],
+  "manifestFingerprint": "sha256:3253d8361ad94f7605762a486e35ba65528828446d32552a0f5b776602c17061"
+}

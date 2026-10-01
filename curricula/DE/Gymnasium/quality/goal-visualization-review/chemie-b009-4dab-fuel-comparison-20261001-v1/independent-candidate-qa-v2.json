@@ -1,0 +1,52 @@
+{
+  "reviewKind": "independent-ai-image-candidate-review",
+  "reviewedAt": "2026-09-30T23:22:55Z",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "goalId": "4dab7d52-5b89-52ab-a425-17a7707f44c8",
+  "decision": "HOLD_REVISION_REQUIRED",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b009-4dab-fuel-comparison-20261001-v1/candidate-v2.png",
+  "candidateSha256": "sha256:319d355009e3cb37f281d6a2998411006e5bbb7a5409abe23e95eaf619b93028",
+  "candidateDimensions": "1448x1086 RGB PNG",
+  "candidateAspectRatio": "4:3",
+  "inspectedAtWidthsPx": [1448, 680, 360],
+  "previewPaths": [
+    "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b009-4dab-fuel-comparison-20261001-v1/candidate-v2-680px.png",
+    "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b009-4dab-fuel-comparison-20261001-v1/candidate-v2-360px.png"
+  ],
+  "activeComparison": {
+    "path": "app/public/assets/goal-visualizations/chemie/4dab7d52-5b89-52ab-a425-17a7707f44c8/4dab7d52-5b89-52ab-a425-17a7707f44c8.jpg",
+    "dimensions": "2752x1536 JPEG, approximately 16:9",
+    "inspectedAtWidthsPx": [2752, 360],
+    "finding": "The active image is densely tabular and much of its necessary writing is too small at 360 px. Its CO2-per-mole and vague heat labels do not establish a common basis; the categorical ratings are unsupported. The replacement need is documented, but this does not excuse a new conceptual error."
+  },
+  "currentCanonicalDescriptionDe": "Die lernende Person kann CO₂-Bilanzen und Reaktionswärmen verschiedener Brennstoffe auf einer vergleichbaren Bezugsgröße und innerhalb derselben Systemgrenze gegenüberstellen.",
+  "findings": [
+    {
+      "severity": "blocker",
+      "area": "scientific-causality",
+      "detail": "In both rows a rightward arrow runs from the fuel to heat waves and a second rightward arrow runs from those heat waves to the CO₂ cloud. The visible chain reads fuel → heat → CO₂. Heat does not produce CO₂; complete combustion releases heat and CO₂ concurrently. For an image teaching the relation between reaction heat and emissions, this causal ambiguity is material, especially without any combustion-event label. Show one combustion event with separate heat and CO₂ outputs, or otherwise remove the heat → CO₂ arrow. Reinspect actual 360/680 px previews after correction."
+    },
+    {
+      "severity": "pass",
+      "area": "qualitative-comparison",
+      "detail": "The equal-size heat motifs and smaller methane than carbon CO₂ cloud express the intended ordering for the same released heat in the direct-combustion model. The heading 'GLEICHE WÄRME' and both fuel/CO₂ labels are legible at 360 and 680 px. The clouds are qualitative, not a quantitative ratio."
+    },
+    {
+      "severity": "pass",
+      "area": "form-factor-and-style",
+      "detail": "Actual native, 680x510 and 360x270 images were inspected. The 4:3 PNG uses its additional phone height for two readable comparison rows, with no clipped elements or tiny required text. This is a justified didactic exception to the 16:9 default. Warm, abstract comic styling matches the existing visual landscape."
+    },
+    {
+      "severity": "limitation",
+      "area": "system-boundary-and-material",
+      "detail": "The picture covers direct CO₂ from complete combustion only; it does not show fuel production, transport, methane leakage, plant efficiency or lifecycle balance. The black rock could be read as commercial coal although the label says pure 'KOHLENSTOFF (C)'. Keep pure carbon clearly named in the image and prospective alt text, or use a less coal-like carbon symbol. Prospective alt text must state equal released heat and the direct-combustion boundary; broader CO₂ balances require separate learning evidence."
+    }
+  ],
+  "scientificEvidence": [
+    "https://www.eia.gov/environment/emissions/co2_vol_mass.php",
+    "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/8/chemie"
+  ],
+  "nextStep": "Revise the causal arrow composition, then obtain a fresh independent actual-pixel scientific and visual review of the corrected PNG. This v2 candidate must not be activated, bound as V approval or counted toward strict M7. Preserve the old JPG as history and keep human release approval separate.",
+  "scopeLimit": "Image-candidate review only; no canonical, registry, active-image or human-release change."
+}

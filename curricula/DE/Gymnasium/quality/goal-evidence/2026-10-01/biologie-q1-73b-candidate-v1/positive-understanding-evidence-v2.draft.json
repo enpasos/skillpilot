@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "packageId": "biologie-q1-73b-candidate-v1",
+  "authority": "ai_authoring_candidate",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "bindingStatus": "unbound_proposed_description",
+  "goalId": "73b66ead-e44a-5486-98e3-1fb3f99620a6",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "profile": {
+    "archetype": "data",
+    "expectations": [
+      {
+        "id": "question-scope-and-finding",
+        "essentialUnderstandingDe": "Ein Gentest beantwortet eine benannte genetische Frage nur innerhalb seines angegebenen Untersuchungsumfangs. Ein nachgewiesener oder nicht nachgewiesener Befund ist zunächst eine Aussage über diese geprüften Varianten, nicht über sämtliche Krankheitsursachen oder den künftigen Krankheitsverlauf.",
+        "essentialUnderstandingEn": "A genetic test answers a stated genetic question only within its specified scope. A detected or undetected finding first concerns the variants examined, not every possible cause of disease or the person's future clinical course.",
+        "observablePerformanceDe": "Die lernende Person benennt in einem vorgegebenen anonymen Fall den Anlass, die geprüfte Frage und den Untersuchungsumfang und erklärt, welche Aussage der konkrete Befund dazu tatsächlich stützt.",
+        "observablePerformanceEn": "In a supplied anonymous case, the learner identifies the reason for testing, the question and scope of the test, then explains what the reported finding actually supports."
+      },
+      {
+        "id": "limit-and-factual-counselling",
+        "essentialUnderstandingDe": "Befund, biologische Bedeutung und persönliche Entscheidung sind verschiedene Ebenen. Eine sachliche Beratung erklärt eine aus dem Fall ableitbare Aussagegrenze und lässt ungesicherte Prognosen oder pauschale Ausschlüsse offen.",
+        "essentialUnderstandingEn": "A finding, its biological meaning, and a personal decision are distinct. Factual counselling explains a limit supported by the case and leaves unsupported predictions or blanket exclusions open.",
+        "observablePerformanceDe": "Die lernende Person formuliert aus den Falldaten eine konkrete Grenze und eine verständliche, nicht bevormundende Beratungsaussage, ohne eine Erkrankung sicher vorherzusagen, alle Varianten auszuschließen oder der fiktiven Person eine Handlung vorzuschreiben.",
+        "observablePerformanceEn": "Using the case data, the learner states a concrete limit and a clear, non-directive counselling statement without predicting certain disease, ruling out all variants, or prescribing an action for the fictional person."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "question-scope-and-finding",
+        "limit-and-factual-counselling"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "test-question",
+        "textDe": "Einen auf eine bekannte Familienvariante gerichteten Vorhersagetest und einen begrenzten Test auf Trägerstatus als unterschiedliche Prüffragen verwenden.",
+        "textEn": "Use a predictive test for a known familial variant and a limited carrier test as different questions."
+      },
+      {
+        "id": "finding-and-limit",
+        "textDe": "Einen Nachweis mit vorgegebener unvollständiger Penetranz und einen Nichtnachweis innerhalb eines begrenzten Variantenpanels gegenüberstellen.",
+        "textEn": "Contrast detection with supplied incomplete penetrance and non-detection within a limited variant panel."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "detected-familial-variant",
+        "taskDemandDe": "Eine vollständig erfundene, anonyme Fallkarte nennt eine in dieser fiktiven Familie bekannte Variante V im Zusammenhang mit einer fiktiven Erkrankung E und die Frage, ob V bei der getesteten erwachsenen Person vorliegt. Der Test prüft V und meldet den Nachweis. Die Karte erklärt ausdrücklich, dass manche Personen mit V E nie entwickeln. Beurteile Anlass, Aussagekraft und Grenze des Befunds und formuliere eine sachliche Beratungsaussage. Es werden keine eigenen oder realen Familiendaten erfragt.",
+        "taskDemandEn": "A wholly fictional, anonymous case card names variant V known in this fictional family in connection with fictional condition E and asks whether the tested adult carries V. The test checks V and reports its detection. The card explicitly says that some people with V never develop E. Assess the reason for testing, the finding's evidential value and its limit, then formulate a factual counselling statement. No personal or real family data are requested.",
+        "expectedPerformanceDe": "Die lernende Person erkennt den Nachweis von V als Antwort auf die geprüfte Frage an, begrenzt aber jede sichere Erkrankungsprognose, weil laut Fallkarte nicht alle Träger E entwickeln. Die Beratungsaussage trennt diese beiden Punkte und trifft keine Entscheidung für die fiktive Person.",
+        "expectedPerformanceEn": "The learner accepts the reported detection of V as an answer to the tested question, but limits any certain disease prediction because the card says not all carriers develop E. The counselling statement separates these points and makes no decision for the fictional person.",
+        "understandingFocusDe": "Nachweis einer geprüften Variante und sichere spätere Erkrankung sind verschiedene Aussagen.",
+        "understandingFocusEn": "Detection of a tested variant and certain future disease are different claims."
+      },
+      {
+        "id": "negative-limited-carrier-panel",
+        "taskDemandDe": "Ein neuer, vollständig erfundener und anonymer Fall fragt nach dem Trägerstatus für eine rezessiv vererbte Erkrankung. Das vorgegebene Panel untersucht ausdrücklich nur eine begrenzte Liste benannter Varianten und meldet für diese keinen Nachweis; die Fallkarte sagt, dass andere Varianten nicht geprüft wurden. Beurteile Anlass, Aussagekraft und Grenze dieses Befunds für eine sachliche Beratung, ohne persönliche Handlungsempfehlung.",
+        "taskDemandEn": "A new wholly fictional and anonymous case asks about carrier status for a recessively inherited condition. The supplied panel explicitly checks only a limited list of named variants and reports none detected; the card says other variants were not examined. Assess the reason, evidential value, and limit of this finding for factual counselling, without personal action advice.",
+        "expectedPerformanceDe": "Die lernende Person sagt, dass die untersuchten Varianten nicht gefunden wurden, und erklärt, warum der Befund andere Varianten und damit einen Trägerstatus insgesamt nicht ausschließt. Die Beratungsaussage benennt die verbleibende Unsicherheit ohne Diagnose oder Entscheidung für die fiktive Person.",
+        "expectedPerformanceEn": "The learner says the tested variants were not found and explains why the finding does not exclude other variants or carrier status overall. The counselling statement names the remaining uncertainty without diagnosing or deciding for the fictional person.",
+        "understandingFocusDe": "Ein negativer Befund gilt für den angegebenen Testumfang und ist kein pauschaler Ausschluss.",
+        "understandingFocusEn": "A negative finding applies to the stated test scope and is not a blanket exclusion."
+      }
+    ]
+  }
+}

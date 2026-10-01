@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v2",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/biologie/rollout-v2/2026-10-01/m7-ephase-layer-a-two-context-current-20261001-v2.config.json",
+  "configDigest": "sha256:35047a8db7ee441d542b9878b92d254b2a83ed7307888c79a6a2c1a701a423b1",
+  "goalIds": [
+    "1984fd66-c117-5c29-87b3-1c1626e4ba81",
+    "5c2ce7b1-30ba-5e9c-99de-1ffac126ec13"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 363,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/biologie/rollout-v1/2026-09-30/m7-ephase-cells-enzymes-development-twelve-current-20260930-v1.book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:41a5ec78266bd4b0ed75af7c8c12ef169940cfa292f653b1092dd5890904d26b"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:bb334e5c53a37a976dd05313734a02a60756a75961623540e82e6c7ed9df834b",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:34ad286329db726c0a03ff1cf4c0663f4286024269499b812c86f41fe13a7fd7",
+    "reviewInputFingerprint": "sha256:612ad9500edb0510c6b60d6e18cd4e74ae272e6581dd914ff4258a67f06bdfe2",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v2-a",
+        "campaignDigest": "sha256:c5087897ffcd387312ef616463de23b125d14dd86ba1e029306800815e57d7a5",
+        "roundId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v2-first-pass-a",
+        "independenceGroupId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v2-independent-a",
+        "batchId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:3c123d9f8aa506eba65a5359bfd35b1c14794f2b4aa16e1cd2b2ac7eba24fbb0"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v2-b",
+        "campaignDigest": "sha256:e77afbd68c6301d3a4da1dd53791325377ced83e83bd12b116ae49a1122d34d1",
+        "roundId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v2-first-pass-b",
+        "independenceGroupId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v2-independent-b",
+        "batchId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:a899825ea9cb9ead995d5d2cc8488d454f7fbd07b2d31a9bbb85923d02d288c2"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

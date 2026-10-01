@@ -1,0 +1,46 @@
+{
+  "reviewKind": "independent-ai-positive-understanding-evidence-v2-content-qa",
+  "subject": "Biologie",
+  "reviewedAt": "2026-09-30T21:56:25Z",
+  "reviewer": "codex-biology-rnai-independent-p-recheck-v2",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "scopeLimit": "Independent content recheck of the revised RNAi P-v2 profile only. This does not certify learner performance, human approval, the other Q1 profiles, central five-gate completion or M7.",
+  "goalId": "ceb54223-197c-5289-a9c6-19358912e144",
+  "sourceConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-q1-three-revisions-current-v1/positive-evidence.config.json",
+  "sourceConfigSha256": "sha256:2d552578041b179beb1ed13b5b04afe3ee7c7afa98991d38c5f0d26cbaa2fdbe",
+  "sourceCandidatesPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-q1-three-revisions-current-v1/positive-evidence.candidates.json",
+  "sourceCandidatesSha256": "sha256:da9131ea1d470dc782885c0b9890201d3cd406600df2b409da85081b75414235",
+  "sourceRecordsPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-q1-three-revisions-current-v1/positive-evidence.review.jsonl",
+  "sourceRecordsSha256": "sha256:280e5e0122d554cbcc855ea4c66ab0884a95c07f309e1b7efab238bb7a941086",
+  "goalFingerprint": "sha256:3024d83019e02f97cebb38e450a9f54e72534e9cc5aaa300dc9078df7dbb9040",
+  "reviewInputFingerprint": "sha256:4cefd034effb6ae790a3f0122f65d5c0d5aee1feb289852056e68999f35c8ed8",
+  "profileFingerprint": "sha256:4f30c5fa4e34b3240dca54bcd2b7ff410038d61c4392c6156c2d233bf28f7e00",
+  "activeImageSha256": "sha256:6408a703ecfc38d8cda9a2fb8c6f1aedf6b10ccd5e7cb0d025e9370035a54b5c",
+  "activeImagePath": "app/public/assets/goal-visualizations/biologie/ceb54223-197c-5289-a9c6-19358912e144/ceb54223-197c-5289-a9c6-19358912e144.png",
+  "primarySources": [
+    {
+      "url": "https://www.fortbildung.kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+      "scope": "Ausgabe 2024, Stand 01.08.2025, Q1.2 Leistungskurs RNA-Interferenz, printed page 39"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2758002/",
+      "scope": "Primary biochemical study of Ago2, siRNA guide strand, sequence-specific target-mRNA cleavage"
+    }
+  ],
+  "technicalCheck": {
+    "command": "npm --prefix app run -s quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-q1-three-revisions-current-v1/positive-evidence.config.json",
+    "result": "PASS: 3 configured, 0 approved, 3 needs_human_review, 0 blockers",
+    "interpretation": "Current structural binding for the three configured profiles; this review assesses RNAi content separately."
+  },
+  "decision": "PASS_AI_CANDIDATE",
+  "resolvedPreviousFinding": "The second case now asks the learner to explain a new matching siRNA on an altered target, with both target-mRNA and protein decreases measured against untreated and previously matching but now nonmatching comparisons. It supplies a second positive RNAi explanation rather than only a negative control.",
+  "contentFindings": [
+    "The two cases vary the target context and sequence match. Case 1 uses a supplied Ago2/guide-strand schema; case 2 transfers the principle to an altered mRNA and newly designed matching siRNA. Both require a learner explanation, so the two-demonstration claim is supportable.",
+    "The DE and EN tasks, expected performances and understanding focuses ask for the same sequence-dependent interpretation and the same measured mRNA/protein comparison. Neither asks for DNA alteration, a universal RNAi route, a therapy outcome or guaranteed effects in other cells.",
+    "The 42% target-mRNA and 45% protein values in case 2 are consistent with reduced mRNA availability and protein formation. They do not by themselves prove Ago2 cleavage or exclude other causes; the wording correctly asks for a possible RNAi pathway and says the control values support, rather than prove, sequence dependence. Translational repression alone would not explain the lower measured mRNA, so assessment of a learner response should require that readout to be addressed.",
+    "The active 1672x941 PNG was visually inspected at original size. It depicts the first siRNA/RISC cleavage example and does not claim to depict the second case or all RNAi mechanisms. Canonical, public and backend PNG copies are byte-identical at the bound hash; machine image QA is yes and human approval remains no."
+  ],
+  "sourceScopeDecision": "The current Hessian Q1.2 source names RNA interference at LK level. The revised profile remains a supplied siRNA example within the narrower current DE/EN canonical goal; the raw DE-BY applicability is not independently established by this source check.",
+  "integrationDecision": "P_CONTENT_QA_PASS_FOR_THIS_CURRENT_PROFILE_ONLY"
+}
