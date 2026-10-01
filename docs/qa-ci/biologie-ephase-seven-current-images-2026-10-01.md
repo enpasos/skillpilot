@@ -4,10 +4,10 @@
 
 | Ziel (Anfang) | Aktive Fassung | Unabhängiger Bildbefund |
 | --- | --- | --- |
-| `56663bb4` Tierentwicklung | v1 | KEEP, [Review A](../../../curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ephase-seven-new-images-20261001-v1/review-a.md) |
-| `9d931642` Pflanzenentwicklung | v3 | v1/v2 HOLD, v3 KEEP, [Review B](../../../curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ephase-plant-development-20261001-v3/v3-review-b.md) |
-| `a545b28f` Meristem-Signale | v2 | v1 HOLD, v2 KEEP, [Review B](../../../curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ephase-three-image-corrections-20261001-v2/review-b.md) |
-| `7a79fda6` Membranmodelle | v1 | KEEP, [Review B](../../../curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ephase-seven-new-images-20261001-v1/review-b.md) |
+| `56663bb4` Tierentwicklung | v1 | KEEP, [Review A](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ephase-seven-new-images-20261001-v1/review-a.md) |
+| `9d931642` Pflanzenentwicklung | v3 | v1/v2 HOLD, v3 KEEP, [Review B](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ephase-plant-development-20261001-v3/v3-review-b.md) |
+| `a545b28f` Meristem-Signale | v2 | v1 HOLD, v2 KEEP, [Review B](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ephase-three-image-corrections-20261001-v2/review-b.md) |
+| `7a79fda6` Membranmodelle | v1 | KEEP, [Review B](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ephase-seven-new-images-20261001-v1/review-b.md) |
 | `dd196715` allosterische Hemmung | v1 | KEEP, Review B wie oben |
 | `e566ae2f` RGT-Regel | v2 | v1 HOLD, v2 KEEP, Review B wie oben |
 | `861fbc18` Transportprozesse | v1 | KEEP, Review B wie oben |

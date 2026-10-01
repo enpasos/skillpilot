@@ -2,8 +2,10 @@ import assert from 'node:assert/strict'
 import { mkdir, mkdtemp, readFile, readdir, rm, symlink, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { GOAL_BOOK_PUBLICATION_REGISTRY } from '../src/utils/goalBookPublicationRegistry'
 import { buildGoalBookPublications, goalBookBuildArtifactNames, verifyGoalBookPrintFonts } from './buildGoalBookPublications'
+import { loadGoalBookBuildInputs } from './goalBookModel'
 import {
   GOAL_BOOK_BUILD_CACHE_FILE,
   goalBookBuildCacheMatches,
@@ -60,6 +62,19 @@ try {
   for (const definition of GOAL_BOOK_PUBLICATION_REGISTRY) {
     assert.ok(goalBookBuildArtifactNames(definition).includes(`${definition.artifactStem}.pdf`))
   }
+
+  const biologyConfigPath = fileURLToPath(new URL(
+    './config/goal-books/de-gym-biology-national-atlas.json',
+    import.meta.url,
+  ))
+  const biologyBook = (await loadGoalBookBuildInputs(biologyConfigPath)).model
+  const biologyMethodsPage = biologyBook.pages.find(
+    (page) => page.goalId === 'd97f6957-fbc9-569c-8648-f7df5eb9dfd8',
+  )
+  assert.equal(biologyMethodsPage?.visualization?.qaStatus, 'review_candidate',
+    'an active Biology image must be bound to its current QA record in the review book')
+  assert.equal(biologyMethodsPage?.visualization?.approvedForPublication, false,
+    'machine image review must not imply human publication approval')
 
   const cached = join(temporaryRoot, 'cached')
   await mkdir(cached)
