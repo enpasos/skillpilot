@@ -22,6 +22,11 @@ FORMULA_TEXT_NORMALIZATION_RECEIPT_PATH = os.path.join(
     "math-m7-five-volume-png-20260924-v1",
     "formula-text-normalization.json",
 )
+CHEMISTRY_MOBILE_CURRENT_IMAGE_REVIEW_PATH = os.path.join(
+    GOAL_VISUALIZATION_REVIEW_ROOT,
+    "chemie-b010-mobile-current-two-independent-qa-20260930-v1",
+    "review.json",
+)
 
 
 def validate_personalization_flow_contract(schema_path, schema):
@@ -507,6 +512,25 @@ def is_known_non_landscape_goal_collection(file_path, data):
         for root in NON_LANDSCAPE_GOAL_COLLECTION_ROOTS
     ):
         return True
+    if normalized_path == CHEMISTRY_MOBILE_CURRENT_IMAGE_REVIEW_PATH:
+        # This historical review predates schemaVersion on visualization
+        # receipts. Its exact identity and goal entries distinguish it from
+        # a runtime landscape without rewriting the reviewed artifact.
+        return (
+            data.get("reviewKind")
+            == "independent-current-image-chemistry-and-mobile-legibility-qa"
+            and data.get("reviewedAt") == "2026-09-30T20:28:21Z"
+            and data.get("authority") == "ai_machine_qa_only"
+            and data.get("humanApprovalClaim") is False
+            and isinstance(data.get("goals"), list)
+            and bool(data["goals"])
+            and all(
+                isinstance(goal, dict)
+                and isinstance(goal.get("goalId"), str)
+                and goal["goalId"].strip()
+                for goal in data["goals"]
+            )
+        )
     if not (
         normalized_path.startswith(GOAL_VISUALIZATION_REVIEW_ROOT + os.sep)
         and type(data.get("schemaVersion")) is int
@@ -723,6 +747,38 @@ def validate_landscape_discovery_contract():
                 "math-m7-five-volume-png-20260924-v1/backup/",
             )
             cases.append((nested_copy_path, review, True))
+
+    historical_chemistry_review = {
+        "reviewKind": "independent-current-image-chemistry-and-mobile-legibility-qa",
+        "reviewedAt": "2026-09-30T20:28:21Z",
+        "authority": "ai_machine_qa_only",
+        "humanApprovalClaim": False,
+        "goals": [{"goalId": "reviewed-goal"}],
+    }
+    review_path = CHEMISTRY_MOBILE_CURRENT_IMAGE_REVIEW_PATH
+    cases.append((review_path, historical_chemistry_review, False))
+    for field in ("reviewKind", "reviewedAt", "authority", "humanApprovalClaim"):
+        missing_marker = dict(historical_chemistry_review)
+        del missing_marker[field]
+        cases.append((review_path, missing_marker, True))
+        for invalid_value in (None, "unknown", [], 1, True):
+            cases.append(
+                (review_path, {**historical_chemistry_review, field: invalid_value}, True)
+            )
+    for invalid_goals in (None, {}, [], [{"goalId": " "}], [None]):
+        cases.append(
+            (review_path, {**historical_chemistry_review, "goals": invalid_goals}, True)
+        )
+    for id_field in ("landscapeId", "id"):
+        cases.append((review_path, {**historical_chemistry_review, id_field: None}, True))
+    for other_path in (
+        review_path.replace("review.json", "review.backup.json"),
+        review_path.replace("goal-visualization-review", "other-review"),
+        review_path.replace(
+            "goal-visualization-review", "goal-visualization-review-backup"
+        ),
+    ):
+        cases.append((other_path, historical_chemistry_review, True))
 
     for file_path, data, expected in cases:
         if looks_like_runtime_landscape(file_path, data) is not expected:

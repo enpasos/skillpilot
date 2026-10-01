@@ -160,6 +160,15 @@ const grandfatheredOccurrences: GrandfatheredOccurrence[] = [
     found: 'Lernlandschaft',
     lineSha256: '93292fa26ce4d15b2ab87d8689386b2eb73b7169e83fdff73dc1e90240145718',
   },
+  // Preserve the exact text sent to the image generator in this dated prompt record.
+  {
+    ruleId: 'TRM-001',
+    path: 'curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-m7-global-inquiry-20260930-v1/generation-prompts.md',
+    line: 7,
+    column: 163,
+    found: 'learning landscape',
+    lineSha256: 'd56397c29971e66420b28775bc935dacf9279e30bcc372cac29ea6db7a41b749',
+  },
 ]
 
 /** This file lists the retired terms and would otherwise report itself. */

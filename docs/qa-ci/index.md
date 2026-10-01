@@ -42,6 +42,17 @@ Use this page by role: start with the overview documents, then jump to a review 
 - [Documentation Guidelines](../dev/documentation-guidelines.md)
   Rules for document roles, generated artifacts, runbooks, and dated pilot records.
 
+## Chemie/Biologie M7: datierte Arbeitsstände
+
+- [Zieltext](chemie-biologie-m7-goaltext-2026-09-30.md)
+- [Pausierter Commit-Zwischenstand vom 1. Oktober](chemie-biologie-m7-pause-checkpoint-2026-10-01.md)
+- [Chemie B009: drei aktuelle Abschlüsse](chemie-b009-three-current-integration-2026-10-01.md)
+- [Biologie E.3: vier aktuelle Bilder](biologie-e3-four-current-images-2026-10-01.md)
+- [Biologie E-Phase: sieben weitere aktuelle Bilder](biologie-ephase-seven-current-images-2026-10-01.md)
+- [Biologie: Korrektur des Proteintransport-Bildes](biologie-5c2-proteintransport-bildkorrektur-2026-10-01.md)
+- [Biologie E-Phase: Audit lokaler Prüfungsaufgaben](biologie-ephase-capstone-only-thirteen-local-task-audit-2026-10-01.md)
+- [Biologie Q1: Audit des nächsten Pakets](biology-q1-next-package-audit-2026-10-01.md)
+
 ## Review Lanes
 
 These pages describe durable manual or semi-automated review processes. Their ledgers or configs are the source of truth; generated status pages are not.
