@@ -1,0 +1,50 @@
+{
+  "reviewKind": "independent-ai-positive-understanding-evidence-v2-content-recheck",
+  "reviewedAt": "2026-09-30T22:41:01Z",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "goalId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+  "decision": "PASS_AI_CANDIDATE",
+  "priorHoldArtifact": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/biologie-e3-free-trisomy21-current-v1/independent-p-qa.json",
+  "sourceConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/biologie-e3-free-trisomy21-current-v1/positive-evidence-v2.config.json",
+  "sourceConfigSha256": "sha256:92328af42f8e681b6afff49f146f176060244263a8c6a07da3a39702aaa3cb8f",
+  "sourceCandidatesPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/biologie-e3-free-trisomy21-current-v1/positive-evidence-v2.candidates.json",
+  "sourceCandidatesSha256": "sha256:53e6687475ec4d427b7da30c32689c4fa6ee02f6bfa4e6f88909ed7289973078",
+  "sourceRecordsPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/biologie-e3-free-trisomy21-current-v1/positive-evidence-v2.review.jsonl",
+  "sourceRecordsSha256": "sha256:d2654db7f2dad0a31dd380b5afbc0f8a404161238cb834f3a16289ae6e104133",
+  "goalFingerprint": "sha256:f658d04d24e864b314e14bec7e107233f802386b36499f739e1477cd4597e176",
+  "profileFingerprint": "sha256:75fbfc9efa9a0855f5628eda725f9bf3b558eee9de542924e3e07a4dc3ba35ba",
+  "candidateStatus": "needs_human_review",
+  "candidateReviewAuthority": "ai_candidate",
+  "technicalCheck": {
+    "command": "npm --prefix app run -s quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/biologie-e3-free-trisomy21-current-v1/positive-evidence-v2.config.json",
+    "result": "PASS: 1 configured, 0 approved, 1 needs_human_review, 0 blocking issues; current structural and fingerprint binding"
+  },
+  "findings": [
+    {
+      "severity": "pass",
+      "area": "scientific-core-and-curriculum",
+      "detail": "Both languages correctly distinguish three separate chromosome 21 copies in free trisomy 21 from the usual two and classify the number change as a genome mutation rather than a single-gene sequence change. Nondisjunction yielding a reproductive cell with two copies, then joining a one-copy cell to make three, is presented as one possible route. No claim is made that every form of trisomy 21 has this structure or route. This fits the official HE E.3 principle/example scope."
+    },
+    {
+      "severity": "pass",
+      "area": "respectful-wording-and-scope",
+      "detail": "The former 'Trisomie-21-Erkrankung' and 'normale Keimzelle' wording is gone. DE and EN use precise copy counts, do not infer health characteristics from a diagram, and explicitly exclude genetic diagnosis. The tasks ask only for a simplified chromosome-number model within the current canonical goal."
+    },
+    {
+      "severity": "pass",
+      "area": "two-independent-demonstrations",
+      "detail": "Case 1 starts from an observed three-copy outcome and asks for classification and a possible origin. Case 2 starts from an unlabelled, differently arranged segregation outcome; the learner must select the relevant gamete, derive 2 + 1 = 3, name the change level and explain the error without a supplied error or trisomy label. These are separately answerable reasoning directions and give a meaningful fresh transfer of both required expectations. The second task no longer supplies its target classification as the prior HOLD did."
+    },
+    {
+      "severity": "pass",
+      "area": "record-and-status",
+      "detail": "The materialized record binds the current goal and profile fingerprints, retains E1/G1 bounds, and truthfully remains needs_human_review with ai_candidate authority. The accidentally future reviewedAt was corrected to 2026-09-30T22:40:13Z before this review. The targeted checker reports no structural blockers but does not supply human approval or observed learner performance."
+    }
+  ],
+  "nonBlockingBoundary": "The briefs intentionally simplify meiosis. A realized card must show two distinct chromosome 21 copies clearly and avoid implying that one pictured division is a complete account of meiosis. Case 1 cues a possible two-copy gamete, but still requires the learner to explain the number change and causal path; case 2 supplies independent classification and prediction. Count positive evidence only from actual substantive learner explanations, not from recognition of the displayed copy counts alone.",
+  "primaryCurriculumSource": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+  "sourceScope": "Official HE E.3, printed page 34: 'Mutation (Prinzip) am Beispiel Trisomie 21'. The broader wording of a local source extraction is not imposed as a new requirement.",
+  "scientificReference": "https://medlineplus.gov/genetics/condition/down-syndrome/",
+  "scopeLimit": "This is an independent AI content judgment on the revised candidate and its current record, not strict P approval, human review, diagnosis, observed learner mastery, or central five-gate closure. No candidate, canonical goal, source mapping, asset, or central registry was edited."
+}

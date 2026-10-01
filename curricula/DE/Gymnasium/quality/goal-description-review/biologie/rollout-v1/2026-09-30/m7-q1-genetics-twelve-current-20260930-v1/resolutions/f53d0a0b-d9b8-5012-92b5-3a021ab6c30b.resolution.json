@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-resolution-f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+  "goal": {
+    "goalId": "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:595115e302ad0e30c85b53383eaba67b31f4a834f006c227b4c0a6001ead46b8",
+    "pageFingerprint": "sha256:58cf488def5c1a9e9ad76f13c62b1c2f57c4bbcdfb887e5ce013138cf5029918",
+    "goalReviewContextFingerprint": "sha256:fb3a5261ae8d9f40db5094d23c24011423bfcf68895013a2d9ba0360690a25fa",
+    "finalText": {
+      "titleDe": "CRISPR/Cas erläutern",
+      "titleEn": "Explain CRISPR/Cas",
+      "descriptionDe": "Die lernende Person kann Funktionsweise und Einsatz der CRISPR/Cas-Methode beschreiben.",
+      "descriptionEn": "The learner can describe the mode of action and application of the CRISPR/Cas method."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-a",
+      "campaignDigest": "sha256:d448c7b4a367445186a243964a0e284a3bb635a73f2a5cda8a182a563ca886d9",
+      "roundId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-first-pass-a",
+      "independenceGroupId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-independent-a",
+      "reviewInputFingerprint": "sha256:ae92a05e686b176cd5a413d8738f6ba95453a7f3460feb78d9fac1d359bdc652",
+      "goalReviewContextFingerprint": "sha256:fb3a5261ae8d9f40db5094d23c24011423bfcf68895013a2d9ba0360690a25fa",
+      "batchId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-first-pass-a.batch-001",
+      "runId": "codex-gpt-6-biology-q1-round-a-20260930",
+      "runManifestDigest": "sha256:0e11994d9fbfd7a554cb2eab8e16016620e9b26245b7473cd9ca6a2dad495b5c",
+      "resultsDigest": "sha256:72d1300919c2608da0fcfb03bd81f130c4e44a03289bb9dd41d48a8354e9d2e2",
+      "recordId": "bio-q1-round-a-f53d0a0b-20260930",
+      "recordDigest": "sha256:6f55c662c83deeb3226e4f2b06ed24dabe8ed258161e823a5397206440fe5acb"
+    },
+    "second": {
+      "campaignId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-b",
+      "campaignDigest": "sha256:faaedfda362b2e17cf275041a969ee8da3a6824d6593691fabaec86e51269297",
+      "roundId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-first-pass-b",
+      "independenceGroupId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-independent-b",
+      "reviewInputFingerprint": "sha256:ae92a05e686b176cd5a413d8738f6ba95453a7f3460feb78d9fac1d359bdc652",
+      "goalReviewContextFingerprint": "sha256:fb3a5261ae8d9f40db5094d23c24011423bfcf68895013a2d9ba0360690a25fa",
+      "batchId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-first-pass-b.batch-001",
+      "runId": "biologie-q1-genetics-twelve-20260930-blind-b-run-001",
+      "runManifestDigest": "sha256:2a89e98b47355cd97c7afd7490184510d6ee87b5df6df81b5fd4e202a9e0a0b3",
+      "resultsDigest": "sha256:1da543213d0aabcc1856ae6fc247e4738bb82f7829e037b883d8f7c93ec6fec7",
+      "recordId": "biologie-q1-b-12-f53d0a0b",
+      "recordDigest": "sha256:2048809f9e5cbce35bb00d7bc119ad349e9c8d3256fc2441d3de5f28439c2845"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:32b8993a980b8ca2a07938644cc6a9e0834c96955ad2be68f702f9dccf0168e0"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-synthesis",
+    "manifestDigest": "sha256:035f5867ab846a5d9efb30d2862b8a032c1c99d4e1e9deb7804cb4ac29b9185b",
+    "manifestFingerprint": "sha256:90345f8c7ddf5ca39146c99b024489f1c97b65bd84563cdeb0fbfd8d728e8f7c",
+    "decisionId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-synthesis-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-synthesis-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-root-biology-q1-a-b-reconciler-2026-09-30",
+    "synthesizedAt": "2026-09-30T20:12:49.000Z",
+    "rationaleDe": "Beide unabhängig blinden Runden behalten das aktuelle LK-Ziel: Funktionsweise und begrenzter Einsatz der CRISPR/Cas-Methode bilden eine zusammenhängende Methodenkompetenz. Das aktuelle Bild zeigt Leit-RNA, PAM und Schnitt, aber keine Reparatur; ein präzises Editierergebnis wird durch die Beschreibung nicht behauptet. Quellen-, P- und V-Gates bleiben separat.",
+    "rationaleEn": "Both independent blind rounds keep the current LK goal: mechanism and bounded use of CRISPR/Cas form one coherent method competency. The current image shows guide RNA, PAM, and cleavage but no repair; the description does not promise a precise edit. Source, positive-evidence, and image gates remain separate.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine passende guide-RNA führt ein Cas-Nuklease-System zu einer DNA-Zielregion mit erforderlicher Erkennungsvoraussetzung; Cas kann einen Schnitt setzen, dessen endgültige Sequenzfolge von der späteren Reparatur abhängt.",
+      "essentialUnderstandingEn": "A matching guide RNA directs a Cas nuclease to a DNA target with the required recognition context; Cas can cut DNA, while the final sequence outcome depends on later repair.",
+      "observablePerformanceDe": "Die lernende Person liest ein neues vereinfachtes Ziel/PAM/guide-Schema, markiert die mögliche Schnittstelle und erklärt, welche Aussage über die beabsichtigte Anwendung ohne Reparaturdaten offenbleibt.",
+      "observablePerformanceEn": "The learner reads a fresh simplified target/PAM/guide diagram, marks the possible cut and explains which claim about an intended use remains open without repair data.",
+      "transferExpectationDe": "Bei einer geänderten Zielsequenz oder fehlendem PAM prüft sie die Zielerkennung neu und verwechselt einen vorgesehenen Schnitt nicht mit einer nachgewiesenen präzisen Korrektur.",
+      "transferExpectationEn": "With an altered target sequence or absent PAM, the learner rechecks targeting and does not equate an intended cut with proven precise correction."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-8a4e011a635af6063d23caa870beea57e99f10c5e6b02c5aa103b96d2b1cc285",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:108a833cf7e5e7c3e4c20ee8e08f923a97300909ede0b6a828761c9dbb08c679"
+}

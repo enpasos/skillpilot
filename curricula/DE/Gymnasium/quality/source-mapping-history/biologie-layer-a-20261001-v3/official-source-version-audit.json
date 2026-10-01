@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "auditId": "biologie-layer-a-official-he-sh-source-version-20261001-v1",
+  "reviewStatus": "primary source checked; candidate/current-binding distinction preserved",
+  "checkedAt": "2026-10-01",
+  "hessen": {
+    "activeSourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_BIOLOGIE_SEKII_KC2024.source-extraction.json",
+    "activeExtractionSourceUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+    "historicalPdf": {
+      "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+      "sha256": "5b3d39f97c0d79f307f297d037cf18fb0cad3f4ac8066019c331b684482ee801",
+      "pdfPages": 47,
+      "printedE1Pages": [
+        33,
+        34
+      ],
+      "printedE2E3Page": 34
+    },
+    "currentPdf": {
+      "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+      "title": "Kerncurriculum gymnasiale Oberstufe Biologie, Ausgabe 2024, Stand 01.08.2025",
+      "sha256": "52c278d6f5a7383361631d5251550c42222f13e1bbe2aa16d39ca3b12c5e1558",
+      "pdfPages": 49,
+      "printedE1Pages": [
+        35,
+        36
+      ],
+      "printedE2E3Page": 36
+    },
+    "e3OfficialContentSummary": [
+      "Mitose und Meiose vergleichen und Zellzyklus",
+      "Mutation als Prinzip am Beispiel Trisomie 21",
+      "Geschlechtsfestlegung mit Karyogramm, Kerngeschlecht, X/Y, somatischem und psychischem Geschlecht",
+      "Entwicklung von Befruchtung bis Blastocyste als Übersicht",
+      "embryonale Schädigungen mit Beispielen"
+    ],
+    "sourceExtractionIssues": [
+      {
+        "sourceGoalId": "8d8be51a-2d23-4bc1-a5cc-647a38709723",
+        "issue": "synthetic E.3.3 paraphrase combines Blastocyste overview and unspecified disorders; current official bullets are separate",
+        "targetCanonicalId": "2517be3f-e42f-5e41-889d-70f00dc24686"
+      },
+      {
+        "sourceGoalId": "d5a537f3-7d53-4df7-b252-07f571d79688",
+        "issue": "synthetic E.3.4 paraphrase lacks explicit information-source limit; Karyogramm alone cannot yield somatic or psychological sex",
+        "targetCanonicalId": "37147890-84e4-5ba7-80e1-92fbf2070d7c"
+      },
+      {
+        "sourceGoalId": "167dcf2e-04b3-4de0-b386-ddce6ed47112",
+        "issue": "synthetic E.3.5 paraphrase combines Blastocyste development and teratogenic effects; current official bullets are separate",
+        "targetCanonicalId": "c5435624-7b6a-5330-b8cc-0d3186e19911"
+      }
+    ],
+    "bindingDecision": "Do not relabel 2024 extraction or historical mapping pages as 2025. Versioned current 2025 source extraction/review or explicit official-source audit binding is required before claiming a current-2025 source gate; old exact mappings for the three synthetic goals are substantively unsafe."
+  },
+  "schleswigHolstein": {
+    "activeSourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_BIOLOGIE_SEKI_FACHANFORDERUNGEN_2023.source-extraction.json",
+    "active2023PdfPath": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Biologie_Sekundarstufe_2023_barrierearm.pdf",
+    "active2023Ec88Pages": [
+      22,
+      52
+    ],
+    "new2026OfficialUrl": "https://fachportal.lernnetz.de/sh/faecher/biologie/fachanforderungen.html?file=files/Fachanforderungen%20und%20Leitf%C3%A4den/Sekundarstufe/Fachanforderungen/Fachanforderungen%20Biologie%20Sekundarstufe%20%282026%29.pdf&cid=17928",
+    "new2026Ec88Pages": [
+      32,
+      59
+    ],
+    "temporalFinding": "2026 Fachanforderungen are introduced cohort by cohort from school year 2026/27; the 2023 source remains relevant for outgoing cohorts. The 2026 official PDF independently names mitosis and meiosis, but no 2026 extraction/mapping has been integrated; do not claim active 2026 source coverage from the 2023 map."
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-m7-ephase-e2-e4-nine-after-split-current-20260930-v2",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/biologie/rollout-v1/2026-09-30/m7-ephase-e2-e4-nine-after-split-current-20260930-v2.config.json",
+  "configDigest": "sha256:c575b24824c9081e99764df28e65f424ea3d10ef632f56a013db46ec6e1723ef",
+  "goalIds": [
+    "28850d2e-062d-5341-ac66-bd787a8fc84f",
+    "0dbe758c-73c8-530b-bbbd-fb55540f942f",
+    "f539fe51-1f6f-5e04-abfe-af3d2e4d2aad",
+    "d06adc48-b845-54af-b17c-06b5cb910b11",
+    "1984fd66-c117-5c29-87b3-1c1626e4ba81",
+    "01819a6c-f965-5b33-8c4e-07affb3c659f",
+    "e1484671-208b-5ad1-a71d-7d994fb2174b",
+    "ec88fc1d-ee0f-5a01-9464-dc358241050e",
+    "9344c5ce-a07a-5d02-8c56-35320f19a934"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 362,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/biologie/rollout-v1/2026-09-30/m7-ephase-e2-e4-nine-after-split-current-20260930-v2.book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:906cc61882e81dca235efa350ee6c6b71eda57e1f0122b30e8ebef9040dc1599"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:d8cf021a697ab1b474942e7dc05bcdd7fe4e80e82bf2ad544d45e6e13c6566d5",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:cf1086d0877766ed908e2a4556d2952d91f56bbfb845931876ee7c088b863091",
+    "reviewInputFingerprint": "sha256:4c4dfe594728041dfeb32b903d9f8ea71e178f965dd93f885d6f6ba03b482604",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-m7-ephase-e2-e4-nine-after-split-current-20260930-v2-a",
+        "campaignDigest": "sha256:0e7aa1e5df477a6c5e122c10ccc07c8d06f26536e21adfe7c01b5155641f1d58",
+        "roundId": "biologie-m7-ephase-e2-e4-nine-after-split-current-20260930-v2-first-pass-a",
+        "independenceGroupId": "biologie-m7-ephase-e2-e4-nine-after-split-current-20260930-v2-independent-a",
+        "batchId": "biologie-m7-ephase-e2-e4-nine-after-split-current-20260930-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:ceae2761597cb8b84d63138370b99a9130c94fe092528126bdd93d0a818c4d31"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-m7-ephase-e2-e4-nine-after-split-current-20260930-v2-b",
+        "campaignDigest": "sha256:a30e60097d4bb31ff5b238c70c57662a8e9c78cbfac70d7c91c3a715a031ea86",
+        "roundId": "biologie-m7-ephase-e2-e4-nine-after-split-current-20260930-v2-first-pass-b",
+        "independenceGroupId": "biologie-m7-ephase-e2-e4-nine-after-split-current-20260930-v2-independent-b",
+        "batchId": "biologie-m7-ephase-e2-e4-nine-after-split-current-20260930-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:df86ddc8788802195e2286412e08eb3cf6edf57ef6feec4067cee2aaf6df4862"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

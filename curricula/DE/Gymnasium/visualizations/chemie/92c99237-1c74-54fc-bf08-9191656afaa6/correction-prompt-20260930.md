@@ -1,0 +1,5 @@
+# Bildkorrektur 92c (ChatGPT/Codex image_gen)
+
+Edit target: das vorhandene SkillPilot-JPG für Moleküldarstellungen. Behalte den freundlichen comicartigen Dreispaltenvergleich für Ethanol bei und ersetze die falsche linke Bezeichnung `Stoffmengen` durch exakt `Atomarten und -zahlen`. `C₂H₆O` nennt Atomarten und -zahlen pro Molekül, keine Stoffmenge in mol. Erhalte die fachlich passende Summenformel `C₂H₆O`, Strukturformel `CH₃–CH₂–OH`, Lewis-Formel `CH₃–CH₂–O–H` mit zwei freien Elektronenpaaren am O und das Kugel-Stab-Modell mit zwei C-, einem O- und sechs H-Atomen und Einfachbindungen. Behalte `Strukturformel: Bindungen` und `Kugel-Stab-Modell: räumliche Anordnung`. PNG im vorhandenen Stil, ungefähr 16:9, gut lesbar bei 360 und 680 Pixeln; keine photorealistische oder steril-technische Darstellung und keine weiteren Aussagen.
+
+Zweiter Durchgang auf dem ersten Kandidaten: Die drei Hauptmotive und kurzen Beschriftungen um ungefähr 20–30 % vergrößern und Leerraum vermindern, damit die Korrektur bei 360 Pixeln lesbar bleibt. Alle obigen chemischen Invarianten und exakten Labels erhalten.

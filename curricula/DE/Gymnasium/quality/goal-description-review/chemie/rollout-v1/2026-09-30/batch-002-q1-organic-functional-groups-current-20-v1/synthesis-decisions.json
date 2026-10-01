@@ -1,0 +1,379 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-b002-q1-organic-current-20-20260930-partial-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis; nine current two-round keeps, eleven explicit unresolved goals; no human approval",
+  "synthesizedAt": "2026-09-30T15:52:55.900Z",
+  "batch": {
+    "batchId": "chemie-rollout-v1-batch-002-q1-organic-functional-groups-current-20-v1-20260930",
+    "batchManifestDigest": "sha256:ea3baa3ac7a267aa5c5b8a28d19e963b2961cb15404aa750bf2807ae30d6a8e2",
+    "configDigest": "sha256:b679194b66058953ea1cfdbd4c928840754c8b560073e99b1fce860e69f48d8d",
+    "bundleFingerprint": "sha256:6b624077135431b4bbdd366f4365a632060819584a483b966fdc5d19698e348e",
+    "bookDigest": "sha256:a49abd765c01e6ea2ba4f9e74782917253b6169a39a538c635771f2f8259a62a",
+    "reviewInputFingerprint": "sha256:a2f6bf38039d5a9e92e8fb39de5dbf00ae9173f7cf60622c1ca29f9f3d5bd8cd",
+    "dualSummaryDigest": "sha256:de51f54152390cbb37393e8a9c5ba5c3b2bf3b6bf10964f3fdeed6bda873d883",
+    "canonicalLandscapeDigest": "sha256:65449e97c5f1a65d8eef11fd9730a2e0744947f50f8b15e6385164958fb6e30a"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-002-q1-organic-functional-groups-current-20-v1-20260930-a",
+      "campaignDigest": "sha256:94b312d299a536c358556cc2b4e6f38621155d57735c23a80067ae4b5b06ab88",
+      "roundId": "chemie-rollout-v1-batch-002-q1-organic-functional-groups-current-20-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-002-q1-organic-functional-groups-current-20-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:a2f6bf38039d5a9e92e8fb39de5dbf00ae9173f7cf60622c1ca29f9f3d5bd8cd",
+      "batchId": "chemie-rollout-v1-batch-002-q1-organic-functional-groups-current-20-v1-20260930-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:def9a3ffb65534c10122aec3c95587ef4b9123143a0d01822a0db0e60f473a67",
+      "runId": "codex-gpt-6-round-a-chemie-b002-20260930",
+      "runManifestDigest": "sha256:9ebbe23a7fccd1295814b980eb1c3a269c4b589c16b210a7df7d59ed29d91b99",
+      "resultsDigest": "sha256:cd75c5aab9abaf716d306971f6ab22ec5a1adbf506f16895df9bb350ccece176"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-002-q1-organic-functional-groups-current-20-v1-20260930-b",
+      "campaignDigest": "sha256:be5c6a6c0564e085869767443a0f8f6a7145f4fecf159947a634dbba55ce39df",
+      "roundId": "chemie-rollout-v1-batch-002-q1-organic-functional-groups-current-20-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-002-q1-organic-functional-groups-current-20-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:a2f6bf38039d5a9e92e8fb39de5dbf00ae9173f7cf60622c1ca29f9f3d5bd8cd",
+      "batchId": "chemie-rollout-v1-batch-002-q1-organic-functional-groups-current-20-v1-20260930-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:54fe0cc42b8a5901ca997a0b77ac89617d2c3650faaba2bbc47809e174b673b9",
+      "runId": "chemie-b002-q1-round-b-20260930-gpt6-v1",
+      "runManifestDigest": "sha256:87ac8f3956c32af234a951d1bb461ec320cb5170442b18ded09cb0e3ffb911ba",
+      "resultsDigest": "sha256:db777d2634d448e4f782c5a2bed4c036b679fc5393608446669142911056e2db"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-b002-q1-organic-current-20-20260930-partial-synthesis-decision-001",
+      "goalId": "536b48b2-7822-5b7e-9059-ad43400da7e0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:95f6d90461a652619bbf0feb2e740c4a906051e61795154c34c83b5b8014d5ee",
+      "pageFingerprint": "sha256:1a8f1a8e6ddee3d320e15fac1bafd9adb0faa0418ed899090bb6bcc749fc13a3",
+      "goalReviewContextFingerprint": "sha256:dc4429150430c4f3b65a22b36c4e2e09dd9eab6f8d7f6b29e7e589a74fe123b2",
+      "finalText": {
+        "titleDe": "Alkanole benennen",
+        "titleEn": "Name alkanols",
+        "descriptionDe": "Die lernende Person kann Alkanole anhand ihrer Struktur nach fachlichen Nomenklaturregeln benennen.",
+        "descriptionEn": "The learner can name alkanols from their structures using chemical nomenclature rules."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b002-round-a-536b48b2-20260930",
+          "recordDigest": "sha256:a31b6048dc59b51efacbd31d4babbaa722591d94fc4b35dfafcd3c192df2addf"
+        },
+        "second": {
+          "recordId": "chemie-b002-b-01",
+          "recordDigest": "sha256:10174d6a7818613dae3bcc30d36ddd027928d93ae63764c8509d496a17d26154"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden behalten die strukturgebundene Benennung bei. Die erste Evidenz prüft Stammkette, OH-Position und eine neue verzweigte Struktur, statt nur Bildnamen zu wiederholen.",
+      "rationaleEn": "Both independent rounds retain structure-based naming. The first evidence checks parent chain, OH position, and a new branched structure instead of merely repeating names from the image."
+    },
+    {
+      "decisionId": "chemie-b002-q1-organic-current-20-20260930-partial-synthesis-decision-002",
+      "goalId": "e9b61d96-a271-5e69-b872-8c463f822be1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:60a428b9ee46efd20101d672104aae97b1fda17ff2119dcdcb569e1e471f168e",
+      "pageFingerprint": "sha256:3c4e0914ead2b46b11b4a6bcd85f2a1e61818bdb581772bfbbfc7265f198cc14",
+      "goalReviewContextFingerprint": "sha256:f13f8750e99fcfe498c8fd0a1f8d4d74f9d445040774dbba5aaa98e00140757a",
+      "finalText": {
+        "titleDe": "Konstitutionsisomere von Alkanolen diskutieren",
+        "titleEn": "Discuss constitutional isomers of alkanols",
+        "descriptionDe": "Die lernende Person kann Konstitutionsisomere von Alkanolen erkennen, darstellen und anhand gleicher Summenformeln fachlich vergleichen.",
+        "descriptionEn": "The learner can identify, represent, and compare constitutional isomers of alkanols with the same molecular formula."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b002-round-a-e9b61d96-20260930",
+          "recordDigest": "sha256:12e58e07fa811593eedaf5c990ab4bb5680cc8aafe42ec5e994b94c9acff1410"
+        },
+        "second": {
+          "recordId": "chemie-b002-b-03",
+          "recordDigest": "sha256:12e7bfd7e9dc61567a8bcff5d8a4e1ca4c5543cb2b74bb3c2aefb02fca9e45d8"
+        }
+      },
+      "rationaleDe": "Beide Runden tragen dieselbe begrenzte Isomeriekompetenz. Die erste Evidenz trennt gleiche Summenformel, andere Verknüpfung und bloße Drehung sowie einen frischen Kettenisomer-Fall.",
+      "rationaleEn": "Both rounds support the same bounded isomerism competence. The first evidence separates equal formula, different connectivity, and mere rotation, with a fresh chain-isomer case."
+    },
+    {
+      "decisionId": "chemie-b002-q1-organic-current-20-20260930-partial-synthesis-decision-003",
+      "goalId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a13ea12c7c844f97972eca0447b82a6c7a63503e1afd8fc262ea6d1fcc6c2280",
+      "pageFingerprint": "sha256:ecf1c52a9bf90ddbb004483daf0c032ef9f73dbd0a9c7b2dfa64d2fde3486f24",
+      "goalReviewContextFingerprint": "sha256:cce08553085ed829c75829a25845db7804bcd0902e048d4f572c2331b59c7979",
+      "finalText": {
+        "titleDe": "Polare Eigenschaften erklären",
+        "titleEn": "Explain polar properties",
+        "descriptionDe": "Die lernende Person kann Dipol-Dipol-Wechselwirkungen und Wasserstoffbrücken zur Deutung von Löslichkeit und Siedetemperatur heranziehen.",
+        "descriptionEn": "The learner can use dipole-dipole interactions and hydrogen bonds to interpret solubility and boiling temperature."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b002-round-a-91cd4728-20260930",
+          "recordDigest": "sha256:89c5fca9d9b528c78f294d7a32bfa78092db4bb91f4d84c8b51c7539f5ef0abf"
+        },
+        "second": {
+          "recordId": "chemie-b002-b-04",
+          "recordDigest": "sha256:f31716a37295082865b53106c11f5b4bc79b62a832ecf2f62cc9aaf200fb8d92"
+        }
+      },
+      "rationaleDe": "Beide Runden lesen Löslichkeit und Siedetemperatur als Anwendungen eines gemeinsamen Wechselwirkungsmodells. Die erste Evidenz verlangt einen neuen Kettenlängen-Transfer und begrenzt pauschale Aussagen.",
+      "rationaleEn": "Both rounds treat solubility and boiling point as applications of one intermolecular-interaction model. The first evidence requires transfer to a new chain length and limits blanket claims."
+    },
+    {
+      "decisionId": "chemie-b002-q1-organic-current-20-20260930-partial-synthesis-decision-004",
+      "goalId": "858d56e0-ab8f-51a4-b07e-7d9d94cab8e2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:60d40bf5725c58252d84bfc5372d670c19f5f091779b532515e84b067caaf876",
+      "pageFingerprint": "sha256:771bb8002fd6c7c1a9bcb0ce439ff0536e869e1f7b297ba093486687792f60b4",
+      "goalReviewContextFingerprint": "sha256:502663fb54f2d591d85229011c3cc46c2fb810e5df2e7be5e4654edc100956e8",
+      "finalText": {
+        "titleDe": "Oxidierbarkeit von Alkanolen vergleichen",
+        "titleEn": "Compare oxidizability of alkanols",
+        "descriptionDe": "Die lernende Person kann primäre, sekundäre und tertiäre Alkanole hinsichtlich ihrer Oxidierbarkeit vergleichen.",
+        "descriptionEn": "The learner can compare primary, secondary, and tertiary alkanols with respect to their oxidizability."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b002-round-a-858d56e0-20260930",
+          "recordDigest": "sha256:6d177e84d72cf5a541ac6f78dd73ee7560c56e1860e11886be6b8f670b722e4d"
+        },
+        "second": {
+          "recordId": "chemie-b002-b-07",
+          "recordDigest": "sha256:8fb976a6651e45dc92c3896d717ba63dfbce57097aa0abafd3f435f67cfbda5c"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten den strukturellen Vergleich primärer, sekundärer und tertiärer Alkanole bei. Die erste Evidenz knüpft die übliche milde Oxidation an das H am OH-tragenden C und prüft eine neue Verzweigung.",
+      "rationaleEn": "Both rounds retain the structural comparison of primary, secondary, and tertiary alkanols. The first evidence ties ordinary mild oxidation to H at the OH-bearing carbon and tests a new branched case."
+    },
+    {
+      "decisionId": "chemie-b002-q1-organic-current-20-20260930-partial-synthesis-decision-005",
+      "goalId": "5851b53a-162b-5c17-9269-510ee54ad846",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ebc73cd6625e4da997dff260d03f829199ffa5fcf355f8987af37ababb773106",
+      "pageFingerprint": "sha256:3c51cd8346b3598084be2e0a032459b68f5f2f9a2848b429bc84bca69a8d70bf",
+      "goalReviewContextFingerprint": "sha256:8d50696bebaafb73bc20263bbd8ff49125f6183538783c514eed6c4a551c8189",
+      "finalText": {
+        "titleDe": "Oxidationsprodukte von Alkanolen erklären",
+        "titleEn": "Explain oxidation products of alkanols",
+        "descriptionDe": "Die lernende Person kann die Bildung von Aldehyden, Ketonen und Carbonsäuren bei der Oxidation geeigneter Alkanole erklären.",
+        "descriptionEn": "The learner can explain the formation of aldehydes, ketones, and carboxylic acids during oxidation of suitable alkanols."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b002-round-a-5851b53a-20260930",
+          "recordDigest": "sha256:21e73887abe22f4ab4628256841024340d1a3beefe791c0ad120d9fda75a900d"
+        },
+        "second": {
+          "recordId": "chemie-b002-b-10",
+          "recordDigest": "sha256:1732f0e6f952037d7678dc9bfd1e056eef85e333e415f630be47aab792704ad7"
+        }
+      },
+      "rationaleDe": "Beide Runden prüfen die Bildung passender Oxidationsprodukte als eine zusammenhängende Struktur-Produkt-Beziehung. Die erste Evidenz unterscheidet begrenzte und weitergehende Oxidation in einem neuen Primäralkanol.",
+      "rationaleEn": "Both rounds assess suitable oxidation products as one coherent structure-product relation. The first evidence distinguishes limited from further oxidation in a fresh primary alkanol."
+    },
+    {
+      "decisionId": "chemie-b002-q1-organic-current-20-20260930-partial-synthesis-decision-006",
+      "goalId": "41396457-d97b-55f3-9804-2af1bb188e79",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:47d0c86d818239c266fda78eaf08ff3fe3a9fbfc44b957e0132f262d4604d213",
+      "pageFingerprint": "sha256:3002f2cdd8e5b6dd1db89401f1087368e50f75cce9a61de015dfe1cd17e45766",
+      "goalReviewContextFingerprint": "sha256:6791e01902e7017b152de695d5f82253ed8e201b24fe5453211fef343d6903e6",
+      "finalText": {
+        "titleDe": "Halogenidionen-Nachweise deuten",
+        "titleEn": "Interpret halide ion tests",
+        "descriptionDe": "Die lernende Person kann Nachweise für Halogenidionen im Kontext nukleophiler Substitution fachlich deuten.",
+        "descriptionEn": "The learner can interpret tests for halide ions in the context of nucleophilic substitution."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b002-round-a-41396457-20260930",
+          "recordDigest": "sha256:e5ba979bd7d31cc620452a06a3abc5457675729ed7f55b65cf521b934e3fb597"
+        },
+        "second": {
+          "recordId": "chemie-b002-b-12",
+          "recordDigest": "sha256:19ffa6e24ecc9ec34e217bfde6f469e187ac0a890d8fa50b434b32bc3eaade74"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten die kontextgebundene Halogenid-Nachweisdeutung bei. Die erste Evidenz fordert einen Kontrollfall, damit vorhandenes Halogenid nicht fälschlich als Produkt der Substitution gilt.",
+      "rationaleEn": "Both rounds retain contextual interpretation of a halide test. The first evidence requires a control so pre-existing halide is not mistaken for a substitution product."
+    },
+    {
+      "decisionId": "chemie-b002-q1-organic-current-20-20260930-partial-synthesis-decision-007",
+      "goalId": "cdd4ee76-5b37-54ee-b238-63db71205af0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:dfa885637e96e6e5217bba19c19266337e56b002a4029056ac18629876c708ee",
+      "pageFingerprint": "sha256:e2d8c4abbe74d7663255039386fdc5af0bac1dced9dda365c9099c787969a768",
+      "goalReviewContextFingerprint": "sha256:c5ecd27d5e1a29e8994363e9acdcf70c8e0172a95a7ed5396a15d50ba629ce17",
+      "finalText": {
+        "titleDe": "SN1/SN2 vergleichen",
+        "titleEn": "Compare SN1/SN2",
+        "descriptionDe": "Die lernende Person kann SN1- und SN2-Mechanismen bzgl. Kinetik, Lösungsmittel und Substrat deuten.",
+        "descriptionEn": "The learner can interpret SN1 and SN2 mechanisms regarding kinetics, solvent, and substrate."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b002-round-a-cdd4ee76-20260930",
+          "recordDigest": "sha256:e5794d22bc6dfb5f6c4afd77082ec44d396ca824dbea5312a6834e7da063d7e4"
+        },
+        "second": {
+          "recordId": "chemie-b002-b-13",
+          "recordDigest": "sha256:a44154b2a3599a65d9266f50b0327becc1e78bad70a4864e6ecc3b984675711f"
+        }
+      },
+      "rationaleDe": "Beide Runden stützen einen Mechanismenvergleich über Kinetik, Substrat und Lösungsmittel als zusammenhängende Erklärung. Die erste Evidenz fordert eine bedingte Prognose statt eines starren SN1/SN2-Merksatzes.",
+      "rationaleEn": "Both rounds support one mechanism comparison across kinetics, substrate, and solvent. The first evidence requires a conditional prediction rather than a rigid SN1/SN2 slogan."
+    },
+    {
+      "decisionId": "chemie-b002-q1-organic-current-20-20260930-partial-synthesis-decision-008",
+      "goalId": "a4bac92b-d685-5cb6-94c8-c9b8b878d125",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:01c3e35b80133e3fab9286e0b079727b5047fb22b6dac67344e0048dc4fd6365",
+      "pageFingerprint": "sha256:41b4a8bb748b170f1eaa3a63cac0bf3498e4d7f2fd9245ae4b6a59b4ac458fed",
+      "goalReviewContextFingerprint": "sha256:7fd7e62f01eea43e22305b542a14ba78919ef844e75fe2591697fe0e5d88ccfe",
+      "finalText": {
+        "titleDe": "Substitutionsmechanismen differenzieren (LK)",
+        "titleEn": "Differentiate substitution mechanisms (LK)",
+        "descriptionDe": "Die lernende Person kann SN1- und SN2-Mechanismen gegenüberstellen und sterische sowie induktive Effekte diskutieren.",
+        "descriptionEn": "The learner can contrast SN1 and SN2 mechanisms and discuss steric and inductive effects."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b002-round-a-a4bac92b-20260930",
+          "recordDigest": "sha256:123a827671f821dc0c382bb29478d97a71a7ad28fd7c1c74a570cd5e6673d620"
+        },
+        "second": {
+          "recordId": "chemie-b002-b-14",
+          "recordDigest": "sha256:29f9742aec58b74b8ec6d10c5a77d11b043e33e2aacd55de982e8437e342bad6"
+        }
+      },
+      "rationaleDe": "Beide Runden unterscheiden diese LK-Ursachenanalyse vom allgemeineren Vergleich. Die erste Evidenz verlangt sterische und induktive Gründe an veränderten Substraten, nicht nur Etiketten SN1 oder SN2.",
+      "rationaleEn": "Both rounds distinguish this advanced causal analysis from the broader comparison. The first evidence requires steric and inductive reasons for changed substrates, not just SN1 or SN2 labels."
+    },
+    {
+      "decisionId": "chemie-b002-q1-organic-current-20-20260930-partial-synthesis-decision-009",
+      "goalId": "bd36dc58-c93e-5247-9e82-da2f9e4e2bed",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:13e57adc1c2ca4b566ae973c7a9c87111c9ea49f5d395933fabc91652df87ce3",
+      "pageFingerprint": "sha256:eb91e318f23f593472d1bd6bf0e53dba343932b4371ace017e5b257f7ec97d0d",
+      "goalReviewContextFingerprint": "sha256:2dadc251862dc2882e5d066b2983cb6460b850e1c52d3872de5e67c956714fef",
+      "finalText": {
+        "titleDe": "Di- und Tricarbonsäuren strukturell beschreiben (LK)",
+        "titleEn": "Describe di- and tricarboxylic acids structurally (LK)",
+        "descriptionDe": "Die lernende Person kann Di- und Tricarbonsäuren anhand mehrerer Carboxylgruppen strukturell beschreiben und geeignete Strukturformeln verwenden.",
+        "descriptionEn": "The learner can structurally describe di- and tricarboxylic acids using multiple carboxyl groups and suitable structural formulas."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b002-round-a-bd36dc58-20260930",
+          "recordDigest": "sha256:5491be07a2ae3fce2646defd896af548cde3153e13740cc61c9fecf92cc7d53f"
+        },
+        "second": {
+          "recordId": "chemie-b002-b-19",
+          "recordDigest": "sha256:27985993d00779e343b00935a2055f417e648571ba489eab3bc611b0b2cfb93f"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten die strukturelle Einordnung von Di- und Tricarbonsäuren bei. Die erste Evidenz prüft valenzrichtige Strukturbeispiele und eine frische Klassifikation nach tatsächlicher Carboxylgruppenzahl.",
+      "rationaleEn": "Both rounds retain structural classification of di- and tricarboxylic acids. The first evidence checks valence-correct structures and fresh classification by actual carboxyl-group count."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "345fdca9-038f-51e2-9bea-b6ac416a734a",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "Die zweite Runde konkretisiert die tatsächlich prüfbaren Strukturformelarten und die Richtung der Darstellung; der aktuelle Text ist redundant und unbestimmt. Gezielte zweisprachige Textänderung und danach neue aktuelle Bindungen nötig.",
+      "rationaleEn": "The second round specifies assessable structural notations and conversion direction; the current text is redundant and vague. A targeted bilingual text edit and fresh current bindings are needed."
+    },
+    {
+      "goalId": "6d3a2bad-8c67-5964-a720-375f138adaba",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "Die zweite Runde zeigt eine echte Mehrdeutigkeit von „Reaktivität“ zwischen nukleophiler Addition und Oxidation. Die A-Evidenz begrenzt nur die Prüfung, nicht den kanonischen Wortlaut. Text auf Reaktionstyp eingrenzen und erneut binden.",
+      "rationaleEn": "The second round identifies real ambiguity in reactivity between nucleophilic addition and oxidation. Round A narrows assessment but not the canonical wording. Narrow the text to a reaction type and rebind it."
+    },
+    {
+      "goalId": "3899edf4-a809-54b1-8ee7-4e67aa82dc7c",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "Die reine Donator-Akzeptor-Formel bezeichnet auch andere Reaktionen und nennt das Ersetzen der Abgangsgruppe nicht. Die B-Präzisierung ist fachlich nötig; A-Evidenz allein repariert den Text nicht.",
+      "rationaleEn": "The donor-acceptor formula also describes other reactions and omits replacement of the leaving group. The B clarification is scientifically needed; A evidence alone does not repair the wording."
+    },
+    {
+      "goalId": "8edee6b6-9ead-515e-93f5-feada64522b2",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "„Einsetzen“ bleibt als praktische Laborhandlung lesbar, während das Ziel fachlich die Reaktionsschemen und Protonierung meint. Der B-Vorschlag begrenzt den Kompetenzanspruch ohne reale Durchführung; neue D/A/M-Bindungen danach.",
+      "rationaleEn": "Use of Grignard reagents can still imply laboratory execution, while the competence concerns reaction schemes and protonation. The B proposal bounds the claim without practical execution; fresh D/A/M bindings follow."
+    },
+    {
+      "goalId": "d4928773-3be8-5cf1-907c-ef07c96751e8",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "Halogenalkan und Hydroxid können auch Eliminierung ergeben. Der aktuelle Text lässt den Reaktionstyp offen; die B-Fassung bindet die Gleichung an Substitution. Aktuelles Ziel bleibt offen.",
+      "rationaleEn": "Haloalkane and hydroxide can also undergo elimination. The current text leaves the reaction type open; B ties the equation to substitution. The current goal remains open."
+    },
+    {
+      "goalId": "973c12d9-d863-5292-8c68-9c80cdacf9e2",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "Die zweite Runde benennt Aufsicht, geeignete Proben und Aussagegrenzen der Nachweise. Wegen der praktischen Handlung und möglicher Fehlinterpretation sind das fachliche Textgrenzen, die nicht nur durch P kompensiert werden.",
+      "rationaleEn": "The second round names supervision, suitable samples, and test limitations. Given the practical action and possible misinterpretation, these are wording boundaries that a P profile alone should not compensate."
+    },
+    {
+      "goalId": "a3788e40-b540-5bed-be37-b33053528422",
+      "firstDecision": "split_review",
+      "secondDecision": "block",
+      "rationaleDe": "Beide Runden markieren unabhängige Nachweis- und Strukturkompetenzen im aktuellen Carbonsäuretext. Die bestehende A-Atomic-Markierung ist fachlich widersprüchlich; Split und neue aktuelle Ziel-IDs sind erforderlich.",
+      "rationaleEn": "Both rounds identify independent test and structure competences in the current carboxylic-acid wording. The existing A atomic label conflicts with this finding; a split and new current goal IDs are required."
+    },
+    {
+      "goalId": "363c5740-8a3c-50b8-8c3a-5548c80c36ea",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "A und B verlangen die Angleichung der verkürzten englischen Fassung und die Korrektur von „erlaeutern“. Der aktuelle Text bleibt bis zur gezielten zweisprachigen Änderung und frischen Bindung offen.",
+      "rationaleEn": "A and B require alignment of the shorter English wording and correction of \"erlaeutern\". The current text stays open until a targeted bilingual edit and fresh binding."
+    },
+    {
+      "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+      "firstDecision": "split_review",
+      "secondDecision": "block",
+      "rationaleDe": "Beide Runden markieren Reaktionsbildung, Eigenschaftsdeutung und Anwendung als getrennte Lernziele; der englische Titel weicht zusätzlich ab. Kein einzelner P-Nachweis kann den breiten Text atomar machen.",
+      "rationaleEn": "Both rounds identify ester formation, property interpretation, and use as separate goals; the English title also diverges. No single P profile can make the broad wording atomic."
+    },
+    {
+      "goalId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+      "firstDecision": "split_review",
+      "secondDecision": "block",
+      "rationaleDe": "Beide Runden erkennen die falsche pauschale Reversibilitätsbehauptung für alkalische Verseifung sowie selbstständige Teilkompetenzen und verkürzte EN-Fassung. Split und fachliche Korrektur sind notwendig.",
+      "rationaleEn": "Both rounds identify the false blanket reversibility claim for alkaline saponification, independent subskills, and shorter English wording. A split and scientific correction are required."
+    },
+    {
+      "goalId": "4da0839d-ab6d-53c1-ac21-c9872555ae16",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "Die B-Runde legt OH−-Angriff, tetraedrische Zwischenstufe und Carboxylat/Alkohol als prüfbare LK-Leistung frei. „Mechanismen vertiefend deuten“ ist dafür zu unbestimmt; gezielte Textänderung nötig.",
+      "rationaleEn": "B makes OH− attack, tetrahedral intermediate, and carboxylate/alcohol explicit as assessable advanced work. \"Interpret mechanisms in depth\" is too vague; a targeted wording edit is needed."
+    }
+  ],
+  "manifestFingerprint": "sha256:4a16376d4a6f3262e51865da130eb80b5a911690c8cbef9585fbca84031cf12e"
+}

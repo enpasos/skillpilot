@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-resolution-17acbdec-5274-510f-8588-0eac164ebbe5",
+  "goal": {
+    "goalId": "17acbdec-5274-510f-8588-0eac164ebbe5",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:8de1c39753b2b902f15e5e13506b5a1dac45cbc2ab140abed849d9de31766cbf",
+    "pageFingerprint": "sha256:f2956e420cdb3df9d4fc255d4d2232ac5fca0a04b7c931916ead0be3e6d5b0f7",
+    "goalReviewContextFingerprint": "sha256:014006a603c357ff4c3502d064848cabb39929926094bb0d7a992b6517f742bb",
+    "finalText": {
+      "titleDe": "Halogenreaktionen von Kohlenwasserstoffen vergleichen",
+      "titleEn": "Compare halogen reactions of hydrocarbons",
+      "descriptionDe": "Die lernende Person kann typische Reaktionen gesättigter und ungesättigter Kohlenwasserstoff-Moleküle mit Halogen-Molekülen vergleichen.",
+      "descriptionEn": "The learner can compare typical reactions of saturated and unsaturated hydrocarbon molecules with halogen molecules."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-a",
+      "campaignDigest": "sha256:4d4a6506908f6e94424077022b3055aa200ca0b787ff7386b92a6d57549f2a76",
+      "roundId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:c07e8027610ce7b898ef3ee8592f3d2835d19ca3aa33329fa31538af54006475",
+      "goalReviewContextFingerprint": "sha256:014006a603c357ff4c3502d064848cabb39929926094bb0d7a992b6517f742bb",
+      "batchId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-a.batch-001",
+      "runId": "codex-gpt-6-round-a-chemie-b003-20260930",
+      "runManifestDigest": "sha256:5f8f63c26aca5bc62c9e5780cd4bf89a9edeb70b1e5ddf43c433db492a823a8b",
+      "resultsDigest": "sha256:b305ec1bb952e3d06edb174aa07446041c95eaec2392680b413529e1a666530a",
+      "recordId": "chemie-b003-round-a-17acbdec-20260930",
+      "recordDigest": "sha256:9fe6654b0cb597060b28819e3d06b66f9ae905ade03229e2f585c611938eabb7"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-b",
+      "campaignDigest": "sha256:169af5a705d3c5cb4531b1291386fb63242cdd5cab7d2510c4bdf2c8c5fc5abd",
+      "roundId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:c07e8027610ce7b898ef3ee8592f3d2835d19ca3aa33329fa31538af54006475",
+      "goalReviewContextFingerprint": "sha256:014006a603c357ff4c3502d064848cabb39929926094bb0d7a992b6517f742bb",
+      "batchId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-b.batch-001",
+      "runId": "chemie-b003-q1-round-b-20260930-gpt6-v1",
+      "runManifestDigest": "sha256:e1cf816bbd5bfd6fd6a1a99356fddd1a27a05061a1fd0ec7128ce16e82232390",
+      "resultsDigest": "sha256:4f99b000e7cda824f3b3c3e9eb8215295ae0c11f4d62fda796e3aaa69e6f2c06",
+      "recordId": "chemie-b003-b-04",
+      "recordDigest": "sha256:07da37f6aef01f864c6c56961468d1bfcb003846f2546f3f4987a7136d6e108d"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:7063fb382e703af7de74e31bd6ff248e785a6cf733eedfd1dc690f7738914cf7"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis",
+    "manifestDigest": "sha256:15f39431398815d03ec171b914e160b7cd26f501179ef5f673c8f0fa206132ea",
+    "manifestFingerprint": "sha256:a9a373bd26c56d438f7cbbbbc49e1cfdc523af21495f0e401609ceabb4aa0534",
+    "decisionId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-002"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-002",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis; eleven current dual-round keeps, nine explicit deferrals; no human approval",
+    "synthesizedAt": "2026-09-30T16:18:39.625Z",
+    "rationaleDe": "Beide Runden behalten den Vergleich von Halogenreaktionen an Alkanen und Alkenen bei. Die A-Evidenz trennt radikalische Substitution und elektrophile Addition samt Bedingungen.",
+    "rationaleEn": "Both rounds retain the comparison of halogen reactions of alkanes and alkenes. A evidence distinguishes radical substitution from electrophilic addition and their conditions.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Gesättigte Kohlenwasserstoffe reagieren mit Halogenen typischerweise über radikalische Substitution unter geeigneter Initiierung; Alkene können Halogene an die C=C-Bindung addieren.",
+      "essentialUnderstandingEn": "Saturated hydrocarbons typically undergo radical substitution with halogens under suitable initiation, whereas alkenes can add halogens across C=C.",
+      "observablePerformanceDe": "Die lernende Person vergleicht für ein Alkan und ein Alken Ausgangsbindung, Reaktionsbedingung und Produktstruktur und erklärt Substitution versus Addition.",
+      "observablePerformanceEn": "The learner compares initial bond, reaction condition, and product structure for an alkane and an alkene and explains substitution versus addition.",
+      "transferExpectationDe": "Bei einem neuen Bromtest begründet sie aus einer Entfärbung nur unter passenden Bedingungen eine vorsichtige Folgerung, statt jede Halogenreaktion gleichzusetzen.",
+      "transferExpectationEn": "For a fresh bromine-test observation, they make a qualified inference under suitable conditions rather than treating every halogen reaction as identical."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-047f1a0674a703869bef756c3c9925d535a32e5361b54289fe3138a2f9c5e251",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:a54df2c590f35ca85110274c43c48c3c7d558c35282f0d4c1eaa53b097c810ea"
+}

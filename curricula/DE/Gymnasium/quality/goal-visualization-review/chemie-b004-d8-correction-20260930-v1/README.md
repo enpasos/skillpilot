@@ -1,0 +1,7 @@
+# Chemie d8: Indikatorbeobachtung und Protonenmodell
+
+Das zuvor aktive JPG (`sha256:caaaf2241cb23002e9eca33adebcc81066453dc762a1da6d8f7a25e4c7cabc0e`) enthielt die unzulässige Behauptung, entgegengesetzte Indikator-Farbwechsel **belegten** den spezifischen Acetat-Protonenübergang. Die Originalbytes bleiben unter `d8bdf486-7295-5393-b6f7-54f6e485c848.original-active.jpg` als historische Prüfbasis erhalten. Der Befund ist zusätzlich in `../chemie-b004-d8-visual-hold-20260930.md` dokumentiert.
+
+Das neue 1672×941-PNG wurde am 30. September 2026 mit ChatGPT/Codex `image_gen` nach der Anweisung in `d8bdf486-7295-5393-b6f7-54f6e485c848.prompt.md` erstellt. Es zeigt die wiederholte Farbänderung derselben Acetat-Probe, eine separate Kontrolle ohne Acetat und darunter ein ausdrücklich bezeichnetes Teilchenmodell. Die große Aussage „Farbe allein beweist es nicht“ verhindert den alten Fehlschluss. Zwei maschinelle Reviewer haben das tatsächliche Bild fachlich und bei Original-/360px-/680px-Ansichten geprüft. Das aktive PNG hat `sha256:515cc8d48f294752654168b6a424ae0d33c160a0faa7c91e84db6e46e40fe3e9`; Quelle, Web- und Backend-Kopie sind identisch. Das V-QA-Ledger bindet diesen Hash mit KI-`yes` und Mensch-`no`.
+
+Eigene SkillPilot-Inhalte stehen gemäß `LICENSING.md` unter CC-BY-4.0. Die Bildfreigabe ist ausschließlich maschinell; der neue Ziel-/Seiten-/Bildkontext verlangt separate gezielte D- und P-Rechecks, bevor das Ziel streng abgeschlossen werden darf.

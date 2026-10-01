@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "biologie-m7-q1-three-current-20260930-v2-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis of two independent current description reviews; no human approval",
+  "synthesizedAt": "2026-09-30T21:38:50.314Z",
+  "batch": {
+    "batchId": "biologie-m7-q1-three-revised-current-20260930-v2",
+    "batchManifestDigest": "sha256:0f5b3cfa3a7a79c8deff50d2a18deec7295e7eb7dccb42a8be76f67fabdc6f9a",
+    "configDigest": "sha256:0f7396d0cf5d897da791b8156871e6ffcdaf51faf2f355c3b30985736b8ba66a",
+    "bundleFingerprint": "sha256:eba3939f10b3c251f5837fce038cecd04efaa0127248f4daecb0ec9b0a462a98",
+    "bookDigest": "sha256:e1adbed2ad5ee2cfb3d97b3f512be24164f769052774da4e21994a97f5bbc42b",
+    "reviewInputFingerprint": "sha256:4261fd16c075d47677380f2303109fd0a7d5dd7b150a4b32db93f15d6c976533",
+    "dualSummaryDigest": "sha256:617637716a8bae789145d16f4f62e427f8f2e34adc5c1e59ccda0bc4e37a75ab",
+    "canonicalLandscapeDigest": "sha256:c66f90314ea1e87b8740fb6557292d50876aa84ac2825e4fe08c368557daf415"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-m7-q1-three-revised-current-20260930-v2-a",
+      "campaignDigest": "sha256:4a4cc0dcf50ba04eb1bfdd2f164607aca51809d68d9e5153cd7a330029be04fd",
+      "roundId": "biologie-m7-q1-three-revised-current-20260930-v2-first-pass-a",
+      "independenceGroupId": "biologie-m7-q1-three-revised-current-20260930-v2-independent-a",
+      "reviewInputFingerprint": "sha256:4261fd16c075d47677380f2303109fd0a7d5dd7b150a4b32db93f15d6c976533",
+      "batchId": "biologie-m7-q1-three-revised-current-20260930-v2-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:8648f0f30f71285969316f9e3686cb830c87c3a0a16c74b6a7900e6d47d8c4f1",
+      "runId": "biologie-m7-q1-three-revised-current-20260930-v2-first-pass-a-codex-independent-a",
+      "runManifestDigest": "sha256:2f9633258b601c687836496fa51be4edddb0c01c38216997ef77724fcb983af5",
+      "resultsDigest": "sha256:69e353652375fbfd23187f764ad9e3f273bbe18189bc3e15a74a46dc8c67377e"
+    },
+    "second": {
+      "campaignId": "biologie-m7-q1-three-revised-current-20260930-v2-b",
+      "campaignDigest": "sha256:6cec806b2414e607901ec06c976cc39fb2e52dbf07c5e78b9c27801b15759e37",
+      "roundId": "biologie-m7-q1-three-revised-current-20260930-v2-first-pass-b",
+      "independenceGroupId": "biologie-m7-q1-three-revised-current-20260930-v2-independent-b",
+      "reviewInputFingerprint": "sha256:4261fd16c075d47677380f2303109fd0a7d5dd7b150a4b32db93f15d6c976533",
+      "batchId": "biologie-m7-q1-three-revised-current-20260930-v2-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:d3e17d41c5505da536243b0b2a78e6df812b541609274eef1045adc63016e850",
+      "runId": "biologie-q1-three-revised-v2-blind-b-run-001",
+      "runManifestDigest": "sha256:4f4335216d0b3cf82bb6d4470010a51435ae4f1e91747fd38879bedc105397bf",
+      "resultsDigest": "sha256:8c4449a175583b8be4161c17cbb756d831e1b4faab3db647fa2d2877b0b5e7c5"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "biologie-m7-q1-three-current-20260930-v2-synthesis-decision-001",
+      "goalId": "8f6933b1-6e02-5512-acf2-a90a7fb9cb75",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:93a8eeffc98043268e26f1db6636742824253d2bc970e50bcb07f89c9411cc91",
+      "pageFingerprint": "sha256:f7dca7bb6a88e948b6d7c2bdad9c81976c9aad249afd66583061a36a63083c7e",
+      "goalReviewContextFingerprint": "sha256:d461a206ac6798e7f27c8c2c387f9fe2c9f89a95b97e1bcb6a7c1d03baf553c2",
+      "finalText": {
+        "titleDe": "Histonmodifikation analysieren",
+        "titleEn": "Analyze histone modification",
+        "descriptionDe": "Die lernende Person kann vorgegebene Befunde zu Histonacetylierung und Histonmethylierung analysieren und mögliche Auswirkungen dieser Modifikationen auf Chromatinzugänglichkeit und Genaktivität im jeweiligen Kontext erläutern.",
+        "descriptionEn": "The learner can analyse supplied findings on histone acetylation and histone methylation and explain possible effects of these modifications on chromatin accessibility and gene activity in the given context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "biologie-m7-q1-three-revised-current-20260930-v2-first-pass-a-codex-independent-a.8f6933b1-6e02-5512-acf2-a90a7fb9cb75",
+          "recordDigest": "sha256:1c3ce2ef53a366535e0dbaf293afbf181af5b43a18ef8c1c313cf03be7332c59"
+        },
+        "second": {
+          "recordId": "biologie-q1-v2-b-histone-20260930",
+          "recordDigest": "sha256:cb7e979c9e35428b184f133b8f01ddea9263e41fc3574e22ccd9e0a6859a79b1"
+        }
+      },
+      "rationaleDe": "Zwei aktuelle unabhängige Runden behalten den geklärten deutschen und englischen Zieltext bei. Histonacetylierung und Histonmethylierung sind Varianten einer gemeinsamen, anhand vorgegebener Befunde prüfbaren Deutung von Chromatinzugänglichkeit und Genaktivität. Die Wirkung wird ausdrücklich kontextabhängig und nicht als pauschale Methylierungsregel beschrieben. Das amtliche hessische KC, Ausgabe 2024 mit Stand 2025, nennt beide Modifikationen auf gedruckter Seite 39 in Q1.2 für LK. Das vorhandene PNG illustriert die Markierungen, ist aber kein Lernnachweis. Weitere Quellen- und Projektionsgeltung sowie P, A, M und V bleiben getrennte Gates.",
+      "rationaleEn": "Two current independent rounds retain the clarified German and English wording. Histone acetylation and methylation are variants of one assessable interpretation of supplied findings on chromatin accessibility and gene activity. Effects remain explicitly context dependent rather than a universal methylation rule. The official Hessian curriculum, 2024 edition updated in 2025, lists both modifications on printed page 39 in Q1.2 for LK. The existing PNG illustrates the marks but is not learner evidence. Wider source and projection scope, and P, A, M and V remain separate gates."
+    },
+    {
+      "decisionId": "biologie-m7-q1-three-current-20260930-v2-synthesis-decision-002",
+      "goalId": "ceb54223-197c-5289-a9c6-19358912e144",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3024d83019e02f97cebb38e450a9f54e72534e9cc5aaa300dc9078df7dbb9040",
+      "pageFingerprint": "sha256:f0f78733d7e8cb0dbc1c848b46357fc90a23521f2f60b87445c845ea7a376df7",
+      "goalReviewContextFingerprint": "sha256:5cfa91fbe2404ad2071da646819c1344f9ddb262cebe8accbb73dd76eb022430",
+      "finalText": {
+        "titleDe": "RNA-Interferenz erklären",
+        "titleEn": "Explain RNA interference",
+        "descriptionDe": "Die lernende Person kann an einem vorgegebenen Beispiel erklären, wie eine zur Ziel-mRNA passende kleine RNA durch RNA-Interferenz die Bildung des zugehörigen Proteins vermindern kann.",
+        "descriptionEn": "The learner can use a supplied example to explain how a small RNA matching a target mRNA can reduce production of the corresponding protein through RNA interference."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "biologie-m7-q1-three-revised-current-20260930-v2-first-pass-a-codex-independent-a.ceb54223-197c-5289-a9c6-19358912e144",
+          "recordDigest": "sha256:6b2529a3819bf0a04b96c1da3d0bbbced1b404beb9fca4108843cdb17f37dc93"
+        },
+        "second": {
+          "recordId": "biologie-q1-v2-b-rnai-20260930",
+          "recordDigest": "sha256:272a6ad45655d528060cdd6d58a3f5241b88b2c2d8dedd9a4a57b688fe8d8836"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden behalten die präzisierte Zielkompetenz bei: Eine zur Ziel-mRNA passende kleine RNA kann durch einen vorgegebenen RNA-Interferenz-Weg die Bildung des zugehörigen Proteins vermindern. Das Ziel fordert keine allgemeine Pflicht zur im PNG gezeigten siRNA-Spaltung und keine festgelegte Effektstärke. Passung, dargestellter Wirkweg und Proteinfolge bilden eine zusammenhängende Erklärung. Das amtliche hessische KC nennt RNA-Interferenz auf gedruckter Seite 39 in Q1.2 für LK. Bild, P-Nachweis und menschliche Freigabe sind gesondert zu beurteilen.",
+      "rationaleEn": "Both independent rounds retain the clarified competence: a small RNA matching a target mRNA can reduce production of the corresponding protein through a supplied RNA-interference pathway. The goal does not require every case to use the siRNA cleavage shown in the PNG or assert a fixed effect size. Matching, the illustrated pathway and its protein outcome form one coherent explanation. The official Hessian curriculum lists RNA interference on printed page 39 in Q1.2 for LK. The image, P evidence and human approval are assessed separately."
+    },
+    {
+      "decisionId": "biologie-m7-q1-three-current-20260930-v2-synthesis-decision-003",
+      "goalId": "440854be-7f06-5678-91cb-ba8dcab56959",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:41217fdbfc25d4206e128bf5f19b25a4eedcce614abb8cbd4d45cef4f77088ff",
+      "pageFingerprint": "sha256:fdd934b63dc3eac88a6d852e8a06f7c658f30dcd4432a0c5d56129d70a0916a8",
+      "goalReviewContextFingerprint": "sha256:bbbe7bffb4647e63f1d581c1dad8734e08ccbcfecc5f0696230abc482cfe4b58",
+      "finalText": {
+        "titleDe": "Stammbäume analysieren",
+        "titleEn": "Analyze pedigrees",
+        "descriptionDe": "Die lernende Person kann einen Familienstammbaum zu einem monohybrid vererbten Merkmal analysieren, plausible autosomale oder gonosomale sowie dominante oder rezessive Erbgänge anhand der sichtbaren Verteilung begründen und Grenzen der Deutung benennen.",
+        "descriptionEn": "The learner can analyse a family pedigree for one inherited trait under a monohybrid model, justify plausible autosomal or sex-linked and dominant or recessive inheritance patterns from the visible distribution, and state the limits of that interpretation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "biologie-m7-q1-three-revised-current-20260930-v2-first-pass-a-codex-independent-a.440854be-7f06-5678-91cb-ba8dcab56959",
+          "recordDigest": "sha256:0c58076f2f8ff6cff98963f4b26ddf3dbc7b4ee19fe23b255c69da1346713d72"
+        },
+        "second": {
+          "recordId": "biologie-q1-v2-b-pedigree-20260930",
+          "recordDigest": "sha256:d82a7ae5e6f32530969797f99c49e2544cc2fc26f9ec906c529057d8557d85a2"
+        }
+      },
+      "rationaleDe": "Zwei unabhängige Runden behalten die deutsch-englisch abgeglichene Stammbaumkompetenz bei. Das monohybride Modell, die autosomale/gonosomale und dominante/rezessive Einordnung sowie Grenzen kleiner Stammbäume gehören zu einer begründeten Deutung derselben Familiendaten; der Text verlangt keine eindeutige Diagnose aus unzureichenden Daten. Das amtliche hessische KC führt die Analyse auf gedruckter Seite 39 in Q1.3 für GK und LK. Das vorhandene kleine Familienbild ist lediglich ein mehrdeutiges Beispiel und kein Musterbeweis. P, A, M, V und menschliche Prüfung bleiben getrennt.",
+      "rationaleEn": "Two independent rounds retain the aligned German and English pedigree competence. Under a monohybrid model, autosomal or sex-linked and dominant or recessive possibilities and the limits of a small pedigree are parts of one reasoned interpretation of the same family data; the wording does not demand a unique diagnosis from insufficient evidence. The official Hessian curriculum lists this analysis on printed page 39 in Q1.3 for GK and LK. The small family picture is only an ambiguous example, not a proof template. P, A, M, V and human review remain separate."
+    }
+  ],
+  "manifestFingerprint": "sha256:52c39a19b3281e4cbcea0b7dbe6ed1c3f3a28db03576bd571deb345484b7574e"
+}

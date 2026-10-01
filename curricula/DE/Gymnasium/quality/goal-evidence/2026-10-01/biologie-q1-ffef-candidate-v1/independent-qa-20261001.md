@@ -1,0 +1,40 @@
+# Independent QA: `ffef97e3-12d6-5090-9816-46ab9e57fae2`
+
+**Verdict: HOLD for the package as a whole.** The DE/EN description and P-v2 profile are usable as **PASS_CANDIDATE_ONLY** authoring drafts. The image is **HOLD** pending a corrected duplication cue and a new inspection at the actual display sizes. None of these labels is a current-text D/P/A/M/V decision, source review, registry entry, learner acceptance, or human approval.
+
+## Basis checked
+
+- Current canonical goal: `Genmutationen analysieren`, DE/EN descriptions still say explain the four mutation types and estimate consequences; `contains: []`, Q1, GK/LK, with protein biosynthesis among its direct prerequisites. The proposed wording is not active.
+- Local official [Hessen KCGO Biologie PDF, Q1.1, printed p. 38](https://www.fortbildung.kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kerncurriculum_gymnasiale_oberstufe-biologie.pdf), SHA-256 `52c278d6f5a7383361631d5251550c42222f13e1bbe2aa16d39ca3b12c5e1558`: the four types are listed for GK/LK beside protein biosynthesis, genetic code, and the relationship of genetic material, gene products, and traits. The PDF does **not** contain the source-extraction learning-goal sentence “... Folgen abschätzen”; that sentence is an authored paraphrase.
+- Official [Bavarian LehrplanPLUS, Biologie 12, B12 2.4](https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium%20/12/biologie/grundlegend): the corresponding competency additionally covers mutagenic influences, effects on the **function** of the encoded protein, and the importance of protection. The local extraction merges the GK and LK occurrences into `ef3a58c6-09b3-5e91-80a0-fb3857268603`.
+- Candidate PNG SHA-256 `fc604e81e45c37700ad59cd1787c2e918c774c685e00a26107f6f847d50f42f1`; native 1672 × 941, phone preview 360 × 203, desktop preview 680 × 383. I viewed all three actual files, not just the author review note. The cockpit `GoalCard` currently uses `max-h-[28rem] w-full object-contain`; at a 16 px root font, 383 px is below its 448 px height cap.
+
+## Description: PASS_CANDIDATE_ONLY
+
+The DE and EN proposals agree in scope. They make one assessable causal performance: distinguish the four DNA changes in supplied cases and justify a **possible**, context-dependent consequence for an encoded protein. That is a coherent atomic goal, because classification supplies the evidence for the bounded consequence; it does not add an independent phenotype or health prediction. The conditional wording avoids the current text's risk of treating a mutation name as a certain protein effect. It is a didactic operationalization of HE Q1.1, not a verbatim official competency.
+
+For a later current-text D decision, specify in the task material whether the changed segment is coding, and provide the coding strand, reading frame, and genetic-code aid when an amino-acid claim is required. “Genkontext” alone should never be used to infer a protein change from an arbitrary gene-region mutation. A possible wording refinement is “... bei angegebenem codierendem Abschnitt und Leserahmen mögliche Folgen für die Aminosäurefolge begründen”; this would narrow the claim and must be assessed with the affected source scopes before adoption.
+
+## P-v2 draft: PASS_CANDIDATE_ONLY, with a task-clarity correction
+
+The two cases use different reference sequences and each asks for all four mutation types with a reading-frame or codon consequence. The first case is molecularly correct: `GAA→GAG` remains glutamate; deleting one base of `GAA` or inserting one `C` after `ATG` shifts the frame; tandem copying the complete `GAA` codon adds one glutamate without shifting the frame. The second is also correct at the claimed level: `TTT→TCT` changes phenylalanine to serine; deleting `GGC` removes one codon in frame; adding two bases or copying one base shifts the downstream frame. Neither case claims that these changes automatically alter function or phenotype. A copy trace is correctly required to distinguish a duplication mechanism from an insertion when final sequences alone do not show origin.
+
+**Correction before using case 2 as an actual scored item:** state explicitly that the lower enzyme activity is measured **relative to the unmodified reference protein** under matched conditions. “Niedrigere Aktivitätswerte / lower activity measurements” currently leaves the comparator implicit. Retain the existing limit: that observation supports only this measured variant in those conditions, not a trait or an effect for the other three variants. If a task asks for the exact downstream amino-acid sequence of the AAG one-base duplication, identify which AAG base was copied; the current brief supports only the frameshift claim.
+
+Keep the P file as a profile-content draft. It has no fingerprint for a future adopted DE/EN canonical text, independent P decision, or registry binding. A case brief is not evidence that a learner performed the task.
+
+## Image: HOLD
+
+The four headings have no tiny type and remain legible in the 360 and 680 px files. Block counts and main changes are correct: 5→5 substitution, 5→4 deletion with the crossed-out yellow source block absent in the result, 5→6 insertion, and 5→7 tandem addition of the yellow–teal pair. The blocks are clearly schematic; the image makes no protein or phenotype claim. At 680 px the whole image fits the current 28 rem cap at the usual root font size.
+
+The **duplication copy arrow does not connect the source yellow–teal pair to the new yellow–teal pair**. In the selected native image and 680 px preview, it begins over the first blocks of the *after* row and its arrowhead lands over/just before the original teal block, ahead of the added pair. At 360 px the thin arc is even harder to follow. Because the arrow purports to show what was copied, this positional mismatch can teach the wrong provenance despite the correct seven-block result. It also fails the package's own prompt requirement for an arrow from the original pair to its copy and the visualization guide's label/drawing alignment gate.
+
+**Required image correction:** draw a thick, unambiguous arrow or bracket from the yellow–teal source pair to the additional yellow–teal pair, with its head on the **new pair**; keep all four block sequences, headings, and the corrected deletion X unchanged. Re-export and inspect the corrected native file plus actual 360 and 680 px previews. Update the asset SHA and alt text only for the final selected image. The present image must not be imported or given `aiApproved`/V status. The existing proposed alt text is directionally useful, but it does not repair a misleading arrow for sighted learners.
+
+## Source and view binding limits
+
+1. HE `ed4cdb55-2514-4483-9db6-eb4d74bd6663` maps 1:1 as `exact` to this canonical goal in the active HE review. The `rawSourceText` repeats the paraphrase, while the actual PDF offers a curriculum bullet. Reassess what `exact` means after any text adoption. The HE Sek-II GK and LK source views each contain this ID as a `goalEntry`.
+2. BY source goal `ef3a58c6-09b3-5e91-80a0-fb3857268603` also maps as `exact`, and both BY Sek-II GK/LK source views include the ID. The proposed text does **not** cover mutagens, measured protein **function**, or protection. The BY `exact` designation cannot be carried forward unchanged without a separately reasoned source mapping or additional BY scope goals.
+3. MV, NI, RP, SH, SN, ST, and TH Sek-I source views also contain this Q1-tagged canonical ID. Their broad source links must be checked for a coding-sequence/protein demand suitable to each stage; a `phase: Q1` tag does not remove the goal from those views. The source-projection receipt says `newSourceReview: false` and references canonical SHA-256 `69d3fa8f...`, whereas the working canonical file was `273bf081...` during this QA. Thus that receipt is historical evidence, not validation of the current working tree or the proposed text.
+
+After the image correction and any authoring changes, adopt only through fresh source/view decisions and current-text independent D/P/A/M/V reviews. No central gate report was run or changed by this QA.

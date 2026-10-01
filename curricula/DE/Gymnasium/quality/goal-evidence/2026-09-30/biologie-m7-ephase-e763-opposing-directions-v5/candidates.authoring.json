@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "biologie-m7-ephase-e763-opposing-directions-current-20260930-v5",
+  "reviewedAt": "2026-09-30T19:57:12Z",
+  "reviewer": "codex-biology-e763-opposing-directions-positive-profile-revision-2026-09-30",
+  "goals": [
+    {
+      "goalId": "e76315b1-2fed-525c-8efa-ca09da46f632",
+      "reason": "Substantive new review after independent v4 HOLD: the second fresh case changes membrane/solute setting and puts permeable tracer diffusion opposite the initial osmosis direction. Dominant impermeable osmolyte, negligible tracer, equal initial pressure and current goal/image binding were checked. AI candidate only.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Historical v2 second case checked osmosis without a separate new diffusion judgment.",
+        "Historical v3 cases left the permeable dye's osmotic contribution unspecified.",
+        "Historical v4 second case merely mirrored the first bag and kept both arrows together."
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "diffusion-osmosis-direction",
+            "essentialUnderstandingDe": "Diffusion ist Nettobewegung permeabler Teilchen entlang eines Konzentrationsgefälles; Osmose ist Wasserbewegung durch eine geeignete selektive Membran abhängig von gelösten Stoffen.",
+            "essentialUnderstandingEn": "Diffusion is net movement of permeable particles down a concentration gradient; osmosis is water movement through a suitable selective membrane depending on solutes.",
+            "observablePerformanceDe": "Die lernende Person sagt für einen neuen Fall getrennt Teilchen- und Wasserbewegung voraus und begründet Richtung und Rolle der Membranpermeabilität.",
+            "observablePerformanceEn": "For a new case, the learner predicts solute and water movement separately and explains directions and membrane permeability."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "diffusion-osmosis-direction"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "driving-gradient",
+            "textDe": "Im zweiten Aufbau zeigt der permeable Tracer weiter nach innen, die Osmoserichtung aber nach außen.",
+            "textEn": "In the second setup the permeable tracer still moves inward, but osmosis moves outward."
+          },
+          {
+            "id": "membrane-and-solute",
+            "textDe": "Beutel mit Farbstoff/nicht permeablem Salz und Zweikammer-Membran mit Harnstoff/nicht permeabler Saccharose vergleichen.",
+            "textEn": "Compare a bag with dye/impermeable salt and a two-chamber membrane with urea/impermeable sucrose."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "dye-bag",
+            "taskDemandDe": "In einem Beutelversuch sind Wasser und ein Farbstoff durch dieselbe Membran beweglich, ein Salz dagegen nicht. Anfangs sind Druck und Temperatur innen und außen gleich. Das gleiche Salz liegt innen mit 100 mmol/L und außen mit 20 mmol/L vor; der Farbstoff liegt nur als Spurentracer mit 0,001 mmol/L innen und 0,01 mmol/L außen vor. Sein Beitrag zum osmotischen Gefälle ist gegenüber dem Salz vernachlässigbar. Sage die anfänglichen Nettorichtungen von Farbstoffdiffusion UND Osmose getrennt voraus und begründe beide.",
+            "taskDemandEn": "In a bag experiment, water and a dye can cross the same membrane, but a salt cannot. Initially pressure and temperature are equal inside and outside. The same salt is at 100 mmol/L inside and 20 mmol/L outside; the dye is present only as a trace marker at 0.001 mmol/L inside and 0.01 mmol/L outside. Its contribution to the osmotic gradient is negligible compared with that of the salt. Predict and separately explain the initial net directions of dye diffusion AND osmosis.",
+            "expectedPerformanceDe": "Der permeable Spurentracer diffundiert anfangs netto von außen nach innen entlang seines eigenen Konzentrationsgefälles. Wasser bewegt sich anfangs netto nach innen zum deutlich höher konzentrierten undurchlässigen Salz; das geringe Tracergefälle ändert diese Osmoserichtung bei gleichem Anfangsdruck nicht. Beide Richtungen werden aus Permeabilität und jeweiligen Gradienten getrennt hergeleitet.",
+            "expectedPerformanceEn": "The permeable trace dye initially diffuses net from outside to inside down its own concentration gradient. Water initially moves net inward toward the much higher concentration of impermeable salt; the tiny tracer gradient does not reverse that osmotic direction at equal initial pressure. Both directions are derived separately from permeability and the respective gradients.",
+            "understandingFocusDe": "Beide anfänglichen Nettorichtungen werden bei dominierendem Salzgefälle getrennt aus Membranpermeabilität erklärt.",
+            "understandingFocusEn": "Both initial net directions are explained separately using membrane permeability and the dominant salt gradient."
+          },
+          {
+            "id": "urea-sucrose-two-chambers",
+            "taskDemandDe": "Ein anderer Versuch trennt eine Innen- und Außenkammer durch eine Labor-Membran. Diese lässt Wasser und Harnstoff durch, nicht aber Saccharose. Anfangsdruck und Temperatur sind auf beiden Seiten gleich. Saccharose liegt innen mit 20 mmol/L, außen mit 100 mmol/L vor. Harnstoff dient nur als Spurentracer: innen 0,001 mmol/L, außen 0,01 mmol/L; sein osmotischer Beitrag ist gegenüber dem Saccharosegefälle vernachlässigbar. Sage die anfänglichen Nettorichtungen von Harnstoffdiffusion UND Osmose bezogen auf die Innenkammer getrennt voraus und begründe beide.",
+            "taskDemandEn": "A different experiment separates an inner and an outer chamber with a laboratory membrane. Water and urea can cross, but sucrose cannot. Initial pressure and temperature are equal on both sides. Sucrose is 20 mmol/L inside and 100 mmol/L outside. Urea is only a trace marker: 0.001 mmol/L inside and 0.01 mmol/L outside; its osmotic contribution is negligible compared with the sucrose gradient. Relative to the inner chamber, separately predict and explain the initial net directions of urea diffusion AND osmosis.",
+            "expectedPerformanceDe": "Harnstoff diffundiert anfangs netto von außen in die Innenkammer entlang seines eigenen Konzentrationsgefälles, weil er die Membran passieren kann. Wasser bewegt sich anfangs netto aus der Innenkammer nach außen zum deutlich höher konzentrierten, undurchlässigen Saccharose-Osmolyt. Der Harnstoff in Spuren ändert die dominierende Osmoserichtung nicht; gleicher Anfangsdruck schließt eine unbekannte gegenläufige Druckwirkung aus. Die Pfeile sind entgegengesetzt und müssen unabhängig begründet werden.",
+            "expectedPerformanceEn": "Urea initially diffuses net from outside into the inner chamber down its own concentration gradient because it can cross the membrane. Water initially moves net from the inner chamber outward toward the much higher concentration of impermeable sucrose. Trace urea does not reverse the dominant osmotic direction; equal initial pressure rules out an unspecified opposing pressure effect. The arrows point in opposite directions and need independent explanations.",
+            "understandingFocusDe": "Eine andere Membran-/Stoffkonstellation mit gegenläufigen Netto-Pfeilen erzwingt getrennte Entscheidungen über permeablen Tracer und Wasser.",
+            "understandingFocusEn": "A different membrane/solute setting with opposite net arrows requires separate decisions about permeable tracer and water."
+          }
+        ]
+      }
+    }
+  ]
+}

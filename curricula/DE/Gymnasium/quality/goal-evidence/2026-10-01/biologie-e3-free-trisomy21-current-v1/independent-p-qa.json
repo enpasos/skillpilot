@@ -1,0 +1,42 @@
+{
+  "reviewKind": "independent-ai-content-qa",
+  "reviewedAt": "2026-09-30T22:36:42Z",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "goalId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+  "decision": "HOLD",
+  "sourceConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/biologie-e3-free-trisomy21-current-v1/positive-evidence.config.json",
+  "sourceCandidatesPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/biologie-e3-free-trisomy21-current-v1/positive-evidence.candidates.json",
+  "sourceCandidatesSha256": "sha256:fdd69939112e279176383ebd37c6ee0b1bb661dd02a21aaf4466c1a3cf4e9ae7",
+  "sourceRecordsPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/biologie-e3-free-trisomy21-current-v1/positive-evidence.review.jsonl",
+  "sourceRecordsSha256": "sha256:06d6f953896f9ed8281d43525f779d6d0eba3689354a1139c5924fb48b12266a",
+  "candidateStatus": "needs_human_review",
+  "candidateReviewAuthority": "ai_candidate",
+  "technicalCheck": {
+    "command": "npm --prefix app run -s quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/biologie-e3-free-trisomy21-current-v1/positive-evidence.config.json",
+    "result": "PASS: 1 configured, 0 approved, 1 needs_human_review, 0 blocking issues; current structural/fingerprint binding"
+  },
+  "findings": [
+    {
+      "severity": "pass",
+      "area": "scientific-core-and-source-scope",
+      "detail": "Three separate chromosome 21 copies constitute the chromosome-number change of free trisomy 21; a gamete with two copies can join one with one copy after missegregation. Both DE/EN profiles present this as a possible route, avoid a required mutation catalogue or diagnosis, and stay within the current canonical goal and the official HE E.3 principle/example scope."
+    },
+    {
+      "severity": "blocker",
+      "area": "respectful-wording",
+      "detail": "The German essentialUnderstandingDe calls trisomy 21 a 'Trisomie-21-Erkrankung'. That pathologizing noun is unnecessary for a chromosome-number principle and does not come from the official E.3 wording. Use a neutral 'Form der Trisomie 21' or 'Trisomie-21-Konstellation'; align English to 'form of trisomy 21'. In the cases, replace 'normale Keimzelle' / 'usual reproductive cell' with the precise 'Keimzelle mit einem Chromosom 21' / 'reproductive cell with one chromosome 21'."
+    },
+    {
+      "severity": "blocker",
+      "area": "second-independent-demonstration",
+      "detail": "Case 2 supplies the separation failure, states that the gamete already has two chromosome 21 copies, supplies the other gamete's one copy, and names the target classification 'freie Trisomie 21 als Genommutation' in the question. The remaining 2+1 count and restatement are too cued to establish a second independent positive transfer despite the profile's minimumIndependentDemonstrations=2. Show an unlabelled new segregation outcome and require the learner to identify the two-copy gamete, predict the post-fertilization count, then classify and explain the chromosome-number change without giving those answers in the demand. Keep the distinct result-to-origin direction of case 1."
+    }
+  ],
+  "primaryCurriculumSource": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+  "sourceScope": "Official HE E.3, printed page 34, says 'Mutation (Prinzip) am Beispiel Trisomie 21'; the local source extraction's broader mutation-type language is not imposed here.",
+  "scientificReference": "https://medlineplus.gov/genetics/condition/down-syndrome/",
+  "wordingReference": "https://www.gesundheitsinformation.de/trisomien-13-18-und-21.html",
+  "nextStep": "Revise the two identified contents in the candidate, rematerialize the current positive-understanding-evidence-v2 record, rerun its targeted structural check, and obtain a fresh independent content review before central integration or a strict P claim.",
+  "scopeLimit": "This independent review writes only this QA artifact. It does not modify candidate profiles, source mappings, active assets, central five-gate counts, or human release status."
+}

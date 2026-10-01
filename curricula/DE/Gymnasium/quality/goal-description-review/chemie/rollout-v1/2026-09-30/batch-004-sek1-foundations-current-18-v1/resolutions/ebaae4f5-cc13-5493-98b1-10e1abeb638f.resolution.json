@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-rollout-v1-batch-004-sek1-foundations-current-18-v1-20260930-resolution-ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+  "goal": {
+    "goalId": "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:958fec2cb2654dc241aae7daac264a7d4930f9c7eecd03a3c42a3378d2669d4c",
+    "pageFingerprint": "sha256:a93039cb15f425bc3ac87a26ed72e07041acfb30b706955f2760233022a2568e",
+    "goalReviewContextFingerprint": "sha256:72907aeffcc7200ff17298206e7fb7ff741609ea2f4d5eb391d7f26336a9869f",
+    "finalText": {
+      "titleDe": "Gefahrenpotenziale beurteilen und reduzieren",
+      "titleEn": "Assess and reduce hazard potential",
+      "descriptionDe": "Die lernende Person kann Gefahrenpotenziale chemischer Stoffe beurteilen und begründete Handlungsoptionen zur Risikominimierung entwickeln.",
+      "descriptionEn": "The learner can assess the hazard potential of chemical substances and develop justified options for reducing risk."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-004-sek1-foundations-current-18-v1-20260930-a",
+      "campaignDigest": "sha256:26d0bb0caa1337283c385d255572ce53eabf15db7e3167efa155e2bb433b772b",
+      "roundId": "chemie-rollout-v1-batch-004-sek1-foundations-current-18-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-004-sek1-foundations-current-18-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:6c1f00217f49118702ba4336ddbc87f27bde9200e0497e4ffe7b4ef40b788e26",
+      "goalReviewContextFingerprint": "sha256:72907aeffcc7200ff17298206e7fb7ff741609ea2f4d5eb391d7f26336a9869f",
+      "batchId": "chemie-rollout-v1-batch-004-sek1-foundations-current-18-v1-20260930-first-pass-a.batch-001",
+      "runId": "codex-gpt-6-round-a-chemie-b004-20260930",
+      "runManifestDigest": "sha256:2d4985c3a3201495bec61eb381969b40de57457fe792e0e1b3325a510d2edc54",
+      "resultsDigest": "sha256:c4dd9e0e76d1bac1b5daec23af4025a882c59fb6772a5eec290553578ade44fc",
+      "recordId": "chemie-b004-round-a-ebaae4f5-20260930",
+      "recordDigest": "sha256:cc1af2229e734c22641738c3992a805414ac5543738ebf7c22daf398a78864de"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-004-sek1-foundations-current-18-v1-20260930-b",
+      "campaignDigest": "sha256:792713b6c99b047b9936f1eb84eb413a06337ac32634775b62496b013b09cfaa",
+      "roundId": "chemie-rollout-v1-batch-004-sek1-foundations-current-18-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-004-sek1-foundations-current-18-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:6c1f00217f49118702ba4336ddbc87f27bde9200e0497e4ffe7b4ef40b788e26",
+      "goalReviewContextFingerprint": "sha256:72907aeffcc7200ff17298206e7fb7ff741609ea2f4d5eb391d7f26336a9869f",
+      "batchId": "chemie-rollout-v1-batch-004-sek1-foundations-current-18-v1-20260930-first-pass-b.batch-001",
+      "runId": "chemie-b004-sek1-round-b-20260930-gpt6-v1",
+      "runManifestDigest": "sha256:2adf845e1126104754ff6faa8ee43d1771b15f8550ca2d67e447e96cff0e6cca",
+      "resultsDigest": "sha256:8631b8b1cb0a315ae6bdaf5e4878a9ed29ed84805b2915e39e0664822e6d5f80",
+      "recordId": "chemie-b004-b-10",
+      "recordDigest": "sha256:b017bbaf82315633aa1416c401ab86d1e7e658b8ce7e3ee673fbd4490581a944"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:e84500e09d0fd690ac2eed4d3e238eb5a4acb7eb78e88abe3f653a737000ff4a"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-b004-sek1-foundations-current-18-20260930-partial-synthesis",
+    "manifestDigest": "sha256:7ef1ec681a9c6c96689d5635fbb534d9fddfdfd2626de8dceb78e08251f37c19",
+    "manifestFingerprint": "sha256:228916a32f90915fd7cfb993b2ae1760ce31981484b620757d2d2fdde411e470",
+    "decisionId": "chemie-b004-sek1-foundations-current-18-20260930-partial-synthesis-decision-002"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-b004-sek1-foundations-current-18-20260930-partial-synthesis-decision-002",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis; eight current dual-round keeps, ten explicit deferrals; no human approval",
+    "synthesizedAt": "2026-09-30T16:39:32.843Z",
+    "rationaleDe": "Beide Runden behandeln Gefahreninformation und passende Risikominderung als eine situationsbezogene Entscheidung. Die A-Evidenz fordert einen neuen begründeten Vergleich ohne gefährliche Eigenhandlung.",
+    "rationaleEn": "Both rounds treat hazard information and matching risk reduction as one situation-specific decision. A evidence asks for a fresh reasoned comparison without hazardous independent action.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Gefahr ist eine Stoff- oder Verfahrenseigenschaft, Risiko hängt zusätzlich von Exposition und Schutzmaßnahmen ab; eine begründete Maßnahme adressiert die konkrete Gefährdung.",
+      "essentialUnderstandingEn": "Hazard is a property of a substance or procedure, while risk also depends on exposure and controls; a justified measure addresses the particular hazard.",
+      "observablePerformanceDe": "Die lernende Person liest vorgegebene Gefahrstoffhinweise, erkennt eine relevante Exposition und wählt eine passende Maßnahme mit Begründung.",
+      "observablePerformanceEn": "The learner reads supplied hazard information, identifies a relevant exposure, and chooses a suitable control with reasons.",
+      "transferExpectationDe": "Bei einem neuen Stoff oder Arbeitsgang passt sie die Schutzmaßnahme an, statt ein Symbol ohne Kontext mit „ungefährlich“ gleichzusetzen.",
+      "transferExpectationEn": "For a fresh substance or procedure, they adapt the control instead of reading a symbol without context as proof of safety."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-6f96c29b2b2a70d2823ac246d425f0c64074d139d0809f6bed3d6720e2ffc1c3",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:9f809d4893509afe97f6fa63ebec2e36329fdfea2a72fe99e05e4241378abd83"
+}

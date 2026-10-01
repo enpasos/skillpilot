@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-resolution-a530ee7d-1002-5f02-ae05-a9d46410ac78",
+  "goal": {
+    "goalId": "a530ee7d-1002-5f02-ae05-a9d46410ac78",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:bb7d85e7c7d7644bbb970846f400ff133a0037f1b99506c2b40d135fc3508abd",
+    "pageFingerprint": "sha256:183a05232ac586adc375ebc5e335e6550deb73f45f4da385ac0e253bdfbdd115",
+    "goalReviewContextFingerprint": "sha256:ba8e657db73342ecc25c08f4a18d64471358f400cf794793f622f7a052adf36a",
+    "finalText": {
+      "titleDe": "Energieumsatz mit Bindungsänderungen erklären",
+      "titleEn": "Explain energy transfer using bond changes",
+      "descriptionDe": "Die lernende Person kann Energieänderungen bei chemischen Reaktionen qualitativ mit dem Spalten und Bilden chemischer Bindungen erklären.",
+      "descriptionEn": "The learner can qualitatively explain energy changes in chemical reactions by bond breaking and bond formation."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-a",
+      "campaignDigest": "sha256:564e8ba4894672d9976b1e1791687d2e13c88bc2090a5e6f5484101d0bc32279",
+      "roundId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:32ecbb03b0eded14d66cd3a2989ff61c3ee71177ec53d72e10c96a106b9fa210",
+      "goalReviewContextFingerprint": "sha256:ba8e657db73342ecc25c08f4a18d64471358f400cf794793f622f7a052adf36a",
+      "batchId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-a.batch-001",
+      "runId": "codex-gpt-6-round-a-chemie-b009-20260930",
+      "runManifestDigest": "sha256:582ba21e2ad3688175fa25450c4165f0fb03d0ce0edd95e5b04205411f02b081",
+      "resultsDigest": "sha256:09ac18519d9930c00e00dd083172993ebbb36672d07428413a08f8ce826fdac1",
+      "recordId": "chemie-b009-round-a-a530ee7d-20260930",
+      "recordDigest": "sha256:7685a111ff9862ad6463897adbf03d29a3f6f737bbd70f212deba89a42442211"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-b",
+      "campaignDigest": "sha256:be3d6dffaf9142ee0fd8634a27f6e97fea4175dcb95c5deeafdcbdb649507cca",
+      "roundId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:32ecbb03b0eded14d66cd3a2989ff61c3ee71177ec53d72e10c96a106b9fa210",
+      "goalReviewContextFingerprint": "sha256:ba8e657db73342ecc25c08f4a18d64471358f400cf794793f622f7a052adf36a",
+      "batchId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-b.batch-001",
+      "runId": "chemie-b009-global-reactions-20260930-blind-b-run-001",
+      "runManifestDigest": "sha256:7ff826ae46c4258bcdac12f3792912fe200805d3fd3c3a6ce11d4bce16ad3e41",
+      "resultsDigest": "sha256:18aea5bc6886b274fd9fdf5693b81e68d1cacb81435f1df4b2ef01bb26956926",
+      "recordId": "chemie-b009-b-08-a530ee7d",
+      "recordDigest": "sha256:9b51fe48d18053d4d1c00d9017dc01e50d99e833e1b4f3e629d03a334f27473c"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:64845805c1910516bd363bfa806b32821196a703357372e99251ded5268303c0"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-b009-global-reactions-20260930-partial-synthesis",
+    "manifestDigest": "sha256:3ee95ddb10320c0df6c282ba4d8e83d8a36dd0f513e4131fb3a70daa3bc25205",
+    "manifestFingerprint": "sha256:305093b7945546a2d6a13c69cf5bc797051889932077cf3bf29facae3fc6037c",
+    "decisionId": "chemie-b009-global-reactions-20260930-partial-synthesis-decision-004"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-b009-global-reactions-20260930-partial-synthesis-decision-004",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis of independent A/B; four dual keeps and four substantive deferrals, no human approval or image approval",
+    "synthesizedAt": "2026-09-30T21:45:01.000Z",
+    "rationaleDe": "Beide Runden behalten die qualitative Nettobilanz aus Energiebedarf beim Bindungsspalten und Energiefreisetzung beim Bindungsbilden als eine Erklärungskompetenz gemäß BY C8.3.5. A prüfte das tatsächliche H2/Cl2→2HCl-Bild und die erhaltenen Atome. Die darin gezeigten freien Atome sind nur gedankliche Bilanzstufe, kein behaupteter realer Mechanismus; P muss diese Modellgrenze ausdrücklich prüfen. B hat das Bild nicht als V-Freigabe beurteilt, und menschliche Freigabe bleibt getrennt.",
+    "rationaleEn": "Both rounds retain the qualitative net balance of energy input for bond breaking and energy release for bond formation as one explanatory competence under Bavarian C8.3.5. A inspected the actual H2/Cl2→2HCl image and conserved atoms. Its free atoms are only a hypothetical bookkeeping stage, not a claimed real mechanism; P must test this model limit explicitly. B did not approve the image as a V gate, and human approval remains separate.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Das Spalten chemischer Bindungen erfordert Energie; beim Bilden neuer Bindungen wird Energie frei. Der Netto-Energieumsatz ergibt sich aus dem Verhältnis beider Beiträge, nicht aus der bloßen Anzahl gezeichneter Bindungen oder dem Startimpuls.",
+      "essentialUnderstandingEn": "Breaking chemical bonds requires energy; forming new bonds releases energy. The net energy change depends on both contributions, not simply on the number of bonds drawn or the initial trigger.",
+      "observablePerformanceDe": "Die lernende Person deutet eine vorgegebene Reaktionsskizze zu Edukt- und Produktbindungen, kennzeichnet Energieaufnahme beim Spalten und Abgabe beim Bilden und erklärt die qualitative Nettorichtung aus gegebenen Energiedaten.",
+      "observablePerformanceEn": "The learner interprets a supplied reactant/product bond sketch, marks energy uptake during breaking and release during formation and uses supplied energy data to explain the qualitative net direction.",
+      "transferExpectationDe": "Bei einer neuen exothermen Reaktion weist sie die Aussage „Bindungen brechen setzt Energie frei“ zurück und unterscheidet gedachten Energievergleich von einem behaupteten realen Mechanismus über freie Atome.",
+      "transferExpectationEn": "For a fresh exothermic reaction, they reject the claim that breaking bonds releases energy and distinguish a hypothetical energy-accounting path from a claimed real mechanism via free atoms."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-fbbb4e1f79cad89fe4a5d3e1d09ecff740700abd24803b0ac0e25d823b418fc4",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:98933c0f2c045f57e49766d924b79a3939f1dd43ab19587df6883994d37d3cd4"
+}

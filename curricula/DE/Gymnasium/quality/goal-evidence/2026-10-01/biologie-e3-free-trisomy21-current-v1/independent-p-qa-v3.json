@@ -1,0 +1,58 @@
+{
+  "reviewKind": "independent-ai-positive-understanding-evidence-v2-active-image-recheck",
+  "reviewedAt": "2026-09-30T22:59:45Z",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "goalId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+  "decision": "PASS_AI_CANDIDATE",
+  "sourceConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/biologie-e3-free-trisomy21-current-v1/positive-evidence-v3.config.json",
+  "sourceConfigSha256": "sha256:45516acac5407cdb624b0fc81cfd22d3d2229cebaf27054b63f3b57157e4dba6",
+  "sourceCandidatesPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/biologie-e3-free-trisomy21-current-v1/positive-evidence-v3.candidates.json",
+  "sourceCandidatesSha256": "sha256:625a9e06b6d1fa5f8ce964b174bf96ef8f6a2f7215907fc8be9c1df18a05e8fc",
+  "sourceRecordsPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/biologie-e3-free-trisomy21-current-v1/positive-evidence-v3.review.jsonl",
+  "sourceRecordsSha256": "sha256:b205d6f1fdfac2eb998c384d734e37eef370fc528e52d3190241f34e365d7ef4",
+  "goalFingerprint": "sha256:f658d04d24e864b314e14bec7e107233f802386b36499f739e1477cd4597e176",
+  "reviewInputFingerprint": "sha256:ee15d471cfcc5f68e8270c5e7c66039f101d2e8403c085679092ba371b94496c",
+  "profileFingerprint": "sha256:0f4143211cd1163a6d5dee48ad09eb7cd2a997de8886af0509ee66c366c4e708",
+  "activeImagePath": "app/public/assets/goal-visualizations/biologie/0dd8380d-b542-5126-8d8e-f95d9ccded90/0dd8380d-b542-5126-8d8e-f95d9ccded90.png",
+  "activeImageSha256": "sha256:be3ca040c15dea30ffd6bf15bde444cdc603b7ffe36d11d8db0276da1fde8c3b",
+  "activeImageBinding": "The current canonical primary goal-visualization link has the exact goal ID and PNG URL. The curriculum source, app/public, backend static asset and independently reviewed V2 candidate are byte-identical at the active image hash. The V3 config includes goal-visualization in reviewedResourceTypes; its current reviewInputFingerprint differs from the pre-image V2 record and passes the targeted binding check.",
+  "candidateStatus": "needs_human_review",
+  "candidateReviewAuthority": "ai_candidate",
+  "technicalCheck": {
+    "command": "npm --prefix app run -s quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/biologie-e3-free-trisomy21-current-v1/positive-evidence-v3.config.json",
+    "result": "PASS: 1 configured, 0 approved, 1 needs_human_review, 0 blocking issues"
+  },
+  "findings": [
+    {
+      "severity": "pass",
+      "area": "scientific-core",
+      "detail": "DE and EN distinguish three separate chromosome 21 copies in free trisomy 21 from the usual two, and classify the chromosome-number change as a genome mutation rather than a change in one gene's base sequence. A possible chromosome-separation error can produce a two-copy reproductive cell; joining a one-copy cell can produce three copies. Neither the profile nor the cases generalize this route to translocation or mosaic forms or demand a genetic diagnosis."
+    },
+    {
+      "severity": "pass",
+      "area": "first-independent-case",
+      "detail": "The first case changes the active graphic into two new, unlabelled outcome models, one with two separate chromosome 21 copies and one with three. The learner must select the free-trisomy example, explain the level of change and construct a possible earlier missegregation-to-fertilization route. No 2 + 1 equation or ready division path appears in the new case; the expected performance requires causal explanation beyond reading the active image."
+    },
+    {
+      "severity": "pass",
+      "area": "second-independent-case",
+      "detail": "The second case begins with a new, differently arranged division outcome of two copies in one gamete and zero in the other, plus a separately formed one-copy gamete. The learner must identify the relevant gamete, predict the fertilized-cell count, explain the separation error and classify the chromosome-number change without a prelabelled error or mutation class. This forward prediction is substantively different from the first case's result-to-origin explanation."
+    },
+    {
+      "severity": "pass",
+      "area": "active-image-independence-and-model-honesty",
+      "detail": "The active 4:3 image already teaches the 2 + 1 = 3 count, but does not show missegregation or complete meiosis. The V3 variation rule and both expected performances explicitly demand new model interpretation, an independently explained possible division error and genome-versus-gene reasoning. The canonical alt text correctly states the image limit; neither task treats the picture as a diagnosis or proof of all trisomy-21 origins."
+    },
+    {
+      "severity": "pass",
+      "area": "language-and-status",
+      "detail": "The two expectation pairs and both task/expected-performance pairs are semantically aligned in German and English. Wording is neutral, with no 'normal' gamete or pathologizing label. The record truthfully remains needs_human_review with ai_candidate authority and E1/G1 bounds; the checker reports no structural blockers, but no human decision or learner performance is claimed."
+    }
+  ],
+  "nonBlockingBoundary": "The task briefs tell the reader the copy counts, and the active image plus alt text already teach the 2 + 1 route. At use time, do not count a label, count alone, or a memorized image sentence as positive evidence. Each independent demonstration must include a self-produced causal account of how missegregation could yield a two-copy gamete and why three separate chromosome 21 copies change chromosome number rather than one gene sequence. The displayed simplified division is a model, not a complete meiotic reconstruction.",
+  "curriculumSource": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+  "scientificReference": "https://medlineplus.gov/genetics/condition/down-syndrome/",
+  "sourceScope": "Official HE E.3 specifies the mutation principle using trisomy 21 as its example. NIH MedlinePlus Genetics supports the nondisjunction-to-extra-chromosome route and distinguishes other genetic forms. This review stays within the current canonical free-trisomy goal.",
+  "scopeLimit": "This is independent content QA of the V3 AI candidate and its current image binding. It does not approve the P gate, assert observed learner understanding, perform human review, or integrate the central registry. No candidate, active image or canonical file was edited."
+}

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "auditId": "biologie-layer-a-semantic-kind-three-current-20261001-v1",
+  "reviewedAt": "2026-10-01",
+  "reviewAuthority": "ai_targeted_semantic_kind_revalidation",
+  "humanApprovalClaim": false,
+  "activePath": "curricula/DE/Gymnasium/quality/goal-book-publication/biologie.semantic-kinds.json",
+  "beforePath": "curricula/DE/Gymnasium/quality/source-mapping-history/biologie-layer-a-20261001-v9/before-biologie.semantic-kinds.json",
+  "beforeSha256": "sha256:afb261cdb8bbf5e899c0d8b2141974d5a6875a6f4eaea234e605f5a0ddc6f567",
+  "afterSha256": "sha256:f248f4820e599a9df2d390f89dba10f03b1fb683e97827553944a36b2c4686ee",
+  "totalDecisions": 441,
+  "unchangedSemanticKindDecisions": 441,
+  "changedBindings": [
+    {
+      "goalId": "1b38144f-cdbd-5dfe-a792-94669bdc31d8",
+      "semanticKind": "curricularAtomic",
+      "beforeFingerprint": "sha256:738af140014308bdbe53f76a95828cb6da62681086826d8b2ba8ff96c0f77c27",
+      "afterFingerprint": "sha256:178d9afb7e3e880e92593cf285fd36fa70f93a3a74200c108fb3415b8a6f2180",
+      "reason": "The BY biomembrane/compartment-transport competence remains curricularAtomic. Removing the overstrong prerequisite 5c2 changes didactic order but not assessability or semantic kind; the remaining orientation prerequisite is retained."
+    },
+    {
+      "goalId": "1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a",
+      "semanticKind": "practiceAssessment",
+      "beforeFingerprint": "sha256:f4bfd4d7cceb1828504ebd7d63c1c4ad9fefe73118ab7d0b455f319a5b2516ee",
+      "afterFingerprint": "sha256:b111ef4dfbe64462bbf027e0889eb1d529569f77fce979157c6b3c1151aaa210",
+      "reason": "The global capstone remains practiceAssessment. Its generic four-task content does not assess the specific channel/carrier versus pump goal; removing only that unsupported requires and coveredGoalId changes the source fingerprint, not the semantic kind. The wider 201-global-only material assessment defect remains open."
+    },
+    {
+      "goalId": "5c2ce7b1-30ba-5e9c-99de-1ffac126ec13",
+      "semanticKind": "curricularAtomic",
+      "beforeFingerprint": "sha256:2b2a21521f1c0d01551cbb4acdb473b31dd1ae0018d0b3446071229aca70eee2",
+      "afterFingerprint": "sha256:1870f318288cb3096c7c210271429b00c023ac0abec62946553bdbbdda32282c",
+      "reason": "Current text remains one assessable curricularAtomic comparison. HE-only source boundary and revised applicability do not change its semantic kind; the old image has been replaced with the independently checked protein-channel/ATP-pump image. The semantic-kind fingerprint includes extendedData, so the boundary needs a fresh binding."
+    }
+  ]
+}

@@ -1,0 +1,408 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-chemistry-positive-evidence-b006-ions-atoms-bonding-current-7-v1",
+  "reviewedAt": "2026-09-30T18:21:11Z",
+  "reviewer": "codex-gpt-6-chemistry-b006-positive-profile-author",
+  "goals": [
+    {
+      "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+      "reason": "Leitfähigkeit wird mit Stoffzustand und beweglichen Ladungsträgern erklärt; Salzschmelzen bleiben ausschließlich Papierdaten. Zwei eigenständige neue Fälle prüfen positiven Transfer und die Modellgrenze. KI-Kandidat; needs_human_review, keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "b006-018bec90-core",
+            "essentialUnderstandingDe": "Ein Leiter braucht bewegliche Ladungsträger. In Metallfestkörpern sind Elektronen beweglich, in Salzschmelzen und Salzlösungen Ionen; feste Ionengitter und Zuckerlösungen besitzen unter den gegebenen Bedingungen keine ausreichend beweglichen Ladungsträger.",
+            "essentialUnderstandingEn": "Conduction requires mobile charge carriers. Metal solids have mobile electrons, molten and dissolved salts have mobile ions; fixed ionic lattices and sugar solution lack sufficiently mobile carriers under the given conditions.",
+            "observablePerformanceDe": "Die lernende Person vergleicht vorgegebene Leitfähigkeitsdaten, ordnet Leiter/Nichtleiter bei gleichem Messaufbau ein und begründet Unterschiede auf Teilchenebene; bloß „flüssig“ reicht nicht.",
+            "observablePerformanceEn": "The learner compares supplied conductivity data, classifies conductors/nonconductors under the same test setup and explains particle-level differences; being liquid alone is insufficient."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b006-018bec90-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "state",
+            "textDe": "Festes Salz, Salzlösung und Schmelze unterscheiden Beweglichkeit vorhandener Ionen.",
+            "textEn": "Solid salt, solution and melt differ in mobility of existing ions."
+          },
+          {
+            "id": "substance",
+            "textDe": "Metall, Salz und molekulare Zuckerlösung verlangen verschiedene Ladungsträgerannahmen.",
+            "textEn": "Metal, salt and molecular sugar solution require different carrier explanations."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "copper-salt-sugar-data",
+            "taskDemandDe": "Ein einheitlicher Niederspannungs-Messaufbau liefert für Kupferdraht hohe, festes NaCl sehr geringe, 0,1 mol/L NaCl-Lösung hohe und gleich konzentrierte Zuckerlösung sehr geringe Leitfähigkeit. Ordne und begründe; Messwerte sind vorgegeben.",
+            "taskDemandEn": "A common low-voltage setup gives high conductivity for copper wire, very low for solid NaCl, high for 0.1 mol/L NaCl solution and very low for equally concentrated sugar solution. Classify and explain from supplied data.",
+            "expectedPerformanceDe": "Kupfer: mobile Elektronen; NaCl fest: Ionen ortsgebunden; NaCl gelöst: Na+ und Cl− beweglich; Zucker bleibt molekular, die Flüssigkeit allein erklärt Leitung nicht.",
+            "expectedPerformanceEn": "Copper: mobile electrons; solid NaCl: fixed ions; dissolved NaCl: mobile Na+ and Cl−; sugar remains molecular, and liquid state alone does not explain conduction.",
+            "understandingFocusDe": "Stoff- und Zustandsvergleich trennt Beobachtung von Modell.",
+            "understandingFocusEn": "Substance and state comparison separates observation from model."
+          },
+          {
+            "id": "molten-salt-paper-transfer",
+            "taskDemandDe": "Ein neuer Papierdatensatz vergleicht festes und geschmolzenes KBr sowie reines Ethanol: nur die Schmelze zeigt deutliches Leiten. Erkläre ohne praktisches Erhitzen, warum Wasser nicht nötig ist und Ethanol trotz Flüssigkeit kaum leitet.",
+            "taskDemandEn": "A fresh paper data set compares solid and molten KBr with pure ethanol: only the melt conducts appreciably. Without practical heating, explain why water is unnecessary and liquid ethanol scarcely conducts.",
+            "expectedPerformanceDe": "In der KBr-Schmelze sind K+ und Br− beweglich, im Feststoff nicht; Ethanol besteht überwiegend aus neutralen Molekülen. Kein Wasser als angeblicher Ionenerzeuger.",
+            "expectedPerformanceEn": "K+ and Br− move in the KBr melt but not the solid; ethanol mostly consists of neutral molecules. Water is not falsely invoked as creating the ions.",
+            "understandingFocusDe": "Neue Schmelze testet den Ladungsträgermechanismus unabhängig vom Bild.",
+            "understandingFocusEn": "A fresh melt tests the carrier mechanism independently of the image."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+      "reason": "Einfache Schalenbelegung und Ionisierungsenergie-Sprünge werden als Modellhinweise, nicht als direkte Bohrbahn-Beweise behandelt. Zwei eigenständige neue Fälle prüfen positiven Transfer und die Modellgrenze. KI-Kandidat; needs_human_review, keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "b006-f5efab9d-core",
+            "essentialUnderstandingDe": "Das Bohrsche Energiestufenmodell ordnet Elektronen einfacher Atome Schalen zu. Ein großer Sprung zwischen aufeinanderfolgenden Ionisierungsenergien deutet auf stärker gebundene innere Elektronen hin; die Messung zeichnet keine kreisförmigen Bahnen ab.",
+            "essentialUnderstandingEn": "Bohr’s energy-level model allocates electrons of simple atoms to shells. A large jump between successive ionization energies suggests more strongly bound inner electrons; the measurement does not trace circular orbits.",
+            "observablePerformanceDe": "Die lernende Person verbindet Ordnungszahl und begrenzte Schalenbelegung mit gegebenen Ionisierungsenergien und benennt die Reichweite des Modells.",
+            "observablePerformanceEn": "The learner links atomic number and bounded shell occupation to supplied ionization energies and states the model’s limits."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b006-f5efab9d-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "outer-electrons",
+            "textDe": "Ein beziehungsweise zwei Außenelektronen erzeugen einen Sprung nach unterschiedlicher Ionisation.",
+            "textEn": "One versus two outer electrons cause a jump after a different ionization step."
+          },
+          {
+            "id": "model-limit",
+            "textDe": "Messdaten stützen Energieunterschiede, aber keine wörtlichen Elektronen-Kreisbahnen.",
+            "textEn": "Measurements support energy differences, not literal electron circles."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "lithium-ionization-data",
+            "taskDemandDe": "Für neutrales Li (Z=3) sind die ersten beiden Ionisierungsenergien rund 520 und 7298 kJ/mol. Gib eine einfache Schalenbelegung an und deute den Sprung.",
+            "taskDemandEn": "For neutral Li (Z=3), the first two ionization energies are about 520 and 7298 kJ/mol. Give a simple shell occupancy and interpret the jump.",
+            "expectedPerformanceDe": "2,1 Elektronen: Nach Entfernen des Außenelektrons betrifft die zweite Ionisation die innere Schale; Zahlen sind Hinweise auf Bindungsstärke, kein Bahnfotobeweis.",
+            "expectedPerformanceEn": "2,1 electrons: after the outer electron is removed, the second ionization reaches the inner shell; the numbers indicate binding strength, not a photo of paths.",
+            "understandingFocusDe": "Ein neuer Messdatensatz verbindet Modell und Messung.",
+            "understandingFocusEn": "A new measured data set links model and measurement."
+          },
+          {
+            "id": "magnesium-ionization-transfer",
+            "taskDemandDe": "Für Mg (Z=12) sind die ersten drei Ionisierungsenergien rund 738, 1451 und 7733 kJ/mol. Schlage eine einfache Schalenbelegung vor und erkläre, was der große Sprung nach der zweiten Entfernung zeigt und nicht zeigt.",
+            "taskDemandEn": "For Mg (Z=12), the first three ionization energies are about 738, 1451 and 7733 kJ/mol. Propose a simple shell occupancy and explain what the large jump after the second removal does and does not show.",
+            "expectedPerformanceDe": "2,8,2 im einfachen Schalenmodell; zwei äußere Elektronen, danach stärker gebundenes inneres Elektron. Die Messwerte allein liefern keine exakten Orbitalformen oder klassischen Bahnen.",
+            "expectedPerformanceEn": "2,8,2 in the simple shell model; two outer electrons, then a more strongly bound inner electron. Values alone give neither exact orbital shapes nor classical paths.",
+            "understandingFocusDe": "Sprung an anderer Stelle prüft Transfer und Modellgrenze.",
+            "understandingFocusEn": "A jump at another position tests transfer and the model limit."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+      "reason": "PSE-Struktur wird nur für einfache Hauptgruppenatome verwendet; Ionenänderung und Übergangsmetallgrenze werden getrennt. Zwei eigenständige neue Fälle prüfen positiven Transfer und die Modellgrenze. KI-Kandidat; needs_human_review, keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "b006-e9d74940-core",
+            "essentialUnderstandingDe": "Ordnungszahl ist die Protonenzahl und beim neutralen Atom auch Elektronenzahl. Bei einfachen Hauptgruppenatomen deuten Gruppe und Periode auf Valenzelektronen und besetzte Schalen; eine Ionenladung verändert Elektronenzahl, nicht Protonenzahl.",
+            "essentialUnderstandingEn": "Atomic number equals proton count and, for a neutral atom, electron count. In simple main-group atoms, group and period indicate valence electrons and occupied shells; ion charge changes electron count, not proton count.",
+            "observablePerformanceDe": "Die lernende Person liest neue Hauptgruppenfälle aus PSE-Daten und erläutert Atom-Ion-Unterschiede, ohne Hauptgruppenregeln auf Übergangsmetalle zu verallgemeinern.",
+            "observablePerformanceEn": "The learner reads fresh main-group cases from periodic-table data and explains atom-ion differences without applying main-group rules to transition metals."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b006-e9d74940-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "element",
+            "textDe": "Hauptgruppe 15 und 2 unterscheiden Valenzelektronen und Perioden.",
+            "textEn": "Main groups 15 and 2 vary valence electrons and periods."
+          },
+          {
+            "id": "charge",
+            "textDe": "Neutrales Atom und Ion behalten dieselbe Protonenzahl, aber nicht Elektronenzahl.",
+            "textEn": "Neutral atom and ion keep the same proton count, not electron count."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "phosphorus-periodic-table",
+            "taskDemandDe": "Ein Ausschnitt des PSE zeigt Phosphor, Z=15, Gruppe 15, Periode 3. Nenne Protonen, Elektronen des neutralen Atoms, Valenzelektronen und Schalen; trenne P von P3−.",
+            "taskDemandEn": "A periodic-table excerpt shows phosphorus, Z=15, group 15, period 3. State protons, neutral-atom electrons, valence electrons and shells; distinguish P from P3−.",
+            "expectedPerformanceDe": "P hat 15 Protonen und 15 Elektronen, im einfachen Modell 5 Außenelektronen und 3 Schalen; P3− behält 15 Protonen, hat aber 18 Elektronen.",
+            "expectedPerformanceEn": "P has 15 protons and 15 electrons, 5 outer electrons and 3 shells in the simple model; P3− keeps 15 protons but has 18 electrons.",
+            "understandingFocusDe": "PSE-Lesen wird gegen Ladungsvorzeichen geprüft.",
+            "understandingFocusEn": "Periodic-table reading is tested against charge sign."
+          },
+          {
+            "id": "calcium-ion-transfer",
+            "taskDemandDe": "Ein neuer PSE-Ausschnitt zeigt Ca, Z=20, Gruppe 2, Periode 4, und daneben Ca2+. Gib die einfachen Atomdaten an und erkläre, warum man die Schalenzahl des Ions nicht blind als Periode 4 abliest.",
+            "taskDemandEn": "A fresh excerpt shows Ca, Z=20, group 2, period 4, alongside Ca2+. Give simple atom data and explain why the ion’s occupied-shell count is not read blindly as period 4.",
+            "expectedPerformanceDe": "Ca-Atom: 20 Protonen/Elektronen, 2 Außenelektronen, 4 Schalen. Ca2+: 20 Protonen, 18 Elektronen, äußere vierte Schale nach Abgabe leer; Gruppe/Periode beziehen sich auf das Element im PSE.",
+            "expectedPerformanceEn": "Ca atom: 20 protons/electrons, 2 outer electrons, 4 shells. Ca2+: 20 protons, 18 electrons, the outer fourth shell emptied on loss; group and period locate the element in the table.",
+            "understandingFocusDe": "Ein anderer Gruppenfall verlangt Atom-Ion-Transfer.",
+            "understandingFocusEn": "A different group tests atom-ion transfer."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "fcaf8c9b-bd81-552e-9d91-43649895471e",
+      "reason": "Metalleigenschaften werden als Evidenz für ein einfaches Teilchenmodell und dessen Dalton-Grenze benutzt. Zwei eigenständige neue Fälle prüfen positiven Transfer und die Modellgrenze. KI-Kandidat; needs_human_review, keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "b006-fcaf8c9b-core",
+            "essentialUnderstandingDe": "Ein starres Modell isolierter neutraler Dalton-Kugeln erklärt gleichzeitig metallische Leitfähigkeit und Verformbarkeit nicht. Ein einfaches Metallmodell mit positiven Atomrümpfen und beweglichen Elektronen kann beide Eigenschaften qualitativ deuten; es ist keine exakte Bandstruktur.",
+            "essentialUnderstandingEn": "Rigid isolated neutral Dalton spheres do not explain metallic conductivity and malleability together. A simple metal model with positive cores and mobile electrons can qualitatively account for both; it is not an exact band structure.",
+            "observablePerformanceDe": "Die lernende Person wählt zwischen Modellen anhand gegebener Stoffeigenschaften, nennt die nötigen Modellannahmen und eine Grenze.",
+            "observablePerformanceEn": "The learner selects between models from supplied material properties, names the necessary assumptions and a limit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b006-fcaf8c9b-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "metal",
+            "textDe": "Kupfer und Aluminium liefern unabhängige Metallbeispiele.",
+            "textEn": "Copper and aluminium provide independent metal cases."
+          },
+          {
+            "id": "counterexample",
+            "textDe": "Leitfähigkeit allein beweist Metallcharakter nicht, wie Graphit zeigt.",
+            "textEn": "Conductivity alone does not prove metallic character, as graphite shows."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "copper-model-choice",
+            "taskDemandDe": "Zwei gezeichnete Modelle für einen Kupferstreifen sind vorgegeben: getrennte starre neutrale Kugeln oder positive Atomrümpfe mit beweglichen Elektronen. Der Streifen leitet auch nach Biegen gut. Wähle und begründe.",
+            "taskDemandEn": "Two sketches for a copper strip are supplied: isolated rigid neutral spheres or positive cores with mobile electrons. The strip conducts well even after bending. Choose and justify.",
+            "expectedPerformanceDe": "Das zweite einfache Modell erklärt bewegliche Elektronen und zusammenhaltende, gegeneinander verschiebbare Rümpfe; starre isolierte Kugeln leisten beides nicht. Keine Bandstruktur wird behauptet.",
+            "expectedPerformanceEn": "The second simple model accounts for mobile electrons and cohesive yet shiftable cores; isolated rigid spheres do neither. No band structure is claimed.",
+            "understandingFocusDe": "Beobachtung begründet einen Modellwechsel.",
+            "understandingFocusEn": "Observation motivates model revision."
+          },
+          {
+            "id": "aluminium-graphite-transfer",
+            "taskDemandDe": "Ein neues Datenblatt nennt Aluminium leitfähig und verformbar, Graphit leitfähig, aber spröde. Entwickle für Aluminium ein einfaches Metallmodell und beurteile die Aussage „jeder Leiter ist ein Metall“.",
+            "taskDemandEn": "A fresh data sheet says aluminium is conductive and malleable while graphite is conductive but brittle. Build a simple metal model for aluminium and assess “every conductor is a metal.”",
+            "expectedPerformanceDe": "Positive Aluminium-Atomrümpfe und mobile Elektronen erklären die kombinierten Metalleigenschaften qualitativ; Graphit widerlegt den Umkehrschluss aus Leitfähigkeit allein. Das Modell sagt keine vollständige Graphitstruktur voraus.",
+            "expectedPerformanceEn": "Positive aluminium cores and mobile electrons qualitatively explain the combined metal properties; graphite defeats the reverse inference from conduction alone. The model does not purport to explain graphite fully.",
+            "understandingFocusDe": "Gegenbeispiel prüft Modellgüte statt Schlagwortwiedergabe.",
+            "understandingFocusEn": "A counterexample tests model quality beyond naming it."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "7964cb36-e9b1-5176-9426-a82041a5b72f",
+      "reason": "Die Formelart wird aus dem Teilchenmodell, nicht aus der Formel als alleiniger Strukturbeweis abgeleitet. Zwei eigenständige neue Fälle prüfen positiven Transfer und die Modellgrenze. KI-Kandidat; needs_human_review, keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "b006-7964cb36-core",
+            "essentialUnderstandingDe": "Eine Molekülformel zählt Atome eines abgegrenzten Moleküls mit gerichteten kovalenten Bindungen. Eine Salz-Verhältnisformel nennt das kleinste Ionenverhältnis eines ausgedehnten Gitters mit elektrostatischer Anziehung in viele Richtungen; sie behauptet keine einzelnen Salz-Moleküle.",
+            "essentialUnderstandingEn": "A molecular formula counts atoms of a discrete molecule with directional covalent bonds. An ionic ratio formula gives the smallest ion ratio in an extended lattice with electrostatic attraction in many directions; it does not posit individual salt molecules.",
+            "observablePerformanceDe": "Die lernende Person verbindet Teilchendarstellungen mit Molekül- bzw. Verhältnisformeln und erklärt, weshalb Ladungsausgleich keinen isolierten Ionenverband beweist.",
+            "observablePerformanceEn": "The learner links particle depictions to molecular versus ionic-ratio formulas and explains why charge balance does not prove a discrete ionic molecule."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b006-7964cb36-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "particle-structure",
+            "textDe": "Abgegrenztes Molekül und fortgesetztes Ionengitter werden verglichen.",
+            "textEn": "Discrete molecule and extended ionic lattice are compared."
+          },
+          {
+            "id": "ratio",
+            "textDe": "1:1 und 1:2-Gitterverhältnisse wechseln, ohne daraus Moleküle zu machen.",
+            "textEn": "1:1 and 1:2 lattice ratios vary without becoming molecules."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "water-sodium-chloride",
+            "taskDemandDe": "Ein Teilchenbild zeigt einzelne H–O–H-Einheiten; ein anderes abwechselnde Na+ und Cl− in einem fortgesetzten Gitter. Ordne H2O und NaCl als Formelarten ein und begründe.",
+            "taskDemandEn": "One particle sketch shows separate H–O–H units; another shows alternating Na+ and Cl− in a repeating lattice. Classify H2O and NaCl formula types and explain.",
+            "expectedPerformanceDe": "H2O zählt Atome je abgegrenztem Molekül; NaCl ist das kleinste 1:1-Verhältnis im Gitter, kein NaCl-Molekül. Gerichtete kovalente Bindung versus elektrostatisches Netz wird benannt.",
+            "expectedPerformanceEn": "H2O counts atoms in a discrete molecule; NaCl is the smallest 1:1 lattice ratio, not a NaCl molecule. Directional covalent bonds versus extended electrostatic network are named.",
+            "understandingFocusDe": "Zwei Teilchenbilder tragen die Darstellungsentscheidung.",
+            "understandingFocusEn": "Two particle sketches support the representation choice."
+          },
+          {
+            "id": "carbon-dioxide-calcium-fluoride",
+            "taskDemandDe": "Neue Teilchenangaben: CO2 liegt als einzelne O=C=O-Einheiten vor; CaF2 bildet ein Gitter aus Ca2+ und F−. Erkläre trotz beider „1:2“-Schreibweisen den Unterschied der Formeln.",
+            "taskDemandEn": "Fresh particle information: CO2 occurs as separate O=C=O units; CaF2 forms a lattice of Ca2+ and F−. Despite both having “1:2” notation, explain the formula difference.",
+            "expectedPerformanceDe": "CO2 ist die Atomzahl je Molekül; CaF2 ist das kleinste ladungsneutrale Ionenverhältnis im Gitter. Gleiches Zahlenschema belegt nicht gleiche Teilchenstruktur.",
+            "expectedPerformanceEn": "CO2 counts atoms per molecule; CaF2 is the lowest charge-neutral ion ratio in the lattice. The same numeric pattern does not prove the same particle structure.",
+            "understandingFocusDe": "Gleiche Ziffern bei anderer Struktur verhindern Formelerkennungs-Trick.",
+            "understandingFocusEn": "Same digits with a different structure prevent formula-pattern guessing."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "92c99237-1c74-54fc-bf08-9191656afaa6",
+      "reason": "Molekülformel, Lewis-, Struktur- und räumliche Darstellung werden nach ihrer jeweiligen Aussagekraft gewählt. Zwei eigenständige neue Fälle prüfen positiven Transfer und die Modellgrenze. KI-Kandidat; needs_human_review, keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "b006-92c99237-core",
+            "essentialUnderstandingDe": "Eine Summenformel nennt Atomzahlen, aber nicht zwingend Verknüpfung, Elektronenpaare oder räumliche Form. Struktur-, Lewis- und räumliche Darstellungen zeigen diese Aspekte unterschiedlich; Umwandeln braucht zusätzliche gegebene Strukturinformation, wenn Isomere möglich sind.",
+            "essentialUnderstandingEn": "A molecular formula gives atom counts but not necessarily connectivity, electron pairs or spatial shape. Structural, Lewis and spatial representations show these differently; conversion needs added structural information when isomers are possible.",
+            "observablePerformanceDe": "Die lernende Person überführt eine vorgegebene Molekülstruktur in andere Formeln und begründet die Darstellungswahl anhand einer konkreten Frage.",
+            "observablePerformanceEn": "The learner converts a supplied molecular structure into other formulas and justifies representation choice for a concrete question."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b006-92c99237-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "question",
+            "textDe": "Atomzahl, Verknüpfung und freie Elektronenpaare verlangen unterschiedliche Darstellungen.",
+            "textEn": "Atom count, connectivity and lone pairs require different representations."
+          },
+          {
+            "id": "isomer",
+            "textDe": "Gleiche Summenformel kann verschiedene Strukturformeln besitzen.",
+            "textEn": "The same molecular formula may have different structural formulas."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "ethanol-ether-isomers",
+            "taskDemandDe": "Zwei gegebene Modelle zeigen CH3–CH2–OH und CH3–O–CH3. Gib für beide die Summenformel an, zeichne einfache Struktur- oder Lewis-Formeln und wähle eine Darstellung, die den Unterschied beweist.",
+            "taskDemandEn": "Two supplied models show CH3–CH2–OH and CH3–O–CH3. Give both molecular formulas, draw simple structural or Lewis formulas and select a representation that proves their difference.",
+            "expectedPerformanceDe": "Beide C2H6O; nur die Verknüpfungsdarstellung trennt Ethanol und Dimethylether. Die Summenformel allein kann nicht in genau eine Struktur rückübersetzt werden; O hat in einer Lewis-Skizze zwei freie Paare.",
+            "expectedPerformanceEn": "Both are C2H6O; connectivity distinguishes ethanol and dimethyl ether. The molecular formula alone cannot be inverted into one unique structure; O has two lone pairs in a Lewis sketch.",
+            "understandingFocusDe": "Isomerie macht die Grenze der Summenformel sichtbar.",
+            "understandingFocusEn": "Isomerism exposes the molecular formula’s limit."
+          },
+          {
+            "id": "ethene-representation-choice",
+            "taskDemandDe": "Ein neues Kugel-Stab-Modell zeigt Ethen mit zwei C und vier H sowie C=C. Formuliere Summen- und einfache Strukturformel. Welche Darstellung wählst du für Atomzahl und welche für die Doppelbindung?",
+            "taskDemandEn": "A fresh ball-and-stick model shows ethene with two C and four H and C=C. Write molecular and simple structural formulas. Which representation serves atom count and which shows the double bond?",
+            "expectedPerformanceDe": "C2H4 gibt die Anzahl, H2C=CH2 die Verknüpfung samt Doppelbindung; ein Modell/Skizze kann räumliche Anordnung andeuten. Die Wahl wird von der Frage begründet, nicht vom Bildstil.",
+            "expectedPerformanceEn": "C2H4 gives counts; H2C=CH2 gives connectivity including the double bond; a model may suggest spatial arrangement. Choice follows the question, not image style.",
+            "understandingFocusDe": "Neue Molekülklasse prüft Überführung und begründete Wahl.",
+            "understandingFocusEn": "A new molecule class tests conversion and justified selection."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "67cd332f-9db7-50e1-87f6-172ef3714300",
+      "reason": "EPA/VSEPR wird an gegebene Lewis-Formeln gebunden; freie Elektronenpaare beeinflussen die Molekülgestalt. Zwei eigenständige neue Fälle prüfen positiven Transfer und die Modellgrenze. KI-Kandidat; needs_human_review, keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "b006-67cd332f-core",
+            "essentialUnderstandingDe": "Bindende und freie Elektronenbereiche um ein Zentralatom ordnen sich im EPA-Modell mit möglichst geringer Abstoßung. Elektronenbereichsgeometrie und sichtbare Atomgestalt sind verschieden; ein freies Paar wird nicht als Atom eingezeichnet.",
+            "essentialUnderstandingEn": "Bonding and lone electron domains around a central atom arrange to reduce repulsion in VSEPR. Electron-domain geometry differs from the visible atomic shape; a lone pair is not drawn as an atom.",
+            "observablePerformanceDe": "Die lernende Person zählt an gegebenen Lewis-Strukturen Elektronenbereiche und freie Paare, leitet einfache Molekülgestalten ab und nennt Modellgrenzen statt aus exakten Winkeln zu raten.",
+            "observablePerformanceEn": "The learner counts electron domains and lone pairs in supplied Lewis structures, derives simple molecular shapes and names limits rather than guessing exact angles."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b006-67cd332f-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "lone-pairs",
+            "textDe": "Null, ein und zwei freie Paare am Zentralatom verändern die Atomgestalt.",
+            "textEn": "Zero, one and two central-atom lone pairs change molecular shape."
+          },
+          {
+            "id": "domain-number",
+            "textDe": "Zwei und vier Elektronenbereiche erzeugen unterschiedliche Grundanordnungen.",
+            "textEn": "Two and four electron domains produce different base arrangements."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "water-carbon-dioxide",
+            "taskDemandDe": "Gegebene Lewis-Bilder zeigen H–O–H mit zwei freien O-Paaren und O=C=O ohne freie C-Paare. Begründe mit EPA die Molekülgestalten.",
+            "taskDemandEn": "Supplied Lewis sketches show H–O–H with two O lone pairs and O=C=O with no C lone pairs. Explain molecular shapes using VSEPR.",
+            "expectedPerformanceDe": "H2O hat vier O-Bereiche, aber nur zwei sichtbare Bindungspartner und ist gewinkelt; CO2 hat zwei C-Bereiche und ist linear. Doppelbindungen zählen je als ein Bereich.",
+            "expectedPerformanceEn": "H2O has four O domains but only two bonded atoms and is bent; CO2 has two C domains and is linear. Each double bond counts as one domain.",
+            "understandingFocusDe": "Lewis→EPA mit zwei verschiedenen Domänenzahlen.",
+            "understandingFocusEn": "Lewis-to-VSEPR with two domain counts."
+          },
+          {
+            "id": "ammonia-methane-transfer",
+            "taskDemandDe": "Neue gegebene Lewis-Bilder: NH3 hat drei N–H-Bindungen und ein freies N-Paar; CH4 vier C–H-Bindungen ohne freies C-Paar. Vergleiche Atomgestalt, ohne exakte Winkel zu behaupten.",
+            "taskDemandEn": "Fresh supplied Lewis sketches: NH3 has three N–H bonds and one N lone pair; CH4 has four C–H bonds and no C lone pair. Compare atomic shape without claiming exact angles.",
+            "expectedPerformanceDe": "Beide haben vier Elektronenbereiche; NH3 ist trigonal-pyramidal, CH4 tetraedrisch. Das freie N-Paar macht NH3 nicht zu einem sichtbaren Tetraeder aus vier Atomen.",
+            "expectedPerformanceEn": "Both have four electron domains; NH3 is trigonal pyramidal while CH4 is tetrahedral. The N lone pair does not create a visible four-atom tetrahedron.",
+            "understandingFocusDe": "Gleiche Domänenzahl bei verschiedener Molekülgestalt testet freie Paare.",
+            "understandingFocusEn": "Same domain count with different molecular shapes tests lone-pair reasoning."
+          }
+        ]
+      }
+    }
+  ]
+}

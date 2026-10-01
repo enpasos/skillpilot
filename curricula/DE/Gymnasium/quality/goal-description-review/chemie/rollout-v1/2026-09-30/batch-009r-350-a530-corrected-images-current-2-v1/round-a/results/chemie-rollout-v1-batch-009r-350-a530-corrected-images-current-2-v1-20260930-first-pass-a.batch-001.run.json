@@ -1,0 +1,43 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "codex-gpt-6-round-a-chemie-b009r-20260930",
+  "campaignId": "chemie-rollout-v1-batch-009r-350-a530-corrected-images-current-2-v1-20260930-a",
+  "roundId": "chemie-rollout-v1-batch-009r-350-a530-corrected-images-current-2-v1-20260930-first-pass-a",
+  "batchId": "chemie-rollout-v1-batch-009r-350-a530-corrected-images-current-2-v1-20260930-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:1a3b685626b9d2e64bccff35d2cbb721582bb24b6b96b473ef1ef7d0148747d2",
+  "bundleFingerprint": "sha256:4e1578ca2acaf4938fbcd869f25d478ff3dffee41eeef5f926bd723c21085510",
+  "bookDigest": "sha256:3a33fc7a74352823be49e2ace35d7fde58dd4187d4c1cf7a24e262e200b2a4f9",
+  "provider": "openai",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:02aae9aee963e9025746ab554eeaa89a03cb1065c5d12a683127059a270ccd19",
+  "independenceGroupId": "chemie-rollout-v1-batch-009r-350-a530-corrected-images-current-2-v1-20260930-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "350a394f-e0d4-5e42-8e9a-39da9df33518",
+    "a530ee7d-1002-5f02-ae05-a9d46410ac78"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:1a3b685626b9d2e64bccff35d2cbb721582bb24b6b96b473ef1ef7d0148747d2"
+    }
+  ],
+  "startedAt": "2026-09-30T20:19:13Z",
+  "completedAt": "2026-09-30T20:19:13Z",
+  "status": "completed",
+  "outputDigest": "sha256:e1bb9287a9bd41d677a0b0a0496c8e26ce617f1bfe95cf3fce61432b92cf679a",
+  "toolchainVersion": "codex-agent-v1"
+}

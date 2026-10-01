@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-resolution-fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3",
+  "goal": {
+    "goalId": "fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:3cc3fb78e97af3bc26c479b7096f9304dc20120308059dcea228e2d61bbc5600",
+    "pageFingerprint": "sha256:18abe692080f4fe71ce68cfa7d546402382c63ee87bec09aecc21429a30e53dc",
+    "goalReviewContextFingerprint": "sha256:92671ece97edd3f71ab104298b8ac1430d24390a311b61535c756cbffac35400",
+    "finalText": {
+      "titleDe": "Einfache Verbrennungsvorgänge chemisch deuten",
+      "titleEn": "Interpret simple combustion processes chemically",
+      "descriptionDe": "Die lernende Person kann einfache Verbrennungsvorgänge als chemische Reaktionen deuten und beteiligte Stoffe sowie beobachtbare Reaktionsmerkmale fachlich verknüpfen.",
+      "descriptionEn": "The learner can interpret simple combustion processes as chemical reactions and connect involved substances with observable reaction features."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-a",
+      "campaignDigest": "sha256:2a38a6cb5179f745ace8ff0af5d6044fa6c3a1ae9fdf85e09564adea062a7c0d",
+      "roundId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:244f486e6577fe03fa802589881658c63d580bb5e24c4e8e589b9be0e1f22d56",
+      "goalReviewContextFingerprint": "sha256:92671ece97edd3f71ab104298b8ac1430d24390a311b61535c756cbffac35400",
+      "batchId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-first-pass-a.batch-001",
+      "runId": "codex-gpt-6-round-a-chemie-b001-20260930",
+      "runManifestDigest": "sha256:811e0a2545eff3a5bb7888ad9d1edb1b92bfab053b41208ff735a122e0ad4646",
+      "resultsDigest": "sha256:7fef19dc527bd4f6738e54aecfac6edf44adcf6c1d9f5788ee4fbda43f601175",
+      "recordId": "chemie-b001-round-a-fa203f3a-20260930",
+      "recordDigest": "sha256:b5443d65ac548d5e29b6ded467248d72c619c274253afdff54bf2aa3acba231e"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-b",
+      "campaignDigest": "sha256:fd8bae2e2a9de73168489e6bd24abfc405eb841e980764ef4c0ba5687a382d2d",
+      "roundId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:244f486e6577fe03fa802589881658c63d580bb5e24c4e8e589b9be0e1f22d56",
+      "goalReviewContextFingerprint": "sha256:92671ece97edd3f71ab104298b8ac1430d24390a311b61535c756cbffac35400",
+      "batchId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-first-pass-b.batch-001",
+      "runId": "chemie-b001-b-20260930-gpt6-v1",
+      "runManifestDigest": "sha256:320d88e8214f7301b9c6cb08326952fd728ca2a803f9adbfd7ff716781519414",
+      "resultsDigest": "sha256:ae7274405aca997f5fb9c06162153abc45bac22115b8a20b23dbd50d97cc0cf8",
+      "recordId": "chemie-b001-b-02",
+      "recordDigest": "sha256:5e14d2f42ec2b53aa8be838a7d26b258ae6edeae4ca2a8438cc9ce259871484e"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:9f0e852907237a9f37ec1e43ee0b78b58f76bb30c62bd2c159596799ae1581a6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-b001-sek1-reactions-energy-current-7-20260930-synthesis",
+    "manifestDigest": "sha256:c1a81e3596ecf6a15b852f8f0008fc9c59ee9139c00adc4fcdc4ac911c87ab4c",
+    "manifestFingerprint": "sha256:f9f999cbaafbd8ac7964726165f75d0324f65bcd1e831ec1d6876371082175de",
+    "decisionId": "chemie-b001-sek1-reactions-energy-current-7-20260930-synthesis-decision-002"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-b001-sek1-reactions-energy-current-7-20260930-synthesis-decision-002",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis of two independent current chemistry description reviews; no human approval",
+    "synthesizedAt": "2026-09-30T15:09:26.924Z",
+    "rationaleDe": "Beide Runden erkennen in der Beschreibung eine zusammenhängende Deutung einfacher Verbrennungen aus beteiligten Stoffen und beobachtbaren Reaktionsmerkmalen. Die erste Evidenzfassung prüft mit einem Metallbrand zusätzlich, dass nicht jede Verbrennung dieselben Produkte liefert. Das bleibt Aufgabe des P-v2-Profils; der kanonische Text muss keine Produktliste enthalten.",
+    "rationaleEn": "Both rounds recognize one coherent interpretation of simple combustion through participating substances and observed reaction features. The first evidence formulation also uses burning metal to test that not every combustion has the same products. That belongs in the V2 profile; the canonical text need not contain a product list.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Bei einer einfachen Verbrennung reagieren ein brennbarer Ausgangsstoff und Sauerstoff; es entstehen neue Stoffe. Licht und Wärme können Hinweise auf den Vorgang sein, ersetzen aber den Stoffnachweis und die fachliche Deutung nicht.",
+      "essentialUnderstandingEn": "In simple combustion, a combustible starting substance reacts with oxygen and new substances form. Light and heat can be clues to the process but do not replace identifying substances and explaining the change.",
+      "observablePerformanceDe": "Die lernende Person ordnet aus einer unabhängig vorgelegten Beobachtung Ausgangsstoffe und mögliche Produkte zu, nennt einen überprüfbaren Hinweis auf die Stoffumwandlung und erklärt den Sauerstoffbezug der Reaktion, ohne jede Flamme auf dieselben Produkte festzulegen.",
+      "observablePerformanceEn": "Using independently supplied observations, the learner identifies starting substances and possible products, cites a checkable indication of substance transformation, and explains oxygen's role without assuming every flame has the same products.",
+      "transferExpectationDe": "Bei einem neuen Beispiel wie der Verbrennung eines Metalls statt eines kohlenstoffhaltigen Brennstoffs unterscheidet die lernende Person gemeinsame Reaktionsmerkmale von stoffabhängigen Produkten und deutet die Beobachtungen chemisch.",
+      "transferExpectationEn": "For a fresh example such as burning a metal rather than a carbon-containing fuel, the learner distinguishes shared reaction features from substance-dependent products and explains the observations chemically."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-5892ae97d174edc67f29675fd82d9a01a245227e9c76828037c8c76185879a66",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:e1ddad9b1f8b646246208a0a27663b236094d99c6466955fbf5c822a35528562"
+}

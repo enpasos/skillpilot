@@ -1,0 +1,27 @@
+{
+  "reviewKind": "independent-ai-image-candidate-qa",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "goalId": "0503c975-3934-5206-962e-b1c247de0c12",
+  "reviewedAt": "2026-10-01",
+  "reviewer": "codex-root-not-image-producer",
+  "decision": "KEEP_CANDIDATE_ONLY",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-m7-b009-fossil-carbon-20261001-v1/0503c975-3934-5206-962e-b1c247de0c12-candidate-v4.png",
+  "candidateSha256": "sha256:e3f03ecac344cbd713f8102cc58b6f98456bb71cc2b245174c54d566f1d65625",
+  "format": "RGB PNG, 1448 x 1086, 4:3",
+  "oldImageFinding": "I inspected the active 2752 x 1536 JPG itself. The visible label says 'zusäetzlicher Zufluss'; its broad layout also shrinks the important flow labels on a narrow phone. This is a concrete correction reason, not a format-only replacement.",
+  "actualPixelReview": {
+    "native": "The candidate has correct German labels and distinct atmosphere, living biomass, and fossil reservoir. Arrows for photosynthetic uptake, respiration/decomposition, long-term burial, and combustion point in the intended directions.",
+    "phone360": "I viewed the exact 360 x 270 preview. The bottom net-balance sentence and main reservoir labels remain readable. The respiration and combustion labels are smaller but remain recognizable; no crucial label is cropped.",
+    "desktop680": "I viewed the exact 680 x 510 preview. All process labels, the dashed time path and conditional balance are legible.",
+    "formFactor": "The 4:3 ratio gives 270 px height at 360 px width, which helps this vertical three-reservoir concept; the 16:9 default would allow only about 203 px. The format exception is justified by actual phone and desktop views."
+  },
+  "scienceReview": "The image correctly distinguishes short biological cycling from a small, very slow fossil storage path. Fossil combustion adds a separate atmospheric CO2 inflow. The footer makes atmospheric increase conditional on inflow exceeding uptake, rather than claiming all emitted carbon remains in air. The model omits ocean and soil flux details and is not quantitative; alt text must state those limits.",
+  "bindingReview": "The official BY Gymnasium Chemie 8 C8.3.8 source calls for explaining the fossil-fuel-driven atmospheric CO2 rise using the carbon-atom cycle. The image is suitable for that current canonical goal once image/alt/QA bindings and current D/P/A/M evidence are checked. This review alone does not close any M7 gate.",
+  "sourceUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/8/chemie",
+  "requiredNextSteps": [
+    "Activate exact PNG copies and an accurate bounded alt text only after the targeted binding update.",
+    "Update machine visualization QA to the exact asset digest without claiming human approval.",
+    "Complete two independent current D reviews and a current positive-understanding-evidence-v2 profile, then recheck source/page/context/atomicity/memory and the central strict report."
+  ]
+}

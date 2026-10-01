@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:46992d65b9d816b815370dbd4db740f63341937651904f129c1d2dfbdf641e78",
+  "reviewInputFingerprint": "sha256:7fe7ef12ec283c0b12bc8bde2dec9cb2094f0fbb96e0771b2c5a8d91f662a749",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-a",
+      "roundId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-first-pass-a",
+      "independenceGroupId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-independent-a",
+      "runIds": [
+        "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-a-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-b",
+      "roundId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-first-pass-b",
+      "independenceGroupId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-independent-b",
+      "runIds": [
+        "biologie-e3-free-trisomy21-current-v3-b-20261001-gpt6-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::GPT-6::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+      "firstRecordId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-a-0dd8380d",
+      "secondRecordId": "biologie-e3-free-trisomy21-current-v3-b-01",
+      "firstRunId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-a-run-001",
+      "secondRunId": "biologie-e3-free-trisomy21-current-v3-b-20261001-gpt6-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

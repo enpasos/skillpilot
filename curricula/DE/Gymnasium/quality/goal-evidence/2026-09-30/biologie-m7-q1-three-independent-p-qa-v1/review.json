@@ -1,0 +1,59 @@
+{
+  "reviewKind": "independent-ai-positive-understanding-evidence-v2-content-qa",
+  "subject": "Biologie",
+  "reviewedAt": "2026-09-30T21:51:38Z",
+  "reviewer": "codex-biology-q1-three-independent-p-qa",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "scopeLimit": "Independent content and current-image-context review of three P candidates only. This is not a learner performance record, human approval, central five-gate completion or M7 claim.",
+  "sourceConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-q1-three-revisions-current-v1/positive-evidence.config.json",
+  "sourceConfigSha256": "sha256:2d552578041b179beb1ed13b5b04afe3ee7c7afa98991d38c5f0d26cbaa2fdbe",
+  "sourceCandidatesPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-q1-three-revisions-current-v1/positive-evidence.candidates.json",
+  "sourceCandidatesSha256": "sha256:330d233260834f60ca1c9b2a75224dd804bcf7cb61e86288eb329b11bdafa8e7",
+  "sourceRecordsPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-q1-three-revisions-current-v1/positive-evidence.review.jsonl",
+  "sourceRecordsSha256": "sha256:178670cf7cc8428be149783fadd1b15a938b9ffec9245c8e5499e4131bcab06b",
+  "primaryCurriculumSources": [
+    {
+      "url": "https://www.fortbildung.kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+      "scope": "Ausgabe 2024, Stand 01.08.2025, Q1.2 and Q1.3, printed page 39"
+    },
+    {
+      "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+      "scope": "Earlier Ausgabe 2024, Q1.2 and Q1.3, printed page 37; the older page citation is version-correct"
+    }
+  ],
+  "rnaMechanismCrossCheck": "https://pubmed.ncbi.nlm.nih.gov/11157775/",
+  "technicalCheck": {
+    "command": "npm --prefix app run -s quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-q1-three-revisions-current-v1/positive-evidence.config.json",
+    "result": "PASS: 3 configured, 0 approved, 3 needs_human_review, 0 blockers",
+    "interpretation": "Current structural binding only; it does not replace independent content QA."
+  },
+  "passCount": 2,
+  "reviseCount": 1,
+  "goals": [
+    {
+      "goalId": "8f6933b1-6e02-5512-acf2-a90a7fb9cb75",
+      "decision": "PASS_AI_CANDIDATE",
+      "profileFingerprint": "sha256:5fb68e33bc2f3e436a8333352f9f4047b548c13041f65011668079606f5e182c",
+      "activeImageSha256": "sha256:669fbeccb84f2c1c472d9de886d84a363889bbacae0f46a7c9df4df3872e836e",
+      "rationale": "The current LK target asks for interpretation of supplied acetylation and methylation findings in context. Both DE/EN cases independently require locating a histone mark, relating supplied accessibility and transcript observations, and limiting the inference. The second case changes mark and data direction; neither treats DNA sequence change or methylation as a universal off-switch. The actual PNG depicts marks and dense versus loose chromatin without prescribing a mark-specific effect. The case interpretations are framed as plausible regulation, not proof of causation from covariation alone."
+    },
+    {
+      "goalId": "ceb54223-197c-5289-a9c6-19358912e144",
+      "decision": "REVISE",
+      "profileFingerprint": "sha256:991f5c6ee576c04a372884557d1ede1cc562dd7203396e9b70223e3ce500f572",
+      "activeImageSha256": "sha256:6408a703ecfc38d8cda9a2fb8c6f1aedf6b10ccd5e7cb0d025e9370035a54b5c",
+      "finding": "The first case positively demonstrates the current goal: matching siRNA in an Ago2 complex and measured reduction of target mRNA and protein. The second case only explains a nonmatching control with unchanged expression. It does not independently demonstrate how a newly matching small RNA can reduce production of its target protein, although the profile asserts two independent demonstrations of that competence. The actual PNG correctly illustrates the first siRNA cleavage example and does not resolve this missing second positive case.",
+      "requiredRevision": "Keep the altered-target nonmatching control, but add a newly designed siRNA that matches the altered target in the second case. Supply an untreated or nonmatching comparison and measured lower target mRNA and protein after the newly matching siRNA. Require the learner to explain the new sequence-dependent RNAi pathway and distinguish the measured effect from a general guarantee. Update DE and EN task, expected performance and focus consistently; then materialize a new current P review and obtain fresh independent content QA.",
+      "sourceScope": "The HE Q1.2 source names RNA interference at LK level; the current canonical goal narrows the evidence to one supplied matching small-RNA example. The repair stays within that scope."
+    },
+    {
+      "goalId": "440854be-7f06-5678-91cb-ba8dcab56959",
+      "decision": "PASS_AI_CANDIDATE",
+      "profileFingerprint": "sha256:c69c61c308b45553df3436af1c6456dd5ad97f9bcc204ce63cd30e5e352314fc",
+      "activeImageSha256": "sha256:cfd21c79f4c692ed54fc33499bff94ecc22cc9eb29a603559db361a1d8da0e52",
+      "rationale": "The HE Q1.3 source explicitly includes monohybrid family-pedigree analysis with autosomal or sex-linked and dominant or recessive patterns. In the first new pattern, two unaffected parents and an affected daughter fit an autosomal recessive model, while the specified simple inherited fully penetrant autosomal dominant and X-linked recessive models do not. In the second, an affected father, unaffected mother, affected son and unaffected daughter exclude simple fully penetrant X-linked dominant inheritance but leave multiple autosomal and X-linked recessive explanations possible. DE/EN cases require reading relations, testing models and stating limits without individual diagnosis. The actual PNG is a small orientation pedigree and is not used as proof of one inheritance model."
+    }
+  ],
+  "integrationDecision": "HOLD_THREE_AS_PACKAGE_PENDING_RNAI_P_REVISION"
+}

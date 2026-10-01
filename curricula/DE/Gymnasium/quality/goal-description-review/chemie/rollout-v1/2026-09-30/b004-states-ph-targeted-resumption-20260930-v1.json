@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "auditId": "chemie-b004-states-ph-targeted-resumption-20260930-v1",
+  "authority": "ai_candidate",
+  "source": {
+    "jurisdiction": "DE-HE",
+    "stage": "SekI",
+    "officialPdfPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-chemie.pdf",
+    "officialPdfSha256": "f0a2c3795fcbcad1fee8d92d7ab9bc26810609bee0ef1fbd02c830e171220d2f",
+    "extractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_CHEMIE_SEKI_G9.source-extraction.json",
+    "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+    "sourceSpan": "8.1 Stoffe - Strukturen - Eigenschaften"
+  },
+  "records": [
+    {
+      "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+      "historicalB004Decisions": ["keep", "revise"],
+      "historicalB004sDecisions": ["round-a-pending", "revise"],
+      "currentBatchConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-004t-states-same-substance-current-1-v1.config.json",
+      "currentGoalFingerprint": "sha256:4a75a803c32e0f9a037a138d260a91da0eec7233f800c94e7b5e8c81207b3f39",
+      "currentPageFingerprint": "sha256:d7a6482e77242369fede3cfe782cddb55600f299ea5b21af6f15c3b6b72b8683",
+      "officialSourceGoalIds": ["he-chem-seki-8-1-b04-a01-336c81a2", "he-chem-seki-8-1-b04-a02-2dbb7a9c"],
+      "finding": "B004 beanstandete die unklare Stoff- gegenüber Teilchenebene; B004s beanstandete, dass bloßes Benennen der Übergänge noch kein Erklären ist. Die aktuelle Beschreibung verlangt den beobachtbaren Zustandswechsel desselben Stoffes. Das eigene Teilchenmodellziel 988888bb bleibt getrennt. Die hessische Pflichtzeile nennt Schmelzen, Sieden, Erstarren, Kondensieren, Sublimieren, Resublimieren und Verdunsten; der Text begrenzt den Geltungsbereich nicht auf Beispiele. Das aktuelle P-Profil prüft insbesondere Sieden/Verdunsten und den direkten fest-gasförmig-Weg. Wegen der zweiten Textänderung sind neue exakte A/B-Reviews auf B004t nötig; kein strenger D-Abschluss wird vorweggenommen.",
+      "semanticAtomicity": "reviewed atomic; one state-and-transition competence",
+      "memory": "reviewed no_memory_needed; no card required",
+      "visualization": "unchanged existing JPEG KEEP after original/360 review; supporting model, not independent performance proof"
+    },
+    {
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "historicalB004Decisions": ["keep", "revise"],
+      "currentB004sBDecision": "keep",
+      "currentB004sBRecordId": "chemie-b004s-states-ph-current-2-20260930-b-run-001-d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "currentGoalFingerprint": "sha256:b3bfd878934a95385f3f36a712f79471ff6950f525b56378b7dafd34faa0ba95",
+      "currentPageFingerprint": "sha256:1efb95406b7e0a7aab317e8a84ae2ff50eca4e9ed2d0e9d74f42686a78bac511",
+      "officialSourceGoalIds": ["he-chem-seki-8-1-b06-a01-34e85065"],
+      "finding": "HE 8.1 nennt geeignete Alltags-/Laborproben, natürliche/künstliche Indikatoren und die pH-Skala. Der aktuelle DE/EN-Text begrenzt aus Farbe ableitbare Aussagen auf grobe pH-Bereiche und geeignete Schulversuche. Nach der getrennten 326d-Textänderung und dem aktuellen AI-V-HOLD wurden die B004s-Ziel-, Seiten-, Kapitel-, Vorgänger-, Nachfolger-, Alttext- und Bild-URL/Hash-Bindungen gegen ein frisch aufgebautes gleichgeordnetes Book verglichen: beide hier genannten Fingerprints sowie die relevanten Seitenfelder blieben exakt gleich. Der bestehende unabhängige B004s-B-Record ist daher als gezielter Carryover auf Zielebene aktuell. A-Review und D-Synthese fehlen; zudem ist das JPG wegen exakter pH-Becherlabels aktuell V-HOLD. Kein strenger Abschluss.",
+      "semanticAtomicity": "reviewed atomic; indicator observation and rough pH classification form one routine",
+      "memory": "reviewed memory_required; card chem_basics_012 kept and visible in GK/LK/SekI",
+      "visualization": "existing JPEG AI-HOLD after original/360 review; corrected 1672x941 PNG candidate at curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b004s-ph-range-correction-20260930-v1/d2ccd1d5-candidate.png (sha256 cf6f69ccb31591750a925603b9930d57edb0f9f0112c6512b28ad674a561f7f8) inspected at 1672/680/360; independent visual QA and asset integration required"
+    },
+    {
+      "goalId": "416dfd33-8b43-5c49-903c-9847b95e4208",
+      "historicalB004Decisions": ["split_review", "block"],
+      "finding": "Offener Methodenkatalog plus Dokumentationsleistung. Kein aktueller fachlicher Abschluss und keine Übernahme in B004s/B004t ohne semantische Aufteilung, Quellen- und Nachweisprüfung."
+    }
+  ]
+}

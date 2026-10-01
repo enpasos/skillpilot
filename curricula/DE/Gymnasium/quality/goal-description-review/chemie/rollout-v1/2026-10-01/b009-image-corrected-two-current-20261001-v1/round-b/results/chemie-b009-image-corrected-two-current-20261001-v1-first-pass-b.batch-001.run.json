@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-b009-image-corrected-two-current-20261001-v1-b-run-001",
+  "campaignId": "chemie-b009-image-corrected-two-current-20261001-v1-b",
+  "roundId": "chemie-b009-image-corrected-two-current-20261001-v1-first-pass-b",
+  "batchId": "chemie-b009-image-corrected-two-current-20261001-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:dc9f8141a93386c42898e5725c917196c9b50b2b8a7b5e17f41c6aac37ef59e6",
+  "bundleFingerprint": "sha256:6e550cc5dda90b4b0508fb105d2419db3ae7b3d31999928a2259a0985645dcf1",
+  "bookDigest": "sha256:eada8ca63bf4cda81591a8c03ef7046f32f9969cbd1bc16138d4f2789e291752",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:a2a62d76d2645891e94e2d84f6061bf1158aca1b79e7c252c0c3f3f62737fd3a",
+  "independenceGroupId": "chemie-b009-image-corrected-two-current-20261001-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "1286f2fe-89b7-4454-8e11-85b6abd6e278",
+    "9198b4cf-e454-562f-83f0-b1b74e68765d"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:8bef4c07d1badb2bb260b9748f8d1c633b490f9ad317600db3c7dc34a4c0f0ba"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:55f11873f744e64c4f182828bc5b96a355126d5dfd42962d95a2a455b991e145"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:449a11519af246a8e135ce4bf77ee4cba120d4638332bfa04b154e551d9c2555"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:25f840ccca1f0dd34ae7135f1705a49f36f25d080a27e875bc1f7bb8c6db166d"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:dc9f8141a93386c42898e5725c917196c9b50b2b8a7b5e17f41c6aac37ef59e6"
+    }
+  ],
+  "startedAt": "2026-09-30T22:26:59Z",
+  "completedAt": "2026-09-30T22:26:59Z",
+  "status": "completed",
+  "outputDigest": "sha256:ea810c10bb468d6dc32fc2b73c71eec670bb32ed31a6718188f052c0578d3419",
+  "toolchainVersion": "codex-gpt-6-20261001"
+}

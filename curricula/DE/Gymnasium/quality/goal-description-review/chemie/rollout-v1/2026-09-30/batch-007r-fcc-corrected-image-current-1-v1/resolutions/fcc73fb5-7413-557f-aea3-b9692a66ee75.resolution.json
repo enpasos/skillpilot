@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-rollout-v1-batch-007r-fcc-corrected-image-current-1-v1-20260930-resolution-fcc73fb5-7413-557f-aea3-b9692a66ee75",
+  "goal": {
+    "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:6f0e432626ddfe21d61e8ebfa35fc812211258768ea5091c872b269a6319cf1f",
+    "pageFingerprint": "sha256:5e4f061e4701c34cde74711cad7e401ae4a850c84cb038166217d71342b6164d",
+    "goalReviewContextFingerprint": "sha256:3631753e54dc5deab9fc3328a2585284c2f1c8b48bc2f1f7f18554867375e42b",
+    "finalText": {
+      "titleDe": "Stoffe und Eigenschaften beschreiben",
+      "titleEn": "Describe substances and properties",
+      "descriptionDe": "Die lernende Person kann Stoffe anhand von Eigenschaftsmerkmalen beschreiben und ordnen.",
+      "descriptionEn": "The learner can describe and classify substances based on properties."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-007r-fcc-corrected-image-current-1-v1-20260930-a",
+      "campaignDigest": "sha256:5f04fa1ccfa1bc702f132483c1335ab7b015eaafcc34698324c063e72e514fbb",
+      "roundId": "chemie-rollout-v1-batch-007r-fcc-corrected-image-current-1-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-007r-fcc-corrected-image-current-1-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:0d2eefd611bda25100f92c34db27376efaa623da51e486c45f7e13bc0219649b",
+      "goalReviewContextFingerprint": "sha256:3631753e54dc5deab9fc3328a2585284c2f1c8b48bc2f1f7f18554867375e42b",
+      "batchId": "chemie-rollout-v1-batch-007r-fcc-corrected-image-current-1-v1-20260930-first-pass-a.batch-001",
+      "runId": "codex-gpt-6-round-a-chemie-b007r-fcc-20260930",
+      "runManifestDigest": "sha256:640473692384676f758c31b9fa4000d8a93b030ab66484dee2a68dec6829b11b",
+      "resultsDigest": "sha256:494aa5657adbf58c63e4d73db7a3685e19e032c668c54eff34928fb72422440c",
+      "recordId": "chemie-b007r-fcc-round-a-20260930",
+      "recordDigest": "sha256:ee53d45a5fee4a245076b1207791eda643e8faba2262d3b7634d9c3cf39645bf"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-007r-fcc-corrected-image-current-1-v1-20260930-b",
+      "campaignDigest": "sha256:9c78acb2c2d95e6afcd6a48df8ca4f0375e399a8c407442159a2dbadb6fa4cf1",
+      "roundId": "chemie-rollout-v1-batch-007r-fcc-corrected-image-current-1-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-007r-fcc-corrected-image-current-1-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:0d2eefd611bda25100f92c34db27376efaa623da51e486c45f7e13bc0219649b",
+      "goalReviewContextFingerprint": "sha256:3631753e54dc5deab9fc3328a2585284c2f1c8b48bc2f1f7f18554867375e42b",
+      "batchId": "chemie-rollout-v1-batch-007r-fcc-corrected-image-current-1-v1-20260930-first-pass-b.batch-001",
+      "runId": "chemie-b007r-fcc-image-20260930-blind-b-run-001",
+      "runManifestDigest": "sha256:48b165935199ce5edbe1ded310b7e3ff2eb90d8fef17e4e69ba0e005ffd44047",
+      "resultsDigest": "sha256:c90c6dbe692c1fb135d6172ec1629a3946228541970afe8cdf2b7681abd27e48",
+      "recordId": "chemie-b007r-fcc-b-01-fcc73fb5",
+      "recordDigest": "sha256:9f58157202815d9665acf1e146fbaa8e9130515a947b572816eaca1cc7402d3a"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:ebf54f95436fe83d5b5f9973a8c2be18834d1c9922f07967288cf6f038f8115c"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-b007r-fcc-corrected-image-20260930-current-synthesis",
+    "manifestDigest": "sha256:af7dad15bd55fcb18e180d43411cd5ffc468c19c71d50a434c3c8aaf968ecee2",
+    "manifestFingerprint": "sha256:862b55dcdcbc04482ece2e4f2e8b82760400a3aec31a9ebabf2e83514883ec27",
+    "decisionId": "chemie-b007r-fcc-corrected-image-20260930-current-synthesis-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-b007r-fcc-corrected-image-20260930-current-synthesis-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis of two independent current reviews; no human approval",
+    "synthesizedAt": "2026-09-30T19:12:02.807Z",
+    "rationaleDe": "A und die blinde B-Runde prüfen dieselbe aktuelle PNG-Seite und behalten die einheitliche Kompetenz bei, Stoffe anhand beobachteter Eigenschaften zu beschreiben und nach einem benannten Kriterium zu ordnen. Das frühere JPG enthielt die fachlich falsche Einordnung von „klar“ als Farbe und unlesbaren Pflichttext. Im neuen tatsächlich gesichteten Bild verteilen sich Zuckerteilchen schematisch ohne Bodensatz in Wasser, während Sand am Boden bleibt; die großen Labels sind bei 360 px lesbar. B weist ausdrücklich darauf hin, dass die Lupen keine real sichtbaren Moleküle behaupten und keine vollständige Stoffidentität beweisen. Die direkte HE-J8-Herkunft stimmt mit dem aktuellen Wortlaut überein. Menschliche Freigabe bleibt getrennt.",
+    "rationaleEn": "A and the blind B round review the same current PNG page and retain one competence: describe substances through observed properties and classify them using a named criterion. The old JPG wrongly placed 'clear' in a colour field and required unreadable small print. In the newly inspected image, sugar is schematically dispersed without sediment in water while sand remains at the bottom, and the large labels remain legible at 360 px. B expressly notes that the magnifiers do not claim real visibility of molecules or establish full substance identity. Direct Hessian J8 provenance supports the current wording. Human approval remains separate.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Stoffe lassen sich anhand beobachtbarer und unter gleichen Bedingungen ermittelter Eigenschaften beschreiben und vergleichen; ein einzelnes Merkmal kann für eine eindeutige Zuordnung unzureichend sein. Eigenschaft und Stoffname sind nicht dasselbe.",
+      "essentialUnderstandingEn": "Substances can be described and compared through observable properties measured under comparable conditions; one property may be insufficient for identification. A property is not the same as a substance name.",
+      "observablePerformanceDe": "Die lernende Person erstellt aus sicheren vorgegebenen Beobachtungen eine Eigenschaftstabelle für mehrere Stoffproben und ordnet sie anhand begründeter Kriterien.",
+      "observablePerformanceEn": "The learner builds a property table from safe supplied observations of several substance samples and classifies them by justified criteria.",
+      "transferExpectationDe": "Bei zwei neuen weißen Feststoffen fragt sie nach einem weiteren geeigneten Merkmal statt sie allein wegen gleicher Farbe gleichzusetzen; keine Geschmacksprobe an unbekannten Stoffen.",
+      "transferExpectationEn": "For two fresh white solids, they seek another suitable property rather than treating equal color as identity; no tasting of unknown substances."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-f6a2afad46b88962ff7e10167834f16005b10441fe954278d96472dce63d22ac",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:04613e4a166a7a0108daa9b75c6314947f59b151f595df061530191281ec30dd"
+}

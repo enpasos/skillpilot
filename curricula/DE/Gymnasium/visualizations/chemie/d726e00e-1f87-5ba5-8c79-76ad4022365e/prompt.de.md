@@ -1,57 +1,20 @@
 # Lernzielvisualisierung: Kalkkreislauf chemisch beschreiben
 
-## SkillPilot-Ziel
-
 - SkillPilot-ID: `d726e00e-1f87-5ba5-8c79-76ad4022365e`
-- Titel: Kalkkreislauf chemisch beschreiben
-- Beschreibung: Die lernende Person kann die wesentlichen Stoffumwandlungen im Kalkkreislauf chemisch beschreiben und mit Carbonaten verknuepfen.
+- Aktives Asset: `d726e00e-1f87-5ba5-8c79-76ad4022365e.png`, 1672 × 941 Pixel, SHA-256 `51341eaf35f02e3bf70b9a65d9187895189c9d98daba97413c97b9eed992f6eb`
+- Generator: ChatGPT/Codex `image_gen`, Bearbeitung des bisherigen Nano-Banana-Pro-JPG
+- Maschinelle Bildentscheidung: `aiApproved=yes` für genau diesen Hash; menschliche Freigabe: `humanApproved=no`
 
-## Generator
+## Korrekturauftrag
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
-- Quellbild: `d726e00e-1f87-5ba5-8c79-76ad4022365e.jpg`
-- Public Asset: `/assets/goal-visualizations/chemie/d726e00e-1f87-5ba5-8c79-76ad4022365e/d726e00e-1f87-5ba5-8c79-76ad4022365e.jpg`
+Der bestehende freundliche Comicstil und die fachlich richtigen drei Schritte bleiben erhalten. Die im 360-Pixel-Ansichtsmaßstab zu kleinen Gleichungen werden in drei breite horizontale Felder gesetzt. Exakte fachliche Schreibweise:
 
-## Prompt
+1. Brennen: `CaCO₃ → CaO + CO₂`
+2. Löschen: `CaO + H₂O → Ca(OH)₂`
+3. Abbinden: `Ca(OH)₂ + CO₂ → CaCO₃ + H₂O`
 
-```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Links führen zwei Pfeile abwärts; rechts führt ein einzelner Rückpfeil vom Abbinden zum Brennen. Die erste Bildfassung hatte missverständliche Rückpfeile; die zweite Fassung korrigiert gezielt die Richtung. Keine Photorealistik, keine zusätzliche Kleinschrift.
 
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+## Prüfung und Geschichte
 
-Titel: Kalkkreislauf chemisch beschreiben
-Beschreibung: Die lernende Person kann die wesentlichen Stoffumwandlungen im Kalkkreislauf chemisch beschreiben und mit Carbonaten verknuepfen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Kalkkreislauf`.
-- Show exactly three connected steps in a cycle with these labels and equations:
-  1. `Brennen`: `CaCO3 -> CaO + CO2`
-  2. `Löschen`: `CaO + H2O -> Ca(OH)2`
-  3. `Abbinden`: `Ca(OH)2 + CO2 -> CaCO3 + H2O`
-- Use arrows only from step 1 to step 2, step 2 to step 3, and step 3 back to limestone `CaCO3`.
-- Add small context icons: limestone, kiln heat, water drop, plaster/mortar wall.
-- Keep all formulas large and readable.
-
-Vermeiden:
-
-- Do not reverse any reaction arrow.
-- Do not write `CaCO3 + H2O -> Ca(OH)2`.
-- Do not omit `CO2` from burning or setting.
-- Do not add unrelated cement chemistry.
-- Do not use extra arrows whose source and target are not a listed step.
-```
-
-## Review-Notiz
-
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Das [Review-Paket](../../../quality/goal-visualization-review/chemie-b010-d726-mobile-correction-20260930-v1/d726-generation-and-decision.md) dokumentiert die belegte mobile Schwäche, beide generierten Kandidaten, die Sichtprüfung bei 360 und 680 Pixeln und die unabhängige fachliche Kandidatenprüfung. Das bisherige JPG, sein Prompt und sein alter QA-Record liegen dort unverändert unter `historical-active-before-correction/`. Erzeugung allein war keine Freigabe; D/P-Bindungen und menschliche Release-Gates bleiben getrennt.

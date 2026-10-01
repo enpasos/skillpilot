@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "codex-gpt-6-chemie-b004t-first-pass-a-20260930",
+  "campaignId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-a",
+  "roundId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-first-pass-a",
+  "batchId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:7d9b470bedb02d014b2d51e40798e8af2b92422642878ddf70763ae8dec72cd2",
+  "bundleFingerprint": "sha256:5e20145b879074aec12e75ae868d38667f26569a835dd59c730cef132447502d",
+  "bookDigest": "sha256:a7e75a1187f469569efc59e9d7643f34569574822965f28f6513ee4690d8b70c",
+  "provider": "openai",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:a2113e0c03179e7423ae642602444b2a5b385d11e16ad0b80b43929105f1f3b3",
+  "independenceGroupId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "326d45bf-9f77-57d5-a054-93e76b034dd5"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:7de900fd69ca3722fe29cc40dd015c8a3091dd6593801d210f7ffb19609b011f"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:c52eaa9898d94346454d9d244628d16fe28e5b7b8859b2b264405bbc82f00834"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:e55ad402537784bf8627884d9fd63d4f4d926cacc6d14ef7fe97d9dee5ce2393"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:7d9b470bedb02d014b2d51e40798e8af2b92422642878ddf70763ae8dec72cd2"
+    }
+  ],
+  "startedAt": "2026-09-30T21:14:37.611Z",
+  "completedAt": "2026-09-30T21:14:37.611Z",
+  "status": "completed",
+  "outputDigest": "sha256:29567de5573a2c212dc52c8be7f6447759f93ed6814d78f280e26483ffa5a63d",
+  "toolchainVersion": "codex-agent-v1"
+}

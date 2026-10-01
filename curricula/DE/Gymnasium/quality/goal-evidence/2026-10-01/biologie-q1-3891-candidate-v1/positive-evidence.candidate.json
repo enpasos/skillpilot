@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "profileContract": "positive-understanding-evidence-v2",
+  "reviewId": "biologie-q1-3891-candidate-20261001-v1",
+  "reviewer": "codex-biology-q1-3891-author",
+  "authority": "ai_authoring_candidate",
+  "canonicalChanged": false,
+  "goalId": "3891b735-9d0d-5eef-b653-6ad58b9181f6",
+  "reason": "The common GK/LK principle is observable when the learner links a suitable somatic target cell, added or changed genetic information, the intended function, and a case-specific limit. The two fictional cases include functional gene addition and a changed tissue and information route. No vector, editing protocol, clinical choice, or cure is required.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "profile": {
+    "archetype": "explanation",
+    "expectations": [
+      {
+        "id": "target-information-function",
+        "essentialUnderstandingDe": "Bei einer somatischen Gentherapie kann eine funktionsfähige Genkopie in geeignete Körperzellen eingebracht oder vorhandene genetische Information dort verändert werden. Die erreichten Zielzellen sollen dadurch eine krankheitsrelevante Zellfunktion beeinflussen; welche Funktion gemeint ist, ergibt sich aus dem Fall.",
+        "essentialUnderstandingEn": "In somatic gene therapy, a functional gene copy can be introduced into suitable body cells, or existing genetic information there can be changed. The reached target cells are intended to affect a disease-related cell function; the particular function follows from the case.",
+        "observablePerformanceDe": "Die lernende Person ordnet in einem neuen vorgegebenen Fall Zielzellen, Ergänzung einer Genkopie oder Änderung vorhandener Information und die beabsichtigte Zellfunktion zu und erklärt den Zusammenhang, statt nur den Eingriff zu benennen.",
+        "observablePerformanceEn": "In a new supplied case, the learner identifies target cells, addition of a gene copy or change to existing information, and the intended cell function, then explains the connection rather than merely naming the intervention."
+      },
+      {
+        "id": "intended-effect-and-limit",
+        "essentialUnderstandingDe": "Das Therapieziel ist von der beobachteten Wirkung zu trennen. Wenn nur ein Teil geeigneter Zellen erreicht wird oder die gewünschte Funktion dort nicht ausreichend entsteht, kann die Wirkung begrenzt bleiben; aus dem Prinzip folgt keine sichere Heilung.",
+        "essentialUnderstandingEn": "The therapeutic aim must be distinguished from the observed effect. If only some suitable cells are reached or the intended function is not produced sufficiently in them, the effect may remain limited; the principle does not establish a certain cure.",
+        "observablePerformanceDe": "Die lernende Person nutzt die Angaben eines Falls, um eine passende Grenze der möglichen Wirkung zu erklären und eine Aussage über das beabsichtigte Ziel von einer Aussage über das tatsächlich beobachtete Ergebnis zu unterscheiden.",
+        "observablePerformanceEn": "The learner uses the case information to explain a fitting limit on the possible effect and separates a statement about the intended aim from a statement about what was actually observed."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "target-information-function",
+        "intended-effect-and-limit"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "target-tissue",
+        "textDe": "Blutbildende Körperzellen und Leberzellen als verschiedene Zielgewebe verwenden.",
+        "textEn": "Use blood-forming body cells and liver cells as different target tissues."
+      },
+      {
+        "id": "information-route",
+        "textDe": "Eine ergänzte funktionsfähige Genkopie und eine Änderung vorhandener genetischer Information als zwei prinzipielle Wege unterscheiden, ohne Verfahrensschritte zu verlangen.",
+        "textEn": "Distinguish adding a functional gene copy from changing existing genetic information as two general routes without requiring procedural steps."
+      },
+      {
+        "id": "reach-and-effect",
+        "textDe": "Angaben zum Anteil erreichter Zellen und zum tatsächlich beobachteten Funktionsbeitrag variieren.",
+        "textEn": "Vary the proportion of cells reached and the functional contribution actually observed."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "blood-forming-cell-gene-addition",
+        "taskDemandDe": "Ein fiktives Schema zeigt blutbildende Körperzellen mit einer fehlenden Genfunktion. Eine Behandlung bringt eine funktionsfähige Genkopie in einen Teil der geeigneten Zellen ein. Danach bildet nur ein Teil der Zellen das benötigte Protein. Erkläre Zielzelle, beabsichtigte Funktion und eine Grenze der möglichen Wirkung.",
+        "taskDemandEn": "A fictional diagram shows blood-forming body cells with a missing gene function. A treatment introduces a functional gene copy into some suitable cells. Afterwards, only some cells produce the needed protein. Explain the target cell, intended function, and one limit on the possible effect.",
+        "expectedPerformanceDe": "Die lernende Person erklärt die Gen-Ergänzung in passenden Körperzellen als Versuch, die Proteinbildung zu ermöglichen, bezieht den nur teilweisen Zellbefund ein und behauptet weder vollständige Erreichbarkeit noch sichere Heilung.",
+        "expectedPerformanceEn": "The learner explains gene addition in suitable body cells as an attempt to enable protein production, accounts for the partial cell result, and claims neither complete reach nor certain cure.",
+        "understandingFocusDe": "Gen-Ergänzung, Zielzelle, beabsichtigte Proteinwirkung und begrenzter Befund.",
+        "understandingFocusEn": "Gene addition, target cell, intended protein effect, and a limited observation."
+      },
+      {
+        "id": "liver-cell-information-change",
+        "taskDemandDe": "Ein neues fiktives Schema zeigt Leberzellen, deren vorhandene genetische Information zu wenig eines benötigten Proteins entstehen lässt. Eine Behandlung soll diese Information in geeigneten Körperzellen verändern. Messdaten zeigen die Änderung und eine verbesserte Proteinbildung nur in einem Teil der Zielzellen. Erkläre unabhängig Zielzelle, beabsichtigte Funktion und eine Grenze der Wirkung, ohne ein technisches Verfahren zu beschreiben.",
+        "taskDemandEn": "A new fictional diagram shows liver cells whose existing genetic information results in too little of a needed protein. A treatment aims to change that information in suitable body cells. Measurements show the change and improved protein production in only some target cells. Independently explain the target cell, intended function, and one limit on the effect without describing a technical procedure.",
+        "expectedPerformanceDe": "Die lernende Person verbindet die beabsichtigte Informationsänderung in Leberzellen mit der möglichen Proteinfunktion, trennt das Ziel vom nur teilweise gemessenen Ergebnis und erklärt, warum daraus kein sicherer Therapieerfolg folgt.",
+        "expectedPerformanceEn": "The learner links the intended information change in liver cells to the possible protein function, separates the aim from the partially measured result, and explains why this does not establish certain therapeutic success.",
+        "understandingFocusDe": "Transfer auf ein anderes Zielgewebe und Änderung statt Ergänzung genetischer Information bei weiterhin begrenzter Wirkung.",
+        "understandingFocusEn": "Transfer to another target tissue and change rather than addition of genetic information, with an effect that remains limited."
+      }
+    ]
+  }
+}

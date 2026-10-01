@@ -262,8 +262,10 @@ export const validateGoalDescriptionRolloutSynthesisDecisionManifest = async ({
         && secondSource.decision !== 'block'
         && firstSource.decision !== 'revise'
         && secondSource.decision !== 'revise'
+        && firstSource.decision !== 'split_review'
+        && secondSource.decision !== 'split_review'
       ) {
-        errors.push(`${goal.goalId}: partial synthesis may defer only a goal with a current block or unresolved revise review`)
+        errors.push(`${goal.goalId}: partial synthesis may defer only a goal with a current block, unresolved revise review, or split review`)
       }
       for (const [label, source] of [['first', firstSource], ['second', secondSource]] as const) {
         if (

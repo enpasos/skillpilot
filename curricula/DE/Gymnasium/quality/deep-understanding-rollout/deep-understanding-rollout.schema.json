@@ -43,11 +43,20 @@
         "label",
         "landscapePath",
         "semanticKindLedgerPath",
-        "semanticAtomicityConfigPath",
         "memoryReviewConfigPath",
         "visualizationQaPath",
         "resolutionIndexPaths",
         "positiveEvidenceConfigPaths"
+      ],
+      "oneOf": [
+        {
+          "required": ["semanticAtomicityConfigPath"],
+          "properties": { "semanticAtomicityConfigPath": {} }
+        },
+        {
+          "required": ["semanticAtomicityConfigPaths"],
+          "properties": { "semanticAtomicityConfigPaths": {} }
+        }
       ],
       "properties": {
         "subject": {
@@ -67,6 +76,14 @@
         "semanticAtomicityConfigPath": {
           "$ref": "#/$defs/repoPath"
         },
+        "semanticAtomicityConfigPaths": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/repoPath"
+          }
+        },
         "memoryReviewConfigPath": {
           "$ref": "#/$defs/repoPath"
         },
@@ -78,6 +95,45 @@
           "uniqueItems": true,
           "items": {
             "$ref": "#/$defs/repoPath"
+          }
+        },
+        "currentCanonicalBindingAuditPaths": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/repoPath"
+          }
+        },
+        "currentCanonicalBindingAuditGoalIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "resolutionSupersessions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["goalId", "supersededIndexPath", "replacementIndexPath"],
+            "properties": {
+              "goalId": { "type": "string", "minLength": 1 },
+              "supersededIndexPath": { "$ref": "#/$defs/repoPath" },
+              "replacementIndexPath": { "$ref": "#/$defs/repoPath" }
+            }
+          }
+        },
+        "resolutionWithdrawals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["goalId", "indexPath", "historicalResolutionDigest", "reason"],
+            "properties": {
+              "goalId": { "type": "string", "minLength": 1 },
+              "indexPath": { "$ref": "#/$defs/repoPath" },
+              "historicalResolutionDigest": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+              "reason": { "type": "string", "minLength": 1 }
+            }
           }
         },
         "positiveEvidenceConfigPaths": {

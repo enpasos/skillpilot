@@ -9,6 +9,7 @@ import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { isAiApprovedForCurrentAsset } from '../src/utils/goalVisualizationQaStatus'
 import {
   fingerprintSemanticKindSourceGoal,
+  stableGoalBookJson,
 } from './goalBookModel'
 import {
   reviewPositiveGoalEvidenceConfig,
@@ -64,10 +65,24 @@ export interface DeepUnderstandingSubjectConfig {
   label: string
   landscapePath: string
   semanticKindLedgerPath: string
-  semanticAtomicityConfigPath: string
+  semanticAtomicityConfigPath?: string
+  semanticAtomicityConfigPaths?: string[]
   memoryReviewConfigPath: string
   visualizationQaPath: string
   resolutionIndexPaths: string[]
+  currentCanonicalBindingAuditPaths?: string[]
+  currentCanonicalBindingAuditGoalIds?: string[]
+  resolutionSupersessions?: Array<{
+    goalId: string
+    supersededIndexPath: string
+    replacementIndexPath: string
+  }>
+  resolutionWithdrawals?: Array<{
+    goalId: string
+    indexPath: string
+    historicalResolutionDigest: string
+    reason: string
+  }>
   positiveEvidenceConfigPaths: string[]
 }
 
@@ -257,6 +272,27 @@ interface AuthoritativeScope {
   atomicGoalIds: Set<string>
   denominator: number | null
   issues: string[]
+}
+
+interface CurrentCanonicalBindingAudit {
+  schemaVersion: 1
+  auditContract: 'current-canonical-binding-audit-v1'
+  subject: string
+  landscapePath: string
+  reviewedAt: string
+  reviewAuthority: 'ai_targeted_revalidation'
+  humanApprovalClaim: false
+  records: Array<{
+    goalId: string
+    canonicalGoalDigest: string
+    sourceGoalId: string
+    mappingPath: string
+    sourceDecisionDigest: string
+    sourceExtractionPath: string
+    sourceGoalDigest: string
+    decision: 'pass'
+    findingDe: string
+  }>
 }
 
 interface CliArgs {
@@ -449,6 +485,8 @@ export const hasExactCurrentOpenDescriptionDeferral = (
     || summaryGoal.secondDecision === 'block'
     || summaryGoal.firstDecision === 'revise'
     || summaryGoal.secondDecision === 'revise'
+    || summaryGoal.firstDecision === 'split_review'
+    || summaryGoal.secondDecision === 'split_review'
   )
 )
 
@@ -476,11 +514,8 @@ export const validateStandaloneResolutionIndexStructure = (
     errors.push('standalone group resolvedGoalCount does not match strict resolutions')
   }
   const batchGoalIdSet = new Set(index.batchGoalIds)
-  index.batchGoalIds.forEach((goalId) => {
-    if (!currentAtomicGoalIds.has(goalId)) {
-      errors.push(`batch goal ${goalId} is not current curricularAtomic`)
-    }
-  })
+  // Deferred entries record unresolved historical input, including a goal later
+  // replaced by a semantic split. Only strict resolutions make current claims.
   const resolutionGoalIds = index.resolutions.map(({ goalId }) => goalId)
   duplicateValues(resolutionGoalIds).forEach((goalId) => {
     errors.push(`duplicate standalone resolution for ${goalId}`)
@@ -488,6 +523,9 @@ export const validateStandaloneResolutionIndexStructure = (
   index.resolutions.forEach((entry) => {
     if (!batchGoalIdSet.has(entry.goalId)) {
       errors.push(`resolution goal ${entry.goalId} is outside batchGoalIds`)
+    }
+    if (!currentAtomicGoalIds.has(entry.goalId)) {
+      errors.push(`resolution goal ${entry.goalId} is not current curricularAtomic`)
     }
     if (entry.groupId !== group.groupId) {
       errors.push(`resolution goal ${entry.goalId} references a foreign standalone group`)
@@ -751,39 +789,52 @@ const loadAtomicityReadyGoals = (
   scope: AuthoritativeScope,
   issues: string[],
 ): Set<string> => {
-  const productionCheck = runTsxCheck('app/scripts/semanticAtomicityReview.ts', [
-    `--config=${config.semanticAtomicityConfigPath}`,
-    '--mode=check',
-  ])
-  if (!productionCheck.valid) {
-    addIssue(issues, config.subject, `semantic-atomicity production check failed: ${productionCheck.detail}`)
-    return new Set()
+  const configPaths = config.semanticAtomicityConfigPaths
+    ?? (config.semanticAtomicityConfigPath ? [config.semanticAtomicityConfigPath] : [])
+  const boundRecords: Array<{ record: AtomicityRecord; reviewConfig: AtomicityConfig }> = []
+  let invalid = false
+  for (const configPath of configPaths) {
+    const productionCheck = runTsxCheck('app/scripts/semanticAtomicityReview.ts', [
+      `--config=${configPath}`,
+      '--mode=check',
+    ])
+    if (!productionCheck.valid) {
+      addIssue(issues, config.subject, `semantic-atomicity production check failed for ${configPath}: ${productionCheck.detail}`)
+      invalid = true
+      continue
+    }
+    let reviewConfig: AtomicityConfig
+    try {
+      reviewConfig = loadJson<AtomicityConfig>(configPath)
+    } catch (error) {
+      addIssue(issues, config.subject, error instanceof Error ? error.message : String(error))
+      invalid = true
+      continue
+    }
+    if (
+      reviewConfig.landscapeId !== scope.landscape.landscapeId
+      || reviewConfig.landscapePath !== config.landscapePath
+    ) {
+      addIssue(issues, config.subject, `semantic-atomicity config ${configPath} is bound to another canonical landscape`)
+      invalid = true
+      continue
+    }
+    const parsed = readJsonl<AtomicityRecord>(reviewConfig.reviewPath)
+    parsed.errors.forEach((error) => addIssue(issues, config.subject, error))
+    if (parsed.errors.length > 0) invalid = true
+    parsed.records.forEach((record) => boundRecords.push({ record, reviewConfig }))
   }
-  let reviewConfig: AtomicityConfig
-  try {
-    reviewConfig = loadJson<AtomicityConfig>(config.semanticAtomicityConfigPath)
-  } catch (error) {
-    addIssue(issues, config.subject, error instanceof Error ? error.message : String(error))
-    return new Set()
-  }
-  if (
-    reviewConfig.landscapeId !== scope.landscape.landscapeId
-    || reviewConfig.landscapePath !== config.landscapePath
-  ) {
-    addIssue(issues, config.subject, 'semantic-atomicity config is bound to another canonical landscape')
-    return new Set()
-  }
-  const parsed = readJsonl<AtomicityRecord>(reviewConfig.reviewPath)
-  parsed.errors.forEach((error) => addIssue(issues, config.subject, error))
-  const duplicates = duplicateValues(parsed.records.map(({ goalId }) => goalId))
+  if (invalid) return new Set()
+  const duplicates = duplicateValues(boundRecords.map(({ record }) => record.goalId))
   duplicates.forEach((goalId) => addIssue(issues, config.subject, `duplicate semantic-atomicity record for ${goalId}`))
   const duplicateSet = new Set(duplicates)
-  const recordsByGoalId = new Map(parsed.records.map((record) => [record.goalId, record]))
+  const recordsByGoalId = new Map(boundRecords.map((entry) => [entry.record.goalId, entry]))
   const ready = new Set<string>()
   scope.atomicGoalIds.forEach((goalId) => {
     const goal = scope.goalById.get(goalId)
-    const record = recordsByGoalId.get(goalId)
-    if (!goal || !record || duplicateSet.has(goalId)) return
+    const entry = recordsByGoalId.get(goalId)
+    if (!goal || !entry || duplicateSet.has(goalId)) return
+    const { record, reviewConfig } = entry
     const expectedFingerprint = goalReviewFingerprint(goal, reviewConfig.ruleVersion)
     if (
       record.schemaVersion === 1
@@ -797,7 +848,7 @@ const loadAtomicityReadyGoals = (
       && record.reason.trim().length > 0
     ) ready.add(goalId)
   })
-  return parsed.errors.length === 0 ? ready : new Set()
+  return ready
 }
 
 const loadMemoryReadyGoals = (
@@ -980,7 +1031,14 @@ const validateResolutionIndex = async (
   indexPath: string,
   config: DeepUnderstandingSubjectConfig,
   scope: AuthoritativeScope,
-): Promise<{ ready: Set<string>; claimedGoalIds: Set<string>; issues: string[] }> => {
+  supersededGoalIds: ReadonlySet<string> = new Set(),
+  withdrawnResolutionDigests: ReadonlyMap<string, string> = new Map(),
+): Promise<{
+  ready: Set<string>
+  claimedGoalIds: Set<string>
+  historicalClaimedGoalIds: Set<string>
+  issues: string[]
+}> => {
   const issues: string[] = []
   let index: ResolutionIndex
   try {
@@ -989,6 +1047,7 @@ const validateResolutionIndex = async (
       return {
         ready: new Set(),
         claimedGoalIds: new Set(),
+        historicalClaimedGoalIds: new Set(),
         issues: [`${indexPath}: resolution index shape is invalid`],
       }
     }
@@ -997,6 +1056,7 @@ const validateResolutionIndex = async (
     return {
       ready: new Set(),
       claimedGoalIds: new Set(),
+      historicalClaimedGoalIds: new Set(),
       issues: [error instanceof Error ? error.message : String(error)],
     }
   }
@@ -1006,11 +1066,15 @@ const validateResolutionIndex = async (
       return {
         ready: new Set(),
         claimedGoalIds: new Set(index.batchGoalIds),
+        historicalClaimedGoalIds: new Set(index.batchGoalIds),
         issues: schemaErrors.map((error) => `${indexPath}: ${error}`),
       }
     }
   }
-  const claimedGoalIds = new Set(index.resolutions.map(({ goalId }) => goalId))
+  const historicalClaimedGoalIds = new Set(index.resolutions.map(({ goalId }) => goalId))
+  const claimedGoalIds = new Set([...historicalClaimedGoalIds].filter((goalId) => (
+    !supersededGoalIds.has(goalId) && !withdrawnResolutionDigests.has(goalId)
+  )))
   const indexScope = `${config.subject}:${index.artifactSetId || indexPath}`
   const indexGoalDuplicates = duplicateValues(index.resolutions?.map(({ goalId }) => goalId) ?? [])
   const groupDuplicates = duplicateValues(index.groups?.map(({ groupId }) => groupId) ?? [])
@@ -1051,7 +1115,7 @@ const validateResolutionIndex = async (
       addIssue(issues, indexScope, `group ${group.groupId} resolvedGoalCount does not match its resolution entries`)
     }
   })
-  if (issues.length > 0) return { ready: new Set(), claimedGoalIds, issues }
+  if (issues.length > 0) return { ready: new Set(), claimedGoalIds, historicalClaimedGoalIds, issues }
 
   const groupArtifacts = new Map<string, {
     dualSummary: GoalDescriptionDualRoundSummary
@@ -1100,7 +1164,7 @@ const validateResolutionIndex = async (
       addIssue(issues, indexScope, `${group.groupId}: ${error instanceof Error ? error.message : String(error)}`)
     }
   }
-  if (issues.length > 0) return { ready: new Set(), claimedGoalIds, issues }
+  if (issues.length > 0) return { ready: new Set(), claimedGoalIds, historicalClaimedGoalIds, issues }
 
   const ready = new Set<string>()
   for (const entry of index.resolutions) {
@@ -1131,6 +1195,17 @@ const validateResolutionIndex = async (
         )
       ) {
         addIssue(issues, indexScope, `${entry.goalId}: standalone AI batch resolution contains human authority or attestation`)
+        continue
+      }
+      // Keep the historical index and its review chain intact. A separately
+      // configured, current replacement owns this goal after an image/text
+      // change; the old resolution digest is still checked above.
+      if (supersededGoalIds.has(entry.goalId)) continue
+      const withdrawnDigest = withdrawnResolutionDigests.get(entry.goalId)
+      if (withdrawnDigest) {
+        if (withdrawnDigest !== entry.resolutionDigest) {
+          addIssue(issues, indexScope, `${entry.goalId}: withdrawn historical resolution digest changed`)
+        }
         continue
       }
       const humanAttestationBytes = index.schemaVersion === 1 && entry.humanAttestationPath
@@ -1173,7 +1248,7 @@ const validateResolutionIndex = async (
           return !hasExactCurrentOpenDescriptionDeferral(deferred, summaryGoal)
         })
         if (invalidDeferral) {
-          addIssue(issues, indexScope, `${invalidDeferral.goalId}: deferred goal lacks an exact current block or unresolved revise review`)
+          addIssue(issues, indexScope, `${invalidDeferral.goalId}: deferred goal lacks an exact current block, unresolved revise review, or split review`)
           continue
         }
       }
@@ -1201,7 +1276,7 @@ const validateResolutionIndex = async (
       addIssue(issues, indexScope, `${entry.goalId}: ${error instanceof Error ? error.message : String(error)}`)
     }
   }
-  return { ready, claimedGoalIds, issues }
+  return { ready, claimedGoalIds, historicalClaimedGoalIds, issues }
 }
 
 const loadDescriptionReadyGoals = async (
@@ -1209,13 +1284,59 @@ const loadDescriptionReadyGoals = async (
   scope: AuthoritativeScope,
   issues: string[],
 ): Promise<Set<string>> => {
-  const validationResults: Array<{ path: string; ready: Set<string>; claimedGoalIds: Set<string> }> = []
+  const validationResults: Array<{
+    path: string
+    ready: Set<string>
+    claimedGoalIds: Set<string>
+    historicalClaimedGoalIds: Set<string>
+  }> = []
   const ownerByGoalId = new Map<string, string>()
   const uniqueClaims = new Set<string>()
+  const supersededByIndex = new Map<string, Set<string>>()
+  const withdrawnByIndex = new Map<string, Map<string, string>>()
+  const supersededGoalOwners = new Set<string>()
+  for (const supersession of config.resolutionSupersessions ?? []) {
+    const { goalId, supersededIndexPath, replacementIndexPath } = supersession
+    if (
+      supersededIndexPath === replacementIndexPath
+      || !config.resolutionIndexPaths.includes(supersededIndexPath)
+      || !config.resolutionIndexPaths.includes(replacementIndexPath)
+      || !scope.atomicGoalIds.has(goalId)
+      || supersededGoalOwners.has(goalId)
+    ) {
+      addIssue(issues, config.subject, `invalid description-resolution supersession for ${goalId}`)
+      continue
+    }
+    supersededGoalOwners.add(goalId)
+    const goalIds = supersededByIndex.get(supersededIndexPath) ?? new Set<string>()
+    goalIds.add(goalId)
+    supersededByIndex.set(supersededIndexPath, goalIds)
+  }
+  const withdrawnGoalOwners = new Set<string>()
+  for (const withdrawal of config.resolutionWithdrawals ?? []) {
+    const { goalId, indexPath, historicalResolutionDigest, reason } = withdrawal
+    if (
+      !config.resolutionIndexPaths.includes(indexPath)
+      || !scope.atomicGoalIds.has(goalId)
+      || supersededGoalOwners.has(goalId)
+      || withdrawnGoalOwners.has(goalId)
+      || !/^sha256:[0-9a-f]{64}$/u.test(historicalResolutionDigest)
+      || reason.trim().length === 0
+    ) {
+      addIssue(issues, config.subject, `invalid description-resolution withdrawal for ${goalId}`)
+      continue
+    }
+    withdrawnGoalOwners.add(goalId)
+    const digests = withdrawnByIndex.get(indexPath) ?? new Map<string, string>()
+    digests.set(goalId, historicalResolutionDigest)
+    withdrawnByIndex.set(indexPath, digests)
+  }
   for (const indexPath of config.resolutionIndexPaths) {
-    const result = await validateResolutionIndex(indexPath, config, scope)
+    const result = await validateResolutionIndex(
+      indexPath, config, scope, supersededByIndex.get(indexPath), withdrawnByIndex.get(indexPath),
+    )
     result.issues.forEach((issue) => issues.push(issue))
-    validationResults.push({ path: indexPath, ready: result.ready, claimedGoalIds: result.claimedGoalIds })
+    validationResults.push({ path: indexPath, ...result })
     result.claimedGoalIds.forEach((goalId) => {
       const previousOwner = claimUniqueGoal(goalId, indexPath, ownerByGoalId, uniqueClaims)
       if (previousOwner) {
@@ -1223,13 +1344,140 @@ const loadDescriptionReadyGoals = async (
       }
     })
   }
+  for (const supersession of config.resolutionSupersessions ?? []) {
+    const oldIndex = validationResults.find(({ path }) => path === supersession.supersededIndexPath)
+    const replacement = validationResults.find(({ path }) => path === supersession.replacementIndexPath)
+    if (
+      !oldIndex?.historicalClaimedGoalIds.has(supersession.goalId)
+      || !replacement?.ready.has(supersession.goalId)
+      || oldIndex.claimedGoalIds.has(supersession.goalId)
+    ) {
+      addIssue(issues, config.subject, `description-resolution supersession lacks an intact old claim and current replacement for ${supersession.goalId}`)
+    }
+  }
+  for (const withdrawal of config.resolutionWithdrawals ?? []) {
+    const historicalIndex = validationResults.find(({ path }) => path === withdrawal.indexPath)
+    if (
+      !historicalIndex?.historicalClaimedGoalIds.has(withdrawal.goalId)
+      || historicalIndex.claimedGoalIds.has(withdrawal.goalId)
+    ) {
+      addIssue(issues, config.subject, `description-resolution withdrawal lacks an intact historical claim for ${withdrawal.goalId}`)
+    }
+  }
   const ready = new Set<string>()
   validationResults.forEach((result) => {
     result.ready.forEach((goalId) => {
       if (uniqueClaims.has(goalId)) ready.add(goalId)
     })
   })
+  validateCurrentCanonicalBindingAudits(config, scope, ready, issues)
   return ready
+}
+
+const validateCurrentCanonicalBindingAudits = (
+  config: DeepUnderstandingSubjectConfig,
+  scope: AuthoritativeScope,
+  ready: Set<string>,
+  issues: string[],
+): void => {
+  const expected = new Set(config.currentCanonicalBindingAuditGoalIds ?? [])
+  const originalReady = new Set(ready)
+  expected.forEach((goalId) => ready.delete(goalId))
+  if (expected.size === 0 && !(config.currentCanonicalBindingAuditPaths?.length)) return
+  if (expected.size === 0 || !(config.currentCanonicalBindingAuditPaths?.length)) {
+    addIssue(issues, config.subject, 'current canonical binding audit requires both protected goal IDs and audit paths')
+    return
+  }
+  const seen = new Set<string>()
+  const mappingCache = new Map<string, JsonObject>()
+  const extractionCache = new Map<string, JsonObject>()
+  const digestPattern = /^sha256:[0-9a-f]{64}$/u
+  for (const auditPath of config.currentCanonicalBindingAuditPaths) {
+    let audit: CurrentCanonicalBindingAudit
+    try {
+      audit = loadJson<CurrentCanonicalBindingAudit>(auditPath)
+    } catch (error) {
+      addIssue(issues, config.subject, `${auditPath}: ${error instanceof Error ? error.message : String(error)}`)
+      continue
+    }
+    if (
+      audit.schemaVersion !== 1
+      || audit.auditContract !== 'current-canonical-binding-audit-v1'
+      || audit.subject !== config.label
+      || audit.landscapePath !== config.landscapePath
+      || audit.reviewAuthority !== 'ai_targeted_revalidation'
+      || audit.humanApprovalClaim !== false
+      || !Array.isArray(audit.records)
+      || audit.records.length === 0
+    ) {
+      addIssue(issues, config.subject, `${auditPath}: invalid current canonical binding audit identity or authority`)
+      continue
+    }
+    for (const record of audit.records) {
+      const goalId = record?.goalId
+      if (typeof goalId !== 'string' || !expected.has(goalId) || seen.has(goalId)) {
+        addIssue(issues, config.subject, `${auditPath}: duplicate or unprotected audited goal ${String(goalId)}`)
+        continue
+      }
+      seen.add(goalId)
+      try {
+        if (
+          record.decision !== 'pass'
+          || typeof record.findingDe !== 'string'
+          || record.findingDe.trim().length < 20
+          || ![record.canonicalGoalDigest, record.sourceDecisionDigest, record.sourceGoalDigest]
+            .every((digest) => typeof digest === 'string' && digestPattern.test(digest))
+          || !scope.atomicGoalIds.has(goalId)
+        ) throw new Error('audit decision, finding, digest, or current curricularAtomic scope is invalid')
+        const goal = scope.rawGoalById.get(goalId)
+        if (!goal || sha256(stableGoalBookJson(goal)) !== record.canonicalGoalDigest) {
+          throw new Error('full current canonical goal changed after the targeted source/image audit')
+        }
+        const provenance = (goal.extendedData as JsonObject | undefined)?.provenance as JsonObject | undefined
+        if (provenance?.sourceGoalId !== record.sourceGoalId) {
+          throw new Error('current canonical source provenance differs from the audited source goal')
+        }
+        let mapping = mappingCache.get(record.mappingPath)
+        if (!mapping) {
+          mapping = loadJson<JsonObject>(record.mappingPath)
+          mappingCache.set(record.mappingPath, mapping)
+        }
+        if (mapping.sourceExtractionPath !== record.sourceExtractionPath) {
+          throw new Error('reviewed mapping points to a different source extraction')
+        }
+        const decisions = Array.isArray(mapping.decisions) ? mapping.decisions as JsonObject[] : []
+        const matches = decisions.filter((decision) => (
+          decision.sourceGoalId === record.sourceGoalId
+          && decision.decision === 'mapped'
+          && Array.isArray(decision.canonicalGoalIds)
+          && decision.canonicalGoalIds.includes(goalId)
+        ))
+        if (matches.length !== 1 || sha256(stableGoalBookJson(matches[0])) !== record.sourceDecisionDigest) {
+          throw new Error('exact reviewed source-mapping decision changed or disappeared')
+        }
+        let extraction = extractionCache.get(record.sourceExtractionPath)
+        if (!extraction) {
+          extraction = loadJson<JsonObject>(record.sourceExtractionPath)
+          extractionCache.set(record.sourceExtractionPath, extraction)
+        }
+        if (
+          mapping.sourceLandscapeId !== extraction.sourceLandscapeId
+          || provenance?.sourceLandscapeId !== extraction.sourceLandscapeId
+        ) throw new Error('source-landscape identity differs between canonical provenance, mapping, and extraction')
+        const sourceGoals = Array.isArray(extraction.sourceGoals) ? extraction.sourceGoals as JsonObject[] : []
+        const sourceMatches = sourceGoals.filter((sourceGoal) => sourceGoal.id === record.sourceGoalId)
+        if (sourceMatches.length !== 1 || sha256(stableGoalBookJson(sourceMatches[0])) !== record.sourceGoalDigest) {
+          throw new Error('exact source-extraction goal changed or disappeared')
+        }
+        if (originalReady.has(goalId)) ready.add(goalId)
+      } catch (error) {
+        addIssue(issues, config.subject, `${auditPath}:${goalId}: ${error instanceof Error ? error.message : String(error)}`)
+      }
+    }
+  }
+  expected.forEach((goalId) => {
+    if (!seen.has(goalId)) addIssue(issues, config.subject, `missing current canonical binding audit for ${goalId}`)
+  })
 }
 
 const loadEvidenceReadyGoals = (

@@ -1,0 +1,31 @@
+{
+  "reviewKind": "independent-ai-content-qa",
+  "reviewedAt": "2026-09-30T21:08:47Z",
+  "goalId": "1984fd66-c117-5c29-87b3-1c1626e4ba81",
+  "decision": "PASS",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "reviewedCandidate": {
+    "configSha256": "sha256:2d3d976e79e1ea16571b376069b47a8ef20e9ea9eec8741d6b9eec9bf0a80f6b",
+    "authoringSha256": "sha256:f34d448f7af73d219a1cb9814e7d9ff8e3e4bc725952add74a27e86f2189b799",
+    "reviewRecordSha256": "sha256:2d0bafba8068d38dc00830edce30a99bcb00e3c8bd3928d865bf46ae42dab456",
+    "recordStatus": "needs_human_review",
+    "recordAuthority": "ai_candidate",
+    "technicalCheck": "PASS: one current candidate, zero blocking issues, zero approved records"
+  },
+  "findings": [
+    "The current German and English goal texts both limit the plateau explanation to a simple saturation model with fixed enzyme amount and otherwise equal conditions. The profile tests that same bounded claim in both languages.",
+    "Official HE Biology KCGO 2024, E.2, printed page 34 names dependence of enzyme activity on substrate concentration alongside temperature and pH. It does not prescribe a universal plateau; the profile treats saturation as a simple explanatory model, not a verbatim curriculum claim.",
+    "The active 1672 x 941 PNG was inspected at original size and at 360 px width. Three enzymes appear in each equally filled beaker, the right beaker has more substrate and occupied sites, and both axis labels remain legible at 360 px. Its smooth plateau curve contains no measured points and is correctly treated by the profile as a schematic model.",
+    "The amylase/starch brief specifies controlled initial-rate data with a plateau observed within measurement precision. The lactase/lactose brief specifies only a rise and flattening; its later plateau is explicitly a model prediction. A changed-pH comparison point is correctly rejected as confounded.",
+    "The second case changes the enzyme-substrate system, observed curve shape and causal-control challenge, so the two cases provide substantive independent transfer rather than a renamed repeat. Both require learner interpretation of fresh data and a mechanism, not recall of the image.",
+    "The review record exactly matches the authoring profile and retains needs_human_review with ai_candidate authority; neither human approval nor actual learner achievement is claimed."
+  ],
+  "implementationNote": "The case briefs describe data patterns, not numeric tables. Any later assessment task must supply its own initial-rate data and enough precision information to support an observed-plateau claim.",
+  "source": {
+    "officialPdf": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+    "section": "E.2 Struktur und Funktion von Proteinen und Enzymen",
+    "printedPage": 34
+  },
+  "activeImageSha256": "sha256:98da9260d27214572f7e1fd9fb1ea9dee3730a13bfad3bbc2e7a04cdeb70ae54"
+}

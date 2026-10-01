@@ -1,0 +1,21 @@
+# Chemie B010: gezielte aktuelle Prüfung der zwei D-Kandidaten
+
+Stand: 2026-09-30. Maschinelle Curriculum-QS, keine menschliche Prüfung oder Freigabe. Diese Notiz betrifft ausschließlich `b5086548-169e-5d63-a14a-dabf631fa013` und `d726e00e-1f87-5ba5-8c79-76ad4022365e`; die übrigen sieben B010-Ziele bleiben deferred.
+
+## Quelle und Beschreibung
+
+Die lokale Kopie des amtlichen hessischen G9-Lehrplans `curricula/DE/Gymnasium/input/HE/lower-secondary/g9-chemie.pdf` (SHA-256 `f0a2c3795fcbcad1fee8d92d7ab9bc26810609bee0ef1fbd02c830e171220d2f`) nennt in 10.3 auf PDF-Seite 25 die ausgewählten Halogenide, Sulfate, Nitrate und Carbonate sowie den Kreislauf des Kalks. Die bestehende Extraktion `curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_CHEMIE_SEKI_G9.source-extraction.json` enthält die Quellen-IDs `he-chem-seki-10-3-b07-a02-041532de` und `he-chem-seki-10-3-b07-a03-67c95b12`. Die geprüfte Zuordnung in `curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json` bindet sie an `b508...` (`exact`) beziehungsweise `d726...` (`partial`); der zweite Quellabschnitt nennt außerdem Gips und Düngemittel.
+
+Die getrennten unabhängigen A/B-Beschreibungsreviews und deren aufgelöste D-Synthese liegen unter `curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-010-sek1-ions-element-groups-salts-current-9-v1/`. Die aktuelle `resolution-index.json` enthält genau diese zwei `strictDescriptionComplete`-Auflösungen von neun. `quality:goal-description-rollout-batch` mit `check` und `finalize` bestand auf dem aktuellen Canonical-Stand (`strict=2/9`). Der Batch-Checker bindet den aktuellen Text, die Seite und den Beschreibungskontext; die Bilddatei und Quellenprovenienz wurden zusätzlich gezielt geprüft, statt den historischen Batch-Digest bloß zu ersetzen.
+
+## A, M und V
+
+Die zwei vorhandenen Einträge in `curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-chemistry-sek1-element-groups-contexts.review.jsonl` sind `atomic`. Die aktuellen Memory-Entscheidungen in `curricula/DE/Gymnasium/quality/memory-card-review/canonical-chemistry-full.review.jsonl` lauten für beide `no_memory_needed`; hierfür ist keine Karte als Abschlusspflicht abgeleitet.
+
+Das bestehende JPG für `b508...` bleibt KEEP: aktiver Canonical-, Web- und Backend-Hash `9e9987acbd4199480770fd2f3e48d8d61fca14cc1c49998cf4f8ca85fa68708f`. Die tatsächliche 360-Pixel-Prüfung der Anionen und Beispiele ist in `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b010-mobile-current-two-independent-qa-20260930-v1/review.json` dokumentiert. Für `d726...` wurde der belegte mobile Lesbarkeitsmangel des früheren JPG mit dem aktuellen 1672×941-PNG behoben; Canonical-, Web- und Backend-Hash `51341eaf35f02e3bf70b9a65d9187895189c9d98daba97413c97b9eed992f6eb`. Die unabhängige Prüfung der tatsächlichen 1672-, 680- und 360-Pixel-Ansichten samt Gleichungen, Indizes und Pfeilrichtungen liegt unter `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b010-d726-mobile-correction-20260930-v1/independent-second-candidate-review.json`. Beide aktuellen V-Einträge in `curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json` sind an genau diese aktiven Hashes gebunden, `aiApproved=yes`, `humanApproved=no`.
+
+## P-v2 und offener Abschluss
+
+Die aktuellen Profile stehen in `curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b010-salts-lime-current-2-v2.{config,candidates,review.jsonl}`. Für `b508...` prüfen sie die Einordnung aus vorgegebenen Formeln und Ionengruppen; Formelbau ist nach unabhängiger Inhaltsrückmeldung ausdrücklich kein Kriterium. Für `d726...` prüfen sie den Kalkkreislauf von CaO aus und einen CO₂-Kontrollvergleich ohne Bildreproduktion. `quality:positive-goal-evidence:check` besteht mit zwei aktuellen Profilen und null Blockern. Beide sind ehrlich `needs_human_review` unter `ai_candidate`; dies ist keine menschliche Freigabe.
+
+Die unabhängige fachliche Gegenprüfung der zuletzt korrigierten P-Fassung und danach die Integration in den zentralen Fünf-Gate-Bericht stehen noch aus. Diese beiden Ziele sind bis dahin nur Kandidaten, nicht als strenger M7-Nettozuwachs gezählt.

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "biologie-q1-ffef-candidate-20261001-v1",
+  "reviewedAt": "2026-10-01T00:10:25.933Z",
+  "reviewer": "codex-biology-ffef-candidate",
+  "goals": [
+    {
+      "goalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+      "reason": "Source-grounded draft for the proposed bilingual description. Hessian KCGO Q1.1 lists the four gene-mutation types at GK/LK level and adjacent protein-synthesis and gene-product relationships. The cases require an actual sequence comparison and a bounded molecular consequence; they never infer phenotype or protein function from mutation type alone. Candidate only; no current-text fingerprint, independent P review or registration is claimed.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "identify-sequence-change",
+            "essentialUnderstandingDe": "Eine Substitution ersetzt eine Base ohne Längenänderung; eine Deletion entfernt und eine Insertion ergänzt Basen. Bei einer Duplikation wird ein vorhandener Abschnitt kopiert. Eine hinzugekommene gleiche Folge belegt ihre Entstehung als Duplikation nur mit einem entsprechenden Veränderungshinweis.",
+            "essentialUnderstandingEn": "A substitution replaces a base without changing sequence length; a deletion removes bases and an insertion adds bases. A duplication copies an existing segment. An added matching sequence establishes duplication as its origin only when the change evidence supports that origin.",
+            "observablePerformanceDe": "Die lernende Person richtet Ausgangs- und Variantenfolge aus, markiert die betroffene Stelle, ordnet die vier Änderungstypen anhand der vorliegenden Veränderungshinweise zu und benennt eine verbleibende Unsicherheit zwischen Insertion und Duplikation, wenn die Herkunft des Zusatzes nicht erkennbar ist.",
+            "observablePerformanceEn": "The learner aligns reference and variant sequences, marks the altered site, classifies the four change types using the available change evidence, and states any remaining insertion-versus-duplication uncertainty when the origin of an added segment is not known."
+          },
+          {
+            "id": "justify-contextual-protein-consequence",
+            "essentialUnderstandingDe": "Die mögliche Folge einer Änderung in einem codierenden Genabschnitt hängt vom Leserahmen, vom genetischen Code und von der Länge der Änderung ab. Eine Substitution kann dieselbe Aminosäure codieren oder sie ändern; ein Basenzusatz oder -verlust außerhalb eines Vielfachen von drei kann den Leserahmen verschieben. Aus der Sequenz allein folgt weder eine sichere Änderung der Proteinfunktion noch ein Merkmal.",
+            "essentialUnderstandingEn": "A possible consequence of a change in a coding gene region depends on the reading frame, the genetic code and the length of the change. A substitution may encode the same amino acid or a different one; adding or removing a number of bases not divisible by three can shift the reading frame. Sequence alone establishes neither a certain change in protein function nor a trait.",
+            "observablePerformanceDe": "Mit angegebenem codierendem Strang, Leserahmen und Code-Tabelle vergleicht die lernende Person mögliche Aminosäurefolgen oder Leserahmen und begründet, welche Aussage über das codierte Protein belegt ist und für welche Funktions- oder Merkmalsaussage zusätzliche Daten fehlen.",
+            "observablePerformanceEn": "Given a coding strand, reading frame and codon table, the learner compares possible amino-acid sequences or reading frames and explains which claim about the encoded protein is supported and which function or trait claim would require more data."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "identify-sequence-change",
+            "justify-contextual-protein-consequence"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "molecular-change-and-origin",
+            "textDe": "Die vier Typen an unabhängig veränderten DNA-Folgen zeigen; Einfügungen und Kopien durch Veränderungshinweise unterscheidbar machen, statt ihre Herkunft allein aus der Endfolge zu behaupten.",
+            "textEn": "Show the four types in independently changed DNA sequences; make insertions and copies distinguishable through change evidence rather than claiming their origin from the final sequence alone."
+          },
+          {
+            "id": "reading-frame-and-code-effect",
+            "textDe": "Synonyme und nicht synonyme Substitutionen sowie Längenänderungen um eine, zwei und drei Basen variieren; der Leserahmen und die tatsächliche Codonfolge sind entscheidend.",
+            "textEn": "Vary synonymous and nonsynonymous substitutions and length changes of one, two and three bases; the reading frame and actual codons determine the molecular consequence."
+          },
+          {
+            "id": "function-evidence",
+            "textDe": "Ein Fall enthält nur Sequenz- und Code-Daten, ein anderer zusätzlich kontrollierte Proteinfunktion-Daten für genau eine Variante; Aussagen auf den jeweiligen Beleg begrenzen.",
+            "textEn": "One case contains only sequence and codon data, while another also supplies controlled protein-function data for exactly one variant; limit each conclusion to the available evidence."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "synonymous-indels-and-codon-copy",
+            "taskDemandDe": "Ein neuer codierender DNA-Strang 5′-ATG GAA TTT CCA TAA-3′ mit Leserahmen ab ATG und Code-Tabelle wird mit vier getrennten, unbeschrifteten Varianten verglichen: GAA wird zu GAG; die erste Base von GAA entfällt; nach ATG wird eine neue, nicht kopierte Base C eingefügt; der Abschnitt GAA wird laut Kopierspur direkt daneben nochmals eingefügt. Bestimme jeden Änderungstyp, markiere die Stelle und leite eine mögliche Folge für die codierte Aminosäurefolge ab. Es liegen keine Proteinfunktion- oder Merkmalsdaten vor.",
+            "taskDemandEn": "A fresh coding DNA strand 5′-ATG GAA TTT CCA TAA-3′, with a reading frame starting at ATG and a codon table, is compared with four separate unlabelled variants: GAA becomes GAG; the first base of GAA is removed; a new noncopied C is inserted after ATG; and a copy trace shows GAA copied immediately beside itself. Identify each change type, mark its site and derive a possible consequence for the encoded amino-acid sequence. No protein-function or trait data are supplied.",
+            "expectedPerformanceDe": "Die lernende Person erkennt Substitution, Deletion, Insertion und Duplikation an den vier getrennten Varianten. GAA und GAG codieren beide Glutamat; die Ein-Basen-Deletion und -Insertion verschieben den Leserahmen, während die Duplikation eines ganzen Codons ein weiteres Glutamat ohne Leserahmenverschiebung ergänzt. Sie behauptet aus diesen Sequenzdaten keine bestimmte Funktions- oder Merkmalsänderung.",
+            "expectedPerformanceEn": "The learner identifies substitution, deletion, insertion and duplication in the four separate variants. GAA and GAG both encode glutamate; the one-base deletion and insertion shift the reading frame, whereas duplicating a whole codon adds another glutamate without shifting it. The learner does not claim a specific function or trait change from these sequence data.",
+            "understandingFocusDe": "Gleiche Mutationstypen können je nach Codon und Änderungslänge unterschiedliche molekulare Folgen haben; eine synonyme Substitution ist ein positives Gegenbeispiel zur pauschalen Schadensannahme.",
+            "understandingFocusEn": "Molecular consequences depend on the codon and change length; a synonymous substitution is a positive counterexample to assuming every mutation is harmful."
+          },
+          {
+            "id": "missense-in-frame-loss-and-copy-trace",
+            "taskDemandDe": "Ein anderer codierender DNA-Strang 5′-ATG TTT GGC AAG TAA-3′ wird mit vier neuen, voneinander getrennten Varianten und einer Code-Tabelle gezeigt: TTT wird zu TCT; das ganze Codon GGC entfällt; nach ATG kommen zwei neue, nicht kopierte Basen AC hinzu; eine Kopierspur zeigt die Verdopplung einer Base innerhalb von AAG. Für die TTT→TCT-Variante liegen unter gleichen Messbedingungen niedrigere Aktivitätswerte des codierten Enzyms vor, für die anderen Varianten keine Funktionsdaten. Ordne die vier Änderungen zu, begründe mögliche Proteinfolgen und trenne die Messbeobachtung von Aussagen über Merkmale.",
+            "taskDemandEn": "A different coding DNA strand 5′-ATG TTT GGC AAG TAA-3′ is shown with four new separate variants and a codon table: TTT becomes TCT; the entire GGC codon is removed; two new noncopied bases AC are added after ATG; and a copy trace shows one base within AAG duplicated. For the TTT-to-TCT variant, matched conditions yield lower activity measurements of the encoded enzyme; no function data are provided for the other variants. Classify the four changes, justify possible protein consequences and separate the measured observation from trait claims.",
+            "expectedPerformanceDe": "Die lernende Person ordnet TTT→TCT als Substitution mit Phenylalanin→Serin ein, GGC-Verlust als Deletion eines Codons ohne Leserahmenverschiebung, AC-Zusatz als Insertion mit Leserahmenverschiebung und die nachgewiesene Ein-Basen-Kopie als Duplikation mit Leserahmenverschiebung. Die verringerte Aktivität ist für die gemessene Variante unter den genannten Bedingungen belegt; für andere Varianten und einen Phänotyp fehlen entsprechende Daten.",
+            "expectedPerformanceEn": "The learner classifies TTT to TCT as a substitution changing phenylalanine to serine, loss of GGC as an in-frame codon deletion, addition of AC as a frame-shifting insertion, and the documented one-base copy as a frame-shifting duplication. Lower activity is supported for the measured variant under the stated conditions; corresponding data for the other variants and for a phenotype are absent.",
+            "understandingFocusDe": "Frischer Transfer mit anderer Referenzfolge, anderer Änderungslänge und einem begrenzten Funktionsbefund: Mutationstyp, Leserahmenfolge und beobachtete Proteinfunktion sind getrennte Aussagen.",
+            "understandingFocusEn": "Fresh transfer with a different reference sequence, change lengths and a bounded function result: mutation type, reading-frame consequence and observed protein function are separate claims."
+          }
+        ]
+      }
+    }
+  ]
+}

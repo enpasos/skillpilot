@@ -1,0 +1,28 @@
+{
+  "reviewKind": "independent-ai-positive-understanding-evidence-v2-content-recheck",
+  "reviewedAt": "2026-09-30T22:34:16Z",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "sourceConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b009-energy-two-current-png-v2.config.json",
+  "sourceConfigSha256": "sha256:553a06eb0034c041c921587e209132cb8256fa5e14a6d5c738776edbf647e4dc",
+  "sourceCandidatesSha256": "sha256:d649c3562af081684ccf168001a4d17507fa4727f2c1358a487602d71178c446",
+  "sourceRecordsSha256": "sha256:124bf88977cf01b9cfe14e84bdc16619657473e8a864fca5ada214f316eef80e",
+  "priorHoldArtifact": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/chemistry-b009-energy-two-independent-p-review-v1/review.json",
+  "technicalCheck": "PASS: 2 current records, 0 technical blockers, 2 needs_human_review; 1286 profile fingerprint is unchanged from v1",
+  "goalId": "9198b4cf-e454-562f-83f0-b1b74e68765d",
+  "positiveEvidenceDecision": "PASS_AI_CANDIDATE",
+  "goalFingerprint": "sha256:3b0d53f10dbdeb91379cff1bd859900fb70645c84665d121186834093536da84",
+  "profileFingerprint": "sha256:901a3a9ca1af38e75b527cd7601671fdc97e4f54a02efe449f0bd065064aa8d2",
+  "activeImageSha256": "sha256:0ceb7e98ebd52a922f549697459d60abe6a5c056dad0766d665d39fee11cab45",
+  "findings": [
+    "The v1 hold is resolved in substance. Both fictional offers can meet the specified 100 MJ of reaction heat, so the first decision is no longer forced by an infeasible hydrogen stock. Both cases require a stated criterion weighting and a conditional judgment from chemical energy, environmental impact and practical logistics.",
+    "The rounded lower-heating-value figures are chemically plausible for H2 (120 MJ/kg) and CH4 (50 MJ/kg). The common 100-MJ basis gives 100/120 = 0.833... kg H2 and 100/50 = 2.0 kg CH4. Complete combustion of 2.0 kg CH4 produces 2.0 x 44/16 = 5.5 kg CO2, so the use-phase value is stoichiometrically consistent.",
+    "For the stated production-plus-delivery-plus-use boundary, case 1 totals 1.5 kg CO2e for hydrogen and 0.7 + 5.5 = 6.2 kg CO2e for methane per 100 MJ; case 2 totals 7.0 and 6.2 kg CO2e. Adding use-phase CO2 to upstream CO2e is valid because CO2 has a CO2-equivalent factor of one. The cards explicitly identify all figures as offer-specific teaching model data, not general fuel emission factors.",
+    "Case 1 creates a real trade-off: local-wind hydrogen has lower modelled CO2e and less fuel mass, while methane has simpler storage and an existing supply line. Case 2 changes hydrogen production to fossil gas, transport distance and the use to mobile heat; the CO2e tendency reverses and logistics become more relevant, while hydrogen retains higher energy per fuel mass. This is a chemically and contextually changed independent transfer, rather than only a numerical swap.",
+    "The demands and expected performances require the learner to explain why zero CO2 at hydrogen use does not establish low total emissions, add the stated stages, consider energy per mass and storage, name weighting, and identify a data gap. German and English versions are equivalent. Both cases remain paper evaluations without combustion, pressure-vessel, fuel-handling or operation instructions.",
+    "The active canonical and public PNGs are byte-identical to the image reviewed for v1 (SHA-256 0ceb7e98...cab45); the candidate and materialized record bind the current goal fingerprint. The status remains needs_human_review with ai_candidate authority and E1/G1 bounds, so no human approval or learner mastery is claimed."
+  ],
+  "nonBlockingBoundary": "The 100-MJ comparison is reaction heat, not measured useful heat at the customer. Real equipment efficiency, pressure-storage losses, tank mass, and full equipment impacts are not supplied; the tasks explicitly request a conditional judgment and relevant missing data. An answer that treats fuel mass alone as whole-system mass or the fictional figures as universal should not count as positive evidence.",
+  "sourceScope": "The official Bayern LehrplanPLUS Chemie 8 source supports comparing CO2 balance and reaction heat to evaluate energy carriers: https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/8/chemie . This content review does not assert that the effective BY mapping or learner-facing projection has been independently verified.",
+  "scopeLimit": "Only the revised 9198 P-v2 content was freshly judged here. The unchanged 1286 profile retains its independent v1 PASS. No candidates, canonical content, active images or central registry were edited, and the historical v1 HOLD remains intact."
+}

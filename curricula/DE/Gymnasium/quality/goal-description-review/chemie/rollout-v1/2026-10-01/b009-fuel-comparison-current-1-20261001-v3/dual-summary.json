@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:0f63cf7e26da0793dba79f67044b31d12114f564da52e476fa439e74f94578fa",
+  "reviewInputFingerprint": "sha256:309e9a84b4a7a34e37a6fe99067a74819068e230f727a305b86a18b10d42f73f",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-b009-fuel-comparison-current-1-20261001-v3-a",
+      "roundId": "chemie-b009-fuel-comparison-current-1-20261001-v3-first-pass-a",
+      "independenceGroupId": "chemie-b009-fuel-comparison-current-1-20261001-v3-independent-a",
+      "runIds": [
+        "chemie-b009-fuel-comparison-current-1-20261001-v3-a-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-b009-fuel-comparison-current-1-20261001-v3-b",
+      "roundId": "chemie-b009-fuel-comparison-current-1-20261001-v3-first-pass-b",
+      "independenceGroupId": "chemie-b009-fuel-comparison-current-1-20261001-v3-independent-b",
+      "runIds": [
+        "chemie-b009-fuel-comparison-current-1-20261001-v3-first-pass-b.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "4dab7d52-5b89-52ab-a425-17a7707f44c8",
+      "firstRecordId": "chemie-b009-fuel-comparison-current-1-20261001-v3-a-4dab7d52",
+      "secondRecordId": "chemie-b009-fuel-comparison-current-1-20261001-v3-first-pass-b.4dab7d52-5b89-52ab-a425-17a7707f44c8",
+      "firstRunId": "chemie-b009-fuel-comparison-current-1-20261001-v3-a-run-001",
+      "secondRunId": "chemie-b009-fuel-comparison-current-1-20261001-v3-first-pass-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

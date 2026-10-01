@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-b005-sek1-symbols-stoichiometry-20260930-blind-b-run-001",
+  "campaignId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-b",
+  "roundId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-first-pass-b",
+  "batchId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:379feda40a8579a2898646827094cb8a85e997b6a856ccf15d2f73ced3b490d9",
+  "bundleFingerprint": "sha256:0d73a48d389e7486e046bf16adcaf39b76aa0082301613b7603509d84ad173cf",
+  "bookDigest": "sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715",
+  "provider": "OpenAI",
+  "model": "gpt-6-astra",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+    "9b5d6326-d27c-4ece-8c72-debda705464a",
+    "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+    "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+    "22133f29-ef02-4408-8f8d-2bbea3275d91",
+    "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+    "8a2ad724-df5e-5986-8de9-560ba43caac2",
+    "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+    "e45c0022-ac0d-5c83-b433-5f68655e382f",
+    "5c4788a7-6760-53dc-894e-e04bca6f8cd9",
+    "1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+    "2924f784-5261-54e8-93ee-49ac3b3cd300",
+    "199570f4-b3c3-5e12-877d-ced97e9f6968",
+    "d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a",
+    "e675fa94-6e23-59c0-b376-4340bf44c00e",
+    "9f355f63-4fb7-5638-9538-6e8a246ec4b2"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:bfa7f8e297a4812554073c20fa928497177040e05bdf450e827d93957ddc7c3d"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:379feda40a8579a2898646827094cb8a85e997b6a856ccf15d2f73ced3b490d9"
+    }
+  ],
+  "startedAt": "2026-09-30T17:09:19Z",
+  "completedAt": "2026-09-30T17:16:13.301Z",
+  "status": "completed",
+  "outputDigest": "sha256:c8749f82293d488b51a6fc197a27eaa28fe09e5d43c8cb212f26653bdb24b933",
+  "toolchainVersion": "skillpilot-goal-description-review-v2"
+}

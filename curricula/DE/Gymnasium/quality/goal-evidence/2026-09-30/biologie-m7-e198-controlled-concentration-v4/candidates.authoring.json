@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "biologie-m7-e198-controlled-concentration-current-20260930-v4",
+  "reviewedAt": "2026-09-30T20:29:00Z",
+  "reviewer": "codex-biology-e198-post-canonical-content-review-20260930",
+  "goals": [
+    {
+      "goalId": "1984fd66-c117-5c29-87b3-1c1626e4ba81",
+      "reason": "Fresh substantive AI review of corrected current goal and active PNG sha256:98da9260d27214572f7e1fd9fb1ea9dee3730a13bfad3bbc2e7a04cdeb70ae54. Two independent controlled data cases and an explicit pH-confounder distinguish valid concentration inference from uncontrolled change. Official HE KC 2024 E.2, printed p.34, names dependence on substrate concentration; the saturation explanation is this goal's reviewed operationalization. Human approval and learner achievement unclaimed.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "controlled-variable",
+            "essentialUnderstandingDe": "Nur wenn Enzymmenge, Reaktionsvolumen, Temperatur, pH-Wert und Messzeit innerhalb der Reihe gleich bleiben, lässt sich ein Aktivitätsverlauf der variierten Substratkonzentration zuordnen.",
+            "essentialUnderstandingEn": "Only when enzyme amount, reaction volume, temperature, pH and measurement time remain equal within the series can an activity trend be attributed to the varied substrate concentration.",
+            "observablePerformanceDe": "Die lernende Person erkennt in neuen Datentabellen die Substratkonzentration als variierte Größe und prüft die anderen Bedingungen, bevor sie eine Konzentrationswirkung behauptet.",
+            "observablePerformanceEn": "The learner identifies substrate concentration as the varied factor in new data tables and checks the other conditions before claiming a concentration effect."
+          },
+          {
+            "id": "saturation-mechanism",
+            "essentialUnderstandingDe": "Bei fester funktionsfähiger Enzymmenge können zunehmend besetzte aktive Zentren zunächst mehr Umsatz und dann ein Sättigungsplateau der Anfangsaktivität erklären; ein Plateau bedeutet weder Substratverbrauch noch Stillstand aller Moleküle.",
+            "essentialUnderstandingEn": "With a fixed amount of functioning enzyme, increasing occupation of active sites can explain an initial rise and then a plateau of initial activity; the plateau means neither complete substrate consumption nor molecular standstill.",
+            "observablePerformanceDe": "Die lernende Person beschreibt aus einer neuen kontrollierten Kurve Anstieg und Annäherung an das Plateau und begründet die begrenzte Deutung durch ausgelastete aktive Zentren.",
+            "observablePerformanceEn": "The learner describes the rise and approach to a plateau in a new controlled curve and gives a bounded explanation using occupied active sites."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "controlled-variable",
+            "saturation-mechanism"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "enzyme-system",
+            "textDe": "Eine zweite Enzym-Substrat-Kombination mit eigenen kontrollierten Bedingungen und eigenem Plateau prüfen.",
+            "textEn": "Check a second enzyme-substrate combination under its own controlled conditions and with its own plateau."
+          },
+          {
+            "id": "confounder",
+            "textDe": "Einen zusätzlich veränderten pH-Wert als Grenze einer Konzentrationsbehauptung erkennen.",
+            "textEn": "Recognise an additionally changed pH as a limit to a concentration claim."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "controlled-amylase-series",
+            "taskDemandDe": "Didaktisch erfundene Anfangsraten für Amylase bei vier steigenden Stärkekonzentrationen steigen zunächst deutlich und nähern sich dann einem Plateau. Enzymmenge, Volumen, Temperatur, pH-Wert und Messzeit sind in allen vier Ansätzen gleich. Deute den Verlauf und benenne, warum die Datenaussage hier begrenzt zulässig ist.",
+            "taskDemandEn": "Illustrative initial rates for amylase at four increasing starch concentrations rise clearly at first and then approach a plateau. Enzyme amount, volume, temperature, pH and measurement time are equal in all four trials. Interpret the trend and state why the data support this bounded claim.",
+            "expectedPerformanceDe": "Die lernende Person identifiziert die allein variierte Substratkonzentration, erklärt den anfänglichen Anstieg durch häufigere passende Begegnungen und das Plateau durch weitgehend ausgelastete aktive Zentren bei fester Enzymmenge; sie behauptet weder exakt gleiche Raten noch verbrauchtes Substrat.",
+            "expectedPerformanceEn": "The learner identifies substrate concentration as the only varied factor, explains the early rise through more frequent suitable encounters and the plateau through largely occupied active sites at fixed enzyme amount; they claim neither exactly identical rates nor depleted substrate.",
+            "understandingFocusDe": "Eine kontrollierte Messreihe trägt eine begrenzte mechanistische Sättigungsdeutung.",
+            "understandingFocusEn": "A controlled data series supports a bounded mechanistic saturation interpretation."
+          },
+          {
+          "id": "controlled-lactase-versus-confounded-ph",
+            "taskDemandDe": "Eine zweite, didaktisch erfundene Lactase-Reihe zeigt bei steigender Lactosekonzentration Anstieg und Plateau der Anfangsrate; Enzymmenge, Volumen, Temperatur, pH und Messzeit bleiben innerhalb dieser Reihe gleich. Eine Vergleichsreihe verändert am letzten Messpunkt zusätzlich den pH-Wert und zeigt dort einen Rateabfall. Welche Reihe belegt die Substrat-Sättigung, wie erklärst du sie, und warum taugt der einzelne Vergleichspunkt nicht für dieselbe Schlussfolgerung?",
+            "taskDemandEn": "A second illustrative lactase series shows an increase and plateau in initial rate as lactose concentration rises; enzyme amount, volume, temperature, pH and measurement time stay equal within that series. A comparison series also changes pH at its final point and shows a rate decrease there. Which series supports substrate saturation, how do you explain it, and why does the comparison point not support the same inference?",
+            "expectedPerformanceDe": "Die lernende Person nutzt die eigenständig kontrollierte Lactase-Reihe, begründet deren Plateau durch begrenzte Zahl verfügbarer aktiver Zentren und weist den pH-veränderten Punkt als mehrdeutig zurück. Sie überträgt keine exakte Plateauhöhe von Amylase auf Lactase.",
+            "expectedPerformanceEn": "The learner uses the independently controlled lactase series, explains its plateau through a limited number of available active sites and rejects the pH-changed point as ambiguous. They do not transfer an exact plateau height from amylase to lactase.",
+            "understandingFocusDe": "Der zweite Fall prüft neue Enzymdaten und die konkrete Grenze sonst gleicher Bedingungen.",
+            "understandingFocusEn": "The second case tests new enzyme data and the concrete limit set by otherwise equal conditions."
+          }
+        ]
+      }
+    }
+  ]
+}

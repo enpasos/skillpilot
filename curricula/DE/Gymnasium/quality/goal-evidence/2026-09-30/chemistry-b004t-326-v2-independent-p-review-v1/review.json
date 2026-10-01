@@ -1,0 +1,60 @@
+{
+  "reviewKind": "independent-current-positive-understanding-evidence-v2-content-recheck",
+  "reviewedAt": "2026-09-30T21:40:13Z",
+  "reviewer": "Codex independent chemistry B004t 326 P-v2 recheck",
+  "reviewAuthority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "priorIndependentReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/chemistry-b004u-independent-p-review-v1/review.json",
+  "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004t-326-states-current-v2.config.json",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004t-326-states-current-v2.candidates.json",
+  "candidateSha256": "sha256:6d999626f6a14f0b550d4d25ec9581888b7afed0d63c8cac2d8cc95d5cdc2ce5",
+  "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004t-326-states-current-v2.review.jsonl",
+  "reviewSha256": "sha256:83ba3b1c214e48d6145d5b3c147d3485f15ceb2249c9a4891a88654e45179c85",
+  "profileFingerprint": "sha256:f168696f42ee79bacf7b1daa9de132f840bdab9451a672130f1bc4c7cb67872e",
+  "candidateStatus": "needs_human_review",
+  "decision": "REVISE",
+  "officialSource": {
+    "url": "https://www.fortbildung.kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf",
+    "printedPage": 11,
+    "pdfPageIndexZeroBased": 11,
+    "finding": "Year 8 mandatory section 8.1/1.2 names melting, boiling, freezing, condensing, sublimation, deposition and evaporation; the particle model appears separately in 1.3. The present canonical DE/EN goal asks for observable discrimination of solid, liquid and gas and for state changes of the same substance."
+  },
+  "resolvedFromPriorReview": [
+    "The water case now makes the learner infer solid, liquid and gas from shape, flow and occupation of space. It also elicits melting, freezing, evaporation, boiling and condensation; the CO2 case elicits direct solid-to-gas and gas-to-solid labels. Together the briefs cover all seven HE transitions without requiring a particle explanation.",
+    "The water-film versus bubbling observation asks for the location-based difference between evaporation and boiling. Both cases use fresh observations and do not require copying the active particle image.",
+    "The separate reaction-diagnosis skill is no longer a task demand or required observable performance. The supplied identity information is used to justify that the state changes concern the same substance."
+  ],
+  "blockingIssues": [
+    {
+      "id": "sealed-co2-and-heated-water-apparatus",
+      "location": "profile.applicationCaseBriefs[1].taskDemandDe/En; also profile.applicationCaseBriefs[0].taskDemandDe/En",
+      "finding": "The CO2 case says that a subliming solid is in a 'geschlossenen Behälter' / 'closed container'. A sealed vessel containing dry ice can build dangerous pressure; the case gives no vent or pressure-relief condition. The water case similarly puts heated vapour in a 'geschlossenen Beobachtungsraum' / 'closed observation space'. Both are described as supplied data rather than learner actions, which prevents an unsupervised task, but the apparatus wording still presents an unsafe setup as the source of school observations. The CO2 pressure condition also matters scientifically: a sealed vessel is not a reliable generic illustration of direct solid-gas change.",
+      "evidence": [
+        "Stanford EH&S, General Use SOP Cryogenic Liquids and Dry Ice: https://ehs.stanford.edu/wp-content/uploads/sops/Cryogenic-Liquids.pdf — dry ice must not be put in closed sealed containers without pressure relief.",
+        "NIST Chemistry WebBook CO2 phase-change data: https://webbook.nist.gov/cgi/cbook.cgi?Mask=188F&Source=1976ANG%2FARM0B — triple-point pressure 5.185 bar; the pressure implication is an inference from this value."
+      ],
+      "requiredRevision": "Use only supplied observations from a vented or otherwise explicitly pressure-safe setup. Do not ask learners to handle dry ice or heated sealed vessels. Keep any pressure apparatus details outside the learner's required knowledge."
+    },
+    {
+      "id": "second-direct-transition-not-established",
+      "location": "profile.applicationCaseBriefs[1].taskDemandDe/En and expectedPerformanceDe/En",
+      "finding": "The first CO2 observation explicitly says no liquid appears. The later cooling observation merely says that the gas yields a solid deposit, then expects the direct gas-to-solid transition 'Resublimieren/deposition'. Those supplied facts do not rule out a liquid intermediate in the second leg. A solid deposit alone cannot establish that the path was direct.",
+      "requiredRevision": "Supply a clear observation or stipulated condition that excludes a liquid phase on the cooling leg as well, preferably without requiring pupils to know a phase diagram or triple-point pressure. Keep the answer restricted to the supplied state and identity evidence."
+    }
+  ],
+  "nonBlockingPrecision": [
+    "The German last sentence of the CO2 expected answer says the data do not establish a general reaction diagnosis, while the English says the task does not require one. Align or remove this sentence so the two languages express the same boundary; neither version should become a learner requirement.",
+    "The water case's thinner film is a reasonable Grade 8 evaporation cue, although a non-absorbing surface or supplied observation of water vapour would remove alternative causes such as absorption or runoff."
+  ],
+  "activeImageCheck": {
+    "path": "curricula/DE/Gymnasium/visualizations/chemie/326d45bf-9f77-57d5-a054-93e76b034dd5/326d45bf-9f77-57d5-a054-93e76b034dd5.png",
+    "publicBytesIdentical": true,
+    "sha256": "sha256:28c7efb897e8baeffa23afb3807341180e70409dba2afa473d1566f1379f2190",
+    "dimensions": "1448x1086, 4:3",
+    "inspectedAtWidths": [1448, 360],
+    "finding": "The three state labels, four transition labels and arrow directions are legible without zoom in an independently rendered 360x270 preview. The image depicts a particle model while the current goal and P briefs assess macroscopic observations; the two briefs stand on their own. This P check is not V approval, and the current PNG has no new human approval."
+  },
+  "technicalCheck": "npm --prefix app run -s quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004t-326-states-current-v2.config.json -> 1 configured, 1 needs_human_review, 0 blocking structural issues. Structural PASS does not resolve the two content issues.",
+  "scopeLimit": "The P-v2 AI candidate needs the case-brief revisions above before independent content PASS. No candidate, canonical goal, D decision, visualization QA or registry was edited; no human approval or strict M7 completion is claimed."
+}

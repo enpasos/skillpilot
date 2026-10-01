@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "biologie-q1-genetics-three-open-revisions-20261001-v1",
+  "reviewedAt": "2026-09-30T23:17:10Z",
+  "reviewer": "codex-biology-q1-three-open-revisions-author",
+  "goals": [
+    {
+      "goalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+      "reason": "Authoring candidate for the proposed narrower mutation description, not a record bound to the current canonical text. Each fresh task must classify all four named sequence-change types and justify a possible molecular consequence from supplied context rather than infer a phenotype from a label.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "analysis",
+        "expectations": [
+          {
+            "id": "classify-sequence-changes",
+            "essentialUnderstandingDe": "Substitution ersetzt eine Base, Deletion entfernt, Insertion fügt ein und Duplikation wiederholt einen vorhandenen Abschnitt. Die Unterscheidung von Insertion und Duplikation kann eine Angabe zur Herkunft des zusätzlichen Abschnitts erfordern.",
+            "essentialUnderstandingEn": "A substitution replaces a base, a deletion removes one, an insertion adds one, and a duplication repeats an existing segment. Distinguishing insertion from duplication can require information on the origin of the extra segment.",
+            "observablePerformanceDe": "Die lernende Person markiert in neuen Vorher-Nachher-Sequenzen die jeweilige Änderung und ordnet alle vier Typen anhand von Sequenz und bereitgestellter Herkunftsangabe zum zusätzlichen Abschnitt begründet zu.",
+            "observablePerformanceEn": "In new before-and-after sequences, the learner marks each change and classifies all four types using the sequence and supplied information on the origin of any extra segment."
+          },
+          {
+            "id": "possible-protein-effect-and-limit",
+            "essentialUnderstandingDe": "Eine Wirkung auf das entstehende Protein hängt im gegebenen Genkontext unter anderem von Position, Leseraster und Codon ab; aus dem Mutationstyp allein folgt kein sicherer Protein- oder Phänotypeffekt.",
+            "essentialUnderstandingEn": "An effect on the resulting protein depends in the supplied gene context on factors such as position, reading frame, and codon; the mutation type alone establishes no certain protein or phenotype effect.",
+            "observablePerformanceDe": "Mit bereitgestellter Leseraster- und Code-Information begründet die lernende Person für mindestens eine der Änderungen eine mögliche molekulare Folge und nennt die Grenze ihrer Aussage.",
+            "observablePerformanceEn": "Using supplied reading-frame and code information, the learner justifies one possible molecular consequence of at least one change and states the limit of the inference."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["classify-sequence-changes", "possible-protein-effect-and-limit"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "sequence-context",
+            "textDe": "Andere Ausgangssequenz, andere Schnittstelle der Veränderung und andere bereitgestellte Codon-Information verwenden.",
+            "textEn": "Use a different original sequence, change position, and supplied codon information."
+          },
+          {
+            "id": "effect-context",
+            "textDe": "Eine mögliche stille Substitution gegen Längenänderungen mit und ohne Leserasterverschiebung abgrenzen.",
+            "textEn": "Contrast a possibly silent substitution with length changes that may or may not shift the reading frame."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "coding-sequence-four-edits",
+            "taskDemandDe": "Gegeben sind eine kurze kodierende DNA-Sequenz mit markiertem Leseraster, eine kleine Code-Tabelle und vier unabhängige veränderte Sequenzen: Basenaustausch, Verlust einer Base, Einfügen einer neuen Base und Wiederholung eines vorhandenen Drei-Basen-Abschnitts. Bei der letzten Änderung ist angegeben, dass der zusätzliche Abschnitt aus dem Ausgangsabschnitt kopiert wurde. Ordne alle vier Änderungen zu und begründe für den Basenaustausch eine mögliche Folge für das Protein sowie eine Aussagegrenze.",
+            "taskDemandEn": "A short coding DNA sequence with a marked reading frame, a small code table, and four independent changed sequences are supplied: a base replacement, loss of one base, addition of a new base, and repetition of an existing three-base segment. For the last change, the extra segment is specified as copied from the original segment. Classify all four changes, then justify one possible protein consequence of the replacement and one limit on the inference.",
+            "expectedPerformanceDe": "Die lernende Person vergleicht die Sequenzen, trennt insbesondere neu eingefügte von verdoppelten Basen und verwendet das angegebene Codon statt aus 'Substitution' allein einen Proteineffekt oder ein Merkmal abzuleiten.",
+            "expectedPerformanceEn": "The learner compares sequences, especially distinguishing newly added from duplicated bases, and uses the supplied codon rather than inferring a protein effect or trait from 'substitution' alone.",
+            "understandingFocusDe": "Sequenztyp und kontextabhängige mögliche molekulare Folge sind verschiedene Aussagen.",
+            "understandingFocusEn": "Sequence-change type and a context-dependent possible molecular consequence are different claims."
+          },
+          {
+            "id": "new-frame-and-triplet-context",
+            "taskDemandDe": "Ein zweites, bisher unbekanntes Genstück wird mit Leseraster und Code-Auszug bereitgestellt. Vier neue Vorher-Nachher-Paare zeigen Substitution, Deletion, Insertion und Duplikation an anderen Positionen; eine Einfügung umfasst eine neue Base, bei der Drei-Basen-Verdopplung ist die Kopierherkunft angegeben. Ordne alle vier Typen zu und vergleiche begründet eine mögliche Proteinfolge der beiden Längenänderungen.",
+            "taskDemandEn": "A second, previously unseen gene segment is supplied with its reading frame and a code excerpt. Four new before-and-after pairs show substitution, deletion, insertion, and duplication at different positions; one insertion adds a new base, while the copied origin of the three-base duplication is specified. Classify all four types and compare one possible protein consequence of the two length changes with reasons.",
+            "expectedPerformanceDe": "Die lernende Person identifiziert die vier Änderungen erneut, erklärt eine mögliche Leserasterverschiebung bei einer Base und deren Ausbleiben bei der Drei-Basen-Duplikation und behauptet aus dieser Gegenüberstellung keine sichere phänotypische Wirkung.",
+            "expectedPerformanceEn": "The learner identifies the four new changes, explains a possible frame shift after a one-base insertion and its absence after a three-base duplication, and does not claim a certain phenotype from that contrast.",
+            "understandingFocusDe": "Eigenständige Übertragung auf einen neuen Sequenz- und Leserasterkontext.",
+            "understandingFocusEn": "Independent transfer to a new sequence and reading-frame context."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "73b66ead-e44a-5486-98e3-1fb3f99620a6",
+      "reason": "Authoring candidate for a supplied anonymous test case. It asks for one evidence-bounded counselling judgment in each of two different situations and never asks the learner for family history or an individual testing decision.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "evaluation",
+        "expectations": [
+          {
+            "id": "test-question-and-finding",
+            "essentialUnderstandingDe": "Ein Gentest prüft eine konkret benannte genetische Frage; ein Befund sagt zunächst etwas über das Nachgewiesene oder im Testumfang Nichtnachgewiesene aus, nicht über alle Krankheitsursachen.",
+            "essentialUnderstandingEn": "A genetic test addresses a named genetic question; a finding first concerns what was found or not found within the test's scope, not every possible cause of disease.",
+            "observablePerformanceDe": "Die lernende Person benennt am anonymen Fall Anlass und getestete Frage und erläutert korrekt, welche sachliche Aussage der Befund trägt.",
+            "observablePerformanceEn": "For an anonymous case, the learner identifies the reason and tested question and correctly explains what factual conclusion the finding supports."
+          },
+          {
+            "id": "limit-and-counselling",
+            "essentialUnderstandingDe": "Die Reichweite hängt von untersuchten Varianten, Testgüte und biologischem Kontext ab; Beratung trennt gesicherte Information, Unsicherheit und die Entscheidung der betroffenen Person.",
+            "essentialUnderstandingEn": "The scope depends on the tested variants, test performance, and biological context; counselling separates established information, uncertainty, and the person's own decision.",
+            "observablePerformanceDe": "Die lernende Person formuliert eine konkrete Befundgrenze und eine sachliche, nicht bevormundende Beratungsaussage ohne sichere Erkrankungsprognose oder unbelegten Ausschluss.",
+            "observablePerformanceEn": "The learner states a concrete limit of the finding and a factual, non-directive counselling statement without claiming certain disease or an unsupported exclusion."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["test-question-and-finding", "limit-and-counselling"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "finding-direction",
+            "textDe": "Einen positiven Nachweis mit begrenzter Prognose und einen negativen, auf ausgewählte Varianten begrenzten Befund verwenden.",
+            "textEn": "Use a positive finding with limited prognosis and a negative finding limited to selected variants."
+          },
+          {
+            "id": "test-purpose",
+            "textDe": "Frage nach einer bekannten Familienvariante gegen einen begrenzten Trägertest abgrenzen.",
+            "textEn": "Contrast testing for a known family variant with a limited carrier panel."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "positive-variant-incomplete-penetrance",
+            "taskDemandDe": "Ein vollständig erfundener, anonymer Fall enthält eine in der Familie bekannte Variante. Der Test weist genau diese Variante nach; die Fallkarte erklärt, dass nicht jede tragende Person erkrankt. Beurteile Anlass, Aussagekraft und Grenze des Befunds und formuliere eine sachliche Beratungsaussage.",
+            "taskDemandEn": "A wholly fictional, anonymous case concerns a variant known in a family. The test detects that exact variant; the case card explains that not every carrier develops the condition. Assess the reason for testing, evidential value, and limit of the finding, and formulate a factual counselling statement.",
+            "expectedPerformanceDe": "Die lernende Person nennt die geprüfte Familienvariante, erkennt deren Nachweis an und begrenzt eine Erkrankungsprognose wegen der angegebenen unvollständigen Penetranz; sie trifft keine persönliche Entscheidung für die fiktive Person.",
+            "expectedPerformanceEn": "The learner identifies the tested family variant, accepts its detection, and limits disease prognosis because of the stated incomplete penetrance; the learner makes no personal decision for the fictional person.",
+            "understandingFocusDe": "Nachgewiesene Variante und sichere Erkrankung sind verschiedene Aussagen.",
+            "understandingFocusEn": "Detection of a variant and certain disease are different claims."
+          },
+          {
+            "id": "negative-limited-carrier-panel",
+            "taskDemandDe": "Ein neuer erfundener, anonymer Fall fragt nach Trägerstatus. Ein Test untersucht ausdrücklich nur drei häufige Varianten eines Gens und findet keine davon; die Karte sagt, dass andere Varianten nicht untersucht wurden. Beurteile erneut Anlass, Aussagekraft und Grenze des Ergebnisses für eine sachliche Beratung.",
+            "taskDemandEn": "A new fictional, anonymous case asks about carrier status. A test explicitly checks only three common variants in a gene and finds none; the card states that other variants were not examined. Again assess the reason, evidential value, and limit of the result for factual counselling.",
+            "expectedPerformanceDe": "Die lernende Person beschreibt das Nichtauffinden der drei getesteten Varianten, verwechselt es nicht mit dem Ausschluss aller Varianten und formuliert die verbleibende Unsicherheit ohne Empfehlung zu einer persönlichen Handlung.",
+            "expectedPerformanceEn": "The learner describes the absence of the three tested variants, does not equate it with exclusion of every variant, and states the remaining uncertainty without recommending a personal action.",
+            "understandingFocusDe": "Eigenständige Beurteilung eines negativen Ergebnisses mit begrenztem Testumfang.",
+            "understandingFocusEn": "Independent assessment of a negative result with limited test coverage."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "3891b735-9d0d-5eef-b653-6ad58b9181f6",
+      "reason": "Authoring candidate for the GK/LK principle of somatic gene therapy, without making vector engineering, genome-editing steps, clinical choice, or a cure part of the goal. Both cases positively explain target cell, intended function, and an effect limit.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "explanation",
+        "expectations": [
+          {
+            "id": "target-information-function",
+            "essentialUnderstandingDe": "Gentherapie soll genetische Information in geeigneten Körperzellen ergänzen oder verändern, damit eine krankheitsrelevante Zellfunktion beeinflusst wird; Zielzelle, Information und beabsichtigte Funktion müssen zusammenpassen.",
+            "essentialUnderstandingEn": "Gene therapy aims to add or change genetic information in suitable body cells to affect a disease-related cell function; target cell, information, and intended function must fit together.",
+            "observablePerformanceDe": "Die lernende Person ordnet in einem neuen vorgegebenen Schema Zielzelle, eingebrachte oder geänderte Information und die beabsichtigte Funktionswirkung zu und erklärt den Zusammenhang.",
+            "observablePerformanceEn": "In a new supplied diagram, the learner identifies the target cell, added or changed information, and intended functional effect, then explains their relationship."
+          },
+          {
+            "id": "effect-limit",
+            "essentialUnderstandingDe": "Die Wirkung kann begrenzt sein, wenn nicht genügend Zielzellen erreicht werden oder die beabsichtigte Funktion nicht ausreichend entsteht; das Prinzip verspricht keine Heilung.",
+            "essentialUnderstandingEn": "The effect can be limited when too few target cells are reached or the intended function is not produced sufficiently; the principle does not promise a cure.",
+            "observablePerformanceDe": "Die lernende Person benennt aus den vorgelegten Fallinformationen eine passende Wirkungsgrenze und trennt das beabsichtigte Ziel vom nachgewiesenen Ergebnis.",
+            "observablePerformanceEn": "The learner uses the supplied case information to name a fitting limit on effect and separates the intended goal from the observed outcome."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["target-information-function", "effect-limit"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "target-cell",
+            "textDe": "Blutbildende Körperzellen und Leberzellen als unterschiedliche Zielgewebe verwenden.",
+            "textEn": "Use blood-forming body cells and liver cells as distinct target tissues."
+          },
+          {
+            "id": "information-and-reach",
+            "textDe": "Ergänzung funktionsfähiger Information und Änderung vorhandener Information sowie unterschiedliche Anteile erreichter Zellen vergleichen.",
+            "textEn": "Contrast addition of functional information with change of existing information and different proportions of cells reached."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "blood-cell-gene-addition",
+            "taskDemandDe": "Ein fiktives Schema zeigt blutbildende Körperzellen mit einer fehlenden Genfunktion. Ein Teil dieser Zellen erhält eine funktionsfähige Genkopie; nach der Behandlung bildet nur ein Teil der zurückgegebenen Zellen das fehlende Protein. Erkläre Zielzelle, beabsichtigte Funktion und eine Grenze der möglichen Wirkung.",
+            "taskDemandEn": "A fictional diagram shows blood-forming body cells lacking a gene function. Some of these cells receive a functional gene copy; after treatment, only some returned cells produce the missing protein. Explain the target cell, intended function, and one limit on the possible effect.",
+            "expectedPerformanceDe": "Die lernende Person erklärt die Ergänzung genetischer Information in passenden Körperzellen und den beabsichtigten Proteinbeitrag, berücksichtigt den nur teilweisen Zellbefund und verspricht keine vollständige oder dauerhafte Heilung.",
+            "expectedPerformanceEn": "The learner explains adding genetic information to suitable body cells and the intended protein contribution, accounts for the partial cell result, and does not promise complete or lasting cure.",
+            "understandingFocusDe": "Gen-Ergänzung als Prinzip mit begrenztem beobachtetem Ergebnis.",
+            "understandingFocusEn": "Gene addition as a principle with a limited observed result."
+          },
+          {
+            "id": "liver-cell-information-change",
+            "taskDemandDe": "Ein neues fiktives Schema zeigt Leberzellen, deren vorhandene genetische Information zu wenig eines benötigten Proteins entstehen lässt. Eine Behandlung soll diese Information in geeigneten Körperzellen ändern; Messdaten zeigen die Änderung nur in einem Teil der Zielzellen. Erkläre unabhängig Zielzelle, beabsichtigte Funktion und eine Grenze des Effekts, ohne das technische Verfahren im Detail zu beschreiben.",
+            "taskDemandEn": "A new fictional diagram shows liver cells whose existing genetic information results in too little of a needed protein. Treatment aims to change that information in suitable body cells; measurements find the change in only some target cells. Independently explain the target cell, intended function, and one limit on the effect without detailing the technical procedure.",
+            "expectedPerformanceDe": "Die lernende Person verbindet die beabsichtigte Änderung in Leberzellen mit der möglichen Proteinfunktion, trennt sie vom nur teilweise gemessenen Ergebnis und erklärt, warum daraus kein sicherer Therapieerfolg folgt.",
+            "expectedPerformanceEn": "The learner links the intended change in liver cells to the possible protein function, separates it from the partially measured outcome, and explains why this does not establish certain therapeutic success.",
+            "understandingFocusDe": "Eigenständiger Transfer auf anderes Zielgewebe und Änderung statt Ergänzung genetischer Information.",
+            "understandingFocusEn": "Independent transfer to another target tissue and change rather than addition of genetic information."
+          }
+        ]
+      }
+    }
+  ]
+}

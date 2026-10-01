@@ -1,0 +1,13 @@
+# Unabhängige Bildprüfung A: BW-Geschlechtschromosomen v2
+
+**Status: fachlich und visuell geeigneter Bildkandidat; keine V-Freigabe.** Geprüft wurde das tatsächliche RGB-PNG `62e52002-b8df-533e-9972-028f3ee60cd1.candidate.png` (1672 × 941, SHA-256 `19b4c5d4ae39ae616d7eb1c8b4921c6039ed7d9b1d6ba5ee5bf72b8737fa4fa2`) unabhängig vom Erzeuger. Der v1-HOLD bleibt bestehen und wird durch diesen v2-Befund nicht umgeschrieben.
+
+Die Primärquelle, BW-Bildungsplan Gymnasium Biologie, 3.3.2 (5), gedruckte S. 22, verlangt die Bedeutung der Geschlechtschromosomen bei der Geschlechtsbestimmung. Oben zeigt das Bild eine X-tragende Eizelle plus X-tragende Samenzelle und als Ergebnis XX; unten dieselbe Eizelle plus Y-tragende Samenzelle und als Ergebnis XY. Beide Pfeile weisen zum jeweiligen Ergebnis. Die gleichförmigen runden Badges mit Buchstaben sind als Typensymbole lesbar und vermeiden den v1-Fehler scheinbar physischer X-/Y-förmiger Chromosomen in reifen Keimzellen. Alle anderen Chromosomen und biologische Sonderfälle bleiben bewusst außerhalb des vereinfachten Modells. Die Darstellung macht keine Aussage über Körpermerkmale oder Geschlechtsidentität.
+
+Die Originalansicht sowie selbst auf 360 × 203 und 680 × 383 Pixel skalierte Ansichten wurden tatsächlich betrachtet (`preview-360.png`, `preview-680.png`). X/Y, Pluszeichen, Pfeilrichtungen und die zwei getrennten Wege sind auf dem Handy erkennbar; auf dem PC bleibt großzügiger Abstand. Der freundliche comicartige Stil und das Querformat passen zur vorhandenen Bildlandschaft. Keine lesepflichtige Kleinschrift.
+
+Der vorgeschlagene Alttext im `candidate-review.md` beschreibt beide Alternativen, kennzeichnet X/Y als Typen-Badges und nennt die ausgelassenen Chromosomen sowie die Aussagegrenze. Er entspricht dem sichtbaren Inhalt. **Votum: KEEP als korrigierter v2-Kandidat**, vorbehaltlich korrekter aktiver Bild- und Alttextbindung, maschinellem Asset-Checker und aktuellem unabhängigen V-Gate. Erzeugung und diese Sichtprüfung allein sind keine Veröffentlichung, keine menschliche Freigabe und kein strenger M7-Abschluss.
+
+## Bindungsnachtrag
+
+Nach der Integration wurden Kandidat, `curricula/DE/Gymnasium/visualizations/biologie/62e52002-b8df-533e-9972-028f3ee60cd1/62e52002-b8df-533e-9972-028f3ee60cd1.png` und `app/public/assets/goal-visualizations/biologie/62e52002-b8df-533e-9972-028f3ee60cd1/62e52002-b8df-533e-9972-028f3ee60cd1.png` erneut byteweise geprüft: alle drei tragen den oben genannten SHA-256-Digest. Der Canonical-`resourceLink` zeigt auf die Public-Datei, und sein Alttext entspricht exakt dem geprüften Vorschlag. Diese Bindungsprüfung ergänzt die Bildsichtung; die maschinelle V-Ledger-Entscheidung und der zentrale Fünf-Gate-Bericht sind eigenständige Schritte.

@@ -179,6 +179,12 @@ backend/src/main/resources/static/assets/goal-visualizations/mathematik/<skillpi
 
 Reference pools of example tasks or image inspirations may be kept locally under `tmp/`, but must not be committed if licensing is unclear. They must never be copied into final assets.
 
+### Format and responsive legibility for new images
+
+For necessary new or corrected learning-goal images, use PNG with a 16:9 landscape composition as the default (about 1600 × 900 px; a generator's close native 16:9 size is fine). Existing good images remain KEEP regardless of file format, provider, dimensions, or aspect ratio. Use another ratio only when an actual desktop and phone review shows a didactic advantage; do not change an otherwise good image solely to normalize its format.
+
+Review the actual image at roughly 360 px phone width and at the desktop image limit of 680 px. The current GoalCard display uses `object-fit: contain` with a 28 rem height cap and does not crop the image. At a 680 px wide desktop card, a 4:3 image therefore appears at about 597 × 448 px, while a 16:9 image can use the full 680 px width. Also inspect any format exception at its actual capped desktop size. At phone width, 16:9 is only about 203 px high: keep the important action and objects large, avoid crowded panels and text that must be read at a tiny size, and provide a meaningful alt text. Check the depicted person's perspective as well as the outside viewer's: notes, sketches, instruments, and other directional details must be correct for the person using them. Record any format exception and its visual review with the image decision.
+
 ## Production Pipeline
 
 ### Provider priority and exception policy

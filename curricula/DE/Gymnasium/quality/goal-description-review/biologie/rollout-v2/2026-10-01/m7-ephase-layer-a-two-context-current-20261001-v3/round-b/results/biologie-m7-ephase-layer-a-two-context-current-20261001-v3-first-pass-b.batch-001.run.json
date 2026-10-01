@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "bio-layer-a-two-context-b-codex-20261001-v3-01",
+  "campaignId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3-b",
+  "roundId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3-first-pass-b",
+  "batchId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:40091ef0c6878feb8f9501f76651baa07941546b1fcb6d7d32ac118150976ce0",
+  "bundleFingerprint": "sha256:57655238632118a600ced8de15b1f5a0fee0aaaf7c015bb47e75595c082d93a6",
+  "bookDigest": "sha256:a399d04cb14a31f01846e137042d6aacbd170a7a089d1cdfba6620113d946d46",
+  "provider": "OpenAI",
+  "model": "Codex GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:b38596877113158f47f3afda5a17aaf59d8a54eeb5f9fd2f36962ae8ba23e714",
+  "independenceGroupId": "biologie-m7-ephase-layer-a-two-context-current-20261001-v3-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "1984fd66-c117-5c29-87b3-1c1626e4ba81",
+    "5c2ce7b1-30ba-5e9c-99de-1ffac126ec13"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:f244c7f3c6ad50ba4a1332a619c2c2a1de6efab3f57b0201536f6756f075e4bd"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:40091ef0c6878feb8f9501f76651baa07941546b1fcb6d7d32ac118150976ce0"
+    }
+  ],
+  "startedAt": "2026-10-01T02:26:49.999Z",
+  "completedAt": "2026-10-01T02:26:49.999Z",
+  "status": "completed",
+  "outputDigest": "sha256:04dcc728592a73a05a733ca4b476c5e8d4406f417142dfa0d8bde68dc1d7dda9",
+  "toolchainVersion": "codex-targeted-current-context-review-v1"
+}

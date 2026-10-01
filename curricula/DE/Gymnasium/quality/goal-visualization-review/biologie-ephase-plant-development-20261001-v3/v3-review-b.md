@@ -1,0 +1,15 @@
+# Unabhängige Bild-QA B: Pflanzliche Entwicklung v3
+
+**Stand:** 2026-10-01. **Status:** ausschließlich unintegrierter Bildkandidat; keine aktive V- oder menschliche Freigabe. Geprüft wurden das tatsächliche Original-PNG (1672 × 941 Pixel) und die bereitgestellten Vorschauen bei 360 × 203 und 680 × 383 Pixeln. Original-SHA-256 `7ff5b6bb8576246219d64b50030e97ed60194f46e4ac534f15dd759f01f2a7ca` stimmt mit `candidate-manifest.json` überein; laut Manifest ist es ein ChatGPT/Codex-`image_gen`-Edit des v2-Kandidaten. Die Herkunft ersetzt keine Bildprüfung.
+
+**Bindung:** aktuelles kanonisches Ziel `9d931642-2287-5277-adb2-082403ad25af`, „Die lernende Person kann Zellteilung, Differenzierung und Morphogenese bei Pflanzen erläutern“, derzeit ohne aktiven `resourceLinks`-Bildeintrag. HE-Source-Extraction-ID `152da0af-ce6c-4bd1-b681-e988751acfc3` ist im aktuellen HE-Mapping 1:1 zugeordnet. Der amtliche HE-Biologie-KC nennt in E.5 auf gedruckter S. 37 das Zusammenspiel von Zellteilung, Zelldifferenzierung und Morphogenese. Diese Quellenbindung betrifft die Zielpassung; sie belegt keine menschliche Bildfreigabe.
+
+## Urteil: KEEP als Bildkandidat
+
+Die v2-HOLD-Ursache ist gezielt beseitigt: Alle drei Stationen bleiben beim **Sprossapex derselben schematischen Knospe**. Links markieren zwei hervorgehobene Zellen eine Teilung im Meristembereich; in der Mitte sind verschiedene Zellbereiche und ein seitlicher Blattansatz zu sehen; rechts sind Blätter am weiterhin erkennbaren Sprossapex ausgebildet. Die Folge aus Teilung, räumlicher Differenzierung und Organformung ist fachlich plausibel. Es gibt keinen Pfeil mehr zu einer ganzen bewurzelten Pflanze und damit keine falsche Ableitung der Wurzel aus dem Sprossmeristem. Das Bild behauptet weder eine konkrete Pflanzenart noch eine gesicherte Abstammung jeder farbigen Einzelzelle.
+
+Bei **360 Pixeln** sind die drei Stadien, die Richtungspfeile und das entstehende Blatt deutlich genug; die feinen Zelllagen sind dort nur unterstützende Details. Bei **680 Pixeln** lassen sich die verschiedenen Zellbereiche und die Veränderung vom Primordium zum Blatt gut verfolgen. Keine lesepflichtige Schrift, freundlich-abstrakter PNG-Stil im vorhandenen Querformat. Die Differenzierung wird schematisch über Lage, Größe und Farbe der Zellbereiche angedeutet; eine Unterrichtserklärung bleibt für Zellschicksale und Gewebefunktionen nötig. Das ist keine Blockade für ein orientierendes Lernzielbild.
+
+**Alttextvorschlag:** „Drei schematische Stadien derselben Sprossknospe von links nach rechts: Am Meristem werden Zellen geteilt; danach unterscheiden sich Zellbereiche und seitlich entsteht ein Blattansatz; zuletzt sind Blätter am Spross ausgebildet. Die Farben kennzeichnen unterschiedliche Bereiche des Modells, keine nachgewiesene Abstammung einzelner Zellen.“
+
+**Gate-Grenze:** KEEP ist eine unabhängige fachliche und visuelle Kandidatenentscheidung. Eine maschinelle Visualisierungsfreigabe verlangt erst die aktuelle Kanon-/Alttextbindung, bytegleiche aktive Assets und betroffene Checks. Menschliche Prüfung, Freigabe und Erprobung bleiben getrennt.

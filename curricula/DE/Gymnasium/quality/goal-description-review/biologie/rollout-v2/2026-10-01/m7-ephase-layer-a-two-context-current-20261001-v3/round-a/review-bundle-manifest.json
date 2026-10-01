@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:a399d04cb14a31f01846e137042d6aacbd170a7a089d1cdfba6620113d946d46",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "de-gym-biologie-m7-ephase-layer-a-two-context-current-20261001-v3",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/lernziel-feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 2,
+  "goals": [
+    {
+      "goalId": "1984fd66-c117-5c29-87b3-1c1626e4ba81",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:e555e241c17241a2ab326a9b699ecfb11db291105242189939abdbb05ae209f8",
+      "pageFingerprint": "sha256:f9749b674d44908e09db3d269016e367d4d573b8367f40b3b4763f42cc7399d4",
+      "evidenceReview": null
+    },
+    {
+      "goalId": "5c2ce7b1-30ba-5e9c-99de-1ffac126ec13",
+      "pageNumber": 2,
+      "goalFingerprint": "sha256:d06b3911a71e2e9c6f03045f3032fd244ce4785cf04784503377c5b876ad3589",
+      "pageFingerprint": "sha256:f255fd03d9a103838a6cca4504a3a64f913f539621b2a27da608f714ca0768da",
+      "evidenceReview": null
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:f244c7f3c6ad50ba4a1332a619c2c2a1de6efab3f57b0201536f6756f075e4bd",
+      "bytes": 191561
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:f6a9cdeb310ff8c09a008e86c55517f027775e1bad674ec4272d8798efb86699",
+      "bytes": 272250
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:15f021458676dee1476fe9878fd433d26d846b86ff50495fd0f15dbcc72068b4",
+      "bytes": 4939
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:0f03fe31ee36d219a2d71f434788a6101c795bd45b12b26c0e5cb4bd6dab34dd",
+      "bytes": 26166
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:6efab05f96280860eee35812550809a5d9af63c6f0a7e863d42b63d8614e32e2",
+      "bytes": 4940
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:cf3b9f40a9291b2823af6579a5d25c2953968a437cae3c06b66a0e0e7b403640",
+      "bytes": 7649
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:d18d126cbeccb965a842a2196bf2c5c97e0af236575b05ffaba164fc71d58352",
+      "bytes": 5625
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:963a8714c5007c0eecf9727dae8c5e42327f95143a4e760fe24db6dca5218412",
+      "bytes": 3495
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+      "bytes": 2505
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:57655238632118a600ced8de15b1f5a0fee0aaaf7c015bb47e75595c082d93a6"
+}

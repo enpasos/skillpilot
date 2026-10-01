@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "independent-positive-understanding-evidence-body-and-binding-review",
+  "reviewedAt": "2026-09-30T18:07:04Z",
+  "reviewer": "Codex independent chemistry P counterreview",
+  "authority": "ai_candidate",
+  "scope": {
+    "configs": [
+      "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004r-d8-current-png-v3.config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b005-sek1-symbols-stoichiometry-current-4-v1.config.json"
+    ],
+    "criteria": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/chemistry-positive-understanding-evidence-profile-criteria-v1.md",
+    "limits": "This is an independent machine curriculum review of five current P profiles and their direct bindings. It does not approve D synthesis, visualizations, source mappings, human release gates, or learner mastery."
+  },
+  "targetedCheck": {
+    "command": "npm --prefix app run -s quality:positive-goal-evidence:check -- --config=<each listed config>",
+    "result": "Technical checker PASS: d8 1/1 and B005 4/4; all five remain ai_candidate/needs_human_review. Content and source HOLDs below are additional to the technical check."
+  },
+  "decisions": [
+    {
+      "goalId": "d8bdf486-7295-5393-b6f7-54f6e485c848",
+      "verdict": "HOLD",
+      "profileFingerprint": "sha256:8c1fe176599a57c569abd467d6f1d42bf4ba37f4e06db5705358eab60a71ecd9",
+      "imageSha256": "515cc8d48f294752654168b6a424ae0d33c160a0faa7c91e84db6e46e40fe3e9",
+      "bodyFinding": "The acetate-buffer and fresh HIn/In− cases are chemically coherent, distinguish pH/color from species evidence, use a same-sample reverse cycle and controls, and request no unsupervised experiment. The active comic says that color alone does not prove the model. The P body is sound against the current page and PNG.",
+      "bindingFinding": "The current canonical provenance points to BY source goal 7b5310e2, C10 HG/SG/MuG/WWG/SWG.4.6. That official branch derives reversibility from structural formula representations. The current canonical goal and P profile instead require derivation from experimental observations. The matching official observation wording is in the distinct NTG C10.2.6 source goal fcb6ccbf, which is mapped to former canonical 08b44b8f, not directly rebound to this split goal. Source applicability for the experimental variant is therefore unresolved.",
+      "sourceEvidence": [
+        "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_CHEMIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json: C10-HG_SG_MUG_WWG_SWG.4.6 and C10-NTG.2.6",
+        "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/10/chemie/ch",
+        "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium%20/10/chemie/ch-ntg"
+      ],
+      "requiredResolution": "Review the split-goal source edges and learner projection by Bavarian course branch. Bind the experimental goal only where that source genuinely applies, or repair the canonical wording and dependent D/P/A/V evidence if broader applicability is intended. Then recheck affected bindings; a fingerprint change alone does not resolve the issue."
+    },
+    {
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "verdict": "PASS",
+      "profileFingerprint": "sha256:fb9dc940130172c91b1188efa22739a0c6da2b2855c60635d4cb82c4fbd36429",
+      "imageSha256": "f7a2507d8984d03d4075b3bbd48ce9baa15ba9148c76cf0e97c500b4b5ec0fc6",
+      "finding": "Current MgO JPG depicts the chemically consistent approximate 3:2 mass ratio. The CuO data consistently give an approximate 4:1 mass ratio at stated precision; FeS 7:4 and excess Fe are consistent. The two briefs vary oxide to sulfide and separate pure-product composition from initial reactant mixture. The canonical goal covers simple oxides/sulfides, with HE 9.1 ratio-formula source context; no experiment is requested. This is a P-body/binding PASS only."
+    },
+    {
+      "goalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+      "verdict": "PASS",
+      "profileFingerprint": "sha256:6b1392e002721be0b16d11c24b4bb2cd146d58dff9c05fdab017b5eef341b630",
+      "imageSha256": "249ef9c54f1f62e65e1bab38cef98dc2d6bdef76bd5e294085a833004bc1ab90",
+      "finding": "The current symbols/formulas JPG shows correct H2O, CO2 and CH4 particle counts. Fresh NH3 and 2 CO versus CO2 briefs require diagram-to-formula transfer and distinguish an index from a coefficient; German and English match. The narrower canonical competence in simple molecular formulas is within the broad HE/BY symbol-language source context. This is a P-body/binding PASS only."
+    },
+    {
+      "goalId": "5c4788a7-6760-53dc-894e-e04bca6f8cd9",
+      "verdict": "PASS",
+      "profileFingerprint": "sha256:16b7a1d4cbe25d0f244970e2bc57ef8d7b025cf063877b8eb2419cbd6ba1a5ea",
+      "imageSha256": "0be30232f2e9da86a08a02a2745c48316486b267007a2a6892bd0e590221a4eb",
+      "finding": "The heat-at-fixed-N,V and isothermal-compression-at-fixed-N,T briefs state different constraints and correctly explain particle motion versus wall-collision frequency. They extend the current kinetic-gas JPG and the HE 9.1 kinetic gas model source without claiming exact gas laws. The page image still carries reviewStatus pilot; this P PASS does not release the separate V gate."
+    },
+    {
+      "goalId": "9f355f63-4fb7-5638-9538-6e8a246ec4b2",
+      "verdict": "HOLD",
+      "profileFingerprint": "sha256:e33b465eae5503aad472136d03cb1663643c0ca07668a76366032aa5d6f49b73",
+      "imageSha256": "6f633fde5ddf96c717c852816839edb73c62617bedc43d1060c71cd07ae7611a",
+      "bodyFinding": "Both paper cases balance correctly. The first gives 2 mol H2O, 36 g and 1 mol H2 residue; the second gives 2 mol CO2, 88 g and 0.5 mol O2 residue. The current H2/Cl2 JPG also balances. The BY C8.3.7 source supports calculation from quantity equations for simple molecular reactions.",
+      "blockingFinding": "The variation axis asserts that water formation and CO oxidation have different coefficient relationships, but both equations are 2:1:2. Thus the authored profile makes a false claim about what its two independent demonstrations vary. The second case does vary mass conversion and which reagent limits, so the body can be repaired narrowly without changing the current goal or image.",
+      "requiredResolution": "Correct the variation axis to the actual variation, or replace one brief with a correctly worked reaction having a genuinely different coefficient relationship. Rematerialize and run the targeted current P checker after a content recheck."
+    }
+  ],
+  "summary": {
+    "pass": 3,
+    "hold": 2,
+    "newStrictM7ClosureClaimed": 0,
+    "humanApprovalsClaimed": 0
+  }
+}

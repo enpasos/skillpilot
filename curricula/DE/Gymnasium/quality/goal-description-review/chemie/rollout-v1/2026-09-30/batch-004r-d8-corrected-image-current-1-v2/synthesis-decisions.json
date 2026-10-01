@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-b004r-d8-current-png-20260930-targeted-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex GPT-6 targeted AI synthesis after two independent current-page reviews; no human approval",
+  "synthesizedAt": "2026-09-30T17:24:33.583Z",
+  "batch": {
+    "batchId": "chemie-rollout-v1-batch-004r-d8-corrected-image-current-1-v2-20260930",
+    "batchManifestDigest": "sha256:a65e167333bac1103e42faf9ed8dc51081cd0ee6453ab0f91217099c7eb43b6f",
+    "configDigest": "sha256:18287f9b57684ed9a720fa851085616502792c14690b416f88bb7964ade5f0db",
+    "bundleFingerprint": "sha256:10b275d5334ece44fe9567c659eb17f420172b81154aa889c72e83b9ea9a4ff1",
+    "bookDigest": "sha256:16ca135066a0ef12de9145e1018c56f65c6854a4737f5e216edb5b1669083f3e",
+    "reviewInputFingerprint": "sha256:fc98e1316bacc10b2bb4f28851df24a0b9a6ad40d6ed5baf5be8e22b9bfb2376",
+    "dualSummaryDigest": "sha256:9b3cce4bb4081fbcbd6025696c4cd59e0f32594237de8a9bf127d1e9bb9ed1fe",
+    "canonicalLandscapeDigest": "sha256:836992150dd1b7ed6e1391052689623743d4d007acfbbb91b389df0fd78ebeb0"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-004r-d8-corrected-image-current-1-v2-20260930-a",
+      "campaignDigest": "sha256:cead0d20c78f0c800078b2b23c82439c3c9c810ef0045169058afb9a8812ab8c",
+      "roundId": "chemie-rollout-v1-batch-004r-d8-corrected-image-current-1-v2-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-004r-d8-corrected-image-current-1-v2-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:fc98e1316bacc10b2bb4f28851df24a0b9a6ad40d6ed5baf5be8e22b9bfb2376",
+      "batchId": "chemie-rollout-v1-batch-004r-d8-corrected-image-current-1-v2-20260930-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:6830b8b1fabf926ba9346c785cbf8421a2b40d8a4ba313502d3d2f336fa40817",
+      "runId": "codex-gpt-6-round-a-chemie-b004r-d8-current-png-20260930",
+      "runManifestDigest": "sha256:41ba610317921d2d09663a3edbfd0fead903a4e301bb942694f1454b3aafb7b9",
+      "resultsDigest": "sha256:e8cd6eabf6275fae98db7a2799a411d071e0886cd9a40976dc49fb24281a2af8"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-004r-d8-corrected-image-current-1-v2-20260930-b",
+      "campaignDigest": "sha256:82dc72d61329b381b7360555d2de999519a7d6e83e2e4683089a0dd4869ad23a",
+      "roundId": "chemie-rollout-v1-batch-004r-d8-corrected-image-current-1-v2-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-004r-d8-corrected-image-current-1-v2-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:fc98e1316bacc10b2bb4f28851df24a0b9a6ad40d6ed5baf5be8e22b9bfb2376",
+      "batchId": "chemie-rollout-v1-batch-004r-d8-corrected-image-current-1-v2-20260930-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:670716fa89be193ad66b5a729aa3eafd092a1f7597131803e2477fc0c9edfd30",
+      "runId": "chemie-b004r-d8-v2-20260930-blind-b-run-001",
+      "runManifestDigest": "sha256:9eac0981d3f7c3268918460871ec77d009aefefe3643611360ec03991603198d",
+      "resultsDigest": "sha256:4d2a6e094184faf730c695df2a06a02a661a04f50cc592e64ea8f42962273c2c"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-b004r-d8-current-png-20260930-targeted-synthesis-decision-001",
+      "goalId": "d8bdf486-7295-5393-b6f7-54f6e485c848",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a18515310feae7ece5201887b038563961496ce4266e069296eb43435abb1528",
+      "pageFingerprint": "sha256:0a44b466b81d7d59960223790d54d859880a077ff9f60f075d37640f3a19f363",
+      "goalReviewContextFingerprint": "sha256:0060893c0cf54ee2f0c3c846c91faab481ad537f24c0c6dd2e24d45f47b54ea0",
+      "finalText": {
+        "titleDe": "Reversibilität von Protonenübergängen ableiten",
+        "titleEn": "Derive reversibility of proton transfers",
+        "descriptionDe": "Die lernende Person kann die Reversibilität von Protonenübergängen aus experimentellen Beobachtungen ableiten.",
+        "descriptionEn": "The learner can derive the reversibility of proton transfers from experimental observations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b004r-d8-round-a-20260930",
+          "recordDigest": "sha256:be564644f96cf5684645a8c66dd2b62c3e7761d2be90d537b8e7717f860f7849"
+        },
+        "second": {
+          "recordId": "chemie-b004r-d8-v2-b-d8bdf486",
+          "recordDigest": "sha256:66bd9d6a15890b6e14bd38f8cc21597268fc2e47b71ef0eafa023b1bcd4617e8"
+        }
+      },
+      "rationaleDe": "A und B prüfen den aktuellen kurzen Zieltext erneut gegen die tatsächlich korrigierte PNG-Seite und behalten ihn bei. Das neue Bild trennt wiederholte Beobachtung, Probe ohne Acetat und Teilchenmodell und warnt, dass Farbe allein keinen spezifischen Übergang beweist. A verlangt unabhängige Anteilsdaten; B bestätigt die Beweisgrenze. Alte Bildaussage und alte Seitenbindung werden nicht übernommen.",
+      "rationaleEn": "A and B recheck the current short wording against the actually corrected PNG page and retain it. The new image separates repeated observation, a no-acetate control and a particle model, warning that color alone does not prove a specific transfer. A requires independent fraction data; B confirms the evidence limit. The old image claim and page binding are not carried over."
+    }
+  ],
+  "manifestFingerprint": "sha256:7e4f1e5b32534f4359c07dc1cdb09e184a08408b7329d838cb01da7f10c5bf13"
+}

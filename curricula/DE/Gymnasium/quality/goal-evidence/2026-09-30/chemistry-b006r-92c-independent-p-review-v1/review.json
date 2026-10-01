@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "independent-positive-understanding-evidence-current-png-review",
+  "reviewedAt": "2026-09-30T18:41:06Z",
+  "reviewer": "Codex independent chemistry P counterreview",
+  "authority": "ai_candidate",
+  "goalId": "92c99237-1c74-54fc-bf08-9191656afaa6",
+  "config": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b006r-92c-current-png-v1.config.json",
+  "profileFingerprint": "sha256:201ed66ceb12bbf901db8490a85bde96d83034912f79b8fd7ca1039adb4b5bac",
+  "currentGoalFingerprint": "sha256:881145bade294b8ab9fb539bfffa367e011bf836eaef4524badd3fe1eaae7246",
+  "currentImageSha256": "6ed140213988f015f57de3ac647b0d8bbf0f9d9c4806d3a13b162cfa3e8e0bba",
+  "verdict": "PASS",
+  "finding": "The current canonical goal and direct BY LehrplanPLUS C9-NTG.4.6 / C10-HG_SG_MUG_WWG_SWG.2.6 source clause ask for conversion among molecular formula representations and situational choice. The P profile preserves that scope and explicitly guards against inferring a unique bond pattern from C2H6O alone. The ethanol versus dimethyl ether case correctly gives C2H6O for both, different connectivity and two O lone pairs in each Lewis depiction. The independent ethene case gives C2H4 and H2C=CH2, testing a double bond and a question-led choice without reading off the current ethanol image. These are chemically different transfer cases, not just changed numbers; DE/EN meanings agree. No experiment or gas handling is requested. The actual canonical/public PNG bytes and the AI visualization-QA record all match the inspected SHA; the image correctly labels molecular-formula atom types/counts and depicts ethanol's C-O single bond and two O lone pairs.",
+  "targetedCheck": {
+    "command": "npm --prefix app run -s quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b006r-92c-current-png-v1.config.json",
+    "result": "PASS: configured 1, blocking issues 0, needs human review 1, approved 0."
+  },
+  "limits": "This is independent machine P content and current image/source-context review. The direct BY clause supports this goal, but this review does not certify all jurisdiction projections, human approval, publication, or the complete central D/P/A/M/V intersection. The P record remains ai_candidate/needs_human_review; the image QA is a separate current-hash machine decision and humanApproved remains no.",
+  "newStrictM7ClosureClaimed": 0,
+  "humanApprovalsClaimed": 0
+}

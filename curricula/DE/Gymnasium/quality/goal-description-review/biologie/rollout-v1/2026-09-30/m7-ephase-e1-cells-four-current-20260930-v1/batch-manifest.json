@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/biologie/rollout-v1/2026-09-30/m7-ephase-e1-cells-four-current-20260930-v1.config.json",
+  "configDigest": "sha256:d434c7db30a2a6150aaa59b486563fff0d32a7778fc2298e0eda6a17fd7a77d9",
+  "goalIds": [
+    "11e90f71-a9a4-5a57-b619-ad5d81e81f96",
+    "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f",
+    "fc8c4b02-02f2-5ad6-b481-224d36121da1",
+    "5c2ce7b1-30ba-5e9c-99de-1ffac126ec13"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 355,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/biologie/rollout-v1/2026-09-30/m7-ephase-e1-cells-four-current-20260930-v1.book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:2d797cb12ff4e3765dc42c5b0f21421b05991fc4e742290ab702d22dfa1e7549"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:ff595b6c399427d1c41cf0bd23b710baf556868e6a17112c501f22b081b4b753",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:1c8eb54def40162241d6e4bd65f80446a505aca89fde89f30ed2ea6ced151ca5",
+    "reviewInputFingerprint": "sha256:e9a93d37a2c635aec6081ee234e1ff8d95d50f9d6ba18ae6a69f6cecf13b0c37",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-a",
+        "campaignDigest": "sha256:291f96300470f89c27955baf6c3de79ebccb55df13b6f9fab89b10f6ea801184",
+        "roundId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-first-pass-a",
+        "independenceGroupId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-independent-a",
+        "batchId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:66c3a089f2177fc670a2020b92cb39582206132960c53d94915c5615f492cf3f"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-b",
+        "campaignDigest": "sha256:68263b25045885933332707cd125da10474715005bde8b157b95db3b4db25bbf",
+        "roundId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-first-pass-b",
+        "independenceGroupId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-independent-b",
+        "batchId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:77eb3d4cb8953eba4900bc5aa9341f754e33dd47b2dc6425c99bff4a95ce2711"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "reviewKind": "independent-ai-positive-understanding-evidence-v2-content-review",
+  "reviewedAt": "2026-09-30T22:51:29Z",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "goalId": "fc8c4b02-02f2-5ad6-b481-224d36121da1",
+  "decision": "PASS_AI_CANDIDATE",
+  "sourceConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/biologie-e1-organelle-em-current-v1/positive-evidence.config.json",
+  "sourceConfigSha256": "sha256:5283da8e76f7cc877d4f6ca9897ab175585d48561895e26365169df3ff858e59",
+  "sourceCandidatesPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/biologie-e1-organelle-em-current-v1/positive-evidence.candidates.json",
+  "sourceCandidatesSha256": "sha256:e48e96e2d34f962526bbc32120015270ab5adfc92e051b75633045bbd190d7c0",
+  "sourceRecordsPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/biologie-e1-organelle-em-current-v1/positive-evidence.review.jsonl",
+  "sourceRecordsSha256": "sha256:b4ff7a1bf3532511e453d471826e912a48ec698938bd7eb8815c00aec8a36875",
+  "goalFingerprint": "sha256:2ce288a498be400c2368003662895c231ea656dc9761d3cc9963f60f49520200",
+  "profileFingerprint": "sha256:61aba9bc974ce07363e572af4cabff9593d7e450b2dd17e8432227fcdea4f76c",
+  "activeGoalImageSha256": "sha256:b4f6ec6bcfa4ef67d1280089cb415be8859fdae6b2f67e93e65b9bfa9ecc2c97",
+  "candidateStatus": "needs_human_review",
+  "candidateReviewAuthority": "ai_candidate",
+  "technicalCheck": {
+    "command": "npm --prefix app run -s quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-01/biologie-e1-organelle-em-current-v1/positive-evidence.config.json",
+    "result": "PASS: 1 configured, 0 approved, 1 needs_human_review, 0 blocking issues; current structural and fingerprint binding"
+  },
+  "findings": [
+    {
+      "severity": "pass",
+      "area": "curriculum-and-current-goal",
+      "detail": "Official Hessian E.1 requires an overview of organelle structure and function in an electron-microscopic cell image. The current German and English canonical goal asks learners to identify selected organelles by structure and reason about their main functions. The profile targets that exact scope; it does not reuse the earlier model/endosymbiosis task as proof of this changed goal."
+    },
+    {
+      "severity": "pass",
+      "area": "authentic-image-and-schematic-boundary",
+      "detail": "The active 4:3 PNG was visually inspected at native and 360-pixel widths. Its title explicitly says EM-Schema and it is not presented as an authentic micrograph. The two task briefs instead require previously unseen, authentic, source-verified TEM thin sections with resolvable diagnostic structures. Neither brief claims that such task images have already been sourced or that the goal image proves competence in reading real TEM images."
+    },
+    {
+      "severity": "pass",
+      "area": "scientific-observation-and-inference",
+      "detail": "The expected identifications use visible thylakoid stacks, mitochondrial cristae and nuclear envelope/chromatin where resolved. Both languages separate those observed structures from the function assignment using biological knowledge. Static ultrastructure is not misreported as direct observation of photosynthesis, respiration, gene activity or ATP synthesis; a limited crop is not treated as a complete organelle inventory."
+    },
+    {
+      "severity": "pass",
+      "area": "independent-demonstrations-and-language-parity",
+      "detail": "One case uses a plant leaf cell and tests chloroplast plus mitochondrion; the other uses a different animal cell and tests nucleus plus mitochondrion. Their cell types, diagnostic structures and source images differ, while both require fresh identification and reasoned function assignment. German and English demands and expected performances are semantically aligned, and both required expectation IDs are covered twice."
+    },
+    {
+      "severity": "pass",
+      "area": "record-and-status",
+      "detail": "The materialized record matches the current goal and profile fingerprints, retains E1/G1 bounds, and truthfully remains needs_human_review with ai_candidate authority. The targeted checker reports no structural blockers, which does not mean human review or any learner's performance occurred."
+    }
+  ],
+  "executionBoundary": "Before either task is actually offered, select and inspect two distinct authentic TEM images. For each, document original source, specimen, imaging method, usage rights and any crop; verify at the displayed size that both named organelles and their required internal structures are genuinely resolvable. If either image fails, substitute another real image and recheck the task. The current profile is a feasible conditional brief, not an acquired micrograph, licensed task asset, observed learner response or human approval.",
+  "primaryCurriculumSource": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+  "sourceScope": "Official HE E.1, printed pages 33-34: organelle structure and function in an electron-microscopic cell image, overview level.",
+  "scopeLimit": "Independent AI content judgment on the current P-v2 candidate only. No candidate, canonical goal, source mapping, image, registry, strict central five-gate report or human release gate was edited or approved."
+}

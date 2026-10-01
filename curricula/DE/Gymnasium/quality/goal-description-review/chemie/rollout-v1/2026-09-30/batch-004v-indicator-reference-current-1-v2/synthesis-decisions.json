@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-b004v-indicator-reference-current-20260930-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis of two independent current description reviews; no human approval",
+  "synthesizedAt": "2026-09-30T21:50:34.115Z",
+  "batch": {
+    "batchId": "chemie-rollout-v1-batch-004v-indicator-reference-current-1-v2-20260930",
+    "batchManifestDigest": "sha256:6bc4f3b899e701ec83a231f97feb0c9b64e43645a39ea0014280b7fad46a5a4f",
+    "configDigest": "sha256:812a9fd54e53ceaf2ba529d4f668e2b1f1f71f68cd749a85de47a2b0fa63c461",
+    "bundleFingerprint": "sha256:0f82e9eb4f02c3badfdea9914bdcc563a1e18bf817d50e2dba2e01133e3fedc6",
+    "bookDigest": "sha256:13e5009305ce5db6cb293aeffb40703f37130b0e274762ca830f7cffdba46cfe",
+    "reviewInputFingerprint": "sha256:b0edbebaa9a07d2462fea97fcfb5907301033c2fc1760166ce7d8e57f2c835cb",
+    "dualSummaryDigest": "sha256:5a1e86620ca7cee49a055887b1a32399243c6d472b44206fd674e9ee5f336207",
+    "canonicalLandscapeDigest": "sha256:197d243a5ac3267ce4742c142de4d39a046ecd3b29829e26c8278f2bcf60bf35"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-004v-indicator-reference-current-1-v2-20260930-a",
+      "campaignDigest": "sha256:0a067494a31adea2e3de6265d2089988c640289905d56c0e3a907c8b4bc998c7",
+      "roundId": "chemie-rollout-v1-batch-004v-indicator-reference-current-1-v2-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-004v-indicator-reference-current-1-v2-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:b0edbebaa9a07d2462fea97fcfb5907301033c2fc1760166ce7d8e57f2c835cb",
+      "batchId": "chemie-rollout-v1-batch-004v-indicator-reference-current-1-v2-20260930-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:295c9b2b8e0c6fd97bdf7c36b94f46b8add0a196f68a7626beb6ae1547d5ddb5",
+      "runId": "chemie-b004v-d2cc-gpt6-round-a-20260930",
+      "runManifestDigest": "sha256:527874cee66ce5fff3cb0d2f3d9c7b224f6dcecd7030d3412d3562b68c763b41",
+      "resultsDigest": "sha256:8544f8e1f9dc5eaf0053da79cfd8ba46b5a3dd59cf1a2d234d6b27b0ec36af60"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-004v-indicator-reference-current-1-v2-20260930-b",
+      "campaignDigest": "sha256:c16c013f34a6e994350e0fea2977b7f20dcfdce581714f699e6ba8e22188ca50",
+      "roundId": "chemie-rollout-v1-batch-004v-indicator-reference-current-1-v2-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-004v-indicator-reference-current-1-v2-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:b0edbebaa9a07d2462fea97fcfb5907301033c2fc1760166ce7d8e57f2c835cb",
+      "batchId": "chemie-rollout-v1-batch-004v-indicator-reference-current-1-v2-20260930-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:ef0d5bf6ed048775ddb8dd924cec5ad3b96ddfb92a57f01928f52e80bca13676",
+      "runId": "chemie-b004v-d2-indicator-reference-20260930-blind-b-run-001",
+      "runManifestDigest": "sha256:a6125c0ddd3ef519483790325bf3da964e5fed693c52e8aafbc7002cb39b824b",
+      "resultsDigest": "sha256:158e3e7d15471435f77657897e858ec941031b8eb5dc97f45f299f3fa2f647ff"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-b004v-indicator-reference-current-20260930-synthesis-decision-001",
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ac9de7e503ad973109172b3c35acf3a6a29c588d2262d6a4b6eeaa436561dda3",
+      "pageFingerprint": "sha256:3011f764f99a222d1862c443150dc32d7e6ca6b99b5131ea1bd9de00b4917d4c",
+      "goalReviewContextFingerprint": "sha256:69cd81ed2b4fabdcf5e29a9fd575d9a22bb59d710ca080a09695787f75f5c74a",
+      "finalText": {
+        "titleDe": "Saure, alkalische und neutrale Lösungen unterscheiden",
+        "titleEn": "Distinguish acidic, alkaline, and neutral solutions",
+        "descriptionDe": "Die lernende Person kann saure, neutrale und alkalische Lösungen in geeigneten Schulversuchen anhand der Farbskala des jeweils verwendeten Indikators unterscheiden und die Ergebnisse groben pH-Bereichen zuordnen.",
+        "descriptionEn": "The learner can distinguish acidic, neutral and alkaline solutions in suitable school experiments using the colour scale for the indicator used and assign the results to broad pH ranges."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-b004v-d2cc-round-a-record-001-20260930",
+          "recordDigest": "sha256:5b07bcee480eee15b440d1bf813e54e571de558056c9303ac230ee638bd6274e"
+        },
+        "second": {
+          "recordId": "chemie-b004v-b-01-d2ccd1d5",
+          "recordDigest": "sha256:3143eb2b1dde8a1acf92d67e4a39df8b22064d9b7e6aba3e4cdb16ae28cf8b9a"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Runden behalten die zweisprachige Beschreibung bei. Sie bindet die beobachtete Farbe an die Skala des tatsächlich verwendeten Indikators und verlangt nur die begründete Zuordnung zu sauer, neutral oder alkalisch und zu groben pH-Bereichen. Die hessische G9-Quelle, Jahrgang 8, 8.1, gedruckte S. 11, stützt diesen Zusammenhang; exakte pH-Messung und Teilchendeutung gehören nicht zu diesem Ziel. Die Runden unterscheiden sich nur in der vorgeschlagenen Nachweisform: A formuliert eine beaufsichtigte praktische Beobachtung, B die Auswertung vorgegebener Beobachtungen. Für die D-Entscheidung ist dies keine Textabweichung; der separate aktuelle P-v2-Nachweis wird eigenständig fachlich geprüft. Das aktive PNG mit SHA256 cf6f69ccb31591750a925603b9930d57edb0f9f0112c6512b28ad674a561f7f8 wurde im Original und bei 360/680 Pixeln visuell geprüft, ist aber nur ein Beispiel und keine allgemeine Indikator-Farbskala. Die vollständige bundesweite Quellenprojektion und die eigenständigen A-, P-, M- und V-Gates werden durch diese D-Synthese nicht behauptet; keine menschliche Freigabe.",
+      "rationaleEn": "Both independent current rounds retain the bilingual description. It ties the observed colour to the scale of the indicator actually used and asks only for a justified acidic, neutral or alkaline category and a broad pH range. The Hessian G9 source, year 8 section 8.1, printed p. 11, supports this relationship; exact pH measurement and particle-level explanation belong elsewhere. The rounds differ only in their suggested evidence format: A proposes supervised practical observation, B interpretation of supplied observations. This does not change the D decision; the separate current P-v2 profile requires its own content review. The active PNG, SHA256 cf6f69ccb31591750a925603b9930d57edb0f9f0112c6512b28ad674a561f7f8, was inspected at native size and 360/680 pixels but illustrates one example, not a universal indicator colour scale. Complete cross-jurisdiction source projection and the separate A, P, M and V gates are not claimed by this D synthesis; no human approval."
+    }
+  ],
+  "manifestFingerprint": "sha256:411e204d0f77daada57ab85a642833d5fe5beba8e13ae28da0979097a393b6b9"
+}

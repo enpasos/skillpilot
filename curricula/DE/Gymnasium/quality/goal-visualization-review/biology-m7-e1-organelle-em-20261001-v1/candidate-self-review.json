@@ -1,0 +1,52 @@
+{
+  "reviewKind": "generator-self-inspection",
+  "reviewedAt": "2026-09-30T22:32:41Z",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "goalId": "fc8c4b02-02f2-5ad6-b481-224d36121da1",
+  "decision": "READY_FOR_INDEPENDENT_QA",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biology-m7-e1-organelle-em-20261001-v1/candidate-fc8c4b02-v2.png",
+  "candidateSha256": "sha256:b4f6ec6bcfa4ef67d1280089cb415be8859fdae6b2f67e93e65b9bfa9ecc2c97",
+  "candidateDimensions": "1448x1086 RGB PNG",
+  "formatDecision": "4:3 landscape. At 360 px width it gives 270 px image height, 67 px more than 16:9; the organelle membrane features remain distinguishable. At 680 px width the 510 px image remains coherent without cropping.",
+  "inspectedAtWidthsPx": [1448, 680, 360],
+  "previewFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biology-m7-e1-organelle-em-20261001-v1/candidate-fc8c4b02-v2-680px.png",
+      "sha256": "sha256:ebcca96e06dc591dc781802a9fbdcf9d8229757914c8edacf412e851eca86409",
+      "dimensions": "680x510"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biology-m7-e1-organelle-em-20261001-v1/candidate-fc8c4b02-v2-360px.png",
+      "sha256": "sha256:8543dd367729bbd85f2b7661f0586f8b63d66bdbd5deb1982c6deff22e63e340",
+      "dimensions": "360x270"
+    }
+  ],
+  "previewMethod": "ffmpeg proportional raster resize from the actual v2 PNG; all three sizes visually inspected",
+  "findings": [
+    {
+      "severity": "pass_candidate_only",
+      "area": "source-aligned-representation",
+      "detail": "The large grayscale, explicitly schematic EM-style plant-cell section directly addresses organelle recognition from ultrastructure. The cell boundary, a large nucleus, a chloroplast and a smaller mitochondrion form one coherent cell view. It does not claim to be a real electron micrograph."
+    },
+    {
+      "severity": "pass_candidate_only",
+      "area": "diagnostic-features-and-callouts",
+      "detail": "The nucleus has a double-envelope region and mottled chromatin with a darker nucleolus; the mitochondrion has inner-membrane cristae; the chloroplast has stacked thylakoid/grana-like membranes. The final purple pointer ends in pale nuclear material away from the nucleolus, while the orange and green pointers reach the intended organelles."
+    },
+    {
+      "severity": "pass_candidate_only",
+      "area": "text-and-mobile-form-factor",
+      "detail": "The exact title 'EM-Schema: Zellorganellen' and the labels 'Zellkern', 'Mitochondrium', 'Chloroplast' are spelled correctly and readable in the actual native, 680 px and 360 px files. The membrane folds and stacks remain discernible on the narrow preview."
+    },
+    {
+      "severity": "scope_limit",
+      "area": "epistemic-limits",
+      "detail": "Colored elements are editorial callouts outside the grayscale cell section; EM contrast does not supply literal organelle colors. No function, sunlight, energy arrow or evolutionary event is depicted as directly visible in EM. The structure-function explanation still needs separate task/evidence; this generated schematic cannot replace authentic EM images in the later P review."
+    }
+  ],
+  "firstCandidateIssueAndCorrection": "In v1 the purple label pointer ended close to the dark nucleolus; v2 moved it into the broader pale nuclear region. Both versions are preserved as candidates, and neither is an active asset.",
+  "primaryCurriculumSource": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+  "nextStep": "Obtain a separate independent scientific and visual review of the exact v2 bitmap at native, 680 and 360 px. Only after a passing independent review can active-resource and V-QA binding be considered. The old active image and central registry remain untouched.",
+  "scopeLimit": "Generator self-assessment only. No active image, visualization QA, source mapping, P evidence, D resolution, central five-gate count or human release approval was changed here."
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-m7-q1-three-revised-current-20260930-v1-a-gpt6",
+  "campaignId": "biologie-m7-q1-three-revised-current-20260930-v1-a",
+  "roundId": "biologie-m7-q1-three-revised-current-20260930-v1-first-pass-a",
+  "batchId": "biologie-m7-q1-three-revised-current-20260930-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:f509b5a93b2d0bf739ce480e80087c69efa9d98a3f5923f1a6bd0b13f1be3b2b",
+  "bundleFingerprint": "sha256:2142254e71025f51dd016030f2e6d9359568749cab6fa8d32ad9e36bb79f1565",
+  "bookDigest": "sha256:a8e4992a1e0cfc5e860d216a76cb747217aafbd71c3086db9573ee8c57c32175",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:525dd2c5ed3f9999a797a54396d4ffc4c8534275169308ea58e07376d95d5ed4",
+  "independenceGroupId": "biologie-m7-q1-three-revised-current-20260930-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "8f6933b1-6e02-5512-acf2-a90a7fb9cb75",
+    "ceb54223-197c-5289-a9c6-19358912e144",
+    "440854be-7f06-5678-91cb-ba8dcab56959"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:f1ef3269660d9947c684ebd9c5fd78af0a7747dfb59121e16e32c009680a6d95"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:f509b5a93b2d0bf739ce480e80087c69efa9d98a3f5923f1a6bd0b13f1be3b2b"
+    }
+  ],
+  "startedAt": "2026-09-30T21:12:26Z",
+  "completedAt": "2026-09-30T21:12:26Z",
+  "status": "completed",
+  "outputDigest": "sha256:b694be212902386dda7b6f28382ec4a6d49ed053bebe954fcabf825e522cf38f",
+  "toolchainVersion": "goal-description-review-v1"
+}

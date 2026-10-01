@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-resolution-9198b4cf-e454-562f-83f0-b1b74e68765d",
+  "goal": {
+    "goalId": "9198b4cf-e454-562f-83f0-b1b74e68765d",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:3b0d53f10dbdeb91379cff1bd859900fb70645c84665d121186834093536da84",
+    "pageFingerprint": "sha256:9fd10f573a8fedada00c65b025a31bd4791241ae43707a56d1175bef7eaa651c",
+    "goalReviewContextFingerprint": "sha256:5496b50a7e1aacad1bc798e56a128209e8a7c230df61d31a62ba1e78f793d2ea",
+    "finalText": {
+      "titleDe": "Energieträger kriteriengeleitet bewerten",
+      "titleEn": "Evaluate energy carriers using criteria",
+      "descriptionDe": "Die lernende Person kann Energieträger auf Grundlage chemischer, ökologischer und nutzungsbezogener Kriterien begründet bewerten.",
+      "descriptionEn": "The learner can evaluate energy carriers based on chemical, ecological, and usage-related criteria."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-a",
+      "campaignDigest": "sha256:564e8ba4894672d9976b1e1791687d2e13c88bc2090a5e6f5484101d0bc32279",
+      "roundId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:32ecbb03b0eded14d66cd3a2989ff61c3ee71177ec53d72e10c96a106b9fa210",
+      "goalReviewContextFingerprint": "sha256:5496b50a7e1aacad1bc798e56a128209e8a7c230df61d31a62ba1e78f793d2ea",
+      "batchId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-a.batch-001",
+      "runId": "codex-gpt-6-round-a-chemie-b009-20260930",
+      "runManifestDigest": "sha256:582ba21e2ad3688175fa25450c4165f0fb03d0ce0edd95e5b04205411f02b081",
+      "resultsDigest": "sha256:09ac18519d9930c00e00dd083172993ebbb36672d07428413a08f8ce826fdac1",
+      "recordId": "chemie-b009-round-a-9198b4cf-20260930",
+      "recordDigest": "sha256:f612da9f56f313351613d753b89daf0f4e6854bde4a94c03f5fbe902bcd1a73b"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-b",
+      "campaignDigest": "sha256:be3d6dffaf9142ee0fd8634a27f6e97fea4175dcb95c5deeafdcbdb649507cca",
+      "roundId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:32ecbb03b0eded14d66cd3a2989ff61c3ee71177ec53d72e10c96a106b9fa210",
+      "goalReviewContextFingerprint": "sha256:5496b50a7e1aacad1bc798e56a128209e8a7c230df61d31a62ba1e78f793d2ea",
+      "batchId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-b.batch-001",
+      "runId": "chemie-b009-global-reactions-20260930-blind-b-run-001",
+      "runManifestDigest": "sha256:7ff826ae46c4258bcdac12f3792912fe200805d3fd3c3a6ce11d4bce16ad3e41",
+      "resultsDigest": "sha256:18aea5bc6886b274fd9fdf5693b81e68d1cacb81435f1df4b2ef01bb26956926",
+      "recordId": "chemie-b009-b-07-9198b4cf",
+      "recordDigest": "sha256:f97fe64ec1ae0d139ed2bb4d57646d6cceb88d9e8676e7a9fe9651f7d80122b5"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:64845805c1910516bd363bfa806b32821196a703357372e99251ded5268303c0"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-b009-global-reactions-20260930-partial-synthesis",
+    "manifestDigest": "sha256:3ee95ddb10320c0df6c282ba4d8e83d8a36dd0f513e4131fb3a70daa3bc25205",
+    "manifestFingerprint": "sha256:305093b7945546a2d6a13c69cf5bc797051889932077cf3bf29facae3fc6037c",
+    "decisionId": "chemie-b009-global-reactions-20260930-partial-synthesis-decision-003"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-b009-global-reactions-20260930-partial-synthesis-decision-003",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis of independent A/B; four dual keeps and four substantive deferrals, no human approval or image approval",
+    "synthesizedAt": "2026-09-30T21:45:01.000Z",
+    "rationaleDe": "Beide Runden behalten die kontextgebundene Mehrkriterienbewertung als eine Urteilsleistung bei. BY C8.3.8 benennt CO2-/Wärmevergleich als Grundlage der Energieträgerbewertung; die Nachbarziele behandeln die analytischen Vorleistungen. P muss Daten, Kriteriengewichte und begrenztes Urteil trennen. Das tatsächlich gesichtete Bestandsbild ist wegen kleiner Pflichtfelder bei 360 px und pauschal wirkender Häkchen/Kreuze trotz variabler Herstellung/Verfügbarkeit V-/Seiten-HOLD. D allein zählt dieses Ziel nicht streng; Bild und P benötigen gezielte Prüfung.",
+    "rationaleEn": "Both rounds retain contextual multi-criteria evaluation as one judgment competence. Bavarian C8.3.8 names CO2/heat comparison as the basis for assessing energy carriers; adjacent goals handle analytical prerequisites. P must separate data, criterion weights and bounded judgment. The inspected existing image is a V/page HOLD because essential small fields are unreadable at 360 px and its ticks and crosses appear categorical despite variable production and availability. D alone does not complete this goal strictly; image and P require targeted review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Energieträgerbewertung führt mehrere ausdrücklich genannte Kriterien und eine begrenzte Gewichtung zusammen. Chemische Energie, CO2/Umweltwirkung, Herkunft sowie Speicher- und Nutzbarkeit können gegeneinander wirken; kein einzelnes Häkchen ist ein allgemeines Urteil.",
+      "essentialUnderstandingEn": "Evaluating an energy carrier combines explicitly named criteria with bounded weighting. Chemical energy, CO2/environmental impacts, origin, storage and usability may pull in different directions; no single tick mark gives a universal verdict.",
+      "observablePerformanceDe": "Die lernende Person bewertet zwei vorgegebene Energieträger für einen bestimmten Nutzungsfall anhand von mindestens einem chemischen, einem ökologischen und einem nutzungsbezogenen Kriterium und nennt Annahmen/fehlende Daten.",
+      "observablePerformanceEn": "For a specified use, the learner assesses two supplied energy carriers using at least one chemical, one environmental and one practical criterion and states assumptions or missing data.",
+      "transferExpectationDe": "Wenn eine neue Produktions- oder Transportbedingung die Emissionsbilanz ändert, passt sie das Urteil begründet an und verwechselt emissionsfreien Einsatzort nicht mit emissionsfreier Bereitstellung.",
+      "transferExpectationEn": "When a new production or transport condition changes emissions, they revise the judgment with reasons and do not equate zero emissions at the point of use with zero-emission provision."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-99156edab8612c4fe92feb4324f020d5cced3b744ac9908d0368cabe3481a017",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:c7e19f6dd49e5fced5969252ca56019c635edbef7980589c3172ab746d73a89f"
+}

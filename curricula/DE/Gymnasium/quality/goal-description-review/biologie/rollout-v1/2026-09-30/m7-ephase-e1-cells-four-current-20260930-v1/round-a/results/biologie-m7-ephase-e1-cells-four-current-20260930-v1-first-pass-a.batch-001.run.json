@@ -1,0 +1,53 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-first-pass-a-codex-biology-e1-independent-a",
+  "campaignId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-a",
+  "roundId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-first-pass-a",
+  "batchId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:66c3a089f2177fc670a2020b92cb39582206132960c53d94915c5615f492cf3f",
+  "bundleFingerprint": "sha256:1c8eb54def40162241d6e4bd65f80446a505aca89fde89f30ed2ea6ced151ca5",
+  "bookDigest": "sha256:ff595b6c399427d1c41cf0bd23b710baf556868e6a17112c501f22b081b4b753",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex session (exact deployment identifier not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:3d6688a25ff0f86ecc6cc836ca7b4f9cffe420eff607fb3afbc56ad7c577cdad",
+  "independenceGroupId": "biologie-m7-ephase-e1-cells-four-current-20260930-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "11e90f71-a9a4-5a57-b619-ad5d81e81f96",
+    "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f",
+    "fc8c4b02-02f2-5ad6-b481-224d36121da1",
+    "5c2ce7b1-30ba-5e9c-99de-1ffac126ec13"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:2a846127453e85c9d8767849563d4e04e5a4778e7ccb1d20db35d7435a2329e9"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:266fdf3e3d7004ca154c0849d3a60b33ccb5b3f15b56aa47c84a00b892686877"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:66c3a089f2177fc670a2020b92cb39582206132960c53d94915c5615f492cf3f"
+    }
+  ],
+  "startedAt": "2026-09-30T17:02:54+00:00",
+  "completedAt": "2026-09-30T17:02:54+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:70268e8a22584f9a014d634ee8e6e99e8b8508ad5806d986643ee0b988f2fe29",
+  "toolchainVersion": "codex-cli-current-session"
+}

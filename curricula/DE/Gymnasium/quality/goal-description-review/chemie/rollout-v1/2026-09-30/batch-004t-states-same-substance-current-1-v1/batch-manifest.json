@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-004t-states-same-substance-current-1-v1.config.json",
+  "configDigest": "sha256:67e0d054feb94b3292a3fff6db6c3bac1704bf27c145ed3faef38435c2d9cfb3",
+  "goalIds": [
+    "326d45bf-9f77-57d5-a054-93e76b034dd5"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 376,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/review-book-full.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:fec97e4081f25657f9335925636ad3a62cd461edd2bb49d6f5d5dfdbf96bb1c7"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:a7e75a1187f469569efc59e9d7643f34569574822965f28f6513ee4690d8b70c",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:5e20145b879074aec12e75ae868d38667f26569a835dd59c730cef132447502d",
+    "reviewInputFingerprint": "sha256:5bc1606b0473218b1e317709cde3a1005b9a86e6313b1328f7d518f08ed7f83c",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-a",
+        "campaignDigest": "sha256:6fbaf2ad91aeed8628dcc859abae49b78ff87d68b4d16f40cc6b48374154ee60",
+        "roundId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-first-pass-a",
+        "independenceGroupId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-independent-a",
+        "batchId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:7d9b470bedb02d014b2d51e40798e8af2b92422642878ddf70763ae8dec72cd2"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-b",
+        "campaignDigest": "sha256:56202b6e95f0f0e9237b683277915b4dcc3c7ad1cd6f91017bdcbb6c7fb3903b",
+        "roundId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-first-pass-b",
+        "independenceGroupId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-independent-b",
+        "batchId": "chemie-rollout-v1-batch-004t-states-same-substance-current-1-v1-20260930-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:7b64bae329158d34f3aec9c92af2d0038278bf1041a8ca6712f33e62544c19e9"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

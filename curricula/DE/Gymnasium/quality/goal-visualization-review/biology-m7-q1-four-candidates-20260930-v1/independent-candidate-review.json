@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-30T19:06:02.379Z",
+  "reviewer": "Codex independent biology Q1 image counterreview",
+  "authority": "ai_candidate",
+  "inspectionSizes": [
+    "original 1672x941",
+    "680x383",
+    "360x203"
+  ],
+  "currentCanonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+  "records": [
+    {
+      "goalId": "440854be-7f06-5678-91cb-ba8dcab56959",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biology-m7-q1-four-candidates-20260930-v1/440854be-7f06-5678-91cb-ba8dcab56959.candidate.png",
+      "candidateSha256": "e7d35377b2ca553bcb0c4e57e44dfd87a8dea24f91c763288cf154cecbb2ca84",
+      "dimensions": "1672x941 PNG",
+      "decision": "HOLD",
+      "science": "The conventional parent couple and central descent to three present children are coherent. Two unshaded parents and one shaded affected daughter are possible under recessive inheritance; the drawing does not claim a unique mode or numeric risk. The dashed fourth child is speculative, but a circle preassigns female sex and the dashed sibling link is not a standard neutral pedigree convention.",
+      "visual": "The PNG is RGBA with genuinely transparent background. On an opaque cream inspection composite, symbols and connections are clear at 680 and 360px. On a dark 360px composite, the central parent-to-child and sibling lines and the dashed possible-child link nearly disappear. GoalBookView.tsx renders images in a dark slate figure in dark mode, so the loss is real in this app.",
+      "requiredCorrection": "Generate or edit this candidate as an opaque warm-cream PNG with dark connection lines visible in both themes. Prefer a neutral unknown-sex future-child symbol or an explicitly separate question mark, without an ambiguous dashed sibling edge. Reinspect actual replacement at original, 680 and 360px before binding."
+    },
+    {
+      "goalId": "8f6933b1-6e02-5512-acf2-a90a7fb9cb75",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biology-m7-q1-four-candidates-20260930-v1/8f6933b1-6e02-5512-acf2-a90a7fb9cb75.candidate.png",
+      "candidateSha256": "669fbeccb84f2c1c472d9de886d84a363889bbacae0f46a7c9df4df3872e836e",
+      "dimensions": "1672x941 PNG",
+      "decision": "PASS_CANDIDATE_ONLY",
+      "science": "DNA is wrapped around bead-like histone cores; small marks sit on exposed histone tails rather than on DNA. Dense and open chromatin arrangements are distinct. Both orange and violet marks appear without a false universal claim that methylation always activates or silences. This is a simplified structural aid, not a map from each mark to a fixed gene-expression outcome.",
+      "visual": "At original, 680 and 360px, the labels dicht/locker, nucleosome zoom, tail marks and contrasting packing remain recognizable. Opaque cream background and comic palette align with the biology image landscape.",
+      "limit": "Orange/violet dots are not self-labelled as acetyl/methyl; alt text and teaching context must identify the two mark types and explain context dependence. The image alone does not establish regulation direction or independent learner performance."
+    },
+    {
+      "goalId": "ceb54223-197c-5289-a9c6-19358912e144",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biology-m7-q1-four-candidates-20260930-v1/ceb54223-197c-5289-a9c6-19358912e144.candidate.png",
+      "candidateSha256": "6408a703ecfc38d8cda9a2fb8c6f1aedf6b10ccd5e7cb0d025e9370035a54b5c",
+      "dimensions": "1672x941 PNG",
+      "decision": "PASS_CANDIDATE_ONLY",
+      "science": "The left panel shows intact mRNA being translated into protein. The right shows duplex siRNA entering a RISC-like complex, one retained guide paired to target mRNA, target mRNA separated into fragments and reduced protein output. This is a plausible siRNA/Argonaute slicing route; it must be described as one RNAi example, not every RNAi pathway.",
+      "visual": "mRNA and siRNA labels, guide/target pairing, the cut and faded output remain distinguishable at 680 and 360px. Opaque warm background and simple comic shapes are consistent with current image style.",
+      "limit": "RISC/Argonaute is represented by an unlabeled green complex; the alt text should name it. A paper source supports siRNA guide-dependent mRNA cleavage, but generation does not prove an active V binding."
+    },
+    {
+      "goalId": "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biology-m7-q1-four-candidates-20260930-v1/f53d0a0b-d9b8-5012-92b5-3a021ab6c30b.candidate.png",
+      "candidateSha256": "b048a5df0863b5db84407ff7b8b62e30f6c73a163d794b239ae67005ceae45ac",
+      "dimensions": "1672x941 PNG",
+      "decision": "PASS_CANDIDATE_ONLY",
+      "science": "One guide RNA is shown held by Cas9 and paired with an unwound DNA target adjacent to a marked PAM. Opposing arrows indicate cleavage of both DNA strands; the right state consists of two separated double-stranded DNA ends. No automatic precise repair or altered organism is shown. This is a simplified Cas9 cut example rather than a complete editing outcome.",
+      "visual": "Cas9, guide-RNA, DNA and PAM labels and the double-strand cut remain legible at original, 680 and 360px. The opaque friendly comic presentation matches the existing biology landscape.",
+      "limit": "The exact nucleotide sequence and exact base-pair cut offset are intentionally abstracted, so the figure supports the principle only. Alt text should not claim an exact sequence, universal PAM or guaranteed precise edit."
+    }
+  ],
+  "sourceChecks": [
+    {
+      "title": "HE KCGO Biologie Ausgabe 2024 Q1",
+      "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-biologie.pdf"
+    },
+    {
+      "title": "Liu et al. 2004 Argonaute2 slicing original paper",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15284456/"
+    },
+    {
+      "title": "Rand et al. 2005 siRNA guide RISC activation original paper",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16271385/"
+    },
+    {
+      "title": "Jinek et al. 2012 Cas9 original paper",
+      "url": "https://doi.org/10.1126/science.1225829"
+    }
+  ],
+  "limits": "Independent candidate visual and science check only. No asset import, current V-QA ledger entry, D/P binding, central five-gate closure or human release approval is asserted."
+}

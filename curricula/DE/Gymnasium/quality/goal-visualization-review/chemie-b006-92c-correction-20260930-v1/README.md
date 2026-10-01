@@ -1,0 +1,9 @@
+# Chemie B006: 92c Moleküldarstellungen
+
+Das zuvor aktive JPG (`sha256:b32312297218eaf6d8a07a25613e10738b7e9516acb92864c1ebc8e907223bab`) bezeichnete `C₂H₆O` unter „Summenformel“ fälschlich als „Stoffmengen“. Eine Summenformel nennt hier Atomarten und deren Zahl **pro Molekül**, nicht die Stoffmenge einer Probe in mol. Die unveränderten Originalbytes bleiben als `92c99237-1c74-54fc-bf08-9191656afaa6.original-active.jpg` erhalten.
+
+Das neue PNG (`sha256:6ed140213988f015f57de3ac647b0d8bbf0f9d9c4806d3a13b162cfa3e8e0bba`) wurde am 30. September 2026 mit ChatGPT/Codex `image_gen` aus dem tatsächlichen Bestandsbild editiert und nach einem Lesbarkeitsdurchgang bei 1672 × 941 Pixeln finalisiert. Der erste Kandidat bleibt als `.candidate.png` erhalten; `.candidate-v2.png` ist der aktiv importierte. Der genaue Korrekturauftrag steht in `correction-prompt-20260930.md`; der ältere `prompt.de.md` bleibt unter `historical-active-before-correction/` bytegleich erhalten. Der aktive Prompt in der Quellbildmappe beschreibt nun das aktuelle PNG und seine Herkunft.
+
+Zwei maschinelle Reviewer haben das tatsächliche v2-Bild fachlich sowie in Originalgröße und real skaliert auf 360 × 203 und 680 × 383 Pixel geprüft. `independent-candidate-v2-review.json` bindet die unabhängige Sichtung. Sichtbar sind `C₂H₆O`, `CH₃–CH₂–OH`, die Lewis-Darstellung mit zwei freien Elektronenpaaren am O und ein dazu passendes Ethanol-Kugel-Stab-Modell. Quelle, Web- und Backend-Kopie des aktiven PNG sind hashgleich. Das V-QA-Ledger dokumentiert KI-`yes`, Mensch-`no`.
+
+Die Bildkorrektur erteilt weder menschliche Freigabe noch einen D-/P-Abschluss. Das betroffene Ziel und seine Seite benötigen neue unabhängige Beschreibungsreviews und ein gegen das aktuelle Bild gebundenes P-Profil. Die übrigen sechs B006-Ziele bleiben unverändert.

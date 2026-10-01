@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-b009-4dab-v2-b-run-001",
+  "campaignId": "chemie-b009-fuel-comparison-current-1-20261001-v2-b",
+  "roundId": "chemie-b009-fuel-comparison-current-1-20261001-v2-first-pass-b",
+  "batchId": "chemie-b009-fuel-comparison-current-1-20261001-v2-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:c6d6741f2eba95ff22420b92f83f9d2f93fb1c0d84964ff16fde3c253fdd0799",
+  "bundleFingerprint": "sha256:95d8cb2b1a19109e499c38f54e55f119c58b24f90dd64267c9dda882aa182b3e",
+  "bookDigest": "sha256:645d876d1c5ecbb3c28880ee6bd9e4e3299ff2035b8f504dd8ca3e135ee5d5b5",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:05624f4cafe3150a7692cd1be90123701bff2e4cb607c7c0a2d2f332f5b55f4c",
+  "independenceGroupId": "chemie-b009-fuel-comparison-current-1-20261001-v2-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "4dab7d52-5b89-52ab-a425-17a7707f44c8"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:197d228611f8b09ccac11a531ab93f79523d4380afbc9d7d07f2cb3e245c93d3"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:c6d6741f2eba95ff22420b92f83f9d2f93fb1c0d84964ff16fde3c253fdd0799"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    }
+  ],
+  "startedAt": "2026-10-01T00:00:55.743Z",
+  "completedAt": "2026-10-01T00:00:55.743Z",
+  "status": "completed",
+  "outputDigest": "sha256:ed98bef4757ab89cd9ba5b6d5cb26f2667cdc212570ca0965da15c49d989c98c",
+  "toolchainVersion": "goal-description-review-v1"
+}

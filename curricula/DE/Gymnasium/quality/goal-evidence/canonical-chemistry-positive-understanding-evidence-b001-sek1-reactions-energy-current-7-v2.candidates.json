@@ -1,0 +1,408 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-chemistry-positive-evidence-b001-sek1-reactions-energy-current-7-v2",
+  "reviewedAt": "2026-09-30T15:30:33Z",
+  "reviewer": "codex-gpt-6-chemistry-b001-positive-profile-author-after-independent-qa",
+  "goals": [
+    {
+      "goalId": "2dae4132-40a9-5ee3-ac0c-11c5d1302f36",
+      "reason": "Der Sek-I-Kern ist die Zusammensetzung der Luft und die besondere Rolle von Sauerstoff bei einfachen Verbrennungen. Zwei neue Fälle prüfen begründete Vorhersagen zur Sauerstoffverfügbarkeit; das vorhandene Bild ist nur Kontext und keine Antwortvorlage. Die KI-Autorenschaft begründet keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "air-mixture-and-reactive-oxygen",
+            "essentialUnderstandingDe": "Luft enthält ungefähr 78 % Stickstoff, 21 % Sauerstoff und geringe Anteile anderer Gase. Bei einfachen Verbrennungen ist Sauerstoff der reaktionswirksame Luftbestandteil; die übrigen Luftgase sind in diesem Zusammenhang nicht der Brennstoff.",
+            "essentialUnderstandingEn": "Air contains roughly 78% nitrogen, 21% oxygen, and small amounts of other gases. In simple combustion, oxygen is the reactive component of air; the other gases are not the fuel in this context.",
+            "observablePerformanceDe": "Die lernende Person beschreibt die ungefähren Anteile und erklärt aus einer neuen Beobachtung, weshalb eine verringerte Sauerstoffzufuhr das Brennen beeinflusst, obwohl weiterhin Luft oder andere Gase vorhanden sein können.",
+            "observablePerformanceEn": "The learner describes the approximate fractions and uses a new observation to explain why reduced oxygen supply affects burning even when air or other gases may still be present."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "air-mixture-and-reactive-oxygen"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "oxygen-supply",
+            "textDe": "Offene Luftzufuhr wird mit begrenzter Zufuhr verglichen.",
+            "textEn": "Open air supply is compared with restricted supply."
+          },
+          {
+            "id": "other-gases",
+            "textDe": "Ein zweiter Fall nennt ausdrücklich verbleibenden Stickstoff oder ein anderes nicht brennbares Gas.",
+            "textEn": "A second case explicitly mentions remaining nitrogen or another noncombustible gas."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "covered-candle-observation",
+            "taskDemandDe": "Ein bereitgestelltes Beobachtungsprotokoll zeigt: Eine Kerze brennt zunächst in Luft und erlischt nach dem Abdecken, obwohl noch Gas im Gefäß ist. Beschreibe die grobe Luftzusammensetzung und erkläre, welcher Luftbestandteil für die Verbrennung verfügbar sein muss.",
+            "taskDemandEn": "A supplied observation record shows a candle initially burning in air and then going out after being covered, although gas remains in the vessel. Describe the broad composition of air and explain which component must be available for combustion.",
+            "expectedPerformanceDe": "Die lernende Person nennt Stickstoff als Hauptanteil und Sauerstoff als etwa ein Fünftel der Luft. Sie erklärt, dass mit abnehmender Sauerstoffverfügbarkeit das Brennen endet, und folgert nicht aus dem verbleibenden Gas, dass Stickstoff die Kerze weiterbrennen lässt.",
+            "expectedPerformanceEn": "The learner identifies nitrogen as the main fraction and oxygen as about one fifth of air. They explain that burning ends as oxygen availability falls and do not infer from remaining gas that nitrogen keeps the candle burning.",
+            "understandingFocusDe": "Gemischanteile und chemische Rolle sind unterschiedliche Aussagen.",
+            "understandingFocusEn": "Mixture fraction and chemical role are different claims."
+          },
+          {
+            "id": "fresh-airflow-change",
+            "taskDemandDe": "Für einen neuen, unbeobachteten Modellfall erhält dieselbe kleine Flamme einmal freie Luftzufuhr und einmal nur einen engen Luftspalt. Sage die wahrscheinliche Änderung voraus und erkläre, weshalb der große Stickstoffanteil den Sauerstoff nicht ersetzt. Es ist keine Durchführung verlangt.",
+            "taskDemandEn": "In a new, unobserved model case, the same small flame has free air access in one setup and only a narrow air gap in another. Predict the likely change and explain why the large nitrogen fraction does not replace oxygen. No experiment is requested.",
+            "expectedPerformanceDe": "Die lernende Person erwartet bei begrenzter Zufuhr ein schwächeres oder erlöschendes Brennen und begründet dies mit weniger nachströmendem Sauerstoff, nicht mit dem Gesamtvolumen des Gasgemisches allein.",
+            "expectedPerformanceEn": "The learner expects weaker burning or extinction with restricted supply and explains it through reduced replenishment of oxygen, rather than total gas-mixture volume alone.",
+            "understandingFocusDe": "Die Rolle des Sauerstoffs trägt eine eigenständige Vorhersage im geänderten Fall.",
+            "understandingFocusEn": "Oxygen's role supports an independent prediction in the changed case."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3",
+      "reason": "Die zwei Fälle verwenden unterschiedliche Brennstoffe und trennen beobachtete Flamme von chemischer Stoffumwandlung. Produkte werden nicht pauschal für alle Verbrennungen gleichgesetzt; Lernende sollen aus unabhängigen Beobachtungen eine begründete Deutung ableiten.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "combustion-as-substance-transformation",
+            "essentialUnderstandingDe": "Eine einfache Verbrennung ist eine chemische Reaktion eines brennbaren Ausgangsstoffs mit Sauerstoff. Neue Stoffe entstehen; Wärme und Licht können Begleiterscheinungen sein, sind für sich allein aber kein Stoffnachweis.",
+            "essentialUnderstandingEn": "Simple combustion is a chemical reaction between a combustible starting substance and oxygen. New substances form; heat and light may accompany it but alone do not identify the substances.",
+            "observablePerformanceDe": "Die lernende Person ordnet Ausgangsstoffe und nachweisbare Produkte aus bereitgestellten Beobachtungen zu und begründet, weshalb der Vorgang eine Stoffumwandlung ist.",
+            "observablePerformanceEn": "The learner identifies starting substances and detectable products from supplied observations and explains why the process is a substance transformation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "combustion-as-substance-transformation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "fuel-class",
+            "textDe": "Ein kohlenstoffhaltiger Brennstoff wird mit einem Metall verglichen.",
+            "textEn": "A carbon-containing fuel is compared with a metal."
+          },
+          {
+            "id": "evidence-type",
+            "textDe": "Ein Fall nutzt Gas-/Kondensatnachweise, der andere eine feste Produktprobe.",
+            "textEn": "One case uses gas/condensate evidence, the other a solid product sample."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "methane-product-evidence",
+            "taskDemandDe": "Ein betreuter Versuch liefert Daten zur Verbrennung von Methan in Sauerstoff: Wärme und Licht treten auf, ein aufgefangener Stoff trübt Kalkwasser und ein kühler Deckel beschlägt. Deute die Ausgangsstoffe und Produkte; erkläre, was die Beobachtungen über die Stoffänderung zeigen.",
+            "taskDemandEn": "Data from a supervised methane combustion show heat and light, a collected substance turning limewater cloudy, and condensation on a cool lid. Explain the starting substances and products and what the observations show about substance change.",
+            "expectedPerformanceDe": "Die lernende Person nennt Methan und Sauerstoff als Ausgangsstoffe, deutet den Kalkwassernachweis als Hinweis auf Kohlenstoffdioxid und den Beschlag als Wasser. Sie trennt diese Produktbefunde von Wärme und Licht als Begleiterscheinungen.",
+            "expectedPerformanceEn": "The learner names methane and oxygen as starting substances, interprets the limewater result as evidence of carbon dioxide and the condensation as water, and distinguishes those product findings from accompanying heat and light.",
+            "understandingFocusDe": "Die Reaktion wird durch beteiligte Stoffe und Produktbefunde erklärt.",
+            "understandingFocusEn": "The reaction is explained by participating substances and product evidence."
+          },
+          {
+            "id": "fresh-magnesium-data",
+            "taskDemandDe": "Ein neuer Datensatz beschreibt die betreute Verbrennung eines Magnesiumbands: helles Licht, danach ein weißer Feststoff mit anderen Eigenschaften als das Metall. Welche Rolle hat Luftsauerstoff? Erkläre, warum hier die Methanprodukte nicht übernommen werden dürfen. Keine eigene Durchführung.",
+            "taskDemandEn": "A fresh data set describes supervised burning of magnesium ribbon: bright light followed by a white solid with properties unlike the metal. What role does oxygen in air play? Explain why methane's products must not be copied here. No practical execution is requested.",
+            "expectedPerformanceDe": "Die lernende Person erkennt Magnesium und Sauerstoff als Reaktionspartner und Magnesiumoxid als plausibles neues Produkt. Sie begründet die Stoffumwandlung und verwirft Kohlenstoffdioxid und Wasser als pauschale Verbrennungsprodukte dieses Falls.",
+            "expectedPerformanceEn": "The learner identifies magnesium and oxygen as reactants and magnesium oxide as a plausible new product, explains the substance transformation, and rejects carbon dioxide and water as universal products in this case.",
+            "understandingFocusDe": "Gemeinsames Reaktionsprinzip und stoffabhängige Produkte werden auseinandergehalten.",
+            "understandingFocusEn": "The shared reaction principle is distinguished from fuel-dependent products."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "1bdaf7f2-ff3b-455a-a7fb-95a44642762a",
+      "reason": "Das Profil bindet eine Massenbilanz an die vollständige Systemgrenze und fordert im zweiten Fall den Transfer auf ein offenes Gefäß mit entweichendem Gas. Ein gleiches Waagendisplay allein gilt nicht als Erklärung der Massenerhaltung.",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "closed-system-mass-conservation",
+            "essentialUnderstandingDe": "Chemische Reaktionen ordnen Atome neu an; die Masse aller einbezogenen Stoffe bleibt erhalten. Eine Waage zeigt die Erhaltung nur für ein vollständig erfasstes System ohne unberücksichtigten Stoffaustausch unmittelbar.",
+            "essentialUnderstandingEn": "Chemical reactions rearrange atoms; the mass of all included substances is conserved. A balance directly shows that conservation only when the whole system is accounted for and no material transfer is ignored.",
+            "observablePerformanceDe": "Die lernende Person vergleicht Vorher-nachher-Massen, benennt die mitgewogene Systemgrenze und erklärt scheinbare Abweichungen durch einen möglichen Stoffaustausch, statt das Gesetz als bloßen Merksatz zu wiederholen.",
+            "observablePerformanceEn": "The learner compares before-and-after masses, states the weighed system boundary, and explains apparent discrepancies through possible material transfer rather than merely reciting the law."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "closed-system-mass-conservation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "system-boundary",
+            "textDe": "Geschlossenes Gefäß wird mit offenem Gefäß verglichen.",
+            "textEn": "A closed vessel is compared with an open vessel."
+          },
+          {
+            "id": "gas-transfer",
+            "textDe": "Ein Fall hält das entstehende Gas zurück, der andere lässt es entweichen.",
+            "textEn": "One case retains generated gas, while the other allows it to escape."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "sealed-flask-before-after",
+            "taskDemandDe": "Ein vorbereitetes Protokoll zeigt eine geschlossene Reaktionsflasche samt Auffangballon mit 150 g vor und 150 g nach einer Gasbildung. Werte die Bilanz aus und erkläre, warum die Masse trotz Gasbildung gleich ist.",
+            "taskDemandEn": "A supplied record shows a sealed reaction flask with a collecting balloon weighing 150 g both before and after gas formation. Analyze the balance and explain why the mass remains equal despite gas formation.",
+            "expectedPerformanceDe": "Die lernende Person vergleicht 150 g mit 150 g für dasselbe gesamte System, erfasst das Gas im Ballon und erklärt, dass keine Atome verschwinden, sondern Stoffe und Teilchen neu angeordnet werden.",
+            "expectedPerformanceEn": "The learner compares 150 g with 150 g for the same complete system, includes gas held in the balloon, and explains that atoms do not disappear but are rearranged into different substances and particles.",
+            "understandingFocusDe": "Die Massenbilanz gilt für das vollständig mitgewogene System.",
+            "understandingFocusEn": "The mass balance applies to the entire weighed system."
+          },
+          {
+            "id": "fresh-open-gas-loss",
+            "taskDemandDe": "In einem neuen bereitgestellten Versuch reagiert ein Stoff in einer offenen Schale unter Gasbildung; auf der Waage sinkt die Masse der Schale samt Inhalt von 80 g auf 77 g. Bedeutet das eine Verletzung der Massenerhaltung? Sage die Bilanz für eine vollständig geschlossene Anordnung voraus.",
+            "taskDemandEn": "In a fresh supplied experiment, a substance reacts in an open dish and releases gas; the measured dish and contents fall from 80 g to 77 g. Does this violate conservation of mass? Predict the balance for a fully closed arrangement.",
+            "expectedPerformanceDe": "Die lernende Person erklärt die 3 g Differenz als möglicherweise entwichene Gasmasse unter der angegebenen Systemgrenze, ohne deren Zusammensetzung zu erfinden. Für eine vollständig geschlossene und mitgewogene Anordnung erwartet sie wieder gleiche Gesamtmassen.",
+            "expectedPerformanceEn": "The learner explains the 3 g difference as potentially escaped gas under the stated boundary without inventing its composition, and expects equal total masses for a fully closed, wholly weighed arrangement.",
+            "understandingFocusDe": "Eine scheinbare Abnahme ist mit Erhaltung vereinbar, wenn Masse die Messgrenze verlassen hat.",
+            "understandingFocusEn": "An apparent decrease is compatible with conservation when mass has left the measured boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "542d88e9-4cd3-5f90-bd20-b50ab030d72a",
+      "reason": "Beide Fälle verlangen eine eigenständige Energieprofil-Konstruktion oder -Deutung mit Anfangs-/Endniveau und Barriere. Der endotherme Transfer prüft gezielt, dass Katalyse die Reaktionsenergie nicht umkehrt; der Diagrammstil des vorhandenen Bilds wird nicht kopiert.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "energy-levels-barrier-and-catalyst-path",
+            "essentialUnderstandingDe": "Im Energieprofil bestimmt die Lage der Produkt- relativ zur Eduktenergie exotherm oder endotherm. Der höchste Punkt über dem Eduktniveau kennzeichnet die Aktivierungsbarriere; ein katalysierter Weg kann sie senken, während Anfangs- und Endniveau gleich bleiben.",
+            "essentialUnderstandingEn": "In an energy profile, the product level relative to the reactant level determines exothermic or endothermic change. The peak above the reactant level represents the activation barrier; a catalyzed path may lower it while leaving initial and final levels unchanged.",
+            "observablePerformanceDe": "Die lernende Person stellt für vorgegebene qualitative Energielagen ein Profil mit beschrifteten Achsen, Edukten, Produkten und Barriere dar, ordnet die Energieänderung ein und deutet einen alternativen katalysierten Weg ohne Änderung der Reaktionsenergie.",
+            "observablePerformanceEn": "Given qualitative energy levels, the learner constructs a profile with labeled axes, reactants, products, and barrier, classifies the energy change, and interprets an alternative catalyzed path without changing reaction energy."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "energy-levels-barrier-and-catalyst-path"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "energy-direction",
+            "textDe": "Exotherme und endotherme Endniveaus wechseln.",
+            "textEn": "Exothermic and endothermic final levels alternate."
+          },
+          {
+            "id": "path",
+            "textDe": "Unkatalysierter und katalysierter Reaktionsweg werden verglichen.",
+            "textEn": "Uncatalyzed and catalyzed reaction paths are compared."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "exothermic-profile-construction",
+            "taskDemandDe": "Ein neuer Text beschreibt eine Reaktion mit Produkten auf niedrigerem Energieniveau als die Edukte und einer deutlich höheren Zwischenbarriere. Zeichne ein qualitatives Energieprofil, kennzeichne Energieänderung und Aktivierungsenergie und ergänze einen katalysierten Weg.",
+            "taskDemandEn": "A fresh text describes a reaction whose products lie below the reactants in energy and whose intermediate barrier is considerably higher. Draw a qualitative energy profile, mark reaction energy change and activation energy, and add a catalyzed path.",
+            "expectedPerformanceDe": "Die lernende Person zeichnet eine Energie- und Reaktionsverlaufsachse, ein niedrigeres Produktniveau und eine Barriere oberhalb der Edukte. Die katalysierte Kurve hat einen niedrigeren Gipfel, aber dieselben Anfangs- und Endniveaus; die Reaktion bleibt exotherm.",
+            "expectedPerformanceEn": "The learner labels energy and reaction-progress axes, places products below reactants, and shows a peak above the reactants. The catalyzed curve has a lower peak but the same initial and final levels; the reaction remains exothermic.",
+            "understandingFocusDe": "Reaktionsenergie und Aktivierungsbarriere werden getrennt codiert.",
+            "understandingFocusEn": "Reaction energy and activation barrier are encoded separately."
+          },
+          {
+            "id": "fresh-endothermic-claim-check",
+            "taskDemandDe": "In einem unabhängig vorgelegten endothermen Fall liegt das Produktniveau höher. Eine Skizze zeigt mit Katalysator einen niedrigeren Gipfel, aber zusätzlich ein Produktniveau unter den Edukten. Prüfe die Skizze und korrigiere sie mit Begründung.",
+            "taskDemandEn": "In an independently supplied endothermic case, the products are at a higher level. A sketch shows a lower peak with a catalyst but also places the products below the reactants. Check and correct the sketch with reasons.",
+            "expectedPerformanceDe": "Die lernende Person hält das höhere Produktniveau bei beiden Wegen fest, senkt nur die Barriere und erklärt, dass der Katalysator die Energiedifferenz und damit die Einordnung als endotherm nicht ändert.",
+            "expectedPerformanceEn": "The learner keeps products above reactants for both paths, lowers only the barrier, and explains that the catalyst does not change the energy difference or the endothermic classification.",
+            "understandingFocusDe": "Ein veränderter Weg darf die Anfangs-/Endbilanz nicht verfälschen.",
+            "understandingFocusEn": "A changed path must not distort the initial-to-final balance."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "17fe22c4-1248-5f37-9d0c-52ee4571d09f",
+      "reason": "Die Fälle prüfen chemische Erklärung und kriteriengeleitete Bedeutung an Batterie und Korrosion; eine neue Materialgewinnung wäre ein zulässiger zusätzlicher Transfer. Nutzen und Risiko bleiben begründete Urteile und werden nicht aus dem Bild abgelesen.",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "redox-process-and-criterion-based-significance",
+            "essentialUnderstandingDe": "Redoxreaktionen koppeln Elektronenabgabe und Elektronenaufnahme. Ob ein Beispiel im Alltag oder in der Technik nützlich oder problematisch ist, folgt aus dem konkreten chemischen Vorgang und offengelegten Kriterien wie Energiegewinn, Materialerhalt oder Aufwand.",
+            "essentialUnderstandingEn": "Redox reactions couple electron loss and electron gain. Whether an everyday or technological example is useful or problematic depends on the particular chemical process and stated criteria such as energy use, material preservation, or effort.",
+            "observablePerformanceDe": "Die lernende Person deutet vorgelegte Reaktions- oder Beobachtungsdaten als Redoxvorgang, unterscheidet Befund und Urteil und begründet die Bedeutung des Vorgangs anhand mindestens eines zum Fall passenden Kriteriums.",
+            "observablePerformanceEn": "The learner interprets supplied reaction or observation data as a redox process, separates finding from judgment, and explains the process's significance with at least one case-appropriate criterion."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "redox-process-and-criterion-based-significance"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "application",
+            "textDe": "Nutzbare elektrische Energie wird mit unerwünschtem Materialabbau verglichen.",
+            "textEn": "Useful electrical energy is compared with unwanted material degradation."
+          },
+          {
+            "id": "decision-criterion",
+            "textDe": "Ein Fall gewichtet Funktion, der andere Schutzaufwand und Lebensdauer.",
+            "textEn": "One case weighs function; the other weighs protection effort and lifetime."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "simple-cell-benefit",
+            "taskDemandDe": "Ein vereinfachtes galvanisches Element liefert Strom; ein Metall gibt Elektronen ab, Ionen eines anderen Metalls nehmen sie auf. Erkläre die Redoxbeteiligung und erörtere, weshalb der Vorgang technisch nützlich ist und welcher Materialverbrauch mitbedacht werden muss.",
+            "taskDemandEn": "A simplified galvanic cell supplies current; one metal releases electrons and ions of another metal gain them. Explain the redox aspect and discuss why the process is technically useful and what material consumption must also be considered.",
+            "expectedPerformanceDe": "Die lernende Person koppelt Oxidation und Reduktion, nennt elektrische Energie als Nutzen und berücksichtigt die Umsetzung der beteiligten Stoffe. Sie trennt diese chemischen Angaben von der Gewichtung des Nutzens.",
+            "expectedPerformanceEn": "The learner couples oxidation and reduction, identifies electrical energy as a benefit, and considers conversion of the participating substances. They distinguish these chemical facts from how the benefit is valued.",
+            "understandingFocusDe": "Elektronenübertragung kann eine nützliche technische Funktion ermöglichen.",
+            "understandingFocusEn": "Electron transfer can enable a useful technological function."
+          },
+          {
+            "id": "fresh-corrosion-judgment",
+            "taskDemandDe": "Ein neuer Datensatz beschreibt Rost an zwei gleichartigen Stahlteilen; eines ist geschützt, das andere verliert nach längerer Feuchtigkeitseinwirkung Material. Erkläre den Redoxbezug und erörtere die Bedeutung des Schutzes anhand von Materialerhalt und Aufwand, ohne aus den Daten eine genaue Lebensdauer zu erfinden.",
+            "taskDemandEn": "A fresh data set describes rust on two comparable steel parts; one is protected, while the other loses material after prolonged moisture exposure. Explain the redox aspect and discuss the significance of protection in terms of material preservation and effort without inventing an exact lifetime from the data.",
+            "expectedPerformanceDe": "Die lernende Person erklärt die Oxidation des Eisens als Teil einer Redoxreaktion, benennt den Materialverlust als Befund und wägt Schutzaufwand gegen Materialerhalt als explizite Kriterien ab. Sie kennzeichnet fehlende Lebensdauerdaten als Grenze des Urteils.",
+            "expectedPerformanceEn": "The learner explains oxidation of iron as part of a redox reaction, identifies material loss as a finding, and weighs protection effort against material preservation as explicit criteria. They mark absent lifetime data as a limit on the judgment.",
+            "understandingFocusDe": "Die Bedeutung eines Redoxvorgangs wird chemisch und kriterienbezogen begründet.",
+            "understandingFocusEn": "A redox process's significance is justified chemically and through stated criteria."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "945d69d5-92a7-5195-8f78-4e56f8e7b633",
+      "reason": "Das Profil trennt die Startbarriere vom Energieunterschied der Reaktion. Es prüft einen Katalysator in exothermem und endothermem Kontext sowie den Unterschied zwischen Erwärmen und alternativem Reaktionsweg; beide Fälle funktionieren ohne die vorhandene Grafik.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "activation-barrier-versus-reaction-energy",
+            "essentialUnderstandingDe": "Aktivierungsenergie ist die zu überwindende Barriere vom Eduktzustand zum reaktionsfähigen Übergangsbereich. Endotherm beschreibt dagegen eine höhere Produkt- als Eduktenergie. Ein Katalysator senkt die Barriere über einen anderen Weg, nicht die Differenz der Anfangs- und Endniveaus.",
+            "essentialUnderstandingEn": "Activation energy is the barrier from reactants toward the reactive transition region. Endothermic instead means that products have a higher energy level than reactants. A catalyst lowers the barrier by another path, not the difference between initial and final levels.",
+            "observablePerformanceDe": "Die lernende Person vergleicht Energieprofile, markiert Barriere und Reaktionsenergie getrennt und erklärt, weshalb Erwärmen und Katalysieren unterschiedliche Eingriffe sind.",
+            "observablePerformanceEn": "The learner compares energy profiles, marks barrier and reaction energy separately, and explains why heating and catalysis are different interventions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "activation-barrier-versus-reaction-energy"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "thermic-direction",
+            "textDe": "Exotherme und endotherme Produktniveaus werden variiert.",
+            "textEn": "Exothermic and endothermic product levels are varied."
+          },
+          {
+            "id": "intervention",
+            "textDe": "Katalysator und Wärmezufuhr werden als unterschiedliche Eingriffe betrachtet.",
+            "textEn": "Catalyst and heat supply are considered as different interventions."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "exothermic-catalyst-comparison",
+            "taskDemandDe": "Für eine neue exotherme Reaktion liegen zwei qualitative Profile mit denselben Edukt- und Produktniveaus, aber verschiedenen Gipfelhöhen vor. Erkläre, welches Profil einen katalysierten Weg darstellen kann und warum beide exotherm bleiben.",
+            "taskDemandEn": "For a fresh exothermic reaction, two qualitative profiles have the same reactant and product levels but different peak heights. Explain which can represent a catalyzed path and why both remain exothermic.",
+            "expectedPerformanceDe": "Die lernende Person ordnet den niedrigeren Gipfel dem katalysierten Weg zu, misst die Aktivierungsbarriere vom Eduktniveau und erklärt, dass die unveränderte niedrigere Produktlage dieselbe exotherme Reaktionsenergie bedeutet.",
+            "expectedPerformanceEn": "The learner assigns the lower peak to the catalyzed path, measures the activation barrier from the reactant level, and explains that unchanged lower products mean the same exothermic reaction energy.",
+            "understandingFocusDe": "Barriere und Reaktionsenergie sind verschiedene Profilmerkmale.",
+            "understandingFocusEn": "Barrier and reaction energy are different profile features."
+          },
+          {
+            "id": "fresh-endothermic-heating-versus-catalyst",
+            "taskDemandDe": "Eine unabhängig beschriebene endotherme Reaktion startet bei 20 °C langsam. Zwei Vorschläge lauten: erwärmen oder einen passenden Katalysator verwenden. Erkläre mit einem qualitativen Profil, welche Barriereänderung nur der Katalysator bewirkt und warum die Reaktion in beiden Fällen endotherm bleibt.",
+            "taskDemandEn": "An independently described endothermic reaction is slow at 20 °C. Two proposals are heating it or using a suitable catalyst. Use a qualitative profile to explain which barrier change only the catalyst causes and why the reaction stays endothermic in both cases.",
+            "expectedPerformanceDe": "Die lernende Person hält das Produktniveau über dem Eduktniveau fest, beschreibt Erwärmen als zusätzliche verfügbare thermische Energie und den Katalysator als alternativen Weg mit niedrigerer Barriere. Sie setzt beides nicht mit einer geänderten Reaktionsenergie gleich.",
+            "expectedPerformanceEn": "The learner keeps products above reactants, describes heating as providing more thermal energy and the catalyst as an alternative lower-barrier path, and does not equate either with changing reaction energy.",
+            "understandingFocusDe": "Kinetische Zugänglichkeit und energetische Bilanz werden getrennt.",
+            "understandingFocusEn": "Kinetic accessibility and energy balance are kept separate."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "8576b82b-811a-5e13-b5dc-ec5d42030565",
+      "reason": "Nach unabhängiger P-Gegenprüfung ergänzt dieses Profil zum schriftlichen Fettbrand-Transfer einen echten, sicheren Modellversuch: Die lernende Person legt unter Lehrkraftaufsicht eine Vergleichsbedingung fest, erhebt und dokumentiert Beobachtungen; ausschließlich die Lehrkraft zündet, bedeckt und räumt die Flammen. Der ältere v1-Kandidat blieb vor dieser Korrektur P-HOLD. Die KI-Autorenschaft ist keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "fire-condition-and-safe-extinguishing-inference",
+            "essentialUnderstandingDe": "Ein Brand benötigt Brennstoff, Sauerstoffzufuhr und ausreichende Energie. Eine Löschmaßnahme unterbricht mindestens eine dieser Bedingungen; ihre Eignung hängt vom Brennstoff und von Gefahren der Situation ab.",
+            "essentialUnderstandingEn": "A fire needs fuel, an oxygen supply, and sufficient energy. An extinguishing measure interrupts at least one of these conditions; its suitability depends on the fuel and hazards of the situation.",
+            "observablePerformanceDe": "Die lernende Person legt in einem kleinen lehrkraftbetreuten Brandmodell eine Vergleichsbedingung fest, erhebt und dokumentiert eigene Beobachtungen, ordnet eine Maßnahme der unterbrochenen Brandbedingung zu und begründet in einem getrennten schriftlichen Fall eine stoffgerechte Schutzentscheidung samt relevanter Gefahr. Zünden und alle Gefahrenhandlungen übernimmt die Lehrkraft.",
+            "observablePerformanceEn": "In a small teacher-supervised fire model, the learner sets a comparison condition, collects and records their own observations, identifies the fire condition interrupted by a measure, and justifies a fuel-appropriate protective choice with a relevant hazard in a separate written case. The teacher handles ignition and every hazardous action."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "fire-condition-and-safe-extinguishing-inference"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "inquiry-mode",
+            "textDe": "Eine eigene Beobachtungsreihe im lehrkraftbetreuten Modell wird einem schriftlich vorgelegten Gefahrfall gegenübergestellt.",
+            "textEn": "The learner's own observation series in a teacher-supervised model is contrasted with a supplied written hazard case."
+          },
+          {
+            "id": "fuel-hazard",
+            "textDe": "Ein kleiner Kerzen-Modellbrand wird einem Fettbrand mit ungeeignetem Wasser gegenübergestellt.",
+            "textEn": "A small candle model fire is contrasted with a grease fire for which water is unsuitable."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "supervised-candle-comparison-own-observations",
+            "taskDemandDe": "Im Chemieunterricht stehen zwei gleiche kleine Kerzen in standsicheren, feuerfesten Schalen. Lege vorab fest, welche Kerze als offene Vergleichsbedingung dient und welche unter eine hitzefeste Glasglocke kommt. Die Lehrkraft zündet beide Kerzen an, setzt die Glasglocke auf und übernimmt sämtliche Handlungen an den Flammen. Beobachte selbst, notiere für beide Kerzen das Brennverhalten und die Reihenfolge des Erlöschens und erkläre mit den Brandbedingungen den Unterschied. Welche Grenze hat dieses Modell für Aussagen über den exakten Sauerstoffgehalt?",
+            "taskDemandEn": "In a chemistry class, two identical small candles stand in stable, fireproof trays. Decide in advance which remains the open comparison and which will be covered by a heat-resistant glass bell. The teacher lights both candles, places the bell, and handles every action near the flames. Observe and record the burning behavior and order of extinction for both candles, then explain the difference using the fire conditions. What limits does this model have for claims about an exact oxygen concentration?",
+            "expectedPerformanceDe": "Die lernende Person benennt die offene Kerze als Vergleich, dokumentiert ihre eigenen Beobachtungen für beide Kerzen und ordnet das frühere Erlöschen unter der Glocke der eingeschränkten Sauerstoffzufuhr zu. Sie behauptet aus der Brenndauer keinen genauen Sauerstoff-Grenzwert und fasst die Glocke oder Flamme nicht selbst an.",
+            "expectedPerformanceEn": "The learner names the open candle as the comparison, records their own observations for both candles, and links the earlier extinction under the bell to restricted oxygen supply. They do not infer an exact oxygen threshold from burning time and do not handle the bell or flame themselves.",
+            "understandingFocusDe": "Ein selbst geplanter und dokumentierter Vergleich stützt das Löschprinzip, ohne aus dem Modell einen exakten Sauerstoffwert abzuleiten.",
+            "understandingFocusEn": "A learner-planned and recorded comparison supports the extinguishing principle without treating the model as a precise oxygen measurement."
+          },
+          {
+            "id": "fresh-grease-fire-choice",
+            "taskDemandDe": "Ein neuer schriftlicher Fall beschreibt brennendes Speiseöl. Unter bereitgestellten Maßnahmekarten stehen Wasser und ein ausdrücklich für Brandklasse F geeigneter Löscher. Wähle nur auf dem Papier eine fachlich geeignete Maßnahme, begründe das Löschprinzip und erkläre, warum Wasser hier ausgeschlossen wird. Keine praktische Durchführung.",
+            "taskDemandEn": "A fresh written case describes burning cooking oil. Supplied response cards include water and an extinguisher explicitly rated for class F fires. Choose a chemically appropriate option on paper only, justify its extinguishing principle, and explain why water is excluded here. No practical attempt is requested.",
+            "expectedPerformanceDe": "Die lernende Person wählt den ausdrücklich geeigneten Fettbrandlöscher, beschreibt die Unterbrechung der Brandbedingungen und erklärt, dass Wasser bei heißem Fett den Brand gefährlich ausbreiten kann. Die Antwort empfiehlt keinen unbetreuten Löschversuch.",
+            "expectedPerformanceEn": "The learner selects the explicitly suitable grease-fire extinguisher, describes interruption of the fire conditions, and explains that water can dangerously spread a hot-fat fire. The answer does not recommend an unsupervised attempt to fight the fire.",
+            "understandingFocusDe": "Schutzmaßnahmen müssen an Brandstoff und Gefahr angepasst werden.",
+            "understandingFocusEn": "Protective measures must fit the burning material and hazard."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-chemistry-positive-evidence-b004v-d2-indicator-reference-current-v2",
+  "reviewedAt": "2026-09-30T21:34:51Z",
+  "reviewer": "codex-gpt-6-chemistry-b004v-d2-substantive-p-revision",
+  "goals": [
+    {
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "reason": "B004v-Inhaltsrevision nach unabhängiger P-QA: Die kanonische DE/EN-Beschreibung fordert jetzt die Farbskala des jeweils verwendeten Indikators. HE G9 Jahrgang 8 Abschnitt 8.1 nennt natürliche und künstliche Indikatoren und die pH-Skala. Der korrigierte aktive PNG-Digest cf6f69ccb31591750a925603b9930d57edb0f9f0112c6512b28ad674a561f7f8 illustriert nur grobe Klassen. Das Profil prüft passende Skala, begründete Bereichsangabe und Genauigkeitsgrenze mit zwei unabhängigen, bildfreien Fällen. Gleiche Tropfenzahl oder eine eigene Neutralreferenz sind keine Pflicht; bloße Gleichheit der Tropfen beweist keine Vergleichbarkeit. Neutralfarbe bedeutet ohne präzisere Referenz nur ungefähr neutral, nicht pH exakt 7. Karte chem_basics_012 bleibt Merkwissen, nicht Anwendungsnachweis. needs_human_review und ai_candidate bleiben unverändert.",
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "b004v-d2cc-indicator-specific-range",
+            "essentialUnderstandingDe": "Indikatorfarben werden mit der Farbskala des tatsächlich verwendeten Indikators gedeutet. Bei üblichen Schulbedingungen liegt sauer unter pH 7, neutral bei pH 7 und alkalisch über pH 7; eine beobachtete Farbe stützt meist nur eine grobe Bereichs- oder Näherungsaussage, keinen exakten pH-Messwert.",
+            "essentialUnderstandingEn": "Indicator colours are interpreted with the colour scale for the particular indicator used. Under usual school conditions, acidic is below pH 7, neutral is at pH 7 and alkaline is above pH 7; an observed colour usually supports only a broad range or approximate classification, not an exact pH measurement.",
+            "observablePerformanceDe": "Die lernende Person vergleicht eine neue, sicher bereitgestellte Indikatorbeobachtung mit der passenden Farbskala, ordnet die Probe als sauer, näherungsweise neutral oder alkalisch ein, nennt den dadurch gestützten groben pH-Bereich und begründet die Grenze der Genauigkeit.",
+            "observablePerformanceEn": "The learner compares a fresh, safely provided indicator observation with the matching colour scale, classifies the sample as acidic, approximately neutral or alkaline, states the broad pH range supported by the observation and explains the precision limit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b004v-d2cc-indicator-specific-range"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "indicator-and-scale",
+            "textDe": "Eine Universalindikator-Farbskala wird durch die andersfarbige, eigene Skala eines natürlichen Indikators ersetzt; die Zuordnung muss neu gelesen werden.",
+            "textEn": "A universal-indicator colour scale is replaced by the differently coloured scale of a natural indicator; the mapping must be read afresh."
+          },
+          {
+            "id": "sample-and-observation",
+            "textDe": "Geeignete Schulproben und beobachtete Farben wechseln. Eine Neutralreferenz oder abgestimmte Proben- und Indikatormengen können bei Bedarf als Versuchskontrolle dienen, sind aber kein allgemeines Zielkriterium.",
+            "textEn": "Suitable school samples and observed colours change. A neutral reference or controlled sample and indicator amounts may serve as experimental controls when needed, but are not universal mastery requirements."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "universal-indicator-three-samples",
+            "taskDemandDe": "Eine Lehrkraft gibt für drei geeignete wässrige Schulproben A, B und C die beobachteten Universalindikatorfarben orange, grün und blau sowie die zugehörige Referenzkarte an: orange etwa pH 3–5, grün im neutralen Farbbereich um pH 7, blau etwa pH 9–11. Ordne die Proben den drei Lösungsklassen und groben pH-Bereichen zu. Erkläre, welche Aussagen über exakte pH-Werte die Farben nicht erlauben. Die Proben werden nicht selbst gekostet oder als unbekannte Chemikalien eigenständig getestet.",
+            "taskDemandEn": "A teacher supplies observed universal-indicator colours for three suitable aqueous school samples A, B and C: orange, green and blue. The matching reference card says orange about pH 3–5, green in a neutral colour band around pH 7, and blue about pH 9–11. Assign the samples to the three solution classes and broad pH ranges. Explain what the colours cannot show about exact pH values. The samples are not tasted or independently tested as unknown chemicals.",
+            "expectedPerformanceDe": "A wird als sauer mit ungefähr pH 3–5 eingeordnet; B erscheint nach dieser Referenz näherungsweise neutral um pH 7, ohne Nachweis für genau pH 7; C ist alkalisch mit ungefähr pH 9–11. Die Schlussfolgerungen beruhen auf der passenden Farbskala, nicht auf der Farbe allein. Für keine Probe wird ein genauer Messwert behauptet.",
+            "expectedPerformanceEn": "A is classified as acidic at about pH 3–5; B appears approximately neutral around pH 7 under this reference, without proof of exactly pH 7; C is alkaline at about pH 9–11. The inferences rely on the matching colour scale, not colour alone. No exact measured value is claimed for any sample.",
+            "understandingFocusDe": "Zuordnung beobachteter Universalindikatorfarben zu gestützten groben Bereichen und Erkennen der Genauigkeitsgrenze, unabhängig vom Bild.",
+            "understandingFocusEn": "Map observed universal-indicator colours to supported broad ranges and recognize the precision limit without relying on the image."
+          },
+          {
+            "id": "fresh-red-cabbage-scale",
+            "taskDemandDe": "Für drei neue geeignete Schulproben X, Y und Z liefert die Lehrkraft Rotkohlsaft-Beobachtungen: X rötlich, Y violett, Z grün-gelb. Die dazugehörige, eigens bereitgestellte Farbkarte ordnet rötlich etwa pH 3–5, violett dem neutralen Farbbereich um pH 7 und grün-gelb etwa pH 9–11 zu. Klassifiziere X, Y und Z und gib die gestützten groben pH-Bereiche an. Eine frühere Universalindikator-Beobachtung an Z war blau. Erkläre, warum die beiden Farben vereinbar sind und warum weder violett noch blau einen genauen pH-Wert liefert. Es sind nur sicher bereitgestellte Daten auszuwerten.",
+            "taskDemandEn": "For three fresh suitable school samples X, Y and Z, the teacher supplies red-cabbage-indicator observations: X reddish, Y purple and Z yellow-green. Its separately supplied colour chart maps reddish to about pH 3–5, purple to a neutral colour band around pH 7 and yellow-green to about pH 9–11. Classify X, Y and Z and state the supported broad pH ranges. An earlier universal-indicator observation for Z was blue. Explain why the two colours are compatible and why neither purple nor blue gives an exact pH value. Only safely supplied data are interpreted.",
+            "expectedPerformanceDe": "X ist nach der Rotkohlsaft-Skala sauer bei ungefähr pH 3–5; Y erscheint näherungsweise neutral um pH 7, ohne Beweis für exakt pH 7; Z ist alkalisch bei ungefähr pH 9–11. Dass Z bei Universalindikator blau und bei Rotkohlsaft grün-gelb ist, widerspricht sich nicht, weil die Farbskalen verschieden sind. Die Farbbänder belegen nur grobe Bereiche, keine Einzelwerte.",
+            "expectedPerformanceEn": "Under the red-cabbage scale, X is acidic at about pH 3–5; Y appears approximately neutral around pH 7, without proof of exactly pH 7; Z is alkaline at about pH 9–11. Z being blue with universal indicator and yellow-green with red-cabbage indicator is consistent because the colour scales differ. The colour bands support broad ranges, not individual values.",
+            "understandingFocusDe": "Eigenständiger Transfer auf einen anderen natürlichen Indikator mit anderer Farbskala und erneuter pH-Bereichsdeutung.",
+            "understandingFocusEn": "Independent transfer to a different natural indicator with a different colour scale and a fresh pH-range interpretation."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-005-sek1-symbols-stoichiometry-current-16-v1.config.json",
+  "configDigest": "sha256:f6654b0db6ea12801476d6ee936a7fa1824980ecc6ce1b502477adf70e13ecb8",
+  "goalIds": [
+    "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+    "9b5d6326-d27c-4ece-8c72-debda705464a",
+    "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+    "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+    "22133f29-ef02-4408-8f8d-2bbea3275d91",
+    "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+    "8a2ad724-df5e-5986-8de9-560ba43caac2",
+    "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+    "e45c0022-ac0d-5c83-b433-5f68655e382f",
+    "5c4788a7-6760-53dc-894e-e04bca6f8cd9",
+    "1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+    "2924f784-5261-54e8-93ee-49ac3b3cd300",
+    "199570f4-b3c3-5e12-877d-ced97e9f6968",
+    "d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a",
+    "e675fa94-6e23-59c0-b376-4340bf44c00e",
+    "9f355f63-4fb7-5638-9538-6e8a246ec4b2"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 376,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/review-book-full.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:6e4883b473cd9e977767ac46aae4b7d327a44b16192d8ff02032eb94d1a6ffb2"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:0d73a48d389e7486e046bf16adcaf39b76aa0082301613b7603509d84ad173cf",
+    "reviewInputFingerprint": "sha256:5414438765ed8908f04d317773d444b0fa1c51eb08dde8e44e735120dc0cd3e2",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-a",
+        "campaignDigest": "sha256:a41b13e08cefc84a9697692a4c9dee8dfe97aed5dfcd05a3c9a330d8b117e097",
+        "roundId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-first-pass-a",
+        "independenceGroupId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-independent-a",
+        "batchId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:521e52644749eb5dfbeee79e63cbf5d70d6def8501574b29a7ba7ec9aff39718"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-b",
+        "campaignDigest": "sha256:bacfaa96f31514b8827fe9961dd1a59356f5b8e297e3d689b20566407e494cdc",
+        "roundId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-first-pass-b",
+        "independenceGroupId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-independent-b",
+        "batchId": "chemie-rollout-v1-batch-005-sek1-symbols-stoichiometry-current-16-v1-20260930-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:379feda40a8579a2898646827094cb8a85e997b6a856ccf15d2f73ced3b490d9"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "reviewKind": "independent-ai-content-qa",
+  "subject": "Biologie",
+  "sourceConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-ephase-e1-stable-eight-v2/positive-evidence.config.json",
+  "sourceConfigSha256": "sha256:53c8cbdcf545b0b37a8f9ce3865334d7ca83adf447fffc982663efe2e40959f1",
+  "sourceRecordsPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-ephase-e1-stable-eight-v2/positive-evidence.review.jsonl",
+  "sourceRecordsSha256": "sha256:d8b6f369df4b68677714d50a490fc72ad19e375c0463e3667004841a15811819",
+  "reviewedAt": "2026-09-30T19:34:00Z",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "technicalCheck": {
+    "command": "npm --prefix app run -s quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-ephase-e1-stable-eight-v2/positive-evidence.config.json",
+    "result": "PASS 8 configured, 0 approved, 8 needs_human_review, 0 blockers"
+  },
+  "passCount": 7,
+  "holdCount": 1,
+  "goals": [
+    {
+      "goalId": "11e90f71-a9a4-5a57-b619-ad5d81e81f96",
+      "decision": "PASS_AI_CANDIDATE",
+      "rationaleEn": "Seedling and yeast cases independently require observation-based life-characteristic reasoning; non-observation is not misread as absence."
+    },
+    {
+      "goalId": "d71e2310-2331-5e66-b7df-c2807fccb329",
+      "decision": "PASS_AI_CANDIDATE",
+      "rationaleEn": "Plant leaf and animal intestine cases each test the cell-tissue-organ-organism relation with concrete part-whole reasons."
+    },
+    {
+      "goalId": "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f",
+      "decision": "PASS_AI_CANDIDATE",
+      "rationaleEn": "Two distinct microscope sets cover plant, animal, and bacterial cells while separating visible evidence from supplementary model claims."
+    },
+    {
+      "goalId": "fc8c4b02-02f2-5ad6-b481-224d36121da1",
+      "decision": "PASS_AI_CANDIDATE",
+      "rationaleEn": "Leaf and root-cell models require structural and functional assignment; the root case tests the limit of assuming chloroplasts in every plant cell."
+    },
+    {
+      "goalId": "1042bb24-96ba-553b-a956-abaf9c74dc43",
+      "decision": "PASS_AI_CANDIDATE",
+      "rationaleEn": "Mitochondrial and chloroplast scenarios separately test the model and its explanatory limits; historical uptake is not claimed as directly observed."
+    },
+    {
+      "goalId": "6199e4c7-06d1-559a-98ab-acf805a478ba",
+      "decision": "PASS_AI_CANDIDATE",
+      "rationaleEn": "A three-form classification and a data-poor algae case test organization criteria and justified uncertainty."
+    },
+    {
+      "goalId": "e063b97d-9e03-5094-8c73-72a3eeec803d",
+      "decision": "PASS_AI_CANDIDATE",
+      "rationaleEn": "A newly constructed bilayer and a rotated, channel-lacking section test lipid orientation, selective pathways, and model limits."
+    },
+    {
+      "goalId": "e76315b1-2fed-525c-8efa-ca09da46f632",
+      "decision": "HOLD",
+      "rationaleEn": "The second application case reverses salt concentration but asks only for water direction. The current goal requires renewed reasoning about both particle diffusion and osmosis under changed conditions; a second independent demonstration of both is missing."
+    }
+  ],
+  "integrationDecision": "HOLD_EIGHT_AS_BATCH_PENDING_E763_REVISION"
+}

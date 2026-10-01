@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-resolution-3fb7dea4-f832-5e23-b518-68b13a655b92",
+  "goal": {
+    "goalId": "3fb7dea4-f832-5e23-b518-68b13a655b92",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:722e36aa5ac92e9b1f2376fbc3de71cb5899b87363325c9772a0bcf5ed6ec030",
+    "pageFingerprint": "sha256:3fee08b57e42bece96371ec02961e9fec095961d62f047d59354d4feb9dd0ef7",
+    "goalReviewContextFingerprint": "sha256:fbad6b7164c31cd0d1df902a213a390786f7b0244769f3209554faf04df443b8",
+    "finalText": {
+      "titleDe": "Elektrophile Addition mechanistisch darstellen",
+      "titleEn": "Represent electrophilic addition mechanistically",
+      "descriptionDe": "Die lernende Person kann elektrophile Additionen an ungesättigten Kohlenwasserstoffen mechanistisch darstellen.",
+      "descriptionEn": "The learner can represent electrophilic additions to unsaturated hydrocarbons mechanistically."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-a",
+      "campaignDigest": "sha256:4d4a6506908f6e94424077022b3055aa200ca0b787ff7386b92a6d57549f2a76",
+      "roundId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:c07e8027610ce7b898ef3ee8592f3d2835d19ca3aa33329fa31538af54006475",
+      "goalReviewContextFingerprint": "sha256:fbad6b7164c31cd0d1df902a213a390786f7b0244769f3209554faf04df443b8",
+      "batchId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-a.batch-001",
+      "runId": "codex-gpt-6-round-a-chemie-b003-20260930",
+      "runManifestDigest": "sha256:5f8f63c26aca5bc62c9e5780cd4bf89a9edeb70b1e5ddf43c433db492a823a8b",
+      "resultsDigest": "sha256:b305ec1bb952e3d06edb174aa07446041c95eaec2392680b413529e1a666530a",
+      "recordId": "chemie-b003-round-a-3fb7dea4-20260930",
+      "recordDigest": "sha256:d456f3d29fb061f52d8d586a8d9ff2ed9857b20c0b24ac7e55a6596a6b1a9332"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-b",
+      "campaignDigest": "sha256:169af5a705d3c5cb4531b1291386fb63242cdd5cab7d2510c4bdf2c8c5fc5abd",
+      "roundId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:c07e8027610ce7b898ef3ee8592f3d2835d19ca3aa33329fa31538af54006475",
+      "goalReviewContextFingerprint": "sha256:fbad6b7164c31cd0d1df902a213a390786f7b0244769f3209554faf04df443b8",
+      "batchId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-b.batch-001",
+      "runId": "chemie-b003-q1-round-b-20260930-gpt6-v1",
+      "runManifestDigest": "sha256:e1cf816bbd5bfd6fd6a1a99356fddd1a27a05061a1fd0ec7128ce16e82232390",
+      "resultsDigest": "sha256:4f99b000e7cda824f3b3c3e9eb8215295ae0c11f4d62fda796e3aaa69e6f2c06",
+      "recordId": "chemie-b003-b-07",
+      "recordDigest": "sha256:2c2a4678a20cacb7ebe09a7fa45f83ad304eab7b2064d6dd01ffb743c537802b"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:7063fb382e703af7de74e31bd6ff248e785a6cf733eedfd1dc690f7738914cf7"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis",
+    "manifestDigest": "sha256:15f39431398815d03ec171b914e160b7cd26f501179ef5f673c8f0fa206132ea",
+    "manifestFingerprint": "sha256:a9a373bd26c56d438f7cbbbbc49e1cfdc523af21495f0e401609ceabb4aa0534",
+    "decisionId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-004"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-004",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis; eleven current dual-round keeps, nine explicit deferrals; no human approval",
+    "synthesizedAt": "2026-09-30T16:18:39.625Z",
+    "rationaleDe": "Beide Runden halten die mechanistische Darstellung einer einfachen elektrophilen Addition für atomar. A fordert Elektronenpfeile und eine bedingte neue Produktprognose.",
+    "rationaleEn": "Both rounds find a simple electrophilic-addition mechanism atomic. A requires electron arrows and a conditional prediction for a fresh product.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Bei einfacher elektrophiler Addition wird die π-Bindung eines Alkens angegriffen; ein Elektrophil bindet zunächst, danach entsteht eine zweite Bindung mit einem Nukleophil.",
+      "essentialUnderstandingEn": "In simple electrophilic addition, the alkene π bond reacts with an electrophile first, followed by formation of a second bond with a nucleophile.",
+      "observablePerformanceDe": "Die lernende Person zeichnet für ein vorgegebenes Alken und HX Elektronenpfeile, plausible Zwischenstufe und das gesättigtere Additionsprodukt.",
+      "observablePerformanceEn": "For a supplied alkene and HX, the learner draws electron arrows, a plausible intermediate, and the more saturated addition product.",
+      "transferExpectationDe": "Bei einem neuen unsymmetrischen Alken begründet sie die mögliche Produktlage nur soweit die angegebenen Bedingungen und Stabilitätsargumente tragen.",
+      "transferExpectationEn": "For a fresh unsymmetrical alkene, they justify product placement only as far as stated conditions and stability arguments support it."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-f2c7f501d1e1ed3cf306f5e2546701c34fe704c9b5a0a0ed91c0a5b3e64109ca",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:3c87bddc6ae4243ed7c482622c326f232e4f224c28ad8e53d0297fec1a57a16d"
+}

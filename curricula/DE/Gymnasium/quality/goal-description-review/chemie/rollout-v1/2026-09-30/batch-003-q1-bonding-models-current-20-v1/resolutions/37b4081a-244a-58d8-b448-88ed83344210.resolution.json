@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-resolution-37b4081a-244a-58d8-b448-88ed83344210",
+  "goal": {
+    "goalId": "37b4081a-244a-58d8-b448-88ed83344210",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:f3178e0ad69bc77f223fd200cc5f976af0f8088114774d65ccd8b2048579eef4",
+    "pageFingerprint": "sha256:b3d81b3a1206d5a4ba66f12e64fe21bbce7cb0f7065d951384cd5b567a9386d9",
+    "goalReviewContextFingerprint": "sha256:bc2bf7e41618d775e191536f084c0476b8b16df41d7b4688d543daeb7e171c66",
+    "finalText": {
+      "titleDe": "Hybridisierung zur Vorhersage organischer Bindungsverhältnisse nutzen",
+      "titleEn": "Use hybridization to predict organic bonding relationships",
+      "descriptionDe": "Die lernende Person kann Hybridisierung als Näherungsverfahren zur Linearkombination von Atomorbitalen am selben Atom beschreiben und Hybridorbitale zur modellhaften Vorhersage der Bindungsverhältnisse in einfachen organischen Molekülen nutzen.",
+      "descriptionEn": "The learner can describe hybridization as an approximation method for linear combination of atomic orbitals at the same atom and use hybrid orbitals to model bonding relationships in simple organic molecules."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-a",
+      "campaignDigest": "sha256:4d4a6506908f6e94424077022b3055aa200ca0b787ff7386b92a6d57549f2a76",
+      "roundId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:c07e8027610ce7b898ef3ee8592f3d2835d19ca3aa33329fa31538af54006475",
+      "goalReviewContextFingerprint": "sha256:bc2bf7e41618d775e191536f084c0476b8b16df41d7b4688d543daeb7e171c66",
+      "batchId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-a.batch-001",
+      "runId": "codex-gpt-6-round-a-chemie-b003-20260930",
+      "runManifestDigest": "sha256:5f8f63c26aca5bc62c9e5780cd4bf89a9edeb70b1e5ddf43c433db492a823a8b",
+      "resultsDigest": "sha256:b305ec1bb952e3d06edb174aa07446041c95eaec2392680b413529e1a666530a",
+      "recordId": "chemie-b003-round-a-37b4081a-20260930",
+      "recordDigest": "sha256:ede4d4bc4c009abef542359703334024e60f761813df5b4351f040c4f319b44f"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-b",
+      "campaignDigest": "sha256:169af5a705d3c5cb4531b1291386fb63242cdd5cab7d2510c4bdf2c8c5fc5abd",
+      "roundId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:c07e8027610ce7b898ef3ee8592f3d2835d19ca3aa33329fa31538af54006475",
+      "goalReviewContextFingerprint": "sha256:bc2bf7e41618d775e191536f084c0476b8b16df41d7b4688d543daeb7e171c66",
+      "batchId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-b.batch-001",
+      "runId": "chemie-b003-q1-round-b-20260930-gpt6-v1",
+      "runManifestDigest": "sha256:e1cf816bbd5bfd6fd6a1a99356fddd1a27a05061a1fd0ec7128ce16e82232390",
+      "resultsDigest": "sha256:4f99b000e7cda824f3b3c3e9eb8215295ae0c11f4d62fda796e3aaa69e6f2c06",
+      "recordId": "chemie-b003-b-17",
+      "recordDigest": "sha256:619ff80282aaf18ded756682ac6dfe220bf63f440c46d393043e7e0a57912076"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:7063fb382e703af7de74e31bd6ff248e785a6cf733eedfd1dc690f7738914cf7"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis",
+    "manifestDigest": "sha256:15f39431398815d03ec171b914e160b7cd26f501179ef5f673c8f0fa206132ea",
+    "manifestFingerprint": "sha256:a9a373bd26c56d438f7cbbbbc49e1cfdc523af21495f0e401609ceabb4aa0534",
+    "decisionId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-009"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-009",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis; eleven current dual-round keeps, nine explicit deferrals; no human approval",
+    "synthesizedAt": "2026-09-30T16:18:39.625Z",
+    "rationaleDe": "Beide Runden lesen Modellbeschreibung und Vorhersage als eine Hybridisierungsleistung. A prüft sp3/sp2/sp lokal und σ/π-Bindungen in einem neuen Fragment.",
+    "rationaleEn": "Both rounds read model description and prediction as one hybridization competence. A checks local sp3/sp2/sp and sigma/pi bonds in a fresh fragment.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Hybridorbitale werden modellhaft aus Atomorbitalen desselben Atoms kombiniert; sp3, sp2 und sp beschreiben verschiedene Sigma-Bindungsrichtungen, während übrige p-Orbitale π-Bindungen ermöglichen.",
+      "essentialUnderstandingEn": "Hybrid orbitals are model combinations of atomic orbitals on the same atom; sp3, sp2, and sp describe different sigma-bond directions while remaining p orbitals enable pi bonds.",
+      "observablePerformanceDe": "Die lernende Person wählt für gegebene C-Zentren in Methan, Ethen und Ethin passende Hybridisierung und leitet Bindungsgeometrie und σ/π-Anteile ab.",
+      "observablePerformanceEn": "For carbon centers in methane, ethene, and ethyne, the learner chooses suitable hybridization and derives geometry and sigma/pi contributions.",
+      "transferExpectationDe": "Bei einem neuen organischen Fragment mit C=C und C-C begründet sie lokale Hybridisierung je C, statt das ganze Molekül pauschal als sp2 zu bezeichnen.",
+      "transferExpectationEn": "For a fresh fragment with C=C and C-C, they justify hybridization at each carbon rather than labeling the whole molecule sp2."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-eb2594d802961deffe1efc36cc739a18e40dbf64af31c03d824b6d62339ecdc2",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:2aaf3d0bd52f35e49a4787717d093a62f9dddcb87909dad963e7011e288c023e"
+}

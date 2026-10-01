@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-e3-free-trisomy21-current-v3-b-20261001-gpt6-v1",
+  "campaignId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-b",
+  "roundId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-first-pass-b",
+  "batchId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:6f0ed8f983b51a83c973af534f3f243a0f1531b2c6ae1cae497bd5e6943ebab0",
+  "bundleFingerprint": "sha256:46992d65b9d816b815370dbd4db740f63341937651904f129c1d2dfbdf641e78",
+  "bookDigest": "sha256:294b818449a24a145160075f8969898af56e238795d8e94b64e18d61ebcf9674",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:db7259c9e64d95616257e81046afbea2b019089ecca8a605987f43d693fd0770",
+  "independenceGroupId": "biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "0dd8380d-b542-5126-8d8e-f95d9ccded90"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:6f0ed8f983b51a83c973af534f3f243a0f1531b2c6ae1cae497bd5e6943ebab0"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    }
+  ],
+  "startedAt": "2026-09-30T22:57:03.699Z",
+  "completedAt": "2026-09-30T22:57:03.699Z",
+  "status": "completed",
+  "outputDigest": "sha256:4d5a5835afc6c249754f7b73f07b6b4bfa50324bab22b5ff7f4b6cee41d0dd6d",
+  "toolchainVersion": "codex-api-gpt6-review-v1"
+}

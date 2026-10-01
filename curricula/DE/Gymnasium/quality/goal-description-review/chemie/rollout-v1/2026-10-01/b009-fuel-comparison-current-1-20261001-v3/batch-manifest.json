@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-b009-fuel-comparison-current-1-20261001-v3",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-01/b009-fuel-comparison-current-1-20261001-v3.config.json",
+  "configDigest": "sha256:a85d1f8f380e88729128f9f74defcb551397b44f760bda40426761f7cb03c4df",
+  "goalIds": [
+    "4dab7d52-5b89-52ab-a425-17a7707f44c8"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 376,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/review-book-full.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:dc4866b3f872b85171d0a4340b51988312ab84f03c81e78847cee8a941109593"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:4987eba7686581acc41c38465ea9a1523c2cced724b8f6cd2535f6936239761a",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:0f63cf7e26da0793dba79f67044b31d12114f564da52e476fa439e74f94578fa",
+    "reviewInputFingerprint": "sha256:309e9a84b4a7a34e37a6fe99067a74819068e230f727a305b86a18b10d42f73f",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-b009-fuel-comparison-current-1-20261001-v3-a",
+        "campaignDigest": "sha256:e21beb563dee869f0a25d2f57c86be85915ac876b95327736ab10d40359f1a74",
+        "roundId": "chemie-b009-fuel-comparison-current-1-20261001-v3-first-pass-a",
+        "independenceGroupId": "chemie-b009-fuel-comparison-current-1-20261001-v3-independent-a",
+        "batchId": "chemie-b009-fuel-comparison-current-1-20261001-v3-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:61d6ae5f75368dc973ba1f85e30125a7b9733ee8e00cfc57c67920e320b1ee27"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-b009-fuel-comparison-current-1-20261001-v3-b",
+        "campaignDigest": "sha256:d95e8a2e696a3e449d8dd8549a19757603255871ed978d542ab0f3427708354d",
+        "roundId": "chemie-b009-fuel-comparison-current-1-20261001-v3-first-pass-b",
+        "independenceGroupId": "chemie-b009-fuel-comparison-current-1-20261001-v3-independent-b",
+        "batchId": "chemie-b009-fuel-comparison-current-1-20261001-v3-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:8c957f134b2167b5ee24cb863186d48c1ad20e0b9abb85edbaf26a1bcd677e7b"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

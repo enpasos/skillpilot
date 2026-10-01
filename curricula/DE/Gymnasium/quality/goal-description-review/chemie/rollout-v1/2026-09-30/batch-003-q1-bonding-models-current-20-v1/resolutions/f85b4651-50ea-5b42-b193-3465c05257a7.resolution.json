@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-resolution-f85b4651-50ea-5b42-b193-3465c05257a7",
+  "goal": {
+    "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:9ffb4363e6e864a302afd1ae4ae743606b402cdde234375ccc281b9043c34ac8",
+    "pageFingerprint": "sha256:9ed74d01035b8ecf8aaf61fd7790f9322364a435a52b30fec1fcf9da6eb2aa12",
+    "goalReviewContextFingerprint": "sha256:1486d36dc3ec62f3f97fc7e658af3fc605c5fca9f61c77975c2c4f89cb7faef2",
+    "finalText": {
+      "titleDe": "Molekülorbital-Modelle anwenden",
+      "titleEn": "Apply molecular orbital models",
+      "descriptionDe": "Die lernende Person kann einfache MO-Diagramme (z. B. O2, N2) interpretieren und Bindungsordnung ableiten.",
+      "descriptionEn": "The learner can interpret simple MO diagrams (e.g. O2, N2) and derive bond order."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-a",
+      "campaignDigest": "sha256:4d4a6506908f6e94424077022b3055aa200ca0b787ff7386b92a6d57549f2a76",
+      "roundId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:c07e8027610ce7b898ef3ee8592f3d2835d19ca3aa33329fa31538af54006475",
+      "goalReviewContextFingerprint": "sha256:1486d36dc3ec62f3f97fc7e658af3fc605c5fca9f61c77975c2c4f89cb7faef2",
+      "batchId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-a.batch-001",
+      "runId": "codex-gpt-6-round-a-chemie-b003-20260930",
+      "runManifestDigest": "sha256:5f8f63c26aca5bc62c9e5780cd4bf89a9edeb70b1e5ddf43c433db492a823a8b",
+      "resultsDigest": "sha256:b305ec1bb952e3d06edb174aa07446041c95eaec2392680b413529e1a666530a",
+      "recordId": "chemie-b003-round-a-f85b4651-20260930",
+      "recordDigest": "sha256:e8700fc83558c5f468df413297f51427ffea8ad4be3032f8174bd93d7716f8be"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-b",
+      "campaignDigest": "sha256:169af5a705d3c5cb4531b1291386fb63242cdd5cab7d2510c4bdf2c8c5fc5abd",
+      "roundId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:c07e8027610ce7b898ef3ee8592f3d2835d19ca3aa33329fa31538af54006475",
+      "goalReviewContextFingerprint": "sha256:1486d36dc3ec62f3f97fc7e658af3fc605c5fca9f61c77975c2c4f89cb7faef2",
+      "batchId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-b.batch-001",
+      "runId": "chemie-b003-q1-round-b-20260930-gpt6-v1",
+      "runManifestDigest": "sha256:e1cf816bbd5bfd6fd6a1a99356fddd1a27a05061a1fd0ec7128ce16e82232390",
+      "resultsDigest": "sha256:4f99b000e7cda824f3b3c3e9eb8215295ae0c11f4d62fda796e3aaa69e6f2c06",
+      "recordId": "chemie-b003-b-05",
+      "recordDigest": "sha256:63f223fb67b650105ca1c5848aa0263714d656a3e7522c17fe4ffdfa05d0e84c"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:7063fb382e703af7de74e31bd6ff248e785a6cf733eedfd1dc690f7738914cf7"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis",
+    "manifestDigest": "sha256:15f39431398815d03ec171b914e160b7cd26f501179ef5f673c8f0fa206132ea",
+    "manifestFingerprint": "sha256:a9a373bd26c56d438f7cbbbbc49e1cfdc523af21495f0e401609ceabb4aa0534",
+    "decisionId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-003"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-003",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis; eleven current dual-round keeps, nine explicit deferrals; no human approval",
+    "synthesizedAt": "2026-09-30T16:18:39.625Z",
+    "rationaleDe": "Beide Runden prüfen dieselbe MO-Modellleistung: Besetzung lesen und Bindungsordnung ableiten. Der A-Transfer variiert die Elektronenzahl und vermeidet eine ungestützte exakte Bindungsenergie.",
+    "rationaleEn": "Both rounds assess the same MO-model competence: reading occupancy and deriving bond order. A transfer changes electron count and avoids an unsupported exact bond energy.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "MO-Diagramme zeigen besetzte bindende und antibindende Orbitale; die Bindungsordnung ergibt sich aus der halben Differenz ihrer Elektronenzahlen, mit Modellgrenzen bei Stabilität und Magnetismus.",
+      "essentialUnderstandingEn": "MO diagrams show occupied bonding and antibonding orbitals; bond order is half the difference in electron counts, with model limits for stability and magnetism.",
+      "observablePerformanceDe": "Die lernende Person zählt Elektronen in einem vorgegebenen O2- oder N2-Schema, berechnet die Bindungsordnung und verknüpft die Besetzung mit einer qualitativen Aussage.",
+      "observablePerformanceEn": "The learner counts electrons in a supplied O2 or N2 scheme, computes bond order, and connects occupancy to a qualitative claim.",
+      "transferExpectationDe": "Bei einem neuen Molekülion mit geändertem Elektronenzahl vergleicht sie die Bindungsordnung mit der Ausgangsspezies, ohne daraus eine exakte Bindungsenergie zu erfinden.",
+      "transferExpectationEn": "For a fresh molecular ion with changed electron count, they compare bond order with the parent species without inventing an exact bond energy."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-0440dc3500198dd3b70d00965502ee34919f1a052bf9db601b0c963c3f2ad0f7",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:e05f22c5924bf21dd60672d5e1e60b00460656282ea9c3f9e082113537115c2b"
+}

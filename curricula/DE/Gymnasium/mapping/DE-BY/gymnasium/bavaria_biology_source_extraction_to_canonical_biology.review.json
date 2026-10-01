@@ -90,12 +90,6 @@
       "reviewDecisionId": "a6ad1554-558e-51e4-9d05-aa9b38ebfa40"
     },
     {
-      "legacyGoalId": "e0bbe3b2-96d7-5e7a-b8c1-d649a084e355",
-      "canonicalGoalId": "ec88fc1d-ee0f-5a01-9464-dc358241050e",
-      "matchType": "exact",
-      "reviewDecisionId": "e0bbe3b2-96d7-5e7a-b8c1-d649a084e355"
-    },
-    {
       "legacyGoalId": "1ad96d9d-03d9-565f-94b2-94f6ed17c523",
       "canonicalGoalId": "d11b3b18-deec-5d1a-bff6-512cddf595a2",
       "matchType": "exact",
@@ -1336,6 +1330,30 @@
       "canonicalGoalId": "0c1d9e4d-25be-539b-a68f-f6f948550d6d",
       "matchType": "exact",
       "reviewDecisionId": "6a1a0f1b-854e-5b5a-94e5-f4189f2f16d8"
+    },
+    {
+      "legacyGoalId": "e0bbe3b2-96d7-5e7a-b8c1-d649a084e355",
+      "canonicalGoalId": "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+      "matchType": "partial",
+      "reviewDecisionId": "e0bbe3b2-96d7-5e7a-b8c1-d649a084e355"
+    },
+    {
+      "legacyGoalId": "706204f2-4768-56d3-984a-85e9ec6fc370",
+      "canonicalGoalId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+      "matchType": "partial",
+      "reviewDecisionId": "706204f2-4768-56d3-984a-85e9ec6fc370"
+    },
+    {
+      "legacyGoalId": "50786132-04c6-5b1a-8639-30977924532e",
+      "canonicalGoalId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+      "matchType": "partial",
+      "reviewDecisionId": "50786132-04c6-5b1a-8639-30977924532e"
+    },
+    {
+      "legacyGoalId": "d6cb1a75-d31f-5195-8148-d079aa17abbf",
+      "canonicalGoalId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+      "matchType": "partial",
+      "reviewDecisionId": "d6cb1a75-d31f-5195-8148-d079aa17abbf"
     }
   ],
   "decisions": [
@@ -1709,12 +1727,13 @@
       "sourceSpan": "B9.3.7",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "ec88fc1d-ee0f-5a01-9464-dc358241050e"
+        "1d2b1038-dcd5-529a-b085-9e14f1d58c76"
       ],
-      "matchType": "exact",
-      "rationale": "Das vorhandene Seed-Mapping wurde gegen Source-Extraction-ID und kanonisches Ziel materialisiert; das Source-Ziel ist durch ein bestehendes kanonisches Biologieziel in gleicher Granularitaet abgedeckt.",
-      "reviewedAt": "2026-05-12",
-      "reviewer": "codex"
+      "matchType": "partial",
+      "rationale": "B9.3.7 belegt das Prinzip der Meiose und Keimzellbildung als Teil von 1d2b1038. Ein Mitose/Meiose-Vergleich ist daraus nicht direkt belegt; daher keine ec88-Zuordnung.",
+      "reviewedAt": "2026-10-01",
+      "reviewer": "codex",
+      "notes": "AI-assisted 2026-10-01 scope revision; source and output delta archived in biologie-layer-a-20261001-v2. No human approval claimed."
     },
     {
       "sourceGoalId": "2802979c-6270-521c-87e0-1ed9360d6bea",
@@ -2985,12 +3004,14 @@
       "sourceSpan": "B9.3.8",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "797a233c-56ed-58a0-b451-5ae5d4bd21bf"
+        "797a233c-56ed-58a0-b451-5ae5d4bd21bf",
+        "0dd8380d-b542-5126-8d8e-f95d9ccded90"
       ],
-      "matchType": "exact",
-      "rationale": "Das neu ergänzte kanonische Sek-I-Genetikziel übernimmt das bayerische Source-Ziel in semantisch gleicher Granularitaet.",
-      "reviewedAt": "2026-05-12",
-      "reviewer": "codex"
+      "matchType": "partial",
+      "rationale": "Das neu ergänzte kanonische Sek-I-Genetikziel übernimmt das bayerische Source-Ziel in semantisch gleicher Granularitaet. 0dd8380d wird als didaktisch konkretisiertes Beispiel einer freien Trisomie 21 nur partiell gebunden: B9.3.8 nennt menschliche Genommutationen durch Meiosefehler, B12-GA/EA.2 nennt Genommutationstypen im Karyogramm; die Quelle nennt hier Trisomie 21 nicht wörtlich.",
+      "reviewedAt": "2026-10-01",
+      "reviewer": "codex",
+      "notes": "AI-assisted 2026-10-01 scope revision; source and output delta archived in biologie-layer-a-20261001-v2. No human approval claimed."
     },
     {
       "sourceGoalId": "a3e24e24-e489-57ad-88f1-64e85633225d",
@@ -3908,12 +3929,14 @@
       "sourceSpan": "B12-EA.2.16",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "8fb0e4eb-9822-564a-9c2d-f3a16f86a7f6"
+        "8fb0e4eb-9822-564a-9c2d-f3a16f86a7f6",
+        "0dd8380d-b542-5126-8d8e-f95d9ccded90"
       ],
-      "matchType": "exact",
-      "rationale": "Das neu ergänzte kanonische Sek-II-Genetikziel übernimmt das bayerische Source-Ziel in semantisch gleicher Granularitaet.",
-      "reviewedAt": "2026-05-12",
-      "reviewer": "codex"
+      "matchType": "partial",
+      "rationale": "Das neu ergänzte kanonische Sek-II-Genetikziel übernimmt das bayerische Source-Ziel in semantisch gleicher Granularitaet. 0dd8380d wird als didaktisch konkretisiertes Beispiel einer freien Trisomie 21 nur partiell gebunden: B9.3.8 nennt menschliche Genommutationen durch Meiosefehler, B12-GA/EA.2 nennt Genommutationstypen im Karyogramm; die Quelle nennt hier Trisomie 21 nicht wörtlich.",
+      "reviewedAt": "2026-10-01",
+      "reviewer": "codex",
+      "notes": "AI-assisted 2026-10-01 scope revision; source and output delta archived in biologie-layer-a-20261001-v2. No human approval claimed."
     },
     {
       "sourceGoalId": "f50c0050-ccf5-51e0-b0b4-05b89c659b82",
@@ -4181,12 +4204,14 @@
       "sourceSpan": "B12-GA.2.11",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "22711af8-1184-584c-9707-1192799bfa22"
+        "22711af8-1184-584c-9707-1192799bfa22",
+        "0dd8380d-b542-5126-8d8e-f95d9ccded90"
       ],
-      "matchType": "exact",
-      "rationale": "Das neu ergänzte GK/LK-Basisziel deckt Karyogramm-Auswertung, Genommutationen und die Unterscheidung von Genotyp, Phänotyp und Krankheit semantisch passend ab.",
-      "reviewedAt": "2026-05-12",
-      "reviewer": "codex"
+      "matchType": "partial",
+      "rationale": "Das neu ergänzte GK/LK-Basisziel deckt Karyogramm-Auswertung, Genommutationen und die Unterscheidung von Genotyp, Phänotyp und Krankheit semantisch passend ab. 0dd8380d wird als didaktisch konkretisiertes Beispiel einer freien Trisomie 21 nur partiell gebunden: B9.3.8 nennt menschliche Genommutationen durch Meiosefehler, B12-GA/EA.2 nennt Genommutationstypen im Karyogramm; die Quelle nennt hier Trisomie 21 nicht wörtlich.",
+      "reviewedAt": "2026-10-01",
+      "reviewer": "codex",
+      "notes": "AI-assisted 2026-10-01 scope revision; source and output delta archived in biologie-layer-a-20261001-v2. No human approval claimed."
     },
     {
       "sourceGoalId": "f0fa6aa1-9abc-5d93-91e6-04eac282bc51",

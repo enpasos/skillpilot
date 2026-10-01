@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-chemistry-positive-evidence-b009-reactions-current-2-v1",
+  "reviewedAt": "2026-09-30T19:56:00Z",
+  "reviewer": "codex-gpt-6-chemistry-b009-p-v1",
+  "goals": [
+    {
+      "goalId": "350a394f-e0d4-5e42-8e9a-39da9df33518",
+      "reason": "Aktuelle Seite und Bestandsbild tatsächlich in Originalansicht geprüft. Das Branddreieck und die drei Motive passen zum kanonischen Erklärziel, aber reale Brände sind kein Lernendenversuch; P beschränkt alle Fälle auf vorgegebene Karten und Lehrkraftdaten. Beim Fettbrand wird Wasser ausdrücklich ausgeschlossen, CO₂-Gerät nicht als allgemeine Schülerhandlung gelehrt. Kleiner Text in 360-px-Ansicht wird separat im V-Gate beurteilt; dies ist keine Bildfreigabe. Direkte HE-Herkunft und gültiger D-Index werden gesondert gebunden. KI-Kandidat needs_human_review, keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "b009-350a-fire-triangle",
+            "essentialUnderstandingDe": "Ein einfacher Brand setzt Brennstoff, Sauerstoff und genügend Wärme voraus. Ein geeignetes Löschprinzip unterbricht mindestens eine dieser Bedingungen; die Eignung hängt vom brennenden Stoff und der Umgebung ab. Wasser ist bei heißem Fett ungeeignet und gefährlich.",
+            "essentialUnderstandingEn": "A simple fire needs fuel, oxygen and enough heat. A suitable extinguishing principle interrupts at least one condition; suitability depends on the burning material and setting. Water is unsuitable and dangerous for hot cooking fat.",
+            "observablePerformanceDe": "Die lernende Person erklärt an sicheren vorgegebenen Szenarien, welche Verbrennungsbedingung durch ein beschriebenes Mittel unterbrochen wird, und weist einen ungeeigneten Einsatz begründet zurück. Keine eigene Brandbekämpfung.",
+            "observablePerformanceEn": "Using safe supplied scenarios, the learner explains which combustion condition a described measure interrupts and rejects an unsuitable use with a reason. No learner firefighting."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b009-350a-fire-triangle"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "material-context",
+            "textDe": "Fester Papierbrand und heißes Speisefett wechseln zu einer geschützten Modellflamme mit begrenztem Sauerstoffangebot.",
+            "textEn": "Solid paper and hot cooking fat change to a protected model flame with limited oxygen supply."
+          },
+          {
+            "id": "interrupted-condition",
+            "textDe": "Kühlen und Trennen vom Sauerstoff werden an verschiedenen Befunden unterschieden.",
+            "textEn": "Cooling and excluding oxygen are distinguished from different observations."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "paper-versus-pan-supplied-cases",
+            "taskDemandDe": "Auf zwei Bildkarten stehen ein kleiner Papierbrand in einer beaufsichtigten Demonstration und eine Pfanne mit brennendem Fett. Ein vorgegebenes Sicherheitsprotokoll nennt Wasser zum Kühlen gewöhnlicher Feststoffe und Abdecken/geeignete Löschdecke zum Trennen von Luft. Ordne die Prinzipien fachlich zu, erkläre die jeweils unterbrochene Bedingung und begründe, warum Wasser auf die Fettpfanne ausscheidet. Es werden keine Maßnahmen ausgeführt; im echten Ereignis Abstand halten und Erwachsene/Notruf einschalten.",
+            "taskDemandEn": "Two supplied cards show a small paper fire in a supervised demonstration and a pan of burning fat. A supplied safety protocol describes water cooling for ordinary solid materials and covering/a suitable fire blanket to exclude air. Match the principles, explain the interrupted condition and justify why water is ruled out for the fat pan. No action is performed; in a real incident keep distance and alert adults/emergency services.",
+            "expectedPerformanceDe": "Für Papier wird der Wärmeentzug durch geeignetes Wasser als Lehrkraftmaßnahme beschrieben; beim Fettbrand wird Luft-/Sauerstoffzutritt durch geeignetes Abdecken unterbrochen. Die Person nennt die Gefahr von Wasser auf heißem Fett und fordert keine eigene Brandbekämpfung.",
+            "expectedPerformanceEn": "For paper, suitable water applied by trained staff removes heat; for the fat fire, suitable covering interrupts air/oxygen access. The learner identifies the danger of water on hot fat and does not propose learner firefighting.",
+            "understandingFocusDe": "Löschmittelwirkung aus Stoff und Verbrennungsbedingung ableiten statt Bildlegenden übernehmen.",
+            "understandingFocusEn": "Derive the extinguishing principle from material and combustion condition rather than copy image captions."
+          },
+          {
+            "id": "fresh-covered-model-flame-data",
+            "taskDemandDe": "Eine Lehrkraft zeigt nur Messdaten einer geschützten Modellflamme: Bei gleicher Brennstoffmenge bleibt die Temperatur zunächst hoch; nach dem Abdecken sinkt der Sauerstoffanteil im Modellraum stark und die Flamme erlischt. In einem zweiten Datensatz sinkt die Temperatur unter die für dieselbe Modellflamme nötige Schwelle, während Sauerstoff vorhanden bleibt. Erkläre in jedem Datensatz die unterbrochene Bedingung und warum beide Befunde das gleiche Branddreieck auf unterschiedliche Weise nutzen. Keine Durchführung und keine Anleitung zum Anzünden.",
+            "taskDemandEn": "A teacher supplies only data from a protected model flame: with the same fuel amount, temperature initially stays high; after covering, oxygen in the model space falls sharply and the flame goes out. In a second data set, temperature falls below the threshold needed by the same model flame while oxygen remains available. Explain the interrupted condition in each set and why both observations use the same fire triangle in different ways. No experiment or ignition instructions.",
+            "expectedPerformanceDe": "Abdecken wird als Sauerstoffbegrenzung, der zweite Befund als Wärmeentzug unter die notwendige Temperatur erklärt. Die Person behauptet nicht, dass bei beiden Versuchen der Brennstoff verbraucht sei oder jedes Mittel bei jedem Brand sicher sei.",
+            "expectedPerformanceEn": "Covering is explained as oxygen limitation, and the second observation as heat removal below the required temperature. The learner does not claim that fuel was exhausted in both trials or that every agent is safe for every fire.",
+            "understandingFocusDe": "Unabhängiger Transfer auf Beobachtungsdaten und klare Trennung von Sauerstoff- und Wärmewirkung.",
+            "understandingFocusEn": "Independent transfer to observation data and clear distinction between oxygen and heat effects."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "a530ee7d-1002-5f02-ae05-a9d46410ac78",
+      "reason": "Aktuelle Seite und Bestandsbild tatsächlich gesichtet: H₂+Cl₂→2HCl ist atomar bilanziert, das Mittelbild freier Atome aber nur ein Vergleich der Bindungsbeiträge, kein realer Mechanismus. P prüft diese Grenze ausdrücklich an zwei unabhängigen neuen Reaktionen und vergleicht Spaltbedarf/Freisetzung auf jeweils derselben Reaktionsmenge. Die direkte BY-Herkunft und D-Index sind getrennt gebunden. KI-Kandidat needs_human_review, keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "b009-a530-bond-energy",
+            "essentialUnderstandingDe": "Das Spalten chemischer Bindungen benötigt Energie, das Bilden neuer Bindungen setzt Energie frei. Ob eine Reaktion insgesamt Energie abgibt oder aufnimmt, ergibt sich aus dem Vergleich beider Beiträge auf derselben Stoffmenge. Eine Darstellung mit vollständig freien Atomen kann diesen Vergleich veranschaulichen, behauptet aber keinen tatsächlichen Reaktionsweg.",
+            "essentialUnderstandingEn": "Breaking chemical bonds requires energy and forming new bonds releases energy. Whether a reaction overall releases or absorbs energy follows from comparing both contributions for the same amount of substance. A drawing with fully separated atoms can illustrate this comparison but does not assert the actual reaction pathway.",
+            "observablePerformanceDe": "Die lernende Person vergleicht an neuen Reaktionsmodellen gegebene Bindungsänderungen und Energiebeträge qualitativ, entscheidet den Nettoenergieumsatz und erläutert die Grenze der schematischen freien Atome.",
+            "observablePerformanceEn": "For fresh reaction models, the learner compares supplied bond changes and energy amounts qualitatively, decides the net energy change and explains the limit of schematic free atoms."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b009-a530-bond-energy"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "reaction-network",
+            "textDe": "Bildung von Wasser und Verbrennung von Methan nutzen verschiedene Bindungstypen und Reaktionsmengen.",
+            "textEn": "Formation of water and combustion of methane use different bond types and reaction amounts."
+          },
+          {
+            "id": "energy-balance",
+            "textDe": "Der Beitrag des Spaltens wird jeweils mit der Freisetzung beim Bilden verglichen; die Modellgrenze freier Atome wird eigens geprüft.",
+            "textEn": "Energy needed for breaking is compared with release upon formation in each case; the free-atom model limit is checked separately."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "new-water-formation-bond-cards",
+            "taskDemandDe": "Für 2 H₂ + O₂ → 2 H₂O geben Modellkarten an: Zwei H–H- und eine O=O-Bindung werden gelöst; vier O–H-Bindungen entstehen. Eine vereinfachte Energiegrafik zeigt für das Lösen 1370 Energieeinheiten hinein und für das Bilden 1850 Einheiten hinaus. Erkläre die Richtung des Nettoenergieumsatzes und warum die mittlere Zwischenzeichnung einzelner H- und O-Atome nur ein Energiebuchhaltungsmodell ist. Keine Reaktionsdurchführung.",
+            "taskDemandEn": "For 2 H₂ + O₂ → 2 H₂O, model cards show two H–H and one O=O bond broken and four O–H bonds formed. A simplified energy graphic shows 1370 energy units input for breaking and 1850 units released upon formation. Explain the direction of net energy change and why a middle drawing of separate H and O atoms is only an energy-accounting model. No reaction is performed.",
+            "expectedPerformanceDe": "Die Person erkennt Energiebedarf beim Spalten, größere Energiefreisetzung beim Bilden und somit eine insgesamt exotherme Änderung auf der angegebenen Reaktionsmenge. Sie deutet die freien Atome nicht als nachgewiesene Reaktionszwischenstufe und trennt den Nettoeffekt von einem anfänglichen Energiebedarf.",
+            "expectedPerformanceEn": "The learner identifies input for breaking, larger release upon formation and therefore an overall exothermic change for the stated reaction amount. They do not treat free atoms as an established intermediate and distinguish the net effect from an initial energy requirement.",
+            "understandingFocusDe": "Neuer Bindungssatz mit echter Nettoabwägung und expliziter Modellgrenze.",
+            "understandingFocusEn": "A fresh bond set with a real net comparison and an explicit model limit."
+          },
+          {
+            "id": "fresh-methane-combustion-comparison",
+            "taskDemandDe": "Ein neues Papiermodell zur Reaktion CH₄ + 2 O₂ → CO₂ + 2 H₂O nennt gebrochene Bindungen (vier C–H und zwei O=O) und gebildete Bindungen (zwei C=O und vier O–H). Für dieselbe Reaktionsmenge sind gerundet 2650 Energieeinheiten zum Spalten erforderlich und 3450 werden beim Bilden frei. Begründe die Nettorichtung und prüfe die falsche Aussage: „Weil bei jeder Verbrennung zuerst Bindungen gespalten werden, ist sie insgesamt endotherm.“ Nur Modell-/Datenanalyse.",
+            "taskDemandEn": "A new paper model for CH₄ + 2 O₂ → CO₂ + 2 H₂O lists bonds broken (four C–H and two O=O) and bonds formed (two C=O and four O–H). For the same reaction amount, about 2650 energy units are required for breaking and 3450 are released upon formation. Justify the net direction and assess the false statement: “Because bonds are broken first in every combustion, the reaction is endothermic overall.” Model/data analysis only.",
+            "expectedPerformanceDe": "Die Person vergleicht die Beiträge auf derselben Stoffmenge, erkennt einen Überschuss der Freisetzung von rund 800 Einheiten und erklärt die Reaktion als insgesamt exotherm. Sie verwirft die Aussage, weil der Spaltbedarf allein den Nettoeffekt nicht bestimmt; die Reihenfolge in einem Schema ist kein Beleg für freie Atome als reale Zwischenstufe.",
+            "expectedPerformanceEn": "The learner compares contributions for the same amount, recognises about 800 units more released and explains the reaction as exothermic overall. They reject the statement because breaking input alone does not determine the net effect; diagram order does not prove free atoms are actual intermediates.",
+            "understandingFocusDe": "Unabhängiger Transfer auf komplexere Bindungsbilanz; keine Gleichsetzung von Teilschritt und Nettoänderung.",
+            "understandingFocusEn": "Independent transfer to a more complex bond balance without equating one contribution with the net change."
+          }
+        ]
+      }
+    }
+  ]
+}

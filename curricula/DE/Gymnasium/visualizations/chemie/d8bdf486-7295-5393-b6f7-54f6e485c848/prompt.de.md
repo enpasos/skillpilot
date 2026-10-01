@@ -8,31 +8,17 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
-- Status: accepted
-- Quellbild: `d8bdf486-7295-5393-b6f7-54f6e485c848.jpg`
-- Public Asset: `/assets/goal-visualizations/chemie/d8bdf486-7295-5393-b6f7-54f6e485c848/d8bdf486-7295-5393-b6f7-54f6e485c848.jpg`
+- Provider: ChatGPT/Codex image_gen
+- Status: ai_candidate
+- Quellbild: `d8bdf486-7295-5393-b6f7-54f6e485c848.png`
+- Public Asset: `/assets/goal-visualizations/chemie/d8bdf486-7295-5393-b6f7-54f6e485c848/d8bdf486-7295-5393-b6f7-54f6e485c848.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Generator: ChatGPT/Codex built-in image_gen, 2026-09-30. New PNG after confirmed scientific error in the existing JPG. The original JPG remains in this review package as historical evidence.
 
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Reversibilität von Protonenübergängen ableiten
-Beschreibung: Die lernende Person kann die Reversibilität von Protonenübergängen aus experimentellen Beobachtungen ableiten.
-
-Zusatzanweisung:
-Use case: scientific-educational
-Demonstrate reversibility with one defined equilibrium and observable perturbations. Show CH₃COOH + H₂O ⇌ CH₃COO⁻ + H₃O⁺. Use a pH indicator only as a visible response to adding a small amount of acid or base, and label which species removes or supplies H₃O⁺. Then show that after opposite perturbations the equilibrium composition shifts in opposite directions; do not claim identical particle histories or use unlabeled colored beakers. No logos or watermark.
+Create a NEW replacement PNG learning-goal picture for SkillPilot German Gymnasium chemistry, 16:9 wide around 1600 × 900. Friendly warm abstract hand-drawn comic schoolbook illustration matching colorful existing learner images; no photorealism, no sterile technical slide, no notebook page with dense text, no formulas. Topic: reasoning carefully about reversible proton transfer between acetic acid and acetate. Visually separate OBSERVATION from PARTICLE MODEL. Upper half: the same simple clear beaker in a left-to-right repeat sequence: add dilute acid, then add dilute base, then acid again; a pH indicator changes warm-orange to cool-blue and back to warm-orange in that same sample, with a fourth small matched control beaker without the acetate buffer showing why pH color changes alone are insufficient. This is a supervised illustration, not DIY safety guidance; no hands, no splashes. Lower half: a separate explicitly schematic pair of two large distinct particle icons connected by a two-way arrow: one is 'Acetat' and gains a single small proton dot to become 'Essigsäure'; reversing removes that dot. The model is an interpretation that needs controls, never portray pH indicator color alone as proof that specific acetate species changed. Include only large short German labels if legible: 'Beobachtung', 'Modell', 'Acetat', 'Essigsäure', and at bottom 'Farbe allein beweist es nicht'. Ensure no other text, no numerical pH values, no pseudo-chemical equations, no unsupported claim of proof. Big clean motifs readable at 360px phone and 680px desktop. Warm comic colors, rounded shapes, uncluttered.
 ```
 
 ## Review-Notiz

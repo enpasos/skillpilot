@@ -1,0 +1,51 @@
+{
+  "reviewKind": "independent-ai-image-candidate-qa",
+  "reviewedAt": "2026-09-30T22:50:24Z",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "goalId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+  "currentGoalTitleDe": "Freie Trisomie 21 als Genommutation erklären",
+  "currentGoalDescriptionDe": "Die lernende Person kann am Beispiel einer freien Trisomie 21 erklären, wie eine Fehlverteilung von Chromosomen zu einer Genommutation mit einem zusätzlichen Chromosom 21 führen kann.",
+  "decision": "KEEP_CANDIDATE_ONLY",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biology-m7-e3-free-trisomy21-20261001-v1/candidate-0dd8380d-v2.png",
+  "candidateSha256": "sha256:be3ca040c15dea30ffd6bf15bde444cdc603b7ffe36d11d8db0276da1fde8c3b",
+  "candidateFormat": "RGB PNG, 1448 x 1086 pixels, 4:3",
+  "previousCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biology-m7-e3-free-trisomy21-20261001-v1/candidate-0dd8380d-v1.png",
+  "previousCandidateSha256": "sha256:6dc5cba3510b1cbef1f76ba92c262bf03c4e31c491c45fcd97f75f29c89a09f7",
+  "generationPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biology-m7-e3-free-trisomy21-20261001-v1/generation-prompt.md",
+  "generator": "ChatGPT/Codex image_gen, as documented in the package; no model version inferred",
+  "provenanceCheck": "The documented V2 generated-image source and the V2 candidate are byte-identical at SHA-256 be3ca040c15dea30ffd6bf15bde444cdc603b7ffe36d11d8db0276da1fde8c3b. The documented V1 generated-image source likewise matches its preserved candidate hash.",
+  "visualInspection": {
+    "original": "Inspected the actual 1448 x 1086 V2 raster: the upper-left cell contains exactly two separate chromosome-21 rods, red and blue; the upper-right contains exactly one, green; the lower cell contains those same three separate rods. Two arrows converge toward the lower cell. No additional chromosome icon or fragment is visible.",
+    "phone360": "Inspected the exact 360 x 270 preview: all three lower-cell rods remain individually countable; 'Chromosom 21', '2 + 1 = 3', and 'vereinfachtes Modell' are readable without zoom, with no crop or crowded panels.",
+    "desktop680": "Inspected the exact 680 x 510 preview: labels, arrow direction and all chromosome rods remain clear. Both previews are pixel-exact Lanczos downscales of the candidate.",
+    "formatDecision": "The documented 4:3 exception is justified for this three-cell vertical composition: at 360 px width it provides 270 px of height, keeping the outcome cell and model label larger than a 16:9 layout would. The fixed-width displays use contain rather than crop."
+  },
+  "findings": [
+    {
+      "severity": "pass",
+      "area": "chromosome-number-model",
+      "detail": "The arithmetic and the drawing agree: a possible gamete with two chromosome 21 copies plus a one-copy gamete yields a cell with three separate chromosome 21 copies. This represents the extra whole chromosome of free trisomy 21, not a translocation fragment or a single-gene change. Colors are counting aids; each rod has the same chromosome-21 shape."
+    },
+    {
+      "severity": "pass_with_boundary",
+      "area": "mechanism-and-model-limit",
+      "detail": "The image shows a possible two-copy gamete and subsequent 2 + 1 outcome. It does not depict the preceding nondisjunction, both meiotic divisions, the rest of the chromosome set or a diagnostic karyogram. The large 'vereinfachtes Modell' label makes the simplification visible. Pair it with truthful text or alt text explaining that a chromosome-separation error can produce the two-copy gamete; never describe the image itself as a complete meiosis or a diagnosis."
+    },
+    {
+      "severity": "pass",
+      "area": "neutrality-and-style",
+      "detail": "There are no people, phenotype cues, health judgments, pathologizing words or diagnostic claims. The warm opaque cream background, soft cell colors, hand-drawn outlines and clear shapes fit a friendly comic-like classroom illustration rather than photorealism or sterile technical drafting."
+    },
+    {
+      "severity": "pass",
+      "area": "v1-correction",
+      "detail": "V1 is preserved. Its transparent background left navy text vulnerable to dark surfaces and its bottom model label was small at 360 px. V2 uses an opaque background and larger title and model label; both observed defects are resolved without changing the 2 + 1 chromosome count."
+    }
+  ],
+  "requiredIntegrationCaptionOrAltText": "Vereinfachtes Modell nur für Chromosom 21: Nach einer möglichen Fehlverteilung enthält eine Keimzelle zwei einzelne Chromosomen 21, die andere eines. Nach ihrer Vereinigung liegen drei getrennte Chromosomen 21 vor. Weitere Chromosomen und die Meioseschritte sind nicht dargestellt; die Farben dienen nur der Unterscheidung.",
+  "curriculumSource": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+  "scientificReference": "https://medlineplus.gov/genetics/condition/down-syndrome/",
+  "sourceScope": "Official HE E.3 calls for the mutation principle using trisomy 21 as example. NIH MedlinePlus Genetics supports a reproductive-cell nondisjunction route to an extra chromosome 21 and distinguishes translocation and mosaic forms. The picture illustrates only the free-trisomy chromosome-number route named in the current canonical goal.",
+  "scopeLimit": "This review accepts the V2 raster as a suitable machine-reviewed candidate only. It does not activate a primary image, edit the registry, grant human approval, prove learner understanding, or close gate V/M7. Exact active-asset and goal/page bindings require their own integration checks."
+}

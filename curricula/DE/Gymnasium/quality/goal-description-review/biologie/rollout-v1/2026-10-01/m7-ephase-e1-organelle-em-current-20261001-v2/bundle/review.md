@@ -1,0 +1,54 @@
+# AI review input: Biologie M7: Organellen im elektronenmikroskopischen Zellbild
+
+- Book ID: `de-gym-biologie-m7-ephase-e1-organelle-em-current-20261001-v2`
+- Book edition: `curricular-atomic-v1`
+- Publication mode: `review`
+- BookModel digest: `sha256:030867ddf6191680d362616d84f77a0a53f0fa4e8669cff62dfa1e69d23380f7`
+- Selected goals: 1
+
+The PDF and this Markdown are parallel review surfaces. The normalized JSON is authoritative for exact IDs, relationships, fingerprints, and evidence-profile fields.
+
+## Page 1: Zellorganellen zuordnen
+
+- Full learning-goal ID: `fc8c4b02-02f2-5ad6-b481-224d36121da1`
+- Goal fingerprint: `sha256:2ce288a498be400c2368003662895c231ea656dc9761d3cc9963f60f49520200`
+- Page fingerprint: `sha256:d30bf925d529695626c933356afb8ee4ed8a579b7c940c8b787efa88ed8269e4`
+- Topic path: Biologie > Einführungsphase Zellbiologie > Struktur und Funktion von Zellen
+
+### Canonical description
+
+Die lernende Person kann ausgewählte Zellorganellen in einem elektronenmikroskopischen Zellbild anhand ihres Baus erkennen und ihre zentralen Funktionen begründet zuordnen.
+
+### Visualization
+
+/assets/goal-visualizations/biologie/fc8c4b02-02f2-5ad6-b481-224d36121da1/fc8c4b02-02f2-5ad6-b481-224d36121da1.png
+
+- original digest: `sha256:b4f6ec6bcfa4ef67d1280089cb415be8859fdae6b2f67e93e65b9bfa9ecc2c97`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Biologie? - Relevanz und Orientierung — `2d451684-6e53-565e-a987-f362da919d2c` (outside this book)
+- Bau der Pflanzenzelle beschreiben — `e0d04e58-1591-5230-bfa6-5c685b56d25b` (outside this book)
+- Zelltypen unterscheiden — `7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Kartoffelzellen unter Salzstress und Katalase — `1b566274-a107-5ade-aee7-602e7413f562` (outside this book)
+- Sek-II-Abschlussaufgaben Biologie bearbeiten — `1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a` (outside this book)
+- Endosymbiontentheorie erklären — `1042bb24-96ba-553b-a956-abaf9c74dc43` (outside this book)
+- Ein einfaches Biomembranmodell darstellen — `e063b97d-9e03-5094-8c73-72a3eeec803d` (outside this book)
+- DNA-Aufbau darstellen — `0daa79f6-8f61-5506-98f9-65db83062ba8` (outside this book)
+
+### Evidence-profile candidate
+
+No evidence-profile record is bound to this page.

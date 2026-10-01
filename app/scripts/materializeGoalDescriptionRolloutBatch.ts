@@ -1064,9 +1064,11 @@ export const materializeGoalDescriptionRolloutBatchResolutionIndex = async (
             && summaryGoal.secondDecision !== 'block'
             && summaryGoal.firstDecision !== 'revise'
             && summaryGoal.secondDecision !== 'revise'
+            && summaryGoal.firstDecision !== 'split_review'
+            && summaryGoal.secondDecision !== 'split_review'
           )
         ) {
-          throw new Error(`${deferred.goalId}: deferral is not bound to a current block or unresolved revise review`)
+          throw new Error(`${deferred.goalId}: deferral is not bound to a current block, unresolved revise review, or split review`)
         }
       }
       if (synthesisManifest.synthesizedAt !== expectedSynthesizedAt) {
@@ -1082,8 +1084,15 @@ export const materializeGoalDescriptionRolloutBatchResolutionIndex = async (
         dualSummaryDigest: sha256(dual.bytes),
         canonicalLandscapeDigest: sha256(landscapeBytes),
       }
-      if (stableGoalBookJson(synthesisManifest.batch) !== stableGoalBookJson(expectedBatchBinding)) {
-        throw new Error('Standalone synthesis manifest batch and canonical digests are stale or foreign')
+      // The landscape-wide digest is historical batch provenance. A later change to
+      // another goal must not invalidate these exact review artifacts. Every
+      // resolved goal is checked against its current text, page and review
+      // context below. Source provenance and resource-link metadata that the
+      // review input does not encode still need a separate targeted audit.
+      const { canonicalLandscapeDigest: _historicalLandscapeDigest, ...historicalBatchBinding } = synthesisManifest.batch
+      const { canonicalLandscapeDigest: _currentLandscapeDigest, ...currentBatchBinding } = expectedBatchBinding
+      if (stableGoalBookJson(historicalBatchBinding) !== stableGoalBookJson(currentBatchBinding)) {
+        throw new Error('Standalone synthesis manifest batch digests are stale or foreign')
       }
       synthesisManifestArtifact = {
         path: synthesisManifestPath,

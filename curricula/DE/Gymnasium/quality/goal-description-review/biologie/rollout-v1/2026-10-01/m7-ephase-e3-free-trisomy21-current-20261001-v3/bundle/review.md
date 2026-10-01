@@ -1,0 +1,51 @@
+# AI review input: Biologie M7: freie Trisomie 21 mit aktueller HE/NI-Quellen- und 4:3-Bildbindung
+
+- Book ID: `de-gym-biologie-m7-ephase-e3-free-trisomy21-current-20261001-v3`
+- Book edition: `curricular-atomic-v1`
+- Publication mode: `review`
+- BookModel digest: `sha256:294b818449a24a145160075f8969898af56e238795d8e94b64e18d61ebcf9674`
+- Selected goals: 1
+
+The PDF and this Markdown are parallel review surfaces. The normalized JSON is authoritative for exact IDs, relationships, fingerprints, and evidence-profile fields.
+
+## Page 1: Freie Trisomie 21 als Genommutation erklären
+
+- Full learning-goal ID: `0dd8380d-b542-5126-8d8e-f95d9ccded90`
+- Goal fingerprint: `sha256:f658d04d24e864b314e14bec7e107233f802386b36499f739e1477cd4597e176`
+- Page fingerprint: `sha256:082755c67ecbc1870c0c19718a98bb8be9dbe4f551cd682dec407d3d439f4303`
+- Topic path: Biologie > Einführungsphase Zellbiologie > Humanbiologische Aspekte
+
+### Canonical description
+
+Die lernende Person kann am Beispiel einer freien Trisomie 21 erklären, wie eine Fehlverteilung von Chromosomen zu einer Genommutation mit einem zusätzlichen Chromosom 21 führen kann.
+
+### Visualization
+
+/assets/goal-visualizations/biologie/0dd8380d-b542-5126-8d8e-f95d9ccded90/0dd8380d-b542-5126-8d8e-f95d9ccded90.png
+
+- original digest: `sha256:be3ca040c15dea30ffd6bf15bde444cdc603b7ffe36d11d8db0276da1fde8c3b`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Biologie? - Relevanz und Orientierung — `2d451684-6e53-565e-a987-f362da919d2c` (outside this book)
+- Mitose und Meiose vergleichen — `ec88fc1d-ee0f-5a01-9464-dc358241050e` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Sek-II-Abschlussaufgaben Biologie bearbeiten — `1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a` (outside this book)
+- Frühe Embryonalentwicklung skizzieren — `2517be3f-e42f-5e41-889d-70f00dc24686` (outside this book)
+- Geschlechtsfestlegung analysieren — `37147890-84e4-5ba7-80e1-92fbf2070d7c` (outside this book)
+
+### Evidence-profile candidate
+
+No evidence-profile record is bound to this page.

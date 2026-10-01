@@ -1,0 +1,8 @@
+# Unabhängiger Nachreview der zwei Materialkorrekturen
+
+**Stand 2026-10-01:** v1 blieb unverändert und [der unabhängige Erstbefund](../ephase-local-candidates-20261001-v1/independent-review-root.md) hielt die Zellaufgabe wegen zweier unbelegter Lösungsaussagen zurück. In v2 wurden die beiden tatsächlich betroffenen Materialkarten erneut mit Aufträgen, Musterlösung und BE-Raster verglichen; die zweite Proteinaufgabe hat keinen inhaltlichen Textwechsel.
+
+- Modellkarte A nennt jetzt ausdrücklich, dass membranumhüllte Organellen fehlen. Das trägt die in Aufgabe 2 verlangte und bepunktete Abgrenzung von den eukaryotischen Zellen. Die Aussage „kein Kern im Lichtmikroskop sichtbar“ bleibt korrekt als Beobachtungsgrenze behandelt und wird nicht mit dem Modellnachweis verwechselt.
+- Modellkarte B nennt jetzt Mitochondrien. Damit ist die in Lösung 3 aufgeführte Gemeinsamkeit von B und C in beiden Modellkarten tatsächlich gegeben. Die Zwiebel-Speicherzelle D ohne sichtbare Chloroplasten bleibt als Gegenbeispiel erhalten.
+
+Die Korrekturen beheben die beiden konkret dokumentierten HOLD-Gründe. Beide Aufgaben sind nun **KEEP als inaktive maschinelle Prüfungskandidaten**, mit fachlich passenden Materialien, Lösungen und 28/32-BE-Rastern für ihre eng genannten aktuellen Ziele. Die Kandidaten bleiben `draft`; die Gesamtbestehensgrenze ersetzt nicht die getrennten zielbezogenen `evidenceRequirements`. Vor kanonischer Integration sind die dann aktuellen Ziel-, HE-Quellen-, Seiten- und Sichtbarkeitsbindungen sowie die technischen Prüfungs- und Graphchecks zu prüfen. Der globale Capstone und andere lokale Routen gelten durch dieses Nachreview nicht als fachlich repariert. Menschliche Freigabe und Erprobung sind separate Gates.

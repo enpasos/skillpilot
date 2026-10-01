@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-resolution-1286f2fe-89b7-4454-8e11-85b6abd6e278",
+  "goal": {
+    "goalId": "1286f2fe-89b7-4454-8e11-85b6abd6e278",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:5adf3fce882dc3e0ca28decb4918a92b2b9c0a2aa2b065ffedea1c1e828259e3",
+    "pageFingerprint": "sha256:9e1e151713358d35b4794925c7b8e85eb5a291885f3345bea7b2c347a47434ca",
+    "goalReviewContextFingerprint": "sha256:98488aef0f047fbfd7cd6cbf894c93d835518b9ee60b544866a5e6c4b1b9bf1e",
+    "finalText": {
+      "titleDe": "Exotherme und endotherme Reaktionen unterscheiden",
+      "titleEn": "Distinguish exothermic and endothermic reactions",
+      "descriptionDe": "Die lernende Person kann exotherme und endotherme Reaktionen unterscheiden und typische Beispiele dem Energieumsatz fachlich zuordnen.",
+      "descriptionEn": "The learner can distinguish exothermic and endothermic reactions and classify typical examples by their energy turnover."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-a",
+      "campaignDigest": "sha256:564e8ba4894672d9976b1e1791687d2e13c88bc2090a5e6f5484101d0bc32279",
+      "roundId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:32ecbb03b0eded14d66cd3a2989ff61c3ee71177ec53d72e10c96a106b9fa210",
+      "goalReviewContextFingerprint": "sha256:98488aef0f047fbfd7cd6cbf894c93d835518b9ee60b544866a5e6c4b1b9bf1e",
+      "batchId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-a.batch-001",
+      "runId": "codex-gpt-6-round-a-chemie-b009-20260930",
+      "runManifestDigest": "sha256:582ba21e2ad3688175fa25450c4165f0fb03d0ce0edd95e5b04205411f02b081",
+      "resultsDigest": "sha256:09ac18519d9930c00e00dd083172993ebbb36672d07428413a08f8ce826fdac1",
+      "recordId": "chemie-b009-round-a-1286f2fe-20260930",
+      "recordDigest": "sha256:d119b0a41047cbe16421bbd3fc504f03a163c9bf96d8b0470fdce5ddf562807c"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-b",
+      "campaignDigest": "sha256:be3d6dffaf9142ee0fd8634a27f6e97fea4175dcb95c5deeafdcbdb649507cca",
+      "roundId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:32ecbb03b0eded14d66cd3a2989ff61c3ee71177ec53d72e10c96a106b9fa210",
+      "goalReviewContextFingerprint": "sha256:98488aef0f047fbfd7cd6cbf894c93d835518b9ee60b544866a5e6c4b1b9bf1e",
+      "batchId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-b.batch-001",
+      "runId": "chemie-b009-global-reactions-20260930-blind-b-run-001",
+      "runManifestDigest": "sha256:7ff826ae46c4258bcdac12f3792912fe200805d3fd3c3a6ce11d4bce16ad3e41",
+      "resultsDigest": "sha256:18aea5bc6886b274fd9fdf5693b81e68d1cacb81435f1df4b2ef01bb26956926",
+      "recordId": "chemie-b009-b-04-1286f2fe",
+      "recordDigest": "sha256:15196c0e5072f1776abee77102db55f424062dd8e5649eae5218747d3019657c"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:64845805c1910516bd363bfa806b32821196a703357372e99251ded5268303c0"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-b009-global-reactions-20260930-partial-synthesis",
+    "manifestDigest": "sha256:3ee95ddb10320c0df6c282ba4d8e83d8a36dd0f513e4131fb3a70daa3bc25205",
+    "manifestFingerprint": "sha256:305093b7945546a2d6a13c69cf5bc797051889932077cf3bf29facae3fc6037c",
+    "decisionId": "chemie-b009-global-reactions-20260930-partial-synthesis-decision-002"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-b009-global-reactions-20260930-partial-synthesis-decision-002",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis of independent A/B; four dual keeps and four substantive deferrals, no human approval or image approval",
+    "synthesizedAt": "2026-09-30T21:45:01.000Z",
+    "rationaleDe": "A und B sehen exotherm/endotherm unterscheiden und Beispiele nach Nettowärmefluss zuordnen als eine Klassifikationskompetenz der direkten HE-J8-Quelle. A macht die Trennung von Aktivierungsenergie und Nettoenergie deutlich. Das tatsächlich geprüfte Bestandsbild benutzt jedoch die Abkühlung einer Brausetablette unmittelbar als Beleg für eine endotherme chemische Reaktion, obwohl Mischen/Lösen mitwirken kann; dieser konkrete V-/Seiten-HOLD bleibt offen. Diese historische D-Entscheidung darf bis zu echter Bildkorrektur und zielgenauer D/P/V-Neubindung nicht zentral streng zählen.",
+    "rationaleEn": "A and B view distinguishing exothermic from endothermic reactions and classifying examples by net heat flow as one competence under the direct Hessian J8 source. A makes the activation-versus-net-energy distinction explicit. The inspected existing image, however, treats cooling of an effervescent tablet as direct proof of an endothermic chemical reaction although mixing and dissolution may contribute; this specific V/page HOLD remains open. This historical D decision must not count centrally as strict until the image is substantively corrected and D/P/V are rebound for the goal.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Exotherm beschreibt eine Nettoabgabe von Energie an die Umgebung, endotherm eine Nettoaufnahme aus ihr. Eine nötige Aktivierungsenergie am Anfang ist nicht dasselbe wie der gesamte Energieumsatz; die Systemgrenze und Beobachtungsbedingungen müssen klar sein.",
+      "essentialUnderstandingEn": "Exothermic means net energy transfer to the surroundings; endothermic means net uptake from them. Initial activation energy is different from the overall energy change; the system boundary and observation conditions must be clear.",
+      "observablePerformanceDe": "Die lernende Person deutet zwei gegebene Temperatur-/Energiedaten zu geeigneten Reaktionen, ordnet exotherm oder endotherm zu und erklärt die Richtung des Netto-Energieflusses.",
+      "observablePerformanceEn": "The learner interprets supplied temperature/energy data for two suitable reactions, classifies them as exothermic or endothermic and explains the direction of net energy transfer.",
+      "transferExpectationDe": "Bei einer neuen Reaktion, die zunächst Energie zum Start braucht und danach Wärme abgibt, verwechselt sie den Startaufwand nicht mit einer insgesamt endothermen Reaktion.",
+      "transferExpectationEn": "For a new reaction that needs energy to start and subsequently releases heat, they do not confuse the initial input with an overall endothermic reaction."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-99bea8d59b051b17243be07def5e839d84a7ebebf229dc5d5527ca57246fee2b",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:63503e2263d766cd3726445c17169c0b840b32fab9da15e2c5ee3e7fe716e353"
+}

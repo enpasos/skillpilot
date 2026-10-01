@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-chemistry-positive-evidence-b006r-92c-current-png-v1",
+  "reviewedAt": "2026-09-30T18:36:05Z",
+  "reviewer": "codex-gpt-6-chemistry-b006-positive-profile-author",
+  "goals": [
+    {
+      "goalId": "92c99237-1c74-54fc-bf08-9191656afaa6",
+      "reason": "Aktives korrigiertes PNG (SHA256 6ed140213988f015f57de3ac647b0d8bbf0f9d9c4806d3a13b162cfa3e8e0bba) wurde fachlich und bei 360/680px geprüft; Summenformel C2H6O nennt Atomarten und -zahlen, keine Stoffmenge. Der Profilkern prüft Umwandlung und begründete Darstellungswahl an neuen Isomer- und Ethenfällen unabhängig vom Bild. KI-Kandidat, needs_human_review; kein D-/M7- oder menschlicher Abschluss durch Materialisierung.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "b006-92c99237-core",
+            "essentialUnderstandingDe": "Eine Summenformel nennt Atomzahlen, aber nicht zwingend Verknüpfung, Elektronenpaare oder räumliche Form. Struktur-, Lewis- und räumliche Darstellungen zeigen diese Aspekte unterschiedlich; Umwandeln braucht zusätzliche gegebene Strukturinformation, wenn Isomere möglich sind.",
+            "essentialUnderstandingEn": "A molecular formula gives atom counts but not necessarily connectivity, electron pairs or spatial shape. Structural, Lewis and spatial representations show these differently; conversion needs added structural information when isomers are possible.",
+            "observablePerformanceDe": "Die lernende Person überführt eine vorgegebene Molekülstruktur in andere Formeln und begründet die Darstellungswahl anhand einer konkreten Frage.",
+            "observablePerformanceEn": "The learner converts a supplied molecular structure into other formulas and justifies representation choice for a concrete question."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b006-92c99237-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "question",
+            "textDe": "Atomzahl, Verknüpfung und freie Elektronenpaare verlangen unterschiedliche Darstellungen.",
+            "textEn": "Atom count, connectivity and lone pairs require different representations."
+          },
+          {
+            "id": "isomer",
+            "textDe": "Gleiche Summenformel kann verschiedene Strukturformeln besitzen.",
+            "textEn": "The same molecular formula may have different structural formulas."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "ethanol-ether-isomers",
+            "taskDemandDe": "Zwei gegebene Modelle zeigen CH3–CH2–OH und CH3–O–CH3. Gib für beide die Summenformel an, zeichne einfache Struktur- oder Lewis-Formeln und wähle eine Darstellung, die den Unterschied beweist.",
+            "taskDemandEn": "Two supplied models show CH3–CH2–OH and CH3–O–CH3. Give both molecular formulas, draw simple structural or Lewis formulas and select a representation that proves their difference.",
+            "expectedPerformanceDe": "Beide C2H6O; nur die Verknüpfungsdarstellung trennt Ethanol und Dimethylether. Die Summenformel allein kann nicht in genau eine Struktur rückübersetzt werden; O hat in einer Lewis-Skizze zwei freie Paare.",
+            "expectedPerformanceEn": "Both are C2H6O; connectivity distinguishes ethanol and dimethyl ether. The molecular formula alone cannot be inverted into one unique structure; O has two lone pairs in a Lewis sketch.",
+            "understandingFocusDe": "Isomerie macht die Grenze der Summenformel sichtbar.",
+            "understandingFocusEn": "Isomerism exposes the molecular formula’s limit."
+          },
+          {
+            "id": "ethene-representation-choice",
+            "taskDemandDe": "Ein neues Kugel-Stab-Modell zeigt Ethen mit zwei C und vier H sowie C=C. Formuliere Summen- und einfache Strukturformel. Welche Darstellung wählst du für Atomzahl und welche für die Doppelbindung?",
+            "taskDemandEn": "A fresh ball-and-stick model shows ethene with two C and four H and C=C. Write molecular and simple structural formulas. Which representation serves atom count and which shows the double bond?",
+            "expectedPerformanceDe": "C2H4 gibt die Anzahl, H2C=CH2 die Verknüpfung samt Doppelbindung; ein Modell/Skizze kann räumliche Anordnung andeuten. Die Wahl wird von der Frage begründet, nicht vom Bildstil.",
+            "expectedPerformanceEn": "C2H4 gives counts; H2C=CH2 gives connectivity including the double bond; a model may suggest spatial arrangement. Choice follows the question, not image style.",
+            "understandingFocusDe": "Neue Molekülklasse prüft Überführung und begründete Wahl.",
+            "understandingFocusEn": "A new molecule class tests conversion and justified selection."
+          }
+        ]
+      }
+    }
+  ]
+}

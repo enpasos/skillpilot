@@ -30,14 +30,18 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | kept primary cards with origin trace | 55 |
 | cards removed from active decks | 0 |
 | memory goals traced | 6/6 |
-| composition visibility scopes | 0 |
-| memory-required goals checked in views | 0 |
+| composition visibility scopes | 3 |
+| memory-required goals checked in views | 124 |
 | memory-required goals without visible memory node | 0 |
 | blocking issues | 0 |
 
 ## Composition Visibility
 
-Keine view-spezifische Memory-Erreichbarkeitsprüfung konfiguriert.
+| Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
+| --- | --- | --- | --- | --- | --- |
+| Chemie Gymnasium GK (DE) | `curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json` | 401 | 6 | 53 | 0 |
+| Chemie Gymnasium LK (DE) | `curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json` | 401 | 6 | 53 | 0 |
+| Chemie Gymnasium Sek I (DE) | `curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-seki-chemistry.view.json` | 103 | 2 | 18 | 0 |
 
 ## Memory-Required Goals
 

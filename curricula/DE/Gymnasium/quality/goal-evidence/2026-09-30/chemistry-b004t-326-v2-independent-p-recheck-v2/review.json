@@ -1,0 +1,67 @@
+{
+  "reviewKind": "independent-current-positive-understanding-evidence-v2-content-recheck",
+  "reviewedAt": "2026-09-30T21:51:00Z",
+  "reviewer": "Codex independent chemistry 326 P-v2 recheck after safety and directness revision",
+  "reviewAuthority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+  "decision": "PASS_CANDIDATE_ONLY",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004t-326-states-current-v2.candidates.json",
+  "candidateSha256": "sha256:80fb610c8539589a59e29aeb179bc077de94b8dc7dc1b57bf367d23423080da0",
+  "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004t-326-states-current-v2.review.jsonl",
+  "reviewSha256": "sha256:a579e900606d8145f22c6a64e8445d6f01d9da44b6f8acb1675c6bf27bc2fe1e",
+  "profileFingerprint": "sha256:040484f5ee187835ee143eeb4a38784494ea23c16686b9c25dcee0fc65122139",
+  "candidateStatus": "needs_human_review",
+  "priorReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/chemistry-b004t-326-v2-independent-p-review-v1/review.json",
+  "canonicalGoal": {
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "descriptionDe": "Die lernende Person kann feste, flüssige und gasförmige Zustände anhand beobachtbarer Eigenschaften unterscheiden und Übergänge zwischen ihnen als Zustandsänderungen desselben Stoffes erklären.",
+    "descriptionEn": "The learner can distinguish solid, liquid and gaseous states by observable properties and explain transitions between them as changes in the state of the same substance.",
+    "finding": "Both independent cases assess the current DE/EN goal through observable state properties, transition direction and substance identity. The demand does not make the separate particle-model or reaction-diagnosis goal a prerequisite."
+  },
+  "officialSource": {
+    "url": "https://www.fortbildung.kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf",
+    "printedPage": 11,
+    "pdfPageIndexZeroBased": 11,
+    "finding": "The mandatory Year 8 section 8.1/1.2 lists states and their transitions, specifically melting, boiling, freezing, condensing, sublimation, deposition and evaporation. The particle model is separately listed under 1.3."
+  },
+  "resolvedPriorIssues": [
+    {
+      "id": "sealed-co2-and-heated-water-apparatus",
+      "finding": "The water case now uses an open sample and supplied notes; the CO2 case uses teacher-supplied data from appropriately ventilated observations at ordinary pressure. Neither asks learners to conduct an experiment or presents a sealed dry-ice vessel. This resolves the identified task-text safety defect; it is not an approval of an actual lab procedure.",
+      "supportingSafetySource": "https://ehs.stanford.edu/wp-content/uploads/sops/Cryogenic-Liquids.pdf"
+    },
+    {
+      "id": "second-direct-transition-not-established",
+      "finding": "The revised CO2 case states ordinary pressure, a sufficiently cold deposition surface, continuous observations with no liquid on each leg, and analysis identifying both gas and deposit as CO2. These supplied conditions and observations support direct solid-to-gas and gas-to-solid changes without requiring phase-diagram knowledge. The reverse leg no longer infers directness merely from a final solid deposit.",
+      "supportingPhaseSource": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C124389&Mask=4"
+    },
+    {
+      "id": "bilingual-boundary-and-water-film-precision",
+      "finding": "The DE/EN answers now express the same boundary on reaction diagnosis. The water-film case names a non-absorbent surface and supplied vapour readings, reducing alternative explanations for the diminishing film."
+    }
+  ],
+  "positiveEvidenceAssessment": {
+    "independentDemonstrations": 2,
+    "waterCase": "Interprets solid, liquid and gaseous water from shape, flow and supplied vapour data, and connects melting, freezing, evaporation, boiling and condensation to the observations. The learner must distinguish surface evaporation from boiling within the liquid and justify water identity from supplied sample information.",
+    "carbonDioxideCase": "Transfers the same state-and-identity reasoning to a different substance, including the two direct solid-gas directions and explicit supplied evidence against liquid intermediate phases.",
+    "freshVariation": "The cases vary substance, observational cues, transition directions and location of phase change; neither can be solved by copying labels from the active image.",
+    "claimBoundary": "These are task briefs and expected performances, not records of learner performance or human review."
+  },
+  "remainingBlockingIssues": [],
+  "nonBlockingPrecision": [
+    "The opening 'A behält als Eisstück ...' / 'A keeps its own shape ...' lacks a preceding label for A. 'Das Eisstück ...' / 'The piece of ice ...' would read more naturally; the observed state remains unambiguous.",
+    "For a ready-to-use task, the boiling observation could specify sustained water-vapour bubbles, since isolated bubbles during warming can also come from dissolved gas. The current supplied observations and expected answer are adequate for a brief, but the final generated task should make that cue explicit."
+  ],
+  "activeImageBindingCheck": {
+    "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/chemie/326d45bf-9f77-57d5-a054-93e76b034dd5/326d45bf-9f77-57d5-a054-93e76b034dd5.png",
+    "assetSha256": "sha256:28c7efb897e8baeffa23afb3807341180e70409dba2afa473d1566f1379f2190",
+    "dimensions": "1448x1086, 4:3",
+    "canonicalPublicBackendCopiesMatch": true,
+    "visualInspection": "The current active PNG and its candidate-360 preview show the same three particle-state boxes, the correct four main arrow directions and legible transition labels at 360 px. The P task briefs intentionally use no image.",
+    "humanApprovedCurrentAsset": false,
+    "ancillaryArtifactFinding": "The review folder's active-360.png and active-680.png still depict the former 16:9 JPG. They are stale previews and must not be cited as previews of the current active PNG; candidate-360.png and candidate-680.png depict the current asset. This does not change the active canonical/public/backend binding or this P content decision."
+  },
+  "technicalCheck": "npm --prefix app run -s quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004t-326-states-current-v2.config.json -> 1 configured, 0 approved, 1 needs_human_review, 0 blocking structural issues.",
+  "scopeLimit": "Independent AI content PASS applies only to the exact candidate hash above. It neither grants human approval nor, by itself, strict central M7 closure."
+}

@@ -1,0 +1,37 @@
+{
+  "auditKind": "targeted-nonblind-description-and-image-content-audit",
+  "reviewedAt": "2026-10-01",
+  "reviewer": "codex-chem-0503-d-a-v2",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "independentBlindReviewClaim": false,
+  "campaignRecordClaim": false,
+  "goalId": "0503c975-3934-5206-962e-b1c247de0c12",
+  "goalFingerprint": "sha256:d3b1ac261a49ceb7637dbbcfb00ecacc3f62e602144f56d51335232a72cf385c",
+  "pageFingerprint": "sha256:c612cb0b875e8ec46a9502767dd1947eeb908150540f27f0d24784104f0f0202",
+  "imageSha256": "sha256:e3f03ecac344cbd713f8102cc58b6f98456bb71cc2b245174c54d566f1d65625",
+  "imageDimensions": "1448 x 1086 RGB PNG (4:3)",
+  "blindnessDisclosure": "A broad goal-ID search unintentionally exposed excerpts of a prior image producer note and independent image QA verdict before this audit. No prior description reviewer decision, round B output, resolution, or positive-evidence candidate content was read. This audit must not count as independent blind description review A.",
+  "source": {
+    "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/8/chemie",
+    "location": "C8 Lernbereich 3, Kompetenzerwartung zum Brennstoffvergleich und Kohlenstoffatom-Kreislauf; Inhalte zu den Kompetenzen: fossile Energieträger und einfacher Kohlenstoffatom-Kreislauf",
+    "finding": "The source includes explaining the atmospheric CO2-concentration rise caused by burning fossil fuels using the carbon-atom cycle. The current goal isolates that clause from the sibling comparison and evaluation competences."
+  },
+  "descriptionDecision": "keep_candidate_only",
+  "descriptionFinding": "The current German and English descriptions are equivalent and make one coherent competence explicit: long-term fossil carbon enters atmospheric CO2 through burning, and atmospheric CO2 rises if total input exceeds total uptake. This conditional stock-flow explanation prevents an unsupported claim that every fossil CO2 emission remains in the atmosphere. The wording stays within the source clause and does not duplicate the prerequisite fuel comparison or successor evaluation goal.",
+  "understandingEvidence": {
+    "essentialUnderstandingDe": "Kohlenstoffatome durchlaufen einen einfachen Kreislauf zwischen Atmosphäre und Lebewesen; ein Teil wurde langfristig fossil gespeichert. Verbrennung verschiebt fossilen Kohlenstoff als CO2 in die Atmosphäre. Ihr CO2-Bestand steigt nur bei positiver Gesamtbilanz aus Zuflüssen und Aufnahme.",
+    "essentialUnderstandingEn": "Carbon atoms move through a simple cycle between the atmosphere and living things; some carbon was stored as fossil carbon for a long time. Burning transfers this carbon to atmospheric CO2. Its atmospheric stock rises only when total inputs exceed uptake.",
+    "observablePerformanceDe": "Die lernende Person zeichnet oder erläutert für einen vorgegebenen einfachen Kohlenstoffatomkreislauf die Richtung der fossilen Freisetzung und der biologischen Aufnahme und Rückgabe und begründet aus der gesamten Zu- und Abflussbilanz die Änderung des atmosphärischen CO2-Bestands.",
+    "observablePerformanceEn": "For a supplied simple carbon-atom cycle, the learner draws or explains the direction of fossil release and biological uptake and return, then uses the complete input-versus-uptake balance to justify the change in atmospheric CO2 stock.",
+    "transferExpectationDe": "Bei einem neuen Kreislaufschema mit verändertem fossilem Zufluss und veränderter Pflanzenaufnahme sagt die lernende Person begründet voraus, ob der atmosphärische CO2-Bestand steigt, sinkt oder konstant bleibt, ohne den Bildpfeilen nur zu folgen.",
+    "transferExpectationEn": "Given a fresh cycle diagram with changed fossil input and plant uptake, the learner reasons whether atmospheric CO2 rises, falls, or remains stable without merely tracing the original image arrows."
+  },
+  "visualInspection": {
+    "native": "Atmosphere, living biomass, long-term fossil reservoir and four process arrows are clearly separated. Photosynthesis leads down from atmospheric CO2; respiration/decomposition and fossil combustion lead up; the fossilization link is dotted and marked millions of years. The final conditional statement is correctly phrased.",
+    "mobile360x270": "The main labels, process directions and conditional bottom caption remain readable at actual 360-pixel rendering. The smaller red combustion label is still discernible and no essential detail depends on tiny text.",
+    "desktop680x510": "All process labels and arrows are clearly readable at actual 680-pixel rendering.",
+    "limitations": "This is a simplified, non-quantitative diagram. It omits ocean and other reservoirs and cannot by itself establish atmospheric measurements or learner understanding; the active alt text states the omitted reservoirs and non-scale arrows."
+  },
+  "result": "No content or legibility blocker found in this targeted audit. A fresh independent blind A record and B record remain necessary for the strict D gate."
+}

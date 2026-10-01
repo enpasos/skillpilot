@@ -1,0 +1,37 @@
+{
+  "reviewKind": "producer-ai-image-candidate-inspection",
+  "reviewedAt": "2026-09-30T23:22:49Z",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "independentQaClaim": false,
+  "goalId": "0503c975-3934-5206-962e-b1c247de0c12",
+  "decision": "CANDIDATE_FOR_INDEPENDENT_QA",
+  "activeAssetPath": "app/public/assets/goal-visualizations/chemie/0503c975-3934-5206-962e-b1c247de0c12/0503c975-3934-5206-962e-b1c247de0c12.jpg",
+  "activeAssetSha256": "sha256:17f4a73e3d8b79c4785f5f1a57c20e1d8321145aca7d7582dc8730a01d91ee7f",
+  "activeAssetFinding": "The actual 2752 x 1536 JPG visibly reads 'zusäetzlicher Zufluss' at native size. At 360 px width the labels for the biological and fossil flows are small; the typo is a concrete reason to consider correction. The historical AI approval note calling the asset orthographically clean is contradicted by the pixels.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-m7-b009-fossil-carbon-20261001-v1/0503c975-3934-5206-962e-b1c247de0c12-candidate-v4.png",
+  "candidateSha256": "sha256:e3f03ecac344cbd713f8102cc58b6f98456bb71cc2b245174c54d566f1d65625",
+  "candidateFormat": "RGB PNG, 1448 x 1086 pixels, 4:3",
+  "generationPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-m7-b009-fossil-carbon-20261001-v1/generation-prompt.md",
+  "generator": "ChatGPT/Codex built-in image_gen; specific model version not provided",
+  "visualInspection": {
+    "original": "Inspected the actual 1448 x 1086 V4 raster. All printed German labels are correctly spelled. Three large reservoir regions and the three main flows are distinct. Brown C markers occur inside biomass and fossil storage; full CO2 molecules occur in the atmosphere. The narrow dashed time path does not depict all biomass converting to fossil fuel.",
+    "phone360": "Inspected an exact 360 x 270 Lanczos downscale. Main labels, the short biological cycle, the additional red fossil path, the time label and the bottom condition remain recognizable without cropping. The time label is smaller than the principal labels but larger than in V3.",
+    "desktop680": "Inspected an exact 680 x 510 downscale and also the approximate 597 x 448 content size imposed by the current 28 rem image height cap. Labels, arrows and reservoir icons remain readable at both sizes. The component uses object-contain rather than cropping.",
+    "formatDecision": "The documented 4:3 exception provides 270 px height at 360 px phone width versus about 203 px for 16:9. This vertical three-reservoir concept benefits from the extra height and larger labels. The desktop height cap still leaves about 597 x 448 px of actual 4:3 content."
+  },
+  "scientificChecks": [
+    "Green atmosphere-to-plant arrow = photosynthetic uptake; orange plant-to-atmosphere arrow = respiration and decomposition; red fossil-to-atmosphere arrow = combustion adds a separate CO2 inflow.",
+    "The caption states a conditional stock/flow relationship, not that all fossil CO2 remains in air: atmospheric CO2 rises if input exceeds uptake.",
+    "The clock and narrow dashed arrow mark a small long-timescale path from organic carbon into fossil storage. The drawing is a simplified school model and does not claim to show ocean uptake, all soil processes or quantitative flux magnitudes."
+  ],
+  "requestedIndependentQa": [
+    "Verify the active JPG typo directly and decide whether it justifies replacing an otherwise good image.",
+    "Inspect V4 native, 360 px and effective desktop render for exact spelling, mobile readability, arrow directions and carbon conservation.",
+    "Check whether the simplified fossil-storage path and the bottom net-balance caption are sufficiently clear for the current canonical goal."
+  ],
+  "requiredIntegrationAltText": "Vereinfachtes Modell des Kohlenstoffkreislaufs: CO2 aus der Atmosphäre gelangt durch Fotosynthese in Pflanzen; Atmung und Zersetzung geben CO2 zurück. Ein kleiner Teil organischen Kohlenstoffs wurde über Millionen Jahre fossil gespeichert. Seine Verbrennung führt zusätzliches CO2 in die Atmosphäre; deren CO2-Gehalt steigt, wenn der gesamte Zufluss die Aufnahme übersteigt. Die Pfeile sind nicht maßstäblich, weitere Speicher wie die Ozeane sind nicht dargestellt.",
+  "curriculumSource": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/8/chemie",
+  "scientificReference": "https://science.nasa.gov/kids/earth/what-is-the-carbon-cycle/",
+  "scopeLimit": "No active image, canonical goal, QA record or central registry was changed. This producer inspection is not an independent visual release, human approval, learner evidence or strict M7 closure."
+}

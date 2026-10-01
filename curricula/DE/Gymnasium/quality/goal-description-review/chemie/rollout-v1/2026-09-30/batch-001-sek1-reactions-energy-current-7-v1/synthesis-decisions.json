@@ -1,0 +1,268 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-b001-sek1-reactions-energy-current-7-20260930-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis of two independent current chemistry description reviews; no human approval",
+  "synthesizedAt": "2026-09-30T15:09:26.924Z",
+  "batch": {
+    "batchId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930",
+    "batchManifestDigest": "sha256:8eee7eec09627827a2955337d8b0ebf10cd2745e1138fa1f0ea9c14cc1b908dc",
+    "configDigest": "sha256:281d2ce16baa48f61cb8e77313f76359583d5155acb8e0d7406abc4c6d2b52cc",
+    "bundleFingerprint": "sha256:b14b7d77e88869403b92e3a33ba1bd343bdf94a760a187428b17b31e9f3dec86",
+    "bookDigest": "sha256:27b0305b950f50f7e0cf042f3cab94e5ee79fe019d9a68eae349011f46cf679a",
+    "reviewInputFingerprint": "sha256:244f486e6577fe03fa802589881658c63d580bb5e24c4e8e589b9be0e1f22d56",
+    "dualSummaryDigest": "sha256:9f0e852907237a9f37ec1e43ee0b78b58f76bb30c62bd2c159596799ae1581a6",
+    "canonicalLandscapeDigest": "sha256:65449e97c5f1a65d8eef11fd9730a2e0744947f50f8b15e6385164958fb6e30a"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-a",
+      "campaignDigest": "sha256:2a38a6cb5179f745ace8ff0af5d6044fa6c3a1ae9fdf85e09564adea062a7c0d",
+      "roundId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:244f486e6577fe03fa802589881658c63d580bb5e24c4e8e589b9be0e1f22d56",
+      "batchId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:279cc309aca68538a2da8a743e1f3b86fa7bcf0be5c146c5964aceb77096a439",
+      "runId": "codex-gpt-6-round-a-chemie-b001-20260930",
+      "runManifestDigest": "sha256:811e0a2545eff3a5bb7888ad9d1edb1b92bfab053b41208ff735a122e0ad4646",
+      "resultsDigest": "sha256:7fef19dc527bd4f6738e54aecfac6edf44adcf6c1d9f5788ee4fbda43f601175"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-b",
+      "campaignDigest": "sha256:fd8bae2e2a9de73168489e6bd24abfc405eb841e980764ef4c0ba5687a382d2d",
+      "roundId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:244f486e6577fe03fa802589881658c63d580bb5e24c4e8e589b9be0e1f22d56",
+      "batchId": "chemie-rollout-v1-batch-001-sek1-reactions-energy-current-7-v1-20260930-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:693e0f5822a86b60e0563c3e08b66011599297049525c2fb4db42066070d5cea",
+      "runId": "chemie-b001-b-20260930-gpt6-v1",
+      "runManifestDigest": "sha256:320d88e8214f7301b9c6cb08326952fd728ca2a803f9adbfd7ff716781519414",
+      "resultsDigest": "sha256:ae7274405aca997f5fb9c06162153abc45bac22115b8a20b23dbd50d97cc0cf8"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-b001-sek1-reactions-energy-current-7-20260930-synthesis-decision-001",
+      "goalId": "2dae4132-40a9-5ee3-ac0c-11c5d1302f36",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c50eea992f8bcde93417e8ece8c0f9691a6fed4c17f1f9ace189cfcd3d2c7296",
+      "pageFingerprint": "sha256:db2cc7de522b2d0cc301136c3de778511b8ac090d834d1226c7c726b3c7ce3bb",
+      "goalReviewContextFingerprint": "sha256:a728042ea6a68db27e5cb8486858fa2fa9063a2c9db9c764681a3735cb11c2d5",
+      "finalText": {
+        "titleDe": "Luftzusammensetzung für Verbrennungen beschreiben",
+        "titleEn": "Describe air composition for combustion processes",
+        "descriptionDe": "Die lernende Person kann die Zusammensetzung von Luft fachlich beschreiben und Sauerstoff als reaktionswirksamen Bestandteil bei Verbrennungen einordnen.",
+        "descriptionEn": "The learner can describe the composition of air and classify oxygen as the reactive component in combustion processes."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b001-round-a-2dae4132-20260930",
+          "recordDigest": "sha256:0c0d11057988ce7029a8572e0871b65a253352fcb4483f90362fd2885bb0d33a"
+        },
+        "second": {
+          "recordId": "chemie-b001-b-01",
+          "recordDigest": "sha256:afbf03f1fa1e9cff3d9be47305de9f4ce872bb74a6ff8683987ccb6945d07b71"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden behalten den klaren, zweisprachig gleichen Sek-I-Zieltext bei. Die erste Evidenzfassung trennt Luftanteil und Reaktionsrolle besonders deutlich und fordert eine unabhängige Vorhersage bei veränderter Luftzufuhr. Die ungefähren Prozentanteile gehören in den P-v2-Nachweis, nicht zwingend in die kurze Beschreibung.",
+      "rationaleEn": "Both independent rounds retain the clear and equivalent bilingual lower-secondary description. The first evidence formulation particularly distinguishes air fraction from reaction role and requires an independent prediction under changed air supply. Approximate percentages belong in the V2 evidence profile rather than necessarily in the short description."
+    },
+    {
+      "decisionId": "chemie-b001-sek1-reactions-energy-current-7-20260930-synthesis-decision-002",
+      "goalId": "fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3cc3fb78e97af3bc26c479b7096f9304dc20120308059dcea228e2d61bbc5600",
+      "pageFingerprint": "sha256:18abe692080f4fe71ce68cfa7d546402382c63ee87bec09aecc21429a30e53dc",
+      "goalReviewContextFingerprint": "sha256:92671ece97edd3f71ab104298b8ac1430d24390a311b61535c756cbffac35400",
+      "finalText": {
+        "titleDe": "Einfache Verbrennungsvorgänge chemisch deuten",
+        "titleEn": "Interpret simple combustion processes chemically",
+        "descriptionDe": "Die lernende Person kann einfache Verbrennungsvorgänge als chemische Reaktionen deuten und beteiligte Stoffe sowie beobachtbare Reaktionsmerkmale fachlich verknüpfen.",
+        "descriptionEn": "The learner can interpret simple combustion processes as chemical reactions and connect involved substances with observable reaction features."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b001-round-a-fa203f3a-20260930",
+          "recordDigest": "sha256:b5443d65ac548d5e29b6ded467248d72c619c274253afdff54bf2aa3acba231e"
+        },
+        "second": {
+          "recordId": "chemie-b001-b-02",
+          "recordDigest": "sha256:5e14d2f42ec2b53aa8be838a7d26b258ae6edeae4ca2a8438cc9ce259871484e"
+        }
+      },
+      "rationaleDe": "Beide Runden erkennen in der Beschreibung eine zusammenhängende Deutung einfacher Verbrennungen aus beteiligten Stoffen und beobachtbaren Reaktionsmerkmalen. Die erste Evidenzfassung prüft mit einem Metallbrand zusätzlich, dass nicht jede Verbrennung dieselben Produkte liefert. Das bleibt Aufgabe des P-v2-Profils; der kanonische Text muss keine Produktliste enthalten.",
+      "rationaleEn": "Both rounds recognize one coherent interpretation of simple combustion through participating substances and observed reaction features. The first evidence formulation also uses burning metal to test that not every combustion has the same products. That belongs in the V2 profile; the canonical text need not contain a product list."
+    },
+    {
+      "decisionId": "chemie-b001-sek1-reactions-energy-current-7-20260930-synthesis-decision-003",
+      "goalId": "1bdaf7f2-ff3b-455a-a7fb-95a44642762a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5e931d1883a851fd060e0d32ed2c38f5b9b422baac5876769780371dca127641",
+      "pageFingerprint": "sha256:4473df4375af9dc15871e437e81ab5774d75399388f7a829b1dff05ce2e1dd69",
+      "goalReviewContextFingerprint": "sha256:ce4bb8e71158ca9a1e5b4a169b0f4d7a1c8406c9ac683484a65c1960ea1ed794",
+      "finalText": {
+        "titleDe": "Massenerhaltung bei Reaktionen erklären",
+        "titleEn": "Explain conservation of mass in reactions",
+        "descriptionDe": "Die lernende Person kann einfache Massenbilanz-Versuche auswerten und das Gesetz von der Erhaltung der Masse fachlich erklären.",
+        "descriptionEn": "The learner can evaluate simple mass-balance experiments and explain the law of conservation of mass."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b001-round-a-1bdaf7f2-20260930",
+          "recordDigest": "sha256:ce4a4400f5bc6e5433bdea7bd0b3ba7a580aee67cae9acc50a894023fcc80df0"
+        },
+        "second": {
+          "recordId": "chemie-b001-b-03",
+          "recordDigest": "sha256:334896112b5877ccffd101a335bdc1d1cd110736bd6b83e00d578d8d83aacf76"
+        }
+      },
+      "rationaleDe": "Die zweite Runde weist zu Recht auf die nötige Systemgrenze in Massenbilanzen hin. Der aktuelle Text behauptet jedoch keine Massenerhaltung für einen offen gemessenen Teil des Systems: Er fordert die Auswertung einfacher Versuche und die Erklärung des Gesetzes. Die erste Runde und das aktuelle P-v2-Profil prüfen geschlossene Gesamtmasse sowie scheinbare Abnahme bei entweichendem Gas ausdrücklich. Die vorgeschlagene Aufzählung offener und geschlossener Anordnungen ist deshalb für den knappen Zieltext nicht erforderlich.",
+      "rationaleEn": "The second round correctly emphasizes the system boundary in mass balances. The current text does not, however, claim conservation for an openly measured subsystem: it asks learners to analyze simple experiments and explain the law. The first round and current V2 profile explicitly check a closed total mass and apparent loss when gas escapes. Listing both open and closed setups is therefore unnecessary in the concise goal description.",
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann einfache Massenbilanz-Versuche unter Berücksichtigung offener und geschlossener Versuchsanordnungen auswerten und die Erhaltung der Gesamtmasse bei chemischen Reaktionen erklären.",
+        "proposedDescriptionEn": "The learner can evaluate simple mass-balance experiments while accounting for open and closed setups and explain conservation of total mass in chemical reactions.",
+        "rationaleDe": "Die Systemgrenze ist ein verbindlicher Teil des eigenständigen Evidenzprofils; der aktuelle Zieltext enthält keine gegenteilige Aussage. Der Ersatz würde eine bestimmte Fallpaarung in die Kompetenzbeschreibung ziehen, ohne einen Textfehler zu beheben.",
+        "rationaleEn": "The system boundary is a required part of the separate evidence profile; the current goal text makes no contrary claim. The replacement would pull a particular case pair into the competence description without correcting an error."
+      }
+    },
+    {
+      "decisionId": "chemie-b001-sek1-reactions-energy-current-7-20260930-synthesis-decision-004",
+      "goalId": "542d88e9-4cd3-5f90-bd20-b50ab030d72a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6c9da2522ba93060ec7800dc4f03861aa336e5f201e30ab004d7fd8f730700a1",
+      "pageFingerprint": "sha256:8e440082b9fa5949bade82aaa05f9ce9c39e39ddc0bd2f32f409953518989800",
+      "goalReviewContextFingerprint": "sha256:851b48ec9ffb61c34546ff6085934ca134c4fd19efa83847a6460ddea8207ca3",
+      "finalText": {
+        "titleDe": "Energieprofile chemischer Reaktionen deuten",
+        "titleEn": "Interpret energy profiles of chemical reactions",
+        "descriptionDe": "Die lernende Person kann Energieänderungen chemischer Reaktionen klassifizieren und Energieprofile auch für katalysierte Reaktionen grafisch darstellen und deuten.",
+        "descriptionEn": "The learner can classify energy changes in chemical reactions and graphically represent and interpret energy profiles, including catalyzed reactions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b001-round-a-542d88e9-20260930",
+          "recordDigest": "sha256:07ceee6728c0b21b18fe0763e800d2ccebdc5e1907633e0ef3948f57c62f2536"
+        },
+        "second": {
+          "recordId": "chemie-b001-b-04",
+          "recordDigest": "sha256:8ed36f0a29713f51057c808ec38c4e1f9739c586e41242339290b639e35ffb66"
+        }
+      },
+      "rationaleDe": "Beide Runden bewerten die aktuelle Beschreibung als eine atomare Kompetenz zur Darstellung und Deutung von Reaktionsenergieprofilen einschließlich eines katalysierten Wegs. Die erste Evidenzfassung trennt Anfangs-/Endniveau und Aktivierungsbarriere besonders explizit. Das P-v2-Profil prüft diese Trennung in einem frischen endothermen Gegenfall.",
+      "rationaleEn": "Both rounds treat the current description as one atomic competence in representing and interpreting reaction-energy profiles, including a catalyzed path. The first evidence formulation separates initial and final levels from the activation barrier particularly explicitly. The V2 profile tests that distinction in a fresh endothermic countercase."
+    },
+    {
+      "decisionId": "chemie-b001-sek1-reactions-energy-current-7-20260930-synthesis-decision-005",
+      "goalId": "17fe22c4-1248-5f37-9d0c-52ee4571d09f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:28dc16ff506875e2afad9be8686436135ded2a622a71831e823e49dc54ca3f3f",
+      "pageFingerprint": "sha256:276a8c9f29f45de33221b24aa413a50e546588bc288caa2815b9841c19dfc49f",
+      "goalReviewContextFingerprint": "sha256:3d5f877573cb219855c78512261dd9eb8cb709d69476254bc2d32d1383189dd3",
+      "finalText": {
+        "titleDe": "Bedeutung von Redoxreaktionen erörtern",
+        "titleEn": "Discuss the significance of redox reactions",
+        "descriptionDe": "Die lernende Person kann die Bedeutung von Redoxreaktionen in Alltag und Technik an ausgewählten Beispielen fachlich erörtern.",
+        "descriptionEn": "The learner can discuss the significance of redox reactions in everyday life and technology using selected examples."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b001-round-a-17fe22c4-20260930",
+          "recordDigest": "sha256:8944525c16ac11f108fef42f7ec4792f5cb88ae5df34412e2d316ff4af4be4ca"
+        },
+        "second": {
+          "recordId": "chemie-b001-b-05",
+          "recordDigest": "sha256:478835ee9bdbc510a22460d98362d83e288e32026bcfb9e6c63c34265d5b3ec5"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten die eine, fachlich begrenzte Erörterungskompetenz zu ausgewählten Redoxbeispielen bei. Die erste Evidenzfassung fordert Redoxbefund, offengelegtes Kriterium und Urteil getrennt. Das P-v2-Profil operationalisiert Batterie und Korrosion, ohne ein bestimmtes Urteil oder bundesweite Quellenabdeckung aus der kanonischen Kurzbeschreibung abzuleiten.",
+      "rationaleEn": "Both rounds retain the single, bounded discussion competence using selected redox examples. The first evidence formulation separates redox finding, stated criterion, and judgment. The V2 profile operationalizes battery and corrosion without inferring a prescribed judgment or nationwide source coverage from the brief canonical description."
+    },
+    {
+      "decisionId": "chemie-b001-sek1-reactions-energy-current-7-20260930-synthesis-decision-006",
+      "goalId": "945d69d5-92a7-5195-8f78-4e56f8e7b633",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a8b53c0194a8877886e5ecda2a87ad511747442ce3eb497c6a8b401efa2faecd",
+      "pageFingerprint": "sha256:7c23b57f24d2ce68121beb0f8e392c8394df719206fbc94d789bbea8b1e262c8",
+      "goalReviewContextFingerprint": "sha256:aef53b6845cd3eb082a16116f51a39315570c225b0c5bd2fc8fddc942cc07e45",
+      "finalText": {
+        "titleDe": "Aktivierungsenergie und Katalysatorwirkung erklären",
+        "titleEn": "Explain activation energy and catalyst effects",
+        "descriptionDe": "Die lernende Person kann Aktivierungsenergie als Startvoraussetzung chemischer Reaktionen beschreiben, von endothermer Energiezufuhr unterscheiden und die Wirkung von Katalysatoren auf die Aktivierungsenergie erklären.",
+        "descriptionEn": "The learner can describe activation energy as a starting condition for chemical reactions, distinguish it from energy input in endothermic reactions, and explain how catalysts affect activation energy."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b001-round-a-945d69d5-20260930",
+          "recordDigest": "sha256:de5253f6f7a4d341eb1715251e996d49900cdf595c65a5b4ea88ac86ea1a9133"
+        },
+        "second": {
+          "recordId": "chemie-b001-b-06",
+          "recordDigest": "sha256:03645be6145a83a9d28693850d56e9988aeae3fb4a2a31c5d438ce950767f5e2"
+        }
+      },
+      "rationaleDe": "Die zweite Runde schlägt eine fachlich korrekte Präzisierung der Aktivierungsbarriere vor. Der aktuelle Text vermischt sie jedoch nicht mit endothermem Energieumsatz, sondern verlangt ausdrücklich die Unterscheidung und die Erklärung der Katalysatorwirkung. Die erste Evidenzfassung und das P-v2-Profil verlangen zudem unveränderte Anfangs-/Endenergien beim katalysierten Weg. Die längere Ersatzbeschreibung ist hier kein notwendiger Fehlerbehebungsschritt.",
+      "rationaleEn": "The second round proposes a scientifically correct clarification of the activation barrier. The current text does not conflate it with endothermic energy change; it explicitly requires that distinction and an explanation of catalyst action. The first evidence formulation and V2 profile also require unchanged initial and final energies for a catalyzed path. The longer replacement is not needed to correct a defect here.",
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann Aktivierungsenergie als zu überwindende Energiebarriere vom Energieumsatz einer chemischen Reaktion unterscheiden und erklären, wie ein Katalysator diese Barriere senkt, ohne den Energieunterschied zwischen Ausgangs- und Endzustand zu verändern.",
+        "proposedDescriptionEn": "The learner can distinguish activation energy as a barrier that must be overcome from the energy change of a chemical reaction and explain how a catalyst lowers that barrier without changing the energy difference between initial and final states.",
+        "rationaleDe": "Die vorgeschlagene Präzisierung wird als positives Prüfmerkmal in P-v2 übernommen. „Startvoraussetzung“ ist im Kontext der expliziten Abgrenzung als zu überwindende Barriere lesbar und keine Aussage, ein Katalysator ändere die Energiebilanz.",
+        "rationaleEn": "The proposed clarification is adopted as a positive V2 assessment requirement. In the context of the explicit distinction, 'starting condition' denotes a barrier to be overcome and does not claim that a catalyst changes the energy balance."
+      }
+    },
+    {
+      "decisionId": "chemie-b001-sek1-reactions-energy-current-7-20260930-synthesis-decision-007",
+      "goalId": "8576b82b-811a-5e13-b5dc-ec5d42030565",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:adf95f8992607a3dda965f2ef4889e6008fd878c66c98bb2de00466afb032dd3",
+      "pageFingerprint": "sha256:571ca0a6fbf80bc1f891230d17cd450abbfe45ed838903c607866d4bb5ec931f",
+      "goalReviewContextFingerprint": "sha256:e8ee44a904adbde3c059f2366054da601ddc2aeac3778e21a608ef01227fbe50",
+      "finalText": {
+        "titleDe": "Brandbedingungen und Brandschutz chemisch begründen",
+        "titleEn": "Chemically justify fire conditions and fire protection",
+        "descriptionDe": "Die lernende Person kann Brandbedingungen und Löschmaßnahmen in Modellversuchen untersuchen, Brandschutzmaßnahmen begründen und Verbrennungsvorgänge mit Sauerstoffzufuhr, Brennstoff und Energiezufuhr verknüpfen.",
+        "descriptionEn": "The learner can investigate fire conditions and extinguishing measures in model experiments, justify fire-protection measures, and connect combustion with oxygen supply, fuel and energy input."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b001-round-a-8576b82b-20260930",
+          "recordDigest": "sha256:f34a4943da917573ac2d69d30a65d7de6f2a7a2fd55abdee8370c68ba6f18a10"
+        },
+        "second": {
+          "recordId": "chemie-b001-b-07",
+          "recordDigest": "sha256:a16f6020eb097e76e0b16eb272bdc7e1201bed6303863b314c4a0be6ee97026b"
+        }
+      },
+      "rationaleDe": "Die zweite Runde fordert zu Recht Aufsicht und eine sichtbare Verbindung zwischen Brandbedingungen und Löschmaßnahmen. Der aktuelle Text nennt diese Verbindung bereits durch die drei Bedingungen und die Begründung von Schutzmaßnahmen; „in Modellversuchen untersuchen“ fordert keine unbetreute Durchführung. Die erste Evidenzfassung und das P-v2-Profil beschränken die Prüfung ausdrücklich auf betreute Modelle oder bereitgestellte Daten. Eine Sicherheitsfreigabe für Eigenversuche wird nicht erteilt.",
+      "rationaleEn": "The second round rightly requires supervision and an explicit link between fire conditions and extinguishing choices. The current text already links the three conditions to justifying protective measures; 'investigate in model experiments' does not require unsupervised execution. The first evidence formulation and V2 profile expressly limit assessment to supervised models or supplied data. No permission for independent fire experiments is granted.",
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann in betreuten Modellversuchen untersuchen, wie Brennstoff, Sauerstoff und Zündenergie Verbrennungen ermöglichen, und daraus geeignete Lösch- und Brandschutzmaßnahmen begründen.",
+        "proposedDescriptionEn": "The learner can investigate in supervised model experiments how fuel, oxygen and ignition energy enable combustion and use the findings to justify suitable extinguishing and fire-protection measures.",
+        "rationaleDe": "Die zusätzliche Aufsichtsangabe ist für die Durchführung verbindlich und im P-v2-Profil festgehalten. Sie muss nicht als Teil der atomaren Zielkompetenz im kanonischen Kurztext stehen, der keine unbetreute Handlung anordnet.",
+        "rationaleEn": "Supervision is mandatory for execution and is recorded in the V2 profile. It need not become part of the atomic competence in the concise canonical text, which does not instruct unsupervised action."
+      }
+    }
+  ],
+  "manifestFingerprint": "sha256:f9f999cbaafbd8ac7964726165f75d0324f65bcd1e831ec1d6876371082175de"
+}

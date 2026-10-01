@@ -1,0 +1,23 @@
+{
+  "reviewKind": "independent-ai-image-candidate-review",
+  "reviewedAt": "2026-09-30T21:10:00Z",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b004s-ph-range-correction-20260930-v1/d2ccd1d5-candidate.png",
+  "candidateSha256": "sha256:cf6f69ccb31591750a925603b9930d57edb0f9f0112c6512b28ad674a561f7f8",
+  "dimensions": "1672x941 RGB PNG",
+  "inspectedWidths": [1672, 680, 360],
+  "previewPaths": {
+    "360": "tmp/m7-mobile-qa/d2ccd1d5-candidate-360.png",
+    "680": "tmp/m7-mobile-qa/d2ccd1d5-candidate-680.png"
+  },
+  "decision": "PASS_CANDIDATE_ONLY",
+  "findings": [
+    "The current goal asks learners to distinguish acidic, neutral and alkaline solutions in suitable school experiments by indicator colours and place results in broad pH ranges. The existing JPG showed specific pH 2/7/11 labels under indicator colours; that could falsely imply exact pH readings.",
+    "The candidate replaces those labels with the category ranges sauer pH < 7, neutral pH = 7 and alkalisch pH > 7. It conveys qualitative classification rather than an exact reading for the red or blue samples. Neutral pH 7 is the usual school-level reference condition.",
+    "I inspected the actual 1672x941 image and the 360x203 and 680x383 previews. All three labels, the indicator strip, colour correspondence and experimenter's eye protection remain legible at 360 pixels.",
+    "The warm comic character, clear beakers, soft laboratory setting and wide 16:9 layout match the existing image landscape. No photorealistic or sterile technical redesign is present."
+  ],
+  "scopeLimit": "Candidate image QA only. The old JPG remains active and V-HOLD until exact asset replacement, QA hash binding, current D/P context checks and targeted central gate check. No human release approval."
+}

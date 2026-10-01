@@ -1,0 +1,51 @@
+{
+  "reviewKind": "independent-ai-image-candidate-review",
+  "reviewedAt": "2026-09-30T22:12:07Z",
+  "authority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "goalId": "1286f2fe-89b7-4454-8e11-85b6abd6e278",
+  "decision": "REVISE",
+  "oldActivePath": "app/public/assets/goal-visualizations/chemie/1286f2fe-89b7-4454-8e11-85b6abd6e278/1286f2fe-89b7-4454-8e11-85b6abd6e278.jpg",
+  "oldActiveSha256": "sha256:665718cfa492661b83362f5c45f46f271d7ce33363d61cd16c7a137ac8489280",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b009-1286-energy-correction-20261001-v1/candidate-1286f2fe.png",
+  "candidateSha256": "sha256:1dc36dfb332a06baad2534c14c50fd95d42f7e6575218ba8fdfdffb6ac25d8d8",
+  "candidateDimensions": "1672x941 RGB PNG",
+  "candidateAspectRatio": "1.777:1, approximately 16:9",
+  "inspectedAtWidthsPx": [1672, 680, 360],
+  "previewFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b009-1286-energy-correction-20261001-v1/candidate-1286f2fe-680px.png",
+      "sha256": "sha256:4729fd59d74b35e9fa1e80ef86ec6c888b13a53f1095fcd71cb677d878f914fc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b009-1286-energy-correction-20261001-v1/candidate-1286f2fe-360px.png",
+      "sha256": "sha256:fa5331bc4918ed63a63b07013e0ee32aae1a9b9e1fa8d31dfef86c00a59cdc5a"
+    }
+  ],
+  "findings": [
+    {
+      "severity": "pass",
+      "area": "correction-and-energy-diagrams",
+      "detail": "The old right-hand effervescent-tablet/cooling claim is gone. Exothermic reactants are above products with an outward arrow; endothermic reactants are below products with an inward arrow. The generic energy-level comparison is sound for the net energy direction."
+    },
+    {
+      "severity": "pass",
+      "area": "text-and-form-factor",
+      "detail": "All required German labels are present and spelled correctly: 'Exotherm oder endotherm?', 'exotherm', 'endotherm', 'Edukte', 'Produkte', 'Energie nach außen', 'Energie hinein'. The labels and main energy levels remain readable in the actual 360-pixel and 680-pixel previews. The 16:9 PNG keeps the warm, accessible comic style of the old image."
+    },
+    {
+      "severity": "blocker",
+      "area": "endothermic-energy-flow-icon",
+      "detail": "In the right-hand endothermic panel, the orange/red product particles are surrounded by outward orange heat/radiation marks. These marks visually signal energy leaving the products, contradicting the panel's 'Energie hinein' arrow and the intended net uptake. This conflict is visible even at 360 px and is material because the goal is precisely to distinguish the direction of energy transfer. Remove the radiating marks and show supplied energy entering the reacting system, or omit the extra particle vignette entirely while retaining the correct energy diagram."
+    },
+    {
+      "severity": "caution",
+      "area": "particle-icon",
+      "detail": "The right icon depicts differently coloured and apparently differently numbered isolated spheres before and after the arrow, with no legend or molecule boundaries. If read as a particle model rather than abstract decoration, it may imply that atoms vanish or change identity. Prefer an unambiguous abstract transformation icon or omit it; do not let an unexplained atom-count model compete with the energy diagram."
+    }
+  ],
+  "primaryCurriculumSource": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf",
+  "sourceScope": "Hessen G9 Chemie section 8.2, printed page 14, requires energy diagrams for exothermic/endothermic reactions and activation energy; the finding about outward rays is an independent visual-scientific inference from the candidate, not a quotation from the curriculum.",
+  "nextStep": "Revise the right product vignette, generate and inspect the actual corrected PNG again at native, 680 and 360 px, and obtain a new independent candidate review before any active V or central M7 binding.",
+  "scopeLimit": "Candidate inspection only. No active image, visualization QA ledger, canonical resource, description resolution, P evidence, central five-gate count or human release approval was changed by this review."
+}

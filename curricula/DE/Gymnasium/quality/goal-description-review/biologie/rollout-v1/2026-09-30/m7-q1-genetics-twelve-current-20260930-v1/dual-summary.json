@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:a0dc61cd61ff0c61e7a759966b0e566d452d8af265ad9b4ccf621cabaa288091",
+  "reviewInputFingerprint": "sha256:ae92a05e686b176cd5a413d8738f6ba95453a7f3460feb78d9fac1d359bdc652",
+  "goalCount": 12,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-a",
+      "roundId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-first-pass-a",
+      "independenceGroupId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-independent-a",
+      "runIds": [
+        "codex-gpt-6-biology-q1-round-a-20260930"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-b",
+      "roundId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-first-pass-b",
+      "independenceGroupId": "biologie-m7-q1-genetics-twelve-current-20260930-v1-independent-b",
+      "runIds": [
+        "biologie-q1-genetics-twelve-20260930-blind-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 12,
+    "unavailable": 0,
+    "requiresSynthesis": 12
+  },
+  "goals": [
+    {
+      "goalId": "0daa79f6-8f61-5506-98f9-65db83062ba8",
+      "firstRecordId": "bio-q1-round-a-0daa79f6-20260930",
+      "secondRecordId": "biologie-q1-b-01-0daa79f6",
+      "firstRunId": "codex-gpt-6-biology-q1-round-a-20260930",
+      "secondRunId": "biologie-q1-genetics-twelve-20260930-blind-b-run-001",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+      "firstRecordId": "bio-q1-round-a-475eebb4-20260930",
+      "secondRecordId": "biologie-q1-b-02-475eebb4",
+      "firstRunId": "codex-gpt-6-biology-q1-round-a-20260930",
+      "secondRunId": "biologie-q1-genetics-twelve-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+      "firstRecordId": "bio-q1-round-a-ffef97e3-20260930",
+      "secondRecordId": "biologie-q1-b-03-ffef97e3",
+      "firstRunId": "codex-gpt-6-biology-q1-round-a-20260930",
+      "secondRunId": "biologie-q1-genetics-twelve-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "946ce2e7-c30d-5670-839d-003b0619c284",
+      "firstRecordId": "bio-q1-round-a-946ce2e7-20260930",
+      "secondRecordId": "biologie-q1-b-04-946ce2e7",
+      "firstRunId": "codex-gpt-6-biology-q1-round-a-20260930",
+      "secondRunId": "biologie-q1-genetics-twelve-20260930-blind-b-run-001",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8f6933b1-6e02-5512-acf2-a90a7fb9cb75",
+      "firstRecordId": "bio-q1-round-a-8f6933b1-20260930",
+      "secondRecordId": "biologie-q1-b-05-8f6933b1",
+      "firstRunId": "codex-gpt-6-biology-q1-round-a-20260930",
+      "secondRunId": "biologie-q1-genetics-twelve-20260930-blind-b-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ceb54223-197c-5289-a9c6-19358912e144",
+      "firstRecordId": "bio-q1-round-a-ceb54223-20260930",
+      "secondRecordId": "biologie-q1-b-06-ceb54223",
+      "firstRunId": "codex-gpt-6-biology-q1-round-a-20260930",
+      "secondRunId": "biologie-q1-genetics-twelve-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+      "firstRecordId": "bio-q1-round-a-5b2571d9-20260930",
+      "secondRecordId": "biologie-q1-b-07-5b2571d9",
+      "firstRunId": "codex-gpt-6-biology-q1-round-a-20260930",
+      "secondRunId": "biologie-q1-genetics-twelve-20260930-blind-b-run-001",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+      "firstRecordId": "bio-q1-round-a-8eb86a82-20260930",
+      "secondRecordId": "biologie-q1-b-08-8eb86a82",
+      "firstRunId": "codex-gpt-6-biology-q1-round-a-20260930",
+      "secondRunId": "biologie-q1-genetics-twelve-20260930-blind-b-run-001",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "440854be-7f06-5678-91cb-ba8dcab56959",
+      "firstRecordId": "bio-q1-round-a-440854be-20260930",
+      "secondRecordId": "biologie-q1-b-09-440854be",
+      "firstRunId": "codex-gpt-6-biology-q1-round-a-20260930",
+      "secondRunId": "biologie-q1-genetics-twelve-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "73b66ead-e44a-5486-98e3-1fb3f99620a6",
+      "firstRecordId": "bio-q1-round-a-73b66ead-20260930",
+      "secondRecordId": "biologie-q1-b-10-73b66ead",
+      "firstRunId": "codex-gpt-6-biology-q1-round-a-20260930",
+      "secondRunId": "biologie-q1-genetics-twelve-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3891b735-9d0d-5eef-b653-6ad58b9181f6",
+      "firstRecordId": "bio-q1-round-a-3891b735-20260930",
+      "secondRecordId": "biologie-q1-b-11-3891b735",
+      "firstRunId": "codex-gpt-6-biology-q1-round-a-20260930",
+      "secondRunId": "biologie-q1-genetics-twelve-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+      "firstRecordId": "bio-q1-round-a-f53d0a0b-20260930",
+      "secondRecordId": "biologie-q1-b-12-f53d0a0b",
+      "firstRunId": "codex-gpt-6-biology-q1-round-a-20260930",
+      "secondRunId": "biologie-q1-genetics-twelve-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

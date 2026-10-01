@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-resolution-350a394f-e0d4-5e42-8e9a-39da9df33518",
+  "goal": {
+    "goalId": "350a394f-e0d4-5e42-8e9a-39da9df33518",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:e60a172e07d08d29e89b02bc8c75092d9ad5609aa5d40da625caf6939eb52c8f",
+    "pageFingerprint": "sha256:6d908d7fc73a446cc6c5558f217ee54e1b8de15370c4295a6ab22d5cd4bcbe08",
+    "goalReviewContextFingerprint": "sha256:b345f14ff59da60ad3a64b4a4bbf67b341c4472d351b175e5d481b5e2582d4b3",
+    "finalText": {
+      "titleDe": "Wirkung geeigneter Löschmittel erklären",
+      "titleEn": "Explain the effect of suitable extinguishing agents",
+      "descriptionDe": "Die lernende Person kann die Wirkung geeigneter Löschmittel bei einfachen Bränden über das Unterbrechen von Verbrennungsbedingungen fachlich erklären.",
+      "descriptionEn": "The learner can explain the effect of suitable extinguishing agents in simple fires by referring to the interruption of combustion conditions."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-a",
+      "campaignDigest": "sha256:564e8ba4894672d9976b1e1791687d2e13c88bc2090a5e6f5484101d0bc32279",
+      "roundId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:32ecbb03b0eded14d66cd3a2989ff61c3ee71177ec53d72e10c96a106b9fa210",
+      "goalReviewContextFingerprint": "sha256:b345f14ff59da60ad3a64b4a4bbf67b341c4472d351b175e5d481b5e2582d4b3",
+      "batchId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-a.batch-001",
+      "runId": "codex-gpt-6-round-a-chemie-b009-20260930",
+      "runManifestDigest": "sha256:582ba21e2ad3688175fa25450c4165f0fb03d0ce0edd95e5b04205411f02b081",
+      "resultsDigest": "sha256:09ac18519d9930c00e00dd083172993ebbb36672d07428413a08f8ce826fdac1",
+      "recordId": "chemie-b009-round-a-350a394f-20260930",
+      "recordDigest": "sha256:fbb3e29ff7e3b44fc50bb08b8b1ada6e204497c738bb22555f840c93ea22d5e4"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-b",
+      "campaignDigest": "sha256:be3d6dffaf9142ee0fd8634a27f6e97fea4175dcb95c5deeafdcbdb649507cca",
+      "roundId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:32ecbb03b0eded14d66cd3a2989ff61c3ee71177ec53d72e10c96a106b9fa210",
+      "goalReviewContextFingerprint": "sha256:b345f14ff59da60ad3a64b4a4bbf67b341c4472d351b175e5d481b5e2582d4b3",
+      "batchId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-b.batch-001",
+      "runId": "chemie-b009-global-reactions-20260930-blind-b-run-001",
+      "runManifestDigest": "sha256:7ff826ae46c4258bcdac12f3792912fe200805d3fd3c3a6ce11d4bce16ad3e41",
+      "resultsDigest": "sha256:18aea5bc6886b274fd9fdf5693b81e68d1cacb81435f1df4b2ef01bb26956926",
+      "recordId": "chemie-b009-b-03-350a394f",
+      "recordDigest": "sha256:531fdd725275fbb83b8dc61bba848d64c6aa4ac4bf002b209ac4df74151c9391"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:64845805c1910516bd363bfa806b32821196a703357372e99251ded5268303c0"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-b009-global-reactions-20260930-partial-synthesis",
+    "manifestDigest": "sha256:3ee95ddb10320c0df6c282ba4d8e83d8a36dd0f513e4131fb3a70daa3bc25205",
+    "manifestFingerprint": "sha256:305093b7945546a2d6a13c69cf5bc797051889932077cf3bf29facae3fc6037c",
+    "decisionId": "chemie-b009-global-reactions-20260930-partial-synthesis-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-b009-global-reactions-20260930-partial-synthesis-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis of independent A/B; four dual keeps and four substantive deferrals, no human approval or image approval",
+    "synthesizedAt": "2026-09-30T21:45:01.000Z",
+    "rationaleDe": "Beide Runden behalten die eine Kompetenz bei, ein zur einfachen Brandsituation passendes Löschmittel über die unterbrochene Verbrennungsbedingung zu erklären. Die direkte HE-J8-Herkunft trägt Löschmittel; der aktuelle Text fordert keine praktische Brandbekämpfung. Der P-Nachweis muss Papier-/Fett-/Elektroszenarien ausschließlich als sichere Daten- oder Lehrkraftfälle behandeln und die Gefahr von Wasser auf Fett ausdrücklich erkennen. Das bestehende Bild wurde angesehen, bleibt aber als eigener V-Nachweis zu prüfen; D erteilt keine Handlungserlaubnis.",
+    "rationaleEn": "Both rounds retain one competence: explain a suitable extinguishing agent for a simple fire through the combustion condition it interrupts. Direct Hessian J8 provenance supports extinguishing agents; the current wording does not require practical firefighting. P evidence must treat paper, grease and electrical scenarios only as safe data or teacher-run cases and explicitly recognise the danger of water on grease. The existing image was inspected but remains a separate V decision; D grants no permission to act.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Löschen bedeutet, mindestens eine notwendige Verbrennungsbedingung geeignet zu unterbrechen. Kühlung, Sauerstoffabschluss und Entfernung des Brennstoffs wirken je nach Brandart unterschiedlich; ein Mittel ist nicht für jeden Brand geeignet.",
+      "essentialUnderstandingEn": "Extinguishing interrupts at least one necessary combustion condition. Cooling, oxygen exclusion and fuel removal work differently across fire types; one agent is not suitable for every fire.",
+      "observablePerformanceDe": "Die lernende Person erklärt anhand sicher vorgegebener Brandszenarien, welche Bedingung ein geeignetes Löschmittel unterbricht, und benennt bei Fettbrand ausdrücklich die Gefahr von Wasser.",
+      "observablePerformanceEn": "Using safe supplied fire scenarios, the learner explains which condition a suitable extinguishing agent interrupts and expressly identifies the danger of water on a grease fire.",
+      "transferExpectationDe": "Bei einem neuen Papier- oder Fettbrandfall begründet sie ein zur Situation passendes Vorgehen ohne eigene Branddurchführung und überträgt nicht die Wasserwahl vom Papierbrand auf Fett.",
+      "transferExpectationEn": "For a fresh paper or grease-fire case, they justify a situation-appropriate response without conducting a fire themselves and do not transfer the water choice from paper to grease."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-06dc637895349798d9b932c2566480ee9782320ca69b421f0f519f338e76c679",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:9ca4c57b05c80207915ba5b6378d38161c3ccbf31b7c26572fca40e3b5c95e9d"
+}

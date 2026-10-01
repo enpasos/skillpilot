@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-root-biology-e198-v5-a-b-reconciler-2026-09-30",
+  "synthesizedAt": "2026-09-30T21:07:12.000Z",
+  "batch": {
+    "batchId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5",
+    "batchManifestDigest": "sha256:69bca9668da8f33ea7a0763fd21fb30f6e2e04e281a2bbf9afd9f507401dff36",
+    "configDigest": "sha256:6bd3a3e5c7e81f6d21d9567f4cc06ad6224bf3f8d116103fe3ef79b258307e90",
+    "bundleFingerprint": "sha256:47fab0a274537f3decaf02d35759b148716e63a4810a1444e2e5cbb5052c86a1",
+    "bookDigest": "sha256:be03c741189442870f679c83c8d6157e7666f03992a3416c224a7cbc1aa5694f",
+    "reviewInputFingerprint": "sha256:3271ea85e590a020b2fd951e297176aa4a6d20a6a84baacdba6bcfd4a1ff1b5f",
+    "dualSummaryDigest": "sha256:766ff1dcb9d12705b9f66f4d023292e48b2da96a145c9c14c3f3f29fa4d7b1a3",
+    "canonicalLandscapeDigest": "sha256:cd05416f6390fab7d3bc2f43f4513482f250404b85d1772358e0b4c693c0849a"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-a",
+      "campaignDigest": "sha256:2cb9ff3226d594725f5525486531f706ca655a30c03b41572023f6be17339901",
+      "roundId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-first-pass-a",
+      "independenceGroupId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-independent-a",
+      "reviewInputFingerprint": "sha256:3271ea85e590a020b2fd951e297176aa4a6d20a6a84baacdba6bcfd4a1ff1b5f",
+      "batchId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:b7502b0ace346b9bf934b9ad4f0b0bf2057f17eda5f9f12024b46bfba378658f",
+      "runId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-a-run-001",
+      "runManifestDigest": "sha256:92c268d28d264492bed7abdf6c12c461760846efc54358f4e20560bde373a9f3",
+      "resultsDigest": "sha256:6dfb0289db6d6c896a7ef6b66b819edcc2662363b38d57a5415d7783f8ca8d93"
+    },
+    "second": {
+      "campaignId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-b",
+      "campaignDigest": "sha256:e4bc8075962fe025b00c20734099352805ff7b0364ddd6d6e3b3ba35f1f73d55",
+      "roundId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-first-pass-b",
+      "independenceGroupId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-independent-b",
+      "reviewInputFingerprint": "sha256:3271ea85e590a020b2fd951e297176aa4a6d20a6a84baacdba6bcfd4a1ff1b5f",
+      "batchId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:c1c020642095c39896a8016535a7b780ab8ab8e8c16088390b3b8711ef10cfd4",
+      "runId": "biologie-m7-ephase-198-v5-b-run-001",
+      "runManifestDigest": "sha256:3ab9e748d0be061ca1784748c36c634887ca003f9dde378e516b545d1220641b",
+      "resultsDigest": "sha256:54f493d43bb31bb4a8414cb875779627d9accf947593e3d3a3951bc568337d21"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-synthesis-decision-001",
+      "goalId": "1984fd66-c117-5c29-87b3-1c1626e4ba81",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e555e241c17241a2ab326a9b699ecfb11db291105242189939abdbb05ae209f8",
+      "pageFingerprint": "sha256:363675a9a428394cee6a757f6f15ed7e0d184bae524bdb7305a839744594a295",
+      "goalReviewContextFingerprint": "sha256:9f930bc84959f90525f52c8d999127b6028e249e9cf95f6cb3d311cf910d7844",
+      "finalText": {
+        "titleDe": "Substratabhängigkeit der Enzymaktivität deuten",
+        "titleEn": "Interpret substrate dependence of enzyme activity",
+        "descriptionDe": "Die lernende Person kann aus Daten bei konstanter Enzymmenge und sonst gleichen Bedingungen erklären, warum die Enzymaktivität mit steigender Substratkonzentration im einfachen Sättigungsmodell ein Plateau erreicht.",
+        "descriptionEn": "The learner can use data at a fixed enzyme amount and otherwise equal conditions to explain why enzyme activity reaches a plateau as substrate concentration rises in a simple saturation model."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "biologie-m7-ephase-198-controlled-concentration-current-20260930-v5-a-1984fd66",
+          "recordDigest": "sha256:0a5df684aa3adf5e23aa2b41b08e145495b697759e2624e743b6cbfd113e925d"
+        },
+        "second": {
+          "recordId": "biologie-m7-ephase-198-v5-b-record-1984fd66-c117-5c29-87b3-1c1626e4ba81",
+          "recordDigest": "sha256:3669f1c82d3fa22202d2df3bdef0e6208020f78197d5bef548ab9d6d2450932f"
+        }
+      },
+      "rationaleDe": "Beide voneinander unabhängigen aktuellen Runden behalten den DE/EN-Zieltext. Die Qualifikation auf feste Enzymmenge, sonst gleiche Bedingungen und das einfache Sättigungsmodell behebt den in v4 gefundenen unbedingten Plateauanspruch; Quelle HE KC 2024 E.2, gedruckte S. 34, benennt die Substratkonzentrationsabhängigkeit. Die Runden unterscheiden sich in der Ausgestaltung von Erklärung und Transfer. Runde A trennt ausdrücklich ein gemessenes Plateau von einer bei begrenzter Datenreihe bloß modellhaft vorhergesagten Fortsetzung; diese fachlich nötige Grenze wird als Evidence-Fassung übernommen. Das aktive Bild ist eine schematische Modellhilfe, kein Messnachweis. P, A, M und V bleiben eigene Gates; menschliche Prüfung ist getrennt.",
+      "rationaleEn": "Both independent current rounds keep the German and English goal text. Fixed enzyme amount, otherwise equal conditions and the simple saturation model resolve the unconditional plateau claim found in v4; the official Hessen 2024 Biology curriculum E.2, printed page 34, names substrate-concentration dependence. The rounds differ in the explanation and transfer formulation. Round A explicitly separates an observed plateau from a continuation only predicted by the model when the measured range is limited, so its evidence formulation is selected. The active image is schematic teaching support, not measurement evidence. P, A, M and V remain separate gates, and human review is separate."
+    }
+  ],
+  "manifestFingerprint": "sha256:85633e2b6fa790a83867c87a34b8610f8c56f56a22e82e3a1f54c901ff243cc3"
+}

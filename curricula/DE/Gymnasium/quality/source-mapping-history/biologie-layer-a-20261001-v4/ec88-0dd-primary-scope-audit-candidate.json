@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "auditId": "biologie-ec88-0dd-primary-scope-candidate-20261001-v1",
+  "reviewedAt": "2026-10-01",
+  "status": "candidate; independent D-A/B review and final scope decision pending; no active mapping change",
+  "goalIds": [
+    "ec88fc1d-ee0f-5a01-9464-dc358241050e",
+    "0dd8380d-b542-5126-8d8e-f95d9ccded90"
+  ],
+  "method": "Compare exact current goal demand with active extraction/mapping and official primary text. A partial source-to-canonical edge is not itself full curricular support.",
+  "findings": [
+    {
+      "jurisdiction": "DE-BW",
+      "goalId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+      "primaryUrl": "https://bildungsplaene-bw.de/BP2016BW_ALLG_GYM_BIO.V2_IK_9-10_02",
+      "locator": "3.3.2(4),(7)",
+      "primaryEvidence": "Trisomie 21 is explicit example of mutation; meiosis is also required. Free-trisomy nondisjunction mechanism is a didactic inference, not literal source text.",
+      "extractionGap": "Active extracted source goal (7) omits the parenthetical Trisomie-21 example.",
+      "provisionalDecision": "keep candidate with bounded example/inference and extraction repair; independent review pending"
+    },
+    {
+      "jurisdiction": "DE-NW",
+      "goalId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+      "primaryUrl": "https://lehrplannavigator.nrw.de/system/files/media/document/file/g9_bi_klp_-3413_2019_06_23_0.pdf",
+      "locator": "Inhaltsfeld 6 Genetik, printed p.33, PDF p.33",
+      "primaryEvidence": "Official competence expressly requires causes and effects of a genome mutation using trisomy 21, alongside meiosis and chromosome set content. Free-trisomy subtype is bounded to a model example.",
+      "extractionGap": "Active broad IF6 extraction does not preserve the specific official example.",
+      "provisionalDecision": "keep candidate with exact primary locator; independent review pending"
+    },
+    {
+      "jurisdiction": "DE-SN",
+      "goalId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+      "primaryUrl": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/522/OF2Vfum2JVmFeuc2FOuf",
+      "locator": "Klasse 10 Lernbereich 1, printed pp.30–31, PDF pp.41–42",
+      "primaryEvidence": "Official curriculum pairs mitosis/meiosis and somatic/germ-cell formation with genome-mutation class and trisomy 21 as explicit example. Nondisjunction and free subtype are inferred model details.",
+      "extractionGap": "Active omnibus extraction loses this explicit content sequence.",
+      "provisionalDecision": "keep candidate with bounded example/inference and extraction repair; independent review pending"
+    },
+    {
+      "jurisdiction": "DE-TH",
+      "goalId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+      "primaryUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/63705?dateiname=Biologie_Lehrplan_AHR_2024-11-13.pdf",
+      "locator": "Klassenstufen 9/10 Genetik, printed pp.22–23",
+      "primaryEvidence": "Official curriculum requires meiosis as haploid germ-cell formation, genome mutation with causes/effects, and trisomy 21 as a spontaneous mutation. Free subtype and nondisjunction are inferred.",
+      "extractionGap": "Active omnibus extraction does not expose these component clauses.",
+      "provisionalDecision": "keep candidate with bounded example/inference and extraction repair; independent review pending"
+    },
+    {
+      "jurisdiction": "DE-MV",
+      "goalId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+      "primaryUrl": "https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_BIO_Gym_Ges_7-10.pdf",
+      "locator": "Klasse 10, printed pp.25–26, PDF pp.28–29",
+      "primaryEvidence": "Official curriculum names mitosis/meiosis and lists trisomy 21/18 among possible genetic-disease examples; it does not explicitly classify trisomy as genome mutation or require chromosome missegregation.",
+      "extractionGap": "One broad source goal maps to 25 canonical goals; its 0dd partial row risks treating optional disease example as full causal mechanism.",
+      "provisionalDecision": "depth HOLD; consider removing only 0dd direct edge after independent review. Remaining 24 mappings preserve source original coverage."
+    },
+    {
+      "jurisdiction": "DE-BY",
+      "goalId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+      "primaryUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/9/biologie",
+      "locator": "B9.3.8 plus B12-GA/EA.2 Karyogramm genome mutations",
+      "primaryEvidence": "Source extraction explicitly joins human genome mutations with meiosis errors; trisomy 21 is chosen as a didactic example rather than a literal source phrase.",
+      "provisionalDecision": "keep as bounded example; independent review pending"
+    },
+    {
+      "jurisdiction": "DE-HE",
+      "goalId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+      "primaryUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+      "locator": "E.3 printed p.36; prior 2024-11 version E.3 printed p.34",
+      "primaryEvidence": "Official E.3 names mutation as principle using trisomy 21; free-subtype mechanism is a bounded example.",
+      "provisionalDecision": "keep; version-specific source binding remains open"
+    },
+    {
+      "jurisdiction": "DE-MV",
+      "goalId": "ec88fc1d-ee0f-5a01-9464-dc358241050e",
+      "primaryUrl": "https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_BIO_Gym_Ges_7-10.pdf",
+      "locator": "Klasse 10, printed p.25, PDF p.28",
+      "primaryEvidence": "Official content names mitosis and meiosis as required processes and their nature/importance, with meiosis-based germ cells and mitotic body-cell division implicit in sequence. Numerical output comparison is a didactic comparison from the two processes.",
+      "provisionalDecision": "keep candidate; independent review pending"
+    },
+    {
+      "jurisdiction": "DE-SN",
+      "goalId": "ec88fc1d-ee0f-5a01-9464-dc358241050e",
+      "primaryUrl": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/522/OF2Vfum2JVmFeuc2FOuf",
+      "locator": "Klasse 10 Lernbereich 1, printed p.30, PDF p.41",
+      "primaryEvidence": "Official curriculum names the principles of mitosis and meiosis with body/germ-cell formation.",
+      "provisionalDecision": "keep candidate; independent review pending"
+    },
+    {
+      "jurisdiction": "DE-TH",
+      "goalId": "ec88fc1d-ee0f-5a01-9464-dc358241050e",
+      "primaryUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/63705?dateiname=Biologie_Lehrplan_AHR_2024-11-13.pdf",
+      "locator": "Klassenstufen 9/10 Genetik, printed pp.22–23",
+      "primaryEvidence": "Official text distinguishes mitotic genetically identical diploid cells from meiotic variable haploid germ cells.",
+      "provisionalDecision": "keep candidate; independent review pending"
+    }
+  ],
+  "scopeRule": "No source scope change is justified solely by the extraction being broad when the exact official PDF carries the competence. Conversely, mentioning a partial process/example alone does not prove the complete current goal."
+}

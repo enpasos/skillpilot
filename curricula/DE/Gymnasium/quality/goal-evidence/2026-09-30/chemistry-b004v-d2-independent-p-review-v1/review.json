@@ -1,0 +1,54 @@
+{
+  "reviewKind": "independent-current-positive-understanding-evidence-v2-content-recheck",
+  "reviewedAt": "2026-09-30",
+  "reviewer": "Codex independent chemistry B004v d2 P-v2 QA",
+  "reviewAuthority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "priorIndependentReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/chemistry-b004u-independent-p-review-v1/review.json",
+  "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004v-d2-indicator-reference-current-v2.config.json",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004v-d2-indicator-reference-current-v2.candidates.json",
+  "candidateSha256": "sha256:c958f6d7df2704d7bb0985e4fd4bfd7be4c9f3095ef5d3898df530e900b645cb",
+  "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004v-d2-indicator-reference-current-v2.review.jsonl",
+  "reviewSha256": "sha256:d8a2afede7a7cc5a6b30a6e771208df34bcd113a48b7bee136c2921d795ee789",
+  "profileFingerprint": "sha256:26dfb19b133a81a71b3dd9fbe24c8e0a1b4f2abb9536a6ed31c9c1242cd62e3f",
+  "candidateStatus": "needs_human_review",
+  "decision": "PASS_CANDIDATE_ONLY",
+  "officialSource": {
+    "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf",
+    "printedPage": 11,
+    "section": "Jahrgangsstufe 8, 8.1 Stoffe - Strukturen - Eigenschaften, 1.2 Stoffe und ihre Eigenschaften",
+    "finding": "The mandatory curriculum lists acidic, alkaline and neutral solutions, testing with natural and artificial indicators including red-cabbage juice and universal indicator, and the pH scale. It does not prescribe equal drop counts, a separate neutral control, or exact pH readings from colour."
+  },
+  "currentGoalCheck": {
+    "descriptionDe": "Die lernende Person kann saure, neutrale und alkalische Lösungen in geeigneten Schulversuchen anhand der Farbskala des jeweils verwendeten Indikators unterscheiden und die Ergebnisse groben pH-Bereichen zuordnen.",
+    "descriptionEn": "The learner can distinguish acidic, neutral and alkaline solutions in suitable school experiments using the colour scale for the indicator used and assign the results to broad pH ranges.",
+    "finding": "The single required expectation assesses the indicator-specific scale, classification and broad supported range. The additional precision explanation prevents exact-value claims from a colour band and stays within the goal's interpretation skill. German and English demands and expected answers agree."
+  },
+  "resolvedFromPriorReview": [
+    "Equal drops and a separate neutral reference are explicitly optional experimental controls, not required mastery conditions; neither case asserts that equal drops alone establish comparability.",
+    "Both expected answers call the green or purple neutral colour approximately neutral around pH 7 and explicitly reject a claim of exactly pH 7.",
+    "The red-cabbage transfer case states and asks for the three supported broad pH ranges, then asks why the same alkaline sample can be blue with universal indicator and yellow-green with red-cabbage indicator. This tests the matching-scale principle beyond recalling the first image or case."
+  ],
+  "caseCoverage": [
+    {
+      "caseId": "universal-indicator-three-samples",
+      "finding": "A teacher-supplied universal-indicator chart and three fresh observations require acid, approximate neutral and alkaline classifications plus pH 3–5, around 7 and pH 9–11 range statements. No exact sample pH is inferred."
+    },
+    {
+      "caseId": "fresh-red-cabbage-scale",
+      "finding": "A different indicator with its own supplied chart and new observations requires the same competence with a changed colour mapping. Reconciliation of two different colours for sample Z is a genuine transfer check; the case is answerable without the active image."
+    }
+  ],
+  "safetyCheck": "Both cases use observations and reference charts supplied by the teacher. They require no tasting, handling of unknown chemicals, or unsupervised experiment. The experimental-control text is descriptive rather than a required learner action.",
+  "activeImageCheck": {
+    "path": "curricula/DE/Gymnasium/visualizations/chemie/d2ccd1d5-56f7-583f-9724-e97441367f91/d2ccd1d5-56f7-583f-9724-e97441367f91.png",
+    "publicBytesIdentical": true,
+    "sha256": "sha256:cf6f69ccb31591750a925603b9930d57edb0f9f0112c6512b28ad674a561f7f8",
+    "dimensions": "1672x941 PNG",
+    "finding": "The inspected picture shows a broad three-class pH scale and matching classroom beakers. It does not show the separate red-cabbage chart or a calibrated exact sample value. The P cases supply their own observations and charts, so their answers do not depend on the picture. This content recheck is not a new V or human image approval."
+  },
+  "blockingIssues": [],
+  "technicalCheck": "npm --prefix app run -s quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004v-d2-indicator-reference-current-v2.config.json -> 1 configured, 1 needs_human_review, 0 approved, 0 blocking structural issues.",
+  "scopeLimit": "This is an independent AI content PASS for the current P-v2 candidate only. The profile retains needs_human_review/ai_candidate. The canonical goal, candidate, D decisions, visual QA and central registry were not edited; no human approval or strict M7 closure is asserted."
+}

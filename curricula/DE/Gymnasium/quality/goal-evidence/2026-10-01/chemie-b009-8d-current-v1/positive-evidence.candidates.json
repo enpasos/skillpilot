@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-chemistry-positive-evidence-b009-8d-current-v1",
+  "reviewedAt": "2026-10-01T01:22:00+02:00",
+  "reviewer": "codex-chemistry-b009-8d-p-v2-author",
+  "goals": [
+    {
+      "goalId": "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+      "reason": "Die aktuelle Beschreibung klärt die Stoffneubildung als Unterscheidungskriterium und Temperatur-, Farb- oder Gasbeobachtungen als mögliche, allein nicht beweiskräftige Hinweise. Das unveränderte JPG zeigt korrekt H₂O vor und nach dem Schmelzen sowie die ausgeglichene Bildung von MgO; es wurde bei 2752 × 1536 und 360/680 px tatsächlich geprüft. Beide P-Fälle verwenden andere Stoffe und unterschiedliche verführerische Einzelhinweise; sie verlangen begründete Vorher-/Nachher-Deutung aus bereitgestellten Daten, keine gefährliche Durchführung und keine Wiedererkennung des Bildes. KI-Kandidat needs_human_review, keine Lernleistung oder menschliche Freigabe behauptet.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "b009-8d-substance-identity-diagnostic",
+            "essentialUnderstandingDe": "Bei einem physikalischen Vorgang können Zustand, Verteilung oder Aussehen wechseln, ohne dass neue Stoffe entstehen. Bei einer chemischen Reaktion entstehen aus Ausgangsstoffen andere Stoffe mit eigenen Eigenschaften; dabei kann Energie übertragen werden. Blasen, Farb- oder Temperaturänderung sind für sich allein kein Beweis für Stoffneubildung.",
+            "essentialUnderstandingEn": "A physical process can change state, distribution or appearance without forming new substances. A chemical reaction forms different substances with their own properties from starting substances and may transfer energy. Bubbles, colour or temperature change alone do not prove that new substances formed.",
+            "observablePerformanceDe": "Die lernende Person vergleicht vorgegebene Vorher-/Nachher-Stoffdaten für zwei unbekannte Vorgänge, entscheidet begründet zwischen physikalischem Vorgang und chemischer Reaktion und benennt, welche Einzelbeobachtung ohne Stoffnachweis offenbleibt.",
+            "observablePerformanceEn": "The learner compares supplied before-and-after substance data for two unfamiliar processes, justifies which is physical and which is chemical, and identifies which isolated observation remains inconclusive without substance evidence."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["b009-8d-substance-identity-diagnostic"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "misleading-observation",
+            "textDe": "Gasblasen werden in Fall 1 und Farbwechsel in Fall 2 als möglicher, aber nicht entscheidender Hinweis betrachtet.",
+            "textEn": "Bubbles in case 1 and colour change in case 2 are treated as possible but non-decisive clues."
+          },
+          {
+            "id": "substance-comparison",
+            "textDe": "Bereits gelöstes CO₂ gegen neu gebildete Reaktionsprodukte; verteilte Farbe gegen neu gebildetes Kupferoxid.",
+            "textEn": "Previously dissolved CO₂ versus newly formed reaction products; dispersed dye versus newly formed copper oxide."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "co2-bubbles-two-origins-paper-data",
+            "taskDemandDe": "Zwei Lehrkraft-Datensätze zeigen Blasen: A enthält zunächst in Mineralwasser gelöstes CO₂; beim Erwärmen entweicht dasselbe CO₂, und sonstige Stoffanalysen ändern sich nicht. B beschreibt das Mischen von Essig und Natriumhydrogencarbonat; die Ausgangsanalysen zeigen kein freies CO₂, danach sind CO₂ und eine neue gelöste Verbindung nachgewiesen. Entscheide für A und B, was ein physikalischer Vorgang bzw. eine chemische Reaktion ist. Erkläre, warum die Blasen allein die Entscheidung nicht tragen. Nur Papierdaten; keine Mischung oder Erhitzung durchführen.",
+            "taskDemandEn": "Two teacher-supplied data sets show bubbles: A initially contains CO₂ dissolved in mineral water; warming releases the same CO₂ and other substance analyses remain unchanged. B describes mixing vinegar and sodium bicarbonate; initial analyses show no free CO₂, and afterwards CO₂ and a new dissolved compound are detected. Decide which is a physical process and which a chemical reaction. Explain why bubbles alone do not settle it. Paper data only; do not mix or heat anything.",
+            "expectedPerformanceDe": "Die lernende Person ordnet A als physikalisches Entweichen bereits vorhandenen CO₂ ein und B als chemische Reaktion mit neu gebildeten Stoffen. Sie stützt sich auf die Stoffdaten vor und nach dem Vorgang, nicht auf das gemeinsame Blubbern, und gibt an, dass ein isoliertes Blasenbild ohne Analysen offenbleibt.",
+            "expectedPerformanceEn": "The learner identifies A as physical release of pre-existing CO₂ and B as a chemical reaction that forms new substances. They rely on substance data before and after, not the shared bubbling, and say that bubbles alone would leave the classification open.",
+            "understandingFocusDe": "Gleiches beobachtbares Signal, unterschiedliche Stoffbilanz und begrenzte Schlusskraft einer Einzelbeobachtung.",
+            "understandingFocusEn": "The same visible signal, different substance outcomes and the limit of a single observation."
+          },
+          {
+            "id": "colour-change-two-origins-paper-data",
+            "taskDemandDe": "Eine neue Karte vergleicht zwei Farbänderungen: C ist klares Wasser, das nach Zugabe eines blauen Lebensmittelfarbstoffs blau aussieht; die Analyse findet Wasser und denselben Farbstoff unverändert. D sind Kupfer- und Sauerstoffdaten einer beaufsichtigten Vorführung: Nach dem Erhitzen liegt schwarzes Kupferoxid mit anderen Stoffeigenschaften vor, während Kupfer und Sauerstoff umgesetzt wurden. Ordne C und D zu und erkläre, welche Daten mehr aussagen als die Farbe. Nur Datenauswertung; keine eigene Erhitzung.",
+            "taskDemandEn": "A new card compares two colour changes: C is clear water that looks blue after blue food dye is added; analysis finds unchanged water and the same dye. D gives copper-and-oxygen data from a supervised demonstration: after heating, black copper oxide with different substance properties is present while copper and oxygen were consumed. Classify C and D and explain which data say more than colour. Interpret data only; do not heat anything yourself.",
+            "expectedPerformanceDe": "Die lernende Person ordnet C als physikalisches Mischen ohne neuen Stoff und D als chemische Bildung von Kupferoxid ein. Sie begründet D über neue Stoffeigenschaften und umgesetzte Ausgangsstoffe; dass beide Proben ihre Farbe ändern, reicht jeweils allein nicht aus. Die Wärmezufuhr bei D ist ebenfalls für sich kein Reaktionsbeweis.",
+            "expectedPerformanceEn": "The learner identifies C as physical mixing without a new substance and D as chemical formation of copper oxide. They justify D through new substance properties and consumption of starting substances; the colour change shared by both is insufficient on its own. Heating in D is likewise not by itself proof of a reaction.",
+            "understandingFocusDe": "Transfer von Gas- auf Farbsignal: Produktidentität statt Farbe oder Wärmezufuhr entscheidet.",
+            "understandingFocusEn": "Transfer from gas to colour clues: product identity rather than colour or heating is decisive."
+          }
+        ]
+      }
+    }
+  ]
+}

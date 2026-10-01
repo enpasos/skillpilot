@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-b009-fuel-4dab-independent-b-20261001",
+  "campaignId": "chemie-b009-fuel-comparison-current-1-20261001-v1-b",
+  "roundId": "chemie-b009-fuel-comparison-current-1-20261001-v1-first-pass-b",
+  "batchId": "chemie-b009-fuel-comparison-current-1-20261001-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:8d814618646b4f43716dbcdaeeb2f282e1b926805b31a1477ad5287120b0628d",
+  "bundleFingerprint": "sha256:e31239bc7c702a6d31002f86dde0cd720a9159662a3523fb46274f6f6f4e622c",
+  "bookDigest": "sha256:6fa04296875067a4442b398bcaa4a1255c8042911781fa611214aa36851ab961",
+  "provider": "openai",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:75a36e40436b7412d2afbbfcdcf52451dbbd6ddf30ab1ad4414235e6d15213f5",
+  "independenceGroupId": "chemie-b009-fuel-comparison-current-1-20261001-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "4dab7d52-5b89-52ab-a425-17a7707f44c8"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:8d814618646b4f43716dbcdaeeb2f282e1b926805b31a1477ad5287120b0628d"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    }
+  ],
+  "startedAt": "2026-09-30T23:48:34Z",
+  "completedAt": "2026-09-30T23:48:34Z",
+  "status": "completed",
+  "outputDigest": "sha256:e734ec2adc7a98f4fe3670cf6a089518957e700c1be660ff34e99a3a4230631f",
+  "toolchainVersion": "skillpilot-goal-description-review-v2"
+}

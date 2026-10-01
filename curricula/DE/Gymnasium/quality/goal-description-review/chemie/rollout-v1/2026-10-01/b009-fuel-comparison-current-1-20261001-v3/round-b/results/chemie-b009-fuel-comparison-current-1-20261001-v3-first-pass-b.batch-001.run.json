@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-b009-fuel-comparison-current-1-20261001-v3-first-pass-b.run-001",
+  "campaignId": "chemie-b009-fuel-comparison-current-1-20261001-v3-b",
+  "roundId": "chemie-b009-fuel-comparison-current-1-20261001-v3-first-pass-b",
+  "batchId": "chemie-b009-fuel-comparison-current-1-20261001-v3-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:8c957f134b2167b5ee24cb863186d48c1ad20e0b9abb85edbaf26a1bcd677e7b",
+  "bundleFingerprint": "sha256:0f63cf7e26da0793dba79f67044b31d12114f564da52e476fa439e74f94578fa",
+  "bookDigest": "sha256:4987eba7686581acc41c38465ea9a1523c2cced724b8f6cd2535f6936239761a",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "chemie-b009-fuel-comparison-current-1-20261001-v3-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "4dab7d52-5b89-52ab-a425-17a7707f44c8"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:8c957f134b2167b5ee24cb863186d48c1ad20e0b9abb85edbaf26a1bcd677e7b"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-10-01T00:05:25Z",
+  "completedAt": "2026-10-01T00:08:24Z",
+  "status": "completed",
+  "outputDigest": "sha256:12079acf88cbd942782fdba5dd8ad0b833d0fdb07aa886028390158a61bfb884",
+  "toolchainVersion": "codex-gpt-6"
+}

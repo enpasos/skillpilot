@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:61684568bb02ccca7ff7a557a7373c3915cace9af971a2b77a34e50ea3be71ed",
+  "reviewInputFingerprint": "sha256:34a03d3b46f8b7db7f0ddd9110e038b9353ed2f32b2f6751c92e655334c65ab4",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-m7-global-inquiry-four-current-20260930-v1-a",
+      "roundId": "biologie-m7-global-inquiry-four-current-20260930-v1-first-pass-a",
+      "independenceGroupId": "biologie-m7-global-inquiry-four-current-20260930-v1-independent-a",
+      "runIds": [
+        "biologie-m7-global-inquiry-four-current-20260930-v1-first-pass-a-codex-independent-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex session (exact deployment identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-m7-global-inquiry-four-current-20260930-v1-b",
+      "roundId": "biologie-m7-global-inquiry-four-current-20260930-v1-first-pass-b",
+      "independenceGroupId": "biologie-m7-global-inquiry-four-current-20260930-v1-independent-b",
+      "runIds": [
+        "biologie-global-inquiry-four-20260930-blind-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "2eaabe90-46bf-555e-876b-d853434a322d",
+      "firstRecordId": "biologie-m7-global-inquiry-four-current-20260930-v1-first-pass-a-codex-independent-a.2eaabe90-46bf-555e-876b-d853434a322d",
+      "secondRecordId": "biologie-global-inquiry-b-01-2eaabe90",
+      "firstRunId": "biologie-m7-global-inquiry-four-current-20260930-v1-first-pass-a-codex-independent-a",
+      "secondRunId": "biologie-global-inquiry-four-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6ae33a8e-874c-53ee-858f-c64f1848cfbc",
+      "firstRecordId": "biologie-m7-global-inquiry-four-current-20260930-v1-first-pass-a-codex-independent-a.6ae33a8e-874c-53ee-858f-c64f1848cfbc",
+      "secondRecordId": "biologie-global-inquiry-b-02-6ae33a8e",
+      "firstRunId": "biologie-m7-global-inquiry-four-current-20260930-v1-first-pass-a-codex-independent-a",
+      "secondRunId": "biologie-global-inquiry-four-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "713e062d-2bb9-5fbc-8040-129387c7d3ca",
+      "firstRecordId": "biologie-m7-global-inquiry-four-current-20260930-v1-first-pass-a-codex-independent-a.713e062d-2bb9-5fbc-8040-129387c7d3ca",
+      "secondRecordId": "biologie-global-inquiry-b-03-713e062d",
+      "firstRunId": "biologie-m7-global-inquiry-four-current-20260930-v1-first-pass-a-codex-independent-a",
+      "secondRunId": "biologie-global-inquiry-four-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5a47f591-f2ac-5457-872a-22c89c2dbe93",
+      "firstRecordId": "biologie-m7-global-inquiry-four-current-20260930-v1-first-pass-a-codex-independent-a.5a47f591-f2ac-5457-872a-22c89c2dbe93",
+      "secondRecordId": "biologie-global-inquiry-b-04-5a47f591",
+      "firstRunId": "biologie-m7-global-inquiry-four-current-20260930-v1-first-pass-a-codex-independent-a",
+      "secondRunId": "biologie-global-inquiry-four-20260930-blind-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

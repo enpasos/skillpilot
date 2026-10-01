@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:4fc743889f7356039e2f2842eafdf90685e834ea3198211a8d827b6d89606bfc",
+  "reviewInputFingerprint": "sha256:f0722c11cd1692adf2e14a8a146578148fff4b8cb50a2f14cf918205bb78b1ff",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-b009-reaction-vs-physical-current-1-v1-20261001-a",
+      "roundId": "chemie-b009-reaction-vs-physical-current-1-v1-20261001-first-pass-a",
+      "independenceGroupId": "chemie-b009-reaction-vs-physical-current-1-v1-20261001-independent-a",
+      "runIds": [
+        "chemie-b009-reaction-physical-a-run-20261001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex (exact deployment version not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-b009-reaction-vs-physical-current-1-v1-20261001-b",
+      "roundId": "chemie-b009-reaction-vs-physical-current-1-v1-20261001-first-pass-b",
+      "independenceGroupId": "chemie-b009-reaction-vs-physical-current-1-v1-20261001-independent-b",
+      "runIds": [
+        "chemie-b009-reaction-vs-physical-current-b-codex-gpt6-20260930t232627z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+      "firstRecordId": "chemie-b009-reaction-physical-8d4ef102-a-20261001",
+      "secondRecordId": "chemie-b009-reaction-vs-physical-8d4ef102-b-20260930t232627z",
+      "firstRunId": "chemie-b009-reaction-physical-a-run-20261001",
+      "secondRunId": "chemie-b009-reaction-vs-physical-current-b-codex-gpt6-20260930t232627z",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

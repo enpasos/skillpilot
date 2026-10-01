@@ -1,0 +1,51 @@
+# Chemie B010: Reparaturkandidat zu Elementgruppen (9.2)
+
+Stand: 2026-10-01. **AI-Kandidat, kein D/P/A/M/V-Abschluss und keine menschliche Freigabe.** Die historische B010-A/B-Kampagne und ihre zwei strengen Auflösungen bleiben unverändert. Die sieben übrigen B010-Ziele stehen im alten Resolution-Index auf `deferred`; für keines davon ist ein isolierter P-v2-Nachweis als strenger Abschluss zulässig. Dieses Teilpaket betrifft drei dieser sieben Ziele.
+
+## Quellen- und Bildgrundlage
+
+Der [amtliche hessische G9-Chemie-Lehrplan](https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf) enthält 9.2 „Elementgruppen“ auf **PDF-Seite 19, Druckseite 18**. Die unveränderte lokale PDF-Kopie hat SHA-256 `f0a2c3795fcbcad1fee8d92d7ab9bc26810609bee0ef1fbd02c830e171220d2f`. Im Abschnitt 2.1 stehen Eigenschaften und Verwendung von Alkalimetallen **und ihren Verbindungen** sowie die zwei Systeme Metall/Wasser und Oxid/Wasser. Abschnitt 2.2 umfasst Eigenschaften und Verwendung der Halogene sowie Alltagsbezüge ihrer Verbindungen. Die aktuelle Source-Extraction enthält dafür die IDs `he-chem-seki-9-2-b01-a01-28c1edb7`, `he-chem-seki-9-2-b01-a03-200f7eb0` und `he-chem-seki-9-2-b02-a01-39a59744` sowie für Verbindungen im Alltag `he-chem-seki-9-2-b02-a02-ee8b69e1`. Die aktive HE-Mapping-Datei bindet die ersten drei jeweils mit `exact` an die drei unten genannten Ziele; diese Einstufung ist nach einer Zieländerung fachlich erneut zu prüfen.
+
+Die **tatsächlichen** aktiven 2752 × 1536-JPGs wurden in Originalauflösung und als 680-/360-Pixel-Ansichten geprüft. Die verkleinerten Ansichten liegen nur für diese Prüfung unter `tmp/b010-element-groups-visual-review-20261001/`; sie sind keine Ersatz- oder Freigabebilder. Maßgeblich sind die aktiven Dateien und Hashes:
+
+| Ziel | SHA-256 des aktiven JPG | Aktueller Bildbefund |
+| --- | --- | --- |
+| `e0e201bd-a1fd-5985-ab08-fd24c8655f3d` | `4ba3e59958b6f01e574aa4de547f06151fb103435826f98a875f4ca6c8d20aea` | Das Bild verbindet Metall-Eigenschaften mit NaCl, KCl und Lithium-Ionen-Akku; die drei Verwendungsbeispiele sind auf 360 Pixeln klein. Als Illustration des **ungesplitteten** Ziels historisch positiv geprüft; als Nachweis für zwei neue atomare Ziele ungeeignet. |
+| `16a80de2-b5e0-5467-a9b3-5860730d7d8b` | `8fe44fbc296f89f894b842e88495a8d33e43e8e73580e23b529c0fcf7062ddc0` | Die beiden Natrium-Gleichungen und der Unterschied bei H₂ sind chemisch richtig und in 360 Pixeln noch erkennbar. Der untere Satz zu gelöstem NaOH ist klein. **KEEP-Kandidat**, aber die neue Zielbindung und mobile Lesbarkeit brauchen unabhängige V-Prüfung. Keine eigenständige Metall-Wasser-Versuchsanweisung aus dem Bild ableiten. |
+| `58486300-3f84-5aa1-9ed4-66186af62669` | `b8139a29870e67ee4a6f82a9b52475ff46a88f1525d69ed9176863de8f62e9c5` | Das Bild mischt elementare Halogene, Halogenid-Ionen und Alltagsprodukte. Die pauschale Zeile „Chlorverbindungen zur Desinfektion“ zusammen mit dem X⁻-Pfad kann fälschlich auch gewöhnliche Chloride als Desinfektionsmittel erscheinen lassen. **V-HOLD** trotz früherem AI-Approval; ein genauer Stoff wie Natriumhypochlorit müsste im korrigierten PNG eindeutig getrennt von Chlorid stehen. |
+
+## Zielgenaue Kandidaten und Sperren
+
+### 1. `e0e201bd-a1fd-5985-ab08-fd24c8655f3d` – SPLIT-HOLD
+
+Aktuell: „Die lernende Person kann Eigenschaften, Verwendung und typische Verbindungen der Alkalimetalle fachlich beschreiben.“ Beide unabhängigen D-Runden verlangen eine Trennung elementarer Metalle und ihrer Verbindungen. Das ältere A-Urteil `atomic` steht dazu im Widerspruch. **Der kanonische Text und die Ziel-IDs wurden hier noch nicht verändert.**
+
+- Bestehende ID, vorgeschlagener Titel DE/EN: **„Elementare Alkalimetalle anhand ihrer Eigenschaften charakterisieren“ / “Characterize elemental alkali metals by their properties”.** Beschreibung DE: „Die lernende Person kann aus vorgegebenen Stoffdaten typische Eigenschaften ausgewählter elementarer Alkalimetalle vergleichen und ihre Reaktionsbereitschaft als Metalle begründen.“ Beschreibung EN: “The learner can compare characteristic properties of selected elemental alkali metals using supplied substance data and explain their reactivity as metals.”
+- Neue stabile ID erst nach Graph-/ID-Prüfung vergeben; vorgeschlagener Titel DE/EN: **„Alkalimetallverbindungen stofflich einordnen“ / “Classify alkali-metal compounds by substance identity”.** Beschreibung DE: „Die lernende Person kann an einer ausgewählten salzartigen Alkalimetallverbindung eine Verwendung mit belegten Stoffeigenschaften begründen und erklären, warum diese Eigenschaften nicht dem elementaren Metall zugeschrieben werden dürfen.“ Beschreibung EN: “For a selected salt-like alkali-metal compound, the learner can justify a use from evidenced material properties and explain why those properties must not be attributed to the elemental metal.”
+- Quelle: Die aktuelle `exact`-Kante von 9.2#B01A01 zu einem breiten Ziel ist für beide engeren Leistungen neu zu beurteilen; eine versionierte Zuordnung beider Ziel-IDs als **Teilabdeckung** dieses amtlichen Aspekts ist der Kandidat. Die Lehrplanzeile selbst wird nicht umgeschrieben.
+- Bild: Das historisch mit `humanApproved=yes` geführte Bild und seine ursprüngliche Prüfung bleiben erhalten. Eine Freigabe für neue Zieltexte oder die neue ID folgt daraus nicht. Zuerst entscheiden, ob eine korrekt zugeschnittene Darstellung für eines der Ziele KEEP-fähig ist; nur belegte Defizite mit geprüftem PNG beheben. Keine zwei strengen V-Abschlüsse aus einem ungeprüften alten Approval ableiten.
+- Offen: Graph-/Prerequisite-/Source-/Seitenbindung, zwei **neue** unabhängige D-Reviews, A für beide Ziele, Memory-Entscheidungen samt ggf. Karten/Sichtbarkeit, je zwei echte P-v2-Transferfälle und V-Prüfung der aktiven Bilder.
+
+### 2. `16a80de2-b5e0-5467-a9b3-5860730d7d8b` – REVISE-KANDIDAT
+
+Beide alten D-Runden beanstanden die bloße Aufzählung zweier Reaktionen. Die folgende DE/EN-Fassung ist **ausschließlich ein versionierter Reparaturvorschlag**. Titel, ID, aktiver Kanontext, Bild-Alt-Text und Bildbytes bleiben bis zur getrennten QS unverändert. Ein kurzzeitig aktivierter Textkandidat wurde wegen veralteter M/A/V-Bindungen gezielt wieder aus der aktiven kanonischen Datei entfernt; er zählt nicht als Integration.
+
+- Neu DE: „Die lernende Person kann anhand vorgegebener Daten die Reaktion eines Alkalimetalls mit Wasser und die seines einfachen Oxids mit Wasser vergleichen und erklären, warum beide alkalische Lösungen bilden, aber nur beim Metall Wasserstoff entsteht.“
+- Neu EN: “The learner can use supplied data to compare the reactions of an alkali metal and its simple oxide with water and explain why both form alkaline solutions but only the metal produces hydrogen.”
+- Fachliche Grenze: Gemeint sind einfache Oxide wie Na₂O; mit Wasser entsteht Hydroxid, beim Metallweg zusätzlich H₂. Das Ziel fordert die **Deutung gelieferter Daten**, keine Durchführung einer gefährlichen Metall-Wasser-Reaktion durch Lernende.
+- Quelle: 9.2#B01A03 nennt beide Systeme. Die bestehende direkte `exact`-Kante muss gegen die nun ausdrücklich vergleichende Zielreichweite geprüft werden; kein bloßer Hash-Tausch.
+- Bild: Chemische Gleichungen passen zum vorgeschlagenen Vergleich. Die bestehende V-Prüfung bezieht sich auf den unveränderten aktiven Beschreibungstext. Eine spätere Zieländerung erfordert unabhängige fachliche/visuelle Prüfung der dann aktuellen Bindung, insbesondere bei 360 und 680 Pixeln; bei ausreichender Lesbarkeit **KEEP** des alten JPG.
+- Offen: neue unabhängige D-Runden auf aktueller Ziel-/Seiten-/Quellen-/Bildbindung, gezielte A-/M-Entscheidung, P-v2 mit zwei unabhängigen Vergleichsfällen und aktuelle V-Bindung. Alte A/M/V-Einträge nicht durch Fingerprint-Korrektur als neue Fachprüfung ausgeben.
+
+### 3. `58486300-3f84-5aa1-9ed4-66186af62669` – REVISE- UND BILD-HOLD
+
+Aktuell: „Die lernende Person kann Eigenschaften und Verwendung der Halogene sowie einfache Alltagsbezuege fachlich beschreiben.“ Beide alten D-Runden beanstanden die Vermischung von Elementen und Verbindungen. **Noch keine kanonische Änderung**, weil der sichtbare Stoffbezug des aktiven Bildes fachlich korrigiert werden muss.
+
+- Vorgeschlagener Titel DE/EN: **„Halogene und ihre Verbindungen im Alltag unterscheiden“ / “Distinguish halogens and their compounds in everyday contexts”.** Beschreibung DE: „Die lernende Person kann anhand ausgewählter Stoffdaten ein elementares Halogen von einer seiner Verbindungen unterscheiden und eine konkrete Verwendung mit einer Eigenschaft des tatsächlich verwendeten Stoffs begründen.“ Beschreibung EN: “Using selected substance data, the learner can distinguish an elemental halogen from one of its compounds and justify a specific use through a property of the substance actually used.”
+- Quelle: 9.2#B02A01 deckt Eigenschaften/Verwendung elementarer Halogene; der Alltagsbezug der Verbindungen steht in 9.2#B02A02. Die bisherige alleinige `exact`-Kante zu B02A01 darf den ganzen neuen Vergleich nicht als direkt belegt ausgeben. Gezielte, versionierte **Teilzuordnung beider Aspekte** prüfen.
+- Bild: Das vorhandene Bild als historisches Artefakt erhalten. Für eine Korrektur die pauschale Chlorverbindungs-Aussage und ihre X⁻-Linie so ersetzen, dass ein **benannter wirksamer Stoff** und ein gewöhnliches Chlorid nicht gleichgesetzt werden. Falls ein neues Bild nötig wird: PNG, freundlicher comicartiger Stil, bevorzugt etwa 16:9, Hauptkontrast und wenige große Bezeichnungen bei 360 und 680 Pixeln sichtbar; tatsächliche Bilddatei danach unabhängig prüfen. Keine Freigabe allein aus Generator oder altem `aiApproved=yes`.
+- Offen: neue aktuelle D-Runden, A/M, zwei stoffgenaue P-v2-Fälle und V erst nach Bildkorrektur oder belegtem KEEP. Menschliche Freigabe bleibt getrennt.
+
+## Integrationsgrenze
+
+Dieses Paket meldet **0 neue strenge fachliche Abschlüsse und 0 wiederhergestellte Bindungen**. Die alte B010-Auflösung bleibt bei **2/9**. Es gibt **keine operative kanonische Änderung** aus diesem Teilpaket; insbesondere ist `16a80de2` weiterhin deferred. Vor einer späteren Integration nur die betroffenen Ziel-, Quellen-, Seiten-, Kontext- und Bildbindungen prüfen. Mathematik und Physik bleiben unberührt.

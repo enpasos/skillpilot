@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-resolution-9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+  "goal": {
+    "goalId": "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:22b338504507f3ec9893daf0dadc769464695a6d6246406e8b7eeceeea4de49d",
+    "pageFingerprint": "sha256:70fd3cacb36d966f7b93cc57ce95bb9a9915c024824d806c09f5a3a18b521f7b",
+    "goalReviewContextFingerprint": "sha256:c80419dfa25b589dca6e8a8120871bfb531a1985cdcf778269beec232e3589ba",
+    "finalText": {
+      "titleDe": "Molekülgeometrien mit dem EPA-Modell erklären",
+      "titleEn": "Explain molecular geometries with the VSEPR model",
+      "descriptionDe": "Die lernende Person kann Molekülgeometrien und einfache Bindungswinkel mit dem EPA-Modell erläutern.",
+      "descriptionEn": "The learner can explain molecular geometries and simple bond angles using the VSEPR model."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-a",
+      "campaignDigest": "sha256:4d4a6506908f6e94424077022b3055aa200ca0b787ff7386b92a6d57549f2a76",
+      "roundId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-independent-a",
+      "reviewInputFingerprint": "sha256:c07e8027610ce7b898ef3ee8592f3d2835d19ca3aa33329fa31538af54006475",
+      "goalReviewContextFingerprint": "sha256:c80419dfa25b589dca6e8a8120871bfb531a1985cdcf778269beec232e3589ba",
+      "batchId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-a.batch-001",
+      "runId": "codex-gpt-6-round-a-chemie-b003-20260930",
+      "runManifestDigest": "sha256:5f8f63c26aca5bc62c9e5780cd4bf89a9edeb70b1e5ddf43c433db492a823a8b",
+      "resultsDigest": "sha256:b305ec1bb952e3d06edb174aa07446041c95eaec2392680b413529e1a666530a",
+      "recordId": "chemie-b003-round-a-9b56d01e-20260930",
+      "recordDigest": "sha256:87728863bb12a256dcbefd9480cbc9fde8521e89650e486f8891be91943b6b48"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-b",
+      "campaignDigest": "sha256:169af5a705d3c5cb4531b1291386fb63242cdd5cab7d2510c4bdf2c8c5fc5abd",
+      "roundId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-independent-b",
+      "reviewInputFingerprint": "sha256:c07e8027610ce7b898ef3ee8592f3d2835d19ca3aa33329fa31538af54006475",
+      "goalReviewContextFingerprint": "sha256:c80419dfa25b589dca6e8a8120871bfb531a1985cdcf778269beec232e3589ba",
+      "batchId": "chemie-rollout-v1-batch-003-q1-bonding-models-current-20-v1-20260930-first-pass-b.batch-001",
+      "runId": "chemie-b003-q1-round-b-20260930-gpt6-v1",
+      "runManifestDigest": "sha256:e1cf816bbd5bfd6fd6a1a99356fddd1a27a05061a1fd0ec7128ce16e82232390",
+      "resultsDigest": "sha256:4f99b000e7cda824f3b3c3e9eb8215295ae0c11f4d62fda796e3aaa69e6f2c06",
+      "recordId": "chemie-b003-b-08",
+      "recordDigest": "sha256:80e2a16703b7c5d19aca03575761f67877c0e991948fd16d200bf5cd521ace5a"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:7063fb382e703af7de74e31bd6ff248e785a6cf733eedfd1dc690f7738914cf7"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis",
+    "manifestDigest": "sha256:15f39431398815d03ec171b914e160b7cd26f501179ef5f673c8f0fa206132ea",
+    "manifestFingerprint": "sha256:a9a373bd26c56d438f7cbbbbc49e1cfdc523af21495f0e401609ceabb4aa0534",
+    "decisionId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-005"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-b003-q1-bonding-current-20-20260930-partial-synthesis-decision-005",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex GPT-6 bounded AI synthesis; eleven current dual-round keeps, nine explicit deferrals; no human approval",
+    "synthesizedAt": "2026-09-30T16:18:39.625Z",
+    "rationaleDe": "Beide Runden binden Geometrie und einfache Winkel an ein EPA-Modell. A prüft freie Elektronenpaare im neuen NH3-Fall und begrenzt idealisierte Winkel.",
+    "rationaleEn": "Both rounds bind geometry and simple angles to one VSEPR model. A tests lone pairs in a fresh NH3 case and qualifies idealized angles.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Im EPA/VSEPR-Modell stoßen Elektronendomänen einander ab; bindende und freie Paare bestimmen Anordnung und eine qualitative Winkelabweichung vom idealisierten Grundwinkel.",
+      "essentialUnderstandingEn": "In VSEPR, electron domains repel; bonding and lone pairs determine geometry and qualitative deviations from ideal angles.",
+      "observablePerformanceDe": "Die lernende Person bestimmt für BeH2, BH3 oder H2O Elektronendomänen, Geometrie und einen passenden einfachen Winkelbereich und begründet den Einfluss freier Paare.",
+      "observablePerformanceEn": "For BeH2, BH3, or H2O, the learner determines domains, geometry, a suitable simple angle range, and the effect of lone pairs.",
+      "transferExpectationDe": "Bei einem neuen NH3-Modell sagt sie eine pyramidalische statt planare Form voraus und ordnet den Winkel qualitativ ein.",
+      "transferExpectationEn": "For a fresh NH3 model, they predict a pyramidal rather than planar shape and classify its angle qualitatively."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-c22de3e853d911db896f37fa2f63d5a13cdedec787eb194938fc0a41dd7a25d6",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:1e6a14df415db91e7cab15e01d4ff696b29bfe8ca5b3b9c03c4c97e70ae9d371"
+}

@@ -1,39 +1,12 @@
 # Lernzielvisualisierung: Exotherme und endotherme Reaktionen unterscheiden
 
-## SkillPilot-Ziel
+- Ziel-ID: `1286f2fe-89b7-4454-8e11-85b6abd6e278`
+- Aktives PNG: `1286f2fe-89b7-4454-8e11-85b6abd6e278.png`
+- Generator: ChatGPT/Codex `image_gen` als Bearbeitung des historischen JPG; exakte Kandidatenprompts unter `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b009-1286-energy-correction-20261001-v1`.
+- Format: 16:9 (1672 × 941): zwei Diagramme bleiben bei 360 und 680 Pixeln getrennt und lesbar.
+- SHA-256: `sha256:46f0e6695c797aeb57ea5892fd45e2584be8f988aa91068f2edf476f3639adc0`
+- Quellenprüfung: `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b009-1286-energy-correction-20261001-v1/independent-candidate-qa-v2.json`, tatsächliches PNG in Originalgröße sowie bei 360 und 680 Pixeln fachlich und visuell geprüft.
+- Entscheidung: KI-Kandidat für maschinelle Visualisierungs-QS; keine menschliche Freigabe.
+- Historische JPG-Fassung, Prompt und damalige QA-/Status-Records: `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b009-1286-energy-correction-20261001-v1/historical-active-before-correction`.
 
-- SkillPilot-ID: `1286f2fe-89b7-4454-8e11-85b6abd6e278`
-- Titel: Exotherme und endotherme Reaktionen unterscheiden
-- Beschreibung: Die lernende Person kann exotherme und endotherme Reaktionen unterscheiden und typische Beispiele dem Energieumsatz fachlich zuordnen.
-
-## Generator
-
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
-- Quellbild: `1286f2fe-89b7-4454-8e11-85b6abd6e278.jpg`
-- Public Asset: `/assets/goal-visualizations/chemie/1286f2fe-89b7-4454-8e11-85b6abd6e278/1286f2fe-89b7-4454-8e11-85b6abd6e278.jpg`
-
-## Prompt
-
-```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Exotherme und endotherme Reaktionen unterscheiden
-Beschreibung: Die lernende Person kann exotherme und endotherme Reaktionen unterscheiden und typische Beispiele dem Energieumsatz fachlich zuordnen.
-
-Zusatzanweisung:
-Überarbeite die vorhandene zweigeteilte Infografik fachlich exakt. Links „exotherm“: Edukte auf höherem Energieniveau, Produkte auf niedrigerem Energieniveau, ein nach außen gerichteter Energiepfeil und das Beispiel Verbrennung. Rechts „endotherm“: Edukte auf niedrigerem Energieniveau, Produkte auf höherem Energieniveau, ein hinein gerichteter Energiepfeil und ein abkühlendes Reaktionsgemisch als Beispiel. In jedem Energiediagramm darf „Edukte“ genau einmal und „Produkte“ genau einmal stehen. Entferne insbesondere die doppelte Beschriftung „Edukte“ im rechten Diagramm. Schreibe exakt „Energie nach außen“ mit echtem ß. Halte Energieniveaus, Pfeilrichtungen und Thermometerfarben widerspruchsfrei. Keine zusätzlichen Kurven oder Beschriftungen.
-```
-
-## Review-Notiz
-
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Die Erzeugung allein ist keine Freigabe; die unabhängige Prüfung ist für die exakten aktiven PNG-Bytes dokumentiert.

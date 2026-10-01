@@ -1,0 +1,49 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "codex-gpt-6-round-a-chemie-b009-20260930",
+  "campaignId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-a",
+  "roundId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-a",
+  "batchId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:71b08c649817abcbdd06a4589e9b845a89a9d7502a01ca25290d43f36e429002",
+  "bundleFingerprint": "sha256:677860c202d92a4d5b1a6f1f423d4a62c66d3ac118fd5457ac4f1242aa25f894",
+  "bookDigest": "sha256:806751fabc3cf822fea70c2ccffb6da71c274eba5fa7cc2c90b569dd7f39c2c6",
+  "provider": "openai",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:02aae9aee963e9025746ab554eeaa89a03cb1065c5d12a683127059a270ccd19",
+  "independenceGroupId": "chemie-rollout-v1-batch-009-global-reactions-current-8-v1-20260930-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+    "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a",
+    "350a394f-e0d4-5e42-8e9a-39da9df33518",
+    "1286f2fe-89b7-4454-8e11-85b6abd6e278",
+    "4dab7d52-5b89-52ab-a425-17a7707f44c8",
+    "0503c975-3934-5206-962e-b1c247de0c12",
+    "9198b4cf-e454-562f-83f0-b1b74e68765d",
+    "a530ee7d-1002-5f02-ae05-a9d46410ac78"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:71b08c649817abcbdd06a4589e9b845a89a9d7502a01ca25290d43f36e429002"
+    }
+  ],
+  "startedAt": "2026-09-30T19:23:00Z",
+  "completedAt": "2026-09-30T19:23:30Z",
+  "status": "completed",
+  "outputDigest": "sha256:09ac18519d9930c00e00dd083172993ebbb36672d07428413a08f8ce826fdac1",
+  "toolchainVersion": "codex-agent-v1"
+}

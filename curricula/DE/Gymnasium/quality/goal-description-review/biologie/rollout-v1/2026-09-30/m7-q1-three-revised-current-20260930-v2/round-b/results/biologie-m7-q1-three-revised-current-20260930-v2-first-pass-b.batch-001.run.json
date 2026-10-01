@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-q1-three-revised-v2-blind-b-run-001",
+  "campaignId": "biologie-m7-q1-three-revised-current-20260930-v2-b",
+  "roundId": "biologie-m7-q1-three-revised-current-20260930-v2-first-pass-b",
+  "batchId": "biologie-m7-q1-three-revised-current-20260930-v2-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:d3e17d41c5505da536243b0b2a78e6df812b541609274eef1045adc63016e850",
+  "bundleFingerprint": "sha256:eba3939f10b3c251f5837fce038cecd04efaa0127248f4daecb0ec9b0a462a98",
+  "bookDigest": "sha256:e1adbed2ad5ee2cfb3d97b3f512be24164f769052774da4e21994a97f5bbc42b",
+  "provider": "OpenAI",
+  "model": "gpt-6-astra",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "biologie-m7-q1-three-revised-current-20260930-v2-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "8f6933b1-6e02-5512-acf2-a90a7fb9cb75",
+    "ceb54223-197c-5289-a9c6-19358912e144",
+    "440854be-7f06-5678-91cb-ba8dcab56959"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_markdown",
+      "digest": "sha256:f0b103052a265742ddc879a9343e93cccd6864d190fdd2e71c1f4585023f8ec2"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:d3e17d41c5505da536243b0b2a78e6df812b541609274eef1045adc63016e850"
+    }
+  ],
+  "startedAt": "2026-09-30T21:38:49.314Z",
+  "completedAt": "2026-09-30T21:38:49.314Z",
+  "status": "completed",
+  "outputDigest": "sha256:8c4449a175583b8be4161c17cbb756d831e1b4faab3db647fa2d2877b0b5e7c5",
+  "toolchainVersion": "skillpilot-goal-description-review-v2"
+}

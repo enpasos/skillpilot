@@ -1,0 +1,7 @@
+# Independent content check: chemistry B002
+
+Date: 2026-09-30. Scope: the nine Q1 organic goals that both independent description rounds marked KEEP. Eleven further B002 goals remain deferred: eight require description revisions and three require semantic splitting or a blocking correction. This check is machine-side only; all positive profiles remain ai_candidate / needs_human_review.
+
+I read all nine current goal descriptions and both application cases per positive-understanding-evidence-v2 profile. Naming, constitutional isomerism, primary/secondary/tertiary oxidation, oxidation products, halide-ion controls, SN1/SN2 mechanisms and polycarboxylic-acid structures are represented with distinct fresh transfer rather than a repeated answer pattern. The halide case requires a pre-reaction control; the substitution cases avoid absolute substrate/solvent rules; the oxidation cases specify suitable or mild conditions. Existing reviewed visuals are retained.
+
+The v1 case for polar properties (91cd4728) was held because it called methane (16 g/mol) and methanol (32 g/mol) similarly light. The v2 profile replaces that comparison with ethane (about 30 g/mol) versus methanol (about 32 g/mol), then asks the learner to explain boiling and water-solubility differences through hydrogen bonding versus nonpolar interactions. I read the revised German and English cases; this resolves the content hold. The v1 candidate remains unregistered history. The v2 targeted production check reports nine current profiles and zero blockers, with human review still pending.

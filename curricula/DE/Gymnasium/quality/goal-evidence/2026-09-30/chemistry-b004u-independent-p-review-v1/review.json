@@ -1,0 +1,100 @@
+{
+  "reviewKind": "independent-current-positive-understanding-evidence-v2-content-review",
+  "reviewedAt": "2026-09-30T21:26:49Z",
+  "reviewer": "Codex independent chemistry B004u P review",
+  "reviewAuthority": "ai_candidate_only",
+  "humanApprovalClaim": false,
+  "source": {
+    "officialUrl": "https://www.fortbildung.kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf",
+    "printedPage": 11,
+    "pdfPageIndexZeroBased": 11,
+    "section": "Year 8, 8.1 Stoffe - Strukturen - Eigenschaften, 1.2 Stoffe und ihre Eigenschaften",
+    "relevantScope": "The mandatory list names solid/liquid/gas transitions including melting, boiling, freezing, condensing, sublimation, deposition and evaporation; it separately names testing acidic, alkaline and neutral solutions with natural and artificial indicators and the pH scale. The particle model is a separate 1.3 item."
+  },
+  "inputs": [
+    {
+      "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+      "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004s-states-ph-current-2-v1.config.json",
+      "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004s-states-ph-current-2-v1.review.jsonl",
+      "profileFingerprint": "sha256:3892a11f78af83ea5d291402b63e1a3de50454d84b62fd954805a8c722f8ceab",
+      "activeImagePath": "curricula/DE/Gymnasium/visualizations/chemie/326d45bf-9f77-57d5-a054-93e76b034dd5/326d45bf-9f77-57d5-a054-93e76b034dd5.jpg",
+      "activeImageSha256": "sha256:254e46accdc2ef4a9e53821502c3a14d24d1861b8c4f3268d95f7651ee9ca2f7"
+    },
+    {
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004u-d2-current-png-v1.config.json",
+      "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b004u-d2-current-png-v1.review.jsonl",
+      "profileFingerprint": "sha256:3efa0ddbd190767c05de943fce3d81fc429b96d5f78b4e27b3968567bb6a29e7",
+      "activeImagePath": "curricula/DE/Gymnasium/visualizations/chemie/d2ccd1d5-56f7-583f-9724-e97441367f91/d2ccd1d5-56f7-583f-9724-e97441367f91.png",
+      "activeImageSha256": "sha256:cf6f69ccb31591750a925603b9930d57edb0f9f0112c6512b28ad674a561f7f8"
+    }
+  ],
+  "method": "Read the actual current DE/EN canonical descriptions and both complete candidate profiles with their two case briefs each; checked the official HE G9 PDF at printed page 11; checked both canonical and public active image hashes, actual full-size images and native 360 px previews. This is content QA of AI candidates, not a D, V or human-release decision.",
+  "decisions": [
+    {
+      "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+      "decision": "REVISE",
+      "candidateStatus": "needs_human_review",
+      "acceptedAspects": [
+        "The profile correctly keeps observable state changes separate from the later particle-model goal and uses safe supplied observations rather than asking learners to heat or handle an unknown substance.",
+        "The water and direct solid-gas examples are distinct and do not require copying the active particle illustration; the DE and EN case demands are semantically aligned."
+      ],
+      "issues": [
+        {
+          "severity": "blocking_content_gap",
+          "location": "profile.expectations[0], coverageExpectations and both applicationCaseBriefs",
+          "finding": "The current canonical goal requires distinguishing solid, liquid and gas from observable properties as well as explaining transitions of the same substance. Neither case asks the learner to discriminate those three states from observations: case 1 concerns a liquid film, bubbles and droplets; case 2 supplies the labels solid and gaseous in the question. The one required expectation lists all seven mandatory HE transitions, yet the two expected performances do not test melting or freezing at all. Two successful answers would therefore not demonstrate the full required expectation.",
+          "requiredRevision": "Add or revise a fresh case so the learner identifies states using given observable properties and interprets a solid-liquid transition, including melting or freezing; make the coverage claim match what the cases can actually demonstrate. Keep the liquid-gas distinction and direct solid-gas variation where useful."
+        },
+        {
+          "severity": "scope_boundary",
+          "location": "profile.expectations[0].observablePerformanceDe/En",
+          "finding": "The profile makes explaining why an observed transition does not establish a chemical reaction a required performance. The present goal requires explaining a change of state of the same substance; distinguishing chemical reactions from physical changes is a separate successor goal 8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566. An answer about unchanged substance identity is within scope, but reaction diagnosis should not become an additional mastery gate here.",
+          "requiredRevision": "Phrase the required inference in terms of the same substance before and after the state change. If reaction terminology is kept as context, do not require reaction criteria or classification as a separate condition."
+        },
+        {
+          "severity": "transfer_strength",
+          "location": "applicationCaseBriefs[1] new-substance-x-direct-transition",
+          "finding": "The second task gives the key identity premise in the question ('the same substance X becomes solid again'), so its expected conclusion about no different substance mostly restates supplied information. It still checks terminology for sublimation/deposition, but gives thin independent evidence for the identity part of the canonical goal.",
+          "requiredRevision": "Supply observations from which the learner can justify same substance identity, or state explicitly that the identity premise is given and assess only the direction of the transitions in this case."
+        }
+      ],
+      "imageContext": "The active 2752x1536 JPG is a particle-model diagram with three clearly labelled states and four arrows. In the actual 360 px preview the three state labels and arrow directions remain clear, but the four transition words are too small for reliable reading without zoom. The P briefs provide their own observations and explicitly avoid the image, so this mobile label limitation does not cause their content gap. Image publication/visual QA is outside this P decision."
+    },
+    {
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "decision": "REVISE",
+      "candidateStatus": "needs_human_review",
+      "acceptedAspects": [
+        "The indicator-specific reference and broad pH interpretation match the present DE/EN goal and the HE G9 source. Both cases use safe teacher-provided data and a changed indicator; neither asks learners to test or taste unknown samples.",
+        "The current active PNG shows pH < 7, pH = 7 and pH > 7 as category labels rather than measured beaker values. All three labels and the main colour relationships are readable in the native 360 px view. The cases stand without the image."
+      ],
+      "issues": [
+        {
+          "severity": "blocking_scope_and_science",
+          "location": "profile.expectations[0].essentialUnderstandingDe/En, variationAxes[1], both applicationCaseBriefs",
+          "finding": "The single required expectation makes an equal drop count and a known neutral reference part of understanding this goal. The canonical goal and HE G9 source require suitable indicator-based classification into broad pH ranges; they do not require that particular control protocol or a neutral reference for every indicator test. The first expected answer further says equal indicator amount makes the supplied colours comparable, although equal drops alone do not ensure comparable sample volumes, indicator concentration, sample colour or a valid indicator-specific reference. A suitable calibrated colour card can support interpretation without a separate neutral control.",
+          "requiredRevision": "Keep equal sample/indicator amounts and a known reference as optional good experimental controls when relevant, not mandatory mastery conditions. Make the required performance choosing and using the matching indicator scale, stating a defensible broad pH category/range, and limiting precision. Remove the claim that equal drops alone establish comparability."
+        },
+        {
+          "severity": "precision_and_coverage",
+          "location": "applicationCaseBriefs[0] universal-indicator-three-unknowns and applicationCaseBriefs[1] fresh-red-cabbage-reference",
+          "finding": "Case 1 gives green only as 'around pH 7' but its answer calls B neutral without clarifying that a colour band near 7 is not proof of exact pH 7. Case 2 gives the colour-to-category answer in its chart, while its expected performance never explicitly states the corresponding broad pH ranges (< 7, near/equal 7 in the school reference case, > 7). This weakens the second independent demonstration of the current goal's pH-range component.",
+          "requiredRevision": "Qualify B as approximately neutral unless the provided reference explicitly defines its neutral colour band, and do not infer an exact pH from green. In the changed-indicator case require the learner to state supported broad pH categories/ranges and an uncertainty limit, not just repeat colour labels from the supplied card."
+        }
+      ],
+      "imageContext": "The active 1672x941 PNG is distinct from the old JPG; canonical and public bytes match SHA-256 cf6f69ccb31591750a925603b9930d57edb0f9f0112c6512b28ad674a561f7f8. The corrected image works as a broad category illustration at 360 px, but it cannot supply an indicator-specific calibration or exact pH values. No new human image approval is inferred."
+    }
+  ],
+  "technicalChecks": [
+    {
+      "config": "canonical-chemistry-positive-understanding-evidence-b004s-states-ph-current-2-v1.config.json",
+      "result": "FAIL: 1 blocking stale reviewInputFingerprint for d2ccd1d5-56f7-583f-9724-e97441367f91 after the active PNG change; the 326d45bf record itself was not flagged. Use the b004u config for the current d2 candidate."
+    },
+    {
+      "config": "canonical-chemistry-positive-understanding-evidence-b004u-d2-current-png-v1.config.json",
+      "result": "PASS structurally: 1 configured, 0 blocking, 1 needs_human_review, 0 approved. This does not override the content revisions above."
+    }
+  ],
+  "scopeLimit": "These REVISE decisions concern the two current AI-authored P profiles. Neither candidate is human-approved; this review does not edit the profiles, canonical goals, description reviews, visual QA or registry, and makes no strict M7 completion claim."
+}

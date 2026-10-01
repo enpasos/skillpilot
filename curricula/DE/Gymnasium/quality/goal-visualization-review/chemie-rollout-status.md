@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-23T13:02:35.806Z
+Generated: 2026-10-01T00:14:28.972Z
 
 Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
@@ -38,7 +38,8 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | Status | Count |
 | --- | --- |
 | `accepted` | 129 |
-| `pilot` | 224 |
+| `ai_candidate` | 2 |
+| `pilot` | 222 |
 
 ## Ledger Decisions
 
