@@ -1,10 +1,10 @@
 # Chemie/Biologie M7: pausierter Commit-Zwischenstand (1. Oktober 2026)
 
-Die Zielverfolgung ist auf ausdrücklichen Wunsch des Product Owners pausiert. Dieser Stand ist eine maschinelle QS-Zwischenaufnahme, keine M7-Erklärung, menschliche Prüfung, Freigabe oder Erprobung. Das aktive [Goal](../chemie-biologie-m7-goaltext-2026-09-30.md) bleibt inhaltlich erhalten; während der Pause werden keine weiteren Fachpakete integriert.
+Die Zielverfolgung ist auf ausdrücklichen Wunsch des Product Owners pausiert. Dieser Stand ist eine maschinelle QS-Zwischenaufnahme, keine M7-Erklärung, menschliche Prüfung, Freigabe oder Erprobung. Das aktive [Goal](chemie-biologie-m7-goaltext-2026-09-30.md) bleibt inhaltlich erhalten; während der Pause werden keine weiteren Fachpakete integriert.
 
 ## Aktueller maschineller Stand
 
-Maßgeblich sind die aktuellen curricularAtomic-Ziel-IDs in der zentralen Registry und der am 1. Oktober 2026 um 02:35 UTC erzeugte [Curriculum-Statusbericht](curriculum-quality-status.json). Der gebündelte zentrale Fünf-Gate-Check hatte null Blocking Issues und alle sechs Pflichtchecks je Fach bestanden.
+Maßgeblich sind die aktuellen curricularAtomic-Ziel-IDs in der zentralen Registry und der am 1. Oktober 2026 um 02:35 UTC erzeugte [Curriculum-Statusbericht](status/curriculum-quality-status.json). Der gebündelte zentrale Fünf-Gate-Check hatte null Blocking Issues und alle sechs Pflichtchecks je Fach bestanden.
 
 | Fach | Streng D∩P∩A∩M∩V | Offene aktuelle Ziele | Reifegrad | CQR-303 |
 | --- | ---: | ---: | --- | --- |

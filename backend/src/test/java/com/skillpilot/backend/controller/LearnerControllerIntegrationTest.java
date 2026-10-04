@@ -1485,7 +1485,7 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BW", "80", "80" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BW", "81", "81" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BY", "129", "129" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HB", "97", "97" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HE", "129", "129" },

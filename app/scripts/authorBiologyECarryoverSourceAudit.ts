@@ -10,8 +10,31 @@ import { resolve } from 'node:path'
 import { stableGoalBookJson } from './goalBookModel'
 import { expandGoalBookSourceAtlasReceipt } from './goalBookSourceAtlasInputs'
 
+interface CanonicalGoal {
+  id: string
+  extendedData: { provenance: { sourceGoalId: string } }
+}
+
+interface SourceGoal { id: string }
+
+interface MappingDecision {
+  sourceGoalId: string
+  decision: string
+  canonicalGoalIds: string[]
+}
+
+interface AtlasScope {
+  key: string
+  witnesses: {
+    goalId: string
+    sourceGoalId: string
+    mappingPath: string
+    coverage: string
+  }[]
+}
+
 const root = resolve(import.meta.dirname, '../..')
-const load = (path: string): any => JSON.parse(readFileSync(resolve(root, path), 'utf8'))
+const load = <T>(path: string): T => JSON.parse(readFileSync(resolve(root, path), 'utf8')) as T
 const digest = (value: unknown): string => `sha256:${createHash('sha256').update(stableGoalBookJson(value)).digest('hex')}`
 const fileDigest = (path: string): string => `sha256:${createHash('sha256').update(readFileSync(resolve(root, path))).digest('hex')}`
 
@@ -46,31 +69,32 @@ const findings: Record<string, [number, string, string]> = {
   '9344c5ce': [36, 'E.4 Bedeutung von Drosophila und Caenorhabditis elegans als Modellorganismen', 'Eine fallbezogene Wahl mit Übertragungsgrenze bleibt innerhalb des amtlichen Modellorganismenpunkts; keine identische Entwicklung des Menschen wird behauptet.'],
 }
 
-const canonical = load(landscapePath)
-const source = load(sourceExtractionPath)
-const mapping = load(mappingPath)
-const atlas = expandGoalBookSourceAtlasReceipt(load(sourceAtlasReceiptPath))
-const byGoal = new Map(canonical.goals.map((goal: any) => [goal.id, goal]))
-const bySource = new Map(source.sourceGoals.map((goal: any) => [goal.id, goal]))
-const byDecision = new Map(mapping.decisions.map((decision: any) => [decision.sourceGoalId, decision]))
-const ids = indexPaths.flatMap(path => load(path).resolutions.map((item: any) => item.goalId))
+const canonical = load<{ goals: CanonicalGoal[] }>(landscapePath)
+const source = load<{ sourceGoals: SourceGoal[] }>(sourceExtractionPath)
+const mapping = load<{ decisions: MappingDecision[] }>(mappingPath)
+const atlas = expandGoalBookSourceAtlasReceipt(load<Record<string, unknown>>(sourceAtlasReceiptPath))
+const scopes = atlas.scopes as AtlasScope[]
+const byGoal = new Map(canonical.goals.map(goal => [goal.id, goal] as const))
+const bySource = new Map(source.sourceGoals.map(goal => [goal.id, goal] as const))
+const byDecision = new Map(mapping.decisions.map(decision => [decision.sourceGoalId, decision] as const))
+const ids = indexPaths.flatMap(path => load<{ resolutions: { goalId: string }[] }>(path).resolutions.map(item => item.goalId))
 if (ids.length !== 15 || new Set(ids).size !== 15) throw new Error('Expected exactly 15 distinct unchanged E carryover goals')
 if (Object.keys(findings).length !== ids.length) throw new Error('Finding count mismatch')
 const heKeys = ['DE-HE/SekII/GK', 'DE-HE/SekII/LK']
 const records = ids.map((goalId: string) => {
-  const goal: any = byGoal.get(goalId)
+  const goal = byGoal.get(goalId)
   if (!goal) throw new Error(`Missing canonical goal ${goalId}`)
   const [printedPage, officialSourcePoint, findingDe] = findings[goalId.slice(0, 8)] ?? []
   if (!findingDe) throw new Error(`Missing subject finding ${goalId}`)
   const sourceGoalId = goal.extendedData?.provenance?.sourceGoalId
-  const sourceGoal: any = bySource.get(sourceGoalId)
-  const decision: any = byDecision.get(sourceGoalId)
+  const sourceGoal = bySource.get(sourceGoalId)
+  const decision = byDecision.get(sourceGoalId)
   if (!sourceGoal || !decision || decision.decision !== 'mapped' || !decision.canonicalGoalIds.includes(goalId)) {
     throw new Error(`No exact reviewed HE source decision for ${goalId}`)
   }
   const directWitnesses = heKeys.map(key => {
-    const scope = atlas.scopes.find((item: any) => item.key === key)
-    const witness = scope?.witnesses.find((item: any) => item.goalId === goalId && item.sourceGoalId === sourceGoalId && item.mappingPath === mappingPath && item.coverage === 'direct')
+    const scope = scopes.find(item => item.key === key)
+    const witness = scope?.witnesses.find(item => item.goalId === goalId && item.sourceGoalId === sourceGoalId && item.mappingPath === mappingPath && item.coverage === 'direct')
     if (!witness) throw new Error(`Missing direct HE source witness for ${goalId} in ${key}`)
     return key
   })

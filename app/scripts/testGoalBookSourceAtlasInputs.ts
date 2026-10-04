@@ -125,9 +125,9 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   }
 
   const biology = checkGoalBookSourceAtlasInputs('app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json', root)
-  assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 355, publishedCurricularAtomicGoals: 355, sourceViews: 20, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
+  assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 363, publishedCurricularAtomicGoals: 363, sourceViews: 20, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
   assert.deepEqual(biology.receipt.scopes.filter(s => s.stage === 'SekII').map(s => [s.key, s.goalIds.length]), [
-    ['DE-BY/SekII/GK', 86], ['DE-BY/SekII/LK', 113], ['DE-HE/SekII/GK', 69], ['DE-HE/SekII/LK', 150],
+    ['DE-BY/SekII/GK', 87], ['DE-BY/SekII/LK', 114], ['DE-HE/SekII/GK', 76], ['DE-HE/SekII/LK', 157],
   ])
   assert.ok(biology.receipt.scopes.filter(s => s.stage === 'SekII').every(s => s.witnesses.every(w => w.coverage === 'direct')), 'No coarse mapped-cluster inheritance into biology GK/LK')
   const chemistry = checkGoalBookSourceAtlasInputs('app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json', root)

@@ -51,7 +51,7 @@ authoring draft's `evaluation` archetype is outside that schema's enum.
   proposes no ID, edge, scope, course-level or view edit. A reviewer should
   confirm that “beurteilen”, already in the title, fits the intended demand
   level, then recompile and inspect the HE GK/LK source views and any affected
-  BY projection after a text change. The [existing Q1 audit](../../../../../../../docs/qa-ci/status/biology-q1-next-package-audit-2026-10-01.md)
+  BY projection after a text change. The [existing Q1 audit](../../../../../../../docs/qa-ci/biology-q1-next-package-audit-2026-10-01.md)
   describes the target as open in the strict D/P/A/M/V intersection.
 
 ## Explicit limits of the fictional cases
