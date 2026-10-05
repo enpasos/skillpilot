@@ -170,7 +170,9 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String CANONICAL_CHEMISTRY_SEK1_ION_FORMATION_ID = "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca";
     private static final String CANONICAL_CHEMISTRY_SEK1_IONIC_BONDING_ID = "950c73c6-4ed1-488a-9267-1142e95e0055";
     private static final String CANONICAL_CHEMISTRY_E2_CLUSTER_ID = "f97b9c87-16d0-58fd-bcb2-c51574aa36d0";
+    private static final String CANONICAL_CHEMISTRY_REDOX_CLUSTER_ID = "cd7f484a-ac2e-55bb-b904-61d743e87821";
     private static final String CANONICAL_CHEMISTRY_WHY_ID = "a9c22adc-b543-5b0c-a2d8-3189facdff08";
+    private static final String CANONICAL_CHEMISTRY_REDOX_TERMS_ID = "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162";
     private static final String CANONICAL_CHEMISTRY_OXIDATION_NUMBERS_ID = "4961130b-1ee8-58f2-a319-dff0a864db6a";
     private static final String CANONICAL_CHEMISTRY_ARRHENIUS_ID = "28bb9d15-f865-5843-a035-6066580fea64";
     private static final String CANONICAL_CHEMISTRY_PH_ID = "f1ed86f0-534d-57d7-8952-a004a331cc54";
@@ -583,12 +585,53 @@ class LearnerServiceCanonicalProjectionTest {
     }
 
     @Test
-    void canonicalChemistrySimpleRedoxSeriesDependsOnProjectedSek1RedoxBridge() {
+    void canonicalChemistrySimpleRedoxSeriesDependsOnReviewedElectronTransferTerms() {
         LearningGoal goal = landscapeService.getGoalDefinition(CANONICAL_CHEMISTRY_SIMPLE_REDOX_SERIES_ID);
 
         assertThat(goal).isNotNull();
+        // The reviewed qualitative series route uses electron donor/acceptor roles;
+        // oxidation-number balancing and the older oxygen-transfer route are separate skills.
         assertThat(goal.getRequires())
-                .contains(CANONICAL_CHEMISTRY_OXIDATION_NUMBERS_ID, CANONICAL_CHEMISTRY_SEK1_OXIDATION_REDUCTION_ID);
+                .containsExactly(CANONICAL_CHEMISTRY_REDOX_TERMS_ID);
+    }
+
+    @Test
+    void canonicalChemistrySimpleRedoxSeriesFrontierRequiresElectronTransferTerms() {
+        learner.setSelectedCurriculum(CANONICAL_CHEMISTRY_ID);
+        // The redox focus includes both the series and its electron-transfer prerequisite.
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_CHEMISTRY_REDOX_CLUSTER_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, CANONICAL_CHEMISTRY_WHY_ID, 1.0),
+                        new Mastery(learner, CANONICAL_CHEMISTRY_OXIDATION_NUMBERS_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_OXIDATION_REDUCTION_ID, 1.0)));
+
+        assertThat(learnerService.getRichFrontier(LEARNER_ID))
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_CHEMISTRY_REDOX_TERMS_ID)
+                .doesNotContain(CANONICAL_CHEMISTRY_SIMPLE_REDOX_SERIES_ID);
+    }
+
+    @Test
+    void canonicalChemistrySimpleRedoxSeriesFrontierDoesNotRequireHistoricalOxidationRoute() {
+        learner.setSelectedCurriculum(CANONICAL_CHEMISTRY_ID);
+        // Use the same complete redox focus while leaving the historical route unmastered.
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_CHEMISTRY_REDOX_CLUSTER_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, CANONICAL_CHEMISTRY_WHY_ID, 1.0),
+                        new Mastery(learner, CANONICAL_CHEMISTRY_REDOX_TERMS_ID, 1.0)));
+
+        assertThat(learnerService.getRichFrontier(LEARNER_ID))
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_CHEMISTRY_SIMPLE_REDOX_SERIES_ID)
+                .doesNotContain(CANONICAL_CHEMISTRY_REDOX_TERMS_ID);
+        assertThat(learnerService.getMastery(LEARNER_ID))
+                .doesNotContainKeys(
+                        CANONICAL_CHEMISTRY_OXIDATION_NUMBERS_ID,
+                        CANONICAL_CHEMISTRY_SEK1_OXIDATION_REDUCTION_ID);
     }
 
     @Test
