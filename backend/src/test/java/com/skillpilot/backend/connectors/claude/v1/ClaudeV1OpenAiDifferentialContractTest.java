@@ -28,11 +28,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Proves that enabling Claude v1 in the shared JVM preserves the OpenAI 1.1.0 candidate contract.
+ * Proves that enabling Claude v1 in the shared JVM preserves the current OpenAI candidate contract.
  *
  * <p>The providers evolve independently. This test runs with Claude v1 switched on so accidental
  * coupling — a shared bean, a contributed tool, a rewritten instruction block — is detected against
- * the explicit OpenAI 1.1.0 candidate baseline, not the retired 1.0.0 review contract.</p>
+ * the independently committed OpenAI candidate baseline, not the retired 1.0.0 review contract.</p>
  */
 @SpringBootTest
 @ActiveProfiles("test")
@@ -62,10 +62,12 @@ class ClaudeV1OpenAiDifferentialContractTest {
 
     // Read the independently committed candidate, never regenerate it from the runtime under test.
     // Keeping a second literal digest here would drift whenever the authorized draft is refreshed.
-    private static final Path OPENAI_1_1_0_CONTRACT = Path.of(
-            "../contracts/drafts/openai/skillpilot-coach-v1/1.1.0-SNAPSHOT/contract/contract.json");
+    private static final Path OPENAI_PLUGIN_MANIFEST = Path.of(
+            "../ai/openai plugin/skillpilot-coach-v1/.codex-plugin/plugin.json");
+    private static final Path OPENAI_CANDIDATE_ROOT = Path.of(
+            "../contracts/drafts/openai/skillpilot-coach-v1");
 
-    private static final Set<String> OPENAI_1_1_0_TOOL_NAMES = Set.of(
+    private static final Set<String> OPENAI_CANDIDATE_TOOL_NAMES = Set.of(
             "get_skillpilot_context",
             "get_skillpilot_exam_evaluation",
             "get_skillpilot_navigation",
@@ -91,9 +93,9 @@ class ClaudeV1OpenAiDifferentialContractTest {
     private OpenAiDeV1McpContractAdapter openAiContract;
 
     @Test
-    void openAiCandidateIdentityRemainsIndependentOfClaude() {
+    void openAiCandidateIdentityRemainsIndependentOfClaude() throws IOException {
         assertEquals("skillpilot-coach-v1", OpenAiDeV1ContractMetadata.PLUGIN_IDENTITY);
-        assertEquals("1.1.0", OpenAiDeV1ContractMetadata.PLUGIN_VERSION);
+        assertEquals(currentCandidateVersion(), OpenAiDeV1ContractMetadata.PLUGIN_VERSION);
         assertEquals("https://mcp-coach-v1.skillpilot.com/mcp", OpenAiDeV1ContractMetadata.PUBLIC_MCP_ENDPOINT);
         assertEquals("/internal/openai/v1/mcp", OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH);
     }
@@ -119,12 +121,12 @@ class ClaudeV1OpenAiDifferentialContractTest {
     @Test
     void openAiToolSurfaceIsUnaffectedByTheClaudeLane() throws IOException {
         List<McpStatelessServerFeatures.SyncToolSpecification> tools = openAiContract.toolSpecifications();
-        assertEquals(14, tools.size(), "The OpenAI 1.1.0 candidate must publish exactly 14 tools");
+        assertEquals(14, tools.size(), "The current OpenAI candidate must publish exactly 14 tools");
 
         Set<String> openAiToolNames = tools.stream()
                 .map(specification -> specification.tool().name())
                 .collect(Collectors.toSet());
-        assertEquals(OPENAI_1_1_0_TOOL_NAMES, openAiToolNames);
+        assertEquals(OPENAI_CANDIDATE_TOOL_NAMES, openAiToolNames);
         // Shared tool names are intentional; Claude-specific entry/navigation/focus tools are not.
         assertFalse(openAiToolNames.contains(ClaudeV1Contract.TOOL_GET_COACH_CONTEXT));
         assertFalse(openAiToolNames.contains(ClaudeV1Contract.TOOL_GET_NAVIGATION_OPTIONS));
@@ -135,13 +137,27 @@ class ClaudeV1OpenAiDifferentialContractTest {
         assertEquals(
                 preparedOpenAiContractSha256(),
                 fingerprint,
-                "Enabling Claude must preserve the explicit OpenAI 1.1.0 candidate contract");
+                "Enabling Claude must preserve the independently committed OpenAI candidate contract");
+    }
+
+    private static String currentCandidateVersion() throws IOException {
+        assertTrue(Files.isRegularFile(OPENAI_PLUGIN_MANIFEST),
+                "The independent canonical OpenAI plugin manifest must be checked in");
+        JsonNode manifest = new ObjectMapper().readTree(Files.readString(OPENAI_PLUGIN_MANIFEST));
+        assertEquals("skillpilot-coach-v1", manifest.path("name").asText());
+        JsonNode version = manifest.path("version");
+        assertTrue(version.isTextual()
+                        && version.asText().matches("(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)"),
+                "The canonical candidate version must be stable package SemVer");
+        return version.asText();
     }
 
     private static String preparedOpenAiContractSha256() throws IOException {
-        assertTrue(Files.isRegularFile(OPENAI_1_1_0_CONTRACT),
-                "The independently prepared OpenAI 1.1.0 candidate must be checked in");
-        JsonNode candidate = new ObjectMapper().readTree(Files.readString(OPENAI_1_1_0_CONTRACT));
+        Path contract = OPENAI_CANDIDATE_ROOT.resolve(currentCandidateVersion() + "-SNAPSHOT")
+                .resolve("contract/contract.json");
+        assertTrue(Files.isRegularFile(contract),
+                "The independently prepared contract for the current OpenAI candidate must be checked in");
+        JsonNode candidate = new ObjectMapper().readTree(Files.readString(contract));
         assertEquals(1, candidate.path("schemaVersion").asInt());
         assertEquals("skillpilot-coach-v1", candidate.path("pluginIdentity").asText());
         assertEquals(1, candidate.path("contractMajor").asInt());

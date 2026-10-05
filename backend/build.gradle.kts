@@ -78,12 +78,36 @@ tasks.test {
         showStackTraces = true
         showStandardStreams = false
     }
-    // The provider-isolation test reads this independent, checked-in baseline.
-    // Draft-only updates must invalidate local test results as well as fresh CI runs.
-    inputs.file(layout.projectDirectory.file(
-        "../contracts/drafts/openai/skillpilot-coach-v1/1.1.0-SNAPSHOT/contract/contract.json"
-    )).withPropertyName("openAiCoachV1CandidateContract")
+    // The provider-isolation test selects its independent, checked-in baseline from the manifest.
+    // Manifest and current-draft updates must invalidate local test results as well as fresh CI runs.
+    val openAiCandidateManifest = layout.projectDirectory.file(
+        "../ai/openai plugin/skillpilot-coach-v1/.codex-plugin/plugin.json"
+    )
+    val openAiCandidateVersion = providers.fileContents(openAiCandidateManifest).asText.map { text ->
+        val manifest = groovy.json.JsonSlurper().parseText(text) as? Map<*, *>
+            ?: error("The canonical OpenAI plugin manifest must be a JSON object")
+        require(manifest["name"] == "skillpilot-coach-v1") {
+            "The canonical OpenAI plugin manifest must identify skillpilot-coach-v1"
+        }
+        val candidateVersion = manifest["version"] as? String
+            ?: error("The canonical OpenAI plugin manifest must specify a version")
+        require(candidateVersion.matches(Regex("(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)"))) {
+            "The canonical OpenAI candidate version must be stable package SemVer"
+        }
+        candidateVersion
+    }
+    val openAiCandidateContract = layout.projectDirectory.file(openAiCandidateVersion.map { version ->
+        "../contracts/drafts/openai/skillpilot-coach-v1/${version}-SNAPSHOT/contract/contract.json"
+    })
+    inputs.file(openAiCandidateManifest).withPropertyName("openAiCoachV1CandidateManifest")
         .withPathSensitivity(PathSensitivity.RELATIVE)
+    inputs.file(openAiCandidateContract).withPropertyName("openAiCoachV1CandidateContract")
+        .withPathSensitivity(PathSensitivity.RELATIVE)
+    doFirst {
+        require(openAiCandidateContract.get().asFile.isFile) {
+            "The independently prepared contract for the current OpenAI candidate must be checked in"
+        }
+    }
     // ProjectionRoleLearnerServiceTest loads the current public physics route.
     // Curriculum-only changes must invalidate the cached test result too.
     inputs.file(layout.projectDirectory.file(
