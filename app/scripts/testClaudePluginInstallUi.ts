@@ -8,6 +8,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 import { chromium } from 'playwright'
 import tailwindcss from '@tailwindcss/vite'
 import { startViteTestServer } from './viteTestServer'
+import { getFaqViewCopy } from '../src/utils/faqViewCopy'
 import {
   CLAUDE_MARKETPLACE_REPOSITORY_URL,
   CLAUDE_MARKETPLACE_INSTALLATION_ENABLED,
@@ -66,7 +67,7 @@ const server = await startViteTestServer(appRoot, 'scripts/fixtures/claudePlugin
 })
 const browser = await chromium.launch({ headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] })
 try {
-  for (const language of ['de', 'en']) {
+  for (const language of ['de', 'en'] as const) {
     const context = await browser.newContext({ acceptDownloads: true, viewport: { width: 1280, height: 900 } })
     await context.addInitScript((lang) => {
       localStorage.setItem('skillpilot_lang', lang)
@@ -129,6 +130,15 @@ try {
     const updateMode = page.getByTestId('claude-plugin-mode-update')
     const downloadLabel = language === 'de' ? 'Plugin-Datei herunterladen' : 'Download plugin file'
     const downloadLink = guide.getByRole('link', { name: downloadLabel, exact: true })
+    const desktopFaqGuide = () => {
+      const startQuestion = getFaqViewCopy(language).sections
+        .find((section) => section.id === 'chatgpt')?.questions
+        .find((question) => question.id === 'chatgpt-availability')
+      assert.ok(startQuestion, 'the FAQ includes the authored ChatGPT installation question')
+      return page.locator('details').filter({
+        has: page.locator('summary').filter({ hasText: startQuestion.question }),
+      }).locator('a[href="/plugins#chatgpt-desktop"]')
+    }
     const assertUnavailableVersionSafety = async () => {
       const comparison = await page.getByTestId('claude-plugin-update-guide').innerText()
       assert(comparison.includes(language === 'de'
@@ -171,7 +181,7 @@ try {
       'https://github.com/enpasos/skillpilot-chatgpt-marketplace')
     assert((await chatGptGuide.innerText()).includes(language === 'de'
       ? 'Browser und Mobil-App sind dafür noch nicht bestätigt'
-      : 'browser and mobile app support have not been confirmed'),
+      : 'Browser and mobile app support have not been confirmed'),
       'the Desktop guide retains the actual host acceptance boundary')
     assert(await chatGptGuide.getByRole('link').getAttribute('href') === '/?coach=chatgpt-desktop',
       'the guide returns to the authored start flow with ChatGPT preselected')
@@ -225,7 +235,7 @@ try {
       history.pushState({}, '', '/faq')
       window.dispatchEvent(new PopStateEvent('popstate'))
     })
-    const faqDesktopGuide = page.locator('a[href="/plugins#chatgpt-desktop"]')
+    const faqDesktopGuide = desktopFaqGuide()
     await faqDesktopGuide.waitFor({ state: 'attached' })
     await faqDesktopGuide.locator('xpath=ancestor::details[1]').locator('summary').click()
     await faqDesktopGuide.click()
@@ -437,7 +447,7 @@ try {
       history.pushState({}, '', '/faq')
       window.dispatchEvent(new PopStateEvent('popstate'))
     })
-    const faqDesktopGuide = page.locator('a[href="/plugins#chatgpt-desktop"]')
+    const faqDesktopGuide = desktopFaqGuide()
     await faqDesktopGuide.waitFor({ state: 'attached' })
     await faqDesktopGuide.locator('xpath=ancestor::details[1]').locator('summary').click()
     await faqDesktopGuide.click()
