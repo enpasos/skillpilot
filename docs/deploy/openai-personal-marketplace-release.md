@@ -8,7 +8,9 @@ Official OpenAI submission and production GUI/server deployment are separate.
 
 ## Current candidate and evidence
 
-Canonical package: **SkillPilot Coach v1 1.1.1**. Public Git source:
+Canonical package and current public Git release: **SkillPilot Coach v1
+1.1.2**. The matching backend/resource rollout remains with the Product Owner.
+Public Git source:
 [enpasos/skillpilot-chatgpt-marketplace](https://github.com/enpasos/skillpilot-chatgpt-marketplace).
 Marketplace identity: `skillpilot-chatgpt-marketplace`; plugin identity:
 `skillpilot-coach-v1`. The canonical OpenAI portal lifecycle stays **DRAFT**;
@@ -21,6 +23,7 @@ Evidence recorded on 5 October 2026:
 | Windows ChatGPT archive installation | Owner reports successful deployment; supplied UI shows archive and marketplace add options |
 | Initial learning start | Rejected the Claude-generated `spc_` capability; corrected OpenAI launch uses `sps_` |
 | Windows Git/Desktop route and corrected learning start | Product Owner confirms “funktioniert” after installing the current Git package and using the corrected start; owner-reported evidence, not a recorded tool trace |
+| Windows Desktop Work with Voice | Owner reports working learning and apparent success saving, but only the first learning image appeared. The missing later image is visible in the Cockpit. No correlated tool/display trace; image-sequence acceptance remains pending |
 | Native Codex 0.160.0 local installation | Exact seven canonical files installed and enabled; app-server `skills/list` discovers the coach |
 | Codex Git update in an isolated loopback repository | Installed files refreshed immediately, including a synthetic version bump; fixture removed afterwards |
 | Desktop automatic Git updates | Pending an observed replacement and repeated learning start in the actual desktop host |
@@ -62,12 +65,72 @@ query. GUI production deployment is tracked separately from this owner report.
 Keep the original export acceptance fields unchanged; the confirmation adds
 evidence here without rewriting the published candidate or its receipt.
 
+### Recorded 1.1.2 Git deployment
+
+After the local checks passed, the Product Owner explicitly requested immediate
+marketplace rollout. Published on **5 October 2026** as commit
+[`cf5e23a7908412f3f28a1a66485d0e106c346154`](https://github.com/enpasos/skillpilot-chatgpt-marketplace/commit/cf5e23a7908412f3f28a1a66485d0e106c346154)
+on `main`, with package digest
+`8a301fecdaf55de09cd39c9d8ba18191512aef7b1f910efaf2e75501e3274982`.
+A fresh public clone matched all canonical export bytes and passed its standalone
+validator. [GitHub validation run 37300661165](https://github.com/enpasos/skillpilot-chatgpt-marketplace/actions/runs/37300661165)
+completed successfully. The update fast-forwarded `1.1.1`, preserved its commit
+and the original `v1.1.0` tag, and changed only the package manifest, README,
+changelog and inventory. No `v1.1.2` tag was created; use the full commit as the
+immutable reference.
+
+Local validation passed **55 OpenAI App tests**, **55 backend tests** (including
+Basic/native CIMD flows and provider differential contracts), **96 release/
+submission/marketplace tests**, frontend FAQ checks and the static mTLS gate.
+The active corrected image resource is bound to SHA-256
+`12762009bd8e00c392e06aefac685e17653f50a5e7efeb21f865429a9fab641e`.
+Git publication does not deploy that backend resource, perform OpenAI portal
+submission or establish Desktop/Voice image-sequence acceptance. The exported
+host-acceptance fields remain pending. Preserve the local preparation receipts
+as pre-publication evidence rather than rewriting them.
+
+### Local 1.1.2 image-loading correction
+
+The subsequent owner test used **Windows ChatGPT Desktop, Work, Voice**.
+Learning and success saving appeared to work, but only the first learning
+image was shown. The owner confirmed that the later image is available in
+the Cockpit. This is a display investigation, not evidence of a missing
+curriculum image. The report does not establish whether the later renderer
+tool was called or how long its resource/image took to arrive.
+
+Comparison with current **Claude 1.1.12** found a concrete difference:
+Claude's 30 September fix, commit `a85246ff36c`, retains pending renderers so
+late tool results and images can still display. The OpenAI renderer still
+requested host closure after 10 seconds without a result or 15 seconds without
+an image, clearing the pending image. A host that honors closure can discard
+later results. The local **1.1.2** candidate removes these
+timeout closures while keeping pending content hidden, deduplicating identical
+results, ignoring invalid results and closing on failed initialization or image
+errors. Every already-advertised content-addressed resource retains its exact
+bytes; the corrected renderer receives a new resource hash.
+
+Local regression coverage checks delayed results/images and successive image
+delivery through the bundled MCP Apps bridge. Backend tests check the full
+successor context after saved mastery for both Basic and native CIMD OAuth.
+Neither proves the reported Windows host incident is fully resolved. Claude's
+own candidate-specific two-image host acceptance also remains pending; its
+local implementation is a comparison baseline, not ChatGPT host evidence.
+
+For the owner rollout, deploy the matching backend/resource and update the Git
+plugin to **1.1.2**, then check the installed version and use a fresh ChatGPT
+start in **Work**. Verify: first image, saved success, an explicit agreement
+to continue, and the next image in the same Voice chat. If the image is still
+missing, distinguish an absent renderer call from a successful renderer call
+whose UI never becomes visible. Keep any tool/status evidence sanitized; do
+not include chat text, tokens or learner-session capabilities. The recorded
+Git deployment above changes no production server setting.
+
 ## Tester walkthrough: Windows ChatGPT Desktop
 
 1. In **Plugins → Hinzufügen → Marketplace hinzufügen**, add
    `https://github.com/enpasos/skillpilot-chatgpt-marketplace`.
 2. Open `skillpilot-chatgpt-marketplace` and install **SkillPilot Coach v1**;
-   verify **1.1.1** and the enabled coach skill. Avoid enabling the archive copy
+   verify **1.1.2** and the enabled coach skill. Avoid enabling the archive copy
    and marketplace copy together in the same chat.
 3. Connect the plugin through the host authentication flow. The pinned native
    CIMD profile uses S256 PKCE and supplies no operator/client secret. Use Auto

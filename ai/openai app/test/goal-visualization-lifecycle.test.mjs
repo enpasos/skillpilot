@@ -106,14 +106,20 @@ function createHarness(initialToolOutput, options = {}) {
   const timers = new Map();
   const widgetStates = [];
   let nextTimerId = 1;
+  let now = 0;
+  let resolveBridge;
+  let rejectBridge;
+  const bridgeReady = new Promise((resolve, reject) => {
+    resolveBridge = resolve;
+    rejectBridge = reject;
+  });
+  if (options.bridgeReady !== false) resolveBridge();
 
   const context = {
     URL,
     console,
     Promise,
-    __bridgeReady: options.bridgeReady === false
-      ? new Promise(() => undefined)
-      : Promise.resolve(),
+    __bridgeReady: bridgeReady,
     __teardownCount: 0,
     __closeCount: 0,
     document: {
@@ -133,9 +139,9 @@ function createHarness(initialToolOutput, options = {}) {
       listeners.push(listener);
       windowListeners.set(type, listeners);
     },
-    setTimeout(callback) {
+    setTimeout(callback, delay = 0) {
       const id = nextTimerId++;
-      timers.set(id, callback);
+      timers.set(id, { callback, at: now + delay });
       return id;
     },
     clearTimeout(id) {
@@ -169,6 +175,20 @@ function createHarness(initialToolOutput, options = {}) {
     rootElement,
     timers,
     widgetStates,
+    resolveBridge,
+    rejectBridge,
+    advance(milliseconds) {
+      const end = now + milliseconds;
+      for (let executions = 0; ; executions += 1) {
+        const next = [...timers].sort((left, right) => left[1].at - right[1].at)[0];
+        if (!next || next[1].at > end) break;
+        assert.ok(executions < 100, "Unexpected unbounded timer loop");
+        now = next[1].at;
+        timers.delete(next[0]);
+        next[1].callback();
+      }
+      now = end;
+    },
     emitGlobals(globals) {
       for (const listener of windowListeners.get("openai:set_globals") ?? []) {
         listener({ detail: { globals } });
@@ -182,14 +202,14 @@ async function flushPromises() {
   await Promise.resolve();
 }
 
-test("a compatibility image stays hidden until load and load cancels its timeout", () => {
+test("a compatibility image stays hidden until load without a deadline", () => {
   const harness = createHarness(visualization("ATOM_1"));
   const image = harness.images[0];
 
   assert.ok(image);
   assert.equal(harness.rootElement.hidden, true);
   assert.deepEqual(harness.rootElement.children, [image]);
-  assert.equal(harness.timers.size, 1);
+  assert.equal(harness.timers.size, 0);
 
   image.dispatch("load");
 
@@ -265,52 +285,73 @@ test("a stale failure cannot erase a replacement and a later valid result can re
   assert.deepEqual(harness.rootElement.children, [recoveredImage]);
 });
 
-test("the bounded timeout collapses a host that never finishes image loading", async () => {
+test("an image taking more than twenty seconds remains eligible to display", () => {
   const harness = createHarness(visualization("ATOM_1"));
-  const timeout = [...harness.timers.values()][0];
-  assert.equal(typeof timeout, "function");
+  const image = harness.images[0];
+  harness.advance(25_000);
 
-  timeout();
+  assert.equal(harness.rootElement.hidden, true);
+  assert.deepEqual(harness.rootElement.children, [image]);
+  assert.equal(harness.context.__closeCount, 0);
+  assert.equal(harness.context.__teardownCount, 0);
+  image.dispatch("load");
+  assert.equal(harness.rootElement.hidden, false);
+});
+
+test("a native tool result delayed thirty seconds still displays its image", async () => {
+  const harness = createHarness(undefined, {
+    bridgeReady: false,
+    compatibilityGlobals: false
+  });
+  harness.advance(30_000);
+
+  assert.equal(harness.rootElement.hidden, true);
+  assert.deepEqual(harness.rootElement.children, []);
+  assert.equal(harness.context.__closeCount, 0);
+  assert.equal(harness.context.__teardownCount, 0);
+  harness.resolveBridge();
   await flushPromises();
+  harness.context.__deliverToolResult({ structuredContent: visualization("LATE_NATIVE") });
+  const image = harness.images[0];
+  image.dispatch("load");
+  assert.equal(harness.rootElement.hidden, false);
+  assert.equal(harness.context.__teardownCount, 0);
+});
 
+test("a compatibility payload can arrive after thirty seconds without being discarded", () => {
+  const harness = createHarness(undefined);
+  harness.advance(30_000);
+  harness.emitGlobals({ toolOutput: visualization("LATE") });
+  const image = harness.images[0];
+
+  assert.ok(image);
+  assert.equal(harness.timers.size, 0);
+
+  image.dispatch("load");
+  assert.equal(harness.rootElement.hidden, false);
+  assert.equal(harness.timers.size, 0);
+  assert.equal(harness.context.__teardownCount, 0);
+});
+
+test("a failed host connection dismisses the empty component", async () => {
+  const harness = createHarness(undefined, { bridgeReady: false });
+  harness.rejectBridge(new Error("Host connection failed"));
+  await flushPromises();
   assert.equal(harness.rootElement.hidden, true);
   assert.deepEqual(harness.rootElement.children, []);
   assert.equal(harness.context.__closeCount, 1);
   assert.equal(harness.context.__teardownCount, 1);
 });
 
-test("a host that never supplies payload is closed after the bootstrap deadline", async () => {
-  const harness = createHarness(undefined, {
-    bridgeReady: false,
-    requestClose: false
-  });
-  const timeout = [...harness.timers.values()][0];
-  assert.equal(typeof timeout, "function");
-
-  timeout();
+test("a failed standards handshake retains an already supplied compatibility image", async () => {
+  const harness = createHarness(visualization("COMPATIBILITY"), { bridgeReady: false });
+  harness.rejectBridge(new Error("Standard bridge unavailable"));
   await flushPromises();
-
-  assert.equal(harness.rootElement.hidden, true);
-  assert.deepEqual(harness.rootElement.children, []);
-  assert.equal(harness.context.__closeCount, 0);
-  assert.equal(harness.context.__teardownCount, 1);
-});
-
-test("a late payload replaces the bootstrap deadline with the image deadline", () => {
-  const harness = createHarness(undefined);
-  const bootstrapTimeoutId = [...harness.timers.keys()][0];
-
-  harness.emitGlobals({ toolOutput: visualization("LATE") });
   const image = harness.images[0];
-
-  assert.ok(image);
-  assert.equal(harness.timers.has(bootstrapTimeoutId), false);
-  assert.equal(harness.timers.size, 1);
-
+  assert.deepEqual(harness.rootElement.children, [image]);
+  assert.equal(harness.context.__teardownCount, 0);
   image.dispatch("load");
   assert.equal(harness.rootElement.hidden, false);
-  assert.equal(harness.timers.size, 0);
-  assert.equal(harness.context.__teardownCount, 0);
 });
 
 test("a recovered component requests teardown again after a later failure", async () => {

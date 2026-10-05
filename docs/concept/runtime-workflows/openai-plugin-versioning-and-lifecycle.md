@@ -21,10 +21,15 @@ MCP-Apps-Ressourcen im V1-Vertrag
 **Adressaten:** Codex, Backend-, MCP-, UI-, Auth- und Release-Entwicklung
 
 **Aktuelle Release-Einordnung, 5. Oktober 2026:** Das kanonische Manifest führt
-`1.1.1`. Dieses Paket ist über den Git-Marketplace für die ChatGPT-Desktop-Beta
-veröffentlicht; Installation und Lernstart unter Windows sind vom Product Owner
-bestätigt. Die offizielle OpenAI-Einreichung bleibt `DRAFT`, das
-OpenAI-Verzeichnis unveröffentlicht. Der Portal-Draft heißt `1.1.1-SNAPSHOT`.
+`1.1.2`, geprüft und über den Git-Marketplace für die ChatGPT-Desktop-Beta
+veröffentlicht, mit Claudes Fix für verspätete Lernbilder. Der zugehörige
+Backend-Rollout erfolgt separat durch den Product Owner. Installation und
+Lernstart von `1.1.1` unter Windows sind vom Product Owner bestätigt.
+Sein Work/Voice-Test zeigt ein erstes Bild, aber
+keine vollständige Bildfolge; die Abnahme von `1.1.2` im Desktop steht aus.
+Die offizielle OpenAI-Einreichung bleibt `DRAFT`, das
+OpenAI-Verzeichnis unveröffentlicht. Der aktuelle Portal-Draft heißt
+`1.1.2-SNAPSHOT`; der alte `1.1.1-SNAPSHOT` bleibt unverändert.
 Eine Git-Veröffentlichung wird nicht mit `record-published` in den
 OpenAI-Portalindex eingetragen; ihre veröffentlichten Installationsbytes bleiben
 trotzdem unveränderlich. Die begrenzten Aufträge vom 24. September und 5. Oktober
@@ -1319,7 +1324,7 @@ Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bere
 
 1. **V1-Konstanten und Konfiguration einführen**
    - `pluginIdentity = skillpilot-coach-v1`
-   - `pluginVersion` aus dem aktuellen Manifest (aktueller Kandidat `1.1.1`)
+   - `pluginVersion` aus dem aktuellen Manifest (aktueller Kandidat `1.1.2`)
    - `contractMajor = 1`
    - den öffentlichen MCP-Pfad und die exakte OAuth-Resource festlegen;
    - Server-Build separat ausgeben.

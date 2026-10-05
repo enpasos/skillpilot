@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 2,
+  "pluginIdentity": "skillpilot-coach-v1",
+  "candidateVersion": "1.1.2",
+  "status": "PROMOTED_TO_CURRENT_DRAFT",
+  "sourceRoot": "ai/openai plugin/skillpilot-coach-v1",
+  "baseContract": {
+    "version": "1.0.0",
+    "status": "REJECTED",
+    "snapshotPath": "contracts/drafts/openai/skillpilot-coach-v1/1.0.0-SNAPSHOT",
+    "snapshotManifestSha256": "e6408e7054d53ab4a52f32f541b07201f1a8f6e183ff5772bc2d8164162b0f32",
+    "contractFileSha256": "a6f6487890c638a2d689e65e32d7bc758b6215e31539255afefb37938cfb22cc"
+  },
+  "featureGate": {
+    "property": "skillpilot.openai.coach.v1.daily-plan-tools-enabled",
+    "defaultEnabled": true
+  },
+  "toolSurface": {
+    "legacyToolCount": 12,
+    "enabledToolCount": 14,
+    "addedTools": [
+      "resume_skillpilot_learning_plan",
+      "switch_skillpilot_learning_plan_subject"
+    ],
+    "unpublishedToolRemoved": "get_skillpilot_daily_plan",
+    "dailyPlanProjection": "learningPlanToday"
+  },
+  "runtimeProof": {
+    "gradleProject": "backend",
+    "testClass": "com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV11DailyPlanContractTest"
+  },
+  "activation": {
+    "prepareAllowed": true,
+    "publishAllowed": false,
+    "portalMutationAllowed": false,
+    "reviewFreezeLifted": true,
+    "deploymentVerified": false
+  }
+}

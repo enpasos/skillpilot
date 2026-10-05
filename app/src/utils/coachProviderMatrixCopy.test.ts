@@ -173,6 +173,14 @@ for (const variantId of ['chatgpt-free-go', 'chatgpt-plus-pro', 'chatgpt-busines
       && row(en, 'start-path').cells[variantId].value.includes(englishLabels.startPage.login.chatGptDesktop.prepare),
     `${variantId}: both languages name the actual desktop preparation button`,
   )
+  const expectedVoiceStatus = variantId === 'chatgpt-free-go' || variantId === 'chatgpt-plus-pro' ? 'conditional' : 'admin'
+  assert(
+    row(de, 'voice-mode').cells[variantId].status === expectedVoiceStatus
+      && row(en, 'voice-mode').cells[variantId].status === expectedVoiceStatus
+      && row(de, 'voice-mode').cells[variantId].note?.includes('vollständige Bildfolge wird noch geprüft')
+      && row(en, 'voice-mode').cells[variantId].note?.includes('complete image sequence is still being checked'),
+    `${variantId}: voice beta experience retains account requirements and pending image acceptance`,
+  )
 }
 assert(
   row(de, 'session-duration').cells['chatgpt-plus-pro'].value.includes('24 Stunden')

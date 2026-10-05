@@ -25,9 +25,6 @@ type OpenAiSetGlobalsEvent = CustomEvent<{
   };
 }>;
 
-const BOOTSTRAP_TIMEOUT_MS = 10_000;
-const IMAGE_LOAD_TIMEOUT_MS = 15_000;
-
 const style = document.createElement("style");
 style.textContent = css;
 document.head.appendChild(style);
@@ -43,11 +40,6 @@ const compatibilityWindow = window as OpenAiCompatibilityWindow;
 let teardownRequested = false;
 let currentVisualization: GoalVisualization | undefined;
 let currentImage: HTMLImageElement | undefined;
-let bootstrapTimeout: number | undefined = window.setTimeout(
-  dismissUnavailableUi,
-  BOOTSTRAP_TIMEOUT_MS
-);
-let imageLoadTimeout: number | undefined;
 
 window.addEventListener(
   "openai:set_globals",
@@ -74,9 +66,13 @@ renderFirstStructuredContent(
   compatibilityWindow.openai?.toolOutput,
   compatibilityWindow.openai?.widgetState
 );
-// Keep the standards-first connection active, but do not make the ChatGPT
-// compatibility snapshot wait for a handshake that some hosts complete late.
-void bridge.ready.catch(() => undefined);
+// The host can mount the app while a tool or image is still loading. Keep the
+// empty component hidden instead of asking the host to discard its pending
+// result after a local deadline. Compatibility delivery may work even when
+// the standards-first handshake fails, so retain any valid result it supplied.
+void bridge.ready.catch(() => {
+  if (!currentVisualization) dismissUnavailableUi();
+});
 
 function applyToolResult(result: GoalVisualizationToolResult): void {
   renderStructuredContent(result.structuredContent);
@@ -92,7 +88,6 @@ function renderStructuredContent(structuredContent: unknown): void {
 
 function acceptVisualization(visualization: GoalVisualization | undefined): void {
   if (!visualization) return;
-  clearBootstrapTimeout();
   renderVisualization(visualization);
 }
 
@@ -122,7 +117,6 @@ function requestUiTeardown(): void {
 function renderVisualization(visualization: GoalVisualization | undefined): void {
   if (!visualization || visualization === currentVisualization) return;
 
-  clearImageLoadTimeout();
   teardownRequested = false;
   root.hidden = true;
   currentVisualization = visualization;
@@ -135,10 +129,6 @@ function renderVisualization(visualization: GoalVisualization | undefined): void
   image.addEventListener("error", () => dismissUnavailableUi(image));
   currentImage = image;
   root.replaceChildren(image);
-  imageLoadTimeout = window.setTimeout(
-    () => dismissUnavailableUi(image),
-    IMAGE_LOAD_TIMEOUT_MS
-  );
   image.src = visualization.imageUrl;
 }
 
@@ -153,7 +143,6 @@ function showVisualization(
   ) {
     return;
   }
-  clearImageLoadTimeout();
   root.hidden = false;
   try {
     compatibilityWindow.openai?.setWidgetState?.({ goalVisualization: visualization });
@@ -168,21 +157,8 @@ function hideVisualization(image?: HTMLImageElement): void {
   // event must not clear the newer image delivered through the other host
   // channel.
   if (image && (image !== currentImage || !root.contains(image))) return;
-  clearImageLoadTimeout();
   root.replaceChildren();
   root.hidden = true;
   currentVisualization = undefined;
   currentImage = undefined;
-}
-
-function clearImageLoadTimeout(): void {
-  if (imageLoadTimeout === undefined) return;
-  window.clearTimeout(imageLoadTimeout);
-  imageLoadTimeout = undefined;
-}
-
-function clearBootstrapTimeout(): void {
-  if (bootstrapTimeout === undefined) return;
-  window.clearTimeout(bootstrapTimeout);
-  bootstrapTimeout = undefined;
 }

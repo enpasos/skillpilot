@@ -1,6 +1,19 @@
 # Changelog
 
-## Desktop beta status — 5 October 2026
+## 1.1.2 — delayed learning-image correction
+
+- Update the plugin version to match the backend's corrected image renderer.
+  The matching backend keeps slow tool results and images eligible to display
+  beyond the former 10-/15-second deadlines, following the existing Claude fix.
+- Keep previously advertised image resources unchanged. The renderer correction
+  requires the matching backend rollout; it is not bundled in the Git plugin.
+- Document the owner's Windows Work/Voice experience and the pending check of
+  successive images. Local SDK, browser, backend and package checks do not prove
+  the image sequence works in the actual desktop host.
+- Preserve the published 1.1.1 package and history. This Git update does not
+  submit or publish an OpenAI Directory listing.
+
+## 1.1.1 Desktop beta status — 5 October 2026
 
 - Owner confirms the Windows Git/Desktop route and corrected learning start work.
 - Offer that route through ordinary SkillPilot provider selection; retain the

@@ -108,10 +108,10 @@ test("goal visualization widget is self-contained and uses the standards-first M
     /["']error["']/,
     "an actual image-load failure must collapse and dismiss the widget"
   );
-  assert.match(
-    html,
-    /setTimeout/,
-    "a host that never completes image loading must not leave an empty widget forever"
+  assert.doesNotMatch(
+    visualizationSource,
+    /BOOTSTRAP_TIMEOUT_MS|IMAGE_LOAD_TIMEOUT_MS|setTimeout/,
+    "a delayed tool result or image must remain eligible instead of being discarded by a local deadline"
   );
   assert.doesNotMatch(
     visualizationSource,

@@ -5,7 +5,10 @@
 The submitted `skillpilot-coach-v1` **1.0.0** was **REJECTED**. On
 **9 September 2026**, the Product Owner explicitly lifted **all ChatGPT/OpenAI
 review development freezes** and authorized updating the current plugin,
-submission preparation and tests. The initial successor target was **1.1.0**; the current Git beta patch is **1.1.1**.
+submission preparation and tests. The initial successor target was **1.1.0**;
+the published Git beta patch is now **1.1.2**, with the delayed-image correction
+ported from Claude prepared for a separate backend rollout. OpenAI portal
+submission remains unpublished.
 
 Do not require new review-time hash exceptions for current OpenAI package,
 MCP, UI, instructions, shared first-party WebGUI, tests or documentation.
@@ -98,6 +101,18 @@ full mastery/continuation/renewal acceptance, another account or web/mobile
 support. Ordinary GUI and Cockpit entry offer the provider choice without
 `chatgptTest`. Preserve all published plugin bytes and immutable review/media
 records when reconciling current user-facing documentation.
+
+The subsequent Windows **Work/Voice** test reports working learning and apparent
+success saving, but only the first learning image displayed; the later image
+is visible in the Cockpit. The **1.1.2** candidate ports Claude's existing
+delayed-image correction. After local checks passed, the Product Owner
+explicitly requested immediate Git marketplace rollout: **1.1.2** is published
+at commit `cf5e23a7908412f3f28a1a66485d0e106c346154`, with a byte-exact fresh-clone
+check and successful GitHub validation. The Product Owner still handles the
+matching backend rollout; actual Desktop/Voice image-sequence acceptance stays
+pending. Local SDK/browser and backend checks are not host acceptance.
+Preserve published **1.1.1**, **1.1.2**, historical UI bytes and the old drafts;
+this Git publication does not submit or publish in the OpenAI portal.
 
 This document is the **long-term memory** for SkillPilot, including the skill-graph explorer.  
 It captures the *concepts and design decisions* that are **not obvious from the code alone**, so humans and LLMs can extend the project consistently across different learning domains.

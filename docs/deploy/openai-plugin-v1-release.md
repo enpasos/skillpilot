@@ -4,7 +4,11 @@
 
 **Status:** 1.0.0 wurde abgelehnt; sämtliche ChatGPT/OpenAI-Review-
 Entwicklungssperren sind ausdrücklich aufgehoben. Aktueller Paketstand:
-**1.1.1**, veröffentlicht über den Git-Marketplace für die Desktop-Beta.
+**1.1.2**, geprüft und über den Git-Marketplace für die Desktop-Beta
+veröffentlicht. Die neue Korrektur
+übernimmt Claudes Fix für verspätet geladene Lernbilder. Der aktuelle
+Windows-Work/Voice-Bericht bestätigt ein erstes Bild, weitere Bilder fehlen
+noch; die Abnahme des Fixes im Desktop steht aus.
 Installation und Lernstart in Windows ChatGPT Desktop sind vom Product Owner
 bestätigt. Die offizielle OpenAI-Einreichung bleibt **DRAFT**, nicht eingereicht
 und nicht im OpenAI-Verzeichnis veröffentlicht. Der GUI-/Serverrollout wird
@@ -30,7 +34,7 @@ operativ um. Es gilt für `skillpilot-coach-v1`.
 | --- | --- |
 | Plugin-Identität | `skillpilot-coach-v1` |
 | Anzeigename | `SkillPilot Coach v1` |
-| aktueller Paketstand | `1.1.1` (Git-/Desktop-Beta veröffentlicht; OpenAI-Portal `DRAFT`) |
+| aktueller Paketstand | `1.1.2` (Git-/Desktop-Beta veröffentlicht; OpenAI-Portal `DRAFT`) |
 | Contract Major | `1` |
 | Lifecycle-Policy | `policyRevision=5` |
 | öffentlicher MCP-Endpunkt und OAuth Resource/Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
@@ -39,7 +43,7 @@ operativ um. Es gilt für `skillpilot-coach-v1`.
 | aktive MCP-Apps-UIs | genau zwei: Lernzielbild und Karteikartenlernen |
 | Support-URL | `https://skillpilot.com/imprint` |
 | Historisches Reviewvideo | `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4` (keine Abnahme des aktuellen Kandidaten) |
-| Veröffentlichungsstatus | Git-Beta `1.1.1` veröffentlicht; Portal-Draft `1.1.1-SNAPSHOT` unveröffentlicht; abgelehntes `1.0.0-SNAPSHOT` bleibt historisch unverändert |
+| Veröffentlichungsstatus | Git-Beta `1.1.2` veröffentlicht; aktueller Portal-Draft `1.1.2-SNAPSHOT` unveröffentlicht; Git `1.1.1`, alter `1.1.1-SNAPSHOT` und abgelehntes `1.0.0-SNAPSHOT` bleiben unverändert |
 | Quellpaket | `ai/openai plugin/skillpilot-coach-v1/` |
 
 Permanente SkillPilot-ID, CREATE/EXISTING, Providerhinweis sowie Curriculum,
@@ -74,7 +78,7 @@ Der Draft bindet genau zwei aktive content-addressierte MCP-Apps-Ressourcen:
 - `start_skillpilot_memory_practice` bindet ausschließlich die aktive
   Karteikartenressource; die Kartenbewertung bleibt app-only und ungebunden.
 
-Der aktuelle 1.1.1-Kandidat hat 14 Werkzeuge. Vollständige Kontextantworten
+Der aktuelle 1.1.2-Kandidat hat 14 Werkzeuge. Vollständige Kontextantworten
 enthalten den fertigen Lernplanstatus als `learningPlanToday` für die dauerhaft
 gewählte Tages- oder Wochenbasis; jedes Fach wird unabhängig ausgewertet.
 `resume_skillpilot_learning_plan` und `switch_skillpilot_learning_plan_subject`
@@ -128,7 +132,7 @@ Maschinenlesbare Quellen der Wahrheit sind:
   tatsächlich im OpenAI-Portal veröffentlichte Versionen.
 
 Der Product Owner hat die Review-Sperre nach der Ablehnung ausdrücklich
-beendet. `1.1.1` besitzt einen eigenen kohärenten Portal-Draft; `1.0.0` wird nicht
+beendet. `1.1.2` besitzt einen eigenen kohärenten Portal-Draft; `1.0.0` wird nicht
 umetikettiert oder überschrieben. Eine künftige reale Veröffentlichung
 versiegelt genau die veröffentlichte Version dauerhaft. Aktuelle fachliche,
 Sicherheits- und Kompatibilitätstests ersetzen keine echte Client-Abnahme.
@@ -141,7 +145,7 @@ und tatsächlich veröffentlichte Versionen, nicht alte Live-Dateihashes.
 
 1. Release Notes, Lifecycle, Listing, Skill, Policy, Serververtrag, aktuelle
    Testfälle und zentrale Dokumentation gemeinsam für den aktuellen Kandidaten
-   `1.1.1` prüfen. Bereits veröffentlichte Git-Paketbytes bleiben unverändert;
+   `1.1.2` prüfen. Bereits veröffentlichte Git-Paketbytes bleiben unverändert;
    weitere Paketkorrekturen benötigen eine neue Version.
    Die aktuelle Veröffentlichung verwendet ausschließlich den MCP-Server;
    die frühere `.app.json`-Referenz gehört nicht in das neue Installationspaket.
@@ -249,7 +253,7 @@ Vor einer Portalaktualisierung sind mindestens folgende Nachweise erforderlich:
 14. Das historische 1.0.0-Reviewvideo bleibt ohne Anmeldung unter
     `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4`
     erreichbar und byte-identisch. Es ist keine Verhaltensabnahme des neuen
-    1.1.1-Kandidaten. Vor einer erneuten Einreichung muss eine passende aktuelle
+    1.1.2-Kandidaten. Vor einer erneuten Einreichung muss eine passende aktuelle
     Aufnahme gesondert erstellt, geprüft und unter eigener content-addressierter
     URL bereitgestellt werden; Größe, SHA-256, `video/mp4`, Byte-Range-Abruf und
     OpenAI-Origin/CORS-Preflight für `GET` und `Range` sind erneut nachzuweisen.

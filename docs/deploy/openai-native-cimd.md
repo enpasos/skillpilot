@@ -20,6 +20,14 @@ OAuth/tool traces, persisted progress, continuation and renewal remain separate
 acceptance evidence. The [active Git beta](openai-personal-marketplace-release.md)
 uses an explicit ChatGPT GUI handoff.
 
+The owner's subsequent Windows **Work/Voice** test reports learning and
+apparent success saving, with only the first learning image displayed even
+though the later image is visible in the Cockpit. The **1.1.2** Git package is
+now published after local checks, with Claude's delayed-image fix prepared for
+the separate owner backend rollout. The correction has not been accepted in
+the desktop host. See the Git beta runbook for publication evidence, comparison
+and retest sequence.
+
 The chosen implementation keeps **one MCP endpoint** and **one OAuth issuer**:
 
 | Purpose | URL |

@@ -121,7 +121,7 @@ const germanCopy: FaqViewCopy = {
           id: 'chatgpt-app-voice',
           question: 'Gelten die Aussagen zu Claude-App und Voice Mode auch für ChatGPT?',
           paragraphs: [
-            'Die ChatGPT-Beta nutzt den Bereich „Work“ der Desktop-App. Installation und Lernstart unter Windows funktionieren. ChatGPT im Browser, die mobile ChatGPT-App und Voice Mode sind für diesen Betatest nicht freigegeben.',
+            'Die ChatGPT-Beta nutzt den Bereich „Work“ der Desktop-App. Unter Windows wurden auch Lernen mit Voice Mode und ein erstes Lernbild ausprobiert. Weitere Lernbilder erschienen in diesem Test noch nicht zuverlässig; die Bildfolge prüfen wir weiter. ChatGPT im Browser und die mobile ChatGPT-App sind für diesen Betatest nicht freigegeben.',
             'Weitere Lernfunktionen und das Fortsetzen einer Lernsession prüfen wir für ChatGPT vor der Veröffentlichung gesondert. Die Erfahrungen mit der Claude-App und deren Voice Mode gelten weiterhin für Claude.',
           ],
         },
@@ -290,7 +290,7 @@ const englishCopy: FaqViewCopy = {
           id: 'chatgpt-app-voice',
           question: 'Does the guidance about the Claude app and voice mode also apply to ChatGPT?',
           paragraphs: [
-            'The ChatGPT beta uses the “Work” section of the desktop app. Installation and learning start on Windows work. ChatGPT in the browser, the mobile ChatGPT app, and voice mode are not enabled for this beta.',
+            'The ChatGPT beta uses the “Work” section of the desktop app. Learning with voice mode and a first learning image have also been tried on Windows. Further learning images did not appear reliably in that test; we are still checking the image sequence. ChatGPT in the browser and the mobile ChatGPT app are not enabled for this beta.',
             'We will separately check further learning features and session continuation for ChatGPT before publication. The experience with the Claude app and its voice mode still applies to Claude.',
           ],
         },
