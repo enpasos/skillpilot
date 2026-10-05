@@ -127,8 +127,17 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   const biology = checkGoalBookSourceAtlasInputs('app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json', root)
   assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 363, publishedCurricularAtomicGoals: 363, sourceViews: 20, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
   assert.deepEqual(biology.receipt.scopes.filter(s => s.stage === 'SekII').map(s => [s.key, s.goalIds.length]), [
-    ['DE-BY/SekII/GK', 87], ['DE-BY/SekII/LK', 114], ['DE-HE/SekII/GK', 76], ['DE-HE/SekII/LK', 157],
+    ['DE-BY/SekII/GK', 88], ['DE-BY/SekII/LK', 115], ['DE-HE/SekII/GK', 76], ['DE-HE/SekII/LK', 157],
   ])
+  // The reviewed gel-method binding adds this existing atom to both BY profiles.
+  const gelGoalId = '8eb86a82-122d-5cae-8f80-bb2850b29c2f'
+  for (const key of ['DE-BY/SekII/GK', 'DE-BY/SekII/LK']) {
+    const scope = biology.receipt.scopes.find(s => s.key === key)!
+    assert.ok(scope.goalIds.includes(gelGoalId), `Gelelektrophorese must remain in ${key}`)
+    assert.deepEqual(scope.witnesses.filter(w => w.goalId === gelGoalId).map(w => [w.sourceGoalId, w.mappedTargetGoalId, w.coverage, w.profileBasis]), [
+      ['43240b1a-10e4-5c51-ad89-92dbed53d3f1', gelGoalId, 'direct', 'source-metadata'],
+    ], 'The gel-method scope must retain its direct GA/EA source witness')
+  }
   assert.ok(biology.receipt.scopes.filter(s => s.stage === 'SekII').every(s => s.witnesses.every(w => w.coverage === 'direct')), 'No coarse mapped-cluster inheritance into biology GK/LK')
   const chemistry = checkGoalBookSourceAtlasInputs('app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json', root)
   assert.deepEqual(chemistry.receipt.counts, { canonicalCurricularAtomicGoals: 376, publishedCurricularAtomicGoals: 358, sourceViews: 48, unresolvedSourceScopeDecisions: 496, omittedGoals: 18 })
