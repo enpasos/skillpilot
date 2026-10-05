@@ -1,4 +1,6 @@
 import { getFaqViewCopy } from './faqViewCopy'
+import { de as germanLabels } from '../locales/de'
+import { en as englishLabels } from '../locales/en'
 
 function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message)
@@ -53,8 +55,14 @@ for (const [copy, image, flashcard, voiceOff, reload, voiceOn] of [
 }
 assert(paragraphs(de, 'claude', 'continue-on-phone').includes('denselben bestehenden Chat') && paragraphs(en, 'claude', 'continue-on-phone').includes('same existing chat'), 'device switching keeps the existing Claude chat')
 assert(paragraphs(de, 'claude', 'continue-on-phone').includes('24 Stunden') && paragraphs(en, 'claude', 'continue-on-phone').includes('24 hours'), 'cross-device continuation respects session validity')
-assert(de.recommendation.paragraphs.some(item => item.includes('parallele ChatGPT-Beta bieten wir nicht an')) && en.recommendation.paragraphs.some(item => item.includes('not offering a parallel ChatGPT beta')), 'no parallel external ChatGPT beta is advertised')
-assert(paragraphs(de, 'chatgpt', 'chatgpt-availability').includes('echten ChatGPT-Verbindung') && paragraphs(en, 'chatgpt', 'chatgpt-availability').includes('real ChatGPT connection'), 'ChatGPT needs real host-specific testing before submission')
+assert(de.recommendation.paragraphs.some(item => item.includes('Git-Marketplace')) && en.recommendation.paragraphs.some(item => item.includes('Git marketplace')), 'the authorized ChatGPT desktop beta is visible alongside Claude')
+assert(question(de, 'chatgpt', 'chatgpt-availability').link?.href === '/plugins#chatgpt-desktop' && question(en, 'chatgpt', 'chatgpt-availability').link?.href === '/plugins#chatgpt-desktop', 'ChatGPT setup links directly to the maintained desktop plugin guide')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-availability').includes('ausdrücklich „ChatGPT Desktop“ als Coach') && paragraphs(en, 'chatgpt', 'chatgpt-availability').includes('explicitly select “ChatGPT Desktop” as your coach'), 'ChatGPT learners choose the matching provider before generating their start message')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-availability').includes(germanLabels.startPage.login.chatGptDesktop.prepare) && paragraphs(en, 'chatgpt', 'chatgpt-availability').includes(englishLabels.startPage.login.chatGptDesktop.prepare), 'ChatGPT instructions name the actual localized preparation button')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-availability').includes('für Claude vorbereitete Startnachricht funktioniert nicht') && paragraphs(en, 'chatgpt', 'chatgpt-availability').includes('start message prepared for Claude does not work'), 'provider-specific start messages cannot be reused with another provider')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-availability').includes('noch nicht im öffentlichen ChatGPT-App-Verzeichnis veröffentlicht') && paragraphs(en, 'chatgpt', 'chatgpt-availability').includes('not been published in the public ChatGPT app directory'), 'desktop beta availability does not claim public directory publication')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-availability').includes('Installation und Lernstart in ChatGPT Desktop unter Windows funktionieren') && paragraphs(en, 'chatgpt', 'chatgpt-availability').includes('Installation and learning start in ChatGPT Desktop on Windows work'), 'ChatGPT Windows installation and learning start reflect the confirmed beta experience')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-app-voice').includes('Weitere Lernfunktionen und das Fortsetzen einer Lernsession') && paragraphs(en, 'chatgpt', 'chatgpt-app-voice').includes('further learning features and session continuation'), 'a working learning start is not generalized to all learning flows or session continuation')
 assert(paragraphs(de, 'chatgpt', 'chatgpt-availability').includes('Veröffentlichungstermin können wir noch nicht nennen') && paragraphs(en, 'chatgpt', 'chatgpt-availability').includes('cannot give a release date'), 'no publication date is promised')
 assert(paragraphs(de, 'chatgpt', 'chatgpt-app-voice').includes('gesondert') && paragraphs(en, 'chatgpt', 'chatgpt-app-voice').includes('separately'), 'Claude app and voice experience does not prove ChatGPT behavior')
 assert(paragraphs(de, 'learning', 'session-duration').includes('24 Stunden') && paragraphs(en, 'learning', 'session-duration').includes('24 hours'), 'shared FAQ preserves session duration')

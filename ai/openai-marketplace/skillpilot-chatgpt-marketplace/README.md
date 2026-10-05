@@ -1,67 +1,77 @@
-# SkillPilot for ChatGPT — experimental Git marketplace
+# SkillPilot for ChatGPT Desktop — beta Git marketplace
 
-An independent **SkillPilot Coach v1** package: coaching skills plus the remote
-SkillPilot MCP server. No pre-existing ChatGPT app ID or operator secret is
-bundled. This is a controlled installation experiment, **not an OpenAI Directory
-release or a claim of working ChatGPT web/mobile access**.
+This repository distributes **SkillPilot Coach v1** with its coaching skill and
+remote SkillPilot MCP connection. The current package is **1.1.1**. This beta
+uses the desktop plugin installer; it has no published OpenAI Directory listing.
+ChatGPT web and native mobile operation have not been accepted.
 
-## Try the Git installation
+## Install in ChatGPT Desktop
 
-In a supported Codex CLI environment:
+In the Windows desktop app:
+
+1. Open **Plugins → Hinzufügen → Marketplace hinzufügen**.
+2. Add `https://github.com/enpasos/skillpilot-chatgpt-marketplace`.
+3. Select the marketplace **skillpilot-chatgpt-marketplace** and install
+   **SkillPilot Coach v1**. Check the installed version.
+4. Connect SkillPilot using the plugin's authentication flow. Use **Auto** or
+   **CIMD** if the desktop asks for a registration method; no client secret is
+   supplied by the tester.
+5. Open [SkillPilot](https://skillpilot.com/), complete the learning setup,
+   select **ChatGPT Desktop (Beta)** and generate its start message.
+6. Copy that message into a **new desktop chat** with the SkillPilot plugin
+   enabled. Keep the included learning session unchanged.
+
+Until the updated provider choice is deployed, open
+[the ChatGPT test start](https://skillpilot.com/?chatgptTest=1), select
+**ChatGPT ausprobieren** and **Startnachricht erzeugen**. This already uses
+the OpenAI launch endpoint; use its message in the new desktop chat.
+
+Claude and ChatGPT have separate learning sessions. A message generated for
+Claude cannot start the ChatGPT coach. Keep learning-session capabilities out
+of public issues and screenshots.
+
+On **5 October 2026**, the owner confirmed that the Git/Desktop route and
+corrected learning start work on Windows. The ordinary SkillPilot start offers
+**ChatGPT Desktop (Beta)**. Detailed OAuth/tool traces, saved progress, session
+continuation, token renewal and desktop automatic updates remain separate
+acceptance checks. This confirmation applies to the tested Windows route.
+
+## Update
+
+Use the marketplace's refresh/update action in ChatGPT Desktop, check that
+**1.1.1** is installed, then start a new chat with a freshly generated ChatGPT
+message. Existing archive installations need a Git-marketplace installation to
+receive Git updates. Avoid enabling two SkillPilot copies in one chat.
+
+For a supported Codex CLI in the same native environment:
 
 ```sh
 codex plugin marketplace add https://github.com/enpasos/skillpilot-chatgpt-marketplace --ref main
 codex plugin add skillpilot-coach-v1@skillpilot-chatgpt-marketplace
-```
-
-Start a new conversation after installation. A CLI installation verifies the
-catalog/package path only; it does not automatically install the plugin into a
-separate Windows desktop app, your ChatGPT web account, or mobile apps. Run the
-installation in the environment used by the intended client. Do not install
-both this candidate and another SkillPilot plugin into the same test environment.
-
-OpenAI documents GitHub workspace import under **Admin → Plugins → Add → Import
-marketplace** for eligible admins. For that route, MCP-configured imports are
-explicitly **Desktop only**, even with an HTTPS server. Account-wide use after a
-desktop installation is an experiment to verify, not a supported guarantee.
-
-## Connection and learning
-
-Use the bundled SkillPilot connection if the host offers it. OAuth, the allowed
-client profile, and the OpenAI mTLS transport check remain mandatory. The target
-JWT profile uses OpenAI-managed signing keys, not a secret distributed to users;
-its production activation is a separate operation. A local raw-MCP client without
-an OpenAI certificate cannot connect to the production endpoint. If connection
-fails, stop and record the sanitized error; do not disable certificate checks,
-enable anonymous access, paste an operator secret, or switch providers.
-
-After a successful host connection, open [SkillPilot](https://skillpilot.com/),
-choose **Start learning**, and use the new prepared chat. Do not put permanent
-SkillPilot IDs, tokens, or session IDs into issues or test evidence.
-
-The acceptance sequence is: catalog → installed package and skill → authenticated
-desktop tool call → **new web chat with the desktop client fully exited** → native
-mobile. A synchronized chat history alone is not evidence of callable tools or
-available skills. Record each result separately, including account, host version,
-plugin version and marketplace commit.
-
-## Updates and integrity
-
-```sh
 codex plugin marketplace upgrade skillpilot-chatgpt-marketplace
-codex plugin add skillpilot-coach-v1@skillpilot-chatgpt-marketplace
-node validate.mjs
 ```
 
-Check the installed version and start a new conversation. CLI refresh success
-does not prove automatic updates in ChatGPT. `release-manifest.json` binds every
-distributed file by SHA-256; this is reproducibility evidence, not a publisher
-signature or proof of coach behavior. Published Git release tags must never be
-overwritten. The public OpenAI portal release lifecycle remains separate.
+Local tests with Codex **0.160.0** verified installation, skill discovery and
+Git-delivered replacement of the installed files. They do not establish desktop
+automatic updates. Windows native and WSL installations can have separate
+configuration roots.
+
+## Connection and integrity
+
+The MCP endpoint remains `https://mcp-coach-v1.skillpilot.com/mcp`. Desktop
+CIMD uses the separately pinned public OAuth profile with S256 PKCE; hosted
+confidential OAuth remains separate. Valid OAuth and an independent
+provider-specific learning session are required. Initial transport testing
+permits mTLS `observe`; this package does not change server settings.
+
+`release-manifest.json` binds every distributed file by SHA-256. From a source
+checkout, run `node validate.mjs` to verify the closed inventory. This proves
+package integrity, not host acceptance. Preserve every published release tag;
+Git beta releases have a separate lifecycle from OpenAI portal publication.
 
 [Operator runbook](https://enpasos.github.io/skillpilot/deploy/openai-personal-marketplace-release/)
 · [OpenAI packaging](https://developers.openai.com/plugins/build/plugins)
-· [OpenAI GitHub import and runtime restrictions](https://learn.chatgpt.com/docs/enterprise/plugin-management)
+· [OpenAI plugin commands](https://learn.chatgpt.com/docs/developer-commands#codex-plugin)
 · [Privacy](https://skillpilot.com/privacy)
 · [Terms](https://skillpilot.com/legal)
 · [Support](https://skillpilot.com/imprint)

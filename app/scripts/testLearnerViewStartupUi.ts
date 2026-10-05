@@ -5,6 +5,8 @@ import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 import { chromium, type Browser, type BrowserContext, type Page } from 'playwright'
 
+import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
+import type { PersonalizationPlan } from '../src/utils/personalCurriculumEditorApi'
 import { startViteTestServer } from './viteTestServer'
 
 const canonicalRoot = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
@@ -218,6 +220,56 @@ try {
       'no locally derived progress bar may survive in the cockpit')
   }
 
+  // Follow the ordinary Cockpit link and landing action, retaining the active
+  // learner while rechecking its saved curriculum before offering either coach.
+  {
+    const h = await open()
+    await waitReady(h.page, mathTitle)
+    await h.page.evaluate(({ learnerId, rootId, termsVersion }) => {
+      localStorage.setItem('skillpilot_id', learnerId)
+      localStorage.setItem('skillpilot_role', 'learner')
+      localStorage.setItem('skillpilot_learner_landscape', rootId)
+      localStorage.setItem('skillpilot_terms_accepted_version', termsVersion)
+    }, { learnerId: learnerA, rootId: canonicalRoot, termsVersion: CURRENT_TERMS_VERSION })
+    await h.page.route('**/api/ui/landscapes?*', (route) => route.fulfill({
+      status: 200, contentType: 'application/json', body: JSON.stringify({ summaries: [{
+        curriculumId: canonicalRoot, filename: 'canonical-gymnasium.json', country: 'DE', region: 'DE',
+        type: 'GYMNASIUM', level: 'Sekundarstufe', subject: 'Gymnasium', locale: 'de-DE',
+        title: 'Gymnasium (DE)', schoolType: 'Gymnasium', qualityMaturity: 'M6',
+      }] }),
+    }))
+    const savedPlan: PersonalizationPlan = {
+      stage: 'COMPLETE', stageId: null, stageLabel: null, groupId: null, groupLabel: null,
+      groupInstanceId: null, minSelections: 0, maxSelections: 0, selectedCount: 0,
+      options: [], displayOptions: [], navigationOptions: [], currentSelectedOptions: [],
+      currentRewindId: null, completedDecisions: [], preservedDecisions: [], pendingDecisions: [],
+      canReopenMigratedPersonalization: false, problemCode: null,
+    }
+    await h.page.route(`**/api/ui/learners/${learnerA}/personalization-plan`, (route) => route.fulfill({
+      status: 200, contentType: 'application/json', body: JSON.stringify(savedPlan),
+    }))
+    await h.page.getByTestId('learner-coach-start-link').click()
+    await h.page.getByTestId('public-landing-action-learning').click()
+    assert.equal(await h.page.getByLabel('Deine SkillPilot-ID').inputValue(), learnerA,
+      'opening the ordinary learner start from the Cockpit preserves the active learner ID')
+    await h.page.getByRole('button', { name: 'Weiter zu Schritt 2: Curriculum wählen' }).click()
+    await h.page.getByRole('heading', { name: 'Los geht’s', exact: true }).waitFor()
+    await h.page.getByRole('heading', { name: 'Curriculum wählen' })
+      .locator('xpath=ancestor::section[1]').locator('p')
+      .filter({ hasText: 'Gymnasium (DE)' }).waitFor()
+    assert.equal(await h.page.getByLabel('Deine SkillPilot-ID').inputValue(), learnerA)
+    const providerChoice = h.page.getByTestId('coach-provider-choice')
+    await providerChoice.getByRole('radio', { name: /ChatGPT Desktop/u }).check()
+    await h.page.getByRole('button', { name: 'Lernen mit ChatGPT vorbereiten' }).waitFor()
+    assert.deepEqual(await h.page.evaluate(() => ({
+      id: localStorage.getItem('skillpilot_id'), role: localStorage.getItem('skillpilot_role'),
+      curriculum: localStorage.getItem('skillpilot_learner_landscape'),
+    })), { id: learnerA, role: 'learner', curriculum: canonicalRoot },
+    'the route preserves the existing profile and saved curriculum without logout or a replacement profile')
+    assert.deepEqual(h.unexpected, [], 'ordinary provider selection does not create a learner or launch a provider')
+    assert.deepEqual(h.errors, [])
+  }
+
   // Delay the two independent authoritative reads in both possible orders.
   for (const first of ['profile', 'state'] as const) {
     const profileGate = gate()
@@ -239,6 +291,9 @@ try {
     profileGate.resolve(profile(learnerA))
     stateGate.resolve(state(learnerA))
     await waitReady(h.page, mathTitle)
+    const coachStart = h.page.getByRole('link', { name: 'Lernen starten', exact: true })
+    assert.equal(await coachStart.getAttribute('href'), '/',
+      'the ordinary Cockpit start returns to first-party provider selection without launching a provider or logging out')
     if (first === 'profile') await h.page.screenshot({ path: `${screenshotDir}ready.png` })
     await assertNoFalseSetup(h.page)
     assert.equal(h.requests.filter((r) => r.endpoint === 'profile').length, 1,

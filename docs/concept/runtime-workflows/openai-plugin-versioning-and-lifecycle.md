@@ -11,7 +11,7 @@ audience: "Codex- und SkillPilot-Entwicklung"
 
 **Geltungsbereich:** OpenAI-Plugin mit MCP-API, gebündelten Skills und zwei
 jeweils dediziert an genau ein UI-Werkzeug gebundenen, hashgebundenen
-MCP-Apps-Ressourcen im unveröffentlichten V1-Draft
+MCP-Apps-Ressourcen im V1-Vertrag
 
 **Dokumentversion:** 1.1
 
@@ -19,6 +19,18 @@ MCP-Apps-Ressourcen im unveröffentlichten V1-Draft
 
 **Status:** Verbindliche interne Architekturgrundlage; einzelne Plattformfragen sind noch nicht offiziell von OpenAI geklärt.  
 **Adressaten:** Codex, Backend-, MCP-, UI-, Auth- und Release-Entwicklung
+
+**Aktuelle Release-Einordnung, 5. Oktober 2026:** Das kanonische Manifest führt
+`1.1.1`. Dieses Paket ist über den Git-Marketplace für die ChatGPT-Desktop-Beta
+veröffentlicht; Installation und Lernstart unter Windows sind vom Product Owner
+bestätigt. Die offizielle OpenAI-Einreichung bleibt `DRAFT`, das
+OpenAI-Verzeichnis unveröffentlicht. Der Portal-Draft heißt `1.1.1-SNAPSHOT`.
+Eine Git-Veröffentlichung wird nicht mit `record-published` in den
+OpenAI-Portalindex eingetragen; ihre veröffentlichten Installationsbytes bleiben
+trotzdem unveränderlich. Die begrenzten Aufträge vom 24. September und 5. Oktober
+ergänzen die ursprüngliche Claude-first-Reihenfolge; sie ersetzen keine
+vollständige Hostabnahme oder Portal-Einreichung. Siehe
+[aktuelles Release-Runbook](../../deploy/openai-plugin-v1-release.md).
 
 ## 1. Zweck und zentrale Entscheidung
 
@@ -272,7 +284,8 @@ Die Grenze ist der reale Veröffentlichungsstatus:
 - sobald eine Version veröffentlicht ist, erfordert jede weitere Änderung am
   Plugin-Paket je nach Änderung einen PATCH-, MINOR- oder MAJOR-Schritt.
 
-Für die aktuelle Linie bedeutet das konkret (9. September 2026):
+**Historischer Stand vom 9. September 2026:** Für die damalige Linie bedeutete
+das konkret:
 `SkillPilot Coach v1` wurde noch nicht veröffentlicht. Die Einlieferung `1.0.0`
 wurde abgelehnt; der Product Owner hat sämtliche ChatGPT-Entwicklungssperren
 ausdrücklich aufgehoben. Der abgelehnte Snapshot bleibt historische Evidenz;
@@ -282,7 +295,7 @@ Die neue Paketversion enthält zwei getrennte aktive hashgebundene
 interaktives Karteikartenlernen. Bild-Renderer und Kartenlernstart verweisen
 jeweils mit `ui.resourceUri` und `openai/outputTemplate` auf ihre eigene
 Ressource; Kartenbewertung und gewöhnliche Werkzeuge bleiben ungebunden.
-Der aktuelle Entwurf ergänzt die Tagesplanprojektion sowie kontrollierte
+Der damalige Entwurf ergänzt die Tagesplanprojektion sowie kontrollierte
 Planfortsetzung und Fachwechsel, ohne den Contract Major zu ändern. Er ist
 weder automatisch deployt noch erneut eingereicht. Bereits ausgelieferte
 Hash-URIs bleiben byte-identisch und passiv lesbar; eine spätere neue Einlieferung
@@ -1300,13 +1313,13 @@ Transport sie zuverlässig und dokumentiert bereitstellt.
 
 ## 18. Konkreter Codex-Implementierungsauftrag
 
-### Phase A: Vor der ersten V1-Veröffentlichung
+### Phase A: Vor der ersten V1-Veröffentlichung im OpenAI-Verzeichnis
 
 Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bereits eine dauerhaft isolierbare V1-Linie bildet. Die Phase soll das derzeitige Verhalten möglichst nicht fachlich verändern.
 
 1. **V1-Konstanten und Konfiguration einführen**
    - `pluginIdentity = skillpilot-coach-v1`
-   - `pluginVersion` aus dem aktuellen Manifest (Nachfolgerentwurf `1.1.0`)
+   - `pluginVersion` aus dem aktuellen Manifest (aktueller Kandidat `1.1.1`)
    - `contractMajor = 1`
    - den öffentlichen MCP-Pfad und die exakte OAuth-Resource festlegen;
    - Server-Build separat ausgeben.

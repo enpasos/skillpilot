@@ -5,7 +5,7 @@
 The submitted `skillpilot-coach-v1` **1.0.0** was **REJECTED**. On
 **9 September 2026**, the Product Owner explicitly lifted **all ChatGPT/OpenAI
 review development freezes** and authorized updating the current plugin,
-submission preparation and tests. The successor target is **1.1.0**.
+submission preparation and tests. The initial successor target was **1.1.0**; the current Git beta patch is **1.1.1**.
 
 Do not require new review-time hash exceptions for current OpenAI package,
 MCP, UI, instructions, shared first-party WebGUI, tests or documentation.
@@ -48,8 +48,9 @@ supersedes earlier plans for a parallel external ChatGPT beta.
 
 - Continue the real Claude beta and stabilize complete learning flows,
   including session continuation, persisted learning progress and reliable tools.
-- Do not build another ChatGPT beta distribution path, investigate further
-  distribution workarounds, or develop speculative ChatGPT-specific extensions.
+- The original pause on additional ChatGPT distribution work is superseded
+  only for the explicitly authorized desktop archive/Git beta described below.
+  Do not develop speculative ChatGPT-specific extensions.
 - Once Claude is stable, identify the proven source/build as the release
   candidate. Test that shared functional baseline through the actual ChatGPT
   adapter; do not duplicate the core or treat the provider packages as identical.
@@ -74,6 +75,29 @@ initial working integration; mandatory client certificates are later transport
 hardening, not a prerequisite for this test. OAuth, learner-session isolation,
 and truthful host acceptance remain required. See the
 [native CIMD integration runbook](docs/deploy/openai-native-cimd.md).
+
+On **5 October 2026**, after a successful Windows desktop archive installation
+and an observed wrong-provider start message, the Product Owner explicitly
+requested the **existing Git marketplace deployment** for rapid fixes and
+**ChatGPT in the WebGUI**. This authorizes publishing the verified **1.1.1 Git
+beta** to `enpasos/skillpilot-chatgpt-marketplace` and implementing an explicit
+**ChatGPT Desktop (Beta)** provider choice with a separate OpenAI learning
+session. It supersedes the distribution pause for this concrete route. Preserve
+published `v1.1.0`, rejected review history, provider isolation and all privacy
+and authentication checks. Installation and local CLI update evidence do not
+prove desktop OAuth, tools, complete learning flows or automatic updates.
+OpenAI directory submission, portal writes, `record-published`, production
+settings and GUI/server production deployment remain separate operations.
+See the [Git beta runbook](docs/deploy/openai-personal-marketplace-release.md).
+
+In the same **5 October 2026** session, the Product Owner confirmed that the
+Git/Windows Desktop route **works** and requested it through the ordinary
+**Lernen starten** GUI and current ChatGPT notices. Record this as owner-reported
+installation/start evidence; do not present it as detailed OAuth traces,
+full mastery/continuation/renewal acceptance, another account or web/mobile
+support. Ordinary GUI and Cockpit entry offer the provider choice without
+`chatgptTest`. Preserve all published plugin bytes and immutable review/media
+records when reconciling current user-facing documentation.
 
 This document is the **long-term memory** for SkillPilot, including the skill-graph explorer.  
 It captures the *concepts and design decisions* that are **not obvious from the code alone**, so humans and LLMs can extend the project consistently across different learning domains.

@@ -1,4 +1,4 @@
-# Demoaufnahme für SkillPilot Coach v1 1.1.0
+# Demoaufnahme für den aktuellen SkillPilot-Coach-v1-Kandidaten
 
 Die Aufnahmevorbereitung ist automatisierbar; eine echte Aufnahme in ChatGPT
 und die abschließende menschliche Freigabe bleiben eigene Nachweise.
@@ -9,6 +9,11 @@ kein bestandener Video-Nachweis. Vor `review-build` ist P3 noch um die echte
 Kartenkomponente (Aufdecken und acht „Gewusst“-Bewertungen) zu ergänzen; das
 bisherige Skript springt dort direkt zu Verified Recall. Die Videoarbeit wurde
 für die Korrektur des Cockpit-Starts unterbrochen.
+
+Der aktuelle Git-Betastand ist **1.1.1**. Der Product Owner hat Installation
+und Lernstart in Windows ChatGPT Desktop bestätigt. Das ist kein fertiger
+Einreichungsfilm und kein Browser-Hostnachweis; die folgenden Kapitel bleiben
+ein Aufnahmeplan für die gesonderte offizielle Einreichung.
 
 ## Inhalt
 
@@ -37,7 +42,7 @@ werden nicht durch Sprechertext kaschiert. KI-Sprache wird als solche benannt.
    nicht das alltägliche Browserprofil. Persönliche Daten und fremde Chats
    gehören nicht in dieses Profil.
 2. Darin selbst bei ChatGPT anmelden, gegebenenfalls MFA abschließen und den
-   aktuellen SkillPilot-Entwurf **1.1.0** in Developer Mode verfügbar machen.
+   aktuellen SkillPilot-Kandidaten **1.1.1** in Developer Mode verfügbar machen.
    Login, Sicherheitsabfragen und Berechtigungsentscheidungen bleiben manuell.
 3. Alle Fenster dieses Profils schließen. Profil und API-Key ausschließlich
    lokal in der privaten `skillpilot-review.json` hinterlegen; nichts davon in

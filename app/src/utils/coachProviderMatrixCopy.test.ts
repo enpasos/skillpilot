@@ -2,6 +2,8 @@ import {
   getCoachProviderMatrixCopy,
   type CoachMatrixVariantId,
 } from './coachProviderMatrixCopy'
+import { de as germanLabels } from '../locales/de'
+import { en as englishLabels } from '../locales/en'
 
 function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message)
@@ -71,39 +73,41 @@ const row = (copy: typeof de, id: string) => {
 assert(
   de.variants.find(variant => variant.id === 'chatgpt-plus-pro')?.badge
     && en.variants.find(variant => variant.id === 'chatgpt-plus-pro')?.badge,
-  'ChatGPT Plus/Pro remains visibly recommended for an individual learner',
+  'ChatGPT Plus/Pro has a visible desktop beta badge',
 )
 assert(
   (['chatgpt-free-go', 'chatgpt-plus-pro', 'chatgpt-business', 'chatgpt-enterprise-edu'] as const)
-    .every(variantId => row(de, 'current-access').cells[variantId].status === 'planned')
+    .every(variantId => row(de, 'current-access').cells[variantId].status === (variantId === 'chatgpt-free-go' || variantId === 'chatgpt-plus-pro' ? 'conditional' : 'admin'))
     && row(de, 'current-access').cells['claude-free'].status === 'unavailable'
     && row(de, 'current-access').cells['claude-pro-max'].status === 'available'
     && row(en, 'current-access').cells['claude-pro-max'].status === 'available'
     && row(de, 'current-access').cells['claude-pro-max'].note?.includes('Anleitung unter „Plugins“')
     && row(en, 'current-access').cells['claude-pro-max'].note?.includes('guide under “Plugins”')
     && row(de, 'current-access').cells['claude-team-enterprise'].status === 'planned',
-  'the ongoing Claude Pro beta uses the current plugin guide while ChatGPT remains unavailable',
+  'Claude Pro keeps its current guide while ChatGPT desktop access depends on account setup and organisation approval',
 )
 for (const chatGptVariant of ['chatgpt-free-go', 'chatgpt-plus-pro', 'chatgpt-business', 'chatgpt-enterprise-edu'] as const) {
   const deCurrentAccess = row(de, 'current-access').cells[chatGptVariant]
   const enCurrentAccess = row(en, 'current-access').cells[chatGptVariant]
   assert(
-    deCurrentAccess.value.includes('Noch nicht öffentlich verfügbar')
-      && deCurrentAccess.note?.includes('Nach der Claude-Beta')
-      && enCurrentAccess.value.includes('Not publicly available yet')
-      && enCurrentAccess.note?.includes('follow the Claude beta'),
-    `${chatGptVariant} explains that ChatGPT testing and submission follow the Claude beta`,
+    deCurrentAccess.value.includes('Desktop-Betatest')
+      && deCurrentAccess.note?.includes('Git-Marketplace')
+      && enCurrentAccess.value.includes('desktop beta')
+      && enCurrentAccess.note?.includes('Git marketplace'),
+    `${chatGptVariant} points to the conditional Git marketplace desktop beta`,
   )
   assert(
     deRows.every(matrixRow => matrixRow.cells[chatGptVariant].status !== 'tested')
       && enRows.every(matrixRow => matrixRow.cells[chatGptVariant].status !== 'tested'),
-    `${chatGptVariant} does not inherit tested status for the forthcoming ChatGPT candidate`,
+    `${chatGptVariant} does not generalize the confirmed Windows learning start to all features or accounts`,
   )
 }
 assert(
-  !JSON.stringify({ de, en }).includes('freigeschaltete Testpersonen')
-    && !JSON.stringify({ de, en }).includes('already have test access'),
-  'the current-access matrix does not imply that a working ChatGPT test route already exists',
+  de.caveat.includes('Installation und Lernstart in ChatGPT Desktop unter Windows sind im Betatest bestätigt')
+    && en.caveat.includes('Installation and learning start in ChatGPT Desktop on Windows are confirmed in the beta')
+    && de.caveat.includes('noch nicht im öffentlichen ChatGPT-App-Verzeichnis veröffentlicht')
+    && en.caveat.includes('not been published in the public ChatGPT app directory'),
+  'the confirmed Windows installation and learning start are distinguished from public directory publication',
 )
 assert(
   row(de, 'provider-plan').cells['chatgpt-free-go'].status === 'conditional',
@@ -163,11 +167,13 @@ assert(
     && row(de, 'minimum-age').cells['chatgpt-enterprise-edu'].status === 'admin',
   'managed ChatGPT accounts point learners to their school or organisation rules',
 )
-assert(
-  row(de, 'start-path').cells['chatgpt-plus-pro'].value.includes('Lernen starten')
-    && row(en, 'start-path').cells['chatgpt-plus-pro'].value.includes('Start Learning'),
-  'both languages direct learners to the first-party start action',
-)
+for (const variantId of ['chatgpt-free-go', 'chatgpt-plus-pro', 'chatgpt-business', 'chatgpt-enterprise-edu'] as const) {
+  assert(
+    row(de, 'start-path').cells[variantId].value.includes(germanLabels.startPage.login.chatGptDesktop.prepare)
+      && row(en, 'start-path').cells[variantId].value.includes(englishLabels.startPage.login.chatGptDesktop.prepare),
+    `${variantId}: both languages name the actual desktop preparation button`,
+  )
+}
 assert(
   row(de, 'session-duration').cells['chatgpt-plus-pro'].value.includes('24 Stunden')
     && row(en, 'session-duration').cells['chatgpt-plus-pro'].value.includes('24 hours'),
@@ -197,13 +203,21 @@ assert(
   'Claude voice mode is available with a practical note about observed temporary speech stalls',
 )
 assert(
-  !/1\.1-Betakandidat|1\.1 beta candidate|Abnahme steht noch aus|acceptance is still pending/u.test(JSON.stringify({ de, en }))
-    && de.intro.includes('Sobald die Lernabläufe stabil sind')
-    && de.intro.includes('Ein paralleler ChatGPT-Betatest ist nicht vorgesehen')
-    && en.intro.includes('Once the learning flows are stable')
-    && en.intro.includes('no parallel ChatGPT beta'),
-  'obsolete candidate disclaimers are removed and the Claude-first sequence is explicit in both languages',
+  de.intro.includes('Claude-Beta läuft weiter')
+    && de.intro.includes('ChatGPT-Desktop-Betatest')
+    && en.intro.includes('Claude beta continues')
+    && en.intro.includes('ChatGPT desktop beta')
+    && !/Ein paralleler ChatGPT-Betatest ist nicht vorgesehen|no parallel ChatGPT beta/u.test(JSON.stringify({ de, en })),
+  'the ongoing Claude beta and authorized ChatGPT desktop beta are both described',
 )
+for (const copy of [de, en]) {
+  for (const variantId of ['chatgpt-free-go', 'chatgpt-plus-pro', 'chatgpt-business', 'chatgpt-enterprise-edu'] as const) {
+    assert(row(copy, 'browser-devices').cells[variantId].value.includes('ChatGPT Desktop'), 'ChatGPT device guidance names the desktop beta')
+    assert(row(copy, 'native-mobile-app').cells[variantId].status === 'unavailable', 'mobile ChatGPT access is not advertised as accepted')
+    assert(row(copy, 'start-path').cells[variantId].value.includes('ChatGPT'), 'ChatGPT session start requires the matching coach selection')
+  }
+  assert(!/Nein, nutze den Browser|No, use the browser/u.test(JSON.stringify(copy)), 'unsupported ChatGPT browser fallback is removed')
+}
 for (const managedVariant of ['chatgpt-business', 'chatgpt-enterprise-edu'] as const) {
   assert(
     deRows.every(matrixRow => matrixRow.cells[managedVariant].status !== 'tested')
@@ -223,7 +237,7 @@ for (const [copy, camera, phone, privacy] of [
 }
 
 for (const copy of [de, en]) {
-  assert(copy.asOf.includes('13') && copy.asOf.includes('2026'), 'the matrix has an explicit current status date')
+  assert(copy.asOf.includes('5') && copy.asOf.includes('2026'), 'the matrix has an explicit current status date')
   assert(copy.sources.length === 5, 'the matrix links only learner-relevant access, voice, and age sources')
   assert(
     copy.sources.every(source => source.href.startsWith('https://')

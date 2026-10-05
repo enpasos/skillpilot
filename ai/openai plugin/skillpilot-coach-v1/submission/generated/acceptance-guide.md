@@ -1,16 +1,16 @@
-# ChatGPT-Abnahme: SkillPilot Coach v1 1.1.0
+# ChatGPT-Abnahme: SkillPilot Coach v1 1.1.1
 
 Automatisch aus den aktuellen Einreichungsquellen erzeugt. Nicht hier bearbeiten; Änderungen an den Quellen prüfen und erneut `prepare` ausführen.
 
 **Status: NICHT AUSGEFÜHRT.** Diese Anleitung und die leere Trace-Vorlage sind keine bestandenen Tests, keine Rollout-Bestätigung und keine Einreichung.
 
-Kandidat: `1.1.0` · MCP-Endpunkt: `https://mcp-coach-v1.skillpilot.com/mcp`
+Kandidat: `1.1.1` · MCP-Endpunkt: `https://mcp-coach-v1.skillpilot.com/mcp`
 
-Testsuite-SHA-256: `6e6b56155c2c6b5348cc4ec7b5d2289043cf81b14aa503b7cc083410dc2ebbc8`
+Testsuite-SHA-256: `6e9977ac261783d76142aa44194e7f685a6c3b1dae30a8cba2ea17d6232c413f`
 
 Vertrags-SHA-256: `2fa6ba594955edc4d9d6203f4fec968a11027664a48806e64852d391cd07bb7a`
 
-Paket-Snapshot-SHA-256: `d3d54e05a3713d73760fd0f34776a880b1941eae301c4c3eb7130cfe287700a5`
+Paket-Snapshot-SHA-256: `e2ba42a0857902b68a2eb934d6d5a73642c7a85d1f119f434ba2f0321eb01842`
 
 ## Vorbereitung
 
@@ -731,7 +731,7 @@ Für eine aktuelle Demo aus den bestandenen Fällen den Einstieg, Bild/Unterrich
 - [ ] Verify the current portal's skill import/upload workflow and rescan/reimport the exact reviewed skill bytes. Scanned skills are snapshots.
 - [ ] Provide working reviewer credentials only in the authenticated portal; test without MFA, SMS, email verification or private network access.
 - [ ] Run every positive, negative and internal daily-plan case against the current backend and the real claimed ChatGPT host; retain sanitized evidence.
-- [ ] Record or explicitly approve a current-candidate demo. The rejected 1.0.0 recording is historical evidence, not 1.1.0 acceptance.
+- [ ] Record or explicitly approve a current-candidate demo. The rejected 1.0.0 recording is historical evidence, not acceptance of the current candidate.
 - [ ] Decide countries, age/guardian boundaries and legal attestations separately; this generator makes no attestations and grants no approval.
 - [ ] Compare a fresh saved portal export with the generated draft, resolve every mismatch and re-check the saved values before an explicitly authorized submission.
 - [ ] Approval, submission and publication are external actions; none is performed or inferred by this generator.

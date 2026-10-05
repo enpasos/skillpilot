@@ -1,6 +1,6 @@
 # ChatGPT-App „SkillPilot Coach v1“: Deployment und Cutover
 
-**Stand:** 9. September 2026
+**Stand:** 5. Oktober 2026
 
 **OAuth-Umstellung, 11. September 2026:** Für die freigegebene neue
 Clientauthentifizierung gilt das
@@ -19,14 +19,22 @@ für diesen Versuch ist mTLS `observe` ausdrücklich freigegeben. Siehe
 `enforce`-Abnahmen betreffen den gehosteten Zertifikatstransport.
 
 **Status:** Die Einlieferung `1.0.0` wurde abgelehnt (`REJECTED`). Der Product
-Owner hat die ChatGPT-Entwicklungssperren ausdrücklich aufgehoben; der aktuelle
-Nachfolger ist der noch unveröffentlichte Entwurf `1.1.0`. Siehe
+Owner hat die ChatGPT-Entwicklungssperren ausdrücklich aufgehoben. Der aktuelle
+Nachfolger `1.1.1` ist über den Git-Marketplace für die Desktop-Beta
+veröffentlicht; die offizielle OpenAI-Einreichung bleibt `DRAFT` und das
+OpenAI-Verzeichnis unveröffentlicht. Installation und Lernstart in Windows
+ChatGPT Desktop sind vom Product Owner bestätigt. Siehe
 [Freigabe und Review-Historie](openai-plugin-v1-review-freeze.md).
-Die lokale Vorbereitung ist weder Deployment noch erneute Einlieferung.
+Die begrenzten Aufträge vom 24. September für Archiv/native CIMD und vom
+5. Oktober für die bestehende Git-/Desktop-Beta samt normalem GUI-Start ergänzen
+die ursprüngliche Claude-first-Reihenfolge. Der Product Owner führt den
+GUI-/Serverrollout durch; lokale Änderungen sind keine erneute Einlieferung.
 Der V1-Vertrag verwendet weiterhin den dedizierten
 `mcp-coach-v1.skillpilot.com`-Origin mit serverauthentisiertem HTTPS,
 OpenAI-Connector-mTLS und OAuth/PKCE. Der tatsächliche Produktionsstand und
-der erforderliche Modus `enforce` sind vor einer Einlieferung erneut zu prüfen.
+der erforderliche Modus `enforce` für den gehosteten Zertifikatstransport sind
+vor einer Einlieferung erneut zu prüfen. Die separat autorisierte native
+Desktop-Beta mit `observe` bleibt davon getrennt.
 Permanente ID, Providerhinweis und Level-2-Konfiguration bleiben ausschließlich
 im First-Party-WebGUI.
 
@@ -53,9 +61,9 @@ Insbesondere verwaltet ChatGPT OAuth Access- und Refresh-Token automatisch;
 Benutzer geben niemals OAuth-Token, OAuth-Client-Secret oder dauerhafte
 SkillPilot-ID im Chat ein. Jeder ausdrückliche autorisierte Start über die
 First-Party-Weboberfläche erzeugt jedoch eine davon unabhängige, absolut 24
-Stunden gültige `learningSessionId`. Der reguläre freigegebene Start öffnet
-einen neuen Chat; beim expliziten Desktop-Teststart wird die vorbereitete
-Nachricht in einen neuen Chat mit ausgewähltem Plugin kopiert. SkillPilot
+Stunden gültige `learningSessionId`. Beim normalen Desktop-Betastart wird die
+vorbereitete Nachricht in einen neuen Chat mit ausgewähltem Plugin kopiert.
+Gesonderte Recall-/Prüfungsstarts behalten ihre Browser-Launch-Verträge. SkillPilot
 trägt diese Referenz automatisch in die kurze Startnachricht ein; ChatGPT
 übergibt sie unverändert an jedes fachliche MCP-Werkzeug.
 
@@ -731,10 +739,12 @@ exakten Eintrag aus `instructions`. Die exakte `startUrl` ergänzt er nur, wenn
 sie nicht bereits in der Instruktion steht. Es folgt keine Fachantwort und kein
 Retry mit der alten Session. Die
 lernende Person verwendet **Lernen starten** im First-Party-WebGUI; die frische
-Session wird im dadurch geöffneten neuen Chat verwendet. Ein Fallback vom
+Session wird über die vorbereitete Nachricht in einem neuen Chat verwendet.
+Beim normalen Desktop-Betastart kopiert die Person diese Nachricht selbst.
+Ein Fallback vom
 OAuth-Subject auf einen Lernenden ist unzulässig.
 
-Das Cockpit startet ausschließlich über
+Jeder OpenAI-Start verwendet ausschließlich
 `POST /api/ui/learners/{skillpilotId}/openai/v1/launch`. Ein erfolgreicher
 Aufruf wendet den typisierten Start-Intent an und erzeugt genau eine neue
 Lernsession samt Startprompt. Jeder weitere Aufruf erzeugt unabhängig von
@@ -931,14 +941,14 @@ fortsetzen, wiederaufnehmen und Lernstand verwenden) und die negative Grenze
 (keine allgemeine Fachfrage ohne SkillPilot-Bezug). Kein zweites,
 semantisch gleiches Alias-Werkzeug veröffentlichen.
 
-### Tagespläne im aktuellen Entwurf 1.1.0
+### Lernpläne im aktuellen Paket 1.1.1
 
 Der vollständige Kontext enthält jetzt direkt `learningPlanToday`: gekürzte,
 validierte Summen, Fachübersichten, `current`/`canContinue` und autoritative
 Fortsetzungshinweise. Es gibt keinen separaten `get_skillpilot_daily_plan`-Call.
 Die beiden zusätzlichen Werkzeuge sind `resume_skillpilot_learning_plan` und
 `switch_skillpilot_learning_plan_subject`; die Spring-Konfiguration aktiviert
-sie für den aktuellen Entwurf. Der Workflow heißt `coach@1.1`.
+sie für den aktuellen Kandidaten. Der Workflow heißt `coach@1.1`.
 
 Statusfragen und Pausen lösen keine Lernmutation aus. Ein ausdrücklicher
 Fachwunsch hat Vorrang vor automatischer Fortsetzung; der Wechsel akzeptiert
@@ -957,7 +967,7 @@ erledigt. Die generierten Reviewfälle und die vier Planfälle stehen im
 [Einlieferungsdossier](openai-plugin-v1-submission.md); Backend-Replay,
 Komponententests und tatsächliche ChatGPT-Abnahme sind getrennte Prüfschichten.
 
-Der unveröffentlichte Arbeitsstand `1.1.0-SNAPSHOT` registriert genau zwei
+Der aktuelle Portal-Draft `1.1.1-SNAPSHOT` und das Git-Paket `1.1.1` registrieren genau zwei
 aktive MCP Apps UI-Ressourcen: eine read-only Bildressource für das aktive
 atomare Lernziel und eine interaktive Ressource für Karteikartenlernen im Chat.
 Zuvor ausgelieferte Bild-Hash-URIs bleiben byte-identisch passiv lesbar und
@@ -1005,8 +1015,9 @@ Beherrschungsnachweis liefern. Die für Lernende sichtbare deutsche Bezeichnung
 lautet „Karteikartenlernen“ beziehungsweise „Karteikarten lernen“, nicht
 „SRS-Kartendrill“.
 
-Da V1 unveröffentlicht ist, gibt es keine Produkt-Kompatibilitätszusage für alte
-Widget-Testnachrichten. Bereits real an Test-Clients ausgelieferte
+Die Desktop-Git-Beta ist veröffentlicht, das OpenAI-Verzeichnis weiterhin nicht.
+Für alte Widget-Testnachrichten gibt es keine allgemeine Host-Kompatibilitätszusage.
+Bereits real an Test-Clients ausgelieferte
 content-addressierte Ressourcen bleiben dennoch byte-identisch passiv lesbar,
 damit Provider-Caches und vorhandene Test-Chats nicht mit „Failed to fetch
 template“ brechen. Abnahme und Fehlersuche erfolgen nach Plugin-Refresh
@@ -1199,7 +1210,7 @@ Antwort notieren:
 
 | Prompt | Erwartung |
 | --- | --- |
-| `Verwende SkillPilot Coach v1 und fahre fort.` ohne aktuelle SkillPilot-Startnachricht | Kein Werkzeugaufruf. Der Coach verweist kurz in der Unterhaltungssprache auf `https://skillpilot.com/`, die WebGUI-Konfiguration und **Lernen starten** / **Start learning**, das eine neue Session in einem neuen Chat öffnet. |
+| `Verwende SkillPilot Coach v1 und fahre fort.` ohne aktuelle SkillPilot-Startnachricht | Kein Werkzeugaufruf. Der Coach verweist kurz in der Unterhaltungssprache auf `https://skillpilot.com/`, die WebGUI-Konfiguration und **Lernen starten** / **Start learning**. Dort wird eine frische Session für einen neuen Chat vorbereitet; der normale Desktop-Betastart übergibt sie per kopierter Startnachricht. |
 | Derselbe Prompt mit aktueller Startnachricht und `learningSessionId: sps_…` | `get_skillpilot_context` läuft zu Beginn dieses Learner-Turns. Level 2 wird weder erfragt noch verändert; die Antwort verwendet nur den bestätigten WebGUI-Kontext. Nach einer erfolgreichen Mutation gilt deren vollständiger Nachfolgerzustand für den Rest desselben Assistant-Turns ohne redundanten Kontextabruf. |
 | Derselbe Start bei einem aktiven atomaren Ziel mit freigegebenem Bild | Nach erfolgreichem Kontext folgt `render_skillpilot_goal_visualization` genau einmal mit dessen `goalId`; die Top-Level-`stateVersion` wird in `expectedStateVersion` kopiert. Danach bleibt die fachliche Antwort vollständig. |
 | Bildprojektion oder Renderer-Freigabe fehlt | Es gibt keinen Renderer-Aufruf und keine leere Bild-UI; die normale Coaching-Antwort bleibt vollständig. |
@@ -1277,7 +1288,8 @@ Zusätzlich sind die drei Cockpit-Starts separat zu prüfen:
   `communicationLocale`, sonst der aktuellen Unterhaltungssprache. Die exakte
   `startUrl` wird nur ergänzt, wenn sie nicht bereits in der Instruktion steht.
   Es folgen weder Fachantwort noch OAuth-Neuverbindung. Die Person schließt den
-  Start in der WebGUI ab und arbeitet im dadurch geöffneten neuen Chat weiter;
+  Start in der WebGUI ab und arbeitet mit der neuen Startnachricht in einem
+  neuen Chat weiter;
 - für den Live-Grenztest das Diagnose-Gate kurz aktivieren und ausschließlich
   am First-Party-`/launch` einmal `diagnosticSessionTtlSeconds=3660` verwenden;
   alternativ `5400` für einen 90-Minuten-Soak. Werte `3600`, `86401`, Werte über
@@ -1298,9 +1310,11 @@ Der Benutzer muss die Session-ID weder kopieren noch verändern.
   zeigt nur den kurzen lokalisierten Hinweis mit `https://skillpilot.com/`.
 - CREATE/EXISTING, Providerhinweis und die vollständige Level-2-Konfiguration
   werden ausschließlich im First-Party-WebGUI abgeschlossen.
-- Jede ausdrückliche Aktion **Lernen starten** / **Start learning** erzeugt eine
-  neue opake `learningSessionId` und öffnet einen neuen Chat mit der kurzen
-  Startnachricht; die permanente SkillPilot-ID bleibt außerhalb des Chats.
+- Der normale Einstieg **Lernen starten** / **Start learning** führt zur
+  Anbieterauswahl. **Lernen mit ChatGPT vorbereiten** erzeugt für
+  **ChatGPT Desktop (Beta)** eine neue opake `learningSessionId` und eine kurze
+  Startnachricht zum Kopieren in einen neuen Desktop-Chat; die permanente
+  SkillPilot-ID bleibt außerhalb des Chats.
 - Zu Beginn jedes Learner-Turns muss der Vollkontext erfolgreich geladen worden
   sein. Nach einer erfolgreichen Mutation ist ihr vollständiger
   Nachfolgerzustand für den Rest desselben Assistant-Turns autoritativ und wird
@@ -1362,10 +1376,17 @@ V1-App. Die beim Start serverseitig erzeugte Lernsession legt ihre
 `communicationLocale` fest; Plugin-Control-Plane und Toolvertrag bleiben neutrales
 Englisch. Eine Sprache erzeugt weder einen weiteren Host noch eine weitere App.
 
-Bei jedem Start ruft das Cockpit einmal
-`POST /api/ui/learners/{skillpilotId}/openai/v1/launch` auf und öffnet ChatGPT
-mit der zurückgegebenen, natürlichsprachlichen Startnachricht im URL-codierten
-`prompt`-Parameter. Der Benutzer muss keinen Text kopieren oder einfügen.
+Der normale GUI-Einstieg **Lernen starten** bietet Claude und **ChatGPT Desktop
+(Beta)** an; der Cockpit-Einstieg führt zurück zu dieser Anbieterauswahl. Der
+ChatGPT-Start ruft `POST /api/ui/learners/{skillpilotId}/openai/v1/launch` auf und
+zeigt die vorbereitete Startnachricht zum Kopieren in einen neuen Desktop-Chat.
+Der Button heißt **Lernen mit ChatGPT vorbereiten**.
+`?coach=chatgpt-desktop` ist eine optionale Vorauswahl; `?chatgptTest=1`
+bleibt eine kompatible Vorauswahl ohne separaten Startkasten.
+Der bestätigte Git-/Desktop-Betaweg verwendet keinen automatischen Browserstart.
+Die bisherigen gesonderten Recall-/Prüfungsstarts behalten ihre eigenen
+Intent- und Browser-Launch-Verträge; sie sind keine Desktop-Abnahme dieses
+normalen Starts.
 Spezielle Starts werden serverseitig als enges, auditierbares Intent-Schema
 vorbereitet; es wird kein freier Instruktionstext aus dem Browser übernommen.
 Jeder normale erfolgreiche Aufruf erzeugt unabhängig vom

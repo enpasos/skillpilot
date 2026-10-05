@@ -38,7 +38,7 @@ for (const copy of [de, en]) {
 
 for (const [language, markdown] of [['de', de.markdown], ['en', en.markdown]] as const) {
   assert.equal(markdown.includes(`Version ${CURRENT_TERMS_VERSION}`), true, `${language} copy identifies the accepted terms version`)
-  assert.match(markdown, /(?:13\. September 2026|September 13, 2026)/u)
+  assert.match(markdown, /(?:5\. Oktober 2026|October 5, 2026)/u)
   assert.match(markdown, /enpasos - Enterprise Patterns & Solutions GmbH/u)
   assert.match(markdown, /\[.*(?:Impressum|Imprint).*\]\(\/imprint\)/u)
   assert.match(markdown, /\[.*(?:Datenschutzerklärung|Privacy Policy).*\]\(\/privacy\)/u)
@@ -64,8 +64,9 @@ for (const [language, markdown] of [['de', de.markdown], ['en', en.markdown]] as
   assert.match(markdown, /(?:mindestens 18 Jahre|minimum age of 18)/u, `${language} copy includes the active Claude consumer age floor`)
   assert.match(markdown, /(?:Zustimmung eines Elternteils hebt diese Anbietergrenze nicht auf|Parental permission does not override this provider restriction)/u)
   assert.match(markdown, /(?:nicht anderen Personen zur Nutzung überlassen|must not be made available to other people)/u)
-  assert.match(markdown, /(?:Verbindung für ChatGPT ist derzeit nicht verfügbar|connection for ChatGPT is not currently available)/u)
-  assert.match(markdown, /(?:eigener ChatGPT-Integrationsabnahme|separate ChatGPT integration acceptance check)/u)
+  assert.match(markdown, /(?:ChatGPT-Desktop-Betatest über den Git-Marketplace|ChatGPT desktop beta through the Git marketplace)/u)
+  assert.match(markdown, /(?:noch nicht im öffentlichen ChatGPT-App-Verzeichnis veröffentlicht|not been published in the public ChatGPT app directory)/u)
+  assert.match(markdown, /(?:Installation und Lernstart unter Windows sind im Betatest bestätigt|Installation and learning start on Windows are confirmed in the beta)/u)
   assert.match(markdown, /(?:Claude-App|Claude app)/u)
   assert.match(markdown, /(?:Kameraaufnahmen|camera captures)/u)
   assert.match(markdown, /(?:Voice Mode|voice mode)/u)
@@ -135,7 +136,9 @@ for (const summary of [deAcceptance.summary, enAcceptance.summary]) {
   assert.match(summary, /(?:Aktualisiert|Updated):/u, 'the acceptance gate identifies the material update')
   assert.match(summary, /(?:Claude-Beta|Claude beta)/u)
   assert.match(summary, /(?:mindestens 18 Jahre|minimum age of 18)/u)
-  assert.match(summary, /(?:ChatGPT ist noch nicht verfügbar|ChatGPT is not available yet)/u)
+  assert.match(summary, /ChatGPT Desktop/u)
+  assert.match(summary, /(?:Git-Marketplace|Git marketplace)/u)
+  assert.match(summary, /(?:Installation und Lernstart unter Windows sind im Betatest bestätigt|Installation and learning start on Windows are confirmed in the beta)/u)
   assert.match(summary, /(?:keine Chattexte, Fotos oder Audiodaten|not chat text, photos, or audio)/u)
   assert.match(summary, /(?:freiwillige Mitteilung|voluntary communication)/u)
 }

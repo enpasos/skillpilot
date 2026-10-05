@@ -95,8 +95,9 @@ The browser may hold:
 
 Every V1 coach start calls a learner-specific SkillPilot UI endpoint with
 the locally active permanent SkillPilot ID. The backend creates a new
-learning-session reference at that exact moment and the response opens Claude
-or, for the separately enabled candidate, ChatGPT with the prepared message.
+learning-session reference at that exact moment. The Claude start opens its
+prepared chat; the ChatGPT Desktop beta shows the provider-specific message for
+the learner to copy into a new desktop chat.
 The permanent ID is not placed in the launch message or provider URL. A launch
 URL containing the temporary reference is itself sensitive and can appear in
 browser history or a copied link.

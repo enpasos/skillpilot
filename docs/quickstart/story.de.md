@@ -1,14 +1,16 @@
-# SkillPilot: In 5 Schritten mit Claude starten
+# SkillPilot: Lernen in 5 Schritten starten
 
-**Stand:** 13. September 2026
+**Stand:** 5. Oktober 2026
 
 Dein Lernen. Dein Tempo. Wähle dein Curriculum, lass dich beim Üben begleiten und entdecke deine Erfolge im Cockpit.
 
-Die laufende Lern-Beta nutzt **Claude Pro** und richtet sich an **Erwachsene ab 18 Jahren**. Du installierst das Plugin einmalig in **Claude Web**; danach kannst du mit demselben Konto auch in der **Claude-App** lernen. ChatGPT ist noch nicht verfügbar.
+Wähle **Claude** oder **ChatGPT Desktop (Beta)** als Lerncoach. Der ChatGPT-Lernstart über den Git-Marketplace funktioniert unter Windows. Claude nutzt **Claude Pro** und kann nach der Einrichtung auch in der Claude-App verwendet werden. Die [Zugangsübersicht](https://skillpilot.com/faq/coach-setup) erklärt die Voraussetzungen und Altersgrenzen des gewählten Anbieters.
 
-Der Quickstart erklärt den Einstieg in ungefähr fünf Minuten. Für die erstmalige Einrichtung kannst du dir so viel Zeit nehmen, wie du brauchst.
+Der Quickstart erklärt den Einstieg in ungefähr fünf Minuten. Das Video vom 13. September zeigt den Claude-Weg; die damalige Aussage zur ChatGPT-Verfügbarkeit ist überholt. Für die erstmalige Einrichtung kannst du dir so viel Zeit nehmen, wie du brauchst.
 
-## 1. Claude einmalig einrichten
+## 1. Deinen Lerncoach einmalig einrichten
+
+### Claude
 
 Du brauchst zuerst ein **Claude-Pro-Konto**. Melde dich damit in **Claude Web** an. Ist das aktuelle SkillPilot-Plugin bereits aus dem Marketplace installiert und verbunden, geh direkt zu Schritt 2 weiter.
 
@@ -18,6 +20,15 @@ Du brauchst zuerst ein **Claude-Pro-Konto**. Melde dich damit in **Claude Web** 
 4. Öffne im Plugin **Konnektoren → skillpilot**. Wähle bei Bedarf **Verbinden** und schließe die angezeigte Anmeldung und Freigabe ab. Prüfe anschließend den Status **Verbunden**.
 
 Die Marketplace-Verbindung ist auch dein Weg für spätere Updates. Automatische Updates wurden im Betatest beobachtet; der Zeitpunkt kann variieren. Für eine bestehende Installation folge dem Abschnitt **Aktualisieren** der aktuellen Anleitung. Sind Plugin und Konnektor bereit, öffne SkillPilot für die nächsten Schritte.
+
+### ChatGPT Desktop (Beta)
+
+1. Öffne in ChatGPT Desktop **Plugins → Hinzufügen → Marketplace hinzufügen**.
+2. Füge die Adresse des [SkillPilot-ChatGPT-Marketplace](https://github.com/enpasos/skillpilot-chatgpt-marketplace) hinzu.
+3. Installiere **SkillPilot Coach v1** aus diesem Marketplace. Prüfe, dass mindestens **1.1.1** installiert und das Plugin aktiviert ist.
+4. Öffne die SkillPilot-Verbindung im Plugin und schließe die Anmeldung ab.
+
+Für spätere Korrekturen aktualisiere den Marketplace und prüfe die tatsächlich installierte Plugin-Version. Die [ChatGPT-Anleitung](https://skillpilot.com/plugins#chatgpt-desktop) erklärt auch den Wechsel von einer Archivinstallation. Der normale Lernstart ist für ChatGPT Desktop vorgesehen; Browser, mobile ChatGPT-App und Voice Mode sind noch nicht bestätigt.
 
 ## 2. Öffnen und deine SkillPilot-ID sichern
 
@@ -35,9 +46,11 @@ Die Auswahl bildet deinen dauerhaften Lernrahmen. Deinen aktuellen Schwerpunkt k
 
 ## 4. Deine Lernsession starten
 
-Wähle im Abschnitt **Los geht’s** die Schaltfläche **Schritt 2: Mit Claude starten**.
+Wähle im Abschnitt **Los geht’s** deinen Lerncoach.
 
-SkillPilot öffnet einen neuen Claude-Chat mit einer vorbereiteten Startnachricht. Prüfe sie und sende sie unverändert ab. Falls Claude beim ersten Zugriff noch eine Anmeldung oder Freigabe verlangt, schließe diese ab.
+**Claude:** Wähle **Schritt 2: Mit Claude starten**. SkillPilot öffnet einen neuen Claude-Chat mit der vorbereiteten Startnachricht. Sende sie unverändert ab. Schließe bei Bedarf die angezeigte Anmeldung oder Freigabe ab.
+
+**ChatGPT Desktop:** Wähle **Lernen mit ChatGPT vorbereiten**, dann **ChatGPT-Startnachricht kopieren**. Öffne einen neuen Chat in ChatGPT Desktop mit **SkillPilot Coach v1**, füge die Nachricht ein und sende sie ab. Jede Startoption erzeugt die Lernsession für den gewählten Anbieter.
 
 Die vorbereitete Startnachricht enthält eine **24 Stunden gültige Lernsession**. Halte diese Nachricht und deinen Lernchat vertraulich.
 
@@ -49,7 +62,7 @@ Der Coach lädt deinen Lernkontext und begleitet dich beim aktuellen Ziel. Arbei
 
 Zum automatisch angezeigten Lernziel kannst du **Feedback zu diesem Lernziel** abgeben, auch zum Verhalten des Coaches. Beschreibe das Problem knapp in eigenen Worten und konzentriere dich auf das Lernziel und deine Beobachtung. Halte persönliche Angaben und deine Startnachricht vertraulich.
 
-## Mit dem Handy, Fotos und Voice Mode lernen
+## Mit Claude: Handy, Fotos und Voice Mode
 
 - Öffne mit demselben Claude-Konto denselben Chat in der App. Innerhalb der 24 Stunden kannst du dort weiterlernen.
 - Lade Fotos deiner Rechnung oder Skizze hoch oder nutze die Kamera direkt in der Claude-App. Das geht besonders praktisch mit dem Handy. Verdecke persönliche Angaben vorher.
@@ -65,6 +78,6 @@ Chat, Fotos und Sprache verarbeitet Claude. SkillPilot erhält über die Coach-S
 
 **Speichern fehlgeschlagen?** Lass den Coach den aktuellen Stand prüfen und den Abschluss bei Bedarf erneut speichern. Prüfe anschließend das Cockpit; bei abgelaufener Session starte zuerst eine neue.
 
-Weitere Antworten findest du in den [FAQs](https://skillpilot.com/faq) und der [Claude-Einrichtung](https://skillpilot.com/plugins).
+Weitere Antworten findest du in den [FAQs](https://skillpilot.com/faq) und den [Plugin-Anleitungen für beide Anbieter](https://skillpilot.com/plugins).
 
 Entdecke, was du kannst – und freu dich über jeden Erfolg.

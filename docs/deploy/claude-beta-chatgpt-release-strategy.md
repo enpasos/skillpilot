@@ -18,11 +18,29 @@ Integrationstest ist von der früheren Pause ausgenommen. Er ändert weder die
 öffentliche Anbieterfreigabe noch behauptet er eine abgeschlossene Abnahme.
 Siehe [native CIMD-Integration](openai-native-cimd.md).
 
+**Explizite Ergänzung vom 5. Oktober 2026:** Nach der erfolgreichen
+Archivinstallation in Windows ChatGPT Desktop beauftragt der Product Owner die
+Aktualisierung des bestehenden Git-Marketplace für schnelle Fix-Zyklen und
+**ChatGPT Desktop (Beta)** als wählbaren GUI-Anbieter. Diese konkrete Route ist
+jetzt aktiv; die frühere Verteilungspause gilt hierfür nicht mehr. Der neue
+Git-Paketstand ist **1.1.1**. Der ChatGPT-Start erzeugt eine eigene OpenAI-Session;
+eine Claude-Startnachricht darf nicht verwendet werden. Die offizielle
+Einreichung, Produktionsdeployments und abgeschlossene Host-Abnahme folgen
+daraus nicht. Siehe [Git-Beta und Updates](openai-personal-marketplace-release.md).
+
+**Bestätigung im selben Arbeitslauf:** Der Product Owner bestätigt den
+funktionierenden Git-/Windows-Desktop-Weg und beauftragt ihn über den normalen
+GUI-Einstieg **Lernen starten** einschließlich aktualisierter Hinweise.
+Installation und Lernstart sind bestätigt; vollständige Lernstands-,
+Fortsetzungs- und Erneuerungsnachweise bleiben eigene Abnahmeschritte. Die
+Claude-Beta läuft parallel weiter. Browser und mobile ChatGPT-App sind damit
+nicht freigegeben.
+
 ## 1. Jetzt: laufenden Beta-Test mit Claude fortführen
 
-Claude bleibt die Plattform für den tatsächlichen Beta-Test. Die
-Entwicklungsarbeit konzentriert sich auf die dabei auftretenden Fehler und auf
-die Stabilisierung des vollständigen Lernbetriebs.
+Die Claude-Beta und der bestätigte ChatGPT-Desktop-Betastart stehen über die
+GUI zur Verfügung. Die Entwicklungsarbeit konzentriert sich auf beobachtete
+Fehler und die Stabilisierung des vollständigen Lernbetriebs.
 
 Maßgeblich sind funktionierende Lernabläufe einschließlich Session-Fortsetzung,
 Lernstandsverarbeitung und zuverlässiger Tool-Nutzung. Die bestehenden
@@ -30,9 +48,9 @@ Sicherheitsanforderungen, Datenschutzgrenzen und fachlichen Prüfungen bleiben
 unverändert. Insbesondere wird für keinen Host die Clientauthentisierung
 abgeschwächt oder Chat-Freitext an den SkillPilot Core übertragen.
 
-**In dieser Phase wird kein zusätzlicher ChatGPT-Beta-Verteilungsweg aufgebaut.**
-Es gibt keine weitere Suche nach Verteilungsworkarounds und keine
-ChatGPT-spezifischen Erweiterungen auf Vorrat.
+**Die ausdrücklich autorisierte Desktop-Git-Beta wird parallel für beobachtete
+Integrationsfehler gepflegt.** Weitere Verteilungsworkarounds und
+ChatGPT-spezifische Erweiterungen auf Vorrat sind nicht beauftragt.
 
 ## 2. Sobald der Claude-Betrieb stabil ist: gezielte ChatGPT-Abnahme
 

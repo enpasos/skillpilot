@@ -1,17 +1,22 @@
 # SkillPilot Coach v1: Release, Rollback und Stilllegung
 
-**Stand:** 9. September 2026
+**Stand:** 5. Oktober 2026
 
 **Status:** 1.0.0 wurde abgelehnt; sämtliche ChatGPT/OpenAI-Review-
-Entwicklungssperren sind ausdrücklich aufgehoben. Neuer unveröffentlichter
-Kandidat: **1.1.0**. Lokale Vorbereitung ist erlaubt; Deployment und erneute
-Portal-Einreichung sind nicht Bestandteil dieser Freigabe.
+Entwicklungssperren sind ausdrücklich aufgehoben. Aktueller Paketstand:
+**1.1.1**, veröffentlicht über den Git-Marketplace für die Desktop-Beta.
+Installation und Lernstart in Windows ChatGPT Desktop sind vom Product Owner
+bestätigt. Die offizielle OpenAI-Einreichung bleibt **DRAFT**, nicht eingereicht
+und nicht im OpenAI-Verzeichnis veröffentlicht. Der GUI-/Serverrollout wird
+vom Product Owner durchgeführt; die lokalen Änderungen allein deployen ihn nicht.
 Die [Review-Historie](openai-plugin-v1-review-freeze.md) bleibt nachvollziehbar.
 
 **Arbeitsreihenfolge seit 12. September 2026:** zuerst den laufenden Claude-Beta-
 Betrieb stabilisieren, dann den bewährten Kandidaten gezielt im echten ChatGPT-
-Host abnehmen und anschließend einreichen. Kein paralleler externer ChatGPT-
-Betaweg und keine weiteren Verteilungsworkarounds. Die folgenden Release-
+Host abnehmen und anschließend einreichen. Die begrenzten späteren Aufträge vom
+24. September für Archivinstallation/native CIMD und vom 5. Oktober für die
+bestehende Git-/Desktop-Beta samt normalem GUI-Start ergänzen diese Reihenfolge.
+Weitere Verteilungsworkarounds sind nicht beauftragt. Die folgenden Release-
 Schritte gelten innerhalb dieser [verbindlichen Entwicklervorgabe](claude-beta-chatgpt-release-strategy.md);
 Sicherheitsprüfungen und Einreichungsnachweise bleiben unverändert.
 
@@ -25,7 +30,7 @@ operativ um. Es gilt für `skillpilot-coach-v1`.
 | --- | --- |
 | Plugin-Identität | `skillpilot-coach-v1` |
 | Anzeigename | `SkillPilot Coach v1` |
-| aktueller Paketstand | `1.1.0` (unveröffentlichter Nachfolger) |
+| aktueller Paketstand | `1.1.1` (Git-/Desktop-Beta veröffentlicht; OpenAI-Portal `DRAFT`) |
 | Contract Major | `1` |
 | Lifecycle-Policy | `policyRevision=5` |
 | öffentlicher MCP-Endpunkt und OAuth Resource/Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
@@ -33,16 +38,19 @@ operativ um. Es gilt für `skillpilot-coach-v1`.
 | Domain-Challenge | `https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge` |
 | aktive MCP-Apps-UIs | genau zwei: Lernzielbild und Karteikartenlernen |
 | Support-URL | `https://skillpilot.com/imprint` |
-| Historisches Reviewvideo | `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4` (keine neue 1.1.0-Abnahme) |
-| Veröffentlichungsstatus | noch nicht veröffentlicht; neuer Draft `1.1.0-SNAPSHOT`; abgelehntes `1.0.0-SNAPSHOT` bleibt historisch unverändert |
+| Historisches Reviewvideo | `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4` (keine Abnahme des aktuellen Kandidaten) |
+| Veröffentlichungsstatus | Git-Beta `1.1.1` veröffentlicht; Portal-Draft `1.1.1-SNAPSHOT` unveröffentlicht; abgelehntes `1.0.0-SNAPSHOT` bleibt historisch unverändert |
 | Quellpaket | `ai/openai plugin/skillpilot-coach-v1/` |
 
 Permanente SkillPilot-ID, CREATE/EXISTING, Providerhinweis sowie Curriculum,
 Stage, Subjects, Profile und Personalisierung werden ausschließlich im
-First-Party-WebGUI konfiguriert. **Lernen starten** / **Start learning** erzeugt
-bei jedem Aufruf eine frische opake `learningSessionId` und öffnet einen neuen
-Chat mit der vorbereiteten Startnachricht. OAuth autorisiert die feste App,
-wählt aber keinen Lernenden aus.
+First-Party-WebGUI konfiguriert. Der normale Einstieg **Lernen starten** /
+**Start learning** und der Cockpit-Einstieg führen zur Anbieterauswahl.
+Für **ChatGPT Desktop (Beta)** erzeugt **Lernen mit ChatGPT vorbereiten** eine
+frische opake `learningSessionId`; die vorbereitete Nachricht wird in einen
+neuen Desktop-Chat kopiert. `?coach=chatgpt-desktop` ist eine optionale
+Vorauswahl, `?chatgptTest=1` bleibt eine kompatible Vorauswahl ohne separaten
+Startkasten. OAuth autorisiert die feste App, wählt aber keinen Lernenden aus.
 
 Ohne aktuelle Startnachricht ruft der Coach kein SkillPilot-Werkzeug auf. Er
 gibt nur einen kurzen Hinweis in der Unterhaltungssprache mit dem festen Link
@@ -57,7 +65,7 @@ autoritative `communicationLocale`, andernfalls für die aktuelle
 Unterhaltungssprache. Die exakte `startUrl` wird nur ergänzt, wenn sie nicht
 bereits in der Instruktion steht. Es folgen keine Fachantwort, kein Retry der
 alten Session und kein OAuth-Reconnect; die Fortsetzung erfolgt über die
-WebGUI und den dadurch geöffneten neuen Chat.
+WebGUI und die neu vorbereitete Nachricht in einem neuen Chat.
 
 Der Draft bindet genau zwei aktive content-addressierte MCP-Apps-Ressourcen:
 
@@ -66,7 +74,7 @@ Der Draft bindet genau zwei aktive content-addressierte MCP-Apps-Ressourcen:
 - `start_skillpilot_memory_practice` bindet ausschließlich die aktive
   Karteikartenressource; die Kartenbewertung bleibt app-only und ungebunden.
 
-Der aktuelle 1.1.0-Kandidat hat 14 Werkzeuge. Vollständige Kontextantworten
+Der aktuelle 1.1.1-Kandidat hat 14 Werkzeuge. Vollständige Kontextantworten
 enthalten den fertigen Lernplanstatus als `learningPlanToday` für die dauerhaft
 gewählte Tages- oder Wochenbasis; jedes Fach wird unabhängig ausgewertet.
 `resume_skillpilot_learning_plan` und `switch_skillpilot_learning_plan_subject`
@@ -120,7 +128,7 @@ Maschinenlesbare Quellen der Wahrheit sind:
   tatsächlich im OpenAI-Portal veröffentlichte Versionen.
 
 Der Product Owner hat die Review-Sperre nach der Ablehnung ausdrücklich
-beendet. `1.1.0` erhält einen neuen kohärenten Draft; `1.0.0` wird nicht
+beendet. `1.1.1` besitzt einen eigenen kohärenten Portal-Draft; `1.0.0` wird nicht
 umetikettiert oder überschrieben. Eine künftige reale Veröffentlichung
 versiegelt genau die veröffentlichte Version dauerhaft. Aktuelle fachliche,
 Sicherheits- und Kompatibilitätstests ersetzen keine echte Client-Abnahme.
@@ -132,7 +140,9 @@ freigegeben. Der maschinelle Guard schützt weiterhin die abgelehnte Historie
 und tatsächlich veröffentlichte Versionen, nicht alte Live-Dateihashes.
 
 1. Release Notes, Lifecycle, Listing, Skill, Policy, Serververtrag, aktuelle
-   Testfälle und zentrale Dokumentation gemeinsam für `1.1.0` aktualisieren.
+   Testfälle und zentrale Dokumentation gemeinsam für den aktuellen Kandidaten
+   `1.1.1` prüfen. Bereits veröffentlichte Git-Paketbytes bleiben unverändert;
+   weitere Paketkorrekturen benötigen eine neue Version.
    Die aktuelle Veröffentlichung verwendet ausschließlich den MCP-Server;
    die frühere `.app.json`-Referenz gehört nicht in das neue Installationspaket.
    `submission/**` und andere Review-/Release-Unterlagen werden niemals mit
@@ -157,9 +167,9 @@ und tatsächlich veröffentlichte Versionen, nicht alte Live-Dateihashes.
    node scripts/openai_plugin_release.mjs prepare
    ```
 
-   `prepare` ersetzt nur den aktuellen unveröffentlichten Nachfolger-Snapshot.
+   `prepare` ersetzt nur den aktuellen unveröffentlichten Portal-Draft-Snapshot.
    Es ändert weder SemVer noch Published-Index und stoppt bei der abgelehnten
-   `1.0.0`, tatsächlich veröffentlichten Versionen, fehlenden versionierten
+   `1.0.0`, tatsächlich im OpenAI-Portal veröffentlichten Versionen, fehlenden versionierten
    Installationsdateien oder Symlinks. Alte Snapshot-/Video-Bytes bleiben exakt.
 5. Quellen und Draft reproduzierbar prüfen:
 
@@ -239,7 +249,7 @@ Vor einer Portalaktualisierung sind mindestens folgende Nachweise erforderlich:
 14. Das historische 1.0.0-Reviewvideo bleibt ohne Anmeldung unter
     `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4`
     erreichbar und byte-identisch. Es ist keine Verhaltensabnahme des neuen
-    1.1.0-Kandidaten. Vor einer erneuten Einreichung muss eine passende aktuelle
+    1.1.1-Kandidaten. Vor einer erneuten Einreichung muss eine passende aktuelle
     Aufnahme gesondert erstellt, geprüft und unter eigener content-addressierter
     URL bereitgestellt werden; Größe, SHA-256, `video/mp4`, Byte-Range-Abruf und
     OpenAI-Origin/CORS-Preflight für `GET` und `Range` sind erneut nachzuweisen.

@@ -39,14 +39,14 @@ export interface FaqViewCopy {
 const germanCopy: FaqViewCopy = {
   backToApp: 'Zurück zu SkillPilot',
   title: 'Häufige Fragen zu SkillPilot',
-  subtitle: 'Mit Claude in der Beta lernen. ChatGPT folgt nach gezielter Prüfung und offizieller Veröffentlichung.',
-  reviewedLabel: 'Stand: 23. September 2026',
+  subtitle: 'Mit Claude lernen oder den ChatGPT-Desktop-Betatest ausprobieren.',
+  reviewedLabel: 'Stand: 5. Oktober 2026',
   recommendation: {
     eyebrow: 'Jetzt mitlernen',
-    title: 'Die laufende Beta nutzt Claude',
+    title: 'Claude-Beta und ChatGPT-Desktop-Betatest',
     paragraphs: [
       'Starte mit Claude und hilf uns, den Lernbetrieb weiter zu verbessern. Im Beta-Test funktionieren auch die Claude-App und Voice Mode.',
-      'ChatGPT ist für die spätere Veröffentlichung vorgesehen. Dafür prüfen wir den mit Claude bewährten Stand gezielt in ChatGPT; eine parallele ChatGPT-Beta bieten wir nicht an.',
+      'Zusätzlich kannst du ChatGPT Desktop über den Git-Marketplace nutzen, wenn dein Konto diese Plugin-Einrichtung unterstützt. Installation und Lernstart unter Windows sind im Betatest bestätigt.',
     ],
     actionLabel: 'Jetzt in SkillPilot lernen',
   },
@@ -95,22 +95,25 @@ const germanCopy: FaqViewCopy = {
     {
       id: 'chatgpt',
       title: 'Lernen mit ChatGPT',
-      intro: 'Für die spätere offizielle Veröffentlichung vorgesehen, derzeit kein zusätzlicher Beta-Einstieg.',
+      intro: 'Desktop-Betatest über den Git-Marketplace, wenn dein Konto diese Plugin-Einrichtung unterstützt.',
       questions: [
         {
           id: 'chatgpt-availability',
-          question: 'Wann kann ich SkillPilot mit ChatGPT nutzen?',
+          question: 'Wie starte ich den ChatGPT-Desktop-Betatest?',
           paragraphs: [
-            'Zuerst stabilisieren wir den laufenden Claude-Beta-Test. Anschließend prüfen wir den bewährten Stand gezielt mit einer echten ChatGPT-Verbindung und reichen den erfolgreich geprüften Kandidaten offiziell ein.',
-            'Einen Veröffentlichungstermin können wir noch nicht nennen. Du musst darauf nicht warten: Für den aktuellen Beta-Test nutzt du Claude.',
+            'Öffne in ChatGPT Desktop „Plugins“ und prüfe, ob unter „Hinzufügen“ die Option „Marketplace hinzufügen“ vorhanden ist. Folge dann der ChatGPT-Anleitung unter „Plugins“ in SkillPilot, um den Git-Marketplace hinzuzufügen und das SkillPilot-Plugin zu installieren und zu verbinden.',
+            'Wähle anschließend in SkillPilot ausdrücklich „ChatGPT Desktop“ als Coach und „Lernen mit ChatGPT vorbereiten“. Sende die neue vorbereitete Startnachricht in einem neuen Chat in ChatGPT Desktop. Eine für Claude vorbereitete Startnachricht funktioniert nicht mit ChatGPT.',
+            'Installation und Lernstart in ChatGPT Desktop unter Windows funktionieren im Betatest. Für Korrekturen folge der aktuellen Update-Anleitung und prüfe die tatsächlich installierte Plugin-Version. Bereite danach eine neue Lernsession in SkillPilot vor.',
+            'SkillPilot ist noch nicht im öffentlichen ChatGPT-App-Verzeichnis veröffentlicht. Einen Veröffentlichungstermin können wir noch nicht nennen.',
           ],
+          link: { href: '/plugins#chatgpt-desktop', label: 'ChatGPT-Desktop-Installationsanleitung' },
         },
         {
           id: 'chatgpt-app-voice',
           question: 'Gelten die Aussagen zu Claude-App und Voice Mode auch für ChatGPT?',
           paragraphs: [
-            'Nein. Die positiven Beta-Erfahrungen beziehen sich auf Claude. Welche ChatGPT-Funktionen mit SkillPilot zuverlässig zusammenarbeiten, prüfen wir vor der Veröffentlichung gesondert.',
-            'Dazu gehören eine funktionierende Verbindung, die tatsächliche Nutzung der SkillPilot-Funktionen und das Fortsetzen einer Lernsession. Wir übernehmen dafür keine ungeprüften Zusagen von Claude.',
+            'Die ChatGPT-Beta nutzt die Desktop-App. Installation und Lernstart unter Windows funktionieren. ChatGPT im Browser, die mobile ChatGPT-App und Voice Mode sind für diesen Betatest nicht freigegeben.',
+            'Weitere Lernfunktionen und das Fortsetzen einer Lernsession prüfen wir für ChatGPT vor der Veröffentlichung gesondert. Die Erfahrungen mit der Claude-App und deren Voice Mode gelten weiterhin für Claude.',
           ],
         },
       ],
@@ -124,7 +127,7 @@ const germanCopy: FaqViewCopy = {
           id: 'provider-options',
           question: 'Welches Konto brauche ich für den Einstieg?',
           paragraphs: [
-            'Die laufende Beta nutzt Claude. Welche Konten dafür infrage kommen und welche Altersgrenzen gelten, erfährst du in der Einrichtungsübersicht. Dort ist ChatGPT getrennt als spätere Option beschrieben.',
+            'Die Claude-Beta läuft weiter. Für den ChatGPT-Desktop-Betatest muss dein Konto die Plugin-Einrichtung über einen Git-Marketplace unterstützen; der Tarif allein garantiert das nicht. Die Einrichtungsübersicht erklärt die Voraussetzungen und Altersgrenzen für beide Anbieter.',
           ],
           link: { href: '/faq/coach-setup', label: 'Zugang und Voraussetzungen ansehen' },
         },
@@ -196,14 +199,14 @@ const germanCopy: FaqViewCopy = {
 const englishCopy: FaqViewCopy = {
   backToApp: 'Back to SkillPilot',
   title: 'Frequently asked questions about SkillPilot',
-  subtitle: 'Learn with Claude in the beta. ChatGPT will follow after focused testing and official publication.',
-  reviewedLabel: 'Status: September 23, 2026',
+  subtitle: 'Learn with Claude or try the ChatGPT desktop beta.',
+  reviewedLabel: 'Status: October 5, 2026',
   recommendation: {
     eyebrow: 'Join the learning',
-    title: 'Our current beta uses Claude',
+    title: 'Claude beta and ChatGPT desktop beta',
     paragraphs: [
       'Start with Claude and help us improve the learning experience. The Claude app and voice mode also work in the ongoing beta.',
-      'ChatGPT is planned for a later release. We will test the baseline proven with Claude specifically in ChatGPT; we are not offering a parallel ChatGPT beta.',
+      'You can also use ChatGPT Desktop through the Git marketplace if your account supports this plugin setup. Installation and learning start on Windows are confirmed in the beta.',
     ],
     actionLabel: 'Start learning in SkillPilot',
   },
@@ -252,22 +255,25 @@ const englishCopy: FaqViewCopy = {
     {
       id: 'chatgpt',
       title: 'Learning with ChatGPT',
-      intro: 'Planned for a later official release, not an additional beta option at present.',
+      intro: 'Desktop beta through the Git marketplace, if your account supports this plugin setup.',
       questions: [
         {
           id: 'chatgpt-availability',
-          question: 'When can I use SkillPilot with ChatGPT?',
+          question: 'How do I start the ChatGPT desktop beta?',
           paragraphs: [
-            'First, we are stabilizing the ongoing Claude beta. We will then test that proven baseline through a real ChatGPT connection and officially submit the successfully tested candidate.',
-            'We cannot give a release date yet. You do not need to wait for it: use Claude for the current beta.',
+            'Open “Plugins” in ChatGPT Desktop and check whether “Add” offers “Add marketplace”. Then follow the ChatGPT guide under “Plugins” in SkillPilot to add the Git marketplace and install and connect the SkillPilot plugin.',
+            'Then explicitly select “ChatGPT Desktop” as your coach and “Prepare learning with ChatGPT” in SkillPilot. Send the new prepared start message in a new chat in ChatGPT Desktop. A start message prepared for Claude does not work with ChatGPT.',
+            'Installation and learning start in ChatGPT Desktop on Windows work in the beta. For corrections, follow the current update guide and check the plugin version that is actually installed. Then prepare a new learning session in SkillPilot.',
+            'SkillPilot has not been published in the public ChatGPT app directory. We cannot give a release date yet.',
           ],
+          link: { href: '/plugins#chatgpt-desktop', label: 'ChatGPT desktop installation guide' },
         },
         {
           id: 'chatgpt-app-voice',
           question: 'Does the guidance about the Claude app and voice mode also apply to ChatGPT?',
           paragraphs: [
-            'No. The positive beta experience applies to Claude. We will separately check which ChatGPT features work reliably with SkillPilot before publication.',
-            'This includes a working connection, actual use of SkillPilot functions, and continuing a learning session. We will not carry over unverified claims from Claude.',
+            'The ChatGPT beta uses the desktop app. Installation and learning start on Windows work. ChatGPT in the browser, the mobile ChatGPT app, and voice mode are not enabled for this beta.',
+            'We will separately check further learning features and session continuation for ChatGPT before publication. The experience with the Claude app and its voice mode still applies to Claude.',
           ],
         },
       ],
@@ -281,7 +287,7 @@ const englishCopy: FaqViewCopy = {
           id: 'provider-options',
           question: 'Which account do I need to get started?',
           paragraphs: [
-            'The current beta uses Claude. The setup overview explains which accounts are eligible and which age limits apply. It lists ChatGPT separately as a later option.',
+            'The Claude beta continues. For the ChatGPT desktop beta, your account must support plugin setup through a Git marketplace; your plan alone does not guarantee that. The setup overview explains the requirements and age limits for both providers.',
           ],
           link: { href: '/faq/coach-setup', label: 'View access and requirements' },
         },

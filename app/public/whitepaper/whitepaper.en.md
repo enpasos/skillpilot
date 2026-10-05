@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (EN)
 
-**Version:** 1.0.25 · **Project:** SkillPilot · *Some illustrations are AI-generated.*
+**Version:** 1.0.26 · **Project:** SkillPilot · *Some illustrations are AI-generated.*
 
 ---
 
@@ -28,15 +28,15 @@ Quality assurance combines traceable **automated checks** with **separately repo
 
 In the web interface, learners select their educational context and subjects. This creates their Personal Curriculum. Their current learning focus can later change without losing progress already recorded.
 
-### Join the Beta: SkillPilot Is Free, with Claude as Your Coach
+### Join the Beta: Claude or ChatGPT Desktop
 
-**The beta is open to anyone interested aged 18 or over. SkillPilot itself is free; the AI learning coach requires your own Claude Pro account.** That subscription is purchased separately from Anthropic. The age limit comes from the [requirements for personal Claude accounts](https://support.claude.com/en/articles/8114491-get-started-with-claude).
+**SkillPilot itself is free. The Claude learning coach requires your own Claude Pro account; this beta route is open to anyone interested aged 18 or over.** That subscription is purchased separately from Anthropic. The age limit comes from the [requirements for personal Claude accounts](https://support.claude.com/en/articles/8114491-get-started-with-claude).
 
 **Learning in Claude chat already works on your phone — including Voice Mode.** After working independently with pen and paper, you can photograph your solution with your phone, share it with the SkillPilot coach in chat, and discuss it. Typing, speaking, and showing your own work complement each other.
 
-Access is through the SkillPilot marketplace; the [5-minute Quickstart](https://skillpilot.com/quickstart/en) explains the setup. In SkillPilot’s responsive web interface, you select your Personal Curriculum, view your progress, and start the learning session. **[Try it now](https://skillpilot.com/quickstart/en)** and help shape the beta.
+Claude access is through the SkillPilot marketplace; the [5-minute Quickstart](https://skillpilot.com/quickstart/en) explains the setup. In SkillPilot’s responsive web interface, you select your Personal Curriculum, view your progress, and start the learning session. **[Try it now](https://skillpilot.com/quickstart/en)** and help shape the beta.
 
-**SkillPilot is not tied to one particular AI.** Plugins and dedicated provider adapters connect the independent subject-matter core to each AI chat. Work on the ChatGPT integration is underway; it is not yet publicly available for learning. Further integrations depend on suitable interfaces and reliably supported capabilities at the provider. Stabilizing the ongoing Claude service takes priority.
+**SkillPilot is not tied to one particular AI.** Plugins and dedicated provider adapters connect the independent subject-matter core to each AI chat. Alongside the Claude beta, **ChatGPT Desktop (Beta)** is available through the [SkillPilot Git marketplace](https://github.com/enpasos/skillpilot-chatgpt-marketplace). Installation and learning start have been confirmed on Windows. Choose **ChatGPT Desktop** in SkillPilot, prepare its start message and send it in a new desktop chat. The [plugin guide](https://skillpilot.com/plugins#chatgpt-desktop) explains setup and updates. Browser and mobile ChatGPT access have not been confirmed for this route. Further integrations depend on suitable interfaces and reliably supported capabilities at the provider.
 
 ---
 

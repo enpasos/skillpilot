@@ -140,18 +140,18 @@ assert.match(
 )
 assert.match(
   appSource,
-  /'Claude plugin beta'\s*:\s*'Claude-Plugin-Beta'/u,
+  /'Learning coach plugin beta'\s*:\s*'Lerncoach-Plugin-Beta'/u,
   'the plugin guide metadata must describe the current plugin beta',
 )
 assert.match(
   appSource,
-  /Download and upload setup and updates for the SkillPilot Claude Coach/u,
-  'the English plugin guide description must identify the download and upload setup and updates',
+  /Installation and updates for SkillPilot plugins in Claude and ChatGPT Desktop/u,
+  'the English plugin guide description must identify both supported provider installation guides',
 )
 assert.match(
   appSource,
-  /Einrichtung und Updates des SkillPilot Claude Coach per Plugin-Download und Upload/u,
-  'the German plugin guide description must identify the download and upload setup and updates',
+  /Einrichtung und Updates der SkillPilot-Plugins in Claude und ChatGPT Desktop/u,
+  'the German plugin guide description must identify both supported provider installation guides',
 )
 assert.doesNotMatch(
   coachSetupSource,
@@ -160,13 +160,13 @@ assert.doesNotMatch(
 )
 assert.match(
   germanLocaleSource,
-  /Die Lern-Beta läuft mit dem kostenpflichtigen Claude Pro.*im Browser und in der Claude-App.*Voice-Mode.*ChatGPT folgt nach Stabilisierung, gezielter Prüfung und Veröffentlichung/u,
-  'the German start banner must present the Claude-first beta and subsequent ChatGPT testing and publication',
+  /Die Lern-Beta läuft mit Claude Pro.*im Browser und in der Claude-App.*Voice-Mode.*ChatGPT Desktop steht ebenfalls als Beta bereit/u,
+  'the German start banner must present Claude access and the ChatGPT Desktop beta',
 )
 assert.match(
   englishLocaleSource,
-  /The learning beta runs with the paid Claude Pro plan.*in your browser and the Claude app.*voice mode.*ChatGPT will follow after stabilization, focused testing and publication/u,
-  'the English start banner must present the Claude-first beta and subsequent ChatGPT testing and publication',
+  /The learning beta runs with Claude Pro.*in your browser and the Claude app.*voice mode.*The SkillPilot plugin for ChatGPT Desktop is also available as a beta/u,
+  'the English start banner must present Claude access and the ChatGPT Desktop beta',
 )
 assert.match(
   appSource,

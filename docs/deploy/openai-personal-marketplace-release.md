@@ -1,218 +1,157 @@
-# SkillPilot ChatGPT Git marketplace: paused experiment and release reference
+# SkillPilot ChatGPT Desktop beta: Git marketplace and updates
 
-**Paused by Product Owner decision on 12 September 2026.** Follow
-[Claude beta → stable candidate → focused ChatGPT acceptance → submission](claude-beta-chatgpt-release-strategy.md).
-Do not continue this distribution experiment, search for more workarounds,
-or build another ChatGPT beta path. The evidence, commands and unresolved
-acceptance checks below are retained as reference, not an active rollout plan
-or prerequisites for official ChatGPT submission. Published artifacts remain
-intact; this decision changes no production security setting.
+**Active Product Owner request of 5 October 2026.** Update the existing Git
+marketplace for rapid fixes and include **ChatGPT Desktop (Beta)** in the
+WebGUI. This supersedes the September distribution pause for this concrete
+route. The archive/CIMD integration was already authorized on 24 September.
+Official OpenAI submission and production GUI/server deployment are separate.
 
-## Purpose and status
+## Current candidate and evidence
 
-This lane tests distribution of the complete SkillPilot Coach plugin, including
-its Skills and remote MCP configuration, from a small public Git repository.
-It does not require a pre-existing ChatGPT development app or an `.app.json`
-reference. It is a standalone Git/MCP experiment, not a replacement for the
-separate [OpenAI public submission](openai-plugin-v1-submission.md).
+Canonical package: **SkillPilot Coach v1 1.1.1**. Public Git source:
+[enpasos/skillpilot-chatgpt-marketplace](https://github.com/enpasos/skillpilot-chatgpt-marketplace).
+Marketplace identity: `skillpilot-chatgpt-marketplace`; plugin identity:
+`skillpilot-coach-v1`. The canonical OpenAI portal lifecycle stays **DRAFT**;
+a Git release is not an OpenAI Directory publication.
 
-As of **12 September 2026**, the experimental Git marketplace is publicly
-published and its catalog has been registered successfully in the local Codex
-CLI. **Plugin installation and all real-host acceptance remain open.** This is
-not evidence of successful OAuth, ChatGPT desktop or web use, native mobile
-use, or automatic updates. The package version comes from the canonical OpenAI
-manifest; the first published Git candidate is **1.1.0**. Claude's independently
-published **1.1.3** is not the OpenAI package version.
+Evidence recorded on 5 October 2026:
 
-The public repository is
-[skillpilot-chatgpt-marketplace](https://github.com/enpasos/skillpilot-chatgpt-marketplace).
-Its marketplace identity is `skillpilot-chatgpt-marketplace` and its plugin
-identity remains `skillpilot-coach-v1`. The URL is available for the controlled
-installation experiment, not yet a generally accepted beta installation path.
+| Check | Observed result and limits |
+| --- | --- |
+| Windows ChatGPT archive installation | Owner reports successful deployment; supplied UI shows archive and marketplace add options |
+| Initial learning start | Rejected the Claude-generated `spc_` capability; corrected OpenAI launch uses `sps_` |
+| Windows Git/Desktop route and corrected learning start | Product Owner confirms “funktioniert” after installing the current Git package and using the corrected start; owner-reported evidence, not a recorded tool trace |
+| Native Codex 0.160.0 local installation | Exact seven canonical files installed and enabled; app-server `skills/list` discovers the coach |
+| Codex Git update in an isolated loopback repository | Installed files refreshed immediately, including a synthetic version bump; fixture removed afterwards |
+| Desktop automatic Git updates | Pending an observed replacement and repeated learning start in the actual desktop host |
+| Desktop OAuth/tool trace, saved learning progress, continuation and renewal | Further candidate-bound evidence still required; the reported working start does not certify every acceptance case |
+| ChatGPT web and native mobile | Unaccepted; not offered as supported beta surfaces |
 
-### Recorded Git publication and catalog evidence
+The local receipts live in ignored
+`tmp/skillpilot-openai-deploy-4qe82egm/receipt/`. They use synthetic update
+fixtures and contain no live learner capability. They are local evidence,
+not a directory release or a desktop learning-flow pass.
 
-- Published `main` commit:
-  [`7b184ca44675a6fc20ced73cb30a3ad2958c356f`](https://github.com/enpasos/skillpilot-chatgpt-marketplace/commit/7b184ca44675a6fc20ced73cb30a3ad2958c356f).
-- Annotated tag `v1.1.0` was verified to resolve to that same commit.
-- The **Validate experimental marketplace** workflow
-  [run 34681183427](https://github.com/enpasos/skillpilot-chatgpt-marketplace/actions/runs/34681183427)
-  completed successfully.
-- A fresh public clone passed byte-exact source/export verification and its
-  standalone `validate.mjs` check. The recorded package digest is
-  `15508140a3770e21896554c1aececf78a2fc421531e5f316fc16ffb101045843`.
-- Codex **0.154.0-alpha.6.1** successfully ran `marketplace add` and
-  `marketplace list`, recognizing the published catalog. This establishes
-  **local CLI catalog registration only**, not plugin installation, OAuth, or
-  availability in any ChatGPT host. Other existing personal SkillPilot plugins
-  were left unchanged.
+### Recorded 1.1.1 Git deployment
 
-These observations are dated **12 September 2026** and bound to the revision
-above. They do not complete any of the real-host acceptance checks below.
+Published on **5 October 2026** as commit
+[`358ee9c02efa5b072b41b90ce2f09c181f0bb693`](https://github.com/enpasos/skillpilot-chatgpt-marketplace/commit/358ee9c02efa5b072b41b90ce2f09c181f0bb693)
+on `main`, with package digest
+`6056eddba3287f85a4a292da52a97b60f6042dd01373c19ca79e58f2f9ba42c8`.
+A fresh public clone passed byte-exact canonical verification and its own
+validator. [GitHub validation run 37271037379](https://github.com/enpasos/skillpilot-chatgpt-marketplace/actions/runs/37271037379)
+completed successfully. The update fast-forwarded the original main and changed
+six files; the old annotated `v1.1.0` still resolves to its original commit.
+No `v1.1.1` tag was created; the full commit above is the immutable reference.
+The exported acceptance fields remain pending. This records Git deployment,
+not desktop installation or OpenAI portal publication.
 
-## What the experiment must distinguish
+The earlier published Git **1.1.0** remains immutable: commit
+[`7b184ca44675a6fc20ced73cb30a3ad2958c356f`](https://github.com/enpasos/skillpilot-chatgpt-marketplace/commit/7b184ca44675a6fc20ced73cb30a3ad2958c356f),
+annotated tag `v1.1.0`, package digest
+`15508140a3770e21896554c1aececf78a2fc421531e5f316fc16ffb101045843`, and passing
+[validation run 34681183427](https://github.com/enpasos/skillpilot-chatgpt-marketplace/actions/runs/34681183427).
+Do not ship different bytes under that published version. The current patch
+carries the canonical privacy/coaching fixes already present in the source.
 
-| Evidence | What it establishes | What it does not establish |
-| --- | --- | --- |
-| Export and Git checks | The catalog contains the exact intended public plugin files | Installation or account access |
-| Catalog discovery and plugin installation | A named host discovers and installs those files | Working OAuth, tools, or another host's access |
-| Authenticated MCP call | That host reaches the protected production integration | Correct Skill execution or web/mobile availability |
-| Real learning turn | The tested host uses the Skill and tools together | Support on an untested surface |
-| Web test with desktop closed | Independent web operation for that account and tested setup | Native mobile support or general beta availability |
+The Product Owner then confirmed that the published Git/Desktop route and
+corrected learning start work on **5 October 2026**, and requested this route
+through the ordinary **Lernen starten** GUI and current ChatGPT notices. Normal
+start and Cockpit navigation now offer the provider selection without a test
+query. GUI production deployment is tracked separately from this owner report.
+Keep the original export acceptance fields unchanged; the confirmation adds
+evidence here without rewriting the published candidate or its receipt.
 
-The current official workspace-import documentation says imported plugins that
-declare MCP servers are **Desktop only**, including remote HTTPS servers. This
-is a runtime restriction for that documented import path, not merely wording
-about the installer. Local/repository catalogs and public-directory publication
-are distinct distribution mechanisms. The experiment must record the actual
-host and route; it must not extend a workspace-import statement into an
-unverified claim about every possible account or distribution path.
-[OpenAI: Plugin management](https://learn.chatgpt.com/docs/enterprise/plugin-management#desktop-only-plugins),
-[OpenAI: Package your plugin](https://developers.openai.com/plugins/build/plugins)
+## Tester walkthrough: Windows ChatGPT Desktop
 
-The existing-app route is a different architecture: `.app.json` references an
-already registered app, but neither creates it nor grants access. It is not a
-prerequisite silently added to this standalone experiment. If this experiment
-fails, document the precise failed boundary before proposing that alternative.
-[OpenAI: Existing app references](https://learn.chatgpt.com/docs/enterprise/plugin-management#reference-an-existing-app-with-appjson)
+1. In **Plugins → Hinzufügen → Marketplace hinzufügen**, add
+   `https://github.com/enpasos/skillpilot-chatgpt-marketplace`.
+2. Open `skillpilot-chatgpt-marketplace` and install **SkillPilot Coach v1**;
+   verify **1.1.1** and the enabled coach skill. Avoid enabling the archive copy
+   and marketplace copy together in the same chat.
+3. Connect the plugin through the host authentication flow. The pinned native
+   CIMD profile uses S256 PKCE and supplies no operator/client secret. Use Auto
+   or CIMD if that chooser is shown. Record sanitized failures with host/version
+   and timestamp rather than changing authentication rules.
+4. Use SkillPilot's normal **Lernen starten** entry, or return there from the
+   Cockpit. Load the learner, finish configuration and select
+   **ChatGPT Desktop (Beta)**. Choose **Lernen mit ChatGPT vorbereiten** and copy
+   the whole message unchanged into a **new desktop chat** with this plugin
+   enabled. `?coach=chatgpt-desktop` optionally preselects the provider;
+   `?chatgptTest=1` remains a compatible preselection without a separate
+   start box in the updated GUI. Until the owner deploys that GUI, the legacy
+   query reaches the previously available OpenAI test handoff.
+5. Verify a real `get_skillpilot_context` call, expected learner/language,
+   representative learning, saved progress, continuation and token renewal.
+   Keep evidence bound to the exact host, package and marketplace commit.
 
-## Sources and exported layout
+A Claude-generated start uses the Claude launch endpoint and cannot authorize
+OpenAI learning. The GUI requests `/openai/v1/launch` for ChatGPT and
+`/claude/v1/launch` for Claude. Provider switching invalidates a prepared start.
+The OAuth connection and the learning capability remain separate credentials.
+Do not post either credential or a permanent learner ID in public evidence.
 
-The canonical source remains `ai/openai plugin/skillpilot-coach-v1/`.
-`ai/openai-marketplace/skillpilot-chatgpt-marketplace/` holds the catalog and
-publication templates. The exporter copies exactly these seven canonical
-plugin files into `plugins/skillpilot-coach-v1/`:
+For a supported Codex CLI in the intended client's native environment:
 
-- `.codex-plugin/plugin.json`
-- `.mcp.json`
-- `skills/skillpilot-coach-v1/SKILL.md`
-- `skills/skillpilot-coach-v1/agents/openai.yaml`
-- `skills/skillpilot-coach-v1/references/coaching-policy.md`
-- `assets/favicon-96x96.png`
-- `assets/web-app-manifest-512x512.png`
+```bash
+codex plugin marketplace add https://github.com/enpasos/skillpilot-chatgpt-marketplace --ref main
+codex plugin add skillpilot-coach-v1@skillpilot-chatgpt-marketplace
+codex plugin marketplace upgrade skillpilot-chatgpt-marketplace
+```
 
-The catalog is `.agents/plugins/marketplace.json`. Its local plugin path is
-`./plugins/skillpilot-coach-v1`, relative to the marketplace root, not to the
-catalog directory. Keep the supported compatibility manifest and existing MCP
-configuration byte-identical; do not perform an incidental format migration.
+Check the installed version after refresh and start a new chat. Native Windows
+and WSL installations may use separate configuration roots. Local CLI refresh
+has been tested; automatic ChatGPT desktop updates still need observation.
+See [OpenAI packaging](https://developers.openai.com/plugins/build/plugins),
+[plugin commands](https://learn.chatgpt.com/docs/developer-commands#codex-plugin)
+and [Windows/WSL configuration](https://learn.chatgpt.com/docs/windows/windows-app#share-config-auth-and-sessions-with-wsl).
 
-The exported repository must not contain release dossiers, private portal
-exports, browser profiles, credentials, `.app.json`, learner data, or session
-identifiers. No Skill copy is maintained as a second editable source.
+## Reproducible preparation and publication
 
-## Prepare and verify
-
-Run from the SkillPilot repository root with the project's Node version:
+The only editable coach source is `ai/openai plugin/skillpilot-coach-v1/`.
+The exporter copies exactly seven tracked install files, plus the catalog,
+validator, CI, documentation, license and SHA-256 inventory. Never include
+portal exports, credentials, private learner data or another editable Skill copy.
 
 ```bash
 node --test scripts/openai_marketplace_release.test.mjs
 node scripts/openai_marketplace_release.mjs check
-
 marketplace_export_dir=$(mktemp -d /tmp/skillpilot-chatgpt-marketplace.XXXXXXXX)
 node scripts/openai_marketplace_release.mjs prepare --output "$marketplace_export_dir"
 node scripts/openai_marketplace_release.mjs verify --output "$marketplace_export_dir"
-
 node scripts/check_skillpilot_coach_plugin.mjs
 node scripts/check_openai_plugin_versioning.mjs
 git diff --check
 ```
 
-`prepare` requires an empty output directory. It does not delete or replace an
-existing checkout, change the user's installed plugins, publish a repository,
-modify production, or submit anything to OpenAI. `verify` compares the exported
-tree with the current inputs, including the canonical plugin bytes. A source
-change invalidates the old export; create and verify a fresh output directory.
+`prepare` requires an empty directory; `verify` compares every exported byte
+with current canonical inputs. Record the source revision and source diff for a
+locally modified build. Every input change requires a fresh export. The
+source `.github/workflows/openai-marketplace.yml` provides this lane through
+manual `workflow_dispatch`; the exported repository validates pushes and PRs.
 
-The `.github/workflows/openai-marketplace.yml` lane is available only through
-manual `workflow_dispatch`. It runs the automated tests, export, and verification
-on demand; pushes, pull requests and schedules no longer trigger this paused
-experiment. The exported repository has its own validation workflow. Those
-checks are package evidence, not a simulated real-host pass.
+For the authorized Git deployment, publish the verified export without
+force-pushing, preserve unrelated remote content and the old tag, then verify a
+fresh public clone against the export and record the GitHub validation result.
+New immutable releases should use a new version and tag. Never run
+`record-published` for a Git beta update: that belongs to actual OpenAI portal
+publication. Package checks do not replace actual host acceptance.
 
-## Publish the Git source
+## Security and acceptance boundaries
 
-1. Review the verified export and exact source commit. Confirm that only the
-   intended public catalog, plugin, documentation, and validator are included.
-2. Publish to the intended repository using the ordinary reviewed Git workflow.
-   Preserve unrelated remote content; do not force-push or replace a populated
-   repository indiscriminately. Subsequent releases should pass the repository's
-   required validation before merging.
-3. Clone the public default branch into a fresh directory. Record its full
-   commit, candidate version, verification output, and validation run URL.
-   Verify that clone against the same source inputs with `verify --output`.
-4. Only then provide the public Git URL for the controlled installation test.
+Use the existing `https://mcp-coach-v1.skillpilot.com/mcp` endpoint and OAuth
+issuer. Native public CIMD is an exactly pinned client profile, never fallback
+from failed hosted confidential authentication. Valid OAuth and independent
+provider-specific learner-session authorization stay mandatory. The initial
+native test may use the already authorized mTLS `observe`; this Git update
+changes no server setting. See [native CIMD](openai-native-cimd.md).
 
-Git publication is not approval or publication in OpenAI's universal directory.
-Do not run the canonical release command `record-published` for this Git action;
-that command belongs to actual OpenAI portal publication. Do not promote the
-first-party installation guide or claim general beta readiness from Git checks.
-[OpenAI: Public plugin publication](https://developers.openai.com/plugins/build/plugins#publish-official-public-plugins)
-
-## Clean tester walkthrough
-
-Use a dedicated tester account and record its plan, workspace, host/version,
-operating system, selected route, and the exact marketplace revision. The
-tester must not inherit the author's developer registration or client secret.
-
-1. After verified Git publication, add the public catalog in a client exposing
-   the documented marketplace commands:
-
-   ```bash
-   codex plugin marketplace add https://github.com/enpasos/skillpilot-chatgpt-marketplace.git --ref main
-   codex plugin marketplace list
-   ```
-
-   Catalog registration is not plugin installation. A CLI without these
-   commands is an unsupported test client for this step; do not invent a
-   substitute command or silently modify its configuration.
-2. In the corresponding supported host, open the Plugins Directory, select
-   `skillpilot-chatgpt-marketplace`, and install **SkillPilot Coach v1**.
-   Confirm the candidate version and included Skill. Record whether the host
-   exposes this source at all. A CLI using WSL and a Windows desktop app may
-   use different local configuration roots; visibility in one does not prove
-   visibility in the other.
-3. Start the installed plugin's own authentication flow. The tester supplies
-   neither an operator secret nor advanced OAuth configuration. If discovery,
-   authentication, or connection fails, stop that branch and capture a
-   sanitized error with time and host details. Do not label it a passed
-   installation-and-learning test.
-4. If authentication succeeds, create a fresh session from the tester's own
-   SkillPilot WebGUI using **Start learning**. Use the unchanged prepared
-   message in a new chat with this installed plugin. Confirm a successful
-   context call and correct Skill-guided continuation against the Cockpit.
-5. Test the same account in ChatGPT web, then repeat with the desktop app fully
-   exited. Record plugin visibility, available tools, authentication, and the
-   actual learning turn separately. A synchronized chat transcript alone is
-   not evidence of an independently working web runtime.
-6. Test native iOS and Android separately if either is to be promised. A narrow
-   browser window is not a native-app test.
-
-The CLI and local catalog workflow is documented by
-[OpenAI: Add a marketplace from the CLI](https://developers.openai.com/plugins/build/plugins#add-a-marketplace-from-the-cli).
-An optional workspace-admin Git import is a different, explicitly recorded
-route; it is not a required account upgrade for attempting this local route.
-[OpenAI: Workspace import](https://learn.chatgpt.com/docs/enterprise/plugin-management#configure-a-marketplace-sync)
-
-## Security and failure handling
-
-The production MCP URL stays `https://mcp-coach-v1.skillpilot.com/mcp`.
-Marketplace work does not change mTLS enforcement, OAuth client profiles,
-callback allowlists, PKCE, scopes, learner-session checks, or write policy.
-An ordinary local MCP client without the required OpenAI certificate is
-expected to fail at the enforced edge. Installing the package grants neither
-that certificate nor a confidential OAuth client's credentials.
-
-The intended authenticated OpenAI profile and any existing Basic transition
-remain separate rollout decisions under the
-[OAuth client-authentication runbook](oauth-client-authentication.md).
-Do not assume the desired JWT profile is active merely because the backend
-implements it. Do not turn off mTLS, introduce a public-client fallback,
-share a client secret, or repoint the plugin at Claude to obtain a green test.
-
-Keep passwords, cookies, access/refresh tokens, client assertions, full session
-IDs, private answers, and private portal exports out of Git, CI artifacts, and
-screenshots. Failure evidence needs only the non-secret revision, stage,
-timestamp, status/error class, and separately retained sanitized evidence.
+Record desktop Git install, connection, actual tools, complete learning flow,
+renewal and update results separately. Do not infer web/mobile support or
+independent-account acceptance from a synced chat, archive installation,
+Claude flow or local CLI test. The September notes below remain history;
+their former transport blockers and distribution pause do not override the
+later explicit native/Desktop Git authorization.
 
 ## Historical registered-app experiment (stopped before installation)
 
@@ -300,7 +239,7 @@ A separate local candidate is prepared under
 `tmp/openai-app-reference-probe-20260912/`, with plugin identity
 `skillpilot-coach-v1-appref-test`, catalog identity
 `skillpilot-chatgpt-appref-test`, and version **1.1.0-appref.1** derived from
-the current canonical **1.1.0** package. It is not an installation or rollback
+the then-canonical **1.1.0** package. It is not an installation or rollback
 to the registered app's displayed 1.0.0 package. Its `.app.json` uses only the
 documented `id` field: the installed Plugin Creator validator does not accept
 the optional `required` field shown in newer documentation. The current
@@ -318,7 +257,7 @@ Current status: **stopped before installation; not the beta installation path**.
 The local artifacts remain uninstalled and unpublished; their pending receipts
 are not acceptance evidence. No production security settings were changed.
 
-## Former required clean-install path
+## Historical September clean-install requirements
 
 The acceptance target is an independent personal beta account with **no prior
 SkillPilot plugin, registered connector, local configuration, or developer
@@ -365,7 +304,7 @@ from Claude results. This changes neither production authentication nor the
 historical unresolved acceptance results below; that marketplace matrix is not
 an official-submission gate.
 
-## Acceptance and updates
+## Historical September acceptance matrix
 
 The initial real-host matrix is deliberately unresolved:
 

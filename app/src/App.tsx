@@ -451,8 +451,8 @@ const App: React.FC = () => {
         : 'Lernendengerechter Vergleich von SkillPilot-Zugängen, Altersgrenzen, sicherem Start und unterstützten Geräten.'
     const pluginCatalogDescription =
       language === 'en'
-        ? 'Download and upload setup and updates for the SkillPilot Claude Coach.'
-        : 'Einrichtung und Updates des SkillPilot Claude Coach per Plugin-Download und Upload.'
+        ? 'Installation and updates for SkillPilot plugins in Claude and ChatGPT Desktop.'
+        : 'Einrichtung und Updates der SkillPilot-Plugins in Claude und ChatGPT Desktop.'
 
     let title = baseTitle
     let description = defaultDescription
@@ -481,8 +481,8 @@ const App: React.FC = () => {
           ? `Start SkillPilot in 5 Steps | ${baseTitle}`
           : `SkillPilot in 5 Schritten starten | ${baseTitle}`
         description = metadataLanguage === 'en'
-          ? 'Configure your learning context in SkillPilot and choose ChatGPT or Claude as your browser-based learning coach.'
-          : 'Lernkontext in SkillPilot einrichten und ChatGPT oder Claude als Lerncoach im Browser wählen.'
+          ? 'Configure your learning context in SkillPilot and choose Claude or the ChatGPT Desktop beta as your learning coach.'
+          : 'Lernkontext in SkillPilot einrichten und Claude oder die ChatGPT-Desktop-Beta als Lerncoach wählen.'
       } else if (path === '/users') {
         const usersTitle = t.usersPage?.title || 'SkillPilot IDs'
         title = `${usersTitle} | ${baseTitle}`
@@ -550,7 +550,7 @@ const App: React.FC = () => {
         title = `${language === 'en' ? 'Access options' : 'Zugang und Varianten'} | ${baseTitle}`
         description = coachSetupDescription
       } else if (path === '/plugins') {
-        title = `${language === 'en' ? 'Claude plugin beta' : 'Claude-Plugin-Beta'} | ${baseTitle}`
+        title = `${language === 'en' ? 'Learning coach plugin beta' : 'Lerncoach-Plugin-Beta'} | ${baseTitle}`
         description = pluginCatalogDescription
       } else if (path === '/faq') {
         title = `${t.startPage.links.faq} | ${baseTitle}`

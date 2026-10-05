@@ -32,11 +32,11 @@ interface LanguageExpectation {
 
 const expectedByLanguage: Record<Language, LanguageExpectation> = {
   de: {
-    accessNotice: 'SkillPilot ist kostenlos. Die Lern-Beta läuft mit dem kostenpflichtigen Claude Pro – im Browser und in der Claude-App, auch mit Voice-Mode. ChatGPT folgt nach Stabilisierung, gezielter Prüfung und Veröffentlichung.',
-    accessSummary: 'Jetzt mit Claude lernen – auch in der App und mit Voice-Mode. ChatGPT ist noch nicht verfügbar.',
+    accessNotice: 'SkillPilot ist kostenlos. Die Lern-Beta läuft mit Claude Pro im Browser und in der Claude-App, auch mit Voice-Mode. Das SkillPilot-Plugin für ChatGPT Desktop steht ebenfalls als Beta bereit.',
+    accessSummary: 'Mit Claude lernen – auch in der App und mit Voice-Mode. ChatGPT Desktop ist als Beta verfügbar.',
     footerLabels: ['Statistiken', 'Nutzungsbedingungen', 'Datenschutz', 'Impressum'],
     imageCaption: 'KI-generiert',
-    heroDescription: 'Wähle dein Curriculum und starte mit Claude in die Lern-Beta. Entdecke, was du kannst – und freu dich über jeden Erfolg.',
+    heroDescription: 'Wähle dein Curriculum und deinen Lerncoach für die Beta. Entdecke, was du kannst – und freu dich über jeden Erfolg.',
     sceneLabels: ['Mit Stift & Papier', 'Im Gespräch'],
     landingPillLabels: [
       'Jetzt lernen',
@@ -61,11 +61,11 @@ const expectedByLanguage: Record<Language, LanguageExpectation> = {
     },
   },
   en: {
-    accessNotice: 'SkillPilot is free. The learning beta runs with the paid Claude Pro plan – in your browser and the Claude app, including voice mode. ChatGPT will follow after stabilization, focused testing and publication.',
-    accessSummary: 'Learn with Claude now – including the app and voice mode. ChatGPT is not available yet.',
+    accessNotice: 'SkillPilot is free. The learning beta runs with Claude Pro in your browser and the Claude app, including voice mode. The SkillPilot plugin for ChatGPT Desktop is also available as a beta.',
+    accessSummary: 'Learn with Claude – including the app and voice mode. ChatGPT Desktop is available as a beta.',
     footerLabels: ['Statistics', 'Terms of Use', 'Privacy', 'Imprint'],
     imageCaption: 'AI-generated',
-    heroDescription: 'Choose your curriculum and join the learning beta with Claude. Discover what you can do – and celebrate every success.',
+    heroDescription: 'Choose your curriculum and your learning coach for the beta. Discover what you can do – and celebrate every success.',
     sceneLabels: ['With pen & paper', 'In conversation'],
     landingPillLabels: [
       'Learn now',

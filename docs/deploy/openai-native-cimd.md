@@ -3,12 +3,21 @@
 The Product Owner authorized this integration on **24 September 2026**, after
 successfully importing and installing the `1.1.0` plugin archive in ChatGPT.
 The connection failed when **Authenticate** was selected. The desktop UI
-offered Auto, CIMD and DCR. Current public discovery advertised only
+offered Auto, CIMD and DCR. Public discovery at that time advertised only
 `client_secret_basic`, with neither CIMD nor a registration endpoint. The edge
 journal also recorded `403 / certificate_required` during the test window.
 
-**Status:** implemented locally; production activation and successful
-authentication/learning in the real desktop host are still pending.
+**Status on 5 October 2026:** public issuer discovery now advertises CIMD,
+`none`, `private_key_jwt`, `client_secret_basic` and S256. A certificate-less
+unauthenticated MCP probe receives `401 / authentication_required` with the
+correct protected-resource challenge. These public observations establish
+available discovery and an OAuth barrier; they do not identify the deployed
+source revision or record a native OAuth exchange. After the Git **1.1.1** release and corrected
+OpenAI start, the owner confirmed that the Windows desktop route works.
+Installation and learning start are therefore owner-confirmed; detailed
+OAuth/tool traces, persisted progress, continuation and renewal remain separate
+acceptance evidence. The [active Git beta](openai-personal-marketplace-release.md)
+uses an explicit ChatGPT GUI handoff.
 
 The chosen implementation keeps **one MCP endpoint** and **one OAuth issuer**:
 
@@ -125,10 +134,14 @@ client that demonstrably supplies the required certificate.
 1. In the desktop app's MCP settings, use the installed
    `skillpilot-coach-v1` entry. Leave registration at Auto (or select CIMD),
    choose **Authenticate**, and complete authorization.
-2. Open `https://skillpilot.com/?chatgptTest=1`, load a test learner and complete
-   its Personal Curriculum. The explicit test URL adds **ChatGPT ausprobieren**
-   to the completed setup. It does not change public provider availability.
-3. Choose **Startnachricht erzeugen** and confirm the existing provider
+2. Use the normal **Lernen starten** entry, or return there from the Cockpit.
+   Load a test learner, complete its Personal Curriculum and choose
+   **ChatGPT Desktop (Beta)**. `https://skillpilot.com/?coach=chatgpt-desktop`
+   optionally preselects that provider; `?chatgptTest=1` remains a compatible
+   preselection, without a separate test-start box in the updated GUI.
+   Until the owner deploys the updated GUI, that legacy URL reaches the
+   previously available OpenAI test handoff.
+3. Choose **Lernen mit ChatGPT vorbereiten** and confirm the existing provider
    eligibility prompt. The first-party UI calls the existing V1 launch endpoint
    once, obtaining a fresh session and an authoritative prepared message.
 4. Copy that message into a new desktop chat with **SkillPilot Coach v1** selected.

@@ -1,9 +1,10 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { useCallback, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { MemoryRouter } from 'react-router-dom'
+import { MemoryRouter, useLocation } from 'react-router-dom'
 
 import '../../src/index.css'
+import { SessionSetup } from '../../src/components/SessionSetup'
 import { LanguageProvider } from '../../src/contexts/LanguageContext'
 import { ThemeProvider } from '../../src/contexts/ThemeContext'
 import type { UiGoal } from '../../src/goalTypes'
@@ -66,6 +67,8 @@ const fixtureRootLandscapeId = new URLSearchParams(window.location.search).get('
   : CANONICAL_GYMNASIUM_ROOT_ID
 
 const Fixture = () => {
+  const location = useLocation()
+  const [role, setRole] = useState<'learner' | 'trainer' | 'explorer' | null>('learner')
   const [learnerId, setLearnerId] = useState('fixture-learner-a')
   const [currentGoal, setCurrentGoal] = useState(mathUpper)
   const selectGoal = useCallback((id: string) => {
@@ -73,6 +76,9 @@ const Fixture = () => {
     if (selected) setCurrentGoal(selected)
   }, [])
   const selectInLandscape = useCallback((_landscape: string, id: string) => selectGoal(id), [selectGoal])
+  if (location.pathname === '/') {
+    return <SessionSetup role={role} setRole={setRole} skillpilotId={learnerId} setSkillpilotId={setLearnerId} onStart={() => undefined} />
+  }
   return (
     <div className="flex h-full flex-col">
       <button type="button" data-testid="fixture-switch-learner" onClick={() => {

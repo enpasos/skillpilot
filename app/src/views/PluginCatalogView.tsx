@@ -9,12 +9,14 @@ import {
   ShieldCheck,
   Store,
 } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import { LanguageToggle } from '../components/LanguageToggle'
+import { ChatGptDesktopSetupGuide } from '../components/ChatGptDesktopSetupGuide'
 import { PublicPageHeader } from '../components/PublicPageHeader'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { useLanguage } from '../contexts/LanguageContext'
+import { useTranslation } from '../hooks/useTranslation'
 import {
   CLAUDE_CONNECTOR_PRIVACY_URL,
   CLAUDE_MARKETPLACE_INSTALLATION_ENABLED,
@@ -30,7 +32,7 @@ const copy = (version?: string) => ({
   de: {
     back: 'Zurück zur Startseite',
     title: 'SkillPilot-Plugins',
-    subtitle: 'SkillPilot in Claude einrichten und aktuell halten.',
+    subtitle: 'SkillPilot in Claude oder ChatGPT Desktop einrichten und aktuell halten.',
     cardTitle: 'SkillPilot Coach v1',
     betaNotice: version ? 'Claude-Beta ' + version : 'Claude-Beta',
     betaDescription: CLAUDE_MARKETPLACE_INSTALLATION_ENABLED
@@ -145,7 +147,7 @@ const copy = (version?: string) => ({
   en: {
     back: 'Back to the home page',
     title: 'SkillPilot plugins',
-    subtitle: 'Set up SkillPilot in Claude and keep it current.',
+    subtitle: 'Set up SkillPilot in Claude or ChatGPT Desktop and keep it current.',
     cardTitle: 'SkillPilot Coach v1',
     betaNotice: version ? 'Claude beta ' + version : 'Claude beta',
     betaDescription: CLAUDE_MARKETPLACE_INSTALLATION_ENABLED
@@ -622,11 +624,21 @@ const PublicationCard: React.FC<PublicationCardProps> = ({
 
 export const PluginCatalogView: React.FC = () => {
   const { language } = useLanguage()
+  const location = useLocation()
+  const chatGptCopy = useTranslation().startPage.login.chatGptDesktop
   const selectedLanguage: SupportedLanguage = language === 'en' ? 'en' : 'de'
   const [publication, setPublication] = useState<ClaudePluginPublicationIndex | null>(null)
   const text = copy(publication?.plugins[0]?.version)[selectedLanguage]
   const [loadError, setLoadError] = useState(false)
   const [requestVersion, setRequestVersion] = useState(0)
+
+  useEffect(() => {
+    if (location.hash !== '#chatgpt-desktop') return
+    const frame = window.requestAnimationFrame(() => {
+      document.getElementById('chatgpt-desktop')?.scrollIntoView({ block: 'start' })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [location.hash, location.key, publication, loadError])
 
   useEffect(() => {
     const controller = new AbortController()
@@ -665,7 +677,12 @@ export const PluginCatalogView: React.FC = () => {
 
         <PublicPageHeader align="left" title={text.title} subtitle={text.subtitle} />
 
-        <div className="mt-8">
+        <nav aria-label={text.installationSurface} className="mt-6 flex flex-wrap gap-3">
+          <a href="#claude-plugin" className="min-h-11 rounded-full border border-violet-400 px-4 py-2 text-sm font-semibold">Claude</a>
+          <a href="#chatgpt-desktop" className="min-h-11 rounded-full border border-sky-400 px-4 py-2 text-sm font-semibold">ChatGPT Desktop · Beta</a>
+        </nav>
+
+        <div id="claude-plugin" className="mt-8 scroll-mt-6">
           <PublicationCard
             publication={publication}
             loadError={loadError}
@@ -679,6 +696,19 @@ export const PluginCatalogView: React.FC = () => {
             {text.publicationIndex}
           </a>
         </p>
+
+        <article id="chatgpt-desktop" data-testid="chatgpt-desktop-plugin-guide"
+          aria-labelledby="chatgpt-desktop-plugin-title"
+          className="mt-8 scroll-mt-6 space-y-4 rounded-3xl border border-sky-300 bg-sky-50/70 p-5 dark:border-sky-800 dark:bg-sky-950/25 sm:p-6">
+          <h2 id="chatgpt-desktop-plugin-title" className="text-xl font-semibold">{chatGptCopy.catalogTitle}</h2>
+          <p className="text-sm leading-relaxed text-text-secondary">{chatGptCopy.catalogStatus}</p>
+          <p className="text-sm leading-relaxed text-text-secondary">{chatGptCopy.hint}</p>
+          <ChatGptDesktopSetupGuide defaultOpen />
+          <p className="text-sm leading-relaxed text-text-secondary">{chatGptCopy.catalogStartHint}</p>
+          <Link to="/?coach=chatgpt-desktop" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-sky-700 px-4 py-2 text-sm font-semibold text-white">
+            <ArrowLeft size={16} aria-hidden="true" />{chatGptCopy.returnToStart}
+          </Link>
+        </article>
       </main>
     </div>
   )

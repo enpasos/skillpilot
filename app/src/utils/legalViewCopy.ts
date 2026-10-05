@@ -28,7 +28,7 @@ const OER_LOGO_CREDIT = {
 }
 
 const LEGAL_TEXT_DE = `
-**Stand: 13. September 2026 · Version ${CURRENT_TERMS_VERSION}**
+**Stand: 5. Oktober 2026 · Version ${CURRENT_TERMS_VERSION}**
 
 Diese Nutzungsbedingungen regeln die Nutzung des von der enpasos - Enterprise Patterns & Solutions GmbH bereitgestellten SkillPilot-Dienstes. Die anschließenden rechtlichen Hinweise sind Bestandteil dieser Seite.
 
@@ -46,7 +46,7 @@ Die derzeit angebotene Standardnutzung von SkillPilot ist unentgeltlich. Es ents
 
 Ein Konto, Abonnement oder Workspace bei einem ausgewählten KI-Anbieter ist nicht Bestandteil des SkillPilot-Vertrags und unterliegt den Bedingungen dieses Anbieters.
 
-Der laufende Lern-Betatest findet mit Claude statt. Eine reguläre SkillPilot-Verbindung für ChatGPT ist derzeit nicht verfügbar; sie ist erst nach Stabilisierung des Claude-Betriebs, eigener ChatGPT-Integrationsabnahme und dem offiziellen Einreichungs- und Freigabeverfahren vorgesehen. Ein bestimmter Veröffentlichungstermin wird nicht zugesagt.
+Die Claude-Beta läuft weiter. Zusätzlich kann der ChatGPT-Desktop-Betatest über den Git-Marketplace genutzt werden, wenn das gewählte Konto diese Plugin-Einrichtung unterstützt. Installation und Lernstart unter Windows sind im Betatest bestätigt; weitere Lernfunktionen werden im Betatest erprobt. SkillPilot ist noch nicht im öffentlichen ChatGPT-App-Verzeichnis veröffentlicht. ChatGPT im Browser, die mobile ChatGPT-App und automatische Paketupdates für jedes unabhängige Konto sind nicht bestätigt. Ein bestimmter Veröffentlichungstermin wird nicht zugesagt.
 
 ## 3. Nutzungsberechtigung und Minderjährige
 
@@ -168,7 +168,7 @@ Rechtsgrundlagen sind die [KI-Verordnung (EU) 2024/1689](https://eur-lex.europa.
 `
 
 const LEGAL_TEXT_EN = `
-**Effective: September 13, 2026 · Version ${CURRENT_TERMS_VERSION}**
+**Updated: October 5, 2026 · Version ${CURRENT_TERMS_VERSION}**
 
 These Terms of Use govern the SkillPilot service provided by enpasos - Enterprise Patterns & Solutions GmbH. The legal notices that follow form part of this page.
 
@@ -186,7 +186,7 @@ The standard SkillPilot service currently offered is free of charge. It creates 
 
 An account, subscription, or workspace with a selected AI provider is not part of the SkillPilot contract and is governed by that provider's terms.
 
-The ongoing learning beta uses Claude. A regular SkillPilot connection for ChatGPT is not currently available; it is planned only after stabilising the Claude service, completing a separate ChatGPT integration acceptance check, and following the official submission and approval process. No publication date is promised.
+The Claude beta continues. You can also use the ChatGPT desktop beta through the Git marketplace if the selected account supports this plugin setup. Installation and learning start on Windows are confirmed in the beta; we are trying further learning features in the beta. SkillPilot has not been published in the public ChatGPT app directory. ChatGPT browser and mobile access, and automatic package updates for every independent account, are not confirmed. No publication date is promised.
 
 ## 3. Eligibility and minors
 

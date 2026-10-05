@@ -1653,12 +1653,16 @@ try {
         assert.doesNotMatch(quickstartCopy.videoDescription, /not a recording/u)
         assert.match(quickstartCopy.videoDescription, /English AI-generated narration and English captions/u)
         assert.doesNotMatch(quickstartCopy.videoDescription, /German|written guide follows/u)
-        assert.match(await page.locator('.prose').textContent() ?? '', /ChatGPT is not available yet/u)
+        assert.match(await page.locator('.prose').textContent() ?? '', /ChatGPT learning start through the Git marketplace works on Windows/u)
+        assert.doesNotMatch(await page.locator('.prose').textContent() ?? '', /ChatGPT is not available yet/u)
+        assert.match(quickstartCopy.videoDescription, /Recorded on September 13, 2026.*outdated/u)
       } else {
         assert.match(quickstartCopy.videoDescription, /Claude-Marketplace.*echten Bildschirmaufnahmen/u)
         assert.match(quickstartCopy.videoDescription, /im Claude-Chat loslernen/u)
         assert.doesNotMatch(quickstartCopy.videoDescription, /keine Aufnahme/u)
-        assert.match(await page.locator('.prose').textContent() ?? '', /ChatGPT ist noch nicht verfügbar/u)
+        assert.match(await page.locator('.prose').textContent() ?? '', /ChatGPT-Lernstart über den Git-Marketplace funktioniert unter Windows/u)
+        assert.doesNotMatch(await page.locator('.prose').textContent() ?? '', /ChatGPT ist noch nicht verfügbar/u)
+        assert.match(quickstartCopy.videoDescription, /Aufnahme vom 13. September 2026.*überholt/u)
       }
       const bounds = await quickstartVideo.boundingBox()
       assert(bounds && Math.abs(bounds.width / bounds.height - 16 / 9) < 0.02)

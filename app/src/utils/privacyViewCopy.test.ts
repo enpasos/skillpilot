@@ -19,8 +19,8 @@ const deTeacherSupervisionText = de.sections.find(section => section.title.inclu
 const enTeacherSupervisionText = en.sections.find(section => section.title.includes('Existing SkillPilot ID'))
   ?.paragraphs.join(' ') ?? ''
 
-assert(de.effectiveDate.includes('13. September 2026'), 'German privacy copy carries the current revision date')
-assert(en.effectiveDate.includes('September 13, 2026'), 'English privacy copy carries the current revision date')
+assert(de.effectiveDate.includes('5. Oktober 2026'), 'German privacy copy carries the current revision date')
+assert(en.effectiveDate.includes('October 5, 2026'), 'English privacy copy carries the current revision date')
 assert(
   deTeacherSupervisionText.includes('Klassennamen')
     && deTeacherSupervisionText.includes('Namen oder Alias')
@@ -212,6 +212,13 @@ for (const [language, copy] of [['de', de], ['en', en]] as const) {
     assert(text.includes(required), `${language}: missing privacy boundary ${required}`)
   }
   assert(copy.sections[4].paragraphs.join(' ').includes('ChatGPT'), `${language}: separate ChatGPT status`)
+  const chatGptText = copy.sections[4].paragraphs.join(' ')
+  assert(/Git-Marketplace|Git marketplace/u.test(chatGptText), `${language}: ChatGPT desktop beta route is disclosed`)
+  assert(/Installation und Lernstart unter Windows sind im Betatest bestätigt|Installation and learning start on Windows are confirmed in the beta/u.test(chatGptText), `${language}: the confirmed Windows installation and learning start are current`)
+  assert(/noch nicht im öffentlichen ChatGPT-App-Verzeichnis veröffentlicht|not been published in the public ChatGPT app directory/u.test(chatGptText), `${language}: public directory publication is not claimed`)
+  assert(/ChatGPT-Konto|ChatGPT account/u.test(chatGptText), `${language}: selected provider processes the coach conversation`)
+  assert(/Chattexten, Fotos, Audiodaten|chat text, photos, audio/u.test(chatGptText), `${language}: OpenAI adapter retains the chat-free-text privacy boundary`)
+  assert(copy.sections[4].links?.some(link => link.href === 'https://openai.com/policies/eu-privacy-policy/'), `${language}: OpenAI privacy information is linked`)
   assert(text.includes('https://www.anthropic.com/legal/privacy'), `${language}: provider privacy link`)
   assert(text.includes('https://datenschutz.hessen.de/service/beschwerde-uebermitteln'), `${language}: complaint link`)
 }

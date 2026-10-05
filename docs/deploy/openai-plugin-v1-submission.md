@@ -1,17 +1,22 @@
 # SkillPilot Coach v1: OpenAI-Submission-Dossier
 
-**Stand:** 9. September 2026 · **Nachfolgekandidat:** `1.1.0`
+**Stand:** 5. Oktober 2026 · **Nachfolgekandidat:** `1.1.1`
 
 Für dauerhafte Verhaltensprüfungen vor und nach der Einreichung siehe
 [automatische API-Dialogregression](../qa-ci/openai-dialog-regression.md).
 Sie ergänzt die einmalige manuelle ChatGPT-Abnahme und ersetzt keine Host-Evidenz.
 
-**Status:** lokal vorbereitete Neueinreichung, nicht eingereicht, nicht
-genehmigt und nicht veröffentlicht. Der vorgelegte Portalexport nennt für
+**Status:** lokal vorbereitete Neueinreichung, **DRAFT**, nicht eingereicht,
+nicht genehmigt und nicht im OpenAI-Verzeichnis veröffentlicht. Das Git-Paket
+**1.1.1** ist separat für die Desktop-Beta veröffentlicht. Der vorgelegte Portalexport nennt für
 `1.0.0` ausdrücklich `REJECTED`, aber weder eine konkrete Ablehnungsbegründung
 noch einen fehlgeschlagenen Test oder Reviewer-Trace. Die ausdrückliche
-Product-Owner-Freigabe erlaubt die Weiterentwicklung als `1.1.0`; der
-abgelehnte historische Snapshot bleibt unverändert. Siehe
+Product-Owner-Freigabe vom 9. September erlaubte die Weiterentwicklung der
+Nachfolgerlinie `1.1`; der aktuelle Kandidat ist `1.1.1`. Die begrenzten
+späteren Aufträge vom 24. September und 5. Oktober betreffen Archiv/native CIMD
+und die bestehende Git-/Desktop-Beta mit normalem GUI-Start. Sie ersetzen keine
+offizielle Portal-Einreichung oder vollständige Hostabnahme. Der abgelehnte
+historische Snapshot bleibt unverändert. Siehe
 [Review-Entscheidung](openai-plugin-v1-review-freeze.md).
 
 Dieses Dossier und die erzeugten JSON-Dateien sind **keine Portal-Abgabe**.
@@ -203,9 +208,12 @@ Widget-Domain und CSP; keine zusätzlichen Domains werden vorsorglich
 freigegeben. Private Fragen/Antworten der normalen Kartenübung gehören nicht
 in die Modellprojektion.
 
-Die Testoberfläche des Nachfolgers ist zunächst **ChatGPT im Webbrowser**.
-Für `1.1.0` wird kein bestandener Realhost-Test behauptet; native Desktop-,
-iOS- oder Android-Unterstützung ist nicht zugesagt. Ein möglicherweise leeres
+Der aktuelle Git-Betastand ist **1.1.1**; Installation und Lernstart in
+**Windows ChatGPT Desktop** sind vom Product Owner bestätigt. Die
+Einreichungsabnahme und der Aufnahmeplan für **ChatGPT im Webbrowser** bleiben
+separate Nachweise. Der Desktop-Betastart bestätigt keine vollständige Host-/UI-Abnahme.
+Browser-, iOS- oder Android-Unterstützung ist nicht zugesagt. Für die vollständige Einreichungsabnahme liegt weiterhin **kein bestandener Realhost-Test** vor.
+Ein möglicherweise leeres
 Widget nach Kontext und anschließendem Renderer ist eine zu prüfende Hypothese,
 keine bewiesene Ablehnungsursache.
 

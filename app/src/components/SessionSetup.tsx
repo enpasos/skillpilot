@@ -3,23 +3,19 @@ import { Link, useLocation } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import { CurriculumDropdown } from './CurriculumDropdown'
 import { LearnerSetupStepCard } from './LearnerSetupStepCard'
-import { ChatGptTestStart } from './ChatGptTestStart'
+import { ChatGptDesktopStart } from './ChatGptDesktopStart'
 import { PersonalCurriculumEditor } from './PersonalCurriculumEditor'
 import { SkillpilotIdFilePasswordDialog } from './SkillpilotIdFilePasswordDialog'
 import { LearnerDataManagementDialog } from './LearnerDataManagementDialog'
 import { ThemeToggle } from './ThemeToggle'
 import type { LandscapeSummary } from './CurriculumDropdown'
-import { ArrowRight, Github, ShieldCheck, Send, MessageCircle, Compass, ExternalLink, KeyRound, UserPlus, Bot, FileDown, FileUp, Database } from 'lucide-react'
+import { ArrowRight, Github, ShieldCheck, Send, Compass, ExternalLink, KeyRound, UserPlus, Bot, FileDown, FileUp, Database } from 'lucide-react'
 
 
 type Role = 'learner' | 'trainer' | 'explorer'
 type ClaudeActionState = 'idle' | 'opening-setup' | 'setup-opened' | 'launching' | 'launched' | 'fallback' | 'failed'
-type ChatLaunchIssue = 'none' | 'preparation-failed' | 'popup-blocked'
+type CoachProvider = 'claude' | 'chatgpt-desktop'
 type SkillpilotIdFileStatus = 'idle' | 'loading' | 'loaded' | 'saved' | 'load-failed' | 'save-failed'
-
-// Public onboarding stays Claude-first until actual ChatGPT acceptance and publication.
-// This UI availability decision does not change the existing provider adapter or security.
-const chatGptPublicStartAvailable = false
 
 interface SessionSetupProps {
   role: Role | null
@@ -39,17 +35,7 @@ import {
   acceptCurrentTerms,
   hasAcceptedCurrentTerms,
 } from '../utils/legalTermsAcceptance'
-import {
-  deliverCoachChatStart,
-  getActiveVisibleSessionLaunchCopy,
-  isOpenAiMcpCoachActive,
-  requestCoachChatStart,
-} from '../coachVariants/coachLaunch'
-import {
-  confirmOpenAiMcpEligibility,
-  isOpenAiMcpEligibilityDeclinedError,
-  OpenAiMcpEligibilityDeclinedError,
-} from '../coachVariants/openAiMcp/providerEligibility'
+import { confirmOpenAiMcpEligibility } from '../coachVariants/openAiMcp/providerEligibility'
 import { requestOpenAiMcpStart } from '../coachVariants/openAiMcp/request'
 import {
   getSafeClaudePluginSetupUrl,
@@ -96,8 +82,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const { language } = useLanguage()
   const legalCopy = getLegalTermsCopy(language === 'en' ? 'en' : 'de')
   const learnerDataManagementCopy = getLearnerDataManagementCopy(language === 'en' ? 'en' : 'de')
-  const visibleSessionLaunchCopy = getActiveVisibleSessionLaunchCopy(language)
-  const openAiMcpCoachActive = isOpenAiMcpCoachActive(language)
   const [selectedLandscapeId, setSelectedLandscapeId] = useState<string>(() => {
     return role === 'trainer' ? '' : getStoredLandscapeIdForRole(role)
   })
@@ -119,7 +103,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const evaluatedCompletedSetupScopeRef = React.useRef('')
   // Use location (ensure import is added)
   const location = useLocation()
-  const chatGptTestRequested = new URLSearchParams(location.search).get('chatgptTest') === '1'
+  const [coachProvider, setCoachProvider] = useState<CoachProvider>(() => {
+    const params = new URLSearchParams(location.search)
+    return params.get('coach') === 'chatgpt-desktop' || params.get('chatgptTest') === '1'
+      ? 'chatgpt-desktop' : 'claude'
+  })
 
   React.useEffect(() => {
     const params = new URLSearchParams(location.search)
@@ -174,11 +162,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   ))
   const [termsChecked, setTermsChecked] = useState(false)
   const [termsStorageFailed, setTermsStorageFailed] = useState(false)
-  const [chatLaunchIssue, setChatLaunchIssue] = useState<ChatLaunchIssue>('none')
-  const [chatStartLoading, setChatStartLoading] = useState(false)
-  const chatStartInFlightRef = React.useRef(createSynchronousInFlightGuard())
   const [claudeActionState, setClaudeActionState] = useState<ClaudeActionState>('idle')
   const [claudeInstallFallbackUrl, setClaudeInstallFallbackUrl] = useState<string | null>(null)
+  const claudeActionRequestRef = React.useRef(0)
   const claudeActionLoading = claudeActionState === 'opening-setup'
     || claudeActionState === 'launching'
   const sanitizedLearnerId = sanitizeSkillpilotId(skillpilotId)
@@ -200,6 +186,22 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     && !personalCurriculumEditor.error
     && !personalCurriculumEditor.loading
     && !personalCurriculumEditor.busy
+  const coachLaunchScope = JSON.stringify([
+    coachProvider, sanitizedLearnerId, normalizedSelectedLearnerLandscapeId,
+    language, personalCurriculumReady, personalCurriculumEditor.plan?.completedDecisions,
+  ])
+  const coachLaunchRevisionRef = React.useRef(0)
+  React.useLayoutEffect(() => {
+    coachLaunchRevisionRef.current += 1
+    return () => { coachLaunchRevisionRef.current += 1 }
+  }, [coachLaunchScope])
+
+  const chooseCoachProvider = (provider: CoachProvider) => {
+    claudeActionRequestRef.current += 1
+    setClaudeActionState('idle')
+    setClaudeInstallFallbackUrl(null)
+    setCoachProvider(provider)
+  }
   const completedSetupScope = `${sanitizedLearnerId}\u0000${persistedLearnerLandscapeId}`
   const personalCurriculumSummaryItems = React.useMemo(
     () => getPersonalCurriculumSummaryItems(
@@ -347,8 +349,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setLearnerRetentionError(null)
     setLearnerDeleteBusy(false)
     setLearnerDeleteError(null)
-    setChatLaunchIssue('none')
-    setChatStartLoading(false)
     setClaudeActionState('idle')
     setClaudeInstallFallbackUrl(null)
     setSkillpilotIdFileStatus('idle')
@@ -488,7 +488,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       setSkillpilotId(sanitizedId)
       setSkillpilotIdSource('generated')
       setValidatedLearnerId(sanitizedId)
-      setChatLaunchIssue('none')
 
       if (data.availableCurricula) {
         setAvailableCurricula(data.availableCurricula)
@@ -768,34 +767,8 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     return () => window.cancelAnimationFrame(frame)
   }, [hasCheckedId, idStepComplete, moveToCurriculumStep])
 
-  const createCoachChatStart = async (
-    effectiveId: string,
-    providerEligibilityConfirmed?: boolean,
-  ) => {
-    const sanitizedId = sanitizeSkillpilotId(effectiveId)
-    if (!sanitizedId) return null
-    // Level 1 is persisted before the Level-2 editor is enabled. Launches only
-    // mirror that confirmed selection into browser-local state.
-    const normalizedLandscapeId = persistLearnerStart(sanitizedId)
-    if (!normalizedLandscapeId) return null
-
-    setChatStartLoading(true)
-    setChatLaunchIssue('none')
-    try {
-      return await requestCoachChatStart({
-        skillpilotId: sanitizedId,
-        language,
-        selectedCurriculum: normalizedLandscapeId,
-        client: 'web-start',
-        providerEligibilityConfirmed,
-      })
-    } finally {
-      setChatStartLoading(false)
-    }
-  }
-
-  const prepareChatGptTest = async () => {
-    if (!chatGptTestRequested || !personalCurriculumReady) return null
+  const prepareChatGptDesktopStart = async () => {
+    if (coachProvider !== 'chatgpt-desktop' || !personalCurriculumReady) return null
     const effectiveId = sanitizeSkillpilotId(skillpilotId)
     const eligibilityLanguage = language.startsWith('en') ? 'en' : 'de'
     if (!effectiveId || !confirmOpenAiMcpEligibility(eligibilityLanguage, effectiveId)) return null
@@ -805,93 +778,24 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       skillpilotId: effectiveId,
       language,
       selectedCurriculum: curriculum,
-      client: 'chatgpt-integration-test',
+      client: 'chatgpt-desktop-beta',
       providerEligibilityConfirmed: true,
     })
   }
 
-  const handleOpenChatGpt = async () => {
-    if (!chatGptPublicStartAvailable || !personalCurriculumReady) return
-    const effectiveId = sanitizeSkillpilotId(skillpilotId)
-    if (!effectiveId) return
-    if (!chatStartInFlightRef.current.tryStart()) return
-    let chatWindow: Window | null = null
-    let popupBlocked = false
-    try {
-      let providerEligibilityConfirmed: boolean | undefined
-      if (openAiMcpCoachActive) {
-        const eligibilityLanguage = language.trim().toLowerCase().startsWith('en') ? 'en' : 'de'
-        providerEligibilityConfirmed = confirmOpenAiMcpEligibility(
-          eligibilityLanguage,
-          effectiveId,
-        )
-        if (!providerEligibilityConfirmed) {
-          throw new OpenAiMcpEligibilityDeclinedError(eligibilityLanguage)
-        }
-      }
-
-      // The provider confirmation above is synchronous. Opening the placeholder
-      // afterwards keeps this call inside the original user gesture and avoids
-      // leaving a blank tab idle while the confirmation dialog is visible.
-      chatWindow = window.open('', '_blank')
-      if (!chatWindow) {
-        popupBlocked = true
-        throw new Error('ChatGPT popup was blocked')
-      }
-      try {
-        chatWindow.document.title = 'SkillPilot'
-        chatWindow.document.body.textContent = language.trim().toLowerCase().startsWith('en')
-          ? 'SkillPilot is preparing your learning session …'
-          : 'SkillPilot bereitet deine Lernsession vor …'
-      } catch {
-        // The placeholder copy is only a convenience; navigation still works.
-      }
-
-      const chatStart = await createCoachChatStart(effectiveId, providerEligibilityConfirmed)
-      if (!chatStart) throw new Error('Missing coach chat start')
-      await deliverCoachChatStart(
-        chatStart,
-        (url) => {
-          if (chatWindow && !chatWindow.closed) {
-            chatWindow.location.replace(url)
-            try {
-              chatWindow.opener = null
-            } catch {
-              // Navigation already succeeded; opener cleanup is best effort.
-            }
-            return
-          }
-          popupBlocked = true
-          throw new Error('ChatGPT popup was blocked')
-        },
-      )
-      setChatLaunchIssue('none')
-    } catch (caught) {
-      if (chatWindow) {
-        chatWindow.close()
-      }
-      if (isOpenAiMcpEligibilityDeclinedError(caught)) {
-        setError(caught.message)
-        return
-      }
-      setChatLaunchIssue(popupBlocked ? 'popup-blocked' : 'preparation-failed')
-    } finally {
-      chatStartInFlightRef.current.finish()
-    }
-  }
-
   const getClaudeStartContext = () => {
-    if (!personalCurriculumReady) return null
+    if (coachProvider !== 'claude' || !personalCurriculumReady) return null
     const effectiveId = sanitizeSkillpilotId(skillpilotId)
     if (!effectiveId) return null
     const normalizedLandscapeId = persistLearnerStart(effectiveId)
     if (!normalizedLandscapeId) return null
-    return { effectiveId, normalizedLandscapeId }
+    return { effectiveId, normalizedLandscapeId, launchRevision: coachLaunchRevisionRef.current }
   }
 
   const handleOpenClaudePluginSetup = async () => {
     const context = getClaudeStartContext()
     if (!context) return
+    const requestVersion = ++claudeActionRequestRef.current
 
     const setupWindow = window.open('', '_blank')
     setClaudeActionState('opening-setup')
@@ -903,6 +807,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         selectedCurriculum: context.normalizedLandscapeId,
         client: 'web-start',
       })
+      if (coachLaunchRevisionRef.current !== context.launchRevision
+        || claudeActionRequestRef.current !== requestVersion) {
+        setupWindow?.close()
+        if (claudeActionRequestRef.current === requestVersion) setClaudeActionState('idle')
+        return
+      }
 
       const setupUrl = getSafeClaudePluginSetupUrl(result.setupUrl)
       if (!setupUrl) {
@@ -925,13 +835,16 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       }
     } catch {
       setupWindow?.close()
-      setClaudeActionState('failed')
+      if (claudeActionRequestRef.current === requestVersion) {
+        setClaudeActionState(coachLaunchRevisionRef.current === context.launchRevision ? 'failed' : 'idle')
+      }
     }
   }
 
   const handleLaunchClaude = async () => {
     const context = getClaudeStartContext()
     if (!context) return
+    const requestVersion = ++claudeActionRequestRef.current
 
     setClaudeActionState('launching')
     setClaudeInstallFallbackUrl(null)
@@ -947,6 +860,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         selectedCurriculum: context.normalizedLandscapeId,
         client: 'web-start',
       })
+      if (coachLaunchRevisionRef.current !== context.launchRevision
+        || claudeActionRequestRef.current !== requestVersion) {
+        claudeWindow.close()
+        if (claudeActionRequestRef.current === requestVersion) setClaudeActionState('idle')
+        return
+      }
       const webUrl = getSafeClaudeWebUrl(result.webUrl)
       if (!webUrl) throw new Error('Invalid Claude Web launch URL')
 
@@ -955,7 +874,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       setClaudeActionState('launched')
     } catch {
       claudeWindow?.close()
-      setClaudeActionState('failed')
+      if (claudeActionRequestRef.current === requestVersion) {
+        setClaudeActionState(coachLaunchRevisionRef.current === context.launchRevision ? 'failed' : 'idle')
+      }
     }
   }
 
@@ -997,7 +918,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
   const openLearnerStart = () => {
     setRole('learner')
-    resetTransientSetupState(true)
+    resetTransientSetupState(role !== 'learner' || !sanitizedLearnerId)
     setShowLogin(true)
   }
 
@@ -1378,7 +1299,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       <div>
                         <h2 className="text-base font-bold text-text-primary">{t.startPage.login.startStepTitle}</h2>
                         <p className="mt-1 text-xs leading-relaxed text-text-secondary">
-                          {t.startPage.login.startStepTextWithClaude}
+                          {t.startPage.login.startStepText}
                         </p>
                       </div>
                     </div>
@@ -1391,6 +1312,28 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                         <Bot size={16} className="mt-0.5 shrink-0" aria-hidden="true" />
                         <span>{t.startPage.login.aiCoachNotice}</span>
                       </p>
+                      <fieldset data-testid="coach-provider-choice" className="space-y-2">
+                        <legend className="text-sm font-semibold text-text-primary">
+                          {t.startPage.login.coachProviderLabel}
+                        </legend>
+                        <div className="grid gap-2 sm:grid-cols-2">
+                          {([
+                            ['claude', t.startPage.login.claudeBetaTitle],
+                            ['chatgpt-desktop', t.startPage.login.chatGptDesktop.title],
+                          ] as const).map(([provider, title]) => (
+                            <label key={provider} className={`flex min-h-11 cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-sm ${coachProvider === provider ? 'border-sky-500 bg-sky-50 dark:bg-sky-950/30' : 'border-border-color'}`}>
+                              <input type="radio" name="coach-provider" value={provider}
+                                checked={coachProvider === provider}
+                                onChange={() => chooseCoachProvider(provider)} />
+                              <span>{title}</span>
+                              <span className="ml-auto rounded-full bg-slate-200 px-2 py-0.5 text-[10px] font-bold uppercase dark:bg-slate-700">
+                                {t.startPage.login.claudeBetaBadge}
+                              </span>
+                            </label>
+                          ))}
+                        </div>
+                      </fieldset>
+                      {coachProvider === 'claude' && (
                       <div
                         data-testid="claude-v1-start-options"
                         className="space-y-3 rounded-xl border border-violet-300/80 bg-violet-50/70 p-3 dark:border-violet-700/70 dark:bg-violet-950/20"
@@ -1505,41 +1448,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                             )}
                           </div>
                         </div>
-                      <section
-                        data-testid="chatgpt-start-status"
-                        aria-labelledby="chatgpt-start-status-title"
-                        className="rounded-lg border border-border-color bg-slate-50 p-3 text-xs leading-relaxed text-text-secondary dark:bg-slate-950/40"
-                      >
-                        <h3 id="chatgpt-start-status-title" className="font-semibold text-text-primary">
-                          {chatGptPublicStartAvailable
-                            ? t.startPage.login.openAiMcpTitle
-                            : t.startPage.login.chatGptNotAvailableTitle}
-                        </h3>
-                        <p className="mt-1">
-                          {chatGptPublicStartAvailable
-                            ? (openAiMcpCoachActive
-                              ? t.startPage.login.openAiMcpHint
-                              : visibleSessionLaunchCopy?.startPromptHint ?? t.startPage.login.startPromptHint)
-                            : t.startPage.login.chatGptNotAvailableHint}
-                        </p>
-                        {chatGptPublicStartAvailable && (
-                          <button
-                            type="button"
-                            onClick={handleOpenChatGpt}
-                            disabled={!personalCurriculumReady || chatStartLoading}
-                            className="mt-3 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-sky-400 hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-50"
-                          >
-                            <MessageCircle size={16} />
-                            {t.startPage.login.openChatGptProvider}
-                            <ExternalLink size={14} />
-                          </button>
-                        )}
-                      </section>
-                      {chatGptTestRequested && personalCurriculumReady && (
-                        <ChatGptTestStart
+                      )}
+                      {coachProvider === 'chatgpt-desktop' && (
+                        <ChatGptDesktopStart
                           key={`${sanitizedLearnerId}:${selectedLandscapeId}:${language}`}
-                          language={language}
-                          onPrepare={prepareChatGptTest}
+                          onPrepare={prepareChatGptDesktopStart}
                         />
                       )}
                       <div>
@@ -1556,16 +1469,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                           {t.startPage.login.cockpitButton}
                         </a>
                       </div>
-                      {chatLaunchIssue !== 'none' && (
-                        <p className="text-xs font-semibold text-amber-700 dark:text-amber-300">
-                          {chatLaunchIssue === 'popup-blocked'
-                            ? t.startPage.login.openAiMcpPopupBlocked
-                            : visibleSessionLaunchCopy?.preparationFailed
-                                ?? (openAiMcpCoachActive
-                                  ? t.startPage.login.openAiMcpPreparationFailed
-                                  : t.startPage.login.startPromptCopyFailed)}
-                        </p>
-                      )}
                     </div>
                   </div>
                 )}

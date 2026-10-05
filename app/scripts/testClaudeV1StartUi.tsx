@@ -53,10 +53,9 @@ assert.doesNotMatch(
 )
 assert.match(sessionSetupSource, /<PersonalCurriculumEditor/u)
 assert.match(sessionSetupSource, /sanitizeSkillpilotId\(skillpilotId\)/u)
-assert.match(sessionSetupSource, /onClick=\{handleOpenChatGpt\}/u)
+assert.match(sessionSetupSource, /onPrepare=\{prepareChatGptDesktopStart\}/u)
 assert.match(sessionSetupSource, /onClick=\{handleOpenClaudePluginSetup\}/u)
 assert.match(sessionSetupSource, /onClick=\{handleLaunchClaude\}/u)
-assert.match(sessionSetupSource, /disabled=\{!personalCurriculumReady \|\| chatStartLoading\}/u)
 assert.match(sessionSetupSource, /disabled=\{!personalCurriculumReady \|\| claudeActionLoading\}/u)
 assert.match(
   activeClaudeHandlerSource,
@@ -87,7 +86,7 @@ assert.equal(
 )
 assert.match(
   activeClaudeHandlerSource,
-  /claudeWindow\?\.close\(\)[\s\S]*setClaudeActionState\('failed'\)/u,
+  /claudeWindow\?\.close\(\)[\s\S]*claudeActionRequestRef\.current === requestVersion[\s\S]*'failed' : 'idle'/u,
   'a failed asynchronous Claude start must close the prepared blank window',
 )
 assert.match(
@@ -110,22 +109,14 @@ assert.doesNotMatch(
   /getSafeClaudeWebUrl\(result\.webUrl\)\s*\?\?\s*['"]https:\/\/claude\.ai\/new['"]/u,
   'an invalid q-prefilled launch URL must not degrade to an empty Claude chat',
 )
-assert(
-  sessionSetupSource.indexOf('onClick={handleLaunchClaude}')
-    < sessionSetupSource.indexOf('data-testid="chatgpt-start-status"'),
-  'the final step presents the working Claude beta before the future ChatGPT status',
-)
-assert.match(sessionSetupSource, /const chatGptPublicStartAvailable = false/u)
+assert.match(sessionSetupSource, /data-testid="coach-provider-choice"/u)
 assert.match(
   sessionSetupSource,
-  /if \(!chatGptPublicStartAvailable \|\| !personalCurriculumReady\) return/u,
-  'the public ChatGPT launch stays guarded until real acceptance and publication',
+  /if \(coachProvider !== 'chatgpt-desktop' \|\| !personalCurriculumReady\) return null/u,
+  'the desktop handoff requires explicit provider selection and complete curriculum setup',
 )
-assert.match(
-  sessionSetupSource,
-  /\{chatGptPublicStartAvailable && \([\s\S]*onClick=\{handleOpenChatGpt\}/u,
-  'the unavailable ChatGPT route is not offered as a public start button',
-)
+assert.doesNotMatch(sessionSetupSource, /handleOpenChatGpt|deliverCoachChatStart/u,
+  'the desktop beta does not launch an unselected browser chat')
 assert.match(activeClaudeUiSource, /t\.startPage\.login\.claudeVoiceHint/u)
 assert.match(activeClaudeUiSource, /data-testid="claude-plugin-setup-guide"/u)
 assert.match(activeClaudeUiSource, /data-testid="claude-plugin-setup-step-1"/u)

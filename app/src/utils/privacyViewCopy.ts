@@ -24,9 +24,9 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
     ? {
         backToApp: 'Back to App',
         title: 'Privacy Policy',
-        effectiveDate: 'Date: September 13, 2026',
+        effectiveDate: 'Date: October 5, 2026',
         intro:
-          'SkillPilot stores your learning progress, not your conversation with the coach. This notice explains the data processed by SkillPilot, the separate role of your AI provider, and your choices. The ongoing learning beta uses Claude; a regular ChatGPT connection is not currently available.',
+          'SkillPilot stores your learning progress, not your conversation with the coach. This notice explains the data processed by SkillPilot, the separate role of your AI provider, and your choices. The Claude beta continues; you can also try the ChatGPT desktop beta through the Git marketplace when your account supports this plugin setup.',
         sections: [
           {
             title: '1. Controller and Pseudonymous Use',
@@ -78,17 +78,23 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             ],
           },
           {
-            title: '5. ChatGPT: Not Currently Available',
+            title: '5. AI Assistants: ChatGPT Desktop Beta',
             paragraphs: [
-              'The public learning beta runs with Claude. ChatGPT is planned only after stabilisation, a focused check of the actual ChatGPT integration and the official submission process. This notice is not an offer of a second ChatGPT beta or a claim that an older plugin link provides the current service. Before any public activation, the applicable connection and privacy information must reflect the integration actually released. The same rule against coach-transmitted chat free text applies to the ChatGPT adapter.',
+              'The ChatGPT desktop beta is installed through the Git marketplace when your account supports this plugin setup. Installation and learning start on Windows are confirmed in the beta. SkillPilot has not been published in the public ChatGPT app directory. Browser and mobile access, voice mode, and automatic package updates for every independent account are not confirmed.',
+              'When you choose ChatGPT, OpenAI processes your conversation under your ChatGPT account. SkillPilot supplies the learning context needed for coaching and receives only the permitted structured tool data. The same separation of OAuth access and the temporary 24-hour learning session, and the same ban on coach-transmitted chat text, photos, audio, and free-text assessments described above apply to the ChatGPT adapter. A start message prepared for Claude does not select a ChatGPT learning session.',
+              'OpenAI is responsible for processing in its own service under its privacy terms and your account settings. SkillPilot cannot change those settings or delete your ChatGPT conversations. Check the provider’s privacy and data controls before use.',
+            ],
+            links: [
+              { label: 'OpenAI Europe Privacy Policy', href: 'https://openai.com/policies/eu-privacy-policy/' },
+              { label: 'OpenAI Terms of Use', href: 'https://openai.com/policies/terms-of-use/' },
             ],
           },
           {
             title: '6. Hosting, Recipients and International Processing',
             paragraphs: [
               'SkillPilot Core is hosted in Germany. Operating the website involves processing technical connection data such as IP address, request time, requested resource and response status. Authorised operators and infrastructure providers may process data as needed to deliver, secure and maintain the service. Correspondence is also processed through the email service used for support. We do not sell your learning data.',
-              'German hosting of the Core does not mean that all data remain in Germany: if you use Claude, your inputs and the learning context returned to it are processed by Anthropic, including in the United States and other countries according to its privacy terms. Anthropic describes applicable adequacy decisions and contractual safeguards there. Its account, retention and transfer rules are separate from SkillPilot’s.',
-              'Opening an external link, downloading a plugin from an external source or contacting a third-party service creates a connection to that provider. Merely viewing SkillPilot’s homepage does not start a Claude learning session. Access by authorities or other recipients is limited to an applicable legal requirement or another lawful basis.',
+              'German hosting of the Core does not mean that all data remain in Germany: your inputs and the learning context returned to your chosen AI provider are processed by Anthropic for Claude or OpenAI for ChatGPT according to that provider’s privacy terms, including applicable international processing. The provider describes transfer safeguards there. Its account, retention and transfer rules are separate from SkillPilot’s.',
+              'Opening an external link, downloading a plugin from an external source or contacting a third-party service creates a connection to that provider. Merely viewing SkillPilot’s homepage does not start a learning session with an AI provider. Access by authorities or other recipients is limited to an applicable legal requirement or another lawful basis.',
             ],
             links: [{ label: 'Anthropic: international transfers and recipients', href: 'https://www.anthropic.com/legal/privacy' }],
           },
@@ -147,9 +153,9 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
     : {
         backToApp: 'Zurück zur App',
         title: 'Datenschutzerklärung',
-        effectiveDate: 'Stand: 13. September 2026',
+        effectiveDate: 'Stand: 5. Oktober 2026',
         intro:
-          'SkillPilot speichert Ihren Lernfortschritt, nicht Ihr Gespräch mit dem Coach. Diese Erklärung erläutert die Datenverarbeitung bei SkillPilot, die getrennte Rolle des KI-Anbieters und Ihre Wahlmöglichkeiten. Die laufende Lern-Beta nutzt Claude; eine reguläre ChatGPT-Verbindung ist derzeit nicht verfügbar.',
+          'SkillPilot speichert Ihren Lernfortschritt, nicht Ihr Gespräch mit dem Coach. Diese Erklärung erläutert die Datenverarbeitung bei SkillPilot, die getrennte Rolle des KI-Anbieters und Ihre Wahlmöglichkeiten. Die Claude-Beta läuft weiter; zusätzlich können Sie den ChatGPT-Desktop-Betatest über den Git-Marketplace ausprobieren, wenn Ihr Konto diese Plugin-Einrichtung unterstützt.',
         sections: [
           {
             title: '1. Verantwortlicher und pseudonyme Nutzung',
@@ -201,17 +207,23 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             ],
           },
           {
-            title: '5. ChatGPT: derzeit nicht verfügbar',
+            title: '5. KI-Assistenten: ChatGPT-Desktop-Betatest',
             paragraphs: [
-              'Die öffentliche Lern-Beta findet mit Claude statt. ChatGPT ist erst nach Stabilisierung, gezielter Prüfung der echten ChatGPT-Integration und dem offiziellen Einreichungsweg vorgesehen. Diese Erklärung bietet weder eine zweite ChatGPT-Beta an noch bestätigt sie, dass ein älterer Plugin-Link den aktuellen Dienst bereitstellt. Vor einer öffentlichen Aktivierung müssen die Verbindungs- und Datenschutzhinweise dem tatsächlich freigegebenen Stand entsprechen. Das Verbot von Chat-Freitexten aus Coach-Aufrufen gilt ebenso für den ChatGPT-Adapter.',
+              'Der ChatGPT-Desktop-Betatest wird über den Git-Marketplace installiert, wenn Ihr Konto diese Plugin-Einrichtung unterstützt. Installation und Lernstart unter Windows sind im Betatest bestätigt. SkillPilot ist noch nicht im öffentlichen ChatGPT-App-Verzeichnis veröffentlicht. Browser, mobile App, Voice Mode und automatische Paketupdates für jedes unabhängige Konto sind nicht bestätigt.',
+              'Wenn Sie ChatGPT wählen, verarbeitet OpenAI das Gespräch unter Ihrem ChatGPT-Konto. SkillPilot stellt den für das Coaching erforderlichen Lernkontext bereit und erhält nur die zulässigen strukturierten Tooldaten. Die oben beschriebene Trennung von OAuth-Zugriff und temporärer 24-Stunden-Lernsession sowie das Verbot der Coach-Übermittlung von Chattexten, Fotos, Audiodaten und ausformulierten Bewertungen gelten ebenso für den ChatGPT-Adapter. Eine für Claude vorbereitete Startnachricht wählt keine ChatGPT-Lernsession aus.',
+              'OpenAI verantwortet die Verarbeitung im eigenen Dienst nach seinen Datenschutzbedingungen und Ihren Kontoeinstellungen. SkillPilot kann diese Einstellungen nicht ändern und Ihre ChatGPT-Gespräche nicht löschen. Prüfen Sie vor der Nutzung die Datenschutz- und Datenkontrollen des Anbieters.',
+            ],
+            links: [
+              { label: 'Europäische Datenschutzerklärung von OpenAI', href: 'https://openai.com/policies/eu-privacy-policy/' },
+              { label: 'Nutzungsbedingungen von OpenAI', href: 'https://openai.com/policies/terms-of-use/' },
             ],
           },
           {
             title: '6. Hosting, Empfänger und internationale Verarbeitung',
             paragraphs: [
               'SkillPilot Core wird in Deutschland gehostet. Beim Betrieb der Website werden technische Verbindungsdaten wie IP-Adresse, Anfragezeitpunkt, angeforderte Ressource und Antwortstatus verarbeitet. Befugte Betreiberpersonen und Infrastrukturdienstleister können Daten verarbeiten, soweit dies für Bereitstellung, Absicherung und Wartung erforderlich ist. Korrespondenz wird auch über den für Support eingesetzten E-Mail-Dienst verarbeitet. Wir verkaufen Ihre Lerndaten nicht.',
-              'Das deutsche Hosting des Core bedeutet nicht, dass sämtliche Daten in Deutschland bleiben: Bei Claude verarbeitet Anthropic Ihre Eingaben und den zurückgegebenen Lernkontext nach seinen Datenschutzbedingungen auch in den USA und weiteren Ländern. Anthropic erläutert dort einschlägige Angemessenheitsbeschlüsse und vertragliche Schutzmechanismen. Seine Konto-, Aufbewahrungs- und Übermittlungsregeln sind von SkillPilot getrennt.',
-              'Wenn Sie externe Links öffnen, ein Plugin aus einer externen Quelle beziehen oder einen Drittanbieterdienst kontaktieren, entsteht eine Verbindung zu diesem Anbieter. Der bloße Besuch der SkillPilot-Startseite startet keine Claude-Lernsession. Eine Offenlegung an Behörden oder andere Empfänger setzt eine anwendbare gesetzliche Verpflichtung oder eine andere zulässige Rechtsgrundlage voraus.',
+              'Das deutsche Hosting des Core bedeutet nicht, dass sämtliche Daten in Deutschland bleiben: Ihre Eingaben und den zurückgegebenen Lernkontext verarbeitet der gewählte KI-Anbieter – Anthropic bei Claude oder OpenAI bei ChatGPT – nach seinen Datenschutzbedingungen, einschließlich der einschlägigen internationalen Verarbeitung. Der Anbieter erläutert dort seine Schutzmechanismen für Übermittlungen. Seine Konto-, Aufbewahrungs- und Übermittlungsregeln sind von SkillPilot getrennt.',
+              'Wenn Sie externe Links öffnen, ein Plugin aus einer externen Quelle beziehen oder einen Drittanbieterdienst kontaktieren, entsteht eine Verbindung zu diesem Anbieter. Der bloße Besuch der SkillPilot-Startseite startet keine Lernsession bei einem KI-Anbieter. Eine Offenlegung an Behörden oder andere Empfänger setzt eine anwendbare gesetzliche Verpflichtung oder eine andere zulässige Rechtsgrundlage voraus.',
             ],
             links: [{ label: 'Anthropic: internationale Übermittlungen und Empfänger', href: 'https://www.anthropic.com/legal/privacy' }],
           },

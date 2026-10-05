@@ -160,6 +160,23 @@ try {
         root: await page.locator('#root').innerHTML({ timeout: 1_000 }).catch(() => '<unavailable>'),
       })}`, { cause })
     }
+    const chatGptGuide = page.getByTestId('chatgpt-desktop-plugin-guide')
+    assert(await chatGptGuide.count() === 1,
+      'ChatGPT Desktop has an independent guide alongside the Claude publication')
+    assert((await chatGptGuide.getByTestId('chatgpt-desktop-version').innerText()).includes('1.1.1')
+      && (await chatGptGuide.innerText()).includes(language === 'de' ? 'mindestens Version 1.1.1' : 'at least version 1.1.1'),
+      'the Desktop guide defines a minimum supported version and permits later marketplace fixes')
+    const chatGptRepository = chatGptGuide.getByRole('textbox')
+    assert.equal(await chatGptRepository.inputValue(),
+      'https://github.com/enpasos/skillpilot-chatgpt-marketplace')
+    assert((await chatGptGuide.innerText()).includes(language === 'de'
+      ? 'Browser und Mobil-App sind dafür noch nicht bestätigt'
+      : 'browser and mobile app support have not been confirmed'),
+      'the Desktop guide retains the actual host acceptance boundary')
+    assert(await chatGptGuide.getByRole('link').getAttribute('href') === '/?coach=chatgpt-desktop',
+      'the guide returns to the authored start flow with ChatGPT preselected')
+    assert.equal(await chatGptGuide.getByRole('link', { name: /(?:herunterladen|download)/iu }).count(), 0,
+      'the ChatGPT guide does not invent a public archive download')
     await assertUnavailableVersionSafety()
     if (!CLAUDE_MARKETPLACE_INSTALLATION_ENABLED) {
       assert.equal(await marketplace.count(), 0, 'the unpublished candidate does not inherit the old Marketplace guide approval')
@@ -204,7 +221,25 @@ try {
       responseIndex = index
       await page.getByRole('button', { name: language === 'de' ? 'Erneut versuchen' : 'Try again', exact: true }).click()
       await downloadLink.waitFor()
-      assert.deepEqual(errors, [])
+      await page.evaluate(() => {
+      history.pushState({}, '', '/faq')
+      window.dispatchEvent(new PopStateEvent('popstate'))
+    })
+    const faqDesktopGuide = page.locator('a[href="/plugins#chatgpt-desktop"]')
+    await faqDesktopGuide.waitFor({ state: 'attached' })
+    await faqDesktopGuide.locator('xpath=ancestor::details[1]').locator('summary').click()
+    await faqDesktopGuide.click()
+    await page.waitForURL('**/plugins#chatgpt-desktop')
+    await page.getByTestId('claude-plugin-version-badge').waitFor()
+    await page.waitForFunction(() => {
+      const target = document.getElementById('chatgpt-desktop')
+      if (!target) return false
+      const top = target.getBoundingClientRect().top
+      return top >= 0 && top < window.innerHeight / 2
+    })
+    assert(await page.getByTestId('chatgpt-desktop-plugin-guide').isVisible(),
+      'the actual FAQ router link reaches the desktop guide after publication layout settles')
+    assert.deepEqual(errors, [])
       await context.close()
       continue
     }
@@ -229,11 +264,11 @@ try {
     assert.match(await openClaude.getAttribute('rel') ?? '', /\bnoopener\b/u)
     assert.match(await openClaude.getAttribute('rel') ?? '', /\bnoreferrer\b/u)
     assert.equal(await downloadLink.count(), 0)
-    assert.doesNotMatch(await page.locator('body').innerText(), /\b[0-9]+\.[0-9]+\.[0-9]+\b/u,
+    assert.doesNotMatch(await page.locator('#claude-plugin').innerText(), /\b[0-9]+\.[0-9]+\.[0-9]+\b/u,
       'loading must not guess any version before the public index arrives')
     await guide.locator(':scope > summary').click()
     assert.equal(await downloadLink.count(), 0, 'the expanded fallback has no download before index validation')
-    assert.doesNotMatch(await page.locator('body').innerText(), /\b[0-9]+\.[0-9]+\.[0-9]+\b/u,
+    assert.doesNotMatch(await page.locator('#claude-plugin').innerText(), /\b[0-9]+\.[0-9]+\.[0-9]+\b/u,
       'the expanded fallback must not guess a current version')
     releaseInitialPublication()
     await downloadLink.waitFor()
@@ -256,7 +291,7 @@ try {
         assert(preAddCheck.includes(language === 'de' ? 'Prüfe vor „Hinzufügen“' : 'Before selecting Add'),
           'the offered version must be checked before adding the plugin')
       }
-      const visibleVersions = (await page.locator('body').innerText()).match(/\b[0-9]+\.[0-9]+\.[0-9]+\b/gu) ?? []
+      const visibleVersions = (await page.locator('#claude-plugin').innerText()).match(/\b[0-9]+\.[0-9]+\.[0-9]+\b/gu) ?? []
       assert(visibleVersions.length > 0, 'the fetched publication version is visible')
       assert(visibleVersions.every((version) => version === expectedPlugin.version),
         `every visible ${language} version must agree with the publication index: ${visibleVersions.join(', ')}`)
@@ -325,7 +360,7 @@ try {
     assert((await page.getByTestId('claude-plugin-update-guide').innerText()).includes(plugin.version),
       'the version comparison must use the same publication as the downloadable artifact')
     assert((await finish.getByTestId('claude-plugin-install-step-connector').innerText()).includes('skillpilot'))
-    assert((await page.title()).includes(language === 'de' ? 'Claude-Plugin-Beta' : 'Claude plugin beta'))
+    assert((await page.title()).includes(language === 'de' ? 'Lerncoach-Plugin-Beta' : 'Learning coach plugin beta'))
     assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'), 'noindex, nofollow')
     const storageBeforeDownload = await page.evaluate(() => JSON.stringify(localStorage))
     const downloadEvent = page.waitForEvent('download')
@@ -372,7 +407,9 @@ try {
     await page.getByRole('alert').waitFor()
     await assertUnavailableVersionSafety()
     assert.equal(await downloadLink.count(), 0, 'failed index load offers no stale download')
-    assert.doesNotMatch(await page.locator('body').innerText(), /\b[0-9]+\.[0-9]+\.[0-9]+\b/u,
+    assert((await chatGptGuide.getByTestId('chatgpt-desktop-version').innerText()).includes('1.1.1'),
+      'Claude publication failure does not hide or rebind the independent ChatGPT package guide')
+    assert.doesNotMatch(await page.locator('#claude-plugin').innerText(), /\b[0-9]+\.[0-9]+\.[0-9]+\b/u,
       'failed index load offers no stale or guessed version')
     assert(await marketplace.isVisible(), 'an index failure does not block the independent Marketplace route')
     assert.equal(await openClaude.getAttribute('href'), CLAUDE_PLUGINS_DISCOVER_URL)
@@ -390,12 +427,30 @@ try {
     await page.getByRole('alert').waitFor()
     await assertUnavailableVersionSafety()
     assert.equal(await downloadLink.count(), 0, 'a mismatched version/artifact path cannot provide a download')
-    assert.doesNotMatch(await page.locator('body').innerText(), /\b[0-9]+\.[0-9]+\.[0-9]+\b/u,
+    assert.doesNotMatch(await page.locator('#claude-plugin').innerText(), /\b[0-9]+\.[0-9]+\.[0-9]+\b/u,
       'a rejected index must not leak its unvalidated version into the guide')
     responseIndex = futureIndex
     await page.getByRole('button', { name: language === 'de' ? 'Erneut versuchen' : 'Try again', exact: true }).click()
     await downloadLink.waitFor()
     await assertPublishedVersion(futurePlugin)
+    await page.evaluate(() => {
+      history.pushState({}, '', '/faq')
+      window.dispatchEvent(new PopStateEvent('popstate'))
+    })
+    const faqDesktopGuide = page.locator('a[href="/plugins#chatgpt-desktop"]')
+    await faqDesktopGuide.waitFor({ state: 'attached' })
+    await faqDesktopGuide.locator('xpath=ancestor::details[1]').locator('summary').click()
+    await faqDesktopGuide.click()
+    await page.waitForURL('**/plugins#chatgpt-desktop')
+    await page.getByTestId('claude-plugin-version-badge').waitFor()
+    await page.waitForFunction(() => {
+      const target = document.getElementById('chatgpt-desktop')
+      if (!target) return false
+      const top = target.getBoundingClientRect().top
+      return top >= 0 && top < window.innerHeight / 2
+    })
+    assert(await page.getByTestId('chatgpt-desktop-plugin-guide').isVisible(),
+      'the actual FAQ router link reaches the desktop guide after publication layout settles')
     assert.deepEqual(errors, [])
     await context.close()
   }
