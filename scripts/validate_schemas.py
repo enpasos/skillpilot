@@ -8,25 +8,6 @@ import sys
 CURRICULA_DIR = "curricula"
 SCHEMA_PATH = "docs/landscape-runtime.schema.json"
 COMPILED_SCHEMA_PATH = "contracts/curriculum-package/v1/compiled-landscape.schema.json"
-NON_LANDSCAPE_GOAL_COLLECTION_ROOTS = (
-    os.path.normpath(
-        "curricula/DE/Gymnasium/quality/goal-description-review"
-    ),
-    os.path.normpath("curricula/DE/Gymnasium/quality/goal-evidence"),
-)
-GOAL_VISUALIZATION_REVIEW_ROOT = os.path.normpath(
-    "curricula/DE/Gymnasium/quality/goal-visualization-review"
-)
-FORMULA_TEXT_NORMALIZATION_RECEIPT_PATH = os.path.join(
-    GOAL_VISUALIZATION_REVIEW_ROOT,
-    "math-m7-five-volume-png-20260924-v1",
-    "formula-text-normalization.json",
-)
-CHEMISTRY_MOBILE_CURRENT_IMAGE_REVIEW_PATH = os.path.join(
-    GOAL_VISUALIZATION_REVIEW_ROOT,
-    "chemie-b010-mobile-current-two-independent-qa-20260930-v1",
-    "review.json",
-)
 
 
 def validate_personalization_flow_contract(schema_path, schema):
@@ -505,90 +486,15 @@ def validate_personalization_flow_semantic_contract():
             return False
     return True
 
-def is_known_non_landscape_goal_collection(file_path, data):
-    normalized_path = os.path.normpath(file_path)
-    if any(
-        normalized_path == root or normalized_path.startswith(root + os.sep)
-        for root in NON_LANDSCAPE_GOAL_COLLECTION_ROOTS
-    ):
-        return True
-    if normalized_path == CHEMISTRY_MOBILE_CURRENT_IMAGE_REVIEW_PATH:
-        # This historical review predates schemaVersion on visualization
-        # receipts. Its exact identity and goal entries distinguish it from
-        # a runtime landscape without rewriting the reviewed artifact.
-        return (
-            data.get("reviewKind")
-            == "independent-current-image-chemistry-and-mobile-legibility-qa"
-            and data.get("reviewedAt") == "2026-09-30T20:28:21Z"
-            and data.get("authority") == "ai_machine_qa_only"
-            and data.get("humanApprovalClaim") is False
-            and isinstance(data.get("goals"), list)
-            and bool(data["goals"])
-            and all(
-                isinstance(goal, dict)
-                and isinstance(goal.get("goalId"), str)
-                and goal["goalId"].strip()
-                for goal in data["goals"]
-            )
-        )
-    if not (
-        normalized_path.startswith(GOAL_VISUALIZATION_REVIEW_ROOT + os.sep)
-        and type(data.get("schemaVersion")) is int
-        and data["schemaVersion"] == 1
-        and isinstance(data.get("goals"), list)
-    ):
-        return False
-
-    # Recognize only known review formats, not every goals collection in this
-    # directory. These historical receipts are not runtime landscapes; their
-    # identity markers classify them without changing their recorded evidence.
-    filename = os.path.basename(normalized_path)
-    return (
-        filename.endswith(".candidates.json")
-        and data.get("authoringContract")
-        == "positive-understanding-evidence-candidates-v1"
-    ) or (
-        filename == "preparation-audit.json"
-        and data.get("artifactType") == "math-m7-held-image-preparation-audit-v1"
-    ) or (
-        filename == "review-manifest.json"
-        and data.get("batchId") == os.path.basename(os.path.dirname(normalized_path))
-        and data.get("status") == "candidates_for_independent_review"
-        and data.get("authority") == "ai_candidate_author"
-    ) or (
-        normalized_path == FORMULA_TEXT_NORMALIZATION_RECEIPT_PATH
-        and data.get("receiptId")
-        == "math-m7-five-volume-formula-text-normalization-20260924-v1"
-    ) or (
-        filename == "positive-binding-review.json"
-        and data.get("authority") == "ai_candidate"
-        and data.get("humanApproved") is False
-        and all(
-            isinstance(goal, dict)
-            and isinstance(goal.get("goalId"), str)
-            and goal["goalId"].strip()
-            for goal in data["goals"]
-        )
-    ) or (
-        filename == "d-hold-receipt.json"
-        and data.get("historicalResolutionsPreserved") is True
-        and data.get("humanApproved") is False
-        and all(
-            isinstance(goal, dict)
-            and isinstance(goal.get("goalId"), str)
-            and goal["goalId"].strip()
-            for goal in data["goals"]
-        )
-    )
-
-
 def looks_like_runtime_landscape(file_path, data):
-    """Identify candidates without hiding malformed landscape fields."""
-    if not isinstance(data, dict) or "goals" not in data:
+    """Use the same quality-directory boundary as runtime graph discovery."""
+    # Quality directories contain review inputs, receipts and candidate snapshots,
+    # including partial or complete goal collections with landscape references.
+    # They are excluded by validateGraph.ts and compute_curriculum_revision.mjs.
+    # validate_file still parses every JSON artifact before reaching this boundary.
+    if "quality" in os.path.normpath(file_path).split(os.sep):
         return False
-    if "landscapeId" in data or "id" in data:
-        return True
-    return not is_known_non_landscape_goal_collection(file_path, data)
+    return isinstance(data, dict) and "goals" in data
 
 
 def validate_landscape_discovery_contract():
@@ -598,187 +504,27 @@ def validate_landscape_discovery_contract():
         ("curricula/broken.json", {"landscapeId": None, "goals": []}, True),
         ("curricula/broken.json", {"landscapeId": "broken", "goals": None}, True),
         ("curricula/missing-id.json", {"goals": []}, True),
-        (
-            "curricula/DE/Gymnasium/quality/goal-evidence/review.json",
-            {"reviewId": "review", "goals": []},
-            False,
-        ),
-        (
-            "curricula/DE/Gymnasium/quality/goal-description-review/run/input.json",
-            {"goals": []},
-            False,
-        ),
         ("curricula/view.json", {"landscapeId": "view", "goalEntries": []}, False),
         ("curricula/list.json", [], False),
     ]
-    candidate_paths = [
-        "curricula/DE/Gymnasium/quality/goal-visualization-review/"
-        "math-function-sums-resumed-20260913-v1/"
-        "sum-positive-evidence.candidates.json",
-        "curricula/DE/Gymnasium/quality/goal-visualization-review/"
-        "physics-astro-resumed-20260913-v1/"
-        "stellar-radius.profiles.candidates.json",
-    ]
-    valid_candidate = {
-        "authoringContract": "positive-understanding-evidence-candidates-v1",
-        "schemaVersion": 1,
-        "goals": [],
-    }
-    for candidate_path in candidate_paths:
-        cases.append((candidate_path, valid_candidate, False))
-        for field, invalid_values in (
-            ("authoringContract", (None, "other-contract", [], 1)),
-            ("schemaVersion", (None, 0, 2, "1", True, 1.0)),
-            ("goals", (None, {}, "not-an-array", 1)),
+    # Discovery follows directory ownership, irrespective of receipt names,
+    # dates, authorities or the presence of current/legacy landscape IDs.
+    for review_dir in ("goal-evidence", "goal-description-review", "goal-visualization-review"):
+        review_path = os.path.join("curricula", "DE", "Gymnasium", "quality", review_dir, "input.json")
+        for data in (
+            {"goals": []},
+            {"landscapeId": "reviewed-landscape", "goals": []},
+            {"id": "legacy-snapshot", "goals": [{"goalId": "reviewed-goal"}]},
+            {"landscapeId": "reviewed-landscape", "title": "Snapshot", "goals": None},
         ):
-            for invalid_value in invalid_values:
-                invalid_candidate = {**valid_candidate, field: invalid_value}
-                cases.append((candidate_path, invalid_candidate, True))
-        for field in ("authoringContract", "schemaVersion"):
-            invalid_candidate = dict(valid_candidate)
-            del invalid_candidate[field]
-            cases.append((candidate_path, invalid_candidate, True))
-        # A present current/legacy ID always wins, even when its value or
-        # the goals field is malformed and the candidate markers match.
-        for id_field in ("landscapeId", "id"):
-            for id_value in ("runtime", None, "", 0, [], {}):
-                for goals_value in ([], None, {}):
-                    malformed_landscape = {
-                        **valid_candidate,
-                        id_field: id_value,
-                        "goals": goals_value,
-                    }
-                    cases.append((candidate_path, malformed_landscape, True))
-    for other_path in (
-        candidate_paths[0].replace(".candidates.json", ".json"),
-        candidate_paths[0].replace(".candidates.json", ".candidates.backup.json"),
-        candidate_paths[0].replace("goal-visualization-review", "other-review"),
-        candidate_paths[0].replace(
-            "goal-visualization-review", "goal-visualization-review-backup"
-        ),
-        "curricula/example.candidates.json",
+            cases.append((review_path, data, False))
+    # Similar names outside the quality directory must not bypass the schema.
+    for path in (
+        "curricula/DE/Gymnasium/quality-backup/receipt.json",
+        "curricula/DE/Gymnasium/canonical/quality.snapshot.json",
+        "curricula/DE/Gymnasium/canonical/goal-evidence/input.json",
     ):
-        cases.append((other_path, valid_candidate, True))
-
-    review_formats = [
-        (
-            "math-m7-open-calculus-20260920-v1/preparation-audit.json",
-            {"artifactType": "math-m7-held-image-preparation-audit-v1"},
-        ),
-        (
-            "math-m7-stochastics-foundations-20260920-v1/review-manifest.json",
-            {
-                "batchId": "math-m7-stochastics-foundations-20260920-v1",
-                "status": "candidates_for_independent_review",
-                "authority": "ai_candidate_author",
-            },
-        ),
-        (
-            "math-m7-five-volume-png-20260924-v1/formula-text-normalization.json",
-            {
-                "receiptId": "math-m7-five-volume-formula-text-normalization-20260924-v1",
-            },
-        ),
-        (
-            "m7-ten-independent-png-20260927-v1/positive-binding-review.json",
-            {"authority": "ai_candidate", "humanApproved": False},
-        ),
-        (
-            "m7-newton-parallel-two-png-20260927-v1/positive-binding-review.json",
-            {"authority": "ai_candidate", "humanApproved": False},
-        ),
-        (
-            "m7-newton-parallel-two-png-20260927-v1/d-hold-receipt.json",
-            {"historicalResolutionsPreserved": True, "humanApproved": False},
-        ),
-    ]
-    for relative_path, markers in review_formats:
-        review_path = os.path.join(GOAL_VISUALIZATION_REVIEW_ROOT, relative_path)
-        review = {
-            "schemaVersion": 1,
-            **markers,
-            "goals": [{"goalId": "reviewed-goal"}],
-        }
-        cases.append((review_path, review, False))
-        cases.append((review_path, {"goals": []}, True))
-        for field in markers:
-            missing_marker = dict(review)
-            del missing_marker[field]
-            cases.append((review_path, missing_marker, True))
-            for invalid_value in (None, "unknown", [], 1):
-                cases.append((review_path, {**review, field: invalid_value}, True))
-        for field, invalid_values in (
-            ("schemaVersion", (None, 0, 2, "1", True, 1.0)),
-            ("goals", (None, {}, "not-an-array", 1)),
-        ):
-            for invalid_value in invalid_values:
-                cases.append((review_path, {**review, field: invalid_value}, True))
-        if os.path.basename(review_path) in (
-            "positive-binding-review.json",
-            "d-hold-receipt.json",
-        ):
-            for invalid_goals in ([{}], [{"goalId": " "}], [None]):
-                cases.append((review_path, {**review, "goals": invalid_goals}, True))
-        missing_version = dict(review)
-        del missing_version["schemaVersion"]
-        cases.append((review_path, missing_version, True))
-        for id_field in ("landscapeId", "id"):
-            for id_value in ("runtime", None, "", 0, [], {}):
-                cases.append((review_path, {**review, id_field: id_value}, True))
-        for other_path in (
-            review_path.replace(".json", ".backup.json"),
-            review_path.replace("goal-visualization-review", "other-review"),
-            review_path.replace(
-                "goal-visualization-review", "goal-visualization-review-backup"
-            ),
-            os.path.join("curricula", os.path.basename(review_path)),
-        ):
-            cases.append((other_path, review, True))
-        if "batchId" in markers:
-            other_batch_path = review_path.replace(markers["batchId"], "other-batch")
-            cases.append((other_batch_path, review, True))
-        if "receiptId" in markers:
-            other_batch_path = review_path.replace(
-                "math-m7-five-volume-png-20260924-v1", "other-batch"
-            )
-            cases.append((other_batch_path, review, True))
-            nested_copy_path = review_path.replace(
-                "math-m7-five-volume-png-20260924-v1/",
-                "math-m7-five-volume-png-20260924-v1/backup/",
-            )
-            cases.append((nested_copy_path, review, True))
-
-    historical_chemistry_review = {
-        "reviewKind": "independent-current-image-chemistry-and-mobile-legibility-qa",
-        "reviewedAt": "2026-09-30T20:28:21Z",
-        "authority": "ai_machine_qa_only",
-        "humanApprovalClaim": False,
-        "goals": [{"goalId": "reviewed-goal"}],
-    }
-    review_path = CHEMISTRY_MOBILE_CURRENT_IMAGE_REVIEW_PATH
-    cases.append((review_path, historical_chemistry_review, False))
-    for field in ("reviewKind", "reviewedAt", "authority", "humanApprovalClaim"):
-        missing_marker = dict(historical_chemistry_review)
-        del missing_marker[field]
-        cases.append((review_path, missing_marker, True))
-        for invalid_value in (None, "unknown", [], 1, True):
-            cases.append(
-                (review_path, {**historical_chemistry_review, field: invalid_value}, True)
-            )
-    for invalid_goals in (None, {}, [], [{"goalId": " "}], [None]):
-        cases.append(
-            (review_path, {**historical_chemistry_review, "goals": invalid_goals}, True)
-        )
-    for id_field in ("landscapeId", "id"):
-        cases.append((review_path, {**historical_chemistry_review, id_field: None}, True))
-    for other_path in (
-        review_path.replace("review.json", "review.backup.json"),
-        review_path.replace("goal-visualization-review", "other-review"),
-        review_path.replace(
-            "goal-visualization-review", "goal-visualization-review-backup"
-        ),
-    ):
-        cases.append((other_path, historical_chemistry_review, True))
+        cases.append((path, {"goals": []}, True))
 
     for file_path, data, expected in cases:
         if looks_like_runtime_landscape(file_path, data) is not expected:
@@ -799,8 +545,8 @@ def validate_file(file_path, schema):
         return False
 
     if not looks_like_runtime_landscape(file_path, data):
-        # Known review formats can also carry goals. Unknown goals collections
-        # still reach schema validation, including landscapes missing their ID.
+        # Quality artifacts remain JSON-checked, while goal collections outside
+        # that directory reach the runtime schema even if their ID is missing.
         return True
 
     try:
