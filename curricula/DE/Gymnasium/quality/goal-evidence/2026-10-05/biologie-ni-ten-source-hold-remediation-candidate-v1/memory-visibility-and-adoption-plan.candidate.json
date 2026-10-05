@@ -1,0 +1,58 @@
+{
+  "status": "inactive_plan",
+  "existingCoreDeckInputs": [
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_biology_flashcards_core.de.json",
+      "sha256": "sha256:844715fa5793ebd88cca0f2355f6f4c23d1c1d42fa6b2ee363ccc09dd5ef45fd",
+      "bytes": 5217
+    },
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_biology_flashcards_core.en.json",
+      "sha256": "sha256:1b537e20149e5b2b0d3755242d5290f95d931cae50494c0b3fbd973c4def4c01",
+      "bytes": 5063
+    }
+  ],
+  "existingCoreCardCount": 17,
+  "existingCoreDeckCoversTheseProposedCards": false,
+  "requiredOrdinaryOrigins": [
+    "selected_native_tree_species_knowledge",
+    "five_vertebrate_groups_traits"
+  ],
+  "proposedDeckIds": [
+    "de_gymnasium_biology_native_tree_species",
+    "de_gymnasium_biology_vertebrate_groups"
+  ],
+  "visibilityScopes": [
+    {
+      "jurisdiction": "DE-NI",
+      "stage": "SekI",
+      "gradeBand": "5/6",
+      "ordinaryCandidateKey": "selected_native_tree_species_knowledge",
+      "memoryCandidateKey": "native_tree_species_memory",
+      "projectionRoleForBoth": "target",
+      "deckId": "de_gymnasium_biology_native_tree_species",
+      "currentVisibilityProven": false
+    },
+    {
+      "jurisdiction": "DE-NI",
+      "stage": "SekI",
+      "gradeBand": "5/6",
+      "ordinaryCandidateKey": "five_vertebrate_groups_traits",
+      "memoryCandidateKey": "vertebrate_groups_memory",
+      "projectionRoleForBoth": "target",
+      "deckId": "de_gymnasium_biology_vertebrate_groups",
+      "currentVisibilityProven": false
+    }
+  ],
+  "adoptionChecks": [
+    "Assign reviewed stable IDs to ordinary goals first, then to memory goals; replace every null origin/memory ID with the corresponding current ID.",
+    "Write individually reviewed goal fingerprints and kept necessary-card traces only after independent source/D/A/M/card reviews.",
+    "Place canonical public memory nodes alongside the corresponding ordinary target goals, using stable subtree/goal references and explicit target role in the same resolved NI5/6 view.",
+    "For every configured visibility scope, compile the actual reviewed composition view and assert that each visible memory_required ordinary goal has at least one referenced visible memory goal in that same scope.",
+    "Ensure no dangling ordinary origin, orphan memory node, unreviewed active primary card, duplicate card or language count mismatch; preserve existing core deck and its unrelated origins.",
+    "Re-run targeted native effectiveRequires after final placements because inherited cluster prerequisites can invalidate this unplaced result.",
+    "Only then run the central required QA/protected-floor gates in the authorised adoption task; no floor status is claimed here."
+  ],
+  "noMemoryBlanketDecision": false,
+  "authoritativeGoalOrCardRecordsCreated": false
+}

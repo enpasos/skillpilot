@@ -4,55 +4,23 @@
 
 - SkillPilot-ID: `1dc15fa2-fca4-56b0-b5c1-4d215613dde0`
 - Titel: Stoffmenge und Einheit Mol nutzen
-- Beschreibung: Die lernende Person kann die Stoffmenge als Teilchenanzahl-bezogene Groesse deuten und die Einheit Mol fachlich korrekt verwenden.
+- Beschreibung: Die lernende Person kann die Stoffmenge als Maß für die Anzahl festgelegter Teilchen deuten und Stoffmengen eindeutig mit der Einheit Mol angeben.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
-- Quellbild: `1dc15fa2-fca4-56b0-b5c1-4d215613dde0.jpg`
-- Public Asset: `/assets/goal-visualizations/chemie/1dc15fa2-fca4-56b0-b5c1-4d215613dde0/1dc15fa2-fca4-56b0-b5c1-4d215613dde0.jpg`
+- Provider: OpenAI / ChatGPT-Codex image_gen (exact image model not exposed)
+- Status: ai-reviewed
+- Quellbild: `1dc15fa2-fca4-56b0-b5c1-4d215613dde0.png`
+- Public Asset: `/assets/goal-visualizations/chemie/1dc15fa2-fca4-56b0-b5c1-4d215613dde0/1dc15fa2-fca4-56b0-b5c1-4d215613dde0.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Stoffmenge und Einheit Mol nutzen
-Beschreibung: Die lernende Person kann die Stoffmenge als Teilchenanzahl-bezogene Groesse deuten und die Einheit Mol fachlich korrekt verwenden.
-
-Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Stoffmenge und Mol`.
-- Show one large counting bridge:
-  - left: many identical water molecules drawn as grouped particles.
-  - center: a box labelled `1 mol`.
-  - right: `6,022 · 10^23 Teilchen`.
-- Include the relation `n = N / NA`.
-- Add a small variable key:
-  - `n: Stoffmenge`
-  - `N: Teilchenzahl`
-  - `NA: Avogadro-Konstante`
-- Show a balance-style analogy: `Teilchen zaehlen` via `Mol` like `Eier zaehlen` via `Dutzend`, but do not compare masses.
-
-Vermeiden:
-
-- Do not write `1 mol = 1 Molekuel`.
-- Do not write `1 mol = 6,022 · 10^23 g`.
-- Do not use `M` for Stoffmenge; use `n`.
-- Do not add molar mass calculations in this image.
-- Do not show a wrong exponent such as `10^22` or `10^24`.
+Use case: text-localization / precise educational image correction.
+Asset type: SkillPilot German Gymnasium learning-goal illustration, PNG.
+Edit target: the single referenced existing comic illustration 'Stoffmenge und Mol'. KEEP its friendly blue comic style, complete existing composition, molecules, bridge, formulas, boxes, white margins and existing labels. This is a narrowly targeted correction of a documented equality-sign error, not a redesign.
+Change only the rounded particle-count displays: the large right-hand count must read '≈ 6,022 · 10²³ Teilchen'. The bottom-right analogy box must read '1 mol ≈ 6,022 · 10²³ Teilchen' (lowercase unit mol, approximation sign clearly visible). The rounded number is intentionally used for classroom readability; do not show it as an exact SI equality. Keep '1 Dutzend = 12 Eier' exact and unchanged; keep n = N/N_A, the existing label definitions, and water-molecule example unchanged.
+Output one opaque PNG landscape close to 16:9 at approximately 1600 × 900 pixels or a near native generator resolution. Preserve all motifs and content; no extra text, no new characters, no photorealism, no sterile technical restyling. The two approximation signs and main count need to remain visually clear at 360px image width. No collage or before/after sheet.
 ```
 
 ## Review-Notiz

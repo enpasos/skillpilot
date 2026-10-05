@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-b.batch-001-codex-b-20261005",
+  "campaignId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-b",
+  "roundId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-b",
+  "batchId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:b711ee9fd73ffc05e92a4559a12f8e48ed712faaeed342b729e0ea2276a7495b",
+  "bundleFingerprint": "sha256:aeff4a729f8c4e8c5dc9e19bd7eb822cc1dd2511a2c94694802d6b1023a0b0fd",
+  "bookDigest": "sha256:6fa310698b9ea7b5671e103dc0a729ffcd41eef27f3a201659e3db05e1a08fa4",
+  "provider": "OpenAI / Codex",
+  "model": "Codex (GPT-6 family; exact model identifier not exposed)",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:88554e550ed220743d6387550261f61cb34c758843d4f7a7bd5712c57c520db4",
+  "independenceGroupId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "73b66ead-e44a-5486-98e3-1fb3f99620a6",
+    "3891b735-9d0d-5eef-b653-6ad58b9181f6"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:d2917b9ab5f6843c26be7ad0e41c58813ff9fcc4ba1d973612e1f54dfebeb56b"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:03e3efd866b2d7b688c9557d7b35df94a0aa4b77f4645957ca3912fd4daa9184"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:d77f4a98f3e914b50967bcb23f20083fbbacb9954ecfba2494dd92f11ef88a3d"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:b711ee9fd73ffc05e92a4559a12f8e48ed712faaeed342b729e0ea2276a7495b"
+    }
+  ],
+  "startedAt": "2026-10-04T22:13:58Z",
+  "completedAt": "2026-10-04T22:18:37Z",
+  "status": "completed",
+  "outputDigest": "sha256:6361257f198cb2440826ae6e885ac3778d94b14cb2ea49cc69425427370c5a9a",
+  "toolchainVersion": "codex-interactive-goal-description-review-v2"
+}

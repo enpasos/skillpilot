@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "goal-description-decisions-candidates-v1",
+  "candidateStatus": "ai_candidate",
+  "createdAt": "2026-10-04T23:06:32.209548+00:00",
+  "reviewer": "codex-biology-six-author",
+  "modelFamily": "GPT-6",
+  "exactModelIdentifier": null,
+  "notBlind": true,
+  "bindingStatus": "unadopted_proposals",
+  "goals": [
+    {
+      "goalId": "0daa79f6-8f61-5506-98f9-65db83062ba8",
+      "decision": "revise_with_existing_replication_goal",
+      "proposedDescriptionDe": "Die lernende Person kann den Aufbau der DNA aus Nukleotiden modellhaft darstellen und den Zusammenhang zwischen Basenfolge, komplementärer Basenpaarung und Speicherung genetischer Information erklären.",
+      "proposedDescriptionEn": "The learner can model DNA structure from nucleotides and explain the relationship between base sequence, complementary base pairing and the storage of genetic information.",
+      "rationaleDe": "Beide bisherigen D-Runden verlangen eine Trennung von Molekülstruktur und Replikation. Das eigene Replikationsziel e70d8a85 besteht bereits und verlangt 0daa als Vorziel. Der Vorschlag bewahrt 0daa als Strukturatom, statt eine weitere Kopierkompetenz zu duplizieren. Der BY-B9.3.2-Originalpunkt verlangt Struktur und Informationsspeicher, nicht Replikation.",
+      "atomicity": "Structure and information storage are one structure-function competence; replication stays a distinct process.",
+      "coveragePreservation": {
+        "reuseGoalId": "e70d8a85-2dea-5165-919b-200fee9f4db4",
+        "requiredCheck": "Map the HE Q1.1 semiconservative-replication clause explicitly to the existing replication goal after independent verification of its model-level scope; make it visible in HE GK/LK. Do not drop the clause or infer its coverage from 0daa."
+      },
+      "integrationBlockers": [
+        "Explicit replication source/view preservation remains required.",
+        "Fresh current-text independent D and A/M decisions are required."
+      ],
+      "currentTitleDe": "DNA-Aufbau darstellen",
+      "currentTitleEn": "Depict DNA structure",
+      "currentDescriptionDe": "Die lernende Person kann Nukleotide, Doppelhelix und Replikation beschreiben.",
+      "currentDescriptionEn": "The learner can describe nucleotides, the double helix, and replication.",
+      "proposedTitleDe": "DNA-Aufbau darstellen",
+      "proposedTitleEn": "Depict DNA structure",
+      "currentRequires": [
+        "fc8c4b02-02f2-5ad6-b481-224d36121da1",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "proposedRequires": [
+        "fc8c4b02-02f2-5ad6-b481-224d36121da1",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "sourceClaim": "Didactic authoring candidate; HE official bullet plus scoped source context, never a verbatim official competency.",
+      "titleChanged": false,
+      "descriptionChanged": true
+    },
+    {
+      "goalId": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+      "decision": "keep_current_candidate_with_unresolved_atomicity_dissent",
+      "proposedDescriptionDe": "Die lernende Person kann Transkription und Translation modellhaft darstellen.",
+      "proposedDescriptionEn": "The learner can model transcription and translation.",
+      "rationaleDe": "Die beiden Stufen lassen sich als zusammenhängender Informationsfluss DNA → RNA → Polypeptid modellieren. Es ist kein fachlicher Fehler im bestehenden DE/EN-Satz erwiesen. Die bisherige A-Runde hält ihn, die B-Runde verlangt Teilung; dieser Dissens bleibt offen. Das neue P-Profil verlangt die vollständige Kette in beiden Fällen und schließt den Erfolg einer einzelnen Stufe als Gesamtnachweis aus.",
+      "atomicity": "Integrated protein-synthesis model is defensible, but the prior independent split dissent is not resolved by this authoring package.",
+      "integrationBlockers": [
+        "Resolve prior keep/split dissent through independent current-scope review; if split is confirmed, create separate transcription and translation goals and use no whole-goal P pass from this draft.",
+        "BY B9.3.3 also requires protein roles in traits; model-only coverage is partial, not exact whole-clause coverage."
+      ],
+      "currentTitleDe": "Proteinbiosynthese erklären",
+      "currentTitleEn": "Explain protein biosynthesis",
+      "currentDescriptionDe": "Die lernende Person kann Transkription und Translation modellhaft darstellen.",
+      "currentDescriptionEn": "The learner can model transcription and translation.",
+      "proposedTitleDe": "Proteinbiosynthese erklären",
+      "proposedTitleEn": "Explain protein biosynthesis",
+      "currentRequires": [
+        "0daa79f6-8f61-5506-98f9-65db83062ba8",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "proposedRequires": [
+        "0daa79f6-8f61-5506-98f9-65db83062ba8",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "sourceClaim": "Didactic authoring candidate; HE official bullet plus scoped source context, never a verbatim official competency.",
+      "titleChanged": false,
+      "descriptionChanged": false
+    },
+    {
+      "goalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+      "decision": "revise_contextual_consequence",
+      "proposedDescriptionDe": "Die lernende Person kann Substitution, Deletion, Insertion und Duplikation an gegebenen DNA-Fällen unterscheiden und mögliche Folgen für das codierte Protein aus dem Genkontext begründen.",
+      "proposedDescriptionEn": "The learner can distinguish substitution, deletion, insertion and duplication in given DNA cases and use the gene context to justify possible consequences for the encoded protein.",
+      "rationaleDe": "„Folgen abschätzen“ nennt weder Folgeebene noch notwendige Fallinformationen. Der Vorschlag bindet eine mögliche molekulare Folge an codierende Region, Leseraster und Code-Daten. Er ist nach eigener Quellen-, Sequenz- und Bildprüfung inhaltlich mit dem bereits unabhängig geprüften ffef-v2-Autorenkandidaten vereinbar. Die Kopie eines Abschnitts ist von einem bloß gleichen eingefügten Abschnitt zu unterscheiden; eine Proteinfunktions- oder Merkmalsaussage benötigt weitere Daten.",
+      "atomicity": "Classifying a sequence event and justifying its bounded molecular consequence are one analysis of the same supplied case.",
+      "integrationBlockers": [
+        "BY source additionally requires mutagens, measured/justified protein function and protection; existing exact mapping is not a full-clause proof.",
+        "All seven Sek-I placements need source-specific decisions; NI explicitly postpones molecular-genetic analysis to Sek II.",
+        "Inactive v2 illustration is not an active V record."
+      ],
+      "currentTitleDe": "Genmutationen analysieren",
+      "currentTitleEn": "Analyze gene mutations",
+      "currentDescriptionDe": "Die lernende Person kann verschiedene Mutationstypen (Substitution, Deletion, Insertion, Duplikation) erklären und Folgen abschätzen.",
+      "currentDescriptionEn": "The learner can explain different types of mutations (substitution, deletion, insertion, duplication) and estimate consequences.",
+      "proposedTitleDe": "Genmutationen analysieren",
+      "proposedTitleEn": "Analyze gene mutations",
+      "currentRequires": [
+        "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "proposedRequires": [
+        "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "sourceClaim": "Didactic authoring candidate; HE official bullet plus scoped source context, never a verbatim official competency.",
+      "titleChanged": false,
+      "descriptionChanged": true
+    },
+    {
+      "goalId": "946ce2e7-c30d-5670-839d-003b0619c284",
+      "decision": "split_preserving_two_mechanisms",
+      "proposedTitleDe": "Transkriptionsfaktoren bei Eukaryoten erklären",
+      "proposedTitleEn": "Explain transcription factors in eukaryotes",
+      "proposedDescriptionDe": "Die lernende Person kann an einem gegebenen eukaryotischen Genmodell erklären, wie Transkriptionsfaktoren über regulatorische DNA-Bereiche die Transkription beeinflussen.",
+      "proposedDescriptionEn": "The learner can use a supplied eukaryotic gene model to explain how transcription factors influence transcription through regulatory DNA regions.",
+      "rationaleDe": "Beide bisherigen unabhängigen Runden unterscheiden den bindenden Regulationsfaktor von der chemischen DNA-Markierung. 946 bleibt als einzelnes Faktor-Atom; DNA-Methylierung muss in einem gesonderten GK/LK-Atom erhalten bleiben. Das bestehende LK-Ziel 99544494 nennt Methylierung/Acetylierung, hat eine strittige HE-Q1.5-Bindung und ersetzt den GK/LK-Kern nicht ungeprüft.",
+      "atomicity": "One transcription-factor mechanism per retained atom; DNA methylation is a companion candidate.",
+      "proposedRequires": [
+        "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "prerequisiteRationale": "Protein-synthesis/transcription understanding supports this mechanism. The current 7975 prerequisite already includes epigenetics and operon examples; it is neither universally required nor source-secure for this HE atom.",
+      "coveragePreservation": {
+        "companionCandidateKey": "dna-methylation-eukaryotes",
+        "requiredCheck": "Create/reuse one reviewed GK/LK DNA-methylation atom after checking existing epigenetics overlaps. Bind both atoms to the actual HE Q1.2 regulation bullet; route successors requiring either/both by actual assessed content."
+      },
+      "integrationBlockers": [
+        "The companion atom and exact source/view routing are required before narrowing this original.",
+        "Current BY applicability is not backed by a direct BY source mapping for this ID; new BY binding needs its own review.",
+        "Exam 3ac1cbb1 refers to 946 for promoter methylation and must be routed to the methylation companion if a split is adopted."
+      ],
+      "currentTitleDe": "Genregulation bei Eukaryoten",
+      "currentTitleEn": "Gene regulation in eukaryotes",
+      "currentDescriptionDe": "Die lernende Person kann Transkriptionsfaktoren und epigenetische DNA-Methylierung zur Steuerung der Genaktivität erklären.",
+      "currentDescriptionEn": "The learner can explain transcription factors and epigenetic DNA methylation for controlling gene activity.",
+      "currentRequires": [
+        "7975e43b-1187-5ae3-a1ab-282fc3c0548c",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "sourceClaim": "Didactic authoring candidate; HE official bullet plus scoped source context, never a verbatim official competency.",
+      "titleChanged": true,
+      "descriptionChanged": true
+    },
+    {
+      "goalId": "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+      "decision": "split_preserving_structure_and_reproduction",
+      "proposedDescriptionDe": "Die lernende Person kann den prokaryotischen Grundbauplan eines Bakteriums an einem gegebenen Schema darstellen und die Lage seiner Erbinformation einschließlich gegebenenfalls vorhandener Plasmide erläutern.",
+      "proposedDescriptionEn": "The learner can use a supplied diagram to model the prokaryotic structure of a bacterium and explain the location of its genetic information, including plasmids when present.",
+      "rationaleDe": "Bakterienbau und Zweiteilung sind unabhängig beobachtbare Leistungen; beide D-Runden verlangen Teilung. Die Strukturformulierung passt zum vorhandenen Titel. Vermehrung bleibt ein eigener LK-Kandidat und darf nicht beim Kürzen verschwinden. Ein Plasmid ist keine universelle Bakterieneigenschaft.",
+      "atomicity": "Cell-structure model only; binary fission remains a separate process candidate.",
+      "proposedRequires": [
+        "fc8c4b02-02f2-5ad6-b481-224d36121da1",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "prerequisiteRationale": "Cell models support structural comparison. Detailed transcription/translation is not universally needed to identify bacterial genetic-material location.",
+      "coveragePreservation": {
+        "companionCandidateKey": "bacterial-binary-fission",
+        "requiredCheck": "Review a distinct schema-level binary-fission goal; bind both to the HE LK Bau und Vermehrung clause. Other states and Sek-I placements must retain their own reviewed stage scope rather than inherit HE LK."
+      },
+      "integrationBlockers": [
+        "Create/reuse the reproduction companion and preserve the complete HE LK source clause before narrowing.",
+        "BY applicability alone is not a mapped BY source proof for this ID.",
+        "Six non-HE Sek-I placements for this ID need structural-source checks and stage-specific prerequisite routing."
+      ],
+      "currentTitleDe": "Bakteriellen Zellbau einordnen",
+      "currentTitleEn": "Classify bacterial cell structure",
+      "currentDescriptionDe": "Die lernende Person kann Aufbau und Vermehrung von Bakterien im Kontext gentechnischer Anwendungen beschreiben.",
+      "currentDescriptionEn": "The learner can describe the structure and reproduction of bacteria in the context of genetic engineering applications.",
+      "proposedTitleDe": "Bakteriellen Zellbau einordnen",
+      "proposedTitleEn": "Classify bacterial cell structure",
+      "currentRequires": [
+        "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "sourceClaim": "Didactic authoring candidate; HE official bullet plus scoped source context, never a verbatim official competency.",
+      "titleChanged": false,
+      "descriptionChanged": true
+    },
+    {
+      "goalId": "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+      "decision": "revise_to_explanation_and_supplied_gel_analysis",
+      "proposedDescriptionDe": "Die lernende Person kann die Trennung von DNA-Fragmenten durch Gelelektrophorese erklären und vorgegebene Bandenmuster mithilfe eines Größenmarkers begründet auswerten.",
+      "proposedDescriptionEn": "The learner can explain how gel electrophoresis separates DNA fragments and use a size marker to interpret supplied band patterns with reasons.",
+      "rationaleDe": "Der aktuelle Satz beansprucht eigenes praktisches Trennen, während Titel und prüfbare P-Fälle Auswertung meinen. Das HE-Original nennt PCR und Gelelektrophorese ohne verpflichtende praktische Durchführung. Der Vorschlag verbindet Verfahrensverständnis mit begründeter Dateninterpretation, belegt aber kein Probenauftragen oder Durchführen eines echten Gels.",
+      "atomicity": "Principle-backed interpretation of one method; no laboratory-performance claim.",
+      "proposedRequires": [
+        "0daa79f6-8f61-5506-98f9-65db83062ba8",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "prerequisiteRationale": "DNA structure supports the separation principle. PCR is one possible source of fragments, not a universal prerequisite: restriction fragments can also be analysed.",
+      "integrationBlockers": [
+        "Independent review must confirm that retained HE competency scope does not require practical performance.",
+        "No direct BY mapping currently supports this ID; a new BY binding can use B12 2.6 after a separate source decision.",
+        "Current PCR prerequisite removal requires route/assessment review."
+      ],
+      "currentTitleDe": "Gelelektrophorese auswerten",
+      "currentTitleEn": "Evaluate gel electrophoresis",
+      "currentDescriptionDe": "Die lernende Person kann DNA-Fragmente mittels Gelelektrophorese trennen und Ergebnisse interpretieren.",
+      "currentDescriptionEn": "The learner can separate DNA fragments using gel electrophoresis and interpret the results.",
+      "proposedTitleDe": "Gelelektrophorese auswerten",
+      "proposedTitleEn": "Evaluate gel electrophoresis",
+      "currentRequires": [
+        "a3f483ce-126e-595c-999c-aa4d95106221",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "sourceClaim": "Didactic authoring candidate; HE official bullet plus scoped source context, never a verbatim official competency.",
+      "titleChanged": false,
+      "descriptionChanged": true
+    }
+  ],
+  "claimLimit": "No active D/P/A/M/V, source approval or human acceptance; all preservation and independent review requirements remain open."
+}

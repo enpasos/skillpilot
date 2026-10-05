@@ -1,0 +1,300 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-stoffmenge-revised-nine-current-synthesis-20261005-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-root-current-two-independent-round-synthesis",
+  "synthesizedAt": "2026-10-05T02:13:15.000Z",
+  "batch": {
+    "batchId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005",
+    "batchManifestDigest": "sha256:ab73782d5b70f1cad782e42f4912d6b83349875d7af3a2506b4e03f22b221da1",
+    "configDigest": "sha256:fc27e61b9bf01ea1a2d6bd058b20b4266a9bf05782619dae261964ca27fea2db",
+    "bundleFingerprint": "sha256:a4e79b98d9b49310751f80ef24fe684e8d2bbf8b7a8aa31a2135aae8473012b1",
+    "bookDigest": "sha256:d4db3e89d3b1bb4f59d3a9588bd02dea00547dc4116a6c4b6d0a53c3071ccd22",
+    "reviewInputFingerprint": "sha256:b4d9d9c91c222488fda925e3e4e4615274f74a89168d21b1a2c0a484b8661272",
+    "dualSummaryDigest": "sha256:46a637f35e4bb3679a1e0de896fd1390d1e58a02e0c5a8086ca966fbd0fb730f",
+    "canonicalLandscapeDigest": "sha256:62a44c106637e7bd81509b7e8530b9e55065dd5f01c5ccfdf63fc067063d62e6"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-a",
+      "campaignDigest": "sha256:798a70b61728dc71eda5909c2b880e051a77530bca27ea5ac51053b738b3845a",
+      "roundId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-independent-a",
+      "reviewInputFingerprint": "sha256:b4d9d9c91c222488fda925e3e4e4615274f74a89168d21b1a2c0a484b8661272",
+      "batchId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:4e5d401866f4cbef69277cb8aebeb6fe661b13c687fb003d7f22a5283a868882",
+      "runId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-first-pass-a.local-codex-run-a",
+      "runManifestDigest": "sha256:d72fe983700cc3b60331227814253a93b20f111cae07c0b75e3a9f3913731f59",
+      "resultsDigest": "sha256:61c734818d45566f5dac12f29800ccb477d571c129b1e3d8db38dd0e2bd2a2f2"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-b",
+      "campaignDigest": "sha256:a5e98242fee97190878f25d9257eacc4a022120b384c193fae6321fbf9963f88",
+      "roundId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-independent-b",
+      "reviewInputFingerprint": "sha256:b4d9d9c91c222488fda925e3e4e4615274f74a89168d21b1a2c0a484b8661272",
+      "batchId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:04fa5035cfffcc774688ccf4fc997c8204b1326cbd29fed89b29df308f5428e7",
+      "runId": "chemie-stoffmenge-nine-current-independent-c-20261005-d-b",
+      "runManifestDigest": "sha256:7e01da33e35585ddbd739f5f6ad97c88e4960e169a12ede59b74b8bd03f666ff",
+      "resultsDigest": "sha256:3373ed99edc62b14d0bdc4163580c50bc1a01daa51e75072c80edb546e2b3eee"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-stoffmenge-revised-nine-current-synthesis-20261005-v1-decision-001",
+      "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:95794950e14a7e57d69408df3334a5085b41f2eebcea9f847132be28ea839ed3",
+      "pageFingerprint": "sha256:998eefb75d7d29e4cbb71faaccc0496c2d0e4c2c3b4341dc1023d5760f8cbdc0",
+      "goalReviewContextFingerprint": "sha256:e88bfa3417d1a79bd3f3a2cb3c93da65c1f0aad74a1c5fe379474cd48a531a17",
+      "finalText": {
+        "titleDe": "Stoffmenge und Einheit Mol nutzen",
+        "titleEn": "Use amount of substance and the unit mole",
+        "descriptionDe": "Die lernende Person kann die Stoffmenge als Maß für die Anzahl festgelegter Teilchen deuten und Stoffmengen eindeutig mit der Einheit Mol angeben.",
+        "descriptionEn": "The learner can interpret amount of substance as a measure of the number of specified particles and state amounts of substance unambiguously using the unit mole."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-first-pass-a.local-codex-run-a.D.1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+          "recordDigest": "sha256:226b77787d965d9380cfad55fdc9b3d9c12606ac7b6ed0dcc4fbb25770b8f355"
+        },
+        "second": {
+          "recordId": "chemie-stoffmenge-nine-current-independent-c-20261005-d-b.01",
+          "recordDigest": "sha256:1279771c2797a451f116a049d63594e22d591a50362046d4e916cfa4ae132a2b"
+        }
+      },
+      "rationaleDe": "Zwei unabhängig eingefrorene aktuelle Beschreibungsreviews behalten dieselben DE/EN-Texte und Ziel-/Seitenbindungen. Runde A: KEEP: Die aktuelle DE/EN-Beschreibung benennt ausdrücklich festgelegte Teilchen und die eindeutige Angabe ihrer Stoffmenge. Damit ist die Unterscheidung von Teilchenart, Teilchenzahl und Größe n innerhalb derselben ursprünglichen Kompetenz klar; die zahlenmäßige Anwendung der Avogadro-Konstante bleibt dem Nachfolgeziel vorbehalten. Eine neue Mess-, Herleitungs- oder Stoffumsatzkompetenz wird nicht eingeführt. HE G9 S.16, BY C8 NTG LB3 und die in der eigenen vorherigen Runde unmittelbar gelesene BIPM-Definition stützen diese fachliche Deutung. Keine vollständige externe Mapping- oder Projektionsfreigabe beansprucht. Runde B: Die aktuelle DE/EN-Beschreibung benennt Teilchenbezug, Festlegung der Teilchenart und Einheit klar und äquivalent. Das ist eine zusammenhängende Sek-I-Kompetenz, keine verdeckte Massen-/Volumenrechnung. HE-G9 S. 16 nennt Stoffmenge und Einheit; die live geprüfte BIPM-Definition bestätigt den Bezug auf spezifizierte elementare Einheiten. Die nachfolgenden Ziele zu M, u/g und N_A bleiben getrennt. Das Bild ist kein selbstständiger Leistungsnachweis; eine vollständige Bundeslandprojektion oder Mappingfreigabe ist aus diesem D-Input nicht nachgewiesen. Die sieben gezielten Präzisierungen und ursprünglichen abweichenden B012-Befunde bleiben in ihren historischen Artefakten nachvollziehbar. Diese D-Synthese ersetzt weder den separaten aktuellen P-Nachweis noch eine V-Freigabe oder menschliche Prüfung.",
+      "rationaleEn": "Both independently frozen current description rounds keep the same bilingual wording and exact goal/page bindings. The original individual subject-specific findings and the seven targeted clarifications are retained. This description synthesis does not approve the separate positive evidence, any image, or human review. The u/g image finding remains a separate unresolved visualization gate until actual correction and targeted current binding review."
+    },
+    {
+      "decisionId": "chemie-stoffmenge-revised-nine-current-synthesis-20261005-v1-decision-002",
+      "goalId": "8a2ad724-df5e-5986-8de9-560ba43caac2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f40609ad416bd19a24ac9a196a1b71d6c620321fb98c41a1f8d5d2b5ce89139a",
+      "pageFingerprint": "sha256:abdf8a7a68b109d8c37fd25a7f017bde5e1fb7ab517632d83fbc0dd3f7ad2a67",
+      "goalReviewContextFingerprint": "sha256:28a45492738f7b43e535256c5ad9060369f3befa1c48fb98806e2bc5b75b3e1a",
+      "finalText": {
+        "titleDe": "Molare Masse bestimmen und verwenden",
+        "titleEn": "Determine and use molar mass",
+        "descriptionDe": "Die lernende Person kann die molare Masse als Masse pro Stoffmenge deuten, aus chemischen Formeln und Atommassen bestimmen und Masse und Stoffmenge damit verknüpfen.",
+        "descriptionEn": "The learner can interpret molar mass as mass per amount of substance, determine it from chemical formulas and atomic masses, and use it to relate mass and amount of substance."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-first-pass-a.local-codex-run-a.D.8a2ad724-df5e-5986-8de9-560ba43caac2",
+          "recordDigest": "sha256:79c46ab42c0c6103fdc7d87ed167c3eaaa37f7c560d7451394fcca70008ae610"
+        },
+        "second": {
+          "recordId": "chemie-stoffmenge-nine-current-independent-c-20261005-d-b.02",
+          "recordDigest": "sha256:ca8ea6ad2e090f00eb2c7ffba6875e96947fd6b06e604a917879a37723fd29ab"
+        }
+      },
+      "rationaleDe": "Zwei unabhängig eingefrorene aktuelle Beschreibungsreviews behalten dieselben DE/EN-Texte und Ziel-/Seitenbindungen. Runde A: KEEP: Masse pro Stoffmenge legt die Bedeutung von M nun ausdrücklich fest. Deuten, Bestimmen aus Formel/Atommassen und Verknüpfen von m und n sind drei Schritte derselben Umrechnungsbeziehung, keine unabhängig zu prüfenden Kompetenzen. Der bilingual gleiche Text bleibt auf bekannte chemische Formeln beschränkt und verlangt keine Formelermittlung, Reaktionsstöchiometrie oder Messmethode. HE G9 S.16 und BY C8 NTG LB3 nennen die molare Masse in diesem Größenkontext. Runde B: Definition, Formelbezug und Verwendung von M gehören hier zu einer einzigen Größenbeziehung. Die aktuelle Beschreibung macht deren Bedeutung ausdrücklich sichtbar und ist in beiden Sprachen gleichwertig. HE-G9 S. 16 sowie BY Chemie 8 NTG führen diesen Größenbezug; einfache Formeln und Stoffmenge sind direkte Voraussetzungen. Die experimentelle Gasbestimmung ist ein eigenes späteres Ziel und wird hier nicht vorausgesetzt. Formeln oder Atomwerte dürfen bereitgestellt werden; ihr bloßer Abruf wäre kein Verständnisnachweis. Eine externe Mapping- oder Projektionsfreigabe wird nicht behauptet. Die sieben gezielten Präzisierungen und ursprünglichen abweichenden B012-Befunde bleiben in ihren historischen Artefakten nachvollziehbar. Diese D-Synthese ersetzt weder den separaten aktuellen P-Nachweis noch eine V-Freigabe oder menschliche Prüfung.",
+      "rationaleEn": "Both independently frozen current description rounds keep the same bilingual wording and exact goal/page bindings. The original individual subject-specific findings and the seven targeted clarifications are retained. This description synthesis does not approve the separate positive evidence, any image, or human review. The u/g image finding remains a separate unresolved visualization gate until actual correction and targeted current binding review."
+    },
+    {
+      "decisionId": "chemie-stoffmenge-revised-nine-current-synthesis-20261005-v1-decision-003",
+      "goalId": "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:991cc097814865bb7c4340c0735e56efc671027cc335eed5164adb4b2a4e3c50",
+      "pageFingerprint": "sha256:5ac1b4ac6837b7e2d0dcaf59f5586110c821ba21b86d84adceea5a280d845ae8",
+      "goalReviewContextFingerprint": "sha256:9b85ea9b8b0f51a3260034ae7c3923f02aa2513ab7678e3682568b7c792dbca7",
+      "finalText": {
+        "titleDe": "Atomare Masseneinheit und Grammbezug einordnen",
+        "titleEn": "Classify atomic mass unit and gram relationship",
+        "descriptionDe": "Die lernende Person kann u und g als unterschiedlich große Einheiten derselben Masse einordnen und die Masse eines Teilchens mit der Masse einer Stoffportion verknüpfen.",
+        "descriptionEn": "The learner can identify u and g as differently sized units of the same mass quantity and relate the mass of a particle to the mass of a sample."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-first-pass-a.local-codex-run-a.D.dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+          "recordDigest": "sha256:cabb4ad984c55d58c53d72305045cff2e4f937cca33b23400b8a0522feee9ea0"
+        },
+        "second": {
+          "recordId": "chemie-stoffmenge-nine-current-independent-c-20261005-d-b.03",
+          "recordDigest": "sha256:580b15ebd96f60f6053116529736a30f611d883c5df053903b96dd8def0ce6b9"
+        }
+      },
+      "rationaleDe": "Zwei unabhängig eingefrorene aktuelle Beschreibungsreviews behalten dieselben DE/EN-Texte und Ziel-/Seitenbindungen. Runde A: KEEP: Die aktuelle DE/EN-Fassung ordnet u und g ausdrücklich derselben physikalischen Massengröße zu. Der Teilchen-/Portionsbezug ist die ursprünglich beanspruchte Anwendung dieses Einheitenverständnisses; eine exklusive Zuordnung von u zu Teilchen und g zu Portionen wird gerade nicht verlangt. Beide Satzteile bilden eine einzige Größen- und Maßstabskompetenz. HE G9 S.16 nennt u und g; BY C8 NTG LB3 nennt Teilchenmasse und Größenbezüge. Keine eigenständige neue empirische Atommassebestimmung wird eingeführt. Runde B: Die aktuelle Beschreibung ist fachlich korrekt und korrigiert gerade die mögliche Verwechslung von Masseeinheit und Betrachtungsebene; DE und EN stimmen überein. HE-G9 S. 16 benennt beide Masseneinheiten. Die Brücke von Einzelteilchen zu Portion ist Teil derselben Massenskala, ohne eigenständige Reaktionsrechnung. Für Sek I können Umrechnungsfaktor und Teilchenzahl gegeben sein, ohne das spätere N_A-Ziel stillschweigend vorauszusetzen. Tatsächlich auf PDF-Zielseite 3 gesehen: Die Bildtafel ordnet u kategorisch Einzelteilchen und g Portionen zu; dieser gesonderte Bildbefund widerspricht dem richtigen D-Text und verlangt Prüfung in der V-Spur. keep ist keine Freigabe dieser Illustration. Die sieben gezielten Präzisierungen und ursprünglichen abweichenden B012-Befunde bleiben in ihren historischen Artefakten nachvollziehbar. Diese D-Synthese ersetzt weder den separaten aktuellen P-Nachweis noch eine V-Freigabe oder menschliche Prüfung. Die fachlich falsche exklusive Zuordnung im damaligen Bild bleibt ausdrücklich gesonderter V-HOLD; ein neues PNG und anschließend tatsächliche gezielte D/P-Seiten- und Kontextnachprüfung sind vor strengem Abschluss erforderlich.",
+      "rationaleEn": "Both independently frozen current description rounds keep the same bilingual wording and exact goal/page bindings. The original individual subject-specific findings and the seven targeted clarifications are retained. This description synthesis does not approve the separate positive evidence, any image, or human review. The u/g image finding remains a separate unresolved visualization gate until actual correction and targeted current binding review."
+    },
+    {
+      "decisionId": "chemie-stoffmenge-revised-nine-current-synthesis-20261005-v1-decision-004",
+      "goalId": "e45c0022-ac0d-5c83-b433-5f68655e382f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3d124a0a286d9ffd2dbb7d3ad6ba94c27f2406a519365edd06ebb79d13ef4c3c",
+      "pageFingerprint": "sha256:26340056dd10b58e10fe57540e7f3b4c4022558bd66cb99dd4830cc8e35ab5f7",
+      "goalReviewContextFingerprint": "sha256:98c605ce57207bd79cc8eb453291bd0c73691aae6899b9544a1abf94e437fff4",
+      "finalText": {
+        "titleDe": "Avogadro-Konstante als Teilchenzahlbezug nutzen",
+        "titleEn": "Use the Avogadro constant as a particle-number relation",
+        "descriptionDe": "Die lernende Person kann die Avogadro-Konstante als Proportionalitaetsfaktor zwischen Stoffmenge und Teilchenzahl deuten und in einfachen Bezuegen anwenden.",
+        "descriptionEn": "The learner can interpret the Avogadro constant as the proportionality factor between amount of substance and particle number and apply it in simple relationships."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-first-pass-a.local-codex-run-a.D.e45c0022-ac0d-5c83-b433-5f68655e382f",
+          "recordDigest": "sha256:9ebca3313cd538a0a422a959c7e54aa51b8fc51add2b0b4c54150ba3eb956424"
+        },
+        "second": {
+          "recordId": "chemie-stoffmenge-nine-current-independent-c-20261005-d-b.04",
+          "recordDigest": "sha256:86771646504f567598f06e9f848440264185b52eb84d9552c014288953dc24d0"
+        }
+      },
+      "rationaleDe": "Zwei unabhängig eingefrorene aktuelle Beschreibungsreviews behalten dieselben DE/EN-Texte und Ziel-/Seitenbindungen. Runde A: KEEP: Der unveränderte aktuelle DE/EN-Text benennt präzise Deutung und Anwendung eines einzelnen Proportionalitätsfaktors. Er behauptet keinen falschen festen Zahlenwert und bleibt vom vorausgesetzten Molbegriff unterscheidbar. Der heute exakte SI-Wert und spezifizierte Einheiten wurden bei BIPM in der vorherigen eigenen Runde geprüft; das historische HE-G9-Zahlenformat ist keine aktuelle Wertvorgabe. Einfaches Anwenden und Deuten bleiben eine semantische Kompetenz. Runde B: Der aktuelle Text definiert die Richtung der Größenbeziehung durch den Proportionalitätsfaktor klar; DE und EN sind äquivalent. Nutzen und Deuten desselben Faktors sind semantisch ein Ziel. Die bereits bekannte Stoffmenge wird vertieft, ohne Gasgesetz oder molare Masse einzuschließen. BIPM wurde live geprüft: Die alte gerundete Angabe im HE-G9-Lehrplan S. 16 ist historische Quellenschreibweise und kein aktueller exakter SI-Wert. Die Bildangabe 6,022·10^23 ist ebenfalls gerundet und darf im Unterricht nicht als exakter Wert behandelt werden. Aktuelle vollständige Quellenmappings und effektive Projektionen sind nicht Gegenstand dieses D-Nachweises. Die sieben gezielten Präzisierungen und ursprünglichen abweichenden B012-Befunde bleiben in ihren historischen Artefakten nachvollziehbar. Diese D-Synthese ersetzt weder den separaten aktuellen P-Nachweis noch eine V-Freigabe oder menschliche Prüfung.",
+      "rationaleEn": "Both independently frozen current description rounds keep the same bilingual wording and exact goal/page bindings. The original individual subject-specific findings and the seven targeted clarifications are retained. This description synthesis does not approve the separate positive evidence, any image, or human review. The u/g image finding remains a separate unresolved visualization gate until actual correction and targeted current binding review."
+    },
+    {
+      "decisionId": "chemie-stoffmenge-revised-nine-current-synthesis-20261005-v1-decision-005",
+      "goalId": "1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ecaf4ef4622870bdaecc40ee656d387d2e02349e97005b83d66dba98c1d538f0",
+      "pageFingerprint": "sha256:8eb62d119b5634a757c55f5debffbbda72d65bf7b628a97946d737c84c683983",
+      "goalReviewContextFingerprint": "sha256:b3dda916b23e9f834b892f4807405239db86fec2afe376785ad8ed32e4763843",
+      "finalText": {
+        "titleDe": "Avogadro-These fuer Gasvolumina erlaeutern",
+        "titleEn": "Explain Avogadro law for gas volumes",
+        "descriptionDe": "Die lernende Person kann mit der Avogadro-These erklären, warum gleiche Volumina verschiedener Gase bei gleicher Temperatur und gleichem Druck im idealen Gasmodell gleich viele Teilchen enthalten.",
+        "descriptionEn": "The learner can use Avogadro’s law to explain why equal volumes of different gases at the same temperature and pressure contain equal numbers of particles in the ideal-gas model."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-first-pass-a.local-codex-run-a.D.1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+          "recordDigest": "sha256:7dd12b02909e5df13f4c734bb68d24b1256da3e7663c6f3ef3ac940e6a8c2e6b"
+        },
+        "second": {
+          "recordId": "chemie-stoffmenge-nine-current-independent-c-20261005-d-b.05",
+          "recordDigest": "sha256:f3dd5f814d99047c46ee3fbfcc4b2d775210f35f3f60b371e87e923db320eea4"
+        }
+      },
+      "rationaleDe": "Zwei unabhängig eingefrorene aktuelle Beschreibungsreviews behalten dieselben DE/EN-Texte und Ziel-/Seitenbindungen. Runde A: KEEP: Temperatur, Druck, verschiedene Gase und ideales Gasmodell machen die Bedingungen der schon beanspruchten Avogadro-These ausdrücklich. DE und EN stimmen überein. Es wird keine Ableitung des gesamten idealen Gasgesetzes oder eine neue Gasversuchsreihe verlangt; erklärt wird die eine Teilchenzahl-/Volumenbeziehung im genannten Modell. Das vorausgesetzte kinetische Teilchenmodell und die Stoffmenge passen zum Umfang. HE G9 S.16 und BY C8 NTG LB3 nennen die These/Hypothese im Gaszusammenhang. Runde B: Der aktuelle Text enthält Gasarten, gleiche Temperatur, gleichen Druck und den ausdrücklich genannten idealen Modellrahmen. Dadurch ist die Aussage fachlich begrenzt und bilingual eindeutig. HE-G9 S. 16 führt die Avogadro-These; das kinetische Teilchenmodell und Stoffmenge sind direkte Voraussetzungen. Hier wird keine Herleitung aus Bindungstheorie oder quantitative T-/p-Umrechnung gefordert. Die Beschreibung trennt sich vom nachfolgenden molaren Volumen. Die tatsächlich betrachtete PDF-Seite 5 liefert Unterstützung, jedoch keinen Lernendenbeleg. Vollständige externe Mappings oder Projektionen bleiben unbestätigt. Die sieben gezielten Präzisierungen und ursprünglichen abweichenden B012-Befunde bleiben in ihren historischen Artefakten nachvollziehbar. Diese D-Synthese ersetzt weder den separaten aktuellen P-Nachweis noch eine V-Freigabe oder menschliche Prüfung.",
+      "rationaleEn": "Both independently frozen current description rounds keep the same bilingual wording and exact goal/page bindings. The original individual subject-specific findings and the seven targeted clarifications are retained. This description synthesis does not approve the separate positive evidence, any image, or human review. The u/g image finding remains a separate unresolved visualization gate until actual correction and targeted current binding review."
+    },
+    {
+      "decisionId": "chemie-stoffmenge-revised-nine-current-synthesis-20261005-v1-decision-006",
+      "goalId": "2924f784-5261-54e8-93ee-49ac3b3cd300",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:64919e2a2875afd5046ed9c20b9c66c52f6c97903c4f05d4f6ce0dd2d20da6db",
+      "pageFingerprint": "sha256:c9c15cbb51f322c818778a64eb37027d8e74e8c012c40685738dec017a7a7d09",
+      "goalReviewContextFingerprint": "sha256:5d1dd84254228c000000411b0468380defc2853415c5d1293b1555e77a8005c7",
+      "finalText": {
+        "titleDe": "Molares Volumen von Gasen nutzen",
+        "titleEn": "Use molar volume of gases",
+        "descriptionDe": "Die lernende Person kann das molare Volumen von Gasen bei festgelegten Bedingungen beschreiben und fuer einfache Stoffmengen-Volumen-Bezuege verwenden.",
+        "descriptionEn": "The learner can describe the molar volume of gases under specified conditions and use it for simple amount-volume relationships."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-first-pass-a.local-codex-run-a.D.2924f784-5261-54e8-93ee-49ac3b3cd300",
+          "recordDigest": "sha256:a04ff61043803ccbdcd3ea51d2e584420317398cb1334fc740c6cdf5e3f0c472"
+        },
+        "second": {
+          "recordId": "chemie-stoffmenge-nine-current-independent-c-20261005-d-b.06",
+          "recordDigest": "sha256:5fc1154b807bde09245694f0fdf63a0d6603ba6e89c3a9101e1b9cc49635447e"
+        }
+      },
+      "rationaleDe": "Zwei unabhängig eingefrorene aktuelle Beschreibungsreviews behalten dieselben DE/EN-Texte und Ziel-/Seitenbindungen. Runde A: KEEP: Der unveränderte DE/EN-Text bindet das molare Volumen bereits an festgelegte Bedingungen. Beschreiben und Nutzen beziehen sich auf dieselbe Größe V_m, die zwischen Gasvolumen und Stoffmenge vermittelt. Im aktuellen Kontext ist die nun ausdrücklich modell- und bedingungsgebundene Avogadro-These Voraussetzung; der Umfang wächst dadurch nicht um einen neuen Gasalgorithmus. HE G9 S.16 und BY C8 NTG LB3 tragen das molare Volumen. Runde B: Die kurze aktuelle Beschreibung nennt ausdrücklich festgelegte Bedingungen und den Stoffmengen-Volumen-Bezug. Diese Angaben begrenzen eine fachlich korrekte, zusammenhängende Sek-I-Kompetenz; die positive V2-Kette kann die Bedeutung Volumen je Stoffmenge konkretisieren, ohne eine notwendige D-Korrektur zu erzwingen. HE-G9 S. 16 und BY Chemie 8 NTG führen das molare Volumen. Das Avogadro-Ziel ist direkte Voraussetzung; die Massenbestimmung gasförmiger Stoffe folgt getrennt. DE/EN sind inhaltlich äquivalent. Eine vollständige effektive Bundeslandprojektion ist nicht belegt. Die sieben gezielten Präzisierungen und ursprünglichen abweichenden B012-Befunde bleiben in ihren historischen Artefakten nachvollziehbar. Diese D-Synthese ersetzt weder den separaten aktuellen P-Nachweis noch eine V-Freigabe oder menschliche Prüfung.",
+      "rationaleEn": "Both independently frozen current description rounds keep the same bilingual wording and exact goal/page bindings. The original individual subject-specific findings and the seven targeted clarifications are retained. This description synthesis does not approve the separate positive evidence, any image, or human review. The u/g image finding remains a separate unresolved visualization gate until actual correction and targeted current binding review."
+    },
+    {
+      "decisionId": "chemie-stoffmenge-revised-nine-current-synthesis-20261005-v1-decision-007",
+      "goalId": "199570f4-b3c3-5e12-877d-ced97e9f6968",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d2328b01e8ede20152f26e9ec4206c44526caedda05cfc9b72f94d6d279d22a2",
+      "pageFingerprint": "sha256:3620ac20ab509eb0dd99a868ecbf196078dd4baaffc5444c718c5b170f636fdd",
+      "goalReviewContextFingerprint": "sha256:19daac22b3a87d3d99c6900906148e6c480d7f1208765b71fd6de98b5147edfc",
+      "finalText": {
+        "titleDe": "Molare Masse von Gasen bestimmen",
+        "titleEn": "Determine molar mass of gases",
+        "descriptionDe": "Die lernende Person kann molare Massen gasförmiger Stoffe aus ihrer Formel oder aus Masse und Gasvolumen bei bekannten Bedingungen bestimmen und als Masse pro Stoffmenge deuten.",
+        "descriptionEn": "The learner can determine molar masses of gaseous substances from their formulas or from mass and gas volume under known conditions, and interpret them as mass per amount of substance."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-first-pass-a.local-codex-run-a.D.199570f4-b3c3-5e12-877d-ced97e9f6968",
+          "recordDigest": "sha256:d55542643dfda355655799dfc715eefb79f7e8d53d9044420766c87bfdc4b419"
+        },
+        "second": {
+          "recordId": "chemie-stoffmenge-nine-current-independent-c-20261005-d-b.07",
+          "recordDigest": "sha256:60d0bcea7baa9bcc47fbf73778da47f326983246cebf15cb36d400b69ab99fa8"
+        }
+      },
+      "rationaleDe": "Zwei unabhängig eingefrorene aktuelle Beschreibungsreviews behalten dieselben DE/EN-Texte und Ziel-/Seitenbindungen. Runde A: KEEP: Der aktuelle Text konkretisiert die einfachen Gasbezüge als Masse und Gasvolumen bei bekannten Bedingungen und benennt M als Masse pro Stoffmenge. Die Formelroute und die Gasdatenroute bestimmen dieselbe Eigenschaft; beide sind durch die bestehenden Voraussetzungen M und V_m gedeckt. DE/EN sind gleichwertig. Bei der Gasroute muss der zur Messung passende V_m-Wert verwendet beziehungsweise gegeben sein; eine selbständige Zustandsgleichungsherleitung, Gaswägungsdurchführung oder Gemischanalyse wird nicht hineingelesen. HE G9 S.16 und BY C8 NTG LB3 stützen Gasmasse beziehungsweise Gaswägungs-/Größenbezüge. Runde B: Die aktuelle DE/EN-Beschreibung nennt beide Datenzugänge, die erforderlichen Bedingungen und die Bedeutung Masse pro Stoffmenge. Das ist die Bestimmung derselben Stoffeigenschaft aus unterschiedlichen Darstellungen, keine Aufzählung unabhängiger Kompetenzen. HE-G9 S. 16 nennt die molare Masse von Gasen; BY Chemie 8 NTG stützt Gaswägung und Größenbezüge. M und V_m sind direkte Voraussetzungen. Weder unbegleitete Experimente noch Gasgemischanalyse oder eine allgemeine Zustandsgleichung werden hinzuerfunden. Das tatsächliche Bild deckt primär den Formelweg; der Textanspruch des Messdatenwegs bleibt im V2-Profil ausdrücklich prüfbar. Keine externe Mappingfreigabe wird behauptet. Die sieben gezielten Präzisierungen und ursprünglichen abweichenden B012-Befunde bleiben in ihren historischen Artefakten nachvollziehbar. Diese D-Synthese ersetzt weder den separaten aktuellen P-Nachweis noch eine V-Freigabe oder menschliche Prüfung.",
+      "rationaleEn": "Both independently frozen current description rounds keep the same bilingual wording and exact goal/page bindings. The original individual subject-specific findings and the seven targeted clarifications are retained. This description synthesis does not approve the separate positive evidence, any image, or human review. The u/g image finding remains a separate unresolved visualization gate until actual correction and targeted current binding review."
+    },
+    {
+      "decisionId": "chemie-stoffmenge-revised-nine-current-synthesis-20261005-v1-decision-008",
+      "goalId": "d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e6489ba2940cde97dc81c692c10bc97f4aaf62c5bf20ea007b8bd8429bf2a539",
+      "pageFingerprint": "sha256:57683514b6b45d5282f5c1e03ab001fa675e0347c1da1d79fc80cec2ac0d6470",
+      "goalReviewContextFingerprint": "sha256:92d2aa981e97beccb0e841c83ba0b1a99d759f40a1ccb2230107998b123c08ea",
+      "finalText": {
+        "titleDe": "Zweiatomigkeit gasfoermiger Elementmolekuele begruenden",
+        "titleEn": "Justify diatomic gaseous elemental molecules",
+        "descriptionDe": "Die lernende Person kann die Zweiatomigkeit wichtiger gasförmiger Elemente im Teilchenmodell erläutern und daraus ihre Molekülformeln für einfache Reaktionsgleichungen begründen.",
+        "descriptionEn": "The learner can explain the diatomic nature of important gaseous elements using a particle model and justify their molecular formulas for simple reaction equations on that basis."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-first-pass-a.local-codex-run-a.D.d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a",
+          "recordDigest": "sha256:aa5f40ca943aad83ac16e48a333c5cf64609eb25185c8d9dcef1fd54cb86ee0c"
+        },
+        "second": {
+          "recordId": "chemie-stoffmenge-nine-current-independent-c-20261005-d-b.08",
+          "recordDigest": "sha256:4c1620c6ad5d90c6ee6a5a23d8bb382413dfe3ece28113f47bd25b7f295e0721"
+        }
+      },
+      "rationaleDe": "Zwei unabhängig eingefrorene aktuelle Beschreibungsreviews behalten dieselben DE/EN-Texte und Ziel-/Seitenbindungen. Runde A: KEEP: Die aktuelle DE/EN-Fassung verknüpft die Erklärung einer im Teilchenmodell dargestellten Zweiatomigkeit mit der daraus begründeten Molekülformel. Gemeint ist das Deuten eines gegebenen beziehungsweise bereits erarbeiteten Molekülmodells, keine Ableitung einer Bindungsursache aus dem kinetischen Gasmodell. Index und Formel repräsentieren dieselben zwei gleichen Atome; ihre Verwendung in einfachen Reaktionsbeschreibungen bleibt die ursprüngliche Kompetenz. HE G9 S.16 nennt Zweiatomigkeit; BY C8 NTG LB3 nennt Element- und Verbindungsmoleküle. Es werden weder eine zusätzliche Formelermittlungs-Versuchsreihe noch ein allgemeiner Bindungsalgorithmus oder das Ausgleichen beliebiger Gleichungen ergänzt. Runde B: Die aktuelle Beschreibung erläutert Zweiatomigkeit im Teilchenmodell und begründet daraus die Formelschreibweise; sie behauptet keine Herleitung der Bindungsstabilität. DE und EN bewahren dieselbe Grenze. HE-G9 S. 16 nennt die Zweiatomigkeit, S. 17 modellgestützte Formelschreibweise; BY Chemie 8 NTG enthält Element-/Verbindungsmoleküle. Symbole/Formeln und kinetisches Teilchenmodell sind die direkten Voraussetzungen. Die Verknüpfung mit einfacher Symbolbeschreibung ist eine Darstellung derselben Kompetenz, keine separate stöchiometrische Rechnung. Wichtig bleibt die Einschränkung auf betreffende Elemente; gasförmig allein reicht als Begründung nicht. Vollständige Mappings und Projektionen sind unbestätigt. Die sieben gezielten Präzisierungen und ursprünglichen abweichenden B012-Befunde bleiben in ihren historischen Artefakten nachvollziehbar. Diese D-Synthese ersetzt weder den separaten aktuellen P-Nachweis noch eine V-Freigabe oder menschliche Prüfung.",
+      "rationaleEn": "Both independently frozen current description rounds keep the same bilingual wording and exact goal/page bindings. The original individual subject-specific findings and the seven targeted clarifications are retained. This description synthesis does not approve the separate positive evidence, any image, or human review. The u/g image finding remains a separate unresolved visualization gate until actual correction and targeted current binding review."
+    },
+    {
+      "decisionId": "chemie-stoffmenge-revised-nine-current-synthesis-20261005-v1-decision-009",
+      "goalId": "ddb76915-4d63-5375-901d-4e659f5e9b09",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7eee34ddef33c1c77370a865cdae2bef4901a4f737658eaafe221cb49ebdc8ba",
+      "pageFingerprint": "sha256:ba2e8fb7e0c6ee2912f4b2bee0c39b8febb1351822c909f361f2a29de4e0f6cc",
+      "goalReviewContextFingerprint": "sha256:ac5ed8a3efa4bf4e29837f0a993575f74e8d7acb6c5ef3422cd117c5aabe83fa",
+      "finalText": {
+        "titleDe": "Qualitative Elementaranalyse von Kohlenwasserstoffen auswerten",
+        "titleEn": "Evaluate qualitative elemental analysis of hydrocarbons",
+        "descriptionDe": "Die lernende Person kann qualitative Elementaranalysen von Kohlenwasserstoffen auswerten und aus den Nachweisen der Verbrennungsprodukte Kohlenstoffdioxid und Wasser auf Kohlenstoff und Wasserstoff in der Probe schließen.",
+        "descriptionEn": "The learner can evaluate qualitative elemental analyses of hydrocarbons and infer carbon and hydrogen in the sample from tests for the combustion products carbon dioxide and water."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-first-pass-a.local-codex-run-a.D.ddb76915-4d63-5375-901d-4e659f5e9b09",
+          "recordDigest": "sha256:cd02fea52fa9390461b8c226602e375fd3f2ff0440cfb35589d60582a2a915a3"
+        },
+        "second": {
+          "recordId": "chemie-stoffmenge-nine-current-independent-c-20261005-d-b.09",
+          "recordDigest": "sha256:1e9475a4f0b242bd60ccbfd89e7971a79f90717525c1d0797140de8990da0064"
+        }
+      },
+      "rationaleDe": "Zwei unabhängig eingefrorene aktuelle Beschreibungsreviews behalten dieselben DE/EN-Texte und Ziel-/Seitenbindungen. Runde A: KEEP: Die aktuelle DE/EN-Fassung macht die schon beanspruchte qualitative Schlusskette explizit: Nachweis der Verbrennungsprodukte CO₂/H₂O führt bei geeigneten Bedingungen zum Schluss auf C/H in der Probe. Die beiden Elementhinweise gehören zur einen qualitativen Analyse desselben Probentyps. Der Text fordert weder eine selbständig durchgeführte gefährliche Verbrennung noch quantitative Analyse, Mengenverhältnis oder Formelermittlung. Bereitgestellte zuverlässige Beobachtungs-/Blindprobendaten genügen. HE G9 S.26 nennt qualitative Elementaranalyse; BY C8 NTG LB3 liefert den Verbrennungskontext, keine hier behauptete vollständige direkte Mappingdeckung. Runde B: Die aktuelle Beschreibung zeigt die entscheidende positive Schlusskette ausdrücklich und in gleichwertigem DE/EN: Produktnachweise führen zu Aussagen über C und H der Probe. HE-G9 S. 26 führt qualitative Elementaranalyse im Kohlenwasserstoffkontext. Nachweis, Produkte und Elementzuordnung gehören zu einer einzigen Auswertung; die quantitative Formelbestimmung bleibt außerhalb. Für Sek I können Testverfahren und Vergleichsdaten bereitgestellt werden. Das Ziel verlangt keine unbegleitete Verbrennung. Die Beobachtungs-/Deutungsgrenze und die mögliche Fremdfeuchte sind im V2-Vertrag zu berücksichtigen. Der aktuelle D-Input beweist keine vollständige effektive Projektion oder Quelle-Mapping-Freigabe. Die sieben gezielten Präzisierungen und ursprünglichen abweichenden B012-Befunde bleiben in ihren historischen Artefakten nachvollziehbar. Diese D-Synthese ersetzt weder den separaten aktuellen P-Nachweis noch eine V-Freigabe oder menschliche Prüfung.",
+      "rationaleEn": "Both independently frozen current description rounds keep the same bilingual wording and exact goal/page bindings. The original individual subject-specific findings and the seven targeted clarifications are retained. This description synthesis does not approve the separate positive evidence, any image, or human review. The u/g image finding remains a separate unresolved visualization gate until actual correction and targeted current binding review."
+    }
+  ],
+  "manifestFingerprint": "sha256:5f3754a337ff906929e17ceb1cc3f19b40245e5851cfd49ba4272a37873d7a61"
+}

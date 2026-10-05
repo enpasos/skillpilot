@@ -1,0 +1,67 @@
+{
+  "format": "independent_targeted_followup_advisory_v1",
+  "reviewer": "independent_b",
+  "reviewMode": "targeted_followup_to_own_frozen_B_v1_not_blind_first_pass",
+  "createdAt": "2026-10-05T04:05:27.501584+00:00",
+  "reviewAuthority": "ai_candidate",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-fw6-008-two-atomic-companions-candidate-v2/two-companions.goal-templates.candidate.json",
+  "candidateSha256": "cd9a72d5ef17546bcf513e7789fe22590a0f3142c90115da51af8b208c61731c",
+  "active": false,
+  "humanApproval": false,
+  "nativeRegistryEntry": false,
+  "nativeGatePassed": false,
+  "nativeBookD2Passed": false,
+  "lane": "Source",
+  "normativeSource": {
+    "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/kc_naturwissenschaften_gymnasium_sek_i_2015.pdf",
+    "sha256": "7b3c69767b4c9a47d87598bee76a28bf7b6d2f6c9b039f2e655a9ad14d47aeac",
+    "physicalPage": 87,
+    "printedPage": 87,
+    "section": "FW6 Reproduktion, row 2 Fortpflanzung und Vererbung",
+    "column": "Additional expectations by end of grade 10",
+    "quote": "erläutern auf der Grundlage der Meiose die Prinzipien der Rekombination.",
+    "mechanismsExplicitlyEnumerated": false
+  },
+  "actualCurrentVisualInspection": [
+    {
+      "physicalPage": 87,
+      "printedPage": 87,
+      "artifact": "source.page87.png",
+      "finding": "Recombination bullet is in end-of-grade-10 column; intro distinguishes cytological/chromosomal Sek I from molecular-genetic Sek II."
+    },
+    {
+      "physicalPage": 88,
+      "printedPage": 88,
+      "artifact": "source.page88.png",
+      "finding": "FW6 continues with an explicitly non-molecular simplified treatment of genetic information."
+    }
+  ],
+  "goalReviews": [
+    {
+      "candidateKey": "ni-fw6-008-independent-assortment-companion-v2",
+      "goalId": null,
+      "canonicalId": null,
+      "advisorySemanticSha256": "2c7be54ee119ca7b50cb5b54f5219e7d243a81b0ed4ac0bcaec773a3875a8580",
+      "fingerprintConvention": "SHA-256 of UTF-8 sorted-key compact JSON containing id=null plus complete goalTemplateWithoutId; explicitly not the native registry fingerprint",
+      "decision": "source_faithful_partial_concretization",
+      "sourceRelationship": "Independent assortment is a biologically plausible chromosomal-model realization of one part of the broader source competence.",
+      "modelLevel": "Correct alternatives from at least two homologous pairs; no probabilistic count or full phase algorithm.",
+      "aloneCoversChosenTwoPrincipleConcretization": false
+    },
+    {
+      "candidateKey": "ni-fw6-008-chromatid-segment-exchange-companion-v2",
+      "goalId": null,
+      "canonicalId": null,
+      "advisorySemanticSha256": "be239a9e2edc9d44ee034a30b8a4572b220a72ee9b0ecb2794fb490a18c13c9c",
+      "fingerprintConvention": "SHA-256 of UTF-8 sorted-key compact JSON containing id=null plus complete goalTemplateWithoutId; explicitly not the native registry fingerprint",
+      "decision": "source_faithful_partial_concretization",
+      "sourceRelationship": "Corresponding segment exchange between non-sister chromatids of homologous chromosomes is a biologically plausible chromosomal-model realization of another part of the broader source competence.",
+      "modelLevel": "Correct homologous-pair before/after comparison; no DNA-break, repair, protein or sequence mechanism.",
+      "aloneCoversChosenTwoPrincipleConcretization": false
+    }
+  ],
+  "jointCoverageReasoning": "The two model explanations jointly operationalize the chosen chromosomal principles. The normative bullet itself does not explicitly enumerate them. No independently validated exhaustive active source coverage or mapping adoption is claimed.",
+  "sourceBindingGradePrecision": "The explicit norm is by end of grade 10; 9/10 is an implementation band, not a new mandatory single-year rule.",
+  "activeSourceMappingChanged": false,
+  "authorMetadataUsedAsSourceEvidence": false
+}

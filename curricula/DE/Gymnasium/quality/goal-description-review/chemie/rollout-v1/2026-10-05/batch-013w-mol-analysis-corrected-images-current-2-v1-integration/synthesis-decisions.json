@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-stoffmenge-two-corrected-images-current-synthesis-20261005-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-root-current-two-independent-round-synthesis",
+  "synthesizedAt": "2026-10-05T03:43:15.757Z",
+  "batch": {
+    "batchId": "chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005",
+    "batchManifestDigest": "sha256:87731336c2d6fa41df9a12f5bed857a3f4b2f7979c6dad452877e7313065deeb",
+    "configDigest": "sha256:8b8966513b3457a8cd5aa95cb98f9f6a3fd7449fd8d7251479dabc2325bc81a9",
+    "bundleFingerprint": "sha256:e5bc8915923bb1d0a162102cbb5949c860b70dc582bda01cb3ff60d38764d579",
+    "bookDigest": "sha256:3bd5572391bd375d1712f51be13f9a055c117df73ffb2fbc5514db09c11d631f",
+    "reviewInputFingerprint": "sha256:f5f9888872c857bc1b720e0d0ea0495f8762885aca2a3b5511294ca7b963829e",
+    "dualSummaryDigest": "sha256:9dd91773565b372666e7a794c9d2cca6663da3e3b97abf9fcae7ddf6e7ad16fd",
+    "canonicalLandscapeDigest": "sha256:220229ad94a5da1c7b466b8e43b5a2aa5b45baa3105d896e215b2cf583760aab"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005-a",
+      "campaignDigest": "sha256:023cab0579b3f3c49887c120fb07c5d18f434274a6e4054253ae04622d5a5628",
+      "roundId": "chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005-independent-a",
+      "reviewInputFingerprint": "sha256:f5f9888872c857bc1b720e0d0ea0495f8762885aca2a3b5511294ca7b963829e",
+      "batchId": "chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:9376134bd7f7193d70fb549ed056379c1b946a3f8e1260cc6bb30b41726186a7",
+      "runId": "chemie-two-current-d-a-20261005-native-run-v1",
+      "runManifestDigest": "sha256:11e2baf6c949749a2f68797b15a8cad44f7fb2e56fd888f10d9f9d142d6ecf6a",
+      "resultsDigest": "sha256:fc3eea8069dea6e8d1844192d261ca6cdd96f7d2df942c072bc037e3f5d27334"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005-b",
+      "campaignDigest": "sha256:ee82bf264e3d9acb3fe9dd6a50bfbeb11d25ecdf930b45420de0ac36c0449a6e",
+      "roundId": "chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005-independent-b",
+      "reviewInputFingerprint": "sha256:f5f9888872c857bc1b720e0d0ea0495f8762885aca2a3b5511294ca7b963829e",
+      "batchId": "chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:44573bd8d6130ecf0bc6bd9be3149aabd3c55967ae2120c75f641edb5ad5faed",
+      "runId": "chemie-013w-current-2-review-b-20261005",
+      "runManifestDigest": "sha256:2ba442a5e635f1804a9114aaf29cfe9ca527fd4ab7bb8c8736830e565b00ec1b",
+      "resultsDigest": "sha256:1c38896d58343bfc6fe05edf34adc0253887e502cb0f865171dc30232aeb49c0"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-stoffmenge-two-corrected-images-current-synthesis-20261005-v1-decision-001",
+      "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:95794950e14a7e57d69408df3334a5085b41f2eebcea9f847132be28ea839ed3",
+      "pageFingerprint": "sha256:2df71d010c47609a4a7fe7e84be7aaedaf6f0e7e47a09a3766c75189d55a7ba4",
+      "goalReviewContextFingerprint": "sha256:95c5d78f4ae25b9a2e3496b14ca82df8a334faf1c6362889edfe1cc69927cd69",
+      "finalText": {
+        "titleDe": "Stoffmenge und Einheit Mol nutzen",
+        "titleEn": "Use amount of substance and the unit mole",
+        "descriptionDe": "Die lernende Person kann die Stoffmenge als Maß für die Anzahl festgelegter Teilchen deuten und Stoffmengen eindeutig mit der Einheit Mol angeben.",
+        "descriptionEn": "The learner can interpret amount of substance as a measure of the number of specified particles and state amounts of substance unambiguously using the unit mole."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-two-current-d-a-20261005-native-run-v1.goal-1",
+          "recordDigest": "sha256:6eb292faffdcd89fd42b67635b733c30c37ec8789a184a369179feb0be24754d"
+        },
+        "second": {
+          "recordId": "chemie-013w-current-2-review-b-20261005.goal-001",
+          "recordDigest": "sha256:fdcc3d8f0ab7e55ba98ff0f4c8364fa1f65328c86fe771b890199da323d2a668"
+        }
+      },
+      "rationaleDe": "Die zwei unabhängig eingefrorenen aktuellen Reviews behalten dieselben DE/EN-Texte und die tatsächliche neue Zielseite (physische PDF-Seite 3). Stoffmenge und die eindeutige Angabe mit benannter Teilchenart bilden eine begrenzte Mengenkompetenz; Moleküle, enthaltene Atome, Ionen und Formeleinheiten sind ausdrücklich unterschiedliche Zählgegenstände. Beide Reviewer haben den neuen PNG-Inhalt und die aktuelle HTML/PDF-Seite selbst gesehen sowie die amtliche HE-G9-Klausel zu Stoffmenge und Einheit und die BIPM-Definition gezielt geprüft. Der exakte SI-Wert wird nicht durch eine gerundete Zahl ersetzt: beide verkürzten Bildangaben tragen nun ≈. Die Dutzendzählanalogie bleibt exakt und schematisch. Die Illustration unterstützt den Begriff, belegt aber keine Lernleistung und erweitert das Ziel nicht um Avogadro-Zahlenrechnung, molare Masse, Gasgesetze oder Stöchiometrie. Die unabhängige Transferleistung wechselt den ausdrücklich bezeichneten Zählgegenstand, etwa von O₂-Molekülen zu enthaltenen O-Atomen. Das Formelvorwissen und die abgegrenzten Nachfolger sind aktuell sichtbar. Keine Befunde bleiben offen. Vorherige D-Indizes, Bilder und Prompts bleiben historische Nachweise. Die D-Synthese ersetzt weder das getrennt wissenschaftlich geprüfte P-v2-Profil noch V, vollständige Quellen-Mappingprüfung oder menschliche Freigabe.",
+      "rationaleEn": "Both independently frozen current reviews retain the same bilingual wording and the actual new goal page (physical PDF page 3). Interpreting amount and naming its entity in an unambiguous mol statement form one bounded competence; molecules, constituent atoms, ions and formula units remain distinct counting entities. Both reviewers actually inspected the corrected PNG and HTML/PDF page and checked the relevant official Hesse clause and BIPM definition. The shortened counts now use approximation signs without replacing the exact SI definition; the labelled dozen analogy remains exact and schematic. This illustration supports the concept but proves no learner performance and adds no Avogadro calculation, molar mass, gas-law or reaction-stoichiometry requirement. Independent transfer changes the specified entity, for example from O₂ molecules to their constituent O atoms. Formula prerequisites and bounded successors are visible. No findings remain unresolved. Historical description indices, pictures and prompts stay intact. This description synthesis replaces neither the separately reviewed positive profile nor visualization, complete source mapping or human approval."
+    },
+    {
+      "decisionId": "chemie-stoffmenge-two-corrected-images-current-synthesis-20261005-v1-decision-002",
+      "goalId": "ddb76915-4d63-5375-901d-4e659f5e9b09",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7eee34ddef33c1c77370a865cdae2bef4901a4f737658eaafe221cb49ebdc8ba",
+      "pageFingerprint": "sha256:af5633e66c52f825618fc2d774c4a42b8876581c932db3e08d05e7e5a9b6ebd3",
+      "goalReviewContextFingerprint": "sha256:133d7532992d09688cf8de8dde2e65cd44922c1a3df0a1cca5e712506492782e",
+      "finalText": {
+        "titleDe": "Qualitative Elementaranalyse von Kohlenwasserstoffen auswerten",
+        "titleEn": "Evaluate qualitative elemental analysis of hydrocarbons",
+        "descriptionDe": "Die lernende Person kann qualitative Elementaranalysen von Kohlenwasserstoffen auswerten und aus den Nachweisen der Verbrennungsprodukte Kohlenstoffdioxid und Wasser auf Kohlenstoff und Wasserstoff in der Probe schließen.",
+        "descriptionEn": "The learner can evaluate qualitative elemental analyses of hydrocarbons and infer carbon and hydrogen in the sample from tests for the combustion products carbon dioxide and water."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-two-current-d-a-20261005-native-run-v1.goal-2",
+          "recordDigest": "sha256:bcd260549604d062aa82d5369cf4fb3dd6552df98248b60e3eb333e01acb5788"
+        },
+        "second": {
+          "recordId": "chemie-013w-current-2-review-b-20261005.goal-002",
+          "recordDigest": "sha256:c970d2d78bf9361a115612ce8b3c8a0a20ba043abf3279a7ff57e6aab7c85d19"
+        }
+      },
+      "rationaleDe": "Die zwei unabhängig eingefrorenen aktuellen Reviews behalten dieselben DE/EN-Texte und die tatsächliche neue Zielseite (physische PDF-Seite 4). Die begrenzte Kompetenz besteht darin, vorgelegte qualitative Verbrennungsdaten über die Produktnachweise CO₂ und H₂O und Atomerhaltung in einen begründeten C/H-Elementschluss zu überführen. Beobachtung, nachgewiesener Stoff und erschlossenes Element werden getrennt. Beide Reviewer haben die aktuelle Darstellung selbst gesehen und die amtliche HE-G9-Klausel zur qualitativen Elementaranalyse gezielt geprüft; eine fachliche Primärkontrolle der Nachweisreihenfolge ergänzt diese Quellenstelle, ohne deutsche Curriculumabdeckung zu behaupten. Das neue CO₂-Kugelmodell trägt korrekt O–C–O; H₂O zeigt H–O–H. Der Gasweg führt vor dem wässrigen Kalkwasser durch den Wassernachweis. Der Schluss auf Wasserstoff setzt abgesicherte Produktherkunft voraus; ein positiver Wasser-Leeransatz oder Wasser aus der Nachweislösung verhindert diesen Schluss ohne weitere Daten. Der zugeführte Sauerstoff belegt kein O in der Probe, und qualitative Befunde bestimmen weder Mengenverhältnis noch Molekülformel. Vorgegebene Daten und geeignete Modelle sind Hilfen, keine unabhängige Lernendenleistung und keine Forderung nach selbstständigem Experimentieren oder Methodenentwicklung. Symbole/Formeln und einfache Reaktionsgleichungen bleiben die sichtbaren Voraussetzungen. Keine Befunde bleiben offen. Historische D-/Bild-/Promptartefakte werden erhalten; P-v2, V und menschliche Release-Gates bleiben getrennte Nachweise.",
+      "rationaleEn": "Both independently frozen current reviews retain the same bilingual text and actual new goal page (physical PDF page 4). The bounded competence interprets supplied qualitative combustion observations through CO₂/H₂O product tests and atom conservation to justify a C/H inference. Observation, identified substance and inferred element are distinct. Both reviewers actually inspected the corrected depiction and official Hesse qualitative-analysis clause; a primary scientific check of the test sequence supplements it without claiming German curriculum coverage. The new CO₂ model correctly labels O–C–O; H₂O is H–O–H. The water test precedes aqueous limewater. Inferring hydrogen requires controlled product origin; a positive water blank or water introduced by the test solution prevents the inference without additional evidence. Feed oxygen proves no oxygen in the sample, and qualitative findings determine neither elemental proportions nor molecular formula. Supplied data and models are assistance, not learner performance, independent experimentation or method-development demands. Formula understanding and basic reaction equations remain visible prerequisites. No findings remain unresolved. Historical description, picture and prompt artifacts stay intact; the positive profile, visualization and human release gates remain separate evidence."
+    }
+  ],
+  "manifestFingerprint": "sha256:2b41324e68f0f768118bcc4c7134735e808a59e7a3dc226ee21db9c910f2f49a"
+}

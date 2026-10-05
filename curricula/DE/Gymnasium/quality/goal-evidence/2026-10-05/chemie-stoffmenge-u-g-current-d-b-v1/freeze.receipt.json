@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "receiptKind": "independent-current-d-round-b-frozen-verdict",
+  "frozenAt": "2026-10-05T02:50:30Z",
+  "sourceCheckedAt": "2026-10-05T02:52:33Z",
+  "runId": "chemie-stoffmenge-u-g-current-d-b-v1-20261005",
+  "decision": "keep",
+  "goalId": "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+  "candidateOnly": true,
+  "humanApproval": false,
+  "blindness": {
+    "otherCurrentRoundResultsReadBeforeFreeze": false,
+    "oldDescriptionReviewResultsReadBeforeFreeze": false,
+    "oldOrCurrentPositiveEvidenceProfilesReadBeforeFreeze": false,
+    "adjudicationsReadBeforeFreeze": false,
+    "canonicalDiffReadBeforeFreeze": false,
+    "providedProfile": null,
+    "truthfulQualification": "Read the exact own round input, current canonical goal/prerequisite, BookModel/HTML, actual PDF and source PNG, source documents and schemas. File-path searches exposed names of other artifacts, never their contents. No sibling/root/old D-result or positive profile read.",
+    "exactScope": "One changed u/g image and its current page/context; no restart of unchanged sibling goals"
+  },
+  "bookModelDigest": "sha256:d0d19d26b99300c3abf172c202d0ce95437cb3739c33fd4be58399cdd9c73f84",
+  "bookModelFileDigest": "sha256:d5907ba166f4a5abce350b9a73d28ef6f8b5b17e6a51bbd2fe6c2d1a777e6870",
+  "bundleFingerprint": "sha256:cb00a43efcb504338d1b593d07c566f824db864785dfbf11e76c87b6df085923",
+  "goalFingerprint": "sha256:991cc097814865bb7c4340c0735e56efc671027cc335eed5164adb4b2a4e3c50",
+  "pageFingerprint": "sha256:f759ff6c4d4eb4e7ef8b61348d915ba76795434f6ef5866a157bebdabc081e20",
+  "sourceCanonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "snapshotPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-u-g-current-d-b-v1/canonical-source.snapshot.json",
+    "bytesDigest": "sha256:01156291f79010e9795b809d1162dae74be7ce0ea8d5359b903cc5e1e95d1e7d",
+    "stableJsonDigest": "sha256:a85ff006e28c88158ea84b4ca92585effbf00c4c3c26caac41f0918cea6b29d4",
+    "snapshotMatchesLiveAtFreeze": true,
+    "boundBookModelSourceDigestMatchesCurrent": true
+  },
+  "actualViewedArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013v-u-g-corrected-image-current-1-v1/bundle/book.pdf",
+      "digest": "sha256:4b60b76afb4833895d89f32c7a1e13944b5102a418bf67198f326bec9f47a804",
+      "physicalPage": 3,
+      "goalPageNumber": 1,
+      "rasterPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-u-g-current-d-b-v1/pdf-physical-page-3.png",
+      "rasterDigest": "sha256:16a377cd040a5381cd4a5e028d07749ff5a1535a6a6fc75cd08df16512271389",
+      "renderCommand": "pdftoppm -f 3 -l 3 -singlefile -scale-to 1800 -png <book.pdf> <pdf-physical-page-3>",
+      "inspectionTool": "functions tools.view_image",
+      "findings": "Complete legible title, canonical ID, description, current image and outside-book prerequisite on one page; scientific labels and exponents legible."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/chemie/dd3fc8fe-2316-5fbc-b569-00651c83bc81/dd3fc8fe-2316-5fbc-b569-00651c83bc81.png",
+      "digest": "sha256:a1edaf2c262fb5c8e59414112c38e77dca87b48336821a554a369a26787bfeb3",
+      "inspectionTool": "functions tools.view_image",
+      "findings": "Both units appear at both scales; particle count multiplication explicit; schematic cluster label explicit; approximate g values correct."
+    }
+  ],
+  "primarySources": [
+    {
+      "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf",
+      "localPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-u-g-current-d-b-v1/sources/he-g9-chemie.pdf",
+      "digest": "sha256:f0a2c3795fcbcad1fee8d92d7ab9bc26810609bee0ef1fbd02c830e171220d2f",
+      "viewedRasterPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-u-g-current-d-b-v1/sources/he-g9-chemie-physical17.png",
+      "printedPage": 16,
+      "physicalPage": 17,
+      "finding": "Atomic mass and u/g mass units in grade 9; only this clause used, not neighboring formula or gas competencies."
+    },
+    {
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/8/chemie",
+      "localPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-u-g-current-d-b-v1/sources/by-c8-ntg.html",
+      "digest": "sha256:946d9de501ba59ce61b05195cbbb6893e3fbb5d4df466d32a0e7186bd8f5494d",
+      "inspectionTool": "tools.web__run primary page open/find plus saved raw HTML",
+      "section": "C8 NTG Lernbereich 3",
+      "finding": "Particle mass and mass/particle-number relationships provide source context; complete mapping/projection not claimed."
+    },
+    {
+      "url": "https://www.bipm.org/documents/20126/41483022/SI-Brochure-9-EN.pdf/2d2b50bf-f2b4-9661-f402-5f9d66e4b507?version=4.0",
+      "localPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-u-g-current-d-b-v1/sources/bipm-si-brochure-v3.01.pdf",
+      "digest": "sha256:f5d89a01e79472618e683a0e50e969323dd298d268c147c789c8e2874dc1c21a",
+      "viewedRasterPaths": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-u-g-current-d-b-v1/sources/bipm-si-brochure-v3.01-physical20.png",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-u-g-current-d-b-v1/sources/bipm-si-brochure-v3.01-physical31.png",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-u-g-current-d-b-v1/sources/bipm-si-brochure-v3.01-physical32.png"
+      ],
+      "printedPages": [
+        134,
+        145,
+        146
+      ],
+      "finding": "u is 1/12 of free ground-state C-12 atom mass; one mole contains exactly 6.02214076 × 10^23 specified entities; approximately 12 g for one mole C-12 is appropriate under present SI."
+    }
+  ],
+  "scientificCheck": {
+    "mC12_u": 12,
+    "mC12_g_approx": 1.99264687992e-23,
+    "oneMolC12_u": 7.226568912e+24,
+    "oneMolC12_g_approx": 11.999999995853056,
+    "interpretation": "Rounded pictured values agree. Exact 12 u and approximate 12 g distinguished."
+  },
+  "scopeAssessment": "One integrated mass-unit and particle-to-sample relation, known mole prerequisite; no split required. Equal-mass samples with supplied differing atom/molecule masses probe inverse reasoning rather than a number swap.",
+  "profileRecommendation": "create: no profile supplied or inspected; recommendation does not claim absence in external active registries.",
+  "descriptionRecordsPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013v-u-g-corrected-image-current-1-v1/round-b/results/chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-first-pass-b.batch-001.records.jsonl",
+  "descriptionRecordsDigest": "sha256:d5db2fb70f8a7f30c615b2d2434c0cfb636351d9b43ce116b4331c2856b7e539",
+  "runPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013v-u-g-corrected-image-current-1-v1/round-b/results/chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-first-pass-b.batch-001.run.json",
+  "runDigest": "sha256:5fc2fabffa4f2ace5ffddf44b91cec34deaa539c9865844556f96b328a475626",
+  "modelDisclosure": {
+    "provider": "OpenAI",
+    "reportedAgent": "Codex based on GPT-6",
+    "exactServingModelId": "not exposed",
+    "modelVersion": "not exposed",
+    "generationParameters": "not exposed",
+    "mode": "independent round-b current description and changed image/page/context review"
+  },
+  "validationStatus": "passed actual local batch validator",
+  "validationReceiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-u-g-current-d-b-v1/validation.receipt.json",
+  "validationReceiptDigest": "sha256:ec99d4f61a594373f0f103b6850de0d0c63151c4f8d5762b03a9a1169efc046c"
+}

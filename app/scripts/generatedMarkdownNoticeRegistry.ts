@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { discoverMemoryCardReviewConfigs } from './memoryCardReviewConfigDiscovery'
+import { discoverActiveMemoryCardReviewConfigs, discoverMemoryCardReviewConfigs } from './memoryCardReviewConfigDiscovery'
 
 export interface GeneratedMarkdownNoticeConfig {
   path: string
@@ -342,8 +342,11 @@ function markdownNoticeFromRegistryRow(row: GeneratedStatusRegistryRow): Generat
 }
 
 function loadMemoryCardReviewRows(): GeneratedStatusRegistryRow[] {
-  const configs = discoverMemoryCardReviewConfigs(undefined, { allowEmpty: true })
+  const configs = discoverActiveMemoryCardReviewConfigs()
   if (configs.length === 0) return []
+  const activeReportPaths = new Set(configs.map((configRef) => configRef.reportPath))
+  const historicalConfigs = discoverMemoryCardReviewConfigs()
+    .filter((configRef) => !activeReportPaths.has(configRef.reportPath))
 
   return [
     {
@@ -351,17 +354,30 @@ function loadMemoryCardReviewRows(): GeneratedStatusRegistryRow[] {
       generatedBy: 'app/scripts/memoryCardReview.ts',
       role: 'Subject-level `CQR-302` memory-card review reports.',
       sourceOfTruth: [
-        'curricula/DE/Gymnasium/quality/memory-card-review/*.config.json',
-        'curricula/DE/Gymnasium/quality/memory-card-review/*.review.jsonl',
-        'curricula/DE/Gymnasium/quality/memory-card-review/*.cards.review.jsonl',
+        'curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json',
+        'curricula/DE/Gymnasium/quality/memory-card-review/**/*.config.json',
+        'curricula/DE/Gymnasium/quality/memory-card-review/**/*.review.jsonl',
+        'curricula/DE/Gymnasium/quality/memory-card-review/**/*.cards.review.jsonl',
       ],
       regenerateWith: 'cd app && npm run quality:memory-card-review:report:all',
     },
+    ...historicalConfigs.map((configRef) => ({
+      artifactPaths: [configRef.reportPath],
+      generatedBy: 'app/scripts/memoryCardReview.ts',
+      role: 'Retained predecessor snapshot; the active subject report above supplies current evidence.',
+      sourceOfTruth: [configRef.configPath],
+      regenerateWith: 'Preserve this snapshot; generate the active subject report above.',
+    })),
   ]
 }
 
 function loadMemoryCardReviewNoticeConfigs(): GeneratedMarkdownNoticeConfig[] {
-  return discoverMemoryCardReviewConfigs(undefined, { allowEmpty: true }).map((configRef) => {
+  const activeConfigs = discoverActiveMemoryCardReviewConfigs()
+  const activeReportPaths = new Set(activeConfigs.map((configRef) => configRef.reportPath))
+  const historicalConfigs = discoverMemoryCardReviewConfigs()
+    .filter((configRef) => !activeReportPaths.has(configRef.reportPath))
+  // Retain the original notices of predecessor snapshots without regenerating them.
+  return [...activeConfigs, ...historicalConfigs].map((configRef) => {
     const parsed = JSON.parse(readFileSync(resolve(repoRoot, configRef.configPath), 'utf8')) as MemoryCardReviewConfigForNotice
     if (typeof parsed.reviewPath !== 'string' || parsed.reviewPath.trim().length === 0) {
       throw new Error(`Memory-card review config has no reviewPath: ${configRef.configPath}`)

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-10-05T06:36:00.562710+00:00",
+  "checks": [
+    {
+      "command": "npm --prefix app run check:docs-links",
+      "actualTerminalExitCode": 0,
+      "filesChecked": 269
+    },
+    {
+      "command": "git diff --check",
+      "actualTerminalExitCode": 0
+    },
+    {
+      "check": "checkpoint README actual local link targets",
+      "actualTerminalExitCode": 0,
+      "targetsChecked": 12
+    },
+    {
+      "check": "syntax parse new public JSON artifacts",
+      "actualTerminalExitCode": 0,
+      "jsonArtifactsParsed": 1136
+    }
+  ],
+  "officialFullPdfCacheExcludedFromPublicDelta": true,
+  "scientificReviewClaimedForTheseChecks": false,
+  "commitCreated": false
+}

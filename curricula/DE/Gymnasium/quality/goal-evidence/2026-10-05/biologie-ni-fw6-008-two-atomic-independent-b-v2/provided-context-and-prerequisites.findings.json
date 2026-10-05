@@ -1,0 +1,62 @@
+{
+  "format": "independent_targeted_followup_advisory_v1",
+  "reviewer": "independent_b",
+  "reviewMode": "targeted_followup_to_own_frozen_B_v1_not_blind_first_pass",
+  "createdAt": "2026-10-05T04:05:27.501584+00:00",
+  "reviewAuthority": "ai_candidate",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-fw6-008-two-atomic-companions-candidate-v2/two-companions.goal-templates.candidate.json",
+  "candidateSha256": "cd9a72d5ef17546bcf513e7789fe22590a0f3142c90115da51af8b208c61731c",
+  "active": false,
+  "humanApproval": false,
+  "nativeRegistryEntry": false,
+  "nativeGatePassed": false,
+  "nativeBookD2Passed": false,
+  "lane": "Provided model and prerequisites",
+  "findings": [
+    {
+      "code": "CTX-01",
+      "type": "provided_model_requirement",
+      "appliesTo": "both",
+      "finding": "The wording correctly binds both goals to supplied models. The complete chromosome-model foundations must actually be explained in those materials.",
+      "concreteSuggestion": "Supply the meanings of homologous partners, corresponding information regions, chromosome/chromatid labels, parental origins and the gamete output convention; avoid a legend of unexplained names only."
+    },
+    {
+      "code": "CTX-02",
+      "type": "assortment_model_requirement",
+      "appliesTo": "ni-fw6-008-independent-assortment-companion-v2",
+      "finding": "Pairwise independence cannot be shown from only one homologous pair.",
+      "concreteSuggestion": "Show at least two distinguishable pairs with correctly given alternative orientations/outcomes. Ask why partner choice in pair A does not determine choice in pair B; do not demand a 2^n count."
+    },
+    {
+      "code": "CTX-03",
+      "type": "exchange_model_requirement",
+      "appliesTo": "ni-fw6-008-chromatid-segment-exchange-companion-v2",
+      "finding": "Meaningful new parental information combinations require corresponding, distinguishable parental region information in the model.",
+      "concreteSuggestion": "Show correct non-sister before/after exchange at corresponding positions. Distinguish recombining existing regions from new/lost genes or nonhomologous translocation."
+    },
+    {
+      "code": "CTX-04",
+      "type": "own_explanation_boundary",
+      "appliesTo": "both",
+      "finding": "Given process/output data may support explanation, but a copied causal conclusion is not independent evidence.",
+      "concreteSuggestion": "Keep legend and observations available; require the learner to connect the specific changed combination to the specific shown mechanism, including a suitable model contrast."
+    },
+    {
+      "code": "PRE-01",
+      "type": "prerequisite_limit",
+      "appliesTo": "both",
+      "existingRequiresId": "b1dff57f-329e-5264-b2b9-2db71a0b2172",
+      "finding": "The current cell-comparison goal is contextual and does not establish chromosomal model knowledge.",
+      "concreteSuggestion": "Use the promised complete model explanations as explicit entry scaffolding or later bind a separately reviewed narrow foundation. Do not claim the cell-comparison edge alone proves readiness."
+    },
+    {
+      "code": "PRE-02",
+      "type": "avoid_unnecessary_dependency",
+      "appliesTo": "both",
+      "finding": "Neither companion logically requires mastery of the other; an upper-secondary full-meiosis goal is also not required for this bounded material-supported explanation.",
+      "concreteSuggestion": "Do not introduce a mutual companion dependency or require ab96bec3-ee34-5209-bcc9-5c7c8280429c as a universal prerequisite."
+    }
+  ],
+  "meaningOfKeep": "The current semantic descriptions can be kept. These conditions guide actual material construction and do not claim that unread P/model artifacts already satisfy them.",
+  "activeRequiresOrModelWrites": 0
+}

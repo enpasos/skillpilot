@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "chemie-energy-four-current-independent-review-a-targeted-positive-v2",
+  "reviewedAtUtc": "2026-10-05T00:24:35.785214+00:00",
+  "reviewAuthority": "ai_candidate",
+  "recordStatus": "candidate",
+  "scope": "Only five changed inner-profile fields: 4928 essential DE/EN and first-case task DE/EN; 3e German Eduktband -> Eduktbindung with required article agreement. No unchanged D or P restart.",
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-revision-candidate-v1/positive-evidence.candidates.json",
+      "fileSha256": "sha256:b96944987da9c04a90aafc93549f1ceef0d91e9c875a39d48207b85e96081a50"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-positive-targeted-candidate-v2/positive-evidence.candidates.json",
+      "fileSha256": "sha256:fc4b0df91a63bd9a97fcabbf769eaa83d29c35f2eb4cc26e732ac5f6ed49bcab"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-current-independent-review-a-v1/description-phase-a.freeze.json",
+      "fileSha256": "sha256:a70b0688ac9b54fb7fde5904fa106bb4d975a63f8daf3ccc72058080febe19d2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-current-independent-review-a-v1/positive-phase-a.review.json",
+      "fileSha256": "sha256:2a4f657a1a0822142aa748f890c9ae2f13f0e25fd80e374947a7ae806890e9d9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-current-independent-review-a-v1/reviewed-targeted-positive-v2.input.snapshot",
+      "fileSha256": "sha256:fc4b0df91a63bd9a97fcabbf769eaa83d29c35f2eb4cc26e732ac5f6ed49bcab"
+    }
+  ],
+  "exactComparison": {
+    "innerProfileChanges": {
+      "8ece9beb-9458-5ea1-8e45-9be04670f464": [],
+      "b95cdf98-fc97-5a94-b133-878922d28156": [],
+      "4928d5d1-e790-5883-9349-3b03a1c63b99": [
+        {
+          "path": "/applicationCaseBriefs/0/taskDemandDe",
+          "before": "In einem geschlossenen Modell-Reaktionszylinder verschiebt sich der Kolben gegen konstanten Außendruck. Das System nimmt 500 J Wärme auf und leistet 200 J Volumenarbeit nach außen; andere Arbeit ist ausgeschlossen. Klassifiziere das System, bestimme ΔU und erkläre, welche Bedeutung die 500 J bei konstantem Druck für ΔH haben. Ist „geschlossen“ gleich „energieisoliert“?",
+          "after": "In einem geschlossenen Modell-Reaktionszylinder verschiebt sich der Kolben gegen konstanten Außendruck; der Systemdruck ist während der betrachteten Änderung ebenfalls konstant und mechanisch mit dem Außendruck ausgeglichen. Das System nimmt 500 J Wärme auf und leistet 200 J Volumenarbeit nach außen; andere Arbeit ist ausgeschlossen. Klassifiziere das System, bestimme ΔU und erkläre, welche Bedeutung die 500 J bei konstantem Druck für ΔH haben. Ist „geschlossen“ gleich „energieisoliert“?"
+        },
+        {
+          "path": "/applicationCaseBriefs/0/taskDemandEn",
+          "before": "In a closed model reaction cylinder the piston moves against constant external pressure. The system absorbs 500 J of heat and does 200 J of pressure–volume work on its surroundings; other work is excluded. Classify the system, find ΔU and explain what the 500 J mean for ΔH at constant pressure. Does closed mean energy-isolated?",
+          "after": "In a closed model reaction cylinder the piston moves against constant external pressure; during the modelled change the system pressure is also constant and mechanically balanced with the external pressure. The system absorbs 500 J of heat and does 200 J of pressure–volume work on its surroundings; other work is excluded. Classify the system, find ΔU and explain what the 500 J mean for ΔH at constant pressure. Does closed mean energy-isolated?"
+        },
+        {
+          "path": "/expectations/0/essentialUnderstandingDe",
+          "before": "Offene Systeme tauschen Stoff und Energie, geschlossene Systeme Energie, aber keinen Stoff, isolierte Systeme beides nicht aus. Wärme und Arbeit sind Übertragungsformen; innere Energie U und Enthalpie H = U + pV sind Zustandsgrößen. Bei nur Volumenarbeit gilt ΔU = q + w mit w = −p_extΔV; q_p = ΔH bei konstantem Druck und q_V = ΔU bei konstantem Volumen unter passenden Randbedingungen.",
+          "after": "Offene Systeme tauschen Stoff und Energie, geschlossene Systeme Energie, aber keinen Stoff, isolierte Systeme beides nicht aus. Wärme und Arbeit sind Übertragungsformen; innere Energie U und Enthalpie H = U + pV sind Zustandsgrößen. Bei nur Volumenarbeit gilt ΔU = q + w. Für konstanten Außendruck gilt w = −p_extΔV. In einem geschlossenen System mit ausschließlich Volumenarbeit gilt q_p = ΔH bei konstantem, mechanisch ausgeglichenem System- und Außendruck; q_V = ΔU gilt bei konstantem Volumen und ohne andere Arbeit."
+        },
+        {
+          "path": "/expectations/0/essentialUnderstandingEn",
+          "before": "Open systems exchange matter and energy, closed systems energy but not matter, and isolated systems neither. Heat and work are transfer modes; internal energy U and enthalpy H = U + pV are state functions. With only pressure–volume work, ΔU = q + w and w = −p_extΔV; q_p = ΔH at constant pressure and q_V = ΔU at constant volume under the relevant conditions.",
+          "after": "Open systems exchange matter and energy, closed systems energy but not matter, and isolated systems neither. Heat and work are transfer modes; internal energy U and enthalpy H = U + pV are state functions. With only pressure–volume work, ΔU = q + w. For constant external pressure, w = −p_extΔV. For a closed system with only pressure–volume work, q_p = ΔH holds at constant, mechanically balanced system and external pressure; q_V = ΔU holds at constant volume with no other work."
+        }
+      ],
+      "3e433dae-99f9-5a95-ad63-d5fa0b5f6836": [
+        {
+          "path": "/expectations/0/observablePerformanceDe",
+          "before": "Die lernende Person erklärt mit vorgegebenen Reaktionsenthalpien und bereits ausgewerteten Bindungsbudgets qualitativ, welcher Beitrag überwiegt, warum sich die Energieabgabe unterscheidet und welche Edukt-/Produktsysteme relativ energieärmer liegen. Sie weist eine Begründung nur mit einem einzelnen Eduktband zurück und benennt die Grenze des vereinfachten Bindungsmodells. Nachrechnen vorgegebener Summen ist weder notwendig noch allein hinreichend.",
+          "after": "Die lernende Person erklärt mit vorgegebenen Reaktionsenthalpien und bereits ausgewerteten Bindungsbudgets qualitativ, welcher Beitrag überwiegt, warum sich die Energieabgabe unterscheidet und welche Edukt-/Produktsysteme relativ energieärmer liegen. Sie weist eine Begründung nur mit einer einzelnen Eduktbindung zurück und benennt die Grenze des vereinfachten Bindungsmodells. Nachrechnen vorgegebener Summen ist weder notwendig noch allein hinreichend."
+        }
+      ]
+    },
+    "8eceAndB95InnerProfilesExactlyUnchanged": true,
+    "4928SecondCaseAllFieldsExactlyUnchanged": true,
+    "allCaseExpectedPerformancesExactlyUnchanged": true
+  },
+  "targetedFindings": [
+    {
+      "goalId": "4928d5d1-e790-5883-9349-3b03a1c63b99",
+      "decision": "PASS",
+      "scientificConditions": "w=-p_ext deltaV explicitly requires constant external pressure; variable external pressure is not silently covered by that formula. q_p=deltaH explicitly uses a closed system, only pV work, constant mechanically balanced system/external pressure. q_V=deltaU is explicitly constant-volume and no other work. These are sufficient school thermodynamic model conditions.",
+      "actualCaseData": "First case now explicitly supplies constant system pressure mechanically balanced with constant exterior pressure, q=+500 J, outward pV work 200 J and no other work.",
+      "actualExpectedAnswer": "w=-200 J; deltaU=+300 J; delta(pV)=+200 J, hence deltaH=+500 J under the now-explicit conditions. Neither heat as a stored state quantity nor closed=isolated follows.",
+      "helpVersusReasoning": "The pressure equilibrium, heat/work values and other-work exclusion are supplied help. Independent evidence remains the work sign, energy accounting, physical explanation of deltaU/deltaH distinction and boundary interpretation; restating the conditions or copying the formula is insufficient.",
+      "bilingualEquivalence": "German and English explicitly retain the same mechanically balanced constant-pressure premise and work exclusions.",
+      "freshTransferPreserved": "Unchanged second case still blocks every matter/heat/work transfer at the total isolated boundary, distinguishes inner subsystems and avoids inferring deltaH from q_V alone.",
+      "innerProfileDigest": "sha256:32eb8946a8b461dfae66688a689118415fddf24b5546b880389523b5770a478c"
+    },
+    {
+      "goalId": "3e433dae-99f9-5a95-ad63-d5fa0b5f6836",
+      "decision": "PASS",
+      "scientificConditions": "Eduktbindung correctly names a reactant bond; Eduktband was a wording error. Required German article agreement is part of that single terminology correction.",
+      "caseDataAndAnswers": "Both complete task-data and expected-performance cases are exactly unchanged. Correct bonding/phase conclusions from the prior actual P review remain valid; no new sum-calculation or different relative-energy requirement is introduced.",
+      "helpVersusReasoning": "All budget/phase numbers remain supplied help, while the causal two-contribution and phase-model-limit explanations remain independent requirements.",
+      "innerProfileDigest": "sha256:b61cd879f9d298461a2a418d9c07302ecd4a27b46a2b2cb2557bcb3a77045b1a"
+    }
+  ],
+  "unchangedProfiles": [
+    {
+      "goalId": "8ece9beb-9458-5ea1-8e45-9be04670f464",
+      "innerProfileDigest": "sha256:4be8471c3ea927174f8ae90015d81bd04fa155174ba94f2453dab0c863e7952a",
+      "status": "Prior substantive candidate PASS retained without rereview"
+    },
+    {
+      "goalId": "b95cdf98-fc97-5a94-b133-878922d28156",
+      "innerProfileDigest": "sha256:59437bb6a12fbe8d57072093afcd1b76f4c11b081fab19a9fa58945c497fe465",
+      "status": "Prior substantive candidate PASS retained without rereview"
+    }
+  ],
+  "changedInnerSchemasValid": true,
+  "outerBindingDisposition": "All four old energy13 outer P records remain HOLD/stale as documented in positive-phase-a.review.json. This targeted content receipt does not reissue current outer records or close gates.",
+  "activeChanges": false,
+  "strictCompletionIncrease": 0,
+  "restoredCurrentBindings": 0,
+  "humanApprovalClaimed": false,
+  "humanTrialClaimed": false
+}

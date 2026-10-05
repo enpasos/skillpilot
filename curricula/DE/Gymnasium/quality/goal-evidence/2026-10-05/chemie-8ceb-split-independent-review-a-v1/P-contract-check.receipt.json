@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-05T00:58:13.293Z",
+  "status": "pass_two_current_candidate_inner_profiles",
+  "pInputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-8ceb-split-scope-preservation-candidate-v1/positive-evidence.full.candidates.json",
+  "pInputSha256": "sha256:1525e3c2be7354ebcc5c54dac9b66b7e447f56a4b12a99bd85b00b80bc15d2c8",
+  "dFrozenFirstAndUnchanged": true,
+  "frozenDFileSha256": "sha256:0ecf8da23726a3c7bab04368790022508f57b940420937a06dc8b14c05120137",
+  "results": [
+    {
+      "goalId": "5db9ba57-6a80-56db-8b9d-e8ca4ac41855",
+      "profileSchemaPass": true,
+      "schemaErrors": null,
+      "applicationCases": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    {
+      "goalId": "7c22f436-e550-5b0b-85ae-a073b0c50418",
+      "profileSchemaPass": true,
+      "schemaErrors": null,
+      "applicationCases": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    }
+  ],
+  "molecularConservationChecks": [
+    {
+      "givenModel": "C10H22 → C8H18 + C2H4",
+      "carbonBefore": 10,
+      "carbonAfter": 10,
+      "hydrogenBefore": 22,
+      "hydrogenAfter": 22
+    },
+    {
+      "givenModel": "C12H26 → C8H18 + C4H8",
+      "carbonBefore": 12,
+      "carbonAfter": 12,
+      "hydrogenBefore": 26,
+      "hydrogenAfter": 26
+    },
+    {
+      "rejectedSoleInputModel": "C12H26 → C8H18 + C4H10",
+      "carbonBefore": 12,
+      "carbonAfter": 12,
+      "hydrogenBefore": 26,
+      "hydrogenAfter": 28,
+      "additionalHydrogenRequired": 2
+    }
+  ],
+  "currentBindingOrGateCompletionClaimed": false,
+  "currentStrictClosuresClaimed": 0
+}

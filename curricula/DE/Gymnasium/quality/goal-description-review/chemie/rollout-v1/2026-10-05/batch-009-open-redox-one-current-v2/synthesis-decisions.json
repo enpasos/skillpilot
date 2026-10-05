@@ -1,0 +1,84 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-redox-one-current-resolved-synthesis-20261005-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-root-current-two-independent-reviews-with-preserved-revision-dissent",
+  "synthesizedAt": "2026-10-05T04:58:03.000Z",
+  "batch": {
+    "batchId": "chemie-batch-009-open-redox-one-current-v2-20261005",
+    "batchManifestDigest": "sha256:8c09bdac75642c1c3b6f87401a5773ae4b996939c767f2d263a463e133a51c1a",
+    "configDigest": "sha256:f5b39ad357ec234179c171b629639e7ae56ecd908a71d4859b9ea1b4222bbe89",
+    "bundleFingerprint": "sha256:f60a03fcbfca23e563d353c07eed27b739b534cc1ed1f4d034bbfcf78d498d13",
+    "bookDigest": "sha256:f72fc109f83f78409936c773a6b9503ac14e9d9c293839b1dab5960ae50e440e",
+    "reviewInputFingerprint": "sha256:bc687eb86b52db0a255868c8b32798c1a61c55b83ce7d1fe67b1a2a5d66bbd56",
+    "dualSummaryDigest": "sha256:3f819fcedf5af507286f0c1ddacd75fd47e8fda0b39cc4d9add91f1fbe3ab358",
+    "canonicalLandscapeDigest": "sha256:220229ad94a5da1c7b466b8e43b5a2aa5b45baa3105d896e215b2cf583760aab"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-batch-009-open-redox-one-current-v2-20261005-a",
+      "campaignDigest": "sha256:0c3d3ff9671446f65b37490208d01f7c8cd87e7a43a56b1487355debf9541102",
+      "roundId": "chemie-batch-009-open-redox-one-current-v2-20261005-first-pass-a",
+      "independenceGroupId": "chemie-batch-009-open-redox-one-current-v2-20261005-independent-a",
+      "reviewInputFingerprint": "sha256:bc687eb86b52db0a255868c8b32798c1a61c55b83ce7d1fe67b1a2a5d66bbd56",
+      "batchId": "chemie-batch-009-open-redox-one-current-v2-20261005-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:6c2274e3b49b1b4cbb1267cdb3a4d539486e8223601d733eccab2bfb9ce8cd9c",
+      "runId": "chemie-b009-redox-current-d-a-20261005-native-blind-v1",
+      "runManifestDigest": "sha256:6413463493ceaf1357f845151a8940102c546da47c89c3ddaa72f26f777c0b62",
+      "resultsDigest": "sha256:5041a0c60b6fce2f9d39861e738e414f414b591477b8bef3b45ee0c47021fa5c"
+    },
+    "second": {
+      "campaignId": "chemie-batch-009-open-redox-one-current-v2-20261005-b",
+      "campaignDigest": "sha256:0735e807c2cf3234184636a745ac7a0a43e979898193aa9ee368abc145eeccb6",
+      "roundId": "chemie-batch-009-open-redox-one-current-v2-20261005-first-pass-b",
+      "independenceGroupId": "chemie-batch-009-open-redox-one-current-v2-20261005-independent-b",
+      "reviewInputFingerprint": "sha256:bc687eb86b52db0a255868c8b32798c1a61c55b83ce7d1fe67b1a2a5d66bbd56",
+      "batchId": "chemie-batch-009-open-redox-one-current-v2-20261005-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:99a1f03656344b173ce51dd8ce455e49915400f790e6d473849f47d3f05e6fa3",
+      "runId": "chemie-batch-009-open-redox-one-current-v2-20261005-first-pass-b.batch-001.independent-d-b-v1",
+      "runManifestDigest": "sha256:6509439df41247e0b1293ee65f864a2361aad08123b4ae1f8213e4b8e753e987",
+      "resultsDigest": "sha256:4c284bac8096c83c5480923c3f6f719916da16a88435814a045070f5b6ea2d92"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-redox-one-current-resolved-synthesis-20261005-v1-decision-001",
+      "goalId": "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7b4373dc5dbaa2e1cd9d76ad97132d9480e5840380787c6eacee50a6455ef07f",
+      "pageFingerprint": "sha256:6e425e6ce46c8d9b58015d32aeb9bca11447e35597b4e30a506f8cae1ecaf164",
+      "goalReviewContextFingerprint": "sha256:a90e668a9050d014f049158eedd57f4ed4c078da28f7a4876913d4d558c3aabf",
+      "finalText": {
+        "titleDe": "Oxidation und Reduktion bei einfachen Reaktionen erkennen",
+        "titleEn": "Recognize oxidation and reduction in simple reactions",
+        "descriptionDe": "Die lernende Person kann Oxidations- und Reduktionsvorgänge bei einfachen Reaktionen von Metallen und Nichtmetallen fachlich deuten.",
+        "descriptionEn": "The learner can interpret oxidation and reduction processes in simple reactions involving metals and non-metals."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b009-redox-current-d-a-20261005-native-blind-v1-bcf8b24b",
+          "recordDigest": "sha256:6eff495630115e872704abb658b896a4f8c3811b184a98af3bffa6fb6ea3a4cf"
+        },
+        "second": {
+          "recordId": "chemie-b009-redox-current-book-independent-d-b-v1.bcf8b24b",
+          "recordDigest": "sha256:3360bb552ee79fb2ddfa7f6ed12eea77157635d4f21fdd491f3233ae3e1f4933"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann bei einfachen Reaktionen von Metallen und Nichtmetallen begründen, welcher Reaktionspartner oxidiert und welcher reduziert wird.",
+        "proposedDescriptionEn": "The learner can justify which reactant is oxidized and which is reduced in simple reactions involving metals and non-metals.",
+        "rationaleDe": "Die vorgeschlagene explizitere Partnerzuordnung ist eine Formulierungsalternative ohne belegten fachlichen Textmangel. Der vorhandene Operator fachlich deuten fordert bereits eine begründete Interpretation. Die zweite Runde bestätigt dies nach ihrem eigenen Freeze; die unabhängig begründete HE/NI-Quellen-Adjudikation erhält zudem die frühe Deutung über Oxidbildung/-zerlegung, die nicht in jedem Einstiegsfall zwingend zwei Partnerrollen im späteren Elektronenmodell verlangt. Alte Reviewrecords und Freezes bleiben unverändert; der genaue Vorschlag und seine Ablehnung werden hier ausdrücklich erhalten.",
+        "rationaleEn": "The more explicit reactant assignment is a wording alternative without a demonstrated scientific description defect. The current interpretation operator already requires reasoned explanation. Round B confirms this after its own freeze; the source-grounded Hesse/Lower Saxony adjudication also preserves introductory oxide formation/decomposition, which does not require both reactant roles through the later electron model in every entry case. Original records and freezes remain unchanged; the exact proposal and its rejection are explicitly preserved here."
+      },
+      "rationaleDe": "Die unabhängig vor Peer/P eingefrorenen aktuellen Reviews binden denselben unveränderten DE/EN-Text, dieselbe tatsächliche HTML-/PDF-Zielseite und dasselbe fachlich geprüfte JPG. Die erste Runde behält die modellneutrale fachliche Deutung einfacher Metall-/Nichtmetallreaktionen. Die zweite Runde empfiehlt zunächst eine explizitere Partnerzuordnung, bestätigt aber in ihrer gesonderten unveränderlichen Befundauflösung, dass dies keine belegte fachliche oder prüfbare Lücke des bestehenden Deutungsoperators behebt. Die nachgelagerte Quellen-Adjudikation der ersten Runde stützt diesen Befund anhand der tatsächlich gesehenen HE-Einführung über Oxidbildung/-zerlegung und NI-Sauerstoffübertragung: Beide Partnerrollen dürfen bei geeigneten Übertragungsfällen erklärt werden, ohne die spätere Elektronendeutung zur universellen Einstiegsvoraussetzung zu machen. Die Empfehlung bleibt als exakt gebundener, begründet verworfener Dissent erhalten; kein Ersturteil und kein Freeze werden umgeschrieben. Metall-/Nichtmetallbreite, Sauerstoffmodelle und gegebenenfalls bereits eingeführte Elektronenmodelle bleiben erhalten. Oxidationszahlgleichungen, Redoxreihe, selbstständige Experimente und quantitative Elektronenbilanzen sind keine neue Zielpflicht. Die tatsächlichen Darstellungen wurden von beiden Reviewern selbst gesehen; Bild als Lernhilfe und kleinere Gitterlabels als Grenze, keine Lernleistung. Keine vollständige 16-Landes-Mapping- oder menschliche Freigabe wird behauptet. P fehlt im aktuellen Input und wird erst nach dieser aufgelösten D-Synthese fachlich erstellt/geprüft.",
+      "rationaleEn": "The two independent reviews, frozen before peers and positive profiles, bind the same unchanged bilingual text, actual HTML/PDF goal page and scientifically inspected JPG. Round A retains the model-neutral interpretation of simple metal/non-metal reactions. Round B initially recommends a more explicit assignment of reactants, but its separately preserved finding resolution confirms that this is not a demonstrated scientific or assessable omission in the current interpretation operator. The later source-grounded adjudication by A supports that conclusion from the actually viewed Hessian oxide formation/decomposition introduction and Lower Saxony oxygen-transfer clause: both roles can be explained in suitable transfer cases without making the later electron model a universal entry prerequisite. The precise original proposal remains as a bound rejected dissent; no first decision or freeze is overwritten. Metal/non-metal breadth and introduced oxygen or electron models are preserved. Oxidation-number equations, redox series, independent experimentation and quantitative electron balancing remain outside scope. Both reviewers actually inspected the depictions; the image is teaching support, with small lattice labels recorded as a limitation, never learner evidence. No complete sixteen-state mapping approval or human approval is claimed. The positive profile is absent and will be scientifically authored and reviewed only after this resolved description synthesis."
+    }
+  ],
+  "manifestFingerprint": "sha256:b5e289822073c6610e474e2588085f6d4d29ba1fe74564858a3ab1e58eca4735"
+}

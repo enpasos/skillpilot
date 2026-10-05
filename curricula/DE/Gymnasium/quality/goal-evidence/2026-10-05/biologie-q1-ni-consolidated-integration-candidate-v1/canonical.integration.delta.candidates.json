@@ -1,0 +1,927 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-05T01:42:43.006880+00:00",
+  "status": "inactive_consolidated_integration_preparation",
+  "authoringAuthority": "ai_candidate",
+  "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+  "canonicalBefore": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "sha256": "sha256:bf1f0db83fb572b882630cd25327633874e35126f6a014da697c90c1c87a644f"
+  },
+  "units": [
+    {
+      "unitId": "ni-variation",
+      "integrationPreparationStatus": "concrete_candidate_ready_for_targeted_integration_and_current_D",
+      "gateClosureStatus": "not_finalized",
+      "holds": [],
+      "canonicalOperations": [
+        {
+          "op": "add_goal",
+          "goalId": "359e6313-cd86-54d1-bee5-8e680101dc32",
+          "before": null,
+          "after": {
+            "id": "359e6313-cd86-54d1-bee5-8e680101dc32",
+            "shortKey": "canonical_biology_observable_intraspecific_variation",
+            "title": "Innerartliche Variation über Generationen erklären",
+            "titleEn": "Explain intraspecific variation across generations",
+            "description": "Die lernende Person kann an Beispielen Unterschiede zwischen Individuen derselben Art beschreiben und erläutern, dass solche Unterschiede auch in neuen Generationen ohne vorgegebenes Entwicklungsziel auftreten.",
+            "descriptionEn": "The learner can use examples to describe differences between individuals of the same species and explain that such differences also occur in new generations without a predetermined developmental aim.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical",
+              "SekI"
+            ],
+            "contains": [],
+            "requires": [
+              "2d451684-6e53-565e-a987-f362da919d2c"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-NI"
+              ]
+            },
+            "type": "atomic",
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-biology",
+              "demandLevel": "AB2",
+              "processCompetencies": [],
+              "guidingIdeas": [
+                "BIO_ENTWICKLUNG"
+              ],
+              "phase": "GLOBAL",
+              "area": "Variation",
+              "topicCode": "CANONICAL.BIOLOGY.OBSERVABLE_INTRASPECIFIC_VARIATION"
+            },
+            "extendedData": {
+              "applicabilityMappingInheritance": "boundary",
+              "provenance": {
+                "sourceLandscapeId": "0b27a054-e81e-5423-aa71-d3d8d9d8f0db",
+                "sourceLandscapeTitle": "DE-NI - Biologie Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction)",
+                "sourceGoalId": "ni-biology-seki-kc2015-fw7-001-32911481",
+                "supportingSourceGoalIds": [
+                  "ni-biology-seki-kc2015-fw7-002-48e75da8"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "op": "append_contains",
+          "goalId": "b530a382-2786-5794-8821-3e01a62d88fd",
+          "before": [
+            "8d35381e-d646-512c-b0c2-bb90c4974208",
+            "55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba",
+            "91df35c7-e384-50d6-bb3a-37e74a6086f1",
+            "e0d04e58-1591-5230-bfa6-5c685b56d25b",
+            "b1dff57f-329e-5264-b2b9-2db71a0b2172",
+            "5f39afac-897c-5ed3-95b5-89ccf66b2532",
+            "1c3470ae-83f8-52e9-98ae-b0a712755b66"
+          ],
+          "append": [
+            "359e6313-cd86-54d1-bee5-8e680101dc32"
+          ],
+          "reason": "Retain every original child; add real atomic companion without replacing its parent."
+        }
+      ],
+      "sourceGoalIds": [
+        "ni-biology-seki-kc2015-fw7-001-32911481",
+        "ni-biology-seki-kc2015-fw7-002-48e75da8"
+      ],
+      "imageGoalIds": [
+        "359e6313-cd86-54d1-bee5-8e680101dc32"
+      ],
+      "dependencies": []
+    },
+    {
+      "unitId": "ni-gene-product-trait",
+      "integrationPreparationStatus": "concrete_candidate_ready_for_targeted_integration_and_current_D",
+      "gateClosureStatus": "not_finalized",
+      "holds": [],
+      "canonicalOperations": [
+        {
+          "op": "add_goal",
+          "goalId": "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+          "before": null,
+          "after": {
+            "id": "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+            "shortKey": "canonical_biology_nonmolecular_gene_product_trait_relation",
+            "title": "Gen, Genprodukt und Merkmal im einfachen Modell verknüpfen",
+            "titleEn": "Connect gene, gene product and trait in a simple model",
+            "description": "Die lernende Person kann in einem einfachen Modell erklären, wie Gene als Chromosomenabschnitte Bauanleitungen für Genprodukte enthalten und wie diese zur Ausprägung von Merkmalen beitragen.",
+            "descriptionEn": "The learner can use a simple model to explain how genes as chromosome sections contain instructions for gene products and how these products contribute to the expression of traits.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical",
+              "SekI"
+            ],
+            "contains": [],
+            "requires": [
+              "b1dff57f-329e-5264-b2b9-2db71a0b2172"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-NI"
+              ]
+            },
+            "type": "atomic",
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-biology",
+              "demandLevel": "AB2",
+              "processCompetencies": [],
+              "guidingIdeas": [
+                "BIO_INFORMATION_KOMMUNIKATION",
+                "BIO_STRUKTUR_FUNKTION"
+              ],
+              "phase": "GLOBAL",
+              "area": "Genetik",
+              "topicCode": "CANONICAL.BIOLOGY.NONMOLECULAR_GENE_PRODUCT_TRAIT_RELATION"
+            },
+            "extendedData": {
+              "applicabilityMappingInheritance": "boundary",
+              "provenance": {
+                "sourceLandscapeId": "0b27a054-e81e-5423-aa71-d3d8d9d8f0db",
+                "sourceLandscapeTitle": "DE-NI - Biologie Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction)",
+                "sourceGoalId": "ni-biology-seki-kc2015-fw6-010-8fb1979a",
+                "supportingSourceGoalIds": [
+                  "ni-biology-seki-kc2015-fw6-011-27110a19"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "op": "append_contains",
+          "goalId": "b4176012-f93a-5dd2-84b3-edd6a9932367",
+          "before": [
+            "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+            "b8fc739d-f5de-5f83-92fe-28dc6597add5",
+            "8be0001b-4fe0-5ea1-9d61-b3c4bbb16660",
+            "74740709-fc77-5a54-88a6-bb14c3777941",
+            "1b7f08a1-33df-5779-af66-430c91d699b7",
+            "e70d8a85-2dea-5165-919b-200fee9f4db4",
+            "05358518-f66c-5c1b-ad3f-d16211d0fc1c",
+            "797a233c-56ed-58a0-b451-5ae5d4bd21bf",
+            "2a5b22f5-5ef3-5d95-8f75-21ca76ad1ce2",
+            "62e52002-b8df-533e-9972-028f3ee60cd1"
+          ],
+          "append": [
+            "0263fb84-33b1-52a3-a47e-dad56be7c9bc"
+          ],
+          "reason": "Retain every original child; add real atomic companion without replacing its parent."
+        }
+      ],
+      "sourceGoalIds": [
+        "ni-biology-seki-kc2015-fw6-010-8fb1979a",
+        "ni-biology-seki-kc2015-fw6-011-27110a19"
+      ],
+      "imageGoalIds": [
+        "0263fb84-33b1-52a3-a47e-dad56be7c9bc"
+      ],
+      "dependencies": []
+    },
+    {
+      "unitId": "ni-mitotic-identity",
+      "integrationPreparationStatus": "concrete_candidate_ready_for_targeted_integration_and_current_D",
+      "gateClosureStatus": "not_finalized",
+      "holds": [],
+      "canonicalOperations": [
+        {
+          "op": "add_goal",
+          "goalId": "36d3bf01-e68b-55be-8e20-5652ada36a51",
+          "before": null,
+          "after": {
+            "id": "36d3bf01-e68b-55be-8e20-5652ada36a51",
+            "shortKey": "canonical_biology_nonmolecular_mitotic_genetic_identity",
+            "title": "Erbgleichheit durch Mitose am Chromosomenmodell begründen",
+            "titleEn": "Justify genetic identity through mitosis using a chromosome model",
+            "description": "Die lernende Person kann an einem vorgegebenen Chromosomenmodell begründen, wie die zuvor verdoppelte Erbinformation bei der Mitose so verteilt wird, dass beide Tochterzellen je eine identische Kopie jedes Chromosoms und damit die gleiche vollständige Erbinformation wie die Ausgangszelle erhalten.",
+            "descriptionEn": "The learner can use a supplied chromosome model to justify how previously duplicated genetic information is distributed during mitosis so that each daughter cell receives one identical copy of every chromosome and thus the same complete genetic information as the original cell.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical",
+              "SekI"
+            ],
+            "contains": [],
+            "requires": [
+              "b1dff57f-329e-5264-b2b9-2db71a0b2172"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-NI"
+              ]
+            },
+            "type": "atomic",
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-biology",
+              "demandLevel": "AB2",
+              "processCompetencies": [],
+              "guidingIdeas": [
+                "BIO_INFORMATION_KOMMUNIKATION",
+                "BIO_ENTWICKLUNG"
+              ],
+              "phase": "GLOBAL",
+              "area": "Genetik",
+              "topicCode": "CANONICAL.BIOLOGY.NONMOLECULAR_MITOTIC_GENETIC_IDENTITY"
+            },
+            "extendedData": {
+              "applicabilityMappingInheritance": "boundary",
+              "provenance": {
+                "sourceLandscapeId": "0b27a054-e81e-5423-aa71-d3d8d9d8f0db",
+                "sourceLandscapeTitle": "DE-NI - Biologie Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction)",
+                "sourceGoalId": "ni-biology-seki-kc2015-fw6-004-f11cdf34"
+              }
+            }
+          }
+        },
+        {
+          "op": "append_contains",
+          "goalId": "b4176012-f93a-5dd2-84b3-edd6a9932367",
+          "before": [
+            "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+            "b8fc739d-f5de-5f83-92fe-28dc6597add5",
+            "8be0001b-4fe0-5ea1-9d61-b3c4bbb16660",
+            "74740709-fc77-5a54-88a6-bb14c3777941",
+            "1b7f08a1-33df-5779-af66-430c91d699b7",
+            "e70d8a85-2dea-5165-919b-200fee9f4db4",
+            "05358518-f66c-5c1b-ad3f-d16211d0fc1c",
+            "797a233c-56ed-58a0-b451-5ae5d4bd21bf",
+            "2a5b22f5-5ef3-5d95-8f75-21ca76ad1ce2",
+            "62e52002-b8df-533e-9972-028f3ee60cd1"
+          ],
+          "append": [
+            "36d3bf01-e68b-55be-8e20-5652ada36a51"
+          ],
+          "reason": "Retain every original child; add real atomic companion without replacing its parent."
+        }
+      ],
+      "sourceGoalIds": [
+        "ni-biology-seki-kc2015-fw6-003-fd1495c5",
+        "ni-biology-seki-kc2015-fw6-004-f11cdf34"
+      ],
+      "imageGoalIds": [
+        "36d3bf01-e68b-55be-8e20-5652ada36a51"
+      ],
+      "dependencies": []
+    },
+    {
+      "unitId": "ni-evolution-causal-correction",
+      "integrationPreparationStatus": "concrete_candidate_ready_for_targeted_integration_and_current_D",
+      "gateClosureStatus": "not_finalized",
+      "holds": [
+        "No current final D/P/A/M/V is conferred; mapped HE and other source clauses must remain bounded, not full-selection claims."
+      ],
+      "canonicalOperations": [
+        {
+          "op": "update_goal_fields",
+          "goalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "before": {
+            "description": "Die lernende Person kann Mutation, Rekombination und Selektion als Ursachen genetischer Variation beschreiben.",
+            "descriptionEn": "The learner can describe mutation, recombination, and selection as causes of genetic variation.",
+            "requires": [
+              "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+              "2d451684-6e53-565e-a987-f362da919d2c"
+            ]
+          },
+          "after": {
+            "description": "Die lernende Person kann erklären, wie Mutation und Rekombination genetische Variation hervorbringen und wie Selektion auf diese Variation wirkt.",
+            "descriptionEn": "The learner can explain how mutation and recombination generate genetic variation and how selection acts on that variation.",
+            "requires": [
+              "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+              "2d451684-6e53-565e-a987-f362da919d2c"
+            ]
+          },
+          "beforeFieldSha256": "sha256:ab5d20df5455ef8657cedcb110ae0cfa1eba83c057bf0f60f70ac95f5d0d1b21",
+          "reason": "Correct variant origin versus selection and remove an unnecessary molecular-mutation prerequisite; neither class6 coverage nor current final D/A/P approval is asserted."
+        }
+      ],
+      "sourceGoalIds": [
+        "ni-biology-seki-kc2015-fw7-003-b3921cb7",
+        "ni-biology-seki-kc2015-fw7-012-8ed51e46"
+      ],
+      "imageGoalIds": [],
+      "dependencies": []
+    },
+    {
+      "unitId": "q1-dna-structure",
+      "integrationPreparationStatus": "HOLD_original_replication_preservation",
+      "gateClosureStatus": "not_finalized",
+      "holds": [
+        "Explicit replication source/view preservation remains required.",
+        "Fresh current-text independent D and A/M decisions are required.",
+        "HOLD original HE semiconservative replication: add exact source binding to retained e70 and prove current HE GK/LK target visibility; e70 text/inner P and image do not currently establish strict semiconservative closure. Do not narrow active 0daa before this source duty is preserved."
+      ],
+      "canonicalOperations": [
+        {
+          "op": "update_goal_fields",
+          "goalId": "0daa79f6-8f61-5506-98f9-65db83062ba8",
+          "before": {
+            "title": "DNA-Aufbau darstellen",
+            "titleEn": "Depict DNA structure",
+            "description": "Die lernende Person kann Nukleotide, Doppelhelix und Replikation beschreiben.",
+            "descriptionEn": "The learner can describe nucleotides, the double helix, and replication.",
+            "requires": [
+              "fc8c4b02-02f2-5ad6-b481-224d36121da1",
+              "2d451684-6e53-565e-a987-f362da919d2c"
+            ]
+          },
+          "after": {
+            "title": "DNA-Aufbau darstellen",
+            "titleEn": "Depict DNA structure",
+            "description": "Die lernende Person kann den Aufbau der DNA aus Nukleotiden modellhaft darstellen und den Zusammenhang zwischen Basenfolge, komplementärer Basenpaarung und Speicherung genetischer Information erklären.",
+            "descriptionEn": "The learner can model DNA structure from nucleotides and explain the relationship between base sequence, complementary base pairing and the storage of genetic information.",
+            "requires": [
+              "fc8c4b02-02f2-5ad6-b481-224d36121da1",
+              "2d451684-6e53-565e-a987-f362da919d2c"
+            ]
+          },
+          "beforeFieldSha256": "sha256:5ed930d3497b6d09bcbf5ead054c5536020025c9112e2f3780b2a8579e17f5b7",
+          "reason": "Beide bisherigen D-Runden verlangen eine Trennung von Molekülstruktur und Replikation. Das eigene Replikationsziel e70d8a85 besteht bereits und verlangt 0daa als Vorziel. Der Vorschlag bewahrt 0daa als Strukturatom, statt eine weitere Kopierkompetenz zu duplizieren. Der BY-B9.3.2-Originalpunkt verlangt Struktur und Informationsspeicher, nicht Replikation."
+        }
+      ],
+      "sourceGoalIds": [],
+      "imageGoalIds": [
+        "0daa79f6-8f61-5506-98f9-65db83062ba8"
+      ],
+      "dependencies": [],
+      "retainedReplicationGoalId": "e70d8a85-2dea-5165-919b-200fee9f4db4"
+    },
+    {
+      "unitId": "q1-protein-information-flow",
+      "integrationPreparationStatus": "concrete_candidate_ready_for_targeted_integration_and_current_D",
+      "gateClosureStatus": "not_finalized",
+      "holds": [
+        "Resolve prior keep/split dissent through independent current-scope review; if split is confirmed, create separate transcription and translation goals and use no whole-goal P pass from this draft.",
+        "BY B9.3.3 also requires protein roles in traits; model-only coverage is partial, not exact whole-clause coverage."
+      ],
+      "canonicalOperations": [
+        {
+          "op": "update_goal_fields",
+          "goalId": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+          "before": {
+            "title": "Proteinbiosynthese erklären",
+            "titleEn": "Explain protein biosynthesis",
+            "description": "Die lernende Person kann Transkription und Translation modellhaft darstellen.",
+            "descriptionEn": "The learner can model transcription and translation.",
+            "requires": [
+              "0daa79f6-8f61-5506-98f9-65db83062ba8",
+              "2d451684-6e53-565e-a987-f362da919d2c"
+            ]
+          },
+          "after": {
+            "title": "Proteinbiosynthese erklären",
+            "titleEn": "Explain protein biosynthesis",
+            "description": "Die lernende Person kann den Informationsfluss von einer gegebenen DNA-Sequenz über mRNA zu einem Polypeptid modellhaft darstellen und die Verbindung von Transkription und Translation erklären.",
+            "descriptionEn": "The learner can model the information flow from a supplied DNA sequence via mRNA to a polypeptide and explain the connection between transcription and translation.",
+            "requires": [
+              "0daa79f6-8f61-5506-98f9-65db83062ba8",
+              "2d451684-6e53-565e-a987-f362da919d2c"
+            ]
+          },
+          "beforeFieldSha256": "sha256:63d169a618194db1ca2e70f56d4c9c935d5a904651f9a6c3536ba94e5449f421",
+          "reason": "Der konkrete unabhängige B-Befund verlangt die Verbindung im operativen Zieltext; der P-Kandidat darf sie nicht allein ergänzen. Die modellhafte Informationskette bleibt als ein zusammenhängender Erklärungszweck erhalten. Beide unabhängigen Reviewer müssen genau diesen Nachfolger erneut gezielt prüfen; der frühere Dissens ist noch nicht als aufgelöst ausgegeben."
+        }
+      ],
+      "sourceGoalIds": [],
+      "imageGoalIds": [
+        "475eebb4-4eb0-524f-b1ec-4a672bf856d2"
+      ],
+      "dependencies": []
+    },
+    {
+      "unitId": "q1-gene-mutations",
+      "integrationPreparationStatus": "HOLD_source_scope",
+      "gateClosureStatus": "not_finalized",
+      "holds": [
+        "BY source additionally requires mutagens, measured/justified protein function and protection; existing exact mapping is not a full-clause proof.",
+        "All seven Sek-I placements need source-specific decisions; NI explicitly postpones molecular-genetic analysis to Sek II.",
+        "Inactive v2 illustration is not an active V record.",
+        "HOLD distinct BY mutagen/protein-function/protection source clauses and remaining lower-stage molecular scope limits; NI unsupported mutation rows are resolved only by selected NI successor units. Existing v2 image candidate is not missing but requires exact current-scope V receipt."
+      ],
+      "canonicalOperations": [
+        {
+          "op": "update_goal_fields",
+          "goalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+          "before": {
+            "title": "Genmutationen analysieren",
+            "titleEn": "Analyze gene mutations",
+            "description": "Die lernende Person kann verschiedene Mutationstypen (Substitution, Deletion, Insertion, Duplikation) erklären und Folgen abschätzen.",
+            "descriptionEn": "The learner can explain different types of mutations (substitution, deletion, insertion, duplication) and estimate consequences.",
+            "requires": [
+              "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+              "2d451684-6e53-565e-a987-f362da919d2c"
+            ]
+          },
+          "after": {
+            "title": "Genmutationen analysieren",
+            "titleEn": "Analyze gene mutations",
+            "description": "Die lernende Person kann Substitution, Deletion, Insertion und Duplikation an gegebenen DNA-Fällen unterscheiden und mögliche Folgen für das codierte Protein aus dem Genkontext begründen.",
+            "descriptionEn": "The learner can distinguish substitution, deletion, insertion and duplication in given DNA cases and use the gene context to justify possible consequences for the encoded protein.",
+            "requires": [
+              "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+              "2d451684-6e53-565e-a987-f362da919d2c"
+            ]
+          },
+          "beforeFieldSha256": "sha256:1a01f3a9541399a633c91bb295c765d6df696ac44249747bd96c6e66e64c8672",
+          "reason": "„Folgen abschätzen“ nennt weder Folgeebene noch notwendige Fallinformationen. Der Vorschlag bindet eine mögliche molekulare Folge an codierende Region, Leseraster und Code-Daten. Er ist nach eigener Quellen-, Sequenz- und Bildprüfung inhaltlich mit dem bereits unabhängig geprüften ffef-v2-Autorenkandidaten vereinbar. Die Kopie eines Abschnitts ist von einem bloß gleichen eingefügten Abschnitt zu unterscheiden; eine Proteinfunktions- oder Merkmalsaussage benötigt weitere Daten."
+        }
+      ],
+      "sourceGoalIds": [],
+      "imageGoalIds": [
+        "ffef97e3-12d6-5090-9816-46ab9e57fae2"
+      ],
+      "dependencies": []
+    },
+    {
+      "unitId": "q1-transcription-factors-plus-methylation",
+      "integrationPreparationStatus": "HOLD_original_nonHE_scope",
+      "gateClosureStatus": "not_finalized",
+      "holds": [
+        "The companion atom and exact source/view routing are required before narrowing this original.",
+        "Current BY applicability is not backed by a direct BY source mapping for this ID; new BY binding needs its own review.",
+        "Exam 3ac1cbb1 refers to 946 for promoter methylation and must be routed to the methylation companion if a split is adopted.",
+        "HOLD any original BY DNA-methylation duty until original direct/ancestor scope proves preservation; HE-only split is not evidence for BY. Companion exact native/360/680 independent candidate V now PASS; source/exam holds remain."
+      ],
+      "canonicalOperations": [
+        {
+          "op": "update_goal_fields",
+          "goalId": "946ce2e7-c30d-5670-839d-003b0619c284",
+          "before": {
+            "title": "Genregulation bei Eukaryoten",
+            "titleEn": "Gene regulation in eukaryotes",
+            "description": "Die lernende Person kann Transkriptionsfaktoren und epigenetische DNA-Methylierung zur Steuerung der Genaktivität erklären.",
+            "descriptionEn": "The learner can explain transcription factors and epigenetic DNA methylation for controlling gene activity.",
+            "requires": [
+              "7975e43b-1187-5ae3-a1ab-282fc3c0548c",
+              "2d451684-6e53-565e-a987-f362da919d2c"
+            ]
+          },
+          "after": {
+            "title": "Transkriptionsfaktoren bei Eukaryoten erklären",
+            "titleEn": "Explain transcription factors in eukaryotes",
+            "description": "Die lernende Person kann an einem gegebenen eukaryotischen Genmodell erklären, wie Transkriptionsfaktoren über regulatorische DNA-Bereiche die Transkription beeinflussen.",
+            "descriptionEn": "The learner can use a supplied eukaryotic gene model to explain how transcription factors influence transcription through regulatory DNA regions.",
+            "requires": [
+              "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+              "2d451684-6e53-565e-a987-f362da919d2c"
+            ]
+          },
+          "beforeFieldSha256": "sha256:943ee79b8223deb6f0014a5c2425e77163b2fd4cff2ff219604bdd4916cd0912",
+          "reason": "Beide bisherigen unabhängigen Runden unterscheiden den bindenden Regulationsfaktor von der chemischen DNA-Markierung. 946 bleibt als einzelnes Faktor-Atom; DNA-Methylierung muss in einem gesonderten GK/LK-Atom erhalten bleiben. Das bestehende LK-Ziel 99544494 nennt Methylierung/Acetylierung, hat eine strittige HE-Q1.5-Bindung und ersetzt den GK/LK-Kern nicht ungeprüft."
+        },
+        {
+          "op": "add_goal",
+          "goalId": "ff5bb904-e1bf-58f1-9752-feda6fdd61f1",
+          "before": null,
+          "after": {
+            "id": "ff5bb904-e1bf-58f1-9752-feda6fdd61f1",
+            "title": "DNA-Methylierung bei Eukaryoten erklären",
+            "titleEn": "Explain DNA methylation in eukaryotes",
+            "description": "Die lernende Person kann an gegebenen eukaryotischen Genmodellen erklären, wie DNA-Methylierung die Transkription im jeweiligen Kontext beeinflussen kann, und passende Methylierungs- und mRNA-Befunde begründet deuten.",
+            "descriptionEn": "The learner can use supplied eukaryotic gene models to explain how DNA methylation may influence transcription in the given context and interpret matched methylation and mRNA data with reasons.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "contains": [],
+            "requires": [
+              "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+              "2d451684-6e53-565e-a987-f362da919d2c"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024-biology",
+              "demandLevel": "AB2",
+              "processCompetencies": [],
+              "guidingIdeas": [
+                "BIO_STRUKTUR_FUNKTION",
+                "BIO_STEUERUNG_REGELUNG",
+                "BIO_ENTWICKLUNG"
+              ],
+              "phase": "Q1"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-HE"
+              ]
+            },
+            "extendedData": {
+              "applicabilityMappingInheritance": "boundary",
+              "provenance": {
+                "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+                "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+                "sourceGoalId": "b8aa6b7a-8598-4498-83f5-5162bc3cb419",
+                "splitFromGoalId": "946ce2e7-c30d-5670-839d-003b0619c284",
+                "candidateOrigin": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-six-candidate-v2/split-companions.candidates.v3.json",
+                "originalSourceRequirementRetained": true
+              }
+            },
+            "type": "atomic",
+            "shortKey": "canonical_biology_dna_methylation_eukaryotes"
+          }
+        },
+        {
+          "op": "append_contains",
+          "goalId": "96bdf495-2801-57e4-a0da-ce3bf91e402c",
+          "before": [
+            "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+            "a515e493-6f90-5371-9470-28a0cf50f087",
+            "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+            "9540a95d-5ca5-527c-918f-d702e99be07a",
+            "8f6933b1-6e02-5512-acf2-a90a7fb9cb75",
+            "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+            "528a3cd3-4a4d-550d-939a-8dc8656446e4",
+            "50108500-7958-5954-b493-e89273649f8f",
+            "ceb54223-197c-5289-a9c6-19358912e144",
+            "946ce2e7-c30d-5670-839d-003b0619c284",
+            "a3f483ce-126e-595c-999c-aa4d95106221",
+            "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+            "3f969b9e-68b0-5442-b8e4-df4e35e83087",
+            "ed4cf96f-e1c9-5784-97f2-8279ff5a31b1",
+            "1320b82e-e438-59ff-9d53-ecc9fbacae58",
+            "a9493b6d-5810-5d52-b32c-54ce32fd0dd8",
+            "a6d94a96-6a36-57dd-81db-f4bfdc4306ee",
+            "76ad2d40-496b-5fa8-97e8-7711f9859738"
+          ],
+          "append": [
+            "ff5bb904-e1bf-58f1-9752-feda6fdd61f1"
+          ],
+          "reason": "Retain every original child; add real atomic companion without replacing its parent."
+        }
+      ],
+      "sourceGoalIds": [],
+      "imageGoalIds": [
+        "946ce2e7-c30d-5670-839d-003b0619c284",
+        "ff5bb904-e1bf-58f1-9752-feda6fdd61f1"
+      ],
+      "dependencies": []
+    },
+    {
+      "unitId": "q1-bacterial-structure-plus-fission",
+      "integrationPreparationStatus": "HOLD_original_nonHE_reproduction_and_scope",
+      "gateClosureStatus": "not_finalized",
+      "holds": [
+        "Create/reuse the reproduction companion and preserve the complete HE LK source clause before narrowing.",
+        "BY applicability alone is not a mapped BY source proof for this ID.",
+        "Six non-HE Sek-I placements for this ID need structural-source checks and stage-specific prerequisite routing.",
+        "HOLD SN source explicitly demands reproduction and seven other non-HE mapped occurrences require exact original source decisions; HE-only fission companion cannot justify a global structural narrowing. Companion exact native/360/680 independent candidate V now PASS; e70 scope/age prerequisites must be proven."
+      ],
+      "canonicalOperations": [
+        {
+          "op": "update_goal_fields",
+          "goalId": "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+          "before": {
+            "title": "Bakteriellen Zellbau einordnen",
+            "titleEn": "Classify bacterial cell structure",
+            "description": "Die lernende Person kann Aufbau und Vermehrung von Bakterien im Kontext gentechnischer Anwendungen beschreiben.",
+            "descriptionEn": "The learner can describe the structure and reproduction of bacteria in the context of genetic engineering applications.",
+            "requires": [
+              "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+              "2d451684-6e53-565e-a987-f362da919d2c"
+            ]
+          },
+          "after": {
+            "title": "Bakteriellen Zellbau einordnen",
+            "titleEn": "Classify bacterial cell structure",
+            "description": "Die lernende Person kann den prokaryotischen Grundbauplan eines Bakteriums an einem gegebenen Schema darstellen und die Lage seiner Erbinformation einschließlich gegebenenfalls vorhandener Plasmide erläutern.",
+            "descriptionEn": "The learner can use a supplied diagram to model the prokaryotic structure of a bacterium and explain the location of its genetic information, including plasmids when present.",
+            "requires": [
+              "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f",
+              "2d451684-6e53-565e-a987-f362da919d2c"
+            ]
+          },
+          "beforeFieldSha256": "sha256:8058f4506fb218ec477fb6915f6cd95dae6791484422b2c18672b1c885bbbf63",
+          "reason": "Bakterienbau und Zweiteilung sind unabhängig beobachtbare Leistungen; beide D-Runden verlangen Teilung. Die Strukturformulierung passt zum vorhandenen Titel. Vermehrung bleibt ein eigener LK-Kandidat und darf nicht beim Kürzen verschwinden. Ein Plasmid ist keine universelle Bakterieneigenschaft."
+        },
+        {
+          "op": "add_goal",
+          "goalId": "df92a3a1-0a32-5516-9d7b-66947e90a0e4",
+          "before": null,
+          "after": {
+            "id": "df92a3a1-0a32-5516-9d7b-66947e90a0e4",
+            "title": "Bakterielle Zweiteilung modellhaft erklären",
+            "titleEn": "Model and explain bacterial binary fission",
+            "description": "Die lernende Person kann die Vermehrung von Bakterien durch Zweiteilung anhand eines gegebenen Modells erklären und die Verteilung der kopierten chromosomalen DNA auf die entstehenden Zellen nachvollziehen.",
+            "descriptionEn": "The learner can use a supplied model to explain bacterial reproduction by binary fission and trace the distribution of copied chromosomal DNA to the developing cells.",
+            "weight": 1,
+            "tags": [
+              "LK"
+            ],
+            "contains": [],
+            "requires": [
+              "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+              "e70d8a85-2dea-5165-919b-200fee9f4db4",
+              "2d451684-6e53-565e-a987-f362da919d2c"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024-biology",
+              "demandLevel": "AB2",
+              "processCompetencies": [],
+              "guidingIdeas": [
+                "BIO_STRUKTUR_FUNKTION",
+                "BIO_STEUERUNG_REGELUNG",
+                "BIO_ENTWICKLUNG"
+              ],
+              "phase": "Q1"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-HE"
+              ]
+            },
+            "extendedData": {
+              "applicabilityMappingInheritance": "boundary",
+              "provenance": {
+                "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+                "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+                "sourceGoalId": "6576c30f-638e-4c20-b6c6-97c602b6b2fa",
+                "splitFromGoalId": "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+                "candidateOrigin": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-six-candidate-v2/split-companions.candidates.v3.json",
+                "originalSourceRequirementRetained": true
+              }
+            },
+            "type": "atomic",
+            "shortKey": "canonical_biology_bacterial_binary_fission"
+          }
+        },
+        {
+          "op": "append_contains",
+          "goalId": "96bdf495-2801-57e4-a0da-ce3bf91e402c",
+          "before": [
+            "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+            "a515e493-6f90-5371-9470-28a0cf50f087",
+            "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+            "9540a95d-5ca5-527c-918f-d702e99be07a",
+            "8f6933b1-6e02-5512-acf2-a90a7fb9cb75",
+            "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+            "528a3cd3-4a4d-550d-939a-8dc8656446e4",
+            "50108500-7958-5954-b493-e89273649f8f",
+            "ceb54223-197c-5289-a9c6-19358912e144",
+            "946ce2e7-c30d-5670-839d-003b0619c284",
+            "a3f483ce-126e-595c-999c-aa4d95106221",
+            "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+            "3f969b9e-68b0-5442-b8e4-df4e35e83087",
+            "ed4cf96f-e1c9-5784-97f2-8279ff5a31b1",
+            "1320b82e-e438-59ff-9d53-ecc9fbacae58",
+            "a9493b6d-5810-5d52-b32c-54ce32fd0dd8",
+            "a6d94a96-6a36-57dd-81db-f4bfdc4306ee",
+            "76ad2d40-496b-5fa8-97e8-7711f9859738"
+          ],
+          "append": [
+            "df92a3a1-0a32-5516-9d7b-66947e90a0e4"
+          ],
+          "reason": "Retain every original child; add real atomic companion without replacing its parent."
+        }
+      ],
+      "sourceGoalIds": [],
+      "imageGoalIds": [
+        "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+        "df92a3a1-0a32-5516-9d7b-66947e90a0e4"
+      ],
+      "dependencies": []
+    },
+    {
+      "unitId": "q1-gel-analysis",
+      "integrationPreparationStatus": "concrete_candidate_ready_for_targeted_integration_and_current_D",
+      "gateClosureStatus": "not_finalized",
+      "holds": [
+        "Independent review must confirm that retained HE competency scope does not require practical performance.",
+        "No direct BY mapping currently supports this ID; a new BY binding can use B12 2.6 after a separate source decision.",
+        "Current PCR prerequisite removal requires route/assessment review."
+      ],
+      "canonicalOperations": [
+        {
+          "op": "update_goal_fields",
+          "goalId": "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+          "before": {
+            "title": "Gelelektrophorese auswerten",
+            "titleEn": "Evaluate gel electrophoresis",
+            "description": "Die lernende Person kann DNA-Fragmente mittels Gelelektrophorese trennen und Ergebnisse interpretieren.",
+            "descriptionEn": "The learner can separate DNA fragments using gel electrophoresis and interpret the results.",
+            "requires": [
+              "a3f483ce-126e-595c-999c-aa4d95106221",
+              "2d451684-6e53-565e-a987-f362da919d2c"
+            ]
+          },
+          "after": {
+            "title": "Gelelektrophorese auswerten",
+            "titleEn": "Evaluate gel electrophoresis",
+            "description": "Die lernende Person kann die Trennung von DNA-Fragmenten durch Gelelektrophorese erklären und vorgegebene Bandenmuster mithilfe eines Größenmarkers begründet auswerten.",
+            "descriptionEn": "The learner can explain how gel electrophoresis separates DNA fragments and use a size marker to interpret supplied band patterns with reasons.",
+            "requires": [
+              "0daa79f6-8f61-5506-98f9-65db83062ba8",
+              "2d451684-6e53-565e-a987-f362da919d2c"
+            ]
+          },
+          "beforeFieldSha256": "sha256:845f4cff2ce97033a409689b75b1d5cacce21f2329abc51e26bccbc3b91ca9e7",
+          "reason": "Der aktuelle Satz beansprucht eigenes praktisches Trennen, während Titel und prüfbare P-Fälle Auswertung meinen. Das HE-Original nennt PCR und Gelelektrophorese ohne verpflichtende praktische Durchführung. Der Vorschlag verbindet Verfahrensverständnis mit begründeter Dateninterpretation, belegt aber kein Probenauftragen oder Durchführen eines echten Gels."
+        }
+      ],
+      "sourceGoalIds": [],
+      "imageGoalIds": [
+        "8eb86a82-122d-5cae-8f80-bb2850b29c2f"
+      ],
+      "dependencies": []
+    }
+  ],
+  "stableCompanionIdProposals": [
+    {
+      "candidateKey": "dna-methylation-eukaryotes",
+      "goalId": "ff5bb904-e1bf-58f1-9752-feda6fdd61f1",
+      "namespace": "fd8eb76f-7f91-4e69-8fb9-7a1647d4b0bb",
+      "seed": "biology:08a43a1b-d97e-522c-9dfa-c950a493364e:dna-methylation-eukaryotes",
+      "currentCollision": false,
+      "scope": "HE Q1.2, printed p.39, GK/LK; distinct from LK histone modification and unreviewed broad LK epigenetics overlaps."
+    },
+    {
+      "candidateKey": "bacterial-binary-fission",
+      "goalId": "df92a3a1-0a32-5516-9d7b-66947e90a0e4",
+      "namespace": "fd8eb76f-7f91-4e69-8fb9-7a1647d4b0bb",
+      "seed": "biology:08a43a1b-d97e-522c-9dfa-c950a493364e:bacterial-binary-fission",
+      "currentCollision": false,
+      "scope": "HE Q1.2, printed p.39, LK; schema-level Bau und Vermehrung. No automatic Sek-I/BY source allocation."
+    }
+  ],
+  "preservedCanonicalRecords": [
+    {
+      "goalId": "e70d8a85-2dea-5165-919b-200fee9f4db4",
+      "before": {
+        "id": "e70d8a85-2dea-5165-919b-200fee9f4db4",
+        "shortKey": "canonical_biology_sek1_dna_replication_model_significance",
+        "title": "DNA-Replikation modellhaft erklären",
+        "titleEn": "Explain DNA Replication with a Simple Model",
+        "description": "Die lernende Person kann die Bedeutung der DNA-Replikation erklären und den Ablauf mithilfe eines einfachen DNA-Modells darstellen.",
+        "descriptionEn": "The learner can explain the significance of DNA replication and represent the process using a simple DNA model.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekI"
+        ],
+        "contains": [],
+        "requires": [
+          "0daa79f6-8f61-5506-98f9-65db83062ba8"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_INFORMATION_KOMMUNIKATION",
+            "BIO_STEUERUNG_REGELUNG"
+          ],
+          "phase": "GLOBAL",
+          "area": "Genetik",
+          "topicCode": "CANONICAL.BIOLOGY.SEK1.DNA_REPLICATION_MODEL_SIGNIFICANCE"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B9.3.5",
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
+            "sourceLandscapeTitle": "DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+            "sourceGoalId": "b9b18077-88f5-57ed-981e-2f7e2512af4c"
+          }
+        },
+        "type": "atomic"
+      },
+      "beforeRecordSha256": "sha256:8d61ecb46f51b1a143dcc34a5577ec42ec0b964b6f08fcaf8bae049020187dac",
+      "decision": "KEEP_UNCHANGED",
+      "limit": "Preservation is not a renewed D/P/A/M/V approval or full source witness."
+    },
+    {
+      "goalId": "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+      "before": {
+        "id": "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+        "shortKey": "canonical_biology_sek1_mitosis_meiosis_gametes",
+        "title": "Mitose und Meiose",
+        "titleEn": "Mitosis, Simplified Meiosis, and Gamete Formation",
+        "description": "Die lernende Person kann Mitose und vereinfachte Meiose beschreiben und Keimzellbildung einordnen.",
+        "descriptionEn": "The learner can describe mitosis and simplified meiosis and classify gamete formation.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekI"
+        ],
+        "contains": [],
+        "requires": [
+          "b1dff57f-329e-5264-b2b9-2db71a0b2172"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-biology",
+          "demandLevel": "AB1",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_INFORMATION_KOMMUNIKATION",
+            "BIO_ENTWICKLUNG"
+          ],
+          "phase": "GLOBAL",
+          "area": "Genetik",
+          "topicCode": "CANONICAL.BIOLOGY.SEK1.MITOSIS_MEIOSIS_GAMETES"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "KC G9 Biologie, 9.4.1",
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "71438941-0ceb-46ee-ad31-773cee700779",
+            "sourceLandscapeTitle": "Biologie Sekundarstufe I (Hessen, G9)",
+            "sourceGoalId": "e28f9159-cc63-41d0-8522-3cfadbce9327"
+          }
+        },
+        "type": "atomic"
+      },
+      "beforeRecordSha256": "sha256:d4f81af45eb0dc57565230acc2419ca217f4b8700db919f9ff5663a36148e63b",
+      "decision": "KEEP_UNCHANGED",
+      "limit": "Preservation is not a renewed D/P/A/M/V approval or full source witness."
+    },
+    {
+      "goalId": "99544494-1825-5fc1-8e23-56f0df808e56",
+      "before": {
+        "id": "99544494-1825-5fc1-8e23-56f0df808e56",
+        "title": "Epigenetische Regulation",
+        "titleEn": "Epigenetic regulation",
+        "description": "Die lernende Person kann Methylierung/Acetylierung als epigenetische Steuerung erklären.",
+        "descriptionEn": "The learner can explain methylation/acetylation as epigenetic control.",
+        "weight": 1.1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "7975e43b-1187-5ae3-a1ab-282fc3c0548c",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB3",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_STEUERUNG_REGELUNG"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+            "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "a588f3b5-7b11-4480-af76-81c54990e1df"
+          }
+        },
+        "type": "atomic"
+      },
+      "beforeRecordSha256": "sha256:d1d401c995680d426d04ad30fcf2bfe4faf6efcc04c5db025bf53f6d6527244c",
+      "decision": "KEEP_UNCHANGED",
+      "limit": "Preservation is not a renewed D/P/A/M/V approval or full source witness."
+    }
+  ],
+  "strictClosuresClaimed": 0,
+  "humanApprovalClaimed": false
+}

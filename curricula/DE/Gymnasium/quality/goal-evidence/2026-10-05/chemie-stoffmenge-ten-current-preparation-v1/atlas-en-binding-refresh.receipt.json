@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-05T01:43:57.556737+00:00",
+  "purpose": "Derived atlas binding refresh after the reviewed 11bea EN alignment and corresponding unchanged curricularAtomic classification binding",
+  "beforeSnapshot": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-ten-current-preparation-v1/atlas-before-en-binding.snapshot.json",
+  "afterReceipt": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/source-projection.receipt.json",
+  "afterReceiptSha256": "31b063f3db57db9107320521bec9db6449b1bcd6f9d9843b259a55a09555b81e",
+  "inputBindingChanges": [
+    {
+      "before": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+        "sha256": "sha256:30ccbe6407629a3eedcac6f6e21b40abbc053ef61bb6381ea25ff8ae587cedf1"
+      },
+      "after": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+        "sha256": "sha256:c48364b506df7f40e77071fe44bf9e20df1fe644c8182ef967f39bdd6a812241"
+      }
+    },
+    {
+      "before": {
+        "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+        "sha256": "sha256:eed85a869c58e1f18b62e6de35efecf1785e8c1df6ec8220f265e3908d116a00"
+      },
+      "after": {
+        "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+        "sha256": "sha256:507c640a700b11df1042bcb64c424de3a409b00ebbe29f34167ee121ce64865e"
+      }
+    }
+  ],
+  "unchangedInputBindings": 101,
+  "allOutputBindingsByteIdentical": true,
+  "outputBindingsChecked": 50,
+  "countsUnchanged": {
+    "canonicalCurricularAtomicGoals": 376,
+    "publishedCurricularAtomicGoals": 358,
+    "sourceViews": 48,
+    "unresolvedSourceScopeDecisions": 496,
+    "omittedGoals": 18
+  },
+  "claimsUnchanged": {
+    "newSourceReview": false,
+    "newSemanticAtomicityReview": false,
+    "humanApproval": false,
+    "canonicalPhaseUsedForScope": false,
+    "inheritedCoverageIsDirectSourceEvidence": false,
+    "authoredProfileWitnessIsSourceMetadata": false
+  },
+  "priorAssertionCorrection": "An attempted one-input-only assertion failed because the separately reviewed semantic-kind binding also changed. Actual comparison proves exactly these two input bindings changed; no output or count changed.",
+  "newSourceReview": false,
+  "newDescriptionApproval": false,
+  "newStrictClosures": 0,
+  "humanApproval": false
+}

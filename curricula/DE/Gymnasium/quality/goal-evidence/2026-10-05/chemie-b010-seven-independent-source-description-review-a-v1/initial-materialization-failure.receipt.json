@@ -1,0 +1,7 @@
+{
+  "actualExitCode": 1,
+  "operation": "First materialize-review.py call",
+  "reason": "FileNotFoundError for a mistakenly assumed separate DE_DEU_S_GYM_CANONICAL_CHEMIE.en.json file",
+  "correction": "Canonical Chemistry has DE and EN fields in the same .de.json file; remove nonexistent file from input binding list. Subsequent materialization and native bilingual binding validation actually exit 0.",
+  "contentRemovedForPass": false
+}

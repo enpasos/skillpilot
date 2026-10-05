@@ -1,0 +1,1000 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "independent_targeted_continuation_D_findings",
+  "status": "ai_candidate",
+  "frozenAt": "2026-10-05T02:49:57.838629Z",
+  "reviewer": "Codex independent continuation C; exact deployed model version not exposed",
+  "notAReplacementD2Run": true,
+  "existingPNotReadBeforeFreeze": true,
+  "existingDArtifactsUnchanged": true,
+  "bindingSummary": {
+    "nineGoalAndPageBindingsCurrent": true,
+    "fullCanonicalBookDigestCurrent": false,
+    "fullCanonicalDigestDifferenceDoesNotInvalidateUnchangedSelectedGoalBindings": true,
+    "nineAtomicityFingerprintsCurrent": true,
+    "nineMemoryFingerprintsCurrent": true,
+    "nineVisualAssetQaAndBookBindingsCurrent": true,
+    "knownCurrentVisualContentFindings": [
+      3,
+      5
+    ],
+    "bookStageMismatches": [
+      7,
+      8
+    ]
+  },
+  "liveNormativeSources": [
+    {
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium%20/8/chemie",
+      "sections": [
+        "C8.1 Kompetenzerwartungen",
+        "C8.1 Inhalte"
+      ],
+      "observation": "Einfache angeleitete Untersuchung und Modell-/Quellenarbeit; digitale Messwerterfassung und Tabellenkalkulation im Inhalt genannt."
+    },
+    {
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/chemie",
+      "sections": [
+        "C11.1"
+      ],
+      "observation": "Tatsächlich komplexe organische, biochemische/pharmazeutische Modell- und Quellenkontexte sowie Wissenseinflüsse."
+    },
+    {
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/12/chemie/grundlegend",
+      "sections": [
+        "C12.1.2",
+        "C12.1.3",
+        "C12.1.4"
+      ],
+      "observation": "Formal gültigkeitsbezogene Kriterien, fachliche Argumentation und konstruktiver Austausch sind explizit belegt; nicht nur alte C8-Provenance."
+    },
+    {
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/9/chemie/ch",
+      "sections": [
+        "C9.1"
+      ],
+      "observation": "Anwendungen, gesellschaftliche Bedeutung und Berufsfelder ausdrücklich verbunden."
+    }
+  ],
+  "inputInventoryByteDigest": "sha256:b971327566e973294a3102f90cd04a2badb8139f026ce6ee6e00458a9c2fd145",
+  "goals": [
+    {
+      "ordinal": 1,
+      "goalId": "91238ba1-5c63-50c7-a4fd-9bbe492c6b61",
+      "currentGoalFingerprint": "sha256:06b1c96bcca34abb33cd1ee7769a5c50f26367a9c8b8a2bd60dbac1057ea8f1f",
+      "currentPageFingerprint": "sha256:9770f7c7c31529311c6e1b360f59d77f416b3120dd0517be8b941db3185c5673",
+      "before": {
+        "titleDe": "Chemische Fragestellungen hypothesengeleitet untersuchen",
+        "titleEn": "Investigate chemical questions using hypotheses",
+        "descriptionDe": "Die lernende Person kann aus Alltagsphänomenen chemische Fragestellungen ableiten, theoriegeleitet Hypothesen formulieren sowie qualitative und quantitative Untersuchungen sicher planen, durchführen, protokollieren und bei Bedarf modellbasiert zur Prüfung von Hypothesen, Aussagen oder Theorien einsetzen.",
+        "descriptionEn": "The learner can derive chemical questions from everyday phenomena, formulate theory-guided hypotheses, and safely plan, perform, document, and, where appropriate, model qualitative and quantitative investigations to test hypotheses, claims, or theories."
+      },
+      "existingDDecisions": {
+        "roundA": "split_review",
+        "roundB": "split_review"
+      },
+      "candidateDecision": "split_review",
+      "findingDe": "Fragestellung/Hypothese und Untersuchungsplanung/-durchführung sind getrennt prüfbare Teilkompetenzen. Die Sek-I-Anforderungen an einfache, angeleitete Untersuchungen werden mit selbstständigen Oberstufenanforderungen und Modellprüfungen vermischt.",
+      "afterProposals": [
+        {
+          "proposalKey": "question-hypothesis",
+          "stage": "Sek I",
+          "descriptionDe": "Die lernende Person kann aus einem Alltagsphänomen eine chemisch untersuchbare Frage ableiten und eine begründete, durch Beobachtungen überprüfbare Hypothese formulieren.",
+          "descriptionEn": "The learner can derive an investigable chemical question from an everyday phenomenon and formulate a justified hypothesis that can be tested through observations."
+        },
+        {
+          "proposalKey": "investigation",
+          "stage": "Sek I",
+          "descriptionDe": "Die lernende Person kann zur Prüfung einer chemischen Hypothese eine einfache Untersuchung planen, unter Anleitung sicher durchführen und ihre Beobachtungen nachvollziehbar protokollieren.",
+          "descriptionEn": "The learner can plan a simple investigation to test a chemical hypothesis, carry it out safely under guidance, and document observations clearly."
+        }
+      ],
+      "keepOption": null,
+      "remainingSourceCoverageObligation": "Selbstständige qualitative/quantitative Untersuchungen sowie theorie- und modellgeleitete Prüfungen aus C10/C11/C12 benötigen einen ausdrücklich gebundenen Oberstufenanspruch; bestehende Zuordnungen nicht auf die beiden Sek-I-Vorschläge umetikettieren.",
+      "sourceBindings": [
+        {
+          "sourceGoalId": "9752f90e-d410-5bf9-a1bd-d62fbdb17172",
+          "sourceSpan": "C8.1.3",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "85c80476-9386-5d4d-a276-290128a2f1f5",
+          "sourceSpan": "C9-NTG.1.3",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "3e725d8e-5a2b-555e-864d-736112202bd7",
+          "sourceSpan": "C10-HG_SG_MUG_WWG_SWG.1.3",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "bb3a9033-1e59-50c6-a40e-2c86d1b1aa3f",
+          "sourceSpan": "C10-HG_SG_MUG_WWG_SWG.1.7",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "603d8683-a16a-5a04-b76d-d004aee6be5c",
+          "sourceSpan": "C10-NTG.1.2",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "e9bac0b2-c5a2-5b57-a98c-d82ca7ddc401",
+          "sourceSpan": "C10-NTG.1.3",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "f351c9a3-888f-5114-992d-5de84e3de59c",
+          "sourceSpan": "C11.1.2",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "5f963d1f-2fe6-5e3a-853e-a3eb513f0368",
+          "sourceSpan": "C11.1.3",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "683d548b-e69b-5459-b725-16aa56e307a9",
+          "sourceSpan": "C12-GA.1.8",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "383af691-7036-53f4-8e62-9c75d9da9dcd",
+          "sourceSpan": "C12-GA.1.9",
+          "matchType": "partial"
+        }
+      ],
+      "atomicityDecision": "existing_A_current_but_D2_dissent_open",
+      "memoryDecision": {
+        "status": "no_memory_needed",
+        "reason": "Diese Kompetenz verlangt nachvollziehbares Beobachten, Auswerten, Beurteilen, Darstellen oder Argumentieren im Fall. Reines Abfragen eines Kriterienkatalogs ersetzt das nicht; keine neuen SRS-Karten erforderlich. Bei Textänderung ist die aktuelle M-Bindung gezielt neu zu prüfen."
+      },
+      "imageDecision": {
+        "decision": "retain_current_binding_pending_semantic_decision",
+        "reason": "Die tatsächlichen aktuellen V-Bytes stimmen mit QA und Buch überein. Bestehende unveränderte Bildprüfung wird nicht neu gestartet. Bei angenommenem Split ist Motivpassung gezielt zu prüfen."
+      },
+      "prerequisiteDecision": {
+        "current": [
+          {
+            "goalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+            "title": "Arbeitsweisen der Chemie anwenden"
+          }
+        ],
+        "requiredCheck": "Keine routinemäßigen fachlichen prerequisites ergänzen. Bei Split innerhalb der Kompetenzfamilie nur tatsächlich notwendige Frage-/Datengrundlagen binden. Bei Oberstufenkontext passende Fachkenntnisse statt einer alleinigen strukturellen Oberstufen-Wurzel nachweisen."
+      },
+      "readyForStrictM7": false
+    },
+    {
+      "ordinal": 2,
+      "goalId": "49b13b33-34b7-5e4e-861c-b21082cb9922",
+      "currentGoalFingerprint": "sha256:75c6656a4b70cbf359eec346d6c4caa530ff0cf72803caf6afb76d18abafb2d3",
+      "currentPageFingerprint": "sha256:3567e0e530d5cdec9e57be16c8434954a935fc6ffefc9203c498a364c7a78fa2",
+      "before": {
+        "titleDe": "Chemische Daten dokumentieren und deuten",
+        "titleEn": "Document and interpret chemical data",
+        "descriptionDe": "Die lernende Person kann experimentell erhobene oder recherchierte Daten, auch aus digitaler Messwerterfassung und Internetrecherche, strukturiert dokumentieren, mit geeigneten mathematischen Verfahren und digitalen Werkzeugen wie Tabellenkalkulation quantitativ auswerten, ihre Gültigkeit beurteilen, mögliche Mess- und Verfahrensfehler einbeziehen sowie Trends, Strukturen und Beziehungen auf die zugrunde liegende Hypothese beziehen.",
+        "descriptionEn": "The learner can document experimental or researched data, including digital measurement data and internet research, quantitatively evaluate it using suitable mathematical methods and digital tools such as spreadsheets, assess its validity, consider possible measurement and procedural errors, and relate trends, structures, and relationships to the underlying hypothesis."
+      },
+      "existingDDecisions": {
+        "roundA": "revise",
+        "roundB": "split_review"
+      },
+      "candidateDecision": "split_review",
+      "findingDe": "Dokumentation, quantitative Auswertung und Prüfung der Aussagekraft sind eigenständig prüfbar. Tabellenkalkulation und digitale Messwerterfassung sind bereits im C8-Inhaltsbereich belegt; das Problem ist der Umfang und Grad der Selbstständigkeit, nicht die Existenz dieser Werkzeuge.",
+      "afterProposals": [
+        {
+          "proposalKey": "data-documentation",
+          "stage": "Sek I",
+          "descriptionDe": "Die lernende Person kann einfache chemische Mess- und Beobachtungsdaten mit Größen, Einheiten und Versuchsbedingungen übersichtlich dokumentieren.",
+          "descriptionEn": "The learner can clearly document simple chemical measurements and observations with quantities, units, and experimental conditions."
+        },
+        {
+          "proposalKey": "data-interpretation",
+          "stage": "Sek I",
+          "descriptionDe": "Die lernende Person kann einfache chemische Daten mit einer geeigneten Darstellung auswerten, erkennbare Muster und mögliche Messfehler berücksichtigen und die Ergebnisse mit einer Ausgangshypothese vergleichen.",
+          "descriptionEn": "The learner can evaluate simple chemical data using a suitable representation, consider visible patterns and possible measurement errors, and compare the results with an initial hypothesis."
+        }
+      ],
+      "keepOption": null,
+      "remainingSourceCoverageObligation": "Gültigkeitsprüfung, eigenständige mathematische/digitale Auswertungsmethoden und komplexe Darstellungswechsel aus C11/C12 bleiben gesonderte Quellendeckungspflichten. Vorgeschlagene Größen/Einheiten dienen nachvollziehbarer Dokumentation; sie sind keine neue unabhängige Spezialkompetenz.",
+      "sourceBindings": [
+        {
+          "sourceGoalId": "64050036-5de4-5064-a598-68e50b5dd91b",
+          "sourceSpan": "C8.1.2",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "58df31c4-7092-54a3-98c0-2237310ca1e5",
+          "sourceSpan": "C8.1.4",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "e86f53e2-7ade-5f00-a55a-bcda5b2c6755",
+          "sourceSpan": "C9-NTG.1.2",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "43ac3063-52aa-5989-8a56-0b284b3e5174",
+          "sourceSpan": "C9-NTG.1.4",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "59a58179-15b2-5174-840d-186cc568713a",
+          "sourceSpan": "C10-HG_SG_MUG_WWG_SWG.1.2",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "f72d1b14-4757-5aac-ac28-9dd9e51baec1",
+          "sourceSpan": "C10-HG_SG_MUG_WWG_SWG.1.4",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "603d8683-a16a-5a04-b76d-d004aee6be5c",
+          "sourceSpan": "C10-NTG.1.2",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "53f38cdc-db0f-5d08-b8dc-c593694dc64e",
+          "sourceSpan": "C11.1.4",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "d91ea519-1a9a-57cb-b0ac-76612ace683d",
+          "sourceSpan": "C11.1.5",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "47031e4f-9a05-54be-ba2a-8cf422d511ca",
+          "sourceSpan": "C12-GA.1.7",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "dbd56bd2-9c0d-5f9b-a0b0-79ab7ffbf140",
+          "sourceSpan": "C12-GA.1.10",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "69cf9544-8b0e-58da-98b7-816ec95138f2",
+          "sourceSpan": "C12-GA.1.12",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "0ce9342a-8a47-5ae8-8d87-45afed1a303c",
+          "sourceSpan": "C12-GA.1.20",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "89f4b5d3-1cfb-5d5c-9d34-bff74670b862",
+          "sourceSpan": "C12-GA.1.27",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "427a89dd-a04f-5a7a-b395-88af63fb69ea",
+          "sourceSpan": "C12-GA.3.3",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "8e9024e6-1190-553b-b960-d30cfda594d2",
+          "sourceSpan": "C12-EA.1.10",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "ea2f2af1-f3a3-5b12-89ea-a160b143d16f",
+          "sourceSpan": "C12-EA.1.12",
+          "matchType": "exact"
+        }
+      ],
+      "atomicityDecision": "existing_A_current_but_D2_dissent_open",
+      "memoryDecision": {
+        "status": "no_memory_needed",
+        "reason": "Diese Kompetenz verlangt nachvollziehbares Beobachten, Auswerten, Beurteilen, Darstellen oder Argumentieren im Fall. Reines Abfragen eines Kriterienkatalogs ersetzt das nicht; keine neuen SRS-Karten erforderlich. Bei Textänderung ist die aktuelle M-Bindung gezielt neu zu prüfen."
+      },
+      "imageDecision": {
+        "decision": "retain_current_binding_pending_semantic_decision",
+        "reason": "Die tatsächlichen aktuellen V-Bytes stimmen mit QA und Buch überein. Bestehende unveränderte Bildprüfung wird nicht neu gestartet. Bei angenommenem Split ist Motivpassung gezielt zu prüfen."
+      },
+      "prerequisiteDecision": {
+        "current": [
+          {
+            "goalId": "91238ba1-5c63-50c7-a4fd-9bbe492c6b61",
+            "title": "Chemische Fragestellungen hypothesengeleitet untersuchen"
+          }
+        ],
+        "requiredCheck": "Keine routinemäßigen fachlichen prerequisites ergänzen. Bei Split innerhalb der Kompetenzfamilie nur tatsächlich notwendige Frage-/Datengrundlagen binden. Bei Oberstufenkontext passende Fachkenntnisse statt einer alleinigen strukturellen Oberstufen-Wurzel nachweisen."
+      },
+      "readyForStrictM7": false
+    },
+    {
+      "ordinal": 3,
+      "goalId": "f660c91a-fa14-5010-94cf-068d785c7fd2",
+      "currentGoalFingerprint": "sha256:ff48bc03b9c24eb5cbd55514fad67b1679a275fc7a0211b2f7c9fc617f37f61a",
+      "currentPageFingerprint": "sha256:c4e1df5029185566cf626e867ab655505d25e033abd91d4b96e251a69974440b",
+      "before": {
+        "titleDe": "Chemische Erkenntniswege einordnen",
+        "titleEn": "Classify chemical ways of knowing",
+        "descriptionDe": "Die lernende Person kann naturwissenschaftliche Erkenntniswege, eigene Ergebnisse und den eigenen Erkenntnisprozess reflektieren, Grenzen des dabei gewonnenen Wissens benennen und Gültigkeitskriterien wie Reproduzierbarkeit, Falsifizierbarkeit, Intersubjektivität, logische Konsistenz und Vorläufigkeit anwenden.",
+        "descriptionEn": "The learner can reflect on scientific inquiry processes, their own results, and their own process of gaining knowledge, name limits of the knowledge gained, and apply validity criteria such as reproducibility, falsifiability, intersubjectivity, logical consistency, and provisionality."
+      },
+      "existingDDecisions": {
+        "roundA": "revise",
+        "roundB": "split_review"
+      },
+      "candidateDecision": "split_review",
+      "findingDe": "Die Sek-I-Frage nach naturwissenschaftlich beantwortbaren Fragen ist von der Oberstufenreflexion des eigenen Erkenntnisprozesses und dem formalen Gültigkeitskriterienkatalog zu trennen.",
+      "afterProposals": [
+        {
+          "proposalKey": "inquiry-limits",
+          "stage": "Sek I",
+          "descriptionDe": "Die lernende Person kann an einer chemischen Untersuchung erklären, welche Frage durch die Beobachtungen beantwortet wird und welche Fragen oder Unsicherheiten offenbleiben.",
+          "descriptionEn": "The learner can explain which question is answered by the observations in a chemical investigation and which questions or uncertainties remain open."
+        },
+        {
+          "proposalKey": "validity-criteria",
+          "stage": "Sek II",
+          "descriptionDe": "Die lernende Person kann die Aussagekraft chemischer Untersuchungsergebnisse anhand von Reproduzierbarkeit, Falsifizierbarkeit, Intersubjektivität, logischer Konsistenz und Vorläufigkeit begründet beurteilen.",
+          "descriptionEn": "The learner can assess the validity of chemical investigation results using reproducibility, falsifiability, intersubjectivity, logical consistency, and provisionality."
+        }
+      ],
+      "keepOption": null,
+      "remainingSourceCoverageObligation": "C12-GA.1.14/.15 und weitere Teilbindungen nicht als verbindlichen C8-Katalog behandeln. Eine getrennte Oberstufenreflexion des eigenen Erkenntnisprozesses ist noch mit der konkreten Teilbindung und atomaren Abgrenzung zu entscheiden.",
+      "sourceBindings": [
+        {
+          "sourceGoalId": "091196f9-c4e4-55e9-9314-62a6d328c032",
+          "sourceSpan": "C8.1.5",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "c854c164-9ddf-5efa-adb3-d92261015d39",
+          "sourceSpan": "C9-NTG.1.5",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "35cf47d1-bff9-58a5-b30d-bf907c78f10d",
+          "sourceSpan": "C10-HG_SG_MUG_WWG_SWG.1.5",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "a531a4f6-678e-56bd-996b-638c66570565",
+          "sourceSpan": "C12-GA.1.14",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "12355cef-acaa-50ab-ad68-40e0afe545f8",
+          "sourceSpan": "C12-GA.1.15",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "89f4b5d3-1cfb-5d5c-9d34-bff74670b862",
+          "sourceSpan": "C12-GA.1.27",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "08dad5cf-317f-50ae-8862-03507df0f7fb",
+          "sourceSpan": "C12-GA.1.30",
+          "matchType": "partial"
+        }
+      ],
+      "atomicityDecision": "existing_A_current_but_D2_dissent_open",
+      "memoryDecision": {
+        "status": "no_memory_needed",
+        "reason": "Diese Kompetenz verlangt nachvollziehbares Beobachten, Auswerten, Beurteilen, Darstellen oder Argumentieren im Fall. Reines Abfragen eines Kriterienkatalogs ersetzt das nicht; keine neuen SRS-Karten erforderlich. Bei Textänderung ist die aktuelle M-Bindung gezielt neu zu prüfen."
+      },
+      "imageDecision": {
+        "decision": "targeted_image_content_clarification_required",
+        "reason": "Tatsächlich angesehenes aktuelles Bild nennt formal Wenn nicht C, dann widerlegt! ohne Versuchsbedingungen. Eine erfolglose Durchführung bzw. ein Messfehler widerlegt nicht automatisch eine Hypothese. Bedingungen und zuverlässige Beobachtung ergänzen; das formale Kriterienbild nur einem dafür passenden Oberstufenziel zuordnen."
+      },
+      "prerequisiteDecision": {
+        "current": [
+          {
+            "goalId": "91238ba1-5c63-50c7-a4fd-9bbe492c6b61",
+            "title": "Chemische Fragestellungen hypothesengeleitet untersuchen"
+          }
+        ],
+        "requiredCheck": "Keine routinemäßigen fachlichen prerequisites ergänzen. Bei Split innerhalb der Kompetenzfamilie nur tatsächlich notwendige Frage-/Datengrundlagen binden. Bei Oberstufenkontext passende Fachkenntnisse statt einer alleinigen strukturellen Oberstufen-Wurzel nachweisen."
+      },
+      "readyForStrictM7": false
+    },
+    {
+      "ordinal": 4,
+      "goalId": "b6327e98-8ab9-5d7f-b826-4023bc1a56a7",
+      "currentGoalFingerprint": "sha256:9a204480429cec171ab745145cace1926ccc4b6fde978a8d310c055c9195f691",
+      "currentPageFingerprint": "sha256:11927fbf6c30296a1f3bca065d16faa36e4b0a989fecca4b064032ad70706ea0",
+      "before": {
+        "titleDe": "Quellen und Argumente zu chemischen Sachverhalten auswerten",
+        "titleEn": "Evaluate sources and arguments on chemical issues",
+        "descriptionDe": "Die lernende Person kann vorgegebene oder selbstständig recherchierte analoge und digitale Texte, Bilder und fachwissenschaftliche Quellen zu chemischen und pharmazeutischen Fragestellungen hinsichtlich Eignung, Aussagekraft, fachlicher Relevanz, Vertrauenswürdigkeit, Intention, Urheberschaft und Validität einschätzen, Informationen und Daten aus auch komplexen Darstellungsformen adressaten-, sach- und situationsgerecht auswählen, strukturieren, in geeignete Darstellungsformen überführen, mit analogen oder digitalen Medien präsentieren, Quellen belegen, Zitate kennzeichnen, Bewertungskriterien erkennen und Pro- und Kontra-Argumente abwägen.",
+        "descriptionEn": "The learner can assess given or independently researched analogue and digital texts, images, and scientific sources on chemical and pharmaceutical questions for suitability, relevance, trustworthiness, intention, authorship, and validity; select, structure, transform, and present information and data from complex representations for audience, subject, and situation using analogue or digital media; cite sources, mark quotations, identify evaluation criteria, and weigh pro and contra arguments."
+      },
+      "existingDDecisions": {
+        "roundA": "split_review",
+        "roundB": "split_review"
+      },
+      "candidateDecision": "split_review",
+      "findingDe": "Quellenprüfung, Informationsaufbereitung/Präsentation und Bewertung von Argumenten sind unabhängige prüfbare Routinen. Pharmazeutische Fachquellen und komplexe Darstellungsformen sind tatsächlich in höheren Jahrgangsstufen belegt, aber keine allgemeine Sek-I-Pflicht.",
+      "afterProposals": [
+        {
+          "proposalKey": "source-appraisal",
+          "stage": "Sek I",
+          "descriptionDe": "Die lernende Person kann vorgegebene chemische Informationsquellen auf fachliche Eignung und Vertrauenswürdigkeit prüfen und ihre Auswahl begründen.",
+          "descriptionEn": "The learner can assess given chemistry information sources for relevance and trustworthiness and justify their selection."
+        },
+        {
+          "proposalKey": "information-presentation",
+          "stage": "Sek I",
+          "descriptionDe": "Die lernende Person kann chemische Informationen aus geeigneten Quellen sachgerecht strukturieren, verständlich darstellen und die verwendeten Quellen angeben.",
+          "descriptionEn": "The learner can structure chemical information from suitable sources, present it clearly, and identify the sources used."
+        },
+        {
+          "proposalKey": "argument-appraisal",
+          "stage": "Sek I",
+          "descriptionDe": "Die lernende Person kann zu einer alltagsnahen chemischen Frage Pro- und Kontra-Argumente anhand vorgegebener Bewertungskriterien abwägen.",
+          "descriptionEn": "The learner can weigh arguments for and against an everyday chemistry-related question using given evaluation criteria."
+        }
+      ],
+      "keepOption": null,
+      "remainingSourceCoverageObligation": "Die bereits existierende Zielkompetenz Untersuchungsergebnisse adressaten- und sachgerecht darstellen ist vor Anlage eines Präsentationskindes auf Überschneidung zu prüfen. Selbstständige komplexe Quellenrecherche, Zitatkennzeichnung und pharmazeutische Kontexte werden in oberstufenspezifischen Bindungen erhalten, nicht pauschal gestrichen.",
+      "sourceBindings": [
+        {
+          "sourceGoalId": "582de4c8-0b88-5191-b6d6-7cd73c5c069d",
+          "sourceSpan": "C8.1.10",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "1b75964f-1e5e-5299-bdb9-3ede55b14f1c",
+          "sourceSpan": "C8.1.11",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "717b3571-9328-5afa-96f8-95afc52cd31f",
+          "sourceSpan": "C9-NTG.1.9",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "5377d7be-91b4-59d9-88fe-293164f7c93c",
+          "sourceSpan": "C9-NTG.1.10",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "82908e6e-aa17-57e0-b760-d91508034349",
+          "sourceSpan": "C10-HG_SG_MUG_WWG_SWG.1.9",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "21c82e8e-01a0-5bff-992c-a0ea1a7d9ee1",
+          "sourceSpan": "C10-HG_SG_MUG_WWG_SWG.1.12",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "816f8009-13e2-5fa4-bf32-de86cf280ae8",
+          "sourceSpan": "C11.1.8",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "26283098-38ae-5843-a3d8-19d0dca0aa34",
+          "sourceSpan": "C11.1.9",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "3e107256-78c4-53ef-9fd2-0c76bef1fbe2",
+          "sourceSpan": "C12-GA.1.16",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "a2e046a7-148f-5d49-bb09-caadff2220d2",
+          "sourceSpan": "C12-GA.1.17",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "4b645ee5-bbe8-56fe-af23-5f6ca4894412",
+          "sourceSpan": "C12-GA.1.18",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "978dc973-a2d1-5644-84fc-7be8641bf121",
+          "sourceSpan": "C12-GA.1.19",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "0ce9342a-8a47-5ae8-8d87-45afed1a303c",
+          "sourceSpan": "C12-GA.1.20",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "9e174067-c871-5e58-845f-76f458c24fd5",
+          "sourceSpan": "C12-GA.1.22",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "8f8d93bd-8d0b-516d-ab21-318d1a6f5c73",
+          "sourceSpan": "C12-GA.1.23",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "33d9b115-1bd5-5bf4-b333-ae7d8bc4c1f8",
+          "sourceSpan": "C12-GA.1.26",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "89f4b5d3-1cfb-5d5c-9d34-bff74670b862",
+          "sourceSpan": "C12-GA.1.27",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "427a89dd-a04f-5a7a-b395-88af63fb69ea",
+          "sourceSpan": "C12-GA.3.3",
+          "matchType": "partial"
+        }
+      ],
+      "atomicityDecision": "existing_A_current_but_D2_dissent_open",
+      "memoryDecision": {
+        "status": "no_memory_needed",
+        "reason": "Diese Kompetenz verlangt nachvollziehbares Beobachten, Auswerten, Beurteilen, Darstellen oder Argumentieren im Fall. Reines Abfragen eines Kriterienkatalogs ersetzt das nicht; keine neuen SRS-Karten erforderlich. Bei Textänderung ist die aktuelle M-Bindung gezielt neu zu prüfen."
+      },
+      "imageDecision": {
+        "decision": "retain_current_binding_pending_semantic_decision",
+        "reason": "Die tatsächlichen aktuellen V-Bytes stimmen mit QA und Buch überein. Bestehende unveränderte Bildprüfung wird nicht neu gestartet. Bei angenommenem Split ist Motivpassung gezielt zu prüfen."
+      },
+      "prerequisiteDecision": {
+        "current": [
+          {
+            "goalId": "49b13b33-34b7-5e4e-861c-b21082cb9922",
+            "title": "Chemische Daten dokumentieren und deuten"
+          }
+        ],
+        "requiredCheck": "Keine routinemäßigen fachlichen prerequisites ergänzen. Bei Split innerhalb der Kompetenzfamilie nur tatsächlich notwendige Frage-/Datengrundlagen binden. Bei Oberstufenkontext passende Fachkenntnisse statt einer alleinigen strukturellen Oberstufen-Wurzel nachweisen."
+      },
+      "readyForStrictM7": false
+    },
+    {
+      "ordinal": 5,
+      "goalId": "542822de-cb96-56cf-a487-0fc3b5820f57",
+      "currentGoalFingerprint": "sha256:2fb4f71559db2d623d0b42cd8a21ce00abaf4e39a8914c77f5199df5643b96d5",
+      "currentPageFingerprint": "sha256:87acc576ea3a4c79793eeba07664dfc0473963f8a81cdb574cb119f3ed8f2019",
+      "before": {
+        "titleDe": "Chemie in Gesellschaft und Berufsfeldern einordnen",
+        "titleEn": "Classify chemistry in society and career fields",
+        "descriptionDe": "Die lernende Person kann Aufgaben und Anwendungsbereiche der Chemie beschreiben, ihre gesellschaftliche Bedeutung diskutieren und chemische Berufsfelder einordnen.",
+        "descriptionEn": "The learner can describe tasks and application areas of chemistry, discuss their significance for society, and classify chemistry-related career fields."
+      },
+      "existingDDecisions": {
+        "roundA": "keep",
+        "roundB": "split_review"
+      },
+      "candidateDecision": "open_keep_split_dissent",
+      "findingDe": "Die C9-Quelle verbindet Aufgaben, Anwendungsbereiche, gesellschaftliche Bedeutung und Berufswahl ausdrücklich. Ein kohärenter Anwendungsfall kann dies integriert prüfen. Rund A KEEP gegen Rund B SPLIT bleibt dennoch offen; kein automatisches Überstimmen.",
+      "afterProposals": [],
+      "keepOption": {
+        "titleDe": "Chemie in Gesellschaft und Berufsfeldern einordnen",
+        "titleEn": "Classify chemistry in society and career fields",
+        "descriptionDe": "Die lernende Person kann Aufgaben und Anwendungsbereiche der Chemie beschreiben, ihre gesellschaftliche Bedeutung diskutieren und chemische Berufsfelder einordnen.",
+        "descriptionEn": "The learner can describe tasks and application areas of chemistry, discuss their significance for society, and classify chemistry-related career fields."
+      },
+      "remainingSourceCoverageObligation": "KEEP-Option: bestehende DE/EN-Texte unverändert in einem konkreten chemischen Berufsfeld prüfen. Die partiellen C12-Bindungen sind keine Garantie, dass dieser begrenzte C9-Anspruch alle Oberstufen-Bewertungskompetenzen deckt. Alternative Trennung benötigt eine bewusste Atomaritätsentscheidung.",
+      "sourceBindings": [
+        {
+          "sourceGoalId": "d312b2e3-c232-5b4e-886e-2b34df1c956c",
+          "sourceSpan": "C9-HG_SG_MUG_WWG_SWG.1.13",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "1dfeaae5-3358-578e-bf33-36bc91a87bc5",
+          "sourceSpan": "C12-GA.1.29",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "2a810f56-fddf-5ed7-8ee5-3b05b48bf919",
+          "sourceSpan": "C12-GA.1.31",
+          "matchType": "partial"
+        }
+      ],
+      "atomicityDecision": "existing_A_current_but_D2_dissent_open",
+      "memoryDecision": {
+        "status": "no_memory_needed",
+        "reason": "Diese Kompetenz verlangt nachvollziehbares Beobachten, Auswerten, Beurteilen, Darstellen oder Argumentieren im Fall. Reines Abfragen eines Kriterienkatalogs ersetzt das nicht; keine neuen SRS-Karten erforderlich. Bei Textänderung ist die aktuelle M-Bindung gezielt neu zu prüfen."
+      },
+      "imageDecision": {
+        "decision": "targeted_image_correction_required",
+        "reason": "Tatsächlich angesehenes aktuelles Bild enthält pauschale Nutzen-aufwärts/Risiko-abwärts-Aussagen in Medizin/Energie. Ohne Fallbedingungen unzulässige allgemeine Nutzen-Risiko-Wertung; diese Texte korrigieren, sinnvolle Berufs-/Anwendungsstruktur erhalten."
+      },
+      "prerequisiteDecision": {
+        "current": [
+          {
+            "goalId": "b6327e98-8ab9-5d7f-b826-4023bc1a56a7",
+            "title": "Quellen und Argumente zu chemischen Sachverhalten auswerten"
+          }
+        ],
+        "requiredCheck": "Keine routinemäßigen fachlichen prerequisites ergänzen. Bei Split innerhalb der Kompetenzfamilie nur tatsächlich notwendige Frage-/Datengrundlagen binden. Bei Oberstufenkontext passende Fachkenntnisse statt einer alleinigen strukturellen Oberstufen-Wurzel nachweisen."
+      },
+      "readyForStrictM7": false
+    },
+    {
+      "ordinal": 6,
+      "goalId": "1df17884-96ae-57d7-9da9-dbebd082596f",
+      "currentGoalFingerprint": "sha256:0dc8298891a12d8cb7a3feb1645e357654b182a687c3491a4c423784b8ba14c4",
+      "currentPageFingerprint": "sha256:44815661df50b241a0fdfbb028e78aae8c42711306c45de25376a3054fabcb7b",
+      "before": {
+        "titleDe": "Chemische Handlungsoptionen kriteriengeleitet bewerten",
+        "titleEn": "Evaluate chemical action options using criteria",
+        "descriptionDe": "Die lernende Person kann bei lebensweltbezogenen chemischen Sachverhalten, etwa Lebensmittelauswahl, Verwendung von Arzneimitteln, Technologien, Produkten oder Verhaltensweisen, ethische, ökologische, ökonomische und sicherheitsbezogene Bewertungskriterien ableiten, Chancen und Risiken beurteilen, Handlungsoptionen begründet formulieren, chemische Sichtweisen hinsichtlich ihrer Möglichkeiten und Grenzen reflektieren, Entscheidungsstrategien anwenden und getroffene Entscheidungen aus chemischer Perspektive überprüfen.",
+        "descriptionEn": "The learner can derive ethical, ecological, economic, and safety-related evaluation criteria for chemistry-related everyday issues such as food choices, medicines, technologies, products, or behaviours; assess chances and risks, formulate justified options for action, reflect on possibilities and limits of chemical perspectives, apply decision strategies, and review decisions from a chemical perspective."
+      },
+      "existingDDecisions": {
+        "roundA": "revise",
+        "roundB": "revise"
+      },
+      "candidateDecision": "revise_candidate",
+      "findingDe": "Die kriteriengeleitete Entscheidung ist eine integrierte Bewertungsroutine. Der aktuelle Text reiht Auswahlkontexte und Teilhandlungen auf. Kürzung soll alle Kriterienfamilien, Chancen/Risiken, Grenzen und Überprüfung einer begründeten Entscheidung erhalten.",
+      "afterProposals": [
+        {
+          "proposalKey": "decision-evaluation",
+          "stage": "Sek I / Sek II mit getrennten Anforderungsgraden",
+          "descriptionDe": "Die lernende Person kann bei einer alltagsnahen chemischen Entscheidung ethische, ökologische, ökonomische und sicherheitsbezogene Kriterien begründen, Chancen und Risiken abwägen und ihre Entscheidung unter Berücksichtigung der Grenzen chemischer Aussagen überprüfen.",
+          "descriptionEn": "The learner can justify ethical, environmental, economic, and safety criteria for an everyday chemistry-related decision, weigh benefits and risks, and review their decision while considering the limits of chemical evidence."
+        }
+      ],
+      "keepOption": null,
+      "remainingSourceCoverageObligation": "C10 benötigt eine überschaubare, gegebene Fallbasis; C11/C12 verlangen anspruchsvollere selbstständige Kriterien- und Strategieanwendung. Der Profilkontext darf keine individuelle Arzneimittelberatung und kein neues spezielles Entscheidungsverfahren als eigenständige Kompetenz einführen. Nach neuer Formulierung D/A/M/Profilbindung gezielt erneuern.",
+      "sourceBindings": [
+        {
+          "sourceGoalId": "d9ff64c9-6a92-504d-8919-0baf89d29369",
+          "sourceSpan": "C10-HG_SG_MUG_WWG_SWG.1.11",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "bce4915d-103c-5ac2-bcb6-5e45e6e392b8",
+          "sourceSpan": "C10-HG_SG_MUG_WWG_SWG.1.13",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "fdef91b4-3f44-5000-b153-39f2d7f049b7",
+          "sourceSpan": "C11.1.10",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "531a8013-f57e-575c-8875-b39045e21793",
+          "sourceSpan": "C12-GA.1.25",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "329e59a8-9b15-5ecd-8bea-33319d0ad63f",
+          "sourceSpan": "C12-GA.1.28",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "1dfeaae5-3358-578e-bf33-36bc91a87bc5",
+          "sourceSpan": "C12-GA.1.29",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "08dad5cf-317f-50ae-8862-03507df0f7fb",
+          "sourceSpan": "C12-GA.1.30",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "b31297ec-37f2-5ccb-9a23-7eca7c20f4f9",
+          "sourceSpan": "C12-GA.1.33",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "c20ba743-065c-50a0-b78f-26b8add2ea63",
+          "sourceSpan": "C12-GA.1.34",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "f01f6d7b-41c7-5f9c-a2c5-9528f41258ec",
+          "sourceSpan": "C13-EA.1.28",
+          "matchType": "exact"
+        }
+      ],
+      "atomicityDecision": "integrated_competence_candidate_pending_targeted_D_resolution",
+      "memoryDecision": {
+        "status": "no_memory_needed",
+        "reason": "Diese Kompetenz verlangt nachvollziehbares Beobachten, Auswerten, Beurteilen, Darstellen oder Argumentieren im Fall. Reines Abfragen eines Kriterienkatalogs ersetzt das nicht; keine neuen SRS-Karten erforderlich. Bei Textänderung ist die aktuelle M-Bindung gezielt neu zu prüfen."
+      },
+      "imageDecision": {
+        "decision": "retain_current_binding_pending_semantic_decision",
+        "reason": "Die tatsächlichen aktuellen V-Bytes stimmen mit QA und Buch überein. Bestehende unveränderte Bildprüfung wird nicht neu gestartet. Bei angenommenem Split ist Motivpassung gezielt zu prüfen."
+      },
+      "prerequisiteDecision": {
+        "current": [
+          {
+            "goalId": "b6327e98-8ab9-5d7f-b826-4023bc1a56a7",
+            "title": "Quellen und Argumente zu chemischen Sachverhalten auswerten"
+          }
+        ],
+        "requiredCheck": "Keine routinemäßigen fachlichen prerequisites ergänzen. Bei Split innerhalb der Kompetenzfamilie nur tatsächlich notwendige Frage-/Datengrundlagen binden. Bei Oberstufenkontext passende Fachkenntnisse statt einer alleinigen strukturellen Oberstufen-Wurzel nachweisen."
+      },
+      "readyForStrictM7": false
+    },
+    {
+      "ordinal": 7,
+      "goalId": "b3c9c4b8-5575-5200-86cf-26c14ebcc3d8",
+      "currentGoalFingerprint": "sha256:60227eb71d3b752c1ade42ba1b14b4959620e519447cac87b74be7dcf1ce3776",
+      "currentPageFingerprint": "sha256:b6084294c157d90d653a1bb7544168dc51cb680f54450892201c079355df6e79",
+      "before": {
+        "titleDe": "Einflüsse auf naturwissenschaftliches Wissen bewerten",
+        "titleEn": "Evaluate influences on scientific knowledge",
+        "descriptionDe": "Die lernende Person kann soziale, kulturelle, technologische, historische, ökologische und ökonomische Einflüsse auf die Entwicklung naturwissenschaftlichen Wissens sowie Auswirkungen chemischer Produkte, Verfahren, Methoden und Erkenntnisse in aktuellen und historischen gesellschaftlichen Zusammenhängen beschreiben und im Sinne nachhaltiger Entwicklung bewerten.",
+        "descriptionEn": "The learner can describe and evaluate social, cultural, technological, historical, ecological, and economic influences on the development of scientific knowledge as well as impacts of chemical products, processes, methods, and findings in current and historical social contexts from the perspective of sustainable development."
+      },
+      "existingDDecisions": {
+        "roundA": "split_review",
+        "roundB": "block"
+      },
+      "candidateDecision": "split_review_and_stage_repair",
+      "findingDe": "Einflüsse auf die Entwicklung wissenschaftlichen Wissens und die Bewertung gesellschaftlicher Auswirkungen von Produkten/Verfahren sind zwei Gegenstände. Das Oberstufenziel liegt im tatsächlichen gebundenen Buch unter einem Sek-I-Kapitel.",
+      "afterProposals": [
+        {
+          "proposalKey": "knowledge-influences",
+          "stage": "Sek II",
+          "descriptionDe": "Die lernende Person kann an einem chemischen Beispiel erklären und beurteilen, wie soziale, kulturelle, technologische, historische, ökologische und ökonomische Bedingungen die Entwicklung naturwissenschaftlichen Wissens beeinflussen.",
+          "descriptionEn": "The learner can explain and assess, using a chemistry example, how social, cultural, technological, historical, environmental, and economic conditions influence the development of scientific knowledge."
+        },
+        {
+          "proposalKey": "societal-impacts",
+          "stage": "Sek II",
+          "descriptionDe": "Die lernende Person kann gesellschaftliche und ökologische Auswirkungen eines chemischen Produkts oder Verfahrens anhand fachlicher Kriterien im Sinne nachhaltiger Entwicklung bewerten.",
+          "descriptionEn": "The learner can assess the societal and environmental impacts of a chemical product or process using scientific criteria in relation to sustainable development."
+        }
+      ],
+      "keepOption": null,
+      "remainingSourceCoverageObligation": "C11.1.11 und C12-GA.1.31/.33 getrennt abdecken. Das neue Buchkapitel und Oberstufen-Voraussetzungen müssen tatsächlich gebunden werden; Umbenennen allein behebt das nicht.",
+      "sourceBindings": [
+        {
+          "sourceGoalId": "7ee6a5cd-dce6-57ad-b126-c1e3a05f234c",
+          "sourceSpan": "C11.1.11",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "2a810f56-fddf-5ed7-8ee5-3b05b48bf919",
+          "sourceSpan": "C12-GA.1.31",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "b31297ec-37f2-5ccb-9a23-7eca7c20f4f9",
+          "sourceSpan": "C12-GA.1.33",
+          "matchType": "partial"
+        }
+      ],
+      "atomicityDecision": "existing_A_current_but_D2_dissent_open",
+      "memoryDecision": {
+        "status": "no_memory_needed",
+        "reason": "Diese Kompetenz verlangt nachvollziehbares Beobachten, Auswerten, Beurteilen, Darstellen oder Argumentieren im Fall. Reines Abfragen eines Kriterienkatalogs ersetzt das nicht; keine neuen SRS-Karten erforderlich. Bei Textänderung ist die aktuelle M-Bindung gezielt neu zu prüfen."
+      },
+      "imageDecision": {
+        "decision": "retain_current_binding_pending_semantic_decision",
+        "reason": "Die tatsächlichen aktuellen V-Bytes stimmen mit QA und Buch überein. Bestehende unveränderte Bildprüfung wird nicht neu gestartet. Bei angenommenem Split ist Motivpassung gezielt zu prüfen."
+      },
+      "prerequisiteDecision": {
+        "current": [
+          {
+            "goalId": "542822de-cb96-56cf-a487-0fc3b5820f57",
+            "title": "Chemie in Gesellschaft und Berufsfeldern einordnen"
+          },
+          {
+            "goalId": "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+            "title": "Warum Chemie? - Relevanz und Orientierung"
+          }
+        ],
+        "requiredCheck": "Keine routinemäßigen fachlichen prerequisites ergänzen. Bei Split innerhalb der Kompetenzfamilie nur tatsächlich notwendige Frage-/Datengrundlagen binden. Bei Oberstufenkontext passende Fachkenntnisse statt einer alleinigen strukturellen Oberstufen-Wurzel nachweisen."
+      },
+      "readyForStrictM7": false
+    },
+    {
+      "ordinal": 8,
+      "goalId": "1f354a60-be44-512b-8f8b-f67c8c456035",
+      "currentGoalFingerprint": "sha256:144352c350400f3b537d5a9f4c0bfc74dcb12ece511ce00e1360d6b298dab59b",
+      "currentPageFingerprint": "sha256:7fad843f6a858019de00d54cb06e361d28951e9fcf053000ac257b4b20aacafa",
+      "before": {
+        "titleDe": "Chemische Sachverhalte fachlich diskutieren",
+        "titleEn": "Discuss chemical issues scientifically",
+        "descriptionDe": "Die lernende Person kann chemische Sachverhalte fachlich schlüssig erklären, begründet argumentieren, sich konstruktiv austauschen und den eigenen Standpunkt anhand fachlicher Argumente reflektieren oder korrigieren.",
+        "descriptionEn": "The learner can explain chemical issues coherently, argue with justification, exchange ideas constructively, and reflect on or correct their own standpoint using scientific arguments."
+      },
+      "existingDDecisions": {
+        "roundA": "revise",
+        "roundB": "block"
+      },
+      "candidateDecision": "conditional_keep_after_stage_repair",
+      "findingDe": "Die zwei tatsächlichen direkten C12-GA-Quellenbindungen .1.21 und .1.24 stützen fachliches Erklären/Argumentieren UND konstruktiven Austausch/Standpunktreflexion. Eine Streichung der zweiten Hälfte wäre sachlich unbegründet. Der aktuelle Oberstufenanspruch wird aber im Sek-I-Buchkapitel gezeigt.",
+      "afterProposals": [],
+      "keepOption": {
+        "titleDe": "Chemische Sachverhalte fachlich diskutieren",
+        "titleEn": "Discuss chemical issues scientifically",
+        "descriptionDe": "Die lernende Person kann chemische Sachverhalte fachlich schlüssig erklären, begründet argumentieren, sich konstruktiv austauschen und den eigenen Standpunkt anhand fachlicher Argumente reflektieren oder korrigieren.",
+        "descriptionEn": "The learner can explain chemical issues coherently, argue with justification, exchange ideas constructively, and reflect on or correct their own standpoint using scientific arguments."
+      },
+      "remainingSourceCoverageObligation": "Bestehende DE/EN-Texte KEEP als kohärente fachliche Diskussion; das ist eine neue begründete Kandidatenposition, keine Aufhebung des historischen BLOCK. Erst passende Oberstufen-Buchseite, direkter Quellennachweis, Voraussetzungen und gezielte unabhängige D-Klärung erlauben Abschluss.",
+      "sourceBindings": [
+        {
+          "sourceGoalId": "0cc078eb-2b49-57e1-8628-6c0a03252d35",
+          "sourceSpan": "C12-GA.1.21",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "34580d46-1769-554e-afc5-b7ad69845ce9",
+          "sourceSpan": "C12-GA.1.24",
+          "matchType": "exact"
+        }
+      ],
+      "atomicityDecision": "integrated_competence_candidate_pending_targeted_D_resolution",
+      "memoryDecision": {
+        "status": "no_memory_needed",
+        "reason": "Diese Kompetenz verlangt nachvollziehbares Beobachten, Auswerten, Beurteilen, Darstellen oder Argumentieren im Fall. Reines Abfragen eines Kriterienkatalogs ersetzt das nicht; keine neuen SRS-Karten erforderlich. Bei Textänderung ist die aktuelle M-Bindung gezielt neu zu prüfen."
+      },
+      "imageDecision": {
+        "decision": "retain_current_binding_pending_semantic_decision",
+        "reason": "Die tatsächlichen aktuellen V-Bytes stimmen mit QA und Buch überein. Bestehende unveränderte Bildprüfung wird nicht neu gestartet. Bei angenommenem Split ist Motivpassung gezielt zu prüfen."
+      },
+      "prerequisiteDecision": {
+        "current": [
+          {
+            "goalId": "b6327e98-8ab9-5d7f-b826-4023bc1a56a7",
+            "title": "Quellen und Argumente zu chemischen Sachverhalten auswerten"
+          },
+          {
+            "goalId": "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+            "title": "Warum Chemie? - Relevanz und Orientierung"
+          }
+        ],
+        "requiredCheck": "Keine routinemäßigen fachlichen prerequisites ergänzen. Bei Split innerhalb der Kompetenzfamilie nur tatsächlich notwendige Frage-/Datengrundlagen binden. Bei Oberstufenkontext passende Fachkenntnisse statt einer alleinigen strukturellen Oberstufen-Wurzel nachweisen."
+      },
+      "readyForStrictM7": false
+    },
+    {
+      "ordinal": 9,
+      "goalId": "277a3c20-6082-5a95-be08-c1e386efe79b",
+      "currentGoalFingerprint": "sha256:03b839f41b093dcfc23a11dd58e0aa175aaa5d83821f5062f09dbc59881c7d7a",
+      "currentPageFingerprint": "sha256:13574001f00ecaa29b095b29a5f253d71eefe5d8449eeeffd19e7fb4b75d5faf",
+      "before": {
+        "titleDe": "Chemische Modelle nutzen und kritisch vergleichen",
+        "titleEn": "Use and critically compare chemical models",
+        "descriptionDe": "Die lernende Person kann analoge und digitale Modelle sowie Simulationen zum Aufbau der Materie, zu chemischen Reaktionen, Bindungen, Molekülgeometrien und Wechselwirkungen nutzen, auch für komplexe organische Moleküle und molekulare Wechselwirkungen in biochemischen oder pharmazeutischen Kontexten, ihre Aussagekraft vergleichen, Grenzen benennen und Weiterentwicklungsbedarf begründen.",
+        "descriptionEn": "The learner can use analogue and digital models and simulations of matter, chemical reactions, bonds, molecular geometries, and interactions, including complex organic molecules and molecular interactions in biochemical or pharmaceutical contexts, compare their explanatory power, name limitations, and justify where models need further development."
+      },
+      "existingDDecisions": {
+        "roundA": "revise",
+        "roundB": "block"
+      },
+      "candidateDecision": "stage_bounded_revision_candidate",
+      "findingDe": "Der allgemeine Modellvergleich passt zu Sek I. Verbindliche komplexe organische, biochemische und pharmazeutische Modelle greifen dagegen belegte C11/C12-Anforderungen auf und überschreiten das C8-Niveau.",
+      "afterProposals": [
+        {
+          "proposalKey": "model-comparison",
+          "stage": "Sek I",
+          "descriptionDe": "Die lernende Person kann einfache analoge oder digitale Modelle und Simulationen zum Aufbau der Materie und zu chemischen Reaktionen nutzen, ihre Aussagekraft vergleichen und ihre Grenzen an einem konkreten Beispiel erklären.",
+          "descriptionEn": "The learner can use simple analogue or digital models and simulations of matter and chemical reactions, compare their explanatory power, and explain their limits using a concrete example."
+        },
+        {
+          "proposalKey": "advanced-model-comparison",
+          "stage": "Sek II",
+          "descriptionDe": "Die lernende Person kann Modelle und Simulationen komplexer organischer Moleküle und molekularer Wechselwirkungen in biochemischen oder pharmazeutischen Zusammenhängen vergleichen und ihre Aussagekraft und Grenzen begründen.",
+          "descriptionEn": "The learner can compare models and simulations of complex organic molecules and molecular interactions in biochemical or pharmaceutical contexts and justify their explanatory power and limits."
+        }
+      ],
+      "keepOption": null,
+      "remainingSourceCoverageObligation": "Bestehende C11/C12-Mappings und Weiterentwicklungsanspruch nicht stillschweigend verlieren. Überschneidung mit bestehenden Struktur-/Modellzielen und tatsächliche prerequisites des Oberstufenziels vor finalem Split klären. Für das Wasser-Modell sind Bindungs-/Polaritätskenntnisse je Kontext bereitzustellen oder als passende Voraussetzung zu binden.",
+      "sourceBindings": [
+        {
+          "sourceGoalId": "3d38d996-6769-5594-a27c-3d9fbaa811a6",
+          "sourceSpan": "C8.1.6",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "7f76e522-076d-5bb2-822d-9fc87d8322ed",
+          "sourceSpan": "C8.1.7",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "d6638c01-20f9-56fa-984d-45da37ccf92d",
+          "sourceSpan": "C8.2.2",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "fe171cd0-9157-54fb-adec-df3a47343b8b",
+          "sourceSpan": "C9-HG_SG_MUG_WWG_SWG.1.7",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "93946047-8b65-58f3-8de3-1544ec61c65b",
+          "sourceSpan": "C9-HG_SG_MUG_WWG_SWG.2.2",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "2829fc7b-e89b-5f31-93d8-61f560d0213b",
+          "sourceSpan": "C9-NTG.1.6",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "3ca0be1c-6b53-538d-8640-2f20285446b8",
+          "sourceSpan": "C9-NTG.2.4",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "30751b88-d12e-5c51-b410-43a391940055",
+          "sourceSpan": "C10-HG_SG_MUG_WWG_SWG.1.6",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "bb3a9033-1e59-50c6-a40e-2c86d1b1aa3f",
+          "sourceSpan": "C10-HG_SG_MUG_WWG_SWG.1.7",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "5f963d1f-2fe6-5e3a-853e-a3eb513f0368",
+          "sourceSpan": "C11.1.3",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "e77a48c1-cc20-53e2-9656-eb7fd2b6a034",
+          "sourceSpan": "C11.1.6",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "1163f8a7-1ed7-501c-a602-34bca1a57977",
+          "sourceSpan": "C12-GA.1.4",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "29e276dc-4984-573b-b9b6-fa8f5af27935",
+          "sourceSpan": "C12-GA.1.6",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "383af691-7036-53f4-8e62-9c75d9da9dcd",
+          "sourceSpan": "C12-GA.1.9",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "dbd56bd2-9c0d-5f9b-a0b0-79ab7ffbf140",
+          "sourceSpan": "C12-GA.1.10",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "5a439aa5-d43b-5256-ab4a-a7d74263e0b6",
+          "sourceSpan": "C12-GA.1.11",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "006406cf-b468-5bd1-8241-2e6bea026dcb",
+          "sourceSpan": "C12-GA.1.13",
+          "matchType": "exact"
+        },
+        {
+          "sourceGoalId": "531a8013-f57e-575c-8875-b39045e21793",
+          "sourceSpan": "C12-GA.1.25",
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "8e9024e6-1190-553b-b960-d30cfda594d2",
+          "sourceSpan": "C12-EA.1.10",
+          "matchType": "partial"
+        }
+      ],
+      "atomicityDecision": "existing_A_current_but_D2_dissent_open",
+      "memoryDecision": {
+        "status": "no_memory_needed",
+        "reason": "Diese Kompetenz verlangt nachvollziehbares Beobachten, Auswerten, Beurteilen, Darstellen oder Argumentieren im Fall. Reines Abfragen eines Kriterienkatalogs ersetzt das nicht; keine neuen SRS-Karten erforderlich. Bei Textänderung ist die aktuelle M-Bindung gezielt neu zu prüfen."
+      },
+      "imageDecision": {
+        "decision": "retain_for_bounded_model_candidate",
+        "reason": "Tatsächlich angesehenes Wasser-Modellbild kontrastiert Kugel-Stab, Kalotten und Ladungs-/Simulationsmodell. Kein konkreter fachlicher Bildfehler gesehen. Fortführung am begrenzten Modellvergleich ist sinnvoll, sofern Wassergeometrie/Polarität kontextgerecht erklärt bzw. vorausgesetzt werden."
+      },
+      "prerequisiteDecision": {
+        "current": [
+          {
+            "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+            "title": "Dalton-Modell und Modellcharakter erläutern"
+          }
+        ],
+        "requiredCheck": "Keine routinemäßigen fachlichen prerequisites ergänzen. Bei Split innerhalb der Kompetenzfamilie nur tatsächlich notwendige Frage-/Datengrundlagen binden. Bei Oberstufenkontext passende Fachkenntnisse statt einer alleinigen strukturellen Oberstufen-Wurzel nachweisen."
+      },
+      "readyForStrictM7": false
+    }
+  ],
+  "limitations": [
+    "Keine neuen fachlichen Review-Freigaben oder menschlichen Freigaben.",
+    "Keine aktuelle PDF-Neubindung und keine neuen realen chemischen Untersuchungen; vorhandene unveränderte D2-Artefakte bleiben historisch und fachlich offen.",
+    "Nur drei aktuelle B008-Bilder inhaltlich angesehen; für sechs unveränderte Bilder wird die vorhandene gültige V-Bindung erhalten.",
+    "Split-Kinder haben Vorschlagsnamen, noch keine neuen kanonischen IDs. Oberstufen-Quellendeckung ist ausdrücklich offen."
+  ]
+}

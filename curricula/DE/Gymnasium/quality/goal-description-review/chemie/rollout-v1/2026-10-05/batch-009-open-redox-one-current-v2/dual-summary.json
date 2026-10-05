@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:f60a03fcbfca23e563d353c07eed27b739b534cc1ed1f4d034bbfcf78d498d13",
+  "reviewInputFingerprint": "sha256:bc687eb86b52db0a255868c8b32798c1a61c55b83ce7d1fe67b1a2a5d66bbd56",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-batch-009-open-redox-one-current-v2-20261005-a",
+      "roundId": "chemie-batch-009-open-redox-one-current-v2-20261005-first-pass-a",
+      "independenceGroupId": "chemie-batch-009-open-redox-one-current-v2-20261005-independent-a",
+      "runIds": [
+        "chemie-b009-redox-current-d-a-20261005-native-blind-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 / Codex (session-declared model family)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-batch-009-open-redox-one-current-v2-20261005-b",
+      "roundId": "chemie-batch-009-open-redox-one-current-v2-20261005-first-pass-b",
+      "independenceGroupId": "chemie-batch-009-open-redox-one-current-v2-20261005-independent-b",
+      "runIds": [
+        "chemie-batch-009-open-redox-one-current-v2-20261005-first-pass-b.batch-001.independent-d-b-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 family; exact serving identifier not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a",
+      "firstRecordId": "chemie-b009-redox-current-d-a-20261005-native-blind-v1-bcf8b24b",
+      "secondRecordId": "chemie-b009-redox-current-book-independent-d-b-v1.bcf8b24b",
+      "firstRunId": "chemie-b009-redox-current-d-a-20261005-native-blind-v1",
+      "secondRunId": "chemie-batch-009-open-redox-one-current-v2-20261005-first-pass-b.batch-001.independent-d-b-v1",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

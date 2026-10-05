@@ -1,0 +1,134 @@
+
+> skillpilot@0.0.0 pretest:goal-book-pipeline
+> npm run test:goal-book-build && npm run build:goal-books && npm run test:goal-book-original-sources
+
+
+> skillpilot@0.0.0 test:goal-book-build
+> tsx scripts/testGoalBookPublicationsBuild.ts
+
+Goal-book print fonts verified: Arial -> Liberation Sans; Courier New -> Liberation Mono (Regular, Bold, Italic, Bold Italic)
+Goal-book publication build tests passed (reviewed font families/faces, registry, hashes, missing/tampered artifacts, cache receipts, rollback, unrelated-file protection and locks)
+
+> skillpilot@0.0.0 build:goal-books
+> tsx scripts/buildGoalBookPublications.ts
+
+Goal-book print fonts verified: Arial -> Liberation Sans; Courier New -> Liberation Mono (Regular, Bold, Italic, Bold Italic)
+Goal book reused after input/output hash checks: de-gym-mathematik-bundesweit
+Goal book reused after input/output hash checks: de-gym-physik-bundesweit
+Goal book reused after input/output hash checks: de-gym-chemie-bundesweit
+Goal book reused after input/output hash checks: de-gym-biologie-bundesweit
+Goal-book publication verified: de-gym-mathematik-bundesweit
+Goal-book publication verified: de-gym-physik-bundesweit
+Goal-book publication verified: de-gym-chemie-bundesweit
+Goal-book publication verified: de-gym-biologie-bundesweit
+Goal-book publication ready: 4 books; 0 rendered; /home/enpasos/projects/skillpilot/app/public/lernzielbuch
+
+> skillpilot@0.0.0 test:goal-book-original-sources
+> tsx scripts/testGoalBookOriginalSources.ts && tsx src/utils/goalBookOriginalSources.test.ts
+
+Original sources mathematik: 5363185 bytes; 19694 exact matrix tuples; 6733 without documented individual source
+Original sources physik: 4760453 bytes; 13759 exact matrix tuples; 4539 without documented individual source
+Goal-book original-source regression tests passed.
+Goal-book original-source tests passed: exact tuple coverage, safe links, digest binding, lazy shared requests and byte limits.
+
+> skillpilot@0.0.0 test:goal-book-pipeline
+> npm run test:goal-evidence-profile && npm run test:goal-evidence-profile-v2 && npm run test:positive-goal-evidence-review && npm run test:positive-goal-evidence-candidates && npm run test:goal-evidence-contracts && npm run test:goal-description-review-contracts && npm run test:goal-description-dual-round-resolution && npm run test:goal-description-rollout-synthesis && npm run test:goal-description-rollout-batch && npm run test:physics-goal-book-inputs && npm run test:goal-book-chapter-projection && npm run test:goal-book-model && npm run test:goal-book-renderer && npm run test:goal-book-review-bundle && npm run test:goal-book-publication && npm run test:goal-book-runtime && npm run test:workbench-links
+
+
+> skillpilot@0.0.0 test:goal-evidence-profile
+> tsx scripts/testGoalEvidenceProfileModel.ts
+
+Goal evidence profile model tests passed.
+
+> skillpilot@0.0.0 test:goal-evidence-profile-v2
+> tsx scripts/testPositiveGoalEvidenceProfileModel.ts
+
+Positive goal evidence profile V2 tests passed.
+
+> skillpilot@0.0.0 test:positive-goal-evidence-review
+> tsx scripts/testPositiveGoalEvidenceReview.ts
+
+Positive goal-evidence review config and ledger tests passed
+
+> skillpilot@0.0.0 test:positive-goal-evidence-candidates
+> tsx scripts/testPositiveGoalEvidenceCandidateMaterializer.ts
+
+Positive understanding-evidence candidate materializer self-test passed: 2 synthetic profile(s), freshness regressions, and atomic-write checks.
+
+> skillpilot@0.0.0 test:goal-evidence-contracts
+> tsx scripts/testGoalEvidenceReviewContracts.ts && tsx scripts/testGoalPublicFeedbackV2Contract.ts
+
+Goal-evidence review contract tests passed.
+Goal-public-feedback V2 contract tests passed.
+
+> skillpilot@0.0.0 test:goal-description-review-contracts
+> tsx scripts/testGoalDescriptionReviewCampaign.ts
+
+Goal-description review campaign tests passed.
+
+> skillpilot@0.0.0 test:goal-description-dual-round-resolution
+> tsx scripts/testGoalDescriptionDualRoundResolution.ts
+
+Goal-description dual-round resolution tests passed.
+
+> skillpilot@0.0.0 test:goal-description-rollout-synthesis
+> tsx scripts/testGoalDescriptionRolloutSynthesisDecisionManifest.ts
+
+Goal-description rollout synthesis-decision manifest tests passed.
+
+> skillpilot@0.0.0 test:goal-description-rollout-batch
+> tsx scripts/testGoalDescriptionRolloutBatch.ts
+
+Goal-description rollout batch self-test passed: exact subset bindings, topological fail-closed order, standalone denominator independence, group-local drift rejection, persistent in-flight claim validation, and deterministic selection.
+
+> skillpilot@0.0.0 test:physics-goal-book-inputs
+> tsx scripts/testPhysicsGoalBookInputs.ts
+
+Physics goal-book inputs verified: 764 semantic-kind decisions; 478 curricular atoms in 64 state views; 16 reviewed duration decisions.
+
+> skillpilot@0.0.0 test:goal-book-chapter-projection
+> tsx src/utils/goalBookChapterProjection.test.ts
+
+Goal-book chapter projection tests passed.
+
+> skillpilot@0.0.0 test:goal-book-model
+> tsx scripts/testGoalBookModel.ts && npm run test:math-distance-reflection-structure && npm run test:math-pythagoras-structure
+
+PASS source-atlas input derivation, offline snapshot/binding/boundary checks and current Biology/Chemistry coverage without PDF downloads
+Goal-book input isolation passed (Chemistry and Biology, including nested/copy regression guards).
+Goal-book model tests passed (194 Sek-I, 490 SekII-GK, 807 nationwide curricular pages, and 15 calibration pages).
+
+> skillpilot@0.0.0 test:math-distance-reflection-structure
+> tsx scripts/testMathDistanceReflectionStructure.ts
+
+Distance/reflection structure verified across 88 views; exact carrier calculations and source boundaries pass.
+
+> skillpilot@0.0.0 test:math-pythagoras-structure
+> tsx scripts/testMathPythagorasStructure.ts
+
+Pythagoras split verified: 88 views, four independent competencies and assessments, exact source boundaries.
+
+> skillpilot@0.0.0 test:goal-book-renderer
+> tsx scripts/testGoalBookRenderer.ts
+
+Goal-book renderer self-test passed: 2 browser-free pages.
+
+> skillpilot@0.0.0 test:goal-book-review-bundle
+> tsx scripts/testGoalBookReviewBundle.ts
+
+Goal-book review bundle tests passed.
+
+> skillpilot@0.0.0 test:goal-book-publication
+> tsx scripts/testGoalBookPublication.ts
+
+Published goal-book artifact and dependency-free build gate passed.
+
+> skillpilot@0.0.0 test:goal-book-runtime
+> tsx src/utils/goalBookRuntime.test.ts
+
+goal-book runtime tests passed
+
+> skillpilot@0.0.0 test:workbench-links
+> tsx src/views/WorkbenchView.test.ts
+
+Public and Workbench learning-goal book links passed

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:cb00a43efcb504338d1b593d07c566f824db864785dfbf11e76c87b6df085923",
+  "reviewInputFingerprint": "sha256:7e6d78e4e3028413ad76450a3f14c9c14d890eb62a72fc9ef3af15bf81c69e62",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-a",
+      "roundId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-independent-a",
+      "runIds": [
+        "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-first-pass-a.local-codex-run-a"
+      ],
+      "providers": [
+        "OpenAI Codex local session"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex local session::unexposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-b",
+      "roundId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-independent-b",
+      "runIds": [
+        "chemie-stoffmenge-u-g-current-d-b-v1-20261005"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex agent; exact serving model identifier not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+      "firstRecordId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-first-pass-a.local-codex-run-a.D.dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+      "secondRecordId": "chemie-stoffmenge-u-g-current-d-b-v1-20261005.dd3fc8fe",
+      "firstRunId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-first-pass-a.local-codex-run-a",
+      "secondRunId": "chemie-stoffmenge-u-g-current-d-b-v1-20261005",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-05T01:56:58.662383+00:00",
+  "reviewer": "/root",
+  "purpose": "Resolve two frozen independent current D findings without falsely accepting unresolved current text",
+  "roundA": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-012-stoffmenge-current-10-v1/round-a/results/chemie-rollout-v1-batch-012-stoffmenge-current-10-v1-20261005-first-pass-a.batch-001.records.jsonl",
+    "sha256": "690726b7139c5ed51f51bfd9a2cc44981cd88e0a2de38e387365a6d1a7b4540f"
+  },
+  "roundB": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-012-stoffmenge-current-10-v1/round-b/results/chemie-rollout-v1-batch-012-stoffmenge-current-10-v1-20261005-first-pass-b.batch-001.codex-local-b-v1.records.jsonl",
+    "sha256": "d5f83fdfb2d5d6598749cf76e5c654d7060d0730b4beeb717226c98caffe9b95"
+  },
+  "canonicalBefore": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "sha256": "c48364b506df7f40e77071fe44bf9e20df1fe644c8182ef967f39bdd6a812241"
+  },
+  "targetedDescriptionDeltas": [
+    {
+      "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "before": {
+        "description": "Die lernende Person kann die Stoffmenge als Teilchenanzahl-bezogene Groesse deuten und die Einheit Mol fachlich korrekt verwenden.",
+        "descriptionEn": "The learner can interpret amount of substance as a quantity related to particle number and use the unit mole correctly."
+      },
+      "after": {
+        "description": "Die lernende Person kann die Stoffmenge als Maß für die Anzahl festgelegter Teilchen deuten und Stoffmengen eindeutig mit der Einheit Mol angeben.",
+        "descriptionEn": "The learner can interpret amount of substance as a measure of the number of specified particles and state amounts of substance unambiguously using the unit mole."
+      },
+      "rootDecision": "adopt_bounded_precision_candidate_for_actual_current_targeted_review",
+      "reason": "Buch-Lernzielseite 1 (PDF-Seite 3) nennt nur einen Teilchenanzahl-Bezug. Die entscheidende Festlegung der gezählten Teilchen bleibt offen. Die begrenzte Präzisierung macht diese bereits beanspruchte Deutung eindeutig, ohne die Berechnung mit der Avogadro-Konstante aus dem Nachfolgeziel vorwegzunehmen. HE-G9 Chemie, gedruckt S. 16, nennt Stoffmenge und Einheit; die aktuell geprüfte BIPM-Moldefinition fordert spezifizierte Einheiten. Die Roh-applicability bestätigt keine vollständige Landesprojektion.",
+      "scopeAndAtomicity": "Preserves the same single competence and original source scope; specifies the representation, physical conditions or observable explanatory link already used by the actual reviewed P cases. Does not add a new formula derivation, experiment performance or new jurisdiction claim."
+    },
+    {
+      "goalId": "8a2ad724-df5e-5986-8de9-560ba43caac2",
+      "before": {
+        "description": "Die lernende Person kann molare Massen aus Formeln und Atommassen bestimmen und fuer einfache Stoffmengen- und Massenbezuege verwenden.",
+        "descriptionEn": "The learner can determine molar masses from formulas and atomic masses and use them for simple amount-of-substance and mass relationships."
+      },
+      "after": {
+        "description": "Die lernende Person kann die molare Masse als Masse pro Stoffmenge deuten, aus chemischen Formeln und Atommassen bestimmen und Masse und Stoffmenge damit verknüpfen.",
+        "descriptionEn": "The learner can interpret molar mass as mass per amount of substance, determine it from chemical formulas and atomic masses, and use it to relate mass and amount of substance."
+      },
+      "rootDecision": "adopt_bounded_precision_candidate_for_actual_current_targeted_review",
+      "reason": "Auf Buch-Lernzielseite 2 (PDF-Seite 4) ist das Bestimmen bereits fachlich passend; der Ausdruck einfache Stoffmengen- und Massenbezüge lässt die Bedeutung von M selbst ungesagt. Masse pro Stoffmenge präzisiert genau dieselbe Kompetenz. Bestimmen und begründet verwenden bilden hier einen zusammenhängenden Umrechnungszusammenhang und erfordern keine Aufspaltung. HE-G9, gedruckt S. 16, stützt die molare Masse; zusätzliche Reaktionsumsätze bleiben dem ausgewiesenen Nachfolgeziel vorbehalten.",
+      "scopeAndAtomicity": "Preserves the same single competence and original source scope; specifies the representation, physical conditions or observable explanatory link already used by the actual reviewed P cases. Does not add a new formula derivation, experiment performance or new jurisdiction claim."
+    },
+    {
+      "goalId": "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+      "before": {
+        "description": "Die lernende Person kann die Masseneinheiten u und g im Stoechiometriekontext unterscheiden und in einfachen Teilchen- und Stoffmengenbezuegen nutzen.",
+        "descriptionEn": "The learner can distinguish the mass units u and g in stoichiometric contexts and use them in simple particle and amount-of-substance relationships."
+      },
+      "after": {
+        "description": "Die lernende Person kann u und g als unterschiedlich große Einheiten derselben Masse einordnen und die Masse eines Teilchens mit der Masse einer Stoffportion verknüpfen.",
+        "descriptionEn": "The learner can identify u and g as differently sized units of the same mass quantity and relate the mass of a particle to the mass of a sample."
+      },
+      "rootDecision": "adopt_bounded_precision_candidate_for_actual_current_targeted_review",
+      "reason": "Die Buch-Lernzielseite 3 (PDF-Seite 5) stellt Teilchen- und Portionsebene gegenüber. Die bisherige Beschreibung verlangt Unterscheiden, sagt jedoch nicht, dass u und g dieselbe Größe messen und lediglich unterschiedliche Skalen haben. Die Änderung klärt den beanspruchten Grammbezug ohne eine neue Rechenroutine. HE-G9, gedruckt S. 16, nennt beide Einheiten. BIPM Mise en pratique, Version 2 vom Mai 2025, S. 6, bestätigt die u-Definition und die nach 2019 nur näherungsweise Zahlenentsprechung zwischen u und g/mol; daraus wird kein neuer metrologischer Lernzielumfang gemacht.",
+      "scopeAndAtomicity": "Preserves the same single competence and original source scope; specifies the representation, physical conditions or observable explanatory link already used by the actual reviewed P cases. Does not add a new formula derivation, experiment performance or new jurisdiction claim."
+    },
+    {
+      "goalId": "1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+      "before": {
+        "description": "Die lernende Person kann die These von Avogadro fuer gleiche Gasvolumina bei gleichen Bedingungen fachlich erlaeutern.",
+        "descriptionEn": "The learner can explain Avogadro law for equal gas volumes under equal conditions."
+      },
+      "after": {
+        "description": "Die lernende Person kann mit der Avogadro-These erklären, warum gleiche Volumina verschiedener Gase bei gleicher Temperatur und gleichem Druck im idealen Gasmodell gleich viele Teilchen enthalten.",
+        "descriptionEn": "The learner can use Avogadro’s law to explain why equal volumes of different gases at the same temperature and pressure contain equal numbers of particles in the ideal-gas model."
+      },
+      "rootDecision": "adopt_bounded_precision_candidate_for_actual_current_targeted_review",
+      "reason": "Auf Buch-Lernzielseite 5 (PDF-Seite 7) bleibt gleiche Bedingungen unbestimmt und die eigentliche Aussage der These ungenannt. Die Änderung benennt Temperatur, Druck und Teilchenzahl sowie den Modellrahmen innerhalb der bereits beanspruchten Erklärung. Sie verlangt keine ideale Gasgleichung, keine Herleitung aus R und keine Realgasrechnung. HE-G9, gedruckt S. 16, führt die These im Gasmodellkontext; das vorgelagerte kinetische Gasmodell passt zu dieser begrenzten Präzisierung.",
+      "scopeAndAtomicity": "Preserves the same single competence and original source scope; specifies the representation, physical conditions or observable explanatory link already used by the actual reviewed P cases. Does not add a new formula derivation, experiment performance or new jurisdiction claim."
+    },
+    {
+      "goalId": "199570f4-b3c3-5e12-877d-ced97e9f6968",
+      "before": {
+        "description": "Die lernende Person kann molare Massen gasfoermiger Stoffe aus Formeln oder einfachen Gasbezuegen bestimmen und deuten.",
+        "descriptionEn": "The learner can determine and interpret molar masses of gaseous substances from formulas or simple gas relationships."
+      },
+      "after": {
+        "description": "Die lernende Person kann molare Massen gasförmiger Stoffe aus ihrer Formel oder aus Masse und Gasvolumen bei bekannten Bedingungen bestimmen und als Masse pro Stoffmenge deuten.",
+        "descriptionEn": "The learner can determine molar masses of gaseous substances from their formulas or from mass and gas volume under known conditions, and interpret them as mass per amount of substance."
+      },
+      "rootDecision": "adopt_bounded_precision_candidate_for_actual_current_targeted_review",
+      "reason": "Auf Buch-Lernzielseite 7 (PDF-Seite 9) ist einfache Gasbezüge fachlich unbestimmt. Die beiden ausgewiesenen Voraussetzungen molare Masse und molares Volumen machen den Zusammenhang aus Masse und Gasvolumen bereits möglich; die Präzisierung benennt ihn samt Bedingungen und Bedeutung. Formelweg und Datenweg erschließen dieselbe molare Masse und sind keine unabhängigen neuen Kompetenzen. HE-G9, gedruckt S. 16, nennt molare Masse von Gasen. Experimentplanung, Realgasgleichungen und vollständige Landesprojektionen sind damit nicht geprüft.",
+      "scopeAndAtomicity": "Preserves the same single competence and original source scope; specifies the representation, physical conditions or observable explanatory link already used by the actual reviewed P cases. Does not add a new formula derivation, experiment performance or new jurisdiction claim."
+    },
+    {
+      "goalId": "d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a",
+      "before": {
+        "description": "Die lernende Person kann erklaeren, dass wichtige gasfoermige Elemente als zweiatomige Molekuele auftreten, und diese Schreibweise in Formeln und Reaktionsgleichungen nutzen.",
+        "descriptionEn": "The learner can explain that important gaseous elements occur as diatomic molecules and use this notation in formulas and reaction equations."
+      },
+      "after": {
+        "description": "Die lernende Person kann die Zweiatomigkeit wichtiger gasförmiger Elemente im Teilchenmodell erläutern und daraus ihre Molekülformeln für einfache Reaktionsgleichungen begründen.",
+        "descriptionEn": "The learner can explain the diatomic nature of important gaseous elements using a particle model and justify their molecular formulas for simple reaction equations on that basis."
+      },
+      "rootDecision": "adopt_bounded_precision_candidate_for_actual_current_targeted_review",
+      "reason": "Buch-Lernzielseite 8 (PDF-Seite 10) verbindet die Tatsache der Zweiatomigkeit mit der Schreibweise, während der Titel eine Begründung verlangt. Die begrenzte Änderung macht den Zusammenhang vom Teilchenmodell zur Molekülformel sichtbar. Sie verlangt keine energetische Bindungserklärung oder eine neue Ableitung aus Volumengesetzen, für die hier keine Voraussetzungen gebunden sind. HE-G9, gedruckt S. 16, nennt Zweiatomigkeit, und S. 17 nennt die Teilchendarstellungen; diese fachliche Stütze ersetzt keinen Nachweis sämtlicher Landeszuordnungen.",
+      "scopeAndAtomicity": "Preserves the same single competence and original source scope; specifies the representation, physical conditions or observable explanatory link already used by the actual reviewed P cases. Does not add a new formula derivation, experiment performance or new jurisdiction claim."
+    },
+    {
+      "goalId": "ddb76915-4d63-5375-901d-4e659f5e9b09",
+      "before": {
+        "description": "Die lernende Person kann qualitative Elementaranalysen von Kohlenwasserstoffen auswerten und die Nachweise fuer Kohlenstoff und Wasserstoff fachlich deuten.",
+        "descriptionEn": "The learner can evaluate qualitative elemental analyses of hydrocarbons and interpret evidence for carbon and hydrogen."
+      },
+      "after": {
+        "description": "Die lernende Person kann qualitative Elementaranalysen von Kohlenwasserstoffen auswerten und aus den Nachweisen der Verbrennungsprodukte Kohlenstoffdioxid und Wasser auf Kohlenstoff und Wasserstoff in der Probe schließen.",
+        "descriptionEn": "The learner can evaluate qualitative elemental analyses of hydrocarbons and infer carbon and hydrogen in the sample from tests for the combustion products carbon dioxide and water."
+      },
+      "rootDecision": "adopt_bounded_precision_candidate_for_actual_current_targeted_review",
+      "reason": "Auf Buch-Lernzielseite 10 (PDF-Seite 12) kann Nachweise für Kohlenstoff und Wasserstoff als unmittelbarer Elementtest gelesen werden. Die präzise Verbindung über CO2 und H2O erklärt den bereits beanspruchten Auswertungsschluss, ohne quantitative Elementaranalyse, Strukturaufklärung oder neue eigene Durchführung zu ergänzen. HE-G9, gedruckt S. 26, nennt qualitative Elementaranalyse für Kohlenwasserstoffe. Verbrennungsdaten werden für unabhängige Aufgaben bereitgestellt oder beaufsichtigt erhoben; die Beschreibung fordert kein unbeaufsichtigtes gefährliches Experiment.",
+      "scopeAndAtomicity": "Preserves the same single competence and original source scope; specifies the representation, physical conditions or observable explanatory link already used by the actual reviewed P cases. Does not add a new formula derivation, experiment performance or new jurisdiction claim."
+    }
+  ],
+  "unchangedKeepGoals": [
+    "e45c0022-ac0d-5c83-b433-5f68655e382f",
+    "2924f784-5261-54e8-93ee-49ac3b3cd300"
+  ],
+  "separateUnresolvedGoal": {
+    "goalId": "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+    "roundA": "keep",
+    "roundB": "split_review",
+    "rootDisposition": "HOLD_current_atomic_scope_and_prerequisites; exact original neutral/proton/electron half-equation source and view preservation required before any narrowing or split. Current D or strict closure is not claimed.",
+    "currentDenominatorExclusionAuthorized": false
+  },
+  "positiveProfileContentReview": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-ten-current-preparation-v1/root-positive-content-review.receipt.json",
+    "scientificContentVerified": true,
+    "newSourceClaim": false
+  },
+  "newStrictClosures": 0,
+  "humanApproval": false
+}

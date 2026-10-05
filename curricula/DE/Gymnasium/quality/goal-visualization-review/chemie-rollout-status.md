@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-10-01T00:14:28.972Z
+Generated: 2026-10-05T05:59:09.347Z
 
 Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
@@ -18,28 +18,29 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 473 |
 | Atomare Ziele im Visualisierungs-Scope | 376 |
-| Ziele mit primaerem Visualisierungslink | 353 |
-| Coverage | 93.9% |
+| Ziele mit primaerem Visualisierungslink | 354 |
+| Coverage | 94.1% |
 | Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 376 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
 | Review-Ledger-Dateien | 19 |
-| Offene Provider-Deferred-Ziele | 23 |
+| Offene Provider-Deferred-Ziele | 22 |
 | Offene Quality-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 0 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 0 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 1 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 129 |
+| `accepted` | 127 |
 | `ai_candidate` | 2 |
-| `pilot` | 222 |
+| `ai-reviewed` | 5 |
+| `pilot` | 220 |
 
 ## Ledger Decisions
 
@@ -72,7 +73,7 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen dokumentierten `deferred_provider_limitation`- bzw. `deferred_quality_review`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
 - Beide Deferred-Arten bleiben offene Bildarbeit und erfuellen das strenge M7-Visualisierungsgate nicht. `deferred_quality_review` bezeichnet ein nach fachlicher Pruefung zurueckgezogenes Bild, nicht ein Providerproblem.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind 23 Provider- und 0 Quality-Deferred-Ziel(e).
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind 22 Provider- und 0 Quality-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -84,7 +85,6 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | 018 | `62149f36-87c0-5a2d-8a78-e7d4203f58c2` | Aminosäuren charakterisieren | `deferred_provider_limitation` |
 | 018 | `e5941581-0aba-5354-b4b9-d0249d4538a8` | Azo- und Triphenylmethanfarbstoffe mechanistisch darstellen | `deferred_provider_limitation` |
 | 018 | `f0f67a7a-b06a-50b9-8edc-1f2a0d97520d` | Bindungsverhältnisse aromatischer Systeme modellieren | `deferred_provider_limitation` |
-| 018 | `27e4fe9b-4796-579b-8f7d-06c65fb600c0` | Blei-Akkumulator beschreiben | `deferred_provider_limitation` |
 | 018 | `0cf2ffe1-a988-5ffb-ab37-0ac7d58b23dd` | Brennstoffzellen und Verbrennungskraftwerke multiperspektivisch bewerten | `deferred_provider_limitation` |
 | 018 | `bebea164-dfd7-51d9-a54a-7029c78b7f5f` | Fette bewerten | `deferred_provider_limitation` |
 | 018 | `3de28598-672f-5753-8a45-8f559c2f9dc2` | Funktionelle Gruppen qualitativ nachweisen | `deferred_provider_limitation` |
@@ -100,8 +100,9 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | 018 | `02634fdd-c8ba-591a-b240-77129b1bebb8` | Säure-Base-Titrationen planen | `deferred_provider_limitation` |
 | 018 | `6765f741-42a6-55c5-a218-81b883b1f5ae` | Seifen herstellen | `deferred_provider_limitation` |
 | 018 | `e56040b5-1da8-5080-b358-086d04922339` | Silikone herstellen und strukturbezogen vergleichen | `deferred_provider_limitation` |
+| 018 | `0773a104-aaeb-5e96-a615-2a2bec3eb096` | Tensidstrukturen optimieren | `deferred_provider_limitation` |
 
-Weitere 3 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 2 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Open Quality Deferred
 
@@ -127,7 +128,9 @@ Keine Eintraege.
 
 ### Linked Without Accepted Review
 
-Keine Eintraege.
+| Goal ID | Title | Link status | Latest ledger decision |
+| --- | --- | --- | --- |
+| `27e4fe9b-4796-579b-8f7d-06c65fb600c0` | Blei-Akkumulator beschreiben | `pilot` | `deferred_provider_limitation` |
 
 ### Accepted Review Without Link
 

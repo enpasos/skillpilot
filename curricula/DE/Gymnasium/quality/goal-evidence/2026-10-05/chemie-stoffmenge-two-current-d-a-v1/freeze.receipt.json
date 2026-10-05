@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "chemie-two-current-d-a-20261005-frozen-v1",
+  "frozenAt": "2026-10-05T03:39:58Z",
+  "reviewScope": "Exactly two current goal pages after image correction; independent blind D-A first pass.",
+  "goalIds": [
+    "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+    "ddb76915-4d63-5375-901d-4e659f5e9b09"
+  ],
+  "bookDigest": "sha256:3bd5572391bd375d1712f51be13f9a055c117df73ffb2fbc5514db09c11d631f",
+  "bundleFingerprint": "sha256:e5bc8915923bb1d0a162102cbb5949c860b70dc582bda01cb3ff60d38764d579",
+  "runId": "chemie-two-current-d-a-20261005-native-run-v1",
+  "recordsPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1/round-a/results/chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005-first-pass-a.batch-001.description-records.jsonl",
+  "recordsDigest": "sha256:fc3eea8069dea6e8d1844192d261ca6cdd96f7d2df942c072bc037e3f5d27334",
+  "runManifestPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1/round-a/results/chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005-first-pass-a.batch-001.run.json",
+  "runManifestDigest": "sha256:edd0bce71f95d197f9f98daf3f59348c9d1cee2ec65daadc2769355ef86553a7",
+  "decisions": [
+    {
+      "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "decision": "keep",
+      "evidenceProfileRecommendation": "create",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "ddb76915-4d63-5375-901d-4e659f5e9b09",
+      "decision": "keep",
+      "evidenceProfileRecommendation": "create",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    }
+  ],
+  "nativeValidation": {
+    "script": "npm --prefix app run validate:goal-description-review",
+    "exitCode": 0,
+    "result": "Goal-description review batch valid: 2",
+    "proofPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-current-d-a-v1/native-validator-result.json",
+    "proofDigest": "sha256:22b4b21d8eb2eb9bc4a685ae7e71f3342b8abd6bf231922280d963003ebf15a4"
+  },
+  "visualInspection": {
+    "actualPhysicalPdfPages": [
+      3,
+      4
+    ],
+    "bookGoalPages": [
+      1,
+      2
+    ],
+    "originalPngsSeen": 2,
+    "primarySourcePhysicalPdfPages": [
+      17,
+      27
+    ],
+    "primarySourcePrintedPages": [
+      16,
+      26
+    ],
+    "inspectionReceiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-current-d-a-v1/pdf-and-image-visual-inspection.json"
+  },
+  "independence": {
+    "freshFork": true,
+    "blindToOtherReviewsUntilThisFreeze": true,
+    "otherOrHistoricalDResultsRead": false,
+    "rootAdjudicationRead": false,
+    "currentOrHistoricalPProfilesRead": false,
+    "reviewInputEvidenceProfiles": [
+      null,
+      null
+    ]
+  },
+  "authorityLimit": "AI candidates only. No Human Approval, V authority, source-mapping approval, production publication, learner acceptance or global historical rerun.",
+  "mutations": "Only assigned round-a/results and own chemie-stoffmenge-two-current-d-a-v1 evidence folder were written. Canonical, active registry, P/A/M/V and source files were not modified.",
+  "hashing": "sha256 over actual file bytes; bound semantic book/bundle digests copied from verified manifests.",
+  "artifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1/bundle/manifest.json",
+      "digest": "sha256:2b2e421db7bbe4f6778f1bb1edeafb4fd69c263b956e87079eb4842f294075f1",
+      "bytes": 4044
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1/bundle/book-model.json",
+      "digest": "sha256:f495c84512eb6094af192033bfe7b33ab87845c46ece80c54cdc0142172991ca",
+      "bytes": 194864
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1/bundle/book.html",
+      "digest": "sha256:b6c290ff3d1c9017059080b941803fb2635a028d704363fd78106a00b34087b8",
+      "bytes": 26081
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1/bundle/book.pdf",
+      "digest": "sha256:ffe04ea2c082d7501605cbe587dd7da89a2c229ffa46f40daec276f7ddfd4f60",
+      "bytes": 281163
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1/round-a/description-review-input.json",
+      "digest": "sha256:7f8451daece8690a696bfd48a37e6558c1afee84539e45a675146a2db4eec23a",
+      "bytes": 12856
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1/round-a/description-review-campaign.json",
+      "digest": "sha256:9186fe63f3d4cb7fefc47ad1b4e3ee68ba4873cae610045a134e45ab33b3aedb",
+      "bytes": 1814
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1/round-a/prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1/round-a/criteria.md",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+      "bytes": 2948
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1/round-a/contracts/goal-description-review-record.schema.json",
+      "digest": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+      "bytes": 5872
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1/round-a/batches/chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005-first-pass-a.batch-001.input.jsonl",
+      "digest": "sha256:9376134bd7f7193d70fb549ed056379c1b946a3f8e1260cc6bb30b41726186a7",
+      "bytes": 10672
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1/round-a/results/chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005-first-pass-a.batch-001.description-records.jsonl",
+      "digest": "sha256:fc3eea8069dea6e8d1844192d261ca6cdd96f7d2df942c072bc037e3f5d27334",
+      "bytes": 14194
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1/round-a/results/chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005-first-pass-a.batch-001.run.json",
+      "digest": "sha256:edd0bce71f95d197f9f98daf3f59348c9d1cee2ec65daadc2769355ef86553a7",
+      "bytes": 2955
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-chemie.pdf",
+      "digest": "sha256:f0a2c3795fcbcad1fee8d92d7ab9bc26810609bee0ef1fbd02c830e171220d2f",
+      "bytes": 324637
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/chemie/1dc15fa2-fca4-56b0-b5c1-4d215613dde0/1dc15fa2-fca4-56b0-b5c1-4d215613dde0.png",
+      "digest": "sha256:1ca6842fdafa63d7c6edab1eceb18a151fef5eccfb7c07a0b8b4e8898c34c9e7",
+      "bytes": 1624060
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/chemie/ddb76915-4d63-5375-901d-4e659f5e9b09/ddb76915-4d63-5375-901d-4e659f5e9b09.png",
+      "digest": "sha256:ca953f1fd4e94e3ddcab048bb0bb5e8cf380277626d3d81dbf192abd9f52ab05",
+      "bytes": 1406083
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-current-d-a-v1/canonical-two.snapshot.json",
+      "digest": "sha256:ba87617e32d2d62f744ab775299666bb2406f87dbcdaff64fb29181b8befb98c",
+      "bytes": 6323
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-current-d-a-v1/generation-parameters-disclosure.json",
+      "digest": "sha256:1102e97da2bb7e81fdb1d332274a5a8d9b40ece8112a7208b60c21006072470e",
+      "bytes": 309
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-current-d-a-v1/input-artifact-integrity.json",
+      "digest": "sha256:f9a067ffbadc4fe4ac35e161de24826d1c0b3da92cb609a5a9ffee821424e6cf",
+      "bytes": 5562
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-current-d-a-v1/native-validator-result.json",
+      "digest": "sha256:22b4b21d8eb2eb9bc4a685ae7e71f3342b8abd6bf231922280d963003ebf15a4",
+      "bytes": 1857
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-current-d-a-v1/pdf-and-image-visual-inspection.json",
+      "digest": "sha256:1f7c6eb7b4e7a857d8d6557f5020bd56258e9932077a74e96f8c444031d7bae9",
+      "bytes": 3163
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-current-d-a-v1/pdf-pages/page-3.png",
+      "digest": "sha256:caa21cc85fa8319361890b5cddaf95b73ce712eee623871ae45c2bf6113a7a99",
+      "bytes": 789603
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-current-d-a-v1/pdf-pages/page-4.png",
+      "digest": "sha256:cb5773fe5a0ba848c50478088593244a955840b70f3be58cc574effd524a5652",
+      "bytes": 582701
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-current-d-a-v1/sources/bipm-mole-live-check.json",
+      "digest": "sha256:5fd5102f1f3213085fdbbb87ae7058b1dd1eab233a325c2768b0143a5d9d16a7",
+      "bytes": 501
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-current-d-a-v1/sources/he-g9-physical17-printed16.png",
+      "digest": "sha256:89a121dbb535a6cfa763a99f298d59a5de08cb90861f25ed321e7aec43b9b9aa",
+      "bytes": 262036
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-current-d-a-v1/sources/he-g9-physical17-printed16.txt",
+      "digest": "sha256:d408a3426582aed7d073f2dc381c57f282d1c313e5101d294cdafa0e3e193ffe",
+      "bytes": 3775
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-current-d-a-v1/sources/he-g9-physical27-printed26.png",
+      "digest": "sha256:be52ee500353f0964100e1630c09008b33fbb529f359e1cba879fdc6c6d91972",
+      "bytes": 199493
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-current-d-a-v1/sources/he-g9-physical27-printed26.txt",
+      "digest": "sha256:431bca3d25bba2c06398343618a11c29a9fea5c9173b8444dd03c8987428c0c6",
+      "bytes": 2713
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-current-d-a-v1/sources/targeted-primary-source-bindings.json",
+      "digest": "sha256:96e2fca3f35df3af25aab316a4ffb6dd098265332cfdec13aedf804f8269b122",
+      "bytes": 3294
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-01T00:14:28.972Z",
+  "generatedAt": "2026-10-05T05:59:09.347Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "chemie",
@@ -12,20 +12,22 @@
   "summary": {
     "totalGoals": 473,
     "atomicGoalsInScope": 376,
-    "goalsWithPrimaryVisualization": 353,
-    "coveragePercent": 93.9,
+    "goalsWithPrimaryVisualization": 354,
+    "coveragePercent": 94.1,
     "goalsAccountedForByAssetOrDeferred": 376,
     "accountedCoveragePercent": 100,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
-      "accepted": 129,
+      "accepted": 127,
       "ai_candidate": 2,
-      "pilot": 222
+      "ai-reviewed": 5,
+      "pilot": 220
     },
     "linkedVisualizationReviewStatuses": {
-      "accepted": 129,
+      "accepted": 127,
       "ai_candidate": 2,
-      "pilot": 222
+      "ai-reviewed": 5,
+      "pilot": 220
     },
     "reviewLedgerFiles": 19,
     "reviewDecisionCounts": {
@@ -41,13 +43,13 @@
       "rejected_after_user_review_replaced": 2,
       "rejected_regenerated": 33
     },
-    "openProviderDeferredGoals": 23,
+    "openProviderDeferredGoals": 22,
     "openQualityDeferredGoals": 0,
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 0,
     "regularUnlinkedGoals": 0,
     "coverageGatePassed": true,
-    "linkedWithoutAcceptedReview": 0,
+    "linkedWithoutAcceptedReview": 1,
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
@@ -85,13 +87,6 @@
         "title": "Bindungsverhältnisse aromatischer Systeme modellieren",
         "decision": "deferred_provider_limitation",
         "notes": "Die beiden als Kekulé-Grenzstrukturen bezeichneten Ringe zeigen dasselbe Doppelbindungsmuster statt der zwei gegeneinander verschobenen Alternativen."
-      },
-      {
-        "batch": "018",
-        "goalId": "27e4fe9b-4796-579b-8f7d-06c65fb600c0",
-        "title": "Blei-Akkumulator beschreiben",
-        "decision": "deferred_provider_limitation",
-        "notes": "Der Kandidat verletzt die gezielt reduzierte Reaktionsdarstellung weiterhin mit zahlreichen zusätzlichen Symbolen und Pfeilen; die visuelle Zuordnung der Halbgleichungen bleibt dadurch mehrdeutig."
       },
       {
         "batch": "018",
@@ -248,7 +243,15 @@
     ]
   },
   "consistency": {
-    "linkedWithoutAcceptedReview": [],
+    "linkedWithoutAcceptedReview": [
+      {
+        "goalId": "27e4fe9b-4796-579b-8f7d-06c65fb600c0",
+        "title": "Blei-Akkumulator beschreiben",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/chemie/27e4fe9b-4796-579b-8f7d-06c65fb600c0/27e4fe9b-4796-579b-8f7d-06c65fb600c0.png",
+        "latestDecision": "deferred_provider_limitation"
+      }
+    ],
     "acceptedReviewWithoutLink": []
   },
   "visualizedGoals": [
@@ -465,8 +468,8 @@
       "title": "Atomare Masseneinheit und Grammbezug einordnen",
       "phase": "GLOBAL",
       "area": "Stoechiometrie und Gase",
-      "reviewStatus": "accepted",
-      "url": "/assets/goal-visualizations/chemie/dd3fc8fe-2316-5fbc-b569-00651c83bc81/dd3fc8fe-2316-5fbc-b569-00651c83bc81.jpg"
+      "reviewStatus": "ai-reviewed",
+      "url": "/assets/goal-visualizations/chemie/dd3fc8fe-2316-5fbc-b569-00651c83bc81/dd3fc8fe-2316-5fbc-b569-00651c83bc81.png"
     },
     {
       "goalId": "b4ca3af2-77f1-59e8-955d-c4959e284242",
@@ -605,6 +608,14 @@
       "url": "/assets/goal-visualizations/chemie/9ace7bd2-136b-595c-a021-6e03077508a7/9ace7bd2-136b-595c-a021-6e03077508a7.jpg"
     },
     {
+      "goalId": "27e4fe9b-4796-579b-8f7d-06c65fb600c0",
+      "title": "Blei-Akkumulator beschreiben",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/chemie/27e4fe9b-4796-579b-8f7d-06c65fb600c0/27e4fe9b-4796-579b-8f7d-06c65fb600c0.png"
+    },
+    {
       "goalId": "d4720a9a-65e2-5661-aaaa-c393d144419a",
       "title": "Boltzmann/Statistik",
       "phase": "Q4",
@@ -625,8 +636,8 @@
       "title": "Brennstoffe vergleichen",
       "phase": "E",
       "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/8ece9beb-9458-5ea1-8e45-9be04670f464/8ece9beb-9458-5ea1-8e45-9be04670f464.jpg"
+      "reviewStatus": "ai-reviewed",
+      "url": "/assets/goal-visualizations/chemie/8ece9beb-9458-5ea1-8e45-9be04670f464/8ece9beb-9458-5ea1-8e45-9be04670f464.png"
     },
     {
       "goalId": "ecce0306-13dc-5563-a097-afe69805a8d6",
@@ -642,7 +653,7 @@
       "phase": "E",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/b759d50d-0e82-5b10-89a2-fe5271106e50/b759d50d-0e82-5b10-89a2-fe5271106e50.jpg"
+      "url": "/assets/goal-visualizations/chemie/b759d50d-0e82-5b10-89a2-fe5271106e50/b759d50d-0e82-5b10-89a2-fe5271106e50.png"
     },
     {
       "goalId": "ecdc3c08-9ba3-56e5-ab00-4b02357867ac",
@@ -2393,8 +2404,8 @@
       "title": "Qualitative Elementaranalyse von Kohlenwasserstoffen auswerten",
       "phase": "GLOBAL",
       "area": "Kohlenwasserstoffe",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/ddb76915-4d63-5375-901d-4e659f5e9b09/ddb76915-4d63-5375-901d-4e659f5e9b09.jpg"
+      "reviewStatus": "ai-reviewed",
+      "url": "/assets/goal-visualizations/chemie/ddb76915-4d63-5375-901d-4e659f5e9b09/ddb76915-4d63-5375-901d-4e659f5e9b09.png"
     },
     {
       "goalId": "3bc48951-025c-5144-99b1-924db611a5f9",
@@ -2457,8 +2468,8 @@
       "title": "Reaktionsenthalpien aus Bindungsverhältnissen begründen",
       "phase": "GLOBAL",
       "area": "Kohlenwasserstoffe und Energieträger",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/3e433dae-99f9-5a95-ad63-d5fa0b5f6836/3e433dae-99f9-5a95-ad63-d5fa0b5f6836.jpg"
+      "reviewStatus": "ai-reviewed",
+      "url": "/assets/goal-visualizations/chemie/3e433dae-99f9-5a95-ad63-d5fa0b5f6836/3e433dae-99f9-5a95-ad63-d5fa0b5f6836.png"
     },
     {
       "goalId": "7a05a1ce-45d3-571e-be51-afcd8dfd33ca",
@@ -2801,8 +2812,8 @@
       "title": "Stoffmenge und Einheit Mol nutzen",
       "phase": "GLOBAL",
       "area": "Stoechiometrie und Gase",
-      "reviewStatus": "accepted",
-      "url": "/assets/goal-visualizations/chemie/1dc15fa2-fca4-56b0-b5c1-4d215613dde0/1dc15fa2-fca4-56b0-b5c1-4d215613dde0.jpg"
+      "reviewStatus": "ai-reviewed",
+      "url": "/assets/goal-visualizations/chemie/1dc15fa2-fca4-56b0-b5c1-4d215613dde0/1dc15fa2-fca4-56b0-b5c1-4d215613dde0.png"
     },
     {
       "goalId": "9f355f63-4fb7-5638-9538-6e8a246ec4b2",

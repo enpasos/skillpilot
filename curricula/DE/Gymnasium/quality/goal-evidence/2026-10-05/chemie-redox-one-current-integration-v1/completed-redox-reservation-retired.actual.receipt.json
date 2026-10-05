@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "one-completed-redox-reservation-retired-v1",
+  "observedAt": "2026-10-05T05:40:36.740300+00:00",
+  "actualCommand": "cd app && ./node_modules/.bin/tsx ../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b009-b010-current-open-reservations-integration-v1/check-in-flight.mts",
+  "actualTerminalExitCode": 0,
+  "nativeResult": {
+    "packages": 8,
+    "claimedGoalIds": 39,
+    "paths": [
+      "curricula/DE/Gymnasium/quality/goal-description-review/biologie/rollout-v1/2026-10-04/m7-q1-genetics-open-remainder-six-current-20261004-v1.config.json",
+      "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-004r-d8-corrected-image-current-1-v2.config.json",
+      "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-007-open-remainder-current-3-v1.config.json",
+      "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-008-global-inquiry-communication-current-9-v1.config.json",
+      "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-010-open-ions-elements-seven-current-v2.config.json",
+      "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-011-split-open-current-1-v1.config.json",
+      "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-012-11bea-structural-scope-hold-current-1-v1.config.json",
+      "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-014-ephase-redox-protolysis-eleven-current-v1.config.json"
+    ]
+  },
+  "nativeStdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-redox-one-current-integration-v1/in-flight-ledger-retired.native.terminal.stdout",
+  "nativeStdoutDigest": "sha256:e5457004c85e5665d98a25e2b074170ee95396d289892eff3a6a236aaa0da34a",
+  "operativeLedgerPath": "curricula/DE/Gymnasium/quality/goal-description-review/in-flight-work-ledger.json",
+  "operativeLedgerDigest": "sha256:d364810e09383a1336405bda3d1e39a733740f6f7cd64df24cfa3241bbea4ab9",
+  "beforeSnapshotPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-redox-one-current-integration-v1/in-flight-ledger.before-redox-retirement.snapshot.json",
+  "beforeSnapshotDigest": "sha256:ff5283404fc0ee92a96f744fbce2c6e2681ff7656946e8ff05563d696ff8a7da",
+  "retiredBatchConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-009-open-redox-one-current-v2.config.json",
+  "retiredAlreadyStrictGoalIds": [
+    "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a"
+  ],
+  "packagesBefore": 9,
+  "packagesAfter": 8,
+  "claimsBefore": 40,
+  "claimsAfter": 39,
+  "allRemainingClaimsCurrentOpenUnique": true,
+  "canonicalRegistryQaKindsAndStatusUnchangedByRetirement": true,
+  "unchangedGuards": {
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "sha256:76047cec422c555aacd1e04bff597c4f8a70d8ffed5f214ed7412c828bc34898",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json": "sha256:ad764d083e390ab60f808ecbffb363ac914026894e82c09c977425311ec7ea44",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json": "sha256:220229ad94a5da1c7b466b8e43b5a2aa5b45baa3105d896e215b2cf583760aab",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json": "sha256:bf1f0db83fb572b882630cd25327633874e35126f6a014da697c90c1c87a644f",
+    "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json": "sha256:43d1f3ff18c38f1f376e5d20ffe0cd73adc8f61d8f56a7505b0a9ef297afedbf",
+    "docs/qa-ci/status/curriculum-quality-status.json": "sha256:8b4bf10d2257bcfbe6edbd763b7085462284a61c4e1ca731b0db18938b0d320f",
+    "docs/qa-ci/status/curriculum-quality-status.md": "sha256:ca802c7983d900576af898f90ae6cc4a240352430153c2e16484a46da34dddd3",
+    "curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json": "sha256:97122c22afc8e2b649135474f714fd664ebe8e66cb3f725ebb165705a17f0fc3",
+    "curricula/DE/Gymnasium/quality/goal-visualization-qa/biologie.qa.json": "sha256:17f0e391446b2cf455ef292a72319b95db2423d5d29d49aa90c4f00ff3adcf16",
+    "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json": "sha256:cc5d09b1606c8cd22288527ab6214cb56a3c25e1dfc16888262698990930bd02",
+    "curricula/DE/Gymnasium/quality/goal-book-publication/biologie.semantic-kinds.json": "sha256:e65414d704a5b73eb3dd98be7123869234264a89e2ad734fe3e522f3831a96b5"
+  },
+  "newScientificClosuresFromLedgerRetirement": 0,
+  "restoredStrictBindingsFromLedgerRetirement": 0,
+  "historicalBatchAndReviewBytesPreserved": true,
+  "humanApprovalClaimed": false
+}

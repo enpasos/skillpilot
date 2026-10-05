@@ -1,0 +1,88 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-b010-seven-current-author-source-d-v1",
+  "campaignId": "chemie-b010-seven-current-author-candidate-v1",
+  "roundId": "chemie-b010-seven-author-revision-v1",
+  "bundleFingerprint": "sha256:aba42323a068d6ee3648ec05edf1b6483b05f5a70a1047e8eaf6d5896cdb7d7d",
+  "bookDigest": "sha256:5bdb40efec716f7431122302c524e222a4f4156a580a9cf01e3bba6691e5bfd9",
+  "provider": "OpenAI via Codex interactive session",
+  "model": "unexposed; exact API model identifier not supplied to this session",
+  "role": "synthesizer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:5ea58b83b60e37fdc3dc25c0fca4ba1a370911c359fdf182002d169d1e11dbee",
+  "independenceGroupId": "b010-current-author-informed-existing-reviews",
+  "blindToOtherRuns": false,
+  "goalIds": [
+    "72236f2c-771e-4ab6-933a-e549ee49d15b",
+    "950c73c6-4ed1-488a-9267-1142e95e0055",
+    "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+    "16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+    "58486300-3f84-5aa1-9ed4-66186af62669",
+    "414489cb-453e-5de4-ab0f-0fc01175e522",
+    "1f5ee84f-245a-5a1e-a260-f960f26523e9"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:7fecd693121498461caf0df39162147ed8f3d526078af9d64253368547678635"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:4280d1a09f4cf57cfe656fb8efe30dd4fbb43653f25db112cfb3f641e5170b69"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:504afb30125ab0774a25e110263cda6a9fe543022e299a59fdb98d9e01e6e6a5"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:5b34c85cbc658ed0afde81ebb9ccf98bdc17020f01d5cb3d043a17b1c662bbf7"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:f254b6bf84b818dcfe731d78a3da318942aa5cc346a6d3003f8afa26ca365b12"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:9b53055303ae53cba5de7a271697f772a0c2d69b265acde85fe2ce36ddee73ab"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:e78fa74c77b6a2a2aa6e371be52e72a9c255f1a477dd26f1ceeabb51b2ff458d"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:aade82d6fc15eb2d8fc34392ad9b94b5e7f76c6f83e4e264261b83ef0d16b317"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:01ff380571088e72a4fde37a4277406d75a024a0cbad6c5f364da2b42579eac6"
+    }
+  ],
+  "startedAt": "2026-10-05T04:43:20.912581+00:00",
+  "completedAt": "2026-10-05T05:03:36.454931+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:4b7125ed5111ec54e401c4fdef8517bb49adc9d50d986250c5138fcfbc56438f",
+  "toolchainVersion": "codex-interactive-native-tsx-node20-playwright-poppler-python3",
+  "batchId": "chemie-b010-seven-author-revision-v1.batch-001",
+  "batchInputFingerprint": "sha256:01ff380571088e72a4fde37a4277406d75a024a0cbad6c5f364da2b42579eac6"
+}

@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "redox-one-current-status-and-maturity-floors-terminal-v1",
+  "observedAt": "2026-10-05T05:39:54.079354+00:00",
+  "centralReportPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-redox-one-current-integration-v1/central-one-new-complete.report.json",
+  "centralReportDigest": "sha256:d67d5d149679359f3ce86c0f5e6a5537227fd3b25024e66cb144f07424f11143",
+  "statusGeneration": {
+    "actualCommand": "npm --prefix app run quality:curriculum-status",
+    "actualSessionId": 38704,
+    "actualTerminalExitCode": 0,
+    "generatedAt": "2026-10-05T05:31:09.533Z",
+    "statusPath": "docs/qa-ci/status/curriculum-quality-status.json",
+    "statusDigest": "sha256:8b4bf10d2257bcfbe6edbd763b7085462284a61c4e1ca731b0db18938b0d320f",
+    "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-redox-one-current-integration-v1/curriculum-status-generation.terminal.stdout",
+    "stdoutDigest": "sha256:e78069b5811e03c2db82f093e9017622bfba3a7b1223ddb22c38378109d48e14"
+  },
+  "maturityFloorCheck": {
+    "actualCommand": "npm --prefix app run check:curriculum-maturity-floors",
+    "actualTerminalExitCode": 0,
+    "protectedCurricula": 9,
+    "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-redox-one-current-integration-v1/maturity-floor-check.terminal.stdout",
+    "stdoutDigest": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6"
+  },
+  "currentSubjects": [
+    {
+      "subject": "mathematik",
+      "strictComplete": 807,
+      "denominator": 807,
+      "maturity": "M7",
+      "cqr303Status": "pass"
+    },
+    {
+      "subject": "physik",
+      "strictComplete": 478,
+      "denominator": 478,
+      "maturity": "M7",
+      "cqr303Status": "pass"
+    },
+    {
+      "subject": "chemie",
+      "strictComplete": 80,
+      "denominator": 376,
+      "maturity": "M6",
+      "cqr303Status": "warn"
+    },
+    {
+      "subject": "biologie",
+      "strictComplete": 37,
+      "denominator": 363,
+      "maturity": "M6",
+      "cqr303Status": "warn"
+    }
+  ],
+  "newScientificStrictClosures": 1,
+  "restoredStrictClosureBindings": 0,
+  "netStrictIncrease": 1,
+  "lostStrictClosures": 0,
+  "priorPendingReceiptPreserved": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-redox-one-current-integration-v1/strict-one-new-closure.actual.receipt.json",
+  "historicalArtifactsPreserved": true,
+  "noQualityFloorsLowered": true,
+  "machineM7ChemistryReached": false,
+  "machineM7BiologyReached": false,
+  "humanApprovalClaimed": false,
+  "humanTrialCompletionClaimed": false,
+  "finalM7RequiredMachineChecksAndDependentLayerAChecksComplete": false
+}

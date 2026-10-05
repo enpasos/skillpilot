@@ -1,0 +1,53 @@
+{
+  "format": "independent_targeted_followup_advisory_v1",
+  "reviewer": "independent_b",
+  "reviewMode": "targeted_followup_to_own_frozen_B_v1_not_blind_first_pass",
+  "createdAt": "2026-10-05T04:05:27.501584+00:00",
+  "reviewAuthority": "ai_candidate",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-fw6-008-two-atomic-companions-candidate-v2/two-companions.goal-templates.candidate.json",
+  "candidateSha256": "cd9a72d5ef17546bcf513e7789fe22590a0f3142c90115da51af8b208c61731c",
+  "active": false,
+  "humanApproval": false,
+  "nativeRegistryEntry": false,
+  "nativeGatePassed": false,
+  "nativeBookD2Passed": false,
+  "lane": "A",
+  "goalReviews": [
+    {
+      "candidateKey": "ni-fw6-008-independent-assortment-companion-v2",
+      "goalId": null,
+      "canonicalId": null,
+      "advisorySemanticSha256": "2c7be54ee119ca7b50cb5b54f5219e7d243a81b0ed4ac0bcaec773a3875a8580",
+      "fingerprintConvention": "SHA-256 of UTF-8 sorted-key compact JSON containing id=null plus complete goalTemplateWithoutId; explicitly not the native registry fingerprint",
+      "decision": "KEEP",
+      "status": "atomic",
+      "semanticAtomic": true,
+      "oneCausalMechanism": "Independent assortment of whole homologous chromosomes of different pairs.",
+      "oneChangedObject": "Combination of parental-origin chromosome types in gametes.",
+      "whyConsequenceIsNotSecondRoutine": "Given gamete sets are interpreted as the result of the same pair-assortment mechanism; full meiosis construction and counting are explicitly outside scope.",
+      "whyNotAutomaticallyApprovedForBeingSplit": "The new description was checked for additional mechanism, phase-algorithm, probability or unprovided construction demands; none is part of the stated success criterion.",
+      "specificFailureWithinThisGoal": "Belief that all maternal homologues must move together into a gamete.",
+      "doesNotRequireOtherCompanionMastery": true
+    },
+    {
+      "candidateKey": "ni-fw6-008-chromatid-segment-exchange-companion-v2",
+      "goalId": null,
+      "canonicalId": null,
+      "advisorySemanticSha256": "be239a9e2edc9d44ee034a30b8a4572b220a72ee9b0ecb2794fb490a18c13c9c",
+      "fingerprintConvention": "SHA-256 of UTF-8 sorted-key compact JSON containing id=null plus complete goalTemplateWithoutId; explicitly not the native registry fingerprint",
+      "decision": "KEEP",
+      "status": "atomic",
+      "semanticAtomic": true,
+      "oneCausalMechanism": "Corresponding segment exchange between non-sister chromatids of homologous chromosomes.",
+      "oneChangedObject": "Combination of parental information regions on the participating recombinant chromatids.",
+      "whyConsequenceIsNotSecondRoutine": "Tracing the given recombinant output to given gamete sets is the consequence of the same exchange and does not demand a separately reconstructed complete meiosis algorithm.",
+      "whyNotAutomaticallyApprovedForBeingSplit": "The new wording itself fixes homologous non-sister exchange and requests exactly its model-supported effect, without independent whole-pair assortment or molecular repair.",
+      "specificFailureWithinThisGoal": "Belief that arbitrary nonhomologous segment exchange or exchange only between identical sister chromatids proves this meiotic recombination principle.",
+      "doesNotRequireOtherCompanionMastery": true
+    }
+  ],
+  "crossGoalIndependence": "The two B-v1 counterexamples still separate the competencies; each v2 text now names only its own explanatory mechanism.",
+  "mutualRequiresRecommendation": "No automatic mutual edge. Both may share supplied model foundations.",
+  "ruleApplied": "AGENTS.md 7.1: exactly one content learning goal, judged semantically rather than from contains=[] or the authored split metadata.",
+  "nativeARecordCreated": false
+}

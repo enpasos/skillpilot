@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-stoffmenge-u-g-corrected-image-current-synthesis-20261005-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-root-current-two-independent-round-synthesis",
+  "synthesizedAt": "2026-10-05T02:50:31.000Z",
+  "batch": {
+    "batchId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005",
+    "batchManifestDigest": "sha256:ba100207a9196f7c6b136af7f4399991605e320c7557e4667878f92feb539f3d",
+    "configDigest": "sha256:82bb31fcdc680aee485629397949651f13f46e80f80a3aa4bb6a4cdc2b56caea",
+    "bundleFingerprint": "sha256:cb00a43efcb504338d1b593d07c566f824db864785dfbf11e76c87b6df085923",
+    "bookDigest": "sha256:d0d19d26b99300c3abf172c202d0ce95437cb3739c33fd4be58399cdd9c73f84",
+    "reviewInputFingerprint": "sha256:7e6d78e4e3028413ad76450a3f14c9c14d890eb62a72fc9ef3af15bf81c69e62",
+    "dualSummaryDigest": "sha256:50bd5151924320b59716f65619f41f0d9d27fec45bda96709fc1b62fca6d768c",
+    "canonicalLandscapeDigest": "sha256:01156291f79010e9795b809d1162dae74be7ce0ea8d5359b903cc5e1e95d1e7d"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-a",
+      "campaignDigest": "sha256:3a6c25dfaf0606a1a263d353e34f34cd53cc68b055178b436536ec213f110501",
+      "roundId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-independent-a",
+      "reviewInputFingerprint": "sha256:7e6d78e4e3028413ad76450a3f14c9c14d890eb62a72fc9ef3af15bf81c69e62",
+      "batchId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:9ce59e378d6d9b1e0176cf5ca35fb3a26625a7ccb83ac31b60aa6d3ade0c6144",
+      "runId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-first-pass-a.local-codex-run-a",
+      "runManifestDigest": "sha256:67153660683fceab5a331550a56107e00ab4e1c1a76750897ce415fec807ab49",
+      "resultsDigest": "sha256:b962fc0453d50af74c673a5db03ddc1b0b92604573644ce2e41d454ef5d75f9a"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-b",
+      "campaignDigest": "sha256:d8cb9c6e71a7481174a67e7456f5f9c3bc5ea56a3c6a2ff77c17219a641b8e9f",
+      "roundId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-independent-b",
+      "reviewInputFingerprint": "sha256:7e6d78e4e3028413ad76450a3f14c9c14d890eb62a72fc9ef3af15bf81c69e62",
+      "batchId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:933615bd96fc46d893b6fdd6bd403fb5364aeb613fb51dc34975f11ad2b1139c",
+      "runId": "chemie-stoffmenge-u-g-current-d-b-v1-20261005",
+      "runManifestDigest": "sha256:80416d5a6aa816a96b4ea44e9fa7bd0854ae0225650f223ca2b843a71ee0200c",
+      "resultsDigest": "sha256:d5db2fb70f8a7f30c615b2d2434c0cfb636351d9b43ce116b4331c2856b7e539"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-stoffmenge-u-g-corrected-image-current-synthesis-20261005-v1-decision-001",
+      "goalId": "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:991cc097814865bb7c4340c0735e56efc671027cc335eed5164adb4b2a4e3c50",
+      "pageFingerprint": "sha256:f759ff6c4d4eb4e7ef8b61348d915ba76795434f6ef5866a157bebdabc081e20",
+      "goalReviewContextFingerprint": "sha256:67e1bbff73187afefd2ece3252f9e492ee4721cd69d98f707997460805da4730",
+      "finalText": {
+        "titleDe": "Atomare Masseneinheit und Grammbezug einordnen",
+        "titleEn": "Classify atomic mass unit and gram relationship",
+        "descriptionDe": "Die lernende Person kann u und g als unterschiedlich große Einheiten derselben Masse einordnen und die Masse eines Teilchens mit der Masse einer Stoffportion verknüpfen.",
+        "descriptionEn": "The learner can identify u and g as differently sized units of the same mass quantity and relate the mass of a particle to the mass of a sample."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-first-pass-a.local-codex-run-a.D.dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+          "recordDigest": "sha256:6e517dc476393188840b20e9f6a2cfb7407bed535ce9570cdc2fc10477d1edd6"
+        },
+        "second": {
+          "recordId": "chemie-stoffmenge-u-g-current-d-b-v1-20261005.dd3fc8fe",
+          "recordDigest": "sha256:61bb7b9ba43c58722b03f58ea885fa0e48dd94c9f80784bc1632b8c8494b25cf"
+        }
+      },
+      "rationaleDe": "Die beiden unabhängig eingefrorenen aktuellen Beschreibungsreviews behalten dieselben bilingualen Texte und die neu gerenderte Zielseite mit dem tatsächlich geprüften korrigierten PNG. Beide Reviewer haben das aktuelle Bild und die physische PDF-Seite 3 betrachtet. u und g bezeichnen auf beiden Betrachtungsebenen dieselbe Massengröße; Teilchenzahl mal Teilchenmasse verbindet Einzelteilchen und Portion. Die C-12-Werte sind konsistent gerundet, die Molgruppe ist ausdrücklich schematisch. Die direkte Mol-Vorbedingung bleibt sichtbar. Der Text umfasst eine atomare Größen- und Maßstabskompetenz, ohne C-12-Auswendigwissen, neue Messmethode oder eigenständige allgemeine Stöchiometrie zu verlangen. Die unabhängigen Leistungs- und Transfererwartungen betreffen Erklären, Einheitenwechsel und den Mengenbezug mit bereitgestellten Bezugsdaten; Ablesen der Illustration zählt nicht als Lernendenleistung. Beide Reviews stützen die fachliche Deutung auf gezielt gelesene Primärquellen aus Hessen und Bayern sowie SI-Definitionen. Die alte kategorische Bildzuordnung und der unleserliche Modellhinweis im ersten Korrekturkandidaten sind durch eine tatsächlich neue, separat fachlich und visuell geprüfte Darstellung behoben. Die früheren D-Artefakte und beide Bildversuche bleiben als Geschichte erhalten. Diese gezielte D-Synthese behauptet weder eine vollständige Länder-Mappingfreigabe noch menschliche Prüfung; aktueller P-Nachweis und unabhängige V-Freigabe bleiben getrennte Nachweise.",
+      "rationaleEn": "Both independently frozen current description rounds keep the same bilingual wording and the newly rendered goal page with the actually inspected corrected PNG. Both reviewers inspected the current image and physical PDF page 3. Both u and g express the same mass quantity at either scale; particle number times particle mass relates a particle to a sample. The carbon-12 values are consistent approximations and the mole group is explicitly schematic. The direct mole prerequisite remains visible. This is one atomic quantity-and-scale competence; it does not introduce carbon-12 recall, a new measurement method, or general reaction stoichiometry. Independent performance and transfer require explaining unit changes and the particle/sample relationship using supplied reference data rather than reading the illustration. Targeted primary-source inspections support this interpretation. The previous categorical image assignment and the first correction candidate's unreadable schematic label have been resolved by a genuinely new, separately inspected illustration. Previous description artifacts and image attempts remain historical evidence. This targeted description synthesis grants no complete jurisdictional mapping clearance or human approval; the current positive profile and independent visualization decision remain separate evidence."
+    }
+  ],
+  "manifestFingerprint": "sha256:b785a937378967a6e4e9f35b834cd07d86dfffe05638387986d555ada3beda25"
+}

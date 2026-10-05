@@ -1,0 +1,202 @@
+{
+  "format": "post_visual_freeze_generation_provenance_check_v1",
+  "reviewer": "independent_b",
+  "provenanceReadStartedAt": "2026-10-05T04:28:05.347073+00:00",
+  "visualVerdictFrozenAt": "2026-10-05T04:25:28.745750+00:00",
+  "visualVerdictFreezeSha256": "a0e013fcea0b999da71dd002853646e9418479101ac9fce65f58a272418e31bb",
+  "generationReceiptsAndPromptsReadOnlyAfterVisualFreeze": true,
+  "records": [
+    {
+      "candidateKey": "ni-fw6-008-independent-assortment-companion-v2",
+      "goalId": null,
+      "prospectiveGoalId": "0b55e592-3335-52e4-8b4f-79c53f32400b",
+      "provenanceReadStartedAfterOwnVisualFreeze": true,
+      "recordedProvider": "OpenAI / ChatGPT-Codex image_gen (exact image model not exposed)",
+      "recordedGenerationTerminal": "functions.exec Script completed; both built-in image_gen calls fulfilled and actual images displayed",
+      "exactModelName": null,
+      "exactModelVersion": null,
+      "exactModelVersionKnown": false,
+      "modelLimitation": "The actual observed terminal receipt explicitly states that the image model version is not exposed. Candidate revision v1/v2 is not a model version.",
+      "observedAt": "2026-10-05T04:14:53.534928+00:00",
+      "actualTerminalOutputPath": "/home/enpasos/.codex/generated_images/01a0f2c0-2182-78f3-8b44-9fcdfd2c8634/exec-baff7a35-a174-415f-91ad-579b6c020163.png",
+      "actualTerminalOutputSha256": "b5d4a97321d099b727353cd6d9b987e58c0ab85c9b89f102e928aeba96780281",
+      "copiedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-independent-assortment-candidate-20261005-v1/candidate-v1.png",
+      "candidateSha256": "b5d4a97321d099b727353cd6d9b987e58c0ab85c9b89f102e928aeba96780281",
+      "ownFrozenCopyPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-two-recombination-independent-v-qa-b-20261005-v1/assortment.native.candidate.png",
+      "nativeDimensions": [
+        1672,
+        941
+      ],
+      "provenanceFiles": [
+        {
+          "kind": "terminalReceipt",
+          "sourcePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-independent-assortment-candidate-20261005-v1/generation-observed-terminal-v1.receipt.json",
+          "copyPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-two-recombination-independent-v-qa-b-20261005-v1/provenance.assortment.terminalReceipt.json",
+          "sha256": "8aaa1bf8d4de37b2a090d75053b38a4feb9a1f5eaf27c90b59c053d2efafb223",
+          "byteLength": 4236
+        },
+        {
+          "kind": "generationRequest",
+          "sourcePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-independent-assortment-candidate-20261005-v1/generation-request-v1.json",
+          "copyPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-two-recombination-independent-v-qa-b-20261005-v1/provenance.assortment.generationRequest.json",
+          "sha256": "868bab4b811195cb26931815b9f7371d4e82bd9acf52aeef248184c4668ab7cb",
+          "byteLength": 2955
+        },
+        {
+          "kind": "providerPrompt",
+          "sourcePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-independent-assortment-candidate-20261005-v1/prompt-provider-v1.txt",
+          "copyPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-two-recombination-independent-v-qa-b-20261005-v1/provenance.assortment.providerPrompt.txt",
+          "sha256": "e219f45e6dad61d2f5d0984692993237a2e6f67abbdb6d0b94108a0696a93655",
+          "byteLength": 2597
+        }
+      ],
+      "previewChecks": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-independent-assortment-candidate-20261005-v1/candidate-v1-360.png",
+          "width": 360,
+          "actualSha256": "0c9bd7057a8e8cfa6b369aaedbac1f90a19e78236e73bca35a697ab2f46d33df",
+          "receiptSha256": "0c9bd7057a8e8cfa6b369aaedbac1f90a19e78236e73bca35a697ab2f46d33df",
+          "matchesReceipt": true,
+          "matchesOwnInspectedInput": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-independent-assortment-candidate-20261005-v1/candidate-v1-680.png",
+          "width": 680,
+          "actualSha256": "1f2a6bcf15b5171589bbf6672689ed6d38ef229fb9a9e2520b5cbde9952d260a",
+          "receiptSha256": "1f2a6bcf15b5171589bbf6672689ed6d38ef229fb9a9e2520b5cbde9952d260a",
+          "matchesReceipt": true,
+          "matchesOwnInspectedInput": true
+        }
+      ],
+      "historicalAttemptCheck": null,
+      "checks": {
+        "providerFieldConsistent": true,
+        "exactModelNotInvented": true,
+        "requestMatchesTerminalReceipt": true,
+        "providerPromptMatchesRequest": true,
+        "prospectiveIdMatchesReceipt": true,
+        "terminalImageExistsAndMatches": true,
+        "candidateMatchesReceipt": true,
+        "candidateMatchesOwnFrozenVisualInput": true,
+        "candidateMatchesNativeOwnCopy": true,
+        "nativeDimensionsMatchReceipt": true,
+        "opaqueRequestAndImage": true,
+        "responsiveFilesMatch": true,
+        "historicalAttemptRetained": true
+      },
+      "provenanceConsistencyPassed": true,
+      "notProvenByThisCheck": [
+        "Provider model version",
+        "External legal clearance or ownership",
+        "Human approval",
+        "Client or Book-D2 acceptance",
+        "Operative asset adoption"
+      ],
+      "rootImageVerdictRead": false
+    },
+    {
+      "candidateKey": "ni-fw6-008-chromatid-segment-exchange-companion-v2",
+      "goalId": null,
+      "prospectiveGoalId": "9e459608-bdea-55a1-b9c5-214bbd741be6",
+      "provenanceReadStartedAfterOwnVisualFreeze": true,
+      "recordedProvider": "OpenAI / ChatGPT-Codex image_gen (exact image model not exposed)",
+      "recordedGenerationTerminal": "functions.exec Script completed; built-in image_gen edit fulfilled and actual image displayed",
+      "exactModelName": null,
+      "exactModelVersion": null,
+      "exactModelVersionKnown": false,
+      "modelLimitation": "The actual observed terminal receipt explicitly states that the image model version is not exposed. Candidate revision v1/v2 is not a model version.",
+      "observedAt": "2026-10-05T04:17:10.445451+00:00",
+      "actualTerminalOutputPath": "/home/enpasos/.codex/generated_images/01a0f2c0-2182-78f3-8b44-9fcdfd2c8634/exec-25de887e-4c4a-4e23-9722-67c1b3fd810c.png",
+      "actualTerminalOutputSha256": "ab83ba181e54828121db484db27fc20525158438a7e9a2d5a82c286db0bae8a9",
+      "copiedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-chromatid-segment-exchange-candidate-20261005-v1/candidate-v2.png",
+      "candidateSha256": "ab83ba181e54828121db484db27fc20525158438a7e9a2d5a82c286db0bae8a9",
+      "ownFrozenCopyPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-two-recombination-independent-v-qa-b-20261005-v1/segment-exchange.native.candidate.png",
+      "nativeDimensions": [
+        1672,
+        941
+      ],
+      "provenanceFiles": [
+        {
+          "kind": "terminalReceipt",
+          "sourcePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-chromatid-segment-exchange-candidate-20261005-v1/generation-observed-terminal-v2.receipt.json",
+          "copyPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-two-recombination-independent-v-qa-b-20261005-v1/provenance.segment-exchange.terminalReceipt.json",
+          "sha256": "a55a3254a695e95f3ea71e83854838baf93494e6bf1308d849c461f133f9a410",
+          "byteLength": 4026
+        },
+        {
+          "kind": "generationRequest",
+          "sourcePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-chromatid-segment-exchange-candidate-20261005-v1/generation-request-v2.json",
+          "copyPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-two-recombination-independent-v-qa-b-20261005-v1/provenance.segment-exchange.generationRequest.json",
+          "sha256": "7b5e38a003fc47ca80a992df9cf1e84af849f67f34b681f830742d075753f336",
+          "byteLength": 2425
+        },
+        {
+          "kind": "providerPrompt",
+          "sourcePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-chromatid-segment-exchange-candidate-20261005-v1/prompt-provider-v2.txt",
+          "copyPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-two-recombination-independent-v-qa-b-20261005-v1/provenance.segment-exchange.providerPrompt.txt",
+          "sha256": "ee94ec8ce1f261c249222ca2e0bba8196b391a10396fa06174225b9a7482a2df",
+          "byteLength": 1860
+        }
+      ],
+      "previewChecks": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-chromatid-segment-exchange-candidate-20261005-v1/candidate-v2-360.png",
+          "width": 360,
+          "actualSha256": "59cc3e36861282408fd09ba0a13d435c8add5c16e04674b63bc18a9049e4cdbe",
+          "receiptSha256": "59cc3e36861282408fd09ba0a13d435c8add5c16e04674b63bc18a9049e4cdbe",
+          "matchesReceipt": true,
+          "matchesOwnInspectedInput": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-chromatid-segment-exchange-candidate-20261005-v1/candidate-v2-680.png",
+          "width": 680,
+          "actualSha256": "eeed42f18f25b8c38c956cf6579115fc202a446593dbcac3583663f4e547440e",
+          "receiptSha256": "eeed42f18f25b8c38c956cf6579115fc202a446593dbcac3583663f4e547440e",
+          "matchesReceipt": true,
+          "matchesOwnInspectedInput": true
+        }
+      ],
+      "historicalAttemptCheck": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-chromatid-segment-exchange-candidate-20261005-v1/candidate-v1.png",
+        "exists": true,
+        "actualSha256": "63176209aeed89c6733b167d7e37eff96abbc7a89bd9c1019ac88427465dfde4",
+        "receiptSha256": "63176209aeed89c6733b167d7e37eff96abbc7a89bd9c1019ac88427465dfde4",
+        "matchesReceipt": true,
+        "visualContentNotOpenedForThisCheck": true,
+        "modifiedByThisReview": false
+      },
+      "checks": {
+        "providerFieldConsistent": true,
+        "exactModelNotInvented": true,
+        "requestMatchesTerminalReceipt": true,
+        "providerPromptMatchesRequest": true,
+        "prospectiveIdMatchesReceipt": true,
+        "terminalImageExistsAndMatches": true,
+        "candidateMatchesReceipt": true,
+        "candidateMatchesOwnFrozenVisualInput": true,
+        "candidateMatchesNativeOwnCopy": true,
+        "nativeDimensionsMatchReceipt": true,
+        "opaqueRequestAndImage": true,
+        "responsiveFilesMatch": true,
+        "historicalAttemptRetained": true
+      },
+      "provenanceConsistencyPassed": true,
+      "notProvenByThisCheck": [
+        "Provider model version",
+        "External legal clearance or ownership",
+        "Human approval",
+        "Client or Book-D2 acceptance",
+        "Operative asset adoption"
+      ],
+      "rootImageVerdictRead": false
+    }
+  ],
+  "provenanceConsistencyPassed": true,
+  "independentVisualVerdictUnmodified": true,
+  "rootOrForeignVisualVerdictsRead": false,
+  "historicalAttemptsModified": false,
+  "activeAssetWrites": 0,
+  "operativeGateVPassed": false,
+  "bookD2Passed": false,
+  "humanApproval": false
+}

@@ -1,0 +1,1365 @@
+{
+  "schemaVersion": 1,
+  "recordStatus": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "observedAt": "2026-10-05T04:43:20.912581+00:00",
+  "reviewMode": "author_revision_informed_by_existing_b010_reviews",
+  "goalIds": [
+    "72236f2c-771e-4ab6-933a-e549ee49d15b",
+    "950c73c6-4ed1-488a-9267-1142e95e0055",
+    "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+    "16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+    "58486300-3f84-5aa1-9ed4-66186af62669",
+    "414489cb-453e-5de4-ab0f-0fc01175e522",
+    "1f5ee84f-245a-5a1e-a260-f960f26523e9"
+  ],
+  "excludedAlreadyStrictGoalIds": [
+    "b5086548-169e-5d63-a14a-dabf631fa013",
+    "d726e00e-1f87-5ba5-8c79-76ad4022365e"
+  ],
+  "baseline": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-corrected-images-current-integration-v1/central-nine-complete.report.json",
+    "sha256": "2fee25d6848721fca5d5afcabb17a9c01070ca51e7adb41c2721047b804e5c3f",
+    "denominator": 376,
+    "strictComplete": 79
+  },
+  "canonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "sha256": "220229ad94a5da1c7b466b8e43b5a2aa5b45baa3105d896e215b2cf583760aab",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0"
+  },
+  "goals": [
+    {
+      "id": "72236f2c-771e-4ab6-933a-e549ee49d15b",
+      "shortKey": "canonical_chemistry_sek1_core_shell_model",
+      "title": "Kern-Hülle-Modell und Elementarteilchen beschreiben",
+      "titleEn": "Describe the core-shell model and elementary particles",
+      "description": "Die lernende Person kann das Rutherford-Streuexperiment als Befund für das Kern-Hülle-Modell einordnen, den Aufbau von Atomen mit dem Kern-Hülle-Modell beschreiben und Protonen, Neutronen sowie Elektronen fachlich einordnen.",
+      "descriptionEn": "The learner can classify Rutherford scattering as evidence for the core-shell model, describe atomic structure using the core-shell model, and correctly classify protons, neutrons, and electrons.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "9b5d6326-d27c-4ece-8c72-debda705464a"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Atombau und Bindung",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.CORE_SHELL_MODEL"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "fd02c993-0950-41a4-a861-7522d1bd3f8c"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "72236f2c-771e-4ab6-933a-e549ee49d15b",
+          "title": "Visualisierung: Kern-Hülle-Modell und Elementarteilchen beschreiben",
+          "url": "/assets/goal-visualizations/chemie/72236f2c-771e-4ab6-933a-e549ee49d15b/72236f2c-771e-4ab6-933a-e549ee49d15b.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Kern-Hülle-Modell und Elementarteilchen beschreiben.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Kern-Hülle-Modell und Elementarteilchen beschreiben\". Die lernende Person kann das Rutherford-Streuexperiment als Befund für das Kern-Hülle-Modell einordnen, den Aufbau von Atomen mit dem Kern-Hülle-Modell beschreiben und Protonen, Neutronen sowie Elektronen fachlich einordnen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "accepted"
+        }
+      ]
+    },
+    {
+      "id": "950c73c6-4ed1-488a-9267-1142e95e0055",
+      "shortKey": "canonical_chemistry_sek1_ionic_bonding",
+      "title": "Ionenbindung und Ionengitter beschreiben",
+      "titleEn": "Describe ionic bonding and ion lattices",
+      "description": "Die lernende Person kann Ionengitter wie Natriumchlorid beschreiben und einfache Struktur-Eigenschafts-Bezüge fachlich herstellen.",
+      "descriptionEn": "The learner can describe ionic lattices such as sodium chloride and establish simple structure-property relationships.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Atombau und Bindung",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.IONIC_BONDING"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "41de0477-78e2-48b5-82f7-e5864f2f66cc"
+        }
+      },
+      "type": "atomic",
+      "examples": []
+    },
+    {
+      "id": "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+      "shortKey": "canonical_chemistry_sek1_alkali_metals_properties",
+      "title": "Alkalimetalle und ihre Verbindungen charakterisieren",
+      "titleEn": "Characterize alkali metals and their compounds",
+      "description": "Die lernende Person kann Eigenschaften, Verwendung und typische Verbindungen der Alkalimetalle fachlich beschreiben.",
+      "descriptionEn": "The learner can describe properties, uses, and typical compounds of alkali metals.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elementgruppen und Salze",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.ALKALI_METALS_PROPERTIES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-NI"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "he-chem-seki-9-2-b01-a01-28c1edb7"
+        }
+      },
+      "contains": [],
+      "requires": [
+        "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca"
+      ],
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+          "title": "Visualisierung: Alkalimetalle und ihre Verbindungen charakterisieren",
+          "url": "/assets/goal-visualizations/chemie/e0e201bd-a1fd-5985-ab08-fd24c8655f3d/e0e201bd-a1fd-5985-ab08-fd24c8655f3d.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Alkalimetalle und ihre Verbindungen charakterisieren.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Alkalimetalle und ihre Verbindungen charakterisieren\". Die lernende Person kann Eigenschaften, Verwendung und typische Verbindungen der Alkalimetalle fachlich beschreiben.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "accepted"
+        }
+      ]
+    },
+    {
+      "id": "16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+      "shortKey": "canonical_chemistry_sek1_alkali_metal_water_reactions",
+      "title": "Reaktionen von Alkalimetallen und Alkalimetalloxiden mit Wasser deuten",
+      "titleEn": "Interpret reactions of alkali metals and alkali metal oxides with water",
+      "description": "Die lernende Person kann Reaktionen von Alkalimetallen mit Wasser sowie von Alkalimetalloxiden mit Wasser beschreiben und die Bildung alkalischer Loesungen deuten.",
+      "descriptionEn": "The learner can describe reactions of alkali metals with water and alkali metal oxides with water and interpret the formation of alkaline solutions.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elementgruppen und Salze",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.ALKALI_WATER_REACTIONS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "he-chem-seki-9-2-b01-a03-200f7eb0"
+        }
+      },
+      "contains": [],
+      "requires": [
+        "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+        "d2ccd1d5-56f7-583f-9724-e97441367f91"
+      ],
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+          "title": "Visualisierung: Reaktionen von Alkalimetallen und Alkalimetalloxiden mit Wasser deuten",
+          "url": "/assets/goal-visualizations/chemie/16a80de2-b5e0-5467-a9b3-5860730d7d8b/16a80de2-b5e0-5467-a9b3-5860730d7d8b.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Reaktionen von Alkalimetallen und Alkalimetalloxiden mit Wasser deuten.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Reaktionen von Alkalimetallen und Alkalimetalloxiden mit Wasser deuten\". Die lernende Person kann Reaktionen von Alkalimetallen mit Wasser sowie von Alkalimetalloxiden mit Wasser beschreiben und die Bildung alkalischer Loesungen deuten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "accepted"
+        }
+      ]
+    },
+    {
+      "id": "58486300-3f84-5aa1-9ed4-66186af62669",
+      "shortKey": "canonical_chemistry_sek1_halogens_properties",
+      "title": "Halogene und ihre Verwendung charakterisieren",
+      "titleEn": "Characterize halogens and their uses",
+      "description": "Die lernende Person kann Eigenschaften und Verwendung der Halogene sowie einfache Alltagsbezuege fachlich beschreiben.",
+      "descriptionEn": "The learner can describe properties and uses of halogens as well as simple everyday contexts.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elementgruppen und Salze",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.HALOGENS_PROPERTIES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-NI"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "he-chem-seki-9-2-b02-a01-39a59744"
+        }
+      },
+      "contains": [],
+      "requires": [
+        "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca"
+      ],
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "58486300-3f84-5aa1-9ed4-66186af62669",
+          "title": "Visualisierung: Halogene und ihre Verwendung charakterisieren",
+          "url": "/assets/goal-visualizations/chemie/58486300-3f84-5aa1-9ed4-66186af62669/58486300-3f84-5aa1-9ed4-66186af62669.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Halogene und ihre Verwendung charakterisieren.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Halogene und ihre Verwendung charakterisieren\". Die lernende Person kann Eigenschaften und Verwendung der Halogene sowie einfache Alltagsbezuege fachlich beschreiben.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "accepted"
+        }
+      ]
+    },
+    {
+      "id": "414489cb-453e-5de4-ab0f-0fc01175e522",
+      "shortKey": "canonical_chemistry_sek1_gypsum_flue_gas_desulfurization",
+      "title": "Gipsbildung bei Rauchgaswaesche deuten",
+      "titleEn": "Interpret gypsum formation in flue-gas desulfurization",
+      "description": "Die lernende Person kann Gips aus der Rauchgaswaesche als chemischen Anwendungsfall von Sulfatbildung und Umwelttechnik beschreiben.",
+      "descriptionEn": "The learner can describe gypsum from flue-gas desulfurization as a chemical application of sulfate formation and environmental technology.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elementgruppen und Salze",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.GYPSUM_FLUE_GAS_DESULFURIZATION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "he-chem-seki-10-3-b07-a03-67c95b12"
+        }
+      },
+      "contains": [],
+      "requires": [
+        "b5086548-169e-5d63-a14a-dabf631fa013",
+        "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66"
+      ],
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "414489cb-453e-5de4-ab0f-0fc01175e522",
+          "title": "Visualisierung: Gipsbildung bei Rauchgaswaesche deuten",
+          "url": "/assets/goal-visualizations/chemie/414489cb-453e-5de4-ab0f-0fc01175e522/414489cb-453e-5de4-ab0f-0fc01175e522.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Gipsbildung bei Rauchgaswaesche deuten.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Gipsbildung bei Rauchgaswaesche deuten\". Die lernende Person kann Gips aus der Rauchgaswaesche als chemischen Anwendungsfall von Sulfatbildung und Umwelttechnik beschreiben.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "accepted"
+        }
+      ]
+    },
+    {
+      "id": "1f5ee84f-245a-5a1e-a260-f960f26523e9",
+      "shortKey": "canonical_chemistry_sek1_fertilizers",
+      "title": "Duengemittel chemisch einordnen",
+      "titleEn": "Classify fertilizers chemically",
+      "description": "Die lernende Person kann Duengemittel als chemische Salz- und Ionenquellen einordnen und einfache Nutzen-Risiko-Bezuege beschreiben.",
+      "descriptionEn": "The learner can classify fertilizers as chemical salt and ion sources and describe simple benefit-risk relationships.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elementgruppen und Salze",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.FERTILIZERS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "he-chem-seki-10-3-b07-a03-67c95b12"
+        }
+      },
+      "contains": [],
+      "requires": [
+        "b5086548-169e-5d63-a14a-dabf631fa013"
+      ],
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "1f5ee84f-245a-5a1e-a260-f960f26523e9",
+          "title": "Visualisierung: Duengemittel chemisch einordnen",
+          "url": "/assets/goal-visualizations/chemie/1f5ee84f-245a-5a1e-a260-f960f26523e9/1f5ee84f-245a-5a1e-a260-f960f26523e9.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Duengemittel chemisch einordnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Duengemittel chemisch einordnen\". Die lernende Person kann Duengemittel als chemische Salz- und Ionenquellen einordnen und einfache Nutzen-Risiko-Bezuege beschreiben.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    }
+  ],
+  "parents": [
+    {
+      "id": "1e803ef8-fc76-493d-85c5-de877cd38fda",
+      "shortKey": "canonical_chemistry_sek1_atomic_structure_bonding_cluster",
+      "title": "Atombau, Bindungsmodelle, Molekülgeometrie und Polarität",
+      "titleEn": "Atomic structure, bonding models, molecular geometry, and polarity",
+      "description": "Atombau, Periodensystem, Bindungstypen, einfache Molekülgeometrien, Bindungspolarität und Molekülpolarität als Strukturgrundlage chemischer Stoffe modellieren.",
+      "descriptionEn": "Model atomic structure, the periodic table, bond types, simple molecular geometries, bond polarity, and molecular polarity as structural foundations of chemical substances.",
+      "weight": 16,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "72236f2c-771e-4ab6-933a-e549ee49d15b",
+        "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+        "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+        "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+        "950c73c6-4ed1-488a-9267-1142e95e0055",
+        "fcaf8c9b-bd81-552e-9d91-43649895471e",
+        "79db6d68-b402-5563-a348-f2784fed8867",
+        "7964cb36-e9b1-5176-9426-a82041a5b72f",
+        "965ca297-5dbf-5e58-b5f0-6559a4433646",
+        "c441d9e8-d9d9-5e55-a189-a37345541321",
+        "e74f5301-70d3-5869-bd3d-79a5763a1718",
+        "bbe038e9-86ed-5ec6-ab33-316758ddb16d",
+        "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+        "92c99237-1c74-54fc-bf08-9191656afaa6",
+        "747c5777-07d7-51a9-9be3-7d0d6f51d4e2",
+        "67cd332f-9db7-50e1-87f6-172ef3714300",
+        "1e519951-9850-5a07-ac82-d9f0075e3d05"
+      ],
+      "requires": [
+        "fb3bdf39-4baf-4510-a192-c8a12fbf5dba"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Atombau und Bindung",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.ATOMIC_STRUCTURE_BONDING"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "a50d139e-bdf7-4bf2-872c-41f2a566a201"
+        }
+      },
+      "type": "cluster",
+      "examples": []
+    },
+    {
+      "id": "254f7a85-17fa-57c7-8447-28ec05f3c2cf",
+      "shortKey": "canonical_chemistry_sek1_element_groups_salts",
+      "title": "Elementgruppen, Salze und Alltagskontexte (Sek I)",
+      "titleEn": "Element groups, salts, and everyday contexts (Lower Secondary)",
+      "description": "Cluster fuer Alkalimetalle, Halogene, Salzklassen, Kalkkreislauf, Rauchgaswaesche und Duengemittel aus der gymnasialen Sekundarstufe I.",
+      "descriptionEn": "Cluster for alkali metals, halogens, salt classes, lime cycle, flue-gas desulfurization, and fertilizers from lower secondary Gymnasium chemistry.",
+      "weight": 7,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elementgruppen und Salze",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.ELEMENT_GROUPS_SALTS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-NI"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "he-chem-seki-9-2-b01-a01-28c1edb7"
+        }
+      },
+      "contains": [
+        "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+        "16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+        "58486300-3f84-5aa1-9ed4-66186af62669",
+        "b5086548-169e-5d63-a14a-dabf631fa013",
+        "d726e00e-1f87-5ba5-8c79-76ad4022365e",
+        "414489cb-453e-5de4-ab0f-0fc01175e522",
+        "1f5ee84f-245a-5a1e-a260-f960f26523e9"
+      ],
+      "requires": [
+        "1e803ef8-fc76-493d-85c5-de877cd38fda"
+      ],
+      "type": "cluster",
+      "examples": []
+    }
+  ],
+  "prerequisites": [
+    {
+      "id": "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+      "shortKey": "canonical_chemistry_sek1_reaction_equations",
+      "title": "Einfache Reaktionsgleichungen ableiten",
+      "titleEn": "Derive simple reaction equations",
+      "description": "Die lernende Person kann einfache Reaktionsgleichungen aus Reaktionsschemata fachlich korrekt ableiten sowie Teil- und Gesamtgleichungen nutzen, um chemische Reaktionen zu beschreiben.",
+      "descriptionEn": "The learner can correctly derive simple reaction equations from reaction schemes and use half-equations and overall equations to describe chemical reactions.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+        "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Symbolsprache",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.REACTION_EQUATIONS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "877990c1-6534-4328-81aa-5351396eb3d1"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+          "title": "Visualisierung: Einfache Reaktionsgleichungen ableiten",
+          "url": "/assets/goal-visualizations/chemie/11bea4c6-7b8a-47e0-8293-2eb1ce34cf66/11bea4c6-7b8a-47e0-8293-2eb1ce34cf66.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Einfache Reaktionsgleichungen ableiten.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Einfache Reaktionsgleichungen ableiten\". Die lernende Person kann einfache Reaktionsgleichungen aus Reaktionsschemata fachlich korrekt ableiten sowie Teil- und Gesamtgleichungen nutzen, um chemische Reaktionen zu beschreiben.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "accepted"
+        }
+      ]
+    },
+    {
+      "id": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "shortKey": "canonical_chemistry_sek1_dalton_particle_model",
+      "title": "Dalton-Modell und Modellcharakter erläutern",
+      "titleEn": "Explain Dalton's model and the nature of models",
+      "description": "Die lernende Person kann Daltons Atomhypothese erläutern und den Modellcharakter gegenüber Gesetz und Hypothese fachlich abgrenzen.",
+      "descriptionEn": "The learner can explain Dalton's atomic hypothesis and distinguish the model character from laws and hypotheses.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Symbolsprache",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.DALTON_MODEL"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "ae7e4674-eadc-4d75-a3a0-8466a5688e25"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+          "title": "Visualisierung: Dalton-Modell und Modellcharakter erläutern",
+          "url": "/assets/goal-visualizations/chemie/9b5d6326-d27c-4ece-8c72-debda705464a/9b5d6326-d27c-4ece-8c72-debda705464a.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Dalton-Modell und Modellcharakter erläutern.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Dalton-Modell und Modellcharakter erläutern\". Die lernende Person kann Daltons Atomhypothese erläutern und den Modellcharakter gegenüber Gesetz und Hypothese fachlich abgrenzen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+      "shortKey": "canonical_chemistry_sek1_ion_formation_noble_gas_rule",
+      "title": "Ionenbildung mit der Edelgasregel deuten",
+      "titleEn": "Interpret ion formation using the noble gas rule",
+      "description": "Die lernende Person kann Kationen- und Anionenbildung mithilfe der Edelgasregel fachlich deuten.",
+      "descriptionEn": "The learner can interpret the formation of cations and anions using the noble gas rule.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+        "4285d84a-2c9a-4d51-8250-8bed4daf2d2e"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Atombau und Bindung",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.ION_FORMATION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "85bfad0b-2308-40e2-9040-dc29794f7e93"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+          "title": "Visualisierung: Ionenbildung mit der Edelgasregel deuten",
+          "url": "/assets/goal-visualizations/chemie/a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca/a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Ionenbildung mit der Edelgasregel deuten.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Ionenbildung mit der Edelgasregel deuten\". Die lernende Person kann Kationen- und Anionenbildung mithilfe der Edelgasregel fachlich deuten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "accepted"
+        }
+      ]
+    },
+    {
+      "id": "b5086548-169e-5d63-a14a-dabf631fa013",
+      "shortKey": "canonical_chemistry_sek1_salt_classes",
+      "title": "Halogenide, Sulfate, Nitrate und Carbonate einordnen",
+      "titleEn": "Classify halides, sulfates, nitrates, and carbonates",
+      "description": "Die lernende Person kann ausgewaehlte Salzklassen wie Halogenide, Sulfate, Nitrate und Carbonate anhand ihrer Ionen fachlich einordnen.",
+      "descriptionEn": "The learner can classify selected salt classes such as halides, sulfates, nitrates, and carbonates by their ions.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elementgruppen und Salze",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.SALT_CLASSES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-NI"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "he-chem-seki-10-3-b07-a02-041532de"
+        }
+      },
+      "contains": [],
+      "requires": [
+        "950c73c6-4ed1-488a-9267-1142e95e0055",
+        "d2ccd1d5-56f7-583f-9724-e97441367f91"
+      ],
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "b5086548-169e-5d63-a14a-dabf631fa013",
+          "title": "Visualisierung: Halogenide, Sulfate, Nitrate und Carbonate einordnen",
+          "url": "/assets/goal-visualizations/chemie/b5086548-169e-5d63-a14a-dabf631fa013/b5086548-169e-5d63-a14a-dabf631fa013.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Halogenide, Sulfate, Nitrate und Carbonate einordnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Halogenide, Sulfate, Nitrate und Carbonate einordnen\". Die lernende Person kann ausgewaehlte Salzklassen wie Halogenide, Sulfate, Nitrate und Carbonate anhand ihrer Ionen fachlich einordnen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "accepted"
+        }
+      ]
+    },
+    {
+      "id": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "shortKey": "canonical_chemistry_sek1_acid_base_distinguish",
+      "title": "Saure, alkalische und neutrale Lösungen unterscheiden",
+      "titleEn": "Distinguish acidic, alkaline, and neutral solutions",
+      "description": "Die lernende Person kann saure, neutrale und alkalische Lösungen in geeigneten Schulversuchen anhand der Farbskala des jeweils verwendeten Indikators unterscheiden und die Ergebnisse groben pH-Bereichen zuordnen.",
+      "descriptionEn": "The learner can distinguish acidic, neutral and alkaline solutions in suitable school experiments using the colour scale for the indicator used and assign the results to broad pH ranges.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "53fd1bfd-facb-54ae-b2dc-f667ed1414fc"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.ACID_BASE"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "0bfc34bc-9a17-4e86-ac62-b2bf4b967a43"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+          "title": "Visualisierung: Saure, alkalische und neutrale Lösungen unterscheiden",
+          "url": "/assets/goal-visualizations/chemie/d2ccd1d5-56f7-583f-9724-e97441367f91/d2ccd1d5-56f7-583f-9724-e97441367f91.png",
+          "provider": "OpenAI / ChatGPT Codex imagegen",
+          "description": "Comicartige Schulversuchsszene: Eine dargestellte Indikator-Farbskala ordnet Proben grob als sauer (pH < 7), neutral (pH = 7) oder alkalisch (pH > 7) ein, ohne genaue Messwerte zu behaupten; andere Indikatoren benötigen ihre eigene Skala.",
+          "altText": "Eine Person mit Schutzbrille und Handschuhen hält Pipetten über einem mehrfarbigen Indikatorstreifen. Drei Becher mit rot-orangefarbener, grüner und blau-violetter Flüssigkeit zeigen zur passenden Zone der dargestellten Farbskala. Große Beschriftungen nennen sauer pH kleiner als 7, neutral pH gleich 7 und alkalisch pH größer als 7 als Schul-Kategorien, nicht als gemessene Becherwerte. Andere Indikatoren können andere Farben zeigen.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "accepted"
+        }
+      ]
+    },
+    {
+      "id": "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+      "shortKey": "canonical_chemistry_sek1_alkali_metals_properties",
+      "title": "Alkalimetalle und ihre Verbindungen charakterisieren",
+      "titleEn": "Characterize alkali metals and their compounds",
+      "description": "Die lernende Person kann Eigenschaften, Verwendung und typische Verbindungen der Alkalimetalle fachlich beschreiben.",
+      "descriptionEn": "The learner can describe properties, uses, and typical compounds of alkali metals.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elementgruppen und Salze",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.ALKALI_METALS_PROPERTIES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-NI"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "he-chem-seki-9-2-b01-a01-28c1edb7"
+        }
+      },
+      "contains": [],
+      "requires": [
+        "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca"
+      ],
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+          "title": "Visualisierung: Alkalimetalle und ihre Verbindungen charakterisieren",
+          "url": "/assets/goal-visualizations/chemie/e0e201bd-a1fd-5985-ab08-fd24c8655f3d/e0e201bd-a1fd-5985-ab08-fd24c8655f3d.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Alkalimetalle und ihre Verbindungen charakterisieren.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Alkalimetalle und ihre Verbindungen charakterisieren\". Die lernende Person kann Eigenschaften, Verwendung und typische Verbindungen der Alkalimetalle fachlich beschreiben.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "accepted"
+        }
+      ]
+    }
+  ],
+  "visualizationQa": [
+    {
+      "goalId": "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+      "title": "Alkalimetalle und ihre Verbindungen charakterisieren",
+      "description": "Die lernende Person kann Eigenschaften, Verwendung und typische Verbindungen der Alkalimetalle fachlich beschreiben.",
+      "subject": "chemie",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "visualizationState": "available",
+      "missingReason": "",
+      "imageUrl": "/assets/goal-visualizations/chemie/e0e201bd-a1fd-5985-ab08-fd24c8655f3d/e0e201bd-a1fd-5985-ab08-fd24c8655f3d.jpg",
+      "publicAssetPath": "app/public/assets/goal-visualizations/chemie/e0e201bd-a1fd-5985-ab08-fd24c8655f3d/e0e201bd-a1fd-5985-ab08-fd24c8655f3d.jpg",
+      "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/chemie/e0e201bd-a1fd-5985-ab08-fd24c8655f3d/e0e201bd-a1fd-5985-ab08-fd24c8655f3d.jpg",
+      "assetSha256": "sha256:4ba3e59958b6f01e574aa4de547f06151fb103435826f98a875f4ca6c8d20aea",
+      "umlautsCorrectChatGpt": "yes",
+      "contentApprovedChatGpt": "yes",
+      "humanApproved": "yes",
+      "humanIssueIdentified": "no",
+      "humanIssueDescription": "",
+      "chatGptReviewedAt": "2026-07-06T13:58:51.035Z",
+      "chatGptReviewer": "codex",
+      "chatGptNotes": "Content and umlaut checks approved from accepted review ledger chemie-batch-012.md (accepted_pilot). Review note: Accepted. The image highlights only `Li`, `Na`, and `K` in group 1, shows the intended property cards (`weich`, `silbrig glänzend`, `sehr reaktiv`, `bilden M+ Ionen`), and gives typical examples `NaCl`, `KCl`, and lithium-ion battery use. It includes safe storage under oil and does not add reaction equations or unsafe handling.",
+      "humanReviewedAt": "2026-07-16T20:22:01.732Z",
+      "humanReviewer": "workbench",
+      "aiApproved": "yes",
+      "aiApprovedAssetSha256": "sha256:4ba3e59958b6f01e574aa4de547f06151fb103435826f98a875f4ca6c8d20aea",
+      "aiReviewedAt": "2026-07-16T19:16:04.909Z",
+      "aiReviewer": "codex-fresh-original-resolution-review-2026-07-16",
+      "aiNotes": "Frische KI-Prüfung in Originalauflösung: Li, Na und K stehen mit den korrekten Ordnungszahlen 3, 11 und 19 in der ersten Gruppe. Weichheit, silbriger Glanz, starke Reaktivität, Bildung einwertiger M⁺-Ionen und Lagerung unter Öl sind richtig dargestellt. NaCl als Kochsalz, KCl als Dünger und Lithium in Lithium-Ionen-Akkus sind passende Verwendungs- bzw. Verbindungsbeispiele."
+    },
+    {
+      "goalId": "1f5ee84f-245a-5a1e-a260-f960f26523e9",
+      "title": "Duengemittel chemisch einordnen",
+      "description": "Die lernende Person kann Duengemittel als chemische Salz- und Ionenquellen einordnen und einfache Nutzen-Risiko-Bezuege beschreiben.",
+      "subject": "chemie",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "visualizationState": "available",
+      "missingReason": "",
+      "imageUrl": "/assets/goal-visualizations/chemie/1f5ee84f-245a-5a1e-a260-f960f26523e9/1f5ee84f-245a-5a1e-a260-f960f26523e9.jpg",
+      "publicAssetPath": "app/public/assets/goal-visualizations/chemie/1f5ee84f-245a-5a1e-a260-f960f26523e9/1f5ee84f-245a-5a1e-a260-f960f26523e9.jpg",
+      "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/chemie/1f5ee84f-245a-5a1e-a260-f960f26523e9/1f5ee84f-245a-5a1e-a260-f960f26523e9.jpg",
+      "assetSha256": "sha256:dc68f2d278e7110c6d81a3f6147cf287b35f205dfb9dd1b225bb70e20dbb2f80",
+      "umlautsCorrectChatGpt": "no",
+      "contentApprovedChatGpt": "no",
+      "humanApproved": "no",
+      "humanIssueIdentified": "no",
+      "humanIssueDescription": "",
+      "chatGptReviewedAt": null,
+      "chatGptReviewer": "",
+      "chatGptNotes": "",
+      "humanReviewedAt": null,
+      "humanReviewer": "",
+      "aiApproved": "yes",
+      "aiApprovedAssetSha256": "sha256:dc68f2d278e7110c6d81a3f6147cf287b35f205dfb9dd1b225bb70e20dbb2f80",
+      "aiReviewedAt": "2026-07-16T19:16:04.909Z",
+      "aiReviewer": "codex-fresh-original-resolution-review-2026-07-16",
+      "aiNotes": "Nach Korrektur frisch in Originalauflösung geprüft: Die Ionenpfade sind nun getrennt: Nitrat kann ins Grundwasser ausgewaschen werden, Ammonium ist zunächst bodengebunden und wird erst über Nitrat mobil, Phosphat bleibt stark gebunden und gelangt durch Abschwemmung in Oberflächengewässer."
+    },
+    {
+      "goalId": "414489cb-453e-5de4-ab0f-0fc01175e522",
+      "title": "Gipsbildung bei Rauchgaswaesche deuten",
+      "description": "Die lernende Person kann Gips aus der Rauchgaswaesche als chemischen Anwendungsfall von Sulfatbildung und Umwelttechnik beschreiben.",
+      "subject": "chemie",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "visualizationState": "available",
+      "missingReason": "",
+      "imageUrl": "/assets/goal-visualizations/chemie/414489cb-453e-5de4-ab0f-0fc01175e522/414489cb-453e-5de4-ab0f-0fc01175e522.jpg",
+      "publicAssetPath": "app/public/assets/goal-visualizations/chemie/414489cb-453e-5de4-ab0f-0fc01175e522/414489cb-453e-5de4-ab0f-0fc01175e522.jpg",
+      "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/chemie/414489cb-453e-5de4-ab0f-0fc01175e522/414489cb-453e-5de4-ab0f-0fc01175e522.jpg",
+      "assetSha256": "sha256:82054f2a141d0e0c18058bfccc8548a49a0ff811d9ba8667afc428820005b7a1",
+      "umlautsCorrectChatGpt": "yes",
+      "contentApprovedChatGpt": "yes",
+      "humanApproved": "no",
+      "humanIssueIdentified": "no",
+      "humanIssueDescription": "",
+      "chatGptReviewedAt": "2026-07-06T13:58:51.035Z",
+      "chatGptReviewer": "codex",
+      "chatGptNotes": "Content and umlaut checks approved from accepted review ledger chemie-batch-012.md (accepted_pilot_after_regeneration). Review note: Accepted. The regenerated image shows a flow from `Rauchgas mit SO2` through `Kalkmilch Ca(OH)2` and oxidation/sulfate formation to `Gips CaSO4 · 2 H2O`. The formula card is balanced as `2 SO2 + 2 Ca(OH)2 + O2 + 2 H2O -> 2 (CaSO4 · 2 H2O)`, and no pollutant bypass arrow is shown.",
+      "humanReviewedAt": null,
+      "humanReviewer": "",
+      "aiApproved": "yes",
+      "aiApprovedAssetSha256": "sha256:82054f2a141d0e0c18058bfccc8548a49a0ff811d9ba8667afc428820005b7a1",
+      "aiReviewedAt": "2026-07-16T19:16:04.909Z",
+      "aiReviewer": "codex-fresh-original-resolution-review-2026-07-16",
+      "aiNotes": "Frische KI-Prüfung in Originalauflösung: Der Ablauf von Schwefeldioxidaufnahme, Kalkmilchzugabe und Oxidation zur Gipsbildung ist verständlich. Die gezeigte Gesamtgleichung ist für Atome und Wasser des Kristallhydrats ausgeglichen."
+    },
+    {
+      "goalId": "58486300-3f84-5aa1-9ed4-66186af62669",
+      "title": "Halogene und ihre Verwendung charakterisieren",
+      "description": "Die lernende Person kann Eigenschaften und Verwendung der Halogene sowie einfache Alltagsbezuege fachlich beschreiben.",
+      "subject": "chemie",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "visualizationState": "available",
+      "missingReason": "",
+      "imageUrl": "/assets/goal-visualizations/chemie/58486300-3f84-5aa1-9ed4-66186af62669/58486300-3f84-5aa1-9ed4-66186af62669.jpg",
+      "publicAssetPath": "app/public/assets/goal-visualizations/chemie/58486300-3f84-5aa1-9ed4-66186af62669/58486300-3f84-5aa1-9ed4-66186af62669.jpg",
+      "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/chemie/58486300-3f84-5aa1-9ed4-66186af62669/58486300-3f84-5aa1-9ed4-66186af62669.jpg",
+      "assetSha256": "sha256:b8139a29870e67ee4a6f82a9b52475ff46a88f1525d69ed9176863de8f62e9c5",
+      "umlautsCorrectChatGpt": "yes",
+      "contentApprovedChatGpt": "yes",
+      "humanApproved": "no",
+      "humanIssueIdentified": "no",
+      "humanIssueDescription": "",
+      "chatGptReviewedAt": "2026-07-06T13:58:51.035Z",
+      "chatGptReviewer": "codex",
+      "chatGptNotes": "Content and umlaut checks approved from accepted review ledger chemie-batch-012.md (accepted_pilot). Review note: Accepted. The image shows the halogens as diatomic `F2`, `Cl2`, `Br2`, and `I2`, marks reactivity and halogenide formation, and uses everyday examples for fluoride, chlorine compounds, and iodine without presenting elemental chlorine gas as a household cleaner.",
+      "humanReviewedAt": null,
+      "humanReviewer": "",
+      "aiApproved": "yes",
+      "aiApprovedAssetSha256": "sha256:b8139a29870e67ee4a6f82a9b52475ff46a88f1525d69ed9176863de8f62e9c5",
+      "aiReviewedAt": "2026-07-16T19:16:04.909Z",
+      "aiReviewer": "codex-fresh-original-resolution-review-2026-07-16",
+      "aiNotes": "Frische KI-Prüfung in Originalauflösung: F₂, Cl₂, Br₂ und I₂ sind als zweiatomige Elemente in plausibler Farbabstufung gezeigt. Reaktivität, Bildung von Halogenid-Ionen X⁻ sowie die Beispiele Fluorid in Zahnpasta, Chlorverbindungen zur Desinfektion und Iod in Medizin/Desinfektion sind fachlich passend und ohne widersprüchliche Formel oder Ladung dargestellt."
+    },
+    {
+      "goalId": "950c73c6-4ed1-488a-9267-1142e95e0055",
+      "title": "Ionenbindung und Ionengitter beschreiben",
+      "description": "Die lernende Person kann Ionengitter wie Natriumchlorid beschreiben und einfache Struktur-Eigenschafts-Bezüge fachlich herstellen.",
+      "subject": "chemie",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "visualizationState": "missing",
+      "missingReason": "deferred_provider_limitation",
+      "imageUrl": "",
+      "publicAssetPath": "",
+      "canonicalAssetPath": "",
+      "assetSha256": "",
+      "umlautsCorrectChatGpt": "no",
+      "contentApprovedChatGpt": "no",
+      "humanApproved": "no",
+      "humanIssueIdentified": "no",
+      "humanIssueDescription": "",
+      "chatGptReviewedAt": null,
+      "chatGptReviewer": "",
+      "chatGptNotes": "",
+      "humanReviewedAt": null,
+      "humanReviewer": ""
+    },
+    {
+      "goalId": "72236f2c-771e-4ab6-933a-e549ee49d15b",
+      "title": "Kern-Hülle-Modell und Elementarteilchen beschreiben",
+      "description": "Die lernende Person kann das Rutherford-Streuexperiment als Befund für das Kern-Hülle-Modell einordnen, den Aufbau von Atomen mit dem Kern-Hülle-Modell beschreiben und Protonen, Neutronen sowie Elektronen fachlich einordnen.",
+      "subject": "chemie",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "visualizationState": "available",
+      "missingReason": "",
+      "imageUrl": "/assets/goal-visualizations/chemie/72236f2c-771e-4ab6-933a-e549ee49d15b/72236f2c-771e-4ab6-933a-e549ee49d15b.jpg",
+      "publicAssetPath": "app/public/assets/goal-visualizations/chemie/72236f2c-771e-4ab6-933a-e549ee49d15b/72236f2c-771e-4ab6-933a-e549ee49d15b.jpg",
+      "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/chemie/72236f2c-771e-4ab6-933a-e549ee49d15b/72236f2c-771e-4ab6-933a-e549ee49d15b.jpg",
+      "assetSha256": "sha256:f719a84f6b326a8c07850aa374a9950c9e7bc618e7e74b8e31bfadffe6380b0d",
+      "umlautsCorrectChatGpt": "yes",
+      "contentApprovedChatGpt": "yes",
+      "humanApproved": "yes",
+      "humanIssueIdentified": "no",
+      "humanIssueDescription": "",
+      "chatGptReviewedAt": "2026-07-06T13:58:51.035Z",
+      "chatGptReviewer": "codex",
+      "chatGptNotes": "Content and umlaut checks approved from accepted review ledger chemie-batch-013.md (accepted_pilot). Review note: Accepted. The Rutherford setup shows a gold foil with most alpha particles passing straight and only a few deflected. The atom sketch keeps protons and neutrons in the nucleus and electrons in the shell, without placing electrons in the nucleus or implying that all alpha particles bounce back.",
+      "humanReviewedAt": "2026-07-15T14:54:45.598Z",
+      "humanReviewer": "workbench"
+    },
+    {
+      "goalId": "16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+      "title": "Reaktionen von Alkalimetallen und Alkalimetalloxiden mit Wasser deuten",
+      "description": "Die lernende Person kann Reaktionen von Alkalimetallen mit Wasser sowie von Alkalimetalloxiden mit Wasser beschreiben und die Bildung alkalischer Loesungen deuten.",
+      "subject": "chemie",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "visualizationState": "available",
+      "missingReason": "",
+      "imageUrl": "/assets/goal-visualizations/chemie/16a80de2-b5e0-5467-a9b3-5860730d7d8b/16a80de2-b5e0-5467-a9b3-5860730d7d8b.jpg",
+      "publicAssetPath": "app/public/assets/goal-visualizations/chemie/16a80de2-b5e0-5467-a9b3-5860730d7d8b/16a80de2-b5e0-5467-a9b3-5860730d7d8b.jpg",
+      "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/chemie/16a80de2-b5e0-5467-a9b3-5860730d7d8b/16a80de2-b5e0-5467-a9b3-5860730d7d8b.jpg",
+      "assetSha256": "sha256:8fe44fbc296f89f894b842e88495a8d33e43e8e73580e23b529c0fcf7062ddc0",
+      "umlautsCorrectChatGpt": "yes",
+      "contentApprovedChatGpt": "yes",
+      "humanApproved": "no",
+      "humanIssueIdentified": "no",
+      "humanIssueDescription": "",
+      "chatGptReviewedAt": "2026-07-17T05:01:19.562Z",
+      "chatGptReviewer": "codex-gpt-5",
+      "chatGptNotes": "Frische Chemie-Prüfung in Originalauflösung am 2026-07-17: Formeln, Stöchiometrie, Ladungen, Valenzen, Apparaturen, Einheiten, sichtbare Beschriftungen und Orthografie des exakt importierten Kandidaten geprüft; kein sichtbarer fachlicher Widerspruch zum Lernziel.",
+      "humanReviewedAt": null,
+      "humanReviewer": "",
+      "aiApproved": "yes",
+      "aiApprovedAssetSha256": "sha256:8fe44fbc296f89f894b842e88495a8d33e43e8e73580e23b529c0fcf7062ddc0",
+      "aiReviewedAt": "2026-07-17T05:01:19.562Z",
+      "aiReviewer": "codex-gpt-5",
+      "aiNotes": "Frische Chemie-Prüfung in Originalauflösung am 2026-07-17: Formeln, Stöchiometrie, Ladungen, Valenzen, Apparaturen, Einheiten, sichtbare Beschriftungen und Orthografie des exakt importierten Kandidaten geprüft; kein sichtbarer fachlicher Widerspruch zum Lernziel."
+    }
+  ],
+  "registeredDIndexPaths": [
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-001-sek1-reactions-energy-current-7-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-002-q1-organic-functional-groups-current-20-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-003-q1-bonding-models-current-20-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-005-sek1-symbols-stoichiometry-current-16-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-006-ions-atoms-bonding-current-20-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-006r-92c-corrected-image-current-1-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-004-sek1-foundations-current-18-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-004v-indicator-reference-current-1-v2/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-004w-states-corrected-image-current-1-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-007-global-foundations-current-5-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-007r-fcc-corrected-image-current-1-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-007s-5a-corrected-image-current-1-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-009r-350-a530-corrected-images-current-2-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-010-sek1-ions-element-groups-salts-current-9-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-01/b009-image-corrected-two-current-20261001-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-01/b009-reaction-vs-physical-current-1-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-01/b009-fossil-carbon-current-1-20261001-v2/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-01/b009-fuel-comparison-current-1-20261001-v3/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-04/batch-011-ephase-fuels-energy-current-13-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-011-four-revisions-current-4-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013-stoffmenge-revised-nine-current-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013v-u-g-corrected-image-current-1-v1/resolution-index.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1-integration/resolution-index.json"
+  ],
+  "resolutionSupersessions": [
+    {
+      "goalId": "92c99237-1c74-54fc-bf08-9191656afaa6",
+      "supersededIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-006-ions-atoms-bonding-current-20-v1/resolution-index.json",
+      "replacementIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-006r-92c-corrected-image-current-1-v1/resolution-index.json"
+    },
+    {
+      "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+      "supersededIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-007-global-foundations-current-5-v1/resolution-index.json",
+      "replacementIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-007r-fcc-corrected-image-current-1-v1/resolution-index.json"
+    },
+    {
+      "goalId": "5a709938-e0f5-42b7-94f0-cfded08963a2",
+      "supersededIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-007-global-foundations-current-5-v1/resolution-index.json",
+      "replacementIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-007s-5a-corrected-image-current-1-v1/resolution-index.json"
+    },
+    {
+      "goalId": "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+      "supersededIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013-stoffmenge-revised-nine-current-v1/resolution-index.json",
+      "replacementIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013v-u-g-corrected-image-current-1-v1/resolution-index.json"
+    },
+    {
+      "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "supersededIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013-stoffmenge-revised-nine-current-v1/resolution-index.json",
+      "replacementIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1-integration/resolution-index.json"
+    },
+    {
+      "goalId": "ddb76915-4d63-5375-901d-4e659f5e9b09",
+      "supersededIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013-stoffmenge-revised-nine-current-v1/resolution-index.json",
+      "replacementIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1-integration/resolution-index.json"
+    }
+  ],
+  "resolutionWithdrawals": [
+    {
+      "goalId": "d8bdf486-7295-5393-b6f7-54f6e485c848",
+      "indexPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-004-sek1-foundations-current-18-v1/resolution-index.json",
+      "historicalResolutionDigest": "sha256:db3ffcb963b2dd84b43fea59a46a5b50e3d227da92ff0e50828bc554c10b3346",
+      "reason": "Current goal requires a new direct source and track scope resolution after a corrected image; historical claim remains audit history and is not counted."
+    }
+  ],
+  "scopeBoundary": "seven current open targets only; no P read; no active mutation; no human approval; no strict closure"
+}

@@ -1,0 +1,57 @@
+{
+  "format": "independent_advisory_review_v1",
+  "reviewer": "independent_b",
+  "createdAt": "2026-10-05T03:57:52.386582+00:00",
+  "reviewAuthority": "ai_candidate",
+  "candidateKey": "ni-fw6-008-meiotic-recombination-companion-v1",
+  "goalId": null,
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-fw6-008-recombination-current-preservation-candidate-v1/companion.goal-template.candidate.json",
+  "candidateSha256": "808e791d5ffc67b402e08821d01aa775d400e24a5d9da5528b89d0b80a09c540",
+  "advisorySemanticSha256": "5c5fece2facfd713e8ac93d520e6f7dab9a4939514bfd09a4a2a478bc03369f4",
+  "fingerprintConvention": "SHA-256 of UTF-8 sorted-key compact JSON containing id=null plus the complete goalTemplateWithoutId; not the native registry fingerprint",
+  "active": false,
+  "humanApproval": false,
+  "nativeRegistryEntry": false,
+  "nativeGatePassed": false,
+  "lane": "A",
+  "decision": "SPLIT",
+  "status": "non_atomic",
+  "semanticAtomic": false,
+  "reviewedTechnicalShape": "contains=[] and type=atomic are labels, not semantic proof.",
+  "principles": [
+    {
+      "key": "independent_homologous_pair_assortment",
+      "objectChanged": "Combination of whole maternal/paternal homologues from different chromosome types in a gamete.",
+      "minimalRelevantModel": "At least two different homologous pairs and two correct alternative orientation/segregation outcomes.",
+      "separableEvidence": "Learner explains that choosing a partner from one pair does not fix the partner from another pair and links different pair orientations to different gamete combinations."
+    },
+    {
+      "key": "corresponding_non_sister_segment_exchange",
+      "objectChanged": "Combination of parental regions on participating chromatids within one homologous pair.",
+      "minimalRelevantModel": "One homologous pair with distinguishable parental regions, correct non-sister exchange and correct before/after chromatids.",
+      "separableEvidence": "Learner explains which corresponding regions exchanged and how this produces a recombinant participating chromatid without new/lost chromosome types or regions."
+    }
+  ],
+  "independenceCounterexamples": [
+    {
+      "mastered": "independent_homologous_pair_assortment",
+      "notMastered": "corresponding_non_sister_segment_exchange",
+      "learnerPattern": "Correctly explains alternative assortment from two pairs but says normal segment exchange occurs only between sister chromatids."
+    },
+    {
+      "mastered": "corresponding_non_sister_segment_exchange",
+      "notMastered": "independent_homologous_pair_assortment",
+      "learnerPattern": "Correctly explains non-sister exchange in one homologous pair but says all maternal chromosomes must travel together to one gamete."
+    }
+  ],
+  "strongestKeepArgument": "Both explanations share meiosis and the result of new combinations of existing information and could be shown in one assessment.",
+  "whyThatDoesNotEstablishAtomicity": "Shared title, setting and outcome do not make one operation inferable from the other. Different changed objects, independent incorrect beliefs and separable mastery decisions remain. A single task can assess multiple goals.",
+  "ruleApplied": "AGENTS.md section 7.1: an ordinary content leaf must contain exactly one content learning goal; judgment is semantic rather than keyword-based.",
+  "recommendation": {
+    "children": "Two separate proposed explanatory goals; IDs remain null.",
+    "parent": "An optional navigation cluster may hold the shared subject; it must not receive atomic content mastery.",
+    "childRequiresEachOther": false,
+    "reasonNoAutomaticChildDependency": "Whole-pair assortment is neither logically required for explaining segment exchange nor vice versa; shared model foundations should be supplied or separately bound.",
+    "integratedComparison": "A later integrated comparison goal would need its own independent semantic review and would not retroactively make this candidate atomic."
+  }
+}

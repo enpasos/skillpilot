@@ -1,0 +1,733 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "chemie-stoffmenge-quantitative-foundations-twelve-candidate-v1",
+  "reviewedAt": "2026-10-05T01:11:56.936746+00:00",
+  "reviewer": "codex-chem12-candidate-author",
+  "goals": [
+    {
+      "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "reason": "KEEP: Stoffmenge als Anzahl standardisierter Pakete mit ausdrücklich benannten Elementarteilchen ist ein eigener Begriffswechsel; keine zusätzliche Massen-/Gasrechnung in diesem Atom. Inaktiver P-v2-Autorenkandidat: needs_human_review, ai_candidate, E1/G1; zwei unabhängige fachliche Reviews und aktuelle Materialisierung ausstehend.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "specified-entities-and-mole",
+            "essentialUnderstandingDe": "Stoffmenge ist eine zählbezogene Größe mit Einheit mol für ausdrücklich benannte Elementarteilchen. Dieselbe Stoffmenge verschiedener Moleküle oder Atome bedeutet dieselbe Zahl dieser Einheiten, nicht gleiche Masse. Moleküle, Atome, Ionen und Formeleinheiten dürfen nicht stillschweigend ineinander umbenannt werden.",
+            "essentialUnderstandingEn": "Amount of substance is a counting-related quantity measured in mol for explicitly specified elementary entities. Equal amounts of different molecules or atoms mean equal numbers of those entities, not equal masses. Molecules, atoms, ions and formula units must not be silently substituted for each other.",
+            "observablePerformanceDe": "Die lernende Person benennt die gezählte Einheit, übersetzt zwischen Molekülen/Formeleinheiten und enthaltenen Atomen/Ionen und erklärt, weshalb eine gleiche Zahl von Teilchenpaketen keine Aussage über gleiche Masse liefert.",
+            "observablePerformanceEn": "The learner specifies the counted entity, translates between molecules/formula units and constituent atoms/ions and explains why equal numbers of particle packages do not imply equal mass."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "specified-entities-and-mole"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "entity-kind",
+            "textDe": "Moleküle und einzelne Atome werden mit Ionen und Formeleinheiten kontrastiert.",
+            "textEn": "Molecules and single atoms are contrasted with ions and formula units."
+          },
+          {
+            "id": "reference-count",
+            "textDe": "Gleiche Stoffmenge der Verbindungen wird mit unterschiedlicher Stoffmenge enthaltener Teilchen verglichen.",
+            "textEn": "Equal compound amounts are compared with unequal amounts of constituent particles."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "oxygen-and-helium-packages",
+            "taskDemandDe": "Zwei Proben sind beschriftet: A enthält 0,20 mol O2-Moleküle, B enthält 0,20 mol He-Atome. Begründe, welche Teilchenzahlen gleich sind, wie viel mol O-Atome A enthält und ob die Beschriftung gleiche Massen beweist. Die genaue Zahl für ein mol brauchst du hier nicht auszurechnen.",
+            "taskDemandEn": "Two samples are labelled: A contains 0.20 mol O2 molecules and B contains 0.20 mol He atoms. Explain which particle counts are equal, how many mol of O atoms A contains and whether the labels prove equal masses. You need not calculate the numerical count in one mol.",
+            "expectedPerformanceDe": "A und B besitzen gleich viele jeweils benannte Elementarteilchen: O2-Moleküle bzw. He-Atome. A enthält 0,40 mol O-Atome. Die doppelte Atomzahl in A macht die Molekülstoffmenge nicht zu 0,40 mol O2; gleiche Stoffmenge beweist keine gleiche Masse.",
+            "expectedPerformanceEn": "A and B contain equal numbers of their specified entities: O2 molecules and He atoms. A contains 0.40 mol of O atoms. Its doubled atom count does not make the molecular amount 0.40 mol O2; equal amount does not establish equal mass.",
+            "understandingFocusDe": "Gezählte Einheit, enthaltene Atome und Probenmasse werden begründet auseinandergehalten.",
+            "understandingFocusEn": "The counted entity, constituent atoms and sample mass are distinguished with reasons."
+          },
+          {
+            "id": "salt-formula-units-fresh",
+            "taskDemandDe": "Frischer Fall ohne Rechenweg: Ein NaCl-Kristall besteht aus Na+- und Cl−-Ionen im Verhältnis 1:1. Er enthält 0,30 mol NaCl-Formeleinheiten. Ein Mitschüler schreibt: „Das sind 0,60 mol NaCl-Moleküle.“ Beurteile die Aussage und formuliere korrekte Stoffmengenangaben für die Formeleinheiten, Na+-Ionen, Cl−-Ionen und alle Ionen zusammen.",
+            "taskDemandEn": "Fresh case without a worked method: a NaCl crystal consists of Na+ and Cl− ions in a 1:1 ratio and contains 0.30 mol NaCl formula units. A classmate writes: “That is 0.60 mol NaCl molecules.” Evaluate the statement and give correct amounts for formula units, Na+ ions, Cl− ions and all ions together.",
+            "expectedPerformanceDe": "0,30 mol Formeleinheiten, 0,30 mol Na+-Ionen und 0,30 mol Cl−-Ionen; insgesamt 0,60 mol Ionen, mit ausdrücklich gemeinsamer gezählter Einheit „Ionen“. NaCl im Kristall besteht nicht aus isolierten NaCl-Molekülen; Anzahl der Bestandteile und Anzahl der Verhältnisformeleinheiten sind unterschiedliche Bezüge.",
+            "expectedPerformanceEn": "There are 0.30 mol formula units, 0.30 mol Na+ ions and 0.30 mol Cl− ions, totalling 0.60 mol ions with the common counted entity explicitly stated. Crystalline NaCl is not composed of isolated NaCl molecules; constituent-ion count and formula-unit count use different reference entities.",
+            "understandingFocusDe": "Selbstständiger Wechsel zur Ionengitter-Darstellung, ohne eine molekulare Zählregel unbesehen zu übertragen.",
+            "understandingFocusEn": "Independent transfer to an ionic-lattice representation without blindly applying a molecular counting rule."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "8a2ad724-df5e-5986-8de9-560ba43caac2",
+      "reason": "KEEP: Formelzusammensetzung, molare Masse und massebezogene Stoffmenge bilden eine zusammenhängende Mengenübersetzung; Begründung umfasst Indizes und Einheiten, nicht nur Einsetzen. Inaktiver P-v2-Autorenkandidat: needs_human_review, ai_candidate, E1/G1; zwei unabhängige fachliche Reviews und aktuelle Materialisierung ausstehend.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "formula-molar-mass-and-mass-amount",
+            "essentialUnderstandingDe": "Molare Masse ist die Masse pro Stoffmenge eines Stoffes. Die Formel bestimmt die Anzahl der enthaltenen Atome je Molekül oder Verhältnisformeleinheit; Indizes und Klammern zählen mit. m und n sind verschiedene Größen, und eine Umrechnung benötigt den zum Stoff passenden Wert M mit Einheit g/mol.",
+            "essentialUnderstandingEn": "Molar mass is mass per amount of substance. A formula determines the number of constituent atoms per molecule or formula unit; subscripts and parentheses matter. Mass and amount are different quantities, and their conversion requires the substance-specific molar mass in g/mol.",
+            "observablePerformanceDe": "Die lernende Person erschließt M aus der Zusammensetzung, nutzt M zur Mengenübersetzung und begründet die Zählung sowie Größen und Einheiten statt nur einen Zahlenwert einzusetzen.",
+            "observablePerformanceEn": "The learner derives molar mass from composition, uses it to translate between mass and amount and explains atom counting, quantities and units rather than just inserting numbers."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "formula-molar-mass-and-mass-amount"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "formula-structure",
+            "textDe": "Eine einfache Molekülformel wird durch eine Verhältnisformel mit Klammergruppe ersetzt.",
+            "textEn": "A simple molecular formula is replaced by a ratio formula containing a parenthesised group."
+          },
+          {
+            "id": "comparison-basis",
+            "textDe": "Gegebene Masse wird durch Vergleich gleicher Stoffmengen verschiedener Stoffe ersetzt.",
+            "textEn": "A specified mass is replaced by comparing equal amounts of different substances."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "water-mass-amount",
+            "taskDemandDe": "Für H2O gelten die gerundeten atombezogenen molaren Massen H: 1,0 g/mol, O: 16,0 g/mol. Eine reine Wasserprobe wiegt 9,0 g. Bestimme ihre molare Masse und Stoffmenge und erkläre, warum 9,0 g nicht automatisch 9,0 mol bedeutet.",
+            "taskDemandEn": "For H2O, use rounded atom-based molar masses H: 1.0 g/mol and O: 16.0 g/mol. A pure water sample weighs 9.0 g. Determine its molar mass and amount and explain why 9.0 g does not automatically mean 9.0 mol.",
+            "expectedPerformanceDe": "Zwei H und ein O ergeben M(H2O)=18,0 g/mol; 9,0 g entsprechen 0,50 mol. M übersetzt Gramm in Stoffmengenpakete; der Index2 gehört zu H und verdoppelt nicht die ganze Formel.",
+            "expectedPerformanceEn": "Two H atoms and one O atom give M(H2O)=18.0 g/mol; 9.0 g corresponds to 0.50 mol. M translates grams into amount-of-substance packages; the subscript 2 belongs to H and does not double the entire formula.",
+            "understandingFocusDe": "Die Formelzählung und die Bedeutung von Masse pro mol tragen die Umrechnung.",
+            "understandingFocusEn": "Formula counting and the meaning of mass per mol support the conversion."
+          },
+          {
+            "id": "hydroxide-parentheses-fresh",
+            "taskDemandDe": "Frischer Fall ohne Formelangabe für den Rechenweg: Benötigt werden je 0,20 mol Mg(OH)2 und NaOH. Verwende Mg: 24,0, Na: 23,0, O: 16,0, H: 1,0 jeweils in g/mol für ein mol der Atome. Welche Massen müssen abgewogen werden? Ein Vorschlag zählt in Mg(OH)2 nur ein O-Atom. Prüfe ihn und begründe, ob gleiche Stoffmenge gleiche Masse bedeutet.",
+            "taskDemandEn": "Fresh case without a calculation formula: 0.20 mol each of Mg(OH)2 and NaOH is required. Use Mg: 24.0, Na: 23.0, O: 16.0 and H: 1.0 g/mol per mol of atoms. Which masses should be weighed? A proposal counts only one O atom in Mg(OH)2. Check it and explain whether equal amount means equal mass.",
+            "expectedPerformanceDe": "Mg(OH)2 enthält ein Mg, zwei O und zwei H je Formeleinheit: M=58,0 g/mol, m=11,6 g. NaOH hat M=40,0 g/mol, m=8,0 g. Der Klammerindex vervielfacht die ganze OH-Gruppe. Gleiche Zahl von Stoffmengenpaketen kann wegen anderer Zusammensetzung andere Masse haben.",
+            "expectedPerformanceEn": "Mg(OH)2 contains one Mg, two O and two H atoms per formula unit: M=58.0 g/mol and m=11.6 g. NaOH has M=40.0 g/mol and m=8.0 g. The parenthesis subscript multiplies the entire OH group. Equal numbers of amount-of-substance packages can have different masses because of their composition.",
+            "understandingFocusDe": "Ungeholfene Übertragung auf Klammerformeln und einen stoffübergreifenden Vergleich.",
+            "understandingFocusEn": "Uncued transfer to parenthesised formulas and a comparison between substances."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+      "reason": "KEEP: u bezeichnet die Masse eines einzelnen Teilchens, g die Masse einer Probe; der annähernde Zahlenbezug zu g/mol muss durch Teilchenzahl und Größenordnung erklärt werden. Inaktiver P-v2-Autorenkandidat: needs_human_review, ai_candidate, E1/G1; zwei unabhängige fachliche Reviews und aktuelle Materialisierung ausstehend.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "single-particle-u-and-bulk-grams",
+            "essentialUnderstandingDe": "u ist eine Masseneinheit für einzelne Teilchen, g ist für Proben praktikabel. Eine Teilchenmasse von etwa x u entspricht numerisch etwa einer molaren Masse x g/mol, weil ein mol sehr viele Teilchen enthält. Das ist keine Gleichsetzung u=g; der Zahlenbezug ist bei heutiger SI-Definition näherungsweise, nicht exakt.",
+            "essentialUnderstandingEn": "The unit u is convenient for individual-particle masses, while grams are practical for samples. A particle mass of about x u corresponds numerically to about x g/mol because a mol contains very many particles. This does not mean u=g; with the current SI definition the numerical correspondence is approximate rather than exact.",
+            "observablePerformanceDe": "Die lernende Person verbindet einzelne Teilchen und Probenmasse mit nachvollziehbarer Teilchenzahl, kennzeichnet Näherungen und erkennt einen Größenordnungsfehler durch unzulässigen Austausch von u und g.",
+            "observablePerformanceEn": "The learner connects individual-particle and sample mass using a justified particle count, marks approximations and detects an order-of-magnitude error caused by replacing u with g."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "single-particle-u-and-bulk-grams"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "scale",
+            "textDe": "Masse eines einzelnen Moleküls wird mit der Masse einer großen angegebenen Teilchenzahl verglichen.",
+            "textEn": "One molecule’s mass is compared with the mass of a specified large particle count."
+          },
+          {
+            "id": "sample-size",
+            "textDe": "Ein mol wird durch eine Viertel-mol entsprechende Molekülzahl ersetzt.",
+            "textEn": "One mol is replaced by a particle count corresponding to a quarter mol."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "carbon-dioxide-scale",
+            "taskDemandDe": "Ein CO2-Molekül besitzt in diesem gerundeten Modell 44,0 u Masse. Nutze 1 u≈1,66054·10^-24 g und NA≈6,02214·10^23 mol^-1. Schätze die Masse eines Moleküls und von einem mol CO2. Prüfe: „Ein CO2-Molekül wiegt 44 g.“ Erkläre den Zusammenhang der Zahlen44 auf den beiden Maßstäben.",
+            "taskDemandEn": "In this rounded model, one CO2 molecule has a mass of 44.0 u. Use 1 u≈1.66054×10^-24 g and NA≈6.02214×10^23 mol^-1. Estimate the mass of one molecule and of one mol CO2. Check: “One CO2 molecule weighs 44 g.” Explain how the number44 is related across the two scales.",
+            "expectedPerformanceDe": "Ein Molekül wiegt etwa7,31·10^-23 g; ein mol wiegt etwa44,0 g. Die sehr große Zahl von Molekülen multipliziert die sehr kleine Teilchenmasse. 44u für ein Molekül und44g für ein mol teilen einen annähernden Zahlenwert, aber nicht dieselbe Einheit oder denselben Bezug; das ist keine exakte SI-Identität u=g.",
+            "expectedPerformanceEn": "One molecule weighs about7.31×10^-23 g; one mol weighs about44.0 g. The very large particle count multiplies the very small particle mass. A molecule’s44u and a mol’s44g have approximately corresponding numerical values but different units and reference entities; they do not establish an exact SI identity u=g.",
+            "understandingFocusDe": "Die Größenordnung und der Teilchenzahlfaktor erklären den Maßstabwechsel.",
+            "understandingFocusEn": "Order of magnitude and the particle-count factor explain the change of scale."
+          },
+          {
+            "id": "methane-quarter-count-fresh",
+            "taskDemandDe": "Frischer Fall: Eine Probe enthält 1,505535·10^23 CH4-Moleküle. Jedes besitzt im gerundeten Modell16,0u. Gegeben: 1u≈1,66054·10^-24g und NA≈6,02214·10^23mol^-1. Bestimme die Probenmasse und erkläre, warum weder16g je Molekül noch16g für diese Probe richtig ist. Lege deinen Maßstabwechsel offen.",
+            "taskDemandEn": "Fresh case: a sample contains1.505535×10^23 CH4 molecules, each with mass16.0u in a rounded model. Given1u≈1.66054×10^-24g and NA≈6.02214×10^23mol^-1, determine the sample mass and explain why neither16g per molecule nor16g for this sample is correct. Make your change of scale explicit.",
+            "expectedPerformanceDe": "Ein Molekül hat etwa2,66·10^-23g; die angegebene Anzahl ist ein Viertel der Molekülzahl pro mol. Die Probe wiegt daher etwa4,00g. Die16u werden erst in Gramm pro Molekül umgerechnet und anschließend mit der Anzahl multipliziert; alternativ begründete Viertel-mol-Masse von etwa16g/mol.",
+            "expectedPerformanceEn": "One molecule weighs about2.66×10^-23g; the given count is a quarter of the count in one mol. The sample therefore weighs about4.00g. Convert16u into grams per molecule before multiplying by the count, or justify the quarter-mol amount with a molar mass of about16g/mol.",
+            "understandingFocusDe": "Frische Teilchenzahl statt bereitstehender Stoffmenge; erklärter statt bloß formaler u/g-Austausch.",
+            "understandingFocusEn": "A fresh particle count replaces a ready-made amount; the u/g relation must be explained rather than substituted mechanically."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e45c0022-ac0d-5c83-b433-5f68655e382f",
+      "reason": "KEEP: NA ist der Proportionalitätsfaktor N/n mit Einheit mol^-1; Teilchenart und Formeleinheit bleiben ausdrücklich spezifiziert. Inaktiver P-v2-Autorenkandidat: needs_human_review, ai_candidate, E1/G1; zwei unabhängige fachliche Reviews und aktuelle Materialisierung ausstehend.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "avogadro-constant-entity-proportionality",
+            "essentialUnderstandingDe": "NA verknüpft Stoffmenge und Zahl der jeweils benannten Elementarteilchen über N=n·NA. NA hat Einheit mol^-1, N ist eine Anzahl. Atomzahlen in Molekülen ergeben sich zusätzlich aus deren Zusammensetzung; die Avogadro-Konstante ändert sich dabei nicht.",
+            "essentialUnderstandingEn": "NA relates amount to the number of specified elementary entities through N=n·NA. Its unit is mol^-1, while N is a count. Constituent-atom counts also depend on molecular composition; that does not change the Avogadro constant.",
+            "observablePerformanceDe": "Die lernende Person wählt den passenden Teilchenbezug, übersetzt N↔n proportional mit Einheitenbegründung und vergleicht Proben selbstständig auf Molekül- beziehungsweise Atomebene.",
+            "observablePerformanceEn": "The learner chooses the appropriate reference entity, translates proportionally between N and n with unit reasoning and independently compares samples at molecular and atomic levels."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "avogadro-constant-entity-proportionality"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "conversion-direction",
+            "textDe": "Stoffmenge→Teilchenzahl wird durch Teilchenzahl→Stoffmenge ersetzt.",
+            "textEn": "Amount-to-count conversion is replaced by count-to-amount conversion."
+          },
+          {
+            "id": "entity-comparison",
+            "textDe": "Molekülzahlen und enthaltene Atomzahlen liefern unterschiedliche Rangfolgen.",
+            "textEn": "Molecular counts and constituent-atom counts can produce different rankings."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "quarter-mol-oxygen",
+            "taskDemandDe": "Für eine Probe mit0,25mol O2-Molekülen gilt NA=6,02214076·10^23mol^-1. Bestimme die Zahl der O2-Moleküle und der enthaltenen O-Atome. Erkläre den verwendeten Proportionalitätsfaktor und seine Einheit.",
+            "taskDemandEn": "For a sample containing0.25mol O2 molecules, NA=6.02214076×10^23mol^-1. Determine the number of O2 molecules and constituent O atoms. Explain the proportionality factor and its unit.",
+            "expectedPerformanceDe": "N(O2)=1,50553519·10^23 Moleküle; N(O-Atome)=3,01107038·10^23. Der Faktor gibt die Anzahl je mol an, deshalb kürzt sich mol gegen mol^-1. Die Zweizahl der O-Atome je Molekül ist ein eigener Zusammensetzungsfaktor und kein anderer Wert vonNA.",
+            "expectedPerformanceEn": "N(O2)=1.50553519×10^23 molecules and N(O atoms)=3.01107038×10^23. NA gives the count per mol, so mol cancels mol^-1. The two oxygen atoms per molecule are a separate composition factor, not a different value ofNA.",
+            "understandingFocusDe": "Konstante, Einheit und Zusammensetzung müssen zusammen richtig gedeutet werden.",
+            "understandingFocusEn": "The constant, unit and composition must all be interpreted correctly."
+          },
+          {
+            "id": "carbon-dioxide-helium-count-fresh",
+            "taskDemandDe": "Frischer Vergleich ohne Rechenweg: A enthält6,02214076·10^22 CO2-Moleküle; B enthält1,204428152·10^23 He-Atome. NA=6,02214076·10^23mol^-1. Bestimme die Stoffmengen der benannten Teilchen und entscheide begründet, welche Probe insgesamt mehr Atome enthält.",
+            "taskDemandEn": "Fresh comparison without a worked method: A contains6.02214076×10^22 CO2 molecules and B contains1.204428152×10^23 He atoms. NA=6.02214076×10^23mol^-1. Determine the amounts of the specified entities and explain which sample contains more atoms in total.",
+            "expectedPerformanceDe": "A enthält0,10mol CO2-Moleküle, B0,20mol He-Atome. A enthält wegen drei Atomen je Molekül0,30mol Atome, B0,20mol Atome; A hat trotz kleinerer Molekülzahl mehr Atome. Die drei CO2-Atome verteilen sich auf0,10mol C- und0,20mol O-Atome.",
+            "expectedPerformanceEn": "A contains0.10mol CO2 molecules and B0.20mol He atoms. With three atoms per molecule A contains0.30mol atoms, compared with B’s0.20mol atoms; A therefore has more atoms despite its smaller molecular count. A’s atoms consist of0.10mol C and0.20mol O atoms.",
+            "understandingFocusDe": "Umgekehrte Mengenübersetzung und ungeholfener Wechsel der Vergleichseinheit.",
+            "understandingFocusEn": "Reverse conversion and an uncued change of comparison entity."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+      "reason": "KEEP: Gleiche Bedingungen werden für die fachliche Auslegung explizit als gleiche Temperatur und gleicher Druck im idealen Gasmodell gefasst; gleiche Gasvolumina implizieren gleiche Teilchenzahl, nicht gleiche Masse. Inaktiver P-v2-Autorenkandidat: needs_human_review, ai_candidate, E1/G1; zwei unabhängige fachliche Reviews und aktuelle Materialisierung ausstehend.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "equal-gas-volume-fixed-temperature-pressure",
+            "essentialUnderstandingDe": "Im idealen Gasmodell enthalten gleiche Gasvolumina bei gleicher Temperatur und gleichem Druck gleich viele Gasteilchen und damit gleiche Stoffmengen der Gasteilchen. Das gilt für Moleküle oder einatomige Gasteilchen und bedeutet weder gleiche Masse noch gleiche Zahl enthaltener Atome. Bei anderen Temperaturen oder Drücken darf die Gleichheit nicht allein aus gleichen Volumina gefolgert werden.",
+            "essentialUnderstandingEn": "In the ideal-gas model, equal gas volumes at the same temperature and pressure contain equal numbers of gas particles and equal amounts of those particles. These may be molecules or monatomic particles; equal volume does not imply equal mass or equal constituent-atom count. With different temperatures or pressures, equal particle count cannot be inferred solely from equal volumes.",
+            "observablePerformanceDe": "Die lernende Person benennt die Bedingungen, begründet den Volumen-Teilchenzahl-Zusammenhang und weist einen unzulässigen Gleichheits- oder Massenschluss in einer frischen Gasvergleichssituation zurück.",
+            "observablePerformanceEn": "The learner states the conditions, explains the volume-to-count relationship and rejects an invalid count or mass inference in a fresh gas-comparison situation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "equal-gas-volume-fixed-temperature-pressure"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "gas-identity",
+            "textDe": "Gleiches Gasvolumen wird trotz stark verschiedener Teilchenmassen verglichen.",
+            "textEn": "Equal gas volumes are compared despite very different particle masses."
+          },
+          {
+            "id": "conditions",
+            "textDe": "Gleiche Temperatur/Druck werden durch einen Vergleich mit abweichender Temperatur ersetzt.",
+            "textEn": "Matched temperature and pressure are replaced by a comparison with a different temperature."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "hydrogen-oxygen-one-litre",
+            "taskDemandDe": "Je1,00L ideales H2 und O2 liegen bei20°C und100kPa vor. Gegeben M(H2)=2,0g/mol und M(O2)=32,0g/mol. Ein Mitschüler behauptet, das schwerere O2 enthalte mehr Moleküle. Beurteile dies und vergleiche begründet Stoffmengen und Massen, ohne die absolute Stoffmenge ausrechnen zu müssen.",
+            "taskDemandEn": "There is1.00L each of ideal H2 and O2 at20°C and100kPa. Given M(H2)=2.0g/mol and M(O2)=32.0g/mol, a classmate claims that heavier O2 contains more molecules. Evaluate the claim and compare amounts and masses with reasons, without calculating the absolute amount.",
+            "expectedPerformanceDe": "Gleiche V,T,p bedeuten im idealen Gasmodell gleiche Zahl von H2-/O2-Molekülen und gleiche Stoffmenge. O2 ist je Molekül beziehungsweise je mol16-mal schwerer; seine Probenmasse ist16-mal so groß. Schwerere Teilchen ändern die Molekülzahl bei diesen festgelegten Bedingungen nicht.",
+            "expectedPerformanceEn": "Equal V,T,p imply equal H2/O2 molecule counts and equal amounts in the ideal-gas model. O2 is16 times heavier per molecule or mol, so its sample mass is16 times larger. Greater particle mass does not change molecular count under the specified conditions.",
+            "understandingFocusDe": "Gasteilchenzahl wird aus den Modellbedingungen, Masse separat aus M begründet.",
+            "understandingFocusEn": "Gas-particle count is justified by the model conditions and mass separately by molar mass."
+          },
+          {
+            "id": "mismatched-temperature-fresh",
+            "taskDemandDe": "Frischer Fall: A enthält3,0L ideales CO2 bei20°C und100kPa; B enthält3,0L ideales He bei40°C und100kPa. Beurteile: „Gleiche Volumina bedeuten hier gleiche Teilchenzahlen und gleiche Atomzahlen.“ Welche Angaben müsste ein zulässiger Gleichheitsvergleich zusätzlich gemeinsam festlegen? Beantworte auch, ob bei gleichen T,p eine gleiche CO2-Molekülzahl und He-Atomzahl gleiche Gesamtatomzahlen bedeuten würde.",
+            "taskDemandEn": "Fresh case: A contains3.0L ideal CO2 at20°C and100kPa and B3.0L ideal He at40°C and100kPa. Evaluate: “Equal volumes here imply equal particle and atom counts.” Which conditions must a valid equal-count comparison match? Also explain whether equal CO2 molecule and He atom counts at matched T,p would imply equal total atom counts.",
+            "expectedPerformanceDe": "Die Teilchenzahlgleichheit folgt hier nicht aus Avogadro, da die Temperaturen abweichen. Ein gültiger Vergleich gleicher Volumina verlangt gleiche Temperatur und gleichen Druck im idealen Modell. Selbst dann sind je CO2-Gasteilchen drei Atome und je He-Gasteilchen ein Atom vorhanden; gleiche Gasteilchenzahl bedeutet daher nicht gleiche Gesamtatomzahl. Keine exakte Zahlenquote aus den abweichenden Bedingungen wird für dieses Ziel verlangt.",
+            "expectedPerformanceEn": "Equal particle counts do not follow here from Avogadro’s law because temperatures differ. Equal-volume comparison requires matched temperature and pressure in the ideal model. Even then, each CO2 particle has three atoms while each He particle has one; equal gas-particle count therefore does not mean equal total atom count. This goal does not require an exact ratio for the mismatched conditions.",
+            "understandingFocusDe": "Frischer Bedingungsfehler und eigenständige Abgrenzung von Teilchen- und Atomzahl; keine stillschweigende Allgemeingültigkeit.",
+            "understandingFocusEn": "A fresh condition mismatch and independent distinction between gas-particle and atom count prevent an unqualified universal rule."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "2924f784-5261-54e8-93ee-49ac3b3cd300",
+      "reason": "KEEP: Vm bezeichnet V/n bei benannten Bedingungen; Modellbedingungen und Änderung von T/p gehören zur Deutung, kein universeller Wert. Inaktiver P-v2-Autorenkandidat: needs_human_review, ai_candidate, E1/G1; zwei unabhängige fachliche Reviews und aktuelle Materialisierung ausstehend.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "condition-specific-molar-volume",
+            "essentialUnderstandingDe": "Vm ist das Volumen pro Stoffmenge eines Gases unter festgelegten Bedingungen. Im idealen Modell gilt die proportionale Volumen-Stoffmengen-Beziehung bei diesen Bedingungen; ein anderer Vm-Wert kann bei geändertem Druck oder geänderter Temperatur gelten. In einem geschlossenen System ohne Reaktion bleibt n beim Zustandswechsel erhalten, während V sich ändern kann.",
+            "essentialUnderstandingEn": "Molar volume is gas volume per amount under specified conditions. The ideal model gives a proportional volume-to-amount relation at those conditions; pressure or temperature changes can give a different molar volume. In a closed nonreacting system, amount is conserved during a change of state although volume can change.",
+            "observablePerformanceDe": "Die lernende Person deutet L/mol, bestimmt V oder n mit dem zum Zustand passenden Vm und begründet, warum ein fester Zahlenwert nicht ohne Bedingungen übertragen werden darf.",
+            "observablePerformanceEn": "The learner interprets L/mol, determines volume or amount using the molar volume for the actual state and explains why a numerical value cannot be transferred without its conditions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "condition-specific-molar-volume"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "conversion-direction",
+            "textDe": "Stoffmenge→Volumen wird durch Volumen→Stoffmenge ersetzt.",
+            "textEn": "Amount-to-volume is replaced by volume-to-amount conversion."
+          },
+          {
+            "id": "state-change",
+            "textDe": "Bei einem geschlossenen Zustandswechsel ändert sich Vm, nicht die Stoffmenge.",
+            "textEn": "Molar volume changes during a closed state change while amount remains constant."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "molar-volume-reference-state",
+            "taskDemandDe": "Für ideale Gase gelten in den gerundeten Schulmodelldaten bei20°C und101,6kPa: Vm=24,0L/mol. Bestimme das Volumen von0,25mol N2 und die Stoffmenge in12,0L He bei denselben Bedingungen. Erkläre die Bedeutung von24,0L/mol und ob es ein universeller Wert für alle Gaszustände ist.",
+            "taskDemandEn": "The rounded school-model data for ideal gases at20°C and101.6kPa give Vm=24.0L/mol. Determine the volume of0.25mol N2 and the amount in12.0L He under those same conditions. Explain24.0L/mol and whether it is universal across all gas states.",
+            "expectedPerformanceDe": "0,25mol N2 haben6,00L;12,0L He entsprechen0,500mol.24,0L/mol bezeichnet das Volumen je mol Gasteilchen bei den angegebenen Bedingungen. Es ist kein bedingungsloser oder stoffunabhängig real-exakter Naturwert; die Aussagen nutzen das ideale Modell und gerundete Daten.",
+            "expectedPerformanceEn": "0.25mol N2 occupies6.00L and12.0L He corresponds to0.500mol.24.0L/mol denotes volume per mol of gas particles under the stated conditions. It is not an unconditional, exactly real-gas constant; the results use the ideal model and rounded data.",
+            "understandingFocusDe": "Beide Umrechnungsrichtungen werden aus Volumen pro mol einschließlich Bedingungen begründet.",
+            "understandingFocusEn": "Both conversion directions are justified using volume per mol and its conditions."
+          },
+          {
+            "id": "closed-volume-change-fresh",
+            "taskDemandDe": "Frischer Fall ohne Rechenweg: Ein geschlossenes, nicht reagierendes ideales Gas hat bei ZustandB20°C/81,3kPa9,00L. FürB geben die gerundeten Modelldaten Vm=30,0L/mol; für ZustandA20°C/101,6kPa Vm=24,0L/mol. Welches Volumen erhält dieselbe Gasprobe inA? Prüfe die Behauptung,9,00L müsse erhalten bleiben, weil kein Gas verloren geht.",
+            "taskDemandEn": "Fresh case without a worked method: a closed, nonreacting ideal gas occupies9.00L at stateB20°C/81.3kPa. The rounded model data give Vm=30.0L/mol forB and Vm=24.0L/mol for stateA20°C/101.6kPa. What volume does the same sample occupy inA? Check the claim that9.00L must be conserved because no gas is lost.",
+            "expectedPerformanceDe": "InB enthält die Probe0,300mol. Ohne Teilchenaustausch oder Reaktion bleibt diese Stoffmenge inA gleich; bei24,0L/mol ergeben sich7,20L. Erhalten ist die Teilchen-/Stoffmenge, nicht das Volumen. Ein mit24,0L/mol aus dem B-Volumen berechnetes n wäre ein Zustandsfehler.",
+            "expectedPerformanceEn": "The sample contains0.300mol inB. With no particle exchange or reaction, its amount remains the same inA, giving7.20L at24.0L/mol. Particle count/amount is conserved, not volume. Calculating the B amount using24.0L/mol would mix states.",
+            "understandingFocusDe": "Ungeholfener Zustandswechsel: passende Modelldaten auswählen und Erhaltungsgröße erklären.",
+            "understandingFocusEn": "An uncued state change requires selecting the correct model data and explaining the conserved quantity."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "199570f4-b3c3-5e12-877d-ced97e9f6968",
+      "reason": "KEEP: M eines reinen Gases lässt sich über Formel oder rho*Vm unter gleichen Bedingungen erschließen; die Einheit und Vergleichsgrenze sind Bestandteil dieser einen Inferenz. Inaktiver P-v2-Autorenkandidat: needs_human_review, ai_candidate, E1/G1; zwei unabhängige fachliche Reviews und aktuelle Materialisierung ausstehend.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "gas-molar-mass-from-composition-or-state-data",
+            "essentialUnderstandingDe": "Die molare Masse eines reinen Gases ist stoffbezogen und kann aus Formel/Atommassen oder aus Masse und Volumen mit passendem Vm erschlossen werden. rho·Vm hat Einheit g/mol, sofern beide Angaben denselben Zustand betreffen. Ein Druck-/Temperaturwechsel verändert die Dichte und Vm, nicht die molare Masse derselben unveränderten Gasart. Ein passender Wert allein beweist keine eindeutige Stoffidentität.",
+            "essentialUnderstandingEn": "The molar mass of a pure gas is substance-specific and can be inferred from formula/atomic masses or from mass and volume with the appropriate molar volume. Density multiplied by molar volume has unit g/mol if both refer to the same state. Pressure or temperature changes affect density and molar volume but not an unchanged gas species’ molar mass. Agreement in molar mass alone does not uniquely identify a substance.",
+            "observablePerformanceDe": "Die lernende Person verknüpft Gasdaten und Zusammensetzung konsistent, begründet Zustand und Einheiten und trennt passende Formel-Hypothese von eindeutiger Identifikation.",
+            "observablePerformanceEn": "The learner links gas data and composition consistently, explains state and units and distinguishes a compatible formula hypothesis from unique identification."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "gas-molar-mass-from-composition-or-state-data"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "data-route",
+            "textDe": "Formelsumme wird mit unabhängigen Masse-/Volumendaten verglichen.",
+            "textEn": "A formula-based molar mass is compared with independent mass/volume data."
+          },
+          {
+            "id": "pressure-change",
+            "textDe": "Frische Gasdaten stammen aus einem Zustand mit anderem molarem Volumen.",
+            "textEn": "Fresh gas data come from a state with a different molar volume."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "carbon-dioxide-cross-check",
+            "taskDemandDe": "Eine reine CO2-Probe wiegt1,10g und besitzt bei den angegebenen idealen Modellbedingungen0,600L. Hier gilt Vm=24,0L/mol. Atombezogene molare Massen: C12,0g/mol, O16,0g/mol. Bestimme M unabhängig über die Formel und die Gasdaten, prüfe die Übereinstimmung und erkläre die Einheit des aus Dichte und Vm entstehenden Ergebnisses.",
+            "taskDemandEn": "A pure CO2 sample weighs1.10g and occupies0.600L under the stated ideal-model conditions, where Vm=24.0L/mol. Atom-based molar masses are C12.0g/mol and O16.0g/mol. Determine molar mass independently from the formula and gas data, check agreement and explain the unit obtained from density and molar volume.",
+            "expectedPerformanceDe": "Formelweg:12,0+2·16,0=44,0g/mol. Gasweg:n=0,0250mol, M=1,10g/0,0250mol=44,0g/mol; alternativ rho≈1,833g/L mal24,0L/mol. Beide Wege stimmen in den gerundeten Daten überein. Die Liter kürzen sich; Dichte allein hat eine andere Einheit und ist nicht M.",
+            "expectedPerformanceEn": "Formula route:12.0+2×16.0=44.0g/mol. Gas route:n=0.0250mol and M=1.10g/0.0250mol=44.0g/mol, or density≈1.833g/L multiplied by24.0L/mol. The routes agree within the rounded data. Litres cancel; density alone has a different unit and is not molar mass.",
+            "understandingFocusDe": "Zwei Begründungswege und Zustands-/Einheitenkontrolle statt bloßer Zahlenpassung.",
+            "understandingFocusEn": "Two reasoning routes and state/unit checks replace mere numerical agreement."
+          },
+          {
+            "id": "unknown-gas-new-state-fresh",
+            "taskDemandDe": "Frischer Fall: Ein reines unbekanntes Gas wiegt1,60g und hat bei ZustandB0,300L. FürB ist Vm=12,0L/mol angegeben, für einen anderen ZustandA24,0L/mol. Kandidatenformeln sind SO2 und CO2, mit atombezogenen Massen S32,0,C12,0,O16,0 jeweils g/mol. Bestimme M und beurteile die Kandidaten sowie die Aussage „Aus M allein ist SO2 eindeutig bewiesen“. Begründe, welchen Vm-Wert du verwendest.",
+            "taskDemandEn": "Fresh case: a pure unknown gas weighs1.60g and occupies0.300L at stateB, where Vm=12.0L/mol; a different stateA has24.0L/mol. Candidate formulas are SO2 and CO2, using atom-based molar masses S32.0,C12.0,O16.0g/mol. Determine molar mass, evaluate the candidates and the claim “M alone proves SO2 uniquely”. Explain which molar volume you select.",
+            "expectedPerformanceDe": "Die B-Probe enthält0,0250mol, also M=64,0g/mol. SO2 passt dazu, CO2 mit44,0g/mol nicht. A-Daten unzulässig aufB übertragen ergäben128g/mol. Der passende64-Wert macht SO2 unter diesen Kandidaten plausibel, ist aber allein kein eindeutiger Identitätsnachweis; weitere Stoffinformationen wären erforderlich.",
+            "expectedPerformanceEn": "The B sample contains0.0250mol, so M=64.0g/mol. SO2 is compatible while CO2 at44.0g/mol is not. Incorrectly applying A data toB would give128g/mol. The matching64 value makes SO2 plausible among the listed candidates but is not a unique identification without further substance information.",
+            "understandingFocusDe": "Frische Zustandsauswahl und begrenzte Identitätsinferenz werden selbstständig begründet.",
+            "understandingFocusEn": "Fresh state selection and the limit of identity inference require independent reasoning."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a",
+      "reason": "KEEP: Ausgewählte wichtige elementare Gase sind zweiatomige Moleküle; Formeln/Teilchenmodell und Reaktionskoeffizienten sind die integrierte Darstellungsleistung. Kein Alle-Gase- oder Alle-Elemente-Anspruch. Inaktiver P-v2-Autorenkandidat: needs_human_review, ai_candidate, E1/G1; zwei unabhängige fachliche Reviews und aktuelle Materialisierung ausstehend.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "selected-diatomic-elements-and-equation-notation",
+            "essentialUnderstandingDe": "Wichtige elementare Gase wie H2,O2,N2 und Cl2 können aus zwei gleichartigen gebundenen Atomen je Molekül bestehen; das bedeutet weder ein Gemisch noch eine Verbindung verschiedener Elemente. Nicht alle Gase sind zweiatomig. Formelindizes beschreiben ein Teilchen, Koeffizienten dessen Anzahl in einem Reaktionsverhältnis; beim Ausgleichen bleibt die vorgegebene Stoffformel erhalten.",
+            "essentialUnderstandingEn": "Important elemental gases such as H2,O2,N2 and Cl2 can consist of two bonded atoms of the same element per molecule; this is neither a mixture nor a compound of different elements. Not all gases are diatomic. Formula subscripts describe one particle, whereas coefficients count particles in a reaction ratio; balancing retains the given substance formulas.",
+            "observablePerformanceDe": "Die lernende Person deutet gegebene Teilchenmodelle wichtiger elementarer Gase und nutzt die Zweizahl fachlich richtig in Formeln und atomar bilanzierten Reaktionsgleichungen.",
+            "observablePerformanceEn": "The learner interprets supplied particle models of important elemental gases and uses their two-atom composition correctly in formulas and atom-balanced reaction equations."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "selected-diatomic-elements-and-equation-notation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "elemental-gas",
+            "textDe": "Sauerstoff/Wasserstoff werden durch Chlor/Wasserstoff und eine einatomige Ausnahme ergänzt.",
+            "textEn": "Oxygen/hydrogen are replaced by chlorine/hydrogen with a monatomic exception."
+          },
+          {
+            "id": "notation-layer",
+            "textDe": "Indizes innerhalb eines Moleküls werden von Koeffizienten vor Formeln unterschieden.",
+            "textEn": "Subscripts within a molecule are distinguished from coefficients before formulas."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "oxygen-model-and-water",
+            "taskDemandDe": "Gegebene Gasmodelle: Sauerstoff zeigt O–O-Paare, Stickstoff N–N-Paare, Argon einzelne Ar-Atome. Formuliere die Stoffformeln und erkläre, warum Sauerstoff trotzdem ein Element ist. Für Wasserbildung sind die Stoffformeln H2,O2,H2O vorgegeben. Stelle die ausgeglichene Gleichung auf und erläutere die unterschiedliche Bedeutung von O2 und2H2O.",
+            "taskDemandEn": "Supplied gas models show oxygen as O–O pairs, nitrogen as N–N pairs and argon as individual Ar atoms. Give the formulas and explain why oxygen is still an element. Water formation uses the specified substance formulas H2,O2,H2O. Write the balanced equation and explain the different meanings of O2 and2H2O.",
+            "expectedPerformanceDe": "Formeln O2,N2,Ar; die Paare enthalten jeweils nur Atome einer Elementsorte. Wasserbildung:2H2+O2→2H2O. O2 benennt zwei O-Atome in einem Sauerstoffmolekül;2H2O benennt zwei Wassermoleküle mit zusammen vier H- und zwei O-Atomen. Argon widerlegt die Verallgemeinerung „jedes Gas ist zweiatomig“.",
+            "expectedPerformanceEn": "Formulas are O2,N2,Ar; each pair contains only one type of element. Water formation is2H2+O2→2H2O. O2 specifies two O atoms in one oxygen molecule;2H2O specifies two water molecules, together containing four H and two O atoms. Argon refutes the generalisation that every gas is diatomic.",
+            "understandingFocusDe": "Teilchenzusammensetzung und Stoff-/Reaktionsnotation sind konsistent zu verknüpfen.",
+            "understandingFocusEn": "Particle composition, substance notation and reaction notation must be linked consistently."
+          },
+          {
+            "id": "chlorine-hydrogen-fresh",
+            "taskDemandDe": "Frischer Fall ohne vorgelegte Gleichung: Wasserstoffgas besteht aus H–H-Molekülen, Chlorgas aus Cl–Cl-Molekülen; das Produkt enthält H–Cl-Moleküle. Entwickle Formeln und Reaktionsverhältnis. Prüfe die Aussagen „Cl2 ist eine Verbindung aus zwei Elementen“ und „Beim Ausgleichen kann man HCl einfach in HCl2 ändern“.",
+            "taskDemandEn": "Fresh case without a supplied equation: hydrogen gas consists of H–H molecules, chlorine gas of Cl–Cl molecules and the product of H–Cl molecules. Develop formulas and the reaction ratio. Evaluate “Cl2 is a compound of two elements” and “When balancing, one can simply change HCl to HCl2”.",
+            "expectedPerformanceDe": "H2+Cl2→2HCl erhält jeweils zwei H- und Cl-Atome. Cl2 enthält zwei Atome desselben Elements, nicht zwei Elemente. HCl2 wäre eine andere Zusammensetzung; ausgeglichen wird hier mit dem Koeffizienten2 vor HCl. Die Begründung nutzt die gelieferten Molekülmodelle, keine unbelegte Regel für alle elementaren Gase.",
+            "expectedPerformanceEn": "H2+Cl2→2HCl conserves two H and two Cl atoms. Cl2 has two atoms of one element, not two elements. HCl2 would have a different composition; balancing here uses the coefficient2 before HCl. The reasoning uses the supplied molecular models rather than an unsupported rule for all elemental gases.",
+            "understandingFocusDe": "Neues Gas-/Produktpaar erfordert selbstständige molekulare Bilanz und Indexkritik.",
+            "understandingFocusEn": "A new gas/product pair requires independent molecular balancing and critique of subscript changes."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ddb76915-4d63-5375-901d-4e659f5e9b09",
+      "reason": "KEEP: Qualitative Kohlenstoff-/Wasserstoffnachweise werden über Verbrennungsprodukte und Kontrollen gedeutet; keine quantitative Zusammensetzung oder Ausschluss weiterer Elemente aus bloß positiven Nachweisen. Inaktiver P-v2-Autorenkandidat: needs_human_review, ai_candidate, E1/G1; zwei unabhängige fachliche Reviews und aktuelle Materialisierung ausstehend.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "qualitative-hydrocarbon-elemental-evidence-and-controls",
+            "essentialUnderstandingDe": "Kohlenstoff und Wasserstoff eines verbrannten Kohlenwasserstoffs können über CO2 und Wasser in den Produkten qualitativ nachgewiesen werden. Ein positiver Nachweis muss gegenüber Hintergrund aus Apparatur und zugeführten Gasen abgesichert sein. Er belegt Vorhandensein, nicht Menge, Molekülformel oder das Fehlen anderer Elemente in einer unbekannten Probe; Sauerstoff im Verbrennungsprodukt kann aus dem zugeführten O2 stammen.",
+            "essentialUnderstandingEn": "Carbon and hydrogen in a combusted hydrocarbon can be qualitatively detected through CO2 and water among its products. A positive result must be distinguished from background due to the apparatus or incoming gases. It shows presence, not quantity, molecular formula or absence of other elements in an unknown sample; oxygen in the products can come from the supplied O2.",
+            "observablePerformanceDe": "Die lernende Person deutet Nachweis- und Blindbefunde kausal, ordnet C/H der Probe nur bei passender Kontrolle zu und begrenzt die daraus möglichen Elementaranalyse-Aussagen.",
+            "observablePerformanceEn": "The learner interprets assay and blank results causally, attributes C/H to the sample only with suitable controls and states the limits of the elemental-analysis claims."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "qualitative-hydrocarbon-elemental-evidence-and-controls"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "control-quality",
+            "textDe": "Saubere Blindprobe wird durch eine Wasser-Hintergrundstörung ersetzt.",
+            "textEn": "A clean blank is replaced by water-background interference."
+          },
+          {
+            "id": "claim-scope",
+            "textDe": "Positiver Nachweis wird von Mengen-, Formel- und Ausschließlichkeitsbehauptung getrennt.",
+            "textEn": "A positive assay is distinguished from quantitative, formula and exclusivity claims."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "dry-combustion-controls",
+            "taskDemandDe": "Eine reine Kohlenwasserstoffprobe wird mit trockenem, CO2-freiem O2 verbrannt. Die Apparatur ist trocken. Tabelle der Nachweise: wasserfreies CuSO4 wird bei Wasser blau; Kalkwasser wird bei CO2 trüb. Der Durchlauf ohne Probe bleibt weiß/klar, mit Verbrennung blau/trüb. Deute beide Befunde, erkläre den Bezug zu C/H im Ausgangsstoff und prüfe, ob CO2 beweist, dass schon Sauerstoff im Ausgangsstoff enthalten war.",
+            "taskDemandEn": "A pure hydrocarbon sample is combusted with dry, CO2-free O2 in dry apparatus. Detection table: anhydrous CuSO4 turns blue with water and limewater turns cloudy with CO2. A run without sample stays white/clear, whereas combustion gives blue/cloudy. Interpret both results, connect them to C/H in the original sample and evaluate whether CO2 proves oxygen was already present in it.",
+            "expectedPerformanceDe": "Wasser und CO2 sind nachgewiesen; gegenüber der sauberen Blindprobe stützen sie Wasserstoff und Kohlenstoff der verbrannten Probe. H wird zu Wasser, C zu CO2 überführt. Der Produktsauerstoff kann vom zugeführten O2 stammen, daher kein Sauerstoffnachweis im Ausgangsstoff. Qualitative Befunde liefern hier keine Stoffmengen oder Molekülformel.",
+            "expectedPerformanceEn": "Water and CO2 are detected; compared with the clean blank they support hydrogen and carbon in the combusted sample. H becomes water and C becomes CO2. Product oxygen can originate from the supplied O2, so this does not detect oxygen in the original sample. The qualitative results do not provide amounts or a molecular formula.",
+            "understandingFocusDe": "Nachweistabelle ist gelieferte Fachinformation; unabhängige Leistung ist die kontrollierte Zuordnung zur Probe und die Aussagegrenze.",
+            "understandingFocusEn": "The detection table supplies factual information; the independent performance is controlled attribution to the sample and limitation of the claim."
+          },
+          {
+            "id": "wet-apparatus-fresh",
+            "taskDemandDe": "Frischer Fall: Eine unbekannte brennbare Probe wird auf Kohlenstoff/Wasserstoff untersucht. Die Nachweistabelle ist unverändert: CuSO4 blau bei Wasser, Kalkwasser trüb bei CO2. Wegen einer noch feuchten Apparatur ist der Blindlauf ohne Probe bereits blau, Kalkwasser aber klar. Mit verbrannter Probe wird CuSO4 blau und Kalkwasser trüb. Welche Elementaussage ist so gestützt, welche nicht? Schlage eine gezielte Wiederholung vor. Würden später saubere Blindwerte plus beide positive Probennachweise allein „nur C und H, keinerlei O“ beweisen?",
+            "taskDemandEn": "Fresh case: an unknown combustible sample is tested for carbon/hydrogen. The same detection table applies: CuSO4 blue with water, limewater cloudy with CO2. A still-wet apparatus gives a blue blank without sample but clear limewater. Combustion gives blue CuSO4 and cloudy limewater. Which elemental claim is supported and which is not? Propose a targeted repeat. Would clean blank results and both positive sample assays alone prove “only C and H, with no O”?",
+            "expectedPerformanceDe": "CO2 gegenüber klarem Blindwert stützt C in der Probe. Der Wasser-/H-Befund ist wegen des bereits blauen Blindlaufs nicht eindeutig der Probe zuzuordnen; trockenes Gerät/trockener Zulauf und erneute negative Wasserblindprobe sind nötig. Erst dann stützt ein neuer positiver Wassernachweis H. Selbst beide kontrolliert positiven Nachweise schließen O oder andere Elemente in der unbekannten Probe nicht aus.",
+            "expectedPerformanceEn": "CO2 relative to clear blank limewater supports carbon in the sample. The water/H result cannot be uniquely attributed to the sample because the blank is already blue; dry apparatus/input and a fresh negative water blank are required. A new positive sample water assay can then support hydrogen. Even both controlled positive results do not exclude oxygen or other elements in an unknown sample.",
+            "understandingFocusDe": "Frische Störung verlangt ungeholfene Kontrollentscheidung; keine vorschnelle Formel- oder Kohlenwasserstoffidentifikation.",
+            "understandingFocusEn": "A fresh interference requires an uncued control decision rather than premature formula or hydrocarbon identification."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e675fa94-6e23-59c0-b376-4340bf44c00e",
+      "reason": "KEEP operative scope, source-only boundary finding: Aus zusammenhängenden Massendaten wird relative Teilchenmasse bzw. Formel erschlossen; ein Massenverhältnis allein erlaubt nur eine Verhältnisformel. BY9other umfasst gegenüber BY8NTG nicht ausdrücklich die Teilkompetenz relative Atommassen. Inaktiver P-v2-Autorenkandidat: needs_human_review, ai_candidate, E1/G1; zwei unabhängige fachliche Reviews und aktuelle Materialisierung ausstehend.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Source-only BY9other molecular-formula scope does not explicitly include relative atomic masses; source boundary remains open until separately resolved."
+      ],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "atomic-mass-and-molecular-formula-data-inference",
+            "essentialUnderstandingDe": "Relative Atommasse bezieht eine Atommasse auf die gemeinsame atomare Referenz. Gleiche Atomanzahlen erlauben einen direkten Massenvergleich. Die Zusammensetzung einer Verbindung erfordert Atomzahlverhältnisse nach Berücksichtigung der Atommassen; ein Verhältnis allein legt nicht die Molekülgröße fest. Eine zusätzliche Molekülmassenaussage kann die Mehrfachzahl der Verhältnisformel bestimmen.",
+            "essentialUnderstandingEn": "Relative atomic mass refers an atom’s mass to a common atomic reference. Equal atom counts permit a direct mass comparison. Compound composition requires atom-count ratios after accounting for atomic masses; a ratio alone does not determine molecular size. Additional molecular-mass data can determine the multiple of an empirical formula.",
+            "observablePerformanceDe": "Die lernende Person erschließt relative Atommasse und Molekülformel aus vollständig angegebenen Daten, begründet die Teilchenzahl-/Massenbezüge und benennt eine verbleibende Mehrdeutigkeit bei unvollständigen Daten.",
+            "observablePerformanceEn": "The learner infers relative atomic mass and molecular formula from fully specified data, explains count/mass relationships and identifies ambiguity when data are incomplete."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "atomic-mass-and-molecular-formula-data-inference"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "substance-type",
+            "textDe": "Ein elementares Gas wird durch eine binäre Verbindung ersetzt.",
+            "textEn": "An elemental gas is replaced by a binary compound."
+          },
+          {
+            "id": "data-sufficiency",
+            "textDe": "Gleiches Atomzahlverhältnis wird bei bekannter oder fehlender Molekülmasse verglichen.",
+            "textEn": "The same atom-count ratio is examined with known or missing molecular mass."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "equal-atom-count-and-elemental-gas",
+            "taskDemandDe": "Modellgestützte Versuchsdaten: Proben mit gleich vielen einzelnen H-Atomen beziehungsweise X-Atomen haben Massen1,00g und35,5g. Verwende relative Atommasse Ar(H)=1,00. Die separat gemessene Masse eines Moleküls des reinen elementaren X-Gases beträgt71,0u; das Gas enthält nur X-Atome. Bestimme Ar(X) und die Molekülformel des Gases. Erkläre, welche gelieferte Angabe jeweils den Schluss ermöglicht.",
+            "taskDemandEn": "Model-supported experimental data: samples containing equal counts of individual H and X atoms have masses1.00g and35.5g. Use relative atomic mass Ar(H)=1.00. The separately measured mass of one molecule of pure elemental X gas is71.0u and it contains only X atoms. Determine Ar(X) and its molecular formula and explain which supplied datum permits each inference.",
+            "expectedPerformanceDe": "Bei gleicher Atomzahl ist ein X-Atom35,5-mal so schwer wie ein H-Atom, daher Ar(X)=35,5. Ein Gasmolekül von71,0u enthält in diesem Modell71,0/35,5=2 X-Atome: X2. Die gleiche Atomzahl ist als Versuchsdaten-Voraussetzung geliefert, nicht aus gleichen Probenmassen gefolgert; die Molekülmassendaten sind zusätzlich erforderlich.",
+            "expectedPerformanceEn": "At equal atom counts an X atom is35.5 times as heavy as an H atom, so Ar(X)=35.5. A71.0u gas molecule contains71.0/35.5=2 X atoms in this model, giving X2. Equal atom counts are supplied as a condition of the data, not inferred from sample mass; molecular-mass data are additionally needed.",
+            "understandingFocusDe": "Relative Atommasse und Zahl der Atome je elementarem Molekül werden aus verschiedenen, explizit gelieferten Daten verknüpft.",
+            "understandingFocusEn": "Relative atomic mass and atom count per elemental molecule are linked using separate, explicitly supplied data."
+          },
+          {
+            "id": "binary-ratio-and-molecule-mass-fresh",
+            "taskDemandDe": "Frischer Fall ohne Lösungsweg: Ein reiner gasförmiger Stoff enthält nur C und H im Massenverhältnis6,00:1,00. Verwende Ar(C)=12,0 und Ar(H)=1,0. Ein zusätzliches Messverfahren liefert Molekülmasse28,0u. Bestimme seine Molekülformel. Prüfe anschließend, ob das Massenverhältnis ohne die28,0u-Angabe dieselbe Formel eindeutig erzwingen würde, und gib eine konkret andere damit vereinbare Molekülgröße an.",
+            "taskDemandEn": "Fresh case without a worked solution: a pure gas contains only C and H in the mass ratio6.00:1.00. Use Ar(C)=12.0 and Ar(H)=1.0. An additional measurement gives molecular mass28.0u. Determine the molecular formula, then evaluate whether the mass ratio alone would uniquely force that formula and give a different molecular size consistent with the ratio.",
+            "expectedPerformanceDe": "6/12:1/1=0,5:1 ergibt Atomzahlverhältnis1:2, also VerhältnisformelCH2 mit14,0u je Einheit.28,0u verlangt zwei Einheiten: C2H4. Ohne Molekülmasse bleibt die Mehrfachzahl offen; beispielsweise C3H6 hat dasselbe C:H-Massenverhältnis6:1. Eine bloße Rohmassenquote6:1 ist keine Atomzahlquote6:1.",
+            "expectedPerformanceEn": "6/12:1/1=0.5:1 gives an atom-count ratio1:2 and empirical formulaCH2, with14.0u per unit.28.0u requires two units, giving C2H4. Without molecular mass the multiple is undetermined; C3H6, for example, has the same6:1 C:H mass ratio. The raw6:1 mass ratio is not a6:1 atom-count ratio.",
+            "understandingFocusDe": "Ungeholfene atomare Mengenübersetzung plus explizite Entscheidung über Datenvollständigkeit; BY9other-Anteil Molekülformel ist von BY8NTG-Atommasse zu trennen.",
+            "understandingFocusEn": "Uncued translation to atomic counts plus an explicit data-sufficiency decision; the BY9other molecular-formula component remains distinguished from the BY8NTG atomic-mass component."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+      "reason": "Gezielte EN-Korrektur: Deutsche Beschreibung verlangt auch Teil-/Gesamtgleichungen, englische nicht. EN auf denselben bereits bestehenden DE-Umfang angleichen; Quellen HE9 basic/BY10 half-overall auseinanderhalten. Inaktiver P-v2-Autorenkandidat: needs_human_review, ai_candidate, E1/G1; zwei unabhängige fachliche Reviews und aktuelle Materialisierung ausstehend.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "reaction-formula-atom-charge-and-half-equation-consistency",
+            "essentialUnderstandingDe": "Eine Reaktionsgleichung beschreibt erhaltene Atomarten/-zahlen bei veränderter Teilchenzusammensetzung. Formeln der festgelegten Stoffe bleiben beim Ausgleichen erhalten, Koeffizienten beschreiben das Reaktionsverhältnis. Bei ionischen Teilgleichungen müssen zusätzlich Ladung und beim Zusammenführen die übertragenen Elektronen übereinstimmen; eine Gesamtgleichung wird durch passende Vielfache und Aufheben gemeinsamer Zwischenanteile erschlossen.",
+            "essentialUnderstandingEn": "A reaction equation conserves element types and atom counts while particle composition changes. The formulas of the specified substances remain fixed during balancing, and coefficients describe reaction ratios. Ionic half-equations must also conserve charge, and combining them requires equal electron transfer, suitable multiples and cancellation of shared intermediate terms.",
+            "observablePerformanceDe": "Die lernende Person entwickelt einfache Stoffgleichungen aus Reaktionsschemata, überprüft Atombilanzen und nutzt gegebene Teilgleichungen begründet zu einer atomar und elektrisch konsistenten Gesamtgleichung.",
+            "observablePerformanceEn": "The learner develops simple substance equations from reaction schemes, checks atom balances and uses supplied half-equations to construct an overall equation consistent in both atoms and charge."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reaction-formula-atom-charge-and-half-equation-consistency"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "reaction-representation",
+            "textDe": "Ein Reaktionsschema mit neutralen Stoffen wird durch gegebene ionische Teilgleichungen ersetzt.",
+            "textEn": "A neutral-substance reaction scheme is replaced by supplied ionic half-equations."
+          },
+          {
+            "id": "balance-invariant",
+            "textDe": "Atomzahl wird um die Prüfung von Ladung und Elektronenübertragung ergänzt.",
+            "textEn": "Atom-count checking is extended to charge and electron-transfer checking."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "magnesium-oxygen-scheme",
+            "taskDemandDe": "Das Reaktionsschema lautet: Magnesium reagiert mit Sauerstoff zu Magnesiumoxid. Vorgegebene Stoffformeln: Mg,O2,MgO. Entwickle die ausgeglichene Gleichung, zeige die Atombilanzen und prüfe den Vorschlag Mg+O2→MgO2. Erkläre, was ein Koeffizient bedeutet und warum ein Stoffindex nicht zum Ausgleichen geändert wird.",
+            "taskDemandEn": "The reaction scheme is magnesium reacting with oxygen to form magnesium oxide. Specified formulas are Mg,O2,MgO. Develop the balanced equation, show atom balances and check the proposal Mg+O2→MgO2. Explain what a coefficient means and why a substance subscript is not changed for balancing.",
+            "expectedPerformanceDe": "2Mg+O2→2MgO ergibt links und rechts zwei Mg- und zwei O-Atome. MgO2 verändert die vorgegebene Produktzusammensetzung und beschreibt nicht das festgelegte Magnesiumoxid MgO. Der Koeffizient2 zählt zwei Formeleinheiten bzw. eine entsprechende Stoffmengenquote; er multipliziert die gesamte nachfolgende Formel.",
+            "expectedPerformanceEn": "2Mg+O2→2MgO has two Mg and two O atoms on each side. MgO2 changes the specified product composition and does not represent the stipulated MgO. The coefficient2 counts two formula units or the corresponding amount ratio and multiplies the entire following formula.",
+            "understandingFocusDe": "Stoffformeln werden erhalten und über atomare Bilanz begründet, nicht nur formal passend gemacht.",
+            "understandingFocusEn": "Specified substance formulas are retained and justified by atom balance rather than changed to fit."
+          },
+          {
+            "id": "aluminium-copper-half-equations-fresh",
+            "taskDemandDe": "Frischer Fall ohne Kombinationsergebnis: Gegeben sind die Teilgleichungen Al→Al3++3e− und Cu2++2e−→Cu; Namen/Bedeutungen: Al gibt Elektronen ab, Cu2+ nimmt sie auf. Entwickle aus passenden Vielfachen die Gesamtgleichung. Begründe die Faktoren, prüfe Atom- und Ladungsbilanz und erkläre, weshalb freie Elektronen in dieser Gesamtgleichung nicht übrig bleiben. Die Halbgleichungen sind Daten; neue Oxidationszahlen brauchst du nicht herzuleiten.",
+            "taskDemandEn": "Fresh case without a supplied combined result: half-equations are Al→Al3++3e− and Cu2++2e−→Cu; supplied meanings are that Al donates electrons and Cu2+ accepts them. Develop the overall equation using suitable multiples. Explain the factors, check atom and charge balance and explain why no free electrons remain. Half-equations are data; no new oxidation-number derivation is required.",
+            "expectedPerformanceDe": "Zweimal die Al-Teilgleichung und dreimal die Cu-Teilgleichung übertragen je sechs Elektronen. Nach Aufheben der Elektronen ergibt sich2Al+3Cu2+→2Al3++3Cu. Zwei Al- und drei Cu-Atome bleiben erhalten; Gesamtladung links+6, rechts+6. Ein bloßes1:1-Zusammenfügen wäre weder elektronen- noch ladungsbilanziert.",
+            "expectedPerformanceEn": "Twice the Al half-equation and three times the Cu half-equation transfer six electrons each. Cancelling electrons gives2Al+3Cu2+→2Al3++3Cu. Two Al and three Cu atoms are conserved; total charge is+6 on both sides. Simply combining in a1:1 ratio would not balance electron transfer or charge.",
+            "understandingFocusDe": "Gelieferte Halbgleichungen sind Hilfe/Daten; die unabhängige Leistung ist das passende Vielfache mit expliziter Elektronen-, Atom- und Ladungsbegründung. Der BY10-Umfang wird nicht als HE9-Grundforderung ausgegeben.",
+            "understandingFocusEn": "Supplied half-equations are support/data; independent performance is choosing multiples and justifying electrons, atoms and charge. The BY10 scope is not claimed as a basic HE9 requirement."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "965ca297-5dbf-5e58-b5f0-6559a4433646",
+      "reason": "HOLD: Formel/Name aus Ladungsneutralität ist eine integrierte Darstellung; Salz-Eigenschaftserklärung ist daneben eigenständig prüfbar und überschneidet Voraussetzung950. Engere Fassung ist nur nach vollständigem, scopeweise belegtem Erhalt dieses fachlichen Anteils integrierbar. Inaktiver P-v2-Autorenkandidat: needs_human_review, ai_candidate, E1/G1; zwei unabhängige fachliche Reviews und aktuelle Materialisierung ausstehend.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "HOLD: profile applies only to proposed narrowed ratio-formula/name competence. It does not cover the original independently assessable salt-property demand or prove its scopewise preservation in target950."
+      ],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "neutral-salt-ratio-formula-name-candidate-only",
+            "essentialUnderstandingDe": "Eine Verhältnisformel eines Salzes nennt das kleinste ganzzahlige Verhältnis der gegebenen Ionen mit Gesamtladungnull; sie ist keine Formel für isolierte Salzmoleküle. Ladungszahlen der einzelnen Ionen bleiben erhalten. Vorgegebene Molekül-Ionen werden als ganze Gruppen gezählt; Klammern erhalten ihre innere Zusammensetzung. Der Name benennt die beteiligten Ionen, nicht eine veränderte Ionenladung.",
+            "essentialUnderstandingEn": "A salt ratio formula states the smallest whole-number ratio of supplied ions giving total charge zero; it is not a formula for isolated salt molecules. Individual ion charges remain unchanged. Supplied molecular ions are counted as whole groups, with parentheses preserving their internal composition. The name identifies the constituent ions rather than a changed ion charge.",
+            "observablePerformanceDe": "Nur für den engeren, noch gehaltenen Kandidaten: Die lernende Person leitet aus benannten Ionen und Ladungen neutrale kleinste Verhältnisformeln ab, übersetzt Name↔Formel und begründet Koeffizienten sowie Gruppenklammern. Die ursprüngliche Salz-Eigenschaftserklärung ist hier nicht als abgedeckt behauptet.",
+            "observablePerformanceEn": "For the narrower candidate still on hold only: the learner derives minimal neutral ratio formulas from named ions and charges, translates between names and formulas and explains ratios and group parentheses. Coverage of the original salt-property explanations is not claimed here."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "neutral-salt-ratio-formula-name-candidate-only"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "ion-type",
+            "textDe": "Binäre Salze werden durch gelieferte Molekül-Ionen erweitert; dieser zweite Umfang ist BY8NTG-spezifisch und nicht aus der BY9other-Quelle abzuleiten.",
+            "textEn": "Binary salts are extended to supplied molecular ions; this second scope is specific to BY8NTG and is not inferred from the BY9other source."
+          },
+          {
+            "id": "charge-ratio",
+            "textDe": "Ein1:2-Verhältnis wird durch ein2:3-Verhältnis mit unverändertem Molekül-Ion ersetzt.",
+            "textEn": "A1:2 ratio is replaced by a2:3 ratio retaining each molecular ion’s formula."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "magnesium-chloride-neutrality",
+            "taskDemandDe": "Gegeben: Magnesiumion Mg2+, Chloridion Cl−; der Salzname ist Magnesiumchlorid. Entwickle seine kleinste neutrale Verhältnisformel und benenne das Salz aus deiner Formel wieder. Prüfe MgCl und Mg2Cl2 durch Gesamtladung und Größenverhältnis. Erkläre, warum die Formel keine Aussage über einzelne MgCl2-Moleküle im Ionengitter ist.",
+            "taskDemandEn": "Given magnesium ion Mg2+, chloride ion Cl− and the salt name magnesium chloride, develop the smallest neutral ratio formula and name the salt back from it. Check MgCl and Mg2Cl2 for total charge and ratio. Explain why the formula does not assert individual MgCl2 molecules within the ionic lattice.",
+            "expectedPerformanceDe": "Ein Mg2+ und zwei Cl− ergeben+2−2=0, daher MgCl2 und Magnesiumchlorid. MgCl hat+1, Mg2Cl2 hat+2 und ist nicht neutral. Die Indizes nennen das kleinste Ionenverhältnis im Gitter; sie senken nicht Mg2+ auf Mg+ und behaupten keine isolierten Moleküle.",
+            "expectedPerformanceEn": "One Mg2+ and two Cl− give+2−2=0, so the formula is MgCl2 and the name magnesium chloride. MgCl has charge+1 and Mg2Cl2 has charge+2, so neither is neutral. Subscripts specify the smallest ion ratio in the lattice; they do not lower Mg2+ to Mg+ or imply isolated molecules.",
+            "understandingFocusDe": "Neutralitätsbegründung und Name/Formel-Wechsel gehören zur engeren integrierten Kompetenz; keine Eigenschaftserklärung beansprucht.",
+            "understandingFocusEn": "Neutrality reasoning and name/formula translation form the narrower integrated competence; no salt-property explanation is claimed."
+          },
+          {
+            "id": "aluminium-sulfate-group-fresh",
+            "taskDemandDe": "Frischer Fall im Molekül-Ionen-Umfang: Gegeben sind Aluminiumion Al3+ und Sulfation SO4^2−, dessen innere Zusammensetzung unverändert bleibt. Der Salzname ist Aluminiumsulfat. Entwickle die kleinste neutrale Verhältnisformel, übersetze sie zurück zum Namen und prüfe Al3(SO4)2 sowie Al2SO43. Begründe Ladungsbilanz und Klammerstellung, ohne die Ladung eines Ions zu ändern.",
+            "taskDemandEn": "Fresh case within the molecular-ion scope: aluminium ion Al3+ and sulfate ion SO4^2− are supplied; the sulfate’s internal composition remains unchanged. The salt name is aluminium sulfate. Develop the smallest neutral ratio formula, translate it back to the name and check Al3(SO4)2 and Al2SO43. Explain charge balance and parentheses without changing any ion charge.",
+            "expectedPerformanceDe": "Zwei Al3+ geben+6, drei SO4^2− geben−6: Al2(SO4)3, Aluminiumsulfat. Al3(SO4)2 hat+9−4=+5 und ist nicht neutral. Al2SO43 verschleiert/ändert die gegebene SO4-Gruppe statt drei ganze Sulfationen zu zählen; die Klammer mit Index3 muss die gesamte SO4-Gruppe umfassen. Die2:3-Zahlen sind kleinstes ganzzahliges neutrales Verhältnis.",
+            "expectedPerformanceEn": "Two Al3+ give+6 and three SO4^2− give−6, so Al2(SO4)3 is aluminium sulfate. Al3(SO4)2 has+9−4=+5 and is not neutral. Al2SO43 obscures or changes the supplied SO4 group rather than counting three whole sulfate ions; parentheses with subscript3 must enclose the entire group.2:3 is the smallest whole-number neutral ratio.",
+            "understandingFocusDe": "Ungeholfene Transferentscheidung mit einer ganzen Molekül-Ionengruppe; Quellen-/Eigenschaftserhalt-HOLD bleibt bestehen.",
+            "understandingFocusEn": "An uncued transfer decision with an entire molecular-ion group; the source/property-preservation hold remains open."
+          }
+        ]
+      }
+    }
+  ]
+}

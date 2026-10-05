@@ -1,0 +1,64 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-batch-014-ephase-redox-protolysis-eleven-current-v1-20261005",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-014-ephase-redox-protolysis-eleven-current-v1.config.json",
+  "configDigest": "sha256:7c4ce909e25f9885ff0278d908b0a46d1bd5c166826e7656ce6cd19a45de698d",
+  "goalIds": [
+    "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+    "4961130b-1ee8-58f2-a319-dff0a864db6a",
+    "16da6a4d-8e9c-5f5d-b69d-338d67a2d362",
+    "f0939f88-a6af-5334-ac4d-5d54732af25a",
+    "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef",
+    "efa24b77-0f98-5835-9d82-3e539ab20253",
+    "28bb9d15-f865-5843-a035-6066580fea64",
+    "f1ed86f0-534d-57d7-8952-a004a331cc54",
+    "02634fdd-c8ba-591a-b240-77129b1bebb8",
+    "1c1420c2-a8e2-520f-8015-6df637a973bd",
+    "b4777001-f4ed-5fe9-9d98-02319abdea09"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 376,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/review-book-full.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:a81625fe4cb359cae129b752578a7891cea031dc476872eb6dd7ccbed1c56a71"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:37e4bf9abe3763b3498978085156d200fecde773b132fb45d51b65cbc7621462",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:833e27ba291ed950e8c182def9538d99fe619383e20e52b0922c5272eb34be84",
+    "reviewInputFingerprint": "sha256:01f505a8c98044584f72f560848f8efe0156bedb04d5e1901019c53f03a29dd7",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-batch-014-ephase-redox-protolysis-eleven-current-v1-20261005-a",
+        "campaignDigest": "sha256:c7e3818458d10ee8e3a1fe41ab7f838a73a17aa953643710dbb08937d736a7b7",
+        "roundId": "chemie-batch-014-ephase-redox-protolysis-eleven-current-v1-20261005-first-pass-a",
+        "independenceGroupId": "chemie-batch-014-ephase-redox-protolysis-eleven-current-v1-20261005-independent-a",
+        "batchId": "chemie-batch-014-ephase-redox-protolysis-eleven-current-v1-20261005-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:30843912ee46f81c0653f8eca5f659001298703144a4aab38ecb8fcaaf5c98f7"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-batch-014-ephase-redox-protolysis-eleven-current-v1-20261005-b",
+        "campaignDigest": "sha256:349cc3568a91d26ce571d5465f3c73f156258bd2a91e1b0270c037057d2c40b5",
+        "roundId": "chemie-batch-014-ephase-redox-protolysis-eleven-current-v1-20261005-first-pass-b",
+        "independenceGroupId": "chemie-batch-014-ephase-redox-protolysis-eleven-current-v1-20261005-independent-b",
+        "batchId": "chemie-batch-014-ephase-redox-protolysis-eleven-current-v1-20261005-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:7cf9dd2600761aed42a619e1381d9b3044e315bc6a02feb998ad5e378aecd115"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

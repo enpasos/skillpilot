@@ -1,0 +1,73 @@
+{
+  "format": "independent_targeted_followup_advisory_v1",
+  "reviewer": "independent_b",
+  "reviewMode": "targeted_followup_to_own_frozen_B_v1_not_blind_first_pass",
+  "createdAt": "2026-10-05T04:05:27.501584+00:00",
+  "reviewAuthority": "ai_candidate",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-fw6-008-two-atomic-companions-candidate-v2/two-companions.goal-templates.candidate.json",
+  "candidateSha256": "cd9a72d5ef17546bcf513e7789fe22590a0f3142c90115da51af8b208c61731c",
+  "active": false,
+  "humanApproval": false,
+  "nativeRegistryEntry": false,
+  "nativeGatePassed": false,
+  "nativeBookD2Passed": false,
+  "lane": "D",
+  "goalReviews": [
+    {
+      "candidateKey": "ni-fw6-008-independent-assortment-companion-v2",
+      "goalId": null,
+      "canonicalId": null,
+      "advisorySemanticSha256": "2c7be54ee119ca7b50cb5b54f5219e7d243a81b0ed4ac0bcaec773a3875a8580",
+      "fingerprintConvention": "SHA-256 of UTF-8 sorted-key compact JSON containing id=null plus complete goalTemplateWithoutId; explicitly not the native registry fingerprint",
+      "decision": "KEEP",
+      "bilingualEquivalent": true,
+      "assessableSingleCompetence": "Explain the link between independently orienting/segregating different homologous pairs and different combinations of whole parental-origin chromosomes in given gamete models.",
+      "textFindings": "Different homologous pairs are explicit in DE and EN. Neither segment exchange nor an additional probability routine is requested. No compulsory text repair identified.",
+      "learnerMustExplain": "The choice of a maternal/paternal partner in one pair does not force the choice in another pair, and the shown different gamete combinations follow from these different pair orientations/segregations.",
+      "nonEvidence": [
+        "Naming independent assortment",
+        "Reading only the colors or supplied labels",
+        "Repeating a full supplied causal conclusion"
+      ],
+      "requiredContextConditions": [
+        "At least two different homologous pairs",
+        "Meaningful maternal/paternal and chromosome-type legend",
+        "Correctly given alternative orientations and gamete sets",
+        "One chromosome of each represented type remains in the output",
+        "Do not label all four alternatives as required outcomes of a single pictured meiosis"
+      ]
+    },
+    {
+      "candidateKey": "ni-fw6-008-chromatid-segment-exchange-companion-v2",
+      "goalId": null,
+      "canonicalId": null,
+      "advisorySemanticSha256": "be239a9e2edc9d44ee034a30b8a4572b220a72ee9b0ecb2794fb490a18c13c9c",
+      "fingerprintConvention": "SHA-256 of UTF-8 sorted-key compact JSON containing id=null plus complete goalTemplateWithoutId; explicitly not the native registry fingerprint",
+      "decision": "KEEP",
+      "bilingualEquivalent": true,
+      "assessableSingleCompetence": "Explain the link between exchange of corresponding non-sister chromatid segments in a homologous pair and recombinant parental-information regions in the given output.",
+      "textFindings": "Non-sister chromatids of homologous chromosomes and corresponding segments are now explicit in DE and EN. No compulsory text repair identified.",
+      "learnerMustExplain": "The corresponding exchanged regions account for a participating chromatid combining parental information differently; regions are retained rather than created or lost.",
+      "nonEvidence": [
+        "Naming crossing-over",
+        "Repeating that recombination increases diversity",
+        "Substituting nonhomologous exchange, only sister-chromatid exchange or numerical chromosome errors"
+      ],
+      "requiredContextConditions": [
+        "Correct homologous-pair and sister/non-sister distinction",
+        "Corresponding region positions and meaningful parental origin/information markers",
+        "Correct before/after exchange",
+        "Correct provided gamete sets to which recombinant chromatids can be traced",
+        "Do not claim each real exchange necessarily creates a new allele or additional gene"
+      ]
+    }
+  ],
+  "givensVersusEvidence": "Correct terms, structures, process views and outcomes may be provided. The complete causal explanation must not already be provided as the assessed answer.",
+  "prerequisiteMeaning": "Current b1dff57f-329e-5264-b2b9-2db71a0b2172 proves cell comparison only. It is not proof of homologous-pair/chromatid/gamete-set knowledge. Complete explanatory model givens are a legitimate scaffold for these expressly material-supported goals.",
+  "prerequisiteOrActualPValidationPassed": false,
+  "bookD2": {
+    "status": "not_run",
+    "reason": "Both IDs are null and there are no adopted native current goal pages. Source-PDF inspection is not Book-D2."
+  },
+  "modelConditionsStatus": "Concrete requirements for future supplied models and teaching; actual P/model artifacts were not inspected."
+}

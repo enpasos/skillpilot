@@ -1,0 +1,96 @@
+{
+  "format": "independent_advisory_review_v1",
+  "reviewer": "independent_b",
+  "createdAt": "2026-10-05T03:57:52.386582+00:00",
+  "reviewAuthority": "ai_candidate",
+  "candidateKey": "ni-fw6-008-meiotic-recombination-companion-v1",
+  "goalId": null,
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-fw6-008-recombination-current-preservation-candidate-v1/companion.goal-template.candidate.json",
+  "candidateSha256": "808e791d5ffc67b402e08821d01aa775d400e24a5d9da5528b89d0b80a09c540",
+  "advisorySemanticSha256": "5c5fece2facfd713e8ac93d520e6f7dab9a4939514bfd09a4a2a478bc03369f4",
+  "fingerprintConvention": "SHA-256 of UTF-8 sorted-key compact JSON containing id=null plus the complete goalTemplateWithoutId; not the native registry fingerprint",
+  "active": false,
+  "humanApproval": false,
+  "nativeRegistryEntry": false,
+  "nativeGatePassed": false,
+  "lane": "D",
+  "decision": "REVISE_after_SPLIT",
+  "bilingualEquivalence": "DE and EN both require the same two explanatory mechanisms using supplied meiosis chromosome models. No meaningful DE/EN mismatch found.",
+  "sourceStageDecision": "Keep model-based chromosomal explanation and the Sek-I boundary.",
+  "findings": [
+    {
+      "code": "D-01",
+      "severity": "requires_revision",
+      "field": "description and descriptionEn",
+      "finding": "Non-sister chromatids are named without explicitly limiting them to homologous chromosomes.",
+      "suggestionDe": "zwischen Nichtschwesterchromatiden homologer Chromosomen",
+      "suggestionEn": "between non-sister chromatids of homologous chromosomes"
+    },
+    {
+      "code": "D-02",
+      "severity": "requires_split",
+      "finding": "The two requested explanations concern different physical objects and can be mastered independently.",
+      "suggestion": "Use the two separate bilingual child text drafts in split.goal-templates.proposed.json."
+    },
+    {
+      "code": "D-03",
+      "severity": "model_contract_condition",
+      "finding": "Supplied maternal/paternal labels must not be confused with a claim that crossing-over always creates new allelic variants or new genes.",
+      "suggestion": "Use clearly differentiated parental information markers at corresponding regions; explain new combinations of existing information and preserve corresponding regions/chromosome types."
+    },
+    {
+      "code": "D-04",
+      "severity": "assessment_condition",
+      "finding": "Correct outputs may be given; a complete explanation of their cause must not already be supplied as the answer.",
+      "suggestion": "Provide terms, structures and the observed outcomes. Require the learner to connect the changed combination to the independent orientation/segregation or the corresponding segment exchange."
+    }
+  ],
+  "providedVersusLearnerEvidence": {
+    "mayBeGiven": [
+      "Correct chromosome-type and homologous-pair labels",
+      "Maternal/paternal origin",
+      "Chromosome and chromatid conventions",
+      "Meaning of corresponding regions and the simplified gene-variant markers",
+      "Correct alternative orientations and gamete outputs",
+      "Correct before/after segment-exchange models"
+    ],
+    "mustBeLearnerExplained": [
+      "Which information is differently combined",
+      "Which shown operation causes that difference",
+      "For assortment: why choice in one pair does not determine choice in another pair",
+      "For exchange: why a participating chromatid now combines parental regions while corresponding regions remain present"
+    ],
+    "notSufficient": [
+      "Naming recombination",
+      "Reading out a prewritten causal caption",
+      "Repeating a full supplied model explanation",
+      "Calling extra/missing chromosomes a new recombination"
+    ],
+    "notRequired": [
+      "Independent model construction",
+      "Terminology recall without the legend",
+      "Complete meiosis phase algorithm",
+      "Molecular crossing-over mechanisms"
+    ]
+  },
+  "prerequisiteAssessment": {
+    "candidateRequires": [
+      "b1dff57f-329e-5264-b2b9-2db71a0b2172"
+    ],
+    "currentPrerequisiteMeaning": "Compare plant and animal cells; provides general cell context but no explicit homologous-pair, chromatid or gamete-set competence.",
+    "decision": "Didactic readiness is not proved by this existing edge alone. Complete supplied-model conventions can legitimately support the bounded explanation; their explanatory givens must stop short of the answer.",
+    "narrowUnderlyingConcepts": [
+      "Corresponding information regions on homologous partners",
+      "Distinction between chromosome type, homologous partner and chromatid",
+      "Meaning of non-sister chromatids in one homologous pair",
+      "Meaning of one representative of each chromosome type in a gamete"
+    ],
+    "broadGoalNotAutomaticallyRequired": "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+    "upperSecondaryGoalNotRequired": "ab96bec3-ee34-5209-bcc9-5c7c8280429c",
+    "runtimeFrontierValidated": false
+  },
+  "bookD2": {
+    "status": "not_run",
+    "reason": "The candidate has no canonical ID and no native current goal page. Visual inspection of the source PDF is not Book-D2."
+  }
+}

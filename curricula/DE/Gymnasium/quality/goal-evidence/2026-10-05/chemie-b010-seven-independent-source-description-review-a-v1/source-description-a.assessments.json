@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "recordStatus": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "goalIds": [
+    "72236f2c-771e-4ab6-933a-e549ee49d15b",
+    "950c73c6-4ed1-488a-9267-1142e95e0055",
+    "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+    "16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+    "58486300-3f84-5aa1-9ed4-66186af62669",
+    "414489cb-453e-5de4-ab0f-0fc01175e522",
+    "1f5ee84f-245a-5a1e-a260-f960f26523e9"
+  ],
+  "assessments": [
+    {
+      "goalId": "72236f2c-771e-4ab6-933a-e549ee49d15b",
+      "goalFingerprint": "sha256:74fb9da4ecc847ef1f007966f8945a2e9224e082298c68e51a83f8c0065284a8",
+      "pageFingerprint": "sha256:3219e5702b86b25224d7153215c8b36bf5d287a4b0bb3af641aa12bca82db1c5",
+      "currentDescriptionDecision": "split_review",
+      "semanticAtomicity": "non_atomic",
+      "memoryDecision": "memory_required",
+      "memoryReason": "Ort und Ladung der drei Grundteilchen sind kompakte notwendige Abruffakten. Die vorhandene Karte chem_basics_005 bleibt erforderlich; Rutherford-Schlüsse brauchen Modellverständnis und rechtfertigen keine zusätzliche Karte.",
+      "sourceStatus": "HOLD_targeted_adoption",
+      "sourceHolds": [
+        "Current provenance sourceGoalId fd02c993-0950-41a4-a861-7522d1bd3f8c is absent from the current HE extraction.",
+        "HE exact mappings for Atommasse, Isotope, Rein-/Mischelemente, Grenzen des Kern-Hülle-Modells and Berücksichtigung der Ionentheorie are not fully demonstrated by this text or the two proposed children.",
+        "BY9-NTG.2.2 requires using periodic-table data; simple particle assignment is only partial coverage.",
+        "Stable-ID allocation and changed downstream dependencies remain unadopted."
+      ],
+      "scientificRationale": "Rutherford-Befunde zum räumlichen Kern-Hülle-Aufbau auswerten und bekannte Teilchen nach ihren Eigenschaften zuordnen sind unabhängig prüfbar. Eine richtige Teilchenzuordnung beweist keine Streuinferenz. HE10.1 und BY8.4/BY9-other.4 stützen beide Bestandteile, aber nicht die zusätzlichen als exact gemappten Atommasse-/Isotop-/Element-/Modellgrenzen-/Ionentheorie-Zellen. Der alte Provenienzschlüssel existiert in der aktuellen HE-Extraction nicht. Der Split bleibt eine nicht adoptierte ID-null Option.",
+      "strictClosureAdded": 0
+    },
+    {
+      "goalId": "950c73c6-4ed1-488a-9267-1142e95e0055",
+      "goalFingerprint": "sha256:9555559c800640ed674f15930c56207ec3254a941540babafda1a5e562877cac",
+      "pageFingerprint": "sha256:c6a70cecd0db3ca29bf9ebb7eb3a1fa2a4b78de225d0b40d4af5c96bd5c51468",
+      "currentDescriptionDecision": "revise",
+      "semanticAtomicity": "atomic",
+      "memoryDecision": "no_memory_needed",
+      "memoryReason": "Gittereigenschaften und Koordinationszahl werden aus dem Modell erklärt bzw. bestimmt. Eine zusätzliche Zahlen- oder Eigenschaftenliste wäre kein Ersatz für diese räumliche Beziehung.",
+      "sourceStatus": "HOLD_targeted_adoption",
+      "sourceHolds": [
+        "Current provenance sourceGoalId 41de0477-78e2-48b5-82f7-e5864f2f66cc is absent from the current HE extraction.",
+        "Current HE9 metal/halogen reactions and hydrogen-halide/HCl partial mapping cells are not fully covered by lattice understanding.",
+        "BY modeling and property clauses are partial; molecule/ratio formula derivation is allocated to existing canonical siblings.",
+        "No current visualization exists; V remains HOLD/deferred_provider_limitation."
+      ],
+      "scientificRationale": "Anordnung, Koordination und Eigenschaften werden als ein räumlicher Struktur-Eigenschafts-Zusammenhang beurteilt. Der aktuelle Text macht HE-Koordinationszahl und BY-Modellierung nicht ausreichend sichtbar. Im Autorenkandidaten ist Anziehung zu eng: die Erklärung von Sprödigkeit benötigt auch Abstoßung gleich geladener Nachbarn nach einer Verschiebung. Der Ersatz erhält Modellieren, Koordinationszahl und mehrere typische Eigenschaften; er reduziert das Ziel nicht auf das Lesen eines fertigen Modells. Molekül-/Verhältnisformeln, Salzbildung und Hydrogenhalogenidreaktionen bleiben getrennte Quellenklauseln.",
+      "strictClosureAdded": 0
+    },
+    {
+      "goalId": "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+      "goalFingerprint": "sha256:7d60a8a8634e1a979e69f5cb236e74d8d3cc146b7cd2f0e91516f186f8f762ed",
+      "pageFingerprint": "sha256:6973ade1dec9b4f0b5b5bd4ffe9f842bb773597dece3ee985277e2ced9154a5a",
+      "currentDescriptionDecision": "split_review",
+      "semanticAtomicity": "non_atomic",
+      "memoryDecision": "no_memory_needed",
+      "memoryReason": "Die geforderte stoffgenaue Charakterisierung und Begründung ist eine Eigenschafts-Verwendungsbeziehung. Ein neues Katalogdeck typischer Anwendungen ist dafür nicht notwendig; vorhandenes Teilchenwissen darf weiter vorausgesetzt werden.",
+      "sourceStatus": "HOLD_targeted_adoption",
+      "sourceHolds": [
+        "HE9 source stage is not reconciled with direct a163 Ionenbildung and inherited complete Atombau-/Bindungscluster in regular HE10; an earlier coordinated introduction is possible but not currently proved.",
+        "No current specific BY atlas witness covers this goal; canonical DE-BY applicability is insufficient.",
+        "The ID-null compound candidate must retain characterization/properties of typical compounds, not only one application.",
+        "No stable IDs or denominator change has been adopted."
+      ],
+      "scientificRationale": "Der aktuelle Text kombiniert die Charakterisierung elementarer Metalle, ihre Verwendungen und die Kenntnis bzw. Eigenschaften ihrer Verbindungen. Elementares Metall und Verbindungen sind unabhängige Stoffroutinen; Kenntnis von Na-Metall beweist keine Eigenschafts-/Verwendungsbegründung für NaCl oder KCl. HE9.2 verlangt ausdrücklich Eigenschaften und Verwendung beider Stoffgruppen. Die Split-Richtung ist sinnvoll, der Compound-Companion muss aber die Charakterisierung der typischen Verbindungen ausdrücklich erhalten. Es gibt keinen passenden bestehenden vollständigen kanonischen Companion; benachbarte Ionen-/Salz-/Wasserreaktionsziele liefern nur Teilaspekte.",
+      "strictClosureAdded": 0
+    },
+    {
+      "goalId": "16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+      "goalFingerprint": "sha256:e1351ab0849db0741bee83bd1e90e39f5d1bfe9e8bad0bf57e877ed45ceb6eb7",
+      "pageFingerprint": "sha256:196802176052ad6e1615bb5c19a923566ac7b6a7a056a62b095534883458fb54",
+      "currentDescriptionDecision": "revise",
+      "semanticAtomicity": "atomic",
+      "memoryDecision": "no_memory_needed",
+      "memoryReason": "Die Produkte und Alkalität werden aus Stoffidentität und Hydroxidbildung gedeutet. Das Ziel verlangt keinen neuen Vorrat auswendig gelernter Spezialgleichungen.",
+      "sourceStatus": "HOLD_targeted_adoption",
+      "sourceHolds": [
+        "HE9 route and inherited HE10 Atombau-/Bindungscluster timing need a targeted prerequisite/placement decision.",
+        "No current specific BY atlas witness covers both water-reaction systems."
+      ],
+      "scientificRationale": "Das Gegenüberstellen zweier Reaktionssysteme auf die gemeinsame Bildung alkalischer Lösung hin ist eine zusammengehörige Vergleichskompetenz. Der Autorenkandidat macht Produkte und Erklärung statt bloßer Reaktionswiedergabe sichtbar und erhält beide HE9.2-Systeme. Die Modellgrenze sind geeignete einfache Oxide; bei vorgegebenen anderen Sauerstoffverbindungen darf kein identisches Produktschema pauschal behauptet werden. OH− erklärt Alkalität, nicht H2.",
+      "strictClosureAdded": 0
+    },
+    {
+      "goalId": "58486300-3f84-5aa1-9ed4-66186af62669",
+      "goalFingerprint": "sha256:bb22121948c4000efc87095fd4cd0304691830720ffdc73c6e8bf6d948802840",
+      "pageFingerprint": "sha256:463f878671c194252c7315d655265bd422b4a527a2c2b0c00eeecc199057509a",
+      "currentDescriptionDecision": "revise",
+      "semanticAtomicity": "atomic",
+      "memoryDecision": "no_memory_needed",
+      "memoryReason": "Die fachliche Beziehung zwischen Stoffidentität, Eigenschaft und Verwendung steht im Vordergrund. Ein zusätzlicher auswendig zu lernender Produkt-/Anwendungskatalog ist nicht erforderlich.",
+      "sourceStatus": "HOLD_targeted_adoption",
+      "sourceHolds": [
+        "HE9 route still inherits the complete regular HE10 atom/bonding cluster and directly requires a163 Ionenbildung; no current earlier coordinated route is proved.",
+        "Current HE direct mapping for this goal covers B02A01; explicit clause binding of the compound/everyday portion of B02A02 remains to be adopted.",
+        "No current specific BY atlas witness covers this goal."
+      ],
+      "scientificRationale": "Der Kandidat bindet Verwendung an Eigenschaften der tatsächlich eingesetzten Substanz und verhindert die Verwechslung von F2 und Fluorid oder Cl2 und einer desinfizierenden Chlorverbindung. Das ist eine integrierte Eigenschafts-Verwendungsbegründung; die Stoffidentität ist eine Bedingung derselben Begründung. HE9.2 stützt Eigenschaften, Verwendungen und den Alltagsbezug der Halogene und Verbindungen. Die passende Teilklausel des benachbarten aktuellen HE9.2-B02A02 muss für den Compound-Alltagsbezug zusätzlich ausdrücklich gebunden werden; deren Reaktionsklausel gehört nicht automatisch zu diesem Ziel.",
+      "strictClosureAdded": 0
+    },
+    {
+      "goalId": "414489cb-453e-5de4-ab0f-0fc01175e522",
+      "goalFingerprint": "sha256:9b3fd8db33d33febdcf89aaea5c958764cbc6cf5d96e072fa27819d7b8cb461a",
+      "pageFingerprint": "sha256:8b1e2627d308f4ff4711c49751ced2b39cd64437e14b8350ac2d25b56e0ab983",
+      "currentDescriptionDecision": "revise",
+      "semanticAtomicity": "atomic",
+      "memoryDecision": "no_memory_needed",
+      "memoryReason": "Ein bereitgestelltes Schema wird chemisch interpretiert. Das Auswendiglernen einer speziellen industriellen Gesamtgleichung wäre kein zusätzlicher notwendiger Abruffakt für diese Kompetenz.",
+      "sourceStatus": "HOLD_targeted_adoption",
+      "sourceHolds": [
+        "No current specific BY atlas witness covers gypsum from flue-gas scrubbing.",
+        "The existing 11bea prerequisite structural question is exposed but outside this review; it is not re-adjudicated."
+      ],
+      "scientificRationale": "Die Bildung eines bestimmten Produkts in einem vereinfachten technischen Reaktionsweg ist eine zusammenhängende Anwendungskompetenz. Der Kandidat ersetzt die unscharfe Nennung von Sulfatbildung durch die Beziehung zwischen SO2-Aufnahme, Oxidation und Gipsbildung. Das Schema darf Kalkhydrat beispielhaft zeigen, aber es behauptet keine Kenntnis aller industriellen Varianten, keine vollständige Anlagenplanung und keine durch Beobachtung direkt sichtbare Sulfatbildung. HE10.3 liefert nur die Gips-Teilklausel; Kalkkreislauf und Dünger gehören anderen Zielen.",
+      "strictClosureAdded": 0
+    },
+    {
+      "goalId": "1f5ee84f-245a-5a1e-a260-f960f26523e9",
+      "goalFingerprint": "sha256:32c84feed6e532c16d77c126e7b0e6a47bd07efcb2297dfbe363839e9fdab6b7",
+      "pageFingerprint": "sha256:96081bc810f15b1ec1c8fc62c1e31d47774d14ba56cff23bc0d46a041f6b362f",
+      "currentDescriptionDecision": "revise",
+      "semanticAtomicity": "atomic",
+      "memoryDecision": "no_memory_needed",
+      "memoryReason": "Die Ionen- und Transportangaben sind verfügbar und werden für eine begründete Fallentscheidung genutzt. Eine neue Dünger-/Nährstoffliste ist dafür nicht als notwendiges Auswendigwissen nachgewiesen.",
+      "sourceStatus": "HOLD_targeted_adoption",
+      "sourceHolds": [
+        "No current specific BY atlas witness covers this fertilizer competence.",
+        "At 360 CSS px central transport labels are small; necessary transport information must be supplied as readable task data rather than inferred from pixels. This does not require replacement of the correct original image."
+      ],
+      "scientificRationale": "Die Einordnung mineralischer Salze als Nährstoffquellen und die Begründung eines daran gebundenen Nutzen-Risiko-Bezugs sind eine integrierte Anwendung. Der Kandidat grenzt mineralische Dünger von pauschalen Aussagen über alle Dünger ab und nennt Bedingungen, die eine nachvollziehbare einfache Begründung tragen. Stofftransport ist anhand bereitgestellter Angaben zu verstehen; eine vollständige Bodenchemie, Phosphatspeziation oder allgemeine Produkt-/Gesundheitsbewertung wird nicht verlangt. HE10.3 liefert nur die Dünger-Teilklausel, die Umweltperspektive steht auch im Methoden-/Querverweiskontext.",
+      "strictClosureAdded": 0
+    }
+  ],
+  "PRead": false,
+  "peerOutputsRead": false,
+  "strictClosureAdded": 0
+}

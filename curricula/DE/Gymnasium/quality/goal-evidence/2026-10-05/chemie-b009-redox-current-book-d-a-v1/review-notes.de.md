@@ -1,0 +1,21 @@
+# Unabhängige aktuelle Beschreibungsreview A
+
+Genaues Ziel: `bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a`.
+
+Reviewart: `descriptionEvidenceOnly`. Entscheidung: **KEEP** für den bestehenden DE/EN-Text und für das bestehende JPG als ein fachlich geeignetes Lehrbeispiel. Keine Text- oder Assetmutation. Status `candidate`, Autorität `ai_candidate`.
+
+Die sechs eigenen bilingualen Felder in der Records-Datei bilden Verständnis → beobachtbare Leistung → frischen chemischen Transfer ab. Sie erhalten die frühe Deutung von Oxidbildung/-zerlegung bzw. Sauerstoffübertragung und erlauben das Elektronenmodell im bereits eingeführten fachlichen Kontext. Der vorhandene Text ist kurz, verständlich und modellneutral. Das Ziel wird weder auf eine einzige Definition verkürzt noch auf das Aufstellen von Gleichungen mit Oxidationszahlen, Redoxreihen oder selbstständige gefährliche Experimente erweitert.
+
+Amtliche Quellen wurden lokal und im Web geprüft. Die HE-G9-Quelle führt den Begriffsaufbau zunächst in Jahrgang 8 über Oxide ein. Die an dieses Ziel direkt gemappte NI-S. 59 beschreibt für 7/8 Sauerstoffübertragung auf Stoff- und Atomebene; NI-S. 61 zeigt die spätere Elektronendeutung. Die echte SN-Klasse-8-Seite und die dortige Operatorentabelle wurden nur als Modell- und Stufenkontext betrachtet. Ein inspiziertes altes Mapping auf Metallbindung/Legierungen wurde nicht als Beleg einer Redoxklausel verwendet. Aus solchen Kontextlektüren wird keine vollständige aktuelle Quellenabdeckung oder Prüfung aller Bundeslandprojektionen abgeleitet.
+
+Die konkrete Buchseite 1 wurde im BookModel, im nativen HTML und als physische PDF-Seite 3 visuell geprüft. Titel, vollständige Beschreibung, Lernziel-ID und externe Vorbedingungen/Nachfolger sind vorhanden; die in diesem Einzelzielbuch leeren internen Relationsfelder widersprechen den daneben ausdrücklich aufgeführten externen Beziehungen nicht. Die HTML-Prüfung verwendete die unveränderten HTML-Bytes und genau das referenzierte lokale JPG; die PDF zeigt die gebundene bestehende Druckableitung.
+
+Das JPG wurde zuerst tatsächlich angesehen; danach wurden Browseraufnahmen bei 360 und 680 px sowie die native Seite geprüft. `2 Mg + O₂ → 2 MgO`, `2 Mg → 2 Mg²⁺ + 4 e⁻` und `O₂ + 4 e⁻ → 2 O²⁻` erhalten Atomzahl und Ladung. Die vier übertragenen Elektronen, Mg-Schalenbelegung `2|8|2 → 2|8` und O-Belegung `2|6 → 2|8` passen zueinander. Die zentrale Skizze steht für einen Ionengitterausschnitt und darf nicht als Molekülbild, exakt vermessbare Kristallstruktur oder real beobachtbarer Elektronenflug gelesen werden.
+
+Bei 360 px bleiben die Hauptlabels und Halbreaktionen erkennbar; sehr kleine Gitterbeschriftungen sind eingeschränkt lesbar. Bei 680 px und in der nativen Darstellung ist die Detaillektüre besser. Das ist eine konkrete Lesbarkeitsgrenze eines skalierenden Beispiels, kein belegter Grund für eine fachliche Bildkorrektur. Die PNG-Dateien dieser Ablage sind ausschließlich Prüfscreenshots, keine neu generierten didaktischen Assets. Ein gutes vorhandenes JPG wird unabhängig von Provider und Format erhalten.
+
+Die Abbildung gibt die elektronische Deutung eines Mg/O₂-Beispiels vor und ist kein unabhängiger Leistungsnachweis. Eine spätere Profilprüfung muss die passende eingeführte Darstellung und die Metall-/Nichtmetallbreite im eigenen Zielumfang respektieren. Das fehlende Profil wird hier ausschließlich mit `create` empfohlen. Vor dem D-Freeze wurde kein P gelesen oder erstellt. Alte D-Ergebnisse, das alte B009-Summary, Peer B und das getrennte Rootdossier wurden nicht gelesen.
+
+Modell: GPT-6 / Codex gemäß Sessionangabe. Exakte Deploymentversion und Samplingparameter sind nicht exponiert und werden nicht erfunden. Das native Runschema erlaubt nur seine definierten Schlüssel; zusätzliche Wahrheitssicherung liegt in `generation-parameters.actual.json` und `description-current-review.actual.json`. Der Manifeststart bezeichnet die aufgezeichnete Erstellung des strukturierten Ergebnisses; der Beginn der vorangehenden Lektüre wurde nicht erfasst.
+
+Diese aktuelle unabhängige Review ist ausschließlich eine AI-Kandidatenreview. Bildstatus bleibt `review_candidate`; sie begründet keine Publikationsfreigabe, Human Approval, Human Trial oder M7.

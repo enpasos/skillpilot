@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "protein-information-flow-independent-v-qa-20261005-v1",
+  "reviewedAtUtc": "2026-10-05T00:42:16.963530+00:00",
+  "goalId": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+  "candidateVersion": 2,
+  "reviewer": "Codex independent subagent A",
+  "reviewAuthority": "ai_candidate",
+  "recordStatus": "candidate",
+  "decision": "HOLD",
+  "status": "inactive_candidate_with_actual_visual_scientific_defect",
+  "assetSha256": "sha256:4ffccc35db81e7bc9cd7e74fdad9ac0f624559c17b3c2edef9d1e62c8bec758b",
+  "scope": "Actual native/360/680 protein-information-flow image v2 only. Current operative 475 and proposed independently reviewed v2 information-flow wording compared. No generic D/P or source review restart.",
+  "inputScopeSnapshot": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/protein-information-flow-independent-v-qa-20261005-v1/current-and-proposed-475-scope.input.snapshot.json",
+    "fileSha256": "sha256:bc8a6621ec6d188073c6585bbdb0a147928a2d8c48172e01c05a994b7b91e261"
+  },
+  "actualInspections": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-protein-information-flow-candidate-20261005-v1/candidate-v2.png",
+      "assetSha256": "sha256:4ffccc35db81e7bc9cd7e74fdad9ac0f624559c17b3c2edef9d1e62c8bec758b",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "actualImageViewed": true,
+      "detail": "original"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-protein-information-flow-candidate-20261005-v1/candidate-v2-360.png",
+      "assetSha256": "sha256:d0937690244245a86b290f0eb71c18564c1e7a3deace288ca67a288753198773",
+      "dimensions": [
+        360,
+        203
+      ],
+      "mode": "RGB",
+      "actualImageViewed": true,
+      "detail": "original"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-protein-information-flow-candidate-20261005-v1/candidate-v2-680.png",
+      "assetSha256": "sha256:47e7adee88597802ebcc27061a82dedf214cbf3b8bcbf1e8173c6c1f57c1ffc0",
+      "dimensions": [
+        680,
+        383
+      ],
+      "mode": "RGB",
+      "actualImageViewed": true,
+      "detail": "original"
+    }
+  ],
+  "independence": {
+    "nativeAndResponsiveImagesViewedBeforeV2PromptAndGenerationReceiptRead": true,
+    "authorVerdictNotAcceptedAsApproval": true,
+    "rootOrSiblingVReviewVerdictsNotReadForThisAssessment": true,
+    "v1ImageAndHoldNotReopenedOrOverwritten": true
+  },
+  "findings": [
+    {
+      "findingId": "protein-v2-branched-mrna-backbone",
+      "severity": "blocking_scientific_visual_defect",
+      "location": "Inside the nucleus, native 1672x941: two pink free nuclear branches approximately from (430,680) and (530,420) meet around (620,515) and join the single outgoing strand toward the pore.",
+      "actualObservation": "A visibly continuous Y-shaped RNA backbone with three arms is shown; the colored base appendages belong to both left-hand arms. This topology is also plainly visible in the 360 and 680 pixel previews.",
+      "scientificReason": "One displayed mature messenger RNA has one unbranched backbone. Secondary structure may fold it, but the image shows a three-way backbone junction with two free-ended upstream arms, not a clearly separate folded continuous strand. The correct top caption cannot repair this misleading RNA drawing.",
+      "minimalCorrection": "Remove exactly one nuclear branch and its pendant bases. Keep one visibly continuous, unbranched pink RNA chain from a single free end inside the nucleus through the pore and between the ribosome subunits into the cytoplasm. Preserve valid DNA, compartment labels, process labels, palette, arrows and polypeptide origin."
+    },
+    {
+      "findingId": "protein-v2-peptide-rna-end-overlap",
+      "severity": "visual_relationship_ambiguity",
+      "location": "Native about (1460,545): last bead of the emerging upper/right yellow chain lies directly over the red mRNA backbone. The labeled lower-right yellow bead chain is disconnected from that emerging chain.",
+      "actualObservation": "Spatial overlap makes the yellow peptide end look attached to the RNA. A separate free peptide chain might represent a released product, but the picture does not make that relationship clear.",
+      "scientificReason": "A peptide emerges from the large ribosomal subunit and must remain visually distinct from RNA; a direct peptide-to-mRNA attachment is not the shown information-flow relationship. This is an ambiguity rather than proof that the generator intended a covalent bond.",
+      "minimalCorrection": "Keep the now-correct exit on the upper green subunit. Place the peptide trajectory outside the red RNA path, with a visibly free end or one clear separated continuous chain leading to the Polypeptid label. No added tRNA/codon/mechanism detail is needed."
+    }
+  ],
+  "correctPreservedContent": [
+    "Top title correctly distinguishes information flow DNA -> mRNA -> polypeptide.",
+    "DNA remains inside the drawn nucleus. A single outgoing RNA path passes through a nuclear pore to the ribosome in the cytoplasm. The nucleus makes this a particular eukaryotic example, not a universal cell model.",
+    "Transcription and translation are separately labeled, and the footer connects them through mRNA.",
+    "RNA passes between ribosome subunits; the yellow chain now visibly starts at the upper green, large subunit.",
+    "No literal nucleotide sequence, codons or amino-acid identities are supplied, so no sequence/code/product matching or 5-prime/3-prime reader-direction claim is invented from abstract coloured bars.",
+    "No mandatory practical laboratory, protein function/trait, all-state source or learner mastery claim is established."
+  ],
+  "formatAndResponsiveAssessment": {
+    "format": "opaque RGB PNG",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "approximately16by9": true,
+    "formatExceptionRequired": false,
+    "actualPhoneSize": [
+      360,
+      203
+    ],
+    "actualDesktopSize": [
+      680,
+      383
+    ],
+    "desktopBelow28RemHeightCap": true,
+    "style": "Friendly clear abstract comic scheme, consistent with current image landscape.",
+    "readability": "DNA/mRNA/polypeptide heading, compartments, major process labels, pore/ribosome route and footer remain recognizable at 360 and clear at 680. Supplementary transcription explanation text is smaller; it is not needed to read the main information-flow motif.",
+    "perspective": "No depicted writer/learner notebook or measurement perspective; left-to-right process and compartment directions inspected.",
+    "reasonForHold": "Actual RNA topology and molecule-separation ambiguity, not image ratio/style or provider."
+  },
+  "provenance": {
+    "provider": "OpenAI / ChatGPT-Codex image_gen",
+    "exactImageModel": "not exposed by tool; not invented",
+    "generationReceiptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-protein-information-flow-candidate-20261005-v1/generation-v2.receipt.json",
+    "generationReceiptSha256": "sha256:921df3fd584379e2d59be6c9c2e2f28eff5cada236aac1ea2fbba02e9fbca24c",
+    "exactRequestPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-protein-information-flow-candidate-20261005-v1/generation-request-v2.json",
+    "exactRequestSha256": "sha256:a6c292aa95721f6fe0baa727323f74688c9f7ee24827aee4b6f0d31f40c178fb",
+    "providerOutputPath": "/home/enpasos/.codex/generated_images/01a0f2c0-2182-78f3-8b44-9fcdfd2c8634/exec-843d3a5a-2995-495c-8edf-7aee575bcb37.png",
+    "providerOutputSha256": "sha256:4ffccc35db81e7bc9cd7e74fdad9ac0f624559c17b3c2edef9d1e62c8bec758b",
+    "providerOutputMatchesCandidateBytes": true,
+    "generationIsNotApproval": true
+  },
+  "altText": {
+    "currentCandidateDescriptionDe": "Eukaryotisches Schema des Informationsflusses DNA → mRNA → Polypeptid: DNA liegt im Zellkern, RNA führt durch eine Kernpore zum Ribosom im Zellplasma, und eine gelbe Polypeptidkette tritt aus dem Ribosom aus. Der vorliegende Kandidat zeichnet die RNA im Zellkern irreführend Y-förmig verzweigt; das Ende der oberen Polypeptidkette überlappt die RNA.",
+    "recommendedAfterVerifiedCorrectionDe": "Modell des Informationsflusses bei einer eukaryotischen Zelle: Im Zellkern wird die Information der DNA in eine einzelne mRNA abgeschrieben. Die mRNA gelangt durch eine Kernpore in das Zellplasma. Ein Ribosom liest sie und bildet eine davon getrennte Polypeptidkette. Die mRNA verbindet Transkription und Translation.",
+    "activationLimit": "Do not apply a corrected-image alt text to this defective candidate as if it repaired the drawing. Inspect the actual successor native/360/680 before replacing the HOLD."
+  },
+  "sourceBoundary": "This V inspection supports only the current/proposed model-level information-flow scope. Existing source/companion/stage decisions, including NI molecular-genetics restrictions and open source holds, are unchanged. Previously verified HE Q1.1 source context does not confer all-state completeness or protein-role coverage.",
+  "historicalPreservation": {
+    "v1Path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-protein-information-flow-candidate-20261005-v1/candidate-v1.png",
+    "v1FileSha256": "sha256:1a0735faa55774d5ac2bd471b9ea920dcef8acce6bd1b28cb8180a9d25f9aba8",
+    "v1NotEdited": true,
+    "v1HoldPreserved": true,
+    "v2NotEdited": true
+  },
+  "activeCanonicalRegistryOrGateChanges": false,
+  "fullCentralOrBuildRun": false,
+  "strictCompletionIncrease": 0,
+  "machineVClosure": false,
+  "humanApprovalClaimed": false,
+  "humanTrialClaimed": false,
+  "nextStep": "Root may generate one targeted raster successor fixing actual RNA branching and the peptide/RNA ambiguity. Independently inspect the actual output before any current V adoption."
+}

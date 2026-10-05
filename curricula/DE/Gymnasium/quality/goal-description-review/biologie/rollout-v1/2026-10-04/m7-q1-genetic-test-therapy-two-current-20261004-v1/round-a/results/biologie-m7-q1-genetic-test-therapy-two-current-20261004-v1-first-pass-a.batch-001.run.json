@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-a.codex-review",
+  "campaignId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-a",
+  "roundId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-a",
+  "batchId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:e63d9e83a1ff91693df226561174204a2d5f313e1823bf05fe97e6c0021faac1",
+  "bundleFingerprint": "sha256:aeff4a729f8c4e8c5dc9e19bd7eb822cc1dd2511a2c94694802d6b1023a0b0fd",
+  "bookDigest": "sha256:6fa310698b9ea7b5671e103dc0a729ffcd41eef27f3a201659e3db05e1a08fa4",
+  "provider": "OpenAI",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:1c5d4f06fae6298b1506f5bc5ced8121e27c2cc5e3000414b7e47b85fbd41753",
+  "independenceGroupId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "73b66ead-e44a-5486-98e3-1fb3f99620a6",
+    "3891b735-9d0d-5eef-b653-6ad58b9181f6"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:03e3efd866b2d7b688c9557d7b35df94a0aa4b77f4645957ca3912fd4daa9184"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:33f9a3eb8649d9ddfd85ca0466e02d5352f96f6eb4e5a3eafa5ab6f5c091c01d"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e63d9e83a1ff91693df226561174204a2d5f313e1823bf05fe97e6c0021faac1"
+    }
+  ],
+  "startedAt": "2026-10-04T22:11:02Z",
+  "completedAt": "2026-10-04T22:17:04Z",
+  "status": "completed",
+  "outputDigest": "sha256:7a0e6d7a26c32759b413768a6f023c856e8507d83a8aaf097f1c3947380d69c0",
+  "toolchainVersion": "goal-description-review-v1"
+}

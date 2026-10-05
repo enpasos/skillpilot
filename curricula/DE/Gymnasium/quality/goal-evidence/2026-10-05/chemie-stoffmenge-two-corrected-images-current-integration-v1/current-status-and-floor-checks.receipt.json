@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "chemie-two-current-images-status-and-protected-floors-v1",
+  "recordedAt": "2026-10-05T04:02:42.294977+00:00",
+  "statusGeneration": {
+    "command": "npm --prefix app run quality:curriculum-status",
+    "actualExitCode": 0,
+    "actualSessionId": 60471,
+    "generatedAt": "2026-10-05T04:00:23.931Z",
+    "path": "docs/qa-ci/status/curriculum-quality-status.json",
+    "byteDigest": "sha256:45b71312c4723183ee09267290b1d5e0fe93062097b91b1536447216c9e4f6c7"
+  },
+  "protectedMaturityFloors": {
+    "command": "npm --prefix app run check:curriculum-maturity-floors",
+    "actualExitCode": 0,
+    "actualOutput": "curriculum maturity floors passed: 9 protected curricula"
+  },
+  "gitDiffCheck": {
+    "command": "git diff --check",
+    "actualExitCode": 0
+  },
+  "visualizationQaFreshness": {
+    "command": "npm --prefix app run check:goal-visualization-qa -- --subject chemie",
+    "actualSessionId": 54706,
+    "actualExitCode": 0,
+    "actualOutput": "Goal visualization QA ledgers are up to date (1 subject file(s))."
+  },
+  "currentFourSubjects": [
+    {
+      "subject": "Biologie",
+      "maturity": "M6",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "warn",
+        "summary": "Deep curriculum QA is incomplete: 37/363 current curricularAtomic goals strictly complete.",
+        "metrics": {
+          "expectedGoals": 363,
+          "remaining": 326,
+          "strictComplete": 37,
+          "currentDescriptionResolutions": 37,
+          "currentPositiveEvidenceProfiles": 37,
+          "currentSemanticAtomicityDecisions": 363,
+          "currentMemoryReviewDecisions": 363,
+          "currentVisualizationQaRecords": 44,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    },
+    {
+      "subject": "Chemie",
+      "maturity": "M6",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "warn",
+        "summary": "Deep curriculum QA is incomplete: 79/376 current curricularAtomic goals strictly complete.",
+        "metrics": {
+          "expectedGoals": 376,
+          "remaining": 297,
+          "strictComplete": 79,
+          "currentDescriptionResolutions": 79,
+          "currentPositiveEvidenceProfiles": 79,
+          "currentSemanticAtomicityDecisions": 199,
+          "currentMemoryReviewDecisions": 376,
+          "currentVisualizationQaRecords": 352,
+          "deferredVisualizations": 22,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        },
+        "details": [
+          "22 current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V."
+        ]
+      }
+    },
+    {
+      "subject": "Mathematik",
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 807 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 807,
+          "remaining": 0,
+          "strictComplete": 807,
+          "currentDescriptionResolutions": 807,
+          "currentPositiveEvidenceProfiles": 807,
+          "currentSemanticAtomicityDecisions": 807,
+          "currentMemoryReviewDecisions": 807,
+          "currentVisualizationQaRecords": 807,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    },
+    {
+      "subject": "Physik",
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 478 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 478,
+          "remaining": 0,
+          "strictComplete": 478,
+          "currentDescriptionResolutions": 478,
+          "currentPositiveEvidenceProfiles": 478,
+          "currentSemanticAtomicityDecisions": 478,
+          "currentMemoryReviewDecisions": 478,
+          "currentVisualizationQaRecords": 478,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    }
+  ],
+  "assetInventoryState": "Two PNG imports are already covered by terminal successful asset (1745 links/21 landscapes) and AI-transparency inventory checks; no subsequent asset or canonical resource mutation occurred.",
+  "humanApprovalClaimed": false,
+  "humanTrialClaimed": false,
+  "newCommitOrPush": false,
+  "currentGitHubCIClaimed": false,
+  "next": "Biology recombination split candidates and five new NI-competence adoption remain inactive until actual current source, representation, book D2/P/A/M/V gates; other independent Chemistry packages continue."
+}

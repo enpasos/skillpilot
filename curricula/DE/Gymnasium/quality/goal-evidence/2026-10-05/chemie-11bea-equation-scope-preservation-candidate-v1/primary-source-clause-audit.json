@@ -1,0 +1,99 @@
+{
+  "readDuringCandidateAuthoring": [
+    "BY official C10 HTML",
+    "SN actual physical PDF page24 printed12",
+    "TH actual physical PDF page52 printed47"
+  ],
+  "clauses": [
+    {
+      "clauseId": "BY-C10.1",
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/10/chemie/ch",
+      "locator": "C10 Lernbereich 1, Kompetenz Teil-/Gesamtgleichungen and contents decomposition into partial equations",
+      "verified": "Current official HTML read with web tool during this candidate authoring",
+      "finding": "Generic partial and overall equations are required. They are not restricted by this clause to redox. The partial-equation field also intersects explicitly distinct proton and redox topic areas.",
+      "candidateTargets": [
+        "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+        "83a9eb76-2da5-5057-b063-1ca6964e6df6",
+        "22133f29-ef02-4408-8f8d-2bbea3275d91",
+        "74c021aa-b290-5c21-8c70-944b54c3ceed"
+      ],
+      "status": "HOLD_GENERIC_CONTEXT_COMPLETENESS"
+    },
+    {
+      "clauseId": "BY-C10.4",
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/10/chemie/ch",
+      "locator": "C10.4 proton transitions in reaction equations, acid/base species, reversible transitions and neutralisation",
+      "verified": "Current official HTML personally read",
+      "finding": "Supports a proton-equation competence distinct from redox. Does not itself literally demand separate proton donation/acceptance equations; that explicit requirement is verified in SN.",
+      "candidateTargets": [
+        "74c021aa-b290-5c21-8c70-944b54c3ceed",
+        "1c1420c2-a8e2-520f-8015-6df637a973bd"
+      ],
+      "status": "CONTENT_SUPPORT_ONLY_NOT_WHOLE_BY_PROJECTION_APPROVAL"
+    },
+    {
+      "clauseId": "BY-C10.5",
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/10/chemie/ch",
+      "locator": "C10.5 oxidation numbers and rules for aqueous redox partial equations → redox equations",
+      "verified": "Current official HTML personally read",
+      "finding": "Reuse existing 22133; preserve aqueous scope in both languages; ion/charge prerequisites are necessary.",
+      "candidateTargets": [
+        "22133f29-ef02-4408-8f8d-2bbea3275d91"
+      ],
+      "status": "CONTENT_REUSE_SUPPORTED_QA_PENDING"
+    },
+    {
+      "clauseId": "SN-K8-LB4",
+      "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf",
+      "sourceDigest": "sha256:3a74886e7ee9492b003d4916719e2b4644aef5fdfe8331cdefd8151fe0e86051",
+      "url": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/521/lnuYavMOfLLQRd2MlehG",
+      "physicalPage": 24,
+      "printedPage": 12,
+      "viewedPng": "sn-primary-page24.png",
+      "finding": "Oxidation, reduction and redox reaction in ionic notation and bulk equation are required, with partial equations explicitly named. Metal/nonmetal reactions are not automatically identical to aqueous-only 22133.",
+      "candidateTargets": [
+        "22133f29-ef02-4408-8f8d-2bbea3275d91"
+      ],
+      "status": "HOLD_NON_AQUEOUS_AND_IONIC_BULK_CONTEXT"
+    },
+    {
+      "clauseId": "SN-K8-LB5",
+      "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf",
+      "sourceDigest": "sha256:3a74886e7ee9492b003d4916719e2b4644aef5fdfe8331cdefd8151fe0e86051",
+      "physicalPage": 24,
+      "printedPage": 12,
+      "viewedPng": "sn-primary-page24.png",
+      "finding": "Hydrogen chloride with water requires proton donation, proton acceptance and total reaction in ionic notation/bulk equation; partial equations explicitly named. Reusing aqueous-redox-only 22133 loses this competence.",
+      "candidateTargets": [
+        "74c021aa-b290-5c21-8c70-944b54c3ceed"
+      ],
+      "status": "EXPLICIT_PARTIAL_PROTON_CONTENT_SUPPORTED_QA_PENDING"
+    },
+    {
+      "clauseId": "TH-Q-4.1.5",
+      "path": "curricula/DE/Gymnasium/input/TH/LP_GY_Chemie_2024.pdf",
+      "sourceDigest": "sha256:f89768dabb9f273d3086c5c16008759c7010244ccab1ebb0b3b44b138411c8d7",
+      "url": "https://www.schulportal-thueringen.de/tip/resources/medien/63707?dateiname=Chemie_Lehrplan_AHR_2024-11-13.pdf",
+      "physicalPage": 52,
+      "printedPage": 47,
+      "viewedPng": "th-primary-page52.png",
+      "finding": "Aqueous Fe/Mn redox reactions require oxidation/reduction partial and ionic equations at upper-secondary basic and elevated level. Full context cannot be declared covered by a simple Sek-I redox label.",
+      "candidateTargets": [
+        "22133f29-ef02-4408-8f8d-2bbea3275d91",
+        "4961130b-1ee8-58f2-a319-dff0a864db6a"
+      ],
+      "status": "HOLD_UPPER_SECONDARY_FE_MN_COMPLETENESS"
+    },
+    {
+      "clauseId": "HE-G9-basic-equations",
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-ten-current-independent-review-b-v1/sources/he-g9-chemie.pdf",
+      "locator": "Printed p17 (physical18), Chemische Symbolsprache; simple reaction equations derived from reaction schemes",
+      "verified": "Personally inspected in this agent’s earlier frozen current D review; retained source bytes are reused as source evidence only, no historical review restarted",
+      "candidateTargets": [
+        "83a9eb76-2da5-5057-b063-1ca6964e6df6"
+      ],
+      "status": "BASIC_CONTENT_SUPPORT_ONLY"
+    }
+  ],
+  "ntgAliasLimit": "Current operative extraction merges NTG IDs as source occurrences. Current NTG official HTML was not separately verified in this candidate round; hold rather than equate tracks."
+}

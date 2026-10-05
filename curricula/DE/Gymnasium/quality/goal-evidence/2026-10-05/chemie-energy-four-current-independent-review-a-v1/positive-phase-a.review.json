@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "chemie-energy-four-current-independent-review-a-v1-positive-content",
+  "reviewedAtUtc": "2026-10-05T00:21:27.888410+00:00",
+  "reviewAuthority": "ai_candidate",
+  "recordStatus": "candidate",
+  "status": "independent_current_content_pass_outer_bindings_pending",
+  "descriptionPhaseFreeze": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-current-independent-review-a-v1/description-phase-a.freeze.json",
+    "fileSha256": "sha256:a70b0688ac9b54fb7fde5904fa106bb4d975a63f8daf3ccc72058080febe19d2",
+    "frozenBeforeCurrentFourPositiveProfilesRead": true
+  },
+  "input": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-revision-candidate-v1/positive-evidence.candidates.json",
+    "fileSha256": "sha256:b96944987da9c04a90aafc93549f1ceef0d91e9c875a39d48207b85e96081a50",
+    "preservedExactReviewedCopy": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-current-independent-review-a-v1/reviewed-positive-candidate.input.snapshot",
+    "snapshotFileSha256": "sha256:b96944987da9c04a90aafc93549f1ceef0d91e9c875a39d48207b85e96081a50",
+    "preservedOuterRecordPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy13-current-p-v1/positive-evidence.review.jsonl",
+    "preservedOuterRecordFileSha256": "sha256:75d167518f20e3d27013f030c78608f7300cc1ad3ea783a9ba7b47aaf3644994",
+    "innerProfileHashSerialization": "UTF-8 JSON; sorted keys; compact separators; Unicode unescaped; distinct from full P-record/profileFingerprint contract digest"
+  },
+  "schemaValidation": {
+    "schemaPath": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaFileSha256": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944",
+    "tool": "Ajv2020 current supplied inner profile subschema",
+    "allFourInnerProfilesValid": true,
+    "outerRecordsNotReissuedOrValidatedAsCurrent": true
+  },
+  "goals": [
+    {
+      "goalId": "8ece9beb-9458-5ea1-8e45-9be04670f464",
+      "candidateContentDecision": "PASS",
+      "currentOuterBindingDecision": "HOLD_NOT_CURRENT",
+      "currentGoalFingerprint": "sha256:a0b9bf85dba1d99e0d7c22e675f506d6f591c8ca1a4fd3346ff05eb04a018ded",
+      "currentPageFingerprint": "sha256:6598e63ffbd12121c17b315cf7271af7684b8a9178535e00741c88da4414ecc7",
+      "innerProfileDigest": "sha256:4be8471c3ea927174f8ae90015d81bd04fa155174ba94f2453dab0c863e7952a",
+      "innerProfileSchema": "PASS against current contracts/goal-evidence/v2 $defs/profile",
+      "fullProfileIndependentlyRead": true,
+      "essentialScopeAndExpectedPerformanceAssessment": "Current HE E.4 common-basis combustion/use comparison is covered without claiming a full lifecycle assessment. Two cases change the meaning of the comparison, not merely the fuel label.",
+      "independentReasoningAssessment": "Correctly balance both complete combustions, explain why per-mole and per-mass rankings differ, then connect useful-heat efficiency with stoichiometric CO2 and bound the climate conclusion.",
+      "caseAssessments": [
+        {
+          "caseId": "methane-propane-per-mole-and-mass",
+          "decision": "PASS",
+          "suppliedHelp": "890/2220 kJ per mol, molar masses 16/44 g/mol, complete combustion and same product phase. The current visualization also supplies 55.6/50.5 on a 1 kg basis; reading those values earns no independent credit.",
+          "independentPerformance": "Balance CH4 + 2O2 -> CO2 + 2H2O and C3H8 + 5O2 -> 3CO2 + 4H2O; justify reference amount and reversed ranking; reject an unconditional fuel-quality statement.",
+          "actualAnswerCheck": "890/16=55.625 and 2220/44=50.454545... kJ/g; expected 55.6/50.5 correct. Per mol propane is larger; per equal mass methane is larger.",
+          "deEnFinding": "Inputs, positive-release convention, reference bases and expected conclusions agree."
+        },
+        {
+          "caseId": "fresh-useful-heat-comparison",
+          "decision": "PASS",
+          "suppliedHelp": "1000 kJ useful-heat target; supplied fuel energies and efficiencies 80/95%; molar mass of CO2. Those efficiencies and the common heat target are new conditions; no resulting fuel needs or emissions are supplied.",
+          "independentPerformance": "Apply the useful-heat boundary, independently derive fuel amounts and direct CO2 from the balanced reactions, explain the close outcome and identify absent upstream information.",
+          "actualAnswerCheck": "Methane 1.404494 mol, 61.797753 g CO2; propane 0.474158 mol, 62.588905 g CO2. Expected rounded figures correct. Upstream extraction/transport and methane leakage are legitimately requested, not invented quantitative results.",
+          "deEnFinding": "Both language versions ask the same transfer and boundary judgment."
+        }
+      ],
+      "coverageAssessment": {
+        "requiredExpectationsActuallyCovered": true,
+        "freshVariationAndIndependentTransferActuallyPresent": true,
+        "minimumIndependentDemonstrationsValue": 2,
+        "interpretation": "A design coverage descriptor, never an unconditional extra-task quota after sufficient actual learner evidence. Supplied image content, numbers, phase gap and stated boundary exclusions are not independent performance."
+      },
+      "preservedOuterRecord": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy13-current-p-v1/positive-evidence.review.jsonl",
+        "goalFingerprint": "sha256:817c9b559d82cc3a4dfdfa08722bab4dc223b49096fe7db1d9ee9d246a3b238e",
+        "reviewInputFingerprint": "sha256:9f074a76e1b07e47f0ddf5fee9dae3f99425a12865414c286640871f4fd73142",
+        "profileFingerprint": "sha256:5c90ccf4f707e605f82a963967d472591794ae7947d72ee6823c2cae2b96b46d",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewRunIds": [],
+        "bindingStale": true,
+        "oldInnerProfileMatchesCurrentCandidate": true
+      },
+      "dissent": []
+    },
+    {
+      "goalId": "b95cdf98-fc97-5a94-b133-878922d28156",
+      "candidateContentDecision": "PASS",
+      "currentOuterBindingDecision": "HOLD_NOT_CURRENT",
+      "currentGoalFingerprint": "sha256:50c21cd059d30a57847a38a32f05722831d0b3c789c13d79b92c70018f02c5bb",
+      "currentPageFingerprint": "sha256:110ef6c3a56281546ec5f591a79b6260737c7ffa7de621434e158dac408b5e8f",
+      "innerProfileDigest": "sha256:59437bb6a12fbe8d57072093afcd1b76f4c11b081fab19a9fa58945c497fe465",
+      "innerProfileSchema": "PASS against current contracts/goal-evidence/v2 $defs/profile",
+      "fullProfileIndependentlyRead": true,
+      "essentialScopeAndExpectedPerformanceAssessment": "Actual BY C9 NTG.5.5/C10.3.5 Sek-I scope: product uses, useful function and justified environmental consequences. The review chapter is not an E-stage assignment; no hidden Sek-II quantitative thermodynamics is required.",
+      "independentReasoningAssessment": "Differentiate energy use from material use and connect an actual useful function, release route and fitting limitation/measure. Copying an application label or a listed environmental consequence alone does not demonstrate this connection.",
+      "caseAssessments": [
+        {
+          "caseId": "fuel-and-petroleum-plastic",
+          "decision": "PASS",
+          "suppliedHelp": "Bus diesel, reused petroleum-derived plastic container; direct combustion CO2 and poor-disposal plastic waste are explicitly supplied qualitative facts. If visible in the image, product-use icons and labels are supplied as well.",
+          "independentPerformance": "Explain transport versus repeated-storage benefit, connect actual use with distinct combustion/waste pathways, reject the claim that every petroleum product burns during use and refuse an unsupported whole-lifecycle ranking.",
+          "actualAnswerCheck": "A reused container need not burn during use; direct diesel CO2 and plastic waste are distinct actual pathways. Reuse is not by itself a proof of overall environmental superiority.",
+          "deEnFinding": "Task and expected performance agree in accessible qualitative depth."
+        },
+        {
+          "caseId": "fresh-lubricant-and-road-surface",
+          "decision": "PASS",
+          "suppliedHelp": "Lubricant in a machine, bitumen in a road, and qualitative information on abrasion, leakage and long service life. No numerical comparison dataset or full lifecycle balance is supplied or required.",
+          "independentPerformance": "Explain friction reduction/protection and aggregate binding, connect leakage/abrasion to soil/water/material release, justify a relevant control/collection measure and distinguish long service life from absence of impacts.",
+          "actualAnswerCheck": "Correct functional assignments and credible release routes. Non-combustion use is insufficient for an environmental-harmlessness claim. Requesting production/disposal information bounds the judgment.",
+          "deEnFinding": "Both versions retain the same fresh use/pathway reasoning; neither invents a ranking from unspecified magnitudes."
+        }
+      ],
+      "coverageAssessment": {
+        "requiredExpectationsActuallyCovered": true,
+        "freshVariationAndIndependentTransferActuallyPresent": true,
+        "minimumIndependentDemonstrationsValue": 2,
+        "interpretation": "A design coverage descriptor, never an unconditional extra-task quota after sufficient actual learner evidence. Supplied image content, numbers, phase gap and stated boundary exclusions are not independent performance."
+      },
+      "preservedOuterRecord": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy13-current-p-v1/positive-evidence.review.jsonl",
+        "goalFingerprint": "sha256:32ce8a6c122a01494f60565bd75768370290e28acb51bbbe88ea461642739aa5",
+        "reviewInputFingerprint": "sha256:48829341cbe610ca624dec7e9375f33dd6f81859ebd680296aa9ad7b37677366",
+        "profileFingerprint": "sha256:6dcf5de14561b736fe6938a9a14eb785fa8c7b38a7e19bf70e5d63783b365f0d",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewRunIds": [],
+        "bindingStale": true,
+        "oldInnerProfileMatchesCurrentCandidate": true
+      },
+      "dissent": []
+    },
+    {
+      "goalId": "4928d5d1-e790-5883-9349-3b03a1c63b99",
+      "candidateContentDecision": "PASS",
+      "currentOuterBindingDecision": "HOLD_NOT_CURRENT",
+      "currentGoalFingerprint": "sha256:35fc9a069241bd6addca548ec2af9759605f29141ae5431120af791ab6afdd72",
+      "currentPageFingerprint": "sha256:5cee08093001b88806393559c22cbd30deb3a365bee62aeecfe6cef955b1b4b0",
+      "innerProfileDigest": "sha256:70e9edbd0efb73e565405ddfdad059aeec34caabb371a700e570646cc495e93b",
+      "innerProfileSchema": "PASS against current contracts/goal-evidence/v2 $defs/profile",
+      "fullProfileIndependentlyRead": true,
+      "essentialScopeAndExpectedPerformanceAssessment": "Current BY C12 GA/EA.5.3 system/heat/work/deltaU/deltaH distinction is covered. Heat/work are transfers, not stored state quantities. Constant-pressure/constant-volume identities retain only-pressure-volume-work conditions.",
+      "independentReasoningAssessment": "System boundary and outward-work sign determine deltaU; mechanical conditions determine when measured heat represents deltaU versus deltaH. Isolation refers to the chosen total outer boundary, not every inner part.",
+      "caseAssessments": [
+        {
+          "caseId": "closed-expanding-piston",
+          "decision": "PASS",
+          "suppliedHelp": "Closed cylinder, 500 J heat input, 200 J outward pressure-volume work, constant-pressure model, no other work. A current image displays the general constant-p/constant-V relationships; repeating a formula alone is no understanding evidence.",
+          "independentPerformance": "Interpret outward work as -200 J, explain deltaU=+300 J and deltaH=+500 J under stated constant-pressure/no-other-work conditions, and reject closed=isolated plus heat-as-stored-state errors.",
+          "actualAnswerCheck": "500+(-200)=300 J; under the named constant-pressure model q_p=deltaH=500 J. The difference is pV-work, not missing matter. Do not generalize this to changing system pressure, unmatched end-state pressure or additional work modes.",
+          "deEnFinding": "Work direction, pressure model and other-work exclusion are equivalent."
+        },
+        {
+          "caseId": "fresh-rigid-open-isolated-classification",
+          "decision": "PASS",
+          "suppliedHelp": "Rigid gas-tight calorimeter releases 800 J, no other work; open beaker; fully isolated rigid total boundary explicitly blocks matter, heat and all work including electrical work. Those exclusion facts are data, not discoveries credited to the learner.",
+          "independentPerformance": "Classify the three boundaries; connect rigid/no-other-work to deltaU=-800 J; explain why delta(pV) data are needed for deltaH; reason from all three excluded exchanges to unchanged total internal energy while internal reaction/temperature may change.",
+          "actualAnswerCheck": "Calorimeter q=-800 J and w=0, deltaU=-800 J; no deltaH=-800 J conclusion without delta(pV). Fully isolated total system q=w=0 and no matter exchange implies deltaU_total=0 in the stipulated thermodynamic model. Inner subsystem energy need not remain fixed.",
+          "deEnFinding": "Both task versions now explicitly exclude all energy-transfer modes; neither relies merely on a heat-tight/matter-tight movable boundary."
+        }
+      ],
+      "coverageAssessment": {
+        "requiredExpectationsActuallyCovered": true,
+        "freshVariationAndIndependentTransferActuallyPresent": true,
+        "minimumIndependentDemonstrationsValue": 2,
+        "interpretation": "A design coverage descriptor, never an unconditional extra-task quota after sufficient actual learner evidence. Supplied image content, numbers, phase gap and stated boundary exclusions are not independent performance."
+      },
+      "preservedOuterRecord": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy13-current-p-v1/positive-evidence.review.jsonl",
+        "goalFingerprint": "sha256:433518507b3ad6ad482b3666f933e61a155b596243abae516639faf69a440b10",
+        "reviewInputFingerprint": "sha256:9128082fbd20c9ac8dcf7bbf7ddd2415de6d97e7600c9b3c8f84ac2b46b55906",
+        "profileFingerprint": "sha256:ccee7b75d834790fdae8e9753290358e2ca7cc90e2027e8f21db638add32a3c3",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewRunIds": [],
+        "bindingStale": true,
+        "oldInnerProfileMatchesCurrentCandidate": false
+      },
+      "dissent": []
+    },
+    {
+      "goalId": "3e433dae-99f9-5a95-ad63-d5fa0b5f6836",
+      "candidateContentDecision": "PASS",
+      "currentOuterBindingDecision": "HOLD_NOT_CURRENT",
+      "currentGoalFingerprint": "sha256:a0a9e2e40d5ccebda433dc09fb4d59f59a7650356933d48f4e3f629d81b05c58",
+      "currentPageFingerprint": "sha256:fde71ea1798ed3d6502aa5e5dbf124311bbbde18a830f187cd427ab8fda432cf",
+      "innerProfileDigest": "sha256:f539aae0631a7cffbdcb2423084664166a0445cb7c87e383bd80f47aa3451985",
+      "innerProfileSchema": "PASS against current contracts/goal-evidence/v2 $defs/profile",
+      "fullProfileIndependentlyRead": true,
+      "essentialScopeAndExpectedPerformanceAssessment": "BY C12 GA/EA.5.4 supplied/measured reaction enthalpies, bonding explanation and relative reactant/product energy level. Already evaluated budgets are legitimate assistance. Independent bond-energy sums, formation-enthalpy calculation, activation barriers or absolute energy ranking across unrelated systems are not imported.",
+      "independentReasoningAssessment": "Bond breaking absorbs and bond formation releases energy. Explain relative contributions and reactant/product level for each comparable reaction; distinguish covalent bond contributions from phase/intermolecular stabilization.",
+      "caseAssessments": [
+        {
+          "caseId": "hydrogen-halogen-energy-comparison",
+          "decision": "PASS",
+          "suppliedHelp": "Gas-phase equations, common stoichiometric amount, already evaluated 679/862 and 629/732 kJ budgets and -183/-103 kJ enthalpies. Numerical differences and signs are given help, so recalculation, copying or just reading the more negative value cannot satisfy the goal.",
+          "independentPerformance": "Explain why formation dominates in both cases, why the chlorine net release is greater despite bromine lower breaking cost, and why each product system is lower relative to its own reactants.",
+          "actualAnswerCheck": "679-862=-183 and 629-732=-103 kJ. H2(g)+Br2(g) expressly uses gaseous bromine; this is not a liquid-bromine standard-state claim. Both contributions, not one reactant bond, explain the result.",
+          "deEnFinding": "Both versions explicitly make budgets assistance and qualitative causal explanation the mandatory performance; no bond-sum exercise hidden in expected performance."
+        },
+        {
+          "caseId": "fresh-water-phase-model-limit",
+          "decision": "PASS",
+          "suppliedHelp": "Same reactant basis and temperature, -241.8/-285.8 kJ per mol, and explicit 44.0 kJ per mol lower liquid product level. Both products have O-H bonds. Recognizing or subtracting this already given gap is not uncued evidence.",
+          "independentPerformance": "Explain additional stabilization by intermolecular interactions/condensation, distinguish it from unchanged intramolecular O-H bonding, and identify the missing phase contribution in an average gas-phase bond model.",
+          "actualAnswerCheck": "Liquid product lies 44.0 kJ/mol below gaseous product on the common reactant basis. Identical O-H covalent bonds do not eliminate different intermolecular/phase contributions. Expected causal explanation is not supplied by the task.",
+          "deEnFinding": "Supplied help, no-calculation scope and required independent causal explanation agree."
+        }
+      ],
+      "coverageAssessment": {
+        "requiredExpectationsActuallyCovered": true,
+        "freshVariationAndIndependentTransferActuallyPresent": true,
+        "minimumIndependentDemonstrationsValue": 2,
+        "interpretation": "A design coverage descriptor, never an unconditional extra-task quota after sufficient actual learner evidence. Supplied image content, numbers, phase gap and stated boundary exclusions are not independent performance."
+      },
+      "preservedOuterRecord": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy13-current-p-v1/positive-evidence.review.jsonl",
+        "goalFingerprint": "sha256:74933d9a19e53a3bd1889f962568b5cea022dc82a52b20c5f13e61f55d41cdbb",
+        "reviewInputFingerprint": "sha256:7c48c744696e846b5e003df73133c3778e22b6331b571003f0656040631bec20",
+        "profileFingerprint": "sha256:d439294df506945b7d6870df1dc9f146c78b17c900f61db17c61aa15fc9ba627",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewRunIds": [],
+        "bindingStale": true,
+        "oldInnerProfileMatchesCurrentCandidate": false
+      },
+      "dissent": []
+    }
+  ],
+  "strictCompletionIncrease": 0,
+  "newSubstantiveContentApprovalsAsInactiveCandidates": 4,
+  "restoredCurrentBindings": 0,
+  "activationRequired": "Integrate only after both independent current description reviews and resolved findings. Issue fresh truthful P-v2 outer records against final current goal/context/source/image bindings using these actual content receipts. Preserve old bytes, do not portray a hash-only rewrite as this substantive review. Final D/P/A/M/V intersection and source/projection/gate checks remain root-owned.",
+  "humanApprovalClaimed": false,
+  "humanTrialClaimed": false,
+  "activeCanonicalRegistryOrGateChanges": false,
+  "siblingCurrentReviewBReadForThisAssessment": false,
+  "limitations": [
+    "No full central/build run performed in this independent bounded review.",
+    "HE/BY targeted clauses do not prove exact all-state source coverage or full runtime projections.",
+    "Potential later changes to prerequisite 8ceb or compiled reverse-prerequisite context require targeted binding/content follow-up; frozen current pages must not be reused blindly.",
+    "Current image QA remains candidate-only; actual inspection does not activate V or publication."
+  ]
+}

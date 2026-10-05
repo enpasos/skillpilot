@@ -1,0 +1,79 @@
+{
+  "format": "independent_advisory_review_v1",
+  "reviewer": "independent_b",
+  "createdAt": "2026-10-05T03:57:52.386582+00:00",
+  "reviewAuthority": "ai_candidate",
+  "candidateKey": "ni-fw6-008-meiotic-recombination-companion-v1",
+  "goalId": null,
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-fw6-008-recombination-current-preservation-candidate-v1/companion.goal-template.candidate.json",
+  "candidateSha256": "808e791d5ffc67b402e08821d01aa775d400e24a5d9da5528b89d0b80a09c540",
+  "advisorySemanticSha256": "5c5fece2facfd713e8ac93d520e6f7dab9a4939514bfd09a4a2a478bc03369f4",
+  "fingerprintConvention": "SHA-256 of UTF-8 sorted-key compact JSON containing id=null plus the complete goalTemplateWithoutId; not the native registry fingerprint",
+  "active": false,
+  "humanApproval": false,
+  "nativeRegistryEntry": false,
+  "nativeGatePassed": false,
+  "lane": "Source",
+  "decision": "source_faithful_chromosomal_interpretation_with_limitations",
+  "normativePdf": {
+    "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/kc_naturwissenschaften_gymnasium_sek_i_2015.pdf",
+    "sha256": "7b3c69767b4c9a47d87598bee76a28bf7b6d2f6c9b039f2e655a9ad14d47aeac",
+    "physicalPage": 87,
+    "printedPage": 87,
+    "section": "FW6 Reproduktion, row 2 Fortpflanzung und Vererbung",
+    "column": "additional expectations by end of grade 10",
+    "sourceQuote": "erläutern auf der Grundlage der Meiose die Prinzipien der Rekombination.",
+    "mechanismsExplicitlyEnumerated": false,
+    "gradesBinding": "By end of grade 10 is explicit; 9/10 is a suitable implementation band, not a fixed compulsory individual grade assignment."
+  },
+  "actualVisualInspection": [
+    {
+      "physicalPage": 1,
+      "artifact": "source.page1.png",
+      "finding": "Cover names Gymnasium and grades 5–10."
+    },
+    {
+      "physicalPage": 87,
+      "printedPage": 87,
+      "artifact": "source.page87.png",
+      "finding": "FW6.2 recombination bullet is in end-of-grade-10 column; introductory prose separates cytological/chromosomal Sek I from molecular genetics in Sek II."
+    },
+    {
+      "physicalPage": 88,
+      "printedPage": 88,
+      "artifact": "source.page88.png",
+      "finding": "Continuation of FW6 uses a simplified non-molecular treatment of genetic information."
+    }
+  ],
+  "textOnlyContext": [
+    {
+      "physicalPage": 72,
+      "finding": "School assignment of themes considers age and may flexibly move some end-of-grade-10 competencies earlier; not a visual inspection."
+    },
+    {
+      "physicalPage": 95,
+      "finding": "Example sequence places meiosis and recombination with genetics in grade 10; not a visual inspection."
+    }
+  ],
+  "coverageAssessment": {
+    "normativeCompetence": "Explain recombination principles on the basis of meiosis.",
+    "candidateConcretization": "Independent segregation of different homologous pairs and corresponding segment exchange between non-sister chromatids of a homologous pair.",
+    "relationship": "Biologically plausible didactic realization of a broader source bullet; not two mechanisms quoted individually by the source.",
+    "stageFit": "Appropriate to chromosomal-model Sek-I treatment if supplied conventions are complete and molecular detail is excluded.",
+    "unsupportedExtraRequirements": [
+      "Independent reconstruction of the whole meiosis phase algorithm",
+      "DNA-break or repair mechanisms",
+      "DNA sequence and protein-synthesis mechanisms",
+      "Recombination frequencies or genetic maps",
+      "A probability or 2^n computation routine"
+    ],
+    "mappingConclusion": "No active mapping adoption or registry validation; the source bullet is not declared fully covered by mastering only one proposed child."
+  },
+  "officialOnlineCrosscheck": {
+    "url": "https://cuvo.nibis.de/cuvo.php?p=download&upload=18",
+    "opened": true,
+    "metadataAgreement": "Official PDF viewer confirms 2015 ministry issuer, title, and 110 physical pages.",
+    "directDownloadByteEqualityVerified": false,
+    "reason": "Separate direct byte retrieval returned HTTPError; source.official-byte-check.json records this truth."
+  }
+}

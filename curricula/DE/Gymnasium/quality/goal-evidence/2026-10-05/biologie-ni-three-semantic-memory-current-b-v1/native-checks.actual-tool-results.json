@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "reviewAuthority": "ai_candidate",
+  "scope": "Exactly the three assigned candidate goals; independent scoped A/M native checks",
+  "actualToolResults": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "5e59b2",
+        "wall_time_seconds": 0.253505319,
+        "exit_code": 0,
+        "original_token_count": 148,
+        "output": "\n> skillpilot@0.0.0 quality:semantic-atomicity:check\n> tsx scripts/semanticAtomicityReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-three-semantic-memory-current-b-v1/atomicity.three.candidate.config.json\n\n# Semantic Atomicity Review: canonical-biology-full\nScope: Inactive independent NI three-goal candidate units only\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 3\nCurrent reviewed atomic: 3\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "137b30",
+        "wall_time_seconds": 0.241934317,
+        "exit_code": 0,
+        "original_token_count": 254,
+        "output": "\n> skillpilot@0.0.0 quality:memory-card-review:check\n> tsx scripts/memoryCardReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-three-semantic-memory-current-b-v1/memory.three.candidate.config.json\n\n# Memory Card Review: canonical-biology-full\nScope: Inactive independent NI three-goal candidate units only\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 3\nCurrent no-memory decisions: 3\nCurrent memory-required decisions: 0\nCurrent needs developer review: 0\nMemory goals in scope: 0\nTraced memory goals: 0\nKnown deck IDs: 1\nDeck files: 2\nCard rows: 34\nPrimary cards in scope: 0\nKept primary cards: 0\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 0\nComposition visibility scopes: 0\nMemory-required goals checked in views: 0\nMemory-required goals without visible memory node: 0\n"
+      }
+    }
+  ]
+}

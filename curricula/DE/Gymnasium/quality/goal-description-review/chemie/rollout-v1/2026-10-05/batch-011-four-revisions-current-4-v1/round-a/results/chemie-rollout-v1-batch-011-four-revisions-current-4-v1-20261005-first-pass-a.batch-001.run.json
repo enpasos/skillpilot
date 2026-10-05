@@ -1,0 +1,53 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-energy-four-current-20261005-independent-a",
+  "campaignId": "chemie-rollout-v1-batch-011-four-revisions-current-4-v1-20261005-a",
+  "roundId": "chemie-rollout-v1-batch-011-four-revisions-current-4-v1-20261005-first-pass-a",
+  "batchId": "chemie-rollout-v1-batch-011-four-revisions-current-4-v1-20261005-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:6c4962ee54995425d8842fed5f9a8046e1a13334e703e2157867a98ef459a288",
+  "bundleFingerprint": "sha256:69add8afb23383afccf263ff78a5b9b76544e9975a868df556153aa6adaaa82b",
+  "bookDigest": "sha256:9fe2008f328f2c354df1f4bb5f44f4c3e4b51d94fd6cd4d6d4fbe62843987eca",
+  "provider": "OpenAI",
+  "model": "Codex session; exact model version not exposed",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:e34b581461bf0159da4accd2270f7109f415b20ba0df315fbb2e0369dc6ec89e",
+  "independenceGroupId": "chemie-rollout-v1-batch-011-four-revisions-current-4-v1-20261005-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "8ece9beb-9458-5ea1-8e45-9be04670f464",
+    "b95cdf98-fc97-5a94-b133-878922d28156",
+    "4928d5d1-e790-5883-9349-3b03a1c63b99",
+    "3e433dae-99f9-5a95-ad63-d5fa0b5f6836"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:35100c1f731da06ffd98e00d05d89bbfa149961e1e3ebe5af2857650a272535a"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:cce046b387e5deaa6baeccbffc9fbb63f2da86cb2397e8bced46a5da471ab60f"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:6c4962ee54995425d8842fed5f9a8046e1a13334e703e2157867a98ef459a288"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    }
+  ],
+  "startedAt": "2026-10-05T00:05:24.377274+00:00",
+  "completedAt": "2026-10-05T00:16:31.422608+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:84ab4391ee72cdfada66fa5b246bc2cc82badb38e7e47436daf27f160e8b59f4",
+  "toolchainVersion": "goal-description-review-v1"
+}

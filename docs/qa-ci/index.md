@@ -52,6 +52,16 @@ Use this page by role: start with the overview documents, then jump to a review 
 - [Biologie: Korrektur des Proteintransport-Bildes](biologie-5c2-proteintransport-bildkorrektur-2026-10-01.md)
 - [Biologie E-Phase: Audit lokaler Prüfungsaufgaben](biologie-ephase-capstone-only-thirteen-local-task-audit-2026-10-01.md)
 - [Biologie Q1: Audit des nächsten Pakets](biology-q1-next-package-audit-2026-10-01.md)
+- [Fortsetzung und geprüfter Ausgangsstand vom 5. Oktober](chemie-biologie-m7-resumption-checkpoint-2026-10-05.md)
+- [Vier fachliche Abschlüsse vom 5. Oktober](chemie-biologie-m7-four-closures-checkpoint-2026-10-05.md)
+- [Vier aktuelle Bildbindungen vom 5. Oktober](chemie-biologie-m7-four-image-binding-checkpoint-2026-10-05.md)
+- [Energiepaket: acht aktuelle Abschlüsse vom 5. Oktober](chemie-biologie-m7-energy8-checkpoint-2026-10-05.md)
+- [Stoffmenge: sieben aktuelle Abschlüsse vom 5. Oktober](chemie-biologie-m7-stoffmenge-seven-checkpoint-2026-10-05.md)
+- [Stoffmenge: neun aktuelle Abschlüsse vom 5. Oktober](chemie-biologie-m7-stoffmenge-nine-checkpoint-2026-10-05.md)
+- [Aktuelle Kandidaten und bereinigte Reservierungen vom 5. Oktober](chemie-biologie-m7-current-candidates-reservations-checkpoint-2026-10-05.md)
+- [Ein neuer Redoxabschluss vom 5. Oktober](chemie-biologie-m7-redox-one-checkpoint-2026-10-05.md)
+- [KI-Transparenzinventar vom 5. Oktober](chemie-biologie-ai-transparency-inventory-2026-10-05.md)
+- [Gesicherter Commit-Zwischenstand vom 5. Oktober](chemie-biologie-m7-commit-checkpoint-2026-10-05.md)
 
 ## Review Lanes
 

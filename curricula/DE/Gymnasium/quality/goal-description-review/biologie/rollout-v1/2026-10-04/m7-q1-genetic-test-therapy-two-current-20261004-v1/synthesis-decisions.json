@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "biologie-q1-tests-therapy-current-20261005-v1-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex current independent-review synthesis",
+  "synthesizedAt": "2026-10-04T22:18:38.000Z",
+  "batch": {
+    "batchId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1",
+    "batchManifestDigest": "sha256:2188d05ae9f7aea06193f7f8f9579a2cf81e1a7fe43c9a08d08a24179cb8c8cb",
+    "configDigest": "sha256:ad73401b9fa08aadd5833f28bf3d4cf96f0ef42932b3eb573f8be56a141d4a6a",
+    "bundleFingerprint": "sha256:aeff4a729f8c4e8c5dc9e19bd7eb822cc1dd2511a2c94694802d6b1023a0b0fd",
+    "bookDigest": "sha256:6fa310698b9ea7b5671e103dc0a729ffcd41eef27f3a201659e3db05e1a08fa4",
+    "reviewInputFingerprint": "sha256:61a348d38c8338450d3c19510728dc3cbdeac4cf6834ab6682571fcefa51d8e8",
+    "dualSummaryDigest": "sha256:f1fcede4f941eaed6e36baa1b98f46285d3d208a00f187decf40acdc08182a96",
+    "canonicalLandscapeDigest": "sha256:bf1f0db83fb572b882630cd25327633874e35126f6a014da697c90c1c87a644f"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-a",
+      "campaignDigest": "sha256:81f2e833c16e2be489de435177fb8265d1b6fce541216a32d54950fdcc95e00e",
+      "roundId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-a",
+      "independenceGroupId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-independent-a",
+      "reviewInputFingerprint": "sha256:61a348d38c8338450d3c19510728dc3cbdeac4cf6834ab6682571fcefa51d8e8",
+      "batchId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:e63d9e83a1ff91693df226561174204a2d5f313e1823bf05fe97e6c0021faac1",
+      "runId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-a.codex-review",
+      "runManifestDigest": "sha256:0fac038a832bd43afa7c5b2863a9d4d7bf4e6584d6c2461a361397c1559bbd5c",
+      "resultsDigest": "sha256:7a0e6d7a26c32759b413768a6f023c856e8507d83a8aaf097f1c3947380d69c0"
+    },
+    "second": {
+      "campaignId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-b",
+      "campaignDigest": "sha256:011ae9eddd838e7d0df50b8532e32ac1a5ef3c5acd7b9f2e11610eb043c44024",
+      "roundId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-b",
+      "independenceGroupId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-independent-b",
+      "reviewInputFingerprint": "sha256:61a348d38c8338450d3c19510728dc3cbdeac4cf6834ab6682571fcefa51d8e8",
+      "batchId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:b711ee9fd73ffc05e92a4559a12f8e48ed712faaeed342b729e0ea2276a7495b",
+      "runId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-b.batch-001-codex-b-20261005",
+      "runManifestDigest": "sha256:7fbf9788e3102486d5ffd27d4d0141755ee9ddd89987e466fe7f3cc0264652d7",
+      "resultsDigest": "sha256:6361257f198cb2440826ae6e885ac3778d94b14cb2ea49cc69425427370c5a9a"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "biologie-q1-tests-therapy-current-20261005-v1-synthesis-decision-001",
+      "goalId": "73b66ead-e44a-5486-98e3-1fb3f99620a6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ec9772608085ab1e88fa68774ed60eed8efab36bfcc68248c0dcd27edd6f8a21",
+      "pageFingerprint": "sha256:af833d87229f19b9aa5f3bce777eb3b6b81f8026edb3db5e91de4a49ec257758",
+      "goalReviewContextFingerprint": "sha256:9a1d31511f441bfe67c3ade573fa35a9f45a6ea9d237d26dc041b5618348becf",
+      "finalText": {
+        "titleDe": "Gentests beurteilen",
+        "titleEn": "Assess genetic tests",
+        "descriptionDe": "Die lernende Person kann an einem vorgegebenen anonymen Gentestfall den Anlass, die Aussagekraft des Befunds für die geprüfte Frage und dessen Grenzen für eine sachliche Beratung beurteilen.",
+        "descriptionEn": "Using a supplied anonymous genetic-test case, the learner can assess the reason for testing, what the finding can establish about the question tested, and the limits of that finding for factual counselling."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-a.codex-review.73b66ead-e44a-5486-98e3-1fb3f99620a6",
+          "recordDigest": "sha256:94d1b828de959ae4e0591b3b1d61e933b12361a23e6c04aef858ad78501945d8"
+        },
+        "second": {
+          "recordId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-b.batch-001-codex-b-20261005.goal-001",
+          "recordDigest": "sha256:93a7726c474baa23aa4b0b73c7a85a2038cf09fa8c17e14ba931c76fc082a7b2"
+        }
+      },
+      "rationaleDe": "Zwei unabhängige aktuelle Reviews behalten denselben DE/EN-Text und dieselbe Buch-, Ziel-, Bild- und Kontextbindung. Anlass, Tragfähigkeit und Grenze sind Bestandteile eines einzelnen Beratungsurteils an einem vorgegebenen anonymen Fall. Beide Reviews prüfen den amtlichen gemeinsamen HE-GK/LK-Kern Gentest und Beratung; der ältere Extraction-Locator mit Druckseite 37 und die aktuelle amtliche Fassung Stand 01.08.2025 mit Druckseite 39 enthalten dieselbe relevante Formulierung. Rohe BY-Kompatibilität bleibt ohne direkte Quellenbehauptung. Die neuen P-v2-Kandidaten verlangen eigenes Urteil und unabhängigen Fallwechsel; Bild und Alttext illustrieren begrenzte Reichweite und liefern keinen Leistungsnachweis. Kein offener fachlicher Befund oder abweichender Textvorschlag. Ausschließlich maschinelle AI-Synthese, keine menschliche Freigabe.",
+      "rationaleEn": "Two independent current reviews keep the same bilingual wording and book, goal, image and context bindings. Reason, evidential scope and limit form one counselling judgement in a supplied anonymous case. Both reviewers verify the common HE GK/LK source clause in the current official document and distinguish the older extraction locator. Raw BY compatibility is not a direct source claim. Current P-v2 candidates require an independent judgement and a fresh case; image and alt text show limited scope without performance evidence. No unresolved substantive finding or alternative wording remains. Machine AI synthesis only; no human approval."
+    },
+    {
+      "decisionId": "biologie-q1-tests-therapy-current-20261005-v1-synthesis-decision-002",
+      "goalId": "3891b735-9d0d-5eef-b653-6ad58b9181f6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b6661fbf58f8b6b07adf21a0d8e8ec12ad8f2849fc1d3c5e82f91aca9f5d18aa",
+      "pageFingerprint": "sha256:eace62f61f9c45a8de854fb82d03b56b09efeb6828460e98e7bfe0e8c5dbc118",
+      "goalReviewContextFingerprint": "sha256:175ec2e60a17ae36d0068fdc9f021ea986b756ebe6e792797ce285fbbe170fc0",
+      "finalText": {
+        "titleDe": "Gentherapie prinzipiell erklären",
+        "titleEn": "Explain gene therapy in principle",
+        "descriptionDe": "Die lernende Person kann an einem vorgegebenen Beispiel erklären, wie Gentherapie eine funktionsfähige Genkopie in geeignete Körperzellen einbringt oder dort Erbinformation verändert, welche Zellfunktion beeinflusst werden soll und warum die Wirkung begrenzt sein kann.",
+        "descriptionEn": "The learner can use a supplied example to explain how gene therapy introduces a functional gene copy into suitable body cells or changes genetic information there, which cell function it aims to affect, and why its effect may be limited."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-a.codex-review.3891b735-9d0d-5eef-b653-6ad58b9181f6",
+          "recordDigest": "sha256:45461002a2f0aac1ca4a3e802cda0580862774a5f9d3908199e4268e677285a1"
+        },
+        "second": {
+          "recordId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-b.batch-001-codex-b-20261005.goal-002",
+          "recordDigest": "sha256:63935a6fb262e5742eb0a6ade639e10c7c62df6acd149477f4aa9797981e36ba"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews behalten den gebundenen DE/EN-Text als eine kausale Prinzipkompetenz: geeignete Körperzelle, ergänzte oder geänderte Erbinformation, beabsichtigte Zellfunktion und konkrete Wirkungsgrenze. Beide prüfen die aktualisierte amtliche HE-Fassung auf Druckseite 39 und trennen den gemeinsamen GK/LK-Prinzipkern vom LK-Verfahrenszusatz; der historische Extraction-Locator bleibt als ältere, inhaltsgleiche Quellenroute nachvollziehbar. Proteinbiosynthese ist die fachliche Voraussetzung. Neue P-v2-Kandidaten übertragen die Kette auf ein anderes Gewebe und eine andere Informationsroute; das tatsächliche Bild illustriert Gen-Ergänzung und begrenzte Reichweite, ohne sämtliche Verfahren oder Heilung zu behaupten. Kein offener Befund oder Dissens. Maschinelle AI-Synthese, keine menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews keep the bound bilingual wording as one causal principle: suitable body cells, added or changed genetic information, intended cell function and a case-specific limit. Both verify the current official HE source and separate the common GK/LK principle from the additional LK procedure requirement. Protein biosynthesis supplies the relevant prerequisite. The current P-v2 candidates transfer the chain to another tissue and information route; the actual image illustrates gene addition and limited reach without claiming every procedure or cure. No unresolved finding or dissent remains. Machine AI synthesis, no human approval."
+    }
+  ],
+  "manifestFingerprint": "sha256:2abc3ae665c0659daf53cd4ffed64930c4d789ddd086ab47fa0426d735a9ef67"
+}

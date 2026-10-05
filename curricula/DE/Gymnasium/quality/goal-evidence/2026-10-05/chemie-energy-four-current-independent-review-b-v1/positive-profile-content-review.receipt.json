@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/bio_q1_six_candidate_review_b",
+  "completedAtUtc": "2026-10-05T00:21:51.627399+00:00",
+  "phase": "full-four-P-content-after-frozen-current-D",
+  "descriptionFreezePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-current-independent-review-b-v1/description-phase-frozen.receipt.json",
+  "descriptionFreezeSha256": "sha256:30ed18ffafe4be6cfd3f6aadd0b2e52a90fdbb79edda02c88e911fced2c86cde",
+  "bindingClarificationPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-current-independent-review-b-v1/description-phase-binding-clarification.receipt.json",
+  "bindingClarificationSha256": "sha256:91229ba0ce68d102ec1c64371bef3bf79818e0be032ce4c72ef3d9a9bbf2bc4e",
+  "candidatePPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-revision-candidate-v1/positive-evidence.candidates.json",
+  "candidatePSha256": "sha256:b96944987da9c04a90aafc93549f1ceef0d91e9c875a39d48207b85e96081a50",
+  "candidateWrapperReviewId": "chemie-energy-four-revision-candidate-v2",
+  "candidateWrapperReviewedAt": "2026-10-04T23:04:18.050837Z",
+  "innerProfileSchemaSha256": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944",
+  "innerProfileSchemaValidation": "4/4 PASS, Draft202012Validator #/$defs/profile",
+  "candidateCurrentBindingStatus": "Inactive author envelope has only goal IDs, no current goal/page/book/image/source fingerprints. Content review does not adopt or rebind P. Parent must produce exact current machine review/config binding with truthful review status.",
+  "casesActuallyRead": {
+    "goals": 4,
+    "caseBriefs": 8,
+    "languageVariants": 16,
+    "expectationsDeEn": 8
+  },
+  "independence": {
+    "otherCurrentDReviewOutputRead": false,
+    "otherPReviewerOutputRead": false,
+    "authorPackageREADMEReadAfterD": true,
+    "authorWrapperPriorHoldAndRoundMetadataSeenOnlyAfterD": true,
+    "fullFourPReadBeforeD": false,
+    "priorOwnVSourceKnowledgeDisclosed": true
+  },
+  "actualDResultValidation": {
+    "command": "tsx scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle [owned round-b manifest] --input [owned round-b input] --campaign [owned round-b campaign] --batches-dir [owned round-b batches] --results-dir [owned round-b results]",
+    "exitCode": 0,
+    "output": "Goal-description review campaign results valid: 4"
+  },
+  "decisions": [
+    {
+      "goalId": "8ece9beb-9458-5ea1-8e45-9be04670f464",
+      "decision": "KEEP_P_CONTENT_CANDIDATE_ONLY",
+      "currentAdoptionReadyAfterParentBinding": true,
+      "descriptionAlignment": "actual current operative DE/EN exact scope; named HE E.4 comparison",
+      "cases": [
+        {
+          "id": "methane-propane-per-mole-and-mass",
+          "contentDecision": "PASS",
+          "suppliedHelp": "890/2220 kJ per mol and molar masses, same product phase",
+          "uncuedPerformance": "construct atom-balanced equations; normalize mass basis; explain reversal and reject always-rich claim",
+          "actualChecks": [
+            "CH4+2O2→CO2+2H2O balanced",
+            "C3H8+5O2→3CO2+4H2O balanced",
+            "890/16=55.625 kJ/g;2220/44=50.4545 kJ/g",
+            "per-mole propane>methane;per-mass methane>propane"
+          ]
+        },
+        {
+          "id": "fresh-useful-heat-comparison",
+          "contentDecision": "PASS",
+          "suppliedHelp": "1000 kJ useful heat; two supplied efficiencies and release energies; CO2 molar mass",
+          "uncuedPerformance": "normalize useful heat including efficiency, use differing stoichiometric CO2 production, explain near equality and incomplete climate boundary",
+          "actualChecks": [
+            "1000/(890*0.8)=1.40449 mol CH4;CO2=61.7978g",
+            "1000/(2220*0.95)=0.474158 mol propane;3*44*n=62.5889g",
+            "changed useful-heat and emission boundary is structural transfer, not just number swap"
+          ]
+        }
+      ],
+      "requiredFixes": [],
+      "limitations": [
+        "Given energies have compatible positive-release convention and common phase; no claim learner independently derived values or complete life-cycle emissions.",
+        "No unsupervised combustion execution is requested."
+      ]
+    },
+    {
+      "goalId": "b95cdf98-fc97-5a94-b133-878922d28156",
+      "decision": "KEEP_P_CONTENT_CANDIDATE_ONLY",
+      "currentAdoptionReadyAfterParentBinding": true,
+      "descriptionAlignment": "actual BY Sek-I C9-NTG.5.5/C10.3.5 product-use evaluation; not full global sustainability policy",
+      "cases": [
+        {
+          "id": "fuel-and-petroleum-plastic",
+          "contentDecision": "PASS",
+          "suppliedHelp": "CO2 from diesel and plastic-waste pathway given",
+          "uncuedPerformance": "functionally map energy versus material use; explain benefits and reject universal combustion; qualify overall judgment"
+        },
+        {
+          "id": "fresh-lubricant-and-road-surface",
+          "contentDecision": "PASS",
+          "suppliedHelp": "abrasion, leakage and service-life context are supplied qualitative facts",
+          "uncuedPerformance": "explain friction protection vs material binding, link distinct environmental pathways, justify action and reject nonburning=harmless",
+          "transfer": "fresh nonfuel uses require causal pathways beyond first-case fuel/material binary"
+        }
+      ],
+      "requiredFixes": [],
+      "limitations": [
+        "Supplied impacts are help; repeating CO2/plastic labels alone would not meet complete expected performance.",
+        "No complete numerical LCA or unsupported assertion every road abrasion particle is petroleum-derived plastic."
+      ]
+    },
+    {
+      "goalId": "4928d5d1-e790-5883-9349-3b03a1c63b99",
+      "decision": "REVISE_MODEL_CONDITIONS",
+      "currentAdoptionReadyAfterParentBinding": false,
+      "descriptionAlignment": "current D remains KEEP; quantitative model examples legitimate but must preserve thermodynamic conditions",
+      "cases": [
+        {
+          "id": "closed-expanding-piston",
+          "contentDecision": "PASS_ARITHMETIC_CONDITIONAL_ENTHALPY_HOLD",
+          "actualChecks": [
+            "system closed, not isolated",
+            "absorbedq=+500J;workonsystem=-200J;deltaU=+300J",
+            "deltaH=+500J is correct under constant system pressure with appropriate initial/final mechanical equilibrium and PV-only work"
+          ],
+          "requiredCondition": "Constant external pressure is supplied. State constant system pressure or equilibrated initial/final states at that external pressure explicitly before asserting deltaH=qp."
+        },
+        {
+          "id": "fresh-rigid-open-isolated-classification",
+          "contentDecision": "PASS",
+          "suppliedHelp": "rigid gas-tight calorimeter, open beaker and fully isolated total boundary; explicit no heat/work/matter/electric work",
+          "uncuedPerformance": "classify exchange, infer w=0 and deltaU=-800J, distinguish missing delta(pV), apply deltaU=0 to whole isolated system while permitting internal reaction and temperature change",
+          "actualChecks": [
+            "fully isolated total system now explicitly excludes work, unlike adiabatic-only boundary",
+            "no current factual remainder in isolated-system clause"
+          ]
+        }
+      ],
+      "requiredFixes": [
+        {
+          "field": "profile.expectations[0].essentialUnderstandingDe/En",
+          "finding": "w=-p_ext*deltaV is stated for PV work generally, although constant external pressure is required for this product form. Variable external pressure requires -integral(p_ext dV).",
+          "minimalCorrection": "Qualify the product expression with constant external pressure; keep deltaU=q+w as closed-system balance. No integral calculation becomes a learner demand."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandDe/En and aligned expectedPerformance",
+          "finding": "Constant external pressure alone does not prove constant thermodynamic system pressure; model conditions for deltaH=q_p remain implicit.",
+          "minimalCorrection": "Supply initial/final mechanical equilibrium with constant external pressure, or an explicitly constant-system-pressure equilibrium piston model; then deltaH=+500J is justified. Preserve work sign and values."
+        }
+      ],
+      "limitations": [
+        "Fresh system-boundary case is KEEP; no restart or change to isolated-total-system clause required.",
+        "No new universal equality q=deltaH or work independent of process asserted."
+      ]
+    },
+    {
+      "goalId": "3e433dae-99f9-5a95-ad63-d5fa0b5f6836",
+      "decision": "REVISE_LOCAL_TECHNICAL_WORD",
+      "currentAdoptionReadyAfterParentBinding": false,
+      "scientificContentDecision": "KEEP_P_CONTENT_CANDIDATE_ONLY",
+      "descriptionAlignment": "current BY C12-GA/EA5.4 qualitative bond explanation and relative energetic state; no compulsory sums",
+      "cases": [
+        {
+          "id": "hydrogen-halogen-energy-comparison",
+          "contentDecision": "PASS",
+          "suppliedHelp": "both bond input/output budgets and negative net enthalpies explicitly supplied already evaluated, not independently computed",
+          "uncuedPerformance": "explain both required input and released contribution, reject lower breaking input means larger release, relate each product system to its own reactants",
+          "actualChecks": [
+            "H2+Cl2→2HCl and H2+Br2(g)→2HBr balanced",
+            "679-862=-183 and629-732=-103kJ consistent",
+            "gas-phase Br2 qualifier avoids claiming those values for liquid standard bromine",
+            "chlorine case greater formation release outweighs greater input; individual bond strength not overall system energy"
+          ]
+        },
+        {
+          "id": "fresh-water-phase-model-limit",
+          "contentDecision": "PASS",
+          "suppliedHelp": "-241.8/-285.8 kJ per mol and44.0kJ per mol relative product difference explicitly given",
+          "uncuedPerformance": "explain extra liquid-state intermolecular stabilization and distinguish it from same covalent OH bonds; identify gas-model phase limit",
+          "actualChecks": [
+            "H2+0.5O2→H2O balanced",
+            "liquid/gas formation enthalpy values and44.0 difference scientifically consistent at common conditions",
+            "changed phase is meaningful model-boundary transfer; reading lower product energy from given note alone insufficient"
+          ]
+        }
+      ],
+      "requiredFixes": [
+        {
+          "field": "profile.expectations[0].observablePerformanceDe",
+          "before": "einem einzelnen Eduktband",
+          "after": "einer einzelnen Eduktbindung",
+          "finding": "Eduktband is not the chemical reactant-bond term and disagrees with EN single reactant bond. This is a bounded technical-language repair, not new substantive QA."
+        }
+      ],
+      "limitations": [
+        "Do not count supplied budgets, water-phase numbers or already-stated relative level as independently derived learner work.",
+        "Mandatory performance remains uncued qualitative causal explanation; no hazardous halogen experiment or extra bond-sum routine."
+      ]
+    }
+  ],
+  "sourceAndAssetBindings": "See immutable D-phase receipt and clarification for actual PDF/primary-source/asset hashes and current stable canonical digest equality.",
+  "newSourceFinding": "Current official HE Stand21.04.2026 selected E.4 clause unchanged relative retained Stand01.08.2025; no whole-document identical claim.",
+  "remainingBlockers": [
+    "4928 P model condition repair then targeted independent successor inspection",
+    "3e P bounded technical DE term repair then targeted successor inspection",
+    "Current P adoption bindings, registry and required A/M/V/current central checks belong to root; not performed here.",
+    "Separate8ceb prerequisite atomicity/source/placement package remains unresolved by this review."
+  ],
+  "centralClosureDelta": 0,
+  "newSubstantiveClosures": 0,
+  "restoredCurrentBindings": 0,
+  "humanApprovalClaimed": false,
+  "humanTrialClaimed": false
+}

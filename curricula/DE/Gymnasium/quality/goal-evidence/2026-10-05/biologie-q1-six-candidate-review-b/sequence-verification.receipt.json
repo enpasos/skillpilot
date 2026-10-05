@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "method": "Reviewer separately computes explicit complementary/coding strings and all64 standard-code codons from NCBI transl_table1. Given model assistance is recorded; these are not learner observations.",
+  "checks": [
+    {
+      "check": "0daa-1",
+      "input5to3": "ATGCCA",
+      "complement3to5": "TACGGT"
+    },
+    {
+      "check": "0daa-2",
+      "input5to3": "CGTTA",
+      "complement3to5": "GCAAT"
+    },
+    {
+      "check": "475-template",
+      "template3to5": "TACCTTAAA",
+      "mRNA5to3": "AUGGAAUUU",
+      "translation": {
+        "sequence5to3": "ATGGAATTT",
+        "codons": [
+          "ATG",
+          "GAA",
+          "TTT"
+        ],
+        "translation": [
+          "Met",
+          "Glu",
+          "Phe"
+        ],
+        "trailingBases": ""
+      }
+    },
+    {
+      "check": "475-coding",
+      "coding5to3": "ATGTCTGGT",
+      "mRNA5to3": "AUGUCUGGU",
+      "translation": {
+        "sequence5to3": "ATGTCTGGT",
+        "codons": [
+          "ATG",
+          "TCT",
+          "GGT"
+        ],
+        "translation": [
+          "Met",
+          "Ser",
+          "Gly"
+        ],
+        "trailingBases": ""
+      }
+    },
+    {
+      "check": "ffef-case1-ref",
+      "sequence5to3": "ATGGAATTTCCATAA",
+      "codons": [
+        "ATG",
+        "GAA",
+        "TTT",
+        "CCA",
+        "TAA"
+      ],
+      "translation": [
+        "Met",
+        "Glu",
+        "Phe",
+        "Pro",
+        "Stop"
+      ],
+      "trailingBases": ""
+    },
+    {
+      "check": "ffef-case1-sub",
+      "sequence5to3": "ATGGAGTTTCCATAA",
+      "codons": [
+        "ATG",
+        "GAG",
+        "TTT",
+        "CCA",
+        "TAA"
+      ],
+      "translation": [
+        "Met",
+        "Glu",
+        "Phe",
+        "Pro",
+        "Stop"
+      ],
+      "trailingBases": ""
+    },
+    {
+      "check": "ffef-case1-del",
+      "sequence5to3": "ATGAATTTCCATAA",
+      "codons": [
+        "ATG",
+        "AAT",
+        "TTC",
+        "CAT",
+        "AA"
+      ],
+      "translation": [
+        "Met",
+        "Asn",
+        "Phe",
+        "His"
+      ],
+      "trailingBases": "AA"
+    },
+    {
+      "check": "ffef-case1-ins",
+      "sequence5to3": "ATGCGAATTTCCATAA",
+      "codons": [
+        "ATG",
+        "CGA",
+        "ATT",
+        "TCC",
+        "ATA",
+        "A"
+      ],
+      "translation": [
+        "Met",
+        "Arg",
+        "Ile",
+        "Ser",
+        "Ile"
+      ],
+      "trailingBases": "A"
+    },
+    {
+      "check": "ffef-case1-dup",
+      "sequence5to3": "ATGGAAGAATTTCCATAA",
+      "codons": [
+        "ATG",
+        "GAA",
+        "GAA",
+        "TTT",
+        "CCA",
+        "TAA"
+      ],
+      "translation": [
+        "Met",
+        "Glu",
+        "Glu",
+        "Phe",
+        "Pro",
+        "Stop"
+      ],
+      "trailingBases": ""
+    },
+    {
+      "check": "ffef-case2-ref",
+      "sequence5to3": "ATGTTTGGCAAGTAA",
+      "codons": [
+        "ATG",
+        "TTT",
+        "GGC",
+        "AAG",
+        "TAA"
+      ],
+      "translation": [
+        "Met",
+        "Phe",
+        "Gly",
+        "Lys",
+        "Stop"
+      ],
+      "trailingBases": ""
+    },
+    {
+      "check": "ffef-case2-sub",
+      "sequence5to3": "ATGTCTGGCAAGTAA",
+      "codons": [
+        "ATG",
+        "TCT",
+        "GGC",
+        "AAG",
+        "TAA"
+      ],
+      "translation": [
+        "Met",
+        "Ser",
+        "Gly",
+        "Lys",
+        "Stop"
+      ],
+      "trailingBases": ""
+    },
+    {
+      "check": "ffef-case2-del",
+      "sequence5to3": "ATGTTTAAGTAA",
+      "codons": [
+        "ATG",
+        "TTT",
+        "AAG",
+        "TAA"
+      ],
+      "translation": [
+        "Met",
+        "Phe",
+        "Lys",
+        "Stop"
+      ],
+      "trailingBases": ""
+    },
+    {
+      "check": "ffef-case2-ins",
+      "sequence5to3": "ATGACTTTGGCAAGTAA",
+      "codons": [
+        "ATG",
+        "ACT",
+        "TTG",
+        "GCA",
+        "AGT",
+        "AA"
+      ],
+      "translation": [
+        "Met",
+        "Thr",
+        "Leu",
+        "Ala",
+        "Ser"
+      ],
+      "trailingBases": "AA"
+    },
+    {
+      "check": "ffef-case2-dup",
+      "sequence5to3": "ATGTTTGGCAAAGTAA",
+      "codons": [
+        "ATG",
+        "TTT",
+        "GGC",
+        "AAA",
+        "GTA",
+        "A"
+      ],
+      "translation": [
+        "Met",
+        "Phe",
+        "Gly",
+        "Lys",
+        "Val"
+      ],
+      "trailingBases": "A"
+    }
+  ],
+  "standardCodeSource": "https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi",
+  "completedAt": "2026-10-04T23:29:17.116515+00:00"
+}

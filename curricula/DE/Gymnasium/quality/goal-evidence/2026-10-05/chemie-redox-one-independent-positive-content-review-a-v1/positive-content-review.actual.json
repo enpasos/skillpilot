@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "reviewKind": "independentPositiveContentReviewOnly",
+  "reviewId": "chemie-redox-one-independent-positive-content-review-a-20261005-v1",
+  "recordedAt": "2026-10-05T05:20:17.658105+00:00",
+  "goalId": "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a",
+  "verdict": "PASS",
+  "hold": false,
+  "status": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "profileStatus": "needs_human_review",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewer": {
+    "agent": "/root/chem_b009_redox_current_book_d_a",
+    "modelDisclosure": "OpenAI GPT-6 / Codex as declared by this session; exact deployed model identifier/version and sampling parameters are not exposed.",
+    "rootProfileAuthor": false,
+    "otherIndependentPositiveContentVerdictsRead": false,
+    "afterOwnDescriptionFreeze": true,
+    "countsAsNewDescriptionRound": false
+  },
+  "reviewedExactProfile": {
+    "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-redox-one-current-positive-candidate-v1/positive-evidence.review.jsonl",
+    "reviewFileDigest": "sha256:ebed62d669acb542e9f6b380b834acda975c7345d72db76a814d3d41f248ad64",
+    "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-redox-one-current-positive-candidate-v1/positive-evidence.candidates.json",
+    "candidateDigest": "sha256:508e0366bc672b9350758e6a04b8763a0334dd27744c6a3009b4dfd9f08eedc3",
+    "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-redox-one-current-positive-candidate-v1/positive-evidence.config.json",
+    "configDigest": "sha256:35d52a9d68c8723f7bdedeac97b2f973acdec00f54bb07c944ca582513c4353e",
+    "goalFingerprint": "sha256:7b4373dc5dbaa2e1cd9d76ad97132d9480e5840380787c6eacee50a6455ef07f",
+    "reviewInputFingerprint": "sha256:31d8144eb897dedab32ca9913cf61fbcd1bf48516d64da88de0eaf9a376560f1",
+    "profileFingerprint": "sha256:d5db2a693ff5d5ee045086b450626535830a4bbd7cfa1cebeabcc4328d529993",
+    "nativeInnerProfileIdenticalToAuthoringCandidate": true
+  },
+  "descriptionBoundary": {
+    "ownFreezePath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-009-open-redox-one-current-v2/round-a/own-description-freeze.receipt.json",
+    "ownFreezeDigest": "sha256:728b69e02ead0ba4ba764aba075c9ff59c623ad52c924a6c06963a4e9b91798e",
+    "ownFrozenFilesUnchangedCount": 11,
+    "adjudicationPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b009-redox-current-book-d-a-v1/peer-b-source-grounded.adjudication-only.actual.json",
+    "adjudicationDigest": "sha256:bcb08d7f1dfdc9f3389f239314cddb7fc7235ae5e68599f7bec984ab69d76754",
+    "nativeCurrentResolution": "keep_current",
+    "exactRoundBRevisionDissentPreservedAndRejected": true,
+    "dBeforePReceiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-redox-one-current-positive-candidate-v1/d-before-p-and-candidate-freeze.receipt.json",
+    "dBeforePReceiptDigest": "sha256:eecee7c641a390294de69b53bc0acbdc10fc8838ec364b75664b9469d6fecc4a"
+  },
+  "checks": [
+    {
+      "id": "exact-inner-profile-and-current-native-bindings",
+      "finding": "PASS",
+      "profileEvidence": [
+        "profileFingerprint = sha256:d5db2a693ff5d5ee045086b450626535830a4bbd7cfa1cebeabcc4328d529993",
+        "reviewInputFingerprint = sha256:31d8144eb897dedab32ca9913cf61fbcd1bf48516d64da88de0eaf9a376560f1"
+      ],
+      "rationaleDe": "Genau ein aktueller Datensatz und genau ein Scope-Ziel. Das innere Profil des Authoring-Kandidaten ist mit dem nativen materialisierten Record identisch. Kriterien-, Goal-, P-Input- und innerer Profile-Fingerprint wurden mit den nativen Repository-Exports aus tatsächlichem operativem Goal, autoritativem Semantic Kind, Kriterienbytes und aktuellen Frontend-JPG-Bytes berechnet; alle stimmen. Ein roher Dateihash wurde nicht als normalisierter Fingerprint ausgegeben.",
+      "rationaleEn": "There is exactly one current record and one scoped goal. The candidate inner profile is identical to the native materialized record. Criteria, goal, positive-review-input and inner-profile fingerprints were recomputed with native repository exports from the actual operational goal, authoritative semantic kind, criteria bytes and current frontend JPG bytes; all match. Raw file hashes are not substituted for normalized fingerprints."
+    },
+    {
+      "id": "german-english-equivalence",
+      "finding": "PASS",
+      "profileEvidence": [
+        "introduced oxygen model / eingeführtes Sauerstoffmodell",
+        "no experiment execution or equation construction / keine Versuchsdurchführung und keine Gleichungsaufstellung"
+      ],
+      "rationaleDe": "Alle zehn fachlichen DE/EN-Feldpaare wurden gelesen: zwei Erwartungsfelder, zwei Variationsachsen und je drei Felder der beiden Fallbriefe. Modelle, Stoffe, Bedingungen, Auftrag, Transfer, erwartete Begründung und Ausschlüsse sind semantisch äquivalent. Weder Sprache fordert zusätzlich die quantitative Bilanzierung oder Versuche.",
+      "rationaleEn": "All ten scientific German/English field pairs were read: two expectation fields, two variation axes and three fields for each of the two case briefs. Models, substances, conditions, demands, transfer, expected reasoning and exclusions are semantically equivalent. Neither language adds quantitative balancing or experimental execution."
+    },
+    {
+      "id": "qualitative-metal-nonmetal-oxygen-coverage",
+      "finding": "PASS",
+      "profileEvidence": [
+        "Oxidbildung bzw. Sauerstoffaufnahme Oxidation und Sauerstoffentzug aus einem Oxid Reduktion",
+        "bei Sauerstoffübertragung werden die Veränderungen an den jeweiligen Partnern verfolgt"
+      ],
+      "rationaleDe": "Die wesentliche Erwartung erhält den gemeinsamen qualitativen Kompetenzkern: Oxidbildung/Sauerstoffaufnahme, Sauerstoffentzug aus Oxiden und gekoppelte Sauerstoffübertragung. Magnesium und Silberoxid/Kupferoxid vertreten Metalländerungen, Kohlenstoff als Nichtmetall wird im neuen Fall begründet oxidiert. Ein Wechsel bloßer Farbe oder Helligkeit reicht nicht aus. Die Fälle sind Beispiele zur gemeinsamen Deutungskompetenz, keine Behauptung, dass alle möglichen Metall-/Nichtmetallreaktionen damit erschöpfend getestet wären.",
+      "rationaleEn": "The essential expectation preserves the common qualitative competence: oxide formation/oxygen uptake, oxygen removal from oxides and coupled oxygen transfer. Magnesium and silver/copper oxides represent metal changes; carbon, a non-metal, is justified as oxidized in the fresh case. Colour or brightness alone is insufficient. The cases illustrate the common interpretation competence without claiming exhaustive testing of all possible metal/non-metal reactions."
+    },
+    {
+      "id": "introductory-formation-decomposition-versus-coupled-transfer",
+      "finding": "PASS",
+      "profileEvidence": [
+        "In einem geeigneten Sauerstoffübertragungsfall ordnet sie beide Veränderungen den jeweiligen Partnern zu.",
+        "Eine universelle Pflicht, schon für beide frühen Fälle alle Partner im späteren Elektronenmodell zu beschreiben, wird nicht abgeleitet."
+      ],
+      "rationaleDe": "Fall 1 lässt die frühe Oxidbildung am Magnesium und Sauerstoffentzug aus Silberoxid als je entsprechende Metalländerung deuten. Er verlangt bei der Thermolyse keinen zweiten getrennten Eduktpartner. Fall 2 fordert die beiden gekoppelten Rollen passend zur Sauerstoffübertragung. Diese Trennung entspricht der tatsächlich gelesenen HE-Einführung über Oxidbildung/-zerlegung sowie NI-Sauerstoffübertragung; die verworfene universelle Paarformulierung aus D wird nicht verdeckt zur P-Pflicht.",
+      "rationaleEn": "Case 1 permits introductory magnesium oxide formation and oxygen removal from silver oxide to be interpreted as the corresponding metal changes. It does not require a second separate reactant in thermolysis. Case 2 requires both coupled roles in an appropriate oxygen-transfer context. This distinction fits the actually read Hesse oxide formation/decomposition introduction and Lower Saxony oxygen-transfer context; the rejected universal paired wording from D is not silently reinstated as a P requirement."
+    },
+    {
+      "id": "introduced-electron-model-option",
+      "finding": "PASS",
+      "profileEvidence": [
+        "In einem bereits eingeführten Elektronenmodell stehen Elektronenabgabe und -aufnahme für Oxidation und Reduktion.",
+        "er ist keine zusätzliche universelle Einstiegsanforderung"
+      ],
+      "rationaleDe": "Der elektronische Begriff ist fachlich korrekt und an ein bereits eingeführtes Modell sowie geeignete Teilcheninformationen gebunden. Die qualitative Sauerstoffroute erfüllt die gemeinsame Erwartung; keine zusätzliche universelle Elektronen- oder Teilgleichungspflicht entsteht. NI 9/10 und SN Klasse 8 liefern gelesenen Progressionskontext, werden aber nicht zu einer neuen gemeinsamen Einstiegsvoraussetzung erklärt. Sauerstofffreie elektronische Fälle bleiben bei tatsächlich eingeführtem Modell möglich; zwei quantitative Fallprüfungen werden daraus nicht erfunden.",
+      "rationaleEn": "The electronic interpretation is scientifically correct and conditional on an already introduced model and suitable particle information. The qualitative oxygen route satisfies the common expectation without a universal electron or half-equation requirement. The read Lower Saxony 9/10 and Saxony class 8 contexts establish progression without creating a new shared entry prerequisite. Oxygen-free electronic cases remain possible in an actually introduced model without inventing two additional quantitative assessments."
+    },
+    {
+      "id": "two-independent-performances-and-meaningful-transfer",
+      "finding": "PASS",
+      "profileEvidence": [
+        "minimumIndependentDemonstrations: 2; freshVariationRequired: true; independentTransferRequired: true",
+        "Abschreiben einer Bildgleichung oder bloßes Benennen genügt nicht.",
+        "Neuer Fall ohne Bildlösung"
+      ],
+      "rationaleDe": "Fall 1 verlangt eigene begründete Gegenüberstellung von Bildung und Zerlegung, einschließlich Abgrenzung der auffälligen Helligkeit vom Deutungsgrund. Fall 2 verändert Stoffe und Reaktionsstruktur zur Übertragung von einem Metalloxid auf Kohlenstoff; Sauerstoffweg und beide Rollen müssen verbunden sowie ein plausibler Fehlschluss geprüft werden. Das ist chemischer Transfer statt neuer Zahlen im selben Bild. Fall 1 mit A/B zählt konservativ als ein Fall; Fall 2 liefert eine unabhängige zweite Demonstration. Nur tatsächliche selbstständige Lernendenantworten wären Leistungsbelege, wiederholtes Coaching desselben Falls nicht.",
+      "rationaleEn": "Case 1 requires the learner to justify the contrast of oxide formation and decomposition and distinguish conspicuous brightness from the interpretation basis. Case 2 changes substances and reaction structure to transfer from a metal oxide to carbon; the oxygen path and both roles must be connected and a plausible misconception evaluated. This is chemical transfer rather than new numbers in the same illustration. Conservatively, Case 1 with A/B is one case and Case 2 is the independent second demonstration. Only actual independent learner answers would constitute performance evidence; repeated coaching of one case would not."
+    },
+    {
+      "id": "copper-oxide-carbon-substances-atoms-and-inference",
+      "finding": "PASS",
+      "profileEvidence": [
+        "2 CuO + C → 2 Cu + CO₂",
+        "kein Sauerstoff aus der Umgebung",
+        "Sauerstoffentzug aus CuO zu Cu wird als Reduktion gedeutet; Kohlenstoff nimmt Sauerstoff auf und wird zu CO₂ oxidiert."
+      ],
+      "rationaleDe": "Eigenständig geprüft: links/rechts je Cu=2, O=2 und C=1; alle Stoffe des Schemas sind insgesamt ungeladen. CuO ist Kupfer(II)-oxid, das Metallprodukt Cu und Kohlenstoffdioxid CO₂ sind in diesem bereitgestellten korrekten Schema stofflich sinnvoll. Beide O-Atome stammen angesichts der gegebenen Systemgrenze aus CuO; CuO wird unter Sauerstoffverlust zu Kupfer reduziert, Kohlenstoff unter Sauerstoffaufnahme oxidiert. Die vorhandene Sauerstoffmenge am Ausgangsstoff beweist keine Oxidation. Das korrekte Schema und die Randbedingung sind Givens, nicht zu bewertende Eigenleistung. Kein allgemeiner Reinheits-, Mechanismus- oder Ausbeutenbefund zu beliebigen realen Heizversuchen wird daraus abgeleitet. Die qualitative Reaktion wurde zusätzlich mit einem offiziellen RSC-Auszug gegengeprüft.",
+      "rationaleEn": "Independently checked: both sides contain Cu=2, O=2 and C=1; the scheme is overall uncharged. CuO is copper(II) oxide; metallic Cu and carbon dioxide CO₂ are chemically meaningful products in the supplied correct scheme. Given the stated boundary, both oxygen atoms originate from CuO; oxygen loss reduces the oxide to copper and oxygen uptake oxidizes carbon. Initial oxygen content does not prove oxidation. The correct scheme and boundary are givens, not learner performance. No purity, mechanism or yield claim about arbitrary real heating experiments follows. The qualitative reaction was also cross-checked against an official RSC extract."
+    },
+    {
+      "id": "silver-oxide-decomposition-data",
+      "finding": "PASS",
+      "profileEvidence": [
+        "Silberoxid wird zerlegt; Silber und Sauerstoff entstehen.",
+        "Bei B wird dem Silberoxid Sauerstoff entzogen und Silber entsteht"
+      ],
+      "rationaleDe": "Die bereitgestellte Zerlegung ist als Silber(I)-oxid Ag₂O → Silber und molekularer Sauerstoff fachlich richtig. Review-Gegenprüfung: 2 Ag₂O → 4 Ag + O₂ erhält links/rechts Ag=4 und O=2; dies ist keine zusätzliche vom Lernenden aufzustellende Gleichung. Im frühen Sauerstoffmodell ist der Übergang vom Oxid zum Metall durch Sauerstoffentzug als Reduktion deutbar. Ein späterer elektronischer Zugang könnte die im Oxid gebundene Sauerstoffkomponente als oxidiert erklären, ist hier aber ausdrücklich keine Pflicht. Keine Verwechslung mit CuO-Thermolyse, bloßer Stofftrennung oder einer zwingenden äußeren Reduktionsmittelzugabe. HE nennt Silberoxid-Thermolyse als Einführungsbeispiel; eine offizielle Universitätsquelle bestätigt die bereitgestellten Produkte und die geprüfte Formel.",
+      "rationaleEn": "The supplied decomposition is chemically correct for silver(I) oxide Ag₂O yielding silver and molecular oxygen. Reviewer cross-check: 2 Ag₂O → 4 Ag + O₂ conserves Ag=4 and O=2 on both sides; this is not an additional learner equation-construction demand. In the introductory oxygen model, oxide-to-metal change through oxygen removal can be interpreted as reduction. A later electron account could identify oxidation of the oxide-bound oxygen component, but is explicitly not mandatory here. This is not confused with CuO thermolysis, physical separation or a requirement for an external reducing reagent. Hesse names silver oxide thermolysis as an introductory example; an official university source confirms the supplied products and checked formula."
+    },
+    {
+      "id": "givens-versus-evidence-and-visualization",
+      "finding": "PASS",
+      "profileEvidence": [
+        "Es liegen ausschließlich Daten aus beaufsichtigten Versuchen vor",
+        "Das Schema ist gegeben",
+        "Abschreiben einer Bildgleichung oder bloßes Benennen genügt nicht."
+      ],
+      "rationaleDe": "Versuchsergebnisse, korrekte Formeln, Systemgrenze und vorhandenes Magnesium-Elektronenbild sind Hilfen/Informationen, keine beobachtete Lernleistung. Leistung ist die selbstständige Begründung von Sauerstoffänderung, Zuordnung und Fehlschlussprüfung. Der CuO/Kohlenstoff-Fall enthält keine Bildlösung und benötigt keine Gitterlabel-Erkennung. Das vorhandene bereits selbst gesehene JPG wird über unveränderte tatsächliche Bytes gebunden; die frühere native Bild-/360-/680-Beurteilung bleibt eigenständig erhalten und wird nicht zu Human- oder Veröffentlichungsfreigabe umgedeutet.",
+      "rationaleEn": "Experiment results, correct formulas, the system boundary and the existing magnesium electron illustration are information/support rather than observed learner performance. Performance consists of independent reasoning about oxygen changes, assignment and misconception evaluation. The CuO/carbon case has no illustrated solution and does not depend on recognizing lattice labels. The existing JPG, already visually inspected by this reviewer, is bound through unchanged actual bytes; the previous native/360/680 inspection remains separate and is not turned into human or publication approval."
+    },
+    {
+      "id": "safe-scope-and-authority",
+      "finding": "PASS",
+      "profileEvidence": [
+        "Keine Versuchsdurchführung und keine Gleichungsaufstellung werden verlangt.",
+        "kein Aufstellen über Oxidationszahlen, keine quantitative Elektronenbilanz und keine Reaktionsmengenrechnung"
+      ],
+      "rationaleDe": "Beide Fälle verwenden bereitgestellte Daten oder ein gegebenes Schema, ohne Feuer-/Staub-/Fumendurchführung durch Lernende. Archetyp concept passt zur Deutungsleistung; Anforderungen einer eigenständigen Versuchsplanung, Kontrolle/Variablenmessung oder Unsicherheitsrechnung werden nicht aus den bereitgestellten Demonstrationsdaten eingeführt. Keine Mengenrechnung, Oxidationszahlgleichung, Redoxreihe, Symbolrekonstruktion oder quantitative Elektronenbilanz ist Zielpflicht. Der Kandidat behält needs_human_review/ai_candidate, E1/G1, leere gültige Runreferenzen und keine Lernenden-/Human-/M7-Bewährungsbehauptung. Leerer P-Dissent löscht den exakt separat erhaltenen D-Textdissent nicht.",
+      "rationaleEn": "Both cases use supplied data or a given scheme without requiring learners to execute fire, powder or fume activities. The concept archetype fits interpretation; supplied demonstration data do not introduce independent experimental design, control/variable measurement or uncertainty calculations. Stoichiometry, oxidation-number equation construction, redox-series reasoning, symbol reconstruction and quantitative electron balancing are not mandatory. The candidate retains needs_human_review/ai_candidate, E1/G1, valid empty run references and no learner, human or M7 attestation. Empty P dissent does not erase the exact separately preserved D wording dissent."
+    }
+  ],
+  "sources": [
+    {
+      "id": "HE",
+      "localPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-chemie.pdf",
+      "digest": "sha256:f0a2c3795fcbcad1fee8d92d7ab9bc26810609bee0ef1fbd02c830e171220d2f",
+      "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf",
+      "actualContext": "Native pages 15, 17 and 18 (printed 14, 16 and 17): year 8 introductory oxide formation/decomposition including silver oxide thermolysis; year 9 selected oxygen transfer with metal/non-metal oxides. Actually read for own D and relevant text refreshed for P. Source supports qualitative scope, not a universal electron/equation entry requirement."
+    },
+    {
+      "id": "NI",
+      "localPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/kc_naturwissenschaften_gymnasium_sek_i_2015.pdf",
+      "digest": "sha256:7b3c69767b4c9a47d87598bee76a28bf7b6d2f6c9b039f2e655a9ad14d47aeac",
+      "url": "https://cuvo.nibis.de/index.php?p=download&upload=18",
+      "actualContext": "Native pages 59-61 freshly read: years 7/8 oxygen transfer at substance/atom level and separate quantitative equation competence; years 9/10 electronic redox context. Used to retain distinction, without donating quantitative adjacent competence."
+    },
+    {
+      "id": "SN",
+      "localPath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf",
+      "digest": "sha256:3a74886e7ee9492b003d4916719e2b4644aef5fdfe8331cdefd8151fe0e86051",
+      "url": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/521/lnuYavMOfLLQRd2MlehG",
+      "actualContext": "Native page 24, printed12/class8, freshly read: electron transfer for metal/non-metal reactions and transfer to metal oxides/sulfides; contextual progression, not asserted as direct current target mapping or nationwide prerequisite."
+    },
+    {
+      "id": "RSC-scientific-crosscheck",
+      "url": "https://edu.rsc.org/resources/chemical-misconceptions-ii-types-of-chemical-reaction/1089.article",
+      "downloadUrl": "https://edu.rsc.org/download?ac=527320",
+      "actualAccess": "Official indexed search extract read; direct web opens returned HTTP405 and were not falsely reported as full page/PDF access. Indexed extract supplies balanced 2CuO+C→2Cu+CO2 and oxidation/reduction assignments. Independently checked atom conservation. Scientific crosscheck only, not German curriculum norm."
+    },
+    {
+      "id": "Illinois-scientific-crosscheck",
+      "url": "https://chemistry.illinois.edu/system/files/2023-12/Chem%20101%20Exam%202%20Fall%202023%20FINAL.pdf",
+      "actualAccess": "Official university native PDF text accessed through web open: decomposition example 2Ag2O(s)→4Ag(s)+O2(g), PDFpage3. Used only to crosscheck substances/formula; its quantitative exam questions are not adopted as scope."
+    }
+  ],
+  "limitationsDe": [
+    "Diese Prüfung bestätigt die fachliche Eignung dieses exakt gebundenen AI-Kandidaten; keine tatsächlichen Lernendenantworten oder HumanApproval liegen vor.",
+    "Die gelesenen HE/NI/SN-Kontexte begründen den gemeinsamen modellneutralen Kern, keine neue vollständige Quellenfreigabe für alle 16 Landesprojektionen.",
+    "Die Fallbriefe sind zukünftige Bewertungsbeispiele. Vorgelegte Formel-/Stoffdaten müssen als Gegebenes behandelt werden; Gleichungsaufstellung oder Symbolrekonstruktion darf nicht als zusätzliche Leistung verlangt werden.",
+    "Die optionalen elektronischen Zugänge sind nur in bereits eingeführtem Kontext gültig; die beiden Sauerstofffälle behaupten keine erschöpfende Prüfung aller späteren elektronischen Varianten."
+  ],
+  "limitationsEn": [
+    "This review confirms scientific suitability of the exact bound AI candidate, without actual learner responses or human approval.",
+    "The read Hesse/Lower Saxony/Saxony contexts justify the common model-neutral core, not a new complete source approval for all sixteen state projections.",
+    "Case briefs are prospective assessment examples. Supplied formula/substance information remains given; equation construction or symbol reconstruction must not become an added performance requirement.",
+    "Optional electronic accounts apply only in an introduced context; the two oxygen cases do not claim exhaustive assessment of all later electronic variants."
+  ],
+  "substantiveConcerns": [],
+  "proposedFixes": [],
+  "nativeValidationPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-redox-one-independent-positive-content-review-a-v1/native-positive-config-check.actual.json",
+  "nativeFingerprintVerificationPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-redox-one-independent-positive-content-review-a-v1/native-positive-input-fingerprint-check.actual.json",
+  "nativeConfigExitCode": 0,
+  "inputGuardsPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-redox-one-independent-positive-content-review-a-v1/review-input-bindings.actual.json",
+  "canonicalRegistryQaWrites": false,
+  "rootProfileTextEdited": false,
+  "fullCentralOrBuildRun": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "learnerPerformanceClaimed": false,
+  "publicationApproval": false,
+  "m7Claim": false,
+  "integrationPerformed": false,
+  "nextAction": "Parent may use this frozen independent content verdict with the unchanged exact current candidate in its separately authorized integration checks."
+}

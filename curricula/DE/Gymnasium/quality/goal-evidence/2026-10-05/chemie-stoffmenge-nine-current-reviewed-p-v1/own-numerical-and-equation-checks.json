@@ -1,0 +1,193 @@
+{
+  "method": "Independent local Decimal arithmetic from task data; no copied answer-key calculation. Rounded model inputs are accepted as explicitly supplied.",
+  "calculations": [
+    {
+      "quantity": "O2 constituent amount",
+      "computed": "0.40",
+      "profileExpected": "0.40 mol O atoms",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "NaCl ion total",
+      "computed": "0.60",
+      "profileExpected": "0.60 mol ions",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "Water molar mass",
+      "computed": "18.0",
+      "profileExpected": "18.0 g/mol",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "Water amount",
+      "computed": "0.5",
+      "profileExpected": "0.50 mol",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "Mg(OH)2 molar mass",
+      "computed": "58",
+      "profileExpected": "58 g/mol",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "Mg(OH)2 mass",
+      "computed": "11.60",
+      "profileExpected": "11.6 g",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "NaOH mass",
+      "computed": "8.00",
+      "profileExpected": "8.0 g",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "CO2 one molecule grams",
+      "computed": "7.306376E-23",
+      "profileExpected": "7.31e-23 g rounded",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "CO2 one mol grams",
+      "computed": "44.00001916464",
+      "profileExpected": "44.0 g rounded",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "CH4 one molecule grams",
+      "computed": "2.656864E-23",
+      "profileExpected": "2.66e-23 g rounded",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "CH4 fresh sample grams",
+      "computed": "4.000001742240",
+      "profileExpected": "4.00 g rounded",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "O2 quarter mol molecules",
+      "computed": "1.5055351900E+23",
+      "profileExpected": "1.50553519e23 molecules",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "O atoms quarter mol O2",
+      "computed": "3.0110703800E+23",
+      "profileExpected": "3.01107038e23 atoms",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "CO2 fresh amount",
+      "computed": "0.1",
+      "profileExpected": "0.10 mol CO2",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "He fresh amount",
+      "computed": "0.2",
+      "profileExpected": "0.20 mol He",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "H2/O2 mass ratio",
+      "computed": "16",
+      "profileExpected": "16",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "Reference N2 volume",
+      "computed": "6.000",
+      "profileExpected": "6.00 L",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "Reference He amount",
+      "computed": "0.5",
+      "profileExpected": "0.500 mol",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "Closed sample amount at B",
+      "computed": "0.3",
+      "profileExpected": "0.300 mol",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "Closed sample volume at A",
+      "computed": "7.20",
+      "profileExpected": "7.20 L",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "Vm ideal compatibility A",
+      "computed": "23.99000705227974710629921260",
+      "profileExpected": "23.990... L/mol consistent with rounded24.0",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "Vm ideal compatibility B",
+      "computed": "29.98013181441109847478474785",
+      "profileExpected": "29.980... L/mol consistent with rounded30.0",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "CO2 gas amount",
+      "computed": "0.025",
+      "profileExpected": "0.0250 mol",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "CO2 gas M",
+      "computed": "44",
+      "profileExpected": "44.0 g/mol",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "Unknown gas M",
+      "computed": "64",
+      "profileExpected": "64.0 g/mol",
+      "verdict": "PASS"
+    },
+    {
+      "quantity": "Unknown gas wrong-state M",
+      "computed": "128",
+      "profileExpected": "128 g/mol",
+      "verdict": "PASS"
+    }
+  ],
+  "equationChecks": [
+    {
+      "equation": "2 H2 + O2 -> 2 H2O",
+      "reactantAtoms": {
+        "H": 4,
+        "O": 2
+      },
+      "productAtoms": {
+        "H": 4,
+        "O": 2
+      },
+      "verdict": "PASS"
+    },
+    {
+      "equation": "H2 + Cl2 -> 2 HCl",
+      "reactantAtoms": {
+        "H": 2,
+        "Cl": 2
+      },
+      "productAtoms": {
+        "H": 2,
+        "Cl": 2
+      },
+      "verdict": "PASS"
+    }
+  ],
+  "inferenceChecks": {
+    "hydrocarbonBlank": "Clean negative water/CO2 blank supports sample attribution; wet positive water blank blocks unique sample-H inference.",
+    "oxygenInCombustionProducts": "Supplied O2 prevents treating product oxygen as proof of original sample oxygen.",
+    "unknownSample": "Controlled C/H presence does not prove only C/H or exclude other elements.",
+    "molarMassIdentity": "SO2 is compatible among supplied candidates, not uniquely identified by M alone."
+  }
+}

@@ -1,0 +1,325 @@
+{
+  "reviewId": "biologie-ni-three-current-adoption-checks-a-v1",
+  "status": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "frozenAt": "2026-10-05T03:12:56Z",
+  "independentSourceVerdict": "PASS",
+  "independentTargetDescriptionVerdict": "KEEP_THREE",
+  "activeIntegrationVerdict": "HOLD_PENDING_ROOT_ADOPTION",
+  "fullMapping3Verdict": "HOLD_PRESERVED_RECOMBINATION_COVERAGE_FINDING",
+  "humanApproval": false,
+  "pContentsRead": false,
+  "wholePdfReReviewClaimed": false,
+  "checks": [
+    {
+      "stepId": "MAPPING-2",
+      "checkId": "source-goals-created",
+      "label": "Source-Ziele aus den amtlichen Biologie-Kompetenz-Bullets erzeugt",
+      "verdict": "PASS",
+      "passed": true,
+      "details": "123 current Source-IDs = 124 predecessor IDs minus unsupported FW6-003; exactly five records changed and 118 records preserved byte-for-byte as parsed records. Five actual official table cells on pages 87-89 inspected visually and in extracted text.",
+      "scope": "candidate adoption of the exact NI3 package; active integration remains HOLD"
+    },
+    {
+      "stepId": "MAPPING-2",
+      "checkId": "passage-to-source-goal-coverage",
+      "label": "Jede Biologie-Kompetenztabelle hat Source-Ziele",
+      "verdict": "PASS",
+      "passed": true,
+      "details": "18/18 expected topic passages exist and each has at least one current Source goal; counts: {\"BW\": 8, \"EG1-5-6\": 7, \"EG1-7-8\": 3, \"EG1-9-10\": 3, \"EG2-5-6\": 6, \"EG2-7-8\": 12, \"EG2-9-10\": 6, \"EG3\": 7, \"EG4\": 3, \"FW1\": 6, \"FW2\": 6, \"FW3\": 2, \"FW4\": 11, \"FW5\": 5, \"FW6\": 12, \"FW7\": 14, \"FW8\": 4, \"KK\": 8}",
+      "scope": "candidate adoption of the exact NI3 package; active integration remains HOLD"
+    },
+    {
+      "stepId": "MAPPING-2",
+      "checkId": "source-goal-ids-unique",
+      "label": "Source-Ziel-IDs sind eindeutig",
+      "verdict": "PASS",
+      "passed": true,
+      "details": "123 records and 123 distinct nonempty Source-IDs; retirement absent and no new fabricated Source-ID.",
+      "scope": "candidate adoption of the exact NI3 package; active integration remains HOLD"
+    },
+    {
+      "stepId": "MAPPING-2",
+      "checkId": "source-goals-reference-passages",
+      "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+      "verdict": "PASS",
+      "passed": true,
+      "details": "123/123 passageId and sourceSpan.passageId resolve to the same existing passage; topic codes and sourceDocumentKey agree.",
+      "scope": "candidate adoption of the exact NI3 package; active integration remains HOLD"
+    },
+    {
+      "stepId": "MAPPING-2",
+      "checkId": "source-goal-trace-complete",
+      "label": "Jedes Source-Ziel hat Kompetenzüberschrift, Source-Span und Quellenreferenz",
+      "verdict": "PASS",
+      "passed": true,
+      "details": "123/123 have nonempty headingTitle, sourceText, sourceSpan.label, sourceSpanText, sourceRef and a sourcePage within the retained competence-table window 75-92. Selected page/cell/grade columns independently checked on actual PDF87-89.",
+      "scope": "candidate adoption of the exact NI3 package; active integration remains HOLD"
+    },
+    {
+      "stepId": "MAPPING-2",
+      "checkId": "source-goal-count-peer-baseline-local-audit",
+      "label": "Auffällige Source-Ziel-Anzahl wurde fachlich plausibilisiert",
+      "verdict": "PASS",
+      "passed": true,
+      "details": "Targeted count reconciliation: 118 unchanged previously decided groups + five corrected table-cell groups = 123. FW6-003 is an introduction-derived synthetic competence and is retired, not counted as an extra bullet. Existing peer-baseline exception preserved; no new global peer or whole-PDF audit is claimed.",
+      "scope": "candidate adoption of the exact NI3 package; active integration remains HOLD"
+    },
+    {
+      "stepId": "MAPPING-2",
+      "checkId": "current-selected-source-adoption-review",
+      "label": "Gezielte aktuelle Quellen- und Zieladoption fachlich geprüft",
+      "verdict": "PASS",
+      "passed": true,
+      "details": "PASS targeted AI adoption candidate: FW6-004 (p87, additional end grade10) maps exactly to bounded chromosomal mitotic-identity target, plus existing mitosis description as partial; FW6-010/011 (p88, additional end grade10) jointly support nonmolecular gene-product-trait model; FW7-001/002 (p89, end grade6) jointly support observable unguided variation. FW6-003 and its three rows retire. No molecular mechanism inferred.",
+      "scope": "candidate adoption of the exact NI3 package; active integration remains HOLD"
+    },
+    {
+      "stepId": "MAPPING-3",
+      "checkId": "mapping-2-complete",
+      "label": "MAPPING-2 abgeschlossen",
+      "verdict": "PASS",
+      "passed": true,
+      "details": "All seven MAPPING-2 candidate checks PASS in this independent targeted review. Completion metadata may be adopted only together with these exact source, mapping and canonical bytes plus active predecessor archival; live source is unchanged and still pending.",
+      "scope": "candidate adoption of the exact NI3 package; active integration remains HOLD"
+    },
+    {
+      "stepId": "MAPPING-3",
+      "checkId": "m3-review-file-present",
+      "label": "M3-Review-Datei ist vorhanden",
+      "verdict": "PASS",
+      "passed": true,
+      "details": "Actual versioned current-mapping candidate is present; sourceLandscapeId and targetLandscapeId agree with source/canonical. sourceExtractionPath names the exact proposed current source successor. Staged rows and decisions are identical.",
+      "scope": "candidate adoption of the exact NI3 package; active integration remains HOLD"
+    },
+    {
+      "stepId": "MAPPING-3",
+      "checkId": "m3-review-decisions-reference-source-goals",
+      "label": "M3-Review-Entscheidungen referenzieren gültige Source-Ziele",
+      "verdict": "PASS",
+      "passed": true,
+      "details": "123/123 unique mapped decisions refer to current Source-IDs; zero unknown/retired Source-IDs. 334/334 rows resolve to those decisions; zero duplicate source-target pairs.",
+      "scope": "candidate adoption of the exact NI3 package; active integration remains HOLD"
+    },
+    {
+      "stepId": "MAPPING-3",
+      "checkId": "m3-review-targets-exist",
+      "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+      "verdict": "PASS",
+      "passed": true,
+      "details": "334/334 mapped Canonical targets exist in the 444-record staged canonical successor; zero invalid targets. Three newly introduced targets and their two additive parents are independently reviewed here.",
+      "scope": "candidate adoption of the exact NI3 package; active integration remains HOLD"
+    },
+    {
+      "stepId": "MAPPING-3",
+      "checkId": "m3-all-source-goals-reviewed",
+      "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+      "verdict": "PASS",
+      "passed": true,
+      "details": "123/123 mapped decisions with rationale/reviewer/time and nonempty valid targets; 118 unchanged historical decisions preserved exactly, five selected decisions independently adopted as current AI candidates. Zero unreviewed decision records or needsCanonicalGoal statuses. Preserved FW6-008 rationale explicitly leaves an independent recombination-principles witness open. Reviewed/decided is therefore distinguished from fully covered. This is not a fresh substantive approval of all118 historical cells.",
+      "scope": "candidate adoption of the exact NI3 package; active integration remains HOLD"
+    },
+    {
+      "stepId": "MAPPING-3",
+      "checkId": "m3-all-source-goals-covered-by-canonical",
+      "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+      "verdict": "HOLD",
+      "passed": false,
+      "details": "HOLD for substantive complete coverage, while structural123/123 mapped coverage passes. Preserved current decision ni-biology-seki-kc2015-fw6-008-d14910ea expressly leaves an independent witness of recombination principles open after the unsupported trisomy target was removed. The actual p87 FW6.2 bullet requires recombination principles based on meiosis; remaining generic mitosis/meiosis descriptions do not resolve the documented gap. Do not relabel it as complete. 334 rows =328 preserved +six current selected rows. Three unchanged source metadata target caches still contain removed0dd838...; current mapping decisions are the operative route. The five targeted groups and retirement pass independently.",
+      "scope": "candidate adoption of the exact NI3 package; active integration remains HOLD"
+    },
+    {
+      "stepId": "MAPPING-3",
+      "checkId": "current-selected-source-adoption-review",
+      "label": "Gezielte aktuelle Quellen- und Zieladoption fachlich geprüft",
+      "verdict": "PASS",
+      "passed": true,
+      "details": "PASS targeted AI adoption candidate: FW6-004 (p87, additional end grade10) maps exactly to bounded chromosomal mitotic-identity target, plus existing mitosis description as partial; FW6-010/011 (p88, additional end grade10) jointly support nonmolecular gene-product-trait model; FW7-001/002 (p89, end grade6) jointly support observable unguided variation. FW6-003 and its three rows retire. No molecular mechanism inferred.",
+      "scope": "candidate adoption of the exact NI3 package; active integration remains HOLD"
+    }
+  ],
+  "counts": {
+    "currentSourceGoals": 123,
+    "passages": 18,
+    "fullyDecidedSourceGroups": 123,
+    "mappingRows": 334,
+    "unchangedSourceRecords": 118,
+    "unchangedDecisions": 118,
+    "unchangedMappingRows": 328,
+    "selectedMappingRowsBefore": 20,
+    "selectedMappingRowsAfter": 6,
+    "changedSourceCells": 5,
+    "retiredSyntheticSourceGoals": 1,
+    "newCanonicalAtoms": 3,
+    "changedCanonicalParents": 2,
+    "currentCurricularAtomic": 363,
+    "futureCurricularAtomic": 366,
+    "futureCanonicalTotal": 444
+  },
+  "rowMatchTypes": {
+    "partial": 322,
+    "exact": 12
+  },
+  "decisionMatchTypes": {
+    "partial": 119,
+    "exact": 4
+  },
+  "preservedSourceTargetCacheMismatches": [
+    {
+      "sourceGoalId": "ni-biology-seki-kc2015-fw6-008-d14910ea",
+      "authoritativeMappingTargets": [
+        "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+        "ec88fc1d-ee0f-5a01-9464-dc358241050e"
+      ],
+      "preservedSourceMetadataTargets": [
+        "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+        "ec88fc1d-ee0f-5a01-9464-dc358241050e",
+        "0dd8380d-b542-5126-8d8e-f95d9ccded90"
+      ],
+      "status": "inherited_advisory_cache_mismatch",
+      "operationalReaderFinding": "No canonicalTargets read in inspected generateCurriculumQualityStatus.ts or goalBookSourceAtlasInputs.ts; current mapping rows/decisions are the operative route."
+    },
+    {
+      "sourceGoalId": "ni-biology-seki-kc2015-fw7-003-b3921cb7",
+      "authoritativeMappingTargets": [
+        "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+        "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+        "9f73b963-5fac-5a90-a993-d7b7c0cc8526"
+      ],
+      "preservedSourceMetadataTargets": [
+        "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+        "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+        "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+        "9f73b963-5fac-5a90-a993-d7b7c0cc8526"
+      ],
+      "status": "inherited_advisory_cache_mismatch",
+      "operationalReaderFinding": "No canonicalTargets read in inspected generateCurriculumQualityStatus.ts or goalBookSourceAtlasInputs.ts; current mapping rows/decisions are the operative route."
+    },
+    {
+      "sourceGoalId": "ni-biology-seki-kc2015-fw7-012-8ed51e46",
+      "authoritativeMappingTargets": [
+        "002543f9-2d14-5c57-99b4-fb4bf7e53734",
+        "ac40db32-5dc7-5c43-8771-bf805d24aa3b",
+        "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+        "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+        "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+        "6bfcb8da-e337-5395-a50a-848f6a3abf4d"
+      ],
+      "preservedSourceMetadataTargets": [
+        "002543f9-2d14-5c57-99b4-fb4bf7e53734",
+        "ac40db32-5dc7-5c43-8771-bf805d24aa3b",
+        "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+        "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+        "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+        "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+        "6bfcb8da-e337-5395-a50a-848f6a3abf4d"
+      ],
+      "status": "inherited_advisory_cache_mismatch",
+      "operationalReaderFinding": "No canonicalTargets read in inspected generateCurriculumQualityStatus.ts or goalBookSourceAtlasInputs.ts; current mapping rows/decisions are the operative route."
+    }
+  ],
+  "bindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-current-source-integration-route-v1/versioned-replacements/ni.current-source.review-pending.json",
+      "digest": "sha256:b032564eee530bc5a58943e148c45cfdb765cea0feac93bfc501883b8ec0f497",
+      "bytes": 253469
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-current-source-integration-route-v1/versioned-replacements/ni.current-mapping.review-pending.json",
+      "digest": "sha256:ce24006736d23b3208a99b7d7dd954a8ae695dd504aa80a78bcc403d4563afea",
+      "bytes": 183340
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-ni-consolidated-integration-candidate-v1/staged/ni-three-targeted-root-preparation-v1/canonical.biologie.candidate.json",
+      "digest": "sha256:5bebe1a89724d84fb0f7179a5a9a56d6418f472cc11248259b5f97ac3de4951d",
+      "bytes": 919359
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-ni-consolidated-integration-candidate-v1/staged/ni-three-targeted-root-preparation-v1/ni.source-extraction.candidate.json",
+      "digest": "sha256:ec7854f622fbfb08a4449045cb96e5dfe5ed5fbe4f1294d1e4cc25c4ff670db3",
+      "bytes": 252451
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-ni-consolidated-integration-candidate-v1/staged/ni-three-targeted-root-preparation-v1/ni.mapping.candidate.json",
+      "digest": "sha256:a15553d13d0d4e10facaeb20b110c05e171d51649790b2c3fe7e3a23a3eae592",
+      "bytes": 183400
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-current-source-integration-route-v1/source-five-cells-and-one-retirement.delta.json",
+      "digest": "sha256:86748bac9849165347a565e4058744a437909162202eec8f9defe97786e706bd",
+      "bytes": 24254
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-current-source-integration-route-v1/mapping-six-groups.delta.json",
+      "digest": "sha256:0db2856d0cce15a3385541e05dc056f3ee9010d6ee6b1b81712957b565033a5e",
+      "bytes": 20521
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-current-source-integration-route-v1/canonical-current-membership.and-kind-review.units.json",
+      "digest": "sha256:0a81d165e382dd2499d0b8222f64ce3d627841c6368d4856398087f527c21128",
+      "bytes": 19737
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "digest": "sha256:bf1f0db83fb572b882630cd25327633874e35126f6a014da697c90c1c87a644f",
+      "bytes": 913388
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/kc_naturwissenschaften_gymnasium_sek_i_2015.pdf",
+      "digest": "sha256:7b3c69767b4c9a47d87598bee76a28bf7b6d2f6c9b039f2e655a9ad14d47aeac",
+      "bytes": 1361443
+    }
+  ],
+  "activePreservationChecks": [
+    {
+      "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_BIOLOGIE_SEKI_KC2015.source-extraction.json",
+      "expectedDigest": "sha256:2c4cdc61f6371a511d2cd6eb3b08dee0c17817570d4a0274b528e21fd6f29be6",
+      "actualDigest": "sha256:2c4cdc61f6371a511d2cd6eb3b08dee0c17817570d4a0274b528e21fd6f29be6",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+      "expectedDigest": "sha256:95bb721fc5aa5b75b000bcca303ab2d7e472142d6a2e693ea3b8311b27e30be7",
+      "actualDigest": "sha256:95bb721fc5aa5b75b000bcca303ab2d7e472142d6a2e693ea3b8311b27e30be7",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_biology_lower_secondary_source_extraction_to_canonical_biology.m7-e3-recombination-20261001-v2.review.json",
+      "expectedDigest": "sha256:5f578339f71bc595ebc478f4937543801daf6ea296927594a6bfd1fe24a8435f",
+      "actualDigest": "sha256:5f578339f71bc595ebc478f4937543801daf6ea296927594a6bfd1fe24a8435f",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/source-landscape-registry.json",
+      "expectedDigest": "sha256:1fde6c041437c060eac9ffed67ddbd4fe971e2160b0d94235989662f9c82a7e2",
+      "actualDigest": "sha256:1fde6c041437c060eac9ffed67ddbd4fe971e2160b0d94235989662f9c82a7e2",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json",
+      "expectedDigest": "sha256:b3fa299f332be9aec1d15b535187a13ef16fabde9cdc3911f7ff4122375a37a6",
+      "actualDigest": "sha256:b3fa299f332be9aec1d15b535187a13ef16fabde9cdc3911f7ff4122375a37a6",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json",
+      "expectedDigest": "sha256:4c7f12410397dece9aa58b498a531f06fe7edc9a7edac707a834088be6181144",
+      "actualDigest": "sha256:4c7f12410397dece9aa58b498a531f06fe7edc9a7edac707a834088be6181144",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/biologie.semantic-kinds.json",
+      "expectedDigest": "sha256:e65414d704a5b73eb3dd98be7123869234264a89e2ad734fe3e522f3831a96b5",
+      "actualDigest": "sha256:e65414d704a5b73eb3dd98be7123869234264a89e2ad734fe3e522f3831a96b5",
+      "unchanged": true
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json",
+      "expectedDigest": "sha256:4472504a92a783cd66d65580c4b2b2b622d6a00c00b4a91ce09fd248ca12a411",
+      "actualDigest": "sha256:4472504a92a783cd66d65580c4b2b2b622d6a00c00b4a91ce09fd248ca12a411",
+      "unchanged": true
+    }
+  ],
+  "activeWrites": 0,
+  "machineClosures": 0
+}

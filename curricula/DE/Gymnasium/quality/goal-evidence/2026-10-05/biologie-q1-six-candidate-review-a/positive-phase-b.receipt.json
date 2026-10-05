@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "reviewStage": "positive_profiles_after_frozen_description_phase",
+  "reviewedAt": "2026-10-04T23:27:23.361128+00:00",
+  "reviewer": "/root/bio_q1_six_candidate_review_a",
+  "modelFamily": "GPT-6",
+  "exactModelIdentifier": null,
+  "candidateInputSha256": "sha256:a0da1e0010be26825b8f801370613150a1372f5e11743aa75f02eb76d025c9ae",
+  "companionInputSha256": "sha256:fa0092a8238347c6eb61300c50b39f29867cb22c047fdad52fee4c51bca2ea40",
+  "frozenDescriptionReceiptSha256": "sha256:33cf17aec381289218186ed5a8649980d217aac1758e78ee2fb566e1af06e69e",
+  "independence": {
+    "otherIndependentReviewOutputsRead": false,
+    "rootOpinionUsed": false,
+    "sixGoalPFileReadBeforeFreeze": false,
+    "companionEmbeddedPExposedDuringEarlierWholeFileRead": true,
+    "limitation": "Companion JSON embeds profiles and was displayed during the initial file read. Description decisions are independently source/semantic based; no claim is made that companion descriptions were blind to those embedded profiles."
+  },
+  "results": [
+    {
+      "goalId": "0daa79f6-8f61-5506-98f9-65db83062ba8",
+      "profileSha256": "sha256:467c76c12becb5bdbd5f64c01b8f70964cfd0d1dfd3788c77102b827f5344f02",
+      "caseIds": [
+        "build-new-dna-model",
+        "select-and-justify-complement"
+      ],
+      "decision": "PASS_CANDIDATE_ONLY",
+      "contentCheck": "Both complementary sequences and antiparallel directions are correct: ATGCCA/TACGGT and CGTTA/GCAAT; GGAAT mismatches the template G at the second position. The tasks distinguish bases from nucleotides and sequence-information from length/helix shape.",
+      "assistanceBoundary": "Pairing rules, component symbols and direction legends are explicitly supplied. Complement/model production and explanations can be evidence; uncued recollection of those supplied rules cannot be claimed. Second-case complement choices are cues, while correction and the sequence-information explanation still require learner output.",
+      "scopeLimit": "Structure only; no replication coverage and no NI lower-stage molecular approval."
+    },
+    {
+      "goalId": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+      "profileSha256": "sha256:e912097dfc1ade47b008311aeeea964596693bdff2b83081c8642482ecd7889a",
+      "caseIds": [
+        "eukaryotic-connected-model",
+        "prokaryotic-translation-disturbance"
+      ],
+      "decision": "PASS_CANDIDATE_ONLY",
+      "contentCheck": "Template3-TAC CTT AAA-5 yields mRNA5-AUG GAA UUU-3 and Met-Glu-Phe. Coding5-ATG TCT GGT-3 yields AUG UCU GGU and Met-Ser-Gly. Both cases require the connected two-stage chain and correctly separate nuclear eukaryotic transcription from functional cytoplasmic translation. Simplified intron-free fragments are explicit, not full-protein or full-processing models.",
+      "assistanceBoundary": "Pairing/code tables and strand labels are given. The inhibitor is explicitly described as translation-specific; naming its affected stage alone is cued and cannot establish an independent diagnosis. Learner-generated DNA/RNA/amino-acid chains and explanatory molecule roles remain positive evidence.",
+      "scopeLimit": "One integrated model scope; trait formation/protein functions, full RNA processing or all HE pro/eukaryote details are not certified. Prior D atomicity dissent remains to be formally resolved."
+    },
+    {
+      "goalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+      "profileSha256": "sha256:025fc858c85678a7d3be7ba47502aecd3640cfd3332780a91b45ea28d8c692ff",
+      "caseIds": [
+        "synonymous-indels-and-codon-copy",
+        "missense-in-frame-loss-and-copy-trace"
+      ],
+      "decision": "PASS_CANDIDATE_ONLY",
+      "contentCheck": "GAA/GAG both encode Glu, TTT/TCT encode Phe/Ser. One- and two-base indels shift the given coding frame, a whole-codon deletion/duplication does not, and a one-base duplication does. The stated origin traces correctly distinguish copying from an insertion that merely resembles existing sequence. Protein-sequence consequence is distinguished from supported measured enzyme-function change and unsupported phenotype inference.",
+      "assistanceBoundary": "Reference strand, reading frame, code table, verbally described events and copy-origin traces are given. Event classification from removal/addition/copy hints is assisted; own codon/frame derivation and limited consequence explanations are positive evidence. The supplied lower enzyme activity is not an independently discovered result.",
+      "scopeLimit": "Proposed molecular analysis only; does not prove mutagen/protection content or required age-fit NI nonmolecular coverage."
+    },
+    {
+      "goalId": "946ce2e7-c30d-5670-839d-003b0619c284",
+      "profileSha256": "sha256:9bdc168f1271a0cca19a1ed6bd4cf439a65aecad6a43f6a362e62a3f5f6f6e3b",
+      "caseIds": [
+        "activator-binding-site",
+        "repressor-availability"
+      ],
+      "decision": "PASS_CANDIDATE_ONLY",
+      "contentCheck": "Distinct activating and repressing factor effects, targeted site versus factor-availability change, and bounded mRNA conclusions are correct. Case1 demands a new absence-of-activator prediction; case2 transfers the explanation to a repressor in another unchanged-site model rather than falsely universalizing activation.",
+      "assistanceBoundary": "Both factor action signs, selected binding/mRNA findings and the initial causality model are supplied. These profiles can support an explanation of a given mechanism, matching the candidate text; they cannot certify uncued recognition of unknown factor function or experimental causal discovery. Accept learner-produced factor→regulatory-DNA→transcription→mRNA explanations, not copied data labels alone.",
+      "scopeLimit": "TF mechanism only, not methylation or protein/phenotype quantity. Both actual split components and assessed prerequisites must be preserved before adoption."
+    },
+    {
+      "goalId": "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+      "profileSha256": "sha256:f8898dc4d95e34760b45d8ddea013c6e7b548608f1c97829e976c092011a0677",
+      "caseIds": [
+        "bacterium-and-yeast-diagrams",
+        "plasmid-free-versus-bearing"
+      ],
+      "decision": "PASS_CANDIDATE_ONLY",
+      "contentCheck": "Chromosomal DNA without a membrane-bound nucleus, membrane/wall/ribosome distinctions and optional plasmid DNA are correct. Two structural contexts include plasmid-bearing and plasmid-free bacteria, avoiding the false universal-plasmid rule. No practical genetic transformation or demonstrated expression is claimed.",
+      "assistanceBoundary": "Diagrams/legends and bacterial/yeast identity or plasmid labels are supplied. Repeating these supplied names is not uncued classification evidence. Require the learner explanation of DNA location and basic structural criteria and the inferred optionality of plasmids; none of this proves experimental identification of an unknown cell.",
+      "scopeLimit": "Structure candidate only; revise the unnecessarily advanced EM-organelles prerequisite before integration, and preserve reproduction through its reviewed companion."
+    },
+    {
+      "goalId": "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+      "profileSha256": "sha256:65ab49a5448cc6ff2c4ac1d2eb1d84567de9a1c2ea3d2aa5da3de18687f5830f",
+      "caseIds": [
+        "linear-restriction-fragments",
+        "new-ladder-same-size-different-sequence"
+      ],
+      "decision": "PASS_CANDIDATE_ONLY",
+      "contentCheck": "Linear DNA migrates toward the positive side; smaller fragments run farther under matched conditions. Case1 unknown bands are approximately1000/500bp; case2 PCR products are approximately600bp and restriction bands approximately1200/600bp. Equal size does not establish equal sequence, identity or disease.",
+      "assistanceBoundary": "Marker distances/sizes and well-side polarity are supplied. Matching a marker is an application with provided data, not uncued memorization. A positive explanation of charge/size separation plus fresh marker/pattern/sequence-limit reasoning is required; no pipetting/loading/operating a gel is evidenced.",
+      "scopeLimit": "Explanation and supplied-gel analysis only; not practical procedure mastery or full broader BY DNA-analytics competency."
+    },
+    {
+      "candidateKey": "dna-methylation-eukaryotes",
+      "profileSha256": "sha256:f075ef4e7f0ceaed86ab6ab5e0fc85a2b608d82bb4468478dd8ccf3a1cb761b7",
+      "caseIds": [
+        "same-sequence-cell-comparison",
+        "controlled-promoter-model-and-other-region"
+      ],
+      "decision": "PASS_CANDIDATE_ONLY",
+      "contentCheck": "Same base sequence versus chemical marking is correctly distinguished. Cell-type comparison with unmeasured factor occupancy supports only a possible regulatory explanation, while an explicitly controlled, reversible promoter-mark intervention gives stronger context-limited evidence. Another marked DNA region with transcription prevents universal-silencing claims.",
+      "assistanceBoundary": "Sequence equality, mRNA measurements and controlled intervention/reversal are supplied. The learner must generate the marking-versus-sequence and context/cause explanation; copied methylation/mRNA numbers alone are not positive understanding. No universal methylation effect, protein function or transgenerational inheritance follows.",
+      "scopeLimit": "DNA methylation component only; preserve TF component separately and resolve existing broad epigenetics overlaps before adoption."
+    },
+    {
+      "candidateKey": "bacterial-binary-fission",
+      "profileSha256": "sha256:001a916c625a86adaa2b7f2608a07fdadb0f505dda2a83f31aae21abbcf3e6a9",
+      "caseIds": [
+        "label-and-order-binary-fission",
+        "copying-interruption-time-series"
+      ],
+      "decision": "REVISE",
+      "contentCheck": "Copy→partition→separation and the explicit no-death two-round1→2→4 example are correct. Growth-versus-two-cells and copy interruption/reversal offer fresh process transfer. However, mandatory expectation limited-population-model has observable performance requiring a supplied time series and a justified progression with assumptions; neither case supplies that time series or directly requests the resource/death limits. This population-growth requirement also exceeds the proposed narrow copy/partition/fission description.",
+      "assistanceBoundary": "Drawn stages, the no-death division premise and the copy-specific intervention/results are supplied. Stage labels or reporting given outcomes alone are assisted; learner ordering, genetic-material distribution and growth-versus-division explanation can be evidence.",
+      "requiredFix": "Replace mandatory limited-population-model with an expectation within the declared atom, such as DNA distribution and cell growth versus completed fission, and align its performances to both concrete cases. Keep1→2→4 as an optional application, or explicitly revise the goal/source scope and supply an actual time-series/limits case if population growth is intended to be mandatory. Do not count current whole-profile pass until this mismatch is independently resolved.",
+      "scopeLimit": "No stable companion ID/source/projection currently adopted; no unrestricted growth, mitosis or plasmid-dependent reproduction claim."
+    }
+  ],
+  "summary": {
+    "sixGoalProfilesCandidatePass": 6,
+    "companionProfilesCandidatePass": 1,
+    "companionProfilesRevisionRequired": 1,
+    "centralStrictClosures": 0,
+    "humanApprovals": 0
+  },
+  "claimLimit": "Candidate-content review only. No central current-PDF D resolution, active P/A/M/V, source/view adoption or human approval. Required preservation/prerequisite/source actions in the frozen description receipt remain open."
+}

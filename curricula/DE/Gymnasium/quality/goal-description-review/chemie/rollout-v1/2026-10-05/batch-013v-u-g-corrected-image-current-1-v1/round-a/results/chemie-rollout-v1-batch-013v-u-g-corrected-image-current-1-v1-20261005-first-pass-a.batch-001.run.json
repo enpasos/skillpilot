@@ -1,0 +1,74 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-first-pass-a.local-codex-run-a",
+  "campaignId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-a",
+  "roundId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-first-pass-a",
+  "batchId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:9ce59e378d6d9b1e0176cf5ca35fb3a26625a7ccb83ac31b60aa6d3ade0c6144",
+  "bundleFingerprint": "sha256:cb00a43efcb504338d1b593d07c566f824db864785dfbf11e76c87b6df085923",
+  "bookDigest": "sha256:d0d19d26b99300c3abf172c202d0ce95437cb3739c33fd4be58399cdd9c73f84",
+  "provider": "OpenAI Codex local session",
+  "model": "unexposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:b915e82f6bd0b20f9b71e64435d4ae4337d100d63d592217b72461e1864a2824",
+  "independenceGroupId": "chemie-rollout-v1-batch-013v-u-g-corrected-image-current-1-v1-20261005-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "dd3fc8fe-2316-5fbc-b569-00651c83bc81"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:d5907ba166f4a5abce350b9a73d28ef6f8b5b17e6a51bbd2fe6c2d1a777e6870"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:4b60b76afb4833895d89f32c7a1e13944b5102a418bf67198f326bec9f47a804"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:0d675a36d9433fd293c593dfdd05167057953934fd1611828609528dfc2f4d97"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:d9695999c7bf09ca8bcfcf66baa531d45be5cb09fee08bbc9e2dead53c8c0d38"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:2bd8806c75adac1de2882bb36d61b9ef71452daf58c1df1016ddc522dd662ea4"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:15f8214ad1c46a003cd855f84789f328f0bbda25b1bc664dfaabc3030c321ad5"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:4eae693cdf140b30dfdb3b055d6cda1e30c6826a75cfd37263c4142ece25431a"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:9ce59e378d6d9b1e0176cf5ca35fb3a26625a7ccb83ac31b60aa6d3ade0c6144"
+    }
+  ],
+  "startedAt": "2026-10-05T02:44:39Z",
+  "completedAt": "2026-10-05T02:48:37Z",
+  "status": "completed",
+  "outputDigest": "sha256:b962fc0453d50af74c673a5db03ddc1b0b92604573644ce2e41d454ef5d75f9a",
+  "toolchainVersion": "codex-local-node-20.20.2-poppler-22.02.0-playwright-chromium"
+}

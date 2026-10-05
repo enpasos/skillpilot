@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "chemie-two-current-independent-D2-materialization-v1",
+  "actualToolResults": [
+    {
+      "cmd": "npm --prefix app run quality:goal-description-rollout-batch -- summarize --config curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1-integration.config.json --write",
+      "chunk_id": "5aa07c",
+      "wall_time_seconds": 0.736447161,
+      "exit_code": 0,
+      "original_token_count": 114,
+      "output": "\n> skillpilot@0.0.0 quality:goal-description-rollout-batch\n> tsx scripts/materializeGoalDescriptionRolloutBatch.ts summarize --config curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1-integration.config.json --write\n\nStandalone dual summary materialized: chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005; goals=2; requiresSynthesis=2\n"
+    },
+    {
+      "cmd": "npm --prefix app run quality:goal-description-rollout-manifest -- --config curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1-integration.config.json --authoring curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1-integration/synthesis-authoring.json --write",
+      "chunk_id": "3fe986",
+      "wall_time_seconds": 0.785808313,
+      "exit_code": 0,
+      "original_token_count": 180,
+      "output": "\n> skillpilot@0.0.0 quality:goal-description-rollout-manifest\n> tsx scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts --config curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1-integration.config.json --authoring curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1-integration/synthesis-authoring.json --write\n\nStandalone synthesis manifest materialized: chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005; decisions=2; fingerprint=sha256:2b41324e68f0f768118bcc4c7134735e808a59e7a3dc226ee21db9c910f2f49a\n"
+    },
+    {
+      "cmd": "npm --prefix app run quality:goal-description-rollout-resolutions -- --config curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1-integration.config.json --synthesis-manifest curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1-integration/synthesis-decisions.json --write",
+      "chunk_id": "2b36c9",
+      "wall_time_seconds": 0.906432024,
+      "exit_code": 0,
+      "original_token_count": 186,
+      "output": "\n> skillpilot@0.0.0 quality:goal-description-rollout-resolutions\n> tsx scripts/materializeGoalDescriptionRolloutResolutions.ts --config curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1-integration.config.json --synthesis-manifest curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1-integration/synthesis-decisions.json --write\n\nStandalone manifest-bound resolutions materialized: chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005; strict=2/2; deferred=0; manifest=sha256:2b41324e68f0f768118bcc4c7134735e808a59e7a3dc226ee21db9c910f2f49a\n"
+    },
+    {
+      "cmd": "npm --prefix app run quality:goal-description-rollout-batch -- finalize --config curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1-integration.config.json --write",
+      "chunk_id": "54595f",
+      "wall_time_seconds": 0.920590829,
+      "exit_code": 0,
+      "original_token_count": 121,
+      "output": "\n> skillpilot@0.0.0 quality:goal-description-rollout-batch\n> tsx scripts/materializeGoalDescriptionRolloutBatch.ts finalize --config curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013w-mol-analysis-corrected-images-current-2-v1-integration.config.json --write\n\nStandalone resolution index materialized: chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005; strict=2/2; live denominator owned by central report\n"
+    }
+  ],
+  "scientificReviewSource": "Two separately frozen blind current description rounds, actually inspected new PNG/HTML/PDF/source contexts; all original files and freezes retained.",
+  "cleanIntegrationCopyNormalizationReceipt": "review-output-name-normalization.receipt.json",
+  "humanApproval": false,
+  "strictCentralOutcome": "pending; not counted by this receipt"
+}

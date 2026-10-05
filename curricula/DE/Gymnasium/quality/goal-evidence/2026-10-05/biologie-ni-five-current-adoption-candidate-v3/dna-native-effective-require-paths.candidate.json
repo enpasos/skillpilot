@@ -1,0 +1,410 @@
+{
+  "status": "candidate",
+  "humanApproval": false,
+  "nativeFunction": "app/src/hooks/useLandscapes.ts prepareLandscapeEntries; actual inherited cluster requires included",
+  "backendParitySource": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java:10873-10943",
+  "goalId": "0daa79f6-8f61-5506-98f9-65db83062ba8",
+  "directNIWitnesses": [],
+  "sourceSupportedNITargetIds": [
+    "0db20819-ee94-54c6-8ecb-aff8c9b7419e",
+    "440854be-7f06-5678-91cb-ba8dcab56959",
+    "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+    "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+    "ffef97e3-12d6-5090-9816-46ab9e57fae2"
+  ],
+  "paths": [
+    {
+      "sourceSupportedNITargetId": "0db20819-ee94-54c6-8ecb-aff8c9b7419e",
+      "targetTitle": "Tier- und Pflanzenarten bestimmen",
+      "goalPath": [
+        "0db20819-ee94-54c6-8ecb-aff8c9b7419e",
+        "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+        "440854be-7f06-5678-91cb-ba8dcab56959",
+        "0daa79f6-8f61-5506-98f9-65db83062ba8"
+      ],
+      "edgeDetails": [
+        {
+          "from": "0db20819-ee94-54c6-8ecb-aff8c9b7419e",
+          "to": "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+          "relationship": "direct requires",
+          "requireProviderGoalIds": [
+            "0db20819-ee94-54c6-8ecb-aff8c9b7419e"
+          ]
+        },
+        {
+          "from": "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+          "to": "440854be-7f06-5678-91cb-ba8dcab56959",
+          "relationship": "direct requires",
+          "requireProviderGoalIds": [
+            "9dff0360-c2e9-5e43-af8b-87e264281cf7"
+          ]
+        },
+        {
+          "from": "440854be-7f06-5678-91cb-ba8dcab56959",
+          "to": "0daa79f6-8f61-5506-98f9-65db83062ba8",
+          "relationship": "direct requires",
+          "requireProviderGoalIds": [
+            "440854be-7f06-5678-91cb-ba8dcab56959"
+          ]
+        }
+      ],
+      "sourceBindings": [
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-eg1-5-6-005-70402fb8",
+          "mappedTargetGoalId": "0db20819-ee94-54c6-8ecb-aff8c9b7419e",
+          "goalId": "0db20819-ee94-54c6-8ecb-aff8c9b7419e",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        },
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-fw7-005-7fd31b63",
+          "mappedTargetGoalId": "0db20819-ee94-54c6-8ecb-aff8c9b7419e",
+          "goalId": "0db20819-ee94-54c6-8ecb-aff8c9b7419e",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        },
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-fw8-003-5e22af22",
+          "mappedTargetGoalId": "0db20819-ee94-54c6-8ecb-aff8c9b7419e",
+          "goalId": "0db20819-ee94-54c6-8ecb-aff8c9b7419e",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        },
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-fw8-004-d7fd1464",
+          "mappedTargetGoalId": "0db20819-ee94-54c6-8ecb-aff8c9b7419e",
+          "goalId": "0db20819-ee94-54c6-8ecb-aff8c9b7419e",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        }
+      ]
+    },
+    {
+      "sourceSupportedNITargetId": "440854be-7f06-5678-91cb-ba8dcab56959",
+      "targetTitle": "Stammbäume analysieren",
+      "goalPath": [
+        "440854be-7f06-5678-91cb-ba8dcab56959",
+        "0daa79f6-8f61-5506-98f9-65db83062ba8"
+      ],
+      "edgeDetails": [
+        {
+          "from": "440854be-7f06-5678-91cb-ba8dcab56959",
+          "to": "0daa79f6-8f61-5506-98f9-65db83062ba8",
+          "relationship": "direct requires",
+          "requireProviderGoalIds": [
+            "440854be-7f06-5678-91cb-ba8dcab56959"
+          ]
+        }
+      ],
+      "sourceBindings": [
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-fw6-009-b8768292",
+          "mappedTargetGoalId": "440854be-7f06-5678-91cb-ba8dcab56959",
+          "goalId": "440854be-7f06-5678-91cb-ba8dcab56959",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        },
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-fw8-001-ddfc8318",
+          "mappedTargetGoalId": "440854be-7f06-5678-91cb-ba8dcab56959",
+          "goalId": "440854be-7f06-5678-91cb-ba8dcab56959",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        }
+      ]
+    },
+    {
+      "sourceSupportedNITargetId": "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+      "targetTitle": "Systematikansätze vergleichen und beurteilen",
+      "goalPath": [
+        "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+        "440854be-7f06-5678-91cb-ba8dcab56959",
+        "0daa79f6-8f61-5506-98f9-65db83062ba8"
+      ],
+      "edgeDetails": [
+        {
+          "from": "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+          "to": "440854be-7f06-5678-91cb-ba8dcab56959",
+          "relationship": "direct requires",
+          "requireProviderGoalIds": [
+            "9dff0360-c2e9-5e43-af8b-87e264281cf7"
+          ]
+        },
+        {
+          "from": "440854be-7f06-5678-91cb-ba8dcab56959",
+          "to": "0daa79f6-8f61-5506-98f9-65db83062ba8",
+          "relationship": "direct requires",
+          "requireProviderGoalIds": [
+            "440854be-7f06-5678-91cb-ba8dcab56959"
+          ]
+        }
+      ],
+      "sourceBindings": [
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-eg1-5-6-004-8e4a2294",
+          "mappedTargetGoalId": "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+          "goalId": "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        },
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-fw7-007-698f4159",
+          "mappedTargetGoalId": "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+          "goalId": "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        },
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-fw8-003-5e22af22",
+          "mappedTargetGoalId": "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+          "goalId": "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        },
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-fw8-004-d7fd1464",
+          "mappedTargetGoalId": "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+          "goalId": "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        }
+      ]
+    },
+    {
+      "sourceSupportedNITargetId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+      "targetTitle": "Grundprinzipien der Evolution erläutern",
+      "goalPath": [
+        "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+        "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+        "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+        "0daa79f6-8f61-5506-98f9-65db83062ba8"
+      ],
+      "edgeDetails": [
+        {
+          "from": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "to": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+          "relationship": "direct requires",
+          "requireProviderGoalIds": [
+            "9f73b963-5fac-5a90-a993-d7b7c0cc8526"
+          ]
+        },
+        {
+          "from": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+          "to": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+          "relationship": "direct requires",
+          "requireProviderGoalIds": [
+            "ffef97e3-12d6-5090-9816-46ab9e57fae2"
+          ]
+        },
+        {
+          "from": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+          "to": "0daa79f6-8f61-5506-98f9-65db83062ba8",
+          "relationship": "direct requires",
+          "requireProviderGoalIds": [
+            "475eebb4-4eb0-524f-b1ec-4a672bf856d2"
+          ]
+        }
+      ],
+      "sourceBindings": [
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-eg2-9-10-006-b8c86bad",
+          "mappedTargetGoalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "goalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        },
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-fw7-003-b3921cb7",
+          "mappedTargetGoalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "goalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        },
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-fw7-004-bfbb6db7",
+          "mappedTargetGoalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "goalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        },
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-fw7-008-02728f99",
+          "mappedTargetGoalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "goalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        },
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-fw7-011-8e9422f7",
+          "mappedTargetGoalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "goalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        },
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-fw7-012-8ed51e46",
+          "mappedTargetGoalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "goalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        },
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-fw7-014-f0f9091d",
+          "mappedTargetGoalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "goalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        },
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-fw8-002-c605cfe2",
+          "mappedTargetGoalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "goalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        }
+      ]
+    },
+    {
+      "sourceSupportedNITargetId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+      "targetTitle": "Genmutationen analysieren",
+      "goalPath": [
+        "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+        "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+        "0daa79f6-8f61-5506-98f9-65db83062ba8"
+      ],
+      "edgeDetails": [
+        {
+          "from": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+          "to": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+          "relationship": "direct requires",
+          "requireProviderGoalIds": [
+            "ffef97e3-12d6-5090-9816-46ab9e57fae2"
+          ]
+        },
+        {
+          "from": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+          "to": "0daa79f6-8f61-5506-98f9-65db83062ba8",
+          "relationship": "direct requires",
+          "requireProviderGoalIds": [
+            "475eebb4-4eb0-524f-b1ec-4a672bf856d2"
+          ]
+        }
+      ],
+      "sourceBindings": [
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-fw7-003-b3921cb7",
+          "mappedTargetGoalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+          "goalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        },
+        {
+          "mappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-mapping.snapshot-test.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/ni.current-source.candidate.json",
+          "sourceGoalId": "ni-biology-seki-kc2015-fw7-012-8ed51e46",
+          "mappedTargetGoalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+          "goalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        }
+      ]
+    }
+  ],
+  "providedTwoRecombinationCompanionsRequireOnlyCellComparison": true,
+  "newFiveRequires": [
+    {
+      "goalId": "359e6313-cd86-54d1-bee5-8e680101dc32",
+      "directRequires": [
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "effectiveRequires": [
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ]
+    },
+    {
+      "goalId": "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+      "directRequires": [
+        "b1dff57f-329e-5264-b2b9-2db71a0b2172"
+      ],
+      "effectiveRequires": [
+        "b1dff57f-329e-5264-b2b9-2db71a0b2172"
+      ]
+    },
+    {
+      "goalId": "36d3bf01-e68b-55be-8e20-5652ada36a51",
+      "directRequires": [
+        "b1dff57f-329e-5264-b2b9-2db71a0b2172"
+      ],
+      "effectiveRequires": [
+        "b1dff57f-329e-5264-b2b9-2db71a0b2172"
+      ]
+    },
+    {
+      "goalId": "0b55e592-3335-52e4-8b4f-79c53f32400b",
+      "directRequires": [
+        "b1dff57f-329e-5264-b2b9-2db71a0b2172"
+      ],
+      "effectiveRequires": [
+        "b1dff57f-329e-5264-b2b9-2db71a0b2172"
+      ]
+    },
+    {
+      "goalId": "9e459608-bdea-55a1-b9c5-214bbd741be6",
+      "directRequires": [
+        "b1dff57f-329e-5264-b2b9-2db71a0b2172"
+      ],
+      "effectiveRequires": [
+        "b1dff57f-329e-5264-b2b9-2db71a0b2172"
+      ]
+    }
+  ],
+  "authoredPrerequisiteOnlyModel": {
+    "path": "ni-source.with-prerequisite-only.model.candidate.view.json",
+    "nativeCompilerErrors": [],
+    "targets": 137,
+    "prerequisiteOnlyGoalIds": [
+      "0daa79f6-8f61-5506-98f9-65db83062ba8"
+    ],
+    "adopted": false,
+    "meaning": "Possible scope representation only. No direct NI source witness, no target progress for DNA. Pure generated source-book view remains target-only; root decides any separate reviewed learner scope."
+  },
+  "remainingHold": "Root must judge the retained existing source-supported target prerequisite chains against NI non-molecular stage limits; this candidate does not rewrite old canonical targets or global requires."
+}

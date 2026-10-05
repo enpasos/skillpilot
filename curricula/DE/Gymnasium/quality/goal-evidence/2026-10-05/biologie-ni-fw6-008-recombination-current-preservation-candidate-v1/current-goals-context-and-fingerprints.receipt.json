@@ -1,0 +1,883 @@
+{
+  "status": "PASS_CURRENT_BINDINGS_READ_ONLY",
+  "checkedAt": "2026-10-05T03:27:43.931Z",
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "digest": "sha256:bf1f0db83fb572b882630cd25327633874e35126f6a014da697c90c1c87a644f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/biologie.semantic-kinds.json",
+      "digest": "sha256:e65414d704a5b73eb3dd98be7123869234264a89e2ad734fe3e522f3831a96b5"
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-ni-seki.view.json",
+      "digest": "sha256:c4123c7f435e5355bb443135f99f75ad9dd3e144ee4c93a91573a4ee2056ad5c"
+    }
+  ],
+  "inspected": [
+    {
+      "goalId": "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+      "goal": {
+        "id": "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+        "shortKey": "canonical_biology_sek1_mitosis_meiosis_gametes",
+        "title": "Mitose und Meiose",
+        "titleEn": "Mitosis, Simplified Meiosis, and Gamete Formation",
+        "description": "Die lernende Person kann Mitose und vereinfachte Meiose beschreiben und Keimzellbildung einordnen.",
+        "descriptionEn": "The learner can describe mitosis and simplified meiosis and classify gamete formation.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekI"
+        ],
+        "contains": [],
+        "requires": [
+          "b1dff57f-329e-5264-b2b9-2db71a0b2172"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-biology",
+          "demandLevel": "AB1",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_INFORMATION_KOMMUNIKATION",
+            "BIO_ENTWICKLUNG"
+          ],
+          "phase": "GLOBAL",
+          "area": "Genetik",
+          "topicCode": "CANONICAL.BIOLOGY.SEK1.MITOSIS_MEIOSIS_GAMETES"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "KC G9 Biologie, 9.4.1",
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "71438941-0ceb-46ee-ad31-773cee700779",
+            "sourceLandscapeTitle": "Biologie Sekundarstufe I (Hessen, G9)",
+            "sourceGoalId": "e28f9159-cc63-41d0-8522-3cfadbce9327"
+          }
+        },
+        "type": "atomic"
+      },
+      "semanticKind": "curricularAtomic",
+      "semanticKindFingerprint": "sha256:6ed75efbe6a8ed02ee7c45aa91c62379159c83b58f6a778c47b24e24c91336f9",
+      "goalEvidenceFingerprint": "sha256:e68a61b4ae561e84fea65d01fdcf2f4d052b628fc1225ed25b41bb71b1f12ecb",
+      "currentContainsParents": [
+        {
+          "goalId": "b4176012-f93a-5dd2-84b3-edd6a9932367",
+          "title": "Genetik, Vererbung und Gentechnik (Sek I)"
+        }
+      ],
+      "niCurrentExplicitViewEntry": true,
+      "niCurrentApplicability": true,
+      "fingerprintMatchesCurrentLedger": true
+    },
+    {
+      "goalId": "ec88fc1d-ee0f-5a01-9464-dc358241050e",
+      "goal": {
+        "id": "ec88fc1d-ee0f-5a01-9464-dc358241050e",
+        "title": "Mitose und Meiose vergleichen",
+        "titleEn": "Compare mitosis and meiosis",
+        "description": "Die lernende Person kann Mitose und Meiose anhand von Teilungszahl, Tochterzellzahl und Chromosomensatz vergleichen.",
+        "descriptionEn": "The learner can compare mitosis and meiosis by number of divisions, daughter cells and chromosome sets.",
+        "weight": 0.9,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB1",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_STRUKTUR_FUNKTION",
+            "BIO_STOFF_ENERGIE",
+            "BIO_ENTWICKLUNG"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+            "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "04edc833-d174-4264-a19d-3b7834664830"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "ec88fc1d-ee0f-5a01-9464-dc358241050e",
+            "title": "Visualisierung: Mitose und Meiose vergleichen",
+            "url": "/assets/goal-visualizations/biologie/ec88fc1d-ee0f-5a01-9464-dc358241050e/ec88fc1d-ee0f-5a01-9464-dc358241050e.png",
+            "provider": "ChatGPT/Codex image_gen",
+            "description": "Vereinfachtes Ein-Chromosomenpaar-Modell vergleicht Mitose und Meiose samt Chromatidtrennung.",
+            "altText": "Oben entstehen aus einer Zelle durch Mitose zwei Tochterzellen mit rotem und blauem Einzelchromatid. Unten entstehen nach zwei meiotischen Teilungen vier Zellen mit je einem roten oder blauen Einzelchromatid.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "ai_candidate"
+          }
+        ]
+      },
+      "semanticKind": "curricularAtomic",
+      "semanticKindFingerprint": "sha256:273c13bb2e1cadad1cbe2ba59d5b5a5b7bcb99ed60893670e069cc5eb58c324c",
+      "goalEvidenceFingerprint": "sha256:c89d34b8acfeb732498ddc89add27c494864e88f5fb2abcc3b1986c94027501d",
+      "currentContainsParents": [
+        {
+          "goalId": "7d2d7ce7-57da-5f50-81f4-9fa53ae839f8",
+          "title": "Humanbiologische Aspekte"
+        }
+      ],
+      "niCurrentExplicitViewEntry": true,
+      "niCurrentApplicability": true,
+      "fingerprintMatchesCurrentLedger": true
+    },
+    {
+      "goalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+      "goal": {
+        "id": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+        "title": "Grundprinzipien der Evolution erläutern",
+        "titleEn": "Explain fundamental principles of evolution",
+        "description": "Die lernende Person kann Mutation, Rekombination und Selektion als Ursachen genetischer Variation beschreiben.",
+        "descriptionEn": "The learner can describe mutation, recombination, and selection as causes of genetic variation.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_STRUKTUR_FUNKTION",
+            "BIO_STEUERUNG_REGELUNG",
+            "BIO_ENTWICKLUNG"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-MV",
+            "DE-NI",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+            "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "99776111-acc2-4497-bc79-caef32de4a25"
+          }
+        },
+        "type": "atomic"
+      },
+      "semanticKind": "curricularAtomic",
+      "semanticKindFingerprint": "sha256:c04eb72361bb49ecbf9eb9f6f43f072dee245b02d4a1d39327b365205c7fc703",
+      "goalEvidenceFingerprint": "sha256:d36bfb5017e2796d200a13a0711d5c58beb8401dbea446da8f3659c5da7b044e",
+      "currentContainsParents": [
+        {
+          "goalId": "9eb03a1e-33e2-5a40-9307-7769d5df08e9",
+          "title": "Q1.1 Speicherung und Realisierung genetischer Information"
+        }
+      ],
+      "niCurrentExplicitViewEntry": true,
+      "niCurrentApplicability": true,
+      "fingerprintMatchesCurrentLedger": true
+    },
+    {
+      "goalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+      "goal": {
+        "id": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+        "title": "Genmutationen analysieren",
+        "titleEn": "Analyze gene mutations",
+        "description": "Die lernende Person kann verschiedene Mutationstypen (Substitution, Deletion, Insertion, Duplikation) erklären und Folgen abschätzen.",
+        "descriptionEn": "The learner can explain different types of mutations (substitution, deletion, insertion, duplication) and estimate consequences.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_STRUKTUR_FUNKTION",
+            "BIO_STEUERUNG_REGELUNG",
+            "BIO_ENTWICKLUNG"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-MV",
+            "DE-NI",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+            "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "ed4cdb55-2514-4483-9db6-eb4d74bd6663"
+          }
+        },
+        "type": "atomic"
+      },
+      "semanticKind": "curricularAtomic",
+      "semanticKindFingerprint": "sha256:c80f91bd84067a29527242b4033e296f47e0e5562113ae0b4634dca40f8f6298",
+      "goalEvidenceFingerprint": "sha256:ca26be984d60cdb985144c1c7ea97c86609c89607e739050c2d3135b359fe73b",
+      "currentContainsParents": [
+        {
+          "goalId": "9eb03a1e-33e2-5a40-9307-7769d5df08e9",
+          "title": "Q1.1 Speicherung und Realisierung genetischer Information"
+        }
+      ],
+      "niCurrentExplicitViewEntry": true,
+      "niCurrentApplicability": true,
+      "fingerprintMatchesCurrentLedger": true
+    },
+    {
+      "goalId": "ab96bec3-ee34-5209-bcc9-5c7c8280429c",
+      "goal": {
+        "id": "ab96bec3-ee34-5209-bcc9-5c7c8280429c",
+        "shortKey": "canonical_biology_upper_meiosis_sex_differences_sexual_reproduction",
+        "title": "Meiose geschlechtsspezifisch erklären",
+        "titleEn": "Explain Meiosis with Sex-Specific Differences",
+        "description": "Die lernende Person kann den Ablauf der Meiose bei unterschiedlichen Geschlechtern beschreiben und ihre Bedeutung für die geschlechtliche Fortpflanzung erklären.",
+        "descriptionEn": "The learner can describe the process of meiosis in different sexes and explain its importance for sexual reproduction.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "8e4bfb9e-b176-5e7a-a7db-d6077d71237a",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_ENTWICKLUNG",
+            "BIO_STRUKTUR_FUNKTION"
+          ],
+          "phase": "GLOBAL",
+          "area": "Genetik, Molekularbiologie und Biotechnologie",
+          "topicCode": "CANONICAL.BIOLOGY.UPPER_MEIOSIS_SEX_DIFFERENCES_SEXUAL_REPRODUCTION"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HE",
+            "DE-MV",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B12-EA.2.14",
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
+            "sourceLandscapeTitle": "DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+            "sourceGoalId": "15143e1e-c3ac-5034-b584-5d1d036b0d7d"
+          }
+        },
+        "type": "atomic"
+      },
+      "semanticKind": "curricularAtomic",
+      "semanticKindFingerprint": "sha256:655e21258244228dd71e28ce652bccc8e9dc1800b189752cdb4a855cb1e4b37c",
+      "goalEvidenceFingerprint": "sha256:fd82fe664210eae7abd24f63d42369c67032e8a1aeb937e25d7dacc46aeb60c5",
+      "currentContainsParents": [
+        {
+          "goalId": "96284354-03ef-5158-afd1-85f38af4c633",
+          "title": "Q1.3 Humangenetik"
+        }
+      ],
+      "niCurrentExplicitViewEntry": false,
+      "niCurrentApplicability": false,
+      "fingerprintMatchesCurrentLedger": true
+    },
+    {
+      "goalId": "797a233c-56ed-58a0-b451-5ae5d4bd21bf",
+      "goal": {
+        "id": "797a233c-56ed-58a0-b451-5ae5d4bd21bf",
+        "shortKey": "canonical_biology_sek1_genome_mutations_meiosis_errors",
+        "title": "Genommutationen durch Meiosefehler erklären",
+        "titleEn": "Explain Genome Mutations Caused by Meiotic Errors",
+        "description": "Die lernende Person kann Genommutationen beim Menschen als Folge von Fehlern bei der Meiose erklären.",
+        "descriptionEn": "The learner can explain human genome mutations as consequences of errors during meiosis.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekI"
+        ],
+        "contains": [],
+        "requires": [
+          "1d2b1038-dcd5-529a-b085-9e14f1d58c76"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_INFORMATION_KOMMUNIKATION",
+            "BIO_ENTWICKLUNG"
+          ],
+          "phase": "GLOBAL",
+          "area": "Genetik",
+          "topicCode": "CANONICAL.BIOLOGY.SEK1.GENOME_MUTATIONS_MEIOSIS_ERRORS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-NW",
+            "DE-RP"
+          ]
+        },
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B9.3.8",
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
+            "sourceLandscapeTitle": "DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+            "sourceGoalId": "706204f2-4768-56d3-984a-85e9ec6fc370"
+          }
+        },
+        "type": "atomic"
+      },
+      "semanticKind": "curricularAtomic",
+      "semanticKindFingerprint": "sha256:eb61b0c009ccd4f485a7db635a3c99a152be8f6d6f57e0845356b62667b8885d",
+      "goalEvidenceFingerprint": "sha256:1bb48fd9caf528fe04122c1eebaa3bed22f7c751f928b89dc2bcee5032b1c5b4",
+      "currentContainsParents": [
+        {
+          "goalId": "b4176012-f93a-5dd2-84b3-edd6a9932367",
+          "title": "Genetik, Vererbung und Gentechnik (Sek I)"
+        }
+      ],
+      "niCurrentExplicitViewEntry": false,
+      "niCurrentApplicability": false,
+      "fingerprintMatchesCurrentLedger": true
+    },
+    {
+      "goalId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+      "goal": {
+        "id": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+        "title": "Freie Trisomie 21 als Genommutation erklären",
+        "titleEn": "Explain free trisomy 21 as a genome mutation",
+        "description": "Die lernende Person kann am Beispiel einer freien Trisomie 21 erklären, wie eine Fehlverteilung von Chromosomen zu einer Genommutation mit einem zusätzlichen Chromosom 21 führen kann.",
+        "descriptionEn": "The learner can use free trisomy 21 to explain how chromosome missegregation can lead to a genome mutation with an extra chromosome 21.",
+        "weight": 0.9,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB1",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_STRUKTUR_FUNKTION",
+            "BIO_STOFF_ENERGIE",
+            "BIO_ENTWICKLUNG"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BW",
+            "DE-BY",
+            "DE-HE",
+            "DE-NW",
+            "DE-SN",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+            "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "379ca360-5343-4803-b404-9d011e345451"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+            "title": "Visualisierung: Freie Trisomie 21 als Genommutation erklären",
+            "url": "/assets/goal-visualizations/biologie/0dd8380d-b542-5126-8d8e-f95d9ccded90/0dd8380d-b542-5126-8d8e-f95d9ccded90.png",
+            "provider": "ChatGPT/Codex image_gen",
+            "description": "Freundliches 4:3-Zahlmodell für Chromosom 21: zwei einzelne Kopien in einer Keimzelle plus eine Kopie in einer zweiten ergeben drei Kopien nach Vereinigung; die Meiose ist nicht dargestellt.",
+            "altText": "Vereinfachtes Modell nur für Chromosom 21: Links enthält eine Keimzelle zwei einzelne Chromosomen 21; eine solche Keimzelle kann durch eine Fehlverteilung entstehen. Rechts trägt eine zweite Keimzelle ein Chromosom 21. Pfeile führen zur Zelle mit drei getrennten Chromosomen 21. Weitere Chromosomen und die Meioseschritte sind nicht dargestellt; die Farben dienen nur der Unterscheidung.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "semanticKind": "curricularAtomic",
+      "semanticKindFingerprint": "sha256:d110b212f6aa329efadccbbca194cf19b5bf4e8a69a4447ffdcf721f239524c0",
+      "goalEvidenceFingerprint": "sha256:f658d04d24e864b314e14bec7e107233f802386b36499f739e1477cd4597e176",
+      "currentContainsParents": [
+        {
+          "goalId": "7d2d7ce7-57da-5f50-81f4-9fa53ae839f8",
+          "title": "Humanbiologische Aspekte"
+        }
+      ],
+      "niCurrentExplicitViewEntry": false,
+      "niCurrentApplicability": false,
+      "fingerprintMatchesCurrentLedger": true
+    },
+    {
+      "goalId": "183f3c47-ec20-5b98-8024-77ebd1c48abf",
+      "goal": {
+        "id": "183f3c47-ec20-5b98-8024-77ebd1c48abf",
+        "shortKey": "canonical_biology_upper_genetic_recombination_biodiversity_evolution",
+        "title": "Genetische Neukombination und Biodiversität verknüpfen",
+        "titleEn": "Connect Genetic Recombination and Biodiversity",
+        "description": "Die lernende Person kann den Zusammenhang zwischen genetischen Neukombinationsprozessen und der Evolution bisheriger sowie zukünftiger Biodiversität erklären.",
+        "descriptionEn": "The learner can explain the relationship between genetic recombination processes and the evolution of past and future biodiversity.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "ab96bec3-ee34-5209-bcc9-5c7c8280429c",
+          "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_ENTWICKLUNG",
+            "BIO_INFORMATION_KOMMUNIKATION"
+          ],
+          "phase": "GLOBAL",
+          "area": "Genetik, Molekularbiologie und Biotechnologie",
+          "topicCode": "CANONICAL.BIOLOGY.UPPER_GENETIC_RECOMBINATION_BIODIVERSITY_EVOLUTION"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B12-EA.2.15",
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
+            "sourceLandscapeTitle": "DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+            "sourceGoalId": "2727ed1c-a4e6-5433-8d1b-1a71b73f7139"
+          }
+        },
+        "type": "atomic"
+      },
+      "semanticKind": "curricularAtomic",
+      "semanticKindFingerprint": "sha256:e6c53c1e33c1a3410b226a9cfd49594656dbb23b69dc90043fc1e6a9323c4c49",
+      "goalEvidenceFingerprint": "sha256:0ca558a39ec6ec0dcd260e16be0e86cf158039d7cc07400d20ab8e336cef9c15",
+      "currentContainsParents": [
+        {
+          "goalId": "96284354-03ef-5158-afd1-85f38af4c633",
+          "title": "Q1.3 Humangenetik"
+        }
+      ],
+      "niCurrentExplicitViewEntry": false,
+      "niCurrentApplicability": false,
+      "fingerprintMatchesCurrentLedger": true
+    },
+    {
+      "goalId": "4cc92913-386c-5909-9d43-bb30f706ed24",
+      "goal": {
+        "id": "4cc92913-386c-5909-9d43-bb30f706ed24",
+        "shortKey": "canonical_biology_upper_crossing_experiments_statistical_inheritance",
+        "title": "Kreuzungsexperimente statistisch auswerten",
+        "titleEn": "Evaluate Crossing Experiments Statistically",
+        "description": "Die lernende Person kann Kreuzungsexperimente auswerten, um den statistischen Charakter der Vererbung abzuleiten.",
+        "descriptionEn": "The learner can evaluate crossing experiments to infer the statistical nature of inheritance.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "ab96bec3-ee34-5209-bcc9-5c7c8280429c",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_INFORMATION_KOMMUNIKATION"
+          ],
+          "phase": "GLOBAL",
+          "area": "Genetik, Molekularbiologie und Biotechnologie",
+          "topicCode": "CANONICAL.BIOLOGY.UPPER_CROSSING_EXPERIMENTS_STATISTICAL_INHERITANCE"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-MV",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B12-EA.2.19",
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
+            "sourceLandscapeTitle": "DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+            "sourceGoalId": "f50c0050-ccf5-51e0-b0b4-05b89c659b82"
+          }
+        },
+        "type": "atomic"
+      },
+      "semanticKind": "curricularAtomic",
+      "semanticKindFingerprint": "sha256:f9d979982e444ee85499b2a8326dfc979a4624fb8220f0d28aee60230a08d16d",
+      "goalEvidenceFingerprint": "sha256:9f57e498a725dbbf5e8b8756d3cf7abb09bb214203a0d8ef0e5d0a10df2e2514",
+      "currentContainsParents": [
+        {
+          "goalId": "96284354-03ef-5158-afd1-85f38af4c633",
+          "title": "Q1.3 Humangenetik"
+        }
+      ],
+      "niCurrentExplicitViewEntry": false,
+      "niCurrentApplicability": false,
+      "fingerprintMatchesCurrentLedger": true
+    },
+    {
+      "goalId": "d42c8cf0-9225-5f05-816a-914fc3caa116",
+      "goal": {
+        "id": "d42c8cf0-9225-5f05-816a-914fc3caa116",
+        "shortKey": "canonical_biology_upper_mono_dihybrid_inheritance_predictions",
+        "title": "Mono- und dihybride Erbgänge vorhersagen",
+        "titleEn": "Predict Mono- and Dihybrid Inheritance",
+        "description": "Die lernende Person kann Genotypen- und Phänotypenverteilungen bei Kreuzungen vorhersagen, indem sie Gesetzmäßigkeiten der Vererbung auf mono- und dihybride Erbgänge anwendet.",
+        "descriptionEn": "The learner can predict genotype and phenotype distributions in crosses by applying inheritance laws to monohybrid and dihybrid inheritance patterns.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "4cc92913-386c-5909-9d43-bb30f706ed24",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_INFORMATION_KOMMUNIKATION"
+          ],
+          "phase": "GLOBAL",
+          "area": "Genetik, Molekularbiologie und Biotechnologie",
+          "topicCode": "CANONICAL.BIOLOGY.UPPER_MONO_DIHYBRID_INHERITANCE_PREDICTIONS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-MV",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B12-EA.2.20",
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
+            "sourceLandscapeTitle": "DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+            "sourceGoalId": "94009a44-3060-505a-876e-18e92796e0f5"
+          }
+        },
+        "type": "atomic"
+      },
+      "semanticKind": "curricularAtomic",
+      "semanticKindFingerprint": "sha256:66211ac735b717e0dc404cc639ed2a045befff224826924db3adf66d062ecf01",
+      "goalEvidenceFingerprint": "sha256:418665e807f275a7428e6de30bfe99c86c94650090134fc11d8c8ba4ffff1f72",
+      "currentContainsParents": [
+        {
+          "goalId": "96284354-03ef-5158-afd1-85f38af4c633",
+          "title": "Q1.3 Humangenetik"
+        }
+      ],
+      "niCurrentExplicitViewEntry": false,
+      "niCurrentApplicability": false,
+      "fingerprintMatchesCurrentLedger": true
+    },
+    {
+      "goalId": "b1dff57f-329e-5264-b2b9-2db71a0b2172",
+      "goal": {
+        "id": "b1dff57f-329e-5264-b2b9-2db71a0b2172",
+        "shortKey": "canonical_biology_sek1_plant_animal_cell_comparison",
+        "title": "Pflanzen- und Tierzellen vergleichen",
+        "titleEn": "Compare plant and animal cells",
+        "description": "Die lernende Person kann Gemeinsamkeiten und Unterschiede von Pflanzen- und Tierzellen darlegen.",
+        "descriptionEn": "The learner can state similarities and differences between plant and animal cells.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekI"
+        ],
+        "contains": [],
+        "requires": [
+          "e0d04e58-1591-5230-bfa6-5c685b56d25b"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-biology",
+          "demandLevel": "AB1",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_STRUKTUR_FUNKTION"
+          ],
+          "phase": "GLOBAL",
+          "area": "Zellbiologie",
+          "topicCode": "CANONICAL.BIOLOGY.SEK1.CELL_COMPARISON"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "71438941-0ceb-46ee-ad31-773cee700779",
+            "sourceLandscapeTitle": "Biologie Sekundarstufe I (Hessen, G9)",
+            "sourceGoalId": "840b4079-1c5f-4b99-9c19-e603823ae462"
+          }
+        },
+        "type": "atomic"
+      },
+      "semanticKind": "curricularAtomic",
+      "semanticKindFingerprint": "sha256:7cf649a278489f7a1790adecfd89e540efa4761f2d2cac2692b30d7b32653bfc",
+      "goalEvidenceFingerprint": "sha256:0761918d85e43747bf025d5425d2a09b2d085afa14c9c0e26e0ef5b960ed907f",
+      "currentContainsParents": [
+        {
+          "goalId": "b530a382-2786-5794-8821-3e01a62d88fd",
+          "title": "Biologische Grundlagen (Sek I)"
+        }
+      ],
+      "niCurrentExplicitViewEntry": true,
+      "niCurrentApplicability": true,
+      "fingerprintMatchesCurrentLedger": true
+    },
+    {
+      "goalId": "b4176012-f93a-5dd2-84b3-edd6a9932367",
+      "goal": {
+        "id": "b4176012-f93a-5dd2-84b3-edd6a9932367",
+        "shortKey": "canonical_biology_sek1_genetics_biotechnology_cluster",
+        "title": "Genetik, Vererbung und Gentechnik (Sek I)",
+        "titleEn": "Genetics, Inheritance, and Biotechnology (Lower Secondary)",
+        "description": "Cluster für Mitose, vereinfachte Meiose, Zellzyklus, DNA-Replikation, Erbgaenge, Stammbaumanalyse, Karyogramme, Genommutationen und grundlegende gentechnische Anwendungen.",
+        "descriptionEn": "Cluster for mitosis, simplified meiosis, cell cycle, DNA replication, inheritance patterns, pedigree analysis, karyograms, genome mutations, and basic biotechnology applications.",
+        "weight": 10,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekI"
+        ],
+        "contains": [
+          "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+          "b8fc739d-f5de-5f83-92fe-28dc6597add5",
+          "8be0001b-4fe0-5ea1-9d61-b3c4bbb16660",
+          "74740709-fc77-5a54-88a6-bb14c3777941",
+          "1b7f08a1-33df-5779-af66-430c91d699b7",
+          "e70d8a85-2dea-5165-919b-200fee9f4db4",
+          "05358518-f66c-5c1b-ad3f-d16211d0fc1c",
+          "797a233c-56ed-58a0-b451-5ae5d4bd21bf",
+          "2a5b22f5-5ef3-5d95-8f75-21ca76ad1ce2",
+          "62e52002-b8df-533e-9972-028f3ee60cd1"
+        ],
+        "requires": [
+          "b1dff57f-329e-5264-b2b9-2db71a0b2172"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-biology",
+          "demandLevel": "AB1",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_INFORMATION_KOMMUNIKATION",
+            "BIO_ENTWICKLUNG",
+            "BIO_STEUERUNG_REGELUNG"
+          ],
+          "phase": "GLOBAL",
+          "area": "Genetik",
+          "topicCode": "CANONICAL.BIOLOGY.SEK1.GENETICS_BIOTECHNOLOGY_CLUSTER"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "71438941-0ceb-46ee-ad31-773cee700779",
+            "sourceLandscapeTitle": "Biologie Sekundarstufe I (Hessen, G9)",
+            "sourceGoalId": "e28f9159-cc63-41d0-8522-3cfadbce9327",
+            "sourceGoalIds": [
+              "e28f9159-cc63-41d0-8522-3cfadbce9327",
+              "1de7a0e1-2416-466e-ba90-df6cd68c01fd",
+              "4c0df07f-b2a3-4008-8caa-812391f73676",
+              "aa946359-2413-4a42-a0c7-dc51de7703d7",
+              "538f0166-f4c0-440a-842e-61bbbdc11fb2"
+            ]
+          }
+        },
+        "type": "cluster"
+      },
+      "semanticKind": "curricularArea",
+      "semanticKindFingerprint": "sha256:dfdf0a6ca10f190460b1e251c4d2b8d438f2a2202eeae12b6c50e2106edd77bd",
+      "goalEvidenceFingerprint": "sha256:247bc97795a67e9191ebc0e89383d30181ab9fc21ff47b14dadef72798985c5a",
+      "currentContainsParents": [
+        {
+          "goalId": "e8d54127-d42e-51f5-bfa5-51d826069f95",
+          "title": "Biologie"
+        }
+      ],
+      "niCurrentExplicitViewEntry": false,
+      "niCurrentApplicability": true,
+      "fingerprintMatchesCurrentLedger": true
+    }
+  ],
+  "currentCanonicalRecords": 441,
+  "currentCurricularAtomic": 363,
+  "templateIdAdopted": false,
+  "newTemplateFingerprints": "Not computed without an adopted canonical ID; root must compute from the final actual goal.",
+  "pContentsRead": false,
+  "activeWrites": 0,
+  "humanApproval": false,
+  "sourceLandscapeId": "0b27a054-e81e-5423-aa71-d3d8d9d8f0db",
+  "canonicalLandscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e"
+}

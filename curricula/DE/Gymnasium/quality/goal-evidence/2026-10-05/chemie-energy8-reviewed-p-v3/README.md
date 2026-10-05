@@ -1,0 +1,7 @@
+# Chemie Energy8: aktuelle maschinelle P-v2-Integration
+
+Acht Ziele haben zwei unabhängige aktuelle KEEP-Beschreibungsreviews und zwei unabhängige fachliche P-Prüfungen. Sieben INNER-Profile sind exakt unverändert gegenüber dem tatsächlich geprüften ursprünglichen Kandidatenstand. Die Brennstoffzellen-Kette wurde wegen eines belegten Scopeüberschusses gezielt geändert: vorgelagerte Wasserspaltung und Akkuvergleich sind keine verpflichtende Leistung dieses Zellziels. Der frische Fall verlangt selbst dargestellte bilanzierte Zellreaktionen, umgekehrte Elektrodenlage, Erklärung eines blockierten H+-Wegs und unterbrochener H2-Zufuhr sowie gespeicherten Energieträger versus Energiewandler. Die letzte Präzisierung benennt Wasserstoff als begrenztes zugeführtes Gas. Beide unabhängigen Reviewer haben diese Nachfolger tatsächlich geprüft; alte HOLD-Befunde und Dateien bleiben erhalten.
+
+Alle Profile bleiben **ai_candidate / needs_human_review, E1/G1**. Es wird keine menschliche Freigabe, Lernendenleistung oder Erprobung behauptet. Vorgegebene Daten, Bilder und Halbgleichungen sind Hilfe; eine gelesene Vorlage ist keine Eigenleistung. Die zwei Demonstrationen können innerhalb einer echten mehrschrittigen Aufgabe mit unabhängigem Transfer liegen und begründen keine starre Zusatzaufgabenquote.
+
+Die fünf offenen Beschreibungs-/Atomaritätsfälle sind aus dieser P-Konfiguration ausgeschlossen. Historische und frühere Kandidaten bleiben unverändert. Exakte Pfade, Digests und Übernahmegrenzen stehen im benachbarten `independent-integration.receipt.json`.

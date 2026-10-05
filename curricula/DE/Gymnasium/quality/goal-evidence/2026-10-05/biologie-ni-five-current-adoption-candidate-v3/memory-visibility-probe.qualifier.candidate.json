@@ -1,0 +1,291 @@
+{
+  "status": "candidate",
+  "humanApproval": false,
+  "originalFullMVisibilityScopes": [
+    {
+      "label": "Biologie Gymnasium GK (DE)",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json"
+    }
+  ],
+  "probeViewPath": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-ni-seki.view.json",
+  "probeIsRuntimeRegistered": false,
+  "runtimeRegistryImplementation": {
+    "path": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+    "root": "DE/Gymnasium/composition-views",
+    "filter": ".view.json",
+    "lines": [
+      29,
+      707,
+      716
+    ]
+  },
+  "classification": "The five missing memory nodes in the extra pure curricularAtomic book-view probe do not constitute an actual learner runtime M regression. Do not change source projection to include memory goals or rewrite old memory decisions.",
+  "sourceBookProbeBeforeAndAfter": {
+    "beforeMissingSameFive": true,
+    "afterMissingSameFive": true,
+    "sourceBookRole": "pure curricularAtomic source projection, not registered learner view"
+  },
+  "memoryGoalDeclaration": {
+    "id": "9e51741b-f952-5f62-9b6b-080eee6c5590",
+    "title": "Lernkarten - Biologie Kernbegriffe",
+    "titleEn": "Flashcards - Biology Core Terms",
+    "description": "Schmaler Memory-Knoten für wenige fachlich begründete biologische Kennzeichen, Begriffe, Bestandteile und Regelstrukturen. Der Knoten sichert Abrufwissen; Erklären, Modellieren, Vergleichen und Anwenden bleiben führend.",
+    "descriptionEn": "Narrow memorization node for a small set of justified biological characteristics, terms, components, and rule structures. The node secures recall knowledge; explaining, modelling, comparing, and applying remain primary.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical",
+      "memorization",
+      "srs-deck:de_gymnasium_biology_core"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "sourceRef": "Canonical memory-card deck for Gymnasium biology in Germany",
+    "extendedData": {
+      "vocabularySource": "/data/de_gymnasium_biology_flashcards_core.de.json",
+      "vocabularySourceEn": "/data/de_gymnasium_biology_flashcards_core.en.json"
+    },
+    "contains": [],
+    "requires": [
+      "2d451684-6e53-565e-a987-f362da919d2c"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-biology",
+      "demandLevel": "AB1",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "BIO_STRUKTUR_FUNKTION",
+        "BIO_STOFF_ENERGIE",
+        "BIO_STEUERUNG_REGELUNG",
+        "BIO_ENTWICKLUNG",
+        "BIO_INFORMATION_KOMMUNIKATION"
+      ],
+      "phase": "GLOBAL",
+      "area": "Biologie",
+      "topicCode": "CANONICAL.BIOLOGY.MEMORY.CORE"
+    },
+    "nodeKind": "memory",
+    "type": "atomic"
+  },
+  "runtimeResults": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json",
+      "viewId": "de-de-gym-biology-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "errors": [],
+      "memoryGoalBefore": true,
+      "memoryGoalAfter": true,
+      "fiveMemoryTargets": [
+        {
+          "goalId": "e0d04e58-1591-5230-bfa6-5c685b56d25b",
+          "title": "Bau der Pflanzenzelle beschreiben",
+          "beforeVisible": true,
+          "afterVisible": true,
+          "memoryGoalIds": [
+            "9e51741b-f952-5f62-9b6b-080eee6c5590"
+          ],
+          "deckIds": [
+            "de_gymnasium_biology_core"
+          ]
+        },
+        {
+          "goalId": "480146f6-4749-52e3-a5e5-d08629e0c38f",
+          "title": "Bau des Blutes",
+          "beforeVisible": true,
+          "afterVisible": true,
+          "memoryGoalIds": [
+            "9e51741b-f952-5f62-9b6b-080eee6c5590"
+          ],
+          "deckIds": [
+            "de_gymnasium_biology_core"
+          ]
+        },
+        {
+          "goalId": "be06115e-96e8-537e-b18a-313056e6cbe8",
+          "title": "Blütenaufbau und Funktion",
+          "beforeVisible": true,
+          "afterVisible": true,
+          "memoryGoalIds": [
+            "9e51741b-f952-5f62-9b6b-080eee6c5590"
+          ],
+          "deckIds": [
+            "de_gymnasium_biology_core"
+          ]
+        },
+        {
+          "goalId": "74740709-fc77-5a54-88a6-bb14c3777941",
+          "title": "Karyogramm und Chromosomenfehler",
+          "beforeVisible": true,
+          "afterVisible": true,
+          "memoryGoalIds": [
+            "9e51741b-f952-5f62-9b6b-080eee6c5590"
+          ],
+          "deckIds": [
+            "de_gymnasium_biology_core"
+          ]
+        },
+        {
+          "goalId": "55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba",
+          "title": "Kennzeichen von Lebewesen ordnen",
+          "beforeVisible": true,
+          "afterVisible": true,
+          "memoryGoalIds": [
+            "9e51741b-f952-5f62-9b6b-080eee6c5590"
+          ],
+          "deckIds": [
+            "de_gymnasium_biology_core"
+          ]
+        }
+      ],
+      "newFiveVisibility": [
+        {
+          "goalId": "359e6313-cd86-54d1-bee5-8e680101dc32",
+          "visible": true
+        },
+        {
+          "goalId": "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+          "visible": true
+        },
+        {
+          "goalId": "36d3bf01-e68b-55be-8e20-5652ada36a51",
+          "visible": true
+        },
+        {
+          "goalId": "0b55e592-3335-52e4-8b4f-79c53f32400b",
+          "visible": true
+        },
+        {
+          "goalId": "9e459608-bdea-55a1-b9c5-214bbd741be6",
+          "visible": true
+        }
+      ],
+      "DNArole": {
+        "target": true,
+        "prerequisiteOnly": false
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-seki-biology.view.json",
+      "viewId": "de-de-gym-seki-biology",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "errors": [],
+      "memoryGoalBefore": true,
+      "memoryGoalAfter": true,
+      "fiveMemoryTargets": [
+        {
+          "goalId": "e0d04e58-1591-5230-bfa6-5c685b56d25b",
+          "title": "Bau der Pflanzenzelle beschreiben",
+          "beforeVisible": true,
+          "afterVisible": true,
+          "memoryGoalIds": [
+            "9e51741b-f952-5f62-9b6b-080eee6c5590"
+          ],
+          "deckIds": [
+            "de_gymnasium_biology_core"
+          ]
+        },
+        {
+          "goalId": "480146f6-4749-52e3-a5e5-d08629e0c38f",
+          "title": "Bau des Blutes",
+          "beforeVisible": true,
+          "afterVisible": true,
+          "memoryGoalIds": [
+            "9e51741b-f952-5f62-9b6b-080eee6c5590"
+          ],
+          "deckIds": [
+            "de_gymnasium_biology_core"
+          ]
+        },
+        {
+          "goalId": "be06115e-96e8-537e-b18a-313056e6cbe8",
+          "title": "Blütenaufbau und Funktion",
+          "beforeVisible": true,
+          "afterVisible": true,
+          "memoryGoalIds": [
+            "9e51741b-f952-5f62-9b6b-080eee6c5590"
+          ],
+          "deckIds": [
+            "de_gymnasium_biology_core"
+          ]
+        },
+        {
+          "goalId": "74740709-fc77-5a54-88a6-bb14c3777941",
+          "title": "Karyogramm und Chromosomenfehler",
+          "beforeVisible": true,
+          "afterVisible": true,
+          "memoryGoalIds": [
+            "9e51741b-f952-5f62-9b6b-080eee6c5590"
+          ],
+          "deckIds": [
+            "de_gymnasium_biology_core"
+          ]
+        },
+        {
+          "goalId": "55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba",
+          "title": "Kennzeichen von Lebewesen ordnen",
+          "beforeVisible": true,
+          "afterVisible": true,
+          "memoryGoalIds": [
+            "9e51741b-f952-5f62-9b6b-080eee6c5590"
+          ],
+          "deckIds": [
+            "de_gymnasium_biology_core"
+          ]
+        }
+      ],
+      "newFiveVisibility": [
+        {
+          "goalId": "359e6313-cd86-54d1-bee5-8e680101dc32",
+          "visible": true
+        },
+        {
+          "goalId": "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+          "visible": true
+        },
+        {
+          "goalId": "36d3bf01-e68b-55be-8e20-5652ada36a51",
+          "visible": true
+        },
+        {
+          "goalId": "0b55e592-3335-52e4-8b4f-79c53f32400b",
+          "visible": true
+        },
+        {
+          "goalId": "9e459608-bdea-55a1-b9c5-214bbd741be6",
+          "visible": true
+        }
+      ],
+      "DNArole": {
+        "target": false,
+        "prerequisiteOnly": false
+      }
+    }
+  ],
+  "gateConclusion": "PASS scoped runtime data visibility for all five pre-existing memory-required goals and their same SRS node in both actual registered views. Native FULL-M remains PASS. No source approval inferred."
+}

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "frozenAt": "2026-10-04T23:56:05.520716+00:00",
+  "reviewer": "independent-ni-preservation-reviewer-a",
+  "modelFamily": "GPT-6",
+  "exactModelIdentifier": null,
+  "phase": "description_semantic_prerequisite_and_source_before_P",
+  "positiveEvidenceContentReadBeforeFreeze": false,
+  "imagePromptContentReadBeforeFreeze": false,
+  "siblingReviewBReadBeforeFreeze": false,
+  "currentPdfCandidateClosureReview": false,
+  "inputHashes": {
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-candidate-v1/README.md": "sha256:e74126ae1f565b1f3083516adb6c5868cd2b136a4d5662db49c5521199f0b5d7",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-candidate-v1/canonical.delta.candidates.json": "sha256:1e87543b06e85082a6e9e572413beefd5e77bc6f6e9ffa57665489c176374ad0",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-candidate-v1/current-bindings.snapshot.json": "sha256:85c7489440800f8cd028854dcd65f212c85dda148ee8b5c8823696c205c1bb3e",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-candidate-v1/source-extraction.delta.candidates.json": "sha256:a239c2615634f832691c584480d975f6d4d9f7674007954ba47c2d87a8ef5701",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-candidate-v1/mapping.delta.candidates.json": "sha256:fd7da13592fd1c9a07843d70f5d0f8cb229d9c05c85a729879469dc59377028b",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-candidate-v1/view-frontier.delta.candidates.json": "sha256:139a2c77fac1132cdb1e38915891e42c3da1bf86cfefc45f2d8b12fcaa6ad268",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-candidate-v1/coupled-replication-source-finding.json": "sha256:128cdcccdf16a573fb4f5ec0a77223aa5014e11aa9ede04a61a5a3549cda75c9",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-candidate-v1/source-audit.receipt.json": "sha256:340608146d833946589622bae8d18a626ed7dbfd16bfc5191a382d7581708ebc"
+  },
+  "primarySource": {
+    "url": "https://cuvo.nibis.de/index.php?p=download&upload=18",
+    "retainedPdf": "curricula/DE/Gymnasium/input/NI/lower-secondary/kc_naturwissenschaften_gymnasium_sek_i_2015.pdf",
+    "retainedSha256": "sha256:7b3c69767b4c9a47d87598bee76a28bf7b6d2f6c9b039f2e655a9ad14d47aeac",
+    "actualTextPagesOneBased": [
+      87,
+      88,
+      89,
+      90
+    ],
+    "actualImagePagesOneBased": [
+      87,
+      88,
+      89,
+      90
+    ],
+    "liveOfficialPdfContentOpened": true,
+    "liveRawByteComparisonCompleted": false,
+    "rawDownloadFailure": "HTTP 403 from urllib; web PDF content available and checked independently",
+    "ownExtractPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-independent-review-a-v1/source-pages87-90-own-extract.txt"
+  },
+  "decisions": [
+    {
+      "goalId": "359e6313-cd86-54d1-bee5-8e680101dc32",
+      "decision": "REVISE_CANDIDATE_OPERATIVE_EXPLANATION",
+      "scientificContent": "correct phenotypic and nondirected variation, no molecular requirement",
+      "atomicity": "one integrated within-species and cross-generation variation concept; no split needed",
+      "scope": "Ende Jg.6; no inherited molecular/class10 prerequisite in candidate graph",
+      "finding": "Only describes occurrence while FW7-002 explicitly requires explaining/illustrating undirected generational variation. Make this operative explanation explicit before claiming the full two-cell source union.",
+      "suggestedDe": "Die lernende Person kann Unterschiede zwischen Individuen derselben Art an Beispielen beschreiben und erläutern, dass solche Unterschiede von Generation zu Generation ungerichtet auftreten.",
+      "suggestedEn": "The learner can use examples to describe differences between individuals of the same species and explain that such differences occur without a predetermined direction from generation to generation."
+    },
+    {
+      "goalId": "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+      "decision": "PASS_CANDIDATE_DESCRIPTION",
+      "scientificContent": "chromosomal gene sections provide instructions for products contributing to traits; no one-gene-one-trait or all-products-enzymes assertion",
+      "atomicity": "one causal chromosomal gene→product→trait model",
+      "scope": "Ende Jg.10; basic cell knowledge, no DNA sequencing/replication/transcription/translation prerequisite",
+      "sourceUnion": [
+        "FW6-010",
+        "FW6-011"
+      ],
+      "finding": "Correct substantive source scope. Exact table heading in both extraction and mapping successors must say Ausprägung der genetischen Information, not Realisierung genetischer Information."
+    },
+    {
+      "goalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+      "decision": "PASS_CANDIDATE_DESCRIPTION",
+      "scientificContent": "mutation creates new variants, recombination creates new combinations, selection acts on existing variation; correct causal correction",
+      "atomicity": "one integrated explanation of origins of variation and differential selection; the shared causal model permits joint assessment",
+      "scope": "Ende Jg.10 without molecular genetics; replacing ffef with existing simplified meiosis 1d removes the molecular prerequisite route",
+      "sourceUnion": [
+        "FW7-003",
+        "FW7-012"
+      ],
+      "finding": "No new substantive description finding; does not prove class6 variation or advanced selection-mode/speciation goals."
+    }
+  ],
+  "sourceDecisions": [
+    {
+      "scope": "six selected source cells",
+      "decision": "PASS_CONTENT_SCOPE_AND_GRADE_WITH_TARGETED_HEADING_CORRECTION_REQUIRED",
+      "findings": [
+        "FW7-001/002 belong to end class6; FW7-003/012 and FW6-010/011 belong to end class10.",
+        "FW7-003 explicit molecular-genetics exclusion is correctly restored.",
+        "FW6-010/011 source page 88 and FW7-012 source page90 are correct.",
+        "FW6.3 printed heading is Ausprägung der genetischen Information; successor heading/span labels need exact correction.",
+        "Each partial mapping remains a component; the named two-clause union, not one isolated partial row, supports its target scope."
+      ]
+    },
+    {
+      "scope": "FW6-003",
+      "decision": "PASS_RETIRE_SYNTHETIC_SOURCE_ATOM",
+      "reason": "Introductory context is not a table competence bullet; identical molecular DNA replication is explicitly deferred to SekII. Preserve history and unaffected canonical replication/other-state requirements."
+    },
+    {
+      "scope": "FW6-004",
+      "decision": "HOLD_REQUIRED_COMPETENCE_RESIDUAL",
+      "reason": "Source requires justifying somatic-cell inheritance identity by mitosis. Existing 1d describes mitosis/meiosis and gametes; e70 is molecular replication; 053 inherits e70. None of those current labels alone demonstrates the complete nonmolecular justification competence.",
+      "minimalResolution": "Targeted successor review of existing 1d operative mitosis description to include genetic-identity justification at the chromosomal level, plus matching P cases and exact source/prerequisite binding; if this makes the existing combined mitosis/meiosis atom non-atomic, split only that proven combined atom into coherent mitosis-identity and meiosis/gamete aims, retaining current source coverage and reviewed histories."
+    }
+  ],
+  "actualBeforeVerificationReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-independent-review-a-v1/exact-before-verification.receipt.json",
+  "actualSourceAtlasBoundaryReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-independent-review-a-v1/source-boundary-verification.receipt.json",
+  "integrationStatus": "HOLD_candidate_revision_and_open_Fw6_004_runtime_scope_checks",
+  "runtimeCaveats": [
+    "No actual resolved NI end-class6/end-class10 composition or runtime frontier was checked; grade tags/source atlas membership alone are insufficient.",
+    "Direct NI bindings pass the actual sourceAtlasDescendants helper; broad canonical ancestor bindings cannot supply the two new goal claims.",
+    "Coupled retirement/removal requires matching extraction/mapping/view successors rather than only hiding source-view entries."
+  ],
+  "currentStrictClosuresClaimed": 0,
+  "humanApprovalClaimed": false
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:aeff4a729f8c4e8c5dc9e19bd7eb822cc1dd2511a2c94694802d6b1023a0b0fd",
+  "reviewInputFingerprint": "sha256:61a348d38c8338450d3c19510728dc3cbdeac4cf6834ab6682571fcefa51d8e8",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-a",
+      "roundId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-a",
+      "independenceGroupId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-independent-a",
+      "runIds": [
+        "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-a.codex-review"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact underlying model identifier unavailable)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-b",
+      "roundId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-b",
+      "independenceGroupId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-independent-b",
+      "runIds": [
+        "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-b.batch-001-codex-b-20261005"
+      ],
+      "providers": [
+        "OpenAI / Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI / Codex::Codex (GPT-6 family; exact model identifier not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "73b66ead-e44a-5486-98e3-1fb3f99620a6",
+      "firstRecordId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-a.codex-review.73b66ead-e44a-5486-98e3-1fb3f99620a6",
+      "secondRecordId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-b.batch-001-codex-b-20261005.goal-001",
+      "firstRunId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-a.codex-review",
+      "secondRunId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-b.batch-001-codex-b-20261005",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3891b735-9d0d-5eef-b653-6ad58b9181f6",
+      "firstRecordId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-a.codex-review.3891b735-9d0d-5eef-b653-6ad58b9181f6",
+      "secondRecordId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-b.batch-001-codex-b-20261005.goal-002",
+      "firstRunId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-a.codex-review",
+      "secondRunId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-b.batch-001-codex-b-20261005",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

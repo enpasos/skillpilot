@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "nativeBatchValidation": {
+    "command": "npm --prefix app run validate:goal-description-review -- --bundle <round-b/review-bundle-manifest.json> --input <round-b/description-review-input.json> --campaign <round-b/description-review-campaign.json> --run <round-b/results/chemie-batch-009-open-redox-one-current-v2-20261005-first-pass-b.batch-001.run.json> --batch-input <round-b/batches/chemie-batch-009-open-redox-one-current-v2-20261005-first-pass-b.batch-001.input.jsonl> --records <round-b/results/chemie-batch-009-open-redox-one-current-v2-20261005-first-pass-b.batch-001.records.jsonl>",
+    "exitCode": 0,
+    "validatedRecordCount": 1,
+    "actualEntryPoint": "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+    "log": "native-batch-validation.txt"
+  },
+  "nativeCampaignValidation": {
+    "command": "npm --prefix app run validate:goal-description-review-campaign -- --bundle <round-b/review-bundle-manifest.json> --input <round-b/description-review-input.json> --campaign <round-b/description-review-campaign.json> --batches-dir <round-b/batches> --results-dir <round-b/results>",
+    "exitCode": 0,
+    "validatedRecordCount": 1,
+    "actualEntryPoint": "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+    "log": "native-campaign-validation.txt"
+  },
+  "boundSchemaBytesMatchNative": true,
+  "bundleArtifactDigestsMatchManifest": true,
+  "fullQualitySuiteRun": false,
+  "authority": "ai_candidate",
+  "humanApprovalClaimed": false,
+  "humanTrialClaimed": false,
+  "m7CompletionClaimed": false
+}

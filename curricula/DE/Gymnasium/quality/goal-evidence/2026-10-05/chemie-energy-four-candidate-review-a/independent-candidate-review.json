@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/chem_energy_four_candidate_review_a",
+  "reviewTool": "Codex; exact model identity not exposed",
+  "reviewedAt": "2026-10-04T23:25:45.233470+00:00",
+  "reviewAuthority": "machine_only_ai_candidate",
+  "descriptionFrozenPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-candidate-review-a/description-review.frozen.json",
+  "descriptionFrozenSha256": "e8dff3b9609e602ff358b0bfb579f883498f04f7d46018bd2f880866edaae02a",
+  "descriptionFrozenAt": "2026-10-04T23:22:11.662659+00:00",
+  "positiveProfilesReadAfterDescriptionFreeze": true,
+  "positiveArtifactPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-revision-candidate-v1/positive-evidence.candidates.json",
+  "positiveArtifactSha256": "b96944987da9c04a90aafc93549f1ceef0d91e9c875a39d48207b85e96081a50",
+  "positiveReviewId": "chemie-energy-four-revision-candidate-v2",
+  "canonicalSnapshotPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-candidate-review-a/current-canonical-four.snapshot.json",
+  "canonicalSnapshotSha256": "398fba468a3646ad3d427be59844a3080c54be29e62bac22cf38d60ec49b7ab2",
+  "inspectedAssets": [
+    {
+      "goalId": "4928d5d1-e790-5883-9349-3b03a1c63b99",
+      "path": "app/public/assets/goal-visualizations/chemie/4928d5d1-e790-5883-9349-3b03a1c63b99/4928d5d1-e790-5883-9349-3b03a1c63b99.jpg",
+      "sha256": "3fe8ae78ae5dbd7582baa035f4cc8041a1473d5764e09ec03c011618e2327191",
+      "role": "current_orientation_only"
+    },
+    {
+      "goalId": "3e433dae-99f9-5a95-ad63-d5fa0b5f6836",
+      "path": "app/public/assets/goal-visualizations/chemie/3e433dae-99f9-5a95-ad63-d5fa0b5f6836/3e433dae-99f9-5a95-ad63-d5fa0b5f6836.jpg",
+      "sha256": "3574aba0e2a59d7602e88b1692387af7ecb0990c028acd153a6cf4e929f9376c",
+      "role": "current_orientation_only"
+    },
+    {
+      "goalId": "b95cdf98-fc97-5a94-b133-878922d28156",
+      "path": "app/public/assets/goal-visualizations/chemie/b95cdf98-fc97-5a94-b133-878922d28156/b95cdf98-fc97-5a94-b133-878922d28156.jpg",
+      "sha256": "0d518fd24cdb679dd663a16b766ccf7a687c3077f33b80a2945767e5b941558d",
+      "role": "current_orientation_only"
+    },
+    {
+      "goalId": "8ece9beb-9458-5ea1-8e45-9be04670f464",
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-energy-fuel-comparison-candidate-20261005-v1/candidate-v1.png",
+      "sha256": "207ebc8963bb0a6c6076661e866ffe32e42a5602e20d02bc72b1b048ef7d0ece",
+      "role": "inactive_png_candidate_native_and_360_inspected"
+    }
+  ],
+  "records": [
+    {
+      "goalId": "8ece9beb-9458-5ea1-8e45-9be04670f464",
+      "descriptionDecision": "KEEP_CANDIDATE",
+      "positiveEvidenceDecision": "PASS_CANDIDATE",
+      "reviewedAt": "2026-10-04T23:25:45.233470+00:00",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "status": "ai_candidate",
+      "reviewStatus": "needs_human_review",
+      "profileSha256": "4be8471c3ea927174f8ae90015d81bd04fa155174ba94f2453dab0c863e7952a",
+      "allApplicationCasesRead": true,
+      "fullContentFindings": [
+        "The supplied positive combustion energies and rounded molar masses give methane 55.625 and propane 50.4545 kJ/g. The per-mole ranking reverses on the mass basis; this is not an absolute chemical energy-rich classification.",
+        "Both complete-combustion equations conserve C, H and O; the fresh case requires 1.40449 mol methane versus 0.474158 mol propane, giving direct CO2 masses 61.7978 and 62.5889 g for identical useful heat. Different thermal efficiencies are part of the new model use context.",
+        "The upstream-emission question is a limit-of-claim check. It does not demand independently computing a lifecycle inventory or claiming a climate ranking."
+      ],
+      "assistanceBoundary": [
+        "Input combustion energies and molar masses are supplied data. The new image exposes the mass-based 55.6/50.5 MJ values, fuel formulae and product types; reproducing these is assisted, not independent numerical derivation.",
+        "Uncued balanced coefficients, explanation of per-mole versus mass reversal, and useful-heat/CO2 boundary transfer can supply independent reasoning. The fresh 80%/95% useful-heat result is not supplied by the image."
+      ],
+      "freshTransferFinding": "Different objective (equal useful heat), nonidentical efficiencies and per-output CO2 rather than a cosmetic fuel-label change.",
+      "sourceBoundary": "HE E.4 energetic comparison in an E-phase context; exact named normalized combustion aspect only. Efficiency is needed for a useful-output ranking, not for every pure per-mole or per-mass chemical comparison.",
+      "newHold": false
+    },
+    {
+      "goalId": "b95cdf98-fc97-5a94-b133-878922d28156",
+      "descriptionDecision": "KEEP_CANDIDATE",
+      "positiveEvidenceDecision": "PASS_CANDIDATE",
+      "reviewedAt": "2026-10-04T23:25:45.233470+00:00",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "status": "ai_candidate",
+      "reviewStatus": "needs_human_review",
+      "profileSha256": "59437bb6a12fbe8d57072093afcd1b76f4c11b081fab19a9fa58945c497fe465",
+      "allApplicationCasesRead": true,
+      "fullContentFindings": [
+        "Fuel combustion and durable material use are chemically distinct environmental pathways. The diesel/container case rejects the false claim that all petroleum products burn during their use.",
+        "Lubricant friction reduction and bitumen road-material binding supply genuine new functional contexts. Leakage, abrasion and long lifetime support qualified judgments; long life alone does not establish a full lifecycle benefit.",
+        "The fresh case can be answered qualitatively at BY year 9 NTG/year 10 CH level; no advanced life-cycle calculation is required."
+      ],
+      "assistanceBoundary": [
+        "Named products, short case data about CO2/waste/abrasion/leakage, and image usage labels are input assistance. Assignment alone cannot supply independent understanding.",
+        "The independent part is explaining the function-to-benefit and release-to-impact link, rejecting the combustion template and justifying a suitable limitation or measure."
+      ],
+      "freshTransferFinding": "New non-fuel uses and release routes force adaptation of the environmental explanation.",
+      "sourceBoundary": "BY C9 NTG Lernbereich 5 competence 5; live C10 CH parallel is Lernbereich 3 competence 5. No all-state or whole-chapter coverage claim.",
+      "newHold": false
+    },
+    {
+      "goalId": "4928d5d1-e790-5883-9349-3b03a1c63b99",
+      "descriptionDecision": "KEEP_CANDIDATE",
+      "positiveEvidenceDecision": "PASS_CANDIDATE",
+      "reviewedAt": "2026-10-04T23:25:45.233470+00:00",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "status": "ai_candidate",
+      "reviewStatus": "needs_human_review",
+      "profileSha256": "70e9edbd0efb73e565405ddfdad059aeec34caabb371a700e570646cc495e93b",
+      "allApplicationCasesRead": true,
+      "fullContentFindings": [
+        "Chemistry work-on-system sign convention yields w=-200 J and deltaU=+300 J for +500 J input heat and 200 J outward volume work. DeltaH=+500 J is valid in the stated closed constant-pressure model with only pressure-volume work.",
+        "The rigid gas-tight calorimeter has zero volume work and no other work, so deltaU=-800 J. DeltaH cannot be inferred without delta(pV) information.",
+        "The revised fully isolated total-system boundary expressly excludes heat, matter and all work, including electrical work. Thus total U is constant while internal chemical-to-thermal conversion may change temperature. This fixes the false equivalence adiabatic+matter-closed=isolated."
+      ],
+      "assistanceBoundary": [
+        "Numerical heat/work values, boundary descriptions and image Qv/Qp formulae are supplied help. Correct substitution alone is insufficient.",
+        "Classification, sign reasoning, explanation of why U/H changes differ, and rejecting the false isolated/closed and heat/state-property equivalences are independent reasoning."
+      ],
+      "freshTransferFinding": "A rigid, open and fully isolated comparison changes the admissible thermodynamic conclusion; it is not a parameter-only repetition.",
+      "sourceBoundary": "BY C12 GA/EA linked system/energy-change competence. Qp=deltaH/Qv=deltaU remain restricted to the stated no-other-work conditions; at constant pressure deltaH=deltaU+p deltaV and otherwise deltaH=deltaU+delta(pV).",
+      "newHold": false
+    },
+    {
+      "goalId": "3e433dae-99f9-5a95-ad63-d5fa0b5f6836",
+      "descriptionDecision": "KEEP_CANDIDATE",
+      "positiveEvidenceDecision": "PASS_CANDIDATE",
+      "reviewedAt": "2026-10-04T23:25:45.233470+00:00",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "status": "ai_candidate",
+      "reviewStatus": "needs_human_review",
+      "profileSha256": "f539aae0631a7cffbdcb2423084664166a0445cb7c87e383bd80f47aa3451985",
+      "allApplicationCasesRead": true,
+      "fullContentFindings": [
+        "Given gas-phase budgets are internally consistent: 679-862=-183 kJ and 629-732=-103 kJ. The learner need not perform these sums: completion depends on causal explanations involving both breaking and formation, and rejection of the smaller-input shortcut.",
+        "The fresh water case gives identical reactant basis and covalent O-H bonds but a liquid product 44.0 kJ/mol lower. An uncued intermolecular-stabilization/condensation explanation correctly supplies the missing model contribution.",
+        "No mandatory bond-energy-sum routine remains. The supplied numeric budgets and phase difference support the qualitative molecule/enthalpy relationship expressly bounded in both BY GA and EA."
+      ],
+      "assistanceBoundary": [
+        "All evaluated budgets, enthalpies and the 44.0 kJ/mol product-state difference are given assistance; neither numerical recalculation nor reading the relative order is independent proof.",
+        "Independent performance is explaining both energetic contributions, why one-reagent-bond reasoning fails and why the gas-phase model lacks condensed-phase interactions. The abstract image is model orientation, not stoichiometric or experimental evidence."
+      ],
+      "freshTransferFinding": "Changing product phase without changing covalent bond types probes the causal model boundary.",
+      "sourceBoundary": "BY C12 GA/EA Lernbereich 5 fourth competence; their molecule/combustion-heat content uses qualitative relationships without calculations. The next formation-enthalpy calculation competence is separate and not silently imported.",
+      "newHold": false
+    }
+  ],
+  "summary": {
+    "descriptionKeepCandidate": 4,
+    "positivePassCandidate": 4,
+    "newHolds": 0,
+    "currentCentralClosuresClaimed": 0,
+    "humanApprovalsClaimed": 0
+  },
+  "integrationRequirements": [
+    "Fresh current PDF description rounds and exact current goal/page/context/source/image bindings are required after active adoption.",
+    "Explicitly preserve the assistance boundaries above when generating evidence; numerical reproduction of supplied values is not independent proof.",
+    "No independent final gate-V approval is conferred by this preparatory source/P review; use the separately required actual visual review.",
+    "No unaffected historic eight-goal review is reopened; no structural 8ceb split is reviewed here."
+  ],
+  "actualPreviewViews": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-revision-candidate-v1/inspection-previews/4928d5d1-e790-5883-9349-3b03a1c63b99.width-680.png",
+      "sha256": "08023e2307fb30da0867261ee052de92a2e8d961e4c96fae740eda9abd312750",
+      "actuallyViewed": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-revision-candidate-v1/inspection-previews/4928d5d1-e790-5883-9349-3b03a1c63b99.width-360.png",
+      "sha256": "f66934453ce29a8e4a5abb99931dd27c8d6a7b6b49dddf5c26510ad88db06260",
+      "actuallyViewed": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-revision-candidate-v1/inspection-previews/3e433dae-99f9-5a95-ad63-d5fa0b5f6836.width-680.png",
+      "sha256": "57f16a3963cb14ade62fad75ea16738350ac3ddcb7642620695133207d73a0a1",
+      "actuallyViewed": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-revision-candidate-v1/inspection-previews/3e433dae-99f9-5a95-ad63-d5fa0b5f6836.width-360.png",
+      "sha256": "c92e14e3d72a6a6cfe37d19814b6d112bb2676d23408aa7ca2ba35ce4ae198ef",
+      "actuallyViewed": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-revision-candidate-v1/inspection-previews/b95cdf98-fc97-5a94-b133-878922d28156.width-680.png",
+      "sha256": "bc15552b3ce345cfc321c069deab6a0c759f9d201951f180580e770de8c2434b",
+      "actuallyViewed": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-energy-fuel-comparison-candidate-20261005-v1/candidate-v1.width-360.png",
+      "sha256": "72b962fcff28f5d695e7ac77e53621afe065f140f94570d46af4617b312a9f25",
+      "actuallyViewed": true
+    }
+  ]
+}

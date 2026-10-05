@@ -1,0 +1,94 @@
+{
+  "status": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "authorshipMode": "revision_after_known_A; not an independent second review",
+  "sourceLandscapeId": "0b27a054-e81e-5423-aa71-d3d8d9d8f0db",
+  "canonicalLandscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+  "humanApproval": false,
+  "activeWrites": 0,
+  "operativeBeforeBinding": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_biology_lower_secondary_source_extraction_to_canonical_biology.m7-e3-recombination-20261001-v2.review.json",
+    "digest": "sha256:5f578339f71bc595ebc478f4937543801daf6ea296927594a6bfd1fe24a8435f"
+  },
+  "ni3PreparedBaseBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-current-source-integration-route-v1/versioned-replacements/ni.current-mapping.review-pending.json",
+    "digest": "sha256:ce24006736d23b3208a99b7d7dd954a8ae695dd504aa80a78bcc403d4563afea"
+  },
+  "sourceGoalId": "ni-biology-seki-kc2015-fw6-008-d14910ea",
+  "beforeRows": [
+    {
+      "legacyGoalId": "ni-biology-seki-kc2015-fw6-008-d14910ea",
+      "canonicalGoalId": "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+      "matchType": "partial",
+      "reviewDecisionId": "ni-biology-seki-kc2015-fw6-008-d14910ea"
+    },
+    {
+      "legacyGoalId": "ni-biology-seki-kc2015-fw6-008-d14910ea",
+      "canonicalGoalId": "ec88fc1d-ee0f-5a01-9464-dc358241050e",
+      "matchType": "partial",
+      "reviewDecisionId": "ni-biology-seki-kc2015-fw6-008-d14910ea"
+    }
+  ],
+  "preserveBeforeRowsExactly": true,
+  "appendRowTemplates": [
+    {
+      "legacyGoalId": "ni-biology-seki-kc2015-fw6-008-d14910ea",
+      "canonicalGoalIdFromCandidateKey": "ni-fw6-008-independent-assortment-companion-v2",
+      "matchType": "partial",
+      "reviewDecisionId": "ni-biology-seki-kc2015-fw6-008-d14910ea"
+    },
+    {
+      "legacyGoalId": "ni-biology-seki-kc2015-fw6-008-d14910ea",
+      "canonicalGoalIdFromCandidateKey": "ni-fw6-008-chromatid-segment-exchange-companion-v2",
+      "matchType": "partial",
+      "reviewDecisionId": "ni-biology-seki-kc2015-fw6-008-d14910ea"
+    }
+  ],
+  "beforeDecision": {
+    "id": "ni-biology-seki-kc2015-fw6-008-d14910ea",
+    "sourceGoalId": "ni-biology-seki-kc2015-fw6-008-d14910ea",
+    "topicCode": "FW6",
+    "sourceSpan": "FW 6 Reproduktion, Schuljahrgänge 5/6-9/10, Source-Ziel 8",
+    "status": "mapped",
+    "decision": "mapped",
+    "matchType": "partial",
+    "canonicalGoalIds": [
+      "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+      "ec88fc1d-ee0f-5a01-9464-dc358241050e"
+    ],
+    "rationale": "FW 6, Source-Ziel 8 verlangt die Prinzipien der Rekombination auf Grundlage der Meiose. Die freie Trisomie 21 durch Chromosomenfehlverteilung erklärt Aneuploidie, nicht Rekombination, und wurde deshalb aus genau dieser 1:n-Bindung entfernt. Die verbleibenden Mitose-/Meioseziele tragen die Zuordnung nur teilweise; ein eigenständiger Nachweis der Rekombinationsprinzipien ist damit noch offen.",
+    "reviewer": "codex-biology-m7-e3-source-recheck",
+    "reviewedAt": "2026-10-01",
+    "notes": "Gezielte fachliche Neubewertung gegen das lokale amtliche NI-KC-PDF, FW 6: Rekombination auf Grundlage der Meiose. Kein Schluss aus bloßer gemeinsamer Nennung der Meiose."
+  },
+  "afterDecisionWithoutUnadoptedTargetIds": {
+    "id": "ni-biology-seki-kc2015-fw6-008-d14910ea",
+    "sourceGoalId": "ni-biology-seki-kc2015-fw6-008-d14910ea",
+    "topicCode": "FW6",
+    "sourceSpan": "FW 6.2 Fortpflanzung und Vererbung, Tabellenspalte zusätzlich Ende Jg. 10, S. 87, Source-Ziel ni-biology-seki-kc2015-fw6-008-d14910ea",
+    "status": "mapped",
+    "decision": "mapped",
+    "matchType": "partial",
+    "canonicalGoalIds": [
+      "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+      "ec88fc1d-ee0f-5a01-9464-dc358241050e"
+    ],
+    "rationale": "INACTIVE SPLIT REVISION AFTER KNOWN A: Independent assortment of whole chromosomes and exchange of corresponding non-sister chromatid segments are separately assessable causal mechanisms. The two root-ID-adopted, independently current-reviewed leaves can jointly supply the FW6-008 recombination-principles witness. Each companion row remains partial; neither leaf alone covers the whole clause. Existing 1d2/ec88 rows remain unchanged partial context/procedural components. Trisomy21 remains removed. No molecular mechanism, independent model construction, whole meiosis phase routine or formula quota is required.",
+    "reviewer": "OpenAI Codex author revision after known independent A; model unexposed",
+    "reviewedAt": "2026-10-05T03:56:27Z",
+    "notes": "No active coverage completion. Append both actual adopted UUIDs only after final independent source/D and actual given-model bindings; keep existing target IDs and all other decisions unchanged."
+  },
+  "appendCanonicalGoalIdsFromCandidateKeys": [
+    "ni-fw6-008-independent-assortment-companion-v2",
+    "ni-fw6-008-chromatid-segment-exchange-companion-v2"
+  ],
+  "jointCoverageRule": "Both new partial rows jointly operationalize the source principles clause; never mark either one as full/exact clause coverage.",
+  "coverageStatusUntilFinalIdentityAndIndependentReview": "HOLD",
+  "ni3PreparedRows": 334,
+  "appendRows": 2,
+  "futureRowsAfterNI3AndSplit": 336,
+  "futureDecidedSourceGroups": 123,
+  "all334NI3PreparedRowsPreserved": true,
+  "allOther122NI3PreparedDecisionsPreserved": true,
+  "historicalV2DecisionsUnchangedAfterNI3AndTargetedReplacement": 117
+}

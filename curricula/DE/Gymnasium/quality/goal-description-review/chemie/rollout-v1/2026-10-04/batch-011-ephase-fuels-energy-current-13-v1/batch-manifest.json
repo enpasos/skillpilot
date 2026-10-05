@@ -1,0 +1,66 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-04/batch-011-ephase-fuels-energy-current-13-v1.config.json",
+  "configDigest": "sha256:6f0625df64bd522dbea307dc86ca198e577120acd6d74e4f54e588f5caa62455",
+  "goalIds": [
+    "2be9e61a-88ea-56fe-8294-ee46e3c9a8ef",
+    "8ceb1749-fce0-584f-a2b8-0a309282329a",
+    "8ece9beb-9458-5ea1-8e45-9be04670f464",
+    "b95cdf98-fc97-5a94-b133-878922d28156",
+    "a0e8f0f2-24e2-5945-a511-597d32e73796",
+    "8b98d8ba-65c6-58d7-92f0-45f4b2456573",
+    "4928d5d1-e790-5883-9349-3b03a1c63b99",
+    "3e433dae-99f9-5a95-ad63-d5fa0b5f6836",
+    "4663fd80-1618-5211-8020-18f4b80979fc",
+    "3c9bfa10-9a13-50cc-96c8-6213e28d6c54",
+    "b759d50d-0e82-5b10-89a2-fe5271106e50",
+    "27e4fe9b-4796-579b-8f7d-06c65fb600c0",
+    "6b82f80e-f493-5e6b-9709-2d4eca98c137"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 376,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/review-book-full.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:ea7695c91660b45d5f31918fd2b941eb4fc65c4e93e7b73e8f20fc58aa34f3c5"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:a3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:8fc4dbcca9c5f9e45264276a893a3055773c4a728d40c49d1f361af825a208e3",
+    "reviewInputFingerprint": "sha256:31c976b508c71591eae939a91c61bc6f71308d5b654f8d3336501656e1e9a99b",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-a",
+        "campaignDigest": "sha256:5ddd1a8602cc4e864293a4e83d5e91764b3be6156cad94218b1b0b6062abd2cc",
+        "roundId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-a",
+        "independenceGroupId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-independent-a",
+        "batchId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:e313b005f2e9b216099a176bf4797d97da5e21c91f976c0887d17d41215a52a1"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-b",
+        "campaignDigest": "sha256:7ca614404061955bc64ce8f4d8d69193363c5b64c25b589fe130f9d58d727162",
+        "roundId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-b",
+        "independenceGroupId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-independent-b",
+        "batchId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:1f1dae1ccf7781c935ea514918b24063cfdadeb42c9204c4f774e302732f1b7d"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

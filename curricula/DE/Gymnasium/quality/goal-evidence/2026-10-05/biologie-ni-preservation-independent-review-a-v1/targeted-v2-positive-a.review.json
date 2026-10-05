@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-05T00:02:49.462233+00:00",
+  "reviewer": "independent-ni-preservation-reviewer-a",
+  "phase": "strictly_targeted_v2_P_data_after_targeted_D_freeze",
+  "targetedDescriptionFreeze": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-independent-review-a-v1/targeted-v2-description-a.freeze.json",
+  "targetedDescriptionFreezeSha256": "sha256:723b182446ca6964b85c4e0e617fd2bbedb6beb2a6b896946984381ab3c59c70",
+  "previousPReview": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-independent-review-a-v1/positive-phase-a.review.json",
+  "candidatePPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-candidate-v2/positive-evidence.candidates.json",
+  "candidatePSha256": "sha256:bb8b1d5120b79a114779fb6ba008f9ac172d948d1d22c1134acceb8ed2c0c636",
+  "actualChangedFields": [
+    {
+      "goalId": "359e6313-cd86-54d1-bee5-8e680101dc32",
+      "caseId": "fresh-bean-offspring",
+      "field": "taskDemandDe"
+    },
+    {
+      "goalId": "359e6313-cd86-54d1-bee5-8e680101dc32",
+      "caseId": "fresh-bean-offspring",
+      "field": "taskDemandEn"
+    },
+    {
+      "goalId": "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+      "caseId": "fresh-pigment-and-resource-model",
+      "field": "taskDemandDe"
+    },
+    {
+      "goalId": "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+      "caseId": "fresh-pigment-and-resource-model",
+      "field": "taskDemandEn"
+    }
+  ],
+  "unchangedEssentialUnderstandingExpectationsCoverageAndExpectedPerformancesVerified": true,
+  "unchanged9fProfileVerified": true,
+  "noNewBlindFullReviewClaim": true,
+  "decisions": [
+    {
+      "goalId": "359e6313-cd86-54d1-bee5-8e680101dc32",
+      "caseId": "fresh-bean-offspring",
+      "decision": "PASS_TARGETED_CANDIDATE_CASE",
+      "reason": "DE/EN now explicitly supply shorter, equal-medium and longer offspring pods relative to parent medium pods. This supports the unchanged expected counterexample to all offspring becoming longer. Own positive same-species and generational explanation remains required; the supplied comparison itself is help, not independent evidence. Same conditions still do not establish exclusively genetic causes.",
+      "resolvesPriorFinding": "v1 bean data/expected answer mismatch",
+      "resultingProfileDecision": "PASS_CANDIDATE_PROFILE_after_targeted_data_correction"
+    },
+    {
+      "goalId": "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+      "caseId": "fresh-pigment-and-resource-model",
+      "decision": "PASS_TARGETED_CANDIDATE_CASE",
+      "reason": "The updated task expressly supplies R→P instructions in both languages, supporting the expected causal link. The learner must still construct the relation and distinguish missing P function in B from absent precursor in C, with no invented molecular/variance mechanism. Merely restating the supplied R→P relation does not itself establish independent transfer.",
+      "resultingProfileDecision": "PASS_CANDIDATE_PROFILE_with_explicit_model_link"
+    }
+  ],
+  "resultingProfileHashes": [
+    {
+      "goalId": "359e6313-cd86-54d1-bee5-8e680101dc32",
+      "profileSha256CanonicalJson": "sha256:dff58d5029c082562fcdb815527024853f112ae84837a382d7f908d9de790f4b"
+    },
+    {
+      "goalId": "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+      "profileSha256CanonicalJson": "sha256:b7f513275ba384797da55d1ecb0b8ecdbe8677dd86dafe73b2aff8d182c22696"
+    },
+    {
+      "goalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+      "profileSha256CanonicalJson": "sha256:d9fcff52c57ff47a67b4a0c8ddbe40943e5c132c28f7803fd77c1551c4979ed0"
+    }
+  ],
+  "status": "PASS_targeted_P_changes_only",
+  "remainingAdoptionBlockers": [
+    "Two mapping afterDecisionCandidate.sourceSpan labels still carry Realisierung genetischer Information, contrary to actual FW6.3 table heading.",
+    "FW6-004 Erbgleichheit justification and matching source/mapping/view preservation remain open.",
+    "No actual NI year-resolved runtime projection or frontier check is claimed."
+  ],
+  "currentStrictClosuresClaimed": 0,
+  "humanApprovalClaimed": false
+}

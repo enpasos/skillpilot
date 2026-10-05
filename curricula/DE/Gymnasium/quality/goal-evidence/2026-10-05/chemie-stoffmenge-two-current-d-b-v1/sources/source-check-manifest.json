@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-10-05T03:44:50.687337+00:00",
+  "purpose": "Targeted independent chemical and source-clause checks; no complete jurisdiction mapping audit",
+  "sources": [
+    {
+      "role": "metrological primary definition",
+      "url": "https://www.bipm.org/en/si-base-units/mole",
+      "snapshotPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-current-d-b-v1/sources/bipm-mole.html",
+      "digest": "sha256:7f58b1fc0f4df9dd20c516309bf112d944992276ed7027fbf01d80f100ebf2ff",
+      "usedFor": "Specified entities, unit mol, exact definition and rounded displayed value"
+    },
+    {
+      "role": "official German curriculum primary source",
+      "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-chemie.pdf",
+      "digest": "sha256:f0a2c3795fcbcad1fee8d92d7ab9bc26810609bee0ef1fbd02c830e171220d2f",
+      "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf",
+      "targetClauses": [
+        {
+          "topic": "9.1",
+          "pdfPhysicalPage": 17,
+          "printedPage": 16,
+          "clause": "Stoffmenge und ihre Einheit"
+        },
+        {
+          "topic": "10.4 / 4.2",
+          "pdfPhysicalPage": 27,
+          "printedPage": 26,
+          "clause": "qualitative Elementaranalyse"
+        }
+      ],
+      "usedFor": "Own clause only, not sibling competencies or a complete mapping claim"
+    },
+    {
+      "role": "independent chemistry primary assessment source",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Chemistry/2015/Exam-materials/8ch0-01-rms-20220818.pdf",
+      "snapshotPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-current-d-b-v1/sources/pearson-8ch0-01-rms-20220818.pdf",
+      "digest": "sha256:bc9cd6c689653e23eb8ff2a1d35d9667724e65adb0dac0b78f2a02f1e5ce7cc1",
+      "targetClause": "9(b)",
+      "pdfPhysicalPage": 35,
+      "usedFor": "CuSO4 and limewater signals; water-test order; no German curriculum scope claim"
+    }
+  ],
+  "retrievalLimitations": [
+    "RSC direct article returned HTTP 405 through web tool; not relied on as the full primary check.",
+    "BY C9/NTG direct page was unavailable through the web tool; no BY scope or mapping claim made."
+  ]
+}

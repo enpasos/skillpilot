@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent-review-b",
+  "reviewKind": "actual inactive P-v2 inner-profile content review after frozen independent D/source phase",
+  "completedAt": "2026-10-04T23:59:47.473788+00:00",
+  "descriptionFreezePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-independent-review-b-v1/description-phase.freeze.json",
+  "descriptionFreezeSha256": "sha256:66b2bdbba8a1e6ec3a050c4ed3a8f7fcbb3eae1013cba1c9d53854b803718652",
+  "positiveCandidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-candidate-v1/positive-evidence.candidates.json",
+  "positiveCandidateSha256": "sha256:2e7f7c39b4c569aeda0e1717af3577b119c1a83f2aa734695043df2cba6cb11c",
+  "profileCountActuallyRead": 3,
+  "freshCaseCountActuallyRead": 6,
+  "languageVersionsActuallyRead": [
+    "DE",
+    "EN"
+  ],
+  "caseLanguagePairCount": 6,
+  "sameScopeAcrossDE_EN": true,
+  "actualFullProfiles": [
+    {
+      "goalId": "359e6313-cd86-54d1-bee5-8e680101dc32",
+      "innerProfileSha256": "sha256:051249c29dba8dc8b31d8e5f5f7aff02c428fc63820d031b9e46699e35ab8e23",
+      "hashMethod": "Own compact UTF-8 JSON sorted-key inner-profile digest, not a central validator fingerprint.",
+      "archetype": "concept",
+      "requiredExpectationIds": [
+        "individual-differences",
+        "undirected-generational-variation"
+      ],
+      "expectationsAllRead": true,
+      "variationAxesAllRead": true,
+      "coverageExpectationsAllRead": true,
+      "applicationCaseBriefsAllRead": true
+    },
+    {
+      "goalId": "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+      "innerProfileSha256": "sha256:cff4a8f107b4ac456ce37fb64ad53a50eb52078f606030aecbe3504efef35c0f",
+      "hashMethod": "Own compact UTF-8 JSON sorted-key inner-profile digest, not a central validator fingerprint.",
+      "archetype": "representation",
+      "requiredExpectationIds": [
+        "chromosomal-instruction",
+        "product-contributes-to-trait"
+      ],
+      "expectationsAllRead": true,
+      "variationAxesAllRead": true,
+      "coverageExpectationsAllRead": true,
+      "applicationCaseBriefsAllRead": true
+    },
+    {
+      "goalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+      "innerProfileSha256": "sha256:d9fcff52c57ff47a67b4a0c8ddbe40943e5c132c28f7803fd77c1551c4979ed0",
+      "hashMethod": "Own compact UTF-8 JSON sorted-key inner-profile digest, not a central validator fingerprint.",
+      "archetype": "concept",
+      "requiredExpectationIds": [
+        "origin-versus-combination",
+        "selection-and-generations"
+      ],
+      "expectationsAllRead": true,
+      "variationAxesAllRead": true,
+      "coverageExpectationsAllRead": true,
+      "applicationCaseBriefsAllRead": true
+    }
+  ],
+  "decisions": [
+    {
+      "goalId": "359e6313-cd86-54d1-bee5-8e680101dc32",
+      "profileDecision": "REVISE",
+      "cases": [
+        {
+          "id": "fresh-bean-offspring",
+          "decision": "REVISE",
+          "help": "Same species, both medium-pod parents, shared growth conditions and offspring differences supplied. No genes or inheritance rules supplied or required.",
+          "uncuedPerformance": "Describe concrete individual variation, reason from the observations about generational differences and evaluate a purposeful-development claim.",
+          "factualFinding": "Different offspring pod lengths alone do not establish that at least some offspring are not longer than the medium-pod parents. The expected not-uniformly-increased relative-length finding is underdetermined. All differing lengths could exceed parental lengths. Purposeful intent is unsupported regardless.",
+          "minimalFixDe": "Die Nachkommen haben kurze, mittellange und lange Hülsen; einige Hülsen sind kürzer und andere länger als die der Eltern.",
+          "minimalFixEn": "The offspring have short, medium and long pods; some pods are shorter and others longer than the parents' pods.",
+          "fixAlternative": "Keep the original data but remove the required not-uniformly-longer inference, accepting only that a planned developmental aim is not established."
+        },
+        {
+          "id": "fresh-snail-families",
+          "decision": "KEEP_CANDIDATE",
+          "help": "One species, different shell forms in parent and offspring groups, and their appearance before ground change are explicitly supplied.",
+          "uncuedPerformance": "Describe within-group and across-generation variation and interpret timing without genetics, selection or a new-species inference.",
+          "factualFinding": "Pre-existing variation undermines an origin tailored to the later substrate; it neither proves a genetic mechanism nor classifies mutation."
+        }
+      ]
+    },
+    {
+      "goalId": "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+      "profileDecision": "REVISE",
+      "cases": [
+        {
+          "id": "pigment-model",
+          "decision": "KEEP_CANDIDATE",
+          "help": "Chromosome section G supplies enzyme E instructions, E enables violet pigment, and equal-other-conditions contrasting function states are supplied model facts.",
+          "uncuedPerformance": "Construct a labelled gene/product/trait representation, explain both functional observations and bound the one-gene simplification.",
+          "factualFinding": "The simple causal model is correct within its supplied conditions; no enzyme mechanism, sequence, RNA or protein-level taxonomy is needed."
+        },
+        {
+          "id": "fresh-pigment-and-resource-model",
+          "decision": "REVISE",
+          "help": "Section R, product P, shared R instructions, three plants' product-function/precursor states and outcomes are supplied.",
+          "uncuedPerformance": "Explain A/B/C and transfer to a second required condition; avoid inventing DNA changes or gene-regulation mechanisms.",
+          "factualFinding": "The brief names R and P but does not explicitly say R contains the instructions for P. The required R→P connection should be a supplied model relation, not an inferred identity merely from co-occurring labels.",
+          "minimalFixDe": "Der Chromosomenabschnitt R enthält die Bauanleitung für Produkt P, das die Einlagerung eines roten Farbstoffs in Früchte ermöglicht.",
+          "minimalFixEn": "Chromosome section R contains the instructions for product P, which enables a red pigment to accumulate in fruits."
+        }
+      ]
+    },
+    {
+      "goalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+      "profileDecision": "KEEP_CANDIDATE",
+      "cases": [
+        {
+          "id": "fresh-beetle-model",
+          "decision": "KEEP_CANDIDATE",
+          "help": "Heritable colour/wing variants, all four pre-existing combinations, a genuinely new heritable event in a gamete, and controlled 4-versus-1 offspring advantage are explicitly supplied.",
+          "uncuedPerformance": "Explain which event creates a variant, which recombines existing factors, and how differential reproduction can change frequencies.",
+          "factualFinding": "Phenomenological mutation classification is supported by the explicit genuinely new inherited event rather than a novel phenotype alone. The result remains potential population change, not an absolute deterministic allele-frequency prediction. No orange advantage inferred."
+        },
+        {
+          "id": "fresh-plant-environment-change",
+          "decision": "KEEP_CANDIDATE",
+          "help": "Crossing only existing heritable variants, reversed viable-seed contributions dry/wet (6/2 versus2/6), and a new event with unknown reproductive success are supplied.",
+          "uncuedPerformance": "Separate recombination from spread, transfer selection explanation to the reversed environment, and leave the new form's advantage open.",
+          "factualFinding": "Direction of potential root-variant spread reverses consistently with supplied reproductive data. The environment selects among variation rather than producing suitable variants. Unknown advantage remains genuinely unknown."
+        }
+      ]
+    }
+  ],
+  "ageAndScope": {
+    "359e": "Ende Jg.6 observable variation, no causal genetics or selection task.",
+    "0263": "Ende Jg.10 simple chromosomal gene/product/trait relation, no molecular realization.",
+    "9f": "Ende Jg.10 nonmolecular origin and selective spread, not a class6 variation replacement.",
+    "crossJurisdictionFullCurrent9fSourceAuditPerformed": false
+  },
+  "evidenceStatus": {
+    "candidateWrapperClaims": [
+      "E1",
+      "G1"
+    ],
+    "actualStatus": "Inactive author profiles subjected to independent preparatory content QA; no actual learner evidence, adopted current bindings, human review or empirical trial.",
+    "doNotTurnAuthorReviewIntoLearnerMastery": true
+  },
+  "helpVersusIndependentReasoning": "Supplied biological model facts, legends, function tests and reproduction data are support. The independent performance is construction, causal interpretation, transfer and justified limits. Never present supplied facts as uncued recall or a copied rule as demonstrated transfer.",
+  "memoryDecisionPreparatoryAssessment": "no_memory_needed defensible for these bounded supplied-data tasks; no standalone recall cards are newly required. Current M and any visibility/card gate have not been adopted.",
+  "formalCheckReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-independent-review-b-v1/profile-structure-check.receipt.json",
+  "formalPassDoesNotResolveContentFindings": true,
+  "currentStrictClosuresClaimed": 0,
+  "restoredCurrentStrictBindingsClaimed": 0,
+  "humanApprovalClaimed": false
+}

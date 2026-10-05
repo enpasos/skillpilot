@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "recordStatus": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "observedAt": "2026-10-05T05:11:20.400619+00:00",
+  "canonicalLandscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "authorInformedByExistingB010Findings": true,
+  "independentReview": false,
+  "PRead": false,
+  "operativeMutations": false,
+  "strictClosureAdded": 0,
+  "tool": "python3 jsonschema Draft202012Validator 4.26.0",
+  "priorDiagnostic": "Initial input probe wrongly used retired V1 schema for native V3 input, producing version/context errors. Final check uses the actual V3 input contract; input data were not downgraded.",
+  "checks": [
+    {
+      "path": "source-description-author.records.jsonl",
+      "schema": "contracts/goal-description-review/v1/goal-description-review-record.schema.json",
+      "count": 7,
+      "sha256": "4b7125ed5111ec54e401c4fdef8517bb49adc9d50d986250c5138fcfbc56438f",
+      "errors": [],
+      "result": "PASS"
+    },
+    {
+      "path": "source-description-author.run.json",
+      "schema": "contracts/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+      "count": 1,
+      "sha256": "aa1fa2c4289dd2d7f966a00b91762ca51ad2d79b4f5184da44805ee9f642c496",
+      "errors": [],
+      "result": "PASS"
+    },
+    {
+      "path": "current-description-review-input.json",
+      "schema": "contracts/goal-description-review/v3/goal-description-review-input.schema.json",
+      "count": 1,
+      "sha256": "57920f807a6db41df0a488b3d8b2ed302d0c8fa38ec0faa169d18de10859f683",
+      "errors": [],
+      "result": "PASS"
+    },
+    {
+      "path": "author-native-validation.campaign.json",
+      "schema": "contracts/goal-description-review/v2/goal-description-review-campaign.schema.json",
+      "count": 1,
+      "sha256": "36fb97833a0d5b00853554fc62ebb0fc55402832059e7d240d72983814f5d5ac",
+      "errors": [],
+      "result": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "chemie-stoffmenge-u-g-independent-v-qa-c-20261005-v2",
+  "goalId": "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+  "reviewer": "independent Codex sub-agent chem_nine_current_d_c",
+  "model": "GPT-6 (exact deployed version not exposed)",
+  "candidateAssetDigest": "sha256:a1edaf2c262fb5c8e59414112c38e77dca87b48336821a554a369a26787bfeb3",
+  "viewedAssets": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-u-g-correction-candidate-20261005-v1/candidate-v2.png",
+      "digest": "sha256:a1edaf2c262fb5c8e59414112c38e77dca87b48336821a554a369a26787bfeb3",
+      "actuallyViewed": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-u-g-correction-candidate-20261005-v1/preview-360-v2.png",
+      "digest": "sha256:ffcad3466663d75ed7fda1aa3f60f23be6e7f6ecf2a1140da79229ced15a22f4",
+      "actuallyViewed": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-u-g-correction-candidate-20261005-v1/preview-680-v2.png",
+      "digest": "sha256:35f7b5bafadffdc8aadd79eec10e9fc219fcd3e1129ba0edb1cb735991454317",
+      "actuallyViewed": true
+    }
+  ],
+  "visualReviewBeforePromptRequestOrRootVerdict": true,
+  "notImageAuthor": true,
+  "notCandidatePAuthor": true,
+  "verdict": "PASS",
+  "status": "ai_candidate",
+  "frozenAt": "2026-10-05T02:37:46Z",
+  "observations": [
+    {
+      "criterion": "both_units_on_both_levels",
+      "decision": "PASS",
+      "observation": "Ein C-12-Atom shows 12 u and approximately 2.0 times 10^-23 g. 1 mol C-12-Atome shows approximately 7.2 times 10^24 u and approximately 12 g. The bottom statement expressly says both units apply to both samples."
+    },
+    {
+      "criterion": "mass_scales_and_C12",
+      "decision": "PASS",
+      "observation": "12 u is correct for one C-12 atom by definition of u. Approximately 2.0 times 10^-23 g is the appropriate mass scale. For one mol of these atoms, 12 times 6.02214076 times 10^23 gives 7.226568912 times 10^24 u, consistent with the rounded 7.2 times 10^24 u. Approximately 12 g avoids the post-2019 exact-molar-mass shortcut."
+    },
+    {
+      "criterion": "particle_sample_relationship",
+      "decision": "PASS",
+      "observation": "The arrow specifies particle number times particle mass. It therefore connects the change in particle number to total mass without defining u or g as exclusive to either level."
+    },
+    {
+      "criterion": "schematic_model",
+      "decision": "PASS",
+      "observation": "The finite pile is explicitly labelled schematisch immediately below the atoms. Each sphere is marked C-12. The label is clearly visible at full size and at both supplied 360/680 pixel previews; the pile is not presented as the literal count of one mol."
+    },
+    {
+      "criterion": "approximation_and_exponents",
+      "decision": "PASS",
+      "observation": "All rounded gram/sample values display the approximation sign. The individual-atom gram line has a visible minus sign in the exponent -23. The portion u line has positive exponent 24. Neither sign nor exponent is clipped."
+    },
+    {
+      "criterion": "mobile_360",
+      "decision": "PASS",
+      "observation": "The 360 pixel preview keeps the one-atom and one-mol headings, both rows of units and values, the connecting rule, schematic marker and concluding claim recognisable. The exponent is small but legible; no main information is removed or overlapped."
+    },
+    {
+      "criterion": "preview_680",
+      "decision": "PASS",
+      "observation": "At 680 pixels the same labels and four mass values are readable with clear exponent/approximation notation. The graphic hierarchy distinguishes particle, portion and multiplication relationship."
+    }
+  ],
+  "remainingMaterialVisualFindings": [],
+  "humanApproval": false,
+  "activeQaMutation": false
+}

@@ -1,0 +1,30 @@
+# Lernzielvisualisierung: Gentests beurteilen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `73b66ead-e44a-5486-98e3-1fb3f99620a6`
+- Titel: Gentests beurteilen
+- Beschreibung: Die lernende Person kann an einem vorgegebenen anonymen Gentestfall den Anlass, die Aussagekraft des Befunds für die geprüfte Frage und dessen Grenzen für eine sachliche Beratung beurteilen.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex imagegen (model not exposed)
+- Status: pilot
+- Quellbild: `73b66ead-e44a-5486-98e3-1fb3f99620a6.png`
+- Public Asset: `/assets/goal-visualizations/biologie/73b66ead-e44a-5486-98e3-1fb3f99620a6/73b66ead-e44a-5486-98e3-1fb3f99620a6.png`
+
+## Prompt
+
+```text
+# Biology Q1 73b image candidate v2: generation prompt
+
+Tool: OpenAI built-in `image_gen`. The v1 image was supplied as a **style reference only**; the composition is new. The generator's model version was not exposed.
+
+> Use case: scientific-educational. Asset type: wide learning-goal illustration for German Gymnasium biology on interpreting a limited genetic test and counselling. The supplied image is a STYLE REFERENCE ONLY; create a NEW composition. Friendly clear abstract comic illustration, same gentle blue/orange palette and soft clean linework, spacious 16:9 landscape. Show an adult patient and an adult genetics counsellor sitting side by side, viewed from over their shoulders and slightly above, both looking at the SAME tabletop result screen or open folder directly in front of them. The screen/folder content must face the two people: the image viewer is behind them on their side, so neither person is shown trying to read the back of a sheet. On the shared screen show a small bounded highlighted section of a long abstract DNA ribbon, with one clear orange marker inside the examined area; the rest of the ribbon continues beyond the highlighted area in muted blue. The marker depicts a known finding in the examined area, while the visual boundary shows that the test has limited scope. Avoid implying a definite disease, a negative all-clear, or an uncertain laboratory finding. No question marks, no words, no numbers, no medical diagnosis symbols, no arrows to a person's identity, no patient identifiers. Main idea must remain understandable at 360 px image width, with no tiny indispensable details. No photorealism, no technical sterile UI, no extra panels. The people must clearly face the information they are considering.
+
+The generator returned a 1672 × 941 px PNG at `/home/enpasos/.codex/generated_images/01a0f2c0-2182-78f3-8b44-9fcdfd2c8634/exec-467cc329-724f-47c7-a0b2-f34e78cf8761.png`. It was copied unchanged into this candidate directory. The v1 candidate and its independent HOLD review remain intact.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

@@ -1,0 +1,30 @@
+{
+  "observedAt": "2026-10-05T05:52:25.619368+00:00",
+  "status": "candidate",
+  "authority": "ai_candidate",
+  "checks": [
+    {
+      "tag": "a",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-eleven-current-source-description-candidate-v1/historical-current-eleven.a.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "terminalPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-eleven-current-source-description-candidate-v1/historical-current-eleven.a.terminal.txt"
+    },
+    {
+      "tag": "m",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-eleven-current-source-description-candidate-v1/historical-current-eleven.m.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "terminalPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-eleven-current-source-description-candidate-v1/historical-current-eleven.m.terminal.txt"
+    }
+  ],
+  "qualifier": "Historical current schema/fingerprint status only, no write-fingerprints and no active report write. Native technically current11atomic/no_memory decisions do not resolve author three non-atomic cases or28compact-recall HOLD."
+}

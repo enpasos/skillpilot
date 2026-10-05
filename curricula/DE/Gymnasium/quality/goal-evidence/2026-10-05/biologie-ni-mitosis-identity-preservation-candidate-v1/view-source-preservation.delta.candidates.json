@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "candidateStatus": "inactive_author_candidate",
+  "sourceViewPath": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-ni-seki.view.json",
+  "beforeSha256": "sha256:c4123c7f435e5355bb443135f99f75ad9dd3e144ee4c93a91573a4ee2056ad5c",
+  "compositionWithEarlierCanonicalDeltaPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-candidate-v2/canonical.delta.candidates.json",
+  "exactRemovedEntriesFromCurrentSourceView": [
+    {
+      "jsonPointer": "/rootNodes/0/children/1",
+      "before": {
+        "kind": "goalEntry",
+        "goalId": "02cabf54-0b70-572c-b85a-7409e686a48e"
+      },
+      "after": null,
+      "reason": "No mapping to this target remains after all eight bounded source deltas; no inference from only one removed row."
+    },
+    {
+      "jsonPointer": "/rootNodes/0/children/3",
+      "before": {
+        "kind": "goalEntry",
+        "goalId": "05358518-f66c-5c1b-ad3f-d16211d0fc1c"
+      },
+      "after": null,
+      "reason": "No mapping to this target remains after all eight bounded source deltas; no inference from only one removed row."
+    },
+    {
+      "jsonPointer": "/rootNodes/0/children/10",
+      "before": {
+        "kind": "goalEntry",
+        "goalId": "0daa79f6-8f61-5506-98f9-65db83062ba8"
+      },
+      "after": null,
+      "reason": "No mapping to this target remains after all eight bounded source deltas; no inference from only one removed row."
+    },
+    {
+      "jsonPointer": "/rootNodes/0/children/122",
+      "before": {
+        "kind": "goalEntry",
+        "goalId": "e70d8a85-2dea-5165-919b-200fee9f4db4"
+      },
+      "after": null,
+      "reason": "No mapping to this target remains after all eight bounded source deltas; no inference from only one removed row."
+    },
+    {
+      "jsonPointer": "/rootNodes/0/children/135",
+      "before": {
+        "kind": "goalEntry",
+        "goalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2"
+      },
+      "after": null,
+      "reason": "No mapping to this target remains after all eight bounded source deltas; no inference from only one removed row."
+    }
+  ],
+  "exactAddedEntries": [
+    {
+      "kind": "goalEntry",
+      "goalId": "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+      "projectionRole": "target"
+    },
+    {
+      "kind": "goalEntry",
+      "goalId": "359e6313-cd86-54d1-bee5-8e680101dc32",
+      "projectionRole": "target"
+    },
+    {
+      "kind": "goalEntry",
+      "goalId": "36d3bf01-e68b-55be-8e20-5652ada36a51",
+      "projectionRole": "target"
+    }
+  ],
+  "sourceViewGoalSetImpact": {
+    "before": 136,
+    "candidateAfterAllPreservationDeltas": 134,
+    "removedIds": [
+      "02cabf54-0b70-572c-b85a-7409e686a48e",
+      "05358518-f66c-5c1b-ad3f-d16211d0fc1c",
+      "0daa79f6-8f61-5506-98f9-65db83062ba8",
+      "e70d8a85-2dea-5165-919b-200fee9f4db4",
+      "ffef97e3-12d6-5090-9816-46ab9e57fae2"
+    ],
+    "addedIds": [
+      "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+      "359e6313-cd86-54d1-bee5-8e680101dc32",
+      "36d3bf01-e68b-55be-8e20-5652ada36a51"
+    ]
+  },
+  "remainingSourceSupportCheckedForPotentialRemovedTargets": {
+    "e70d8a85-2dea-5165-919b-200fee9f4db4": [],
+    "05358518-f66c-5c1b-ad3f-d16211d0fc1c": [],
+    "ec88fc1d-ee0f-5a01-9464-dc358241050e": [
+      {
+        "sourceGoalId": "ni-biology-seki-kc2015-fw6-008-d14910ea",
+        "matchType": "partial"
+      }
+    ],
+    "1d2b1038-dcd5-529a-b085-9e14f1d58c76": [
+      {
+        "sourceGoalId": "ni-biology-seki-kc2015-fw6-007-8b1e8186",
+        "matchType": "partial"
+      },
+      {
+        "sourceGoalId": "ni-biology-seki-kc2015-fw6-008-d14910ea",
+        "matchType": "partial"
+      },
+      {
+        "sourceGoalId": "ni-biology-seki-kc2015-fw7-004-bfbb6db7",
+        "matchType": "partial"
+      },
+      {
+        "sourceGoalId": "ni-biology-seki-kc2015-fw6-004-f11cdf34",
+        "matchType": "partial"
+      }
+    ]
+  },
+  "newGoalGradePlacement": {
+    "goalId": "36d3bf01-e68b-55be-8e20-5652ada36a51",
+    "jurisdiction": "DE-NI",
+    "stage": "SekI",
+    "yearBand": "9/10",
+    "endYear": 10,
+    "sourceGoalId": "ni-biology-seki-kc2015-fw6-004-f11cdf34",
+    "printedPage": 87,
+    "sourceHeading": "FW 6.1 Individualentwicklung",
+    "requires": [
+      "b1dff57f-329e-5264-b2b9-2db71a0b2172"
+    ]
+  },
+  "regeneration": "Rebuild the NI source view from the fully reviewed successor extraction/mapping overlay; do not manually remove one target while keeping its obsolete source mapping active.",
+  "nationalCompositionImpact": "New atom is attached to current b417 genetics cluster. Its explicit NI applicability and atomic inheritance boundary prevent broad source mappings from claiming other-state evidence. Existing national canonicalSubtree entries can structurally expose it. Actual jurisdiction/stage/year-resolved runtime applicability/frontier must still be verified during adoption; static visibility is not a learner-year runtime test.",
+  "runtimeYearFrontierClaimed": false,
+  "currentStrictClosuresClaimed": 0
+}

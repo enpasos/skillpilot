@@ -1,0 +1,94 @@
+{
+  "status": "read_only_actual_current_state",
+  "sourceLandscapeId": "0b27a054-e81e-5423-aa71-d3d8d9d8f0db",
+  "canonicalLandscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+  "sourceExtractionScanner": {
+    "root": "curricula/DE/Gymnasium/input",
+    "suffix": ".source-extraction.json",
+    "matchedLandscapePaths": [
+      "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_BIOLOGIE_SEKI_KC2015.source-extraction.json"
+    ],
+    "implementation": "app/scripts/generateCurriculumQualityStatus.ts:4224,4681; Map.set(sourceLandscapeId,...) overwrites duplicates"
+  },
+  "mappingScanner": {
+    "root": "curricula/DE",
+    "pathMustContain": "/mapping/",
+    "matchedLandscapePaths": [
+      "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+      "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_biology_lower_secondary_source_extraction_to_canonical_biology.m7-e3-recombination-20261001-v2.review.json"
+    ],
+    "implementation": "app/scripts/generateCurriculumQualityStatus.ts:4343"
+  },
+  "bindings": [
+    {
+      "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_BIOLOGIE_SEKI_KC2015.source-extraction.json",
+      "sha256": "sha256:2c4cdc61f6371a511d2cd6eb3b08dee0c17817570d4a0274b528e21fd6f29be6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+      "sha256": "sha256:95bb721fc5aa5b75b000bcca303ab2d7e472142d6a2e693ea3b8311b27e30be7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_biology_lower_secondary_source_extraction_to_canonical_biology.m7-e3-recombination-20261001-v2.review.json",
+      "sha256": "sha256:5f578339f71bc595ebc478f4937543801daf6ea296927594a6bfd1fe24a8435f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/source-landscape-registry.json",
+      "sha256": "sha256:1fde6c041437c060eac9ffed67ddbd4fe971e2160b0d94235989662f9c82a7e2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json",
+      "sha256": "sha256:b3fa299f332be9aec1d15b535187a13ef16fabde9cdc3911f7ff4122375a37a6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json",
+      "sha256": "sha256:4c7f12410397dece9aa58b498a531f06fe7edc9a7edac707a834088be6181144"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/biologie.semantic-kinds.json",
+      "sha256": "sha256:e65414d704a5b73eb3dd98be7123869234264a89e2ad734fe3e522f3831a96b5"
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json",
+      "sha256": "sha256:4472504a92a783cd66d65580c4b2b2b622d6a00c00b4a91ce09fd248ca12a411"
+    }
+  ],
+  "retainedPrimaryPdf": {
+    "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/kc_naturwissenschaften_gymnasium_sek_i_2015.pdf",
+    "sha256": "sha256:7b3c69767b4c9a47d87598bee76a28bf7b6d2f6c9b039f2e655a9ad14d47aeac"
+  },
+  "currentSourceAtoms": 124,
+  "preparedSuccessorSourceAtoms": 123,
+  "sourceCurrentMembershipEntry": null,
+  "sourceCurrentAtomicClosureEntry": null,
+  "registryReadersOnlyUseLandscapesArray": true,
+  "newCanonicalIdsPresentInLiveLedger": [],
+  "changedCanonicalParentsRequiringKindFingerprintReview": [
+    "b530a382-2786-5794-8821-3e01a62d88fd",
+    "b4176012-f93a-5dd2-84b3-edd6a9932367"
+  ],
+  "archivePlan": [
+    {
+      "currentPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_BIOLOGIE_SEKI_KC2015.source-extraction.json",
+      "currentSha256": "sha256:2c4cdc61f6371a511d2cd6eb3b08dee0c17817570d4a0274b528e21fd6f29be6",
+      "historicalPath": "curricula/DE/Gymnasium/quality/source-mapping-history/biologie-ni-three-current-20261005-v1/before-source/DE_NI_BIOLOGIE_SEKI_KC2015.source-extraction.json.snapshot",
+      "operationAfterReview": "copy exact bytes, verify hash, remove old active path in same integration transaction"
+    },
+    {
+      "currentPath": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+      "currentSha256": "sha256:95bb721fc5aa5b75b000bcca303ab2d7e472142d6a2e693ea3b8311b27e30be7",
+      "historicalPath": "curricula/DE/Gymnasium/quality/source-mapping-history/biologie-ni-three-current-20261005-v1/before-reviews/ni_biology_lower_secondary_source_extraction_to_canonical_biology.review.json.snapshot",
+      "operationAfterReview": "copy exact bytes, verify hash, remove old active path in same integration transaction"
+    },
+    {
+      "currentPath": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_biology_lower_secondary_source_extraction_to_canonical_biology.m7-e3-recombination-20261001-v2.review.json",
+      "currentSha256": "sha256:5f578339f71bc595ebc478f4937543801daf6ea296927594a6bfd1fe24a8435f",
+      "historicalPath": "curricula/DE/Gymnasium/quality/source-mapping-history/biologie-ni-three-current-20261005-v1/before-reviews/ni_biology_lower_secondary_source_extraction_to_canonical_biology.m7-e3-recombination-20261001-v2.review.json.snapshot",
+      "operationAfterReview": "copy exact bytes, verify hash, remove old active path in same integration transaction"
+    }
+  ],
+  "writeScope": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-current-source-integration-route-v1",
+  "activeWrites": 0,
+  "machineClosures": 0,
+  "humanApproval": false
+}

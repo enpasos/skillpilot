@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "status": "inactive-author-decisions-not-independent-gate-approval",
+  "registryBefore": {
+    "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+    "sha256": "sha256:e1b2a0605f801fb0d3b0048a09b6de64a7bc0ec9b65034d715a41696af808c39"
+  },
+  "historicalParentA": [
+    {
+      "configPath": "curricula/DE/Gymnasium/quality/semantic-atomicity/chemie-energy13-current-20261005-v1/canonical-chemistry-ephase-fossil-fuels.config.json",
+      "recordPath": "curricula/DE/Gymnasium/quality/semantic-atomicity/chemie-energy13-current-20261005-v1/canonical-chemistry-ephase-fossil-fuels.review.jsonl",
+      "recordBefore": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-chemistry-ephase-fossil-fuels",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "8ceb1749-fce0-584f-a2b8-0a309282329a",
+        "fingerprint": "sha256:3f250754d37c654a8d60ca418fa94053e390243f00809a11bbdfe150dd6f8450",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-12",
+        "reviewer": "codex",
+        "reason": "E-phase fossil-fuels review: one petroleum-processing routine; fractional distillation and thermal cracking are reviewed together as qualitative refinery processes with product assignment.",
+        "suggestedSplit": []
+      }
+    }
+  ],
+  "historicalParentM": [
+    {
+      "recordPath": "curricula/DE/Gymnasium/quality/memory-card-review/chemie-energy13-current-20261005-v1/canonical-chemistry-full.review.jsonl",
+      "recordBefore": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-chemistry-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "8ceb1749-fce0-584f-a2b8-0a309282329a",
+        "fingerprint": "sha256:00dacd4ef07c2c4a195014ac288ddd1386774e81931b7a15c16f1534e2fe2aad",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-chemistry-memory-review",
+        "reason": "Konservative Chemie-Entscheidung: Dieses Lernziel wird primär über Modellverständnis, Experimente, Auswertung, Argumentation oder Aufgabenpraxis verankert; eine eigene Memorycard ist hier nicht notwendig."
+      }
+    }
+  ],
+  "counterevidence": "Current independent D split finding distinguishes physical separation and chemical conversion. The historical atomic=true record is retained as history; it cannot overrule the current resolved-split requirement or be copied onto children.",
+  "atomicityCandidates": [
+    {
+      "goalId": "5db9ba57-6a80-56db-8b9d-e8ca4ac41855",
+      "semanticAtomicCandidate": true,
+      "rationale": "One explanatory competence: physical enrichment by differing volatility with unchanged molecular identity. Fraction assignments are observable consequences of the same separation model."
+    },
+    {
+      "goalId": "7c22f436-e550-5b0b-85ae-a073b0c50418",
+      "semanticAtomicCandidate": true,
+      "rationale": "One explanatory competence: thermal chemical conversion of long-chain hydrocarbons to shorter saturated/unsaturated products using a qualitative particle model. Economic judgments and real experimental execution remain outside this child."
+    }
+  ],
+  "memoryCandidates": [
+    {
+      "goalId": "5db9ba57-6a80-56db-8b9d-e8ca4ac41855",
+      "statusCandidate": "no_memory_needed",
+      "memoryUsefulCandidate": false,
+      "reason": "The competence uses a supplied column/boiling-range model to explain enrichment and physical preservation. A standalone fraction-name recall card would test nomenclature rather than this causal explanation. No uncued list requirement is added."
+    },
+    {
+      "goalId": "7c22f436-e550-5b0b-85ae-a073b0c50418",
+      "statusCandidate": "no_memory_needed",
+      "memoryUsefulCandidate": false,
+      "reason": "The competence reasons from supplied molecule models to new shorter molecules and checks conservation. Memorizing a fixed cracking equation would not establish transfer; no such equation or product-list recall requirement is in the goal."
+    }
+  ],
+  "actualCardOriginScan": {
+    "deckInputs": [
+      {
+        "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_chemistry_flashcards_basics_seki.de.json",
+        "sha256": "sha256:80800812c4d08553392ed77b7ddf347b0d9febb3f2840b7fd2a84e937f3aefe3",
+        "deckId": "de_gymnasium_chemistry_basics_seki"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_chemistry_flashcards_bonding_structure.de.json",
+        "sha256": "sha256:8ff43efc7a161f36e4f18089eda1f741f748a74803be73a0ab8df022556e4ac9",
+        "deckId": "de_gymnasium_chemistry_bonding_structure"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_chemistry_flashcards_energy_q4.de.json",
+        "sha256": "sha256:11ff7f0728ae217bb923416b90be445d4b1e1abebd063e5ab5f708d7132b6709",
+        "deckId": "de_gymnasium_chemistry_energy_q4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+        "sha256": "sha256:5d99d48cc080b128fa6a73ac99968ef1569c3bb4d66ef9cdc961d9ff9d97074a",
+        "deckId": "de_gymnasium_chemistry_equilibria_q3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_chemistry_flashcards_natural_q2.de.json",
+        "sha256": "sha256:0c4153e249a4cbd7742db29d5f52f8933eaa63a3927b28384b13d64d8c978270",
+        "deckId": "de_gymnasium_chemistry_natural_q2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_chemistry_flashcards_organic_q1.de.json",
+        "sha256": "sha256:3e19e38163a62d51fcbf64602dc97b42b026ad0e6f0e62efc11d034a343098b9",
+        "deckId": "de_gymnasium_chemistry_organic_q1"
+      }
+    ],
+    "matchingCards": [],
+    "action": "No new cards/decks justified by the present narrow goals. Independent M decides; if memory_required is found, author actual cards and run their content and per-view visibility checks before counting M."
+  },
+  "requiredFreshD": {
+    "newChildren": [
+      "5db9ba57-6a80-56db-8b9d-e8ca4ac41855",
+      "7c22f436-e550-5b0b-85ae-a073b0c50418"
+    ],
+    "roundsPerChild": 2,
+    "resolvedFindingsRequired": true,
+    "incomingDependencyContexts": [
+      "8ece9beb-9458-5ea1-8e45-9be04670f464",
+      "b95cdf98-fc97-5a94-b133-878922d28156",
+      "14577339-9e0c-5b44-8e47-91e1a4947367"
+    ],
+    "strictReverseContext": "2be9e61a-88ea-56fe-8294-ee46e3c9a8ef",
+    "reason": "Use actual revised page/context/source/image bindings. Do not update historical D hashes as a substitute for substantive review."
+  },
+  "P": {
+    "path": "positive-evidence.full.candidates.json",
+    "status": "author candidate, full cases retained, current binding and independent review pending"
+  },
+  "V": {
+    "children": "Fresh genuine PNG generation and actual native/360/680 inspection still required. Prompts are not assets or approval.",
+    "parent": "Existing JPEG bytes retained as cluster overview; no new atomic V approval claimed."
+  },
+  "machineApproval": false,
+  "humanApproval": false,
+  "humanTrial": false
+}

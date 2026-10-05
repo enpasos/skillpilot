@@ -1,0 +1,163 @@
+{
+  "status": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "activeWrites": 0,
+  "humanApproval": false,
+  "bindingDigest": "sha256:b032564eee530bc5a58943e148c45cfdb765cea0feac93bfc501883b8ec0f497",
+  "targetCurrentPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_BIOLOGIE_SEKI_KC2015.current-three-20261005-v1.source-extraction.json",
+  "allowedReplacementsOnly": {
+    "qualityReview": {
+      "status": "targeted_current_source_adoption_ai_reviewed",
+      "reviewedBy": "OpenAI Codex independent NI3 adoption review A; exact model unexposed",
+      "reviewedAt": "2026-10-05T03:12:56Z",
+      "notes": [
+        "Independent targeted candidate review of the five actual cells on original PDF pages87-89, FW6-003 retirement, three bounded canonical atoms and two additive parents.",
+        "118 unchanged source records and decisions, and 328 unchanged mapping rows, preserved from the actual current predecessor. No whole-PDF re-review or human/source-rights/legal approval claimed.",
+        "MAPPING-2 complete and MAPPING-3 blocked are proposed candidate adoption metadata only after coupled source/canonical/mapping integration and byte archival outside active scanners. The preserved current FW6-008 recombination-principles coverage finding remains open; three inherited source metadata target caches differ from the operative current mapping.",
+        "MAPPING-3 must remain blocked: generateCurriculumQualityStatus.ts normalizes nonblocked M3 from structural mapped/decided counts and would otherwise turn the documented substantive gap into complete. Structural123/123 mapping coverage may be shown only as preliminary."
+      ],
+      "sourceGoalCountPeerBaseline": {
+        "accepted": true,
+        "details": "Targeted current reconciliation: 118 unchanged historic structured Source records plus five corrected actual table cells =123; introduction-derived synthetic FW6-003 removed. Existing NI Biologie EG1-EG4, KK, BW, FW1-FW8 table-window basis preserved; no new whole-PDF or global peer approval claimed."
+      }
+    },
+    "pipelineStatus": {
+      "currentStep": "MAPPING-3",
+      "steps": [
+        {
+          "id": "MAPPING-1",
+          "label": "Original-Lehrplanpassagen extrahiert",
+          "status": "complete",
+          "dependsOn": [],
+          "checks": [
+            {
+              "id": "source-document-present",
+              "label": "Amtliches NI-Naturwissenschaften-Sek-I-PDF liegt lokal vor",
+              "passed": true,
+              "details": "curricula/DE/Gymnasium/input/NI/lower-secondary/kc_naturwissenschaften_gymnasium_sek_i_2015.pdf"
+            },
+            {
+              "id": "expected-topic-coverage",
+              "label": "Alle Biologie-Prozess- und Fachwissenstabellen sind als Passagen vorhanden",
+              "passed": true,
+              "details": "18/18 Tabellen; fehlend: -"
+            },
+            {
+              "id": "appendix-excluded",
+              "label": "Anhang und Umsetzungsvorschläge wurden nicht als Source-Ziele extrahiert",
+              "passed": true,
+              "details": "Extraktionsfenster umfasst die Biologie-Kompetenztabellen EG1-EG4, KK, BW und FW1-FW8 auf S. 75-92."
+            }
+          ]
+        },
+        {
+          "id": "MAPPING-2",
+          "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+          "status": "complete",
+          "dependsOn": [
+            "MAPPING-1"
+          ],
+          "checks": [
+            {
+              "id": "source-goals-created",
+              "label": "Source-Ziele aus den amtlichen Biologie-Kompetenz-Bullets erzeugt",
+              "passed": true,
+              "details": "123 current Source-IDs = 124 predecessor IDs minus unsupported FW6-003; exactly five records changed and 118 records preserved byte-for-byte as parsed records. Five actual official table cells on pages 87-89 inspected visually and in extracted text."
+            },
+            {
+              "id": "passage-to-source-goal-coverage",
+              "label": "Jede Biologie-Kompetenztabelle hat Source-Ziele",
+              "passed": true,
+              "details": "18/18 expected topic passages exist and each has at least one current Source goal; counts: {\"BW\": 8, \"EG1-5-6\": 7, \"EG1-7-8\": 3, \"EG1-9-10\": 3, \"EG2-5-6\": 6, \"EG2-7-8\": 12, \"EG2-9-10\": 6, \"EG3\": 7, \"EG4\": 3, \"FW1\": 6, \"FW2\": 6, \"FW3\": 2, \"FW4\": 11, \"FW5\": 5, \"FW6\": 12, \"FW7\": 14, \"FW8\": 4, \"KK\": 8}"
+            },
+            {
+              "id": "source-goal-ids-unique",
+              "label": "Source-Ziel-IDs sind eindeutig",
+              "passed": true,
+              "details": "123 records and 123 distinct nonempty Source-IDs; retirement absent and no new fabricated Source-ID."
+            },
+            {
+              "id": "source-goals-reference-passages",
+              "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+              "passed": true,
+              "details": "123/123 passageId and sourceSpan.passageId resolve to the same existing passage; topic codes and sourceDocumentKey agree."
+            },
+            {
+              "id": "source-goal-trace-complete",
+              "label": "Jedes Source-Ziel hat Kompetenzüberschrift, Source-Span und Quellenreferenz",
+              "passed": true,
+              "details": "123/123 have nonempty headingTitle, sourceText, sourceSpan.label, sourceSpanText, sourceRef and a sourcePage within the retained competence-table window 75-92. Selected page/cell/grade columns independently checked on actual PDF87-89."
+            },
+            {
+              "id": "source-goal-count-peer-baseline-local-audit",
+              "label": "Auffällige Source-Ziel-Anzahl wurde fachlich plausibilisiert",
+              "passed": true,
+              "details": "Targeted count reconciliation: 118 unchanged previously decided groups + five corrected table-cell groups = 123. FW6-003 is an introduction-derived synthetic competence and is retired, not counted as an extra bullet. Existing peer-baseline exception preserved; no new global peer or whole-PDF audit is claimed."
+            },
+            {
+              "id": "current-selected-source-adoption-review",
+              "label": "Gezielte aktuelle Quellen- und Zieladoption fachlich geprüft",
+              "passed": true,
+              "details": "PASS targeted AI adoption candidate: FW6-004 (p87, additional end grade10) maps exactly to bounded chromosomal mitotic-identity target, plus existing mitosis description as partial; FW6-010/011 (p88, additional end grade10) jointly support nonmolecular gene-product-trait model; FW7-001/002 (p89, end grade6) jointly support observable unguided variation. FW6-003 and its three rows retire. No molecular mechanism inferred."
+            }
+          ]
+        },
+        {
+          "id": "MAPPING-3",
+          "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+          "status": "blocked",
+          "dependsOn": [
+            "MAPPING-1",
+            "MAPPING-2"
+          ],
+          "checks": [
+            {
+              "id": "mapping-2-complete",
+              "label": "MAPPING-2 abgeschlossen",
+              "passed": true,
+              "details": "All seven MAPPING-2 candidate checks PASS in this independent targeted review. Completion metadata may be adopted only together with these exact source, mapping and canonical bytes plus active predecessor archival; live source is unchanged and still pending."
+            },
+            {
+              "id": "m3-review-file-present",
+              "label": "M3-Review-Datei ist vorhanden",
+              "passed": true,
+              "details": "Actual versioned current-mapping candidate is present; sourceLandscapeId and targetLandscapeId agree with source/canonical. sourceExtractionPath names the exact proposed current source successor. Staged rows and decisions are identical."
+            },
+            {
+              "id": "m3-review-decisions-reference-source-goals",
+              "label": "M3-Review-Entscheidungen referenzieren gültige Source-Ziele",
+              "passed": true,
+              "details": "123/123 unique mapped decisions refer to current Source-IDs; zero unknown/retired Source-IDs. 334/334 rows resolve to those decisions; zero duplicate source-target pairs."
+            },
+            {
+              "id": "m3-review-targets-exist",
+              "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+              "passed": true,
+              "details": "334/334 mapped Canonical targets exist in the 444-record staged canonical successor; zero invalid targets. Three newly introduced targets and their two additive parents are independently reviewed here."
+            },
+            {
+              "id": "m3-all-source-goals-reviewed",
+              "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+              "passed": true,
+              "details": "123/123 mapped decisions with rationale/reviewer/time and nonempty valid targets; 118 unchanged historical decisions preserved exactly, five selected decisions independently adopted as current AI candidates. Zero unreviewed decision records or needsCanonicalGoal statuses. Preserved FW6-008 rationale explicitly leaves an independent recombination-principles witness open. Reviewed/decided is therefore distinguished from fully covered. This is not a fresh substantive approval of all118 historical cells."
+            },
+            {
+              "id": "m3-all-source-goals-covered-by-canonical",
+              "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+              "passed": false,
+              "details": "HOLD for substantive complete coverage, while structural123/123 mapped coverage passes. Preserved current decision ni-biology-seki-kc2015-fw6-008-d14910ea expressly leaves an independent witness of recombination principles open after the unsupported trisomy target was removed. The actual p87 FW6.2 bullet requires recombination principles based on meiosis; remaining generic mitosis/meiosis descriptions do not resolve the documented gap. Do not relabel it as complete. 334 rows =328 preserved +six current selected rows. Three unchanged source metadata target caches still contain removed0dd838...; current mapping decisions are the operative route. The five targeted groups and retirement pass independently."
+            },
+            {
+              "id": "current-selected-source-adoption-review",
+              "label": "Gezielte aktuelle Quellen- und Zieladoption fachlich geprüft",
+              "passed": true,
+              "details": "PASS targeted AI adoption candidate: FW6-004 (p87, additional end grade10) maps exactly to bounded chromosomal mitotic-identity target, plus existing mitosis description as partial; FW6-010/011 (p88, additional end grade10) jointly support nonmolecular gene-product-trait model; FW7-001/002 (p89, end grade6) jointly support observable unguided variation. FW6-003 and its three rows retire. No molecular mechanism inferred."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "requiresCoupledRootAdoption": true,
+  "unchangedFields": "Every other source-document, passage and sourceGoal field must equal the versioned current-source candidate."
+}

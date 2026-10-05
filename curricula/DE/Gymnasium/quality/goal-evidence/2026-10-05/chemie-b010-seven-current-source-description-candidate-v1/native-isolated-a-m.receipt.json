@@ -1,0 +1,30 @@
+{
+  "observedAt": "2026-10-05T04:55:46.891535+00:00",
+  "status": "candidate",
+  "authority": "ai_candidate",
+  "checks": [
+    {
+      "name": "historical-a-seven",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-current-source-description-candidate-v1/historical-current-seven.a.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-current-source-description-candidate-v1/historical-a-seven.terminal.txt"
+    },
+    {
+      "name": "historical-m-six",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-current-source-description-candidate-v1/historical-current-six.m.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-current-source-description-candidate-v1/historical-m-six.terminal.txt"
+    }
+  ],
+  "scopeQualifier": "Historical current fingerprint/schema status only. This does not resolve the two scientifically disputed A atoms or grant fresh source/D/P/V approval. Shared 722 memory-card and runtime visibility traced separately, full deck not re-reviewed."
+}

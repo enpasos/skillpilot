@@ -3,6 +3,7 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
   defaultMemoryCardReviewConfigDir,
+  discoverActiveMemoryCardReviewConfigs,
   discoverMemoryCardReviewConfigs,
 } from './memoryCardReviewConfigDiscovery'
 
@@ -70,7 +71,9 @@ function runReview(configPath: string, mode: Mode): void {
 
 function main(): void {
   const args = parseArgs(process.argv.slice(2))
-  const configs = discoverMemoryCardReviewConfigs(args.configDir)
+  const configs = args.configDir === defaultMemoryCardReviewConfigDir
+    ? discoverActiveMemoryCardReviewConfigs(args.configDir)
+    : discoverMemoryCardReviewConfigs(args.configDir)
   console.log(`Memory-card review configs: ${configs.length}`)
   configs.forEach(({ configPath }) => runReview(configPath, args.mode))
 }

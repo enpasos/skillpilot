@@ -1,0 +1,28 @@
+# Lernzielvisualisierung: Blei-Akkumulator beschreiben
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `27e4fe9b-4796-579b-8f7d-06c65fb600c0`
+- Titel: Blei-Akkumulator beschreiben
+- Beschreibung: Die lernende Person kann die elektrochemischen Prozesse im Blei-Akkumulator qualitativ deuten und Chancen sowie Grenzen als Energiespeicher benennen.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex imagegen (model not exposed)
+- Status: pilot
+- Quellbild: `27e4fe9b-4796-579b-8f7d-06c65fb600c0.png`
+- Public Asset: `/assets/goal-visualizations/chemie/27e4fe9b-4796-579b-8f7d-06c65fb600c0/27e4fe9b-4796-579b-8f7d-06c65fb600c0.png`
+
+## Prompt
+
+```text
+Use case: precise-object-edit, scientific-educational.
+The supplied two-panel lead–acid battery PNG is the edit target. Preserve its landscape 16:9 size, friendly cartoon composition, text and formulas, both terminal polarities, Pb/PbO₂/PbSO₄ electrode labels, material-change arrows, lamp, charger, exterior electron arrows, car/closed-starter-battery/weight icons and energy-flow labels.
+Make ONE targeted correction in both cell interiors: REMOVE ALL floating H⁺ circles, ALL SO₄²⁻ circles and ALL other free ion-particle circles or labels from the blue electrolyte. Their arbitrary counted populations are not the intended qualitative model. Also REMOVE ALL small white bubbles or bubble-like decorative circles from both liquid interiors, since gas evolution is not part of this normal qualitative charge/discharge illustration.
+Fill the vacated places with homogeneous calm pale-blue liquid while retaining the simple waterline and the large word “Schwefelsäure”. Do not replace the removed particles with any new particles, charges, internal wires or directional arrows. The preserved footer “Innen: Ionen · Außen: Elektronen” conveys the internal ionic conduction qualitatively without counted particles.
+Keep the solid white PbSO₄ electrode coatings and their labels unchanged; they are material on electrodes, not free liquid particles. The left discharge arrows remain up from Pb, rightwards through the lamp, down into PbO₂; right charging arrows remain down from charger to the left negative electrode and up from the right positive electrode to charger. No other changes. PNG, same size. No technical IDs, filenames, logos or watermark.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

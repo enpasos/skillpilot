@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "own_primary_clause_reasoning_and_scope_holds",
+  "status": "FROZEN_CANDIDATE_ONLY",
+  "sourceTextProvenance": "Selected operative repository source clauses are frozen in inputs and independently compared against newly fetched official primary HTML/PDF. No full extracted official-PDF text is persisted.",
+  "literalMatchIsSemanticApproval": false,
+  "nationalReapproval": false,
+  "evidence": [
+    {
+      "evidenceKey": "BY-career-purpose",
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/9/chemie/ch",
+      "additionalUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/9/chemie/ch-ntg",
+      "locator": "C9 learning area1, competence13 (non-NTG) / competence11 (NTG)",
+      "actualNormativeStage": "SekI, year9, G9; listed school tracks distinct from NTG",
+      "ownParaphraseDe": "Fachliche Beschreibung chemischer Aufgaben/Anwendungen und gesellschaftliche Diskussion sollen für das Einbeziehen vielfältiger chemischer Tätigkeitsfelder in die Berufswahl genutzt werden.",
+      "operators": ["beschreiben", "diskutieren", "in die Berufswahl einbeziehen"],
+      "supportsCandidateKeys": ["chemical-applications-social-significance", "chemistry-career-choice"],
+      "coverageDecision": "Joint split coverage candidate; neither child receives the whole row as exact by itself.",
+      "independentInferenceDe": "Die Zweckbeziehung ist eine sinnvolle didaktische Verbindung, aber Beschreibung/Gesellschaftsurteil und individuelle Berufswahlleistung besitzen unterscheidbare Erfolgsnachweise. Deshalb zwei Ziele mit verbundenem Lernweg."
+    },
+    {
+      "evidenceKey": "BY-C10-guidance-and-decision",
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/10/chemie/ch",
+      "additionalUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/10/chemie/ch-ntg",
+      "locator": "C10.1 competence11 and13; related decision-process content",
+      "actualNormativeStage": "SekI, year10, G9; non-NTG and NTG verified separately",
+      "ownParaphraseDe": "Ethische Bedeutung lebensweltlicher Sachverhalte wird mit Anleitung auch unter weiteren Gesichtspunkten bewertet. Fachwissen dient zugleich bereits zur systematischen und begründeten Entwicklung von Optionen, zum Verwenden von Entscheidungsstrategien und zum Nachdenken über die Entscheidung. Das Inhaltsfeld verlangt das Erkennen, Priorisieren und Abwägen der Kriterien.",
+      "operators": ["ethical relevance recognise", "evaluate with guidance", "formulate systematically with justification", "apply strategies", "reflect decisions"],
+      "supportsCandidateKeys": ["chemical-criteria-decision-reflection"],
+      "coverageDecision": "Source-bounded process support; preserve guidance for the ethical assessment and do not treat all upper criteria as a universal lower-year standard."
+    },
+    {
+      "evidenceKey": "BY-C11-food-medicine-decision",
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/chemie",
+      "locator": "C11.1 competence10 and related decision-process content",
+      "actualNormativeStage": "SekII, year11",
+      "ownParaphraseDe": "Die systematische, fachlich begründete Optionenbildung samt Strategie und Entscheidungsreflexion wird insbesondere an Lebensmittelwahl und Arzneimitteln betrieben. Diese Fälle müssen weiterhin möglich sein und bilden keine abschließende Kontextliste.",
+      "operators": ["formulate systematically with justification", "apply strategies", "reflect decisions"],
+      "supportsCandidateKeys": ["chemical-criteria-decision-reflection"],
+      "coverageDecision": "Upper-stage context support; no new prescription to narrow the goal to food or medicine."
+    },
+    {
+      "evidenceKey": "BY-upper-decision-B1-B5-B9-B14",
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/12/chemie/grundlegend",
+      "additionalUrls": ["https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/12/chemie/erhoeht", "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/13/chemie/grundlegend", "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/13/chemie/erhoeht"],
+      "locator": "C12/13.1.4 evaluation competence; direct affected extracted spans25,28,29,30,34; C13-eA.1.28 separately checked",
+      "actualNormativeStage": "SekII, years12/13, gA/eA; eA remains eA when specifically marked",
+      "ownParaphraseDe": "Unterschiedliche Sichtweisen auf chemische Aussagen, Modelle und Verfahren sowie fachlich relevante Kriterien tragen begründete Handlungsentscheidungen. Chancen/Risiken von Technik, Produkten oder Verhalten werden beurteilt; daraus entstehen Optionen für Alltag und Beruf. Der chemische Blick wird hinsichtlich seines Beitrags und seiner Reichweite geprüft, ebenso Kriterien und Strategie.",
+      "operators": ["consider multiple perspectives", "judge using chemistry", "develop and weigh options", "assess opportunities and risks", "judge possibilities and limits", "reflect criteria and strategies"],
+      "supportsCandidateKeys": ["chemical-criteria-decision-reflection"],
+      "coverageDecision": "Independent support for explicit operators. Considering criteria/chances alone is weaker than deriving/judging them. B1's full statement/model/procedure breadth is not automatically exact-covered by an options-only text."
+    },
+    {
+      "evidenceKey": "BY-upper-sustainability-effects-companion",
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/12/chemie/grundlegend",
+      "locator": "C12/13.1.4 B10 and B12/B13; extracted spans31,33; gA/eA occurrences independently matched",
+      "actualNormativeStage": "SekII, years12/13 gA/eA",
+      "ownParaphraseDe": "Angewandte Chemie ist gesellschaftlich und ökologisch zu bewerten. Auswirkungen von Produkten, Methoden, Verfahren und Erkenntnissen in historischen wie gegenwärtigen Zusammenhängen erfordern ökologische, ökonomische und soziale Nachhaltigkeitsperspektiven samt Reflexion des eigenen Handelns.",
+      "coverageDecision": "HOLD companion upper competency. 1df's options process can contribute but cannot stand in for the complete effects/history/sustainability/own-action competence. 5428's lower application/career children cannot inherit this upper obligation.",
+      "requiredDeltaDe": "Obere Wirkung/Nachhaltigkeitskompetenz vollständig erhalten und eigenständig prüfen; direkte Quellenteilbindungen erst danach zeilenweise neu verteilen. Keine coverage-Löschung und kein automatisches exact für Splitkinder."
+    },
+    {
+      "evidenceKey": "BY-upper-dialogue-K10-K13",
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/12/chemie/grundlegend",
+      "additionalUrls": ["https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/12/chemie/erhoeht", "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/13/chemie/grundlegend", "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/13/chemie/erhoeht"],
+      "locator": "C12/13.1.3 K10/K13; extracted spans21,24",
+      "actualNormativeStage": "SekII, years12/13 gA/eA",
+      "ownParaphraseDe": "Die chemische Erklärung und schlüssige Begründung werden ergänzt durch echten konstruktiven Austausch mit anderen und durch das Vertreten, Prüfen und nötigenfalls Ändern des eigenen Standpunkts.",
+      "operators": ["explain coherently", "argue coherently", "exchange constructively", "represent", "reflect", "correct if needed"],
+      "supportsCandidateKeys": ["upper-chemical-constructive-discourse"],
+      "coverageDecision": "Textual KEEP, actual upper placement still HOLD. Correction is conditional, not mandatory regardless of evidence; constructive response and reflection are always part of the competence."
+    },
+    {
+      "evidenceKey": "NI-lower-multiperspective-chemistry",
+      "url": "https://cuvo.nibis.de/index.php?p=download&upload=18",
+      "locator": "printed61 / PDF index60, Chemische Reaktion(3/3), grades9/10, Bewertungskriterien aus Fachwissen entwickeln",
+      "actualNormativeStage": "SekI, years9/10",
+      "sourceGoalId": "ni-chemistry-seki-kc2015-cr-9-10-3-kompetenz-017-07635182",
+      "ownParaphraseDe": "Gesellschaftlich relevante chemische Reaktionen einschließlich großtechnischer Vorgänge sollen mit fachwissensbasierten Kriterien aus mehreren Blickwinkeln diskutiert und bewertet werden.",
+      "supportsCandidateKeys": ["chemical-criteria-decision-reflection"],
+      "coverageDecision": "Supporting partial binding. This clause supplies multiperspective judgment, not by itself the complete decision-strategy/reflection workflow or all criterion families."
+    },
+    {
+      "evidenceKey": "NI-upper-23-discrete-content-bindings",
+      "url": "https://cuvo.nibis.de/index.php?p=download&upload=362",
+      "locator": "printed12,13,14,17,19,21,22,23,24,25,26,28,29,30,31; exact23 current NI discourse source IDs in selected-source-goals.snapshot.json",
+      "actualNormativeStage": "SekII EP/Q; 20 gA/eA plus3 eA-only source clauses",
+      "ownParaphraseDe": "Die aktuell gebundenen NI-Quellen verlangen fünf fachbezogene Argumentationsleistungen, drei Prüfungen von Modellgrenzen, fünf bestimmte Vergleiche, neun themenspezifische Reflexionen und eine Begründung anhand funktioneller Gruppen. Die eA-only-Klauseln betreffen Titrationskurven, Mechanismen der nucleophilen Substitution und Modellgrenzen in der Organik.",
+      "supportsCandidateKeys": ["upper-chemical-constructive-discourse"],
+      "coverageDecision": "All23 remain source-specific supporting obligations; no one clause demonstrates the complete constructive exchange plus standpoint reflection. Preserve chemistry content, grade/stage, eA restrictions and combined experimental execution/reflection for the calorimetry clause.",
+      "requiredDeltaDe": "Jede aktuelle Teilbindung nach tatsächlicher inhaltlicher Deckung überprüfen. Wo ein chemischer Vergleich, Nomenklaturnutzen, experimentelle Durchführung oder eine Modellreflexion nicht im generischen Diskussionsziel enthalten ist, fachliches Inhaltsziel beziehungsweise Modell-/Untersuchungsziel erhalten und die Diskussionsbindung nur als geprüfte Teilbindung führen. Keine neuen Ziel-IDs in dieser Prüfung zuweisen."
+    },
+    {
+      "evidenceKey": "BW-organic-properties-use",
+      "url": "https://www.bildungsplaene-bw.de/,Lde/BP2016BW_ALLG_GYM_CH.V2_IK_8-9-10_01_01",
+      "locator": "3.2.1.1 item12, content scope classes8/9/10",
+      "actualNormativeStage": "SekI, years8-10, Gymnasium V2",
+      "sourceGoalId": "bw-chem-seki-3-2-1-1-b12-a01-303db451",
+      "ownParaphraseDe": "Die Verwendung von Methan, Ethen, Benzin, Ethanol, Propanon/Aceton und Ethansäure/Essigsäure in Alltag und Technik wird aus ihren Eigenschaften erklärt.",
+      "coverageDecision": "Neither a general social-significance discussion nor a career-choice judgment ensures the specified property-to-use explanation and chemical substance coverage. HOLD content-specific coverage; do not transfer this current partial edge to a career child as exact.",
+      "requiredDeltaDe": "Für die sechs Stoffe eine tatsächlich einschlägige Eigenschaften-Anwendungs-Kompetenz und Quelle erhalten beziehungsweise prüfen. Die generische gesellschaftliche Diskussion darf als Teilbezug verbleiben, wenn sie unabhängig bestätigt wird."
+    }
+  ],
+  "bookObservations": [
+    {
+      "originGoalId": "542822de-cb96-56cf-a487-0fc3b5820f57",
+      "pageAtInputFreeze": 24,
+      "breadcrumbsAtInputFreeze": ["Chemie", "Chemische Erkenntnisgewinnung und Kommunikation (Sek I)"],
+      "stageTagAtInputFreeze": "SekI",
+      "sourceReviewIsBookD2": false,
+      "requiredDeltaDe": "Bei einer späteren Splitadoption zwei echte Zielseiten, passende direkte Abhängigkeiten und unzweideutige ID-/Mastery-Migration prüfen; keine historische Buchfreigabe übertragen."
+    },
+    {
+      "originGoalId": "1df17884-96ae-57d7-9da9-dbebd082596f",
+      "pageAtInputFreeze": 25,
+      "breadcrumbsAtInputFreeze": ["Chemie", "Chemische Erkenntnisgewinnung und Kommunikation (Sek I)"],
+      "stageTagAtInputFreeze": "SekI",
+      "sourceReviewIsBookD2": false,
+      "requiredDeltaDe": "Den Quellenstufen entsprechend tatsächlich sichtbaren Lern-/Buchkontext prüfen. Eine gemeinsame Kompetenz braucht erkennbare Grenzen von Anleitung, Eigenständigkeit und oberen Anforderungen; eine bloße Stufenetikettänderung ersetzt dies nicht. Nach Textadoption neue aktuelle Buch-D2-Bindungen."
+    },
+    {
+      "originGoalId": "1f354a60-be44-512b-8f8b-f67c8c456035",
+      "pageAtInputFreeze": 27,
+      "breadcrumbsAtInputFreeze": ["Chemie", "Chemische Erkenntnisgewinnung und Kommunikation (Sek I)"],
+      "stageTagAtInputFreeze": "SekII",
+      "sourceReviewIsBookD2": false,
+      "requiredDeltaDe": "Das Ziel muss tatsächlich aus dem unteren Kapitel in einen geprüften oberen Kompositions-/Buchpfad wechseln. Vorwissen, Rück-/Vorwärtsverweise und Zieluniversum bleiben konsistent. Erst die final erzeugte aktuelle Oberstufenseite kann eigenständig als Book-D2 geprüft werden."
+    }
+  ],
+  "uninspectedNationalBindings": "Preserved obligations, no reapproval and no mutation. Semantic split or stage rerouting remains HOLD until the concretely affected source mappings are independently assigned."
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-013-stoffmenge-revised-nine-current-v1.config.json",
+  "configDigest": "sha256:fc27e61b9bf01ea1a2d6bd058b20b4266a9bf05782619dae261964ca27fea2db",
+  "goalIds": [
+    "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+    "8a2ad724-df5e-5986-8de9-560ba43caac2",
+    "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+    "e45c0022-ac0d-5c83-b433-5f68655e382f",
+    "1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+    "2924f784-5261-54e8-93ee-49ac3b3cd300",
+    "199570f4-b3c3-5e12-877d-ced97e9f6968",
+    "d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a",
+    "ddb76915-4d63-5375-901d-4e659f5e9b09"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 376,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/review-book-full.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:7ac7d01afc19abd59cad3a11582292182df8a71843dced2781fe51b7096838ba"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:d4db3e89d3b1bb4f59d3a9588bd02dea00547dc4116a6c4b6d0a53c3071ccd22",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:a4e79b98d9b49310751f80ef24fe684e8d2bbf8b7a8aa31a2135aae8473012b1",
+    "reviewInputFingerprint": "sha256:b4d9d9c91c222488fda925e3e4e4615274f74a89168d21b1a2c0a484b8661272",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-a",
+        "campaignDigest": "sha256:798a70b61728dc71eda5909c2b880e051a77530bca27ea5ac51053b738b3845a",
+        "roundId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-first-pass-a",
+        "independenceGroupId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-independent-a",
+        "batchId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:4e5d401866f4cbef69277cb8aebeb6fe661b13c687fb003d7f22a5283a868882"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-b",
+        "campaignDigest": "sha256:a5e98242fee97190878f25d9257eacc4a022120b384c193fae6321fbf9963f88",
+        "roundId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-first-pass-b",
+        "independenceGroupId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-independent-b",
+        "batchId": "chemie-rollout-v1-batch-013-stoffmenge-revised-nine-current-v1-20261005-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:04fa5035cfffcc774688ccf4fc997c8204b1326cbd29fed89b29df308f5428e7"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

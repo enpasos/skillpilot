@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "chemie-stoffmenge-u-g-independent-v-qa-a-20261005-v1",
+  "reviewAuthority": "ai_candidate",
+  "humanApproval": false,
+  "goalId": "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+  "verdict": "HOLD",
+  "assetDigest": "sha256:d6e2bcbd6a03b6111a72c39c4d30a35bebd018002e0c4d4a94347378874910c6",
+  "startedAt": "2026-10-05T02:24:24Z",
+  "frozenAt": "2026-10-05T02:26:33Z",
+  "images": [
+    {
+      "filename": "candidate-v1.png",
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-u-g-correction-candidate-20261005-v1/candidate-v1.png",
+      "digest": "sha256:d6e2bcbd6a03b6111a72c39c4d30a35bebd018002e0c4d4a94347378874910c6",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "inspectedActualImageWith": "view_image original detail"
+    },
+    {
+      "filename": "preview-360-v1.png",
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-u-g-correction-candidate-20261005-v1/preview-360-v1.png",
+      "digest": "sha256:3b7e8a17d78dd8a13b3187c55b1de633de5c154c7c6a7b21c9510312c839cdb8",
+      "width": 360,
+      "height": 203,
+      "mode": "RGB",
+      "inspectedActualImageWith": "view_image original detail"
+    },
+    {
+      "filename": "preview-680-v1.png",
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-u-g-correction-candidate-20261005-v1/preview-680-v1.png",
+      "digest": "sha256:7ca3c653cb44d766c61c757683cab8a7cac22904664946dbfd7f64f441023715",
+      "width": 680,
+      "height": 383,
+      "mode": "RGB",
+      "inspectedActualImageWith": "view_image original detail"
+    }
+  ],
+  "blindnessBeforeFreeze": {
+    "generatorPromptRead": false,
+    "generationRequestRead": false,
+    "generationReceiptRead": false,
+    "rootVerdictRead": false,
+    "otherReviewerVerdictRead": false,
+    "note": "Actual source and both previews were viewed first. Primary SI/CODATA text and this reviewer own frozen D knowledge were used. No generator or provenance materials have been opened."
+  },
+  "observations": [
+    {
+      "id": "V-A-01",
+      "category": "chemical_correctness",
+      "severity": "none",
+      "status": "pass",
+      "findingDe": "Beide Panels zeigen Masse in u und g: links ein C-12-Atom mit 12 u und ≈2,0·10⁻²³ g, rechts 1 mol C-12-Atome mit ≈7,2·10²⁴ u und ≈12 g. Eine falsche exklusive Zuordnung der Einheiten zu Betrachtungsebenen wird vermieden."
+    },
+    {
+      "id": "V-A-02",
+      "category": "numerical_correctness",
+      "severity": "none",
+      "status": "pass",
+      "findingDe": "Alle vier Werte und Größenordnungen stimmen. Exakt 12 u gilt für das freie C-12-Atom im Grundzustand; die drei gerundeten Größen tragen jeweils ein Näherungszeichen. Insbesondere ist der Exponent der Einzelatommasse negativ (−23), jener der Portion in u positiv (+24)."
+    },
+    {
+      "id": "V-A-03",
+      "category": "model_representation",
+      "severity": "none",
+      "status": "pass",
+      "findingDe": "Der einzelne C-12-Ball und die Gruppe gleich beschrifteter C-12-Bälle bilden ein verständliches schematisches Modell. Der Portionsbezug folgt über den Pfeil Teilchenzahl × Teilchenmasse. Die Gruppe ist im großen Original ausdrücklich schematisch markiert; sie behauptet dort keine wörtliche Zählung aller Atome eines Mols."
+    },
+    {
+      "id": "V-A-04",
+      "category": "readability_desktop",
+      "severity": "none",
+      "status": "pass",
+      "findingDe": "Original 1672×941 und Vorschau 680×383 zeigen klare Haupttitel, Paneltitel, Werte, Einheiten, Pfeiltext und Fußsatz. Keine abgeschnittenen Randinhalte, verwechselbaren Rechenzeichen, beschädigten Exponenten oder sichtbaren Schreibfehler gefunden. Die C-12-Beschriftungen überlappen nur durch nachvollziehbare Kugelüberlagerung."
+    },
+    {
+      "id": "V-A-05",
+      "category": "readability_mobile",
+      "severity": "minor_blocker_for_requested_mobile_gate",
+      "status": "hold",
+      "findingDe": "In der tatsächlichen 360×203-Vorschau ist das entscheidende Modellwort schematisch unmittelbar unter der Atomgruppe nur etwa 5–6 Pixel hoch und ohne Vergrößerung nicht zuverlässig lesbar. Die Hauptwerte, einschließlich des Minuszeichens im Exponenten −23 und der ≈-Zeichen, sind erkennbar; betroffen ist gezielt die Unterscheidung zwischen der gezeichneten kleinen Atomgruppe und der behaupteten Molportion. Für den beauftragten Handy-/PC-PASS muss auch diese Modellkennzeichnung auf der 360-Pixel-Ansicht lesbar sein.",
+      "boundedCorrectionDe": "Das Wort schematisch ausreichend vergrößern oder als gut lesbaren Teil der rechten Panelbeschriftung zeigen; fachliche Werte, beide Einheiten auf beiden Ebenen und die Näherungszeichen erhalten."
+    },
+    {
+      "id": "V-A-06",
+      "category": "format_style",
+      "severity": "none",
+      "status": "pass",
+      "findingDe": "Breites Format, freundliche abstrakte Kugeln, klare zwei Spalten und ruhiger Blau/Gelb-Kontrast passen zu einer verständlichen Sek-I-Visualisierung. Der Kontrast trägt die numerischen Angaben; Hintergrundwolken und Dekoration verdecken keine Hauptinformation."
+    }
+  ],
+  "calculationCheck": {
+    "exactAvogadroPerMol": "6.02214076e23",
+    "atomicMassConstantInGramsCodata2022": "1.66053906892e-24",
+    "oneC12Atom_u": "12",
+    "oneC12Atom_g": "1.992646882704E-23",
+    "oneMolC12Atoms_u": "7.226568912E+24",
+    "oneMolC12Atoms_g": "12.00000001261869741504",
+    "displayRoundingVerified": [
+      "12 u",
+      "approximately 2.0e-23 g",
+      "approximately 7.2e24 u",
+      "approximately 12 g"
+    ]
+  },
+  "primarySources": [
+    {
+      "url": "https://www.bipm.org/en/si-base-units/mole",
+      "checkedOn": "2026-10-05",
+      "usedFor": "Exact count of specified elementary entities per mole."
+    },
+    {
+      "url": "https://physics.nist.gov/cuu/pdf/all.pdf",
+      "checkedOn": "2026-10-05",
+      "usedFor": "2022 CODATA m_u=1/12 m(C-12)=1.66053906892e-27 kg; current C-12 molar mass approximately 12 g/mol."
+    },
+    {
+      "url": "https://www.bipm.org/documents/20126/41483022/SI-Brochure-9.pdf/fcf090b2-04e6-88cc-1149-c3e029ad8232?download=true&t=1780473476314&version=6.1",
+      "checkedOn": "2026-10-05",
+      "usedFor": "u/Da definition from one twelfth of free ground-state carbon-12 atom mass."
+    }
+  ],
+  "providerDuringReview": "OpenAI Codex local session",
+  "reviewModel": "unexposed",
+  "scope": "Independent V candidate inspection only. No canonical, active QA/registry or D-freeze write. Provenance check follows separately after this freeze."
+}

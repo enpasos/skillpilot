@@ -1,0 +1,444 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "biologie-q1-six-candidate-20261005-v1",
+  "reviewedAt": "2026-10-04T23:06:32.209548+00:00",
+  "reviewer": "codex-biology-six-author",
+  "goals": [
+    {
+      "goalId": "0daa79f6-8f61-5506-98f9-65db83062ba8",
+      "reason": "Beide bisherigen D-Runden verlangen eine Trennung von Molekülstruktur und Replikation. Das eigene Replikationsziel e70d8a85 besteht bereits und verlangt 0daa als Vorziel. Der Vorschlag bewahrt 0daa als Strukturatom, statt eine weitere Kopierkompetenz zu duplizieren. Der BY-B9.3.2-Originalpunkt verlangt Struktur und Informationsspeicher, nicht Replikation. Unadopted proposed-scope authoring draft; source-preservation blockers and independent review remain open.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Explicit replication source/view preservation remains required.",
+        "Fresh current-text independent D and A/M decisions are required."
+      ],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "nucleotide-double-strand",
+            "essentialUnderstandingDe": "DNA besteht aus Nukleotiden mit Zucker, Phosphat und einer Base. Zwei komplementäre Stränge bilden das Doppelstrangmodell; die Basenfolge trägt die Information.",
+            "essentialUnderstandingEn": "DNA consists of nucleotides containing sugar, phosphate and a base. Two complementary strands form the double-stranded model; the base sequence carries information.",
+            "observablePerformanceDe": "Die lernende Person erzeugt ein eigenes beschriftetes Modell, trennt Rückgrat und Basen und ergänzt eine neue komplementäre Folge anhand einer gegebenen Paarungsregel.",
+            "observablePerformanceEn": "The learner produces a labelled model, distinguishes backbone from bases and constructs the complement of a fresh sequence using a supplied pairing rule."
+          },
+          {
+            "id": "structure-information-relation",
+            "essentialUnderstandingDe": "Die Paarungsregel A–T und G–C begrenzt die Zuordnung zwischen den beiden Strängen, während verschiedene Basenfolgen verschiedene Information speichern können. Das Strukturmodell allein erklärt keine Replikation.",
+            "essentialUnderstandingEn": "The A–T and G–C pairing rule constrains the relationship between the two strands, while different base sequences can store different information. A structural model alone does not explain replication.",
+            "observablePerformanceDe": "Die lernende Person begründet in einer neuen Darstellung, welche Paarung passt und warum die Information in der Reihenfolge der Basen statt in der Zahl der Helixwindungen liegt.",
+            "observablePerformanceEn": "In a fresh representation, the learner justifies which pairing fits and why information lies in the order of bases rather than in the number of helix turns."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "nucleotide-double-strand",
+            "structure-information-relation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation-change",
+            "textDe": "Bausteinmodell und anders angeordnete Doppelstrangskizze verwenden.",
+            "textEn": "Use a component model and a differently arranged double-strand drawing."
+          },
+          {
+            "id": "sequence-complement",
+            "textDe": "Neue Folgen und Strangrichtungen mit bereitgestellter Legende variieren.",
+            "textEn": "Vary fresh sequences and strand directions with a supplied legend."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "build-new-dna-model",
+            "taskDemandDe": "Du erhältst Zucker-, Phosphat- und Basensymbole, die Paarungsregel A–T/G–C und eine Richtungslegende. Baue und beschrifte einen kurzen Doppelstrang zu 5′-ATGCCA-3′. Erläutere an deinem Modell, welche Teile die Basenfolge tragen und was diese mit genetischer Information zu tun hat.",
+            "taskDemandEn": "You receive sugar, phosphate and base symbols, the A–T/G–C pairing rule and a direction legend. Construct and label a short double strand for 5′-ATGCCA-3′. Use your model to explain which parts carry the base sequence and how that relates to genetic information.",
+            "expectedPerformanceDe": "Das Modell hat Zucker-Phosphat-Rückgrate und die passende Gegenfolge 3′-TACGGT-5′. Nukleotid und Base sind unterschieden; die Begründung verortet die Information in der Basenreihenfolge. Ein Kopiervorgang wird nicht als Strukturleistung mitgezählt.",
+            "expectedPerformanceEn": "The model has sugar-phosphate backbones and the matching complementary sequence 3′-TACGGT-5′. It distinguishes a nucleotide from a base and locates information in base order. Copying is not counted as structural performance.",
+            "understandingFocusDe": "Eigenständig erzeugte Struktur statt Bildwiederholung.",
+            "understandingFocusEn": "Independently produced structure rather than reproduction of an image."
+          },
+          {
+            "id": "select-and-justify-complement",
+            "taskDemandDe": "Eine neue Skizze zeigt 5′-CGTTA-3′ und zwei Kandidaten für den Gegenstrang: 3′-GCAAT-5′ und 3′-GGAAT-5′. Paarungsregel und Richtungslegende sind gegeben. Wähle begründet, korrigiere die nicht passende Stelle und erkläre, warum zwei gleich lange DNA-Modelle verschiedene Information tragen können.",
+            "taskDemandEn": "A fresh drawing shows 5′-CGTTA-3′ and two candidate complementary strands: 3′-GCAAT-5′ and 3′-GGAAT-5′. The pairing rule and direction legend are supplied. Justify your choice, correct the mismatching site and explain why equally long DNA models can carry different information.",
+            "expectedPerformanceDe": "Die erste Folge passt. Im zweiten Gegenstrang steht gegenüber G ein G statt C. Die lernende Person begründet die Paarung und die Bedeutung der Basenfolge unabhängig von gleicher Länge oder Helixform.",
+            "expectedPerformanceEn": "The first sequence matches. In the second complement, G faces G where C is required. The learner justifies complementarity and the significance of sequence independently of equal length or helix shape.",
+            "understandingFocusDe": "Transfer von Bausteinen zu Fehleranalyse mit einer frischen Sequenz.",
+            "understandingFocusEn": "Transfer from components to error analysis with a fresh sequence."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+      "reason": "Die beiden Stufen lassen sich als zusammenhängender Informationsfluss DNA → RNA → Polypeptid modellieren. Es ist kein fachlicher Fehler im bestehenden DE/EN-Satz erwiesen. Die bisherige A-Runde hält ihn, die B-Runde verlangt Teilung; dieser Dissens bleibt offen. Das neue P-Profil verlangt die vollständige Kette in beiden Fällen und schließt den Erfolg einer einzelnen Stufe als Gesamtnachweis aus. Unadopted proposed-scope authoring draft; source-preservation blockers and independent review remain open.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Resolve prior keep/split dissent through independent current-scope review; if split is confirmed, create separate transcription and translation goals and use no whole-goal P pass from this draft.",
+        "BY B9.3.3 also requires protein roles in traits; model-only coverage is partial, not exact whole-clause coverage."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "two-stage-information-flow",
+            "essentialUnderstandingDe": "Transkription erzeugt RNA anhand einer DNA-Vorlage; Translation setzt die mRNA-Codonfolge am Ribosom mithilfe von tRNA in eine Polypeptidfolge um. Die beiden Stufen sind zu verbinden und nicht zu verwechseln.",
+            "essentialUnderstandingEn": "Transcription produces RNA from a DNA template; translation uses the mRNA codon sequence, tRNA and a ribosome to assemble a polypeptide. The two stages must be connected and distinguished.",
+            "observablePerformanceDe": "Die lernende Person erzeugt ein zusammenhängendes DNA–mRNA–Polypeptid-Modell und begründet die Rolle von mRNA, tRNA und Ribosom; Erfolg in nur einer Stufe reicht nicht für das Gesamtziel.",
+            "observablePerformanceEn": "The learner constructs a connected DNA–mRNA–polypeptide model and explains the roles of mRNA, tRNA and ribosome; success in only one stage does not establish the whole goal."
+          },
+          {
+            "id": "code-and-cell-context",
+            "essentialUnderstandingDe": "Die Richtung und Art des vorgegebenen DNA-Strangs bestimmen die RNA-Ableitung; der bereitgestellte Code bestimmt die Aminosäurefolge. Bei Eukaryoten sind Kerntranskription und Translation außerhalb des Kerns räumlich getrennt.",
+            "essentialUnderstandingEn": "The direction and type of the supplied DNA strand determine RNA derivation; the supplied code determines amino-acid order. In eukaryotes, nuclear transcription is spatially separate from translation outside the nucleus.",
+            "observablePerformanceDe": "Mit ausdrücklich vereinfachten intronfreien Modellabschnitten leitet die lernende Person frische RNA- und Aminosäurefolgen ab und lokalisiert eine gegebene Störung an der passenden Stufe.",
+            "observablePerformanceEn": "Using explicitly simplified intron-free model fragments, the learner derives fresh RNA and amino-acid sequences and locates a supplied disturbance at the appropriate stage."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "two-stage-information-flow",
+            "code-and-cell-context"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "template-and-coding-strands",
+            "textDe": "Vorlagenstrang und codierenden Strang ausdrücklich kennzeichnen und in frischen Fällen wechseln.",
+            "textEn": "Explicitly identify and vary template and coding strands in fresh cases."
+          },
+          {
+            "id": "cell-and-intervention",
+            "textDe": "Eukaryotisches Kompartimentmodell und prokaryotischen Befund mit gestörter Translation vergleichen.",
+            "textEn": "Compare a eukaryotic compartment model with a prokaryotic result showing disrupted translation."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "eukaryotic-connected-model",
+            "taskDemandDe": "Ein vereinfachtes intronfreies eukaryotisches Modell zeigt den DNA-Vorlagenstrang 3′-TAC CTT AAA-5′, eine Paarungsregel und eine Code-Tabelle. Stelle die mRNA und die ab AUG betrachtete Aminosäurefolge dar; ordne DNA, mRNA, tRNA und Ribosom in Kern und Cytoplasma ein und erkläre den verbundenen Informationsfluss. Gezeigt wird nur ein Ausschnitt, kein vollständiges Protein.",
+            "taskDemandEn": "A simplified intron-free eukaryotic model supplies the DNA template strand 3′-TAC CTT AAA-5′, a pairing rule and a codon table. Represent the mRNA and the amino-acid sequence considered from AUG; place DNA, mRNA, tRNA and ribosome in nucleus and cytoplasm and explain the connected information flow. Only a fragment, not a complete protein, is shown.",
+            "expectedPerformanceDe": "mRNA 5′-AUG GAA UUU-3′ und der Ausschnitt Met–Glu–Phe passen. Transkription im Kern ist von der mRNA-Translation am cytoplasmatischen Ribosom unterschieden; tRNA vermittelt Codon und Aminosäure. Eine bloße Codonlösung ohne Modellkette genügt nicht.",
+            "expectedPerformanceEn": "mRNA 5′-AUG GAA UUU-3′ and the fragment Met–Glu–Phe match. Nuclear transcription is distinguished from mRNA translation at a cytoplasmic ribosome; tRNA links codons to amino acids. A codon answer without the connected model is insufficient.",
+            "understandingFocusDe": "Vollständige Kette mit klaren Molekülrollen.",
+            "understandingFocusEn": "Complete connected chain with clear molecular roles."
+          },
+          {
+            "id": "prokaryotic-translation-disturbance",
+            "taskDemandDe": "Ein neues vereinfachtes Bakterienmodell gibt den codierenden DNA-Strang 5′-ATG TCT GGT-3′, Stranglegende und Code-Tabelle an. Ohne Störung wird die passende mRNA gebildet und der modellierte Polypeptidabschnitt nachgewiesen. Mit einem laut Material gezielt an der Translation wirkenden Hemmstoff ist mRNA weiter nachweisbar, der Abschnitt aber nicht. Erzeuge die erwartete RNA-/Aminosäurekette und erkläre den Unterschied der Befunde.",
+            "taskDemandEn": "A fresh simplified bacterial model provides the coding DNA strand 5′-ATG TCT GGT-3′, a strand legend and a codon table. Without intervention, matching mRNA and the modelled polypeptide fragment are detected. With an inhibitor specified in the material to act on translation, mRNA remains detectable but the fragment does not. Construct the expected RNA/amino-acid chain and explain the difference between the results.",
+            "expectedPerformanceDe": "Die neue Kette lautet 5′-AUG UCU GGU-3′ und Met–Ser–Gly. Die lernende Person verbindet Transkription und Translation, begründet die vorhandene RNA mit erhaltenem ersten Schritt und den fehlenden Abschnitt mit der angegebenen Translationsstörung; sie schließt nicht auf fehlende DNA oder eine gemessene Proteinmenge.",
+            "expectedPerformanceEn": "The fresh chain is 5′-AUG UCU GGU-3′ and Met–Ser–Gly. The learner connects both stages, explains detected RNA by the preserved first stage and the absent fragment by the specified translation disturbance, without inferring missing DNA or a measured protein quantity.",
+            "understandingFocusDe": "Transfer auf andere Strangart, Zellart und eine interpretierbare Störung.",
+            "understandingFocusEn": "Transfer to a different strand type, cell type and interpretable intervention."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+      "reason": "„Folgen abschätzen“ nennt weder Folgeebene noch notwendige Fallinformationen. Der Vorschlag bindet eine mögliche molekulare Folge an codierende Region, Leseraster und Code-Daten. Er ist nach eigener Quellen-, Sequenz- und Bildprüfung inhaltlich mit dem bereits unabhängig geprüften ffef-v2-Autorenkandidaten vereinbar. Die Kopie eines Abschnitts ist von einem bloß gleichen eingefügten Abschnitt zu unterscheiden; eine Proteinfunktions- oder Merkmalsaussage benötigt weitere Daten. Unadopted proposed-scope authoring draft; source-preservation blockers and independent review remain open.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "BY source additionally requires mutagens, measured/justified protein function and protection; existing exact mapping is not a full-clause proof.",
+        "All seven Sek-I placements need source-specific decisions; NI explicitly postpones molecular-genetic analysis to Sek II.",
+        "Inactive v2 illustration is not an active V record."
+      ],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "identify-sequence-change",
+            "essentialUnderstandingDe": "Eine Substitution ersetzt eine Base ohne Längenänderung; eine Deletion entfernt und eine Insertion ergänzt Basen. Bei einer Duplikation wird ein vorhandener Abschnitt kopiert. Eine hinzugekommene gleiche Folge belegt ihre Entstehung als Duplikation nur mit einem entsprechenden Veränderungshinweis.",
+            "essentialUnderstandingEn": "A substitution replaces a base without changing sequence length; a deletion removes bases and an insertion adds bases. A duplication copies an existing segment. An added matching sequence establishes duplication as its origin only when the change evidence supports that origin.",
+            "observablePerformanceDe": "Die lernende Person richtet Ausgangs- und Variantenfolge aus, markiert die betroffene Stelle, ordnet die vier Änderungstypen anhand der vorliegenden Veränderungshinweise zu und benennt eine verbleibende Unsicherheit zwischen Insertion und Duplikation, wenn die Herkunft des Zusatzes nicht erkennbar ist.",
+            "observablePerformanceEn": "The learner aligns reference and variant sequences, marks the altered site, classifies the four change types using the available change evidence, and states any remaining insertion-versus-duplication uncertainty when the origin of an added segment is not known."
+          },
+          {
+            "id": "justify-contextual-protein-consequence",
+            "essentialUnderstandingDe": "Die mögliche Folge einer Änderung in einem codierenden Genabschnitt hängt vom Leserahmen, vom genetischen Code und von der Länge der Änderung ab. Eine Substitution kann dieselbe Aminosäure codieren oder sie ändern; ein Basenzusatz oder -verlust außerhalb eines Vielfachen von drei kann den Leserahmen verschieben. Aus der Sequenz allein folgt weder eine sichere Änderung der Proteinfunktion noch ein Merkmal.",
+            "essentialUnderstandingEn": "A possible consequence of a change in a coding gene region depends on the reading frame, the genetic code and the length of the change. A substitution may encode the same amino acid or a different one; adding or removing a number of bases not divisible by three can shift the reading frame. Sequence alone establishes neither a certain change in protein function nor a trait.",
+            "observablePerformanceDe": "Mit angegebenem codierendem Strang, Leserahmen und Code-Tabelle vergleicht die lernende Person mögliche Aminosäurefolgen oder Leserahmen und begründet, welche Aussage über das codierte Protein belegt ist und für welche Funktions- oder Merkmalsaussage zusätzliche Daten fehlen.",
+            "observablePerformanceEn": "Given a coding strand, reading frame and codon table, the learner compares possible amino-acid sequences or reading frames and explains which claim about the encoded protein is supported and which function or trait claim would require more data."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "identify-sequence-change",
+            "justify-contextual-protein-consequence"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "molecular-change-and-origin",
+            "textDe": "Die vier Typen an unabhängig veränderten DNA-Folgen zeigen; Einfügungen und Kopien durch Veränderungshinweise unterscheidbar machen, statt ihre Herkunft allein aus der Endfolge zu behaupten.",
+            "textEn": "Show the four types in independently changed DNA sequences; make insertions and copies distinguishable through change evidence rather than claiming their origin from the final sequence alone."
+          },
+          {
+            "id": "reading-frame-and-code-effect",
+            "textDe": "Synonyme und nicht synonyme Substitutionen sowie Längenänderungen um eine, zwei und drei Basen variieren; der Leserahmen und die tatsächliche Codonfolge sind entscheidend.",
+            "textEn": "Vary synonymous and nonsynonymous substitutions and length changes of one, two and three bases; the reading frame and actual codons determine the molecular consequence."
+          },
+          {
+            "id": "function-evidence",
+            "textDe": "Ein Fall enthält nur Sequenz- und Code-Daten, ein anderer zusätzlich kontrollierte Proteinfunktion-Daten für genau eine Variante; Aussagen auf den jeweiligen Beleg begrenzen.",
+            "textEn": "One case contains only sequence and codon data, while another also supplies controlled protein-function data for exactly one variant; limit each conclusion to the available evidence."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "synonymous-indels-and-codon-copy",
+            "taskDemandDe": "Ein neuer codierender DNA-Strang 5′-ATG GAA TTT CCA TAA-3′ mit Leserahmen ab ATG und Code-Tabelle wird mit vier getrennten, unbeschrifteten Varianten verglichen: GAA wird zu GAG; die erste Base von GAA entfällt; nach ATG wird eine neue, nicht kopierte Base C eingefügt; der Abschnitt GAA wird laut Kopierspur direkt daneben nochmals eingefügt. Bestimme jeden Änderungstyp, markiere die Stelle und leite eine mögliche Folge für die codierte Aminosäurefolge ab. Es liegen keine Proteinfunktion- oder Merkmalsdaten vor.",
+            "taskDemandEn": "A fresh coding DNA strand 5′-ATG GAA TTT CCA TAA-3′, with a reading frame starting at ATG and a codon table, is compared with four separate unlabelled variants: GAA becomes GAG; the first base of GAA is removed; a new noncopied C is inserted after ATG; and a copy trace shows GAA copied immediately beside itself. Identify each change type, mark its site and derive a possible consequence for the encoded amino-acid sequence. No protein-function or trait data are supplied.",
+            "expectedPerformanceDe": "Die lernende Person erkennt Substitution, Deletion, Insertion und Duplikation an den vier getrennten Varianten. GAA und GAG codieren beide Glutamat; die Ein-Basen-Deletion und -Insertion verschieben den Leserahmen, während die Duplikation eines ganzen Codons ein weiteres Glutamat ohne Leserahmenverschiebung ergänzt. Sie behauptet aus diesen Sequenzdaten keine bestimmte Funktions- oder Merkmalsänderung.",
+            "expectedPerformanceEn": "The learner identifies substitution, deletion, insertion and duplication in the four separate variants. GAA and GAG both encode glutamate; the one-base deletion and insertion shift the reading frame, whereas duplicating a whole codon adds another glutamate without shifting it. The learner does not claim a specific function or trait change from these sequence data.",
+            "understandingFocusDe": "Gleiche Mutationstypen können je nach Codon und Änderungslänge unterschiedliche molekulare Folgen haben; eine synonyme Substitution ist ein positives Gegenbeispiel zur pauschalen Schadensannahme.",
+            "understandingFocusEn": "Molecular consequences depend on the codon and change length; a synonymous substitution is a positive counterexample to assuming every mutation is harmful."
+          },
+          {
+            "id": "missense-in-frame-loss-and-copy-trace",
+            "taskDemandDe": "Ein anderer codierender DNA-Strang 5′-ATG TTT GGC AAG TAA-3′ wird mit vier neuen, voneinander getrennten Varianten und einer Code-Tabelle gezeigt: TTT wird zu TCT; das ganze Codon GGC entfällt; nach ATG kommen zwei neue, nicht kopierte Basen AC hinzu; eine Kopierspur zeigt die Verdopplung der ersten A-Base innerhalb von AAG. Für die TTT→TCT-Variante liegen unter gleichen Messbedingungen niedrigere Aktivitätswerte des codierten Enzyms als für das unveränderte Referenzprotein vor; für die anderen Varianten liegen keine Funktionsdaten vor. Ordne die vier Änderungen zu, begründe mögliche Proteinfolgen und trenne die Messbeobachtung von Aussagen über Merkmale.",
+            "taskDemandEn": "A different coding DNA strand 5′-ATG TTT GGC AAG TAA-3′ is shown with four new separate variants and a codon table: TTT becomes TCT; the entire GGC codon is removed; two new noncopied bases AC are added after ATG; and a copy trace shows the first A base within AAG duplicated. For the TTT-to-TCT variant, matched assay conditions yield lower activity of the encoded enzyme than of the unchanged reference protein; no function data are provided for the other variants. Classify the four changes, justify possible protein consequences and separate the measured observation from trait claims.",
+            "expectedPerformanceDe": "Die lernende Person ordnet TTT→TCT als Substitution mit Phenylalanin→Serin ein, GGC-Verlust als Deletion eines Codons ohne Leserahmenverschiebung, AC-Zusatz als Insertion mit Leserahmenverschiebung und die nachgewiesene Ein-Basen-Kopie als Duplikation mit Leserahmenverschiebung. Die gegenüber dem unveränderten Referenzprotein verringerte Aktivität ist für die gemessene Variante unter den genannten Bedingungen belegt; für andere Varianten und einen Phänotyp fehlen entsprechende Daten.",
+            "expectedPerformanceEn": "The learner classifies TTT to TCT as a substitution changing phenylalanine to serine, loss of GGC as an in-frame codon deletion, addition of AC as a frame-shifting insertion, and the documented one-base copy as a frame-shifting duplication. Lower activity relative to the unchanged reference protein is supported for the measured variant under the stated conditions; corresponding data for the other variants and for a phenotype are absent.",
+            "understandingFocusDe": "Frischer Transfer mit anderer Referenzfolge, anderer Änderungslänge und einem begrenzten Funktionsbefund: Mutationstyp, Leserahmenfolge und beobachtete Proteinfunktion sind getrennte Aussagen.",
+            "understandingFocusEn": "Fresh transfer with a different reference sequence, change lengths and a bounded function result: mutation type, reading-frame consequence and observed protein function are separate claims."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "946ce2e7-c30d-5670-839d-003b0619c284",
+      "reason": "Beide bisherigen unabhängigen Runden unterscheiden den bindenden Regulationsfaktor von der chemischen DNA-Markierung. 946 bleibt als einzelnes Faktor-Atom; DNA-Methylierung muss in einem gesonderten GK/LK-Atom erhalten bleiben. Das bestehende LK-Ziel 99544494 nennt Methylierung/Acetylierung, hat eine strittige HE-Q1.5-Bindung und ersetzt den GK/LK-Kern nicht ungeprüft. Unadopted proposed-scope authoring draft; source-preservation blockers and independent review remain open.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "The companion atom and exact source/view routing are required before narrowing this original.",
+        "Current BY applicability is not backed by a direct BY source mapping for this ID; new BY binding needs its own review.",
+        "Exam 3ac1cbb1 refers to 946 for promoter methylation and must be routed to the methylation companion if a split is adopted."
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "regulatory-binding",
+            "essentialUnderstandingDe": "Ein Transkriptionsfaktor beeinflusst die Transkription über Bindung an regulatorische DNA und Wechselwirkung mit dem Transkriptionssystem. Aktivierende und hemmende Wirkung sind kontextabhängig.",
+            "essentialUnderstandingEn": "A transcription factor influences transcription through regulatory DNA binding and interactions with the transcription system. Activating and repressing effects depend on context.",
+            "observablePerformanceDe": "Die lernende Person erklärt in einem gegebenen Genmodell den Weg von Faktorbindung zur veränderten Transkription und verwendet den im Material belegten aktivierenden oder hemmenden Effekt.",
+            "observablePerformanceEn": "The learner explains the path from factor binding to changed transcription in a supplied gene model and uses the activating or repressing effect supported by that material."
+          },
+          {
+            "id": "interpret-model-result",
+            "essentialUnderstandingDe": "Eine veränderte Bindungsstelle oder ein verändertes Faktorangebot kann die Transkription beeinflussen. Eine schematische Bindung allein beweist weder tatsächliche Proteinmenge noch ein Merkmal.",
+            "essentialUnderstandingEn": "Changing a binding site or factor availability may influence transcription. A binding diagram alone establishes neither an actual protein quantity nor a trait.",
+            "observablePerformanceDe": "Die lernende Person nutzt passende Bindungs- und mRNA-Daten für eine begründete Modellvorhersage und begrenzt ihre Aussage auf den angegebenen Kontext.",
+            "observablePerformanceEn": "The learner uses matched binding and mRNA data for a justified model prediction and limits the conclusion to the supplied context."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "regulatory-binding",
+            "interpret-model-result"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "activator-repressor",
+            "textDe": "Aktivierendes und hemmendes Faktormodell mit jeweils eigenen Daten vergleichen.",
+            "textEn": "Compare activating and repressing factor models, each with its own data."
+          },
+          {
+            "id": "binding-site-factor-availability",
+            "textDe": "Bindungsstelle und Faktorangebot als verschiedene Eingriffe variieren.",
+            "textEn": "Vary binding-site change and factor availability as distinct interventions."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "activator-binding-site",
+            "taskDemandDe": "Ein eukaryotisches Genmodell liefert zwei sonst gleiche Konstrukte: Faktor A bindet an die intakte regulatorische Stelle, bei gezielt veränderter Stelle nicht. Im angegebenen Modell unterstützt A den Transkriptionsbeginn. Für beide Konstrukte werden passende mRNA-Daten gezeigt: 80 bzw. 5 relative Einheiten. Erkläre den Zusammenhang und sage begründet voraus, was bei fehlendem A im intakten Konstrukt zu erwarten ist.",
+            "taskDemandEn": "A eukaryotic gene model supplies two otherwise identical constructs: factor A binds the intact regulatory site but not a specifically altered site. In the supplied model, A supports transcription initiation. Matched mRNA data are 80 and 5 relative units. Explain the relationship and justify a prediction for the intact construct when A is absent.",
+            "expectedPerformanceDe": "Die lernende Person verbindet die gegebene A-Bindung mit unterstützt beginnender Transkription und höherem mRNA-Befund. Ohne A erwartet sie eine im Modell verminderte Transkription, ohne eine exakte neue Zahl oder Proteinfunktion zu erfinden.",
+            "expectedPerformanceEn": "The learner connects supplied A binding with supported transcription initiation and the higher mRNA result. Without A, the model predicts reduced transcription without inventing an exact new number or protein function.",
+            "understandingFocusDe": "Faktorwirkung durch begründete Modellvorhersage.",
+            "understandingFocusEn": "Factor action through a justified model prediction."
+          },
+          {
+            "id": "repressor-availability",
+            "taskDemandDe": "In einem neuen eukaryotischen Modellsystem bleibt die DNA-Stelle unverändert. Das Material bezeichnet R als hemmenden Transkriptionsfaktor: mit gebundenem R werden 12, nach Entfernen von R 96 relative mRNA-Einheiten gemessen. Ordne die Wirkung ein und erkläre, warum „Faktorbindung aktiviert immer“ diesen Fall nicht erklärt.",
+            "taskDemandEn": "In a fresh eukaryotic model system, the DNA site stays unchanged. The material specifies R as a repressing transcription factor: 12 relative mRNA units are measured with R bound and 96 after R is removed. Identify and explain the effect, and explain why “factor binding always activates” does not account for this case.",
+            "expectedPerformanceDe": "Die lernende Person erklärt die Hemmung der Transkription durch R im gegebenen Kontext und die höhere mRNA nach Wegnahme. Sie begründet den Gegensatz zum ersten Fall mit anderer Faktorwirkung und erfindet weder Methylierungsänderung noch ein Merkmal.",
+            "expectedPerformanceEn": "The learner explains R-mediated transcriptional repression in the supplied context and increased mRNA after removal. The difference from the first case is justified by the factor’s distinct effect, without inventing a methylation change or a trait.",
+            "understandingFocusDe": "Frischer positiver Mechanismustransfer von Aktivierung zu Hemmung.",
+            "understandingFocusEn": "Fresh positive mechanism transfer from activation to repression."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+      "reason": "Bakterienbau und Zweiteilung sind unabhängig beobachtbare Leistungen; beide D-Runden verlangen Teilung. Die Strukturformulierung passt zum vorhandenen Titel. Vermehrung bleibt ein eigener LK-Kandidat und darf nicht beim Kürzen verschwinden. Ein Plasmid ist keine universelle Bakterieneigenschaft. Unadopted proposed-scope authoring draft; source-preservation blockers and independent review remain open.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Create/reuse the reproduction companion and preserve the complete HE LK source clause before narrowing.",
+        "BY applicability alone is not a mapped BY source proof for this ID.",
+        "Six non-HE Sek-I placements for this ID need structural-source checks and stage-specific prerequisite routing."
+      ],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "bacterial-structural-model",
+            "essentialUnderstandingDe": "Der prokaryotische Grundbauplan hat keinen membranumhüllten Zellkern; DNA liegt im Zellraum. Membran, gegebenenfalls Zellwand und Ribosomen haben andere Funktionen als die DNA.",
+            "essentialUnderstandingEn": "The prokaryotic plan lacks a membrane-bound nucleus; DNA lies in the cell interior. Membrane, cell wall when present and ribosomes serve functions distinct from DNA.",
+            "observablePerformanceDe": "Die lernende Person ordnet Strukturen eines frischen Bakterienschemas anhand gegebener Hinweise zu und erklärt die Lage des genetischen Materials statt nur Beschriftungen zu wiederholen.",
+            "observablePerformanceEn": "The learner identifies structures in a fresh bacterial diagram using supplied information and explains genetic-material location rather than merely repeating labels."
+          },
+          {
+            "id": "optional-plasmid-distinction",
+            "essentialUnderstandingDe": "Ein gegebenes Plasmid ist zusätzliche DNA und kein Zellkern. Nicht jedes Bakterium besitzt Plasmide; ein dargestelltes Plasmid allein belegt keine gentechnische Änderung oder Proteinproduktion.",
+            "essentialUnderstandingEn": "A supplied plasmid is additional DNA, not a nucleus. Not every bacterium has plasmids; a drawn plasmid alone establishes neither genetic engineering nor protein production.",
+            "observablePerformanceDe": "Die lernende Person unterscheidet Chromosom und gegebenenfalls Plasmid in zwei neuen Schemata und erklärt, weshalb auch ein plasmidfreies Modell ein Bakterium darstellen kann.",
+            "observablePerformanceEn": "The learner distinguishes chromosome and optional plasmid in two fresh models and explains why a plasmid-free model can still represent a bacterium."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "bacterial-structural-model",
+            "optional-plasmid-distinction"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "model-presentation",
+            "textDe": "Anders angeordnete Bakterienskizze und eukaryotisches Vergleichsmodell mit bereitgestellten Strukturhinweisen verwenden.",
+            "textEn": "Use a differently arranged bacterial drawing and a eukaryotic comparison model with supplied structural clues."
+          },
+          {
+            "id": "plasmid-presence",
+            "textDe": "Plasmidfreien und plasmidhaltigen bakteriellen Grundbauplan unterscheiden.",
+            "textEn": "Distinguish plasmid-free and plasmid-bearing bacterial plans."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "bacterium-and-yeast-diagrams",
+            "taskDemandDe": "Zwei neue Schemata mit erklärter Legende zeigen ein Bakterium mit DNA im Zellraum und eine Hefezelle mit DNA im membranumhüllten Kern. Im Bakterienschema sind Zellmembran, Zellwand, Ribosomen, Chromosom und ein kleiner DNA-Ring eingezeichnet. Ordne die Teile zu und begründe den prokaryotischen Grundbauplan und die Lage der Erbinformation.",
+            "taskDemandEn": "Two fresh diagrams with an explained legend show a bacterium with DNA in the cell interior and a yeast cell with DNA in a membrane-bound nucleus. The bacterial diagram shows membrane, wall, ribosomes, chromosome and a small DNA ring. Identify these parts and justify the prokaryotic plan and genetic-material location.",
+            "expectedPerformanceDe": "Die lernende Person trennt Zellbegrenzung und Ribosomen vom genetischen Material, lokalisiert das Chromosom ohne Zellkern und ordnet den angegebenen kleinen DNA-Ring als Plasmid ein. Sie erklärt den Strukturunterschied zur vorgegebenen Hefezelle.",
+            "expectedPerformanceEn": "The learner distinguishes cell boundary and ribosomes from genetic material, locates the chromosome without a nucleus and identifies the supplied small DNA ring as a plasmid. The structural difference from the supplied yeast model is explained.",
+            "understandingFocusDe": "Eigenständige Strukturzuordnung mit erklärtem Vergleich.",
+            "understandingFocusEn": "Independent structural identification with an explained comparison."
+          },
+          {
+            "id": "plasmid-free-versus-bearing",
+            "taskDemandDe": "Ein zweiter Modellfall zeigt zwei bakterielle Zellen: beide mit Chromosom und ohne Zellkern, nur eine mit einem zusätzlich gekennzeichneten Plasmid. In einem Lehrschema soll zusätzliche DNA über dieses Plasmid dargestellt werden. Erkläre, welche DNA-Struktur gemeint ist, warum die andere Zelle trotzdem ein Bakterium ist und welche Aussage über Proteinbildung das reine Schema noch nicht trägt.",
+            "taskDemandEn": "A second model case shows two bacterial cells: both have a chromosome and no nucleus, but only one has a labelled additional plasmid. A teaching diagram is intended to depict additional DNA on that plasmid. Explain which DNA structure is meant, why the other cell is still a bacterium and which protein-production claim is not established by the diagram alone.",
+            "expectedPerformanceDe": "Die lernende Person erklärt das Plasmid als zusätzliche DNA gegenüber dem Chromosom und hält Plasmide nicht für ein universelles Bakterienmerkmal. Sie begründet die bakterielle Einordnung mit dem Grundbauplan; der reine DNA-Ort beweist keine erfolgreiche Genexpression.",
+            "expectedPerformanceEn": "The learner explains the plasmid as additional DNA distinct from the chromosome and does not treat plasmids as universal bacterial features. Classification is justified by the cell plan; DNA location alone does not prove successful gene expression.",
+            "understandingFocusDe": "Frischer Transfer auf optionales genetisches Material.",
+            "understandingFocusEn": "Fresh transfer to optional genetic material."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+      "reason": "Der aktuelle Satz beansprucht eigenes praktisches Trennen, während Titel und prüfbare P-Fälle Auswertung meinen. Das HE-Original nennt PCR und Gelelektrophorese ohne verpflichtende praktische Durchführung. Der Vorschlag verbindet Verfahrensverständnis mit begründeter Dateninterpretation, belegt aber kein Probenauftragen oder Durchführen eines echten Gels. Unadopted proposed-scope authoring draft; source-preservation blockers and independent review remain open.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Independent review must confirm that retained HE competency scope does not require practical performance.",
+        "No direct BY mapping currently supports this ID; a new BY binding can use B12 2.6 after a separate source decision.",
+        "Current PCR prerequisite removal requires route/assessment review."
+      ],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "separation-principle",
+            "essentialUnderstandingDe": "Im gegebenen Gel wandert negativ geladene DNA im elektrischen Feld zur positiven Seite. Unter vergleichbaren Bedingungen wandern kürzere lineare Fragmente weiter als längere.",
+            "essentialUnderstandingEn": "In the supplied gel, negatively charged DNA migrates toward the positive side in the electric field. Under comparable conditions, shorter linear fragments migrate farther than longer ones.",
+            "observablePerformanceDe": "Die lernende Person erklärt Polung und größenabhängige Wanderung anhand eines neuen Gelmodells und verknüpft sie mit dem tatsächlich vorgelegten Bandenmuster.",
+            "observablePerformanceEn": "The learner explains polarity and size-dependent migration using a fresh gel model and connects these to the supplied band pattern."
+          },
+          {
+            "id": "marker-grounded-inference",
+            "essentialUnderstandingDe": "Ein Größenmarker begründet eine ungefähre Fragmentlänge. Gleiche Wanderung beweist unter diesen Bedingungen vergleichbare Länge, nicht gleiche Basensequenz, Identität eines Menschen oder Erkrankung.",
+            "essentialUnderstandingEn": "A size marker supports an approximate fragment length. Equal migration under these conditions indicates comparable length, not identical base sequence, a person’s identity or disease.",
+            "observablePerformanceDe": "Die lernende Person ordnet neue Probenbanden zum passenden Marker zu und formuliert eine positive Größen-/Musterfolgerung mit der Grenze ihrer Aussage.",
+            "observablePerformanceEn": "The learner matches fresh sample bands to a suitable marker and produces a positive length/pattern conclusion with an explicit limit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "separation-principle",
+            "marker-grounded-inference"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "marker-and-lanes",
+            "textDe": "Neue Markergrößen, andere Spurreihenfolge und mehrere Banden aus linearen Fragmenten verwenden.",
+            "textEn": "Use fresh marker sizes, reordered lanes and multiple bands from linear fragments."
+          },
+          {
+            "id": "origin-and-claim-limit",
+            "textDe": "PCR-Produkt und Restriktionsfragmente als verschiedene Probenherkünfte vergleichen; Sequenzgleichheit nicht aus Größenübereinstimmung folgern.",
+            "textEn": "Compare PCR product and restriction fragments as different sample origins; do not infer sequence identity from equal size."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "linear-restriction-fragments",
+            "taskDemandDe": "Ein gegebenes Gelmodell trennt lineare DNA-Fragmente unter gleichen Bedingungen. Der Marker zeigt 2000 bp bei 15 mm, 1000 bp bei 28 mm und 500 bp bei 44 mm Abstand von den Taschen. Eine unbekannte Restriktionsprobe zeigt Banden bei 28 und 44 mm. Die Taschen liegen an der negativen Seite. Erläutere das Trennprinzip und leite die gestützten ungefähren Größen der Probe ab.",
+            "taskDemandEn": "A supplied gel model separates linear DNA fragments under matched conditions. Marker bands are 2000 bp at 15 mm, 1000 bp at 28 mm and 500 bp at 44 mm from the wells. An unknown restriction-digest sample has bands at 28 and 44 mm. The wells are on the negative side. Explain separation and derive the supported approximate fragment sizes.",
+            "expectedPerformanceDe": "Die lernende Person begründet die Wanderung zur positiven Seite und die größere Strecke kürzerer linearer Fragmente. Sie ordnet die Probe ungefähr 1000 und 500 bp zu, ohne aus dem Muster Sequenz oder Organismusidentität abzuleiten.",
+            "expectedPerformanceEn": "The learner explains migration toward the positive side and the farther travel of shorter linear fragments. The sample is assigned approximately 1000 and 500 bp, without inferring sequence or organism identity from the pattern.",
+            "understandingFocusDe": "Begründete Markerinterpretation ohne praktische Durchführungsbehauptung.",
+            "understandingFocusEn": "Reasoned marker interpretation without a laboratory-performance claim."
+          },
+          {
+            "id": "new-ladder-same-size-different-sequence",
+            "taskDemandDe": "Ein anderes gegebenes Gel mit linearen Fragmenten zeigt 1200 bp bei 16 mm, 600 bp bei 30 mm und 300 bp bei 48 mm. Zwei getrennte PCR-Produkte laufen beide bei 30 mm, eine Restriktionsprobe bei 16 und 30 mm. Die Sequenzen sind unbekannt. Werte jede Spur aus und erkläre, welche positive Aussage der Vergleich der beiden PCR-Spuren trägt und warum ihre Basenfolgen trotzdem verschieden sein können.",
+            "taskDemandEn": "A different supplied gel with linear fragments shows 1200 bp at 16 mm, 600 bp at 30 mm and 300 bp at 48 mm. Two separate PCR products both migrate at 30 mm; a restriction sample has bands at 16 and 30 mm. Sequences are unknown. Interpret every lane and explain the positive conclusion supported by comparing the PCR lanes and why their base sequences can still differ.",
+            "expectedPerformanceDe": "Die PCR-Produkte haben ungefähr 600 bp; die Restriktionsprobe enthält ungefähr 1200 und 600 bp. Die lernende Person begründet gleiche ungefähre Größe der beiden PCR-Produkte anhand des Markers, unterscheidet sie aber von unbewiesener Sequenzgleichheit. Sie verwendet den zweiten Marker, nicht die Zahlen des ersten Falls.",
+            "expectedPerformanceEn": "The PCR products are approximately 600 bp; the restriction sample contains approximately 1200 and 600 bp. The learner uses the new marker to justify comparable PCR-product size while distinguishing it from unproved sequence identity, rather than reusing the first case’s numbers.",
+            "understandingFocusDe": "Frischer Transfer mit neuer Leiter und positiver Musterfolgerung.",
+            "understandingFocusEn": "Fresh transfer with a new ladder and a positive pattern inference."
+          }
+        ]
+      }
+    }
+  ]
+}

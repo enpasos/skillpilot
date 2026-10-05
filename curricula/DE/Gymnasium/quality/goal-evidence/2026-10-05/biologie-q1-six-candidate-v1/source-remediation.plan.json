@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "candidateStatus": "independent_review_required",
+  "createdAt": "2026-10-04T23:15:17.051381+00:00",
+  "modelFamily": "GPT-6",
+  "exactModelIdentifier": null,
+  "activeNiMappingInput": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_biology_lower_secondary_source_extraction_to_canonical_biology.m7-e3-recombination-20261001-v2.review.json",
+    "sha256": "sha256:5f578339f71bc595ebc478f4937543801daf6ea296927594a6bfd1fe24a8435f"
+  },
+  "proof": {
+    "retainedPdfPages": [
+      87,
+      89,
+      90
+    ],
+    "sourceExcerptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-six-candidate-v1/sources/ni-mutation-stage-context-retained.txt",
+    "finding": "Official p.89 excludes molecular-genetic mutation treatment in Sek I; extraction drops that qualifier. The shared grades tag also loses distinct table-column grade scopes."
+  },
+  "extractionCorrection": {
+    "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_BIOLOGIE_SEKI_KC2015.source-extraction.json",
+    "sourceGoalId": "ni-biology-seki-kc2015-fw7-003-b3921cb7",
+    "before": {
+      "sourceText": "erklären Variabilität durch Mutation und Rekombination.",
+      "description": "Die lernende Person kann erklären Variabilität durch Mutation und Rekombination."
+    },
+    "after": {
+      "sourceText": "erklären Variabilität durch Mutation – ohne molekulargenetische Betrachtung – und durch Rekombination.",
+      "description": "Die lernende Person kann Variabilität durch Mutation und Rekombination auf phänomenologisch-beschreibender Ebene erklären."
+    },
+    "gradeScopeToReview": "By end of class 10 for FW7-003; FW7-002 is the earlier table column. Review grade metadata and tags individually, not all as 5/6–9/10."
+  },
+  "removeUnsupportedMappingRowsCandidate": [
+    {
+      "legacyGoalId": "ni-biology-seki-kc2015-fw7-002-48e75da8",
+      "canonicalGoalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+      "matchType": "partial",
+      "reviewDecisionId": "ni-biology-seki-kc2015-fw7-002-48e75da8"
+    },
+    {
+      "legacyGoalId": "ni-biology-seki-kc2015-fw7-003-b3921cb7",
+      "canonicalGoalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+      "matchType": "partial",
+      "reviewDecisionId": "ni-biology-seki-kc2015-fw7-003-b3921cb7"
+    },
+    {
+      "legacyGoalId": "ni-biology-seki-kc2015-fw7-012-8ed51e46",
+      "canonicalGoalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+      "matchType": "partial",
+      "reviewDecisionId": "ni-biology-seki-kc2015-fw7-012-8ed51e46"
+    }
+  ],
+  "mappingDecisionListDeltasCandidate": [
+    {
+      "sourceGoalId": "ni-biology-seki-kc2015-fw7-002-48e75da8",
+      "beforeCanonicalGoalIds": [
+        "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+        "9f73b963-5fac-5a90-a993-d7b7c0cc8526"
+      ],
+      "afterRemovalCanonicalGoalIds": [
+        "9f73b963-5fac-5a90-a993-d7b7c0cc8526"
+      ],
+      "condition": "Add/retain genuinely reviewed age-fit variation coverage before adoption; remaining labels are not automatically reviewed here."
+    },
+    {
+      "sourceGoalId": "ni-biology-seki-kc2015-fw7-003-b3921cb7",
+      "beforeCanonicalGoalIds": [
+        "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+        "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+        "9f73b963-5fac-5a90-a993-d7b7c0cc8526"
+      ],
+      "afterRemovalCanonicalGoalIds": [
+        "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+        "9f73b963-5fac-5a90-a993-d7b7c0cc8526"
+      ],
+      "condition": "Add/retain genuinely reviewed age-fit variation coverage before adoption; remaining labels are not automatically reviewed here."
+    },
+    {
+      "sourceGoalId": "ni-biology-seki-kc2015-fw7-012-8ed51e46",
+      "beforeCanonicalGoalIds": [
+        "002543f9-2d14-5c57-99b4-fb4bf7e53734",
+        "ac40db32-5dc7-5c43-8771-bf805d24aa3b",
+        "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+        "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+        "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+        "6bfcb8da-e337-5395-a50a-848f6a3abf4d"
+      ],
+      "afterRemovalCanonicalGoalIds": [
+        "002543f9-2d14-5c57-99b4-fb4bf7e53734",
+        "ac40db32-5dc7-5c43-8771-bf805d24aa3b",
+        "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+        "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+        "6bfcb8da-e337-5395-a50a-848f6a3abf4d"
+      ],
+      "condition": "Add/retain genuinely reviewed age-fit variation coverage before adoption; remaining labels are not automatically reviewed here."
+    }
+  ],
+  "viewChangeCandidate": {
+    "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-ni-seki.view.json",
+    "removeGoalEntryId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+    "condition": "Regenerate from the reviewed repaired mapping only after age-fit coverage and effective prerequisite frontier are proved. Do not simply hide the source debt.",
+    "retainExistingRecombinationComponentId": "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+    "retainExistingVariationContextIdSubjectToCorrection": "9f73b963-5fac-5a90-a993-d7b7c0cc8526"
+  },
+  "additionalOpenCanonicalFinding": {
+    "goalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+    "title": "Grundprinzipien der Evolution erläutern",
+    "finding": "The current wording assigns selection the causal role of generating genetic variation, conflating the origin of variants/combinations with selection on that variation. It also blocks the NI nonmolecular route behind ffef.",
+    "currentDescriptionDe": "Die lernende Person kann Mutation, Rekombination und Selektion als Ursachen genetischer Variation beschreiben.",
+    "currentDescriptionEn": "The learner can describe mutation, recombination, and selection as causes of genetic variation.",
+    "proposedDescriptionDe": "Die lernende Person kann erklären, wie Mutation und Rekombination genetische Variation hervorbringen und wie Selektion auf diese Variation wirkt.",
+    "proposedDescriptionEn": "The learner can explain how mutation and recombination generate genetic variation and how selection acts on that variation.",
+    "currentRequires": [
+      "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+      "2d451684-6e53-565e-a987-f362da919d2c"
+    ],
+    "proposedRequiresForIndependentlyReviewedNonmolecularScope": [
+      "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+      "2d451684-6e53-565e-a987-f362da919d2c"
+    ],
+    "prerequisiteDecision": "Simple meiotic recombination/gamete knowledge is a defensible age-fit route; exact molecular mutation classification is not universally needed. An independent review must confirm this after checking source scopes, atomicity and frontier.",
+    "noClosureClaim": true
+  },
+  "componentSourceRouting": [
+    {
+      "sourceGoalId": "ni-biology-seki-kc2015-fw7-002-48e75da8",
+      "scope": "Earlier-grade undirected variation",
+      "decision": "A dedicated age-fit phenomenological variation description may be needed; do not make molecular ffef or class10 evolutionary selection compulsory for this earlier clause.",
+      "matchClaim": "open"
+    },
+    {
+      "sourceGoalId": "ni-biology-seki-kc2015-fw7-003-b3921cb7",
+      "scope": "Class10 nonmolecular mutation/recombination",
+      "mutationComponent": "proposed nonmolecular variation candidate or independently corrected/re-scoped 9f",
+      "recombinationComponent": "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+      "matchClaim": "partial components pending independent review; full 1d mitosis scope is not asserted by FW7 alone"
+    },
+    {
+      "sourceGoalId": "ni-biology-seki-kc2015-fw7-012-8ed51e46",
+      "scope": "Class10 mutation/recombination/selection evolutionary interplay",
+      "candidateTarget": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+      "matchClaim": "pending corrected-text/source review; do not certify extra allopatric/sympatric speciation, theory comparison or three selection modes from this clause"
+    },
+    {
+      "sourceGoalId": "ni-biology-seki-kc2015-fw6-008-d14910ea",
+      "scope": "Actual p.87 genetic recombination on the basis of meiosis",
+      "candidateTarget": "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+      "matchClaim": "existing partial component supported; not a new complete A/D/P review"
+    }
+  ],
+  "lowerStageVariationCandidate": {
+    "candidateKey": "phenomenological-genetic-variation",
+    "proposedTitleDe": "Genetische Variabilität phänomenologisch erklären",
+    "proposedTitleEn": "Explain genetic variability at a descriptive level",
+    "proposedDescriptionDe": "Die lernende Person kann an gegebenen Vererbungsbefunden und einfachen Modellen erklären, wie Mutationen neue erbliche Varianten und Rekombination neue Kombinationen vorhandener Erbanlagen hervorbringen.",
+    "proposedDescriptionEn": "The learner can use supplied inheritance results and simple models to explain how mutations produce new heritable variants and recombination produces new combinations of existing inherited factors.",
+    "sourceScope": "NI FW7.1 by end of class10, explicitly nonmolecular; not blanket earlier-grade or all-state approval.",
+    "requiresCandidate": [
+      "1d2b1038-dcd5-529a-b085-9e14f1d58c76",
+      "2d451684-6e53-565e-a987-f362da919d2c"
+    ],
+    "profile": {
+      "archetype": "concept",
+      "expectations": [
+        {
+          "id": "new-variants-versus-new-combinations",
+          "essentialUnderstandingDe": "Mutation kann neue erbliche Varianten hervorbringen; Rekombination kombiniert vorhandene erbliche Varianten neu. Diese Erklärung bleibt auf phänomenologisch-beschreibender Ebene und benötigt keine DNA-Sequenz oder Proteinbiosynthese.",
+          "essentialUnderstandingEn": "Mutation can produce new heritable variants; recombination produces new combinations of existing heritable variants. This explanation stays at a descriptive, observable level without DNA sequences or protein biosynthesis.",
+          "observablePerformanceDe": "Die lernende Person ordnet neue gegebene Vererbungsbefunde begründet einem neuen Variantenereignis oder einer Neukombination vorhandener Varianten zu und erzeugt eine eigene Erklärung.",
+          "observablePerformanceEn": "The learner uses reasons to identify a fresh supplied inheritance result as a new-variant event or a new combination of existing variants and produces an independent explanation."
+        },
+        {
+          "id": "undirected-variation",
+          "essentialUnderstandingDe": "Genetische Variabilität wird nicht zielgerichtet erzeugt, damit ein Individuum einen Bedarf erfüllt. Ein gegebener neuer Variantenbefund oder ein Kombinationsmodell ist von einer umweltbedingten individuellen Veränderung zu unterscheiden.",
+          "essentialUnderstandingEn": "Genetic variability is not purposefully produced to meet an individual’s needs. A supplied new-variant result or combination model must be distinguished from an environmentally caused individual change.",
+          "observablePerformanceDe": "Die lernende Person begründet eine frische Variationsmöglichkeit ohne Anpassungsabsicht, trennt gegebenen erblichen Befund von bloßer Umweltreaktion und nennt bei unzureichenden Daten die verbleibende Grenze.",
+          "observablePerformanceEn": "The learner justifies a fresh possibility of variation without a purpose-driven adaptation claim, distinguishes supplied heritable evidence from an environmental response and states limits when data are insufficient."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "new-variants-versus-new-combinations",
+          "undirected-variation"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "origin-of-variation",
+          "textDe": "Neues erbliches Variantenereignis und neue Kombination vorhandener Erbanlagen in verschiedenen Befunden vergleichen.",
+          "textEn": "Compare a new heritable-variant event with a new combination of existing inherited factors in different results."
+        },
+        {
+          "id": "representation-and-environment",
+          "textDe": "Gegebenen Vererbungsbefund und symbolisches Kombinationsmodell verwenden; einen explizit nicht erblichen Umweltbefund getrennt einordnen.",
+          "textEn": "Use a supplied inheritance result and a symbolic combination model; separately classify an explicitly nonheritable environmental response."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "heritable-new-variant-and-environment",
+          "taskDemandDe": "Ein neuer anonymer Pflanzenfall liefert den Befund: In einer Keimzelle ist eine zuvor in der Modellpopulation nicht vorkommende erbliche Variante entstanden; nachfolgende Vererbungsbeobachtungen bestätigen sie. Es gibt keine DNA-Sequenzdaten. Eine zweite Pflanze bildet im Schatten vorübergehend größere Blätter; das Material weist diese Änderung ausdrücklich als nicht erblich aus. Erkläre, welcher Fall die genetische Variabilität erweitert und warum keine bedarfsgerichtete Entstehung behauptet werden kann.",
+          "taskDemandEn": "A fresh anonymous plant case supplies this result: a new heritable variant not previously present in the model population arose in a gamete and was confirmed by subsequent inheritance observations. No DNA-sequence data are provided. A second plant temporarily develops larger leaves in shade; the material explicitly identifies this change as nonheritable. Explain which case expands genetic variability and why purpose-driven production cannot be inferred.",
+          "expectedPerformanceDe": "Die lernende Person erklärt das gegebene neue erbliche Variantenereignis als Mutation auf phänomenologischer Ebene und grenzt es von der ausdrücklich nicht erblichen Umweltreaktion ab. Sie behauptet keine bestimmte molekulare Mutation, Proteinwirkung oder zielgerichtete Bedarfsdeckung.",
+          "expectedPerformanceEn": "The learner explains the supplied new heritable-variant event as mutation at a descriptive level and distinguishes it from the explicitly nonheritable environmental response, without inventing a molecular mutation type, protein effect or purposeful fulfilment of a need.",
+          "understandingFocusDe": "Positive Erklärung der Variantenquelle mit begrenztem Befund.",
+          "understandingFocusEn": "Positive explanation of a source of variation with bounded evidence."
+        },
+        {
+          "id": "fresh-inherited-factor-combination",
+          "taskDemandDe": "Ein neues einfaches, ausdrücklich phänomenologisches Vererbungsmodell zeigt zwei unabhängig kombinierte Erbanlagen A/a und B/b. Die mögliche Weitergabe AB, Ab, aB und ab ist im Material angegeben; keine neuen Erbanlagen entstehen im Modell. Erzeuge zwei unterschiedliche, im Modell mögliche Nachkommenkombinationen aus gegebenen elterlichen Beiträgen und erkläre ihre Variabilität. Begründe den Unterschied zum neu entstandenen erblichen Variantenereignis im ersten Fall.",
+          "taskDemandEn": "A fresh simple explicitly descriptive inheritance model shows two independently combined inherited factors A/a and B/b. Possible contributions AB, Ab, aB and ab are supplied; no new inherited factors arise in the model. Construct two different possible offspring combinations from supplied parental contributions and explain their variability. Justify the difference from the new heritable-variant event in the first case.",
+          "expectedPerformanceDe": "Die lernende Person erzeugt unterschiedliche zulässige Kombinationen, beispielsweise AaBb aus AB/ab und AABb aus AB/Ab, und erklärt Variation durch Neukombination schon vorhandener Erbanlagen. Sie ordnet dies als Rekombination ein und unterstellt kein neues Mutationsereignis, keine DNA-Folge und kein vorgegebenes Ziel der Veränderung.",
+          "expectedPerformanceEn": "The learner constructs different allowed combinations, such as AaBb from AB/ab and AABb from AB/Ab, and explains variation by recombining existing inherited factors. This is identified as recombination without assuming a new mutation event, DNA sequence or predetermined purpose.",
+          "understandingFocusDe": "Frischer positiver Transfer von neu entstandener Variante zu Kombination bestehender Varianten.",
+          "understandingFocusEn": "Fresh positive transfer from a new variant to combinations of existing variants."
+        }
+      ]
+    },
+    "reviewRequired": "Independent semantic atomicity, source binding, task content, grade fit and frontier review. No stable goal ID minted and no extra goal closed."
+  },
+  "adoptionGate": "Keep the true required NI curriculum intent. Unsupported molecular ffef rows cannot be retained as source proof, but removal alone cannot be called complete until required age-fit coverage and usable frontier are proved. Preserve historical review files and protect current maturity floors."
+}

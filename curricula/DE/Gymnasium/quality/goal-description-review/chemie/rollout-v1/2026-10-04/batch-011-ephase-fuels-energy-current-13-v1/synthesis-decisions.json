@@ -1,0 +1,309 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-energy13-current-20261005-v1-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex current independent-review synthesis",
+  "synthesizedAt": "2026-10-04T22:48:12.000Z",
+  "batch": {
+    "batchId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004",
+    "batchManifestDigest": "sha256:268d45a3cd3e306c76259166f9ca5a5022e496a0b00f34ef17cfdf4f33290a14",
+    "configDigest": "sha256:6f0625df64bd522dbea307dc86ca198e577120acd6d74e4f54e588f5caa62455",
+    "bundleFingerprint": "sha256:8fc4dbcca9c5f9e45264276a893a3055773c4a728d40c49d1f361af825a208e3",
+    "bookDigest": "sha256:a3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a",
+    "reviewInputFingerprint": "sha256:31c976b508c71591eae939a91c61bc6f71308d5b654f8d3336501656e1e9a99b",
+    "dualSummaryDigest": "sha256:f81e063054fc60b189cfc729d9b4c97671b2ece361f4d2a656aaf834396ced64",
+    "canonicalLandscapeDigest": "sha256:e9567f2b1016b21df81b00a39f2d9be999d3618f5ec295d760535b71ef052425"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-a",
+      "campaignDigest": "sha256:5ddd1a8602cc4e864293a4e83d5e91764b3be6156cad94218b1b0b6062abd2cc",
+      "roundId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-a",
+      "independenceGroupId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-independent-a",
+      "reviewInputFingerprint": "sha256:31c976b508c71591eae939a91c61bc6f71308d5b654f8d3336501656e1e9a99b",
+      "batchId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:e313b005f2e9b216099a176bf4797d97da5e21c91f976c0887d17d41215a52a1",
+      "runId": "chemie-energy13-current-20261005-d-first-pass-a",
+      "runManifestDigest": "sha256:de1ce99c5ced7f4757b8628e2b70f785b1b2ad9cb03aac0b595a625c8187acfb",
+      "resultsDigest": "sha256:5000254178ac3bf0901000863200490d8cc2be68e70c148ede59dd0fd642cdef"
+    },
+    "second": {
+      "campaignId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-b",
+      "campaignDigest": "sha256:7ca614404061955bc64ce8f4d8d69193363c5b64c25b589fe130f9d58d727162",
+      "roundId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-b",
+      "independenceGroupId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-independent-b",
+      "reviewInputFingerprint": "sha256:31c976b508c71591eae939a91c61bc6f71308d5b654f8d3336501656e1e9a99b",
+      "batchId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:1f1dae1ccf7781c935ea514918b24063cfdadeb42c9204c4f774e302732f1b7d",
+      "runId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-b.codex-b-20261005-v1",
+      "runManifestDigest": "sha256:8d5677d7cfc4f770eb0e1885bb98de28c46fe2c2353d41c37b8a3fac4fd7df8e",
+      "resultsDigest": "sha256:3e0b0d276435d59bcc3e93aad2cab5c953626472ea02e550f85860d3d64b89ed"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-energy13-current-20261005-v1-synthesis-decision-001",
+      "goalId": "2be9e61a-88ea-56fe-8294-ee46e3c9a8ef",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ee501c90dd3c0f67ae21504b34e913fb224a245731a3b2089e90e38b348093e3",
+      "pageFingerprint": "sha256:61d3d3cb2bc61e868ed57a9ea5bebc1e8304ee8e86cf277d3cd1c728df52d76c",
+      "goalReviewContextFingerprint": "sha256:08400e5f91b4eb3f529fc456559c228df74d257e136acd4025b253dc1d37e2af",
+      "finalText": {
+        "titleDe": "Rohstoffvorkommen reflektieren",
+        "titleEn": "Reflect on raw material deposits",
+        "descriptionDe": "Die lernende Person kann Lagerstätten und Fördermethoden der Erdöl- und Erdgasgewinnung erläutern und dabei die begrenzte Verfügbarkeit, ökologische Risiken und geopolitische Abhängigkeiten begründet einordnen.",
+        "descriptionEn": "The learner can explain deposits and methods of petroleum and natural gas extraction and give a reasoned account of finite availability, ecological risks and geopolitical dependencies."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-energy13-current-20261005-d-first-pass-a.001",
+          "recordDigest": "sha256:e93f55d06a36a085d6d66475c8a059b01642f6eff969b8044c55ae2ba0e72e38"
+        },
+        "second": {
+          "recordId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-b.codex-b-20261005-v1.goal-001",
+          "recordDigest": "sha256:09a6c9026d4c058111e0dcf34970b056778f25ad354fb0df62c36893825823f6"
+        }
+      },
+      "rationaleDe": "Zwei unabhängige aktuelle, gegenüber der jeweils anderen Runde blinde Reviews behalten denselben DE/EN-Text und dieselben Ziel-, Seiten-, Bild- und Kontextbindungen. HE E.4#B01A01 trägt die gemeinsame Rohstoffreflexion einschließlich Endlichkeit, Risiken und geopolitischen Aspekten; B03 bleibt nur teilweise zugeordnet. DE/EN sind deckungsgleich. Die Fördertechnik dient derselben begründeten Einordnung, statt eine zweite unverbundene Routine zu eröffnen. Das Bild erklärt Lagerstätte und Förderung; Endlichkeit und Lieferabhängigkeiten benötigen ergänzende Fallinformationen. Der Kohlenwasserstoff-Vorgänger ist fachlich passend. Zweite Runde bestätigt diesen Umfang: DE und EN sind äquivalent. HE E.4 p36 deckt Lagerstätten, Förderung, Umwelt und geopolitische Aspekte direkt; der Methan/Propan/Butan/Isooctan-Abschnitt ist nur teilweise diesem Ziel zugeordnet. Die begründete Rohstoffeinordnung bildet eine zusammenhängende Anwendung; die Abbildung unterstützt Lagerstätten und Förderrisiken, ersetzt aber keine Begründung von Endlichkeit oder Geopolitik. Die zugehörigen P-v2-Erwartungen werden separat fachlich geprüft; kein menschlicher Freigabe- oder Erprobungsstatus wird behauptet.",
+      "rationaleEn": "Both independent current blind reviews keep the same bilingual wording and current goal, page, image and context bindings. Source scope, age-appropriate understanding and coupled atomic competence agree; no unresolved description dissent remains. Positive-understanding profiles are reviewed separately. This is machine AI synthesis only, with no human approval or trial claim."
+    },
+    {
+      "decisionId": "chemie-energy13-current-20261005-v1-synthesis-decision-002",
+      "goalId": "a0e8f0f2-24e2-5945-a511-597d32e73796",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e90b0cb7745cc72363379374d454734e2acea6bfc4b99fa3af3f7cb0e1f2268c",
+      "pageFingerprint": "sha256:3cf1a2c91d281c2027d0540a18f5aa855835402453a59251792ded7c0ab4d7ab",
+      "goalReviewContextFingerprint": "sha256:6b640e7121af5b36e2328c6500e8e8c74cdd2a8548d8bc191aadf1eb108adf51",
+      "finalText": {
+        "titleDe": "Fossile und nachwachsende Rohstoffe nachhaltig bewerten",
+        "titleEn": "Evaluate fossil and renewable raw materials sustainably",
+        "descriptionDe": "Die lernende Person kann die Bedeutung fossiler und nachwachsender Rohstoffe als Energieträger und Grundstoffe recherchieren und im Sinn nachhaltiger Entwicklung bewerten.",
+        "descriptionEn": "The learner can research the significance of fossil and renewable raw materials as energy carriers and base materials and evaluate them in terms of sustainable development."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-energy13-current-20261005-d-first-pass-a.005",
+          "recordDigest": "sha256:ae37de0f65ea15a6aeb9a60389b890315f85d06c6550d242b2167b0a684078bf"
+        },
+        "second": {
+          "recordId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-b.codex-b-20261005-v1.goal-005",
+          "recordDigest": "sha256:d8cb45b40348f7aeae140ee53a6c0835d6e518aceecfb6e3190228fb0b27aef4"
+        }
+      },
+      "rationaleDe": "Zwei unabhängige aktuelle, gegenüber der jeweils anderen Runde blinde Reviews behalten denselben DE/EN-Text und dieselben Ziel-, Seiten-, Bild- und Kontextbindungen. BY C12-GA.5.1 und EA-Parallele tragen die gemeinsame Nachhaltigkeitsbewertung. Recherche ist deren bereits vorausgesetzte Informationsbeschaffung; Energie- und Grundstoffrollen sind zwei Anwendungsfälle derselben Bewertung, keine separaten Fachroutinen. Die Bildtabelle macht Lebenszykluskriterien und die Grenze „nachwachsend“ sichtbar. DE/EN sind vollständig äquivalent; keine zusätzliche spezielle Technologie wird gefordert. Zweite Runde bestätigt diesen Umfang: DE und EN bilden BY C12-GA.5.1 und C12-EA.5.1 äquivalent ab. Recherche ist hier die methodische Grundlage derselben Nachhaltigkeitsbewertung; Energieträger und Grundstoffe sind zwei Nutzungsrollen dieses Bewertungsgegenstands. Der Quellen-Prerequisite und die Lebensweg-Abbildung liefern sinnvolle Unterstützung; eine quantitative Ökobilanz ist nicht Voraussetzung dieses qualitativen Ziels. Die zugehörigen P-v2-Erwartungen werden separat fachlich geprüft; kein menschlicher Freigabe- oder Erprobungsstatus wird behauptet.",
+      "rationaleEn": "Both independent current blind reviews keep the same bilingual wording and current goal, page, image and context bindings. Source scope, age-appropriate understanding and coupled atomic competence agree; no unresolved description dissent remains. Positive-understanding profiles are reviewed separately. This is machine AI synthesis only, with no human approval or trial claim."
+    },
+    {
+      "decisionId": "chemie-energy13-current-20261005-v1-synthesis-decision-003",
+      "goalId": "8b98d8ba-65c6-58d7-92f0-45f4b2456573",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1359765ff0295f6264ce062974fa0e78a5fe63c42a3cbc0928dc797298cfc90c",
+      "pageFingerprint": "sha256:4d05ed9b264e1c3468e2689a76ac0001871ef0d35d1b2fb2fa0be2c492769854",
+      "goalReviewContextFingerprint": "sha256:6d8bc7798e1f4bd064d00323bc8daffadddc3a3a15a9ed736e4210b6225dccdf",
+      "finalText": {
+        "titleDe": "Maßnahmen zu organischen Rohstoffen quellenkritisch ableiten",
+        "titleEn": "Derive measures for organic raw materials with source critique",
+        "descriptionDe": "Die lernende Person kann aus der Abhängigkeit von wenigen begrenzt verfügbaren organischen Rohstoffen Maßnahmen zur Einsparung und zur Erschließung alternativer Rohstoff- und Energiequellen ableiten, dabei Vertrauenswürdigkeit und Urheberschaft der verwendeten Quellen prüfen und Quellenangaben sowie Zitate kennzeichnen.",
+        "descriptionEn": "The learner can derive measures for saving resources and developing alternative raw-material and energy sources from dependence on a few limited organic raw materials, while checking source credibility and authorship and marking references and quotations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-energy13-current-20261005-d-first-pass-a.006",
+          "recordDigest": "sha256:3557f614f6e1b29ecc778f794ea2fedc300d3b3091957afec08d56fae9161c69"
+        },
+        "second": {
+          "recordId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-b.codex-b-20261005-v1.goal-006",
+          "recordDigest": "sha256:43be83f23382517fc9c214de23775b12615148b6902dc8d5ee30963377e98c84"
+        }
+      },
+      "rationaleDe": "Zwei unabhängige aktuelle, gegenüber der jeweils anderen Runde blinde Reviews behalten denselben DE/EN-Text und dieselben Ziel-, Seiten-, Bild- und Kontextbindungen. BY C12-GA.5.2 und EA-Parallele tragen die Handlungsableitung mit Urheberschaftsprüfung; Quellenbelege und Zitate sind zusätzlich im dort ausdrücklich referenzierten Kommunikationsbereich K12 und im direkten Quellen-Vorgänger verankert. Sie sind die Arbeitsweise derselben Handlungsempfehlung. Das Bild zeigt eine geeignete Argumentationskette, nicht den Beweis einer wirksamen Maßnahme. DE/EN erhalten denselben Sek-II-Umfang. Zweite Runde bestätigt diesen Umfang: BY C12-GA.5.2 und EA.5.2 tragen Maßnahmen und quellenkritische Urheberschaft; C12 1.3 ergänzt das Belegen und Kennzeichnen. Die Beschreibung bildet eine quellenbelegte Handlungsempfehlung ab. Die allgemeine Quellenkompetenz ist ein Prerequisite; ihre Anwendung ist keine zweite unabhängige Inhaltskompetenz. Der Bildpfad unterstützt die Argumentationsstruktur, liefert aber keinen Nachweis für die Wirksamkeit konkreter Maßnahmen. Die zugehörigen P-v2-Erwartungen werden separat fachlich geprüft; kein menschlicher Freigabe- oder Erprobungsstatus wird behauptet.",
+      "rationaleEn": "Both independent current blind reviews keep the same bilingual wording and current goal, page, image and context bindings. Source scope, age-appropriate understanding and coupled atomic competence agree; no unresolved description dissent remains. Positive-understanding profiles are reviewed separately. This is machine AI synthesis only, with no human approval or trial claim."
+    },
+    {
+      "decisionId": "chemie-energy13-current-20261005-v1-synthesis-decision-004",
+      "goalId": "4663fd80-1618-5211-8020-18f4b80979fc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fb38b8f392efc4273a1365c3956204ccae234e2a86ce893f16ceb1521bb20fa9",
+      "pageFingerprint": "sha256:e095ae9cb782e143ce77d5539c762534d70851fd8c8d6c9caf091a1bec04c566",
+      "goalReviewContextFingerprint": "sha256:c9fb41d808c467b3d4008ebb45ff4c8d277b427e618edba11179540730c72355",
+      "finalText": {
+        "titleDe": "Standard-Reaktionsenthalpien aus Bildungsenthalpien berechnen",
+        "titleEn": "Calculate standard reaction enthalpies from formation enthalpies",
+        "descriptionDe": "Die lernende Person kann Reaktionen als exotherm oder endotherm charakterisieren, indem sie Standard-Reaktionsenthalpien aus tabellierten molaren Standard-Bildungsenthalpien berechnet und das Vorzeichen fachlich deutet.",
+        "descriptionEn": "The learner can characterize reactions as exothermic or endothermic by calculating standard reaction enthalpies from tabulated molar standard enthalpies of formation and interpreting the sign scientifically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-energy13-current-20261005-d-first-pass-a.009",
+          "recordDigest": "sha256:c5340190881b4693b800ca4398bd149afa09b97f2031513a49ed66d5c396e6af"
+        },
+        "second": {
+          "recordId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-b.codex-b-20261005-v1.goal-009",
+          "recordDigest": "sha256:b17efbe16faa2e09892ec9141552fbc78ecb56f5f3af7f216595bbb916a233a6"
+        }
+      },
+      "rationaleDe": "Zwei unabhängige aktuelle, gegenüber der jeweils anderen Runde blinde Reviews behalten denselben DE/EN-Text und dieselben Ziel-, Seiten-, Bild- und Kontextbindungen. BY C12-GA.5.5 und EA-Parallele tragen die Berechnung zur Exo-/Endotherm-Einordnung; Rechnen und fachliches Deuten bilden ein Ziel. Der direkte Hess-/Kalorimetrie-Vorgänger grenzt Grundverfahren ab. Das Bildbeispiel rechnet Methan mit flüssigem Wasser konsistent zu −890,3 kJ je dargestelltem Reaktionsumsatz; es darf nicht als nachgewiesene Eigenleistung zählen. DE/EN sind äquivalent. Zweite Runde bestätigt diesen Umfang: BY C12-GA.5.5 und EA.5.5 tragen Rechnen und Charakterisieren, die aktuelle Beschreibung nennt zusätzlich die notwendige fachliche Vorzeichendeutung. Dies ist eine gekoppelte quantitative Interpretation, keine zweite Routine. DE und EN sind äquivalent. Die Methanrechnung im Bild ist stöchiometrisch und rechnerisch korrekt für flüssiges Wasser; das Bild ist ein durchgearbeitetes Lehrbeispiel, kein eigenständiger Leistungsnachweis. Die zugehörigen P-v2-Erwartungen werden separat fachlich geprüft; kein menschlicher Freigabe- oder Erprobungsstatus wird behauptet.",
+      "rationaleEn": "Both independent current blind reviews keep the same bilingual wording and current goal, page, image and context bindings. Source scope, age-appropriate understanding and coupled atomic competence agree; no unresolved description dissent remains. Positive-understanding profiles are reviewed separately. This is machine AI synthesis only, with no human approval or trial claim."
+    },
+    {
+      "decisionId": "chemie-energy13-current-20261005-v1-synthesis-decision-005",
+      "goalId": "3c9bfa10-9a13-50cc-96c8-6213e28d6c54",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:53ce6066e98e374b7174c7ac15147e0f377d53433c2050ca380f1c40cb32fa73",
+      "pageFingerprint": "sha256:269fae1fae4c8b81b260244a1917dc7684a89f87ac5d9e0a32d89e8d048088cb",
+      "goalReviewContextFingerprint": "sha256:0829053e710cfbb29ab36c4aa24dea766cc8d7116bdab35ff2a2753a9c3d7017",
+      "finalText": {
+        "titleDe": "Halogenkohlenwasserstoffe quellenkritisch bewerten",
+        "titleEn": "Evaluate halogenated hydrocarbons with source critique",
+        "descriptionDe": "Die lernende Person kann den Einsatz von Halogenkohlenwasserstoffen in Alltag und Technik recherchieren, Auswirkungen auf Mensch und Umwelt bei Freisetzung abwägen, die Vertrauenswürdigkeit verwendeter Informationen prüfen, Quellen belegen und Zitate kennzeichnen.",
+        "descriptionEn": "The learner can research the use of halogenated hydrocarbons in everyday life and technology, weigh impacts on humans and the environment if released, check the credibility of information used, cite sources, and mark quotations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-energy13-current-20261005-d-first-pass-a.010",
+          "recordDigest": "sha256:7655e1259ca0a82e057608b6da339e711f769e7d93a95cb9ee37e7403f6d2298"
+        },
+        "second": {
+          "recordId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-b.codex-b-20261005-v1.goal-010",
+          "recordDigest": "sha256:68d756d480d6ecb7115052ee4e7671baf1785d2d181114411229bc0508710cb9"
+        }
+      },
+      "rationaleDe": "Zwei unabhängige aktuelle, gegenüber der jeweils anderen Runde blinde Reviews behalten denselben DE/EN-Text und dieselben Ziel-, Seiten-, Bild- und Kontextbindungen. BY C12-GA.5.7 und EA.5.13 tragen dieselbe quellenkritische Anwendungseinschätzung. Recherche, Quellenbelege und Zitate sind deren methodische Schritte; die Quelle selbst verbindet sie mit der Bewertung. Die Bildseite stellt frühere und heutige Anwendungen vereinfacht dar und ersetzt keine stoffbezogenen Wirkungsdaten. DE/EN sind äquivalent; aus dem Halogenalkan-Reaktionsvorgänger folgt keine zusätzliche Mechanismusprüfung. Zweite Runde bestätigt diesen Umfang: BY C12-GA.5.7 und EA.5.13 decken Recherche, Abwägung und Quellenkennzeichnung ausdrücklich als zusammenhängende Bewertungsleistung. Die Quellen-Prerequisites sind inhaltlich passend, der Halogenalkan-Prerequisite liefert chemischen Kontext. Die aktuelle DE/EN-Fassung ist äquivalent. Die Abbildung benennt typische Nutzungen und Prüfhandlungen, darf aber nicht als pauschaler Beweis für die Vertrauenswürdigkeit jedes Fachbuchs oder Journals verwendet werden. Die zugehörigen P-v2-Erwartungen werden separat fachlich geprüft; kein menschlicher Freigabe- oder Erprobungsstatus wird behauptet.",
+      "rationaleEn": "Both independent current blind reviews keep the same bilingual wording and current goal, page, image and context bindings. Source scope, age-appropriate understanding and coupled atomic competence agree; no unresolved description dissent remains. Positive-understanding profiles are reviewed separately. This is machine AI synthesis only, with no human approval or trial claim."
+    },
+    {
+      "decisionId": "chemie-energy13-current-20261005-v1-synthesis-decision-006",
+      "goalId": "b759d50d-0e82-5b10-89a2-fe5271106e50",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ba2c0bf28adf64d8b55b6e81294c95b83a23c82b4a5ba5aab87a1512556ee613",
+      "pageFingerprint": "sha256:0025da00c295144dbef25a0282c2372604b892800714bd57fb4681d31bd753d8",
+      "goalReviewContextFingerprint": "sha256:11e7f016e6bc2dc65b651075cf0f18de09f5de8a240099faf227796246a8268b",
+      "finalText": {
+        "titleDe": "Brennstoffzellen verstehen",
+        "titleEn": "Understand fuel cells",
+        "descriptionDe": "Die lernende Person kann die Vorgänge an den Elektroden einer Wasserstoff-Sauerstoff-Brennstoffzelle beschreiben, die ablaufenden Reaktionen geeignet darstellen und ihren Einsatz als Energiewandler mit Wasserstoff als gespeichertem Energieträger erläutern.",
+        "descriptionEn": "The learner can describe the electrode processes in a hydrogen–oxygen fuel cell, represent the chemical reactions appropriately and explain its use as an energy converter with hydrogen as the stored energy carrier."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-energy13-current-20261005-d-first-pass-a.011",
+          "recordDigest": "sha256:43f13ce21663fe13df2b2778a6c7cecb9118adac70ebb00316a8a9bee9eab8a4"
+        },
+        "second": {
+          "recordId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-b.codex-b-20261005-v1.goal-011",
+          "recordDigest": "sha256:52c2cb0892dc4c44a5dac8e313146b8b5b5f5bf5016fa6f6a2fffabea43bea19"
+        }
+      },
+      "rationaleDe": "Zwei unabhängige aktuelle, gegenüber der jeweils anderen Runde blinde Reviews behalten denselben DE/EN-Text und dieselben Ziel-, Seiten-, Bild- und Kontextbindungen. HE E.5#B01A01 bleibt zu Recht partial: Wasserstoffgewinnung durch Elektrolyse ist nicht Teil dieses Ziels. BY C10.5.7 trägt Zellfunktion und geeignete Reaktionsdarstellung; Wortgleichheit aller Brennstoffzelltypen wird nicht behauptet. Der aktuelle DE/EN-Text trennt Speicher und Wandler korrekt und bleibt beim selben Zellprinzip. Das gerenderte PEM-Bild enthält konsistente Flussrichtungen und ausgeglichene Reaktionen. Jüngstes belegtes Niveau ist BY Jahrgang 10, mit vereinfachter Erklärung statt zusätzlicher Thermodynamik. Zweite Runde bestätigt diesen Umfang: DE/EN sind äquivalent und die Elektroden-, Gesamtreaktionen sowie Pfeile im PEM-Bild sind korrekt. HE E.5 p36 ist hier bewusst nur partiell gemappt: Wasserstoffgewinnung durch Elektrolyse liegt außerhalb dieses Ziels. BY C10.5.7 trägt Funktionsweise und geeignete Reaktionsdarstellung; dessen Methanol/Ethanol-Inhalte dürfen nicht als vollständig durch ein reines Wasserstoffziel erledigt gelten. Elektrodenchemie und Energiewandlerrolle erklären eine gemeinsame Funktionskompetenz, mit dem Galvanik-Prerequisite für Jahrgang 10 qualitativ zugänglich. Die zugehörigen P-v2-Erwartungen werden separat fachlich geprüft; kein menschlicher Freigabe- oder Erprobungsstatus wird behauptet.",
+      "rationaleEn": "Both independent current blind reviews keep the same bilingual wording and current goal, page, image and context bindings. Source scope, age-appropriate understanding and coupled atomic competence agree; no unresolved description dissent remains. Positive-understanding profiles are reviewed separately. This is machine AI synthesis only, with no human approval or trial claim."
+    },
+    {
+      "decisionId": "chemie-energy13-current-20261005-v1-synthesis-decision-007",
+      "goalId": "27e4fe9b-4796-579b-8f7d-06c65fb600c0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fb1c97896d2356dbe7b9eb3e157a56780835d20e1e6a31a46727482b9e585790",
+      "pageFingerprint": "sha256:144fb8a7e0a7b65a8dc709cf62d7c72fa0b7d490a7831e85fa1cfc8abc8daab5",
+      "goalReviewContextFingerprint": "sha256:59a7ed3486cab1fdee0a18ad95bfa6d63697f5683572dcc35bd26360b073b15b",
+      "finalText": {
+        "titleDe": "Blei-Akkumulator beschreiben",
+        "titleEn": "Describe lead accumulator",
+        "descriptionDe": "Die lernende Person kann die elektrochemischen Prozesse im Blei-Akkumulator qualitativ deuten und Chancen sowie Grenzen als Energiespeicher benennen.",
+        "descriptionEn": "The learner can qualitatively interpret the electrochemical processes in the lead accumulator and name opportunities and limits as energy storage."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-energy13-current-20261005-d-first-pass-a.012",
+          "recordDigest": "sha256:35cf7494af172bd5c06d60a46757691eee895a5746bb9d232ca39c7fa10022d7"
+        },
+        "second": {
+          "recordId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-b.codex-b-20261005-v1.goal-012",
+          "recordDigest": "sha256:8c05e5311ec02b533bdb328d01286f7282c84dff4d8a1b0d83618e7ecaea6d4a"
+        }
+      },
+      "rationaleDe": "Zwei unabhängige aktuelle, gegenüber der jeweils anderen Runde blinde Reviews behalten denselben DE/EN-Text und dieselben Ziel-, Seiten-, Bild- und Kontextbindungen. HE E.5#B03A01 trägt die vereinfachte elektrochemische Deutung. Chancen und Grenzen sind hier eine knappe Nutzungszuordnung desselben Speichers, keine umfassende Umweltbilanz. Das aktuelle Bild trennt Platten, zeigt die richtigen äußeren Elektronenrichtungen in beiden Betriebsarten und nutzt ausdrücklich qualitative Stoffpfeile. DE/EN sind äquivalent; das qualitative Niveau benötigt keine vollständigen Elektroden-Reaktionsgleichungen. Zweite Runde bestätigt diesen Umfang: HE E.5 p36 trägt den vereinfachten Aufbau und die Funktionsweise bezogen auf Blei-Ionen. Die DE/EN-Beschreibung ist äquivalent und qualitativ; Energie-Speicherchancen sind hier an diese Funktionskompetenz gebunden. Das aktuelle Bild zeigt getrennte Platten, korrekt umgekehrten äußeren Elektronenfluss und die qualitativen Stoffumwandlungen. Säure- und bleihaltige Systeme werden ausschließlich über Daten/Modelle oder beaufsichtigten Unterricht bearbeitet. Die zugehörigen P-v2-Erwartungen werden separat fachlich geprüft; kein menschlicher Freigabe- oder Erprobungsstatus wird behauptet.",
+      "rationaleEn": "Both independent current blind reviews keep the same bilingual wording and current goal, page, image and context bindings. Source scope, age-appropriate understanding and coupled atomic competence agree; no unresolved description dissent remains. Positive-understanding profiles are reviewed separately. This is machine AI synthesis only, with no human approval or trial claim."
+    },
+    {
+      "decisionId": "chemie-energy13-current-20261005-v1-synthesis-decision-008",
+      "goalId": "6b82f80e-f493-5e6b-9709-2d4eca98c137",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:59baf691a10b091b7006d5438e6a0d8012fe8250bbc0dfcb65684c75058fd74a",
+      "pageFingerprint": "sha256:1a3e0b3a56a9a3ef9bc0bea44242fb6654fa7c03c99aa1db26c00248dfa31051",
+      "goalReviewContextFingerprint": "sha256:f5f1d7cd8cfff1ea55ad57f0847f0319226ab2a0eaa4963601d026a410699480",
+      "finalText": {
+        "titleDe": "Lithium-Ionen-Akkumulator einordnen",
+        "titleEn": "Classify lithium-ion accumulator",
+        "descriptionDe": "Die lernende Person kann Aufbau und Funktionsweise eines Lithium-Ionen-Akkus in vereinfachter Form erläutern und Nutzungsmöglichkeiten nennen.",
+        "descriptionEn": "The learner can explain the structure and function of a lithium-ion battery in simplified form and name possible uses."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-energy13-current-20261005-d-first-pass-a.013",
+          "recordDigest": "sha256:02b7ec5fc17064a1a07ead254a74bfd0bc2fab588dca50f4381c911f8695f74c"
+        },
+        "second": {
+          "recordId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-b.codex-b-20261005-v1.goal-013",
+          "recordDigest": "sha256:f518f082438a17501bf661df358ba10c928e1559d345e5f7d4599e4b11851577"
+        }
+      },
+      "rationaleDe": "Zwei unabhängige aktuelle, gegenüber der jeweils anderen Runde blinde Reviews behalten denselben DE/EN-Text und dieselben Ziel-, Seiten-, Bild- und Kontextbindungen. HE E.5#B02A01 trägt ausdrücklich das vereinfachte Aufbau-/Funktionsmodell. Beides ist ein gemeinsamer Struktur-Funktionszusammenhang; die Nutzung ist nur Anwendung desselben Speichers. Der LK-Nachfolger zur Fahrzeuganalyse bleibt getrennt. Die gerenderte Bildseite zeigt konsistente Elektronen- und Lithium-Ionenrichtungen beim Laden/Entladen; über bestimmte Elektrodenchemien hinaus werden keine universal gültigen Details behauptet. DE/EN sind äquivalent. Zweite Runde bestätigt diesen Umfang: HE E.5 p36 trägt Aufbau und vereinfachte Funktionsweise. Die Beschreibungen sind äquivalent; die Nutzungsbeispiele konkretisieren dieselbe Funktionskompetenz. Das Bild trennt Ionen- und Elektronenwege und kehrt ihre Richtung beim Laden korrekt um. Detaillierte Interkalationsgleichungen, Zellmaterial-Optimierung oder der LK-Nachfolger zur Fahrzeuganalyse sind für dieses qualitative Ziel nicht erforderlich. Die zugehörigen P-v2-Erwartungen werden separat fachlich geprüft; kein menschlicher Freigabe- oder Erprobungsstatus wird behauptet.",
+      "rationaleEn": "Both independent current blind reviews keep the same bilingual wording and current goal, page, image and context bindings. Source scope, age-appropriate understanding and coupled atomic competence agree; no unresolved description dissent remains. Positive-understanding profiles are reviewed separately. This is machine AI synthesis only, with no human approval or trial claim."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "8ceb1749-fce0-584f-a2b8-0a309282329a",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "rationaleDe": "Offen: Runde A split_review; Runde B split_review. HE E.4#B02A01 nennt beide Verfahren, garantiert aber keine semantische Atomarität. Das aktuelle Ziel fordert zwei unabhängig prüfbare Erklärungsroutinen: Trennung eines Gemischs und Bindungsumbau. Die PDF-Seite zeigt entsprechend zwei eigenständige Panels. Ein bloßes Umformulieren als Vergleich würde die getrennten Leistungen verdecken. Entwicklerprüfung der Zielaufteilung ist nötig; keine Graphänderung wird hier vorgenommen. DE/EN sind äquivalent. HE E.4 p36 nennt beide Verfahren in einem Quellenabschnitt, macht sie damit aber nicht semantisch atomar. Der aktuelle Text fordert mit „sowie“ zwei unabhängig prüfbare Routinen; Trennung über Siedebereiche und chemischer Bindungsumbau können unabhängig beherrscht oder verfehlt werden. Die fachlich passende Gegenüberstellung im Bild belegt ebenfalls zwei Verfahren. AGENTS 7.1 verlangt eine fachliche Split-Prüfung; eine bloße sprachliche Überarbeitung würde diese Entscheidung verdecken. Ein Gegenbefund wird nicht durch Mehrheitsentscheid oder Hash-Aktualisierung aufgehoben. Gezielte fachliche Korrektur bzw. Aufteilung und aktuelle unabhängige Nachprüfung stehen aus.",
+      "rationaleEn": "Open: round A split_review, round B split_review. Substantive atomicity or wording findings remain unresolved. No majority vote or hash refresh overrides them; a targeted substantive revision or split and current independent follow-up review are still required."
+    },
+    {
+      "goalId": "8ece9beb-9458-5ea1-8e45-9be04670f464",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "Offen: Runde A revise; Runde B revise. HE E.4#B04A01 stützt einen integrierten energetischen Verbrennungsvergleich. Die gemeinsame Bezugsbasis ist eine notwendige Präzisierung des bereits behaupteten Vergleichs, keine neue Thermodynamikroutine. DE/EN sind äquivalent, aber „im Kontext diskutieren“ lässt diese Bedingung offen. Auf der Bildseite steht zudem Ethanol, das kein Kohlenwasserstoff ist; die CO2-Rangfolge nennt keine Bezugsbasis. Deshalb keine vollständige Bilddeckung behaupten und diese Darstellungen nicht als unabhängige Leistung werten. HE E.4 p36 trägt den energetischen Verbrennungsvergleich. „Kennzahlen im Kontext diskutieren“ lässt offen, ob vergleichbare Größen vorliegen; die gemeinsame Bezugsbasis präzisiert das bereits beanspruchte Vergleichen. Die Änderung erweitert das Ziel nicht. Das Bild enthält Ethanol, das kein Kohlenwasserstoff ist, und eine CO2-Rangfolge ohne ausgewiesene Bezugsbasis; diese Bildgrenzen müssen getrennt geklärt werden. Ein Gegenbefund wird nicht durch Mehrheitsentscheid oder Hash-Aktualisierung aufgehoben. Gezielte fachliche Korrektur bzw. Aufteilung und aktuelle unabhängige Nachprüfung stehen aus.",
+      "rationaleEn": "Open: round A revise, round B revise. Substantive atomicity or wording findings remain unresolved. No majority vote or hash refresh overrides them; a targeted substantive revision or split and current independent follow-up review are still required."
+    },
+    {
+      "goalId": "b95cdf98-fc97-5a94-b133-878922d28156",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "Offen: Runde A revise; Runde B revise. BY C9-NTG.5.5 beziehungsweise die parallele C10-Stelle verlangen eine Beurteilung der Bedeutung. Die aktuelle Beschreibung prüft nur Zuordnung und ökologische Abschätzung; sie lässt den Nutzen als Grundlage der behaupteten Bewertung offen. Eine lokale Präzisierung erhält dieselbe Anwendungskompetenz und das jüngste Sek-I-Niveau. Das Bild unterstützt Anwendungen und Umweltfolgen, ist aber kein Bewertungsnachweis. DE/EN sind äquivalent. BY C9-NTG.5.5 und C10-HG/SG/MuG/WWG/SWG.3.5 verlangen das Beurteilen der Bedeutung und das Abschätzen der Umweltfolgen. Der aktuelle erste Teilsatz reduziert die Bedeutung auf bloßes Zuordnen zu Anwendungen, während Titel und Quellen ein Urteil verlangen. Die lokale Änderung stellt diese schon beanspruchte Kompetenz wieder her. Anwendungen und Folgen sind Teile einer zusammenhängenden Produktbewertung, keine unabhängigen Routineziele; der Anspruch bleibt für Jahrgang 9/10 qualitativ. Ein Gegenbefund wird nicht durch Mehrheitsentscheid oder Hash-Aktualisierung aufgehoben. Gezielte fachliche Korrektur bzw. Aufteilung und aktuelle unabhängige Nachprüfung stehen aus.",
+      "rationaleEn": "Open: round A revise, round B revise. Substantive atomicity or wording findings remain unresolved. No majority vote or hash refresh overrides them; a targeted substantive revision or split and current independent follow-up review are still required."
+    },
+    {
+      "goalId": "4928d5d1-e790-5883-9349-3b03a1c63b99",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "rationaleDe": "Offen: Runde A revise; Runde B keep. BY C12-GA.5.3 und EA-Parallele unterscheiden ausdrücklich Änderungen. Das aktuelle „innere Energie bzw. Reaktionsenergie“ kann Zustandsgröße und Änderung gleichsetzen. Die lokale Korrektur benennt diese Änderungen und erhält den einen zusammenhängenden Abgrenzungszweck. Das Bild ist für reine Volumenarbeit passend; Qv=ΔU und Qp=ΔH benötigen diese Arbeitsannahme. DE/EN sind derzeit gleichartig unscharf. BY C12-GA.5.3 und EA.5.3 formulieren ausdrücklich die gekoppelte Abgrenzung. Systemtyp und Wärme/Arbeit sind die Begründung derselben thermodynamischen Unterscheidung; deshalb kein Split allein wegen mehrerer Verben. DE/EN stimmen überein. Die Bildformeln passen unter den benannten Bedingungen konstanten Volumens bzw. konstanten Drucks und ausschließlicher Volumenarbeit; die qualitative Erklärung bleibt gegenüber bloßer Formelreproduktion entscheidend. Ein Gegenbefund wird nicht durch Mehrheitsentscheid oder Hash-Aktualisierung aufgehoben. Gezielte fachliche Korrektur bzw. Aufteilung und aktuelle unabhängige Nachprüfung stehen aus.",
+      "rationaleEn": "Open: round A revise, round B keep. Substantive atomicity or wording findings remain unresolved. No majority vote or hash refresh overrides them; a targeted substantive revision or split and current independent follow-up review are still required."
+    },
+    {
+      "goalId": "3e433dae-99f9-5a95-ad63-d5fa0b5f6836",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "rationaleDe": "Offen: Runde A revise; Runde B keep. BY C12-GA.5.4 und EA-Parallele tragen einen einheitlichen bindungsbezogenen Erklärungszweck. Die unqualifizierte Einstufung von „Systemen“ kann eine absolute energiereich/energiearm-Eigenschaft nahelegen; die bereits behauptete Reaktionsbetrachtung liefert den nötigen Bezug. Die Bildpanels unterstützen die richtige Richtung von Bindungsbruch und Bindungsbildung; ihre Bindungsenergiesumme ist ein vereinfachtes Modell und keine allgemeine exakte Berechnung für alle Phasen. BY C12-GA.5.4 und EA.5.4 tragen die gesamte aktuelle Kompetenz. Der bindungsbezogene Prerequisite und die Energieabgrenzung sind passend. Die Beschreibungen sind äquivalent und verlangen Begründung, nicht nur Berechnung. Die Energielagen im Bild sind als relativer Vergleich innerhalb der jeweiligen Reaktion zu lesen; eine zusätzliche quantitative Bindungsenergie-Rechenpflicht wäre eine Ausweitung über die BY-Je-desto-Beziehungen hinaus. Ein Gegenbefund wird nicht durch Mehrheitsentscheid oder Hash-Aktualisierung aufgehoben. Gezielte fachliche Korrektur bzw. Aufteilung und aktuelle unabhängige Nachprüfung stehen aus.",
+      "rationaleEn": "Open: round A revise, round B keep. Substantive atomicity or wording findings remain unresolved. No majority vote or hash refresh overrides them; a targeted substantive revision or split and current independent follow-up review are still required."
+    }
+  ],
+  "manifestFingerprint": "sha256:dcca64427c37ab8760342d0257141e122a223a5c44616d4a98e16acc52ba5e1d"
+}

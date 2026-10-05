@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-05T00:59:03.065610+00:00",
+  "independentReviewer": "codex-chemie-8ceb-split-review-a",
+  "status": "both_child_candidate_profiles_PASS_with_current_binding_and_source_scope_HOLD",
+  "frozenDBeforeP": {
+    "path": "description-source-verdict.frozen.json",
+    "sha256": "sha256:0ecf8da23726a3c7bab04368790022508f57b940420937a06dc8b14c05120137",
+    "unchangedAfterPRead": true
+  },
+  "input": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-8ceb-split-scope-preservation-candidate-v1/positive-evidence.full.candidates.json",
+    "sha256": "sha256:1525e3c2be7354ebcc5c54dac9b66b7e447f56a4b12a99bd85b00b80bc15d2c8"
+  },
+  "goals": [
+    {
+      "goalId": "5db9ba57-6a80-56db-8b9d-e8ca4ac41855",
+      "positiveUnderstandingDecision": "PASS_candidate_profile_content",
+      "evidenceLevelAccepted": "E1",
+      "maximumClaimScopeAccepted": "G1",
+      "freshBilingualCasesReviewed": 2,
+      "reason": "Both cases require explanation of physical enrichment by volatility with unchanged molecular identities. The first provided oil-column model asks own height assignment, causal evaporation/condensation explanation and rejection of molecule creation. The second transfers to two isomers with supplied normal boiling data and a missing-light-component feed. Same carbon count is deliberately insufficient; purity is not claimed. This is independent model reasoning rather than copied refinery labels.",
+      "caseAssessments": [
+        {
+          "id": "fractionated-oil-paper-column",
+          "decision": "PASS",
+          "providedHelp": [
+            "Hot-bottom/cool-top column gradient",
+            "Supplied three boiling ranges and uses",
+            "Fractions explicitly remain mixtures"
+          ],
+          "independentPerformance": [
+            "Assign draw-off heights from boiling behaviour",
+            "Explain enrichment through repeated evaporation/condensation",
+            "Justify unchanged molecules; reject production of new short chains"
+          ],
+          "limit": "Reciting already supplied uses or copying the parent overview is assisted and insufficient. No sharp pure-product claim, apparatus construction or real experiment follows."
+        },
+        {
+          "id": "fresh-isomer-and-missing-light-fraction",
+          "decision": "PASS",
+          "providedHelp": [
+            "Isomer names and common molecular formula C8H18",
+            "Approximate normal boiling points126°C and99°C",
+            "Feed lacks the stipulated light range"
+          ],
+          "independentPerformance": [
+            "Infer higher enrichment from lower boiling behaviour despite same molecular formula",
+            "Reject creation of missing feed molecules by separation alone",
+            "Explain model limitation without assuming completely pure fractions"
+          ],
+          "limit": "Given normal boiling points are model data, not recall; same pressure and an appropriate column are implicit in the supplied normal-boiling comparison. No VLE/yield calculation is required."
+        }
+      ]
+    },
+    {
+      "goalId": "7c22f436-e550-5b0b-85ae-a073b0c50418",
+      "positiveUnderstandingDecision": "PASS_candidate_profile_content",
+      "evidenceLevelAccepted": "E1",
+      "maximumClaimScopeAccepted": "G1",
+      "freshBilingualCasesReviewed": 2,
+      "reason": "Both cases distinguish chemical creation of new molecule identities from sorting and ask conservation reasoning. Correct C10/C12 model combinations conserve C and H; the incorrect sole-input C12 proposal has two excess H atoms and requires additional material. A given equation is assistance rather than uncued equation formulation. Thermal energy input is not incorrectly universalized into every reaction enthalpy.",
+      "caseAssessments": [
+        {
+          "id": "decane-supplied-molecule-model",
+          "decision": "PASS",
+          "providedHelp": [
+            "Full C10H22→C8H18+C2H4 equation",
+            "Structural drawings including alkane chain and ethene double bond"
+          ],
+          "independentPerformance": [
+            "Explain changed molecules by bond rearrangement at high temperature",
+            "Classify shown alkane/alkene products",
+            "Check total10C and22H and reject pure boiling-point sorting"
+          ],
+          "limit": "Equation copying cannot count as independent equation formulation. Supplied one-pair model is not the unique or complete industrial mixture."
+        },
+        {
+          "id": "fresh-product-mixture-atom-check",
+          "decision": "PASS",
+          "providedHelp": [
+            "C12H26 input and both proposed formula/structure combinations",
+            "Several pathways in an actual cracker"
+          ],
+          "independentPerformance": [
+            "Justify A as12C/26H conserved",
+            "Identify two excess H atoms in B and require extraH source rather than creating atoms",
+            "Classify supplied butene by double bond",
+            "Reject exclusive-product inference"
+          ],
+          "limit": "For the explicitly sole-input simplified split B is impossible; hydrogen transfer from other inputs/pathways would be an additional material source and is not silently ruled out for real mixtures. No radical mechanism, plant design or yield computation."
+        }
+      ]
+    }
+  ],
+  "bilingualAssessment": "Full DE/EN expectations, cases, supplied facts and claim limits agree. Thermal/physical distinction, provided-help conditions and freshness are retained in both languages.",
+  "assistanceBoundary": "Any generated child illustration or kept parent overview that shows correct positions/molecules is prior assistance. A displayed diagram or supplied equation cannot itself be counted as independently produced performance; require the fresh causal explanation and altered-case reasoning specified by the profiles.",
+  "independentCurricularReviewScope": "Exactly these two child profiles, after the separate frozen D/source verdict. No review or reapproval of historical profiles for other Chemistry goals.",
+  "schemaReceipt": "P-contract-check.receipt.json",
+  "sourceIntegrationHoldCarriedWithoutChangingFrozenD": true,
+  "actualImageBindingsPending": true,
+  "actualCanonicalPageContextBindingsPending": true,
+  "learnerDemonstrationsObserved": false,
+  "sourceFullDocumentApprovalClaimed": false,
+  "currentStrictClosuresClaimed": 0,
+  "humanApprovalClaimed": false,
+  "humanTrialClaimed": false
+}

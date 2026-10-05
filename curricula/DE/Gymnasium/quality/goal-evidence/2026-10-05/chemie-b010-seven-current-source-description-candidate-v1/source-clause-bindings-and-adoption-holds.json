@@ -1,0 +1,411 @@
+{
+  "schemaVersion": 1,
+  "recordStatus": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "observedAt": "2026-10-05T05:11:20.400619+00:00",
+  "canonicalLandscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "authorInformedByExistingB010Findings": true,
+  "independentReview": false,
+  "PRead": false,
+  "operativeMutations": false,
+  "strictClosureAdded": 0,
+  "sourceLandscapeIds": {
+    "HE": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+    "BY": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808"
+  },
+  "primarySourceReading": {
+    "HE": {
+      "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-chemie.pdf",
+      "sha256": "f0a2c3795fcbcad1fee8d92d7ab9bc26810609bee0ef1fbd02c830e171220d2f",
+      "officialUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf",
+      "actuallyReadPhysicalPages": [
+        19,
+        22,
+        25,
+        26
+      ],
+      "correspondingPrintedPages": [
+        18,
+        21,
+        24,
+        25
+      ],
+      "method": "local pdftoppm rendered pages inspected with view_image; remote screenshot attempt failed content-type recognition, local actual-page reading succeeded"
+    },
+    "BY": {
+      "actuallyReadOfficialUrls": [
+        "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium%20/8/chemie",
+        "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/9/chemie/ch-ntg"
+      ],
+      "method": "web official HTML sections, current extraction source spans and existing targeted mapping records read"
+    }
+  },
+  "items": [
+    {
+      "goalId": "72236f2c-771e-4ab6-933a-e549ee49d15b",
+      "descriptionDecision": "split_review",
+      "scientificAtomicity": "non_atomic",
+      "sourceVerdict": "HOLD",
+      "actualReferencePages": [
+        {
+          "physicalPdfPage": 22,
+          "printedPage": 21,
+          "section": "HE10.1.1"
+        },
+        {
+          "officialHtmlSection": "BY8NTG C8.4 / BY9 other profiles C9.4 / BY9NTG C9.2"
+        }
+      ],
+      "operators": [
+        "interpret supplied scattering observations",
+        "represent/classify particles by charge and location"
+      ],
+      "currentProvenanceGoalExistsInCurrentExtraction": false,
+      "currentProvenanceGoalId": "fd02c993-0950-41a4-a861-7522d1bd3f8c",
+      "allowedCandidateBindings": [
+        {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceGoalId": "he-chem-seki-10-1-b01-a01-20d6b173",
+          "target": "ID-null Rutherford companion",
+          "coverage": "exact for Rutherford clause only"
+        },
+        {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceGoalId": "he-chem-seki-10-1-b01-a02-a20c7e8a",
+          "target": "72236f2c-771e-4ab6-933a-e549ee49d15b proposed retained particle atom",
+          "coverage": "exact for particle properties clause only"
+        },
+        {
+          "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+          "sourceGoalId": "a1fd32e3-a49a-508c-8052-9503aa6ce6c2",
+          "target": "both proposed atoms plus preserved Dalton-model target",
+          "coverage": "partial/joint; experimental/model-boundary clause not removed"
+        }
+      ],
+      "retireNothingAutomatically": true,
+      "remainingHold": "The current HE exact mappings for atomic mass, isotope, pure/mixed-isotope element, model limits and ion theory cannot be certified by the current combined text or these two split templates. Preserve source cells and historical decisions; versioned target-by-target resolution is needed. BY9NTG requires data use from the periodic table and is not wholly evidenced by particle location/charge alone.",
+      "currentNativeGoalFingerprint": "sha256:74fb9da4ecc847ef1f007966f8945a2e9224e082298c68e51a83f8c0065284a8",
+      "currentNativePageFingerprint": "sha256:3219e5702b86b25224d7153215c8b36bf5d287a4b0bb3af641aa12bca82db1c5",
+      "currentSourceContextIds": [
+        "a1fd32e3-a49a-508c-8052-9503aa6ce6c2",
+        "4f9ca17c-339b-536c-b7e9-fa54da4c16dc",
+        "5358ec96-3fbd-53a9-a803-aa3d3241907b",
+        "he-chem-seki-9-1-b03-a02-c04f64f6",
+        "he-chem-seki-10-1-b01-a01-20d6b173",
+        "he-chem-seki-10-1-b01-a02-a20c7e8a",
+        "he-chem-seki-10-1-b01-a03-f46c532c",
+        "he-chem-seki-10-1-b01-a04-1c62c15a",
+        "he-chem-seki-10-1-b01-a05-a1d0737d",
+        "he-chem-seki-10-1-b01-a06-670258fc",
+        "he-chem-seki-10-1-b01-a07-505be78a"
+      ]
+    },
+    {
+      "goalId": "950c73c6-4ed1-488a-9267-1142e95e0055",
+      "descriptionDecision": "revise",
+      "scientificAtomicity": "atomic candidate",
+      "sourceVerdict": "HOLD",
+      "actualReferencePages": [
+        {
+          "physicalPdfPage": 22,
+          "printedPage": 21,
+          "section": "HE10.1.5"
+        },
+        {
+          "officialHtmlSection": "BY8NTG C8.4.1/C8.4.5; BY9 other profiles C9.4"
+        }
+      ],
+      "operators": [
+        "model a simple ionic lattice",
+        "describe local coordination",
+        "explain material properties through electrostatic attraction and mobility"
+      ],
+      "currentProvenanceGoalExistsInCurrentExtraction": false,
+      "currentProvenanceGoalId": "41de0477-78e2-48b5-82f7-e5864f2f66cc",
+      "allowedCandidateBindings": [
+        {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceGoalId": "he-chem-seki-10-1-b05-a01-1f4ea265",
+          "target": "950c73c6-4ed1-488a-9267-1142e95e0055",
+          "coverage": "exact clause after revised text/model and independent review"
+        },
+        {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceGoalId": "he-chem-seki-10-1-b05-a02-b97181a5",
+          "target": "950c73c6-4ed1-488a-9267-1142e95e0055",
+          "coverage": "exact clause after revised text/model and independent review"
+        },
+        {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceGoalId": "he-chem-seki-10-1-b05-a03-32fb322e",
+          "target": "950c73c6-4ed1-488a-9267-1142e95e0055",
+          "coverage": "exact clause after revised text/model and independent review"
+        },
+        {
+          "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+          "sourceGoalId": "fe0fba92-5f7c-5af1-ab2e-7acd057f8721",
+          "target": "950c73c6-4ed1-488a-9267-1142e95e0055",
+          "coverage": "partial ionic-lattice construction; molecular target 7964cb36-e9b1-5176-9426-a82041a5b72f preserved"
+        },
+        {
+          "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+          "sourceGoalId": "8d8b20c7-7deb-53b9-afe7-bcb7f3a1b4e3",
+          "target": "950c73c6-4ed1-488a-9267-1142e95e0055",
+          "coverage": "partial salt structure/property observations; other mapped targets preserved"
+        }
+      ],
+      "remainingHold": "Do not replace BY model construction with merely reading an already correct lattice. HE coordination number is compulsory; no ungrounded lattice-type inference from ion charges. The existing HE9 halogen/HCl mappings and HE10 salt-formation joint mapping remain partial and are not newly certified in full by this structural atom. No image exists: V-HOLD.",
+      "currentNativeGoalFingerprint": "sha256:9555559c800640ed674f15930c56207ec3254a941540babafda1a5e562877cac",
+      "currentNativePageFingerprint": "sha256:c6a70cecd0db3ca29bf9ebb7eb3a1fa2a4b78de225d0b40d4af5c96bd5c51468",
+      "currentSourceContextIds": [
+        "8d8b20c7-7deb-53b9-afe7-bcb7f3a1b4e3",
+        "fe0fba92-5f7c-5af1-ab2e-7acd057f8721",
+        "4f9ca17c-339b-536c-b7e9-fa54da4c16dc",
+        "he-chem-seki-9-2-b02-a02-ee8b69e1",
+        "he-chem-seki-9-2-b02-a03-4636d596",
+        "he-chem-seki-10-1-b05-a01-1f4ea265",
+        "he-chem-seki-10-1-b05-a02-b97181a5",
+        "he-chem-seki-10-1-b05-a03-32fb322e",
+        "he-chem-seki-10-3-b07-a01-0a2f7cef"
+      ]
+    },
+    {
+      "goalId": "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+      "descriptionDecision": "split_review",
+      "scientificAtomicity": "non_atomic",
+      "sourceVerdict": "HOLD",
+      "actualReferencePages": [
+        {
+          "physicalPdfPage": 19,
+          "printedPage": 18,
+          "section": "HE9.2.1"
+        }
+      ],
+      "operators": [
+        "characterize elemental alkali metals",
+        "justify uses of selected compounds with their own properties"
+      ],
+      "currentProvenanceGoalExistsInCurrentExtraction": true,
+      "allowedCandidateBindings": [
+        {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceGoalId": "he-chem-seki-9-2-b01-a01-28c1edb7",
+          "target": "e0e201bd-a1fd-5985-ab08-fd24c8655f3d proposed retained elemental-metal atom",
+          "coverage": "partial; two accepted targets jointly retain metal and compound clauses"
+        },
+        {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceGoalId": "he-chem-seki-9-2-b01-a01-28c1edb7",
+          "target": "ID-null alkali-compound companion",
+          "coverage": "partial; two accepted targets jointly retain metal and compound clauses"
+        }
+      ],
+      "remainingHold": "Current exact one-target mapping must not survive a split without explicit preservation of the compound clause. Current water-reaction, ion-formation and salt-class targets cover only parts of this source cell. No current BY source witness for this exact content; current HE9 prerequisite timing unresolved.",
+      "currentNativeGoalFingerprint": "sha256:7d60a8a8634e1a979e69f5cb236e74d8d3cc146b7cd2f0e91516f186f8f762ed",
+      "currentNativePageFingerprint": "sha256:6973ade1dec9b4f0b5b5bd4ffe9f842bb773597dece3ee985277e2ced9154a5a",
+      "currentSourceContextIds": [
+        "he-chem-seki-9-2-b01-a01-28c1edb7"
+      ]
+    },
+    {
+      "goalId": "16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+      "descriptionDecision": "revise",
+      "scientificAtomicity": "atomic candidate",
+      "sourceVerdict": "PASS for bounded HE clause; HOLD stage/BY",
+      "actualReferencePages": [
+        {
+          "physicalPdfPage": 19,
+          "printedPage": 18,
+          "section": "HE9.2.1"
+        }
+      ],
+      "operators": [
+        "compare metal/water and oxide/water through products",
+        "explain alkaline solution formation"
+      ],
+      "currentProvenanceGoalExistsInCurrentExtraction": true,
+      "allowedCandidateBindings": [
+        {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceGoalId": "he-chem-seki-9-2-b01-a03-200f7eb0",
+          "target": "16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+          "coverage": "exact for both simple systems after revised text and independent review"
+        }
+      ],
+      "limits": [
+        "Both metal and its corresponding simple oxide remain in DE/EN.",
+        "Supplied observations/product information; no independently performed hazardous experiment.",
+        "Hydrogen in metal/water case; no hydrogen in simple oxide/water case.",
+        "Peroxides/superoxides not silently classified as simple oxides."
+      ],
+      "remainingHold": "The HE9 role of ion-level explanation requires an explicit timing/placement route rather than inheriting all later atomic/bonding content. No concrete BY witness for the specific comparison.",
+      "currentNativeGoalFingerprint": "sha256:e1351ab0849db0741bee83bd1e90e39f5d1bfe9e8bad0bf57e877ed45ceb6eb7",
+      "currentNativePageFingerprint": "sha256:196802176052ad6e1615bb5c19a923566ac7b6a7a056a62b095534883458fb54",
+      "currentSourceContextIds": [
+        "he-chem-seki-9-2-b01-a03-200f7eb0"
+      ]
+    },
+    {
+      "goalId": "58486300-3f84-5aa1-9ed4-66186af62669",
+      "descriptionDecision": "revise",
+      "scientificAtomicity": "atomic candidate",
+      "sourceVerdict": "PASS for bounded HE property/use clause; HOLD stage/BY",
+      "actualReferencePages": [
+        {
+          "physicalPdfPage": 19,
+          "printedPage": 18,
+          "section": "HE9.2.2"
+        }
+      ],
+      "operators": [
+        "describe selected halogen properties",
+        "justify substance-specific use"
+      ],
+      "currentProvenanceGoalExistsInCurrentExtraction": true,
+      "allowedCandidateBindings": [
+        {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceGoalId": "he-chem-seki-9-2-b02-a01-39a59744",
+          "target": "58486300-3f84-5aa1-9ed4-66186af62669",
+          "coverage": "exact property/use clause after revised text and independent review"
+        }
+      ],
+      "limits": [
+        "Elemental halogens and their compounds are distinguished by identity and relevant properties.",
+        "Reactions with metals or hydrogen and hydrogen-halide solutions remain separate normative clauses."
+      ],
+      "remainingHold": "HE9 floor and current later ion/bonding prerequisites require a scoped placement decision. BY exact content witness absent.",
+      "currentNativeGoalFingerprint": "sha256:bb22121948c4000efc87095fd4cd0304691830720ffdc73c6e8bf6d948802840",
+      "currentNativePageFingerprint": "sha256:463f878671c194252c7315d655265bd422b4a527a2c2b0c00eeecc199057509a",
+      "currentSourceContextIds": [
+        "he-chem-seki-9-2-b02-a01-39a59744"
+      ]
+    },
+    {
+      "goalId": "414489cb-453e-5de4-ab0f-0fc01175e522",
+      "descriptionDecision": "revise",
+      "scientificAtomicity": "atomic candidate",
+      "sourceVerdict": "PASS for bounded HE gypsum clause; HOLD BY/current D2",
+      "actualReferencePages": [
+        {
+          "physicalPdfPage": 25,
+          "printedPage": 24,
+          "section": "HE10.3.4"
+        }
+      ],
+      "operators": [
+        "explain sulfur capture as sulfate in gypsum using a supplied simplified lime-scrubbing scheme"
+      ],
+      "currentProvenanceGoalExistsInCurrentExtraction": true,
+      "allowedCandidateBindings": [
+        {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceGoalId": "he-chem-seki-10-3-b07-a03-67c95b12",
+          "target": "414489cb-453e-5de4-ab0f-0fc01175e522",
+          "coverage": "partial gypsum context; preserve lime and fertilizer sibling edges"
+        }
+      ],
+      "limits": [
+        "Oxidation is explicit, not an omitted conversion from SO2 directly to sulfate.",
+        "No plant design, universal removal rate, full emission accounting or independent experiment added."
+      ],
+      "remainingHold": "No concrete BY current witness for this application. Current inner Book D2 remains open. Existing unresolved structural prerequisite 11bea is recorded as a dependency, not re-reviewed here.",
+      "currentNativeGoalFingerprint": "sha256:9b3fd8db33d33febdcf89aaea5c958764cbc6cf5d96e072fa27819d7b8cb461a",
+      "currentNativePageFingerprint": "sha256:8b1e2627d308f4ff4711c49751ced2b39cd64437e14b8350ac2d25b56e0ab983",
+      "currentSourceContextIds": [
+        "he-chem-seki-10-3-b07-a03-67c95b12"
+      ]
+    },
+    {
+      "goalId": "1f5ee84f-245a-5a1e-a260-f960f26523e9",
+      "descriptionDecision": "revise",
+      "scientificAtomicity": "atomic candidate",
+      "sourceVerdict": "PASS for bounded HE fertilizer clause; HOLD BY/current D2",
+      "actualReferencePages": [
+        {
+          "physicalPdfPage": 25,
+          "printedPage": 24,
+          "section": "HE10.3.4"
+        },
+        {
+          "physicalPdfPage": 26,
+          "printedPage": 25,
+          "section": "ecological/application concretization"
+        }
+      ],
+      "operators": [
+        "classify selected mineral fertilizers as nutrient-ion sources",
+        "justify a conditional benefit/risk relationship using supplied demand, amount and transport data"
+      ],
+      "currentProvenanceGoalExistsInCurrentExtraction": true,
+      "allowedCandidateBindings": [
+        {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceGoalId": "he-chem-seki-10-3-b07-a03-67c95b12",
+          "target": "1f5ee84f-245a-5a1e-a260-f960f26523e9",
+          "coverage": "partial fertilizer context; preserve lime and gypsum sibling edges"
+        }
+      ],
+      "limits": [
+        "Organic fertilizers are not reduced to pure salts.",
+        "A salt formula alone does not establish benefit or water damage.",
+        "Full soil analysis listed as optional in HE is not introduced as a required operator.",
+        "BY profile project suggestions do not prove this exact required conditional benefit/risk competence."
+      ],
+      "remainingHold": "No concrete BY current witness for the present operator; current inner Book D2 remains open.",
+      "currentNativeGoalFingerprint": "sha256:32c84feed6e532c16d77c126e7b0e6a47bd07efcb2297dfbe363839e9fdab6b7",
+      "currentNativePageFingerprint": "sha256:96081bc810f15b1ec1c8fc62c1e31d47774d14ba56cff23bc0d46a041f6b362f",
+      "currentSourceContextIds": [
+        "he-chem-seki-10-3-b07-a03-67c95b12"
+      ]
+    }
+  ],
+  "coverageBoundary": "Only the seven targeted competencies and their HE/BY current clauses receive scientific findings. Other national-atlas routes in current-source-witnesses.json are routing metadata only. No global source review or human approval is claimed.",
+  "mappingDeltas": [
+    {
+      "kind": "candidate-only provenance rebind",
+      "goalId": "72236f2c-771e-4ab6-933a-e549ee49d15b",
+      "from": "fd02c993-0950-41a4-a861-7522d1bd3f8c",
+      "toForRetainedParticleOption": "he-chem-seki-10-1-b01-a02-a20c7e8a",
+      "newIdNullRutherfordSource": "he-chem-seki-10-1-b01-a01-20d6b173"
+    },
+    {
+      "kind": "candidate-only provenance rebind",
+      "goalId": "950c73c6-4ed1-488a-9267-1142e95e0055",
+      "from": "41de0477-78e2-48b5-82f7-e5864f2f66cc",
+      "toPossiblePrimary": "he-chem-seki-10-1-b05-a01-1f4ea265",
+      "retainAdditionalExactClauseBindings": [
+        "he-chem-seki-10-1-b05-a02-b97181a5",
+        "he-chem-seki-10-1-b05-a03-32fb322e"
+      ]
+    },
+    {
+      "kind": "candidate-only split edge",
+      "sourceGoalId": "he-chem-seki-9-2-b01-a01-28c1edb7",
+      "fromTarget": "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+      "fromMatchType": "exact",
+      "toTargets": [
+        "e0e201bd-a1fd-5985-ab08-fd24c8655f3d retained elemental-metal option",
+        "ID-null compound-use option"
+      ],
+      "toMatchType": "partial/joint; only after IDs and source/text review accepted"
+    },
+    {
+      "kind": "preserve three partial edges",
+      "sourceGoalId": "he-chem-seki-10-3-b07-a03-67c95b12",
+      "targets": [
+        "d726e00e-1f87-5ba5-8c79-76ad4022365e",
+        "414489cb-453e-5de4-ab0f-0fc01175e522",
+        "1f5ee84f-245a-5a1e-a260-f960f26523e9"
+      ],
+      "doNotReopenClosedLimeTarget": true
+    }
+  ],
+  "extraHE10AtomClausesHoldIds": [
+    "he-chem-seki-10-1-b01-a03-f46c532c",
+    "he-chem-seki-10-1-b01-a04-1c62c15a",
+    "he-chem-seki-10-1-b01-a05-a1d0737d",
+    "he-chem-seki-10-1-b01-a06-670258fc",
+    "he-chem-seki-10-1-b01-a07-505be78a"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "format": "inactive_semantic_text_proposals_v1",
+  "status": "proposed_not_adopted",
+  "reviewAuthority": "ai_candidate",
+  "humanApproval": false,
+  "rootIdAdoptionRequired": true,
+  "operationalValidationPassed": false,
+  "sourceCandidateKey": "ni-fw6-008-meiotic-recombination-companion-v1",
+  "allIdsRemainNull": true,
+  "parentClusterDraft": {
+    "id": null,
+    "type": "cluster",
+    "title": "Chromosomale Rekombination bei der Meiose",
+    "titleEn": "Chromosomal recombination during meiosis",
+    "childCandidateKeys": [
+      "ni-fw6-008-independent-assortment-child-b-v1",
+      "ni-fw6-008-segment-exchange-child-b-v1"
+    ],
+    "containsIdsNotAssigned": true
+  },
+  "childTextDrafts": [
+    {
+      "id": null,
+      "candidateKey": "ni-fw6-008-independent-assortment-child-b-v1",
+      "type": "atomic",
+      "title": "Neue Chromosomenkombinationen durch unabhängige Verteilung erläutern",
+      "titleEn": "Explain new chromosome combinations through independent assortment",
+      "description": "Die lernende Person kann an vorgegebenen Meiose-Modellen mit mindestens zwei homologen Chromosomenpaaren erläutern, wie deren voneinander unabhängige Ausrichtung und Verteilung unterschiedliche Kombinationen mütterlicher und väterlicher Chromosomen in Keimzellen ermöglichen.",
+      "descriptionEn": "The learner can use supplied meiosis models with at least two homologous chromosome pairs to explain how their independent orientation and segregation allow different combinations of maternally and paternally inherited chromosomes in gametes.",
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "weight": 1,
+      "contains": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-NI"
+        ]
+      },
+      "prerequisiteBinding": "unresolved; current cell comparison only provides cellular context; complete supplied chromosome-model conventions can support the bounded explanation",
+      "proposedMemorySuitability": "no_memory_needed",
+      "sourceCoverageRelationship": "didactic concretization of the broader FW6.2 source bullet, not a separately enumerated quote"
+    },
+    {
+      "id": null,
+      "candidateKey": "ni-fw6-008-segment-exchange-child-b-v1",
+      "type": "atomic",
+      "title": "Rekombination durch Abschnittsaustausch erläutern",
+      "titleEn": "Explain recombination through segment exchange",
+      "description": "Die lernende Person kann an einem vorgegebenen Chromosomenmodell der Meiose erläutern, wie der Austausch entsprechender Abschnitte zwischen Nichtschwesterchromatiden homologer Chromosomen neue Kombinationen elterlicher Erbinformation auf den beteiligten Chromatiden erzeugt, die in Keimzellen gelangen können.",
+      "descriptionEn": "The learner can use a supplied chromosome model of meiosis to explain how the exchange of corresponding segments between non-sister chromatids of homologous chromosomes produces new combinations of parental genetic information on the participating chromatids, which can enter gametes.",
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "weight": 1,
+      "contains": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-NI"
+        ]
+      },
+      "prerequisiteBinding": "unresolved; current cell comparison only provides cellular context; complete supplied homologous-pair/chromatid conventions can support the bounded explanation",
+      "proposedMemorySuitability": "no_memory_needed",
+      "sourceCoverageRelationship": "didactic concretization of the broader FW6.2 source bullet, not a separately enumerated quote"
+    }
+  ],
+  "commonSuppliedModelConditions": [
+    "Legend clearly distinguishes chromosome type, homologous partner, maternal/paternal origin and chromatid.",
+    "Homologous partners carry corresponding information regions; parental variants or origin markers are distinguishable.",
+    "The meaning of gamete outputs with one chromosome of each type is given.",
+    "Correct observations and outcomes may be supplied, while the learner must explain the link between process and changed combination.",
+    "No complete causal answer is printed in the supplied model.",
+    "No molecular mechanism, phase-reconstruction, frequency/map or probability routine is required."
+  ],
+  "scopeWarning": "These are review sketches, not schema-validatable adopted canonical goal records; fields such as prerequisite IDs and structure bindings remain unresolved."
+}

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-04T23:39:09.756246+00:00",
+  "status": "targeted_checks_pass_final_strict_gates_pending",
+  "commands": [
+    {
+      "command": "npm --prefix app run quality:semantic-atomicity:check -- --config=curricula/DE/Gymnasium/quality/semantic-atomicity/chemie-energy-four-current-20261005-v1/canonical-chemistry-ephase-fossil-fuels.config.json",
+      "exitCode": 0,
+      "scopeContentLeaves": 10,
+      "freshlySubstantivelyReviewedRecords": 4,
+      "unchangedHistoricalRecords": 6,
+      "staleRecords": 0,
+      "knownUntouchedRemainder": "8ceb historical atomic record unchanged; independent split_review dissent remains unresolved in the separate structural work queue, not newly approved here"
+    },
+    {
+      "command": "npm --prefix app run quality:memory-card-review:check -- --config=curricula/DE/Gymnasium/quality/memory-card-review/chemie-energy-four-current-20261005-v1/canonical-chemistry-full.config.json",
+      "exitCode": 0,
+      "ordinaryAtomicGoals": 376,
+      "freshlySubstantivelyReviewedRecords": 4,
+      "unchangedHistoricalRecords": 372,
+      "cards": 55,
+      "cardsUnchangedBytes": true,
+      "visibilityScopes": 3,
+      "visibilityChecks": 124,
+      "missingVisibleMemoryGoals": 0,
+      "staleGoalRecords": 0,
+      "staleCardRecords": 0
+    },
+    {
+      "command": "npx --prefix app tsx app/scripts/buildGoalBookSourceAtlasInputs.ts --config app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json --check",
+      "exitCode": 0,
+      "canonicalAtomicGoals": 376,
+      "publishedAtomicGoals": 358,
+      "sourceViews": 48,
+      "unresolvedSourceScopeDecisions": 496,
+      "omittedGoals": 18
+    }
+  ],
+  "ledgerByteComparison": {
+    "A": {
+      "changedGoals": [
+        "8ece9beb-9458-5ea1-8e45-9be04670f464",
+        "b95cdf98-fc97-5a94-b133-878922d28156",
+        "4928d5d1-e790-5883-9349-3b03a1c63b99",
+        "3e433dae-99f9-5a95-ad63-d5fa0b5f6836"
+      ],
+      "unchangedLineCount": 6,
+      "unchangedLinesByteEquivalent": true
+    },
+    "M": {
+      "changedGoals": [
+        "8ece9beb-9458-5ea1-8e45-9be04670f464",
+        "4928d5d1-e790-5883-9349-3b03a1c63b99",
+        "3e433dae-99f9-5a95-ad63-d5fa0b5f6836",
+        "b95cdf98-fc97-5a94-b133-878922d28156"
+      ],
+      "unchangedLineCount": 372,
+      "unchangedLinesByteEquivalent": true
+    }
+  },
+  "noNewStrictCompletionClaim": true,
+  "noHumanApproval": true,
+  "noApplicationBuildOrFullCentralQARunByThisLane": true,
+  "protectedMaturityFloorAndStatusRefreshOwnedByRootAtStableIntegration": true
+}

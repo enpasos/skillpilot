@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "documentType": "independent-inactive-goal-visualization-candidate-review",
+  "reviewId": "chemie-energy-fuel-comparison-independent-qa-20261005-v1",
+  "reviewedAt": "2026-10-04T23:08:40Z",
+  "reviewer": "codex-independent-fuel-comparison-image-review",
+  "reviewAuthority": "ai_candidate",
+  "decision": "PASS_CANDIDATE_ONLY",
+  "goalId": "8ece9beb-9458-5ea1-8e45-9be04670f464",
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "candidateActive": false,
+  "imageGeneratedOrEditedByReviewer": false,
+  "independence": {
+    "candidateProducer": "parent agent",
+    "parentVisualDecisionsRead": false,
+    "otherNewImageQaRead": false,
+    "actualNativeAndBothPreviewImagesViewed": true
+  },
+  "generationProvenance": {
+    "provider": "OpenAI built-in image generation",
+    "tool": "image_gen.imagegen",
+    "exactModelIdentifier": null,
+    "exactModelIdentifierExposed": false,
+    "operation": "edit existing goal JPG",
+    "sourceFilenameDeterminesCandidateProvider": false
+  },
+  "semanticBinding": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "descriptionCandidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-revision-candidate-v1/description-decisions.candidates.json",
+    "titleDe": "Brennstoffe vergleichen",
+    "titleEn": "Compare fuels",
+    "targetDescriptionDe": "Die lernende Person kann Verbrennungsreaktionen verschiedener Kohlenwasserstoffe vergleichen und energetische Kennzahlen auf einer gemeinsamen Bezugsbasis im jeweiligen Nutzungskontext begründet einordnen.",
+    "targetDescriptionEn": "The learner can compare combustion reactions of different hydrocarbons and give a reasoned interpretation of energy figures on a common reference basis in the respective context of use.",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "effectiveSemanticKind": "curricularAtomic",
+    "currentGoalSemanticFingerprint": "sha256:817c9b559d82cc3a4dfdfa08722bab4dc223b49096fe7db1d9ee9d246a3b238e",
+    "targetGoalSemanticFingerprint": "sha256:a0b9bf85dba1d99e0d7c22e675f506d6f591c8ca1a4fd3346ff05eb04a018ded",
+    "targetSemanticKindSourceFingerprint": "sha256:510836b2d6df4c51fa86e691736bba65e37c3e0e70af7f8cb6c59146413ac11b",
+    "fingerprintImplementation": "app/scripts/goalEvidenceProfileModel.ts:fingerprintGoalForEvidence",
+    "semanticKindFingerprintImplementation": "app/scripts/goalBookModel.ts:fingerprintSemanticKindSourceGoal",
+    "technicalResourceLinksExcludedFromSemanticFingerprint": true,
+    "requiresUnchanged": ["8ceb1749-fce0-584f-a2b8-0a309282329a"]
+  },
+  "artifacts": [
+    {
+      "role": "actually_viewed_native_candidate",
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-energy-fuel-comparison-candidate-20261005-v1/candidate-v1.png",
+      "sha256": "sha256:207ebc8963bb0a6c6076661e866ffe32e42a5602e20d02bc72b1b048ef7d0ece",
+      "bytes": 1328476,
+      "width": 1672,
+      "height": 941,
+      "format": "PNG",
+      "mode": "RGB"
+    },
+    {
+      "role": "actually_viewed_phone_360",
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-energy-fuel-comparison-candidate-20261005-v1/candidate-v1.width-360.png",
+      "sha256": "sha256:72b962fcff28f5d695e7ac77e53621afe065f140f94570d46af4617b312a9f25",
+      "bytes": 95994,
+      "width": 360,
+      "height": 203,
+      "format": "PNG",
+      "mode": "RGB"
+    },
+    {
+      "role": "actually_viewed_desktop_680",
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-energy-fuel-comparison-candidate-20261005-v1/candidate-v1.width-680.png",
+      "sha256": "sha256:462b3ee4b2b4f904c3523e4c117875eb9b25ab99d96dca4f1fa844288edb69ad",
+      "bytes": 299426,
+      "width": 680,
+      "height": 383,
+      "format": "PNG",
+      "mode": "RGB"
+    },
+    {
+      "role": "exact_generation_prompt_read",
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-energy-fuel-comparison-candidate-20261005-v1/prompt-provider.txt",
+      "sha256": "sha256:ed4899a1e790ede637e61129e61eaa0a9255273a2294fa27ab1bc16a6efe78b7",
+      "bytes": 2457
+    },
+    {
+      "role": "existing_input_jpg_provenance",
+      "path": "curricula/DE/Gymnasium/visualizations/chemie/8ece9beb-9458-5ea1-8e45-9be04670f464/8ece9beb-9458-5ea1-8e45-9be04670f464.jpg",
+      "sha256": "sha256:fd52cf0e6a8088eb74497093d36514f710d41ee7e2b94edb360623be269cd939",
+      "bytes": 2348784
+    },
+    {
+      "role": "description_candidate_file_read",
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-revision-candidate-v1/description-decisions.candidates.json",
+      "sha256": "sha256:6a4d3d15050433058a1c5f9ff4a9e830ffcdfd19caebe0bbd56b5af9295a64ca",
+      "bytes": 6949
+    }
+  ],
+  "checks": [
+    {"id": "hydrocarbon-molecule-counts", "status": "pass", "finding": "CH4 has 1 C and 4 H; C3H8 has 3 C and 8 H. Both named fuels are hydrocarbons."},
+    {"id": "combustion-product-types", "status": "pass", "finding": "CO2 and H2O product icons are chemically correct. Shared footer identifies types; it has no reaction arrow, balancing coefficients or equal-quantity claim."},
+    {"id": "common-mass-and-energy-basis", "status": "pass", "finding": "Both rows declare 1 kg fuel. Brennwert explicitly specifies liquid water; MJ values are released combustion energy on that basis."},
+    {"id": "common-linear-bar-scale", "status": "pass", "finding": "Both bars start on aligned zero baselines with identical 0-60 MJ scales. The modest visual ratio agrees with 55.6/50.5; no broken or cropped axis."},
+    {"id": "rounded-teaching-values", "status": "pass_with_scope_qualification", "finding": "55.6 and 50.5 MJ for 1 kg are rounded HHV teaching values consistent with approximately 890 kJ/mol divided by 16 g/mol and 2220 kJ/mol divided by 44 g/mol. These are not measured commercial-fuel-batch claims."},
+    {"id": "unsupported-content-removal", "status": "pass", "finding": "No ethanol, unsupported CO2 ranking, efficiency, lifecycle or climate superiority claim appears."},
+    {"id": "native-readability", "status": "pass", "finding": "Actually viewed native 1672x941. All principal text, molecule counts, values and scales are clear."},
+    {"id": "desktop-680-readability", "status": "pass", "finding": "Actually viewed 680x383. Title, 1 kg condition, fuel names and formulas, MJ values and liquid-water footer are readily legible; no clipping or overlap."},
+    {"id": "phone-360-readability", "status": "pass", "finding": "Actually viewed 360x203. Principal comparison condition, fuel names, values and short footer labels remain readable. Fine tick labels are secondary and no essential explanation relies on microtype."},
+    {"id": "age-and-style-fit", "status": "pass", "finding": "Friendly blue cartoon styling, large familiar objects and concise labels support the school-level qualitative goal without a crowded table."},
+    {"id": "goal-scope-coverage", "status": "pass_with_scope_qualification", "finding": "Supports one mass/Brennwert comparison and complete-combustion product types. It is a worked illustration and does not by itself prove independent learner reaction-equation or use-context-transfer performance."}
+  ],
+  "blockingFindings": [],
+  "requiredImageCorrections": [],
+  "adoptionQualificationDe": "Gerundete illustrative Brennwerte je 1 kg der genannten reinen Kohlenwasserstoffe; Produktwasser flüssig. Nutzwärme, CO2-Mengen und Umweltwirkung benötigen jeweils zusätzliche Bezugsgrößen und Systemgrenzen.",
+  "adoptionQualificationEn": "Rounded illustrative higher heating values per 1 kg of the named pure hydrocarbons; product water liquid. Useful heat, CO2 amounts and environmental effects each require further reference quantities and system boundaries.",
+  "claimBoundaries": {
+    "activeGraphImported": false,
+    "activeAssetImported": false,
+    "aMdPvLedgersWritten": false,
+    "rolloutRegistryWritten": false,
+    "fullQaOrBuildRun": false,
+    "commitOrPushPerformed": false,
+    "humanApprovalClaim": false,
+    "learnerMasteryClaim": false,
+    "clientAcceptanceClaim": false
+  },
+  "license": "CC-BY-4.0"
+}

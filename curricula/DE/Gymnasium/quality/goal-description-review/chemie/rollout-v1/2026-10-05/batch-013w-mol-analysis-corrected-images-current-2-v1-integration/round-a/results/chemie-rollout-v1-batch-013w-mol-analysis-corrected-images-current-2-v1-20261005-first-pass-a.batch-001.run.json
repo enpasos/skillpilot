@@ -1,0 +1,63 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-two-current-d-a-20261005-native-run-v1",
+  "campaignId": "chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005-a",
+  "roundId": "chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005-first-pass-a",
+  "batchId": "chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:9376134bd7f7193d70fb549ed056379c1b946a3f8e1260cc6bb30b41726186a7",
+  "bundleFingerprint": "sha256:e5bc8915923bb1d0a162102cbb5949c860b70dc582bda01cb3ff60d38764d579",
+  "bookDigest": "sha256:3bd5572391bd375d1712f51be13f9a055c117df73ffb2fbc5514db09c11d631f",
+  "provider": "OpenAI",
+  "model": "Codex independent reviewer; exact deployed model not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:1102e97da2bb7e81fdb1d332274a5a8d9b40ece8112a7208b60c21006072470e",
+  "independenceGroupId": "chemie-rollout-v1-batch-013w-mol-analysis-corrected-images-current-2-v1-20261005-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+    "ddb76915-4d63-5375-901d-4e659f5e9b09"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:f495c84512eb6094af192033bfe7b33ab87845c46ece80c54cdc0142172991ca"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:ffe04ea2c082d7501605cbe587dd7da89a2c229ffa46f40daec276f7ddfd4f60"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:b6c290ff3d1c9017059080b941803fb2635a028d704363fd78106a00b34087b8"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:19df52e0f79429332322ef7b52552486313c490bd06223f02ef052197b8e1b65"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:9376134bd7f7193d70fb549ed056379c1b946a3f8e1260cc6bb30b41726186a7"
+    }
+  ],
+  "startedAt": "2026-10-05T03:32:35Z",
+  "completedAt": "2026-10-05T03:38:20Z",
+  "status": "completed",
+  "outputDigest": "sha256:fc3eea8069dea6e8d1844192d261ca6cdd96f7d2df942c072bc037e3f5d27334",
+  "toolchainVersion": "goal-description-review-v1"
+}

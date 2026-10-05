@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "candidateStatus": "ai_candidate",
+  "createdAt": "2026-10-04T23:06:32.209548+00:00",
+  "authoringContract": "unminted-split-companion-content-candidates-v1",
+  "modelFamily": "GPT-6",
+  "exactModelIdentifier": null,
+  "goals": [
+    {
+      "candidateKey": "dna-methylation-eukaryotes",
+      "splitFromGoalId": "946ce2e7-c30d-5670-839d-003b0619c284",
+      "proposedTitleDe": "DNA-Methylierung bei Eukaryoten erklären",
+      "proposedTitleEn": "Explain DNA methylation in eukaryotes",
+      "proposedDescriptionDe": "Die lernende Person kann an gegebenen eukaryotischen Genmodellen erklären, wie DNA-Methylierung die Transkription im jeweiligen Kontext beeinflussen kann, und passende Methylierungs- und mRNA-Befunde begründet deuten.",
+      "proposedDescriptionEn": "The learner can use supplied eukaryotic gene models to explain how DNA methylation may influence transcription in the given context and interpret matched methylation and mRNA data with reasons.",
+      "sourceScope": "HE Q1.2, printed p.39, GK/LK; distinct from LK histone modification and unreviewed broad LK epigenetics overlaps.",
+      "requiresCandidate": [
+        "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "chemical-mark-not-sequence-change",
+            "essentialUnderstandingDe": "DNA-Methylierung verändert die chemische Markierung bestimmter DNA-Stellen, nicht die Reihenfolge der Basen. Ihre Wirkung auf Transkription hängt von Ort und Kontext ab.",
+            "essentialUnderstandingEn": "DNA methylation changes the chemical marking of particular DNA sites, not base order. Its effect on transcription depends on location and context.",
+            "observablePerformanceDe": "Die lernende Person unterscheidet in einem gegebenen eukaryotischen Genmodell Basenfolge und Methylierungsmarken und erklärt einen materialgestützten Zusammenhang mit Transkription.",
+            "observablePerformanceEn": "In a supplied eukaryotic gene model, the learner distinguishes base sequence from methylation marks and explains a material-supported relationship with transcription."
+          },
+          {
+            "id": "contextual-evidence-limit",
+            "essentialUnderstandingDe": "Promotormethylierung kann in dem belegten Modell mit verringerter Transkription verbunden sein. Ein Methylierungsbild allein beweist keine universelle Abschaltung; ein Vergleichsbefund und ein kontrollierter Eingriff haben unterschiedliche Aussagekraft.",
+            "essentialUnderstandingEn": "Promoter methylation can be associated with reduced transcription in the supported model. A methylation image alone does not prove universal silencing; a comparison and a controlled intervention have different evidential strength.",
+            "observablePerformanceDe": "Die lernende Person erklärt eine mögliche Regulationswirkung mit passenden mRNA-Daten und trennt belegte Modellwirkung von einer nicht belegten allgemeinen Kausalaussage.",
+            "observablePerformanceEn": "The learner explains a possible regulatory effect using matched mRNA data and distinguishes a supported model effect from an unsupported universal causal claim."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "chemical-mark-not-sequence-change",
+            "contextual-evidence-limit"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "mark-location",
+            "textDe": "Promotor und anders gelegene markierte Region in gesonderten materialgestützten Modellen vergleichen.",
+            "textEn": "Compare a promoter and a differently located marked region in separate material-supported models."
+          },
+          {
+            "id": "comparison-versus-intervention",
+            "textDe": "Einen Zellvergleich und einen kontrollierten Eingriff im gegebenen Modellsystem unterscheiden.",
+            "textEn": "Distinguish a cell comparison from a controlled intervention in a supplied model system."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "same-sequence-cell-comparison",
+            "taskDemandDe": "Zwei eukaryotische Zelltypen haben laut Material dieselbe DNA-Basenfolge. Für ein bestimmtes Gen zeigt Zelltyp A geringe Promotormethylierung und 90 relative mRNA-Einheiten, Zelltyp B starke Promotormethylierung und 8 Einheiten. Die Faktorbelegung ist nicht untersucht. Erkläre den Unterschied zwischen Sequenz und Markierung und begründe eine mögliche epigenetische Erklärung des Befunds.",
+            "taskDemandEn": "Two eukaryotic cell types have the same DNA base sequence according to the material. A particular gene shows low promoter methylation and 90 relative mRNA units in cell type A, versus high promoter methylation and 8 units in B. Factor occupancy was not examined. Explain the sequence/mark distinction and justify a possible epigenetic explanation of the results.",
+            "expectedPerformanceDe": "Die lernende Person hält gleiche Sequenz und verschiedene chemische Markierung auseinander und verbindet die Markierung mit einer möglichen verminderten Transkription im gegebenen Gen. Sie begrenzt die Kausalität, weil Zelltypen und unbekannte Faktorbelegung weitere Unterschiede tragen können.",
+            "expectedPerformanceEn": "The learner distinguishes the same sequence from different chemical marks and connects marking with possible reduced transcription of this gene. The causal claim is limited because cell types and unknown factor occupancy may differ in other respects.",
+            "understandingFocusDe": "Positive Erklärung einer möglichen Markierungswirkung statt Sequenzmutation.",
+            "understandingFocusEn": "Positive explanation of a possible marking effect rather than a sequence mutation."
+          },
+          {
+            "id": "controlled-promoter-model-and-other-region",
+            "taskDemandDe": "Ein neues, ausdrücklich kontrolliertes Genmodell hält Basenfolge und Faktorenangebot gleich. In diesem Modell verringert ein gezielter Eingriff, der nur die Promotormethylierung erhöht, die mRNA von 70 auf 10 relative Einheiten; nach Rücknahme beträgt sie 68. Ein anderes Gen trägt Methylierungsmarken in einer anderen DNA-Region und wird trotzdem transkribiert. Erkläre beide Befunde im jeweiligen Kontext.",
+            "taskDemandEn": "A fresh explicitly controlled gene model holds base sequence and factor availability constant. In this model, an intervention specified to increase only promoter methylation lowers mRNA from 70 to 10 relative units; reversal yields 68. A different gene carries methylation marks in another DNA region but is still transcribed. Explain both results in their respective contexts.",
+            "expectedPerformanceDe": "Die lernende Person erklärt die im ersten Modell gestützte, reversible Regulationswirkung der Promotormarkierung und begründet mit dem zweiten Befund die Abhängigkeit von Region und Kontext. Sie verallgemeinert weder auf jedes Gen noch auf Proteinfunktion oder generationsübergreifende Vererbung.",
+            "expectedPerformanceEn": "The learner explains the reversible regulatory effect supported in the first promoter model and uses the second result to justify location/context dependence, without generalising to every gene, protein function or transgenerational inheritance.",
+            "understandingFocusDe": "Frischer Transfer von beobachtetem Vergleich zu begrenzt kausalem Modell.",
+            "understandingFocusEn": "Fresh transfer from observed comparison to a bounded causal model."
+          }
+        ]
+      }
+    },
+    {
+      "candidateKey": "bacterial-binary-fission",
+      "splitFromGoalId": "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+      "proposedTitleDe": "Bakterielle Zweiteilung modellhaft erklären",
+      "proposedTitleEn": "Model and explain bacterial binary fission",
+      "proposedDescriptionDe": "Die lernende Person kann die Vermehrung von Bakterien durch Zweiteilung anhand eines gegebenen Modells erklären und die Verteilung der kopierten chromosomalen DNA auf die entstehenden Zellen nachvollziehen.",
+      "proposedDescriptionEn": "The learner can use a supplied model to explain bacterial reproduction by binary fission and trace the distribution of copied chromosomal DNA to the developing cells.",
+      "sourceScope": "HE Q1.2, printed p.39, LK; schema-level Bau und Vermehrung. No automatic Sek-I/BY source allocation.",
+      "requiresCandidate": [
+        "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+        "e70d8a85-2dea-5165-919b-200fee9f4db4",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "copy-partition-fission",
+            "essentialUnderstandingDe": "Bei modellhafter bakterieller Zweiteilung wird die chromosomale DNA vor der Trennung kopiert und auf die entstehenden Zellen verteilt. Das ist keine Mitose mit einem Zellkern.",
+            "essentialUnderstandingEn": "In modelled bacterial binary fission, chromosomal DNA is copied and partitioned between developing cells before separation. This is not mitosis involving a nucleus.",
+            "observablePerformanceDe": "Die lernende Person ordnet einen neuen Ablauf und erklärt, wie DNA-Kopie, Verteilung und Zelltrennung zwei Zellen mit chromosomaler Erbinformation ermöglichen.",
+            "observablePerformanceEn": "The learner orders a fresh process and explains how DNA copying, partitioning and separation allow two cells to receive chromosomal genetic information."
+          },
+          {
+            "id": "limited-population-model",
+            "essentialUnderstandingDe": "Wiederholte Zweiteilung kann unter ausdrücklich konstanten Modellbedingungen Zellzahlen verdoppeln. Ressourcenmangel, ausbleibende Teilung oder Zelltod begrenzen diese Vorhersage; Plasmide sind dafür nicht vorauszusetzen.",
+            "essentialUnderstandingEn": "Repeated binary fission can double cell counts under explicitly constant model conditions. Resource limitation, failed division or cell death limit that prediction; plasmids are not a prerequisite.",
+            "observablePerformanceDe": "Die lernende Person verbindet ein frisches Teilungsmodell mit einer gegebenen Zeitreihe und begründet eine passende Zellzahlfolge samt ihren Modellbedingungen.",
+            "observablePerformanceEn": "The learner connects a fresh fission model to a supplied time series and justifies a corresponding cell-count progression with its assumptions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "copy-partition-fission",
+            "limited-population-model"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "process-display",
+            "textDe": "Gezeichnete Stadien und tabellarischen Befund verwenden, ohne eine Mitose zu unterstellen.",
+            "textEn": "Use drawn stages and tabulated results without assuming mitosis."
+          },
+          {
+            "id": "division-conditions",
+            "textDe": "Ungehinderte Teilungsrunden und materialgestützt unterbrochene DNA-Kopie vergleichen.",
+            "textEn": "Compare unobstructed division rounds and material-supported interrupted DNA copying."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "label-and-order-binary-fission",
+            "taskDemandDe": "Vier neue Schemabilder eines plasmidfreien Bakteriums zeigen eine chromosomale DNA, kopierte und getrennte DNA-Bereiche, eine Einschnürung und zwei getrennte Zellen. Ordne den Ablauf und erkläre die Verteilung der Erbinformation. Im reinen Modell teilt sich jede Zelle in zwei aufeinanderfolgenden Runden, ohne Zelltod: Leite die Zellzahlen aus einer Ausgangszelle ab.",
+            "taskDemandEn": "Four fresh schematic images of a plasmid-free bacterium show one chromosomal DNA, copied and separated DNA regions, a constriction and two separate cells. Order the process and explain genetic-information distribution. In the pure model, each cell divides in two successive rounds with no cell death; derive counts from one starting cell.",
+            "expectedPerformanceDe": "Die lernende Person erklärt DNA-Kopie vor Verteilung und Trennung, ohne Kernmitose zu erfinden. Aus 1 werden 2 und 4 Zellen unter den ausdrücklich genannten Bedingungen; die Zahlen ersetzen die Prozesserklärung nicht.",
+            "expectedPerformanceEn": "The learner explains copying before partitioning and separation without inventing nuclear mitosis. Counts are 1, 2 and 4 under the stated conditions; numbers do not replace the process explanation.",
+            "understandingFocusDe": "Eigenständig erklärter Prozess und daran gebundene Modellfolge.",
+            "understandingFocusEn": "Independently explained process with a connected model progression."
+          },
+          {
+            "id": "copying-interruption-time-series",
+            "taskDemandDe": "In einem anderen bereitgestellten Bakterienmodell wird laut Material nur die chromosomale DNA-Kopie vorübergehend unterbrochen. Die Zelle wächst zunächst weiter, aber die vorher beobachtete Folge zwei vollständig getrennter Zellen bleibt aus. Nach Wiederaufnahme der DNA-Kopie werden zwei Zellen mit je einer chromosomalen DNA gezeigt. Erkläre die Befunde und begründe, warum bloßes Zellwachstum keinen sicheren Teilungsnachweis liefert.",
+            "taskDemandEn": "In a different supplied bacterial model, only chromosomal DNA copying is temporarily interrupted according to the material. The cell initially continues growing, but the previously observed outcome of two fully separated cells does not occur. After copying resumes, two cells each containing chromosomal DNA are shown. Explain the results and justify why cell growth alone does not establish division.",
+            "expectedPerformanceDe": "Die lernende Person überträgt die Kopie–Verteilung–Trennung-Kette auf die Modellstörung und deren Rücknahme. Sie unterscheidet Vergrößerung einer Zelle von Entstehung zweier Zellen und behauptet aus dem Modell keine unbegrenzte Populationszunahme oder Plasmidaufnahme.",
+            "expectedPerformanceEn": "The learner applies the copying–partitioning–separation chain to the model intervention and reversal. Enlargement is distinguished from producing two cells, without claiming unlimited population growth or plasmid uptake.",
+            "understandingFocusDe": "Frischer Prozess-Transfer durch begründet eingeordneten Eingriff.",
+            "understandingFocusEn": "Fresh process transfer through a justified interpretation of an intervention."
+          }
+        ]
+      }
+    }
+  ],
+  "claimLimit": "Local candidate keys are not stable goal IDs. Both complete bilingual inner P-v2 profiles need independent source/atomicity/content review and later current-text/resource bindings. Do not narrow the originals until lost source clauses are preserved."
+}

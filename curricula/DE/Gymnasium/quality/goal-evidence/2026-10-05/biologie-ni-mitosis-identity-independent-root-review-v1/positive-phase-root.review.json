@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root independent of NI candidate author",
+  "reviewedAt": "2026-10-05T00:52:31.431546+00:00",
+  "descriptionFreezePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-mitosis-identity-independent-root-review-v1/description-source-phase.freeze.json",
+  "descriptionFreezeSha256": "sha256:1a2f6204febea4a7fb9f805c078d9bb83e7e763424b4fce1ddc54d4546ee9215",
+  "descriptionFrozenBeforeActualPRead": true,
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-mitosis-identity-preservation-candidate-v1/positive-evidence.candidates.json",
+      "sha256": "sha256:3d1efbfdcbf86b46b3afbca8823f86368289e93e9353d696301fa8a97cc38287"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-mitosis-identity-preservation-candidate-v1/assistance-and-claim-boundaries.json",
+      "sha256": "sha256:541ad7eea8f61cb6937453b64daa4bf4394c1157047680843516d2256cf6dcc3"
+    }
+  ],
+  "goalId": "36d3bf01-e68b-55be-8e20-5652ada36a51",
+  "decision": "CONTENT_CORRECT_WITH_TARGETED_ASSISTANCE_BOUNDARY_HOLD",
+  "positiveScientificChecks": [
+    "Case1 own allocation: each daughter oneK,L,M,N; arbitrary sister index pairing allowed. Original complete genetic types preserved. No molecular mechanism required.",
+    "Case1 no-copy claim invalid: partitioning four distinct originals into two cells loses information types in each; equal counts do not restore complete information.",
+    "Case2 A contains oneP,Q,R,S per daughter despite mixed sister indices; supplied identities make complete information match.",
+    "Case2 B left lacksR,S and right lacksP,Q despite equal4 carriers; information types, not displayed colors/count/order, determine model identity.",
+    "Two cases change task construction to fresh error analysis/repair; supplied legends and proposed allocations are acknowledged help. The meaningful independent transfer is the learners causal completeness/identity argument, not copying a provided answer.",
+    "DE and EN align; E1/G1 candidate is no actual learner/human evidence."
+  ],
+  "findings": [
+    {
+      "id": "NI36D-P-ASSISTANCE-01",
+      "scope": "Second-case expected performance and assistance boundary declaration",
+      "severity": "truthful-evidence-boundary",
+      "reason": "The second case explicitly supplies a correct allocationA. A learner may copyA as a repair forB, so that repair alone is not unassisted construction evidence. Current independentEvidence wording includes correction without explicitly making this distinction.",
+      "requiredTargetedCorrection": "Permit reuse ofA as an assisted allocation example; explicitly state copyingA alone does not count. Independent second-case evidence is the own justification of complete information inA and missingR/S,P/Q inB plus the counts counterexample. Do not create a new quota or require different arbitrary copy indices.",
+      "unchangedScientificAnswers": true
+    }
+  ],
+  "currentOuterBindings": false,
+  "strictClosures": 0,
+  "humanApprovalClaim": false
+}

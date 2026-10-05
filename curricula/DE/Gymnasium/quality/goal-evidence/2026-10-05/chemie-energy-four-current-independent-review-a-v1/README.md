@@ -1,0 +1,9 @@
+# Independent current Chemistry four review A
+
+Machine/AI candidate review only. Four actual current DE/EN descriptions, complete rendered goal-book pages, native and 360/680-pixel images and exact assigned retained/current HE/BY clauses were reviewed independently. `description-phase-a.freeze.json` was frozen before the current P profiles or any sibling current review B was read. The schema-valid four description records are in the owned current batch round-a/results folder; all four decisions are KEEP.
+
+`positive-phase-a.review.json` documents an independent actual full-content read of the four current inner P-v2 profiles and all eight DE/EN case pairs. All four inner profiles pass the current schema and substantive content checks. Fuel arithmetic, heat/work signs and bond/phase contributions were verified. Given image numbers, already evaluated bond budgets, the phase gap and boundary-exclusion facts are assistance; only the remaining causal reasoning and fresh transfer may count as independent learner evidence. Two demonstrations describe coverage and do not impose an unconditional extra-task quota.
+
+The preserved energy13 outer P records are stale for every assigned goal. The two revised 4928/3e inner profiles also differ from their old outer-record content. No old record was rewritten. Current outer binding status is HOLD until root creates truthful final bindings from the independently reviewed content and completes the remaining integration gates.
+
+Strict increase **0**; inactive substantive candidates **4**; restored current bindings **0**. No canonical/registry/A/M/V integration, human approval, human trial, publication or full central/build run is claimed. Source review is limited to the named HE/BY clauses, not all-state coverage or runtime projection. Future 8ceb split/dependency edits require targeted context/binding follow-up.

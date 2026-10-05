@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "authority": "ai_targeted_authoring_delta_audit",
+  "humanApprovalClaim": false,
+  "referenceCommit": "693872e8ea8663384281d06f61858b0f8fef332f",
+  "scope": "Authoring-stage snapshot before separately owned image integration; current canonical may subsequently include root image imports.",
+  "authoringCanonicalSha256": "sha256:c7da5edf5c51eb25dc16a5ea8371377aa64703c18f2776152ae95b93ed4bbb70",
+  "currentRegisteredStrictDescriptionGoalCount": 58,
+  "changedRegisteredDescriptionGoalIds": [],
+  "changedRegisteredCanonicalContextGoalIds": [],
+  "pairNotPreviouslyRegistered": true,
+  "cycleDetectedFromPair": false,
+  "currentSemanticKindFingerprintRowsChecked": 473,
+  "currentCurricularAtomicGoalCount": 376,
+  "successorPreservationChecks": [
+    {
+      "newConfig": "curricula/DE/Gymnasium/quality/semantic-atomicity/chemie-energy13-current-20261005-v1/canonical-chemistry-ephase-fossil-fuels.config.json",
+      "changedGoalIds": [
+        "2be9e61a-88ea-56fe-8294-ee46e3c9a8ef"
+      ],
+      "allUnaffectedRowsByteEqual": true,
+      "cardsByteEqual": null
+    },
+    {
+      "newConfig": "curricula/DE/Gymnasium/quality/semantic-atomicity/chemie-energy13-current-20261005-v1/canonical-chemistry-ephase-mobile-energy-converters.config.json",
+      "changedGoalIds": [
+        "b759d50d-0e82-5b10-89a2-fe5271106e50"
+      ],
+      "allUnaffectedRowsByteEqual": true,
+      "cardsByteEqual": null
+    },
+    {
+      "newConfig": "curricula/DE/Gymnasium/quality/memory-card-review/chemie-energy13-current-20261005-v1/canonical-chemistry-full.config.json",
+      "changedGoalIds": [
+        "b759d50d-0e82-5b10-89a2-fe5271106e50",
+        "2be9e61a-88ea-56fe-8294-ee46e3c9a8ef"
+      ],
+      "allUnaffectedRowsByteEqual": true,
+      "cardsByteEqual": true
+    }
+  ],
+  "sourceAtlasCounts": {
+    "canonicalCurricularAtomicGoals": 376,
+    "publishedCurricularAtomicGoals": 358,
+    "sourceViews": 48,
+    "unresolvedSourceScopeDecisions": 496,
+    "omittedGoals": 18
+  },
+  "sourceAtlasOmittedGoalsUnchanged": true,
+  "sourceAtlasOutputBindingsUnchanged": true,
+  "claim": "Targeted audit proves no previously registered Chemistry goal object or individual canonical context changed in this two-description authoring stage. No complete D/P/V freshness check or new central strict completion count is claimed; global source input digests changed and require their current integration bindings."
+}

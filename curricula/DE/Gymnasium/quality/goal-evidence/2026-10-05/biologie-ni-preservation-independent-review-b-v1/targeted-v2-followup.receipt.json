@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-10-05T00:04:17.682976+00:00",
+  "kind": "strictly targeted inactive NI v2 successor review after preserved original v1 findings",
+  "v1CompletionReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-independent-review-b-v1/v1-completion.receipt.json",
+  "v1HistoricalVerdictsPreserved": true,
+  "targetedDPhaseFreeze": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-independent-review-b-v1/targeted-v2-description-phase.freeze.json",
+    "sha256": "sha256:f1f6a85b44a805d668428b643060591a568d00aedadbc9e94afd916b3e94ccf5",
+    "frozenAt": "2026-10-05T00:02:50.687563+00:00"
+  },
+  "candidateInputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-candidate-v2/canonical.delta.candidates.json",
+      "sha256": "sha256:6b132babb4d895389180fcd3a088e29c25f78be1d5306ff512186ff836df8599"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-candidate-v2/source-extraction.delta.candidates.json",
+      "sha256": "sha256:c89af1f7d195e6d67e823e9c76b28dd9ed1ee40a44dc005c71e4d33cd6be44df"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-candidate-v2/mapping.delta.candidates.json",
+      "sha256": "sha256:fd7da13592fd1c9a07843d70f5d0f8cb229d9c05c85a729879469dc59377028b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-preservation-candidate-v2/positive-evidence.candidates.json",
+      "sha256": "sha256:bb8b1d5120b79a114779fb6ba008f9ac172d948d1d22c1134acceb8ed2c0c636"
+    }
+  ],
+  "descriptionDeltaDecision": {
+    "goalId": "359e6313-cd86-54d1-bee5-8e680101dc32",
+    "decision": "PASS_CANDIDATE_ONLY",
+    "semanticAtomic": true,
+    "rationale": "Explicit describe/explain operationalization preserves the same observable variation concept, with no mutation, meiosis or molecular requirement; DE/EN agree."
+  },
+  "positiveDataDeltaDecisions": [
+    {
+      "goalId": "359e6313-cd86-54d1-bee5-8e680101dc32",
+      "caseId": "fresh-bean-offspring",
+      "decision": "PASS_CANDIDATE_ONLY",
+      "DE_ENActuallyRead": true,
+      "finding": "Explicit shorter/medium/longer offspring pods relative to medium parents now support the unchanged expected relative-length finding. Nonpurposefulness still requires reasoned evaluation; no genetic cause inference added."
+    },
+    {
+      "goalId": "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+      "caseId": "fresh-pigment-and-resource-model",
+      "decision": "PASS_CANDIDATE_ONLY",
+      "DE_ENActuallyRead": true,
+      "finding": "R instructions for P are now explicitly supplied. Independent work remains interpreting A/B/C function and precursor states and the instruction/trait limit. No DNA change or regulation cause is inferred."
+    }
+  ],
+  "unchangedInnerProfileChecks": [
+    {
+      "goalId": "359e6313-cd86-54d1-bee5-8e680101dc32",
+      "unchangedExpectationAndCoverageStructure": true,
+      "unchangedExpectedPerformance": true,
+      "unchangedUnderstandingFocus": true
+    },
+    {
+      "goalId": "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+      "unchangedExpectationAndCoverageStructure": true,
+      "unchangedExpectedPerformance": true,
+      "unchangedUnderstandingFocus": true
+    },
+    {
+      "goalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+      "unchangedExpectationAndCoverageStructure": true,
+      "unchangedExpectedPerformance": true,
+      "unchangedUnderstandingFocus": true
+    }
+  ],
+  "unchanged9fWholeCandidateComparedEqual": true,
+  "latestScopedDescriptionAndPositiveContentDecisions": [
+    "KEEP_CANDIDATE",
+    "KEEP_CANDIDATE",
+    "KEEP_CANDIDATE"
+  ],
+  "sourceExtractionAfterLocatorDeltaDecision": {
+    "decision": "PASS_CANDIDATE_ONLY",
+    "actualHeading": "FW 6.3 Ausprägung der genetischen Information",
+    "sourceGoalIds": [
+      "ni-biology-seki-kc2015-fw6-010-8fb1979a",
+      "ni-biology-seki-kc2015-fw6-011-27110a19"
+    ],
+    "actualPrinted88ComparisonPerformed": true
+  },
+  "mappingAfterLocatorDeltaDecision": {
+    "decision": "HOLD_TARGETED_MAPPING_LOCATOR",
+    "remaining": [
+      {
+        "sourceGoalId": "ni-biology-seki-kc2015-fw6-010-8fb1979a",
+        "actualSourceSpan": "FW 6.3 Realisierung genetischer Information, Tabellenspalte Ende Jg. 10, S. 88, Source-Ziel ni-biology-seki-kc2015-fw6-010-8fb1979a"
+      },
+      {
+        "sourceGoalId": "ni-biology-seki-kc2015-fw6-011-27110a19",
+        "actualSourceSpan": "FW 6.3 Realisierung genetischer Information, Tabellenspalte Ende Jg. 10, S. 88, Source-Ziel ni-biology-seki-kc2015-fw6-011-27110a19"
+      }
+    ],
+    "minimalFix": "Update only both new afterDecisionCandidate.sourceSpan headings to FW 6.3 Ausprägung der genetischen Information. Preserve all before/current/historical values."
+  },
+  "FW6_004Residual": "HOLD_SOURCE_COMPLETION unchanged; concrete chromosome-copy/distribution justification proposal remains in original D freeze.",
+  "runtimeYearProjectionVerified": false,
+  "freshFullSourceReviewOrHistoricalRestartClaimed": false,
+  "currentStrictClosuresClaimed": 0,
+  "restoredCurrentStrictBindingsClaimed": 0,
+  "humanApprovalClaimed": false
+}

@@ -1,0 +1,171 @@
+[
+  {
+    "name": "chemistry-evidence-watch-check-delta",
+    "command": "python3 scripts/canonical_chemistry_evidence_watch.py check-delta",
+    "exit_code": 1,
+    "started_at": "2026-10-05T05:54:10.542781+00:00",
+    "duration_seconds": 0.221,
+    "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/checks/agent-layer-a/chemistry-evidence-watch-check-delta.log",
+    "env_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "originalLocalLog": "tmp/m7-commit-ready-validation-20261005-v1/agent-layer-a/chemistry-evidence-watch-check-delta.log",
+    "logDigest": "sha256:cff79488b9fc38739f1935a3ddaca87ca5cdaba140776663bc33d591e70988b5"
+  },
+  {
+    "name": "chemistry-evidence-watch-self-test",
+    "command": "python3 scripts/canonical_chemistry_evidence_watch.py self-test",
+    "exit_code": 0,
+    "started_at": "2026-10-05T05:54:10.477792+00:00",
+    "duration_seconds": 0.064,
+    "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/checks/agent-layer-a/chemistry-evidence-watch-self-test.log",
+    "env_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "originalLocalLog": "tmp/m7-commit-ready-validation-20261005-v1/agent-layer-a/chemistry-evidence-watch-self-test.log",
+    "logDigest": "sha256:7855c57a09de7e332a7dc4897e3288e23d96f15ae8b34307bc358081c386ac45"
+  },
+  {
+    "name": "competency-wording",
+    "command": "python -B scripts/validate_competency_wording.py",
+    "exit_code": 0,
+    "started_at": "2026-10-05T05:54:07.706062+00:00",
+    "duration_seconds": 9.823,
+    "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/checks/agent-layer-a/competency-wording.log",
+    "env_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "originalLocalLog": "tmp/m7-commit-ready-validation-20261005-v1/agent-layer-a/competency-wording.log",
+    "logDigest": "sha256:b673d2f9c80ec8df85e9b455489068150f76d21c64d85a8f6aaa01ed0cd5fef3"
+  },
+  {
+    "name": "course-level-mapping-consistency",
+    "command": "npm --prefix app run test:course-level-mapping-consistency",
+    "exit_code": 0,
+    "started_at": "2026-10-05T05:53:46.495897+00:00",
+    "duration_seconds": 0.668,
+    "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/checks/agent-layer-a/course-level-mapping-consistency.log",
+    "env_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "originalLocalLog": "tmp/m7-commit-ready-validation-20261005-v1/agent-layer-a/course-level-mapping-consistency.log",
+    "logDigest": "sha256:776c2d92fc9b15b71f8f01455ddae6720a7e89bed1d35cdab89467572221ca61"
+  },
+  {
+    "name": "curriculum-spelling",
+    "command": "node scripts/check_curriculum_spelling.mjs",
+    "exit_code": 0,
+    "started_at": "2026-10-05T05:54:10.298105+00:00",
+    "duration_seconds": 0.179,
+    "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/checks/agent-layer-a/curriculum-spelling.log",
+    "env_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "originalLocalLog": "tmp/m7-commit-ready-validation-20261005-v1/agent-layer-a/curriculum-spelling.log",
+    "logDigest": "sha256:706e8b7abc1d901f391cb41b74993c9f322b4dc2456eafcfa4ca4ced47dfd943"
+  },
+  {
+    "name": "goal-visualization-approval-coverage",
+    "command": "npm --prefix app run check:goal-visualization-approval-coverage",
+    "exit_code": 0,
+    "started_at": "2026-10-05T05:54:06.649651+00:00",
+    "duration_seconds": 0.483,
+    "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/checks/agent-layer-a/goal-visualization-approval-coverage.log",
+    "env_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "originalLocalLog": "tmp/m7-commit-ready-validation-20261005-v1/agent-layer-a/goal-visualization-approval-coverage.log",
+    "logDigest": "sha256:59fe6b536eeb361a037e1b6f77d8331df941f9918b741f0826233f2a4ec49f7f"
+  },
+  {
+    "name": "goal-visualization-qa-coverage-parity",
+    "command": "npm --prefix app run check:goal-visualization-qa-coverage-parity",
+    "exit_code": 1,
+    "started_at": "2026-10-05T05:54:07.133336+00:00",
+    "duration_seconds": 0.572,
+    "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/checks/agent-layer-a/goal-visualization-qa-coverage-parity.log",
+    "env_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "originalLocalLog": "tmp/m7-commit-ready-validation-20261005-v1/agent-layer-a/goal-visualization-qa-coverage-parity.log",
+    "logDigest": "sha256:fdcd8a0a4aa0a9c070b8baacc310138f59a8c0b3af13ee8256cfec6c90564f43"
+  },
+  {
+    "name": "memory-card-review-all",
+    "command": "npm --prefix app run quality:memory-card-review:check:all",
+    "exit_code": 1,
+    "started_at": "2026-10-05T05:54:05.627151+00:00",
+    "duration_seconds": 1.022,
+    "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/checks/agent-layer-a/memory-card-review-all.log",
+    "env_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "originalLocalLog": "tmp/m7-commit-ready-validation-20261005-v1/agent-layer-a/memory-card-review-all.log",
+    "logDigest": "sha256:767df54c19f218f94f1c78a0c898a1ca1519ce0a551de80ecdeb5236428c794b"
+  },
+  {
+    "name": "npm-dependency-audit-app",
+    "command": "node scripts/audit_npm_dependencies.mjs app",
+    "exit_code": 1,
+    "started_at": "2026-10-05T05:54:10.764244+00:00",
+    "duration_seconds": 3.236,
+    "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/checks/agent-layer-a/npm-dependency-audit-app.log",
+    "env_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "originalLocalLog": "tmp/m7-commit-ready-validation-20261005-v1/agent-layer-a/npm-dependency-audit-app.log",
+    "logDigest": "sha256:6b460b3097cd9dd5aa14d358957cb63fefadce6f111bd21999770b8bc61b01dd"
+  },
+  {
+    "name": "source-coverage-audit",
+    "command": "npm --prefix app run quality:source-coverage-audit:check",
+    "exit_code": 0,
+    "started_at": "2026-10-05T05:53:47.164632+00:00",
+    "duration_seconds": 23.135,
+    "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/checks/agent-layer-a/source-coverage-audit.log",
+    "env_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "originalLocalLog": "tmp/m7-commit-ready-validation-20261005-v1/agent-layer-a/source-coverage-audit.log",
+    "logDigest": "sha256:4b30b2dcdfa10ad09000d49fbfedf4d153842c6865b1f2c83305c93b0bea819b"
+  },
+  {
+    "name": "validate-composition-views",
+    "command": "npm --prefix app run validate:composition-views",
+    "exit_code": 0,
+    "started_at": "2026-10-05T05:53:42.217979+00:00",
+    "duration_seconds": 218.858,
+    "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/checks/agent-layer-a/validate-composition-views.log",
+    "env_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "originalLocalLog": "tmp/m7-commit-ready-validation-20261005-v1/agent-layer-a/validate-composition-views.log",
+    "logDigest": "sha256:6cc577258fd596ab9811f6982797b30f9e473a87fb70d003bf41f8179cb0e4ab"
+  },
+  {
+    "name": "validate-graph",
+    "command": "npm --prefix app run validate:graph",
+    "exit_code": 0,
+    "started_at": "2026-10-05T05:53:42.217622+00:00",
+    "duration_seconds": 4.278,
+    "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/checks/agent-layer-a/validate-graph.log",
+    "env_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "originalLocalLog": "tmp/m7-commit-ready-validation-20261005-v1/agent-layer-a/validate-graph.log",
+    "logDigest": "sha256:9fdd107cb87b98d8c5d227e8852ebec29c43741d2b54f6fd9ed46d116eaedfe7"
+  },
+  {
+    "name": "validate-view-filters",
+    "command": "npm --prefix app run validate:view-filters",
+    "exit_code": 0,
+    "started_at": "2026-10-05T05:53:42.219375+00:00",
+    "duration_seconds": 23.409,
+    "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/checks/agent-layer-a/validate-view-filters.log",
+    "env_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "originalLocalLog": "tmp/m7-commit-ready-validation-20261005-v1/agent-layer-a/validate-view-filters.log",
+    "logDigest": "sha256:02b24631382961ca65157fab2f686d379fbd48f8b454ce75f0a33ba0c2abe781"
+  }
+]

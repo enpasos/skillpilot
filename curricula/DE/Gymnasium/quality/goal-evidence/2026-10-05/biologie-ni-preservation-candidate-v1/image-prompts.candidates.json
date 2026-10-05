@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "candidateStatus": "prompts_only_no_generation",
+  "default": {
+    "fileFormat": "PNG",
+    "aspectRatio": "about 16:9",
+    "nativeSize": "about1600x900 or close native generator size",
+    "style": "Friendly, clear, abstract comic illustration matching current SkillPilot biology assets.",
+    "displayChecks": [
+      "Actual native PNG",
+      "360px image width",
+      "680px image width"
+    ],
+    "avoid": [
+      "photorealism",
+      "sterile technical restyling",
+      "programmatic SVG replacement",
+      "read-required small type",
+      "crowded tiny panels"
+    ],
+    "providerPreference": "ChatGPT/Codex imagegen; Nano Banana Pro remains allowed without prior failed attempts"
+  },
+  "goals": [
+    {
+      "goalId": "359e6313-cd86-54d1-bee5-8e680101dc32",
+      "motif": "Two clearly separated parent/offspring groups of one familiar snail species, offspring with different shell colours/banding; differences within a species, no progressive perfect endpoint.",
+      "prompt": "Create one friendly abstract biology comic PNG in landscape about16:9. Show a small family group of garden snails and a clearly separated next-generation group. Every snail is recognizably the same species, but individuals vary in shell light/dark colouring and simple bands. Use only two short large labels Eltern and Nachkommen. No DNA, chromosomes, selection predators, hierarchy of better/worse forms or target perfection. Keep each group and shell variation recognizable at360px. A generation arrow indicates descent only, not a cause or directed improvement. No scientific classification labels are needed."
+    },
+    {
+      "goalId": "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+      "motif": "A chromosome with one marked instruction region, a distinct friendly enzyme-product icon, and pigment-bearing plant trait; three roles plus a small model badge.",
+      "prompt": "Create one friendly abstract clear comic biology PNG in landscape about16:9. Show one simple chromosome ribbon with a highlighted region, then a distinct rounded enzyme-product symbol, then a violet flower. A few large labelled arrows show Gen – Genprodukt – Merkmal as a simplified relationship. The chromosome region is an information/instruction region, not a physical fragment that leaves the chromosome and becomes a protein; do not show a chromosome turning into the enzyme. No DNA double helix, DNA sequences, mRNA, ribosomes or transcription/translation machinery. No one-gene-one-trait universal claim. Add a short large vereinfachtes Modell label. Three large elements with generous space, recognizable at360px, natural friendly colours and bold comic outlines."
+    },
+    {
+      "goalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+      "motif": "Variation present before environmental filtering, a qualitative generation change from different offspring contributions, no direct need-to-mutation arrow.",
+      "prompt": "Create one friendly abstract clear comic biology PNG in landscape about16:9. Show an initial mixed group of light and dark beetles of one species on a neutral background, followed by a dark-background group in a later generation with more dark beetles and some light beetles still present. Use at most two short large labels Variation and Folgegeneration. All initial variants visibly pre-exist the dark background. The generation arrow must not show light beetles turning dark; it represents descendants with different frequencies. No purposeful mutation, no DNA, no winner trophy, no extinction certainty, no unlabelled detailed graphs. Keep the core motif clear at360px. This image can illustrate variation and selection; separate fresh tasks must establish mutation/recombination understanding without treating the picture as their proof."
+    }
+  ],
+  "imageDisposition": "All three goals currently lack primary resourceLinks in the inspected snapshot. Prompt preparation is neither an image nor a V decision. Inspect actual generated PNG, exact provenance, source bindings and mobile/desktop views independently before import."
+}

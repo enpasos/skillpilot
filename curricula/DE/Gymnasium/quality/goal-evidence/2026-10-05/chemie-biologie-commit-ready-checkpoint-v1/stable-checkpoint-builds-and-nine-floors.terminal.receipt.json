@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-10-05T06:21:32.190889+00:00",
+  "checks": [
+    {
+      "check": "runtime-assets",
+      "actualCommand": "npm --prefix app run prepare:runtime-assets",
+      "actualSessionId": 45060,
+      "actualTerminalExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/runtime-assets.terminal.stdout",
+      "stdoutDigest": "sha256:e73b27322da8ea4e27094bb00c9818e30ca2883c6ab2e136ec57362c471cdc23"
+    },
+    {
+      "check": "goal-books-force-build",
+      "actualCommand": "npm --prefix app run build:goal-books -- --force",
+      "actualSessionId": 68133,
+      "actualTerminalExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/goal-books-force-build.terminal.stdout",
+      "stdoutDigest": "sha256:2779266bd963689b15f72fb4e1add8068e77929ae186162f6bc8bc494031aa22"
+    },
+    {
+      "check": "goal-book-publication",
+      "actualCommand": "npm --prefix app run check:goal-book-publication",
+      "actualSessionId": 37849,
+      "actualTerminalExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/goal-book-publication.terminal.stdout",
+      "stdoutDigest": "sha256:d31ccd8cd1c763a02b995635bc710813c54be03044de0ab42f2ce8a90ff436e0"
+    },
+    {
+      "check": "goal-book-pipeline",
+      "actualCommand": "npm --prefix app run test:goal-book-pipeline",
+      "actualSessionId": 77958,
+      "actualTerminalExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/goal-book-pipeline.terminal.stdout",
+      "stdoutDigest": "sha256:95d447c85e23fb7a34a45cf1a3d52936bd6e4a6e60839b081b8af2d00f1bea53"
+    },
+    {
+      "check": "application-build",
+      "actualCommand": "npm --prefix app run build:application",
+      "actualSessionId": 47437,
+      "actualTerminalExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/application-build.terminal.stdout",
+      "stdoutDigest": "sha256:b99cb67c6b7a90f8e3bf75b9122354c8795d3191959a369b2c3c9d8190da0978"
+    },
+    {
+      "check": "memory-reports",
+      "actualCommand": "npm --prefix app run quality:memory-card-review:report:all",
+      "actualSessionId": 18595,
+      "actualTerminalExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/memory-reports.terminal.stdout",
+      "stdoutDigest": "sha256:887e23225f42f18d00103f6de79979c97f518f46cf53649ca2cc16e2a1e17f90"
+    },
+    {
+      "check": "frontend-shell-assets",
+      "actualCommand": "npm --prefix app run check:frontend-shell-assets",
+      "actualSessionId": null,
+      "actualTerminalExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/frontend-shell-assets.terminal.stdout",
+      "stdoutDigest": "sha256:c916dec6d8aa49ced2cb5eced42f6ba7fb81c54bc09e9f5485088cffb0de79e4"
+    },
+    {
+      "check": "nine-maturity-floors",
+      "actualCommand": "npm --prefix app run check:curriculum-maturity-floors",
+      "actualSessionId": null,
+      "actualTerminalExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/nine-maturity-floors.terminal.stdout",
+      "stdoutDigest": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6"
+    }
+  ],
+  "sourceGitHead": "693872e8ea8663384281d06f61858b0f8fef332f",
+  "currentActivePackageDigest": "sha256:5c72b92b5445f3feac77d01d31b72bf9ad15890c3b1a54c28da361f856877f2f",
+  "currentActiveLockDigest": "sha256:c9504dadb8643394ab72484c77560dd599fe50e9487cf6470fc6bb41038bc175",
+  "actualBuildUsesCurrentActiveLock": true,
+  "lockCandidateInstallationOrBuildClaimed": false,
+  "lockCandidateDecisionPending": true,
+  "finalDocsAndBuiltArtifactCheckReceiptPending": true,
+  "machineM7ChemistryReached": false,
+  "machineM7BiologyReached": false,
+  "humanApprovalClaimed": false,
+  "githubCiForLocalChangesClaimed": false,
+  "commitCreated": false
+}

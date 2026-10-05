@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/bio_q1_six_candidate_review_b",
+  "completedAtUtc": "2026-10-05T00:24:49.441949+00:00",
+  "phase": "targeted-independent-P-successor-content-review-only",
+  "beforeCandidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-revision-candidate-v1/positive-evidence.candidates.json",
+  "beforeCandidateSha256": "sha256:b96944987da9c04a90aafc93549f1ceef0d91e9c875a39d48207b85e96081a50",
+  "afterCandidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-positive-targeted-candidate-v2/positive-evidence.candidates.json",
+  "afterCandidateSha256": "sha256:fc4b0df91a63bd9a97fcabbf769eaa83d29c35f2eb4cc26e732ac5f6ed49bcab",
+  "afterWrapperReviewId": "chemie-energy-four-revision-candidate-v2-targeted-v2",
+  "scope": "Five changed inner strings only; four4928 DEEN pressure/model strings and one3e DE technical phrase. No D restart or other full-profile reassessment.",
+  "actualChangedInnerPaths": [
+    "/goals/2/profile/applicationCaseBriefs/0/taskDemandDe",
+    "/goals/2/profile/applicationCaseBriefs/0/taskDemandEn",
+    "/goals/2/profile/expectations/0/essentialUnderstandingDe",
+    "/goals/2/profile/expectations/0/essentialUnderstandingEn",
+    "/goals/3/profile/expectations/0/observablePerformanceDe"
+  ],
+  "exactDiffCheck": "PASS; precisely specified five changed inner profile strings; no other inner profile changes",
+  "innerSchemaValidation": "4/4 PASS bound positive-understanding-evidence-v2 #/$defs/profile",
+  "decisions": [
+    {
+      "goalId": "4928d5d1-e790-5883-9349-3b03a1c63b99",
+      "decision": "PASS_TARGETED_P_SUCCESSOR_CANDIDATE_ONLY",
+      "resolvedFindings": [
+        "Product-form PV work explicitly limited to constant external pressure in DE and EN.",
+        "Closed/PV-only/constant and mechanically balanced system-external pressure conditions explicitly supplied for q_p=deltaH in DE and EN.",
+        "First case states the required same mechanical model; unchanged expected work-on-system=-200J,deltaU=+300J,deltaH=+500J is now justified.",
+        "q_V=deltaU explicitly constant-volume/no-other-work; fully isolated fresh-case unchanged and previously passed."
+      ],
+      "actualReasoningCheck": "Using given mechanically balanced constant pressure, delta(pV)=p*deltaV=+200J, so deltaH=deltaU+delta(pV)=300+200=500J. This inference is not provided as a case answer in the demand.",
+      "helpBoundary": "Constant pressure/equilibrium/absence of other work are supplied model data, not unassisted recall, experimentally established conditions or learner-derived facts. Remaining independent performance is boundary classification, sign interpretation, energy balance, state-function distinction and explanation; repeating supplied conditions alone remains insufficient.",
+      "bilingualConsistency": "DE and EN specify the same model, signs, boundaries and conditional equalities. No variable-pressure integral calculation newly required."
+    },
+    {
+      "goalId": "3e433dae-99f9-5a95-ad63-d5fa0b5f6836",
+      "decision": "PASS_TARGETED_P_SUCCESSOR_CANDIDATE_ONLY",
+      "resolvedFinding": "Exact DE observable-performance phrase now einer einzelnen Eduktbindung, matching EN single reactant bond.",
+      "substantiveScopeUnchanged": "All cases, numeric budgets, help declarations, no-compulsory-sums limits and scientific expected performances unchanged. This is technical-language repair, no new substantive completion."
+    }
+  ],
+  "unchangedContentChecks": [
+    {
+      "goalId": "8ece9beb-9458-5ea1-8e45-9be04670f464",
+      "innerProfileUnchanged": true,
+      "actualInnerProfileDigest": "sha256:4be8471c3ea927174f8ae90015d81bd04fa155174ba94f2453dab0c863e7952a"
+    },
+    {
+      "goalId": "b95cdf98-fc97-5a94-b133-878922d28156",
+      "innerProfileUnchanged": true,
+      "actualInnerProfileDigest": "sha256:59437bb6a12fbe8d57072093afcd1b76f4c11b081fab19a9fa58945c497fe465"
+    },
+    {
+      "goalId": "4928d5d1-e790-5883-9349-3b03a1c63b99",
+      "freshCaseUnchanged": true,
+      "firstCaseExpectedPerformanceDeEnUnchanged": true,
+      "coverageAndAxesUnchanged": true
+    },
+    {
+      "goalId": "3e433dae-99f9-5a95-ad63-d5fa0b5f6836",
+      "allCasesAndExpectedAnswersUnchanged": true
+    }
+  ],
+  "preservedHistoricalArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-current-independent-review-b-v1/description-phase-frozen.receipt.json",
+      "sha256": "sha256:30ed18ffafe4be6cfd3f6aadd0b2e52a90fdbb79edda02c88e911fced2c86cde",
+      "originalHashStillMatches": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-current-independent-review-b-v1/description-phase-binding-clarification.receipt.json",
+      "sha256": "sha256:91229ba0ce68d102ec1c64371bef3bf79818e0be032ce4c72ef3d9a9bbf2bc4e",
+      "originalHashStillMatches": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-current-independent-review-b-v1/positive-profile-content-review.receipt.json",
+      "sha256": "sha256:e00b8de452ae102a5eb5c7e3d8788bb706af9edb98e66f60319b00124b30bd95",
+      "originalHashStillMatches": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-current-independent-review-b-v1/description-records-original-frozen.jsonl",
+      "sha256": "sha256:325ba435836dff553e84d272e3292310404ff7abba9a85da39b615e01c86ce4d",
+      "originalHashStillMatches": true
+    }
+  ],
+  "originalHoldsPreserved": true,
+  "otherNewIndependentReviewRead": false,
+  "remainingOwnInnerProfileDissent": [],
+  "currentAdoptionBoundary": "Inactive candidate content PASS only. No outer P review/current fingerprint/source/image/page/book registration or central closure produced; parent materialization still required. Other two original inner profiles retain their prior independently reviewed content conclusions.",
+  "centralClosureDelta": 0,
+  "newSubstantiveClosures": 0,
+  "restoredCurrentBindings": 0,
+  "humanApprovalClaimed": false,
+  "humanTrialClaimed": false,
+  "ownershipReleasedAfterThisReceipt": true
+}

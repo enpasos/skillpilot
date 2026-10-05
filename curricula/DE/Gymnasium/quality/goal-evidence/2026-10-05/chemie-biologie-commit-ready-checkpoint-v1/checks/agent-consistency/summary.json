@@ -1,0 +1,147 @@
+{
+  "modifiedFiles": [
+    "app/scripts/memoryCardReviewConfigDiscovery.ts",
+    "app/scripts/runMemoryCardReviewConfigs.ts",
+    "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.json",
+    "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.md"
+  ],
+  "checks": [
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "tmp/m7-commit-ready-validation-20261005-v1/agent-consistency/test-active-memory-selection.ts"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:goal-visualization-rollout-status:chemie"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-visualization-rollout-status:chemie"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:memory-card-review:check:all"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "node_modules/.bin/tsc",
+        "--noEmit",
+        "--target",
+        "ES2023",
+        "--module",
+        "ESNext",
+        "--moduleResolution",
+        "bundler",
+        "--types",
+        "node",
+        "--skipLibCheck",
+        "--strict",
+        "scripts/memoryCardReviewConfigDiscovery.ts",
+        "scripts/runMemoryCardReviewConfigs.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-visualization-qa-coverage-parity"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "nativeAllConfigRuns": 10,
+  "historicalMemoryFilesVerified": 61,
+  "historicalMemoryFilesChanged": [],
+  "chemistryPrimaryLinks": 354,
+  "chemistrySourceRootImageCounts": {
+    ".jpg": 339,
+    ".png": 21
+  },
+  "chemistryPublicRootImageCounts": {
+    ".jpg": 339,
+    ".png": 21
+  },
+  "chemistryBoundPrimaryExtensionCounts": {
+    ".jpg": 333,
+    ".png": 21
+  },
+  "chemistryBoundAssetFailures": [],
+  "chemistryRolloutSummary": {
+    "totalGoals": 473,
+    "atomicGoalsInScope": 376,
+    "goalsWithPrimaryVisualization": 354,
+    "coveragePercent": 94.1,
+    "goalsAccountedForByAssetOrDeferred": 376,
+    "accountedCoveragePercent": 100,
+    "releaseApprovedVisualizationCount": 0,
+    "reviewStatusCounts": {
+      "accepted": 127,
+      "ai_candidate": 2,
+      "ai-reviewed": 5,
+      "pilot": 220
+    },
+    "linkedVisualizationReviewStatuses": {
+      "accepted": 127,
+      "ai_candidate": 2,
+      "ai-reviewed": 5,
+      "pilot": 220
+    },
+    "reviewLedgerFiles": 19,
+    "reviewDecisionCounts": {
+      "accepted_corrected_candidate": 32,
+      "accepted_current": 43,
+      "accepted_new_candidate": 276,
+      "accepted_pilot": 59,
+      "accepted_pilot_after_regeneration": 13,
+      "accepted_pilot_after_second_regeneration": 3,
+      "accepted_pilot_after_third_regeneration": 3,
+      "accepted_pilot_after_user_review_correction": 3,
+      "deferred_provider_limitation": 130,
+      "rejected_after_user_review_replaced": 2,
+      "rejected_regenerated": 33
+    },
+    "openProviderDeferredGoals": 22,
+    "openQualityDeferredGoals": 0,
+    "openProviderQuotaGoals": 0,
+    "blockedProviderQuotaLedgers": 0,
+    "regularUnlinkedGoals": 0,
+    "coverageGatePassed": true,
+    "linkedWithoutAcceptedReview": 1,
+    "acceptedReviewWithoutLink": 0
+  },
+  "remainingTruthfulLegacyLedgerMismatch": [
+    {
+      "goalId": "27e4fe9b-4796-579b-8f7d-06c65fb600c0",
+      "title": "Blei-Akkumulator beschreiben",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/chemie/27e4fe9b-4796-579b-8f7d-06c65fb600c0/27e4fe9b-4796-579b-8f7d-06c65fb600c0.png",
+      "latestDecision": "deferred_provider_limitation"
+    }
+  ],
+  "scope": "Selector and generated Chemie rollout only; no review records, thresholds, approvals, canonical content, active registry, ledger, dependency files, runtime, provider artifacts or publication changed."
+}

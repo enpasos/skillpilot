@@ -1,0 +1,532 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "biologie-q1-four-new-independent-v-qa-20261005-v1",
+  "reviewedAtUtc": "2026-10-05T00:32:11.205983+00:00",
+  "reviewer": "Codex independent subagent A",
+  "reviewAuthority": "ai_candidate",
+  "recordStatus": "candidate",
+  "status": "four_inactive_revised_scope_images_pass_independent_actual_qa",
+  "scope": "Four new candidate raster assets only: DNA v3, gel v1, transcription factor v1, bacterial structure v1. Protein candidate correction excluded. No active integration or D/P restart.",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "fileSha256": "sha256:7d5a093e45be97ad4deb4a1a71370fcc30dd02f23da3dd16f1a95f4ff7be55b4"
+    },
+    {
+      "path": "docs/concept/skill-graph/atomic-goal-visualizations.md",
+      "fileSha256": "sha256:3acc382f20acf3fcbfe668ecafcf98f4be23aee00a372b169b2d1c392c7a4e7e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "fileSha256": "sha256:bf1f0db83fb572b882630cd25327633874e35126f6a014da697c90c1c87a644f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-six-candidate-v2/description-decisions.candidates.json",
+      "fileSha256": "sha256:a7cc2a789aded684ada40113f434cd1f6c4d15a92dad23ca022f6ef46f982b30"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-four-new-independent-v-qa-20261005-v1/current-goals-and-operative-descriptions.input.snapshot.json",
+      "fileSha256": "sha256:d30e9ba2d4ab4003cb13a620dc581b1b39d4a4cbfdc0020a244d8b096530e958"
+    }
+  ],
+  "primarySourceBoundaryInspection": {
+    "officialUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+    "liveOfficialPdfTextAccessedAndTargetClausesRead": true,
+    "edition": "Ausgabe2024, Stand01.08.2025",
+    "retainedRetrievedPrimaryPdfPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-six-candidate-v1/sources/he-biologie-official-current-20261005.pdf",
+    "retainedRetrievedPrimaryPdfSha256": "sha256:52c278d6f5a7383361631d5251550c42222f13e1bbe2aa16d39ca3b12c5e1558",
+    "printedPagesActuallyRenderedAndViewed": [
+      38,
+      39
+    ],
+    "sourcePageReceipts": [
+      {
+        "printedPage": 38,
+        "renderPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-four-new-independent-v-qa-20261005-v1/he-primary-printed38.png",
+        "renderSha256": "sha256:76f62b8a5c5f197b587f1f633e3cc80c24e87c40fbf5324dd8d9b16e4cc350d4"
+      },
+      {
+        "printedPage": 39,
+        "renderPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-four-new-independent-v-qa-20261005-v1/he-primary-printed39.png",
+        "renderSha256": "sha256:c8f8fefc2c618531f700883b84faa8c5be084b8ca1c05a0b9f53eef6a5e31d01"
+      }
+    ],
+    "ownExtractionPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-four-new-independent-v-qa-20261005-v1/he-primary-printed38-39-own-extract.txt",
+    "ownExtractionSha256": "sha256:3b963ddb8d85d71207aa4b08e8146c12b042cd1ef79e728289060b1b328ba866",
+    "finding": "Current and retained targeted HE Q1.1/Q1.2 clauses retain structure/replication, factor/methylation, PCR/gel and LK bacterial structure/reproduction boundaries. Image QA does not complete source mapping, missing companion or placement preservation. No own live binary hash comparison is claimed.",
+    "niDisposition": "Existing independently documented NI source/grade/molecular-genetics restrictions and residual FW6-004 Erbgleichheit hold remain untouched; these four image passes resolve none of them."
+  },
+  "goals": [
+    {
+      "goalId": "0daa79f6-8f61-5506-98f9-65db83062ba8",
+      "candidateVersion": 3,
+      "candidateImagePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-dna-structure-candidate-20261005-v1/candidate-v3.png",
+      "assetSha256": "sha256:aba7a7d5e8de9c6a5ffac09679a3195690cc5dd86066fcdff0b86002c29dac55",
+      "candidateDecision": "PASS_INACTIVE_REVISED_SCOPE",
+      "blockingImageFindings": [],
+      "currentActivePrimaryImageMissingVerifiedFromCanonical": true,
+      "existingRuntimeAndSourceAssetSearch": {
+        "searchedRoots": [
+          "curricula/DE/Gymnasium/visualizations/biologie",
+          "app/public/assets/goal-visualizations/biologie",
+          "backend/src/main/resources/static/assets/goal-visualizations/biologie"
+        ],
+        "matchingGoalIdFiles": [],
+        "method": "rg --files over these roots filtered to exact four IDs; no existing image selected for replacement"
+      },
+      "operativeScope": {
+        "proposedTitleDe": "DNA-Aufbau darstellen",
+        "proposedTitleEn": "Depict DNA structure",
+        "proposedDescriptionDe": "Die lernende Person kann den Aufbau der DNA aus Nukleotiden modellhaft darstellen und den Zusammenhang zwischen Basenfolge, komplementärer Basenpaarung und Speicherung genetischer Information erklären.",
+        "proposedDescriptionEn": "The learner can model DNA structure from nucleotides and explain the relationship between base sequence, complementary base pairing and the storage of genetic information.",
+        "proposedRequires": [
+          "fc8c4b02-02f2-5ad6-b481-224d36121da1",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ]
+      },
+      "scientificFindings": [
+        "Unwound ladder is a schematic two-strand structural representation, not a claim that DNA is physically a flat ladder.",
+        "Four complementary pairs are A-T, G-C, C-G, T-A. A-T has two dashed hydrogen-bond links and G-C three.",
+        "Strands are antiparallel: left 5-prime at top and 3-prime at bottom, right 3-prime at top and 5-prime at bottom. Free terminal phosphate circles are on the 5-prime ends, terminal OH labels on the 3-prime sugars.",
+        "Blue sugar and yellow phosphate form each backbone; bases attach to sugars, not to phosphate. Complete top-right T base/sugar/attached 5-side phosphate is selected together and connected to a complete three-part nucleotide inset.",
+        "Sequence, complementary pairing and information-storage caption support revised structure/information atom; there is no unsupported DNA replication or biochemical synthesis performance claim."
+      ],
+      "actualNativePhoneDesktopInspections": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-dna-structure-candidate-20261005-v1/candidate-v3.png",
+          "fileSha256": "sha256:aba7a7d5e8de9c6a5ffac09679a3195690cc5dd86066fcdff0b86002c29dac55",
+          "dimensions": [
+            1672,
+            941
+          ],
+          "actualImageViewed": true,
+          "detail": "original"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-dna-structure-candidate-20261005-v1/candidate-v3-360px.png",
+          "fileSha256": "sha256:0c18b211e7d884c91cb548b34e93fbce81206955873772573d801de450d3008a",
+          "dimensions": [
+            360,
+            203
+          ],
+          "actualImageViewed": true,
+          "detail": "original"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-dna-structure-candidate-20261005-v1/candidate-v3-680px.png",
+          "fileSha256": "sha256:a4ab3b4c49842289d2ac7e7a0fd185f543576a491e943191ab874e6b489016b4",
+          "dimensions": [
+            680,
+            383
+          ],
+          "actualImageViewed": true,
+          "detail": "original"
+        }
+      ],
+      "responsiveFindings": [
+        "At 360 pixels, four base pairs, opposing arrows, prime-number ends and the three-component nucleotide inset remain recognizable.",
+        "The small terminal OH labels are supplementary fine annotations at phone width; their exact chemistry was inspected natively and at 680. Do not require phone users to decode tiny OH text as the main competence.",
+        "At 680 pixels all primary labels, paired bases, backbone and complete selection callout are clear."
+      ],
+      "formatAssessment": {
+        "format": "PNG",
+        "mode": "opaque RGB",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "aspectRatio": 1.7768331562167907,
+        "approximately16by9": true,
+        "formatExceptionRequired": false,
+        "phoneDisplayedSize": [
+          360,
+          203
+        ],
+        "desktopDisplayedSize": [
+          680,
+          383
+        ],
+        "desktopHeightBelow28RemCap": true,
+        "drawingStyle": "Friendly, abstract, comic-like coloured diagram with pale-blue background and rounded thick outlines; no photorealism or sterile redesign.",
+        "perspectiveCheck": "Schematic diagrams contain no depicted writer/person or notebook. Molecular/gel/arrow/callout directions inspected directly."
+      },
+      "provenance": {
+        "provider": "OpenAI / ChatGPT-Codex built-in image_gen",
+        "exactImageModelIdentifier": "not exposed; not invented",
+        "generationReceiptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-dna-structure-candidate-20261005-v1/generation-v3.receipt.json",
+        "generationReceiptSha256": "sha256:86f84f3aeb6a0be61c47b30e909f832acd4833d37450478bdb340425869105fe",
+        "exactRequestPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-dna-structure-candidate-20261005-v1/generation-request-v3.json",
+        "exactRequestSha256": "sha256:8a231c3315eb5713d894cc57d537b62b613d2740099b5e4bfb113529d26de9a9",
+        "promptField": "prompt",
+        "providerOutputPath": "/home/enpasos/.codex/generated_images/01a0f2c0-2182-78f3-8b44-9fcdfd2c8634/exec-821d36b5-0f45-4d0b-925e-329ce426d0a2.png",
+        "providerOutputSha256": "sha256:aba7a7d5e8de9c6a5ffac09679a3195690cc5dd86066fcdff0b86002c29dac55",
+        "providerOutputMatchesCandidateBytes": true,
+        "authorVerdictNotUsedAsApproval": true,
+        "actualCandidateInspectedBeforePromptsAndAuthorGenerationReceiptsRead": true,
+        "rootResponsiveQaVerdictsNotRead": true
+      },
+      "altTextRecommendationDe": "Schematische DNA-Leiter mit zwei gegenläufigen 5′→3′-Strängen. Den Basen A, G, C und T stehen T, C, G und A gegenüber; A–T ist durch zwei, G–C durch drei Wasserstoffbrücken verbunden. Die 5′-Enden tragen Phosphat, die 3′-Enden eine freie OH-Gruppe am Zucker. Ein vollständiges T-Nukleotid aus Phosphat, Zucker und Base ist markiert und vergrößert. Die Basenfolge speichert genetische Information.",
+      "sourceScopeBoundary": "HE Q1.1 includes structure AND semiconservative replication. This image addresses revised structure/information scope only; independent replication source/view preservation for e70 remains required. No unchanged source history is reapproved.",
+      "activeMachineVRegistered": false,
+      "humanApprovalClaimed": false,
+      "strictClosureIncrease": 0
+    },
+    {
+      "goalId": "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+      "candidateVersion": 1,
+      "candidateImagePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-gel-analysis-candidate-20261005-v1/candidate-v1.png",
+      "assetSha256": "sha256:6c5a1ac50d05b30f31639f4c25f9eb948aff545783df606b57d9557664b36a87",
+      "candidateDecision": "PASS_INACTIVE_REVISED_SCOPE",
+      "blockingImageFindings": [],
+      "currentActivePrimaryImageMissingVerifiedFromCanonical": true,
+      "existingRuntimeAndSourceAssetSearch": {
+        "searchedRoots": [
+          "curricula/DE/Gymnasium/visualizations/biologie",
+          "app/public/assets/goal-visualizations/biologie",
+          "backend/src/main/resources/static/assets/goal-visualizations/biologie"
+        ],
+        "matchingGoalIdFiles": [],
+        "method": "rg --files over these roots filtered to exact four IDs; no existing image selected for replacement"
+      },
+      "operativeScope": {
+        "proposedTitleDe": "Gelelektrophorese auswerten",
+        "proposedTitleEn": "Evaluate gel electrophoresis",
+        "proposedDescriptionDe": "Die lernende Person kann die Trennung von DNA-Fragmenten durch Gelelektrophorese erklären und vorgegebene Bandenmuster mithilfe eines Größenmarkers begründet auswerten.",
+        "proposedDescriptionEn": "The learner can explain how gel electrophoresis separates DNA fragments and use a size marker to interpret supplied band patterns with reasons.",
+        "proposedRequires": [
+          "0daa79f6-8f61-5506-98f9-65db83062ba8",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ]
+      },
+      "scientificFindings": [
+        "All three wells are aligned at the negative/top side; migration arrow points toward positive/bottom side. This is the correct orientation for negatively charged DNA in a standard separation model.",
+        "Four marker bands and two bands per sample are separate horizontal bands. Smaller LINEAR fragments travel farther under common gel conditions; the image explicitly limits its rule to linear fragments.",
+        "Band height supports comparison with a size marker. No numerical bp values are present, so the image offers qualitative relative size orientation, not exact numerical calibration.",
+        "No band position, matching size or band count is portrayed as proof of sequence equality, identity, genotype, disease or PCR performance. No practical experiment is claimed."
+      ],
+      "actualNativePhoneDesktopInspections": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-gel-analysis-candidate-20261005-v1/candidate-v1.png",
+          "fileSha256": "sha256:6c5a1ac50d05b30f31639f4c25f9eb948aff545783df606b57d9557664b36a87",
+          "dimensions": [
+            1672,
+            941
+          ],
+          "actualImageViewed": true,
+          "detail": "original"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-gel-analysis-candidate-20261005-v1/candidate-v1.width-360.png",
+          "fileSha256": "sha256:cb15b4f1ebde78e3e8e02d6ee091b66c41adda4c929bf273f6c2659f70616de0",
+          "dimensions": [
+            360,
+            203
+          ],
+          "actualImageViewed": true,
+          "detail": "original"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-gel-analysis-candidate-20261005-v1/candidate-v1.width-680.png",
+          "fileSha256": "sha256:dd4f65795d92ba8f2f7fc595eb87f86d3ed8ecedd23f1df86887007235c127c3",
+          "dimensions": [
+            680,
+            383
+          ],
+          "actualImageViewed": true,
+          "detail": "original"
+        }
+      ],
+      "responsiveFindings": [
+        "At 360 pixels lanes, wells, marker/sample labels, four marker bands and two bands per sample are separable; electrode signs and migration direction remain visible.",
+        "At 680 pixels the same relationships and linear-fragment qualification are clearly readable.",
+        "Large length cues and sparse bands avoid a miniature measurement puzzle."
+      ],
+      "formatAssessment": {
+        "format": "PNG",
+        "mode": "opaque RGB",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "aspectRatio": 1.7768331562167907,
+        "approximately16by9": true,
+        "formatExceptionRequired": false,
+        "phoneDisplayedSize": [
+          360,
+          203
+        ],
+        "desktopDisplayedSize": [
+          680,
+          383
+        ],
+        "desktopHeightBelow28RemCap": true,
+        "drawingStyle": "Friendly, abstract, comic-like coloured diagram with pale-blue background and rounded thick outlines; no photorealism or sterile redesign.",
+        "perspectiveCheck": "Schematic diagrams contain no depicted writer/person or notebook. Molecular/gel/arrow/callout directions inspected directly."
+      },
+      "provenance": {
+        "provider": "OpenAI / ChatGPT-Codex built-in image_gen",
+        "exactImageModelIdentifier": "not exposed; not invented",
+        "generationReceiptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-gel-analysis-candidate-20261005-v1/generation-v1.receipt.json",
+        "generationReceiptSha256": "sha256:4627f75445c363ced4a7a34777a12d70a6df4a592fac9c1bb72e8de0527eafb8",
+        "exactRequestPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-gel-analysis-candidate-20261005-v1/generation-request-v1.json",
+        "exactRequestSha256": "sha256:6e8fbb22fa1081cd230faa6350a554d0f48d083287e48c18fbec5e09d4037a00",
+        "promptField": "prompt",
+        "providerOutputPath": "/home/enpasos/.codex/generated_images/01a0f2c0-2182-78f3-8b44-9fcdfd2c8634/exec-a4f05c07-eeba-4d9b-bae8-77229e8352f9.png",
+        "providerOutputSha256": "sha256:6c5a1ac50d05b30f31639f4c25f9eb948aff545783df606b57d9557664b36a87",
+        "providerOutputMatchesCandidateBytes": true,
+        "authorVerdictNotUsedAsApproval": true,
+        "actualCandidateInspectedBeforePromptsAndAuthorGenerationReceiptsRead": true,
+        "rootResponsiveQaVerdictsNotRead": true
+      },
+      "altTextRecommendationDe": "Schematisches Gel mit einem Größenmarker und zwei Probenbahnen. Die Taschen liegen oben am Minuspol, die DNA-Fragmente wandern zum Pluspol unten. Kleinere lineare Fragmente wandern weiter; größere bleiben näher bei den Taschen. Vier Markerbanden und je zwei Probenbanden werden nach ihrer Höhe verglichen. Numerische Fragmentlängen sind nicht angegeben.",
+      "sourceScopeBoundary": "HE Q1.2 GK/LK includes PCR and gel electrophoresis. The revised image supports explanation and interpretation of supplied patterns, not evidence of performing separation in a laboratory. It neither proves PCR prerequisite universality nor creates a new BY/NI mapping.",
+      "activeMachineVRegistered": false,
+      "humanApprovalClaimed": false,
+      "strictClosureIncrease": 0
+    },
+    {
+      "goalId": "946ce2e7-c30d-5670-839d-003b0619c284",
+      "candidateVersion": 1,
+      "candidateImagePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-transcription-factor-candidate-20261005-v1/candidate-v1.png",
+      "assetSha256": "sha256:b8846d373a278881915668f9d23a5fd8e28cec8d2660d53d05ea4aebac3ccda6",
+      "candidateDecision": "PASS_INACTIVE_REVISED_SCOPE",
+      "blockingImageFindings": [],
+      "currentActivePrimaryImageMissingVerifiedFromCanonical": true,
+      "existingRuntimeAndSourceAssetSearch": {
+        "searchedRoots": [
+          "curricula/DE/Gymnasium/visualizations/biologie",
+          "app/public/assets/goal-visualizations/biologie",
+          "backend/src/main/resources/static/assets/goal-visualizations/biologie"
+        ],
+        "matchingGoalIdFiles": [],
+        "method": "rg --files over these roots filtered to exact four IDs; no existing image selected for replacement"
+      },
+      "operativeScope": {
+        "proposedTitleDe": "Transkriptionsfaktoren bei Eukaryoten erklären",
+        "proposedTitleEn": "Explain transcription factors in eukaryotes",
+        "proposedDescriptionDe": "Die lernende Person kann an einem gegebenen eukaryotischen Genmodell erklären, wie Transkriptionsfaktoren über regulatorische DNA-Bereiche die Transkription beeinflussen.",
+        "proposedDescriptionEn": "The learner can use a supplied eukaryotic gene model to explain how transcription factors influence transcription through regulatory DNA regions.",
+        "proposedRequires": [
+          "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ]
+      },
+      "scientificFindings": [
+        "A distinct activating protein factor is bound to the labeled regulatory DNA region; RNA polymerase is a separate shape at a separate start region.",
+        "Dotted interaction arrow is labeled promotes and represents facilitation, not a covalent DNA link or mRNA strand. A separate process arrow leads to multiple single RNA strands labeled more mRNA.",
+        "Activating factor and shown model: activation are visible explicit qualifications. There is no claim that every transcription factor activates, that regulation is always binary on/off, or that basal transcript production is zero.",
+        "Regulatory, start and gene regions form a simple abstract eukaryotic gene model. No specific sequence, physical contact mechanism, methylation or protein-product conclusion is invented."
+      ],
+      "actualNativePhoneDesktopInspections": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-transcription-factor-candidate-20261005-v1/candidate-v1.png",
+          "fileSha256": "sha256:b8846d373a278881915668f9d23a5fd8e28cec8d2660d53d05ea4aebac3ccda6",
+          "dimensions": [
+            1672,
+            941
+          ],
+          "actualImageViewed": true,
+          "detail": "original"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-transcription-factor-candidate-20261005-v1/candidate-v1-360px.png",
+          "fileSha256": "sha256:742f9e131610c4d82361268f3db8d25504e1fc94d10705a0a9e3b4930b30f3dc",
+          "dimensions": [
+            360,
+            203
+          ],
+          "actualImageViewed": true,
+          "detail": "original"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-transcription-factor-candidate-20261005-v1/candidate-v1-680px.png",
+          "fileSha256": "sha256:af2f1a708b3cd747284f46e200bfea75e54675e7c55054965436306b0a5ebcd6",
+          "dimensions": [
+            680,
+            383
+          ],
+          "actualImageViewed": true,
+          "detail": "original"
+        }
+      ],
+      "responsiveFindings": [
+        "At 360 pixels factor/DNA binding, polymerase at the start, regulatory/gene regions and increased mRNA are visually distinct.",
+        "Both activating-example qualifications are readable on phone and desktop.",
+        "At 680 pixels all major labels and arrow roles are clear; friendly protein shapes remain separate."
+      ],
+      "formatAssessment": {
+        "format": "PNG",
+        "mode": "opaque RGB",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "aspectRatio": 1.7768331562167907,
+        "approximately16by9": true,
+        "formatExceptionRequired": false,
+        "phoneDisplayedSize": [
+          360,
+          203
+        ],
+        "desktopDisplayedSize": [
+          680,
+          383
+        ],
+        "desktopHeightBelow28RemCap": true,
+        "drawingStyle": "Friendly, abstract, comic-like coloured diagram with pale-blue background and rounded thick outlines; no photorealism or sterile redesign.",
+        "perspectiveCheck": "Schematic diagrams contain no depicted writer/person or notebook. Molecular/gel/arrow/callout directions inspected directly."
+      },
+      "provenance": {
+        "provider": "OpenAI / ChatGPT-Codex built-in image_gen",
+        "exactImageModelIdentifier": "not exposed; not invented",
+        "generationReceiptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-transcription-factor-candidate-20261005-v1/generation-v1.receipt.json",
+        "generationReceiptSha256": "sha256:6ee5c35b8582c20cc47b825cafad6aeff30dcdcd11b2a25aed2d44f648371ad3",
+        "exactRequestPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-transcription-factor-candidate-20261005-v1/generation-request-v1.json",
+        "exactRequestSha256": "sha256:19b41b11ebb9e323532b3b04b67e158846f1554e423b9d0148b9ce3486d74691",
+        "promptField": "prompt",
+        "providerOutputPath": "/home/enpasos/.codex/generated_images/01a0f2c0-2182-78f3-8b44-9fcdfd2c8634/exec-72d58606-994a-4460-a89b-804ec88b3601.png",
+        "providerOutputSha256": "sha256:b8846d373a278881915668f9d23a5fd8e28cec8d2660d53d05ea4aebac3ccda6",
+        "providerOutputMatchesCandidateBytes": true,
+        "authorVerdictNotUsedAsApproval": true,
+        "actualCandidateInspectedBeforePromptsAndAuthorGenerationReceiptsRead": true,
+        "rootResponsiveQaVerdictsNotRead": true
+      },
+      "altTextRecommendationDe": "Modell eines aktivierenden Transkriptionsfaktors bei einem eukaryotischen Gen. Der Faktor bindet an einen regulatorischen DNA-Bereich und fördert im gezeigten Modell die Polymerase am getrennten Startbereich. Ein Pfeil führt zu mehreren einzelnen mRNA-Strängen mit der Beschriftung „mehr mRNA“. Die Abbildung zeigt ausdrücklich ein aktivierendes Beispiel.",
+      "sourceScopeBoundary": "HE Q1.2 GK/LK regulation clause includes transcription factors AND DNA methylation. This candidate illustrates only the revised transcription-factor atom; the methylation companion and source/view/assessment preservation remain required. No universal factor mechanism or new BY applicability is established.",
+      "activeMachineVRegistered": false,
+      "humanApprovalClaimed": false,
+      "strictClosureIncrease": 0
+    },
+    {
+      "goalId": "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+      "candidateVersion": 1,
+      "candidateImagePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-bacterial-structure-candidate-20261005-v1/candidate-v1.png",
+      "assetSha256": "sha256:21c583889d8d09355a28065956302e3d23434d6ef35c80dff576fc86fff5b165",
+      "candidateDecision": "PASS_INACTIVE_REVISED_SCOPE",
+      "blockingImageFindings": [],
+      "currentActivePrimaryImageMissingVerifiedFromCanonical": true,
+      "existingRuntimeAndSourceAssetSearch": {
+        "searchedRoots": [
+          "curricula/DE/Gymnasium/visualizations/biologie",
+          "app/public/assets/goal-visualizations/biologie",
+          "backend/src/main/resources/static/assets/goal-visualizations/biologie"
+        ],
+        "matchingGoalIdFiles": [],
+        "method": "rg --files over these roots filtered to exact four IDs; no existing image selected for replacement"
+      },
+      "operativeScope": {
+        "proposedTitleDe": "Bakteriellen Zellbau einordnen",
+        "proposedTitleEn": "Classify bacterial cell structure",
+        "proposedDescriptionDe": "Die lernende Person kann den prokaryotischen Grundbauplan eines Bakteriums an einem gegebenen Schema darstellen und die Lage seiner Erbinformation einschließlich gegebenenfalls vorhandener Plasmide erläutern.",
+        "proposedDescriptionEn": "The learner can use a supplied diagram to model the prokaryotic structure of a bacterium and explain the location of its genetic information, including plasmids when present.",
+        "proposedRequires": [
+          "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ]
+      },
+      "scientificFindings": [
+        "Cell wall is outer orange layer; membrane is the inner green boundary; cytoplasm, ribosomes and chromosomal DNA are inside. Chromosomal DNA is not enclosed by a nucleus or nuclear membrane.",
+        "Two small closed plasmid DNA rings are separate from the large coiled chromosome and from ribosome dots. The explicit label says plasmids can occur.",
+        "Footer states model with wall and plasmids, no nucleus. This bounds optional features to the shown example instead of asserting every bacterium has a wall or plasmids.",
+        "The drawing does not imply all bacteria have one circular chromosome, an exact genome/plasmid copy number or these particular surface appendages. Unlabeled appendages are incidental model features.",
+        "No division, conjugation, transformation, vector transfer or genetic-engineering procedure is claimed; the revised atom is cell structure and information location."
+      ],
+      "actualNativePhoneDesktopInspections": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-bacterial-structure-candidate-20261005-v1/candidate-v1.png",
+          "fileSha256": "sha256:21c583889d8d09355a28065956302e3d23434d6ef35c80dff576fc86fff5b165",
+          "dimensions": [
+            1672,
+            941
+          ],
+          "actualImageViewed": true,
+          "detail": "original"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-bacterial-structure-candidate-20261005-v1/candidate-v1-360px.png",
+          "fileSha256": "sha256:16fd2286301f75732c7dff41001a6fcaca12a7c33e7c5c39529e3ac2839cabf9",
+          "dimensions": [
+            360,
+            203
+          ],
+          "actualImageViewed": true,
+          "detail": "original"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-bacterial-structure-candidate-20261005-v1/candidate-v1-680px.png",
+          "fileSha256": "sha256:e941f18eb23f30b831858f4fab74190c78baeea8d358644f194c8f309cc93733",
+          "dimensions": [
+            680,
+            383
+          ],
+          "actualImageViewed": true,
+          "detail": "original"
+        }
+      ],
+      "responsiveFindings": [
+        "At 360 pixels large coiled DNA, small plasmid rings, separate wall/membrane and absence of nucleus remain clear; the main DNA-in-cytoplasm and plasmid qualifier are readable.",
+        "The parenthetical Bakterienchromosom is a supplementary small annotation on phone; core DNA location is conveyed by the larger label and structure.",
+        "At 680 pixels named structures, callout destinations and wall/plasmid model qualification are clear."
+      ],
+      "formatAssessment": {
+        "format": "PNG",
+        "mode": "opaque RGB",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "aspectRatio": 1.7768331562167907,
+        "approximately16by9": true,
+        "formatExceptionRequired": false,
+        "phoneDisplayedSize": [
+          360,
+          203
+        ],
+        "desktopDisplayedSize": [
+          680,
+          383
+        ],
+        "desktopHeightBelow28RemCap": true,
+        "drawingStyle": "Friendly, abstract, comic-like coloured diagram with pale-blue background and rounded thick outlines; no photorealism or sterile redesign.",
+        "perspectiveCheck": "Schematic diagrams contain no depicted writer/person or notebook. Molecular/gel/arrow/callout directions inspected directly."
+      },
+      "provenance": {
+        "provider": "OpenAI / ChatGPT-Codex built-in image_gen",
+        "exactImageModelIdentifier": "not exposed; not invented",
+        "generationReceiptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-bacterial-structure-candidate-20261005-v1/generation-v1.receipt.json",
+        "generationReceiptSha256": "sha256:114377d6346215663ce3ebfcc3a09fa8ed58f5d0d31a1ff43e89a1226d3bd95b",
+        "exactRequestPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-bacterial-structure-candidate-20261005-v1/generation-request-v1.json",
+        "exactRequestSha256": "sha256:8d2bc057ce79979362e619d4146d19a3eaa62ff123558510ed83a310ea39bb15",
+        "promptField": "prompt",
+        "providerOutputPath": "/home/enpasos/.codex/generated_images/01a0f2c0-2182-78f3-8b44-9fcdfd2c8634/exec-1bcd3b61-12fd-4348-9335-7e8bb69cfb4a.png",
+        "providerOutputSha256": "sha256:21c583889d8d09355a28065956302e3d23434d6ef35c80dff576fc86fff5b165",
+        "providerOutputMatchesCandidateBytes": true,
+        "authorVerdictNotUsedAsApproval": true,
+        "actualCandidateInspectedBeforePromptsAndAuthorGenerationReceiptsRead": true,
+        "rootResponsiveQaVerdictsNotRead": true
+      },
+      "altTextRecommendationDe": "Schematisches Bakterium mit Zellwand und Zellmembran. Das Bakterienchromosom liegt als große aufgewickelte DNA im Zellplasma ohne Zellkern. Zwei kleinere getrennte DNA-Ringe zeigen mögliche Plasmide; Punkte markieren Ribosomen. Das gezeigte Modell besitzt eine Zellwand und Plasmide, ohne diese Merkmale für jedes Bakterium zu behaupten.",
+      "sourceScopeBoundary": "HE Q1.2 LK includes bacterial structure AND reproduction at schema level. This candidate covers revised structure/location only; binary-fission companion and source/view preservation remain required. It does not transfer HE LK placement to non-HE Sek I or justify all-state inheritance.",
+      "activeMachineVRegistered": false,
+      "humanApprovalClaimed": false,
+      "strictClosureIncrease": 0
+    }
+  ],
+  "counts": {
+    "actualNativeImagesViewed": 4,
+    "actualPhoneWidthImagesViewed": 4,
+    "actualDesktopWidthImagesViewed": 4,
+    "candidateImageContentPasses": 4,
+    "candidateImageHolds": 0,
+    "activeMachineVClosures": 0,
+    "strictCompletionIncrease": 0,
+    "restoredCurrentBindings": 0
+  },
+  "independence": "Actual native and responsive raster results reviewed before provider prompts/generation author verdicts. Root responsive inspection receipts and sibling independent QA verdicts were not read. This is an independent AI image-content review, not human approval or participant trial.",
+  "activationBoundary": "PASS applies to exact candidate PNG hashes and revised proposed operative scopes only. Root must integrate final texts/source/companion routing, truthful asset metadata and current machine V bindings, then rerun affected checks. No old active broader description, all-state coverage, runtime acceptance or human release gate is approved by this receipt.",
+  "historicalArtifactsPreserved": true,
+  "activeCanonicalRegistryAMVChanges": false,
+  "fullCentralOrBuildRun": false,
+  "humanApprovalClaimed": false,
+  "humanTrialClaimed": false
+}

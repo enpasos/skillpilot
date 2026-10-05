@@ -1,0 +1,88 @@
+{
+  "format": "independent_targeted_followup_decision_freeze_v1",
+  "reviewer": "independent_b",
+  "reviewMode": "targeted_followup_to_own_frozen_B_v1_not_blind_first_pass",
+  "frozenAt": "2026-10-05T04:05:27.511676+00:00",
+  "candidateSha256": "cd9a72d5ef17546bcf513e7789fe22590a0f3142c90115da51af8b208c61731c",
+  "goalBindings": [
+    {
+      "candidateKey": "ni-fw6-008-independent-assortment-companion-v2",
+      "goalId": null,
+      "canonicalId": null,
+      "advisorySemanticSha256": "2c7be54ee119ca7b50cb5b54f5219e7d243a81b0ed4ac0bcaec773a3875a8580",
+      "fingerprintConvention": "SHA-256 of UTF-8 sorted-key compact JSON containing id=null plus complete goalTemplateWithoutId; explicitly not the native registry fingerprint"
+    },
+    {
+      "candidateKey": "ni-fw6-008-chromatid-segment-exchange-companion-v2",
+      "goalId": null,
+      "canonicalId": null,
+      "advisorySemanticSha256": "be239a9e2edc9d44ee034a30b8a4572b220a72ee9b0ecb2794fb490a18c13c9c",
+      "fingerprintConvention": "SHA-256 of UTF-8 sorted-key compact JSON containing id=null plus complete goalTemplateWithoutId; explicitly not the native registry fingerprint"
+    }
+  ],
+  "currentDecisions": [
+    {
+      "candidateKey": "ni-fw6-008-independent-assortment-companion-v2",
+      "goalId": null,
+      "D": "KEEP",
+      "A": "atomic",
+      "semanticAtomic": true,
+      "M_advisory": "no_memory_needed"
+    },
+    {
+      "candidateKey": "ni-fw6-008-chromatid-segment-exchange-companion-v2",
+      "goalId": null,
+      "D": "KEEP",
+      "A": "atomic",
+      "semanticAtomic": true,
+      "M_advisory": "no_memory_needed"
+    }
+  ],
+  "nativeGatePassed": false,
+  "humanApproval": false,
+  "foreignReviewFilesReadBeforeFreeze": false,
+  "authorMetadataNotUsedAsEvidence": true,
+  "priorBv1Modified": false,
+  "frozenFiles": [
+    {
+      "path": "source.review.json",
+      "sha256": "c935ad76c8a8fd57c3678b101cc6fd173c0e4018755746211147dc91c5b69529",
+      "byteLength": 3953
+    },
+    {
+      "path": "description.review.json",
+      "sha256": "61308eb06acbe2f8af9cf4273c3630b7da24cc87975c25f99fa08caf87cc89ca",
+      "byteLength": 4921
+    },
+    {
+      "path": "atomicity.review.json",
+      "sha256": "da7e1fd878a03c1c310d893f6e008e09dbf9859221e34cba78282b12bec0d4bd",
+      "byteLength": 3834
+    },
+    {
+      "path": "memory.review.json",
+      "sha256": "4237a6404b0539ee2d61c0f5b386b33b255abf01363ee4afbc02f584a8ca32d9",
+      "byteLength": 2825
+    },
+    {
+      "path": "provided-context-and-prerequisites.findings.json",
+      "sha256": "b89914630248a33c4b22aee12e4512e0cff6d86debea3c56e1e807fd43c65e39",
+      "byteLength": 3824
+    },
+    {
+      "path": "independence.audit.json",
+      "sha256": "65ae71e7093bb6e06c62735c0f296909086562c2a5f15a6e9522873247406656",
+      "byteLength": 3110
+    },
+    {
+      "path": "prior-b-v1-preservation.json",
+      "sha256": "c60d7248befdf49ff8e0d6284619442510cab5d5da0653ad5e0526bd000b34af",
+      "byteLength": 4069
+    },
+    {
+      "path": "independent-followup-review.md",
+      "sha256": "10024352aa959b83bb14fcec3842c404b1666ab39a027c91fd5f5f54e5c66850",
+      "byteLength": 11260
+    }
+  ]
+}

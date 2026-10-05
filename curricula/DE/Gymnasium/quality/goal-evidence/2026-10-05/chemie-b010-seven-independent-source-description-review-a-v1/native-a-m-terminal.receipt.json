@@ -1,0 +1,51 @@
+{
+  "observedAt": "2026-10-05T05:37:38.349637+00:00",
+  "checks": [
+    {
+      "check": "a-fingerprint-binding",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-independent-source-description-review-a-v1/a.config.json",
+        "--write-fingerprints"
+      ],
+      "actualExitCode": 0,
+      "terminal": "a-fingerprint-binding.terminal.txt"
+    },
+    {
+      "check": "a-native-current-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-independent-source-description-review-a-v1/a.config.json",
+        "--mode=check"
+      ],
+      "actualExitCode": 0,
+      "terminal": "a-native-current-check.terminal.txt"
+    },
+    {
+      "check": "m-six-fingerprint-binding",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-independent-source-description-review-a-v1/m-six.config.json",
+        "--write-fingerprints"
+      ],
+      "actualExitCode": 0,
+      "terminal": "m-six-fingerprint-binding.terminal.txt"
+    },
+    {
+      "check": "m-six-native-current-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-independent-source-description-review-a-v1/m-six.config.json",
+        "--mode=check"
+      ],
+      "actualExitCode": 0,
+      "terminal": "m-six-native-current-check.terminal.txt"
+    }
+  ],
+  "expectedAtomicityOpen": 2,
+  "qualifier": "Native A and M binding checkers both actually exit 0 with no missing/stale/obsolete records. The scientific A decisions remain five atomic and two non_atomic, so the two affected goals are not A-closure candidates. Native M gate covers only six no-new-memory goals; the particle card has a separate current individual trace and native visibility check, without certifying the complete shared deck."
+}

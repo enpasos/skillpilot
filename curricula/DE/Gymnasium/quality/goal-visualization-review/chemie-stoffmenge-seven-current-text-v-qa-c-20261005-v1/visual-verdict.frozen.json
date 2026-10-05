@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "targeted_independent_current_visualization_content_and_size_review",
+  "status": "ai_candidate",
+  "reviewer": "Codex independent V continuation C; exact deployed model version not exposed",
+  "startedAt": "2026-10-05T03:10:33.220125Z",
+  "frozenAt": "2026-10-05T03:14:35.012563Z",
+  "overallVerdict": "HOLD",
+  "passCount": 5,
+  "holdCount": 2,
+  "independenceBoundary": {
+    "neitherImageAuthorNorImageCorrectionAuthor": true,
+    "priorDAndPKnowledge": true,
+    "newBlindDReviewClaim": false,
+    "scope": "Six actual unchanged images reviewed against changed descriptions; one unchanged u/g v2 PASS reused by exact asset hash."
+  },
+  "inputMetadataReceiptSha256": "sha256:89174c1fefb8caadd562abdcc238ef0589797afe0b1418a5e7e880d4f503f989",
+  "metadataFinding": {
+    "staleQaDescriptionGoalIds": [
+      "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "8a2ad724-df5e-5986-8de9-560ba43caac2",
+      "1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+      "199570f4-b3c3-5e12-877d-ced97e9f6968",
+      "d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a",
+      "ddb76915-4d63-5375-901d-4e659f5e9b09"
+    ],
+    "staleQaTitleGoalIds": [],
+    "sourceFrontendQaHashMatches": 7,
+    "dd3QaDescriptionAlreadyCurrent": true,
+    "noAutomaticSemanticPassFromMetadataRefresh": true
+  },
+  "goals": [
+    {
+      "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "currentDeEn": {
+        "title": "Stoffmenge und Einheit Mol nutzen",
+        "titleEn": "Use amount of substance and the unit mole",
+        "description": "Die lernende Person kann die Stoffmenge als Maß für die Anzahl festgelegter Teilchen deuten und Stoffmengen eindeutig mit der Einheit Mol angeben.",
+        "descriptionEn": "The learner can interpret amount of substance as a measure of the number of specified particles and state amounts of substance unambiguously using the unit mole."
+      },
+      "beforeDeEn": {
+        "title": "Stoffmenge und Einheit Mol nutzen",
+        "titleEn": "Use amount of substance and the unit mole",
+        "description": "Die lernende Person kann die Stoffmenge als Teilchenanzahl-bezogene Groesse deuten und die Einheit Mol fachlich korrekt verwenden.",
+        "descriptionEn": "The learner can interpret amount of substance as a quantity related to particle number and use the unit mole correctly."
+      },
+      "changedTextFields": [
+        "description",
+        "descriptionEn"
+      ],
+      "qaDescriptionDelta": {
+        "description": {
+          "before": "Die lernende Person kann die Stoffmenge als Teilchenanzahl-bezogene Groesse deuten und die Einheit Mol fachlich korrekt verwenden.",
+          "after": "Die lernende Person kann die Stoffmenge als Maß für die Anzahl festgelegter Teilchen deuten und Stoffmengen eindeutig mit der Einheit Mol angeben."
+        }
+      },
+      "assetSha256": "sha256:5c4a0b09b6390c458efeeb7dd3f7f1aa027c326730277cc38ccbc3386851871a",
+      "sourcePath": "curricula/DE/Gymnasium/visualizations/chemie/1dc15fa2-fca4-56b0-b5c1-4d215613dde0/1dc15fa2-fca4-56b0-b5c1-4d215613dde0.jpg",
+      "frontendPath": "app/public/assets/goal-visualizations/chemie/1dc15fa2-fca4-56b0-b5c1-4d215613dde0/1dc15fa2-fca4-56b0-b5c1-4d215613dde0.jpg",
+      "nativeDimensions": {
+        "width": 2752,
+        "height": 1536
+      },
+      "nativeActualViewed": true,
+      "actual360And680Viewed": true,
+      "previewBindings": [
+        {
+          "width": 360,
+          "height": 201,
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-seven-current-text-v-qa-c-20261005-v1/previews/1dc15fa2-fca4-56b0-b5c1-4d215613dde0-360.png",
+          "sha256": "sha256:dc1ca1416b0486f830e938ad3a4136cb2775df89fd41b0eca36325ac97b87183"
+        },
+        {
+          "width": 680,
+          "height": 380,
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-seven-current-text-v-qa-c-20261005-v1/previews/1dc15fa2-fca4-56b0-b5c1-4d215613dde0-680.png",
+          "sha256": "sha256:78343b7e8f44a62c0cc1b6862c5c29da55819763d6586dba315e8b3576ccd7f4"
+        }
+      ],
+      "verdict": "HOLD",
+      "decision": "retain_motif_targeted_rounding_correction_required",
+      "observations": [
+        "Die tatsächliche native Grafik zeigt n=N/N_A, die Begriffe Stoffmenge/Teilchenzahl/Avogadro-Konstante, Wasser-Moleküle als festgelegte Entitäten und die Mol-/Dutzend-Analogie. Das passt zum präzisierten DE/EN-Kompetenzkern.",
+        "Die tatsächliche Fußzeile schreibt ausdrücklich 1 Mol = 6,022 · 10^23 Teilchen. Auch der große rechte Wert 6,022 · 10^23 wird ohne Näherungskennzeichnung an 1 mol angeschlossen. Der Wert ist auf vier signifikante Stellen gerundet und nicht die heutige exakte SI-Teilchenzahl.",
+        "Bei 360 und 680 px sind Titel, n=N/N_A, 1 mol und die große Teilchenzahl gut erkennbar; die kleinen analogen Zusatzlabels sind unterstützend. Kein eigenständiger Lesbarkeits-HOLD."
+      ],
+      "finding": {
+        "severity": "material",
+        "category": "rounded_value_presented_as_exact_mole_definition",
+        "location": "rechte große Teilchenzahl und untere rechte Gleichheitszeile",
+        "actual": "1 Mol = 6,022 · 10^23 Teilchen",
+        "requiredCorrection": "Gerundeten Wert durch ≈ oder ungefähr ausdrücklich als Näherung kennzeichnen; alternativ exakte Zahl 6,02214076 · 10^23 verwenden. Grundmotiv, Identifikation der Wasser-Moleküle und Zählbezug erhalten.",
+        "primarySource": "https://www.bipm.org/en/si-base-units/mole",
+        "sourceCheck": "Aktuelle BIPM-Mol-Seite tatsächlich erneut geöffnet; Absatz SI base unit: mole nennt die heutige exakte Zahl und festgelegte Entitäten. Historische HE-Rundung ist kein Beleg für eine heutige exakte Gleichheit."
+      }
+    },
+    {
+      "goalId": "8a2ad724-df5e-5986-8de9-560ba43caac2",
+      "currentDeEn": {
+        "title": "Molare Masse bestimmen und verwenden",
+        "titleEn": "Determine and use molar mass",
+        "description": "Die lernende Person kann die molare Masse als Masse pro Stoffmenge deuten, aus chemischen Formeln und Atommassen bestimmen und Masse und Stoffmenge damit verknüpfen.",
+        "descriptionEn": "The learner can interpret molar mass as mass per amount of substance, determine it from chemical formulas and atomic masses, and use it to relate mass and amount of substance."
+      },
+      "beforeDeEn": {
+        "title": "Molare Masse bestimmen und verwenden",
+        "titleEn": "Determine and use molar mass",
+        "description": "Die lernende Person kann molare Massen aus Formeln und Atommassen bestimmen und fuer einfache Stoffmengen- und Massenbezuege verwenden.",
+        "descriptionEn": "The learner can determine molar masses from formulas and atomic masses and use them for simple amount-of-substance and mass relationships."
+      },
+      "changedTextFields": [
+        "description",
+        "descriptionEn"
+      ],
+      "qaDescriptionDelta": {
+        "description": {
+          "before": "Die lernende Person kann molare Massen aus Formeln und Atommassen bestimmen und fuer einfache Stoffmengen- und Massenbezuege verwenden.",
+          "after": "Die lernende Person kann die molare Masse als Masse pro Stoffmenge deuten, aus chemischen Formeln und Atommassen bestimmen und Masse und Stoffmenge damit verknüpfen."
+        }
+      },
+      "assetSha256": "sha256:2d26dbb32a1606f494c014368d4858727f74287543b313b45c64382eaafa72d5",
+      "sourcePath": "curricula/DE/Gymnasium/visualizations/chemie/8a2ad724-df5e-5986-8de9-560ba43caac2/8a2ad724-df5e-5986-8de9-560ba43caac2.jpg",
+      "frontendPath": "app/public/assets/goal-visualizations/chemie/8a2ad724-df5e-5986-8de9-560ba43caac2/8a2ad724-df5e-5986-8de9-560ba43caac2.jpg",
+      "nativeDimensions": {
+        "width": 2752,
+        "height": 1536
+      },
+      "nativeActualViewed": true,
+      "actual360And680Viewed": true,
+      "previewBindings": [
+        {
+          "width": 360,
+          "height": 201,
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-seven-current-text-v-qa-c-20261005-v1/previews/8a2ad724-df5e-5986-8de9-560ba43caac2-360.png",
+          "sha256": "sha256:6190754f1baa6040a57c5774d07f0c8fc506cf4c13251a0a95a63fb7318f50ca"
+        },
+        {
+          "width": 680,
+          "height": 380,
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-seven-current-text-v-qa-c-20261005-v1/previews/8a2ad724-df5e-5986-8de9-560ba43caac2-680.png",
+          "sha256": "sha256:ffff35cd93f71a923908a9dfbec975904c0e28351279ca6d7493764695a1708d"
+        }
+      ],
+      "verdict": "PASS",
+      "decision": "KEEP",
+      "observations": [
+        "H2O-Formel und H/O-Teilchenmodell passen; die Rechnung verwendet die im Bild gegebenen gerundeten molaren Atommassen 1 und 16 g/mol und ergibt selbstkonsistent 18 g/mol.",
+        "Zwei ausdrücklich mit 1 mol H2O beschriftete Stoffportionen werden mit 36 g und m=n·M verbunden. M in g/mol bleibt von m in g getrennt; der Stoffmengenbezug der molaren Masse ist sichtbar.",
+        "Die Beschreibungspräzisierung Masse pro Stoffmenge verlangt keinen Bildwechsel. Bei 360/680 px sind Hauptformel, Ergebnis 18 g/mol, 36 g, Stoffportionen und m=n·M erkennbar; 680 px macht alle unterstützenden Beschriftungen deutlich. Kleine Modellatome sind illustrativ, keine wörtliche Molzählung."
+      ],
+      "finding": null
+    },
+    {
+      "goalId": "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+      "currentDeEn": {
+        "title": "Atomare Masseneinheit und Grammbezug einordnen",
+        "titleEn": "Classify atomic mass unit and gram relationship",
+        "description": "Die lernende Person kann u und g als unterschiedlich große Einheiten derselben Masse einordnen und die Masse eines Teilchens mit der Masse einer Stoffportion verknüpfen.",
+        "descriptionEn": "The learner can identify u and g as differently sized units of the same mass quantity and relate the mass of a particle to the mass of a sample."
+      },
+      "beforeDeEn": {
+        "title": "Atomare Masseneinheit und Grammbezug einordnen",
+        "titleEn": "Classify atomic mass unit and gram relationship",
+        "description": "Die lernende Person kann die Masseneinheiten u und g im Stoechiometriekontext unterscheiden und in einfachen Teilchen- und Stoffmengenbezuegen nutzen.",
+        "descriptionEn": "The learner can distinguish the mass units u and g in stoichiometric contexts and use them in simple particle and amount-of-substance relationships."
+      },
+      "changedTextFields": [
+        "description",
+        "descriptionEn"
+      ],
+      "qaDescriptionDelta": {},
+      "assetSha256": "sha256:a1edaf2c262fb5c8e59414112c38e77dca87b48336821a554a369a26787bfeb3",
+      "sourcePath": "curricula/DE/Gymnasium/visualizations/chemie/dd3fc8fe-2316-5fbc-b569-00651c83bc81/dd3fc8fe-2316-5fbc-b569-00651c83bc81.png",
+      "frontendPath": "app/public/assets/goal-visualizations/chemie/dd3fc8fe-2316-5fbc-b569-00651c83bc81/dd3fc8fe-2316-5fbc-b569-00651c83bc81.png",
+      "nativeDimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "nativeActualViewed": false,
+      "actual360And680Viewed": false,
+      "previewBindings": [],
+      "verdict": "PASS",
+      "decision": "KEEP_reuse_exact_frozen_v2",
+      "observations": [
+        "Aktuelle Source-, Frontend- und QA-Bytes haben exakt denselben zuvor unabhängig visuell geprüften v2-Hash a1edaf2c262fb5c8e59414112c38e77dca87b48336821a554a369a26787bfeb3.",
+        "Eigenes zuvor eingefrorenes natives/360-/680-PASS wird unverändert wiederverwendet: beide Einheiten auf Teilchen-/Portionsebene, C-12-/1-mol-Modell, negative/positive Exponenten, Näherungszeichen und bei 360 px erkennbares schematisch.",
+        "Die aktuelle DE/EN-Beschreibung stimmt mit dieser geprüften Einheiten- und Mengenbeziehung überein. Keine erneute Bildreview oder neue Bildgenerierung."
+      ],
+      "finding": null,
+      "reusedFrozenReceipt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-u-g-independent-v-qa-c-20261005-v2/visual-verdict.frozen.json",
+        "sha256": "sha256:8a77c774000bf5d71975bfbac1ae6db452984a1025980d6bc449bfaa616b0a2e",
+        "assetSha256": "sha256:a1edaf2c262fb5c8e59414112c38e77dca87b48336821a554a369a26787bfeb3",
+        "originalFrozenAt": "2026-10-05T02:37:46Z"
+      }
+    },
+    {
+      "goalId": "1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+      "currentDeEn": {
+        "title": "Avogadro-These fuer Gasvolumina erlaeutern",
+        "titleEn": "Explain Avogadro law for gas volumes",
+        "description": "Die lernende Person kann mit der Avogadro-These erklären, warum gleiche Volumina verschiedener Gase bei gleicher Temperatur und gleichem Druck im idealen Gasmodell gleich viele Teilchen enthalten.",
+        "descriptionEn": "The learner can use Avogadro’s law to explain why equal volumes of different gases at the same temperature and pressure contain equal numbers of particles in the ideal-gas model."
+      },
+      "beforeDeEn": {
+        "title": "Avogadro-These fuer Gasvolumina erlaeutern",
+        "titleEn": "Explain Avogadro law for gas volumes",
+        "description": "Die lernende Person kann die These von Avogadro fuer gleiche Gasvolumina bei gleichen Bedingungen fachlich erlaeutern.",
+        "descriptionEn": "The learner can explain Avogadro law for equal gas volumes under equal conditions."
+      },
+      "changedTextFields": [
+        "description",
+        "descriptionEn"
+      ],
+      "qaDescriptionDelta": {
+        "description": {
+          "before": "Die lernende Person kann die These von Avogadro fuer gleiche Gasvolumina bei gleichen Bedingungen fachlich erlaeutern.",
+          "after": "Die lernende Person kann mit der Avogadro-These erklären, warum gleiche Volumina verschiedener Gase bei gleicher Temperatur und gleichem Druck im idealen Gasmodell gleich viele Teilchen enthalten."
+        }
+      },
+      "assetSha256": "sha256:4ffb10d9dfbfe19ae1ef3ddbc60803cf4ef13b4339347a98528bc4b90a4cb768",
+      "sourcePath": "curricula/DE/Gymnasium/visualizations/chemie/1e5a4b89-69f1-5379-811e-c8ec76faad2a/1e5a4b89-69f1-5379-811e-c8ec76faad2a.jpg",
+      "frontendPath": "app/public/assets/goal-visualizations/chemie/1e5a4b89-69f1-5379-811e-c8ec76faad2a/1e5a4b89-69f1-5379-811e-c8ec76faad2a.jpg",
+      "nativeDimensions": {
+        "width": 2752,
+        "height": 1536
+      },
+      "nativeActualViewed": true,
+      "actual360And680Viewed": true,
+      "previewBindings": [
+        {
+          "width": 360,
+          "height": 201,
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-seven-current-text-v-qa-c-20261005-v1/previews/1e5a4b89-69f1-5379-811e-c8ec76faad2a-360.png",
+          "sha256": "sha256:fa45aecb5550a6a7b94288c6cde879ff48a78080a6c316e36e958571cbc40098"
+        },
+        {
+          "width": 680,
+          "height": 380,
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-seven-current-text-v-qa-c-20261005-v1/previews/1e5a4b89-69f1-5379-811e-c8ec76faad2a-680.png",
+          "sha256": "sha256:6d57d88bbb88fc44ef662d31cd6588cea8b121b9eb2615470f1a7448596bf4f3"
+        }
+      ],
+      "verdict": "PASS",
+      "decision": "KEEP",
+      "observations": [
+        "Die beiden gleich groß dargestellten O2- und CO2-Gasbehälter enthalten jeweils genau fünf Molekülmodelle. Gleiche Temperatur und gleicher Druck sind durch gleiche Anzeigen und V/T/p-Labels sichtbar.",
+        "Die Schlusszeile verbindet gleiches V, gleiche T und gleichen p mit gleicher Teilchenzahl; die gezeigten Molekülarten unterscheiden sich, ohne gleiche Masse zu behaupten.",
+        "Das Bild ist ein schematischer Molekülvergleich. Die aktuelle DE/EN-Beschreibung setzt ausdrücklich das ideale Gasmodell voraus; die Grafik muss diese Modellgrenze nicht als vollständigen zweiten Kompetenztext wiederholen. Die Fußzeile meint in den beiden dargestellten Fällen Moleküle.",
+        "Bei 360 und 680 px sind beide Arten, je fünf Moleküle, Bedingungen und Folgerung gut erkennbar. Kein fachlich notwendiger Text wird abgeschnitten."
+      ],
+      "finding": null
+    },
+    {
+      "goalId": "199570f4-b3c3-5e12-877d-ced97e9f6968",
+      "currentDeEn": {
+        "title": "Molare Masse von Gasen bestimmen",
+        "titleEn": "Determine molar mass of gases",
+        "description": "Die lernende Person kann molare Massen gasförmiger Stoffe aus ihrer Formel oder aus Masse und Gasvolumen bei bekannten Bedingungen bestimmen und als Masse pro Stoffmenge deuten.",
+        "descriptionEn": "The learner can determine molar masses of gaseous substances from their formulas or from mass and gas volume under known conditions, and interpret them as mass per amount of substance."
+      },
+      "beforeDeEn": {
+        "title": "Molare Masse von Gasen bestimmen",
+        "titleEn": "Determine molar mass of gases",
+        "description": "Die lernende Person kann molare Massen gasfoermiger Stoffe aus Formeln oder einfachen Gasbezuegen bestimmen und deuten.",
+        "descriptionEn": "The learner can determine and interpret molar masses of gaseous substances from formulas or simple gas relationships."
+      },
+      "changedTextFields": [
+        "description",
+        "descriptionEn"
+      ],
+      "qaDescriptionDelta": {
+        "description": {
+          "before": "Die lernende Person kann molare Massen gasfoermiger Stoffe aus Formeln oder einfachen Gasbezuegen bestimmen und deuten.",
+          "after": "Die lernende Person kann molare Massen gasförmiger Stoffe aus ihrer Formel oder aus Masse und Gasvolumen bei bekannten Bedingungen bestimmen und als Masse pro Stoffmenge deuten."
+        }
+      },
+      "assetSha256": "sha256:5b6d378fc8dbb33aa766d61a7c824a7b9f26d5e69b4474c6811183782dd37169",
+      "sourcePath": "curricula/DE/Gymnasium/visualizations/chemie/199570f4-b3c3-5e12-877d-ced97e9f6968/199570f4-b3c3-5e12-877d-ced97e9f6968.jpg",
+      "frontendPath": "app/public/assets/goal-visualizations/chemie/199570f4-b3c3-5e12-877d-ced97e9f6968/199570f4-b3c3-5e12-877d-ced97e9f6968.jpg",
+      "nativeDimensions": {
+        "width": 2752,
+        "height": 1536
+      },
+      "nativeActualViewed": true,
+      "actual360And680Viewed": true,
+      "previewBindings": [
+        {
+          "width": 360,
+          "height": 201,
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-seven-current-text-v-qa-c-20261005-v1/previews/199570f4-b3c3-5e12-877d-ced97e9f6968-360.png",
+          "sha256": "sha256:3f2cc0b4987f0c38cd65659723ecab65ea6028b67af56ec20dc0748d672bdc06"
+        },
+        {
+          "width": 680,
+          "height": 380,
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-seven-current-text-v-qa-c-20261005-v1/previews/199570f4-b3c3-5e12-877d-ced97e9f6968-680.png",
+          "sha256": "sha256:e159f4c569d59cdec5f9303f8baa5d626838a2059c07fc9a04be0d7be675397a"
+        }
+      ],
+      "verdict": "PASS",
+      "decision": "KEEP",
+      "observations": [
+        "Das CO2-Beispiel enthält einen C- und zwei O-Beiträge mit gegebenen gerundeten molaren Atommassen 12 und 16 g/mol; 12+2·16=44 g/mol ist korrekt.",
+        "M=m/n und m=n·M sowie M in g/mol, m in g und n in mol sind ausdrücklich voneinander getrennt. Das Beispiel 1 mol CO2 → 44 g illustriert die Masse einer Stoffportion, nicht eine molare Masse in Gramm.",
+        "Die Grafik illustriert den Formelweg und den Masse/Stoffmenge-Bezug. Die zusätzlich präzisierte Bestimmung aus Masse und Gasvolumen bei bekannten Bedingungen bleibt eine fallbezogene Auswertung gegebener Daten; die Grafik behauptet keine eigene Gasvolumenmessung oder vollständige Lernendenleistung und muss nicht beide Alternativwege abbilden.",
+        "Bei 360/680 px bleiben Hauptrechnung, zentrale Beziehungen, Einheiten und 44-g-Beispiel erkennbar. Kleine zusätzliche Atom-/Modelllabels sind unterstützend, bei 680 deutlich."
+      ],
+      "finding": null
+    },
+    {
+      "goalId": "d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a",
+      "currentDeEn": {
+        "title": "Zweiatomigkeit gasfoermiger Elementmolekuele begruenden",
+        "titleEn": "Justify diatomic gaseous elemental molecules",
+        "description": "Die lernende Person kann die Zweiatomigkeit wichtiger gasförmiger Elemente im Teilchenmodell erläutern und daraus ihre Molekülformeln für einfache Reaktionsgleichungen begründen.",
+        "descriptionEn": "The learner can explain the diatomic nature of important gaseous elements using a particle model and justify their molecular formulas for simple reaction equations on that basis."
+      },
+      "beforeDeEn": {
+        "title": "Zweiatomigkeit gasfoermiger Elementmolekuele begruenden",
+        "titleEn": "Justify diatomic gaseous elemental molecules",
+        "description": "Die lernende Person kann erklaeren, dass wichtige gasfoermige Elemente als zweiatomige Molekuele auftreten, und diese Schreibweise in Formeln und Reaktionsgleichungen nutzen.",
+        "descriptionEn": "The learner can explain that important gaseous elements occur as diatomic molecules and use this notation in formulas and reaction equations."
+      },
+      "changedTextFields": [
+        "description",
+        "descriptionEn"
+      ],
+      "qaDescriptionDelta": {
+        "description": {
+          "before": "Die lernende Person kann erklaeren, dass wichtige gasfoermige Elemente als zweiatomige Molekuele auftreten, und diese Schreibweise in Formeln und Reaktionsgleichungen nutzen.",
+          "after": "Die lernende Person kann die Zweiatomigkeit wichtiger gasförmiger Elemente im Teilchenmodell erläutern und daraus ihre Molekülformeln für einfache Reaktionsgleichungen begründen."
+        }
+      },
+      "assetSha256": "sha256:9cd77db2e2afbe3c3f5b6aec980a873061fea005fe76f26d0b30b5ec07553dc9",
+      "sourcePath": "curricula/DE/Gymnasium/visualizations/chemie/d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a/d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a.jpg",
+      "frontendPath": "app/public/assets/goal-visualizations/chemie/d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a/d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a.jpg",
+      "nativeDimensions": {
+        "width": 2752,
+        "height": 1536
+      },
+      "nativeActualViewed": true,
+      "actual360And680Viewed": true,
+      "previewBindings": [
+        {
+          "width": 360,
+          "height": 201,
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-seven-current-text-v-qa-c-20261005-v1/previews/d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a-360.png",
+          "sha256": "sha256:914cde4d3d4717acd4b94212a7906588f12c52d82e40d79b32914083a33e2912"
+        },
+        {
+          "width": 680,
+          "height": 380,
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-seven-current-text-v-qa-c-20261005-v1/previews/d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a-680.png",
+          "sha256": "sha256:341e73e2f661925d9bc22c375b9fdc32eac8e466e5286c5804beed6dc6838f63"
+        }
+      ],
+      "verdict": "PASS",
+      "decision": "KEEP",
+      "observations": [
+        "Tatsächlich gezeigt werden H2, N2, O2, F2 und Cl2 als Paare gleicher Atome. Die Bindungsstriche (einfach/dreifach/doppelt/einfach/einfach) widersprechen diesen Modellen nicht.",
+        "2 H2 + O2 → 2 H2O ist atomar ausgeglichen und zeigt den Zusammenhang zwischen Molekülformeln und Reaktionsgleichung. Es werden weder Edelgase zweiatomig dargestellt noch alle Elemente pauschal als zweiatomig bezeichnet.",
+        "Der Titel oft zweiatomig und die konkret gezeigte Auswahl passen zum aktuellen Kompetenzanspruch wichtige gasförmige Elemente. Die erläuternde meist-Fußzeile ist im Kontext dieser gezeigten Auswahl zu lesen, keine Vollzählung sämtlicher Elementgase.",
+        "Bei 360 und 680 px sind alle fünf Paarmodelle/Formeln, Stoffnamen und die vollständige ausgeglichene Reaktionsgleichung lesbar."
+      ],
+      "finding": null
+    },
+    {
+      "goalId": "ddb76915-4d63-5375-901d-4e659f5e9b09",
+      "currentDeEn": {
+        "title": "Qualitative Elementaranalyse von Kohlenwasserstoffen auswerten",
+        "titleEn": "Evaluate qualitative elemental analysis of hydrocarbons",
+        "description": "Die lernende Person kann qualitative Elementaranalysen von Kohlenwasserstoffen auswerten und aus den Nachweisen der Verbrennungsprodukte Kohlenstoffdioxid und Wasser auf Kohlenstoff und Wasserstoff in der Probe schließen.",
+        "descriptionEn": "The learner can evaluate qualitative elemental analyses of hydrocarbons and infer carbon and hydrogen in the sample from tests for the combustion products carbon dioxide and water."
+      },
+      "beforeDeEn": {
+        "title": "Qualitative Elementaranalyse von Kohlenwasserstoffen auswerten",
+        "titleEn": "Evaluate qualitative elemental analysis of hydrocarbons",
+        "description": "Die lernende Person kann qualitative Elementaranalysen von Kohlenwasserstoffen auswerten und die Nachweise fuer Kohlenstoff und Wasserstoff fachlich deuten.",
+        "descriptionEn": "The learner can evaluate qualitative elemental analyses of hydrocarbons and interpret evidence for carbon and hydrogen."
+      },
+      "changedTextFields": [
+        "description",
+        "descriptionEn"
+      ],
+      "qaDescriptionDelta": {
+        "description": {
+          "before": "Die lernende Person kann qualitative Elementaranalysen von Kohlenwasserstoffen auswerten und die Nachweise fuer Kohlenstoff und Wasserstoff fachlich deuten.",
+          "after": "Die lernende Person kann qualitative Elementaranalysen von Kohlenwasserstoffen auswerten und aus den Nachweisen der Verbrennungsprodukte Kohlenstoffdioxid und Wasser auf Kohlenstoff und Wasserstoff in der Probe schließen."
+        }
+      },
+      "assetSha256": "sha256:65b764ebd0131d5f979aed7a31eb7d5bb7d681299836d466efc89f485f2043aa",
+      "sourcePath": "curricula/DE/Gymnasium/visualizations/chemie/ddb76915-4d63-5375-901d-4e659f5e9b09/ddb76915-4d63-5375-901d-4e659f5e9b09.jpg",
+      "frontendPath": "app/public/assets/goal-visualizations/chemie/ddb76915-4d63-5375-901d-4e659f5e9b09/ddb76915-4d63-5375-901d-4e659f5e9b09.jpg",
+      "nativeDimensions": {
+        "width": 2752,
+        "height": 1536
+      },
+      "nativeActualViewed": true,
+      "actual360And680Viewed": true,
+      "previewBindings": [
+        {
+          "width": 360,
+          "height": 201,
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-seven-current-text-v-qa-c-20261005-v1/previews/ddb76915-4d63-5375-901d-4e659f5e9b09-360.png",
+          "sha256": "sha256:9d0778731e4dda57bdf8b4088cdd3d6ec2ad84cd4f5808dd650b95b0ea988fe2"
+        },
+        {
+          "width": 680,
+          "height": 380,
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-stoffmenge-seven-current-text-v-qa-c-20261005-v1/previews/ddb76915-4d63-5375-901d-4e659f5e9b09-680.png",
+          "sha256": "sha256:11de5ec3084f28ddda6b30d88a9a1f48d12d94942eb4e312ff7904e217549fc5"
+        }
+      ],
+      "verdict": "HOLD",
+      "decision": "retain_demonstration_motif_targeted_atom_label_correction_required",
+      "observations": [
+        "Das tatsächliche Schema zeigt O2-Zufuhr, erhitzte Kohlenwasserstoffprobe, Wassernachweis durch Blauwerden von wasserfreiem CuSO4 und CO2-Nachweis durch Kalkwassertrübung. Strömung führt zuerst am CuSO4 und dann über ein eingetauchtes Einleitungsrohr durch Kalkwasser, mit getrenntem Auslass.",
+        "Die Folgerungen CO2 nachgewiesen → Kohlenstoff in der Probe und H2O nachgewiesen → Wasserstoff in der Probe passen zum präzisierten Auswertungsziel. Das ist Demonstrations-/Auswertungsmaterial; es zertifiziert keine eigene Durchführung durch Lernende.",
+        "Das untere CO2-Molekülmodell zeigt zwei rote O-Kugeln, aber die mittlere schwarze Kugel ist tatsächlich mit CO2 statt C beschriftet. Die darunterstehende Bezeichnung CO2 für das ganze Molekül ist korrekt; die atomare Kennzeichnung mischt Molekül- und Atomebene.",
+        "Die zentrale schwarze CO2-Kugelbeschriftung ist nativ und bei 680 px eindeutig sichtbar; bei 360 px sind die Nachweis- und Schlussfolgerungstexte erkennbar, die Atomlabels klein. Dieser Befund betrifft die fachliche Atomkennzeichnung, nicht eine Forderung nach optionalem Kleinsttext."
+      ],
+      "finding": {
+        "severity": "material",
+        "category": "molecule_formula_used_as_central_atom_label",
+        "location": "untere linke Ergebniskarte, schwarze zentrale Kugel zwischen zwei roten O-Kugeln",
+        "actual": "O — [CO2 auf schwarzer Kugel] — O; darunter CO2 nachgewiesen",
+        "requiredCorrection": "Nur die schwarze zentrale Atomkugel mit C beschriften; die roten O-Kugeln und die CO2-Bezeichnung für das gesamte Molekül erhalten. Sinnvolles Nachweis-/Auswertungsschema erhalten; kein Generatorwechsel erforderlich."
+      }
+    }
+  ],
+  "preservation": {
+    "activeQaFileChangedByReviewer": false,
+    "canonicalOrSourceOrFrontendAssetsChangedByReviewer": false,
+    "providerChangedByReviewer": false,
+    "originalDAndB008DAndPriorV2FreezesChanged": false,
+    "humanApprovalClaimed": false
+  },
+  "nextAction": "Root may separately perform exact description-metadata refresh without changing historical approvals. HOLD goals need targeted content correction and actual independent V recheck before a current content PASS can be claimed."
+}

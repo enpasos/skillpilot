@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "chemie-stoffmenge-u-g-independent-v-qa-a-20261005-v1-post-freeze-provenance",
+  "reviewedAt": "2026-10-05T02:27:36Z",
+  "phase": "after independent image freeze",
+  "frozenImageReviewDigest": "sha256:e79d07b3abb9d472ae72ee1ab31b52a730fb1db0bb1573ce20cb5748498a7bab",
+  "imageVerdictUnchanged": "HOLD",
+  "status": "PASS for stored request/provenance consistency; image HOLD remains",
+  "checks": {
+    "promptTextMatchesRequest": true,
+    "candidateHashMatchesTerminal": true,
+    "candidateDimensionsMatchTerminal": true,
+    "candidateFormatMatchesTerminal": true,
+    "providerSavedFileExists": true,
+    "providerSavedBytesMatchCandidate": true,
+    "referenceImageExists": true,
+    "requestedOpaqueOutput": true,
+    "observedOpaqueImage": true,
+    "promptContainsGoalId": false,
+    "noHumanOrPublicationApprovalClaim": true,
+    "candidateStatusIsInactive": true,
+    "modelIsTruthfullyUnexposed": true,
+    "expectedTerminalStatusReported": true
+  },
+  "artifacts": [
+    {
+      "filename": "generation-request-v1.json",
+      "digest": "sha256:ed1e098cb435f5aadff61001b9efc3657928efe848846f850fc828fa918cdc85"
+    },
+    {
+      "filename": "prompt-provider-v1.txt",
+      "digest": "sha256:f2448418aac6b662801b4daf5cc613fee922353f1d5890cabae08ee7eb0ebdd1"
+    },
+    {
+      "filename": "generation-observed-terminal-v1.receipt.json",
+      "digest": "sha256:8637a293e92356c07a0dbca1aa378dd7ab73642a86ad47e20c1b0bd39ee7018f"
+    }
+  ],
+  "referenceImages": [
+    {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/visualizations/chemie/dd3fc8fe-2316-5fbc-b569-00651c83bc81/dd3fc8fe-2316-5fbc-b569-00651c83bc81.jpg",
+      "digest": "sha256:edb8dd08597deb4e9b30ebfa0fe8459caef47ea1701ce04937178b84a9cb44b8"
+    }
+  ],
+  "terminalReceiptSummary": {
+    "recordedAt": "2026-10-05T02:23:33.209906+00:00",
+    "provider": "OpenAI built-in image_gen (ChatGPT/Codex)",
+    "exactModel": "not exposed by built-in tool",
+    "generationExecCellId": "347",
+    "generationObservedTerminal": "success",
+    "providerSavedPath": "/home/enpasos/.codex/generated_images/01a0f2c0-2182-78f3-8b44-9fcdfd2c8634/exec-d20f2f2f-d67f-49d9-9f53-0e8dfd9267df.png",
+    "providerSavedDigest": "sha256:d6e2bcbd6a03b6111a72c39c4d30a35bebd018002e0c4d4a94347378874910c6",
+    "candidateDigest": "sha256:d6e2bcbd6a03b6111a72c39c4d30a35bebd018002e0c4d4a94347378874910c6",
+    "status": "inactive_candidate_independent_review_pending",
+    "approvalClaim": false,
+    "humanApprovalClaim": false
+  },
+  "qualification": "The stored observer receipt reports terminal success; matching provider-saved and candidate bytes corroborate the saved artifact. This review did not observe the original generation tool call or independently query its exec-cell status, and does not invent an API model ID or parameters. The provider prompt explicitly asks for legibility at 360px, so the already frozen small-label finding remains a bounded prompt-compliance issue as well. No D-freeze, active registry, canonical or visualization-QA mutation."
+}

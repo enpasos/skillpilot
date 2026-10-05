@@ -1,0 +1,161 @@
+{
+  "status": "candidate",
+  "authorshipMode": "revision_after_known_A",
+  "sourceLandscapeId": "0b27a054-e81e-5423-aa71-d3d8d9d8f0db",
+  "canonicalLandscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+  "models": [
+    {
+      "candidateKey": "ni-fw6-008-independent-assortment-companion-v2",
+      "givenLegend": {
+        "M1/P1": "maternal/paternal homologs of chromosome type1, carrying distinguishable given variants A_m/A_p",
+        "M2/P2": "maternal/paternal homologs of chromosome type2, carrying distinguishable given variants B_m/B_p",
+        "gameteSet": "one chromosome of each represented type; all origin and chromatid symbols are supplied"
+      },
+      "givenStart": "The same model diploid cell with two homologous chromosome pairs, already correctly depicted with sister chromatids. No segment exchange in this comparison.",
+      "givenCorrectAlternatives": [
+        {
+          "pairOrientation": "origins align alike for pair1 and pair2",
+          "fourGameteSets": [
+            [
+              "M1",
+              "M2"
+            ],
+            [
+              "M1",
+              "M2"
+            ],
+            [
+              "P1",
+              "P2"
+            ],
+            [
+              "P1",
+              "P2"
+            ]
+          ]
+        },
+        {
+          "pairOrientation": "pair2 orientation reversed relative to pair1",
+          "fourGameteSets": [
+            [
+              "M1",
+              "P2"
+            ],
+            [
+              "M1",
+              "P2"
+            ],
+            [
+              "P1",
+              "M2"
+            ],
+            [
+              "P1",
+              "M2"
+            ]
+          ]
+        }
+      ],
+      "ownExplanationRequired": "Explain why the independent orientation/distribution of different homologous pairs permits different whole-chromosome combinations. The correct alternatives and outcomes are supplied, not drawn or constructed by the learner.",
+      "scopeBoundary": "Alternative given meioses, each with four gametes; not eight gametes produced by a single meiosis. No segment-exchange explanation or2^n counting task is assessed."
+    },
+    {
+      "candidateKey": "ni-fw6-008-chromatid-segment-exchange-companion-v2",
+      "givenLegend": {
+        "M1/P1": "maternal/paternal homologs of chromosome type1",
+        "a/b": "sister chromatids of one duplicated homolog",
+        "A_m/B_m": "given maternal variants at corresponding regions A/B",
+        "A_p/B_p": "given paternal variants at corresponding regions A/B",
+        "type2": "unaffected chromosome type2 with a fixed correctly supplied gamete distribution; independent assortment is not assessed"
+      },
+      "givenBefore": [
+        {
+          "chromatid": "M1a",
+          "regions": [
+            "A_m",
+            "B_m"
+          ]
+        },
+        {
+          "chromatid": "M1b",
+          "regions": [
+            "A_m",
+            "B_m"
+          ]
+        },
+        {
+          "chromatid": "P1a",
+          "regions": [
+            "A_p",
+            "B_p"
+          ]
+        },
+        {
+          "chromatid": "P1b",
+          "regions": [
+            "A_p",
+            "B_p"
+          ]
+        }
+      ],
+      "givenExchange": "Corresponding region B exchanged reciprocally between M1b and P1a, labelled non-sister chromatids of homologous chromosomes. Region A and the depicted centromere stay on the original chromatid.",
+      "givenAfter": [
+        {
+          "chromatid": "M1a",
+          "regions": [
+            "A_m",
+            "B_m"
+          ]
+        },
+        {
+          "chromatid": "M1b",
+          "regions": [
+            "A_m",
+            "B_p"
+          ]
+        },
+        {
+          "chromatid": "P1a",
+          "regions": [
+            "A_p",
+            "B_m"
+          ]
+        },
+        {
+          "chromatid": "P1b",
+          "regions": [
+            "A_p",
+            "B_p"
+          ]
+        }
+      ],
+      "givenCorrectGametes": [
+        {
+          "type1Chromatid": "M1a",
+          "type2": "M2"
+        },
+        {
+          "type1Chromatid": "M1b",
+          "type2": "M2"
+        },
+        {
+          "type1Chromatid": "P1a",
+          "type2": "P2"
+        },
+        {
+          "type1Chromatid": "P1b",
+          "type2": "P2"
+        }
+      ],
+      "ownExplanationRequired": "Track the corresponding given regions and explain how their reciprocal exchange yields new combinations on the two involved chromatids, while the supplied chromosome types and corresponding regions are retained.",
+      "scopeBoundary": "The whole before/after comparison, exchange location and correct gamete outcomes are supplied. No independent model construction, molecular cut/repair mechanism, chromosome-assortment explanation or quantitative task is assessed."
+    }
+  ],
+  "semanticSeparateAssessment": true,
+  "structuralModelDataChecks": "PASS correct reciprocal regions and gamete type sets",
+  "actualRenderedImagesOrBookPagesApproved": false,
+  "doesNotCreatePProfile": true,
+  "noModelConstructionOrFormulaQuota": true,
+  "humanApproval": false,
+  "activeWrites": 0
+}

@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-05",
+  "independentReviewer": "codex-chemie-stoffmenge-twelve-review-a",
+  "phase": "P_after_frozen_D_source_A_M",
+  "status": "eleven_inactive_candidate_content_PASS_one_salt_full_scope_HOLD",
+  "frozenDReceipt": "D-before-P.freeze.receipt.json",
+  "frozenDFileSha256": "sha256:a77c930b4f584a65023ad5247c85d5554e58874c74b6c27f7c97d1292215389c",
+  "profileAndDataCheckReceipt": "P-contract-check.receipt.json",
+  "inputCandidateFile": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-quantitative-foundations-twelve-candidate-v1/positive-evidence.candidates.json",
+  "claimBoundary": {
+    "admittedInactiveCandidateProfiles": 11,
+    "admittedFreshBilingualApplicationCases": 22,
+    "saltCurrentCompleteProfileAdmitted": false,
+    "currentStrictClosures": 0,
+    "currentEvidenceMaterializationOrBindingApproval": false,
+    "humanApprovalOrHumanTrial": false,
+    "learnerWorkOrObservedMastery": false,
+    "meaningOfPASS": "Independent machine review of the supplied bounded profile content, arithmetic and prospective observability. It is not a learner demonstration, a current materialized P-v2 record, a human review or a strict D/P/A/M/V closure."
+  },
+  "goals": [
+    {
+      "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "decision": "PASS_candidate_content",
+      "scope": "Amount of explicitly specified entities, separated from sample mass and from the count of atoms inside a molecule or formula unit.",
+      "cases": [
+        {
+          "id": "oxygen-and-helium-packages",
+          "decision": "PASS",
+          "reason": "Equal 0.20 mol amounts have equal counts of their specified O2 molecules and He atoms, while 0.20 mol O2 contains 0.40 mol O atoms. Explaining why equal specified-entity amounts do not establish equal masses is observable reasoning."
+        },
+        {
+          "id": "salt-formula-units-fresh",
+          "decision": "PASS",
+          "reason": "The supplied 1:1 Na+/Cl- composition supports 0.30 mol of each ion and 0.60 mol ions in total, while the amount of NaCl formula units remains 0.30 mol. Rejecting the NaCl-molecule and entity-switch errors transfers the concept to an ionic solid without demanding prior ionic-structure recall."
+        }
+      ],
+      "suppliedHelpBoundary": "Named entities and the salt ion model are task data. Their retrieval does not count as uncued recall; interpreting what the amount counts is the assessed performance.",
+      "bilingualAndCoverage": "DE/EN demands and criteria match; one required expectation is covered through two distinct entity contexts."
+    },
+    {
+      "goalId": "8a2ad724-df5e-5986-8de9-560ba43caac2",
+      "decision": "PASS_candidate_content",
+      "scope": "Formula-index interpretation and the integrated molar-mass/mass/amount conversion.",
+      "cases": [
+        {
+          "id": "water-mass-amount",
+          "decision": "PASS",
+          "reason": "Supplied H and O contributions give 18 g/mol and 9 g corresponds to 0.50 mol H2O. The index and unit justification rejects identifying grams with mol rather than merely obtaining a number."
+        },
+        {
+          "id": "hydroxide-parentheses-fresh",
+          "decision": "PASS",
+          "reason": "The bracket multiplier yields 58 g/mol for Mg(OH)2 and 40 g/mol for NaOH; equal 0.20 mol samples therefore weigh 11.6 g and 8 g. The fresh grouping and equal-amount/unequal-mass comparison require structural and quantity reasoning."
+        }
+      ],
+      "suppliedHelpBoundary": "Atomic contributions and formulas are provided. The evidence is the learner's grouping, dimensional interpretation and comparison, not periodic-table retrieval.",
+      "bilingualAndCoverage": "DE/EN equivalent; direct and grouped fresh cases cover the same integrated conversion."
+    },
+    {
+      "goalId": "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+      "decision": "PASS_candidate_content",
+      "scope": "Distinguishing a single-particle mass in u from a sample mass in g, with an explicit particle-count bridge.",
+      "cases": [
+        {
+          "id": "carbon-dioxide-scale",
+          "decision": "PASS",
+          "reason": "A 44 u CO2 molecule has a mass about 7.31×10^-23 g, while one mol of those molecules weighs approximately 44 g with the supplied rounded constants. Rejecting 44 g per molecule requires explaining the changed count and mass scale."
+        },
+        {
+          "id": "methane-quarter-count-fresh",
+          "decision": "PASS",
+          "reason": "The fresh 1.505535×10^23 methane molecules at 16 u per molecule total approximately 4 g, not 16 g per particle or per arbitrary sample. The count is supplied as a number rather than as 0.25 mol, so the scale must be inferred."
+        }
+      ],
+      "suppliedHelpBoundary": "Rounded u-to-g and Avogadro data are help, not a new numeric recall demand. Matching numerical values in u and g/mol are approximate at this school precision, not an exact modern SI identity.",
+      "bilingualAndCoverage": "DE/EN equivalent; approximation is explicit, and changing sample count supplies genuine fresh transfer."
+    },
+    {
+      "goalId": "e45c0022-ac0d-5c83-b433-5f68655e382f",
+      "decision": "PASS_candidate_content",
+      "scope": "Interpreting and using N=NA·n for named entities, including the unit mol^-1.",
+      "cases": [
+        {
+          "id": "quarter-mol-oxygen",
+          "decision": "PASS",
+          "reason": "0.25 mol O2 gives 1.50553519×10^23 molecules and twice that many O atoms. The entity factor belongs to molecule composition and does not change NA."
+        },
+        {
+          "id": "carbon-dioxide-helium-count-fresh",
+          "decision": "PASS",
+          "reason": "The supplied counts give 0.10 mol CO2 molecules and 0.20 mol He atoms. Although the CO2 sample has fewer gas particles, its 0.30 mol total atoms exceed the helium sample's 0.20 mol atoms. Reverse conversion and the changed comparison entity make this more than another forward substitution."
+        }
+      ],
+      "suppliedHelpBoundary": "The current exact NA value is explicitly supplied; interpretation of its unit and specified entity remains independent. Retained historical HE source constants are not silently rewritten.",
+      "bilingualAndCoverage": "DE/EN equivalent; both directions and a nontrivial particle-versus-atom comparison are present."
+    },
+    {
+      "goalId": "1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+      "decision": "PASS_candidate_content",
+      "scope": "Equal ideal-gas volumes imply equal particle counts only at matching temperature and pressure; equal mass is not implied.",
+      "cases": [
+        {
+          "id": "hydrogen-oxygen-one-litre",
+          "decision": "PASS",
+          "reason": "Equal 1 L ideal H2 and O2 samples at the same stated T/p have equal molecule counts. Supplied molar masses 2 and 32 g/mol make the O2 sample 16 times heavier. The comparison distinguishes amount/count from mass without needing an absolute gas-law calculation."
+        },
+        {
+          "id": "mismatched-temperature-fresh",
+          "decision": "PASS",
+          "reason": "Equal 3 L CO2 and He volumes at different temperatures do not establish equal gas-particle counts. Matching T and p is the required repair. After that repair, three atoms per CO2 molecule versus one per He particle still prevents an equal-atom-count inference."
+        }
+      ],
+      "suppliedHelpBoundary": "The stated ideal-gas conditions and molar masses are given. No PV=nRT algebra or orbital/molecular-kinetic derivation is introduced as a prerequisite.",
+      "bilingualAndCoverage": "DE/EN equivalent; changed conditions and changed particle composition exercise both the applicability boundary and the result."
+    },
+    {
+      "goalId": "2924f784-5261-54e8-93ee-49ac3b3cd300",
+      "decision": "PASS_candidate_content",
+      "scope": "Vm=V/n as a condition-dependent volume/amount relation, with the amount of a closed gas sample preserved when its state changes.",
+      "cases": [
+        {
+          "id": "molar-volume-reference-state",
+          "decision": "PASS",
+          "reason": "At the supplied state Vm≈24 L/mol, 0.25 mol N2 occupies 6 L and 12 L He corresponds to 0.50 mol. Explaining why the value is tied to the stated temperature and pressure blocks a universal-volume assertion."
+        },
+        {
+          "id": "closed-volume-change-fresh",
+          "decision": "PASS",
+          "reason": "9 L at the supplied new-state Vm≈30 L/mol means 0.30 mol; at the reference-state Vm≈24 L/mol the same closed sample occupies 7.2 L. The fresh state requires choosing the compatible Vm and distinguishing conserved amount from changing volume."
+        }
+      ],
+      "suppliedHelpBoundary": "Both Vm values are given. Their stated T/p pairs are consistent with the ideal-gas model at the advertised rounding; the reviewer checked this, but deriving Vm via R is not a learner demand.",
+      "bilingualAndCoverage": "DE/EN equivalent; inverse conversion and state transfer provide distinct demonstrations of one condition-bound quantity."
+    },
+    {
+      "goalId": "199570f4-b3c3-5e12-877d-ced97e9f6968",
+      "decision": "PASS_candidate_content",
+      "scope": "Inferring pure-gas molar mass from composition or compatible mass/volume data and interpreting the inference's limit.",
+      "cases": [
+        {
+          "id": "carbon-dioxide-cross-check",
+          "decision": "PASS",
+          "reason": "1.10 g in 0.600 L with Vm=24 L/mol gives n=0.025 mol and M=44 g/mol, consistent with the supplied CO2 composition. The density route gives the same result with explicit unit cancellation."
+        },
+        {
+          "id": "unknown-gas-new-state-fresh",
+          "decision": "PASS",
+          "reason": "1.60 g in 0.300 L with the correct state Vm=12 L/mol gives M=64 g/mol; using 24 L/mol incorrectly gives 128. The supplied SO2 candidate fits 64 and CO2 does not, while the profile correctly rejects a unique compound identification from molar mass alone."
+        }
+      ],
+      "suppliedHelpBoundary": "Pure-gas/model status, Vm values and candidate formula data are stated. Actual unknown-sample identification, mixtures and experimental certainty are not inferred from this model task.",
+      "bilingualAndCoverage": "DE/EN equivalent; formula cross-check and fresh state/candidate-limit reasoning cover both evidence routes."
+    },
+    {
+      "goalId": "d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a",
+      "decision": "PASS_candidate_content",
+      "scope": "Model-grounded representation of selected diatomic elemental gases, distinguishing indices, coefficients and elements from compounds.",
+      "cases": [
+        {
+          "id": "oxygen-model-and-water",
+          "decision": "PASS",
+          "reason": "Supplied O-O and N-N models justify O2 and N2, while single Ar particles supply a counterexample to 'all gases are diatomic'. The water scheme 2H2+O2→2H2O preserves the provided particle compositions; coefficient and formula-index functions are distinguished."
+        },
+        {
+          "id": "chlorine-hydrogen-fresh",
+          "decision": "PASS",
+          "reason": "H-H and Cl-Cl models with H-Cl product lead to H2+Cl2→2HCl. Explaining why Cl2 contains one element and why changing HCl to HCl2 changes composition supplies fresh representation reasoning rather than memorizing a reaction."
+        }
+      ],
+      "suppliedHelpBoundary": "Particle models and products are supplied; no exhaustive uncued list, orbital theory or separate general balancing syllabus is claimed.",
+      "bilingualAndCoverage": "DE/EN equivalent; selected gases, monatomic counterexample and two index/coefficient contexts preserve the bounded scope."
+    },
+    {
+      "goalId": "ddb76915-4d63-5375-901d-4e659f5e9b09",
+      "decision": "PASS_candidate_content",
+      "scope": "Qualitative carbon/hydrogen inference from combustion-product observations with controls, without a quantitative or exclusivity claim.",
+      "cases": [
+        {
+          "id": "dry-combustion-controls",
+          "decision": "PASS",
+          "reason": "The supplied positive water/CO2 indicators are attributable to the sample only because dry, CO2-free oxygen and apparatus are specified and the blank stays negative. Carbon and hydrogen are supported; oxygen in products may come from combustion oxygen and is not proof of oxygen originally in the sample."
+        },
+        {
+          "id": "wet-apparatus-fresh",
+          "decision": "PASS",
+          "reason": "A water-positive blank invalidates attributing the water signal to sample hydrogen, whereas the blank-negative/sample-positive CO2 signal still supports carbon. A dry apparatus/gas and new negative blank are a meaningful corrective control. Even controlled positive C/H tests cannot exclude other elements."
+        }
+      ],
+      "suppliedHelpBoundary": "Indicator identities, colours and all blank observations are supplied data. They do not prove reagent recall or an actual performed experiment; causal attribution and the control proposal are the assessed work.",
+      "bilingualAndCoverage": "DE/EN equivalent; a genuine confounder, different evidence strengths and a justified control change give independent transfer."
+    },
+    {
+      "goalId": "e675fa94-6e23-59c0-b376-4340bf44c00e",
+      "decision": "PASS_candidate_content_WITH_retained_source_boundary_HOLD",
+      "scope": "Bounded, linked inference of relative atomic masses and gas/binary-molecule formulas from supplied mass/count/model data.",
+      "cases": [
+        {
+          "id": "equal-atom-count-and-elemental-gas",
+          "decision": "PASS",
+          "reason": "Equal supplied counts of individual H and X atoms with masses 1 g and 35.5 g and Ar(H)=1 give Ar(X)=35.5. A separately supplied measured X molecule mass of 71 u, with only X present, then requires X2. Equal atom counts are model-supported data, not inferred merely from equal volumes or equal masses."
+        },
+        {
+          "id": "binary-ratio-and-molecule-mass-fresh",
+          "decision": "PASS",
+          "reason": "The C:H mass ratio 6:1 and supplied relative masses 12:1 imply atom ratio 1:2 and empirical CH2. A molecule mass of 28 u supplies the independent multiplier 2, giving C2H4. The same mass ratio without molecule mass also permits C3H6, so ratio data alone do not establish the molecular formula."
+        }
+      ],
+      "suppliedHelpBoundary": "Equal atom counts, relative-mass reference values, molecular mass and pure composition are given measurement/model data. The profile does not claim performing an atom-count experiment or deducing molecular mass from the empirical formula alone.",
+      "bilingualAndCoverage": "DE/EN equivalent. The first case links atomic mass to an elemental molecule; the second transfers formula inference to a binary compound and tests the insufficiency of mass-ratio data. The combined cases cover the integrated expectation rather than treating formula arithmetic as all of the goal.",
+      "unresolvedSourceFinding": "The frozen D/source finding remains: BY8 NTG C8.3.6 explicitly covers relative atomic masses and formulas, whereas BY9 other-track C9.3.6 states molecular-formula determination without an explicit relative-atomic-mass requirement. Existing BY9 exact mapping must receive a truthful targeted scope/partial successor before integration may imply that full operative scope is a BY9 compulsory clause. Content PASS does not resolve this source finding."
+    },
+    {
+      "goalId": "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+      "decision": "PASS_candidate_content_for_accepted_EN_only_revision",
+      "scope": "Simple equation construction plus the already present German half/overall-equation representation, with atom and charge consistency.",
+      "cases": [
+        {
+          "id": "magnesium-oxygen-scheme",
+          "decision": "PASS",
+          "reason": "Supplied Mg, O2 and MgO identities give 2Mg+O2→2MgO with two atoms of each element. Changing MgO to MgO2 would change the stipulated product composition rather than balance the reaction. Coefficients count particles/formula units; MgO need not be called a molecule."
+        },
+        {
+          "id": "aluminium-copper-half-equations-fresh",
+          "decision": "PASS",
+          "reason": "Supplied Al→Al3++3e- and Cu2++2e-→Cu with explained donor/acceptor meaning require factors 2 and 3. Six electrons cancel to 2Al+3Cu2+→2Al3++3Cu; atoms and +6 total charge agree. The rejected 1:1 combination leaves unequal electron transfers. This is a stated symbolic model, not evidence that a passivated aluminium sample will react in an unqualified real experiment."
+        }
+      ],
+      "suppliedHelpBoundary": "Ion charges, half-equations and electron-transfer meaning are explicitly supplied. No unintroduced oxidation-number method or advanced redox-mechanism derivation is required. Their being supplied does not replace the learner's multiplicity, cancellation and conservation reasoning.",
+      "bilingualAndCoverage": "Both cases cover the unchanged DE scope and the accepted matching EN revision. HE9 basic-equation and BY10 half/overall source scopes remain separate; the latter is not presented as a universal HE9 requirement. Current evidence fingerprints must be generated for the accepted EN wording, not merely patched in old review output."
+    },
+    {
+      "goalId": "965ca297-5dbf-5e58-b5f0-6559a4433646",
+      "decision": "HOLD_current_complete_goal_and_property_preservation",
+      "scope": "Diagnostic review only of the narrower inactive formula/name proposal; the current salt-property clause remains operative and unclosed.",
+      "cases": [
+        {
+          "id": "magnesium-chloride-neutrality",
+          "decision": "PASS_formula_diagnostic_only",
+          "reason": "Supplied Mg2+/Cl- charges justify MgCl2; MgCl and Mg2Cl2 would have nonzero net charge. The ratio denotes formula units rather than molecules. These data support the neutral-formula reasoning but do not demonstrate explaining salt properties."
+        },
+        {
+          "id": "aluminium-sulfate-group-fresh",
+          "decision": "PASS_formula_diagnostic_only",
+          "reason": "Supplied Al3+/SO4^2- data require the smallest neutral 2:3 ratio Al2(SO4)3, whereas Al3(SO4)2 has net +5 charge. Keeping the grouped molecular ion intact is a valid fresh notation check. The given names and ion identities are help, not evidence of independently retrieving nomenclature."
+        }
+      ],
+      "suppliedHelpBoundary": "Named ions, charges and salts are provided. Correct formula/name interpretation cannot be counted as independent recall of those supplied names, and it cannot substitute for the omitted property explanation.",
+      "bilingualAndCoverage": "The narrower formula cases are scientifically consistent in DE/EN but do not cover the current full DE/EN goal. Molecular-ion transfer is supported in BY8 NTG; the BY9 other-track binary-salt clause must not be expanded into an unsupported universal molecular-ion obligation.",
+      "unresolvedFinding": "No crystallinity, brittleness, solid-versus-molten/aqueous conduction or causal ion-lattice explanation is assessed here. The generic 950 prerequisite and coincident static visibility do not establish that all omitted properties, source rows and learner-view obligations have been preserved. The candidate remains HOLD, contributes no admitted full P profile, and requires a substantive property-preservation resolution before any narrowing or closure."
+    }
+  ],
+  "requiredNextSteps": [
+    "A genuinely independent second D/P review of the same candidate phase; frozen judgments and historical receipts remain intact.",
+    "Targeted truthful BY9 e675 source-scope successor; retain relative-atomic-mass content where actually supported or as an explicitly additional didactic target.",
+    "Materialize current P-v2 records for admitted candidates with truthful AI-candidate/human-review statuses and actual operative/page/context/source bindings; E1/G1 is not observed learner or human evidence.",
+    "Resolve 965 properties substantively or retain the full current goal unchanged and open; do not integrate its narrower formula/name candidate as a complete replacement.",
+    "Root integration must verify affected A/M and current V/page/context bindings, preserve historical artifacts and protected M7 floors, and obtain strict central results separately."
+  ]
+}

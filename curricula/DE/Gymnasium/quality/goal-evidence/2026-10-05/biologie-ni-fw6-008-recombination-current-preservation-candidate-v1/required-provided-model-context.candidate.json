@@ -1,0 +1,148 @@
+{
+  "status": "candidate",
+  "sourceLandscapeId": "0b27a054-e81e-5423-aa71-d3d8d9d8f0db",
+  "canonicalLandscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+  "purpose": "Concrete supplied correct model context for the frozen Source/D competence; no learner independent model-construction demand and no authoritative P profile.",
+  "notationGivenToLearner": {
+    "M1/P1": "maternal/paternal homolog of chromosome type1",
+    "M2/P2": "maternal/paternal homolog of chromosome type2",
+    "a/b": "sister chromatids of the same duplicated chromosome",
+    "A_m/B_m": "maternal variant at each corresponding region of type1",
+    "A_p/B_p": "paternal variant at the same corresponding regions"
+  },
+  "modelA": {
+    "givenStart": "One diploid model cell, chromosome types1 and2, each represented by a maternal and paternal homolog; sister chromatids and centromeres are already labelled. No segment exchange in this comparison.",
+    "givenCorrectAlternativeMeiosisComparisons": [
+      {
+        "orientation": "Homolog origins align together for pairs1/2",
+        "givenGameteChromosomeTypes": [
+          [
+            "M1",
+            "M2"
+          ],
+          [
+            "M1",
+            "M2"
+          ],
+          [
+            "P1",
+            "P2"
+          ],
+          [
+            "P1",
+            "P2"
+          ]
+        ]
+      },
+      {
+        "orientation": "Pair2 is reversed relative to pair1",
+        "givenGameteChromosomeTypes": [
+          [
+            "M1",
+            "P2"
+          ],
+          [
+            "M1",
+            "P2"
+          ],
+          [
+            "P1",
+            "M2"
+          ],
+          [
+            "P1",
+            "M2"
+          ]
+        ]
+      }
+    ],
+    "explanationRequired": "Different orientations of separate homologous pairs permit new combinations of already-present genetic information; each gamete still has one chromosome of each type. These are supplied alternative meioses, not eight gametes from one meiosis."
+  },
+  "modelB": {
+    "givenBeforeExchange": [
+      {
+        "chromatid": "M1a",
+        "segments": [
+          "A_m",
+          "B_m"
+        ]
+      },
+      {
+        "chromatid": "M1b",
+        "segments": [
+          "A_m",
+          "B_m"
+        ]
+      },
+      {
+        "chromatid": "P1a",
+        "segments": [
+          "A_p",
+          "B_p"
+        ]
+      },
+      {
+        "chromatid": "P1b",
+        "segments": [
+          "A_p",
+          "B_p"
+        ]
+      }
+    ],
+    "givenExchange": "Corresponding B-region exchange between M1b and P1a, which are non-sister chromatids of homologous chromosomes. A-region and centromere origin stay with the original chromatid.",
+    "givenAfterExchange": [
+      {
+        "chromatid": "M1a",
+        "segments": [
+          "A_m",
+          "B_m"
+        ]
+      },
+      {
+        "chromatid": "M1b",
+        "segments": [
+          "A_m",
+          "B_p"
+        ]
+      },
+      {
+        "chromatid": "P1a",
+        "segments": [
+          "A_p",
+          "B_m"
+        ]
+      },
+      {
+        "chromatid": "P1b",
+        "segments": [
+          "A_p",
+          "B_p"
+        ]
+      }
+    ],
+    "givenCorrectGameteOutcome": [
+      {
+        "type1Chromatid": "M1a",
+        "type2Origin": "M2"
+      },
+      {
+        "type1Chromatid": "M1b",
+        "type2Origin": "M2"
+      },
+      {
+        "type1Chromatid": "P1a",
+        "type2Origin": "P2"
+      },
+      {
+        "type1Chromatid": "P1b",
+        "type2Origin": "P2"
+      }
+    ],
+    "explanationRequired": "The two exchanged non-sister chromatids carry new combinations of the given corresponding regions; no region or chromosome type is added or lost. Molecular cut/repair details are not asked."
+  },
+  "modelConstructionByLearnerRequired": false,
+  "phaseSequenceRecallRequired": false,
+  "formulaOrCrossProbabilityRequired": false,
+  "humanApproval": false,
+  "activeWrites": 0
+}

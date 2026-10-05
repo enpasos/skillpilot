@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "chemie-8ceb-split-scope-preservation-author-candidate-v1",
+  "reviewedAt": "2026-10-05T00:08:21.106447+00:00",
+  "reviewer": "codex-author-candidate-not-independent-review",
+  "goals": [
+    {
+      "goalId": "5db9ba57-6a80-56db-8b9d-e8ca4ac41855",
+      "reason": "Inaktiver neuer Kind-P-Kandidat für genau einen Mechanismus; aktuelle Beschreibung, Quellenklausel, A/M und Bild müssen noch unabhängig geprüft und gebunden werden. Keine menschliche Freigabe oder tatsächliche Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "fractional-distillation-preserves-molecules",
+            "essentialUnderstandingDe": "Erdöl ist ein Gemisch. Fraktionierte Destillation nutzt unterschiedliche Siedebereiche und wiederholtes Verdampfen/Kondensieren zur Anreicherung von Fraktionen. In der von unten nach oben kühleren Kolonne werden leicht siedende Anteile weiter oben und schwer siedende weiter unten abgezogen. Fraktionen sind im Allgemeinen Gemische; das Verfahren trennt vorhandene Moleküle physikalisch, ohne ihre chemische Identität zu verändern oder neue kurzkettige Moleküle herzustellen.",
+            "essentialUnderstandingEn": "Petroleum is a mixture. Fractional distillation uses differing boiling ranges and repeated evaporation/condensation to enrich fractions. In a column that becomes cooler upwards, more volatile components are drawn off higher and less volatile components lower. Fractions are generally mixtures; the process physically separates existing molecules without changing their chemical identity or creating new short-chain molecules.",
+            "observablePerformanceDe": "Die lernende Person deutet ein neues vereinfachtes Kolonnenmodell aus gegebenen Siedebereichen, ordnet typische Fraktionen zu und erklärt Anreicherung sowie unveränderte Molekülidentität. Sie prüft einen Fall mit geänderter Zusammensetzung oder Isomeren und weist den Schluss zurück, dass Trennung allein neue Moleküle erzeugt. Reale Versuchsplanung, Apparaturbau und thermisches Cracken werden nicht geprüft.",
+            "observablePerformanceEn": "The learner interprets a fresh simplified column model from given boiling ranges, assigns typical fractions and explains enrichment with unchanged molecular identity. They test a case with changed composition or isomers and reject the claim that separation alone creates new molecules. Real experimental planning, apparatus construction and thermal cracking are not assessed."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "fractional-distillation-preserves-molecules"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "boiling-range-distribution",
+            "textDe": "Ein Gemisch mit getrennten Siedebereichen wird mit einem Gemisch ohne leichten Anteil kontrastiert.",
+            "textEn": "A mixture with distinct boiling ranges is contrasted with one lacking a light fraction."
+          },
+          {
+            "id": "same-formula-different-boiling",
+            "textDe": "Isomere mit gleicher Summenformel und verschiedenen Siedetemperaturen widerlegen eine Einordnung allein nach Kohlenstoffzahl.",
+            "textEn": "Isomers with the same molecular formula but differing boiling points challenge assignment by carbon count alone."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fractionated-oil-paper-column",
+            "taskDemandDe": "Ein Papiermodell einer unten heißen, oben kühleren Erdölkolonne zeigt drei bereits vorgegebene Siedebereiche und Einsatzangaben: leichter Bereich für Benzin, mittlerer Bereich für Diesel/Heizöl, schwerer Bereich für schweres Öl. Ordne sie qualitativ den Abzugshöhen zu und erkläre anhand wiederholten Verdampfens und Kondensierens, warum unterschiedliche Fraktionen angereichert werden. Prüfe „In der oberen Fraktion sind neue kürzere Moleküle entstanden“. Das Modell lässt die Fraktionen ausdrücklich als Gemische stehen; keine scharfe Reintrennung oder reale Durchführung wird verlangt.",
+            "taskDemandEn": "A paper model of a petroleum column, hot below and cooler above, supplies three boiling ranges and use notes: a light gasoline range, an intermediate diesel/heating-oil range and a heavy-oil range. Qualitatively assign draw-off heights and use repeated evaporation and condensation to explain enrichment of different fractions. Assess “new shorter molecules were created in the upper fraction”. The model explicitly retains fractions as mixtures; no sharp pure separation or experiment is required.",
+            "expectedPerformanceDe": "Die lernende Person ordnet den leichter siedenden Bereich oben, den mittleren darunter und den schwereren weiter unten zu. Sie erklärt, dass verdampfende Anteile aufsteigen und bei passenden kühleren Bedingungen kondensieren; Wiederholung bewirkt Anreicherung statt einer chemischen Umwandlung. Sie verbindet die bereitgestellten Nutzungen mit den Fraktionen und weist die Entstehung neuer Moleküle zurück: Moleküle werden verteilt, nicht neu aufgebaut. Ein Auswendigaufsagen der bereits gelieferten Nutzungen allein zählt nicht als Verständnisbeleg.",
+            "expectedPerformanceEn": "The learner places the more volatile range higher, the intermediate one below it and the heavy range lower. They explain rising vapour and condensation under suitable cooler conditions; repetition enriches fractions rather than causing chemical conversion. They connect supplied uses to the fractions and reject creation of new molecules: molecules are redistributed, not rebuilt. Merely reciting the supplied uses is not evidence of understanding.",
+            "understandingFocusDe": "Siedebereich und Temperaturverlauf erklären eine physikalische Gemischtrennung.",
+            "understandingFocusEn": "Boiling range and the temperature gradient explain physical mixture separation."
+          },
+          {
+            "id": "fresh-isomer-and-missing-light-fraction",
+            "taskDemandDe": "Ein frisches Modellgemisch enthält n-Octan und 2,2,4-Trimethylpentan; beide haben C8H18. Als Daten sind normale Siedetemperaturen von ungefähr 126 °C und 99 °C gegeben, ohne Erwartung, die Werte auswendig zu kennen. Erkläre, welcher Anteil in einer passenden Kolonne stärker in einer höher gelegenen, kühleren Fraktion angereichert wird und warum „gleiche Summenformel = nicht trennbar“ nicht folgt. Ein zweites Eingangsgemisch enthält keinen Anteil im bereitgestellten Benzin-Siedebereich. Kann dieselbe Destillation allein trotzdem diesen Anteil herstellen? Beurteile qualitativ; keine Reinheits-, Ausbeute- oder Gleichgewichtsrechnung.",
+            "taskDemandEn": "A fresh model mixture contains n-octane and 2,2,4-trimethylpentane; both have C8H18. Normal boiling points of about 126 °C and 99 °C are supplied, with no memorization expected. Explain which component is preferentially enriched in a higher, cooler fraction of a suitable column and why “same molecular formula = inseparable” does not follow. A second feed has no component in the supplied gasoline boiling range. Can the same distillation alone nevertheless manufacture that component? Judge qualitatively; no purity, yield or equilibrium calculation.",
+            "expectedPerformanceDe": "Die lernende Person erschließt aus den gegebenen Daten die stärkere Anreicherung des niedrigersiedenden Isomers weiter oben; sie begründet die Wahl aus dem Siedeverhalten statt allein aus C8 oder dem Molekülnamen. Sie bewahrt die jeweilige Molekülidentität und erklärt, dass Fraktionierung keinen fehlenden leichten Bestandteil erzeugt. Die konkrete Behauptung einer völlig reinen Fraktion wird nicht aus zwei Siedepunkten abgeleitet. Der geänderte Fall prüft das Trennprinzip unabhängig vom bekannten Raffinerieschema.",
+            "expectedPerformanceEn": "The learner uses the data to infer preferential enrichment of the lower-boiling isomer higher up, justified by boiling behaviour rather than C8 or the name alone. They preserve each molecular identity and explain that fractionation cannot create a missing light component. They do not infer a completely pure fraction solely from two boiling points. The changed case tests the separation principle independently of a familiar refinery diagram.",
+            "understandingFocusDe": "Gleiche Summenformel und fehlender leichter Anteil verlangen echte Übertragung des Trennprinzips.",
+            "understandingFocusEn": "The same molecular formula and a missing light component require transfer of the separation principle."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "7c22f436-e550-5b0b-85ae-a073b0c50418",
+      "reason": "Inaktiver neuer Kind-P-Kandidat für genau einen Mechanismus; aktuelle Beschreibung, Quellenklausel, A/M und Bild müssen noch unabhängig geprüft und gebunden werden. Keine menschliche Freigabe oder tatsächliche Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "thermal-cracking-changes-molecule-identity",
+            "essentialUnderstandingDe": "Thermisches Cracken ist eine chemische Umwandlung: Energiezufuhr bei hoher Temperatur ermöglicht den Bindungsumbau längerer Kohlenwasserstoffmoleküle zu kürzeren Produkten, darunter Alkane und Alkene. Atome bleiben erhalten, Molekülidentitäten ändern sich. Ein einfaches Beispiel stellt eine mögliche atomkonservierende Produktkombination dar, nicht das vollständige oder einzige industrielle Produktgemisch. Wärmebedarf des Prozesses ist keine Behauptung über ein universelles Vorzeichen jeder einzelnen Reaktionsenthalpie.",
+            "essentialUnderstandingEn": "Thermal cracking is a chemical conversion: energy input at high temperature enables rearrangement of bonds in longer hydrocarbon molecules into shorter products, including alkanes and alkenes. Atoms are conserved while molecular identities change. A simple example shows one possible atom-conserving product combination, not the complete or exclusive industrial mixture. Process heating is not a claim about a universal sign of every individual reaction enthalpy.",
+            "observablePerformanceDe": "Die lernende Person erklärt mit vorgegebenen Molekülmodellen die Veränderung langer zu kürzeren Molekülen, ordnet typische Alkane/Alkene zu und kontrolliert qualitativ die Atomerhaltung einer vorgegebenen Produktkombination. In einem neuen Fall unterscheidet sie eine mögliche von einer unmöglichen Modellkombination und begründet, warum reine Gemischtrennung diese neue Zusammensetzung nicht erzeugt. Ungelenktes Gleichungsaufstellen, Radikalmechanismen, Anlagenplanung und quantitative Energierechnung sind keine Pflichtleistung.",
+            "observablePerformanceEn": "With supplied molecular models, the learner explains conversion of long into shorter molecules, assigns typical alkane/alkene products and qualitatively checks atom conservation in a given combination. In a fresh case they distinguish a possible from an impossible model combination and explain why physical separation alone cannot create the new composition. Unguided equation construction, radical mechanisms, plant design and quantitative energy calculations are not mandatory."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "thermal-cracking-changes-molecule-identity"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "molecule-pattern",
+            "textDe": "Eine vorgegebene Decan-Spaltung wird mit einer anderen längeren Ausgangskette und einer strukturell veränderten Produktkombination kontrastiert.",
+            "textEn": "A supplied decane split is contrasted with a different longer feed chain and a structurally changed product combination."
+          },
+          {
+            "id": "conversion-not-sorting",
+            "textDe": "Neue Molekülidentitäten und Atomerhaltung werden von bloßer Verteilung eines vorhandenen Gemischs unterschieden.",
+            "textEn": "New molecular identities with atom conservation are distinguished from redistribution of an existing mixture."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "decane-supplied-molecule-model",
+            "taskDemandDe": "Ein einfaches Papiermodell ist vollständig gegeben: C10H22 → C8H18 + C2H4. Die Strukturzeichnungen zeigen eine längere gesättigte Kette sowie ein kürzeres Alkan und Ethen mit C=C-Doppelbindung. Erläutere bei hoher Temperatur den chemischen Bindungsumbau, die typischen Produktarten und die Atomerhaltung. Prüfe „Es wurden nur vorhandene Moleküle nach Siedepunkten sortiert“. Die Gleichung ist Datenhilfe; sie soll nicht auswendig oder ungelenkt erzeugt werden.",
+            "taskDemandEn": "A simple paper model is fully supplied: C10H22 → C8H18 + C2H4. Structural drawings show a longer saturated chain, a shorter alkane and ethene with a C=C double bond. Explain chemical bond rearrangement at high temperature, typical product classes and atom conservation. Assess “existing molecules were merely sorted by boiling points”. The equation is provided assistance, not a memorized or unguided construction demand.",
+            "expectedPerformanceDe": "Die lernende Person erklärt die veränderten Molekülidentitäten durch Trennen und Neuordnen von Bindungen, erkennt Octan als Alkan und Ethen als Alken im gegebenen Modell und stellt die Erhaltung von insgesamt zehn C- und 22 H-Atomen fest. Sie widerlegt reine Sortierung, weil neue Moleküle entstehen, und benennt die Zeichnung als eine mögliche Modellkombination. Abschreiben der bereits vorgegebenen Gleichung allein kann keine selbstständige Formulierungsleistung belegen.",
+            "expectedPerformanceEn": "The learner explains changed molecular identities through bond cleavage and rearrangement, identifies octane as an alkane and ethene as an alkene in the supplied model, and notes conservation of ten C and 22 H atoms overall. They reject mere sorting because new molecules form and identify the drawing as one possible model combination. Copying the supplied equation cannot demonstrate independent equation formulation.",
+            "understandingFocusDe": "Bindungsumbau erklärt chemische Umwandlung bei erhaltenen Atomen.",
+            "understandingFocusEn": "Bond rearrangement explains chemical conversion with atoms conserved."
+          },
+          {
+            "id": "fresh-product-mixture-atom-check",
+            "taskDemandDe": "Ein unabhängiges Molekülmodell startet mit C12H26 und zeigt zwei vorgeschlagene Produktkombinationen: A: C8H18 + C4H8 mit einem Buten-Molekül; B: C8H18 + C4H10. Strukturen und Summenformeln sind gegeben. Begründe, welche Kombination als vereinfachte alleinige Spaltung atomkonservierend möglich ist, welche eine weitere Stoffquelle verlangen würde und welche Produktklasse in A neu entsteht. In der realen Crackanlage treten mehrere Spaltungswege nebeneinander auf: Muss deshalb ausschließlich A entstehen? Keine Reaktionsmechanismen oder Ausbeuten berechnen.",
+            "taskDemandEn": "An independent molecular model starts with C12H26 and proposes two product combinations: A: C8H18 + C4H8 with a butene molecule; B: C8H18 + C4H10. Structures and formulas are supplied. Explain which is atom-conserving as a simplified sole split, which would require another material source, and which product class appears in A. Several splitting pathways occur alongside one another in a real cracking plant: must A therefore be the exclusive product? Do not calculate mechanisms or yields.",
+            "expectedPerformanceDe": "Die lernende Person begründet A mit zwölf C- und 26 H-Atomen, erkennt in B zwei überschüssige H-Atome und fordert für diese Variante eine zusätzliche H-Quelle statt Atome entstehen zu lassen. Sie ordnet das gegebene Buten mit Doppelbindung den Alkenen zu, erklärt erneut neue Molekülidentitäten und verweigert den Exklusivschluss: Das Modell zeigt nur eine mögliche Kombination im komplexeren Gemisch. Der Anspruch bleibt qualitativ am Molekülmodell und führt keine Pflicht zur eigenständigen industriellen Gleichungsformulierung ein.",
+            "expectedPerformanceEn": "The learner justifies A with twelve C and 26 H atoms, identifies two excess H atoms in B and requires an additional H source rather than creating atoms. They assign the given double-bonded butene to alkenes, explain new molecular identities again and reject exclusivity: the model shows just one possible combination in a more complex mixture. The demand remains qualitative molecular-model reasoning, without compulsory independent formulation of an industrial reaction equation.",
+            "understandingFocusDe": "Eine geänderte Produktstruktur und eine unmögliche Kombination prüfen eigenständiges Umwandlungsverständnis.",
+            "understandingFocusEn": "A changed product structure and an impossible combination test independent understanding of conversion."
+          }
+        ]
+      }
+    }
+  ],
+  "origin": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-revision-candidate-v1/split-8ceb.positive-evidence.candidates.json",
+    "sha256": "sha256:cee66c31738203113c8051ca6b27f546438a1868eac0b86644aacccd18540b7f",
+    "decision": "Preserve the already authored full narrow bilingual cases; this is an author reuse, not an independent positive-evidence review or learner demonstration."
+  }
+}

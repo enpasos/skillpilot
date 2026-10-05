@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/biologie/rollout-v1/2026-10-04/m7-q1-genetic-test-therapy-two-current-20261004-v1.config.json",
+  "configDigest": "sha256:ad73401b9fa08aadd5833f28bf3d4cf96f0ef42932b3eb573f8be56a141d4a6a",
+  "goalIds": [
+    "73b66ead-e44a-5486-98e3-1fb3f99620a6",
+    "3891b735-9d0d-5eef-b653-6ad58b9181f6"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 363,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/biologie/rollout-v1/2026-09-30/m7-q1-genetics-twelve-current-20260930-v1.book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:73bccd86d91f4ceac66e2327333ad2b038d6e43ca87c5f39d736eb4b18c137e9"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:6fa310698b9ea7b5671e103dc0a729ffcd41eef27f3a201659e3db05e1a08fa4",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:aeff4a729f8c4e8c5dc9e19bd7eb822cc1dd2511a2c94694802d6b1023a0b0fd",
+    "reviewInputFingerprint": "sha256:61a348d38c8338450d3c19510728dc3cbdeac4cf6834ab6682571fcefa51d8e8",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-a",
+        "campaignDigest": "sha256:81f2e833c16e2be489de435177fb8265d1b6fce541216a32d54950fdcc95e00e",
+        "roundId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-a",
+        "independenceGroupId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-independent-a",
+        "batchId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:e63d9e83a1ff91693df226561174204a2d5f313e1823bf05fe97e6c0021faac1"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-b",
+        "campaignDigest": "sha256:011ae9eddd838e7d0df50b8532e32ac1a5ef3c5acd7b9f2e11610eb043c44024",
+        "roundId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-b",
+        "independenceGroupId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-independent-b",
+        "batchId": "biologie-m7-q1-genetic-test-therapy-two-current-20261004-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:b711ee9fd73ffc05e92a4559a12f8e48ed712faaeed342b729e0ea2276a7495b"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

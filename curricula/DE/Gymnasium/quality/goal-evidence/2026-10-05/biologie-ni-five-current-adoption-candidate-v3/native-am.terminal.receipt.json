@@ -1,0 +1,54 @@
+{
+  "status": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "createdAt": "2026-10-05T04:33:58.124427+00:00",
+  "humanApproval": false,
+  "activeWrites": 0,
+  "toolchain": {
+    "provider": "OpenAI tool-mediated local agent",
+    "deployedModelId": "not exposed",
+    "Python": "3.12.9",
+    "Node": "v20.20.2",
+    "runner": "repository app/node_modules/.bin/tsx"
+  },
+  "runs": [
+    {
+      "lane": "A FULL candidate",
+      "exitCode": 0,
+      "log": "native-A.terminal.txt",
+      "digest": "sha256:22fab04fbc73228c4691af9c31be3edd220b064ad2ab518f513283318012aa47"
+    },
+    {
+      "lane": "M FULL candidate unchanged registered visibility scope",
+      "exitCode": 0,
+      "log": "native-M.terminal.txt",
+      "digest": "sha256:c99a3bcd9920b8aa6ce5454cc670a3768347753b9d8b137b75e5f9782505dd9b"
+    },
+    {
+      "lane": "additional pure-source-book-view probe",
+      "exitCode": 1,
+      "log": "native-M-NI-probe.terminal.txt",
+      "digest": "sha256:95f566e2655f3e0804a12d5aefe11c9f17964f6abc4948bcbe55d183b71baa8a",
+      "qualification": "Same five pre-existing missing memory nodes; pure curricularAtomic book derivative is not runtime registered and is not an added learner M gate"
+    },
+    {
+      "lane": "actual registered runtime GK+SekI before",
+      "exitCode": 0,
+      "log": "native-M-runtime-before.terminal.txt",
+      "digest": "sha256:f4fcee85a51e1c24b8409fd76e6f9413d501290fff49b4ae2351b432844128be"
+    },
+    {
+      "lane": "actual registered runtime GK+SekI after",
+      "exitCode": 0,
+      "log": "native-M-runtime-after.terminal.txt",
+      "digest": "sha256:b5325c67fac07dd019978c3cc53aaf93643d041b27a299252d789bf926324401"
+    }
+  ],
+  "all363OldARecordBytesPreservedAsPrefix": true,
+  "all363OldMRecordBytesPreservedAsPrefix": true,
+  "allOldCardBytesUnchanged": true,
+  "cardDigest": "sha256:5fee1fd9fb1a2f85f202dbf8174611824a9715fe6c90cd3e3b84124f840c21f0",
+  "oldCardRecords": 17,
+  "newFiveScientificIndividualReasons": "five-targeted-kind-am.rationales.candidate.json",
+  "nativeCandidateResultsAreOperativeGates": false
+}

@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "status": "inactive-independent-visual-candidate-review",
+  "reviewer": "/root/bio_q1_six_candidate_review_b",
+  "createdAtUtc": "2026-10-05T00:58:32.394995+00:00",
+  "goalId": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+  "decision": "PASS_CANDIDATE_ONLY",
+  "assetsActuallyViewed": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-protein-information-flow-candidate-20261005-v1/candidate-v4.png",
+      "sha256": "sha256:1d48f2d65a485a0b1ecf7d73b0f562133ce4646468ae6f3d921aa0737486fbd4",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "actualView": true,
+      "inspection": "view_image actual pixels, not prompt-only"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-protein-information-flow-candidate-20261005-v1/candidate-v4-360.png",
+      "sha256": "sha256:3b5e6322480a3fab5f5d92be7d64683b588e3b23a82a63a1b3aff20b89ccdbd7",
+      "dimensions": [
+        360,
+        203
+      ],
+      "actualView": true,
+      "inspection": "view_image actual pixels, not prompt-only"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-protein-information-flow-candidate-20261005-v1/candidate-v4-680.png",
+      "sha256": "sha256:2f355f64842b39a94bf80a21775b4727423d0611aba07de8e8d2f3a4cfc14283",
+      "dimensions": [
+        680,
+        383
+      ],
+      "actualView": true,
+      "inspection": "view_image actual pixels, not prompt-only"
+    }
+  ],
+  "authorInputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-protein-information-flow-candidate-20261005-v1/prompt-provider-v4.txt",
+      "sha256": "sha256:1508712a0f11921deb1ae466019683dfbd5584d381f28ba5347551a3821d655c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-protein-information-flow-candidate-20261005-v1/generation-v4.receipt.json",
+      "sha256": "sha256:a874fcee8cdb1a62bc1938f390659ea0dadc8d10ca295ec25f1be9b4ac282a80"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-protein-information-flow-candidate-20261005-v1/generation-request-v4.json",
+      "sha256": "sha256:a8811df1a94e1d1418b98f40944a65644ee7521779be977d25e31e3f1ee1c1bb"
+    }
+  ],
+  "operativeContextBindings": {
+    "currentCanonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "currentCanonicalRawSha256": "sha256:bf1f0db83fb572b882630cd25327633874e35126f6a014da697c90c1c87a644f",
+    "currentGoalSnapshot": {
+      "id": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+      "title": "Proteinbiosynthese erklären",
+      "titleEn": "Explain protein biosynthesis",
+      "description": "Die lernende Person kann Transkription und Translation modellhaft darstellen.",
+      "descriptionEn": "The learner can model transcription and translation.",
+      "requires": [
+        "0daa79f6-8f61-5506-98f9-65db83062ba8",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ]
+    },
+    "proposedDescriptionInput": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-six-candidate-v2/description-decisions.candidates.json",
+    "proposedDescriptionInputSha256": "sha256:a7cc2a789aded684ada40113f434cd1f6c4d15a92dad23ca022f6ef46f982b30",
+    "proposedDescriptionDe": "Die lernende Person kann den Informationsfluss von einer gegebenen DNA-Sequenz über mRNA zu einem Polypeptid modellhaft darstellen und die Verbindung von Transkription und Translation erklären.",
+    "proposedDescriptionEn": "The learner can model the information flow from a supplied DNA sequence via mRNA to a polypeptide and explain the connection between transcription and translation.",
+    "candidateDescriptionAlreadyAdopted": false
+  },
+  "findings": [
+    {
+      "check": "Scientific sequence and compartment model",
+      "verdict": "PASS",
+      "finding": "DNA→mRNA→polypeptide is correctly ordered. Visible Zellkern/Zellplasma compartments and mRNA through a pore identify an eukaryotic model. Transcription and translation occupy their corresponding compartments."
+    },
+    {
+      "check": "RNA continuity",
+      "verdict": "PASS",
+      "finding": "Actual pink RNA is one continuous unbranched strand with base symbols along it; no branched RNA or peptide attached to RNA visible."
+    },
+    {
+      "check": "Peptide exit and distinct material",
+      "verdict": "PASS",
+      "finding": "Actual yellow five-bead peptide extends horizontally from upper ribosomal subunit; clear blue background gap separates every bead from the RNA. Lower-right separate bead icon is a symbolic product legend, not a second attached pathway."
+    },
+    {
+      "check": "Arrows and visual-only claims",
+      "verdict": "PASS_WITH_MODEL_LIMIT",
+      "finding": "Header and process arrows express a schematic information pathway. No labeled exact DNA sequence, codon table, chemical stoichiometry, or peptide length is claimed. This is a staged process diagram, not a literal single-time geometry of one molecule spanning nucleus and ribosome."
+    },
+    {
+      "check": "Mobile360",
+      "verdict": "PASS",
+      "finding": "Header DNA→mRNA→Polypeptid, compartment names, main process/ribosome labels and footer remain recognizable. Small supplementary Information wird abgeschrieben is not needed to recover the core scientific relationship; must not become required small-print evidence."
+    },
+    {
+      "check": "Desktop680 and native",
+      "verdict": "PASS",
+      "finding": "Main labels, RNA path, peptide/RNA separation and compartment distinction clear at680 and native. Friendly clear comic shapes and existing landscape style;1672×941 approximately16:9 PNG fits the requested production format."
+    }
+  ],
+  "requiredAltQualificationDe": "Schematischer Informationsweg einer eukaryotischen Zelle: DNA im Zellkern wird in mRNA umgeschrieben; nach dem Export ins Zellplasma dient mRNA am Ribosom als Vorlage für ein Polypeptid. Die gelbe Perlenkette symbolisiert das Polypeptid und bleibt vom RNA-Strang getrennt. Die Darstellung verbindet aufeinanderfolgende Schritte und zeigt keine maßstabsgerechte Momentaufnahme oder konkrete Basen- und Aminosäuresequenz.",
+  "requiredAltQualificationEn": "Schematic information pathway in a eukaryotic cell: DNA in the nucleus is transcribed into mRNA; after export into the cytoplasm, mRNA serves as the template for a polypeptide at the ribosome. The yellow bead chain symbolizes the polypeptide and remains separate from the RNA strand. The diagram connects successive steps; it is not a to-scale snapshot or a specified nucleotide and amino-acid sequence.",
+  "limitations": [
+    "Orientation visualization, not full protein-biosynthesis assessment or evidence for the supplied-sequence task.",
+    "Maturation, polymerase, tRNA and detailedcodon recognition are omitted; no claim that they are absent in real biology.",
+    "Required alt/context must retain the eukaryotic staged-model boundary and symbolic product legend.",
+    "EarlierV1/V2/V3HOLD history was not rereviewed or overwritten; provided priorstatus remainsHOLD.",
+    "No other independent newVreview or root-v3-hold verdict read. Prior own blindD review of six-goal candidate is disclosed, not a freshD pass.",
+    "Finalasset import/currentVbinding and independent operativeD/P integration belong root; this receipt approves only these inactivev4pixels."
+  ],
+  "generationEqualsApproval": false,
+  "humanApproval": false,
+  "strictNet": 0,
+  "activeMutation": false
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "recordStatus": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "fiveRevisionVerdicts": [
+    {
+      "goalId": "950c73c6-4ed1-488a-9267-1142e95e0055",
+      "authorCandidateVerdict": "revise_electrostatic_force_wording_and_explicit_modeling",
+      "proposedDescriptionDe": "Die lernende Person kann einfache Ionengitter wie Natriumchlorid modellieren, ihre räumliche Anordnung einschließlich der Koordinationszahl beschreiben und typische Stoffeigenschaften durch elektrostatische Kräfte und Ionenbeweglichkeit erklären.",
+      "proposedDescriptionEn": "The learner can model simple ionic lattices such as sodium chloride, describe their spatial arrangement including coordination number, and explain typical material properties through electrostatic forces and ion mobility."
+    },
+    {
+      "goalId": "16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+      "authorCandidateVerdict": "supported_with_targeted_source_holds",
+      "proposedDescriptionDe": "Die lernende Person kann Reaktionen von Alkalimetallen und ihren Oxiden mit Wasser anhand der Produkte vergleichen und erklären, weshalb alkalische Lösungen entstehen.",
+      "proposedDescriptionEn": "The learner can compare reactions of alkali metals and their oxides with water using the products and explain why alkaline solutions form."
+    },
+    {
+      "goalId": "58486300-3f84-5aa1-9ed4-66186af62669",
+      "authorCandidateVerdict": "supported_with_targeted_source_holds",
+      "proposedDescriptionDe": "Die lernende Person kann typische Eigenschaften ausgewählter Halogene beschreiben und Verwendungen der elementaren Stoffe sowie ihrer Verbindungen mit den jeweils passenden Stoffeigenschaften begründen.",
+      "proposedDescriptionEn": "The learner can describe typical properties of selected halogens and justify uses of the elemental substances and their compounds using the relevant properties of each substance."
+    },
+    {
+      "goalId": "414489cb-453e-5de4-ab0f-0fc01175e522",
+      "authorCandidateVerdict": "supported_with_targeted_source_holds",
+      "proposedDescriptionDe": "Die lernende Person kann an einem vereinfachten Schema der kalkhaltigen Rauchgaswäsche erklären, wie Schwefeldioxid unter Beteiligung von Oxidation als Sulfat im Gips gebunden wird.",
+      "proposedDescriptionEn": "The learner can use a simplified diagram of lime-based flue-gas scrubbing to explain how sulfur dioxide is captured as sulfate in gypsum through oxidation."
+    },
+    {
+      "goalId": "1f5ee84f-245a-5a1e-a260-f960f26523e9",
+      "authorCandidateVerdict": "supported_with_targeted_source_holds",
+      "proposedDescriptionDe": "Die lernende Person kann ausgewählte mineralische Düngemittel als Quellen von Nährstoffionen einordnen und anhand vorgegebener Angaben zu Pflanzenbedarf, Düngermenge und Stofftransport einen einfachen Nutzen-Risiko-Bezug begründen.",
+      "proposedDescriptionEn": "The learner can classify selected mineral fertilizers as sources of nutrient ions and use supplied information on plant demand, fertilizer amount and substance transport to justify a simple benefit-risk relationship."
+    }
+  ],
+  "twoNullCompanionVerdicts": [
+    {
+      "forGoalId": "72236f2c-771e-4ab6-933a-e549ee49d15b",
+      "id": null,
+      "authorNullCompanionDecision": "supported_with_source_mapping_holds",
+      "reason": "Eine Streuinferenz ist ein eigener prüfbarer Inhalt. Die Formulierung setzt positive Alpha-Teilchen und geeignete gegebene Streubefunde voraus; sie impliziert keinen experimentellen Neutronennachweis. HE10.1-B01A01 und BY9-other.4.2 sind die passenden begrenzten Klauseln.",
+      "retainedParticleOptionDecision": "revise_to_preserve_particle_properties",
+      "retainedDescriptionDe": "Die lernende Person kann den Aufbau von Atomen mit dem Kern-Hülle-Modell darstellen und Protonen, Neutronen sowie Elektronen nach Ort, Ladung und relativer Masse fachlich einordnen.",
+      "retainedDescriptionEn": "The learner can represent atomic structure using the nuclear model and correctly classify protons, neutrons and electrons by location, charge and relative mass.",
+      "retainedReason": "HE nennt Eigenschaften der Atombausteine; Ort und Ladung allein machen ihre unterschiedliche relative Masse unsichtbar. Dies fordert keine Atommasse-/Isotopenroutine und bestätigt deren separaten exact-Mappings nicht.",
+      "existingReuse": "Current f5efab9d energy-level/electron distribution and e7c363d4 periodic-table goals are adjacent partial routes; neither is an existing Rutherford inference atom. No new stable ID assigned.",
+      "memory": "Existing chem_basics_005 remains attached to the retained particle identity; no new Rutherford card. Exact rebinding after adoption remains open."
+    },
+    {
+      "forGoalId": "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+      "id": null,
+      "authorNullCompanionDecision": "revise_before_adoption",
+      "reason": "Der Quelleninhalt umfasst Eigenschaften und Verwendung der Verbindungen. Ein bloßer Verwendungsnachweis für eine einzelne Verbindung kann andere charakteristische Stoffeigenschaften verdecken. Die neue Fassung verknüpft die Charakterisierung derselben Stoffe mit ihrer Verwendung und hält damit eine Kompetenzbeziehung zusammen.",
+      "descriptionDe": "Die lernende Person kann ausgewählte typische Alkalimetallverbindungen anhand ihrer Stoffeigenschaften charakterisieren, ihre Verwendungen damit begründen und sie vom elementaren Alkalimetall unterscheiden.",
+      "descriptionEn": "The learner can characterize selected typical alkali-metal compounds by their material properties, justify their uses through those properties, and distinguish them from the elemental alkali metal.",
+      "retainedElementOptionDecision": "supported_with_stage_holds",
+      "existingReuse": "Current 950 ionic lattices, a163 ion formation and 16a water reactions supply related prerequisites or partial content, not an existing complete properties/uses atom for alkali-metal compounds. No stable ID assigned.",
+      "prerequisiteHold": "Do not adopt 950 as a mandatory HE9 dependency until the specific earlier teaching route is proved; current regular HE10 timing would reproduce the hold."
+    }
+  ],
+  "idsAdopted": 0,
+  "operativeMutations": false
+}
