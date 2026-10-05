@@ -13,7 +13,8 @@ unauthenticated MCP probe receives `401 / authentication_required` with the
 correct protected-resource challenge. These public observations establish
 available discovery and an OAuth barrier; they do not identify the deployed
 source revision or record a native OAuth exchange. After the Git **1.1.1** release and corrected
-OpenAI start, the owner confirmed that the Windows desktop route works.
+OpenAI start, the owner confirmed that the Windows desktop route works in
+**Work**. Start the plugin learning flow in **Work**, not **Chat**.
 Installation and learning start are therefore owner-confirmed; detailed
 OAuth/tool traces, persisted progress, continuation and renewal remain separate
 acceptance evidence. The [active Git beta](openai-personal-marketplace-release.md)
@@ -144,7 +145,8 @@ client that demonstrably supplies the required certificate.
 3. Choose **Lernen mit ChatGPT vorbereiten** and confirm the existing provider
    eligibility prompt. The first-party UI calls the existing V1 launch endpoint
    once, obtaining a fresh session and an authoritative prepared message.
-4. Copy that message into a new desktop chat with **SkillPilot Coach v1** selected.
+4. Open **Work** in ChatGPT Desktop and copy that message into a new conversation
+   with **SkillPilot Coach v1** selected.
    The message stays in component memory until copied; it is not stored in
    browser storage. A changed learner, curriculum or language clears the handoff.
 5. Verify the actual `get_skillpilot_context` call and expected session language,

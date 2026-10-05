@@ -2,7 +2,8 @@
 
 This repository distributes **SkillPilot Coach v1** with its coaching skill and
 remote SkillPilot MCP connection. The current package is **1.1.1**. This beta
-uses the desktop plugin installer; it has no published OpenAI Directory listing.
+uses the desktop plugin installer. Start the plugin in the desktop app's
+**Work** area, not **Chat**. It has no published OpenAI Directory listing.
 ChatGPT web and native mobile operation have not been accepted.
 
 ## Install in ChatGPT Desktop
@@ -18,30 +19,32 @@ In the Windows desktop app:
    supplied by the tester.
 5. Open [SkillPilot](https://skillpilot.com/), complete the learning setup,
    select **ChatGPT Desktop (Beta)** and generate its start message.
-6. Copy that message into a **new desktop chat** with the SkillPilot plugin
-   enabled. Keep the included learning session unchanged.
+6. Open **Work** in ChatGPT Desktop and copy that message into a
+   **new conversation** with the SkillPilot plugin enabled. Keep the included
+   learning session unchanged.
 
 Until the updated provider choice is deployed, open
 [the ChatGPT test start](https://skillpilot.com/?chatgptTest=1), select
 **ChatGPT ausprobieren** and **Startnachricht erzeugen**. This already uses
-the OpenAI launch endpoint; use its message in the new desktop chat.
+the OpenAI launch endpoint; use its message in a new conversation in **Work**.
 
 Claude and ChatGPT have separate learning sessions. A message generated for
 Claude cannot start the ChatGPT coach. Keep learning-session capabilities out
 of public issues and screenshots.
 
 On **5 October 2026**, the owner confirmed that the Git/Desktop route and
-corrected learning start work on Windows. The ordinary SkillPilot start offers
-**ChatGPT Desktop (Beta)**. Detailed OAuth/tool traces, saved progress, session
+corrected learning start work in **Work** on Windows. The ordinary SkillPilot
+start offers **ChatGPT Desktop (Beta)**. Detailed OAuth/tool traces, saved progress, session
 continuation, token renewal and desktop automatic updates remain separate
 acceptance checks. This confirmation applies to the tested Windows route.
 
 ## Update
 
 Use the marketplace's refresh/update action in ChatGPT Desktop, check that
-**1.1.1** is installed, then start a new chat with a freshly generated ChatGPT
-message. Existing archive installations need a Git-marketplace installation to
-receive Git updates. Avoid enabling two SkillPilot copies in one chat.
+**1.1.1** is installed, then start a new conversation in **Work** with a freshly
+generated ChatGPT message. Existing archive installations need a Git-marketplace
+installation to receive Git updates. Avoid enabling two SkillPilot copies in one
+conversation.
 
 For a supported Codex CLI in the same native environment:
 
