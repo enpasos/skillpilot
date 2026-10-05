@@ -62,6 +62,8 @@ Use this page by role: start with the overview documents, then jump to a review 
 - [Ein neuer Redoxabschluss vom 5. Oktober](chemie-biologie-m7-redox-one-checkpoint-2026-10-05.md)
 - [KI-Transparenzinventar vom 5. Oktober](chemie-biologie-ai-transparency-inventory-2026-10-05.md)
 - [Gesicherter Commit-Zwischenstand vom 5. Oktober](chemie-biologie-m7-commit-checkpoint-2026-10-05.md)
+- [Biologie: aktuelle Gelelektrophorese-Fortsetzung vom 5. Oktober](chemie-biologie-m7-gel-fortsetzung-2026-10-05.md)
+- [Chemie: fünf aktuelle Redox-/Titrationsabschlüsse vom 5. Oktober](chemie-biologie-m7-redox-titration-fortsetzung-2026-10-05.md)
 
 ## Review Lanes
 

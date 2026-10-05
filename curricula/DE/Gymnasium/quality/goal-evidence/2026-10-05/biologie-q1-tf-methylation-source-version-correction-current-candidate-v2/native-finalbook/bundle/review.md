@@ -1,0 +1,129 @@
+# AI review input: Biologie Q1 – TF und DNA-Methylierung; Quellenversionskorrektur mit Gel-Bindung
+
+- Book ID: `de-gym-biologie-q1-tf-methylation-source-v2-current-20261005-v2`
+- Book edition: `curricular-atomic-v1`
+- Publication mode: `review`
+- BookModel digest: `sha256:e6a48b3e92bc877cc8eac5866eb7dc5bd664bc629dbdf13360a6d3e378bb041a`
+- Selected goals: 3
+
+The PDF and this Markdown are parallel review surfaces. The normalized JSON is authoritative for exact IDs, relationships, fingerprints, and evidence-profile fields.
+
+## Page 1: Transkriptionsfaktoren bei Eukaryoten erklären
+
+- Full learning-goal ID: `946ce2e7-c30d-5670-839d-003b0619c284`
+- Goal fingerprint: `sha256:cdfaadf7632bfaba7af4309175a233b947569d022eac144ee61629d7aacfac13`
+- Page fingerprint: `sha256:16e09e909de8d53c197d5d2836251e237b540a19a9cb9531c3bfadfb80238ce0`
+- Topic path: Biologie > Genetik und Gentechnik > Q1.2 Gene und Gentechnik
+
+### Canonical description
+
+Die lernende Person kann an einem gegebenen eukaryotischen Genmodell erklären, wie Transkriptionsfaktoren über regulatorische DNA-Bereiche die Transkription beeinflussen.
+
+### Visualization
+
+/assets/goal-visualizations/biologie/946ce2e7-c30d-5670-839d-003b0619c284/946ce2e7-c30d-5670-839d-003b0619c284.png
+
+- original digest: `sha256:b8846d373a278881915668f9d23a5fd8e28cec8d2660d53d05ea4aebac3ccda6`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Biologie? - Relevanz und Orientierung — `2d451684-6e53-565e-a987-f362da919d2c` (outside this book)
+- Proteinbiosynthese erklären — `475eebb4-4eb0-524f-b1ec-4a672bf856d2` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Sek-II-Abschlussaufgaben Biologie bearbeiten — `1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a` (outside this book)
+- Tumorsuppressor zwischen Promotormethylierung und Zellzyklus — `3ac1cbb1-a366-5ae5-85c0-76b08270869d` (outside this book)
+
+### Evidence-profile candidate
+
+No evidence-profile record is bound to this page.
+## Page 2: DNA-Methylierung bei Eukaryoten erklären
+
+- Full learning-goal ID: `0ac51522-352c-50d1-8b95-8d3992b4db15`
+- Goal fingerprint: `sha256:84e9cc68d16a8610741b54fbf0bbe1a97d8990cec2bbb15ab5a94e2e0e467147`
+- Page fingerprint: `sha256:7139efaa850f03040f9e26d66560cffcf961f1de586e5dc2dcf930462853d882`
+- Topic path: Biologie > Genetik und Gentechnik > Q1.2 Gene und Gentechnik
+
+### Canonical description
+
+Die lernende Person kann an gegebenen eukaryotischen Genmodellen erklären, wie DNA-Methylierung die Transkription im jeweiligen Kontext beeinflussen kann, und passende Methylierungs- und mRNA-Befunde begründet deuten.
+
+### Visualization
+
+/assets/goal-visualizations/biologie/0ac51522-352c-50d1-8b95-8d3992b4db15/0ac51522-352c-50d1-8b95-8d3992b4db15.png
+
+- original digest: `sha256:3b70658a72039fa9502ec988331005b1cfd8bc4228af56b696d68e6e11da3623`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Biologie? - Relevanz und Orientierung — `2d451684-6e53-565e-a987-f362da919d2c` (outside this book)
+- Proteinbiosynthese erklären — `475eebb4-4eb0-524f-b1ec-4a672bf856d2` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Sek-II-Abschlussaufgaben Biologie bearbeiten — `1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a` (outside this book)
+- Tumorsuppressor zwischen Promotormethylierung und Zellzyklus — `3ac1cbb1-a366-5ae5-85c0-76b08270869d` (outside this book)
+
+### Evidence-profile candidate
+
+No evidence-profile record is bound to this page.
+## Page 3: Gelelektrophorese auswerten
+
+- Full learning-goal ID: `8eb86a82-122d-5cae-8f80-bb2850b29c2f`
+- Goal fingerprint: `sha256:6b1a4628773ecd79c837fb81cd066b1ebfb8eeea3d99ddb318f00cd8d706aa57`
+- Page fingerprint: `sha256:970786e8058aba963464707d885128a7fe500d991edee0d2bced2456914ddaa4`
+- Topic path: Biologie > Genetik und Gentechnik > Q1.2 Gene und Gentechnik
+
+### Canonical description
+
+Die lernende Person kann die Trennung von DNA-Fragmenten durch Gelelektrophorese erklären und vorgegebene Bandenmuster mithilfe eines Größenmarkers begründet auswerten.
+
+### Visualization
+
+/assets/goal-visualizations/biologie/8eb86a82-122d-5cae-8f80-bb2850b29c2f/8eb86a82-122d-5cae-8f80-bb2850b29c2f.png
+
+- original digest: `sha256:6c5a1ac50d05b30f31639f4c25f9eb948aff545783df606b57d9557664b36a87`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Biologie? - Relevanz und Orientierung — `2d451684-6e53-565e-a987-f362da919d2c` (outside this book)
+- DNA-Aufbau darstellen — `0daa79f6-8f61-5506-98f9-65db83062ba8` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Sek-II-Abschlussaufgaben Biologie bearbeiten — `1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a` (outside this book)
+
+### Evidence-profile candidate
+
+No evidence-profile record is bound to this page.

@@ -1,0 +1,76 @@
+{
+  "status": "failed_closed",
+  "commands": [
+    {
+      "name": "final-visual-source-bind",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/bind-final-visual-and-source-inputs.mts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAtUTC": "2026-10-05T13:56:44.950324+00:00",
+      "endedAtUTC": "2026-10-05T13:56:45.420504+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/final-visual-source-bind.stdout.txt",
+      "stdoutSHA256": "sha256:dd8f3a816bb5a597946526f70f5c95767134c41b28b8ab80f79138fee7743207",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/final-visual-source-bind.stderr.txt",
+      "stderrSHA256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "final-source-atlas-generate",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-q1-acids-soaps-preservatives-twenty-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T13:56:45.421150+00:00",
+      "endedAtUTC": "2026-10-05T13:56:46.911545+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/final-source-atlas-generate.stdout.txt",
+      "stdoutSHA256": "sha256:a4aa9d4bbd0f9ebf1a212af6c0c06a63ed5885cf9ef308c0e98d8e08b85cdf9a",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/final-source-atlas-generate.stderr.txt",
+      "stderrSHA256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "final-source-atlas-check",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+        "--check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-q1-acids-soaps-preservatives-twenty-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T13:56:46.912181+00:00",
+      "endedAtUTC": "2026-10-05T13:56:48.451581+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/final-source-atlas-check.stdout.txt",
+      "stdoutSHA256": "sha256:9aa3c49c13d0b955dadf42573603a3e9ea7351959f8e8b838f83d5307bb696cc",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/final-source-atlas-check.stderr.txt",
+      "stderrSHA256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "final-fifteen-book-prepare",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "prepare",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/batch.config.json"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-q1-acids-soaps-preservatives-twenty-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T13:56:48.452395+00:00",
+      "endedAtUTC": "2026-10-05T13:56:55.126635+00:00",
+      "actualExitCode": 1,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/final-fifteen-book-prepare.stdout.txt",
+      "stdoutSHA256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/final-fifteen-book-prepare.stderr.txt",
+      "stderrSHA256": "sha256:f0a67103604ff35eebe91b16843e4ee4cb2de4e023c247ccfb89d10fe6ae301f"
+    }
+  ],
+  "strictNetDelta": 0,
+  "humanApproval": false,
+  "activeWritesThisStage": 0
+}

@@ -1,0 +1,60 @@
+{
+  "stages": [
+    {
+      "kind": "A",
+      "oldConfig": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-chemistry-ephase-redox-protolysis.config.json",
+      "newConfig": "curricula/DE/Gymnasium/quality/semantic-atomicity/chemie-b014-five-current-20261005-v1/canonical-chemistry-ephase-redox-protolysis.config.json",
+      "oldReview": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-chemistry-ephase-redox-protolysis.review.jsonl",
+      "preservedUnchangedRawReviewLines": 8,
+      "updatedGoalIds": [
+        "02634fdd-c8ba-591a-b240-77129b1bebb8",
+        "efa24b77-0f98-5835-9d82-3e539ab20253",
+        "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef"
+      ],
+      "cardsReviewPathUnchanged": true,
+      "visibilityScopesUnchanged": true
+    },
+    {
+      "kind": "M",
+      "oldConfig": "curricula/DE/Gymnasium/quality/memory-card-review/chemie-stoffmenge-nine-current-20261005-v1/canonical-chemistry-full.config.json",
+      "newConfig": "curricula/DE/Gymnasium/quality/memory-card-review/chemie-b014-five-current-20261005-v1/canonical-chemistry-full.config.json",
+      "oldReview": "curricula/DE/Gymnasium/quality/memory-card-review/chemie-stoffmenge-nine-current-20261005-v1/canonical-chemistry-full.review.jsonl",
+      "preservedUnchangedRawReviewLines": 373,
+      "updatedGoalIds": [
+        "02634fdd-c8ba-591a-b240-77129b1bebb8",
+        "efa24b77-0f98-5835-9d82-3e539ab20253",
+        "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef"
+      ],
+      "cardsReviewPathUnchanged": true,
+      "visibilityScopesUnchanged": true
+    }
+  ],
+  "nativeChecks": [
+    {
+      "kind": "A",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/semantic-atomicity/chemie-b014-five-current-20261005-v1/canonical-chemistry-ephase-redox-protolysis.config.json"
+      ],
+      "exitCode": 0,
+      "completedAtUTC": "2026-10-05T13:11:17.067359+00:00",
+      "stdoutTail": "# Semantic Atomicity Review: canonical-chemistry-ephase-redox-protolysis\nScope: Canonical chemistry E-phase redox and protolysis clusters\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 11\nCurrent reviewed atomic: 11\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n",
+      "stderrTail": ""
+    },
+    {
+      "kind": "M",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/memory-card-review/chemie-b014-five-current-20261005-v1/canonical-chemistry-full.config.json"
+      ],
+      "exitCode": 0,
+      "completedAtUTC": "2026-10-05T13:11:17.099081+00:00",
+      "stdoutTail": "rderlich. Die neue indikatorbezogene Farbskala, Beobachtung und begründete grobe Deutung sind unabhängige Verständnis- und Versuchspraxis und werden nicht durch die Karte belegt.\n- Spannungsreihen nutzen [8be14f15-2258-58e6-ae4e-38953f5d0570]: Memory-Anteil streng begrenzt auf kompakte Chemie-Begriffe, Symbol-/Formelregeln, Nachweise oder Gleichungen; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend.\n- Stereoisomerietypen zuordnen [9decc36b-a69a-5599-a9f0-fcebdf0203d8]: Memory-Anteil streng begrenzt auf kompakte Chemie-Begriffe, Symbol-/Formelregeln, Nachweise oder Gleichungen; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend.\n- Stereozentren erkennen [b92bfa45-b500-5647-8fd2-a14b708aaf59]: Memory-Anteil streng begrenzt auf kompakte Chemie-Begriffe, Symbol-/Formelregeln, Nachweise oder Gleichungen; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend.\n- Stoffmenge und Einheit Mol nutzen [1dc15fa2-fca4-56b0-b5c1-4d215613dde0]: memory_required: Der kompakte Begriff Stoffmenge/mol bleibt erforderlich; bestehende Karte chem_basics_008 und kanonisches Basisdeck bleiben unverändert. Explizite Entity-Begründung ist P-Leistung, keine neue Kartenroutine.\n- Valenzstrichformeln und Mesomerie aufstellen [23533087-89ea-5f29-8ec1-9f2e01197bb6]: Memory-Anteil streng begrenzt auf kompakte Chemie-Begriffe, Symbol-/Formelregeln, Nachweise oder Gleichungen; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend.\n- Wirkungsgrade vergleichen [3ec31fe1-e01b-5edd-bd9a-936191d67639]: Memory-Anteil streng begrenzt auf kompakte Chemie-Begriffe, Symbol-/Formelregeln, Nachweise oder Gleichungen; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend.\n",
+      "stderrTail": ""
+    }
+  ]
+}

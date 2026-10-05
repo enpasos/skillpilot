@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>B010 – aktuelle sieben offene Ziele</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">B010 – aktuelle sieben offene Ziele</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>7 atomare Lernziele</dt><dd>1 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:5bdb40efec716f7431122302c524e222a4f4156a580a9cf01e3bba6691e5bfd9</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:b010-seven-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-43a89559f9ede58c50a332de" aria-label="B010 – sieben offene Ziele"><a href="#goal-72236f2c-771e-4ab6-933a-e549ee49d15b"><span class="toc-entry-label">B010&#160;<wbr>–&#160;<wbr>sieben&#160;<wbr>offene&#160;<wbr>Ziele</span></a></h2>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-72236f2c-771e-4ab6-933a-e549ee49d15b" data-goal-id="72236f2c-771e-4ab6-933a-e549ee49d15b" data-page-number="1" data-chapter-ids="structure:b010-seven-root" aria-labelledby="goal-72236f2c-771e-4ab6-933a-e549ee49d15b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-72236f2c-771e-4ab6-933a-e549ee49d15b-title"><a class="goal-self-link" href="#goal-72236f2c-771e-4ab6-933a-e549ee49d15b">Kern-Hülle-Modell und Elementarteilchen beschreiben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>72236f2c-771e-4ab6-933a-e549ee49d15b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-43a89559f9ede58c50a332de">B010 – sieben offene Ziele</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f719a84f6b326a8c07850aa374a9950c9e7bc618e7e74b8e31bfadffe6380b0d" data-rendered-digest="sha256:567f670be8319666b8b1549811b4623304044738a92e87c125825ec2bfe402cf" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/72236f2c-771e-4ab6-933a-e549ee49d15b/72236f2c-771e-4ab6-933a-e549ee49d15b.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Kern-Hülle-Modell und Elementarteilchen beschreiben&quot;. Die lernende Person kann das Rutherford-Streuexperiment als Befund für das Kern-Hülle-Modell einordnen, den Aufbau von Atomen mit dem Kern-Hülle-Modell beschreiben und Protonen, Neutronen sowie Elektronen fachlich einordnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-72236f2c-771e-4ab6-933a-e549ee49d15b-description-heading">
+        <p class="section-heading" id="goal-72236f2c-771e-4ab6-933a-e549ee49d15b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Rutherford-Streuexperiment als Befund für das Kern-Hülle-Modell einordnen, den Aufbau von Atomen mit dem Kern-Hülle-Modell beschreiben und Protonen, Neutronen sowie Elektronen fachlich einordnen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-72236f2c-771e-4ab6-933a-e549ee49d15b-requires-heading">
+          <p class="section-heading" id="goal-72236f2c-771e-4ab6-933a-e549ee49d15b-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-72236f2c-771e-4ab6-933a-e549ee49d15b-reverse-heading">
+          <p class="section-heading" id="goal-72236f2c-771e-4ab6-933a-e549ee49d15b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-72236f2c-771e-4ab6-933a-e549ee49d15b-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-72236f2c-771e-4ab6-933a-e549ee49d15b-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-9b5d6326-d27c-4ece-8c72-debda705464a" rel="noreferrer noopener"><span>Dalton-Modell und Modellcharakter erläutern</span> <code>9b5d6326-d27c-4ece-8c72-debda705464a</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-72236f2c-771e-4ab6-933a-e549ee49d15b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-72236f2c-771e-4ab6-933a-e549ee49d15b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-1e519951-9850-5a07-ac82-d9f0075e3d05" rel="noreferrer noopener"><span>Lernkarten - Atombau und Bindung</span> <code>1e519951-9850-5a07-ac82-d9f0075e3d05</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-f5efab9d-2c61-44ea-b36a-87f873b51fd8" rel="noreferrer noopener"><span>Energiestufenmodell und Elektronenverteilung anwenden</span> <code>f5efab9d-2c61-44ea-b36a-87f873b51fd8</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 7</span>
+      <span>Buch-Digest <code>sha256:5bdb40efec716f7431122302c524e222a4f4156a580a9cf01e3bba6691e5bfd9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:74fb9da4ecc847ef1f007966f8945a2e9224e082298c68e51a83f8c0065284a8</code></span>
+      <a href="https://skillpilot.com/lernzielbuch-feedback?bookId=chemie-b010-seven-current-source-description-candidate-v1&amp;edition=curricular-atomic-v1&amp;goalId=72236f2c-771e-4ab6-933a-e549ee49d15b&amp;goalFingerprint=sha256%3A74fb9da4ecc847ef1f007966f8945a2e9224e082298c68e51a83f8c0065284a8&amp;pageFingerprint=sha256%3A3219e5702b86b25224d7153215c8b36bf5d287a4b0bb3af641aa12bca82db1c5&amp;bookDigest=sha256%3A5bdb40efec716f7431122302c524e222a4f4156a580a9cf01e3bba6691e5bfd9&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-950c73c6-4ed1-488a-9267-1142e95e0055" data-goal-id="950c73c6-4ed1-488a-9267-1142e95e0055" data-page-number="2" data-chapter-ids="structure:b010-seven-root" aria-labelledby="goal-950c73c6-4ed1-488a-9267-1142e95e0055-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-950c73c6-4ed1-488a-9267-1142e95e0055-title"><a class="goal-self-link" href="#goal-950c73c6-4ed1-488a-9267-1142e95e0055">Ionenbindung und Ionengitter beschreiben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>950c73c6-4ed1-488a-9267-1142e95e0055</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-43a89559f9ede58c50a332de">B010 – sieben offene Ziele</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-950c73c6-4ed1-488a-9267-1142e95e0055-description-heading">
+        <p class="section-heading" id="goal-950c73c6-4ed1-488a-9267-1142e95e0055-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Ionengitter wie Natriumchlorid beschreiben und einfache Struktur-Eigenschafts-Bezüge fachlich herstellen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-950c73c6-4ed1-488a-9267-1142e95e0055-requires-heading">
+          <p class="section-heading" id="goal-950c73c6-4ed1-488a-9267-1142e95e0055-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-950c73c6-4ed1-488a-9267-1142e95e0055-reverse-heading">
+          <p class="section-heading" id="goal-950c73c6-4ed1-488a-9267-1142e95e0055-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-950c73c6-4ed1-488a-9267-1142e95e0055-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-950c73c6-4ed1-488a-9267-1142e95e0055-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca" rel="noreferrer noopener"><span>Ionenbildung mit der Edelgasregel deuten</span> <code>a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-950c73c6-4ed1-488a-9267-1142e95e0055-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-950c73c6-4ed1-488a-9267-1142e95e0055-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-448815cc-4127-54b7-96bf-e54b3d2a38c5" rel="noreferrer noopener"><span>Bindungstypen sicher erläutern</span> <code>448815cc-4127-54b7-96bf-e54b3d2a38c5</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-79db6d68-b402-5563-a348-f2784fed8867" rel="noreferrer noopener"><span>Molekulare und ionogene Verbindungen unterscheiden</span> <code>79db6d68-b402-5563-a348-f2784fed8867</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-965ca297-5dbf-5e58-b5f0-6559a4433646" rel="noreferrer noopener"><span>Salzformeln aus Ionenladungen ableiten</span> <code>965ca297-5dbf-5e58-b5f0-6559a4433646</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-a44af1fa-5988-5b7d-b206-691c6bbf7dd4" rel="noreferrer noopener"><span>Ionen nachweisen und Salzzusammensetzung bestimmen</span> <code>a44af1fa-5988-5b7d-b206-691c6bbf7dd4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-b5086548-169e-5d63-a14a-dabf631fa013" rel="noreferrer noopener"><span>Halogenide, Sulfate, Nitrate und Carbonate einordnen</span> <code>b5086548-169e-5d63-a14a-dabf631fa013</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-c441d9e8-d9d9-5e55-a189-a37345541321" rel="noreferrer noopener"><span>Salzbildung energetisch mit Gitterenergie erklären</span> <code>c441d9e8-d9d9-5e55-a189-a37345541321</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-dd58c029-176f-5d99-923e-1c1fda6cf58e" rel="noreferrer noopener"><span>Alkane, Alkene und Alkine beschreiben</span> <code>dd58c029-176f-5d99-923e-1c1fda6cf58e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 7</span>
+      <span>Buch-Digest <code>sha256:5bdb40efec716f7431122302c524e222a4f4156a580a9cf01e3bba6691e5bfd9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9555559c800640ed674f15930c56207ec3254a941540babafda1a5e562877cac</code></span>
+      <a href="https://skillpilot.com/lernzielbuch-feedback?bookId=chemie-b010-seven-current-source-description-candidate-v1&amp;edition=curricular-atomic-v1&amp;goalId=950c73c6-4ed1-488a-9267-1142e95e0055&amp;goalFingerprint=sha256%3A9555559c800640ed674f15930c56207ec3254a941540babafda1a5e562877cac&amp;pageFingerprint=sha256%3Ac6a70cecd0db3ca29bf9ebb7eb3a1fa2a4b78de225d0b40d4af5c96bd5c51468&amp;bookDigest=sha256%3A5bdb40efec716f7431122302c524e222a4f4156a580a9cf01e3bba6691e5bfd9&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e0e201bd-a1fd-5985-ab08-fd24c8655f3d" data-goal-id="e0e201bd-a1fd-5985-ab08-fd24c8655f3d" data-page-number="3" data-chapter-ids="structure:b010-seven-root" aria-labelledby="goal-e0e201bd-a1fd-5985-ab08-fd24c8655f3d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e0e201bd-a1fd-5985-ab08-fd24c8655f3d-title"><a class="goal-self-link" href="#goal-e0e201bd-a1fd-5985-ab08-fd24c8655f3d">Alkalimetalle und ihre Verbindungen charakterisieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e0e201bd-a1fd-5985-ab08-fd24c8655f3d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-43a89559f9ede58c50a332de">B010 – sieben offene Ziele</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4ba3e59958b6f01e574aa4de547f06151fb103435826f98a875f4ca6c8d20aea" data-rendered-digest="sha256:bf60cb5bdcaa17e7bd0aa22932de2847a88591dccfc78bf5717bb6a035f335d3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/e0e201bd-a1fd-5985-ab08-fd24c8655f3d/e0e201bd-a1fd-5985-ab08-fd24c8655f3d.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Alkalimetalle und ihre Verbindungen charakterisieren&quot;. Die lernende Person kann Eigenschaften, Verwendung und typische Verbindungen der Alkalimetalle fachlich beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e0e201bd-a1fd-5985-ab08-fd24c8655f3d-description-heading">
+        <p class="section-heading" id="goal-e0e201bd-a1fd-5985-ab08-fd24c8655f3d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Eigenschaften, Verwendung und typische Verbindungen der Alkalimetalle fachlich beschreiben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e0e201bd-a1fd-5985-ab08-fd24c8655f3d-requires-heading">
+          <p class="section-heading" id="goal-e0e201bd-a1fd-5985-ab08-fd24c8655f3d-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-e0e201bd-a1fd-5985-ab08-fd24c8655f3d-reverse-heading">
+          <p class="section-heading" id="goal-e0e201bd-a1fd-5985-ab08-fd24c8655f3d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-16a80de2-b5e0-5467-a9b3-5860730d7d8b"><span>Reaktionen von Alkalimetallen und Alkalimetalloxiden mit Wasser deuten</span><code>16a80de2-b5e0-5467-a9b3-5860730d7d8b</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e0e201bd-a1fd-5985-ab08-fd24c8655f3d-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e0e201bd-a1fd-5985-ab08-fd24c8655f3d-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca" rel="noreferrer noopener"><span>Ionenbildung mit der Edelgasregel deuten</span> <code>a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 7</span>
+      <span>Buch-Digest <code>sha256:5bdb40efec716f7431122302c524e222a4f4156a580a9cf01e3bba6691e5bfd9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7d60a8a8634e1a979e69f5cb236e74d8d3cc146b7cd2f0e91516f186f8f762ed</code></span>
+      <a href="https://skillpilot.com/lernzielbuch-feedback?bookId=chemie-b010-seven-current-source-description-candidate-v1&amp;edition=curricular-atomic-v1&amp;goalId=e0e201bd-a1fd-5985-ab08-fd24c8655f3d&amp;goalFingerprint=sha256%3A7d60a8a8634e1a979e69f5cb236e74d8d3cc146b7cd2f0e91516f186f8f762ed&amp;pageFingerprint=sha256%3A6973ade1dec9b4f0b5b5bd4ffe9f842bb773597dece3ee985277e2ced9154a5a&amp;bookDigest=sha256%3A5bdb40efec716f7431122302c524e222a4f4156a580a9cf01e3bba6691e5bfd9&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-16a80de2-b5e0-5467-a9b3-5860730d7d8b" data-goal-id="16a80de2-b5e0-5467-a9b3-5860730d7d8b" data-page-number="4" data-chapter-ids="structure:b010-seven-root" aria-labelledby="goal-16a80de2-b5e0-5467-a9b3-5860730d7d8b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-16a80de2-b5e0-5467-a9b3-5860730d7d8b-title"><a class="goal-self-link" href="#goal-16a80de2-b5e0-5467-a9b3-5860730d7d8b">Reaktionen von Alkalimetallen und Alkalimetalloxiden mit Wasser deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>16a80de2-b5e0-5467-a9b3-5860730d7d8b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-43a89559f9ede58c50a332de">B010 – sieben offene Ziele</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8fe44fbc296f89f894b842e88495a8d33e43e8e73580e23b529c0fcf7062ddc0" data-rendered-digest="sha256:1cc00d9881df252ea7acffbb5ad88c577e52b602f018b7c167f48b3f2db8db5e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/16a80de2-b5e0-5467-a9b3-5860730d7d8b/16a80de2-b5e0-5467-a9b3-5860730d7d8b.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Reaktionen von Alkalimetallen und Alkalimetalloxiden mit Wasser deuten&quot;. Die lernende Person kann Reaktionen von Alkalimetallen mit Wasser sowie von Alkalimetalloxiden mit Wasser beschreiben und die Bildung alkalischer Loesungen deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-16a80de2-b5e0-5467-a9b3-5860730d7d8b-description-heading">
+        <p class="section-heading" id="goal-16a80de2-b5e0-5467-a9b3-5860730d7d8b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Reaktionen von Alkalimetallen mit Wasser sowie von Alkalimetalloxiden mit Wasser beschreiben und die Bildung alkalischer Loesungen deuten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-16a80de2-b5e0-5467-a9b3-5860730d7d8b-requires-heading">
+          <p class="section-heading" id="goal-16a80de2-b5e0-5467-a9b3-5860730d7d8b-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e0e201bd-a1fd-5985-ab08-fd24c8655f3d"><span>Alkalimetalle und ihre Verbindungen charakterisieren</span><code>e0e201bd-a1fd-5985-ab08-fd24c8655f3d</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-16a80de2-b5e0-5467-a9b3-5860730d7d8b-reverse-heading">
+          <p class="section-heading" id="goal-16a80de2-b5e0-5467-a9b3-5860730d7d8b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-16a80de2-b5e0-5467-a9b3-5860730d7d8b-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-16a80de2-b5e0-5467-a9b3-5860730d7d8b-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-d2ccd1d5-56f7-583f-9724-e97441367f91" rel="noreferrer noopener"><span>Saure, alkalische und neutrale Lösungen unterscheiden</span> <code>d2ccd1d5-56f7-583f-9724-e97441367f91</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 7</span>
+      <span>Buch-Digest <code>sha256:5bdb40efec716f7431122302c524e222a4f4156a580a9cf01e3bba6691e5bfd9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e1351ab0849db0741bee83bd1e90e39f5d1bfe9e8bad0bf57e877ed45ceb6eb7</code></span>
+      <a href="https://skillpilot.com/lernzielbuch-feedback?bookId=chemie-b010-seven-current-source-description-candidate-v1&amp;edition=curricular-atomic-v1&amp;goalId=16a80de2-b5e0-5467-a9b3-5860730d7d8b&amp;goalFingerprint=sha256%3Ae1351ab0849db0741bee83bd1e90e39f5d1bfe9e8bad0bf57e877ed45ceb6eb7&amp;pageFingerprint=sha256%3A196802176052ad6e1615bb5c19a923566ac7b6a7a056a62b095534883458fb54&amp;bookDigest=sha256%3A5bdb40efec716f7431122302c524e222a4f4156a580a9cf01e3bba6691e5bfd9&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-58486300-3f84-5aa1-9ed4-66186af62669" data-goal-id="58486300-3f84-5aa1-9ed4-66186af62669" data-page-number="5" data-chapter-ids="structure:b010-seven-root" aria-labelledby="goal-58486300-3f84-5aa1-9ed4-66186af62669-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-58486300-3f84-5aa1-9ed4-66186af62669-title"><a class="goal-self-link" href="#goal-58486300-3f84-5aa1-9ed4-66186af62669">Halogene und ihre Verwendung charakterisieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>58486300-3f84-5aa1-9ed4-66186af62669</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-43a89559f9ede58c50a332de">B010 – sieben offene Ziele</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b8139a29870e67ee4a6f82a9b52475ff46a88f1525d69ed9176863de8f62e9c5" data-rendered-digest="sha256:b86011333382ce691893af24bcc906b586fb573d345bdac520ca0677088d51a4" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/58486300-3f84-5aa1-9ed4-66186af62669/58486300-3f84-5aa1-9ed4-66186af62669.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Halogene und ihre Verwendung charakterisieren&quot;. Die lernende Person kann Eigenschaften und Verwendung der Halogene sowie einfache Alltagsbezuege fachlich beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-58486300-3f84-5aa1-9ed4-66186af62669-description-heading">
+        <p class="section-heading" id="goal-58486300-3f84-5aa1-9ed4-66186af62669-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Eigenschaften und Verwendung der Halogene sowie einfache Alltagsbezuege fachlich beschreiben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-58486300-3f84-5aa1-9ed4-66186af62669-requires-heading">
+          <p class="section-heading" id="goal-58486300-3f84-5aa1-9ed4-66186af62669-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-58486300-3f84-5aa1-9ed4-66186af62669-reverse-heading">
+          <p class="section-heading" id="goal-58486300-3f84-5aa1-9ed4-66186af62669-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-58486300-3f84-5aa1-9ed4-66186af62669-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-58486300-3f84-5aa1-9ed4-66186af62669-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca" rel="noreferrer noopener"><span>Ionenbildung mit der Edelgasregel deuten</span> <code>a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 7</span>
+      <span>Buch-Digest <code>sha256:5bdb40efec716f7431122302c524e222a4f4156a580a9cf01e3bba6691e5bfd9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bb22121948c4000efc87095fd4cd0304691830720ffdc73c6e8bf6d948802840</code></span>
+      <a href="https://skillpilot.com/lernzielbuch-feedback?bookId=chemie-b010-seven-current-source-description-candidate-v1&amp;edition=curricular-atomic-v1&amp;goalId=58486300-3f84-5aa1-9ed4-66186af62669&amp;goalFingerprint=sha256%3Abb22121948c4000efc87095fd4cd0304691830720ffdc73c6e8bf6d948802840&amp;pageFingerprint=sha256%3A463f878671c194252c7315d655265bd422b4a527a2c2b0c00eeecc199057509a&amp;bookDigest=sha256%3A5bdb40efec716f7431122302c524e222a4f4156a580a9cf01e3bba6691e5bfd9&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-414489cb-453e-5de4-ab0f-0fc01175e522" data-goal-id="414489cb-453e-5de4-ab0f-0fc01175e522" data-page-number="6" data-chapter-ids="structure:b010-seven-root" aria-labelledby="goal-414489cb-453e-5de4-ab0f-0fc01175e522-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-414489cb-453e-5de4-ab0f-0fc01175e522-title"><a class="goal-self-link" href="#goal-414489cb-453e-5de4-ab0f-0fc01175e522">Gipsbildung bei Rauchgaswaesche deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>414489cb-453e-5de4-ab0f-0fc01175e522</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-43a89559f9ede58c50a332de">B010 – sieben offene Ziele</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:82054f2a141d0e0c18058bfccc8548a49a0ff811d9ba8667afc428820005b7a1" data-rendered-digest="sha256:94c12f15077f751e84503bf66fdeff34cba770c55989490049b269a725521dce" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/414489cb-453e-5de4-ab0f-0fc01175e522/414489cb-453e-5de4-ab0f-0fc01175e522.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Gipsbildung bei Rauchgaswaesche deuten&quot;. Die lernende Person kann Gips aus der Rauchgaswaesche als chemischen Anwendungsfall von Sulfatbildung und Umwelttechnik beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-414489cb-453e-5de4-ab0f-0fc01175e522-description-heading">
+        <p class="section-heading" id="goal-414489cb-453e-5de4-ab0f-0fc01175e522-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Gips aus der Rauchgaswaesche als chemischen Anwendungsfall von Sulfatbildung und Umwelttechnik beschreiben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-414489cb-453e-5de4-ab0f-0fc01175e522-requires-heading">
+          <p class="section-heading" id="goal-414489cb-453e-5de4-ab0f-0fc01175e522-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-414489cb-453e-5de4-ab0f-0fc01175e522-reverse-heading">
+          <p class="section-heading" id="goal-414489cb-453e-5de4-ab0f-0fc01175e522-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-414489cb-453e-5de4-ab0f-0fc01175e522-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-414489cb-453e-5de4-ab0f-0fc01175e522-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-b5086548-169e-5d63-a14a-dabf631fa013" rel="noreferrer noopener"><span>Halogenide, Sulfate, Nitrate und Carbonate einordnen</span> <code>b5086548-169e-5d63-a14a-dabf631fa013</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-11bea4c6-7b8a-47e0-8293-2eb1ce34cf66" rel="noreferrer noopener"><span>Einfache Reaktionsgleichungen ableiten</span> <code>11bea4c6-7b8a-47e0-8293-2eb1ce34cf66</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 7</span>
+      <span>Buch-Digest <code>sha256:5bdb40efec716f7431122302c524e222a4f4156a580a9cf01e3bba6691e5bfd9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9b3fd8db33d33febdcf89aaea5c958764cbc6cf5d96e072fa27819d7b8cb461a</code></span>
+      <a href="https://skillpilot.com/lernzielbuch-feedback?bookId=chemie-b010-seven-current-source-description-candidate-v1&amp;edition=curricular-atomic-v1&amp;goalId=414489cb-453e-5de4-ab0f-0fc01175e522&amp;goalFingerprint=sha256%3A9b3fd8db33d33febdcf89aaea5c958764cbc6cf5d96e072fa27819d7b8cb461a&amp;pageFingerprint=sha256%3A8b1e2627d308f4ff4711c49751ced2b39cd64437e14b8350ac2d25b56e0ab983&amp;bookDigest=sha256%3A5bdb40efec716f7431122302c524e222a4f4156a580a9cf01e3bba6691e5bfd9&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1f5ee84f-245a-5a1e-a260-f960f26523e9" data-goal-id="1f5ee84f-245a-5a1e-a260-f960f26523e9" data-page-number="7" data-chapter-ids="structure:b010-seven-root" aria-labelledby="goal-1f5ee84f-245a-5a1e-a260-f960f26523e9-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1f5ee84f-245a-5a1e-a260-f960f26523e9-title"><a class="goal-self-link" href="#goal-1f5ee84f-245a-5a1e-a260-f960f26523e9">Duengemittel chemisch einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1f5ee84f-245a-5a1e-a260-f960f26523e9</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-43a89559f9ede58c50a332de">B010 – sieben offene Ziele</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:dc68f2d278e7110c6d81a3f6147cf287b35f205dfb9dd1b225bb70e20dbb2f80" data-rendered-digest="sha256:1b88034a85a6f7da77b10498ed8d397ed49e7252a4b2660117fbf6d066799f32" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/1f5ee84f-245a-5a1e-a260-f960f26523e9/1f5ee84f-245a-5a1e-a260-f960f26523e9.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Duengemittel chemisch einordnen&quot;. Die lernende Person kann Duengemittel als chemische Salz- und Ionenquellen einordnen und einfache Nutzen-Risiko-Bezuege beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1f5ee84f-245a-5a1e-a260-f960f26523e9-description-heading">
+        <p class="section-heading" id="goal-1f5ee84f-245a-5a1e-a260-f960f26523e9-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Duengemittel als chemische Salz- und Ionenquellen einordnen und einfache Nutzen-Risiko-Bezuege beschreiben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1f5ee84f-245a-5a1e-a260-f960f26523e9-requires-heading">
+          <p class="section-heading" id="goal-1f5ee84f-245a-5a1e-a260-f960f26523e9-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-1f5ee84f-245a-5a1e-a260-f960f26523e9-reverse-heading">
+          <p class="section-heading" id="goal-1f5ee84f-245a-5a1e-a260-f960f26523e9-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-1f5ee84f-245a-5a1e-a260-f960f26523e9-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1f5ee84f-245a-5a1e-a260-f960f26523e9-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-b5086548-169e-5d63-a14a-dabf631fa013" rel="noreferrer noopener"><span>Halogenide, Sulfate, Nitrate und Carbonate einordnen</span> <code>b5086548-169e-5d63-a14a-dabf631fa013</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 7</span>
+      <span>Buch-Digest <code>sha256:5bdb40efec716f7431122302c524e222a4f4156a580a9cf01e3bba6691e5bfd9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:32c84feed6e532c16d77c126e7b0e6a47bd07efcb2297dfbe363839e9fdab6b7</code></span>
+      <a href="https://skillpilot.com/lernzielbuch-feedback?bookId=chemie-b010-seven-current-source-description-candidate-v1&amp;edition=curricular-atomic-v1&amp;goalId=1f5ee84f-245a-5a1e-a260-f960f26523e9&amp;goalFingerprint=sha256%3A32c84feed6e532c16d77c126e7b0e6a47bd07efcb2297dfbe363839e9fdab6b7&amp;pageFingerprint=sha256%3A96081bc810f15b1ec1c8fc62c1e31d47774d14ba56cff23bc0d46a041f6b362f&amp;bookDigest=sha256%3A5bdb40efec716f7431122302c524e222a4f4156a580a9cf01e3bba6691e5bfd9&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

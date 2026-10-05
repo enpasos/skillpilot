@@ -1,0 +1,54 @@
+{
+  "status": "candidate",
+  "authority": "ai_candidate",
+  "checks": [
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/a-five.config.json",
+        "--write-fingerprints"
+      ],
+      "startedAt": "2026-10-05T10:49:48.970647+00:00",
+      "finishedAt": "2026-10-05T10:49:49.248213+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/a-five.bind.terminal.txt"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/a-five.config.json"
+      ],
+      "startedAt": "2026-10-05T10:49:49.248241+00:00",
+      "finishedAt": "2026-10-05T10:49:49.531008+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/a-five.check.terminal.txt"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/m-five.config.json",
+        "--write-fingerprints"
+      ],
+      "startedAt": "2026-10-05T10:49:49.531039+00:00",
+      "finishedAt": "2026-10-05T10:49:49.813478+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/m-five.bind.terminal.txt"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/m-five.config.json"
+      ],
+      "startedAt": "2026-10-05T10:49:49.813501+00:00",
+      "finishedAt": "2026-10-05T10:49:50.076460+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/m-five.check.terminal.txt"
+    }
+  ],
+  "strictClosureAdded": 0,
+  "scientificDecisions": "Five actual revised author A/M decisions; native fingerprint binding is technical evidence only, not independent QA."
+}

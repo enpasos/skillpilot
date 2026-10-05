@@ -1,0 +1,23 @@
+{
+  "authority": "ai_candidate",
+  "activeWrites": false,
+  "checks": [
+    {
+      "command": "npm --prefix app run quality:memory-card-review:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/memory-one-goal-candidate.config.json --write-report",
+      "exitCode": 0,
+      "report": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/native-m-one-goal-candidate-report.md"
+    },
+    {
+      "command": "npm --prefix app run quality:memory-card-review:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/memory-candidate.config.json --write-report",
+      "exitCode": 0,
+      "report": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/native-m-candidate-report.md"
+    },
+    {
+      "command": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/check-native-visibility.ts",
+      "exitCode": 0,
+      "receipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/native-compiled-three-view-and-dag.receipt.json"
+    }
+  ],
+  "independentScientificReview": false,
+  "humanApproval": false
+}

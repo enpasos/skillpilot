@@ -1,0 +1,56 @@
+{
+  "goalId": "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+  "reviewAuthority": "ai_candidate",
+  "reviewStatus": "needs_human_review",
+  "statusBeforeLocalCorrection": "HOLD",
+  "statusAfterLocalCorrection": "PASS",
+  "strictNetGain": 0,
+  "humanApprovalClaimed": false,
+  "sourceSelectedProfilePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-six-current-source-hold-remediation-candidate-v1/positive-evidence.candidates.json",
+  "oldInnerProfileSha256": "sha256:65ab49a5448cc6ff2c4ac1d2eb1d84567de9a1c2ea3d2aa5da3de18687f5830f",
+  "oldNativeProfileFingerprint": "sha256:c63228d7869165a8fd3838c8904b6cb61f741c4659337f5e75bee3fc9cb844d6",
+  "newInnerProfileSha256": "sha256:da077fcdf42b1c4747f1ad16006fdd6cacdd5f3c0fcdbbf095cc90448375b106",
+  "newNativeProfileFingerprint": "sha256:e00119670c9ace7b64145a3b0993564cc2187358cf01c19c6548b539e6b5f75d",
+  "hashMethod": "UTF-8 compact JSON, recursively sorted object keys; native profile wraps profileSchemaVersion and profileRuleVersion as in fingerprintPositiveGoalEvidenceProfile",
+  "oldTopLevelFieldHashes": {
+    "archetype": "sha256:519b3ed503c6a825347f28dfd269c0a422e3b923858410e3abbab2d2a99837f2",
+    "expectations": "sha256:f04d5e5825e18bbc28cf355877ff7d7b30a9210ea9ee1e1eaad11511aa7d3811",
+    "coverageExpectations": "sha256:45de622ad02e3a264eb32ff41d89a8370bf799732eae8abd8d57154da7d85d45",
+    "variationAxes": "sha256:4039cacc073b32226fe9fe98305856f7760375b6e76ba9b7633d0eea5934e78c",
+    "applicationCaseBriefs": "sha256:26b10ba6c1c2fe532263613f41a53da323ab71f3484621b562fdd5b3844986d8"
+  },
+  "newTopLevelFieldHashes": {
+    "archetype": "sha256:519b3ed503c6a825347f28dfd269c0a422e3b923858410e3abbab2d2a99837f2",
+    "expectations": "sha256:940c760a320ae45320c706a0d732e3e3bf085e42eb759269b105de4db0106b42",
+    "coverageExpectations": "sha256:45de622ad02e3a264eb32ff41d89a8370bf799732eae8abd8d57154da7d85d45",
+    "variationAxes": "sha256:4039cacc073b32226fe9fe98305856f7760375b6e76ba9b7633d0eea5934e78c",
+    "applicationCaseBriefs": "sha256:26b10ba6c1c2fe532263613f41a53da323ab71f3484621b562fdd5b3844986d8"
+  },
+  "changedFields": [
+    {
+      "path": "expectations[1].essentialUnderstandingDe",
+      "before": "Ein Größenmarker begründet eine ungefähre Fragmentlänge. Gleiche Wanderung beweist unter diesen Bedingungen vergleichbare Länge, nicht gleiche Basensequenz, Identität eines Menschen oder Erkrankung.",
+      "after": "Ein Größenmarker begründet eine ungefähre Fragmentlänge. Gleiche Wanderung spricht unter diesen Bedingungen für eine vergleichbare Länge, nicht für gleiche Basensequenz, die Identität eines Menschen oder eine Erkrankung.",
+      "beforeSha256": "sha256:e07df33fce4d2320327095472d5015cd70567176f77af3ce6a0ca87a3e6d4a41",
+      "afterSha256": "sha256:0df036ce2a2c04c4209d2306800acb3fa01f03d79cb5fe8a71111d7583ce2646",
+      "finding": "German proves is stronger than English indicates and the explicitly approximate marker inference; the correction restores semantic equivalence without broadening the goal."
+    }
+  ],
+  "independentChecks": [
+    "Negative DNA toward positive electrode; short linear fragments farther under comparable conditions.",
+    "Marker/unknown 28 and 44 mm correctly assign about 1000 and 500 bp.",
+    "Second marker 30 mm correctly assigns about 600 bp to both supplied PCR products; restriction bands 16 and 30 mm give about 1200 and 600 bp.",
+    "Changed lane relationship and inferential claim distinguish the second case from a mere numeric substitution.",
+    "Band coincidence supports approximate length; it does not identify sequence, a person, or disease.",
+    "Supplied PCR/restriction labels do not require learners to perform or explain PCR/restriction.",
+    "At least two independent demonstrations plus fresh transfer required; no exact marker-number recall demanded.",
+    "No active record, human authority or mastery state was written."
+  ],
+  "sources": [
+    "https://www.genome.gov/genetics-glossary/Electrophoresis",
+    "https://www.addgene.org/protocols/gel-electrophoresis/",
+    "https://kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+    "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/12/biologie/grundlegend",
+    "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/12/biologie/erhoeht"
+  ]
+}

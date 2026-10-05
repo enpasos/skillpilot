@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "command": [
+    "node",
+    "--import",
+    "tsx",
+    "scripts/validateGoalDescriptionReviewCampaignResults.ts",
+    "--bundle",
+    "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-gel-prospective-book-current-v1/native-finalbook/round-b/review-bundle-manifest.json",
+    "--input",
+    "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-gel-prospective-book-current-v1/native-finalbook/round-b/description-review-input.json",
+    "--campaign",
+    "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-gel-prospective-book-current-v1/native-finalbook/round-b/description-review-campaign.json",
+    "--batches-dir",
+    "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-gel-prospective-book-current-v1/native-finalbook/round-b/batches",
+    "--results-dir",
+    "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-gel-prospective-book-current-v1/native-finalbook/round-b/results"
+  ],
+  "workingDirectory": "/home/enpasos/projects/skillpilot/app",
+  "startedAt": "2026-10-05T11:43:55.351910+00:00",
+  "completedAt": "2026-10-05T11:43:55.834736+00:00",
+  "terminalExitCode": 0,
+  "stdout": "Goal-description review campaign results valid: 1\n",
+  "stderr": "",
+  "validatorPath": "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+  "validatorSha256": "sha256:36f2ac8ab823cd70f4402deb5f4c96d2399f719f90dfa4a95916467b52962df8",
+  "priorLoaderAttempt": {
+    "workingDirectory": "/home/enpasos/projects/skillpilot",
+    "exitCode": 1,
+    "reason": "tsx is installed under app; a root node --import tsx invocation could not resolve the package and did not reach validation."
+  },
+  "humanApproval": false,
+  "strictNetGain": 0,
+  "activeWrites": 0
+}

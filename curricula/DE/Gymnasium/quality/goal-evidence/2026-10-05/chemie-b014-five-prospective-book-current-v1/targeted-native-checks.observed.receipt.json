@@ -1,0 +1,80 @@
+{
+  "status": "targeted_native_checks_observed",
+  "commands": [
+    {
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/a-scoped.config.json"
+      ],
+      "cwd": "tmp/chemie-b014-five-native-isolated-20261005-v1",
+      "actualExitCode": 0,
+      "toolChunkId": "8243bd",
+      "scope": "5 identical already-reviewed semantic payloads; no fingerprint write",
+      "currentReviewedAtomic": 5,
+      "staleRecords": 0,
+      "missingRecords": 0
+    },
+    {
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/m-scoped.config.json"
+      ],
+      "cwd": "tmp/chemie-b014-five-native-isolated-20261005-v1",
+      "actualExitCode": 0,
+      "toolChunkId": "c8dd07",
+      "scope": "5 identical already-reviewed no-memory decisions; no fingerprint write",
+      "noMemoryNeeded": 5,
+      "requiredMemoryGoals": 0,
+      "staleRecords": 0,
+      "missingRecords": 0
+    },
+    {
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/validate-native-source-and-routes.mts"
+      ],
+      "cwd": ".",
+      "actualExitCode": 0,
+      "toolChunkId": "bf9ffe",
+      "actualHEBYHBSourceContexts": 80,
+      "actualCompiledAndFilteredViewContexts": 15,
+      "missingEdges": 0,
+      "cycles": 0
+    },
+    {
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+        "--check"
+      ],
+      "cwd": "tmp/chemie-b014-five-native-isolated-20261005-v1",
+      "actualExitCode": 0,
+      "toolChunkId": "f79a8f",
+      "counts": {
+        "canonicalCurricularAtomicGoals": 376,
+        "publishedCurricularAtomicGoals": 358,
+        "sourceViews": 48,
+        "unresolvedSourceScopeDecisions": 496,
+        "omittedGoals": 18
+      },
+      "phase": "before truthful mapping-reviewer/date metadata amendment; final exact-byte check will follow at stable complete integration inputs"
+    }
+  ],
+  "firstFailClosedDiagnostic": {
+    "toolChunkId": "db374a",
+    "actualExitCode": 1,
+    "reason": "Required prospective semantic-kind binding not refreshed yet for changed titration text; no source output or active write was performed. Binding subsequently tied to actual already-reviewed source/A competence, classification unchanged."
+  },
+  "firstAffectedBindingHelperDiagnostic": {
+    "toolChunkId": "3ddb9b",
+    "actualExitCode": 1,
+    "reason": "Author-only wrapper addressed native book identifier as bookId; actual schema key is id. Native code untouched; wrapper corrected; current stored-authority comparison then passed."
+  },
+  "activeWrites": 0,
+  "strictNetDelta": 0,
+  "humanApproval": false
+}

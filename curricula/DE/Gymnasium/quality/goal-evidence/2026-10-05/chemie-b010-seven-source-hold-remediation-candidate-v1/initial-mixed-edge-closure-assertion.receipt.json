@@ -1,0 +1,9 @@
+{
+  "command": [
+    "app/node_modules/.bin/tsx",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/validate-candidate-native.ts"
+  ],
+  "actualExitCode": 1,
+  "message": "AssertionError: effective requires cycle at 8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+  "cause": "The first custom diagnostic merged contains membership with requires recursion and incorrectly required that combined graph to be a DAG. The repository uses two separate DAGs; the diagnostic was corrected to validate effective requires separately and finite cluster-membership reachability. No native pass or source approval was claimed from this failed run."
+}

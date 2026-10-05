@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-10-05T05:31:09.533Z
+Generated: 2026-10-05T14:30:36.250Z
 Rules version: curriculum-quality-v5
 
 ## Summary
@@ -81,7 +81,7 @@ Rules version: curriculum-quality-v5
 | Chemie (Gymnasium, DE) | DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 URL; local cache 1/1 | 3/3 | - | 54 | 332 | 277 | 55 | 83% | - |  |
 | Chemie (Gymnasium, DE) | DE-HB - Chemie Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 1/1 URL; local cache 0/1 | 3/3 | - | 18 | 88 | 6 | 82 | 7% | - |  |
 | Chemie (Gymnasium, DE) | DE-HB - Chemie Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction) | DE-HB | 2/2 URL; local cache 0/2 | 3/3 | - | 4 | 42 | 0 | 42 | 0% | - |  |
-| Chemie (Gymnasium, DE) | Chemie Oberstufe (Hessen, KC 2024 Source-Extraction) | DE-HE | 1/1 URL; local cache 0/1 | 3/3 | - | 22 | 202 | 134 | 68 | 66% | - |  |
+| Chemie (Gymnasium, DE) | Chemie Oberstufe (Hessen, KC 2024 Source-Extraction) | DE-HE | 1/1 URL; local cache 0/1 | 3/3 | - | 22 | 202 | 136 | 66 | 67% | - |  |
 | Chemie (Gymnasium, DE) | Chemie Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 1/1 URL; local cache 0/1 | 3/3 | - | 9 | 122 | 67 | 55 | 55% | - |  |
 | Chemie (Gymnasium, DE) | DE-HH - Chemie Sekundarstufe I (Hamburg, Bildungsplan Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 7 | 65 | 40 | 25 | 62% | - |  |
 | Chemie (Gymnasium, DE) | DE-HH - Chemie Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 12 | 97 | 18 | 79 | 19% | - |  |

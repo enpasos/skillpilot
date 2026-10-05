@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-q1-gel-prospective-current-20261005-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-gel-prospective-book-current-v1/batch.config.json",
+  "configDigest": "sha256:73b23443e270591b0644b60f15b44483e908200afd80dbe100d4ad53ad01c7c6",
+  "goalIds": [
+    "8eb86a82-122d-5cae-8f80-bb2850b29c2f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 363,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-gel-prospective-book-current-v1/book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:3a4abbdcdd19aaad5bfeb3468bb18037a19bb5df200771d504fe78051a67b37d"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:3b5aba4ea00f1a3394137fb2cac80fc2fe59a124b4b8c44d0a06c952c63635ce",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:c45525c4c4bc6e21c065c3fa6155ea839a823a1cbfd178de076739a3e275e002",
+    "reviewInputFingerprint": "sha256:77b34ffbd0f9f0da96daa6c56984b9f2a623e4911da7e1da8b947fb15102946c",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-q1-gel-prospective-current-20261005-v1-a",
+        "campaignDigest": "sha256:ad83fb4a226ceb05175283b8d50a3c469f71363c53e43fbf4ead6fdcde19a7f1",
+        "roundId": "biologie-q1-gel-prospective-current-20261005-v1-first-pass-a",
+        "independenceGroupId": "biologie-q1-gel-prospective-current-20261005-v1-independent-a",
+        "batchId": "biologie-q1-gel-prospective-current-20261005-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:3621ad6526ca9a1dea4b0f5d0447ee4da90edbbe2d54cf9f4b5052959bf2a31d"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-q1-gel-prospective-current-20261005-v1-b",
+        "campaignDigest": "sha256:0b7c7d077a803eb91d94ad96c0342ceaf1932739e092f2e8e8eb21c5be7e7a51",
+        "roundId": "biologie-q1-gel-prospective-current-20261005-v1-first-pass-b",
+        "independenceGroupId": "biologie-q1-gel-prospective-current-20261005-v1-independent-b",
+        "batchId": "biologie-q1-gel-prospective-current-20261005-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:5b25a326d12111b0446b622b4c9821780839f102c2c917ebba1c9c4646dba399"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

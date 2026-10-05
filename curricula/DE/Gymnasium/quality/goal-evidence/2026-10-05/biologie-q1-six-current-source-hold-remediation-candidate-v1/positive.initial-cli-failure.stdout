@@ -1,0 +1,19 @@
+
+> skillpilot@0.0.0 quality:positive-goal-evidence-candidates
+> tsx scripts/materializePositiveGoalEvidenceCandidates.ts --config curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-six-current-source-hold-remediation-candidate-v1/positive.validation-only.config.json --candidates curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-six-current-source-hold-remediation-candidate-v1/positive-evidence.candidates.json
+
+node:internal/fs/promises:637
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-six-current-source-hold-remediation-candidate-v1/positive.validation-only.not-registered.review.jsonl'
+    at async open (node:internal/fs/promises:637:25)
+    at async readFile (node:internal/fs/promises:1249:14)
+    at async main (/home/enpasos/projects/skillpilot/app/scripts/materializePositiveGoalEvidenceCandidates.ts:295:25) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-six-current-source-hold-remediation-candidate-v1/positive.validation-only.not-registered.review.jsonl'
+}
+
+Node.js v20.20.2

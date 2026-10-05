@@ -1,0 +1,76 @@
+
+> skillpilot@0.0.0 quality:memory-card-review:check:all
+> tsx scripts/runMemoryCardReviewConfigs.ts --mode=check
+
+Memory-card review configs: 10
+
+> skillpilot@0.0.0 quality:memory-card-review:check
+> tsx scripts/memoryCardReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-biology-full.config.json
+
+# Memory Card Review: canonical-biology-full
+Scope: Canonical biology full landscape
+Rule: memory-card-review-v1
+Ordinary atomic goals in scope: 363
+Current no-memory decisions: 353
+Current memory-required decisions: 8
+Current needs developer review: 0
+Memory goals in scope: 1
+Traced memory goals: 1
+Known deck IDs: 1
+Deck files: 2
+Card rows: 34
+Primary cards in scope: 17
+Kept primary cards: 17
+Cards marked remove: 0
+Cards needing developer review: 0
+Missing review records: 0
+Stale review records: 2
+Obsolete review records: 0
+Missing card review records: 0
+Stale card review records: 0
+Obsolete card review records: 0
+Composition visibility scopes: 1
+Memory-required goals checked in views: 8
+Memory-required goals without visible memory node: 0
+
+Stale review records
+- Gentests beurteilen [73b66ead-e44a-5486-98e3-1fb3f99620a6]
+- Gentherapie prinzipiell erklären [3891b735-9d0d-5eef-b653-6ad58b9181f6]
+
+Memory-required decisions
+- Bau der Pflanzenzelle beschreiben [e0d04e58-1591-5230-bfa6-5c685b56d25b]: Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels.
+- Bau des Blutes [480146f6-4749-52e3-a5e5-d08629e0c38f]: Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels.
+- Blütenaufbau und Funktion [be06115e-96e8-537e-b18a-313056e6cbe8]: Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels.
+- Karyogramm und Chromosomenfehler [74740709-fc77-5a54-88a6-bb14c3777941]: Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels.
+- Kennzeichen des Lebens erläutern [11e90f71-a9a4-5a57-b619-ad5d81e81f96]: Die Karte biology_core_001 hält sechs kompakte Kennzeichen des Lebens abrufbar; die fachliche Erklärung an beobachteten Lebewesen bleibt Zielinhalt. Die Organisationskarte biology_core_002 wird nach dem Split nicht mehr diesem Ziel zugerechnet.
+- Kennzeichen von Lebewesen ordnen [55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba]: Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels.
+- Organisationsstufen eines Vielzellers erläutern [d71e2310-2331-5e66-b7df-c2807fccb329]: Die Karte biology_core_002 hält die Reihenfolge Zelle–Gewebe–Organ–Organsystem–Organismus abrufbar; das erläuterte Verhältnis an einem Vielzeller bleibt fachliche Leistung des neuen Zieles.
+- RGT-Regel anwenden [e566ae2f-1294-55c0-ba4c-6aeb4954118c]: Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels.
+
+Blocking issues
+- Stale review record for 73b66ead-e44a-5486-98e3-1fb3f99620a6
+- Stale review record for 3891b735-9d0d-5eef-b653-6ad58b9181f6
+node:internal/errors:984
+  const err = new Error(message);
+              ^
+
+Error: Command failed: npm run quality:memory-card-review:check -- --config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-biology-full.config.json
+    at genericNodeError (node:internal/errors:984:15)
+    at wrappedFn (node:internal/errors:538:14)
+    at checkExecSyncError (node:child_process:891:11)
+    at execFileSync (node:child_process:927:15)
+    at runReview (/home/enpasos/projects/skillpilot/app/scripts/runMemoryCardReviewConfigs.ts:65:3)
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/runMemoryCardReviewConfigs.ts:75:39)
+    at Array.forEach (<anonymous>)
+    at main (/home/enpasos/projects/skillpilot/app/scripts/runMemoryCardReviewConfigs.ts:75:11)
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/runMemoryCardReviewConfigs.ts:78:1)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25) {
+  status: 1,
+  signal: null,
+  output: [ null, null, null ],
+  pid: 252475,
+  stdout: null,
+  stderr: null
+}
+
+Node.js v20.20.2

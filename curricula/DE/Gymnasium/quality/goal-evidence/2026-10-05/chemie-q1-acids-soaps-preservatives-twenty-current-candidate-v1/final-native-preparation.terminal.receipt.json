@@ -1,0 +1,222 @@
+{
+  "status": "PASS_native_exact_future_current_fifteen_page_preparation",
+  "commands": [
+    {
+      "name": "final-visual-source-bind",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/bind-final-visual-and-source-inputs.mts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAtUTC": "2026-10-05T13:58:16.649996+00:00",
+      "endedAtUTC": "2026-10-05T13:58:17.068700+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/final-visual-source-bind.stdout.txt",
+      "stdoutSHA256": "sha256:dd8f3a816bb5a597946526f70f5c95767134c41b28b8ab80f79138fee7743207",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/final-visual-source-bind.stderr.txt",
+      "stderrSHA256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "final-source-atlas-generate",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-q1-acids-soaps-preservatives-twenty-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T13:58:17.069449+00:00",
+      "endedAtUTC": "2026-10-05T13:58:18.508874+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/final-source-atlas-generate.stdout.txt",
+      "stdoutSHA256": "sha256:a4aa9d4bbd0f9ebf1a212af6c0c06a63ed5885cf9ef308c0e98d8e08b85cdf9a",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/final-source-atlas-generate.stderr.txt",
+      "stderrSHA256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "final-source-atlas-check",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+        "--check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-q1-acids-soaps-preservatives-twenty-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T13:58:18.509599+00:00",
+      "endedAtUTC": "2026-10-05T13:58:19.922840+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/final-source-atlas-check.stdout.txt",
+      "stdoutSHA256": "sha256:9aa3c49c13d0b955dadf42573603a3e9ea7351959f8e8b838f83d5307bb696cc",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/final-source-atlas-check.stderr.txt",
+      "stderrSHA256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "final-fifteen-book-prepare",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "prepare",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/batch.config.json"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-q1-acids-soaps-preservatives-twenty-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T13:58:19.923567+00:00",
+      "endedAtUTC": "2026-10-05T13:58:30.418230+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/final-fifteen-book-prepare.stdout.txt",
+      "stdoutSHA256": "sha256:38359b4f0d8c2b1f7b0951dbfd9895918fe4a3ff6caab9244ae58b13b7af1711",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/final-fifteen-book-prepare.stderr.txt",
+      "stderrSHA256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "final-fifteen-book-check",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/batch.config.json"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-q1-acids-soaps-preservatives-twenty-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T13:58:30.418917+00:00",
+      "endedAtUTC": "2026-10-05T13:58:31.283692+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/final-fifteen-book-check.stdout.txt",
+      "stdoutSHA256": "sha256:83705b60f2d2937b2e762ebf1441b9ceee6810d1138aa66603659a12588c358c",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/final-fifteen-book-check.stderr.txt",
+      "stderrSHA256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "newScientificCandidateGoalIds": [
+    "a3788e40-b540-5bed-be37-b33053528422",
+    "ca216bc6-5205-5b46-abbd-fd5628e4ca5b",
+    "70b34ae7-4481-590c-9a02-516464750832",
+    "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+    "4da0839d-ab6d-53c1-ac21-c9872555ae16",
+    "9d97f628-c3ea-5dc0-8723-b17b16297af3",
+    "6765f741-42a6-55c5-a218-81b883b1f5ae",
+    "6966df95-f125-5ecc-af8e-0442545d9f17",
+    "e874ee60-4569-5830-81bf-11f86f0c63ac",
+    "1837690e-cfb1-5b1c-96c8-0fb40d6d5d69",
+    "8a491e3b-5d0b-51d3-9b14-0977ec035dd6",
+    "e9ea1606-5018-5a36-9ac2-8359747a65d4",
+    "33e845cc-1a7b-50d5-99b3-8079575c4e6a",
+    "db66635f-f1d1-5f70-bcc0-fed1ae424e52"
+  ],
+  "existingTargetedBindingGoalIds": [
+    "bd36dc58-c93e-5247-9e82-da2f9e4e2bed"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 376,
+  "nativeBaseModelDigest": "sha256:8e5622e8ed42c036eadbd1a865e023feb0c9b16fc3b1ae64260855230f7b5e7f",
+  "nativeModelDigest": "sha256:359767825a893c9212eaec4e015f6d590bd6d17481eeb44e765d624fc31fdb81",
+  "nativeBundleFingerprint": "sha256:44a21580023d9d69514a62134e9d009a64fdb41faa32c529b550065528a6dd43",
+  "nativeReviewInputFingerprint": "sha256:c4176638cacc4ab000978c5b34b83942a783e145caeb26b673b87d9a42349b31",
+  "exactFutureCanonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+  "goalPages": [
+    {
+      "goalId": "a3788e40-b540-5bed-be37-b33053528422",
+      "title": "Carbonsäuren beschreiben",
+      "goalFingerprint": "sha256:7792898d5d7fc270f728cce983914e05270d20b754a561ebfc55d53cc67b5f6a",
+      "pageFingerprint": "sha256:86545fc54cc10e106f47135bfb797240793382e13d6fdbc180cc5a53fe2dc363"
+    },
+    {
+      "goalId": "ca216bc6-5205-5b46-abbd-fd5628e4ca5b",
+      "title": "Acidität begründen",
+      "goalFingerprint": "sha256:1d7791edbd313503ce2600f101c967f0ab70d438091d87fe8fa89982b897fe2c",
+      "pageFingerprint": "sha256:212a34156bb057fb96288cc9183565a1cbc092632279a212f5828dc94051d826"
+    },
+    {
+      "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+      "title": "Esterbildung und Estereigenschaften erklären",
+      "goalFingerprint": "sha256:9986716acaec2eb6960a850f52c7ce6bd6d273c141679d616b0686dea6d43ead",
+      "pageFingerprint": "sha256:bb0c33fcae4d4465e9d6133125d6e68727d3320d04824e6df175866889516876"
+    },
+    {
+      "goalId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+      "title": "Esterreaktionen und ihre Reversibilität deuten",
+      "goalFingerprint": "sha256:53f8b3fe772a4b48a5b16f7143ba3b7497dea90edbf235b8d7f465955d11975a",
+      "pageFingerprint": "sha256:3fda7c92114f6abc79bb4cc6ea2abb45f78642b0eda64dd69b10a57c99e1251e"
+    },
+    {
+      "goalId": "4da0839d-ab6d-53c1-ac21-c9872555ae16",
+      "title": "Alkalische Esterhydrolyse mechanistisch vertiefen (LK)",
+      "goalFingerprint": "sha256:fc624b930c46df30af35588cf5c7b4c756d4aa7b49330b40cadb1fdfe1e62ac6",
+      "pageFingerprint": "sha256:3544e5bd4b69a25fc26e74279f45a92dee7c914c183fec3362d998b65f5b538e"
+    },
+    {
+      "goalId": "9d97f628-c3ea-5dc0-8723-b17b16297af3",
+      "title": "Transesterifizierung planen",
+      "goalFingerprint": "sha256:9386dc45590d5f118b2624b916e0d44d8e2d92dc826a47786de662e5bed325e1",
+      "pageFingerprint": "sha256:a7fb17d2b170a16ddaa5ebe96d39cf35b3b9df1c46f7d9481523139c6a4487b9"
+    },
+    {
+      "goalId": "6765f741-42a6-55c5-a218-81b883b1f5ae",
+      "title": "Seifen herstellen",
+      "goalFingerprint": "sha256:bbaa4abd92d234f414439e96203338dc3dc7ab71a3ac12dec4075c88c63f443a",
+      "pageFingerprint": "sha256:2bfc48e14fd6bdffd838c1c85b3f64eb6e224082a77c8eb2faf2e6f364b5685b"
+    },
+    {
+      "goalId": "6966df95-f125-5ecc-af8e-0442545d9f17",
+      "title": "Micellenbildung deuten",
+      "goalFingerprint": "sha256:8b8e10c8986185b84c28ed8f2287a62e3f0fb894dd9701e83a02702df90969ab",
+      "pageFingerprint": "sha256:e70ba63e99a2250e493a0146afad5da61a997c0362443cd9fda5c9a42e173e40"
+    },
+    {
+      "goalId": "e874ee60-4569-5830-81bf-11f86f0c63ac",
+      "title": "Seifen und moderne Tenside vergleichen",
+      "goalFingerprint": "sha256:0d5fb5f135770ac288c1fa2966b4e32fcd6c855474c757ae958583afabfa4af9",
+      "pageFingerprint": "sha256:dc61e6fdb19747fedfca277e08afc8efd9ca1b9e4ce30900bdfa10d34f74d391"
+    },
+    {
+      "goalId": "1837690e-cfb1-5b1c-96c8-0fb40d6d5d69",
+      "title": "Waschvorgänge beeinflussen",
+      "goalFingerprint": "sha256:f5dc96676c6951d7d1cef87060a5ce7f1aebb7bf77f2fd772c4b3840ff71499d",
+      "pageFingerprint": "sha256:cd77b8264f7b47569bf30a4ab755b0267d4606f1aeacff255a250267b3cd2ab9"
+    },
+    {
+      "goalId": "8a491e3b-5d0b-51d3-9b14-0977ec035dd6",
+      "title": "Wasserhärte unterscheiden und Enthärtung erklären (LK)",
+      "goalFingerprint": "sha256:9f64e39c5bb8312b4c1e3803af1c3c18c01c8b0c4efe2361b004fd2c8b518836",
+      "pageFingerprint": "sha256:3073bcc1ea81f8fda16838bdd606eab70b0ee122c98cbd01166cfc0a6ac944f4"
+    },
+    {
+      "goalId": "e9ea1606-5018-5a36-9ac2-8359747a65d4",
+      "title": "Biologische Abbaubarkeit",
+      "goalFingerprint": "sha256:97927c97eb56f951b3cbe4a4279fbc6c20c053362882d38507be654ac55d255a",
+      "pageFingerprint": "sha256:ebb68f16fcafe71fabd3d21cc3af4ec00ac2e9e82425dda95fd70c4f758677da"
+    },
+    {
+      "goalId": "33e845cc-1a7b-50d5-99b3-8079575c4e6a",
+      "title": "Konservierungsmethoden vergleichen",
+      "goalFingerprint": "sha256:1f24cb04358344399da46dc463502387775681fb4767e547a2c3a2b5a56e75b3",
+      "pageFingerprint": "sha256:a97c05e85f7a9451e799c45adcfcf1aaeb9c2690364c08905fa60d164f6c0454"
+    },
+    {
+      "goalId": "db66635f-f1d1-5f70-bcc0-fed1ae424e52",
+      "title": "Ascorbinsäure nachweisen",
+      "goalFingerprint": "sha256:8a3d98faf2d6ccafe1575200b87a4ecd222f89bbe7f045d2a27299f1599e5899",
+      "pageFingerprint": "sha256:650103a26bbe5fc841ed60f5bdb39ea8c568862feb33da703272ea572b789762"
+    },
+    {
+      "goalId": "bd36dc58-c93e-5247-9e82-da2f9e4e2bed",
+      "title": "Di- und Tricarbonsäuren strukturell beschreiben (LK)",
+      "goalFingerprint": "sha256:13e57adc1c2ca4b566ae973c7a9c87111c9ea49f5d395933fabc91652df87ce3",
+      "pageFingerprint": "sha256:2d74f7e3a3cc02bc2886c9679935a62546f0152d0c57aae3c98ff36762263c8b"
+    }
+  ],
+  "PDFGoalPages": 15,
+  "PDFPhysicalPages": 17,
+  "reviewModeAIOnly": true,
+  "independentTwoBlindCampaignsPrepared": true,
+  "reviewResultDirectoriesEmpty": true,
+  "PContentsAbsent": true,
+  "DReviewsCompletedByThisPreparation": 0,
+  "independentVRequiredForEightCurrentBindings": true,
+  "newScientificClosuresActual": 0,
+  "restoredBindingsActual": 0,
+  "strictNetDeltaActual": 0,
+  "humanApproval": false,
+  "activeWritesThisStage": 0,
+  "priorSameByteCardWriteEventDisclosedSeparately": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-acids-soaps-preservatives-twenty-current-candidate-v1/card-ledger-same-byte-write-isolation.erratum.receipt.json"
+}

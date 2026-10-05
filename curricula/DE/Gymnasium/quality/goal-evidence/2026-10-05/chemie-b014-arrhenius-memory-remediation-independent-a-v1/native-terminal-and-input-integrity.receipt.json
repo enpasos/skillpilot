@@ -1,0 +1,256 @@
+{
+  "createdAtUTC": "2026-10-05T11:16:14.602280+00:00",
+  "actualNativeExecutions": [
+    {
+      "label": "full",
+      "command": "./app/node_modules/.bin/tsx app/scripts/memoryCardReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-independent-a-v1/memory-reviewed.config.json --mode=check --write-report",
+      "actualExitCode": 0,
+      "reportPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-independent-a-v1/native-m-full-reviewed-report.md",
+      "reportSHA256": "4f626918d389eb6e2054abdc23c048d273104276e340add042b5cc35ad41b96c",
+      "metrics": {
+        "Total output lines": 84,
+        "Ordinary atomic goals in scope": 376,
+        "Current no-memory decisions": 321,
+        "Current memory-required decisions": 55,
+        "Current needs developer review": 0,
+        "Memory goals in scope": 7,
+        "Traced memory goals": 7,
+        "Known deck IDs": 7,
+        "Deck files": 8,
+        "Card rows": 91,
+        "Primary cards in scope": 73,
+        "Kept primary cards": 73,
+        "Cards marked remove": 0,
+        "Cards needing developer review": 0,
+        "Missing review records": 0,
+        "Stale review records": 0,
+        "Obsolete review records": 0,
+        "Missing card review records": 0,
+        "Stale card review records": 0,
+        "Obsolete card review records": 0,
+        "Composition visibility scopes": 3,
+        "Memory-required goals checked in views": 126,
+        "Memory-required goals without visible memory node": 0
+      },
+      "writeFingerprintsUsed": false,
+      "limits": "Unchanged native technical M binding gate; substantive independent findings and actual jurisdiction filtering are separate."
+    },
+    {
+      "label": "affected",
+      "command": "./app/node_modules/.bin/tsx app/scripts/memoryCardReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-independent-a-v1/memory-one-goal-reviewed.config.json --mode=check --write-report",
+      "actualExitCode": 0,
+      "reportPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-independent-a-v1/native-m-one-goal-reviewed-report.md",
+      "reportSHA256": "2438b5e01e33284cfecd125ac334a5ce3ee2837528abbc666f4972f7ec306c1f",
+      "metrics": {
+        "Ordinary atomic goals in scope": 1,
+        "Current no-memory decisions": 0,
+        "Current memory-required decisions": 1,
+        "Current needs developer review": 0,
+        "Memory goals in scope": 1,
+        "Traced memory goals": 1,
+        "Known deck IDs": 7,
+        "Deck files": 8,
+        "Card rows": 91,
+        "Primary cards in scope": 18,
+        "Kept primary cards": 18,
+        "Cards marked remove": 0,
+        "Cards needing developer review": 0,
+        "Missing review records": 0,
+        "Stale review records": 0,
+        "Obsolete review records": 0,
+        "Missing card review records": 0,
+        "Stale card review records": 0,
+        "Obsolete card review records": 0,
+        "Composition visibility scopes": 3,
+        "Memory-required goals checked in views": 2,
+        "Memory-required goals without visible memory node": 0
+      },
+      "writeFingerprintsUsed": false,
+      "limits": "Unchanged native technical M binding gate; substantive independent findings and actual jurisdiction filtering are separate."
+    }
+  ],
+  "actualCompositionExecution": {
+    "command": "./app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-independent-a-v1/check-independent-composition-visibility.ts",
+    "actualExitCode": 0,
+    "receiptSHA256": "7fe95fa14f67a1b2002c75181dc2bcf11405e79a25c60e457fe089409f4a0a4e",
+    "originalNegativeWitnessMissingPairs": 30,
+    "correctedPositivePairs": 32,
+    "correctedPrerequisitePairs": 32,
+    "DAGMissingEdges": 0,
+    "DAGCycles": 0,
+    "compilerErrors": 0
+  },
+  "authorManifestSHA256": "768e192e0d6fe15287906178f9f6e4215d53af6ef7fc70c74f1ad70cde082228",
+  "authorOwn20FilesUnchanged": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/README.md",
+      "sha256": "86afc503ddb0d640e9f56f505fdbc0bf8b7cceac4cf3bade8ace28e80a1d64f5",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/author-source-and-boundaries.receipt.json",
+      "sha256": "f87b6a288d21bab66fcef3cf8a4c33957abc2cb4b74f1bf786634bd48c042fe0",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/candidate-configuration-correction.receipt.json",
+      "sha256": "69364aea5b493083a297e6af2e5cd4892675119fe08fd6685d1d0a45788c003b",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/canonical-with-one-memory-goal.inactive.candidate.json",
+      "sha256": "5058416ea2f600aea3791db7590316a75f23b9a25640ac26687ade5c7d9c6a20",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/cards-review.candidate.jsonl",
+      "sha256": "3e7106e331ae031cd7356c966559a99076fa16e25039525e208e55f0f11fcfbb",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/check-native-visibility.ts",
+      "sha256": "ee3bced22c56dc0cadaebe91683b75a241f17e198b427af33d36fa82ac37d4c6",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/de_gymnasium_chemistry_arrhenius_names_formulas.de.inactive.candidate.json",
+      "sha256": "57bdd8c85404a9a5f7488a148a751ddd680f254f09e14cfb210795d0ba313ede",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/de_gymnasium_chemistry_arrhenius_names_formulas.en.inactive.candidate.json",
+      "sha256": "1a717b9330c5985b72c49d72d376f1ace632c4ddb6e86b79301c5398a0ba209f",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/eighteen-card-origin-traces.candidate.json",
+      "sha256": "467abdc70e3f52adc403e4a71cc7d9c7b0d2a43bcce363dddd876633d1b293fa",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/eighteen.cards-review.candidate.jsonl",
+      "sha256": "0249086d565e0793fc48c8833bc4f8182d2a27f8ac688d968e55a5e108e4bb4e",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/memory-candidate.config.json",
+      "sha256": "fc4f23d964edc0df4980d2acfacd336a574ea8d8ad19e607e4adaea90d782c9b",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/memory-one-goal-candidate.config.json",
+      "sha256": "14a9ec7b698a49fa1fe54907468a3538bbc242d84359e9c90f51ad54c8aedf0f",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/memory-review.candidate.jsonl",
+      "sha256": "5b39fd9ad46a1beeeeaf5984eafa517368f3ea399874161a02c3831d23f4715c",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/native-compiled-three-view-and-dag.receipt.json",
+      "sha256": "bd99ab6c110600ab095fd4ca2bf3589b88044716b44e476c6a804f8aeab421b6",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/native-m-candidate-report.md",
+      "sha256": "c29138b3b3bdf98794ad9968ba2ed76ad02daff60b4885d1d50b33e1df48a879",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/native-m-first-invalid-config.report.md",
+      "sha256": "b40a3c5cac08ba74663ea50b6d4e43861cef9a47dbe1936b8b7f9ad0ef7e7151",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/native-m-one-goal-candidate-report.md",
+      "sha256": "8b0a3e8712b538e05b811198a12f688ae243e5b30085c7b91f36a817a8965e25",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/native-terminal-results.receipt.json",
+      "sha256": "6e31cec1003db408a74d352a684ce72c652619a31c5de5a652f04bdbcd71bf27",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/one-goal.memory-review.candidate.jsonl",
+      "sha256": "71829ddd27a973e0a0afecaf039189aae9ce546eb9bf5ac379904cf72de2afaa",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-arrhenius-memory-remediation-candidate-v1/one-memory-goal-template.candidate.json",
+      "sha256": "64e93cbb0ed1e60adb6526498640e7a02db8dfcab044439106ab7ebb82e8b108",
+      "unchanged": true
+    }
+  ],
+  "externalInputs10Unchanged": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "expectedSHA256": "43d1f3ff18c38f1f376e5d20ffe0cd73adc8f61d8f56a7505b0a9ef297afedbf",
+      "actualSHA256": "43d1f3ff18c38f1f376e5d20ffe0cd73adc8f61d8f56a7505b0a9ef297afedbf",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/chemie-stoffmenge-nine-current-20261005-v1/canonical-chemistry-full.config.json",
+      "expectedSHA256": "d18f55d63dd0a123da5b2dc6fcc5201d52f4e6609c2f1b0ea396c9673d1ce07f",
+      "actualSHA256": "d18f55d63dd0a123da5b2dc6fcc5201d52f4e6609c2f1b0ea396c9673d1ce07f",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/chemie-stoffmenge-nine-current-20261005-v1/canonical-chemistry-full.review.jsonl",
+      "expectedSHA256": "b3dc863fa748dac23e841e39255dfb651a2bc26b2cd1e9bbe9688daf4ad1442e",
+      "actualSHA256": "b3dc863fa748dac23e841e39255dfb651a2bc26b2cd1e9bbe9688daf4ad1442e",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/chemie-stoffmenge-nine-current-20261005-v1/canonical-chemistry-full.cards.review.jsonl",
+      "expectedSHA256": "0c1fe22f443cc3e2038175357607749bccc42c7b482f2d0452d465483b7d1b79",
+      "actualSHA256": "0c1fe22f443cc3e2038175357607749bccc42c7b482f2d0452d465483b7d1b79",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "expectedSHA256": "220229ad94a5da1c7b466b8e43b5a2aa5b45baa3105d896e215b2cf583760aab",
+      "actualSHA256": "220229ad94a5da1c7b466b8e43b5a2aa5b45baa3105d896e215b2cf583760aab",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024.source-extraction.json",
+      "expectedSHA256": "76febb58cfa0042e2a742ce3e2b33b4dc31f8b646c5eb113cfd6afa23869c756",
+      "actualSHA256": "76febb58cfa0042e2a742ce3e2b33b4dc31f8b646c5eb113cfd6afa23869c756",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-eleven-current-source-description-candidate-v1/primary-he-current-35.png",
+      "expectedSHA256": "572492128e3970bcc4a536d7b2b2fc03fa222689bfeebebd6a51b5009b5b07d1",
+      "actualSHA256": "572492128e3970bcc4a536d7b2b2fc03fa222689bfeebebd6a51b5009b5b07d1",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+      "expectedSHA256": "e0f2a559877fe31244854ee8b295a86491307537497824269398a4546ff3334e",
+      "actualSHA256": "e0f2a559877fe31244854ee8b295a86491307537497824269398a4546ff3334e",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+      "expectedSHA256": "98138ba639d2926cc9e4fe379a1bd6c1c72eef25b8e23712d1a33ae9102bd9c3",
+      "actualSHA256": "98138ba639d2926cc9e4fe379a1bd6c1c72eef25b8e23712d1a33ae9102bd9c3",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-seki-chemistry.view.json",
+      "expectedSHA256": "0c3b1a0d01f7b5aa962df6f29d21d1f341df31e3b7be60544e6053b30ded8e18",
+      "actualSHA256": "0c3b1a0d01f7b5aa962df6f29d21d1f341df31e3b7be60544e6053b30ded8e18",
+      "unchanged": true
+    }
+  ],
+  "originalIndependentJudgmentsFrozenSHA256": "2dac84cfb760b7d5c9599cc980ce7e0f64014e81fc05cff5abd398b87ce11ffe",
+  "originalIndependentJudgmentsSHA256File": "2dac84cfb760b7d5c9599cc980ce7e0f64014e81fc05cff5abd398b87ce11ffe",
+  "formerAuthorConfigurationFAIL": "Retained unchanged, only informational; not treated as independent acceptance. Own current native runs use unchanged rule/reviewId and no checker exception.",
+  "strictNetDelta": 0,
+  "newScientificClosures": 0,
+  "restoredActiveBindings": 0,
+  "activeWrites": 0,
+  "humanApproval": false
+}

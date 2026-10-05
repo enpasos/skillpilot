@@ -1,0 +1,393 @@
+{
+  "role": "independent_source_atomicity_memory_candidate_reviewer",
+  "status": "PASS_targeted_native_candidate_hypotheses",
+  "createdAtUTC": "2026-10-05T10:49:18.462Z",
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "bf1f0db83fb572b882630cd25327633874e35126f6a014da697c90c1c87a644f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-source-hold-remediation-candidate-v1/canonical.existing-two-changes.inactive.candidate.json",
+      "sha256": "b5792765abbb819432e48306de6c11de7324a9af4f00335526b83c53576c220b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-source-hold-remediation-candidate-v1/nine-missing-performance.DEEN.goal-templates.candidate.json",
+      "sha256": "a5ca5ed0d75e94e542d1d7af91ea2d62c4f921a31592b03d9b58968fb445d7a3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-source-hold-remediation-candidate-v1/four-prior-templates.referenced.candidate.json",
+      "sha256": "8e19b3dc4288eca6e7ff94c75c8f068268faac11a7f54c1743f7a8f1a7ac9b94"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-source-hold-remediation-candidate-v1/two-memory-goals.DEEN.templates.candidate.json",
+      "sha256": "24d94b8ed7b56fcff8543f69f2730ec4fb16e18c37dd1b08662b3988dd787dd4"
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-ni-seki.view.json",
+      "sha256": "c4123c7f435e5355bb443135f99f75ad9dd3e144ee4c93a91573a4ee2056ad5c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-seki-biology.view.json",
+      "sha256": "2f380acfae1c4482d1ddbf6a8da4d86a496ed00bd60f13e71ce02a147ac9efa6"
+    }
+  ],
+  "nativeFunctions": [
+    "prepareLandscapeEntries",
+    "normalizeCanonicalLandscape",
+    "validateCanonicalLandscape",
+    "compileCompositionView",
+    "compositionViewExposesGoal"
+  ],
+  "active": {
+    "nodesChecked": 441,
+    "canonicalErrorCount": 0,
+    "canonicalWarnings": [],
+    "effectiveRequiresDAG": "PASS"
+  },
+  "existingTwoChanges": {
+    "nodesChecked": 446,
+    "canonicalErrorCount": 0,
+    "canonicalWarnings": [],
+    "effectiveRequiresDAG": "PASS"
+  },
+  "temporaryWith15TemplatesAnd1Supplement": {
+    "nodesChecked": 462,
+    "canonicalErrorCount": 0,
+    "canonicalWarnings": [],
+    "effectiveRequiresDAG": "PASS"
+  },
+  "allCandidatePaths": [
+    {
+      "candidateKey": "order_given_criteria",
+      "idIsOnlyTemporary": true,
+      "gradeBand": "5/6",
+      "nativeEffectiveRequires": [
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "transitiveGoalIds": [
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "DNAPath": null,
+      "proteinPath": null
+    },
+    {
+      "candidateKey": "distinguish_organism_population",
+      "idIsOnlyTemporary": true,
+      "gradeBand": "9/10",
+      "nativeEffectiveRequires": [
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "transitiveGoalIds": [
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "DNAPath": null,
+      "proteinPath": null
+    },
+    {
+      "candidateKey": "sexual_reproduction_variability_advantage",
+      "idIsOnlyTemporary": true,
+      "gradeBand": "9/10",
+      "nativeEffectiveRequires": [
+        "359e6313-cd86-54d1-bee5-8e680101dc32",
+        "0b55e592-3335-52e4-8b4f-79c53f32400b",
+        "9e459608-bdea-55a1-b9c5-214bbd741be6",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "transitiveGoalIds": [
+        "0b55e592-3335-52e4-8b4f-79c53f32400b",
+        "2d451684-6e53-565e-a987-f362da919d2c",
+        "359e6313-cd86-54d1-bee5-8e680101dc32",
+        "91df35c7-e384-50d6-bb3a-37e74a6086f1",
+        "9e459608-bdea-55a1-b9c5-214bbd741be6",
+        "b1dff57f-329e-5264-b2b9-2db71a0b2172",
+        "e0d04e58-1591-5230-bfa6-5c685b56d25b"
+      ],
+      "DNAPath": null,
+      "proteinPath": null
+    },
+    {
+      "candidateKey": "selected_native_tree_species_knowledge",
+      "idIsOnlyTemporary": true,
+      "gradeBand": "5/6",
+      "nativeEffectiveRequires": [
+        "0380f992-723a-513d-8c3f-8ca7f8e0394f",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "transitiveGoalIds": [
+        "0380f992-723a-513d-8c3f-8ca7f8e0394f",
+        "0f1549f6-8341-53b0-8161-5eaeb2b37809",
+        "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+        "2d451684-6e53-565e-a987-f362da919d2c",
+        "d97f6957-fbc9-569c-8648-f7df5eb9dfd8"
+      ],
+      "DNAPath": null,
+      "proteinPath": null
+    },
+    {
+      "candidateKey": "breeding_selection_variants",
+      "idIsOnlyTemporary": true,
+      "gradeBand": "5/6",
+      "nativeEffectiveRequires": [
+        "359e6313-cd86-54d1-bee5-8e680101dc32",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "transitiveGoalIds": [
+        "2d451684-6e53-565e-a987-f362da919d2c",
+        "359e6313-cd86-54d1-bee5-8e680101dc32"
+      ],
+      "DNAPath": null,
+      "proteinPath": null
+    },
+    {
+      "candidateKey": "individual_adjustment_heritable_adaptation",
+      "idIsOnlyTemporary": true,
+      "gradeBand": "9/10",
+      "nativeEffectiveRequires": [
+        "independent-candidate-only-distinguish_organism_population",
+        "independent-candidate-only-non_molecular_evolutionary_interplay",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "transitiveGoalIds": [
+        "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+        "0b55e592-3335-52e4-8b4f-79c53f32400b",
+        "2d451684-6e53-565e-a987-f362da919d2c",
+        "359e6313-cd86-54d1-bee5-8e680101dc32",
+        "91df35c7-e384-50d6-bb3a-37e74a6086f1",
+        "9e459608-bdea-55a1-b9c5-214bbd741be6",
+        "b1dff57f-329e-5264-b2b9-2db71a0b2172",
+        "e0d04e58-1591-5230-bfa6-5c685b56d25b",
+        "independent-candidate-only-distinguish_organism_population",
+        "independent-candidate-only-non_molecular_evolutionary_interplay",
+        "independent-candidate-only-non_molecular_mutation_recombination_variability"
+      ],
+      "DNAPath": null,
+      "proteinPath": null
+    },
+    {
+      "candidateKey": "family_similarity_kinship_indication",
+      "idIsOnlyTemporary": true,
+      "gradeBand": "5/6",
+      "nativeEffectiveRequires": [
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "transitiveGoalIds": [
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "DNAPath": null,
+      "proteinPath": null
+    },
+    {
+      "candidateKey": "domestic_wild_common_ancestors",
+      "idIsOnlyTemporary": true,
+      "gradeBand": "5/6",
+      "nativeEffectiveRequires": [
+        "independent-candidate-only-family_similarity_kinship_indication",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "transitiveGoalIds": [
+        "2d451684-6e53-565e-a987-f362da919d2c",
+        "independent-candidate-only-family_similarity_kinship_indication"
+      ],
+      "DNAPath": null,
+      "proteinPath": null
+    },
+    {
+      "candidateKey": "five_vertebrate_groups_traits",
+      "idIsOnlyTemporary": true,
+      "gradeBand": "5/6",
+      "nativeEffectiveRequires": [
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "transitiveGoalIds": [
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "DNAPath": null,
+      "proteinPath": null
+    },
+    {
+      "candidateKey": "morphological_hierarchical_classification",
+      "idIsOnlyTemporary": true,
+      "gradeBand": "7/8",
+      "nativeEffectiveRequires": [
+        "0380f992-723a-513d-8c3f-8ca7f8e0394f",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "transitiveGoalIds": [
+        "0380f992-723a-513d-8c3f-8ca7f8e0394f",
+        "0f1549f6-8341-53b0-8161-5eaeb2b37809",
+        "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+        "2d451684-6e53-565e-a987-f362da919d2c",
+        "d97f6957-fbc9-569c-8648-f7df5eb9dfd8"
+      ],
+      "DNAPath": null,
+      "proteinPath": null
+    },
+    {
+      "candidateKey": "simple_reproductive_species_concept",
+      "idIsOnlyTemporary": true,
+      "gradeBand": "9/10",
+      "nativeEffectiveRequires": [
+        "0380f992-723a-513d-8c3f-8ca7f8e0394f",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "transitiveGoalIds": [
+        "0380f992-723a-513d-8c3f-8ca7f8e0394f",
+        "0f1549f6-8341-53b0-8161-5eaeb2b37809",
+        "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+        "2d451684-6e53-565e-a987-f362da919d2c",
+        "d97f6957-fbc9-569c-8648-f7df5eb9dfd8"
+      ],
+      "DNAPath": null,
+      "proteinPath": null
+    },
+    {
+      "candidateKey": "non_molecular_mutation_recombination_variability",
+      "idIsOnlyTemporary": true,
+      "gradeBand": "9/10",
+      "nativeEffectiveRequires": [
+        "359e6313-cd86-54d1-bee5-8e680101dc32",
+        "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+        "0b55e592-3335-52e4-8b4f-79c53f32400b",
+        "9e459608-bdea-55a1-b9c5-214bbd741be6",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "transitiveGoalIds": [
+        "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+        "0b55e592-3335-52e4-8b4f-79c53f32400b",
+        "2d451684-6e53-565e-a987-f362da919d2c",
+        "359e6313-cd86-54d1-bee5-8e680101dc32",
+        "91df35c7-e384-50d6-bb3a-37e74a6086f1",
+        "9e459608-bdea-55a1-b9c5-214bbd741be6",
+        "b1dff57f-329e-5264-b2b9-2db71a0b2172",
+        "e0d04e58-1591-5230-bfa6-5c685b56d25b"
+      ],
+      "DNAPath": null,
+      "proteinPath": null
+    },
+    {
+      "candidateKey": "non_molecular_evolutionary_interplay",
+      "idIsOnlyTemporary": true,
+      "gradeBand": "9/10",
+      "nativeEffectiveRequires": [
+        "359e6313-cd86-54d1-bee5-8e680101dc32",
+        "independent-candidate-only-non_molecular_mutation_recombination_variability",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "transitiveGoalIds": [
+        "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+        "0b55e592-3335-52e4-8b4f-79c53f32400b",
+        "2d451684-6e53-565e-a987-f362da919d2c",
+        "359e6313-cd86-54d1-bee5-8e680101dc32",
+        "91df35c7-e384-50d6-bb3a-37e74a6086f1",
+        "9e459608-bdea-55a1-b9c5-214bbd741be6",
+        "b1dff57f-329e-5264-b2b9-2db71a0b2172",
+        "e0d04e58-1591-5230-bfa6-5c685b56d25b",
+        "independent-candidate-only-non_molecular_mutation_recombination_variability"
+      ],
+      "DNAPath": null,
+      "proteinPath": null
+    },
+    {
+      "candidateKey": "native_tree_species_memory",
+      "idIsOnlyTemporary": true,
+      "gradeBand": "5/6",
+      "nativeEffectiveRequires": [
+        "independent-candidate-only-selected_native_tree_species_knowledge",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "transitiveGoalIds": [
+        "0380f992-723a-513d-8c3f-8ca7f8e0394f",
+        "0f1549f6-8341-53b0-8161-5eaeb2b37809",
+        "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+        "2d451684-6e53-565e-a987-f362da919d2c",
+        "d97f6957-fbc9-569c-8648-f7df5eb9dfd8",
+        "independent-candidate-only-selected_native_tree_species_knowledge"
+      ],
+      "DNAPath": null,
+      "proteinPath": null
+    },
+    {
+      "candidateKey": "vertebrate_groups_memory",
+      "idIsOnlyTemporary": true,
+      "gradeBand": "5/6",
+      "nativeEffectiveRequires": [
+        "independent-candidate-only-five_vertebrate_groups_traits",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "transitiveGoalIds": [
+        "2d451684-6e53-565e-a987-f362da919d2c",
+        "independent-candidate-only-five_vertebrate_groups_traits"
+      ],
+      "DNAPath": null,
+      "proteinPath": null
+    }
+  ],
+  "currentViewResults": [
+    {
+      "viewId": "de-gym-biologie-bundesweit-source-de-ni-seki",
+      "errors": 0,
+      "warnings": []
+    },
+    {
+      "viewId": "de-de-gym-seki-biology",
+      "errors": 0,
+      "warnings": []
+    }
+  ],
+  "inactiveFiveSixVisibilityHypothesis": {
+    "viewId": "independent-ni-five-six-memory-placement-hypothesis",
+    "errors": 0,
+    "warnings": [],
+    "pairs": [
+      {
+        "ordinaryCandidateKey": "selected_native_tree_species_knowledge",
+        "memoryCandidateKey": "native_tree_species_memory",
+        "deckId": "de_gymnasium_biology_native_tree_species",
+        "ordinaryAndMemoryVisibleInSameInactiveView": true,
+        "missingMemoryNegativeWitness": "PASS",
+        "currentAuthoritativeVisibilityProven": false
+      },
+      {
+        "ordinaryCandidateKey": "five_vertebrate_groups_traits",
+        "memoryCandidateKey": "vertebrate_groups_memory",
+        "deckId": "de_gymnasium_biology_vertebrate_groups",
+        "ordinaryAndMemoryVisibleInSameInactiveView": true,
+        "missingMemoryNegativeWitness": "PASS",
+        "currentAuthoritativeVisibilityProven": false
+      }
+    ]
+  },
+  "existing440DNAPathBefore": [
+    "440854be-7f06-5678-91cb-ba8dcab56959",
+    "0daa79f6-8f61-5506-98f9-65db83062ba8"
+  ],
+  "existing440DNAPathAfter": null,
+  "global9fDNAPathRetained": [
+    "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+    "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+    "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+    "0daa79f6-8f61-5506-98f9-65db83062ba8"
+  ],
+  "global9fProteinPathRetained": [
+    "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+    "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+    "475eebb4-4eb0-524f-b1ec-4a672bf856d2"
+  ],
+  "broadLegacyParentPlacementWarning": {
+    "parentGoalId": "6bfe8cec-df77-5284-a5f7-2480f1ebd9a7",
+    "actualInheritedExtraPrerequisiteIds": [
+      "b530a382-2786-5794-8821-3e01a62d88fd"
+    ],
+    "recommendation": "Do not put the narrow NI5/6 recognition repertoire under this broad legacy cluster without independently reviewing all inherited prerequisites."
+  },
+  "activeWrites": 0,
+  "currentVisibilityScopesApproved": 0,
+  "limits": [
+    "462-node model uses 15 temporary IDs and a provisional content supplement; final stable IDs/parent placement still require native recheck.",
+    "Current views are compiled as actual inputs; the inactive5/6 view is only a visibility hypothesis, not an adopted configured scope.",
+    "Technical no-DNA path does not prove scientific goal descriptions, source coverage, final-book D, P, V or M7.",
+    "No active ledger or source mapping changed."
+  ],
+  "humanApproval": false
+}

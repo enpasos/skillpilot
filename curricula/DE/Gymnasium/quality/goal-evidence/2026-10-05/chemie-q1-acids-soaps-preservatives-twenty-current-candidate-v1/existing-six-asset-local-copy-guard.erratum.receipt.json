@@ -1,0 +1,9 @@
+{
+  "status": "CORRECTED_local_isolation_copy_guard_before_V_freeze",
+  "firstAttempt": "Both native imports and QA generation succeeded; real-file assertion for existing source/backend KEEP copies then stopped. Public KEEP files were already detached, but source/backend read-only input symlinks needed detachment for a complete physical frozen copy.",
+  "correction": "Detach existing identical image inputs as local real files before copying; keep already exported new-image copies byte-exact.",
+  "activeWriteEvents": 0,
+  "activeContentDeltas": 0,
+  "pixelChanges": 0,
+  "notAnImageFindingOrReview": true
+}

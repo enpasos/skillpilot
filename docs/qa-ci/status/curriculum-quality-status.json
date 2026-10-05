@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v5",
-  "generatedAt": "2026-10-05T05:31:09.533Z",
+  "generatedAt": "2026-10-05T14:30:36.250Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -1255,8 +1255,8 @@
                   {
                     "id": "m3-review-targets-exist",
                     "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
-                    "passed": true,
-                    "details": "Unbekannte Canonical-Ziele in Mappings: 0."
+                    "passed": false,
+                    "details": "Unbekannte Canonical-Ziele in Mappings: 2."
                   },
                   {
                     "id": "m3-all-source-goals-reviewed",
@@ -3307,22 +3307,26 @@
         {
           "id": "CQR-004",
           "status": "pass",
-          "summary": "Course-level mapping is clean for 577 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "summary": "Course-level mapping is clean for 859 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
           "metrics": {
-            "configuredMappingFiles": 21,
-            "sourceGoals": 150,
-            "sourceGoalsWithCourseLevel": 150,
-            "gkLkSourceGoals": 69,
-            "lkSourceGoals": 81,
+            "configuredMappingFiles": 29,
+            "sourceGoals": 300,
+            "sourceGoalsWithCourseLevel": 300,
+            "gkLkSourceGoals": 138,
+            "lkSourceGoals": 162,
             "unspecifiedSourceGoals": 0,
-            "checkedMappingEdges": 577,
+            "checkedMappingEdges": 859,
             "defaultedUnspecifiedMappingEdges": 0,
             "reviewedCourseLevelExceptions": 0,
             "mismatches": 0,
             "missingSourceGoals": 0,
             "missingTargetGoals": 0,
             "unmappedCourseLevelSourceGoals": 0
-          }
+          },
+          "details": [
+            "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-tf-methylation-prospective-current-candidate-v1/prospective-input-tree/curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-q1-tf-methylation-candidate-20261005-v1.review.json: missing source-extraction file curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_BIOLOGIE_SEKII_KC2024.m7-q1-tf-methylation-candidate-20261005-v1.source-extraction.json",
+            "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-tf-methylation-source-version-correction-current-candidate-v2/prospective-input-tree/curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-q1-tf-methylation-source-version-correction-20261005-v2.review.json: missing source-extraction file curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_BIOLOGIE_SEKII_KC2024.m7-q1-tf-methylation-source-version-correction-20261005-v2.source-extraction.json"
+          ]
         },
         {
           "id": "CQR-005",
@@ -3394,16 +3398,16 @@
         {
           "id": "CQR-303",
           "status": "warn",
-          "summary": "Deep curriculum QA is incomplete: 37/363 current curricularAtomic goals strictly complete.",
+          "summary": "Deep curriculum QA is incomplete: 38/363 current curricularAtomic goals strictly complete.",
           "metrics": {
             "expectedGoals": 363,
-            "remaining": 326,
-            "strictComplete": 37,
-            "currentDescriptionResolutions": 37,
-            "currentPositiveEvidenceProfiles": 37,
+            "remaining": 325,
+            "strictComplete": 38,
+            "currentDescriptionResolutions": 38,
+            "currentPositiveEvidenceProfiles": 38,
             "currentSemanticAtomicityDecisions": 363,
             "currentMemoryReviewDecisions": 363,
-            "currentVisualizationQaRecords": 44,
+            "currentVisualizationQaRecords": 45,
             "deferredVisualizations": 0,
             "requiredChecksPassed": 6,
             "requiredChecksTotal": 6,
@@ -5551,8 +5555,8 @@
             "mappedSourceGoals": 202,
             "unmappedSourceGoals": 0,
             "extraMappedGoals": 0,
-            "exactMappings": 134,
-            "partialMappings": 68,
+            "exactMappings": 136,
+            "partialMappings": 66,
             "otherMappings": 0,
             "sourceGoalGranularity": {
               "averageWords": 10.113861386138614,
@@ -9111,15 +9115,15 @@
         {
           "id": "CQR-004",
           "status": "pass",
-          "summary": "Course-level mapping is clean for 1189 upper-secondary source-to-canonical mapping edge(s), including 31 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "summary": "Course-level mapping is clean for 1724 upper-secondary source-to-canonical mapping edge(s), including 31 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
           "metrics": {
-            "configuredMappingFiles": 36,
+            "configuredMappingFiles": 41,
             "sourceGoals": 3581,
             "sourceGoalsWithCourseLevel": 3581,
             "gkLkSourceGoals": 1766,
             "lkSourceGoals": 1322,
             "unspecifiedSourceGoals": 406,
-            "checkedMappingEdges": 1189,
+            "checkedMappingEdges": 1724,
             "defaultedUnspecifiedMappingEdges": 172,
             "reviewedCourseLevelExceptions": 31,
             "mismatches": 0,
@@ -9192,29 +9196,29 @@
             "cardRows": 55
           },
           "details": [
-            "canonical-chemistry-full: audit report curricula/DE/Gymnasium/quality/memory-card-review/chemie-stoffmenge-nine-current-20261005-v1/current-review.report.md"
+            "canonical-chemistry-full: audit report curricula/DE/Gymnasium/quality/memory-card-review/chemie-b014-five-current-20261005-v1/current-review.report.md"
           ]
         },
         {
           "id": "CQR-303",
           "status": "warn",
-          "summary": "Deep curriculum QA is incomplete: 80/376 current curricularAtomic goals strictly complete.",
+          "summary": "Deep curriculum QA is incomplete: 85/376 current curricularAtomic goals strictly complete.",
           "metrics": {
             "expectedGoals": 376,
-            "remaining": 296,
-            "strictComplete": 80,
-            "currentDescriptionResolutions": 80,
-            "currentPositiveEvidenceProfiles": 80,
+            "remaining": 291,
+            "strictComplete": 85,
+            "currentDescriptionResolutions": 85,
+            "currentPositiveEvidenceProfiles": 85,
             "currentSemanticAtomicityDecisions": 199,
             "currentMemoryReviewDecisions": 376,
-            "currentVisualizationQaRecords": 352,
-            "deferredVisualizations": 22,
+            "currentVisualizationQaRecords": 353,
+            "deferredVisualizations": 21,
             "requiredChecksPassed": 6,
             "requiredChecksTotal": 6,
             "blockingIssues": 0
           },
           "details": [
-            "22 current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V."
+            "21 current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V."
           ]
         },
         {

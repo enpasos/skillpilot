@@ -1,0 +1,66 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-q1-gel-current-independent-d-b-20261005-v1",
+  "campaignId": "biologie-q1-gel-prospective-current-20261005-v1-b",
+  "roundId": "biologie-q1-gel-prospective-current-20261005-v1-first-pass-b",
+  "bundleFingerprint": "sha256:c45525c4c4bc6e21c065c3fa6155ea839a823a1cbfd178de076739a3e275e002",
+  "bookDigest": "sha256:3b5aba4ea00f1a3394137fb2cac80fc2fe59a124b4b8c44d0a06c952c63635ce",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "independenceGroupId": "biologie-q1-gel-prospective-current-20261005-v1-independent-b",
+  "batchId": "biologie-q1-gel-prospective-current-20261005-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:5b25a326d12111b0446b622b4c9821780839f102c2c917ebba1c9c4646dba399",
+  "provider": "OpenAI",
+  "model": "GPT-6 family (Codex; exact model version not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "generationParametersFingerprint": "sha256:552121fd74662e860e17ffc752982784fef1c83b5bf3d93bc032ba1378400581",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "8eb86a82-122d-5cae-8f80-bb2850b29c2f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:7ca869c3b04d1024a1c43831bb81c49f4007e3abb872e03ddf9d10bb2a395901"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:e60d76d1d00ef6bb7abcba2e0cb6130b3bd6f01adc4fa859b81528cdbc2f8ff1"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:637845592865dbccb655cf481e03d1202a7957b847d386e32326f65e0282d9f6"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:96096ea73d1bd8aa31b1f434d40764be06f5f188a57e6f0b7cd77555ec885ad3"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:874e49aeff37cbb26d261359e6f67cf64990c7e012594f1b01156a07d4bcb75e"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:5b25a326d12111b0446b622b4c9821780839f102c2c917ebba1c9c4646dba399"
+    }
+  ],
+  "startedAt": "2026-10-05T11:43:18.877593+00:00",
+  "completedAt": "2026-10-05T11:43:18.878040+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:3eb0416c10b9cc8a25c35657e3f01852dac7d1b1b56936bad46550f34f7b07fe",
+  "toolchainVersion": "native-d-b-review-authoring-v1"
+}

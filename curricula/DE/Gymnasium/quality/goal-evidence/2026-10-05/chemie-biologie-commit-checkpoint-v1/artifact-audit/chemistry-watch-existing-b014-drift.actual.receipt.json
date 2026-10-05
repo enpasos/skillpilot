@@ -1,0 +1,614 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_REVIEWED_EXISTING_B014_WATCH_DRIFT_BASELINE_REFRESH_PENDING",
+  "reviewedAtUTC": "2026-10-05T14:46:24.085159+00:00",
+  "headCommit": "0af05906c8dfa4c62212b6600759c37f902211c6",
+  "authority": "independent_current_artifact_scope_review_only",
+  "noNewScientificClosureOrHumanApproval": true,
+  "watchBeforeRefresh": {
+    "manifestPath": "curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-manifest.json",
+    "manifestSha256": "sha256:f3445bf3dc6de01799989fd2fe22d44376c69c0763d9837e7bd584ec04f81f8e",
+    "baselinePath": "curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-baseline.json",
+    "baselineRawSha256": "sha256:103f1974de0087f44e4514023a032f273e624bebebbf824cd4beb7965d366f29",
+    "baselineUpdatedAt": "2026-10-05T06:03:55Z",
+    "baselineWatchedFileCount": 141,
+    "currentWatchedFileCount": 142,
+    "changedPaths": [
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json"
+    ],
+    "addedPaths": [
+      "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-b014-five-current-20261005-v1.review.json"
+    ],
+    "removedPaths": [],
+    "unchangedCount": 140,
+    "unchangedFullRecordEqualityCount": 140,
+    "changedBaselineAndCurrentRecords": {
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json": {
+        "baseline": {
+          "relativePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+          "exists": true,
+          "sha256": "8a2497ec503cf2d091a112d623986e4fa6846c28ae91039cdf6d0d0bb987783c",
+          "lastModifiedUtc": "2026-10-05T03:28:58Z",
+          "hashMode": "canonical-evidence-json-v1"
+        },
+        "current": {
+          "relativePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+          "exists": true,
+          "sha256": "c015c1dedef10985f9445cffaf652faeb8a28f271139eb9e4670b4fb819da957",
+          "lastModifiedUtc": "2026-10-05T13:02:59Z",
+          "hashMode": "canonical-evidence-json-v1"
+        }
+      },
+      "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-b014-five-current-20261005-v1.review.json": {
+        "baseline": null,
+        "current": {
+          "relativePath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-b014-five-current-20261005-v1.review.json",
+          "exists": true,
+          "sha256": "b82c39579ef740af00801d56bf5400aea83bd2a7742b1844ea5fc7c81f0e68f8",
+          "lastModifiedUtc": "2026-10-05T13:02:59Z"
+        }
+      }
+    }
+  },
+  "canonicalReview": {
+    "headEvidenceHashEqualsPriorBaseline": true,
+    "rawCurrentSha256": "sha256:6a4e55333bf6a1c1115c71f1a85be06282a67c8e298cc9e0b56e8b74b02fccb3",
+    "headAndCurrentGoalCount": 473,
+    "allOrderedGoalIdsUnchanged": true,
+    "topLevelChangedFields": [],
+    "changedGoalCount": 5,
+    "changedGoalIdsExactlyIntegratedB014Five": true,
+    "unchangedOtherGoalCount": 468,
+    "goalChanges": [
+      {
+        "goalId": "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+        "titleDe": "Redoxbegriffe sicher anwenden",
+        "rawChangedFields": [
+          "extendedData"
+        ],
+        "watchedChangedFields": [
+          "extendedData"
+        ],
+        "fieldChanges": {
+          "extendedData": {
+            "before": {
+              "provenance": {
+                "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+                "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+                "sourceGoalId": "76283163-1255-47ab-8ed4-2164e5b6babc"
+              }
+            },
+            "after": {
+              "provenance": {
+                "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+                "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024 Source-Extraction)",
+                "sourceGoalId": "he-chem-sekii-e-1-b01-a01-76c838e1",
+                "sourceRef": "Kerncurriculum Chemie gymnasiale Oberstufe Hessen 2024, E.1 Redoxreaktionen",
+                "sourceSpan": "E.1#B01A01"
+              }
+            }
+          }
+        }
+      },
+      {
+        "goalId": "16da6a4d-8e9c-5f5d-b69d-338d67a2d362",
+        "titleDe": "Einfache Redoxreihen aufstellen",
+        "rawChangedFields": [
+          "extendedData",
+          "requires",
+          "resourceLinks"
+        ],
+        "watchedChangedFields": [
+          "extendedData",
+          "requires"
+        ],
+        "fieldChanges": {
+          "resourceLinks": {
+            "before": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "16da6a4d-8e9c-5f5d-b69d-338d67a2d362",
+                "title": "Visualisierung: Einfache Redoxreihen aufstellen",
+                "url": "/assets/goal-visualizations/chemie/16da6a4d-8e9c-5f5d-b69d-338d67a2d362/16da6a4d-8e9c-5f5d-b69d-338d67a2d362.jpg",
+                "provider": "Google Gemini / Nano Banana Pro",
+                "description": "Visualisierung zum Lernziel: Einfache Redoxreihen aufstellen.",
+                "altText": "Didaktische Visualisierung zum Lernziel \"Einfache Redoxreihen aufstellen\". Die lernende Person kann aus Metallabscheidungen und Messungen einfacher galvanischer Zellen eine verkürzte Redoxreihe erstellen und Donator-/Akzeptor-Paare kennzeichnen.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "pilot"
+              }
+            ],
+            "after": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "16da6a4d-8e9c-5f5d-b69d-338d67a2d362",
+                "title": "Visualisierung: Einfache Redoxreihen aufstellen",
+                "url": "/assets/goal-visualizations/chemie/16da6a4d-8e9c-5f5d-b69d-338d67a2d362/16da6a4d-8e9c-5f5d-b69d-338d67a2d362.png",
+                "provider": "OpenAI / ChatGPT-Codex image generation",
+                "description": "Gezielt korrigierter, unabhängig fachlich und visuell geprüfter Comic-PNG-Kandidat; qualitative Orientierung, keine praktische Leistung und keine menschliche Freigabe.",
+                "altText": "Schematische Metallabscheidungen: Kupfer auf Zink in einer kupferionenhaltigen Lösung und Silber auf Kupfer in einer farblosen silberionenhaltigen Lösung. Daneben eine Zink-Kupfer-Zelle mit Salzbrücke, Messgerät und Elektronenrichtung im äußeren Leiter von Zink zu Kupfer. Die verkürzte Donatorreihenfolge Zn > Cu > Ag und die Paare Zn/Zn²⁺, Cu/Cu²⁺, Ag/Ag⁺ sind angegeben; Metall und zugehöriges Ion werden unterschieden.",
+                "lang": "de",
+                "license": "CC-BY-4.0",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "extendedData": {
+            "before": {
+              "provenance": {
+                "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+                "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+                "sourceGoalId": "abe62a49-2813-4308-a99f-95ed063335cd"
+              }
+            },
+            "after": {
+              "provenance": {
+                "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+                "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024 Source-Extraction)",
+                "sourceGoalId": "he-chem-sekii-e-1-b05-a01-f455805a",
+                "sourceRef": "Kerncurriculum Chemie gymnasiale Oberstufe Hessen 2024, E.1 Redoxreaktionen",
+                "sourceSpan": "E.1#B05A01"
+              }
+            }
+          },
+          "requires": {
+            "before": [
+              "4961130b-1ee8-58f2-a319-dff0a864db6a",
+              "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a"
+            ],
+            "after": [
+              "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162"
+            ]
+          }
+        }
+      },
+      {
+        "goalId": "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef",
+        "titleDe": "Elektrolyse beschreiben",
+        "rawChangedFields": [
+          "description",
+          "descriptionEn",
+          "extendedData",
+          "resourceLinks"
+        ],
+        "watchedChangedFields": [
+          "description",
+          "descriptionEn",
+          "extendedData"
+        ],
+        "fieldChanges": {
+          "resourceLinks": {
+            "before": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef",
+                "title": "Visualisierung: Elektrolyse beschreiben",
+                "url": "/assets/goal-visualizations/chemie/fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef/fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef.jpg",
+                "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+                "description": "Visualisierung zum Lernziel: Elektrolyse beschreiben.",
+                "altText": "Didaktische Visualisierung zum Lernziel \"Elektrolyse beschreiben\". Die lernende Person kann an einem Beispiel die Elektrolyse erläutern, Stoffmengenbeziehungen angeben und Unterschiede zum galvanischen Element herausarbeiten.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "accepted"
+              }
+            ],
+            "after": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef",
+                "title": "Visualisierung: Elektrolyse beschreiben",
+                "url": "/assets/goal-visualizations/chemie/fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef/fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef.jpg",
+                "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+                "description": "Visualisierung zum Lernziel: Elektrolyse beschreiben.",
+                "altText": "Drei farbige Tafeln zeigen die Elektrolyse einer Natriumchlorid-Schmelze: An der negativen Kathode werden Natriumionen zu flüssigem Natrium reduziert, an der positiven Anode Chloridionen zu Chlorgas oxidiert. Die Gesamtgleichung lautet 2 NaCl(l) → 2 Na(l) + Cl₂(g). Eine äußere Gleichspannungsquelle erzwingt die Reaktion.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "description": {
+            "before": "Die lernende Person kann an einem Beispiel die Elektrolyse erläutern, Stoffmengenbeziehungen angeben und Unterschiede zum galvanischen Element herausarbeiten.",
+            "after": "Die lernende Person kann die Elektrolyse an geeigneten Beispielen einschließlich einer wässrigen Kupfer(II)-chloridlösung anhand der Ionenwanderung und Elektrodenreaktionen erklären, die Stoffmengenverhältnisse der Produkte begründen und den erzwungenen Vorgang mit einem galvanischen Element vergleichen."
+          },
+          "extendedData": {
+            "before": {
+              "provenance": {
+                "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+                "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+                "sourceGoalId": "68c40510-b4b0-4b23-8902-2f3b5a328523"
+              }
+            },
+            "after": {
+              "provenance": {
+                "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+                "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024 Source-Extraction)",
+                "sourceGoalId": "he-chem-sekii-e-1-b09-a01-45b22583",
+                "sourceRef": "Kerncurriculum Chemie gymnasiale Oberstufe Hessen 2024, E.1 Redoxreaktionen",
+                "sourceSpan": "E.1#B09A01"
+              }
+            }
+          },
+          "descriptionEn": {
+            "before": "The learner can explain electrolysis using an example, state molar relationships, and work out differences to the galvanic element.",
+            "after": "The learner can explain electrolysis through suitable examples including an aqueous copper(II) chloride solution using ion migration and electrode reactions, justify the product amount ratios and compare the forced process with a galvanic cell."
+          }
+        }
+      },
+      {
+        "goalId": "efa24b77-0f98-5835-9d82-3e539ab20253",
+        "titleDe": "Freiwillige und erzwungene Redoxreaktionen vergleichen",
+        "rawChangedFields": [
+          "description",
+          "descriptionEn",
+          "resourceLinks"
+        ],
+        "watchedChangedFields": [
+          "description",
+          "descriptionEn"
+        ],
+        "fieldChanges": {
+          "resourceLinks": {
+            "before": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "efa24b77-0f98-5835-9d82-3e539ab20253",
+                "title": "Visualisierung: Freiwillige und erzwungene Redoxreaktionen vergleichen",
+                "url": "/assets/goal-visualizations/chemie/efa24b77-0f98-5835-9d82-3e539ab20253/efa24b77-0f98-5835-9d82-3e539ab20253.jpg",
+                "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+                "description": "Visualisierung zum Lernziel: Freiwillige und erzwungene Redoxreaktionen vergleichen.",
+                "altText": "Didaktische Visualisierung zum Lernziel \"Freiwillige und erzwungene Redoxreaktionen vergleichen\". Die lernende Person kann freiwillig ablaufende und erzwungene Redoxreaktionen als reversible elektrochemische Vorgänge vergleichen und Alltagsformulierungen zu leeren Batterien oder geladenen Akkus fachlich bewerten.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "accepted"
+              }
+            ],
+            "after": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "efa24b77-0f98-5835-9d82-3e539ab20253",
+                "title": "Visualisierung: Freiwillige und erzwungene Redoxreaktionen vergleichen",
+                "url": "/assets/goal-visualizations/chemie/efa24b77-0f98-5835-9d82-3e539ab20253/efa24b77-0f98-5835-9d82-3e539ab20253.png",
+                "provider": "OpenAI / ChatGPT-Codex image generation",
+                "description": "Visualisierung zum Lernziel: Freiwillige und erzwungene Redoxreaktionen vergleichen.",
+                "altText": "Zwei Comic-Szenen zeigen denselben geeigneten Akku beim Entladen an einer Lampe und beim Laden an einem externen Ladegerät. Gelbe Energiepfeile zeigen beim freiwilligen Entladen vom Akku zur Lampe und beim erzwungenen Laden vom Ladegerät zum Akku. Getrennte Leitungen verbinden die Pole; am Ladegerät ist Plus mit Plus und Minus mit Minus verbunden. Große Hinweise begrenzen die Aussage: Nicht jede Batterie ist aufladbar; leer bedeutet aktuell nicht mehr nutzbar. Das qualitative Schema zeigt keine konkrete Zellchemie und behauptet kein chemisches Gleichgewicht oder allgemeine Umkehrbarkeit.",
+                "lang": "de",
+                "license": "CC-BY-4.0",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "description": {
+            "before": "Die lernende Person kann freiwillig ablaufende und erzwungene Redoxreaktionen als reversible elektrochemische Vorgänge vergleichen und Alltagsformulierungen zu leeren Batterien oder geladenen Akkus fachlich bewerten.",
+            "after": "Die lernende Person kann an einer geeigneten reversibel arbeitenden elektrochemischen Zelle freiwillige und erzwungene Redoxvorgänge beim Entladen und Laden vergleichen und Alltagsformulierungen zu leeren Batterien oder geladenen Akkus fachlich beurteilen."
+          },
+          "descriptionEn": {
+            "before": "The learner can compare spontaneous and forced redox reactions as reversible electrochemical processes and evaluate everyday statements about empty batteries or charged rechargeable batteries chemically.",
+            "after": "The learner can compare spontaneous and forced redox processes during discharging and charging in a suitable reversibly operating electrochemical cell and critically assess everyday statements about empty batteries or charged rechargeable cells."
+          }
+        }
+      },
+      {
+        "goalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+        "titleDe": "Säure-Base-Titrationen planen",
+        "rawChangedFields": [
+          "description",
+          "descriptionEn",
+          "extendedData",
+          "resourceLinks"
+        ],
+        "watchedChangedFields": [
+          "description",
+          "descriptionEn",
+          "extendedData"
+        ],
+        "fieldChanges": {
+          "resourceLinks": {
+            "before": null,
+            "after": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+                "title": "Visualisierung: Säure-Base-Titrationen planen",
+                "url": "/assets/goal-visualizations/chemie/02634fdd-c8ba-591a-b240-77129b1bebb8/02634fdd-c8ba-591a-b240-77129b1bebb8.png",
+                "provider": "OpenAI / ChatGPT-Codex image generation",
+                "description": "Gezielt korrigierter, unabhängig fachlich und visuell geprüfter Comic-PNG-Kandidat; qualitative Orientierung, keine praktische Leistung und keine menschliche Freigabe.",
+                "altText": "Comicartige Titrationsanordnung: Eine senkrechte, am Stativ geklemmte Bürette mit farbloser NaOH-Maßlösung und nach unten zunehmender Skala tropft in einen Erlenmeyerkolben mit HCl-Probe. Ein Pfeil deutet Schwenken an; die Flüssigkeit zeigt am dargestellten Endpunkt einen sehr zarten rosa Schimmer. Daneben stehen eine farblose Indikatorlösung und ein zur Arbeitsseite hin offenes Protokollheft.",
+                "lang": "de",
+                "license": "CC-BY-4.0",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "description": {
+            "before": "Die lernende Person kann eine Titration mit Umschlagspunkt fachgerecht durchführen, Indikatoren auswählen und aus Volumina die Konzentration der Probe berechnen.",
+            "after": "Die lernende Person kann eine Säure-Base-Titration mit geeigneter Maßlösung und begründetem Indikator fachgerecht planen und durchführen und aus dokumentierten Volumina unter Berücksichtigung der Reaktionsstöchiometrie die Konzentration der Probe bestimmen."
+          },
+          "extendedData": {
+            "before": {
+              "provenance": {
+                "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+                "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+                "sourceGoalId": "f2d5e6e4-0fbb-49a0-bda2-46315fb4b805"
+              }
+            },
+            "after": {
+              "provenance": {
+                "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+                "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024 Source-Extraction)",
+                "sourceGoalId": "he-chem-sekii-e-2-b04-a01-803d5801",
+                "sourceRef": "Kerncurriculum Chemie gymnasiale Oberstufe Hessen 2024, E.2 Protolysereaktionen",
+                "sourceSpan": "E.2#B04A01"
+              }
+            }
+          },
+          "descriptionEn": {
+            "before": "The learner can professionally perform a titration with an endpoint, select indicators, and calculate the concentration of the sample from volumes.",
+            "after": "The learner can correctly plan and carry out an acid-base titration using a suitable standard solution and a justified indicator and determine the sample concentration from recorded volumes while accounting for reaction stoichiometry."
+          }
+        }
+      }
+    ],
+    "bindingOnlyGoalIds": [
+      "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a"
+    ],
+    "bindingOnlyWholeGoalEqualsHEAD": true,
+    "bindingOnlyMeaning": "bcf8b24b keeps its complete canonical goal and P profile; its already integrated native D page binding accounts for the changed external graph reference and adds no scientific closure."
+  },
+  "adoptedWatchedFileBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "actualSha256": "sha256:6a4e55333bf6a1c1115c71f1a85be06282a67c8e298cc9e0b56e8b74b02fccb3",
+      "adoptionExpectedSha256": "sha256:6a4e55333bf6a1c1115c71f1a85be06282a67c8e298cc9e0b56e8b74b02fccb3",
+      "actualMatchesAdoptionExpected": true,
+      "frozenFutureCopy": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/prospective-input-tree/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "frozenFutureCopySha256": "sha256:6a4e55333bf6a1c1115c71f1a85be06282a67c8e298cc9e0b56e8b74b02fccb3",
+      "actualEqualsFrozenFutureCopy": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-b014-five-current-20261005-v1.review.json",
+      "actualSha256": "sha256:b82c39579ef740af00801d56bf5400aea83bd2a7742b1844ea5fc7c81f0e68f8",
+      "adoptionExpectedSha256": "sha256:b82c39579ef740af00801d56bf5400aea83bd2a7742b1844ea5fc7c81f0e68f8",
+      "actualMatchesAdoptionExpected": true,
+      "frozenFutureCopy": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/prospective-input-tree/curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-b014-five-current-20261005-v1.review.json",
+      "frozenFutureCopySha256": "sha256:b82c39579ef740af00801d56bf5400aea83bd2a7742b1844ea5fc7c81f0e68f8",
+      "actualEqualsFrozenFutureCopy": true
+    }
+  ],
+  "mappingReview": {
+    "priorReviewPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-energy-four-current-20261005-v1.review.json",
+    "priorReviewSha256": "sha256:d4e097e033d82e812dba9e83d16bca12b9a44bcc3de755e5d920ad5354cd0b9b",
+    "newReviewPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-b014-five-current-20261005-v1.review.json",
+    "newReviewSha256": "sha256:b82c39579ef740af00801d56bf5400aea83bd2a7742b1844ea5fc7c81f0e68f8",
+    "sourceAndTargetLandscapeIdsUnchanged": true,
+    "sourceExtractionPathUnchanged": true,
+    "summaryUnchanged": true,
+    "summary": {
+      "sourceGoals": 202,
+      "mappedSourceGoals": 202,
+      "needsCanonicalGoal": 0,
+      "exactMappings": 134,
+      "partialMappings": 68
+    },
+    "priorMappingRowCount": 271,
+    "currentMappingRowCount": 270,
+    "unchangedMappingRowCount": 268,
+    "removedMappingRows": [
+      {
+        "legacyGoalId": "he-chem-sekii-e-1-b08-a01-0bba4a7b",
+        "canonicalGoalId": "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+        "matchType": "exact",
+        "reviewDecisionId": "he-chem-sekii-e-1-b08-a01-0bba4a7b"
+      },
+      {
+        "legacyGoalId": "he-chem-sekii-e-2-b04-a01-803d5801",
+        "canonicalGoalId": "680c7dc6-9af5-58fb-86f5-e003aa78d0f5",
+        "matchType": "partial",
+        "reviewDecisionId": "he-chem-sekii-e-2-b04-a01-803d5801"
+      },
+      {
+        "legacyGoalId": "he-chem-sekii-e-2-b04-a01-803d5801",
+        "canonicalGoalId": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+        "matchType": "partial",
+        "reviewDecisionId": "he-chem-sekii-e-2-b04-a01-803d5801"
+      }
+    ],
+    "addedMappingRows": [
+      {
+        "legacyGoalId": "he-chem-sekii-e-2-b04-a01-803d5801",
+        "canonicalGoalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+        "matchType": "exact",
+        "reviewDecisionId": "he-chem-sekii-e-2-b04-a01-803d5801"
+      },
+      {
+        "legacyGoalId": "he-chem-sekii-e-1-b08-a01-0bba4a7b",
+        "canonicalGoalId": "22133f29-ef02-4408-8f8d-2bbea3275d91",
+        "matchType": "exact",
+        "reviewDecisionId": "he-chem-sekii-e-1-b08-a01-0bba4a7b"
+      }
+    ],
+    "unchangedSourceDecisionCount": 200,
+    "changedSourceDecisions": [
+      {
+        "sourceGoalId": "he-chem-sekii-e-1-b08-a01-0bba4a7b",
+        "before": {
+          "sourceGoalId": "he-chem-sekii-e-1-b08-a01-0bba4a7b",
+          "topicCode": "E.1",
+          "sourceSpan": "Aufstellen von Reaktionsgleichungen unter Verwendung von Oxidationszahlen",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162"
+          ],
+          "rationale": "Das Source-Ziel ist inhaltlich durch ein kanonisches Chemieziel abgedeckt.",
+          "reviewedAt": "2026-05-11",
+          "reviewer": "codex"
+        },
+        "after": {
+          "sourceGoalId": "he-chem-sekii-e-1-b08-a01-0bba4a7b",
+          "topicCode": "E.1",
+          "sourceSpan": "Aufstellen von Reaktionsgleichungen unter Verwendung von Oxidationszahlen",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "22133f29-ef02-4408-8f8d-2bbea3275d91"
+          ],
+          "rationale": "Gezielte aktuelle B014-Quellenkorrektur: Oxidation-number-based aqueous half-equation balancing in existing221, separate from496 assignments/recognition. Vollständige Primärquelle und aktueller Zielkontext im eingefrorenen unabhängigen Source/A/M-Kandidaten geprüft; diese operative Übernahmevorbereitung ist noch kein D/P-Abschluss oder Human Approval.",
+          "reviewedAt": "2026-10-05",
+          "reviewer": "codex-independent-source-a-m-candidate"
+        }
+      },
+      {
+        "sourceGoalId": "he-chem-sekii-e-2-b04-a01-803d5801",
+        "before": {
+          "sourceGoalId": "he-chem-sekii-e-2-b04-a01-803d5801",
+          "topicCode": "E.2",
+          "sourceSpan": "Säure-Base-Titration (mit Umschlagspunkt) mit wässriger Salzsäurelösung und Natronlauge, Berechnung der Konzentration der Probelösung",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "f1ed86f0-534d-57d7-8952-a004a331cc54",
+            "680c7dc6-9af5-58fb-86f5-e003aa78d0f5"
+          ],
+          "rationale": "Das Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform.",
+          "reviewedAt": "2026-05-11",
+          "reviewer": "codex"
+        },
+        "after": {
+          "sourceGoalId": "he-chem-sekii-e-2-b04-a01-803d5801",
+          "topicCode": "E.2",
+          "sourceSpan": "Säure-Base-Titration (mit Umschlagspunkt) mit wässriger Salzsäurelösung und Natronlauge, Berechnung der Konzentration der Probelösung",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "02634fdd-c8ba-591a-b240-77129b1bebb8"
+          ],
+          "rationale": "Gezielte aktuelle B014-Quellenkorrektur: Plan/conduct/document HCl(aq)-NaOH(aq) endpoint titration and concentration via reaction stoichiometry; no universal equivalence-pH7 assumption. Vollständige Primärquelle und aktueller Zielkontext im eingefrorenen unabhängigen Source/A/M-Kandidaten geprüft; diese operative Übernahmevorbereitung ist noch kein D/P-Abschluss oder Human Approval.",
+          "reviewedAt": "2026-10-05",
+          "reviewer": "codex-independent-source-a-m-candidate"
+        }
+      }
+    ]
+  },
+  "independentSourceReviewReferences": {
+    "sourceReviewDirectory": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-eleven-source-remediation-independent-a-v1",
+    "sourceFreezeManifestPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-eleven-source-remediation-independent-a-v1/independent-source-a-m.freeze.manifest.json",
+    "sourceFreezeManifestSha256": "sha256:bfcebf1ceb8889e2321b95de76cbe913f66c9aa14f7c3e50ccd0675d78d78742",
+    "exactCompanionSourceWitnessPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-eleven-source-remediation-independent-a-v1/exact-current-companion-reuse-and-placement-witnesses.json"
+  },
+  "unadoptedCandidateChecks": [
+    {
+      "scope": "unadoptedQ1Twenty",
+      "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/m7-q1-acids-soaps-preservatives-twenty-current-20261005-v1.config.json",
+      "configSha256": "sha256:05a66b754296c477b8d44ba9b4e1675a8cadd5ec59e25ac556abe6b911258a7b",
+      "goalCount": 20,
+      "changedCanonicalGoalIds": [],
+      "strictCompleteGoalIds": []
+    },
+    {
+      "scope": "unadoptedB010Seven",
+      "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-010-open-ions-elements-seven-current-v2.config.json",
+      "configSha256": "sha256:6c6b036c5b4d9aaa68a1d08d155c629508fed58adeb419ae97b27e22d4c98aab",
+      "goalCount": 7,
+      "changedCanonicalGoalIds": [],
+      "strictCompleteGoalIds": []
+    }
+  ],
+  "currentStrictIntegrationEvidence": {
+    "operativeAdoptionReceiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-current-integration-v1/operative-adoption.actual.receipt.json",
+    "operativeAdoptionReceiptSha256": "sha256:ecf07b2029f3a6aec94acbf68d91d42538250259dde1b11a5110707ddad96e11",
+    "packageCompletionReceiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-current-integration-v1/package-strict-completion.actual.receipt.json",
+    "packageCompletionReceiptSha256": "sha256:37238fff1d927e2b2647621ea2dbdda9acfd665bb80e9b537721c6219de4b752",
+    "checkpointReportPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/central-current.report.json",
+    "checkpointReportSha256": "sha256:002e7aa9b89a22f79af639eb4c2c278c36699dda5f8bb02bf05d496353d3a342",
+    "currentChemistryStrictComplete": 85,
+    "currentChemistryDenominator": 376,
+    "allFiveAlreadyStrictComplete": true,
+    "packageRecordedNetGain": 5,
+    "watchRefreshNewNetGain": 0
+  },
+  "protectedControls": [
+    {
+      "path": "scripts/canonical_chemistry_evidence_watch.py",
+      "sha256": "sha256:f6c1129474eef828c5a3796632da52e903e25960c12f06e89dcd142c3b369c0f",
+      "equalsHEAD": true
+    },
+    {
+      "path": "scripts/run_canonical_chemistry_evidence_watch.sh",
+      "sha256": "sha256:44b6b7cf3d65ab5003c360b9406c3b13e98b8b41fb1296bbe9015f3f1607dc7d",
+      "equalsHEAD": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-manifest.json",
+      "sha256": "sha256:f3445bf3dc6de01799989fd2fe22d44376c69c0763d9837e7bd584ec04f81f8e",
+      "equalsHEAD": true
+    },
+    {
+      "path": ".github/workflows/canonical_chemistry_evidence_watch.yml",
+      "sha256": "sha256:4b72a745f6f04ae2a1d4d1994becb377d5ddcb29a7caa4f6c986758dffa4703a",
+      "equalsHEAD": true
+    },
+    {
+      "path": "app/scripts/config/curriculum-maturity-floor-policy.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "equalsHEAD": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "sha256:76047cec422c555aacd1e04bff597c4f8a70d8ffed5f214ed7412c828bc34898",
+      "equalsHEAD": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "sha256:ad764d083e390ab60f808ecbffb363ac914026894e82c09c977425311ec7ea44",
+      "equalsHEAD": true
+    }
+  ],
+  "reopenRuleAssessment": {
+    "canonicalRule": "Reopen Chemistry P6 maintenance only if a canonical graph or tracker delta changes visible scope, source-backed projection status, runtime mapping coverage, or composition-view eligibility.",
+    "mappingRule": "Reopen mapping maintenance only if a watched mapping delta changes source-to-canonical coverage, runtime legacy translation, unsupported assigned-goal handling, or projected learner-facing totals.",
+    "interpretation": "The new mapping deliberately changes two source-to-canonical assignments and is reviewed targeted B014 mapping maintenance. Describe and bind these corrections explicitly; do not claim a metadata-only mapping change. Source coverage remains 202/202 with no unsupported goals, and this watch acknowledgement adds zero closures. Unadopted Q1/B010 content, floors, checker, hash algorithm, manifest and workflow are unchanged."
+  },
+  "retainedFailedWatchRun": {
+    "terminalReceiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/chemistry-evidence-watch.terminal.receipt.json",
+    "terminalReceiptSha256": "sha256:5c68a1826155795f8ce93ab4208de2a089e12d5df6f5d32fecec877f2541d27f",
+    "exitCode": 1,
+    "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/chemistry-evidence-watch.stdout.txt",
+    "stdoutSha256": "sha256:2523469e1ed2a3a0faca413145ee43e765ec3203de9fdff44b3ca234ef8dc456",
+    "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/chemistry-evidence-watch.stderr.txt",
+    "stderrSha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "nativeRefreshProcedure": {
+    "precondition": "Retain the current prior baseline bytes, the actual failed two-entry watch output and this scoped review before refreshing. Preserve historical review packets and prior grants.",
+    "commandsInOrder": [
+      "python3 -B scripts/canonical_chemistry_evidence_watch.py capture-baseline",
+      "./scripts/run_canonical_chemistry_evidence_watch.sh"
+    ],
+    "expectedNewBaselineRecords": 142,
+    "expectedUnrelatedRecordsByteExact": 140,
+    "expectedChangedOldRecord": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "expectedAddedRecord": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-b014-five-current-20261005-v1.review.json",
+    "expectedTerminalOutput": "chemistry-evidence-watch: changed=0 added=0 removed=0; CHEMISTRY_EVIDENCE_WATCH=OK",
+    "requiredEvidence": [
+      "Prior baseline raw bytes/hash and exact two-entry preflight retained as history.",
+      "New baseline delta changes only canonical evidence hash/mtime, adds the reviewed HE mapping, and updates timestamp/count; 140 other watched records remain exact.",
+      "Native self-test plus wrapper terminal exit 0, stdout/stderr hashes and actual UTC completion.",
+      "Generated status/delta views retained and current documentation validation passes.",
+      "Keep strict counts 85/376 Chemistry and 38/363 Biology; baseline acknowledgement is zero new closures and no human acceptance."
+    ],
+    "notExecutedByThisReadOnlyAudit": true
+  },
+  "noBaselineOrSourceOrGitMutationPerformed": true,
+  "humanApproval": false,
+  "humanTrial": false
+}

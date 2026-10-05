@@ -1,0 +1,217 @@
+{
+  "status": "inactive_author_candidate",
+  "goalId": "3ac1cbb1-a366-5ae5-85c0-76b08270869d",
+  "observedTaskBE": [
+    8,
+    7,
+    8,
+    7
+  ],
+  "observedSolutionBE": [
+    8,
+    7,
+    8,
+    7
+  ],
+  "observedStepBE": [
+    7,
+    7,
+    8,
+    7
+  ],
+  "observedStepSum": 29,
+  "declaredMaxPoints": 30,
+  "proposedStepBE": [
+    8,
+    7,
+    8,
+    7
+  ],
+  "proposedStepSum": 30,
+  "correction": {
+    "path": "examData.scoring.steps[0].points",
+    "before": 7,
+    "after": 8
+  },
+  "rationale": "Task 1 and its published solution already assign 8 BE to the same existing criterion linking promoter methylation, mRNA and protein. Aligning s1 to those declared 8 BE corrects the arithmetic mismatch without inventing credit, expanding the criterion or changing maxPoints/passingPoints.",
+  "sourceScope": "The exam already examines both transcription-factor binding and promoter methylation. Keep 946 TF and add the methylation companion to requires and coveredGoalIds.",
+  "beforeGoal": {
+    "id": "3ac1cbb1-a366-5ae5-85c0-76b08270869d",
+    "title": "Tumorsuppressor zwischen Promotormethylierung und Zellzyklus",
+    "titleEn": "Tumor Suppressor Between Promoter Methylation and Cell Cycle",
+    "description": "Die lernende Person kann eine materialgestuetzte Q1-Aufgabe zu eukaryotischer Genregulation, Proteinbiosynthese und Zellzykluskontrolle selbstaendig bearbeiten.",
+    "descriptionEn": "The learner can independently solve a material-based Q1 task on eukaryotic gene regulation, protein biosynthesis, and cell-cycle control.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment"
+    ],
+    "contains": [],
+    "requires": [
+      "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+      "946ce2e7-c30d-5670-839d-003b0619c284",
+      "7f76ff0b-218b-568d-91df-20bbe2b156e2"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-biology",
+      "demandLevel": "AB3",
+      "phase": "Q1"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HE"
+      ]
+    },
+    "extendedData": {
+      "treeOrder": 3,
+      "provenance": {
+        "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+        "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+        "sourceGoalId": "4250b207-39bb-4316-a483-edd2295ce74f"
+      }
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "coveredGoalIds": [
+        "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+        "946ce2e7-c30d-5670-839d-003b0619c284",
+        "7f76ff0b-218b-568d-91df-20bbe2b156e2"
+      ],
+      "coveredStrands": [
+        "BIO_STRUKTUR_FUNKTION",
+        "BIO_STEUERUNG_REGELUNG",
+        "BIO_ENTWICKLUNG"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "taskContent": "**Kontext:**\n\nIn einer Zellkultur werden Tumorzellen untersucht, in denen ein Tumorsuppressor-Gen nur noch schwach aktiv ist. Fuer die Analyse werden Daten zur Promotormethylierung, zur mRNA-Menge und zu Zellzyklusphasen verglichen.\n\n**Material 1 (Methylierungsbefund am Promotor des Tumorsuppressor-Gens):**\n\n- gesunde Vergleichszellen: 8 % methylierte Promotorstellen\n- Tumorzellen Linie A: 72 % methylierte Promotorstellen\n- Tumorzellen Linie B nach Behandlung mit einem Demethylierungsstoff: 24 % methylierte Promotorstellen\n\n**Material 2 (mRNA- und Proteinmenge des Tumorsuppressors):**\n\n- gesunde Vergleichszellen: mRNA 100 %, Protein 100 %\n- Tumorzellen Linie A: mRNA 18 %, Protein 15 %\n- Tumorzellen Linie B nach Behandlung: mRNA 63 %, Protein 58 %\n\n**Material 3 (Verteilung der Zellen auf Zellzyklusphasen):**\n\n- gesunde Vergleichszellen: G1 61 %, S 24 %, G2/M 15 %\n- Tumorzellen Linie A: G1 32 %, S 46 %, G2/M 22 %\n- Tumorzellen Linie B nach Behandlung: G1 49 %, S 33 %, G2/M 18 %\n\n**Material 4 (Fachnotiz):**\n\nTumorsuppressor-Proteine bremsen den Uebergang in die DNA-Replikation und aktivieren bei Schaeden Kontrollmechanismen. Wird der Promotor eines solchen Gens stark methyliert, binden Transkriptionsfaktoren schlechter; die Genaktivitaet sinkt.\n\n**Aufgaben:**\n\n1. Werten Sie Material 1 und 2 aus und erklaeren Sie den Zusammenhang zwischen Promotormethylierung, mRNA-Menge und Proteinmenge. (8 BE)\n2. Erlaeutern Sie mit Material 4, warum veraenderte Genregulation die Proteinbiosynthese des Tumorsuppressors beeinflusst, obwohl die codierende DNA-Sequenz unveraendert bleiben kann. (7 BE)\n3. Analysieren Sie Material 3 und erklaeren Sie die Bedeutung der veraenderten Zellzyklusverteilung fuer unkontrollierte Zellteilung. (8 BE)\n4. Beurteilen Sie, inwieweit die Behandlung der Linie B als Hinweis auf einen therapeutisch relevanten Effekt gewertet werden kann. Gehen Sie auf Chancen und Grenzen ein. (7 BE)",
+      "solutionContent": "1. In Linie A ist der Promotor stark methyliert; gleichzeitig sind mRNA- und Proteinmenge stark vermindert. In Linie B sinkt nach der Behandlung die Methylierung, waehrend mRNA und Protein deutlich zunehmen. Das spricht dafuer, dass hohe Promotormethylierung die Transkription hemmt und dadurch spaeter auch weniger Protein gebildet wird.  \n   **8 BE**\n\n2. Transkriptionsfaktoren muessen an regulatorische DNA-Bereiche binden, damit RNA-Polymerase das Gen ablesen kann. Wird der Promotor methyliert, ist diese Bindung erschwert. Es entsteht weniger mRNA; dadurch steht an Ribosomen auch weniger Vorlage fuer die Translation zur Verfuegung. Die verminderte Proteinmenge beruht also auf Genregulation und nicht zwingend auf einer Veraenderung der codierenden Sequenz.  \n   **7 BE**\n\n3. In gesunden Zellen befindet sich der groesste Anteil in G1. In Linie A ist der Anteil der S-Phase deutlich erhoeht, was auf einen haeufigeren Uebergang in die DNA-Replikation hinweist. Wenn Tumorsuppressoren den Kontrollpunkt vor der S-Phase nicht mehr ausreichend sichern, teilen sich Zellen leichter unkontrolliert. Linie B zeigt nach der Behandlung wieder eine Verteilung, die naeher an gesunden Vergleichszellen liegt.  \n   **8 BE**\n\n4. Die Daten sprechen fuer einen biologisch relevanten Effekt, weil Methylierung sinkt, Genaktivitaet steigt und sich die Zellzyklusverteilung teilweise normalisiert. Das ist ein Hinweis auf therapeutisches Potenzial. Grenzen bestehen darin, dass nur Zellkulturdaten vorliegen und weder Langzeiteffekte noch unerwuenschte Wirkungen oder die Uebertragbarkeit auf einen Organismus gezeigt sind.  \n   **7 BE**",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "steps": [
+          {
+            "id": "s1",
+            "points": 7,
+            "description": "Zusammenhang von Promotormethylierung, mRNA- und Proteinmenge fachlich korrekt ausgewertet"
+          },
+          {
+            "id": "s2",
+            "points": 7,
+            "description": "Genregulation und Proteinbiosynthese schluessig miteinander verknuepft"
+          },
+          {
+            "id": "s3",
+            "points": 8,
+            "description": "Bedeutung der Zellzyklusdaten fuer unkontrollierte Zellteilung praezise analysiert"
+          },
+          {
+            "id": "s4",
+            "points": 7,
+            "description": "therapeutische Aussagekraft der Behandlung differenziert beurteilt"
+          }
+        ]
+      }
+    },
+    "phase": "Q1",
+    "type": "atomic"
+  },
+  "afterGoal": {
+    "id": "3ac1cbb1-a366-5ae5-85c0-76b08270869d",
+    "title": "Tumorsuppressor zwischen Promotormethylierung und Zellzyklus",
+    "titleEn": "Tumor Suppressor Between Promoter Methylation and Cell Cycle",
+    "description": "Die lernende Person kann eine materialgestuetzte Q1-Aufgabe zu eukaryotischer Genregulation, Proteinbiosynthese und Zellzykluskontrolle selbstaendig bearbeiten.",
+    "descriptionEn": "The learner can independently solve a material-based Q1 task on eukaryotic gene regulation, protein biosynthesis, and cell-cycle control.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment"
+    ],
+    "contains": [],
+    "requires": [
+      "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+      "946ce2e7-c30d-5670-839d-003b0619c284",
+      "0ac51522-352c-50d1-8b95-8d3992b4db15",
+      "7f76ff0b-218b-568d-91df-20bbe2b156e2"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-biology",
+      "demandLevel": "AB3",
+      "phase": "Q1"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HE"
+      ]
+    },
+    "extendedData": {
+      "treeOrder": 3,
+      "provenance": {
+        "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+        "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+        "sourceGoalId": "4250b207-39bb-4316-a483-edd2295ce74f"
+      }
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "coveredGoalIds": [
+        "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+        "946ce2e7-c30d-5670-839d-003b0619c284",
+        "0ac51522-352c-50d1-8b95-8d3992b4db15",
+        "7f76ff0b-218b-568d-91df-20bbe2b156e2"
+      ],
+      "coveredStrands": [
+        "BIO_STRUKTUR_FUNKTION",
+        "BIO_STEUERUNG_REGELUNG",
+        "BIO_ENTWICKLUNG"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "taskContent": "**Kontext:**\n\nIn einer Zellkultur werden Tumorzellen untersucht, in denen ein Tumorsuppressor-Gen nur noch schwach aktiv ist. Fuer die Analyse werden Daten zur Promotormethylierung, zur mRNA-Menge und zu Zellzyklusphasen verglichen.\n\n**Material 1 (Methylierungsbefund am Promotor des Tumorsuppressor-Gens):**\n\n- gesunde Vergleichszellen: 8 % methylierte Promotorstellen\n- Tumorzellen Linie A: 72 % methylierte Promotorstellen\n- Tumorzellen Linie B nach Behandlung mit einem Demethylierungsstoff: 24 % methylierte Promotorstellen\n\n**Material 2 (mRNA- und Proteinmenge des Tumorsuppressors):**\n\n- gesunde Vergleichszellen: mRNA 100 %, Protein 100 %\n- Tumorzellen Linie A: mRNA 18 %, Protein 15 %\n- Tumorzellen Linie B nach Behandlung: mRNA 63 %, Protein 58 %\n\n**Material 3 (Verteilung der Zellen auf Zellzyklusphasen):**\n\n- gesunde Vergleichszellen: G1 61 %, S 24 %, G2/M 15 %\n- Tumorzellen Linie A: G1 32 %, S 46 %, G2/M 22 %\n- Tumorzellen Linie B nach Behandlung: G1 49 %, S 33 %, G2/M 18 %\n\n**Material 4 (Fachnotiz):**\n\nTumorsuppressor-Proteine bremsen den Uebergang in die DNA-Replikation und aktivieren bei Schaeden Kontrollmechanismen. Wird der Promotor eines solchen Gens stark methyliert, binden Transkriptionsfaktoren schlechter; die Genaktivitaet sinkt.\n\n**Aufgaben:**\n\n1. Werten Sie Material 1 und 2 aus und erklaeren Sie den Zusammenhang zwischen Promotormethylierung, mRNA-Menge und Proteinmenge. (8 BE)\n2. Erlaeutern Sie mit Material 4, warum veraenderte Genregulation die Proteinbiosynthese des Tumorsuppressors beeinflusst, obwohl die codierende DNA-Sequenz unveraendert bleiben kann. (7 BE)\n3. Analysieren Sie Material 3 und erklaeren Sie die Bedeutung der veraenderten Zellzyklusverteilung fuer unkontrollierte Zellteilung. (8 BE)\n4. Beurteilen Sie, inwieweit die Behandlung der Linie B als Hinweis auf einen therapeutisch relevanten Effekt gewertet werden kann. Gehen Sie auf Chancen und Grenzen ein. (7 BE)",
+      "solutionContent": "1. In Linie A ist der Promotor stark methyliert; gleichzeitig sind mRNA- und Proteinmenge stark vermindert. In Linie B sinkt nach der Behandlung die Methylierung, waehrend mRNA und Protein deutlich zunehmen. Das spricht dafuer, dass hohe Promotormethylierung die Transkription hemmt und dadurch spaeter auch weniger Protein gebildet wird.  \n   **8 BE**\n\n2. Transkriptionsfaktoren muessen an regulatorische DNA-Bereiche binden, damit RNA-Polymerase das Gen ablesen kann. Wird der Promotor methyliert, ist diese Bindung erschwert. Es entsteht weniger mRNA; dadurch steht an Ribosomen auch weniger Vorlage fuer die Translation zur Verfuegung. Die verminderte Proteinmenge beruht also auf Genregulation und nicht zwingend auf einer Veraenderung der codierenden Sequenz.  \n   **7 BE**\n\n3. In gesunden Zellen befindet sich der groesste Anteil in G1. In Linie A ist der Anteil der S-Phase deutlich erhoeht, was auf einen haeufigeren Uebergang in die DNA-Replikation hinweist. Wenn Tumorsuppressoren den Kontrollpunkt vor der S-Phase nicht mehr ausreichend sichern, teilen sich Zellen leichter unkontrolliert. Linie B zeigt nach der Behandlung wieder eine Verteilung, die naeher an gesunden Vergleichszellen liegt.  \n   **8 BE**\n\n4. Die Daten sprechen fuer einen biologisch relevanten Effekt, weil Methylierung sinkt, Genaktivitaet steigt und sich die Zellzyklusverteilung teilweise normalisiert. Das ist ein Hinweis auf therapeutisches Potenzial. Grenzen bestehen darin, dass nur Zellkulturdaten vorliegen und weder Langzeiteffekte noch unerwuenschte Wirkungen oder die Uebertragbarkeit auf einen Organismus gezeigt sind.  \n   **7 BE**",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "steps": [
+          {
+            "id": "s1",
+            "points": 8,
+            "description": "Zusammenhang von Promotormethylierung, mRNA- und Proteinmenge fachlich korrekt ausgewertet"
+          },
+          {
+            "id": "s2",
+            "points": 7,
+            "description": "Genregulation und Proteinbiosynthese schluessig miteinander verknuepft"
+          },
+          {
+            "id": "s3",
+            "points": 8,
+            "description": "Bedeutung der Zellzyklusdaten fuer unkontrollierte Zellteilung praezise analysiert"
+          },
+          {
+            "id": "s4",
+            "points": 7,
+            "description": "therapeutische Aussagekraft der Behandlung differenziert beurteilt"
+          }
+        ]
+      }
+    },
+    "phase": "Q1",
+    "type": "atomic"
+  },
+  "maxPointsChanged": false,
+  "scientificExamAcceptance": "pending independent assessment/content check",
+  "humanApproval": false
+}

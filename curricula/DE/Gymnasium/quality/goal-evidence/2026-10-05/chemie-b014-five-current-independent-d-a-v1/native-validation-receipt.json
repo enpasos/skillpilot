@@ -1,0 +1,31 @@
+{
+  "checkedAtUTC": "2026-10-05T12:45:28.817Z",
+  "workdir": "/home/enpasos/projects/skillpilot/tmp/chemie-b014-five-native-isolated-20261005-v1",
+  "unmodifiedNativeCode": true,
+  "checks": [
+    {
+      "key": "single",
+      "cmd": "npm --prefix app run validate:goal-description-review -- --bundle '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/review-bundle-manifest.json' --input '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/description-review-input.json' --campaign '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/description-review-campaign.json' --run '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/results/chemie-b014-five-prospective-current-20261005-v1-first-pass-a.batch-001.run.json' --batch-input '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/batches/chemie-b014-five-prospective-current-20261005-v1-first-pass-a.batch-001.input.jsonl' --records '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/results/chemie-b014-five-prospective-current-20261005-v1-first-pass-a.batch-001.records.jsonl'",
+      "result": {
+        "chunk_id": "78465c",
+        "wall_time_seconds": 0.68574406,
+        "exit_code": 0,
+        "original_token_count": 383,
+        "output": "\n> skillpilot@0.0.0 validate:goal-description-review\n> tsx scripts/validateGoalDescriptionReviewCampaign.ts --bundle /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/review-bundle-manifest.json --input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/description-review-input.json --campaign /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/description-review-campaign.json --run /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/results/chemie-b014-five-prospective-current-20261005-v1-first-pass-a.batch-001.run.json --batch-input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/batches/chemie-b014-five-prospective-current-20261005-v1-first-pass-a.batch-001.input.jsonl --records /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/results/chemie-b014-five-prospective-current-20261005-v1-first-pass-a.batch-001.records.jsonl\n\nGoal-description review batch valid: 6\n"
+      }
+    },
+    {
+      "key": "campaign",
+      "cmd": "npm --prefix app run validate:goal-description-review-campaign -- --bundle '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/review-bundle-manifest.json' --input '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/description-review-input.json' --campaign '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/description-review-campaign.json' --batches-dir '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/batches' --results-dir '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/results'",
+      "result": {
+        "chunk_id": "a8e2e2",
+        "wall_time_seconds": 0.709850832,
+        "exit_code": 0,
+        "original_token_count": 285,
+        "output": "\n> skillpilot@0.0.0 validate:goal-description-review-campaign\n> tsx scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/review-bundle-manifest.json --input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/description-review-input.json --campaign /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/description-review-campaign.json --batches-dir /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/batches --results-dir /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/round-a/results\n\nGoal-description review campaign results valid: 6\n"
+      }
+    }
+  ],
+  "authority": "ai_candidate",
+  "scope": "ROUND-A six exact current fingerprint-bound records; no dual-round or human approval claimed"
+}

@@ -1,0 +1,37 @@
+{
+  "completedAtUtc": "2026-10-05T11:00:54.488268+00:00",
+  "status": "three_scoped_native_checks_passed",
+  "checks": [
+    {
+      "lane": "atomicity",
+      "command": "npm --prefix app run quality:semantic-atomicity:check",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-six-current-source-hold-remediation-candidate-v1/atomicity.final.native.stdout",
+      "stdoutSha256": "sha256:d7ffddb8fe8e026b8ff4d4bb31b0a27fcc97a5658069fe132b30ea79ae871006",
+      "scope": "six inactive current IDs only"
+    },
+    {
+      "lane": "memory",
+      "command": "npm --prefix app run quality:memory-card-review:check",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-six-current-source-hold-remediation-candidate-v1/memory.final.native.stdout",
+      "stdoutSha256": "sha256:1200236f74a28b9db57fc2a31a101fb79d3458cfb77c6aa56de199a1b570a8cf",
+      "scope": "six inactive current IDs only"
+    },
+    {
+      "lane": "positive",
+      "command": "npm --prefix app run quality:positive-goal-evidence-candidates",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-six-current-source-hold-remediation-candidate-v1/positive.final.native.stdout",
+      "stdoutSha256": "sha256:a426bef04472b162e216cb3514f5ab93dcbd5ac2c7a57fb2e9f9eb6461fa29f6",
+      "scope": "six inactive current IDs only"
+    }
+  ],
+  "candidateStructureAndBindingCommand": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-six-current-source-hold-remediation-candidate-v1/check-candidate.mts",
+  "candidateStructureAndBindingActualExitCode": 0,
+  "initialCliErrorsPreserved": true,
+  "activeCentralRegistration": false,
+  "humanApproval": false,
+  "newStrictCompletions": 0,
+  "restoredStrictBindings": 0
+}

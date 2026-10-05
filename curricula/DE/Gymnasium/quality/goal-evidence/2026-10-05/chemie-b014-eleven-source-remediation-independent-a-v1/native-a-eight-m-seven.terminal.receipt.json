@@ -1,0 +1,59 @@
+{
+  "observedAt": "2026-10-05T11:30:59.990342+00:00",
+  "rows": [
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-eleven-source-remediation-independent-a-v1/a-scoped.config.json",
+        "--write-fingerprints"
+      ],
+      "startedAt": "2026-10-05T11:30:58.928663+00:00",
+      "finishedAt": "2026-10-05T11:30:59.198775+00:00",
+      "actualExitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-eleven-source-remediation-independent-a-v1/native-a-bind.log.txt",
+      "logSha256": "575778b54772568c07fb330a273b995b3f1424fdb075dcb71a2b80e2b1d673e3"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-eleven-source-remediation-independent-a-v1/a-scoped.config.json"
+      ],
+      "startedAt": "2026-10-05T11:30:59.198847+00:00",
+      "finishedAt": "2026-10-05T11:30:59.459608+00:00",
+      "actualExitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-eleven-source-remediation-independent-a-v1/native-a-check.log.txt",
+      "logSha256": "fe43a0475c32b95af8acc9e1c09cabf06619ed898247727fe5126c38e2656e69"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-eleven-source-remediation-independent-a-v1/m-scoped.config.json",
+        "--write-fingerprints"
+      ],
+      "startedAt": "2026-10-05T11:30:59.459698+00:00",
+      "finishedAt": "2026-10-05T11:30:59.724434+00:00",
+      "actualExitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-eleven-source-remediation-independent-a-v1/native-m-bind.log.txt",
+      "logSha256": "14e170d7578f0a6ad1c9b7f547fd5b9a7ba114d45c5e20dde7a20051f16959ed"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-eleven-source-remediation-independent-a-v1/m-scoped.config.json"
+      ],
+      "startedAt": "2026-10-05T11:30:59.724490+00:00",
+      "finishedAt": "2026-10-05T11:30:59.990280+00:00",
+      "actualExitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-eleven-source-remediation-independent-a-v1/native-m-check.log.txt",
+      "logSha256": "aca60451e17fbaef55a9becec862cb9f72d5d74624fc6b5b68028173ea0ed813"
+    }
+  ],
+  "required28MemoryHasSeparateIndependentFrozenLane": true,
+  "machineCandidateOnly": true,
+  "strictClosureAdded": 0,
+  "terminalCaptureRelocatedByteUnchangedBeforeFreeze": true
+}

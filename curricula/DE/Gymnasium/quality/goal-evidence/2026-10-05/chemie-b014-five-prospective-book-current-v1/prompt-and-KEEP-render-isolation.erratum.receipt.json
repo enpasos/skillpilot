@@ -1,0 +1,35 @@
+{
+  "status": "repaired_prompt_isolation_erratum",
+  "reason": "The wrapper guessed <goalId>.prompt.de.md; the unchanged native importer actually writes prompt.de.md. Real old leaf symlinks were therefore followed for16 andefa before discovery. Both actual leaves were immediately detached retaining candidate bytes; root owns exact HEAD restoration. Native code and historical frozen candidate artifacts were not changed.",
+  "unintendedActivePromptWriteEvents": 2,
+  "rows": [
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/chemie/16da6a4d-8e9c-5f5d-b69d-338d67a2d362/prompt.de.md",
+      "unintendedNativeSymlinkWriteOccurred": true,
+      "activeRootRestoredToExactHEAD": true,
+      "oldHEADSHA256": "sha256:e2aa7db8d48468d2b319229296935b533e32d8aa7ff0e02111754921408ccef0",
+      "currentActiveSHA256": "sha256:e2aa7db8d48468d2b319229296935b533e32d8aa7ff0e02111754921408ccef0",
+      "candidateDetachedRealFile": true,
+      "candidateNewPromptSHA256": "sha256:fecd621540340e0c17d159154849d65a9b23641a8894ec13541714aa7a27bd25"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/chemie/efa24b77-0f98-5835-9d82-3e539ab20253/prompt.de.md",
+      "unintendedNativeSymlinkWriteOccurred": true,
+      "activeRootRestoredToExactHEAD": true,
+      "oldHEADSHA256": "sha256:60256b5963fc32e42baddd892354e8588b7c03438284907458a797a660687ebe",
+      "currentActiveSHA256": "sha256:60256b5963fc32e42baddd892354e8588b7c03438284907458a797a660687ebe",
+      "candidateDetachedRealFile": true,
+      "candidateNewPromptSHA256": "sha256:a36fe1455f3c5651acd7f419b72071f7576457b84bc9b9f262a3f180cdb46b1c"
+    }
+  ],
+  "allActiveHistoricalPromptBytesRestored": true,
+  "activeCanonicalWrites": 0,
+  "activeQARecordWrites": 0,
+  "activeAssetPixelWrites": 0,
+  "futureImportsUseActualNativePromptPaths": true,
+  "KEEPImageRenderIsolationRepair": "Native renderer rejected borrowed Public JPG symlinks escaping publicRoot. Exactly04/fd/bcf public JPGs are detached byte-identical local copies, native path security unchanged.",
+  "firstNativeFinalBookPrepareExitCode": 1,
+  "firstFailureReason": "Goal04fa visualization realpath outside isolated publicRoot; no prepared campaign existed.",
+  "strictNetDelta": 0,
+  "humanApproval": false
+}

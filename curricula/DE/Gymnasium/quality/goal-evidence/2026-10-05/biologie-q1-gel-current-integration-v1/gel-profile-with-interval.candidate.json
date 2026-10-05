@@ -1,0 +1,61 @@
+{
+  "archetype": "data",
+  "expectations": [
+    {
+      "id": "separation-principle",
+      "essentialUnderstandingDe": "Im gegebenen Gel wandert negativ geladene DNA im elektrischen Feld zur positiven Seite. Unter vergleichbaren Bedingungen wandern kürzere lineare Fragmente weiter als längere.",
+      "essentialUnderstandingEn": "In the supplied gel, negatively charged DNA migrates toward the positive side in the electric field. Under comparable conditions, shorter linear fragments migrate farther than longer ones.",
+      "observablePerformanceDe": "Die lernende Person erklärt Polung und größenabhängige Wanderung anhand eines neuen Gelmodells und verknüpft sie mit dem tatsächlich vorgelegten Bandenmuster.",
+      "observablePerformanceEn": "The learner explains polarity and size-dependent migration using a fresh gel model and connects these to the supplied band pattern."
+    },
+    {
+      "id": "marker-grounded-inference",
+      "essentialUnderstandingDe": "Ein Größenmarker begründet eine ungefähre Fragmentlänge. Gleiche Wanderung spricht unter diesen Bedingungen für eine vergleichbare Länge, nicht für gleiche Basensequenz, die Identität eines Menschen oder eine Erkrankung.",
+      "essentialUnderstandingEn": "A size marker supports an approximate fragment length. Equal migration under these conditions indicates comparable length, not identical base sequence, a person’s identity or disease.",
+      "observablePerformanceDe": "Die lernende Person ordnet neue Probenbanden zum passenden Marker zu und formuliert eine positive Größen-/Musterfolgerung mit der Grenze ihrer Aussage.",
+      "observablePerformanceEn": "The learner matches fresh sample bands to a suitable marker and produces a positive length/pattern conclusion with an explicit limit."
+    }
+  ],
+  "coverageExpectations": {
+    "requiredExpectationIds": [
+      "separation-principle",
+      "marker-grounded-inference"
+    ],
+    "alternativeExpectationGroups": [],
+    "minimumIndependentDemonstrations": 2,
+    "freshVariationRequired": true,
+    "independentTransferRequired": true
+  },
+  "variationAxes": [
+    {
+      "id": "marker-and-lanes",
+      "textDe": "Neue Markergrößen, andere Spurreihenfolge und mehrere Banden aus linearen Fragmenten verwenden.",
+      "textEn": "Use fresh marker sizes, reordered lanes and multiple bands from linear fragments."
+    },
+    {
+      "id": "origin-and-claim-limit",
+      "textDe": "PCR-Produkt und Restriktionsfragmente als verschiedene Probenherkünfte vergleichen; Sequenzgleichheit nicht aus Größenübereinstimmung folgern.",
+      "textEn": "Compare PCR product and restriction fragments as different sample origins; do not infer sequence identity from equal size."
+    }
+  ],
+  "applicationCaseBriefs": [
+    {
+      "id": "linear-restriction-fragments",
+      "taskDemandDe": "Ein gegebenes Gelmodell trennt lineare DNA-Fragmente unter gleichen Bedingungen. Der Marker zeigt 2000 bp bei 15 mm, 1000 bp bei 28 mm und 500 bp bei 44 mm Abstand von den Taschen. Eine unbekannte Restriktionsprobe zeigt Banden bei 28 und 44 mm. Die Taschen liegen an der negativen Seite. Erläutere das Trennprinzip und leite die gestützten ungefähren Größen der Probe ab.",
+      "taskDemandEn": "A supplied gel model separates linear DNA fragments under matched conditions. Marker bands are 2000 bp at 15 mm, 1000 bp at 28 mm and 500 bp at 44 mm from the wells. An unknown restriction-digest sample has bands at 28 and 44 mm. The wells are on the negative side. Explain separation and derive the supported approximate fragment sizes.",
+      "expectedPerformanceDe": "Die lernende Person begründet die Wanderung zur positiven Seite und die größere Strecke kürzerer linearer Fragmente. Sie ordnet die Probe ungefähr 1000 und 500 bp zu, ohne aus dem Muster Sequenz oder Organismusidentität abzuleiten.",
+      "expectedPerformanceEn": "The learner explains migration toward the positive side and the farther travel of shorter linear fragments. The sample is assigned approximately 1000 and 500 bp, without inferring sequence or organism identity from the pattern.",
+      "understandingFocusDe": "Begründete Markerinterpretation ohne praktische Durchführungsbehauptung.",
+      "understandingFocusEn": "Reasoned marker interpretation without a laboratory-performance claim."
+    },
+    {
+      "id": "new-ladder-same-size-different-sequence",
+      "taskDemandDe": "Ein anderes gegebenes Gel mit linearen Fragmenten zeigt 1200 bp bei 16 mm, 600 bp bei 30 mm und 300 bp bei 48 mm. Zwei getrennte PCR-Produkte laufen beide bei 30 mm, eine Restriktionsprobe bei 16, 30 und 39 mm. Die Sequenzen sind unbekannt. Werte jede Spur aus und gib für die Bande zwischen zwei Markerbanden ein begründetes Größenintervall an. Erkläre, welche positive Aussage der Vergleich der beiden PCR-Spuren trägt und warum ihre Basenfolgen trotzdem verschieden sein können.",
+      "taskDemandEn": "A different supplied gel with linear fragments shows 1200 bp at 16 mm, 600 bp at 30 mm and 300 bp at 48 mm. Two separate PCR products both migrate at 30 mm; a restriction sample has bands at 16, 30 and 39 mm. Sequences are unknown. Interpret every lane and justify a size interval for the band between two marker bands. Explain the positive conclusion supported by comparing the PCR lanes and why their base sequences can still differ.",
+      "expectedPerformanceDe": "Die PCR-Produkte haben ungefähr 600 bp; die Restriktionsprobe zeigt ungefähr 1200 und 600 bp sowie eine weitere Bande zwischen den Markern für 600 und 300 bp. Dafür begründet die lernende Person das Intervall zwischen 300 und 600 bp, ohne aus der Millimeterposition eine exakte oder linear interpolierte Basenpaarzahl zu behaupten. Sie begründet die gleiche ungefähre Größe der beiden PCR-Produkte am neuen Marker, unterscheidet sie aber von unbewiesener Sequenzgleichheit. Sie verwendet den zweiten Marker und überträgt keine absoluten Laufstrecken oder Zahlen aus dem ersten Gel.",
+      "expectedPerformanceEn": "The PCR products are approximately 600 bp; the restriction sample shows approximately 1200 and 600 bp plus a band between the 600 and 300 bp markers. The learner justifies a size interval between 300 and 600 bp without claiming an exact or linearly interpolated base-pair count from the millimetre position. The new marker supports comparable PCR-product size, which is distinguished from unproved sequence identity. The second marker is used rather than transferring absolute migration distances or numbers from the first gel.",
+      "understandingFocusDe": "Frischer Transfer mit neuer Leiter, positiv begründetem Größenintervall und vergleichender Musterfolgerung ohne Scheinexaktheit.",
+      "understandingFocusEn": "Fresh transfer with a new ladder, a positively justified size interval and a comparative pattern inference without spurious precision."
+    }
+  ]
+}

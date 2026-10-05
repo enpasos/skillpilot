@@ -1,0 +1,26 @@
+
+> skillpilot@0.0.0 check:goal-visualization-qa-coverage-parity
+> tsx scripts/checkGoalVisualizationQaCoverageParity.ts
+
+mathematik: QA/rollout parity passed (807 atomic scope, 25 active cluster overview, 807 active, 0 provider deferred, 0 quality deferred, 0 regular missing).
+physik: QA/rollout parity passed (478 atomic scope, 31 active cluster overview, 478 active, 0 provider deferred, 0 quality deferred, 0 regular missing).
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: chemie: active-image mismatch
+
+354 !== 353
+
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/checkGoalVisualizationQaCoverageParity.ts:132:10)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 354,
+  expected: 353,
+  operator: 'strictEqual'
+}
+
+Node.js v20.20.2

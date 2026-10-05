@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-q1-tf-methylation-source-version-correction-current-20261005-v2",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-tf-methylation-source-version-correction-current-candidate-v2/batch.config.json",
+  "configDigest": "sha256:0500c7907f405e5a030beeed9e7ee58de99e1351d60d0993a17a9ede9ead9ceb",
+  "goalIds": [
+    "946ce2e7-c30d-5670-839d-003b0619c284",
+    "0ac51522-352c-50d1-8b95-8d3992b4db15",
+    "8eb86a82-122d-5cae-8f80-bb2850b29c2f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 364,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-tf-methylation-source-version-correction-current-candidate-v2/book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:56ad8b0059902dc4219ed2a98b00d2c331ab52acac83122007334426851322ae"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:e6a48b3e92bc877cc8eac5866eb7dc5bd664bc629dbdf13360a6d3e378bb041a",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:c4997738647fde85b006510071cc1e2706475a99da9f618249fcfee38c46dfb1",
+    "reviewInputFingerprint": "sha256:07f7f91213bdf1953b6f2e11c8087706b44587aed51507d95f4116e6b5aa941a",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-q1-tf-methylation-source-version-correction-current-20261005-v2-a",
+        "campaignDigest": "sha256:1ea72ea18984b85bdb1868b346116484355d949c09d6add83b1a455cd650109e",
+        "roundId": "biologie-q1-tf-methylation-source-version-correction-current-20261005-v2-first-pass-a",
+        "independenceGroupId": "biologie-q1-tf-methylation-source-version-correction-current-20261005-v2-independent-a",
+        "batchId": "biologie-q1-tf-methylation-source-version-correction-current-20261005-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:e635e36cb65ef00369be59d3ebc714f7f16278d796f07fed9653e7143ba2a7c9"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-q1-tf-methylation-source-version-correction-current-20261005-v2-b",
+        "campaignDigest": "sha256:623dd9530242f05a37fabecea1bda30e52a2f0fc6b8709f0d736f3a25295e5ba",
+        "roundId": "biologie-q1-tf-methylation-source-version-correction-current-20261005-v2-first-pass-b",
+        "independenceGroupId": "biologie-q1-tf-methylation-source-version-correction-current-20261005-v2-independent-b",
+        "batchId": "biologie-q1-tf-methylation-source-version-correction-current-20261005-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:64c57977d0a4d01c147ff3c4af724ea2875ed17197378bf932fa555fcf4d0429"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

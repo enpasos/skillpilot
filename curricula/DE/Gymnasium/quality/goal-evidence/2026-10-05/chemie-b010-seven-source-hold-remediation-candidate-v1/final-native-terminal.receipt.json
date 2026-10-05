@@ -1,0 +1,79 @@
+{
+  "status": "candidate",
+  "authority": "ai_candidate",
+  "checks": [
+    {
+      "command": [
+        "python",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/materialize-candidate.py"
+      ],
+      "startedAt": "2026-10-05T11:03:01.149387+00:00",
+      "finishedAt": "2026-10-05T11:03:01.311362+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/materialize.terminal.txt",
+      "stdoutSha256": "ca8bf4265760afbaba3ab11746d3fa76bb5a013b35981a686d61bb5b318e093f"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/validate-candidate-native.ts"
+      ],
+      "startedAt": "2026-10-05T11:03:01.311435+00:00",
+      "finishedAt": "2026-10-05T11:03:01.853360+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/native-scoped-graph-source-view.terminal.txt",
+      "stdoutSha256": "be0c6d5e42435968c8e8e393859df7c953e3a412fe794d0cf8573c7127c8f576"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/a-five.config.json",
+        "--write-fingerprints"
+      ],
+      "startedAt": "2026-10-05T11:03:01.853422+00:00",
+      "finishedAt": "2026-10-05T11:03:02.130455+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/a-five.bind.terminal.txt",
+      "stdoutSha256": "59a5e0f48072dd09aae5436dadada53f2ac3b634a067b98af62905d11f1ccb1f"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/a-five.config.json"
+      ],
+      "startedAt": "2026-10-05T11:03:02.130536+00:00",
+      "finishedAt": "2026-10-05T11:03:02.408984+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/a-five.check.terminal.txt",
+      "stdoutSha256": "8bf36494e2da5b44985bb0dd5e6ddbb448296ac2f511dc8c2e68acd7ee817ea1"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/m-five.config.json",
+        "--write-fingerprints"
+      ],
+      "startedAt": "2026-10-05T11:03:02.409063+00:00",
+      "finishedAt": "2026-10-05T11:03:02.686068+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/m-five.bind.terminal.txt",
+      "stdoutSha256": "f5112e7c2ed2dd2b6bcbc952e37b3b33d30d7adcb1b918770864cc67a5d6c82d"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/m-five.config.json"
+      ],
+      "startedAt": "2026-10-05T11:03:02.686135+00:00",
+      "finishedAt": "2026-10-05T11:03:02.960841+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-seven-source-hold-remediation-candidate-v1/m-five.check.terminal.txt",
+      "stdoutSha256": "fd39468538e65326af71843c1073d338cbdd4e41757fd4c22c4dd86f6b82a2a5"
+    }
+  ],
+  "strictClosureAdded": 0
+}

@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:7ef31512813a2cd97ac5c216203988854e48063326455777a8c74e61a8ad85bc",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "de-gym-biologie-q1-tf-methylation-prospective-current-20261005-v1",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/lernziel-feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 2,
+  "goals": [
+    {
+      "goalId": "946ce2e7-c30d-5670-839d-003b0619c284",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:cdfaadf7632bfaba7af4309175a233b947569d022eac144ee61629d7aacfac13",
+      "pageFingerprint": "sha256:16e09e909de8d53c197d5d2836251e237b540a19a9cb9531c3bfadfb80238ce0",
+      "evidenceReview": null
+    },
+    {
+      "goalId": "0ac51522-352c-50d1-8b95-8d3992b4db15",
+      "pageNumber": 2,
+      "goalFingerprint": "sha256:84e9cc68d16a8610741b54fbf0bbe1a97d8990cec2bbb15ab5a94e2e0e467147",
+      "pageFingerprint": "sha256:7139efaa850f03040f9e26d66560cffcf961f1de586e5dc2dcf930462853d882",
+      "evidenceReview": null
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:689c16f3d25b535e414fc82cf264c81a7e4768e3197ef8c08a8154ec30d1ab9c",
+      "bytes": 193552
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:da3cf5ffff91980a0823e9b79e25c9f78b4b7c81512d791760e79e7f9ee983f1",
+      "bytes": 268935
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:928cb4796e4b85851dff1d3a37c53fd674d1a2676528ca4511020ca086acf518",
+      "bytes": 4572
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:8c0db600d39eaf311db30384a6b266fad4a5cc3f7a912f0579eb66cedb7b8522",
+      "bytes": 26743
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:0473ee78f1b5fc8b7de065a837519c96b16b96396de7a2b76be8274f9629e291",
+      "bytes": 4574
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:8e0285956fafed07d746f2688a0103663db35a41bf76b69561d6db17573d66bc",
+      "bytes": 9673
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:c6c664b1da50ef27e36adedb89be9bc5f0cc385290129d374c8aabafbc024a4a",
+      "bytes": 6987
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:8785b7fec722a7e70cd390d074c772c9718d06bcfd84dcc82e6fb38a2850a9ca",
+      "bytes": 3740
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+      "bytes": 2505
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:e805d02272c54d3b76dc48a4f972b7bfc562f473887eea5055db3397a739055d"
+}

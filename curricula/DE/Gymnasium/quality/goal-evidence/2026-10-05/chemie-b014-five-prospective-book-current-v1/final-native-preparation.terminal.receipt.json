@@ -1,0 +1,150 @@
+{
+  "status": "PASS_native_exact_future_current_six_page_preparation",
+  "commands": [
+    {
+      "name": "source-atlas-generate",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-b014-five-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T12:22:48.958189+00:00",
+      "endedAtUTC": "2026-10-05T12:22:50.357736+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/source-atlas-generate.stdout.txt",
+      "stdoutSHA256": "sha256:a4aa9d4bbd0f9ebf1a212af6c0c06a63ed5885cf9ef308c0e98d8e08b85cdf9a",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/source-atlas-generate.stderr.txt",
+      "stderrSHA256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "source-atlas-check",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+        "--check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-b014-five-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T12:22:50.358667+00:00",
+      "endedAtUTC": "2026-10-05T12:22:51.813383+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/source-atlas-check.stdout.txt",
+      "stdoutSHA256": "sha256:9aa3c49c13d0b955dadf42573603a3e9ea7351959f8e8b838f83d5307bb696cc",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/source-atlas-check.stderr.txt",
+      "stderrSHA256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "final-six-book-prepare",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "prepare",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/batch.config.json"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-b014-five-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T12:22:51.814171+00:00",
+      "endedAtUTC": "2026-10-05T12:22:58.310973+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/final-six-book-prepare.stdout.txt",
+      "stdoutSHA256": "sha256:43cff03f4876a76d3665f9a322a1e939f7afe74bdb62ea37aaf294112ed03256",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/final-six-book-prepare.stderr.txt",
+      "stderrSHA256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "final-six-book-check",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/batch.config.json"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-b014-five-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T12:22:58.311587+00:00",
+      "endedAtUTC": "2026-10-05T12:22:59.074418+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/final-six-book-check.stdout.txt",
+      "stdoutSHA256": "sha256:1d7acf061b7befad8d7ba7d216c0f31006e6281a2f8f084fce53c18d55d3465e",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/final-six-book-check.stderr.txt",
+      "stderrSHA256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "reviewGoalIds": [
+    "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+    "16da6a4d-8e9c-5f5d-b69d-338d67a2d362",
+    "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef",
+    "efa24b77-0f98-5835-9d82-3e539ab20253",
+    "02634fdd-c8ba-591a-b240-77129b1bebb8",
+    "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a"
+  ],
+  "newScientificCandidateGoalIds": [
+    "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+    "16da6a4d-8e9c-5f5d-b69d-338d67a2d362",
+    "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef",
+    "efa24b77-0f98-5835-9d82-3e539ab20253",
+    "02634fdd-c8ba-591a-b240-77129b1bebb8"
+  ],
+  "existingTargetedBindingGoalIds": [
+    "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 376,
+  "nativeBaseModelDigest": "sha256:76e842ac4fe52367d006c8b7355bbfd02f847a0a80d4e8e1022647e7ad83c65b",
+  "nativeModelDigest": "sha256:edfce21e8acc849c8a37d537b545c545bcdf0f709c11f115090e8d51287c88a3",
+  "nativeBundleFingerprint": "sha256:73e831e4c0a73d283e66bd92e2a7489e04d28b373ca30b72ad075be6f463845f",
+  "nativeReviewInputFingerprint": "sha256:406b66f5f962da6ceab54f46efb90547b89659c8a51ac31a7701519c9a6fe42c",
+  "exactFutureCanonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+  "goalPages": [
+    {
+      "goalId": "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+      "title": "Redoxbegriffe sicher anwenden",
+      "goalFingerprint": "sha256:dad219a8c339d680e0159649cbdc22cc4324d06f56500b2f37d1721eeed52f6f",
+      "pageFingerprint": "sha256:658ccaebc9b08c0a902fa012bb71a48e18047663005efeda78fac40acda64cfc"
+    },
+    {
+      "goalId": "16da6a4d-8e9c-5f5d-b69d-338d67a2d362",
+      "title": "Einfache Redoxreihen aufstellen",
+      "goalFingerprint": "sha256:1ed1e7e39730057976d1888dce5971f84825d99ed09eed8a150d3eb1263914a5",
+      "pageFingerprint": "sha256:8c35bd3309ecf03c8ed216328f71cdbe8b421783532d5e513af330ce7fcb12e5"
+    },
+    {
+      "goalId": "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef",
+      "title": "Elektrolyse beschreiben",
+      "goalFingerprint": "sha256:d0ccbaaa475f35fb181b85afb326acb9314b2ea699cc699af3b60c517f839848",
+      "pageFingerprint": "sha256:76fc7f7cb8139b238e66e0bee3ff77a20abfc5b10ea7d593b791c2004ceac15b"
+    },
+    {
+      "goalId": "efa24b77-0f98-5835-9d82-3e539ab20253",
+      "title": "Freiwillige und erzwungene Redoxreaktionen vergleichen",
+      "goalFingerprint": "sha256:e1fdf91443b39962cb4a82917677f26c2e0cee5fe9fa2ceda44a5d7de9a17ce0",
+      "pageFingerprint": "sha256:586ae245e48e7d331a8ccee599f272c169a85ea2c5d72aae01a86002feaa22d9"
+    },
+    {
+      "goalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+      "title": "Säure-Base-Titrationen planen",
+      "goalFingerprint": "sha256:feeb63802691963f83faf5c5169e1017d0b8171c9e9f01ed1f8c7bdeb2974472",
+      "pageFingerprint": "sha256:cb0a0234d4de7b8255ed949d41a2b384dc238be157cb735406f027a0c82d34ad"
+    },
+    {
+      "goalId": "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a",
+      "title": "Oxidation und Reduktion bei einfachen Reaktionen erkennen",
+      "goalFingerprint": "sha256:7b4373dc5dbaa2e1cd9d76ad97132d9480e5840380787c6eacee50a6455ef07f",
+      "pageFingerprint": "sha256:4fca87f761aea7b31bc240c60fc2cd0f11e503b0c0288dfc14f25575e8ef39b0"
+    }
+  ],
+  "PDFGoalPages": 6,
+  "PDFPhysicalPages": 8,
+  "reviewModeAIOnly": true,
+  "independentTwoBlindCampaignsPrepared": true,
+  "reviewResultDirectoriesEmpty": true,
+  "PContentsAbsent": true,
+  "DReviewsCompletedByThisPreparation": 0,
+  "newScientificClosuresActual": 0,
+  "restoredBindingsActual": 0,
+  "strictNetDeltaActual": 0,
+  "humanApproval": false,
+  "activeWrites": 0
+}

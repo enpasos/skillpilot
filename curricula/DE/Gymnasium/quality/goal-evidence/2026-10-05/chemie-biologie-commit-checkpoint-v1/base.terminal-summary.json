@@ -1,0 +1,151 @@
+[
+  {
+    "argv": [
+      "python",
+      "-B",
+      "scripts/validate_schemas.py"
+    ],
+    "startedAtUTC": "2026-10-05T14:25:37.044632+00:00",
+    "completedAtUTC": "2026-10-05T14:27:08.984029+00:00",
+    "exitCode": 0,
+    "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/schemas.stdout.txt",
+    "stdoutSha256": "sha256:8ccb55ee23f2edcd2c667b0d4da150131e598de2a0ca4a96d12beb80134374bd",
+    "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/schemas.stderr.txt",
+    "stderrSha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidenceAuthority": "actual_machine_check_only",
+    "humanApprovalClaimed": false
+  },
+  {
+    "argv": [
+      "app/node_modules/.bin/tsx",
+      "app/scripts/reportDeepUnderstandingRollout.ts",
+      "--config=curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "--mode=check",
+      "--format=json"
+    ],
+    "startedAtUTC": "2026-10-05T14:25:37.045674+00:00",
+    "completedAtUTC": "2026-10-05T14:27:39.296044+00:00",
+    "exitCode": 0,
+    "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/central-five-gates.stdout.txt",
+    "stdoutSha256": "sha256:002e7aa9b89a22f79af639eb4c2c278c36699dda5f8bb02bf05d496353d3a342",
+    "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/central-five-gates.stderr.txt",
+    "stderrSha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidenceAuthority": "actual_machine_check_only",
+    "humanApprovalClaimed": false,
+    "blockingIssueCount": 0,
+    "strictCounts": {
+      "mathematik": "807/807",
+      "physik": "478/478",
+      "chemie": "85/376",
+      "biologie": "38/363"
+    }
+  },
+  {
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "validate:graph"
+    ],
+    "startedAtUTC": "2026-10-05T14:25:37.046097+00:00",
+    "completedAtUTC": "2026-10-05T14:25:44.296380+00:00",
+    "exitCode": 0,
+    "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/graph.stdout.txt",
+    "stdoutSha256": "sha256:9fdd107cb87b98d8c5d227e8852ebec29c43741d2b54f6fd9ed46d116eaedfe7",
+    "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/graph.stderr.txt",
+    "stderrSha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidenceAuthority": "actual_machine_check_only",
+    "humanApprovalClaimed": false
+  },
+  {
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "validate:composition-views"
+    ],
+    "startedAtUTC": "2026-10-05T14:25:44.296817+00:00",
+    "completedAtUTC": "2026-10-05T14:29:59.469321+00:00",
+    "exitCode": 0,
+    "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/composition-views.stdout.txt",
+    "stdoutSha256": "sha256:6cc577258fd596ab9811f6982797b30f9e473a87fb70d003bf41f8179cb0e4ab",
+    "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/composition-views.stderr.txt",
+    "stderrSha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidenceAuthority": "actual_machine_check_only",
+    "humanApprovalClaimed": false
+  },
+  {
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "validate:view-filters"
+    ],
+    "startedAtUTC": "2026-10-05T14:27:08.984495+00:00",
+    "completedAtUTC": "2026-10-05T14:27:32.341942+00:00",
+    "exitCode": 0,
+    "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/view-filters.stdout.txt",
+    "stdoutSha256": "sha256:02b24631382961ca65157fab2f686d379fbd48f8b454ce75f0a33ba0c2abe781",
+    "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/view-filters.stderr.txt",
+    "stderrSha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidenceAuthority": "actual_machine_check_only",
+    "humanApprovalClaimed": false
+  },
+  {
+    "argv": [
+      "python",
+      "-B",
+      "scripts/validate_competency_wording.py"
+    ],
+    "startedAtUTC": "2026-10-05T14:27:32.342857+00:00",
+    "completedAtUTC": "2026-10-05T14:27:45.447906+00:00",
+    "exitCode": 0,
+    "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/competency-wording.stdout.txt",
+    "stdoutSha256": "sha256:35142f5d769dfab964347cdfc15fd35aa8588537eac6a0ef145f948845162bfb",
+    "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/competency-wording.stderr.txt",
+    "stderrSha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidenceAuthority": "actual_machine_check_only",
+    "humanApprovalClaimed": false
+  },
+  {
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "check:goal-visualization-assets"
+    ],
+    "startedAtUTC": "2026-10-05T14:27:39.301841+00:00",
+    "completedAtUTC": "2026-10-05T14:28:17.222043+00:00",
+    "exitCode": 1,
+    "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/visualization-assets.stdout.txt",
+    "stdoutSha256": "sha256:c0ba7056d01a3d964706f6be9b8b93462b3af5e07cfcd3b7362986380fd894f5",
+    "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/visualization-assets.stderr.txt",
+    "stderrSha256": "sha256:0eca6ee097af434f2323f6487510904b345658e658be026dd6a981c2f98bad8b",
+    "evidenceAuthority": "actual_machine_check_only",
+    "humanApprovalClaimed": false
+  },
+  {
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "check:goal-visualization-qa",
+      "--",
+      "--subjects=mathematik,physik,chemie,biologie"
+    ],
+    "startedAtUTC": "2026-10-05T14:27:45.448332+00:00",
+    "completedAtUTC": "2026-10-05T14:27:57.392984+00:00",
+    "exitCode": 0,
+    "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/visualization-qa.stdout.txt",
+    "stdoutSha256": "sha256:a14d9da66ad8978b5e23f859978d760dd50837f1da034fef5b5692bb9a475aec",
+    "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/visualization-qa.stderr.txt",
+    "stderrSha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidenceAuthority": "actual_machine_check_only",
+    "humanApprovalClaimed": false
+  }
+]

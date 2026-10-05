@@ -1,0 +1,58 @@
+{
+  "steps": [
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "completedAt": "2026-10-05T13:00:41.352546+00:00"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/batch.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/synthesis-authoring.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "completedAt": "2026-10-05T13:00:42.222824+00:00"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/native-finalbook/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "completedAt": "2026-10-05T13:00:43.334992+00:00"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-prospective-book-current-v1/batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "completedAt": "2026-10-05T13:00:44.423819+00:00"
+    }
+  ],
+  "authority": "ai_synthesis",
+  "humanApproval": false,
+  "earlierFailure": "root-native-synthesis.actual.receipt.json",
+  "correction": "Physically copy actual new independent result files into author future isolated tree; code and frozen inputs unchanged."
+}

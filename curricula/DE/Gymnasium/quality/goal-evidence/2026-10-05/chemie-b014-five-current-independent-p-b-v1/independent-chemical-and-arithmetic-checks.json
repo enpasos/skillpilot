@@ -1,0 +1,157 @@
+{
+  "checks": [
+    {
+      "name": "HCl delivered volume mL",
+      "actual": "18.20",
+      "expected": "18.20",
+      "pass": true
+    },
+    {
+      "name": "NaOH amount mol first titration",
+      "actual": "0.00182000",
+      "expected": "0.001820",
+      "pass": true
+    },
+    {
+      "name": "HCl amount mol first titration",
+      "actual": "0.00182000",
+      "expected": "0.001820",
+      "pass": true
+    },
+    {
+      "name": "HCl concentration mol/L",
+      "actual": "0.07280",
+      "expected": "0.07280",
+      "pass": true
+    },
+    {
+      "name": "NaOH amount mol transfer titration",
+      "actual": "0.0025000",
+      "expected": "0.002500",
+      "pass": true
+    },
+    {
+      "name": "H2SO4 amount mol with both protons neutralized",
+      "actual": "0.0012500",
+      "expected": "0.001250",
+      "pass": true
+    },
+    {
+      "name": "H2SO4 concentration mol/L",
+      "actual": "0.0500",
+      "expected": "0.05000",
+      "pass": true
+    },
+    {
+      "name": "incorrect 1:1 H2SO4 concentration factor",
+      "actual": "2",
+      "expected": "2",
+      "pass": true
+    },
+    {
+      "name": "NaCl melt sodium/chlorine ratio",
+      "actual": "2",
+      "expected": "2",
+      "pass": true
+    },
+    {
+      "name": "CuCl2 aqueous copper/chlorine ratio",
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    {
+      "name": "lead cell atom balance Pb",
+      "actual": "2",
+      "expected": "2",
+      "pass": true
+    },
+    {
+      "name": "lead cell atom balance H",
+      "actual": "4",
+      "expected": "4",
+      "pass": true
+    },
+    {
+      "name": "lead cell atom balance S",
+      "actual": "2",
+      "expected": "2",
+      "pass": true
+    },
+    {
+      "name": "lead cell atom balance O",
+      "actual": "10",
+      "expected": "10",
+      "pass": true
+    },
+    {
+      "name": "lead electron loss per Pb(0)",
+      "actual": "2",
+      "expected": "2",
+      "pass": true
+    },
+    {
+      "name": "lead electron gain per Pb(IV)",
+      "actual": "2",
+      "expected": "2",
+      "pass": true
+    },
+    {
+      "name": "HCl indicator range suitability",
+      "givenPHJump": [
+        4,
+        10
+      ],
+      "indicatorRange": [
+        8.2,
+        10
+      ],
+      "pass": true,
+      "interpretation": "conditional on explicitly supplied steep curve; does not equate endpoint to equivalence"
+    },
+    {
+      "name": "new weak-base/strong-acid indicator unsuitable",
+      "givenPHJump": [
+        4,
+        6
+      ],
+      "indicatorRange": [
+        8.2,
+        10
+      ],
+      "pass": true,
+      "interpretation": "conditional on supplied range, no universal equivalence pH"
+    },
+    {
+      "name": "first redox series ordering",
+      "controlledDepositions": [
+        "Zn displaces Cu",
+        "Cu displaces Ag"
+      ],
+      "expectedOrder": [
+        "Zn",
+        "Cu",
+        "Ag"
+      ],
+      "pass": true,
+      "interpretation": "follows supplied comparable positive and reverse-negative observations; not a universal uncontrolled negative-test claim"
+    },
+    {
+      "name": "transfer metal series ordering",
+      "controlledDepositions": [
+        "Fe displaces Ni",
+        "Ni displaces Cu"
+      ],
+      "expectedOrder": [
+        "Fe",
+        "Ni",
+        "Cu"
+      ],
+      "pass": true,
+      "interpretation": "follows supplied observations; 1.10 V is not transferable to the Fe/Ni combination"
+    }
+  ],
+  "allPass": true,
+  "method": "independent Decimal arithmetic and element/electron accounting; supplied experimental conditions are hypothetical material, not observed learner or reviewer trials",
+  "humanApproval": false
+}

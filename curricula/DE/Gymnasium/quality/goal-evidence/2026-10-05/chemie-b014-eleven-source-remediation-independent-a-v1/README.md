@@ -1,0 +1,63 @@
+# B014: unabhängige Quellen-, Atomaritäts- und Memory-Kandidatenprüfung
+
+**Inaktiver, eingefrorener maschineller Kandidat.** Eigene Quellen-/A-/M-Entscheidungen nach tatsächlicher Primärprüfung; der vorausgehende Autorenbericht und seine Vorschläge waren bekannt. Das ist keine blinde zweite Beschreibungsprüfung auf dem finalen Lernzielbuch. Keine P-Profile gelesen oder erzeugt, keine neue V-Freigabe, keine menschliche Freigabe, keine aktive Integration.
+
+Strenger Nettozuwachs **0**; neue fachliche M7-Abschlüsse **0**; wiederhergestellte aktive Bindungen **0**. Der zentrale Bericht wird durch diesen Ordner nicht geändert.
+
+## Konkreter Stand je aktuellem Ziel
+
+| Aktuelle ID | Eigene fachliche Kandidatenentscheidung | Nächster Integrationsschritt |
+| --- | --- | --- |
+| `04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162` | **PASS Kandidat:** ein Elektronenübergangsmodell, DE/EN KEEP, A atomar/M keine Karten; aktuelle HE-B01-Provenienz vorgeschlagen. | Falschen E.1-B08-Bilanzierungsanteil mit bestehendem221 korrigieren; aktuelle unabhängige D/P-Bindungen. |
+| `16da6a4d-8e9c-5f5d-b69d-338d67a2d362` | **PASS Kandidat:** beobachtungsbasierte Redoxreihe, DE/EN KEEP; tatsächliche atomare Voraussetzung04fa. | Inaktiven Root-Bildkandidaten separat prüfen; alter Ag-Akzeptorfehler bleibt V-HOLD bis zur echten Freigabe. |
+| `f0939f88-a6af-5334-ac4d-5d54732af25a` | **PASS Kandidat:** qualitativer galvanischer Zellmechanismus, DE/EN KEEP. | Referenzhalbzelle und numerische Spannungsbreite mit aktuellen bestehendenb781/8be erhalten; deren Scope-/Placement-/D/P-Prüfung. |
+| `fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef` | **PASS Kandidat:** vollständiger DE/EN-Vorschlag erhält geeignete Elektrolysebeispiele und ausdrücklich wässrigesCuCl2 samt Elektrodenreaktionen und Produktverhältnis. | Bedingungen und Cu/Cl2-Beispiel im Zielbuch/P-Fall belegen; NaCl-Schmelzbild ist ein korrektes anderes Beispiel, keine CuCl2-Produktfreigabe. |
+| `efa24b77-0f98-5835-9d82-3e539ab20253` | **PASS Kandidat:** geeignete reversibel arbeitende Zelle präzisiert; A atomar/M keine Karten. | Reale Zellprozessvoraussetzungen erhalten; BY9-Metadaten nicht mit aktueller allgemeiner Sek-I-View verwechseln. |
+| `28bb9d15-f865-5843-a035-6066580fea64` | **PASS Kandidat A/Quellenteil; Memory erforderlich:** neun Namen/Formeln und Arrhenius-Erklärung; separate unabhängige Kartenkorrektur liegt eingefroren vor. | Geprüfte Memoryvorlage übernehmen und an den finalen gewöhnlichen Zielkontext binden; E.2-B01-Salze mit bestehendem965 gesondert belegen. |
+| `02634fdd-c8ba-591a-b240-77129b1bebb8` | **PASS Kandidat:** DE/EN Planen/Durchführen/Dokumentieren, Maßlösung, Indikatorbegründung und Stöchiometrie; A atomar/M keine Karten. | Inaktiven Root-Bildkandidaten prüfen; f1-Konzentrations-/Herstellungsatom zuerst tatsächlich integrieren. |
+| `1c1420c2-a8e2-520f-8015-6df637a973bd` | **PASS Kandidat:** DE/EN enthält Wasser als Ampholyt; atomare Grundlagen28+e7 ersetzen den fachfremden ganzenf1-Vorlauf. | HE-B06 und die drei G9-B03-Aspekte gezielt auf1c binden; D/P/V für geänderten Text/Kontext. |
+| `4961130b-1ee8-58f2-a319-dff0a864db6a` | **HOLD:** bestehendes Aggregat ist nicht atomar; vollständige DE/EN-Survivorvorlage und Bilanzierungs-Reuse221 vorhanden. | Survivor für organische/anorganische Oxidationszahlen und Identifizieren + bestehendes221 unabhängig prüfen/integrieren. Kein neuer ID nötig. |
+| `f1ed86f0-534d-57d7-8952-a004a331cc54` | **HOLD:** eigene Herstellung und pH-Modell sind unabhängig. | Konzentrations-/Herstellungs-Survivor mit tatsächlichem Molarmasse-Grundlagenatom8a2; vorhandenes starkes-pH-Atomc224 nach Text-/Prereq-/Placement-Prüfung wiederverwenden. |
+| `b4777001-f4ed-5fe9-9d98-02319abdea09` | **HOLD:** Richtung, Nachweis und Modellreflexion sind unabhängig. | Richtungssurvivor + Nachweis über vorhandened2/fd309 nach Relativkonzentrationskorrektur; Modellreflexion über vorhandenes277 prüfen. Kein automatisch genehmigtes neues Atom. |
+
+Die vollständigen acht Before/After-Goalobjekte stehen in `eight-complete-text-source-prerequisite-deltas.json`; der ganze, schema-validierte inaktive Stand in `eight-full-runtime.validation-snapshot.json`. Nur diese acht Zielobjekte sind in dieser Snapshot geändert. Die drei Split-Aggregate und alle übrigen Ziele bleiben dort unverändert.
+
+## Tatsächliche Primärquellen und Versionsgrenzen
+
+- **HE aktuell April2026:** amtlicher PDF-Download antwortet200 und stimmt bytegenau mit dem betrachteten aktuellen Original überein. Tatsächliche S35,38,47 gelesen: E.1/E.2, organische Verbrennung/Oxidationszahlen, Q3-Referenzspannung und ausdrücklich Kupfer(II)-chloridlösung. Keine vollständige Quellenmigration behauptet.
+- **HE behaltenes Original:** lokale S35 tatsächlich gelesen. Die operativ als KC2024 benannte lokale PDF ist laut PDF-Metadaten eine im Juli2025 erzeugte52-seitige Datei. Der amtliche2024-URL liefert aktuell eine50-seitige Datei vom November2024; deren tatsächliche E.1/E.2-Seite ist **S33**. Diese S33 wurde zusätzlich tatsächlich betrachtet. Die vollständigen E.1/E.2-Texte unterscheiden sich beim Seitenfuß und Leerraum um einen Schrägstrich, fachlich nicht. Namen eines Extraktionsartefakts beweisen keine Aktualität. Originalbytes und Extraktions-IDs bleiben erhalten; die gezielte aktuelle2026-Quellenbrücke ist dokumentiert.
+- **HE G9:** tatsächliche physische Seiten18/19/25, gedruckte17/18/24; heutiger amtlicher Download bytegleich. Pflichtinhalte und fakultative Untersuchungen getrennt. G9-Brønsted-Rollen/Paare/Wasser tragen nicht automatisch den ganzen bisherigenb477-Text.
+- **BY:** heutige amtliche HTML-Dateien für9/10/10NTG/13grundlegend antworten200. Tatsächliche Operatoren und Stufen gelesen:9.6 Donator/Akzeptor und bedingte Reversibilität,10.4 Herstellung/Titration und Teilchen-/Lösungstrennung,10.5 organische **und** anorganische Oxidationszahlen plus getrennte Gleichungsbildung,10NTG Prozess- und Säure-Base-Bereich,13grundlegend eigene Planung/Durchführung/Dokumentation. GK/LK sind nicht die bayerischen Kursnamen.
+- **HB:** alter `GyO_Chemie_2022.pdf`-URL antwortet404; der aktuelle Link wurde aus der amtlichen LIS-Liste aufgelöst: [Bildungsplan2022 mit Vorwortänderung2026](https://www.lis.bremen.de/sixcms/media.php/13/Bildungsplan_Che_GyO_2022_%C3%84nderung%20Vorwort%202026.pdf). Tatsächliche gedruckte/physische **S23** wurde gelesen; ihr normalisierter vollständiger Text stimmt mit dem behaltenen Original überein. Die Originaloperatoren verlangen reversible Protolysen, MWG-Anwendung und Begründung der Stärke auf Teilchenebene. Die pK-Zeile in der Extraktion ist eine Operationalisierung und wird nicht als Originalzitat ausgegeben.
+
+Die beiden neuen PNGs `he-live-E12.png` und `hb-live-protolyse-target.png` sind Quellen-Seitenaufnahmen für dieses Audit, keine Lernzielbilder und keine V-Freigaben. Amtliche Originale werden nicht umlizenziert. Ganze neu abgerufene PDFs sind nur lokale ignorierte Quellenhilfen; keine vollständigen offiziellen Texte werden hier als eigenes Material ausgegeben.
+
+## Übernahmefähige Quellen- und Wiederverwendungsdeltas
+
+`ten-current-provenance-before-after-candidate.json` ersetzt alle zehn obsoleten HE-UUID-Verweise durch **existierende aktuelle Extraktions-IDs**; bei496 ist die tatsächlich passende BY10-Zeile, bei einem späterenb477-Survivor die begrenzte HB-Richtung/Stärke-Basis vorgesehen. Die drei noch ungeprüften Split-Survivors bekommen dadurch keine ganze Quellen-/Atomaritätsfreigabe.
+
+`nine-complete-source-row-remediation-groups.json` erhält die vollständige fachliche Breite, statt Zeilen durch engeren Wortlaut verschwinden zu lassen:
+
+- E.1-B06/Q3.3-B03: bestehendes **`b781745a-256e-52b2-8d86-c1072845ccdd`** für die Standard-Wasserstoff-Halbzelle + **`8be14f15-2258-58e6-ae4e-38953f5d0570`** für Standardpotenziale/numerische Zellspannung. f093 bleibt qualitativ. **Der reale Frontendfilter bestätigt aktuell GK-HOLD fürb781**, obwohl die ungefilterte GK-Komposition die ID referenziert. Der GK-/E-Reusevorschlag ist deshalb ausdrücklich bedingt; die übrigen regionalen Kursbindungen dürfen nicht pauschal erweitert werden.
+- E.2-B01:28 trägt die neun Säure-/Basenfakten; **`965ca297-5dbf-5e58-b5f0-6559a4433646`** trägt Herleitung und Namen/Verhältnisformeln von Salzen aus gegebenen Ionenladungen und Molekülionen. Beispiele umfassen auch **Phosphate** und mehrwertige Kationen. Die tatsächliche965-Aufgabe/Seite und A/M/V müssen diese Breite belegen. **b508 bleibt unverändert**, zählt mit seinen vier Salzklassen nicht automatisch die Phosphate oder den ganzen Quellenabsatz. Die18 neuen Memorykarten behaupten keinen Salzeabruf.
+- E.2-B03: bestehendes **`c224281a-f8a3-58cd-8ca3-2c2e134d61ff`** statt neuem starkem-pH-Atom; begründetes vollständiges-Protolyse-/Verdünnungsmodell und Plausibilitätsprüfung erhalten. Der aktuelle pK/MWG-Vorlauf ist fachlich für starke verdünnte Lösungen nicht nötig. Nachweis bleibt separat mit d2/fd309; fd309 muss den Überschuss/relative Konzentration korrekt ausdrücken, weil beide Ionenarten im Wasser vorhanden sind.
+- E.1-B08: bestehendes **`22133f29-ef02-4408-8f8d-2bbea3275d91`**, nicht Begriffsatom04fa; BY10-Oxidationszahlen/Erkennung und Bilanzierung bleiben getrennt erhalten.
+- Modellreflexion: bestehendes **`277a3c20-6082-5a95-be08-c1e386efe79b`**. Seine aktuellen Quellen-/Placement-Witnesses sind ermittelt. Die Anwendung der allgemeinen Modellkompetenz auf Arrhenius/Brønsted ist eine fachlich begründete Spezialisierung; sie wird nicht als wortwörtlicher Säure-Base-Operator behauptet.
+
+Die vollständigen drei zusätzlichen Text-/Prereq-/Placement-Vorschläge fürb781/8be/c224 liegen in `three-complete-companion-text-prerequisite-placement-deltas.json`. Sie sind **nicht** in die acht Snapshot-Ziele hineingeschrieben und brauchen ihre eigenen aktuellen Source/A/M/V- und Zwei-D/P-Prüfungen. Aktuelle12 Reuse-IDs, komplette operative Zielobjekte, Canonical-Parents sowie reale Quellenscope-Witnesses stehen in den beiden Reuse-Dateien. Source-Metadaten, native Kompositionsreferenzen und reale Filter werden getrennt ausgewiesen.
+
+## Native, gezielte Prüfung
+
+`final-native-terminal.receipt.json` enthält tatsächliche Commands, Exitcodes, Zeiten und Ausgabehashes:
+
+- Native **A:8/8 atomar**, keine fehlenden/stalen/offenen Kandidaten.
+- Native **M:7/7 keine zusätzlichen Karten notwendig**, keine fehlenden/stalen Kandidaten.28 wird nicht in diese sieben eingeschlossen. Sein eigenes fachliches Urteil ist `memory_required`; die separate unabhängige Karten-/Sichtprüfung ist eingefroren unter `chemie-b014-arrhenius-memory-remediation-independent-a-v1`, Manifest-SHA256 `d735b3bbff27da4c6e654de170fafe641900ce0465451016fee7d92e747badd9`.
+- Native Source-/DAG-/Kompositionsprüfung: **41 aktuelle Bindungen**, acht vollständige direkte/inherited/transitive/required-cluster-member Voraussetzungshüllen, fünf kompilierte Views, keine Contains-Fehler, keine fehlenden IDs/Zyklen, keine Änderung der Zielreferenzmengen.
+- Erster gezielter Test fand den echten indirekten16→bcf→Grundlagencluster→Memory/Formeln→Reaktionscluster→1f30→496-Vorlauf. Dieser Befund bleibt dokumentiert. Die fachlich passende atomare Grundlage04fa ersetzt den unnötigen älteren Oxid-/Sauerstoffvorauslauf; die vollständige Hülle enthält496 danach nicht mehr. Bei1c enthält sie f1 nicht mehr.
+- Native Atlas-Reuse: zwölf existierende IDs,47 aktuelle routende Scopes,78 begrenzte HE/BY/HB-Kontexte; reine Routing-Witnesses sind keine frisch genehmigten ganzen Quellenzeilen.
+- Reale Filterprüfung in15 HE/BY/HB-View-Kontexten mit `prepareLandscapeEntries` und `goalMatchesFilters`; das verhindert eine falsche Freigabe aus ungefilterten Referenzen.
+- Ganzer acht-Ziel-Snapshot besteht das vorhandene Runtime-Schema; eigene JSONs syntaktisch gültig. **76/76 eingefrorene Autorenartefakte und fünf operative Eingaben bytegleich erhalten.** Keine Sonderbehandlung des Schema-Validators.
+
+## Nächster Schritt
+
+Root kann den geprüften acht-Ziel-Kandidaten mit der separat korrigierten Memory28-Vorlage sowie separat geprüften Bildkandidaten konsolidieren. Die nötigen bestehenden Reuse-Atome und deren begrenzte Quellen-/Scope-/Prereq-/Placement-Änderungen gehören in den nächsten gezielten Reviewumfang. Danach aktuelle native finale Seiten/ganze Kontexte vorbereiten, zwei unabhängige Beschreibungsreviews mit Befundauflösung durchführen, echte positive-understanding-evidence-v2-Fälle erstellen und unabhängig prüfen, V an tatsächlichen Bildern abschließen. Erst nach Integration und gültigem strengem zentralem Bericht zählen Ziele. Die drei alten Split-Aggregate bleiben bis zu diesem konkreten Abschluss HOLD; keine offene neue ID ist zugewiesen.

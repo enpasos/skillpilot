@@ -1,0 +1,107 @@
+{
+  "completedAtUTC": "2026-10-05T12:50:45.075486+00:00",
+  "steps": [
+    {
+      "goalId": "946ce2e7-c30d-5670-839d-003b0619c284",
+      "operation": "prepare",
+      "argv": [
+        "node",
+        "scripts/prepare_goal_visualization.mjs",
+        "--goal",
+        "946ce2e7-c30d-5670-839d-003b0619c284",
+        "--landscape",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "--subject",
+        "biologie",
+        "--provider",
+        "OpenAI / ChatGPT-Codex built-in image_gen",
+        "--review-status",
+        "pilot"
+      ],
+      "exitCode": 0
+    },
+    {
+      "goalId": "946ce2e7-c30d-5670-839d-003b0619c284",
+      "operation": "import",
+      "argv": [
+        "node",
+        "scripts/import_goal_visualization.mjs",
+        "--goal",
+        "946ce2e7-c30d-5670-839d-003b0619c284",
+        "--image",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-transcription-factor-candidate-20261005-v1/candidate-v1.png",
+        "--landscape",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "--subject",
+        "biologie",
+        "--lang",
+        "de",
+        "--provider",
+        "OpenAI / ChatGPT-Codex built-in image_gen",
+        "--review-status",
+        "pilot",
+        "--license",
+        "CC-BY-4.0",
+        "--description",
+        "Comicartiges Modell eines aktivierenden Transkriptionsfaktors an regulatorischer DNA; die Polymerase am getrennten Startbereich wird im gezeigten Modell gef\u00f6rdert.",
+        "--alt-text",
+        "Modell eines aktivierenden Transkriptionsfaktors bei einem eukaryotischen Gen. Der Faktor bindet an einen regulatorischen DNA-Bereich und f\u00f6rdert im gezeigten Modell die Polymerase am getrennten Startbereich. Ein Pfeil f\u00fchrt zu mehreren einzelnen mRNA-Str\u00e4ngen mit der Beschriftung \u201emehr mRNA\u201c. Die Abbildung zeigt ausdr\u00fccklich ein aktivierendes Beispiel.",
+        "--prompt",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-tf-methylation-prospective-current-candidate-v1/946ce2e7-c30d-5670-839d-003b0619c284.original-imagegen.prompt.txt"
+      ],
+      "exitCode": 0
+    },
+    {
+      "goalId": "0ac51522-352c-50d1-8b95-8d3992b4db15",
+      "operation": "prepare",
+      "argv": [
+        "node",
+        "scripts/prepare_goal_visualization.mjs",
+        "--goal",
+        "0ac51522-352c-50d1-8b95-8d3992b4db15",
+        "--landscape",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "--subject",
+        "biologie",
+        "--provider",
+        "OpenAI / ChatGPT-Codex built-in image_gen",
+        "--review-status",
+        "pilot"
+      ],
+      "exitCode": 0
+    },
+    {
+      "goalId": "0ac51522-352c-50d1-8b95-8d3992b4db15",
+      "operation": "import",
+      "argv": [
+        "node",
+        "scripts/import_goal_visualization.mjs",
+        "--goal",
+        "0ac51522-352c-50d1-8b95-8d3992b4db15",
+        "--image",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-dna-methylation-candidate-20261005-v1/candidate-v1.png",
+        "--landscape",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "--subject",
+        "biologie",
+        "--lang",
+        "de",
+        "--provider",
+        "OpenAI / ChatGPT-Codex built-in image_gen",
+        "--review-status",
+        "pilot",
+        "--license",
+        "CC-BY-4.0",
+        "--description",
+        "Comicartiger Vergleich gleicher DNA-Basenfolge mit verschieden vielen Methylierungsmarken am Promotor und unterschiedlicher mRNA-Menge im gezeigten Promotormodell.",
+        "--alt-text",
+        "Zwei schematische DNA-Abschnitte mit gleicher Basenfolge zeigen jeweils Promotor und Gen. Im oberen Promotormodell sind zwei orange Methylierungsmarken und drei mRNA-Str\u00e4nge dargestellt, im unteren f\u00fcnf Markierungen und ein mRNA-Strang. Der Hinweis \u201eIn diesem Promotormodell\u201c begrenzt den dargestellten Zusammenhang zwischen Promotormethylierung und Transkription auf dieses Beispiel; er behauptet keine allgemeine Abschaltung jedes methylierten Gens.",
+        "--prompt",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-tf-methylation-prospective-current-candidate-v1/0ac51522-352c-50d1-8b95-8d3992b4db15.original-imagegen.prompt.txt"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "nativeUnmodifiedCode": true,
+  "activeWrites": 0
+}

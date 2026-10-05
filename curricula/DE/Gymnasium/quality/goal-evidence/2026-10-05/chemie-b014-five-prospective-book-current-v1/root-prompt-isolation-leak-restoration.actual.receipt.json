@@ -1,0 +1,28 @@
+{
+  "status": "actual_isolation_metadata_leak_corrected",
+  "correctedAtUTC": "2026-10-05T12:22:26.526419+00:00",
+  "cause": "Native import writes prompt.de.md. Existing sourceprompt symlinkleaves were notdetached because wrapperguessed a differentfilename; candidatepromptbytes reachedactiveold-JPG metadata. Originalimages/canonicalgoalobjects were notchangedbythisleak. Frozen candidatecopies preserve the actualgeneration provenance.",
+  "correctiveAction": "Realexisting prompt.de.md leaves detached inauthorisolation; bothactiveoriginalpromptbytesrestoredexactlyfromcleanstartingHEAD beforeoperativeadoption; nativecodeunchanged",
+  "scope": [
+    {
+      "goalId": "16da6a4d-8e9c-5f5d-b69d-338d67a2d362",
+      "path": "curricula/DE/Gymnasium/visualizations/chemie/16da6a4d-8e9c-5f5d-b69d-338d67a2d362/prompt.de.md",
+      "unexpectedCandidatePromptSha256": "sha256:fecd621540340e0c17d159154849d65a9b23641a8894ec13541714aa7a27bd25",
+      "restoredHistoricalHeadSha256": "sha256:e2aa7db8d48468d2b319229296935b533e32d8aa7ff0e02111754921408ccef0",
+      "candidateSnapshotSha256": "sha256:fecd621540340e0c17d159154849d65a9b23641a8894ec13541714aa7a27bd25",
+      "rootRestoredOnlyKnownOwnChanges": true
+    },
+    {
+      "goalId": "efa24b77-0f98-5835-9d82-3e539ab20253",
+      "path": "curricula/DE/Gymnasium/visualizations/chemie/efa24b77-0f98-5835-9d82-3e539ab20253/prompt.de.md",
+      "unexpectedCandidatePromptSha256": "sha256:a36fe1455f3c5651acd7f419b72071f7576457b84bc9b9f262a3f180cdb46b1c",
+      "restoredHistoricalHeadSha256": "sha256:60256b5963fc32e42baddd892354e8588b7c03438284907458a797a660687ebe",
+      "candidateSnapshotSha256": "sha256:a36fe1455f3c5651acd7f419b72071f7576457b84bc9b9f262a3f180cdb46b1c",
+      "rootRestoredOnlyKnownOwnChanges": true
+    }
+  ],
+  "humanApprovalClaimed": false,
+  "strictNetGain": 0,
+  "candidateGenerationIsNotApproval": true,
+  "noClaimPriorImportHadZeroMetadataWrites": true
+}

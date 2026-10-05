@@ -1,0 +1,104 @@
+{
+  "recordedAtUtc": "2026-10-05T14:43:50.932638+00:00",
+  "purpose": "Derived current chemistry rollout status parity only; no new review or strict closure",
+  "discrepancy": {
+    "qaAvailableMinusStoredRollout": [
+      "02634fdd-c8ba-591a-b240-77129b1bebb8"
+    ],
+    "storedGeneratedAt": "2026-10-05T05:59:09.347Z",
+    "storedCounts": {
+      "totalGoals": 473,
+      "atomicGoalsInScope": 376,
+      "goalsWithPrimaryVisualization": 354,
+      "coveragePercent": 94.1,
+      "goalsAccountedForByAssetOrDeferred": 376,
+      "accountedCoveragePercent": 100,
+      "releaseApprovedVisualizationCount": 0,
+      "reviewStatusCounts": {
+        "accepted": 127,
+        "ai_candidate": 2,
+        "ai-reviewed": 5,
+        "pilot": 220
+      },
+      "linkedVisualizationReviewStatuses": {
+        "accepted": 127,
+        "ai_candidate": 2,
+        "ai-reviewed": 5,
+        "pilot": 220
+      },
+      "reviewLedgerFiles": 19,
+      "reviewDecisionCounts": {
+        "accepted_corrected_candidate": 32,
+        "accepted_current": 43,
+        "accepted_new_candidate": 276,
+        "accepted_pilot": 59,
+        "accepted_pilot_after_regeneration": 13,
+        "accepted_pilot_after_second_regeneration": 3,
+        "accepted_pilot_after_third_regeneration": 3,
+        "accepted_pilot_after_user_review_correction": 3,
+        "deferred_provider_limitation": 130,
+        "rejected_after_user_review_replaced": 2,
+        "rejected_regenerated": 33
+      },
+      "openProviderDeferredGoals": 22,
+      "openQualityDeferredGoals": 0,
+      "openProviderQuotaGoals": 0,
+      "blockedProviderQuotaLedgers": 0,
+      "regularUnlinkedGoals": 0,
+      "coverageGatePassed": true,
+      "linkedWithoutAcceptedReview": 1,
+      "acceptedReviewWithoutLink": 0
+    }
+  },
+  "goalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+  "currentTitle": "Säure-Base-Titrationen planen",
+  "currentDescription": "Die lernende Person kann eine Säure-Base-Titration mit geeigneter Maßlösung und begründetem Indikator fachgerecht planen und durchführen und aus dokumentierten Volumina unter Berücksichtigung der Reaktionsstöchiometrie die Konzentration der Probe bestimmen.",
+  "independentReview": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b014-titration-b010-ion-lattice-independent-v-qa-20261005-v1/independent-two-image-v-qa.receipt.json",
+    "sha256": "cd5ba8957551b8f7cf080bc322e23c23c92d31a4b1e8537b73910451c08ee6f2",
+    "reviewer": "/root/bio_q1_six_source_remediation",
+    "reviewedAtUtc": "2026-10-05T11:13:20Z",
+    "decision": "PASS",
+    "originalActuallyViewed": true,
+    "independent360680ActuallyViewed": true,
+    "boundGoalContentSha256": "69963619b7f4e3f17296f4f92fb844e43a05462310be58c7234f9abffd173555"
+  },
+  "currentAssetCopies": [
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/chemie/02634fdd-c8ba-591a-b240-77129b1bebb8/02634fdd-c8ba-591a-b240-77129b1bebb8.png",
+      "sha256": "5c7a3d6f468af2fe4e5ce457515cf41634d31e52ecfd2d20ab5f10efe2f26ce6"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/chemie/02634fdd-c8ba-591a-b240-77129b1bebb8/02634fdd-c8ba-591a-b240-77129b1bebb8.png",
+      "sha256": "5c7a3d6f468af2fe4e5ce457515cf41634d31e52ecfd2d20ab5f10efe2f26ce6"
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/chemie/02634fdd-c8ba-591a-b240-77129b1bebb8/02634fdd-c8ba-591a-b240-77129b1bebb8.png",
+      "sha256": "5c7a3d6f468af2fe4e5ce457515cf41634d31e52ecfd2d20ab5f10efe2f26ce6"
+    }
+  ],
+  "matchingCurrentQaApproval": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json",
+    "sha256": "31c192bb474c92cbb2d7010cc30eb48e9a70cb8dcf253608f0727be37d97bc7d",
+    "goalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+    "aiApproved": "yes",
+    "aiApprovedAssetSha256": "sha256:5c7a3d6f468af2fe4e5ce457515cf41634d31e52ecfd2d20ab5f10efe2f26ce6",
+    "humanApproved": "no"
+  },
+  "operativeAdoptionReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b014-five-current-integration-v1/operative-adoption.actual.receipt.json",
+    "sha256": "ecf07b2029f3a6aec94acbf68d91d42538250259dde1b11a5110707ddad96e11"
+  },
+  "guardPaths": {
+    "curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json": "31c192bb474c92cbb2d7010cc30eb48e9a70cb8dcf253608f0727be37d97bc7d",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json": "6a4e55333bf6a1c1115c71f1a85be06282a67c8e298cc9e0b56e8b74b02fccb3",
+    "app/scripts/checkGoalVisualizationQaCoverageParity.ts": "6c3d008bad03bbb50c2e3a8ab5a3c992cce14d72d485f99cea58729b65cc0d48",
+    "app/scripts/reportGoalVisualizationRolloutStatus.ts": "3b7062be03367e98cd95438f65346da1c90652e8191d9930c68674d802177190",
+    "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-rollout-status.json": "b502e69efdd5affc0f21a8bc6a87dba0c315e977a379d3ec8051e7c1f9c8d743",
+    "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-rollout-status.md": "897f8755dd8e29f03ef92b242048d995085b69a302f4759a60316401e9b86bf3",
+    "curricula/DE/Gymnasium/quality/goal-visualization-review/physik-rollout-status.json": "37bc21986758c320e70957e46ebfbeb7f18813c41edb5ee4cb49372887fd35fc",
+    "curricula/DE/Gymnasium/quality/goal-visualization-review/physik-rollout-status.md": "1719f882e07c0bfc77d5b393423a1bbef5cee2c2f0bdffd2914a725b788d1c0b"
+  },
+  "humanApprovalClaim": false,
+  "newStrictClosureClaim": false
+}

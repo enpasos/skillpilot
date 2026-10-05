@@ -1,0 +1,64 @@
+{
+  "status": "unadopted_author_candidate_with_open_preservation",
+  "createdAtUtc": "2026-10-05T10:55:02.173671+00:00",
+  "mappingInput": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.review.json",
+    "sha256": "sha256:3d8d02b51df210af9a828a81a2480b10ce7d88437015eeeaf4b4cbc47d47340b"
+  },
+  "deltas": [
+    {
+      "sourceGoalId": "a6ad1554-558e-51e4-9d05-aa9b38ebfa40",
+      "canonicalGoalId": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+      "beforeMatchType": "exact",
+      "candidateMatchType": "partial",
+      "preservedRequiredComponent": "Proteins' role in trait expression and simple gene-product-trait models.",
+      "existingComponentCandidates": [
+        "18b3540e-4379-5d13-b3ec-dc7fe21c5e6a",
+        "5f01403c-6560-5515-aa76-03860aa52315"
+      ],
+      "hold": "Both existing protein/gene-chain candidates depend on detailed upper-secondary biosynthesis1ec and include a multi-gene chain. Neither is a reviewed age-fit BY9 replacement as-is. Review/re-scope a simple trait-role component before installing the partial relationship."
+    },
+    {
+      "sourceGoalId": "ef3a58c6-09b3-5e91-80a0-fb3857268603",
+      "canonicalGoalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+      "beforeMatchType": "exact",
+      "candidateMatchType": "partial",
+      "preservedRequiredComponents": [
+        "Mutagenic causes",
+        "protein-function consequences with sufficient supplied measurements/model",
+        "protection against mutagenic influences"
+      ],
+      "sourceOccurrences": [
+        {
+          "sourceGoalId": "ef3a58c6-09b3-5e91-80a0-fb3857268603",
+          "passageId": "by-bio:B12-EA.2",
+          "topicCode": "B12-EA.2",
+          "sourceSpan": "B12-EA.2.17",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B12-EA.2.17",
+          "courseLevel": "LK",
+          "tags": [
+            "jurisdiction:DE-BY",
+            "stage:SekII",
+            "courseLevel:LK",
+            "topic:B12-EA.2"
+          ]
+        },
+        {
+          "sourceGoalId": "f1cd45f3-3468-57fd-b104-4c8d2ddc0350",
+          "passageId": "by-bio:B12-GA.2",
+          "topicCode": "B12-GA.2",
+          "sourceSpan": "B12-GA.2.12",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B12-GA.2.12",
+          "courseLevel": "GK_LK",
+          "tags": [
+            "jurisdiction:DE-BY",
+            "stage:SekII",
+            "courseLevel:GK_LK",
+            "topic:B12-GA.2"
+          ]
+        }
+      ],
+      "hold": "HE four-subtype sequence analysis is not the complete BY GA/EA mutagen/function/protection competence; no unreviewed replacement or full source claim is authored."
+    }
+  ]
+}

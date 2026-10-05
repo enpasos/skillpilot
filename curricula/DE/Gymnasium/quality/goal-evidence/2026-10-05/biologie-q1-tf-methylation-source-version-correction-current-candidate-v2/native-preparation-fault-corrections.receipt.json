@@ -1,0 +1,35 @@
+{
+  "status": "isolated_preparation_faults_corrected",
+  "observedFaults": [
+    {
+      "nativeHelper": "materializePositiveGoalEvidenceCandidates",
+      "observation": "Copied candidate set retained v1 reviewId while v2 config had new reviewId",
+      "correction": "Aligned candidate set metadata reviewId only; all inner profiles unchanged"
+    },
+    {
+      "nativeHelper": "materializeGoalDescriptionRolloutBatch.prepare",
+      "observation": "Gel8eb public PNG leaf symlink resolves outside isolated public root",
+      "correction": "Copied unchanged actual Gel PNG leaves physically before render; native path containment guard remains unchanged"
+    }
+  ],
+  "gelAssetsByteIdentical": [
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/biologie/8eb86a82-122d-5cae-8f80-bb2850b29c2f/8eb86a82-122d-5cae-8f80-bb2850b29c2f.png",
+      "sha256": "sha256:6c5a1ac50d05b30f31639f4c25f9eb948aff545783df606b57d9557664b36a87",
+      "physicalLeaf": true
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/biologie/8eb86a82-122d-5cae-8f80-bb2850b29c2f/8eb86a82-122d-5cae-8f80-bb2850b29c2f.png",
+      "sha256": "sha256:6c5a1ac50d05b30f31639f4c25f9eb948aff545783df606b57d9557664b36a87",
+      "physicalLeaf": true
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/biologie/8eb86a82-122d-5cae-8f80-bb2850b29c2f/8eb86a82-122d-5cae-8f80-bb2850b29c2f.png",
+      "sha256": "sha256:6c5a1ac50d05b30f31639f4c25f9eb948aff545783df606b57d9557664b36a87",
+      "physicalLeaf": true
+    }
+  ],
+  "nativeCodeChanges": 0,
+  "activeWrites": 0,
+  "scientificApprovalAdded": false
+}

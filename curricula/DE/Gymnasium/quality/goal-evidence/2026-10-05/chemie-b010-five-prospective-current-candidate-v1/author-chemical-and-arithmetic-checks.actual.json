@@ -1,0 +1,174 @@
+{
+  "status": "author_checks_pass_independent_semantic_review_pending",
+  "checks": [
+    {
+      "case": "Na metal",
+      "result": "balanced_atoms",
+      "left": {
+        "Na": "2",
+        "H": "4",
+        "O": "2"
+      },
+      "right": {
+        "Na": "2",
+        "O": "2",
+        "H": "4"
+      }
+    },
+    {
+      "case": "Na oxide",
+      "result": "balanced_atoms",
+      "left": {
+        "Na": "2",
+        "O": "2",
+        "H": "2"
+      },
+      "right": {
+        "Na": "2",
+        "O": "2",
+        "H": "2"
+      }
+    },
+    {
+      "case": "K metal",
+      "result": "balanced_atoms",
+      "left": {
+        "K": "2",
+        "H": "4",
+        "O": "2"
+      },
+      "right": {
+        "K": "2",
+        "O": "2",
+        "H": "4"
+      }
+    },
+    {
+      "case": "K oxide",
+      "result": "balanced_atoms",
+      "left": {
+        "K": "2",
+        "O": "2",
+        "H": "2"
+      },
+      "right": {
+        "K": "2",
+        "O": "2",
+        "H": "2"
+      }
+    },
+    {
+      "case": "Gypsum capture",
+      "result": "balanced_atoms",
+      "left": {
+        "Ca": "1",
+        "O": "4",
+        "H": "2",
+        "S": "1"
+      },
+      "right": {
+        "Ca": "1",
+        "S": "1",
+        "O": "4",
+        "H": "2"
+      }
+    },
+    {
+      "case": "Gypsum oxidation hydration",
+      "result": "balanced_atoms",
+      "left": {
+        "Ca": "2",
+        "S": "2",
+        "O": "12",
+        "H": "8"
+      },
+      "right": {
+        "Ca": "2",
+        "S": "2",
+        "O": "12",
+        "H": "8"
+      }
+    },
+    {
+      "case": "Gypsum image overall",
+      "result": "balanced_atoms",
+      "left": {
+        "S": "2",
+        "O": "12",
+        "Ca": "2",
+        "H": "8"
+      },
+      "right": {
+        "Ca": "2",
+        "S": "2",
+        "O": "12",
+        "H": "8"
+      }
+    },
+    {
+      "case": "Carbonate overall",
+      "result": "balanced_atoms",
+      "left": {
+        "Ca": "1",
+        "C": "1",
+        "O": "8",
+        "S": "1",
+        "H": "4"
+      },
+      "right": {
+        "Ca": "1",
+        "S": "1",
+        "O": "8",
+        "H": "4",
+        "C": "1"
+      }
+    },
+    {
+      "case": "5g N source",
+      "value": "1.750",
+      "expected": "1.750",
+      "result": "exact_supplied_data_arithmetic"
+    },
+    {
+      "case": "8g N source",
+      "value": "2.800",
+      "expected": "2.800",
+      "result": "exact_supplied_data_arithmetic"
+    },
+    {
+      "case": "N surplus",
+      "value": "0.80",
+      "expected": "0.80",
+      "result": "exact_supplied_data_arithmetic"
+    },
+    {
+      "case": "10g K source",
+      "value": "4.50",
+      "expected": "4.50",
+      "result": "exact_supplied_data_arithmetic"
+    },
+    {
+      "case": "NaCl / MgO extended lattices",
+      "result": "Charge-neutral 1:1 compositions; coordination6 supplied as spatial nearest-neighbour count, not formula subscript."
+    },
+    {
+      "case": "Specific water reactants",
+      "result": "Simple Na2O/K2O named; no peroxide/superoxide generalization; OH- explains alkalinity and H2 appears only in supplied metal routes."
+    },
+    {
+      "case": "Element vs compound uses",
+      "result": "Specific elemental Cl2/I2 distinguished from hypochlorite/fluoride compounds; their property evidence is supplied."
+    },
+    {
+      "case": "Gypsum sulfur path",
+      "result": "S(IV) sulfite to S(VI) sulfate oxidation supplied explicitly; carbonate carbon, not SO2 sulfur, supplies CO2."
+    },
+    {
+      "case": "Fertilizer performance status",
+      "result": "Supplied demands/element contents/transport only; no actual plant uptake, laboratory, field performance or environmental-loss measurement claimed."
+    }
+  ],
+  "count": 17,
+  "learnerPerformanceObserved": false,
+  "independentApproval": false
+}

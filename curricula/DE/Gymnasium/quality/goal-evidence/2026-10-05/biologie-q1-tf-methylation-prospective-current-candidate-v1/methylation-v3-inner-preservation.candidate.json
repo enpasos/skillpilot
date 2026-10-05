@@ -1,0 +1,113 @@
+{
+  "candidateKey": "dna-methylation-eukaryotes",
+  "splitFromGoalId": "946ce2e7-c30d-5670-839d-003b0619c284",
+  "proposedTitleDe": "DNA-Methylierung bei Eukaryoten erklären",
+  "proposedTitleEn": "Explain DNA methylation in eukaryotes",
+  "proposedDescriptionDe": "Die lernende Person kann an gegebenen eukaryotischen Genmodellen erklären, wie DNA-Methylierung die Transkription im jeweiligen Kontext beeinflussen kann, und passende Methylierungs- und mRNA-Befunde begründet deuten.",
+  "proposedDescriptionEn": "The learner can use supplied eukaryotic gene models to explain how DNA methylation may influence transcription in the given context and interpret matched methylation and mRNA data with reasons.",
+  "sourceScope": "HE Q1.2, printed p.39, GK/LK; distinct from LK histone modification and unreviewed broad LK epigenetics overlaps.",
+  "requiresCandidate": [
+    "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+    "2d451684-6e53-565e-a987-f362da919d2c"
+  ],
+  "profile": {
+    "archetype": "data",
+    "expectations": [
+      {
+        "id": "chemical-mark-not-sequence-change",
+        "essentialUnderstandingDe": "DNA-Methylierung verändert die chemische Markierung bestimmter DNA-Stellen, nicht die Reihenfolge der Basen. Ihre Wirkung auf Transkription hängt von Ort und Kontext ab.",
+        "essentialUnderstandingEn": "DNA methylation changes the chemical marking of particular DNA sites, not base order. Its effect on transcription depends on location and context.",
+        "observablePerformanceDe": "Die lernende Person unterscheidet in einem gegebenen eukaryotischen Genmodell Basenfolge und Methylierungsmarken und erklärt einen materialgestützten Zusammenhang mit Transkription.",
+        "observablePerformanceEn": "In a supplied eukaryotic gene model, the learner distinguishes base sequence from methylation marks and explains a material-supported relationship with transcription."
+      },
+      {
+        "id": "contextual-evidence-limit",
+        "essentialUnderstandingDe": "Promotormethylierung kann in dem belegten Modell mit verringerter Transkription verbunden sein. Ein Methylierungsbild allein beweist keine universelle Abschaltung; ein Vergleichsbefund und ein kontrollierter Eingriff haben unterschiedliche Aussagekraft.",
+        "essentialUnderstandingEn": "Promoter methylation can be associated with reduced transcription in the supported model. A methylation image alone does not prove universal silencing; a comparison and a controlled intervention have different evidential strength.",
+        "observablePerformanceDe": "Die lernende Person erklärt eine mögliche Regulationswirkung mit passenden mRNA-Daten und trennt belegte Modellwirkung von einer nicht belegten allgemeinen Kausalaussage.",
+        "observablePerformanceEn": "The learner explains a possible regulatory effect using matched mRNA data and distinguishes a supported model effect from an unsupported universal causal claim."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "chemical-mark-not-sequence-change",
+        "contextual-evidence-limit"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "mark-location",
+        "textDe": "Promotor und anders gelegene markierte Region in gesonderten materialgestützten Modellen vergleichen.",
+        "textEn": "Compare a promoter and a differently located marked region in separate material-supported models."
+      },
+      {
+        "id": "comparison-versus-intervention",
+        "textDe": "Einen Zellvergleich und einen kontrollierten Eingriff im gegebenen Modellsystem unterscheiden.",
+        "textEn": "Distinguish a cell comparison from a controlled intervention in a supplied model system."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "same-sequence-cell-comparison",
+        "taskDemandDe": "Zwei eukaryotische Zelltypen haben laut Material dieselbe DNA-Basenfolge. Für ein bestimmtes Gen zeigt Zelltyp A geringe Promotormethylierung und 90 relative mRNA-Einheiten, Zelltyp B starke Promotormethylierung und 8 Einheiten. Die Faktorbelegung ist nicht untersucht. Erkläre den Unterschied zwischen Sequenz und Markierung und begründe eine mögliche epigenetische Erklärung des Befunds.",
+        "taskDemandEn": "Two eukaryotic cell types have the same DNA base sequence according to the material. A particular gene shows low promoter methylation and 90 relative mRNA units in cell type A, versus high promoter methylation and 8 units in B. Factor occupancy was not examined. Explain the sequence/mark distinction and justify a possible epigenetic explanation of the results.",
+        "expectedPerformanceDe": "Die lernende Person hält gleiche Sequenz und verschiedene chemische Markierung auseinander und verbindet die Markierung mit einer möglichen verminderten Transkription im gegebenen Gen. Sie begrenzt die Kausalität, weil Zelltypen und unbekannte Faktorbelegung weitere Unterschiede tragen können.",
+        "expectedPerformanceEn": "The learner distinguishes the same sequence from different chemical marks and connects marking with possible reduced transcription of this gene. The causal claim is limited because cell types and unknown factor occupancy may differ in other respects.",
+        "understandingFocusDe": "Positive Erklärung einer möglichen Markierungswirkung statt Sequenzmutation.",
+        "understandingFocusEn": "Positive explanation of a possible marking effect rather than a sequence mutation."
+      },
+      {
+        "id": "controlled-promoter-model-and-other-region",
+        "taskDemandDe": "Ein neues, ausdrücklich kontrolliertes Genmodell hält Basenfolge und Faktorenangebot gleich. In diesem Modell verringert ein gezielter Eingriff, der nur die Promotormethylierung erhöht, die mRNA von 70 auf 10 relative Einheiten; nach Rücknahme beträgt sie 68. Ein anderes Gen trägt Methylierungsmarken in einer anderen DNA-Region und wird trotzdem transkribiert. Erkläre beide Befunde im jeweiligen Kontext.",
+        "taskDemandEn": "A fresh explicitly controlled gene model holds base sequence and factor availability constant. In this model, an intervention specified to increase only promoter methylation lowers mRNA from 70 to 10 relative units; reversal yields 68. A different gene carries methylation marks in another DNA region but is still transcribed. Explain both results in their respective contexts.",
+        "expectedPerformanceDe": "Die lernende Person erklärt die im ersten Modell gestützte, reversible Regulationswirkung der Promotormarkierung und begründet mit dem zweiten Befund die Abhängigkeit von Region und Kontext. Sie verallgemeinert weder auf jedes Gen noch auf Proteinfunktion oder generationsübergreifende Vererbung.",
+        "expectedPerformanceEn": "The learner explains the reversible regulatory effect supported in the first promoter model and uses the second result to justify location/context dependence, without generalising to every gene, protein function or transgenerational inheritance.",
+        "understandingFocusDe": "Frischer Transfer von beobachtetem Vergleich zu begrenzt kausalem Modell.",
+        "understandingFocusEn": "Fresh transfer from observed comparison to a bounded causal model."
+      }
+    ]
+  },
+  "stableGoalId": null,
+  "sourceBindingCandidate": {
+    "officialPdf": {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+      "sha256": "sha256:52c278d6f5a7383361631d5251550c42222f13e1bbe2aa16d39ca3b12c5e1558"
+    },
+    "officialUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+    "sourceGoalId": "b8aa6b7a-8598-4498-83f5-5162bc3cb419",
+    "topicCode": "Q1.2",
+    "printedPage": 39,
+    "matchType": "partial",
+    "scope": "GK_LK",
+    "wholeSourceBulletCoveredAlone": false
+  },
+  "atomicityCandidate": {
+    "status": "atomic",
+    "semanticAtomic": true,
+    "reason": "One bounded causal mechanism: DNA marking and transcription in the same supplied gene context."
+  },
+  "memoryCandidate": {
+    "status": "no_memory_needed",
+    "memoryUseful": false,
+    "reason": "The supplied model and matched data support explanation and fresh transfer. No standalone uncued recall item or mandatory memorized catalogue is added.",
+    "requiredCards": [],
+    "newDecks": [],
+    "visibilityClaim": "No memory_required goal or memory node is authored; no vacuous visibility pass stands for a companion's ordinary goal visibility."
+  },
+  "placementCandidate": {
+    "parentGoalId": "96bdf495-2801-57e4-a0da-ce3bf91e402c",
+    "requires": [
+      "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+      "2d451684-6e53-565e-a987-f362da919d2c"
+    ],
+    "sourceViews": [
+      "DE-HE-SekII-GK",
+      "DE-HE-SekII-LK"
+    ],
+    "otherSourceScopes": "Only the explicit source witnesses and partial candidate relationships in bacterial-local-source-witnesses.candidates.json may authorize further views after independent source/frontier checks. No automatic all-state projection."
+  }
+}

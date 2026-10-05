@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-10-05T05:59:09.347Z
+Generated: 2026-10-05T14:46:52.786Z
 
 Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
@@ -18,14 +18,14 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 473 |
 | Atomare Ziele im Visualisierungs-Scope | 376 |
-| Ziele mit primaerem Visualisierungslink | 354 |
-| Coverage | 94.1% |
+| Ziele mit primaerem Visualisierungslink | 355 |
+| Coverage | 94.4% |
 | Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 376 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 19 |
-| Offene Provider-Deferred-Ziele | 22 |
+| Review-Ledger-Dateien | 20 |
+| Offene Provider-Deferred-Ziele | 21 |
 | Offene Quality-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 0 |
@@ -37,17 +37,17 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 127 |
+| `accepted` | 125 |
 | `ai_candidate` | 2 |
 | `ai-reviewed` | 5 |
-| `pilot` | 220 |
+| `pilot` | 223 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
 | `accepted_corrected_candidate` | 32 |
-| `accepted_current` | 43 |
+| `accepted_current` | 44 |
 | `accepted_new_candidate` | 276 |
 | `accepted_pilot` | 59 |
 | `accepted_pilot_after_regeneration` | 13 |
@@ -62,8 +62,8 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-user-review-correction-2026-07-23.md` |
-| Latest ledger status | `completed` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b014-titration-current-rollout-adoption-2026-10-05.md` |
+| Latest ledger status | `completed_existing_machine_review_adoption` |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/chemie-deferred-2026-07-17` |
 
@@ -73,7 +73,7 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen dokumentierten `deferred_provider_limitation`- bzw. `deferred_quality_review`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
 - Beide Deferred-Arten bleiben offene Bildarbeit und erfuellen das strenge M7-Visualisierungsgate nicht. `deferred_quality_review` bezeichnet ein nach fachlicher Pruefung zurueckgezogenes Bild, nicht ein Providerproblem.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind 22 Provider- und 0 Quality-Deferred-Ziel(e).
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind 21 Provider- und 0 Quality-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -97,12 +97,12 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | 018 | `f0f2c5f8-06f1-5774-a176-d96505727acf` | pE/pH- und Pourbaix-Diagramme | `deferred_provider_limitation` |
 | 018 | `197bc2c5-835e-59e7-9263-5684e89799cc` | Peptidbindungen erklären | `deferred_provider_limitation` |
 | 018 | `10f657bc-6044-5fbb-ba8e-6e5ba55d2bc5` | Redoxbasierte Konservierung | `deferred_provider_limitation` |
-| 018 | `02634fdd-c8ba-591a-b240-77129b1bebb8` | Säure-Base-Titrationen planen | `deferred_provider_limitation` |
 | 018 | `6765f741-42a6-55c5-a218-81b883b1f5ae` | Seifen herstellen | `deferred_provider_limitation` |
 | 018 | `e56040b5-1da8-5080-b358-086d04922339` | Silikone herstellen und strukturbezogen vergleichen | `deferred_provider_limitation` |
 | 018 | `0773a104-aaeb-5e96-a615-2a2bec3eb096` | Tensidstrukturen optimieren | `deferred_provider_limitation` |
+| 018 | `127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a` | Zucker in Alltag und Ernährung bewerten | `deferred_provider_limitation` |
 
-Weitere 2 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 1 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Open Quality Deferred
 

@@ -1,0 +1,97 @@
+{
+  "status": "PASS_inactive_nine_page_native_candidate_preparation_only",
+  "nativeNinePrepareObservedExitCode": 0,
+  "nativeNinePreparedModelDigest": "sha256:89c798ec6770a5fee7df2fac0e888874d3c36fd28eaf0feee0d148c7b8b94499",
+  "commands": [
+    {
+      "name": "final-nine-book-check",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-prospective-current-candidate-v1/batch.config.json"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-b010-five-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T13:28:17.377034+00:00",
+      "endedAtUTC": "2026-10-05T13:28:18.204506+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-prospective-current-candidate-v1/final-nine-book-check.stdout.txt",
+      "stdoutSHA256": "0f09b55cb1760a791d3cf20a8a677b96b2d6f0fd5a6c78dac28614790acad174",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-prospective-current-candidate-v1/final-nine-book-check.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "p-five-final-binding-materialize",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-prospective-current-candidate-v1/positive-evidence.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-prospective-current-candidate-v1/positive-evidence.candidates.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-b010-five-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T13:28:18.204722+00:00",
+      "endedAtUTC": "2026-10-05T13:28:18.733373+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-prospective-current-candidate-v1/p-five-final-binding-materialize.stdout.txt",
+      "stdoutSHA256": "816487c4034bd8fc3ee2cb4fd222a02aa24ff2fadac1a2b8be2aecca7b19c6e0",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-prospective-current-candidate-v1/p-five-final-binding-materialize.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "p-five-final-native-check",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-prospective-current-candidate-v1/positive-evidence.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-b010-five-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T13:28:18.733563+00:00",
+      "endedAtUTC": "2026-10-05T13:28:19.213522+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-prospective-current-candidate-v1/p-five-final-native-check.stdout.txt",
+      "stdoutSHA256": "e1002dd931c81561d658c4c97e75901b13adc08a839dab87a2f73abe8903cc91",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-prospective-current-candidate-v1/p-five-final-native-check.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "latest-full-m-final-native-check",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-prospective-current-candidate-v1/latest-full-m-prospective.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-b010-five-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T13:28:19.213741+00:00",
+      "endedAtUTC": "2026-10-05T13:28:19.512704+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-prospective-current-candidate-v1/latest-full-m-final-native-check.stdout.txt",
+      "stdoutSHA256": "afacc6fc32b72d52799eba516ad71c61e118ab4ddffd980e62a371f347af4453",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-prospective-current-candidate-v1/latest-full-m-final-native-check.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "goalPages": 9,
+  "physicalPages": 11,
+  "nativeModelDigest": "sha256:89c798ec6770a5fee7df2fac0e888874d3c36fd28eaf0feee0d148c7b8b94499",
+  "bundleFingerprint": "sha256:f182af9b4140ef090d49dd3adab055909e760ff93babf963e7d4eb0923ba62d9",
+  "reviewInputFingerprint": "sha256:3ac67febabc794bed3041d34743dad83b94c832d93d848cd285b889659cf5de0",
+  "fiveNewScientificCandidates": 5,
+  "fourExistingTargetedBindings": 4,
+  "curricularAtomicDenominator": 376,
+  "D2ResultDirectoriesEmpty": true,
+  "DReviewsConducted": 0,
+  "PProfilesCandidateOnly": 5,
+  "PIndependentApproval": false,
+  "latestFullMCurrent": 376,
+  "B014FullMOther371RawLinesUnchanged": true,
+  "knownStoredD726ImageBindingGapClosed": false,
+  "strictClosure": 0,
+  "humanApproval": false,
+  "activeWrites": 0
+}

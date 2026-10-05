@@ -1,0 +1,36 @@
+{
+  "verifiedAtUTC": "2026-10-05T14:48:06.058337+00:00",
+  "watchRecordCount": 142,
+  "unchangedRecordsByteEquivalent": 140,
+  "changedRecordPaths": [
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json"
+  ],
+  "addedRecordPaths": [
+    "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-b014-five-current-20261005-v1.review.json"
+  ],
+  "watchAfterReceipt": "chemistry-watch-after-reviewed-integration.terminal.receipt.json",
+  "dependencyAudit": {
+    "status": "FAIL_EXISTING_UNMODIFIED_DEPENDENCY_INVENTORY",
+    "total": 20,
+    "low": 2,
+    "moderate": 6,
+    "high": 12,
+    "receiptPath": "dependency-audit.terminal.receipt.json",
+    "dependencySources": [
+      {
+        "path": "app/package.json",
+        "sha256": "sha256:5c72b92b5445f3feac77d01d31b72bf9ad15890c3b1a54c28da361f856877f2f",
+        "exactHEAD": true
+      },
+      {
+        "path": "app/package-lock.json",
+        "sha256": "sha256:c9504dadb8643394ab72484c77560dd599fe50e9487cf6470fc6bb41038bc175",
+        "exactHEAD": true
+      }
+    ],
+    "securityChangesOutsideThisQSCheckpoint": true,
+    "findingNotClaimedResolved": true
+  },
+  "scientificClosuresAddedByMaintenance": 0,
+  "humanApprovalClaimed": false
+}

@@ -1,0 +1,91 @@
+{
+  "preparedAtUTC": "2026-10-05T11:33:33.377498+00:00",
+  "isolationRoot": "/home/enpasos/projects/skillpilot/tmp/biologie-q1-gel-native-isolated-20261005-v1",
+  "nativeCommands": [
+    {
+      "args": [
+        "node",
+        "scripts/import_goal_visualization.mjs"
+      ],
+      "actualExitCode": 0,
+      "toolChunkId": "13f4ea",
+      "detail": "Full exact argv retained in native-image-import.terminal.receipt.json"
+    },
+    {
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json"
+      ],
+      "actualExitCode": 0,
+      "toolChunkId": "c9e6b9",
+      "counts": {
+        "canonicalCurricularAtomicGoals": 363,
+        "publishedCurricularAtomicGoals": 363,
+        "sourceViews": 20,
+        "unresolvedSourceScopeDecisions": 0,
+        "omittedGoals": 0
+      }
+    },
+    {
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json",
+        "--check"
+      ],
+      "actualExitCode": 0,
+      "toolChunkId": "de8ebd"
+    },
+    {
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "prepare",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-gel-prospective-book-current-v1/batch.config.json"
+      ],
+      "actualSessionId": 62909,
+      "actualExitCode": 0,
+      "toolChunkId": "f0c4c0"
+    },
+    {
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-gel-prospective-book-current-v1/batch.config.json"
+      ],
+      "actualExitCode": 0,
+      "toolChunkId": "27879c"
+    }
+  ],
+  "goalIds": [
+    "8eb86a82-122d-5cae-8f80-bb2850b29c2f"
+  ],
+  "currentGoalCount": 441,
+  "currentCurricularAtomicDenominator": 363,
+  "containsAndRequiresMissingEdges": [],
+  "containsAndRequiresCycles": [],
+  "bookDigest": "sha256:3b5aba4ea00f1a3394137fb2cac80fc2fe59a124b4b8c44d0a06c952c63635ce",
+  "bundleFingerprint": "sha256:c45525c4c4bc6e21c065c3fa6155ea839a823a1cbfd178de076739a3e275e002",
+  "goalFingerprint": "sha256:6b1a4628773ecd79c837fb81cd066b1ebfb8eeea3d99ddb318f00cd8d706aa57",
+  "pageFingerprint": "sha256:09c442fc18f4efb7d541dd367b4f365ecee4fdbd9daba4d178e36daee451bdc2",
+  "sourceBookFutureActivePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+  "sourceGoalQAStillHumanNo": true,
+  "actualRenderedPDFGoalPageViewed": true,
+  "PDFRasterPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-gel-prospective-book-current-v1/actual-final-pdf-goal-page.png",
+  "PDFRasterSHA256": "sha256:67ec14ad6ffe14243b10cb91c8e1820e64fe9feb8e2bd85166d39b96db6a211f",
+  "goalPDFCompletePage": true,
+  "twoDistinctNativeBlindCampaignsPrepared": true,
+  "reviewResultsStillEmpty": true,
+  "PContentsAbsent": true,
+  "DReviewsCompleted": 0,
+  "strictNetDelta": 0,
+  "humanApproval": false,
+  "activeWrites": 0,
+  "remainingCurrent37ClosedPageFingerprintComparison": "Not performed in this preparation; root integration owner will compare current strict closed goal/page/context bindings before active adoption, including possible PCR reverse-requires context effects."
+}

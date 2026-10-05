@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_CURRENT_TRIPLES_PROTECTED_CANONICAL_AND_CURRENT_LEDGER",
+  "checkedAtUTC": "2026-10-05T14:40:21.887657+00:00",
+  "headCommit": "0af05906c8dfa4c62212b6600759c37f902211c6",
+  "scope": "Targeted read-only actual-byte and reservation verification after completed runtime asset preparation; no broad checks rerun.",
+  "runtimeAssetPreparation": {
+    "terminalReceiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/prepare-runtime-assets.terminal.receipt.json",
+    "terminalReceiptSha256": "sha256:c634486482979a71dbd1504777af93d0c1fb6d5fec199ce904e63960262fe2a5",
+    "exitCode": 0,
+    "startedAtUTC": "2026-10-05T14:33:02.794714+00:00",
+    "completedAtUTC": "2026-10-05T14:33:56.334296+00:00",
+    "stdoutDigestMatches": true,
+    "stderrDigestMatches": true
+  },
+  "earlierConcurrentAssetCheck": {
+    "terminalReceiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/assets-after-historical-preservation.terminal.receipt.json",
+    "exitCode": 1,
+    "startedAtUTC": "2026-10-05T14:33:01.653209+00:00",
+    "completedAtUTC": "2026-10-05T14:33:36.251669+00:00",
+    "overlappedRuntimeCopyPhase": true,
+    "decision": "The earlier actual failure remains retained. This supplement records actual current targeted triples after the copy completed; it does not replace a full terminal asset-check result."
+  },
+  "targetedMathImages": [
+    {
+      "goalId": "4eefbd04-9e49-41ea-a087-9ad6ac71ec5a",
+      "copies": [
+        {
+          "role": "source",
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/4eefbd04-9e49-41ea-a087-9ad6ac71ec5a/4eefbd04-9e49-41ea-a087-9ad6ac71ec5a.jpg",
+          "sha256": "sha256:b86d184cdd1cebeb118530bf121cab48deffa089260723e8c73c00d6ffd6c548",
+          "bytes": 2142766,
+          "equalsHEAD": true
+        },
+        {
+          "role": "frontend",
+          "path": "app/public/assets/goal-visualizations/mathematik/4eefbd04-9e49-41ea-a087-9ad6ac71ec5a/4eefbd04-9e49-41ea-a087-9ad6ac71ec5a.jpg",
+          "sha256": "sha256:b86d184cdd1cebeb118530bf121cab48deffa089260723e8c73c00d6ffd6c548",
+          "bytes": 2142766,
+          "equalsHEAD": true
+        },
+        {
+          "role": "backend",
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/4eefbd04-9e49-41ea-a087-9ad6ac71ec5a/4eefbd04-9e49-41ea-a087-9ad6ac71ec5a.jpg",
+          "sha256": "sha256:b86d184cdd1cebeb118530bf121cab48deffa089260723e8c73c00d6ffd6c548",
+          "bytes": 2142766
+        }
+      ],
+      "currentTripleBytesEqual": true
+    },
+    {
+      "goalId": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9",
+      "copies": [
+        {
+          "role": "source",
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/97b03cce-6641-5ec9-a6d2-f31838e2dbb9/97b03cce-6641-5ec9-a6d2-f31838e2dbb9.jpg",
+          "sha256": "sha256:900092bb5a4909aa791c3c6a197159f32e6450ee1cdb6d5fc7b8aedb72333f68",
+          "bytes": 2392994,
+          "equalsHEAD": true
+        },
+        {
+          "role": "frontend",
+          "path": "app/public/assets/goal-visualizations/mathematik/97b03cce-6641-5ec9-a6d2-f31838e2dbb9/97b03cce-6641-5ec9-a6d2-f31838e2dbb9.jpg",
+          "sha256": "sha256:900092bb5a4909aa791c3c6a197159f32e6450ee1cdb6d5fc7b8aedb72333f68",
+          "bytes": 2392994,
+          "equalsHEAD": true
+        },
+        {
+          "role": "backend",
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/97b03cce-6641-5ec9-a6d2-f31838e2dbb9/97b03cce-6641-5ec9-a6d2-f31838e2dbb9.jpg",
+          "sha256": "sha256:900092bb5a4909aa791c3c6a197159f32e6450ee1cdb6d5fc7b8aedb72333f68",
+          "bytes": 2392994
+        }
+      ],
+      "currentTripleBytesEqual": true
+    }
+  ],
+  "protectedCanonicalHEADComparisons": [
+    {
+      "subject": "mathematik",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "sha256:76047cec422c555aacd1e04bff597c4f8a70d8ffed5f214ed7412c828bc34898",
+      "bytes": 3714635,
+      "equalsHEAD": true
+    },
+    {
+      "subject": "physik",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "sha256:ad764d083e390ab60f808ecbffb363ac914026894e82c09c977425311ec7ea44",
+      "bytes": 2511173,
+      "equalsHEAD": true
+    }
+  ],
+  "inFlightLedger": {
+    "ledgerPath": "curricula/DE/Gymnasium/quality/goal-description-review/in-flight-work-ledger.json",
+    "ledgerSha256": "sha256:a55802302a2e22436b6b95da33362d78aa83d0cc4f25503b96eaa18e055a6af3",
+    "checkpointReportPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/central-current.report.json",
+    "checkpointReportSha256": "sha256:002e7aa9b89a22f79af639eb4c2c278c36699dda5f8bb02bf05d496353d3a342",
+    "checkpointBlockingIssueCount": 0,
+    "subjectState": {
+      "chemie": {
+        "strictComplete": 85,
+        "denominator": 376,
+        "remaining": 291
+      },
+      "biologie": {
+        "strictComplete": 38,
+        "denominator": 363,
+        "remaining": 325
+      }
+    },
+    "activePackageCount": 9,
+    "reservedGoalIdCount": 53,
+    "uniqueReservedGoalIdCount": 53,
+    "duplicateClaimsAcrossPackages": [],
+    "nonCurrentReservedGoalIds": [],
+    "alreadyStrictCompleteReservedGoalIds": [],
+    "expectedNinePackages53CurrentOpenIdsPassed": true,
+    "packages": [
+      {
+        "batchConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/biologie/rollout-v1/2026-10-05/m7-q1-genetics-open-remainder-five-current-20261005-v1.config.json",
+        "batchConfigSha256": "sha256:09a63314f7e07a132e06fae44065df2f8aed72f85c57e8a3bbb29fc11cff9038",
+        "batchId": "biologie-m7-q1-genetics-open-remainder-five-current-20261005-v1",
+        "subject": "biologie",
+        "goalIds": [
+          "0daa79f6-8f61-5506-98f9-65db83062ba8",
+          "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+          "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+          "946ce2e7-c30d-5670-839d-003b0619c284",
+          "5b2571d9-f079-52b2-b21b-8f389c7409f4"
+        ],
+        "goalCount": 5,
+        "nonCurrentGoalIds": [],
+        "alreadyStrictCompleteReservedGoalIds": [],
+        "duplicateGoalIdsWithinBatch": []
+      },
+      {
+        "batchConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-004r-d8-corrected-image-current-1-v2.config.json",
+        "batchConfigSha256": "sha256:18287f9b57684ed9a720fa851085616502792c14690b416f88bb7964ade5f0db",
+        "batchId": "chemie-rollout-v1-batch-004r-d8-corrected-image-current-1-v2-20260930",
+        "subject": "chemie",
+        "goalIds": [
+          "d8bdf486-7295-5393-b6f7-54f6e485c848"
+        ],
+        "goalCount": 1,
+        "nonCurrentGoalIds": [],
+        "alreadyStrictCompleteReservedGoalIds": [],
+        "duplicateGoalIdsWithinBatch": []
+      },
+      {
+        "batchConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-007-open-remainder-current-3-v1.config.json",
+        "batchConfigSha256": "sha256:8a9222ec1c4595c88666ce4548bdc8953d6e9d05f8c7ff74f708be07cd71758d",
+        "batchId": "chemie-rollout-v1-batch-007-open-remainder-current-3-v1-20260930",
+        "subject": "chemie",
+        "goalIds": [
+          "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+          "7be6f951-a614-52dc-94d3-2ce0d33765ff",
+          "53fd1bfd-facb-54ae-b2dc-f667ed1414fc"
+        ],
+        "goalCount": 3,
+        "nonCurrentGoalIds": [],
+        "alreadyStrictCompleteReservedGoalIds": [],
+        "duplicateGoalIdsWithinBatch": []
+      },
+      {
+        "batchConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-008-global-inquiry-communication-current-9-v1.config.json",
+        "batchConfigSha256": "sha256:8ccad9079cbf3ccc32c4189cc08e689253049f06dae17a2867e135bd389aff11",
+        "batchId": "chemie-rollout-v1-batch-008-global-inquiry-communication-current-9-v1-20260930",
+        "subject": "chemie",
+        "goalIds": [
+          "91238ba1-5c63-50c7-a4fd-9bbe492c6b61",
+          "49b13b33-34b7-5e4e-861c-b21082cb9922",
+          "f660c91a-fa14-5010-94cf-068d785c7fd2",
+          "b6327e98-8ab9-5d7f-b826-4023bc1a56a7",
+          "542822de-cb96-56cf-a487-0fc3b5820f57",
+          "1df17884-96ae-57d7-9da9-dbebd082596f",
+          "b3c9c4b8-5575-5200-86cf-26c14ebcc3d8",
+          "1f354a60-be44-512b-8f8b-f67c8c456035",
+          "277a3c20-6082-5a95-be08-c1e386efe79b"
+        ],
+        "goalCount": 9,
+        "nonCurrentGoalIds": [],
+        "alreadyStrictCompleteReservedGoalIds": [],
+        "duplicateGoalIdsWithinBatch": []
+      },
+      {
+        "batchConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-010-open-ions-elements-seven-current-v2.config.json",
+        "batchConfigSha256": "sha256:6c6b036c5b4d9aaa68a1d08d155c629508fed58adeb419ae97b27e22d4c98aab",
+        "batchId": "chemie-batch-010-open-ions-elements-seven-current-v2-20261005",
+        "subject": "chemie",
+        "goalIds": [
+          "72236f2c-771e-4ab6-933a-e549ee49d15b",
+          "950c73c6-4ed1-488a-9267-1142e95e0055",
+          "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+          "16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+          "58486300-3f84-5aa1-9ed4-66186af62669",
+          "414489cb-453e-5de4-ab0f-0fc01175e522",
+          "1f5ee84f-245a-5a1e-a260-f960f26523e9"
+        ],
+        "goalCount": 7,
+        "nonCurrentGoalIds": [],
+        "alreadyStrictCompleteReservedGoalIds": [],
+        "duplicateGoalIdsWithinBatch": []
+      },
+      {
+        "batchConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-011-split-open-current-1-v1.config.json",
+        "batchConfigSha256": "sha256:bbf2cd8eb5d744fbebf3bc9e70c6895460858445f67dfdc9e37c0f769e9eae4a",
+        "batchId": "chemie-rollout-v1-batch-011-split-open-current-1-v1-20261005",
+        "subject": "chemie",
+        "goalIds": [
+          "8ceb1749-fce0-584f-a2b8-0a309282329a"
+        ],
+        "goalCount": 1,
+        "nonCurrentGoalIds": [],
+        "alreadyStrictCompleteReservedGoalIds": [],
+        "duplicateGoalIdsWithinBatch": []
+      },
+      {
+        "batchConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-012-11bea-structural-scope-hold-current-1-v1.config.json",
+        "batchConfigSha256": "sha256:55d850d4464af9faa5f5f45b66e139124d39c8934d4e28c9af90710f953acf5d",
+        "batchId": "chemie-rollout-v1-batch-012-11bea-structural-scope-hold-current-1-v1-20261005",
+        "subject": "chemie",
+        "goalIds": [
+          "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66"
+        ],
+        "goalCount": 1,
+        "nonCurrentGoalIds": [],
+        "alreadyStrictCompleteReservedGoalIds": [],
+        "duplicateGoalIdsWithinBatch": []
+      },
+      {
+        "batchConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-014-open-remainder-six-current-v1.config.json",
+        "batchConfigSha256": "sha256:c9e63e82f066f2a4c52a3a66095f01ca30498770c9a773c5ee63fc6e32f3db0c",
+        "batchId": "chemie-b014-redox-protolysis-open-remainder-six-current-20261005-v1",
+        "subject": "chemie",
+        "goalIds": [
+          "4961130b-1ee8-58f2-a319-dff0a864db6a",
+          "f0939f88-a6af-5334-ac4d-5d54732af25a",
+          "28bb9d15-f865-5843-a035-6066580fea64",
+          "f1ed86f0-534d-57d7-8952-a004a331cc54",
+          "1c1420c2-a8e2-520f-8015-6df637a973bd",
+          "b4777001-f4ed-5fe9-9d98-02319abdea09"
+        ],
+        "goalCount": 6,
+        "nonCurrentGoalIds": [],
+        "alreadyStrictCompleteReservedGoalIds": [],
+        "duplicateGoalIdsWithinBatch": []
+      },
+      {
+        "batchConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/m7-q1-acids-soaps-preservatives-twenty-current-20261005-v1.config.json",
+        "batchConfigSha256": "sha256:05a66b754296c477b8d44ba9b4e1675a8cadd5ec59e25ac556abe6b911258a7b",
+        "batchId": "chemie-m7-q1-acids-soaps-preservatives-twenty-current-20261005-v1",
+        "subject": "chemie",
+        "goalIds": [
+          "a3788e40-b540-5bed-be37-b33053528422",
+          "ca216bc6-5205-5b46-abbd-fd5628e4ca5b",
+          "70b34ae7-4481-590c-9a02-516464750832",
+          "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+          "4da0839d-ab6d-53c1-ac21-c9872555ae16",
+          "057a6826-f599-53b1-bdd1-5a83037a1494",
+          "9d97f628-c3ea-5dc0-8723-b17b16297af3",
+          "39c85aa0-b01f-56ec-a148-b8009bf650f5",
+          "6765f741-42a6-55c5-a218-81b883b1f5ae",
+          "6966df95-f125-5ecc-af8e-0442545d9f17",
+          "e874ee60-4569-5830-81bf-11f86f0c63ac",
+          "1837690e-cfb1-5b1c-96c8-0fb40d6d5d69",
+          "8a491e3b-5d0b-51d3-9b14-0977ec035dd6",
+          "d742ecb0-0795-5446-a95d-9503d4618475",
+          "e9ea1606-5018-5a36-9ac2-8359747a65d4",
+          "33e845cc-1a7b-50d5-99b3-8079575c4e6a",
+          "db66635f-f1d1-5f70-bcc0-fed1ae424e52",
+          "d76b80a2-5156-54f4-b3a1-546beddf0e14",
+          "d3cd250f-5221-589d-aa1c-44a4692d1acb",
+          "10f657bc-6044-5fbb-ba8e-6e5ba55d2bc5"
+        ],
+        "goalCount": 20,
+        "nonCurrentGoalIds": [],
+        "alreadyStrictCompleteReservedGoalIds": [],
+        "duplicateGoalIdsWithinBatch": []
+      }
+    ]
+  },
+  "humanApproval": false,
+  "humanTrial": false,
+  "noSourceLedgerCanonicalOrGitMutationsPerformed": true
+}
