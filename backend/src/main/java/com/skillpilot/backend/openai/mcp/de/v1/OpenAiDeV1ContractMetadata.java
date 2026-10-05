@@ -31,7 +31,7 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String PROTECTED_RESOURCE_METADATA_ENDPOINT =
             PUBLIC_MCP_ORIGIN + PROTECTED_RESOURCE_METADATA_PATH;
     public static final String GOAL_VISUALIZATION_ARTIFACT_SHA256 =
-            "12762009bd8e00c392e06aefac685e17653f50a5e7efeb21f865429a9fab641e";
+            "08030bd956b68b816523f4971b6d18ab154eef01381882b01d7f1991cc643391";
     public static final String GOAL_VISUALIZATION_RESOURCE_URI =
             "ui://skillpilot/coach/v1/sha256-"
                     + GOAL_VISUALIZATION_ARTIFACT_SHA256
@@ -69,7 +69,8 @@ public final class OpenAiDeV1ContractMetadata {
             "bed59e4cd9b2cd00c31523c6bcc110db7c396f676704730e3a2a9055f0a0555c",
             "45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed",
             "157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c",
-            "c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26");
+            "c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26",
+            "12762009bd8e00c392e06aefac685e17653f50a5e7efeb21f865429a9fab641e");
     /** Loopback-only transport target behind the dedicated V1 reverse proxy. */
     public static final String INTERNAL_MCP_PATH = "/internal/openai/v1/mcp";
     /** Loopback-only metadata target rewritten from the public path-specific URL. */

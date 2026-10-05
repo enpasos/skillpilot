@@ -28,6 +28,32 @@ the separate owner backend rollout. The correction has not been accepted in
 the desktop host. See the Git beta runbook for publication evidence, comparison
 and retest sequence.
 
+In the repeated **5 October 2026** Windows Desktop test, the owner reports a
+working manual marketplace update when moving to **1.1.2**; no automatic update
+was observed. This is not evidence that automatic updates never occur. The
+repeated **Work/Voice** test still lacked new learning-goal images, while the
+Cockpit showed saved goals and successor images. A fresh installation, fresh
+chat, the MCP resource hash actually used and correlated tool/display traces
+remain unconfirmed for this retest. Public GUI version evidence does not
+identify the MCP resource loaded by the desktop chat; the timeout correction
+still has no successful host acceptance.
+
+The owner's subsequent test without Voice reports that the image flow works.
+This is Text-mode observation; the Voice successor-tool invocation and display
+remain unresolved. The supplied timeout-fix commit description contains no
+runtime trace. See the Git beta runbook for the focused telemetry comparison.
+
+The subsequent production MCP trace confirms a successful mastery write to
+state 133 and successful renderer completion at **15:43:32 UTC** on
+**5 October 2026**. The owner confirms that the last call was in **Voice**, with
+the successor image still missing. The expanded trace also records a successful
+initial renderer at state 132. Resource reads supplied `12762009bd8e` under
+backend build `0af05906c8...`, rather than the new local correction. Thus this
+Voice incident is after successful server invocation; client receipt, UI
+execution and display remain unresolved. The local correction must be rolled
+out and tested before claiming another cause or successful Voice acceptance.
+See the Git beta runbook for the sanitized trace interpretation.
+
 The chosen implementation keeps **one MCP endpoint** and **one OAuth issuer**:
 
 | Purpose | URL |

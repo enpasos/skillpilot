@@ -34,6 +34,38 @@ export function goalVisualizationFromStructuredContent(
 }
 
 /**
+ * ChatGPT can expose the full MCP result in toolResponseMetadata instead of
+ * delivering another toolOutput snapshot. Read only known result envelopes;
+ * image data remains the bounded public structuredContent projection.
+ */
+export function goalVisualizationFromToolResult(value: unknown): GoalVisualization | undefined {
+  const queue: Array<{ value: unknown; depth: number }> = [{ value, depth: 0 }];
+  const seen = new Set<object>();
+
+  while (queue.length > 0) {
+    const next = queue.shift();
+    if (!next) break;
+    const candidate = record(next.value);
+    if (!candidate || seen.has(candidate) || candidate.isError === true) continue;
+    seen.add(candidate);
+
+    const visualization = goalVisualizationFromStructuredContent(candidate)
+      ?? goalVisualizationFromStructuredContent(candidate.structuredContent);
+    if (visualization) return visualization;
+    if (next.depth >= 3) continue;
+
+    for (const key of [
+      "toolResponseMetadata", "mcp_tool_result", "call_tool_result", "toolResult", "result"
+    ]) {
+      if (candidate[key] !== undefined) {
+        queue.push({ value: candidate[key], depth: next.depth + 1 });
+      }
+    }
+  }
+  return undefined;
+}
+
+/**
  * Merge a host update into the currently rendered visualization.
  *
  * ChatGPT can deliver the same tool result through both the standards-first
@@ -46,7 +78,7 @@ export function retainGoalVisualization(
   current: GoalVisualization | undefined,
   structuredContent: unknown
 ): GoalVisualization | undefined {
-  const next = goalVisualizationFromStructuredContent(structuredContent);
+  const next = goalVisualizationFromToolResult(structuredContent);
   if (!next) return current;
   return sameGoalVisualization(current, next) ? current : next;
 }
@@ -61,7 +93,7 @@ export function firstGoalVisualization(
   structuredContents: readonly unknown[]
 ): GoalVisualization | undefined {
   for (const structuredContent of structuredContents) {
-    const next = goalVisualizationFromStructuredContent(structuredContent);
+    const next = goalVisualizationFromToolResult(structuredContent);
     if (!next) continue;
     return sameGoalVisualization(current, next) ? current : next;
   }

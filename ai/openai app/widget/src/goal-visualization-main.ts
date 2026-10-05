@@ -12,6 +12,7 @@ import {
 type OpenAiCompatibilityWindow = Window & {
   openai?: {
     toolOutput?: unknown;
+    toolResponseMetadata?: unknown;
     widgetState?: unknown;
     setWidgetState?: (state: unknown) => void;
     requestClose?: () => void | Promise<void>;
@@ -21,6 +22,7 @@ type OpenAiCompatibilityWindow = Window & {
 type OpenAiSetGlobalsEvent = CustomEvent<{
   globals?: {
     toolOutput?: unknown;
+    toolResponseMetadata?: unknown;
     widgetState?: unknown;
   };
 }>;
@@ -40,6 +42,7 @@ const compatibilityWindow = window as OpenAiCompatibilityWindow;
 let teardownRequested = false;
 let currentVisualization: GoalVisualization | undefined;
 let currentImage: HTMLImageElement | undefined;
+let bootstrapComplete = false;
 
 window.addEventListener(
   "openai:set_globals",
@@ -49,21 +52,20 @@ window.addEventListener(
       return;
     }
 
-    if (globals.toolOutput === undefined && globals.widgetState === undefined) return;
-
-    // The event values are the current change. Retain the window.openai
-    // snapshots only as fallbacks for hosts that omit one of those values.
+    // A full result in metadata is a current host update too. Window snapshots
+    // and persisted widgetState may still describe an older tool invocation;
+    // neither may replace a result received through the live tool channels.
     renderFirstStructuredContent(
       globals.toolOutput,
-      globals.widgetState,
-      compatibilityWindow.openai?.toolOutput,
-      compatibilityWindow.openai?.widgetState
+      globals.toolResponseMetadata
     );
+    if (!bootstrapComplete) renderFirstStructuredContent(globals.widgetState);
   },
   { passive: true }
 );
 renderFirstStructuredContent(
   compatibilityWindow.openai?.toolOutput,
+  compatibilityWindow.openai?.toolResponseMetadata,
   compatibilityWindow.openai?.widgetState
 );
 // The host can mount the app while a tool or image is still loading. Keep the
@@ -75,7 +77,7 @@ void bridge.ready.catch(() => {
 });
 
 function applyToolResult(result: GoalVisualizationToolResult): void {
-  renderStructuredContent(result.structuredContent);
+  renderStructuredContent(result);
 }
 
 function renderFirstStructuredContent(...candidates: unknown[]): void {
@@ -88,6 +90,7 @@ function renderStructuredContent(structuredContent: unknown): void {
 
 function acceptVisualization(visualization: GoalVisualization | undefined): void {
   if (!visualization) return;
+  bootstrapComplete = true;
   renderVisualization(visualization);
 }
 

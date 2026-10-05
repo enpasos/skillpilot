@@ -114,6 +114,47 @@ pending. Local SDK/browser and backend checks are not host acceptance.
 Preserve published **1.1.1**, **1.1.2**, historical UI bytes and the old drafts;
 this Git publication does not submit or publish in the OpenAI portal.
 
+In the subsequent **5 October 2026** Windows Desktop retest, the Product Owner
+reported no observed automatic update when moving to **1.1.2**, while the manual
+marketplace update works. This does not establish that automatic updates never
+occur. The repeated **Work/Voice** test still lacked new learning-goal images,
+while the Cockpit showed saved goals and successor images. The timeout
+correction therefore has no successful host acceptance. A fresh installation,
+fresh chat, the MCP resource hash actually used and correlated tool/display
+traces have not been confirmed for this retest. Public GUI version evidence
+does not identify the MCP resource loaded by the desktop chat.
+The owner subsequently reports that the image flow works without Voice. Treat
+this as owner-reported Text-mode evidence, not acceptance of the local follow-up
+correction or proof that Voice invoked the successor renderer. The supplied
+commit description is not a runtime tool trace.
+
+The subsequently supplied production MCP trace on **5 October 2026** records
+successful mastery persistence at **15:42:39 UTC** (`stateVersion=133`), a fresh
+context offering an image, and a successful renderer completion at
+**15:43:32 UTC** for the same pseudonymized session and state. Resource reads
+served `12762009bd8e` as active under backend build `0af05906c8...`; the local
+`08030bd956b6` correction is not present in this trace. The owner subsequently
+confirmed that this last renderer call belonged to **Voice**. The expanded
+trace also records a successful initial renderer at **15:32:00 UTC**, state
+132. Thus the missing Voice successor image is not explained by an absent
+renderer call: it remains a failure after successful server invocation,
+without proof of client receipt, component execution or image display. The
+renderer's `goalVisualizationOffered=false` is expected for its presentation
+receipt, not a missing-image error. Earlier MCP `401` and
+`notifications/initialized` warnings do not establish a cause for this
+successful renderer's missing display. Roll out the already-tested local
+backend/widget correction before attributing the symptom to another defect.
+
+The follow-up local investigation reproduced two additional renderer faults:
+documented ChatGPT `toolResponseMetadata`/MCP result envelopes were ignored,
+and a delayed persisted `widgetState` could restore the first image over a newer
+native result. The backend widget correction accepts bounded known result
+envelopes and treats persisted state only as a bootstrap fallback. Its new
+resource is `08030bd956b68b816523f4971b6d18ab154eef01381882b01d7f1991cc643391`;
+the advertised `12762009...` bytes remain retained unchanged. This is a local
+backend/resource correction with actual Desktop/Voice acceptance pending.
+The seven published Git install files and package version **1.1.2** are unchanged.
+
 This document is the **long-term memory** for SkillPilot, including the skill-graph explorer.  
 It captures the *concepts and design decisions* that are **not obvious from the code alone**, so humans and LLMs can extend the project consistently across different learning domains.
 

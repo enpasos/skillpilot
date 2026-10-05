@@ -182,3 +182,66 @@ test("a stale window snapshot cannot mask the newer event visualization", async 
     "the current event value must stop an older window fallback from restoring ATOM_1"
   );
 });
+
+test("known full MCP result envelopes normalize to the public visualization", async () => {
+  const { goalVisualizationFromToolResult } = await loadGoalVisualizationParser();
+  const visualization = {
+    goalId: "ATOM_1", title: "Learning goal", imageUrl: "https://skillpilot.com/ATOM_1.png",
+    altText: "Approved image", cockpitUrl: "https://skillpilot.com/?goal=ATOM_1"
+  };
+  const structuredContent = { goalVisualization: visualization };
+  const result = { isError: false, content: [], structuredContent };
+  for (const envelope of [
+    structuredContent, result,
+    { status: "complete", mcp_tool_result: result },
+    { status: "complete", call_tool_result: result },
+    { status: "complete", call_tool_result: { result } },
+    { toolResponseMetadata: { mcp_tool_result: result } }
+  ]) {
+    assert.deepEqual(goalVisualizationFromToolResult(envelope), visualization);
+  }
+});
+
+test("envelopes preserve validation and never recover image data from errors or unrelated fields", async () => {
+  const { goalVisualizationFromToolResult, retainGoalVisualization } = await loadGoalVisualizationParser();
+  const visualization = {
+    goalId: "ATOM_1", title: "Learning goal", imageUrl: "https://skillpilot.com/ATOM_1.png",
+    altText: "Approved image", cockpitUrl: "https://skillpilot.com/?goal=ATOM_1"
+  };
+  const structuredContent = { goalVisualization: visualization };
+  const invalid = [
+    { isError: true, structuredContent },
+    { mcp_tool_result: { isError: true, structuredContent } },
+    { structuredContent: [{ goalVisualization: visualization }] },
+    { unrelated: { structuredContent } },
+    { _meta: structuredContent },
+    { content: [{ type: "text", text: JSON.stringify(structuredContent) }] }
+  ];
+  for (const replacement of [
+    { goalId: "x".repeat(201) }, { title: "x".repeat(501) }, { altText: "x".repeat(1001) },
+    { imageUrl: "http://skillpilot.com/image.png" }, { imageUrl: "javascript:alert(1)" },
+    { cockpitUrl: "https://user:secret@skillpilot.com/" }
+  ]) {
+    invalid.push({ call_tool_result: { result: { structuredContent: {
+      goalVisualization: { ...visualization, ...replacement }
+    } } } });
+  }
+  for (const envelope of invalid) {
+    assert.equal(goalVisualizationFromToolResult(envelope), undefined);
+    assert.equal(retainGoalVisualization(visualization, envelope), visualization);
+  }
+});
+
+test("envelope traversal is bounded and safely ignores cyclic or excessively nested objects", async () => {
+  const { goalVisualizationFromToolResult } = await loadGoalVisualizationParser();
+  const cyclic = {};
+  cyclic.result = cyclic;
+  assert.equal(goalVisualizationFromToolResult(cyclic), undefined);
+  assert.equal(goalVisualizationFromToolResult({ result: [cyclic] }), undefined);
+  assert.equal(goalVisualizationFromToolResult({ result: { result: { result: { result: {
+    structuredContent: { goalVisualization: {
+      goalId: "ATOM_1", title: "Learning goal", imageUrl: "https://skillpilot.com/ATOM_1.png",
+      altText: "Approved image", cockpitUrl: "https://skillpilot.com/?goal=ATOM_1"
+    } }
+  } } } } }), undefined);
+});

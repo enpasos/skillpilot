@@ -23,11 +23,13 @@ Evidence recorded on 5 October 2026:
 | Windows ChatGPT archive installation | Owner reports successful deployment; supplied UI shows archive and marketplace add options |
 | Initial learning start | Rejected the Claude-generated `spc_` capability; corrected OpenAI launch uses `sps_` |
 | Windows Git/Desktop route and corrected learning start | Product Owner confirms “funktioniert” after installing the current Git package and using the corrected start; owner-reported evidence, not a recorded tool trace |
-| Windows Desktop Work with Voice | Owner reports working learning and apparent success saving, but only the first learning image appeared. The missing later image is visible in the Cockpit. No correlated tool/display trace; image-sequence acceptance remains pending |
+| Windows Desktop Work with Voice | Owner reports only the first learning image displayed. Supplied production trace shows successful initial (state 132) and successor (state 133) renderer calls on backend `0af05906c8...`; the owner assigns the last call to Voice with the successor image missing. The server still supplies UI `12762009...`; the local `08030...` correction and successful Voice image sequence remain unaccepted |
+| Windows Desktop Work without Voice | Owner subsequently reports that the image flow works without Voice. This is owner-reported Text-mode evidence; no matched Voice/Text tool trace or acceptance of the local follow-up correction |
 | Native Codex 0.160.0 local installation | Exact seven canonical files installed and enabled; app-server `skills/list` discovers the coach |
 | Codex Git update in an isolated loopback repository | Installed files refreshed immediately, including a synthetic version bump; fixture removed afterwards |
-| Desktop automatic Git updates | Pending an observed replacement and repeated learning start in the actual desktop host |
-| Desktop OAuth/tool trace, saved learning progress, continuation and renewal | Further candidate-bound evidence still required; the reported working start does not certify every acceptance case |
+| Desktop manual Git update | Owner reports the manual marketplace update works when moving to 1.1.2; no correlated installed-version/tool trace |
+| Desktop automatic Git updates | Owner observed no automatic update when moving to 1.1.2. Automatic replacement remains unaccepted; this does not establish that automatic updates never occur |
+| Desktop OAuth/tool trace, saved learning progress, continuation and renewal | Production trace confirms successful contexts, mastery persistence and two renderer calls; owner assigns the last renderer to Voice. Client-visible successor image, full OAuth/renewal acceptance and the local correction remain unaccepted |
 | ChatGPT web and native mobile | Unaccepted; not offered as supported beta surfaces |
 
 The local receipts live in ignored
@@ -82,7 +84,8 @@ immutable reference.
 Local validation passed **55 OpenAI App tests**, **55 backend tests** (including
 Basic/native CIMD flows and provider differential contracts), **96 release/
 submission/marketplace tests**, frontend FAQ checks and the static mTLS gate.
-The active corrected image resource is bound to SHA-256
+The timeout-corrected image resource prepared for the 1.1.2 rollout is bound to
+SHA-256
 `12762009bd8e00c392e06aefac685e17653f50a5e7efeb21f865429a9fab641e`.
 Git publication does not deploy that backend resource, perform OpenAI portal
 submission or establish Desktop/Voice image-sequence acceptance. The exported
@@ -98,12 +101,69 @@ the Cockpit. This is a display investigation, not evidence of a missing
 curriculum image. The report does not establish whether the later renderer
 tool was called or how long its resource/image took to arrive.
 
+In the repeated **5 October 2026** Windows Desktop test, the owner reports that
+the manual marketplace update works; no automatic update was observed when
+moving to **1.1.2**. The repeated **Work/Voice** test still lacked new
+learning-goal images, while the Cockpit showed saved goals and successor images.
+This does not establish successful host acceptance of the timeout correction
+or a general absence of automatic updates. A fresh installation, fresh chat,
+the MCP resource hash actually used and correlated tool/display traces remain
+unconfirmed for this retest. Public `/version.json` evidence identifies the GUI revision only; it
+does not identify the MCP resource loaded by the desktop chat.
+
+The owner subsequently tested without Voice and reports that the image flow
+works. This narrows the observed failure to the Voice workflow; it does not
+identify whether Voice omitted the successor renderer or its host omitted the
+UI after a successful call. The accompanying text is the existing timeout-fix
+commit description, not a runtime trace. At this check, the public GUI still
+reports `0af05906c8dfa4c62212b6600759c37f902211c6`; the follow-up compatibility
+correction below remains local and has not been deployed.
+
+The owner supplied a filtered production MCP trace and then an expanded trace
+for **5 October 2026**, confirming that the last renderer call belonged to the
+failing **Voice** flow. Times below are server-log completion times in **UTC**
+(German local time is two hours later):
+
+| Time | Server evidence |
+| --- | --- |
+| 15:31:40 | Successful context at state 132 offers a visualization |
+| 15:32:00 | Successful initial `render_skillpilot_goal_visualization` at state 132, `resultCode=OK` |
+| 15:35:03–15:42:17 | Five further successful context calls at state 132, each offering a visualization |
+| 15:42:39 | Successful mastery write advances the same pseudonymized session to state 133 and returns a successor context offering a visualization |
+| 15:43:19 | Successful fresh context at state 133 offers a visualization |
+| 15:43:32 | Successful successor `render_skillpilot_goal_visualization` at state 133, `resultCode=OK`; owner confirms Voice and reports the missing successor image |
+| 15:31:53–15:55:00 | Eight successful resource reads supply `12762009bd8e`, active in server build `0af05906c8dfa4c62212b6600759c37f902211c6` |
+
+Every logged tool call succeeded. The renderer's `goalVisualizationOffered=false`
+is expected: its presentation receipt is not a full context offering another
+image. Its 6,925 ms runtime places approximate server entry at **15:43:25.794**,
+so the resource read at **15:43:25.869** occurred while the successor tool was
+still pending, rather than before invocation. Neither this ordering nor a successful resource read
+proves component execution, image loading or display. Resource reads have no
+session correlator. Repeated context offerings alone do not require rendering
+an already-shown `(goalId, stateVersion)` pair again.
+
+The trace confirms the deployed backend still supplied the previous resource;
+it does not show the local `08030bd956b6` correction. Voice versus Text is not
+recorded in server telemetry; the owner supplies that assignment for the last
+renderer call. This excludes an absent successor renderer as the explanation
+for this Voice incident. The unresolved failure is after successful server
+invocation: client receipt, the actual UI event channel, image loading and
+visible display remain unobserved. The earlier MCP `401` and missing
+`notifications/initialized` handler warnings do not establish a cause for
+the later successful renderer's missing image; the server-level notification
+is not a component UI handshake trace. No further code or authentication
+change follows from these lines. Deploy the already-tested local correction
+and verify its new resource before diagnosing a further defect. Preserve the
+mode assignment and server/visible-result distinction without recording the
+session fingerprint, request UUID or raw learner data in the repository.
+
 Comparison with current **Claude 1.1.12** found a concrete difference:
 Claude's 30 September fix, commit `a85246ff36c`, retains pending renderers so
-late tool results and images can still display. The OpenAI renderer still
-requested host closure after 10 seconds without a result or 15 seconds without
-an image, clearing the pending image. A host that honors closure can discard
-later results. The local **1.1.2** candidate removes these
+late tool results and images can still display. Before the correction, the
+OpenAI renderer requested host closure after 10 seconds without a result or
+15 seconds without an image, clearing the pending image. A host that honors
+closure can discard later results. The local **1.1.2** candidate removes these
 timeout closures while keeping pending content hidden, deduplicating identical
 results, ignoring invalid results and closing on failed initialization or image
 errors. Every already-advertised content-addressed resource retains its exact
@@ -124,6 +184,73 @@ missing, distinguish an absent renderer call from a successful renderer call
 whose UI never becomes visible. Keep any tool/status evidence sanitized; do
 not include chat text, tokens or learner-session capabilities. The recorded
 Git deployment above changes no production server setting.
+
+### Follow-up local backend/widget correction
+
+The repeated owner report alone did not establish whether the second renderer
+was called; the expanded trace and owner assignment above now confirm it
+was called successfully in Voice with the successor image missing.
+Backend and coach instruction inspection found no first-image-only
+limit: every new permitted `(goalId, stateVersion)` pair remains eligible after
+learner continuation. Existing privacy-safe MCP logs distinguish a context
+offering an image, the actual render call and its status, and the active or
+retained UI resource read. A successful render call still does not prove display.
+
+Local reproductions found two concrete widget bugs. A successor supplied only
+through ChatGPT's documented `toolResponseMetadata` was ignored, including
+`mcp_tool_result` and `call_tool_result.result` envelopes. A late persisted
+`widgetState` could also restore the first image over a newer native result.
+The correction reads bounded known result envelopes, applies live event results
+before any bootstrap state, and never lets persisted state or stale window
+snapshots replace a live result. It preserves validation, duplicate handling,
+delayed-image behavior and the complete text coaching path. Claude's current
+renderer uses the native MCP Apps channel and has no ChatGPT compatibility
+snapshot path; its behavior does not prove ChatGPT host acceptance.
+[OpenAI component bridge reference](https://developers.openai.com/plugins/reference#windowopenai-component-bridge)
+
+The new local backend resource has SHA-256
+`08030bd956b68b816523f4971b6d18ab154eef01381882b01d7f1991cc643391`.
+The previously advertised `12762009...` resource remains byte-identically
+registered as retained history. This requires an owner backend rollout; it does
+not change the seven published **1.1.2** Git install files, publish another Git
+release or submit to the OpenAI portal. The unpublished portal draft is refreshed
+to describe the current backend resources. The actual Voice symptom's causal
+link to these local bugs and successful two-image host acceptance remain open.
+
+Local validation of this follow-up passed **66 App tests**, including real-SDK
+cross-channel delivery; **77 backend tests** for resources, telemetry and the
+Claude/OpenAI differential contract; and **65 release/candidate/marketplace
+tests**. Versioning, historical review evidence and exact unpublished-draft
+verification also passed. These checks are local, not a new desktop acceptance.
+
+After the owner backend rollout, use a fresh SkillPilot-started Work chat with
+the already published **1.1.2** plugin. Verify the first image, saved success,
+explicit agreement to continue and the next image. If it still fails, retain
+only sanitized tool/status evidence: whether the fresh context offered an
+image, whether `render_skillpilot_goal_visualization` ran successfully, and
+whether the host read `uiArtifact=08030bd956b6 artifactRole=active` or retained
+older bytes. As a focused comparison, stop Voice and explicitly ask for the
+current learning-goal image in the same chat; record whether the tool call and
+display differ. No learner capability, token, permanent learner ID or chat
+content belongs in this evidence.
+
+For a short matching Voice test window, collect the existing server telemetry:
+
+```bash
+journalctl -u skillpilot --since "30 minutes ago" --no-pager -o short-iso |
+  grep -E 'OpenAI Coach V1 MCP V1 (tool invocation|resource read)'
+```
+
+Correlate context and render calls using time, `learningSessionHash` and
+`stateVersion`. Check `goalVisualizationOffered=true` on the full context or
+successor result; the renderer's presentation receipt does not itself offer
+another image and legitimately logs that flag as false. Resource reads have
+no session/request correlator and the host can cache them, so neither their
+timing nor an absent fresh read proves which bytes a specific chat displayed.
+Compare the hash with `serverBuild`: `artifactRole=active` refers to that
+server's build, so the former build correctly calls `12762009...` active while
+the local follow-up build calls `08030bd956b6` active.
+Keep the owner-reported visible result separate from every server success.
 
 ## Tester walkthrough: Windows ChatGPT Desktop
 
@@ -164,7 +291,9 @@ codex plugin marketplace upgrade skillpilot-chatgpt-marketplace
 
 Check the installed version after refresh and start a new chat. Native Windows
 and WSL installations may use separate configuration roots. Local CLI refresh
-has been tested; automatic ChatGPT desktop updates still need observation.
+has been tested, and the owner reports a working manual desktop marketplace
+update to 1.1.2. No automatic update was observed in that transition; automatic
+ChatGPT desktop updates still need acceptance evidence.
 See [OpenAI packaging](https://developers.openai.com/plugins/build/plugins),
 [plugin commands](https://learn.chatgpt.com/docs/developer-commands#codex-plugin)
 and [Windows/WSL configuration](https://learn.chatgpt.com/docs/windows/windows-app#share-config-auth-and-sessions-with-wsl).

@@ -67,6 +67,51 @@ test("the real SDK accepts delayed and successive goal results without discardin
   assert.equal(host.teardowns(), 1, "a real image failure still requests standard teardown exactly once");
 });
 
+test("real SDK and canonical ChatGPT metadata delivery share successors without stale state rollback", async () => {
+  const host = mount();
+  const initialize = await host.waitForMessage("ui/initialize");
+  host.receive({ jsonrpc: "2.0", id: initialize.id, result: {
+    protocolVersion: "2026-01-26", hostInfo: { name: "local-test-host", version: "1.0.0" },
+    hostCapabilities: {}, hostContext: {}
+  } });
+  await host.waitForMessage("ui/notifications/initialized");
+  host.deliver("FIRST");
+  await host.flush();
+  const first = host.root.children[0];
+  first.emit("load");
+
+  // The compatibility snapshot can lag behind the current event and SDK
+  // notifications. Neither it nor a persistence acknowledgment is authority.
+  host.context.openai = { toolOutput: visualization("FIRST"), widgetState: visualization("FIRST") };
+  host.emitGlobals({
+    toolResponseMetadata: {
+      status: "complete", mcp_tool_result: { content: [], structuredContent: visualization("SECOND") }
+    },
+    widgetState: visualization("FIRST")
+  });
+  const second = host.root.children[0];
+  assert.notEqual(second, first);
+  assert.equal(second.src, "https://skillpilot.com/SECOND.png");
+  second.emit("load");
+
+  host.deliver("SECOND");
+  await host.flush();
+  assert.equal(host.root.children[0], second, "native duplicate keeps the metadata-delivered image");
+  host.emitGlobals({ widgetState: visualization("FIRST") });
+  host.emitGlobals({ toolResponseMetadata: { status: "pending" } });
+  first.emit("error");
+  assert.equal(host.root.children[0], second);
+  assert.equal(host.root.hidden, false);
+  assert.equal(host.teardowns(), 0);
+});
+
+function visualization(goalId) {
+  return { goalVisualization: {
+    goalId, title: "Learning goal", imageUrl: `https://skillpilot.com/${goalId}.png`,
+    altText: "Approved image", cockpitUrl: "https://skillpilot.com/cockpit"
+  } };
+}
+
 function mount() {
   const root = new Element();
   const messages = [];
@@ -107,6 +152,9 @@ function mount() {
   const flush = async () => { for (let i = 0; i < 20; i += 1) await Promise.resolve(); };
   return {
     root, context, receive, flush,
+    emitGlobals(globals) {
+      for (const listener of listeners.get("openai:set_globals") ?? []) listener({ detail: { globals } });
+    },
     teardowns: () => messages.filter(message => message.method === "ui/notifications/request-teardown").length,
     async waitForMessage(method) {
       await flush();
@@ -116,10 +164,7 @@ function mount() {
     },
     deliver(goalId) {
       receive({ jsonrpc: "2.0", method: "ui/notifications/tool-result", params: {
-        content: [], structuredContent: { goalVisualization: {
-          goalId, title: "Learning goal", imageUrl: `https://skillpilot.com/${goalId}.png`,
-          altText: "Approved image", cockpitUrl: "https://skillpilot.com/cockpit"
-        } }
+        content: [], structuredContent: visualization(goalId)
       } });
     },
     advance(milliseconds) {

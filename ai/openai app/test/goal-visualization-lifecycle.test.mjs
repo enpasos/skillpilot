@@ -154,6 +154,8 @@ function createHarness(initialToolOutput, options = {}) {
   if (options.compatibilityGlobals !== false) {
     context.openai = {
       toolOutput: initialToolOutput,
+      toolResponseMetadata: options.initialMetadata,
+      widgetState: options.initialWidgetState,
       setWidgetState(state) {
         widgetStates.push(state);
       }
@@ -369,4 +371,121 @@ test("a recovered component requests teardown again after a later failure", asyn
   assert.equal(harness.context.__teardownCount, 2);
   assert.equal(harness.rootElement.hidden, true);
   assert.deepEqual(harness.rootElement.children, []);
+});
+
+test("a metadata-only successor replaces the first image without another toolOutput update", () => {
+  const harness = createHarness(visualization("FIRST"));
+  harness.images[0].dispatch("load");
+
+  harness.emitGlobals({ toolResponseMetadata: {
+    status: "complete",
+    mcp_tool_result: { content: [], structuredContent: visualization("SECOND") }
+  } });
+  const second = harness.images[1];
+  assert.ok(second);
+  assert.equal(second.src, "https://skillpilot.com/SECOND.png");
+  second.dispatch("load");
+  assert.equal(harness.rootElement.hidden, false);
+  assert.deepEqual(harness.rootElement.children, [second]);
+  assert.equal(harness.context.__teardownCount, 0);
+
+  harness.emitGlobals({ toolResponseMetadata: {
+    status: "complete",
+    call_tool_result: { result: { structuredContent: visualization("SECOND") } }
+  } });
+  assert.equal(harness.images.length, 2, "canonical duplicate envelopes do not reload the image");
+});
+
+test("initial canonical result metadata hydrates the image before a native result arrives", () => {
+  for (const envelope of [
+    { mcp_tool_result: { structuredContent: visualization("INITIAL_META") } },
+    { call_tool_result: { result: { structuredContent: visualization("INITIAL_META") } } }
+  ]) {
+    const harness = createHarness(undefined, {
+      initialMetadata: { status: "complete", ...envelope }
+    });
+    const image = harness.images[0];
+    assert.ok(image);
+    assert.equal(image.src, "https://skillpilot.com/INITIAL_META.png");
+    image.dispatch("load");
+    assert.equal(harness.rootElement.hidden, false);
+  }
+});
+
+test("a complete structuredContent envelope updates the compatibility image", () => {
+  const harness = createHarness(visualization("FIRST"));
+  harness.images[0].dispatch("load");
+  harness.emitGlobals({ toolOutput: { structuredContent: visualization("SECOND") } });
+  assert.equal(harness.images.length, 2);
+  assert.equal(harness.images[1].src, "https://skillpilot.com/SECOND.png");
+});
+
+test("current result metadata wins over stale widget state and window snapshots", () => {
+  const harness = createHarness(visualization("FIRST"));
+  harness.images[0].dispatch("load");
+  harness.context.openai.widgetState = visualization("FIRST");
+  harness.emitGlobals({
+    toolResponseMetadata: {
+      status: "complete",
+      mcp_tool_result: { structuredContent: visualization("SECOND") }
+    },
+    widgetState: visualization("FIRST")
+  });
+  assert.equal(harness.images.length, 2);
+  assert.equal(harness.images[1].src, "https://skillpilot.com/SECOND.png");
+});
+
+test("late persisted state and partial events cannot reverse a fresh native result", () => {
+  const harness = createHarness(visualization("FIRST"));
+  harness.images[0].dispatch("load");
+  harness.context.__deliverToolResult({ structuredContent: visualization("SECOND") });
+  const second = harness.images[1];
+  second.dispatch("load");
+
+  for (const globals of [
+    { widgetState: visualization("FIRST") },
+    { toolOutput: null },
+    { toolResponseMetadata: { status: "pending" }, widgetState: visualization("FIRST") },
+    { toolResponseMetadata: { mcp_tool_result: { structuredContent: {} } } }
+  ]) {
+    harness.emitGlobals(globals);
+    assert.deepEqual(harness.rootElement.children, [second]);
+    assert.equal(harness.rootElement.hidden, false);
+  }
+  assert.equal(harness.images.length, 2);
+});
+
+test("widget state is a bootstrap fallback until the first valid image only", () => {
+  const initial = createHarness(undefined, { initialWidgetState: visualization("INITIAL") });
+  assert.equal(initial.images[0].src, "https://skillpilot.com/INITIAL.png");
+
+  const delayed = createHarness(undefined);
+  delayed.emitGlobals({ widgetState: visualization("DELAYED") });
+  assert.equal(delayed.images[0].src, "https://skillpilot.com/DELAYED.png");
+  delayed.context.__deliverToolResult({ structuredContent: visualization("LIVE") });
+  const live = delayed.images[1];
+  live.dispatch("error");
+  delayed.emitGlobals({ widgetState: visualization("DELAYED") });
+  assert.deepEqual(delayed.rootElement.children, []);
+  assert.equal(delayed.images.length, 2, "persisted state must not retry after a live image failure");
+});
+
+test("failed or unsafe result envelopes retain the last image across both host channels", () => {
+  const harness = createHarness(visualization("CURRENT"));
+  const current = harness.images[0];
+  current.dispatch("load");
+  for (const result of [
+    { isError: true, structuredContent: visualization("FAILED") },
+    { structuredContent: { goalVisualization: {
+      ...visualization("UNSAFE").goalVisualization, imageUrl: "javascript:alert(1)"
+    } } },
+    { structuredContent: {} }
+  ]) {
+    harness.context.__deliverToolResult(result);
+    harness.emitGlobals({ toolResponseMetadata: { status: "complete", mcp_tool_result: result } });
+    assert.deepEqual(harness.rootElement.children, [current]);
+    assert.equal(harness.rootElement.hidden, false);
+  }
+  assert.equal(harness.images.length, 1);
+  assert.equal(harness.context.__teardownCount, 0);
 });
