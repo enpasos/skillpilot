@@ -8,9 +8,9 @@ Kandidat: `1.1.2` · MCP-Endpunkt: `https://mcp-coach-v1.skillpilot.com/mcp`
 
 Testsuite-SHA-256: `abcfdbc5f9e53ec159099589a8c0fd771efceea7e55c68447f06c3fa8ce05617`
 
-Vertrags-SHA-256: `801b4be2e63568aff2011f80455d4ee0f799807693bd1ae6a9711bbc9684c581`
+Vertrags-SHA-256: `8c6d1bd86d013175ab5aa8e2e323e50b03d8c3cc76e444f1b5f245ac2684846c`
 
-Paket-Snapshot-SHA-256: `8b20c3d1343e2ca6c89d3f59bc29d84f6edeab95f4245d429150e1c51f252fbb`
+Paket-Snapshot-SHA-256: `595222c1e1054161411dd704217300f2d17b7fce4a4a1e16a1d38d24578e8680`
 
 ## Vorbereitung
 
