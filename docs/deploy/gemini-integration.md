@@ -20,6 +20,15 @@ ungelöst. Kartenübung, Verified Recall,
 Prüfungen und negative Sicherheitsfälle benötigen zusätzlich zu ihren lokalen
 Tests eigene Host-Abnahme. Eine Produktionsbereitstellung wurde nicht vorgenommen.
 
+Für den anschließenden kontrollierten Testbetrieb auf `skillpilot.com` sind
+ein wiederholbar ausführbarer Installer, eine eigene Gateway-Unit und
+nginx-Konfigurationen vorbereitet. Die [Deployment-Anleitung](../../deploy/gemini-v1/README.md)
+beschreibt die privaten Schlüssel, die Ergänzung der bestehenden Spring-
+Konfiguration, TLS und den exakt gemessenen Google-Callback. Diese Vorbereitung
+aktiviert keine Produktionsdienste. Der normale Rollout prüft zudem die
+unveränderte Skill-ZIP im Build und über den öffentlichen Download; HTML an
+dieser Adresse wird als Fehler behandelt.
+
 Ein zusätzlicher Test mit einer tatsächlich in der WebGUI erzeugten und
 kopierten Startnachricht erreichte zunächst erfolgreiche OAuth-Erneuerung,
 Initialisierung und Werkzeugliste, aber keinen Kontextaufruf. Gemini behauptete

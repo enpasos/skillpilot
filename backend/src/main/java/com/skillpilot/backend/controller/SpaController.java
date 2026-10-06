@@ -1,10 +1,42 @@
 package com.skillpilot.backend.controller;
 
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.http.CacheControl;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class SpaController {
+
+    private final ResourceLoader resources;
+
+    public SpaController(ResourceLoader resources) {
+        this.resources = resources;
+    }
+
+    // The catalog's /plugins/** SPA route otherwise takes precedence over
+    // Spring's static-resource handler and returns index.html for a real ZIP.
+    @GetMapping("/plugins/gemini/{filename:.+\\.zip}")
+    public ResponseEntity<Resource> geminiSkillDownload(@PathVariable String filename) {
+        if (filename.length() > 128
+                || !filename.matches("[A-Za-z0-9][A-Za-z0-9._-]*\\.zip")
+                || filename.contains("..")) {
+            return ResponseEntity.notFound().build();
+        }
+        Resource archive = resources.getResource("classpath:/static/plugins/gemini/" + filename);
+        if (!archive.exists() || !archive.isReadable()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType("application/zip"))
+                .cacheControl(CacheControl.noCache())
+                .body(archive);
+    }
 
     // Generic SPA forwarding for all non-API, non-asset paths.
     // This allows deep linking (e.g. /whitepaper/de, /learner/..., etc.) without

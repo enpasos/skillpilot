@@ -357,6 +357,10 @@ echo "Prüfe Frontend-Shell-Assets im Build-Artefakt..."
 node ../scripts/verify_frontend_shell_assets.mjs \
   ../backend/src/main/resources/static
 
+echo "Prüfe den exakten Gemini-Skill-Download im Frontend-Artefakt..."
+node ../scripts/verify_gemini_skill_download.mjs \
+  ../backend/src/main/resources/static
+
 echo "Baue Backend..."
 cd ../backend
 chmod +x gradlew
@@ -390,6 +394,8 @@ fi
 echo "Prüfe Frontend-Shell im isolierten Backend-Artefakt..."
 node ../scripts/verify_frontend_shell_assets.mjs \
   "${SKILLPILOT_BACKEND_BUILD_DIR}/resources/main/static"
+node ../scripts/verify_gemini_skill_download.mjs \
+  "${SKILLPILOT_BACKEND_BUILD_DIR}/resources/main/static"
 cd ..
 
 echo "Starte Service neu..."
@@ -412,6 +418,10 @@ node scripts/verify_openai_review_video.mjs \
 
 echo "Prüfe ausgelieferte Frontend-Shell-Assets..."
 node scripts/verify_frontend_shell_assets.mjs \
+  "${SMOKE_BASE_URL}"
+
+echo "Prüfe den öffentlich ausgelieferten Gemini-Skill-Download..."
+node scripts/verify_gemini_skill_download.mjs \
   "${SMOKE_BASE_URL}"
 
 if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then

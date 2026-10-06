@@ -18,6 +18,7 @@ export const serviceWorkerNavigationFallbackDenylist = [
   /^\/whitepaper(?:\/|\?|$)/,
   /^\/.*\.pdf$/,
   /^\/.*\.mp4$/,
+  /^\/plugins\/gemini\/[^/?]+\.zip(?:\?|$)/,
   /^\/openai\/custom-gpt-action-regression(?:\/|$)/,
   /^\/claude\/mcp-regression(?:\/|$)/,
   /^\/curricula\?auth_success/,

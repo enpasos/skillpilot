@@ -105,6 +105,11 @@ jobs:
             fi
           done
 
+      - name: Verify Gemini gateway deployment and exact skill download guards
+        run: |
+          python3 -m unittest discover -s scripts -p test_gemini_v1_deployment.py
+          node --test scripts/verify_gemini_skill_download.test.mjs
+
   openai-mcp-app-ci:
     name: OpenAI MCP Apps CI
     runs-on: ubuntu-latest

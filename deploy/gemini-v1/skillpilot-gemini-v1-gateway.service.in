@@ -1,0 +1,44 @@
+# SPDX-License-Identifier: Apache-2.0
+[Unit]
+Description=SkillPilot Gemini V1 controlled beta gateway
+After=network.target @BACKEND_SERVICE@
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=@USER@
+Group=@GROUP@
+WorkingDirectory=@REPOSITORY@/ai/gemini/gateway
+EnvironmentFile=/etc/skillpilot/gemini-v1/gateway.env
+ExecStartPre=/usr/bin/python3 @REPOSITORY@/scripts/verify_gemini_v1_runtime.py --gateway-dir @REPOSITORY@/ai/gemini/gateway --node @NODE@ --backend-port @BACKEND_PORT@ --spring-config /etc/skillpilot/gemini-v1/spring.yml --allow-unconfigured-callback
+ExecStart=@NODE@ @REPOSITORY@/ai/gemini/gateway/server/cli.mjs
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=15
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=@REPOSITORY@/ai/gemini/gateway/.runtime
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+LockPersonality=yes
+CapabilityBoundingSet=
+SystemCallArchitectures=native
+TasksMax=64
+MemoryMax=256M
+LimitNOFILE=1024
+# Keep the host namespace: Spring validates the actual loopback socket peer.
+# PrivateNetwork=yes would sever the signed bridge to the existing backend.
+IPAddressDeny=any
+IPAddressAllow=localhost
+
+[Install]
+WantedBy=multi-user.target

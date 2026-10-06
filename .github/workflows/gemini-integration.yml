@@ -8,6 +8,12 @@ on:
       - 'ai/gemini/coach/**'
       - 'backend/**'
       - 'app/**'
+      - 'deploy/gemini-v1/**'
+      - 'scripts/install_gemini_v1_gateway.py'
+      - 'scripts/verify_gemini_v1_runtime.py'
+      - 'scripts/test_gemini_v1_deployment.py'
+      - 'scripts/verify_gemini_skill_download*'
+      - 'scripts/deploy.sh'
       - 'LICENSE'
       - 'docs/deploy/gemini-integration.md'
       - '.github/workflows/gemini-integration.yml'
@@ -21,6 +27,12 @@ on:
       - 'ai/gemini/coach/**'
       - 'backend/**'
       - 'app/**'
+      - 'deploy/gemini-v1/**'
+      - 'scripts/install_gemini_v1_gateway.py'
+      - 'scripts/verify_gemini_v1_runtime.py'
+      - 'scripts/test_gemini_v1_deployment.py'
+      - 'scripts/verify_gemini_skill_download*'
+      - 'scripts/deploy.sh'
       - 'LICENSE'
       - 'docs/deploy/gemini-integration.md'
       - '.github/workflows/gemini-integration.yml'
@@ -55,6 +67,18 @@ jobs:
         run: |
           for module in server/*.mjs; do node --check "$module"; done
       - run: npm test
+      - uses: ./.github/actions/ubuntu-apt
+      - name: Install tools for real nginx configuration validation
+        working-directory: .
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y nginx openssl
+      - name: Validate stable Gemini deployment preparation
+        working-directory: .
+        run: python3 -m unittest discover -s scripts -p test_gemini_v1_deployment.py
+      - name: Reject invalid and HTML skill downloads
+        working-directory: .
+        run: node --test scripts/verify_gemini_skill_download.test.mjs
 
   backend:
     name: Gemini canonical learning and provider isolation — local only
@@ -82,9 +106,9 @@ jobs:
           echo "${install_dir}/bin" >> "${GITHUB_PATH}"
           "${install_dir}/bin/java" -version
       - uses: gradle/actions/setup-gradle@v4
-      - name: Run the entire Gemini backend test namespace
+      - name: Run Gemini backend tests and public plugin download routing
         working-directory: backend
-        run: ./gradlew test --console=plain --tests 'com.skillpilot.backend.connectors.gemini.v1.*Test'
+        run: ./gradlew test --console=plain --tests 'com.skillpilot.backend.connectors.gemini.v1.*Test' --tests 'com.skillpilot.backend.controller.PluginDownloadRoutingTest' --tests 'com.skillpilot.backend.controller.SpaControllerTest'
       - name: Require every Gemini test class to execute without skips
         if: always()
         run: |
@@ -140,6 +164,9 @@ jobs:
         run: npx --no-install playwright install --with-deps chromium
       - name: Verify import archive source, license, reproducibility and frontend copy
         run: python3 ai/gemini/coach/scripts/test_package.py
+      - name: Test plugin archive navigation policy
+        working-directory: app
+        run: npm run test:service-worker-navigation-policy
       - name: Test Gemini session validation and the real browser handoff
         working-directory: app
         run: npm run test:gemini-v1-start
@@ -152,4 +179,6 @@ jobs:
           npx --no-install tsc -b
           npx --no-install vite build
       - name: Require the built download to match the import archive exactly
-        run: cmp ai/gemini/coach/dist/skillpilot-coach-v1-0.1.0.zip backend/src/main/resources/static/plugins/gemini/skillpilot-coach-v1-0.1.0.zip
+        run: |
+          node scripts/verify_gemini_skill_download.mjs backend/src/main/resources/static
+          cmp ai/gemini/coach/dist/skillpilot-coach-v1-0.1.0.zip backend/src/main/resources/static/plugins/gemini/skillpilot-coach-v1-0.1.0.zip

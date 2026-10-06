@@ -109,6 +109,7 @@ The deployment process currently does all of the following:
 9.  Install frontend dependencies and verify the committed AI-transparency inventory against the exact assets to be deployed.
 10. Rebuild the React app.
 11. Verify the requested coach variant and the referenced CSS/JavaScript shell assets in the generated backend static artifact.
+    Require the Gemini coach download to be the byte-exact published ZIP.
 12. Build the backend in an isolated deployment directory, separate from the
     default Gradle build directory used by the currently running production
     `bootRun` process.
@@ -119,6 +120,7 @@ The deployment process currently does all of the following:
 15. Restart the `skillpilot` system service.
 16. Wait until the public readiness endpoint returns HTTP 200 (shared process and database readiness, not provider acceptance).
 17. Verify the deployed CSS/JavaScript shell assets, coach variant, and AI-transparency copy against the public host.
+    Verify the Gemini skill download again; an HTML SPA response fails deployment.
 18. For the `openai-mcp` variant, require the public path-based OpenAI V1 smoke;
     then run the source-rationale deployment smoke against the public host.
 
@@ -273,6 +275,8 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     or restart. The shell verifier reads `index.html`, rejects cross-origin
     stylesheet/module references, and checks that every referenced local file is
     present and nonempty.
+    The Gemini skill verifier requires the pinned original ZIP bytes in both
+    the frontend artifact and processed backend resources before restart.
 9.  **Isolated backend build and build-identity verification** produce the
     updated server artifact outside the default `backend/build` directory.
     This prevents Gradle `clean`/`processResources` during a failed deployment
@@ -296,6 +300,10 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     exact referenced CSS/module assets with cache bypass headers. It requires
     successful, nonempty same-origin responses with the expected content types,
     so missing hashed assets or an HTML error page served as CSS stop deployment.
+    The public Gemini skill download must return HTTP 200, a ZIP content type
+    and the same pinned archive digest. See the separate
+    [Gemini gateway deployment](../../deploy/gemini-v1/README.md) for its HTTPS,
+    private configuration and activation steps.
 14. **Mandatory OpenAI V1 public-contract smoke** runs after readiness for
     every `openai-mcp` deployment. It verifies the dedicated
     `mcp-coach-v1.skillpilot.com` TLS certificate, direct responses without

@@ -41,3 +41,10 @@ The independent learner session has an absolute 24-hour lifetime. Tool calls req
 Tests verify local OAuth, PKCE, resource binding, refresh, revocation, the
 signed bridge and native JSON/SSE response normalization. They do not prove
 Gemini host acceptance or authorize deployment.
+
+The [controlled production-test deployment material](../../../deploy/gemini-v1/README.md)
+adds a dedicated systemd unit, private configuration, TLS/ACME nginx files and
+an idempotent preparation installer. It preserves existing keys and never
+starts/restarts services or edits the existing Spring EnvironmentFile. All
+production activation and actual Gemini acceptance remain explicit operator
+steps; direct in-chat learning-goal image display is still unaccepted.
