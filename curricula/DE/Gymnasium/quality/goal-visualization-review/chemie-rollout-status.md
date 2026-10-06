@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-10-06T00:57:58.898Z
+Generated: 2026-10-06T08:54:40.611Z
 
 Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
@@ -16,21 +16,21 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 474 |
-| Atomare Ziele im Visualisierungs-Scope | 376 |
-| Ziele mit primaerem Visualisierungslink | 358 |
-| Coverage | 95.2% |
-| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 376 |
+| Alle Ziele in der Landschaft | 479 |
+| Atomare Ziele im Visualisierungs-Scope | 378 |
+| Ziele mit primaerem Visualisierungslink | 361 |
+| Coverage | 95.5% |
+| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 378 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
 | Review-Ledger-Dateien | 20 |
-| Offene Provider-Deferred-Ziele | 18 |
+| Offene Provider-Deferred-Ziele | 17 |
 | Offene Quality-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 0 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 4 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 8 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -40,7 +40,8 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | `accepted` | 124 |
 | `ai_candidate` | 2 |
 | `ai-reviewed` | 5 |
-| `pilot` | 227 |
+| `pending-independent-actual-review` | 6 |
+| `pilot` | 224 |
 
 ## Ledger Decisions
 
@@ -73,7 +74,7 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen dokumentierten `deferred_provider_limitation`- bzw. `deferred_quality_review`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
 - Beide Deferred-Arten bleiben offene Bildarbeit und erfuellen das strenge M7-Visualisierungsgate nicht. `deferred_quality_review` bezeichnet ein nach fachlicher Pruefung zurueckgezogenes Bild, nicht ein Providerproblem.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind 18 Provider- und 0 Quality-Deferred-Ziel(e).
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind 17 Provider- und 0 Quality-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -94,7 +95,6 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | 018 | `f4d5a02d-711b-5a6b-a41d-971359c1f64d` | Optische Aktivität und Polarimetrie auswerten | `deferred_provider_limitation` |
 | 018 | `f0f2c5f8-06f1-5774-a176-d96505727acf` | pE/pH- und Pourbaix-Diagramme | `deferred_provider_limitation` |
 | 018 | `197bc2c5-835e-59e7-9263-5684e89799cc` | Peptidbindungen erklären | `deferred_provider_limitation` |
-| 018 | `10f657bc-6044-5fbb-ba8e-6e5ba55d2bc5` | Redoxbasierte Konservierung | `deferred_provider_limitation` |
 | 018 | `e56040b5-1da8-5080-b358-086d04922339` | Silikone herstellen und strukturbezogen vergleichen | `deferred_provider_limitation` |
 | 018 | `0773a104-aaeb-5e96-a615-2a2bec3eb096` | Tensidstrukturen optimieren | `deferred_provider_limitation` |
 | 018 | `127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a` | Zucker in Alltag und Ernährung bewerten | `deferred_provider_limitation` |
@@ -127,9 +127,13 @@ Keine Eintraege.
 | Goal ID | Title | Link status | Latest ledger decision |
 | --- | --- | --- | --- |
 | `ca216bc6-5205-5b46-abbd-fd5628e4ca5b` | Acidität begründen | `pilot` | `deferred_provider_limitation` |
+| `3d6699ae-ebbd-5a55-8798-b809a9d74f0a` | Ascorbinsäure quantitativ bestimmen (LK) | `pending-independent-actual-review` | - |
 | `27e4fe9b-4796-579b-8f7d-06c65fb600c0` | Blei-Akkumulator beschreiben | `pilot` | `deferred_provider_limitation` |
 | `950c73c6-4ed1-488a-9267-1142e95e0055` | Einfache Ionengitter modellieren und Stoffeigenschaften erklären | `pilot` | `deferred_provider_limitation` |
+| `10f657bc-6044-5fbb-ba8e-6e5ba55d2bc5` | Redoxbasierte Konservierung | `pending-independent-actual-review` | `deferred_provider_limitation` |
 | `6765f741-42a6-55c5-a218-81b883b1f5ae` | Seifen herstellen | `pilot` | `deferred_provider_limitation` |
+| `0d59b62e-d3f9-5969-b961-0c5e26316c04` | Verwendung von Parabenen beurteilen (LK) | `pending-independent-actual-review` | - |
+| `18819a59-2442-530f-a7c3-26755398ec66` | Vorgegebenen Paraben-Ester quantitativ bestimmen (LK) | `pending-independent-actual-review` | - |
 
 ### Accepted Review Without Link
 
