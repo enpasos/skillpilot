@@ -1,0 +1,9 @@
+# Biologie Q1: gezielte MV-Seitenkorrektur, Autor v8
+
+Die drei MV-Quellenkomponenten behalten Code **3.2**, Jahrgang **Klasse 10**, den unnummerierten Teil **Klassische Genetik**, UUIDs, ursprüngliche Rawpassagen und Mappinggrenzen. Ausschließlich die zwei Ortsfelder für den tatsächlichen übergeordneten Abschnittskopf ändern sich je Komponente: **physisch 4 / gedruckt null → physisch 17 / gedruckt 13**. Die bisherige Seite 4 belegt nur das Inhaltsverzeichnis. Die echte Überschrift „3.2 Unterrichtsinhalte“ beginnt auf Seite 17 mit Klasse 7; die weiterhin unveränderten Klasse-10- und Genetikbindungen stehen auf physisch 28 und 30.
+
+Der Original-PDF-Ausschnitt wurde tatsächlich neu mit `pdftotext -layout -f 17 -l 17` gelesen. Das Felddelta belegt sechs Änderungen und die vollständige Gleichheit aller anderen Payloadfelder. Historischer Autor v7 und beide unabhängigen Erstprüfungen bleiben erhalten. Dies ist eine neue Autorenfortsetzung; zwei gezielte unabhängige Nachprüfungen der sechs Ortsfelder bleiben erforderlich. Unveränderte Zieltexte, 16 Materialfälle, Memory-Entscheidungen und sieben geprüfte Bilder benötigen für diese Ortskorrektur keinen Neustart.
+
+Für die native Weiterverarbeitung ersetzt diese neue MV-Hülle allein die v7-MV-Hülle; alle übrigen v7-Eingänge bleiben exakt. Die bestehende prospektive Quellenpfadangabe bleibt als native Schnittstelle unverändert; der aktuelle tatsächliche Kandidat und seine Herkunft sind durch die neue Freeze gebunden. Keine aktive Datei wurde geändert.
+
+Strenger Fortschritt bleibt **Chemie 112/378, Biologie 67/383**. Nettozuwachs **0**, neue fachliche Abschlüsse **0**, wiederhergestellte aktive Bindungen **0**. Mathematik **807/807** und Physik **478/478** bleiben geschützt. Native D/P/A/M/V, vollständige GUI-Superset-Registrierung und Integration bleiben ausstehend. Menschliche Prüfung, Freigabe und Erprobung werden nicht behauptet.

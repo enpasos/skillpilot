@@ -1,0 +1,19 @@
+diff --git a/AGENTS.md b/AGENTS.md
+index 93555ff0f..869d49d3d 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -1832,7 +1832,13 @@ provider policy and product review explicitly permit it.
+   at most one hour. Learning sessions expire absolutely after 24 hours and tools require
+   one hour remaining. Backend-only deployment leaves Gemini disabled unless
+   configured and does not install its loopback gateway or HTTPS edge. Follow
+-  `docs/deploy/gemini-integration.md`; preserve the independent synthetic PoC
++  `docs/deploy/gemini-integration.md` and `deploy/gemini-v1/README.md` for the
++  prepared stable-origin installer and owner-operated activation. The installer
++  preserves private keys and does not activate production services. The normal
++  rollout requires the unchanged 0.1.0 skill ZIP in both artifacts and its public
++  download; SPA HTML is an error. Direct goal-image display in Gemini remains
++  unresolved, and a direct link does not satisfy its acceptance. Preserve the
++  independent synthetic PoC
+   evidence and all published provider artifacts.
+ - **ChatGPT clean source:** `ai/openai custom gpt/` retains no prior GPT IDs,
+   URLs, screenshots, Instructions, Knowledge, or rollback Builder bundle.
