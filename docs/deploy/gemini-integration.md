@@ -18,6 +18,15 @@ Ein eingebettetes Bild wurde nicht beobachtet. Kartenübung, Verified Recall,
 Prüfungen und negative Sicherheitsfälle benötigen zusätzlich zu ihren lokalen
 Tests eigene Host-Abnahme. Eine Produktionsbereitstellung wurde nicht vorgenommen.
 
+Ein zusätzlicher Test mit einer tatsächlich in der WebGUI erzeugten und
+kopierten Startnachricht erreichte zunächst erfolgreiche OAuth-Erneuerung,
+Initialisierung und Werkzeugliste, aber keinen Kontextaufruf. Gemini behauptete
+fehlenden Toolzugriff. Nach expliziter erneuter **@SkillPilot**-Auswahl las der
+Host um **02:17:25 UTC** den korrekten Zustand 10 und das aktive Nachfolgeziel,
+ohne den Lernstand zu ändern. Dies bleibt ein beobachteter Dispatch-Fehlversuch
+des Hosts ohne nachgewiesene Ursache. Keine Backend-JSON-Daten als Ersatz in den
+Chat kopieren; die App erneut auswählen und den echten Kontextaufruf wiederholen.
+
 ## Komponenten und Grenzen
 
 | Komponente | Aufgabe |
@@ -251,7 +260,7 @@ MCP-Routen und keine aktiven Gemini-Datenbank-Repositories.
 Der globale Wert `skillpilot.public-base-url` bezeichnet dagegen den
 öffentlichen SkillPilot-Origin für Cockpit- und kanonische Asset-Links, nicht
 den Gemini-Gateway. Für Lernzielbilder muss dieser Origin gültige öffentliche
-HTTPS-Assets unter `/api/ui/assets/…` ausliefern. Der Gemini-Renderer gibt
+HTTPS-Assets unter `/assets/goal-visualizations/…` ausliefern. Der Gemini-Renderer gibt
 daraus ausschließlich validierte Bild- und Direktlinks aus. Ein privater
 `localhost`-Origin ist für die Anzeige im entfernten Gemini-Host ungeeignet.
 Beim lokalen Test dürfen bereits öffentliche Assets genutzt werden, während

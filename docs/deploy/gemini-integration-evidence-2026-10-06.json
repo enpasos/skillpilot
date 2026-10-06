@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "recordedAt": "2026-10-06T02:04:10.128521+00:00",
+  "recordedAt": "2026-10-06T02:48:04.954936+00:00",
   "date": "2026-10-06",
   "scope": "CONTROLLED_REAL_GEMINI_CORE_INTEGRATION",
   "license": "Apache-2.0",
@@ -124,7 +124,26 @@
       "dirty": true,
       "mode": "production"
     },
-    "servedHintMatchesCurrentSource": false
+    "servedHintMatchesCurrentSource": false,
+    "supplementalLiteralHandoff": {
+      "result": "PASS_AFTER_EXPLICIT_APP_RESELECTION_RETRY",
+      "realGuiLaunchResponseUsed": true,
+      "nativeSkillAndAppSelected": true,
+      "submittedAt": "2026-10-06T02:15:16.155Z",
+      "firstAttempt": {
+        "result": "NO_CONTEXT_TOOL_CALL_AFTER_SUCCESSFUL_OAUTH_INITIALIZATION_AND_TOOLS_LIST",
+        "modelClaim": "No direct MCP tool access",
+        "causeNotEstablished": true,
+        "backendContextFaultEstablished": false
+      },
+      "explicitAppReselectionRetrySubmittedAt": "2026-10-06T02:17:13.041Z",
+      "contextResultAt": "2026-10-06T02:17:25.068Z",
+      "contextHttpStatus": 200,
+      "loadedSavedStateVersion": 10,
+      "correctCanonicalSuccessorVisible": true,
+      "canonicalMasteryAndVersionUnchanged": true,
+      "privateSessionPublished": false
+    }
   },
   "nativeImage": {
     "initialJsonOnlyCandidate": {
@@ -222,6 +241,7 @@
     "Normal memory practice, Verified Recall and exams in the actual Gemini host",
     "Denied writes, replay, stale version and expiry in this real integration host; covered locally and independently in synthetic PoC where stated",
     "Embedded image display; canonical direct-link fallback has actual host evidence",
-    "Production HTTPS/gateway/backend rollout and acceptance"
+    "Production HTTPS/gateway/backend rollout and acceptance",
+    "Host dispatch reliability; one supplemental GUI-start attempt required explicit App re-selection after successful OAuth and tool discovery"
   ]
 }
