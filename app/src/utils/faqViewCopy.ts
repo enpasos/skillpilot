@@ -9,7 +9,7 @@ export interface FaqQuestionCopy {
 }
 
 export interface FaqSectionCopy {
-  id: 'claude' | 'chatgpt' | 'learning'
+  id: 'claude' | 'chatgpt' | 'gemini' | 'learning'
   title: string
   intro: string
   questions: FaqQuestionCopy[]
@@ -39,14 +39,15 @@ export interface FaqViewCopy {
 const germanCopy: FaqViewCopy = {
   backToApp: 'Zurück zu SkillPilot',
   title: 'Häufige Fragen zu SkillPilot',
-  subtitle: 'Mit Claude lernen oder den ChatGPT-Desktop-Betatest ausprobieren.',
-  reviewedLabel: 'Stand: 5. Oktober 2026',
+  subtitle: 'Mit Claude lernen, ChatGPT Desktop ausprobieren oder den Stand des kontrollierten Gemini-Betatests ansehen.',
+  reviewedLabel: 'Stand: 6. Oktober 2026',
   recommendation: {
     eyebrow: 'Jetzt mitlernen',
-    title: 'Claude-Beta und ChatGPT-Desktop-Betatest',
+    title: 'Claude, ChatGPT Desktop und Gemini',
     paragraphs: [
       'Starte mit Claude und hilf uns, den Lernbetrieb weiter zu verbessern. Im Beta-Test funktionieren auch die Claude-App und Voice Mode.',
       'Zusätzlich kannst du ChatGPT Desktop im Bereich „Work“ über den Git-Marketplace nutzen, wenn dein Konto diese Plugin-Einrichtung unterstützt. Installation und Lernstart unter Windows sind im Betatest bestätigt.',
+      'Gemini wird in einem kontrollierten Betatest erprobt. Lernen, gespeicherter Fortschritt und Fortsetzung in neuen Chats wurden mit einem Testkonto bestätigt. Ein öffentlicher Zugang ist noch nicht eingerichtet.',
     ],
     actionLabel: 'Jetzt in SkillPilot lernen',
   },
@@ -128,6 +129,59 @@ const germanCopy: FaqViewCopy = {
       ],
     },
     {
+      id: 'gemini',
+      title: 'Lernen mit Gemini',
+      intro: 'Kontrollierter Betatest im Gemini-Webchat mit einem freigeschalteten Testkonto, englischer Gemini-Oberfläche und US-Testzugang.',
+      questions: [
+        {
+          id: 'gemini-start',
+          question: 'Was brauche ich für einen eigenen Gemini-Test?',
+          paragraphs: [
+            'Ein öffentlicher SkillPilot-Betazugang in Gemini ist noch nicht eingerichtet. Ein eigener kontrollierter Test benötigt eine separat eingerichtete, erreichbare SkillPilot-Testverbindung. Die Backend-Bereitstellung allein liefert diesen Zugang nicht.',
+            'Du brauchst einen freigeschalteten SkillPilot-Testzugang sowie Custom Apps und Skills in deinem persönlichen Google-Konto. Beide Funktionen setzen derzeit ein Alter ab 18 Jahren und aktivierte „Keep Activity“ voraus; Custom Apps benötigen außerdem US-Zugang und eine englische Gemini-Oberfläche. Google schaltet die Funktionen schrittweise frei. Die Auswahl „Gemini (Beta)“ in SkillPilot allein richtet diesen Zugang nicht ein. Der bisherige Test mit einem Konto belegt noch keine allgemeine Verfügbarkeit oder Zuverlässigkeit.',
+            'Sobald deine Testverbindung eingerichtet ist, verbinde die Custom App „SkillPilot“ und importiere den Coach-Skill nach der Gemini-Anleitung. Wähle dann in SkillPilot „Lernen starten“ → „Gemini (Beta)“ und „Lernen mit Gemini vorbereiten“. Öffne einen neuen Gemini-Chat, wähle mit „/“ den Skill „skillpilot-coach-v1“ und mit „@“ die App „SkillPilot“. Füge anschließend die vollständige vorbereitete Startnachricht ein und sende sie.',
+            'Verwende die eigens für Gemini vorbereitete Nachricht. Teile sie nicht mit anderen Personen; sie ermöglicht den Zugriff auf deine private Lernsession.',
+            'Die englische Gemini-Oberfläche legt nicht die Unterrichtssprache fest. Der Coach verwendet die in SkillPilot gewählte Sprache deiner Lernsession.',
+          ],
+          link: { href: '/plugins#gemini', label: 'Gemini-Einrichtung und Beta-Voraussetzungen' },
+        },
+        {
+          id: 'gemini-connection',
+          question: 'Was hilft, wenn Gemini keinen Zugriff auf SkillPilot findet?',
+          paragraphs: [
+            'Prüfe, ob der Coach-Skill und „@SkillPilot“ im Chat ausgewählt sind. Wähle „@SkillPilot“ ausdrücklich erneut und bitte Gemini, deinen aktuellen Lernstand zu laden. Bei einem Startversuch war diese erneute Auswahl nötig, obwohl die App bereits verbunden war.',
+            'Die App-Verbindung im kontrollierten Betatest muss nach spätestens einer Stunde und nach einem Neustart des Testdienstes neu verbunden werden. Das ist unabhängig von der Gültigkeit deiner Lernsession. Verbinde „SkillPilot“ erneut und verwende die noch gültige Gemini-Startnachricht; bereite bei Bedarf eine neue vor.',
+            'Prüfe gespeicherten Fortschritt im Cockpit. Gib keine Zugangsdaten oder kopierten Lernstandsdaten als Ersatz in den Chat ein.',
+          ],
+          link: { href: '/plugins#gemini', label: 'Gemini-Verbindung prüfen' },
+        },
+        {
+          id: 'gemini-continuation',
+          question: 'Kann ich meinen Gemini-Lernstand in einem neuen Chat fortsetzen?',
+          paragraphs: [
+            'Im kontrollierten Test wurden zwei Lernziele gespeichert und der gespeicherte Nachfolger jeweils in einem eigenen neuen Gemini-Chat geladen. Prüfe deinen Fortschritt im SkillPilot-Cockpit.',
+            'Wähle im neuen Chat den Coach-Skill mit „/“ und die App „SkillPilot“ mit „@“ erneut aus und sende dieselbe Startnachricht, solange die Lernsession noch mindestens eine Stunde gültig ist. Die Lernsession läuft nach 24 Stunden ab; bereite deshalb nach spätestens 23 Stunden über „Lernen starten“ eine neue Gemini-Lernsession vor. Gespeicherter Lernfortschritt bleibt erhalten.',
+          ],
+        },
+        {
+          id: 'gemini-images',
+          question: 'Wie sehe ich Lernzielbilder in Gemini?',
+          paragraphs: [
+            'Im geprüften Gemini-Webchat erschien ein direkter Link zum passenden Lernzielbild. Öffne diesen Link, um das Bild anzusehen. Eine Bildanzeige direkt in der Unterhaltung wurde bisher nicht beobachtet.',
+            'Ein fehlendes Bild im Chat sagt allein nichts darüber aus, ob dein Lernziel gespeichert wurde. Prüfe dafür deinen Lernstand im Cockpit.',
+          ],
+        },
+        {
+          id: 'gemini-app-voice',
+          question: 'Sind die Gemini-App, Voice Mode und alle Lernfunktionen geprüft?',
+          paragraphs: [
+            'Die bisherigen Ergebnisse stammen aus dem Gemini-Webchat mit einem kontrollierten Testkonto. Andere Konten, die mobile Gemini-App und Voice Mode sind damit noch nicht bestätigt. Die Erfahrungen mit Claude und ChatGPT lassen sich nicht automatisch auf Gemini übertragen.',
+            'Lernkarten, Verified Recall und Prüfungen brauchen noch eigene Tests im tatsächlichen Gemini-Chat. Der erfolgreiche Lernstart und gespeicherte Lernziele belegen diese weiteren Funktionen nicht.',
+          ],
+        },
+      ],
+    },
+    {
       id: 'learning',
       title: 'Lernsession, Lernstand und Datenschutz',
       intro: 'Das Wichtigste für deinen Lernalltag – unabhängig vom Coach.',
@@ -136,7 +190,7 @@ const germanCopy: FaqViewCopy = {
           id: 'provider-options',
           question: 'Welches Konto brauche ich für den Einstieg?',
           paragraphs: [
-            'Die Claude-Beta läuft weiter. Für den ChatGPT-Desktop-Betatest muss dein Konto die Plugin-Einrichtung über einen Git-Marketplace unterstützen; der Tarif allein garantiert das nicht. Die Einrichtungsübersicht erklärt die Voraussetzungen und Altersgrenzen für beide Anbieter.',
+            'Die Claude-Beta läuft weiter. Für den ChatGPT-Desktop-Betatest muss dein Konto die Plugin-Einrichtung über einen Git-Marketplace unterstützen; der Tarif allein garantiert das nicht. Gemini benötigt einen freigeschalteten Testzugang sowie Custom Apps und Skills. Die Einrichtungsübersicht erklärt die Voraussetzungen und Altersgrenzen der Anbieter.',
           ],
           link: { href: '/faq/coach-setup', label: 'Zugang und Voraussetzungen ansehen' },
         },
@@ -145,6 +199,7 @@ const germanCopy: FaqViewCopy = {
           question: 'Wie lange kann ich einen SkillPilot-Chat verwenden?',
           paragraphs: [
             'Eine über „Lernen starten“ erzeugte Lernsession ist 24 Stunden gültig. Danach bleibt der Chat lesbar, aber für weitere Zugriffe auf deinen Lernstand brauchst du eine neue Lernsession.',
+            'Bei Gemini benötigen Lernzugriffe noch mindestens eine Stunde Restlaufzeit. Bereite deshalb nach spätestens 23 Stunden eine neue Gemini-Lernsession vor. Die kürzere App-Verbindung erneuerst du zusätzlich wie im Gemini-Abschnitt beschrieben.',
             'Wähle dann in SkillPilot erneut „Lernen starten“ und beginne einen neuen Chat. Teile die vorbereitete Startnachricht und deinen Lernchat nicht mit anderen Personen.',
           ],
         },
@@ -208,14 +263,15 @@ const germanCopy: FaqViewCopy = {
 const englishCopy: FaqViewCopy = {
   backToApp: 'Back to SkillPilot',
   title: 'Frequently asked questions about SkillPilot',
-  subtitle: 'Learn with Claude or try the ChatGPT desktop beta.',
-  reviewedLabel: 'Status: October 5, 2026',
+  subtitle: 'Learn with Claude, try ChatGPT Desktop, or check the status of the controlled Gemini beta test.',
+  reviewedLabel: 'Status: October 6, 2026',
   recommendation: {
     eyebrow: 'Join the learning',
-    title: 'Claude beta and ChatGPT desktop beta',
+    title: 'Claude, ChatGPT Desktop, and Gemini',
     paragraphs: [
       'Start with Claude and help us improve the learning experience. The Claude app and voice mode also work in the ongoing beta.',
       'You can also use the “Work” section of ChatGPT Desktop through the Git marketplace if your account supports this plugin setup. Installation and learning start on Windows are confirmed in the beta.',
+      'Gemini is being tried in a controlled beta test. Learning, saved progress, and continuation in new chats have been confirmed with one test account. Public access is not yet set up.',
     ],
     actionLabel: 'Start learning in SkillPilot',
   },
@@ -297,6 +353,59 @@ const englishCopy: FaqViewCopy = {
       ],
     },
     {
+      id: 'gemini',
+      title: 'Learning with Gemini',
+      intro: 'Controlled beta test in Gemini web chat with one approved test account, an English Gemini interface, and US test access.',
+      questions: [
+        {
+          id: 'gemini-start',
+          question: 'What do I need for my own Gemini test?',
+          paragraphs: [
+            'Public SkillPilot beta access in Gemini is not yet set up. Your own controlled test needs a separately configured, reachable SkillPilot test connection. Deploying the backend alone does not provide this access.',
+            'You need approved SkillPilot test access as well as custom apps and Skills in your personal Google account. Both features currently require age 18 or over and Keep Activity enabled; custom apps also require US access and an English Gemini interface. Google is gradually rolling out these features. Selecting “Gemini (Beta)” in SkillPilot alone does not set up this access. The test with one account so far does not establish general availability or reliability.',
+            'Once your test connection is set up, connect the “SkillPilot” custom app and import the coaching Skill using the Gemini guide. Then select “Start Learning” → “Gemini (Beta)” and “Prepare learning with Gemini” in SkillPilot. Open a new Gemini chat, use “/” to select “skillpilot-coach-v1” and “@” to select the “SkillPilot” app. Then paste and send the complete prepared start message.',
+            'Use the message prepared specifically for Gemini. Do not share it with other people; it gives access to your private learning session.',
+            'The English Gemini interface does not determine the teaching language. The coach uses the language selected for your learning session in SkillPilot.',
+          ],
+          link: { href: '/plugins#gemini', label: 'Gemini setup and beta requirements' },
+        },
+        {
+          id: 'gemini-connection',
+          question: 'What helps if Gemini cannot access SkillPilot?',
+          paragraphs: [
+            'Check that the coaching Skill and “@SkillPilot” are selected in the chat. Explicitly select “@SkillPilot” again and ask Gemini to load your current learning record. One start attempt needed this reselection even though the app was already connected.',
+            'The app connection in the controlled beta test must be reconnected after at most one hour and after a restart of the test service. This is separate from your learning session’s validity. Reconnect “SkillPilot” and use the Gemini start message while it is still valid; prepare a new one if needed.',
+            'Check saved progress in the cockpit. Do not paste access credentials or copied learning-state data into the chat as a substitute.',
+          ],
+          link: { href: '/plugins#gemini', label: 'Check the Gemini connection' },
+        },
+        {
+          id: 'gemini-continuation',
+          question: 'Can I continue my Gemini learning progress in a new chat?',
+          paragraphs: [
+            'In the controlled test, two learning goals were saved, and each saved successor was loaded in a separate new Gemini chat. Check your progress in the SkillPilot cockpit.',
+            'In the new chat, select the coaching Skill with “/” and the “SkillPilot” app with “@” again, then send the same start message while the learning session has at least one hour remaining. The learning session expires after 24 hours, so prepare a new Gemini learning session through “Start Learning” after at most 23 hours. Saved learning progress is retained.',
+          ],
+        },
+        {
+          id: 'gemini-images',
+          question: 'How do I view learning-goal images in Gemini?',
+          paragraphs: [
+            'The tested Gemini web chat showed a direct link to the matching learning-goal image. Open that link to view the image. An image displayed directly in the conversation has not been observed so far.',
+            'A missing image in the chat alone does not tell you whether your learning goal was saved. Check your learning record in the cockpit for that.',
+          ],
+        },
+        {
+          id: 'gemini-app-voice',
+          question: 'Have the Gemini app, voice mode, and all learning features been tested?',
+          paragraphs: [
+            'The results so far come from Gemini web chat with one controlled test account. They do not yet confirm other accounts, the mobile Gemini app, or voice mode. Experience with Claude and ChatGPT does not automatically apply to Gemini.',
+            'Flashcards, Verified Recall, and exams still need their own tests in an actual Gemini chat. A successful learning start and saved goals do not establish these further features.',
+          ],
+        },
+      ],
+    },
+    {
       id: 'learning',
       title: 'Learning sessions, progress, and privacy',
       intro: 'The essentials for everyday learning, whichever coach you use.',
@@ -305,7 +414,7 @@ const englishCopy: FaqViewCopy = {
           id: 'provider-options',
           question: 'Which account do I need to get started?',
           paragraphs: [
-            'The Claude beta continues. For the ChatGPT desktop beta, your account must support plugin setup through a Git marketplace; your plan alone does not guarantee that. The setup overview explains the requirements and age limits for both providers.',
+            'The Claude beta continues. For the ChatGPT desktop beta, your account must support plugin setup through a Git marketplace; your plan alone does not guarantee that. Gemini requires approved test access as well as custom apps and Skills. The setup overview explains the providers’ requirements and age limits.',
           ],
           link: { href: '/faq/coach-setup', label: 'View access and requirements' },
         },
@@ -314,6 +423,7 @@ const englishCopy: FaqViewCopy = {
           question: 'How long can I use a SkillPilot chat?',
           paragraphs: [
             'A learning session created through “Start Learning” is valid for 24 hours. After that, the chat remains readable, but further access to your learning record requires a new learning session.',
+            'Gemini learning access requires at least one hour remaining. Prepare a new Gemini learning session after at most 23 hours. Renew the shorter app connection separately as described in the Gemini section.',
             'Select “Start Learning” in SkillPilot again and begin a new chat. Do not share the prepared start message or your learning chat with other people.',
           ],
         },

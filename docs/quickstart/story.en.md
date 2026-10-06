@@ -1,12 +1,12 @@
 # SkillPilot: Start Learning in 5 Steps
 
-**Updated:** October 5, 2026
+**Updated:** October 6, 2026
 
 Your learning. Your pace. Choose your curriculum, get support while practising, and discover your achievements in the Cockpit.
 
-Choose **Claude** or **ChatGPT Desktop (Beta)** as your learning coach. The ChatGPT learning start through the Git marketplace works on Windows. Claude uses **Claude Pro** and can also be used in the Claude app after setup. The [access overview](https://skillpilot.com/faq/coach-setup) explains the requirements and age limits for your chosen provider.
+Choose **Claude**, **ChatGPT Desktop (Beta)** or, with a separately configured test connection, **Gemini (Beta)** as your learning coach. The ChatGPT learning start through the Git marketplace works on Windows. Claude uses **Claude Pro** and can also be used in the Claude app after setup. Gemini currently has a controlled web test with one privately configured test account; general access for multiple accounts has not yet been checked. The [access overview](https://skillpilot.com/faq/coach-setup) explains the requirements and age limits for your chosen provider.
 
-This quickstart explains the basics in about five minutes. The September 13 video shows the Claude route; its statement about ChatGPT availability is outdated. Take as much time as you need for the initial setup.
+This quickstart explains the basics in about five minutes. The September 13 video and older screenshots show the Claude route; the video's statement about ChatGPT availability is outdated. This current guide describes the Gemini route. Take as much time as you need for the initial setup.
 
 ## 1. Set up your learning coach once
 
@@ -30,6 +30,16 @@ The marketplace connection is also your route for future updates. Automatic upda
 
 For later fixes, refresh the marketplace and check the version actually installed. The [ChatGPT guide](https://skillpilot.com/plugins#chatgpt-desktop) also explains switching from an archive installation. This learning start uses ChatGPT Desktop; browser, mobile ChatGPT app and voice mode have not been confirmed.
 
+### Gemini (Beta): controlled web test
+
+You need a **personal Google account, age 18 or over**, **US access**, an **English Gemini interface** and **Keep Activity enabled**. Custom apps and Skills are rolling out gradually; check that your account offers both features. The English interface does not determine the coach's language: SkillPilot sets German or English for this integration when you start learning. See [Google: custom apps](https://support.google.com/gemini/answer/17209137?hl=en-12) and [Google: Skills](https://support.google.com/gemini/answer/17094296?hl=en).
+
+1. Connect the custom app **SkillPilot** using the server address and private connection details configured for your own test account. A shared public connection is currently unavailable; production activation requires separate setup and verification.
+2. Download the **Gemini coaching Skill** from the [Gemini guide](https://skillpilot.com/plugins#gemini). Import the ZIP under **Gemini Settings → Skills → Upload skill** and save the Skill.
+3. Check that the app is connected and **skillpilot-coach-v1** is available. After a Skill update, import the current ZIP again.
+
+The controlled test loaded the learning context, saved two learning goals and continued learning in a new Gemini web chat. A working direct link opens the learning-goal image; embedded display has not been observed. Additional accounts, mobile apps, voice mode, card practice, Verified Recall and exams have not yet been checked in an actual Gemini chat. The [integration runbook](https://enpasos.github.io/skillpilot/deploy/gemini-integration/) documents the tested scope and test-connection setup.
+
 ## 2. Open SkillPilot and protect your SkillPilot ID
 
 Open [skillpilot.com](https://skillpilot.com) and select **Learn now**. Read the notices and terms before accepting them.
@@ -52,9 +62,11 @@ Select your learning coach in the **Let’s go** section.
 
 **Claude:** Select **Step 2: Start with Claude**. SkillPilot opens a new Claude chat with the prepared start message. Send it unchanged and complete any sign-in or authorization shown.
 
-**ChatGPT Desktop:** Select **Prepare learning with ChatGPT**, then **Copy ChatGPT start message**. Open a new chat in ChatGPT Desktop with **SkillPilot Coach v1**, paste the message and send it. Each start option creates the learning session for that provider.
+**ChatGPT Desktop:** Select **Prepare learning with ChatGPT**, then **Copy ChatGPT start message**. Open a new chat in ChatGPT Desktop with **SkillPilot Coach v1**, paste the message and send it.
 
-The prepared start message contains a **learning session valid for 24 hours**. Keep this message and your learning chat private.
+**Gemini:** Select **Gemini (Beta)**, confirm that your custom app and imported Skill are ready, then select **Prepare learning with Gemini → Copy start message → Open Gemini**. In the new Gemini chat, use **/** to select **skillpilot-coach-v1** and **@** to select the custom app **SkillPilot**. Paste and send the complete start message. If Gemini offers **Allow** when saving, review the requested action before approving it. Check the saved progress in the Cockpit afterwards.
+
+Each start option creates a separate learning session for the selected provider. The prepared start message contains a **learning session valid for 24 hours**. Keep this message and your learning chat private. Gemini tool calls require at least one hour of validity remaining, so prepare a new learning session after at most 23 hours. In a new Gemini chat, activate the Skill and app again and send the same start message while this limit is still met.
 
 ## 5. Learn and see your achievements in the Cockpit
 
@@ -78,8 +90,10 @@ Claude processes your chat, photos and voice inputs. Through the coach interface
 
 **Session expired?** Start a new learning session from SkillPilot and send the prepared message in the new chat. Your saved achievements remain accessible with the same SkillPilot ID.
 
+**Gemini reports missing tool access?** Select the app with **@SkillPilot** and the Skill with **/** again. The current test connection requires a new sign-in after at most one hour or a restart of the test environment. Reconnecting does not extend your learning session. Do not copy backend data into the chat as a substitute.
+
 **Saving failed?** Ask the coach to check the current state and save the completion again if needed. Then check the Cockpit; if the session has expired, start a new one first.
 
-Find more answers in the [FAQs](https://skillpilot.com/faq) and [plugin guides for both providers](https://skillpilot.com/plugins).
+Find more answers in the [FAQs](https://skillpilot.com/faq) and [setup guides for Claude, ChatGPT and Gemini](https://skillpilot.com/plugins).
 
 Discover what you can do — and celebrate every success.

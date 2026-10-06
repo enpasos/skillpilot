@@ -12,9 +12,11 @@ Getestet wurde ein eigenes Operator-Testprofil in einer separaten lokalen
 Datenbank, mit vom Testagenten eingereichten fachlichen Aufgabenlösungen.
 Dies ist keine Mehrnutzer- oder Langzeit-Lernstudie.
 
-Der korrigierte Renderer liefert im geprüften Host einen sichtbaren Link zum
-richtigen öffentlichen Lernzielbild; das geöffnete Bild lädt vollständig.
-Ein eingebettetes Bild wurde nicht beobachtet. Kartenübung, Verified Recall,
+Der frühere Direktlink-Test bestätigte die Erreichbarkeit des öffentlichen
+Lernzielbilds, jedoch keine Bildanzeige im Chat. Das ist historischer
+Transportnachweis, keine Abnahme der Bildintegration. Erforderlich ist die
+tatsächliche Anzeige des Lernzielbilds direkt im Gemini-Chat; sie bleibt
+ungelöst. Kartenübung, Verified Recall,
 Prüfungen und negative Sicherheitsfälle benötigen zusätzlich zu ihren lokalen
 Tests eigene Host-Abnahme. Eine Produktionsbereitstellung wurde nicht vorgenommen.
 
@@ -26,6 +28,19 @@ Host um **02:17:25 UTC** den korrekten Zustand 10 und das aktive Nachfolgeziel,
 ohne den Lernstand zu ändern. Dies bleibt ein beobachteter Dispatch-Fehlversuch
 des Hosts ohne nachgewiesene Ursache. Keine Backend-JSON-Daten als Ersatz in den
 Chat kopieren; die App erneut auswählen und den echten Kontextaufruf wiederholen.
+
+Beim anschließenden lokalen Nutzertest am **6. Oktober 2026** berichtete der
+Product Owner, dass der Werkzeugzugriff über **Gemini Spark BETA** funktioniert.
+Der Gateway bestätigte den Kontextaufruf um **08:57:40 Uhr** und den Renderer
+um **08:57:50 Uhr**, jeweils **Berliner Zeit (CEST, UTC+2)**, mit HTTP 200 und
+erfolgreicher Werkzeugantwort. Im gelieferten Screenshot fehlt das Lernzielbild.
+Die dortige Modellbegründung eines „Renderfehlers“ ist kein Nachweis eines
+Serverfehlers. Die erforderliche Bildanzeige direkt im Chat bleibt ungelöst.
+Bereits um **08:52 Uhr Berliner Zeit** hatte ein kontrollierter
+normaler Gemini-Chat den Lernkontext erfolgreich geladen. Spark ist daher eine
+beobachtete Alternative bei fehlendem Werkzeugzugriff, keine nachgewiesene
+Voraussetzung für alle Konten. Die historischen Prüfprotokolle und Paket-Hashes
+bleiben unverändert; dieser Anschlussversuch ersetzt deren Befunde nicht.
 
 ## Komponenten und Grenzen
 
@@ -97,19 +112,46 @@ derzeit ein persönliches Konto ab 18 Jahren, US-Zugang, Englisch und aktivierte
 Siehe [Google: Custom Apps](https://support.google.com/gemini/answer/17209137?hl=en-12)
 und [Google: Skills importieren](https://support.google.com/gemini/answer/17094296?hl=en).
 
-1. Den freigegebenen Beta-MCP-Zugang als Custom App mit Namen **SkillPilot**
-   verbinden. Serveradresse und eigene Verbindungsdaten müssen zur tatsächlich
-   getesteten Umgebung gehören; keinen gemeinsamen Produktions-Client-Secret
-   in eine öffentliche Anleitung schreiben.
+Es gibt derzeit **kein öffentliches Beta-Onboarding**. Für einen eigenen
+kontrollierten Test müssen der Gateway, sein erreichbarer HTTPS-Zugang und
+die eigenen privaten OAuth-Clientdaten eingerichtet sein. Ein Backend-Rollout
+allein stellt diese Verbindung nicht bereit. Die Einrichtung ist unter
+[Gateway und Spring-Adapter](#lokalen-oauth-gateway-und-spring-adapter-starten)
+beschrieben; einen allgemeinen Nutzerzugang oder gemeinsame Zugangsdaten
+stellt die Auswahl **Gemini (Beta)** in der WebGUI nicht bereit.
+
+1. In Gemini Web **Settings → Connected Apps → Custom apps → Add a custom app**
+   öffnen. Ist noch keine App verbunden, heißt das URL-Feld laut Google
+   **Add a custom app link to get started**. Die HTTPS-MCP-Serveradresse der
+   eigenen vorbereiteten Testumgebung eintragen. Für den festen privaten
+   OAuth-Client **Advanced features → Show more** öffnen; im beobachteten
+   Testdialog hieß der Bereich **Additional settings**. Dort die eigene
+   Client-ID und das eigene Client-Secret aus der privaten Testkonfiguration
+   eintragen, **Next** wählen und Anmeldung/Freigabe für **SkillPilot**
+   abschließen. Im abschließenden Dialog **Save your custom app** den Namen
+   **SkillPilot** eintragen und nochmals **Connect** wählen. Erst wenn die App
+   unter **Custom apps** erscheint, ist sie gespeichert. Google dokumentiert
+   die erweiterten Verbindungsdaten als
+   „credentials“, ohne die einzelnen Feldbeschriftungen zu nennen. Keine
+   tatsächlichen Secrets, Callback-URLs oder temporären Serveradressen in die
+   öffentliche Anleitung übernehmen.
 2. Die ZIP unter **Gemini Settings → Skills** importieren.
 3. In SkillPilot das Lernerprofil und den persönlichen Lernplan fertig
    einrichten, **Gemini (Beta)** wählen und eine Lernsession vorbereiten.
 4. Einen neuen Gemini-Chat öffnen, mit **/** `skillpilot-coach-v1` auswählen
-   und mit **@** die Custom App **SkillPilot** auswählen. Danach die komplette
-   vorbereitete Startnachricht einfügen und senden.
+   und mit **@** die Custom App **SkillPilot** auswählen. Fehlen die Werkzeuge
+   im normalen Chat und bietet das Konto **Gemini Spark BETA** beziehungsweise
+   **Switch to Spark** an, diesen Modus wählen und Skill und App dort erneut
+   auswählen. Danach die komplette vorbereitete Startnachricht einfügen und
+   senden. Google schaltet Skills schrittweise frei; eine allgemeine
+   Spark-Pflicht ist durch die bisherigen Tests nicht belegt.
 5. Nur erfolgreiche Tool-Rückgaben gelten als gespeicherte Fortschritte.
    Gemini fragt bei Schreibzugriffen gegebenenfalls nach **Allow**; **Deny**
    muss den Lernstand unverändert lassen.
+
+Ein erfolgreicher Renderer bestätigt keine Bildanzeige im Chat. Die Integration
+benötigt eine tatsächliche Anzeige des Lernzielbilds direkt im Gemini-Host;
+diese Integrationsgrenze ist noch offen.
 
 Die UI öffnet ausschließlich `https://gemini.google.com/app?hl=en`, ohne
 Sitzungsschlüssel als URL-Parameter. Die Startnachricht bleibt im aktuellen
@@ -260,8 +302,9 @@ MCP-Routen und keine aktiven Gemini-Datenbank-Repositories.
 Der globale Wert `skillpilot.public-base-url` bezeichnet dagegen den
 öffentlichen SkillPilot-Origin für Cockpit- und kanonische Asset-Links, nicht
 den Gemini-Gateway. Für Lernzielbilder muss dieser Origin gültige öffentliche
-HTTPS-Assets unter `/assets/goal-visualizations/…` ausliefern. Der Gemini-Renderer gibt
-daraus ausschließlich validierte Bild- und Direktlinks aus. Ein privater
+HTTPS-Assets unter `/assets/goal-visualizations/…` ausliefern. Der aktuelle
+Gemini-Renderer liefert daraus validierte Bild-URLs. Dies bestätigt keine
+Bildanzeige im Gemini-Chat. Ein privater
 `localhost`-Origin ist für die Anzeige im entfernten Gemini-Host ungeeignet.
 Beim lokalen Test dürfen bereits öffentliche Assets genutzt werden, während
 Lernerprofil, Lernsession und Schreibzugriffe in der Entwicklungsdatenbank bleiben.
@@ -468,8 +511,8 @@ getestete Paket im tatsächlichen Gemini-Konto diese Abläufe zeigen:
 - echter Lernkontext, autorisierte Aufgabe, ausreichende unabhängige Evidenz,
   bestätigter Mastery-Write und identischer Fortschritt im Cockpit;
 - weitere Aufgabe beziehungsweise backendgewähltes Nachfolgeziel erst nach
-  erkennbarer Zustimmung, mit korrektem Lernzielbild oder sichtbarem,
-  funktionierendem Direktlink zum kanonischen Bild;
+  erkennbarer Zustimmung, mit korrekt direkt im Gemini-Chat angezeigtem
+  Lernzielbild;
 - denselben gespeicherten Zustand in einem neuen Chat wieder laden;
 - Ablehnung, Wiederholung, abgelaufene Session und widersprüchliche Version
   verändern oder überschreiben keinen unautorisierten Lernstand;

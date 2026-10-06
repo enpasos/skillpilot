@@ -106,7 +106,7 @@ export const de = {
                 promptLabel: "Startnachricht für ChatGPT Desktop",
                 copyPrompt: "ChatGPT-Startnachricht kopieren",
                 promptCopied: "ChatGPT-Startnachricht kopiert",
-                pasteHint: "Wechsle in ChatGPT Desktop zu „Work“ und beginne dort eine neue Unterhaltung mit ausgewähltem „SkillPilot Coach v1“. Füge diese Startnachricht ein und sende sie ab. Verwende für Claude die eigene Startoption in SkillPilot.",
+                pasteHint: "Wechsle in ChatGPT Desktop zu „Work“ und beginne dort eine neue Unterhaltung mit ausgewähltem „SkillPilot Coach v1“. Füge diese Startnachricht ein und sende sie ab. Verwende für Claude oder Gemini jeweils die eigene Startoption in SkillPilot.",
             },
             claudeBetaTitle: "Claude-Lerncoach",
             claudeBetaBadge: "Beta",
@@ -155,7 +155,7 @@ export const de = {
             explorerCurriculumStepText: "Wähle ein Curriculum und sieh dir Lernziele und Zusammenhänge an.",
             explorerDashboardButton: "Explorer öffnen",
             startStepTitle: "Los geht’s",
-            startStepText: "Wähle Claude oder ChatGPT Desktop für die Lern-Beta oder arbeite im Cockpit weiter.",
+            startStepText: "Lerne mit Claude oder ChatGPT Desktop. Gemini wird in kontrollierten Tests erprobt und benötigt eine separat eingerichtete Testverbindung; ein öffentlicher Zugang ist noch nicht eingerichtet. Oder arbeite im Cockpit weiter.",
             aiCoachNotice: "Der Lerncoach ist ein KI-Assistent und kann Fehler machen. Prüfe wichtige Antworten.",
             curriculumLabel: {
                 select: "Curriculum wählen",
@@ -167,7 +167,7 @@ export const de = {
             }
         },
         banner: {
-            text: "**SkillPilot ist kostenlos.** Die Lern-Beta läuft mit Claude Pro im Browser und in der Claude-App, auch mit Voice-Mode. Das SkillPilot-Plugin für ChatGPT Desktop steht ebenfalls als Beta bereit.",
+            text: "**SkillPilot ist kostenlos.** Die Lern-Beta läuft mit Claude Pro im Browser und in der Claude-App, auch mit Voice-Mode. Das SkillPilot-Plugin für ChatGPT Desktop steht ebenfalls als Beta bereit. Gemini erproben wir in kontrollierten Tests mit separat eingerichteter Testverbindung; ein öffentlicher Zugang ist noch nicht eingerichtet.",
             linkLabel: "Zugänge vergleichen"
         },
         links: {

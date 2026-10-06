@@ -61,7 +61,7 @@ const COPY: Record<LabelLanguage, PublicLandingCopy> = {
       primaryAction: 'Jetzt lernen',
       quickstartAction: '5-Minuten-Quickstart',
       faqAction: 'FAQ',
-      accessSummary: 'Mit Claude lernen – auch in der App und mit Voice-Mode. ChatGPT Desktop ist als Beta verfügbar.',
+      accessSummary: 'Mit Claude lernen – auch in der App und mit Voice-Mode. ChatGPT Desktop ist als Beta verfügbar. Gemini wird in einem kontrollierten Betatest erprobt; ein öffentlicher Zugang ist noch nicht eingerichtet.',
     },
     teaching: {
       title: 'Kurse planen',
@@ -103,7 +103,7 @@ const COPY: Record<LabelLanguage, PublicLandingCopy> = {
       primaryAction: 'Learn now',
       quickstartAction: '5-minute quickstart',
       faqAction: 'FAQ',
-      accessSummary: 'Learn with Claude – including the app and voice mode. ChatGPT Desktop is available as a beta.',
+      accessSummary: 'Learn with Claude – including the app and voice mode. ChatGPT Desktop is available as a beta. Gemini is being tried in a controlled beta test; public access is not yet set up.',
     },
     teaching: {
       title: 'Plan courses',

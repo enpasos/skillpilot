@@ -443,16 +443,16 @@ const App: React.FC = () => {
         : 'Nutzungsbedingungen, rechtliche Hinweise, Lizenz und KI-Transparenz für SkillPilot.'
     const faqDescription =
       language === 'en'
-        ? 'Recommended devices, supported ChatGPT modes, and troubleshooting for SkillPilot Coach.'
-        : 'Empfohlene Geräte, unterstützte ChatGPT-Modi und Problemlösungen für SkillPilot Coach.'
+        ? 'Learning, setup, and troubleshooting with Claude, ChatGPT Desktop, and the controlled Gemini beta test.'
+        : 'Lernen, Einrichtung und Problemlösungen mit Claude, ChatGPT Desktop und dem kontrollierten Gemini-Betatest.'
     const coachSetupDescription =
       language === 'en'
-        ? 'Learner-focused comparison of SkillPilot access options, age limits, safe starting, and supported devices.'
-        : 'Lernendengerechter Vergleich von SkillPilot-Zugängen, Altersgrenzen, sicherem Start und unterstützten Geräten.'
+        ? 'Compare SkillPilot access, age limits, setup, and test status for Claude, ChatGPT Desktop, and the controlled Gemini beta.'
+        : 'SkillPilot-Zugänge, Altersgrenzen, Einrichtung und Teststand für Claude, ChatGPT Desktop und die kontrollierte Gemini-Beta vergleichen.'
     const pluginCatalogDescription =
       language === 'en'
-        ? 'Installation and updates for SkillPilot plugins in Claude and ChatGPT Desktop.'
-        : 'Einrichtung und Updates der SkillPilot-Plugins in Claude und ChatGPT Desktop.'
+        ? 'Set up and update SkillPilot in Claude and ChatGPT Desktop; view setup for the controlled Gemini beta test.'
+        : 'SkillPilot in Claude und ChatGPT Desktop einrichten und aktualisieren; Einrichtung für den kontrollierten Gemini-Betatest ansehen.'
 
     let title = baseTitle
     let description = defaultDescription
@@ -481,8 +481,8 @@ const App: React.FC = () => {
           ? `Start SkillPilot in 5 Steps | ${baseTitle}`
           : `SkillPilot in 5 Schritten starten | ${baseTitle}`
         description = metadataLanguage === 'en'
-          ? 'Configure your learning context in SkillPilot and choose Claude or the ChatGPT Desktop beta as your learning coach.'
-          : 'Lernkontext in SkillPilot einrichten und Claude oder die ChatGPT-Desktop-Beta als Lerncoach wählen.'
+          ? 'Set up your learning context in SkillPilot and choose Claude, the ChatGPT Desktop beta, or Gemini for controlled beta testing with separately configured access.'
+          : 'Lernkontext in SkillPilot einrichten und Claude, die ChatGPT-Desktop-Beta oder Gemini für kontrollierte Betatests mit separat eingerichtetem Zugang wählen.'
       } else if (path === '/users') {
         const usersTitle = t.usersPage?.title || 'SkillPilot IDs'
         title = `${usersTitle} | ${baseTitle}`

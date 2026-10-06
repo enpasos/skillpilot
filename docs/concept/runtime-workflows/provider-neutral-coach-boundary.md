@@ -3,10 +3,17 @@
 **Status:** kanonische, provider-neutrale Kommunikationsnorm für alle
 SkillPilot-Lerncoaches.
 
-**Geltungsbereich:** OpenAI MCP App V1, Claude Connector V1, künftige Provideradapter und alle
+**Geltungsbereich:** OpenAI MCP App V1, Claude Connector V1, Gemini Connector V1, künftige Provideradapter und alle
 neuen Coach-Werkzeuge. Sicherheits-, Session-, Didaktik- und
 Deploymentdokumente konkretisieren diese Grenze, dürfen sie aber nicht
 abweichend neu definieren.
+
+Die Gemini-Lane verwendet einen importierten Coach-Skill, eine Custom App und
+eine eigene temporäre Lernsession. Sie nutzt dieselbe kanonische Lernlogik und
+dieselben Datenschutz- und Zustandsgrenzen. Eine erfolgreich getestete
+Provider-Lane belegt keine Abnahme anderer Hosts, Konten oder Oberflächen;
+Geminis kontrollierter Web-Test und seine Betriebsgrenzen sind im
+[Integrationsrunbook](../../deploy/gemini-integration.md) dokumentiert.
 
 ## Ein Satz, der die Grenze festlegt
 

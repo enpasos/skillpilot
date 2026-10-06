@@ -9,6 +9,7 @@ import { chromium } from 'playwright'
 import tailwindcss from '@tailwindcss/vite'
 import { startViteTestServer } from './viteTestServer'
 import { getFaqViewCopy } from '../src/utils/faqViewCopy'
+import { GEMINI_SKILL_DOWNLOAD_URL } from '../src/coachVariants/geminiV1/copy'
 import {
   CLAUDE_MARKETPLACE_REPOSITORY_URL,
   CLAUDE_MARKETPLACE_INSTALLATION_ENABLED,
@@ -41,6 +42,8 @@ const loadCurrentPublication = async () => {
   }
 }
 const { index, plugin, bytes } = await loadCurrentPublication()
+execFileSync('python3', [fileURLToPath(new URL('../../ai/gemini/coach/scripts/package_skill.py', import.meta.url))])
+const geminiSkillBytes = await readFile(new URL('../../ai/gemini/coach/dist/skillpilot-coach-v1-0.1.0.zip', import.meta.url))
 assert.equal(bytes.length, plugin.bytes)
 assert.equal(createHash('sha256').update(bytes).digest('hex'), plugin.sha256)
 // Synthetic future metadata exercises the installed frontend's compatibility;
@@ -57,6 +60,11 @@ const server = await startViteTestServer(appRoot, 'scripts/fixtures/claudePlugin
     name: 'serve-unchanged-plugin-download',
     configureServer(vite) {
       vite.middlewares.use((request, response, next) => {
+        if (request.url === GEMINI_SKILL_DOWNLOAD_URL) {
+          response.setHeader('Content-Type', 'application/zip')
+          response.end(geminiSkillBytes)
+          return
+        }
         if (request.url !== plugin.downloadUrl) return next()
         response.setHeader('Content-Type', 'application/octet-stream')
         response.setHeader('Content-Disposition', `attachment; filename="${plugin.filename}"`)
@@ -187,6 +195,51 @@ try {
       'the guide returns to the authored start flow with ChatGPT preselected')
     assert.equal(await chatGptGuide.getByRole('link', { name: /(?:herunterladen|download)/iu }).count(), 0,
       'the ChatGPT guide does not invent a public archive download')
+    const geminiGuide = page.getByTestId('gemini-plugin-guide')
+    const geminiDownload = geminiGuide.locator('a[download]')
+    assert.equal(await geminiGuide.count(), 1, 'Gemini has a separate setup guide')
+    assert.equal(await geminiGuide.locator('ol > li').count(), 5, 'the Gemini guide has an ordered setup flow')
+    assert.equal(await geminiDownload.getAttribute('href'), GEMINI_SKILL_DOWNLOAD_URL)
+    assert.equal(await geminiGuide.locator('a[href="/?coach=gemini"]').count(), 1,
+      'the Gemini guide returns to its own provider start flow')
+    const geminiDownloadEvent = page.waitForEvent('download')
+    await geminiDownload.click()
+    const geminiArchive = await geminiDownloadEvent
+    assert.deepEqual(await readFile((await geminiArchive.path())!), geminiSkillBytes,
+      'the Gemini download delivers the current unchanged Skill ZIP')
+    for (const width of [1280, 390]) {
+      await page.setViewportSize({ width, height: 900 })
+      await page.locator('a[href="#gemini"]').click()
+      await page.waitForFunction(() => {
+        const top = document.getElementById('gemini')?.getBoundingClientRect().top
+        return top !== undefined && top >= 0 && top < window.innerHeight / 2
+      })
+      assert(await geminiGuide.isVisible())
+      assert(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
+        `${language} Gemini setup fits the ${width}px viewport`)
+      if (process.env.SKILLPILOT_PLUGIN_GUIDE_SCREENSHOT_DIR) {
+        await page.screenshot({ path: `${process.env.SKILLPILOT_PLUGIN_GUIDE_SCREENSHOT_DIR}/${language}-${width}-gemini.png` })
+      }
+    }
+    await page.evaluate(() => {
+      history.pushState({}, '', '/faq/coach-setup')
+      window.dispatchEvent(new PopStateEvent('popstate'))
+    })
+    await page.locator('label').filter({ has: page.locator('input[value="Gemini"]') }).click()
+    assert(await page.locator('input[value="Gemini"]').isChecked(), 'the third provider filter can be selected')
+    for (const width of [1280, 390]) {
+      await page.setViewportSize({ width, height: 900 })
+      assert.equal(await page.getByRole('radio').count(), 3)
+      assert.equal(await page.locator('#coach-provider-results details').count(), 1)
+      assert(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
+        `${language} three-provider comparison fits the ${width}px viewport`)
+    }
+    await page.evaluate(() => {
+      history.pushState({}, '', '/plugins')
+      window.dispatchEvent(new PopStateEvent('popstate'))
+    })
+    await page.getByTestId('claude-plugin-publication-status').waitFor()
+    await page.setViewportSize({ width: 1280, height: 900 })
     await assertUnavailableVersionSafety()
     if (!CLAUDE_MARKETPLACE_INSTALLATION_ENABLED) {
       assert.equal(await marketplace.count(), 0, 'the unpublished candidate does not inherit the old Marketplace guide approval')
@@ -464,7 +517,7 @@ try {
     assert.deepEqual(errors, [])
     await context.close()
   }
-  console.log(`Claude plugin guide browser regression passed: ${CLAUDE_MARKETPLACE_INSTALLATION_ENABLED ? 'approved Marketplace guide and file fallback' : 'candidate file guide with Marketplace disabled'}, DE/EN, dynamic versions, loading/errors/retry, exact download bytes, mobile, no installation claim.`)
+  console.log(`Plugin guide browser regression passed: ${CLAUDE_MARKETPLACE_INSTALLATION_ENABLED ? 'approved Claude Marketplace guide and file fallback' : 'Claude candidate file guide with Marketplace disabled'}, Gemini guide and exact Skill ZIP, third provider filter, DE/EN, dynamic versions, loading/errors/retry, exact download bytes, mobile, no installation claim.`)
 } finally {
   await browser.close()
   await server.close()

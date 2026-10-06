@@ -106,7 +106,7 @@ export const en = {
                 promptLabel: "Start message for ChatGPT Desktop",
                 copyPrompt: "Copy ChatGPT start message",
                 promptCopied: "ChatGPT start message copied",
-                pasteHint: "Switch to “Work” in ChatGPT Desktop and start a new conversation there with “SkillPilot Coach v1” selected. Paste this start message and send it. Use the separate start option in SkillPilot for Claude.",
+                pasteHint: "Switch to “Work” in ChatGPT Desktop and start a new conversation there with “SkillPilot Coach v1” selected. Paste this start message and send it. For Claude or Gemini, use that provider’s separate start option in SkillPilot.",
             },
             claudeBetaTitle: "Claude learning coach",
             claudeBetaBadge: "Beta",
@@ -155,7 +155,7 @@ export const en = {
             explorerCurriculumStepText: "Choose a curriculum and view learning goals and relationships.",
             explorerDashboardButton: "Open explorer",
             startStepTitle: "Let’s go",
-            startStepText: "Choose Claude or ChatGPT Desktop for the learning beta, or continue in the cockpit.",
+            startStepText: "Learn with Claude or ChatGPT Desktop. Gemini is being tried in controlled tests and needs a separately configured test connection; public access is not yet set up. Or continue in the cockpit.",
             aiCoachNotice: "The learning coach is an AI assistant and can make mistakes. Check important answers.",
             curriculumLabel: {
                 select: "Choose curriculum",
@@ -167,7 +167,7 @@ export const en = {
             }
         },
         banner: {
-            text: "**SkillPilot is free.** The learning beta runs with Claude Pro in your browser and the Claude app, including voice mode. The SkillPilot plugin for ChatGPT Desktop is also available as a beta.",
+            text: "**SkillPilot is free.** The learning beta runs with Claude Pro in your browser and the Claude app, including voice mode. The SkillPilot plugin for ChatGPT Desktop is also available as a beta. We are trying Gemini in controlled tests with a separately configured test connection; public access is not yet set up.",
             linkLabel: "Compare access options"
         },
         links: {

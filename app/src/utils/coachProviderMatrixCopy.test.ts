@@ -31,6 +31,11 @@ assert(
   'the Claude view contains the three plan labels learners may see',
 )
 assert(
+  de.variants.filter(variant => variant.provider === 'Gemini').length === 1
+    && en.variants.filter(variant => variant.provider === 'Gemini').length === 1,
+  'Gemini has one controlled web route without extrapolating plan coverage',
+)
+assert(
   JSON.stringify(ids(de.groups)) === JSON.stringify(ids(en.groups)),
   'German and English matrix groups have identical IDs and ordering',
 )
@@ -245,11 +250,11 @@ for (const [copy, camera, phone, privacy] of [
 }
 
 for (const copy of [de, en]) {
-  assert(copy.asOf.includes('5') && copy.asOf.includes('2026'), 'the matrix has an explicit current status date')
-  assert(copy.sources.length === 5, 'the matrix links only learner-relevant access, voice, and age sources')
+  assert(copy.asOf.includes('6') && copy.asOf.includes('2026'), 'the matrix has an explicit current status date')
+  assert(copy.sources.length === 7, 'the matrix links learner-relevant access, skills, voice, and age sources')
   assert(
     copy.sources.every(source => source.href.startsWith('https://')
-      && (source.href.includes('openai.com') || source.href.includes('claude.com'))),
+      && (source.href.includes('openai.com') || source.href.includes('claude.com') || source.href.includes('support.google.com/gemini/'))),
     'every matrix source is an official HTTPS provider URL',
   )
   const visibleText = [

@@ -22,6 +22,11 @@ for (const language of ['de', 'en'] as const) {
     matrixCopy.variants.filter(variant => variant.provider === 'Claude').length === 3,
     `${language}: non-beta Claude plan data remains available in the underlying matrix model`,
   )
+  const visibleGeminiVariants = getVisibleCoachVariants(matrixCopy.variants, 'Gemini')
+  assert(
+    visibleGeminiVariants.length === 1 && visibleGeminiVariants[0]?.id === 'gemini-controlled-web',
+    `${language}: the Gemini filter exposes the controlled web route`,
+  )
 
   const html = renderToStaticMarkup(<CoachProviderMatrix language={language} />)
 
@@ -32,7 +37,9 @@ for (const language of ['de', 'en'] as const) {
   assert(html.includes('sm:block'), `${language}: desktop matrix has a responsive visibility boundary`)
   assert(html.includes('type="radio"'), `${language}: provider selection uses accessible radio controls`)
   assert(html.includes('name="coach-provider-filter" checked="" value="Claude"'), `${language}: the ongoing Claude beta is the default provider view`)
-  assert(html.includes('value="ChatGPT"'), `${language}: ChatGPT can be selected separately as a future provider view`)
+  assert(html.includes('value="ChatGPT"'), `${language}: ChatGPT can be selected separately`)
+  assert(html.includes('value="Gemini"'), `${language}: Gemini can be selected separately`)
+  assert(html.includes('inline-flex max-w-full flex-wrap'), `${language}: the three provider controls can wrap within a narrow screen`)
   assert(html.includes('aria-controls="coach-provider-results"'), `${language}: provider controls identify the results region`)
   assert(html.includes('id="coach-provider-results"'), `${language}: provider results expose the referenced region ID`)
   assert(html.includes('role="region"'), `${language}: the desktop comparison has a named scroll region`)

@@ -32,8 +32,8 @@ interface LanguageExpectation {
 
 const expectedByLanguage: Record<Language, LanguageExpectation> = {
   de: {
-    accessNotice: 'SkillPilot ist kostenlos. Die Lern-Beta läuft mit Claude Pro im Browser und in der Claude-App, auch mit Voice-Mode. Das SkillPilot-Plugin für ChatGPT Desktop steht ebenfalls als Beta bereit.',
-    accessSummary: 'Mit Claude lernen – auch in der App und mit Voice-Mode. ChatGPT Desktop ist als Beta verfügbar.',
+    accessNotice: 'SkillPilot ist kostenlos. Die Lern-Beta läuft mit Claude Pro im Browser und in der Claude-App, auch mit Voice-Mode. Das SkillPilot-Plugin für ChatGPT Desktop steht ebenfalls als Beta bereit. Gemini erproben wir in kontrollierten Tests mit separat eingerichteter Testverbindung; ein öffentlicher Zugang ist noch nicht eingerichtet.',
+    accessSummary: 'Mit Claude lernen – auch in der App und mit Voice-Mode. ChatGPT Desktop ist als Beta verfügbar. Gemini wird in einem kontrollierten Betatest erprobt; ein öffentlicher Zugang ist noch nicht eingerichtet.',
     footerLabels: ['Statistiken', 'Nutzungsbedingungen', 'Datenschutz', 'Impressum'],
     imageCaption: 'KI-generiert',
     heroDescription: 'Wähle dein Curriculum und deinen Lerncoach für die Beta. Entdecke, was du kannst – und freu dich über jeden Erfolg.',
@@ -61,8 +61,8 @@ const expectedByLanguage: Record<Language, LanguageExpectation> = {
     },
   },
   en: {
-    accessNotice: 'SkillPilot is free. The learning beta runs with Claude Pro in your browser and the Claude app, including voice mode. The SkillPilot plugin for ChatGPT Desktop is also available as a beta.',
-    accessSummary: 'Learn with Claude – including the app and voice mode. ChatGPT Desktop is available as a beta.',
+    accessNotice: 'SkillPilot is free. The learning beta runs with Claude Pro in your browser and the Claude app, including voice mode. The SkillPilot plugin for ChatGPT Desktop is also available as a beta. We are trying Gemini in controlled tests with a separately configured test connection; public access is not yet set up.',
+    accessSummary: 'Learn with Claude – including the app and voice mode. ChatGPT Desktop is available as a beta. Gemini is being tried in a controlled beta test; public access is not yet set up.',
     footerLabels: ['Statistics', 'Terms of Use', 'Privacy', 'Imprint'],
     imageCaption: 'AI-generated',
     heroDescription: 'Choose your curriculum and your learning coach for the beta. Discover what you can do – and celebrate every success.',

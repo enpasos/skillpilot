@@ -72,6 +72,7 @@ export function GeminiStart({ onPrepare }: Props) {
           <li>{copy.skillSetup}</li>
         </ol>
         <div className="mt-3 flex flex-wrap gap-3 text-xs">
+          <a href="/plugins#gemini" className="underline">{copy.setupGuide}</a>
           <a href={GEMINI_CUSTOM_APP_HELP_URL} target="_blank" rel="noopener noreferrer" className="underline">{copy.appHelp}</a>
           <a href={GEMINI_SKILL_HELP_URL} target="_blank" rel="noopener noreferrer" className="underline">{copy.skillHelp}</a>
         </div>

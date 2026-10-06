@@ -1,11 +1,13 @@
 # Quickstart Documentation Index
 
-This page groups the learner-facing first-run material and comic prompt source files.
+This page groups the learner-facing first-run material for Claude, ChatGPT Desktop (Beta) and the controlled Gemini (Beta) route, plus comic prompt source files. Older videos and screenshots show the Claude route; the current written quickstarts cover all three provider choices.
 
 ## First Run
 
 - [Schnellstart (DE)](story.de.md)
 - [Quickstart (EN)](story.en.md)
+- [Coach setup guides](https://skillpilot.com/plugins)
+- [Gemini setup and current availability](https://skillpilot.com/plugins#gemini)
 
 ## Comic Prompt Sources
 

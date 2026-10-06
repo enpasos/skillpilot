@@ -24,9 +24,9 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
     ? {
         backToApp: 'Back to App',
         title: 'Privacy Policy',
-        effectiveDate: 'Date: October 5, 2026',
+        effectiveDate: 'Date: October 6, 2026',
         intro:
-          'SkillPilot stores your learning progress, not your conversation with the coach. This notice explains the data processed by SkillPilot, the separate role of your AI provider, and your choices. The Claude beta continues; you can also try the ChatGPT desktop beta through the Git marketplace when your account supports this plugin setup.',
+          'SkillPilot stores your learning progress, not your conversation with the coach. This notice explains the data processed by SkillPilot, the separate role of your AI provider, and your choices. Alongside the Claude beta and eligible ChatGPT desktop accounts, Gemini Web has a controlled beta for a privately configured test account; public Gemini onboarding has not been accepted.',
         sections: [
           {
             title: '1. Controller and Pseudonymous Use',
@@ -90,16 +90,30 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             ],
           },
           {
-            title: '6. Hosting, Recipients and International Processing',
+            title: '6. AI Assistants: Controlled Gemini Beta',
+            paragraphs: [
+              'When you choose Gemini, Google processes your conversation and the SkillPilot learning context under your Google account. The controlled Gemini Web test confirmed learning-state reads, saves and continuation in a new chat. This does not establish support for other accounts, mobile or voice use.',
+              'The imported coaching Skill and the connected Custom App have different roles. SkillPilot receives only the permitted structured tool data; learner answers, chat text, photos, audio and free-text assessments are not transmitted to SkillPilot by the coach. The permanent SkillPilot ID stays in SkillPilot. The prepared start message contains a private temporary learning-session reference, valid for 24 hours; tool use requires at least one hour remaining. Reconnecting the separate Google app connection does not extend that session.',
+              'Google currently requires a personal account, age 18 or over and Keep Activity enabled for Skills and Custom Apps; Custom Apps are currently limited to the United States and English. With Keep Activity enabled, Google saves Gemini activity and can use it to improve its services, including with human review. Review Google’s privacy information before choosing this route. SkillPilot cannot change your Google settings or delete your Gemini conversations.',
+            ],
+            links: [
+              { label: 'Gemini Apps Privacy Hub', href: 'https://support.google.com/gemini/answer/13594961?hl=en' },
+              { label: 'Google Privacy Policy', href: 'https://policies.google.com/privacy' },
+              { label: 'Google requirements for Custom Apps', href: 'https://support.google.com/gemini/answer/17209137?hl=en-12' },
+              { label: 'Google requirements for Skills', href: 'https://support.google.com/gemini/answer/17094296?hl=en' },
+            ],
+          },
+          {
+            title: '7. Hosting, Recipients and International Processing',
             paragraphs: [
               'SkillPilot Core is hosted in Germany. Operating the website involves processing technical connection data such as IP address, request time, requested resource and response status. Authorised operators and infrastructure providers may process data as needed to deliver, secure and maintain the service. Correspondence is also processed through the email service used for support. We do not sell your learning data.',
-              'German hosting of the Core does not mean that all data remain in Germany: your inputs and the learning context returned to your chosen AI provider are processed by Anthropic for Claude or OpenAI for ChatGPT according to that provider’s privacy terms, including applicable international processing. The provider describes transfer safeguards there. Its account, retention and transfer rules are separate from SkillPilot’s.',
+              'German hosting of the Core does not mean that all data remain in Germany: your inputs and the learning context returned to your chosen AI provider are processed by Anthropic for Claude, OpenAI for ChatGPT or Google for Gemini according to that provider’s privacy terms, including applicable international processing. The provider describes transfer safeguards there. Its account, retention and transfer rules are separate from SkillPilot’s.',
               'Opening an external link, downloading a plugin from an external source or contacting a third-party service creates a connection to that provider. Merely viewing SkillPilot’s homepage does not start a learning session with an AI provider. Access by authorities or other recipients is limited to an applicable legal requirement or another lawful basis.',
             ],
             links: [{ label: 'Anthropic: international transfers and recipients', href: 'https://www.anthropic.com/legal/privacy' }],
           },
           {
-            title: '7. Purposes and Legal Bases',
+            title: '8. Purposes and Legal Bases',
             paragraphs: [
               'We process the learning profile and the connection data necessary for the functions you request to provide the learning service under Article 6(1)(b) GDPR. Without these data, the corresponding functions cannot be provided. Viewing public information does not require a learning profile.',
               'Technical delivery, proportionate security and fault diagnosis are based on Article 6(1)(f) GDPR. Our legitimate interests are a reliable service, prevention of misuse and correction of faults. Contract-related support is covered by Article 6(1)(b); other correspondence by Article 6(1)(f), in the interest of answering your enquiry. Where a statutory obligation requires processing, Article 6(1)(c) applies.',
@@ -107,7 +121,7 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             ],
           },
           {
-            title: '8. Voluntary Feedback and Support',
+            title: '9. Voluntary Feedback and Support',
             paragraphs: [
               'You can open feedback for the automatically selected current learning goal from the cockpit, including feedback about coach behaviour. The learning-goal book also links to this feedback workflow. Only after you submit the form do we receive your own feedback text, selected perspective, goal and publication context, a random feedback ID, submission time and the recorded consent/notice version. This is separate from the coach interface, not an automatic chat export or a mastery assessment.',
               'Feedback is used exclusively to review and, where appropriate, improve the displayed learning goal based on your observations. Reports about coach behaviour are considered in relation to that goal; this consent does not authorise unrelated analysis or general model training. Authorised reviewers may use technical services and automated assistance for this review; curricular changes require human approval. The form does not request your permanent SkillPilot ID, attachments or a chat transcript. Save the feedback ID for enquiries or withdrawal of consent.',
@@ -116,7 +130,7 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             ],
           },
           {
-            title: '9. Browser Storage and Technical Diagnostics',
+            title: '10. Browser Storage and Technical Diagnostics',
             paragraphs: [
               'SkillPilot uses browser storage for your active access, optionally saved profiles, local teacher data, language and display preferences, the accepted Terms version and locally cached application resources. This includes local storage and the application cache; a download is a separate file. Technically necessary device storage or access for a service expressly requested by you is governed by Section 25(2) TDDDG. Any non-essential access requiring consent is not authorised by merely accepting the Terms.',
               'You can clear website data in your browser. This removes local settings and may remove your only saved access key; export information you wish to keep first. Clearing the browser does not delete your server-side learning state or downloaded files. A password-protected export does not protect an unlocked browser.',
@@ -124,7 +138,7 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             ],
           },
           {
-            title: '10. Storage Period, Activity, and Deletion',
+            title: '11. Storage Period, Activity, and Deletion',
             paragraphs: [
               'After 365 consecutive days without successful activity, the active learning state stored under your SkillPilot ID in the SkillPilot database, including the associated SkillPilot learning sessions and SkillPilot connections, becomes due for automatic deletion and is removed during the next automatic deletion run.',
               'Only the following count as activity: successful creation of a SkillPilot ID; foreground loading or resuming of the learning state in the SkillPilot web interface; a server-completed import or export of signed learner data; a learner-state change successfully stored on the server; a successfully completed SkillPilot session or AI-provider connection action; and a valid Coach/MCP call that SkillPilot completes with a successful domain result. Background GET requests, SSE traffic, OAuth token refreshes, merely selecting or opening a local file, and server operations that do not complete or are domain-rejected do not count and do not restart the 365-day period.',
@@ -135,7 +149,7 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             ],
           },
           {
-            title: '11. Your Rights and Learning Recommendations',
+            title: '12. Your Rights and Learning Recommendations',
             paragraphs: [
               'Subject to the conditions of the GDPR, you have rights of access, rectification, erasure, restriction of processing and data portability. You can withdraw consent at any time for the future without affecting the lawfulness of processing before withdrawal.',
               'You may object, on grounds relating to your particular situation, to processing based on Article 6(1)(f) GDPR. We will then stop that processing unless we demonstrate compelling overriding legitimate grounds or processing is needed for legal claims.',
@@ -146,16 +160,16 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             links: [{ label: 'Submit a complaint to the Hessian data-protection authority', href: 'https://datenschutz.hessen.de/service/beschwerde-uebermitteln' }],
           },
         ],
-        contactTitle: '12. Contact',
+        contactTitle: '13. Contact',
         contactIntro: 'If you have any questions about data protection, please contact us at:',
         imprintLabel: 'Imprint',
       }
     : {
         backToApp: 'Zurück zur App',
         title: 'Datenschutzerklärung',
-        effectiveDate: 'Stand: 5. Oktober 2026',
+        effectiveDate: 'Stand: 6. Oktober 2026',
         intro:
-          'SkillPilot speichert Ihren Lernfortschritt, nicht Ihr Gespräch mit dem Coach. Diese Erklärung erläutert die Datenverarbeitung bei SkillPilot, die getrennte Rolle des KI-Anbieters und Ihre Wahlmöglichkeiten. Die Claude-Beta läuft weiter; zusätzlich können Sie den ChatGPT-Desktop-Betatest über den Git-Marketplace ausprobieren, wenn Ihr Konto diese Plugin-Einrichtung unterstützt.',
+          'SkillPilot speichert Ihren Lernfortschritt, nicht Ihr Gespräch mit dem Coach. Diese Erklärung erläutert die Datenverarbeitung bei SkillPilot, die getrennte Rolle des KI-Anbieters und Ihre Wahlmöglichkeiten. Neben der Claude-Beta und geeigneten ChatGPT-Desktop-Konten gibt es für Gemini Web eine kontrollierte Beta mit einem privat eingerichteten Testkonto; ein öffentlicher Gemini-Zugang ist noch nicht abgenommen.',
         sections: [
           {
             title: '1. Verantwortlicher und pseudonyme Nutzung',
@@ -219,16 +233,30 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             ],
           },
           {
-            title: '6. Hosting, Empfänger und internationale Verarbeitung',
+            title: '6. KI-Assistenten: Kontrollierte Gemini-Beta',
+            paragraphs: [
+              'Wenn Sie Gemini wählen, verarbeitet Google Ihr Gespräch und den SkillPilot-Lernkontext unter Ihrem Google-Konto. Der kontrollierte Gemini-Web-Test bestätigte das Lesen und Speichern des Lernstands sowie die Fortsetzung in einem neuen Chat. Daraus folgt keine bestätigte Unterstützung weiterer Konten, mobiler Apps oder der Sprachnutzung.',
+              'Der importierte Coach-Skill und die verbundene Custom App haben unterschiedliche Aufgaben. SkillPilot erhält nur die zulässigen strukturierten Tooldaten; Antworten, Chattexte, Fotos, Audiodaten und ausformulierte Bewertungen werden vom Coach nicht an SkillPilot übertragen. Die dauerhafte SkillPilot-ID bleibt in SkillPilot. Die vorbereitete Startnachricht enthält einen privaten temporären Lernsession-Verweis mit 24 Stunden Gültigkeit; Toolzugriffe benötigen mindestens eine Stunde Restlaufzeit. Das erneute Verbinden der getrennten Google-App-Verbindung verlängert diese Lernsession nicht.',
+              'Google setzt für Skills und Custom Apps derzeit ein persönliches Konto, mindestens 18 Jahre und eingeschaltetes Keep Activity voraus; Custom Apps sind derzeit auf die USA und Englisch begrenzt. Bei eingeschaltetem Keep Activity speichert Google Gemini-Aktivitäten und kann sie zur Verbesserung seiner Dienste nutzen, auch mit menschlicher Prüfung. Prüfen Sie Googles Datenschutzhinweise, bevor Sie diesen Weg wählen. SkillPilot kann Ihre Google-Einstellungen nicht ändern und Ihre Gemini-Gespräche nicht löschen.',
+            ],
+            links: [
+              { label: 'Datenschutzhinweise für Gemini Apps', href: 'https://support.google.com/gemini/answer/13594961?hl=de' },
+              { label: 'Datenschutzerklärung von Google', href: 'https://policies.google.com/privacy?hl=de' },
+              { label: 'Google-Voraussetzungen für Custom Apps', href: 'https://support.google.com/gemini/answer/17209137?hl=en-12' },
+              { label: 'Google-Voraussetzungen für Skills', href: 'https://support.google.com/gemini/answer/17094296?hl=en' },
+            ],
+          },
+          {
+            title: '7. Hosting, Empfänger und internationale Verarbeitung',
             paragraphs: [
               'SkillPilot Core wird in Deutschland gehostet. Beim Betrieb der Website werden technische Verbindungsdaten wie IP-Adresse, Anfragezeitpunkt, angeforderte Ressource und Antwortstatus verarbeitet. Befugte Betreiberpersonen und Infrastrukturdienstleister können Daten verarbeiten, soweit dies für Bereitstellung, Absicherung und Wartung erforderlich ist. Korrespondenz wird auch über den für Support eingesetzten E-Mail-Dienst verarbeitet. Wir verkaufen Ihre Lerndaten nicht.',
-              'Das deutsche Hosting des Core bedeutet nicht, dass sämtliche Daten in Deutschland bleiben: Ihre Eingaben und den zurückgegebenen Lernkontext verarbeitet der gewählte KI-Anbieter – Anthropic bei Claude oder OpenAI bei ChatGPT – nach seinen Datenschutzbedingungen, einschließlich der einschlägigen internationalen Verarbeitung. Der Anbieter erläutert dort seine Schutzmechanismen für Übermittlungen. Seine Konto-, Aufbewahrungs- und Übermittlungsregeln sind von SkillPilot getrennt.',
+              'Das deutsche Hosting des Core bedeutet nicht, dass sämtliche Daten in Deutschland bleiben: Ihre Eingaben und den zurückgegebenen Lernkontext verarbeitet der gewählte KI-Anbieter – Anthropic bei Claude, OpenAI bei ChatGPT oder Google bei Gemini – nach seinen Datenschutzbedingungen, einschließlich der einschlägigen internationalen Verarbeitung. Der Anbieter erläutert dort seine Schutzmechanismen für Übermittlungen. Seine Konto-, Aufbewahrungs- und Übermittlungsregeln sind von SkillPilot getrennt.',
               'Wenn Sie externe Links öffnen, ein Plugin aus einer externen Quelle beziehen oder einen Drittanbieterdienst kontaktieren, entsteht eine Verbindung zu diesem Anbieter. Der bloße Besuch der SkillPilot-Startseite startet keine Lernsession bei einem KI-Anbieter. Eine Offenlegung an Behörden oder andere Empfänger setzt eine anwendbare gesetzliche Verpflichtung oder eine andere zulässige Rechtsgrundlage voraus.',
             ],
             links: [{ label: 'Anthropic: internationale Übermittlungen und Empfänger', href: 'https://www.anthropic.com/legal/privacy' }],
           },
           {
-            title: '7. Zwecke und Rechtsgrundlagen',
+            title: '8. Zwecke und Rechtsgrundlagen',
             paragraphs: [
               'Das Lernprofil und die für Ihre gewünschten Funktionen notwendigen Verbindungsdaten verarbeiten wir zur Erfüllung des Lernservices nach Art. 6 Abs. 1 Buchst. b DSGVO. Ohne diese Daten können die entsprechenden Funktionen nicht bereitgestellt werden. Öffentlich zugängliche Informationen können Sie ohne Lernprofil ansehen.',
               'Technische Bereitstellung, verhältnismäßige Absicherung und Fehlerdiagnose beruhen auf Art. 6 Abs. 1 Buchst. f DSGVO. Unsere berechtigten Interessen sind ein zuverlässiger Dienst, die Verhinderung von Missbrauch und die Behebung von Fehlern. Vertragsbezogener Support fällt unter Art. 6 Abs. 1 Buchst. b; sonstige Korrespondenz unter Art. 6 Abs. 1 Buchst. f, mit dem Interesse, Ihr Anliegen zu beantworten. Soweit eine gesetzliche Pflicht eine Verarbeitung verlangt, gilt Art. 6 Abs. 1 Buchst. c.',
@@ -236,7 +264,7 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             ],
           },
           {
-            title: '8. Freiwilliges Feedback und Support',
+            title: '9. Freiwilliges Feedback und Support',
             paragraphs: [
               'Im Cockpit können Sie Feedback zum dort automatisch ausgewählten aktuellen Lernziel öffnen, auch zum Verhalten des Coaches. Auch das Lernzielbuch verlinkt auf diesen Feedbackablauf. Erst mit dem Absenden des Formulars erhalten wir Ihren selbst eingegebenen Feedbacktext, die ausgewählte Perspektive, den Ziel- und Publikationskontext, eine zufällige Feedback-ID, den Eingangszeitpunkt und die dokumentierte Einwilligungs- beziehungsweise Hinweisversion. Das ist ein eigener Vorgang außerhalb der Coach-Schnittstelle, kein automatischer Chatexport und keine Mastery-Bewertung.',
               'Das Feedback dient ausschließlich dazu, das angezeigte Lernziel anhand Ihrer Beobachtungen zu prüfen und gegebenenfalls zu verbessern. Hinweise zum Coach-Verhalten werden in Bezug auf dieses Ziel betrachtet; die Einwilligung erlaubt keine zweckfremden Auswertungen oder allgemeines Modelltraining. Befugte Prüfende können dafür technische Dienste und automatisierte Unterstützung nutzen; Änderungen am Curriculum erfordern eine menschliche Freigabe. Das Formular fordert weder Ihre dauerhafte SkillPilot-ID noch Anhänge oder ein Chatprotokoll an. Bewahren Sie die Feedback-ID für Rückfragen oder einen Widerruf auf.',
@@ -245,7 +273,7 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             ],
           },
           {
-            title: '9. Browserspeicher und technische Diagnosen',
+            title: '10. Browserspeicher und technische Diagnosen',
             paragraphs: [
               'SkillPilot verwendet Browserspeicher für Ihren aktiven Zugang, optional gespeicherte Profile, lokale Lehrkraftdaten, Sprach- und Anzeigeeinstellungen, die akzeptierte Version der Nutzungsbedingungen und lokal zwischengespeicherte Anwendungsressourcen. Dazu gehören Local Storage und der Anwendungscache; ein Download ist eine separate Datei. Technisch notwendiges Speichern oder Auslesen auf Ihrem Gerät für einen ausdrücklich gewünschten Dienst richtet sich nach § 25 Abs. 2 TDDDG. Einwilligungspflichtige, nicht notwendige Zugriffe sind durch die bloße Annahme der Nutzungsbedingungen nicht erlaubt.',
               'Sie können Websitedaten in Ihrem Browser löschen. Dadurch entfernen Sie lokale Einstellungen und möglicherweise Ihren einzigen gespeicherten Zugangsschlüssel; sichern Sie zuvor gewünschte Informationen. Das Löschen im Browser entfernt weder den serverseitigen Lernstand noch heruntergeladene Dateien. Ein passwortgeschützter Export schützt keinen entsperrten Browser.',
@@ -253,7 +281,7 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             ],
           },
           {
-            title: '10. Speicherdauer, Tätigkeit und Löschung',
+            title: '11. Speicherdauer, Tätigkeit und Löschung',
             paragraphs: [
               'Nach 365 aufeinanderfolgenden Tagen ohne erfolgreiche Tätigkeit ist der aktive, unter Ihrer SkillPilot-ID in der SkillPilot-Datenbank gespeicherte Lernstand einschließlich der zugehörigen SkillPilot-Lernsessions und SkillPilot-Verbindungen zur automatischen Löschung fällig und wird beim nächsten automatischen Löschlauf entfernt.',
               'Als Tätigkeit zählen ausschließlich die erfolgreiche Erstellung einer SkillPilot-ID, das aktive Laden oder Fortsetzen des Lernstands in der SkillPilot-Weboberfläche, ein vom Server abgeschlossener Import oder Export signierter Lerndaten, eine serverseitig erfolgreich gespeicherte Änderung des Lernstands, eine erfolgreich abgeschlossene SkillPilot-Sitzungs- oder KI-Anbieter-Verbindungsaktion sowie ein gültiger Coach-/MCP-Aufruf, den SkillPilot mit einem fachlich erfolgreichen Ergebnis abschließt. Hintergrund-GET-Anfragen, SSE-Verkehr, OAuth-Token-Aktualisierungen, das bloße Auswählen oder Öffnen einer lokalen Datei sowie vom Server nicht abgeschlossene oder fachlich abgewiesene Aktionen zählen nicht und starten die 365-Tage-Frist nicht neu.',
@@ -264,7 +292,7 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             ],
           },
           {
-            title: '11. Ihre Rechte und Lernempfehlungen',
+            title: '12. Ihre Rechte und Lernempfehlungen',
             paragraphs: [
               'Unter den Voraussetzungen der DSGVO haben Sie Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Datenübertragbarkeit. Eine Einwilligung können Sie jederzeit für die Zukunft widerrufen; die Rechtmäßigkeit der Verarbeitung vor dem Widerruf bleibt unberührt.',
               'Gegen eine Verarbeitung nach Art. 6 Abs. 1 Buchst. f DSGVO können Sie aus Gründen Ihrer besonderen Situation Widerspruch einlegen. Wir beenden diese Verarbeitung dann, sofern wir keine zwingenden überwiegenden schutzwürdigen Gründe nachweisen oder die Verarbeitung für Rechtsansprüche benötigen.',
@@ -275,7 +303,7 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             links: [{ label: 'Beschwerde beim Hessischen Beauftragten für Datenschutz und Informationsfreiheit', href: 'https://datenschutz.hessen.de/service/beschwerde-uebermitteln' }],
           },
         ],
-        contactTitle: '12. Kontakt',
+        contactTitle: '13. Kontakt',
         contactIntro: 'Bei Fragen zum Datenschutz erreichen Sie uns unter:',
         imprintLabel: 'Impressum',
       }

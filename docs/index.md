@@ -14,6 +14,9 @@ This project is an invitation to the community to jointly build and bring to lif
 -   [Schnellstart (DE)](quickstart/story.de.md)
 -   [Quickstart (EN)](quickstart/story.en.md)
 -   [Live app](https://skillpilot.com)
+-   [Coach setup: Claude, ChatGPT Desktop (Beta) and Gemini (Beta)](https://skillpilot.com/plugins)
+
+Gemini uses an imported coaching Skill and a connected Custom App in Gemini Web. The controlled test with one privately configured operator account confirmed saved learning progress and continuation in a new chat. Public onboarding, additional accounts, mobile and voice still require acceptance; learning-goal images currently have a tested direct-link route. See the [Gemini setup guide](https://skillpilot.com/plugins#gemini) and [integration runbook](deploy/gemini-integration.md). Deployment and activation are separate steps.
 
 ### Curriculum champions
 -   [Curricula & Champions](https://skillpilot.com/curricula)
@@ -28,7 +31,7 @@ This project is an invitation to the community to jointly build and bring to lif
 -   [Whitepaper (DE)](whitepaper/whitepaper.de.md)
 -   [Levels of personalization](concept/levels-of-personalization.md)
 
-### AI learning coach (ChatGPT / MCP)
+### AI learning coaches (Claude, ChatGPT & Gemini / MCP)
 
 Diese Architekturtexte sind derzeit auf Deutsch verfasst. Der beschriebene
 OpenAI-V1-Vertrag ist dennoch sprachneutral und bedient alle vom Backend
@@ -36,11 +39,12 @@ freigegebenen Interaktionssprachen.
 
 -   [SkillPilot-Lerncoach: OpenAI-Plugin-, Skill- und MCP-App-Architektur](concept/runtime-workflows/skillpilot-owned-coach-architecture.md)
 -   [Kommunikationsvertrag zwischen ChatClient und SkillPilot-Backend](concept/runtime-workflows/provider-neutral-coach-boundary.md)
+-   [SkillPilot in Gemini: Integrationskandidat, Einrichtung und Betriebsgrenzen](deploy/gemini-integration.md)
 -   [OpenAI-Plugin: Versionierung und Lebenszyklus](concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md)
 -   [OpenAI-MCP-App: OAuth-Appbindung und 24h-Lernsession](concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
 -   [OpenAI-MCP-Clientbindung](security/openai-mcp-client-binding.md)
 -   [Release, Rollback und Stilllegung von SkillPilot Coach v1](deploy/openai-plugin-v1-release.md)
--   [Aktive OpenAI-Review-Sperre für SkillPilot Coach v1.0.0](deploy/openai-plugin-v1-review-freeze.md)
+-   [OpenAI-Review: Ablehnung, aufgehobene Sperre und historische Nachweise](deploy/openai-plugin-v1-review-freeze.md)
 -   [OpenAI-Submission-Dossier für SkillPilot Coach v1](deploy/openai-plugin-v1-submission.md)
 -   [Rollback: ChatGPT Visible Session](concept/runtime-workflows/chatgpt-visible-session-flow.md)
 

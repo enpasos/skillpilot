@@ -102,8 +102,8 @@ export const CoachProviderMatrix: React.FC<{ language: LabelLanguage }> = ({ lan
           <p id="coach-provider-filter-hint" className="mt-1 text-sm text-text-secondary">
             {copy.providerFilterHint}
           </p>
-          <div className="mt-3 inline-flex rounded-xl border border-border-color bg-slate-100 p-1 dark:bg-slate-950/70">
-            {(['Claude', 'ChatGPT'] as CoachMatrixProvider[]).map(provider => {
+          <div className="mt-3 inline-flex max-w-full flex-wrap rounded-xl border border-border-color bg-slate-100 p-1 dark:bg-slate-950/70">
+            {(['Claude', 'ChatGPT', 'Gemini'] as CoachMatrixProvider[]).map(provider => {
               const isSelected = selectedProvider === provider
               return (
                 <label key={provider} className="cursor-pointer">

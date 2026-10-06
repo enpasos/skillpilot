@@ -44,12 +44,12 @@ export const getMarkdownDocumentViewCopy = (
         en: {
           eyebrow: 'Quickstart video',
           title: 'Start with Claude in 5 steps',
-          description: 'Set up SkillPilot, add the Claude marketplace and start learning in the Claude chat – step by step with real screen recordings. English AI-generated narration and English captions. Recorded on September 13, 2026; its ChatGPT availability statement is outdated. ChatGPT Desktop is now available through the Git marketplace.',
+          description: 'Set up SkillPilot, add the Claude marketplace and start learning in the Claude chat – step by step with real screen recordings. English AI-generated narration and English captions. Recorded on September 13, 2026; its ChatGPT availability statement is outdated. The current setup guide also covers ChatGPT Desktop through the Git marketplace and the controlled Gemini Web beta.',
         },
         de: {
           eyebrow: 'Quickstart-Video',
           title: 'In 5 Schritten mit Claude starten',
-          description: 'SkillPilot einrichten, den Claude-Marketplace hinzufügen und im Claude-Chat loslernen – Schritt für Schritt mit echten Bildschirmaufnahmen. KI-generierte Sprecherstimme · deutsche Untertitel. Aufnahme vom 13. September 2026; die damalige Aussage zur ChatGPT-Verfügbarkeit ist überholt. ChatGPT Desktop ist jetzt über den Git-Marketplace verfügbar.',
+          description: 'SkillPilot einrichten, den Claude-Marketplace hinzufügen und im Claude-Chat loslernen – Schritt für Schritt mit echten Bildschirmaufnahmen. KI-generierte Sprecherstimme · deutsche Untertitel. Aufnahme vom 13. September 2026; die damalige Aussage zur ChatGPT-Verfügbarkeit ist überholt. Die aktuelle Einrichtungsanleitung umfasst auch ChatGPT Desktop über den Git-Marketplace und die kontrollierte Gemini-Web-Beta.',
         },
       }
 

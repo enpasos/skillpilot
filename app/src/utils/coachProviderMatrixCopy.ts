@@ -16,8 +16,9 @@ export type CoachMatrixVariantId =
   | 'claude-free'
   | 'claude-pro-max'
   | 'claude-team-enterprise'
+  | 'gemini-controlled-web'
 
-export type CoachMatrixProvider = 'ChatGPT' | 'Claude'
+export type CoachMatrixProvider = 'ChatGPT' | 'Claude' | 'Gemini'
 
 export interface CoachMatrixCell {
   status: CoachMatrixStatus
@@ -132,6 +133,13 @@ const germanVariants: CoachMatrixVariant[] = [
     plan: 'Team / Enterprise',
     summary: 'Technisch pluginfähig, aber nicht der aktuelle SkillPilot-Betaweg für Einzelpersonen; zusätzlich können Organisationsfreigaben gelten.',
   },
+  {
+    id: 'gemini-controlled-web',
+    provider: 'Gemini',
+    plan: 'Gemini Web',
+    badge: 'Kontrollierter Betatest',
+    summary: 'Bisher mit einem persönlichen Google-Konto in der englischen Weboberfläche über einen US-Testzugang erprobt. Du brauchst einen eigens freigegebenen SkillPilot-Zugang, Custom Apps und Skills; eine öffentliche Einrichtung für weitere Konten ist noch nicht bestätigt.',
+  },
 ]
 
 const englishVariants: CoachMatrixVariant[] = [
@@ -179,6 +187,13 @@ const englishVariants: CoachMatrixVariant[] = [
     plan: 'Team / Enterprise',
     summary: 'Technically plugin-capable, but not the current SkillPilot beta route for individuals; organisation approval may also apply.',
   },
+  {
+    id: 'gemini-controlled-web',
+    provider: 'Gemini',
+    plan: 'Gemini Web',
+    badge: 'Controlled beta',
+    summary: 'Tested with one personal Google account in the English web interface through a US test connection. You need separately approved SkillPilot access, custom apps and Skills; public setup for additional accounts is not yet confirmed.',
+  },
 ]
 
 const germanGroups: CoachMatrixGroup[] = [
@@ -197,6 +212,7 @@ const germanGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'Vollständiges Plugin nicht verfügbar', 'Für den unterstützten SkillPilot-Betaweg ist Claude Pro erforderlich.'),
           'claude-pro-max': cell('available', 'Ja, im laufenden Betatest', 'Installiere und verbinde das aktuelle Plugin nach der Anleitung unter „Plugins“.'),
           'claude-team-enterprise': cell('planned', 'Plugin noch nicht für neue Lernende freigegeben'),
+          'gemini-controlled-web': cell('conditional', 'Kontrollierter Gemini-Web-Betatest', 'Bisher ein Google-Konto mit eigens freigegebenem SkillPilot-Zugang. Weitere Konten und öffentliche Einrichtung sind noch nicht bestätigt.'),
         },
       },
       {
@@ -210,11 +226,12 @@ const germanGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'Kein vollständiger Plugin-Zugang', 'Für den unterstützten SkillPilot-Betaweg ist Claude Pro erforderlich.'),
           'claude-pro-max': cell('available', 'Claude Pro', 'Der aktuelle SkillPilot-Betaweg für Einzelpersonen.'),
           'claude-team-enterprise': cell('admin', 'Vollständiges Plugin nach Freigabe durch deine Organisation möglich'),
+          'gemini-controlled-web': cell('conditional', 'Persönliches Google-Konto mit Custom Apps und Skills', 'Google nennt derzeit US-Zugang, Englisch und aktivierte „Keep Activity“. Beide Funktionen müssen in deinem Konto freigeschaltet sein; ein Tarif allein garantiert das nicht.'),
         },
       },
       {
         id: 'minimum-age',
-        feature: 'Wie alt muss ich für das ChatGPT- oder Claude-Konto sein?',
+        feature: 'Wie alt muss ich für mein Anbieter-Konto sein?',
         cells: {
           'chatgpt-free-go': cell('conditional', 'Mindestens 13 Jahre oder nationales Mindestalter', 'Unter 18 brauchst du die Zustimmung eines Elternteils oder einer sorgeberechtigten Person.'),
           'chatgpt-plus-pro': cell('conditional', 'Mindestens 13 Jahre oder nationales Mindestalter', 'Unter 18 brauchst du die Zustimmung eines Elternteils oder einer sorgeberechtigten Person.'),
@@ -223,6 +240,7 @@ const germanGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'Mindestens 18 Jahre'),
           'claude-pro-max': cell('conditional', 'Mindestens 18 Jahre'),
           'claude-team-enterprise': cell('unavailable', 'Mindestens 18 Jahre'),
+          'gemini-controlled-web': cell('conditional', 'Mindestens 18 Jahre für Custom Apps und Skills', 'Es gelten die aktuellen Google-Regeln für diese Funktionen.'),
         },
       },
       {
@@ -236,6 +254,7 @@ const germanGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'Kein vollständiger Plugin-Zugang', 'Für den unterstützten SkillPilot-Betaweg ist Claude Pro erforderlich.'),
           'claude-pro-max': cell('conditional', 'Bezahlter Anbieter-Tarif', 'SkillPilot selbst berechnet keine zusätzliche Gebühr.'),
           'claude-team-enterprise': cell('admin', 'Wird von deiner Organisation festgelegt'),
+          'gemini-controlled-web': cell('conditional', 'SkillPilot selbst ohne zusätzliche Gebühr', 'Prüfe Kosten und Funktionszugang deines Google-Kontos. Der getestete Zugang belegt keine allgemeine Tarifverfügbarkeit.'),
         },
       },
     ],
@@ -255,6 +274,7 @@ const germanGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'Kein vollständiger Plugin-Start', 'Für den unterstützten SkillPilot-Betaweg ist Claude Pro erforderlich.'),
           'claude-pro-max': cell('available', 'In SkillPilot „Lernen starten“ wählen', 'Installiere und verbinde das Plugin vorher einmalig nach der Anleitung unter „Plugins“.'),
           'claude-team-enterprise': cell('admin', 'Nach Freigabe ebenfalls über „Lernen starten“'),
+          'gemini-controlled-web': cell('conditional', 'In SkillPilot „Lernen starten“ → „Gemini (Beta)“ → „Lernen mit Gemini vorbereiten“', 'Coach-Skill importieren und Custom App verbinden. Im neuen Gemini-Chat mit „/“ den Skill und mit „@“ SkillPilot auswählen; dann die neue Startnachricht senden.'),
         },
       },
       {
@@ -268,6 +288,7 @@ const germanGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'Nicht über das vollständige Plugin verfügbar'),
           'claude-pro-max': cell('available', '24 Stunden ab dem Start', 'Danach in SkillPilot eine neue Lernsession starten.'),
           'claude-team-enterprise': cell('admin', 'Nach Freigabe: 24 Stunden ab dem Start'),
+          'gemini-controlled-web': cell('conditional', '24 Stunden ab dem Start; spätestens nach 23 Stunden neu vorbereiten', 'Die Verbindung im kontrollierten Betatest benötigt nach spätestens einer Stunde oder einem Neustart eine erneute Verbindung. Das verlängert die Lernsession nicht.'),
         },
       },
       {
@@ -281,6 +302,7 @@ const germanGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'Kein vollständiger Plugin-Zugang'),
           'claude-pro-max': cell('available', 'Dauerhafter Lernstand bleibt bei SkillPilot', 'Teile die vorbereitete Startnachricht und den Lernchat nicht mit anderen.'),
           'claude-team-enterprise': cell('admin', 'Dieselbe Schutzregel gilt vor einer Freigabe als Voraussetzung'),
+          'gemini-controlled-web': cell('conditional', 'Dauerhafter Lernstand bleibt bei SkillPilot', 'Teile die vorbereitete Startnachricht, den Lernchat und private Verbindungsdaten nicht. Die dauerhafte Lern-ID bleibt bei SkillPilot.'),
         },
       },
     ],
@@ -300,6 +322,7 @@ const germanGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'Kein vollständiges Plugin mit Coaching-Skill'),
           'claude-pro-max': cell('available', 'Aktuelles Lernziel, Tagesplan, Fortschritt, Lernzielbilder, Kartenübungen und Abfragen', 'Im Betatest verbessern wir die Lernabläufe anhand eurer Rückmeldungen.'),
           'claude-team-enterprise': cell('admin', 'Dieselben Lernfunktionen nach der Freigabe'),
+          'gemini-controlled-web': cell('tested', 'Lernkontext, gespeicherter Fortschritt und Fortsetzung im neuen Chat', 'Im kontrollierten Ein-Konto-Test bestätigt. Lernzielbilder öffnen über einen Direktlink; eingebettete Bilder, vollständige Kartenübung, Verified Recall und Prüfungen sind im Gemini-Host noch zu prüfen.'),
         },
       },
       {
@@ -313,6 +336,7 @@ const germanGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'Nicht über das vollständige Plugin verfügbar'),
           'claude-pro-max': cell('tested', 'Ja – lade Fotos hoch oder nutze die Kamera direkt in der Claude-App.', 'Am praktischsten mit dem Handy. Persönliche Angaben vorher verdecken.'),
           'claude-team-enterprise': cell('planned', 'Nach Freigabe, wenn dein normaler Textchat Uploads anbietet'),
+          'gemini-controlled-web': cell('conditional', 'Wenn dein normaler Gemini-Textchat Uploads anbietet', 'Für SkillPilot in Gemini noch nicht geprüft. Persönliche Angaben vorher verdecken.'),
         },
       },
       {
@@ -326,6 +350,7 @@ const germanGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'Kein vollständiger Plugin-Zugang'),
           'claude-pro-max': cell('available', 'Claude Web und die Claude-App', 'Verwende das Konto, in dem du das SkillPilot-Plugin installiert hast.'),
           'claude-team-enterprise': cell('admin', 'Claude Web im Browser nach Freigabe'),
+          'gemini-controlled-web': cell('tested', 'Gemini Web in der englischen Oberfläche', 'Ein persönliches Google-Konto über einen US-Testzugang. Die SkillPilot-Lernsession kann auf Deutsch oder Englisch geführt werden.'),
         },
       },
       {
@@ -339,6 +364,7 @@ const germanGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'Kein vollständiger Plugin-Zugang'),
           'claude-pro-max': cell('available', 'Ja, die Claude-App funktioniert im Betatest', 'Installiere das Plugin zuerst in Claude Web und nutze dann dasselbe Konto in der App.'),
           'claude-team-enterprise': cell('admin', 'Nicht Teil des aktuellen SkillPilot-Betawegs'),
+          'gemini-controlled-web': cell('planned', 'Mobile Gemini-App mit SkillPilot noch nicht geprüft', 'Für den kontrollierten Test Gemini Web verwenden.'),
         },
       },
       {
@@ -352,6 +378,7 @@ const germanGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'Nicht über das vollständige Plugin verfügbar'),
           'claude-pro-max': cell('available', 'Ja, als Texteingabe im normalen Chat', 'Prüfe den erkannten Text vor dem Senden.'),
           'claude-team-enterprise': cell('planned', 'Nach Freigabe als Texteingabe im normalen Chat'),
+          'gemini-controlled-web': cell('conditional', 'Wenn dein Gerät Diktat als normale Texteingabe anbietet', 'Für SkillPilot in Gemini noch nicht geprüft; kontrolliere den erkannten Text vor dem Senden.'),
         },
       },
       {
@@ -365,6 +392,7 @@ const germanGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'Kein vollständiger Plugin-Zugang'),
           'claude-pro-max': cell('available', 'Ja, Voice Mode funktioniert im Betatest', 'Die Sprachausgabe stockt gelegentlich. Warte dann kurz – in den bisherigen Tests spricht Claude anschließend weiter.'),
           'claude-team-enterprise': cell('admin', 'Nicht Teil des aktuellen SkillPilot-Betawegs'),
+          'gemini-controlled-web': cell('planned', 'Voice mit SkillPilot in Gemini noch nicht geprüft', 'Die Erfahrungen mit Claude und ChatGPT bestätigen keine Gemini-Voice-Funktionen.'),
         },
       },
     ],
@@ -387,6 +415,7 @@ const englishGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'Complete plugin not available', 'Claude Pro is required for the supported SkillPilot beta route.'),
           'claude-pro-max': cell('available', 'Yes, in the ongoing beta', 'Install and connect the current plugin using the guide under “Plugins”.'),
           'claude-team-enterprise': cell('planned', 'Plugin not yet released for new learners'),
+          'gemini-controlled-web': cell('conditional', 'Controlled Gemini web beta', 'One Google account with separately approved SkillPilot access so far. Additional accounts and public setup are not yet confirmed.'),
         },
       },
       {
@@ -400,11 +429,12 @@ const englishGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'No complete plugin access', 'Claude Pro is required for the supported SkillPilot beta route.'),
           'claude-pro-max': cell('available', 'Claude Pro', 'The current SkillPilot beta route for individuals.'),
           'claude-team-enterprise': cell('admin', 'Complete plugin possible after approval from your organisation'),
+          'gemini-controlled-web': cell('conditional', 'Personal Google account with custom apps and Skills', 'Google currently requires US access, English and Keep Activity enabled. Both features must be enabled for your account; a plan alone does not guarantee this.'),
         },
       },
       {
         id: 'minimum-age',
-        feature: 'How old must I be for the ChatGPT or Claude account?',
+        feature: 'How old must I be for my provider account?',
         cells: {
           'chatgpt-free-go': cell('conditional', 'At least 13 or the minimum age in your country', 'If you are under 18, you need permission from a parent or legal guardian.'),
           'chatgpt-plus-pro': cell('conditional', 'At least 13 or the minimum age in your country', 'If you are under 18, you need permission from a parent or legal guardian.'),
@@ -413,6 +443,7 @@ const englishGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'At least 18'),
           'claude-pro-max': cell('conditional', 'At least 18'),
           'claude-team-enterprise': cell('unavailable', 'At least 18'),
+          'gemini-controlled-web': cell('conditional', 'At least 18 for custom apps and Skills', 'The current Google rules for these features apply.'),
         },
       },
       {
@@ -426,6 +457,7 @@ const englishGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'No complete plugin access', 'Claude Pro is required for the supported SkillPilot beta route.'),
           'claude-pro-max': cell('conditional', 'Paid provider plan', 'SkillPilot does not charge an additional fee.'),
           'claude-team-enterprise': cell('admin', 'Set by your organisation'),
+          'gemini-controlled-web': cell('conditional', 'No additional charge from SkillPilot', 'Check your Google account’s costs and feature access. The tested access does not establish general plan availability.'),
         },
       },
     ],
@@ -445,6 +477,7 @@ const englishGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'No complete plugin start', 'Claude Pro is required for the supported SkillPilot beta route.'),
           'claude-pro-max': cell('available', 'Select “Start Learning” in SkillPilot', 'First install and connect the plugin once using the guide under “Plugins”.'),
           'claude-team-enterprise': cell('admin', 'After approval, also use “Start Learning”'),
+          'gemini-controlled-web': cell('conditional', 'In SkillPilot select “Start Learning” → “Gemini (Beta)” → “Prepare learning with Gemini”', 'Import the coaching Skill and connect the custom app. In a new Gemini chat, use “/” to select the Skill and “@” to select SkillPilot; then send the new start message.'),
         },
       },
       {
@@ -458,6 +491,7 @@ const englishGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'Not available through the complete plugin'),
           'claude-pro-max': cell('available', '24 hours from the start', 'After that, start a new learning session in SkillPilot.'),
           'claude-team-enterprise': cell('admin', 'After approval: 24 hours from the start'),
+          'gemini-controlled-web': cell('conditional', '24 hours from the start; prepare again after at most 23 hours', 'The controlled beta connection requires reconnecting after at most one hour or a restart. This does not extend the learning session.'),
         },
       },
       {
@@ -471,6 +505,7 @@ const englishGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'No complete plugin access'),
           'claude-pro-max': cell('available', 'Your long-term learning record stays with SkillPilot', 'Do not share the prepared start message or your learning chat with other people.'),
           'claude-team-enterprise': cell('admin', 'The same protection is required before release'),
+          'gemini-controlled-web': cell('conditional', 'Your long-term learning record stays with SkillPilot', 'Do not share the prepared start message, learning chat or private connection details. Your permanent learner ID stays with SkillPilot.'),
         },
       },
     ],
@@ -490,6 +525,7 @@ const englishGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'No complete plugin with the coaching Skill'),
           'claude-pro-max': cell('available', 'Current learning goal, daily plan, progress, goal images, card practice, and assessments', 'During the beta, we improve learning flows based on your feedback.'),
           'claude-team-enterprise': cell('admin', 'The same learning features after approval'),
+          'gemini-controlled-web': cell('tested', 'Learning context, saved progress and continuation in a new chat', 'Confirmed in the controlled single-account test. Goal images open through a direct link; embedded images, full card practice, Verified Recall and exams still need checking in Gemini.'),
         },
       },
       {
@@ -503,6 +539,7 @@ const englishGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'Not available through the complete plugin'),
           'claude-pro-max': cell('tested', 'Yes – upload photos or use the camera directly in the Claude app.', 'Most convenient on your phone. Hide personal information first.'),
           'claude-team-enterprise': cell('planned', 'After release, when your normal text chat offers uploads'),
+          'gemini-controlled-web': cell('conditional', 'When your normal Gemini text chat offers uploads', 'Not yet checked for SkillPilot in Gemini. Hide personal information first.'),
         },
       },
       {
@@ -516,6 +553,7 @@ const englishGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'No complete plugin access'),
           'claude-pro-max': cell('available', 'Claude Web and the Claude app', 'Use the account where you installed the SkillPilot plugin.'),
           'claude-team-enterprise': cell('admin', 'Claude Web in a browser after approval'),
+          'gemini-controlled-web': cell('tested', 'Gemini Web in the English interface', 'One personal Google account through a US test connection. Your SkillPilot learning session can use German or English.'),
         },
       },
       {
@@ -529,6 +567,7 @@ const englishGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'No complete plugin access'),
           'claude-pro-max': cell('available', 'Yes, the Claude app works in the beta', 'Install the plugin in Claude Web first, then use the same account in the app.'),
           'claude-team-enterprise': cell('admin', 'Not part of the current SkillPilot beta route'),
+          'gemini-controlled-web': cell('planned', 'Mobile Gemini app with SkillPilot not yet checked', 'Use Gemini Web for the controlled test.'),
         },
       },
       {
@@ -542,6 +581,7 @@ const englishGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'Not available through the complete plugin'),
           'claude-pro-max': cell('available', 'Yes, as text input in normal chat', 'Check the recognised text before sending.'),
           'claude-team-enterprise': cell('planned', 'After release, as text input in normal chat'),
+          'gemini-controlled-web': cell('conditional', 'When your device offers dictation as ordinary text input', 'Not yet checked for SkillPilot in Gemini; check the recognised text before sending.'),
         },
       },
       {
@@ -555,6 +595,7 @@ const englishGroups: CoachMatrixGroup[] = [
           'claude-free': cell('unavailable', 'No complete plugin access'),
           'claude-pro-max': cell('available', 'Yes, voice mode works in the beta', 'Speech occasionally stalls. Wait briefly – in our tests, Claude then continues speaking.'),
           'claude-team-enterprise': cell('admin', 'Not part of the current SkillPilot beta route'),
+          'gemini-controlled-web': cell('planned', 'Voice with SkillPilot in Gemini not yet checked', 'Experience with Claude and ChatGPT does not confirm Gemini voice features.'),
         },
       },
     ],
@@ -563,12 +604,12 @@ const englishGroups: CoachMatrixGroup[] = [
 
 const germanCopy: CoachProviderMatrixCopy = {
   title: 'Welcher Zugang passt zu mir?',
-  intro: 'Die Claude-Beta läuft weiter. Zusätzlich kannst du den ChatGPT-Desktop-Betatest über den Git-Marketplace ausprobieren, wenn dein Konto die Plugin-Einrichtung unterstützt.',
-  asOf: 'Stand: 5. Oktober 2026',
+  intro: 'Die Claude-Beta läuft weiter. Zusätzlich kannst du den ChatGPT-Desktop-Betatest über den Git-Marketplace ausprobieren, wenn dein Konto die Plugin-Einrichtung unterstützt. Gemini ist als kontrollierter Web-Betatest mit eigens freigegebenem Zugang ergänzt; eine öffentliche Einrichtung für weitere Konten ist noch nicht bestätigt.',
+  asOf: 'Stand: 6. Oktober 2026',
   featureHeading: 'Was du wissen möchtest',
   mobileFeatureHeading: 'Antworten für diesen Zugang',
   providerFilterLabel: 'Welchen Anbieter möchtest du prüfen?',
-  providerFilterHint: 'Zeige nur ChatGPT oder nur Claude. Du kannst jederzeit wechseln.',
+  providerFilterHint: 'Zeige Claude, ChatGPT oder Gemini. Du kannst jederzeit wechseln.',
   statusLabels: {
     available: 'Grundsätzlich möglich',
     tested: 'Von SkillPilot erprobt',
@@ -579,10 +620,10 @@ const germanCopy: CoachProviderMatrixCopy = {
   },
   legendLabel: 'Bedeutung',
   startTitle: 'So startest du deine Lernsession',
-  startText: 'Installiere und verbinde das SkillPilot-Plugin nach der aktuellen Anleitung unter „Plugins“. Wähle in SkillPilot den passenden Coach und seine Startoption. Sende die neue Startnachricht bei Claude in einem neuen Chat, bei ChatGPT Desktop in einer neuen Unterhaltung im Bereich „Work“. Deine Lernsession ist 24 Stunden gültig.',
+  startText: 'Installiere und verbinde das SkillPilot-Plugin nach der aktuellen Anleitung unter „Plugins“. Wähle in SkillPilot den passenden Coach und seine Startoption. Sende die neue Startnachricht bei Claude in einem neuen Chat, bei ChatGPT Desktop in einer neuen Unterhaltung im Bereich „Work“. Für Gemini brauchst du den importierten Coach-Skill und die verbundene Custom App; aktiviere beide im neuen Chat mit „/“ und „@“. Deine Lernsession ist 24 Stunden gültig; bereite für Gemini spätestens nach 23 Stunden eine neue vor.',
   privacyTitle: 'Halte den Zugang zu deiner Lernsession privat',
   privacyText: 'Teile die vorbereitete Startnachricht und den Lernchat nicht mit anderen. Dein dauerhafter Lernstand bleibt bei SkillPilot.',
-  caveat: 'Installation und Lernstart in ChatGPT Desktop unter Windows sind im Betatest bestätigt. Nutze den Bereich „Work“; im Bereich „Chat“ ist das Plugin derzeit nicht nutzbar. Weitere Lernfunktionen werden im Betatest erprobt. SkillPilot ist noch nicht im öffentlichen ChatGPT-App-Verzeichnis veröffentlicht. Browser, mobile App und automatische Updates für alle Konten sind nicht bestätigt. Anbieter können Tarife und Funktionen ändern.',
+  caveat: 'Installation und Lernstart in ChatGPT Desktop unter Windows sind im Betatest bestätigt. Nutze den Bereich „Work“; im Bereich „Chat“ ist das Plugin derzeit nicht nutzbar. Weitere Lernfunktionen werden im Betatest erprobt. SkillPilot ist noch nicht im öffentlichen ChatGPT-App-Verzeichnis veröffentlicht. Browser, mobile App und automatische Updates für alle Konten sind nicht bestätigt. Der Gemini-Webtest bestätigt Lernkontext, Speichern und Fortsetzung für ein Google-Konto in einer separaten Testumgebung. Weitere Konten, mobile App, Voice und vollständige Karten-/Prüfungsabläufe sind noch nicht bestätigt. Anbieter können Tarife und Funktionen ändern.',
   variants: germanVariants,
   groups: germanGroups,
   sourcesTitle: 'Offizielle Angaben der Anbieter',
@@ -593,17 +634,19 @@ const germanCopy: CoachProviderMatrixCopy = {
     { id: 'anthropic-access', label: 'Claude: unterstützte Tarife', href: 'https://support.claude.com/en/articles/13837440-use-plugins-in-claude' },
     { id: 'anthropic-voice', label: 'Claude: Voice Mode', href: 'https://support.claude.com/en/articles/11101966-use-voice-mode' },
     { id: 'anthropic-age', label: 'Claude: Mindestalter', href: 'https://support.claude.com/en/articles/13117299-minimum-age-requirement-access-restriction' },
+    { id: 'google-custom-apps', label: 'Gemini: Custom Apps und Voraussetzungen', href: 'https://support.google.com/gemini/answer/17209137?hl=en-12' },
+    { id: 'google-skills', label: 'Gemini: Skills importieren und Voraussetzungen', href: 'https://support.google.com/gemini/answer/17094296?hl=en' },
   ],
 }
 
 const englishCopy: CoachProviderMatrixCopy = {
   title: 'Which access option fits me?',
-  intro: 'The Claude beta continues. You can also try the ChatGPT desktop beta through the Git marketplace if your account supports plugin setup.',
-  asOf: 'Status: October 5, 2026',
+  intro: 'The Claude beta continues. You can also try the ChatGPT desktop beta through the Git marketplace if your account supports plugin setup. Gemini has been added as a controlled web beta with separately approved access; public setup for additional accounts is not yet confirmed.',
+  asOf: 'Status: October 6, 2026',
   featureHeading: 'What you want to know',
   mobileFeatureHeading: 'Answers for this access option',
   providerFilterLabel: 'Which provider do you want to check?',
-  providerFilterHint: 'Show only ChatGPT or only Claude. You can switch at any time.',
+  providerFilterHint: 'Show Claude, ChatGPT or Gemini. You can switch at any time.',
   statusLabels: {
     available: 'Possible in principle',
     tested: 'Tested by SkillPilot',
@@ -614,10 +657,10 @@ const englishCopy: CoachProviderMatrixCopy = {
   },
   legendLabel: 'Meaning',
   startTitle: 'Start your learning session',
-  startText: 'Install and connect the SkillPilot plugin using the current guide under “Plugins”. Select the matching coach and its start option in SkillPilot. Send the new start message in a new Claude chat or a new conversation in the “Work” section of ChatGPT Desktop. Your learning session is valid for 24 hours.',
+  startText: 'Install and connect the SkillPilot plugin using the current guide under “Plugins”. Select the matching coach and its start option in SkillPilot. Send the new start message in a new Claude chat or a new conversation in the “Work” section of ChatGPT Desktop. Gemini requires the imported coaching Skill and connected custom app; select both in a new chat with “/” and “@”. Your learning session is valid for 24 hours; for Gemini, prepare a new one after at most 23 hours.',
   privacyTitle: 'Keep access to your learning session private',
   privacyText: 'Do not share the prepared start message or your learning chat with other people. Your long-term learning record stays with SkillPilot.',
-  caveat: 'Installation and learning start in ChatGPT Desktop on Windows are confirmed in the beta. Use the “Work” section; the plugin is currently unavailable in “Chat”. We are trying further learning features in the beta. SkillPilot has not been published in the public ChatGPT app directory. Browser and mobile access, and automatic updates for every account, are not confirmed. Providers may change plans and features.',
+  caveat: 'Installation and learning start in ChatGPT Desktop on Windows are confirmed in the beta. Use the “Work” section; the plugin is currently unavailable in “Chat”. We are trying further learning features in the beta. SkillPilot has not been published in the public ChatGPT app directory. Browser and mobile access, and automatic updates for every account, are not confirmed. The Gemini web test confirms learning context, saving and continuation for one Google account in a separate test environment. Additional accounts, mobile app, voice and full card/exam flows are not yet confirmed. Providers may change plans and features.',
   variants: englishVariants,
   groups: englishGroups,
   sourcesTitle: 'Official provider information',
@@ -628,6 +671,8 @@ const englishCopy: CoachProviderMatrixCopy = {
     { id: 'anthropic-access', label: 'Claude: supported plans', href: 'https://support.claude.com/en/articles/13837440-use-plugins-in-claude' },
     { id: 'anthropic-voice', label: 'Claude: voice mode', href: 'https://support.claude.com/en/articles/11101966-use-voice-mode' },
     { id: 'anthropic-age', label: 'Claude: minimum age', href: 'https://support.claude.com/en/articles/13117299-minimum-age-requirement-access-restriction' },
+    { id: 'google-custom-apps', label: 'Gemini: custom apps and requirements', href: 'https://support.google.com/gemini/answer/17209137?hl=en-12' },
+    { id: 'google-skills', label: 'Gemini: importing Skills and requirements', href: 'https://support.google.com/gemini/answer/17094296?hl=en' },
   ],
 }
 

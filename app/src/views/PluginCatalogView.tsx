@@ -13,6 +13,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 import { LanguageToggle } from '../components/LanguageToggle'
 import { ChatGptDesktopSetupGuide } from '../components/ChatGptDesktopSetupGuide'
+import { GeminiSetupGuide } from '../components/GeminiSetupGuide'
 import { PublicPageHeader } from '../components/PublicPageHeader'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -32,7 +33,7 @@ const copy = (version?: string) => ({
   de: {
     back: 'Zurück zur Startseite',
     title: 'SkillPilot-Plugins',
-    subtitle: 'SkillPilot in Claude oder ChatGPT Desktop einrichten und aktuell halten.',
+    subtitle: 'SkillPilot in Claude, ChatGPT Desktop oder im kontrollierten Gemini-Betatest einrichten und aktuell halten.',
     cardTitle: 'SkillPilot Coach v1',
     betaNotice: version ? 'Claude-Beta ' + version : 'Claude-Beta',
     betaDescription: CLAUDE_MARKETPLACE_INSTALLATION_ENABLED
@@ -147,7 +148,7 @@ const copy = (version?: string) => ({
   en: {
     back: 'Back to the home page',
     title: 'SkillPilot plugins',
-    subtitle: 'Set up SkillPilot in Claude or ChatGPT Desktop and keep it current.',
+    subtitle: 'Set up SkillPilot in Claude, ChatGPT Desktop or the controlled Gemini beta and keep it current.',
     cardTitle: 'SkillPilot Coach v1',
     betaNotice: version ? 'Claude beta ' + version : 'Claude beta',
     betaDescription: CLAUDE_MARKETPLACE_INSTALLATION_ENABLED
@@ -633,9 +634,9 @@ export const PluginCatalogView: React.FC = () => {
   const [requestVersion, setRequestVersion] = useState(0)
 
   useEffect(() => {
-    if (location.hash !== '#chatgpt-desktop') return
+    if (!['#claude-plugin', '#chatgpt-desktop', '#gemini'].includes(location.hash)) return
     const frame = window.requestAnimationFrame(() => {
-      document.getElementById('chatgpt-desktop')?.scrollIntoView({ block: 'start' })
+      document.getElementById(location.hash.slice(1))?.scrollIntoView({ block: 'start' })
     })
     return () => window.cancelAnimationFrame(frame)
   }, [location.hash, location.key, publication, loadError])
@@ -680,6 +681,7 @@ export const PluginCatalogView: React.FC = () => {
         <nav aria-label={text.installationSurface} className="mt-6 flex flex-wrap gap-3">
           <a href="#claude-plugin" className="min-h-11 rounded-full border border-violet-400 px-4 py-2 text-sm font-semibold">Claude</a>
           <a href="#chatgpt-desktop" className="min-h-11 rounded-full border border-sky-400 px-4 py-2 text-sm font-semibold">ChatGPT Desktop · Beta</a>
+          <a href="#gemini" className="min-h-11 rounded-full border border-teal-400 px-4 py-2 text-sm font-semibold">Gemini · {selectedLanguage === 'de' ? 'kontrollierter Betatest' : 'controlled beta'}</a>
         </nav>
 
         <div id="claude-plugin" className="mt-8 scroll-mt-6">
@@ -709,6 +711,7 @@ export const PluginCatalogView: React.FC = () => {
             <ArrowLeft size={16} aria-hidden="true" />{chatGptCopy.returnToStart}
           </Link>
         </article>
+        <GeminiSetupGuide language={selectedLanguage} />
       </main>
     </div>
   )

@@ -19,8 +19,8 @@ const deTeacherSupervisionText = de.sections.find(section => section.title.inclu
 const enTeacherSupervisionText = en.sections.find(section => section.title.includes('Existing SkillPilot ID'))
   ?.paragraphs.join(' ') ?? ''
 
-assert(de.effectiveDate.includes('5. Oktober 2026'), 'German privacy copy carries the current revision date')
-assert(en.effectiveDate.includes('October 5, 2026'), 'English privacy copy carries the current revision date')
+assert(de.effectiveDate.includes('6. Oktober 2026'), 'German privacy copy carries the current revision date')
+assert(en.effectiveDate.includes('October 6, 2026'), 'English privacy copy carries the current revision date')
 assert(
   deTeacherSupervisionText.includes('Klassennamen')
     && deTeacherSupervisionText.includes('Namen oder Alias')
@@ -199,7 +199,7 @@ assert(
 )
 
 for (const [language, copy] of [['de', de], ['en', en]] as const) {
-  assert(copy.sections.length === 11, `${language}: complete privacy sections`)
+  assert(copy.sections.length === 12, `${language}: complete privacy sections`)
   copy.sections.forEach((section, index) => {
     assert(section.title.startsWith(`${index + 1}. `), `${language}: ordered section numbers`)
     for (const link of section.links ?? []) {

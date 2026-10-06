@@ -22,7 +22,7 @@ const question = (copy: typeof de, sectionId: string, id: string) => {
 const paragraphs = (copy: typeof de, sectionId: string, id: string) => question(copy, sectionId, id).paragraphs.join(' ')
 
 for (const copy of [de, en]) {
-  assert(JSON.stringify(ids(copy.sections)) === JSON.stringify(['claude', 'chatgpt', 'learning']), 'separate Claude, ChatGPT and shared-learning sections in that order')
+  assert(JSON.stringify(ids(copy.sections)) === JSON.stringify(['claude', 'chatgpt', 'gemini', 'learning']), 'separate Claude, ChatGPT, Gemini and shared-learning sections in that order')
   const allQuestions = copy.sections.flatMap(item => item.questions)
   assert(new Set(ids(allQuestions)).size === allQuestions.length, 'FAQ question IDs are unique across all sections')
   assert(!('warning' in copy) && !('compatibility' in copy), 'no global ChatGPT warning or compatibility matrix can be applied to Claude')
