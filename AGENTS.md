@@ -1836,7 +1836,9 @@ provider policy and product review explicitly permit it.
   prepared stable-origin installer and owner-operated activation. The installer
   preserves private keys and does not activate production services. The normal
   rollout requires the unchanged 0.1.0 skill ZIP in both artifacts and its public
-  download; SPA HTML is an error. Direct goal-image display in Gemini remains
+  download; SPA HTML is an error. Preparation validates and copies the retained
+  `ai/gemini/coach/artifacts/` ZIP without host-dependent recompression.
+  Direct goal-image display in Gemini remains
   unresolved, and a direct link does not satisfy its acceptance. Preserve the
   independent synthetic PoC
   evidence and all published provider artifacts.

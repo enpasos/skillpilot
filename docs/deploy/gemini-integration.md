@@ -86,8 +86,13 @@ Die reproduzierbare ZIP-Datei liegt unter
 die Bytes der Apache-2.0-Datei `LICENSE` im Repository. Das Manifest dokumentiert
 Quell- und ZIP-Hashes; es enthält keine Zugangsdaten. Der normale Frontend-
 Build bereitet den Download unter
-`/plugins/gemini/skillpilot-coach-v1-0.1.0.zip` automatisch vor. Änderungen an
-der Skill-Datei benötigen einen vollständigen erneuten Import in Gemini.
+`/plugins/gemini/skillpilot-coach-v1-0.1.0.zip` automatisch vor. Das tatsächlich
+importierte Archiv bleibt unter `ai/gemini/coach/artifacts/` erhalten. Die
+Vorbereitung prüft seinen festen Hash und die enthaltenen Quellen und kopiert
+die unveränderten Archivbytes; die Kompression hängt dadurch nicht von der
+Python-/zlib-Version des Deployment-Hosts ab. Änderungen an der Skill-Datei
+benötigen einen neuen versionierten Kandidaten und einen vollständigen erneuten
+Importtest in Gemini.
 
 Der tatsächliche Gemini-Import des ersten lokalen ZIP-Kandidaten wurde am
 6. Oktober 2026 mit einem Hinweis auf einen nicht unterstützten Dateityp

@@ -68,7 +68,7 @@ try {
   }
   const sha256 = createHash('sha256').update(bytes).digest('hex')
   if (sha256 !== expectedSha256) {
-    throw new Error('Gemini Skill download differs from the exact imported 0.1.0 archive')
+    throw new Error(`Gemini Skill download differs from the exact imported 0.1.0 archive; expected=${expectedSha256} actual=${sha256} bytes=${bytes.length}`)
   }
   console.log(`CHECK gemini_skill_download PASS ${remote ? 'remote' : 'artifact'} bytes=${bytes.length} sha256=${sha256}`)
 } catch (error) {

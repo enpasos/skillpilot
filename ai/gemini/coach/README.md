@@ -6,7 +6,7 @@ from published Claude and ChatGPT packages. Version **0.1.0** is a local
 candidate; building or importing it does not prove actual Gemini learning
 acceptance.
 
-Build the importable archive from the repository root:
+Prepare the importable archive from the repository root:
 
 ```bash
 python3 ai/gemini/coach/scripts/package_skill.py --frontend
@@ -18,12 +18,17 @@ Apache-2.0 `LICENSE` bytes. No scripts,
 credentials, learner state, protected exam answers or synthetic probe are
 included. `dist/manifest.json` records exact hashes and the local candidate
 status. `--frontend` also prepares the first-party download; the normal app
-build runs that command automatically. Generated archives are ignored by Git.
+build runs that command automatically. The exact host-tested archive is retained
+in `artifacts/skillpilot-coach-v1-0.1.0.zip`. Preparation checks its pinned hash
+and the current Skill/license sources, then copies its bytes without compression.
+This keeps downloads identical across Python/zlib versions. Generated copies
+in `dist/` and the frontend remain ignored by Git.
 
 Import the ZIP under **Gemini Settings → Skills**. In a chat select the Skill
 with **/**, select the connected **@SkillPilot** custom app and send the fresh
 start message from SkillPilot's ordinary **Lernen starten → Gemini (Beta)**
-entry. Re-import the complete ZIP when the coaching instructions change.
+entry. Changed coaching instructions require a new versioned candidate and a
+complete import/retest; preserve the tested 0.1.0 artifact.
 
 The model must use the native tools and its own `spg_` learning session. OAuth
 transport authorization does not select the learner. The Skill covers the real

@@ -1,10 +1,31 @@
-"""Build the credential-free Gemini coaching Skill reproducibly (Apache-2.0)."""
+"""Prepare byte-exact copies of the preserved Gemini import artifact (Apache-2.0)."""
 
 import argparse
 from hashlib import sha256
+from io import BytesIO
 import json
 from pathlib import Path
-from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
+import sys
+from zipfile import BadZipFile, ZipFile
+
+
+ARCHIVE_NAME = "skillpilot-coach-v1-0.1.0.zip"
+IMPORTED_SHA256 = "2a5f5de47cd04345196cd21f0ab4dc4e0b3247b509a9deaaa0e2f8cd74d30a40"
+
+
+def import_artifact(root, repo):
+    """Validate the tested artifact and its current sources before copying it."""
+    artifact = (root / "artifacts" / ARCHIVE_NAME).read_bytes()
+    if sha256(artifact).hexdigest() != IMPORTED_SHA256:
+        raise ValueError("preserved 0.1.0 archive differs from the imported artifact")
+    sources = [("SKILL.md", root / "SKILL.md"), ("LICENSE.txt", repo / "LICENSE")]
+    with ZipFile(BytesIO(artifact)) as archive:
+        if archive.namelist() != [name for name, _path in sources]:
+            raise ValueError("preserved archive must contain only SKILL.md and LICENSE.txt")
+        for name, path in sources:
+            if archive.read(name) != path.read_bytes():
+                raise ValueError(f"{name} differs from the preserved 0.1.0 artifact; prepare a new versioned candidate")
+    return artifact, sources
 
 
 def main():
@@ -13,17 +34,12 @@ def main():
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     repo = root.parents[2]
-    names = [("SKILL.md", root / "SKILL.md"), ("LICENSE.txt", repo / "LICENSE")]
-    output = root / "dist" / "skillpilot-coach-v1-0.1.0.zip"
+    # DEFLATE output can vary with the host's zlib. The host-tested ZIP itself
+    # is the immutable input; deployment never recreates its compressed bytes.
+    artifact, names = import_artifact(root, repo)
+    output = root / "dist" / ARCHIVE_NAME
     output.parent.mkdir(parents=True, exist_ok=True)
-    with ZipFile(output, "w", compression=ZIP_DEFLATED) as archive:
-        for name, path in names:
-            info = ZipInfo(name, date_time=(2026, 10, 6, 0, 0, 0))
-            info.create_system = 3
-            info.external_attr = 0o100644 << 16
-            info.compress_type = ZIP_DEFLATED
-            archive.writestr(info, path.read_bytes())
-    artifact = output.read_bytes()
+    output.write_bytes(artifact)
     receipt = {
         "schemaVersion": 1,
         "name": "skillpilot-coach-v1",
@@ -43,4 +59,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except (OSError, ValueError, BadZipFile) as error:
+        print(f"Gemini import artifact check failed: {error}", file=sys.stderr)
+        sys.exit(1)
