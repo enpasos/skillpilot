@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import { CurriculumDropdown } from './CurriculumDropdown'
 import { LearnerSetupStepCard } from './LearnerSetupStepCard'
 import { ChatGptDesktopStart } from './ChatGptDesktopStart'
+import { GeminiStart } from './GeminiStart'
 import { PersonalCurriculumEditor } from './PersonalCurriculumEditor'
 import { SkillpilotIdFilePasswordDialog } from './SkillpilotIdFilePasswordDialog'
 import { LearnerDataManagementDialog } from './LearnerDataManagementDialog'
@@ -14,7 +15,7 @@ import { ArrowRight, Github, ShieldCheck, Send, Compass, ExternalLink, KeyRound,
 
 type Role = 'learner' | 'trainer' | 'explorer'
 type ClaudeActionState = 'idle' | 'opening-setup' | 'setup-opened' | 'launching' | 'launched' | 'fallback' | 'failed'
-type CoachProvider = 'claude' | 'chatgpt-desktop'
+type CoachProvider = 'claude' | 'chatgpt-desktop' | 'gemini'
 type SkillpilotIdFileStatus = 'idle' | 'loading' | 'loaded' | 'saved' | 'load-failed' | 'save-failed'
 
 interface SessionSetupProps {
@@ -37,6 +38,8 @@ import {
 } from '../utils/legalTermsAcceptance'
 import { confirmOpenAiMcpEligibility } from '../coachVariants/openAiMcp/providerEligibility'
 import { requestOpenAiMcpStart } from '../coachVariants/openAiMcp/request'
+import { requestGeminiV1Start } from '../coachVariants/geminiV1/request'
+import { getGeminiV1Copy } from '../coachVariants/geminiV1/copy'
 import {
   getSafeClaudePluginSetupUrl,
   getSafeClaudeWebUrl,
@@ -105,6 +108,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const location = useLocation()
   const [coachProvider, setCoachProvider] = useState<CoachProvider>(() => {
     const params = new URLSearchParams(location.search)
+    if (params.get('coach') === 'gemini') return 'gemini'
     return params.get('coach') === 'chatgpt-desktop' || params.get('chatgptTest') === '1'
       ? 'chatgpt-desktop' : 'claude'
   })
@@ -783,6 +787,15 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     })
   }
 
+  const prepareGeminiStart = async () => {
+    if (coachProvider !== 'gemini' || !personalCurriculumReady) return null
+    const effectiveId = sanitizeSkillpilotId(skillpilotId)
+    if (!effectiveId || !persistLearnerStart(effectiveId)) return null
+    const launchRevision = coachLaunchRevisionRef.current
+    const result = await requestGeminiV1Start({ skillpilotId: effectiveId, language })
+    return coachLaunchRevisionRef.current === launchRevision ? result : null
+  }
+
   const getClaudeStartContext = () => {
     if (coachProvider !== 'claude' || !personalCurriculumReady) return null
     const effectiveId = sanitizeSkillpilotId(skillpilotId)
@@ -1320,6 +1333,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                           {([
                             ['claude', t.startPage.login.claudeBetaTitle],
                             ['chatgpt-desktop', t.startPage.login.chatGptDesktop.title],
+                            ['gemini', getGeminiV1Copy(language).title],
                           ] as const).map(([provider, title]) => (
                             <label key={provider} className={`flex min-h-11 cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-sm ${coachProvider === provider ? 'border-sky-500 bg-sky-50 dark:bg-sky-950/30' : 'border-border-color'}`}>
                               <input type="radio" name="coach-provider" value={provider}
@@ -1453,6 +1467,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                         <ChatGptDesktopStart
                           key={`${sanitizedLearnerId}:${selectedLandscapeId}:${language}`}
                           onPrepare={prepareChatGptDesktopStart}
+                        />
+                      )}
+                      {coachProvider === 'gemini' && (
+                        <GeminiStart
+                          key={coachLaunchScope}
+                          onPrepare={prepareGeminiStart}
                         />
                       )}
                       <div>

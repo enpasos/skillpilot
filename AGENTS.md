@@ -1820,6 +1820,20 @@ provider policy and product review explicitly permit it.
   `contracts/drafts/` without a SemVer increment. Only a confirmed publication
   may create `contracts/published/` and advance `release-index.json`; published
   snapshots are immutable.
+- **Gemini controlled integration candidate:** `ai/gemini/coach/SKILL.md` and
+  `ai/gemini/gateway` use the separate `gemini-v1` Spring adapter and `spg_`
+  learning sessions. The ordinary **Lernen starten → Gemini (Beta)** entry
+  prepares the private start message; the learner selects both the imported
+  Skill and the connected Custom App. The 6 October 2026 controlled real-host
+  test confirmed canonical context, a host-approved mastery save and the saved
+  successor in a distinct new Gemini chat. This is one operator account and a
+  separate development database, not public multi-user or production acceptance.
+  The operator gateway loses grants on restart and requires reconnecting after
+  at most one hour. Learning sessions expire absolutely after 24 hours and tools require
+  one hour remaining. Backend-only deployment leaves Gemini disabled unless
+  configured and does not install its loopback gateway or HTTPS edge. Follow
+  `docs/deploy/gemini-integration.md`; preserve the independent synthetic PoC
+  evidence and all published provider artifacts.
 - **ChatGPT clean source:** `ai/openai custom gpt/` retains no prior GPT IDs,
   URLs, screenshots, Instructions, Knowledge, or rollback Builder bundle.
   `action-regression/` is test infrastructure only and is never uploaded.

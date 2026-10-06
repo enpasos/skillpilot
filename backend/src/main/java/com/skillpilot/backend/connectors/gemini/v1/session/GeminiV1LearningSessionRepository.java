@@ -1,0 +1,88 @@
+package com.skillpilot.backend.connectors.gemini.v1.session;
+
+import com.skillpilot.backend.connectors.gemini.v1.ConditionalOnGeminiV1Enabled;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.Optional;
+import org.springframework.jdbc.core.JdbcOperations;
+import org.springframework.stereotype.Repository;
+
+/** JDBC persistence boundary for Gemini v1 learning sessions. */
+@Repository
+@ConditionalOnGeminiV1Enabled
+public class GeminiV1LearningSessionRepository {
+
+    private static final String COLUMNS =
+            "token_hash, learner_id, started_at, expires_at, communication_locale, state_version";
+
+    private final JdbcOperations jdbc;
+
+    public GeminiV1LearningSessionRepository(JdbcOperations jdbc) {
+        this.jdbc = jdbc;
+    }
+
+    public void insert(GeminiV1LearningSession session) {
+        jdbc.update(
+                "INSERT INTO gemini_v1_learning_session (" + COLUMNS + ") VALUES (?, ?, ?, ?, ?, ?)",
+                session.tokenHash(),
+                session.learnerId(),
+                Timestamp.from(session.startedAt()),
+                Timestamp.from(session.expiresAt()),
+                session.communicationLocale(),
+                session.stateVersion());
+    }
+
+    public Optional<GeminiV1LearningSession> findByTokenHashForUpdate(String tokenHash) {
+        return jdbc.query(
+                        "SELECT " + COLUMNS
+                                + " FROM gemini_v1_learning_session WHERE token_hash = ? FOR UPDATE",
+                        this::map,
+                        tokenHash)
+                .stream()
+                .findFirst();
+    }
+
+    public Optional<GeminiV1LearningSession> findByTokenHash(String tokenHash) {
+        return jdbc.query(
+                        "SELECT " + COLUMNS
+                                + " FROM gemini_v1_learning_session WHERE token_hash = ?",
+                        this::map,
+                        tokenHash)
+                .stream()
+                .findFirst();
+    }
+
+    public Optional<String> findLearnerIdByTokenHash(String tokenHash) {
+        return jdbc.query(
+                        "SELECT learner_id FROM gemini_v1_learning_session WHERE token_hash = ?",
+                        (rs, rowNum) -> rs.getString(1),
+                        tokenHash)
+                .stream()
+                .findFirst();
+    }
+
+    public void updateStateVersion(String tokenHash, long stateVersion) {
+        jdbc.update(
+                "UPDATE gemini_v1_learning_session SET state_version = ? WHERE token_hash = ?",
+                stateVersion,
+                tokenHash);
+    }
+
+    public int deleteExpired(Instant now) {
+        return jdbc.update(
+                "DELETE FROM gemini_v1_learning_session WHERE expires_at <= ?",
+                Timestamp.from(now));
+    }
+
+    private GeminiV1LearningSession map(ResultSet rs, int rowNum) throws SQLException {
+        return new GeminiV1LearningSession(
+                rs.getString("token_hash"),
+                rs.getString("learner_id"),
+                rs.getObject("started_at", java.time.OffsetDateTime.class).toInstant(),
+                rs.getObject("expires_at", java.time.OffsetDateTime.class).toInstant(),
+                rs.getString("communication_locale"),
+                rs.getLong("state_version"));
+    }
+}

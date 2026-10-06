@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prepare:runtime-assets": "npm run generate:gymnasium-duration-offerings && npm run deploy:assets",
+    "prepare:runtime-assets": "npm run generate:gymnasium-duration-offerings && npm run deploy:assets && npm run prepare:gemini-skill",
+    "prepare:gemini-skill": "python3 ../ai/gemini/coach/scripts/package_skill.py --frontend",
     "build:application": "npm run build:goal-books && npm run check:goal-book-publication && tsc -b && vite build",
     "build": "npm run prepare:runtime-assets && npm run build:application",
     "build:goal-book-model": "tsx scripts/buildGoalBookModel.ts",
@@ -24,6 +25,7 @@
     "build:package-consumer": "tsc -b && tsx scripts/buildPackageConsumerFrontend.ts",
     "test:coach-variants": "tsx src/coachVariants/visibleSession/visibleSession.test.ts && tsx src/coachVariants/openAiMcp/providerEligibility.test.ts && tsx src/coachVariants/openAiMcp/openAiMcp.test.ts && tsx src/utils/synchronousInFlightGuard.test.ts && tsx src/utils/privacyViewCopy.test.ts",
     "test:claude-v1-start": "tsx src/coachVariants/claudeV1/claudeV1Start.test.ts && tsx scripts/testClaudeV1StartUi.tsx",
+    "test:gemini-v1-start": "tsx src/coachVariants/geminiV1/geminiV1Start.test.ts && tsx scripts/testGeminiStartUi.ts",
     "test:claude-plugin-publication": "tsx src/utils/claudePluginPublication.test.ts && tsx scripts/testClaudePluginInstallUi.ts",
     "test:ai-transparency-ui": "tsx scripts/testAiTransparencyUi.tsx",
     "test:content-materials": "tsx src/utils/contentMaterialsApi.test.ts && tsx scripts/testContentMaterialsUi.ts",

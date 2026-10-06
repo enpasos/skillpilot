@@ -1,0 +1,38 @@
+name: Gemini PoC local protocol checks
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths: ['ai/gemini/poc/**', 'docs/deploy/gemini-custom-apps-poc.md', '.github/workflows/gemini-poc.yml']
+  push:
+    branches: [main]
+    paths: ['ai/gemini/poc/**', '.github/workflows/gemini-poc.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  local-protocol:
+    name: Local checks only — no Gemini host acceptance
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: ai/gemini/poc
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22.22.0'
+          cache: npm
+          cache-dependency-path: ai/gemini/poc/package-lock.json
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts
+      - run: npm test
+      - run: npm run smoke
+      - run: npm run package:skill
+      - name: Preserve historical provider artifacts
+        working-directory: .
+        run: node scripts/check_openai_plugin_review_freeze.mjs
