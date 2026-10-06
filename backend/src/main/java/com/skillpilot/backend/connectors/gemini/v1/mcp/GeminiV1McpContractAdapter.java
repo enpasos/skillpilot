@@ -1009,10 +1009,7 @@ public class GeminiV1McpContractAdapter {
                         "No approved visualization is available for the confirmed active learning goal.");
             }
             return new UiPayload(
-                    localized(
-                            communicationLocale,
-                            "Freigegebenes Lernzielbild bereitgestellt.",
-                            "Approved learning-goal image provided."),
+                    GeminiV1NativeImagePresentation.text(visualization, communicationLocale),
                     Map.of("goalVisualization", visualization));
         }).value();
     }
@@ -2548,11 +2545,16 @@ public class GeminiV1McpContractAdapter {
                         GeminiV1ErrorCode.INTERNAL_ERROR,
                         "The response exceeded the configured size limit.");
             }
-            return McpSchema.CallToolResult.builder()
+            var result = McpSchema.CallToolResult.builder()
                     .isError(false)
                     .addTextContent(objectMapper.writeValueAsString(payload.structuredContent()))
-                    .structuredContent(payload.structuredContent())
-                    .build();
+                    .structuredContent(payload.structuredContent());
+            if (payload.structuredContent().containsKey("goalVisualization")) {
+                // Keep the first JSON block stable for existing parsers. A separate native text
+                // block tells the host how to show the approved image and its direct fallback link.
+                result.addTextContent(payload.summary());
+            }
+            return result.build();
         } catch (JsonProcessingException e) {
             return error(GeminiV1ErrorCode.INTERNAL_ERROR, "The operation could not be completed.");
         }
