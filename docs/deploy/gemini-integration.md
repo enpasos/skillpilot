@@ -22,7 +22,7 @@ Tests eigene Host-Abnahme. Eine Produktionsbereitstellung wurde nicht vorgenomme
 
 Für den anschließenden kontrollierten Testbetrieb auf `skillpilot.com` sind
 ein wiederholbar ausführbarer Installer, eine eigene Gateway-Unit und
-nginx-Konfigurationen vorbereitet. Die [Deployment-Anleitung](../../deploy/gemini-v1/README.md)
+nginx-Konfigurationen vorbereitet. Die [Deployment-Anleitung](https://github.com/enpasos/skillpilot/blob/main/deploy/gemini-v1/README.md)
 beschreibt die privaten Schlüssel, die Ergänzung der bestehenden Spring-
 Konfiguration, TLS und den exakt gemessenen Google-Callback. Diese Vorbereitung
 aktiviert keine Produktionsdienste. Der normale Rollout prüft zudem die

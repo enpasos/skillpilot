@@ -302,7 +302,7 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     so missing hashed assets or an HTML error page served as CSS stop deployment.
     The public Gemini skill download must return HTTP 200, a ZIP content type
     and the same pinned archive digest. See the separate
-    [Gemini gateway deployment](../../deploy/gemini-v1/README.md) for its HTTPS,
+    [Gemini gateway deployment](https://github.com/enpasos/skillpilot/blob/main/deploy/gemini-v1/README.md) for its HTTPS,
     private configuration and activation steps.
 14. **Mandatory OpenAI V1 public-contract smoke** runs after readiness for
     every `openai-mcp` deployment. It verifies the dedicated

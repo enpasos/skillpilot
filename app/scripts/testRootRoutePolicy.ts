@@ -145,13 +145,13 @@ assert.match(
 )
 assert.match(
   appSource,
-  /Installation and updates for SkillPilot plugins in Claude and ChatGPT Desktop/u,
-  'the English plugin guide description must identify both supported provider installation guides',
+  /Set up and update SkillPilot in Claude and ChatGPT Desktop; view setup for the controlled Gemini beta test/u,
+  'the English plugin guide description must identify Claude and ChatGPT Desktop setup and the controlled Gemini beta test',
 )
 assert.match(
   appSource,
-  /Einrichtung und Updates der SkillPilot-Plugins in Claude und ChatGPT Desktop/u,
-  'the German plugin guide description must identify both supported provider installation guides',
+  /SkillPilot in Claude und ChatGPT Desktop einrichten und aktualisieren; Einrichtung für den kontrollierten Gemini-Betatest ansehen/u,
+  'the German plugin guide description must identify Claude and ChatGPT Desktop setup and the controlled Gemini beta test',
 )
 assert.doesNotMatch(
   coachSetupSource,
