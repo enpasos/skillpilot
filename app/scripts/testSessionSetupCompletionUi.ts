@@ -204,6 +204,8 @@ const installApi = async (page: Page) => {
     }
     if (path.endsWith('/retention') && request.method() === 'GET') {
       metrics.retentionRequests += 1
+      // Retention arrives after the dialog opens, as it does over the network.
+      await new Promise(resolve => setTimeout(resolve, 75))
       await respond({
         lastActivityAt: '2026-08-13T08:00:00Z',
         scheduledDeletionAt: '2027-08-13T08:00:00Z',
@@ -817,10 +819,13 @@ try {
     'a freshly generated learner can manage its data before curriculum setup starts',
   )
   await freshDataAction.click()
-  await freshGeneratedDeletion.page.getByRole('dialog', { name: 'Daten & SkillPilot-ID' }).waitFor()
+  const freshDataDialog = freshGeneratedDeletion.page.getByRole('dialog', { name: 'Daten & SkillPilot-ID' })
+  await freshDataDialog.waitFor()
+  const scheduledDeletion = freshDataDialog.locator('time[datetime="2027-08-13T08:00:00Z"]')
+  await scheduledDeletion.waitFor()
   assert(
     freshGeneratedDeletion.apiMetrics.retentionRequests === 1
-      && await freshGeneratedDeletion.page.locator('time[datetime="2027-08-13T08:00:00Z"]').count() === 1,
+      && await scheduledDeletion.count() === 1,
     'the fresh-ID dialog loads authoritative retention data',
   )
   assert(
