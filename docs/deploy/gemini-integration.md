@@ -110,7 +110,7 @@ OAuth-Profil, Callback und Gateway-Vertrauen müssen zur konkret getesteten
 HTTPS-Umgebung passen. Fehlgeschlagene Authentifizierung darf keinen anderen
 Anbieter oder öffentlichen Client als Fallback verwenden.
 
-Die Session hat eine absolute Laufzeit von 24 Stunden. Eine OAuth-Erneuerung
+Die Session hat eine absolute Laufzeit von 24 Stunden. Werkzeugaufrufe benötigen mindestens eine Stunde Restlaufzeit; starte daher spätestens nach 23 Stunden eine neue Lernsitzung. Eine OAuth-Erneuerung
 verlängert sie nicht. Für einen neuen Chat Skill und App erneut auswählen,
 die noch gültige Startnachricht senden und frischen Kontext laden. Nach Ablauf
 in der WebGUI eine neue Session vorbereiten. Kanonisch gespeicherter Fortschritt

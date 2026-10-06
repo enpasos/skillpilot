@@ -9,4 +9,3 @@ public record GeminiV1LaunchResponse(
         String learningSessionId,
         Instant expiresAt) {
 }
-

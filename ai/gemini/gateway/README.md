@@ -28,7 +28,7 @@ it is not an accepted public multi-user OAuth service. A fixed confidential
 client and the exact scope set `skillpilot.read skillpilot.write` are required.
 Access tokens expire after five minutes. Refresh tokens rotate within one
 absolute one-hour grant. Grants are in memory and disappear on restart.
-The independent learner session has an absolute 24-hour lifetime.
+The independent learner session has an absolute 24-hour lifetime. Tool calls require at least one hour remaining, so prepare a new session after at most 23 hours.
 
 Tests verify local OAuth, PKCE, resource binding, refresh, revocation, the
 signed bridge and native JSON/SSE response normalization. They do not prove

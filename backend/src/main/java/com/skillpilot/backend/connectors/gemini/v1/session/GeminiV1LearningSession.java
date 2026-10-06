@@ -11,4 +11,3 @@ public record GeminiV1LearningSession(
         String communicationLocale,
         long stateVersion) {
 }
-

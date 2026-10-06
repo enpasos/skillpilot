@@ -20,7 +20,7 @@ const de = {
   copy: 'Startnachricht kopieren',
   copied: 'Startnachricht kopiert',
   open: 'Gemini öffnen',
-  paste: 'Öffne Gemini, aktiviere den Coach-Skill mit „/“ und „SkillPilot“ mit „@“. Füge anschließend die vollständige Startnachricht ein und sende sie. Die Nachricht enthält deinen privaten, für 24 Stunden gültigen Sitzungsschlüssel; teile sie nicht.',
+  paste: 'Öffne Gemini, aktiviere den Coach-Skill mit „/“ und „SkillPilot“ mit „@“. Füge anschließend die vollständige Startnachricht ein und sende sie. Die Nachricht enthält deinen privaten Sitzungsschlüssel; teile sie nicht. Bereite nach spätestens 23 Stunden eine neue Lernsession vor.',
   continuation: 'Für einen neuen Chat aktiviere Skill und App erneut und sende dieselbe Startnachricht, solange sie gültig ist. Nach Ablauf bereite hier eine neue Lernsession vor. Dein gespeicherter Lernfortschritt bleibt erhalten.',
 }
 
@@ -42,7 +42,7 @@ const en: typeof de = {
   copy: 'Copy start message',
   copied: 'Start message copied',
   open: 'Open Gemini',
-  paste: 'Open Gemini, activate the coaching Skill with “/” and “SkillPilot” with “@”. Then paste and send the complete start message. It contains your private session key, valid for 24 hours; do not share it.',
+  paste: 'Open Gemini, activate the coaching Skill with “/” and “SkillPilot” with “@”. Then paste and send the complete start message. It contains your private session key; do not share it. Prepare a new learning session after at most 23 hours.',
   continuation: 'In a new chat, activate the Skill and app again and send the same start message while it remains valid. After expiry, prepare a new learning session here. Your saved learning progress is retained.',
 }
 

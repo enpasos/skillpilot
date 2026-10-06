@@ -21,4 +21,3 @@ public final class GeminiV1LearningSessionException extends RuntimeException {
         return reason;
     }
 }
-
