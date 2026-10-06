@@ -1,0 +1,468 @@
+package com.skillpilot.backend.connectors.gemini.v1.mcp;
+
+import static com.skillpilot.backend.api.LearningPlanWireAssertions.assertReducedPlanPayloads;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.ai.CoachToolFacade;
+import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.LearnerLearningPlanApi;
+import com.skillpilot.backend.api.LearnerPlanTodayStatus;
+import com.skillpilot.backend.api.PersonalizationPlan;
+import com.skillpilot.backend.api.StateMachineInfo;
+import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
+import com.skillpilot.backend.connectors.gemini.v1.GeminiV1Contract;
+import com.skillpilot.backend.connectors.gemini.v1.GeminiV1TestFixtures;
+import com.skillpilot.backend.connectors.gemini.v1.GeminiV1TestProperties;
+import com.skillpilot.backend.connectors.gemini.v1.session.GeminiV1LearningSessionRepository;
+import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.repository.LearnerRepository;
+import io.modelcontextprotocol.common.McpTransportContext;
+import io.modelcontextprotocol.server.McpStatelessServerFeatures;
+import io.modelcontextprotocol.spec.McpSchema;
+import java.time.LocalDate;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicReference;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import com.skillpilot.backend.service.learningplan.PeriodBasis;
+import com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.web.server.ResponseStatusException;
+
+@SpringBootTest
+@ActiveProfiles("test")
+@TestPropertySource(properties = {
+        GeminiV1TestProperties.ENABLED,
+        GeminiV1TestProperties.SIGNING_SECRET,
+        GeminiV1TestProperties.CAPABILITY_SECRET,
+        GeminiV1TestProperties.GATEWAY_SECRET,
+        GeminiV1TestProperties.GATEWAY_AUDIENCE,
+        GeminiV1TestProperties.BETA_DISABLED,
+        GeminiV1TestProperties.CORE_DATASOURCE
+})
+class GeminiV1LearningPlanContractTest {
+
+    private static final long INITIAL_STATE_VERSION = 20L;
+    private static final String RESUMED_GOAL_ID = "backend-selected-plan-goal";
+
+    @Autowired
+    private GeminiV1McpContractAdapter contractAdapter;
+
+    @Autowired
+    private LearnerRepository learnerRepository;
+
+    @Autowired
+    private GeminiV1LearningSessionRepository sessionRepository;
+
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    @Autowired
+    private org.springframework.jdbc.core.JdbcTemplate jdbc;
+
+    @MockitoBean
+    private CoachToolFacade coachToolFacade;
+
+    private String learnerId;
+    private String connectionId;
+    private AtomicReference<FrontierGoal> activeGoal;
+
+    @BeforeEach
+    void setUp() {
+        GeminiV1TestFixtures.BoundLearner bound = GeminiV1TestFixtures.createBoundLearner(
+                learnerRepository,
+                sessionRepository,
+                INITIAL_STATE_VERSION);
+        learnerId = bound.learnerId();
+        connectionId = bound.connectionId();
+        activeGoal = new AtomicReference<>();
+        when(coachToolFacade.getLearnerState(learnerId))
+                .thenAnswer(invocation -> learnerState(activeGoal.get()));
+        when(coachToolFacade.getPersonalizationPlan(learnerId))
+                .thenReturn(PersonalizationPlan.complete(List.of()));
+        when(coachToolFacade.getLearningPlanTodayStatus(learnerId, "de")).thenReturn(todayStatus());
+        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(
+                connectionId,
+                "unused",
+                List.of(
+                        new SimpleGrantedAuthority("SCOPE_" + GeminiV1Contract.SCOPE_READ),
+                        new SimpleGrantedAuthority("SCOPE_" + GeminiV1Contract.SCOPE_WRITE))));
+    }
+
+    @AfterEach
+    void clearSecurityContext() {
+        SecurityContextHolder.clearContext();
+    }
+
+    @ParameterizedTest
+    @CsvSource({"de,DAY", "de,WEEK", "en,DAY", "en,WEEK"})
+    void serializedContextPreservesBackendStatusAndSeparateAnnouncement(String locale, PeriodBasis basis)
+            throws Exception {
+        // The Web-started session owns communication language. The optional legacy tool
+        // argument cannot replace it; prepare the real persisted session accordingly.
+        assertThat(jdbc.update("UPDATE gemini_v1_learning_session SET communication_locale = ? WHERE learner_id = ?",
+                locale, learnerId)).isEqualTo(1);
+        FrontierGoal goal = goal(RESUMED_GOAL_ID);
+        activeGoal.set(goal);
+        String announcement = (locale.equals("en") ? "Your active learning goal: " : "Dein aktives Lernziel: ")
+                + goal.title();
+        var status = LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-14"), basis, locale, true, false, false, 0,
+                new LearnerPlanTodayStatus.ActiveGoal(goal.id(), goal.title(), announcement),
+                List.of(LearnerPlanTodayStatusFixtures.subject("private-math",
+                        locale.equals("en") ? "Mathematics" : "Mathematik",
+                        13, 3, 9, 1, true, true, basis, locale)));
+        when(coachToolFacade.getLearningPlanTodayStatus(learnerId, locale)).thenReturn(status);
+
+        var result = call(GeminiV1Contract.TOOL_GET_COACH_CONTEXT,
+                Map.of("learningSessionId", connectionId, "language", locale));
+
+        assertThat(result.isError()).isFalse();
+        Map<?, ?> projection = (Map<?, ?>) payload(result).get("learningPlanToday");
+        assertThat(projection.get("text")).isEqualTo(status.statusText());
+        assertThat(projection.get("periodBasis")).isEqualTo(basis.name());
+        assertThat(projection.get("activeGoalAnnouncement")).isEqualTo(announcement);
+        assertThat(projection.get("text").toString()).doesNotContain(announcement);
+        verify(coachToolFacade).getLearningPlanTodayStatus(learnerId, locale);
+        assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
+    }
+
+    @Test
+    void planPresentationMandatesTheVerbatimBackendTextAndNoOwnArithmetic() {
+        String instructions = contractAdapter.serverInstructions().replaceAll("\\s+", " ");
+
+        assertThat(instructions)
+                .contains(
+                        "report the learning-plan status by outputting learningPlanToday.text verbatim",
+                        "at most once per response",
+                        "Add no counts, totals, percentages or overall judgement of your own",
+                        "do not recalculate or rephrase it",
+                        "do not translate it; it already arrives in the session language",
+                        "Never contrast an unfinished active goal with a fulfilled period target",
+                        "it never announces the active goal",
+                        "output learningPlanToday.activeGoalAnnouncement verbatim once as its first line",
+                        "do not repeat the announcement before every task and give none for a status-only question",
+                        "Once evidence is sufficient, fix the decision for the work already seen and call set_skillpilot_mastery immediately",
+                        "Only after confirmed persistence may you say that the goal is saved",
+                        "Do not present a successor task or image until the learner explicitly chooses to continue",
+                        "\"Mathe\" is a display alias only; tool arguments still use the exact published subject",
+                        "A request to continue, catch up or learn a named subject is already an explicit request for voluntary extra",
+                        "capabilities remain authoritative even when the period target is already fulfilled",
+                        "Automatic continuation from a successor context is permitted only when guidance.state=resume",
+                        "Never automatically resume extra work, even when resumeAvailable=true",
+                        "Answer a status-only question or respect a pause without starting a goal or exercise",
+                        "Goal images: status-only questions, pauses and feedback about a completed task or goal permit no render",
+                        "Resolve a requested subject before rendering the old goal",
+                        "After sufficient ordinary-goal evidence or a passed exam, perform the warranted mastery write first; never render an image from the old context",
+                        "Only when teaching is authorized",
+                        "For blocked or unavailable, explain the remaining work or missing plan status without claiming completion",
+                        "Learning plans prioritize work and never limit learning within the Personal Curriculum",
+                        "A missing or outdated plan must not block published learning capabilities")
+                // The model is given neither the instruction nor the data to recompute a status.
+                .doesNotContain(
+                        "totals.completedToday",
+                        "totals.dueToday",
+                        "openToday",
+                        "openOverdue",
+                        "extraCompletedToday",
+                        "Mention openOverdue only for an explicit plan-detail request",
+                        "which that text already announces");
+
+        assertThat(GeminiV1McpContractAdapter.PLAN_RESUME_CONTINUATION_INSTRUCTION)
+                .contains(
+                        "outputting learningPlanToday.text verbatim",
+                        "adding no counts, totals or overall judgement of your own",
+                        "Do not repeat a status already given from this context in the same response",
+                        "follow its presentationInstruction before any learner-facing response",
+                        "Then output learningPlanToday.activeGoalAnnouncement verbatim once",
+                        "continue immediately with that returned active goal")
+                .doesNotContain(
+                        "openToday",
+                        "openOverdue",
+                        "extraCompletedToday",
+                        "Mention backlog only on an explicit plan-detail request");
+    }
+
+    @Test
+    void coachContextReadsDailyPlanStatusWithoutReconcilingOrAdvancingState() throws Exception {
+        McpSchema.CallToolResult result = call(
+                GeminiV1Contract.TOOL_GET_COACH_CONTEXT,
+                Map.of("learningSessionId", connectionId, "language", "de"));
+
+        assertThat(result.isError()).isFalse();
+        assertThat(payload(result))
+                .containsEntry("stateVersion", 20)
+                .hasEntrySatisfying("learningPlanToday", value -> assertThat(value.toString())
+                        .contains("Mathematik", "Physik", "text=", "statusDirection=")
+                        .doesNotContain("private-math-landscape", "private-physics-landscape",
+                                "completedToday", "openOverdue", "dueToday", "openToday"));
+        assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
+        verify(coachToolFacade, times(1)).getLearningPlanTodayStatus(learnerId, "de");
+        verify(coachToolFacade, never()).resumeLearningPlan(learnerId, "de");
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void resumeUsesCanonicalReconcileAndReturnsFreshFullContextIdempotently() throws Exception {
+        when(coachToolFacade.resumeLearningPlan(learnerId, "de")).thenAnswer(invocation -> {
+            FrontierGoal selected = goal(RESUMED_GOAL_ID);
+            activeGoal.set(selected);
+            Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+            learner.setCoachStateRevision(learner.getCoachStateRevision() + 1);
+            learnerRepository.save(learner);
+            return new LearnerLearningPlanApi.TransitionResponse(
+                    UUID.randomUUID(),
+                    7L,
+                    "private-math-landscape",
+                    "private-focus",
+                    RESUMED_GOAL_ID,
+                    true,
+                    learnerState(selected));
+        });
+        String clientRequestId = UUID.randomUUID().toString();
+        Map<String, Object> arguments = resumeArguments(clientRequestId);
+
+        McpSchema.CallToolResult first = call(
+                GeminiV1Contract.TOOL_RESUME_LEARNING_PLAN,
+                arguments);
+        McpSchema.CallToolResult replay = call(
+                GeminiV1Contract.TOOL_RESUME_LEARNING_PLAN,
+                arguments);
+
+        Map<String, Object> response = payload(first);
+        assertThat(first.isError()).isFalse();
+        assertThat(payload(replay)).isEqualTo(response);
+        assertThat(response)
+                .containsEntry("status", "SUCCESS")
+                .containsEntry("stateVersion", 21)
+                .containsEntry(
+                        "presentationInstruction",
+                        GeminiV1McpContractAdapter.PLAN_RESUME_CONTINUATION_INSTRUCTION)
+                .doesNotContainKeys("planId", "landscapeId", "focusGoalId");
+        Map<String, Object> context = (Map<String, Object>) response.get("context");
+        assertThat(context)
+                .containsEntry("stateVersion", 21)
+                .hasEntrySatisfying("activeGoal", value -> assertThat(value)
+                        .asInstanceOf(org.assertj.core.api.InstanceOfAssertFactories.MAP)
+                        .containsEntry("id", RESUMED_GOAL_ID));
+        Map<String, Object> planToday =
+                (Map<String, Object>) context.get("learningPlanToday");
+        assertThat(planToday)
+                .containsEntry("asOf", "2026-09-04")
+                .containsEntry("followLearningPlans", true)
+                .containsEntry("resumeAvailable", false)
+                .doesNotContainKeys("planId", "landscapeId");
+        assertThat(planToday.toString())
+                .contains("Mathematik", "Physik")
+                .doesNotContain("private-math-landscape", "private-physics-landscape");
+        assertThat(currentStateVersion()).isEqualTo(21L);
+        verify(coachToolFacade, times(2)).getLearningPlanTodayStatus(learnerId, "de");
+        verify(coachToolFacade, times(1)).resumeLearningPlan(learnerId, "de");
+    }
+
+    @Test
+    void resumeRefusesToReplaceAnExistingActiveGoal() throws Exception {
+        activeGoal.set(goal("already-active"));
+
+        McpSchema.CallToolResult result = call(
+                GeminiV1Contract.TOOL_RESUME_LEARNING_PLAN,
+                resumeArguments(UUID.randomUUID().toString()));
+
+        assertThat(result.isError()).isTrue();
+        assertThat(payload(result))
+                .containsEntry("errorCode", "CONFLICT")
+                .hasEntrySatisfying("message", value -> assertThat(value.toString())
+                        .contains("already active"));
+        assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
+        verify(coachToolFacade, never()).getLearningPlanTodayStatus(learnerId, "de");
+        verify(coachToolFacade, never()).resumeLearningPlan(learnerId, "de");
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void explicitSubjectSwitchUsesOnlyTheLocalizedNameAndReturnsFreshContextIdempotently()
+            throws Exception {
+        activeGoal.set(goal("unfinished-math-goal"));
+        when(coachToolFacade.switchLearningPlanSubject(learnerId, "de", "Physik"))
+                .thenAnswer(invocation -> {
+                    FrontierGoal selected = goal("backend-selected-physics-goal");
+                    activeGoal.set(selected);
+                    Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+                    learner.setCoachStateRevision(learner.getCoachStateRevision() + 1);
+                    learnerRepository.save(learner);
+                    return new LearnerLearningPlanApi.TransitionResponse(
+                            UUID.randomUUID(),
+                            8L,
+                            "private-physics-landscape",
+                            "private-physics-focus",
+                            selected.id(),
+                            true,
+                            learnerState(selected));
+                });
+        String clientRequestId = UUID.randomUUID().toString();
+        Map<String, Object> arguments = switchArguments("Physik", clientRequestId);
+
+        McpSchema.CallToolResult first = call(
+                GeminiV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT,
+                arguments);
+        McpSchema.CallToolResult replay = call(
+                GeminiV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT,
+                arguments);
+
+        assertThat(first.isError()).isFalse();
+        Map<String, Object> response = payload(first);
+        assertThat(payload(replay)).isEqualTo(response);
+        assertThat(response)
+                .containsEntry("status", "SUCCESS")
+                .containsEntry("stateVersion", 21)
+                .containsEntry(
+                        "presentationInstruction",
+                        GeminiV1McpContractAdapter.PLAN_SUBJECT_SWITCH_CONTINUATION_INSTRUCTION)
+                .doesNotContainKeys(
+                        "subject", "planId", "landscapeId", "focusGoalId", "displacedGoalId");
+        Map<String, Object> context = (Map<String, Object>) response.get("context");
+        assertThat(context)
+                .containsEntry("stateVersion", 21)
+                .hasEntrySatisfying("activeGoal", value -> assertThat(value)
+                        .asInstanceOf(org.assertj.core.api.InstanceOfAssertFactories.MAP)
+                        .containsEntry("id", "backend-selected-physics-goal"));
+        assertThat(context.get("learningPlanToday").toString())
+                .contains("Mathematik", "Physik")
+                .doesNotContain("private-math-landscape", "private-physics-landscape");
+        assertThat(currentStateVersion()).isEqualTo(21L);
+        verify(coachToolFacade, times(1))
+                .switchLearningPlanSubject(learnerId, "de", "Physik");
+    }
+
+    @Test
+    void subjectSwitchFailsClosedWithoutLeakingInternalPlanIdentifiers() throws Exception {
+        activeGoal.set(goal("unfinished-math-goal"));
+        when(coachToolFacade.switchLearningPlanSubject(learnerId, "de", "Chemie"))
+                .thenThrow(new ResponseStatusException(
+                        HttpStatus.CONFLICT,
+                        "private-plan-id private-landscape-id private-goal-id"));
+
+        McpSchema.CallToolResult result = call(
+                GeminiV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT,
+                switchArguments("Chemie", UUID.randomUUID().toString()));
+
+        assertThat(result.isError()).isTrue();
+        assertThat(payload(result))
+                .containsEntry("errorCode", "CONFLICT")
+                .hasEntrySatisfying("message", value -> assertThat(value.toString())
+                        .contains("cannot be switched")
+                        .doesNotContain(
+                                "private-plan-id", "private-landscape-id", "private-goal-id"));
+        assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
+    }
+
+    /** Maths: three goals due today, one done, one earlier goal still open. Physics: two due. */
+    private LearnerPlanTodayStatus todayStatus() {
+        return com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.status(
+                LocalDate.of(2026, 9, 4), true, true, 0, null,
+                List.of(
+                        com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.subject(
+                                "private-math-landscape", "Mathematik", 4, 3, 1, 1, false, false),
+                        com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.subject(
+                                "private-physics-landscape", "Physik", 2, 2, 0, 0, false, false)));
+    }
+
+    private Map<String, Object> resumeArguments(String clientRequestId) {
+        Map<String, Object> arguments = new LinkedHashMap<>();
+        arguments.put("learningSessionId", connectionId);
+        arguments.put("expectedStateVersion", INITIAL_STATE_VERSION);
+        arguments.put("clientRequestId", clientRequestId);
+        arguments.put("language", "de");
+        return Map.copyOf(arguments);
+    }
+
+    private Map<String, Object> switchArguments(String subject, String clientRequestId) {
+        Map<String, Object> arguments = new LinkedHashMap<>();
+        arguments.put("learningSessionId", connectionId);
+        arguments.put("subject", subject);
+        arguments.put("expectedStateVersion", INITIAL_STATE_VERSION);
+        arguments.put("clientRequestId", clientRequestId);
+        arguments.put("language", "de");
+        return Map.copyOf(arguments);
+    }
+
+    private UnifiedLearnerStateResponse learnerState(FrontierGoal selected) {
+        String requiredAction = selected == null ? "setActiveGoal" : "teachActiveGoal";
+        return new UnifiedLearnerStateResponse(
+                null,
+                null,
+                selected == null ? List.of(goal(RESUMED_GOAL_ID)) : List.of(selected),
+                null,
+                List.of(requiredAction),
+                List.of(),
+                Set.of(),
+                selected == null ? "FRONTIER" : "TEACHING",
+                selected,
+                new StateMachineInfo(
+                        selected == null ? "FRONTIER" : "TEACHING",
+                        requiredAction,
+                        selected == null ? List.of(goal(RESUMED_GOAL_ID)) : List.of(selected),
+                        List.of(),
+                        selected));
+    }
+
+    private FrontierGoal goal(String id) {
+        return new FrontierGoal(
+                id,
+                "Learning goal " + id,
+                "Learner-facing description",
+                "atomic",
+                "tutor",
+                "content",
+                "test",
+                List.of(),
+                List.of(),
+                null,
+                null,
+                null,
+                null,
+                false);
+    }
+
+    private McpSchema.CallToolResult call(String toolName, Map<String, Object> arguments) {
+        McpStatelessServerFeatures.SyncToolSpecification specification =
+                contractAdapter.toolSpecifications().stream()
+                        .filter(candidate -> toolName.equals(candidate.tool().name()))
+                        .findFirst()
+                        .orElseThrow();
+        return assertReducedPlanPayloads(specification.callHandler().apply(
+                McpTransportContext.EMPTY,
+                new McpSchema.CallToolRequest(toolName, arguments)));
+    }
+
+    private Map<String, Object> payload(McpSchema.CallToolResult result) throws Exception {
+        assertThat(result.content()).singleElement().isInstanceOf(McpSchema.TextContent.class);
+        String json = ((McpSchema.TextContent) result.content().getFirst()).text();
+        return objectMapper.readValue(json, new TypeReference<>() {});
+    }
+
+    private long currentStateVersion() {
+        return learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision();
+    }
+}

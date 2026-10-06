@@ -1,0 +1,135 @@
+databaseChangeLog:
+  - changeSet:
+      id: 039-add-gemini-connector-v1
+      author: skillpilot
+      preConditions:
+        - onFail: HALT
+        - tableExists:
+            tableName: learner
+        - not:
+            - tableExists:
+                tableName: gemini_v1_learning_session
+        - not:
+            - tableExists:
+                tableName: gemini_v1_session_idempotency
+      changes:
+        # The clear spg_ token is returned once to the authenticated first-party
+        # WebGUI. Only its provider-specific HMAC is persisted.
+        - createTable:
+            tableName: gemini_v1_learning_session
+            columns:
+              - column:
+                  name: token_hash
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_gemini_v1_learning_session
+              - column:
+                  name: learner_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: started_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expires_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: communication_locale
+                  type: VARCHAR(35)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: state_version
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: gemini_v1_learning_session
+            baseColumnNames: learner_id
+            constraintName: fk_gemini_v1_learning_session_learner
+            referencedTableName: learner
+            referencedColumnNames: skillpilot_id
+            onDelete: CASCADE
+        - createIndex:
+            tableName: gemini_v1_learning_session
+            indexName: idx_gemini_v1_session_learner
+            columns:
+              - column:
+                  name: learner_id
+        - createIndex:
+            tableName: gemini_v1_learning_session
+            indexName: idx_gemini_v1_session_expires
+            columns:
+              - column:
+                  name: expires_at
+
+        # Exact-once mutation receipts are scoped to one learning session, not
+        # to the reusable technical OAuth installation.
+        - createTable:
+            tableName: gemini_v1_session_idempotency
+            columns:
+              - column:
+                  name: token_hash
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_gemini_v1_session_idempotency
+              - column:
+                  name: client_request_id
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_gemini_v1_session_idempotency
+              - column:
+                  name: tool_name
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: request_hash
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: response_payload
+                  type: CLOB
+                  constraints:
+                    nullable: false
+              - column:
+                  name: state_version
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expires_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: gemini_v1_session_idempotency
+            baseColumnNames: token_hash
+            constraintName: fk_gemini_v1_session_idempotency_session
+            referencedTableName: gemini_v1_learning_session
+            referencedColumnNames: token_hash
+            onDelete: CASCADE
+        - createIndex:
+            tableName: gemini_v1_session_idempotency
+            indexName: idx_gemini_v1_session_idempotency_expires
+            columns:
+              - column:
+                  name: expires_at
+
