@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "stage": "source-atlas-generate",
+  "commandArgv": [
+    "app/node_modules/.bin/tsx",
+    "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+    "--config",
+    "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json"
+  ],
+  "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-q1-current378-routes-native-d-preparation-20261006-v1",
+  "startedAtUTC": "2026-10-06T03:11:20.000313+00:00",
+  "completedAtUTC": "2026-10-06T03:11:20.489640+00:00",
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "node:fs:573\n  return binding.open(\n                 ^\n\nError: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/chemie-q1-current378-routes-native-d-preparation-20261006-v1/curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_CHEMIE_SEKI_RLP_2015.source-extraction.json'\n    at Object.openSync (node:fs:573:18)\n    at readFileSync (node:fs:452:35)\n    at read (/home/enpasos/projects/skillpilot/tmp/chemie-q1-current378-routes-native-d-preparation-20261006-v1/app/scripts/goalBookSourceAtlasInputs.ts:188:19)\n    at buildGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/tmp/chemie-q1-current378-routes-native-d-preparation-20261006-v1/app/scripts/goalBookSourceAtlasInputs.ts:236:24)\n    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/chemie-q1-current378-routes-native-d-preparation-20261006-v1/app/scripts/buildGoalBookSourceAtlasInputs.ts:11:88)\n    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)\n    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {\n  errno: -2,\n  code: 'ENOENT',\n  syscall: 'open',\n  path: '/home/enpasos/projects/skillpilot/tmp/chemie-q1-current378-routes-native-d-preparation-20261006-v1/curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_CHEMIE_SEKI_RLP_2015.source-extraction.json'\n}\n\nNode.js v20.20.2\n",
+  "nativeCodeModified": false,
+  "activeWrites": false,
+  "scienceReviewDecision": null
+}

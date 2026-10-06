@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "licenseExpression": "Apache-2.0",
+  "createdAtUTC": "2026-10-06T05:49:53.914807+00:00",
+  "reviewer": "Independent A follow-up; not author of B007 v1 or v2 materials",
+  "reviewScope": "Six own v1 findings; fresh complete DE/EN reading of five changed case objects and label essential; exact raw-object preservation of nine cases/six routines, complete byte preservation of two cards; selected primary boundaries only.",
+  "independence": {
+    "ownPriorAFindingsUsed": true,
+    "authorSelfReview": false,
+    "BReviewConclusionsRead": false,
+    "newPeerOutputsRead": false
+  },
+  "authorV2FreezeBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-four-material-corrections-author-v2/targeted-materials.author-v2.final.freeze.json",
+    "sha256": "e86359b0cea958c6964ad801945810c4621d2a542f426e69e5e92ad1cc303357",
+    "bytes": 4270,
+    "expectedSha256": "e86359b0cea958c6964ad801945810c4621d2a542f426e69e5e92ad1cc303357",
+    "exact": true
+  },
+  "ownPriorAReviewBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-fourteen-cases-independent-a-v1/independent-a.review.json",
+    "sha256": "25247613328ab10058812b5e4ad4b80b3829f5dcf83557c1ccc75fa4567ce828",
+    "bytes": 31196
+  },
+  "ownPriorAFreezeBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-fourteen-cases-independent-a-v1/independent-a.final.freeze.json",
+    "sha256": "51142dcb7947fce1ba0f22911306d3a94d6b9cb29a77a5674f5799fda07f2a87",
+    "bytes": 2518
+  },
+  "currentMaterialBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-four-material-corrections-author-v2/cases.de-en.author-candidate.json",
+      "sha256": "e6ac830d56c04345960f2bfc78a1264de95d9df2dfd0df16a4cc9c75bc30c406",
+      "bytes": 106386
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-four-material-corrections-author-v2/seven-routines.de-en.author-candidate.json",
+      "sha256": "adab413bf6e4b26ef6d366243ef3e1de98582dec08c7afc4140de673b312f267",
+      "bytes": 19583
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-four-material-corrections-author-v2/primary-cards.de-en.author-candidate.json",
+      "sha256": "32458dac7005037d50e0f07f96437ad1a7bf89df2a2dfdeaf9b9868f2020bcb5",
+      "bytes": 4764
+    }
+  ],
+  "decision": "keep_corrected_bounded_scientific_author_candidate",
+  "findingResolutions": [
+    {
+      "findingId": "A-F01",
+      "decision": "resolved_in_current_v2_material",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-four-material-corrections-author-v2/cases.de-en.author-candidate.json",
+      "caseLocalKeys": [
+        "label-same-exclamation-different-warning"
+      ],
+      "fields": [
+        "material.de[1]",
+        "expectedResponseOrSolution.de"
+      ],
+      "actualCurrentLookup": "Bereitgestellte Nachschlagetabelle: H315 = Verursacht Hautreizungen; H319 = Verursacht schwere Augenreizung. Die Stoffe werden nicht ausgegeben und nicht verwendet.",
+      "reason": "The DE table now uses the official H315 and H319 phrases; the DE solution consistently distinguishes skin irritation from serious eye irritation. EN meanings and H335 transfer remain correct.",
+      "primaryReferences": [
+        "https://www.baua.de/DE/Angebote/Publikationen/Praxis/Poster/GHS-01.pdf?__blob=publicationFile&v=17",
+        "https://eur-lex.europa.eu/eli/reg_impl/2025/834/oj/deu"
+      ],
+      "primaryAccess": "Fresh current primary-domain indexed text read; no successful BAuA direct PDF download claimed."
+    },
+    {
+      "findingId": "A-F02",
+      "decision": "resolved_in_current_v2_material",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-four-material-corrections-author-v2/cases.de-en.author-candidate.json",
+      "caseLocalKeys": [
+        "preparation-salt-water-performed-log"
+      ],
+      "fields": [
+        "material.de[0:2]",
+        "material.en[0:2]",
+        "expectedResponseOrSolution",
+        "assessmentCriteria[1]",
+        "boundSimulatorSpecification.actionVocabulary",
+        "boundSimulatorSpecification.stateRules"
+      ],
+      "actualEquipmentDe": "Ausschließlich beaufsichtigter Unterricht oder der unten beschriebene Handlungssimulator: Lehrkraft gibt Kochsalz, Wasser, ein sauberes Becherglas, eine separate saubere trockene Wägeschale, einen sauberen Laborspatel zum Einwiegen und Übertragen des Salzes, einen sauberen Rührstab und eine Waage frei. Brille und Kittel nach örtlicher Anweisung; nichts probieren; keine Stoffsubstitution, kein Erhitzen. Material: 2,0 g Kochsalz und 48,0 g Wasser bei Raumtemperatur, ausreichende Löslichkeit unter diesen bereitgestellten Bedingungen.",
+      "actualWorkInstructionDe": "Arbeitsanweisung P-1: Aufsicht/Materialfreigabe prüfen; trockenes Becherglas auf Waage tarieren; 48,0 g Wasser einwiegen; das Wasser-Becherglas von der Waage nehmen und standsicher abstellen; die leere Wägeschale auf der Waage tarieren; darin mithilfe des sauberen Spatels 2,0 g Salz separat abwiegen; das Salz aus der Wägeschale mit dem Spatel vollständig portionsweise in das Wasser übertragen; mit dem Rührstab rühren, bis keine Kristalle mehr zu sehen sind; mit Inhalt und Datum beschriften. Bei verbleibenden Kristallen oder verschüttetem Material stoppen und Lehrkraft fragen, keine Nachdosierung erraten.",
+      "actualActionVocabulary": [
+        "check_permission",
+        "tare_empty_beaker",
+        "weigh_water_48g",
+        "place_water_beaker_securely",
+        "tare_empty_salt_dish",
+        "weigh_salt_2g_separately",
+        "add_all_salt",
+        "stir",
+        "inspect",
+        "label_salt_solution_date"
+      ],
+      "actualTransferRuleDe": "add_all_salt bedeutet die vollständige portionsweise Übertragung aus der tarierten Wägeschale mithilfe des freigegebenen sauberen Spatels. Zurückgebliebenes oder verschüttetes Salz erzeugt STOP und keinen vollständigen Zugabenachweis.",
+      "reason": "A separate clean dry dish and clean spatula are now supplied. After weighing water, the beaker is secured, the empty salt dish separately tared, 2.0 g salt weighed and completely transferred with the spatula. DE/EN logs, criteria and action feedback agree; retained or spilled salt causes STOP.",
+      "limit": "A facilitator-issued model log is not physical laboratory competence; expected logs are not observed learner evidence."
+    },
+    {
+      "findingId": "A-F03",
+      "decision": "resolved_in_current_v2_material",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-four-material-corrections-author-v2/cases.de-en.author-candidate.json",
+      "caseLocalKeys": [
+        "disposal-identified-local-streams"
+      ],
+      "fields": [
+        "material.de[0]",
+        "material.en[0]",
+        "transferOrCountercase"
+      ],
+      "actualLocalRuleDe": "Nur für diesen Papierfall gilt die örtliche Sammelanweisung W-1: W-A nimmt ausschließlich wässrige Kochsalz- oder Zuckerlösungen ohne weitere Zusätze auf; W-B nimmt eindeutig identifizierte wässrige Reste mit Kupferverbindungen ohne organische Lösungsmittel auf, auch wenn Kochsalz enthalten ist; W-C nimmt eindeutig identifizierte ethanolhaltige Ethanol-Wasser-Reste ohne Metallzusätze auf. Bei unbekannter Zusammensetzung oder wenn keine dieser Kategorien passt: geschlossen getrennt bereitstellen und die Lehrkraft entscheiden lassen. Keine dieser Kategorien erlaubt Ausgussentsorgung oder Zusammenmischen verschiedener Sammelströme.",
+      "reason": "The catch-all now concerns unknown composition or no matching category. W-B explicitly includes aqueous copper residue with table salt and excludes organic solvents. The documented copper-contaminated saline transfer therefore selects W-B without contradictory mixture wording. Copper plus ethanol fits neither W-B nor W-C and stays held. No general drain or universal waste permission follows."
+    },
+    {
+      "findingId": "A-F04",
+      "decision": "resolved_in_current_v2_material",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-four-material-corrections-author-v2/cases.de-en.author-candidate.json",
+      "caseLocalKeys": [
+        "volume-fraction-contraction-no-denominator-swap"
+      ],
+      "fields": [
+        "learnerTask.de",
+        "learnerTask.en",
+        "assessmentCriteria[3]"
+      ],
+      "actualTask": {
+        "de": "Berechne φ(Ethanol) für den ersten Bericht. Erkläre, warum das gemessene Endvolumen von 96,0 mL nicht der Nenner dieser gesuchten Größe ist. Rechne den fiktiven Vorschlag aus und benenne seine abweichende Bezugsgröße, ohne ihn als Volumenanteil zu akzeptieren. Folgt aus φ(Ethanol), dass Ethanol in der homogenen fertigen Mischung einen abgetrennten 40,0-mL-Bereich einnimmt? Begründe.",
+        "en": "Calculate φ(ethanol) for the first record. Explain why measured final volume 96.0 mL is not this quantity’s denominator. Evaluate the fictional calculation and identify its different reference without accepting it as the requested volume fraction. Does φ(ethanol) mean that ethanol occupies a separate 40.0 mL region within the final homogeneous mixture? Explain."
+      },
+      "reason": "Both tasks now directly ask whether ethanol occupies a separate 40.0 mL region in the homogeneous final mixture. The existing required fourth criterion and expected negative answer are now elicited. Input-volume sum remains the correct denominator; no final-volume swap."
+    },
+    {
+      "findingId": "A-F05",
+      "decision": "resolved_in_current_v2_source_receipt",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-four-material-corrections-author-v2/README.md",
+      "fields": [
+        "HE paragraph locating parenthesized examples"
+      ],
+      "actualCurrentCitation": "printed page 7 (physical page 8)",
+      "reason": "Fresh actual retained PDF text at zero-based physical index 7 confirms the statement on printed p.7, the eighth physical page. The old frozen p.6 citation remains historical and is superseded by the v2 correction; original history is unmodified.",
+      "primaryReference": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf",
+      "localPrimaryBinding": {
+        "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-chemie.pdf",
+        "sha256": "f0a2c3795fcbcad1fee8d92d7ab9bc26810609bee0ef1fbd02c830e171220d2f",
+        "bytes": 324637
+      }
+    },
+    {
+      "findingId": "A-F06",
+      "decision": "resolved_in_current_v2_material",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-four-material-corrections-author-v2/seven-routines.de-en.author-candidate.json",
+      "routineLocalKey": "label",
+      "caseLocalKeys": [
+        "label-same-exclamation-different-warning",
+        "label-flame-and-bounded-lookup"
+      ],
+      "fields": [
+        "positiveUnderstandingAuthorCandidate.essentialUnderstandingDe",
+        "positiveUnderstandingAuthorCandidate.essentialUnderstandingEn",
+        "cases[label].essentialUnderstanding"
+      ],
+      "actualEssentialDe": "Ein Piktogramm weist auf bestimmte Gefahrenarten hin; dasselbe Symbol kann zu verschiedenen Gefahrenklassen und konkreten Warnungen gehören. Die konkrete Aussage ergibt sich zusammen mit dem zugehörigen Warnhinweis; Nachschlagen dient dieser selben Deutung und ist keine eigenständige freie Webrecherche.",
+      "actualEssentialEn": "A pictogram indicates particular types of hazard; the same symbol can apply to different hazard classes and specific warnings. Its specific meaning is read together with the associated hazard statement; lookup serves that interpretation rather than becoming a separate free web-research task.",
+      "reason": "The routine and both cases explicitly allow different hazard classes and concrete warnings under the same symbol. This agrees with the fresh BAuA indexed GHS07 skin/eye/respiratory entries and preserves bounded associated-statement lookup.",
+      "primaryReferences": [
+        "https://www.baua.de/DE/Angebote/Publikationen/Praxis/Poster/GHS-01.pdf?__blob=publicationFile&v=17",
+        "https://www.baua.de/DE/Themen/Chemikalien-Biostoffe/Gefahrstoffe/Einstufung-und-Kennzeichnung/Kennzeichnungselemente/Gefahrenpiktogramme-und-Signalwoerter"
+      ]
+    }
+  ],
+  "ownPriorFindingCount": 6,
+  "ownPriorFindingsResolved": 6,
+  "newUnresolvedMaterialFindings": [],
+  "changedCaseDecisions": [
+    {
+      "caseLocalKey": "label-same-exclamation-different-warning",
+      "decision": "keep_scientific_candidate",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "reason": "Official DE H315/H319 table and shared-symbol kernel corrected; task, solution, criteria and H335 countercase coherent.",
+      "nativeDOrPApproval": false,
+      "actualLearnerEvidence": false
+    },
+    {
+      "caseLocalKey": "label-flame-and-bounded-lookup",
+      "decision": "keep_scientific_candidate",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "reason": "Shared-symbol kernel corrected; liquid/vapour/solid warnings, bounded missing-text lookup and no-substance-identity inference coherent.",
+      "nativeDOrPApproval": false,
+      "actualLearnerEvidence": false
+    },
+    {
+      "caseLocalKey": "disposal-identified-local-streams",
+      "decision": "keep_scientific_candidate",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "reason": "Local category definition now resolves the known copper-contaminated saline transfer; hold-on-unknown/unmatched rule and no drain permission remain explicit.",
+      "nativeDOrPApproval": false,
+      "actualLearnerEvidence": false
+    },
+    {
+      "caseLocalKey": "preparation-salt-water-performed-log",
+      "decision": "keep_scientific_candidate",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "reason": "Supplied equipment, separate tare, clean transfer, logs, criteria and bounded simulator actions now agree; physical and model-evidence distinction retained.",
+      "nativeDOrPApproval": false,
+      "actualLearnerEvidence": false
+    },
+    {
+      "caseLocalKey": "volume-fraction-contraction-no-denominator-swap",
+      "decision": "keep_scientific_candidate",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "reason": "Explicit added spatial question aligns required criterion 4; material, expected solution and countercase remain scientifically sound.",
+      "nativeDOrPApproval": false,
+      "actualLearnerEvidence": false
+    }
+  ],
+  "changedRoutineDecision": {
+    "localKey": "label",
+    "decision": "keep_scientific_candidate",
+    "semanticAtomic": true,
+    "changedEssentialReadDeEn": true,
+    "goalTitlesDescriptionsPrerequisitesExactV1": true,
+    "nativeDPAorMApproval": false
+  },
+  "unchangedCandidateReviewContinuity": {
+    "nineCases": [
+      "handling-eye-splash-task",
+      "handling-dust-versus-closed-vessel",
+      "disposal-missing-identity-hold",
+      "preparation-bound-phase-solvent-transfer",
+      "solubility-clear-saturated-countercase",
+      "solubility-residue-water-and-temperature",
+      "mass-fraction-total-mass-and-dilution",
+      "mass-fraction-documented-solvent-loss",
+      "volume-fraction-input-sum-and-scaling"
+    ],
+    "sixRoutines": [
+      "handling",
+      "disposal",
+      "preparation",
+      "solubility",
+      "mass_fraction",
+      "volume_fraction"
+    ],
+    "evidence": "Complete raw JSON objects are byte-identical to the actual objects independently reviewed in A v1; current numerical audits are exact and 23 prior independent literal checks remain applicable. No unreviewed content is promoted.",
+    "twoPrimaryCards": {
+      "wholeFileByteExact": true,
+      "decision": "retain_own_prior_scientific_candidate_KEEP",
+      "nativeMApproval": false,
+      "activationApproved": false,
+      "ordinaryGoalIds": null,
+      "cardIds": null,
+      "deckIds": null,
+      "memoryGoalIds": [],
+      "actualVisibilityVerified": false
+    }
+  },
+  "newDirectArithmeticChecks": [
+    {
+      "context": "input fraction",
+      "exactResult": "2/5",
+      "expectedExact": "2/5",
+      "exact": true
+    },
+    {
+      "context": "different ratio to final volume",
+      "exactResult": "5/12",
+      "expectedExact": "5/12",
+      "exact": true
+    },
+    {
+      "context": "new input fraction",
+      "exactResult": "3/10",
+      "expectedExact": "3/10",
+      "exact": true
+    }
+  ],
+  "sourceDecisions": [
+    {
+      "source": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf",
+      "actualRead": "Fresh local actual layout text; printed pp.7,11,12",
+      "decision": "keep_distinct_source_boundaries",
+      "detail": "Printed p.7: parenthesized examples are suggestions. Printed p.11: separate labelling/disposal/protection plus complete solid/liquid/gas/different-solvent solutions row with both fractions. Printed p.12: saturation categories and temperature-dependent solubility are facultative."
+    },
+    {
+      "source": "https://www.baua.de/DE/Angebote/Publikationen/Praxis/Poster/GHS-01.pdf?__blob=publicationFile&v=17",
+      "actualRead": "Fresh primary-domain indexed text; direct open failed",
+      "decision": "supports_corrected_H315_H319_and_shared_symbol_scope",
+      "detail": "No actual BAuA PDF download, actual product classification or universal pictogram/category correspondence claimed."
+    },
+    {
+      "source": "NI property-description and HE prospective quantitative-saturation/stage route",
+      "decision": "hold_exact_source_route",
+      "detail": "The v2 corrections do not supply new literal primary proof for a quantitative-saturation route as mandatory HE core or full NI grade-level exact coverage. Scientific model-case KEEP does not create that proof."
+    }
+  ],
+  "counts": {
+    "casesTotal": 14,
+    "changedCompleteCasesReviewed": 5,
+    "wholeRawCasesExact": 9,
+    "routinesTotal": 7,
+    "changedEssentialReviewed": 1,
+    "wholeRawRoutinesExact": 6,
+    "wholeCardsExact": 2,
+    "requiredCriteria": 46,
+    "all403OriginalSourceObligationsCleared": false
+  },
+  "currentStrictInheritedBaseline": {
+    "chemie": "112/378",
+    "biologie": "67/383"
+  },
+  "strictCompletionsAdded": 0,
+  "restoredActiveBindingsAdded": 0,
+  "activeWrites": false,
+  "nativeDPAorMVApproval": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "pending": [
+    "all full source/stage/target bindings and 403 retained original obligations",
+    "actual new ordinary-goal IDs and validated routes/placements",
+    "actual cards/deck/memory origins and same-view visibility",
+    "native D/P/A/M gates and actual V review",
+    "actual learner evidence and human review where required"
+  ]
+}

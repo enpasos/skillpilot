@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik B035r – fünf gezielt korrigierte Quantenbeschreibungen</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Physik B035r – fünf gezielt korrigierte Quantenbeschreibungen</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>5 atomare Lernziele</dt><dd>5 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:ad062e4f39d758ccf0c9b097d5f60390cb31afcd5239831ed81c4e07ae87c7dc</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-physics-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-6747d2e0bbbbd4b4358ff0fa" aria-label="Physik"><a href="#goal-51bc5513-6879-548f-b19a-9746b667f1a3"><span class="toc-entry-label">Physik</span></a></h2>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-physics-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-546e47201fdf10d52f5a936c" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-51bc5513-6879-548f-b19a-9746b667f1a3"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-q4" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-2d62da14bfd408e36bddc43b" aria-label="Q4 Struktur von Materie, Raum und Zeit"><a href="#goal-51bc5513-6879-548f-b19a-9746b667f1a3"><span class="toc-entry-label">Q4&#160;<wbr>Struktur&#160;<wbr>von&#160;<wbr>Materie,&#160;<wbr>Raum&#160;<wbr>und&#160;<wbr>Zeit</span></a></h4>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-ab636b78-6031-5a5b-afa2-9ffefbdd5dda" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-698b91caebbb2667b0be5683" aria-label="Quantenobjekte"><a href="#goal-51bc5513-6879-548f-b19a-9746b667f1a3"><span class="toc-entry-label">Quantenobjekte</span></a></h5>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-cc2d5e8e-4599-54ac-b8de-87c8cfd39ea7" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-6e7b70d79dd71e705812adff" aria-label="Quantenmechanisches Atommodell im Potenzialtopf"><a href="#goal-ef6d5067-96b0-5388-87dd-5ac4e6a3e313"><span class="toc-entry-label">Quantenmechanisches&#160;<wbr>Atommodell&#160;<wbr>im&#160;<wbr>Potenzialtopf</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-51bc5513-6879-548f-b19a-9746b667f1a3" data-goal-id="51bc5513-6879-548f-b19a-9746b667f1a3" data-page-number="1" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-ab636b78-6031-5a5b-afa2-9ffefbdd5dda" aria-labelledby="goal-51bc5513-6879-548f-b19a-9746b667f1a3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-51bc5513-6879-548f-b19a-9746b667f1a3-title"><a class="goal-self-link" href="#goal-51bc5513-6879-548f-b19a-9746b667f1a3">Wellenfunktion und Wahrscheinlichkeitsdeutung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>51bc5513-6879-548f-b19a-9746b667f1a3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-698b91caebbb2667b0be5683">Quantenobjekte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c0b80aaebf56cd706458092dfc46c919c96bb94ad93ab3593356eef69cbccf67" data-rendered-digest="sha256:56ac811301e8829f245077896be7bdd7b3a1a91408262d9ee98e602e22780570" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/51bc5513-6879-548f-b19a-9746b667f1a3/51bc5513-6879-548f-b19a-9746b667f1a3.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Wellenfunktion und Wahrscheinlichkeitsdeutung&quot;. Die lernende Person kann qualitativ erläutern, wie das Betragsquadrat der quantenmechanischen Wellenfunktion eine Wahrscheinlichkeitsdichte angibt und daraus die Wahrscheinlichkeit für den Nachweis eines Quantenobjekts in einem Raumbereich folgt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-51bc5513-6879-548f-b19a-9746b667f1a3-description-heading">
+        <p class="section-heading" id="goal-51bc5513-6879-548f-b19a-9746b667f1a3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann qualitativ erläutern, wie das Betragsquadrat der quantenmechanischen Wellenfunktion eine Wahrscheinlichkeitsdichte angibt und daraus die Wahrscheinlichkeit für den Nachweis eines Quantenobjekts in einem Raumbereich folgt.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-51bc5513-6879-548f-b19a-9746b667f1a3" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-51bc5513-6879-548f-b19a-9746b667f1a3-requires-heading">
+          <p class="section-heading" id="goal-51bc5513-6879-548f-b19a-9746b667f1a3-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-51bc5513-6879-548f-b19a-9746b667f1a3-reverse-heading">
+          <p class="section-heading" id="goal-51bc5513-6879-548f-b19a-9746b667f1a3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-ef6d5067-96b0-5388-87dd-5ac4e6a3e313"><span>Grenzen des Potentialtopf-Modells</span><code>ef6d5067-96b0-5388-87dd-5ac4e6a3e313</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-51bc5513-6879-548f-b19a-9746b667f1a3-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-51bc5513-6879-548f-b19a-9746b667f1a3-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d7244ce4-5409-58d1-a1b4-bfae35f391e1" rel="noreferrer noopener"><span>Energieniveaus des Wasserstoffatoms</span> <code>d7244ce4-5409-58d1-a1b4-bfae35f391e1</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-51bc5513-6879-548f-b19a-9746b667f1a3-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-51bc5513-6879-548f-b19a-9746b667f1a3-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-266b6cf8-d49d-5197-862c-9998fcf179a5" rel="noreferrer noopener"><span>Lernkarten - Q4</span> <code>266b6cf8-d49d-5197-862c-9998fcf179a5</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ad021f2e-6b94-5e6e-a264-3d1110094b87" rel="noreferrer noopener"><span>Berechnungen im Potenzialtopf (LK)</span> <code>ad021f2e-6b94-5e6e-a264-3d1110094b87</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-9e881b3b-68cd-5f52-819f-c2e33b5ba631" rel="noreferrer noopener"><span>Orts-Impuls-Unbestimmtheit</span> <code>9e881b3b-68cd-5f52-819f-c2e33b5ba631</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-76bcbdcb-3003-5e6a-952e-aa36eb8f97ee" rel="noreferrer noopener"><span>α-Zerfall durch Tunneleffekt</span> <code>76bcbdcb-3003-5e6a-952e-aa36eb8f97ee</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4e046c1c-bcc7-5e3c-9f71-f80d69027483" rel="noreferrer noopener"><span>Standardmodell: Teilchenfamilien</span> <code>4e046c1c-bcc7-5e3c-9f71-f80d69027483</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d5bff282-741f-4cc5-9622-b77584fdcc5a" rel="noreferrer noopener"><span>Zeitentwicklung von Quantenzuständen einordnen</span> <code>d5bff282-741f-4cc5-9622-b77584fdcc5a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6e7c35e0-7a38-5996-a42e-005038eff0db" rel="noreferrer noopener"><span>Potenzialtopfmodell für Kerne</span> <code>6e7c35e0-7a38-5996-a42e-005038eff0db</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 5</span>
+      <span>Buch-Digest <code>sha256:ad062e4f39d758ccf0c9b097d5f60390cb31afcd5239831ed81c4e07ae87c7dc</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b3d32bc6e5c4b1cd957f5dae1e333290833589bd83bec5b54971cd7148d52230</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b035r-quantum-description-recheck-5-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=51bc5513-6879-548f-b19a-9746b667f1a3&amp;goalFingerprint=sha256%3Ab3d32bc6e5c4b1cd957f5dae1e333290833589bd83bec5b54971cd7148d52230&amp;pageFingerprint=sha256%3A7aa965af730d560f5de745a8048313535312ce6e48a56e1bc295b0ff60f5a135&amp;bookDigest=sha256%3Aad062e4f39d758ccf0c9b097d5f60390cb31afcd5239831ed81c4e07ae87c7dc&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ef6d5067-96b0-5388-87dd-5ac4e6a3e313" data-goal-id="ef6d5067-96b0-5388-87dd-5ac4e6a3e313" data-page-number="2" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-ab636b78-6031-5a5b-afa2-9ffefbdd5dda structure:canonical-goal-cc2d5e8e-4599-54ac-b8de-87c8cfd39ea7" aria-labelledby="goal-ef6d5067-96b0-5388-87dd-5ac4e6a3e313-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ef6d5067-96b0-5388-87dd-5ac4e6a3e313-title"><a class="goal-self-link" href="#goal-ef6d5067-96b0-5388-87dd-5ac4e6a3e313">Grenzen des Potentialtopf-Modells</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ef6d5067-96b0-5388-87dd-5ac4e6a3e313</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-698b91caebbb2667b0be5683">Quantenobjekte</a></li><li><a href="#chapter-6e7b70d79dd71e705812adff">Quantenmechanisches Atommodell im Potenzialtopf</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:984d28cf088ab3141bad45a36cf169f3655c7efd8c8c1d5843e83b43e3e5424b" data-rendered-digest="sha256:fe3b5884c147afcb66fa217cd3b88e765b7e03cefbe3b08f1a346b62bda1c247" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/ef6d5067-96b0-5388-87dd-5ac4e6a3e313/ef6d5067-96b0-5388-87dd-5ac4e6a3e313.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Grenzen des Potentialtopf-Modells&quot;. Die lernende Person kann das idealisierte unendliche Kastenpotential mit dem atomaren Coulomb-Potential vergleichen und daraus Aussagegrenzen des Kastenmodells für Atome erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ef6d5067-96b0-5388-87dd-5ac4e6a3e313-description-heading">
+        <p class="section-heading" id="goal-ef6d5067-96b0-5388-87dd-5ac4e6a3e313-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das idealisierte unendliche Kastenpotential mit dem atomaren Coulomb-Potential vergleichen und daraus Aussagegrenzen des Kastenmodells für Atome erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ef6d5067-96b0-5388-87dd-5ac4e6a3e313" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ef6d5067-96b0-5388-87dd-5ac4e6a3e313-requires-heading">
+          <p class="section-heading" id="goal-ef6d5067-96b0-5388-87dd-5ac4e6a3e313-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-51bc5513-6879-548f-b19a-9746b667f1a3"><span>Wellenfunktion und Wahrscheinlichkeitsdeutung</span><code>51bc5513-6879-548f-b19a-9746b667f1a3</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ef6d5067-96b0-5388-87dd-5ac4e6a3e313-reverse-heading">
+          <p class="section-heading" id="goal-ef6d5067-96b0-5388-87dd-5ac4e6a3e313-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-43adaa0b-1f37-5d55-a496-6900555274a1"><span>Potentialverlaeufe und Atombindung quantenmechanisch plausibilisieren</span><code>43adaa0b-1f37-5d55-a496-6900555274a1</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-ef6d5067-96b0-5388-87dd-5ac4e6a3e313-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ef6d5067-96b0-5388-87dd-5ac4e6a3e313-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b585ff81-6332-5d11-ae63-ee6a9928c00d" rel="noreferrer noopener"><span>Quantenobjekte, Unbestimmtheit und Messproblem</span> <code>b585ff81-6332-5d11-ae63-ee6a9928c00d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-2ec48368-ac5b-55f9-a396-5a5fe4e1e874" rel="noreferrer noopener"><span>Tunneleffekt und Rastertunnelmikroskop</span> <code>2ec48368-ac5b-55f9-a396-5a5fe4e1e874</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 5</span>
+      <span>Buch-Digest <code>sha256:ad062e4f39d758ccf0c9b097d5f60390cb31afcd5239831ed81c4e07ae87c7dc</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ebad935d6d9c949127954b6e3856872142baf0925dc4564cf910cdfeb20c9806</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b035r-quantum-description-recheck-5-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=ef6d5067-96b0-5388-87dd-5ac4e6a3e313&amp;goalFingerprint=sha256%3Aebad935d6d9c949127954b6e3856872142baf0925dc4564cf910cdfeb20c9806&amp;pageFingerprint=sha256%3A8976f3300f49b09d63d25f83774917b5cacd744d99d1c6a0f4115f543813edb5&amp;bookDigest=sha256%3Aad062e4f39d758ccf0c9b097d5f60390cb31afcd5239831ed81c4e07ae87c7dc&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b05da028-65e4-5cd1-a13c-6c1a95b6dfdf" data-goal-id="b05da028-65e4-5cd1-a13c-6c1a95b6dfdf" data-page-number="3" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-ab636b78-6031-5a5b-afa2-9ffefbdd5dda" aria-labelledby="goal-b05da028-65e4-5cd1-a13c-6c1a95b6dfdf-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b05da028-65e4-5cd1-a13c-6c1a95b6dfdf-title"><a class="goal-self-link" href="#goal-b05da028-65e4-5cd1-a13c-6c1a95b6dfdf">Das Messproblem in der Quantenphysik</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b05da028-65e4-5cd1-a13c-6c1a95b6dfdf</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-698b91caebbb2667b0be5683">Quantenobjekte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:043aed6342d87b2910b2e4c2587ec1e55559255584dc3cbd45cd121d1417d393" data-rendered-digest="sha256:22c67a208a624d6b5c8c0903026839c57b7227d7887a7e833ee1db09f6614e0a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/b05da028-65e4-5cd1-a13c-6c1a95b6dfdf/b05da028-65e4-5cd1-a13c-6c1a95b6dfdf.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Das Messproblem in der Quantenphysik&quot;. Die lernende Person kann die mögliche Zustandspräparation oder -änderung durch eine Quantenmessung erläutern, den sogenannten Kollaps der Wellenfunktion als modellabhängige Beschreibung einordnen und dies von klassischer Messunsicherheit unterscheiden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b05da028-65e4-5cd1-a13c-6c1a95b6dfdf-description-heading">
+        <p class="section-heading" id="goal-b05da028-65e4-5cd1-a13c-6c1a95b6dfdf-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die mögliche Zustandspräparation oder -änderung durch eine Quantenmessung erläutern, den sogenannten Kollaps der Wellenfunktion als modellabhängige Beschreibung einordnen und dies von klassischer Messunsicherheit unterscheiden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b05da028-65e4-5cd1-a13c-6c1a95b6dfdf" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b05da028-65e4-5cd1-a13c-6c1a95b6dfdf-requires-heading">
+          <p class="section-heading" id="goal-b05da028-65e4-5cd1-a13c-6c1a95b6dfdf-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-b05da028-65e4-5cd1-a13c-6c1a95b6dfdf-reverse-heading">
+          <p class="section-heading" id="goal-b05da028-65e4-5cd1-a13c-6c1a95b6dfdf-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b05da028-65e4-5cd1-a13c-6c1a95b6dfdf-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b05da028-65e4-5cd1-a13c-6c1a95b6dfdf-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-72effc66-87f4-5f5e-8d36-1547677365fb" rel="noreferrer noopener"><span>Digitale Messdaten auswerten und Unsicherheiten berücksichtigen</span> <code>72effc66-87f4-5f5e-8d36-1547677365fb</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-9e881b3b-68cd-5f52-819f-c2e33b5ba631" rel="noreferrer noopener"><span>Orts-Impuls-Unbestimmtheit</span> <code>9e881b3b-68cd-5f52-819f-c2e33b5ba631</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-b05da028-65e4-5cd1-a13c-6c1a95b6dfdf-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b05da028-65e4-5cd1-a13c-6c1a95b6dfdf-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b585ff81-6332-5d11-ae63-ee6a9928c00d" rel="noreferrer noopener"><span>Quantenobjekte, Unbestimmtheit und Messproblem</span> <code>b585ff81-6332-5d11-ae63-ee6a9928c00d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-727d0946-7019-50ed-8fc6-85db12508733" rel="noreferrer noopener"><span>Realitaetsbegriff in der Quantenphysik diskutieren</span> <code>727d0946-7019-50ed-8fc6-85db12508733</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 5</span>
+      <span>Buch-Digest <code>sha256:ad062e4f39d758ccf0c9b097d5f60390cb31afcd5239831ed81c4e07ae87c7dc</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a94f0b7ac3dd00aa02ac57cdedd24f991e9f40b4ede18ab430426b9c77fc9301</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b035r-quantum-description-recheck-5-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=b05da028-65e4-5cd1-a13c-6c1a95b6dfdf&amp;goalFingerprint=sha256%3Aa94f0b7ac3dd00aa02ac57cdedd24f991e9f40b4ede18ab430426b9c77fc9301&amp;pageFingerprint=sha256%3Ae25f9a9ad15e1541a6d31f30902055e95b12302d69ee1ed8ad7ebedea0868eac&amp;bookDigest=sha256%3Aad062e4f39d758ccf0c9b097d5f60390cb31afcd5239831ed81c4e07ae87c7dc&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-aef1e312-6a0c-5323-9202-c22ae84086f2" data-goal-id="aef1e312-6a0c-5323-9202-c22ae84086f2" data-page-number="4" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-ab636b78-6031-5a5b-afa2-9ffefbdd5dda" aria-labelledby="goal-aef1e312-6a0c-5323-9202-c22ae84086f2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-aef1e312-6a0c-5323-9202-c22ae84086f2-title"><a class="goal-self-link" href="#goal-aef1e312-6a0c-5323-9202-c22ae84086f2">Koinzidenznachweis einzelner Photonen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>aef1e312-6a0c-5323-9202-c22ae84086f2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-698b91caebbb2667b0be5683">Quantenobjekte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:37906c50a3b25e52dd5546ff65771634d588e302032e5613d47bb61b842c90ac" data-rendered-digest="sha256:9e5967d87cadcee10b0beeed7a82e6650a242b4ae131e3663fe9c5af9c8c793d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/aef1e312-6a0c-5323-9202-c22ae84086f2/aef1e312-6a0c-5323-9202-c22ae84086f2.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Koinzidenznachweis einzelner Photonen&quot;. Die lernende Person kann Koinzidenzmessungen zum Nachweis einzelner Photonen qualitativ erklären und begründen, wie unterdrückte gleichzeitige Nachweise an den beiden Ausgängen eines Strahlteilers bei geeigneter Einzelphotonenpräparation die Unteilbarkeit eines Photons beim Nachweis stützen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-aef1e312-6a0c-5323-9202-c22ae84086f2-description-heading">
+        <p class="section-heading" id="goal-aef1e312-6a0c-5323-9202-c22ae84086f2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Koinzidenzmessungen zum Nachweis einzelner Photonen qualitativ erklären und begründen, wie unterdrückte gleichzeitige Nachweise an den beiden Ausgängen eines Strahlteilers bei geeigneter Einzelphotonenpräparation die Unteilbarkeit eines Photons beim Nachweis stützen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li><li class="applicability-more">+ 3 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-aef1e312-6a0c-5323-9202-c22ae84086f2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-aef1e312-6a0c-5323-9202-c22ae84086f2-requires-heading">
+          <p class="section-heading" id="goal-aef1e312-6a0c-5323-9202-c22ae84086f2-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-aef1e312-6a0c-5323-9202-c22ae84086f2-reverse-heading">
+          <p class="section-heading" id="goal-aef1e312-6a0c-5323-9202-c22ae84086f2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-aef1e312-6a0c-5323-9202-c22ae84086f2-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-aef1e312-6a0c-5323-9202-c22ae84086f2-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-9e881b3b-68cd-5f52-819f-c2e33b5ba631" rel="noreferrer noopener"><span>Orts-Impuls-Unbestimmtheit</span> <code>9e881b3b-68cd-5f52-819f-c2e33b5ba631</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-aef1e312-6a0c-5323-9202-c22ae84086f2-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-aef1e312-6a0c-5323-9202-c22ae84086f2-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b585ff81-6332-5d11-ae63-ee6a9928c00d" rel="noreferrer noopener"><span>Quantenobjekte, Unbestimmtheit und Messproblem</span> <code>b585ff81-6332-5d11-ae63-ee6a9928c00d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 5</span>
+      <span>Buch-Digest <code>sha256:ad062e4f39d758ccf0c9b097d5f60390cb31afcd5239831ed81c4e07ae87c7dc</code></span>
+      <span>Ziel-Fingerprint <code>sha256:502811f8297c42bdd9d6b97c9746a9e11a88d9754f16a4a01e06f4a0bbbae194</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b035r-quantum-description-recheck-5-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=aef1e312-6a0c-5323-9202-c22ae84086f2&amp;goalFingerprint=sha256%3A502811f8297c42bdd9d6b97c9746a9e11a88d9754f16a4a01e06f4a0bbbae194&amp;pageFingerprint=sha256%3A7b11adc05f99f5e982fdbf70972d0764be74bd33e7d52c12da42625ec76e1b6a&amp;bookDigest=sha256%3Aad062e4f39d758ccf0c9b097d5f60390cb31afcd5239831ed81c4e07ae87c7dc&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-43adaa0b-1f37-5d55-a496-6900555274a1" data-goal-id="43adaa0b-1f37-5d55-a496-6900555274a1" data-page-number="5" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-ab636b78-6031-5a5b-afa2-9ffefbdd5dda" aria-labelledby="goal-43adaa0b-1f37-5d55-a496-6900555274a1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-43adaa0b-1f37-5d55-a496-6900555274a1-title"><a class="goal-self-link" href="#goal-43adaa0b-1f37-5d55-a496-6900555274a1">Potentialverlaeufe und Atombindung quantenmechanisch plausibilisieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>43adaa0b-1f37-5d55-a496-6900555274a1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-698b91caebbb2667b0be5683">Quantenobjekte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:969ca35663845dffb2f5a0d23d96c85f935b54bd87f3f68252f3f93543d920d1" data-rendered-digest="sha256:9cb21b6a5c0d234fd190c9aece1400665723cd459d280adcbc566171042fc7c5" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/43adaa0b-1f37-5d55-a496-6900555274a1/43adaa0b-1f37-5d55-a496-6900555274a1.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Potentialverlaeufe und Atombindung quantenmechanisch plausibilisieren&quot;. Die lernende Person kann einfache Potentialverläufe mithilfe von Simulationen untersuchen, Wellenfunktionen und Energieniveaus qualitativ vergleichen und damit das Zustandekommen von Atombindung plausibel machen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-43adaa0b-1f37-5d55-a496-6900555274a1-description-heading">
+        <p class="section-heading" id="goal-43adaa0b-1f37-5d55-a496-6900555274a1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann einfache Potentialverläufe mithilfe von Simulationen untersuchen, Wellenfunktionen und Energieniveaus qualitativ vergleichen und damit das Zustandekommen von Atombindung plausibel machen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-43adaa0b-1f37-5d55-a496-6900555274a1" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-43adaa0b-1f37-5d55-a496-6900555274a1-requires-heading">
+          <p class="section-heading" id="goal-43adaa0b-1f37-5d55-a496-6900555274a1-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ef6d5067-96b0-5388-87dd-5ac4e6a3e313"><span>Grenzen des Potentialtopf-Modells</span><code>ef6d5067-96b0-5388-87dd-5ac4e6a3e313</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-43adaa0b-1f37-5d55-a496-6900555274a1-reverse-heading">
+          <p class="section-heading" id="goal-43adaa0b-1f37-5d55-a496-6900555274a1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-43adaa0b-1f37-5d55-a496-6900555274a1-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-43adaa0b-1f37-5d55-a496-6900555274a1-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-cc2d5e8e-4599-54ac-b8de-87c8cfd39ea7" rel="noreferrer noopener"><span>Quantenmechanisches Atommodell im Potenzialtopf</span> <code>cc2d5e8e-4599-54ac-b8de-87c8cfd39ea7</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 5</span>
+      <span>Buch-Digest <code>sha256:ad062e4f39d758ccf0c9b097d5f60390cb31afcd5239831ed81c4e07ae87c7dc</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ee9d1c89ea10bbf19e0cbc2871574e84a57a71b50706bbd8d73e768567af23d1</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b035r-quantum-description-recheck-5-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=43adaa0b-1f37-5d55-a496-6900555274a1&amp;goalFingerprint=sha256%3Aee9d1c89ea10bbf19e0cbc2871574e84a57a71b50706bbd8d73e768567af23d1&amp;pageFingerprint=sha256%3A6ac7d235912abb56eab5fefb079597a89aeb4016ad842a27efe5f00a9b7c7e04&amp;bookDigest=sha256%3Aad062e4f39d758ccf0c9b097d5f60390cb31afcd5239831ed81c4e07ae87c7dc&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

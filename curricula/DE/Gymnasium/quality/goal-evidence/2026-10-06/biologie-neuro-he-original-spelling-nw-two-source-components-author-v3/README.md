@@ -1,0 +1,13 @@
+# Neurobiology: targeted HE transcription and NRW component candidates
+
+This author package changes **no active goal, source, review, card, image or registry**. Chemistry remains **112/378**, Biology **67/383**. There are **zero new strict completions and zero restored active bindings**.
+
+The [HE candidate](HE.LK7.exact-original-and-declared-normalization.author-v3.candidate.json) preserves the actual printed spelling in the four original/raw source fields and the original LK7 component. Its corrected title and description are explicitly editorial normalization. The original source ID, other whole source records, current goal and P material remain unchanged. The root author personally read the actual page 43 text.
+
+The [two NRW source-component candidates](NW.two-bacterial-source-components.author-v3.candidate.json) retain the complete original page 35 sentence about bacterial and viral structure/reproduction. They explicitly operationalize only the bacterial structure and bacterial reproduction components. They are not invented official bullets and do not clear the viral duties or the held original IF7 summary. The [candidate mappings](NW.two-bacterial-component-mappings.author-v3.candidate.json) contribute to the two existing protected bacterial goals with partial relations. No canonical ID or goal is changed. The original extraction and its whole-source hold remain exact.
+
+The [actual author delta](actual-author-delta-and-inputs.json) binds the primary PDFs, original source candidates and current protected whole goals. The root author inspected both the actual NRW page text and its rendered page. These are source-scoped author proposals; two independent source/operator/goal/view reviews are still required.
+
+The [native targeted diagnostic](native-source-component.author-v3.actual.receipt.json) proves that both protected bacterial goals return to the candidate NRW Sek I view. It still reproduces **FAIL375 against the unchanged 383 contract**. A separate 375-only diagnostic exposes actual views; that count never becomes an active or integration gate. Eight global source omissions and the other scope losses remain open. No whole-source clearance, new native D/V approval, human approval or trial is asserted.
+
+Mutable diagnostic inputs use read-only sparse links in `tmp/biologie-neuro-he-nw-two-components-v3-sparse-root`; no copied mapping tree is installed under quality or live curricula. Own operationalisation and mapping text is CC-BY-4.0, executable tooling and technical receipts Apache-2.0. The primary wording and documents retain their separate rights.

@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent A",
+  "reviewedAtUTC": "2026-10-06T06:06:16.522294+00:00",
+  "materialPackVerdict": "REVISE",
+  "scientificFindingGroupsRequiringAuthorRevision": 2,
+  "affectedCases": 4,
+  "affectedProfiles": 4,
+  "findings": [
+    {
+      "findingId": "A-V8-01",
+      "severity": "scientific_material_REVISE",
+      "caseIndices": [
+        13,
+        17,
+        43
+      ],
+      "caseKeys": [
+        "lower-chemical-data-interpretation-conductivity-series",
+        "data-validity-temperature-confound",
+        "upper-scientific-discourse-conductivity-debate"
+      ],
+      "profileKeys": [
+        "lower-chemical-data-interpretation",
+        "data-validity",
+        "upper-scientific-discourse"
+      ],
+      "preciseActualDefect": "Named NaCl aqueous samples at 0.5–1.5 g/L or 1.0 g/L are given approximately 100–300 µS/cm around ambient temperature. Case index13 at25°C has102 µS/cm at0.5 g/L and199 at1 g/L. This is roughly a factor10 too low for the named substance/concentration scale; the related20/35-degree180/230/228 values repeat it.",
+      "evidence": "The primary Hach49 mg/L NaCl standard100 µS/cm at25°C was actually read. Case13 first nonzero concentration500 mg/L is10.20 times that concentration yet its value102 is essentially the same100 µS/cm. A primary491 mg/L1000 µS/cm search snippet corroborates, but full open403 is disclosed. Temperature differences20–35°C and the plausible positive approximately1.78% per degree coefficient cannot explain an order of magnitude shift. No cell factor, resistance or alternate unit is supplied.",
+      "whyTeachingModelLabelDoesNotResolve": "These are absolute conductivity values for real named NaCl with physical units and temperature; correct units are then specifically assessed. Synthetic data must remain physically plausible or explicitly specify a different measured quantity or model assumption.",
+      "minimalAuthorRemedy": "In a new frozen author package correct concentration labels or conductivity values/calibration units consistently in both languages and all three uses. Retain the representation/hypothesis, temperature confounder, matched control, scatter, actual dialogue and transfer demands. Do not silently relabel this frozen v8.",
+      "relativeReasoningOtherwise": "The monotonic ion trend and temperature matched comparison remain scientifically sound; no physical learner measurement is claimed.",
+      "locations": [
+        {
+          "caseId": "lower-chemical-data-interpretation-conductivity-series",
+          "candidateGoalId": null,
+          "file": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/fifty-two-cases.de-en.author-candidate.json",
+          "JSONPointers": [
+            "/cases/13/suppliedMaterial/de",
+            "/cases/13/suppliedMaterial/en"
+          ],
+          "actualQuotedText": {
+            "suppliedMaterial": {
+              "de": "Lehrdaten bei 25 °C: c(NaCl) = 0,0/0,5/1,0/1,5 g/L; Leitfähigkeit κ = 3/102/199/295 µS/cm. Eine Saccharoseprobe mit 1,0 g/L liefert 4 µS/cm. Hypothese: Mehr NaCl erhöht in dieser Reihe κ; nicht jede gelöste Substanz hat dieselbe Wirkung.",
+              "en": "Teaching data at 25 °C: c(NaCl) = 0.0/0.5/1.0/1.5 g/L; conductivity κ = 3/102/199/295 µS/cm. A sucrose sample at 1.0 g/L gives 4 µS/cm. Hypothesis: More NaCl raises κ in this series; not every dissolved substance has the same effect."
+            }
+          }
+        },
+        {
+          "caseId": "data-validity-temperature-confound",
+          "candidateGoalId": null,
+          "file": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/fifty-two-cases.de-en.author-candidate.json",
+          "JSONPointers": [
+            "/cases/17/suppliedMaterial/de",
+            "/cases/17/suppliedMaterial/en"
+          ],
+          "actualQuotedText": {
+            "suppliedMaterial": {
+              "de": "Lehrdaten zur Leitfähigkeit zweier NaCl-Proben: A 1,0 g/L bei 20 °C: 180 µS/cm; B 1,0 g/L bei 35 °C: 230 µS/cm. Messgerät ohne Temperaturkompensation; Kontrolle A bei 35 °C: 228 µS/cm. Behauptung: B enthält deutlich mehr Salz. Eine Einzelmessung hat grob ±3 µS/cm Wiederholstreuung.",
+              "en": "Teaching data for conductivity of two NaCl samples: A 1.0 g/L at 20 °C: 180 µS/cm; B 1.0 g/L at 35 °C: 230 µS/cm. Meter lacks temperature compensation; control A at 35 °C: 228 µS/cm. Claim: B contains much more salt. One measurement has roughly ±3 µS/cm repeat scatter."
+            }
+          }
+        },
+        {
+          "caseId": "upper-scientific-discourse-conductivity-debate",
+          "candidateGoalId": null,
+          "file": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/fifty-two-cases.de-en.author-candidate.json",
+          "JSONPointers": [
+            "/cases/43/suppliedMaterial/de",
+            "/cases/43/suppliedMaterial/en"
+          ],
+          "actualQuotedText": {
+            "suppliedMaterial": {
+              "de": "Sachblatt: κ hängt von Art/Konzentration beweglicher Ionen und Temperatur ab. Archivmodell: A/B je 1,0 g/L NaCl bei 20/35 °C haben 180/230 µS/cm; A bei 35 °C 228. Partnerstart: „B muss salziger sein, weil der Wert höher ist.“ Die tatsächliche Partnerreaktion ist im Material noch nicht vorhanden.",
+              "en": "Fact sheet: κ depends on type/concentration of mobile ions and temperature. Archive model: A/B each 1.0 g/L NaCl at 20/35 °C have 180/230 µS/cm; A at 35 °C has 228. Partner opener: “B must be saltier because its reading is higher.” The actual partner reply is not yet in the material."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "findingId": "A-V8-02",
+      "severity": "scientific_material_REVISE",
+      "caseIndices": [
+        44
+      ],
+      "caseKeys": [
+        "sek1-model-use-criticism-particles-and-reaction"
+      ],
+      "profileKeys": [
+        "sek1-model-use-criticism"
+      ],
+      "preciseActualDefect": "The transfer states “Wärmeentwicklung beim Lösen” / “heat release during dissolution” after the NaCl case without naming a different material or changed conditions. The natural same-substance near-ambient reading implies the wrong heat sign.",
+      "evidence": "Accessible primary Pitzer/Peiper/Busey1984 Table A-11 gives standard NaCl dissolution enthalpy/(RT)=+1.566 at25°C,1 bar, converted independently to approximately+3.882 kJ/mol. Positive enthalpy means heat uptake. JANAF direct403 was not examined.",
+      "precisionLimit": "This is a context/sign ambiguity, not an explicit sentence claiming all salts are exothermic. Some different substances or temperatures could show heat release. The finding concerns the unqualified continuation of the near-ambient NaCl context. Explicitly naming a different exothermic solute would make a valid transfer and model-limit question.",
+      "minimalAuthorRemedy": "Specify NaCl cooling/heat absorption at near-ambient temperature, or explicitly identify a different exothermic dissolution scenario in both languages. Retain hypothesis-guided actual analogue model use and the energetic model-limit question.",
+      "mainCaseOtherwise": "Charge/mobility, atom conservation, M1/M2 comparison and the development-need demand are valid.",
+      "locations": [
+        {
+          "caseId": "sek1-model-use-criticism-particles-and-reaction",
+          "candidateGoalId": null,
+          "file": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/fifty-two-cases.de-en.author-candidate.json",
+          "JSONPointers": [
+            "/cases/44/transfer/de",
+            "/cases/44/transfer/en"
+          ],
+          "actualQuotedText": {
+            "transfer": {
+              "de": "Eine neue Beobachtung zeigt Wärmeentwicklung beim Lösen: Welche Aussage kann dein Modell bisher nicht leisten?",
+              "en": "A new observation shows heat release during dissolution: what can your model not yet account for?"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "findingId": "A-V8-03",
+      "severity": "nonblocking_bounded_assessment_clarity",
+      "caseIndices": [
+        16
+      ],
+      "preciseActualObservation": "X/Yarefictionalwithoutidentitiesorselectivemethodproperties. C3acceptsconcretefollow-upmethod/improvement,so a documentedcontrolledrepeat/validationimprovementispossible;thegenericexpected“independentspecificanalysis”doesnotestablishwhichinstrumentisX-specific.",
+      "reviewerDisposition": "KEEPwithboundedassessment:accept justifiedconditionalmethodvalidationorconcreteimprovement,do not markanunsupportednamedinstrumentasprovenXspecific. If a definitivenewX/Yseparation/identificationmethod is demanded, supply discriminatingproperties/validatedmethod first.",
+      "locations": [
+        {
+          "caseId": "data-validity-test-not-proof",
+          "candidateGoalId": null,
+          "file": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/fifty-two-cases.de-en.author-candidate.json",
+          "JSONPointers": [
+            "/cases/16/learnerTask/de",
+            "/cases/16/learnerTask/en",
+            "/cases/16/expectedAnswer/de",
+            "/cases/16/expectedAnswer/en"
+          ],
+          "actualQuotedText": {
+            "learnerTask": {
+              "de": "Beurteile Gültigkeit, geeignete Quellen, Blind-/Positivkontrollen und Tragweite von „U enthält X“. Benenne einen Verfahrensfehler und eine geeignete Folgemethode.",
+              "en": "Assess validity, suitable sources, blank/positive controls and the scope of “U contains X”. Identify a procedure error and a suitable follow-up method."
+            },
+            "expectedAnswer": {
+              "de": "Die Blank-/Positivkontrolle zeigt grundsätzliches Testansprechen; Y macht den Test nicht spezifisch. U-Farbe ist ein Hinweis auf eine reagierende Komponente, kein eindeutiger X-Nachweis. S ist für Spezifität relevanter als das verkürzte Etikett H; unbekannte Verdünnung/Erhitzung kann Signal verändern. Eine unabhängig spezifischere Analyse mit dokumentierten Bedingungen ist nötig. Blindproben korrigieren keinen grundsätzlich unspezifischen Reaktionsmechanismus.",
+              "en": "Blank/positive controls show that the test responds in principle; Y makes it non-specific. U colour indicates a reacting component, not unique proof of X. S is more relevant to specificity than the shortened label H; unknown dilution/heating may alter the signal. An independent more specific analysis under documented conditions is needed. Blanks do not correct an inherently non-specific reaction mechanism."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "findingId": "A-V8-04",
+      "severity": "nonblocking_editorial",
+      "caseIndices": [
+        9
+      ],
+      "preciseActualObservation": "Namedsubstanceexecutionparagraph occurs twiceinDE/EN suppliedMaterialandprotocolsetup. Identity/wavelength/calibrationqualificationisconsistent,notcontradictory.",
+      "reviewerDisposition": "Remove duplicatetext inlaterauthorrevision;scientificKEEP doesnot dependonremoval.",
+      "locations": [
+        {
+          "caseId": "upper-hypothesis-investigation-colour-analysis",
+          "candidateGoalId": null,
+          "file": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/fifty-two-cases.de-en.author-candidate.json",
+          "JSONPointers": [
+            "/cases/9/suppliedMaterial/de",
+            "/cases/9/suppliedMaterial/en"
+          ],
+          "actualQuotedText": {
+            "suppliedMaterial": {
+              "de": "Freigegebenes betreutes Analysenkit: Lösungen eines ausdrücklich als Lehrmodell-Farbstoff bezeichneten Stoffes X; Blindprobe und Standards 0/2/4/6 mg/L, unbekannte Probe U; batteriebetriebenes Photometer, Küvetten, Pipettierhilfen, festgelegte Wellenlänge. Modellkalibration A = 0,010 + 0,080·c (c in mg/L), nur im Bereich 0–6 mg/L. Hypothese: U liegt im Bereich 3–4 mg/L. Reale Farbstoffwahl und Entsorgung legt die Lehrkraft stoffbezogen fest, keine undefinierten Chemikalien.\n\nKonkreter Stoff für die spätere echte Ausführung ist Brilliant Blue FCF / Acid Blue 9 (CAS 3844-45-9), kein unbekanntes X: Lehrkraft stellt ausschließlich fertig hergestellte verdünnte wässrige Standards und Probe sowie bekannte Stoff-/Chargenangaben bereit. Kein Lernender wiegt Farbstoffpulver ein. Messwellenlänge etwa 630 nm, passendes 1-cm-Küvettengerät. Anbieter-Spektraldaten nennen ein Maximum nahe 629 nm in der angegebenen Referenzlösung; das ist keine Sicherheitsfreigabe und keine Kalibration für das konkrete Kit. Für die echte Untersuchung muss die eigene Standardreihe die oben nur synthetische Kalibrationsgleichung ersetzen. Aktuelle Betriebsanweisung/Gefährdungsbeurteilung und lokale Entsorgung sind vor Durchführung zwingend.\n\nKonkreter Stoff für die spätere echte Ausführung ist Brilliant Blue FCF / Acid Blue 9 (CAS 3844-45-9), kein unbekanntes X: Lehrkraft stellt ausschließlich fertig hergestellte verdünnte wässrige Standards und Probe sowie bekannte Stoff-/Chargenangaben bereit. Kein Lernender wiegt Farbstoffpulver ein. Messwellenlänge etwa 630 nm, passendes 1-cm-Küvettengerät. Anbieter-Spektraldaten nennen ein Maximum nahe 629 nm in der angegebenen Referenzlösung; das ist keine Sicherheitsfreigabe und keine Kalibration für das konkrete Kit. Für die echte Untersuchung muss die eigene Standardreihe die oben nur synthetische Kalibrationsgleichung ersetzen. Aktuelle Betriebsanweisung/Gefährdungsbeurteilung und lokale Entsorgung sind vor Durchführung zwingend.",
+              "en": "Authorised supervised analytical kit: solutions of a substance X explicitly designated a teaching-model dye; blank and 0/2/4/6 mg/L standards, unknown sample U; battery-powered photometer, cuvettes, pipette fillers, fixed wavelength. Model calibration A = 0.010 + 0.080·c (c in mg/L), valid only at 0–6 mg/L. Hypothesis: U is in the 3–4 mg/L range. The teacher specifies the actual dye and disposal after substance-specific assessment; no undefined chemicals are used.\n\nThe specified substance for later actual execution is Brilliant Blue FCF / Acid Blue 9 (CAS 3844-45-9), not unknown X: the teacher supplies only prepared dilute aqueous standards/sample and known substance/batch details. Learners do not weigh dye powder. Use approximately 630 nm and a suitable 1-cm cuvette instrument. Supplier spectral data report a maximum near 629 nm in the stated reference solution; this is neither safety authorisation nor calibration of the actual kit. In actual investigation, own standards must replace the solely synthetic calibration equation above. Current operating instructions/hazard assessment and local disposal are mandatory before execution.\n\nThe specified substance for later actual execution is Brilliant Blue FCF / Acid Blue 9 (CAS 3844-45-9), not unknown X: the teacher supplies only prepared dilute aqueous standards/sample and known substance/batch details. Learners do not weigh dye powder. Use approximately 630 nm and a suitable 1-cm cuvette instrument. Supplier spectral data report a maximum near 629 nm in the stated reference solution; this is neither safety authorisation nor calibration of the actual kit. In actual investigation, own standards must replace the solely synthetic calibration equation above. Current operating instructions/hazard assessment and local disposal are mandatory before execution."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "findingId": "A-V8-05",
+      "severity": "nonblocking_scope_clarity",
+      "caseIndices": [
+        45
+      ],
+      "preciseActualObservation": "Introductoryhypothesisalsoassertssameatomtypescanhavedifferentproperties,whilecardsactuallytestdipole-ionorientationandboundedinteractionrule. No second same-element-setcompoundcomparison is supplied.",
+      "reviewerDisposition": "Do not treatthisactualproductasindependentproof oftheunillustratedsame-atom-typesclause. Actualhypothesis-guidedbinding/interactionmodeluse remainsadequate forthiscontextcontribution;case44providesmatter/reactioncontext. Narrow wordingorprovidecomparison ifthebroaderclaim is explicitlyassessed.",
+      "locations": [
+        {
+          "caseId": "sek1-model-use-criticism-bond-and-interaction",
+          "candidateGoalId": null,
+          "file": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/fifty-two-cases.de-en.author-candidate.json",
+          "JSONPointers": [
+            "/cases/45/suppliedMaterial/de",
+            "/cases/45/suppliedMaterial/en"
+          ],
+          "actualQuotedText": {
+            "suppliedMaterial": {
+              "de": "Hypothese: Gleiche Atomarten können wegen Bindungen/Anordnung unterschiedliche Eigenschaften ergeben; polare Wassermoleküle können Ionen umgeben. Modellkarten: Wasser H–O–H mit negativem O-Ende/positiven H-Enden, Na⁺ und Cl⁻; unpolare Vergleichskarte U mit gleichen neutralen Enden. Regel: Gegensätzliche Ladungsvorzeichen ziehen sich an. Tabellenmodell digital: eingeben (Ionladung, zugewandtes Ende); +/− oder −/+ → „Anziehung“, gleiches Vorzeichen → „Abstoßung“, neutral → „hier nicht bestimmt“. Das ist eine offen definierte Modellregel, keine implementierte App.",
+              "en": "Hypothesis: The same atom types can show different properties because of bonding/arrangement; polar water molecules can surround ions. Cards: water H–O–H with negative O end/positive H ends, Na⁺ and Cl⁻; non-polar comparison card U with equal neutral ends. Rule: opposite charge signs attract. Digital table model: enter (ion charge, facing end); +/− or −/+ → “attraction”, equal signs → “repulsion”, neutral → “undetermined here”. This is an openly defined model rule, not an implemented app."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "distinctPendingDownstream": [
+    "1646originalsourceobligationsretainactualholds/status;nofullnationalmappingapproval isconferred",
+    "reviewednativeIDs,target/page/context/source/routes,exact/partialmapping andstageplacementnotyetbound",
+    "nativepositive-understanding-evidence-v2P andcurrentD/A/M/cards/visibility/V gates remainseparate;futureimagesarenot ascientificmaterialREVISE",
+    "actuallearnerexperiments,rawlogs,ownresearch,dialogueandpresentationreceiptsmustbeproducedwhenthese performancesareassessed;preparedmaterialsarenotthose receipts",
+    "humanscientificreview,approval,trial,release/deploy/publish gates arenotcompleted bymachinecandidate QA"
+  ],
+  "notScientificRevisionReasons": [
+    "absenceofhumantrial",
+    "absenceofimplementedapporsimulator",
+    "absenceoffutureimages",
+    "absenceofnativeP/IDs/integration"
+  ],
+  "currentStrict": {
+    "chemie": {
+      "complete": 112,
+      "denominator": 378
+    },
+    "biologie": {
+      "complete": 67,
+      "denominator": 383
+    },
+    "mathematik": {
+      "complete": 807,
+      "denominator": 807
+    },
+    "physik": {
+      "complete": 478,
+      "denominator": 478
+    }
+  },
+  "allCandidateIdsNull": true,
+  "E1G1CandidateStatusPreserved": true,
+  "nativeApproval": false,
+  "strictCompletionsAdded": 0,
+  "restoredActiveBindings": 0,
+  "activeWrites": 0,
+  "humanApproval": false,
+  "humanTrial": false,
+  "runtimePluginBuildImageOperations": 0
+}

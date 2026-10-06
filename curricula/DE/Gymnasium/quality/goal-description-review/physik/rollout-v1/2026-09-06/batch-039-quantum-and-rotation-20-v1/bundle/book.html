@@ -1,0 +1,1160 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik B039 – Quantenbeschreibungen und Rotation</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Physik B039 – Quantenbeschreibungen und Rotation</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>20 atomare Lernziele</dt><dd>16 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-physics-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-6747d2e0bbbbd4b4358ff0fa" aria-label="Physik"><a href="#goal-d5bff282-741f-4cc5-9622-b77584fdcc5a"><span class="toc-entry-label">Physik</span></a></h2>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-physics-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-546e47201fdf10d52f5a936c" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-d5bff282-741f-4cc5-9622-b77584fdcc5a"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>19 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-e-phase" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-25f6161a11157cd3d11bdc8c" aria-label="Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen"><a href="#goal-e2da5eec-45de-5527-9ad7-16f41cacbe58"><span class="toc-entry-label">Einführungsphase:&#160;<wbr>Mechanik,&#160;<wbr>Gravitation,&#160;<wbr>Thermodynamik&#160;<wbr>und&#160;<wbr>Drehbewegungen</span></a></h4>
+          <span class="toc-entry-meta"><span>10 Lernziele</span><span>erste zugehörige Lernzielseite 9</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-287739a3-6143-55d0-abe7-1a08889e9b49" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-e925fb604d041a9d2404b25a" aria-label="Waagerechter Wurf und Kreisbewegung"><a href="#goal-e2da5eec-45de-5527-9ad7-16f41cacbe58"><span class="toc-entry-label">Waagerechter&#160;<wbr>Wurf&#160;<wbr>und&#160;<wbr>Kreisbewegung</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 9</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-db0aff75-7c88-52b0-a989-535b411c141e" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-dfa027ccff3cbae2a023761e" aria-label="Kreisbewegungen und Zentripetalkraft"><a href="#goal-e2da5eec-45de-5527-9ad7-16f41cacbe58"><span class="toc-entry-label">Kreisbewegungen&#160;<wbr>und&#160;<wbr>Zentripetalkraft</span></a></h6>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 9</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-9743baad-9371-52b6-98ee-72bc6dc68701" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-7147c16f7246f60758cd7e70" aria-label="Drehbewegungen"><a href="#goal-cf570e66-2ce2-5923-9033-c97d74119553"><span class="toc-entry-label">Drehbewegungen</span></a></h5>
+          <span class="toc-entry-meta"><span>8 Lernziele</span><span>erste zugehörige Lernzielseite 11</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-7c33dae8-f57a-51a1-a1b4-75ee6d5b200e" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-9efdd25ed5a0d21d384c5958" aria-label="Anwendungsbeispiele für Drehbewegungen deuten"><a href="#goal-21c0a5f2-4152-549a-aa9c-e02ab772f589"><span class="toc-entry-label">Anwendungsbeispiele&#160;<wbr>für&#160;<wbr>Drehbewegungen&#160;<wbr>deuten</span></a></h6>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 16</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-q1" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-497492896f4798b54bff1e35" aria-label="Q1 Elektrisches und magnetisches Feld"><a href="#goal-d02438ba-0cc9-5993-831e-5e44d35e32c4"><span class="toc-entry-label">Q1&#160;<wbr>Elektrisches&#160;<wbr>und&#160;<wbr>magnetisches&#160;<wbr>Feld</span></a></h4>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 19</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-13e882bd-2fc6-59c6-a2a8-32eb1fbf1751" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-50b02408dad54a978c4e655f" aria-label="Magnetisches Feld"><a href="#goal-d02438ba-0cc9-5993-831e-5e44d35e32c4"><span class="toc-entry-label">Magnetisches&#160;<wbr>Feld</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 19</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-6a955b34-1b90-5193-8f7e-ebb777f7b7bd" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-2447d972f1b42a13bf7f605a" aria-label="Mikroskopische und makroskopische Wirkung magnetischer Felder"><a href="#goal-d02438ba-0cc9-5993-831e-5e44d35e32c4"><span class="toc-entry-label">Mikroskopische&#160;<wbr>und&#160;<wbr>makroskopische&#160;<wbr>Wirkung&#160;<wbr>magnetischer&#160;<wbr>Felder</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 19</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-c0634f78-efb9-51cb-ad4f-0e0e4d18bad0" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-e9795e6828eb65b7bfe516db" aria-label="Technische Anwendungen magnetischer Felder"><a href="#goal-58db62d4-458f-5e2d-9ca0-968e09f4944b"><span class="toc-entry-label">Technische&#160;<wbr>Anwendungen&#160;<wbr>magnetischer&#160;<wbr>Felder</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 20</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-q4" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-2d62da14bfd408e36bddc43b" aria-label="Q4 Struktur von Materie, Raum und Zeit"><a href="#goal-d5bff282-741f-4cc5-9622-b77584fdcc5a"><span class="toc-entry-label">Q4&#160;<wbr>Struktur&#160;<wbr>von&#160;<wbr>Materie,&#160;<wbr>Raum&#160;<wbr>und&#160;<wbr>Zeit</span></a></h4>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-ab636b78-6031-5a5b-afa2-9ffefbdd5dda" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-698b91caebbb2667b0be5683" aria-label="Quantenobjekte"><a href="#goal-d5bff282-741f-4cc5-9622-b77584fdcc5a"><span class="toc-entry-label">Quantenobjekte</span></a></h5>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-bundesland-supplements" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-dfefd5ef67d7bfcb62fbc0f8" aria-label="Bundeslandspezifische Ergänzungen"><a href="#goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114"><span class="toc-entry-label">Bundeslandspezifische&#160;<wbr>Ergänzungen</span></a></h3>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 8</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:goal-book-supplement-crossstage" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-184fe7fcafd22ffbec8cd5c0" aria-label="Stufenübergreifend"><a href="#goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114"><span class="toc-entry-label">Stufenübergreifend</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 8</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:goal-book-supplement-CrossStage-Sonstiges" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-4b9986bc08048aa19ec18f4d" aria-label="Weitere fachliche Ziele"><a href="#goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114"><span class="toc-entry-label">Weitere&#160;<wbr>fachliche&#160;<wbr>Ziele</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 8</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-d5bff282-741f-4cc5-9622-b77584fdcc5a" data-goal-id="d5bff282-741f-4cc5-9622-b77584fdcc5a" data-page-number="1" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-ab636b78-6031-5a5b-afa2-9ffefbdd5dda" aria-labelledby="goal-d5bff282-741f-4cc5-9622-b77584fdcc5a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d5bff282-741f-4cc5-9622-b77584fdcc5a-title"><a class="goal-self-link" href="#goal-d5bff282-741f-4cc5-9622-b77584fdcc5a">Zeitentwicklung von Quantenzuständen einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d5bff282-741f-4cc5-9622-b77584fdcc5a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-698b91caebbb2667b0be5683">Quantenobjekte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c3f839b5479a327a19757c95ff840b152311b5806bb4768ae86484ebf7b077be" data-rendered-digest="sha256:1c3368ade24379123aef1d0f130db2b80e85921a22cd5abecf91020c967e9022" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/d5bff282-741f-4cc5-9622-b77584fdcc5a/d5bff282-741f-4cc5-9622-b77584fdcc5a.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Zeitentwicklung von Quantenzuständen einordnen&quot;. Die lernende Person kann erklären, dass die zeitliche Entwicklung eines Quantenzustands im Modell deterministisch beschrieben wird, während Messergebnisse probabilistisch gedeutet werden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d5bff282-741f-4cc5-9622-b77584fdcc5a-description-heading">
+        <p class="section-heading" id="goal-d5bff282-741f-4cc5-9622-b77584fdcc5a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann erklären, dass die zeitliche Entwicklung eines Quantenzustands im Modell deterministisch beschrieben wird, während Messergebnisse probabilistisch gedeutet werden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d5bff282-741f-4cc5-9622-b77584fdcc5a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d5bff282-741f-4cc5-9622-b77584fdcc5a-requires-heading">
+          <p class="section-heading" id="goal-d5bff282-741f-4cc5-9622-b77584fdcc5a-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-d5bff282-741f-4cc5-9622-b77584fdcc5a-reverse-heading">
+          <p class="section-heading" id="goal-d5bff282-741f-4cc5-9622-b77584fdcc5a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-d5bff282-741f-4cc5-9622-b77584fdcc5a-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d5bff282-741f-4cc5-9622-b77584fdcc5a-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-51bc5513-6879-548f-b19a-9746b667f1a3" rel="noreferrer noopener"><span>Wellenfunktion und Wahrscheinlichkeitsdeutung</span> <code>51bc5513-6879-548f-b19a-9746b667f1a3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5c57dbc7-d258-4aad-a84c-e773f3c493ae" rel="noreferrer noopener"><span>Wahrscheinlichkeitsaussagen statt klassischem Determinismus erlaeutern</span> <code>5c57dbc7-d258-4aad-a84c-e773f3c493ae</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-d5bff282-741f-4cc5-9622-b77584fdcc5a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d5bff282-741f-4cc5-9622-b77584fdcc5a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b585ff81-6332-5d11-ae63-ee6a9928c00d" rel="noreferrer noopener"><span>Quantenobjekte, Unbestimmtheit und Messproblem</span> <code>b585ff81-6332-5d11-ae63-ee6a9928c00d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0efbeddced8f8421769cc6db0886385ef0e4ae42fc5266d055e4d71547ea0287</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=d5bff282-741f-4cc5-9622-b77584fdcc5a&amp;goalFingerprint=sha256%3A0efbeddced8f8421769cc6db0886385ef0e4ae42fc5266d055e4d71547ea0287&amp;pageFingerprint=sha256%3A7fc0434d8440de6b3338811530e3221932900138d8d22a546862b154e9f9a323&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1a1c09f0-96b7-4c33-a623-0e8101537876" data-goal-id="1a1c09f0-96b7-4c33-a623-0e8101537876" data-page-number="2" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-ab636b78-6031-5a5b-afa2-9ffefbdd5dda" aria-labelledby="goal-1a1c09f0-96b7-4c33-a623-0e8101537876-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1a1c09f0-96b7-4c33-a623-0e8101537876-title"><a class="goal-self-link" href="#goal-1a1c09f0-96b7-4c33-a623-0e8101537876">Interferenz einzelner Quantenobjekte mit Wahrscheinlichkeitsaussagen beschreiben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1a1c09f0-96b7-4c33-a623-0e8101537876</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-698b91caebbb2667b0be5683">Quantenobjekte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:30a1ec2fb895bd6d995ff23e0f5eb47cf354b2f2c5ba0f5231ee3a846feff88b" data-rendered-digest="sha256:9fd71fe670ac5a3b328e19d8f69cd6652b681ca7d2112971720cfc7915d97e2a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/1a1c09f0-96b7-4c33-a623-0e8101537876/1a1c09f0-96b7-4c33-a623-0e8101537876.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Interferenz einzelner Quantenobjekte mit Wahrscheinlichkeitsaussagen beschreiben&quot;. Die lernende Person kann die Interferenz einzelner Quantenobjekte mithilfe von Wahrscheinlichkeitsaussagen beschreiben und den Aufbau eines Interferenzmusters aus vielen Einzelereignissen qualitativ deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1a1c09f0-96b7-4c33-a623-0e8101537876-description-heading">
+        <p class="section-heading" id="goal-1a1c09f0-96b7-4c33-a623-0e8101537876-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Interferenz einzelner Quantenobjekte mithilfe von Wahrscheinlichkeitsaussagen beschreiben und den Aufbau eines Interferenzmusters aus vielen Einzelereignissen qualitativ deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-1a1c09f0-96b7-4c33-a623-0e8101537876" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1a1c09f0-96b7-4c33-a623-0e8101537876-requires-heading">
+          <p class="section-heading" id="goal-1a1c09f0-96b7-4c33-a623-0e8101537876-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-1a1c09f0-96b7-4c33-a623-0e8101537876-reverse-heading">
+          <p class="section-heading" id="goal-1a1c09f0-96b7-4c33-a623-0e8101537876-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-6031bed0-9baa-4f45-b2a5-57ffb00d39cc"><span>Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern</span><code>6031bed0-9baa-4f45-b2a5-57ffb00d39cc</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-1a1c09f0-96b7-4c33-a623-0e8101537876-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1a1c09f0-96b7-4c33-a623-0e8101537876-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5c57dbc7-d258-4aad-a84c-e773f3c493ae" rel="noreferrer noopener"><span>Wahrscheinlichkeitsaussagen statt klassischem Determinismus erlaeutern</span> <code>5c57dbc7-d258-4aad-a84c-e773f3c493ae</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-1a1c09f0-96b7-4c33-a623-0e8101537876-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1a1c09f0-96b7-4c33-a623-0e8101537876-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2440324d074b4dde97c82c92c78e8248e84bc780ac2281c2f1e931249b2bfc61</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=1a1c09f0-96b7-4c33-a623-0e8101537876&amp;goalFingerprint=sha256%3A2440324d074b4dde97c82c92c78e8248e84bc780ac2281c2f1e931249b2bfc61&amp;pageFingerprint=sha256%3Ac54c90ab757bcca20c3d951c56e7b68bbe851409f0b19e455a5655dce0168464&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6031bed0-9baa-4f45-b2a5-57ffb00d39cc" data-goal-id="6031bed0-9baa-4f45-b2a5-57ffb00d39cc" data-page-number="3" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-ab636b78-6031-5a5b-afa2-9ffefbdd5dda" aria-labelledby="goal-6031bed0-9baa-4f45-b2a5-57ffb00d39cc-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6031bed0-9baa-4f45-b2a5-57ffb00d39cc-title"><a class="goal-self-link" href="#goal-6031bed0-9baa-4f45-b2a5-57ffb00d39cc">Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6031bed0-9baa-4f45-b2a5-57ffb00d39cc</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-698b91caebbb2667b0be5683">Quantenobjekte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:cd474d6ae832616242258090c198bc5e368d529f4e67bf6013d614976cc329fa" data-rendered-digest="sha256:29a59395eafdac0c9c501657510dabde11189b45e9aeb32c5540022f22fdde3c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/6031bed0-9baa-4f45-b2a5-57ffb00d39cc/6031bed0-9baa-4f45-b2a5-57ffb00d39cc.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern&quot;. Die lernende Person kann Komplementaritaet erlaeutern, indem sie die Sichtbarkeit von Interferenz mit verfuegbarer Welcher-Weg-Information in Beziehung setzt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6031bed0-9baa-4f45-b2a5-57ffb00d39cc-description-heading">
+        <p class="section-heading" id="goal-6031bed0-9baa-4f45-b2a5-57ffb00d39cc-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Komplementaritaet erlaeutern, indem sie die Sichtbarkeit von Interferenz mit verfuegbarer Welcher-Weg-Information in Beziehung setzt.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6031bed0-9baa-4f45-b2a5-57ffb00d39cc" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6031bed0-9baa-4f45-b2a5-57ffb00d39cc-requires-heading">
+          <p class="section-heading" id="goal-6031bed0-9baa-4f45-b2a5-57ffb00d39cc-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1a1c09f0-96b7-4c33-a623-0e8101537876"><span>Interferenz einzelner Quantenobjekte mit Wahrscheinlichkeitsaussagen beschreiben</span><code>1a1c09f0-96b7-4c33-a623-0e8101537876</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-6031bed0-9baa-4f45-b2a5-57ffb00d39cc-reverse-heading">
+          <p class="section-heading" id="goal-6031bed0-9baa-4f45-b2a5-57ffb00d39cc-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-f6e5929f-d52a-42a4-a5d2-ff498ee7083f"><span>Orts-Impuls-Unbestimmtheit und Grenzen des Bahnbegriffs begruenden</span><code>f6e5929f-d52a-42a4-a5d2-ff498ee7083f</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-52b6722a-b3b2-5d2d-a507-0215532b0422"><span>Quanteninterferometer mit Phasen und Weginformation deuten</span><code>52b6722a-b3b2-5d2d-a507-0215532b0422</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-6031bed0-9baa-4f45-b2a5-57ffb00d39cc-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6031bed0-9baa-4f45-b2a5-57ffb00d39cc-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8c97c234-a932-5e84-aed5-237b4e2a8336" rel="noreferrer noopener"><span>Delayed-Choice-Experimente messkontextbezogen deuten</span> <code>8c97c234-a932-5e84-aed5-237b4e2a8336</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b9fcbad4-a855-54b7-8017-4caac1e2ffb7" rel="noreferrer noopener"><span>Lokalität und Verschränkung einordnen</span> <code>b9fcbad4-a855-54b7-8017-4caac1e2ffb7</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e3ec3577e9f68564da5e35d837b44d1563c002c9ddb2fa94878524b000d4af63</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=6031bed0-9baa-4f45-b2a5-57ffb00d39cc&amp;goalFingerprint=sha256%3Ae3ec3577e9f68564da5e35d837b44d1563c002c9ddb2fa94878524b000d4af63&amp;pageFingerprint=sha256%3A178c6460e518af084958a6a89ec0f8ae87861203edefe90713ad2da7968b4acb&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f6e5929f-d52a-42a4-a5d2-ff498ee7083f" data-goal-id="f6e5929f-d52a-42a4-a5d2-ff498ee7083f" data-page-number="4" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-ab636b78-6031-5a5b-afa2-9ffefbdd5dda" aria-labelledby="goal-f6e5929f-d52a-42a4-a5d2-ff498ee7083f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f6e5929f-d52a-42a4-a5d2-ff498ee7083f-title"><a class="goal-self-link" href="#goal-f6e5929f-d52a-42a4-a5d2-ff498ee7083f">Orts-Impuls-Unbestimmtheit und Grenzen des Bahnbegriffs begruenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f6e5929f-d52a-42a4-a5d2-ff498ee7083f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-698b91caebbb2667b0be5683">Quantenobjekte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7f2a13a79322a5adf226ff0cf4cf7a76929b666e3d0d28331f2773c38a9de840" data-rendered-digest="sha256:400263f1b5fc4f25864cbea18a8a5e74aacc73498df08c7e85397e21a46a67a2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/f6e5929f-d52a-42a4-a5d2-ff498ee7083f/f6e5929f-d52a-42a4-a5d2-ff498ee7083f.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Orts-Impuls-Unbestimmtheit und Grenzen des Bahnbegriffs begruenden&quot;. Die lernende Person kann die Orts-Impuls-Unbestimmtheit qualitativ begruenden und daraus Grenzen des klassischen Bahnbegriffs fuer Quantenobjekte ableiten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f6e5929f-d52a-42a4-a5d2-ff498ee7083f-description-heading">
+        <p class="section-heading" id="goal-f6e5929f-d52a-42a4-a5d2-ff498ee7083f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Orts-Impuls-Unbestimmtheit qualitativ begruenden und daraus Grenzen des klassischen Bahnbegriffs fuer Quantenobjekte ableiten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li><li class="applicability-more">+ 3 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-f6e5929f-d52a-42a4-a5d2-ff498ee7083f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f6e5929f-d52a-42a4-a5d2-ff498ee7083f-requires-heading">
+          <p class="section-heading" id="goal-f6e5929f-d52a-42a4-a5d2-ff498ee7083f-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-6031bed0-9baa-4f45-b2a5-57ffb00d39cc"><span>Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern</span><code>6031bed0-9baa-4f45-b2a5-57ffb00d39cc</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-f6e5929f-d52a-42a4-a5d2-ff498ee7083f-reverse-heading">
+          <p class="section-heading" id="goal-f6e5929f-d52a-42a4-a5d2-ff498ee7083f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-f6e5929f-d52a-42a4-a5d2-ff498ee7083f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f6e5929f-d52a-42a4-a5d2-ff498ee7083f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b4e03e6ab1ee0a16e60677b30f9d2a1ed936ec1bc87294f0ed44efac91240402</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=f6e5929f-d52a-42a4-a5d2-ff498ee7083f&amp;goalFingerprint=sha256%3Ab4e03e6ab1ee0a16e60677b30f9d2a1ed936ec1bc87294f0ed44efac91240402&amp;pageFingerprint=sha256%3Aab2b838a8ebc80e0c328437de9b3a393bfc55b38eb85a99a87570a628550b6e7&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-727d0946-7019-50ed-8fc6-85db12508733" data-goal-id="727d0946-7019-50ed-8fc6-85db12508733" data-page-number="5" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-ab636b78-6031-5a5b-afa2-9ffefbdd5dda" aria-labelledby="goal-727d0946-7019-50ed-8fc6-85db12508733-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-727d0946-7019-50ed-8fc6-85db12508733-title"><a class="goal-self-link" href="#goal-727d0946-7019-50ed-8fc6-85db12508733">Realitaetsbegriff in der Quantenphysik diskutieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>727d0946-7019-50ed-8fc6-85db12508733</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-698b91caebbb2667b0be5683">Quantenobjekte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:762134d9442fe55de68d60366828a55e896f811d3fe7dd66886ac13498402ee0" data-rendered-digest="sha256:364f550fead5758650d436b6fffd665c5162a935c6a05883912de116229b3191" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/727d0946-7019-50ed-8fc6-85db12508733/727d0946-7019-50ed-8fc6-85db12508733.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Realitaetsbegriff in der Quantenphysik diskutieren&quot;. Die lernende Person kann den Realitaetsbegriff in der Quantenphysik anhand von Messung, Praeparation und Wahrscheinlichkeitsaussagen fachlich diskutieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-727d0946-7019-50ed-8fc6-85db12508733-description-heading">
+        <p class="section-heading" id="goal-727d0946-7019-50ed-8fc6-85db12508733-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Realitaetsbegriff in der Quantenphysik anhand von Messung, Praeparation und Wahrscheinlichkeitsaussagen fachlich diskutieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-727d0946-7019-50ed-8fc6-85db12508733" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-727d0946-7019-50ed-8fc6-85db12508733-requires-heading">
+          <p class="section-heading" id="goal-727d0946-7019-50ed-8fc6-85db12508733-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-727d0946-7019-50ed-8fc6-85db12508733-reverse-heading">
+          <p class="section-heading" id="goal-727d0946-7019-50ed-8fc6-85db12508733-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-727d0946-7019-50ed-8fc6-85db12508733-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-727d0946-7019-50ed-8fc6-85db12508733-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b05da028-65e4-5cd1-a13c-6c1a95b6dfdf" rel="noreferrer noopener"><span>Das Messproblem in der Quantenphysik</span> <code>b05da028-65e4-5cd1-a13c-6c1a95b6dfdf</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5c57dbc7-d258-4aad-a84c-e773f3c493ae" rel="noreferrer noopener"><span>Wahrscheinlichkeitsaussagen statt klassischem Determinismus erlaeutern</span> <code>5c57dbc7-d258-4aad-a84c-e773f3c493ae</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-727d0946-7019-50ed-8fc6-85db12508733-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-727d0946-7019-50ed-8fc6-85db12508733-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b585ff81-6332-5d11-ae63-ee6a9928c00d" rel="noreferrer noopener"><span>Quantenobjekte, Unbestimmtheit und Messproblem</span> <code>b585ff81-6332-5d11-ae63-ee6a9928c00d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7f47b7829790d7c459dcfd08fd9773ab8ad7280840a46b47c8647d9a624a92cb</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=727d0946-7019-50ed-8fc6-85db12508733&amp;goalFingerprint=sha256%3A7f47b7829790d7c459dcfd08fd9773ab8ad7280840a46b47c8647d9a624a92cb&amp;pageFingerprint=sha256%3A0173d19ff47b5ecc8de830f9aa0e52cb796606f53e15ede892bd73a65f98c5c6&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e296aba6-f407-5944-a2bd-e5296e4c9f06" data-goal-id="e296aba6-f407-5944-a2bd-e5296e4c9f06" data-page-number="6" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-ab636b78-6031-5a5b-afa2-9ffefbdd5dda" aria-labelledby="goal-e296aba6-f407-5944-a2bd-e5296e4c9f06-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e296aba6-f407-5944-a2bd-e5296e4c9f06-title"><a class="goal-self-link" href="#goal-e296aba6-f407-5944-a2bd-e5296e4c9f06">Elektronenbeugung als Materiewellenexperiment auswerten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e296aba6-f407-5944-a2bd-e5296e4c9f06</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-698b91caebbb2667b0be5683">Quantenobjekte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1ae33c35c4c56fc02011a1d40f29b8921e03457a7b5243fba61c756505938ecb" data-rendered-digest="sha256:11b6c530183c1df9ddc0d60af0f3df423a4331cce87f5eba1a2ca5266bad5115" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/e296aba6-f407-5944-a2bd-e5296e4c9f06/e296aba6-f407-5944-a2bd-e5296e4c9f06.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Elektronenbeugung als Materiewellenexperiment auswerten&quot;. Die lernende Person kann Aufbau und Funktion einer Elektronenbeugungsroehre beschreiben, Beugungsbilder deuten und aus Messdaten den Zusammenhang zwischen Impuls und De-Broglie-Wellenlaenge erschliessen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e296aba6-f407-5944-a2bd-e5296e4c9f06-description-heading">
+        <p class="section-heading" id="goal-e296aba6-f407-5944-a2bd-e5296e4c9f06-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Aufbau und Funktion einer Elektronenbeugungsroehre beschreiben, Beugungsbilder deuten und aus Messdaten den Zusammenhang zwischen Impuls und De-Broglie-Wellenlaenge erschliessen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e296aba6-f407-5944-a2bd-e5296e4c9f06" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e296aba6-f407-5944-a2bd-e5296e4c9f06-requires-heading">
+          <p class="section-heading" id="goal-e296aba6-f407-5944-a2bd-e5296e4c9f06-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-e296aba6-f407-5944-a2bd-e5296e4c9f06-reverse-heading">
+          <p class="section-heading" id="goal-e296aba6-f407-5944-a2bd-e5296e4c9f06-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e296aba6-f407-5944-a2bd-e5296e4c9f06-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e296aba6-f407-5944-a2bd-e5296e4c9f06-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-dfa53498-34f5-5326-9d94-87e7b528caf3" rel="noreferrer noopener"><span>De-Broglie-Wellen</span> <code>dfa53498-34f5-5326-9d94-87e7b528caf3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-c71315c1-f329-4289-a145-d99819da7bad" rel="noreferrer noopener"><span>Interferenzphaenomene an Einzelspalt, Doppelspalt und Gitter experimentell untersuchen</span> <code>c71315c1-f329-4289-a145-d99819da7bad</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4ab973c19ad170f141df63fb8abe56b2b9a8bd7843515fdbf87ec390f0541c15</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=e296aba6-f407-5944-a2bd-e5296e4c9f06&amp;goalFingerprint=sha256%3A4ab973c19ad170f141df63fb8abe56b2b9a8bd7843515fdbf87ec390f0541c15&amp;pageFingerprint=sha256%3Ad7ed29d65afabaca5a187b265a1a5a51fe499770f3030df50927fc3ea6b9603f&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-52b6722a-b3b2-5d2d-a507-0215532b0422" data-goal-id="52b6722a-b3b2-5d2d-a507-0215532b0422" data-page-number="7" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-ab636b78-6031-5a5b-afa2-9ffefbdd5dda" aria-labelledby="goal-52b6722a-b3b2-5d2d-a507-0215532b0422-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-52b6722a-b3b2-5d2d-a507-0215532b0422-title"><a class="goal-self-link" href="#goal-52b6722a-b3b2-5d2d-a507-0215532b0422">Quanteninterferometer mit Phasen und Weginformation deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>52b6722a-b3b2-5d2d-a507-0215532b0422</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-698b91caebbb2667b0be5683">Quantenobjekte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:fc9fb7c943adbb10a7e3a18d2ecaffbbffc0d595324c40280dcdfca658b19340" data-rendered-digest="sha256:98f9b4f75aa485e6b1f541ad796419600570de09fe88f3cf987520d0d4e0310c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/52b6722a-b3b2-5d2d-a507-0215532b0422/52b6722a-b3b2-5d2d-a507-0215532b0422.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Quanteninterferometer mit Phasen und Weginformation deuten&quot;. Die lernende Person kann Interferenzexperimente mit einzelnen Photonen, etwa im Mach-Zehnder-Interferometer, mit Phasenbeziehungen, Zeigerdiagrammen und Weginformation deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-52b6722a-b3b2-5d2d-a507-0215532b0422-description-heading">
+        <p class="section-heading" id="goal-52b6722a-b3b2-5d2d-a507-0215532b0422-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Interferenzexperimente mit einzelnen Photonen, etwa im Mach-Zehnder-Interferometer, mit Phasenbeziehungen, Zeigerdiagrammen und Weginformation deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-52b6722a-b3b2-5d2d-a507-0215532b0422" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-52b6722a-b3b2-5d2d-a507-0215532b0422-requires-heading">
+          <p class="section-heading" id="goal-52b6722a-b3b2-5d2d-a507-0215532b0422-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-6031bed0-9baa-4f45-b2a5-57ffb00d39cc"><span>Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern</span><code>6031bed0-9baa-4f45-b2a5-57ffb00d39cc</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-52b6722a-b3b2-5d2d-a507-0215532b0422-reverse-heading">
+          <p class="section-heading" id="goal-52b6722a-b3b2-5d2d-a507-0215532b0422-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-52b6722a-b3b2-5d2d-a507-0215532b0422-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-52b6722a-b3b2-5d2d-a507-0215532b0422-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-c5413852-abae-566b-b435-f9939209ca63" rel="noreferrer noopener"><span>Einzelphotonen-Interferenz</span> <code>c5413852-abae-566b-b435-f9939209ca63</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:50eda6a08c18e710cdad64fc705e9b27d4c08acc714e2ee6460921b7ca22cf7c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=52b6722a-b3b2-5d2d-a507-0215532b0422&amp;goalFingerprint=sha256%3A50eda6a08c18e710cdad64fc705e9b27d4c08acc714e2ee6460921b7ca22cf7c&amp;pageFingerprint=sha256%3A6ce33f56d7ece9c3cab4218122beff4633febacd9531e68cc290fcea992b6a50&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114" data-goal-id="accb1d9e-cd48-5983-bcef-9b9bca4a9114" data-page-number="8" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-crossstage structure:goal-book-supplement-CrossStage-Sonstiges" aria-labelledby="goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114-title"><a class="goal-self-link" href="#goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114">Kreisbewegung mit Zentripetalkraft anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>accb1d9e-cd48-5983-bcef-9b9bca4a9114</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-184fe7fcafd22ffbec8cd5c0">Stufenübergreifend</a></li><li><a href="#chapter-4b9986bc08048aa19ec18f4d">Weitere fachliche Ziele</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ed0a161cae7b320eecaa483e25903d7cabffad2b0a4350b3eae43579ad7eee0f" data-rendered-digest="sha256:fc324b968e639a76ad760a22cc4bbe402ef34887918eb10898ad6e2d0f048921" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/accb1d9e-cd48-5983-bcef-9b9bca4a9114/accb1d9e-cd48-5983-bcef-9b9bca4a9114.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Kreisbewegung mit Zentripetalkraft anwenden&quot;. Die lernende Person kann gleichförmige Kreisbewegungen mithilfe der Zentripetalkraft beschreiben und quantitativ analysieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114-description-heading">
+        <p class="section-heading" id="goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann gleichförmige Kreisbewegungen mithilfe der Zentripetalkraft beschreiben und quantitativ analysieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114-requires-heading">
+          <p class="section-heading" id="goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114-reverse-heading">
+          <p class="section-heading" id="goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-e2da5eec-45de-5527-9ad7-16f41cacbe58"><span>Kurvenfahrten mit Haftreibung analysieren</span><code>e2da5eec-45de-5527-9ad7-16f41cacbe58</code><span class="reference-page">S. 9</span></a></li><li><a href="#goal-39b2a0c4-eecf-5049-b58f-e790790a3bf2"><span>Scheinkräfte in nicht-inertialen Systemen</span><code>39b2a0c4-eecf-5049-b58f-e790790a3bf2</code><span class="reference-page">S. 10</span></a></li><li><a href="#goal-cf570e66-2ce2-5923-9033-c97d74119553"><span>Drehmoment beschreiben</span><code>cf570e66-2ce2-5923-9033-c97d74119553</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e918b31f-6f39-5dee-ade6-3617080fb24f" rel="noreferrer noopener"><span>Zentripetalkraft als Resultierende herleiten</span> <code>e918b31f-6f39-5dee-ade6-3617080fb24f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-1b432223-3d59-5586-86a9-2214b4844101" rel="noreferrer noopener"><span>Orbitaldynamik und Energiebilanz</span> <code>1b432223-3d59-5586-86a9-2214b4844101</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5773ccbe-cd20-5ba0-99a5-7ccd5f42be51" rel="noreferrer noopener"><span>Kreisbewegung, Gravitation und Gasmodell</span> <code>5773ccbe-cd20-5ba0-99a5-7ccd5f42be51</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8320bb17-e6ab-50ea-a965-aa331bfd33e1" rel="noreferrer noopener"><span>Überhöhte Kurve und Grenzgeschwindigkeiten</span> <code>8320bb17-e6ab-50ea-a965-aa331bfd33e1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b1808b4c-5e02-5e1f-831f-47ee126e00ee" rel="noreferrer noopener"><span>Prüfungsaufgabe: Eine Kurvenfahrt mit Zentripetalkraft analysieren</span> <code>b1808b4c-5e02-5e1f-831f-47ee126e00ee</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-60211ac1-cbe1-5182-87ef-673a068c5b0a" rel="noreferrer noopener"><span>Planetenbewegungen deuten</span> <code>60211ac1-cbe1-5182-87ef-673a068c5b0a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d41cc76cfb615e3207679372bf0da6efb25c42751a29a2aea867ea2228416054</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=accb1d9e-cd48-5983-bcef-9b9bca4a9114&amp;goalFingerprint=sha256%3Ad41cc76cfb615e3207679372bf0da6efb25c42751a29a2aea867ea2228416054&amp;pageFingerprint=sha256%3A24254f06dd70bca1c726bf049a5e11ea05aa12482018c94322dbc00dc511d9bc&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e2da5eec-45de-5527-9ad7-16f41cacbe58" data-goal-id="e2da5eec-45de-5527-9ad7-16f41cacbe58" data-page-number="9" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-287739a3-6143-55d0-abe7-1a08889e9b49 structure:canonical-goal-db0aff75-7c88-52b0-a989-535b411c141e" aria-labelledby="goal-e2da5eec-45de-5527-9ad7-16f41cacbe58-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e2da5eec-45de-5527-9ad7-16f41cacbe58-title"><a class="goal-self-link" href="#goal-e2da5eec-45de-5527-9ad7-16f41cacbe58">Kurvenfahrten mit Haftreibung analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e2da5eec-45de-5527-9ad7-16f41cacbe58</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-e925fb604d041a9d2404b25a">Waagerechter Wurf und Kreisbewegung</a></li><li><a href="#chapter-dfa027ccff3cbae2a023761e">Kreisbewegungen und Zentripetalkraft</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c774291a035bde8009b0b0aa04dcd123c45e31cd374d0aaad591b8ff4c54aa4f" data-rendered-digest="sha256:feab3c5b898046d4a7d065d201586f3dde28f1d51c34b7dbbab5e7a97590f694" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/e2da5eec-45de-5527-9ad7-16f41cacbe58/e2da5eec-45de-5527-9ad7-16f41cacbe58.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Kurvenfahrten mit Haftreibung analysieren&quot;. Die lernende Person kann einfache Situationen wie Kurvenfahrten mit Haftreibung mithilfe der Zentripetalkraft quantitativ analysieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e2da5eec-45de-5527-9ad7-16f41cacbe58-description-heading">
+        <p class="section-heading" id="goal-e2da5eec-45de-5527-9ad7-16f41cacbe58-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann einfache Situationen wie Kurvenfahrten mit Haftreibung mithilfe der Zentripetalkraft quantitativ analysieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e2da5eec-45de-5527-9ad7-16f41cacbe58" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e2da5eec-45de-5527-9ad7-16f41cacbe58-requires-heading">
+          <p class="section-heading" id="goal-e2da5eec-45de-5527-9ad7-16f41cacbe58-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114"><span>Kreisbewegung mit Zentripetalkraft anwenden</span><code>accb1d9e-cd48-5983-bcef-9b9bca4a9114</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e2da5eec-45de-5527-9ad7-16f41cacbe58-reverse-heading">
+          <p class="section-heading" id="goal-e2da5eec-45de-5527-9ad7-16f41cacbe58-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e2da5eec-45de-5527-9ad7-16f41cacbe58-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e2da5eec-45de-5527-9ad7-16f41cacbe58-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5fd45dbc-0eb1-591b-99a9-7386336f1456" rel="noreferrer noopener"><span>Reibungskräfte qualitativ verstehen</span> <code>5fd45dbc-0eb1-591b-99a9-7386336f1456</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e2da5eec-45de-5527-9ad7-16f41cacbe58-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e2da5eec-45de-5527-9ad7-16f41cacbe58-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5773ccbe-cd20-5ba0-99a5-7ccd5f42be51" rel="noreferrer noopener"><span>Kreisbewegung, Gravitation und Gasmodell</span> <code>5773ccbe-cd20-5ba0-99a5-7ccd5f42be51</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8320bb17-e6ab-50ea-a965-aa331bfd33e1" rel="noreferrer noopener"><span>Überhöhte Kurve und Grenzgeschwindigkeiten</span> <code>8320bb17-e6ab-50ea-a965-aa331bfd33e1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-dd99528a-bae5-5b78-89e6-c6092c927f8d" rel="noreferrer noopener"><span>Mehrschrittige Bewegungsmodelle mit Reibung und Chaos analysieren</span> <code>dd99528a-bae5-5b78-89e6-c6092c927f8d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:454a9eeade46e56e98dabccd96eb45c35cabdc3c2cd3901f954362cfb05b0cf0</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=e2da5eec-45de-5527-9ad7-16f41cacbe58&amp;goalFingerprint=sha256%3A454a9eeade46e56e98dabccd96eb45c35cabdc3c2cd3901f954362cfb05b0cf0&amp;pageFingerprint=sha256%3Af5b25db257187843cb37194471d597755aa606d66ffea153a8d35691dd325887&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-39b2a0c4-eecf-5049-b58f-e790790a3bf2" data-goal-id="39b2a0c4-eecf-5049-b58f-e790790a3bf2" data-page-number="10" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-287739a3-6143-55d0-abe7-1a08889e9b49 structure:canonical-goal-db0aff75-7c88-52b0-a989-535b411c141e" aria-labelledby="goal-39b2a0c4-eecf-5049-b58f-e790790a3bf2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-39b2a0c4-eecf-5049-b58f-e790790a3bf2-title"><a class="goal-self-link" href="#goal-39b2a0c4-eecf-5049-b58f-e790790a3bf2">Scheinkräfte in nicht-inertialen Systemen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>39b2a0c4-eecf-5049-b58f-e790790a3bf2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-e925fb604d041a9d2404b25a">Waagerechter Wurf und Kreisbewegung</a></li><li><a href="#chapter-dfa027ccff3cbae2a023761e">Kreisbewegungen und Zentripetalkraft</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:da0e2c64b063c5aca2aeb46e0d52325ae7248e8e4b2d20163e9c4dafb2d7edee" data-rendered-digest="sha256:5f739db63cd75ec733b15c53581e096c911da88db81a63a7cd334d9845b6a13a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/39b2a0c4-eecf-5049-b58f-e790790a3bf2/39b2a0c4-eecf-5049-b58f-e790790a3bf2.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Scheinkräfte in nicht-inertialen Systemen&quot;. Die lernende Person kann Scheinkräfte in beschleunigten Bezugssystemen qualitativ erklären und typische Beispiele wie Kreisbewegungen in rotierenden Systemen deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-39b2a0c4-eecf-5049-b58f-e790790a3bf2-description-heading">
+        <p class="section-heading" id="goal-39b2a0c4-eecf-5049-b58f-e790790a3bf2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Scheinkräfte in beschleunigten Bezugssystemen qualitativ erklären und typische Beispiele wie Kreisbewegungen in rotierenden Systemen deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-39b2a0c4-eecf-5049-b58f-e790790a3bf2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-39b2a0c4-eecf-5049-b58f-e790790a3bf2-requires-heading">
+          <p class="section-heading" id="goal-39b2a0c4-eecf-5049-b58f-e790790a3bf2-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114"><span>Kreisbewegung mit Zentripetalkraft anwenden</span><code>accb1d9e-cd48-5983-bcef-9b9bca4a9114</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-39b2a0c4-eecf-5049-b58f-e790790a3bf2-reverse-heading">
+          <p class="section-heading" id="goal-39b2a0c4-eecf-5049-b58f-e790790a3bf2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-39b2a0c4-eecf-5049-b58f-e790790a3bf2-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-39b2a0c4-eecf-5049-b58f-e790790a3bf2-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-dd99528a-bae5-5b78-89e6-c6092c927f8d" rel="noreferrer noopener"><span>Mehrschrittige Bewegungsmodelle mit Reibung und Chaos analysieren</span> <code>dd99528a-bae5-5b78-89e6-c6092c927f8d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:da7eec66e0b225b3d717189b5c2f2dbd46917e6c213f4c0a3517e3e3edafd4b6</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=39b2a0c4-eecf-5049-b58f-e790790a3bf2&amp;goalFingerprint=sha256%3Ada7eec66e0b225b3d717189b5c2f2dbd46917e6c213f4c0a3517e3e3edafd4b6&amp;pageFingerprint=sha256%3Abdac2482c5cdfd94c15dcda39d0e888bcf2ee88e62feca40a5e916802e366797&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-cf570e66-2ce2-5923-9033-c97d74119553" data-goal-id="cf570e66-2ce2-5923-9033-c97d74119553" data-page-number="11" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-9743baad-9371-52b6-98ee-72bc6dc68701" aria-labelledby="goal-cf570e66-2ce2-5923-9033-c97d74119553-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-cf570e66-2ce2-5923-9033-c97d74119553-title"><a class="goal-self-link" href="#goal-cf570e66-2ce2-5923-9033-c97d74119553">Drehmoment beschreiben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>cf570e66-2ce2-5923-9033-c97d74119553</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-7147c16f7246f60758cd7e70">Drehbewegungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3d8def38041d3332d55747d234e8234f0a4cb4f885b2e8425300ac17ad5fd450" data-rendered-digest="sha256:2f77550769776fb13313efbaed129012033c3b973e895f46d69a150a4ee8ae3a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/cf570e66-2ce2-5923-9033-c97d74119553/cf570e66-2ce2-5923-9033-c97d74119553.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Drehmoment beschreiben&quot;. Die lernende Person kann das Drehmoment als Maß für die Drehwirkung einer Kraft definieren, berechnen und an einfachen Hebel- und Alltagsbeispielen anwenden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-cf570e66-2ce2-5923-9033-c97d74119553-description-heading">
+        <p class="section-heading" id="goal-cf570e66-2ce2-5923-9033-c97d74119553-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Drehmoment als Maß für die Drehwirkung einer Kraft definieren, berechnen und an einfachen Hebel- und Alltagsbeispielen anwenden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-cf570e66-2ce2-5923-9033-c97d74119553" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-cf570e66-2ce2-5923-9033-c97d74119553-requires-heading">
+          <p class="section-heading" id="goal-cf570e66-2ce2-5923-9033-c97d74119553-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-accb1d9e-cd48-5983-bcef-9b9bca4a9114"><span>Kreisbewegung mit Zentripetalkraft anwenden</span><code>accb1d9e-cd48-5983-bcef-9b9bca4a9114</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-cf570e66-2ce2-5923-9033-c97d74119553-reverse-heading">
+          <p class="section-heading" id="goal-cf570e66-2ce2-5923-9033-c97d74119553-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-37f17e7e-9fcf-5dca-ac10-e94cb8420be5"><span>Drehimpuls als Erhaltungsgröße</span><code>37f17e7e-9fcf-5dca-ac10-e94cb8420be5</code><span class="reference-page">S. 12</span></a></li><li><a href="#goal-d02438ba-0cc9-5993-831e-5e44d35e32c4"><span>Drehmoment auf Magnetnadeln und Dipole</span><code>d02438ba-0cc9-5993-831e-5e44d35e32c4</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-cf570e66-2ce2-5923-9033-c97d74119553-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-cf570e66-2ce2-5923-9033-c97d74119553-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:523fab8b325aa66e4f04738f200e958e97bfd42ebec1bf04471d08207e927986</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=cf570e66-2ce2-5923-9033-c97d74119553&amp;goalFingerprint=sha256%3A523fab8b325aa66e4f04738f200e958e97bfd42ebec1bf04471d08207e927986&amp;pageFingerprint=sha256%3A8ae54b9e4a128399756692f93894722de8a92c7c2d83c2f5aa7e702b23141ca0&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-37f17e7e-9fcf-5dca-ac10-e94cb8420be5" data-goal-id="37f17e7e-9fcf-5dca-ac10-e94cb8420be5" data-page-number="12" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-9743baad-9371-52b6-98ee-72bc6dc68701" aria-labelledby="goal-37f17e7e-9fcf-5dca-ac10-e94cb8420be5-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-37f17e7e-9fcf-5dca-ac10-e94cb8420be5-title"><a class="goal-self-link" href="#goal-37f17e7e-9fcf-5dca-ac10-e94cb8420be5">Drehimpuls als Erhaltungsgröße</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>37f17e7e-9fcf-5dca-ac10-e94cb8420be5</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-7147c16f7246f60758cd7e70">Drehbewegungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:602f1a5b3e41a15d7200406684aad57ed55f0f14a92c39f7dcf36d578dfa6a3b" data-rendered-digest="sha256:97e0f251f1464a56e055dba015a7a6e1d415f2227ee1cd7fa0f8e2188265e9ec" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/37f17e7e-9fcf-5dca-ac10-e94cb8420be5/37f17e7e-9fcf-5dca-ac10-e94cb8420be5.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Drehimpuls als Erhaltungsgröße&quot;. Die lernende Person kann den Drehimpuls definieren, seine Erhaltung bei drehmomentfreien Vorgängen erläutern und einfache Beispiele (z. B. Pirouette) qualitativ deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-37f17e7e-9fcf-5dca-ac10-e94cb8420be5-description-heading">
+        <p class="section-heading" id="goal-37f17e7e-9fcf-5dca-ac10-e94cb8420be5-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Drehimpuls definieren, seine Erhaltung bei drehmomentfreien Vorgängen erläutern und einfache Beispiele (z. B. Pirouette) qualitativ deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-37f17e7e-9fcf-5dca-ac10-e94cb8420be5" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-37f17e7e-9fcf-5dca-ac10-e94cb8420be5-requires-heading">
+          <p class="section-heading" id="goal-37f17e7e-9fcf-5dca-ac10-e94cb8420be5-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-cf570e66-2ce2-5923-9033-c97d74119553"><span>Drehmoment beschreiben</span><code>cf570e66-2ce2-5923-9033-c97d74119553</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-37f17e7e-9fcf-5dca-ac10-e94cb8420be5-reverse-heading">
+          <p class="section-heading" id="goal-37f17e7e-9fcf-5dca-ac10-e94cb8420be5-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-642aebd7-66cd-5a50-b543-73c4b207525d"><span>Trägheitsmoment und Rotationsenergie</span><code>642aebd7-66cd-5a50-b543-73c4b207525d</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-21c0a5f2-4152-549a-aa9c-e02ab772f589"><span>Pirouetten mit Drehimpuls deuten</span><code>21c0a5f2-4152-549a-aa9c-e02ab772f589</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-37f17e7e-9fcf-5dca-ac10-e94cb8420be5-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-37f17e7e-9fcf-5dca-ac10-e94cb8420be5-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-839ecc8f-3a60-418b-bc92-64bfeef33824" rel="noreferrer noopener"><span>Impulserhaltung</span> <code>839ecc8f-3a60-418b-bc92-64bfeef33824</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-37f17e7e-9fcf-5dca-ac10-e94cb8420be5-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-37f17e7e-9fcf-5dca-ac10-e94cb8420be5-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c9e31f96c381b55c3d657e59e3f8365a3f65667cdf373341b5b4eda5b1b8e604</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=37f17e7e-9fcf-5dca-ac10-e94cb8420be5&amp;goalFingerprint=sha256%3Ac9e31f96c381b55c3d657e59e3f8365a3f65667cdf373341b5b4eda5b1b8e604&amp;pageFingerprint=sha256%3A086bf51eefab661fdc3fa89eace1fab0c3b2558c99de941b27d2239751f45bfa&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-642aebd7-66cd-5a50-b543-73c4b207525d" data-goal-id="642aebd7-66cd-5a50-b543-73c4b207525d" data-page-number="13" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-9743baad-9371-52b6-98ee-72bc6dc68701" aria-labelledby="goal-642aebd7-66cd-5a50-b543-73c4b207525d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-642aebd7-66cd-5a50-b543-73c4b207525d-title"><a class="goal-self-link" href="#goal-642aebd7-66cd-5a50-b543-73c4b207525d">Trägheitsmoment und Rotationsenergie</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>642aebd7-66cd-5a50-b543-73c4b207525d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-7147c16f7246f60758cd7e70">Drehbewegungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9feb94c40057c500bc3a0335434e6a6db1b1f3dda9268091bd129c0cf261fb66" data-rendered-digest="sha256:22739485c6db36d848ebaf2b41d8db9cf5c560a390af214a61f3ed2f4e8ae79e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/642aebd7-66cd-5a50-b543-73c4b207525d/642aebd7-66cd-5a50-b543-73c4b207525d.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Trägheitsmoment und Rotationsenergie&quot;. Die lernende Person kann den Begriff des Trägheitsmoments qualitativ erklären, einfache Beispiele vergleichen und den Zusammenhang mit Rotationsenergie herstellen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-642aebd7-66cd-5a50-b543-73c4b207525d-description-heading">
+        <p class="section-heading" id="goal-642aebd7-66cd-5a50-b543-73c4b207525d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Begriff des Trägheitsmoments qualitativ erklären, einfache Beispiele vergleichen und den Zusammenhang mit Rotationsenergie herstellen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-642aebd7-66cd-5a50-b543-73c4b207525d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-642aebd7-66cd-5a50-b543-73c4b207525d-requires-heading">
+          <p class="section-heading" id="goal-642aebd7-66cd-5a50-b543-73c4b207525d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-37f17e7e-9fcf-5dca-ac10-e94cb8420be5"><span>Drehimpuls als Erhaltungsgröße</span><code>37f17e7e-9fcf-5dca-ac10-e94cb8420be5</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-642aebd7-66cd-5a50-b543-73c4b207525d-reverse-heading">
+          <p class="section-heading" id="goal-642aebd7-66cd-5a50-b543-73c4b207525d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931"><span>Rotationsenergie und Beschleunigungsmoment berechnen</span><code>5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931</code><span class="reference-page">S. 14</span></a></li><li><a href="#goal-b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc"><span>Präzessionsbewegungen erklären</span><code>b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-642aebd7-66cd-5a50-b543-73c4b207525d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-642aebd7-66cd-5a50-b543-73c4b207525d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-879491c0-7153-570b-91f4-c61d9fe8a143" rel="noreferrer noopener"><span>Thermodynamik und Rotationssystem</span> <code>879491c0-7153-570b-91f4-c61d9fe8a143</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fe5902a51e2c706b3b60d87ae77edb9724dff6c82b57f4e6dec188316ade16ed</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=642aebd7-66cd-5a50-b543-73c4b207525d&amp;goalFingerprint=sha256%3Afe5902a51e2c706b3b60d87ae77edb9724dff6c82b57f4e6dec188316ade16ed&amp;pageFingerprint=sha256%3A0356868aac527392b6dd02fa65d139848b20a17cac8caa714c61f051cda5ad81&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931" data-goal-id="5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931" data-page-number="14" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-9743baad-9371-52b6-98ee-72bc6dc68701" aria-labelledby="goal-5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931-title"><a class="goal-self-link" href="#goal-5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931">Rotationsenergie und Beschleunigungsmoment berechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-7147c16f7246f60758cd7e70">Drehbewegungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7d2995fb02681e48f73947378d5d7a5253180e492ab4da547b81e1c09b00720b" data-rendered-digest="sha256:c9fd30e0ff17e018c39b41567fffcc974e7a790df2847d3200427f640f30048f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931/5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Rotationsenergie und Beschleunigungsmoment berechnen&quot;. Die lernende Person kann aus Trägheitsmoment und Winkelgeschwindigkeit die Rotationsenergie bestimmen sowie bei vorgegebener Winkelbeschleunigung das mittlere Beschleunigungsmoment berechnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931-description-heading">
+        <p class="section-heading" id="goal-5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus Trägheitsmoment und Winkelgeschwindigkeit die Rotationsenergie bestimmen sowie bei vorgegebener Winkelbeschleunigung das mittlere Beschleunigungsmoment berechnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931-requires-heading">
+          <p class="section-heading" id="goal-5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-642aebd7-66cd-5a50-b543-73c4b207525d"><span>Trägheitsmoment und Rotationsenergie</span><code>642aebd7-66cd-5a50-b543-73c4b207525d</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931-reverse-heading">
+          <p class="section-heading" id="goal-5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-879491c0-7153-570b-91f4-c61d9fe8a143" rel="noreferrer noopener"><span>Thermodynamik und Rotationssystem</span> <code>879491c0-7153-570b-91f4-c61d9fe8a143</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:52c1455132a5c07248d413c389c773e73eae6620826c7815e0f9a7c57fcc3723</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931&amp;goalFingerprint=sha256%3A52c1455132a5c07248d413c389c773e73eae6620826c7815e0f9a7c57fcc3723&amp;pageFingerprint=sha256%3Acdf3edb77805bcf4c388db98d03bc7d28348c328213e260107f6e06a3a476a4f&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc" data-goal-id="b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc" data-page-number="15" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-9743baad-9371-52b6-98ee-72bc6dc68701" aria-labelledby="goal-b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc-title"><a class="goal-self-link" href="#goal-b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc">Präzessionsbewegungen erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-7147c16f7246f60758cd7e70">Drehbewegungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:56ec95e4d47d515867d4cb42459db172078360ec2d2c007ed650e26b1e9655a3" data-rendered-digest="sha256:6486f8214782b1a4c8bc7181c6e597363467a5562cebcd1c046767aae5e29ce1" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc/b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Präzessionsbewegungen erklären&quot;. Die lernende Person kann die Präzession von Kreisel- oder Gyroskopsystemen qualitativ beschreiben und mit der Wirkung von Drehmoment und Drehimpulserhaltung verknüpfen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc-description-heading">
+        <p class="section-heading" id="goal-b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Präzession von Kreisel- oder Gyroskopsystemen qualitativ beschreiben und mit der Wirkung von Drehmoment und Drehimpulserhaltung verknüpfen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc-requires-heading">
+          <p class="section-heading" id="goal-b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-642aebd7-66cd-5a50-b543-73c4b207525d"><span>Trägheitsmoment und Rotationsenergie</span><code>642aebd7-66cd-5a50-b543-73c4b207525d</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc-reverse-heading">
+          <p class="section-heading" id="goal-b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-8daaf751-93fe-56d9-8697-ac30237061bd"><span>Fahrraddynamik mit Kreiselwirkung erklären</span><code>8daaf751-93fe-56d9-8697-ac30237061bd</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6d25344c-35d7-5853-925d-2bccbaf50630" rel="noreferrer noopener"><span>Drehbewegungen in Sport und Technik anwenden</span> <code>6d25344c-35d7-5853-925d-2bccbaf50630</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:755e082de1e0f63acfabed698e888f0ee70a6b78ba017ef40930f67f55aca075</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc&amp;goalFingerprint=sha256%3A755e082de1e0f63acfabed698e888f0ee70a6b78ba017ef40930f67f55aca075&amp;pageFingerprint=sha256%3A4d15971ee9c530776a0684030b1c58803313d5bc028a60c62eba4a4d805555f4&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-21c0a5f2-4152-549a-aa9c-e02ab772f589" data-goal-id="21c0a5f2-4152-549a-aa9c-e02ab772f589" data-page-number="16" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-9743baad-9371-52b6-98ee-72bc6dc68701 structure:canonical-goal-7c33dae8-f57a-51a1-a1b4-75ee6d5b200e" aria-labelledby="goal-21c0a5f2-4152-549a-aa9c-e02ab772f589-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-21c0a5f2-4152-549a-aa9c-e02ab772f589-title"><a class="goal-self-link" href="#goal-21c0a5f2-4152-549a-aa9c-e02ab772f589">Pirouetten mit Drehimpuls deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>21c0a5f2-4152-549a-aa9c-e02ab772f589</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-7147c16f7246f60758cd7e70">Drehbewegungen</a></li><li><a href="#chapter-9efdd25ed5a0d21d384c5958">Anwendungsbeispiele für Drehbewegungen deuten</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:51931a0352ff56e709e46b1bd70b4a7fd0f2e4819e19d634030f6dcca692ea22" data-rendered-digest="sha256:3ddfa8d85a28fff7fa17dd4845b057d3bfa915df2d516ce1e032bd08e9ebe0ba" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/21c0a5f2-4152-549a-aa9c-e02ab772f589/21c0a5f2-4152-549a-aa9c-e02ab772f589.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Pirouetten mit Drehimpuls deuten&quot;. Die lernende Person kann Pirouetten durch Erhaltung des Drehimpulses und Änderungen des Trägheitsmoments qualitativ erklären.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-21c0a5f2-4152-549a-aa9c-e02ab772f589-description-heading">
+        <p class="section-heading" id="goal-21c0a5f2-4152-549a-aa9c-e02ab772f589-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Pirouetten durch Erhaltung des Drehimpulses und Änderungen des Trägheitsmoments qualitativ erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-21c0a5f2-4152-549a-aa9c-e02ab772f589" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-21c0a5f2-4152-549a-aa9c-e02ab772f589-requires-heading">
+          <p class="section-heading" id="goal-21c0a5f2-4152-549a-aa9c-e02ab772f589-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-37f17e7e-9fcf-5dca-ac10-e94cb8420be5"><span>Drehimpuls als Erhaltungsgröße</span><code>37f17e7e-9fcf-5dca-ac10-e94cb8420be5</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-21c0a5f2-4152-549a-aa9c-e02ab772f589-reverse-heading">
+          <p class="section-heading" id="goal-21c0a5f2-4152-549a-aa9c-e02ab772f589-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-21c0a5f2-4152-549a-aa9c-e02ab772f589-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-21c0a5f2-4152-549a-aa9c-e02ab772f589-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6d25344c-35d7-5853-925d-2bccbaf50630" rel="noreferrer noopener"><span>Drehbewegungen in Sport und Technik anwenden</span> <code>6d25344c-35d7-5853-925d-2bccbaf50630</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:85ad0da07345b585d1fea701d5b611e9147a9504a5291dcf4670ae2129c2e88f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=21c0a5f2-4152-549a-aa9c-e02ab772f589&amp;goalFingerprint=sha256%3A85ad0da07345b585d1fea701d5b611e9147a9504a5291dcf4670ae2129c2e88f&amp;pageFingerprint=sha256%3A864ba99dd5b8379ab5a226981f5e66e2ee92e4818bd402639c299ce4e081a53b&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8daaf751-93fe-56d9-8697-ac30237061bd" data-goal-id="8daaf751-93fe-56d9-8697-ac30237061bd" data-page-number="17" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-9743baad-9371-52b6-98ee-72bc6dc68701 structure:canonical-goal-7c33dae8-f57a-51a1-a1b4-75ee6d5b200e" aria-labelledby="goal-8daaf751-93fe-56d9-8697-ac30237061bd-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8daaf751-93fe-56d9-8697-ac30237061bd-title"><a class="goal-self-link" href="#goal-8daaf751-93fe-56d9-8697-ac30237061bd">Fahrraddynamik mit Kreiselwirkung erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8daaf751-93fe-56d9-8697-ac30237061bd</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-7147c16f7246f60758cd7e70">Drehbewegungen</a></li><li><a href="#chapter-9efdd25ed5a0d21d384c5958">Anwendungsbeispiele für Drehbewegungen deuten</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:94c6d6e9759115a96819558e3db3039a42cfed0f42966db3bff477060f466c86" data-rendered-digest="sha256:0a4ca9c71627293aa44783395fb1bc16b2a58563ffd9f398037b9f23bdc9f147" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/8daaf751-93fe-56d9-8697-ac30237061bd/8daaf751-93fe-56d9-8697-ac30237061bd.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Fahrraddynamik mit Kreiselwirkung erklären&quot;. Die lernende Person kann Stabilität und Lenkverhalten von Fahrrädern mit Drehmomenten und Kreiselwirkung qualitativ deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8daaf751-93fe-56d9-8697-ac30237061bd-description-heading">
+        <p class="section-heading" id="goal-8daaf751-93fe-56d9-8697-ac30237061bd-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Stabilität und Lenkverhalten von Fahrrädern mit Drehmomenten und Kreiselwirkung qualitativ deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8daaf751-93fe-56d9-8697-ac30237061bd" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8daaf751-93fe-56d9-8697-ac30237061bd-requires-heading">
+          <p class="section-heading" id="goal-8daaf751-93fe-56d9-8697-ac30237061bd-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc"><span>Präzessionsbewegungen erklären</span><code>b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8daaf751-93fe-56d9-8697-ac30237061bd-reverse-heading">
+          <p class="section-heading" id="goal-8daaf751-93fe-56d9-8697-ac30237061bd-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-07f298b2-2f5e-5b16-8150-bc603fa78ecd"><span>Kreiselstabilisierung technisch begründen</span><code>07f298b2-2f5e-5b16-8150-bc603fa78ecd</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-8daaf751-93fe-56d9-8697-ac30237061bd-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8daaf751-93fe-56d9-8697-ac30237061bd-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6d25344c-35d7-5853-925d-2bccbaf50630" rel="noreferrer noopener"><span>Drehbewegungen in Sport und Technik anwenden</span> <code>6d25344c-35d7-5853-925d-2bccbaf50630</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4d70917dc3f293b8da9f0928302ec805f468a9bdda0bc6c7ee88e10223fbf27f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=8daaf751-93fe-56d9-8697-ac30237061bd&amp;goalFingerprint=sha256%3A4d70917dc3f293b8da9f0928302ec805f468a9bdda0bc6c7ee88e10223fbf27f&amp;pageFingerprint=sha256%3Ae7aab28e26a926e2aa70a0893ef01a23af1e45c122554ec6466915fe9d7ff36f&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-07f298b2-2f5e-5b16-8150-bc603fa78ecd" data-goal-id="07f298b2-2f5e-5b16-8150-bc603fa78ecd" data-page-number="18" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-9743baad-9371-52b6-98ee-72bc6dc68701 structure:canonical-goal-7c33dae8-f57a-51a1-a1b4-75ee6d5b200e" aria-labelledby="goal-07f298b2-2f5e-5b16-8150-bc603fa78ecd-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-07f298b2-2f5e-5b16-8150-bc603fa78ecd-title"><a class="goal-self-link" href="#goal-07f298b2-2f5e-5b16-8150-bc603fa78ecd">Kreiselstabilisierung technisch begründen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>07f298b2-2f5e-5b16-8150-bc603fa78ecd</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-7147c16f7246f60758cd7e70">Drehbewegungen</a></li><li><a href="#chapter-9efdd25ed5a0d21d384c5958">Anwendungsbeispiele für Drehbewegungen deuten</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6f10a17a4a4897f6d4508a23358bec8b610933229d01ee2e8826e39fde5161a1" data-rendered-digest="sha256:bd9284c508bcaeb71d2a1d261fc5d4d1a9e4fe9d2ff28b1fa702286f92cf825f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/07f298b2-2f5e-5b16-8150-bc603fa78ecd/07f298b2-2f5e-5b16-8150-bc603fa78ecd.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Kreiselstabilisierung technisch begründen&quot;. Die lernende Person kann Kreiselstabilisierung in technischen Anwendungen mithilfe von Drehimpuls- und Drehmomentargumenten begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-07f298b2-2f5e-5b16-8150-bc603fa78ecd-description-heading">
+        <p class="section-heading" id="goal-07f298b2-2f5e-5b16-8150-bc603fa78ecd-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Kreiselstabilisierung in technischen Anwendungen mithilfe von Drehimpuls- und Drehmomentargumenten begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-07f298b2-2f5e-5b16-8150-bc603fa78ecd" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-07f298b2-2f5e-5b16-8150-bc603fa78ecd-requires-heading">
+          <p class="section-heading" id="goal-07f298b2-2f5e-5b16-8150-bc603fa78ecd-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8daaf751-93fe-56d9-8697-ac30237061bd"><span>Fahrraddynamik mit Kreiselwirkung erklären</span><code>8daaf751-93fe-56d9-8697-ac30237061bd</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-07f298b2-2f5e-5b16-8150-bc603fa78ecd-reverse-heading">
+          <p class="section-heading" id="goal-07f298b2-2f5e-5b16-8150-bc603fa78ecd-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-07f298b2-2f5e-5b16-8150-bc603fa78ecd-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-07f298b2-2f5e-5b16-8150-bc603fa78ecd-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6d25344c-35d7-5853-925d-2bccbaf50630" rel="noreferrer noopener"><span>Drehbewegungen in Sport und Technik anwenden</span> <code>6d25344c-35d7-5853-925d-2bccbaf50630</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b45b67a1ebc13c647fb210368bbd1bde6bbee59f9098215b07628f8cbbe9e497</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=07f298b2-2f5e-5b16-8150-bc603fa78ecd&amp;goalFingerprint=sha256%3Ab45b67a1ebc13c647fb210368bbd1bde6bbee59f9098215b07628f8cbbe9e497&amp;pageFingerprint=sha256%3Aa0efa8648ab7060e9f214888e1ac52c430e2e816c36889f8de78e9c51c981cb8&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d02438ba-0cc9-5993-831e-5e44d35e32c4" data-goal-id="d02438ba-0cc9-5993-831e-5e44d35e32c4" data-page-number="19" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q1 structure:canonical-goal-13e882bd-2fc6-59c6-a2a8-32eb1fbf1751 structure:canonical-goal-6a955b34-1b90-5193-8f7e-ebb777f7b7bd" aria-labelledby="goal-d02438ba-0cc9-5993-831e-5e44d35e32c4-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d02438ba-0cc9-5993-831e-5e44d35e32c4-title"><a class="goal-self-link" href="#goal-d02438ba-0cc9-5993-831e-5e44d35e32c4">Drehmoment auf Magnetnadeln und Dipole</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d02438ba-0cc9-5993-831e-5e44d35e32c4</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-497492896f4798b54bff1e35">Q1 Elektrisches und magnetisches Feld</a></li><li><a href="#chapter-50b02408dad54a978c4e655f">Magnetisches Feld</a></li><li><a href="#chapter-2447d972f1b42a13bf7f605a">Mikroskopische und makroskopische Wirkung magnetischer Felder</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b49d8052a21dae57a8afc092ffc8987bd8729d2fc54bbbe2efcd7039e8369208" data-rendered-digest="sha256:3f85d932d3477821e4e772c81d1c18528d7e4c80001849528537d340b5ca3c6b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/d02438ba-0cc9-5993-831e-5e44d35e32c4/d02438ba-0cc9-5993-831e-5e44d35e32c4.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Drehmoment auf Magnetnadeln und Dipole&quot;. Die lernende Person kann das Drehmoment auf Magnetnadeln und magnetische Dipole im homogenen Feld mit M = mu * B * sin(alpha) berechnen und die Ausrichtung im Feld fachlich begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d02438ba-0cc9-5993-831e-5e44d35e32c4-description-heading">
+        <p class="section-heading" id="goal-d02438ba-0cc9-5993-831e-5e44d35e32c4-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Drehmoment auf Magnetnadeln und magnetische Dipole im homogenen Feld mit M = mu * B * sin(alpha) berechnen und die Ausrichtung im Feld fachlich begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. II · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d02438ba-0cc9-5993-831e-5e44d35e32c4" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d02438ba-0cc9-5993-831e-5e44d35e32c4-requires-heading">
+          <p class="section-heading" id="goal-d02438ba-0cc9-5993-831e-5e44d35e32c4-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-cf570e66-2ce2-5923-9033-c97d74119553"><span>Drehmoment beschreiben</span><code>cf570e66-2ce2-5923-9033-c97d74119553</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-d02438ba-0cc9-5993-831e-5e44d35e32c4-reverse-heading">
+          <p class="section-heading" id="goal-d02438ba-0cc9-5993-831e-5e44d35e32c4-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-58db62d4-458f-5e2d-9ca0-968e09f4944b"><span>Gaußsches Verfahren anwenden</span><code>58db62d4-458f-5e2d-9ca0-968e09f4944b</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-d02438ba-0cc9-5993-831e-5e44d35e32c4-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d02438ba-0cc9-5993-831e-5e44d35e32c4-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-c6355a22-24cf-5d8b-88af-ea11711460fb" rel="noreferrer noopener"><span>Kraft auf stromdurchflossene Leiter</span> <code>c6355a22-24cf-5d8b-88af-ea11711460fb</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-d02438ba-0cc9-5993-831e-5e44d35e32c4-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d02438ba-0cc9-5993-831e-5e44d35e32c4-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d8442d03-8b7e-54b7-9d9a-dc31ce541daa" rel="noreferrer noopener"><span>Magnetische Messverfahren und Technik</span> <code>d8442d03-8b7e-54b7-9d9a-dc31ce541daa</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 19 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5b09fe0d44e7af4893dcd26470f12a702adaaa4d7d4817bf9b271940b0132b96</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=d02438ba-0cc9-5993-831e-5e44d35e32c4&amp;goalFingerprint=sha256%3A5b09fe0d44e7af4893dcd26470f12a702adaaa4d7d4817bf9b271940b0132b96&amp;pageFingerprint=sha256%3Af51e99d8ee71c17bdf2804abdf25d122dc12c5b4e2f350f7ec72fcbd5032118f&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-58db62d4-458f-5e2d-9ca0-968e09f4944b" data-goal-id="58db62d4-458f-5e2d-9ca0-968e09f4944b" data-page-number="20" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q1 structure:canonical-goal-13e882bd-2fc6-59c6-a2a8-32eb1fbf1751 structure:canonical-goal-c0634f78-efb9-51cb-ad4f-0e0e4d18bad0" aria-labelledby="goal-58db62d4-458f-5e2d-9ca0-968e09f4944b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-58db62d4-458f-5e2d-9ca0-968e09f4944b-title"><a class="goal-self-link" href="#goal-58db62d4-458f-5e2d-9ca0-968e09f4944b">Gaußsches Verfahren anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>58db62d4-458f-5e2d-9ca0-968e09f4944b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-497492896f4798b54bff1e35">Q1 Elektrisches und magnetisches Feld</a></li><li><a href="#chapter-50b02408dad54a978c4e655f">Magnetisches Feld</a></li><li><a href="#chapter-e9795e6828eb65b7bfe516db">Technische Anwendungen magnetischer Felder</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a0be40ce8a2c1d59c7e87753982531eee8a4382a78657415a540777da4a23616" data-rendered-digest="sha256:52a158d2b0498e4812f67b3eea1a4d297a0bb2b925448ebd5c3fbcb2002d7e81" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/58db62d4-458f-5e2d-9ca0-968e09f4944b/58db62d4-458f-5e2d-9ca0-968e09f4944b.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Gaußsches Verfahren anwenden&quot;. Die lernende Person kann das Messverfahren von Gauß (Ablenkungsmethode in Hauptlage und Schwingungsmethode) zur Bestimmung der Horizontalintensität des Erdmagnetfeldes beschreiben und anwenden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-58db62d4-458f-5e2d-9ca0-968e09f4944b-description-heading">
+        <p class="section-heading" id="goal-58db62d4-458f-5e2d-9ca0-968e09f4944b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Messverfahren von Gauß (Ablenkungsmethode in Hauptlage und Schwingungsmethode) zur Bestimmung der Horizontalintensität des Erdmagnetfeldes beschreiben und anwenden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-58db62d4-458f-5e2d-9ca0-968e09f4944b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-58db62d4-458f-5e2d-9ca0-968e09f4944b-requires-heading">
+          <p class="section-heading" id="goal-58db62d4-458f-5e2d-9ca0-968e09f4944b-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-d02438ba-0cc9-5993-831e-5e44d35e32c4"><span>Drehmoment auf Magnetnadeln und Dipole</span><code>d02438ba-0cc9-5993-831e-5e44d35e32c4</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-58db62d4-458f-5e2d-9ca0-968e09f4944b-reverse-heading">
+          <p class="section-heading" id="goal-58db62d4-458f-5e2d-9ca0-968e09f4944b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-58db62d4-458f-5e2d-9ca0-968e09f4944b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-58db62d4-458f-5e2d-9ca0-968e09f4944b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d8442d03-8b7e-54b7-9d9a-dc31ce541daa" rel="noreferrer noopener"><span>Magnetische Messverfahren und Technik</span> <code>d8442d03-8b7e-54b7-9d9a-dc31ce541daa</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 20 von 20</span>
+      <span>Buch-Digest <code>sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6568d1ab24e4653dd7d39e3360f164d2ba8cb8ae15a74e457505bc23aa7d3a41</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b039-quantum-and-rotation-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=58db62d4-458f-5e2d-9ca0-968e09f4944b&amp;goalFingerprint=sha256%3A6568d1ab24e4653dd7d39e3360f164d2ba8cb8ae15a74e457505bc23aa7d3a41&amp;pageFingerprint=sha256%3A18b4f28bb2b07299ed47dc327b8e6a36df6f5c455beb856974e56db74a7531b4&amp;bookDigest=sha256%3A769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666&amp;page=20" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

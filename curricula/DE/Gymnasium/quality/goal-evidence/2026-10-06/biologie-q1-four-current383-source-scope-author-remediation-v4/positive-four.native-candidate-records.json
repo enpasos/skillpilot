@@ -1,0 +1,343 @@
+{
+  "records": [
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "biologie-q1-four-current383-author-20261006-v1",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "goalId": "0daa79f6-8f61-5506-98f9-65db83062ba8",
+      "goalFingerprint": "sha256:0aa13a838edb5c6faefa91c25216a0c53a3968cf3fa02080a9c9d48bd717329f",
+      "reviewInputFingerprint": "sha256:012f49b7463f4f8ad303324fca00603dbf5f3b8ae2edbc7fed245e315b54495e",
+      "profileFingerprint": "sha256:acbf3c6b3202c23b0676bac322ab997d2f7c844d1236b99eeabed26efca6c466",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-06T02:41:27.218212+00:00",
+      "reviewer": "Codex root author; no independent acceptance",
+      "reason": "Beide bisherigen D-Runden verlangen eine Trennung von Molekülstruktur und Replikation. Das eigene Replikationsziel e70d8a85 besteht bereits und verlangt 0daa als Vorziel. Der Vorschlag bewahrt 0daa als Strukturatom, statt eine weitere Kopierkompetenz zu duplizieren. Der BY-B9.3.2-Originalpunkt verlangt Struktur und Informationsspeicher, nicht Replikation. Unadopted proposed-scope authoring draft; source-preservation blockers and independent review remain open.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [
+        "Explicit replication source/view preservation remains required.",
+        "Fresh current-text independent D and A/M decisions are required."
+      ],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "nucleotide-double-strand",
+            "essentialUnderstandingDe": "DNA besteht aus Nukleotiden mit Zucker, Phosphat und einer Base. Zwei komplementäre Stränge bilden das Doppelstrangmodell; die Basenfolge trägt die Information.",
+            "essentialUnderstandingEn": "DNA consists of nucleotides containing sugar, phosphate and a base. Two complementary strands form the double-stranded model; the base sequence carries information.",
+            "observablePerformanceDe": "Die lernende Person erzeugt ein eigenes beschriftetes Modell, trennt Rückgrat und Basen und ergänzt eine neue komplementäre Folge anhand einer gegebenen Paarungsregel.",
+            "observablePerformanceEn": "The learner produces a labelled model, distinguishes backbone from bases and constructs the complement of a fresh sequence using a supplied pairing rule."
+          },
+          {
+            "id": "structure-information-relation",
+            "essentialUnderstandingDe": "Die Paarungsregel A–T und G–C begrenzt die Zuordnung zwischen den beiden Strängen, während verschiedene Basenfolgen verschiedene Information speichern können. Das Strukturmodell allein erklärt keine Replikation.",
+            "essentialUnderstandingEn": "The A–T and G–C pairing rule constrains the relationship between the two strands, while different base sequences can store different information. A structural model alone does not explain replication.",
+            "observablePerformanceDe": "Die lernende Person begründet in einer neuen Darstellung, welche Paarung passt und warum die Information in der Reihenfolge der Basen statt in der Zahl der Helixwindungen liegt.",
+            "observablePerformanceEn": "In a fresh representation, the learner justifies which pairing fits and why information lies in the order of bases rather than in the number of helix turns."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "nucleotide-double-strand",
+            "structure-information-relation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation-change",
+            "textDe": "Bausteinmodell und anders angeordnete Doppelstrangskizze verwenden.",
+            "textEn": "Use a component model and a differently arranged double-strand drawing."
+          },
+          {
+            "id": "sequence-complement",
+            "textDe": "Neue Folgen und Strangrichtungen mit bereitgestellter Legende variieren.",
+            "textEn": "Vary fresh sequences and strand directions with a supplied legend."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "build-new-dna-model",
+            "taskDemandDe": "Du erhältst Zucker-, Phosphat- und Basensymbole, die Paarungsregel A–T/G–C und eine Richtungslegende. Baue und beschrifte einen kurzen Doppelstrang zu 5′-ATGCCA-3′. Erläutere an deinem Modell, welche Teile die Basenfolge tragen und was diese mit genetischer Information zu tun hat.",
+            "taskDemandEn": "You receive sugar, phosphate and base symbols, the A–T/G–C pairing rule and a direction legend. Construct and label a short double strand for 5′-ATGCCA-3′. Use your model to explain which parts carry the base sequence and how that relates to genetic information.",
+            "expectedPerformanceDe": "Das Modell hat Zucker-Phosphat-Rückgrate und die passende Gegenfolge 3′-TACGGT-5′. Nukleotid und Base sind unterschieden; die Begründung verortet die Information in der Basenreihenfolge. Ein Kopiervorgang wird nicht als Strukturleistung mitgezählt.",
+            "expectedPerformanceEn": "The model has sugar-phosphate backbones and the matching complementary sequence 3′-TACGGT-5′. It distinguishes a nucleotide from a base and locates information in base order. Copying is not counted as structural performance.",
+            "understandingFocusDe": "Eigenständig erzeugte Struktur statt Bildwiederholung.",
+            "understandingFocusEn": "Independently produced structure rather than reproduction of an image."
+          },
+          {
+            "id": "select-and-justify-complement",
+            "taskDemandDe": "Eine neue Skizze zeigt 5′-CGTTA-3′ und zwei Kandidaten für den Gegenstrang: 3′-GCAAT-5′ und 3′-GGAAT-5′. Paarungsregel und Richtungslegende sind gegeben. Wähle begründet, korrigiere die nicht passende Stelle und erkläre, warum zwei gleich lange DNA-Modelle verschiedene Information tragen können.",
+            "taskDemandEn": "A fresh drawing shows 5′-CGTTA-3′ and two candidate complementary strands: 3′-GCAAT-5′ and 3′-GGAAT-5′. The pairing rule and direction legend are supplied. Justify your choice, correct the mismatching site and explain why equally long DNA models can carry different information.",
+            "expectedPerformanceDe": "Die erste Folge passt. Im zweiten Gegenstrang steht gegenüber G ein G statt C. Die lernende Person begründet die Paarung und die Bedeutung der Basenfolge unabhängig von gleicher Länge oder Helixform.",
+            "expectedPerformanceEn": "The first sequence matches. In the second complement, G faces G where C is required. The learner justifies complementarity and the significance of sequence independently of equal length or helix shape.",
+            "understandingFocusDe": "Transfer von Bausteinen zu Fehleranalyse mit einer frischen Sequenz.",
+            "understandingFocusEn": "Transfer from components to error analysis with a fresh sequence."
+          }
+        ]
+      }
+    },
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "biologie-q1-four-current383-author-20261006-v1",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "goalId": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+      "goalFingerprint": "sha256:f7aa1f41652dbab38f332d0b9ec40d7ea73314004f2f642969302eb199ce5f5a",
+      "reviewInputFingerprint": "sha256:03beb84aa56c73eefaa8830b72a15a3457f61f3b3ec07917e9c646bd3e2c5694",
+      "profileFingerprint": "sha256:1b92646202a20acd6285d23559491da908d77de79b220980026a00a95296cc43",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-06T02:41:27.218212+00:00",
+      "reviewer": "Codex root author; no independent acceptance",
+      "reason": "Die beiden Stufen lassen sich als zusammenhängender Informationsfluss DNA → RNA → Polypeptid modellieren. Es ist kein fachlicher Fehler im bestehenden DE/EN-Satz erwiesen. Die bisherige A-Runde hält ihn, die B-Runde verlangt Teilung; dieser Dissens bleibt offen. Das neue P-Profil verlangt die vollständige Kette in beiden Fällen und schließt den Erfolg einer einzelnen Stufe als Gesamtnachweis aus. Unadopted proposed-scope authoring draft; source-preservation blockers and independent review remain open.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [
+        "Resolve prior keep/split dissent through independent current-scope review; if split is confirmed, create separate transcription and translation goals and use no whole-goal P pass from this draft.",
+        "BY B9.3.3 also requires protein roles in traits; model-only coverage is partial, not exact whole-clause coverage."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "two-stage-information-flow",
+            "essentialUnderstandingDe": "Transkription erzeugt RNA anhand einer DNA-Vorlage; Translation setzt die mRNA-Codonfolge am Ribosom mithilfe von tRNA in eine Polypeptidfolge um. Die beiden Stufen sind zu verbinden und nicht zu verwechseln.",
+            "essentialUnderstandingEn": "Transcription produces RNA from a DNA template; translation uses the mRNA codon sequence, tRNA and a ribosome to assemble a polypeptide. The two stages must be connected and distinguished.",
+            "observablePerformanceDe": "Die lernende Person erzeugt ein zusammenhängendes DNA–mRNA–Polypeptid-Modell und begründet die Rolle von mRNA, tRNA und Ribosom; Erfolg in nur einer Stufe reicht nicht für das Gesamtziel.",
+            "observablePerformanceEn": "The learner constructs a connected DNA–mRNA–polypeptide model and explains the roles of mRNA, tRNA and ribosome; success in only one stage does not establish the whole goal."
+          },
+          {
+            "id": "code-and-cell-context",
+            "essentialUnderstandingDe": "Die Richtung und Art des vorgegebenen DNA-Strangs bestimmen die RNA-Ableitung; der bereitgestellte Code bestimmt die Aminosäurefolge. Bei Eukaryoten sind Kerntranskription und Translation außerhalb des Kerns räumlich getrennt.",
+            "essentialUnderstandingEn": "The direction and type of the supplied DNA strand determine RNA derivation; the supplied code determines amino-acid order. In eukaryotes, nuclear transcription is spatially separate from translation outside the nucleus.",
+            "observablePerformanceDe": "Mit ausdrücklich vereinfachten intronfreien Modellabschnitten leitet die lernende Person frische RNA- und Aminosäurefolgen ab und lokalisiert eine gegebene Störung an der passenden Stufe.",
+            "observablePerformanceEn": "Using explicitly simplified intron-free model fragments, the learner derives fresh RNA and amino-acid sequences and locates a supplied disturbance at the appropriate stage."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "two-stage-information-flow",
+            "code-and-cell-context"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "template-and-coding-strands",
+            "textDe": "Vorlagenstrang und codierenden Strang ausdrücklich kennzeichnen und in frischen Fällen wechseln.",
+            "textEn": "Explicitly identify and vary template and coding strands in fresh cases."
+          },
+          {
+            "id": "cell-and-intervention",
+            "textDe": "Eukaryotisches Kompartimentmodell und prokaryotischen Befund mit gestörter Translation vergleichen.",
+            "textEn": "Compare a eukaryotic compartment model with a prokaryotic result showing disrupted translation."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "eukaryotic-connected-model",
+            "taskDemandDe": "Ein vereinfachtes intronfreies eukaryotisches Modell zeigt den DNA-Vorlagenstrang 3′-TAC CTT AAA-5′, eine Paarungsregel und eine Code-Tabelle. Stelle die mRNA und die ab AUG betrachtete Aminosäurefolge dar; ordne DNA, mRNA, tRNA und Ribosom in Kern und Cytoplasma ein und erkläre den verbundenen Informationsfluss. Gezeigt wird nur ein Ausschnitt, kein vollständiges Protein.",
+            "taskDemandEn": "A simplified intron-free eukaryotic model supplies the DNA template strand 3′-TAC CTT AAA-5′, a pairing rule and a codon table. Represent the mRNA and the amino-acid sequence considered from AUG; place DNA, mRNA, tRNA and ribosome in nucleus and cytoplasm and explain the connected information flow. Only a fragment, not a complete protein, is shown.",
+            "expectedPerformanceDe": "mRNA 5′-AUG GAA UUU-3′ und der Ausschnitt Met–Glu–Phe passen. Transkription im Kern ist von der mRNA-Translation am cytoplasmatischen Ribosom unterschieden; tRNA vermittelt Codon und Aminosäure. Eine bloße Codonlösung ohne Modellkette genügt nicht.",
+            "expectedPerformanceEn": "mRNA 5′-AUG GAA UUU-3′ and the fragment Met–Glu–Phe match. Nuclear transcription is distinguished from mRNA translation at a cytoplasmic ribosome; tRNA links codons to amino acids. A codon answer without the connected model is insufficient.",
+            "understandingFocusDe": "Vollständige Kette mit klaren Molekülrollen.",
+            "understandingFocusEn": "Complete connected chain with clear molecular roles."
+          },
+          {
+            "id": "prokaryotic-translation-disturbance",
+            "taskDemandDe": "Ein neues vereinfachtes Bakterienmodell gibt den codierenden DNA-Strang 5′-ATG TCT GGT-3′, Stranglegende und Code-Tabelle an. Ohne Störung wird die passende mRNA gebildet und der modellierte Polypeptidabschnitt nachgewiesen. Mit einem laut Material gezielt an der Translation wirkenden Hemmstoff ist mRNA weiter nachweisbar, der Abschnitt aber nicht. Erzeuge die erwartete RNA-/Aminosäurekette und erkläre den Unterschied der Befunde.",
+            "taskDemandEn": "A fresh simplified bacterial model provides the coding DNA strand 5′-ATG TCT GGT-3′, a strand legend and a codon table. Without intervention, matching mRNA and the modelled polypeptide fragment are detected. With an inhibitor specified in the material to act on translation, mRNA remains detectable but the fragment does not. Construct the expected RNA/amino-acid chain and explain the difference between the results.",
+            "expectedPerformanceDe": "Die neue Kette lautet 5′-AUG UCU GGU-3′ und Met–Ser–Gly. Die lernende Person verbindet Transkription und Translation, begründet die vorhandene RNA mit erhaltenem ersten Schritt und den fehlenden Abschnitt mit der angegebenen Translationsstörung; sie schließt nicht auf fehlende DNA oder eine gemessene Proteinmenge.",
+            "expectedPerformanceEn": "The fresh chain is 5′-AUG UCU GGU-3′ and Met–Ser–Gly. The learner connects both stages, explains detected RNA by the preserved first stage and the absent fragment by the specified translation disturbance, without inferring missing DNA or a measured protein quantity.",
+            "understandingFocusDe": "Transfer auf andere Strangart, Zellart und eine interpretierbare Störung.",
+            "understandingFocusEn": "Transfer to a different strand type, cell type and interpretable intervention."
+          }
+        ]
+      }
+    },
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "biologie-q1-four-current383-author-20261006-v1",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "goalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+      "goalFingerprint": "sha256:b3c3b3c69bcb20924daa3c7cb0ce023b0cb66e612aa73485b4ffc701b68f0837",
+      "reviewInputFingerprint": "sha256:61c64bbcf608c2389dcbfba584ad5d3e426d0892ff0680676f2f316049d43691",
+      "profileFingerprint": "sha256:1de87bcff26f11b9e5b64fafcaf4efc5afddb95998667d175b6de0583022e312",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-06T02:41:27.218212+00:00",
+      "reviewer": "Codex root author; no independent acceptance",
+      "reason": "„Folgen abschätzen“ nennt weder Folgeebene noch notwendige Fallinformationen. Der Vorschlag bindet eine mögliche molekulare Folge an codierende Region, Leseraster und Code-Daten. Er ist nach eigener Quellen-, Sequenz- und Bildprüfung inhaltlich mit dem bereits unabhängig geprüften ffef-v2-Autorenkandidaten vereinbar. Die Kopie eines Abschnitts ist von einem bloß gleichen eingefügten Abschnitt zu unterscheiden; eine Proteinfunktions- oder Merkmalsaussage benötigt weitere Daten. Unadopted proposed-scope authoring draft; source-preservation blockers and independent review remain open.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [
+        "BY source additionally requires mutagens, measured/justified protein function and protection; existing exact mapping is not a full-clause proof.",
+        "All seven Sek-I placements need source-specific decisions; NI explicitly postpones molecular-genetic analysis to Sek II.",
+        "Inactive v2 illustration is not an active V record."
+      ],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "identify-sequence-change",
+            "essentialUnderstandingDe": "Eine Substitution ersetzt eine Base ohne Längenänderung; eine Deletion entfernt und eine Insertion ergänzt Basen. Bei einer Duplikation wird ein vorhandener Abschnitt kopiert. Eine hinzugekommene gleiche Folge belegt ihre Entstehung als Duplikation nur mit einem entsprechenden Veränderungshinweis.",
+            "essentialUnderstandingEn": "A substitution replaces a base without changing sequence length; a deletion removes bases and an insertion adds bases. A duplication copies an existing segment. An added matching sequence establishes duplication as its origin only when the change evidence supports that origin.",
+            "observablePerformanceDe": "Die lernende Person richtet Ausgangs- und Variantenfolge aus, markiert die betroffene Stelle, ordnet die vier Änderungstypen anhand der vorliegenden Veränderungshinweise zu und benennt eine verbleibende Unsicherheit zwischen Insertion und Duplikation, wenn die Herkunft des Zusatzes nicht erkennbar ist.",
+            "observablePerformanceEn": "The learner aligns reference and variant sequences, marks the altered site, classifies the four change types using the available change evidence, and states any remaining insertion-versus-duplication uncertainty when the origin of an added segment is not known."
+          },
+          {
+            "id": "justify-contextual-protein-consequence",
+            "essentialUnderstandingDe": "Die mögliche Folge einer Änderung in einem codierenden Genabschnitt hängt vom Leserahmen, vom genetischen Code und von der Länge der Änderung ab. Eine Substitution kann dieselbe Aminosäure codieren oder sie ändern; ein Basenzusatz oder -verlust außerhalb eines Vielfachen von drei kann den Leserahmen verschieben. Aus der Sequenz allein folgt weder eine sichere Änderung der Proteinfunktion noch ein Merkmal.",
+            "essentialUnderstandingEn": "A possible consequence of a change in a coding gene region depends on the reading frame, the genetic code and the length of the change. A substitution may encode the same amino acid or a different one; adding or removing a number of bases not divisible by three can shift the reading frame. Sequence alone establishes neither a certain change in protein function nor a trait.",
+            "observablePerformanceDe": "Mit angegebenem codierendem Strang, Leserahmen und Code-Tabelle vergleicht die lernende Person mögliche Aminosäurefolgen oder Leserahmen und begründet, welche Aussage über das codierte Protein belegt ist und für welche Funktions- oder Merkmalsaussage zusätzliche Daten fehlen.",
+            "observablePerformanceEn": "Given a coding strand, reading frame and codon table, the learner compares possible amino-acid sequences or reading frames and explains which claim about the encoded protein is supported and which function or trait claim would require more data."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "identify-sequence-change",
+            "justify-contextual-protein-consequence"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "molecular-change-and-origin",
+            "textDe": "Die vier Typen an unabhängig veränderten DNA-Folgen zeigen; Einfügungen und Kopien durch Veränderungshinweise unterscheidbar machen, statt ihre Herkunft allein aus der Endfolge zu behaupten.",
+            "textEn": "Show the four types in independently changed DNA sequences; make insertions and copies distinguishable through change evidence rather than claiming their origin from the final sequence alone."
+          },
+          {
+            "id": "reading-frame-and-code-effect",
+            "textDe": "Synonyme und nicht synonyme Substitutionen sowie Längenänderungen um eine, zwei und drei Basen variieren; der Leserahmen und die tatsächliche Codonfolge sind entscheidend.",
+            "textEn": "Vary synonymous and nonsynonymous substitutions and length changes of one, two and three bases; the reading frame and actual codons determine the molecular consequence."
+          },
+          {
+            "id": "function-evidence",
+            "textDe": "Ein Fall enthält nur Sequenz- und Code-Daten, ein anderer zusätzlich kontrollierte Proteinfunktion-Daten für genau eine Variante; Aussagen auf den jeweiligen Beleg begrenzen.",
+            "textEn": "One case contains only sequence and codon data, while another also supplies controlled protein-function data for exactly one variant; limit each conclusion to the available evidence."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "synonymous-indels-and-codon-copy",
+            "taskDemandDe": "Ein neuer codierender DNA-Strang 5′-ATG GAA TTT CCA TAA-3′ mit Leserahmen ab ATG und Code-Tabelle wird mit vier getrennten, unbeschrifteten Varianten verglichen: GAA wird zu GAG; die erste Base von GAA entfällt; nach ATG wird eine neue, nicht kopierte Base C eingefügt; der Abschnitt GAA wird laut Kopierspur direkt daneben nochmals eingefügt. Bestimme jeden Änderungstyp, markiere die Stelle und leite eine mögliche Folge für die codierte Aminosäurefolge ab. Es liegen keine Proteinfunktion- oder Merkmalsdaten vor.",
+            "taskDemandEn": "A fresh coding DNA strand 5′-ATG GAA TTT CCA TAA-3′, with a reading frame starting at ATG and a codon table, is compared with four separate unlabelled variants: GAA becomes GAG; the first base of GAA is removed; a new noncopied C is inserted after ATG; and a copy trace shows GAA copied immediately beside itself. Identify each change type, mark its site and derive a possible consequence for the encoded amino-acid sequence. No protein-function or trait data are supplied.",
+            "expectedPerformanceDe": "Die lernende Person erkennt Substitution, Deletion, Insertion und Duplikation an den vier getrennten Varianten. GAA und GAG codieren beide Glutamat; die Ein-Basen-Deletion und -Insertion verschieben den Leserahmen, während die Duplikation eines ganzen Codons ein weiteres Glutamat ohne Leserahmenverschiebung ergänzt. Sie behauptet aus diesen Sequenzdaten keine bestimmte Funktions- oder Merkmalsänderung.",
+            "expectedPerformanceEn": "The learner identifies substitution, deletion, insertion and duplication in the four separate variants. GAA and GAG both encode glutamate; the one-base deletion and insertion shift the reading frame, whereas duplicating a whole codon adds another glutamate without shifting it. The learner does not claim a specific function or trait change from these sequence data.",
+            "understandingFocusDe": "Gleiche Mutationstypen können je nach Codon und Änderungslänge unterschiedliche molekulare Folgen haben; eine synonyme Substitution ist ein positives Gegenbeispiel zur pauschalen Schadensannahme.",
+            "understandingFocusEn": "Molecular consequences depend on the codon and change length; a synonymous substitution is a positive counterexample to assuming every mutation is harmful."
+          },
+          {
+            "id": "missense-in-frame-loss-and-copy-trace",
+            "taskDemandDe": "Ein anderer codierender DNA-Strang 5′-ATG TTT GGC AAG TAA-3′ wird mit vier neuen, voneinander getrennten Varianten und einer Code-Tabelle gezeigt: TTT wird zu TCT; das ganze Codon GGC entfällt; nach ATG kommen zwei neue, nicht kopierte Basen AC hinzu; eine Kopierspur zeigt die Verdopplung der ersten A-Base innerhalb von AAG. Für die TTT→TCT-Variante liegen unter gleichen Messbedingungen niedrigere Aktivitätswerte des codierten Enzyms als für das unveränderte Referenzprotein vor; für die anderen Varianten liegen keine Funktionsdaten vor. Ordne die vier Änderungen zu, begründe mögliche Proteinfolgen und trenne die Messbeobachtung von Aussagen über Merkmale.",
+            "taskDemandEn": "A different coding DNA strand 5′-ATG TTT GGC AAG TAA-3′ is shown with four new separate variants and a codon table: TTT becomes TCT; the entire GGC codon is removed; two new noncopied bases AC are added after ATG; and a copy trace shows the first A base within AAG duplicated. For the TTT-to-TCT variant, matched assay conditions yield lower activity of the encoded enzyme than of the unchanged reference protein; no function data are provided for the other variants. Classify the four changes, justify possible protein consequences and separate the measured observation from trait claims.",
+            "expectedPerformanceDe": "Die lernende Person ordnet TTT→TCT als Substitution mit Phenylalanin→Serin ein, GGC-Verlust als Deletion eines Codons ohne Leserahmenverschiebung, AC-Zusatz als Insertion mit Leserahmenverschiebung und die nachgewiesene Ein-Basen-Kopie als Duplikation mit Leserahmenverschiebung. Die gegenüber dem unveränderten Referenzprotein verringerte Aktivität ist für die gemessene Variante unter den genannten Bedingungen belegt; für andere Varianten und einen Phänotyp fehlen entsprechende Daten.",
+            "expectedPerformanceEn": "The learner classifies TTT to TCT as a substitution changing phenylalanine to serine, loss of GGC as an in-frame codon deletion, addition of AC as a frame-shifting insertion, and the documented one-base copy as a frame-shifting duplication. Lower activity relative to the unchanged reference protein is supported for the measured variant under the stated conditions; corresponding data for the other variants and for a phenotype are absent.",
+            "understandingFocusDe": "Frischer Transfer mit anderer Referenzfolge, anderer Änderungslänge und einem begrenzten Funktionsbefund: Mutationstyp, Leserahmenfolge und beobachtete Proteinfunktion sind getrennte Aussagen.",
+            "understandingFocusEn": "Fresh transfer with a different reference sequence, change lengths and a bounded function result: mutation type, reading-frame consequence and observed protein function are separate claims."
+          }
+        ]
+      }
+    },
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "biologie-q1-four-current383-author-20261006-v1",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "goalId": "e70d8a85-2dea-5165-919b-200fee9f4db4",
+      "goalFingerprint": "sha256:3079350c00acc0b173cfce62797d4c310e36fd6635966d571df876ade4d1ba1b",
+      "reviewInputFingerprint": "sha256:cfa6cca1654ea582a1431fff0581da31ab5ea8d9b725b47f46a36029676c5a29",
+      "profileFingerprint": "sha256:dd35e72629b347d56ab3baf4b5c8d296c33672d72e0fcaca07d025031c998c75",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-06T02:41:27.218212+00:00",
+      "reviewer": "Codex root author; no independent acceptance",
+      "reason": "New inactive author preservation profile for the already existing replication goal; semiconservative template copying and significance are assessed together. Independent P/source/current-D/A/M/V reviews still pending.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "template-copy-and-conservation",
+            "essentialUnderstandingDe": "Bei semikonservativer DNA-Replikation dienen die getrennten vorhandenen Stränge als Vorlagen für komplementäre neue Stränge. Jedes Tochter-DNA-Molekül enthält einen alten und einen neuen Strang; das Modell erhält die genetische Information für die weiteren Zellen.",
+            "essentialUnderstandingEn": "In semiconservative DNA replication, the separated existing strands serve as templates for complementary new strands. Each daughter DNA molecule contains one old and one new strand; the model preserves genetic information for subsequent cells.",
+            "observablePerformanceDe": "Die lernende Person verfolgt markierte Ausgangsstränge in selbst zusammengesetzten Tochtermodellen, ergänzt mithilfe einer gegebenen Paarungsregel deren neue Stränge und erklärt den Bezug zur Weitergabe genetischer Information.",
+            "observablePerformanceEn": "The learner traces labelled initial strands into daughter models they construct, uses a supplied pairing rule to add new complementary strands, and explains the connection to the transmission of genetic information."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "template-copy-and-conservation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "strand-identity-and-sequence",
+            "textDe": "Neue markierte Stränge, andere Basenfolgen und gedrehte Darstellungen bei gegebener Paarungslegende.",
+            "textEn": "Fresh labelled strands, different base sequences and rotated representations with a supplied pairing legend."
+          },
+          {
+            "id": "second-copy-round",
+            "textDe": "Dieselben Ausgangsmarkierungen durch eine weitere Kopierrunde verfolgen; alt bezieht sich ausdrücklich auf den ursprünglichen Ausgangspunkt.",
+            "textEn": "Trace the same initial labels through a further copying round; old explicitly refers to the initial starting point."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "construct-labelled-daughters",
+            "taskDemandDe": "Ein DNA-Modell besitzt zwei durchgehend markierte Ausgangsstränge X und Y mit den Gegenfolgen 5′-AGTCCA-3′ und 3′-TCAGGT-5′. Die Paarungsregel A–T/G–C und eine Richtungslegende sind gegeben. Stelle eine semikonservative Kopierrunde mit neuen anders markierten Strängen dar. Zeige, wo X und Y anschließend liegen, und erkläre, weshalb die beiden Tochter-DNA-Moleküle dieselbe genetische Information bewahren können.",
+            "taskDemandEn": "A DNA model has two continuously labelled initial strands X and Y, with complementary sequences 5′-AGTCCA-3′ and 3′-TCAGGT-5′. The A–T/G–C pairing rule and a direction legend are supplied. Represent one semiconservative copying round using differently marked new strands. Show where X and Y end up and explain why the two daughter DNA molecules can preserve the same genetic information.",
+            "expectedPerformanceDe": "Es entstehen zwei Doppelstränge. X und Y befinden sich in verschiedenen Tochtermodellen und tragen jeweils einen passenden neu gebildeten Gegenstrang. Die Sequenz-/Richtungspaare passen zur Legende; die Begründung verknüpft Vorlagenpaarung mit Informationsbewahrung. Zwei vollständig alte Stränge zusammen mit einem rein neuen Doppelstrang werden nicht als semikonservativ ausgegeben.",
+            "expectedPerformanceEn": "Two double strands result. X and Y are in different daughter models, each paired with a matching newly formed complement. Sequence/direction pairs agree with the legend; the explanation links template complementarity to information preservation. Keeping both entirely old strands together while producing an entirely new double strand is not presented as semiconservative.",
+            "understandingFocusDe": "Eigenes Kopiermodell und begründete Weitergabe statt bloßer Wiederholung des Fachworts.",
+            "understandingFocusEn": "A constructed copying model and justified transmission rather than merely repeating the technical term."
+          },
+          {
+            "id": "trace-initial-labels-through-second-round",
+            "taskDemandDe": "In einem neuen Modell werden beide Tochter-DNA-Moleküle nach einer ersten semikonservativen Runde ein weiteres Mal kopiert. Nur die beiden Stränge des ursprünglichen Startmoleküls sind markiert; alle später gebildeten Stränge bleiben unmarkiert. Die Modellregel der komplementären semikonservativen Kopie und alle Stranglegenden sind gegeben. Ordne die ursprünglichen Markierungen den vier entstehenden Doppelsträngen zu und begründe, weshalb nicht alle vier noch eine ursprüngliche Markierung enthalten. Erkläre, ob dies einen Verlust der ursprünglichen genetischen Information bedeutet.",
+            "taskDemandEn": "In a fresh model, both daughter DNA molecules from a first semiconservative round are copied once more. Only the two strands of the original starting molecule are labelled; all subsequently formed strands remain unlabelled. The complementary semiconservative copying rule and all strand legends are supplied. Assign the original labels to the four resulting double strands and explain why not all four still contain an original label. Explain whether this means that the original genetic information has been lost.",
+            "expectedPerformanceDe": "Genau zwei der vier Doppelstränge enthalten jeweils einen der ursprünglich markierten Stränge und einen unmarkierten Gegenstrang. Zwei weitere Doppelstränge bestehen aus unmarkierten Strängen. Die ursprünglichen Stränge werden nicht vervielfacht oder zerstückelt. Die lernende Person unterscheidet ursprüngliches Molekülmaterial von der durch komplementäre Vorlagenkopie bewahrten Sequenzinformation; alt ist hier die ursprüngliche Startmarkierung, nicht jeder jeweilige Vorlagenstrang.",
+            "expectedPerformanceEn": "Exactly two of the four double strands each contain one original labelled strand and an unlabelled complement. The other two contain unlabelled strands only. The original strands are neither duplicated nor fragmented. The learner distinguishes original molecular material from sequence information preserved by complementary template copying; old here means the initial starting label, not every strand serving as a template in a later round.",
+            "understandingFocusDe": "Transfer der Material-/Informationsunterscheidung auf einen neuen, ausdrücklich erklärten Modellfall.",
+            "understandingFocusEn": "Transfer of the distinction between material and information to a fresh, explicitly explained model case."
+          }
+        ]
+      }
+    }
+  ]
+}

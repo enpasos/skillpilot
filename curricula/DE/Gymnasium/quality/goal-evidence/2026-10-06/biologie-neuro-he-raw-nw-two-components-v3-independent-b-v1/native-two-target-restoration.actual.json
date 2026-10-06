@@ -1,0 +1,593 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T05:31:27.216Z",
+  "reviewer": "codex-neuro-v3-source-independent-b",
+  "nativeCodePath": "app/scripts/goalBookSourceAtlasInputs.ts",
+  "nativeCodeSha256": "332ba9b1ee10030cf49d729a8243a00af05edadeb14ad09d505e88216b878097",
+  "beforeStrict383": {
+    "expected": 383,
+    "status": "FAIL",
+    "actual": 375,
+    "error": "AssertionError [ERR_ASSERTION]: Source-supported atlas goal count changed\n\n375 !== 383\n"
+  },
+  "afterStrict383": {
+    "expected": 383,
+    "status": "FAIL",
+    "actual": 375,
+    "error": "AssertionError [ERR_ASSERTION]: Source-supported atlas goal count changed\n\n375 !== 383\n"
+  },
+  "diagnosticOnlyExpected": 375,
+  "diagnosticIsNotAFinalGateOrCountOverride": true,
+  "actualNativeCounts": {
+    "canonicalCurricularAtomicGoals": 383,
+    "publishedCurricularAtomicGoals": 375,
+    "sourceViews": 20,
+    "unresolvedSourceScopeDecisions": 0,
+    "omittedGoals": 8
+  },
+  "allTwentyScopeComparisons": [
+    {
+      "key": "DE-BB/SekI/",
+      "beforeCount": 110,
+      "afterCount": 110,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-BE/SekI/",
+      "beforeCount": 110,
+      "afterCount": 110,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-BW/SekI/",
+      "beforeCount": 124,
+      "afterCount": 124,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-BY/SekI/",
+      "beforeCount": 86,
+      "afterCount": 86,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-BY/SekII/GK",
+      "beforeCount": 88,
+      "afterCount": 88,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-BY/SekII/LK",
+      "beforeCount": 111,
+      "afterCount": 111,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-HB/SekI/",
+      "beforeCount": 93,
+      "afterCount": 93,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-HE/SekI/",
+      "beforeCount": 66,
+      "afterCount": 66,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-HE/SekII/GK",
+      "beforeCount": 78,
+      "afterCount": 78,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-HE/SekII/LK",
+      "beforeCount": 154,
+      "afterCount": 154,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-HH/SekI/",
+      "beforeCount": 80,
+      "afterCount": 80,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-MV/SekI/",
+      "beforeCount": 151,
+      "afterCount": 151,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-NI/SekI/",
+      "beforeCount": 140,
+      "afterCount": 140,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-NW/SekI/",
+      "beforeCount": 118,
+      "afterCount": 120,
+      "addedGoalIds": [
+        "49dbe8fa-7c4a-5ef5-9cd7-a40b60bf88dd",
+        "5b2571d9-f079-52b2-b21b-8f389c7409f4"
+      ],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-RP/SekI/",
+      "beforeCount": 96,
+      "afterCount": 96,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-SH/SekI/",
+      "beforeCount": 121,
+      "afterCount": 121,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-SL/SekI/",
+      "beforeCount": 61,
+      "afterCount": 61,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-SN/SekI/",
+      "beforeCount": 150,
+      "afterCount": 150,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-ST/SekI/",
+      "beforeCount": 164,
+      "afterCount": 164,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "key": "DE-TH/SekI/",
+      "beforeCount": 135,
+      "afterCount": 135,
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    }
+  ],
+  "restoredCandidateNRWGoals": [
+    "49dbe8fa-7c4a-5ef5-9cd7-a40b60bf88dd",
+    "5b2571d9-f079-52b2-b21b-8f389c7409f4"
+  ],
+  "restoredCandidateBindings": 2,
+  "directSourceMetadataWitnesses": [
+    {
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_biology_lower_secondary_two_bacterial_components.author-v3.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_BIOLOGIE_SEKI_KLP2019.two-bacterial-components.author-v3.source-extraction.json",
+      "sourceGoalId": "22637879-a1cf-5128-bd59-2a2e12d8c193",
+      "mappedTargetGoalId": "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+      "goalId": "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+      "coverage": "direct",
+      "profileBasis": "source-metadata"
+    },
+    {
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_biology_lower_secondary_two_bacterial_components.author-v3.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_BIOLOGIE_SEKI_KLP2019.two-bacterial-components.author-v3.source-extraction.json",
+      "sourceGoalId": "23c1ecdb-9a65-5e24-bb22-88852b178638",
+      "mappedTargetGoalId": "49dbe8fa-7c4a-5ef5-9cd7-a40b60bf88dd",
+      "goalId": "49dbe8fa-7c4a-5ef5-9cd7-a40b60bf88dd",
+      "coverage": "direct",
+      "profileBasis": "source-metadata"
+    }
+  ],
+  "allOtherScopeGoalIdSetsExact": true,
+  "omittedGoalsUnchanged": [
+    {
+      "goalId": "4f631f78-e13a-58e5-9092-f4db0b8d377a",
+      "reason": "no-reviewed-mapped-source-witness"
+    },
+    {
+      "goalId": "8b23f8fb-555d-5720-b5f2-dd6f28a0e786",
+      "reason": "no-reviewed-mapped-source-witness"
+    },
+    {
+      "goalId": "97b24279-def0-5ce6-8726-a1cac9cd38ad",
+      "reason": "no-reviewed-mapped-source-witness"
+    },
+    {
+      "goalId": "9b966664-906b-5a5d-8008-cae18de043aa",
+      "reason": "no-reviewed-mapped-source-witness"
+    },
+    {
+      "goalId": "a46cafde-7359-5249-8754-19aaa3174ba4",
+      "reason": "no-reviewed-mapped-source-witness"
+    },
+    {
+      "goalId": "c9a06264-cce2-54dd-9604-46dd5949f02e",
+      "reason": "no-reviewed-mapped-source-witness"
+    },
+    {
+      "goalId": "f6280154-d57c-599c-94bf-73313005a6df",
+      "reason": "no-reviewed-mapped-source-witness"
+    },
+    {
+      "goalId": "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+      "reason": "no-reviewed-mapped-source-witness"
+    }
+  ],
+  "diagnosticNativeInputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "sha256:ef5ab27b531289f72c5e1933459f0de515d232a44ea94db8390b094b1253a841"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BB/lower-secondary/Teil_C_Biologie_2015_11_10.pdf",
+      "sha256": "sha256:e9a386033898659b9c2fe865886f00632403f2242c91e0844afed811a906d1b9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_BIOLOGIE_SEKI_RLP_2015.source-extraction.json",
+      "sha256": "sha256:bae81d1d0f619127e3a0dbb404f6dbc8e604b17c3837e3ac2f3382c43c5d7cdb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BE/lower-secondary/Teil_C_Biologie_2015_11_10.pdf",
+      "sha256": "sha256:e9a386033898659b9c2fe865886f00632403f2242c91e0844afed811a906d1b9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_BIOLOGIE_SEKI_RLP_2015.source-extraction.json",
+      "sha256": "sha256:8cc9aede67e843b011a19c733824d75f21ebbdf966baced68e9ae3cd315c60d8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_BIO_V2.pdf",
+      "sha256": "sha256:5da86e9fd32f198df4980c819ff7f4c1bf368cd1bd4dceeef22d406739f78653"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_BNT.pdf",
+      "sha256": "sha256:bbea726f1d65b517e0b64448afde5e22cbc77cf253dda8a482bd8d1dbb8cccb7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_BIOLOGIE_SEKI_BP2016_V2.source-extraction.json",
+      "sha256": "sha256:57e64bcee5db9af1148f116d3acd3121437ddba9ae0232d08ee27450e77693ad"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologie.json",
+      "sha256": "sha256:6c99c5a678acbbe4465af44eaa762109459f1a2acf67580533646f7d1af27480"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_BIOLOGIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "sha256": "sha256:b5f85afd2aa84f6dda8a07b8d8f0b0492d5d8baaa8932a9e0d006082cab339d4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HB/Naturwissenschaften_Gymnasium_5_10_2006.pdf",
+      "sha256": "sha256:820ee90db39417be665e577b82b3fa906d7a006a7ec1046f1a63baa8f3bd7137"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HB/Naturwissenschaften_Gymnasium_5_9_Einschraenkungen_2022.pdf",
+      "sha256": "sha256:9a4e19af4a2ba59c91d823e24000e81e29ec29602455c086081904bfd24230c2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_BIOLOGIE_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json",
+      "sha256": "sha256:fbdfe7ca117d4a016664cbd8734bfc70afbbdd2de343d74dcfe855d1a932ac74"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_BIOLOGIE_SEKI_G9.source-extraction.json",
+      "sha256": "sha256:0017aa0b3d9021dcafba49835c5d6422d553b6050c20e1556f1588eb992a178b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-json/DE_HES_S_GYM_1_BIOLOGIE.de.json.snapshot",
+      "sha256": "sha256:d759a5c7de405b964c20c91b21e1841b4c7f021bd13be9c2f0acdf76b0915222"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+      "sha256": "sha256:52c278d6f5a7383361631d5251550c42222f13e1bbe2aa16d39ca3b12c5e1558"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_BIOLOGIE_SEKII_KC2024.m7-ephase-seven-current365-20261005-v2.source-extraction.json",
+      "sha256": "sha256:576f5622a29eac02927ce9ba4faf270f69d5ab14215d1b6951924a78d740f760"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HH/biologie-gym-seki-data.pdf",
+      "sha256": "sha256:8ed7ac127a75126ed30af2261564acd2236d0c7916b307b67b7e762d989dffa3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_BIOLOGIE_SEKI_BILDUNGSPLAN_2011.source-extraction.json",
+      "sha256": "sha256:7813175b4d0aa73f21c31ac818ee171499233cad56b289ec19e5851838ad465c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/MV/Biologie_Gymnasium_Gesamtschule_7_10.pdf",
+      "sha256": "sha256:aa350433c07b6705d38a0673a3e9007574263aaf46617adbcdf45616aa2e37cd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_BIOLOGIE_SEKI_RAHMENPLAN_2022.source-extraction.json",
+      "sha256": "sha256:26e28dbfbf17694ea9caf5ea88da2072c16a09f5f55aa9ad50fe16144100f367"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/kc_naturwissenschaften_gymnasium_sek_i_2015.pdf",
+      "sha256": "sha256:7b3c69767b4c9a47d87598bee76a28bf7b6d2f6c9b039f2e655a9ad14d47aeac"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NW/lower-secondary/g9_bi_klp_-3413_2019_06_23_0.pdf",
+      "sha256": "sha256:536d51639cab388fc2966540fc9f9538327ea024e9d906a76792cee335b354a5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_BIOLOGIE_SEKI_KLP2019.source-extraction.json",
+      "sha256": "sha256:9c7ec5b7b4c98fa64a968fb51a1cd0efdcdcc329ed26d2fb8877282748301bb4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_BIOLOGIE_SEKI_KLP2019.two-bacterial-components.author-v3.source-extraction.json",
+      "sha256": "sha256:20928ba9ae12c3945e3ec11d984b704a04e863ed272693cc35a8d9f613e1fca9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/Chemie_Sekundarstufe_I_Biologie_Physik_Chemie_2014.pdf",
+      "sha256": "sha256:307f5d841072a1a34d846554c7397c9b8355a9c05d49c8c223ccd9c64d877350"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_BIOLOGIE_SEKI_RAHMENLEHRPLAN_2014.source-extraction.json",
+      "sha256": "sha256:063e784795cf74ca48ba0bf0c3dae0efcb2c3e997b3a25fc3f94eb337c19e501"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Biologie_Sekundarstufe_2023_barrierearm.pdf",
+      "sha256": "sha256:11228f1b3b661dc974a5538fd02e115fd25906af840aa7758503f9c88389b23f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_BIOLOGIE_SEKI_FACHANFORDERUNGEN_2023.source-extraction.json",
+      "sha256": "sha256:91ffce140eb4d9b24915de4950479add004e3443b48eb952d13e15d9dec12a19"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SL/NW_5und6_Gym_2012.pdf",
+      "sha256": "sha256:55557019ef8087013b514e5970103619198a241df22f8d5097c0a56e0d29859d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_BIOLOGIE_SEKI_NW_5_6_2012.source-extraction.json",
+      "sha256": "sha256:d006dbc62ce3682f80667936e5c5a3c82377dfb4be0fb597da69960ddf229f7d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-biologie-sachsen-2025.pdf",
+      "sha256": "sha256:bde9c7af4c25fe1c6346abcb544626514a9e5c1d6c2528b2764df15430156252"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_BIOLOGIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "sha256": "sha256:593dacb69dbbc7125891cff661e73fc30413e653c147986923e4f888dbc8189a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/ST/FLP_Biologie_Gym_01082022_swd.pdf",
+      "sha256": "sha256:58b106c65a71478a096f31cf8e9743a238a59aec085414ac472ee0ab5da10c38"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_BIOLOGIE_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+      "sha256": "sha256:4d5f980865b1264260aae91e6e539129e551857a20d79c222bdffdc02472de61"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/TH/LP_GY_Biologie_2024.pdf",
+      "sha256": "sha256:d77b5661a184aa01d5ce4475f9a040fbb793f2bf34b9a2fb54d7d3edf5875138"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_BIOLOGIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+      "sha256": "sha256:fdea9c62543d325fe20fc1cda2136b7359ee2fa1098e0745963986c3dd133f86"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+      "sha256": "sha256:cda231d026865dc382eec6ff6285c6cb8f004dedf7916d1d1bb6a8ff7259cd71"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+      "sha256": "sha256:0a86fa178e26f1c66bfc3893dc888d5a69882873ca5b12321400875b116d9a63"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+      "sha256": "sha256:47bcba71baf3fad291a124c61b831eed987d01f2c7a9d4928fea4ba1fe8ac8c2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+      "sha256": "sha256:5335ec4c8de8b7473c534fd3ff999b0aa8ee215310790430b44d21ca7c76a4d4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+      "sha256": "sha256:a4647a144412626286c724101b0801a36b8504f7131d2305ad8a62d234178e39"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+      "sha256": "sha256:f8294e4cbfda53921a5782a256183197d57379402233544d96d2a38c5df498d4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-seven-current365-20261005-v2.review.json",
+      "sha256": "sha256:4e4b0666b79b1c15724caaf74f355feadc7121d2c2aae9fb2ae3a30a5c2a065a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+      "sha256": "sha256:482a4761faae83f1f739fa9562173be8ac76f7c7589b1aedd132a0685393656a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_biology_lower_secondary_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+      "sha256": "sha256:363f4de77b00b926e1e0d80166a1c892b2f5db6eca08d0b6cc9dc10afda659bc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_biology_lower_secondary_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+      "sha256": "sha256:57e8727ece0fd10f55932797c16e41c5a6e9346424b09fdd1aae09c684170de2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_biology_lower_secondary_two_bacterial_components.author-v3.review.json",
+      "sha256": "sha256:d920a47545eaf71bfcc0d84284d2b20da21929e212cdeaaa55ff5aa32db739d5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+      "sha256": "sha256:678ae88bf019e8c10668c2c5d86d49dff2af832e4f8a78ad694f45a30e5b1de7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_biology_lower_secondary_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+      "sha256": "sha256:bf41fc55e8fdccb69d99471dad9e2f2719b4d4aff133102ea9d7123006531fac"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+      "sha256": "sha256:3a2d323723549c7289a829b894ec16b93a6d1f850ba227d156f080c6179e8c5f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_biology_lower_secondary_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+      "sha256": "sha256:9e1e1c3eb5bf43ae92732623a0a8234408e19af4414ba2dbdba54bf063b4d376"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_biology_lower_secondary_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+      "sha256": "sha256:b56cd9fac8b14d5af8ea20c5d4a5566de99d4522c30dff440dd03980d5e351fa"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+      "sha256": "sha256:ab0ededacb59f50f6fd871b6e11a1731784b1fd350b8c8d8de41ec8f0096fa39"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json",
+      "sha256": "sha256:71ea186d9a42dad9a814e9de6b29b751531acdd483094bdec8e0dc8860faedd8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/biologie.semantic-kinds.json",
+      "sha256": "sha256:538eacb52c3b12dce340722e1883fe263af62ce609be69db22ef80968a400fc5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-eighteen-current-reviewed-integration-candidate-v2/NI.current-reviewed.mapping.snapshot.json",
+      "sha256": "sha256:2ed87317f1b6966d0c7b1f97af2fd03402c137e93b6aecfad440284920766367"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-eighteen-current-reviewed-integration-candidate-v2/NI.current-reviewed.source.snapshot.json",
+      "sha256": "sha256:3a29e4b2f975cf44a714d99a12981482b42213448c0345d230fd2cb93466bbb2"
+    }
+  ],
+  "diagnosticNativeOutputBindings": [
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-bb-seki.view.json",
+      "sha256": "0d469267ea126d5095f1705fb97d8baadaab2fee1a5cd98abc165ab361473bc5",
+      "bytes": 12700
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-be-seki.view.json",
+      "sha256": "41a3b8774e14f3fea9ad0f12704b6233ec0638df50c8cebc06bffdb85d5bf652",
+      "bytes": 12700
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-bw-seki.view.json",
+      "sha256": "add25fc68b4f045fd2299e86305a470319c722cd75cd6019dc57e81f2ea3ff45",
+      "bytes": 14254
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-by-seki.view.json",
+      "sha256": "9c0d25dc6ddc8f5c44a02650f73ef9feb995206246af207f5bbee9dcfeb630ea",
+      "bytes": 10036
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-by-sekii-gk.view.json",
+      "sha256": "7647af51c325c6035a23153a1375aebbd97e7ee1e22c92f0cef78391f25c2e47",
+      "bytes": 10298
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-by-sekii-lk.view.json",
+      "sha256": "70708f75300e6fa88890721e70fa8f12c92511030e217368f35eceb7fc2cd0bf",
+      "bytes": 12851
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-hb-seki.view.json",
+      "sha256": "ccf7cc2e16b17e5bd166cb4e7bf03cca9291c14e4d73c113abb18f7dee48541c",
+      "bytes": 10813
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-he-seki.view.json",
+      "sha256": "e97a698dd7e87c68d115e44c979e4685839df44d37eedb7a4f93572260d9d9b0",
+      "bytes": 7816
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-he-sekii-gk.view.json",
+      "sha256": "1d05865a207ad9f9a21a5445452d15e36b2521389fd47f25f629a63c5c720f0b",
+      "bytes": 9188
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-he-sekii-lk.view.json",
+      "sha256": "938424d2d67766a00dcebdf3bad71fc0bee881d48b9c9d3b74b4fa5a73610453",
+      "bytes": 17624
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-hh-seki.view.json",
+      "sha256": "17330f62e299df35d7b8b6fd6793e4cc08d27eaddaf460b64602fdf007531a50",
+      "bytes": 9370
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-mv-seki.view.json",
+      "sha256": "497e40518008e8f0e6b63759bd95fecfd6c6ce2e5771a92a1f44686f20aaedc6",
+      "bytes": 17251
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-ni-seki.view.json",
+      "sha256": "1ee96083c2d7cd02ac590a4e0a75bd25fc1f003d73d48fa7ae3c96c1ca717afd",
+      "bytes": 16030
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-nw-seki.view.json",
+      "sha256": "1af2d60eeb4a4427015c5a43850055ee20e5c3e7ee095fa653320281bccd322e",
+      "bytes": 13810
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-rp-seki.view.json",
+      "sha256": "652af1f93d761cab23ce4e83bc20b716d6bdcbd63b386dee176e121e952f9dde",
+      "bytes": 11146
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-sh-seki.view.json",
+      "sha256": "4045fde18665421eb0d958a5ee5c0e9310699af52ac47aca71f1abe415f33868",
+      "bytes": 13921
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-sl-seki.view.json",
+      "sha256": "d50071a4dcd009f7c887230986533bb396c0aabf3932e972e14259a313dfe307",
+      "bytes": 7261
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-sn-seki.view.json",
+      "sha256": "a485c44b4c29bf64e5cc4382e21f7f663fee861c1223f0bbcfc231cf14c39864",
+      "bytes": 17140
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-st-seki.view.json",
+      "sha256": "2709c422371148ad07331ad2a883adb9fd0a954e1375dd1b3ff113030a63dca8",
+      "bytes": 18694
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-th-seki.view.json",
+      "sha256": "c8dc89de3a6821d27993e826fa6063ce3d7b19c2e5ca3331b45d9840bbdcee70",
+      "bytes": 15475
+    },
+    {
+      "path": "app/scripts/config/goal-books/navigation/de-gym-biology-national-atlas.view.json",
+      "sha256": "bf95e35b9976f69898cedb58ffb13a99df2b15bd7234d98a3a44671b1055933a",
+      "bytes": 61392
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-biology-national-atlas.sources.json",
+      "sha256": "a82167b3beed322d281c319ec054356f025509f16cf1d8d68be50633b7da0f34",
+      "bytes": 3424
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/source-projection.receipt.json",
+      "sha256": "6093284b14af305d20f834c9aeb2c236fd0028392bed76e00a6fc699314a5797",
+      "bytes": 970705
+    }
+  ],
+  "newNativeDApproval": false,
+  "newNativeVApproval": false,
+  "wholeSourceClearance": false,
+  "activeWrites": false,
+  "strictCompletionsAdded": 0,
+  "restoredActiveBindings": 0,
+  "integrableAsWholeNeuroPackage": false,
+  "humanApproval": false,
+  "humanTrial": false
+}

@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T03:17:40.375745+00:00",
+  "beforeStage": "before-v3",
+  "afterStage": "after-v3",
+  "byTargetsBefore": 475,
+  "byTargetsAfter": 475,
+  "byTargetIdsRemoved": [],
+  "byTargetIdsAdded": [],
+  "sourceEvidenceDelta": [
+    {
+      "goalId": "0d59b62e-d3f9-5969-b961-0c5e26316c04",
+      "compiledBefore": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "compiledAfter": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "removedSourceEvidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_to_canonical_chemistry.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.json",
+          "mappingStrength": "exact"
+        }
+      ],
+      "addedSourceEvidence": [],
+      "remainingRequiresClosure": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 00139854-e5a7-5c12-ab50-2268c80bf776"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by bf6c39f0-1e44-53b2-8ff6-025f2e36e125"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by c91350bc-7d2e-523c-bd50-0324bccfcf98"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 00139854-e5a7-5c12-ab50-2268c80bf776"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by bf6c39f0-1e44-53b2-8ff6-025f2e36e125"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by c91350bc-7d2e-523c-bd50-0324bccfcf98"
+        }
+      ],
+      "assessmentEvidenceIsNotSourceCoverage": []
+    },
+    {
+      "goalId": "4cb74d76-99f1-5264-b1e3-448cda47b005",
+      "compiledBefore": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "compiledAfter": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "removedSourceEvidence": [],
+      "addedSourceEvidence": [],
+      "remainingRequiresClosure": [],
+      "assessmentEvidenceIsNotSourceCoverage": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "assessment-requires",
+          "source": "requires 0d59b62e-d3f9-5969-b961-0c5e26316c04"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "assessment-requires",
+          "source": "requires 0d59b62e-d3f9-5969-b961-0c5e26316c04"
+        }
+      ]
+    }
+  ],
+  "rawSourceScopeResolved": false,
+  "sourceAtlasBookLocalFacetWasAlreadyHEOnly": true,
+  "remainingHold": "BY requires-closure from three existing practice assessments; 4cb74 assessment-requires consequently remains BY+HE. Boundary resolves inherited BY source mapping only.",
+  "nativeCompilerChanged": false,
+  "scienceReviewDecisions": [],
+  "activeWrites": false
+}

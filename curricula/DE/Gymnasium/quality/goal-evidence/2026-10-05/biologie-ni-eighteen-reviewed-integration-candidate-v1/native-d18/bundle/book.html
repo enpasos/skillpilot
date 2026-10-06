@@ -1,0 +1,975 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Biologie NI: aktuelle Quellenkompetenzen – inaktiver Autorenkandidat</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Biologie NI: aktuelle Quellenkompetenzen – inaktiver Autorenkandidat</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>18 atomare Lernziele</dt><dd>2 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-4f5d4296002eb1bc70a26646" aria-label="Biologie"><a href="#goal-359e6313-cd86-54d1-bee5-8e680101dc32"><span class="toc-entry-label">Biologie</span></a></h2>
+          <span class="toc-entry-meta"><span>18 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-83f6047d7933dd07a552e01d" aria-label="Lebewesen ordnen, Verwandtschaft und Variabilität erklären"><a href="#goal-359e6313-cd86-54d1-bee5-8e680101dc32"><span class="toc-entry-label">Lebewesen&#160;<wbr>ordnen,&#160;<wbr>Verwandtschaft&#160;<wbr>und&#160;<wbr>Variabilität&#160;<wbr>erklären</span></a></h3>
+          <span class="toc-entry-meta"><span>18 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-359e6313-cd86-54d1-bee5-8e680101dc32" data-goal-id="359e6313-cd86-54d1-bee5-8e680101dc32" data-page-number="1" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" aria-labelledby="goal-359e6313-cd86-54d1-bee5-8e680101dc32-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-359e6313-cd86-54d1-bee5-8e680101dc32-title"><a class="goal-self-link" href="#goal-359e6313-cd86-54d1-bee5-8e680101dc32">Innerartliche Variation über Generationen erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>359e6313-cd86-54d1-bee5-8e680101dc32</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-83f6047d7933dd07a552e01d">Lebewesen ordnen, Verwandtschaft und Variabilität erklären</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4a31dbed9e448b9c9576ed367d9499945e81c7233be2ed6754ac80d83b6ac2f3" data-rendered-digest="sha256:8cd709d819000ec620e906ee3dea8d8339f58ccb7089730e6c09936b7b921fb2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/359e6313-cd86-54d1-bee5-8e680101dc32/359e6313-cd86-54d1-bee5-8e680101dc32.png" alt="Zwei Bohnenpflanzen und fünf Nachkommen derselben dargestellten Art unterscheiden sich in ihrer Wuchshöhe. Die Nachkommen sind in gemischter Reihenfolge kleiner, größer oder ähnlich groß dargestellt; das Beispiel zeigt beobachtbare Variation ohne feste Richtung und legt keine Ursache der Unterschiede fest.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-359e6313-cd86-54d1-bee5-8e680101dc32-description-heading">
+        <p class="section-heading" id="goal-359e6313-cd86-54d1-bee5-8e680101dc32-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an Beispielen Unterschiede zwischen Individuen derselben Art beschreiben und erläutern, dass solche Unterschiede auch in neuen Generationen ohne vorgegebenes Entwicklungsziel auftreten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-359e6313-cd86-54d1-bee5-8e680101dc32" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-359e6313-cd86-54d1-bee5-8e680101dc32-requires-heading">
+          <p class="section-heading" id="goal-359e6313-cd86-54d1-bee5-8e680101dc32-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-359e6313-cd86-54d1-bee5-8e680101dc32-reverse-heading">
+          <p class="section-heading" id="goal-359e6313-cd86-54d1-bee5-8e680101dc32-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-3d6b2504-346e-521f-8372-7269ec3a7091"><span>Variabilitätsvorteil geschlechtlicher Fortpflanzung erläutern</span><code>3d6b2504-346e-521f-8372-7269ec3a7091</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-d7f1ce33-002e-5da6-9a74-bcfb28ea06d3"><span>Züchtung durch Auswahl geeigneter Varianten erläutern</span><code>d7f1ce33-002e-5da6-9a74-bcfb28ea06d3</code><span class="reference-page">S. 14</span></a></li><li><a href="#goal-3417bb28-e707-57fc-8484-311d4966e26a"><span>Variabilität durch Mutation und Rekombination erklären</span><code>3417bb28-e707-57fc-8484-311d4966e26a</code><span class="reference-page">S. 16</span></a></li><li><a href="#goal-72fac740-85c5-593f-9115-8a98d0106bf1"><span>Evolution durch Variabilität und Selektion erklären</span><code>72fac740-85c5-593f-9115-8a98d0106bf1</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-359e6313-cd86-54d1-bee5-8e680101dc32-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-359e6313-cd86-54d1-bee5-8e680101dc32-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 18</span>
+      <span>Buch-Digest <code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f50ffb219217332b6b24ec3b005c224d242602bca7cf0d0c9c3cd20bf8b168ac</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-ni-current-native-author-20261005-v2&amp;edition=curricular-atomic-v1&amp;goalId=359e6313-cd86-54d1-bee5-8e680101dc32&amp;goalFingerprint=sha256%3Af50ffb219217332b6b24ec3b005c224d242602bca7cf0d0c9c3cd20bf8b168ac&amp;pageFingerprint=sha256%3Ac5136fb7aae92ec16ea55a0434c2e74966717c3c5bfa5cfcf9ea9378616c6374&amp;bookDigest=sha256%3Ac3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0263fb84-33b1-52a3-a47e-dad56be7c9bc" data-goal-id="0263fb84-33b1-52a3-a47e-dad56be7c9bc" data-page-number="2" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" aria-labelledby="goal-0263fb84-33b1-52a3-a47e-dad56be7c9bc-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0263fb84-33b1-52a3-a47e-dad56be7c9bc-title"><a class="goal-self-link" href="#goal-0263fb84-33b1-52a3-a47e-dad56be7c9bc">Gen, Genprodukt und Merkmal im einfachen Modell verknüpfen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0263fb84-33b1-52a3-a47e-dad56be7c9bc</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-83f6047d7933dd07a552e01d">Lebewesen ordnen, Verwandtschaft und Variabilität erklären</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9c33688c58cae32669cab227bce9f61f5cb4ea0f4c808ddf843a300536823336" data-rendered-digest="sha256:356bb5501b0521ab0e8646367f89da9e33353d66616adb4b62ed76c73ccd8ff4" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/0263fb84-33b1-52a3-a47e-dad56be7c9bc/0263fb84-33b1-52a3-a47e-dad56be7c9bc.png" alt="Vereinfachtes Beispiel der Beziehung Gen–Genprodukt–Merkmal: Ein markierter Chromosomenabschnitt steht für ein Gen. Ein schematisches Genprodukt wirkt auf abstrakte Teilchen und beeinflusst die Ausprägung eines Blattmerkmals. Die Farben benennen keinen konkreten Stoffwechselweg; das Bild behauptet keine allgemeine Ein-Gen-ein-Merkmal-Regel.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0263fb84-33b1-52a3-a47e-dad56be7c9bc-description-heading">
+        <p class="section-heading" id="goal-0263fb84-33b1-52a3-a47e-dad56be7c9bc-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in einem einfachen Modell erklären, wie Gene als Chromosomenabschnitte Bauanleitungen für Genprodukte enthalten und wie diese zur Ausprägung von Merkmalen beitragen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0263fb84-33b1-52a3-a47e-dad56be7c9bc" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0263fb84-33b1-52a3-a47e-dad56be7c9bc-requires-heading">
+          <p class="section-heading" id="goal-0263fb84-33b1-52a3-a47e-dad56be7c9bc-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-0263fb84-33b1-52a3-a47e-dad56be7c9bc-reverse-heading">
+          <p class="section-heading" id="goal-0263fb84-33b1-52a3-a47e-dad56be7c9bc-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-3417bb28-e707-57fc-8484-311d4966e26a"><span>Variabilität durch Mutation und Rekombination erklären</span><code>3417bb28-e707-57fc-8484-311d4966e26a</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0263fb84-33b1-52a3-a47e-dad56be7c9bc-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0263fb84-33b1-52a3-a47e-dad56be7c9bc-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-b1dff57f-329e-5264-b2b9-2db71a0b2172" rel="noreferrer noopener"><span>Pflanzen- und Tierzellen vergleichen</span> <code>b1dff57f-329e-5264-b2b9-2db71a0b2172</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 18</span>
+      <span>Buch-Digest <code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></span>
+      <span>Ziel-Fingerprint <code>sha256:01340b622f53bd8affcec71a8426d5f1265597c420fe126ede342a2fcfff6b8e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-ni-current-native-author-20261005-v2&amp;edition=curricular-atomic-v1&amp;goalId=0263fb84-33b1-52a3-a47e-dad56be7c9bc&amp;goalFingerprint=sha256%3A01340b622f53bd8affcec71a8426d5f1265597c420fe126ede342a2fcfff6b8e&amp;pageFingerprint=sha256%3A3687f511b1044bba7862a7c07238c87c431d67caafca37e7a1c2a9a3d2b32af3&amp;bookDigest=sha256%3Ac3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-36d3bf01-e68b-55be-8e20-5652ada36a51" data-goal-id="36d3bf01-e68b-55be-8e20-5652ada36a51" data-page-number="3" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" aria-labelledby="goal-36d3bf01-e68b-55be-8e20-5652ada36a51-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-36d3bf01-e68b-55be-8e20-5652ada36a51-title"><a class="goal-self-link" href="#goal-36d3bf01-e68b-55be-8e20-5652ada36a51">Erbgleichheit durch Mitose am Chromosomenmodell begründen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>36d3bf01-e68b-55be-8e20-5652ada36a51</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-83f6047d7933dd07a552e01d">Lebewesen ordnen, Verwandtschaft und Variabilität erklären</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6eebf5d153a2b72724bcc1354090b452463a1e2f2eef4005a9d8d549a493e6bd" data-rendered-digest="sha256:00cfa76941c590028b4d37bd0cad96fb20b37f87d72320117a44ee00c9d7d3c1" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/36d3bf01-e68b-55be-8e20-5652ada36a51/36d3bf01-e68b-55be-8e20-5652ada36a51.png" alt="Schematisches Chromosomenmodell: Vier zuvor verdoppelte Chromosomen A, B, C und D werden bei der Mitose so verteilt, dass jede der beiden Tochterzellen eine Kopie jedes Chromosoms und damit die vollständige modellierte Erbinformation erhält. Farben und vier Chromosomentypen sind Modellhilfen, keine Artangabe.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-36d3bf01-e68b-55be-8e20-5652ada36a51-description-heading">
+        <p class="section-heading" id="goal-36d3bf01-e68b-55be-8e20-5652ada36a51-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an einem vorgegebenen Chromosomenmodell begründen, wie die zuvor verdoppelte Erbinformation bei der Mitose so verteilt wird, dass beide Tochterzellen je eine identische Kopie jedes Chromosoms und damit die gleiche vollständige Erbinformation wie die Ausgangszelle erhalten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-36d3bf01-e68b-55be-8e20-5652ada36a51" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-36d3bf01-e68b-55be-8e20-5652ada36a51-requires-heading">
+          <p class="section-heading" id="goal-36d3bf01-e68b-55be-8e20-5652ada36a51-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-36d3bf01-e68b-55be-8e20-5652ada36a51-reverse-heading">
+          <p class="section-heading" id="goal-36d3bf01-e68b-55be-8e20-5652ada36a51-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-36d3bf01-e68b-55be-8e20-5652ada36a51-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-36d3bf01-e68b-55be-8e20-5652ada36a51-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-b1dff57f-329e-5264-b2b9-2db71a0b2172" rel="noreferrer noopener"><span>Pflanzen- und Tierzellen vergleichen</span> <code>b1dff57f-329e-5264-b2b9-2db71a0b2172</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 18</span>
+      <span>Buch-Digest <code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></span>
+      <span>Ziel-Fingerprint <code>sha256:973d228768c377fb94f7e053e6d0d2a317b4bae75bc5cb8246b7b6610ea15b69</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-ni-current-native-author-20261005-v2&amp;edition=curricular-atomic-v1&amp;goalId=36d3bf01-e68b-55be-8e20-5652ada36a51&amp;goalFingerprint=sha256%3A973d228768c377fb94f7e053e6d0d2a317b4bae75bc5cb8246b7b6610ea15b69&amp;pageFingerprint=sha256%3A147271fc16b25c76611d753dadc9165e6db886d236f5e3c978a2882b697513c7&amp;bookDigest=sha256%3Ac3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0b55e592-3335-52e4-8b4f-79c53f32400b" data-goal-id="0b55e592-3335-52e4-8b4f-79c53f32400b" data-page-number="4" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" aria-labelledby="goal-0b55e592-3335-52e4-8b4f-79c53f32400b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0b55e592-3335-52e4-8b4f-79c53f32400b-title"><a class="goal-self-link" href="#goal-0b55e592-3335-52e4-8b4f-79c53f32400b">Unabhängige Chromosomenverteilung bei der Meiose erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0b55e592-3335-52e4-8b4f-79c53f32400b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-83f6047d7933dd07a552e01d">Lebewesen ordnen, Verwandtschaft und Variabilität erklären</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b5d4a97321d099b727353cd6d9b987e58c0ab85c9b89f102e928aeba96780281" data-rendered-digest="sha256:b2e81d1a856490b9301cb4afa8191105b0df94009a3b435f74aa1ff987c15a22" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/0b55e592-3335-52e4-8b4f-79c53f32400b/0b55e592-3335-52e4-8b4f-79c53f32400b.png" alt="Zwei alternative Verteilungen zweier homologer Chromosomenpaare zeigen unterschiedliche ganze elterliche Chromosomenkombinationen. Jede Alternative führt zu vier Keimzellen mit je einem langen und einem kurzen Chromosom; es sind keine acht Produkte einer einzelnen Meiose dargestellt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0b55e592-3335-52e4-8b4f-79c53f32400b-description-heading">
+        <p class="section-heading" id="goal-0b55e592-3335-52e4-8b4f-79c53f32400b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an vorgegebenen Meiose-Chromosomenmodellen erläutern, wie die voneinander unabhängige Verteilung der mütterlichen und väterlichen Chromosomen verschiedener homologer Paare neue Kombinationen der Erbinformation in Keimzellen erzeugt.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0b55e592-3335-52e4-8b4f-79c53f32400b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0b55e592-3335-52e4-8b4f-79c53f32400b-requires-heading">
+          <p class="section-heading" id="goal-0b55e592-3335-52e4-8b4f-79c53f32400b-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-0b55e592-3335-52e4-8b4f-79c53f32400b-reverse-heading">
+          <p class="section-heading" id="goal-0b55e592-3335-52e4-8b4f-79c53f32400b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-3d6b2504-346e-521f-8372-7269ec3a7091"><span>Variabilitätsvorteil geschlechtlicher Fortpflanzung erläutern</span><code>3d6b2504-346e-521f-8372-7269ec3a7091</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-3417bb28-e707-57fc-8484-311d4966e26a"><span>Variabilität durch Mutation und Rekombination erklären</span><code>3417bb28-e707-57fc-8484-311d4966e26a</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0b55e592-3335-52e4-8b4f-79c53f32400b-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0b55e592-3335-52e4-8b4f-79c53f32400b-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-b1dff57f-329e-5264-b2b9-2db71a0b2172" rel="noreferrer noopener"><span>Pflanzen- und Tierzellen vergleichen</span> <code>b1dff57f-329e-5264-b2b9-2db71a0b2172</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 18</span>
+      <span>Buch-Digest <code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></span>
+      <span>Ziel-Fingerprint <code>sha256:edd15e3d889d891334f1b117dc46c8eeb49659eeb048106fdbabe9b20cd170fe</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-ni-current-native-author-20261005-v2&amp;edition=curricular-atomic-v1&amp;goalId=0b55e592-3335-52e4-8b4f-79c53f32400b&amp;goalFingerprint=sha256%3Aedd15e3d889d891334f1b117dc46c8eeb49659eeb048106fdbabe9b20cd170fe&amp;pageFingerprint=sha256%3A611d673ef22d4ab5e4dca1650a1a47de2c9cdacab88fd16c21e6f4aba931d0df&amp;bookDigest=sha256%3Ac3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9e459608-bdea-55a1-b9c5-214bbd741be6" data-goal-id="9e459608-bdea-55a1-b9c5-214bbd741be6" data-page-number="5" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" aria-labelledby="goal-9e459608-bdea-55a1-b9c5-214bbd741be6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9e459608-bdea-55a1-b9c5-214bbd741be6-title"><a class="goal-self-link" href="#goal-9e459608-bdea-55a1-b9c5-214bbd741be6">Abschnittsaustausch bei der Meiose erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9e459608-bdea-55a1-b9c5-214bbd741be6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-83f6047d7933dd07a552e01d">Lebewesen ordnen, Verwandtschaft und Variabilität erklären</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ab83ba181e54828121db484db27fc20525158438a7e9a2d5a82c286db0bae8a9" data-rendered-digest="sha256:ac1cff95911d3951f4bb0d6799704fc557d8b10428cca0b8e79fc75db3641047" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/9e459608-bdea-55a1-b9c5-214bbd741be6/9e459608-bdea-55a1-b9c5-214bbd741be6.png" alt="Vorher und nachher eines vereinfachten Crossing-over-Modells: Zwei Nichtschwesterchromatiden homologer Chromosomen tauschen entsprechende distale Abschnitte gegenseitig aus. Zwei andere Chromatiden bleiben unverändert; Zentromere und Chromosomenzahl bleiben erhalten. Das Bild zeigt keine vollständige Keimzellbildung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9e459608-bdea-55a1-b9c5-214bbd741be6-description-heading">
+        <p class="section-heading" id="goal-9e459608-bdea-55a1-b9c5-214bbd741be6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an vorgegebenen Meiose-Chromosomenmodellen erläutern, wie der Austausch entsprechender Abschnitte zwischen Nichtschwesterchromatiden homologer Chromosomen neue Kombinationen der Erbinformation in Keimzellen erzeugt.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-9e459608-bdea-55a1-b9c5-214bbd741be6" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9e459608-bdea-55a1-b9c5-214bbd741be6-requires-heading">
+          <p class="section-heading" id="goal-9e459608-bdea-55a1-b9c5-214bbd741be6-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-9e459608-bdea-55a1-b9c5-214bbd741be6-reverse-heading">
+          <p class="section-heading" id="goal-9e459608-bdea-55a1-b9c5-214bbd741be6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-3d6b2504-346e-521f-8372-7269ec3a7091"><span>Variabilitätsvorteil geschlechtlicher Fortpflanzung erläutern</span><code>3d6b2504-346e-521f-8372-7269ec3a7091</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-3417bb28-e707-57fc-8484-311d4966e26a"><span>Variabilität durch Mutation und Rekombination erklären</span><code>3417bb28-e707-57fc-8484-311d4966e26a</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-9e459608-bdea-55a1-b9c5-214bbd741be6-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9e459608-bdea-55a1-b9c5-214bbd741be6-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-b1dff57f-329e-5264-b2b9-2db71a0b2172" rel="noreferrer noopener"><span>Pflanzen- und Tierzellen vergleichen</span> <code>b1dff57f-329e-5264-b2b9-2db71a0b2172</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 18</span>
+      <span>Buch-Digest <code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8aa1e0aa9768bf8b7b3c4baecc8304ef4684f5621a88f8cd85ddb914496cbfeb</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-ni-current-native-author-20261005-v2&amp;edition=curricular-atomic-v1&amp;goalId=9e459608-bdea-55a1-b9c5-214bbd741be6&amp;goalFingerprint=sha256%3A8aa1e0aa9768bf8b7b3c4baecc8304ef4684f5621a88f8cd85ddb914496cbfeb&amp;pageFingerprint=sha256%3Abcd941a084f5c96939af9c0c43ee84b807471ed4f5c43eff547cb04c96a16115&amp;bookDigest=sha256%3Ac3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-08fa0412-7bcb-53b5-8660-5c4effa680ff" data-goal-id="08fa0412-7bcb-53b5-8660-5c4effa680ff" data-page-number="6" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" aria-labelledby="goal-08fa0412-7bcb-53b5-8660-5c4effa680ff-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-08fa0412-7bcb-53b5-8660-5c4effa680ff-title"><a class="goal-self-link" href="#goal-08fa0412-7bcb-53b5-8660-5c4effa680ff">Lebewesen nach vorgegebenen Kriterien ordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>08fa0412-7bcb-53b5-8660-5c4effa680ff</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-83f6047d7933dd07a552e01d">Lebewesen ordnen, Verwandtschaft und Variabilität erklären</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:448d7afaef32dcaa79c4e5e6d589e52d40432c840cd46a9674a540ccf6b5c74f" data-rendered-digest="sha256:65d4fa03798fe8344a9ccd7c254ba8f5d99db4b6db7d35765b207b012efc7c3d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/08fa0412-7bcb-53b5-8660-5c4effa680ff/08fa0412-7bcb-53b5-8660-5c4effa680ff.png" alt="Zwei Körbe zeigen das vorgegebene Sortiermerkmal: links Blätter mit glattem Rand, rechts Blätter mit gezähntem Rand; ein weiteres Blatt liegt noch außerhalb.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-08fa0412-7bcb-53b5-8660-5c4effa680ff-description-heading">
+        <p class="section-heading" id="goal-08fa0412-7bcb-53b5-8660-5c4effa680ff-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Lebewesen oder biologische Beobachtungen nach vorgegebenen Kriterien in passende Gruppen oder Reihen ordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-08fa0412-7bcb-53b5-8660-5c4effa680ff" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-08fa0412-7bcb-53b5-8660-5c4effa680ff-requires-heading">
+          <p class="section-heading" id="goal-08fa0412-7bcb-53b5-8660-5c4effa680ff-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-08fa0412-7bcb-53b5-8660-5c4effa680ff-reverse-heading">
+          <p class="section-heading" id="goal-08fa0412-7bcb-53b5-8660-5c4effa680ff-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-08fa0412-7bcb-53b5-8660-5c4effa680ff-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-08fa0412-7bcb-53b5-8660-5c4effa680ff-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 18</span>
+      <span>Buch-Digest <code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e3f18886227cd272001e55a993610463e941698abd3c415f90a53a71f10525d3</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-ni-current-native-author-20261005-v2&amp;edition=curricular-atomic-v1&amp;goalId=08fa0412-7bcb-53b5-8660-5c4effa680ff&amp;goalFingerprint=sha256%3Ae3f18886227cd272001e55a993610463e941698abd3c415f90a53a71f10525d3&amp;pageFingerprint=sha256%3A7ec59a2373b36b98b1df5924ad7102480e7a502f8eef6b004d31698a1b6aad45&amp;bookDigest=sha256%3Ac3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d137e36c-bcdd-5e81-98fa-59af778f1439" data-goal-id="d137e36c-bcdd-5e81-98fa-59af778f1439" data-page-number="7" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" aria-labelledby="goal-d137e36c-bcdd-5e81-98fa-59af778f1439-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d137e36c-bcdd-5e81-98fa-59af778f1439-title"><a class="goal-self-link" href="#goal-d137e36c-bcdd-5e81-98fa-59af778f1439">Individuum und Population unterscheiden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d137e36c-bcdd-5e81-98fa-59af778f1439</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-83f6047d7933dd07a552e01d">Lebewesen ordnen, Verwandtschaft und Variabilität erklären</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:14193dcacb655559dea04f3c786cfc10a64855338eb908d9a42cf8f63cb83038" data-rendered-digest="sha256:befeaf043757d9e169183669a40532c6fa5611c1f2358bca28393ce039a5574a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/d137e36c-bcdd-5e81-98fa-59af778f1439/d137e36c-bcdd-5e81-98fa-59af778f1439.png" alt="Ein einzelner Fisch steht der Gruppe von Fischen derselben Art in einem gemeinsamen Teich gegenüber: Organismus und Population.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d137e36c-bcdd-5e81-98fa-59af778f1439-description-heading">
+        <p class="section-heading" id="goal-d137e36c-bcdd-5e81-98fa-59af778f1439-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in biologischen Beobachtungen und Aussagen die Ebene eines einzelnen Organismus von der Ebene einer Population unterscheiden und die betrachtete Ebene angeben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-d137e36c-bcdd-5e81-98fa-59af778f1439" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d137e36c-bcdd-5e81-98fa-59af778f1439-requires-heading">
+          <p class="section-heading" id="goal-d137e36c-bcdd-5e81-98fa-59af778f1439-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-d137e36c-bcdd-5e81-98fa-59af778f1439-reverse-heading">
+          <p class="section-heading" id="goal-d137e36c-bcdd-5e81-98fa-59af778f1439-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-eda5b810-d9d3-5319-9c4f-5b48715b26f2"><span>Individuelle Anpassung und erbliche Angepasstheit unterscheiden</span><code>eda5b810-d9d3-5319-9c4f-5b48715b26f2</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-d137e36c-bcdd-5e81-98fa-59af778f1439-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d137e36c-bcdd-5e81-98fa-59af778f1439-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 18</span>
+      <span>Buch-Digest <code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></span>
+      <span>Ziel-Fingerprint <code>sha256:16490fb02bd57806ff424508103869d9f4916c617f309ae54dd97fc60357e5b4</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-ni-current-native-author-20261005-v2&amp;edition=curricular-atomic-v1&amp;goalId=d137e36c-bcdd-5e81-98fa-59af778f1439&amp;goalFingerprint=sha256%3A16490fb02bd57806ff424508103869d9f4916c617f309ae54dd97fc60357e5b4&amp;pageFingerprint=sha256%3A15d49b9cb9e488bb9825923cd962199963da8033bc43c5c15948c73c0c9e5d04&amp;bookDigest=sha256%3Ac3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-87ce1746-9904-56ad-9705-ffabbd918c5b" data-goal-id="87ce1746-9904-56ad-9705-ffabbd918c5b" data-page-number="8" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" aria-labelledby="goal-87ce1746-9904-56ad-9705-ffabbd918c5b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-87ce1746-9904-56ad-9705-ffabbd918c5b-title"><a class="goal-self-link" href="#goal-87ce1746-9904-56ad-9705-ffabbd918c5b">Heimische Laubbäume kennen und erkennen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>87ce1746-9904-56ad-9705-ffabbd918c5b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-83f6047d7933dd07a552e01d">Lebewesen ordnen, Verwandtschaft und Variabilität erklären</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:058d8ab6140805f7988249732211817550e8f76c85ecd52ffaa99f88c5e167bf" data-rendered-digest="sha256:702782d000e1976534d882ccfe1ef328839a1806d891edca08e886cf86f979ea" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/87ce1746-9904-56ad-9705-ffabbd918c5b/87ce1746-9904-56ad-9705-ffabbd918c5b.png" alt="Vier getrennte Bildfelder zeigen ausgewählte Erkennungsmerkmale von Rotbuche, Stieleiche, Hängebirke und Bergahorn: Blätter sowie Knospe, Rinde oder Früchte.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-87ce1746-9904-56ad-9705-ffabbd918c5b-description-heading">
+        <p class="section-heading" id="goal-87ce1746-9904-56ad-9705-ffabbd918c5b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann innerhalb der ausgewählten Gruppe heimischer Laubbäume Rotbuche, Stieleiche, Hängebirke und Bergahorn an charakteristischen Merkmalen erkennen und benennen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-87ce1746-9904-56ad-9705-ffabbd918c5b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-87ce1746-9904-56ad-9705-ffabbd918c5b-requires-heading">
+          <p class="section-heading" id="goal-87ce1746-9904-56ad-9705-ffabbd918c5b-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-87ce1746-9904-56ad-9705-ffabbd918c5b-reverse-heading">
+          <p class="section-heading" id="goal-87ce1746-9904-56ad-9705-ffabbd918c5b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-87ce1746-9904-56ad-9705-ffabbd918c5b-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-87ce1746-9904-56ad-9705-ffabbd918c5b-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0380f992-723a-513d-8c3f-8ca7f8e0394f" rel="noreferrer noopener"><span>Lebewesen mit Bestimmungshilfen bestimmen</span> <code>0380f992-723a-513d-8c3f-8ca7f8e0394f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-87ce1746-9904-56ad-9705-ffabbd918c5b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-87ce1746-9904-56ad-9705-ffabbd918c5b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1a7d8063-5b3b-55fd-b8ea-8701d876888e" rel="noreferrer noopener"><span>Heimische Laubbäume: Namen und Merkmale merken</span> <code>1a7d8063-5b3b-55fd-b8ea-8701d876888e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 18</span>
+      <span>Buch-Digest <code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b52e289f851bbadf72ec352debb29043401b536802464622364ed7058dc99506</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-ni-current-native-author-20261005-v2&amp;edition=curricular-atomic-v1&amp;goalId=87ce1746-9904-56ad-9705-ffabbd918c5b&amp;goalFingerprint=sha256%3Ab52e289f851bbadf72ec352debb29043401b536802464622364ed7058dc99506&amp;pageFingerprint=sha256%3A1922a11963bc849c1a174a2081c93bdc63aec725ebafafc047f65505c401e914&amp;bookDigest=sha256%3Ac3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0d5a960d-480f-55fb-9116-c08fffe217b3" data-goal-id="0d5a960d-480f-55fb-9116-c08fffe217b3" data-page-number="9" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" aria-labelledby="goal-0d5a960d-480f-55fb-9116-c08fffe217b3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0d5a960d-480f-55fb-9116-c08fffe217b3-title"><a class="goal-self-link" href="#goal-0d5a960d-480f-55fb-9116-c08fffe217b3">Familienähnlichkeiten als Indiz für Verwandtschaft deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0d5a960d-480f-55fb-9116-c08fffe217b3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-83f6047d7933dd07a552e01d">Lebewesen ordnen, Verwandtschaft und Variabilität erklären</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3e9ed492c5ac35039bf52dea6df8250183b799b220e66eb11ea63a5d1713617c" data-rendered-digest="sha256:d441e36036672c115876ec79a7daced12baab2859edbd61b239e5a3fa4a54868" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/0d5a960d-480f-55fb-9116-c08fffe217b3/0d5a960d-480f-55fb-9116-c08fffe217b3.png" alt="Ähnliche Merkmale von Familienmitgliedern geben im dargestellten Beispiel einen begrenzten Hinweis auf Verwandtschaft; ein Fragezeichen zeigt die Grenze des Schlusses.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0d5a960d-480f-55fb-9116-c08fffe217b3-description-heading">
+        <p class="section-heading" id="goal-0d5a960d-480f-55fb-9116-c08fffe217b3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann beobachtete Ähnlichkeiten in einer Familie als Indiz für biologische Verwandtschaft deuten und erläutern, dass eine Ähnlichkeit allein kein sicherer Nachweis ist.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0d5a960d-480f-55fb-9116-c08fffe217b3" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0d5a960d-480f-55fb-9116-c08fffe217b3-requires-heading">
+          <p class="section-heading" id="goal-0d5a960d-480f-55fb-9116-c08fffe217b3-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-0d5a960d-480f-55fb-9116-c08fffe217b3-reverse-heading">
+          <p class="section-heading" id="goal-0d5a960d-480f-55fb-9116-c08fffe217b3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-6a5a9a7a-635c-5cd9-841f-c6b812d147e5"><span>Ähnlichkeiten von Haus- und Wildtieren mit gemeinsamen Vorfahren erklären</span><code>6a5a9a7a-635c-5cd9-841f-c6b812d147e5</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0d5a960d-480f-55fb-9116-c08fffe217b3-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0d5a960d-480f-55fb-9116-c08fffe217b3-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 18</span>
+      <span>Buch-Digest <code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></span>
+      <span>Ziel-Fingerprint <code>sha256:844a5aa13351d489648fbde71bc5474b27525afe7b8d318eea49175629919860</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-ni-current-native-author-20261005-v2&amp;edition=curricular-atomic-v1&amp;goalId=0d5a960d-480f-55fb-9116-c08fffe217b3&amp;goalFingerprint=sha256%3A844a5aa13351d489648fbde71bc5474b27525afe7b8d318eea49175629919860&amp;pageFingerprint=sha256%3A11754d37c782cf6392cf798dbe6efdc035fe9472454ffbb36dc226b817c658a0&amp;bookDigest=sha256%3Ac3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9425347d-25bd-5095-9198-7574f255c938" data-goal-id="9425347d-25bd-5095-9198-7574f255c938" data-page-number="10" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" aria-labelledby="goal-9425347d-25bd-5095-9198-7574f255c938-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9425347d-25bd-5095-9198-7574f255c938-title"><a class="goal-self-link" href="#goal-9425347d-25bd-5095-9198-7574f255c938">Merkmale und Gemeinsamkeiten der fünf Wirbeltiergruppen nennen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9425347d-25bd-5095-9198-7574f255c938</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-83f6047d7933dd07a552e01d">Lebewesen ordnen, Verwandtschaft und Variabilität erklären</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0b316f374c04b6a896ee3706f00eb659a8db81e3d44adc10628b2ce6d216e05f" data-rendered-digest="sha256:228bac5e781605f4570dc58743194a6d689d6e725bd01645f2676a5197d6d0d6" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/9425347d-25bd-5095-9198-7574f255c938/9425347d-25bd-5095-9198-7574f255c938.png" alt="Fünf traditionelle Wirbeltiergruppen sind durch Fisch, Frosch, Eidechse, Vogel und Kaninchen dargestellt; eine symbolische Wirbelsäule verweist auf ihr gemeinsames Merkmal.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9425347d-25bd-5095-9198-7574f255c938-description-heading">
+        <p class="section-heading" id="goal-9425347d-25bd-5095-9198-7574f255c938-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann wichtige Unterscheidungsmerkmale von Säugetieren, Vögeln, Reptilien, Amphibien und Fischen sowie gemeinsame Merkmale dieser Wirbeltiergruppen nennen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-9425347d-25bd-5095-9198-7574f255c938" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9425347d-25bd-5095-9198-7574f255c938-requires-heading">
+          <p class="section-heading" id="goal-9425347d-25bd-5095-9198-7574f255c938-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-9425347d-25bd-5095-9198-7574f255c938-reverse-heading">
+          <p class="section-heading" id="goal-9425347d-25bd-5095-9198-7574f255c938-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-9425347d-25bd-5095-9198-7574f255c938-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9425347d-25bd-5095-9198-7574f255c938-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-9425347d-25bd-5095-9198-7574f255c938-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9425347d-25bd-5095-9198-7574f255c938-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-b00dd3d9-8589-584c-a8cf-12efb4856dfe" rel="noreferrer noopener"><span>Wirbeltiergruppen: Merkmale merken</span> <code>b00dd3d9-8589-584c-a8cf-12efb4856dfe</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 18</span>
+      <span>Buch-Digest <code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></span>
+      <span>Ziel-Fingerprint <code>sha256:10a39f45f7bc1eb83389f275c595aa85e6f62a9b7d9b50dd0e7c512a41cb0ac0</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-ni-current-native-author-20261005-v2&amp;edition=curricular-atomic-v1&amp;goalId=9425347d-25bd-5095-9198-7574f255c938&amp;goalFingerprint=sha256%3A10a39f45f7bc1eb83389f275c595aa85e6f62a9b7d9b50dd0e7c512a41cb0ac0&amp;pageFingerprint=sha256%3A71adce3a8833d48db698321c8d8824feadf48b42349a0e1774dc30548100e4d5&amp;bookDigest=sha256%3Ac3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2ae2da43-73d5-578f-84f4-be0585a7d8f9" data-goal-id="2ae2da43-73d5-578f-84f4-be0585a7d8f9" data-page-number="11" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" aria-labelledby="goal-2ae2da43-73d5-578f-84f4-be0585a7d8f9-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2ae2da43-73d5-578f-84f4-be0585a7d8f9-title"><a class="goal-self-link" href="#goal-2ae2da43-73d5-578f-84f4-be0585a7d8f9">Arten anhand körperlicher Merkmale hierarchisch einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2ae2da43-73d5-578f-84f4-be0585a7d8f9</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-83f6047d7933dd07a552e01d">Lebewesen ordnen, Verwandtschaft und Variabilität erklären</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ccf0f0741658a5dcdb12bc7f3b1e547123efe0e76877bd9a0933c6ea2d95fba3" data-rendered-digest="sha256:664ce0b94a5e88f74c589a7aca63b908a157f8c5e6fde67d048b0a989f56190c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/2ae2da43-73d5-578f-84f4-be0585a7d8f9/2ae2da43-73d5-578f-84f4-be0585a7d8f9.png" alt="Geschachtelte Gruppen ordnen Hauskatze und Tiger über gemeinsame Merkmale hierarchisch ein; ein Hund liegt innerhalb der Säugetiere außerhalb der dargestellten Katzenartigen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2ae2da43-73d5-578f-84f4-be0585a7d8f9-description-heading">
+        <p class="section-heading" id="goal-2ae2da43-73d5-578f-84f4-be0585a7d8f9-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Arten anhand morphologischer und anatomischer Ähnlichkeiten in ein hierarchisches System einordnen und die Zuordnung mit den verwendeten Merkmalen begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2ae2da43-73d5-578f-84f4-be0585a7d8f9" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2ae2da43-73d5-578f-84f4-be0585a7d8f9-requires-heading">
+          <p class="section-heading" id="goal-2ae2da43-73d5-578f-84f4-be0585a7d8f9-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2ae2da43-73d5-578f-84f4-be0585a7d8f9-reverse-heading">
+          <p class="section-heading" id="goal-2ae2da43-73d5-578f-84f4-be0585a7d8f9-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2ae2da43-73d5-578f-84f4-be0585a7d8f9-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2ae2da43-73d5-578f-84f4-be0585a7d8f9-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0380f992-723a-513d-8c3f-8ca7f8e0394f" rel="noreferrer noopener"><span>Lebewesen mit Bestimmungshilfen bestimmen</span> <code>0380f992-723a-513d-8c3f-8ca7f8e0394f</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 18</span>
+      <span>Buch-Digest <code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1ec1e9af8fbf493f5913f24108d7759f833a473c5979b611987fb24cfe895ebb</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-ni-current-native-author-20261005-v2&amp;edition=curricular-atomic-v1&amp;goalId=2ae2da43-73d5-578f-84f4-be0585a7d8f9&amp;goalFingerprint=sha256%3A1ec1e9af8fbf493f5913f24108d7759f833a473c5979b611987fb24cfe895ebb&amp;pageFingerprint=sha256%3Acdb2cd6797471a3f94948b12f09e3bdb0f885bf51c2bb9500738423c6d789641&amp;bookDigest=sha256%3Ac3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2164195d-2987-54d6-8f9a-cbb1c3a3b6cb" data-goal-id="2164195d-2987-54d6-8f9a-cbb1c3a3b6cb" data-page-number="12" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" aria-labelledby="goal-2164195d-2987-54d6-8f9a-cbb1c3a3b6cb-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2164195d-2987-54d6-8f9a-cbb1c3a3b6cb-title"><a class="goal-self-link" href="#goal-2164195d-2987-54d6-8f9a-cbb1c3a3b6cb">Arten als Fortpflanzungsgemeinschaft unterscheiden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2164195d-2987-54d6-8f9a-cbb1c3a3b6cb</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-83f6047d7933dd07a552e01d">Lebewesen ordnen, Verwandtschaft und Variabilität erklären</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:94e007a7a8c611d106666f38d9468fa3f39369ce35177791db6591b363ae023a" data-rendered-digest="sha256:d4dd098a26ce88dddcf99d73cb3c3d569cc66df122d609e6c435b99f96328ac2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/2164195d-2987-54d6-8f9a-cbb1c3a3b6cb/2164195d-2987-54d6-8f9a-cbb1c3a3b6cb.png" alt="Vereinfachte Fortpflanzungsbeispiele vergleichen Enten mit fruchtbaren Nachkommen und Pferd sowie Esel mit meist unfruchtbarem Maultiernachkommen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2164195d-2987-54d6-8f9a-cbb1c3a3b6cb-description-heading">
+        <p class="section-heading" id="goal-2164195d-2987-54d6-8f9a-cbb1c3a3b6cb-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an geeigneten Beispielen Arten mit einem einfachen Artbegriff als Fortpflanzungsgemeinschaft unterscheiden, indem sie Informationen zur Fortpflanzung und zur Fruchtbarkeit der Nachkommen verwendet.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2164195d-2987-54d6-8f9a-cbb1c3a3b6cb" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2164195d-2987-54d6-8f9a-cbb1c3a3b6cb-requires-heading">
+          <p class="section-heading" id="goal-2164195d-2987-54d6-8f9a-cbb1c3a3b6cb-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2164195d-2987-54d6-8f9a-cbb1c3a3b6cb-reverse-heading">
+          <p class="section-heading" id="goal-2164195d-2987-54d6-8f9a-cbb1c3a3b6cb-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2164195d-2987-54d6-8f9a-cbb1c3a3b6cb-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2164195d-2987-54d6-8f9a-cbb1c3a3b6cb-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0380f992-723a-513d-8c3f-8ca7f8e0394f" rel="noreferrer noopener"><span>Lebewesen mit Bestimmungshilfen bestimmen</span> <code>0380f992-723a-513d-8c3f-8ca7f8e0394f</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 18</span>
+      <span>Buch-Digest <code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></span>
+      <span>Ziel-Fingerprint <code>sha256:599db89f619d95b3f19671fa9404a941dbd31d7edcc310cfc3e46744c36f1c07</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-ni-current-native-author-20261005-v2&amp;edition=curricular-atomic-v1&amp;goalId=2164195d-2987-54d6-8f9a-cbb1c3a3b6cb&amp;goalFingerprint=sha256%3A599db89f619d95b3f19671fa9404a941dbd31d7edcc310cfc3e46744c36f1c07&amp;pageFingerprint=sha256%3A9069426433d3d8faf4fdc719f15de467c168e4bf7d65d1d34fca5a91ee73ca2b&amp;bookDigest=sha256%3Ac3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3d6b2504-346e-521f-8372-7269ec3a7091" data-goal-id="3d6b2504-346e-521f-8372-7269ec3a7091" data-page-number="13" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" aria-labelledby="goal-3d6b2504-346e-521f-8372-7269ec3a7091-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3d6b2504-346e-521f-8372-7269ec3a7091-title"><a class="goal-self-link" href="#goal-3d6b2504-346e-521f-8372-7269ec3a7091">Variabilitätsvorteil geschlechtlicher Fortpflanzung erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3d6b2504-346e-521f-8372-7269ec3a7091</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-83f6047d7933dd07a552e01d">Lebewesen ordnen, Verwandtschaft und Variabilität erklären</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6631bcb386b29614b24d271e671d74f886c2e8fc7a74edf40301e6c2ae2993d5" data-rendered-digest="sha256:040081d9ff3cf0fd336bf1b09db90db160e34d649d795de6a1b29d7f61012145" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/3d6b2504-346e-521f-8372-7269ec3a7091/3d6b2504-346e-521f-8372-7269ec3a7091.png" alt="Vereinfachtes Pflanzenmodell: sexuelle Fortpflanzung kombiniert vorhandene Merkmale zweier Eltern und kann unterschiedliche Nachkommen ergeben; Kopien behalten im dargestellten Beispiel dieselben Merkmale.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3d6b2504-346e-521f-8372-7269ec3a7091-description-heading">
+        <p class="section-heading" id="goal-3d6b2504-346e-521f-8372-7269ec3a7091-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Vorteil der geschlechtlichen gegenüber der ungeschlechtlichen Fortpflanzung im Hinblick auf die Variabilität der Nachkommen anhand der Neukombination elterlicher Erbinformation erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-3d6b2504-346e-521f-8372-7269ec3a7091" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3d6b2504-346e-521f-8372-7269ec3a7091-requires-heading">
+          <p class="section-heading" id="goal-3d6b2504-346e-521f-8372-7269ec3a7091-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-359e6313-cd86-54d1-bee5-8e680101dc32"><span>Innerartliche Variation über Generationen erklären</span><code>359e6313-cd86-54d1-bee5-8e680101dc32</code><span class="reference-page">S. 1</span></a></li><li><a href="#goal-0b55e592-3335-52e4-8b4f-79c53f32400b"><span>Unabhängige Chromosomenverteilung bei der Meiose erläutern</span><code>0b55e592-3335-52e4-8b4f-79c53f32400b</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-9e459608-bdea-55a1-b9c5-214bbd741be6"><span>Abschnittsaustausch bei der Meiose erläutern</span><code>9e459608-bdea-55a1-b9c5-214bbd741be6</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-3d6b2504-346e-521f-8372-7269ec3a7091-reverse-heading">
+          <p class="section-heading" id="goal-3d6b2504-346e-521f-8372-7269ec3a7091-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 18</span>
+      <span>Buch-Digest <code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f1a798a0dbbf4058c1d5f13505e7e04eb0d5b9cb46ef801cd3606b166a6f4c8c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-ni-current-native-author-20261005-v2&amp;edition=curricular-atomic-v1&amp;goalId=3d6b2504-346e-521f-8372-7269ec3a7091&amp;goalFingerprint=sha256%3Af1a798a0dbbf4058c1d5f13505e7e04eb0d5b9cb46ef801cd3606b166a6f4c8c&amp;pageFingerprint=sha256%3A1e68da1c51e02509a68e4286bea9c6e007666487d6d4673bab00cd3d0d42e9c7&amp;bookDigest=sha256%3Ac3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d7f1ce33-002e-5da6-9a74-bcfb28ea06d3" data-goal-id="d7f1ce33-002e-5da6-9a74-bcfb28ea06d3" data-page-number="14" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" aria-labelledby="goal-d7f1ce33-002e-5da6-9a74-bcfb28ea06d3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d7f1ce33-002e-5da6-9a74-bcfb28ea06d3-title"><a class="goal-self-link" href="#goal-d7f1ce33-002e-5da6-9a74-bcfb28ea06d3">Züchtung durch Auswahl geeigneter Varianten erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d7f1ce33-002e-5da6-9a74-bcfb28ea06d3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-83f6047d7933dd07a552e01d">Lebewesen ordnen, Verwandtschaft und Variabilität erklären</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2666c887f05d56a47ca4836dae1020b9e41659ced6011fb46cc8071ea8203001" data-rendered-digest="sha256:a969ad6deefd584a242a81def816f8333c94da7ed2c3e1452b35492a9436293a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/d7f1ce33-002e-5da6-9a74-bcfb28ea06d3/d7f1ce33-002e-5da6-9a74-bcfb28ea06d3.png" alt="Bei einem erblichen Merkmal werden aus unterschiedlich großen Blütenpflanzen bestimmte Eltern ausgewählt; ihre Nachkommen sind erneut unterschiedlich groß.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d7f1ce33-002e-5da6-9a74-bcfb28ea06d3-description-heading">
+        <p class="section-heading" id="goal-d7f1ce33-002e-5da6-9a74-bcfb28ea06d3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Verfahren der Züchtung erläutern, indem sie beschreibt, wie Menschen Varianten mit gewünschten vererbbaren Merkmalen zur Fortpflanzung auswählen und diese Auswahl über Generationen wiederholen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-d7f1ce33-002e-5da6-9a74-bcfb28ea06d3" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d7f1ce33-002e-5da6-9a74-bcfb28ea06d3-requires-heading">
+          <p class="section-heading" id="goal-d7f1ce33-002e-5da6-9a74-bcfb28ea06d3-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-359e6313-cd86-54d1-bee5-8e680101dc32"><span>Innerartliche Variation über Generationen erklären</span><code>359e6313-cd86-54d1-bee5-8e680101dc32</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-d7f1ce33-002e-5da6-9a74-bcfb28ea06d3-reverse-heading">
+          <p class="section-heading" id="goal-d7f1ce33-002e-5da6-9a74-bcfb28ea06d3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 18</span>
+      <span>Buch-Digest <code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bf0fe6e75b2b3e8cee1f8318b5b1d5373ff72235ea3e95aa3a32a84d453f758f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-ni-current-native-author-20261005-v2&amp;edition=curricular-atomic-v1&amp;goalId=d7f1ce33-002e-5da6-9a74-bcfb28ea06d3&amp;goalFingerprint=sha256%3Abf0fe6e75b2b3e8cee1f8318b5b1d5373ff72235ea3e95aa3a32a84d453f758f&amp;pageFingerprint=sha256%3A72a684a51a09c6863f168a006cf9b4d00bea6f879dd8246930d35e0ec49799cc&amp;bookDigest=sha256%3Ac3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6a5a9a7a-635c-5cd9-841f-c6b812d147e5" data-goal-id="6a5a9a7a-635c-5cd9-841f-c6b812d147e5" data-page-number="15" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" aria-labelledby="goal-6a5a9a7a-635c-5cd9-841f-c6b812d147e5-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6a5a9a7a-635c-5cd9-841f-c6b812d147e5-title"><a class="goal-self-link" href="#goal-6a5a9a7a-635c-5cd9-841f-c6b812d147e5">Ähnlichkeiten von Haus- und Wildtieren mit gemeinsamen Vorfahren erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6a5a9a7a-635c-5cd9-841f-c6b812d147e5</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-83f6047d7933dd07a552e01d">Lebewesen ordnen, Verwandtschaft und Variabilität erklären</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:89e30ea39a5f6d052939cf9f96f48417b26ed011daffe579cfc82c9adfec9a4d" data-rendered-digest="sha256:5303c58ce0ad3e5d8ea86eb0de980ce3aca2fe9b9a7c43b73e83207b75b0efd0" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/6a5a9a7a-635c-5cd9-841f-c6b812d147e5/6a5a9a7a-635c-5cd9-841f-c6b812d147e5.png" alt="Ein Stammbaum verbindet Hund und Wolf mit einem unbekannten gemeinsamen Vorfahren und zeigt zwei getrennte heutige Zweige.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6a5a9a7a-635c-5cd9-841f-c6b812d147e5-description-heading">
+        <p class="section-heading" id="goal-6a5a9a7a-635c-5cd9-841f-c6b812d147e5-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Ähnlichkeiten zwischen Haustieren und ihren wild lebenden Verwandten durch gemeinsame Vorfahren und die Weitergabe von Merkmalen an Nachkommen erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-6a5a9a7a-635c-5cd9-841f-c6b812d147e5" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6a5a9a7a-635c-5cd9-841f-c6b812d147e5-requires-heading">
+          <p class="section-heading" id="goal-6a5a9a7a-635c-5cd9-841f-c6b812d147e5-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-0d5a960d-480f-55fb-9116-c08fffe217b3"><span>Familienähnlichkeiten als Indiz für Verwandtschaft deuten</span><code>0d5a960d-480f-55fb-9116-c08fffe217b3</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-6a5a9a7a-635c-5cd9-841f-c6b812d147e5-reverse-heading">
+          <p class="section-heading" id="goal-6a5a9a7a-635c-5cd9-841f-c6b812d147e5-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 18</span>
+      <span>Buch-Digest <code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1ad1889a7bdf16eb2341fb375835ff8f36ff584037b411f8408fbed14011f45c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-ni-current-native-author-20261005-v2&amp;edition=curricular-atomic-v1&amp;goalId=6a5a9a7a-635c-5cd9-841f-c6b812d147e5&amp;goalFingerprint=sha256%3A1ad1889a7bdf16eb2341fb375835ff8f36ff584037b411f8408fbed14011f45c&amp;pageFingerprint=sha256%3A4d3d3bd5a465e26a9d85ca06d7b58365a1b4b3749483765d559db9972f177b26&amp;bookDigest=sha256%3Ac3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3417bb28-e707-57fc-8484-311d4966e26a" data-goal-id="3417bb28-e707-57fc-8484-311d4966e26a" data-page-number="16" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" aria-labelledby="goal-3417bb28-e707-57fc-8484-311d4966e26a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3417bb28-e707-57fc-8484-311d4966e26a-title"><a class="goal-self-link" href="#goal-3417bb28-e707-57fc-8484-311d4966e26a">Variabilität durch Mutation und Rekombination erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3417bb28-e707-57fc-8484-311d4966e26a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-83f6047d7933dd07a552e01d">Lebewesen ordnen, Verwandtschaft und Variabilität erklären</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d919341dfddaec4dfe7d8c4cd7466e41bdc10741ec0946ff313126a4d41a38a1" data-rendered-digest="sha256:bc76a35d6c0b5f3838b597d625b3ef2511c554aab0cd789c05b7b9d8af7d63ab" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/3417bb28-e707-57fc-8484-311d4966e26a/3417bb28-e707-57fc-8484-311d4966e26a.png" alt="Vereinfachtes Modell ohne molekulare Details: Mutation kann Erbinformation verändern; Rekombination kombiniert vorhandene Varianten neu. Ein Fragezeichen begrenzt die dargestellte Merkmalsfolge.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3417bb28-e707-57fc-8484-311d4966e26a-description-heading">
+        <p class="section-heading" id="goal-3417bb28-e707-57fc-8484-311d4966e26a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an einfachen Beispielen erklären, wie Veränderungen von Genen durch Mutation und neue Kombinationen vorhandener Erbinformation durch Rekombination Unterschiede zwischen Individuen einer Art hervorbringen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-3417bb28-e707-57fc-8484-311d4966e26a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3417bb28-e707-57fc-8484-311d4966e26a-requires-heading">
+          <p class="section-heading" id="goal-3417bb28-e707-57fc-8484-311d4966e26a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-359e6313-cd86-54d1-bee5-8e680101dc32"><span>Innerartliche Variation über Generationen erklären</span><code>359e6313-cd86-54d1-bee5-8e680101dc32</code><span class="reference-page">S. 1</span></a></li><li><a href="#goal-0263fb84-33b1-52a3-a47e-dad56be7c9bc"><span>Gen, Genprodukt und Merkmal im einfachen Modell verknüpfen</span><code>0263fb84-33b1-52a3-a47e-dad56be7c9bc</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-0b55e592-3335-52e4-8b4f-79c53f32400b"><span>Unabhängige Chromosomenverteilung bei der Meiose erläutern</span><code>0b55e592-3335-52e4-8b4f-79c53f32400b</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-9e459608-bdea-55a1-b9c5-214bbd741be6"><span>Abschnittsaustausch bei der Meiose erläutern</span><code>9e459608-bdea-55a1-b9c5-214bbd741be6</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-3417bb28-e707-57fc-8484-311d4966e26a-reverse-heading">
+          <p class="section-heading" id="goal-3417bb28-e707-57fc-8484-311d4966e26a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-72fac740-85c5-593f-9115-8a98d0106bf1"><span>Evolution durch Variabilität und Selektion erklären</span><code>72fac740-85c5-593f-9115-8a98d0106bf1</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 18</span>
+      <span>Buch-Digest <code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1650b30d75205996b694f176a94d95ac2930361d5245cddf3e377b9ef56ffdb2</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-ni-current-native-author-20261005-v2&amp;edition=curricular-atomic-v1&amp;goalId=3417bb28-e707-57fc-8484-311d4966e26a&amp;goalFingerprint=sha256%3A1650b30d75205996b694f176a94d95ac2930361d5245cddf3e377b9ef56ffdb2&amp;pageFingerprint=sha256%3A5e786fd675daf062e92e63c933d31689da1ed1bd6c6ee828d91fba9942e2759f&amp;bookDigest=sha256%3Ac3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-72fac740-85c5-593f-9115-8a98d0106bf1" data-goal-id="72fac740-85c5-593f-9115-8a98d0106bf1" data-page-number="17" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" aria-labelledby="goal-72fac740-85c5-593f-9115-8a98d0106bf1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-72fac740-85c5-593f-9115-8a98d0106bf1-title"><a class="goal-self-link" href="#goal-72fac740-85c5-593f-9115-8a98d0106bf1">Evolution durch Variabilität und Selektion erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>72fac740-85c5-593f-9115-8a98d0106bf1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-83f6047d7933dd07a552e01d">Lebewesen ordnen, Verwandtschaft und Variabilität erklären</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:73801ae3885bfe4e933a94273a543df32da0043edb1c4a0f049862471a4c5aa7" data-rendered-digest="sha256:124b73d4cd2ff51028db7b2b3ab8f29ff40989da3a9208681a09e0b4f12a79c5" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/72fac740-85c5-593f-9115-8a98d0106bf1/72fac740-85c5-593f-9115-8a98d0106bf1.png" alt="Helle und dunkle Käfer zeigen das begrenzte Evolutionsmodell: Mutation und Rekombination tragen zu Variation bei; unterschiedliche Fortpflanzung kann die Häufigkeiten vererbbarer Varianten über Generationen ändern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-72fac740-85c5-593f-9115-8a98d0106bf1-description-heading">
+        <p class="section-heading" id="goal-72fac740-85c5-593f-9115-8a98d0106bf1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an einem einfachen Beispiel erklären, wie Mutation und Rekombination erbliche Variabilität bereitstellen und Selektion über unterschiedliche Überlebens- und Fortpflanzungserfolge die Häufigkeit erblicher Varianten in einer Population über Generationen verändert, sodass Angepasstheiten entstehen können.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-72fac740-85c5-593f-9115-8a98d0106bf1" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-72fac740-85c5-593f-9115-8a98d0106bf1-requires-heading">
+          <p class="section-heading" id="goal-72fac740-85c5-593f-9115-8a98d0106bf1-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-359e6313-cd86-54d1-bee5-8e680101dc32"><span>Innerartliche Variation über Generationen erklären</span><code>359e6313-cd86-54d1-bee5-8e680101dc32</code><span class="reference-page">S. 1</span></a></li><li><a href="#goal-3417bb28-e707-57fc-8484-311d4966e26a"><span>Variabilität durch Mutation und Rekombination erklären</span><code>3417bb28-e707-57fc-8484-311d4966e26a</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-72fac740-85c5-593f-9115-8a98d0106bf1-reverse-heading">
+          <p class="section-heading" id="goal-72fac740-85c5-593f-9115-8a98d0106bf1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-eda5b810-d9d3-5319-9c4f-5b48715b26f2"><span>Individuelle Anpassung und erbliche Angepasstheit unterscheiden</span><code>eda5b810-d9d3-5319-9c4f-5b48715b26f2</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 18</span>
+      <span>Buch-Digest <code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0240e9a827a95b3e6f5288b3aec0bc8128480f97dea034435841645659ec7dd1</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-ni-current-native-author-20261005-v2&amp;edition=curricular-atomic-v1&amp;goalId=72fac740-85c5-593f-9115-8a98d0106bf1&amp;goalFingerprint=sha256%3A0240e9a827a95b3e6f5288b3aec0bc8128480f97dea034435841645659ec7dd1&amp;pageFingerprint=sha256%3Adc68106da1e4635208aa13272c3f0805553a67cf01bb6e671918fc4340fe5ad5&amp;bookDigest=sha256%3Ac3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-eda5b810-d9d3-5319-9c4f-5b48715b26f2" data-goal-id="eda5b810-d9d3-5319-9c4f-5b48715b26f2" data-page-number="18" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9cd0dbbc-9507-5879-8c4f-df54529969ec" aria-labelledby="goal-eda5b810-d9d3-5319-9c4f-5b48715b26f2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-eda5b810-d9d3-5319-9c4f-5b48715b26f2-title"><a class="goal-self-link" href="#goal-eda5b810-d9d3-5319-9c4f-5b48715b26f2">Individuelle Anpassung und erbliche Angepasstheit unterscheiden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>eda5b810-d9d3-5319-9c4f-5b48715b26f2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-83f6047d7933dd07a552e01d">Lebewesen ordnen, Verwandtschaft und Variabilität erklären</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8cdb9120ed5fd669213a3e2752b7f35d682e73581d21d5ef566558562cc86f08" data-rendered-digest="sha256:c4ec118e583b5ee6d15dada768894e121f1b120786a772831564713cb4a663ad" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/eda5b810-d9d3-5319-9c4f-5b48715b26f2/eda5b810-d9d3-5319-9c4f-5b48715b26f2.png" alt="Links verbessert eine Person ihre Leistung durch Training; rechts ändern sich über Generationen die Häufigkeiten vererbbarer heller und dunkler Käfermerkmale.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-eda5b810-d9d3-5319-9c4f-5b48715b26f2-description-heading">
+        <p class="section-heading" id="goal-eda5b810-d9d3-5319-9c4f-5b48715b26f2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann nicht-erbliche individuelle Anpassung von erblicher Angepasstheit unterscheiden, indem sie Veränderungen innerhalb eines individuellen Lebens mit erblichen Merkmalen und deren Entwicklung in Populationen über Generationen vergleicht.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-eda5b810-d9d3-5319-9c4f-5b48715b26f2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-eda5b810-d9d3-5319-9c4f-5b48715b26f2-requires-heading">
+          <p class="section-heading" id="goal-eda5b810-d9d3-5319-9c4f-5b48715b26f2-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-d137e36c-bcdd-5e81-98fa-59af778f1439"><span>Individuum und Population unterscheiden</span><code>d137e36c-bcdd-5e81-98fa-59af778f1439</code><span class="reference-page">S. 7</span></a></li><li><a href="#goal-72fac740-85c5-593f-9115-8a98d0106bf1"><span>Evolution durch Variabilität und Selektion erklären</span><code>72fac740-85c5-593f-9115-8a98d0106bf1</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-eda5b810-d9d3-5319-9c4f-5b48715b26f2-reverse-heading">
+          <p class="section-heading" id="goal-eda5b810-d9d3-5319-9c4f-5b48715b26f2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 18</span>
+      <span>Buch-Digest <code>sha256:c3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1e8a8b943c2e7899c23ba667af3cb20c90d5af0a2402dcfcf5f921792114e143</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-ni-current-native-author-20261005-v2&amp;edition=curricular-atomic-v1&amp;goalId=eda5b810-d9d3-5319-9c4f-5b48715b26f2&amp;goalFingerprint=sha256%3A1e8a8b943c2e7899c23ba667af3cb20c90d5af0a2402dcfcf5f921792114e143&amp;pageFingerprint=sha256%3Ace7e4658f32ad8f12e5ba9a0b27b63255349ae0e79a5651d819c047e830a2aeb&amp;bookDigest=sha256%3Ac3638e00f3a5ffd66d3f9fc3a1f78a7f68c95da9cb4232280ca6a28cd71b0062&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

@@ -1,0 +1,1144 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik B043s – Thermodynamik nach zwei gezielten Textrevisionen</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Physik B043s – Thermodynamik nach zwei gezielten Textrevisionen</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>20 atomare Lernziele</dt><dd>9 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-physics-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-6747d2e0bbbbd4b4358ff0fa" aria-label="Physik"><a href="#goal-37b33812-d428-5953-852e-57a53a4347fe"><span class="toc-entry-label">Physik</span></a></h2>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-physics-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-546e47201fdf10d52f5a936c" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-5f17e992-fd07-56ee-80a0-567f45bbd10c"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>18 Lernziele</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-e-phase" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-25f6161a11157cd3d11bdc8c" aria-label="Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen"><a href="#goal-5f17e992-fd07-56ee-80a0-567f45bbd10c"><span class="toc-entry-label">Einführungsphase:&#160;<wbr>Mechanik,&#160;<wbr>Gravitation,&#160;<wbr>Thermodynamik&#160;<wbr>und&#160;<wbr>Drehbewegungen</span></a></h4>
+          <span class="toc-entry-meta"><span>18 Lernziele</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-5cba08b57a65af2122bdbd88" aria-label="Grundlagen der Thermodynamik"><a href="#goal-5f17e992-fd07-56ee-80a0-567f45bbd10c"><span class="toc-entry-label">Grundlagen&#160;<wbr>der&#160;<wbr>Thermodynamik</span></a></h5>
+          <span class="toc-entry-meta"><span>18 Lernziele</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-84f0c3e9-09fe-55c4-8040-6d740ada0426" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-5c5e5a491bcdc9df6f9f7bb5" aria-label="Entropie vertieft verstehen"><a href="#goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47"><span class="toc-entry-label">Entropie&#160;<wbr>vertieft&#160;<wbr>verstehen</span></a></h6>
+          <span class="toc-entry-meta"><span>12 Lernziele</span><span>erste zugehörige Lernzielseite 5</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-e9e6d534-dac3-5389-959e-3b2030edcd68" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-46778cb197295f355fe016d9" aria-label="Thermodynamische Prozessrechnung"><a href="#goal-23c5382a-4b0f-5715-84b5-cf87b8323152"><span class="toc-entry-label">Thermodynamische&#160;<wbr>Prozessrechnung</span></a></h6>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 17</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-bundesland-supplements" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-dfefd5ef67d7bfcb62fbc0f8" aria-label="Bundeslandspezifische Ergänzungen"><a href="#goal-37b33812-d428-5953-852e-57a53a4347fe"><span class="toc-entry-label">Bundeslandspezifische&#160;<wbr>Ergänzungen</span></a></h3>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:goal-book-supplement-crossstage" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-184fe7fcafd22ffbec8cd5c0" aria-label="Stufenübergreifend"><a href="#goal-37b33812-d428-5953-852e-57a53a4347fe"><span class="toc-entry-label">Stufenübergreifend</span></a></h4>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:goal-book-supplement-CrossStage-Sonstiges" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-4b9986bc08048aa19ec18f4d" aria-label="Weitere fachliche Ziele"><a href="#goal-37b33812-d428-5953-852e-57a53a4347fe"><span class="toc-entry-label">Weitere&#160;<wbr>fachliche&#160;<wbr>Ziele</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-37b33812-d428-5953-852e-57a53a4347fe" data-goal-id="37b33812-d428-5953-852e-57a53a4347fe" data-page-number="1" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-crossstage structure:goal-book-supplement-CrossStage-Sonstiges" aria-labelledby="goal-37b33812-d428-5953-852e-57a53a4347fe-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-37b33812-d428-5953-852e-57a53a4347fe-title"><a class="goal-self-link" href="#goal-37b33812-d428-5953-852e-57a53a4347fe">Kinetische Gastheorie &amp; Temperatur</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>37b33812-d428-5953-852e-57a53a4347fe</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-184fe7fcafd22ffbec8cd5c0">Stufenübergreifend</a></li><li><a href="#chapter-4b9986bc08048aa19ec18f4d">Weitere fachliche Ziele</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c39d46c532acdf9602b2e119748dc9a5c91753a01b1f733b067892968e81c2cc" data-rendered-digest="sha256:6a7ef2f37738b776be0a59d2c485c4450e0a206a6fff84e7a87ca84436c7e048" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/37b33812-d428-5953-852e-57a53a4347fe/37b33812-d428-5953-852e-57a53a4347fe.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Kinetische Gastheorie &amp; Temperatur&quot;. Die lernende Person kann im klassischen Modell eines idealen Gases erklären, wie die absolute Temperatur mit der mittleren kinetischen Energie der ungeordneten Translationsbewegung der Teilchen zusammenhängt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-37b33812-d428-5953-852e-57a53a4347fe-description-heading">
+        <p class="section-heading" id="goal-37b33812-d428-5953-852e-57a53a4347fe-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann im klassischen Modell eines idealen Gases erklären, wie die absolute Temperatur mit der mittleren kinetischen Energie der ungeordneten Translationsbewegung der Teilchen zusammenhängt.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. I · G9</li><li class="applicability-more">+ 3 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-37b33812-d428-5953-852e-57a53a4347fe" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-37b33812-d428-5953-852e-57a53a4347fe-requires-heading">
+          <p class="section-heading" id="goal-37b33812-d428-5953-852e-57a53a4347fe-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-37b33812-d428-5953-852e-57a53a4347fe-reverse-heading">
+          <p class="section-heading" id="goal-37b33812-d428-5953-852e-57a53a4347fe-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-b61d233a-1902-526b-a9b5-6b3d553f4013"><span>Entropie E12: Makrozustand und Mikrozustände</span><code>b61d233a-1902-526b-a9b5-6b3d553f4013</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-37b33812-d428-5953-852e-57a53a4347fe-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-37b33812-d428-5953-852e-57a53a4347fe-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-88d07c80-5d7d-5c70-b385-b22769381e44" rel="noreferrer noopener"><span>Wärmeenergie als innere Energie deuten</span> <code>88d07c80-5d7d-5c70-b385-b22769381e44</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-37b33812-d428-5953-852e-57a53a4347fe-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-37b33812-d428-5953-852e-57a53a4347fe-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e1794352-ceee-5c27-8be4-224592ddbb89" rel="noreferrer noopener"><span>Prüfungsaufgabe: Temperatur mit dem Teilchenmodell erklären</span> <code>e1794352-ceee-5c27-8be4-224592ddbb89</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5d384335f8c7ca45a1f50ab23ebbbf5d0ee71459a3504561380fadb1364c851c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=37b33812-d428-5953-852e-57a53a4347fe&amp;goalFingerprint=sha256%3A5d384335f8c7ca45a1f50ab23ebbbf5d0ee71459a3504561380fadb1364c851c&amp;pageFingerprint=sha256%3Ac7eef6bb9c6215e16f31ae971c7d9dc35e59e21e0e95b1a4e62e0c258ab8575b&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2088ccf0-48f4-51d4-be5f-67affd0fb099" data-goal-id="2088ccf0-48f4-51d4-be5f-67affd0fb099" data-page-number="2" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-crossstage structure:goal-book-supplement-CrossStage-Sonstiges" aria-labelledby="goal-2088ccf0-48f4-51d4-be5f-67affd0fb099-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2088ccf0-48f4-51d4-be5f-67affd0fb099-title"><a class="goal-self-link" href="#goal-2088ccf0-48f4-51d4-be5f-67affd0fb099">Reversible und irreversible Vorgänge unterscheiden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2088ccf0-48f4-51d4-be5f-67affd0fb099</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-184fe7fcafd22ffbec8cd5c0">Stufenübergreifend</a></li><li><a href="#chapter-4b9986bc08048aa19ec18f4d">Weitere fachliche Ziele</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c08b8dc760317864647182f6bd9dc7d8ca3755aa8fe88e001cbd55f072acdfa2" data-rendered-digest="sha256:69a93e26d48ef8af6064956502878d978dae169633df3950154a0a6164b57c8b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/2088ccf0-48f4-51d4-be5f-67affd0fb099/2088ccf0-48f4-51d4-be5f-67affd0fb099.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Reversible und irreversible Vorgänge unterscheiden&quot;. Die lernende Person kann reversible und irreversible thermodynamische Vorgänge an Beispielen unterscheiden und Konsequenzen für die Energieumwandlung beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2088ccf0-48f4-51d4-be5f-67affd0fb099-description-heading">
+        <p class="section-heading" id="goal-2088ccf0-48f4-51d4-be5f-67affd0fb099-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann reversible und irreversible thermodynamische Vorgänge an Beispielen unterscheiden und Konsequenzen für die Energieumwandlung beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-2088ccf0-48f4-51d4-be5f-67affd0fb099" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2088ccf0-48f4-51d4-be5f-67affd0fb099-requires-heading">
+          <p class="section-heading" id="goal-2088ccf0-48f4-51d4-be5f-67affd0fb099-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2088ccf0-48f4-51d4-be5f-67affd0fb099-reverse-heading">
+          <p class="section-heading" id="goal-2088ccf0-48f4-51d4-be5f-67affd0fb099-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-5f17e992-fd07-56ee-80a0-567f45bbd10c"><span>Ersten Hauptsatz verstehen und mit Formel angeben</span><code>5f17e992-fd07-56ee-80a0-567f45bbd10c</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d"><span>Zweiten Hauptsatz verstehen und mit Entropie-Formulierung angeben</span><code>912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47"><span>Entropie E02: Reversibel, irreversibel, quasistatisch</span><code>0de2ca8c-7272-59ed-9c89-0971d6ce2f47</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2088ccf0-48f4-51d4-be5f-67affd0fb099-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2088ccf0-48f4-51d4-be5f-67affd0fb099-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-88d07c80-5d7d-5c70-b385-b22769381e44" rel="noreferrer noopener"><span>Wärmeenergie als innere Energie deuten</span> <code>88d07c80-5d7d-5c70-b385-b22769381e44</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2088ccf0-48f4-51d4-be5f-67affd0fb099-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2088ccf0-48f4-51d4-be5f-67affd0fb099-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-198bfc8c-25f7-5a02-8618-47650ce36d14" rel="noreferrer noopener"><span>Prüfungsaufgabe: Energieumwandlungen und Klimawirkungen beurteilen</span> <code>198bfc8c-25f7-5a02-8618-47650ce36d14</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:28a701c557a81c947d3ec5d6430e6083c3de966758dbb6ace73ddd9e93f33a80</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=2088ccf0-48f4-51d4-be5f-67affd0fb099&amp;goalFingerprint=sha256%3A28a701c557a81c947d3ec5d6430e6083c3de966758dbb6ace73ddd9e93f33a80&amp;pageFingerprint=sha256%3Afd148b725838575633397812c78673f72bde07452e83f67bf58965e7d8883dc8&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5f17e992-fd07-56ee-80a0-567f45bbd10c" data-goal-id="5f17e992-fd07-56ee-80a0-567f45bbd10c" data-page-number="3" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28" aria-labelledby="goal-5f17e992-fd07-56ee-80a0-567f45bbd10c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5f17e992-fd07-56ee-80a0-567f45bbd10c-title"><a class="goal-self-link" href="#goal-5f17e992-fd07-56ee-80a0-567f45bbd10c">Ersten Hauptsatz verstehen und mit Formel angeben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5f17e992-fd07-56ee-80a0-567f45bbd10c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5cba08b57a65af2122bdbd88">Grundlagen der Thermodynamik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e27f0b101f4ffc75cc9629418c145a5d2fea6dd4154ad363cfb50846da39f8d6" data-rendered-digest="sha256:72cbe6a47aa0eff643fe98f30d525928f9a44fb4cf8b7c54357e836d98a70543" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/5f17e992-fd07-56ee-80a0-567f45bbd10c/5f17e992-fd07-56ee-80a0-567f45bbd10c.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Ersten Hauptsatz verstehen und mit Formel angeben&quot;. Die lernende Person kann den ersten Hauptsatz $\Delta U = Q + W$ als Energiebilanz eines geschlossenen Systems erklären und formulieren: $Q$ ist die zugeführte Wärme und $W$ die am System verrichtete Arbeit, jeweils mit Vorzeichen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5f17e992-fd07-56ee-80a0-567f45bbd10c-description-heading">
+        <p class="section-heading" id="goal-5f17e992-fd07-56ee-80a0-567f45bbd10c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den ersten Hauptsatz $\Delta U = Q + W$ als Energiebilanz eines geschlossenen Systems erklären und formulieren: $Q$ ist die zugeführte Wärme und $W$ die am System verrichtete Arbeit, jeweils mit Vorzeichen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5f17e992-fd07-56ee-80a0-567f45bbd10c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5f17e992-fd07-56ee-80a0-567f45bbd10c-requires-heading">
+          <p class="section-heading" id="goal-5f17e992-fd07-56ee-80a0-567f45bbd10c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2088ccf0-48f4-51d4-be5f-67affd0fb099"><span>Reversible und irreversible Vorgänge unterscheiden</span><code>2088ccf0-48f4-51d4-be5f-67affd0fb099</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-5f17e992-fd07-56ee-80a0-567f45bbd10c-reverse-heading">
+          <p class="section-heading" id="goal-5f17e992-fd07-56ee-80a0-567f45bbd10c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-239aac49-1137-5df5-b197-49e72292e40c"><span>Entropie E03: Warum Entropie überhaupt?</span><code>239aac49-1137-5df5-b197-49e72292e40c</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-23c5382a-4b0f-5715-84b5-cf87b8323152"><span>Ersten Hauptsatz in Prozessen quantitativ bilanzieren</span><code>23c5382a-4b0f-5715-84b5-cf87b8323152</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-5f17e992-fd07-56ee-80a0-567f45bbd10c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5f17e992-fd07-56ee-80a0-567f45bbd10c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-879491c0-7153-570b-91f4-c61d9fe8a143" rel="noreferrer noopener"><span>Thermodynamik und Rotationssystem</span> <code>879491c0-7153-570b-91f4-c61d9fe8a143</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f33e34c61c21d571b8b360c7d598fe64712d5c4664aea2c8feb00586f1601bd9</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=5f17e992-fd07-56ee-80a0-567f45bbd10c&amp;goalFingerprint=sha256%3Af33e34c61c21d571b8b360c7d598fe64712d5c4664aea2c8feb00586f1601bd9&amp;pageFingerprint=sha256%3A457be1985995bd4bdc135c318869c7696b1386f7b3cfd33d532126090fff089e&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d" data-goal-id="912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d" data-page-number="4" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28" aria-labelledby="goal-912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d-title"><a class="goal-self-link" href="#goal-912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d">Zweiten Hauptsatz verstehen und mit Entropie-Formulierung angeben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5cba08b57a65af2122bdbd88">Grundlagen der Thermodynamik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ed0926c6d53c49d16d383bccb716840e68632bcae4e914502379b5bcbe992bf7" data-rendered-digest="sha256:75976257f31a8ca26e95789d6373a347c18f45f31f4c4ec35ac2c3704cc11f2f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d/912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Zweiten Hauptsatz verstehen und mit Entropie-Formulierung angeben&quot;. Die lernende Person kann den zweiten Hauptsatz für ein isoliertes Gesamtsystem als $\Delta S_{\mathrm{ges}} \ge 0$ formulieren, reversible und irreversible Prozesse durch $\Delta S_{\mathrm{ges}} = 0$ beziehungsweise $\Delta S_{\mathrm{ges}} &gt; 0$ unterscheiden und daraus die Richtung spontaner Abläufe begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d-description-heading">
+        <p class="section-heading" id="goal-912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den zweiten Hauptsatz für ein isoliertes Gesamtsystem als $\Delta S_{\mathrm{ges}} \ge 0$ formulieren, reversible und irreversible Prozesse durch $\Delta S_{\mathrm{ges}} = 0$ beziehungsweise $\Delta S_{\mathrm{ges}} &gt; 0$ unterscheiden und daraus die Richtung spontaner Abläufe begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d-requires-heading">
+          <p class="section-heading" id="goal-912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2088ccf0-48f4-51d4-be5f-67affd0fb099"><span>Reversible und irreversible Vorgänge unterscheiden</span><code>2088ccf0-48f4-51d4-be5f-67affd0fb099</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d-reverse-heading">
+          <p class="section-heading" id="goal-912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-e713dc34-beeb-5807-8a90-f872e049aa4e"><span>Entropie E04: Makroskopische Definition (Clausius)</span><code>e713dc34-beeb-5807-8a90-f872e049aa4e</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7a0efe091aeb6135fb50c1541d33fc90add2f585ce73cbc472b5a21d22273559</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d&amp;goalFingerprint=sha256%3A7a0efe091aeb6135fb50c1541d33fc90add2f585ce73cbc472b5a21d22273559&amp;pageFingerprint=sha256%3A5eb6347e731b5570e47da7795ad69cceea8327641b5fc2f70203c1955af117b7&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47" data-goal-id="0de2ca8c-7272-59ed-9c89-0971d6ce2f47" data-page-number="5" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28 structure:canonical-goal-84f0c3e9-09fe-55c4-8040-6d740ada0426" aria-labelledby="goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47-title"><a class="goal-self-link" href="#goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47">Entropie E02: Reversibel, irreversibel, quasistatisch</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0de2ca8c-7272-59ed-9c89-0971d6ce2f47</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5cba08b57a65af2122bdbd88">Grundlagen der Thermodynamik</a></li><li><a href="#chapter-5c5e5a491bcdc9df6f9f7bb5">Entropie vertieft verstehen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:bb1767b88ebda43a9a8a984c42453cee1ba3a26a82de81768b93e61b41ecd6a1" data-rendered-digest="sha256:ad9f7ec5a8bee503cd14a3c7957bb5ffba818df1eeed86f644ce86597c9f66e1" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/0de2ca8c-7272-59ed-9c89-0971d6ce2f47/0de2ca8c-7272-59ed-9c89-0971d6ce2f47.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Entropie E02: Reversibel, irreversibel, quasistatisch&quot;. Die lernende Person kann reversible, irreversible und quasistatische Prozesse an Reibung, Wärmeübertragung bei endlicher Temperaturdifferenz und freier Expansion unterscheiden und erklären, warum quasistatischer Ablauf allein keine Reversibilität garantiert und Reversibilität ein idealer Grenzfall ist.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47-description-heading">
+        <p class="section-heading" id="goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann reversible, irreversible und quasistatische Prozesse an Reibung, Wärmeübertragung bei endlicher Temperaturdifferenz und freier Expansion unterscheiden und erklären, warum quasistatischer Ablauf allein keine Reversibilität garantiert und Reversibilität ein idealer Grenzfall ist.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47-requires-heading">
+          <p class="section-heading" id="goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2088ccf0-48f4-51d4-be5f-67affd0fb099"><span>Reversible und irreversible Vorgänge unterscheiden</span><code>2088ccf0-48f4-51d4-be5f-67affd0fb099</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47-reverse-heading">
+          <p class="section-heading" id="goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-239aac49-1137-5df5-b197-49e72292e40c"><span>Entropie E03: Warum Entropie überhaupt?</span><code>239aac49-1137-5df5-b197-49e72292e40c</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-616ac6cf-901b-509a-8cbb-bd422ddecf05"><span>Entropie E11: Entropieproduktion und Irreversibilität</span><code>616ac6cf-901b-509a-8cbb-bd422ddecf05</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-36c4590c-6032-5a37-b660-f15951dee076" rel="noreferrer noopener"><span>Entropie E01: Zustandsgrößen vs. Prozessgrößen</span> <code>36c4590c-6032-5a37-b660-f15951dee076</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:03af0ce68f04658f30459f527cc1f87d268ab50a3ac1a137bac4c30913a9bfce</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=0de2ca8c-7272-59ed-9c89-0971d6ce2f47&amp;goalFingerprint=sha256%3A03af0ce68f04658f30459f527cc1f87d268ab50a3ac1a137bac4c30913a9bfce&amp;pageFingerprint=sha256%3Ab5f4718fff3253d1ef534b35fb8ff82b8e4359a20000363a0090d6b81d7e63b1&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-239aac49-1137-5df5-b197-49e72292e40c" data-goal-id="239aac49-1137-5df5-b197-49e72292e40c" data-page-number="6" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28 structure:canonical-goal-84f0c3e9-09fe-55c4-8040-6d740ada0426" aria-labelledby="goal-239aac49-1137-5df5-b197-49e72292e40c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-239aac49-1137-5df5-b197-49e72292e40c-title"><a class="goal-self-link" href="#goal-239aac49-1137-5df5-b197-49e72292e40c">Entropie E03: Warum Entropie überhaupt?</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>239aac49-1137-5df5-b197-49e72292e40c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5cba08b57a65af2122bdbd88">Grundlagen der Thermodynamik</a></li><li><a href="#chapter-5c5e5a491bcdc9df6f9f7bb5">Entropie vertieft verstehen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:558b744b6d9cc5b207eb8c682b99546e36cb04320b0fa1a7c24d30cb83019c28" data-rendered-digest="sha256:65b7bbe5b7da7191921a521f50c43d99f9917deceddaf129c6ddd3626d83bf00" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/239aac49-1137-5df5-b197-49e72292e40c/239aac49-1137-5df5-b197-49e72292e40c.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Entropie E03: Warum Entropie überhaupt?&quot;. Die lernende Person begründet, warum Energieerhaltung allein die Richtung realer Prozesse nicht festlegt, und formuliert die Leitfrage: Warum läuft Wärme spontan von heiß nach kalt?">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-239aac49-1137-5df5-b197-49e72292e40c-description-heading">
+        <p class="section-heading" id="goal-239aac49-1137-5df5-b197-49e72292e40c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person begründet, warum Energieerhaltung allein die Richtung realer Prozesse nicht festlegt, und formuliert die Leitfrage: Warum läuft Wärme spontan von heiß nach kalt?</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-239aac49-1137-5df5-b197-49e72292e40c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-239aac49-1137-5df5-b197-49e72292e40c-requires-heading">
+          <p class="section-heading" id="goal-239aac49-1137-5df5-b197-49e72292e40c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-5f17e992-fd07-56ee-80a0-567f45bbd10c"><span>Ersten Hauptsatz verstehen und mit Formel angeben</span><code>5f17e992-fd07-56ee-80a0-567f45bbd10c</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47"><span>Entropie E02: Reversibel, irreversibel, quasistatisch</span><code>0de2ca8c-7272-59ed-9c89-0971d6ce2f47</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-239aac49-1137-5df5-b197-49e72292e40c-reverse-heading">
+          <p class="section-heading" id="goal-239aac49-1137-5df5-b197-49e72292e40c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-e713dc34-beeb-5807-8a90-f872e049aa4e"><span>Entropie E04: Makroskopische Definition (Clausius)</span><code>e713dc34-beeb-5807-8a90-f872e049aa4e</code><span class="reference-page">S. 7</span></a></li><li><a href="#goal-b61d233a-1902-526b-a9b5-6b3d553f4013"><span>Entropie E12: Makrozustand und Mikrozustände</span><code>b61d233a-1902-526b-a9b5-6b3d553f4013</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-239aac49-1137-5df5-b197-49e72292e40c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-239aac49-1137-5df5-b197-49e72292e40c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a19de1e7de56e3c947f50956469aa705c8eb5706b5ff625999e00189f0008042</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=239aac49-1137-5df5-b197-49e72292e40c&amp;goalFingerprint=sha256%3Aa19de1e7de56e3c947f50956469aa705c8eb5706b5ff625999e00189f0008042&amp;pageFingerprint=sha256%3A126a660342802ea2954fdd38b112bcbdba4d572930161edeed3d24669a57c491&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e713dc34-beeb-5807-8a90-f872e049aa4e" data-goal-id="e713dc34-beeb-5807-8a90-f872e049aa4e" data-page-number="7" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28 structure:canonical-goal-84f0c3e9-09fe-55c4-8040-6d740ada0426" aria-labelledby="goal-e713dc34-beeb-5807-8a90-f872e049aa4e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e713dc34-beeb-5807-8a90-f872e049aa4e-title"><a class="goal-self-link" href="#goal-e713dc34-beeb-5807-8a90-f872e049aa4e">Entropie E04: Makroskopische Definition (Clausius)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e713dc34-beeb-5807-8a90-f872e049aa4e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5cba08b57a65af2122bdbd88">Grundlagen der Thermodynamik</a></li><li><a href="#chapter-5c5e5a491bcdc9df6f9f7bb5">Entropie vertieft verstehen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:227035196dffc3e18ecb304bc44126d1f62b7ec9bfaff4b22216eafb7a0ef625" data-rendered-digest="sha256:c2839a1da1a88189d3dc6443418a00ff1a8b1eddda1d3aebd2ef2c26475666e3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/e713dc34-beeb-5807-8a90-f872e049aa4e/e713dc34-beeb-5807-8a90-f872e049aa4e.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Entropie E04: Makroskopische Definition (Clausius)&quot;. Die lernende Person nutzt die Definition $dS = \frac{\delta Q_{\mathrm{rev}}}{T}$ und erklärt, warum zur Berechnung von $\Delta S$ ein reversibler Ersatzweg verwendet werden darf (weil $S$ eine Zustandsgröße ist).">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e713dc34-beeb-5807-8a90-f872e049aa4e-description-heading">
+        <p class="section-heading" id="goal-e713dc34-beeb-5807-8a90-f872e049aa4e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person nutzt die Definition $dS = \frac{\delta Q_{\mathrm{rev}}}{T}$ und erklärt, warum zur Berechnung von $\Delta S$ ein reversibler Ersatzweg verwendet werden darf (weil $S$ eine Zustandsgröße ist).</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e713dc34-beeb-5807-8a90-f872e049aa4e" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e713dc34-beeb-5807-8a90-f872e049aa4e-requires-heading">
+          <p class="section-heading" id="goal-e713dc34-beeb-5807-8a90-f872e049aa4e-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d"><span>Zweiten Hauptsatz verstehen und mit Entropie-Formulierung angeben</span><code>912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-239aac49-1137-5df5-b197-49e72292e40c"><span>Entropie E03: Warum Entropie überhaupt?</span><code>239aac49-1137-5df5-b197-49e72292e40c</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e713dc34-beeb-5807-8a90-f872e049aa4e-reverse-heading">
+          <p class="section-heading" id="goal-e713dc34-beeb-5807-8a90-f872e049aa4e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-6e79ef4a-2666-5f7a-885c-b175954506f8"><span>Entropie E05: Einheiten und Bedeutung von S</span><code>6e79ef4a-2666-5f7a-885c-b175954506f8</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-eaef821b-4dbe-52a4-a0e2-574e5ce2040d"><span>Entropie E07: Entropieänderung idealer Gase</span><code>eaef821b-4dbe-52a4-a0e2-574e5ce2040d</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-e713dc34-beeb-5807-8a90-f872e049aa4e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e713dc34-beeb-5807-8a90-f872e049aa4e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:55c42a096e6edafe005c5e481ccfac675008f975daffff86733ba23a8c84b3db</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=e713dc34-beeb-5807-8a90-f872e049aa4e&amp;goalFingerprint=sha256%3A55c42a096e6edafe005c5e481ccfac675008f975daffff86733ba23a8c84b3db&amp;pageFingerprint=sha256%3A1cde8fb2f35c0d5e5174b70fbd2a0d57ab234dbdb5e5b8339aa8488a2705b682&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6e79ef4a-2666-5f7a-885c-b175954506f8" data-goal-id="6e79ef4a-2666-5f7a-885c-b175954506f8" data-page-number="8" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28 structure:canonical-goal-84f0c3e9-09fe-55c4-8040-6d740ada0426" aria-labelledby="goal-6e79ef4a-2666-5f7a-885c-b175954506f8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6e79ef4a-2666-5f7a-885c-b175954506f8-title"><a class="goal-self-link" href="#goal-6e79ef4a-2666-5f7a-885c-b175954506f8">Entropie E05: Einheiten und Bedeutung von S</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6e79ef4a-2666-5f7a-885c-b175954506f8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5cba08b57a65af2122bdbd88">Grundlagen der Thermodynamik</a></li><li><a href="#chapter-5c5e5a491bcdc9df6f9f7bb5">Entropie vertieft verstehen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6e79ef4a-2666-5f7a-885c-b175954506f8-description-heading">
+        <p class="section-heading" id="goal-6e79ef4a-2666-5f7a-885c-b175954506f8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Einheit $\mathrm{J/K}$ der Entropie anhand von $\Delta S = Q_{\mathrm{rev}}/T$ deuten und erklären, warum dieselbe reversibel zugeführte Wärmemenge bei niedrigerer konstanter absoluter Temperatur eine größere Entropiezunahme bewirkt.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6e79ef4a-2666-5f7a-885c-b175954506f8" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6e79ef4a-2666-5f7a-885c-b175954506f8-requires-heading">
+          <p class="section-heading" id="goal-6e79ef4a-2666-5f7a-885c-b175954506f8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e713dc34-beeb-5807-8a90-f872e049aa4e"><span>Entropie E04: Makroskopische Definition (Clausius)</span><code>e713dc34-beeb-5807-8a90-f872e049aa4e</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-6e79ef4a-2666-5f7a-885c-b175954506f8-reverse-heading">
+          <p class="section-heading" id="goal-6e79ef4a-2666-5f7a-885c-b175954506f8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-741e7056-69e4-59be-a159-0e2583d748d1"><span>Entropie E06: Standardfälle sicher rechnen</span><code>741e7056-69e4-59be-a159-0e2583d748d1</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-6e79ef4a-2666-5f7a-885c-b175954506f8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6e79ef4a-2666-5f7a-885c-b175954506f8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d134109eed45f917f14e6f2d7e85b6c4f674e8e0dafe3bd9e722bbc2b4c65b0b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=6e79ef4a-2666-5f7a-885c-b175954506f8&amp;goalFingerprint=sha256%3Ad134109eed45f917f14e6f2d7e85b6c4f674e8e0dafe3bd9e722bbc2b4c65b0b&amp;pageFingerprint=sha256%3Afc26ee1030fbdb4121b031dbc7b513cfb32967902fc3a0f935ae0d21d26eda1b&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-741e7056-69e4-59be-a159-0e2583d748d1" data-goal-id="741e7056-69e4-59be-a159-0e2583d748d1" data-page-number="9" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28 structure:canonical-goal-84f0c3e9-09fe-55c4-8040-6d740ada0426" aria-labelledby="goal-741e7056-69e4-59be-a159-0e2583d748d1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-741e7056-69e4-59be-a159-0e2583d748d1-title"><a class="goal-self-link" href="#goal-741e7056-69e4-59be-a159-0e2583d748d1">Entropie E06: Standardfälle sicher rechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>741e7056-69e4-59be-a159-0e2583d748d1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5cba08b57a65af2122bdbd88">Grundlagen der Thermodynamik</a></li><li><a href="#chapter-5c5e5a491bcdc9df6f9f7bb5">Entropie vertieft verstehen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e4d6fafb31bad2d25d1ec82398c87f76f20ba9a8f4706b2c321c32cef29381f9" data-rendered-digest="sha256:6c8b61e1ec3dac60e6db6f37a467e46b88f467291e537d905b790475f03a5068" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/741e7056-69e4-59be-a159-0e2583d748d1/741e7056-69e4-59be-a159-0e2583d748d1.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Entropie E06: Standardfälle sicher rechnen&quot;. Die lernende Person kann die Entropieänderung eines Wärmereservoirs mit $\Delta S = Q/T$ und bei einem reversiblen Phasenübergang mit $\Delta S = L/T$ berechnen und deuten; $T$ ist die konstante absolute Temperatur, $Q$ beziehungsweise $L$ die vorzeichenbehaftete aufgenommene Wärmemenge in Joule.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-741e7056-69e4-59be-a159-0e2583d748d1-description-heading">
+        <p class="section-heading" id="goal-741e7056-69e4-59be-a159-0e2583d748d1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Entropieänderung eines Wärmereservoirs mit $\Delta S = Q/T$ und bei einem reversiblen Phasenübergang mit $\Delta S = L/T$ berechnen und deuten; $T$ ist die konstante absolute Temperatur, $Q$ beziehungsweise $L$ die vorzeichenbehaftete aufgenommene Wärmemenge in Joule.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-741e7056-69e4-59be-a159-0e2583d748d1" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-741e7056-69e4-59be-a159-0e2583d748d1-requires-heading">
+          <p class="section-heading" id="goal-741e7056-69e4-59be-a159-0e2583d748d1-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-6e79ef4a-2666-5f7a-885c-b175954506f8"><span>Entropie E05: Einheiten und Bedeutung von S</span><code>6e79ef4a-2666-5f7a-885c-b175954506f8</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-741e7056-69e4-59be-a159-0e2583d748d1-reverse-heading">
+          <p class="section-heading" id="goal-741e7056-69e4-59be-a159-0e2583d748d1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-14099861-897c-53f4-8c6c-48d088ee9f01"><span>Entropie E08: Entropiebilanz für System + Umgebung</span><code>14099861-897c-53f4-8c6c-48d088ee9f01</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-741e7056-69e4-59be-a159-0e2583d748d1-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-741e7056-69e4-59be-a159-0e2583d748d1-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-93ece389-78c5-5141-9ef1-c68bd558306e" rel="noreferrer noopener"><span>Wärmemengen mit C_V und C_P berechnen</span> <code>93ece389-78c5-5141-9ef1-c68bd558306e</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-741e7056-69e4-59be-a159-0e2583d748d1-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-741e7056-69e4-59be-a159-0e2583d748d1-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a318894efa4ba565eb523ae0e79387162421f14841c8d57f154ed426e67d4292</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=741e7056-69e4-59be-a159-0e2583d748d1&amp;goalFingerprint=sha256%3Aa318894efa4ba565eb523ae0e79387162421f14841c8d57f154ed426e67d4292&amp;pageFingerprint=sha256%3A131220da4bb47047ff413a895d5048165b10291e138f2aa630f8f830948805d7&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-eaef821b-4dbe-52a4-a0e2-574e5ce2040d" data-goal-id="eaef821b-4dbe-52a4-a0e2-574e5ce2040d" data-page-number="10" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28 structure:canonical-goal-84f0c3e9-09fe-55c4-8040-6d740ada0426" aria-labelledby="goal-eaef821b-4dbe-52a4-a0e2-574e5ce2040d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-eaef821b-4dbe-52a4-a0e2-574e5ce2040d-title"><a class="goal-self-link" href="#goal-eaef821b-4dbe-52a4-a0e2-574e5ce2040d">Entropie E07: Entropieänderung idealer Gase</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>eaef821b-4dbe-52a4-a0e2-574e5ce2040d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5cba08b57a65af2122bdbd88">Grundlagen der Thermodynamik</a></li><li><a href="#chapter-5c5e5a491bcdc9df6f9f7bb5">Entropie vertieft verstehen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1aebea7e4e8b7c6b5ba7d120d6a7342cdaa822dbbb50ec896548ba2f08c64083" data-rendered-digest="sha256:1448774f9af0eaea72f69cc1f89b6fa81b63f61b5817eaa1d797d1960b554cfb" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/eaef821b-4dbe-52a4-a0e2-574e5ce2040d/eaef821b-4dbe-52a4-a0e2-574e5ce2040d.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Entropie E07: Entropieänderung idealer Gase&quot;. Die lernende Person kann Entropieänderungen einer festen Menge idealen Gases bei einfachen Zustandsänderungen berechnen und physikalisch deuten, insbesondere isotherm mit $\Delta S = nR\ln(V_2/V_1)$, und die Größen $n$, $R$, $V$ und $T$ sowie die Gültigkeitsbedingungen zuordnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-eaef821b-4dbe-52a4-a0e2-574e5ce2040d-description-heading">
+        <p class="section-heading" id="goal-eaef821b-4dbe-52a4-a0e2-574e5ce2040d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Entropieänderungen einer festen Menge idealen Gases bei einfachen Zustandsänderungen berechnen und physikalisch deuten, insbesondere isotherm mit $\Delta S = nR\ln(V_2/V_1)$, und die Größen $n$, $R$, $V$ und $T$ sowie die Gültigkeitsbedingungen zuordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-eaef821b-4dbe-52a4-a0e2-574e5ce2040d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-eaef821b-4dbe-52a4-a0e2-574e5ce2040d-requires-heading">
+          <p class="section-heading" id="goal-eaef821b-4dbe-52a4-a0e2-574e5ce2040d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e713dc34-beeb-5807-8a90-f872e049aa4e"><span>Entropie E04: Makroskopische Definition (Clausius)</span><code>e713dc34-beeb-5807-8a90-f872e049aa4e</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-eaef821b-4dbe-52a4-a0e2-574e5ce2040d-reverse-heading">
+          <p class="section-heading" id="goal-eaef821b-4dbe-52a4-a0e2-574e5ce2040d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-14099861-897c-53f4-8c6c-48d088ee9f01"><span>Entropie E08: Entropiebilanz für System + Umgebung</span><code>14099861-897c-53f4-8c6c-48d088ee9f01</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-77604656-7ffe-516c-8af3-7cbe7de2f2a4"><span>Entropie E14: Brücke Makro ↔ Mikro</span><code>77604656-7ffe-516c-8af3-7cbe7de2f2a4</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-eaef821b-4dbe-52a4-a0e2-574e5ce2040d-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-eaef821b-4dbe-52a4-a0e2-574e5ce2040d-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-fb73c94b-6a23-5351-8fef-db2c2533e361" rel="noreferrer noopener"><span>Isochore, isobare und isotherme Zustandsänderungen berechnen</span> <code>fb73c94b-6a23-5351-8fef-db2c2533e361</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-eaef821b-4dbe-52a4-a0e2-574e5ce2040d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-eaef821b-4dbe-52a4-a0e2-574e5ce2040d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7ea18dbae997743bab787a10b62a6fbffcc44f9074f59052aa771309a3d507d9</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=eaef821b-4dbe-52a4-a0e2-574e5ce2040d&amp;goalFingerprint=sha256%3A7ea18dbae997743bab787a10b62a6fbffcc44f9074f59052aa771309a3d507d9&amp;pageFingerprint=sha256%3A676c489429134197b80c2489e626ce39a846506a0a75d0539ed227df55fe6570&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-14099861-897c-53f4-8c6c-48d088ee9f01" data-goal-id="14099861-897c-53f4-8c6c-48d088ee9f01" data-page-number="11" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28 structure:canonical-goal-84f0c3e9-09fe-55c4-8040-6d740ada0426" aria-labelledby="goal-14099861-897c-53f4-8c6c-48d088ee9f01-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-14099861-897c-53f4-8c6c-48d088ee9f01-title"><a class="goal-self-link" href="#goal-14099861-897c-53f4-8c6c-48d088ee9f01">Entropie E08: Entropiebilanz für System + Umgebung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>14099861-897c-53f4-8c6c-48d088ee9f01</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5cba08b57a65af2122bdbd88">Grundlagen der Thermodynamik</a></li><li><a href="#chapter-5c5e5a491bcdc9df6f9f7bb5">Entropie vertieft verstehen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2c872b9ae21c6361085ce4baf3365b588f412f89f0222e9619fb8fcbe4561b79" data-rendered-digest="sha256:1c429d5e91437d2754f65ff33d6f04a53a68c87696ed8aed4da85bbbebb52916" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/14099861-897c-53f4-8c6c-48d088ee9f01/14099861-897c-53f4-8c6c-48d088ee9f01.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Entropie E08: Entropiebilanz für System + Umgebung&quot;. Die lernende Person kann die Entropieänderungen von System und Umgebung zu $\Delta S_{\mathrm{ges}}$ addieren und für Wärmeübertragung zwischen zwei sonst isolierten Reservoiren bei konstanten absoluten Temperaturen $T_h &gt; T_c$ rechnerisch begründen, warum Wärmefluss von heiß nach kalt die Gesamtentropie erhöht.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-14099861-897c-53f4-8c6c-48d088ee9f01-description-heading">
+        <p class="section-heading" id="goal-14099861-897c-53f4-8c6c-48d088ee9f01-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Entropieänderungen von System und Umgebung zu $\Delta S_{\mathrm{ges}}$ addieren und für Wärmeübertragung zwischen zwei sonst isolierten Reservoiren bei konstanten absoluten Temperaturen $T_h &gt; T_c$ rechnerisch begründen, warum Wärmefluss von heiß nach kalt die Gesamtentropie erhöht.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-14099861-897c-53f4-8c6c-48d088ee9f01" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-14099861-897c-53f4-8c6c-48d088ee9f01-requires-heading">
+          <p class="section-heading" id="goal-14099861-897c-53f4-8c6c-48d088ee9f01-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-741e7056-69e4-59be-a159-0e2583d748d1"><span>Entropie E06: Standardfälle sicher rechnen</span><code>741e7056-69e4-59be-a159-0e2583d748d1</code><span class="reference-page">S. 9</span></a></li><li><a href="#goal-eaef821b-4dbe-52a4-a0e2-574e5ce2040d"><span>Entropie E07: Entropieänderung idealer Gase</span><code>eaef821b-4dbe-52a4-a0e2-574e5ce2040d</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-14099861-897c-53f4-8c6c-48d088ee9f01-reverse-heading">
+          <p class="section-heading" id="goal-14099861-897c-53f4-8c6c-48d088ee9f01-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-14099861-897c-53f4-8c6c-48d088ee9f01-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-14099861-897c-53f4-8c6c-48d088ee9f01-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-be921c3b-7db9-50b5-a110-92f31673fc62" rel="noreferrer noopener"><span>Entropie E09: Der 2. Hauptsatz als Entscheidungsregel</span> <code>be921c3b-7db9-50b5-a110-92f31673fc62</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-161502b8-e52d-58d0-8f01-9f777b56d392" rel="noreferrer noopener"><span>Entropieaussagen mit Systemgrenzen und Mikrozuständen prüfen</span> <code>161502b8-e52d-58d0-8f01-9f777b56d392</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4db43a46de920f19f74945d6aba58faa5995c220ba6a284d2f992ec70804f96d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=14099861-897c-53f4-8c6c-48d088ee9f01&amp;goalFingerprint=sha256%3A4db43a46de920f19f74945d6aba58faa5995c220ba6a284d2f992ec70804f96d&amp;pageFingerprint=sha256%3A9c760bcf2ea8d022a5e8041f2a630a371aeee385b526564f583f246b6616541a&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-81a45dec-37be-529b-89ce-2f3101237293" data-goal-id="81a45dec-37be-529b-89ce-2f3101237293" data-page-number="12" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28 structure:canonical-goal-84f0c3e9-09fe-55c4-8040-6d740ada0426" aria-labelledby="goal-81a45dec-37be-529b-89ce-2f3101237293-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-81a45dec-37be-529b-89ce-2f3101237293-title"><a class="goal-self-link" href="#goal-81a45dec-37be-529b-89ce-2f3101237293">Entropie E10: Clausius-Ungleichung (Kreisprozess)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>81a45dec-37be-529b-89ce-2f3101237293</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5cba08b57a65af2122bdbd88">Grundlagen der Thermodynamik</a></li><li><a href="#chapter-5c5e5a491bcdc9df6f9f7bb5">Entropie vertieft verstehen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:126fabb50ebc4f4fc9b1b78682a3ec7dbafa50b6d3587978fda0d6cdbea1653d" data-rendered-digest="sha256:577b5d733aae9bca04161d156c384ec0bf4a4d015f2b2d7c45e5a4ec68a41e73" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/81a45dec-37be-529b-89ce-2f3101237293/81a45dec-37be-529b-89ce-2f3101237293.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Entropie E10: Clausius-Ungleichung (Kreisprozess)&quot;. Die lernende Person kann die Clausius-Ungleichung $\oint \frac{\delta Q}{T} \le 0$ für Kreisprozesse mit Wärme positiv zum System und $T$ als absoluter Temperatur des jeweiligen Wärmereservoirs deuten und daraus begründen, warum die vollständige Umwandlung von Wärme aus einem einzigen Reservoir in Arbeit als einzige Wirkung unmöglich ist.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-81a45dec-37be-529b-89ce-2f3101237293-description-heading">
+        <p class="section-heading" id="goal-81a45dec-37be-529b-89ce-2f3101237293-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Clausius-Ungleichung $\oint \frac{\delta Q}{T} \le 0$ für Kreisprozesse mit Wärme positiv zum System und $T$ als absoluter Temperatur des jeweiligen Wärmereservoirs deuten und daraus begründen, warum die vollständige Umwandlung von Wärme aus einem einzigen Reservoir in Arbeit als einzige Wirkung unmöglich ist.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-81a45dec-37be-529b-89ce-2f3101237293" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-81a45dec-37be-529b-89ce-2f3101237293-requires-heading">
+          <p class="section-heading" id="goal-81a45dec-37be-529b-89ce-2f3101237293-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-81a45dec-37be-529b-89ce-2f3101237293-reverse-heading">
+          <p class="section-heading" id="goal-81a45dec-37be-529b-89ce-2f3101237293-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-18058384-a1bc-5ba2-8f5d-1fe9498acbf0"><span>Zweiten Hauptsatz auf Wärmekraftmaschinen anwenden</span><code>18058384-a1bc-5ba2-8f5d-1fe9498acbf0</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-81a45dec-37be-529b-89ce-2f3101237293-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-81a45dec-37be-529b-89ce-2f3101237293-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-be921c3b-7db9-50b5-a110-92f31673fc62" rel="noreferrer noopener"><span>Entropie E09: Der 2. Hauptsatz als Entscheidungsregel</span> <code>be921c3b-7db9-50b5-a110-92f31673fc62</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-81a45dec-37be-529b-89ce-2f3101237293-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-81a45dec-37be-529b-89ce-2f3101237293-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d0cebf18-8b2a-52d6-857d-ef18cd64541c" rel="noreferrer noopener"><span>Entropie E15: Wärmekraftmaschinen und Carnot-Grenze</span> <code>d0cebf18-8b2a-52d6-857d-ef18cd64541c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:86e5411d1dcd3bb3b364ff3eaceeafe082969c8b10045b236974e41037b1bbd2</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=81a45dec-37be-529b-89ce-2f3101237293&amp;goalFingerprint=sha256%3A86e5411d1dcd3bb3b364ff3eaceeafe082969c8b10045b236974e41037b1bbd2&amp;pageFingerprint=sha256%3Aec618fb43cab6a78e49712ebc782fe061b00f016f4729920f499b5bc9d0c0a4d&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-616ac6cf-901b-509a-8cbb-bd422ddecf05" data-goal-id="616ac6cf-901b-509a-8cbb-bd422ddecf05" data-page-number="13" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28 structure:canonical-goal-84f0c3e9-09fe-55c4-8040-6d740ada0426" aria-labelledby="goal-616ac6cf-901b-509a-8cbb-bd422ddecf05-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-616ac6cf-901b-509a-8cbb-bd422ddecf05-title"><a class="goal-self-link" href="#goal-616ac6cf-901b-509a-8cbb-bd422ddecf05">Entropie E11: Entropieproduktion und Irreversibilität</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>616ac6cf-901b-509a-8cbb-bd422ddecf05</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5cba08b57a65af2122bdbd88">Grundlagen der Thermodynamik</a></li><li><a href="#chapter-5c5e5a491bcdc9df6f9f7bb5">Entropie vertieft verstehen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b26355b26a5fddfbc9fc567d742871b81e8e6785572efd5722a3f7c01ef0e589" data-rendered-digest="sha256:6894550372e7e88e821f31a002bef369362a749b0bff96bb0b9c60476fc9767c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/616ac6cf-901b-509a-8cbb-bd422ddecf05/616ac6cf-901b-509a-8cbb-bd422ddecf05.png" alt="Didaktische Visualisierung zum Lernziel &quot;Entropie E11: Entropieproduktion und Irreversibilität&quot;. Die lernende Person kann Reibung, Mischung beziehungsweise Diffusion, Wärmeaustausch bei endlicher Temperaturdifferenz und freie Expansion als Ursachen von Entropieproduktion erklären und begründen, warum sie sich nicht ohne bleibende Änderungen in System und Umgebung vollständig umkehren lassen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-616ac6cf-901b-509a-8cbb-bd422ddecf05-description-heading">
+        <p class="section-heading" id="goal-616ac6cf-901b-509a-8cbb-bd422ddecf05-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Reibung, Mischung beziehungsweise Diffusion, Wärmeaustausch bei endlicher Temperaturdifferenz und freie Expansion als Ursachen von Entropieproduktion erklären und begründen, warum sie sich nicht ohne bleibende Änderungen in System und Umgebung vollständig umkehren lassen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-616ac6cf-901b-509a-8cbb-bd422ddecf05" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-616ac6cf-901b-509a-8cbb-bd422ddecf05-requires-heading">
+          <p class="section-heading" id="goal-616ac6cf-901b-509a-8cbb-bd422ddecf05-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-0de2ca8c-7272-59ed-9c89-0971d6ce2f47"><span>Entropie E02: Reversibel, irreversibel, quasistatisch</span><code>0de2ca8c-7272-59ed-9c89-0971d6ce2f47</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-616ac6cf-901b-509a-8cbb-bd422ddecf05-reverse-heading">
+          <p class="section-heading" id="goal-616ac6cf-901b-509a-8cbb-bd422ddecf05-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-91b20476-12cf-50d6-880a-ea509ffe8a9a"><span>Zweiten Hauptsatz auf Entropieerzeugung und Zeitpfeil anwenden</span><code>91b20476-12cf-50d6-880a-ea509ffe8a9a</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-616ac6cf-901b-509a-8cbb-bd422ddecf05-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-616ac6cf-901b-509a-8cbb-bd422ddecf05-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-be921c3b-7db9-50b5-a110-92f31673fc62" rel="noreferrer noopener"><span>Entropie E09: Der 2. Hauptsatz als Entscheidungsregel</span> <code>be921c3b-7db9-50b5-a110-92f31673fc62</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-616ac6cf-901b-509a-8cbb-bd422ddecf05-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-616ac6cf-901b-509a-8cbb-bd422ddecf05-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1" rel="noreferrer noopener"><span>Thermodynamik, Entropie und Klimakontexte bewerten</span> <code>6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-161502b8-e52d-58d0-8f01-9f777b56d392" rel="noreferrer noopener"><span>Entropieaussagen mit Systemgrenzen und Mikrozuständen prüfen</span> <code>161502b8-e52d-58d0-8f01-9f777b56d392</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:749cc79ebc2218407d1a78f29e383099cb2c76126d73e2a8173fb0cdf5236816</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=616ac6cf-901b-509a-8cbb-bd422ddecf05&amp;goalFingerprint=sha256%3A749cc79ebc2218407d1a78f29e383099cb2c76126d73e2a8173fb0cdf5236816&amp;pageFingerprint=sha256%3Acd0159b0c6095e7950005c8905e77ff97b089a1574bf8b73a708e4c910b4e349&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b61d233a-1902-526b-a9b5-6b3d553f4013" data-goal-id="b61d233a-1902-526b-a9b5-6b3d553f4013" data-page-number="14" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28 structure:canonical-goal-84f0c3e9-09fe-55c4-8040-6d740ada0426" aria-labelledby="goal-b61d233a-1902-526b-a9b5-6b3d553f4013-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b61d233a-1902-526b-a9b5-6b3d553f4013-title"><a class="goal-self-link" href="#goal-b61d233a-1902-526b-a9b5-6b3d553f4013">Entropie E12: Makrozustand und Mikrozustände</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b61d233a-1902-526b-a9b5-6b3d553f4013</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5cba08b57a65af2122bdbd88">Grundlagen der Thermodynamik</a></li><li><a href="#chapter-5c5e5a491bcdc9df6f9f7bb5">Entropie vertieft verstehen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9c66a73bb754aec1363b3429f864511154beaade7d0904436e7c85d4cc0ebe3d" data-rendered-digest="sha256:cc4d6cd51af51b322ea72b0e71d1d4ecfc75181260bcebfd6efbe4757e29944c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/b61d233a-1902-526b-a9b5-6b3d553f4013/b61d233a-1902-526b-a9b5-6b3d553f4013.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Entropie E12: Makrozustand und Mikrozustände&quot;. Die lernende Person erklärt den Unterschied zwischen Makrozustand (z. B. $p, V, T$) und Mikrozustand (Teilchenzustände) und erkennt: Viele Mikrozustände können zum gleichen Makrozustand gehören.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b61d233a-1902-526b-a9b5-6b3d553f4013-description-heading">
+        <p class="section-heading" id="goal-b61d233a-1902-526b-a9b5-6b3d553f4013-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Makrozustände (z. B. beschrieben durch $p, V, T$) von Mikrozuständen (Teilchenzuständen) unterscheiden und an einem Teilchenmodell erklären, wie verschiedene Mikrozustände demselben Makrozustand entsprechen können.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b61d233a-1902-526b-a9b5-6b3d553f4013" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b61d233a-1902-526b-a9b5-6b3d553f4013-requires-heading">
+          <p class="section-heading" id="goal-b61d233a-1902-526b-a9b5-6b3d553f4013-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-37b33812-d428-5953-852e-57a53a4347fe"><span>Kinetische Gastheorie &amp; Temperatur</span><code>37b33812-d428-5953-852e-57a53a4347fe</code><span class="reference-page">S. 1</span></a></li><li><a href="#goal-239aac49-1137-5df5-b197-49e72292e40c"><span>Entropie E03: Warum Entropie überhaupt?</span><code>239aac49-1137-5df5-b197-49e72292e40c</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-b61d233a-1902-526b-a9b5-6b3d553f4013-reverse-heading">
+          <p class="section-heading" id="goal-b61d233a-1902-526b-a9b5-6b3d553f4013-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8"><span>Entropie E13: Boltzmann-Formel und Zählmodelle</span><code>b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-b61d233a-1902-526b-a9b5-6b3d553f4013-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b61d233a-1902-526b-a9b5-6b3d553f4013-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:cd24972dedf21d9c9209e0e381a80c374eddc81d0cd09d1204ad8dc3d80b9d64</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=b61d233a-1902-526b-a9b5-6b3d553f4013&amp;goalFingerprint=sha256%3Acd24972dedf21d9c9209e0e381a80c374eddc81d0cd09d1204ad8dc3d80b9d64&amp;pageFingerprint=sha256%3A469beb8232eaf4e57e60990d620d770e3285105ea489ad519af6fbb0dcd9fd7e&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8" data-goal-id="b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8" data-page-number="15" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28 structure:canonical-goal-84f0c3e9-09fe-55c4-8040-6d740ada0426" aria-labelledby="goal-b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8-title"><a class="goal-self-link" href="#goal-b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8">Entropie E13: Boltzmann-Formel und Zählmodelle</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5cba08b57a65af2122bdbd88">Grundlagen der Thermodynamik</a></li><li><a href="#chapter-5c5e5a491bcdc9df6f9f7bb5">Entropie vertieft verstehen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f08b900a6cd62f56648fcb2fb249311881c1f8618282ea300259bb4f1df61964" data-rendered-digest="sha256:498e27e095f65dd098bd50988b4f593c374d98c823543e074aa29d8738a2dcbc" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8/b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Entropie E13: Boltzmann-Formel und Zählmodelle&quot;. Die lernende Person kann mit $S = k_B\ln\Omega$ und einfachen Zählmodellen, etwa $\Omega=\binom{N}{n}$ für gleich wahrscheinliche Links-rechts-Zuordnungen, die Entropien verschiedener Makrozustände vergleichen und erklären, warum bei großer Teilchenzahl annähernd gleichmäßige Verteilungen gegenüber stark ungleichmäßigen überwiegen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8-description-heading">
+        <p class="section-heading" id="goal-b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann mit $S = k_B\ln\Omega$ und einfachen Zählmodellen, etwa $\Omega=\binom{N}{n}$ für gleich wahrscheinliche Links-rechts-Zuordnungen, die Entropien verschiedener Makrozustände vergleichen und erklären, warum bei großer Teilchenzahl annähernd gleichmäßige Verteilungen gegenüber stark ungleichmäßigen überwiegen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8-requires-heading">
+          <p class="section-heading" id="goal-b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-b61d233a-1902-526b-a9b5-6b3d553f4013"><span>Entropie E12: Makrozustand und Mikrozustände</span><code>b61d233a-1902-526b-a9b5-6b3d553f4013</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8-reverse-heading">
+          <p class="section-heading" id="goal-b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-77604656-7ffe-516c-8af3-7cbe7de2f2a4"><span>Entropie E14: Brücke Makro ↔ Mikro</span><code>77604656-7ffe-516c-8af3-7cbe7de2f2a4</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:94c475274979ddc27d1a1eb676c59925fc2d187acee1150ba75cf338bcf669bb</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8&amp;goalFingerprint=sha256%3A94c475274979ddc27d1a1eb676c59925fc2d187acee1150ba75cf338bcf669bb&amp;pageFingerprint=sha256%3A8ba6f4cdfecdfbc34ba220a29f482850692cf035a96b67354393097b936d4a42&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-77604656-7ffe-516c-8af3-7cbe7de2f2a4" data-goal-id="77604656-7ffe-516c-8af3-7cbe7de2f2a4" data-page-number="16" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28 structure:canonical-goal-84f0c3e9-09fe-55c4-8040-6d740ada0426" aria-labelledby="goal-77604656-7ffe-516c-8af3-7cbe7de2f2a4-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-77604656-7ffe-516c-8af3-7cbe7de2f2a4-title"><a class="goal-self-link" href="#goal-77604656-7ffe-516c-8af3-7cbe7de2f2a4">Entropie E14: Brücke Makro ↔ Mikro</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>77604656-7ffe-516c-8af3-7cbe7de2f2a4</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5cba08b57a65af2122bdbd88">Grundlagen der Thermodynamik</a></li><li><a href="#chapter-5c5e5a491bcdc9df6f9f7bb5">Entropie vertieft verstehen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:72fbc1060af6119b8936d6151b186510334b5386b8579fc841f4b6e3fa3434fa" data-rendered-digest="sha256:eb2699937efda271608d8833e49a7fe1c6f47b6226234d28822a3010fca6b468" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/77604656-7ffe-516c-8af3-7cbe7de2f2a4/77604656-7ffe-516c-8af3-7cbe7de2f2a4.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Entropie E14: Brücke Makro ↔ Mikro&quot;. Die lernende Person kann für eine feste Teilchenzahl $N$ eines klassischen idealen Gases bei unveränderter Temperatur den Zusammenhang $\Omega_2/\Omega_1 = (V_2/V_1)^N$ im Teilchenmodell begründen und daraus $\Delta S = Nk_B\ln(V_2/V_1) = nR\ln(V_2/V_1)$ als Verbindung von mikroskopischer und makroskopischer Entropiebeschreibung herleiten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-77604656-7ffe-516c-8af3-7cbe7de2f2a4-description-heading">
+        <p class="section-heading" id="goal-77604656-7ffe-516c-8af3-7cbe7de2f2a4-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für eine feste Teilchenzahl $N$ eines klassischen idealen Gases bei unveränderter Temperatur den Zusammenhang $\Omega_2/\Omega_1 = (V_2/V_1)^N$ im Teilchenmodell begründen und daraus $\Delta S = Nk_B\ln(V_2/V_1) = nR\ln(V_2/V_1)$ als Verbindung von mikroskopischer und makroskopischer Entropiebeschreibung herleiten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-77604656-7ffe-516c-8af3-7cbe7de2f2a4" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-77604656-7ffe-516c-8af3-7cbe7de2f2a4-requires-heading">
+          <p class="section-heading" id="goal-77604656-7ffe-516c-8af3-7cbe7de2f2a4-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-eaef821b-4dbe-52a4-a0e2-574e5ce2040d"><span>Entropie E07: Entropieänderung idealer Gase</span><code>eaef821b-4dbe-52a4-a0e2-574e5ce2040d</code><span class="reference-page">S. 10</span></a></li><li><a href="#goal-b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8"><span>Entropie E13: Boltzmann-Formel und Zählmodelle</span><code>b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-77604656-7ffe-516c-8af3-7cbe7de2f2a4-reverse-heading">
+          <p class="section-heading" id="goal-77604656-7ffe-516c-8af3-7cbe7de2f2a4-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-77604656-7ffe-516c-8af3-7cbe7de2f2a4-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-77604656-7ffe-516c-8af3-7cbe7de2f2a4-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d0cebf18-8b2a-52d6-857d-ef18cd64541c" rel="noreferrer noopener"><span>Entropie E15: Wärmekraftmaschinen und Carnot-Grenze</span> <code>d0cebf18-8b2a-52d6-857d-ef18cd64541c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-161502b8-e52d-58d0-8f01-9f777b56d392" rel="noreferrer noopener"><span>Entropieaussagen mit Systemgrenzen und Mikrozuständen prüfen</span> <code>161502b8-e52d-58d0-8f01-9f777b56d392</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b56c4b7e5cc43befcb4a02e1a6fbfcb68fc91b23f150d57cb67d7d31e5bb9a24</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=77604656-7ffe-516c-8af3-7cbe7de2f2a4&amp;goalFingerprint=sha256%3Ab56c4b7e5cc43befcb4a02e1a6fbfcb68fc91b23f150d57cb67d7d31e5bb9a24&amp;pageFingerprint=sha256%3A7c772bbac4abc1d8fd8d4d087efaa0b4ccb574b505033812a058e52c1f75bf06&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-23c5382a-4b0f-5715-84b5-cf87b8323152" data-goal-id="23c5382a-4b0f-5715-84b5-cf87b8323152" data-page-number="17" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28 structure:canonical-goal-e9e6d534-dac3-5389-959e-3b2030edcd68" aria-labelledby="goal-23c5382a-4b0f-5715-84b5-cf87b8323152-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-23c5382a-4b0f-5715-84b5-cf87b8323152-title"><a class="goal-self-link" href="#goal-23c5382a-4b0f-5715-84b5-cf87b8323152">Ersten Hauptsatz in Prozessen quantitativ bilanzieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>23c5382a-4b0f-5715-84b5-cf87b8323152</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5cba08b57a65af2122bdbd88">Grundlagen der Thermodynamik</a></li><li><a href="#chapter-46778cb197295f355fe016d9">Thermodynamische Prozessrechnung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:48978c34d2d60b205fdcdb8c3cd61595353a8311eb4090b5cdda1c8ccb72fd7f" data-rendered-digest="sha256:4657785a9d54b74073a89defc38595ea344ff54b00b5c1b0b4b95cf5fdf09be0" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/23c5382a-4b0f-5715-84b5-cf87b8323152/23c5382a-4b0f-5715-84b5-cf87b8323152.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Ersten Hauptsatz in Prozessen quantitativ bilanzieren&quot;. Die lernende Person kann für einfache Gasprozesse Energiegrößen konsistent bilanzieren (Q, W, ΔU) und den ersten Hauptsatz rechnerisch anwenden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-23c5382a-4b0f-5715-84b5-cf87b8323152-description-heading">
+        <p class="section-heading" id="goal-23c5382a-4b0f-5715-84b5-cf87b8323152-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für einfache Gasprozesse Energiegrößen konsistent bilanzieren (Q, W, ΔU) und den ersten Hauptsatz rechnerisch anwenden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-23c5382a-4b0f-5715-84b5-cf87b8323152" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-23c5382a-4b0f-5715-84b5-cf87b8323152-requires-heading">
+          <p class="section-heading" id="goal-23c5382a-4b0f-5715-84b5-cf87b8323152-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-5f17e992-fd07-56ee-80a0-567f45bbd10c"><span>Ersten Hauptsatz verstehen und mit Formel angeben</span><code>5f17e992-fd07-56ee-80a0-567f45bbd10c</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-23c5382a-4b0f-5715-84b5-cf87b8323152-reverse-heading">
+          <p class="section-heading" id="goal-23c5382a-4b0f-5715-84b5-cf87b8323152-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-73b5af24-7750-520a-bb16-43136ce19a5c"><span>Wirkungsgrad und Carnot-Grenze quantitativ vergleichen</span><code>73b5af24-7750-520a-bb16-43136ce19a5c</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-23c5382a-4b0f-5715-84b5-cf87b8323152-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-23c5382a-4b0f-5715-84b5-cf87b8323152-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7982cd8e-2151-59e7-858d-c1361c5d249e" rel="noreferrer noopener"><span>Prozessarbeit bei Volumenänderungen bestimmen</span> <code>7982cd8e-2151-59e7-858d-c1361c5d249e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-93ece389-78c5-5141-9ef1-c68bd558306e" rel="noreferrer noopener"><span>Wärmemengen mit C_V und C_P berechnen</span> <code>93ece389-78c5-5141-9ef1-c68bd558306e</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-23c5382a-4b0f-5715-84b5-cf87b8323152-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-23c5382a-4b0f-5715-84b5-cf87b8323152-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-879491c0-7153-570b-91f4-c61d9fe8a143" rel="noreferrer noopener"><span>Thermodynamik und Rotationssystem</span> <code>879491c0-7153-570b-91f4-c61d9fe8a143</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a6424845c4fcc99bd34cacd3dd77eae8b327d50a9a9909b32235945374cde5eb</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=23c5382a-4b0f-5715-84b5-cf87b8323152&amp;goalFingerprint=sha256%3Aa6424845c4fcc99bd34cacd3dd77eae8b327d50a9a9909b32235945374cde5eb&amp;pageFingerprint=sha256%3Ac65aa89b4a4cd2ce94b7a7e3ac1d250a0b0deb0502932940119da67ae8ce3118&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-91b20476-12cf-50d6-880a-ea509ffe8a9a" data-goal-id="91b20476-12cf-50d6-880a-ea509ffe8a9a" data-page-number="18" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28" aria-labelledby="goal-91b20476-12cf-50d6-880a-ea509ffe8a9a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-91b20476-12cf-50d6-880a-ea509ffe8a9a-title"><a class="goal-self-link" href="#goal-91b20476-12cf-50d6-880a-ea509ffe8a9a">Zweiten Hauptsatz auf Entropieerzeugung und Zeitpfeil anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>91b20476-12cf-50d6-880a-ea509ffe8a9a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5cba08b57a65af2122bdbd88">Grundlagen der Thermodynamik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8d1f9d3a250ad58baf08beda35f42470aadf9ab72e0ed97288350f7c7492ddd8" data-rendered-digest="sha256:4bc3e8ac9285546bc597de532f3b92bc28ae2a6ef375d407e8cebffb109b64be" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/91b20476-12cf-50d6-880a-ea509ffe8a9a/91b20476-12cf-50d6-880a-ea509ffe8a9a.png" alt="Didaktische Visualisierung zum Lernziel &quot;Zweiten Hauptsatz auf Entropieerzeugung und Zeitpfeil anwenden&quot;. Die lernende Person kann bei einfachen irreversiblen Prozessen eines isolierten Gesamtsystems die Entropieerzeugung mit $\Delta S_{\mathrm{ges}}&gt;0$ begründen und die damit ausgezeichnete Richtung makroskopischer Abläufe als thermodynamischen Zeitpfeil erklären.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-91b20476-12cf-50d6-880a-ea509ffe8a9a-description-heading">
+        <p class="section-heading" id="goal-91b20476-12cf-50d6-880a-ea509ffe8a9a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei einfachen irreversiblen Prozessen eines isolierten Gesamtsystems die Entropieerzeugung mit $\Delta S_{\mathrm{ges}}&gt;0$ begründen und die damit ausgezeichnete Richtung makroskopischer Abläufe als thermodynamischen Zeitpfeil erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-91b20476-12cf-50d6-880a-ea509ffe8a9a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-91b20476-12cf-50d6-880a-ea509ffe8a9a-requires-heading">
+          <p class="section-heading" id="goal-91b20476-12cf-50d6-880a-ea509ffe8a9a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-616ac6cf-901b-509a-8cbb-bd422ddecf05"><span>Entropie E11: Entropieproduktion und Irreversibilität</span><code>616ac6cf-901b-509a-8cbb-bd422ddecf05</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-91b20476-12cf-50d6-880a-ea509ffe8a9a-reverse-heading">
+          <p class="section-heading" id="goal-91b20476-12cf-50d6-880a-ea509ffe8a9a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-91b20476-12cf-50d6-880a-ea509ffe8a9a-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-91b20476-12cf-50d6-880a-ea509ffe8a9a-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-be921c3b-7db9-50b5-a110-92f31673fc62" rel="noreferrer noopener"><span>Entropie E09: Der 2. Hauptsatz als Entscheidungsregel</span> <code>be921c3b-7db9-50b5-a110-92f31673fc62</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-91b20476-12cf-50d6-880a-ea509ffe8a9a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-91b20476-12cf-50d6-880a-ea509ffe8a9a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1" rel="noreferrer noopener"><span>Thermodynamik, Entropie und Klimakontexte bewerten</span> <code>6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e6a286e7077efc51301807195009c73aa40d331a03a6abbdba4f474b7d86d1c5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=91b20476-12cf-50d6-880a-ea509ffe8a9a&amp;goalFingerprint=sha256%3Ae6a286e7077efc51301807195009c73aa40d331a03a6abbdba4f474b7d86d1c5&amp;pageFingerprint=sha256%3A8fc830ede0d036240c82a80b1d73a93d0a05afaf8357e5d4707a386200f13014&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-18058384-a1bc-5ba2-8f5d-1fe9498acbf0" data-goal-id="18058384-a1bc-5ba2-8f5d-1fe9498acbf0" data-page-number="19" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28" aria-labelledby="goal-18058384-a1bc-5ba2-8f5d-1fe9498acbf0-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-18058384-a1bc-5ba2-8f5d-1fe9498acbf0-title"><a class="goal-self-link" href="#goal-18058384-a1bc-5ba2-8f5d-1fe9498acbf0">Zweiten Hauptsatz auf Wärmekraftmaschinen anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>18058384-a1bc-5ba2-8f5d-1fe9498acbf0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5cba08b57a65af2122bdbd88">Grundlagen der Thermodynamik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:178b108fd456cc23c5cd2b0504dd90a19875af5e004f5cc8d70c301786fc068d" data-rendered-digest="sha256:f32671a300ff784e6713c6e600c1c425f5c7251f1719f30134e6c49969f7799c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/18058384-a1bc-5ba2-8f5d-1fe9498acbf0/18058384-a1bc-5ba2-8f5d-1fe9498acbf0.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Zweiten Hauptsatz auf Wärmekraftmaschinen anwenden&quot;. Die lernende Person kann den zweiten Hauptsatz auf Wärmekraftmaschinen anwenden, den Zusammenhang zwischen Abwärme und begrenztem Wirkungsgrad erläutern und die Carnot-Grenze qualitativ einordnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-18058384-a1bc-5ba2-8f5d-1fe9498acbf0-description-heading">
+        <p class="section-heading" id="goal-18058384-a1bc-5ba2-8f5d-1fe9498acbf0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann mit dem zweiten Hauptsatz erklären, warum eine zyklische Wärmekraftmaschine zwischen einem heißen und einem kalten Reservoir mit jeweils konstanter Temperatur Abwärme abgeben muss, und die Carnot-Grenze als maximal möglichen Wirkungsgrad bei diesen Temperaturen im reversiblen Grenzfall qualitativ deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-18058384-a1bc-5ba2-8f5d-1fe9498acbf0" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-18058384-a1bc-5ba2-8f5d-1fe9498acbf0-requires-heading">
+          <p class="section-heading" id="goal-18058384-a1bc-5ba2-8f5d-1fe9498acbf0-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-81a45dec-37be-529b-89ce-2f3101237293"><span>Entropie E10: Clausius-Ungleichung (Kreisprozess)</span><code>81a45dec-37be-529b-89ce-2f3101237293</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-18058384-a1bc-5ba2-8f5d-1fe9498acbf0-reverse-heading">
+          <p class="section-heading" id="goal-18058384-a1bc-5ba2-8f5d-1fe9498acbf0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-73b5af24-7750-520a-bb16-43136ce19a5c"><span>Wirkungsgrad und Carnot-Grenze quantitativ vergleichen</span><code>73b5af24-7750-520a-bb16-43136ce19a5c</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-18058384-a1bc-5ba2-8f5d-1fe9498acbf0-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-18058384-a1bc-5ba2-8f5d-1fe9498acbf0-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d0cebf18-8b2a-52d6-857d-ef18cd64541c" rel="noreferrer noopener"><span>Entropie E15: Wärmekraftmaschinen und Carnot-Grenze</span> <code>d0cebf18-8b2a-52d6-857d-ef18cd64541c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-18058384-a1bc-5ba2-8f5d-1fe9498acbf0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-18058384-a1bc-5ba2-8f5d-1fe9498acbf0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-879491c0-7153-570b-91f4-c61d9fe8a143" rel="noreferrer noopener"><span>Thermodynamik und Rotationssystem</span> <code>879491c0-7153-570b-91f4-c61d9fe8a143</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 19 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2714a779b9df893a9ce749e7777d0dcad9b8eaf1d5081fa26a2f43df819a0b9b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=18058384-a1bc-5ba2-8f5d-1fe9498acbf0&amp;goalFingerprint=sha256%3A2714a779b9df893a9ce749e7777d0dcad9b8eaf1d5081fa26a2f43df819a0b9b&amp;pageFingerprint=sha256%3A1114883465914b216ef7f0b792fd1ab3815d87a77ce068e55648cf0aeb9e2bf2&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-73b5af24-7750-520a-bb16-43136ce19a5c" data-goal-id="73b5af24-7750-520a-bb16-43136ce19a5c" data-page-number="20" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-df11eb33-4900-52bf-93b3-eb82ff0f9a28 structure:canonical-goal-e9e6d534-dac3-5389-959e-3b2030edcd68" aria-labelledby="goal-73b5af24-7750-520a-bb16-43136ce19a5c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-73b5af24-7750-520a-bb16-43136ce19a5c-title"><a class="goal-self-link" href="#goal-73b5af24-7750-520a-bb16-43136ce19a5c">Wirkungsgrad und Carnot-Grenze quantitativ vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>73b5af24-7750-520a-bb16-43136ce19a5c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5cba08b57a65af2122bdbd88">Grundlagen der Thermodynamik</a></li><li><a href="#chapter-46778cb197295f355fe016d9">Thermodynamische Prozessrechnung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a604ac5b9e81e99f896cf39bfcf3a6849bd8bc888901a42695576d21f89a068b" data-rendered-digest="sha256:4efef7db583e1c667895f3c3ced58937576120ebcca6810474a4605c37c8bf1f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/73b5af24-7750-520a-bb16-43136ce19a5c/73b5af24-7750-520a-bb16-43136ce19a5c.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Wirkungsgrad und Carnot-Grenze quantitativ vergleichen&quot;. Die lernende Person kann den Wirkungsgrad einer realen zyklischen Wärmekraftmaschine aus Messdaten bestimmen, mit der Carnot-Grenze für dieselben heißen und kalten Reservoirtemperaturen vergleichen und Abweichungen unter Berücksichtigung von Irreversibilitäten und Messunsicherheiten physikalisch beurteilen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-73b5af24-7750-520a-bb16-43136ce19a5c-description-heading">
+        <p class="section-heading" id="goal-73b5af24-7750-520a-bb16-43136ce19a5c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Wirkungsgrad einer realen zyklischen Wärmekraftmaschine aus Messdaten bestimmen, mit der Carnot-Grenze für dieselben heißen und kalten Reservoirtemperaturen vergleichen und Abweichungen unter Berücksichtigung von Irreversibilitäten und Messunsicherheiten physikalisch beurteilen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-73b5af24-7750-520a-bb16-43136ce19a5c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-73b5af24-7750-520a-bb16-43136ce19a5c-requires-heading">
+          <p class="section-heading" id="goal-73b5af24-7750-520a-bb16-43136ce19a5c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-23c5382a-4b0f-5715-84b5-cf87b8323152"><span>Ersten Hauptsatz in Prozessen quantitativ bilanzieren</span><code>23c5382a-4b0f-5715-84b5-cf87b8323152</code><span class="reference-page">S. 17</span></a></li><li><a href="#goal-18058384-a1bc-5ba2-8f5d-1fe9498acbf0"><span>Zweiten Hauptsatz auf Wärmekraftmaschinen anwenden</span><code>18058384-a1bc-5ba2-8f5d-1fe9498acbf0</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-73b5af24-7750-520a-bb16-43136ce19a5c-reverse-heading">
+          <p class="section-heading" id="goal-73b5af24-7750-520a-bb16-43136ce19a5c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-73b5af24-7750-520a-bb16-43136ce19a5c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-73b5af24-7750-520a-bb16-43136ce19a5c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-879491c0-7153-570b-91f4-c61d9fe8a143" rel="noreferrer noopener"><span>Thermodynamik und Rotationssystem</span> <code>879491c0-7153-570b-91f4-c61d9fe8a143</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 20 von 20</span>
+      <span>Buch-Digest <code>sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:61c645f0216b83b90dd87687aced1c30c71632bb24729155bd9504a6894c576e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b043s-post-two-text-revisions-20-v1-20260908&amp;edition=curricular-atomic-v1&amp;goalId=73b5af24-7750-520a-bb16-43136ce19a5c&amp;goalFingerprint=sha256%3A61c645f0216b83b90dd87687aced1c30c71632bb24729155bd9504a6894c576e&amp;pageFingerprint=sha256%3Accd589922ba442504f71a57a97aad94f7a5748071ce33b1d1d5fb7c42e48b2de&amp;bookDigest=sha256%3Ade17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d&amp;page=20" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

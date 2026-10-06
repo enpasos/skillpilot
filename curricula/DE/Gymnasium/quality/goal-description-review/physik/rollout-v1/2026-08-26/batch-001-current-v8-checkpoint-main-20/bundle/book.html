@@ -1,0 +1,1023 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v1">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik Lernzielbeschreibungs-Review – Rollout Batch 001, vorläufiger Abschluss Hauptteil</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    h1 { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<article class="goal-page" id="goal-ae67bcf1-f3ee-50d6-9a12-25a159dff659" data-goal-id="ae67bcf1-f3ee-50d6-9a12-25a159dff659" data-page-number="1" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-ae67bcf1-f3ee-50d6-9a12-25a159dff659-title">
+    <header class="goal-header">
+      <h1 id="goal-ae67bcf1-f3ee-50d6-9a12-25a159dff659-title"><a class="goal-self-link" href="#goal-ae67bcf1-f3ee-50d6-9a12-25a159dff659">Bewegungen mit Weg-Zeit-Diagrammen beschreiben</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ae67bcf1-f3ee-50d6-9a12-25a159dff659</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8c5aa4c0f9fb6f26d81aa814faeb8265b5d7b355a1e594f14b98df2a68749c51" data-rendered-digest="sha256:58b56fa83190e179cfde3e9ddb83a0f357772d0386bbd95b29d96936e337ca42" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/ae67bcf1-f3ee-50d6-9a12-25a159dff659/ae67bcf1-f3ee-50d6-9a12-25a159dff659.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Bewegungen mit Weg-Zeit-Diagrammen beschreiben&quot;. Die lernende Person kann in Weg-Zeit-Diagrammen Ruhe, gleichförmige Bewegung und qualitative Geschwindigkeitsänderungen anhand des Verlaufs und seiner Steigung unterscheiden und passende Bewegungen beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ae67bcf1-f3ee-50d6-9a12-25a159dff659-description-heading">
+        <p class="section-heading" id="goal-ae67bcf1-f3ee-50d6-9a12-25a159dff659-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in Weg-Zeit-Diagrammen Ruhe, gleichförmige Bewegung und qualitative Geschwindigkeitsänderungen anhand des Verlaufs und seiner Steigung unterscheiden und passende Bewegungen beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ae67bcf1-f3ee-50d6-9a12-25a159dff659" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ae67bcf1-f3ee-50d6-9a12-25a159dff659-requires-heading">
+          <p class="section-heading" id="goal-ae67bcf1-f3ee-50d6-9a12-25a159dff659-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-ae67bcf1-f3ee-50d6-9a12-25a159dff659-reverse-heading">
+          <p class="section-heading" id="goal-ae67bcf1-f3ee-50d6-9a12-25a159dff659-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-5ea765ac-c279-551a-8a94-a07da2381e5b"><span>Kräfte und Trägheit qualitativ erklären</span><code>5ea765ac-c279-551a-8a94-a07da2381e5b</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-ae67bcf1-f3ee-50d6-9a12-25a159dff659-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ae67bcf1-f3ee-50d6-9a12-25a159dff659-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5c44b9ba-9b05-4774-95d5-073230d3fc4f" rel="noreferrer noopener"><span>Warum Physik? – Weltverständnis &amp; Zukunft</span> <code>5c44b9ba-9b05-4774-95d5-073230d3fc4f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-ae67bcf1-f3ee-50d6-9a12-25a159dff659-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ae67bcf1-f3ee-50d6-9a12-25a159dff659-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ce431132-dfc4-42c2-aff6-bd72035190f8" rel="noreferrer noopener"><span>Bewegungen mit Diagrammen untersuchen</span> <code>ce431132-dfc4-42c2-aff6-bd72035190f8</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 1 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0cf2862a6562dfd58658f56d6a33bc472fbb7e4504bd3bb272c884bfc67d275a</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=ae67bcf1-f3ee-50d6-9a12-25a159dff659&amp;goalFingerprint=sha256%3A0cf2862a6562dfd58658f56d6a33bc472fbb7e4504bd3bb272c884bfc67d275a&amp;pageFingerprint=sha256%3A6ce0381f6001d5f7db191c17f769757564908a07235222158e0dda9fb52cb9d1&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5ea765ac-c279-551a-8a94-a07da2381e5b" data-goal-id="5ea765ac-c279-551a-8a94-a07da2381e5b" data-page-number="2" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-5ea765ac-c279-551a-8a94-a07da2381e5b-title">
+    <header class="goal-header">
+      <h1 id="goal-5ea765ac-c279-551a-8a94-a07da2381e5b-title"><a class="goal-self-link" href="#goal-5ea765ac-c279-551a-8a94-a07da2381e5b">Kräfte und Trägheit qualitativ erklären</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5ea765ac-c279-551a-8a94-a07da2381e5b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:83b8eeef104f438f925bd32143ecd6561ff05684e3ba3f270e14b60a5cd56481" data-rendered-digest="sha256:7dbeb406a9c1608094fed6c0afad6c3130982d3efe36bdbdf41009c827b53587" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/5ea765ac-c279-551a-8a94-a07da2381e5b/5ea765ac-c279-551a-8a94-a07da2381e5b.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Kräfte und Trägheit qualitativ erklären&quot;. Die lernende Person kann Änderungen von Bewegungszuständen durch Kräfte erklären und Trägheit qualitativ beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5ea765ac-c279-551a-8a94-a07da2381e5b-description-heading">
+        <p class="section-heading" id="goal-5ea765ac-c279-551a-8a94-a07da2381e5b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Bewegungsänderungen auf eine resultierende Kraft zurückführen und mit dem Trägheitsprinzip erklären, warum ein Körper bei verschwindender resultierender Kraft seinen Bewegungszustand beibehält.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5ea765ac-c279-551a-8a94-a07da2381e5b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5ea765ac-c279-551a-8a94-a07da2381e5b-requires-heading">
+          <p class="section-heading" id="goal-5ea765ac-c279-551a-8a94-a07da2381e5b-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ae67bcf1-f3ee-50d6-9a12-25a159dff659"><span>Bewegungen mit Weg-Zeit-Diagrammen beschreiben</span><code>ae67bcf1-f3ee-50d6-9a12-25a159dff659</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-5ea765ac-c279-551a-8a94-a07da2381e5b-reverse-heading">
+          <p class="section-heading" id="goal-5ea765ac-c279-551a-8a94-a07da2381e5b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-41d35667-0296-5f84-bc12-202ffc440be0"><span>Kräfte vektoriell zusammensetzen und Resultierende bestimmen</span><code>41d35667-0296-5f84-bc12-202ffc440be0</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-67ffd0f0-a5ab-518f-8c45-4c0e7eb18390"><span>Angriffspunkt, Wirkungslinie und Schwerpunkt deuten</span><code>67ffd0f0-a5ab-518f-8c45-4c0e7eb18390</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-581c0766-b84b-54cb-b8b6-375310329a41"><span>Reibung als Kontaktkraft deuten</span><code>581c0766-b84b-54cb-b8b6-375310329a41</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-722857cf-f327-5740-8151-64eb92195ec8"><span>Mechanische Energieformen qualitativ unterscheiden</span><code>722857cf-f327-5740-8151-64eb92195ec8</code><span class="reference-page">S. 7</span></a></li><li><a href="#goal-9c328f68-41ed-55dd-9e02-34414a6246f2"><span>Masse und Gewichtskraft unterscheiden</span><code>9c328f68-41ed-55dd-9e02-34414a6246f2</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-5ea765ac-c279-551a-8a94-a07da2381e5b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5ea765ac-c279-551a-8a94-a07da2381e5b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5308de76-79f0-44f4-8cb7-fc9de4772217" rel="noreferrer noopener"><span>Druck in Flüssigkeiten und Gasen qualitativ beschreiben</span> <code>5308de76-79f0-44f4-8cb7-fc9de4772217</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-31a2ef52-114b-4d2c-a720-6ef5a390b6dc" rel="noreferrer noopener"><span>Newtons 1. Axiom (Trägheitsprinzip)</span> <code>31a2ef52-114b-4d2c-a720-6ef5a390b6dc</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5f289cdc-fda1-4058-b44f-041ba1398e79" rel="noreferrer noopener"><span>Grundgleichung der Mechanik anwenden</span> <code>5f289cdc-fda1-4058-b44f-041ba1398e79</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83" rel="noreferrer noopener"><span>Kraft und Verformung experimentell untersuchen</span> <code>45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 2 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c5722fac43531d048f5a08f817db18df51aedef01e9f8949f92921486339dae5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=5ea765ac-c279-551a-8a94-a07da2381e5b&amp;goalFingerprint=sha256%3Ac5722fac43531d048f5a08f817db18df51aedef01e9f8949f92921486339dae5&amp;pageFingerprint=sha256%3A1ba2c43b62426f354ee62c5a8afcfd1091e4cefc4beee88dcbd3f45fc9384653&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-41d35667-0296-5f84-bc12-202ffc440be0" data-goal-id="41d35667-0296-5f84-bc12-202ffc440be0" data-page-number="3" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-41d35667-0296-5f84-bc12-202ffc440be0-title">
+    <header class="goal-header">
+      <h1 id="goal-41d35667-0296-5f84-bc12-202ffc440be0-title"><a class="goal-self-link" href="#goal-41d35667-0296-5f84-bc12-202ffc440be0">Kräfte vektoriell zusammensetzen und Resultierende bestimmen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>41d35667-0296-5f84-bc12-202ffc440be0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f631200a4f5f4ae96f42202013fe2f27735707ad5262c1b1eaca4ec9d780de23" data-rendered-digest="sha256:40fccd7323cf24a7da42ebe4ee06d7329656c084321dd1a14a67c788d9566838" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/41d35667-0296-5f84-bc12-202ffc440be0/41d35667-0296-5f84-bc12-202ffc440be0.png" alt="Didaktische Visualisierung zum Lernziel &quot;Kräfte vektoriell zusammensetzen und Resultierende bestimmen&quot;. Die lernende Person kann mehrere an einem Körper angreifende Kräfte maßstäblich als Vektoren darstellen, grafisch zu einer resultierenden Kraft zusammensetzen und deren Betrag und Richtung im Kontext deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-41d35667-0296-5f84-bc12-202ffc440be0-description-heading">
+        <p class="section-heading" id="goal-41d35667-0296-5f84-bc12-202ffc440be0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann mehrere an einem Körper angreifende Kräfte maßstäblich als Vektoren darstellen, grafisch zu einer resultierenden Kraft zusammensetzen und deren Betrag und Richtung im Kontext deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-41d35667-0296-5f84-bc12-202ffc440be0" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-41d35667-0296-5f84-bc12-202ffc440be0-requires-heading">
+          <p class="section-heading" id="goal-41d35667-0296-5f84-bc12-202ffc440be0-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-5ea765ac-c279-551a-8a94-a07da2381e5b"><span>Kräfte und Trägheit qualitativ erklären</span><code>5ea765ac-c279-551a-8a94-a07da2381e5b</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-41d35667-0296-5f84-bc12-202ffc440be0-reverse-heading">
+          <p class="section-heading" id="goal-41d35667-0296-5f84-bc12-202ffc440be0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-327302e3-5b36-46f8-9c16-73f24583b0eb"><span>Arbeit und einfache Maschinen qualitativ deuten</span><code>327302e3-5b36-46f8-9c16-73f24583b0eb</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-41d35667-0296-5f84-bc12-202ffc440be0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-41d35667-0296-5f84-bc12-202ffc440be0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8f62ab5e-20fc-562f-8121-63c082313e6e" rel="noreferrer noopener"><span>Prüfungsaufgabe: Kräfte an einer Aufhängung vektoriell bilanzieren</span> <code>8f62ab5e-20fc-562f-8121-63c082313e6e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d8bad724-03ea-510a-8415-928332ed4979" rel="noreferrer noopener"><span>Prüfungsaufgabe: Kräfte experimentell und grafisch untersuchen</span> <code>d8bad724-03ea-510a-8415-928332ed4979</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 3 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:adb241e4277a0d42f8e36a57ab1adb9e796fe465327271e4b885aa344760fe87</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=41d35667-0296-5f84-bc12-202ffc440be0&amp;goalFingerprint=sha256%3Aadb241e4277a0d42f8e36a57ab1adb9e796fe465327271e4b885aa344760fe87&amp;pageFingerprint=sha256%3A6bf823985823b416562fcdd887551165d5c63b6c353408a3fdd2ba26f4e2808f&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-67ffd0f0-a5ab-518f-8c45-4c0e7eb18390" data-goal-id="67ffd0f0-a5ab-518f-8c45-4c0e7eb18390" data-page-number="4" data-chapter-ids="atlas:3400bf6ce29cb6d09086 atlas:d01e8348cf2dfb5f30f6 atlas:0ef9d732503697003197 atlas:9d95c4cc4b28c365fa29" aria-labelledby="goal-67ffd0f0-a5ab-518f-8c45-4c0e7eb18390-title">
+    <header class="goal-header">
+      <h1 id="goal-67ffd0f0-a5ab-518f-8c45-4c0e7eb18390-title"><a class="goal-self-link" href="#goal-67ffd0f0-a5ab-518f-8c45-4c0e7eb18390">Angriffspunkt, Wirkungslinie und Schwerpunkt deuten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>67ffd0f0-a5ab-518f-8c45-4c0e7eb18390</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li><li>Sekundarstufe I</li><li>Mechanische Grundlagen (Sek I)</li><li>Kräfteigenschaften untersuchen</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:63460b45e7ee495b7ce2422c3e27eece5ab3502e84ff821d53e64bfa01351a4f" data-rendered-digest="sha256:eb4f223a454d76688ed6354104d121347f745091148a058882eb11781d8700ff" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/67ffd0f0-a5ab-518f-8c45-4c0e7eb18390/67ffd0f0-a5ab-518f-8c45-4c0e7eb18390.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Angriffspunkt, Wirkungslinie und Schwerpunkt deuten&quot;. Die lernende Person kann an starren Körpern Angriffspunkt und Wirkungslinie einer Kraft kennzeichnen, in einem näherungsweise homogenen Gravitationsfeld die Gewichtskraft als am Schwerpunkt angreifend modellieren und daraus qualitative Folgen für Gleichgewicht oder Drehwirkung ableiten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-67ffd0f0-a5ab-518f-8c45-4c0e7eb18390-description-heading">
+        <p class="section-heading" id="goal-67ffd0f0-a5ab-518f-8c45-4c0e7eb18390-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an starren Körpern Angriffspunkt und Wirkungslinie einer Kraft kennzeichnen, in einem näherungsweise homogenen Gravitationsfeld die Gewichtskraft als am Schwerpunkt angreifend modellieren und daraus qualitative Folgen für Gleichgewicht oder Drehwirkung ableiten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, SL:</strong> Sek. I · G9</li><li><strong>NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-67ffd0f0-a5ab-518f-8c45-4c0e7eb18390" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-67ffd0f0-a5ab-518f-8c45-4c0e7eb18390-requires-heading">
+          <p class="section-heading" id="goal-67ffd0f0-a5ab-518f-8c45-4c0e7eb18390-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-5ea765ac-c279-551a-8a94-a07da2381e5b"><span>Kräfte und Trägheit qualitativ erklären</span><code>5ea765ac-c279-551a-8a94-a07da2381e5b</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-67ffd0f0-a5ab-518f-8c45-4c0e7eb18390-reverse-heading">
+          <p class="section-heading" id="goal-67ffd0f0-a5ab-518f-8c45-4c0e7eb18390-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-327302e3-5b36-46f8-9c16-73f24583b0eb"><span>Arbeit und einfache Maschinen qualitativ deuten</span><code>327302e3-5b36-46f8-9c16-73f24583b0eb</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-67ffd0f0-a5ab-518f-8c45-4c0e7eb18390-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-67ffd0f0-a5ab-518f-8c45-4c0e7eb18390-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-449d9732-a869-5126-8879-564da5c3d263" rel="noreferrer noopener"><span>Prüfungsaufgabe: Wirkungslinien und Schwerpunkt an einer Planke deuten</span> <code>449d9732-a869-5126-8879-564da5c3d263</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 4 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:12251968347859f9afa724038e46767619e9d79c8b939b2afc3a6297b0f9416b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=67ffd0f0-a5ab-518f-8c45-4c0e7eb18390&amp;goalFingerprint=sha256%3A12251968347859f9afa724038e46767619e9d79c8b939b2afc3a6297b0f9416b&amp;pageFingerprint=sha256%3A792c9ac5641f710585db80d103065765ae37e7f16b85342a331acc90fbf81459&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-581c0766-b84b-54cb-b8b6-375310329a41" data-goal-id="581c0766-b84b-54cb-b8b6-375310329a41" data-page-number="5" data-chapter-ids="atlas:3400bf6ce29cb6d09086 atlas:d01e8348cf2dfb5f30f6 atlas:0ef9d732503697003197" aria-labelledby="goal-581c0766-b84b-54cb-b8b6-375310329a41-title">
+    <header class="goal-header">
+      <h1 id="goal-581c0766-b84b-54cb-b8b6-375310329a41-title"><a class="goal-self-link" href="#goal-581c0766-b84b-54cb-b8b6-375310329a41">Reibung als Kontaktkraft deuten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>581c0766-b84b-54cb-b8b6-375310329a41</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li><li>Sekundarstufe I</li><li>Mechanische Grundlagen (Sek I)</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:03bc353d37179fd1bbf16320369a55489e2b982f5f737ad1dcbd9d8ed82acdd7" data-rendered-digest="sha256:59c9895df8908f65480a4f0295c1d8745362ed660129565de7e16b3ab7e6823e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/581c0766-b84b-54cb-b8b6-375310329a41/581c0766-b84b-54cb-b8b6-375310329a41.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Reibung als Kontaktkraft deuten&quot;. Die lernende Person kann Reibung als Kontaktkraft deuten, die einer relativen oder drohenden Bewegung zwischen Kontaktflächen entgegenwirkt, und erklären, wie sie etwa beim Gehen die Fortbewegung ermöglicht oder eine Relativbewegung abbremst.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-581c0766-b84b-54cb-b8b6-375310329a41-description-heading">
+        <p class="section-heading" id="goal-581c0766-b84b-54cb-b8b6-375310329a41-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Reibung als Kontaktkraft deuten, die einer relativen oder drohenden Bewegung zwischen Kontaktflächen entgegenwirkt, und erklären, wie sie etwa beim Gehen die Fortbewegung ermöglicht oder eine Relativbewegung abbremst.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, SL:</strong> Sek. I · G9</li><li><strong>NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-581c0766-b84b-54cb-b8b6-375310329a41" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-581c0766-b84b-54cb-b8b6-375310329a41-requires-heading">
+          <p class="section-heading" id="goal-581c0766-b84b-54cb-b8b6-375310329a41-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-5ea765ac-c279-551a-8a94-a07da2381e5b"><span>Kräfte und Trägheit qualitativ erklären</span><code>5ea765ac-c279-551a-8a94-a07da2381e5b</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-581c0766-b84b-54cb-b8b6-375310329a41-reverse-heading">
+          <p class="section-heading" id="goal-581c0766-b84b-54cb-b8b6-375310329a41-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-581c0766-b84b-54cb-b8b6-375310329a41-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-581c0766-b84b-54cb-b8b6-375310329a41-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7072dfbc-f684-5d4e-8c9a-ee74f7ebeeba" rel="noreferrer noopener"><span>Prüfungsaufgabe: Reibung beim Ziehen und Gehen deuten</span> <code>7072dfbc-f684-5d4e-8c9a-ee74f7ebeeba</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 5 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0da527126449fd0f810e03791955d7af7f560739bf4b998c165795aa65ddc99c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=581c0766-b84b-54cb-b8b6-375310329a41&amp;goalFingerprint=sha256%3A0da527126449fd0f810e03791955d7af7f560739bf4b998c165795aa65ddc99c&amp;pageFingerprint=sha256%3A2f1d661a48d28d09b8e599276480475140b6323af440f32a378e708d5446665f&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-327302e3-5b36-46f8-9c16-73f24583b0eb" data-goal-id="327302e3-5b36-46f8-9c16-73f24583b0eb" data-page-number="6" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-327302e3-5b36-46f8-9c16-73f24583b0eb-title">
+    <header class="goal-header">
+      <h1 id="goal-327302e3-5b36-46f8-9c16-73f24583b0eb-title"><a class="goal-self-link" href="#goal-327302e3-5b36-46f8-9c16-73f24583b0eb">Arbeit und einfache Maschinen qualitativ deuten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>327302e3-5b36-46f8-9c16-73f24583b0eb</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:47e5075434dd14919d63b231145bb7cf9c85482904af8be78638fbe94c3f414e" data-rendered-digest="sha256:f6595417211a7cfafde194c35837661ad31713bdaee6869281321d9e6aa66499" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/327302e3-5b36-46f8-9c16-73f24583b0eb/327302e3-5b36-46f8-9c16-73f24583b0eb.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Arbeit, einfache Maschinen und Wirkungsgrad qualitativ deuten&quot;. Die lernende Person kann einfache Maschinen, Rollen und Räder als Kraftwandler beschreiben und den Wirkungsgrad qualitativ deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-327302e3-5b36-46f8-9c16-73f24583b0eb-description-heading">
+        <p class="section-heading" id="goal-327302e3-5b36-46f8-9c16-73f24583b0eb-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann einfache Maschinen wie Hebel, Rollen und Räder als Kraftwandler beschreiben und erklären, warum eine kleinere Kraft idealerweise mit einem längeren Weg verbunden ist, ohne mechanische Arbeit einzusparen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-327302e3-5b36-46f8-9c16-73f24583b0eb" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-327302e3-5b36-46f8-9c16-73f24583b0eb-requires-heading">
+          <p class="section-heading" id="goal-327302e3-5b36-46f8-9c16-73f24583b0eb-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-41d35667-0296-5f84-bc12-202ffc440be0"><span>Kräfte vektoriell zusammensetzen und Resultierende bestimmen</span><code>41d35667-0296-5f84-bc12-202ffc440be0</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-67ffd0f0-a5ab-518f-8c45-4c0e7eb18390"><span>Angriffspunkt, Wirkungslinie und Schwerpunkt deuten</span><code>67ffd0f0-a5ab-518f-8c45-4c0e7eb18390</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-327302e3-5b36-46f8-9c16-73f24583b0eb-reverse-heading">
+          <p class="section-heading" id="goal-327302e3-5b36-46f8-9c16-73f24583b0eb-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-327302e3-5b36-46f8-9c16-73f24583b0eb-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-327302e3-5b36-46f8-9c16-73f24583b0eb-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0cf2a5b0-8660-578d-8316-2b8a50fbdff7" rel="noreferrer noopener"><span>Prüfungsaufgabe: Einen Rettungs- und Materialwagen energetisch bewegen und heben</span> <code>0cf2a5b0-8660-578d-8316-2b8a50fbdff7</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d15764ce-ebea-5178-84ea-9351dd808b8c" rel="noreferrer noopener"><span>Prüfungsaufgabe: Kraft und Weg an einfachen Maschinen vergleichen</span> <code>d15764ce-ebea-5178-84ea-9351dd808b8c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 6 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c4a4aa52a3db904de0caae95f65ecfabf4288dc471e59e7217fec95e595f1172</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=327302e3-5b36-46f8-9c16-73f24583b0eb&amp;goalFingerprint=sha256%3Ac4a4aa52a3db904de0caae95f65ecfabf4288dc471e59e7217fec95e595f1172&amp;pageFingerprint=sha256%3A4ce51a2ff074f5531427ec41003df6ebce5a069980dda10b1e633c03c8bc4462&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-722857cf-f327-5740-8151-64eb92195ec8" data-goal-id="722857cf-f327-5740-8151-64eb92195ec8" data-page-number="7" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-722857cf-f327-5740-8151-64eb92195ec8-title">
+    <header class="goal-header">
+      <h1 id="goal-722857cf-f327-5740-8151-64eb92195ec8-title"><a class="goal-self-link" href="#goal-722857cf-f327-5740-8151-64eb92195ec8">Mechanische Energieformen qualitativ unterscheiden</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>722857cf-f327-5740-8151-64eb92195ec8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f683f9a96a24c42e7afa194701b8aca41045d903be603f4f9417bb0747cb01b7" data-rendered-digest="sha256:6c11fe20730c2098ce6530b0e286e4ba711bfce2a913ebb2d3f5e184fd5ee11f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/722857cf-f327-5740-8151-64eb92195ec8/722857cf-f327-5740-8151-64eb92195ec8.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Mechanische Energieformen qualitativ unterscheiden&quot;. Die lernende Person kann mechanische Energieformen wie Bewegungs-, Lage- und Spannenergie anhand des Zustands eines Systems unterscheiden und bei einfachen Vorgängen qualitativ beschreiben, welche Energieform ab- und welche zunimmt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-722857cf-f327-5740-8151-64eb92195ec8-description-heading">
+        <p class="section-heading" id="goal-722857cf-f327-5740-8151-64eb92195ec8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann mechanische Energieformen wie Bewegungs-, Lage- und Spannenergie anhand des Zustands eines Systems unterscheiden und bei einfachen Vorgängen qualitativ beschreiben, welche Energieform ab- und welche zunimmt.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-722857cf-f327-5740-8151-64eb92195ec8" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-722857cf-f327-5740-8151-64eb92195ec8-requires-heading">
+          <p class="section-heading" id="goal-722857cf-f327-5740-8151-64eb92195ec8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-5ea765ac-c279-551a-8a94-a07da2381e5b"><span>Kräfte und Trägheit qualitativ erklären</span><code>5ea765ac-c279-551a-8a94-a07da2381e5b</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-722857cf-f327-5740-8151-64eb92195ec8-reverse-heading">
+          <p class="section-heading" id="goal-722857cf-f327-5740-8151-64eb92195ec8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-30a936ec-e427-57fe-bf3e-4abd64b1f0c1"><span>Energieversorgung mit Energieübertragungsketten beschreiben</span><code>30a936ec-e427-57fe-bf3e-4abd64b1f0c1</code><span class="reference-page">S. 10</span></a></li><li><a href="#goal-b92827a7-5d62-5fdb-a6f5-ac44461f4a7b"><span>Leistung als Energie pro Zeit bestimmen und deuten</span><code>b92827a7-5d62-5fdb-a6f5-ac44461f4a7b</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-f7f2c254-1663-5861-bed7-a32c00495b19"><span>Wirkungsgrad als Verhältnis nutzbarer und zugeführter Energie deuten</span><code>f7f2c254-1663-5861-bed7-a32c00495b19</code><span class="reference-page">S. 12</span></a></li><li><a href="#goal-eeba6bf8-a2b9-4d7d-a1d6-67286c923cef"><span>Wärmeübertragung und Energiebilanzen qualitativ erklären</span><code>eeba6bf8-a2b9-4d7d-a1d6-67286c923cef</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-722857cf-f327-5740-8151-64eb92195ec8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-722857cf-f327-5740-8151-64eb92195ec8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-cbb26ed2-6979-46f6-a4ae-128f5c5d9d76" rel="noreferrer noopener"><span>Elektrische Energieumwandlungen qualitativ beschreiben</span> <code>cbb26ed2-6979-46f6-a4ae-128f5c5d9d76</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-94784e0a-7ddc-48be-91fb-dc82b78eb322" rel="noreferrer noopener"><span>Mechanische Energie</span> <code>94784e0a-7ddc-48be-91fb-dc82b78eb322</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 7 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1ae9f28d6c82c78a74c6163d9cc273775d692d63e19e096b1b982bb58f34be76</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=722857cf-f327-5740-8151-64eb92195ec8&amp;goalFingerprint=sha256%3A1ae9f28d6c82c78a74c6163d9cc273775d692d63e19e096b1b982bb58f34be76&amp;pageFingerprint=sha256%3Ac0d49aafe6c77c97e526f2cb588f5044c839b0cb849c32da0f7926188ed1f105&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-940978fa-1f2d-4e54-9c28-081a6df9b76f" data-goal-id="940978fa-1f2d-4e54-9c28-081a6df9b76f" data-page-number="8" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-940978fa-1f2d-4e54-9c28-081a6df9b76f-title">
+    <header class="goal-header">
+      <h1 id="goal-940978fa-1f2d-4e54-9c28-081a6df9b76f-title"><a class="goal-self-link" href="#goal-940978fa-1f2d-4e54-9c28-081a6df9b76f">Temperatur und Wärme unterscheiden</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>940978fa-1f2d-4e54-9c28-081a6df9b76f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b13f8fe759e32d0a4a29cac293cd66f542351508ad151dbc7d1201ff3d9c35a2" data-rendered-digest="sha256:d66461c96b0fa727791a89397031c71564a57653bbc564f521a5ed7393746c2e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/940978fa-1f2d-4e54-9c28-081a6df9b76f/940978fa-1f2d-4e54-9c28-081a6df9b76f.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Temperatur und Wärme unterscheiden&quot;. Die lernende Person kann Temperatur als Zustandsgröße vom Wärmeempfinden unterscheiden und typische Wärmequellen benennen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-940978fa-1f2d-4e54-9c28-081a6df9b76f-description-heading">
+        <p class="section-heading" id="goal-940978fa-1f2d-4e54-9c28-081a6df9b76f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Temperatur als messbare Zustandsgröße von Wärme als Energieübertragung aufgrund eines Temperaturunterschieds und vom subjektiven Wärmeempfinden unterscheiden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-940978fa-1f2d-4e54-9c28-081a6df9b76f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-940978fa-1f2d-4e54-9c28-081a6df9b76f-requires-heading">
+          <p class="section-heading" id="goal-940978fa-1f2d-4e54-9c28-081a6df9b76f-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-940978fa-1f2d-4e54-9c28-081a6df9b76f-reverse-heading">
+          <p class="section-heading" id="goal-940978fa-1f2d-4e54-9c28-081a6df9b76f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-eeba6bf8-a2b9-4d7d-a1d6-67286c923cef"><span>Wärmeübertragung und Energiebilanzen qualitativ erklären</span><code>eeba6bf8-a2b9-4d7d-a1d6-67286c923cef</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-940978fa-1f2d-4e54-9c28-081a6df9b76f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-940978fa-1f2d-4e54-9c28-081a6df9b76f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5c44b9ba-9b05-4774-95d5-073230d3fc4f" rel="noreferrer noopener"><span>Warum Physik? – Weltverständnis &amp; Zukunft</span> <code>5c44b9ba-9b05-4774-95d5-073230d3fc4f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-940978fa-1f2d-4e54-9c28-081a6df9b76f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-940978fa-1f2d-4e54-9c28-081a6df9b76f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-9ac4973a-21d5-48a5-90b4-eb90e10391ae" rel="noreferrer noopener"><span>Teilchenmodell für Temperaturänderungen nutzen</span> <code>9ac4973a-21d5-48a5-90b4-eb90e10391ae</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-310b4f62-e261-46be-bb1b-1f125fc1699a" rel="noreferrer noopener"><span>Druck-Temperatur-Zusammenhang bei konstantem Volumen qualitativ erklären</span> <code>310b4f62-e261-46be-bb1b-1f125fc1699a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b60f63b6-e70b-5557-9f54-86d42fa80325" rel="noreferrer noopener"><span>Thermische Ausdehnung fester, flüssiger und gasförmiger Stoffe deuten</span> <code>b60f63b6-e70b-5557-9f54-86d42fa80325</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-51de4fd9-6827-5b3d-b2ca-5e27ba961a7f" rel="noreferrer noopener"><span>Temperatur mit einem geeigneten Thermometer messen</span> <code>51de4fd9-6827-5b3d-b2ca-5e27ba961a7f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 8 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6c53a8e5f7c70d49e52f63ae0f02beca01fa9de688299c110028135a182b6808</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=940978fa-1f2d-4e54-9c28-081a6df9b76f&amp;goalFingerprint=sha256%3A6c53a8e5f7c70d49e52f63ae0f02beca01fa9de688299c110028135a182b6808&amp;pageFingerprint=sha256%3A02fab799af9d24167dafa61cc17c56a7f20bf07e268f2edcc4475101bb91a74b&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-eeba6bf8-a2b9-4d7d-a1d6-67286c923cef" data-goal-id="eeba6bf8-a2b9-4d7d-a1d6-67286c923cef" data-page-number="9" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-eeba6bf8-a2b9-4d7d-a1d6-67286c923cef-title">
+    <header class="goal-header">
+      <h1 id="goal-eeba6bf8-a2b9-4d7d-a1d6-67286c923cef-title"><a class="goal-self-link" href="#goal-eeba6bf8-a2b9-4d7d-a1d6-67286c923cef">Wärmeübertragung und Energiebilanzen qualitativ erklären</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>eeba6bf8-a2b9-4d7d-a1d6-67286c923cef</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:228cbff3e32513315dbb5c6806aa28b543024a726db29fa17939fc27f8d1bdf5" data-rendered-digest="sha256:1040d5d8c3075595eb5b9771417fc01177bdcd8f8742fc4388da2a6b1f5ca6c4" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/eeba6bf8-a2b9-4d7d-a1d6-67286c923cef/eeba6bf8-a2b9-4d7d-a1d6-67286c923cef.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Wärme als Energieform qualitativ einordnen&quot;. Die lernende Person kann Wärme als Energieform einordnen und einfache Energiebilanzen qualitativ erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-eeba6bf8-a2b9-4d7d-a1d6-67286c923cef-description-heading">
+        <p class="section-heading" id="goal-eeba6bf8-a2b9-4d7d-a1d6-67286c923cef-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Wärme als Energieübertragung aufgrund eines Temperaturunterschieds von gespeicherter innerer Energie und mechanischer Arbeit unterscheiden, ein betrachtetes System abgrenzen und einfache Energiebilanzen qualitativ erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-eeba6bf8-a2b9-4d7d-a1d6-67286c923cef" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-eeba6bf8-a2b9-4d7d-a1d6-67286c923cef-requires-heading">
+          <p class="section-heading" id="goal-eeba6bf8-a2b9-4d7d-a1d6-67286c923cef-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-722857cf-f327-5740-8151-64eb92195ec8"><span>Mechanische Energieformen qualitativ unterscheiden</span><code>722857cf-f327-5740-8151-64eb92195ec8</code><span class="reference-page">S. 7</span></a></li><li><a href="#goal-940978fa-1f2d-4e54-9c28-081a6df9b76f"><span>Temperatur und Wärme unterscheiden</span><code>940978fa-1f2d-4e54-9c28-081a6df9b76f</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-eeba6bf8-a2b9-4d7d-a1d6-67286c923cef-reverse-heading">
+          <p class="section-heading" id="goal-eeba6bf8-a2b9-4d7d-a1d6-67286c923cef-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-eeba6bf8-a2b9-4d7d-a1d6-67286c923cef-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-eeba6bf8-a2b9-4d7d-a1d6-67286c923cef-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0b090935-1e43-581b-84ec-078741f8969e" rel="noreferrer noopener"><span>Prüfungsaufgabe: Wärmeübertragung und Treibhauseffekt bilanzieren</span> <code>0b090935-1e43-581b-84ec-078741f8969e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-873c6371-4ffb-582b-8d8d-3f45f968ba08" rel="noreferrer noopener"><span>Aggregatzustandsänderungen im Teilchenmodell deuten</span> <code>873c6371-4ffb-582b-8d8d-3f45f968ba08</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 9 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:97d4f435401bba112e324ec83bcf7bf70be1d836793fe5062937a23a6cae5a3c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=eeba6bf8-a2b9-4d7d-a1d6-67286c923cef&amp;goalFingerprint=sha256%3A97d4f435401bba112e324ec83bcf7bf70be1d836793fe5062937a23a6cae5a3c&amp;pageFingerprint=sha256%3A95004276328f86130d66422ca632615d19ad510a594975d0692271defbe4adcf&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-30a936ec-e427-57fe-bf3e-4abd64b1f0c1" data-goal-id="30a936ec-e427-57fe-bf3e-4abd64b1f0c1" data-page-number="10" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-30a936ec-e427-57fe-bf3e-4abd64b1f0c1-title">
+    <header class="goal-header">
+      <h1 id="goal-30a936ec-e427-57fe-bf3e-4abd64b1f0c1-title"><a class="goal-self-link" href="#goal-30a936ec-e427-57fe-bf3e-4abd64b1f0c1">Energieversorgung mit Energieübertragungsketten beschreiben</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>30a936ec-e427-57fe-bf3e-4abd64b1f0c1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:64f7285dba12beb2720fdd9fcace54905fe6d05b2ff030d6504fff75f7aa2f8c" data-rendered-digest="sha256:cba13d0ec203d8d91dba90ecf3cbb955889fd258840edafc767e9a86f90d3dde" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/30a936ec-e427-57fe-bf3e-4abd64b1f0c1/30a936ec-e427-57fe-bf3e-4abd64b1f0c1.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Energieversorgung mit Energieübertragungsketten beschreiben&quot;. Die lernende Person kann Energieversorgungssysteme wie Wasser-, Wind-, Kohle- oder Solarkraftwerke als Ketten von Energieformen, Energieträgern und Übertragungs- beziehungsweise Umwandlungsschritten bis zur Nutzung einschließlich Energieabgaben an die Umgebung qualitativ beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-30a936ec-e427-57fe-bf3e-4abd64b1f0c1-description-heading">
+        <p class="section-heading" id="goal-30a936ec-e427-57fe-bf3e-4abd64b1f0c1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Energieversorgungssysteme wie Wasser-, Wind-, Kohle- oder Solarkraftwerke als Ketten von Energieformen, Energieträgern und Übertragungs- beziehungsweise Umwandlungsschritten bis zur Nutzung einschließlich Energieabgaben an die Umgebung qualitativ beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-30a936ec-e427-57fe-bf3e-4abd64b1f0c1" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-30a936ec-e427-57fe-bf3e-4abd64b1f0c1-requires-heading">
+          <p class="section-heading" id="goal-30a936ec-e427-57fe-bf3e-4abd64b1f0c1-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-722857cf-f327-5740-8151-64eb92195ec8"><span>Mechanische Energieformen qualitativ unterscheiden</span><code>722857cf-f327-5740-8151-64eb92195ec8</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-30a936ec-e427-57fe-bf3e-4abd64b1f0c1-reverse-heading">
+          <p class="section-heading" id="goal-30a936ec-e427-57fe-bf3e-4abd64b1f0c1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-30a936ec-e427-57fe-bf3e-4abd64b1f0c1-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-30a936ec-e427-57fe-bf3e-4abd64b1f0c1-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7cb0e5a0-c4ef-5e24-82b6-d8f85ffded8d" rel="noreferrer noopener"><span>Prüfungsaufgabe: Eine kommunale Energieversorgung bewerten</span> <code>7cb0e5a0-c4ef-5e24-82b6-d8f85ffded8d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5be98160-5189-58aa-8183-1df1c400cc8c" rel="noreferrer noopener"><span>Energieversorgung und Klimawirkungen fachlich bewerten</span> <code>5be98160-5189-58aa-8183-1df1c400cc8c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-92076a27-46cd-5c33-b3d8-aa68329af7c4" rel="noreferrer noopener"><span>Photovoltaikanlagen als technische Systeme erklaeren</span> <code>92076a27-46cd-5c33-b3d8-aa68329af7c4</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 10 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0a6a05330f90cebdfd0f293016118bf71d998328b08262798b01f79cae750824</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=30a936ec-e427-57fe-bf3e-4abd64b1f0c1&amp;goalFingerprint=sha256%3A0a6a05330f90cebdfd0f293016118bf71d998328b08262798b01f79cae750824&amp;pageFingerprint=sha256%3Af0612484c4bb7648f13958639c21b1700ea0cb6d975b053638ed28e55c335dec&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b92827a7-5d62-5fdb-a6f5-ac44461f4a7b" data-goal-id="b92827a7-5d62-5fdb-a6f5-ac44461f4a7b" data-page-number="11" data-chapter-ids="atlas:3400bf6ce29cb6d09086 atlas:4efee8cb8b08c55cbf96" aria-labelledby="goal-b92827a7-5d62-5fdb-a6f5-ac44461f4a7b-title">
+    <header class="goal-header">
+      <h1 id="goal-b92827a7-5d62-5fdb-a6f5-ac44461f4a7b-title"><a class="goal-self-link" href="#goal-b92827a7-5d62-5fdb-a6f5-ac44461f4a7b">Leistung als Energie pro Zeit bestimmen und deuten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b92827a7-5d62-5fdb-a6f5-ac44461f4a7b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li><li>Leistung und Wirkungsgrad</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:bf9b07bd5f15b09eed2a6ec0e73b431636767d4382e3e0575406c388703b5ac0" data-rendered-digest="sha256:a711dca13ffb66aaf71fd3559231677616f1a8237f3c5ee3d6fc8beedaf2adad" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/b92827a7-5d62-5fdb-a6f5-ac44461f4a7b/b92827a7-5d62-5fdb-a6f5-ac44461f4a7b.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Leistung als Energie pro Zeit bestimmen und deuten&quot;. Die lernende Person kann Leistung als übertragene oder umgewandelte Energie pro Zeit bestimmen, passende Einheiten verwenden und bei gleicher Energie erklären, warum eine kürzere Dauer einer größeren Leistung entspricht.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b92827a7-5d62-5fdb-a6f5-ac44461f4a7b-description-heading">
+        <p class="section-heading" id="goal-b92827a7-5d62-5fdb-a6f5-ac44461f4a7b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Leistung als übertragene oder umgewandelte Energie pro Zeit bestimmen, passende Einheiten verwenden und bei gleicher Energie erklären, warum eine kürzere Dauer einer größeren Leistung entspricht.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b92827a7-5d62-5fdb-a6f5-ac44461f4a7b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b92827a7-5d62-5fdb-a6f5-ac44461f4a7b-requires-heading">
+          <p class="section-heading" id="goal-b92827a7-5d62-5fdb-a6f5-ac44461f4a7b-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-722857cf-f327-5740-8151-64eb92195ec8"><span>Mechanische Energieformen qualitativ unterscheiden</span><code>722857cf-f327-5740-8151-64eb92195ec8</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-b92827a7-5d62-5fdb-a6f5-ac44461f4a7b-reverse-heading">
+          <p class="section-heading" id="goal-b92827a7-5d62-5fdb-a6f5-ac44461f4a7b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-b92827a7-5d62-5fdb-a6f5-ac44461f4a7b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b92827a7-5d62-5fdb-a6f5-ac44461f4a7b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0b8aff9a-6c77-51b9-82d4-725a21f32a90" rel="noreferrer noopener"><span>Prüfungsaufgabe: Leistung und Wirkungsgrad eines Hebezeugs vergleichen</span> <code>0b8aff9a-6c77-51b9-82d4-725a21f32a90</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-46e42b07-c098-5d65-8ef5-8472b7c4d8e2" rel="noreferrer noopener"><span>Elektrische Leistung und Wirkungsgrad bilanzieren</span> <code>46e42b07-c098-5d65-8ef5-8472b7c4d8e2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-27b90ce9-b650-5232-85fb-ce2cb69d59a3" rel="noreferrer noopener"><span>Elektrische Geräte- und Akkuangaben physikalisch deuten</span> <code>27b90ce9-b650-5232-85fb-ce2cb69d59a3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-af1094c1-511a-5aae-9e0a-3e9196a82d9a" rel="noreferrer noopener"><span>Idealen Transformator quantitativ deuten</span> <code>af1094c1-511a-5aae-9e0a-3e9196a82d9a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 11 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:97cdb2555a80b1c50b949babfc59ddadb021f0dc769d121b34a39434e7aa19f8</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=b92827a7-5d62-5fdb-a6f5-ac44461f4a7b&amp;goalFingerprint=sha256%3A97cdb2555a80b1c50b949babfc59ddadb021f0dc769d121b34a39434e7aa19f8&amp;pageFingerprint=sha256%3A38058c20f4001d9c0429001b5ae48e641138bec7084cab4ac7117b980b0238ab&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f7f2c254-1663-5861-bed7-a32c00495b19" data-goal-id="f7f2c254-1663-5861-bed7-a32c00495b19" data-page-number="12" data-chapter-ids="atlas:3400bf6ce29cb6d09086 atlas:4efee8cb8b08c55cbf96" aria-labelledby="goal-f7f2c254-1663-5861-bed7-a32c00495b19-title">
+    <header class="goal-header">
+      <h1 id="goal-f7f2c254-1663-5861-bed7-a32c00495b19-title"><a class="goal-self-link" href="#goal-f7f2c254-1663-5861-bed7-a32c00495b19">Wirkungsgrad als Verhältnis nutzbarer und zugeführter Energie deuten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f7f2c254-1663-5861-bed7-a32c00495b19</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li><li>Leistung und Wirkungsgrad</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2980a12e8a5a9cfddb5e5caf31864836f26fc7da9face8710e970e34b905b11e" data-rendered-digest="sha256:9d54fe0e2a3f94504e79cd370970247736fd6149f01c356e271f74f1236bb02f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/f7f2c254-1663-5861-bed7-a32c00495b19/f7f2c254-1663-5861-bed7-a32c00495b19.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Wirkungsgrad als Verhältnis nutzbarer und zugeführter Energie deuten&quot;. Die lernende Person kann den Wirkungsgrad als Verhältnis nutzbarer zu zugeführter Energie bestimmen, Energieanteile in einem einfachen System bilanzieren und begründen, warum ein Wirkungsgrad nicht größer als eins sein kann.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f7f2c254-1663-5861-bed7-a32c00495b19-description-heading">
+        <p class="section-heading" id="goal-f7f2c254-1663-5861-bed7-a32c00495b19-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Wirkungsgrad als Verhältnis nutzbarer zu zugeführter Energie bestimmen, Energieanteile in einem einfachen System bilanzieren und begründen, warum ein Wirkungsgrad nicht größer als eins sein kann.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-f7f2c254-1663-5861-bed7-a32c00495b19" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f7f2c254-1663-5861-bed7-a32c00495b19-requires-heading">
+          <p class="section-heading" id="goal-f7f2c254-1663-5861-bed7-a32c00495b19-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-722857cf-f327-5740-8151-64eb92195ec8"><span>Mechanische Energieformen qualitativ unterscheiden</span><code>722857cf-f327-5740-8151-64eb92195ec8</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-f7f2c254-1663-5861-bed7-a32c00495b19-reverse-heading">
+          <p class="section-heading" id="goal-f7f2c254-1663-5861-bed7-a32c00495b19-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-f7f2c254-1663-5861-bed7-a32c00495b19-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f7f2c254-1663-5861-bed7-a32c00495b19-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0b8aff9a-6c77-51b9-82d4-725a21f32a90" rel="noreferrer noopener"><span>Prüfungsaufgabe: Leistung und Wirkungsgrad eines Hebezeugs vergleichen</span> <code>0b8aff9a-6c77-51b9-82d4-725a21f32a90</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-46e42b07-c098-5d65-8ef5-8472b7c4d8e2" rel="noreferrer noopener"><span>Elektrische Leistung und Wirkungsgrad bilanzieren</span> <code>46e42b07-c098-5d65-8ef5-8472b7c4d8e2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-cbdc0b5f-8a48-5ade-be53-ab6aacaa3e73" rel="noreferrer noopener"><span>Energieentwertung vs. Energieverbrauch</span> <code>cbdc0b5f-8a48-5ade-be53-ab6aacaa3e73</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-aed9161b-ddc4-559c-be8f-baeeddf224f3" rel="noreferrer noopener"><span>Energiesparmaßnahmen physikalisch bewerten</span> <code>aed9161b-ddc4-559c-be8f-baeeddf224f3</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 12 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a54a9234aa4e1a1adc289218aec3cb0957047dd6e3c903c382e168927ee6bd3e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=f7f2c254-1663-5861-bed7-a32c00495b19&amp;goalFingerprint=sha256%3Aa54a9234aa4e1a1adc289218aec3cb0957047dd6e3c903c382e168927ee6bd3e&amp;pageFingerprint=sha256%3A88c8e72d5c9b63227af6eb2ed19e9b049376dbace157eb2ac13dd3049a169db8&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-dd7cdcea-0950-461b-96ac-ce49989fca47" data-goal-id="dd7cdcea-0950-461b-96ac-ce49989fca47" data-page-number="13" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-dd7cdcea-0950-461b-96ac-ce49989fca47-title">
+    <header class="goal-header">
+      <h1 id="goal-dd7cdcea-0950-461b-96ac-ce49989fca47-title"><a class="goal-self-link" href="#goal-dd7cdcea-0950-461b-96ac-ce49989fca47">Licht, Schatten und geradlinige Ausbreitung beschreiben</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>dd7cdcea-0950-461b-96ac-ce49989fca47</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6b4498b911a58033643f53e3cdcdf5af4dcae6c32619c6e93f0b17a2833e310a" data-rendered-digest="sha256:a893bdbb4248bce998f7d622cfb49985a3829fbebd88ebc43bfd95b6d4b035e2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/dd7cdcea-0950-461b-96ac-ce49989fca47/dd7cdcea-0950-461b-96ac-ce49989fca47.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Licht, Schatten und geradlinige Ausbreitung beschreiben&quot;. Die lernende Person kann grundlegende Beobachtungen zu Licht, Schatten und geradliniger Ausbreitung fachlich beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-dd7cdcea-0950-461b-96ac-ce49989fca47-description-heading">
+        <p class="section-heading" id="goal-dd7cdcea-0950-461b-96ac-ce49989fca47-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Beobachtungen zu Licht und Schatten mit der geradlinigen Ausbreitung von Licht in einem homogenen transparenten Medium und der Geometrie von Lichtquelle, Objekt und Schirm fachlich beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-dd7cdcea-0950-461b-96ac-ce49989fca47" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-dd7cdcea-0950-461b-96ac-ce49989fca47-requires-heading">
+          <p class="section-heading" id="goal-dd7cdcea-0950-461b-96ac-ce49989fca47-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-dd7cdcea-0950-461b-96ac-ce49989fca47-reverse-heading">
+          <p class="section-heading" id="goal-dd7cdcea-0950-461b-96ac-ce49989fca47-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-dd7cdcea-0950-461b-96ac-ce49989fca47-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-dd7cdcea-0950-461b-96ac-ce49989fca47-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5c44b9ba-9b05-4774-95d5-073230d3fc4f" rel="noreferrer noopener"><span>Warum Physik? – Weltverständnis &amp; Zukunft</span> <code>5c44b9ba-9b05-4774-95d5-073230d3fc4f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-dd7cdcea-0950-461b-96ac-ce49989fca47-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-dd7cdcea-0950-461b-96ac-ce49989fca47-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-79cb1695-f985-443a-b93e-27b57ab474b7" rel="noreferrer noopener"><span>Lichtwege mit dem Strahlenmodell darstellen und vorhersagen</span> <code>79cb1695-f985-443a-b93e-27b57ab474b7</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-9a9e2085-5ab6-534f-b622-83774d51f36b" rel="noreferrer noopener"><span>Streuung und Absorption von Licht an Beobachtungen unterscheiden</span> <code>9a9e2085-5ab6-534f-b622-83774d51f36b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a4681378-ade4-4f20-bf77-fb020469510f" rel="noreferrer noopener"><span>Entstehung und Zerlegung von Farben erklären</span> <code>a4681378-ade4-4f20-bf77-fb020469510f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-1ab5f599-0927-579d-94cc-feecdf3b5603" rel="noreferrer noopener"><span>Bildentstehung bei der Lochkamera qualitativ beschreiben</span> <code>1ab5f599-0927-579d-94cc-feecdf3b5603</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 13 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8d181cefcd2c049ac31873c1fb7f812e48f2d939b6906c8a058a3defac90cc9f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=dd7cdcea-0950-461b-96ac-ce49989fca47&amp;goalFingerprint=sha256%3A8d181cefcd2c049ac31873c1fb7f812e48f2d939b6906c8a058a3defac90cc9f&amp;pageFingerprint=sha256%3A439529f3f6727a41f6445d699bcbadfba03dc20138123eb190fc60424a464214&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-af0e2efb-f634-5f2d-abea-b2e1a67a2894" data-goal-id="af0e2efb-f634-5f2d-abea-b2e1a67a2894" data-page-number="14" data-chapter-ids="atlas:3400bf6ce29cb6d09086 atlas:d01e8348cf2dfb5f30f6 atlas:0ef9d732503697003197 atlas:14a224077fba43995245" aria-labelledby="goal-af0e2efb-f634-5f2d-abea-b2e1a67a2894-title">
+    <header class="goal-header">
+      <h1 id="goal-af0e2efb-f634-5f2d-abea-b2e1a67a2894-title"><a class="goal-self-link" href="#goal-af0e2efb-f634-5f2d-abea-b2e1a67a2894">Masse von Körpern messen und vergleichen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>af0e2efb-f634-5f2d-abea-b2e1a67a2894</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li><li>Sekundarstufe I</li><li>Mechanische Grundlagen (Sek I)</li><li>Masse, Volumen und Dichte</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:5ce78460618d30d3c17856f89d5cfd3f561be2c9ae2041e164178d0ff2e728b0" data-rendered-digest="sha256:9218cd3e5e64c7fcd97db4fa66843fa986626778f07cc22d9c57d58657671efe" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/af0e2efb-f634-5f2d-abea-b2e1a67a2894/af0e2efb-f634-5f2d-abea-b2e1a67a2894.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Masse von Körpern messen und vergleichen&quot;. Die lernende Person kann für Messbereich und benötigte Auflösung eine geeignete Waage auswählen, ihren Nullpunkt kontrollieren, die Masse eines Körpers messen und mit Einheit und angemessener Genauigkeit angeben sowie Massen vergleichen, ohne Form oder Volumen eines Körpers mit seiner Masse gleichzusetzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-af0e2efb-f634-5f2d-abea-b2e1a67a2894-description-heading">
+        <p class="section-heading" id="goal-af0e2efb-f634-5f2d-abea-b2e1a67a2894-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für Messbereich und benötigte Auflösung eine geeignete Waage auswählen, ihren Nullpunkt kontrollieren, die Masse eines Körpers messen und mit Einheit und angemessener Genauigkeit angeben sowie Massen vergleichen, ohne Form oder Volumen eines Körpers mit seiner Masse gleichzusetzen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, SL:</strong> Sek. I · G9</li><li><strong>NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-af0e2efb-f634-5f2d-abea-b2e1a67a2894" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-af0e2efb-f634-5f2d-abea-b2e1a67a2894-requires-heading">
+          <p class="section-heading" id="goal-af0e2efb-f634-5f2d-abea-b2e1a67a2894-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-af0e2efb-f634-5f2d-abea-b2e1a67a2894-reverse-heading">
+          <p class="section-heading" id="goal-af0e2efb-f634-5f2d-abea-b2e1a67a2894-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0"><span>Dichte aus Masse und Volumen bestimmen und deuten</span><code>c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-af0e2efb-f634-5f2d-abea-b2e1a67a2894-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-af0e2efb-f634-5f2d-abea-b2e1a67a2894-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5c44b9ba-9b05-4774-95d5-073230d3fc4f" rel="noreferrer noopener"><span>Warum Physik? – Weltverständnis &amp; Zukunft</span> <code>5c44b9ba-9b05-4774-95d5-073230d3fc4f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-af0e2efb-f634-5f2d-abea-b2e1a67a2894-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-af0e2efb-f634-5f2d-abea-b2e1a67a2894-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d304cfd0-f87c-51f7-8dee-f5f405da4b3d" rel="noreferrer noopener"><span>Prüfungsaufgabe: Masse, Volumen und Dichte experimentell bestimmen</span> <code>d304cfd0-f87c-51f7-8dee-f5f405da4b3d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 14 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a0089f4ce5f1e646d19c6c6ce835f1e411aa4d98566ad5a6f5abbf053b74bee5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=af0e2efb-f634-5f2d-abea-b2e1a67a2894&amp;goalFingerprint=sha256%3Aa0089f4ce5f1e646d19c6c6ce835f1e411aa4d98566ad5a6f5abbf053b74bee5&amp;pageFingerprint=sha256%3Ae5ec8d2a881c1e3b8670287bd24e033ec20bd619bc85f5bd3c26503544de7d7c&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f827b00f-af7f-52de-84aa-2a2bbaa035bd" data-goal-id="f827b00f-af7f-52de-84aa-2a2bbaa035bd" data-page-number="15" data-chapter-ids="atlas:3400bf6ce29cb6d09086 atlas:d01e8348cf2dfb5f30f6 atlas:0ef9d732503697003197 atlas:14a224077fba43995245 atlas:abf0c80507b8289156b0" aria-labelledby="goal-f827b00f-af7f-52de-84aa-2a2bbaa035bd-title">
+    <header class="goal-header">
+      <h1 id="goal-f827b00f-af7f-52de-84aa-2a2bbaa035bd-title"><a class="goal-self-link" href="#goal-f827b00f-af7f-52de-84aa-2a2bbaa035bd">Volumen regelmäßiger Körper geometrisch bestimmen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f827b00f-af7f-52de-84aa-2a2bbaa035bd</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li><li>Sekundarstufe I</li><li>Mechanische Grundlagen (Sek I)</li><li>Masse, Volumen und Dichte</li><li>Volumen von Körpern bestimmen und vergleichen</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d2973dc053ac5798b0a75e225ee841e24f90817b863a962a68f3d0e3f36187a5" data-rendered-digest="sha256:c393d5b74624e667f806cef872dfe0f4d7e72ce2f60180371cc116670dc616cc" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/f827b00f-af7f-52de-84aa-2a2bbaa035bd/f827b00f-af7f-52de-84aa-2a2bbaa035bd.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Volumen regelmäßiger Körper geometrisch bestimmen&quot;. Die lernende Person kann die benötigten Abmessungen eines einfachen regelmäßigen Körpers messen, daraus sein Volumen mit einer passenden geometrischen Beziehung bestimmen und Ergebnis sowie Volumeneinheit auf Plausibilität prüfen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f827b00f-af7f-52de-84aa-2a2bbaa035bd-description-heading">
+        <p class="section-heading" id="goal-f827b00f-af7f-52de-84aa-2a2bbaa035bd-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die benötigten Abmessungen eines einfachen regelmäßigen Körpers messen, daraus sein Volumen mit einer passenden geometrischen Beziehung bestimmen und Ergebnis sowie Volumeneinheit auf Plausibilität prüfen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, SL:</strong> Sek. I · G9</li><li><strong>NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-f827b00f-af7f-52de-84aa-2a2bbaa035bd" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f827b00f-af7f-52de-84aa-2a2bbaa035bd-requires-heading">
+          <p class="section-heading" id="goal-f827b00f-af7f-52de-84aa-2a2bbaa035bd-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-f827b00f-af7f-52de-84aa-2a2bbaa035bd-reverse-heading">
+          <p class="section-heading" id="goal-f827b00f-af7f-52de-84aa-2a2bbaa035bd-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0"><span>Dichte aus Masse und Volumen bestimmen und deuten</span><code>c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-f827b00f-af7f-52de-84aa-2a2bbaa035bd-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f827b00f-af7f-52de-84aa-2a2bbaa035bd-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5c44b9ba-9b05-4774-95d5-073230d3fc4f" rel="noreferrer noopener"><span>Warum Physik? – Weltverständnis &amp; Zukunft</span> <code>5c44b9ba-9b05-4774-95d5-073230d3fc4f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-f827b00f-af7f-52de-84aa-2a2bbaa035bd-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f827b00f-af7f-52de-84aa-2a2bbaa035bd-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d304cfd0-f87c-51f7-8dee-f5f405da4b3d" rel="noreferrer noopener"><span>Prüfungsaufgabe: Masse, Volumen und Dichte experimentell bestimmen</span> <code>d304cfd0-f87c-51f7-8dee-f5f405da4b3d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 15 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:abb79783347c78419a43e8b4b012a57f470e3bd6d4afe508ca9eec2f0151610e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=f827b00f-af7f-52de-84aa-2a2bbaa035bd&amp;goalFingerprint=sha256%3Aabb79783347c78419a43e8b4b012a57f470e3bd6d4afe508ca9eec2f0151610e&amp;pageFingerprint=sha256%3A617e5f8ce10d013ecf00b76784ba86845a4943abe2a75bdb9439ef14e2b15506&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f92b5b8a-327f-50d2-8313-6a142399ebf0" data-goal-id="f92b5b8a-327f-50d2-8313-6a142399ebf0" data-page-number="16" data-chapter-ids="atlas:3400bf6ce29cb6d09086 atlas:d01e8348cf2dfb5f30f6 atlas:0ef9d732503697003197 atlas:14a224077fba43995245 atlas:abf0c80507b8289156b0" aria-labelledby="goal-f92b5b8a-327f-50d2-8313-6a142399ebf0-title">
+    <header class="goal-header">
+      <h1 id="goal-f92b5b8a-327f-50d2-8313-6a142399ebf0-title"><a class="goal-self-link" href="#goal-f92b5b8a-327f-50d2-8313-6a142399ebf0">Volumen unregelmäßiger Körper durch Flüssigkeitsverdrängung bestimmen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f92b5b8a-327f-50d2-8313-6a142399ebf0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li><li>Sekundarstufe I</li><li>Mechanische Grundlagen (Sek I)</li><li>Masse, Volumen und Dichte</li><li>Volumen von Körpern bestimmen und vergleichen</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f55352ed6e602c36d10cf2c50ed164d8aca52d808375485194a78cc66ea5a090" data-rendered-digest="sha256:192d7ab8b4ccbeeb1b4271800ced05d4d9118f6199eaa9685605e65e23871c3d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/f92b5b8a-327f-50d2-8313-6a142399ebf0/f92b5b8a-327f-50d2-8313-6a142399ebf0.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Volumen unregelmäßiger Körper durch Flüssigkeitsverdrängung bestimmen&quot;. Die lernende Person kann das Volumen eines vollständig eintauchbaren unregelmäßigen festen Körpers aus dem Flüssigkeitsstand vor und nach dem Eintauchen bestimmen, die Differenz mit passender Volumeneinheit angeben und Ablese- oder Luftblasenfehler beurteilen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f92b5b8a-327f-50d2-8313-6a142399ebf0-description-heading">
+        <p class="section-heading" id="goal-f92b5b8a-327f-50d2-8313-6a142399ebf0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Volumen eines vollständig eintauchbaren unregelmäßigen festen Körpers aus dem Flüssigkeitsstand vor und nach dem Eintauchen bestimmen, die Differenz mit passender Volumeneinheit angeben und Ablese- oder Luftblasenfehler beurteilen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, SL:</strong> Sek. I · G9</li><li><strong>NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-f92b5b8a-327f-50d2-8313-6a142399ebf0" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f92b5b8a-327f-50d2-8313-6a142399ebf0-requires-heading">
+          <p class="section-heading" id="goal-f92b5b8a-327f-50d2-8313-6a142399ebf0-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-f92b5b8a-327f-50d2-8313-6a142399ebf0-reverse-heading">
+          <p class="section-heading" id="goal-f92b5b8a-327f-50d2-8313-6a142399ebf0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0"><span>Dichte aus Masse und Volumen bestimmen und deuten</span><code>c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-f92b5b8a-327f-50d2-8313-6a142399ebf0-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f92b5b8a-327f-50d2-8313-6a142399ebf0-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5c44b9ba-9b05-4774-95d5-073230d3fc4f" rel="noreferrer noopener"><span>Warum Physik? – Weltverständnis &amp; Zukunft</span> <code>5c44b9ba-9b05-4774-95d5-073230d3fc4f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-f92b5b8a-327f-50d2-8313-6a142399ebf0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f92b5b8a-327f-50d2-8313-6a142399ebf0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d304cfd0-f87c-51f7-8dee-f5f405da4b3d" rel="noreferrer noopener"><span>Prüfungsaufgabe: Masse, Volumen und Dichte experimentell bestimmen</span> <code>d304cfd0-f87c-51f7-8dee-f5f405da4b3d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e11b2ee9-e528-4857-9ecd-59bd460fba81" rel="noreferrer noopener"><span>Auftrieb mit dem archimedischen Prinzip erklären</span> <code>e11b2ee9-e528-4857-9ecd-59bd460fba81</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 16 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:979191d899b8181ca1e7c225c1e132d134d0f682c71d38021637942a053522f1</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=f92b5b8a-327f-50d2-8313-6a142399ebf0&amp;goalFingerprint=sha256%3A979191d899b8181ca1e7c225c1e132d134d0f682c71d38021637942a053522f1&amp;pageFingerprint=sha256%3A8da4950853d1d0afb7994761d9b927d9e59d20d4bfc24f16025c8475e31700e7&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0" data-goal-id="c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0" data-page-number="17" data-chapter-ids="atlas:3400bf6ce29cb6d09086 atlas:d01e8348cf2dfb5f30f6 atlas:0ef9d732503697003197 atlas:14a224077fba43995245" aria-labelledby="goal-c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0-title">
+    <header class="goal-header">
+      <h1 id="goal-c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0-title"><a class="goal-self-link" href="#goal-c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0">Dichte aus Masse und Volumen bestimmen und deuten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li><li>Sekundarstufe I</li><li>Mechanische Grundlagen (Sek I)</li><li>Masse, Volumen und Dichte</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:79a020c5b6c626e48ad96bcd0d27aaf40f3345e2477145887c258ca1a8dda901" data-rendered-digest="sha256:0b88b44570a4499899f3fec398b5f313c8c0ff2d1dab2b9fc2a3baa2048ffaaf" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0/c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Dichte aus Masse und Volumen bestimmen und deuten&quot;. Die lernende Person kann Dichte als Quotient aus Masse und Volumen bestimmen, passende Einheiten verwenden und Dichtewerte nutzen, um Stoffe oder gleich große beziehungsweise gleich schwere Körper zu vergleichen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0-description-heading">
+        <p class="section-heading" id="goal-c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Dichte als Quotient aus Masse und Volumen bestimmen, passende Einheiten verwenden und Dichtewerte nutzen, um Stoffe oder gleich große beziehungsweise gleich schwere Körper zu vergleichen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, SL:</strong> Sek. I · G9</li><li><strong>NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0-requires-heading">
+          <p class="section-heading" id="goal-c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-af0e2efb-f634-5f2d-abea-b2e1a67a2894"><span>Masse von Körpern messen und vergleichen</span><code>af0e2efb-f634-5f2d-abea-b2e1a67a2894</code><span class="reference-page">S. 14</span></a></li><li><a href="#goal-f827b00f-af7f-52de-84aa-2a2bbaa035bd"><span>Volumen regelmäßiger Körper geometrisch bestimmen</span><code>f827b00f-af7f-52de-84aa-2a2bbaa035bd</code><span class="reference-page">S. 15</span></a></li><li><a href="#goal-f92b5b8a-327f-50d2-8313-6a142399ebf0"><span>Volumen unregelmäßiger Körper durch Flüssigkeitsverdrängung bestimmen</span><code>f92b5b8a-327f-50d2-8313-6a142399ebf0</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0-reverse-heading">
+          <p class="section-heading" id="goal-c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d304cfd0-f87c-51f7-8dee-f5f405da4b3d" rel="noreferrer noopener"><span>Prüfungsaufgabe: Masse, Volumen und Dichte experimentell bestimmen</span> <code>d304cfd0-f87c-51f7-8dee-f5f405da4b3d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e11b2ee9-e528-4857-9ecd-59bd460fba81" rel="noreferrer noopener"><span>Auftrieb mit dem archimedischen Prinzip erklären</span> <code>e11b2ee9-e528-4857-9ecd-59bd460fba81</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 17 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:35b2f09f11b02172818efcd4e0c6ec8ee296329a6e648c4846aeef07f55418a7</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0&amp;goalFingerprint=sha256%3A35b2f09f11b02172818efcd4e0c6ec8ee296329a6e648c4846aeef07f55418a7&amp;pageFingerprint=sha256%3A470c605f82c517dbe768a04cc2c81700bb99cb00419c2bbed0601412b69e0852&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9c328f68-41ed-55dd-9e02-34414a6246f2" data-goal-id="9c328f68-41ed-55dd-9e02-34414a6246f2" data-page-number="18" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-9c328f68-41ed-55dd-9e02-34414a6246f2-title">
+    <header class="goal-header">
+      <h1 id="goal-9c328f68-41ed-55dd-9e02-34414a6246f2-title"><a class="goal-self-link" href="#goal-9c328f68-41ed-55dd-9e02-34414a6246f2">Masse und Gewichtskraft unterscheiden</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9c328f68-41ed-55dd-9e02-34414a6246f2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3358345ce4f4bf021e5f444fd11d005acc9a5f472e69be8093181e0f1055deb7" data-rendered-digest="sha256:265ac3314540ca0015d3568d8f37b15e90a930567ecaf9d2c8a4379039680d85" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/9c328f68-41ed-55dd-9e02-34414a6246f2/9c328f68-41ed-55dd-9e02-34414a6246f2.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Masse und Gewichtskraft unterscheiden&quot;. Die lernende Person kann Masse als ortsunabhängige Eigenschaft eines Körpers von der Gewichtskraft als vom Gravitationsfeld abhängiger Kraft unterscheiden, beide mit passenden Einheiten angeben und alltagssprachliche Verwechslungen fachlich korrigieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9c328f68-41ed-55dd-9e02-34414a6246f2-description-heading">
+        <p class="section-heading" id="goal-9c328f68-41ed-55dd-9e02-34414a6246f2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Masse als ortsunabhängige Eigenschaft eines Körpers von der Gewichtskraft als vom Gravitationsfeld abhängiger Kraft unterscheiden, beide mit passenden Einheiten angeben und alltagssprachliche Verwechslungen fachlich korrigieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li><li><strong>NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-9c328f68-41ed-55dd-9e02-34414a6246f2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9c328f68-41ed-55dd-9e02-34414a6246f2-requires-heading">
+          <p class="section-heading" id="goal-9c328f68-41ed-55dd-9e02-34414a6246f2-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-5ea765ac-c279-551a-8a94-a07da2381e5b"><span>Kräfte und Trägheit qualitativ erklären</span><code>5ea765ac-c279-551a-8a94-a07da2381e5b</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-9c328f68-41ed-55dd-9e02-34414a6246f2-reverse-heading">
+          <p class="section-heading" id="goal-9c328f68-41ed-55dd-9e02-34414a6246f2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-9c328f68-41ed-55dd-9e02-34414a6246f2-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9c328f68-41ed-55dd-9e02-34414a6246f2-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d8bad724-03ea-510a-8415-928332ed4979" rel="noreferrer noopener"><span>Prüfungsaufgabe: Kräfte experimentell und grafisch untersuchen</span> <code>d8bad724-03ea-510a-8415-928332ed4979</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-eb0ffdea-c12d-56df-b7e8-c0297d2f8aff" rel="noreferrer noopener"><span>Gravitationsgesetz und Gewichtskraft anwenden</span> <code>eb0ffdea-c12d-56df-b7e8-c0297d2f8aff</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 18 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3a14e778f2a310ebc0abc066dec0c9d6d6466e17c2876494c87b9006ceef0c03</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=9c328f68-41ed-55dd-9e02-34414a6246f2&amp;goalFingerprint=sha256%3A3a14e778f2a310ebc0abc066dec0c9d6d6466e17c2876494c87b9006ceef0c03&amp;pageFingerprint=sha256%3A94377371cbec6d8960e19064d849c0dd370b5f605c1df6cf1384e390918b630b&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3c8e5510-a12d-5770-8a01-e5fe741b259c" data-goal-id="3c8e5510-a12d-5770-8a01-e5fe741b259c" data-page-number="19" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-3c8e5510-a12d-5770-8a01-e5fe741b259c-title">
+    <header class="goal-header">
+      <h1 id="goal-3c8e5510-a12d-5770-8a01-e5fe741b259c-title"><a class="goal-self-link" href="#goal-3c8e5510-a12d-5770-8a01-e5fe741b259c">Reflexionsgesetz experimentell prüfen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3c8e5510-a12d-5770-8a01-e5fe741b259c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e3e51d533dfff5e63571664b51e0d5f0feddc2c5dac5cbdcb0b8ae64c4fdb21a" data-rendered-digest="sha256:c951fe83b7b43e6af7624eae4fe47b31b5efc73c2d14d63a1129a496a93262e8" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/3c8e5510-a12d-5770-8a01-e5fe741b259c/3c8e5510-a12d-5770-8a01-e5fe741b259c.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Reflexionsgesetz experimentell prüfen&quot;. Die lernende Person kann bei der Reflexion an einer ebenen glatten Fläche Einfalls- und Reflexionswinkel jeweils zum Lot messen, die Messwerte samt Ablese- und Ausrichtungsunsicherheiten vergleichen, daraus das Reflexionsgesetz formulieren und beurteilen, ob Abweichungen mit diesen Unsicherheiten vereinbar sind.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3c8e5510-a12d-5770-8a01-e5fe741b259c-description-heading">
+        <p class="section-heading" id="goal-3c8e5510-a12d-5770-8a01-e5fe741b259c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei der Reflexion an einer ebenen glatten Fläche Einfalls- und Reflexionswinkel jeweils zum Lot messen, die Messwerte samt Ablese- und Ausrichtungsunsicherheiten vergleichen, daraus das Reflexionsgesetz formulieren und beurteilen, ob Abweichungen mit diesen Unsicherheiten vereinbar sind.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3c8e5510-a12d-5770-8a01-e5fe741b259c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3c8e5510-a12d-5770-8a01-e5fe741b259c-requires-heading">
+          <p class="section-heading" id="goal-3c8e5510-a12d-5770-8a01-e5fe741b259c-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-3c8e5510-a12d-5770-8a01-e5fe741b259c-reverse-heading">
+          <p class="section-heading" id="goal-3c8e5510-a12d-5770-8a01-e5fe741b259c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-b57427c9-1af5-5daa-8c65-b84a4cc20785"><span>Spiegelbilder am ebenen Spiegel mit dem Strahlenmodell erklären</span><code>b57427c9-1af5-5daa-8c65-b84a4cc20785</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-3c8e5510-a12d-5770-8a01-e5fe741b259c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3c8e5510-a12d-5770-8a01-e5fe741b259c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-79cb1695-f985-443a-b93e-27b57ab474b7" rel="noreferrer noopener"><span>Lichtwege mit dem Strahlenmodell darstellen und vorhersagen</span> <code>79cb1695-f985-443a-b93e-27b57ab474b7</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-3c8e5510-a12d-5770-8a01-e5fe741b259c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3c8e5510-a12d-5770-8a01-e5fe741b259c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-899481ae-2917-5fb0-805e-29e7c3c051be" rel="noreferrer noopener"><span>Prüfungsaufgabe: Reflexionsgesetz und ebenes Spiegelbild untersuchen</span> <code>899481ae-2917-5fb0-805e-29e7c3c051be</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 19 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:616eba5d2f0c8d41045eb2ebc9a2700f90fb3a587c3820d59ed8c7398586b25a</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=3c8e5510-a12d-5770-8a01-e5fe741b259c&amp;goalFingerprint=sha256%3A616eba5d2f0c8d41045eb2ebc9a2700f90fb3a587c3820d59ed8c7398586b25a&amp;pageFingerprint=sha256%3Aa8884292ccc969c95cf64fc5d52198a95d5a8a9f808fbc59012c85e1f50a9e3f&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b57427c9-1af5-5daa-8c65-b84a4cc20785" data-goal-id="b57427c9-1af5-5daa-8c65-b84a4cc20785" data-page-number="20" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-b57427c9-1af5-5daa-8c65-b84a4cc20785-title">
+    <header class="goal-header">
+      <h1 id="goal-b57427c9-1af5-5daa-8c65-b84a4cc20785-title"><a class="goal-self-link" href="#goal-b57427c9-1af5-5daa-8c65-b84a4cc20785">Spiegelbilder am ebenen Spiegel mit dem Strahlenmodell erklären</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b57427c9-1af5-5daa-8c65-b84a4cc20785</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:517ad891badebf527fdb42d590b0f2becbd56e26e6fcc58f3f4053ffae0af25a" data-rendered-digest="sha256:f0eb79f915c96023964dd5d59e9998a88f97a465cd2bf6fb0e6717d63b75a49e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/b57427c9-1af5-5daa-8c65-b84a4cc20785/b57427c9-1af5-5daa-8c65-b84a4cc20785.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Spiegelbilder am ebenen Spiegel mit dem Strahlenmodell erklären&quot;. Die lernende Person kann reflektierte Lichtwege rückwärts verlängern, damit Lage und Größe des virtuellen Bildes am ebenen Spiegel konstruieren und erklären, warum das Bild hinter dem Spiegel erscheint und nicht auf einem Schirm aufgefangen werden kann.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b57427c9-1af5-5daa-8c65-b84a4cc20785-description-heading">
+        <p class="section-heading" id="goal-b57427c9-1af5-5daa-8c65-b84a4cc20785-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann reflektierte Lichtwege rückwärts verlängern, damit Lage und Größe des virtuellen Bildes am ebenen Spiegel konstruieren und erklären, warum das Bild hinter dem Spiegel erscheint und nicht auf einem Schirm aufgefangen werden kann.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b57427c9-1af5-5daa-8c65-b84a4cc20785" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b57427c9-1af5-5daa-8c65-b84a4cc20785-requires-heading">
+          <p class="section-heading" id="goal-b57427c9-1af5-5daa-8c65-b84a4cc20785-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-3c8e5510-a12d-5770-8a01-e5fe741b259c"><span>Reflexionsgesetz experimentell prüfen</span><code>3c8e5510-a12d-5770-8a01-e5fe741b259c</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-b57427c9-1af5-5daa-8c65-b84a4cc20785-reverse-heading">
+          <p class="section-heading" id="goal-b57427c9-1af5-5daa-8c65-b84a4cc20785-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-b57427c9-1af5-5daa-8c65-b84a4cc20785-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b57427c9-1af5-5daa-8c65-b84a4cc20785-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-899481ae-2917-5fb0-805e-29e7c3c051be" rel="noreferrer noopener"><span>Prüfungsaufgabe: Reflexionsgesetz und ebenes Spiegelbild untersuchen</span> <code>899481ae-2917-5fb0-805e-29e7c3c051be</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 20 von 20</span>
+      <span>Buch-Digest <code>sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e62900daa49bb33a2730998ec3d910e50c00d089c94d8137ee9cb64affad0271</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=b57427c9-1af5-5daa-8c65-b84a4cc20785&amp;goalFingerprint=sha256%3Ae62900daa49bb33a2730998ec3d910e50c00d089c94d8137ee9cb64affad0271&amp;pageFingerprint=sha256%3A2156c26ae27945c3ccd0e961b2a18f1f7d23b4a08ad5d5b295a6d61a1f00d958&amp;bookDigest=sha256%3A2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224&amp;page=20" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

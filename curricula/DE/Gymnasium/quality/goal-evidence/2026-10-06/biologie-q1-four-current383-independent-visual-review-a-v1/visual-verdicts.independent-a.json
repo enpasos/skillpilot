@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "independent_subject_matter_and_actual_visual_review",
+  "status": "three_keep_one_revise_no_active_approval",
+  "reviewedAt": "2026-10-06T02:40:31.989208+00:00",
+  "reviewer": "/root/duration_report_fix",
+  "reviewRound": "A",
+  "independentOfImageAndTextAuthors": true,
+  "authorJudgmentsRead": false,
+  "otherQaOutputsRead": false,
+  "inputSnapshotPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-four-current383-independent-visual-review-a-v1/inputs-and-inspection-bindings.snapshot.json",
+  "decisionMeaning": "KEEP is this independent machine review's concrete asset judgment on the proposed text and exact PNG, not active gate-V registration, integration, all-gate closure or human release approval. REVISE blocks approval of the specified current PNG until an actual corrected candidate is independently viewed.",
+  "decisionCounts": {
+    "KEEP": 3,
+    "REVISE": 1,
+    "BLOCK": 0
+  },
+  "records": [
+    {
+      "goalId": "0daa79f6-8f61-5506-98f9-65db83062ba8",
+      "candidateSha256": "sha256:7c272daa9df2a8f048a08d29ff57ac5dbac08751e26fb70602353ea6ecc8db88",
+      "currentGoalTextSha256": "sha256:a7412ae7ddecccb55b3d853c616c52b6dc79a4b55dd025dd7b48b46b3772251b",
+      "reviewedProposedGoalTextSha256": "sha256:ec0d7d8a4d669ce446cb463f8b220426b04627d8334c2126aa0ce8e04c28b0ec",
+      "decision": "REVISE",
+      "scienceDecision": "REVISE",
+      "responsiveDecision": "KEEP",
+      "styleDecision": "KEEP",
+      "observedDe": [
+        "Basenpaarbuchstaben links A-T, G-C, T-A, C-G sind komplementär; rechts AGTC über TCAG mit entgegengesetzten Richtungszeichen ist spaltenweise komplementär.",
+        "Gelbe Phosphate und blaue pentagonale Zucker bilden die Rückgratspuren; Base ist am Zucker gebunden. Separates Nukleotid enthält Phosphat, Zucker und Base mit passenden Zeigelinien.",
+        "Beide G-C/C-G-Paare im Leiterbild haben nur zwei parallele gestrichelte Verbindungslinien, gleich den A-T-Paaren. Native Detailausschnitte bestätigen dies.",
+        "Große Basenbuchstaben, Rückgrate und entgegengesetzte Pfeile sind bei 360px sichtbar; Nukleotidteil und Basenfolgenbox bleiben unterscheidbar. Bei 680px ist auch die Beschriftung deutlich."
+      ],
+      "blockingFindings": [
+        {
+          "findingId": "V-A-DNA-GC-HBONDS",
+          "severity": "fachlich_wrong_or_misleading",
+          "location": "left ladder rows 2 and 4, between G/C and C/G",
+          "observationDe": "Zwei gestrichelte Linien stellen in einer zählbaren H-Brückenskizze G-C falsch genauso wie A-T dar; G-C benötigt drei, A-T zwei.",
+          "requiredRemedyDe": "Nur G-C/C-G-Verbindungen auf drei klar getrennte Linien korrigieren. Alternativ alle Paarungsverbindungen ausdrücklich neutral und nicht zählbar gestalten. Richtige Basenbuchstaben, Zucker-Phosphat-Base-Aufbau, Komplementfolge, Pfeile, Stil und Formfaktor erhalten; neues tatsächliches PNG unabhängig erneut prüfen.",
+          "evidenceDerivatives": [
+            "inspection-only/0daa79f6.middle-pair.native-detail.png",
+            "inspection-only/0daa79f6.bottom-pair.native-detail.png"
+          ]
+        }
+      ],
+      "modelLimitsDe": "Vereinfachtes entrolltes Leiter-/Nukleotidmodell ohne vollständige Helixgeometrie, atomare Bindungswinkel oder explizite 5′/3′-Enden. Farben sind kein universeller chemischer Farbcode. Gegenläufige Pfeile sind ein Orientierungsmodell, keine Darstellung aller chemischen Endgruppen.",
+      "altTextFit": "Declared alt text describes the main parts but does not disclose the wrong counted G-C connectors; correct prose cannot rescue that drawing.",
+      "perspectiveCheck": "No people, notebooks, boards or handheld gauges depicted; no actor/viewer orientation conflict.",
+      "visualizationIsOrientationOnly": true,
+      "activeAiApprovalWritten": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+      "candidateSha256": "sha256:7f89f7eba0e2c0728e427ca2cca4b46ec524807678bb6a6774a188d2285cc772",
+      "currentGoalTextSha256": "sha256:510eafd40d731ee19c7cf78e6df8bb4008fe519d0896b62c2d40638e0e216ed7",
+      "reviewedProposedGoalTextSha256": "sha256:4ebf4ffd9d3f26bf3329d0bd31d663fb36e64480cdb8c63a5b7aed9f606949c2",
+      "decision": "KEEP",
+      "scienceDecision": "KEEP",
+      "responsiveDecision": "KEEP",
+      "styleDecision": "KEEP",
+      "observedDe": [
+        "DNA bleibt links im Zellkern. Der Transkriptionspfeil zeigt vom DNA-Motiv zur roten mRNA; dieselbe rote Linie läuft durch die Kernhülle ins Cytoplasma und durch das Ribosom.",
+        "Translation zeigt in Informationsflussrichtung zum Ribosom. Die rechts gezeigte tRNA trägt oben eine Aminosäure und unten drei kleine Anticodon-Symbole; ihr Pfeil führt zum Ribosom. Eine mehrgliedrige Polypeptidkette tritt oben aus.",
+        "Die Kopplung beider Prozessabschnitte über denselben mRNA-Weg ist erkennbar; keine DNA wandernd ins Cytoplasma und kein Polypeptid direkt aus der DNA dargestellt.",
+        "Bei 360px sind DNA, mRNA-Weg, Ribosom, tRNA-Umriss und wachsende Kette ohne Pflichtlektüre der kleinen Zusatzlabels unterscheidbar. Längere Zusatzlabels sind klein, aber keine zentrale Entscheidung hängt vom Entziffern dieser Schrift ab. Bei 680px sind die Bezeichnungen lesbar."
+      ],
+      "blockingFindings": [],
+      "modelLimitsDe": "Vereinfachter Eukaryotenweg; vollständige RNA-Prozessierung, Enzymmechanik, numerisch prüfbare Codons/Anticodons, genaue Basensequenzübersetzung und 5′/3′-Synthese-/Leserichtung sind nicht gezeigt. Keine dieser fehlenden Einzelheiten darf als durch das Orientierungsbild nachgewiesen gelten. Die Richtungspfeile zeigen Informationsfluss, keine vollständige molekulare Kinetik.",
+      "altTextFit": "Declared alt text matches the connected eukaryotic overview and explicitly limits RNA processing.",
+      "perspectiveCheck": "No people, notebooks, boards or handheld gauges depicted; no actor/viewer orientation conflict.",
+      "visualizationIsOrientationOnly": true,
+      "activeAiApprovalWritten": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+      "candidateSha256": "sha256:25efc19cf2535fdd33533a575e3cc6ae29d03d0f78c7e980d562c28460e8ec0d",
+      "currentGoalTextSha256": "sha256:3e7a680b7b08b81df889b8b05cd5e92331ff2ed04f8f2b1d7c5960415b2114b2",
+      "reviewedProposedGoalTextSha256": "sha256:1348c81c6bb9ff1b7aa4d9de8196e9ae358dbf9dfa9d9d3a48c5f2166163daea",
+      "decision": "KEEP",
+      "scienceDecision": "KEEP",
+      "responsiveDecision": "KEEP",
+      "styleDecision": "KEEP",
+      "observedDe": [
+        "Substitution: fünf Ausgangspositionen bleiben fünf, der dritte gelbe Baustein wird lila. Deletion: der markierte dritte Baustein verschwindet, fünf werden vier ohne zusätzliche Umordnung.",
+        "Insertion: ein rosa Baustein wird nach dem dritten gelben ergänzt, fünf werden sechs; die übrige Reihenfolge bleibt erhalten.",
+        "Duplikation: Ausgang blau-rot-gelb-türkis-lila wird blau-rot-gelb-türkis-gelb-türkis-lila. Der wiederholte Zweierabschnitt ist erkennbar und der gebogene Pfeil verbindet Ausgangsabschnitt und zusätzliche Kopie.",
+        "Alle vier großen Titel, Vorher/Nachher-Blöcke, Änderungsmarkierungen und Pfeile bleiben bei 360px unterscheidbar; keine notwendige Kleinschrift. Bei 680px sind auch Details klar."
+      ],
+      "blockingFindings": [],
+      "modelLimitsDe": "Abstrakte Sequenzpositionen/-abschnitte, kein behauptetes Fünf-/Sechs-Basenalphabet und keine einzelnen Aminosäure-Identitäten. Kein universeller Frameshift, keine zwangsläufige Proteinänderung/Schädlichkeit und keine konkrete Codon- oder Proteinfolgenberechnung behauptet; die Folgen müssen aus dem gegebenen Genkontext erklärt werden.",
+      "altTextFit": "Declared alt text matches replacement/removal/addition and two-unit duplication; image remains an orientation overview.",
+      "perspectiveCheck": "No people, notebooks, boards or handheld gauges depicted; no actor/viewer orientation conflict.",
+      "visualizationIsOrientationOnly": true,
+      "activeAiApprovalWritten": false,
+      "humanApproval": false,
+      "humanTrial": false
+    },
+    {
+      "goalId": "e70d8a85-2dea-5165-919b-200fee9f4db4",
+      "candidateSha256": "sha256:cf296aa3d4d9fb04b087ab7b8bb71e29ce545758cfaa03c5ab39ef34843c6213",
+      "currentGoalTextSha256": "sha256:6669903b6d9aa48a905fe7ce6aab8415fce61b9156f674ea62bf3e39c8c44b12",
+      "reviewedProposedGoalTextSha256": "sha256:63e14e971ba0a4df797cdb78873229e206848e9a4459e233b9b01230cc184a31",
+      "decision": "KEEP",
+      "scienceDecision": "KEEP",
+      "responsiveDecision": "KEEP",
+      "styleDecision": "KEEP",
+      "observedDe": [
+        "Vorher ein DNA-Modell mit zwei alten blauen Einzelsträngen, nachher zwei Tochtermodelle blau/orange und orange/blau. Legende ordnet Blau alt und Orange neu zu.",
+        "Die linke ursprüngliche blaue Seite bleibt links im ersten Tochtermodell, die rechte ursprüngliche blaue Seite rechts im zweiten. Die zugehörigen Basenhälften und ihre Reihenfolge sind erhalten; neue Seiten ergänzen jeweils komplementär, beide Doppelstrangmodelle sind gleich.",
+        "Ein einzelner großer Prozesspfeil verbindet Elternmodell und beide Tochtermodelle; kein Ergebnis mit zwei ausschließlich alten oder zwei ausschließlich neuen Strängen.",
+        "Bei 360px sind ein Vorhermodell, zwei Nachhermodelle, die Blau/Orange-Aufteilung und Legende erkennbar; bei 680px bleiben sämtliche Hauptdetails und Bezeichnungen klar."
+      ],
+      "blockingFindings": [],
+      "modelLimitsDe": "Semikonservatives Ergebnis-/Materialmodell. Farbmarkierung des Rückgrats steht für die Herkunft des jeweiligen ganzen Strangs; sie kennzeichnet keine chemische Änderung. Replikationsgabel, Polymerase-Enzyme, 5′/3′-Richtung und Leading/Lagging-Strand-Synthese werden nicht dargestellt oder behauptet.",
+      "altTextFit": "Declared alt text matches the one-old/one-new result and the actual process arrow and legend.",
+      "perspectiveCheck": "No people, notebooks, boards or handheld gauges depicted; no actor/viewer orientation conflict.",
+      "visualizationIsOrientationOnly": true,
+      "activeAiApprovalWritten": false,
+      "humanApproval": false,
+      "humanTrial": false
+    }
+  ],
+  "notRequiredForOrientation": [
+    "full enzyme mechanism",
+    "assessment or solution",
+    "RNA-processing completeness",
+    "mutation-to-protein consequence proof",
+    "complete leading/lagging replication mechanism"
+  ],
+  "nextStep": "Preserve all reviewed attempts; correct only counted G-C/C-G hydrogen-bond connectors, generate a new PNG version and actually review that new SHA. Retain the three good existing candidates and rebind relevant goal/page/context/evidence only after checked integration.",
+  "activeFilesChanged": false,
+  "historicalReviewArtifactsChanged": false,
+  "newScientificClosures": 0,
+  "restoredBindings": 0,
+  "strictCompletionsAdded": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}

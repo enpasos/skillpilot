@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v1">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik Lernzielbeschreibungs-Review – Astrophysik Fast Lane (16)</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    h1 { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<article class="goal-page" id="goal-6d18104b-5704-5c45-b39a-2c84565b1796" data-goal-id="6d18104b-5704-5c45-b39a-2c84565b1796" data-page-number="1" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-6d18104b-5704-5c45-b39a-2c84565b1796-title">
+    <header class="goal-header">
+      <h1 id="goal-6d18104b-5704-5c45-b39a-2c84565b1796-title"><a class="goal-self-link" href="#goal-6d18104b-5704-5c45-b39a-2c84565b1796">Astronomische Weltbilder historisch und gesellschaftlich reflektieren</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6d18104b-5704-5c45-b39a-2c84565b1796</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:60fe10d846309cc435d5a1e6cbdaa496bb305a078bef598c7ee85c5bcc46bc48" data-rendered-digest="sha256:9ab7fea16a712f41ce0fb31358ef5c0695fc221e725829b6b313418f16d9b550" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/6d18104b-5704-5c45-b39a-2c84565b1796/6d18104b-5704-5c45-b39a-2c84565b1796.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Astronomische Weltbilder historisch und gesellschaftlich reflektieren&quot;. Die lernende Person kann bedeutsame Beobachtungen und physikalische Theorien zur Entwicklung astronomischer Weltbilder in historische und gesellschaftliche Zusammenhaenge einordnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6d18104b-5704-5c45-b39a-2c84565b1796-description-heading">
+        <p class="section-heading" id="goal-6d18104b-5704-5c45-b39a-2c84565b1796-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bedeutsame Beobachtungen und physikalische Theorien zur Entwicklung astronomischer Weltbilder in historische und gesellschaftliche Zusammenhaenge einordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6d18104b-5704-5c45-b39a-2c84565b1796" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6d18104b-5704-5c45-b39a-2c84565b1796-requires-heading">
+          <p class="section-heading" id="goal-6d18104b-5704-5c45-b39a-2c84565b1796-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-6d18104b-5704-5c45-b39a-2c84565b1796-reverse-heading">
+          <p class="section-heading" id="goal-6d18104b-5704-5c45-b39a-2c84565b1796-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-0a172021-dfd9-5926-b92c-c01a9dfe9aa8"><span>Planetenkonstellationen und Sichtbarkeit modellieren</span><code>0a172021-dfd9-5926-b92c-c01a9dfe9aa8</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-6d18104b-5704-5c45-b39a-2c84565b1796-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6d18104b-5704-5c45-b39a-2c84565b1796-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-25edd154-b1d8-546c-94a5-88502b6725cd" rel="noreferrer noopener"><span>Geozentrisches und heliozentrisches Weltbild vergleichen (GK)</span> <code>25edd154-b1d8-546c-94a5-88502b6725cd</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d873ffa2-04b3-5978-a955-89563802a348" rel="noreferrer noopener"><span>Newtons Beitrag zur Erklärung von Planetenbewegungen erläutern (GK)</span> <code>d873ffa2-04b3-5978-a955-89563802a348</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 1 von 16</span>
+      <span>Buch-Digest <code>sha256:906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696</code></span>
+      <span>Ziel-Fingerprint <code>sha256:550dd2ed0828c3b5c3a3c57b3c3468a06174b3c00f0c99cf6bccee02b32c25e5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-astrophysics-fast-lane-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=6d18104b-5704-5c45-b39a-2c84565b1796&amp;goalFingerprint=sha256%3A550dd2ed0828c3b5c3a3c57b3c3468a06174b3c00f0c99cf6bccee02b32c25e5&amp;pageFingerprint=sha256%3A19b336f04b46ed5757c2fa305bdcf993c4c5d064977148bcf7f64742d4c9c679&amp;bookDigest=sha256%3A906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-982df2f3-e040-5f4b-b668-0fe05d994b29" data-goal-id="982df2f3-e040-5f4b-b668-0fe05d994b29" data-page-number="2" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-982df2f3-e040-5f4b-b668-0fe05d994b29-title">
+    <header class="goal-header">
+      <h1 id="goal-982df2f3-e040-5f4b-b668-0fe05d994b29-title"><a class="goal-self-link" href="#goal-982df2f3-e040-5f4b-b668-0fe05d994b29">Himmelskoerper des Sonnensystems physikalisch klassifizieren</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>982df2f3-e040-5f4b-b668-0fe05d994b29</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4f883bc138e486c68c1f388271433b02a2310f33d9261af212cbb2ec84e8c0da" data-rendered-digest="sha256:93acdfd388d3e0b7d4fdd4886c17d319f4ff367f6fb5d041e544bbf0c522d7a3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/982df2f3-e040-5f4b-b668-0fe05d994b29/982df2f3-e040-5f4b-b668-0fe05d994b29.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Himmelskoerper des Sonnensystems physikalisch klassifizieren&quot;. Die lernende Person kann Himmelskoerper des Sonnensystems anhand physikalischer Eigenschaften, Bahnparameter und recherchierter Daten klassifizieren und Schlussfolgerungen praesentieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-982df2f3-e040-5f4b-b668-0fe05d994b29-description-heading">
+        <p class="section-heading" id="goal-982df2f3-e040-5f4b-b668-0fe05d994b29-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Himmelskoerper des Sonnensystems anhand physikalischer Eigenschaften, Bahnparameter und recherchierter Daten klassifizieren und Schlussfolgerungen praesentieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-982df2f3-e040-5f4b-b668-0fe05d994b29" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-982df2f3-e040-5f4b-b668-0fe05d994b29-requires-heading">
+          <p class="section-heading" id="goal-982df2f3-e040-5f4b-b668-0fe05d994b29-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-982df2f3-e040-5f4b-b668-0fe05d994b29-reverse-heading">
+          <p class="section-heading" id="goal-982df2f3-e040-5f4b-b668-0fe05d994b29-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-982df2f3-e040-5f4b-b668-0fe05d994b29-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-982df2f3-e040-5f4b-b668-0fe05d994b29-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-c9405043-bdc0-5995-8b4d-5bb56d97d05d" rel="noreferrer noopener"><span>Sonnensystem und Kepler-Gesetze</span> <code>c9405043-bdc0-5995-8b4d-5bb56d97d05d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d2e6f87d-795b-5631-a7cc-0bfb5dc5142e" rel="noreferrer noopener"><span>Physikalische Informationen aus Quellen auswerten</span> <code>d2e6f87d-795b-5631-a7cc-0bfb5dc5142e</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 2 von 16</span>
+      <span>Buch-Digest <code>sha256:906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c8cff71af9467eeb5f7b6537950e9c0df2468de5608aca425d7a0b0401930164</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-astrophysics-fast-lane-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=982df2f3-e040-5f4b-b668-0fe05d994b29&amp;goalFingerprint=sha256%3Ac8cff71af9467eeb5f7b6537950e9c0df2468de5608aca425d7a0b0401930164&amp;pageFingerprint=sha256%3A7e24d478e6eff9e4b84a2753ea942f8bcc0149ced1c2a8643f44d7f965b1ba3b&amp;bookDigest=sha256%3A906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2bc068de-5d2b-5f94-bd51-755982befb6f" data-goal-id="2bc068de-5d2b-5f94-bd51-755982befb6f" data-page-number="3" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-2bc068de-5d2b-5f94-bd51-755982befb6f-title">
+    <header class="goal-header">
+      <h1 id="goal-2bc068de-5d2b-5f94-bd51-755982befb6f-title"><a class="goal-self-link" href="#goal-2bc068de-5d2b-5f94-bd51-755982befb6f">Nachthimmel-Orientierung und Sichtbarkeit astronomischer Objekte erschliessen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2bc068de-5d2b-5f94-bd51-755982befb6f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d94f6d202d516181f9c1beee9acf00ca20ec798d0627dcaaadc160d6e12129b7" data-rendered-digest="sha256:274a59e2f28dad5924f46fefff3ac47e0ffff80f433d357797bdeaf70fbc03fd" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/2bc068de-5d2b-5f94-bd51-755982befb6f/2bc068de-5d2b-5f94-bd51-755982befb6f.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Nachthimmel-Orientierung und Sichtbarkeit astronomischer Objekte erschliessen&quot;. Die lernende Person kann sich mit Sternkarte oder Software am Nachthimmel orientieren, beobachtbare Objekte klassifizieren und deren Sichtbarkeit raeumlich sowie zeitlich begruenden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2bc068de-5d2b-5f94-bd51-755982befb6f-description-heading">
+        <p class="section-heading" id="goal-2bc068de-5d2b-5f94-bd51-755982befb6f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann sich mit Sternkarte oder Software am Nachthimmel orientieren, beobachtbare Objekte klassifizieren und deren Sichtbarkeit raeumlich sowie zeitlich begruenden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-2bc068de-5d2b-5f94-bd51-755982befb6f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2bc068de-5d2b-5f94-bd51-755982befb6f-requires-heading">
+          <p class="section-heading" id="goal-2bc068de-5d2b-5f94-bd51-755982befb6f-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2bc068de-5d2b-5f94-bd51-755982befb6f-reverse-heading">
+          <p class="section-heading" id="goal-2bc068de-5d2b-5f94-bd51-755982befb6f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2bc068de-5d2b-5f94-bd51-755982befb6f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2bc068de-5d2b-5f94-bd51-755982befb6f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-2b700858-bc2e-5ddf-a791-b14d44160480" rel="noreferrer noopener"><span>Astronomische Beobachtungsmethoden</span> <code>2b700858-bc2e-5ddf-a791-b14d44160480</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7c986fca-1129-5eff-a17e-0a04bb7346ee" rel="noreferrer noopener"><span>Astronomische Groessenordnungen und Einheiten</span> <code>7c986fca-1129-5eff-a17e-0a04bb7346ee</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 3 von 16</span>
+      <span>Buch-Digest <code>sha256:906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696</code></span>
+      <span>Ziel-Fingerprint <code>sha256:21836d5d5977fb1cc028851e5d625165335c564c32f24b0fa3bf7b00f4a9d572</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-astrophysics-fast-lane-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=2bc068de-5d2b-5f94-bd51-755982befb6f&amp;goalFingerprint=sha256%3A21836d5d5977fb1cc028851e5d625165335c564c32f24b0fa3bf7b00f4a9d572&amp;pageFingerprint=sha256%3A8269e7125a63b82cbb8adab5a3a292b4f704dc99688cc38a4180ec9a0cfbac0b&amp;bookDigest=sha256%3A906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5cf160e5-e0c2-5552-b2cf-0f04871c5e7e" data-goal-id="5cf160e5-e0c2-5552-b2cf-0f04871c5e7e" data-page-number="4" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-5cf160e5-e0c2-5552-b2cf-0f04871c5e7e-title">
+    <header class="goal-header">
+      <h1 id="goal-5cf160e5-e0c2-5552-b2cf-0f04871c5e7e-title"><a class="goal-self-link" href="#goal-5cf160e5-e0c2-5552-b2cf-0f04871c5e7e">Astronomische Einheit aus Beobachtungsdaten bestimmen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5cf160e5-e0c2-5552-b2cf-0f04871c5e7e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:df281eca0a3fc705be47d0f32afc73eef5823baf1edcf988168d3db1b68a8bfd" data-rendered-digest="sha256:2b414a8a78cf43cde5e0eff6154f68ff813d3ef19e28e3830712df4740e646d6" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/5cf160e5-e0c2-5552-b2cf-0f04871c5e7e/5cf160e5-e0c2-5552-b2cf-0f04871c5e7e.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Astronomische Einheit aus Beobachtungsdaten bestimmen&quot;. Die lernende Person kann die Astronomische Einheit als Entfernungsmaß im Sonnensystem erklaeren und eine Methode zu ihrer Bestimmung aus Fachtexten und Beobachtungsdaten rekonstruieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5cf160e5-e0c2-5552-b2cf-0f04871c5e7e-description-heading">
+        <p class="section-heading" id="goal-5cf160e5-e0c2-5552-b2cf-0f04871c5e7e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Astronomische Einheit als Entfernungsmaß im Sonnensystem erklaeren und eine Methode zu ihrer Bestimmung aus Fachtexten und Beobachtungsdaten rekonstruieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5cf160e5-e0c2-5552-b2cf-0f04871c5e7e" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5cf160e5-e0c2-5552-b2cf-0f04871c5e7e-requires-heading">
+          <p class="section-heading" id="goal-5cf160e5-e0c2-5552-b2cf-0f04871c5e7e-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-5cf160e5-e0c2-5552-b2cf-0f04871c5e7e-reverse-heading">
+          <p class="section-heading" id="goal-5cf160e5-e0c2-5552-b2cf-0f04871c5e7e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-5cf160e5-e0c2-5552-b2cf-0f04871c5e7e-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5cf160e5-e0c2-5552-b2cf-0f04871c5e7e-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-db6b8de4-21e0-58e8-a347-2ae39f538f92" rel="noreferrer noopener"><span>Entfernungsbestimmung</span> <code>db6b8de4-21e0-58e8-a347-2ae39f538f92</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7c986fca-1129-5eff-a17e-0a04bb7346ee" rel="noreferrer noopener"><span>Astronomische Groessenordnungen und Einheiten</span> <code>7c986fca-1129-5eff-a17e-0a04bb7346ee</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 4 von 16</span>
+      <span>Buch-Digest <code>sha256:906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0e7787f7c57880766a96235c98e319d41b599af81db476b4687ae20844b9c3d6</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-astrophysics-fast-lane-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=5cf160e5-e0c2-5552-b2cf-0f04871c5e7e&amp;goalFingerprint=sha256%3A0e7787f7c57880766a96235c98e319d41b599af81db476b4687ae20844b9c3d6&amp;pageFingerprint=sha256%3A910dfec967d73395a4d535ed2f338e086958de7ba46e7f96a1baad7192c594d3&amp;bookDigest=sha256%3A906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-94a3a80e-f1de-51a2-b834-1e3431c5d3ca" data-goal-id="94a3a80e-f1de-51a2-b834-1e3431c5d3ca" data-page-number="5" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-94a3a80e-f1de-51a2-b834-1e3431c5d3ca-title">
+    <header class="goal-header">
+      <h1 id="goal-94a3a80e-f1de-51a2-b834-1e3431c5d3ca-title"><a class="goal-self-link" href="#goal-94a3a80e-f1de-51a2-b834-1e3431c5d3ca">Sonnenbeobachtungen zur Bestimmung von Zustandsgrößen auswerten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>94a3a80e-f1de-51a2-b834-1e3431c5d3ca</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b3a5e8067fa261ac9f55e9309e79a9790e5762477fcc7d52283da8b0adde399f" data-rendered-digest="sha256:2ccde49480870a6dc8ad7582af4d70c8830e44ec336e08d70c6f67e674a79fa8" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/94a3a80e-f1de-51a2-b834-1e3431c5d3ca/94a3a80e-f1de-51a2-b834-1e3431c5d3ca.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Sonnenbeobachtungen zur Bestimmung von Zustandsgrößen auswerten&quot;. Die lernende Person kann aus erdgebundenen Sonnenbeobachtungen Messdaten gewinnen oder auswerten und Zustandsgrößen der Sonne abschaetzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-94a3a80e-f1de-51a2-b834-1e3431c5d3ca-description-heading">
+        <p class="section-heading" id="goal-94a3a80e-f1de-51a2-b834-1e3431c5d3ca-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus erdgebundenen Sonnenbeobachtungen Messdaten gewinnen oder auswerten und Zustandsgrößen der Sonne abschaetzen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-94a3a80e-f1de-51a2-b834-1e3431c5d3ca" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-94a3a80e-f1de-51a2-b834-1e3431c5d3ca-requires-heading">
+          <p class="section-heading" id="goal-94a3a80e-f1de-51a2-b834-1e3431c5d3ca-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-94a3a80e-f1de-51a2-b834-1e3431c5d3ca-reverse-heading">
+          <p class="section-heading" id="goal-94a3a80e-f1de-51a2-b834-1e3431c5d3ca-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-94a3a80e-f1de-51a2-b834-1e3431c5d3ca-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-94a3a80e-f1de-51a2-b834-1e3431c5d3ca-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-2b700858-bc2e-5ddf-a791-b14d44160480" rel="noreferrer noopener"><span>Astronomische Beobachtungsmethoden</span> <code>2b700858-bc2e-5ddf-a791-b14d44160480</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7c986fca-1129-5eff-a17e-0a04bb7346ee" rel="noreferrer noopener"><span>Astronomische Groessenordnungen und Einheiten</span> <code>7c986fca-1129-5eff-a17e-0a04bb7346ee</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 5 von 16</span>
+      <span>Buch-Digest <code>sha256:906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c56ebbd1d7205eefb44916c1ef880db202832e893624e1c62a70a16bd7f581b6</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-astrophysics-fast-lane-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=94a3a80e-f1de-51a2-b834-1e3431c5d3ca&amp;goalFingerprint=sha256%3Ac56ebbd1d7205eefb44916c1ef880db202832e893624e1c62a70a16bd7f581b6&amp;pageFingerprint=sha256%3Af916b1ee08fa03c1c46dbe6f17181f9418f726ddb17be92577a444dc66a7826b&amp;bookDigest=sha256%3A906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e07f36de-2819-59f8-a707-fa25b4633ed3" data-goal-id="e07f36de-2819-59f8-a707-fa25b4633ed3" data-page-number="6" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-e07f36de-2819-59f8-a707-fa25b4633ed3-title">
+    <header class="goal-header">
+      <h1 id="goal-e07f36de-2819-59f8-a707-fa25b4633ed3-title"><a class="goal-self-link" href="#goal-e07f36de-2819-59f8-a707-fa25b4633ed3">Parallaxe, Dopplereffekt und Sternspektren auswerten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e07f36de-2819-59f8-a707-fa25b4633ed3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:bee3f7d8681102a2a3cc44eaf1b565635fe62f7a4b3c255c08314c5ff7384a25" data-rendered-digest="sha256:417960f00ce63c4bf0479d036d180caebd9bccf5bd675823591e9fff1052cca7" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/e07f36de-2819-59f8-a707-fa25b4633ed3/e07f36de-2819-59f8-a707-fa25b4633ed3.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Parallaxe, Dopplereffekt und Sternspektren auswerten&quot;. Die lernende Person kann Sternentfernungen mit trigonometrischer Parallaxe bestimmen, Geschwindigkeiten abschaetzen und Spektralklassen sowie Dopplerverschiebungen fachlich auswerten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e07f36de-2819-59f8-a707-fa25b4633ed3-description-heading">
+        <p class="section-heading" id="goal-e07f36de-2819-59f8-a707-fa25b4633ed3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Sternentfernungen mit trigonometrischer Parallaxe bestimmen, Geschwindigkeiten abschaetzen und Spektralklassen sowie Dopplerverschiebungen fachlich auswerten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e07f36de-2819-59f8-a707-fa25b4633ed3" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e07f36de-2819-59f8-a707-fa25b4633ed3-requires-heading">
+          <p class="section-heading" id="goal-e07f36de-2819-59f8-a707-fa25b4633ed3-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-e07f36de-2819-59f8-a707-fa25b4633ed3-reverse-heading">
+          <p class="section-heading" id="goal-e07f36de-2819-59f8-a707-fa25b4633ed3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e07f36de-2819-59f8-a707-fa25b4633ed3-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e07f36de-2819-59f8-a707-fa25b4633ed3-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-904670af-8e4c-543e-bc9b-e6248d87a10d" rel="noreferrer noopener"><span>Emission, Absorption und Linienspektren</span> <code>904670af-8e4c-543e-bc9b-e6248d87a10d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-db6b8de4-21e0-58e8-a347-2ae39f538f92" rel="noreferrer noopener"><span>Entfernungsbestimmung</span> <code>db6b8de4-21e0-58e8-a347-2ae39f538f92</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 6 von 16</span>
+      <span>Buch-Digest <code>sha256:906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0f78f276911085d6eec92ee9cc90a57f5f255c49aa1f9d769b9bcc3c337e652a</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-astrophysics-fast-lane-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=e07f36de-2819-59f8-a707-fa25b4633ed3&amp;goalFingerprint=sha256%3A0f78f276911085d6eec92ee9cc90a57f5f255c49aa1f9d769b9bcc3c337e652a&amp;pageFingerprint=sha256%3A6d984f9514d404cc3fca30dda9af0d7338deafe6220cfe32af54092f70e19c34&amp;bookDigest=sha256%3A906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a7bec355-48c5-5107-bfab-d6956f9c9205" data-goal-id="a7bec355-48c5-5107-bfab-d6956f9c9205" data-page-number="7" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-a7bec355-48c5-5107-bfab-d6956f9c9205-title">
+    <header class="goal-header">
+      <h1 id="goal-a7bec355-48c5-5107-bfab-d6956f9c9205-title"><a class="goal-self-link" href="#goal-a7bec355-48c5-5107-bfab-d6956f9c9205">Sternspektren und Temperaturgesetze auswerten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a7bec355-48c5-5107-bfab-d6956f9c9205</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c138643c5fdeb276a38548437dcbf7f6b7608ded94a586c9365ab7120c8e55c3" data-rendered-digest="sha256:6a737cc3a5cc92a7346f15bd14f915353baf5640adc7d71518261df61e25559b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/a7bec355-48c5-5107-bfab-d6956f9c9205/a7bec355-48c5-5107-bfab-d6956f9c9205.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Sternspektren und Temperaturgesetze auswerten&quot;. Die lernende Person kann Fraunhoferlinien als Absorptionslinien deuten und Oberflaechentemperaturen von Sternen mit Stefan-Boltzmann-Gesetz sowie Wien-Gesetz abschaetzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a7bec355-48c5-5107-bfab-d6956f9c9205-description-heading">
+        <p class="section-heading" id="goal-a7bec355-48c5-5107-bfab-d6956f9c9205-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Fraunhoferlinien als Absorptionslinien deuten und Oberflaechentemperaturen von Sternen mit Stefan-Boltzmann-Gesetz sowie Wien-Gesetz abschaetzen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a7bec355-48c5-5107-bfab-d6956f9c9205" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a7bec355-48c5-5107-bfab-d6956f9c9205-requires-heading">
+          <p class="section-heading" id="goal-a7bec355-48c5-5107-bfab-d6956f9c9205-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-a7bec355-48c5-5107-bfab-d6956f9c9205-reverse-heading">
+          <p class="section-heading" id="goal-a7bec355-48c5-5107-bfab-d6956f9c9205-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-a5031dfc-6d25-5a04-850a-5c7d8a254c21"><span>Strahlungsgleichgewichte und Lebensbedingungen abschaetzen</span><code>a5031dfc-6d25-5a04-850a-5c7d8a254c21</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a7bec355-48c5-5107-bfab-d6956f9c9205-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a7bec355-48c5-5107-bfab-d6956f9c9205-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-904670af-8e4c-543e-bc9b-e6248d87a10d" rel="noreferrer noopener"><span>Emission, Absorption und Linienspektren</span> <code>904670af-8e4c-543e-bc9b-e6248d87a10d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-2b700858-bc2e-5ddf-a791-b14d44160480" rel="noreferrer noopener"><span>Astronomische Beobachtungsmethoden</span> <code>2b700858-bc2e-5ddf-a791-b14d44160480</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 7 von 16</span>
+      <span>Buch-Digest <code>sha256:906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d947dd98e32319dbe98ba6c414f13c34f602baf23aa2b852879823032784c76b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-astrophysics-fast-lane-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=a7bec355-48c5-5107-bfab-d6956f9c9205&amp;goalFingerprint=sha256%3Ad947dd98e32319dbe98ba6c414f13c34f602baf23aa2b852879823032784c76b&amp;pageFingerprint=sha256%3A1f01008b5da6469122d1fd390ccad1fa1960d83bb12d7bce384dc817750e3844&amp;bookDigest=sha256%3A906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a5031dfc-6d25-5a04-850a-5c7d8a254c21" data-goal-id="a5031dfc-6d25-5a04-850a-5c7d8a254c21" data-page-number="8" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-a5031dfc-6d25-5a04-850a-5c7d8a254c21-title">
+    <header class="goal-header">
+      <h1 id="goal-a5031dfc-6d25-5a04-850a-5c7d8a254c21-title"><a class="goal-self-link" href="#goal-a5031dfc-6d25-5a04-850a-5c7d8a254c21">Strahlungsgleichgewichte und Lebensbedingungen abschaetzen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a5031dfc-6d25-5a04-850a-5c7d8a254c21</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:efc8ba716c4b7cec0d4915c2ae8812ace321383b0b52c04e7739855a0764e6d1" data-rendered-digest="sha256:678cb48f79df8e3d33c8f462f6637f7e9608dbd9bc43ef62fcf70eabfc62177c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/a5031dfc-6d25-5a04-850a-5c7d8a254c21/a5031dfc-6d25-5a04-850a-5c7d8a254c21.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Strahlungsgleichgewichte und Lebensbedingungen abschaetzen&quot;. Die lernende Person kann Strahlungsgleichgewichte ansetzen, Oberflaechentemperaturen von Himmelskoerpern abschaetzen, Annahmen reflektieren und Lebensbedingungen beurteilen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a5031dfc-6d25-5a04-850a-5c7d8a254c21-description-heading">
+        <p class="section-heading" id="goal-a5031dfc-6d25-5a04-850a-5c7d8a254c21-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Strahlungsgleichgewichte ansetzen, Oberflaechentemperaturen von Himmelskoerpern abschaetzen, Annahmen reflektieren und Lebensbedingungen beurteilen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a5031dfc-6d25-5a04-850a-5c7d8a254c21" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a5031dfc-6d25-5a04-850a-5c7d8a254c21-requires-heading">
+          <p class="section-heading" id="goal-a5031dfc-6d25-5a04-850a-5c7d8a254c21-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a7bec355-48c5-5107-bfab-d6956f9c9205"><span>Sternspektren und Temperaturgesetze auswerten</span><code>a7bec355-48c5-5107-bfab-d6956f9c9205</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a5031dfc-6d25-5a04-850a-5c7d8a254c21-reverse-heading">
+          <p class="section-heading" id="goal-a5031dfc-6d25-5a04-850a-5c7d8a254c21-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a5031dfc-6d25-5a04-850a-5c7d8a254c21-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a5031dfc-6d25-5a04-850a-5c7d8a254c21-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-c9405043-bdc0-5995-8b4d-5bb56d97d05d" rel="noreferrer noopener"><span>Sonnensystem und Kepler-Gesetze</span> <code>c9405043-bdc0-5995-8b4d-5bb56d97d05d</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 8 von 16</span>
+      <span>Buch-Digest <code>sha256:906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7d554dac07ba910ee47d43dcb02916bd3f1d5d4310a5f36160046d1ad99f99d1</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-astrophysics-fast-lane-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=a5031dfc-6d25-5a04-850a-5c7d8a254c21&amp;goalFingerprint=sha256%3A7d554dac07ba910ee47d43dcb02916bd3f1d5d4310a5f36160046d1ad99f99d1&amp;pageFingerprint=sha256%3Ae69bbea8c0904876e04f518e869a058375452d9f36207bb9392bf25b4f43aa6e&amp;bookDigest=sha256%3A906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0a172021-dfd9-5926-b92c-c01a9dfe9aa8" data-goal-id="0a172021-dfd9-5926-b92c-c01a9dfe9aa8" data-page-number="9" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-0a172021-dfd9-5926-b92c-c01a9dfe9aa8-title">
+    <header class="goal-header">
+      <h1 id="goal-0a172021-dfd9-5926-b92c-c01a9dfe9aa8-title"><a class="goal-self-link" href="#goal-0a172021-dfd9-5926-b92c-c01a9dfe9aa8">Planetenkonstellationen und Sichtbarkeit modellieren</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0a172021-dfd9-5926-b92c-c01a9dfe9aa8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8db3951f3b9132359c63d430e4114f9026937aad5d4dd2ef8ea5828d4be16c7b" data-rendered-digest="sha256:fb25b612c887c79061392b5828baa6e660f527a2311802a23e55771a4c05d2a6" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/0a172021-dfd9-5926-b92c-c01a9dfe9aa8/0a172021-dfd9-5926-b92c-c01a9dfe9aa8.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Planetenkonstellationen und Sichtbarkeit modellieren&quot;. Die lernende Person kann Planetenkonstellationen mithilfe von Zeichnungen oder Simulationen beschreiben, mit Sichtbarkeit am Nachthimmel verbinden und Schleifenbahnen historisch einordnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0a172021-dfd9-5926-b92c-c01a9dfe9aa8-description-heading">
+        <p class="section-heading" id="goal-0a172021-dfd9-5926-b92c-c01a9dfe9aa8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Planetenkonstellationen mithilfe von Zeichnungen oder Simulationen beschreiben, mit Sichtbarkeit am Nachthimmel verbinden und Schleifenbahnen historisch einordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0a172021-dfd9-5926-b92c-c01a9dfe9aa8" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0a172021-dfd9-5926-b92c-c01a9dfe9aa8-requires-heading">
+          <p class="section-heading" id="goal-0a172021-dfd9-5926-b92c-c01a9dfe9aa8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-6d18104b-5704-5c45-b39a-2c84565b1796"><span>Astronomische Weltbilder historisch und gesellschaftlich reflektieren</span><code>6d18104b-5704-5c45-b39a-2c84565b1796</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-0a172021-dfd9-5926-b92c-c01a9dfe9aa8-reverse-heading">
+          <p class="section-heading" id="goal-0a172021-dfd9-5926-b92c-c01a9dfe9aa8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0a172021-dfd9-5926-b92c-c01a9dfe9aa8-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0a172021-dfd9-5926-b92c-c01a9dfe9aa8-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-c9405043-bdc0-5995-8b4d-5bb56d97d05d" rel="noreferrer noopener"><span>Sonnensystem und Kepler-Gesetze</span> <code>c9405043-bdc0-5995-8b4d-5bb56d97d05d</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 9 von 16</span>
+      <span>Buch-Digest <code>sha256:906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696</code></span>
+      <span>Ziel-Fingerprint <code>sha256:65631be995948f55bd079c6530ae9c5f8af4158bb96bf8fb2d3024f583e02aa7</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-astrophysics-fast-lane-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=0a172021-dfd9-5926-b92c-c01a9dfe9aa8&amp;goalFingerprint=sha256%3A65631be995948f55bd079c6530ae9c5f8af4158bb96bf8fb2d3024f583e02aa7&amp;pageFingerprint=sha256%3A89a437b54b6b7688624cc315791bd5e3c5001a1a98d008d39a3ce5ee8d643a70&amp;bookDigest=sha256%3A906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-4e823349-b60c-5d2a-b96f-d3f23ae50e3a" data-goal-id="4e823349-b60c-5d2a-b96f-d3f23ae50e3a" data-page-number="10" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-4e823349-b60c-5d2a-b96f-d3f23ae50e3a-title">
+    <header class="goal-header">
+      <h1 id="goal-4e823349-b60c-5d2a-b96f-d3f23ae50e3a-title"><a class="goal-self-link" href="#goal-4e823349-b60c-5d2a-b96f-d3f23ae50e3a">Sonnenaktivitaet und Weltraumwetter fachlich beurteilen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4e823349-b60c-5d2a-b96f-d3f23ae50e3a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a6cbf8de1d9e6eacdb25bebaf206637029024f1e8025e4ddd5f7bf31105eea8d" data-rendered-digest="sha256:fea6069ee32d889b655eede01b4d7f5a444173dfdc54d1048ed7bea0094231a2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/4e823349-b60c-5d2a-b96f-d3f23ae50e3a/4e823349-b60c-5d2a-b96f-d3f23ae50e3a.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Sonnenaktivitaet und Weltraumwetter fachlich beurteilen&quot;. Die lernende Person kann Zusammenhaenge zwischen solarem Magnetfeld, Sonnenflecken, Aktivitaetsphasen und Weltraumwetter recherchieren, pruefen und fachlich diskutieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4e823349-b60c-5d2a-b96f-d3f23ae50e3a-description-heading">
+        <p class="section-heading" id="goal-4e823349-b60c-5d2a-b96f-d3f23ae50e3a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Zusammenhaenge zwischen solarem Magnetfeld, Sonnenflecken, Aktivitaetsphasen und Weltraumwetter recherchieren, pruefen und fachlich diskutieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4e823349-b60c-5d2a-b96f-d3f23ae50e3a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4e823349-b60c-5d2a-b96f-d3f23ae50e3a-requires-heading">
+          <p class="section-heading" id="goal-4e823349-b60c-5d2a-b96f-d3f23ae50e3a-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-4e823349-b60c-5d2a-b96f-d3f23ae50e3a-reverse-heading">
+          <p class="section-heading" id="goal-4e823349-b60c-5d2a-b96f-d3f23ae50e3a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-4e823349-b60c-5d2a-b96f-d3f23ae50e3a-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4e823349-b60c-5d2a-b96f-d3f23ae50e3a-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4c5c7cb1-f238-52c8-b82c-159c6c299c0e" rel="noreferrer noopener"><span>Energieumwandlung in der Sonne</span> <code>4c5c7cb1-f238-52c8-b82c-159c6c299c0e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d2e6f87d-795b-5631-a7cc-0bfb5dc5142e" rel="noreferrer noopener"><span>Physikalische Informationen aus Quellen auswerten</span> <code>d2e6f87d-795b-5631-a7cc-0bfb5dc5142e</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 10 von 16</span>
+      <span>Buch-Digest <code>sha256:906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bd81d7c50b0542a0d32ea6fc8a70cfd04c47a8ff2d94d38d32576883b6cab81a</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-astrophysics-fast-lane-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=4e823349-b60c-5d2a-b96f-d3f23ae50e3a&amp;goalFingerprint=sha256%3Abd81d7c50b0542a0d32ea6fc8a70cfd04c47a8ff2d94d38d32576883b6cab81a&amp;pageFingerprint=sha256%3Ab2ded6d1b516c90d03d35110cc92f013453793067079a66051e9cd16ca068aec&amp;bookDigest=sha256%3A906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-61e84097-57b9-5434-9909-8ed8368a7823" data-goal-id="61e84097-57b9-5434-9909-8ed8368a7823" data-page-number="11" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-61e84097-57b9-5434-9909-8ed8368a7823-title">
+    <header class="goal-header">
+      <h1 id="goal-61e84097-57b9-5434-9909-8ed8368a7823-title"><a class="goal-self-link" href="#goal-61e84097-57b9-5434-9909-8ed8368a7823">Galaxienentfernungen und Hubble-Alter beurteilen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>61e84097-57b9-5434-9909-8ed8368a7823</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:850c2fe0910fceea8b7ce0d9535a4f3f35a9969f45048e6847a93eb069976319" data-rendered-digest="sha256:db14f9aaa4c315238f16ebbf93c27daff31b30b22f8b37f979bc1bd37d6c00d1" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/61e84097-57b9-5434-9909-8ed8368a7823/61e84097-57b9-5434-9909-8ed8368a7823.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Galaxienentfernungen und Hubble-Alter beurteilen&quot;. Die lernende Person kann Verfahren zur Entfernungsbestimmung von Galaxien vergleichen, Messunsicherheiten und Gültigkeitsgrenzen diskutieren und mit der Hubble-Beziehung das Alter des Universums abschaetzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-61e84097-57b9-5434-9909-8ed8368a7823-description-heading">
+        <p class="section-heading" id="goal-61e84097-57b9-5434-9909-8ed8368a7823-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Verfahren zur Entfernungsbestimmung von Galaxien vergleichen, Messunsicherheiten und Gültigkeitsgrenzen diskutieren und mit der Hubble-Beziehung das Alter des Universums abschaetzen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-61e84097-57b9-5434-9909-8ed8368a7823" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-61e84097-57b9-5434-9909-8ed8368a7823-requires-heading">
+          <p class="section-heading" id="goal-61e84097-57b9-5434-9909-8ed8368a7823-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-61e84097-57b9-5434-9909-8ed8368a7823-reverse-heading">
+          <p class="section-heading" id="goal-61e84097-57b9-5434-9909-8ed8368a7823-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-61e84097-57b9-5434-9909-8ed8368a7823-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-61e84097-57b9-5434-9909-8ed8368a7823-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745" rel="noreferrer noopener"><span>Kosmologie vertieft</span> <code>aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-db6b8de4-21e0-58e8-a347-2ae39f538f92" rel="noreferrer noopener"><span>Entfernungsbestimmung</span> <code>db6b8de4-21e0-58e8-a347-2ae39f538f92</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 11 von 16</span>
+      <span>Buch-Digest <code>sha256:906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696</code></span>
+      <span>Ziel-Fingerprint <code>sha256:de0796c5e0137e63b25fd0285676f2ef84c074d4645436734e9a46b98f5bc3f3</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-astrophysics-fast-lane-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=61e84097-57b9-5434-9909-8ed8368a7823&amp;goalFingerprint=sha256%3Ade0796c5e0137e63b25fd0285676f2ef84c074d4645436734e9a46b98f5bc3f3&amp;pageFingerprint=sha256%3Aadccc769653183da88a05aafd672155ffb9ae42565c771107416a45150146e44&amp;bookDigest=sha256%3A906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-826af579-3e51-5ac9-bc2a-208d8a2fc99e" data-goal-id="826af579-3e51-5ac9-bc2a-208d8a2fc99e" data-page-number="12" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-826af579-3e51-5ac9-bc2a-208d8a2fc99e-title">
+    <header class="goal-header">
+      <h1 id="goal-826af579-3e51-5ac9-bc2a-208d8a2fc99e-title"><a class="goal-self-link" href="#goal-826af579-3e51-5ac9-bc2a-208d8a2fc99e">Teleskope und Spektralbereiche zur Struktur der Milchstrasse nutzen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>826af579-3e51-5ac9-bc2a-208d8a2fc99e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6cbf760c81b098f3a3099831d7613fc4c950eb1f7e4e0b8adc26497c9cb1716f" data-rendered-digest="sha256:1b37eb26dfc536b7df14abb2d3b98f71a776f2dfd1aa191a8eb12317815fdca3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Teleskope und Spektralbereiche zur Struktur der Milchstrasse nutzen&quot;. Die lernende Person kann Teleskope fuer verschiedene Spektralbereiche vergleichen und Beobachtungsdaten nutzen, um die Struktur der Milchstrasse zu beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-826af579-3e51-5ac9-bc2a-208d8a2fc99e-description-heading">
+        <p class="section-heading" id="goal-826af579-3e51-5ac9-bc2a-208d8a2fc99e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Teleskope fuer verschiedene Spektralbereiche vergleichen und Beobachtungsdaten nutzen, um die Struktur der Milchstrasse zu beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-826af579-3e51-5ac9-bc2a-208d8a2fc99e" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-826af579-3e51-5ac9-bc2a-208d8a2fc99e-requires-heading">
+          <p class="section-heading" id="goal-826af579-3e51-5ac9-bc2a-208d8a2fc99e-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-826af579-3e51-5ac9-bc2a-208d8a2fc99e-reverse-heading">
+          <p class="section-heading" id="goal-826af579-3e51-5ac9-bc2a-208d8a2fc99e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-826af579-3e51-5ac9-bc2a-208d8a2fc99e-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-826af579-3e51-5ac9-bc2a-208d8a2fc99e-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5db07785-8cca-50d5-81a9-e0264d344af9" rel="noreferrer noopener"><span>Struktur und Alter des Universums</span> <code>5db07785-8cca-50d5-81a9-e0264d344af9</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-2b700858-bc2e-5ddf-a791-b14d44160480" rel="noreferrer noopener"><span>Astronomische Beobachtungsmethoden</span> <code>2b700858-bc2e-5ddf-a791-b14d44160480</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 12 von 16</span>
+      <span>Buch-Digest <code>sha256:906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9dab2be76625caf31f71c9c7227f6b8433d869ab7ad8696e263f1a03e5a98701</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-astrophysics-fast-lane-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=826af579-3e51-5ac9-bc2a-208d8a2fc99e&amp;goalFingerprint=sha256%3A9dab2be76625caf31f71c9c7227f6b8433d869ab7ad8696e263f1a03e5a98701&amp;pageFingerprint=sha256%3A75814be1a983fbf00f9a352bc71a5180c524b518b6e1902d9984b52665f94d5f&amp;bookDigest=sha256%3A906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4" data-goal-id="7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4" data-page-number="13" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4-title">
+    <header class="goal-header">
+      <h1 id="goal-7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4-title"><a class="goal-self-link" href="#goal-7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4">Massenbestimmung in Doppelsternsystemen und Gravitationswellen deuten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:88d341f30c471d69c422f3eab4d392f2170f98d56103371beefcb464d0d02bd8" data-rendered-digest="sha256:0fed9e9b1efd8d302a68af0b804302aed7387baf298c1fbbceaf3d7a0448c6b8" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4/7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Massenbestimmung in Doppelsternsystemen und Gravitationswellen deuten&quot;. Die lernende Person kann Beobachtungen von Zweikoerpersystemen und Gravitationswellen zur Massenbestimmung nutzen und die Entstehung von Gravitationswellen analog zu elektromagnetischen Wellen plausibilisieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4-description-heading">
+        <p class="section-heading" id="goal-7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Beobachtungen von Zweikoerpersystemen und Gravitationswellen zur Massenbestimmung nutzen und die Entstehung von Gravitationswellen analog zu elektromagnetischen Wellen plausibilisieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4-requires-heading">
+          <p class="section-heading" id="goal-7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4-reverse-heading">
+          <p class="section-heading" id="goal-7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-497f1311-17d6-56ff-afb1-422a738e5c16" rel="noreferrer noopener"><span>Kepler-Gesetze anwenden</span> <code>497f1311-17d6-56ff-afb1-422a738e5c16</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ba16948b-5e07-54af-b77b-776e677c6906" rel="noreferrer noopener"><span>Gravitationswellen und elektromagnetische Wellen vergleichen</span> <code>ba16948b-5e07-54af-b77b-776e677c6906</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 13 von 16</span>
+      <span>Buch-Digest <code>sha256:906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696</code></span>
+      <span>Ziel-Fingerprint <code>sha256:10e26f9e1dbfd1f5c38bd6cc502d8f795f8eb898623392662edfd1fdbb219b11</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-astrophysics-fast-lane-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4&amp;goalFingerprint=sha256%3A10e26f9e1dbfd1f5c38bd6cc502d8f795f8eb898623392662edfd1fdbb219b11&amp;pageFingerprint=sha256%3Adca926b33ce680ecaf7b49639257cbc43f8a7e19b8dc9b49a934bbb8d0f70ea3&amp;bookDigest=sha256%3A906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61" data-goal-id="e2014db8-c97f-5ce1-82c5-2a42741f4a61" data-page-number="14" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-title">
+    <header class="goal-header">
+      <h1 id="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-title"><a class="goal-self-link" href="#goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61">Exoplanetensuche und Habitabilitaet quellenkritisch beurteilen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e2014db8-c97f-5ce1-82c5-2a42741f4a61</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:63b4b3ae5e2b18dba5a4998fe42810bdbe2411eb44925eebd57031e0e2d19a6d" data-rendered-digest="sha256:a0c77dde082b395c79271408516fe600012a18561dd4a515746d75daa2576368" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/e2014db8-c97f-5ce1-82c5-2a42741f4a61/e2014db8-c97f-5ce1-82c5-2a42741f4a61.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Exoplanetensuche und Habitabilitaet quellenkritisch beurteilen&quot;. Die lernende Person kann Methoden der Exoplanetensuche vergleichen, Lebensbedingungen mit der Erde abgleichen und digitale Quellen zu Habitabilitaet quellenkritisch auswerten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-description-heading">
+        <p class="section-heading" id="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Methoden der Exoplanetensuche vergleichen, Lebensbedingungen mit der Erde abgleichen und digitale Quellen zu Habitabilitaet quellenkritisch auswerten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-requires-heading">
+          <p class="section-heading" id="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-reverse-heading">
+          <p class="section-heading" id="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5b8eaf71-96fe-50eb-b9ea-a8fa392df086" rel="noreferrer noopener"><span>Exoplaneten-Nachweise erlaeutern</span> <code>5b8eaf71-96fe-50eb-b9ea-a8fa392df086</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e28381b4-50ef-5cac-bfa4-b7c8e03aef82" rel="noreferrer noopener"><span>Planetenatmosphaeren mit Spektren untersuchen</span> <code>e28381b4-50ef-5cac-bfa4-b7c8e03aef82</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 14 von 16</span>
+      <span>Buch-Digest <code>sha256:906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8e483307ff02b9ce5992d2f67840e007e0537696e97db4d42a8c85459fe7ce40</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-astrophysics-fast-lane-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=e2014db8-c97f-5ce1-82c5-2a42741f4a61&amp;goalFingerprint=sha256%3A8e483307ff02b9ce5992d2f67840e007e0537696e97db4d42a8c85459fe7ce40&amp;pageFingerprint=sha256%3A10c9090ca79d3a76598b09b402f44da02aac0afbc76d2ee6f528e7839356afdc&amp;bookDigest=sha256%3A906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6ae54ff9-dc3b-563b-b2ee-09a0f0d00162" data-goal-id="6ae54ff9-dc3b-563b-b2ee-09a0f0d00162" data-page-number="15" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-6ae54ff9-dc3b-563b-b2ee-09a0f0d00162-title">
+    <header class="goal-header">
+      <h1 id="goal-6ae54ff9-dc3b-563b-b2ee-09a0f0d00162-title"><a class="goal-self-link" href="#goal-6ae54ff9-dc3b-563b-b2ee-09a0f0d00162">Offene kosmologische Fragen quellenkritisch einordnen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6ae54ff9-dc3b-563b-b2ee-09a0f0d00162</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6dae895d8a0a0ed9905e80e0d1c893814bec6d83023f90618e6cca92e70993f2" data-rendered-digest="sha256:cd498bfcce7c84fd08fdf1e4ec9086dbb8ded77b82eaea05429e9bd5ad8a8e1e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/6ae54ff9-dc3b-563b-b2ee-09a0f0d00162/6ae54ff9-dc3b-563b-b2ee-09a0f0d00162.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Offene kosmologische Fragen quellenkritisch einordnen&quot;. Die lernende Person kann offene Problemstellungen der Kosmologie benennen, physikalisch bearbeitbare Fragen identifizieren und populärwissenschaftliche Darstellungen quellenkritisch bewerten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6ae54ff9-dc3b-563b-b2ee-09a0f0d00162-description-heading">
+        <p class="section-heading" id="goal-6ae54ff9-dc3b-563b-b2ee-09a0f0d00162-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann offene Problemstellungen der Kosmologie benennen, physikalisch bearbeitbare Fragen identifizieren und populärwissenschaftliche Darstellungen quellenkritisch bewerten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6ae54ff9-dc3b-563b-b2ee-09a0f0d00162" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6ae54ff9-dc3b-563b-b2ee-09a0f0d00162-requires-heading">
+          <p class="section-heading" id="goal-6ae54ff9-dc3b-563b-b2ee-09a0f0d00162-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-6ae54ff9-dc3b-563b-b2ee-09a0f0d00162-reverse-heading">
+          <p class="section-heading" id="goal-6ae54ff9-dc3b-563b-b2ee-09a0f0d00162-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-6ae54ff9-dc3b-563b-b2ee-09a0f0d00162-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6ae54ff9-dc3b-563b-b2ee-09a0f0d00162-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9" rel="noreferrer noopener"><span>Kosmologie und Urknall</span> <code>e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d2e6f87d-795b-5631-a7cc-0bfb5dc5142e" rel="noreferrer noopener"><span>Physikalische Informationen aus Quellen auswerten</span> <code>d2e6f87d-795b-5631-a7cc-0bfb5dc5142e</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 15 von 16</span>
+      <span>Buch-Digest <code>sha256:906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696</code></span>
+      <span>Ziel-Fingerprint <code>sha256:df13267a13013a2db3e823565c9857c161996061f308aac48956dfe82e7d3778</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-astrophysics-fast-lane-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=6ae54ff9-dc3b-563b-b2ee-09a0f0d00162&amp;goalFingerprint=sha256%3Adf13267a13013a2db3e823565c9857c161996061f308aac48956dfe82e7d3778&amp;pageFingerprint=sha256%3A874053c302f7c5833830a57e3e944b900f190cfdd055f3bf8dd10893962bcbce&amp;bookDigest=sha256%3A906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f203a552-fcf0-560c-baa2-47d4eb2379c8" data-goal-id="f203a552-fcf0-560c-baa2-47d4eb2379c8" data-page-number="16" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-f203a552-fcf0-560c-baa2-47d4eb2379c8-title">
+    <header class="goal-header">
+      <h1 id="goal-f203a552-fcf0-560c-baa2-47d4eb2379c8-title"><a class="goal-self-link" href="#goal-f203a552-fcf0-560c-baa2-47d4eb2379c8">Galaktische Massen und Dunkle Materie aus Rotationskurven erschliessen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f203a552-fcf0-560c-baa2-47d4eb2379c8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:cc9846d8f6472e4e9680a22a83645d72e35c86757e732eb715820d26e0ef8b29" data-rendered-digest="sha256:2422ad913ede15c752348d6676090673a72f139a2e6f9299bb72e00cd4e4b431" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/f203a552-fcf0-560c-baa2-47d4eb2379c8/f203a552-fcf0-560c-baa2-47d4eb2379c8.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Galaktische Massen und Dunkle Materie aus Rotationskurven erschliessen&quot;. Die lernende Person kann Massen von Galaxien und zentralen Schwarzen Loechern mit Gravitationsmodellen abschaetzen und aus Rotationskurven auf Dunkle Materie schliessen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f203a552-fcf0-560c-baa2-47d4eb2379c8-description-heading">
+        <p class="section-heading" id="goal-f203a552-fcf0-560c-baa2-47d4eb2379c8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Massen von Galaxien und zentralen Schwarzen Loechern mit Gravitationsmodellen abschaetzen und aus Rotationskurven auf Dunkle Materie schliessen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-f203a552-fcf0-560c-baa2-47d4eb2379c8" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f203a552-fcf0-560c-baa2-47d4eb2379c8-requires-heading">
+          <p class="section-heading" id="goal-f203a552-fcf0-560c-baa2-47d4eb2379c8-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-f203a552-fcf0-560c-baa2-47d4eb2379c8-reverse-heading">
+          <p class="section-heading" id="goal-f203a552-fcf0-560c-baa2-47d4eb2379c8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-f203a552-fcf0-560c-baa2-47d4eb2379c8-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f203a552-fcf0-560c-baa2-47d4eb2379c8-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5db07785-8cca-50d5-81a9-e0264d344af9" rel="noreferrer noopener"><span>Struktur und Alter des Universums</span> <code>5db07785-8cca-50d5-81a9-e0264d344af9</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-14d99a65-8d58-5647-88ab-02137b96d55b" rel="noreferrer noopener"><span>Allgemeine Relativitätstheorie (Qualitativ)</span> <code>14d99a65-8d58-5647-88ab-02137b96d55b</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 16 von 16</span>
+      <span>Buch-Digest <code>sha256:906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d67e42b8c955bf19a2a5859bfa9e6524f34ca17ab2f29df928968f8d7d564335</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-astrophysics-fast-lane-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=f203a552-fcf0-560c-baa2-47d4eb2379c8&amp;goalFingerprint=sha256%3Ad67e42b8c955bf19a2a5859bfa9e6524f34ca17ab2f29df928968f8d7d564335&amp;pageFingerprint=sha256%3Aab8a32095f90d687cfe1d24d3eac730d2ba879a46881525ba0f2442665fa7a50&amp;bookDigest=sha256%3A906fa63d3842a38d6e6e92121196421a3a04808aa2a01fef8cdcee7238b02696&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

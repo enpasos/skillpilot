@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-06T04:17:39.146211+00:00",
+  "results": [
+    {
+      "label": "atomicity",
+      "mode": "binding",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/semantic-atomicity.author-v2.config.json",
+        "--mode=check",
+        "--write-fingerprints"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "atomicity",
+      "mode": "actual-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/semantic-atomicity.author-v2.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "memory",
+      "mode": "binding",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/memory.author-v2.config.json",
+        "--mode=check",
+        "--write-fingerprints"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "memory",
+      "mode": "actual-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/memory.author-v2.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "P21",
+      "mode": "actual-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/positive-evidence.author-v2.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "authorDecisionsNotIndependentReview": true,
+  "nativeBindingAndActualCheckSeparated": true,
+  "noActiveWrite": true,
+  "humanApproval": false,
+  "strictDOrVClaim": false
+}

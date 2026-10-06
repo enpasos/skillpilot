@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v1">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Mathematik Lernzielbeschreibungs-Review – E-Phase trigonometrische Funktionen (12)</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    h1 { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<article class="goal-page" id="goal-cdf49335-cebf-54b4-9f52-50d5badabe2f" data-goal-id="cdf49335-cebf-54b4-9f52-50d5badabe2f" data-page-number="1" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-cdf49335-cebf-54b4-9f52-50d5badabe2f-title">
+    <header class="goal-header">
+      <h1 id="goal-cdf49335-cebf-54b4-9f52-50d5badabe2f-title"><a class="goal-self-link" href="#goal-cdf49335-cebf-54b4-9f52-50d5badabe2f">Bogenmaß in periodischen Prozessen nutzen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>cdf49335-cebf-54b4-9f52-50d5badabe2f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f55231ca319081fd52e340be60caf671565f94e3b44be1032ef4b122866a7610" data-rendered-digest="sha256:0250a4a6f811d36c49a26d2fee58f1b690604d0ae0306bcb96574c1b041c9d7a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/cdf49335-cebf-54b4-9f52-50d5badabe2f/cdf49335-cebf-54b4-9f52-50d5badabe2f.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Bogenmaß in periodischen Prozessen nutzen&quot;. Die lernende Person kann das Bogenmaß als Winkelmaß in trigonometrischen Funktionstermen verwenden, zwischen Grad- und Bogenmaß wechseln und Bogenmaßangaben im Verlauf periodischer Prozesse deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-cdf49335-cebf-54b4-9f52-50d5badabe2f-description-heading">
+        <p class="section-heading" id="goal-cdf49335-cebf-54b4-9f52-50d5badabe2f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Bogenmaß als Winkelmaß in trigonometrischen Funktionstermen verwenden, zwischen Grad- und Bogenmaß wechseln und Bogenmaßangaben im Verlauf periodischer Prozesse deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G9; Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-cdf49335-cebf-54b4-9f52-50d5badabe2f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-cdf49335-cebf-54b4-9f52-50d5badabe2f-requires-heading">
+          <p class="section-heading" id="goal-cdf49335-cebf-54b4-9f52-50d5badabe2f-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-cdf49335-cebf-54b4-9f52-50d5badabe2f-reverse-heading">
+          <p class="section-heading" id="goal-cdf49335-cebf-54b4-9f52-50d5badabe2f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-bbef7cf2-90fa-59fa-a115-8b651aab9231"><span>Sinus- und Kosinusfunktionen verstehen</span><code>bbef7cf2-90fa-59fa-a115-8b651aab9231</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-cdf49335-cebf-54b4-9f52-50d5badabe2f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-cdf49335-cebf-54b4-9f52-50d5badabe2f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2" rel="noreferrer noopener"><span>Warum Mathematik? – Denken, Muster &amp; Zukunft</span> <code>71cec9fb-3751-4d61-8b34-c5adbbf6e5f2</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-cdf49335-cebf-54b4-9f52-50d5badabe2f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-cdf49335-cebf-54b4-9f52-50d5badabe2f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6634ef12-0e88-584e-8e45-9e60eafc0951" rel="noreferrer noopener"><span>Trigonometrische Ableitungen anwenden</span> <code>6634ef12-0e88-584e-8e45-9e60eafc0951</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 1 von 12</span>
+      <span>Buch-Digest <code>sha256:44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4b69a86f27703a9da520d781e3af5b39d631b798dfcf7f05e43f52d39ec8d37f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-e-trigonometric-functions-12-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=cdf49335-cebf-54b4-9f52-50d5badabe2f&amp;goalFingerprint=sha256%3A4b69a86f27703a9da520d781e3af5b39d631b798dfcf7f05e43f52d39ec8d37f&amp;pageFingerprint=sha256%3A07dfad4c3a30055a7c7d315de51dd36f30312da60d9aaa9915474ebd8a0d9381&amp;bookDigest=sha256%3A44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-bbef7cf2-90fa-59fa-a115-8b651aab9231" data-goal-id="bbef7cf2-90fa-59fa-a115-8b651aab9231" data-page-number="2" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-bbef7cf2-90fa-59fa-a115-8b651aab9231-title">
+    <header class="goal-header">
+      <h1 id="goal-bbef7cf2-90fa-59fa-a115-8b651aab9231-title"><a class="goal-self-link" href="#goal-bbef7cf2-90fa-59fa-a115-8b651aab9231">Sinus- und Kosinusfunktionen verstehen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>bbef7cf2-90fa-59fa-a115-8b651aab9231</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8fb29bd003dd02771a3115d392a99aa87252a6d8fbe2d81be27d793aa8c9b750" data-rendered-digest="sha256:d04fbd27a999108e2b405d6f1459eaa623ebaf6b78830c8c72da300cf4c61836" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/bbef7cf2-90fa-59fa-a115-8b651aab9231/bbef7cf2-90fa-59fa-a115-8b651aab9231.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Sinus- und Kosinusfunktionen verstehen&quot;. Die lernende Person kann Sinus- und Kosinusfunktionen mithilfe von Kreisbewegungen motivieren, Graphen skizzieren und charakteristische Punkte (Amplitude, Nullstellen) benennen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-bbef7cf2-90fa-59fa-a115-8b651aab9231-description-heading">
+        <p class="section-heading" id="goal-bbef7cf2-90fa-59fa-a115-8b651aab9231-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Sinus- und Kosinusfunktionen mithilfe von Kreisbewegungen motivieren, Graphen skizzieren und charakteristische Punkte (Amplitude, Nullstellen) benennen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-bbef7cf2-90fa-59fa-a115-8b651aab9231" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-bbef7cf2-90fa-59fa-a115-8b651aab9231-requires-heading">
+          <p class="section-heading" id="goal-bbef7cf2-90fa-59fa-a115-8b651aab9231-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-cdf49335-cebf-54b4-9f52-50d5badabe2f"><span>Bogenmaß in periodischen Prozessen nutzen</span><code>cdf49335-cebf-54b4-9f52-50d5badabe2f</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-bbef7cf2-90fa-59fa-a115-8b651aab9231-reverse-heading">
+          <p class="section-heading" id="goal-bbef7cf2-90fa-59fa-a115-8b651aab9231-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464"><span>Parameter periodischer Funktionen deuten</span><code>ea8e3dfb-7fd7-5d49-ae07-01864e6aa464</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-bbef7cf2-90fa-59fa-a115-8b651aab9231-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bbef7cf2-90fa-59fa-a115-8b651aab9231-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2" rel="noreferrer noopener"><span>Warum Mathematik? – Denken, Muster &amp; Zukunft</span> <code>71cec9fb-3751-4d61-8b34-c5adbbf6e5f2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-858113c5-e53b-57bb-b01f-ba95c3ddcb6f" rel="noreferrer noopener"><span>Ableitungen elementarer Funktionen berechnen</span> <code>858113c5-e53b-57bb-b01f-ba95c3ddcb6f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-bbef7cf2-90fa-59fa-a115-8b651aab9231-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bbef7cf2-90fa-59fa-a115-8b651aab9231-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6634ef12-0e88-584e-8e45-9e60eafc0951" rel="noreferrer noopener"><span>Trigonometrische Ableitungen anwenden</span> <code>6634ef12-0e88-584e-8e45-9e60eafc0951</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 2 von 12</span>
+      <span>Buch-Digest <code>sha256:44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:00c5eb2944f6798e429e877a5a084715ce678790db20e779d1ccd1161793bae3</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-e-trigonometric-functions-12-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=bbef7cf2-90fa-59fa-a115-8b651aab9231&amp;goalFingerprint=sha256%3A00c5eb2944f6798e429e877a5a084715ce678790db20e779d1ccd1161793bae3&amp;pageFingerprint=sha256%3Adb6ef57be94015f1b949de8166998e8f288ab00d39b82b6d001c8ade8dd67ccc&amp;bookDigest=sha256%3A44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464" data-goal-id="ea8e3dfb-7fd7-5d49-ae07-01864e6aa464" data-page-number="3" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464-title">
+    <header class="goal-header">
+      <h1 id="goal-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464-title"><a class="goal-self-link" href="#goal-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464">Parameter periodischer Funktionen deuten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ea8e3dfb-7fd7-5d49-ae07-01864e6aa464</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6dd0693afc2a381a26ed23fe00a71308fa3ac45abdb32bd4fee75a3adf119a67" data-rendered-digest="sha256:981a8f56594e8d25a1e99acdeaa0649a94d5e3cd4777b1e32dea525e1bd49554" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/ea8e3dfb-7fd7-5d49-ae07-01864e6aa464/ea8e3dfb-7fd7-5d49-ae07-01864e6aa464.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Parameter periodischer Funktionen deuten&quot;. Die lernende Person kann Amplitude, Periodenlänge, Phasenverschiebung und vertikale Verschiebung interpretieren und entsprechende Parameter in Termen $y = a \cdot \sin(bx+c)+d$ bestimmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464-description-heading">
+        <p class="section-heading" id="goal-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Amplitude, Periodenlänge, Phasenverschiebung und vertikale Verschiebung interpretieren und entsprechende Parameter in Termen $y = a \cdot \sin(bx+c)+d$ bestimmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464-requires-heading">
+          <p class="section-heading" id="goal-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-bbef7cf2-90fa-59fa-a115-8b651aab9231"><span>Sinus- und Kosinusfunktionen verstehen</span><code>bbef7cf2-90fa-59fa-a115-8b651aab9231</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464-reverse-heading">
+          <p class="section-heading" id="goal-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-eda3a298-4965-525e-878d-f05b9e2d4503"><span>Charakteristische Punkte trigonometrischer Funktionen mit Symmetrie bestimmen</span><code>eda3a298-4965-525e-878d-f05b9e2d4503</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32"><span>Ableitungen von Sinus- und Kosinusfunktionen herleiten</span><code>e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-58d2f963-4fb9-550d-a832-f5ac60808900"><span>Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten</span><code>58d2f963-4fb9-550d-a832-f5ac60808900</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-ecd13e54-ab0e-550f-9400-66e13306635d"><span>Trigonometrische Gleichungen lösen</span><code>ecd13e54-ab0e-550f-9400-66e13306635d</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6634ef12-0e88-584e-8e45-9e60eafc0951" rel="noreferrer noopener"><span>Trigonometrische Ableitungen anwenden</span> <code>6634ef12-0e88-584e-8e45-9e60eafc0951</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 3 von 12</span>
+      <span>Buch-Digest <code>sha256:44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:70944a923ab0a81276dffe1c609255296acf419f8e07f9b7859f1c3d6b39df6d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-e-trigonometric-functions-12-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=ea8e3dfb-7fd7-5d49-ae07-01864e6aa464&amp;goalFingerprint=sha256%3A70944a923ab0a81276dffe1c609255296acf419f8e07f9b7859f1c3d6b39df6d&amp;pageFingerprint=sha256%3Abe73c0f5c2343eedd9fde34ccf388c2af23add9268c4a71046147fb0d08422c7&amp;bookDigest=sha256%3A44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-eda3a298-4965-525e-878d-f05b9e2d4503" data-goal-id="eda3a298-4965-525e-878d-f05b9e2d4503" data-page-number="4" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-eda3a298-4965-525e-878d-f05b9e2d4503-title">
+    <header class="goal-header">
+      <h1 id="goal-eda3a298-4965-525e-878d-f05b9e2d4503-title"><a class="goal-self-link" href="#goal-eda3a298-4965-525e-878d-f05b9e2d4503">Charakteristische Punkte trigonometrischer Funktionen mit Symmetrie bestimmen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>eda3a298-4965-525e-878d-f05b9e2d4503</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b55613d0c9fd95c73c814d608c961cb6722a3255b1052ca454cd0942b0c78616" data-rendered-digest="sha256:3ab3971da8e9c064124f0b83ac15a434e82b9fdc34f055b1a28617eae5de4091" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/eda3a298-4965-525e-878d-f05b9e2d4503/eda3a298-4965-525e-878d-f05b9e2d4503.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Charakteristische Punkte trigonometrischer Funktionen mit Symmetrie bestimmen&quot;. Die lernende Person kann bei Sinus- und Kosinusfunktionen Nullstellen, Extrempunkte und Wendepunkte ohne Differenzialrechnung aus Periodizität, Amplitude, Verschiebungen und Symmetrieargumenten bestimmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-eda3a298-4965-525e-878d-f05b9e2d4503-description-heading">
+        <p class="section-heading" id="goal-eda3a298-4965-525e-878d-f05b9e2d4503-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei Sinus- und Kosinusfunktionen Nullstellen, Extrempunkte und Wendepunkte ohne Differenzialrechnung aus Periodizität, Amplitude, Verschiebungen und Symmetrieargumenten bestimmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-eda3a298-4965-525e-878d-f05b9e2d4503" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-eda3a298-4965-525e-878d-f05b9e2d4503-requires-heading">
+          <p class="section-heading" id="goal-eda3a298-4965-525e-878d-f05b9e2d4503-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464"><span>Parameter periodischer Funktionen deuten</span><code>ea8e3dfb-7fd7-5d49-ae07-01864e6aa464</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-eda3a298-4965-525e-878d-f05b9e2d4503-reverse-heading">
+          <p class="section-heading" id="goal-eda3a298-4965-525e-878d-f05b9e2d4503-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2"><span>Ableitungen von Sinus und Kosinus grafisch begründen</span><code>2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-ecd13e54-ab0e-550f-9400-66e13306635d"><span>Trigonometrische Gleichungen lösen</span><code>ecd13e54-ab0e-550f-9400-66e13306635d</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-eda3a298-4965-525e-878d-f05b9e2d4503-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-eda3a298-4965-525e-878d-f05b9e2d4503-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6634ef12-0e88-584e-8e45-9e60eafc0951" rel="noreferrer noopener"><span>Trigonometrische Ableitungen anwenden</span> <code>6634ef12-0e88-584e-8e45-9e60eafc0951</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 4 von 12</span>
+      <span>Buch-Digest <code>sha256:44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:359837688e5282b577978c5994665a5ec87996225604a883506f04fad8dda4ec</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-e-trigonometric-functions-12-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=eda3a298-4965-525e-878d-f05b9e2d4503&amp;goalFingerprint=sha256%3A359837688e5282b577978c5994665a5ec87996225604a883506f04fad8dda4ec&amp;pageFingerprint=sha256%3Aed56bd7be9ee1aeba8232a42983a7735c15ed490e61f6c4473ee8dbdaf9641d4&amp;bookDigest=sha256%3A44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32" data-goal-id="e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32" data-page-number="5" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32-title">
+    <header class="goal-header">
+      <h1 id="goal-e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32-title"><a class="goal-self-link" href="#goal-e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32">Ableitungen von Sinus- und Kosinusfunktionen herleiten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:96933056dc90a03f22ad469787213a303a32a4d8889135887cd67dcdf30874af" data-rendered-digest="sha256:d896d8e9d187993487e4a1e908d47b642ea4019428909b5de1408e300f0688e2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32/e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32.jpg" alt="Die lernende Person kann die Ableitungen von $\sin(x)$ und $\cos(x)$ mithilfe geometrischer Argumente oder Grenzwertüberlegungen herleiten und die einzelnen Zusammenhänge fachlich erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32-description-heading">
+        <p class="section-heading" id="goal-e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Ableitungen von $\sin(x)$ und $\cos(x)$ mithilfe geometrischer Argumente oder Grenzwertüberlegungen herleiten und die einzelnen Zusammenhänge fachlich erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32-requires-heading">
+          <p class="section-heading" id="goal-e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464"><span>Parameter periodischer Funktionen deuten</span><code>ea8e3dfb-7fd7-5d49-ae07-01864e6aa464</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32-reverse-heading">
+          <p class="section-heading" id="goal-e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2"><span>Ableitungen von Sinus und Kosinus grafisch begründen</span><code>2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-3401d95d-2191-5929-ac78-4de51d71a6be"><span>Ableitungen von Sinus- und Kosinusfunktionen anwenden</span><code>3401d95d-2191-5929-ac78-4de51d71a6be</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3b1f0646-fd0e-5d9d-b515-a5a45417a005" rel="noreferrer noopener"><span>Trigonometrische Modelle bearbeiten</span> <code>3b1f0646-fd0e-5d9d-b515-a5a45417a005</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6634ef12-0e88-584e-8e45-9e60eafc0951" rel="noreferrer noopener"><span>Trigonometrische Ableitungen anwenden</span> <code>6634ef12-0e88-584e-8e45-9e60eafc0951</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 5 von 12</span>
+      <span>Buch-Digest <code>sha256:44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:022085939cf8702ca8525f362aeacb79cb38df8e0982c4c954d9456d1f020635</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-e-trigonometric-functions-12-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32&amp;goalFingerprint=sha256%3A022085939cf8702ca8525f362aeacb79cb38df8e0982c4c954d9456d1f020635&amp;pageFingerprint=sha256%3A6d0f0d380d47635e81cad892644bcae6febdcca0f65e1443222555529171a85f&amp;bookDigest=sha256%3A44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2" data-goal-id="2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2" data-page-number="6" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2-title">
+    <header class="goal-header">
+      <h1 id="goal-2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2-title"><a class="goal-self-link" href="#goal-2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2">Ableitungen von Sinus und Kosinus grafisch begründen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:59ad509f870e3c824b3650f00ddc1f276a76a01f2b6c03ff2737bacc4305081a" data-rendered-digest="sha256:d87cf391230454d1e42e1e9a130345bee6a8a54e20eebcdbe2ac0bbc809f9a51" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2/2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2.png" alt="Didaktische Visualisierung zum Lernziel &quot;Ableitungen von Sinus und Kosinus grafisch begründen&quot;. Die lernende Person kann aus dem Verlauf der Sinus- und Kosinusgraphen die Ableitungsfunktionen durch grafisches Differenzieren begründen und die Vorzeichen- und Extremstellenzusammenhänge erklären.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2-description-heading">
+        <p class="section-heading" id="goal-2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus dem Verlauf der Sinus- und Kosinusgraphen die Ableitungsfunktionen durch grafisches Differenzieren begründen und die Vorzeichen- und Extremstellenzusammenhänge erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2-requires-heading">
+          <p class="section-heading" id="goal-2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-eda3a298-4965-525e-878d-f05b9e2d4503"><span>Charakteristische Punkte trigonometrischer Funktionen mit Symmetrie bestimmen</span><code>eda3a298-4965-525e-878d-f05b9e2d4503</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32"><span>Ableitungen von Sinus- und Kosinusfunktionen herleiten</span><code>e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2-reverse-heading">
+          <p class="section-heading" id="goal-2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-58d2f963-4fb9-550d-a832-f5ac60808900"><span>Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten</span><code>58d2f963-4fb9-550d-a832-f5ac60808900</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6634ef12-0e88-584e-8e45-9e60eafc0951" rel="noreferrer noopener"><span>Trigonometrische Ableitungen anwenden</span> <code>6634ef12-0e88-584e-8e45-9e60eafc0951</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 6 von 12</span>
+      <span>Buch-Digest <code>sha256:44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:81215dcc7a3fb0976b9b097ecf5bbb152694c3f0c092087966306dc7accb347b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-e-trigonometric-functions-12-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2&amp;goalFingerprint=sha256%3A81215dcc7a3fb0976b9b097ecf5bbb152694c3f0c092087966306dc7accb347b&amp;pageFingerprint=sha256%3Ae27462f2ebf1d73bbf50472867c23afc5b3bece696e203f5580d536aa81c899c&amp;bookDigest=sha256%3A44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3401d95d-2191-5929-ac78-4de51d71a6be" data-goal-id="3401d95d-2191-5929-ac78-4de51d71a6be" data-page-number="7" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-3401d95d-2191-5929-ac78-4de51d71a6be-title">
+    <header class="goal-header">
+      <h1 id="goal-3401d95d-2191-5929-ac78-4de51d71a6be-title"><a class="goal-self-link" href="#goal-3401d95d-2191-5929-ac78-4de51d71a6be">Ableitungen von Sinus- und Kosinusfunktionen anwenden</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3401d95d-2191-5929-ac78-4de51d71a6be</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d24795b324991948910d8a91661e664f096a9fa1a8a3969a48732abe8e0a16ce" data-rendered-digest="sha256:275e826596bb19c01e26691a2f65c478d1b6bd2abba3106e16bbc30187e7f4d4" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/3401d95d-2191-5929-ac78-4de51d71a6be/3401d95d-2191-5929-ac78-4de51d71a6be.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Ableitungen von Sinus- und Kosinusfunktionen anwenden&quot;. Die lernende Person kann die Ableitungen von $\sin(x)$ und $\cos(x)$ zur Untersuchung einfacher trigonometrischer Funktionen einsetzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3401d95d-2191-5929-ac78-4de51d71a6be-description-heading">
+        <p class="section-heading" id="goal-3401d95d-2191-5929-ac78-4de51d71a6be-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Ableitungen von $\sin(x)$ und $\cos(x)$ zur Untersuchung einfacher trigonometrischer Funktionen einsetzen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3401d95d-2191-5929-ac78-4de51d71a6be" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3401d95d-2191-5929-ac78-4de51d71a6be-requires-heading">
+          <p class="section-heading" id="goal-3401d95d-2191-5929-ac78-4de51d71a6be-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32"><span>Ableitungen von Sinus- und Kosinusfunktionen herleiten</span><code>e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-3401d95d-2191-5929-ac78-4de51d71a6be-reverse-heading">
+          <p class="section-heading" id="goal-3401d95d-2191-5929-ac78-4de51d71a6be-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-58d2f963-4fb9-550d-a832-f5ac60808900"><span>Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten</span><code>58d2f963-4fb9-550d-a832-f5ac60808900</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-3401d95d-2191-5929-ac78-4de51d71a6be-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3401d95d-2191-5929-ac78-4de51d71a6be-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-858113c5-e53b-57bb-b01f-ba95c3ddcb6f" rel="noreferrer noopener"><span>Ableitungen elementarer Funktionen berechnen</span> <code>858113c5-e53b-57bb-b01f-ba95c3ddcb6f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-3401d95d-2191-5929-ac78-4de51d71a6be-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3401d95d-2191-5929-ac78-4de51d71a6be-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3b1f0646-fd0e-5d9d-b515-a5a45417a005" rel="noreferrer noopener"><span>Trigonometrische Modelle bearbeiten</span> <code>3b1f0646-fd0e-5d9d-b515-a5a45417a005</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6634ef12-0e88-584e-8e45-9e60eafc0951" rel="noreferrer noopener"><span>Trigonometrische Ableitungen anwenden</span> <code>6634ef12-0e88-584e-8e45-9e60eafc0951</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 7 von 12</span>
+      <span>Buch-Digest <code>sha256:44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:079b129e15d636461c6785c150faafd29df6c6b68f695fea45dae2ed75182c21</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-e-trigonometric-functions-12-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=3401d95d-2191-5929-ac78-4de51d71a6be&amp;goalFingerprint=sha256%3A079b129e15d636461c6785c150faafd29df6c6b68f695fea45dae2ed75182c21&amp;pageFingerprint=sha256%3A7dc6890d10a3d98fbc5dffe8842315b3575254b08c5a06a193c95fd68b34fe00&amp;bookDigest=sha256%3A44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-58d2f963-4fb9-550d-a832-f5ac60808900" data-goal-id="58d2f963-4fb9-550d-a832-f5ac60808900" data-page-number="8" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-58d2f963-4fb9-550d-a832-f5ac60808900-title">
+    <header class="goal-header">
+      <h1 id="goal-58d2f963-4fb9-550d-a832-f5ac60808900-title"><a class="goal-self-link" href="#goal-58d2f963-4fb9-550d-a832-f5ac60808900">Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>58d2f963-4fb9-550d-a832-f5ac60808900</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e0fc8b076fc04977db9c2b8a1021e3393c7b33b76b17645ef88cf780302ca2ea" data-rendered-digest="sha256:35b06f3ab83576f1d5748cd825a7c33d705ed559b58fa7f7e03b6b1b6a945064" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/58d2f963-4fb9-550d-a832-f5ac60808900/58d2f963-4fb9-550d-a832-f5ac60808900.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten&quot;. Die lernende Person kann Funktionen der Form $f(x)=a\cdot\sin(b\cdot(x-c))+d$ beziehungsweise $f(x)=a\cdot\cos(b\cdot(x-c))+d$ mit der Kettenregel ableiten und die Bedeutung der inneren linearen Transformation für die Ableitung erklären.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-58d2f963-4fb9-550d-a832-f5ac60808900-description-heading">
+        <p class="section-heading" id="goal-58d2f963-4fb9-550d-a832-f5ac60808900-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Funktionen der Form $f(x)=a\cdot\sin(b\cdot(x-c))+d$ beziehungsweise $f(x)=a\cdot\cos(b\cdot(x-c))+d$ mit der Kettenregel ableiten und die Bedeutung der inneren linearen Transformation für die Ableitung erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-58d2f963-4fb9-550d-a832-f5ac60808900" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-58d2f963-4fb9-550d-a832-f5ac60808900-requires-heading">
+          <p class="section-heading" id="goal-58d2f963-4fb9-550d-a832-f5ac60808900-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464"><span>Parameter periodischer Funktionen deuten</span><code>ea8e3dfb-7fd7-5d49-ae07-01864e6aa464</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2"><span>Ableitungen von Sinus und Kosinus grafisch begründen</span><code>2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-3401d95d-2191-5929-ac78-4de51d71a6be"><span>Ableitungen von Sinus- und Kosinusfunktionen anwenden</span><code>3401d95d-2191-5929-ac78-4de51d71a6be</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-58d2f963-4fb9-550d-a832-f5ac60808900-reverse-heading">
+          <p class="section-heading" id="goal-58d2f963-4fb9-550d-a832-f5ac60808900-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-6acd79f5-9447-5ea1-8127-6dbb72bd057d"><span>Ableitungswerte trigonometrischer Modelle im Kontext interpretieren</span><code>6acd79f5-9447-5ea1-8127-6dbb72bd057d</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-58d2f963-4fb9-550d-a832-f5ac60808900-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-58d2f963-4fb9-550d-a832-f5ac60808900-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6634ef12-0e88-584e-8e45-9e60eafc0951" rel="noreferrer noopener"><span>Trigonometrische Ableitungen anwenden</span> <code>6634ef12-0e88-584e-8e45-9e60eafc0951</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-23589682-2028-54cb-9034-b468b42688f1" rel="noreferrer noopener"><span>Transformierte Exponential- und trigonometrische Funktionen integrieren</span> <code>23589682-2028-54cb-9034-b468b42688f1</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 8 von 12</span>
+      <span>Buch-Digest <code>sha256:44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:019b103903500ef91caeadb83218a753fe8d708b031c65d2a747f237e9cb7328</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-e-trigonometric-functions-12-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=58d2f963-4fb9-550d-a832-f5ac60808900&amp;goalFingerprint=sha256%3A019b103903500ef91caeadb83218a753fe8d708b031c65d2a747f237e9cb7328&amp;pageFingerprint=sha256%3Af51e26fb375fb46b2501e8b630090d172042b7a9be3c89b4885a44233ef6b7e5&amp;bookDigest=sha256%3A44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ecd13e54-ab0e-550f-9400-66e13306635d" data-goal-id="ecd13e54-ab0e-550f-9400-66e13306635d" data-page-number="9" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-ecd13e54-ab0e-550f-9400-66e13306635d-title">
+    <header class="goal-header">
+      <h1 id="goal-ecd13e54-ab0e-550f-9400-66e13306635d-title"><a class="goal-self-link" href="#goal-ecd13e54-ab0e-550f-9400-66e13306635d">Trigonometrische Gleichungen lösen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ecd13e54-ab0e-550f-9400-66e13306635d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9945eed964b3a2e9455a44c0cb5e721c5508f4e752ec3449210b85ed78602d62" data-rendered-digest="sha256:49cb6bf0f45641a39d5ec06ca095a2dbb4ac2a37a3f1852a28069a89f3c96b18" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/ecd13e54-ab0e-550f-9400-66e13306635d/ecd13e54-ab0e-550f-9400-66e13306635d.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Trigonometrische Gleichungen lösen&quot;. Die lernende Person kann einfache trigonometrische Gleichungen wie $\sin(x)=k$ oder $\cos(x)=k$ lösen, allgemeine Lösungsangaben formulieren und Lösungen im Einheitskreis veranschaulichen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ecd13e54-ab0e-550f-9400-66e13306635d-description-heading">
+        <p class="section-heading" id="goal-ecd13e54-ab0e-550f-9400-66e13306635d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann einfache trigonometrische Gleichungen wie $\sin(x)=k$ oder $\cos(x)=k$ lösen, allgemeine Lösungsangaben formulieren und Lösungen im Einheitskreis veranschaulichen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ecd13e54-ab0e-550f-9400-66e13306635d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ecd13e54-ab0e-550f-9400-66e13306635d-requires-heading">
+          <p class="section-heading" id="goal-ecd13e54-ab0e-550f-9400-66e13306635d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464"><span>Parameter periodischer Funktionen deuten</span><code>ea8e3dfb-7fd7-5d49-ae07-01864e6aa464</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-eda3a298-4965-525e-878d-f05b9e2d4503"><span>Charakteristische Punkte trigonometrischer Funktionen mit Symmetrie bestimmen</span><code>eda3a298-4965-525e-878d-f05b9e2d4503</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ecd13e54-ab0e-550f-9400-66e13306635d-reverse-heading">
+          <p class="section-heading" id="goal-ecd13e54-ab0e-550f-9400-66e13306635d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-56fba457-ab98-5b96-963e-ec284458c17f"><span>Periodische Prozesse modellieren</span><code>56fba457-ab98-5b96-963e-ec284458c17f</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-ecd13e54-ab0e-550f-9400-66e13306635d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ecd13e54-ab0e-550f-9400-66e13306635d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6634ef12-0e88-584e-8e45-9e60eafc0951" rel="noreferrer noopener"><span>Trigonometrische Ableitungen anwenden</span> <code>6634ef12-0e88-584e-8e45-9e60eafc0951</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 9 von 12</span>
+      <span>Buch-Digest <code>sha256:44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:06afa4f6cf7816ff58644b77d81b81337a5b11007a8679f877595aa4e1a2be34</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-e-trigonometric-functions-12-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=ecd13e54-ab0e-550f-9400-66e13306635d&amp;goalFingerprint=sha256%3A06afa4f6cf7816ff58644b77d81b81337a5b11007a8679f877595aa4e1a2be34&amp;pageFingerprint=sha256%3Adbf0dcda258eb701ef387429a4baac15c1e9ad2161493b78cde1fa67e03c6886&amp;bookDigest=sha256%3A44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-56fba457-ab98-5b96-963e-ec284458c17f" data-goal-id="56fba457-ab98-5b96-963e-ec284458c17f" data-page-number="10" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-56fba457-ab98-5b96-963e-ec284458c17f-title">
+    <header class="goal-header">
+      <h1 id="goal-56fba457-ab98-5b96-963e-ec284458c17f-title"><a class="goal-self-link" href="#goal-56fba457-ab98-5b96-963e-ec284458c17f">Periodische Prozesse modellieren</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>56fba457-ab98-5b96-963e-ec284458c17f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6c88901fda888fe3eafa76f64e7a56e30515aa3f1dbe270089b43abbd6c8b2e6" data-rendered-digest="sha256:17348a9ee71c4313ffd472846110d0b31e3cfee84119fa5ac633ec4278e435a5" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/56fba457-ab98-5b96-963e-ec284458c17f/56fba457-ab98-5b96-963e-ec284458c17f.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Periodische Prozesse modellieren&quot;. Die lernende Person kann periodische Realsituationen (z. B. Gezeiten, Schwingungen) mit Sinus- oder Kosinusfunktionen beschreiben, Parameter mithilfe von Messdaten bestimmen und Aussagen zum Verlauf treffen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-56fba457-ab98-5b96-963e-ec284458c17f-description-heading">
+        <p class="section-heading" id="goal-56fba457-ab98-5b96-963e-ec284458c17f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann periodische Realsituationen (z. B. Gezeiten, Schwingungen) mit Sinus- oder Kosinusfunktionen beschreiben, Parameter mithilfe von Messdaten bestimmen und Aussagen zum Verlauf treffen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-56fba457-ab98-5b96-963e-ec284458c17f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-56fba457-ab98-5b96-963e-ec284458c17f-requires-heading">
+          <p class="section-heading" id="goal-56fba457-ab98-5b96-963e-ec284458c17f-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ecd13e54-ab0e-550f-9400-66e13306635d"><span>Trigonometrische Gleichungen lösen</span><code>ecd13e54-ab0e-550f-9400-66e13306635d</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-56fba457-ab98-5b96-963e-ec284458c17f-reverse-heading">
+          <p class="section-heading" id="goal-56fba457-ab98-5b96-963e-ec284458c17f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-6acd79f5-9447-5ea1-8127-6dbb72bd057d"><span>Ableitungswerte trigonometrischer Modelle im Kontext interpretieren</span><code>6acd79f5-9447-5ea1-8127-6dbb72bd057d</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-2919b3f3-aca2-5add-beeb-de1b9e0eafd8"><span>Trigonometrische und ganzrationale Funktionen vergleichen</span><code>2919b3f3-aca2-5add-beeb-de1b9e0eafd8</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-56fba457-ab98-5b96-963e-ec284458c17f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-56fba457-ab98-5b96-963e-ec284458c17f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3b1f0646-fd0e-5d9d-b515-a5a45417a005" rel="noreferrer noopener"><span>Trigonometrische Modelle bearbeiten</span> <code>3b1f0646-fd0e-5d9d-b515-a5a45417a005</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6634ef12-0e88-584e-8e45-9e60eafc0951" rel="noreferrer noopener"><span>Trigonometrische Ableitungen anwenden</span> <code>6634ef12-0e88-584e-8e45-9e60eafc0951</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 10 von 12</span>
+      <span>Buch-Digest <code>sha256:44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0bbde65415908fdc720a7fa325916306619f1bfebad151b7d6901ce2cc41b89b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-e-trigonometric-functions-12-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=56fba457-ab98-5b96-963e-ec284458c17f&amp;goalFingerprint=sha256%3A0bbde65415908fdc720a7fa325916306619f1bfebad151b7d6901ce2cc41b89b&amp;pageFingerprint=sha256%3A64731fd68bfa22e18da2bf9b178fb2d3cc3b4f64ba419db358042b1e2779bbc5&amp;bookDigest=sha256%3A44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6acd79f5-9447-5ea1-8127-6dbb72bd057d" data-goal-id="6acd79f5-9447-5ea1-8127-6dbb72bd057d" data-page-number="11" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-6acd79f5-9447-5ea1-8127-6dbb72bd057d-title">
+    <header class="goal-header">
+      <h1 id="goal-6acd79f5-9447-5ea1-8127-6dbb72bd057d-title"><a class="goal-self-link" href="#goal-6acd79f5-9447-5ea1-8127-6dbb72bd057d">Ableitungswerte trigonometrischer Modelle im Kontext interpretieren</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6acd79f5-9447-5ea1-8127-6dbb72bd057d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c62105cc33d84f461d771d9aa7b4a5c8ca7af953b6d18f66036cb637683cc58e" data-rendered-digest="sha256:352b0bda8b83a6f0a775d89f879a49bd2ec983e1b1fda28928d9d9c6c89d2c8a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/6acd79f5-9447-5ea1-8127-6dbb72bd057d/6acd79f5-9447-5ea1-8127-6dbb72bd057d.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Ableitungswerte trigonometrischer Modelle im Kontext interpretieren&quot;. Die lernende Person kann die Ableitung einer trigonometrischen Modellfunktion an einer Stelle bestimmen und den Wert als lokale Änderungsrate im jeweiligen Sachzusammenhang interpretieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6acd79f5-9447-5ea1-8127-6dbb72bd057d-description-heading">
+        <p class="section-heading" id="goal-6acd79f5-9447-5ea1-8127-6dbb72bd057d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Ableitung einer trigonometrischen Modellfunktion an einer Stelle bestimmen und den Wert als lokale Änderungsrate im jeweiligen Sachzusammenhang interpretieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6acd79f5-9447-5ea1-8127-6dbb72bd057d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6acd79f5-9447-5ea1-8127-6dbb72bd057d-requires-heading">
+          <p class="section-heading" id="goal-6acd79f5-9447-5ea1-8127-6dbb72bd057d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-58d2f963-4fb9-550d-a832-f5ac60808900"><span>Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten</span><code>58d2f963-4fb9-550d-a832-f5ac60808900</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-56fba457-ab98-5b96-963e-ec284458c17f"><span>Periodische Prozesse modellieren</span><code>56fba457-ab98-5b96-963e-ec284458c17f</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-6acd79f5-9447-5ea1-8127-6dbb72bd057d-reverse-heading">
+          <p class="section-heading" id="goal-6acd79f5-9447-5ea1-8127-6dbb72bd057d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-6acd79f5-9447-5ea1-8127-6dbb72bd057d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6acd79f5-9447-5ea1-8127-6dbb72bd057d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6634ef12-0e88-584e-8e45-9e60eafc0951" rel="noreferrer noopener"><span>Trigonometrische Ableitungen anwenden</span> <code>6634ef12-0e88-584e-8e45-9e60eafc0951</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 11 von 12</span>
+      <span>Buch-Digest <code>sha256:44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:13761a3571fec8db30a834417a15165bdb6ac465c641656b6474cfd31b966e0d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-e-trigonometric-functions-12-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=6acd79f5-9447-5ea1-8127-6dbb72bd057d&amp;goalFingerprint=sha256%3A13761a3571fec8db30a834417a15165bdb6ac465c641656b6474cfd31b966e0d&amp;pageFingerprint=sha256%3Ae31798222e83b365b0faf0af17e64ba9c2dfdcdb5873d74150cbbb6cfb839861&amp;bookDigest=sha256%3A44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2919b3f3-aca2-5add-beeb-de1b9e0eafd8" data-goal-id="2919b3f3-aca2-5add-beeb-de1b9e0eafd8" data-page-number="12" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-2919b3f3-aca2-5add-beeb-de1b9e0eafd8-title">
+    <header class="goal-header">
+      <h1 id="goal-2919b3f3-aca2-5add-beeb-de1b9e0eafd8-title"><a class="goal-self-link" href="#goal-2919b3f3-aca2-5add-beeb-de1b9e0eafd8">Trigonometrische und ganzrationale Funktionen vergleichen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2919b3f3-aca2-5add-beeb-de1b9e0eafd8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3e1ee79d0b4b3e234fbd5d41b8bed4a0fc2898fb16ad86e40c4dbbcec5742cdf" data-rendered-digest="sha256:5b24075169c67b6b59c6d47ad9e8eee96bb9a1c7eaa7533382f6ea6ac56821b0" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/2919b3f3-aca2-5add-beeb-de1b9e0eafd8/2919b3f3-aca2-5add-beeb-de1b9e0eafd8.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Trigonometrische und ganzrationale Funktionen vergleichen&quot;. Die lernende Person kann trigonometrische Modelle mit ganzrationalen Funktionen hinsichtlich Periodizität, Symmetrie, Nullstellen, Extremverhalten und langfristigem Verlauf vergleichen und die Grenzen der jeweiligen Modellklasse begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2919b3f3-aca2-5add-beeb-de1b9e0eafd8-description-heading">
+        <p class="section-heading" id="goal-2919b3f3-aca2-5add-beeb-de1b9e0eafd8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann trigonometrische Modelle mit ganzrationalen Funktionen hinsichtlich Periodizität, Symmetrie, Nullstellen, Extremverhalten und langfristigem Verlauf vergleichen und die Grenzen der jeweiligen Modellklasse begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2919b3f3-aca2-5add-beeb-de1b9e0eafd8" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2919b3f3-aca2-5add-beeb-de1b9e0eafd8-requires-heading">
+          <p class="section-heading" id="goal-2919b3f3-aca2-5add-beeb-de1b9e0eafd8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-56fba457-ab98-5b96-963e-ec284458c17f"><span>Periodische Prozesse modellieren</span><code>56fba457-ab98-5b96-963e-ec284458c17f</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-2919b3f3-aca2-5add-beeb-de1b9e0eafd8-reverse-heading">
+          <p class="section-heading" id="goal-2919b3f3-aca2-5add-beeb-de1b9e0eafd8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2919b3f3-aca2-5add-beeb-de1b9e0eafd8-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2919b3f3-aca2-5add-beeb-de1b9e0eafd8-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3" rel="noreferrer noopener"><span>Monotonie und Extremstellen mit der ersten Ableitung untersuchen</span> <code>350fc8b1-ead0-4239-b28a-217cbd3bd1c3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3" rel="noreferrer noopener"><span>Krümmung und Wendestellen mit der zweiten Ableitung untersuchen</span> <code>b3604df4-15a8-41c8-a8b0-50dadd698bd3</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2919b3f3-aca2-5add-beeb-de1b9e0eafd8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2919b3f3-aca2-5add-beeb-de1b9e0eafd8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6634ef12-0e88-584e-8e45-9e60eafc0951" rel="noreferrer noopener"><span>Trigonometrische Ableitungen anwenden</span> <code>6634ef12-0e88-584e-8e45-9e60eafc0951</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-08b80080-4895-55df-8ca6-4e8c5eb0f9f5" rel="noreferrer noopener"><span>Funktionsklassen argumentativ vergleichen</span> <code>08b80080-4895-55df-8ca6-4e8c5eb0f9f5</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 12 von 12</span>
+      <span>Buch-Digest <code>sha256:44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b524158ebea50cbdad2c4414c37a352505608fd6f1c77fee22ac02f5d1d5f452</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-e-trigonometric-functions-12-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=2919b3f3-aca2-5add-beeb-de1b9e0eafd8&amp;goalFingerprint=sha256%3Ab524158ebea50cbdad2c4414c37a352505608fd6f1c77fee22ac02f5d1d5f452&amp;pageFingerprint=sha256%3A0c8b73f0e3a3f51b34eb57ea5c92038896d380ed8e8b6f984d31d05e1cd048da&amp;bookDigest=sha256%3A44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

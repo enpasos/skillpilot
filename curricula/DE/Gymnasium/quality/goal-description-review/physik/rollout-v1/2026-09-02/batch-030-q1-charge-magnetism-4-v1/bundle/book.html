@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik B030 – Q1: Ladungsphänomene und Magnetismus</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Physik B030 – Q1: Ladungsphänomene und Magnetismus</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>4 atomare Lernziele</dt><dd>8 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:f99fb32c05c8b568d86f31f439e11201bf9c1f69c201582bcbd0b11aefdc327f</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-physics-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-6747d2e0bbbbd4b4358ff0fa" aria-label="Physik"><a href="#goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d"><span class="toc-entry-label">Physik</span></a></h2>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-physics-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-546e47201fdf10d52f5a936c" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-q1" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-497492896f4798b54bff1e35" aria-label="Q1 Elektrisches und magnetisches Feld"><a href="#goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d"><span class="toc-entry-label">Q1&#160;<wbr>Elektrisches&#160;<wbr>und&#160;<wbr>magnetisches&#160;<wbr>Feld</span></a></h4>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-d7bc20e0-5ee9-593a-a7a9-d7cbb88392e6" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-f371ad1e6774cdc769c15b0b" aria-label="Elektrisches Feld"><a href="#goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d"><span class="toc-entry-label">Elektrisches&#160;<wbr>Feld</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-7df599e8-21ac-5be4-89f9-9b2a6f2e4465" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-db361f321401128dd7fc6997" aria-label="Grundlagen des elektrischen Feldes"><a href="#goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d"><span class="toc-entry-label">Grundlagen&#160;<wbr>des&#160;<wbr>elektrischen&#160;<wbr>Feldes</span></a></h6>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-13e882bd-2fc6-59c6-a2a8-32eb1fbf1751" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-50b02408dad54a978c4e655f" aria-label="Magnetisches Feld"><a href="#goal-0924162b-46d0-5c56-93bc-33e1f5ac6886"><span class="toc-entry-label">Magnetisches&#160;<wbr>Feld</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-ed6cfd98-38fa-59c3-af0d-0f9f61d52d25" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-9b6fa37b9a1b158556b5cd0b" aria-label="Grundlagen und Entstehung des Magnetfeldes"><a href="#goal-0924162b-46d0-5c56-93bc-33e1f5ac6886"><span class="toc-entry-label">Grundlagen&#160;<wbr>und&#160;<wbr>Entstehung&#160;<wbr>des&#160;<wbr>Magnetfeldes</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-6a955b34-1b90-5193-8f7e-ebb777f7b7bd" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-2447d972f1b42a13bf7f605a" aria-label="Mikroskopische und makroskopische Wirkung magnetischer Felder"><a href="#goal-9854589c-5feb-4942-b90f-311ddf36eb78"><span class="toc-entry-label">Mikroskopische&#160;<wbr>und&#160;<wbr>makroskopische&#160;<wbr>Wirkung&#160;<wbr>magnetischer&#160;<wbr>Felder</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d" data-goal-id="a6e48b88-51ed-5942-bdb8-8d2192652e0d" data-page-number="1" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q1 structure:canonical-goal-d7bc20e0-5ee9-593a-a7a9-d7cbb88392e6 structure:canonical-goal-7df599e8-21ac-5be4-89f9-9b2a6f2e4465" aria-labelledby="goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d-title"><a class="goal-self-link" href="#goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d">Ladungsphänomene und Reibungselektrizität</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a6e48b88-51ed-5942-bdb8-8d2192652e0d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-497492896f4798b54bff1e35">Q1 Elektrisches und magnetisches Feld</a></li><li><a href="#chapter-f371ad1e6774cdc769c15b0b">Elektrisches Feld</a></li><li><a href="#chapter-db361f321401128dd7fc6997">Grundlagen des elektrischen Feldes</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d-description-heading">
+        <p class="section-heading" id="goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d-description-heading">Lernzielbeschreibung</p>
+        <p>Phänomenologischer Einstieg: Anziehung und Abstoßung, Ladungstrennung durch Reibung (Ballon, Haare) und der qualitative Kraftbegriff.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d-requires-heading">
+          <p class="section-heading" id="goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d-reverse-heading">
+          <p class="section-heading" id="goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-25998fed-ea4d-4c3e-b606-e965b5d7f290"><span>Ladungserhaltung erläutern</span><code>25998fed-ea4d-4c3e-b606-e965b5d7f290</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5c44b9ba-9b05-4774-95d5-073230d3fc4f" rel="noreferrer noopener"><span>Warum Physik? – Weltverständnis &amp; Zukunft</span> <code>5c44b9ba-9b05-4774-95d5-073230d3fc4f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-bbee4c52-4e95-5529-990f-706aa99316a3" rel="noreferrer noopener"><span>Stromstärke als Ladungstransport</span> <code>bbee4c52-4e95-5529-990f-706aa99316a3</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 4</span>
+      <span>Buch-Digest <code>sha256:f99fb32c05c8b568d86f31f439e11201bf9c1f69c201582bcbd0b11aefdc327f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6a13f044063830dcfef8069dbadd0cd04466b4cd4e06a2478ce191fa7e66fe79</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-q1-charge-magnetism-4-v1-20260902&amp;edition=curricular-atomic-v1&amp;goalId=a6e48b88-51ed-5942-bdb8-8d2192652e0d&amp;goalFingerprint=sha256%3A6a13f044063830dcfef8069dbadd0cd04466b4cd4e06a2478ce191fa7e66fe79&amp;pageFingerprint=sha256%3A5ec7477c011ef296f8685f59c7eda93ca419dfb5f3ce9bcce209fed9f200aa04&amp;bookDigest=sha256%3Af99fb32c05c8b568d86f31f439e11201bf9c1f69c201582bcbd0b11aefdc327f&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290" data-goal-id="25998fed-ea4d-4c3e-b606-e965b5d7f290" data-page-number="2" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q1 structure:canonical-goal-d7bc20e0-5ee9-593a-a7a9-d7cbb88392e6 structure:canonical-goal-7df599e8-21ac-5be4-89f9-9b2a6f2e4465" aria-labelledby="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-title"><a class="goal-self-link" href="#goal-25998fed-ea4d-4c3e-b606-e965b5d7f290">Ladungserhaltung erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>25998fed-ea4d-4c3e-b606-e965b5d7f290</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-497492896f4798b54bff1e35">Q1 Elektrisches und magnetisches Feld</a></li><li><a href="#chapter-f371ad1e6774cdc769c15b0b">Elektrisches Feld</a></li><li><a href="#chapter-db361f321401128dd7fc6997">Grundlagen des elektrischen Feldes</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9cc7c92df54fdc88897b516935d601733a8e2d2b1f97f3e0b9af12a040a191fd" data-rendered-digest="sha256:d2b011f5438e4135c6407e43d5995ec2cd6aa7f47ce0d3983e711f902c852653" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/25998fed-ea4d-4c3e-b606-e965b5d7f290/25998fed-ea4d-4c3e-b606-e965b5d7f290.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Ladungserhaltung erläutern&quot;. Die lernende Person kann elektrische Ladung als Erhaltungsgröße beschreiben und Ladungsumverteilungen in abgeschlossenen Systemen fachlich deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-description-heading">
+        <p class="section-heading" id="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann elektrische Ladung als Erhaltungsgröße beschreiben und Ladungsumverteilungen in abgeschlossenen Systemen fachlich deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-25998fed-ea4d-4c3e-b606-e965b5d7f290" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-requires-heading">
+          <p class="section-heading" id="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a6e48b88-51ed-5942-bdb8-8d2192652e0d"><span>Ladungsphänomene und Reibungselektrizität</span><code>a6e48b88-51ed-5942-bdb8-8d2192652e0d</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-reverse-heading">
+          <p class="section-heading" id="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-25998fed-ea4d-4c3e-b606-e965b5d7f290-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-841edfdb-5e12-5a37-ab12-552a1d8e92ca" rel="noreferrer noopener"><span>Elektrostatik und Potenzial</span> <code>841edfdb-5e12-5a37-ab12-552a1d8e92ca</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-9fb1dd85-11b7-4a5a-b124-27fea8d1788e" rel="noreferrer noopener"><span>Influenz bei Leitern untersuchen</span> <code>9fb1dd85-11b7-4a5a-b124-27fea8d1788e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 4</span>
+      <span>Buch-Digest <code>sha256:f99fb32c05c8b568d86f31f439e11201bf9c1f69c201582bcbd0b11aefdc327f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7d4102629d3772ec4d015a7cbc0a2b5c0dc4ac0f5663e05cdfc9636f6f92c17e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-q1-charge-magnetism-4-v1-20260902&amp;edition=curricular-atomic-v1&amp;goalId=25998fed-ea4d-4c3e-b606-e965b5d7f290&amp;goalFingerprint=sha256%3A7d4102629d3772ec4d015a7cbc0a2b5c0dc4ac0f5663e05cdfc9636f6f92c17e&amp;pageFingerprint=sha256%3A29005848086f8be7298e1052ab45e67bc4c3c4389fdcf1a1cba97159e95b3841&amp;bookDigest=sha256%3Af99fb32c05c8b568d86f31f439e11201bf9c1f69c201582bcbd0b11aefdc327f&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0924162b-46d0-5c56-93bc-33e1f5ac6886" data-goal-id="0924162b-46d0-5c56-93bc-33e1f5ac6886" data-page-number="3" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q1 structure:canonical-goal-13e882bd-2fc6-59c6-a2a8-32eb1fbf1751 structure:canonical-goal-ed6cfd98-38fa-59c3-af0d-0f9f61d52d25" aria-labelledby="goal-0924162b-46d0-5c56-93bc-33e1f5ac6886-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0924162b-46d0-5c56-93bc-33e1f5ac6886-title"><a class="goal-self-link" href="#goal-0924162b-46d0-5c56-93bc-33e1f5ac6886">Magnetisierung und Permanentmagnete</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0924162b-46d0-5c56-93bc-33e1f5ac6886</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-497492896f4798b54bff1e35">Q1 Elektrisches und magnetisches Feld</a></li><li><a href="#chapter-50b02408dad54a978c4e655f">Magnetisches Feld</a></li><li><a href="#chapter-9b6fa37b9a1b158556b5cd0b">Grundlagen und Entstehung des Magnetfeldes</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:64e96cc02a9b2392673f8b6e7b4ef776cf167dcef795c56be5bbfb57e7d1321b" data-rendered-digest="sha256:7e1a1bf6a1e40b7efd03e1f43d0d3e7a3081460377bc46030a83706cc05b9016" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/0924162b-46d0-5c56-93bc-33e1f5ac6886/0924162b-46d0-5c56-93bc-33e1f5ac6886.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Magnetisierung und Permanentmagnete&quot;. Die lernende Person kann in einer oberstufengerechten Modellierung erklären, wie Permanentmagnetismus aus mikroskopischen Kreisströmen/Spins und ausgerichteten Elementarmagneten entsteht, und den Zusammenhang zur makroskopischen Feldwirkung herstellen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0924162b-46d0-5c56-93bc-33e1f5ac6886-description-heading">
+        <p class="section-heading" id="goal-0924162b-46d0-5c56-93bc-33e1f5ac6886-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in einer oberstufengerechten Modellierung erklären, wie Permanentmagnetismus aus mikroskopischen Kreisströmen/Spins und ausgerichteten Elementarmagneten entsteht, und den Zusammenhang zur makroskopischen Feldwirkung herstellen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0924162b-46d0-5c56-93bc-33e1f5ac6886" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0924162b-46d0-5c56-93bc-33e1f5ac6886-requires-heading">
+          <p class="section-heading" id="goal-0924162b-46d0-5c56-93bc-33e1f5ac6886-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-0924162b-46d0-5c56-93bc-33e1f5ac6886-reverse-heading">
+          <p class="section-heading" id="goal-0924162b-46d0-5c56-93bc-33e1f5ac6886-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0924162b-46d0-5c56-93bc-33e1f5ac6886-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0924162b-46d0-5c56-93bc-33e1f5ac6886-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0f6b798b-594e-5480-8c5f-95e2486a4d85" rel="noreferrer noopener"><span>Magnetische Felder und Feldlinienbilder</span> <code>0f6b798b-594e-5480-8c5f-95e2486a4d85</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-0924162b-46d0-5c56-93bc-33e1f5ac6886-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0924162b-46d0-5c56-93bc-33e1f5ac6886-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-52bdabb2-d9a1-56e6-bccf-ff58f299c739" rel="noreferrer noopener"><span>Kernspintomografie (MRT)</span> <code>52bdabb2-d9a1-56e6-bccf-ff58f299c739</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 4</span>
+      <span>Buch-Digest <code>sha256:f99fb32c05c8b568d86f31f439e11201bf9c1f69c201582bcbd0b11aefdc327f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:192f08bfc2d2b29684089c20ba9dcc7883f08372380230bca339fdae02069415</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-q1-charge-magnetism-4-v1-20260902&amp;edition=curricular-atomic-v1&amp;goalId=0924162b-46d0-5c56-93bc-33e1f5ac6886&amp;goalFingerprint=sha256%3A192f08bfc2d2b29684089c20ba9dcc7883f08372380230bca339fdae02069415&amp;pageFingerprint=sha256%3A84ce810a20cfe29afcb3cb35ca35ccc572b105e2c609202bf797a7308fb33e72&amp;bookDigest=sha256%3Af99fb32c05c8b568d86f31f439e11201bf9c1f69c201582bcbd0b11aefdc327f&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9854589c-5feb-4942-b90f-311ddf36eb78" data-goal-id="9854589c-5feb-4942-b90f-311ddf36eb78" data-page-number="4" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q1 structure:canonical-goal-13e882bd-2fc6-59c6-a2a8-32eb1fbf1751 structure:canonical-goal-6a955b34-1b90-5193-8f7e-ebb777f7b7bd" aria-labelledby="goal-9854589c-5feb-4942-b90f-311ddf36eb78-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9854589c-5feb-4942-b90f-311ddf36eb78-title"><a class="goal-self-link" href="#goal-9854589c-5feb-4942-b90f-311ddf36eb78">Geladene Teilchen in homogenen magnetischen Feldern untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9854589c-5feb-4942-b90f-311ddf36eb78</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-497492896f4798b54bff1e35">Q1 Elektrisches und magnetisches Feld</a></li><li><a href="#chapter-50b02408dad54a978c4e655f">Magnetisches Feld</a></li><li><a href="#chapter-2447d972f1b42a13bf7f605a">Mikroskopische und makroskopische Wirkung magnetischer Felder</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:99780a61878c7cb50a251ed9de02c35b11a856b5b0ad2436923f85120bd0ccaf" data-rendered-digest="sha256:088ad153c357615ead97fd95b8f0e734ed83c4176e6e2cbbd1e0777143b2cf05" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/9854589c-5feb-4942-b90f-311ddf36eb78/9854589c-5feb-4942-b90f-311ddf36eb78.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Geladene Teilchen in homogenen magnetischen Feldern untersuchen&quot;. Die lernende Person kann die Bewegung geladener Teilchen in homogenen magnetischen Feldern untersuchen, die Lorentzkraft fachlich nutzen und einfache Bahnformen qualitativ deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9854589c-5feb-4942-b90f-311ddf36eb78-description-heading">
+        <p class="section-heading" id="goal-9854589c-5feb-4942-b90f-311ddf36eb78-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Bewegung geladener Teilchen in homogenen magnetischen Feldern untersuchen, die Lorentzkraft fachlich nutzen und einfache Bahnformen qualitativ deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-9854589c-5feb-4942-b90f-311ddf36eb78" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9854589c-5feb-4942-b90f-311ddf36eb78-requires-heading">
+          <p class="section-heading" id="goal-9854589c-5feb-4942-b90f-311ddf36eb78-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-9854589c-5feb-4942-b90f-311ddf36eb78-reverse-heading">
+          <p class="section-heading" id="goal-9854589c-5feb-4942-b90f-311ddf36eb78-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-9854589c-5feb-4942-b90f-311ddf36eb78-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9854589c-5feb-4942-b90f-311ddf36eb78-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0f6b798b-594e-5480-8c5f-95e2486a4d85" rel="noreferrer noopener"><span>Magnetische Felder und Feldlinienbilder</span> <code>0f6b798b-594e-5480-8c5f-95e2486a4d85</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-9854589c-5feb-4942-b90f-311ddf36eb78-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9854589c-5feb-4942-b90f-311ddf36eb78-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3f17d0d2-562d-4c1c-9ebc-1a1a43f28f9c" rel="noreferrer noopener"><span>Massenspektrometer als Feldanwendung beschreiben</span> <code>3f17d0d2-562d-4c1c-9ebc-1a1a43f28f9c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 4</span>
+      <span>Buch-Digest <code>sha256:f99fb32c05c8b568d86f31f439e11201bf9c1f69c201582bcbd0b11aefdc327f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:07411bdb2c87c24eceeba5d2d78756caae76f3642eb0759b648645b130b6d897</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-q1-charge-magnetism-4-v1-20260902&amp;edition=curricular-atomic-v1&amp;goalId=9854589c-5feb-4942-b90f-311ddf36eb78&amp;goalFingerprint=sha256%3A07411bdb2c87c24eceeba5d2d78756caae76f3642eb0759b648645b130b6d897&amp;pageFingerprint=sha256%3A8ff7ae76e011d55beacf56b6ff931a85bd661d53d63726863e143c84133ea450&amp;bookDigest=sha256%3Af99fb32c05c8b568d86f31f439e11201bf9c1f69c201582bcbd0b11aefdc327f&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

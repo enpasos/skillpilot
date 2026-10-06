@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik B032r – Q3: Elektromagnetische Wellen und Interferenz, final</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Physik B032r – Q3: Elektromagnetische Wellen und Interferenz, final</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>7 atomare Lernziele</dt><dd>4 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:23b735b0670342b16a7e0b5e9d1c4c5487d3d6f006b64e34050fc1bf8f517724</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-physics-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-6747d2e0bbbbd4b4358ff0fa" aria-label="Physik"><a href="#goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf"><span class="toc-entry-label">Physik</span></a></h2>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-physics-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-546e47201fdf10d52f5a936c" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-q3" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-d3582c1078d635f99cb61408" aria-label="Q3 Elektromagnetische Wellen und Quantenphysik"><a href="#goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf"><span class="toc-entry-label">Q3&#160;<wbr>Elektromagnetische&#160;<wbr>Wellen&#160;<wbr>und&#160;<wbr>Quantenphysik</span></a></h4>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-c1563745-2722-503d-819f-95d336937e2b" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-88aec4e065a010d2ffbe583e" aria-label="Elektromagnetische Wellen"><a href="#goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf"><span class="toc-entry-label">Elektromagnetische&#160;<wbr>Wellen</span></a></h5>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf" data-goal-id="4a7cbe83-b694-57d3-85ce-1eeca418daaf" data-page-number="1" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q3 structure:canonical-goal-c1563745-2722-503d-819f-95d336937e2b" aria-labelledby="goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf-title"><a class="goal-self-link" href="#goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf">Spektrum elektromagnetischer Wellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4a7cbe83-b694-57d3-85ce-1eeca418daaf</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-d3582c1078d635f99cb61408">Q3 Elektromagnetische Wellen und Quantenphysik</a></li><li><a href="#chapter-88aec4e065a010d2ffbe583e">Elektromagnetische Wellen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf-description-heading">
+        <p class="section-heading" id="goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das elektromagnetische Spektrum nach Frequenz und Wellenlänge geordnet darstellen, typische Bereiche einordnen, technische Anwendungen passenden Spektralbereichen zuordnen und die Zuordnung anhand relevanter Welleneigenschaften begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf-requires-heading">
+          <p class="section-heading" id="goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf-reverse-heading">
+          <p class="section-heading" id="goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-cb0ced6d-b7c1-5b7d-9922-8c394f6030e8" rel="noreferrer noopener"><span>Harmonische Wellen über ihre Kenngrößen beschreiben</span> <code>cb0ced6d-b7c1-5b7d-9922-8c394f6030e8</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4a7cbe83-b694-57d3-85ce-1eeca418daaf-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-341ec911-6624-529c-8799-b5a5113ee907" rel="noreferrer noopener"><span>Lernkarten - Q3</span> <code>341ec911-6624-529c-8799-b5a5113ee907</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7e2017d0-e76e-559c-bace-d5d7809a241f" rel="noreferrer noopener"><span>Spektrum, Polarisation und Glasfaseroptik</span> <code>7e2017d0-e76e-559c-bace-d5d7809a241f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a94f9b05-ecb1-5a13-8364-44c1c98be8e4" rel="noreferrer noopener"><span>Q3-Klausuraufgaben Physik selbstständig lösen</span> <code>a94f9b05-ecb1-5a13-8364-44c1c98be8e4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ea17b0af-3d53-5a10-acda-7fd9348537ce" rel="noreferrer noopener"><span>Optische Signaluebertragung und Multiplexing modellieren</span> <code>ea17b0af-3d53-5a10-acda-7fd9348537ce</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d2860d7f-32ff-5d74-b2f8-b7bfc8d75aec" rel="noreferrer noopener"><span>Energie und Impuls von Photonen</span> <code>d2860d7f-32ff-5d74-b2f8-b7bfc8d75aec</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-122e83ac-c9cf-50c1-8a73-a1e3db347f21" rel="noreferrer noopener"><span>Modulation einer Trägerwelle fachlich beschreiben</span> <code>122e83ac-c9cf-50c1-8a73-a1e3db347f21</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ba16948b-5e07-54af-b77b-776e677c6906" rel="noreferrer noopener"><span>Gravitationswellen und elektromagnetische Wellen vergleichen</span> <code>ba16948b-5e07-54af-b77b-776e677c6906</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 7</span>
+      <span>Buch-Digest <code>sha256:23b735b0670342b16a7e0b5e9d1c4c5487d3d6f006b64e34050fc1bf8f517724</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0841958dc0d4bd921c45aaa72346bbaaa0941d753ef65a1b7eb7623b422f97e0</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-q3-electromagnetic-waves-final-recheck-7-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=4a7cbe83-b694-57d3-85ce-1eeca418daaf&amp;goalFingerprint=sha256%3A0841958dc0d4bd921c45aaa72346bbaaa0941d753ef65a1b7eb7623b422f97e0&amp;pageFingerprint=sha256%3A10917a4895a1b91be5d0e0994c55f4adb00fac85f264af1b09be1cae5688e35f&amp;bookDigest=sha256%3A23b735b0670342b16a7e0b5e9d1c4c5487d3d6f006b64e34050fc1bf8f517724&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-549269d3-1aef-5c55-9640-ee2a8e2ee9a1" data-goal-id="549269d3-1aef-5c55-9640-ee2a8e2ee9a1" data-page-number="2" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q3 structure:canonical-goal-c1563745-2722-503d-819f-95d336937e2b" aria-labelledby="goal-549269d3-1aef-5c55-9640-ee2a8e2ee9a1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-549269d3-1aef-5c55-9640-ee2a8e2ee9a1-title"><a class="goal-self-link" href="#goal-549269d3-1aef-5c55-9640-ee2a8e2ee9a1">Polarisation und Schwingungsebene</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>549269d3-1aef-5c55-9640-ee2a8e2ee9a1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-d3582c1078d635f99cb61408">Q3 Elektromagnetische Wellen und Quantenphysik</a></li><li><a href="#chapter-88aec4e065a010d2ffbe583e">Elektromagnetische Wellen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c426e955450ab3afdd4ce0c4cabd82ea71cbfcec3f84ea321d01088d3ea7f7e2" data-rendered-digest="sha256:e83e8a08ab7954f0bf08c6d7f3e0d94a0f14f1a62f19d5527b77fbbbdea38ad4" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/549269d3-1aef-5c55-9640-ee2a8e2ee9a1/549269d3-1aef-5c55-9640-ee2a8e2ee9a1.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Polarisation und Schwingungsebene&quot;. Die lernende Person kann lineare Polarisation von Licht beschreiben, den Begriff der Schwingungsebene einführen und einfache Anwendungen polarisierender Elemente erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-549269d3-1aef-5c55-9640-ee2a8e2ee9a1-description-heading">
+        <p class="section-heading" id="goal-549269d3-1aef-5c55-9640-ee2a8e2ee9a1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann lineare Polarisation von Licht anhand der festen Schwingungsrichtung des elektrischen Feldes beschreiben, die zugehörige Schwingungsebene kennzeichnen und einfache Anwendungen polarisierender Elemente erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-549269d3-1aef-5c55-9640-ee2a8e2ee9a1" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-549269d3-1aef-5c55-9640-ee2a8e2ee9a1-requires-heading">
+          <p class="section-heading" id="goal-549269d3-1aef-5c55-9640-ee2a8e2ee9a1-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-549269d3-1aef-5c55-9640-ee2a8e2ee9a1-reverse-heading">
+          <p class="section-heading" id="goal-549269d3-1aef-5c55-9640-ee2a8e2ee9a1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-f6a3a602-1e45-5018-b0ff-3d49933cf634"><span>Beugung am Einzelspalt berechnen</span><code>f6a3a602-1e45-5018-b0ff-3d49933cf634</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-549269d3-1aef-5c55-9640-ee2a8e2ee9a1-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-549269d3-1aef-5c55-9640-ee2a8e2ee9a1-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-cb0ced6d-b7c1-5b7d-9922-8c394f6030e8" rel="noreferrer noopener"><span>Harmonische Wellen über ihre Kenngrößen beschreiben</span> <code>cb0ced6d-b7c1-5b7d-9922-8c394f6030e8</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-549269d3-1aef-5c55-9640-ee2a8e2ee9a1-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-549269d3-1aef-5c55-9640-ee2a8e2ee9a1-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7e2017d0-e76e-559c-bace-d5d7809a241f" rel="noreferrer noopener"><span>Spektrum, Polarisation und Glasfaseroptik</span> <code>7e2017d0-e76e-559c-bace-d5d7809a241f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a94f9b05-ecb1-5a13-8364-44c1c98be8e4" rel="noreferrer noopener"><span>Q3-Klausuraufgaben Physik selbstständig lösen</span> <code>a94f9b05-ecb1-5a13-8364-44c1c98be8e4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0693f68f-1bd4-50a9-ba2b-af95b1c949ee" rel="noreferrer noopener"><span>Dispersion elektromagnetischer Wellen</span> <code>0693f68f-1bd4-50a9-ba2b-af95b1c949ee</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3d3e5917-d367-535d-a6ad-b9d87259e6ce" rel="noreferrer noopener"><span>Polarisation quantitativ mit dem Malus-Gesetz untersuchen</span> <code>3d3e5917-d367-535d-a6ad-b9d87259e6ce</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 7</span>
+      <span>Buch-Digest <code>sha256:23b735b0670342b16a7e0b5e9d1c4c5487d3d6f006b64e34050fc1bf8f517724</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7641f400901c555ad2fcaaeb678df1dc7d484e62ce3a14288c14a59470e4a15c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-q3-electromagnetic-waves-final-recheck-7-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=549269d3-1aef-5c55-9640-ee2a8e2ee9a1&amp;goalFingerprint=sha256%3A7641f400901c555ad2fcaaeb678df1dc7d484e62ce3a14288c14a59470e4a15c&amp;pageFingerprint=sha256%3Ae199d971d31b5a95913c11ac0d97b6cacdace1e104d01766752e07222602d4e9&amp;bookDigest=sha256%3A23b735b0670342b16a7e0b5e9d1c4c5487d3d6f006b64e34050fc1bf8f517724&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6270e558-d657-5363-a6b2-e49a032a453b" data-goal-id="6270e558-d657-5363-a6b2-e49a032a453b" data-page-number="3" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q3 structure:canonical-goal-c1563745-2722-503d-819f-95d336937e2b" aria-labelledby="goal-6270e558-d657-5363-a6b2-e49a032a453b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6270e558-d657-5363-a6b2-e49a032a453b-title"><a class="goal-self-link" href="#goal-6270e558-d657-5363-a6b2-e49a032a453b">Interferenz am Doppelspalt</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6270e558-d657-5363-a6b2-e49a032a453b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-d3582c1078d635f99cb61408">Q3 Elektromagnetische Wellen und Quantenphysik</a></li><li><a href="#chapter-88aec4e065a010d2ffbe583e">Elektromagnetische Wellen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d70e8ef1144222de75abf7657c1cb3d06b76e0d38228ff4a2b2c3556a6e6eaed" data-rendered-digest="sha256:5692c07e83284e147b0937d9442513794ec98ed8e2a2d39e1e7da64eda88ae2c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/6270e558-d657-5363-a6b2-e49a032a453b/6270e558-d657-5363-a6b2-e49a032a453b.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Interferenz am Doppelspalt&quot;. Die lernende Person kann Interferenz von Licht am Doppelspalt beschreiben, die Orte der Maxima mithilfe der Kleinwinkelnäherung berechnen und Wellenlängenbestimmungen qualitativ erklären.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6270e558-d657-5363-a6b2-e49a032a453b-description-heading">
+        <p class="section-heading" id="goal-6270e558-d657-5363-a6b2-e49a032a453b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Interferenz von Licht am Doppelspalt beschreiben, die Orte der Maxima mithilfe der Kleinwinkelnäherung berechnen und Wellenlängenbestimmungen qualitativ erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6270e558-d657-5363-a6b2-e49a032a453b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6270e558-d657-5363-a6b2-e49a032a453b-requires-heading">
+          <p class="section-heading" id="goal-6270e558-d657-5363-a6b2-e49a032a453b-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-6270e558-d657-5363-a6b2-e49a032a453b-reverse-heading">
+          <p class="section-heading" id="goal-6270e558-d657-5363-a6b2-e49a032a453b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-91683676-01cf-5003-80fa-a04d043b4e61"><span>Spektren mit Beugungsgitter deuten</span><code>91683676-01cf-5003-80fa-a04d043b4e61</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1"><span>Interferometer verstehen</span><code>d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-6270e558-d657-5363-a6b2-e49a032a453b-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6270e558-d657-5363-a6b2-e49a032a453b-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-85157cf0-7f68-5aea-b375-0f9797008cc9" rel="noreferrer noopener"><span>Interferenz in der Technik (ANC)</span> <code>85157cf0-7f68-5aea-b375-0f9797008cc9</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-6270e558-d657-5363-a6b2-e49a032a453b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6270e558-d657-5363-a6b2-e49a032a453b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-36d5b915-1cb8-5a05-b64a-5f9497a33d1f" rel="noreferrer noopener"><span>Interferenz, Beugung und optische Instrumente</span> <code>36d5b915-1cb8-5a05-b64a-5f9497a33d1f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a94f9b05-ecb1-5a13-8364-44c1c98be8e4" rel="noreferrer noopener"><span>Q3-Klausuraufgaben Physik selbstständig lösen</span> <code>a94f9b05-ecb1-5a13-8364-44c1c98be8e4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8c97c234-a932-5e84-aed5-237b4e2a8336" rel="noreferrer noopener"><span>Komplementarität und Delayed-choice-Experiment</span> <code>8c97c234-a932-5e84-aed5-237b4e2a8336</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 7</span>
+      <span>Buch-Digest <code>sha256:23b735b0670342b16a7e0b5e9d1c4c5487d3d6f006b64e34050fc1bf8f517724</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5d0ac249e9e938f2391e0479e2c61cdfc43c159f41bab1b75e1663bb10b887e5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-q3-electromagnetic-waves-final-recheck-7-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=6270e558-d657-5363-a6b2-e49a032a453b&amp;goalFingerprint=sha256%3A5d0ac249e9e938f2391e0479e2c61cdfc43c159f41bab1b75e1663bb10b887e5&amp;pageFingerprint=sha256%3A1f58259cf90aae2a72e26ed455616cac92125ceb508ee8a885cacb7291c297a7&amp;bookDigest=sha256%3A23b735b0670342b16a7e0b5e9d1c4c5487d3d6f006b64e34050fc1bf8f517724&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-91683676-01cf-5003-80fa-a04d043b4e61" data-goal-id="91683676-01cf-5003-80fa-a04d043b4e61" data-page-number="4" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q3 structure:canonical-goal-c1563745-2722-503d-819f-95d336937e2b" aria-labelledby="goal-91683676-01cf-5003-80fa-a04d043b4e61-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-91683676-01cf-5003-80fa-a04d043b4e61-title"><a class="goal-self-link" href="#goal-91683676-01cf-5003-80fa-a04d043b4e61">Spektren mit Beugungsgitter deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>91683676-01cf-5003-80fa-a04d043b4e61</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-d3582c1078d635f99cb61408">Q3 Elektromagnetische Wellen und Quantenphysik</a></li><li><a href="#chapter-88aec4e065a010d2ffbe583e">Elektromagnetische Wellen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:65632835b02e21946e9fa403147e5b06a5ffa843ebd369bc94258657e5b437c2" data-rendered-digest="sha256:b61cbc984f8c51b2d15b36e60a9eb857fd2ac2ad97b56a0652de0b1dd2c67449" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/91683676-01cf-5003-80fa-a04d043b4e61/91683676-01cf-5003-80fa-a04d043b4e61.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Spektren mit Beugungsgitter deuten&quot;. Die lernende Person kann Spektren polychromatischer Lichtquellen bei Doppelspalt oder Beugungsgitter qualitativ beschreiben und zur Wellenlängenbestimmung nutzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-91683676-01cf-5003-80fa-a04d043b4e61-description-heading">
+        <p class="section-heading" id="goal-91683676-01cf-5003-80fa-a04d043b4e61-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Spektren polychromatischer Lichtquellen bei Doppelspalt oder Beugungsgitter qualitativ beschreiben und zur Wellenlängenbestimmung nutzen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-91683676-01cf-5003-80fa-a04d043b4e61" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-91683676-01cf-5003-80fa-a04d043b4e61-requires-heading">
+          <p class="section-heading" id="goal-91683676-01cf-5003-80fa-a04d043b4e61-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-6270e558-d657-5363-a6b2-e49a032a453b"><span>Interferenz am Doppelspalt</span><code>6270e558-d657-5363-a6b2-e49a032a453b</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-91683676-01cf-5003-80fa-a04d043b4e61-reverse-heading">
+          <p class="section-heading" id="goal-91683676-01cf-5003-80fa-a04d043b4e61-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-91683676-01cf-5003-80fa-a04d043b4e61-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-91683676-01cf-5003-80fa-a04d043b4e61-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-36d5b915-1cb8-5a05-b64a-5f9497a33d1f" rel="noreferrer noopener"><span>Interferenz, Beugung und optische Instrumente</span> <code>36d5b915-1cb8-5a05-b64a-5f9497a33d1f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a94f9b05-ecb1-5a13-8364-44c1c98be8e4" rel="noreferrer noopener"><span>Q3-Klausuraufgaben Physik selbstständig lösen</span> <code>a94f9b05-ecb1-5a13-8364-44c1c98be8e4</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 7</span>
+      <span>Buch-Digest <code>sha256:23b735b0670342b16a7e0b5e9d1c4c5487d3d6f006b64e34050fc1bf8f517724</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ad35964570d9f0a865913d2e2f36141f04b7747497ab9c42102b9bde8c51bff0</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-q3-electromagnetic-waves-final-recheck-7-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=91683676-01cf-5003-80fa-a04d043b4e61&amp;goalFingerprint=sha256%3Aad35964570d9f0a865913d2e2f36141f04b7747497ab9c42102b9bde8c51bff0&amp;pageFingerprint=sha256%3A11c0e47a0f5f7afb1db5998398e9cf39b673babbb88d53159eab86946686a58f&amp;bookDigest=sha256%3A23b735b0670342b16a7e0b5e9d1c4c5487d3d6f006b64e34050fc1bf8f517724&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-4c919da9-157a-5a14-a725-f7343975c9ab" data-goal-id="4c919da9-157a-5a14-a725-f7343975c9ab" data-page-number="5" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q3 structure:canonical-goal-c1563745-2722-503d-819f-95d336937e2b" aria-labelledby="goal-4c919da9-157a-5a14-a725-f7343975c9ab-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-4c919da9-157a-5a14-a725-f7343975c9ab-title"><a class="goal-self-link" href="#goal-4c919da9-157a-5a14-a725-f7343975c9ab">Stehende elektromagnetische Wellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4c919da9-157a-5a14-a725-f7343975c9ab</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-d3582c1078d635f99cb61408">Q3 Elektromagnetische Wellen und Quantenphysik</a></li><li><a href="#chapter-88aec4e065a010d2ffbe583e">Elektromagnetische Wellen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2a4ced5a0848e0da8a3b20eb3116cee0f1fb21d28f5f0b02a054d04b49d5a33a" data-rendered-digest="sha256:68959371aabd8fb8db83b5ca2d62f9dfec7fcd8214ed13f649b1f64b26ac4d29" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/4c919da9-157a-5a14-a725-f7343975c9ab/4c919da9-157a-5a14-a725-f7343975c9ab.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Stehende elektromagnetische Wellen&quot;. Die lernende Person kann stehende elektromagnetische Wellen im eindimensionalen Fall qualitativ beschreiben und Beispiele für Resonatoren benennen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4c919da9-157a-5a14-a725-f7343975c9ab-description-heading">
+        <p class="section-heading" id="goal-4c919da9-157a-5a14-a725-f7343975c9ab-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann eindimensionale stehende elektromagnetische Wellen als Überlagerung gegenläufiger Wellen mit festen Knoten und Bäuchen erklären und Resonatorbeispiele über ihre Randbedingungen einordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4c919da9-157a-5a14-a725-f7343975c9ab" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4c919da9-157a-5a14-a725-f7343975c9ab-requires-heading">
+          <p class="section-heading" id="goal-4c919da9-157a-5a14-a725-f7343975c9ab-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-4c919da9-157a-5a14-a725-f7343975c9ab-reverse-heading">
+          <p class="section-heading" id="goal-4c919da9-157a-5a14-a725-f7343975c9ab-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-4c919da9-157a-5a14-a725-f7343975c9ab-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4c919da9-157a-5a14-a725-f7343975c9ab-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d5772db3-120c-5c37-ab46-2336d02236b0" rel="noreferrer noopener"><span>Stehende Wellen und Wellenlängenbestimmung</span> <code>d5772db3-120c-5c37-ab46-2336d02236b0</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-4c919da9-157a-5a14-a725-f7343975c9ab-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4c919da9-157a-5a14-a725-f7343975c9ab-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-36d5b915-1cb8-5a05-b64a-5f9497a33d1f" rel="noreferrer noopener"><span>Interferenz, Beugung und optische Instrumente</span> <code>36d5b915-1cb8-5a05-b64a-5f9497a33d1f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a94f9b05-ecb1-5a13-8364-44c1c98be8e4" rel="noreferrer noopener"><span>Q3-Klausuraufgaben Physik selbstständig lösen</span> <code>a94f9b05-ecb1-5a13-8364-44c1c98be8e4</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 7</span>
+      <span>Buch-Digest <code>sha256:23b735b0670342b16a7e0b5e9d1c4c5487d3d6f006b64e34050fc1bf8f517724</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e235f2f68427ef90915bbb3bcde655565dae301230a398155f2121671e63a595</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-q3-electromagnetic-waves-final-recheck-7-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=4c919da9-157a-5a14-a725-f7343975c9ab&amp;goalFingerprint=sha256%3Ae235f2f68427ef90915bbb3bcde655565dae301230a398155f2121671e63a595&amp;pageFingerprint=sha256%3Ac37c1a27a495a078aa65c7bf4be7fdd43573a6d0e3556b9f91db2981c6434afe&amp;bookDigest=sha256%3A23b735b0670342b16a7e0b5e9d1c4c5487d3d6f006b64e34050fc1bf8f517724&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f6a3a602-1e45-5018-b0ff-3d49933cf634" data-goal-id="f6a3a602-1e45-5018-b0ff-3d49933cf634" data-page-number="6" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q3 structure:canonical-goal-c1563745-2722-503d-819f-95d336937e2b" aria-labelledby="goal-f6a3a602-1e45-5018-b0ff-3d49933cf634-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f6a3a602-1e45-5018-b0ff-3d49933cf634-title"><a class="goal-self-link" href="#goal-f6a3a602-1e45-5018-b0ff-3d49933cf634">Beugung am Einzelspalt berechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f6a3a602-1e45-5018-b0ff-3d49933cf634</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-d3582c1078d635f99cb61408">Q3 Elektromagnetische Wellen und Quantenphysik</a></li><li><a href="#chapter-88aec4e065a010d2ffbe583e">Elektromagnetische Wellen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a0ffb73a2c9bfa2171c0e18e1b029063c409c2057c4009c3991f09b2583da194" data-rendered-digest="sha256:c57b6f19b653c058b33cf6467aab1ea772b900d496b3c20e4c27589af194e6f0" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/f6a3a602-1e45-5018-b0ff-3d49933cf634/f6a3a602-1e45-5018-b0ff-3d49933cf634.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Beugung am Einzelspalt berechnen&quot;. Die lernende Person kann Intensitätsverteilung und Maxima/Minima eines Einzelspalts bestimmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f6a3a602-1e45-5018-b0ff-3d49933cf634-description-heading">
+        <p class="section-heading" id="goal-f6a3a602-1e45-5018-b0ff-3d49933cf634-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Intensitätsverteilung im Fraunhofer-Beugungsbild eines Einzelspalts modellieren und die Lagen seiner Minima sowie der Maxima mit angemessenen Näherungen bestimmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-f6a3a602-1e45-5018-b0ff-3d49933cf634" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f6a3a602-1e45-5018-b0ff-3d49933cf634-requires-heading">
+          <p class="section-heading" id="goal-f6a3a602-1e45-5018-b0ff-3d49933cf634-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-549269d3-1aef-5c55-9640-ee2a8e2ee9a1"><span>Polarisation und Schwingungsebene</span><code>549269d3-1aef-5c55-9640-ee2a8e2ee9a1</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-f6a3a602-1e45-5018-b0ff-3d49933cf634-reverse-heading">
+          <p class="section-heading" id="goal-f6a3a602-1e45-5018-b0ff-3d49933cf634-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-f6a3a602-1e45-5018-b0ff-3d49933cf634-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f6a3a602-1e45-5018-b0ff-3d49933cf634-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-36d5b915-1cb8-5a05-b64a-5f9497a33d1f" rel="noreferrer noopener"><span>Interferenz, Beugung und optische Instrumente</span> <code>36d5b915-1cb8-5a05-b64a-5f9497a33d1f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5733c2c5-be2d-5879-89db-4ed4e5f3eff3" rel="noreferrer noopener"><span>Vorschlag D (LK) - Röntgen-CT in der Werkstoffprüfung</span> <code>5733c2c5-be2d-5879-89db-4ed4e5f3eff3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5c6d2ec8-d692-5ad2-a72a-8a9e5544a6c7" rel="noreferrer noopener"><span>Vorschlag D (LK) - Röntgen-Qualitätssicherung in der Batteriezellprüfung</span> <code>5c6d2ec8-d692-5ad2-a72a-8a9e5544a6c7</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a94f9b05-ecb1-5a13-8364-44c1c98be8e4" rel="noreferrer noopener"><span>Q3-Klausuraufgaben Physik selbstständig lösen</span> <code>a94f9b05-ecb1-5a13-8364-44c1c98be8e4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-709e688c-eb07-5f83-a506-82c9bfe0d89f" rel="noreferrer noopener"><span>Auflösungsvermögen optischer Instrumente</span> <code>709e688c-eb07-5f83-a506-82c9bfe0d89f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 7</span>
+      <span>Buch-Digest <code>sha256:23b735b0670342b16a7e0b5e9d1c4c5487d3d6f006b64e34050fc1bf8f517724</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2fde2237e6e6496304a85b3e80cf24da3b1e7baba0649077a50b8fabfc8ba7a5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-q3-electromagnetic-waves-final-recheck-7-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=f6a3a602-1e45-5018-b0ff-3d49933cf634&amp;goalFingerprint=sha256%3A2fde2237e6e6496304a85b3e80cf24da3b1e7baba0649077a50b8fabfc8ba7a5&amp;pageFingerprint=sha256%3A0ffb4480a86f68c83025d9df06f1c68f041a54d7637981c963584176b34ad042&amp;bookDigest=sha256%3A23b735b0670342b16a7e0b5e9d1c4c5487d3d6f006b64e34050fc1bf8f517724&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1" data-goal-id="d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1" data-page-number="7" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q3 structure:canonical-goal-c1563745-2722-503d-819f-95d336937e2b" aria-labelledby="goal-d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1-title"><a class="goal-self-link" href="#goal-d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1">Interferometer verstehen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-d3582c1078d635f99cb61408">Q3 Elektromagnetische Wellen und Quantenphysik</a></li><li><a href="#chapter-88aec4e065a010d2ffbe583e">Elektromagnetische Wellen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9de9ddff283f468aa6c1492abf004497576d11968c089e3f7f5aa90546586267" data-rendered-digest="sha256:ff1bdee51fc7c9cf02b738000e655aa34b29f1402a2e33f9132d9e6594df6f27" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1/d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Interferometer verstehen&quot;. Die lernende Person kann Funktionsweise eines Interferometers erläutern und Auswertungen durchführen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1-description-heading">
+        <p class="section-heading" id="goal-d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Funktionsweise eines Interferometers über die Aufteilung kohärenten Lichts auf unterschiedliche optische Wege und seine Überlagerung erklären und aus Änderungen des Interferenzsignals optische Weglängenunterschiede bestimmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1-requires-heading">
+          <p class="section-heading" id="goal-d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-6270e558-d657-5363-a6b2-e49a032a453b"><span>Interferenz am Doppelspalt</span><code>6270e558-d657-5363-a6b2-e49a032a453b</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1-reverse-heading">
+          <p class="section-heading" id="goal-d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-36d5b915-1cb8-5a05-b64a-5f9497a33d1f" rel="noreferrer noopener"><span>Interferenz, Beugung und optische Instrumente</span> <code>36d5b915-1cb8-5a05-b64a-5f9497a33d1f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a94f9b05-ecb1-5a13-8364-44c1c98be8e4" rel="noreferrer noopener"><span>Q3-Klausuraufgaben Physik selbstständig lösen</span> <code>a94f9b05-ecb1-5a13-8364-44c1c98be8e4</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 7</span>
+      <span>Buch-Digest <code>sha256:23b735b0670342b16a7e0b5e9d1c4c5487d3d6f006b64e34050fc1bf8f517724</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a0fa378a1a2522cc8d412d502472a22c7170c375cebb14c8a1ea110aa202f63e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-q3-electromagnetic-waves-final-recheck-7-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1&amp;goalFingerprint=sha256%3Aa0fa378a1a2522cc8d412d502472a22c7170c375cebb14c8a1ea110aa202f63e&amp;pageFingerprint=sha256%3A4e163b4f142940f9e315a533f44a2a85495cf9c059e0dd465dd4fbe6313c9101&amp;bookDigest=sha256%3A23b735b0670342b16a7e0b5e9d1c4c5487d3d6f006b64e34050fc1bf8f517724&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

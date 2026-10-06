@@ -1,0 +1,1136 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Mathematik M7: Hypothesentests, Intervalle und Datenauswertung</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Mathematik M7: Hypothesentests, Intervalle und Datenauswertung</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>20 atomare Lernziele</dt><dd>12 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-math-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-71894e7ef4af5f94dc6093d2" aria-label="Mathematik"><a href="#goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b"><span class="toc-entry-label">Mathematik</span></a></h2>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-math-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-3fb62939875ba85ae30720f7" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:stochastics" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-70a4476054e150249e0723e1" aria-label="Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik"><a href="#goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b"><span class="toc-entry-label">Wahrscheinlichkeitsverteilungen,&#160;<wbr>Hypothesentests&#160;<wbr>und&#160;<wbr>Statistik</span></a></h4>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-a5ead83b-4893-5076-be1d-ded8de4ef2a7" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-63c9e8707d77466cdeb9d7f1" aria-label="Hypothesentests und Testbewertung"><a href="#goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b"><span class="toc-entry-label">Hypothesentests&#160;<wbr>und&#160;<wbr>Testbewertung</span></a></h5>
+          <span class="toc-entry-meta"><span>9 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-4af3fe2f-851c-520a-9a1d-b8036ac1dbb1" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-ed0ba8dcc43cd9a8c4d53091" aria-label="Prognoseintervalle, Konfidenzintervalle und Stichprobenplanung"><a href="#goal-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f"><span class="toc-entry-label">Prognoseintervalle,&#160;<wbr>Konfidenzintervalle&#160;<wbr>und&#160;<wbr>Stichprobenplanung</span></a></h5>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 10</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-35e14223-54fc-5ec1-ae73-ac9f13b07db2" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-290b88160c1dd9f270ce43c4" aria-label="Statistik und weitere Wahrscheinlichkeitsverteilungen"><a href="#goal-616c72a4-972d-5cc0-b903-e2a24bcb150c"><span class="toc-entry-label">Statistik&#160;<wbr>und&#160;<wbr>weitere&#160;<wbr>Wahrscheinlichkeitsverteilungen</span></a></h5>
+          <span class="toc-entry-meta"><span>6 Lernziele</span><span>erste zugehörige Lernzielseite 15</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-65cacc1f-e961-5e47-b8fa-764c40c129a7" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-7fd5b6454a1c96843cbb6e00" aria-label="Q3.5 Statistik: Kenngrößen"><a href="#goal-616c72a4-972d-5cc0-b903-e2a24bcb150c"><span class="toc-entry-label">Q3.5&#160;<wbr>Statistik:&#160;<wbr>Kenngrößen</span></a></h6>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 15</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:5" data-chapter-id="structure:canonical-goal-3b0d30b8-148b-43e0-b883-907fc691fc11" data-chapter-depth="5">
+          <h6 class="toc-entry-heading" id="chapter-79c31ff159195aab9ee83362" aria-label="Stichprobenkennwerte bestimmen und deuten"><a href="#goal-616c72a4-972d-5cc0-b903-e2a24bcb150c"><span class="toc-entry-label">Stichprobenkennwerte&#160;<wbr>bestimmen&#160;<wbr>und&#160;<wbr>deuten</span></a></h6>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 15</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-d5054d79-6483-5d8a-a33b-b074f1cd5904" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-8fb8489922a491ebc09c83d8" aria-label="Q3.5 Statistik: Datenanalyse und Modellvergleich"><a href="#goal-84069c5e-5526-57c1-9417-a886ccfd3f66"><span class="toc-entry-label">Q3.5&#160;<wbr>Statistik:&#160;<wbr>Datenanalyse&#160;<wbr>und&#160;<wbr>Modellvergleich</span></a></h6>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 17</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:5" data-chapter-id="structure:canonical-goal-fb3c96bd-8888-5259-bc76-a3a24b4c9a15" data-chapter-depth="5">
+          <h6 class="toc-entry-heading" id="chapter-616450761a5fc7ba20f60437" aria-label="Zufallsexperimente statistisch auswerten"><a href="#goal-e02976ad-71fc-5929-b764-df7630269c47"><span class="toc-entry-label">Zufallsexperimente&#160;<wbr>statistisch&#160;<wbr>auswerten</span></a></h6>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 18</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:6" data-chapter-id="structure:canonical-goal-1383d2c8-ad8f-42a0-9a50-6897185bafd1" data-chapter-depth="6">
+          <h6 class="toc-entry-heading" id="chapter-bf676148e3ede37e090b7cb0" aria-label="Statistische Erhebungen planen, auswerten und kritisch beurteilen"><a href="#goal-83a5546e-0ea6-576e-83e2-3387b30872bb"><span class="toc-entry-label">Statistische&#160;<wbr>Erhebungen&#160;<wbr>planen,&#160;<wbr>auswerten&#160;<wbr>und&#160;<wbr>kritisch&#160;<wbr>beurteilen</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 19</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:7" data-chapter-id="structure:canonical-goal-fd2fa63c-5626-4dc3-86b3-3672e906e34a" data-chapter-depth="7">
+          <h6 class="toc-entry-heading" id="chapter-27f4a31dd63d664340f1169e" aria-label="Statistische Erhebungen planen und Daten aufbereiten"><a href="#goal-83a5546e-0ea6-576e-83e2-3387b30872bb"><span class="toc-entry-label">Statistische&#160;<wbr>Erhebungen&#160;<wbr>planen&#160;<wbr>und&#160;<wbr>Daten&#160;<wbr>aufbereiten</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 19</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b" data-goal-id="d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b" data-page-number="1" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-a5ead83b-4893-5076-be1d-ded8de4ef2a7" aria-labelledby="goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b-title"><a class="goal-self-link" href="#goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b">Argumentationsmuster von Hypothesentests erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-63c9e8707d77466cdeb9d7f1">Hypothesentests und Testbewertung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3e7b360bfcb281e3552812d31d3932f01806d89fb3d7c3417fe56aa10e6730ff" data-rendered-digest="sha256:4289a4e46478d44d7acbdccb8e27ecffe75c085c6a2f8be57f74da128f6b4068" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b.png" alt="Didaktische Visualisierung zum Lernziel &quot;Argumentationsmuster von Hypothesentests erläutern&quot;. Die lernende Person kann die Grundidee eines Hypothesentests erläutern: Eine Nullhypothese wird unter Unsicherheit geprüft, ein kritischer Bereich wird festgelegt und die Entscheidung wird mit einer möglichen Irrtumswahrscheinlichkeit verbunden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b-description-heading">
+        <p class="section-heading" id="goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Grundidee eines Hypothesentests erläutern: Eine Nullhypothese wird unter Unsicherheit geprüft, ein kritischer Bereich wird festgelegt und die Entscheidung wird mit einer möglichen Irrtumswahrscheinlichkeit verbunden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b-requires-heading">
+          <p class="section-heading" id="goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b-reverse-heading">
+          <p class="section-heading" id="goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-f14e1643-ad8d-5235-a832-97987fa18489"><span>Null- und Alternativhypothesen formulieren</span><code>f14e1643-ad8d-5235-a832-97987fa18489</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7d41b805-0fd8-5ac3-980d-79112a27c1b4" rel="noreferrer noopener"><span>Kenngrößen binomialverteilter Zufallsgrößen</span> <code>7d41b805-0fd8-5ac3-980d-79112a27c1b4</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c34bded7416a92fbf2d3ac8420818a62ed6e1cc4b978a03e999bf22b318f1748</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b&amp;goalFingerprint=sha256%3Ac34bded7416a92fbf2d3ac8420818a62ed6e1cc4b978a03e999bf22b318f1748&amp;pageFingerprint=sha256%3A3779218c0378e111bd1e49c5210d928a5d9168e1a818158531ac48aea784a504&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f14e1643-ad8d-5235-a832-97987fa18489" data-goal-id="f14e1643-ad8d-5235-a832-97987fa18489" data-page-number="2" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-a5ead83b-4893-5076-be1d-ded8de4ef2a7" aria-labelledby="goal-f14e1643-ad8d-5235-a832-97987fa18489-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f14e1643-ad8d-5235-a832-97987fa18489-title"><a class="goal-self-link" href="#goal-f14e1643-ad8d-5235-a832-97987fa18489">Null- und Alternativhypothesen formulieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f14e1643-ad8d-5235-a832-97987fa18489</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-63c9e8707d77466cdeb9d7f1">Hypothesentests und Testbewertung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3ee6a3d8cf5ad67dceeade83327f6e0efd285d3c7c7d083a141cde423588c753" data-rendered-digest="sha256:1e3d5652702880352969d7f72389a98f370137759c393c55792ea267df0ff044" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/f14e1643-ad8d-5235-a832-97987fa18489/f14e1643-ad8d-5235-a832-97987fa18489.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Null- und Alternativhypothesen formulieren&quot;. Die lernende Person kann zu Anteilsfragestellungen eine Nullhypothese und eine passende rechts-, links- oder zweiseitige Alternativhypothese für einen binomialen Signifikanztest formulieren und den Parameter p identifizieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f14e1643-ad8d-5235-a832-97987fa18489-description-heading">
+        <p class="section-heading" id="goal-f14e1643-ad8d-5235-a832-97987fa18489-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zu Anteilsfragestellungen eine Nullhypothese und eine passende rechts-, links- oder zweiseitige Alternativhypothese für einen binomialen Signifikanztest formulieren und den Parameter p identifizieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f14e1643-ad8d-5235-a832-97987fa18489" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f14e1643-ad8d-5235-a832-97987fa18489-requires-heading">
+          <p class="section-heading" id="goal-f14e1643-ad8d-5235-a832-97987fa18489-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b"><span>Argumentationsmuster von Hypothesentests erläutern</span><code>d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-f14e1643-ad8d-5235-a832-97987fa18489-reverse-heading">
+          <p class="section-heading" id="goal-f14e1643-ad8d-5235-a832-97987fa18489-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-eb2cecd6-5dca-5a2e-988b-a29b24c20345"><span>Testkennzahlen und Testvariablen bestimmen</span><code>eb2cecd6-5dca-5a2e-988b-a29b24c20345</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-f14e1643-ad8d-5235-a832-97987fa18489-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f14e1643-ad8d-5235-a832-97987fa18489-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2" rel="noreferrer noopener"><span>Warum Mathematik? – Denken, Muster &amp; Zukunft</span> <code>71cec9fb-3751-4d61-8b34-c5adbbf6e5f2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-09f47964-2cd0-410e-93ee-9632b582fc91" rel="noreferrer noopener"><span>Funktionsbegriff und Darstellungen verstehen</span> <code>09f47964-2cd0-410e-93ee-9632b582fc91</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-858113c5-e53b-57bb-b01f-ba95c3ddcb6f" rel="noreferrer noopener"><span>Ableitungen elementarer Funktionen berechnen</span> <code>858113c5-e53b-57bb-b01f-ba95c3ddcb6f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7d41b805-0fd8-5ac3-980d-79112a27c1b4" rel="noreferrer noopener"><span>Kenngrößen binomialverteilter Zufallsgrößen</span> <code>7d41b805-0fd8-5ac3-980d-79112a27c1b4</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4cf64ece7b49497e9d38a44ed6eafa26c06a3b9c47bd6e047e030ced5647ec2a</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=f14e1643-ad8d-5235-a832-97987fa18489&amp;goalFingerprint=sha256%3A4cf64ece7b49497e9d38a44ed6eafa26c06a3b9c47bd6e047e030ced5647ec2a&amp;pageFingerprint=sha256%3A91449952bb00201d2bf28e6ead2a24a08368d921e22153710304ef893b9e4fbd&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-eb2cecd6-5dca-5a2e-988b-a29b24c20345" data-goal-id="eb2cecd6-5dca-5a2e-988b-a29b24c20345" data-page-number="3" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-a5ead83b-4893-5076-be1d-ded8de4ef2a7" aria-labelledby="goal-eb2cecd6-5dca-5a2e-988b-a29b24c20345-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-eb2cecd6-5dca-5a2e-988b-a29b24c20345-title"><a class="goal-self-link" href="#goal-eb2cecd6-5dca-5a2e-988b-a29b24c20345">Testkennzahlen und Testvariablen bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>eb2cecd6-5dca-5a2e-988b-a29b24c20345</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-63c9e8707d77466cdeb9d7f1">Hypothesentests und Testbewertung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:124cdd74a7e5a5cd0648e28b4a7061c0a35b568b11e1288c827c7fece3500164" data-rendered-digest="sha256:1cfbfc50ac50e9565b9ec8cf819825649e4ff61b0b0b3d2ac1e3c8fe9edfc6bd" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/eb2cecd6-5dca-5a2e-988b-a29b24c20345/eb2cecd6-5dca-5a2e-988b-a29b24c20345.png" alt="Didaktische Visualisierung zum Lernziel &quot;Testkennzahlen und Testvariablen bestimmen&quot;. Die lernende Person kann für Hypothesentests bei Anteilen eine geeignete Zufallsgröße definieren, deren Verteilung unter der Nullhypothese angeben und zu Beobachtungen passende Testkennzahlen bestimmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-eb2cecd6-5dca-5a2e-988b-a29b24c20345-description-heading">
+        <p class="section-heading" id="goal-eb2cecd6-5dca-5a2e-988b-a29b24c20345-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für Hypothesentests bei Anteilen eine geeignete Zufallsgröße definieren, deren Verteilung unter der Nullhypothese angeben und zu Beobachtungen passende Testkennzahlen bestimmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-eb2cecd6-5dca-5a2e-988b-a29b24c20345" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-eb2cecd6-5dca-5a2e-988b-a29b24c20345-requires-heading">
+          <p class="section-heading" id="goal-eb2cecd6-5dca-5a2e-988b-a29b24c20345-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-f14e1643-ad8d-5235-a832-97987fa18489"><span>Null- und Alternativhypothesen formulieren</span><code>f14e1643-ad8d-5235-a832-97987fa18489</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-eb2cecd6-5dca-5a2e-988b-a29b24c20345-reverse-heading">
+          <p class="section-heading" id="goal-eb2cecd6-5dca-5a2e-988b-a29b24c20345-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-677be619-5f0a-59bf-9730-0071c7d3f150"><span>Entscheidungsregeln und Verwerfungsbereiche bestimmen</span><code>677be619-5f0a-59bf-9730-0071c7d3f150</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-eb2cecd6-5dca-5a2e-988b-a29b24c20345-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-eb2cecd6-5dca-5a2e-988b-a29b24c20345-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e495fa38-b198-5280-a405-9e41cafd6d17" rel="noreferrer noopener"><span>Bernoulli-Experimente und -Ketten identifizieren und parametrisieren</span> <code>e495fa38-b198-5280-a405-9e41cafd6d17</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:29b5ec480f1b209d05a0a15f1d95e364d02858c4c6d2c6844b69dae669371ec2</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=eb2cecd6-5dca-5a2e-988b-a29b24c20345&amp;goalFingerprint=sha256%3A29b5ec480f1b209d05a0a15f1d95e364d02858c4c6d2c6844b69dae669371ec2&amp;pageFingerprint=sha256%3Ad658b5ff5cebd9013e97cbd0550f58cac1775e938fc980eb3894d1bef5484118&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-677be619-5f0a-59bf-9730-0071c7d3f150" data-goal-id="677be619-5f0a-59bf-9730-0071c7d3f150" data-page-number="4" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-a5ead83b-4893-5076-be1d-ded8de4ef2a7" aria-labelledby="goal-677be619-5f0a-59bf-9730-0071c7d3f150-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-677be619-5f0a-59bf-9730-0071c7d3f150-title"><a class="goal-self-link" href="#goal-677be619-5f0a-59bf-9730-0071c7d3f150">Entscheidungsregeln und Verwerfungsbereiche bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>677be619-5f0a-59bf-9730-0071c7d3f150</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-63c9e8707d77466cdeb9d7f1">Hypothesentests und Testbewertung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d1fb596b85578bf7f7d95e868db3ec97d856019ff8e4391dd7a644438a6faa59" data-rendered-digest="sha256:92a322eb93e5816ad48e3336cbb56617048fe2fe1df5ea7a45253a2e24b31ab5" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/677be619-5f0a-59bf-9730-0071c7d3f150/677be619-5f0a-59bf-9730-0071c7d3f150.jpg" alt="Die lernende Person kann zu vorgegebenen Signifikanzniveaus Entscheidungsregeln sowie kritische Werte beziehungsweise Verwerfungsbereiche für ein- oder zweiseitige binomiale Tests bestimmen und Sigma-Regeln als mögliches Näherungshilfsmittel einordnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-677be619-5f0a-59bf-9730-0071c7d3f150-description-heading">
+        <p class="section-heading" id="goal-677be619-5f0a-59bf-9730-0071c7d3f150-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zu vorgegebenen Signifikanzniveaus Entscheidungsregeln sowie kritische Werte beziehungsweise Verwerfungsbereiche für ein- oder zweiseitige binomiale Tests bestimmen und Sigma-Regeln als mögliches Näherungshilfsmittel einordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-677be619-5f0a-59bf-9730-0071c7d3f150" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-677be619-5f0a-59bf-9730-0071c7d3f150-requires-heading">
+          <p class="section-heading" id="goal-677be619-5f0a-59bf-9730-0071c7d3f150-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-eb2cecd6-5dca-5a2e-988b-a29b24c20345"><span>Testkennzahlen und Testvariablen bestimmen</span><code>eb2cecd6-5dca-5a2e-988b-a29b24c20345</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-677be619-5f0a-59bf-9730-0071c7d3f150-reverse-heading">
+          <p class="section-heading" id="goal-677be619-5f0a-59bf-9730-0071c7d3f150-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-78bfbde4-8e16-529e-bd53-4e29d960b2b2"><span>Fehlerwahrscheinlichkeiten berechnen</span><code>78bfbde4-8e16-529e-bd53-4e29d960b2b2</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-82bce6e8-7dc7-501a-a4f6-df8a3b905e3c"><span>Gütefunktion und Teststärke untersuchen (LK)</span><code>82bce6e8-7dc7-501a-a4f6-df8a3b905e3c</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-677be619-5f0a-59bf-9730-0071c7d3f150-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-677be619-5f0a-59bf-9730-0071c7d3f150-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-837b015a-c2a2-5f31-831c-ae16ee2ee6ce" rel="noreferrer noopener"><span>Wahrscheinlichkeiten in Bernoulli-Ketten berechnen</span> <code>837b015a-c2a2-5f31-831c-ae16ee2ee6ce</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9de07e13-6a5f-5b49-a6d4-0decefb95784" rel="noreferrer noopener"><span>Inverse Fragestellungen zu Binomialverteilungen lösen</span> <code>9de07e13-6a5f-5b49-a6d4-0decefb95784</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d" rel="noreferrer noopener"><span>Sigma-Regeln für Verteilungen anwenden</span> <code>8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-677be619-5f0a-59bf-9730-0071c7d3f150-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-677be619-5f0a-59bf-9730-0071c7d3f150-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ae483d98-54e0-5985-96d2-fc1351d22e4f" rel="noreferrer noopener"><span>Hypothesentests bei verändertem Stichprobenumfang variieren</span> <code>ae483d98-54e0-5985-96d2-fc1351d22e4f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ae3483e3-4712-56a1-a881-2e1f8a1a8df9" rel="noreferrer noopener"><span>Entscheidungsregel oder Stichprobenumfang aus Gütefunktionsgraphen bestimmen (LK)</span> <code>ae3483e3-4712-56a1-a881-2e1f8a1a8df9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:721c48ecf6394365cec135cf61c962bfe87e43309639b42fd4542f06d09f9ae0</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=677be619-5f0a-59bf-9730-0071c7d3f150&amp;goalFingerprint=sha256%3A721c48ecf6394365cec135cf61c962bfe87e43309639b42fd4542f06d09f9ae0&amp;pageFingerprint=sha256%3A4b8239c90bb9760cb0120ebf46efbc454592ff90ec072399e99f58ba6fb90510&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-78bfbde4-8e16-529e-bd53-4e29d960b2b2" data-goal-id="78bfbde4-8e16-529e-bd53-4e29d960b2b2" data-page-number="5" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-a5ead83b-4893-5076-be1d-ded8de4ef2a7" aria-labelledby="goal-78bfbde4-8e16-529e-bd53-4e29d960b2b2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-78bfbde4-8e16-529e-bd53-4e29d960b2b2-title"><a class="goal-self-link" href="#goal-78bfbde4-8e16-529e-bd53-4e29d960b2b2">Fehlerwahrscheinlichkeiten berechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>78bfbde4-8e16-529e-bd53-4e29d960b2b2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-63c9e8707d77466cdeb9d7f1">Hypothesentests und Testbewertung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b045632a4ba8a64e5365f54c3e97844fb83ddd8f62f6c7028d5758bcf906779e" data-rendered-digest="sha256:4d4a50c216a4c322c7470b8a3cf1b14632d682aab1b898bbccd90e63383d357e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/78bfbde4-8e16-529e-bd53-4e29d960b2b2/78bfbde4-8e16-529e-bd53-4e29d960b2b2.png" alt="Didaktische Visualisierung zum Lernziel &quot;Fehlerwahrscheinlichkeiten berechnen&quot;. Die lernende Person kann zu einer gegebenen Entscheidungsregel die Fehlerwahrscheinlichkeiten α und β bestimmen, auch mit digitalen Werkzeugen berechnen und rechnerisch nachvollziehen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-78bfbde4-8e16-529e-bd53-4e29d960b2b2-description-heading">
+        <p class="section-heading" id="goal-78bfbde4-8e16-529e-bd53-4e29d960b2b2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zu einer gegebenen Entscheidungsregel die Fehlerwahrscheinlichkeiten α und β bestimmen, auch mit digitalen Werkzeugen berechnen und rechnerisch nachvollziehen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-78bfbde4-8e16-529e-bd53-4e29d960b2b2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-78bfbde4-8e16-529e-bd53-4e29d960b2b2-requires-heading">
+          <p class="section-heading" id="goal-78bfbde4-8e16-529e-bd53-4e29d960b2b2-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-677be619-5f0a-59bf-9730-0071c7d3f150"><span>Entscheidungsregeln und Verwerfungsbereiche bestimmen</span><code>677be619-5f0a-59bf-9730-0071c7d3f150</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-78bfbde4-8e16-529e-bd53-4e29d960b2b2-reverse-heading">
+          <p class="section-heading" id="goal-78bfbde4-8e16-529e-bd53-4e29d960b2b2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-4b58b855-cd26-538c-8e6f-304f4cfd8ad6"><span>Fehler 1. und 2. Art deuten</span><code>4b58b855-cd26-538c-8e6f-304f4cfd8ad6</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-78bfbde4-8e16-529e-bd53-4e29d960b2b2-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-78bfbde4-8e16-529e-bd53-4e29d960b2b2-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ae483d98-54e0-5985-96d2-fc1351d22e4f" rel="noreferrer noopener"><span>Hypothesentests bei verändertem Stichprobenumfang variieren</span> <code>ae483d98-54e0-5985-96d2-fc1351d22e4f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e07d2669835d21e4dba70f2baef1851aeae4e58f8500e0e71e95a7941da28172</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=78bfbde4-8e16-529e-bd53-4e29d960b2b2&amp;goalFingerprint=sha256%3Ae07d2669835d21e4dba70f2baef1851aeae4e58f8500e0e71e95a7941da28172&amp;pageFingerprint=sha256%3A5119a0f262576370d3568984acdbc52af97ae4067a4a732c9043fcc497430460&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-4b58b855-cd26-538c-8e6f-304f4cfd8ad6" data-goal-id="4b58b855-cd26-538c-8e6f-304f4cfd8ad6" data-page-number="6" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-a5ead83b-4893-5076-be1d-ded8de4ef2a7" aria-labelledby="goal-4b58b855-cd26-538c-8e6f-304f4cfd8ad6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-4b58b855-cd26-538c-8e6f-304f4cfd8ad6-title"><a class="goal-self-link" href="#goal-4b58b855-cd26-538c-8e6f-304f4cfd8ad6">Fehler 1. und 2. Art deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4b58b855-cd26-538c-8e6f-304f4cfd8ad6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-63c9e8707d77466cdeb9d7f1">Hypothesentests und Testbewertung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:55b5a385e21a06276fb28c7e5468ee52bbf57cd80faafdf96cb7bcc8cddfebf1" data-rendered-digest="sha256:5d3a28ab0e24eea5e8abce0eee27627da0c893029de093a10a042bf7fe4b60e2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/4b58b855-cd26-538c-8e6f-304f4cfd8ad6/4b58b855-cd26-538c-8e6f-304f4cfd8ad6.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Fehler 1. und 2. Art deuten&quot;. Die lernende Person kann Fehler 1. und 2. Art unterscheiden, ihre Bedeutung in Anwendungen (z. B. medizinische Tests, Qualitätskontrolle) erklären und Beispiele zuordnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4b58b855-cd26-538c-8e6f-304f4cfd8ad6-description-heading">
+        <p class="section-heading" id="goal-4b58b855-cd26-538c-8e6f-304f4cfd8ad6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Fehler 1. und 2. Art unterscheiden, ihre Bedeutung in Anwendungen (z. B. medizinische Tests, Qualitätskontrolle) erklären und Beispiele zuordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4b58b855-cd26-538c-8e6f-304f4cfd8ad6" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4b58b855-cd26-538c-8e6f-304f4cfd8ad6-requires-heading">
+          <p class="section-heading" id="goal-4b58b855-cd26-538c-8e6f-304f4cfd8ad6-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-78bfbde4-8e16-529e-bd53-4e29d960b2b2"><span>Fehlerwahrscheinlichkeiten berechnen</span><code>78bfbde4-8e16-529e-bd53-4e29d960b2b2</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-4b58b855-cd26-538c-8e6f-304f4cfd8ad6-reverse-heading">
+          <p class="section-heading" id="goal-4b58b855-cd26-538c-8e6f-304f4cfd8ad6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-0a7ff229-bf90-523c-a6b4-dad2ecd54ed8"><span>Testergebnisse im Kontext interpretieren</span><code>0a7ff229-bf90-523c-a6b4-dad2ecd54ed8</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a893cf389072e88956bb02e7274d2663b9455c5f24c2a6841b77c9f6f54c111a</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=4b58b855-cd26-538c-8e6f-304f4cfd8ad6&amp;goalFingerprint=sha256%3Aa893cf389072e88956bb02e7274d2663b9455c5f24c2a6841b77c9f6f54c111a&amp;pageFingerprint=sha256%3A2b5c0a124fc2d2355e54e19be22fb89f13a51ae0302ec87f61d0a3280de2a2d1&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0a7ff229-bf90-523c-a6b4-dad2ecd54ed8" data-goal-id="0a7ff229-bf90-523c-a6b4-dad2ecd54ed8" data-page-number="7" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-a5ead83b-4893-5076-be1d-ded8de4ef2a7" aria-labelledby="goal-0a7ff229-bf90-523c-a6b4-dad2ecd54ed8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0a7ff229-bf90-523c-a6b4-dad2ecd54ed8-title"><a class="goal-self-link" href="#goal-0a7ff229-bf90-523c-a6b4-dad2ecd54ed8">Testergebnisse im Kontext interpretieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0a7ff229-bf90-523c-a6b4-dad2ecd54ed8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-63c9e8707d77466cdeb9d7f1">Hypothesentests und Testbewertung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ac78fd894f5c196ee6eba7f36e8ed9670a05c839af07ca3a4509a20201b61598" data-rendered-digest="sha256:3fcac66a8f18a4574f031085c3a32da5f3021273f6ba9f974f8097002e24efd2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8.png" alt="Didaktische Visualisierung zum Lernziel &quot;Testergebnisse im Kontext interpretieren&quot;. Die lernende Person kann entscheiden, ob die Nullhypothese verworfen oder nicht verworfen wird, das Ergebnis verständlich im Sachkontext formulieren und erläutern, welche Aussage der Test erlaubt und welche nicht.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0a7ff229-bf90-523c-a6b4-dad2ecd54ed8-description-heading">
+        <p class="section-heading" id="goal-0a7ff229-bf90-523c-a6b4-dad2ecd54ed8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann entscheiden, ob die Nullhypothese verworfen oder nicht verworfen wird, das Ergebnis verständlich im Sachkontext formulieren und erläutern, welche Aussage der Test erlaubt und welche nicht.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0a7ff229-bf90-523c-a6b4-dad2ecd54ed8" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0a7ff229-bf90-523c-a6b4-dad2ecd54ed8-requires-heading">
+          <p class="section-heading" id="goal-0a7ff229-bf90-523c-a6b4-dad2ecd54ed8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-4b58b855-cd26-538c-8e6f-304f4cfd8ad6"><span>Fehler 1. und 2. Art deuten</span><code>4b58b855-cd26-538c-8e6f-304f4cfd8ad6</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-0a7ff229-bf90-523c-a6b4-dad2ecd54ed8-reverse-heading">
+          <p class="section-heading" id="goal-0a7ff229-bf90-523c-a6b4-dad2ecd54ed8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-03357e70-2280-532f-b629-5dfa31dc44eb"><span>Tests vergleichen und bewerten (LK)</span><code>03357e70-2280-532f-b629-5dfa31dc44eb</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:44cda357fef79a9902eb7c3df106f9a81ba686c1fbb34a26c0a671c80ca430ea</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=0a7ff229-bf90-523c-a6b4-dad2ecd54ed8&amp;goalFingerprint=sha256%3A44cda357fef79a9902eb7c3df106f9a81ba686c1fbb34a26c0a671c80ca430ea&amp;pageFingerprint=sha256%3A9044807e9a55620125a124a224ef082dcd9d276a8078668f0eebde5f4c371253&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-82bce6e8-7dc7-501a-a4f6-df8a3b905e3c" data-goal-id="82bce6e8-7dc7-501a-a4f6-df8a3b905e3c" data-page-number="8" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-a5ead83b-4893-5076-be1d-ded8de4ef2a7" aria-labelledby="goal-82bce6e8-7dc7-501a-a4f6-df8a3b905e3c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-82bce6e8-7dc7-501a-a4f6-df8a3b905e3c-title"><a class="goal-self-link" href="#goal-82bce6e8-7dc7-501a-a4f6-df8a3b905e3c">Gütefunktion und Teststärke untersuchen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>82bce6e8-7dc7-501a-a4f6-df8a3b905e3c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-63c9e8707d77466cdeb9d7f1">Hypothesentests und Testbewertung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d47be39d262f5316d52dbe2011f7a72f746d6955e3c9e8b5187c4d2b524a2b3c" data-rendered-digest="sha256:5d4a6f8f129c02749bb08c39d35d2e2b97150d94595dbf10e9c4a7afb717da6a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.png" alt="Didaktische Visualisierung zum Lernziel &quot;Gütefunktion und Teststärke untersuchen (LK)&quot;. Die lernende Person kann für einen Hypothesentest die Operationscharakteristik als Wahrscheinlichkeit für das Nichtverwerfen der Nullhypothese und die Gütefunktion als Wahrscheinlichkeit für ihr Verwerfen in Abhängigkeit vom wahren Wert von $p$ unterscheiden, beide grafisch darstellen und den Einfluss von Stichprobenumfang und Signifikanzniveau auf die Teststärke erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-82bce6e8-7dc7-501a-a4f6-df8a3b905e3c-description-heading">
+        <p class="section-heading" id="goal-82bce6e8-7dc7-501a-a4f6-df8a3b905e3c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für einen Hypothesentest die Operationscharakteristik als Wahrscheinlichkeit für das Nichtverwerfen der Nullhypothese und die Gütefunktion als Wahrscheinlichkeit für ihr Verwerfen in Abhängigkeit vom wahren Wert von $p$ unterscheiden, beide grafisch darstellen und den Einfluss von Stichprobenumfang und Signifikanzniveau auf die Teststärke erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-82bce6e8-7dc7-501a-a4f6-df8a3b905e3c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-82bce6e8-7dc7-501a-a4f6-df8a3b905e3c-requires-heading">
+          <p class="section-heading" id="goal-82bce6e8-7dc7-501a-a4f6-df8a3b905e3c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-677be619-5f0a-59bf-9730-0071c7d3f150"><span>Entscheidungsregeln und Verwerfungsbereiche bestimmen</span><code>677be619-5f0a-59bf-9730-0071c7d3f150</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-82bce6e8-7dc7-501a-a4f6-df8a3b905e3c-reverse-heading">
+          <p class="section-heading" id="goal-82bce6e8-7dc7-501a-a4f6-df8a3b905e3c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-03357e70-2280-532f-b629-5dfa31dc44eb"><span>Tests vergleichen und bewerten (LK)</span><code>03357e70-2280-532f-b629-5dfa31dc44eb</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-82bce6e8-7dc7-501a-a4f6-df8a3b905e3c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-82bce6e8-7dc7-501a-a4f6-df8a3b905e3c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7d41b805-0fd8-5ac3-980d-79112a27c1b4" rel="noreferrer noopener"><span>Kenngrößen binomialverteilter Zufallsgrößen</span> <code>7d41b805-0fd8-5ac3-980d-79112a27c1b4</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-82bce6e8-7dc7-501a-a4f6-df8a3b905e3c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-82bce6e8-7dc7-501a-a4f6-df8a3b905e3c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ae3483e3-4712-56a1-a881-2e1f8a1a8df9" rel="noreferrer noopener"><span>Entscheidungsregel oder Stichprobenumfang aus Gütefunktionsgraphen bestimmen (LK)</span> <code>ae3483e3-4712-56a1-a881-2e1f8a1a8df9</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-613871f6-ccb2-51fe-aba2-0dd17b86a89e" rel="noreferrer noopener"><span>Entscheidungsregel für eine komplexe Problemstellung entwickeln (LK)</span> <code>613871f6-ccb2-51fe-aba2-0dd17b86a89e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:335ec20ffd1c88cf29f08b9636b711d177cb5f9732ec235c7bf8a62c40c94912</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=82bce6e8-7dc7-501a-a4f6-df8a3b905e3c&amp;goalFingerprint=sha256%3A335ec20ffd1c88cf29f08b9636b711d177cb5f9732ec235c7bf8a62c40c94912&amp;pageFingerprint=sha256%3A0732c2e1a73eadff775505f6b886190d471d20e354f14a83b056581cc4245a4c&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-03357e70-2280-532f-b629-5dfa31dc44eb" data-goal-id="03357e70-2280-532f-b629-5dfa31dc44eb" data-page-number="9" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-a5ead83b-4893-5076-be1d-ded8de4ef2a7" aria-labelledby="goal-03357e70-2280-532f-b629-5dfa31dc44eb-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-03357e70-2280-532f-b629-5dfa31dc44eb-title"><a class="goal-self-link" href="#goal-03357e70-2280-532f-b629-5dfa31dc44eb">Tests vergleichen und bewerten (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>03357e70-2280-532f-b629-5dfa31dc44eb</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-63c9e8707d77466cdeb9d7f1">Hypothesentests und Testbewertung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8048e41de3134f0a1e4e3a94bfc8446df6c6ed7c84e0876d53aec830ba879641" data-rendered-digest="sha256:3f2af0e943a2ad514707662cf488b4b77573a83987e69671cdf7bcde046ed721" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/03357e70-2280-532f-b629-5dfa31dc44eb/03357e70-2280-532f-b629-5dfa31dc44eb.png" alt="Didaktische Visualisierung zum Lernziel &quot;Tests vergleichen und bewerten (LK)&quot;. Die lernende Person kann unterschiedliche Testverfahren oder Parametereinstellungen hinsichtlich Fehlerwahrscheinlichkeiten und Teststärke vergleichen und begründete Entscheidungen treffen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-03357e70-2280-532f-b629-5dfa31dc44eb-description-heading">
+        <p class="section-heading" id="goal-03357e70-2280-532f-b629-5dfa31dc44eb-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann unterschiedliche Testverfahren oder Parametereinstellungen hinsichtlich Fehlerwahrscheinlichkeiten und Teststärke vergleichen und begründete Entscheidungen treffen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-03357e70-2280-532f-b629-5dfa31dc44eb" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-03357e70-2280-532f-b629-5dfa31dc44eb-requires-heading">
+          <p class="section-heading" id="goal-03357e70-2280-532f-b629-5dfa31dc44eb-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-0a7ff229-bf90-523c-a6b4-dad2ecd54ed8"><span>Testergebnisse im Kontext interpretieren</span><code>0a7ff229-bf90-523c-a6b4-dad2ecd54ed8</code><span class="reference-page">S. 7</span></a></li><li><a href="#goal-82bce6e8-7dc7-501a-a4f6-df8a3b905e3c"><span>Gütefunktion und Teststärke untersuchen (LK)</span><code>82bce6e8-7dc7-501a-a4f6-df8a3b905e3c</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-03357e70-2280-532f-b629-5dfa31dc44eb-reverse-heading">
+          <p class="section-heading" id="goal-03357e70-2280-532f-b629-5dfa31dc44eb-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-03357e70-2280-532f-b629-5dfa31dc44eb-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-03357e70-2280-532f-b629-5dfa31dc44eb-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-99e45593-8509-5f51-832e-39ed2a9c10d9" rel="noreferrer noopener"><span>Hypothesentests durchführen und bewerten</span> <code>99e45593-8509-5f51-832e-39ed2a9c10d9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5a0a14dd50f72f696e13840c896c9144c4a1cb4d0b1239cb50beb7e8ff2342c4</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=03357e70-2280-532f-b629-5dfa31dc44eb&amp;goalFingerprint=sha256%3A5a0a14dd50f72f696e13840c896c9144c4a1cb4d0b1239cb50beb7e8ff2342c4&amp;pageFingerprint=sha256%3A87d15abbbbf4c1030865e713db463b259c64f75145ab9113d0136b811165d596&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f" data-goal-id="f85419c4-63ac-5d6d-b73b-fcb12a0ff89f" data-page-number="10" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-4af3fe2f-851c-520a-9a1d-b8036ac1dbb1" aria-labelledby="goal-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f-title"><a class="goal-self-link" href="#goal-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f">Prognoseintervalle für relative Häufigkeiten bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f85419c4-63ac-5d6d-b73b-fcb12a0ff89f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-ed0ba8dcc43cd9a8c4d53091">Prognoseintervalle, Konfidenzintervalle und Stichprobenplanung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7cd4e6daac81cd70dc59012187674a3e55a5b01b8122c024c72ccbf7994931ec" data-rendered-digest="sha256:fac4016369d64bdea94ce2ed3331320fdcc6c0c351b14438380c38ec9b13c84e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/f85419c4-63ac-5d6d-b73b-fcb12a0ff89f/f85419c4-63ac-5d6d-b73b-fcb12a0ff89f.jpg" alt="Die lernende Person kann für hinreichend große unabhängige Bernoulli-Stichproben aus einer bekannten Trefferwahrscheinlichkeit näherungsweise Prognoseintervalle der Form $\left[p-c\sqrt{\frac{p(1-p)}{n}};\ p+c\sqrt{\frac{p(1-p)}{n}}\right]$ für die relative Häufigkeit bestimmen und die Voraussetzungen sowie die verbleibende Prognoseunsicherheit erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f-description-heading">
+        <p class="section-heading" id="goal-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für hinreichend große unabhängige Bernoulli-Stichproben aus einer bekannten Trefferwahrscheinlichkeit näherungsweise Prognoseintervalle der Form $\left[p-c\sqrt{\frac{p(1-p)}{n}};\ p+c\sqrt{\frac{p(1-p)}{n}}\right]$ für die relative Häufigkeit bestimmen und die Voraussetzungen sowie die verbleibende Prognoseunsicherheit erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f-requires-heading">
+          <p class="section-heading" id="goal-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f-reverse-heading">
+          <p class="section-heading" id="goal-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7d41b805-0fd8-5ac3-980d-79112a27c1b4" rel="noreferrer noopener"><span>Kenngrößen binomialverteilter Zufallsgrößen</span> <code>7d41b805-0fd8-5ac3-980d-79112a27c1b4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d" rel="noreferrer noopener"><span>Sigma-Regeln für Verteilungen anwenden</span> <code>8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6644a4dc-a773-525f-a382-5e1e3c592b4f" rel="noreferrer noopener"><span>Prognoseintervalle bestimmen und im Kontext deuten</span> <code>6644a4dc-a773-525f-a382-5e1e3c592b4f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4d906967-9f4b-5dc8-af7a-d403b95d61f5" rel="noreferrer noopener"><span>Prognoseintervalle im Kontext interpretieren</span> <code>4d906967-9f4b-5dc8-af7a-d403b95d61f5</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:14a1728776c122e685f966d4854d98e81b3e60e6e1f0433cb8597b5bc8a6febd</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=f85419c4-63ac-5d6d-b73b-fcb12a0ff89f&amp;goalFingerprint=sha256%3A14a1728776c122e685f966d4854d98e81b3e60e6e1f0433cb8597b5bc8a6febd&amp;pageFingerprint=sha256%3A26ab3b45647c8430b7aa2ec7a39c68b1e1f53d72bfd01f21c705cd02bd15ccaa&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5f328147-619c-568d-9a0d-e1787ca0c01b" data-goal-id="5f328147-619c-568d-9a0d-e1787ca0c01b" data-page-number="11" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-4af3fe2f-851c-520a-9a1d-b8036ac1dbb1" aria-labelledby="goal-5f328147-619c-568d-9a0d-e1787ca0c01b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5f328147-619c-568d-9a0d-e1787ca0c01b-title"><a class="goal-self-link" href="#goal-5f328147-619c-568d-9a0d-e1787ca0c01b">Konfidenzintervalle für Wahrscheinlichkeiten berechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5f328147-619c-568d-9a0d-e1787ca0c01b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-ed0ba8dcc43cd9a8c4d53091">Prognoseintervalle, Konfidenzintervalle und Stichprobenplanung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:163c1583078450f9fd791f32a35348516b43074e0eb93f5d496c3fa9079c5dfc" data-rendered-digest="sha256:9ac9346b2946c3701d7c9f00e5522ec5ec274a9a32a0a5adab6469a83d19318b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/5f328147-619c-568d-9a0d-e1787ca0c01b/5f328147-619c-568d-9a0d-e1787ca0c01b.png" alt="Didaktische Visualisierung zum Lernziel &quot;Konfidenzintervalle für Wahrscheinlichkeiten berechnen&quot;. Die lernende Person kann von einer Stichprobe auf die unbekannte Trefferwahrscheinlichkeit der Grundgesamtheit schließen, Konfidenzintervalle in Sachzusammenhängen aus $\left|h_n-p\right|\leq c\sqrt{\frac{p(1-p)}{n}}$ bestimmen und die Näherung $h_n\pm c\sqrt{\frac{h_n(1-h_n)}{n}}$ als symmetrisches Intervall um $h_n$ verwenden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5f328147-619c-568d-9a0d-e1787ca0c01b-description-heading">
+        <p class="section-heading" id="goal-5f328147-619c-568d-9a0d-e1787ca0c01b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann von einer Stichprobe auf die unbekannte Trefferwahrscheinlichkeit der Grundgesamtheit schließen, Konfidenzintervalle in Sachzusammenhängen aus $\left|h_n-p\right|\leq c\sqrt{\frac{p(1-p)}{n}}$ bestimmen und die Näherung $h_n\pm c\sqrt{\frac{h_n(1-h_n)}{n}}$ als symmetrisches Intervall um $h_n$ verwenden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5f328147-619c-568d-9a0d-e1787ca0c01b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5f328147-619c-568d-9a0d-e1787ca0c01b-requires-heading">
+          <p class="section-heading" id="goal-5f328147-619c-568d-9a0d-e1787ca0c01b-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-5f328147-619c-568d-9a0d-e1787ca0c01b-reverse-heading">
+          <p class="section-heading" id="goal-5f328147-619c-568d-9a0d-e1787ca0c01b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-aa14d9e4-5790-5d94-a245-2ff9a70bf633"><span>Konfidenzniveau interpretieren</span><code>aa14d9e4-5790-5d94-a245-2ff9a70bf633</code><span class="reference-page">S. 12</span></a></li><li><a href="#goal-77d607e0-0244-55ca-ba0f-214baa94b8de"><span>Konfidenzdiagramme deuten (LK)</span><code>77d607e0-0244-55ca-ba0f-214baa94b8de</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-5f328147-619c-568d-9a0d-e1787ca0c01b-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5f328147-619c-568d-9a0d-e1787ca0c01b-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7d41b805-0fd8-5ac3-980d-79112a27c1b4" rel="noreferrer noopener"><span>Kenngrößen binomialverteilter Zufallsgrößen</span> <code>7d41b805-0fd8-5ac3-980d-79112a27c1b4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d" rel="noreferrer noopener"><span>Sigma-Regeln für Verteilungen anwenden</span> <code>8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-5f328147-619c-568d-9a0d-e1787ca0c01b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5f328147-619c-568d-9a0d-e1787ca0c01b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5c9ac68c-3928-518c-bbe0-e044667035a6" rel="noreferrer noopener"><span>Konfidenzintervalle im Kontext interpretieren</span> <code>5c9ac68c-3928-518c-bbe0-e044667035a6</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7dc47912a151219223b3b9d0f04cb27beddafcf1d776273845386828559bd404</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=5f328147-619c-568d-9a0d-e1787ca0c01b&amp;goalFingerprint=sha256%3A7dc47912a151219223b3b9d0f04cb27beddafcf1d776273845386828559bd404&amp;pageFingerprint=sha256%3Ae855f2e3f51272db18da9ff097abae26c827e678fbd607d8172e17c1149d3198&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-aa14d9e4-5790-5d94-a245-2ff9a70bf633" data-goal-id="aa14d9e4-5790-5d94-a245-2ff9a70bf633" data-page-number="12" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-4af3fe2f-851c-520a-9a1d-b8036ac1dbb1" aria-labelledby="goal-aa14d9e4-5790-5d94-a245-2ff9a70bf633-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-aa14d9e4-5790-5d94-a245-2ff9a70bf633-title"><a class="goal-self-link" href="#goal-aa14d9e4-5790-5d94-a245-2ff9a70bf633">Konfidenzniveau interpretieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>aa14d9e4-5790-5d94-a245-2ff9a70bf633</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-ed0ba8dcc43cd9a8c4d53091">Prognoseintervalle, Konfidenzintervalle und Stichprobenplanung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4f9ab632304318b101b8f349a1c65e2ae1575e81fb8491dfbcaf29f7e78a0dd2" data-rendered-digest="sha256:dc1cab438bba468b2ec30638358da61a088870ddcd85ade98c8c152ee08a0a28" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/aa14d9e4-5790-5d94-a245-2ff9a70bf633/aa14d9e4-5790-5d94-a245-2ff9a70bf633.png" alt="Didaktische Visualisierung zum Lernziel &quot;Konfidenzniveau interpretieren&quot;. Die lernende Person kann die Bedeutung des Konfidenzniveaus in Worten erklären, typische Fehlinterpretationen vermeiden und dies an Beispielen begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-aa14d9e4-5790-5d94-a245-2ff9a70bf633-description-heading">
+        <p class="section-heading" id="goal-aa14d9e4-5790-5d94-a245-2ff9a70bf633-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Bedeutung des Konfidenzniveaus in Worten erklären, typische Fehlinterpretationen vermeiden und dies an Beispielen begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-aa14d9e4-5790-5d94-a245-2ff9a70bf633" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-aa14d9e4-5790-5d94-a245-2ff9a70bf633-requires-heading">
+          <p class="section-heading" id="goal-aa14d9e4-5790-5d94-a245-2ff9a70bf633-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-5f328147-619c-568d-9a0d-e1787ca0c01b"><span>Konfidenzintervalle für Wahrscheinlichkeiten berechnen</span><code>5f328147-619c-568d-9a0d-e1787ca0c01b</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-aa14d9e4-5790-5d94-a245-2ff9a70bf633-reverse-heading">
+          <p class="section-heading" id="goal-aa14d9e4-5790-5d94-a245-2ff9a70bf633-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-aa14d9e4-5790-5d94-a245-2ff9a70bf633-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-aa14d9e4-5790-5d94-a245-2ff9a70bf633-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5c9ac68c-3928-518c-bbe0-e044667035a6" rel="noreferrer noopener"><span>Konfidenzintervalle im Kontext interpretieren</span> <code>5c9ac68c-3928-518c-bbe0-e044667035a6</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f24e2fe0c2f1671210e34e47a03b51c6d712a3d5b9df044a84bd7a0157a00942</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=aa14d9e4-5790-5d94-a245-2ff9a70bf633&amp;goalFingerprint=sha256%3Af24e2fe0c2f1671210e34e47a03b51c6d712a3d5b9df044a84bd7a0157a00942&amp;pageFingerprint=sha256%3Adf128b77cc01adfbde0d5ce903c004a0edcd7d9c8850c6a0c4a51d59a759a532&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-77d607e0-0244-55ca-ba0f-214baa94b8de" data-goal-id="77d607e0-0244-55ca-ba0f-214baa94b8de" data-page-number="13" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-4af3fe2f-851c-520a-9a1d-b8036ac1dbb1" aria-labelledby="goal-77d607e0-0244-55ca-ba0f-214baa94b8de-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-77d607e0-0244-55ca-ba0f-214baa94b8de-title"><a class="goal-self-link" href="#goal-77d607e0-0244-55ca-ba0f-214baa94b8de">Konfidenzdiagramme deuten (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>77d607e0-0244-55ca-ba0f-214baa94b8de</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-ed0ba8dcc43cd9a8c4d53091">Prognoseintervalle, Konfidenzintervalle und Stichprobenplanung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:12821408336806b663dcc9c1143c0416dbd69e36ab9fb6d42ee2cfcd585dfdcb" data-rendered-digest="sha256:8d12f335be3ea347918937d21ca13fced168a9fd58556ce3cb01412e5372d97e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/77d607e0-0244-55ca-ba0f-214baa94b8de/77d607e0-0244-55ca-ba0f-214baa94b8de.png" alt="Didaktische Visualisierung zum Lernziel &quot;Konfidenzdiagramme deuten (LK)&quot;. Die lernende Person kann Konfidenzdiagramme, insbesondere Konfidenzellipsen, für den Zusammenhang von Stichprobenumfang, Konfidenzniveau und Intervallbreite lesen, interpretieren und zur Beurteilung der Aussagekraft von Stichprobenergebnissen nutzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-77d607e0-0244-55ca-ba0f-214baa94b8de-description-heading">
+        <p class="section-heading" id="goal-77d607e0-0244-55ca-ba0f-214baa94b8de-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Konfidenzdiagramme, insbesondere Konfidenzellipsen, für den Zusammenhang von Stichprobenumfang, Konfidenzniveau und Intervallbreite lesen, interpretieren und zur Beurteilung der Aussagekraft von Stichprobenergebnissen nutzen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-77d607e0-0244-55ca-ba0f-214baa94b8de" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-77d607e0-0244-55ca-ba0f-214baa94b8de-requires-heading">
+          <p class="section-heading" id="goal-77d607e0-0244-55ca-ba0f-214baa94b8de-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-5f328147-619c-568d-9a0d-e1787ca0c01b"><span>Konfidenzintervalle für Wahrscheinlichkeiten berechnen</span><code>5f328147-619c-568d-9a0d-e1787ca0c01b</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-77d607e0-0244-55ca-ba0f-214baa94b8de-reverse-heading">
+          <p class="section-heading" id="goal-77d607e0-0244-55ca-ba0f-214baa94b8de-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-410221ed-540c-5daf-8c42-d8dd12e9100a"><span>Stichprobenumfang für vorgegebene Konfidenzniveaus planen (LK)</span><code>410221ed-540c-5daf-8c42-d8dd12e9100a</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1147fa59f493b64c7356b4cf3668b1f2325b63b338621c7e3a7aab0805363224</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=77d607e0-0244-55ca-ba0f-214baa94b8de&amp;goalFingerprint=sha256%3A1147fa59f493b64c7356b4cf3668b1f2325b63b338621c7e3a7aab0805363224&amp;pageFingerprint=sha256%3Aa322661a9d464825fd5f4ff92eca73b97ca05011131d2f1f88e55d92825456d1&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-410221ed-540c-5daf-8c42-d8dd12e9100a" data-goal-id="410221ed-540c-5daf-8c42-d8dd12e9100a" data-page-number="14" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-4af3fe2f-851c-520a-9a1d-b8036ac1dbb1" aria-labelledby="goal-410221ed-540c-5daf-8c42-d8dd12e9100a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-410221ed-540c-5daf-8c42-d8dd12e9100a-title"><a class="goal-self-link" href="#goal-410221ed-540c-5daf-8c42-d8dd12e9100a">Stichprobenumfang für vorgegebene Konfidenzniveaus planen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>410221ed-540c-5daf-8c42-d8dd12e9100a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-ed0ba8dcc43cd9a8c4d53091">Prognoseintervalle, Konfidenzintervalle und Stichprobenplanung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9aed038150f5038f5722f6d7d729a1a763b56938c7e812e306e742a9fac6d430" data-rendered-digest="sha256:4066f6f516938ea9de4c218dc8b3a2e8d372a926fc26f0883bab2f682c8710eb" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/410221ed-540c-5daf-8c42-d8dd12e9100a/410221ed-540c-5daf-8c42-d8dd12e9100a.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Stichprobenumfang für vorgegebene Konfidenzniveaus planen (LK)&quot;. Die lernende Person kann auf Grundlage der Sigma-Regeln für vorgegebene Konfidenzniveaus und gewünschte Genauigkeit den benötigten Stichprobenumfang berechnen oder abschätzen und die Planung im Kontext begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-410221ed-540c-5daf-8c42-d8dd12e9100a-description-heading">
+        <p class="section-heading" id="goal-410221ed-540c-5daf-8c42-d8dd12e9100a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann auf Grundlage der Sigma-Regeln für vorgegebene Konfidenzniveaus und gewünschte Genauigkeit den benötigten Stichprobenumfang berechnen oder abschätzen und die Planung im Kontext begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-410221ed-540c-5daf-8c42-d8dd12e9100a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-410221ed-540c-5daf-8c42-d8dd12e9100a-requires-heading">
+          <p class="section-heading" id="goal-410221ed-540c-5daf-8c42-d8dd12e9100a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-77d607e0-0244-55ca-ba0f-214baa94b8de"><span>Konfidenzdiagramme deuten (LK)</span><code>77d607e0-0244-55ca-ba0f-214baa94b8de</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-410221ed-540c-5daf-8c42-d8dd12e9100a-reverse-heading">
+          <p class="section-heading" id="goal-410221ed-540c-5daf-8c42-d8dd12e9100a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-410221ed-540c-5daf-8c42-d8dd12e9100a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-410221ed-540c-5daf-8c42-d8dd12e9100a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3c8c4a64-f6d0-5eaf-b35a-d97c8566ee3b" rel="noreferrer noopener"><span>Konfidenzintervalle interpretieren und Stichproben planen</span> <code>3c8c4a64-f6d0-5eaf-b35a-d97c8566ee3b</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:241207f21f8c93d2b39504c2a108169ec03d555651688dd6128e603baff99d72</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=410221ed-540c-5daf-8c42-d8dd12e9100a&amp;goalFingerprint=sha256%3A241207f21f8c93d2b39504c2a108169ec03d555651688dd6128e603baff99d72&amp;pageFingerprint=sha256%3A748f59b3a37058a13d29fad884ab55a289c7f025ad2184edaa2bed628c3c8e2c&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-616c72a4-972d-5cc0-b903-e2a24bcb150c" data-goal-id="616c72a4-972d-5cc0-b903-e2a24bcb150c" data-page-number="15" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-35e14223-54fc-5ec1-ae73-ac9f13b07db2 structure:canonical-goal-65cacc1f-e961-5e47-b8fa-764c40c129a7 structure:canonical-goal-3b0d30b8-148b-43e0-b883-907fc691fc11" aria-labelledby="goal-616c72a4-972d-5cc0-b903-e2a24bcb150c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-616c72a4-972d-5cc0-b903-e2a24bcb150c-title"><a class="goal-self-link" href="#goal-616c72a4-972d-5cc0-b903-e2a24bcb150c">Lageparameter für Datenanalysen auswählen und vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>616c72a4-972d-5cc0-b903-e2a24bcb150c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-290b88160c1dd9f270ce43c4">Statistik und weitere Wahrscheinlichkeitsverteilungen</a></li><li><a href="#chapter-7fd5b6454a1c96843cbb6e00">Q3.5 Statistik: Kenngrößen</a></li><li><a href="#chapter-79c31ff159195aab9ee83362">Stichprobenkennwerte bestimmen und deuten</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c811f2c904652cae16570209961d3b85a2a76e276d28cb0bbd9116f351a8f5d7" data-rendered-digest="sha256:b6fa0d40e31386fe8f9540e0a11f4b4771dd24ec382f6ef40fc990bcc26bec0c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/616c72a4-972d-5cc0-b903-e2a24bcb150c/616c72a4-972d-5cc0-b903-e2a24bcb150c.png" alt="Didaktische Visualisierung zum Lernziel &quot;Lageparameter für Datenanalysen auswählen und vergleichen&quot;. Die lernende Person kann arithmetisches Mittel, Median und Modalwert hinsichtlich ihrer Aussagekraft und ihrer Empfindlichkeit gegenüber Ausreißern vergleichen, zu einer gegebenen Datenfrage einen passenden Lageparameter auswählen und die Wahl im Sachkontext begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-616c72a4-972d-5cc0-b903-e2a24bcb150c-description-heading">
+        <p class="section-heading" id="goal-616c72a4-972d-5cc0-b903-e2a24bcb150c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann arithmetisches Mittel, Median und Modalwert hinsichtlich ihrer Aussagekraft und ihrer Empfindlichkeit gegenüber Ausreißern vergleichen, zu einer gegebenen Datenfrage einen passenden Lageparameter auswählen und die Wahl im Sachkontext begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G8; Sek. I · G9; Sek. II · GK; + 1 weitere Kombinationen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-616c72a4-972d-5cc0-b903-e2a24bcb150c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-616c72a4-972d-5cc0-b903-e2a24bcb150c-requires-heading">
+          <p class="section-heading" id="goal-616c72a4-972d-5cc0-b903-e2a24bcb150c-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-616c72a4-972d-5cc0-b903-e2a24bcb150c-reverse-heading">
+          <p class="section-heading" id="goal-616c72a4-972d-5cc0-b903-e2a24bcb150c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-aeb947a2-2dd4-5017-a429-0d777e22db6a"><span>Experimentdaten mit Kenngrößen auswerten</span><code>aeb947a2-2dd4-5017-a429-0d777e22db6a</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-616c72a4-972d-5cc0-b903-e2a24bcb150c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-616c72a4-972d-5cc0-b903-e2a24bcb150c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2" rel="noreferrer noopener"><span>Warum Mathematik? – Denken, Muster &amp; Zukunft</span> <code>71cec9fb-3751-4d61-8b34-c5adbbf6e5f2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2242c379-ddbb-4f03-8aed-13f49a4674e8" rel="noreferrer noopener"><span>Median bestimmen und mit dem arithmetischen Mittel vergleichen</span> <code>2242c379-ddbb-4f03-8aed-13f49a4674e8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-03703b29-efd8-57e0-acf5-4381b1dc67ec" rel="noreferrer noopener"><span>Modalwert bestimmen und im Kontext deuten</span> <code>03703b29-efd8-57e0-acf5-4381b1dc67ec</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-616c72a4-972d-5cc0-b903-e2a24bcb150c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-616c72a4-972d-5cc0-b903-e2a24bcb150c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-75efcc7c-3c96-47c6-a681-1e9337862a20" rel="noreferrer noopener"><span>Veröffentlichte Erhebungen kritisch beurteilen</span> <code>75efcc7c-3c96-47c6-a681-1e9337862a20</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2e2faee0606e8a7f3298d4683121d2e08d1fd645d3c911b3c60ca283a0f916c9</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=616c72a4-972d-5cc0-b903-e2a24bcb150c&amp;goalFingerprint=sha256%3A2e2faee0606e8a7f3298d4683121d2e08d1fd645d3c911b3c60ca283a0f916c9&amp;pageFingerprint=sha256%3A59721e7483ebdfb1f241a334984bc12e17439c0514af2367a590154472aec8e1&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e402f330-8ac6-525f-b3ff-bc4be229d131" data-goal-id="e402f330-8ac6-525f-b3ff-bc4be229d131" data-page-number="16" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-35e14223-54fc-5ec1-ae73-ac9f13b07db2 structure:canonical-goal-65cacc1f-e961-5e47-b8fa-764c40c129a7 structure:canonical-goal-3b0d30b8-148b-43e0-b883-907fc691fc11" aria-labelledby="goal-e402f330-8ac6-525f-b3ff-bc4be229d131-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e402f330-8ac6-525f-b3ff-bc4be229d131-title"><a class="goal-self-link" href="#goal-e402f330-8ac6-525f-b3ff-bc4be229d131">Streuungsmaße von Daten bestimmen und deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e402f330-8ac6-525f-b3ff-bc4be229d131</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-290b88160c1dd9f270ce43c4">Statistik und weitere Wahrscheinlichkeitsverteilungen</a></li><li><a href="#chapter-7fd5b6454a1c96843cbb6e00">Q3.5 Statistik: Kenngrößen</a></li><li><a href="#chapter-79c31ff159195aab9ee83362">Stichprobenkennwerte bestimmen und deuten</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b46e236697515f0dc72ac2b463661509e467f16b46bd3db8aab779079007dc1a" data-rendered-digest="sha256:5da077749d557419ded217ba6b02c4b777cbfd93fd57f9ee9833fe98e8f9aa16" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/e402f330-8ac6-525f-b3ff-bc4be229d131/e402f330-8ac6-525f-b3ff-bc4be229d131.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Streuungsmaße von Daten bestimmen und deuten&quot;. Die lernende Person kann empirische Varianz und empirische Standardabweichung für Datensätze berechnen, beide Streuungsmaße in Bezug auf die Daten deuten und einfache Vergleiche zwischen Datensätzen anstellen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e402f330-8ac6-525f-b3ff-bc4be229d131-description-heading">
+        <p class="section-heading" id="goal-e402f330-8ac6-525f-b3ff-bc4be229d131-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann empirische Varianz und empirische Standardabweichung für Datensätze berechnen, beide Streuungsmaße in Bezug auf die Daten deuten und einfache Vergleiche zwischen Datensätzen anstellen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G8; Sek. I · G9; Sek. II · GK; + 1 weitere Kombinationen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e402f330-8ac6-525f-b3ff-bc4be229d131" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e402f330-8ac6-525f-b3ff-bc4be229d131-requires-heading">
+          <p class="section-heading" id="goal-e402f330-8ac6-525f-b3ff-bc4be229d131-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-e402f330-8ac6-525f-b3ff-bc4be229d131-reverse-heading">
+          <p class="section-heading" id="goal-e402f330-8ac6-525f-b3ff-bc4be229d131-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-84069c5e-5526-57c1-9417-a886ccfd3f66"><span>Daten mit Verteilungen vergleichen</span><code>84069c5e-5526-57c1-9417-a886ccfd3f66</code><span class="reference-page">S. 17</span></a></li><li><a href="#goal-aeb947a2-2dd4-5017-a429-0d777e22db6a"><span>Experimentdaten mit Kenngrößen auswerten</span><code>aeb947a2-2dd4-5017-a429-0d777e22db6a</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e402f330-8ac6-525f-b3ff-bc4be229d131-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e402f330-8ac6-525f-b3ff-bc4be229d131-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2" rel="noreferrer noopener"><span>Warum Mathematik? – Denken, Muster &amp; Zukunft</span> <code>71cec9fb-3751-4d61-8b34-c5adbbf6e5f2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-15505229-efec-4d01-8e71-acf15f9c2424" rel="noreferrer noopener"><span>Arithmetisches Mittel bestimmen und deuten</span> <code>15505229-efec-4d01-8e71-acf15f9c2424</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e402f330-8ac6-525f-b3ff-bc4be229d131-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e402f330-8ac6-525f-b3ff-bc4be229d131-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c9a897ca-a0a2-5895-bbc4-23b20840c548" rel="noreferrer noopener"><span>Poisson-Verteilung als Modell seltener Ereignisse nutzen</span> <code>c9a897ca-a0a2-5895-bbc4-23b20840c548</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5dbf149c-d335-552c-a918-768a12e09201" rel="noreferrer noopener"><span>Normalverteilung zur Modellierung von Messdaten verwenden (LK)</span> <code>5dbf149c-d335-552c-a918-768a12e09201</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-75efcc7c-3c96-47c6-a681-1e9337862a20" rel="noreferrer noopener"><span>Veröffentlichte Erhebungen kritisch beurteilen</span> <code>75efcc7c-3c96-47c6-a681-1e9337862a20</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8701baf4f1c5e62ceeb6381f40b13f1050ea2d01919404590ebc5548fd17b6ec</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=e402f330-8ac6-525f-b3ff-bc4be229d131&amp;goalFingerprint=sha256%3A8701baf4f1c5e62ceeb6381f40b13f1050ea2d01919404590ebc5548fd17b6ec&amp;pageFingerprint=sha256%3A1bb3f7cc305707217e5b7ce4235763f70eb3a306b9ef24b4267863ec66163015&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-84069c5e-5526-57c1-9417-a886ccfd3f66" data-goal-id="84069c5e-5526-57c1-9417-a886ccfd3f66" data-page-number="17" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-35e14223-54fc-5ec1-ae73-ac9f13b07db2 structure:canonical-goal-d5054d79-6483-5d8a-a33b-b074f1cd5904" aria-labelledby="goal-84069c5e-5526-57c1-9417-a886ccfd3f66-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-84069c5e-5526-57c1-9417-a886ccfd3f66-title"><a class="goal-self-link" href="#goal-84069c5e-5526-57c1-9417-a886ccfd3f66">Daten mit Verteilungen vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>84069c5e-5526-57c1-9417-a886ccfd3f66</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-290b88160c1dd9f270ce43c4">Statistik und weitere Wahrscheinlichkeitsverteilungen</a></li><li><a href="#chapter-8fb8489922a491ebc09c83d8">Q3.5 Statistik: Datenanalyse und Modellvergleich</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:866c5646873fced70f650061ab21ee51f475e2c718815d0a18dd38b65a28739a" data-rendered-digest="sha256:92239b3a9028ae693afc3417a387627f1ea0440f3a9a9dee3a596fd7fe3f94b0" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/84069c5e-5526-57c1-9417-a886ccfd3f66/84069c5e-5526-57c1-9417-a886ccfd3f66.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Daten mit Verteilungen vergleichen&quot;. Die lernende Person kann Histogramme und Kennwerte von Datensätzen mit einfachen theoretischen Verteilungen vergleichen, Abweichungen beschreiben und die Eignung eines Modells beurteilen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-84069c5e-5526-57c1-9417-a886ccfd3f66-description-heading">
+        <p class="section-heading" id="goal-84069c5e-5526-57c1-9417-a886ccfd3f66-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Histogramme und Kennwerte von Datensätzen mit einfachen theoretischen Verteilungen vergleichen, Abweichungen beschreiben und die Eignung eines Modells beurteilen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-84069c5e-5526-57c1-9417-a886ccfd3f66" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-84069c5e-5526-57c1-9417-a886ccfd3f66-requires-heading">
+          <p class="section-heading" id="goal-84069c5e-5526-57c1-9417-a886ccfd3f66-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e402f330-8ac6-525f-b3ff-bc4be229d131"><span>Streuungsmaße von Daten bestimmen und deuten</span><code>e402f330-8ac6-525f-b3ff-bc4be229d131</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-84069c5e-5526-57c1-9417-a886ccfd3f66-reverse-heading">
+          <p class="section-heading" id="goal-84069c5e-5526-57c1-9417-a886ccfd3f66-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-84069c5e-5526-57c1-9417-a886ccfd3f66-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-84069c5e-5526-57c1-9417-a886ccfd3f66-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0" rel="noreferrer noopener"><span>Histogramme erstellen und lesen</span> <code>9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-84069c5e-5526-57c1-9417-a886ccfd3f66-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-84069c5e-5526-57c1-9417-a886ccfd3f66-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c83dc2d1-f44f-5fae-86ce-280c68c3c55e" rel="noreferrer noopener"><span>Statistische Daten und Verteilungen abgleichen</span> <code>c83dc2d1-f44f-5fae-86ce-280c68c3c55e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d2c9b5da9b70571417c68bb5bb93e07c32a8188f5c6f4275f7fb985189190f49</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=84069c5e-5526-57c1-9417-a886ccfd3f66&amp;goalFingerprint=sha256%3Ad2c9b5da9b70571417c68bb5bb93e07c32a8188f5c6f4275f7fb985189190f49&amp;pageFingerprint=sha256%3Aee63c9fd09488346c417fffa4de9b6bd1d0889c8468f5f054a3f3320e05b9b2f&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e02976ad-71fc-5929-b764-df7630269c47" data-goal-id="e02976ad-71fc-5929-b764-df7630269c47" data-page-number="18" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-35e14223-54fc-5ec1-ae73-ac9f13b07db2 structure:canonical-goal-d5054d79-6483-5d8a-a33b-b074f1cd5904 structure:canonical-goal-fb3c96bd-8888-5259-bc76-a3a24b4c9a15" aria-labelledby="goal-e02976ad-71fc-5929-b764-df7630269c47-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e02976ad-71fc-5929-b764-df7630269c47-title"><a class="goal-self-link" href="#goal-e02976ad-71fc-5929-b764-df7630269c47">Zufallsexperimente planen und durchführen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e02976ad-71fc-5929-b764-df7630269c47</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-290b88160c1dd9f270ce43c4">Statistik und weitere Wahrscheinlichkeitsverteilungen</a></li><li><a href="#chapter-8fb8489922a491ebc09c83d8">Q3.5 Statistik: Datenanalyse und Modellvergleich</a></li><li><a href="#chapter-616450761a5fc7ba20f60437">Zufallsexperimente statistisch auswerten</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a3ad70b204116f39e095896600281c626e8f696bf3498a3f651e2cd0ef6e05f7" data-rendered-digest="sha256:9e80418dd3b6627fffd6aa2710bb738ea883a5f6c65a4f59ae433e18a262fff5" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/e02976ad-71fc-5929-b764-df7630269c47/e02976ad-71fc-5929-b764-df7630269c47.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Zufallsexperimente planen und durchführen&quot;. Die lernende Person kann einfache Zufallsexperimente planen, durchführen und die Datenerhebung nachvollziehbar dokumentieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e02976ad-71fc-5929-b764-df7630269c47-description-heading">
+        <p class="section-heading" id="goal-e02976ad-71fc-5929-b764-df7630269c47-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann einfache Zufallsexperimente planen, durchführen und die Datenerhebung nachvollziehbar dokumentieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e02976ad-71fc-5929-b764-df7630269c47" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e02976ad-71fc-5929-b764-df7630269c47-requires-heading">
+          <p class="section-heading" id="goal-e02976ad-71fc-5929-b764-df7630269c47-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-e02976ad-71fc-5929-b764-df7630269c47-reverse-heading">
+          <p class="section-heading" id="goal-e02976ad-71fc-5929-b764-df7630269c47-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-83a5546e-0ea6-576e-83e2-3387b30872bb"><span>Daten tabellarisch und grafisch aufbereiten</span><code>83a5546e-0ea6-576e-83e2-3387b30872bb</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e02976ad-71fc-5929-b764-df7630269c47-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e02976ad-71fc-5929-b764-df7630269c47-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3019e775-1420-510f-850b-5a29acc47a64" rel="noreferrer noopener"><span>Zufallsexperimente mit Ergebnissen und Ereignissen beschreiben</span> <code>3019e775-1420-510f-850b-5a29acc47a64</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e02976ad-71fc-5929-b764-df7630269c47-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e02976ad-71fc-5929-b764-df7630269c47-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4aa70ad4-171d-5671-a864-c0c7758fa0ed" rel="noreferrer noopener"><span>Zufallsexperimente mit Software simulieren</span> <code>4aa70ad4-171d-5671-a864-c0c7758fa0ed</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4eec4dedcd2644a8807089ea3b12d0a0740db845e3fd33f8ebf5805e40c86b29</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=e02976ad-71fc-5929-b764-df7630269c47&amp;goalFingerprint=sha256%3A4eec4dedcd2644a8807089ea3b12d0a0740db845e3fd33f8ebf5805e40c86b29&amp;pageFingerprint=sha256%3A0a6e6c70ac48bc09cdb616c01dea768efa7c08fd80731a1948053ceebf86c98f&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-83a5546e-0ea6-576e-83e2-3387b30872bb" data-goal-id="83a5546e-0ea6-576e-83e2-3387b30872bb" data-page-number="19" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-35e14223-54fc-5ec1-ae73-ac9f13b07db2 structure:canonical-goal-d5054d79-6483-5d8a-a33b-b074f1cd5904 structure:canonical-goal-fb3c96bd-8888-5259-bc76-a3a24b4c9a15 structure:canonical-goal-1383d2c8-ad8f-42a0-9a50-6897185bafd1 structure:canonical-goal-fd2fa63c-5626-4dc3-86b3-3672e906e34a" aria-labelledby="goal-83a5546e-0ea6-576e-83e2-3387b30872bb-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-83a5546e-0ea6-576e-83e2-3387b30872bb-title"><a class="goal-self-link" href="#goal-83a5546e-0ea6-576e-83e2-3387b30872bb">Daten tabellarisch und grafisch aufbereiten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>83a5546e-0ea6-576e-83e2-3387b30872bb</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-290b88160c1dd9f270ce43c4">Statistik und weitere Wahrscheinlichkeitsverteilungen</a></li><li><a href="#chapter-8fb8489922a491ebc09c83d8">Q3.5 Statistik: Datenanalyse und Modellvergleich</a></li><li><a href="#chapter-616450761a5fc7ba20f60437">Zufallsexperimente statistisch auswerten</a></li><li><a href="#chapter-bf676148e3ede37e090b7cb0">Statistische Erhebungen planen, auswerten und kritisch beurteilen</a></li><li><a href="#chapter-27f4a31dd63d664340f1169e">Statistische Erhebungen planen und Daten aufbereiten</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c1561d10529dea7fb6cb56b220748d2b10b52c5cf46b47f9a06d8e32de299d16" data-rendered-digest="sha256:b60ae22eed60936d7c76d426787d6c7c421dbabc530f6241d1ebf8cc59191eb5" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/83a5546e-0ea6-576e-83e2-3387b30872bb/83a5546e-0ea6-576e-83e2-3387b30872bb.png" alt="Didaktische Visualisierung zum Lernziel &quot;Daten tabellarisch und grafisch aufbereiten&quot;. Die lernende Person kann erhobene Daten tabellarisch und grafisch aufbereiten (z. B. Häufigkeitstabellen, Histogramme) und passende Darstellungen auswählen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-83a5546e-0ea6-576e-83e2-3387b30872bb-description-heading">
+        <p class="section-heading" id="goal-83a5546e-0ea6-576e-83e2-3387b30872bb-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann erhobene Daten tabellarisch und grafisch aufbereiten (z. B. Häufigkeitstabellen, Histogramme) und passende Darstellungen auswählen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G8; Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-83a5546e-0ea6-576e-83e2-3387b30872bb" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-83a5546e-0ea6-576e-83e2-3387b30872bb-requires-heading">
+          <p class="section-heading" id="goal-83a5546e-0ea6-576e-83e2-3387b30872bb-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e02976ad-71fc-5929-b764-df7630269c47"><span>Zufallsexperimente planen und durchführen</span><code>e02976ad-71fc-5929-b764-df7630269c47</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-83a5546e-0ea6-576e-83e2-3387b30872bb-reverse-heading">
+          <p class="section-heading" id="goal-83a5546e-0ea6-576e-83e2-3387b30872bb-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-aeb947a2-2dd4-5017-a429-0d777e22db6a"><span>Experimentdaten mit Kenngrößen auswerten</span><code>aeb947a2-2dd4-5017-a429-0d777e22db6a</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-83a5546e-0ea6-576e-83e2-3387b30872bb-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-83a5546e-0ea6-576e-83e2-3387b30872bb-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-75efcc7c-3c96-47c6-a681-1e9337862a20" rel="noreferrer noopener"><span>Veröffentlichte Erhebungen kritisch beurteilen</span> <code>75efcc7c-3c96-47c6-a681-1e9337862a20</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 19 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f92739dc669aa2b81da611fb544a51bef01196214e0a46128ccdfe2d57b03abb</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=83a5546e-0ea6-576e-83e2-3387b30872bb&amp;goalFingerprint=sha256%3Af92739dc669aa2b81da611fb544a51bef01196214e0a46128ccdfe2d57b03abb&amp;pageFingerprint=sha256%3A2824fedb5b776582053aa4b0c8a81de749c8d6ee8ec092e82b3d6e0e7e1eee7f&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-aeb947a2-2dd4-5017-a429-0d777e22db6a" data-goal-id="aeb947a2-2dd4-5017-a429-0d777e22db6a" data-page-number="20" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-goal-35e14223-54fc-5ec1-ae73-ac9f13b07db2 structure:canonical-goal-d5054d79-6483-5d8a-a33b-b074f1cd5904 structure:canonical-goal-fb3c96bd-8888-5259-bc76-a3a24b4c9a15" aria-labelledby="goal-aeb947a2-2dd4-5017-a429-0d777e22db6a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-aeb947a2-2dd4-5017-a429-0d777e22db6a-title"><a class="goal-self-link" href="#goal-aeb947a2-2dd4-5017-a429-0d777e22db6a">Experimentdaten mit Kenngrößen auswerten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>aeb947a2-2dd4-5017-a429-0d777e22db6a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-290b88160c1dd9f270ce43c4">Statistik und weitere Wahrscheinlichkeitsverteilungen</a></li><li><a href="#chapter-8fb8489922a491ebc09c83d8">Q3.5 Statistik: Datenanalyse und Modellvergleich</a></li><li><a href="#chapter-616450761a5fc7ba20f60437">Zufallsexperimente statistisch auswerten</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0ed8b296a6719ba12c9a02052aef9c6bb4df47ab462b436e3094fb681f044b80" data-rendered-digest="sha256:da32b6f5f2d226072ed6b140e959e811f9f8c0b1453216c5862630d725b67da1" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/aeb947a2-2dd4-5017-a429-0d777e22db6a/aeb947a2-2dd4-5017-a429-0d777e22db6a.png" alt="Didaktische Visualisierung zum Lernziel &quot;Experimentdaten mit Kenngrößen auswerten&quot;. Die lernende Person kann Lage- und Streuungsmaße aus Experimentdaten berechnen und die Ergebnisse im Kontext interpretieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-aeb947a2-2dd4-5017-a429-0d777e22db6a-description-heading">
+        <p class="section-heading" id="goal-aeb947a2-2dd4-5017-a429-0d777e22db6a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Lage- und Streuungsmaße aus Experimentdaten berechnen und die Ergebnisse im Kontext interpretieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-aeb947a2-2dd4-5017-a429-0d777e22db6a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-aeb947a2-2dd4-5017-a429-0d777e22db6a-requires-heading">
+          <p class="section-heading" id="goal-aeb947a2-2dd4-5017-a429-0d777e22db6a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e402f330-8ac6-525f-b3ff-bc4be229d131"><span>Streuungsmaße von Daten bestimmen und deuten</span><code>e402f330-8ac6-525f-b3ff-bc4be229d131</code><span class="reference-page">S. 16</span></a></li><li><a href="#goal-83a5546e-0ea6-576e-83e2-3387b30872bb"><span>Daten tabellarisch und grafisch aufbereiten</span><code>83a5546e-0ea6-576e-83e2-3387b30872bb</code><span class="reference-page">S. 19</span></a></li><li><a href="#goal-616c72a4-972d-5cc0-b903-e2a24bcb150c"><span>Lageparameter für Datenanalysen auswählen und vergleichen</span><code>616c72a4-972d-5cc0-b903-e2a24bcb150c</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-aeb947a2-2dd4-5017-a429-0d777e22db6a-reverse-heading">
+          <p class="section-heading" id="goal-aeb947a2-2dd4-5017-a429-0d777e22db6a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-aeb947a2-2dd4-5017-a429-0d777e22db6a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-aeb947a2-2dd4-5017-a429-0d777e22db6a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c83dc2d1-f44f-5fae-86ce-280c68c3c55e" rel="noreferrer noopener"><span>Statistische Daten und Verteilungen abgleichen</span> <code>c83dc2d1-f44f-5fae-86ce-280c68c3c55e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 20 von 20</span>
+      <span>Buch-Digest <code>sha256:2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:19d56c0213045d44b275e0797cf08f692c861e981607309e6f3efa42a478ccd7</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-statistics-next20-v1-20260920&amp;edition=curricular-atomic-v1&amp;goalId=aeb947a2-2dd4-5017-a429-0d777e22db6a&amp;goalFingerprint=sha256%3A19d56c0213045d44b275e0797cf08f692c861e981607309e6f3efa42a478ccd7&amp;pageFingerprint=sha256%3A4a301e48d3ef98e8fd86ff99159914ac62d39491be7ffd7e0b15358dd495a87a&amp;bookDigest=sha256%3A2ffb62becc5beac8cbc4ddf08ab9c856e3e3db428abbf816fc8ba92642e1e0f6&amp;page=20" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

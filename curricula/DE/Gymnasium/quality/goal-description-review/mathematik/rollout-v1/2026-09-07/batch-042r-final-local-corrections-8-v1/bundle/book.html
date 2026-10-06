@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Mathematik B042r – Finale lokale Bild- und Textkorrekturen</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Mathematik B042r – Finale lokale Bild- und Textkorrekturen</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>8 atomare Lernziele</dt><dd>6 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:8f45a852bfd84e814133593b54250f355bf0af4bd1e8cea69792981038c92925</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-math-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-71894e7ef4af5f94dc6093d2" aria-label="Mathematik"><a href="#goal-281e0c6e-d06d-580f-8443-4369f0ea524b"><span class="toc-entry-label">Mathematik</span></a></h2>
+          <span class="toc-entry-meta"><span>8 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-math-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-3fb62939875ba85ae30720f7" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-281e0c6e-d06d-580f-8443-4369f0ea524b"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>8 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:integral-and-differential" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-1c19696b2b379c800d51b93f" aria-label="Integralrechnung und Differenzialgleichungen"><a href="#goal-281e0c6e-d06d-580f-8443-4369f0ea524b"><span class="toc-entry-label">Integralrechnung&#160;<wbr>und&#160;<wbr>Differenzialgleichungen</span></a></h4>
+          <span class="toc-entry-meta"><span>8 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-383ca2b2-565e-5725-a568-7937bb707175" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-cf2aea07105553f78c236bf8" aria-label="Anwendungen der Integralrechnung"><a href="#goal-281e0c6e-d06d-580f-8443-4369f0ea524b"><span class="toc-entry-label">Anwendungen&#160;<wbr>der&#160;<wbr>Integralrechnung</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-structure:canonical-selection-76842ec4-c76b-5c03-9694-8a18acb1da0f" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-b48dce3248a71174bfb9968c" aria-label="Vertiefung der Differenzial- und Integralrechnung"><a href="#goal-2713980f-75d2-5455-a8cb-bcd3888c49a0"><span class="toc-entry-label">Vertiefung&#160;<wbr>der&#160;<wbr>Differenzial-&#160;<wbr>und&#160;<wbr>Integralrechnung</span></a></h5>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-7e2dfa4d-33b1-55b0-8b97-d4bc4da8e60e" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-b9837478f68f8108c103b80c" aria-label="Integrationsmethoden"><a href="#goal-5ccf0d90-2967-576e-8f72-f002792d8515"><span class="toc-entry-label">Integrationsmethoden</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 8</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-281e0c6e-d06d-580f-8443-4369f0ea524b" data-goal-id="281e0c6e-d06d-580f-8443-4369f0ea524b" data-page-number="1" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:integral-and-differential structure:canonical-goal-383ca2b2-565e-5725-a568-7937bb707175" aria-labelledby="goal-281e0c6e-d06d-580f-8443-4369f0ea524b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-281e0c6e-d06d-580f-8443-4369f0ea524b-title"><a class="goal-self-link" href="#goal-281e0c6e-d06d-580f-8443-4369f0ea524b">Reale Gegenstände als Rotationskörper zur Volumenbestimmung modellieren (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>281e0c6e-d06d-580f-8443-4369f0ea524b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-1c19696b2b379c800d51b93f">Integralrechnung und Differenzialgleichungen</a></li><li><a href="#chapter-cf2aea07105553f78c236bf8">Anwendungen der Integralrechnung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:669588b74984a4e4e014d03325f35c3823041cccc02361257f596ea50cc035b4" data-rendered-digest="sha256:0f9aa785ec55d25c85e57b55038cdfec12e70d019cad8c9cfd8837eb69b7a326" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/281e0c6e-d06d-580f-8443-4369f0ea524b/281e0c6e-d06d-580f-8443-4369f0ea524b.jpg" alt="Modellierung eines Bechers durch eine Radiusfunktion r(x)=r₀+(r₁−r₀)x/h. Ein vertikaler Streifen im x-r-Diagramm hat Breite dx und Höhe r(x); die zugehörige Kreisscheibe besitzt Fläche πr(x)² und Volumen πr(x)²dx. Integration über0 bis h liefert das Modellvolumen; Innenradius und Modellannahmen bestimmen die Interpretation.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-281e0c6e-d06d-580f-8443-4369f0ea524b-description-heading">
+        <p class="section-heading" id="goal-281e0c6e-d06d-580f-8443-4369f0ea524b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann reale Gegenstände durch geeignete Rotationskörper beziehungsweise Randfunktionen modellieren, passende Integrale zur Volumenbestimmung aufstellen und die Modellannahmen im Kontext begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-281e0c6e-d06d-580f-8443-4369f0ea524b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-281e0c6e-d06d-580f-8443-4369f0ea524b-requires-heading">
+          <p class="section-heading" id="goal-281e0c6e-d06d-580f-8443-4369f0ea524b-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-281e0c6e-d06d-580f-8443-4369f0ea524b-reverse-heading">
+          <p class="section-heading" id="goal-281e0c6e-d06d-580f-8443-4369f0ea524b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-281e0c6e-d06d-580f-8443-4369f0ea524b-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-281e0c6e-d06d-580f-8443-4369f0ea524b-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-19481f5d-94de-4a74-b765-cbebd1525994" rel="noreferrer noopener"><span>Volumina von Rotationskörpern um die Abszisse ermitteln (LK)</span> <code>19481f5d-94de-4a74-b765-cbebd1525994</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0f180645-37ce-5b6b-8a36-ad7b31168b1a" rel="noreferrer noopener"><span>Rotationskörper mit Integralen untersuchen (LK)</span> <code>0f180645-37ce-5b6b-8a36-ad7b31168b1a</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-281e0c6e-d06d-580f-8443-4369f0ea524b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-281e0c6e-d06d-580f-8443-4369f0ea524b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6420e4be-fcb1-537a-8367-206431e5b14e" rel="noreferrer noopener"><span>Integralmodelle in Sachkontexten anwenden</span> <code>6420e4be-fcb1-537a-8367-206431e5b14e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 8</span>
+      <span>Buch-Digest <code>sha256:8f45a852bfd84e814133593b54250f355bf0af4bd1e8cea69792981038c92925</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9addd1882ef972c4330ddcf60ee8a267f27b298f431ed0c5703215e8e71b8ee7</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-batch-042r-final-local-corrections-8-v1-20260907&amp;edition=curricular-atomic-v1&amp;goalId=281e0c6e-d06d-580f-8443-4369f0ea524b&amp;goalFingerprint=sha256%3A9addd1882ef972c4330ddcf60ee8a267f27b298f431ed0c5703215e8e71b8ee7&amp;pageFingerprint=sha256%3A02f7852f536d29a30dbda96a56d89d45409e5f0707cdb4db7d1e244671ea2ee5&amp;bookDigest=sha256%3A8f45a852bfd84e814133593b54250f355bf0af4bd1e8cea69792981038c92925&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d" data-goal-id="f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d" data-page-number="2" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:integral-and-differential structure:canonical-goal-383ca2b2-565e-5725-a568-7937bb707175" aria-labelledby="goal-f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d-title"><a class="goal-self-link" href="#goal-f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d">Uneigentliche Integrale berechnen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-1c19696b2b379c800d51b93f">Integralrechnung und Differenzialgleichungen</a></li><li><a href="#chapter-cf2aea07105553f78c236bf8">Anwendungen der Integralrechnung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f9170f149f0f14adaa95e0f8480fff32c791119a9f7c25866e3839764a4db23e" data-rendered-digest="sha256:373fe601d14c713b93cf51425eeb2c1d587b880620d1e771126c251377678a4b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d/f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d.jpg" alt="Das positive Beispiel f(x)=1/√x auf (0,1] zeigt eine Singularität bei0. Der Grenzübergang a→0⁺ im Integral von a bis1 ergibt mithilfe der Stammfunktion2√x den Wert2. In diesem Beispiel stimmen Integralwert und geometrischer Flächeninhalt überein.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d-description-heading">
+        <p class="section-heading" id="goal-f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann uneigentliche Integrale mit unendlichen Integrationsgrenzen oder Singularitäten als Grenzwerte formulieren, ihre Konvergenz untersuchen, im konvergenten Fall ihren Wert berechnen und geometrische Flächeninhalte mithilfe des Betrags des Integranden beurteilen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d-requires-heading">
+          <p class="section-heading" id="goal-f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d-reverse-heading">
+          <p class="section-heading" id="goal-f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a9ed219d-d497-55e5-a4e0-4d45d2554f6b" rel="noreferrer noopener"><span>Einfache Integrale berechnen</span> <code>a9ed219d-d497-55e5-a4e0-4d45d2554f6b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd" rel="noreferrer noopener"><span>Flächen mit Integralen berechnen</span> <code>e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6420e4be-fcb1-537a-8367-206431e5b14e" rel="noreferrer noopener"><span>Integralmodelle in Sachkontexten anwenden</span> <code>6420e4be-fcb1-537a-8367-206431e5b14e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 8</span>
+      <span>Buch-Digest <code>sha256:8f45a852bfd84e814133593b54250f355bf0af4bd1e8cea69792981038c92925</code></span>
+      <span>Ziel-Fingerprint <code>sha256:20dd9dbcd20a99d4c8cb128f2a74cd96d88460c07ada312d545e20bd2a2fbeed</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-batch-042r-final-local-corrections-8-v1-20260907&amp;edition=curricular-atomic-v1&amp;goalId=f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d&amp;goalFingerprint=sha256%3A20dd9dbcd20a99d4c8cb128f2a74cd96d88460c07ada312d545e20bd2a2fbeed&amp;pageFingerprint=sha256%3Aa22363397877e006db2963959be800ab61bbf385f1b81060b4ce449080186130&amp;bookDigest=sha256%3A8f45a852bfd84e814133593b54250f355bf0af4bd1e8cea69792981038c92925&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2713980f-75d2-5455-a8cb-bcd3888c49a0" data-goal-id="2713980f-75d2-5455-a8cb-bcd3888c49a0" data-page-number="3" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:integral-and-differential structure:canonical-structure:canonical-selection-76842ec4-c76b-5c03-9694-8a18acb1da0f" aria-labelledby="goal-2713980f-75d2-5455-a8cb-bcd3888c49a0-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2713980f-75d2-5455-a8cb-bcd3888c49a0-title"><a class="goal-self-link" href="#goal-2713980f-75d2-5455-a8cb-bcd3888c49a0">Analysisgrundlagen in Q1-Anschlussaufgaben nutzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2713980f-75d2-5455-a8cb-bcd3888c49a0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-1c19696b2b379c800d51b93f">Integralrechnung und Differenzialgleichungen</a></li><li><a href="#chapter-b48dce3248a71174bfb9968c">Vertiefung der Differenzial- und Integralrechnung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:bab37f3c1a277c7534d31cf737ebef80ec7763a48d98d803f19ae8169642a64c" data-rendered-digest="sha256:77fb0143cbbe0ad5f904bafe0ae1c321a165d7e7b9223ba2924a96dd87090b7b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/2713980f-75d2-5455-a8cb-bcd3888c49a0/2713980f-75d2-5455-a8cb-bcd3888c49a0.png" alt="Berechneter Graph von h(x)=x²e^(−x) für x≥0: waagerechte Tangente am Randpunkt0, Anstieg bis zum Maximum(2,4/e²), danach Abfall gegen0. Die Ableitung h′(x)=e^(−x)x(2−x) begründet die Monotonie.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2713980f-75d2-5455-a8cb-bcd3888c49a0-description-heading">
+        <p class="section-heading" id="goal-2713980f-75d2-5455-a8cb-bcd3888c49a0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die in der Einführungsphase erarbeiteten Inhalte zu Funktionen und Darstellungen, Ableitungsbegriff und Anwendungen, ganzrationalen Funktionen, Exponentialfunktionen, trigonometrischen Funktionen und Ableitungsregeln in Q1-Anschlussaufgaben passend auswählen, begründet einsetzen und fachlich einordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2713980f-75d2-5455-a8cb-bcd3888c49a0" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2713980f-75d2-5455-a8cb-bcd3888c49a0-requires-heading">
+          <p class="section-heading" id="goal-2713980f-75d2-5455-a8cb-bcd3888c49a0-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2713980f-75d2-5455-a8cb-bcd3888c49a0-reverse-heading">
+          <p class="section-heading" id="goal-2713980f-75d2-5455-a8cb-bcd3888c49a0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c"><span>Verknüpfungen von Exponential- und ganzrationalen Funktionen untersuchen</span><code>e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2713980f-75d2-5455-a8cb-bcd3888c49a0-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2713980f-75d2-5455-a8cb-bcd3888c49a0-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2" rel="noreferrer noopener"><span>Warum Mathematik? – Denken, Muster &amp; Zukunft</span> <code>71cec9fb-3751-4d61-8b34-c5adbbf6e5f2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-858113c5-e53b-57bb-b01f-ba95c3ddcb6f" rel="noreferrer noopener"><span>Ableitungen elementarer Funktionen berechnen</span> <code>858113c5-e53b-57bb-b01f-ba95c3ddcb6f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b9bbd2a8-1379-5ffb-817f-41467d48abef" rel="noreferrer noopener"><span>Hauptsatz der Differential- und Integralrechnung nutzen</span> <code>b9bbd2a8-1379-5ffb-817f-41467d48abef</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a9ed219d-d497-55e5-a4e0-4d45d2554f6b" rel="noreferrer noopener"><span>Einfache Integrale berechnen</span> <code>a9ed219d-d497-55e5-a4e0-4d45d2554f6b</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 8</span>
+      <span>Buch-Digest <code>sha256:8f45a852bfd84e814133593b54250f355bf0af4bd1e8cea69792981038c92925</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ee713a77fac5dba916b2c6e89441e2e6be3c4ead094f52292dd0a585a542f954</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-batch-042r-final-local-corrections-8-v1-20260907&amp;edition=curricular-atomic-v1&amp;goalId=2713980f-75d2-5455-a8cb-bcd3888c49a0&amp;goalFingerprint=sha256%3Aee713a77fac5dba916b2c6e89441e2e6be3c4ead094f52292dd0a585a542f954&amp;pageFingerprint=sha256%3A2b4512dbd0a39e21871ef175569042bc7d2764edd442186d7a5929ba862fd6f4&amp;bookDigest=sha256%3A8f45a852bfd84e814133593b54250f355bf0af4bd1e8cea69792981038c92925&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c" data-goal-id="e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c" data-page-number="4" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:integral-and-differential structure:canonical-structure:canonical-selection-76842ec4-c76b-5c03-9694-8a18acb1da0f" aria-labelledby="goal-e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c-title"><a class="goal-self-link" href="#goal-e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c">Verknüpfungen von Exponential- und ganzrationalen Funktionen untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-1c19696b2b379c800d51b93f">Integralrechnung und Differenzialgleichungen</a></li><li><a href="#chapter-b48dce3248a71174bfb9968c">Vertiefung der Differenzial- und Integralrechnung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a98fb4c5d79cb97507dea8569b0afce4e5908f6891b1caf3d1283f5d2a691281" data-rendered-digest="sha256:c6ebaa1a3f984f286723d6455524196129cced1257ccb9e0b3f90091b13a61e4" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c/e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Verknüpfungen von Exponential- und ganzrationalen Funktionen untersuchen&quot;. Die lernende Person kann Funktionen analysieren, in denen Exponentialfunktionen mit ganzrationalen Funktionen addiert, multipliziert oder verkettet werden, und diese auch in Sachsituationen untersuchen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c-description-heading">
+        <p class="section-heading" id="goal-e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Funktionen analysieren, in denen Exponentialfunktionen mit ganzrationalen Funktionen addiert, multipliziert oder verkettet werden, und diese auch in Sachsituationen untersuchen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c-requires-heading">
+          <p class="section-heading" id="goal-e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2713980f-75d2-5455-a8cb-bcd3888c49a0"><span>Analysisgrundlagen in Q1-Anschlussaufgaben nutzen</span><code>2713980f-75d2-5455-a8cb-bcd3888c49a0</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c-reverse-heading">
+          <p class="section-heading" id="goal-e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a9ed219d-d497-55e5-a4e0-4d45d2554f6b" rel="noreferrer noopener"><span>Einfache Integrale berechnen</span> <code>a9ed219d-d497-55e5-a4e0-4d45d2554f6b</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-93fcf49d-a08c-5aa5-a5b2-cb4ee56fdae4" rel="noreferrer noopener"><span>Stammfunktionen durch Ableiten nachweisen</span> <code>93fcf49d-a08c-5aa5-a5b2-cb4ee56fdae4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e7350739-c89f-5c7b-b4d1-717d6a767298" rel="noreferrer noopener"><span>Parameteruntersuchungen mit Exponentialfunktionen (LK)</span> <code>e7350739-c89f-5c7b-b4d1-717d6a767298</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ccfd4e60-5728-568f-adb7-0b932d8e5aac" rel="noreferrer noopener"><span>Funktionenscharen mit Exponential- und ganzrationalen Anteilen untersuchen</span> <code>ccfd4e60-5728-568f-adb7-0b932d8e5aac</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 8</span>
+      <span>Buch-Digest <code>sha256:8f45a852bfd84e814133593b54250f355bf0af4bd1e8cea69792981038c92925</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c2fc7857b6093b331dbc8f1db7ee962155a509e2aa7a980bd0abf04dca8a1043</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-batch-042r-final-local-corrections-8-v1-20260907&amp;edition=curricular-atomic-v1&amp;goalId=e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c&amp;goalFingerprint=sha256%3Ac2fc7857b6093b331dbc8f1db7ee962155a509e2aa7a980bd0abf04dca8a1043&amp;pageFingerprint=sha256%3A078c98e311a788381396cd07fa7d7006d0efed9b7ea40be02576d51681970dbe&amp;bookDigest=sha256%3A8f45a852bfd84e814133593b54250f355bf0af4bd1e8cea69792981038c92925&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ccd83f05-a0ae-4cd1-8917-24793a219fee" data-goal-id="ccd83f05-a0ae-4cd1-8917-24793a219fee" data-page-number="5" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:integral-and-differential structure:canonical-structure:canonical-selection-76842ec4-c76b-5c03-9694-8a18acb1da0f" aria-labelledby="goal-ccd83f05-a0ae-4cd1-8917-24793a219fee-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ccd83f05-a0ae-4cd1-8917-24793a219fee-title"><a class="goal-self-link" href="#goal-ccd83f05-a0ae-4cd1-8917-24793a219fee">Asymptotisches Verhalten begrenzten Wachstums beschreiben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ccd83f05-a0ae-4cd1-8917-24793a219fee</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-1c19696b2b379c800d51b93f">Integralrechnung und Differenzialgleichungen</a></li><li><a href="#chapter-b48dce3248a71174bfb9968c">Vertiefung der Differenzial- und Integralrechnung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:001b1c50b36cf0f7981913412c0b24e092923a464d1488b6b68403dccc6f7673" data-rendered-digest="sha256:c68fc5fdb5f28f287e18ed94415d3c98f7296c35cdfa2a371b3035907e33b9ac" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/ccd83f05-a0ae-4cd1-8917-24793a219fee/ccd83f05-a0ae-4cd1-8917-24793a219fee.jpg" alt="Begrenztes Wachstum H(t)=80−60e^(−0,4t) mit H in cm und t in Wochen. Der auf linearen Achsen gezeichnete Graph beginnt bei20 und steigt konkav nach unten durch H(2)≈53,04 und H(4)≈67,89 gegen die unerreichte Sättigungsgrenze80.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ccd83f05-a0ae-4cd1-8917-24793a219fee-description-heading">
+        <p class="section-heading" id="goal-ccd83f05-a0ae-4cd1-8917-24793a219fee-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das asymptotische Verhalten begrenzten Wachstums beschreiben, den zugehörigen Grenzwert fachlich deuten und die Sättigung im jeweiligen Kontext einordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ccd83f05-a0ae-4cd1-8917-24793a219fee" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ccd83f05-a0ae-4cd1-8917-24793a219fee-requires-heading">
+          <p class="section-heading" id="goal-ccd83f05-a0ae-4cd1-8917-24793a219fee-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-ccd83f05-a0ae-4cd1-8917-24793a219fee-reverse-heading">
+          <p class="section-heading" id="goal-ccd83f05-a0ae-4cd1-8917-24793a219fee-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-ccd83f05-a0ae-4cd1-8917-24793a219fee-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ccd83f05-a0ae-4cd1-8917-24793a219fee-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4ae9e316-509f-517d-bd94-a165817af24f" rel="noreferrer noopener"><span>Begrenzte Wachstums- und Zerfallsprozesse aus Daten modellieren</span> <code>4ae9e316-509f-517d-bd94-a165817af24f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-ccd83f05-a0ae-4cd1-8917-24793a219fee-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ccd83f05-a0ae-4cd1-8917-24793a219fee-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5886c6e8-2bea-5401-a834-9bd621b04bda" rel="noreferrer noopener"><span>Wachstums- und Bestandsmodelle vertiefen</span> <code>5886c6e8-2bea-5401-a834-9bd621b04bda</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 8</span>
+      <span>Buch-Digest <code>sha256:8f45a852bfd84e814133593b54250f355bf0af4bd1e8cea69792981038c92925</code></span>
+      <span>Ziel-Fingerprint <code>sha256:636242e07f4311e01c46b70d48e92e9da61eddc71d42957421a42860df20b43c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-batch-042r-final-local-corrections-8-v1-20260907&amp;edition=curricular-atomic-v1&amp;goalId=ccd83f05-a0ae-4cd1-8917-24793a219fee&amp;goalFingerprint=sha256%3A636242e07f4311e01c46b70d48e92e9da61eddc71d42957421a42860df20b43c&amp;pageFingerprint=sha256%3A591df4c1193b927d9d6ea25dbf9f96af99f0a4d684ad38ce83a59a1f00786710&amp;bookDigest=sha256%3A8f45a852bfd84e814133593b54250f355bf0af4bd1e8cea69792981038c92925&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-848af536-c7e5-4df0-a4e9-d5d0ff15244c" data-goal-id="848af536-c7e5-4df0-a4e9-d5d0ff15244c" data-page-number="6" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:integral-and-differential structure:canonical-structure:canonical-selection-76842ec4-c76b-5c03-9694-8a18acb1da0f" aria-labelledby="goal-848af536-c7e5-4df0-a4e9-d5d0ff15244c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-848af536-c7e5-4df0-a4e9-d5d0ff15244c-title"><a class="goal-self-link" href="#goal-848af536-c7e5-4df0-a4e9-d5d0ff15244c">Exponentielle, begrenzte und logistische Wachstumsmodelle vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>848af536-c7e5-4df0-a4e9-d5d0ff15244c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-1c19696b2b379c800d51b93f">Integralrechnung und Differenzialgleichungen</a></li><li><a href="#chapter-b48dce3248a71174bfb9968c">Vertiefung der Differenzial- und Integralrechnung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a83b5f7ea1c599e774b207a82e9c10377eb265d1c1537d9275fb2e7c8c9ef998" data-rendered-digest="sha256:b80eff92de576ef570d1e3a72baaecc1c8696ea41546f7d35923202761f4494b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/848af536-c7e5-4df0-a4e9-d5d0ff15244c/848af536-c7e5-4df0-a4e9-d5d0ff15244c.jpg" alt="Vergleich exponentiellen, begrenzten und logistischen Wachstums in drei ausdrücklich getrennten schematischen Diagrammen ohne gemeinsame Zeitskala. Die Kurven erläutern steigende, sinkende beziehungsweise zunächst steigende und dann sinkende Zuwächse sowie unterschiedliche Modellannahmen; sie sind nicht für quantitative Koordinatenablesung gedacht.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-848af536-c7e5-4df0-a4e9-d5d0ff15244c-description-heading">
+        <p class="section-heading" id="goal-848af536-c7e5-4df0-a4e9-d5d0ff15244c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann exponentielle, begrenzte und logistische Wachstumsmodelle vergleichen, Unterschiede im Verlauf fachlich herausarbeiten und die zugrunde liegenden Modellannahmen begründet einordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-848af536-c7e5-4df0-a4e9-d5d0ff15244c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-848af536-c7e5-4df0-a4e9-d5d0ff15244c-requires-heading">
+          <p class="section-heading" id="goal-848af536-c7e5-4df0-a4e9-d5d0ff15244c-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-848af536-c7e5-4df0-a4e9-d5d0ff15244c-reverse-heading">
+          <p class="section-heading" id="goal-848af536-c7e5-4df0-a4e9-d5d0ff15244c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-848af536-c7e5-4df0-a4e9-d5d0ff15244c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-848af536-c7e5-4df0-a4e9-d5d0ff15244c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ab720928-9dbc-53c2-a1f8-865dda92122d" rel="noreferrer noopener"><span>Exponentielle Modelle anwenden</span> <code>ab720928-9dbc-53c2-a1f8-865dda92122d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4ae9e316-509f-517d-bd94-a165817af24f" rel="noreferrer noopener"><span>Begrenzte Wachstums- und Zerfallsprozesse aus Daten modellieren</span> <code>4ae9e316-509f-517d-bd94-a165817af24f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-848af536-c7e5-4df0-a4e9-d5d0ff15244c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-848af536-c7e5-4df0-a4e9-d5d0ff15244c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5886c6e8-2bea-5401-a834-9bd621b04bda" rel="noreferrer noopener"><span>Wachstums- und Bestandsmodelle vertiefen</span> <code>5886c6e8-2bea-5401-a834-9bd621b04bda</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 8</span>
+      <span>Buch-Digest <code>sha256:8f45a852bfd84e814133593b54250f355bf0af4bd1e8cea69792981038c92925</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a6e8e002fe4ef46eb562ab86274ed5943a66a7639b1085b54cc4f36ee30c91d6</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-batch-042r-final-local-corrections-8-v1-20260907&amp;edition=curricular-atomic-v1&amp;goalId=848af536-c7e5-4df0-a4e9-d5d0ff15244c&amp;goalFingerprint=sha256%3Aa6e8e002fe4ef46eb562ab86274ed5943a66a7639b1085b54cc4f36ee30c91d6&amp;pageFingerprint=sha256%3A8c6888cfd9db4280a0393afd60bd69b0390682fc21b28a4fda683c3c2dec4025&amp;bookDigest=sha256%3A8f45a852bfd84e814133593b54250f355bf0af4bd1e8cea69792981038c92925&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-df7338ef-65ba-5ece-8aec-7f520dfe5710" data-goal-id="df7338ef-65ba-5ece-8aec-7f520dfe5710" data-page-number="7" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:integral-and-differential structure:canonical-structure:canonical-selection-76842ec4-c76b-5c03-9694-8a18acb1da0f" aria-labelledby="goal-df7338ef-65ba-5ece-8aec-7f520dfe5710-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-df7338ef-65ba-5ece-8aec-7f520dfe5710-title"><a class="goal-self-link" href="#goal-df7338ef-65ba-5ece-8aec-7f520dfe5710">Logistisches Wachstum untersuchen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>df7338ef-65ba-5ece-8aec-7f520dfe5710</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-1c19696b2b379c800d51b93f">Integralrechnung und Differenzialgleichungen</a></li><li><a href="#chapter-b48dce3248a71174bfb9968c">Vertiefung der Differenzial- und Integralrechnung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c48eeabdc64dc66a44f56a2e8f6621466bea3df16ef4e9caaf8d6cca54c7c6a4" data-rendered-digest="sha256:5922ec1bfdc7a36a34ca4e7e88df22121c03de4e278a07337d19bf89a393c39e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/df7338ef-65ba-5ece-8aec-7f520dfe5710/df7338ef-65ba-5ece-8aec-7f520dfe5710.png" alt="Logistisches Modell N(t)=1000/(1+9e^(−0,6t)) mit korrekt skaliertem Startwert100 und Tragfähigkeit1000. Der Wendepunkt liegt bei N=500 und t=ln(9)/0,6; dort ist der absolute Zuwachs150 je Modellzeiteinheit maximal. Ein textlicher Vergleich erläutert exponentielles und begrenztes Wachstum und fordert die Prüfung der Modellannahmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-df7338ef-65ba-5ece-8aec-7f520dfe5710-description-heading">
+        <p class="section-heading" id="goal-df7338ef-65ba-5ece-8aec-7f520dfe5710-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann logistisches Wachstum anhand geeigneter Funktionen beschreiben, modellieren und die Unterschiede zu begrenztem bzw. einfachem exponentiellem Wachstum (Sättigung/Tragfähigkeit) herausarbeiten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-df7338ef-65ba-5ece-8aec-7f520dfe5710" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-df7338ef-65ba-5ece-8aec-7f520dfe5710-requires-heading">
+          <p class="section-heading" id="goal-df7338ef-65ba-5ece-8aec-7f520dfe5710-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-df7338ef-65ba-5ece-8aec-7f520dfe5710-reverse-heading">
+          <p class="section-heading" id="goal-df7338ef-65ba-5ece-8aec-7f520dfe5710-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-df7338ef-65ba-5ece-8aec-7f520dfe5710-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-df7338ef-65ba-5ece-8aec-7f520dfe5710-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4ae9e316-509f-517d-bd94-a165817af24f" rel="noreferrer noopener"><span>Begrenzte Wachstums- und Zerfallsprozesse aus Daten modellieren</span> <code>4ae9e316-509f-517d-bd94-a165817af24f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-df7338ef-65ba-5ece-8aec-7f520dfe5710-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-df7338ef-65ba-5ece-8aec-7f520dfe5710-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5886c6e8-2bea-5401-a834-9bd621b04bda" rel="noreferrer noopener"><span>Wachstums- und Bestandsmodelle vertiefen</span> <code>5886c6e8-2bea-5401-a834-9bd621b04bda</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 8</span>
+      <span>Buch-Digest <code>sha256:8f45a852bfd84e814133593b54250f355bf0af4bd1e8cea69792981038c92925</code></span>
+      <span>Ziel-Fingerprint <code>sha256:188b59b6cebbbaccf70b96a87352c0aa466044cb1d0204d8b57d1d3409dd9835</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-batch-042r-final-local-corrections-8-v1-20260907&amp;edition=curricular-atomic-v1&amp;goalId=df7338ef-65ba-5ece-8aec-7f520dfe5710&amp;goalFingerprint=sha256%3A188b59b6cebbbaccf70b96a87352c0aa466044cb1d0204d8b57d1d3409dd9835&amp;pageFingerprint=sha256%3Aac368bc971eab21422a627cbaaf3b27c0198131f6c8aa8db152f755ae0da5f1b&amp;bookDigest=sha256%3A8f45a852bfd84e814133593b54250f355bf0af4bd1e8cea69792981038c92925&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5ccf0d90-2967-576e-8f72-f002792d8515" data-goal-id="5ccf0d90-2967-576e-8f72-f002792d8515" data-page-number="8" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:integral-and-differential structure:canonical-goal-7e2dfa4d-33b1-55b0-8b97-d4bc4da8e60e" aria-labelledby="goal-5ccf0d90-2967-576e-8f72-f002792d8515-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5ccf0d90-2967-576e-8f72-f002792d8515-title"><a class="goal-self-link" href="#goal-5ccf0d90-2967-576e-8f72-f002792d8515">Integrationstechniken gezielt kombinieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5ccf0d90-2967-576e-8f72-f002792d8515</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-1c19696b2b379c800d51b93f">Integralrechnung und Differenzialgleichungen</a></li><li><a href="#chapter-b9837478f68f8108c103b80c">Integrationsmethoden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3d974b3711e04f8e6e27b454e2ac127ac0ab824cfdb9b95bd5e57d12db5ef85c" data-rendered-digest="sha256:7d74911f0858d1beefcb5522aa7bdf27878548e3f022c0bcd905804749451d0e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/5ccf0d90-2967-576e-8f72-f002792d8515/5ccf0d90-2967-576e-8f72-f002792d8515.jpg" alt="Methodenauswahl am Integral von0 bis1 über2x(1+x²)e^(x²): innere Funktion x² und Ableitung2x erkennen, u=x² und du=2x dx setzen, Grenzen übertragen und die Stammfunktion u e^u durch die Produktregel prüfen. Ergebnis e.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5ccf0d90-2967-576e-8f72-f002792d8515-description-heading">
+        <p class="section-heading" id="goal-5ccf0d90-2967-576e-8f72-f002792d8515-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei gegebenen Integralen geeignete Techniken auswählen, ggf. mehrere Methoden kombinieren und den Lösungsweg begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5ccf0d90-2967-576e-8f72-f002792d8515" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5ccf0d90-2967-576e-8f72-f002792d8515-requires-heading">
+          <p class="section-heading" id="goal-5ccf0d90-2967-576e-8f72-f002792d8515-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-5ccf0d90-2967-576e-8f72-f002792d8515-reverse-heading">
+          <p class="section-heading" id="goal-5ccf0d90-2967-576e-8f72-f002792d8515-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-5ccf0d90-2967-576e-8f72-f002792d8515-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5ccf0d90-2967-576e-8f72-f002792d8515-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d108ec1f-2c8f-5267-be75-10e1b77edd7a" rel="noreferrer noopener"><span>Formansatz begründen und anwenden</span> <code>d108ec1f-2c8f-5267-be75-10e1b77edd7a</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-5ccf0d90-2967-576e-8f72-f002792d8515-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5ccf0d90-2967-576e-8f72-f002792d8515-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-226e5c66-b5ce-5b58-a11c-7ed64feadcc1" rel="noreferrer noopener"><span>Integrationsmethoden gezielt auswählen</span> <code>226e5c66-b5ce-5b58-a11c-7ed64feadcc1</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 8</span>
+      <span>Buch-Digest <code>sha256:8f45a852bfd84e814133593b54250f355bf0af4bd1e8cea69792981038c92925</code></span>
+      <span>Ziel-Fingerprint <code>sha256:04a41dc79bf2db893d4bd18b259164f4b153bb73766408d3f903585da9570848</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-batch-042r-final-local-corrections-8-v1-20260907&amp;edition=curricular-atomic-v1&amp;goalId=5ccf0d90-2967-576e-8f72-f002792d8515&amp;goalFingerprint=sha256%3A04a41dc79bf2db893d4bd18b259164f4b153bb73766408d3f903585da9570848&amp;pageFingerprint=sha256%3Aee7093996c0d1c768df69b879cee9b5e32321cc695f692ec5778f22573fd9a70&amp;bookDigest=sha256%3A8f45a852bfd84e814133593b54250f355bf0af4bd1e8cea69792981038c92925&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

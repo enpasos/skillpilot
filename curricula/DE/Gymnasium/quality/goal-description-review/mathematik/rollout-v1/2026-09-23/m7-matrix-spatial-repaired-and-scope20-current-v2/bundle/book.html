@@ -1,0 +1,1168 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Mathematik M7: reparierte Bildkontexte und gezielte HE-Kursabgrenzung</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Mathematik M7: reparierte Bildkontexte und gezielte HE-Kursabgrenzung</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>20 atomare Lernziele</dt><dd>12 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-math-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-71894e7ef4af5f94dc6093d2" aria-label="Mathematik"><a href="#goal-0de1e45c-aea9-5e53-932a-027dcf509efa"><span class="toc-entry-label">Mathematik</span></a></h2>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-math-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-3fb62939875ba85ae30720f7" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-0de1e45c-aea9-5e53-932a-027dcf509efa"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:geometry-and-advanced-analysis" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-a5c625ae0ae8fa0e0ca6ed41" aria-label="Analytische Geometrie, lineare Algebra und vertiefte Analysis"><a href="#goal-0de1e45c-aea9-5e53-932a-027dcf509efa"><span class="toc-entry-label">Analytische&#160;<wbr>Geometrie,&#160;<wbr>lineare&#160;<wbr>Algebra&#160;<wbr>und&#160;<wbr>vertiefte&#160;<wbr>Analysis</span></a></h4>
+          <span class="toc-entry-meta"><span>18 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-bf8fb58c8a093083ad583bc2" aria-label="Punkte, Vektoren und Bewegungen im Raum"><a href="#goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"><span class="toc-entry-label">Punkte,&#160;<wbr>Vektoren&#160;<wbr>und&#160;<wbr>Bewegungen&#160;<wbr>im&#160;<wbr>Raum</span></a></h5>
+          <span class="toc-entry-meta"><span>9 Lernziele</span><span>erste zugehörige Lernzielseite 11</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-d9d8cd76-01fb-5f7a-b733-17f81d854af7" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-06463abf06ecc91338af1957" aria-label="Räumliche Objekte im dreidimensionalen Koordinatensystem darstellen"><a href="#goal-aae119f2-925f-5fc1-b795-b52c9e980863"><span class="toc-entry-label">Räumliche&#160;<wbr>Objekte&#160;<wbr>im&#160;<wbr>dreidimensionalen&#160;<wbr>Koordinatensystem&#160;<wbr>darstellen</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 12</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-d6d8904c-896f-5850-8181-06c223346b80" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-a5e2169578babaab099ad8a4" aria-label="Matrizen, Übergangsprozesse und lineare Modelle (Sek II)"><a href="#goal-0de1e45c-aea9-5e53-932a-027dcf509efa"><span class="toc-entry-label">Matrizen,&#160;<wbr>Übergangsprozesse&#160;<wbr>und&#160;<wbr>lineare&#160;<wbr>Modelle&#160;<wbr>(Sek&#160;<wbr>II)</span></a></h5>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-0a024ecf-27ee-40a2-bf41-0e2faaeb1252" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-983517d3fb7afaa5db171604" aria-label="Fixvektoren, stabile Zustände und Langzeitverhalten"><a href="#goal-0de1e45c-aea9-5e53-932a-027dcf509efa"><span class="toc-entry-label">Fixvektoren,&#160;<wbr>stabile&#160;<wbr>Zustände&#160;<wbr>und&#160;<wbr>Langzeitverhalten</span></a></h6>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-b3d2284c-21e0-5af8-942a-a4c11390c84a" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-9b7288febcdef13dd0826d42" aria-label="Lineare geometrische Abbildungen und Abbildungsmatrizen"><a href="#goal-4c494716-567b-59c2-855c-6ea45635c666"><span class="toc-entry-label">Lineare&#160;<wbr>geometrische&#160;<wbr>Abbildungen&#160;<wbr>und&#160;<wbr>Abbildungsmatrizen</span></a></h5>
+          <span class="toc-entry-meta"><span>6 Lernziele</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:stochastics" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-70a4476054e150249e0723e1" aria-label="Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik"><a href="#goal-52e57eb5-7cd1-5df0-a8c6-7b090f097d9f"><span class="toc-entry-label">Wahrscheinlichkeitsverteilungen,&#160;<wbr>Hypothesentests&#160;<wbr>und&#160;<wbr>Statistik</span></a></h4>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 9</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-e5492767714e2d6aea468558" aria-label="Wahrscheinlichkeiten und Verteilungen"><a href="#goal-52e57eb5-7cd1-5df0-a8c6-7b090f097d9f"><span class="toc-entry-label">Wahrscheinlichkeiten&#160;<wbr>und&#160;<wbr>Verteilungen</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 9</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-structure:canonical-selection-dd550132-2a3f-5b4e-a3c6-f940621186ac" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-0657fc01eb312b5b31ea8753" aria-label="Grundlegende Begriffe und Methoden der Stochastik"><a href="#goal-52e57eb5-7cd1-5df0-a8c6-7b090f097d9f"><span class="toc-entry-label">Grundlegende&#160;<wbr>Begriffe&#160;<wbr>und&#160;<wbr>Methoden&#160;<wbr>der&#160;<wbr>Stochastik</span></a></h6>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 9</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:5" data-chapter-id="structure:canonical-goal-f1a95baf-b91f-44db-bcb1-70a4d2e3f7d1" data-chapter-depth="5">
+          <h6 class="toc-entry-heading" id="chapter-ec9081f64425da2b8f993a98" aria-label="Baumdiagramme, Vierfeldertafeln und bedingte Wahrscheinlichkeiten"><a href="#goal-52e57eb5-7cd1-5df0-a8c6-7b090f097d9f"><span class="toc-entry-label">Baumdiagramme,&#160;<wbr>Vierfeldertafeln&#160;<wbr>und&#160;<wbr>bedingte&#160;<wbr>Wahrscheinlichkeiten</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 9</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-0de1e45c-aea9-5e53-932a-027dcf509efa" data-goal-id="0de1e45c-aea9-5e53-932a-027dcf509efa" data-page-number="1" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-d6d8904c-896f-5850-8181-06c223346b80 structure:canonical-goal-0a024ecf-27ee-40a2-bf41-0e2faaeb1252" aria-labelledby="goal-0de1e45c-aea9-5e53-932a-027dcf509efa-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0de1e45c-aea9-5e53-932a-027dcf509efa-title"><a class="goal-self-link" href="#goal-0de1e45c-aea9-5e53-932a-027dcf509efa">Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0de1e45c-aea9-5e53-932a-027dcf509efa</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-a5e2169578babaab099ad8a4">Matrizen, Übergangsprozesse und lineare Modelle (Sek II)</a></li><li><a href="#chapter-983517d3fb7afaa5db171604">Fixvektoren, stabile Zustände und Langzeitverhalten</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:bea47985c63aa48992058ab3d688b91e8d05fb5d2123f70ec255ce0093320fff" data-rendered-digest="sha256:e7ce49a951a9086bd84520e18e29a8f78a1ffa3e2ec52cf3e21bf0081f68dfa7" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/0de1e45c-aea9-5e53-932a-027dcf509efa/0de1e45c-aea9-5e53-932a-027dcf509efa.png" alt="Matrixpotenzen bündeln wiederholte Übergänge. M=(0,8 0,3;0,2 0,7), Start (0,8;0,2), nach zwei Monaten (0,65;0,35). Numerische Zustandskarten unterscheiden Start, Zwischenzustand und langfristige Verteilung (0,6;0,4) in diesem Modell.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0de1e45c-aea9-5e53-932a-027dcf509efa-description-heading">
+        <p class="section-heading" id="goal-0de1e45c-aea9-5e53-932a-027dcf509efa-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Potenzen von Übergangsmatrizen nutzen, um langfristige Entwicklungen von Übergangsprozessen zu untersuchen und Zwischenergebnisse im Kontext zu deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0de1e45c-aea9-5e53-932a-027dcf509efa" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0de1e45c-aea9-5e53-932a-027dcf509efa-requires-heading">
+          <p class="section-heading" id="goal-0de1e45c-aea9-5e53-932a-027dcf509efa-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-0de1e45c-aea9-5e53-932a-027dcf509efa-reverse-heading">
+          <p class="section-heading" id="goal-0de1e45c-aea9-5e53-932a-027dcf509efa-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-922d89fc-1cbd-56e9-ac5d-5cb59085de6c"><span>Grenzprozesse und Grenzmatrizen interpretieren (LK)</span><code>922d89fc-1cbd-56e9-ac5d-5cb59085de6c</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0de1e45c-aea9-5e53-932a-027dcf509efa-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0de1e45c-aea9-5e53-932a-027dcf509efa-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-10a33d93-dc20-5edd-ae3b-32338d05407c" rel="noreferrer noopener"><span>Zustände in Markov-Ketten vorwärts berechnen und deuten</span> <code>10a33d93-dc20-5edd-ae3b-32338d05407c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-33c6e64c-5955-5b07-85d4-74a97b19dd56" rel="noreferrer noopener"><span>Matrixpotenzen in Übergangsprozessen deuten</span> <code>33c6e64c-5955-5b07-85d4-74a97b19dd56</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-0de1e45c-aea9-5e53-932a-027dcf509efa-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0de1e45c-aea9-5e53-932a-027dcf509efa-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e4656e83-3f33-5bda-b0bc-d4b63ec4653e" rel="noreferrer noopener"><span>Übergangsprozesse und Grenzverhalten mit Matrizen untersuchen (LK)</span> <code>e4656e83-3f33-5bda-b0bc-d4b63ec4653e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:05e5b88c3553d4e6240c61d1216bc975ad865b79694b478793bc4be48c79acea</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=0de1e45c-aea9-5e53-932a-027dcf509efa&amp;goalFingerprint=sha256%3A05e5b88c3553d4e6240c61d1216bc975ad865b79694b478793bc4be48c79acea&amp;pageFingerprint=sha256%3A2a75cd7f38ae3691f6dd315bd762dcfd9ea4c1de4da2402363339dbe1f5e8a91&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-922d89fc-1cbd-56e9-ac5d-5cb59085de6c" data-goal-id="922d89fc-1cbd-56e9-ac5d-5cb59085de6c" data-page-number="2" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-d6d8904c-896f-5850-8181-06c223346b80 structure:canonical-goal-0a024ecf-27ee-40a2-bf41-0e2faaeb1252" aria-labelledby="goal-922d89fc-1cbd-56e9-ac5d-5cb59085de6c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-922d89fc-1cbd-56e9-ac5d-5cb59085de6c-title"><a class="goal-self-link" href="#goal-922d89fc-1cbd-56e9-ac5d-5cb59085de6c">Grenzprozesse und Grenzmatrizen interpretieren (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>922d89fc-1cbd-56e9-ac5d-5cb59085de6c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-a5e2169578babaab099ad8a4">Matrizen, Übergangsprozesse und lineare Modelle (Sek II)</a></li><li><a href="#chapter-983517d3fb7afaa5db171604">Fixvektoren, stabile Zustände und Langzeitverhalten</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a5c6d718dd1500f140c19708f43feee528e6a74306b52eb8352ef3b907d8db15" data-rendered-digest="sha256:006c6e4617e9c73af3226619954ef4f4e67753c7eae2eae9a76497613b77933c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/922d89fc-1cbd-56e9-ac5d-5cb59085de6c/922d89fc-1cbd-56e9-ac5d-5cb59085de6c.png" alt="Spaltenstochastische Übergangsmatrix mit Fixvektor (0,6; 0,4) und Grenzmatrix mit zwei gleichen Spalten. Zwei verschiedene normierte Starts erreichen in diesem Modell dieselben langfristigen Anteile. Senkrechte Vektoren ohne zusätzliches Transpositionszeichen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-922d89fc-1cbd-56e9-ac5d-5cb59085de6c-description-heading">
+        <p class="section-heading" id="goal-922d89fc-1cbd-56e9-ac5d-5cb59085de6c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Grenzprozesse bei Potenzen von Übergangsmatrizen untersuchen, Grenzmatrizen interpretieren und ihre Bedeutung für stabile Langzeitentwicklungen erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-922d89fc-1cbd-56e9-ac5d-5cb59085de6c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-922d89fc-1cbd-56e9-ac5d-5cb59085de6c-requires-heading">
+          <p class="section-heading" id="goal-922d89fc-1cbd-56e9-ac5d-5cb59085de6c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-0de1e45c-aea9-5e53-932a-027dcf509efa"><span>Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)</span><code>0de1e45c-aea9-5e53-932a-027dcf509efa</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-922d89fc-1cbd-56e9-ac5d-5cb59085de6c-reverse-heading">
+          <p class="section-heading" id="goal-922d89fc-1cbd-56e9-ac5d-5cb59085de6c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-922d89fc-1cbd-56e9-ac5d-5cb59085de6c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-922d89fc-1cbd-56e9-ac5d-5cb59085de6c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8d893e63-d7de-52d9-8bcb-f48f47d1ccbf" rel="noreferrer noopener"><span>Stabile Zustände mithilfe von Fixvektoren bestimmen</span> <code>8d893e63-d7de-52d9-8bcb-f48f47d1ccbf</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-922d89fc-1cbd-56e9-ac5d-5cb59085de6c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-922d89fc-1cbd-56e9-ac5d-5cb59085de6c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e4656e83-3f33-5bda-b0bc-d4b63ec4653e" rel="noreferrer noopener"><span>Übergangsprozesse und Grenzverhalten mit Matrizen untersuchen (LK)</span> <code>e4656e83-3f33-5bda-b0bc-d4b63ec4653e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:82c1557e51912e482af963fc9606572b79c6cf52d6edd51729fc91a639c74982</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=922d89fc-1cbd-56e9-ac5d-5cb59085de6c&amp;goalFingerprint=sha256%3A82c1557e51912e482af963fc9606572b79c6cf52d6edd51729fc91a639c74982&amp;pageFingerprint=sha256%3A413965af5195a306b7cf2be117424fb14bce3e3227ad688bf41d73fd5f1255cb&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-4c494716-567b-59c2-855c-6ea45635c666" data-goal-id="4c494716-567b-59c2-855c-6ea45635c666" data-page-number="3" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-b3d2284c-21e0-5af8-942a-a4c11390c84a" aria-labelledby="goal-4c494716-567b-59c2-855c-6ea45635c666-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-4c494716-567b-59c2-855c-6ea45635c666-title"><a class="goal-self-link" href="#goal-4c494716-567b-59c2-855c-6ea45635c666">Geometrische Abbildungen mit Matrizen beschreiben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4c494716-567b-59c2-855c-6ea45635c666</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-9b7288febcdef13dd0826d42">Lineare geometrische Abbildungen und Abbildungsmatrizen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:5cd7bfdf824778a737715abfc82f3841c556d4e3cb69c557de96c24d1152baee" data-rendered-digest="sha256:668e46a7ca3c2e82fe87e8dc911661dd3f1684f20486b3cb6d7452ce48e8d0b9" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/4c494716-567b-59c2-855c-6ea45635c666/4c494716-567b-59c2-855c-6ea45635c666.png" alt="Schiefe Projektion S(x,y)=(x+y,0): P=(2,3) wird auf P′=(5,0), Q=(−1,2) auf Q′=(1,0) abgebildet. Die parallelen Projektionspfeile haben Richtung (1,−1). Matrix und Rechenbeispiele erklären den Schattenwurf auf die x-Achse.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4c494716-567b-59c2-855c-6ea45635c666-description-heading">
+        <p class="section-heading" id="goal-4c494716-567b-59c2-855c-6ea45635c666-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann geometrische Abbildungen, etwa Schattenwürfe oder Projektionen, mithilfe von Matrizen beschreiben und die Matrixwirkung fachsprachlich deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4c494716-567b-59c2-855c-6ea45635c666" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4c494716-567b-59c2-855c-6ea45635c666-requires-heading">
+          <p class="section-heading" id="goal-4c494716-567b-59c2-855c-6ea45635c666-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-4c494716-567b-59c2-855c-6ea45635c666-reverse-heading">
+          <p class="section-heading" id="goal-4c494716-567b-59c2-855c-6ea45635c666-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-4c494716-567b-59c2-855c-6ea45635c666-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4c494716-567b-59c2-855c-6ea45635c666-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6f09c97e-779b-500b-8092-3fb9696aa5bb" rel="noreferrer noopener"><span>Matrix-Vektor-Produkte berechnen</span> <code>6f09c97e-779b-500b-8092-3fb9696aa5bb</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-69243680-c2c1-5661-80c0-c95a2be1dabf" rel="noreferrer noopener"><span>Geometrische Abbildungen als linear erkennen</span> <code>69243680-c2c1-5661-80c0-c95a2be1dabf</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-4c494716-567b-59c2-855c-6ea45635c666-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4c494716-567b-59c2-855c-6ea45635c666-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-81823f27-0c92-5444-ac4e-32b83169f318" rel="noreferrer noopener"><span>Lineare Abbildungen mit Matrizen beschreiben</span> <code>81823f27-0c92-5444-ac4e-32b83169f318</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:08e7eab9a182521885efa834bbabd5dd5681cbd6ba866a924f3e14df7ca9fe3b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=4c494716-567b-59c2-855c-6ea45635c666&amp;goalFingerprint=sha256%3A08e7eab9a182521885efa834bbabd5dd5681cbd6ba866a924f3e14df7ca9fe3b&amp;pageFingerprint=sha256%3A2c8cd8605cb7ddcb50c15300ca5e5847e0d5b0033ece83ba49c44741cfd72fed&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba" data-goal-id="4d331ba0-56d6-5730-a51b-e3d1126b31ba" data-page-number="4" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-b3d2284c-21e0-5af8-942a-a4c11390c84a" aria-labelledby="goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba-title"><a class="goal-self-link" href="#goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba">Bildpunkte mit Matrizen berechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4d331ba0-56d6-5730-a51b-e3d1126b31ba</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-9b7288febcdef13dd0826d42">Lineare geometrische Abbildungen und Abbildungsmatrizen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1d50597d5214d7b61a2b6fb0f268c30f9bacdcbed845efaf7c06bff65adc6e83" data-rendered-digest="sha256:449f0c7c58bd920357ef696bd5dde597b199b7d7911b78930b3ab8bdc0e275d8" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/4d331ba0-56d6-5730-a51b-e3d1126b31ba/4d331ba0-56d6-5730-a51b-e3d1126b31ba.png" alt="Matrix A=(1 1;0 1) bildet P=(2;1), Q=(0;2), R=(−1;1) auf P′=(3;1), Q′=(2;2), R′=(0;1) ab. Drei farbige Zuordnungspfeile verbinden Original- und Bildpunkte in getrennten Koordinatensystemen; die Spaltenvektorrechnungen stehen dazwischen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba-description-heading">
+        <p class="section-heading" id="goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zu einer gegebenen Abbildungsmatrix Bildpunkte berechnen, indem sie Vektoren mit der Matrix multipliziert.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba-requires-heading">
+          <p class="section-heading" id="goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba-reverse-heading">
+          <p class="section-heading" id="goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-b72d87d4-763e-54aa-940d-31f195b51700"><span>Orthogonale Spiegelungen an Koordinatenebenen mit Matrizen darstellen</span><code>b72d87d4-763e-54aa-940d-31f195b51700</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-55039f9c-4ebc-5115-add5-fae95b915e46"><span>Parallelprojektionen auf Koordinatenebenen mit Matrizen darstellen</span><code>55039f9c-4ebc-5115-add5-fae95b915e46</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-35558905-753d-5fcb-b25e-7f85ffdbff56"><span>Zentrische Streckungen am Koordinatenursprung mit Matrizen darstellen</span><code>35558905-753d-5fcb-b25e-7f85ffdbff56</code><span class="reference-page">S. 7</span></a></li><li><a href="#goal-7bd8f022-5002-5610-994c-a9cec1890558"><span>Drehungen um Koordinatenachsen mit Matrizen darstellen (LK)</span><code>7bd8f022-5002-5610-994c-a9cec1890558</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6f09c97e-779b-500b-8092-3fb9696aa5bb" rel="noreferrer noopener"><span>Matrix-Vektor-Produkte berechnen</span> <code>6f09c97e-779b-500b-8092-3fb9696aa5bb</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-69243680-c2c1-5661-80c0-c95a2be1dabf" rel="noreferrer noopener"><span>Geometrische Abbildungen als linear erkennen</span> <code>69243680-c2c1-5661-80c0-c95a2be1dabf</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8dc2c87a-cfc6-5f15-89e5-634107f5c9c7" rel="noreferrer noopener"><span>Abbildungsmatrix aus Basisbildern bestimmen</span> <code>8dc2c87a-cfc6-5f15-89e5-634107f5c9c7</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c" rel="noreferrer noopener"><span>Zusammensetzungen als Matrixprodukt darstellen</span> <code>ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d3c42193-f1b7-5c6d-a991-bf034d99359f" rel="noreferrer noopener"><span>Fixpunkte linearer Abbildungen bestimmen (LK)</span> <code>d3c42193-f1b7-5c6d-a991-bf034d99359f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:532725faba60d71f68ef52c6b49afa068c4ff06c419fa50ea75d68d21d9d966a</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=4d331ba0-56d6-5730-a51b-e3d1126b31ba&amp;goalFingerprint=sha256%3A532725faba60d71f68ef52c6b49afa068c4ff06c419fa50ea75d68d21d9d966a&amp;pageFingerprint=sha256%3A8d8b74f2e0d00c31c6157522f410d8ee63d998e71d5b512a1882dcc63aad067c&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b72d87d4-763e-54aa-940d-31f195b51700" data-goal-id="b72d87d4-763e-54aa-940d-31f195b51700" data-page-number="5" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-b3d2284c-21e0-5af8-942a-a4c11390c84a" aria-labelledby="goal-b72d87d4-763e-54aa-940d-31f195b51700-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b72d87d4-763e-54aa-940d-31f195b51700-title"><a class="goal-self-link" href="#goal-b72d87d4-763e-54aa-940d-31f195b51700">Orthogonale Spiegelungen an Koordinatenebenen mit Matrizen darstellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b72d87d4-763e-54aa-940d-31f195b51700</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-9b7288febcdef13dd0826d42">Lineare geometrische Abbildungen und Abbildungsmatrizen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2a3e8ddcfa9d8b5d9063301304af76defcb67cc5e92b06c419f445e5d299994e" data-rendered-digest="sha256:c0c8a5dc884055f21ce6e3159b63f2c15489df85f5f6e482eacea73a6cece44f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/b72d87d4-763e-54aa-940d-31f195b51700/b72d87d4-763e-54aa-940d-31f195b51700.png" alt="Spiegelung an der xy-Ebene: P=(2|1|3) und P′=(2|1|−3) liegen senkrecht über und unter F=(2|1|0) in gleichem Abstand. Sxy=diag(1,1,−1) lässt x und y gleich und kehrt das Vorzeichen von z um.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b72d87d4-763e-54aa-940d-31f195b51700-description-heading">
+        <p class="section-heading" id="goal-b72d87d4-763e-54aa-940d-31f195b51700-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Abbildungsmatrizen für orthogonale Spiegelungen an den Koordinatenebenen bestimmen, untersuchen und Bildpunkte berechnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b72d87d4-763e-54aa-940d-31f195b51700" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b72d87d4-763e-54aa-940d-31f195b51700-requires-heading">
+          <p class="section-heading" id="goal-b72d87d4-763e-54aa-940d-31f195b51700-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba"><span>Bildpunkte mit Matrizen berechnen</span><code>4d331ba0-56d6-5730-a51b-e3d1126b31ba</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-b72d87d4-763e-54aa-940d-31f195b51700-reverse-heading">
+          <p class="section-heading" id="goal-b72d87d4-763e-54aa-940d-31f195b51700-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b72d87d4-763e-54aa-940d-31f195b51700-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b72d87d4-763e-54aa-940d-31f195b51700-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8dc2c87a-cfc6-5f15-89e5-634107f5c9c7" rel="noreferrer noopener"><span>Abbildungsmatrix aus Basisbildern bestimmen</span> <code>8dc2c87a-cfc6-5f15-89e5-634107f5c9c7</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-b72d87d4-763e-54aa-940d-31f195b51700-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b72d87d4-763e-54aa-940d-31f195b51700-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-168d8879-0412-5524-94c5-c1d8169dbd65" rel="noreferrer noopener"><span>Eigene Abbildungen modellieren und interpretieren</span> <code>168d8879-0412-5524-94c5-c1d8169dbd65</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b107106de107b5e346357bf62b8023ae7a88fcb5e397175cbf2f3d76b2ccc886</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=b72d87d4-763e-54aa-940d-31f195b51700&amp;goalFingerprint=sha256%3Ab107106de107b5e346357bf62b8023ae7a88fcb5e397175cbf2f3d76b2ccc886&amp;pageFingerprint=sha256%3Ac0d7b43cd06048af95f9c84614702cd4b909e595a4f51412eebb6a833225cf23&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-55039f9c-4ebc-5115-add5-fae95b915e46" data-goal-id="55039f9c-4ebc-5115-add5-fae95b915e46" data-page-number="6" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-b3d2284c-21e0-5af8-942a-a4c11390c84a" aria-labelledby="goal-55039f9c-4ebc-5115-add5-fae95b915e46-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-55039f9c-4ebc-5115-add5-fae95b915e46-title"><a class="goal-self-link" href="#goal-55039f9c-4ebc-5115-add5-fae95b915e46">Parallelprojektionen auf Koordinatenebenen mit Matrizen darstellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>55039f9c-4ebc-5115-add5-fae95b915e46</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-9b7288febcdef13dd0826d42">Lineare geometrische Abbildungen und Abbildungsmatrizen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:771419dd4e07ee96bed6bc6ad425f33a4d8a99ece7d6298395403ce3142a6648" data-rendered-digest="sha256:f018bfb787f31cbf0e73bc76e11f15d5b32cace3c46c004103d050d309d65168" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/55039f9c-4ebc-5115-add5-fae95b915e46/55039f9c-4ebc-5115-add5-fae95b915e46.png" alt="Achsenparallele Projektionen auf xy, xz und yz: Die Matrizen diag(1,1,0), diag(1,0,1), diag(0,1,1) setzen z, y beziehungsweise x auf null. Eine x-z-Seitenansicht zeigt P=(2,−1,3) senkrecht zu P′=(2,−1,0), bei unverändertem y.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-55039f9c-4ebc-5115-add5-fae95b915e46-description-heading">
+        <p class="section-heading" id="goal-55039f9c-4ebc-5115-add5-fae95b915e46-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Abbildungsmatrizen für Parallelprojektionen auf die Koordinatenebenen bestimmen, untersuchen und Bildpunkte berechnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-55039f9c-4ebc-5115-add5-fae95b915e46" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-55039f9c-4ebc-5115-add5-fae95b915e46-requires-heading">
+          <p class="section-heading" id="goal-55039f9c-4ebc-5115-add5-fae95b915e46-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba"><span>Bildpunkte mit Matrizen berechnen</span><code>4d331ba0-56d6-5730-a51b-e3d1126b31ba</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-55039f9c-4ebc-5115-add5-fae95b915e46-reverse-heading">
+          <p class="section-heading" id="goal-55039f9c-4ebc-5115-add5-fae95b915e46-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-55039f9c-4ebc-5115-add5-fae95b915e46-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-55039f9c-4ebc-5115-add5-fae95b915e46-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8dc2c87a-cfc6-5f15-89e5-634107f5c9c7" rel="noreferrer noopener"><span>Abbildungsmatrix aus Basisbildern bestimmen</span> <code>8dc2c87a-cfc6-5f15-89e5-634107f5c9c7</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-55039f9c-4ebc-5115-add5-fae95b915e46-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-55039f9c-4ebc-5115-add5-fae95b915e46-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-81823f27-0c92-5444-ac4e-32b83169f318" rel="noreferrer noopener"><span>Lineare Abbildungen mit Matrizen beschreiben</span> <code>81823f27-0c92-5444-ac4e-32b83169f318</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:161954b054f179c0deb74748ecdf5c223522f2c7f9b130ac3b5ec2e5ecf5e8ae</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=55039f9c-4ebc-5115-add5-fae95b915e46&amp;goalFingerprint=sha256%3A161954b054f179c0deb74748ecdf5c223522f2c7f9b130ac3b5ec2e5ecf5e8ae&amp;pageFingerprint=sha256%3A323ea468f15113f5c0a26a3c7b8ee3773caad2cfa18e95866051a57f1d3ae5d4&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-35558905-753d-5fcb-b25e-7f85ffdbff56" data-goal-id="35558905-753d-5fcb-b25e-7f85ffdbff56" data-page-number="7" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-b3d2284c-21e0-5af8-942a-a4c11390c84a" aria-labelledby="goal-35558905-753d-5fcb-b25e-7f85ffdbff56-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-35558905-753d-5fcb-b25e-7f85ffdbff56-title"><a class="goal-self-link" href="#goal-35558905-753d-5fcb-b25e-7f85ffdbff56">Zentrische Streckungen am Koordinatenursprung mit Matrizen darstellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>35558905-753d-5fcb-b25e-7f85ffdbff56</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-9b7288febcdef13dd0826d42">Lineare geometrische Abbildungen und Abbildungsmatrizen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:67810c41b3c974fb1fdc0cdd6c2b67101c0ff7ac9c1b26aa50b8e9cbf1d9b405" data-rendered-digest="sha256:7b33a0fb647eef6d10c2577b720043a392c06214a2be00b6fdf6790f97602a51" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/35558905-753d-5fcb-b25e-7f85ffdbff56/35558905-753d-5fcb-b25e-7f85ffdbff56.png" alt="Zentrische Streckung am Ursprung mit Z=2I. P=(1;2) wird auf (2;4), Q=(−2;1) auf (−4;2) abgebildet. Bildpunkte liegen auf den jeweiligen Ursprungsstrahlen in doppeltem Abstand; die Matrixprodukte sind mit senkrechten Spaltenvektoren notiert.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-35558905-753d-5fcb-b25e-7f85ffdbff56-description-heading">
+        <p class="section-heading" id="goal-35558905-753d-5fcb-b25e-7f85ffdbff56-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Abbildungsmatrizen zentrischer Streckungen am Koordinatenursprung bestimmen, untersuchen und die Wirkung auf Bildpunkte berechnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-35558905-753d-5fcb-b25e-7f85ffdbff56" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-35558905-753d-5fcb-b25e-7f85ffdbff56-requires-heading">
+          <p class="section-heading" id="goal-35558905-753d-5fcb-b25e-7f85ffdbff56-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba"><span>Bildpunkte mit Matrizen berechnen</span><code>4d331ba0-56d6-5730-a51b-e3d1126b31ba</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-35558905-753d-5fcb-b25e-7f85ffdbff56-reverse-heading">
+          <p class="section-heading" id="goal-35558905-753d-5fcb-b25e-7f85ffdbff56-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-35558905-753d-5fcb-b25e-7f85ffdbff56-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-35558905-753d-5fcb-b25e-7f85ffdbff56-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8dc2c87a-cfc6-5f15-89e5-634107f5c9c7" rel="noreferrer noopener"><span>Abbildungsmatrix aus Basisbildern bestimmen</span> <code>8dc2c87a-cfc6-5f15-89e5-634107f5c9c7</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-35558905-753d-5fcb-b25e-7f85ffdbff56-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-35558905-753d-5fcb-b25e-7f85ffdbff56-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-81823f27-0c92-5444-ac4e-32b83169f318" rel="noreferrer noopener"><span>Lineare Abbildungen mit Matrizen beschreiben</span> <code>81823f27-0c92-5444-ac4e-32b83169f318</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c6950fd42ce838b2c0473ec8651762cf578ef6e9559becf11b00d216562fb533</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=35558905-753d-5fcb-b25e-7f85ffdbff56&amp;goalFingerprint=sha256%3Ac6950fd42ce838b2c0473ec8651762cf578ef6e9559becf11b00d216562fb533&amp;pageFingerprint=sha256%3A31bbde2e227101b07fc29d6fdd8b69d84d9c3f917411d81125a2648111f0179c&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-7bd8f022-5002-5610-994c-a9cec1890558" data-goal-id="7bd8f022-5002-5610-994c-a9cec1890558" data-page-number="8" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-b3d2284c-21e0-5af8-942a-a4c11390c84a" aria-labelledby="goal-7bd8f022-5002-5610-994c-a9cec1890558-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-7bd8f022-5002-5610-994c-a9cec1890558-title"><a class="goal-self-link" href="#goal-7bd8f022-5002-5610-994c-a9cec1890558">Drehungen um Koordinatenachsen mit Matrizen darstellen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>7bd8f022-5002-5610-994c-a9cec1890558</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-9b7288febcdef13dd0826d42">Lineare geometrische Abbildungen und Abbildungsmatrizen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ce06e66689ba9322f0c6569609a4942320d98cf198866e0606427309a3a66639" data-rendered-digest="sha256:02a83855b00bb3cc657573da24eb4329f8c5bde6f124473fdbdc3e203e2583e6" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/7bd8f022-5002-5610-994c-a9cec1890558/7bd8f022-5002-5610-994c-a9cec1890558.png" alt="Positive 90°-Drehung um die z-Achse, gesehen von +z: ex wird zu ey, ey zu −ex, ez bleibt gleich. Die Matrix bildet (2,1,3) auf (−1,2,3) ab. Basisbild, Matrixspalten und ausgeschriebene Rechnung stimmen überein.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-7bd8f022-5002-5610-994c-a9cec1890558-description-heading">
+        <p class="section-heading" id="goal-7bd8f022-5002-5610-994c-a9cec1890558-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Abbildungsmatrizen für Drehungen um die Koordinatenachsen im $\mathbb{R}^3$ untersuchen und bestimmen sowie Bildpunkte berechnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7bd8f022-5002-5610-994c-a9cec1890558" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-7bd8f022-5002-5610-994c-a9cec1890558-requires-heading">
+          <p class="section-heading" id="goal-7bd8f022-5002-5610-994c-a9cec1890558-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-4d331ba0-56d6-5730-a51b-e3d1126b31ba"><span>Bildpunkte mit Matrizen berechnen</span><code>4d331ba0-56d6-5730-a51b-e3d1126b31ba</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-7bd8f022-5002-5610-994c-a9cec1890558-reverse-heading">
+          <p class="section-heading" id="goal-7bd8f022-5002-5610-994c-a9cec1890558-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-7bd8f022-5002-5610-994c-a9cec1890558-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7bd8f022-5002-5610-994c-a9cec1890558-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8dc2c87a-cfc6-5f15-89e5-634107f5c9c7" rel="noreferrer noopener"><span>Abbildungsmatrix aus Basisbildern bestimmen</span> <code>8dc2c87a-cfc6-5f15-89e5-634107f5c9c7</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-7bd8f022-5002-5610-994c-a9cec1890558-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7bd8f022-5002-5610-994c-a9cec1890558-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-42752317-6022-47f2-8b34-160db5ef01fb" rel="noreferrer noopener"><span>Drehmatrizen um Koordinatenachsen eigenständig bestimmen und prüfen (LK)</span> <code>42752317-6022-47f2-8b34-160db5ef01fb</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:42615f28b319fee999bb6894ed29b747c9dac6eca565c932a33df9c3dafb201e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=7bd8f022-5002-5610-994c-a9cec1890558&amp;goalFingerprint=sha256%3A42615f28b319fee999bb6894ed29b747c9dac6eca565c932a33df9c3dafb201e&amp;pageFingerprint=sha256%3Ab3357d045f7f62ce8ff4fa5c3c7cc2029a90e30384a9a29d73581d4c17a1ccca&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-52e57eb5-7cd1-5df0-a8c6-7b090f097d9f" data-goal-id="52e57eb5-7cd1-5df0-a8c6-7b090f097d9f" data-page-number="9" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906 structure:canonical-structure:canonical-selection-dd550132-2a3f-5b4e-a3c6-f940621186ac structure:canonical-goal-f1a95baf-b91f-44db-bcb1-70a4d2e3f7d1" aria-labelledby="goal-52e57eb5-7cd1-5df0-a8c6-7b090f097d9f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-52e57eb5-7cd1-5df0-a8c6-7b090f097d9f-title"><a class="goal-self-link" href="#goal-52e57eb5-7cd1-5df0-a8c6-7b090f097d9f">Vierfeldertafeln interpretieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>52e57eb5-7cd1-5df0-a8c6-7b090f097d9f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-e5492767714e2d6aea468558">Wahrscheinlichkeiten und Verteilungen</a></li><li><a href="#chapter-0657fc01eb312b5b31ea8753">Grundlegende Begriffe und Methoden der Stochastik</a></li><li><a href="#chapter-ec9081f64425da2b8f993a98">Baumdiagramme, Vierfeldertafeln und bedingte Wahrscheinlichkeiten</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6764ed8c68218dc8f6c24bee3e959a07e4f968c252b3a02084fd341f9644a7aa" data-rendered-digest="sha256:98f2e8434f9f9c651ac792f27f761f9768016baaa237457398cfa9adb99a5b4e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f.png" alt="Absolute und relative Vierfeldertafel mit 30 gemeinsamen A-und-B-Fällen unter 100 Fällen. Drei Karten unterscheiden P(A∩B)=30/100, P(A|B)=30/50 und P(B|A)=30/40. Bezugszeile B und Bezugsspalte A markieren die jeweiligen Nennergruppen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-52e57eb5-7cd1-5df0-a8c6-7b090f097d9f-description-heading">
+        <p class="section-heading" id="goal-52e57eb5-7cd1-5df0-a8c6-7b090f097d9f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Vier- bzw. Mehrfeldertafeln aus Sachtexten erstellen, absolute und relative Häufigkeiten eintragen und gemeinsame sowie bedingte Wahrscheinlichkeiten an konkreten Beispielen ablesen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G9; Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-52e57eb5-7cd1-5df0-a8c6-7b090f097d9f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-52e57eb5-7cd1-5df0-a8c6-7b090f097d9f-requires-heading">
+          <p class="section-heading" id="goal-52e57eb5-7cd1-5df0-a8c6-7b090f097d9f-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-52e57eb5-7cd1-5df0-a8c6-7b090f097d9f-reverse-heading">
+          <p class="section-heading" id="goal-52e57eb5-7cd1-5df0-a8c6-7b090f097d9f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c3b9c561-dd83-5903-9ec6-49c7f51bafd5"><span>Bedingte Wahrscheinlichkeiten berechnen</span><code>c3b9c561-dd83-5903-9ec6-49c7f51bafd5</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-52e57eb5-7cd1-5df0-a8c6-7b090f097d9f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-52e57eb5-7cd1-5df0-a8c6-7b090f097d9f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2a1158e5-d4ca-51d4-860c-f43bd5a86836" rel="noreferrer noopener"><span>Ereignisse darstellen und Baumdiagramme nutzen</span> <code>2a1158e5-d4ca-51d4-860c-f43bd5a86836</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:992d04739b06b6ec9df9dc289476aa1d46e6b164eaa3a4d15308e9f3e1eb6938</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=52e57eb5-7cd1-5df0-a8c6-7b090f097d9f&amp;goalFingerprint=sha256%3A992d04739b06b6ec9df9dc289476aa1d46e6b164eaa3a4d15308e9f3e1eb6938&amp;pageFingerprint=sha256%3A9a50c9b11cac6805cdfd255c25275e3bc87ff8b902218c0d278257e33b538bd4&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c3b9c561-dd83-5903-9ec6-49c7f51bafd5" data-goal-id="c3b9c561-dd83-5903-9ec6-49c7f51bafd5" data-page-number="10" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906 structure:canonical-structure:canonical-selection-dd550132-2a3f-5b4e-a3c6-f940621186ac" aria-labelledby="goal-c3b9c561-dd83-5903-9ec6-49c7f51bafd5-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c3b9c561-dd83-5903-9ec6-49c7f51bafd5-title"><a class="goal-self-link" href="#goal-c3b9c561-dd83-5903-9ec6-49c7f51bafd5">Bedingte Wahrscheinlichkeiten berechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c3b9c561-dd83-5903-9ec6-49c7f51bafd5</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-e5492767714e2d6aea468558">Wahrscheinlichkeiten und Verteilungen</a></li><li><a href="#chapter-0657fc01eb312b5b31ea8753">Grundlegende Begriffe und Methoden der Stochastik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:35597d1ab49a10950d1b1ce8f6b9d8b09e081777f08736028f972b84238fe435" data-rendered-digest="sha256:c2825bad05194f44c2ddc92fe5f85fac878f87e7032e5531bfa9e5fcad897d7f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/c3b9c561-dd83-5903-9ec6-49c7f51bafd5/c3b9c561-dd83-5903-9ec6-49c7f51bafd5.png" alt="Vierfeldertafel und zugehöriger Baum: P(A)=0,40 und P(B|A)=0,75 ergeben P(A∩B)=0,30. Für das Gegenereignis von A sind die bedingten Zweigwahrscheinlichkeiten exakt 1/3 und 2/3; alle vier Endwahrscheinlichkeiten stimmen mit der Tafel überein.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c3b9c561-dd83-5903-9ec6-49c7f51bafd5-description-heading">
+        <p class="section-heading" id="goal-c3b9c561-dd83-5903-9ec6-49c7f51bafd5-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bedingte Wahrscheinlichkeiten in Sachzusammenhängen identifizieren und sie mit Baumdiagrammen sowie Vier- oder Mehrfeldertafeln aus absoluten oder relativen Häufigkeiten berechnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c3b9c561-dd83-5903-9ec6-49c7f51bafd5" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c3b9c561-dd83-5903-9ec6-49c7f51bafd5-requires-heading">
+          <p class="section-heading" id="goal-c3b9c561-dd83-5903-9ec6-49c7f51bafd5-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-52e57eb5-7cd1-5df0-a8c6-7b090f097d9f"><span>Vierfeldertafeln interpretieren</span><code>52e57eb5-7cd1-5df0-a8c6-7b090f097d9f</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c3b9c561-dd83-5903-9ec6-49c7f51bafd5-reverse-heading">
+          <p class="section-heading" id="goal-c3b9c561-dd83-5903-9ec6-49c7f51bafd5-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-c3b9c561-dd83-5903-9ec6-49c7f51bafd5-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c3b9c561-dd83-5903-9ec6-49c7f51bafd5-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-122ab909-04ed-572b-a499-754f3bcc8ef0" rel="noreferrer noopener"><span>Grundlegende Zählprinzipien anwenden</span> <code>122ab909-04ed-572b-a499-754f3bcc8ef0</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a7752df2f947775f75dcf3a10d8292706b3132039343197cc09c160360bf4936</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=c3b9c561-dd83-5903-9ec6-49c7f51bafd5&amp;goalFingerprint=sha256%3Aa7752df2f947775f75dcf3a10d8292706b3132039343197cc09c160360bf4936&amp;pageFingerprint=sha256%3A74593a2932a3d97dd2fdc5b1a18bf580f4b50e97a9f54c3a6d9249e3dd693b8d&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8" data-goal-id="be0e8715-3c3a-5ffb-937a-0b6bce4f01d8" data-page-number="11" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44" aria-labelledby="goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8-title"><a class="goal-self-link" href="#goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8">Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>be0e8715-3c3a-5ffb-937a-0b6bce4f01d8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b3578775616dae549fcf1fc0b7e281ada8841cef048158da03c6fc2153571af2" data-rendered-digest="sha256:9a3dcbdcec8d7b08667b21179f70297bc3432c27903a36c5cb866045aa7fab50" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8.png" alt="Orts-, Verschiebungs- und Richtungsvektor: OA=(1,2,1), OB=(4,3,3), AB=(3,1,2). Eine konsistente schematische Pfeilkette verbindet O,A,B. Der Richtungsvektor beschreibt eine Geradenrichtung, keine Geradenlänge.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8-description-heading">
+        <p class="section-heading" id="goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Vektoren im Raum als Verschiebungs-, Orts- oder Richtungsvektoren darstellen, ihre Komponenten in kartesischen Koordinatensystemen angeben und ihre geometrische Bedeutung fachsprachlich deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8-requires-heading">
+          <p class="section-heading" id="goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8-reverse-heading">
+          <p class="section-heading" id="goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-f37b0a72-9e23-51c7-aad5-438c17a56899"><span>Vektoren im Raum addieren und vervielfachen</span><code>f37b0a72-9e23-51c7-aad5-438c17a56899</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2" rel="noreferrer noopener"><span>Warum Mathematik? – Denken, Muster &amp; Zukunft</span> <code>71cec9fb-3751-4d61-8b34-c5adbbf6e5f2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-075f1ef2-6860-4b20-9df2-878157eb395e" rel="noreferrer noopener"><span>Punkte und Vektoren im Raum koordinatisieren</span> <code>075f1ef2-6860-4b20-9df2-878157eb395e</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1" rel="noreferrer noopener"><span>Betrag eines Vektors im Raum bestimmen</span> <code>fb7a4fa0-03b5-53b4-bd86-608480b748a1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-effe43eb-cabe-56cb-a228-35887d7915c1" rel="noreferrer noopener"><span>Geraden im Raum parametrisch darstellen</span> <code>effe43eb-cabe-56cb-a228-35887d7915c1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-525b1da9-7fdd-4a70-9f30-ff01d7511b04" rel="noreferrer noopener"><span>Geraden und Strecken im Raum in Parameterform darstellen und Parameter deuten</span> <code>525b1da9-7fdd-4a70-9f30-ff01d7511b04</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d785943c-d61b-51a1-a9c2-c36a9e0cc97d" rel="noreferrer noopener"><span>Ebenen in Parameterform angeben und interpretieren</span> <code>d785943c-d61b-51a1-a9c2-c36a9e0cc97d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-69243680-c2c1-5661-80c0-c95a2be1dabf" rel="noreferrer noopener"><span>Geometrische Abbildungen als linear erkennen</span> <code>69243680-c2c1-5661-80c0-c95a2be1dabf</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9460c3ff-e72d-4107-bc73-087d217200aa" rel="noreferrer noopener"><span>Skalarprodukt als Orthogonalitätskriterium nutzen</span> <code>9460c3ff-e72d-4107-bc73-087d217200aa</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2ac2e902-a6ad-53c9-b139-d1c63d823023" rel="noreferrer noopener"><span>Skalarprodukt von Vektoren definieren</span> <code>2ac2e902-a6ad-53c9-b139-d1c63d823023</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-265af6af-8eac-5632-b730-800aafcde26a" rel="noreferrer noopener"><span>Skalarprodukt zur Winkelberechnung nutzen</span> <code>265af6af-8eac-5632-b730-800aafcde26a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:49deecda41233341f3f54d507dda7f828b8276dd8bfa02e5f12b953e84f7b2e5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=be0e8715-3c3a-5ffb-937a-0b6bce4f01d8&amp;goalFingerprint=sha256%3A49deecda41233341f3f54d507dda7f828b8276dd8bfa02e5f12b953e84f7b2e5&amp;pageFingerprint=sha256%3A68414ebc6ce4598e98a8cda3abe869dd7d53c1dd6961a3695b00b449f0c30c77&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-aae119f2-925f-5fc1-b795-b52c9e980863" data-goal-id="aae119f2-925f-5fc1-b795-b52c9e980863" data-page-number="12" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44 structure:canonical-goal-d9d8cd76-01fb-5f7a-b733-17f81d854af7" aria-labelledby="goal-aae119f2-925f-5fc1-b795-b52c9e980863-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-aae119f2-925f-5fc1-b795-b52c9e980863-title"><a class="goal-self-link" href="#goal-aae119f2-925f-5fc1-b795-b52c9e980863">Räumliche Objekte im Koordinatensystem verorten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>aae119f2-925f-5fc1-b795-b52c9e980863</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li><li><a href="#chapter-06463abf06ecc91338af1957">Räumliche Objekte im dreidimensionalen Koordinatensystem darstellen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:dcd41da8b98051334fb44a8a03de610328cc50cc3d23c65e09035cf0807db44c" data-rendered-digest="sha256:e87f92b639550ce3a61039b2b332c38004c7962519ffac1a8eef1602feb193a4" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/aae119f2-925f-5fc1-b795-b52c9e980863/aae119f2-925f-5fc1-b795-b52c9e980863.png" alt="Quader mit A=(0|0|0), B=(4|0|0), C=(4|3|0), D=(0|3|0) und den zugehörigen oberen Ecken bei z=2. Maßpfeile ordnen AB=4 der x-Richtung, BC=3 der y-Richtung und die Höhe 2 der z-Richtung zu.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-aae119f2-925f-5fc1-b795-b52c9e980863-description-heading">
+        <p class="section-heading" id="goal-aae119f2-925f-5fc1-b795-b52c9e980863-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann räumliche Objekte im dreidimensionalen Koordinatensystem verorten und geeignete Koordinatenbezüge wählen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-aae119f2-925f-5fc1-b795-b52c9e980863" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-aae119f2-925f-5fc1-b795-b52c9e980863-requires-heading">
+          <p class="section-heading" id="goal-aae119f2-925f-5fc1-b795-b52c9e980863-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-aae119f2-925f-5fc1-b795-b52c9e980863-reverse-heading">
+          <p class="section-heading" id="goal-aae119f2-925f-5fc1-b795-b52c9e980863-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"><span>Geometriesoftware zur Raumorientierung nutzen</span><code>eb6bfdd9-3cbe-51b5-9798-a741bdc2782e</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-68d4faef-1a56-5898-9c31-80b7d5d2e430"><span>Abstand zweier Punkte im Raum berechnen</span><code>68d4faef-1a56-5898-9c31-80b7d5d2e430</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-aae119f2-925f-5fc1-b795-b52c9e980863-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-aae119f2-925f-5fc1-b795-b52c9e980863-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-075f1ef2-6860-4b20-9df2-878157eb395e" rel="noreferrer noopener"><span>Punkte und Vektoren im Raum koordinatisieren</span> <code>075f1ef2-6860-4b20-9df2-878157eb395e</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-aae119f2-925f-5fc1-b795-b52c9e980863-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-aae119f2-925f-5fc1-b795-b52c9e980863-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7680701b-35e3-519e-beaa-09753e733756" rel="noreferrer noopener"><span>Schrägbilder räumlicher Objekte zeichnen</span> <code>7680701b-35e3-519e-beaa-09753e733756</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d379e28b-d9d5-5cab-b383-318e0499c0c7" rel="noreferrer noopener"><span>Einfache geometrische Körper im Raum beschreiben</span> <code>d379e28b-d9d5-5cab-b383-318e0499c0c7</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5748633c-113f-5ea8-9041-24da55919de7" rel="noreferrer noopener"><span>Projektionen auf Koordinatenebenen untersuchen</span> <code>5748633c-113f-5ea8-9041-24da55919de7</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4610b484ec7bf73f49cae1890f69bc5771a36f996613f376adec2846bb6c8c86</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=aae119f2-925f-5fc1-b795-b52c9e980863&amp;goalFingerprint=sha256%3A4610b484ec7bf73f49cae1890f69bc5771a36f996613f376adec2846bb6c8c86&amp;pageFingerprint=sha256%3Abac66fe01ed54dfa18c81188578fb24a22f044b59441bb24e3bb8b6eceb8dbf5&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e" data-goal-id="eb6bfdd9-3cbe-51b5-9798-a741bdc2782e" data-page-number="13" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44" aria-labelledby="goal-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e-title"><a class="goal-self-link" href="#goal-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e">Geometriesoftware zur Raumorientierung nutzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>eb6bfdd9-3cbe-51b5-9798-a741bdc2782e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:89fbc164a28cc5df659cfed370ae88f843f94476835915e844ff7a1e71c1cbd6" data-rendered-digest="sha256:1abb02aa0405a01d3898a0f7b8aff259052d72873f96abdd31a05c4be7c312c3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/eb6bfdd9-3cbe-51b5-9798-a741bdc2782e/eb6bfdd9-3cbe-51b5-9798-a741bdc2782e.png" alt="P=(2|1|3) in einer räumlichen Ansicht mit konsistenten achsenparallelen Hilfslinien und Pxy=(2|1|0). Zusätzliche Fenster zeigen dieselben Informationen in der Draufsicht (2|1) und als Höhe z=3. Die Ansicht wird gedreht, nicht der Punkt verändert.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e-description-heading">
+        <p class="section-heading" id="goal-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Geometriesoftware nutzen, um räumliche Objekte im dreidimensionalen Koordinatensystem darzustellen, Ansichten zu variieren und Koordinaten- bzw. Lageinformationen zu überprüfen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G9; Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e-requires-heading">
+          <p class="section-heading" id="goal-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-aae119f2-925f-5fc1-b795-b52c9e980863"><span>Räumliche Objekte im Koordinatensystem verorten</span><code>aae119f2-925f-5fc1-b795-b52c9e980863</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e-reverse-heading">
+          <p class="section-heading" id="goal-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7680701b-35e3-519e-beaa-09753e733756" rel="noreferrer noopener"><span>Schrägbilder räumlicher Objekte zeichnen</span> <code>7680701b-35e3-519e-beaa-09753e733756</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d81d888c-6ffa-5751-8a4b-ce2ff3085071" rel="noreferrer noopener"><span>Punkte im Raum mit Koordinaten beschreiben</span> <code>d81d888c-6ffa-5751-8a4b-ce2ff3085071</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5fddb3d49a83541aa8f76a159bc635893b2182310f66acfeb046b90ab94b241a</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=eb6bfdd9-3cbe-51b5-9798-a741bdc2782e&amp;goalFingerprint=sha256%3A5fddb3d49a83541aa8f76a159bc635893b2182310f66acfeb046b90ab94b241a&amp;pageFingerprint=sha256%3A57191f192276426738e225a38b3f0b332e0e1c5097b9a1402cfb1b70fbf50e99&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f37b0a72-9e23-51c7-aad5-438c17a56899" data-goal-id="f37b0a72-9e23-51c7-aad5-438c17a56899" data-page-number="14" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44" aria-labelledby="goal-f37b0a72-9e23-51c7-aad5-438c17a56899-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f37b0a72-9e23-51c7-aad5-438c17a56899-title"><a class="goal-self-link" href="#goal-f37b0a72-9e23-51c7-aad5-438c17a56899">Vektoren im Raum addieren und vervielfachen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f37b0a72-9e23-51c7-aad5-438c17a56899</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:600adcbff2431384e36b34a72f5f756b00cba2ad856920d8d046a8f7304da304" data-rendered-digest="sha256:0de980601bf249212fa2272684b4ca34f806a7ecacc8f06076a5f41fe5f2a182" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/f37b0a72-9e23-51c7-aad5-438c17a56899/f37b0a72-9e23-51c7-aad5-438c17a56899.png" alt="Schematische Kopf-an-Schwanz-Pfeilkette und Komponentensumme (2,1,1)+(−1,2,3)=(1,3,4). Zwei gleich lange a-Verschiebungen hintereinander ergeben den doppelt langen Gesamtpfeil 2a; 2·(2,1,1)=(4,2,2).">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f37b0a72-9e23-51c7-aad5-438c17a56899-description-heading">
+        <p class="section-heading" id="goal-f37b0a72-9e23-51c7-aad5-438c17a56899-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Vektoren im Raum komponentenweise addieren und mit Skalaren vervielfachen sowie die Rechenoperationen als Verkettung und Streckung von Verschiebungen geometrisch deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f37b0a72-9e23-51c7-aad5-438c17a56899" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f37b0a72-9e23-51c7-aad5-438c17a56899-requires-heading">
+          <p class="section-heading" id="goal-f37b0a72-9e23-51c7-aad5-438c17a56899-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"><span>Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben</span><code>be0e8715-3c3a-5ffb-937a-0b6bce4f01d8</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-f37b0a72-9e23-51c7-aad5-438c17a56899-reverse-heading">
+          <p class="section-heading" id="goal-f37b0a72-9e23-51c7-aad5-438c17a56899-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-72dfc164-455d-4b63-85f0-96e803c9a1d5"><span>Linearkombinationen von Vektoren bilden und deuten</span><code>72dfc164-455d-4b63-85f0-96e803c9a1d5</code><span class="reference-page">S. 15</span></a></li><li><a href="#goal-54cfe5ce-693e-5d4a-ac1b-009570fbbc11"><span>Kollinearität von Vektoren im Raum prüfen</span><code>54cfe5ce-693e-5d4a-ac1b-009570fbbc11</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-f37b0a72-9e23-51c7-aad5-438c17a56899-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f37b0a72-9e23-51c7-aad5-438c17a56899-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1" rel="noreferrer noopener"><span>Betrag eines Vektors im Raum bestimmen</span> <code>fb7a4fa0-03b5-53b4-bd86-608480b748a1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6" rel="noreferrer noopener"><span>Lineare Gleichungssysteme in der Analytischen Geometrie systematisch lösen</span> <code>27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3af577f67b8c265d92b7fa3abdb613e6df11901b6c6e3034e4f3b61437c5eaa9</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=f37b0a72-9e23-51c7-aad5-438c17a56899&amp;goalFingerprint=sha256%3A3af577f67b8c265d92b7fa3abdb613e6df11901b6c6e3034e4f3b61437c5eaa9&amp;pageFingerprint=sha256%3A4eec03d5f481ef6f05d86c69908f2ee2c77ef5364b9a74716ecebe0ff8957484&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-72dfc164-455d-4b63-85f0-96e803c9a1d5" data-goal-id="72dfc164-455d-4b63-85f0-96e803c9a1d5" data-page-number="15" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44" aria-labelledby="goal-72dfc164-455d-4b63-85f0-96e803c9a1d5-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-72dfc164-455d-4b63-85f0-96e803c9a1d5-title"><a class="goal-self-link" href="#goal-72dfc164-455d-4b63-85f0-96e803c9a1d5">Linearkombinationen von Vektoren bilden und deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>72dfc164-455d-4b63-85f0-96e803c9a1d5</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d0d3ef0810072d8b31874a70f9b3378e682f414aa527b955c0b7e4e40bee4fcc" data-rendered-digest="sha256:27a39cd1dff5d2db9afb582fefc28df2d35a51f012d6febb7c50ec215b9b8ed9" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/72dfc164-455d-4b63-85f0-96e803c9a1d5/72dfc164-455d-4b63-85f0-96e803c9a1d5.png" alt="Linearkombination w=2u+v mit u=(1,0,1), v=(0,2,1) ergibt w=(2,2,3). Eine Richtungsskizze zeigt die aufgespannte Ebene; eine getrennte Pfeilkette verbindet zweimal u und einmal v zum resultierenden Vektor.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-72dfc164-455d-4b63-85f0-96e803c9a1d5-description-heading">
+        <p class="section-heading" id="goal-72dfc164-455d-4b63-85f0-96e803c9a1d5-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Vektoren als Linearkombination gegebener Vektoren darstellen, passende Koeffizienten bestimmen und die Darstellung geometrisch deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-72dfc164-455d-4b63-85f0-96e803c9a1d5" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-72dfc164-455d-4b63-85f0-96e803c9a1d5-requires-heading">
+          <p class="section-heading" id="goal-72dfc164-455d-4b63-85f0-96e803c9a1d5-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-f37b0a72-9e23-51c7-aad5-438c17a56899"><span>Vektoren im Raum addieren und vervielfachen</span><code>f37b0a72-9e23-51c7-aad5-438c17a56899</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-72dfc164-455d-4b63-85f0-96e803c9a1d5-reverse-heading">
+          <p class="section-heading" id="goal-72dfc164-455d-4b63-85f0-96e803c9a1d5-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-6fc9246a-9448-4cdb-b627-cf20ea1c65d3"><span>Lineare Abhängigkeit und Unabhängigkeit von Vektoren prüfen</span><code>6fc9246a-9448-4cdb-b627-cf20ea1c65d3</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-72dfc164-455d-4b63-85f0-96e803c9a1d5-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-72dfc164-455d-4b63-85f0-96e803c9a1d5-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d15456eb6c7cc1b070d450dd0389786631856af89f87edd08aa7c0a509c26fbc</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=72dfc164-455d-4b63-85f0-96e803c9a1d5&amp;goalFingerprint=sha256%3Ad15456eb6c7cc1b070d450dd0389786631856af89f87edd08aa7c0a509c26fbc&amp;pageFingerprint=sha256%3Aeacd8482db7f92e777501cfc79c3193815c3531b9140a260004257f6b761d785&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6fc9246a-9448-4cdb-b627-cf20ea1c65d3" data-goal-id="6fc9246a-9448-4cdb-b627-cf20ea1c65d3" data-page-number="16" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44" aria-labelledby="goal-6fc9246a-9448-4cdb-b627-cf20ea1c65d3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6fc9246a-9448-4cdb-b627-cf20ea1c65d3-title"><a class="goal-self-link" href="#goal-6fc9246a-9448-4cdb-b627-cf20ea1c65d3">Lineare Abhängigkeit und Unabhängigkeit von Vektoren prüfen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6fc9246a-9448-4cdb-b627-cf20ea1c65d3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ad5f2098065421f707e8f42637a4c427d5f7ce5fc136fb488d1195bd9b98507d" data-rendered-digest="sha256:7eea9c6d7dc32c179777ad1a88928ba39a9a83bbe3830f1cde2a36c770b6a190" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/6fc9246a-9448-4cdb-b627-cf20ea1c65d3/6fc9246a-9448-4cdb-b627-cf20ea1c65d3.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Lineare Abhängigkeit und Unabhängigkeit von Vektoren prüfen&quot;. Die lernende Person kann entscheiden, ob Vektoren linear abhängig oder unabhängig sind, die Entscheidung rechnerisch begründen und die geometrische Bedeutung erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6fc9246a-9448-4cdb-b627-cf20ea1c65d3-description-heading">
+        <p class="section-heading" id="goal-6fc9246a-9448-4cdb-b627-cf20ea1c65d3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann entscheiden, ob Vektoren linear abhängig oder unabhängig sind, die Entscheidung rechnerisch begründen und die geometrische Bedeutung erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6fc9246a-9448-4cdb-b627-cf20ea1c65d3" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6fc9246a-9448-4cdb-b627-cf20ea1c65d3-requires-heading">
+          <p class="section-heading" id="goal-6fc9246a-9448-4cdb-b627-cf20ea1c65d3-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-72dfc164-455d-4b63-85f0-96e803c9a1d5"><span>Linearkombinationen von Vektoren bilden und deuten</span><code>72dfc164-455d-4b63-85f0-96e803c9a1d5</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-6fc9246a-9448-4cdb-b627-cf20ea1c65d3-reverse-heading">
+          <p class="section-heading" id="goal-6fc9246a-9448-4cdb-b627-cf20ea1c65d3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-6fc9246a-9448-4cdb-b627-cf20ea1c65d3-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6fc9246a-9448-4cdb-b627-cf20ea1c65d3-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a4aa1ee1694db01c13e2690875b027cd75fe6d046479e916224540f9bf9e92fa</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=6fc9246a-9448-4cdb-b627-cf20ea1c65d3&amp;goalFingerprint=sha256%3Aa4aa1ee1694db01c13e2690875b027cd75fe6d046479e916224540f9bf9e92fa&amp;pageFingerprint=sha256%3A12e525a08b070bc1f4c48e98eac73618c404dcc51e6b0cced9bd2117f4773823&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-54cfe5ce-693e-5d4a-ac1b-009570fbbc11" data-goal-id="54cfe5ce-693e-5d4a-ac1b-009570fbbc11" data-page-number="17" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44" aria-labelledby="goal-54cfe5ce-693e-5d4a-ac1b-009570fbbc11-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-54cfe5ce-693e-5d4a-ac1b-009570fbbc11-title"><a class="goal-self-link" href="#goal-54cfe5ce-693e-5d4a-ac1b-009570fbbc11">Kollinearität von Vektoren im Raum prüfen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>54cfe5ce-693e-5d4a-ac1b-009570fbbc11</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0daaddf6f333f56d16fc7bad130358e93fbccdb7fa2ad2c11be1d6a0e918ed0b" data-rendered-digest="sha256:8ce0eb420493208c87cfe1d93ee724404384c4f8b1436194ba9cb764e0625a93" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/54cfe5ce-693e-5d4a-ac1b-009570fbbc11/54cfe5ce-693e-5d4a-ac1b-009570fbbc11.png" alt="Kollinearität durch gemeinsamen Faktor: a=(2,−1,3), b=(4,−2,6)=2a; c=(3,−1,4) hat keinen gemeinsamen Faktor zu a. Explizite Richtungsskizzen zeigen parallele Pfeile a,b im Verhältnis 1:2 beziehungsweise verschiedene Richtungen a,c.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-54cfe5ce-693e-5d4a-ac1b-009570fbbc11-description-heading">
+        <p class="section-heading" id="goal-54cfe5ce-693e-5d4a-ac1b-009570fbbc11-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann prüfen, ob zwei Vektoren im Raum kollinear sind, dazu skalare Vielfache oder Komponentenvergleiche nutzen und die Entscheidung geometrisch begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-54cfe5ce-693e-5d4a-ac1b-009570fbbc11" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-54cfe5ce-693e-5d4a-ac1b-009570fbbc11-requires-heading">
+          <p class="section-heading" id="goal-54cfe5ce-693e-5d4a-ac1b-009570fbbc11-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-f37b0a72-9e23-51c7-aad5-438c17a56899"><span>Vektoren im Raum addieren und vervielfachen</span><code>f37b0a72-9e23-51c7-aad5-438c17a56899</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-54cfe5ce-693e-5d4a-ac1b-009570fbbc11-reverse-heading">
+          <p class="section-heading" id="goal-54cfe5ce-693e-5d4a-ac1b-009570fbbc11-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-54cfe5ce-693e-5d4a-ac1b-009570fbbc11-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-54cfe5ce-693e-5d4a-ac1b-009570fbbc11-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:630a4748f5eaa839e64f959fa5760dfaa0c671e66177130ed37bd342ca71d520</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=54cfe5ce-693e-5d4a-ac1b-009570fbbc11&amp;goalFingerprint=sha256%3A630a4748f5eaa839e64f959fa5760dfaa0c671e66177130ed37bd342ca71d520&amp;pageFingerprint=sha256%3A03e9d9450f985ff0f98c909b01f3cf5c2f1be1178f39ab3754b3aae77bf066ed&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-68d4faef-1a56-5898-9c31-80b7d5d2e430" data-goal-id="68d4faef-1a56-5898-9c31-80b7d5d2e430" data-page-number="18" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44" aria-labelledby="goal-68d4faef-1a56-5898-9c31-80b7d5d2e430-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-68d4faef-1a56-5898-9c31-80b7d5d2e430-title"><a class="goal-self-link" href="#goal-68d4faef-1a56-5898-9c31-80b7d5d2e430">Abstand zweier Punkte im Raum berechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>68d4faef-1a56-5898-9c31-80b7d5d2e430</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:435cc927f875f42a8e492b9fd47722efd51cb654683721e81132ad75b21d1f1f" data-rendered-digest="sha256:0aa324690939baf390f3867325618d8a41467dbbbddcf348340f6cefe4dff2bd" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/68d4faef-1a56-5898-9c31-80b7d5d2e430/68d4faef-1a56-5898-9c31-80b7d5d2e430.png" alt="Abstand von A=(1|2|0) und B=(4|6|12): AB=(3,4,12) und |AB|=13. Ein ausdrücklich schematisches rechtwinkliges Schnittdreieck mit C=(4|6|0) verbindet Grundabstand 5, Höhe 12 und Abstand 13.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-68d4faef-1a56-5898-9c31-80b7d5d2e430-description-heading">
+        <p class="section-heading" id="goal-68d4faef-1a56-5898-9c31-80b7d5d2e430-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus den Koordinaten zweier Punkte im Raum den Verbindungsvektor bilden, dessen Betrag berechnen und den Abstand geometrisch deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-68d4faef-1a56-5898-9c31-80b7d5d2e430" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-68d4faef-1a56-5898-9c31-80b7d5d2e430-requires-heading">
+          <p class="section-heading" id="goal-68d4faef-1a56-5898-9c31-80b7d5d2e430-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-aae119f2-925f-5fc1-b795-b52c9e980863"><span>Räumliche Objekte im Koordinatensystem verorten</span><code>aae119f2-925f-5fc1-b795-b52c9e980863</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-68d4faef-1a56-5898-9c31-80b7d5d2e430-reverse-heading">
+          <p class="section-heading" id="goal-68d4faef-1a56-5898-9c31-80b7d5d2e430-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-69eda7f9-1898-5220-932d-e7bec839b7af"><span>Streckenlängen im Raum bestimmen</span><code>69eda7f9-1898-5220-932d-e7bec839b7af</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-68d4faef-1a56-5898-9c31-80b7d5d2e430-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-68d4faef-1a56-5898-9c31-80b7d5d2e430-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7680701b-35e3-519e-beaa-09753e733756" rel="noreferrer noopener"><span>Schrägbilder räumlicher Objekte zeichnen</span> <code>7680701b-35e3-519e-beaa-09753e733756</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d81d888c-6ffa-5751-8a4b-ce2ff3085071" rel="noreferrer noopener"><span>Punkte im Raum mit Koordinaten beschreiben</span> <code>d81d888c-6ffa-5751-8a4b-ce2ff3085071</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1" rel="noreferrer noopener"><span>Betrag eines Vektors im Raum bestimmen</span> <code>fb7a4fa0-03b5-53b4-bd86-608480b748a1</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-68d4faef-1a56-5898-9c31-80b7d5d2e430-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-68d4faef-1a56-5898-9c31-80b7d5d2e430-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008" rel="noreferrer noopener"><span>Geraden, Ebenen und Schnittfiguren analysieren</span> <code>2f8a3a90-717d-5ac1-b54e-facca26e9008</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1f3dceaa1fc8e5df06d5e69391cdbff79cc1e028e7a91b466086240230db1368</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=68d4faef-1a56-5898-9c31-80b7d5d2e430&amp;goalFingerprint=sha256%3A1f3dceaa1fc8e5df06d5e69391cdbff79cc1e028e7a91b466086240230db1368&amp;pageFingerprint=sha256%3A7131db0dd0bc043612372261dbea51713df0769e8272f3cb5019aab576c71b7b&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-69eda7f9-1898-5220-932d-e7bec839b7af" data-goal-id="69eda7f9-1898-5220-932d-e7bec839b7af" data-page-number="19" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44" aria-labelledby="goal-69eda7f9-1898-5220-932d-e7bec839b7af-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-69eda7f9-1898-5220-932d-e7bec839b7af-title"><a class="goal-self-link" href="#goal-69eda7f9-1898-5220-932d-e7bec839b7af">Streckenlängen im Raum bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>69eda7f9-1898-5220-932d-e7bec839b7af</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c09c910d536a84625b0652f5339da8f7f74361042c5539d7a6f8d1e04317d6d4" data-rendered-digest="sha256:b866903e075ae058e7de5d1bf86d91a78835d44c5a63b059344e7cfc66657f7b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/69eda7f9-1898-5220-932d-e7bec839b7af/69eda7f9-1898-5220-932d-e7bec839b7af.png" alt="Quader mit Kanten 6,4,3: Grundflächendiagonale AC=(6,4,0) hat Länge √52≈7,21; Raumdiagonale AG=(6,4,3) hat Länge √61≈7,81. Alle Eckkoordinaten und farbigen Strecken stimmen mit den Achsen überein.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-69eda7f9-1898-5220-932d-e7bec839b7af-description-heading">
+        <p class="section-heading" id="goal-69eda7f9-1898-5220-932d-e7bec839b7af-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Streckenlängen in räumlichen Figuren aus Punktkoordinaten oder geeigneten Verbindungsvektoren bestimmen und in geometrischen Kontexten verwenden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-69eda7f9-1898-5220-932d-e7bec839b7af" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-69eda7f9-1898-5220-932d-e7bec839b7af-requires-heading">
+          <p class="section-heading" id="goal-69eda7f9-1898-5220-932d-e7bec839b7af-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-68d4faef-1a56-5898-9c31-80b7d5d2e430"><span>Abstand zweier Punkte im Raum berechnen</span><code>68d4faef-1a56-5898-9c31-80b7d5d2e430</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-69eda7f9-1898-5220-932d-e7bec839b7af-reverse-heading">
+          <p class="section-heading" id="goal-69eda7f9-1898-5220-932d-e7bec839b7af-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-69eda7f9-1898-5220-932d-e7bec839b7af-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-69eda7f9-1898-5220-932d-e7bec839b7af-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-50eb5156-5046-5887-80dc-3128c5f8cbd6" rel="noreferrer noopener"><span>Längen- und Winkelbeziehungen einfacher Körper untersuchen</span> <code>50eb5156-5046-5887-80dc-3128c5f8cbd6</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-eb070ed2-7ef4-5afe-b203-190ebb0116af" rel="noreferrer noopener"><span>Parallelität und Orthogonalität einfacher Körper untersuchen</span> <code>eb070ed2-7ef4-5afe-b203-190ebb0116af</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2" rel="noreferrer noopener"><span>Symmetrien einfacher Körper untersuchen</span> <code>b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5d9c156b-e5a4-5e91-9da3-22e858eb1f8e" rel="noreferrer noopener"><span>Teilungsverhältnisse bei Strecken untersuchen</span> <code>5d9c156b-e5a4-5e91-9da3-22e858eb1f8e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f2a12269-6bcb-564a-9fdb-45cfdbd704fc" rel="noreferrer noopener"><span>Teilungsverhältnisse bei Volumina untersuchen</span> <code>f2a12269-6bcb-564a-9fdb-45cfdbd704fc</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 19 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7f688fd6be500540adabefc1fb3194878945b258de1bed3cbb50049508bae1d0</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=69eda7f9-1898-5220-932d-e7bec839b7af&amp;goalFingerprint=sha256%3A7f688fd6be500540adabefc1fb3194878945b258de1bed3cbb50049508bae1d0&amp;pageFingerprint=sha256%3Afbc502aecdbf4573a501baac11ca4542445b51f2cd56f973b4c2f3a287646d1e&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-4bc6cc77-3d20-5d27-a74a-8efb0a038d17" data-goal-id="4bc6cc77-3d20-5d27-a74a-8efb0a038d17" data-page-number="20" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-d6d8904c-896f-5850-8181-06c223346b80 structure:canonical-goal-0a024ecf-27ee-40a2-bf41-0e2faaeb1252" aria-labelledby="goal-4bc6cc77-3d20-5d27-a74a-8efb0a038d17-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-4bc6cc77-3d20-5d27-a74a-8efb0a038d17-title"><a class="goal-self-link" href="#goal-4bc6cc77-3d20-5d27-a74a-8efb0a038d17">Langfristige Entwicklung von Übergangsprozessen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4bc6cc77-3d20-5d27-a74a-8efb0a038d17</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-a5e2169578babaab099ad8a4">Matrizen, Übergangsprozesse und lineare Modelle (Sek II)</a></li><li><a href="#chapter-983517d3fb7afaa5db171604">Fixvektoren, stabile Zustände und Langzeitverhalten</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:662155f8f309be4791999ef9013615f995cf8a5f28eecfaf3560402cfd1ecc00" data-rendered-digest="sha256:cb2b7ce44a5924368d8ef9aece9ff1a7bba073cc12c798dbc1cfe4abd43e881e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/4bc6cc77-3d20-5d27-a74a-8efb0a038d17/4bc6cc77-3d20-5d27-a74a-8efb0a038d17.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Langfristige Entwicklung von Übergangsprozessen (LK)&quot;. Die lernende Person kann die langfristige Entwicklung von Übergangsprozessen mithilfe von Matrixpotenzen, Grenzprozessen und Grenzmatrizen untersuchen und die Ergebnisse im Kontext interpretieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4bc6cc77-3d20-5d27-a74a-8efb0a038d17-description-heading">
+        <p class="section-heading" id="goal-4bc6cc77-3d20-5d27-a74a-8efb0a038d17-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die langfristige Entwicklung von Übergangsprozessen mithilfe von Matrixpotenzen, Grenzprozessen und Grenzmatrizen untersuchen und die Ergebnisse im Kontext interpretieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4bc6cc77-3d20-5d27-a74a-8efb0a038d17" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4bc6cc77-3d20-5d27-a74a-8efb0a038d17-requires-heading">
+          <p class="section-heading" id="goal-4bc6cc77-3d20-5d27-a74a-8efb0a038d17-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-4bc6cc77-3d20-5d27-a74a-8efb0a038d17-reverse-heading">
+          <p class="section-heading" id="goal-4bc6cc77-3d20-5d27-a74a-8efb0a038d17-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-4bc6cc77-3d20-5d27-a74a-8efb0a038d17-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4bc6cc77-3d20-5d27-a74a-8efb0a038d17-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-33c6e64c-5955-5b07-85d4-74a97b19dd56" rel="noreferrer noopener"><span>Matrixpotenzen in Übergangsprozessen deuten</span> <code>33c6e64c-5955-5b07-85d4-74a97b19dd56</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8d893e63-d7de-52d9-8bcb-f48f47d1ccbf" rel="noreferrer noopener"><span>Stabile Zustände mithilfe von Fixvektoren bestimmen</span> <code>8d893e63-d7de-52d9-8bcb-f48f47d1ccbf</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-4bc6cc77-3d20-5d27-a74a-8efb0a038d17-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4bc6cc77-3d20-5d27-a74a-8efb0a038d17-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e4656e83-3f33-5bda-b0bc-d4b63ec4653e" rel="noreferrer noopener"><span>Übergangsprozesse und Grenzverhalten mit Matrizen untersuchen (LK)</span> <code>e4656e83-3f33-5bda-b0bc-d4b63ec4653e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 20 von 20</span>
+      <span>Buch-Digest <code>sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:efb7ac3ead8cf8dbf8ab4d66a8895dedc9e0084ca81f1e7d0a4a838469e422ff</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=4bc6cc77-3d20-5d27-a74a-8efb0a038d17&amp;goalFingerprint=sha256%3Aefb7ac3ead8cf8dbf8ab4d66a8895dedc9e0084ca81f1e7d0a4a838469e422ff&amp;pageFingerprint=sha256%3A5016141f85eef3e20201c758f6779737435d5c9890c655bfe5d12ed6032f59aa&amp;bookDigest=sha256%3A75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2&amp;page=20" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

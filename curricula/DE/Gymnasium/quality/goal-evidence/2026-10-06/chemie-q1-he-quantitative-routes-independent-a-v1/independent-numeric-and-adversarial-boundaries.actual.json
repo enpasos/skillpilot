@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUTC": "2026-10-06T03:01:29.852056+00:00",
+  "status": "Arithmetic PASS; quantitative control-acceptance material underspecification confirmed",
+  "ascorbic": {
+    "blankCorrectedVolumesML": [
+      "15.00",
+      "15.10",
+      "14.90"
+    ],
+    "individualOriginalGL": [
+      "2.641800",
+      "2.6594120",
+      "2.6241880"
+    ],
+    "meanOriginalGL": "2.6418000",
+    "dilutionFactor": 20,
+    "stoichiometry": "1:1 supplied reaction balanced in atoms and net charge"
+  },
+  "methylparaben": {
+    "individualDilutedMGL": [
+      "20",
+      "20.1",
+      "19.9"
+    ],
+    "individualOriginalMGL": [
+      "2.00E+3",
+      "2010",
+      "1990"
+    ],
+    "meanOriginalMGL": "2000",
+    "dilutionFactor": 100,
+    "calibrationAllFourStandardsConsistent": true,
+    "allThreeSamplesWithinRange": true,
+    "interceptSubtractedExactlyOnce": true
+  },
+  "parabenUse": {
+    "MMeetsAllThreeFictionalCriteria": true,
+    "PMeetsMicrobialAndAmountCriteriaButFailsLowTemperatureSolubility": true,
+    "PLinearModelCrossingTemperatureC": "16.0",
+    "MInterpolatedWholeIntervalSolubilityProofRequiresExplicitLinearAssumption": true,
+    "old21PointThresholdWithoutPConflictCouldPass": true,
+    "new24PointThresholdWithoutPConflictCannotPass": true,
+    "lowerPropylDoseIsUntestedNewRecipe": true
+  },
+  "essentialOmissionChecks": [
+    {
+      "omittedEssential": "P solubility conflict",
+      "maximumPointsUnderStatedSubrubric": 21,
+      "passes24": false
+    },
+    {
+      "omittedEssential": "reject shared unvalidated iodine stoichiometry",
+      "maximumPointsUnderStatedSubrubric": 22,
+      "passes24": false
+    },
+    {
+      "omittedEssential": "one entire quantitative analyte, including its method, workflow, calculation and limit",
+      "maximumPointsUnderStatedSubrubric": 15,
+      "passes24": false
+    },
+    {
+      "omittedEssential": "ascorbic blank correction OR paraben intercept correction",
+      "maximumPointsUnderStatedSubrubric": 23,
+      "passes24": false
+    }
+  ],
+  "controlAmbiguityCounterexample": {
+    "actualFrozenReferenceRecoveryPercent": 99,
+    "illustrativeBand98To102Passes": true,
+    "illustrativeBand99Point5To100Point5Passes": false,
+    "neitherBandIsSpecifiedInFrozenMaterial": true,
+    "conclusion": "99% alone cannot determine whether the reference control passed; add explicit fictional acceptance bands and make the solution compare all provided controls against them."
+  },
+  "learnerPerformanceAssessed": false,
+  "actualLaboratoryAcceptanceClaimed": false,
+  "activeWrites": false,
+  "humanApproval": false
+}

@@ -1,0 +1,1043 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v1">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Mathematik Lernzielbeschreibungs-Review – Rollout Batch 002, zweiter Pass Hauptteil</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    h1 { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<article class="goal-page" id="goal-6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077" data-goal-id="6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077" data-page-number="1" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077-title">
+    <header class="goal-header">
+      <h1 id="goal-6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077-title"><a class="goal-self-link" href="#goal-6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077">Teilbarkeit durch 2, 3, 5 und 10 prüfen und begründen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a3353363241737355214fa7bd1da0ee5b2cc25e799097ff91999254f7734467a" data-rendered-digest="sha256:b3f5ab0f1b429a98575f34d87ed9ea363524275848b64423e890c58b64aa0c4b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077/6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077.png" alt="Didaktische Visualisierung zum Lernziel &quot;Teilbarkeit durch 2, 3, 5 und 10 prüfen und begründen&quot;. Die lernende Person kann aus der Stellenwertstruktur natürlicher Zahlen begründen, warum Endziffern- und Quersummenregeln die Teilbarkeit durch 2, 3, 5 oder 10 anzeigen, und damit Teilbarkeitsentscheidungen treffen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077-description-heading">
+        <p class="section-heading" id="goal-6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus der Stellenwertstruktur natürlicher Zahlen begründen, warum Endziffern- und Quersummenregeln die Teilbarkeit durch 2, 3, 5 oder 10 anzeigen, und damit Teilbarkeitsentscheidungen treffen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077-requires-heading">
+          <p class="section-heading" id="goal-6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077-reverse-heading">
+          <p class="section-heading" id="goal-6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-a4c2b831-02f0-5d55-a300-7823a71352c4"><span>Natürliche Zahlen in Primfaktoren zerlegen</span><code>a4c2b831-02f0-5d55-a300-7823a71352c4</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-cafd6520-c4af-4109-9863-cc49ba6fad4d" rel="noreferrer noopener"><span>Multiplikation und ganzzahlige Division als Umkehroperationen nutzen</span> <code>cafd6520-c4af-4109-9863-cc49ba6fad4d</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 1 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8626fa3473304b847e7386a2f4b5ce9f6d53877cfc2d3cefe4ed52ddb8140682</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077&amp;goalFingerprint=sha256%3A8626fa3473304b847e7386a2f4b5ce9f6d53877cfc2d3cefe4ed52ddb8140682&amp;pageFingerprint=sha256%3A35c416615a0b729eb7d2d7611f4ed9f56f0f175eb54a671d76f167a40f5473c6&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a4c2b831-02f0-5d55-a300-7823a71352c4" data-goal-id="a4c2b831-02f0-5d55-a300-7823a71352c4" data-page-number="2" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-a4c2b831-02f0-5d55-a300-7823a71352c4-title">
+    <header class="goal-header">
+      <h1 id="goal-a4c2b831-02f0-5d55-a300-7823a71352c4-title"><a class="goal-self-link" href="#goal-a4c2b831-02f0-5d55-a300-7823a71352c4">Natürliche Zahlen in Primfaktoren zerlegen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a4c2b831-02f0-5d55-a300-7823a71352c4</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:5f691b4be1a52d4d4025a25c620aa5f2f30ada03b789bde63f4243e43c96df75" data-rendered-digest="sha256:d23792ba62701e6432d9c9f8f5ceb5136e03759095a49a4dedab1e9866ac07bd" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/a4c2b831-02f0-5d55-a300-7823a71352c4/a4c2b831-02f0-5d55-a300-7823a71352c4.png" alt="Didaktische Visualisierung zum Lernziel &quot;Natürliche Zahlen in Primfaktoren zerlegen&quot;. Die lernende Person kann natürliche Zahlen größer als 1 schrittweise in Primfaktoren zerlegen, die vollständige Zerlegung angeben und durch Rückmultiplikation prüfen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a4c2b831-02f0-5d55-a300-7823a71352c4-description-heading">
+        <p class="section-heading" id="goal-a4c2b831-02f0-5d55-a300-7823a71352c4-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann natürliche Zahlen größer als 1 schrittweise in Primfaktoren zerlegen, die vollständige Zerlegung angeben und durch Rückmultiplikation prüfen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a4c2b831-02f0-5d55-a300-7823a71352c4" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a4c2b831-02f0-5d55-a300-7823a71352c4-requires-heading">
+          <p class="section-heading" id="goal-a4c2b831-02f0-5d55-a300-7823a71352c4-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077"><span>Teilbarkeit durch 2, 3, 5 und 10 prüfen und begründen</span><code>6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a4c2b831-02f0-5d55-a300-7823a71352c4-reverse-heading">
+          <p class="section-heading" id="goal-a4c2b831-02f0-5d55-a300-7823a71352c4-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-ca8b2e67-7d14-5baf-8404-26820fe3d548"><span>Brüche und Dezimalbrüche ineinander umwandeln</span><code>ca8b2e67-7d14-5baf-8404-26820fe3d548</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-a4c2b831-02f0-5d55-a300-7823a71352c4-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a4c2b831-02f0-5d55-a300-7823a71352c4-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4eeab7d5-eeb3-579b-845e-1c52ffe9e89f" rel="noreferrer noopener"><span>Rationale Zahlen addieren und subtrahieren</span> <code>4eeab7d5-eeb3-579b-845e-1c52ffe9e89f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ee48e811-4c9c-5080-9836-8403fc9f0810" rel="noreferrer noopener"><span>Rationale Zahlen multiplizieren und dividieren</span> <code>ee48e811-4c9c-5080-9836-8403fc9f0810</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 2 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:cc89e9933dc110e3d858a6da5e970bfe8e96a44209d5ecb7454b0db51b8184ea</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=a4c2b831-02f0-5d55-a300-7823a71352c4&amp;goalFingerprint=sha256%3Acc89e9933dc110e3d858a6da5e970bfe8e96a44209d5ecb7454b0db51b8184ea&amp;pageFingerprint=sha256%3A008c277a11a3fa112cfa3fcba4d23625e914414543387dfc9190c9eebe68b463&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d658e26a-e351-4bca-824e-f346deaa87c5" data-goal-id="d658e26a-e351-4bca-824e-f346deaa87c5" data-page-number="3" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-d658e26a-e351-4bca-824e-f346deaa87c5-title">
+    <header class="goal-header">
+      <h1 id="goal-d658e26a-e351-4bca-824e-f346deaa87c5-title"><a class="goal-self-link" href="#goal-d658e26a-e351-4bca-824e-f346deaa87c5">Potenzen mit natürlichen Exponenten deuten und berechnen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d658e26a-e351-4bca-824e-f346deaa87c5</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4b3635ca63f81f9d570c194b425656abe5eea955ac1081a32f7b586e3d4c3f80" data-rendered-digest="sha256:ee53d610797a677c1b352c2cdbe3d9b05aa3f03e1c8a1fba2816f8480d6ca4e5" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/d658e26a-e351-4bca-824e-f346deaa87c5/d658e26a-e351-4bca-824e-f346deaa87c5.png" alt="Didaktische Visualisierung zum Lernziel &quot;Potenzen mit natürlichen Exponenten deuten und berechnen&quot;. Die lernende Person kann für eine Potenz a^n mit natürlichem Exponenten n ≥ 1 Basis und Exponent unterscheiden, a^n als wiederholte Multiplikation von n gleichen Faktoren deuten, den Wert berechnen und das Ergebnis an der Faktorstruktur prüfen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d658e26a-e351-4bca-824e-f346deaa87c5-description-heading">
+        <p class="section-heading" id="goal-d658e26a-e351-4bca-824e-f346deaa87c5-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für eine Potenz a^n mit natürlichem Exponenten n ≥ 1 Basis und Exponent unterscheiden, a^n als wiederholte Multiplikation von n gleichen Faktoren deuten, den Wert berechnen und das Ergebnis an der Faktorstruktur prüfen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d658e26a-e351-4bca-824e-f346deaa87c5" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d658e26a-e351-4bca-824e-f346deaa87c5-requires-heading">
+          <p class="section-heading" id="goal-d658e26a-e351-4bca-824e-f346deaa87c5-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-d658e26a-e351-4bca-824e-f346deaa87c5-reverse-heading">
+          <p class="section-heading" id="goal-d658e26a-e351-4bca-824e-f346deaa87c5-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-e331a425-e9c6-46eb-89cb-dedf72857974"><span>Große Zahlen mit Zehnerpotenzen darstellen und deuten</span><code>e331a425-e9c6-46eb-89cb-dedf72857974</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-d658e26a-e351-4bca-824e-f346deaa87c5-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d658e26a-e351-4bca-824e-f346deaa87c5-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-cafd6520-c4af-4109-9863-cc49ba6fad4d" rel="noreferrer noopener"><span>Multiplikation und ganzzahlige Division als Umkehroperationen nutzen</span> <code>cafd6520-c4af-4109-9863-cc49ba6fad4d</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-d658e26a-e351-4bca-824e-f346deaa87c5-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d658e26a-e351-4bca-824e-f346deaa87c5-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-26f668a0-6425-5466-9cf7-6295dd189005" rel="noreferrer noopener"><span>Potenzen mit rationalen Basen und negativen Exponenten deuten und berechnen</span> <code>26f668a0-6425-5466-9cf7-6295dd189005</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 3 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f44fb0074ab40b7dcf48ae18260cacc78203682c5286ffa7f1efe3d217050db0</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=d658e26a-e351-4bca-824e-f346deaa87c5&amp;goalFingerprint=sha256%3Af44fb0074ab40b7dcf48ae18260cacc78203682c5286ffa7f1efe3d217050db0&amp;pageFingerprint=sha256%3A09b13505ecd3f979da9a35b5c9817f5873df2bae932550b44438fc37b46378da&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e331a425-e9c6-46eb-89cb-dedf72857974" data-goal-id="e331a425-e9c6-46eb-89cb-dedf72857974" data-page-number="4" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-e331a425-e9c6-46eb-89cb-dedf72857974-title">
+    <header class="goal-header">
+      <h1 id="goal-e331a425-e9c6-46eb-89cb-dedf72857974-title"><a class="goal-self-link" href="#goal-e331a425-e9c6-46eb-89cb-dedf72857974">Große Zahlen mit Zehnerpotenzen darstellen und deuten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e331a425-e9c6-46eb-89cb-dedf72857974</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2c1036ce43585576b855bc5a647acc85518707790852281a3469a05322ba3ea7" data-rendered-digest="sha256:fc965693af7a953612da4ba9eabe49d75bb0c1a5351c7a4387995fbd04beea63" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/e331a425-e9c6-46eb-89cb-dedf72857974/e331a425-e9c6-46eb-89cb-dedf72857974.png" alt="Didaktische Visualisierung zum Lernziel &quot;Große Zahlen mit Zehnerpotenzen darstellen und deuten&quot;. Die lernende Person kann große natürliche Zahlen mithilfe der Stellenwertstruktur zwischen Dezimalschreibweise und Darstellungen mit positiven Zehnerpotenzen wechseln, aus dem Exponenten die Größenordnung deuten und die Darstellung in einfachen Sachzusammenhängen auf Plausibilität prüfen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e331a425-e9c6-46eb-89cb-dedf72857974-description-heading">
+        <p class="section-heading" id="goal-e331a425-e9c6-46eb-89cb-dedf72857974-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann große natürliche Zahlen mithilfe der Stellenwertstruktur zwischen Dezimalschreibweise und Darstellungen mit positiven Zehnerpotenzen wechseln, aus dem Exponenten die Größenordnung deuten und die Darstellung in einfachen Sachzusammenhängen auf Plausibilität prüfen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e331a425-e9c6-46eb-89cb-dedf72857974" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e331a425-e9c6-46eb-89cb-dedf72857974-requires-heading">
+          <p class="section-heading" id="goal-e331a425-e9c6-46eb-89cb-dedf72857974-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-d658e26a-e351-4bca-824e-f346deaa87c5"><span>Potenzen mit natürlichen Exponenten deuten und berechnen</span><code>d658e26a-e351-4bca-824e-f346deaa87c5</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e331a425-e9c6-46eb-89cb-dedf72857974-reverse-heading">
+          <p class="section-heading" id="goal-e331a425-e9c6-46eb-89cb-dedf72857974-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-e331a425-e9c6-46eb-89cb-dedf72857974-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e331a425-e9c6-46eb-89cb-dedf72857974-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-26f668a0-6425-5466-9cf7-6295dd189005" rel="noreferrer noopener"><span>Potenzen mit rationalen Basen und negativen Exponenten deuten und berechnen</span> <code>26f668a0-6425-5466-9cf7-6295dd189005</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 4 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f30c7fdb7afc52ad9e92950b2530ea44c488d7d760ebec9410e7650453220572</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=e331a425-e9c6-46eb-89cb-dedf72857974&amp;goalFingerprint=sha256%3Af30c7fdb7afc52ad9e92950b2530ea44c488d7d760ebec9410e7650453220572&amp;pageFingerprint=sha256%3A85a93ad06a35b15ad32fdf94e9379d1b53a2633c4bde2630b7aed5780e4381a1&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5d1decb2-b01b-5c85-88fc-9fc255ff9776" data-goal-id="5d1decb2-b01b-5c85-88fc-9fc255ff9776" data-page-number="5" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-5d1decb2-b01b-5c85-88fc-9fc255ff9776-title">
+    <header class="goal-header">
+      <h1 id="goal-5d1decb2-b01b-5c85-88fc-9fc255ff9776-title"><a class="goal-self-link" href="#goal-5d1decb2-b01b-5c85-88fc-9fc255ff9776">Klammerterme und Rechenreihenfolge sicher auswerten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5d1decb2-b01b-5c85-88fc-9fc255ff9776</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4074311e593df75a29abcf79660e1298e423048d3147eb5389847c3dcf38c9a7" data-rendered-digest="sha256:ee4e66bda587f84943946ef875097a33b2356e0bac0df8576366b7219adbc160" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/5d1decb2-b01b-5c85-88fc-9fc255ff9776/5d1decb2-b01b-5c85-88fc-9fc255ff9776.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Klammerterme und Rechenreihenfolge sicher auswerten&quot;. Die lernende Person kann Terme mit Grundrechenarten anhand ihrer Operationsstruktur gliedern, die Vorrangwirkung von Klammern und Rechenregeln begründen und den Term schrittweise korrekt auswerten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5d1decb2-b01b-5c85-88fc-9fc255ff9776-description-heading">
+        <p class="section-heading" id="goal-5d1decb2-b01b-5c85-88fc-9fc255ff9776-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Terme mit Grundrechenarten anhand ihrer Operationsstruktur gliedern, die Vorrangwirkung von Klammern und Rechenregeln begründen und den Term schrittweise korrekt auswerten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5d1decb2-b01b-5c85-88fc-9fc255ff9776" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5d1decb2-b01b-5c85-88fc-9fc255ff9776-requires-heading">
+          <p class="section-heading" id="goal-5d1decb2-b01b-5c85-88fc-9fc255ff9776-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-5d1decb2-b01b-5c85-88fc-9fc255ff9776-reverse-heading">
+          <p class="section-heading" id="goal-5d1decb2-b01b-5c85-88fc-9fc255ff9776-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3"><span>Größen und Einheiten vergleichen und umrechnen</span><code>f2e42af5-67a6-477e-82ea-e65b09cc6cb3</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-5d1decb2-b01b-5c85-88fc-9fc255ff9776-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5d1decb2-b01b-5c85-88fc-9fc255ff9776-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4b67bed9-06da-40b2-a306-24e9e7dfd390" rel="noreferrer noopener"><span>Ganze Zahlen addieren</span> <code>4b67bed9-06da-40b2-a306-24e9e7dfd390</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3fde4db5-9e92-5f3a-98e1-d386a42b9e01" rel="noreferrer noopener"><span>Ganze Zahlen subtrahieren</span> <code>3fde4db5-9e92-5f3a-98e1-d386a42b9e01</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-cafd6520-c4af-4109-9863-cc49ba6fad4d" rel="noreferrer noopener"><span>Multiplikation und ganzzahlige Division als Umkehroperationen nutzen</span> <code>cafd6520-c4af-4109-9863-cc49ba6fad4d</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-5d1decb2-b01b-5c85-88fc-9fc255ff9776-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5d1decb2-b01b-5c85-88fc-9fc255ff9776-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4eeab7d5-eeb3-579b-845e-1c52ffe9e89f" rel="noreferrer noopener"><span>Rationale Zahlen addieren und subtrahieren</span> <code>4eeab7d5-eeb3-579b-845e-1c52ffe9e89f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ee48e811-4c9c-5080-9836-8403fc9f0810" rel="noreferrer noopener"><span>Rationale Zahlen multiplizieren und dividieren</span> <code>ee48e811-4c9c-5080-9836-8403fc9f0810</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0a6dab2e-1bbb-5587-adb0-456d3991c327" rel="noreferrer noopener"><span>Terme mit rationalen Zahlen strukturiert auswerten</span> <code>0a6dab2e-1bbb-5587-adb0-456d3991c327</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 5 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ba6f2238326d89f5a641dd124d22f2dd3e7dbdaf70bbd71cfd1b0e3e343a9e99</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=5d1decb2-b01b-5c85-88fc-9fc255ff9776&amp;goalFingerprint=sha256%3Aba6f2238326d89f5a641dd124d22f2dd3e7dbdaf70bbd71cfd1b0e3e343a9e99&amp;pageFingerprint=sha256%3A48257bd78732ffe9dcc6730147b54ced1beda773bfab2e8a00d397fab53ecb8d&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2ae76eae-799c-463e-9ec9-82327f8209a8" data-goal-id="2ae76eae-799c-463e-9ec9-82327f8209a8" data-page-number="6" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-2ae76eae-799c-463e-9ec9-82327f8209a8-title">
+    <header class="goal-header">
+      <h1 id="goal-2ae76eae-799c-463e-9ec9-82327f8209a8-title"><a class="goal-self-link" href="#goal-2ae76eae-799c-463e-9ec9-82327f8209a8">Einfache Zählprinzipien in Sachsituationen anwenden</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2ae76eae-799c-463e-9ec9-82327f8209a8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a0ec06b8daf4004534516ba6ec85e87b55249f2a2fba05be67d36f989700c3b0" data-rendered-digest="sha256:10f96312fee66e174f4a16bab29b772842c53abbec0df2a3fdd359a32a68afa2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/2ae76eae-799c-463e-9ec9-82327f8209a8/2ae76eae-799c-463e-9ec9-82327f8209a8.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Einfache Zählprinzipien in Sachsituationen anwenden&quot;. Die lernende Person kann in einfachen realitätsnahen Situationen Möglichkeiten vollständig und ohne Doppelzählung systematisch erfassen, eine passende Zählstrategie wählen und die ermittelte Anzahl nachvollziehbar begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2ae76eae-799c-463e-9ec9-82327f8209a8-description-heading">
+        <p class="section-heading" id="goal-2ae76eae-799c-463e-9ec9-82327f8209a8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in einfachen realitätsnahen Situationen Möglichkeiten vollständig und ohne Doppelzählung systematisch erfassen, eine passende Zählstrategie wählen und die ermittelte Anzahl nachvollziehbar begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2ae76eae-799c-463e-9ec9-82327f8209a8" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2ae76eae-799c-463e-9ec9-82327f8209a8-requires-heading">
+          <p class="section-heading" id="goal-2ae76eae-799c-463e-9ec9-82327f8209a8-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2ae76eae-799c-463e-9ec9-82327f8209a8-reverse-heading">
+          <p class="section-heading" id="goal-2ae76eae-799c-463e-9ec9-82327f8209a8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3"><span>Größen und Einheiten vergleichen und umrechnen</span><code>f2e42af5-67a6-477e-82ea-e65b09cc6cb3</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2ae76eae-799c-463e-9ec9-82327f8209a8-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2ae76eae-799c-463e-9ec9-82327f8209a8-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-cafd6520-c4af-4109-9863-cc49ba6fad4d" rel="noreferrer noopener"><span>Multiplikation und ganzzahlige Division als Umkehroperationen nutzen</span> <code>cafd6520-c4af-4109-9863-cc49ba6fad4d</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2ae76eae-799c-463e-9ec9-82327f8209a8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2ae76eae-799c-463e-9ec9-82327f8209a8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6" rel="noreferrer noopener"><span>Zählverfahren und kombinatorische Überlegungen für Wahrscheinlichkeiten nutzen</span> <code>3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 6 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:46976116baf5ba877436626be9d5adb86163b85f8bf178b662c53e7e9a693755</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=2ae76eae-799c-463e-9ec9-82327f8209a8&amp;goalFingerprint=sha256%3A46976116baf5ba877436626be9d5adb86163b85f8bf178b662c53e7e9a693755&amp;pageFingerprint=sha256%3A6a570953b95a82d90f9c5ee11e44e758f7fe46fe28ade33b3c8c8a8ede6a1a7e&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b5de0574-93ed-409c-80ee-312211420cd6" data-goal-id="b5de0574-93ed-409c-80ee-312211420cd6" data-page-number="7" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-b5de0574-93ed-409c-80ee-312211420cd6-title">
+    <header class="goal-header">
+      <h1 id="goal-b5de0574-93ed-409c-80ee-312211420cd6-title"><a class="goal-self-link" href="#goal-b5de0574-93ed-409c-80ee-312211420cd6">Problemstellungen mit ganzen Zahlen heuristisch lösen und Rechenwege dokumentieren</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b5de0574-93ed-409c-80ee-312211420cd6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e50285fddcaf3b0f427b85091340c880b45e057b67a103ac442b5fd4b4a3328c" data-rendered-digest="sha256:4999cfafe7a2a7f45a9e11b30a8744480e37c9f5afc01bb3c0e893aaa3ef7e4b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/b5de0574-93ed-409c-80ee-312211420cd6/b5de0574-93ed-409c-80ee-312211420cd6.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Problemstellungen mit ganzen Zahlen heuristisch lösen und Rechenwege dokumentieren&quot;. Die lernende Person kann Problemstellungen mit ganzen Zahlen strukturieren, eine passende heuristische Strategie und geeignete Rechenschritte begründet auswählen, den Lösungsweg nachvollziehbar dokumentieren und das Ergebnis im Sachzusammenhang prüfen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b5de0574-93ed-409c-80ee-312211420cd6-description-heading">
+        <p class="section-heading" id="goal-b5de0574-93ed-409c-80ee-312211420cd6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Problemstellungen mit ganzen Zahlen strukturieren, eine passende heuristische Strategie und geeignete Rechenschritte begründet auswählen, den Lösungsweg nachvollziehbar dokumentieren und das Ergebnis im Sachzusammenhang prüfen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HE, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b5de0574-93ed-409c-80ee-312211420cd6" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b5de0574-93ed-409c-80ee-312211420cd6-requires-heading">
+          <p class="section-heading" id="goal-b5de0574-93ed-409c-80ee-312211420cd6-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-b5de0574-93ed-409c-80ee-312211420cd6-reverse-heading">
+          <p class="section-heading" id="goal-b5de0574-93ed-409c-80ee-312211420cd6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3"><span>Größen und Einheiten vergleichen und umrechnen</span><code>f2e42af5-67a6-477e-82ea-e65b09cc6cb3</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b5de0574-93ed-409c-80ee-312211420cd6-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b5de0574-93ed-409c-80ee-312211420cd6-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4b67bed9-06da-40b2-a306-24e9e7dfd390" rel="noreferrer noopener"><span>Ganze Zahlen addieren</span> <code>4b67bed9-06da-40b2-a306-24e9e7dfd390</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3fde4db5-9e92-5f3a-98e1-d386a42b9e01" rel="noreferrer noopener"><span>Ganze Zahlen subtrahieren</span> <code>3fde4db5-9e92-5f3a-98e1-d386a42b9e01</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-cafd6520-c4af-4109-9863-cc49ba6fad4d" rel="noreferrer noopener"><span>Multiplikation und ganzzahlige Division als Umkehroperationen nutzen</span> <code>cafd6520-c4af-4109-9863-cc49ba6fad4d</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 7 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:64631b032866f90ebccd3363a113345e4615aa3128d8e590d628d38f17eaaff2</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=b5de0574-93ed-409c-80ee-312211420cd6&amp;goalFingerprint=sha256%3A64631b032866f90ebccd3363a113345e4615aa3128d8e590d628d38f17eaaff2&amp;pageFingerprint=sha256%3A88eb8c493caaf1768934b4f046771b839e4b7c5d12b0fd72898b32aded2b4203&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page goal-page--dense-relations" id="goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3" data-goal-id="f2e42af5-67a6-477e-82ea-e65b09cc6cb3" data-page-number="8" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3-title">
+    <header class="goal-header">
+      <h1 id="goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3-title"><a class="goal-self-link" href="#goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3">Größen und Einheiten vergleichen und umrechnen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f2e42af5-67a6-477e-82ea-e65b09cc6cb3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:43e0109f2128503b22916eb9233e39c828da3531c5ab5f70675158393f2cc242" data-rendered-digest="sha256:e412a417613f1eec77d7338315bf9d5e81fdbdfbde002d14c7db8efe8413cb59" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/f2e42af5-67a6-477e-82ea-e65b09cc6cb3/f2e42af5-67a6-477e-82ea-e65b09cc6cb3.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Größen und Einheiten vergleichen und umrechnen&quot;. Die lernende Person kann für alltagsnahe Größen passende Einheiten auswählen, Größenangaben sicher in gleichartige Einheiten umrechnen und Messergebnisse nach der Umrechnung sinnvoll vergleichen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3-description-heading">
+        <p class="section-heading" id="goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für alltagsnahe Größen passende Einheiten auswählen, Größenangaben sicher in gleichartige Einheiten umrechnen und Messergebnisse nach der Umrechnung sinnvoll vergleichen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, SN, ST:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3-requires-heading">
+          <p class="section-heading" id="goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-5d1decb2-b01b-5c85-88fc-9fc255ff9776"><span>Klammerterme und Rechenreihenfolge sicher auswerten</span><code>5d1decb2-b01b-5c85-88fc-9fc255ff9776</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-2ae76eae-799c-463e-9ec9-82327f8209a8"><span>Einfache Zählprinzipien in Sachsituationen anwenden</span><code>2ae76eae-799c-463e-9ec9-82327f8209a8</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-b5de0574-93ed-409c-80ee-312211420cd6"><span>Problemstellungen mit ganzen Zahlen heuristisch lösen und Rechenwege dokumentieren</span><code>b5de0574-93ed-409c-80ee-312211420cd6</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3-reverse-heading">
+          <p class="section-heading" id="goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-ca623958-c204-5d1b-bdd0-3f76765674cb"><span>Mit Größen einheitengerecht rechnen und Ergebnisse deuten</span><code>ca623958-c204-5d1b-bdd0-3f76765674cb</code><span class="reference-page">S. 9</span></a></li><li><a href="#goal-79dd11f0-ed20-5b92-a215-b061a2098c0c"><span>Maßstabsaufgaben mit gleichartigen Längeneinheiten lösen</span><code>79dd11f0-ed20-5b92-a215-b061a2098c0c</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-03a87896-088d-4b21-a37b-d0604d784540"><span>Größen in Sachsituationen mithilfe von Bezugsgrößen schätzen</span><code>03a87896-088d-4b21-a37b-d0604d784540</code><span class="reference-page">S. 12</span></a></li><li><a href="#goal-0bd7dc9b-c7f9-52e6-b374-a019edfd821c"><span>Rechteckflächenformel aus dem Messprinzip erklären</span><code>0bd7dc9b-c7f9-52e6-b374-a019edfd821c</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e82d8d3a-9012-5482-afe6-ab0d727a49bb" rel="noreferrer noopener"><span>Rechnungen mit Umkehroperationen überprüfen</span> <code>e82d8d3a-9012-5482-afe6-ab0d727a49bb</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fe07241a-b779-5f35-a82d-7aa51ae74f42" rel="noreferrer noopener"><span>Natürliche Zahlen runden</span> <code>fe07241a-b779-5f35-a82d-7aa51ae74f42</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1a25ef44-f310-4c23-9ba8-44baec60d3b0" rel="noreferrer noopener"><span>Unbegrenztheit der natürlichen Zahlen mit dem Nachfolgerprinzip begründen</span> <code>1a25ef44-f310-4c23-9ba8-44baec60d3b0</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8d1bb6ce-2433-4637-94ba-3bdc35fa5b10" rel="noreferrer noopener"><span>Aussagen über ganze Zahlen prüfen und mit Gegenbeispielen widerlegen</span> <code>8d1bb6ce-2433-4637-94ba-3bdc35fa5b10</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-191c67db-44a8-4f63-994a-d85e8e301194" rel="noreferrer noopener"><span>Rechenvorteile mit Kommutativ- und Assoziativgesetz nutzen</span> <code>191c67db-44a8-4f63-994a-d85e8e301194</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-11e3cf89-9224-5894-8e4a-ae8ff5af0119" rel="noreferrer noopener"><span>Einfache additive Gleichungen durch Umkehraufgaben lösen</span> <code>11e3cf89-9224-5894-8e4a-ae8ff5af0119</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-54148506-c23f-41b8-959b-068dd194cf15" rel="noreferrer noopener"><span>Einfache multiplikative Gleichungen unter Bereichsbedingungen lösen</span> <code>54148506-c23f-41b8-959b-068dd194cf15</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-491e0858-e977-516e-a339-1cc2f9e9690f" rel="noreferrer noopener"><span>Flächenformeln ebener Figuren durch Zerlegen und Ergänzen herleiten</span> <code>491e0858-e977-516e-a339-1cc2f9e9690f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-87c55be5-06a9-41e2-a0d4-c60f7c8b8078" rel="noreferrer noopener"><span>Flächeninhalte ebener Figuren berechnen</span> <code>87c55be5-06a9-41e2-a0d4-c60f7c8b8078</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b44f038c-fb1f-527e-b9ad-382214d0328a" rel="noreferrer noopener"><span>Volumenformel des Quaders mit Einheitswürfeln plausibilisieren</span> <code>b44f038c-fb1f-527e-b9ad-382214d0328a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-57fbbf31-9b8c-5408-9af5-fbc73acd12bb" rel="noreferrer noopener"><span>Volumeneinheiten deuten und umrechnen</span> <code>57fbbf31-9b8c-5408-9af5-fbc73acd12bb</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1f89d69e-ead1-424b-8221-fae37fdea2bc" rel="noreferrer noopener"><span>Volumina und Oberflächen einfacher Körper berechnen</span> <code>1f89d69e-ead1-424b-8221-fae37fdea2bc</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-37bf2eb6-75a0-44c1-a988-ca0e203cb072" rel="noreferrer noopener"><span>Geschwindigkeit als abgeleitete Größe verwenden</span> <code>37bf2eb6-75a0-44c1-a988-ca0e203cb072</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ad26e4d9-b025-57ec-8f25-df4a2415cc62" rel="noreferrer noopener"><span>Größen mit geeigneten Messmitteln erfassen</span> <code>ad26e4d9-b025-57ec-8f25-df4a2415cc62</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-25a3cc39-976e-58a5-b882-73baee5c037c" rel="noreferrer noopener"><span>Maßangaben aus Quellenmaterial entnehmen</span> <code>25a3cc39-976e-58a5-b882-73baee5c037c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 8 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5814f72fe6bc2103fa1e1ff41873ad57886b364f93941a43fc7c642f39269f5b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=f2e42af5-67a6-477e-82ea-e65b09cc6cb3&amp;goalFingerprint=sha256%3A5814f72fe6bc2103fa1e1ff41873ad57886b364f93941a43fc7c642f39269f5b&amp;pageFingerprint=sha256%3A181389773213d40ccc58233fe178c1512adf2592ab065e8b7c70ba0e65908b77&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ca623958-c204-5d1b-bdd0-3f76765674cb" data-goal-id="ca623958-c204-5d1b-bdd0-3f76765674cb" data-page-number="9" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-ca623958-c204-5d1b-bdd0-3f76765674cb-title">
+    <header class="goal-header">
+      <h1 id="goal-ca623958-c204-5d1b-bdd0-3f76765674cb-title"><a class="goal-self-link" href="#goal-ca623958-c204-5d1b-bdd0-3f76765674cb">Mit Größen einheitengerecht rechnen und Ergebnisse deuten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ca623958-c204-5d1b-bdd0-3f76765674cb</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a9ea2c7a964d01c2a48f6408fc144002251d8dc75707b61ab8a3c18c8c90d93e" data-rendered-digest="sha256:6faa866f9a47260cfabbc1b4bea3352cf47301e4934e7f23475517bc3dd4d2ec" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/ca623958-c204-5d1b-bdd0-3f76765674cb/ca623958-c204-5d1b-bdd0-3f76765674cb.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Mit Größen einheitengerecht rechnen und Ergebnisse deuten&quot;. Die lernende Person kann in einer Sachsituation anhand der beteiligten Größen entscheiden, welche Rechenoperation sinnvoll ist, beim Addieren und Subtrahieren nur gleichartige Größen in einer gemeinsamen Einheit verknüpfen, eine Größe mit einer Zahl vervielfachen oder teilen und Ergebnis sowie Einheit im Kontext auf Plausibilität prüfen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ca623958-c204-5d1b-bdd0-3f76765674cb-description-heading">
+        <p class="section-heading" id="goal-ca623958-c204-5d1b-bdd0-3f76765674cb-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in einer Sachsituation anhand der beteiligten Größen entscheiden, welche Rechenoperation sinnvoll ist, beim Addieren und Subtrahieren nur gleichartige Größen in einer gemeinsamen Einheit verknüpfen, eine Größe mit einer Zahl vervielfachen oder teilen und Ergebnis sowie Einheit im Kontext auf Plausibilität prüfen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HH, SN, ST:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ca623958-c204-5d1b-bdd0-3f76765674cb" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ca623958-c204-5d1b-bdd0-3f76765674cb-requires-heading">
+          <p class="section-heading" id="goal-ca623958-c204-5d1b-bdd0-3f76765674cb-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3"><span>Größen und Einheiten vergleichen und umrechnen</span><code>f2e42af5-67a6-477e-82ea-e65b09cc6cb3</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ca623958-c204-5d1b-bdd0-3f76765674cb-reverse-heading">
+          <p class="section-heading" id="goal-ca623958-c204-5d1b-bdd0-3f76765674cb-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-596345cd-679e-5c7b-955f-e8cb1ec81e96"><span>Einfache proportionale Sachaufgaben mit Dreisatz lösen</span><code>596345cd-679e-5c7b-955f-e8cb1ec81e96</code><span class="reference-page">S. 10</span></a></li><li><a href="#goal-d6c3fb37-ece6-5b56-9221-1eeb21845877"><span>Umfang und Flächeninhalt unterscheiden und anwenden</span><code>d6c3fb37-ece6-5b56-9221-1eeb21845877</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-ca623958-c204-5d1b-bdd0-3f76765674cb-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ca623958-c204-5d1b-bdd0-3f76765674cb-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-ca623958-c204-5d1b-bdd0-3f76765674cb-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ca623958-c204-5d1b-bdd0-3f76765674cb-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b44f038c-fb1f-527e-b9ad-382214d0328a" rel="noreferrer noopener"><span>Volumenformel des Quaders mit Einheitswürfeln plausibilisieren</span> <code>b44f038c-fb1f-527e-b9ad-382214d0328a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-57fbbf31-9b8c-5408-9af5-fbc73acd12bb" rel="noreferrer noopener"><span>Volumeneinheiten deuten und umrechnen</span> <code>57fbbf31-9b8c-5408-9af5-fbc73acd12bb</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1f89d69e-ead1-424b-8221-fae37fdea2bc" rel="noreferrer noopener"><span>Volumina und Oberflächen einfacher Körper berechnen</span> <code>1f89d69e-ead1-424b-8221-fae37fdea2bc</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2345ae25-5805-4c72-b830-32e63cc6262a" rel="noreferrer noopener"><span>Dichte als abgeleitete Größe verwenden</span> <code>2345ae25-5805-4c72-b830-32e63cc6262a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-37bf2eb6-75a0-44c1-a988-ca0e203cb072" rel="noreferrer noopener"><span>Geschwindigkeit als abgeleitete Größe verwenden</span> <code>37bf2eb6-75a0-44c1-a988-ca0e203cb072</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-314854a0-4e97-462e-9486-9fd83652e91d" rel="noreferrer noopener"><span>Taschenrechner situationsgerecht nutzen</span> <code>314854a0-4e97-462e-9486-9fd83652e91d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 9 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8fd9cb87671c6a30a6e30ac97458e961a8e755b9e27feb128658be82a31d35c8</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=ca623958-c204-5d1b-bdd0-3f76765674cb&amp;goalFingerprint=sha256%3A8fd9cb87671c6a30a6e30ac97458e961a8e755b9e27feb128658be82a31d35c8&amp;pageFingerprint=sha256%3A8baff713ed48701bff91b47a2be259d2a87f63246793c49063b7f063b982534a&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-596345cd-679e-5c7b-955f-e8cb1ec81e96" data-goal-id="596345cd-679e-5c7b-955f-e8cb1ec81e96" data-page-number="10" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-596345cd-679e-5c7b-955f-e8cb1ec81e96-title">
+    <header class="goal-header">
+      <h1 id="goal-596345cd-679e-5c7b-955f-e8cb1ec81e96-title"><a class="goal-self-link" href="#goal-596345cd-679e-5c7b-955f-e8cb1ec81e96">Einfache proportionale Sachaufgaben mit Dreisatz lösen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>596345cd-679e-5c7b-955f-e8cb1ec81e96</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:378e343cbe3f797bc03c17b63a54c41a1932d43b4ee869e2bd284767d50f58cf" data-rendered-digest="sha256:05509670cdfe71790607221901d5bb6a15e7535144fb03532527d223858435dd" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/596345cd-679e-5c7b-955f-e8cb1ec81e96/596345cd-679e-5c7b-955f-e8cb1ec81e96.png" alt="Didaktische Visualisierung zum Lernziel &quot;Einfache proportionale Sachaufgaben mit Dreisatz lösen&quot;. Die lernende Person kann in einfachen Sachsituationen eine proportionale Zuordnung an einem gleichbleibenden Verhältnis erkennen, einen gesuchten Wert durch Zurückführen auf 1 und Vervielfachen bestimmen und diesen Rechenweg begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-596345cd-679e-5c7b-955f-e8cb1ec81e96-description-heading">
+        <p class="section-heading" id="goal-596345cd-679e-5c7b-955f-e8cb1ec81e96-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in einfachen Sachsituationen eine proportionale Zuordnung an einem gleichbleibenden Verhältnis erkennen, einen gesuchten Wert durch Zurückführen auf 1 und Vervielfachen bestimmen und diesen Rechenweg begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HH, SN, ST:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-596345cd-679e-5c7b-955f-e8cb1ec81e96" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-596345cd-679e-5c7b-955f-e8cb1ec81e96-requires-heading">
+          <p class="section-heading" id="goal-596345cd-679e-5c7b-955f-e8cb1ec81e96-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ca623958-c204-5d1b-bdd0-3f76765674cb"><span>Mit Größen einheitengerecht rechnen und Ergebnisse deuten</span><code>ca623958-c204-5d1b-bdd0-3f76765674cb</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-596345cd-679e-5c7b-955f-e8cb1ec81e96-reverse-heading">
+          <p class="section-heading" id="goal-596345cd-679e-5c7b-955f-e8cb1ec81e96-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-79dd11f0-ed20-5b92-a215-b061a2098c0c"><span>Maßstabsaufgaben mit gleichartigen Längeneinheiten lösen</span><code>79dd11f0-ed20-5b92-a215-b061a2098c0c</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-596345cd-679e-5c7b-955f-e8cb1ec81e96-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-596345cd-679e-5c7b-955f-e8cb1ec81e96-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-596345cd-679e-5c7b-955f-e8cb1ec81e96-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-596345cd-679e-5c7b-955f-e8cb1ec81e96-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71d43fcc-d787-4874-ae4a-2336364e9c0a" rel="noreferrer noopener"><span>Grundaufgaben der Prozentrechnung lösen</span> <code>71d43fcc-d787-4874-ae4a-2336364e9c0a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 10 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b8117685646a096a7763c9dbe0f5fcc2f583c8ff2f18cea2a6e2dcaafbc10bb4</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=596345cd-679e-5c7b-955f-e8cb1ec81e96&amp;goalFingerprint=sha256%3Ab8117685646a096a7763c9dbe0f5fcc2f583c8ff2f18cea2a6e2dcaafbc10bb4&amp;pageFingerprint=sha256%3Ae4fb6603b18e524041ca4e6c605162122d3f8453e6733afbd2016f138f5e4b8a&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-79dd11f0-ed20-5b92-a215-b061a2098c0c" data-goal-id="79dd11f0-ed20-5b92-a215-b061a2098c0c" data-page-number="11" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-79dd11f0-ed20-5b92-a215-b061a2098c0c-title">
+    <header class="goal-header">
+      <h1 id="goal-79dd11f0-ed20-5b92-a215-b061a2098c0c-title"><a class="goal-self-link" href="#goal-79dd11f0-ed20-5b92-a215-b061a2098c0c">Maßstabsaufgaben mit gleichartigen Längeneinheiten lösen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>79dd11f0-ed20-5b92-a215-b061a2098c0c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a9eb5d359baa57cf646e55b2982de5e6833f78d1f20868acafb6f6521943eb2a" data-rendered-digest="sha256:2677b2feb715347f6e70c5452ecdfda87d23ab9655ea955e063ea7e62fffeeed" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/79dd11f0-ed20-5b92-a215-b061a2098c0c/79dd11f0-ed20-5b92-a215-b061a2098c0c.png" alt="Didaktische Visualisierung zum Lernziel &quot;Maßstabsaufgaben mit gleichartigen Längeneinheiten lösen&quot;. Die lernende Person kann in Karten-, Plan- oder Modellsituationen einen Maßstab als Verhältnis von dargestellter zu realer Länge deuten, die Längen in gleichartige Einheiten umrechnen und eine gesuchte dargestellte oder reale Länge bestimmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-79dd11f0-ed20-5b92-a215-b061a2098c0c-description-heading">
+        <p class="section-heading" id="goal-79dd11f0-ed20-5b92-a215-b061a2098c0c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in Karten-, Plan- oder Modellsituationen einen Maßstab als Verhältnis von dargestellter zu realer Länge deuten, die Längen in gleichartige Einheiten umrechnen und eine gesuchte dargestellte oder reale Länge bestimmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HH, SN, ST:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-79dd11f0-ed20-5b92-a215-b061a2098c0c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-79dd11f0-ed20-5b92-a215-b061a2098c0c-requires-heading">
+          <p class="section-heading" id="goal-79dd11f0-ed20-5b92-a215-b061a2098c0c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3"><span>Größen und Einheiten vergleichen und umrechnen</span><code>f2e42af5-67a6-477e-82ea-e65b09cc6cb3</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-596345cd-679e-5c7b-955f-e8cb1ec81e96"><span>Einfache proportionale Sachaufgaben mit Dreisatz lösen</span><code>596345cd-679e-5c7b-955f-e8cb1ec81e96</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-79dd11f0-ed20-5b92-a215-b061a2098c0c-reverse-heading">
+          <p class="section-heading" id="goal-79dd11f0-ed20-5b92-a215-b061a2098c0c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-79dd11f0-ed20-5b92-a215-b061a2098c0c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-79dd11f0-ed20-5b92-a215-b061a2098c0c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8a360e18-c40f-5e77-a445-1311a8f8430e" rel="noreferrer noopener"><span>Aufgabe 3 (Jahrgangsstufe 9, 6 BE)</span> <code>8a360e18-c40f-5e77-a445-1311a8f8430e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2041f4ec-620d-4a20-9922-6ebf16f8f8fa" rel="noreferrer noopener"><span>Kongruente sowie maßstäblich vergrößerte und verkleinerte Figuren zeichnen und begründen</span> <code>2041f4ec-620d-4a20-9922-6ebf16f8f8fa</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 11 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:cf42f7ad4ddabb2ca9fc80b9777042df7f806810c09ec663c629f57715cd458b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=79dd11f0-ed20-5b92-a215-b061a2098c0c&amp;goalFingerprint=sha256%3Acf42f7ad4ddabb2ca9fc80b9777042df7f806810c09ec663c629f57715cd458b&amp;pageFingerprint=sha256%3A46a6cb5decb67bb9b812f15facde5819c8152a9bd6d7c0bcb3e575f08417d726&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-03a87896-088d-4b21-a37b-d0604d784540" data-goal-id="03a87896-088d-4b21-a37b-d0604d784540" data-page-number="12" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-03a87896-088d-4b21-a37b-d0604d784540-title">
+    <header class="goal-header">
+      <h1 id="goal-03a87896-088d-4b21-a37b-d0604d784540-title"><a class="goal-self-link" href="#goal-03a87896-088d-4b21-a37b-d0604d784540">Größen in Sachsituationen mithilfe von Bezugsgrößen schätzen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>03a87896-088d-4b21-a37b-d0604d784540</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:fdf8fa20cfe88df5cec6b791022bb780593b5f69ea8dee24c704ad215563f40d" data-rendered-digest="sha256:e34c9695e5657f30fbddaeea0342d806d852738ca62e2eba66290992af6c97a5" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/03a87896-088d-4b21-a37b-d0604d784540/03a87896-088d-4b21-a37b-d0604d784540.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Größen in Sachsituationen mithilfe von Bezugsgrößen schätzen&quot;. Die lernende Person kann Größen in Sachsituationen mithilfe geeigneter Bezugsgrößen aus der Erfahrungswelt abschätzen und die Plausibilität ihrer Schätzungen begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-03a87896-088d-4b21-a37b-d0604d784540-description-heading">
+        <p class="section-heading" id="goal-03a87896-088d-4b21-a37b-d0604d784540-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Größen in Sachsituationen mithilfe geeigneter Bezugsgrößen aus der Erfahrungswelt abschätzen und die Plausibilität ihrer Schätzungen begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HH, SN, ST:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-03a87896-088d-4b21-a37b-d0604d784540" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-03a87896-088d-4b21-a37b-d0604d784540-requires-heading">
+          <p class="section-heading" id="goal-03a87896-088d-4b21-a37b-d0604d784540-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3"><span>Größen und Einheiten vergleichen und umrechnen</span><code>f2e42af5-67a6-477e-82ea-e65b09cc6cb3</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-03a87896-088d-4b21-a37b-d0604d784540-reverse-heading">
+          <p class="section-heading" id="goal-03a87896-088d-4b21-a37b-d0604d784540-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-03a87896-088d-4b21-a37b-d0604d784540-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-03a87896-088d-4b21-a37b-d0604d784540-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fe07241a-b779-5f35-a82d-7aa51ae74f42" rel="noreferrer noopener"><span>Natürliche Zahlen runden</span> <code>fe07241a-b779-5f35-a82d-7aa51ae74f42</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-03a87896-088d-4b21-a37b-d0604d784540-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-03a87896-088d-4b21-a37b-d0604d784540-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b48c65fd-6519-5e96-9721-1c5841227007" rel="noreferrer noopener"><span>Aufgabe 3 (Jahrgangsstufe 5, 6 BE)</span> <code>b48c65fd-6519-5e96-9721-1c5841227007</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 12 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:87be2dc1c3b1a08173511339a5cd019f1ff16e519611cfcfc30405c0b503f11f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=03a87896-088d-4b21-a37b-d0604d784540&amp;goalFingerprint=sha256%3A87be2dc1c3b1a08173511339a5cd019f1ff16e519611cfcfc30405c0b503f11f&amp;pageFingerprint=sha256%3A56a23f97052648b3e696c3c756bf91e30e8704fe86951f9c6f9a91605091afd2&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d6c3fb37-ece6-5b56-9221-1eeb21845877" data-goal-id="d6c3fb37-ece6-5b56-9221-1eeb21845877" data-page-number="13" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-d6c3fb37-ece6-5b56-9221-1eeb21845877-title">
+    <header class="goal-header">
+      <h1 id="goal-d6c3fb37-ece6-5b56-9221-1eeb21845877-title"><a class="goal-self-link" href="#goal-d6c3fb37-ece6-5b56-9221-1eeb21845877">Umfang und Flächeninhalt unterscheiden und anwenden</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d6c3fb37-ece6-5b56-9221-1eeb21845877</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:836115638a9bd6142f3910cb4b9c4d137397de619e129db419e8d94db7ce142f" data-rendered-digest="sha256:92942dad5aa92c25e422029205da847691398471aa7ee5a66087c8bd67a9542e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/d6c3fb37-ece6-5b56-9221-1eeb21845877/d6c3fb37-ece6-5b56-9221-1eeb21845877.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Umfang und Flächeninhalt unterscheiden und anwenden&quot;. Die lernende Person kann Umfang als Länge des Randes und Flächeninhalt als Maß der bedeckten Fläche unterscheiden, in einfachen Sachsituationen die passende Größe und Formel wählen und Ergebnisse mit geeigneten Einheiten deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d6c3fb37-ece6-5b56-9221-1eeb21845877-description-heading">
+        <p class="section-heading" id="goal-d6c3fb37-ece6-5b56-9221-1eeb21845877-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Umfang als Länge des Randes und Flächeninhalt als Maß der bedeckten Fläche unterscheiden, in einfachen Sachsituationen die passende Größe und Formel wählen und Ergebnisse mit geeigneten Einheiten deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HH, SN, ST:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d6c3fb37-ece6-5b56-9221-1eeb21845877" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d6c3fb37-ece6-5b56-9221-1eeb21845877-requires-heading">
+          <p class="section-heading" id="goal-d6c3fb37-ece6-5b56-9221-1eeb21845877-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ca623958-c204-5d1b-bdd0-3f76765674cb"><span>Mit Größen einheitengerecht rechnen und Ergebnisse deuten</span><code>ca623958-c204-5d1b-bdd0-3f76765674cb</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-d6c3fb37-ece6-5b56-9221-1eeb21845877-reverse-heading">
+          <p class="section-heading" id="goal-d6c3fb37-ece6-5b56-9221-1eeb21845877-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-0bd7dc9b-c7f9-52e6-b374-a019edfd821c"><span>Rechteckflächenformel aus dem Messprinzip erklären</span><code>0bd7dc9b-c7f9-52e6-b374-a019edfd821c</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-d6c3fb37-ece6-5b56-9221-1eeb21845877-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d6c3fb37-ece6-5b56-9221-1eeb21845877-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-d6c3fb37-ece6-5b56-9221-1eeb21845877-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d6c3fb37-ece6-5b56-9221-1eeb21845877-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b48c65fd-6519-5e96-9721-1c5841227007" rel="noreferrer noopener"><span>Aufgabe 3 (Jahrgangsstufe 5, 6 BE)</span> <code>b48c65fd-6519-5e96-9721-1c5841227007</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-491e0858-e977-516e-a339-1cc2f9e9690f" rel="noreferrer noopener"><span>Flächenformeln ebener Figuren durch Zerlegen und Ergänzen herleiten</span> <code>491e0858-e977-516e-a339-1cc2f9e9690f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-87c55be5-06a9-41e2-a0d4-c60f7c8b8078" rel="noreferrer noopener"><span>Flächeninhalte ebener Figuren berechnen</span> <code>87c55be5-06a9-41e2-a0d4-c60f7c8b8078</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8a691345-3216-522c-a898-d65e8e94db28" rel="noreferrer noopener"><span>Zahl Pi als Verhältnis am Kreis erklären</span> <code>8a691345-3216-522c-a898-d65e8e94db28</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3d49cd27-3a84-50eb-ac35-f0b0bee80df2" rel="noreferrer noopener"><span>Dynamische Zusammenhänge zwischen Größen erläutern</span> <code>3d49cd27-3a84-50eb-ac35-f0b0bee80df2</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 13 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a4bd2461a0ed2c9a0b9e535d914585a49d67fe70eccd1f2385b1fa8ca03ef1c0</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=d6c3fb37-ece6-5b56-9221-1eeb21845877&amp;goalFingerprint=sha256%3Aa4bd2461a0ed2c9a0b9e535d914585a49d67fe70eccd1f2385b1fa8ca03ef1c0&amp;pageFingerprint=sha256%3A35294f06bb35233871401606f32a8d42889c4979d107aa7051830d491ff8e1e6&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0bd7dc9b-c7f9-52e6-b374-a019edfd821c" data-goal-id="0bd7dc9b-c7f9-52e6-b374-a019edfd821c" data-page-number="14" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-0bd7dc9b-c7f9-52e6-b374-a019edfd821c-title">
+    <header class="goal-header">
+      <h1 id="goal-0bd7dc9b-c7f9-52e6-b374-a019edfd821c-title"><a class="goal-self-link" href="#goal-0bd7dc9b-c7f9-52e6-b374-a019edfd821c">Rechteckflächenformel aus dem Messprinzip erklären</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0bd7dc9b-c7f9-52e6-b374-a019edfd821c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c6440a3a25aa463ae86dbad2229d5920567d22e252918a2565e4762ed897006c" data-rendered-digest="sha256:6764ba0c7229f2d8680ec68ae940110da9fcdce5a292daca51a9210a2904a57a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/0bd7dc9b-c7f9-52e6-b374-a019edfd821c/0bd7dc9b-c7f9-52e6-b374-a019edfd821c.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Rechteckflächenformel aus dem Messprinzip erklären&quot;. Die lernende Person kann die Formel für den Flächeninhalt eines Rechtecks aus dem Grundprinzip des Messens mit Einheitsquadraten erklären.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0bd7dc9b-c7f9-52e6-b374-a019edfd821c-description-heading">
+        <p class="section-heading" id="goal-0bd7dc9b-c7f9-52e6-b374-a019edfd821c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Formel für den Flächeninhalt eines Rechtecks aus dem Grundprinzip des Messens mit Einheitsquadraten erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HH, SN, ST:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0bd7dc9b-c7f9-52e6-b374-a019edfd821c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0bd7dc9b-c7f9-52e6-b374-a019edfd821c-requires-heading">
+          <p class="section-heading" id="goal-0bd7dc9b-c7f9-52e6-b374-a019edfd821c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-f2e42af5-67a6-477e-82ea-e65b09cc6cb3"><span>Größen und Einheiten vergleichen und umrechnen</span><code>f2e42af5-67a6-477e-82ea-e65b09cc6cb3</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-d6c3fb37-ece6-5b56-9221-1eeb21845877"><span>Umfang und Flächeninhalt unterscheiden und anwenden</span><code>d6c3fb37-ece6-5b56-9221-1eeb21845877</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-0bd7dc9b-c7f9-52e6-b374-a019edfd821c-reverse-heading">
+          <p class="section-heading" id="goal-0bd7dc9b-c7f9-52e6-b374-a019edfd821c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0bd7dc9b-c7f9-52e6-b374-a019edfd821c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0bd7dc9b-c7f9-52e6-b374-a019edfd821c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-0bd7dc9b-c7f9-52e6-b374-a019edfd821c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0bd7dc9b-c7f9-52e6-b374-a019edfd821c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b48c65fd-6519-5e96-9721-1c5841227007" rel="noreferrer noopener"><span>Aufgabe 3 (Jahrgangsstufe 5, 6 BE)</span> <code>b48c65fd-6519-5e96-9721-1c5841227007</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 14 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ce35178e6307071a3e002c79b4df0ed804257ba87e3f00787837cc2d4ce2bbf5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=0bd7dc9b-c7f9-52e6-b374-a019edfd821c&amp;goalFingerprint=sha256%3Ace35178e6307071a3e002c79b4df0ed804257ba87e3f00787837cc2d4ce2bbf5&amp;pageFingerprint=sha256%3A7f38405a592b445f7d5b880df20b28569886806f9849f61efaa983567e4ef92b&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-339a7bf5-f1df-5d5a-9ec4-41f471f0c111" data-goal-id="339a7bf5-f1df-5d5a-9ec4-41f471f0c111" data-page-number="15" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-339a7bf5-f1df-5d5a-9ec4-41f471f0c111-title">
+    <header class="goal-header">
+      <h1 id="goal-339a7bf5-f1df-5d5a-9ec4-41f471f0c111-title"><a class="goal-self-link" href="#goal-339a7bf5-f1df-5d5a-9ec4-41f471f0c111">Brüche erweitern und kürzen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>339a7bf5-f1df-5d5a-9ec4-41f471f0c111</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d0e28894991f19b0b3dde7353f8f956b93c3cc8dd6d52edbf25657522fd04a12" data-rendered-digest="sha256:c4702611a0f11655feead5e1a81e5750a2594d9cc56fcb53ee49af110c166905" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/339a7bf5-f1df-5d5a-9ec4-41f471f0c111/339a7bf5-f1df-5d5a-9ec4-41f471f0c111.png" alt="Didaktische Visualisierung zum Lernziel &quot;Brüche erweitern und kürzen&quot;. Die lernende Person kann Zähler und Nenner mit demselben positiven ganzen Faktor multiplizieren oder durch denselben gemeinsamen Teiler dividieren, so wertgleiche Brüche erzeugen und begründen, warum der Bruchwert erhalten bleibt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-339a7bf5-f1df-5d5a-9ec4-41f471f0c111-description-heading">
+        <p class="section-heading" id="goal-339a7bf5-f1df-5d5a-9ec4-41f471f0c111-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Zähler und Nenner mit demselben positiven ganzen Faktor multiplizieren oder durch denselben gemeinsamen Teiler dividieren, so wertgleiche Brüche erzeugen und begründen, warum der Bruchwert erhalten bleibt.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-339a7bf5-f1df-5d5a-9ec4-41f471f0c111" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-339a7bf5-f1df-5d5a-9ec4-41f471f0c111-requires-heading">
+          <p class="section-heading" id="goal-339a7bf5-f1df-5d5a-9ec4-41f471f0c111-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-339a7bf5-f1df-5d5a-9ec4-41f471f0c111-reverse-heading">
+          <p class="section-heading" id="goal-339a7bf5-f1df-5d5a-9ec4-41f471f0c111-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-02013455-72a0-5213-9509-ed77f7ede62b"><span>Brüche mit geeigneten Strategien vergleichen</span><code>02013455-72a0-5213-9509-ed77f7ede62b</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-339a7bf5-f1df-5d5a-9ec4-41f471f0c111-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-339a7bf5-f1df-5d5a-9ec4-41f471f0c111-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-cafd6520-c4af-4109-9863-cc49ba6fad4d" rel="noreferrer noopener"><span>Multiplikation und ganzzahlige Division als Umkehroperationen nutzen</span> <code>cafd6520-c4af-4109-9863-cc49ba6fad4d</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-339a7bf5-f1df-5d5a-9ec4-41f471f0c111-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-339a7bf5-f1df-5d5a-9ec4-41f471f0c111-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fb81062a-4929-5f09-8d92-f9cf4b106c17" rel="noreferrer noopener"><span>Aufgabe 1 (Jahrgangsstufe 6, 6 BE)</span> <code>fb81062a-4929-5f09-8d92-f9cf4b106c17</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 15 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4929daab54c17f4727d115c7a90de127fae028687970ab2354d240c699eec5b4</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=339a7bf5-f1df-5d5a-9ec4-41f471f0c111&amp;goalFingerprint=sha256%3A4929daab54c17f4727d115c7a90de127fae028687970ab2354d240c699eec5b4&amp;pageFingerprint=sha256%3Aae03bf4d9a8150a0d3d2b713b96d56824f2e236f170a0ee31471d71e07b5bcd2&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-02013455-72a0-5213-9509-ed77f7ede62b" data-goal-id="02013455-72a0-5213-9509-ed77f7ede62b" data-page-number="16" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-02013455-72a0-5213-9509-ed77f7ede62b-title">
+    <header class="goal-header">
+      <h1 id="goal-02013455-72a0-5213-9509-ed77f7ede62b-title"><a class="goal-self-link" href="#goal-02013455-72a0-5213-9509-ed77f7ede62b">Brüche mit geeigneten Strategien vergleichen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>02013455-72a0-5213-9509-ed77f7ede62b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d34b619955616cae320e66ede0cc95c0f98e8e1eeba71267c13c478e0fb1121c" data-rendered-digest="sha256:0e23c4c15f6f35ba38a5b6aa9c8682029f9981879e000b7d2c67663f336cb392" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/02013455-72a0-5213-9509-ed77f7ede62b/02013455-72a0-5213-9509-ed77f7ede62b.png" alt="Didaktische Visualisierung zum Lernziel &quot;Brüche mit geeigneten Strategien vergleichen&quot;. Die lernende Person kann Brüche mithilfe gemeinsamer Nenner oder Zähler, geeigneter Bezugsbrüche oder wertgleicher Darstellungen vergleichen, die jeweils passende Strategie auswählen und die Ordnung begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-02013455-72a0-5213-9509-ed77f7ede62b-description-heading">
+        <p class="section-heading" id="goal-02013455-72a0-5213-9509-ed77f7ede62b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Brüche mithilfe gemeinsamer Nenner oder Zähler, geeigneter Bezugsbrüche oder wertgleicher Darstellungen vergleichen, die jeweils passende Strategie auswählen und die Ordnung begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HE:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-02013455-72a0-5213-9509-ed77f7ede62b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-02013455-72a0-5213-9509-ed77f7ede62b-requires-heading">
+          <p class="section-heading" id="goal-02013455-72a0-5213-9509-ed77f7ede62b-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-339a7bf5-f1df-5d5a-9ec4-41f471f0c111"><span>Brüche erweitern und kürzen</span><code>339a7bf5-f1df-5d5a-9ec4-41f471f0c111</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-02013455-72a0-5213-9509-ed77f7ede62b-reverse-heading">
+          <p class="section-heading" id="goal-02013455-72a0-5213-9509-ed77f7ede62b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"><span>Dichtheit der rationalen Zahlen erläutern</span><code>ec9f2ed4-c9e6-5fb3-a073-75b53127e55d</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-02013455-72a0-5213-9509-ed77f7ede62b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-02013455-72a0-5213-9509-ed77f7ede62b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fb81062a-4929-5f09-8d92-f9cf4b106c17" rel="noreferrer noopener"><span>Aufgabe 1 (Jahrgangsstufe 6, 6 BE)</span> <code>fb81062a-4929-5f09-8d92-f9cf4b106c17</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f8704a7b-e93d-4e32-b0f9-1b171545fe28" rel="noreferrer noopener"><span>Quadratwurzeln definieren und schätzen</span> <code>f8704a7b-e93d-4e32-b0f9-1b171545fe28</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7676b0f9-340d-4a91-ab1f-92745a8f88db" rel="noreferrer noopener"><span>Irrationalität von Wurzelzahlen begründen und reelle Zahlen einordnen</span> <code>7676b0f9-340d-4a91-ab1f-92745a8f88db</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1" rel="noreferrer noopener"><span>Quadratwurzeln iterativ mit dem Heron-Verfahren approximieren</span> <code>c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 16 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:03d8ddb9154cb8426ac22c0f98eb29edefea908c633885cd7b63020592f172d3</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=02013455-72a0-5213-9509-ed77f7ede62b&amp;goalFingerprint=sha256%3A03d8ddb9154cb8426ac22c0f98eb29edefea908c633885cd7b63020592f172d3&amp;pageFingerprint=sha256%3A885373a6294cf9d30d901932946d6aa5c73b90f525a1610041255976f0e70fef&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page goal-page--dense-relations" id="goal-ca8b2e67-7d14-5baf-8404-26820fe3d548" data-goal-id="ca8b2e67-7d14-5baf-8404-26820fe3d548" data-page-number="17" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-ca8b2e67-7d14-5baf-8404-26820fe3d548-title">
+    <header class="goal-header">
+      <h1 id="goal-ca8b2e67-7d14-5baf-8404-26820fe3d548-title"><a class="goal-self-link" href="#goal-ca8b2e67-7d14-5baf-8404-26820fe3d548">Brüche und Dezimalbrüche ineinander umwandeln</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ca8b2e67-7d14-5baf-8404-26820fe3d548</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1ad99bf6013bc78941b67bc0de68b3d7e01e3a41370bebb53da46b983d26110e" data-rendered-digest="sha256:5ae82c68fecec7e95ef41f8823a829b34aa00a1bb2761c5e97737d329ebd27ed" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/ca8b2e67-7d14-5baf-8404-26820fe3d548/ca8b2e67-7d14-5baf-8404-26820fe3d548.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Brüche und Dezimalbrüche ineinander umwandeln&quot;. Die lernende Person kann Brüche in endliche oder periodische Dezimalbrüche umwandeln, umgekehrt endliche und einfache periodische Dezimalbrüche als Brüche darstellen und Darstellungswechsel begründet wählen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ca8b2e67-7d14-5baf-8404-26820fe3d548-description-heading">
+        <p class="section-heading" id="goal-ca8b2e67-7d14-5baf-8404-26820fe3d548-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Brüche in endliche oder periodische Dezimalbrüche umwandeln, umgekehrt endliche und einfache periodische Dezimalbrüche als Brüche darstellen und Darstellungswechsel begründet wählen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ca8b2e67-7d14-5baf-8404-26820fe3d548" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ca8b2e67-7d14-5baf-8404-26820fe3d548-requires-heading">
+          <p class="section-heading" id="goal-ca8b2e67-7d14-5baf-8404-26820fe3d548-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a4c2b831-02f0-5d55-a300-7823a71352c4"><span>Natürliche Zahlen in Primfaktoren zerlegen</span><code>a4c2b831-02f0-5d55-a300-7823a71352c4</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ca8b2e67-7d14-5baf-8404-26820fe3d548-reverse-heading">
+          <p class="section-heading" id="goal-ca8b2e67-7d14-5baf-8404-26820fe3d548-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-ca8b2e67-7d14-5baf-8404-26820fe3d548-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ca8b2e67-7d14-5baf-8404-26820fe3d548-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-624764d6-becd-5f9b-ada3-0d4f9d143073" rel="noreferrer noopener"><span>Dezimalsystem als Stellenwertsystem erklären und vergleichen</span> <code>624764d6-becd-5f9b-ada3-0d4f9d143073</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fe07241a-b779-5f35-a82d-7aa51ae74f42" rel="noreferrer noopener"><span>Natürliche Zahlen runden</span> <code>fe07241a-b779-5f35-a82d-7aa51ae74f42</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-ca8b2e67-7d14-5baf-8404-26820fe3d548-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ca8b2e67-7d14-5baf-8404-26820fe3d548-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fb81062a-4929-5f09-8d92-f9cf4b106c17" rel="noreferrer noopener"><span>Aufgabe 1 (Jahrgangsstufe 6, 6 BE)</span> <code>fb81062a-4929-5f09-8d92-f9cf4b106c17</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71d43fcc-d787-4874-ae4a-2336364e9c0a" rel="noreferrer noopener"><span>Grundaufgaben der Prozentrechnung lösen</span> <code>71d43fcc-d787-4874-ae4a-2336364e9c0a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-91571d3f-3651-4477-ba21-320fc4077453" rel="noreferrer noopener"><span>Absolute und relative Häufigkeiten bestimmen und darstellen</span> <code>91571d3f-3651-4477-ba21-320fc4077453</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2bb4bb91-7929-483a-b735-44275f6b5cdc" rel="noreferrer noopener"><span>Zuordnungen analysieren</span> <code>2bb4bb91-7929-483a-b735-44275f6b5cdc</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5bba4ec2-3781-4624-8b62-e24b38f7f76e" rel="noreferrer noopener"><span>Variablen in Sachsituationen einführen und deuten</span> <code>5bba4ec2-3781-4624-8b62-e24b38f7f76e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c9112f89-ffaf-40f3-af1f-86a04b5ad4ee" rel="noreferrer noopener"><span>Variablen in Termen, Gleichungen und Formeln verwenden und deuten</span> <code>c9112f89-ffaf-40f3-af1f-86a04b5ad4ee</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fd860da9-73ba-47cd-a1a8-452424915a80" rel="noreferrer noopener"><span>Sachsituationen in Terme mit Variablen übersetzen</span> <code>fd860da9-73ba-47cd-a1a8-452424915a80</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-325771e1-602d-4bca-a199-a8f39a2d3dee" rel="noreferrer noopener"><span>Lineare Gleichungen systematisch lösen</span> <code>325771e1-602d-4bca-a199-a8f39a2d3dee</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c420e0be-1e74-4050-834c-d8da7f41095a" rel="noreferrer noopener"><span>Bruchterme strukturieren, erweitern und kürzen</span> <code>c420e0be-1e74-4050-834c-d8da7f41095a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f8704a7b-e93d-4e32-b0f9-1b171545fe28" rel="noreferrer noopener"><span>Quadratwurzeln definieren und schätzen</span> <code>f8704a7b-e93d-4e32-b0f9-1b171545fe28</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7676b0f9-340d-4a91-ab1f-92745a8f88db" rel="noreferrer noopener"><span>Irrationalität von Wurzelzahlen begründen und reelle Zahlen einordnen</span> <code>7676b0f9-340d-4a91-ab1f-92745a8f88db</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1" rel="noreferrer noopener"><span>Quadratwurzeln iterativ mit dem Heron-Verfahren approximieren</span> <code>c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 17 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:330f9af91613b7beced4d8b05d31a0e78cf93a529b7955104e344f74f4d106f6</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=ca8b2e67-7d14-5baf-8404-26820fe3d548&amp;goalFingerprint=sha256%3A330f9af91613b7beced4d8b05d31a0e78cf93a529b7955104e344f74f4d106f6&amp;pageFingerprint=sha256%3A996688ea3a720fe5f649df6dee2ad7ad29aa5be606ba2cedd512cebebc100e81&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f6b13b8e-1ecd-5420-905d-21290aa996a6" data-goal-id="f6b13b8e-1ecd-5420-905d-21290aa996a6" data-page-number="18" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-f6b13b8e-1ecd-5420-905d-21290aa996a6-title">
+    <header class="goal-header">
+      <h1 id="goal-f6b13b8e-1ecd-5420-905d-21290aa996a6-title"><a class="goal-self-link" href="#goal-f6b13b8e-1ecd-5420-905d-21290aa996a6">Rationale Zahlen an der Zahlengeraden darstellen und ordnen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f6b13b8e-1ecd-5420-905d-21290aa996a6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0909ed20beb96fd926e358766ffd1bf071b717e4743cb830c49d2da75e94ff93" data-rendered-digest="sha256:2e2be4fe9ef7b8d894d1e62361030f25b946c0c356447cad6b5f7fd49521f12c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/f6b13b8e-1ecd-5420-905d-21290aa996a6/f6b13b8e-1ecd-5420-905d-21290aa996a6.png" alt="Didaktische Visualisierung zum Lernziel &quot;Rationale Zahlen an der Zahlengeraden darstellen und ordnen&quot;. Die lernende Person kann positive und negative nicht ganze rationale Zahlen, insbesondere Bruch- und Dezimalzahlen, auf einer passend skalierten Zahlengeraden darstellen, begründet ordnen und wertgleiche Darstellungen demselben Punkt zuordnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f6b13b8e-1ecd-5420-905d-21290aa996a6-description-heading">
+        <p class="section-heading" id="goal-f6b13b8e-1ecd-5420-905d-21290aa996a6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann positive und negative nicht ganze rationale Zahlen, insbesondere Bruch- und Dezimalzahlen, auf einer passend skalierten Zahlengeraden darstellen, begründet ordnen und wertgleiche Darstellungen demselben Punkt zuordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f6b13b8e-1ecd-5420-905d-21290aa996a6" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f6b13b8e-1ecd-5420-905d-21290aa996a6-requires-heading">
+          <p class="section-heading" id="goal-f6b13b8e-1ecd-5420-905d-21290aa996a6-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-f6b13b8e-1ecd-5420-905d-21290aa996a6-reverse-heading">
+          <p class="section-heading" id="goal-f6b13b8e-1ecd-5420-905d-21290aa996a6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-60c2418b-aaff-58f6-964a-bc7cda2a673c"><span>Beziehungen zwischen natürlichen, ganzen und rationalen Zahlen erläutern</span><code>60c2418b-aaff-58f6-964a-bc7cda2a673c</code><span class="reference-page">S. 19</span></a></li><li><a href="#goal-ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"><span>Dichtheit der rationalen Zahlen erläutern</span><code>ec9f2ed4-c9e6-5fb3-a073-75b53127e55d</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-f6b13b8e-1ecd-5420-905d-21290aa996a6-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f6b13b8e-1ecd-5420-905d-21290aa996a6-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-cf474eab-1379-4877-907e-58b0892ce734" rel="noreferrer noopener"><span>Natürliche Zahlen darstellen und am Zahlenstrahl verorten</span> <code>cf474eab-1379-4877-907e-58b0892ce734</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9ef6c4fa-b97a-5d7a-86c1-96690f02d916" rel="noreferrer noopener"><span>Natürliche Zahlen ordnen und vergleichen</span> <code>9ef6c4fa-b97a-5d7a-86c1-96690f02d916</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe" rel="noreferrer noopener"><span>Ganze Zahlen ordnen und an der Zahlengeraden darstellen</span> <code>d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-f6b13b8e-1ecd-5420-905d-21290aa996a6-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f6b13b8e-1ecd-5420-905d-21290aa996a6-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-13319b05-1654-5645-ab7b-733b0e180327" rel="noreferrer noopener"><span>Aufgabe 2 (Jahrgangsstufe 6, 6 BE)</span> <code>13319b05-1654-5645-ab7b-733b0e180327</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f8704a7b-e93d-4e32-b0f9-1b171545fe28" rel="noreferrer noopener"><span>Quadratwurzeln definieren und schätzen</span> <code>f8704a7b-e93d-4e32-b0f9-1b171545fe28</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7676b0f9-340d-4a91-ab1f-92745a8f88db" rel="noreferrer noopener"><span>Irrationalität von Wurzelzahlen begründen und reelle Zahlen einordnen</span> <code>7676b0f9-340d-4a91-ab1f-92745a8f88db</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1" rel="noreferrer noopener"><span>Quadratwurzeln iterativ mit dem Heron-Verfahren approximieren</span> <code>c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 18 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:69e2c3571bc072e5b84b3b6c761f5f1ae968b6540815b5b50fc25bd19cbb51ac</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=f6b13b8e-1ecd-5420-905d-21290aa996a6&amp;goalFingerprint=sha256%3A69e2c3571bc072e5b84b3b6c761f5f1ae968b6540815b5b50fc25bd19cbb51ac&amp;pageFingerprint=sha256%3A61e4838ca80604fc86c908c3806a434a199520df6d6e3a769479154418eca384&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-60c2418b-aaff-58f6-964a-bc7cda2a673c" data-goal-id="60c2418b-aaff-58f6-964a-bc7cda2a673c" data-page-number="19" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-60c2418b-aaff-58f6-964a-bc7cda2a673c-title">
+    <header class="goal-header">
+      <h1 id="goal-60c2418b-aaff-58f6-964a-bc7cda2a673c-title"><a class="goal-self-link" href="#goal-60c2418b-aaff-58f6-964a-bc7cda2a673c">Beziehungen zwischen natürlichen, ganzen und rationalen Zahlen erläutern</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>60c2418b-aaff-58f6-964a-bc7cda2a673c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d9f2918f8981e22bf8869c9f8f4e51bf6a7010683fc72bfafaad5306796a0e67" data-rendered-digest="sha256:77fde5a4364906f9f4300cc8ec696bc263b9c2f487ddf87201eeb3c054fedfb9" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/60c2418b-aaff-58f6-964a-bc7cda2a673c/60c2418b-aaff-58f6-964a-bc7cda2a673c.png" alt="Didaktische Visualisierung zum Lernziel &quot;Beziehungen zwischen natürlichen, ganzen und rationalen Zahlen erläutern&quot;. Die lernende Person kann Zahlen passenden Zahlmengen zuordnen und anhand von Beispielen erläutern, dass jede natürliche Zahl ganz und jede ganze Zahl rational ist, während nicht jede rationale Zahl ganz und nicht jede ganze Zahl natürlich ist.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-60c2418b-aaff-58f6-964a-bc7cda2a673c-description-heading">
+        <p class="section-heading" id="goal-60c2418b-aaff-58f6-964a-bc7cda2a673c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Zahlen passenden Zahlmengen zuordnen und anhand von Beispielen erläutern, dass jede natürliche Zahl ganz und jede ganze Zahl rational ist, während nicht jede rationale Zahl ganz und nicht jede ganze Zahl natürlich ist.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HE, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-60c2418b-aaff-58f6-964a-bc7cda2a673c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-60c2418b-aaff-58f6-964a-bc7cda2a673c-requires-heading">
+          <p class="section-heading" id="goal-60c2418b-aaff-58f6-964a-bc7cda2a673c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-f6b13b8e-1ecd-5420-905d-21290aa996a6"><span>Rationale Zahlen an der Zahlengeraden darstellen und ordnen</span><code>f6b13b8e-1ecd-5420-905d-21290aa996a6</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-60c2418b-aaff-58f6-964a-bc7cda2a673c-reverse-heading">
+          <p class="section-heading" id="goal-60c2418b-aaff-58f6-964a-bc7cda2a673c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-60c2418b-aaff-58f6-964a-bc7cda2a673c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-60c2418b-aaff-58f6-964a-bc7cda2a673c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7676b0f9-340d-4a91-ab1f-92745a8f88db" rel="noreferrer noopener"><span>Irrationalität von Wurzelzahlen begründen und reelle Zahlen einordnen</span> <code>7676b0f9-340d-4a91-ab1f-92745a8f88db</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 19 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fffa9127d043fd4a6a3fdea7b86a7bb0bbfac55c863e5c1c1925a00ae32608cb</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=60c2418b-aaff-58f6-964a-bc7cda2a673c&amp;goalFingerprint=sha256%3Afffa9127d043fd4a6a3fdea7b86a7bb0bbfac55c863e5c1c1925a00ae32608cb&amp;pageFingerprint=sha256%3Abb52b34f2f057a484d009b9ac169880b931f1f72bffd87bd2ebd4863d5f62d76&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ec9f2ed4-c9e6-5fb3-a073-75b53127e55d" data-goal-id="ec9f2ed4-c9e6-5fb3-a073-75b53127e55d" data-page-number="20" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-ec9f2ed4-c9e6-5fb3-a073-75b53127e55d-title">
+    <header class="goal-header">
+      <h1 id="goal-ec9f2ed4-c9e6-5fb3-a073-75b53127e55d-title"><a class="goal-self-link" href="#goal-ec9f2ed4-c9e6-5fb3-a073-75b53127e55d">Dichtheit der rationalen Zahlen erläutern</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ec9f2ed4-c9e6-5fb3-a073-75b53127e55d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:90d47d8ee261f63eea687e06ca0c4fd5315043e62f480a558753bd92bffea6e3" data-rendered-digest="sha256:bcc95cdf431f075cfd385a9d4951b188b308859453471eae7e021126eb380722" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/ec9f2ed4-c9e6-5fb3-a073-75b53127e55d/ec9f2ed4-c9e6-5fb3-a073-75b53127e55d.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Dichtheit der rationalen Zahlen erläutern&quot;. Die lernende Person kann erläutern, dass zwischen zwei verschiedenen rationalen Zahlen stets weitere rationale Zahlen liegen, durch wiederholte Mittelwertbildung beliebig viele davon konstruieren und damit die Dichtheit begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ec9f2ed4-c9e6-5fb3-a073-75b53127e55d-description-heading">
+        <p class="section-heading" id="goal-ec9f2ed4-c9e6-5fb3-a073-75b53127e55d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann erläutern, dass zwischen zwei verschiedenen rationalen Zahlen stets weitere rationale Zahlen liegen, durch wiederholte Mittelwertbildung beliebig viele davon konstruieren und damit die Dichtheit begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ec9f2ed4-c9e6-5fb3-a073-75b53127e55d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ec9f2ed4-c9e6-5fb3-a073-75b53127e55d-requires-heading">
+          <p class="section-heading" id="goal-ec9f2ed4-c9e6-5fb3-a073-75b53127e55d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-02013455-72a0-5213-9509-ed77f7ede62b"><span>Brüche mit geeigneten Strategien vergleichen</span><code>02013455-72a0-5213-9509-ed77f7ede62b</code><span class="reference-page">S. 16</span></a></li><li><a href="#goal-f6b13b8e-1ecd-5420-905d-21290aa996a6"><span>Rationale Zahlen an der Zahlengeraden darstellen und ordnen</span><code>f6b13b8e-1ecd-5420-905d-21290aa996a6</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ec9f2ed4-c9e6-5fb3-a073-75b53127e55d-reverse-heading">
+          <p class="section-heading" id="goal-ec9f2ed4-c9e6-5fb3-a073-75b53127e55d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-ec9f2ed4-c9e6-5fb3-a073-75b53127e55d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ec9f2ed4-c9e6-5fb3-a073-75b53127e55d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fb81062a-4929-5f09-8d92-f9cf4b106c17" rel="noreferrer noopener"><span>Aufgabe 1 (Jahrgangsstufe 6, 6 BE)</span> <code>fb81062a-4929-5f09-8d92-f9cf4b106c17</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5bba4ec2-3781-4624-8b62-e24b38f7f76e" rel="noreferrer noopener"><span>Variablen in Sachsituationen einführen und deuten</span> <code>5bba4ec2-3781-4624-8b62-e24b38f7f76e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c9112f89-ffaf-40f3-af1f-86a04b5ad4ee" rel="noreferrer noopener"><span>Variablen in Termen, Gleichungen und Formeln verwenden und deuten</span> <code>c9112f89-ffaf-40f3-af1f-86a04b5ad4ee</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fd860da9-73ba-47cd-a1a8-452424915a80" rel="noreferrer noopener"><span>Sachsituationen in Terme mit Variablen übersetzen</span> <code>fd860da9-73ba-47cd-a1a8-452424915a80</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-325771e1-602d-4bca-a199-a8f39a2d3dee" rel="noreferrer noopener"><span>Lineare Gleichungen systematisch lösen</span> <code>325771e1-602d-4bca-a199-a8f39a2d3dee</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c420e0be-1e74-4050-834c-d8da7f41095a" rel="noreferrer noopener"><span>Bruchterme strukturieren, erweitern und kürzen</span> <code>c420e0be-1e74-4050-834c-d8da7f41095a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f8704a7b-e93d-4e32-b0f9-1b171545fe28" rel="noreferrer noopener"><span>Quadratwurzeln definieren und schätzen</span> <code>f8704a7b-e93d-4e32-b0f9-1b171545fe28</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7676b0f9-340d-4a91-ab1f-92745a8f88db" rel="noreferrer noopener"><span>Irrationalität von Wurzelzahlen begründen und reelle Zahlen einordnen</span> <code>7676b0f9-340d-4a91-ab1f-92745a8f88db</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 20 von 20</span>
+      <span>Buch-Digest <code>sha256:d1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68</code></span>
+      <span>Ziel-Fingerprint <code>sha256:979e19bb3a910f93c208c7d2102e9436b9b7084d05358c35de7650bd962852a3</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-002-adjudicated-v3-main-20-20260826&amp;edition=curricular-atomic-v1&amp;goalId=ec9f2ed4-c9e6-5fb3-a073-75b53127e55d&amp;goalFingerprint=sha256%3A979e19bb3a910f93c208c7d2102e9436b9b7084d05358c35de7650bd962852a3&amp;pageFingerprint=sha256%3A911a0f612dc93883ecf49b1d0278970e498023ce59cd0f5469ab95326959c358&amp;bookDigest=sha256%3Ad1c3848504b51a7d23365c763fb583b86ae0a918503ceebccaef701f23a4cc68&amp;page=20" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

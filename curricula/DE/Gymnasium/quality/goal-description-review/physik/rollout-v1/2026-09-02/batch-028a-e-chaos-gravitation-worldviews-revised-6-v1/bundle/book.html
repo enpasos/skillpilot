@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik B028a – E-Phase: Chaos, Gravitation und Weltbilder, Folgeprüfung</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Physik B028a – E-Phase: Chaos, Gravitation und Weltbilder, Folgeprüfung</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>6 atomare Lernziele</dt><dd>7 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:7ee8ccd8ce79ca14a51784f9420f20e556c6836b69ce47ea44b9fc20a5846489</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-physics-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-6747d2e0bbbbd4b4358ff0fa" aria-label="Physik"><a href="#goal-76fd0ab2-079a-516e-a33b-170355336d40"><span class="toc-entry-label">Physik</span></a></h2>
+          <span class="toc-entry-meta"><span>6 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-physics-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-546e47201fdf10d52f5a936c" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-76fd0ab2-079a-516e-a33b-170355336d40"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>6 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-e-phase" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-25f6161a11157cd3d11bdc8c" aria-label="Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen"><a href="#goal-76fd0ab2-079a-516e-a33b-170355336d40"><span class="toc-entry-label">Einführungsphase:&#160;<wbr>Mechanik,&#160;<wbr>Gravitation,&#160;<wbr>Thermodynamik&#160;<wbr>und&#160;<wbr>Drehbewegungen</span></a></h4>
+          <span class="toc-entry-meta"><span>6 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-e87f3fefefa8e997cf781166" aria-label="Weitere Bewegungen"><a href="#goal-76fd0ab2-079a-516e-a33b-170355336d40"><span class="toc-entry-label">Weitere&#160;<wbr>Bewegungen</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-a4818c09f02487f2216527c1" aria-label="Gravitation"><a href="#goal-92d8f398-0c9f-523c-88d7-44165b6b4768"><span class="toc-entry-label">Gravitation</span></a></h5>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-eb31f0a7-f6c0-5737-b09a-90ce3eff41b3" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-bbf805d9bd2c478fcacd5bd1" aria-label="Astronomische Weltbilder vergleichen (GK)"><a href="#goal-15b56a1e-3eec-52ca-82fa-b4df9ce88415"><span class="toc-entry-label">Astronomische&#160;<wbr>Weltbilder&#160;<wbr>vergleichen&#160;<wbr>(GK)</span></a></h6>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-423e21b9-0d0c-5709-899d-7ab738b55e36" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-fca41e3b3373b31e3a58a3c3" aria-label="Astronomische Weltbilder vergleichen (LK)"><a href="#goal-481ffd56-d585-56fe-b525-ed423e30eed3"><span class="toc-entry-label">Astronomische&#160;<wbr>Weltbilder&#160;<wbr>vergleichen&#160;<wbr>(LK)</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 6</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-76fd0ab2-079a-516e-a33b-170355336d40" data-goal-id="76fd0ab2-079a-516e-a33b-170355336d40" data-page-number="1" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9" aria-labelledby="goal-76fd0ab2-079a-516e-a33b-170355336d40-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-76fd0ab2-079a-516e-a33b-170355336d40-title"><a class="goal-self-link" href="#goal-76fd0ab2-079a-516e-a33b-170355336d40">Grenzen der Vorhersagbarkeit (Chaos)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>76fd0ab2-079a-516e-a33b-170355336d40</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-e87f3fefefa8e997cf781166">Weitere Bewegungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:04dacb00a118188307d41895a726193d87e98cc4883978c80fe1d4e253f6f978" data-rendered-digest="sha256:6bf68fdbf98fe0c2366ef29818d08f4afbb782671c412fe6ee787d2f58c48bb0" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/76fd0ab2-079a-516e-a33b-170355336d40/76fd0ab2-079a-516e-a33b-170355336d40.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Grenzen der Vorhersagbarkeit (Chaos)&quot;. Die lernende Person kann an mechanischen Systemen erklären, dass bei deterministischem Chaos geringfügig verschiedene Anfangsbedingungen mit der Zeit zu stark auseinanderlaufenden Bewegungsverläufen führen und dadurch langfristige Vorhersagen begrenzt sind.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-76fd0ab2-079a-516e-a33b-170355336d40-description-heading">
+        <p class="section-heading" id="goal-76fd0ab2-079a-516e-a33b-170355336d40-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an mechanischen Systemen erklären, dass bei deterministischem Chaos geringfügig verschiedene Anfangsbedingungen mit der Zeit zu stark auseinanderlaufenden Bewegungsverläufen führen und dadurch langfristige Vorhersagen begrenzt sind.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-76fd0ab2-079a-516e-a33b-170355336d40" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-76fd0ab2-079a-516e-a33b-170355336d40-requires-heading">
+          <p class="section-heading" id="goal-76fd0ab2-079a-516e-a33b-170355336d40-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-76fd0ab2-079a-516e-a33b-170355336d40-reverse-heading">
+          <p class="section-heading" id="goal-76fd0ab2-079a-516e-a33b-170355336d40-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-76fd0ab2-079a-516e-a33b-170355336d40-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-76fd0ab2-079a-516e-a33b-170355336d40-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5f289cdc-fda1-4058-b44f-041ba1398e79" rel="noreferrer noopener"><span>Grundgleichung der Mechanik anwenden</span> <code>5f289cdc-fda1-4058-b44f-041ba1398e79</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-76fd0ab2-079a-516e-a33b-170355336d40-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-76fd0ab2-079a-516e-a33b-170355336d40-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-dd99528a-bae5-5b78-89e6-c6092c927f8d" rel="noreferrer noopener"><span>Mehrschrittige Bewegungsmodelle mit Reibung und Chaos analysieren</span> <code>dd99528a-bae5-5b78-89e6-c6092c927f8d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 6</span>
+      <span>Buch-Digest <code>sha256:7ee8ccd8ce79ca14a51784f9420f20e556c6836b69ce47ea44b9fc20a5846489</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0030255eb7857f151c13abe863d8e7c2f1e0ab318552bf25306670748fedd3af</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-e-chaos-gravitation-worldviews-revised-6-v1-20260902&amp;edition=curricular-atomic-v1&amp;goalId=76fd0ab2-079a-516e-a33b-170355336d40&amp;goalFingerprint=sha256%3A0030255eb7857f151c13abe863d8e7c2f1e0ab318552bf25306670748fedd3af&amp;pageFingerprint=sha256%3A82a611b4cf517cfe65c691e5b6582bdad8c599eeb2c6d550514ab9ec1ee7dd64&amp;bookDigest=sha256%3A7ee8ccd8ce79ca14a51784f9420f20e556c6836b69ce47ea44b9fc20a5846489&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-92d8f398-0c9f-523c-88d7-44165b6b4768" data-goal-id="92d8f398-0c9f-523c-88d7-44165b6b4768" data-page-number="2" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089" aria-labelledby="goal-92d8f398-0c9f-523c-88d7-44165b6b4768-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-92d8f398-0c9f-523c-88d7-44165b6b4768-title"><a class="goal-self-link" href="#goal-92d8f398-0c9f-523c-88d7-44165b6b4768">Massenanziehung qualitativ beschreiben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>92d8f398-0c9f-523c-88d7-44165b6b4768</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-a4818c09f02487f2216527c1">Gravitation</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2b0729c6fd0740ae85f47642e520efbd25942fc168af45507f0853bd3e91d484" data-rendered-digest="sha256:fac472410a145a353a17a0a907a2633b4d15712917023fde956763ffa87a90ad" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/92d8f398-0c9f-523c-88d7-44165b6b4768/92d8f398-0c9f-523c-88d7-44165b6b4768.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Massenanziehung qualitativ beschreiben&quot;. Die lernende Person kann die gegenseitige Anziehung von Massen in Alltagssituationen beschreiben und qualitativ erläutern, dass die Gravitationswirkung bei größeren beteiligten Massen stärker und bei größerem Abstand schwächer wird.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-92d8f398-0c9f-523c-88d7-44165b6b4768-description-heading">
+        <p class="section-heading" id="goal-92d8f398-0c9f-523c-88d7-44165b6b4768-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die gegenseitige Anziehung von Massen in Alltagssituationen beschreiben und qualitativ erläutern, dass die Gravitationswirkung bei größeren beteiligten Massen stärker und bei größerem Abstand schwächer wird.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-92d8f398-0c9f-523c-88d7-44165b6b4768" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-92d8f398-0c9f-523c-88d7-44165b6b4768-requires-heading">
+          <p class="section-heading" id="goal-92d8f398-0c9f-523c-88d7-44165b6b4768-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-92d8f398-0c9f-523c-88d7-44165b6b4768-reverse-heading">
+          <p class="section-heading" id="goal-92d8f398-0c9f-523c-88d7-44165b6b4768-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-156edddc-ce8d-580d-8d17-d9376d59e60e"><span>Gravitationsfeld als Feldgröße einführen</span><code>156edddc-ce8d-580d-8d17-d9376d59e60e</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-92d8f398-0c9f-523c-88d7-44165b6b4768-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-92d8f398-0c9f-523c-88d7-44165b6b4768-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-230345f3-c360-4963-b390-ab94e3e2c864" rel="noreferrer noopener"><span>Freier Fall experimentell untersuchen</span> <code>230345f3-c360-4963-b390-ab94e3e2c864</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-09029573-864f-40ca-bf8a-cee7bf6dcb73" rel="noreferrer noopener"><span>Freier Fall experimentell untersuchen</span> <code>09029573-864f-40ca-bf8a-cee7bf6dcb73</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-92d8f398-0c9f-523c-88d7-44165b6b4768-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-92d8f398-0c9f-523c-88d7-44165b6b4768-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7e0308d8-a239-5c0f-b2c0-724f21e4da60" rel="noreferrer noopener"><span>Gravitation und Weltbilder in GK-Aufgaben verknüpfen</span> <code>7e0308d8-a239-5c0f-b2c0-724f21e4da60</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 6</span>
+      <span>Buch-Digest <code>sha256:7ee8ccd8ce79ca14a51784f9420f20e556c6836b69ce47ea44b9fc20a5846489</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6ebcfb9f2b4334f916f616feddd1f4ec7f5fc6d43906e384745a28805134cfd3</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-e-chaos-gravitation-worldviews-revised-6-v1-20260902&amp;edition=curricular-atomic-v1&amp;goalId=92d8f398-0c9f-523c-88d7-44165b6b4768&amp;goalFingerprint=sha256%3A6ebcfb9f2b4334f916f616feddd1f4ec7f5fc6d43906e384745a28805134cfd3&amp;pageFingerprint=sha256%3A251602c5003e05cd9df290c6e81416610b4b979bf366e89314b3810f8dace256&amp;bookDigest=sha256%3A7ee8ccd8ce79ca14a51784f9420f20e556c6836b69ce47ea44b9fc20a5846489&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-156edddc-ce8d-580d-8d17-d9376d59e60e" data-goal-id="156edddc-ce8d-580d-8d17-d9376d59e60e" data-page-number="3" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089" aria-labelledby="goal-156edddc-ce8d-580d-8d17-d9376d59e60e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-156edddc-ce8d-580d-8d17-d9376d59e60e-title"><a class="goal-self-link" href="#goal-156edddc-ce8d-580d-8d17-d9376d59e60e">Gravitationsfeld als Feldgröße einführen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>156edddc-ce8d-580d-8d17-d9376d59e60e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-a4818c09f02487f2216527c1">Gravitation</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9ffd7e7130e73f0a8e24116412328c9cc94447f60b34a68d2d39d7cef18ace4a" data-rendered-digest="sha256:f8d2c86bbca785a8811f124746756518b79dc80542d50d8ea897b487cfa0a725" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/156edddc-ce8d-580d-8d17-d9376d59e60e/156edddc-ce8d-580d-8d17-d9376d59e60e.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Gravitationsfeld als Feldgröße einführen&quot;. Die lernende Person kann das Gravitationsfeld als ortsabhängige Kraft pro Masse eines Probekörpers erklären und das radialsymmetrische Feld einer zentralen Masse in einem Feldlinienbild darstellen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-156edddc-ce8d-580d-8d17-d9376d59e60e-description-heading">
+        <p class="section-heading" id="goal-156edddc-ce8d-580d-8d17-d9376d59e60e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Gravitationsfeld als ortsabhängige Kraft pro Masse eines Probekörpers erklären und das radialsymmetrische Feld einer zentralen Masse in einem Feldlinienbild darstellen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-156edddc-ce8d-580d-8d17-d9376d59e60e" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-156edddc-ce8d-580d-8d17-d9376d59e60e-requires-heading">
+          <p class="section-heading" id="goal-156edddc-ce8d-580d-8d17-d9376d59e60e-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-92d8f398-0c9f-523c-88d7-44165b6b4768"><span>Massenanziehung qualitativ beschreiben</span><code>92d8f398-0c9f-523c-88d7-44165b6b4768</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-156edddc-ce8d-580d-8d17-d9376d59e60e-reverse-heading">
+          <p class="section-heading" id="goal-156edddc-ce8d-580d-8d17-d9376d59e60e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-156edddc-ce8d-580d-8d17-d9376d59e60e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-156edddc-ce8d-580d-8d17-d9376d59e60e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7e0308d8-a239-5c0f-b2c0-724f21e4da60" rel="noreferrer noopener"><span>Gravitation und Weltbilder in GK-Aufgaben verknüpfen</span> <code>7e0308d8-a239-5c0f-b2c0-724f21e4da60</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 6</span>
+      <span>Buch-Digest <code>sha256:7ee8ccd8ce79ca14a51784f9420f20e556c6836b69ce47ea44b9fc20a5846489</code></span>
+      <span>Ziel-Fingerprint <code>sha256:dd7b3b3a8daab64d1c346c2e4bbf9e03add4d116a9d3adffff575d0803f406bc</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-e-chaos-gravitation-worldviews-revised-6-v1-20260902&amp;edition=curricular-atomic-v1&amp;goalId=156edddc-ce8d-580d-8d17-d9376d59e60e&amp;goalFingerprint=sha256%3Add7b3b3a8daab64d1c346c2e4bbf9e03add4d116a9d3adffff575d0803f406bc&amp;pageFingerprint=sha256%3Af06527255b8c2bf5f276709b4696ee51e74a4e733ad562107b4405386f6361c6&amp;bookDigest=sha256%3A7ee8ccd8ce79ca14a51784f9420f20e556c6836b69ce47ea44b9fc20a5846489&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-15b56a1e-3eec-52ca-82fa-b4df9ce88415" data-goal-id="15b56a1e-3eec-52ca-82fa-b4df9ce88415" data-page-number="4" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089 structure:canonical-goal-eb31f0a7-f6c0-5737-b09a-90ce3eff41b3" aria-labelledby="goal-15b56a1e-3eec-52ca-82fa-b4df9ce88415-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-15b56a1e-3eec-52ca-82fa-b4df9ce88415-title"><a class="goal-self-link" href="#goal-15b56a1e-3eec-52ca-82fa-b4df9ce88415">Astronomische Weltbilder zeitlich einordnen (GK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>15b56a1e-3eec-52ca-82fa-b4df9ce88415</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-a4818c09f02487f2216527c1">Gravitation</a></li><li><a href="#chapter-bbf805d9bd2c478fcacd5bd1">Astronomische Weltbilder vergleichen (GK)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0f5731b2cc1b9b942c2dc77cd3e9461d9800cd6c0232f56ad4ffedb86e3d1bc5" data-rendered-digest="sha256:629d417d7fb5ffe8fea118de61c1857293e41f2d617cba948a06381ae79d9baf" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/15b56a1e-3eec-52ca-82fa-b4df9ce88415/15b56a1e-3eec-52ca-82fa-b4df9ce88415.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Astronomische Weltbilder zeitlich einordnen (GK)&quot;. Die lernende Person kann zentrale astronomische Weltbilder (ptolemäisch, kopernikanisch, newtonsch) grob zeitlich einordnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-15b56a1e-3eec-52ca-82fa-b4df9ce88415-description-heading">
+        <p class="section-heading" id="goal-15b56a1e-3eec-52ca-82fa-b4df9ce88415-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zentrale astronomische Weltbilder (ptolemäisch, kopernikanisch, newtonsch) grob zeitlich einordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-15b56a1e-3eec-52ca-82fa-b4df9ce88415" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-15b56a1e-3eec-52ca-82fa-b4df9ce88415-requires-heading">
+          <p class="section-heading" id="goal-15b56a1e-3eec-52ca-82fa-b4df9ce88415-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-15b56a1e-3eec-52ca-82fa-b4df9ce88415-reverse-heading">
+          <p class="section-heading" id="goal-15b56a1e-3eec-52ca-82fa-b4df9ce88415-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-25edd154-b1d8-546c-94a5-88502b6725cd"><span>Geozentrisches und heliozentrisches Weltbild vergleichen (GK)</span><code>25edd154-b1d8-546c-94a5-88502b6725cd</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-15b56a1e-3eec-52ca-82fa-b4df9ce88415-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-15b56a1e-3eec-52ca-82fa-b4df9ce88415-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5c44b9ba-9b05-4774-95d5-073230d3fc4f" rel="noreferrer noopener"><span>Warum Physik? – Weltverständnis &amp; Zukunft</span> <code>5c44b9ba-9b05-4774-95d5-073230d3fc4f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-15b56a1e-3eec-52ca-82fa-b4df9ce88415-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-15b56a1e-3eec-52ca-82fa-b4df9ce88415-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7e0308d8-a239-5c0f-b2c0-724f21e4da60" rel="noreferrer noopener"><span>Gravitation und Weltbilder in GK-Aufgaben verknüpfen</span> <code>7e0308d8-a239-5c0f-b2c0-724f21e4da60</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 6</span>
+      <span>Buch-Digest <code>sha256:7ee8ccd8ce79ca14a51784f9420f20e556c6836b69ce47ea44b9fc20a5846489</code></span>
+      <span>Ziel-Fingerprint <code>sha256:70d05ae0661234002173df9b62263b2b9ec30893735d2fb528786e9b0eb2fbdb</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-e-chaos-gravitation-worldviews-revised-6-v1-20260902&amp;edition=curricular-atomic-v1&amp;goalId=15b56a1e-3eec-52ca-82fa-b4df9ce88415&amp;goalFingerprint=sha256%3A70d05ae0661234002173df9b62263b2b9ec30893735d2fb528786e9b0eb2fbdb&amp;pageFingerprint=sha256%3A4704af90057dd3c0241b8e532c4bc765752ff0b68807812b019a73b614bee209&amp;bookDigest=sha256%3A7ee8ccd8ce79ca14a51784f9420f20e556c6836b69ce47ea44b9fc20a5846489&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-25edd154-b1d8-546c-94a5-88502b6725cd" data-goal-id="25edd154-b1d8-546c-94a5-88502b6725cd" data-page-number="5" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089 structure:canonical-goal-eb31f0a7-f6c0-5737-b09a-90ce3eff41b3" aria-labelledby="goal-25edd154-b1d8-546c-94a5-88502b6725cd-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-25edd154-b1d8-546c-94a5-88502b6725cd-title"><a class="goal-self-link" href="#goal-25edd154-b1d8-546c-94a5-88502b6725cd">Geozentrisches und heliozentrisches Weltbild vergleichen (GK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>25edd154-b1d8-546c-94a5-88502b6725cd</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-a4818c09f02487f2216527c1">Gravitation</a></li><li><a href="#chapter-bbf805d9bd2c478fcacd5bd1">Astronomische Weltbilder vergleichen (GK)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7e13365fd4049b7e1932315c3da9ba091b02fadd6841d43f7c0083b3ff6eed15" data-rendered-digest="sha256:10458f7b7fef8bd01ad99d25cb4a36f37ae84eaaa9cd8ab84fdef53d9ed677d6" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/25edd154-b1d8-546c-94a5-88502b6725cd/25edd154-b1d8-546c-94a5-88502b6725cd.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Geozentrisches und heliozentrisches Weltbild vergleichen (GK)&quot;. Die lernende Person kann das geozentrische und das heliozentrische Weltbild vergleichen, indem sie Mittelpunkt, Stellung und zugeschriebene Bewegungen von Erde, Sonne und Planeten gegenüberstellt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-25edd154-b1d8-546c-94a5-88502b6725cd-description-heading">
+        <p class="section-heading" id="goal-25edd154-b1d8-546c-94a5-88502b6725cd-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das geozentrische und das heliozentrische Weltbild vergleichen, indem sie Mittelpunkt, Stellung und zugeschriebene Bewegungen von Erde, Sonne und Planeten gegenüberstellt.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-25edd154-b1d8-546c-94a5-88502b6725cd" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-25edd154-b1d8-546c-94a5-88502b6725cd-requires-heading">
+          <p class="section-heading" id="goal-25edd154-b1d8-546c-94a5-88502b6725cd-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-15b56a1e-3eec-52ca-82fa-b4df9ce88415"><span>Astronomische Weltbilder zeitlich einordnen (GK)</span><code>15b56a1e-3eec-52ca-82fa-b4df9ce88415</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-25edd154-b1d8-546c-94a5-88502b6725cd-reverse-heading">
+          <p class="section-heading" id="goal-25edd154-b1d8-546c-94a5-88502b6725cd-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-25edd154-b1d8-546c-94a5-88502b6725cd-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-25edd154-b1d8-546c-94a5-88502b6725cd-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7e0308d8-a239-5c0f-b2c0-724f21e4da60" rel="noreferrer noopener"><span>Gravitation und Weltbilder in GK-Aufgaben verknüpfen</span> <code>7e0308d8-a239-5c0f-b2c0-724f21e4da60</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d873ffa2-04b3-5978-a955-89563802a348" rel="noreferrer noopener"><span>Newtons Beitrag zur Erklärung von Planetenbewegungen erläutern (GK)</span> <code>d873ffa2-04b3-5978-a955-89563802a348</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6d18104b-5704-5c45-b39a-2c84565b1796" rel="noreferrer noopener"><span>Astronomische Weltbilder historisch und gesellschaftlich reflektieren</span> <code>6d18104b-5704-5c45-b39a-2c84565b1796</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 6</span>
+      <span>Buch-Digest <code>sha256:7ee8ccd8ce79ca14a51784f9420f20e556c6836b69ce47ea44b9fc20a5846489</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3f2d896976de33b2102db9d468a4b64d38e62f2fbc7bfedcc412af8e9454329b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-e-chaos-gravitation-worldviews-revised-6-v1-20260902&amp;edition=curricular-atomic-v1&amp;goalId=25edd154-b1d8-546c-94a5-88502b6725cd&amp;goalFingerprint=sha256%3A3f2d896976de33b2102db9d468a4b64d38e62f2fbc7bfedcc412af8e9454329b&amp;pageFingerprint=sha256%3A81bd6bf89c664197d2988e4ac52f135a750427c9eef743bda9c766a70a610ad9&amp;bookDigest=sha256%3A7ee8ccd8ce79ca14a51784f9420f20e556c6836b69ce47ea44b9fc20a5846489&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-481ffd56-d585-56fe-b525-ed423e30eed3" data-goal-id="481ffd56-d585-56fe-b525-ed423e30eed3" data-page-number="6" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089 structure:canonical-goal-423e21b9-0d0c-5709-899d-7ab738b55e36" aria-labelledby="goal-481ffd56-d585-56fe-b525-ed423e30eed3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-481ffd56-d585-56fe-b525-ed423e30eed3-title"><a class="goal-self-link" href="#goal-481ffd56-d585-56fe-b525-ed423e30eed3">Entwicklung astronomischer Weltbilder rekonstruieren (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>481ffd56-d585-56fe-b525-ed423e30eed3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-a4818c09f02487f2216527c1">Gravitation</a></li><li><a href="#chapter-fca41e3b3373b31e3a58a3c3">Astronomische Weltbilder vergleichen (LK)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:53f6d69b06bdf79adfb5f331699bc6dd64296656c02022ead4e9c5b01b68e504" data-rendered-digest="sha256:34115030613100f4433b0bff9313ba27678fcc8e6058f93afc20277d178045ac" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/481ffd56-d585-56fe-b525-ed423e30eed3/481ffd56-d585-56fe-b525-ed423e30eed3.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Entwicklung astronomischer Weltbilder rekonstruieren (LK)&quot;. Die lernende Person kann die Entwicklung astronomischer Weltbilder von Ptolemäus bis Newton als zeitliche Folge sich wandelnder Erklärungsmodelle fachlich strukturieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-481ffd56-d585-56fe-b525-ed423e30eed3-description-heading">
+        <p class="section-heading" id="goal-481ffd56-d585-56fe-b525-ed423e30eed3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Entwicklung astronomischer Weltbilder von Ptolemäus bis Newton als zeitliche Folge sich wandelnder Erklärungsmodelle fachlich strukturieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-481ffd56-d585-56fe-b525-ed423e30eed3" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-481ffd56-d585-56fe-b525-ed423e30eed3-requires-heading">
+          <p class="section-heading" id="goal-481ffd56-d585-56fe-b525-ed423e30eed3-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-481ffd56-d585-56fe-b525-ed423e30eed3-reverse-heading">
+          <p class="section-heading" id="goal-481ffd56-d585-56fe-b525-ed423e30eed3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-481ffd56-d585-56fe-b525-ed423e30eed3-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-481ffd56-d585-56fe-b525-ed423e30eed3-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5c44b9ba-9b05-4774-95d5-073230d3fc4f" rel="noreferrer noopener"><span>Warum Physik? – Weltverständnis &amp; Zukunft</span> <code>5c44b9ba-9b05-4774-95d5-073230d3fc4f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-481ffd56-d585-56fe-b525-ed423e30eed3-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-481ffd56-d585-56fe-b525-ed423e30eed3-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8a1d4093-9832-5010-b1ca-9d32d8c05afa" rel="noreferrer noopener"><span>Gravitation und Weltbilder vertieft herleiten (LK)</span> <code>8a1d4093-9832-5010-b1ca-9d32d8c05afa</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-1b833656-cd16-5b21-973a-9810960dcfd2" rel="noreferrer noopener"><span>Keplers Beschreibung und Newtons Erklärung unterscheiden (LK)</span> <code>1b833656-cd16-5b21-973a-9810960dcfd2</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 6</span>
+      <span>Buch-Digest <code>sha256:7ee8ccd8ce79ca14a51784f9420f20e556c6836b69ce47ea44b9fc20a5846489</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ae897724aefa6c48defb525999926a841c0bcd58a58afd4ae97e64250a19fec7</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-e-chaos-gravitation-worldviews-revised-6-v1-20260902&amp;edition=curricular-atomic-v1&amp;goalId=481ffd56-d585-56fe-b525-ed423e30eed3&amp;goalFingerprint=sha256%3Aae897724aefa6c48defb525999926a841c0bcd58a58afd4ae97e64250a19fec7&amp;pageFingerprint=sha256%3Aabe3ba23b5e08bb7ba7976ec8e3c1f81c22c4dfea4624fd2a0f788bcb9075006&amp;bookDigest=sha256%3A7ee8ccd8ce79ca14a51784f9420f20e556c6836b69ce47ea44b9fc20a5846489&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

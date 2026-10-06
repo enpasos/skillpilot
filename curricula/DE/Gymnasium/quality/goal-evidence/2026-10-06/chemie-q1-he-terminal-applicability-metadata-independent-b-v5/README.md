@@ -1,0 +1,11 @@
+# Chemistry v5 metadata — independent B targeted follow-up
+
+**KEEP.** The independently compared author-v5 freeze changes only `4cb74d76.applicability.jurisdiction` from BY+HE to HE. All other 478 complete goals, all other fields of this assessment, its released machine review state, task, solution, rubric, and requires are exact v4. The metadata now matches the actual HE-only assessment-requires scope. This is no new primary source coverage.
+
+The native compiler was run against this reviewer's own physical copy of the earlier frozen native inputs with only the author's v5 canonical substituted. It reports zero errors and zero warnings. All 479 compiled applicability maps are exact against this reviewer's own v4 output; the 473-ID raw BY set is exact. The paraben-use atom and its terminal, both quantitative children, their AND cluster and their terminal remain HE-only with no BY evidence. No original active376 duty is moved by this delta.
+
+Using the unmodified native subset/context/fingerprint functions, the reviewer recomputed the current three subsets from the supplied v5 full model. All 53 goal, page, complete input-goal, bilingual text, canonical context and review-context bindings remain exact against the reviewer's frozen B inputs. All 378 full and 359 atlas page objects also remain exact. Only outer book/source digests change. The semantic classification ledger remains byte-bound to d16aa527… and the assessment's classification fingerprint remains exact.
+
+The already final 53 native B D records remain unchanged and valid on the preserved prepared campaigns. Their 153-file freeze was independently rechecked. All 112 supplied ordinary-science P records belong to unchanged whole goals; 4cb74 is not among those profile owners. No new P/V review or restart of the 53 D reviews is claimed. No A output was read.
+
+Actual results are in `results/exact-metadata-delta.actual.json`, `results/current-bindings-and-native-scope.actual.json`, and `results/frozen-D-and-P-carryforward.actual.json`. All own physical inputs and results are sealed in `independent-b-v5.final.freeze.json`. No active/history writes, full CQR/build run, human approval, human trial or empirical learner claim.

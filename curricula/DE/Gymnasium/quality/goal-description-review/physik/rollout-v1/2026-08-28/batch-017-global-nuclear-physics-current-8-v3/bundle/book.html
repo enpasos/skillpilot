@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v1">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik Lernzielbeschreibungs-Review – Rollout Batch 017, Atom- und Kernphysik aktuell final v3</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    h1 { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<article class="goal-page" id="goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb" data-goal-id="2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb" data-page-number="1" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb-title">
+    <header class="goal-header">
+      <h1 id="goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb-title"><a class="goal-self-link" href="#goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb">Kern und Hülle des Atoms qualitativ beschreiben</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ed59090dc78fb8fcda681c316d579585c2e53344d90cee6a7129dd4f62da8ddb" data-rendered-digest="sha256:4f9718cb0ce8db17c2aa7cb1beb4a26eb6c38fec3cc818204338ac4df7807c61" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb/2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb.jpg" alt="Schematische, nicht maßstabsgerechte Darstellung eines Atoms mit kleinem Kern und Elektronenhülle. Das Bild weist darauf hin, dass die Größenverhältnisse nicht maßstabsgerecht und daraus nicht ablesbar sind.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb-description-heading">
+        <p class="section-heading" id="goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Kern und Elektronenhülle als Bestandteile eines Atommodells beschreiben und die Größenordnungen von Atom- und Kerndurchmesser vergleichen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb-requires-heading">
+          <p class="section-heading" id="goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb-reverse-heading">
+          <p class="section-heading" id="goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-25d91cc0-d84c-5522-86b5-fdff73264f08"><span>Ionisierende Strahlung mit geeigneten Detektoren nachweisen</span><code>25d91cc0-d84c-5522-86b5-fdff73264f08</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd"><span>Biologische Wirkungen ionisierender Strahlung einordnen</span><code>861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-1593d95c-2aac-504c-8527-37cb61877da9"><span>Alpha-, Beta- und Gammastrahlung unterscheiden</span><code>1593d95c-2aac-504c-8527-37cb61877da9</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-50877233-7abf-54df-b347-6d3224678fc9"><span>Kernspaltung und Kernfusion qualitativ beschreiben</span><code>50877233-7abf-54df-b347-6d3224678fc9</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-f74c691b-0b76-54e0-8fd6-a22211994e0a"><span>Nuklidschreibweise deuten und Isotope unterscheiden</span><code>f74c691b-0b76-54e0-8fd6-a22211994e0a</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5c44b9ba-9b05-4774-95d5-073230d3fc4f" rel="noreferrer noopener"><span>Warum Physik? – Weltverständnis &amp; Zukunft</span> <code>5c44b9ba-9b05-4774-95d5-073230d3fc4f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 1 von 8</span>
+      <span>Buch-Digest <code>sha256:d1c2e0a44e9ebc05e9918273bd80bb7342ae4536be3572fb8d7139705fecf3be</code></span>
+      <span>Ziel-Fingerprint <code>sha256:deb6f327d86c00d57d07c30e3138a114b2563bcc4fb7686353cb48fb655fef30</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828&amp;edition=curricular-atomic-v1&amp;goalId=2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb&amp;goalFingerprint=sha256%3Adeb6f327d86c00d57d07c30e3138a114b2563bcc4fb7686353cb48fb655fef30&amp;pageFingerprint=sha256%3A5180acf419254c847ea93904237607b95190df5598b93847006ae44770099506&amp;bookDigest=sha256%3Ad1c2e0a44e9ebc05e9918273bd80bb7342ae4536be3572fb8d7139705fecf3be&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f74c691b-0b76-54e0-8fd6-a22211994e0a" data-goal-id="f74c691b-0b76-54e0-8fd6-a22211994e0a" data-page-number="2" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-f74c691b-0b76-54e0-8fd6-a22211994e0a-title">
+    <header class="goal-header">
+      <h1 id="goal-f74c691b-0b76-54e0-8fd6-a22211994e0a-title"><a class="goal-self-link" href="#goal-f74c691b-0b76-54e0-8fd6-a22211994e0a">Nuklidschreibweise deuten und Isotope unterscheiden</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f74c691b-0b76-54e0-8fd6-a22211994e0a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f74c691b-0b76-54e0-8fd6-a22211994e0a-description-heading">
+        <p class="section-heading" id="goal-f74c691b-0b76-54e0-8fd6-a22211994e0a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus der Nuklidschreibweise mit Massenzahl A und Protonenzahl Z die Protonen- und Neutronenzahl eines Atomkerns bestimmen und Isotope als Kerne desselben Elements mit gleicher Protonen-, aber unterschiedlicher Neutronenzahl begründet unterscheiden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>MV, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-f74c691b-0b76-54e0-8fd6-a22211994e0a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f74c691b-0b76-54e0-8fd6-a22211994e0a-requires-heading">
+          <p class="section-heading" id="goal-f74c691b-0b76-54e0-8fd6-a22211994e0a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"><span>Kern und Hülle des Atoms qualitativ beschreiben</span><code>2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-f74c691b-0b76-54e0-8fd6-a22211994e0a-reverse-heading">
+          <p class="section-heading" id="goal-f74c691b-0b76-54e0-8fd6-a22211994e0a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-f74c691b-0b76-54e0-8fd6-a22211994e0a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f74c691b-0b76-54e0-8fd6-a22211994e0a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-bbe9a270-9b17-519f-8cd7-92c816ac4e29" rel="noreferrer noopener"><span>Prüfungsaufgabe: Nuklidschreibweise und Isotope begründen</span> <code>bbe9a270-9b17-519f-8cd7-92c816ac4e29</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 2 von 8</span>
+      <span>Buch-Digest <code>sha256:d1c2e0a44e9ebc05e9918273bd80bb7342ae4536be3572fb8d7139705fecf3be</code></span>
+      <span>Ziel-Fingerprint <code>sha256:91642c5031a0d508c5607b7064fb0f20dd0911d84eb63a97339761846e77255f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828&amp;edition=curricular-atomic-v1&amp;goalId=f74c691b-0b76-54e0-8fd6-a22211994e0a&amp;goalFingerprint=sha256%3A91642c5031a0d508c5607b7064fb0f20dd0911d84eb63a97339761846e77255f&amp;pageFingerprint=sha256%3A855e0fb7ccb833db84c99faca844d52b22f5066bd6b093209959d17c03d6249b&amp;bookDigest=sha256%3Ad1c2e0a44e9ebc05e9918273bd80bb7342ae4536be3572fb8d7139705fecf3be&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-25d91cc0-d84c-5522-86b5-fdff73264f08" data-goal-id="25d91cc0-d84c-5522-86b5-fdff73264f08" data-page-number="3" data-chapter-ids="atlas:3400bf6ce29cb6d09086 atlas:ba602451f2a87c6e9b6a" aria-labelledby="goal-25d91cc0-d84c-5522-86b5-fdff73264f08-title">
+    <header class="goal-header">
+      <h1 id="goal-25d91cc0-d84c-5522-86b5-fdff73264f08-title"><a class="goal-self-link" href="#goal-25d91cc0-d84c-5522-86b5-fdff73264f08">Ionisierende Strahlung mit geeigneten Detektoren nachweisen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>25d91cc0-d84c-5522-86b5-fdff73264f08</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li><li>Nachweis und biologische Wirkungen ionisierender Strahlung</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-25d91cc0-d84c-5522-86b5-fdff73264f08-description-heading">
+        <p class="section-heading" id="goal-25d91cc0-d84c-5522-86b5-fdff73264f08-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Nachweisprinzip eines geeigneten Detektors erklären, das beobachtete Signal von der daraus erschlossenen ionisierenden Strahlung unterscheiden und den Nachweis mit einer Hintergrund- oder Kontrollmessung absichern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li><li><strong>NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-25d91cc0-d84c-5522-86b5-fdff73264f08" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-25d91cc0-d84c-5522-86b5-fdff73264f08-requires-heading">
+          <p class="section-heading" id="goal-25d91cc0-d84c-5522-86b5-fdff73264f08-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"><span>Kern und Hülle des Atoms qualitativ beschreiben</span><code>2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-25d91cc0-d84c-5522-86b5-fdff73264f08-reverse-heading">
+          <p class="section-heading" id="goal-25d91cc0-d84c-5522-86b5-fdff73264f08-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-25d91cc0-d84c-5522-86b5-fdff73264f08-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-25d91cc0-d84c-5522-86b5-fdff73264f08-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6c9d0ef3-c82f-534f-8024-6b0efcb88276" rel="noreferrer noopener"><span>Prüfungsaufgabe: Strahlungsnachweis und Halbwertszeit untersuchen</span> <code>6c9d0ef3-c82f-534f-8024-6b0efcb88276</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e5c08365-a0d3-592c-ad8e-d2c2c6e2b717" rel="noreferrer noopener"><span>Radioaktive Strahlung und Wirkungen</span> <code>e5c08365-a0d3-592c-ad8e-d2c2c6e2b717</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 3 von 8</span>
+      <span>Buch-Digest <code>sha256:d1c2e0a44e9ebc05e9918273bd80bb7342ae4536be3572fb8d7139705fecf3be</code></span>
+      <span>Ziel-Fingerprint <code>sha256:14b59405a7bcb064e28d29536a40b93430911e848fbc9dc8b3d09a83b7ac49b2</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828&amp;edition=curricular-atomic-v1&amp;goalId=25d91cc0-d84c-5522-86b5-fdff73264f08&amp;goalFingerprint=sha256%3A14b59405a7bcb064e28d29536a40b93430911e848fbc9dc8b3d09a83b7ac49b2&amp;pageFingerprint=sha256%3A7f4fa3d417e16c8737af37a851d6befc7a5096b4fab4f18a971eff6cf632ca9c&amp;bookDigest=sha256%3Ad1c2e0a44e9ebc05e9918273bd80bb7342ae4536be3572fb8d7139705fecf3be&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd" data-goal-id="861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd" data-page-number="4" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd-title">
+    <header class="goal-header">
+      <h1 id="goal-861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd-title"><a class="goal-self-link" href="#goal-861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd">Biologische Wirkungen ionisierender Strahlung einordnen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd-description-heading">
+        <p class="section-heading" id="goal-861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die mögliche Schädigung biologischen Gewebes durch ionisierende Strahlung über Ionisation erklären und bei äußerer Exposition grundlegende Schutzmaßnahmen anhand von Expositionszeit, Abstand und Abschirmung begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd-requires-heading">
+          <p class="section-heading" id="goal-861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"><span>Kern und Hülle des Atoms qualitativ beschreiben</span><code>2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd-reverse-heading">
+          <p class="section-heading" id="goal-861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-979e0d0d-8933-4ace-814f-f28060ad280f"><span>Anwendungen und Risiken radioaktiver Strahlung beurteilen</span><code>979e0d0d-8933-4ace-814f-f28060ad280f</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e5c08365-a0d3-592c-ad8e-d2c2c6e2b717" rel="noreferrer noopener"><span>Radioaktive Strahlung und Wirkungen</span> <code>e5c08365-a0d3-592c-ad8e-d2c2c6e2b717</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 4 von 8</span>
+      <span>Buch-Digest <code>sha256:d1c2e0a44e9ebc05e9918273bd80bb7342ae4536be3572fb8d7139705fecf3be</code></span>
+      <span>Ziel-Fingerprint <code>sha256:64d3041c91679ac1a33d530077cdc746772da6ae134ebaf268ee1e468a9f6d07</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828&amp;edition=curricular-atomic-v1&amp;goalId=861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd&amp;goalFingerprint=sha256%3A64d3041c91679ac1a33d530077cdc746772da6ae134ebaf268ee1e468a9f6d07&amp;pageFingerprint=sha256%3A15f7e99a4053517005f6d1ffc42989cacb83159613f6de3c8a32aa8ff9c3fc98&amp;bookDigest=sha256%3Ad1c2e0a44e9ebc05e9918273bd80bb7342ae4536be3572fb8d7139705fecf3be&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-979e0d0d-8933-4ace-814f-f28060ad280f" data-goal-id="979e0d0d-8933-4ace-814f-f28060ad280f" data-page-number="5" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-979e0d0d-8933-4ace-814f-f28060ad280f-title">
+    <header class="goal-header">
+      <h1 id="goal-979e0d0d-8933-4ace-814f-f28060ad280f-title"><a class="goal-self-link" href="#goal-979e0d0d-8933-4ace-814f-f28060ad280f">Anwendungen und Risiken radioaktiver Strahlung beurteilen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>979e0d0d-8933-4ace-814f-f28060ad280f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d1dc9b4e7296b82cf4972601bc7e6b9bbd86845d37f74731d925a943b980b6c7" data-rendered-digest="sha256:77dea635d43ef4b62fc3766c9e54b4e15a61f9cf0bd2b56f56036615c7c23dbd" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/979e0d0d-8933-4ace-814f-f28060ad280f/979e0d0d-8933-4ace-814f-f28060ad280f.jpg" alt="Übersicht mit den Einsatzfeldern Medizin, Materialprüfung und Kerntechnik sowie Symbolen für Nutzen, Strahlenrisiken und die Schutzprinzipien Zeit, Abstand und Abschirmung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-979e0d0d-8933-4ace-814f-f28060ad280f-description-heading">
+        <p class="section-heading" id="goal-979e0d0d-8933-4ace-814f-f28060ad280f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei einem konkreten Einsatz ionisierender Strahlung oder radioaktiver Stoffe in Medizin, Materialprüfung oder Kerntechnik Nutzen, Strahlenrisiken und Schutzmaßnahmen anhand physikalischer Wirkungen, Einsatzbedingungen und benannter Bewertungskriterien qualitativ abwägen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-979e0d0d-8933-4ace-814f-f28060ad280f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-979e0d0d-8933-4ace-814f-f28060ad280f-requires-heading">
+          <p class="section-heading" id="goal-979e0d0d-8933-4ace-814f-f28060ad280f-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd"><span>Biologische Wirkungen ionisierender Strahlung einordnen</span><code>861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-979e0d0d-8933-4ace-814f-f28060ad280f-reverse-heading">
+          <p class="section-heading" id="goal-979e0d0d-8933-4ace-814f-f28060ad280f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-979e0d0d-8933-4ace-814f-f28060ad280f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-979e0d0d-8933-4ace-814f-f28060ad280f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-77b23e86-c39f-589e-8460-b28883baea51" rel="noreferrer noopener"><span>Prüfungsaufgabe: Anwendungen radioaktiver Strahlung abwägen</span> <code>77b23e86-c39f-589e-8460-b28883baea51</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7e719cc2-0866-5267-a252-e7e7ac0d03f1" rel="noreferrer noopener"><span>Kernenergieoptionen mit physikalischen Kriterien bewerten</span> <code>7e719cc2-0866-5267-a252-e7e7ac0d03f1</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 5 von 8</span>
+      <span>Buch-Digest <code>sha256:d1c2e0a44e9ebc05e9918273bd80bb7342ae4536be3572fb8d7139705fecf3be</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2bc77b71536d9fafdb0c500d9de24b462188a403a829e5c55794a9bd9c32afa5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828&amp;edition=curricular-atomic-v1&amp;goalId=979e0d0d-8933-4ace-814f-f28060ad280f&amp;goalFingerprint=sha256%3A2bc77b71536d9fafdb0c500d9de24b462188a403a829e5c55794a9bd9c32afa5&amp;pageFingerprint=sha256%3A2b848ddf01d5bea21e09e4e068204e0caac0c0461b44ac7f40b7731c251e0498&amp;bookDigest=sha256%3Ad1c2e0a44e9ebc05e9918273bd80bb7342ae4536be3572fb8d7139705fecf3be&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1593d95c-2aac-504c-8527-37cb61877da9" data-goal-id="1593d95c-2aac-504c-8527-37cb61877da9" data-page-number="6" data-chapter-ids="atlas:3400bf6ce29cb6d09086 atlas:6ef0d2c815649a9d7c1c" aria-labelledby="goal-1593d95c-2aac-504c-8527-37cb61877da9-title">
+    <header class="goal-header">
+      <h1 id="goal-1593d95c-2aac-504c-8527-37cb61877da9-title"><a class="goal-self-link" href="#goal-1593d95c-2aac-504c-8527-37cb61877da9">Alpha-, Beta- und Gammastrahlung unterscheiden</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1593d95c-2aac-504c-8527-37cb61877da9</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li><li>Strahlungsarten und Halbwertszeit radioaktiver Stoffe</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1593d95c-2aac-504c-8527-37cb61877da9-description-heading">
+        <p class="section-heading" id="goal-1593d95c-2aac-504c-8527-37cb61877da9-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Alpha-, Beta- und Gammastrahlung anhand der jeweiligen Kernänderung beziehungsweise Kernabregung, der emittierten Teilchen oder Photonen sowie ihres unter vergleichbaren Bedingungen in Materie typischen Ionisations- und Durchdringungsvermögens qualitativ unterscheiden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-1593d95c-2aac-504c-8527-37cb61877da9" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1593d95c-2aac-504c-8527-37cb61877da9-requires-heading">
+          <p class="section-heading" id="goal-1593d95c-2aac-504c-8527-37cb61877da9-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"><span>Kern und Hülle des Atoms qualitativ beschreiben</span><code>2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-1593d95c-2aac-504c-8527-37cb61877da9-reverse-heading">
+          <p class="section-heading" id="goal-1593d95c-2aac-504c-8527-37cb61877da9-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-16b94a12-ecc5-5b5c-85b6-87b4290bebf8"><span>Halbwertszeit radioaktiver Stoffe deuten</span><code>16b94a12-ecc5-5b5c-85b6-87b4290bebf8</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-1593d95c-2aac-504c-8527-37cb61877da9-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1593d95c-2aac-504c-8527-37cb61877da9-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6c9d0ef3-c82f-534f-8024-6b0efcb88276" rel="noreferrer noopener"><span>Prüfungsaufgabe: Strahlungsnachweis und Halbwertszeit untersuchen</span> <code>6c9d0ef3-c82f-534f-8024-6b0efcb88276</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e5c08365-a0d3-592c-ad8e-d2c2c6e2b717" rel="noreferrer noopener"><span>Radioaktive Strahlung und Wirkungen</span> <code>e5c08365-a0d3-592c-ad8e-d2c2c6e2b717</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-49872cc0-401f-5464-9235-4763df4db5cf" rel="noreferrer noopener"><span>Kernreaktionen, Spaltung und Fusion</span> <code>49872cc0-401f-5464-9235-4763df4db5cf</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2" rel="noreferrer noopener"><span>Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären</span> <code>7d78da7f-6af5-440a-9d6b-6cab4bee8dd2</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 6 von 8</span>
+      <span>Buch-Digest <code>sha256:d1c2e0a44e9ebc05e9918273bd80bb7342ae4536be3572fb8d7139705fecf3be</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f045e07fb1e55a1cc84cb4bd74d2ea6d0ee3dbdb8a7f53297a8ff8c9429a5a71</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828&amp;edition=curricular-atomic-v1&amp;goalId=1593d95c-2aac-504c-8527-37cb61877da9&amp;goalFingerprint=sha256%3Af045e07fb1e55a1cc84cb4bd74d2ea6d0ee3dbdb8a7f53297a8ff8c9429a5a71&amp;pageFingerprint=sha256%3Ac4b17ad0360bc9ca52d3efee108ab977fdc7e47dae26dd528433bfce98ce2208&amp;bookDigest=sha256%3Ad1c2e0a44e9ebc05e9918273bd80bb7342ae4536be3572fb8d7139705fecf3be&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-16b94a12-ecc5-5b5c-85b6-87b4290bebf8" data-goal-id="16b94a12-ecc5-5b5c-85b6-87b4290bebf8" data-page-number="7" data-chapter-ids="atlas:3400bf6ce29cb6d09086 atlas:6ef0d2c815649a9d7c1c" aria-labelledby="goal-16b94a12-ecc5-5b5c-85b6-87b4290bebf8-title">
+    <header class="goal-header">
+      <h1 id="goal-16b94a12-ecc5-5b5c-85b6-87b4290bebf8-title"><a class="goal-self-link" href="#goal-16b94a12-ecc5-5b5c-85b6-87b4290bebf8">Halbwertszeit radioaktiver Stoffe deuten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>16b94a12-ecc5-5b5c-85b6-87b4290bebf8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li><li>Strahlungsarten und Halbwertszeit radioaktiver Stoffe</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-16b94a12-ecc5-5b5c-85b6-87b4290bebf8-description-heading">
+        <p class="section-heading" id="goal-16b94a12-ecc5-5b5c-85b6-87b4290bebf8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Halbwertszeit als statistische Halbierung der Zahl noch nicht zerfallener Kerne in einem großen Ensemble deuten und erklären, warum der Zerfallszeitpunkt eines einzelnen Kerns nicht vorhergesagt werden kann.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-16b94a12-ecc5-5b5c-85b6-87b4290bebf8" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-16b94a12-ecc5-5b5c-85b6-87b4290bebf8-requires-heading">
+          <p class="section-heading" id="goal-16b94a12-ecc5-5b5c-85b6-87b4290bebf8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1593d95c-2aac-504c-8527-37cb61877da9"><span>Alpha-, Beta- und Gammastrahlung unterscheiden</span><code>1593d95c-2aac-504c-8527-37cb61877da9</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-16b94a12-ecc5-5b5c-85b6-87b4290bebf8-reverse-heading">
+          <p class="section-heading" id="goal-16b94a12-ecc5-5b5c-85b6-87b4290bebf8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-16b94a12-ecc5-5b5c-85b6-87b4290bebf8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-16b94a12-ecc5-5b5c-85b6-87b4290bebf8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6c9d0ef3-c82f-534f-8024-6b0efcb88276" rel="noreferrer noopener"><span>Prüfungsaufgabe: Strahlungsnachweis und Halbwertszeit untersuchen</span> <code>6c9d0ef3-c82f-534f-8024-6b0efcb88276</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a12fddce-0215-58d9-bd91-21be8a960d25" rel="noreferrer noopener"><span>Zerfallsgesetze anwenden</span> <code>a12fddce-0215-58d9-bd91-21be8a960d25</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 7 von 8</span>
+      <span>Buch-Digest <code>sha256:d1c2e0a44e9ebc05e9918273bd80bb7342ae4536be3572fb8d7139705fecf3be</code></span>
+      <span>Ziel-Fingerprint <code>sha256:41cd4c1297b5c1677f7449649a93be2b0c5ab865411f3ae55d4e506e3d8fefd9</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828&amp;edition=curricular-atomic-v1&amp;goalId=16b94a12-ecc5-5b5c-85b6-87b4290bebf8&amp;goalFingerprint=sha256%3A41cd4c1297b5c1677f7449649a93be2b0c5ab865411f3ae55d4e506e3d8fefd9&amp;pageFingerprint=sha256%3A2f079d2da4e4439bd7674855ecd4e12ae9e012d7b60aa869dd6af8b1f4f10535&amp;bookDigest=sha256%3Ad1c2e0a44e9ebc05e9918273bd80bb7342ae4536be3572fb8d7139705fecf3be&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-50877233-7abf-54df-b347-6d3224678fc9" data-goal-id="50877233-7abf-54df-b347-6d3224678fc9" data-page-number="8" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-50877233-7abf-54df-b347-6d3224678fc9-title">
+    <header class="goal-header">
+      <h1 id="goal-50877233-7abf-54df-b347-6d3224678fc9-title"><a class="goal-self-link" href="#goal-50877233-7abf-54df-b347-6d3224678fc9">Kernspaltung und Kernfusion qualitativ beschreiben</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>50877233-7abf-54df-b347-6d3224678fc9</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-50877233-7abf-54df-b347-6d3224678fc9-description-heading">
+        <p class="section-heading" id="goal-50877233-7abf-54df-b347-6d3224678fc9-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Kernspaltung und Kernfusion anhand der Ausgangskerne, der Reaktionsprodukte und der erforderlichen Bedingungen qualitativ vergleichen sowie heutige Kernkraftwerke der Kernspaltung und Sterne der Kernfusion begründet zuordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-50877233-7abf-54df-b347-6d3224678fc9" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-50877233-7abf-54df-b347-6d3224678fc9-requires-heading">
+          <p class="section-heading" id="goal-50877233-7abf-54df-b347-6d3224678fc9-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"><span>Kern und Hülle des Atoms qualitativ beschreiben</span><code>2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-50877233-7abf-54df-b347-6d3224678fc9-reverse-heading">
+          <p class="section-heading" id="goal-50877233-7abf-54df-b347-6d3224678fc9-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-50877233-7abf-54df-b347-6d3224678fc9-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-50877233-7abf-54df-b347-6d3224678fc9-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ca13e9cd-6377-540e-88c8-0308cddc8a7e" rel="noreferrer noopener"><span>Prüfungsaufgabe: Kernspaltung und Kernfusion einordnen</span> <code>ca13e9cd-6377-540e-88c8-0308cddc8a7e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 8 von 8</span>
+      <span>Buch-Digest <code>sha256:d1c2e0a44e9ebc05e9918273bd80bb7342ae4536be3572fb8d7139705fecf3be</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b30374364321c3f4f7154b91f81c886af93a9f602882e653c232bcd809d747f6</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828&amp;edition=curricular-atomic-v1&amp;goalId=50877233-7abf-54df-b347-6d3224678fc9&amp;goalFingerprint=sha256%3Ab30374364321c3f4f7154b91f81c886af93a9f602882e653c232bcd809d747f6&amp;pageFingerprint=sha256%3A2e4adb5196187eb91b8feeba351c635a2aa91ba9d31a2f9f980a4dcd803fa798&amp;bookDigest=sha256%3Ad1c2e0a44e9ebc05e9918273bd80bb7342ae4536be3572fb8d7139705fecf3be&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

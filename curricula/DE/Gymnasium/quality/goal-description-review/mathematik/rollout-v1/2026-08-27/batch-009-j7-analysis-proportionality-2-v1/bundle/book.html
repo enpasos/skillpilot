@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v1">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Mathematik Lernzielbeschreibungs-Review – Rollout Batch 009, Proportionalität Jahrgang 7</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    h1 { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<article class="goal-page" id="goal-093397e0-eec8-45bb-9a5a-a24827876df5" data-goal-id="093397e0-eec8-45bb-9a5a-a24827876df5" data-page-number="1" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-093397e0-eec8-45bb-9a5a-a24827876df5-title">
+    <header class="goal-header">
+      <h1 id="goal-093397e0-eec8-45bb-9a5a-a24827876df5-title"><a class="goal-self-link" href="#goal-093397e0-eec8-45bb-9a5a-a24827876df5">Dreisatz in proportionalen Sachsituationen anwenden</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>093397e0-eec8-45bb-9a5a-a24827876df5</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c699716ac7a73742c86fcaefd213932253925c91fd5008405a377f1bf8884c9e" data-rendered-digest="sha256:508ab84c878105e73b61f2f4771bcaee738837f72d8d67779f0b0d74ab52efcb" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/093397e0-eec8-45bb-9a5a-a24827876df5/093397e0-eec8-45bb-9a5a-a24827876df5.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Dreisatz in proportionalen Sachsituationen anwenden&quot;. Die lernende Person kann proportionale Sachsituationen mit dem Dreisatz lösen, Zwischenschritte nachvollziehbar darstellen und Ergebnisse im Kontext deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-093397e0-eec8-45bb-9a5a-a24827876df5-description-heading">
+        <p class="section-heading" id="goal-093397e0-eec8-45bb-9a5a-a24827876df5-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann proportionale Sachsituationen mit dem Dreisatz lösen, Zwischenschritte nachvollziehbar darstellen und Ergebnisse im Kontext deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HE, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-093397e0-eec8-45bb-9a5a-a24827876df5" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-093397e0-eec8-45bb-9a5a-a24827876df5-requires-heading">
+          <p class="section-heading" id="goal-093397e0-eec8-45bb-9a5a-a24827876df5-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-093397e0-eec8-45bb-9a5a-a24827876df5-reverse-heading">
+          <p class="section-heading" id="goal-093397e0-eec8-45bb-9a5a-a24827876df5-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-093397e0-eec8-45bb-9a5a-a24827876df5-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-093397e0-eec8-45bb-9a5a-a24827876df5-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2bb4bb91-7929-483a-b735-44275f6b5cdc" rel="noreferrer noopener"><span>Zuordnungen analysieren</span> <code>2bb4bb91-7929-483a-b735-44275f6b5cdc</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-093397e0-eec8-45bb-9a5a-a24827876df5-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-093397e0-eec8-45bb-9a5a-a24827876df5-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a157b619-e875-5db6-b26a-607a39de00dc" rel="noreferrer noopener"><span>Aufgabe 4 (Jahrgangsstufe 7, 7 BE)</span> <code>a157b619-e875-5db6-b26a-607a39de00dc</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 1 von 2</span>
+      <span>Buch-Digest <code>sha256:b2cc1c3e034b2da3a14550e2fbb58e73c64fa16763194482201596b932516524</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3e289cf053f5bd05aa7b8c9079e9952e6e53d96eed61775ee810a37e69ccad2d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-009-j7-analysis-proportionality-2-v1-20260827&amp;edition=curricular-atomic-v1&amp;goalId=093397e0-eec8-45bb-9a5a-a24827876df5&amp;goalFingerprint=sha256%3A3e289cf053f5bd05aa7b8c9079e9952e6e53d96eed61775ee810a37e69ccad2d&amp;pageFingerprint=sha256%3A09e61d655352f7911de24012051bbc0fa076693988c67a56bf4eca348649b9a5&amp;bookDigest=sha256%3Ab2cc1c3e034b2da3a14550e2fbb58e73c64fa16763194482201596b932516524&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c1f50bcc-7848-4e49-b9de-0ec030cc6bca" data-goal-id="c1f50bcc-7848-4e49-b9de-0ec030cc6bca" data-page-number="2" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-c1f50bcc-7848-4e49-b9de-0ec030cc6bca-title">
+    <header class="goal-header">
+      <h1 id="goal-c1f50bcc-7848-4e49-b9de-0ec030cc6bca-title"><a class="goal-self-link" href="#goal-c1f50bcc-7848-4e49-b9de-0ec030cc6bca">Proportionale Zusammenhänge mit Quotientengleichheit prüfen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c1f50bcc-7848-4e49-b9de-0ec030cc6bca</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2b4d6f42a3c300b5c778579ebabebd28484c8e94ae552d0550364fae2908e1d2" data-rendered-digest="sha256:2b115b2cb8aeebf16b9af9fc497fcce9e3f2291f3af7bc744806d2b3211867aa" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/c1f50bcc-7848-4e49-b9de-0ec030cc6bca/c1f50bcc-7848-4e49-b9de-0ec030cc6bca.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Proportionale Zusammenhänge mit Quotientengleichheit prüfen&quot;. Die lernende Person kann in Tabellen und Sachsituationen prüfen, ob das Verhältnis zugeordneter Größen konstant ist, und die Quotientengleichheit fachsprachlich begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c1f50bcc-7848-4e49-b9de-0ec030cc6bca-description-heading">
+        <p class="section-heading" id="goal-c1f50bcc-7848-4e49-b9de-0ec030cc6bca-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in Tabellen und Sachsituationen prüfen, ob das Verhältnis zugeordneter Größen konstant ist, und die Quotientengleichheit fachsprachlich begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c1f50bcc-7848-4e49-b9de-0ec030cc6bca" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c1f50bcc-7848-4e49-b9de-0ec030cc6bca-requires-heading">
+          <p class="section-heading" id="goal-c1f50bcc-7848-4e49-b9de-0ec030cc6bca-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-c1f50bcc-7848-4e49-b9de-0ec030cc6bca-reverse-heading">
+          <p class="section-heading" id="goal-c1f50bcc-7848-4e49-b9de-0ec030cc6bca-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-c1f50bcc-7848-4e49-b9de-0ec030cc6bca-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c1f50bcc-7848-4e49-b9de-0ec030cc6bca-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2bb4bb91-7929-483a-b735-44275f6b5cdc" rel="noreferrer noopener"><span>Zuordnungen analysieren</span> <code>2bb4bb91-7929-483a-b735-44275f6b5cdc</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-c1f50bcc-7848-4e49-b9de-0ec030cc6bca-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c1f50bcc-7848-4e49-b9de-0ec030cc6bca-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f3167cab-bb23-4bb9-8a27-22e3c5015d44" rel="noreferrer noopener"><span>Proportionale Funktionen als Ursprungsgeraden deuten und darstellen</span> <code>f3167cab-bb23-4bb9-8a27-22e3c5015d44</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186" rel="noreferrer noopener"><span>Lineare Funktionen beschreiben</span> <code>af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fa72cf74-a31e-402e-90d7-422c118f4a5b" rel="noreferrer noopener"><span>Umgekehrt proportionale Größen mit Hyperbeln beschreiben</span> <code>fa72cf74-a31e-402e-90d7-422c118f4a5b</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 2 von 2</span>
+      <span>Buch-Digest <code>sha256:b2cc1c3e034b2da3a14550e2fbb58e73c64fa16763194482201596b932516524</code></span>
+      <span>Ziel-Fingerprint <code>sha256:41d307de060e1edc2e7dd65de65b0c01dbe4fc682d42747ddcad5f81e4dfd1fc</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-009-j7-analysis-proportionality-2-v1-20260827&amp;edition=curricular-atomic-v1&amp;goalId=c1f50bcc-7848-4e49-b9de-0ec030cc6bca&amp;goalFingerprint=sha256%3A41d307de060e1edc2e7dd65de65b0c01dbe4fc682d42747ddcad5f81e4dfd1fc&amp;pageFingerprint=sha256%3Aa76f5769eac072ad6598737b5073a7480de621640d519bf89bc59f1341bf9ab8&amp;bookDigest=sha256%3Ab2cc1c3e034b2da3a14550e2fbb58e73c64fa16763194482201596b932516524&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

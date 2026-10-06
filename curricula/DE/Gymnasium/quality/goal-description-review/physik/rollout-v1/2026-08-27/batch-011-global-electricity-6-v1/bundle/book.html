@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v1">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik Lernzielbeschreibungs-Review – Rollout Batch 011, Elektrizität</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    h1 { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<article class="goal-page" id="goal-f778a659-1467-4aa7-97b2-bed78c530634" data-goal-id="f778a659-1467-4aa7-97b2-bed78c530634" data-page-number="1" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-f778a659-1467-4aa7-97b2-bed78c530634-title">
+    <header class="goal-header">
+      <h1 id="goal-f778a659-1467-4aa7-97b2-bed78c530634-title"><a class="goal-self-link" href="#goal-f778a659-1467-4aa7-97b2-bed78c530634">Magnete, Pole und magnetische Kräfte qualitativ beschreiben</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f778a659-1467-4aa7-97b2-bed78c530634</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:83ecb035d13b0800551cf3ad99cacf58a3a0c1efe91e0c0be7a09422ea7e975d" data-rendered-digest="sha256:12f7cbcbe5bf5be24bedb4539cbf559f9bfb3f73b8fef484b31315bb39493067" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/f778a659-1467-4aa7-97b2-bed78c530634/f778a659-1467-4aa7-97b2-bed78c530634.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Magnete, Pole und magnetische Kräfte qualitativ beschreiben&quot;. Die lernende Person kann Magnetpole und magnetische Kräfte beschreiben und das Konzept von Elementarmagneten in einfachen Situationen nutzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f778a659-1467-4aa7-97b2-bed78c530634-description-heading">
+        <p class="section-heading" id="goal-f778a659-1467-4aa7-97b2-bed78c530634-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Magnetpole und magnetische Kräfte beschreiben und das Konzept von Elementarmagneten in einfachen Situationen nutzen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-f778a659-1467-4aa7-97b2-bed78c530634" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f778a659-1467-4aa7-97b2-bed78c530634-requires-heading">
+          <p class="section-heading" id="goal-f778a659-1467-4aa7-97b2-bed78c530634-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-f778a659-1467-4aa7-97b2-bed78c530634-reverse-heading">
+          <p class="section-heading" id="goal-f778a659-1467-4aa7-97b2-bed78c530634-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-75bdf5ca-cda4-4658-9ec7-84c77b3759db"><span>Einfache Stromkreise aufbauen und Schaltsymbole nutzen</span><code>75bdf5ca-cda4-4658-9ec7-84c77b3759db</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-f778a659-1467-4aa7-97b2-bed78c530634-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f778a659-1467-4aa7-97b2-bed78c530634-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5c44b9ba-9b05-4774-95d5-073230d3fc4f" rel="noreferrer noopener"><span>Warum Physik? – Weltverständnis &amp; Zukunft</span> <code>5c44b9ba-9b05-4774-95d5-073230d3fc4f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-f778a659-1467-4aa7-97b2-bed78c530634-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f778a659-1467-4aa7-97b2-bed78c530634-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 1 von 6</span>
+      <span>Buch-Digest <code>sha256:968203e95e1fcb88ce7c94026a7bfc05ce6dfb74ba1a6229e944d2cc21dabe4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e19d744200748be75a0861743812a357bfaebfc43eca5140afd9421e5db09fd5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-011-global-electricity-6-v1-20260827&amp;edition=curricular-atomic-v1&amp;goalId=f778a659-1467-4aa7-97b2-bed78c530634&amp;goalFingerprint=sha256%3Ae19d744200748be75a0861743812a357bfaebfc43eca5140afd9421e5db09fd5&amp;pageFingerprint=sha256%3Ac32ec969f1a0149718efa1c98103f9dd0f4ca47786dae7504e02bb7656f4f576&amp;bookDigest=sha256%3A968203e95e1fcb88ce7c94026a7bfc05ce6dfb74ba1a6229e944d2cc21dabe4f&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-75bdf5ca-cda4-4658-9ec7-84c77b3759db" data-goal-id="75bdf5ca-cda4-4658-9ec7-84c77b3759db" data-page-number="2" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-75bdf5ca-cda4-4658-9ec7-84c77b3759db-title">
+    <header class="goal-header">
+      <h1 id="goal-75bdf5ca-cda4-4658-9ec7-84c77b3759db-title"><a class="goal-self-link" href="#goal-75bdf5ca-cda4-4658-9ec7-84c77b3759db">Einfache Stromkreise aufbauen und Schaltsymbole nutzen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>75bdf5ca-cda4-4658-9ec7-84c77b3759db</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:24e63485929ad2d945a2c5be2e76fb00cc2f6b60c50261783f1a69cba2692f27" data-rendered-digest="sha256:06bff332cfa978e587e8249e4b21f33d6ba54b2723863081a346bcab8b201b3c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/75bdf5ca-cda4-4658-9ec7-84c77b3759db/75bdf5ca-cda4-4658-9ec7-84c77b3759db.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Einfache Stromkreise aufbauen und Schaltsymbole nutzen&quot;. Die lernende Person kann Leitfähigkeit prüfen, offene und geschlossene Stromkreise aufbauen und Schaltsymbole fachlich verwenden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-75bdf5ca-cda4-4658-9ec7-84c77b3759db-description-heading">
+        <p class="section-heading" id="goal-75bdf5ca-cda4-4658-9ec7-84c77b3759db-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Leitfähigkeit prüfen, offene und geschlossene Stromkreise aufbauen und Schaltsymbole fachlich verwenden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-75bdf5ca-cda4-4658-9ec7-84c77b3759db" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-75bdf5ca-cda4-4658-9ec7-84c77b3759db-requires-heading">
+          <p class="section-heading" id="goal-75bdf5ca-cda4-4658-9ec7-84c77b3759db-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-f778a659-1467-4aa7-97b2-bed78c530634"><span>Magnete, Pole und magnetische Kräfte qualitativ beschreiben</span><code>f778a659-1467-4aa7-97b2-bed78c530634</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-75bdf5ca-cda4-4658-9ec7-84c77b3759db-reverse-heading">
+          <p class="section-heading" id="goal-75bdf5ca-cda4-4658-9ec7-84c77b3759db-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-a5f652cc-e091-4c90-bec2-c357ae54fcf1"><span>Wirkungen des elektrischen Stroms qualitativ beschreiben</span><code>a5f652cc-e091-4c90-bec2-c357ae54fcf1</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-f1a078ae-6262-4444-a4bc-a5ab275621cf"><span>Stromstärke in einfachen Stromkreisen messen</span><code>f1a078ae-6262-4444-a4bc-a5ab275621cf</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-75bdf5ca-cda4-4658-9ec7-84c77b3759db-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-75bdf5ca-cda4-4658-9ec7-84c77b3759db-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-baa2bf3c-798a-5ec3-a667-031bf062d96c" rel="noreferrer noopener"><span>Elektrische Leitfähigkeit von Stoffen untersuchen</span> <code>baa2bf3c-798a-5ec3-a667-031bf062d96c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-59d1145e-ac54-5917-880a-21b4b80526d3" rel="noreferrer noopener"><span>Stromstärke und Spannung messen</span> <code>59d1145e-ac54-5917-880a-21b4b80526d3</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 2 von 6</span>
+      <span>Buch-Digest <code>sha256:968203e95e1fcb88ce7c94026a7bfc05ce6dfb74ba1a6229e944d2cc21dabe4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5b543e9a5ebe30f1df1fc4dd6ea448e6f96a35d1711d0f0c2742e9dc9c27e61d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-011-global-electricity-6-v1-20260827&amp;edition=curricular-atomic-v1&amp;goalId=75bdf5ca-cda4-4658-9ec7-84c77b3759db&amp;goalFingerprint=sha256%3A5b543e9a5ebe30f1df1fc4dd6ea448e6f96a35d1711d0f0c2742e9dc9c27e61d&amp;pageFingerprint=sha256%3Ac8d0d684edebca50ff6091bf53dd98f69f2cfd1e3e63ed4c65ac70c73a5d57c7&amp;bookDigest=sha256%3A968203e95e1fcb88ce7c94026a7bfc05ce6dfb74ba1a6229e944d2cc21dabe4f&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a5f652cc-e091-4c90-bec2-c357ae54fcf1" data-goal-id="a5f652cc-e091-4c90-bec2-c357ae54fcf1" data-page-number="3" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-a5f652cc-e091-4c90-bec2-c357ae54fcf1-title">
+    <header class="goal-header">
+      <h1 id="goal-a5f652cc-e091-4c90-bec2-c357ae54fcf1-title"><a class="goal-self-link" href="#goal-a5f652cc-e091-4c90-bec2-c357ae54fcf1">Wirkungen des elektrischen Stroms qualitativ beschreiben</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a5f652cc-e091-4c90-bec2-c357ae54fcf1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2fda3f3444404624202b16879eb01f5be40e5faae3bab207eda6addc6d9d4f56" data-rendered-digest="sha256:47bc5cec195fea0dfc8013f51ab84da2532d200904904668a941f4c83ac583dd" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/a5f652cc-e091-4c90-bec2-c357ae54fcf1/a5f652cc-e091-4c90-bec2-c357ae54fcf1.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Wirkungen des elektrischen Stroms qualitativ beschreiben&quot;. Die lernende Person kann magnetische, Licht-, Wärme- und chemische Wirkungen des elektrischen Stroms qualitativ beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a5f652cc-e091-4c90-bec2-c357ae54fcf1-description-heading">
+        <p class="section-heading" id="goal-a5f652cc-e091-4c90-bec2-c357ae54fcf1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann magnetische, Licht-, Wärme- und chemische Wirkungen des elektrischen Stroms qualitativ beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a5f652cc-e091-4c90-bec2-c357ae54fcf1" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a5f652cc-e091-4c90-bec2-c357ae54fcf1-requires-heading">
+          <p class="section-heading" id="goal-a5f652cc-e091-4c90-bec2-c357ae54fcf1-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-75bdf5ca-cda4-4658-9ec7-84c77b3759db"><span>Einfache Stromkreise aufbauen und Schaltsymbole nutzen</span><code>75bdf5ca-cda4-4658-9ec7-84c77b3759db</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a5f652cc-e091-4c90-bec2-c357ae54fcf1-reverse-heading">
+          <p class="section-heading" id="goal-a5f652cc-e091-4c90-bec2-c357ae54fcf1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-32111497-d5ca-453e-906d-d352f885b126"><span>Statische Elektrizität, Spannung und Kondensatoren qualitativ deuten</span><code>32111497-d5ca-453e-906d-d352f885b126</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-a5f652cc-e091-4c90-bec2-c357ae54fcf1-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a5f652cc-e091-4c90-bec2-c357ae54fcf1-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-eb30189c-27c6-510b-b235-6543afa18b90" rel="noreferrer noopener"><span>Einfachen Elektromotor bauen und qualitativ erklären</span> <code>eb30189c-27c6-510b-b235-6543afa18b90</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 3 von 6</span>
+      <span>Buch-Digest <code>sha256:968203e95e1fcb88ce7c94026a7bfc05ce6dfb74ba1a6229e944d2cc21dabe4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b5889dbdee29f1585de264935bbc546205ee8e0da433db7ac336687bf33c4e83</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-011-global-electricity-6-v1-20260827&amp;edition=curricular-atomic-v1&amp;goalId=a5f652cc-e091-4c90-bec2-c357ae54fcf1&amp;goalFingerprint=sha256%3Ab5889dbdee29f1585de264935bbc546205ee8e0da433db7ac336687bf33c4e83&amp;pageFingerprint=sha256%3A386694004a1c4e59262c81cdf4aa9d3a9101c8bab09fa4c217c3aea39ec4595a&amp;bookDigest=sha256%3A968203e95e1fcb88ce7c94026a7bfc05ce6dfb74ba1a6229e944d2cc21dabe4f&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f1a078ae-6262-4444-a4bc-a5ab275621cf" data-goal-id="f1a078ae-6262-4444-a4bc-a5ab275621cf" data-page-number="4" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-f1a078ae-6262-4444-a4bc-a5ab275621cf-title">
+    <header class="goal-header">
+      <h1 id="goal-f1a078ae-6262-4444-a4bc-a5ab275621cf-title"><a class="goal-self-link" href="#goal-f1a078ae-6262-4444-a4bc-a5ab275621cf">Stromstärke in einfachen Stromkreisen messen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f1a078ae-6262-4444-a4bc-a5ab275621cf</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7112c623f0775858345a767b4fef191ad56e491dec70c32be0f47af52a2adf35" data-rendered-digest="sha256:2622b8c4118f5f59f7ac684c79983ed792d6f59605a1711e7c84f2019a731f41" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/f1a078ae-6262-4444-a4bc-a5ab275621cf/f1a078ae-6262-4444-a4bc-a5ab275621cf.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Stromstärke in einfachen Stromkreisen messen&quot;. Die lernende Person kann ein Amperemeter fachlich anschließen und Stromstärken in einfachen Stromkreisen messen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f1a078ae-6262-4444-a4bc-a5ab275621cf-description-heading">
+        <p class="section-heading" id="goal-f1a078ae-6262-4444-a4bc-a5ab275621cf-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann ein Amperemeter fachlich anschließen und Stromstärken in einfachen Stromkreisen messen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-f1a078ae-6262-4444-a4bc-a5ab275621cf" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f1a078ae-6262-4444-a4bc-a5ab275621cf-requires-heading">
+          <p class="section-heading" id="goal-f1a078ae-6262-4444-a4bc-a5ab275621cf-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-75bdf5ca-cda4-4658-9ec7-84c77b3759db"><span>Einfache Stromkreise aufbauen und Schaltsymbole nutzen</span><code>75bdf5ca-cda4-4658-9ec7-84c77b3759db</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-f1a078ae-6262-4444-a4bc-a5ab275621cf-reverse-heading">
+          <p class="section-heading" id="goal-f1a078ae-6262-4444-a4bc-a5ab275621cf-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-f1a078ae-6262-4444-a4bc-a5ab275621cf-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f1a078ae-6262-4444-a4bc-a5ab275621cf-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a3c513d0-8fb9-5bd5-88cc-041527ff097d" rel="noreferrer noopener"><span>Prüfungsaufgabe: Stromstärke und Spannung fachgerecht messen</span> <code>a3c513d0-8fb9-5bd5-88cc-041527ff097d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 4 von 6</span>
+      <span>Buch-Digest <code>sha256:968203e95e1fcb88ce7c94026a7bfc05ce6dfb74ba1a6229e944d2cc21dabe4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c6d0bb60bedf607d3c0734608547ba5c82968fb7244a119d28c0f5aff65ba724</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-011-global-electricity-6-v1-20260827&amp;edition=curricular-atomic-v1&amp;goalId=f1a078ae-6262-4444-a4bc-a5ab275621cf&amp;goalFingerprint=sha256%3Ac6d0bb60bedf607d3c0734608547ba5c82968fb7244a119d28c0f5aff65ba724&amp;pageFingerprint=sha256%3Ae03c5c470aaae9773609592f9bd493bf0e2d62c1900ba9efd3e74e4e282bf4b9&amp;bookDigest=sha256%3A968203e95e1fcb88ce7c94026a7bfc05ce6dfb74ba1a6229e944d2cc21dabe4f&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-32111497-d5ca-453e-906d-d352f885b126" data-goal-id="32111497-d5ca-453e-906d-d352f885b126" data-page-number="5" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-32111497-d5ca-453e-906d-d352f885b126-title">
+    <header class="goal-header">
+      <h1 id="goal-32111497-d5ca-453e-906d-d352f885b126-title"><a class="goal-self-link" href="#goal-32111497-d5ca-453e-906d-d352f885b126">Statische Elektrizität, Spannung und Kondensatoren qualitativ deuten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>32111497-d5ca-453e-906d-d352f885b126</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:29dfa279aaecdefe9a03312aac4ae20235f16c3d53d5056327e5258a39944df2" data-rendered-digest="sha256:c1368d79162f36396cdc6f12b506fb5a3211ba05276a33747353f11c91c5ce80" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/32111497-d5ca-453e-906d-d352f885b126/32111497-d5ca-453e-906d-d352f885b126.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Statische Elektrizität, Spannung und Kondensatoren qualitativ deuten&quot;. Die lernende Person kann Ladungstrennung beschreiben, Spannung messen und den Kondensator als Ladungsspeicher deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-32111497-d5ca-453e-906d-d352f885b126-description-heading">
+        <p class="section-heading" id="goal-32111497-d5ca-453e-906d-d352f885b126-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Ladungstrennung beschreiben, Spannung messen und den Kondensator als Ladungsspeicher deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li><li><strong>NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-32111497-d5ca-453e-906d-d352f885b126" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-32111497-d5ca-453e-906d-d352f885b126-requires-heading">
+          <p class="section-heading" id="goal-32111497-d5ca-453e-906d-d352f885b126-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a5f652cc-e091-4c90-bec2-c357ae54fcf1"><span>Wirkungen des elektrischen Stroms qualitativ beschreiben</span><code>a5f652cc-e091-4c90-bec2-c357ae54fcf1</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-32111497-d5ca-453e-906d-d352f885b126-reverse-heading">
+          <p class="section-heading" id="goal-32111497-d5ca-453e-906d-d352f885b126-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-53196a71-9dbd-4835-b2f9-ff21b8a8962c"><span>Zusammenhang von Spannung und Stromstärke qualitativ erläutern</span><code>53196a71-9dbd-4835-b2f9-ff21b8a8962c</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-32111497-d5ca-453e-906d-d352f885b126-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-32111497-d5ca-453e-906d-d352f885b126-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 5 von 6</span>
+      <span>Buch-Digest <code>sha256:968203e95e1fcb88ce7c94026a7bfc05ce6dfb74ba1a6229e944d2cc21dabe4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e99b98aafe5b21fcef356a67f93895b89e8fcee94ca576d99ffea2e5187d3cb5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-011-global-electricity-6-v1-20260827&amp;edition=curricular-atomic-v1&amp;goalId=32111497-d5ca-453e-906d-d352f885b126&amp;goalFingerprint=sha256%3Ae99b98aafe5b21fcef356a67f93895b89e8fcee94ca576d99ffea2e5187d3cb5&amp;pageFingerprint=sha256%3Adabdeed65cd42b9abe6694761b910e8894b7204275f617ac5b810a268a189c11&amp;bookDigest=sha256%3A968203e95e1fcb88ce7c94026a7bfc05ce6dfb74ba1a6229e944d2cc21dabe4f&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-53196a71-9dbd-4835-b2f9-ff21b8a8962c" data-goal-id="53196a71-9dbd-4835-b2f9-ff21b8a8962c" data-page-number="6" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-53196a71-9dbd-4835-b2f9-ff21b8a8962c-title">
+    <header class="goal-header">
+      <h1 id="goal-53196a71-9dbd-4835-b2f9-ff21b8a8962c-title"><a class="goal-self-link" href="#goal-53196a71-9dbd-4835-b2f9-ff21b8a8962c">Zusammenhang von Spannung und Stromstärke qualitativ erläutern</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>53196a71-9dbd-4835-b2f9-ff21b8a8962c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4ef9ab75f0dd4d6b44e751d81f2262d33d4272efdd17720fcf25903e00f1cd57" data-rendered-digest="sha256:a3826cc3847840e981477d2d108791e3cbac8a14170cf4ef0a028fb34eb1e6a4" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/53196a71-9dbd-4835-b2f9-ff21b8a8962c/53196a71-9dbd-4835-b2f9-ff21b8a8962c.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Zusammenhang von Spannung und Stromstärke qualitativ erläutern&quot;. Die lernende Person kann Stromstärke und Spannung messen und ihren Zusammenhang qualitativ erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-53196a71-9dbd-4835-b2f9-ff21b8a8962c-description-heading">
+        <p class="section-heading" id="goal-53196a71-9dbd-4835-b2f9-ff21b8a8962c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Stromstärke und Spannung messen und ihren Zusammenhang qualitativ erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-53196a71-9dbd-4835-b2f9-ff21b8a8962c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-53196a71-9dbd-4835-b2f9-ff21b8a8962c-requires-heading">
+          <p class="section-heading" id="goal-53196a71-9dbd-4835-b2f9-ff21b8a8962c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-32111497-d5ca-453e-906d-d352f885b126"><span>Statische Elektrizität, Spannung und Kondensatoren qualitativ deuten</span><code>32111497-d5ca-453e-906d-d352f885b126</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-53196a71-9dbd-4835-b2f9-ff21b8a8962c-reverse-heading">
+          <p class="section-heading" id="goal-53196a71-9dbd-4835-b2f9-ff21b8a8962c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-53196a71-9dbd-4835-b2f9-ff21b8a8962c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-53196a71-9dbd-4835-b2f9-ff21b8a8962c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-cbb26ed2-6979-46f6-a4ae-128f5c5d9d76" rel="noreferrer noopener"><span>Elektrische Energieumwandlungen qualitativ beschreiben</span> <code>cbb26ed2-6979-46f6-a4ae-128f5c5d9d76</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-01bebdfc-5819-4610-a03e-ea5e794fc954" rel="noreferrer noopener"><span>Reihen- und Parallelschaltungen für eine Funktion planen</span> <code>01bebdfc-5819-4610-a03e-ea5e794fc954</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-1911920e-b099-4310-82f2-b47f51a78b33" rel="noreferrer noopener"><span>Elektrische Anlagen, Gewitter und Haushaltsstromkreise sicher beurteilen</span> <code>1911920e-b099-4310-82f2-b47f51a78b33</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca" rel="noreferrer noopener"><span>Widerstand und Kennlinien einfacher Bauteile untersuchen</span> <code>ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-50431e92-eec9-54d6-b437-ea7a51b6f474" rel="noreferrer noopener"><span>Elektrische Energieversorgung und Geräteangaben einordnen</span> <code>50431e92-eec9-54d6-b437-ea7a51b6f474</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5f97952e-5ac9-5749-94d0-d1dc50dda358" rel="noreferrer noopener"><span>Sinusfoermige Wechselgroessen mit Zeigerdiagrammen beschreiben</span> <code>5f97952e-5ac9-5749-94d0-d1dc50dda358</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 6 von 6</span>
+      <span>Buch-Digest <code>sha256:968203e95e1fcb88ce7c94026a7bfc05ce6dfb74ba1a6229e944d2cc21dabe4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e709d92cac1e7b5c478232dc75feaa397812d2ff9ef4106d5230398a421ac05e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-011-global-electricity-6-v1-20260827&amp;edition=curricular-atomic-v1&amp;goalId=53196a71-9dbd-4835-b2f9-ff21b8a8962c&amp;goalFingerprint=sha256%3Ae709d92cac1e7b5c478232dc75feaa397812d2ff9ef4106d5230398a421ac05e&amp;pageFingerprint=sha256%3A460cd32cb6a50c2f0ee181befd4ea89779c182b7bc354c4024730e1a1cb66e36&amp;bookDigest=sha256%3A968203e95e1fcb88ce7c94026a7bfc05ce6dfb74ba1a6229e944d2cc21dabe4f&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

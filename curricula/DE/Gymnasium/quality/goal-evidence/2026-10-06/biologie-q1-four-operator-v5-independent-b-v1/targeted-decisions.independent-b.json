@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T05:16:31.545771+00:00",
+  "reviewRole": "fresh independent targeted reviewer B; no v5 authorship; no native/human approval",
+  "authorFinalFreezeSHA256": "094baede3989a387d5e77f98611356f4c49bf4f0f5ff68165531fb59268f2e82",
+  "overallTargetedVerdict": "KEEP_ALL_FOUR_AFFECTED_CASES_AND_REVISED_NULL_ID_DESCRIPTION_WITH_EXPLICIT_BOUNDARIES",
+  "openV5WordingOrScienceDefects": [],
+  "affectedCaseDecisions": [
+    {
+      "caseId": "mechanism-pro-euk-a",
+      "candidateKey": "he_pro_euk_mrna_ribosome_trna_mechanism",
+      "exactCaseCanonicalJSONSHA256": "36027935915996b2e5a4eef737d3fd86f07577e9a6dd09ba79f6adaa314b889e",
+      "sixLiteralFieldSHA256": {
+        "material": "488dd4be062676e141d8ea2b17942aac905f8beca57b96b2b39ca2d21432fe06",
+        "task": "20bf27650b1ca74dcc3b57ccb68698a1dcd8969c7f9bcff6d232b6c13f5a7e25",
+        "solution": "307fe6c134f56c1df5838f65cb3e94421bf7b167bd60520bf649db0e5a1027db",
+        "materialEn": "6ade2452f9d5cd6279470af084e1730f63131b3c09d42abf911a8523acd77b59",
+        "taskEn": "345e426379d7e6c7bdce1a26a3e2f02896a323d8c6233c6f2e4cd5524bb31629",
+        "solutionEn": "987258c5c26808e3a30beabb4ed151a46f770902a23427beaf54504ccb2d52f9"
+      },
+      "positiveEssentialConditionsLiteral": [
+        "Explain connected transcription/translation and the roles of all three molecules",
+        "Use antiparallel GAA/3′CUU5′ pairing correctly",
+        "Carry the explicit abbreviation through RNA/product and distinguish it from the complete functional enzyme",
+        "Compare typical compartments/timing and justify complete-enzyme renewal using the separately supplied function"
+      ],
+      "verdict": "KEEP",
+      "science": "Coding DNA 5′-ATG GAA … TTT TGA-3′ gives mRNA 5′-AUG GAA … UUU UGA-3′ and the displayed product Met–Glu–…–Phe, then stop. The ellipsis is explicitly many in-frame full codons, not a nucleotide or a full three-residue enzyme. GAA pairs antiparallel with 3′-CUU-5′, equivalent to 5′-UUC-3′. The material separately stipulates a complete longer enzyme and its metabolic function. Typical bacterial process coupling and nuclear eukaryotic transcription/processing/export followed by cytoplasmic translation are correct within the named model. Intron-free does not prohibit other RNA maturation. No omitted sequence or actual enzyme structure/function is inferred from three shown residues.",
+      "operatorAndSource": "The connected explanation exercises HE KC2024 Q1.1 basic GK/LK protein-biosynthesis scope: pro/euk transcription, mRNA, translation, ribosome and tRNA. Enzyme renewal applies a supplied function. It is a bounded case contribution, not the whole HE source clause or the complete canonical goal. The unchanged code-wheel obligation and other source duties stay separate.",
+      "bilingualParity": "DE and EN retain the same longer-gene premise, in-frame omission, compartments, anticodon orientation, product and function limitation. Every positive condition is supported by the material and solution in both languages.",
+      "atomicity": "No new description or goal split is decided here. This case assesses one connected information-flow explanation; translation and compartment comparison substantiate that mechanism rather than add independent author routines.",
+      "remaining": "Actual whole-goal native D/P binding, route and resource evidence remain pending; absence of those records is not a defect in this corrected material.",
+      "sourceTruth": "bounded contribution; whole-source and whole-goal approval false",
+      "nativeApproval": false
+    },
+    {
+      "caseId": "protein-function-a",
+      "candidateKey": "protein_function_from_mutation_data",
+      "exactCaseCanonicalJSONSHA256": "581f033f979dfb871646ae498706fa9982586c97fb16d9b1557cc96437bb68eb",
+      "sixLiteralFieldSHA256": {
+        "materialDe": "774c9f73435353767b524e9ee8f1c80a340bf8b7be3233d0f3940a82dc5af8fc",
+        "promptDe": "0d16ac7a9fe2bda0d0895d344225581627ce99bb4ca65dc456e0a34cc4d71463",
+        "solutionDe": "d15a30ad65d80b3a1485ee51cf153e5a742c9df5658a38226a29d73aea0eb211",
+        "materialEn": "57491dccd262d815d89e7125d060ac5fd33d0ef7f1a230d2d57db2cf6b884362",
+        "promptEn": "dd2906891a47be6bca724063d87402c351b3e92ef5fbbfd473330b9c71d8156b",
+        "solutionEn": "c0bdc228123f83a12382e9d03ec78b522d2ab5261f82c56795275154059a5163"
+      },
+      "positiveEssentialConditionsLiteral": [
+        "Correct codon/product correspondence with the explicit omitted complete-codon region",
+        "Separate displayed fragment/shorthand from measurements of the complete longer proteins",
+        "Use controlled complete-protein measurements rather than inferring function from sequence alone",
+        "Account for equal amounts, measurement spread and limits of synonymous/function claims"
+      ],
+      "verdict": "KEEP",
+      "science": "Reference coding GAA and W GAG both give Glu; V GAC gives Asp. ATG→AUG gives Met, TTC→UUC gives Phe, and TAA→UAA is stop. The same long, unchanged, in-frame omitted region is stated for all three complete genes. The assay uses equal amounts of full longer purified proteins under equal conditions. V 12±2 versus reference 100±4 supports strongly reduced tested activity; W 98±4 versus 100±4 supports no clear difference under the supplied spread. This is not proof of identical function or universal synonymous neutrality. A large functional effect of a conservative amino-acid replacement is possible in a stipulated model; no structural mechanism is invented.",
+      "operatorAndSource": "BY12 GA and EA B12 2.4 both require explanation of mutation effects on the function of the encoded protein. This case links a single supplied sequence change to controlled full-protein function data, so it contributes to that shared duty. It does not cover every mutation type, mutagenic cause, whole canonical ffef goal, EA oncogenesis or the separate PCR comparison.",
+      "bilingualParity": "Both languages say the omitted sequence is the same long region, keep it in mRNA/product shorthand, identify the full protein assay and distinguish a synonymous position from a universal functional claim.",
+      "atomicity": "Mutation-to-tested-protein-function reasoning is one bounded content competence. Deriving the displayed codons and using assay controls are evidence steps for that competence. This targeted case decision does not issue a native A ledger record.",
+      "remaining": "The four pre-existing P profiles and eight case bodies remain byte-bound as earlier candidate inputs. This revised supplemental case does not replace them or renew native approval.",
+      "sourceTruth": "bounded contribution; whole-source and whole-goal approval false",
+      "nativeApproval": false
+    },
+    {
+      "caseId": "everyday-uv-risk-decision-c",
+      "candidateKey": "mutagen_causes_and_protection",
+      "exactCaseCanonicalJSONSHA256": "aac2810ea91ddd718789fc094c26934556d560c96b4c363feb523349ba9b01ab",
+      "sixLiteralFieldSHA256": {
+        "materialDe": "892fdec3bbd04e1befb63b211dd31f80233f395da94f978aca235956f2d58db8",
+        "promptDe": "90196a038a7db1797e7b640f5ded319057852951b1264311c97a73102cfd395b",
+        "solutionDe": "6afa30ecddf146936eff9f96d852c03c28274b4b9bbd661f09ad8490d452d72f",
+        "materialEn": "7e63d6bdd342ca566f9d934e8f177ef856e591161dc388d03c55458cf0d095b6",
+        "promptEn": "27db3c080e39763f13fde1b5ac240e370699255fb5fc298d8fc71aa42f24c1e6",
+        "solutionEn": "876530d5bef376f31af435fd28137b88807a34cef01bb31fdf4490656687d222"
+      },
+      "positiveEssentialConditionsLiteral": [
+        "Connect actual everyday solar UV exposure to the supplied DNA-damage/fixation hazard without deterministic disease inference",
+        "Compare all three material-backed options using explicit stated criteria and priorities",
+        "State and justify the action judgement, organisation tradeoff and conditional alternative",
+        "Reject heat as sufficient UV evidence and separate exposure ratios from individual mutation/disease probabilities"
+      ],
+      "verdict": "KEEP",
+      "science": "Solar UV can damage DNA and can favour persistent mutation when damage is not correctly resolved; a UV exposure does not imply a fixed mutation, and a mutation does not imply disease. Shade, skin-covering clothing and changing outdoor timing have qualitative BfS support. Exposures A100/B25/C10 are declared fictional same-duration model data. Reduced warmth does not establish reduced UV; no individual disease risk or percentage health benefit follows from these exposure units.",
+      "operatorAndSource": "The sports-day situation is recognisable everyday exposure. A/B/C are feasible alternatives with equal participation and stated exposure, organisational cost and priority. The learner must distinguish comparison from action judgement, recommend C under the given priority, weigh organisation and name B if schedule change is impossible. Heat-proxy criticism and limits require reflection on the hazard beyond a repair explanation or minimum-number choice. This fulfils a bounded MV everyday reflection example and the genetic-environmental evaluation operation from ST. It does not close either complete original source goal.",
+      "bilingualParity": "Both languages carry identical feasibility, duration, exposures, criterion order, C recommendation, conditional B option, false heat-proxy premise and personal-risk limitation. Positive conditions require all of those operations.",
+      "atomicity": "One concrete material-based genetic-risk decision. The damage premise supplies the biological reason; comparing options, exposing a value priority and choosing exposure reduction form one judgement rather than unrelated learning routines.",
+      "remaining": "ST is explicitly Schuljahrgang10/Einführungsphase; no SekI stage equivalence or native stage correction is approved. Final ID/placement/applicability, source relation and native evidence are pending.",
+      "sourceTruth": "bounded contribution; whole-source and whole-goal approval false",
+      "nativeApproval": false
+    },
+    {
+      "caseId": "environment-air-pah-risk-decision-d",
+      "candidateKey": "mutagen_causes_and_protection",
+      "exactCaseCanonicalJSONSHA256": "d680f1f260415d66c694c8c31084d21d92980703acd28f2d5b19f5bcfbc22c43",
+      "sixLiteralFieldSHA256": {
+        "materialDe": "aeb39f5fd4b0478d3c88825b009d2f96e7e76f81d18f8e877e0b2a83966f34e7",
+        "promptDe": "5e0cad62e294a73b7c28dcc636cc0a89964ffc8ea77ff895fe96058bf3e282f8",
+        "solutionDe": "90d0075c559fcb205c1b2a4209b87df25ba412630cddf27bde36591dd8709fd0",
+        "materialEn": "1428a636e479825c25d895d40a6f668b35a46f559c27d9ede6faa2ca6d4abc08",
+        "promptEn": "9693e98e554dd1af3195e8eba12a6cc2cdf779a56910fb0781a4542b2345a274",
+        "solutionEn": "3f27696755f807e99d6f9be075a0533299bfd45b4a3af123ab0aacd328ae5843"
+      },
+      "positiveEssentialConditionsLiteral": [
+        "Link the named chemical environmental mutagenic hazard to supplied DNA damage and bounded fixation mechanism",
+        "Evaluate all options with exposure, safe access, time cost and the explicit priority; justify rather than merely name a choice",
+        "Correctly compare five-day central exposure sums60/10/55 without individual disease probabilities or unsupported error aggregation",
+        "Use screening-versus-filtering evidence, measurement spread and missing weather evidence to state limits and a matching followup",
+        "Reflect on the concrete daily situation without treating lack of visibility or symptoms as a genetic-safety proof"
+      ],
+      "verdict": "KEEP",
+      "science": "UBA supplies incomplete wood-combustion PAH/benzo(a)pyrene and particle-associated air measurements. IARC supplies aromatic-compound/PAH DNA adducts and the repair relationship. The case cautiously distinguishes possible lasting genetic change from certain mutation or disease. Five comparable daily central exposures yield A60/B10/C55. The ± values are not specified as standard errors or confidence intervals, so no new error aggregation, clinical threshold or disease probability is inferred. A and C spreads overlap; a visual screen has no supplied particle-filtering evidence. B remains substantially lower across the supplied spreads and is safely accessible by stipulation.",
+      "operatorAndSource": "This daily bus-stop context addresses an environmental genetic hazard with three reachable options, safe-access and time criteria, an explicit priority and a six-minute tradeoff. B is justified against all criteria; the learner must give exposure sums, evaluate the screen claim, request weather-specific measurements and reject absence of visible smoke or immediate symptoms as safety proof. Those demands perform the MV everyday reflection and ST environmental genetic-risk evaluation operators. Mechanism knowledge alone cannot pass. This is a bounded case contribution, not source-wide or personal-health clearance.",
+      "bilingualParity": "DE and EN preserve the named hazard, same exposure central values and spreads, five days, safe bus access, extra six minutes, missing filter and weather evidence, B judgement and limits. No deterministic mutation or clinical interpretation is introduced in either version.",
+      "atomicity": "One informed environmental-risk and protective-action judgement. The arithmetic, uncertainty and evidence limits support that judgement; they do not create an independent statistical-learning goal.",
+      "remaining": "No real environmental experiment, learner work, legal threshold, clinical prediction, performed host trial or native acceptance is evidenced. ST stage and all seven prototype ID/route/evidence bindings remain pending.",
+      "sourceTruth": "bounded contribution; whole-source and whole-goal approval false",
+      "nativeApproval": false
+    }
+  ],
+  "revisedPrototypeDecision": {
+    "candidateKey": "mutagen_causes_and_protection",
+    "canonicalGoalId": null,
+    "newAssignedGoalId": null,
+    "exactDescriptionDE": "Die lernende Person kann anhand vorgegebener Materialdaten erklären, wie mutagene Einflüsse bleibende Veränderungen der Erbinformation begünstigen können, genetische Risiken in einer konkreten Alltags- oder Umweltsituation nach benannten Kriterien bewerten und Möglichkeiten zur Verringerung der Exposition begründet auswählen.",
+    "exactDescriptionEN": "The learner can use supplied material data to explain how mutagenic influences can favour persistent changes to genetic information, evaluate genetic risks in a concrete everyday or environmental situation using stated criteria and justify choices that reduce exposure.",
+    "descriptionDE_SHA256": "711699c1fd790793b71afbbe61ab5df257ae6f389ba550ab7c45a95515d7545c",
+    "descriptionEN_SHA256": "d46dde7240bc8208950eec305319827c40b183dd18c9cd43cccbbcc04526aabc",
+    "verdict": "KEEP",
+    "semanticAtomicity": "atomic_within_this_bounded_prototype",
+    "semanticAtomic": true,
+    "atomicityReason": "This is one material-based genetic-exposure judgement: the learner connects a supplied mutagenic hazard with genetic damage, evaluates the concrete situation under criteria and justifies an exposure-reduction choice. The explanation is the factual warrant for the same decision. UV and PAH are scenario variation, not separately bundled competences. The supplied code/data/reaction premises avoid adding autonomous molecular-assay, personal disease prediction or statistics routines.",
+    "operatorReason": "The revised DE/EN descriptions explicitly require a concrete everyday/environmental situation, named criteria, evaluation and justified protective choice. The new cases make those claims assessable through material, feasible options, cost, priority and limitations; controlled repair/protection data alone would not discharge the new operators.",
+    "memorySuitability": "no_memory_needed_for_this_material_based_prototype",
+    "memoryReason": "The relevant mechanism, options and values are supplied; assessment centres on reasoned application. There is no compact obligatory retrieval item or justified new SRS/Verified Recall deck. This is a scoped suitability observation, not a native M record or bulk decision.",
+    "sourceScopeLimits": [
+      "MV everyday evaluation example is a bounded source contribution, not exact whole-original closure.",
+      "ST Schuljahrgang10 is Einführungsphase; native per-goal stage binding remains held.",
+      "BY shared protection sensitisation is supported, but whole BY mutation duties and EA oncology are not closed.",
+      "SN/TH retain their own cause/type scope; no extra literal official protection clause is invented."
+    ],
+    "nativeAApproval": false,
+    "nativeMApproval": false,
+    "nativeDApproval": false,
+    "nativePApproval": false,
+    "nativeVApproval": false
+  },
+  "elevenComponentDispositions": [
+    {
+      "candidateKey": "classical_genetic_information_carriers_dna_gene_chromosome",
+      "canonicalGoalId": null,
+      "newAssignedGoalId": null,
+      "disposition": "EXACT_CONTINUITY_NOT_REOPENED",
+      "exactComponentCanonicalJSONSHA256": "5e346c46cb6214e058afc25518815badc4d87d511569a33160c73773c8086f2f",
+      "reason": "No v5 content delta in the component; exact-object continuity verified without reading or repeating prior independent verdicts.",
+      "wholeGoalApproval": false,
+      "wholeOriginalApproval": false,
+      "nativeApproval": false
+    },
+    {
+      "candidateKey": "by9_gene_product_trait_genwirk_chain",
+      "canonicalGoalId": "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+      "newAssignedGoalId": null,
+      "disposition": "EXACT_CONTINUITY_NOT_REOPENED",
+      "exactComponentCanonicalJSONSHA256": "a3e97a7575497fb13721f89580a596f27e386f63ea4061588d65dc3a9d9ea84f",
+      "reason": "No v5 content delta in the component; exact-object continuity verified without reading or repeating prior independent verdicts.",
+      "wholeGoalApproval": false,
+      "wholeOriginalApproval": false,
+      "nativeApproval": false
+    },
+    {
+      "candidateKey": "he_code_sun_forward_and_existing_reverse",
+      "canonicalGoalId": "e349d8c4-2ba3-5360-bd44-13457e5c0aa3",
+      "newAssignedGoalId": null,
+      "disposition": "EXACT_CONTINUITY_NOT_REOPENED",
+      "exactComponentCanonicalJSONSHA256": "ca3885909a619c5dac2872d91858c3c86efc4a5dca09ebc97f4c9aa49a798fc8",
+      "reason": "No v5 content delta in the component; exact-object continuity verified without reading or repeating prior independent verdicts.",
+      "wholeGoalApproval": false,
+      "wholeOriginalApproval": false,
+      "nativeApproval": false
+    },
+    {
+      "candidateKey": "he_pro_euk_mrna_ribosome_trna_mechanism",
+      "canonicalGoalId": "1ec4e3c2-f302-5246-b531-f2cebc3efb1d",
+      "newAssignedGoalId": null,
+      "disposition": "KEEP_TARGETED_DELTA",
+      "exactComponentCanonicalJSONSHA256": "af0557fffeec254e22a17c4d00eb2b94daa8dc2aaed01906d09ad8b4db478461",
+      "reason": "Own v5 science/operator decision applies only to changed material or description; unchanged cases retain exact continuity.",
+      "wholeGoalApproval": false,
+      "wholeOriginalApproval": false,
+      "nativeApproval": false
+    },
+    {
+      "candidateKey": "mutation_levels_gen_chromosome_genome",
+      "canonicalGoalId": null,
+      "newAssignedGoalId": null,
+      "disposition": "EXACT_CONTINUITY_NOT_REOPENED",
+      "exactComponentCanonicalJSONSHA256": "e4759f9fd394a469bbbe42fa0c71fa95cc44be5cc2d4c50d3b4f3998fd91ea67",
+      "reason": "No v5 content delta in the component; exact-object continuity verified without reading or repeating prior independent verdicts.",
+      "wholeGoalApproval": false,
+      "wholeOriginalApproval": false,
+      "nativeApproval": false
+    },
+    {
+      "candidateKey": "point_and_genome_mutation",
+      "canonicalGoalId": null,
+      "newAssignedGoalId": null,
+      "disposition": "EXACT_CONTINUITY_NOT_REOPENED",
+      "exactComponentCanonicalJSONSHA256": "82fe5416de98e6c64ebb8162a24a9a3404c8049d0f054e1beadb8e075b949b6a",
+      "reason": "No v5 content delta in the component; exact-object continuity verified without reading or repeating prior independent verdicts.",
+      "wholeGoalApproval": false,
+      "wholeOriginalApproval": false,
+      "nativeApproval": false
+    },
+    {
+      "candidateKey": "mutagen_causes_and_protection",
+      "canonicalGoalId": null,
+      "newAssignedGoalId": null,
+      "disposition": "KEEP_TARGETED_DELTA",
+      "exactComponentCanonicalJSONSHA256": "9bb68be54b70c4d3576adaa55098f52219e69a1dbc41ece454afff5b3532347e",
+      "reason": "Own v5 science/operator decision applies only to changed material or description; unchanged cases retain exact continuity.",
+      "wholeGoalApproval": false,
+      "wholeOriginalApproval": false,
+      "nativeApproval": false
+    },
+    {
+      "candidateKey": "somatic_and_germline",
+      "canonicalGoalId": null,
+      "newAssignedGoalId": null,
+      "disposition": "EXACT_CONTINUITY_NOT_REOPENED",
+      "exactComponentCanonicalJSONSHA256": "a4fb8fbd1c30689b64be5d078c0b2114b93079aea8ffaa2af269d41aa6ac5e71",
+      "reason": "No v5 content delta in the component; exact-object continuity verified without reading or repeating prior independent verdicts.",
+      "wholeGoalApproval": false,
+      "wholeOriginalApproval": false,
+      "nativeApproval": false
+    },
+    {
+      "candidateKey": "mutation_vs_modification",
+      "canonicalGoalId": null,
+      "newAssignedGoalId": null,
+      "disposition": "EXACT_CONTINUITY_NOT_REOPENED",
+      "exactComponentCanonicalJSONSHA256": "39c70bbc9dbca99895da0867303d3e6ba7ccfdecbbd3084da4a4ed5aa54d2cdb",
+      "reason": "No v5 content delta in the component; exact-object continuity verified without reading or repeating prior independent verdicts.",
+      "wholeGoalApproval": false,
+      "wholeOriginalApproval": false,
+      "nativeApproval": false
+    },
+    {
+      "candidateKey": "protein_function_from_mutation_data",
+      "canonicalGoalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+      "newAssignedGoalId": null,
+      "disposition": "KEEP_TARGETED_DELTA",
+      "exactComponentCanonicalJSONSHA256": "bca5b73faa9f65b446a635abab36f9227ae0e1f88964046a3803f4674c6ad003",
+      "reason": "Own v5 science/operator decision applies only to changed material or description; unchanged cases retain exact continuity.",
+      "wholeGoalApproval": false,
+      "wholeOriginalApproval": false,
+      "nativeApproval": false
+    },
+    {
+      "candidateKey": "replication_error_control_and_repair",
+      "canonicalGoalId": null,
+      "newAssignedGoalId": null,
+      "disposition": "EXACT_CONTINUITY_NOT_REOPENED",
+      "exactComponentCanonicalJSONSHA256": "6889d550bdb1a568e9b1b7d909df94ad4d8d5a6becc00775400c747ec887354d",
+      "reason": "No v5 content delta in the component; exact-object continuity verified without reading or repeating prior independent verdicts.",
+      "wholeGoalApproval": false,
+      "wholeOriginalApproval": false,
+      "nativeApproval": false
+    }
+  ],
+  "independentInputBoundary": "The author README contains its own historical A/B summary. It is author context, not a current endorsement. Original prior A/B report and verdict files were not opened or parsed as review content; hashes only were checked in the author freeze. The new independent peer output was not read.",
+  "continuity20Cases": "exact objects retained; no historical restart or fresh full-case approval claimed",
+  "unresolvedDownstream": [
+    "Seven canonical IDs remain null; allocate and validate placements/applicability/requires only in a separately reviewed integration.",
+    "The four supplemental partner bindings remain candidates and do not imply approval of complete existing canonical goals.",
+    "Current canonical464 is distinct from preserved candidate464 at exactly the four planned descriptions and image resourceLinks.",
+    "ST10 Einführungsphase stage correction has no precise native per-goal evidence and remains held.",
+    "Whole3417 mutation/recombination target and inherited prerequisites remain held; no source import is removed by this review.",
+    "SH2023 outgoing and SH2026 incoming cohorts retain their distinction; no new SH2026 source-content approval.",
+    "BY-EA oncology/oncogene/anti-oncogene and separate PCR/replication/repair comparison remain open.",
+    "Partial source mappings and complete original duties are not promoted to exact by bounded cases.",
+    "Native D/P/A/M/V and image/book/context bindings remain a separate pending workflow; no current native acceptance or M7 gain."
+  ],
+  "currentStrictCounters": {
+    "chemie": "112/378",
+    "biologie": "67/383",
+    "netGain": 0,
+    "counterEvidence": "Existing completed central current report, read and byte-bound; no new global run."
+  },
+  "activeWrites": 0,
+  "newCanonicalIDs": 0,
+  "nativeApproval": false,
+  "wholeSourceClosure": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "currentM7NetIncrease": 0
+}

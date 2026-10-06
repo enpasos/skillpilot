@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik B027a – E-Phase: Reibung, Folgeprüfung</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Physik B027a – E-Phase: Reibung, Folgeprüfung</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>2 atomare Lernziele</dt><dd>4 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:f333c11015483162b7e92eeaf4dafcaaa28591b4e1c8e9a508501f93c8821904</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-physics-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-6747d2e0bbbbd4b4358ff0fa" aria-label="Physik"><a href="#goal-5fd45dbc-0eb1-591b-99a9-7386336f1456"><span class="toc-entry-label">Physik</span></a></h2>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-physics-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-546e47201fdf10d52f5a936c" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-5fd45dbc-0eb1-591b-99a9-7386336f1456"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-e-phase" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-25f6161a11157cd3d11bdc8c" aria-label="Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen"><a href="#goal-5fd45dbc-0eb1-591b-99a9-7386336f1456"><span class="toc-entry-label">Einführungsphase:&#160;<wbr>Mechanik,&#160;<wbr>Gravitation,&#160;<wbr>Thermodynamik&#160;<wbr>und&#160;<wbr>Drehbewegungen</span></a></h4>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-e87f3fefefa8e997cf781166" aria-label="Weitere Bewegungen"><a href="#goal-5fd45dbc-0eb1-591b-99a9-7386336f1456"><span class="toc-entry-label">Weitere&#160;<wbr>Bewegungen</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456" data-goal-id="5fd45dbc-0eb1-591b-99a9-7386336f1456" data-page-number="1" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9" aria-labelledby="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-title"><a class="goal-self-link" href="#goal-5fd45dbc-0eb1-591b-99a9-7386336f1456">Reibungskräfte qualitativ verstehen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5fd45dbc-0eb1-591b-99a9-7386336f1456</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-e87f3fefefa8e997cf781166">Weitere Bewegungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:566d80d298feec1431d32ef6bbf3ebaadd8efad93d225a904016bd2667aed110" data-rendered-digest="sha256:f4a8f0300ee16d066b4f0be47e7807069db197ff3aa803298696ac4700acc40d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/5fd45dbc-0eb1-591b-99a9-7386336f1456/5fd45dbc-0eb1-591b-99a9-7386336f1456.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Reibungskräfte qualitativ verstehen&quot;. Die lernende Person kann Haft- und Gleitreibung anhand der drohenden oder bestehenden Relativbewegung der berührenden Körper unterscheiden, die Richtung der Reibungskraft qualitativ beschreiben und ihre Wirkung auf Bewegungen erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-description-heading">
+        <p class="section-heading" id="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Haft- und Gleitreibung anhand der drohenden oder bestehenden Relativbewegung der berührenden Körper unterscheiden, die Richtung der Reibungskraft qualitativ beschreiben und ihre Wirkung auf Bewegungen erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5fd45dbc-0eb1-591b-99a9-7386336f1456" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-requires-heading">
+          <p class="section-heading" id="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-reverse-heading">
+          <p class="section-heading" id="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-30ddb2d7-b991-55fe-9e74-37ffe1048f9f"><span>Geradlinige Bewegung mit Reibung modellieren</span><code>30ddb2d7-b991-55fe-9e74-37ffe1048f9f</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5f289cdc-fda1-4058-b44f-041ba1398e79" rel="noreferrer noopener"><span>Grundgleichung der Mechanik anwenden</span> <code>5f289cdc-fda1-4058-b44f-041ba1398e79</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-22561c66-3957-5d55-b07a-25de1f359930" rel="noreferrer noopener"><span>Newtonsche Axiome und Kräftebilanz</span> <code>22561c66-3957-5d55-b07a-25de1f359930</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8320bb17-e6ab-50ea-a965-aa331bfd33e1" rel="noreferrer noopener"><span>Überhöhte Kurve und Grenzgeschwindigkeiten</span> <code>8320bb17-e6ab-50ea-a965-aa331bfd33e1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e2da5eec-45de-5527-9ad7-16f41cacbe58" rel="noreferrer noopener"><span>Kurvenfahrten mit Haftreibung analysieren</span> <code>e2da5eec-45de-5527-9ad7-16f41cacbe58</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 2</span>
+      <span>Buch-Digest <code>sha256:f333c11015483162b7e92eeaf4dafcaaa28591b4e1c8e9a508501f93c8821904</code></span>
+      <span>Ziel-Fingerprint <code>sha256:633b713bcb1aab7cb3b3e72baa50fd8ed4acd44ccb9f73e4d6a17e424958c17a</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-e-friction-revised-2-v1-20260902&amp;edition=curricular-atomic-v1&amp;goalId=5fd45dbc-0eb1-591b-99a9-7386336f1456&amp;goalFingerprint=sha256%3A633b713bcb1aab7cb3b3e72baa50fd8ed4acd44ccb9f73e4d6a17e424958c17a&amp;pageFingerprint=sha256%3A02b077f98c32f96dac2ad7f5d9a86ffff27166c9bb297c839fee0863f2708f7a&amp;bookDigest=sha256%3Af333c11015483162b7e92eeaf4dafcaaa28591b4e1c8e9a508501f93c8821904&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-30ddb2d7-b991-55fe-9e74-37ffe1048f9f" data-goal-id="30ddb2d7-b991-55fe-9e74-37ffe1048f9f" data-page-number="2" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-goal-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9" aria-labelledby="goal-30ddb2d7-b991-55fe-9e74-37ffe1048f9f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-30ddb2d7-b991-55fe-9e74-37ffe1048f9f-title"><a class="goal-self-link" href="#goal-30ddb2d7-b991-55fe-9e74-37ffe1048f9f">Geradlinige Bewegung mit Reibung modellieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>30ddb2d7-b991-55fe-9e74-37ffe1048f9f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-e87f3fefefa8e997cf781166">Weitere Bewegungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3b8e71103bc2ff6183057cf3ed546fd4c3c0196be15dd12985c0f89aa333e10d" data-rendered-digest="sha256:a5dc4ab5d9482c6715c400e128c8bbf21f41e31f2ef7e91ce459877584343efb" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/30ddb2d7-b991-55fe-9e74-37ffe1048f9f/30ddb2d7-b991-55fe-9e74-37ffe1048f9f.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Geradlinige Bewegung mit Reibung modellieren&quot;. Die lernende Person kann geradlinige Bewegungen mit Reibung unter einfachen Modellannahmen beschreiben und qualitativ vorhersagen, indem sie Betrag und Richtung der wirkenden Kräfte bilanziert und passende einfache Bewegungsgleichungen nutzt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-30ddb2d7-b991-55fe-9e74-37ffe1048f9f-description-heading">
+        <p class="section-heading" id="goal-30ddb2d7-b991-55fe-9e74-37ffe1048f9f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann geradlinige Bewegungen mit Reibung unter einfachen Modellannahmen beschreiben und qualitativ vorhersagen, indem sie Betrag und Richtung der wirkenden Kräfte bilanziert und passende einfache Bewegungsgleichungen nutzt.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-30ddb2d7-b991-55fe-9e74-37ffe1048f9f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-30ddb2d7-b991-55fe-9e74-37ffe1048f9f-requires-heading">
+          <p class="section-heading" id="goal-30ddb2d7-b991-55fe-9e74-37ffe1048f9f-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-5fd45dbc-0eb1-591b-99a9-7386336f1456"><span>Reibungskräfte qualitativ verstehen</span><code>5fd45dbc-0eb1-591b-99a9-7386336f1456</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-30ddb2d7-b991-55fe-9e74-37ffe1048f9f-reverse-heading">
+          <p class="section-heading" id="goal-30ddb2d7-b991-55fe-9e74-37ffe1048f9f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-30ddb2d7-b991-55fe-9e74-37ffe1048f9f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-30ddb2d7-b991-55fe-9e74-37ffe1048f9f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-dd99528a-bae5-5b78-89e6-c6092c927f8d" rel="noreferrer noopener"><span>Mehrschrittige Bewegungsmodelle mit Reibung und Chaos analysieren</span> <code>dd99528a-bae5-5b78-89e6-c6092c927f8d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ac25ffe3-fd42-592d-a937-79cc13460313" rel="noreferrer noopener"><span>Methode: Modellbildung mit Tabellenkalkulation</span> <code>ac25ffe3-fd42-592d-a937-79cc13460313</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 2</span>
+      <span>Buch-Digest <code>sha256:f333c11015483162b7e92eeaf4dafcaaa28591b4e1c8e9a508501f93c8821904</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fbb791a86cfd9d816e0807920e57846fb30f694349550b42c3c5a7548548bcba</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-e-friction-revised-2-v1-20260902&amp;edition=curricular-atomic-v1&amp;goalId=30ddb2d7-b991-55fe-9e74-37ffe1048f9f&amp;goalFingerprint=sha256%3Afbb791a86cfd9d816e0807920e57846fb30f694349550b42c3c5a7548548bcba&amp;pageFingerprint=sha256%3Aa7738d2976a8462a658801ae6d62dd1d62a15a0267ba651c16208722b6855895&amp;bookDigest=sha256%3Af333c11015483162b7e92eeaf4dafcaaa28591b4e1c8e9a508501f93c8821904&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

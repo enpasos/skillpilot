@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-q1-current378-routes-20261006-v1-001-resolution-9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+  "goal": {
+    "goalId": "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:22b338504507f3ec9893daf0dadc769464695a6d6246406e8b7eeceeea4de49d",
+    "pageFingerprint": "sha256:bd6f09cd1b566d80b42c4ce8e7048df980a799baca949e96f50494f335f5b60f",
+    "goalReviewContextFingerprint": "sha256:0a002490da0478b5b176dc7e5b8b25717f5359a943b30c1343eea502c59f81ba",
+    "finalText": {
+      "titleDe": "Molekülgeometrien mit dem EPA-Modell erklären",
+      "titleEn": "Explain molecular geometries with the VSEPR model",
+      "descriptionDe": "Die lernende Person kann Molekülgeometrien und einfache Bindungswinkel mit dem EPA-Modell erläutern.",
+      "descriptionEn": "The learner can explain molecular geometries and simple bond angles using the VSEPR model."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-q1-current378-routes-20261006-v1-001-a",
+      "campaignDigest": "sha256:7397235146bff6b81b07fc1765b681f276c85b7c42f1f48642171f089a0d3075",
+      "roundId": "chemie-q1-current378-routes-20261006-v1-001-first-pass-a",
+      "independenceGroupId": "chemie-q1-current378-routes-20261006-v1-001-independent-a",
+      "reviewInputFingerprint": "sha256:bd4a96449d7bf6062fd7a59de9e4fc9b24a7acb8b1a6d8af410f13d20da978f4",
+      "goalReviewContextFingerprint": "sha256:0a002490da0478b5b176dc7e5b8b25717f5359a943b30c1343eea502c59f81ba",
+      "batchId": "chemie-q1-current378-routes-20261006-v1-001-first-pass-a.batch-001",
+      "runId": "codex-chemie-final378-current-d-independent-a-20261006-001",
+      "runManifestDigest": "sha256:57f1141cef839f13557bcb625149352d9c961ee744a0d4a0c82682f0dbb4294a",
+      "resultsDigest": "sha256:f9914db00e06d9405da63e8b265ba711b9d95116262981d7f8647162188ae6ff",
+      "recordId": "chemie-final378-current-d-a-9b56d01e-20261006",
+      "recordDigest": "sha256:cfe6ecade2f35b4153b587f2c3f87445a71550e9a6607ab90ea5aeea64216b46"
+    },
+    "second": {
+      "campaignId": "chemie-q1-current378-routes-20261006-v1-001-b",
+      "campaignDigest": "sha256:c40f21b2e9985e390784279607ffa8784c0b7489a4fe6cd50d5758614f51daf4",
+      "roundId": "chemie-q1-current378-routes-20261006-v1-001-first-pass-b",
+      "independenceGroupId": "chemie-q1-current378-routes-20261006-v1-001-independent-b",
+      "reviewInputFingerprint": "sha256:bd4a96449d7bf6062fd7a59de9e4fc9b24a7acb8b1a6d8af410f13d20da978f4",
+      "goalReviewContextFingerprint": "sha256:0a002490da0478b5b176dc7e5b8b25717f5359a943b30c1343eea502c59f81ba",
+      "batchId": "chemie-q1-current378-routes-20261006-v1-001-first-pass-b.batch-001",
+      "runId": "chemie-current378-native-d-b-20261006-001",
+      "runManifestDigest": "sha256:de6eb3f2f25d0e8332417c76f5adf4370f4921e2854f02469410b566edbd208c",
+      "resultsDigest": "sha256:f399b8e529bfc77d50ca7fef7bed8ab6e5b6aadb368c2637d47a2612ebfac4bf",
+      "recordId": "chemie-current378-native-d-b-001-9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+      "recordDigest": "sha256:3b0f8ea8c263177f167020831ad8096358fe175a55dd43d97cde58753c924e12"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:9d970381cd7c19c99657d89b79ead0ac1ac6416a48e8a27ad6c619181c141721"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-current378-native53-synthesis-20261006-v2-001",
+    "manifestDigest": "sha256:690a7d4ad67169eb2ef0bea453942b819ab49b19492dcebbf19a417adf083748",
+    "manifestFingerprint": "sha256:3af3db9e0c88d84ccc9760c10dfe1d2ce0478efa7507087691794c4bf772a38d",
+    "decisionId": "chemie-current378-native53-synthesis-20261006-v2-001-decision-011"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-current378-native53-synthesis-20261006-v2-001-decision-011",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex operator synthesis after two actual independent current-description reviews, targeted scientific reuse and native v5 binding guard",
+    "synthesizedAt": "2026-10-06T03:39:45.723Z",
+    "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Molekülgeometrien mit dem EPA-Modell erklären. Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+    "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Explain molecular geometries with the VSEPR model. The measured native delta fields are externalReverseRequires, pageFingerprint. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Im EPA/VSEPR-Modell stoßen Elektronendomänen einander ab; bindende und freie Paare bestimmen Anordnung und eine qualitative Winkelabweichung vom idealisierten Grundwinkel.",
+      "essentialUnderstandingEn": "In VSEPR, electron domains repel; bonding and lone pairs determine geometry and qualitative deviations from ideal angles.",
+      "observablePerformanceDe": "Die lernende Person bestimmt für BeH2, BH3 oder H2O Elektronendomänen, Geometrie und einen passenden einfachen Winkelbereich und begründet den Einfluss freier Paare.",
+      "observablePerformanceEn": "For BeH2, BH3, or H2O, the learner determines domains, geometry, a suitable simple angle range, and the effect of lone pairs.",
+      "transferExpectationDe": "Bei einem neuen NH3-Modell sagt sie eine pyramidalische statt planare Form voraus und ordnet den Winkel qualitativ ein.",
+      "transferExpectationEn": "For a fresh NH3 model, they predict a pyramidal rather than planar shape and classify its angle qualitatively."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-cd66d0c56e00f123681484e5cef4d5379ad98da7693a2baa8c018c70cb37e6e3",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:13f3a7eb0ce9729b846e192107f152a05be25a486e1a8177e86dbca4b154aae0"
+}

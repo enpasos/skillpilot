@@ -1,0 +1,66 @@
+# SPDX-License-Identifier: Apache-2.0
+"""Explicitly guarded local Chemistry delta application; default is read-only."""
+from pathlib import Path
+from datetime import datetime, timezone
+import argparse, hashlib, json, os, re
+
+def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def j(p): return json.loads(Path(p).read_text())
+def digest(raw): return hashlib.sha256(raw.encode('utf-8')).hexdigest()
+def subject_spans(raw):
+    hit=re.search(r'"subjects"\s*:\s*\[',raw); assert hit
+    pos=hit.end(); decoder=json.JSONDecoder(); rows=[]
+    while True:
+        while raw[pos].isspace() or raw[pos]==',':pos+=1
+        if raw[pos]==']':break
+        obj,end=decoder.raw_decode(raw,pos);rows.append((pos,end,obj));pos=end
+    assert len({x[2]['subject'] for x in rows})==len(rows)
+    return rows
+def safe(root,relative):
+    rel=Path(relative); assert not rel.is_absolute() and '..' not in rel.parts
+    out=root/rel
+    for p in [out,*out.parents]:
+        if p==root.parent:break
+        assert not p.is_symlink(),f'Mutable target has symlink: {p}'
+    return out
+def main():
+    ap=argparse.ArgumentParser();ap.add_argument('--root',required=True);ap.add_argument('--plan',required=True);ap.add_argument('--receipt',required=True);ap.add_argument('--write',action='store_true');ap.add_argument('--simulation',action='store_true');args=ap.parse_args()
+    root=Path(args.root).absolute();planpath=Path(args.plan).absolute();p=j(planpath); assert root.is_dir() and not root.is_symlink()
+    repo=Path(p['evidenceRepositoryRoot']); evidence=repo/p['candidateDirectory'];assert planpath==evidence/'guarded-apply-plan.json'
+    if args.simulation:
+        assert root.is_relative_to(repo/'tmp') and root!=repo,'Simulation cannot target active repository'
+    elif args.write:
+        freeze=evidence/'reviewed-integration.final.freeze.json';assert freeze.is_file(),'Production write requires final frozen evidence'
+        for x in j(freeze)['files']:assert sha(repo/x['path'])==x['sha256'].removeprefix('sha256:'),x['path']
+    for x in p.get('reviewedCurrentInputs', []):
+        assert sha(repo/x['path'])==x['sha256'],x['path']
+    for x in p['writes']:
+        source=repo/x['sourcePath'];assert source.is_file() and sha(source)==x['afterSHA256']
+        dest=safe(root,x['targetPath']);assert (sha(dest) if dest.is_file() else None)==x['beforeSHA256'],x['targetPath']
+    for x in p['deletes']:
+        dest=safe(root,x['targetPath']);assert dest.is_file() and sha(dest)==x['beforeSHA256'],x['targetPath']
+        archived=repo/x['preservedHistoricalPath'];assert archived.is_file() and sha(archived)==x['beforeSHA256']
+    for x in p['historicalPreservationGuards']:
+        assert sha(repo/x['preservedPath'])==x['sha256'],x['preservedPath']
+    for x in p['protectedOtherCanonicalFiles']:
+        assert sha(root/x['path'])==x['sha256'],x['path']
+    registry=safe(root,p['registry']['path']);raw=registry.read_text();assert sha(registry)==p['registry']['beforeWholeFileSHA256'],'Registry drift: prepare new plan/precondition instead of overriding'
+    spans=subject_spans(raw);start,end,old=next(x for x in spans if x[2]['subject']=='chemie');assert old==p['registry']['expectedBeforeWholeChemistryEntry'];assert digest(raw[start:end])==p['registry']['beforeChemistryRawEntrySHA256']
+    future=p['registry']['futureWholeChemistryEntry'];oldraw={x[2]['subject']:raw[x[0]:x[1]] for x in spans if x[2]['subject']!='chemie'}
+    inserted=json.dumps(future,ensure_ascii=False,indent=2);inserted=inserted.replace('\n','\n    ');newraw=raw[:start]+inserted+raw[end:];newspans=subject_spans(newraw);assert {x[2]['subject']:newraw[x[0]:x[1]] for x in newspans if x[2]['subject']!='chemie'}==oldraw
+    assert json.loads(newraw)=={**json.loads(raw),'subjects':[future if x['subject']=='chemie' else x for x in json.loads(raw)['subjects']]}
+    before_can=j(root/p['canonicalPath']);future_can=j(repo/p['futureCanonicalSourcePath']);b={x['id']:x for x in before_can['goals']};f={x['id']:x for x in future_can['goals']};assert all(b[g]==f[g] for g in p['protectedStrict104GoalIds'])
+    actions=[]
+    if args.write:
+        # Every input is checked before any mutation; writes are explicit exact bytes only.
+        for x in p['writes']:
+            dest=safe(root,x['targetPath']);assert (sha(dest) if dest.is_file() else None)==x['beforeSHA256'];dest.parent.mkdir(parents=True,exist_ok=True);pending=dest.with_name(dest.name+'.chem-reviewed.pending');assert not pending.exists();pending.write_bytes((repo/x['sourcePath']).read_bytes());assert sha(pending)==x['afterSHA256'];os.replace(pending,dest);actions.append({'writePath':x['targetPath'],'sha256':sha(dest)})
+        for x in p['deletes']:
+            dest=safe(root,x['targetPath']);assert sha(dest)==x['beforeSHA256'];dest.unlink();actions.append({'removedActiveRasterPath':x['targetPath'],'historicalPath':x['preservedHistoricalPath'],'preservedSHA256':x['beforeSHA256']})
+        assert sha(registry)==p['registry']['beforeWholeFileSHA256'];pending=registry.with_name(registry.name+'.chem-reviewed.pending');assert not pending.exists();pending.write_text(newraw);os.replace(pending,registry)
+        actualraw=registry.read_text();assert {x[2]['subject']:actualraw[x[0]:x[1]] for x in subject_spans(actualraw) if x[2]['subject']!='chemie'}==oldraw
+        assert all(sha(root/x['path'])==x['sha256'] for x in p['protectedOtherCanonicalFiles'])
+        assert all(sha(root/x['targetPath'])==x['afterSHA256'] for x in p['writes']) and all(not (root/x['targetPath']).exists() for x in p['deletes'])
+    receipt={'completedAtUTC':datetime.now(timezone.utc).isoformat(),'planPath':str(planpath),'planSHA256':sha(planpath),'root':str(root),'preflightPass':True,'writesRequested':args.write,'simulation':args.simulation,'actualDeltaFileWrites':len(actions)-len(p['deletes']) if args.write else 0,'actualOldRasterRemovals':len(p['deletes']) if args.write else 0,'actualRegistrySplicePerformed':args.write,'wholeForeignSubjectRawEntriesExact':True,'allProtected104WholeCanonicalObjectsExact':True,'allHistoricalGuardsExact':True,'actions':actions,'humanApproval':False,'humanTrial':False}
+    out=Path(args.receipt);assert not out.exists(),'Use an additive new receipt path';out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n');print(json.dumps({k:v for k,v in receipt.items() if k!='actions'},ensure_ascii=False))
+if __name__=='__main__':main()

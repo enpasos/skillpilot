@@ -1,0 +1,151 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Task :compileJava
+
+> Task :generateClaudePluginPublication UP-TO-DATE
+> Task :processResources
+> Task :classes
+
+> Task :compileTestJava
+
+> Task :processTestResources UP-TO-DATE
+> Task :testClasses
+
+> Task :test
+
+LearnerControllerIntegrationTest > learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals() FAILED
+    java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@29cfc134 testClass = com.skillpilot.backend.controller.LearnerControllerIntegrationTest, locations = [], classes = [com.skillpilot.backend.SkillpilotApplication], contextInitializerClasses = [], activeProfiles = ["test"], propertySourceDescriptors = [], propertySourceProperties = ["org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true", "server.port=0"], contextCustomizers = [org.springframework.boot.test.autoconfigure.OnFailureConditionReportContextCustomizerFactory$OnFailureConditionReportContextCustomizer@4aeaadc1, org.springframework.boot.web.server.context.SpringBootTestRandomPortContextCustomizer@78f9ed3e, org.springframework.boot.test.context.PropertyMappingContextCustomizer@0, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@56193c7d, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@4fcc529, org.springframework.test.context.support.DynamicPropertiesContextCustomizer@0, org.springframework.boot.test.context.SpringBootTestAnnotation@5b1e093e], resourceBasePath = "src/main/webapp", contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
+        at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.lambda$loadContext$0(DefaultCacheAwareContextLoaderDelegate.java:195)
+        at org.springframework.test.context.cache.DefaultContextCache.put(DefaultContextCache.java:214)
+        at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:160)
+        at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:128)
+        at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:156)
+        at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:111)
+        at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:260)
+        at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:242)
+        at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+        at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+        at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
+        at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+        at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+        at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+        at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+        at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+        at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+        at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+        at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+        at java.base/java.util.Optional.orElseGet(Optional.java:364)
+        at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+        at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+
+        Caused by:
+        org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'coachToolFacade' defined in file [/home/enpasos/projects/skillpilot/backend/build/classes/java/main/com/skillpilot/backend/ai/CoachToolFacade.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'learnerService' defined in file [/home/enpasos/projects/skillpilot/backend/build/classes/java/main/com/skillpilot/backend/service/LearnerService.class]: Unsatisfied dependency expressed through constructor parameter 4: Error creating bean with name 'repositoryLandscapeService' defined in class path resource [com/skillpilot/backend/landscape/RepositoryCurriculumConfiguration.class]: Unsatisfied dependency expressed through method 'repositoryLandscapeService' parameter 2: Error creating bean with name 'repositoryGoalMappingService' defined in class path resource [com/skillpilot/backend/landscape/RepositoryCurriculumConfiguration.class]: Failed to instantiate [com.skillpilot.backend.landscape.GoalMappingService]: Factory method 'repositoryGoalMappingService' threw exception with message: Conflicting goal mappings for legacyGoalId 3a57ac61-eb4f-4731-9695-9c966cec7840 between /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json and /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-paraben-use-scope-independent-b-v3/native-physical-isolate/curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json
+            at app//org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+            at app//org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+            at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1380)
+            at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
+            at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+            at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+            at app//org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+            at app//org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+            at app//org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+            at app//org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+            at app//org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1225)
+            at app//org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1191)
+            at app//org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
+            at app//org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:994)
+            at app//org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+            at app//org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+            at app//org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+            at app//org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+            at app//org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+            at app//org.springframework.boot.test.context.SpringBootContextLoader.lambda$loadContext$2(SpringBootContextLoader.java:155)
+            at app//org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:58)
+            at app//org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:46)
+            at app//org.springframework.boot.SpringApplication.withHook(SpringApplication.java:1465)
+            at app//org.springframework.boot.test.context.SpringBootContextLoader$ContextLoaderHook.run(SpringBootContextLoader.java:600)
+            at app//org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:155)
+            at app//org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:114)
+            at app//org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:247)
+            at app//org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.lambda$loadContext$0(DefaultCacheAwareContextLoaderDelegate.java:167)
+            ... 21 more
+
+            Caused by:
+            org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'learnerService' defined in file [/home/enpasos/projects/skillpilot/backend/build/classes/java/main/com/skillpilot/backend/service/LearnerService.class]: Unsatisfied dependency expressed through constructor parameter 4: Error creating bean with name 'repositoryLandscapeService' defined in class path resource [com/skillpilot/backend/landscape/RepositoryCurriculumConfiguration.class]: Unsatisfied dependency expressed through method 'repositoryLandscapeService' parameter 2: Error creating bean with name 'repositoryGoalMappingService' defined in class path resource [com/skillpilot/backend/landscape/RepositoryCurriculumConfiguration.class]: Failed to instantiate [com.skillpilot.backend.landscape.GoalMappingService]: Factory method 'repositoryGoalMappingService' threw exception with message: Conflicting goal mappings for legacyGoalId 3a57ac61-eb4f-4731-9695-9c966cec7840 between /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json and /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-paraben-use-scope-independent-b-v3/native-physical-isolate/curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json
+                at app//org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+                at app//org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+                at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1380)
+                at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
+                at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+                at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+                at app//org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+                at app//org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+                at app//org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+                at app//org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+                at app//org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:1232)
+                at app//org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1711)
+                at app//org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658)
+                at app//org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912)
+                at app//org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+                ... 48 more
+
+                Caused by:
+                org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'repositoryLandscapeService' defined in class path resource [com/skillpilot/backend/landscape/RepositoryCurriculumConfiguration.class]: Unsatisfied dependency expressed through method 'repositoryLandscapeService' parameter 2: Error creating bean with name 'repositoryGoalMappingService' defined in class path resource [com/skillpilot/backend/landscape/RepositoryCurriculumConfiguration.class]: Failed to instantiate [com.skillpilot.backend.landscape.GoalMappingService]: Factory method 'repositoryGoalMappingService' threw exception with message: Conflicting goal mappings for legacyGoalId 3a57ac61-eb4f-4731-9695-9c966cec7840 between /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json and /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-paraben-use-scope-independent-b-v3/native-physical-isolate/curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json
+                    at app//org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+                    at app//org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:546)
+                    at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1360)
+                    at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1192)
+                    at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+                    at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+                    at app//org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+                    at app//org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+                    at app//org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+                    at app//org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+                    at app//org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
+                    at app//org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769)
+                    at app//org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658)
+                    at app//org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912)
+                    at app//org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+                    ... 62 more
+
+                    Caused by:
+                    org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'repositoryGoalMappingService' defined in class path resource [com/skillpilot/backend/landscape/RepositoryCurriculumConfiguration.class]: Failed to instantiate [com.skillpilot.backend.landscape.GoalMappingService]: Factory method 'repositoryGoalMappingService' threw exception with message: Conflicting goal mappings for legacyGoalId 3a57ac61-eb4f-4731-9695-9c966cec7840 between /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json and /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-paraben-use-scope-independent-b-v3/native-physical-isolate/curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json
+                        at app//org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657)
+                        at app//org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645)
+                        at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1360)
+                        at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1192)
+                        at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+                        at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+                        at app//org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+                        at app//org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+                        at app//org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+                        at app//org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+                        at app//org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
+                        at app//org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769)
+                        at app//org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658)
+                        at app//org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912)
+                        at app//org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+                        ... 76 more
+
+                        Caused by:
+                        org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.skillpilot.backend.landscape.GoalMappingService]: Factory method 'repositoryGoalMappingService' threw exception with message: Conflicting goal mappings for legacyGoalId 3a57ac61-eb4f-4731-9695-9c966cec7840 between /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json and /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-paraben-use-scope-independent-b-v3/native-physical-isolate/curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json
+                            at app//org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:183)
+                            at app//org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:72)
+                            at app//org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:152)
+                            at app//org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+                            ... 90 more
+
+                            Caused by:
+                            java.lang.IllegalStateException: Conflicting goal mappings for legacyGoalId 3a57ac61-eb4f-4731-9695-9c966cec7840 between /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json and /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-paraben-use-scope-independent-b-v3/native-physical-isolate/curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json
+                                at com.skillpilot.backend.landscape.GoalMappingService.loadMappings(GoalMappingService.java:206)
+                                at com.skillpilot.backend.landscape.GoalMappingService.<init>(GoalMappingService.java:42)
+                                at com.skillpilot.backend.landscape.RepositoryCurriculumConfiguration.repositoryGoalMappingService(RepositoryCurriculumConfiguration.java:23)
+                                at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+                                at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:155)
+                                ... 93 more
+
+> Task :test FAILED
+
+[Incubating] Problems report is available at: file:///home/enpasos/projects/skillpilot/backend/build/reports/problems/problems-report.html
+6 actionable tasks: 4 executed, 2 up-to-date

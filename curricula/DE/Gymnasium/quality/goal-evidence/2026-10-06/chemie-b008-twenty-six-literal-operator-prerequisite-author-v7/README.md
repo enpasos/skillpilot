@@ -1,0 +1,11 @@
+# Chemistry B008 v7: four targeted author corrections
+
+Chemistry remains **112/378**, Biology **67/383**. This inactive author package adds no strict completion or restored active binding. All 26 proposed IDs remain null; the nine current original families remain open.
+
+The frozen independent v6 reviews are retained with their actual differing results. A found no scientific blocker in its targeted scope. B identified four literal operator/prerequisite defects affecting three prototypes and a bounded reflection clarification. Those findings are author-remediated here; they are not silently marked independently resolved.
+
+The [actual field delta](actual-four-prototype-literal-deltas.json) changes four prototypes and preserves **22 whole prototypes exactly**. The lower-model title no longer claims actual model redevelopment, and its DE/EN description now requires hypothesis-guided use. Independent lower and upper practical planning no longer require own hypothesis generation universally. Both own-formulation products remain exact and remain mandatory in the original integrated routes that actually require them. The reflection description asks for justification of methods actually used, without claiming guided learners made their own planning decisions.
+
+The [26 DE/EN proposals](twenty-six-atomic-boundaries.de-en.author-proposal.json) retain qualitative and quantitative execution, actual experimental performance, the separate model-based alternative, genuine source-specific hypothesis generation, and the previously preserved source context unions. The [effective controls](effective-source-input-controls.json) retain the actual K11 override at 138–140. The root author personally read the affected BY/NI primary passages; the proposed prerequisites resolve and are acyclic against the actual current graph.
+
+Next: each independent reviewer follows its own sealed v6 result with a targeted v7 review of these changed fields and binding continuity. Actual P materials, IDs, source/stage/course/target/routes, Memory/cards/visibility, actual visualization inspection and native D/A/M/V still follow. All 1646 original source obligations remain retained inputs, without national clearance. No human approval/trial, runtime or publication change.

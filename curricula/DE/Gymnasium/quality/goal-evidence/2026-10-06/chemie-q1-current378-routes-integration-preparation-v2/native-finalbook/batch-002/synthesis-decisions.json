@@ -1,0 +1,608 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-current378-native53-synthesis-20261006-v2-002",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex operator synthesis after two actual independent current-description reviews, targeted scientific reuse and native v5 binding guard",
+  "synthesizedAt": "2026-10-06T03:39:45.723Z",
+  "batch": {
+    "batchId": "chemie-q1-current378-routes-20261006-v1-002",
+    "batchManifestDigest": "sha256:ec039cc1572dd1a736815328b4c0a5b1310cba50c7177ad59e2624cd741e41b5",
+    "configDigest": "sha256:9bbd21b377d0bb405ab7b70c0a223295ad71e273f14a7002f43de9c5a6f8224f",
+    "bundleFingerprint": "sha256:c5aaf29b65ead03e759e7a330322b63d56c426a159a3657ae553ff760bc0a193",
+    "bookDigest": "sha256:7fbe241a25393f9d376b339af0d13388b6b34943b5026900b0c499252a69439c",
+    "reviewInputFingerprint": "sha256:f4858f854862cb60412daaf6e5c6d29880b35b4fb6e9062c585d49fc6a191ebe",
+    "dualSummaryDigest": "sha256:f7a464818c9143fd0711ad5af9aabeaec7571ab098ec07bbe12674dc205769e5",
+    "canonicalLandscapeDigest": "sha256:764c11d951d28be38709d8b01b5eb6d4b3be71e87d9daf5ea4d1dc46f67529a0"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-q1-current378-routes-20261006-v1-002-a",
+      "campaignDigest": "sha256:bcf91aaa9045b257673cceb341eba635ea37b204fcce0915d9c06259ffacb885",
+      "roundId": "chemie-q1-current378-routes-20261006-v1-002-first-pass-a",
+      "independenceGroupId": "chemie-q1-current378-routes-20261006-v1-002-independent-a",
+      "reviewInputFingerprint": "sha256:f4858f854862cb60412daaf6e5c6d29880b35b4fb6e9062c585d49fc6a191ebe",
+      "batchId": "chemie-q1-current378-routes-20261006-v1-002-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:7474110646a45b535476995c1c649ff6619df3782e5f4116e420f6cf326ef87c",
+      "runId": "codex-chemie-final378-current-d-independent-a-20261006-002",
+      "runManifestDigest": "sha256:6c11a8ef8aa8a855d8cd5c56bf73db5bb258c2dc3b4572f660423ae4539f7415",
+      "resultsDigest": "sha256:e1adf41f065af4999e5c4eda4e85725ffb44ec720f73d36df680c37f715c60a1"
+    },
+    "second": {
+      "campaignId": "chemie-q1-current378-routes-20261006-v1-002-b",
+      "campaignDigest": "sha256:68f3a347f500f9b108a82d0275e8efbdc0d1efd9a245f83c64d04149561f304f",
+      "roundId": "chemie-q1-current378-routes-20261006-v1-002-first-pass-b",
+      "independenceGroupId": "chemie-q1-current378-routes-20261006-v1-002-independent-b",
+      "reviewInputFingerprint": "sha256:f4858f854862cb60412daaf6e5c6d29880b35b4fb6e9062c585d49fc6a191ebe",
+      "batchId": "chemie-q1-current378-routes-20261006-v1-002-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:32d5c28900482703859ee471d2db744f67af89bbc72b767aa6b34c51bd0f0d31",
+      "runId": "chemie-current378-native-d-b-20261006-002",
+      "runManifestDigest": "sha256:976787c7d332570e1371178b52f16456f1483e34413e1167211cda5d336a0ba3",
+      "resultsDigest": "sha256:ab79e15f1f51601a654a85803330d522ad97589e35ba4dc7dbd42ff356c96358"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-001",
+      "goalId": "321d801d-28e4-54a2-bd31-8c07bda2f392",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:389a0a30d96916874c9aec75f657c191745ca11d3e2bc99f0712816805c6dbac",
+      "pageFingerprint": "sha256:021af8aadd46332e1a53efd6df12c41fe3dfd020957c1fdec7af7e964d2a2879",
+      "goalReviewContextFingerprint": "sha256:243ad685e997bd7a1726fceff7a8e8a21f7610f2be509827137f4c4252583b39",
+      "finalText": {
+        "titleDe": "Hybridisierungsmodell und Molecular Modelling vergleichen",
+        "titleEn": "Compare the hybridization model and molecular modelling",
+        "descriptionDe": "Die lernende Person kann Darstellungen organischer Moleküle aus Hybridisierungsmodell und Molecular Modelling hinsichtlich Aussagekraft, Vor- und Nachteilen vergleichen.",
+        "descriptionEn": "The learner can compare representations of organic molecules from the hybridization model and molecular modelling with respect to explanatory power, advantages, and disadvantages."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-321d801d-20261006",
+          "recordDigest": "sha256:cf5d9e634c48aae0b9ce4fc72b0776e363cae1da29c279a3935e13db7858ae69"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-321d801d-28e4-54a2-bd31-8c07bda2f392",
+          "recordDigest": "sha256:cf23d6598247764578ed44ab17c48c42a9c8164f55521b9ede4f2079845749cf"
+        }
+      },
+      "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Hybridisierungsmodell und Molecular Modelling vergleichen. Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Compare the hybridization model and molecular modelling. The measured native delta fields are externalReverseRequires, pageFingerprint. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-002",
+      "goalId": "536b48b2-7822-5b7e-9059-ad43400da7e0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:95f6d90461a652619bbf0feb2e740c4a906051e61795154c34c83b5b8014d5ee",
+      "pageFingerprint": "sha256:661f7d34f0e2fd13fe72c2def69d8eac9c779f67f51eb14a3f556fadc8c4d50e",
+      "goalReviewContextFingerprint": "sha256:cb958e87078666486b1cf6e07859aa27fee915c50c917b80bccfebbc559a79a7",
+      "finalText": {
+        "titleDe": "Alkanole benennen",
+        "titleEn": "Name alkanols",
+        "descriptionDe": "Die lernende Person kann Alkanole anhand ihrer Struktur nach fachlichen Nomenklaturregeln benennen.",
+        "descriptionEn": "The learner can name alkanols from their structures using chemical nomenclature rules."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-536b48b2-20261006",
+          "recordDigest": "sha256:2ecb63211a198955b6dd118458fe288978b88c40e982cb9166d4e2ef5d12a4b8"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-536b48b2-7822-5b7e-9059-ad43400da7e0",
+          "recordDigest": "sha256:a995ea1aaaa647fd5d3e69c399a16f063c6469594aedffbe0f2486d61d63b318"
+        }
+      },
+      "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Alkanole benennen. Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Name alkanols. The measured native delta fields are externalReverseRequires, pageFingerprint. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-003",
+      "goalId": "e9b61d96-a271-5e69-b872-8c463f822be1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:60a428b9ee46efd20101d672104aae97b1fda17ff2119dcdcb569e1e471f168e",
+      "pageFingerprint": "sha256:ab331afb95a66a80a82485d00ff69682d29278df33d69207606517caf4e46b91",
+      "goalReviewContextFingerprint": "sha256:d248e0309b5873de56f1ac558f8914cc39274ee1981361591b67bdcb3130d0a8",
+      "finalText": {
+        "titleDe": "Konstitutionsisomere von Alkanolen diskutieren",
+        "titleEn": "Discuss constitutional isomers of alkanols",
+        "descriptionDe": "Die lernende Person kann Konstitutionsisomere von Alkanolen erkennen, darstellen und anhand gleicher Summenformeln fachlich vergleichen.",
+        "descriptionEn": "The learner can identify, represent, and compare constitutional isomers of alkanols with the same molecular formula."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-e9b61d96-20261006",
+          "recordDigest": "sha256:ee0965a5dfbea4e2adb88fdc4c47a0169e6d7834425163d074dbb77185cb1c14"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-e9b61d96-a271-5e69-b872-8c463f822be1",
+          "recordDigest": "sha256:e18008d55b39bbfa36ae4ebc518705b41eeb3f670289cb785d61702fb765aa1b"
+        }
+      },
+      "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Konstitutionsisomere von Alkanolen diskutieren. Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Discuss constitutional isomers of alkanols. The measured native delta fields are externalReverseRequires, pageFingerprint. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-004",
+      "goalId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a13ea12c7c844f97972eca0447b82a6c7a63503e1afd8fc262ea6d1fcc6c2280",
+      "pageFingerprint": "sha256:fa8e330f20d4622c7c265885383773f9bff85bcc2f1d4866a774a2e5a7de1276",
+      "goalReviewContextFingerprint": "sha256:3d3dd4cff3cb2ad59b0dc8d138108b5bcb27d42aebf514b8ff0ac3ff7e4dd640",
+      "finalText": {
+        "titleDe": "Polare Eigenschaften erklären",
+        "titleEn": "Explain polar properties",
+        "descriptionDe": "Die lernende Person kann Dipol-Dipol-Wechselwirkungen und Wasserstoffbrücken zur Deutung von Löslichkeit und Siedetemperatur heranziehen.",
+        "descriptionEn": "The learner can use dipole-dipole interactions and hydrogen bonds to interpret solubility and boiling temperature."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-91cd4728-20261006",
+          "recordDigest": "sha256:0d4d3cd3e7e342d011d7ce043a81035761f7e6c05a205bff0a97ed2d5a71d302"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-91cd4728-b811-562a-970b-18b81dfb4bdf",
+          "recordDigest": "sha256:37489ea121548757730f6e85c4c7209f6a6407b419d235ccdf2d9f59d1125996"
+        }
+      },
+      "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Polare Eigenschaften erklären. Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Explain polar properties. The measured native delta fields are externalReverseRequires, pageFingerprint. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-005",
+      "goalId": "41396457-d97b-55f3-9804-2af1bb188e79",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:47d0c86d818239c266fda78eaf08ff3fe3a9fbfc44b957e0132f262d4604d213",
+      "pageFingerprint": "sha256:8c421486c0ea58e9ff1321ec0dcf1f9b0f593d4e602668c86d5542040be0db24",
+      "goalReviewContextFingerprint": "sha256:5af7909d56047e15b2f36bd0bfeb1a702299a65264b61a5347c99e257ce3a95a",
+      "finalText": {
+        "titleDe": "Halogenidionen-Nachweise deuten",
+        "titleEn": "Interpret halide ion tests",
+        "descriptionDe": "Die lernende Person kann Nachweise für Halogenidionen im Kontext nukleophiler Substitution fachlich deuten.",
+        "descriptionEn": "The learner can interpret tests for halide ions in the context of nucleophilic substitution."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-41396457-20261006",
+          "recordDigest": "sha256:c8e2096eb4abb2eb71fe532b72d349a20f1e2160369b625df19afa1a995cfff7"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-41396457-d97b-55f3-9804-2af1bb188e79",
+          "recordDigest": "sha256:396611150d92b5ae5fefeb7e2a275164cfecbd96244e74acd5d5d9f35d3a3bb9"
+        }
+      },
+      "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Halogenidionen-Nachweise deuten. Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Interpret halide ion tests. The measured native delta fields are externalReverseRequires, pageFingerprint. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-006",
+      "goalId": "858d56e0-ab8f-51a4-b07e-7d9d94cab8e2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:60d40bf5725c58252d84bfc5372d670c19f5f091779b532515e84b067caaf876",
+      "pageFingerprint": "sha256:ffa5ad6b279ff799b5c15a964d0623a8fe208c0401ab97abfad81bbd2478c685",
+      "goalReviewContextFingerprint": "sha256:cb57ab36897c33a0c8a7d7b031d30e892a33dab878a283a67f37cce5e8a25770",
+      "finalText": {
+        "titleDe": "Oxidierbarkeit von Alkanolen vergleichen",
+        "titleEn": "Compare oxidizability of alkanols",
+        "descriptionDe": "Die lernende Person kann primäre, sekundäre und tertiäre Alkanole hinsichtlich ihrer Oxidierbarkeit vergleichen.",
+        "descriptionEn": "The learner can compare primary, secondary, and tertiary alkanols with respect to their oxidizability."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-858d56e0-20261006",
+          "recordDigest": "sha256:c79f2f2958bdbd5988140602ef1969ed4baa2ccb10ae8e65b6cb7ac3c07b32fb"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-858d56e0-ab8f-51a4-b07e-7d9d94cab8e2",
+          "recordDigest": "sha256:7b4197f6cf187aedce622d88ea1187a0043e035102a57c5f567d5b1ced39f79a"
+        }
+      },
+      "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Oxidierbarkeit von Alkanolen vergleichen. Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Compare oxidizability of alkanols. The measured native delta fields are externalReverseRequires, pageFingerprint. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-007",
+      "goalId": "5851b53a-162b-5c17-9269-510ee54ad846",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ebc73cd6625e4da997dff260d03f829199ffa5fcf355f8987af37ababb773106",
+      "pageFingerprint": "sha256:ad443ce5ce860b0197a175ef771f8a5cbb2fbb2f63a797ef1eef7bf048c4748a",
+      "goalReviewContextFingerprint": "sha256:5ca8cc03cb99bd28e5dad239741a2ac47f841c17b93ad1ba6f637c89ade44bf3",
+      "finalText": {
+        "titleDe": "Oxidationsprodukte von Alkanolen erklären",
+        "titleEn": "Explain oxidation products of alkanols",
+        "descriptionDe": "Die lernende Person kann die Bildung von Aldehyden, Ketonen und Carbonsäuren bei der Oxidation geeigneter Alkanole erklären.",
+        "descriptionEn": "The learner can explain the formation of aldehydes, ketones, and carboxylic acids during oxidation of suitable alkanols."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-5851b53a-20261006",
+          "recordDigest": "sha256:c358604e6280ce0e4d4727551a40a9c81ecffa2f7913f303668b4c3116ac2036"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-5851b53a-162b-5c17-9269-510ee54ad846",
+          "recordDigest": "sha256:fa8eeeee33a804744f94af4672b6a06d376e3e4d5816d39402e9939791b6829d"
+        }
+      },
+      "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Oxidationsprodukte von Alkanolen erklären. Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Explain oxidation products of alkanols. The measured native delta fields are externalReverseRequires, pageFingerprint. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-008",
+      "goalId": "a4bac92b-d685-5cb6-94c8-c9b8b878d125",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:01c3e35b80133e3fab9286e0b079727b5047fb22b6dac67344e0048dc4fd6365",
+      "pageFingerprint": "sha256:3248824322ccabdabb84da603d9233992da637758bea5c2fd594a96be56bc47e",
+      "goalReviewContextFingerprint": "sha256:03e7af09571fee25e19eefa123ec941165fc392a26b98d55c5b4068f0656e37f",
+      "finalText": {
+        "titleDe": "Substitutionsmechanismen differenzieren (LK)",
+        "titleEn": "Differentiate substitution mechanisms (LK)",
+        "descriptionDe": "Die lernende Person kann SN1- und SN2-Mechanismen gegenüberstellen und sterische sowie induktive Effekte diskutieren.",
+        "descriptionEn": "The learner can contrast SN1 and SN2 mechanisms and discuss steric and inductive effects."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-a4bac92b-20261006",
+          "recordDigest": "sha256:f7ae974d53be4c5df1daaae551b36997ce859942a9b644dfd9cc7fd067f5e394"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-a4bac92b-d685-5cb6-94c8-c9b8b878d125",
+          "recordDigest": "sha256:e32172cf878a137d7efec57e9165187d97bd1b0b5ec9ac14c68584dd2753898c"
+        }
+      },
+      "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Substitutionsmechanismen differenzieren (LK). Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Differentiate substitution mechanisms (LK). The measured native delta fields are externalReverseRequires, pageFingerprint. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-009",
+      "goalId": "cdd4ee76-5b37-54ee-b238-63db71205af0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:dfa885637e96e6e5217bba19c19266337e56b002a4029056ac18629876c708ee",
+      "pageFingerprint": "sha256:d899f7e8b3182f03957bccaf4f02fd21b22e5758314c2be969dcc28fe7fde763",
+      "goalReviewContextFingerprint": "sha256:e8ee958f495e124aee00e633f3dbf37e75b45ce2a7a08c0169063afe7872c200",
+      "finalText": {
+        "titleDe": "SN1/SN2 vergleichen",
+        "titleEn": "Compare SN1/SN2",
+        "descriptionDe": "Die lernende Person kann SN1- und SN2-Mechanismen bzgl. Kinetik, Lösungsmittel und Substrat deuten.",
+        "descriptionEn": "The learner can interpret SN1 and SN2 mechanisms regarding kinetics, solvent, and substrate."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-cdd4ee76-20261006",
+          "recordDigest": "sha256:4a50731746090fa73824bc8dd4c6bd7d0cce3b81ca3c340299254f3c0c862369"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-cdd4ee76-5b37-54ee-b238-63db71205af0",
+          "recordDigest": "sha256:9c7e60f41ff886125c6ec4d7b36ba3e83d5ca72a4cce1cb6b8da06c14ce20180"
+        }
+      },
+      "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von SN1/SN2 vergleichen. Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Compare SN1/SN2. The measured native delta fields are externalReverseRequires, pageFingerprint. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-010",
+      "goalId": "a3788e40-b540-5bed-be37-b33053528422",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7792898d5d7fc270f728cce983914e05270d20b754a561ebfc55d53cc67b5f6a",
+      "pageFingerprint": "sha256:6e00423875be1fc92fd51658739938cb744762a119ecc39fbca1fc6b59228c28",
+      "goalReviewContextFingerprint": "sha256:479ba29762a9cd8bf00bef9d2dd0b1d07546e16c46e5c9ddbf990819f8e08e73",
+      "finalText": {
+        "titleDe": "Carbonsäuren beschreiben",
+        "titleEn": "Describe carboxylic acids",
+        "descriptionDe": "Die lernende Person kann Carboxygruppen in Struktur- und Skelettformeln erkennen und ihren sauren Charakter anhand geeigneter Beobachtungen nachweisen, homologe Reihen darstellen und Strukturformeln schreiben.",
+        "descriptionEn": "The learner can recognize carboxyl groups in structural and skeletal formulas and demonstrate their acidic character using suitable observations, represent homologous series, and write structural formulas."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-a3788e40-20261006",
+          "recordDigest": "sha256:be7e4da16212721ba227a065d1fc50fb250173182a009124686c80d518511bbe"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-a3788e40-b540-5bed-be37-b33053528422",
+          "recordDigest": "sha256:e8b59f96204f3395d662572a62cb8e057b9e5141a2754f5b5611422c11429903"
+        }
+      },
+      "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Carbonsäuren beschreiben. Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Describe carboxylic acids. The measured native delta fields are externalReverseRequires, pageFingerprint. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-011",
+      "goalId": "ca216bc6-5205-5b46-abbd-fd5628e4ca5b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1d7791edbd313503ce2600f101c967f0ab70d438091d87fe8fa89982b897fe2c",
+      "pageFingerprint": "sha256:bf7cce3750661a9396c28cf312fb1a0f11fe61e50a440d0a08fd4fb34fc07dc1",
+      "goalReviewContextFingerprint": "sha256:251124b8e31bdb002671d0bc6adf9446eb20b8d090be55a1826b6847a4a63d64",
+      "finalText": {
+        "titleDe": "Acidität begründen",
+        "titleEn": "Justify acidity",
+        "descriptionDe": "Die lernende Person kann die Acidität von Alkohol-Molekülen und Carbonsäure-Molekülen vergleichen und den Einfluss polarer Bindungen, induktiver Effekte und Mesomerie auf die Säurestärke von Carbonsäuren erklären.",
+        "descriptionEn": "The learner can compare the acidity of alcohol molecules and carboxylic acid molecules and explain the influence of polar bonds, inductive effects, and resonance on the acid strength of carboxylic acids."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-ca216bc6-20261006",
+          "recordDigest": "sha256:e15f2c84217b95676d07166e39efb10323d4aa36d84dcf3a762cd936e6420f5b"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-ca216bc6-5205-5b46-abbd-fd5628e4ca5b",
+          "recordDigest": "sha256:8b00cbe51039372bb3a16d7361536bacc73fce1bcd8e48ed7bca968af52bcfcb"
+        }
+      },
+      "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Acidität begründen. Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint, reverseRequires. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Justify acidity. The measured native delta fields are externalReverseRequires, pageFingerprint, reverseRequires. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-012",
+      "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:990d8f544f1164ac9e1d206aa685e346c54d17d59d4191ffa3744ec3fe7890d9",
+      "pageFingerprint": "sha256:67acf6ece6c73f90e901d0d1bf854f8c285722a23a7e7089d3bee4fc46c59857",
+      "goalReviewContextFingerprint": "sha256:c490c95e78c72e9d95679218264020fbd13a8d465d44c9727ec73937ae4628c0",
+      "finalText": {
+        "titleDe": "Esterbildung und Estereigenschaften erklären",
+        "titleEn": "Explain ester formation and ester properties",
+        "descriptionDe": "Die lernende Person kann die Bildung von Estern aus Alkoholen und Carbonsäuren aus experimentellen Beobachtungen ableiten, Kondensationsreaktionen formulieren, Stoffeigenschaften mithilfe zwischenmolekularer Wechselwirkungen begründen und Einsatzbereiche von Estern in Alltagsprodukten und Technik nennen.",
+        "descriptionEn": "The learner can derive the formation of esters from alcohols and carboxylic acids from experimental observations, formulate condensation reactions, justify ester properties using intermolecular interactions, and name uses of esters in everyday products and technology."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-70b34ae7-20261006",
+          "recordDigest": "sha256:b81037e3b1d7c01dd3204d7f7a22b5cceded0224f0331ec1d3f266da50811e7c"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-70b34ae7-4481-590c-9a02-516464750832",
+          "recordDigest": "sha256:cf969cb556aa255b15727381fb61fde86fac8c9bb674fadca7b7bb9f9b1c235e"
+        }
+      },
+      "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Esterbildung und Estereigenschaften erklären. Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint, reverseRequires. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Explain ester formation and ester properties. The measured native delta fields are externalReverseRequires, pageFingerprint, reverseRequires. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-013",
+      "goalId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:53f8b3fe772a4b48a5b16f7143ba3b7497dea90edbf235b8d7f465955d11975a",
+      "pageFingerprint": "sha256:28e3ccf06d1e74b5823b3852c00cd5d29a36094df64fefa5852f5407aafb78e7",
+      "goalReviewContextFingerprint": "sha256:56b3321fb3f9f284ccee5a561a4d93ad761e100d2f3995986d3c2137be431082",
+      "finalText": {
+        "titleDe": "Esterreaktionen und ihre Reversibilität deuten",
+        "titleEn": "Interpret ester reactions and their reversibility",
+        "descriptionDe": "Die lernende Person kann Veresterung und saure Esterhydrolyse als reversible Reaktionen deuten, sie von der unter alkalischen Bedingungen praktisch irreversiblen Bildung von Carboxylatsalzen unterscheiden, Reaktionsprodukte bilanzieren und damit Alltagsbeobachtungen zu Estern erklären.",
+        "descriptionEn": "The learner can interpret esterification and acidic ester hydrolysis as reversible reactions, distinguish them from the effectively irreversible formation of carboxylate salts under alkaline conditions, balance reaction products, and use this distinction to explain everyday observations involving esters."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-667bc303-20261006",
+          "recordDigest": "sha256:78cb5b6d5f95aa3cae314ac001e63578f7e6e64fcc822d496f2cda7f08d9eeef"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-667bc303-e9b8-570b-84f1-61cc8bdfd006",
+          "recordDigest": "sha256:f8619587c19898f87e5f471ac22c566646501c2c3aa46beb311c868673b08f87"
+        }
+      },
+      "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Esterreaktionen und ihre Reversibilität deuten. Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Interpret ester reactions and their reversibility. The measured native delta fields are externalReverseRequires, pageFingerprint. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-014",
+      "goalId": "bd36dc58-c93e-5247-9e82-da2f9e4e2bed",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:13e57adc1c2ca4b566ae973c7a9c87111c9ea49f5d395933fabc91652df87ce3",
+      "pageFingerprint": "sha256:319b0607199a402146d148d84b607402710d6f59837bacd47f614c33bed1b60b",
+      "goalReviewContextFingerprint": "sha256:f91941346bfb5b5b86f9dcd9c5795c3518016512c1fd96e43f256e8161c27a42",
+      "finalText": {
+        "titleDe": "Di- und Tricarbonsäuren strukturell beschreiben (LK)",
+        "titleEn": "Describe di- and tricarboxylic acids structurally (LK)",
+        "descriptionDe": "Die lernende Person kann Di- und Tricarbonsäuren anhand mehrerer Carboxylgruppen strukturell beschreiben und geeignete Strukturformeln verwenden.",
+        "descriptionEn": "The learner can structurally describe di- and tricarboxylic acids using multiple carboxyl groups and suitable structural formulas."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-bd36dc58-20261006",
+          "recordDigest": "sha256:2d82bd0cce2cd757f472777bcab28953aef6c2ef049d90c0ff3b8af7257c228e"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-bd36dc58-c93e-5247-9e82-da2f9e4e2bed",
+          "recordDigest": "sha256:431f9a0774b84a6b026fe5745c1ad137765904b39d83b7b3302ae663f92387a2"
+        }
+      },
+      "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Di- und Tricarbonsäuren strukturell beschreiben (LK). Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Describe di- and tricarboxylic acids structurally (LK). The measured native delta fields are externalReverseRequires, pageFingerprint. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-015",
+      "goalId": "4da0839d-ab6d-53c1-ac21-c9872555ae16",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fc624b930c46df30af35588cf5c7b4c756d4aa7b49330b40cadb1fdfe1e62ac6",
+      "pageFingerprint": "sha256:5b1ded2f1a8818aeb384d9d911da31057627ec839dd78db4e9199728a078c1e9",
+      "goalReviewContextFingerprint": "sha256:e649114a307706916ac128d7890ac42acb5fd5d287c4f7077b55fd41b8fbc098",
+      "finalText": {
+        "titleDe": "Alkalische Esterhydrolyse mechanistisch vertiefen (LK)",
+        "titleEn": "Deepen the mechanism of alkaline ester hydrolysis (LK)",
+        "descriptionDe": "Die lernende Person kann Mechanismen der alkalischen Esterhydrolyse mit geeigneten Zwischenstufen und Reaktionsschritten vertiefend deuten.",
+        "descriptionEn": "The learner can interpret mechanisms of alkaline ester hydrolysis in depth using suitable intermediates and reaction steps."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-4da0839d-20261006",
+          "recordDigest": "sha256:c67f164d7d2285e4ede1d46076ea981aa849c9facaae36859bdaee1a13fb3684"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-4da0839d-ab6d-53c1-ac21-c9872555ae16",
+          "recordDigest": "sha256:a23ed60a0656e5d98dff9e91cbf38f2c5760917140b177d8e80f95ea8954af15"
+        }
+      },
+      "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Alkalische Esterhydrolyse mechanistisch vertiefen (LK). Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Deepen the mechanism of alkaline ester hydrolysis (LK). The measured native delta fields are externalReverseRequires, pageFingerprint. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-016",
+      "goalId": "057a6826-f599-53b1-bdd1-5a83037a1494",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7e33723bc3c60c4455255e8b468a844c9af55dc019a31f232b41db1a6ccbc6cd",
+      "pageFingerprint": "sha256:510480d8b6eb81fde1af0abbad7b4558126310ce952fff479cb0103f09aac034",
+      "goalReviewContextFingerprint": "sha256:0019831a5c480f6d004f67ef035c0b237496fbcc6a239ce5e80b7ab9d94a4534",
+      "finalText": {
+        "titleDe": "Carbonsäure-Derivate vergleichen",
+        "titleEn": "Compare carboxylic acid derivatives",
+        "descriptionDe": "Die lernende Person kann die Reaktivität von Carbonsäurechloriden, Carbonsäureanhydriden und Carbonsäureestern bei vergleichbaren nucleophilen Acylsubstitutionen ordnen und die Unterschiede anhand von Carbonylgruppe und Abgangsgruppe begründen.",
+        "descriptionEn": "The learner can rank the reactivity of carboxylic acid chlorides, carboxylic acid anhydrides, and carboxylic esters in comparable nucleophilic acyl substitutions and justify the differences using the carbonyl group and leaving group."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-057a6826-20261006",
+          "recordDigest": "sha256:6b052382c86c37b44c0ed3824c7180129c4b174d94942457783e662a5d32e351"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-057a6826-f599-53b1-bdd1-5a83037a1494",
+          "recordDigest": "sha256:cf90d5c1f94b1db3814e0214dfac1eeb1d3403221dd78a0cdbcfd9ff986e9d49"
+        }
+      },
+      "rationaleDe": "Aktuelle Bindung des bereits unabhängig fachlich bearbeiteten offenen Ziels; fachlicher Nettoabschluss erst nach gültiger D/P/A/M/V-Schnittmenge und Integration. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Carbonsäure-Derivate vergleichen. Der dokumentierte native Deltaumfang ist description, externalReverseRequires, goalFingerprint, pageFingerprint, visualization. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Current binding of an open goal whose scientific revision was independently reviewed; count a new scientific completion only after current D/P/A/M/V intersection and integration. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Compare carboxylic acid derivatives. The measured native delta fields are description, externalReverseRequires, goalFingerprint, pageFingerprint, visualization. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-017",
+      "goalId": "9d97f628-c3ea-5dc0-8723-b17b16297af3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9386dc45590d5f118b2624b916e0d44d8e2d92dc826a47786de662e5bed325e1",
+      "pageFingerprint": "sha256:7dea902353bff4ff3b6a8abcd71a209f066bc00c79615d62a146c480a7471725",
+      "goalReviewContextFingerprint": "sha256:bfb57960a183203475bf9fc09b8279753b3308cc8b85f759f558d5475dcd8f23",
+      "finalText": {
+        "titleDe": "Transesterifizierung planen",
+        "titleEn": "Plan transesterification",
+        "descriptionDe": "Die lernende Person kann Transesterifizierungen planen und Gleichgewichte beurteilen.",
+        "descriptionEn": "The learner can plan transesterifications and assess equilibria."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-9d97f628-20261006",
+          "recordDigest": "sha256:03779388ae9adde3dd1de6673c0bb691f07133af03bf7c816b4e00e4dcc8a81b"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-9d97f628-c3ea-5dc0-8723-b17b16297af3",
+          "recordDigest": "sha256:a3b388b70643e5aa89309d4e20791dc24317554e8c1d546467bfe19f3d19a2f2"
+        }
+      },
+      "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Transesterifizierung planen. Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Plan transesterification. The measured native delta fields are externalReverseRequires, pageFingerprint. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-018",
+      "goalId": "39c85aa0-b01f-56ec-a148-b8009bf650f5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1351af161544eaf7ba77032f78776e12002673d9c37cfb4c15791ed5610c192a",
+      "pageFingerprint": "sha256:003396e7b144122c15055b442de784b15c7dfeaf193f0adace3b8908fce7dc90",
+      "goalReviewContextFingerprint": "sha256:a1daa8b4a51486c40147df180c20af6ef80eace141a6371482847c8d9e6db5b5",
+      "finalText": {
+        "titleDe": "Ringbildung und Lactone",
+        "titleEn": "Ring formation and lactones",
+        "descriptionDe": "Die lernende Person kann die intramolekulare Esterbildung aus vorgegebenen Hydroxycarbonsäuren anhand von Strukturformeln erklären und Bildungstendenz sowie relative Stabilität der entstehenden Lactone unter angegebenen Bedingungen anhand von Ringstruktur und Vergleichsdaten begründen.",
+        "descriptionEn": "The learner can explain intramolecular ester formation from specified hydroxycarboxylic acids using structural formulas and justify the formation tendency and relative stability of the resulting lactones under stated conditions using ring structure and comparative data."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-39c85aa0-20261006",
+          "recordDigest": "sha256:9aa0990567e5cdeb96b43c57087bf755134d9d5c173cf69859aeaf3f292444b8"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-39c85aa0-b01f-56ec-a148-b8009bf650f5",
+          "recordDigest": "sha256:ae35cd6a75fa0e1d3454e4abdd707f12dcb25221f2b0e7538f109843057417f0"
+        }
+      },
+      "rationaleDe": "Aktuelle Bindung des bereits unabhängig fachlich bearbeiteten offenen Ziels; fachlicher Nettoabschluss erst nach gültiger D/P/A/M/V-Schnittmenge und Integration. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Ringbildung und Lactone. Der dokumentierte native Deltaumfang ist description, externalReverseRequires, goalFingerprint, pageFingerprint, visualization. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Current binding of an open goal whose scientific revision was independently reviewed; count a new scientific completion only after current D/P/A/M/V intersection and integration. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Ring formation and lactones. The measured native delta fields are description, externalReverseRequires, goalFingerprint, pageFingerprint, visualization. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-019",
+      "goalId": "6765f741-42a6-55c5-a218-81b883b1f5ae",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bbaa4abd92d234f414439e96203338dc3dc7ab71a3ac12dec4075c88c63f443a",
+      "pageFingerprint": "sha256:27448c3617f41794ba1b6a3b15f28dd1c7b348068d53dcf9d935de4645c76f69",
+      "goalReviewContextFingerprint": "sha256:b776e4c03e9dcf6f7b4a6cdead50700988776f99102e108cdf19f329ad7adbc0",
+      "finalText": {
+        "titleDe": "Seifen herstellen",
+        "titleEn": "Prepare soaps",
+        "descriptionDe": "Die lernende Person kann die alkalische Hydrolyse von Fetten zur Herstellung von Seife durchführen, die Bildung von Glycerin und Fettsäuresalzen anhand der Esterstruktur erklären und die Seife durch Aussalzen von der wässrigen Phase trennen.",
+        "descriptionEn": "The learner can carry out the alkaline hydrolysis of fats to prepare soap, explain the formation of glycerol and fatty acid salts using the ester structure, and separate the soap from the aqueous phase by salting out."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-6765f741-20261006",
+          "recordDigest": "sha256:6787e37cc5594ccee23a50774022c924daa715b837c9dc525645a763800f7c88"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-6765f741-42a6-55c5-a218-81b883b1f5ae",
+          "recordDigest": "sha256:7759241813b825075fd069079d61d5d6cb6a9ccbac6a9b21dc41cd0ee1a6a780"
+        }
+      },
+      "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Seifen herstellen. Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Prepare soaps. The measured native delta fields are externalReverseRequires, pageFingerprint. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    },
+    {
+      "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-020",
+      "goalId": "6966df95-f125-5ecc-af8e-0442545d9f17",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8b8e10c8986185b84c28ed8f2287a62e3f0fb894dd9701e83a02702df90969ab",
+      "pageFingerprint": "sha256:29f40b06589796512a90ea64f4a6970f0cc823be5f1b8e61fff8010fa9ccfbea",
+      "goalReviewContextFingerprint": "sha256:03c53eccb4f5908fc2a2e433b233d480333bae84b4773110fa77909fdf24c3a0",
+      "finalText": {
+        "titleDe": "Micellenbildung deuten",
+        "titleEn": "Interpret micelle formation",
+        "descriptionDe": "Die lernende Person kann aus der amphiphilen Struktur von Seifen ihre Anordnung an Grenzflächen und in Micellen, ihre Emulgatorwirkung und die Verringerung der Oberflächenspannung von Wasser erklären.",
+        "descriptionEn": "The learner can use the amphiphilic structure of soaps to explain their arrangement at interfaces and in micelles, their emulsifying action, and the reduction of the surface tension of water."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final378-current-d-a-6966df95-20261006",
+          "recordDigest": "sha256:1e2cfd5fef9d8e4c0550a12bf92927cca5632e99019b8d90a7eac1f67913c91d"
+        },
+        "second": {
+          "recordId": "chemie-current378-native-d-b-002-6966df95-f125-5ecc-af8e-0442545d9f17",
+          "recordDigest": "sha256:6c196610e2c2cf003c80c475de50b02754fa2b105ade248f4ffbb057e9d8500b"
+        }
+      },
+      "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Micellenbildung deuten. Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint, reverseRequires. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+      "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Interpret micelle formation. The measured native delta fields are externalReverseRequires, pageFingerprint, reverseRequires. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence."
+    }
+  ],
+  "manifestFingerprint": "sha256:40bc5a003840b2b96dfbabf4430bf3fce784248fa01e2ba359825a6d669b7772"
+}

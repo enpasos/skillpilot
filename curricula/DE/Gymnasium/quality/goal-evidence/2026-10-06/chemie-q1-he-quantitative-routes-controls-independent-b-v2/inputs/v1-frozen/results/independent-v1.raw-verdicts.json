@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "documentType": "independent-chemistry-route-task-raw-review",
+  "reviewer": "independent-b",
+  "completedAtUTC": "2026-10-06T03:12:27.626451+00:00",
+  "scope": "Frozen v1 author candidate versus retained407 only. Fresh full reading of both tasks/solutions/rubrics, source p40, all34 current affected JSON page triples, own compiler before/after. No current native D campaign/schema/PDF prepared; no native D approval.",
+  "overallRawVerdict": "BLOCK",
+  "independence": {
+    "otherChemistryIndependentConclusionsRead": false,
+    "authoringPerformed": false,
+    "unchangedEightSciencePImageReviewsRestarted": false,
+    "retained407ExactFingerprintIntegrityOnlyAndStructuralInputsUsed": true,
+    "v2InputsReadBeforeV1Freeze": false
+  },
+  "taskReviews": [
+    {
+      "goalId": "4cb74d76-99f1-5264-b1e3-448cda47b005",
+      "inputSHA256": "1b6dd93fd28ccf3549e55c7d79df10696fd68d28804553713b0f547ceb369421",
+      "rawVerdict": "KEEP",
+      "maxPoints": 24,
+      "passingPoints": 24,
+      "freshFullTaskSolutionRubricRead": true,
+      "reasons": [
+        "Both para-hydroxybenzoate ester formulas are correct; polar OH/ester versus larger hydrophobic propyl residue correctly explains supplied relative solubilities.",
+        "All three control and test counts are compared at the same stated pH/temperature/time; different analyte concentrations preclude intrinsic-potency generalization.",
+        "M0.15% is below cold minimum0.25% and internal maximum0.20%; explicit linear interpolation supports the full10–22 interval only in this simulated case. P0.03% fails the0.02% cold-solubility requirement even though all22C counts and its0.05% internal maximum pass.",
+        "The full24/24 rubric requires the contrary P finding, all three decision criteria, material limits and bounded choice. Two-point subdivisions sum consistently.",
+        "Dated invented recipe conditions are expressly not real limits; simulated counts and actions are no real trial, product, human-use or legal/safety approval."
+      ],
+      "limitations": [
+        "No empirical learner/real laboratory evidence. Candidate needs_review persists.",
+        "Internal candidate review annotations are not evaluated as final published learner copy."
+      ]
+    },
+    {
+      "goalId": "171b47e2-2c53-50f2-a145-a26b896fd73f",
+      "inputSHA256": "d8b3b21f616431d6e4d667a807c494911cc80238a2aaab014ed76b6584a32f5c",
+      "rawVerdict": "REVISE",
+      "maxPoints": 24,
+      "passingPoints": 24,
+      "freshFullTaskSolutionRubricRead": true,
+      "scienceAndCalculationRawVerdict": "KEEP",
+      "controlCriteriaRawVerdict": "REVISE",
+      "reasons": [
+        "Given 1:1 ascorbic/iodine equation balances atoms and charge. A phenolic ester alone does not justify sharing that stoichiometry; assigned HPLC identity is expressly an assumption.",
+        "Correct mean concentrations are2.6418g/L ascorbic acid after one1.00mL blank subtraction and20-fold dilution, and2000mg/L methylparaben after subtracting intercept100 and100-fold dilution. All replicates fall within the specified HPLC range.",
+        "Each analyte receives independent method, workflow, controls, correction/dilution and method limitation. Rubric subdivisions sum6+6+8+4=24 and require both analytes.",
+        "Task2 asks use of all control findings and response to failed controls, yet v1 supplies99% reference and100% recovery without declared case acceptance intervals. The solution calls the controls consistent without an explicit criterion;99% cannot be independently classed pass or fail."
+      ],
+      "findingIds": [
+        "B-V1-CONTROL-ACCEPTANCE-01"
+      ],
+      "requiredRemedy": "Add explicitly fictional acceptance criteria, including tolerances/intervals for each positive reference, spike/recovery and matrix/background control. State which findings pass those supplied criteria and withhold valid content claims after failure until the valid simulated workflow is restored. Do not infer universal method validation.",
+      "noRealLaboratoryOrHumanEvidenceClaim": true
+    }
+  ],
+  "routeRawVerdict": "BLOCK planned active BY target uptake of new HE paraben-use performance despite correct inactive407-to479 route arithmetic",
+  "affected34RawContextVerdicts": "KEEP x34; JSON text/context inputs only",
+  "sourceScopeReceipt": "results/current-source-scope.raw-review.json",
+  "targetedChecksReceipt": "results/targeted-checks.actual.json",
+  "nativeCompilerReceipt": "results/native-scope.actual.json",
+  "nativeBeforeAfterReceipt": "results/native-before-after.actual.json",
+  "current104StrictWholeGoalsExact": true,
+  "remaining70PagesExact": true,
+  "newScientificCompletions": 0,
+  "restoredBindings": 0,
+  "nativeDFreigabe": false,
+  "fullCQRRun": false,
+  "activeWrites": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "scopeFindingIds": [
+    "B-V1-NEW-PARABEN-BY-TARGET-02"
+  ],
+  "correctedComparisonBoundary": "0d59 was new in retained407 and is absent from active376; exact407-to479 preserves an inactive candidate only. Existing inactive BY inheritance does not authorize new active target performance."
+}

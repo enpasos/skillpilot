@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik B059 – Vier aktuelle Bild- und Kontextbindungen</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Physik B059 – Vier aktuelle Bild- und Kontextbindungen</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>4 atomare Lernziele</dt><dd>9 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:57646eb50f6db2187ed18a333059ff3dd2e469a3c8f6e7b71003990c44c60444</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-physics-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-6747d2e0bbbbd4b4358ff0fa" aria-label="Physik"><a href="#goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2"><span class="toc-entry-label">Physik</span></a></h2>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-physics-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-546e47201fdf10d52f5a936c" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-206fe51d-cc78-5422-b139-32cc97eb1c37"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-q4" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-2d62da14bfd408e36bddc43b" aria-label="Q4 Struktur von Materie, Raum und Zeit"><a href="#goal-206fe51d-cc78-5422-b139-32cc97eb1c37"><span class="toc-entry-label">Q4&#160;<wbr>Struktur&#160;<wbr>von&#160;<wbr>Materie,&#160;<wbr>Raum&#160;<wbr>und&#160;<wbr>Zeit</span></a></h4>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-b59cb1ef-05c2-5b09-abb3-8b6903ca0fd6" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-a32e16a8fc1b9d4f750c94e1" aria-label="Astrophysik"><a href="#goal-206fe51d-cc78-5422-b139-32cc97eb1c37"><span class="toc-entry-label">Astrophysik</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-9b47a758-1b5d-5906-84c9-8621050d5aa5" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-06de553623f83da7bc9c857a" aria-label="Sternentstehung und Sternentwicklung"><a href="#goal-206fe51d-cc78-5422-b139-32cc97eb1c37"><span class="toc-entry-label">Sternentstehung&#160;<wbr>und&#160;<wbr>Sternentwicklung</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-bundesland-supplements" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-dfefd5ef67d7bfcb62fbc0f8" aria-label="Bundeslandspezifische Ergänzungen"><a href="#goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2"><span class="toc-entry-label">Bundeslandspezifische&#160;<wbr>Ergänzungen</span></a></h3>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:goal-book-supplement-seki" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-e847a07c08f5ec5d127ed63a" aria-label="Sekundarstufe I"><a href="#goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>I</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:goal-book-supplement-SekI-Atom--und-Kernphysik" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-1d5adfe3a00aa5506fb8f4b5" aria-label="Atom- und Kernphysik"><a href="#goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2"><span class="toc-entry-label">Atom-&#160;<wbr>und&#160;<wbr>Kernphysik</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:physics-b034-transistor" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-867ed9cb1a11a254728d37d1" aria-label="Transistorschaltungen"><a href="#goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7"><span class="toc-entry-label">Transistorschaltungen</span></a></h2>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2" data-goal-id="7d78da7f-6af5-440a-9d6b-6cab4bee8dd2" data-page-number="1" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-seki structure:goal-book-supplement-SekI-Atom--und-Kernphysik" aria-labelledby="goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-title"><a class="goal-self-link" href="#goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2">Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>7d78da7f-6af5-440a-9d6b-6cab4bee8dd2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-e847a07c08f5ec5d127ed63a">Sekundarstufe I</a></li><li><a href="#chapter-1d5adfe3a00aa5506fb8f4b5">Atom- und Kernphysik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f412bfcd05c15149981d33a08fbd2298b68c323618b2a7a9f62e1e670997b580" data-rendered-digest="sha256:3e3d9cfb22519ec44fac671cca8cb04f48ac15b90a59d0e0de099171c468939e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2.png" alt="Schematischer Alpha-Zerfall ohne zusätzliche Strahlung: Ein Mutterkern mit A Nukleonen ergibt einen Tochterkern mit A minus 4 Nukleonen und ein Alpha-Teilchen aus vier Nukleonen. Die Nukleonen bleiben erhalten. Verglichen werden die Ruhemasse des Mutterkerns und die vollständige Summe der Ruhemassen von Tochterkern und Alpha-Teilchen. Die kleinere Produktsumme entspricht frei werdender Bewegungsenergie der Produkte gemäß ΔE = (m_vor − m_nach) · c². Die Gesamtenergie bleibt erhalten; die Größen sind nicht maßstäblich.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-description-heading">
+        <p class="section-heading" id="goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Energiefreisetzung beim Alpha-Zerfall und bei einfachen Kernreaktionen qualitativ aus der Differenz der Ruhemassensummen vor und nach dem Prozess mithilfe der Masse-Energie-Äquivalenz erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. I · G9</li><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>MV, ST:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-requires-heading">
+          <p class="section-heading" id="goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-reverse-heading">
+          <p class="section-heading" id="goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-1593d95c-2aac-504c-8527-37cb61877da9" rel="noreferrer noopener"><span>Alpha-, Beta- und Gammastrahlung unterscheiden</span> <code>1593d95c-2aac-504c-8527-37cb61877da9</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a77138b8-3924-4a17-a22e-d2625ab19bd6" rel="noreferrer noopener"><span>Bayern Ph10.4-Aufgabe zur Energiefreisetzung bei Kernreaktionen lösen</span> <code>a77138b8-3924-4a17-a22e-d2625ab19bd6</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a77e53d5-246d-52df-86a2-d14f7a08fb77" rel="noreferrer noopener"><span>Prüfungsaufgabe: Kernreaktionen und Energieoptionen bewerten</span> <code>a77e53d5-246d-52df-86a2-d14f7a08fb77</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5492f0e0-cbae-574e-a853-182616205ed3" rel="noreferrer noopener"><span>Kernreaktionen und Q-Werte</span> <code>5492f0e0-cbae-574e-a853-182616205ed3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-76bcbdcb-3003-5e6a-952e-aa36eb8f97ee" rel="noreferrer noopener"><span>α-Zerfall durch Tunneleffekt</span> <code>76bcbdcb-3003-5e6a-952e-aa36eb8f97ee</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7e719cc2-0866-5267-a252-e7e7ac0d03f1" rel="noreferrer noopener"><span>Kernenergieoptionen mit physikalischen Kriterien bewerten</span> <code>7e719cc2-0866-5267-a252-e7e7ac0d03f1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-68034218-8f3e-5f7f-ae4e-ed057dd4e44e" rel="noreferrer noopener"><span>Die Funktion eines thermischen Kernreaktors erklären</span> <code>68034218-8f3e-5f7f-ae4e-ed057dd4e44e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 4</span>
+      <span>Buch-Digest <code>sha256:57646eb50f6db2187ed18a333059ff3dd2e469a3c8f6e7b71003990c44c60444</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d51d9b4ba8f2a9aa8a69c371c0f8a4f35521aeaea70dbc51edd0be1f021df598</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-059-current-image-and-context-4-v1-20260914&amp;edition=curricular-atomic-v1&amp;goalId=7d78da7f-6af5-440a-9d6b-6cab4bee8dd2&amp;goalFingerprint=sha256%3Ad51d9b4ba8f2a9aa8a69c371c0f8a4f35521aeaea70dbc51edd0be1f021df598&amp;pageFingerprint=sha256%3Acc7508ee2ffda7067c7b085a449cbecfb72f75036bcff6259734aa1a22efca42&amp;bookDigest=sha256%3A57646eb50f6db2187ed18a333059ff3dd2e469a3c8f6e7b71003990c44c60444&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7" data-goal-id="7d4d6a39-0c78-5fb0-b7bf-182ed00972f7" data-page-number="2" data-chapter-ids="structure:physics-b034-transistor" aria-labelledby="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-title"><a class="goal-self-link" href="#goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7">Einen bipolaren Transistor als Schalter funktional untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>7d4d6a39-0c78-5fb0-b7bf-182ed00972f7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-867ed9cb1a11a254728d37d1">Transistorschaltungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:81a177a4e4ee2ecf2befe16093416576c8b5dbe05b9b9e31dba2c42f39304db7" data-rendered-digest="sha256:f7746bdf2c91e074565b8e3c99a5fd1839df2f70f314f542b86d230f33516d76" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/7d4d6a39-0c78-5fb0-b7bf-182ed00972f7/7d4d6a39-0c78-5fb0-b7bf-182ed00972f7.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Einen bipolaren Transistor als Schalter funktional untersuchen&quot;. Die lernende Person kann an einem vorgegebenen npn- oder pnp-Transistoraufbau die Funktion von Basis, Kollektor und Emitter mithilfe eines einfachen Halbleitermodells erklären und daraus das Ein- und Ausschalten des Laststromkreises begründen; wenn die Anwendung als Schülerexperiment vorgesehen ist, kann sie den Aufbau nach Plan herstellen und die Schaltwirkung selbst untersuchen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-description-heading">
+        <p class="section-heading" id="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an einem vorgegebenen npn- oder pnp-Transistoraufbau die Funktion von Basis, Kollektor und Emitter mithilfe eines einfachen Halbleitermodells erklären und daraus das Ein- und Ausschalten des Laststromkreises begründen; wenn die Anwendung als Schülerexperiment vorgesehen ist, kann sie den Aufbau nach Plan herstellen und die Schaltwirkung selbst untersuchen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. I · G9</li><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>RP:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK; Sek. II · G9 · GK; + 1 weitere Kombinationen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-requires-heading">
+          <p class="section-heading" id="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-reverse-heading">
+          <p class="section-heading" id="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-2084b7d4-300d-5fa0-8b8d-c480c40f853e" rel="noreferrer noopener"><span>Sperrschicht und Polung am p-n-Übergang erklären</span> <code>2084b7d4-300d-5fa0-8b8d-c480c40f853e</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7d4d6a39-0c78-5fb0-b7bf-182ed00972f7-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-88f27aab-8724-5a4d-8543-e49ebcb54b8e" rel="noreferrer noopener"><span>Prüfungsaufgabe: Einen Transistor als Schalter deuten</span> <code>88f27aab-8724-5a4d-8543-e49ebcb54b8e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-af50bb9a-fd7b-50f5-9698-48c4efe99032" rel="noreferrer noopener"><span>Transistorverstärker analysieren</span> <code>af50bb9a-fd7b-50f5-9698-48c4efe99032</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-c2af45aa-e3fc-5119-9159-c5a260b4135a" rel="noreferrer noopener"><span>Eine bistabile Transistor-Flipflop-Schaltung deuten</span> <code>c2af45aa-e3fc-5119-9159-c5a260b4135a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 4</span>
+      <span>Buch-Digest <code>sha256:57646eb50f6db2187ed18a333059ff3dd2e469a3c8f6e7b71003990c44c60444</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4628d1ba03118f8e6877f5b24c5f90f77aff7505b269259ede83344ce2bc5643</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-059-current-image-and-context-4-v1-20260914&amp;edition=curricular-atomic-v1&amp;goalId=7d4d6a39-0c78-5fb0-b7bf-182ed00972f7&amp;goalFingerprint=sha256%3A4628d1ba03118f8e6877f5b24c5f90f77aff7505b269259ede83344ce2bc5643&amp;pageFingerprint=sha256%3A8902bfed19af0fafba32caebcbc5ce436b28ceab99f13419ffe1c565922b20be&amp;bookDigest=sha256%3A57646eb50f6db2187ed18a333059ff3dd2e469a3c8f6e7b71003990c44c60444&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-206fe51d-cc78-5422-b139-32cc97eb1c37" data-goal-id="206fe51d-cc78-5422-b139-32cc97eb1c37" data-page-number="3" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-b59cb1ef-05c2-5b09-abb3-8b6903ca0fd6 structure:canonical-goal-9b47a758-1b5d-5906-84c9-8621050d5aa5" aria-labelledby="goal-206fe51d-cc78-5422-b139-32cc97eb1c37-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-206fe51d-cc78-5422-b139-32cc97eb1c37-title"><a class="goal-self-link" href="#goal-206fe51d-cc78-5422-b139-32cc97eb1c37">Hertzsprung-Russell-Diagramm (HRD)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>206fe51d-cc78-5422-b139-32cc97eb1c37</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-a32e16a8fc1b9d4f750c94e1">Astrophysik</a></li><li><a href="#chapter-06de553623f83da7bc9c857a">Sternentstehung und Sternentwicklung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a1c39b453dad8a0588f37743933e61678ff6d500622039523207f9884d9de009" data-rendered-digest="sha256:e57b1d2f6fb8cb328263820f80c3b59474a9c5482630df9486ebfa4df84f4089" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/206fe51d-cc78-5422-b139-32cc97eb1c37/206fe51d-cc78-5422-b139-32cc97eb1c37.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Hertzsprung-Russell-Diagramm (HRD)&quot;. Zustandsdiagramm der Sterne (Leuchtkraft vs. Temperatur) zur Einordnung der Sternentwicklung (Hauptreihe, Rote Riesen, Weiße Zwerge).">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-206fe51d-cc78-5422-b139-32cc97eb1c37-description-heading">
+        <p class="section-heading" id="goal-206fe51d-cc78-5422-b139-32cc97eb1c37-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Sterne anhand ihrer Leuchtkraft und Oberflächentemperatur im Hertzsprung-Russell-Diagramm einordnen und die Bereiche Hauptreihe, Rote Riesen und Weiße Zwerge im Zusammenhang mit der Sternentwicklung deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-206fe51d-cc78-5422-b139-32cc97eb1c37" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-206fe51d-cc78-5422-b139-32cc97eb1c37-requires-heading">
+          <p class="section-heading" id="goal-206fe51d-cc78-5422-b139-32cc97eb1c37-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-206fe51d-cc78-5422-b139-32cc97eb1c37-reverse-heading">
+          <p class="section-heading" id="goal-206fe51d-cc78-5422-b139-32cc97eb1c37-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-206fe51d-cc78-5422-b139-32cc97eb1c37-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-206fe51d-cc78-5422-b139-32cc97eb1c37-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93" rel="noreferrer noopener"><span>Aufbau des Sonnensystems beschreiben</span> <code>af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-206fe51d-cc78-5422-b139-32cc97eb1c37-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-206fe51d-cc78-5422-b139-32cc97eb1c37-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6f896466-e0ec-5f8d-82ad-2890433c82ba" rel="noreferrer noopener"><span>Sterntypen und Entwicklung</span> <code>6f896466-e0ec-5f8d-82ad-2890433c82ba</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3a4b2f86-5c59-5429-8fb4-75d9b2589cb5" rel="noreferrer noopener"><span>Sternentfernungen mit dem HRD abschätzen</span> <code>3a4b2f86-5c59-5429-8fb4-75d9b2589cb5</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6a73cacc-e86d-5248-a180-fd3da8454b0f" rel="noreferrer noopener"><span>Sternradien aus HRD-Daten abschätzen</span> <code>6a73cacc-e86d-5248-a180-fd3da8454b0f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 4</span>
+      <span>Buch-Digest <code>sha256:57646eb50f6db2187ed18a333059ff3dd2e469a3c8f6e7b71003990c44c60444</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3bc6b685e1c98a91258200891411cc8711b259a090c3c21ab98ee9b96db294b2</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-059-current-image-and-context-4-v1-20260914&amp;edition=curricular-atomic-v1&amp;goalId=206fe51d-cc78-5422-b139-32cc97eb1c37&amp;goalFingerprint=sha256%3A3bc6b685e1c98a91258200891411cc8711b259a090c3c21ab98ee9b96db294b2&amp;pageFingerprint=sha256%3A6ee3415287eb540737055f6a1303659af8403ca969400729a07488639d424e43&amp;bookDigest=sha256%3A57646eb50f6db2187ed18a333059ff3dd2e469a3c8f6e7b71003990c44c60444&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61" data-goal-id="e2014db8-c97f-5ce1-82c5-2a42741f4a61" data-page-number="4" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-b59cb1ef-05c2-5b09-abb3-8b6903ca0fd6" aria-labelledby="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-title"><a class="goal-self-link" href="#goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61">Exoplanetensuche und Habitabilität quellenkritisch beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e2014db8-c97f-5ce1-82c5-2a42741f4a61</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-a32e16a8fc1b9d4f750c94e1">Astrophysik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:63b4b3ae5e2b18dba5a4998fe42810bdbe2411eb44925eebd57031e0e2d19a6d" data-rendered-digest="sha256:a0c77dde082b395c79271408516fe600012a18561dd4a515746d75daa2576368" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/e2014db8-c97f-5ce1-82c5-2a42741f4a61/e2014db8-c97f-5ce1-82c5-2a42741f4a61.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Exoplanetensuche und Habitabilität quellenkritisch beurteilen&quot;. Die lernende Person kann Aussagen zur Habitabilität von Exoplaneten beurteilen, indem sie Nachweismethoden vergleicht, Lebensbedingungen anhand physikalischer Kriterien mit denen der Erde abgleicht und digitale Quellen quellenkritisch auswertet.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-description-heading">
+        <p class="section-heading" id="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Aussagen zur Habitabilität von Exoplaneten beurteilen, indem sie Nachweismethoden vergleicht, Lebensbedingungen anhand physikalischer Kriterien mit denen der Erde abgleicht und digitale Quellen quellenkritisch auswertet.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-requires-heading">
+          <p class="section-heading" id="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-reverse-heading">
+          <p class="section-heading" id="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e2014db8-c97f-5ce1-82c5-2a42741f4a61-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-49bb609a-bfb7-5391-9120-f5fc737efb9a" rel="noreferrer noopener"><span>Exoplanetenkandidaten mit der Transitmethode erklären</span> <code>49bb609a-bfb7-5391-9120-f5fc737efb9a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6dca3b0a-c872-543b-808f-97e855f5fafd" rel="noreferrer noopener"><span>Exoplanetenkandidaten mit Stern-Radialbewegungen erklären</span> <code>6dca3b0a-c872-543b-808f-97e855f5fafd</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e28381b4-50ef-5cac-bfa4-b7c8e03aef82" rel="noreferrer noopener"><span>Planetenatmosphaeren mit Spektren untersuchen</span> <code>e28381b4-50ef-5cac-bfa4-b7c8e03aef82</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 4</span>
+      <span>Buch-Digest <code>sha256:57646eb50f6db2187ed18a333059ff3dd2e469a3c8f6e7b71003990c44c60444</code></span>
+      <span>Ziel-Fingerprint <code>sha256:46c5b55fa6d96711c91f8e5362c7c973742ec9e01ed33956620c9f66e26c22ba</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-059-current-image-and-context-4-v1-20260914&amp;edition=curricular-atomic-v1&amp;goalId=e2014db8-c97f-5ce1-82c5-2a42741f4a61&amp;goalFingerprint=sha256%3A46c5b55fa6d96711c91f8e5362c7c973742ec9e01ed33956620c9f66e26c22ba&amp;pageFingerprint=sha256%3A7e91c2bc271192202dfeea6c039b3e4687f7bca98c77e65f3e1fe5aa2a7ecefe&amp;bookDigest=sha256%3A57646eb50f6db2187ed18a333059ff3dd2e469a3c8f6e7b71003990c44c60444&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

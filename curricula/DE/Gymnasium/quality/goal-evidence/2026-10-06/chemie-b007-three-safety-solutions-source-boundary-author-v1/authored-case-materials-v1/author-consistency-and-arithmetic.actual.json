@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T05:01:34.276931+00:00",
+  "author": "Codex B007 materials author; no independent review by this author",
+  "recordStatus": "ai_candidate",
+  "validationStatus": "needs_human_review",
+  "humanApproval": false,
+  "humanTrial": false,
+  "activeWrites": false,
+  "inputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/three-current-goals-and-source-inputs.actual.json",
+      "sha256": "5fd3b2e756e4951a1a78b72ac293a5f62d06431549d5a9d859f92a44e0877fe5",
+      "bytes": 1857574
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/seven-routines.de-en.author-candidate.json",
+      "sha256": "c05e2a3abce898384b19074f7d991c7f634ec875e750001df105e36a83793590",
+      "bytes": 19368
+    }
+  ],
+  "licenseExpression": "Apache-2.0",
+  "licenseScope": "Technical author receipt; referenced educational text retains CC-BY-4.0 and third-party sources retain separate rights.",
+  "attribution": "SkillPilot, enpasos - Enterprise Patterns & Solutions GmbH; AI-authored synthetic candidate, 2026-10-06.",
+  "kind": "Author-only limited consistency and arithmetic receipt",
+  "caseCount": 14,
+  "casesPerRoutine": {
+    "label": 2,
+    "handling": 2,
+    "disposal": 2,
+    "preparation": 2,
+    "solubility": 2,
+    "mass_fraction": 2,
+    "volume_fraction": 2
+  },
+  "primaryCardCount": 2,
+  "checkedCalculations": [
+    {
+      "caseLocalKey": "solubility-clear-saturated-countercase",
+      "operation": "24*40/100",
+      "result": 9.6,
+      "unit": "g dissolved T maximum",
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "solubility-clear-saturated-countercase",
+      "operation": "9.6-7.2",
+      "result": 2.4,
+      "unit": "g additional T",
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "solubility-clear-saturated-countercase",
+      "operation": "24*80/100",
+      "result": 19.2,
+      "unit": "g maximum in transfer",
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "solubility-clear-saturated-countercase",
+      "operation": "19.2-9.6",
+      "result": 9.6,
+      "unit": "g transfer additional",
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "solubility-residue-water-and-temperature",
+      "operation": "30*80/100",
+      "result": 24,
+      "unit": "g initially dissolved",
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "solubility-residue-water-and-temperature",
+      "operation": "32-24",
+      "result": 8,
+      "unit": "g initial residue",
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "solubility-residue-water-and-temperature",
+      "operation": "30*(80+40)/100",
+      "result": 36,
+      "unit": "g maximum after water addition",
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "solubility-residue-water-and-temperature",
+      "operation": "36-32",
+      "result": 4,
+      "unit": "g additional capacity after A",
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "mass-fraction-total-mass-and-dilution",
+      "operation": "12/(12+108)",
+      "exactResult": "1/10",
+      "percent": 10,
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "mass-fraction-total-mass-and-dilution",
+      "operation": "12/108",
+      "exactResult": "1/9",
+      "percentRounded1dp": 11.1,
+      "interpretation": "solute/solvent ratio, not mass fraction",
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "mass-fraction-total-mass-and-dilution",
+      "operation": "12/(12+108+30)",
+      "exactResult": "2/25",
+      "percent": 8,
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "mass-fraction-total-mass-and-dilution",
+      "operation": "24/(24+216)",
+      "exactResult": "1/10",
+      "percent": 10,
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "mass-fraction-documented-solvent-loss",
+      "operation": "25/(25+175)",
+      "exactResult": "1/8",
+      "percent": 12.5,
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "mass-fraction-documented-solvent-loss",
+      "operation": "25/(25+175-25)",
+      "exactResult": "1/7",
+      "percentRounded1dp": 14.3,
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "mass-fraction-documented-solvent-loss",
+      "operation": "25/(25+175+50)",
+      "exactResult": "1/10",
+      "percent": 10,
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "volume-fraction-input-sum-and-scaling",
+      "operation": "25/(25+75)",
+      "exactResult": "1/4",
+      "percent": 25,
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "volume-fraction-input-sum-and-scaling",
+      "operation": "10/(10+30)",
+      "exactResult": "1/4",
+      "percent": 25,
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "volume-fraction-input-sum-and-scaling",
+      "operation": "20/(20+30)",
+      "exactResult": "2/5",
+      "percent": 40,
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "volume-fraction-contraction-no-denominator-swap",
+      "operation": "40/(40+60)",
+      "exactResult": "2/5",
+      "percent": 40,
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "volume-fraction-contraction-no-denominator-swap",
+      "operation": "40/96",
+      "exactResult": "5/12",
+      "percentRounded1dp": 41.7,
+      "interpretation": "different ratio to final volume, not requested volume fraction",
+      "authorCalculationCheck": "passed"
+    },
+    {
+      "caseLocalKey": "volume-fraction-contraction-no-denominator-swap",
+      "operation": "30/(30+70)",
+      "exactResult": "3/10",
+      "percent": 30,
+      "authorCalculationCheck": "passed"
+    }
+  ],
+  "allCasesBilingual": true,
+  "allCasesHaveConcreteMaterialTaskAnswerCriteriaAndTransfer": true,
+  "preparationRequiresExecutionOrBoundActionLog": true,
+  "simulatorImplementation": "specification only; no app or actual learner execution claimed",
+  "sourceCoverageApproval": false,
+  "nativeGateApproval": false,
+  "independentReviewApproval": false,
+  "newIdsAssigned": false,
+  "existingCardsModified": false
+}

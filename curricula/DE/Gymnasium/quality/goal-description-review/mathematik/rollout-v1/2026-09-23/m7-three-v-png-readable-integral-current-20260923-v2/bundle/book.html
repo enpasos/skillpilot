@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Mathematik M7: drei mobile PNGs mit lesbarer Integraldeutung</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Mathematik M7: drei mobile PNGs mit lesbarer Integraldeutung</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>3 atomare Lernziele</dt><dd>11 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:e8b4f2d5358f9f34b008aa85184a0d3d77067aefe2e554c682d04ae17e844a6d</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-math-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-71894e7ef4af5f94dc6093d2" aria-label="Mathematik"><a href="#goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7"><span class="toc-entry-label">Mathematik</span></a></h2>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-structure:sek1" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-bb6ea7db6205d9bb2743e598" aria-label="Sekundarstufe I"><a href="#goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>I</span></a></h3>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:j8" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-4d69e0dfe1f6609dc9bb4822" aria-label="Jahrgangsstufe 8"><a href="#goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7"><span class="toc-entry-label">Jahrgangsstufe&#160;<wbr>8</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-612dfc95-95cb-44df-80ae-d8446199cb0d" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-3d70b60600044b6e16443192" aria-label="Gebrochen-rationale Funktionen in einfachen Fällen beschreiben"><a href="#goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7"><span class="toc-entry-label">Gebrochen-rationale&#160;<wbr>Funktionen&#160;<wbr>in&#160;<wbr>einfachen&#160;<wbr>Fällen&#160;<wbr>beschreiben</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-19a6bc8e-9851-4cf1-adf3-6898e08eb567" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-97ccd62d6801f282a63c7051" aria-label="Graphen, Asymptoten und Parameter einfacher Hyperbeln"><a href="#goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7"><span class="toc-entry-label">Graphen,&#160;<wbr>Asymptoten&#160;<wbr>und&#160;<wbr>Parameter&#160;<wbr>einfacher&#160;<wbr>Hyperbeln</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-math-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-3fb62939875ba85ae30720f7" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-8c32d941-b51c-5663-951c-a610f8900f76"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:stochastics" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-70a4476054e150249e0723e1" aria-label="Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik"><a href="#goal-8c32d941-b51c-5663-951c-a610f8900f76"><span class="toc-entry-label">Wahrscheinlichkeitsverteilungen,&#160;<wbr>Hypothesentests&#160;<wbr>und&#160;<wbr>Statistik</span></a></h4>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-e5492767714e2d6aea468558" aria-label="Wahrscheinlichkeiten und Verteilungen"><a href="#goal-8c32d941-b51c-5663-951c-a610f8900f76"><span class="toc-entry-label">Wahrscheinlichkeiten&#160;<wbr>und&#160;<wbr>Verteilungen</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-67ef9787-d540-5f30-9995-f1f9c39a1a45" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-4cf4746463dc4cb297d1ef35" aria-label="Wahrscheinlichkeitsverteilungen (Überblick)"><a href="#goal-8c32d941-b51c-5663-951c-a610f8900f76"><span class="toc-entry-label">Wahrscheinlichkeitsverteilungen&#160;<wbr>(Überblick)</span></a></h6>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:5" data-chapter-id="structure:canonical-goal-c92133c6-d5de-4902-936c-321915cf21e9" data-chapter-depth="5">
+          <h6 class="toc-entry-heading" id="chapter-1fa3bb907e3d4612c3268116" aria-label="Diskrete und stetige Zufallsgrößen unterscheiden und Verteilungsfunktion als Integralfunktion deuten (LK)"><a href="#goal-a7778885-17aa-5eeb-a6a7-fbf4c8d55a16"><span class="toc-entry-label">Diskrete&#160;<wbr>und&#160;<wbr>stetige&#160;<wbr>Zufallsgrößen&#160;<wbr>unterscheiden&#160;<wbr>und&#160;<wbr>Verteilungsfunktion&#160;<wbr>als&#160;<wbr>Integralfunktion&#160;<wbr>deuten&#160;<wbr>(LK)</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:5" data-chapter-id="structure:canonical-goal-3d9530ef-8355-59fc-b8c1-afe42cf9e888" data-chapter-depth="5">
+          <h6 class="toc-entry-heading" id="chapter-ae38934208fd13f92b6f350d" aria-label="Mit der Normalverteilung rechnen (LK)"><a href="#goal-8c32d941-b51c-5663-951c-a610f8900f76"><span class="toc-entry-label">Mit&#160;<wbr>der&#160;<wbr>Normalverteilung&#160;<wbr>rechnen&#160;<wbr>(LK)</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7" data-goal-id="3f1a97d2-7de6-5799-81f2-39782c3e54d7" data-page-number="1" data-chapter-ids="structure:goal-book-math-root structure:canonical-structure:sek1 structure:canonical-structure:j8 structure:canonical-goal-612dfc95-95cb-44df-80ae-d8446199cb0d structure:canonical-goal-19a6bc8e-9851-4cf1-adf3-6898e08eb567" aria-labelledby="goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7-title"><a class="goal-self-link" href="#goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7">Parameter einfacher Hyperbeln aus Graphen bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3f1a97d2-7de6-5799-81f2-39782c3e54d7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-bb6ea7db6205d9bb2743e598">Sekundarstufe I</a></li><li><a href="#chapter-4d69e0dfe1f6609dc9bb4822">Jahrgangsstufe 8</a></li><li><a href="#chapter-3d70b60600044b6e16443192">Gebrochen-rationale Funktionen in einfachen Fällen beschreiben</a></li><li><a href="#chapter-97ccd62d6801f282a63c7051">Graphen, Asymptoten und Parameter einfacher Hyperbeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:97cf6db334cb1c14c818d0f18cd79bf28f1b412bb4eec9d958336053631fbb26" data-rendered-digest="sha256:6d83917af2fee43dd99b84a427bba5433dc0873fefc5b352dec3231d6cdec617" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/3f1a97d2-7de6-5799-81f2-39782c3e54d7/3f1a97d2-7de6-5799-81f2-39782c3e54d7.png" alt="Graph von f(x) = 2/(x−1) + 3 mit gestrichelten Asymptoten x = 1 und y = 3; markiert sind (0,1), (2,5) und (3,4). Daraus folgen d = 1, e = 3 und a = 2.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7-description-heading">
+        <p class="section-heading" id="goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei einem gegebenen Graphen einer Funktion der Form f(x) = a/(x - d) + e mit a ≠ 0 die Parameter d und e aus den Asymptoten sowie a mithilfe eines weiteren Graphenpunkts bestimmen und den rekonstruierten Funktionsterm am Graphen prüfen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HE:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, SN, ST:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7-requires-heading">
+          <p class="section-heading" id="goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7-reverse-heading">
+          <p class="section-heading" id="goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-34ba4714-a0ff-4a48-857f-d2481cbe0441" rel="noreferrer noopener"><span>Definitionsmenge einfacher gebrochen-rationaler Funktionen bestimmen</span> <code>34ba4714-a0ff-4a48-857f-d2481cbe0441</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43" rel="noreferrer noopener"><span>Achsenschnittpunkte einfacher gebrochen-rationaler Funktionen bestimmen</span> <code>0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-be18cef8-ad5b-56d4-9ecf-9ba45bad211e" rel="noreferrer noopener"><span>Parametereinfluss auf einfache gebrochen-rationale Graphen beschreiben</span> <code>be18cef8-ad5b-56d4-9ecf-9ba45bad211e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-bc6e4c14-d4f7-537e-8e83-9b5c0086e807" rel="noreferrer noopener"><span>Graphen einfacher Hyperbeln mit Asymptoten zeichnen</span> <code>bc6e4c14-d4f7-537e-8e83-9b5c0086e807</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0d2cfddc-7af6-5709-819f-929e6cf9c192" rel="noreferrer noopener"><span>Parameter einer Hyperbel aus Asymptoten und einem Punkt bestimmen</span> <code>0d2cfddc-7af6-5709-819f-929e6cf9c192</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 3</span>
+      <span>Buch-Digest <code>sha256:e8b4f2d5358f9f34b008aa85184a0d3d77067aefe2e554c682d04ae17e844a6d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:63844e0c5b5a23fae50360e4069f8fc54a07ecd6d6ebcb9d7f4405691d1cb092</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-three-v-png-readable-integral-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=3f1a97d2-7de6-5799-81f2-39782c3e54d7&amp;goalFingerprint=sha256%3A63844e0c5b5a23fae50360e4069f8fc54a07ecd6d6ebcb9d7f4405691d1cb092&amp;pageFingerprint=sha256%3Aa320b31ab6cd66f2ff68ba5418ecd1d39a6b9eca304a8844d1b3f25d706091c0&amp;bookDigest=sha256%3Ae8b4f2d5358f9f34b008aa85184a0d3d77067aefe2e554c682d04ae17e844a6d&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8c32d941-b51c-5663-951c-a610f8900f76" data-goal-id="8c32d941-b51c-5663-951c-a610f8900f76" data-page-number="2" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906 structure:canonical-goal-67ef9787-d540-5f30-9995-f1f9c39a1a45 structure:canonical-goal-3d9530ef-8355-59fc-b8c1-afe42cf9e888" aria-labelledby="goal-8c32d941-b51c-5663-951c-a610f8900f76-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8c32d941-b51c-5663-951c-a610f8900f76-title"><a class="goal-self-link" href="#goal-8c32d941-b51c-5663-951c-a610f8900f76">Wahrscheinlichkeiten normalverteilter Zufallsgrößen bestimmen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8c32d941-b51c-5663-951c-a610f8900f76</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-e5492767714e2d6aea468558">Wahrscheinlichkeiten und Verteilungen</a></li><li><a href="#chapter-4cf4746463dc4cb297d1ef35">Wahrscheinlichkeitsverteilungen (Überblick)</a></li><li><a href="#chapter-ae38934208fd13f92b6f350d">Mit der Normalverteilung rechnen (LK)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:09c914227f618c81397d1c6e65b2844ad90e75c9087b5828fbaadc36f7f2b91a" data-rendered-digest="sha256:e127ecda60399ffb7b46db443bc735a6cd39d00f0fca17de3b6aa689624eb3d4" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/8c32d941-b51c-5663-951c-a610f8900f76/8c32d941-b51c-5663-951c-a610f8900f76.png" alt="Unter einer symmetrischen Glockenkurve ist nur die Fläche zwischen den Grenzen a und b eingefärbt. Sie steht für P(a ≤ X ≤ b).">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8c32d941-b51c-5663-951c-a610f8900f76-description-heading">
+        <p class="section-heading" id="goal-8c32d941-b51c-5663-951c-a610f8900f76-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Wahrscheinlichkeiten normalverteilter Zufallsgrößen in Sachzusammenhängen mit digitalen Werkzeugen oder als Flächen unter dem Dichtegraphen bestimmen und im Kontext deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8c32d941-b51c-5663-951c-a610f8900f76" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8c32d941-b51c-5663-951c-a610f8900f76-requires-heading">
+          <p class="section-heading" id="goal-8c32d941-b51c-5663-951c-a610f8900f76-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-8c32d941-b51c-5663-951c-a610f8900f76-reverse-heading">
+          <p class="section-heading" id="goal-8c32d941-b51c-5663-951c-a610f8900f76-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8c32d941-b51c-5663-951c-a610f8900f76-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8c32d941-b51c-5663-951c-a610f8900f76-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-da95ab35-bac2-54f2-b38f-8b612cde8b54" rel="noreferrer noopener"><span>Zufallsgrößen und Verteilungen als Modellrahmen einordnen</span> <code>da95ab35-bac2-54f2-b38f-8b612cde8b54</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7d41b805-0fd8-5ac3-980d-79112a27c1b4" rel="noreferrer noopener"><span>Kenngrößen binomialverteilter Zufallsgrößen</span> <code>7d41b805-0fd8-5ac3-980d-79112a27c1b4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fd13605e-21d9-523f-bcf4-6824b6cc09e5" rel="noreferrer noopener"><span>Dichtefunktion der Normalverteilung angeben und deuten (LK)</span> <code>fd13605e-21d9-523f-bcf4-6824b6cc09e5</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-8c32d941-b51c-5663-951c-a610f8900f76-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8c32d941-b51c-5663-951c-a610f8900f76-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9cf020ee-4f6b-554e-97d6-eca3e2aabe99" rel="noreferrer noopener"><span>Verteilungen in Kontexten nutzen</span> <code>9cf020ee-4f6b-554e-97d6-eca3e2aabe99</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c406d5a0-e81d-5ce9-b535-6512a38798de" rel="noreferrer noopener"><span>Inverse Fragestellungen zur Normalverteilung lösen (LK)</span> <code>c406d5a0-e81d-5ce9-b535-6512a38798de</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-44dba16e-2e86-56be-974b-a62093ef9211" rel="noreferrer noopener"><span>Normalverteilung als Approximation binomialer Modelle (LK)</span> <code>44dba16e-2e86-56be-974b-a62093ef9211</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5dbf149c-d335-552c-a918-768a12e09201" rel="noreferrer noopener"><span>Normalverteilung zur Modellierung von Messdaten verwenden (LK)</span> <code>5dbf149c-d335-552c-a918-768a12e09201</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 3</span>
+      <span>Buch-Digest <code>sha256:e8b4f2d5358f9f34b008aa85184a0d3d77067aefe2e554c682d04ae17e844a6d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3d8aa01e4f5f1d971b3cb9c89b7d9ad4014ffc2f5402f086266d94eb976fccac</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-three-v-png-readable-integral-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=8c32d941-b51c-5663-951c-a610f8900f76&amp;goalFingerprint=sha256%3A3d8aa01e4f5f1d971b3cb9c89b7d9ad4014ffc2f5402f086266d94eb976fccac&amp;pageFingerprint=sha256%3Ac6e645dfbb2abbb2b3277bf38379fd09716e4e294ba512571409593a86fa048d&amp;bookDigest=sha256%3Ae8b4f2d5358f9f34b008aa85184a0d3d77067aefe2e554c682d04ae17e844a6d&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a7778885-17aa-5eeb-a6a7-fbf4c8d55a16" data-goal-id="a7778885-17aa-5eeb-a6a7-fbf4c8d55a16" data-page-number="3" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:stochastics structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906 structure:canonical-goal-67ef9787-d540-5f30-9995-f1f9c39a1a45 structure:canonical-goal-c92133c6-d5de-4902-936c-321915cf21e9" aria-labelledby="goal-a7778885-17aa-5eeb-a6a7-fbf4c8d55a16-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a7778885-17aa-5eeb-a6a7-fbf4c8d55a16-title"><a class="goal-self-link" href="#goal-a7778885-17aa-5eeb-a6a7-fbf4c8d55a16">Die Verteilungsfunktion der Normalverteilung als Integralfunktion deuten (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a7778885-17aa-5eeb-a6a7-fbf4c8d55a16</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-70a4476054e150249e0723e1">Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik</a></li><li><a href="#chapter-e5492767714e2d6aea468558">Wahrscheinlichkeiten und Verteilungen</a></li><li><a href="#chapter-4cf4746463dc4cb297d1ef35">Wahrscheinlichkeitsverteilungen (Überblick)</a></li><li><a href="#chapter-1fa3bb907e3d4612c3268116">Diskrete und stetige Zufallsgrößen unterscheiden und Verteilungsfunktion als Integralfunktion deuten (LK)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0aab1d68fb4f8e45fa13525b19a836fb00a2efa921822f397ac7f32c7144ef94" data-rendered-digest="sha256:4a6e2784c6b4dbe3499c0d6b3071faa8e4ae9fbd55afe31141ce2881b9b60627" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/a7778885-17aa-5eeb-a6a7-fbf4c8d55a16/a7778885-17aa-5eeb-a6a7-fbf4c8d55a16.png" alt="Unter einer Glockenkurve ist die gesamte Fläche von links bis zur Grenze x eingefärbt. Sie entspricht F(x) = P(X ≤ x).">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a7778885-17aa-5eeb-a6a7-fbf4c8d55a16-description-heading">
+        <p class="section-heading" id="goal-a7778885-17aa-5eeb-a6a7-fbf4c8d55a16-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Wert der Verteilungsfunktion einer Normalverteilung bei x als Integral ihrer Dichte von −∞ bis x und damit als bis x aufsummierte Wahrscheinlichkeit deuten und den Zusammenhang zwischen Dichtegraph, Fläche und Verteilungswert erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a7778885-17aa-5eeb-a6a7-fbf4c8d55a16" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a7778885-17aa-5eeb-a6a7-fbf4c8d55a16-requires-heading">
+          <p class="section-heading" id="goal-a7778885-17aa-5eeb-a6a7-fbf4c8d55a16-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-a7778885-17aa-5eeb-a6a7-fbf4c8d55a16-reverse-heading">
+          <p class="section-heading" id="goal-a7778885-17aa-5eeb-a6a7-fbf4c8d55a16-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a7778885-17aa-5eeb-a6a7-fbf4c8d55a16-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a7778885-17aa-5eeb-a6a7-fbf4c8d55a16-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-55d0474b-b82c-59b6-a62a-b6a0a34d9c4b" rel="noreferrer noopener"><span>Diskrete und stetige Zufallsgrößen unterscheiden (LK)</span> <code>55d0474b-b82c-59b6-a62a-b6a0a34d9c4b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fd13605e-21d9-523f-bcf4-6824b6cc09e5" rel="noreferrer noopener"><span>Dichtefunktion der Normalverteilung angeben und deuten (LK)</span> <code>fd13605e-21d9-523f-bcf4-6824b6cc09e5</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-a7778885-17aa-5eeb-a6a7-fbf4c8d55a16-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a7778885-17aa-5eeb-a6a7-fbf4c8d55a16-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-14e40ac8-9666-5bf5-a011-870d62b8e597" rel="noreferrer noopener"><span>Diskrete und stetige Zufallsgrößen sowie Normalverteilungsfragen bearbeiten (LK)</span> <code>14e40ac8-9666-5bf5-a011-870d62b8e597</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 3</span>
+      <span>Buch-Digest <code>sha256:e8b4f2d5358f9f34b008aa85184a0d3d77067aefe2e554c682d04ae17e844a6d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f2f2dc1f7949662ad645b07d98f456386e2ee888e29dd1d81f662755ed691a9d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-three-v-png-readable-integral-current-20260923-v2&amp;edition=curricular-atomic-v1&amp;goalId=a7778885-17aa-5eeb-a6a7-fbf4c8d55a16&amp;goalFingerprint=sha256%3Af2f2dc1f7949662ad645b07d98f456386e2ee888e29dd1d81f662755ed691a9d&amp;pageFingerprint=sha256%3A69d3760e1f46ccdd18521b29dad8a15eea6993b37ee3b3134726a491fce362db&amp;bookDigest=sha256%3Ae8b4f2d5358f9f34b008aa85184a0d3d77067aefe2e554c682d04ae17e844a6d&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

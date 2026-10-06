@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "results": [
+    {
+      "label": "21actualviews",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/native-current-views.mts"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "memory-current-views-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/memory.author-v2.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "independentV2Review": false,
+  "humanApproval": false
+}

@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik B033w – Finale Nachprüfung von fünf Präzisierungen und fünf direkt betroffenen Lernrouten</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Physik B033w – Finale Nachprüfung von fünf Präzisierungen und fünf direkt betroffenen Lernrouten</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>10 atomare Lernziele</dt><dd>15 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-physics-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-6747d2e0bbbbd4b4358ff0fa" aria-label="Physik"><a href="#goal-5fda8623-69e0-5503-9c6d-86d054a8cf91"><span class="toc-entry-label">Physik</span></a></h2>
+          <span class="toc-entry-meta"><span>10 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-physics-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-546e47201fdf10d52f5a936c" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-5fda8623-69e0-5503-9c6d-86d054a8cf91"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-q1" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-497492896f4798b54bff1e35" aria-label="Q1 Elektrisches und magnetisches Feld"><a href="#goal-5fda8623-69e0-5503-9c6d-86d054a8cf91"><span class="toc-entry-label">Q1&#160;<wbr>Elektrisches&#160;<wbr>und&#160;<wbr>magnetisches&#160;<wbr>Feld</span></a></h4>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-d7bc20e0-5ee9-593a-a7a9-d7cbb88392e6" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-f371ad1e6774cdc769c15b0b" aria-label="Elektrisches Feld"><a href="#goal-5fda8623-69e0-5503-9c6d-86d054a8cf91"><span class="toc-entry-label">Elektrisches&#160;<wbr>Feld</span></a></h5>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-0895074d-c4af-56ea-88dd-ae0fdae443ed" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-ee424f01b5bdab257e926a3b" aria-label="Potenzial und Kondensator"><a href="#goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df"><span class="toc-entry-label">Potenzial&#160;<wbr>und&#160;<wbr>Kondensator</span></a></h6>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:5" data-chapter-id="structure:canonical-goal-8fca14c7-3251-5526-adde-2567ea6816b2" data-chapter-depth="5">
+          <h6 class="toc-entry-heading" id="chapter-72ebfc16ba15d9f1757ce68c" aria-label="Kondensator"><a href="#goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df"><span class="toc-entry-label">Kondensator</span></a></h6>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-43eb9b9e-cfdf-5cf1-88db-87391c7ba595" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-90d9afa61ed1361fbd8d1458" aria-label="Ladungen in Feldern"><a href="#goal-5fda8623-69e0-5503-9c6d-86d054a8cf91"><span class="toc-entry-label">Ladungen&#160;<wbr>in&#160;<wbr>Feldern</span></a></h6>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:5" data-chapter-id="structure:canonical-goal-47f76c5c-05d1-59eb-876d-cafb98a66c5b" data-chapter-depth="5">
+          <h6 class="toc-entry-heading" id="chapter-86145cbb4f507a42a795a801" aria-label="Bewegung geladener Teilchen im elektrischen Feld"><a href="#goal-5fda8623-69e0-5503-9c6d-86d054a8cf91"><span class="toc-entry-label">Bewegung&#160;<wbr>geladener&#160;<wbr>Teilchen&#160;<wbr>im&#160;<wbr>elektrischen&#160;<wbr>Feld</span></a></h6>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-q2" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-5a757cedb5fee9673179ff39" aria-label="Q2 Schwingungen, Induktion und mechanische Wellen"><a href="#goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd"><span class="toc-entry-label">Q2&#160;<wbr>Schwingungen,&#160;<wbr>Induktion&#160;<wbr>und&#160;<wbr>mechanische&#160;<wbr>Wellen</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 7</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-aee9676f-7cd6-50f0-a504-fd88ef67b59e" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-c66f6d008b8babe09a24c5cd" aria-label="Mechanische Schwingungen"><a href="#goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd"><span class="toc-entry-label">Mechanische&#160;<wbr>Schwingungen</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 7</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-q4" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-2d62da14bfd408e36bddc43b" aria-label="Q4 Struktur von Materie, Raum und Zeit"><a href="#goal-a684bec1-ba59-59d0-98d2-4ca37236f64c"><span class="toc-entry-label">Q4&#160;<wbr>Struktur&#160;<wbr>von&#160;<wbr>Materie,&#160;<wbr>Raum&#160;<wbr>und&#160;<wbr>Zeit</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 10</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-157c404a-e14b-598a-9389-6924f8f9262e" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-b11db4fba365d197361f5a29" aria-label="Spezielle Relativitätstheorie"><a href="#goal-a684bec1-ba59-59d0-98d2-4ca37236f64c"><span class="toc-entry-label">Spezielle&#160;<wbr>Relativitätstheorie</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 10</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-bundesland-supplements" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-dfefd5ef67d7bfcb62fbc0f8" aria-label="Bundeslandspezifische Ergänzungen"><a href="#goal-3aaac6ad-948e-502a-9d49-ce40db0f2ca3"><span class="toc-entry-label">Bundeslandspezifische&#160;<wbr>Ergänzungen</span></a></h3>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:goal-book-supplement-sekii" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-9ae78d411bc36afcaa44e04b" aria-label="Sekundarstufe II"><a href="#goal-3aaac6ad-948e-502a-9d49-ce40db0f2ca3"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II</span></a></h4>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:goal-book-supplement-SekII-Biophysik" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-fd87770e15dd0f86eb2eb4ee" aria-label="Biophysik"><a href="#goal-3aaac6ad-948e-502a-9d49-ce40db0f2ca3"><span class="toc-entry-label">Biophysik</span></a></h5>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-5fda8623-69e0-5503-9c6d-86d054a8cf91" data-goal-id="5fda8623-69e0-5503-9c6d-86d054a8cf91" data-page-number="1" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q1 structure:canonical-goal-d7bc20e0-5ee9-593a-a7a9-d7cbb88392e6 structure:canonical-goal-43eb9b9e-cfdf-5cf1-88db-87391c7ba595 structure:canonical-goal-47f76c5c-05d1-59eb-876d-cafb98a66c5b" aria-labelledby="goal-5fda8623-69e0-5503-9c6d-86d054a8cf91-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5fda8623-69e0-5503-9c6d-86d054a8cf91-title"><a class="goal-self-link" href="#goal-5fda8623-69e0-5503-9c6d-86d054a8cf91">Braunsche Röhre (Oszilloskop)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5fda8623-69e0-5503-9c6d-86d054a8cf91</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-497492896f4798b54bff1e35">Q1 Elektrisches und magnetisches Feld</a></li><li><a href="#chapter-f371ad1e6774cdc769c15b0b">Elektrisches Feld</a></li><li><a href="#chapter-90d9afa61ed1361fbd8d1458">Ladungen in Feldern</a></li><li><a href="#chapter-86145cbb4f507a42a795a801">Bewegung geladener Teilchen im elektrischen Feld</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ebdfe56e958f4136a66ab0da61d38cfd1a586c9b550ad95915626f44a109a736" data-rendered-digest="sha256:3c038e352e2b9043612adcaeb22cea0ee6d02c2d7a62ebee85a7e1bb925be426" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/5fda8623-69e0-5503-9c6d-86d054a8cf91/5fda8623-69e0-5503-9c6d-86d054a8cf91.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Braunsche Röhre (Oszilloskop)&quot;. Die lernende Person kann erklären, wie in der Braunschen Röhre das von einer Ablenkspannung erzeugte elektrische Feld die vertikale Lage des Elektronenstrahls auf dem Leuchtschirm bestimmt und eine Zeitbasis den Strahl horizontal führt, sodass ein Oszilloskop den zeitlichen Spannungsverlauf darstellt; eine magnetische Ablenkung kann sie davon qualitativ unterscheiden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5fda8623-69e0-5503-9c6d-86d054a8cf91-description-heading">
+        <p class="section-heading" id="goal-5fda8623-69e0-5503-9c6d-86d054a8cf91-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann erklären, wie in der Braunschen Röhre das von einer Ablenkspannung erzeugte elektrische Feld die vertikale Lage des Elektronenstrahls auf dem Leuchtschirm bestimmt und eine Zeitbasis den Strahl horizontal führt, sodass ein Oszilloskop den zeitlichen Spannungsverlauf darstellt; eine magnetische Ablenkung kann sie davon qualitativ unterscheiden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5fda8623-69e0-5503-9c6d-86d054a8cf91" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5fda8623-69e0-5503-9c6d-86d054a8cf91-requires-heading">
+          <p class="section-heading" id="goal-5fda8623-69e0-5503-9c6d-86d054a8cf91-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-5fda8623-69e0-5503-9c6d-86d054a8cf91-reverse-heading">
+          <p class="section-heading" id="goal-5fda8623-69e0-5503-9c6d-86d054a8cf91-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-5fda8623-69e0-5503-9c6d-86d054a8cf91-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5fda8623-69e0-5503-9c6d-86d054a8cf91-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5f289cdc-fda1-4058-b44f-041ba1398e79" rel="noreferrer noopener"><span>Grundgleichung der Mechanik anwenden</span> <code>5f289cdc-fda1-4058-b44f-041ba1398e79</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-9f59a088-3939-59e9-821d-167fadfda782" rel="noreferrer noopener"><span>Kondensator und Feld im Plattenkondensator</span> <code>9f59a088-3939-59e9-821d-167fadfda782</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-5fda8623-69e0-5503-9c6d-86d054a8cf91-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5fda8623-69e0-5503-9c6d-86d054a8cf91-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-db5f4121-d4b1-5006-b2da-6e76aac72bf5" rel="noreferrer noopener"><span>Elektronenablenkung im elektrischen Feld</span> <code>db5f4121-d4b1-5006-b2da-6e76aac72bf5</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 10</span>
+      <span>Buch-Digest <code>sha256:9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:44bbf88482f5c34b9dc3e28516b41da2992d30d7bbc1cbca5cbe7c29adcd7ce3</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-final-adjudication-context-recheck-10-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=5fda8623-69e0-5503-9c6d-86d054a8cf91&amp;goalFingerprint=sha256%3A44bbf88482f5c34b9dc3e28516b41da2992d30d7bbc1cbca5cbe7c29adcd7ce3&amp;pageFingerprint=sha256%3A5860925b1c41e0dbc8fc33ae42929b8f4d1bd44c69b5ad587ee6158b20c09dc3&amp;bookDigest=sha256%3A9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df" data-goal-id="09f2cdbd-64e0-55d2-ada7-1190f4fd50df" data-page-number="2" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q1 structure:canonical-goal-d7bc20e0-5ee9-593a-a7a9-d7cbb88392e6 structure:canonical-goal-0895074d-c4af-56ea-88dd-ae0fdae443ed structure:canonical-goal-8fca14c7-3251-5526-adde-2567ea6816b2" aria-labelledby="goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df-title"><a class="goal-self-link" href="#goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df">Methode: Lösungsansatz für DGL (Exponentialfunktion)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>09f2cdbd-64e0-55d2-ada7-1190f4fd50df</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-497492896f4798b54bff1e35">Q1 Elektrisches und magnetisches Feld</a></li><li><a href="#chapter-f371ad1e6774cdc769c15b0b">Elektrisches Feld</a></li><li><a href="#chapter-ee424f01b5bdab257e926a3b">Potenzial und Kondensator</a></li><li><a href="#chapter-72ebfc16ba15d9f1757ce68c">Kondensator</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ca77bea1f4ed4af30121b5bbfb352222224a2e002eb7e0f3cbdfa9a3b3c24204" data-rendered-digest="sha256:3db793a12d5c321a9dcc26eb1fdd0a3c389c5b3edb840962f3271c9e52ab55d3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/09f2cdbd-64e0-55d2-ada7-1190f4fd50df/09f2cdbd-64e0-55d2-ada7-1190f4fd50df.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Methode: Lösungsansatz für DGL (Exponentialfunktion)&quot;. Die lernende Person kann bei einfachen physikalischen Differenzialgleichungen, in denen die Änderungsrate proportional zur Zustandsgröße ist (z. B. bei der RC-Entladung), einen passenden Exponentialansatz wählen und durch Ableiten prüfen, ob er die Differenzialgleichung und die Anfangsbedingung erfüllt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df-description-heading">
+        <p class="section-heading" id="goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei einfachen physikalischen Differenzialgleichungen, in denen die Änderungsrate proportional zur Zustandsgröße ist (z. B. bei der RC-Entladung), einen passenden Exponentialansatz wählen und durch Ableiten prüfen, ob er die Differenzialgleichung und die Anfangsbedingung erfüllt.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df-requires-heading">
+          <p class="section-heading" id="goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df-reverse-heading">
+          <p class="section-heading" id="goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-330808f6-789a-583d-86df-e271a7683d8b"><span>Differenzialgleichung des RC-Kreises lösen</span><code>330808f6-789a-583d-86df-e271a7683d8b</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd"><span>Schwingungsgleichung lösen</span><code>b2fb9a25-4d26-5cf2-a917-823909dcb6bd</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0b4f2020-8486-5372-9cb9-6e59f698ac2d" rel="noreferrer noopener"><span>Auf- und Entladen eines Kondensators</span> <code>0b4f2020-8486-5372-9cb9-6e59f698ac2d</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5e64eacd-5204-5028-af23-02a43377c56e" rel="noreferrer noopener"><span>RC-Kreis und Dielektrika modellieren</span> <code>5e64eacd-5204-5028-af23-02a43377c56e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 10</span>
+      <span>Buch-Digest <code>sha256:9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4a84495d204bf0ccdc70a5ff739b8482f6bbbe9581f4b95a095a45cb029f4149</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-final-adjudication-context-recheck-10-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=09f2cdbd-64e0-55d2-ada7-1190f4fd50df&amp;goalFingerprint=sha256%3A4a84495d204bf0ccdc70a5ff739b8482f6bbbe9581f4b95a095a45cb029f4149&amp;pageFingerprint=sha256%3A449dcea6d359006701de256a59d03b3f8a1218c5c38b6d7bf3f64dab57f12b00&amp;bookDigest=sha256%3A9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-330808f6-789a-583d-86df-e271a7683d8b" data-goal-id="330808f6-789a-583d-86df-e271a7683d8b" data-page-number="3" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q1 structure:canonical-goal-d7bc20e0-5ee9-593a-a7a9-d7cbb88392e6 structure:canonical-goal-0895074d-c4af-56ea-88dd-ae0fdae443ed structure:canonical-goal-8fca14c7-3251-5526-adde-2567ea6816b2" aria-labelledby="goal-330808f6-789a-583d-86df-e271a7683d8b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-330808f6-789a-583d-86df-e271a7683d8b-title"><a class="goal-self-link" href="#goal-330808f6-789a-583d-86df-e271a7683d8b">Differenzialgleichung des RC-Kreises lösen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>330808f6-789a-583d-86df-e271a7683d8b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-497492896f4798b54bff1e35">Q1 Elektrisches und magnetisches Feld</a></li><li><a href="#chapter-f371ad1e6774cdc769c15b0b">Elektrisches Feld</a></li><li><a href="#chapter-ee424f01b5bdab257e926a3b">Potenzial und Kondensator</a></li><li><a href="#chapter-72ebfc16ba15d9f1757ce68c">Kondensator</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:118f123df8546b1f80aa23a8cb13e335fef7f3ecb466ab249820da87930cf321" data-rendered-digest="sha256:79a3fab637d78a7be1afd3e26650722ffecdb91425997aeae71fbbb6e8e249f3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/330808f6-789a-583d-86df-e271a7683d8b/330808f6-789a-583d-86df-e271a7683d8b.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Differenzialgleichung des RC-Kreises lösen&quot;. Die lernende Person kann für die Entladung eines Kondensators aus einer konsistenten Strom- und Spannungskonvention sowie den Beziehungen U_R = RI und Q = CU die Differenzialgleichung aufstellen, sie mit der Anfangsbedingung lösen und die exponentielle Lösung einschließlich der Zeitkonstante RC physikalisch deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-330808f6-789a-583d-86df-e271a7683d8b-description-heading">
+        <p class="section-heading" id="goal-330808f6-789a-583d-86df-e271a7683d8b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für die Entladung eines Kondensators aus einer konsistenten Strom- und Spannungskonvention sowie den Beziehungen U_R = RI und Q = CU die Differenzialgleichung aufstellen, sie mit der Anfangsbedingung lösen und die exponentielle Lösung einschließlich der Zeitkonstante RC physikalisch deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-330808f6-789a-583d-86df-e271a7683d8b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-330808f6-789a-583d-86df-e271a7683d8b-requires-heading">
+          <p class="section-heading" id="goal-330808f6-789a-583d-86df-e271a7683d8b-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df"><span>Methode: Lösungsansatz für DGL (Exponentialfunktion)</span><code>09f2cdbd-64e0-55d2-ada7-1190f4fd50df</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-330808f6-789a-583d-86df-e271a7683d8b-reverse-heading">
+          <p class="section-heading" id="goal-330808f6-789a-583d-86df-e271a7683d8b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-3aaac6ad-948e-502a-9d49-ce40db0f2ca3"><span>Passive Signalleitung mit Kondensator-Ladekurven vergleichen</span><code>3aaac6ad-948e-502a-9d49-ce40db0f2ca3</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-330808f6-789a-583d-86df-e271a7683d8b-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-330808f6-789a-583d-86df-e271a7683d8b-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0b4f2020-8486-5372-9cb9-6e59f698ac2d" rel="noreferrer noopener"><span>Auf- und Entladen eines Kondensators</span> <code>0b4f2020-8486-5372-9cb9-6e59f698ac2d</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-330808f6-789a-583d-86df-e271a7683d8b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-330808f6-789a-583d-86df-e271a7683d8b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5e64eacd-5204-5028-af23-02a43377c56e" rel="noreferrer noopener"><span>RC-Kreis und Dielektrika modellieren</span> <code>5e64eacd-5204-5028-af23-02a43377c56e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 10</span>
+      <span>Buch-Digest <code>sha256:9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f32ac38681fcb83aa1a83da591e53770c6178a9ab61bf5ad485060e97325f959</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-final-adjudication-context-recheck-10-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=330808f6-789a-583d-86df-e271a7683d8b&amp;goalFingerprint=sha256%3Af32ac38681fcb83aa1a83da591e53770c6178a9ab61bf5ad485060e97325f959&amp;pageFingerprint=sha256%3Ad06b6370a785c8c9adc2b6f15fbc0a2dcffe57ebd8bb4dcae5792ee6cfd6812c&amp;bookDigest=sha256%3A9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3aaac6ad-948e-502a-9d49-ce40db0f2ca3" data-goal-id="3aaac6ad-948e-502a-9d49-ce40db0f2ca3" data-page-number="4" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-Biophysik" aria-labelledby="goal-3aaac6ad-948e-502a-9d49-ce40db0f2ca3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3aaac6ad-948e-502a-9d49-ce40db0f2ca3-title"><a class="goal-self-link" href="#goal-3aaac6ad-948e-502a-9d49-ce40db0f2ca3">Passive Signalleitung mit Kondensator-Ladekurven vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3aaac6ad-948e-502a-9d49-ce40db0f2ca3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-fd87770e15dd0f86eb2eb4ee">Biophysik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:30b0a7f2b82400a459fceac88731581238e5aff7934c8f9697f030c15f2cdf60" data-rendered-digest="sha256:2b83bb62dd9ba9280afda0ef5eabea2a5dc99799db39aa20c5413e7459a82f53" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/3aaac6ad-948e-502a-9d49-ce40db0f2ca3/3aaac6ad-948e-502a-9d49-ce40db0f2ca3.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Passive Signalleitung mit Kondensator-Ladekurven vergleichen&quot;. Die lernende Person kann den lokalen zeitlichen Signalaufbau eines passiven Axonsegments mit einer Kondensator-Lade- oder Entladekurve vergleichen, durch ein exponentielles RC-Modell mathematisch beschreiben und von der zusätzlichen räumlichen Abschwächung gekoppelter Segmente abgrenzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3aaac6ad-948e-502a-9d49-ce40db0f2ca3-description-heading">
+        <p class="section-heading" id="goal-3aaac6ad-948e-502a-9d49-ce40db0f2ca3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den lokalen zeitlichen Signalaufbau eines passiven Axonsegments mit einer Kondensator-Lade- oder Entladekurve vergleichen, durch ein exponentielles RC-Modell mathematisch beschreiben und von der zusätzlichen räumlichen Abschwächung gekoppelter Segmente abgrenzen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3aaac6ad-948e-502a-9d49-ce40db0f2ca3" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3aaac6ad-948e-502a-9d49-ce40db0f2ca3-requires-heading">
+          <p class="section-heading" id="goal-3aaac6ad-948e-502a-9d49-ce40db0f2ca3-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-330808f6-789a-583d-86df-e271a7683d8b"><span>Differenzialgleichung des RC-Kreises lösen</span><code>330808f6-789a-583d-86df-e271a7683d8b</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-3aaac6ad-948e-502a-9d49-ce40db0f2ca3-reverse-heading">
+          <p class="section-heading" id="goal-3aaac6ad-948e-502a-9d49-ce40db0f2ca3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-8fbae050-c5c9-52b6-9983-2c366e9c8ade"><span>Saltatorische Signalleitung aus aktiver Regeneration und Membraneigenschaften erklären</span><code>8fbae050-c5c9-52b6-9983-2c366e9c8ade</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-3aaac6ad-948e-502a-9d49-ce40db0f2ca3-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3aaac6ad-948e-502a-9d49-ce40db0f2ca3-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-c2e0fc31-27a2-5727-9025-a824db9150d2" rel="noreferrer noopener"><span>Axonsegmente als elektrische Ersatzschaltungen modellieren</span> <code>c2e0fc31-27a2-5727-9025-a824db9150d2</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 10</span>
+      <span>Buch-Digest <code>sha256:9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:72dcd8b6871f008a119ae67b6eb427e4e4ca2681005a7e3dab603a57617fe073</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-final-adjudication-context-recheck-10-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=3aaac6ad-948e-502a-9d49-ce40db0f2ca3&amp;goalFingerprint=sha256%3A72dcd8b6871f008a119ae67b6eb427e4e4ca2681005a7e3dab603a57617fe073&amp;pageFingerprint=sha256%3A79925eabacc7676e4257d4f341a5821763642595715160f4f18ae79625b49b31&amp;bookDigest=sha256%3A9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8fbae050-c5c9-52b6-9983-2c366e9c8ade" data-goal-id="8fbae050-c5c9-52b6-9983-2c366e9c8ade" data-page-number="5" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-Biophysik" aria-labelledby="goal-8fbae050-c5c9-52b6-9983-2c366e9c8ade-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8fbae050-c5c9-52b6-9983-2c366e9c8ade-title"><a class="goal-self-link" href="#goal-8fbae050-c5c9-52b6-9983-2c366e9c8ade">Saltatorische Signalleitung aus aktiver Regeneration und Membraneigenschaften erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8fbae050-c5c9-52b6-9983-2c366e9c8ade</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-fd87770e15dd0f86eb2eb4ee">Biophysik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8fbae050-c5c9-52b6-9983-2c366e9c8ade-description-heading">
+        <p class="section-heading" id="goal-8fbae050-c5c9-52b6-9983-2c366e9c8ade-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann erklären, wie spannungsabhängige Natriumkanäle die Depolarisation des Aktionspotenzials an Ranvier-Schnürringen regenerieren und Kaliumkanäle zur Repolarisation beitragen, während der erhöhte Membranwiderstand und die verringerte Membrankapazität myelinisierter Internodien eine schnelle passive Ausbreitung mit geringen Leckströmen ermöglichen, und passive Ausbreitung von aktiver Regeneration unterscheiden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8fbae050-c5c9-52b6-9983-2c366e9c8ade" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8fbae050-c5c9-52b6-9983-2c366e9c8ade-requires-heading">
+          <p class="section-heading" id="goal-8fbae050-c5c9-52b6-9983-2c366e9c8ade-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-3aaac6ad-948e-502a-9d49-ce40db0f2ca3"><span>Passive Signalleitung mit Kondensator-Ladekurven vergleichen</span><code>3aaac6ad-948e-502a-9d49-ce40db0f2ca3</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8fbae050-c5c9-52b6-9983-2c366e9c8ade-reverse-heading">
+          <p class="section-heading" id="goal-8fbae050-c5c9-52b6-9983-2c366e9c8ade-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-0b08aed8-3c0f-5b38-844c-1bb363abbf68"><span>Biologische und künstliche neuronale Verschaltungen mit einem gemeinsamen Modell vergleichen</span><code>0b08aed8-3c0f-5b38-844c-1bb363abbf68</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8fbae050-c5c9-52b6-9983-2c366e9c8ade-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8fbae050-c5c9-52b6-9983-2c366e9c8ade-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-db47ac91-7bb0-5ba3-b39d-e2d6fc98396e" rel="noreferrer noopener"><span>Ruhepotenzial an einer selektiv permeablen Membran modellieren</span> <code>db47ac91-7bb0-5ba3-b39d-e2d6fc98396e</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 10</span>
+      <span>Buch-Digest <code>sha256:9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:26e89f2828faf59cc690206a305c090e7764dad5526ed0586d2c0c921b6d2362</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-final-adjudication-context-recheck-10-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=8fbae050-c5c9-52b6-9983-2c366e9c8ade&amp;goalFingerprint=sha256%3A26e89f2828faf59cc690206a305c090e7764dad5526ed0586d2c0c921b6d2362&amp;pageFingerprint=sha256%3A9b2e2445f70b2eb4d1b0209ca0386bb35245f602c38221c79e7fab20d80620ac&amp;bookDigest=sha256%3A9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0b08aed8-3c0f-5b38-844c-1bb363abbf68" data-goal-id="0b08aed8-3c0f-5b38-844c-1bb363abbf68" data-page-number="6" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-Biophysik" aria-labelledby="goal-0b08aed8-3c0f-5b38-844c-1bb363abbf68-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0b08aed8-3c0f-5b38-844c-1bb363abbf68-title"><a class="goal-self-link" href="#goal-0b08aed8-3c0f-5b38-844c-1bb363abbf68">Biologische und künstliche neuronale Verschaltungen mit einem gemeinsamen Modell vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0b08aed8-3c0f-5b38-844c-1bb363abbf68</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-fd87770e15dd0f86eb2eb4ee">Biophysik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:fe3a232db004f4501ed88986561666b91cd6667288ede7f801d8e8491931900d" data-rendered-digest="sha256:e68d7c60b6482466377a3c18c5fc2c0b462782c343005c66a0b2d32cfdba816d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/0b08aed8-3c0f-5b38-844c-1bb363abbf68/0b08aed8-3c0f-5b38-844c-1bb363abbf68.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Biologische und künstliche neuronale Verschaltungen mit einem gemeinsamen Modell vergleichen&quot;. Die lernende Person kann in gegebenen Diagrammen erregende und hemmende Verknüpfungen als gewichtete Beiträge zu einer Ausgabe deuten, dieses Verschaltungsmodell auf eine optische Täuschung und ein einfaches künstliches neuronales Netz übertragen und die Grenzen der Analogie benennen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0b08aed8-3c0f-5b38-844c-1bb363abbf68-description-heading">
+        <p class="section-heading" id="goal-0b08aed8-3c0f-5b38-844c-1bb363abbf68-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in gegebenen Diagrammen erregende und hemmende Verknüpfungen als gewichtete Beiträge zu einer Ausgabe deuten, dieses Verschaltungsmodell auf eine optische Täuschung und ein einfaches künstliches neuronales Netz übertragen und die Grenzen der Analogie benennen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0b08aed8-3c0f-5b38-844c-1bb363abbf68" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0b08aed8-3c0f-5b38-844c-1bb363abbf68-requires-heading">
+          <p class="section-heading" id="goal-0b08aed8-3c0f-5b38-844c-1bb363abbf68-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8fbae050-c5c9-52b6-9983-2c366e9c8ade"><span>Saltatorische Signalleitung aus aktiver Regeneration und Membraneigenschaften erklären</span><code>8fbae050-c5c9-52b6-9983-2c366e9c8ade</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-0b08aed8-3c0f-5b38-844c-1bb363abbf68-reverse-heading">
+          <p class="section-heading" id="goal-0b08aed8-3c0f-5b38-844c-1bb363abbf68-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0b08aed8-3c0f-5b38-844c-1bb363abbf68-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0b08aed8-3c0f-5b38-844c-1bb363abbf68-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b378c8b3-5e83-5abf-8243-b0f345037bfc" rel="noreferrer noopener"><span>Physikalische Bewertungen begründet formulieren</span> <code>b378c8b3-5e83-5abf-8243-b0f345037bfc</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 10</span>
+      <span>Buch-Digest <code>sha256:9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5f5a002fb35e5c48a150d410e90000bf5d89f1a4b2817b21335c3df8756f3504</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-final-adjudication-context-recheck-10-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=0b08aed8-3c0f-5b38-844c-1bb363abbf68&amp;goalFingerprint=sha256%3A5f5a002fb35e5c48a150d410e90000bf5d89f1a4b2817b21335c3df8756f3504&amp;pageFingerprint=sha256%3A1cdc1e4e04c5ee1832aecd43d4446279dbf68c77364246bf33e9834f98d1b2ca&amp;bookDigest=sha256%3A9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd" data-goal-id="b2fb9a25-4d26-5cf2-a917-823909dcb6bd" data-page-number="7" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q2 structure:canonical-goal-aee9676f-7cd6-50f0-a504-fd88ef67b59e" aria-labelledby="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-title"><a class="goal-self-link" href="#goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd">Schwingungsgleichung lösen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b2fb9a25-4d26-5cf2-a917-823909dcb6bd</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-5a757cedb5fee9673179ff39">Q2 Schwingungen, Induktion und mechanische Wellen</a></li><li><a href="#chapter-c66f6d008b8babe09a24c5cd">Mechanische Schwingungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:fbc8a7abc93029587515f193f34e4e268099b59666f7effd3e43a1574fe6d6e7" data-rendered-digest="sha256:696e3f3ab5e3deb439f806c26f87b9508a205182fc66f4710a13aa76aae96604" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/b2fb9a25-4d26-5cf2-a917-823909dcb6bd/b2fb9a25-4d26-5cf2-a917-823909dcb6bd.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Schwingungsgleichung lösen&quot;. Die lernende Person kann die Differentialgleichung der ungedämpften Schwingung lösen und Lösungen interpretieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-description-heading">
+        <p class="section-heading" id="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Differentialgleichung der ungedämpften Schwingung lösen und Lösungen interpretieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. II · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-requires-heading">
+          <p class="section-heading" id="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-09f2cdbd-64e0-55d2-ada7-1190f4fd50df"><span>Methode: Lösungsansatz für DGL (Exponentialfunktion)</span><code>09f2cdbd-64e0-55d2-ada7-1190f4fd50df</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-reverse-heading">
+          <p class="section-heading" id="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d03f1cb6-c224-53db-ad91-76cc7827978d" rel="noreferrer noopener"><span>Harmonische Schwingung verstehen</span> <code>d03f1cb6-c224-53db-ad91-76cc7827978d</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b2fb9a25-4d26-5cf2-a917-823909dcb6bd-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-50328a4f-91e8-5c8b-8d61-8f9c98a5cddf" rel="noreferrer noopener"><span>Q2-Klausuraufgaben Physik selbstständig lösen</span> <code>50328a4f-91e8-5c8b-8d61-8f9c98a5cddf</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-99954602-819d-57f3-9c09-737e69f162df" rel="noreferrer noopener"><span>Vorschlag B (LK) - Schwingungsdiagnostik mit Grenzflächenanalyse</span> <code>99954602-819d-57f3-9c09-737e69f162df</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d350cfa7-c606-501e-abf7-1c9e546b266b" rel="noreferrer noopener"><span>Resonanz, Daempfung und Schwingungsgleichung</span> <code>d350cfa7-c606-501e-abf7-1c9e546b266b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-fa333c2f-3150-5831-a649-28615164b2f2" rel="noreferrer noopener"><span>Vorschlag B (LK) - Aktives Schwingungsmanagement</span> <code>fa333c2f-3150-5831-a649-28615164b2f2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4888444f-4520-437a-9ba7-e74e8f8ed129" rel="noreferrer noopener"><span>Überlagerungen unabhängiger Schwingungen qualitativ beschreiben</span> <code>4888444f-4520-437a-9ba7-e74e8f8ed129</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a7255b83-336c-4d42-ba5c-bc2f6248ea36" rel="noreferrer noopener"><span>Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz lösen</span> <code>a7255b83-336c-4d42-ba5c-bc2f6248ea36</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 10</span>
+      <span>Buch-Digest <code>sha256:9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:80c477b65b8a0f9b168f978cc634a7f4fb926cbe8f08a65abec3e66419cf806a</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-final-adjudication-context-recheck-10-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=b2fb9a25-4d26-5cf2-a917-823909dcb6bd&amp;goalFingerprint=sha256%3A80c477b65b8a0f9b168f978cc634a7f4fb926cbe8f08a65abec3e66419cf806a&amp;pageFingerprint=sha256%3Aefead3c813a5301cddb8146ec4db92cc668a05d0202848ac8ba1ba4ed6e73a4f&amp;bookDigest=sha256%3A9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-74a74132-fa39-541c-8d3c-696cf228452d" data-goal-id="74a74132-fa39-541c-8d3c-696cf228452d" data-page-number="8" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q1 structure:canonical-goal-d7bc20e0-5ee9-593a-a7a9-d7cbb88392e6 structure:canonical-goal-43eb9b9e-cfdf-5cf1-88db-87391c7ba595 structure:canonical-goal-47f76c5c-05d1-59eb-876d-cafb98a66c5b" aria-labelledby="goal-74a74132-fa39-541c-8d3c-696cf228452d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-74a74132-fa39-541c-8d3c-696cf228452d-title"><a class="goal-self-link" href="#goal-74a74132-fa39-541c-8d3c-696cf228452d">Linearbeschleuniger modellieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>74a74132-fa39-541c-8d3c-696cf228452d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-497492896f4798b54bff1e35">Q1 Elektrisches und magnetisches Feld</a></li><li><a href="#chapter-f371ad1e6774cdc769c15b0b">Elektrisches Feld</a></li><li><a href="#chapter-90d9afa61ed1361fbd8d1458">Ladungen in Feldern</a></li><li><a href="#chapter-86145cbb4f507a42a795a801">Bewegung geladener Teilchen im elektrischen Feld</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:409bfb468337d99e38574756c4766b34e1fbd7898bf07a5d51454628f1c51f16" data-rendered-digest="sha256:cf4d20dc3cf226f5a181cce795405daf08922ad524ce140bc3c99f4c8b10f36c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/74a74132-fa39-541c-8d3c-696cf228452d/74a74132-fa39-541c-8d3c-696cf228452d.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Linearbeschleuniger modellieren&quot;. Die lernende Person kann lineare Beschleunigerstufen über die Energiezunahme einer Ladung im elektrischen Feld klassisch modellieren und begründen, warum bei Geschwindigkeiten, die nicht mehr klein gegenüber der Lichtgeschwindigkeit sind, relativistische Beziehungen für Energie und Impuls erforderlich werden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-74a74132-fa39-541c-8d3c-696cf228452d-description-heading">
+        <p class="section-heading" id="goal-74a74132-fa39-541c-8d3c-696cf228452d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann lineare Beschleunigerstufen über die Energiezunahme einer Ladung im elektrischen Feld klassisch modellieren und begründen, warum bei Geschwindigkeiten, die nicht mehr klein gegenüber der Lichtgeschwindigkeit sind, relativistische Beziehungen für Energie und Impuls erforderlich werden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-74a74132-fa39-541c-8d3c-696cf228452d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-74a74132-fa39-541c-8d3c-696cf228452d-requires-heading">
+          <p class="section-heading" id="goal-74a74132-fa39-541c-8d3c-696cf228452d-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-74a74132-fa39-541c-8d3c-696cf228452d-reverse-heading">
+          <p class="section-heading" id="goal-74a74132-fa39-541c-8d3c-696cf228452d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-8d34228c-da38-5c1e-97cc-571f3eafb9f4"><span>Exkurs: Relativistische Energie und Impuls im Linearbeschleuniger</span><code>8d34228c-da38-5c1e-97cc-571f3eafb9f4</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-74a74132-fa39-541c-8d3c-696cf228452d-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-74a74132-fa39-541c-8d3c-696cf228452d-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5f289cdc-fda1-4058-b44f-041ba1398e79" rel="noreferrer noopener"><span>Grundgleichung der Mechanik anwenden</span> <code>5f289cdc-fda1-4058-b44f-041ba1398e79</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-9f59a088-3939-59e9-821d-167fadfda782" rel="noreferrer noopener"><span>Kondensator und Feld im Plattenkondensator</span> <code>9f59a088-3939-59e9-821d-167fadfda782</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-74a74132-fa39-541c-8d3c-696cf228452d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-74a74132-fa39-541c-8d3c-696cf228452d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-72ee642f-7574-517e-abd6-17d699b05af6" rel="noreferrer noopener"><span>Linearbeschleuniger und Relativitaetsgrenze</span> <code>72ee642f-7574-517e-abd6-17d699b05af6</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 10</span>
+      <span>Buch-Digest <code>sha256:9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:27a9f8ca048e8fd9a07622eeaf562319bcb7411b70ebb1ca1b4f47523e5cfa68</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-final-adjudication-context-recheck-10-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=74a74132-fa39-541c-8d3c-696cf228452d&amp;goalFingerprint=sha256%3A27a9f8ca048e8fd9a07622eeaf562319bcb7411b70ebb1ca1b4f47523e5cfa68&amp;pageFingerprint=sha256%3A5ed9de1e68e33b74b2f1b57e0268ccd4b2f1322bf3cfb1dd18e5e744aa694c56&amp;bookDigest=sha256%3A9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8d34228c-da38-5c1e-97cc-571f3eafb9f4" data-goal-id="8d34228c-da38-5c1e-97cc-571f3eafb9f4" data-page-number="9" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q1 structure:canonical-goal-d7bc20e0-5ee9-593a-a7a9-d7cbb88392e6 structure:canonical-goal-43eb9b9e-cfdf-5cf1-88db-87391c7ba595 structure:canonical-goal-47f76c5c-05d1-59eb-876d-cafb98a66c5b" aria-labelledby="goal-8d34228c-da38-5c1e-97cc-571f3eafb9f4-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8d34228c-da38-5c1e-97cc-571f3eafb9f4-title"><a class="goal-self-link" href="#goal-8d34228c-da38-5c1e-97cc-571f3eafb9f4">Exkurs: Relativistische Energie und Impuls im Linearbeschleuniger</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8d34228c-da38-5c1e-97cc-571f3eafb9f4</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-497492896f4798b54bff1e35">Q1 Elektrisches und magnetisches Feld</a></li><li><a href="#chapter-f371ad1e6774cdc769c15b0b">Elektrisches Feld</a></li><li><a href="#chapter-90d9afa61ed1361fbd8d1458">Ladungen in Feldern</a></li><li><a href="#chapter-86145cbb4f507a42a795a801">Bewegung geladener Teilchen im elektrischen Feld</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1bae0e35c0a126150d123acf3ab8d6a2e1193e4ec2540fad3df2f2ab992c916d" data-rendered-digest="sha256:07d65728a83984b2b44e851ab84227b9576af5051b1e406bbb8d33ab1fe39231" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/8d34228c-da38-5c1e-97cc-571f3eafb9f4/8d34228c-da38-5c1e-97cc-571f3eafb9f4.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Exkurs: Relativistische Energie und Impuls im Linearbeschleuniger&quot;. Die lernende Person kann am Beispiel eines Linearbeschleunigers erläutern, warum klassische Energie- und Impulsbeziehungen für Geschwindigkeiten nahe der Lichtgeschwindigkeit versagen, und die historische Bezeichnung „relativistische Massenzunahme“ so einordnen, dass die Ruhemasse invariant bleibt und die Zunahme von Energie und Impuls relativistisch beschrieben wird.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8d34228c-da38-5c1e-97cc-571f3eafb9f4-description-heading">
+        <p class="section-heading" id="goal-8d34228c-da38-5c1e-97cc-571f3eafb9f4-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann am Beispiel eines Linearbeschleunigers erläutern, warum klassische Energie- und Impulsbeziehungen für Geschwindigkeiten nahe der Lichtgeschwindigkeit versagen, und die historische Bezeichnung „relativistische Massenzunahme“ so einordnen, dass die Ruhemasse invariant bleibt und die Zunahme von Energie und Impuls relativistisch beschrieben wird.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8d34228c-da38-5c1e-97cc-571f3eafb9f4" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8d34228c-da38-5c1e-97cc-571f3eafb9f4-requires-heading">
+          <p class="section-heading" id="goal-8d34228c-da38-5c1e-97cc-571f3eafb9f4-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-74a74132-fa39-541c-8d3c-696cf228452d"><span>Linearbeschleuniger modellieren</span><code>74a74132-fa39-541c-8d3c-696cf228452d</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8d34228c-da38-5c1e-97cc-571f3eafb9f4-reverse-heading">
+          <p class="section-heading" id="goal-8d34228c-da38-5c1e-97cc-571f3eafb9f4-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-a684bec1-ba59-59d0-98d2-4ca37236f64c"><span>Relativitätspostulate und Experimente</span><code>a684bec1-ba59-59d0-98d2-4ca37236f64c</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-8d34228c-da38-5c1e-97cc-571f3eafb9f4-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8d34228c-da38-5c1e-97cc-571f3eafb9f4-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-72ee642f-7574-517e-abd6-17d699b05af6" rel="noreferrer noopener"><span>Linearbeschleuniger und Relativitaetsgrenze</span> <code>72ee642f-7574-517e-abd6-17d699b05af6</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 10</span>
+      <span>Buch-Digest <code>sha256:9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ab45273b4c215ac4b12bda92207fc8d799388adb31fbfd480a76a80b62d68951</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-final-adjudication-context-recheck-10-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=8d34228c-da38-5c1e-97cc-571f3eafb9f4&amp;goalFingerprint=sha256%3Aab45273b4c215ac4b12bda92207fc8d799388adb31fbfd480a76a80b62d68951&amp;pageFingerprint=sha256%3A3f21ee2d2174f5bb8b8064f3eb89623699f5cf81f6969fcf79c1667b4e833a8f&amp;bookDigest=sha256%3A9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c" data-goal-id="a684bec1-ba59-59d0-98d2-4ca37236f64c" data-page-number="10" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-157c404a-e14b-598a-9389-6924f8f9262e" aria-labelledby="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-title"><a class="goal-self-link" href="#goal-a684bec1-ba59-59d0-98d2-4ca37236f64c">Relativitätspostulate und Experimente</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a684bec1-ba59-59d0-98d2-4ca37236f64c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-b11db4fba365d197361f5a29">Spezielle Relativitätstheorie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1d85951d5c0900e51d791a3e7eda6948af957d5b14b5346041f5769fad2717e2" data-rendered-digest="sha256:c3914f35d42054a832cb2fea7c06d63dd0361b07582fea0ae7f3c60ea7f32b2f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/a684bec1-ba59-59d0-98d2-4ca37236f64c/a684bec1-ba59-59d0-98d2-4ca37236f64c.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Relativitätspostulate und Experimente&quot;. Die lernende Person kann die Relativitätspostulate formulieren, das Relativitätsprinzip erläutern und die Rolle von Experimenten wie dem Michelson-Morley-Versuch qualitativ beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-description-heading">
+        <p class="section-heading" id="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Relativitätspostulate formulieren, das Relativitätsprinzip erläutern und die Rolle von Experimenten wie dem Michelson-Morley-Versuch qualitativ beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a684bec1-ba59-59d0-98d2-4ca37236f64c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-requires-heading">
+          <p class="section-heading" id="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8d34228c-da38-5c1e-97cc-571f3eafb9f4"><span>Exkurs: Relativistische Energie und Impuls im Linearbeschleuniger</span><code>8d34228c-da38-5c1e-97cc-571f3eafb9f4</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-reverse-heading">
+          <p class="section-heading" id="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-266b6cf8-d49d-5197-862c-9998fcf179a5" rel="noreferrer noopener"><span>Lernkarten - Q4</span> <code>266b6cf8-d49d-5197-862c-9998fcf179a5</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a08e33db-d821-457b-86dd-870e7648c5f4" rel="noreferrer noopener"><span>Einstein-Synchronisation erläutern</span> <code>a08e33db-d821-457b-86dd-870e7648c5f4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6" rel="noreferrer noopener"><span>Zeitdilatation und Längenkontraktion</span> <code>19aef2ed-eb46-55b1-9486-ee83f7520bb6</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-57ec031c-9a91-5331-81a7-6ef900f7c63e" rel="noreferrer noopener"><span>Lorentztransformation anwenden</span> <code>57ec031c-9a91-5331-81a7-6ef900f7c63e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 10</span>
+      <span>Buch-Digest <code>sha256:9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:57c1d35554a191200261bd62bb0662187248c045a81b35831e70afdd58cf06ff</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-final-adjudication-context-recheck-10-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=a684bec1-ba59-59d0-98d2-4ca37236f64c&amp;goalFingerprint=sha256%3A57c1d35554a191200261bd62bb0662187248c045a81b35831e70afdd58cf06ff&amp;pageFingerprint=sha256%3A14082725b46ffd71fe82f0d98a015e24c4b82cf7d00d0eb68e16480fafc341fe&amp;bookDigest=sha256%3A9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

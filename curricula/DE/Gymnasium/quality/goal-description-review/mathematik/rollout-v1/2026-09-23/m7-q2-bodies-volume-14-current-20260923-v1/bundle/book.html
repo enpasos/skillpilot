@@ -1,0 +1,870 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Mathematik M7: Q2 Körper, Volumen und Oberflächen (14 aktuelle Ziele)</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Mathematik M7: Q2 Körper, Volumen und Oberflächen (14 aktuelle Ziele)</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>14 atomare Lernziele</dt><dd>7 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:d5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-math-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-71894e7ef4af5f94dc6093d2" aria-label="Mathematik"><a href="#goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce"><span class="toc-entry-label">Mathematik</span></a></h2>
+          <span class="toc-entry-meta"><span>14 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-math-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-3fb62939875ba85ae30720f7" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>14 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:geometry-and-advanced-analysis" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-a5c625ae0ae8fa0e0ca6ed41" aria-label="Analytische Geometrie, lineare Algebra und vertiefte Analysis"><a href="#goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce"><span class="toc-entry-label">Analytische&#160;<wbr>Geometrie,&#160;<wbr>lineare&#160;<wbr>Algebra&#160;<wbr>und&#160;<wbr>vertiefte&#160;<wbr>Analysis</span></a></h4>
+          <span class="toc-entry-meta"><span>14 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-bf8fb58c8a093083ad583bc2" aria-label="Punkte, Vektoren und Bewegungen im Raum"><a href="#goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce"><span class="toc-entry-label">Punkte,&#160;<wbr>Vektoren&#160;<wbr>und&#160;<wbr>Bewegungen&#160;<wbr>im&#160;<wbr>Raum</span></a></h5>
+          <span class="toc-entry-meta"><span>14 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-211fa3c8-9e74-5c82-8863-0d51700185cd" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-5bd341f4ca9aeda4df598cbf" aria-label="Körper und Figuren im Raum charakterisieren"><a href="#goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce"><span class="toc-entry-label">Körper&#160;<wbr>und&#160;<wbr>Figuren&#160;<wbr>im&#160;<wbr>Raum&#160;<wbr>charakterisieren</span></a></h6>
+          <span class="toc-entry-meta"><span>14 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:5" data-chapter-id="structure:canonical-goal-bff7aa8b-1007-5c95-a148-a1b82f47da18" data-chapter-depth="5">
+          <h6 class="toc-entry-heading" id="chapter-1405a1bf9acfbc29db54427a" aria-label="Eigenschaften einfacher geometrischer Körper untersuchen"><a href="#goal-50eb5156-5046-5887-80dc-3128c5f8cbd6"><span class="toc-entry-label">Eigenschaften&#160;<wbr>einfacher&#160;<wbr>geometrischer&#160;<wbr>Körper&#160;<wbr>untersuchen</span></a></h6>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 9</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:5" data-chapter-id="structure:canonical-goal-63dae16c-8cc0-5400-bc0b-b2e9e7d28ffa" data-chapter-depth="5">
+          <h6 class="toc-entry-heading" id="chapter-a65822a33489cec1871e6fd6" aria-label="Körpereigenschaften begründen und Volumen- sowie Oberflächeninhalte berechnen"><a href="#goal-636b3e2d-c687-5469-8850-e085df06878d"><span class="toc-entry-label">Körpereigenschaften&#160;<wbr>begründen&#160;<wbr>und&#160;<wbr>Volumen-&#160;<wbr>sowie&#160;<wbr>Oberflächeninhalte&#160;<wbr>berechnen</span></a></h6>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 12</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce" data-goal-id="1e77bb2f-0cd6-5961-b0fb-230317c73fce" data-page-number="1" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44 structure:canonical-goal-211fa3c8-9e74-5c82-8863-0d51700185cd" aria-labelledby="goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce-title"><a class="goal-self-link" href="#goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce">Volumen von Prismen aus Grundfläche und Höhe bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1e77bb2f-0cd6-5961-b0fb-230317c73fce</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li><li><a href="#chapter-5bd341f4ca9aeda4df598cbf">Körper und Figuren im Raum charakterisieren</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3fbd252d588b6055083fb15e33a5a26316af7cc877532940da28ee3ec516f873" data-rendered-digest="sha256:8fcd1f3378f4ba9f380f39700548890bcb0c24883282350e22c2de979182bbb4" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/1e77bb2f-0cd6-5961-b0fb-230317c73fce/1e77bb2f-0cd6-5961-b0fb-230317c73fce.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Volumen von Prismen aus Grundfläche und Höhe bestimmen&quot;. Die lernende Person kann den Zusammenhang $V = G \cdot h$ geometrisch erklären und nutzen, um Volumina von Prismen aus Skizzen oder Koordinaten zu bestimmen und Einheiten korrekt anzugeben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce-description-heading">
+        <p class="section-heading" id="goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Zusammenhang $V = G \cdot h$ geometrisch erklären und nutzen, um Volumina von Prismen aus Skizzen oder Koordinaten zu bestimmen und Einheiten korrekt anzugeben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. II · GK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce-requires-heading">
+          <p class="section-heading" id="goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce-reverse-heading">
+          <p class="section-heading" id="goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0a846521-edcc-5c3c-a844-eac061e053ce" rel="noreferrer noopener"><span>Abstände und Längen im Raum bestimmen</span> <code>0a846521-edcc-5c3c-a844-eac061e053ce</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1e77bb2f-0cd6-5961-b0fb-230317c73fce-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 14</span>
+      <span>Buch-Digest <code>sha256:d5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f872807fd39211a578386e526b1305c28d30c2f24c155ca004d5d42c5a19d9aa</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-bodies-volume-14-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=1e77bb2f-0cd6-5961-b0fb-230317c73fce&amp;goalFingerprint=sha256%3Af872807fd39211a578386e526b1305c28d30c2f24c155ca004d5d42c5a19d9aa&amp;pageFingerprint=sha256%3A85bcb19cae7b57f515dcaea5c92a89f7062a6378e18554781345cfe7a082c46e&amp;bookDigest=sha256%3Ad5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-288633c1-f61c-5b48-af7e-a80357f96cad" data-goal-id="288633c1-f61c-5b48-af7e-a80357f96cad" data-page-number="2" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44 structure:canonical-goal-211fa3c8-9e74-5c82-8863-0d51700185cd" aria-labelledby="goal-288633c1-f61c-5b48-af7e-a80357f96cad-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-288633c1-f61c-5b48-af7e-a80357f96cad-title"><a class="goal-self-link" href="#goal-288633c1-f61c-5b48-af7e-a80357f96cad">Volumen von Pyramiden aus Grundfläche und Höhe bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>288633c1-f61c-5b48-af7e-a80357f96cad</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li><li><a href="#chapter-5bd341f4ca9aeda4df598cbf">Körper und Figuren im Raum charakterisieren</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a21925c7ad48de3728a8551838bc3a295a807ae48d223409233f16f59d7dcfa1" data-rendered-digest="sha256:70a3e2af764e46b0d2a29c259288e26f701ce1df2a46f2558d802cbbecafb3d0" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/288633c1-f61c-5b48-af7e-a80357f96cad/288633c1-f61c-5b48-af7e-a80357f96cad.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Volumen von Pyramiden aus Grundfläche und Höhe bestimmen&quot;. Die lernende Person kann den Faktor $\frac{1}{3}$ als Verhältnis zum entsprechenden Prisma deuten und den Zusammenhang $V = \frac{1}{3} G \cdot h$ nutzen, um Volumina von Pyramiden aus Skizzen oder Koordinaten zu bestimmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-288633c1-f61c-5b48-af7e-a80357f96cad-description-heading">
+        <p class="section-heading" id="goal-288633c1-f61c-5b48-af7e-a80357f96cad-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Faktor $\frac{1}{3}$ als Verhältnis zum entsprechenden Prisma deuten und den Zusammenhang $V = \frac{1}{3} G \cdot h$ nutzen, um Volumina von Pyramiden aus Skizzen oder Koordinaten zu bestimmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. II · GK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-288633c1-f61c-5b48-af7e-a80357f96cad" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-288633c1-f61c-5b48-af7e-a80357f96cad-requires-heading">
+          <p class="section-heading" id="goal-288633c1-f61c-5b48-af7e-a80357f96cad-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-288633c1-f61c-5b48-af7e-a80357f96cad-reverse-heading">
+          <p class="section-heading" id="goal-288633c1-f61c-5b48-af7e-a80357f96cad-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-288633c1-f61c-5b48-af7e-a80357f96cad-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-288633c1-f61c-5b48-af7e-a80357f96cad-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0a846521-edcc-5c3c-a844-eac061e053ce" rel="noreferrer noopener"><span>Abstände und Längen im Raum bestimmen</span> <code>0a846521-edcc-5c3c-a844-eac061e053ce</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-288633c1-f61c-5b48-af7e-a80357f96cad-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-288633c1-f61c-5b48-af7e-a80357f96cad-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 14</span>
+      <span>Buch-Digest <code>sha256:d5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4bf22f444746da313d26217d79b2dbf66be3c9d4a6e2d9a92538184039e966ee</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-bodies-volume-14-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=288633c1-f61c-5b48-af7e-a80357f96cad&amp;goalFingerprint=sha256%3A4bf22f444746da313d26217d79b2dbf66be3c9d4a6e2d9a92538184039e966ee&amp;pageFingerprint=sha256%3A1f798172da22c577bfb76b2089141ee88a8f13533fe939a10f8de9a6cf8b1009&amp;bookDigest=sha256%3Ad5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2f2c9f1a-07f0-59e4-b84a-60648c3b0bda" data-goal-id="2f2c9f1a-07f0-59e4-b84a-60648c3b0bda" data-page-number="3" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44 structure:canonical-goal-211fa3c8-9e74-5c82-8863-0d51700185cd" aria-labelledby="goal-2f2c9f1a-07f0-59e4-b84a-60648c3b0bda-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2f2c9f1a-07f0-59e4-b84a-60648c3b0bda-title"><a class="goal-self-link" href="#goal-2f2c9f1a-07f0-59e4-b84a-60648c3b0bda">Volumen von Kugeln aus dem Radius bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2f2c9f1a-07f0-59e4-b84a-60648c3b0bda</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li><li><a href="#chapter-5bd341f4ca9aeda4df598cbf">Körper und Figuren im Raum charakterisieren</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:498e596882ed206ad3dd764c9fe08019f269f7e168bb195b97caa566a47fb961" data-rendered-digest="sha256:a38daa60da6ef99e7a7139954f0dc3ce2d1fbcfd2696e42f4d3a4d9815f5ccee" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/2f2c9f1a-07f0-59e4-b84a-60648c3b0bda/2f2c9f1a-07f0-59e4-b84a-60648c3b0bda.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Volumen von Kugeln aus dem Radius bestimmen&quot;. Die lernende Person kann die kubische Abhängigkeit des Kugelvolumens vom Radius beschreiben und den Zusammenhang $V = \frac{4}{3} \pi r^3$ nutzen, um Kugelvolumina aus Skizzen oder Koordinaten zu bestimmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2f2c9f1a-07f0-59e4-b84a-60648c3b0bda-description-heading">
+        <p class="section-heading" id="goal-2f2c9f1a-07f0-59e4-b84a-60648c3b0bda-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die kubische Abhängigkeit des Kugelvolumens vom Radius beschreiben und den Zusammenhang $V = \frac{4}{3} \pi r^3$ nutzen, um Kugelvolumina aus Skizzen oder Koordinaten zu bestimmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. II · GK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2f2c9f1a-07f0-59e4-b84a-60648c3b0bda" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2f2c9f1a-07f0-59e4-b84a-60648c3b0bda-requires-heading">
+          <p class="section-heading" id="goal-2f2c9f1a-07f0-59e4-b84a-60648c3b0bda-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2f2c9f1a-07f0-59e4-b84a-60648c3b0bda-reverse-heading">
+          <p class="section-heading" id="goal-2f2c9f1a-07f0-59e4-b84a-60648c3b0bda-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2f2c9f1a-07f0-59e4-b84a-60648c3b0bda-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2f2c9f1a-07f0-59e4-b84a-60648c3b0bda-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0a846521-edcc-5c3c-a844-eac061e053ce" rel="noreferrer noopener"><span>Abstände und Längen im Raum bestimmen</span> <code>0a846521-edcc-5c3c-a844-eac061e053ce</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2f2c9f1a-07f0-59e4-b84a-60648c3b0bda-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2f2c9f1a-07f0-59e4-b84a-60648c3b0bda-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 14</span>
+      <span>Buch-Digest <code>sha256:d5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3</code></span>
+      <span>Ziel-Fingerprint <code>sha256:75bd067f3d29af1c19b5e002826aa961e651af3802c480ddde91ef80e897a6c5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-bodies-volume-14-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=2f2c9f1a-07f0-59e4-b84a-60648c3b0bda&amp;goalFingerprint=sha256%3A75bd067f3d29af1c19b5e002826aa961e651af3802c480ddde91ef80e897a6c5&amp;pageFingerprint=sha256%3A6960a323759419e59d06db2eb0774bb6662fd3b702b8ee448a633b92e55d7b4b&amp;bookDigest=sha256%3Ad5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-944dd479-9f30-5acb-ab32-3ea0b6dc8e06" data-goal-id="944dd479-9f30-5acb-ab32-3ea0b6dc8e06" data-page-number="4" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44 structure:canonical-goal-211fa3c8-9e74-5c82-8863-0d51700185cd" aria-labelledby="goal-944dd479-9f30-5acb-ab32-3ea0b6dc8e06-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-944dd479-9f30-5acb-ab32-3ea0b6dc8e06-title"><a class="goal-self-link" href="#goal-944dd479-9f30-5acb-ab32-3ea0b6dc8e06">Spatprodukt korrekt definieren und deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>944dd479-9f30-5acb-ab32-3ea0b6dc8e06</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li><li><a href="#chapter-5bd341f4ca9aeda4df598cbf">Körper und Figuren im Raum charakterisieren</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:327da301d87ab0d9865256e8357515f9ff840cde1a2839dda58c134249e0c3c6" data-rendered-digest="sha256:dc886358390455086bba888048f437853b04c93e0fb040c0baa23822fcd0b193" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/944dd479-9f30-5acb-ab32-3ea0b6dc8e06/944dd479-9f30-5acb-ab32-3ea0b6dc8e06.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Spatprodukt korrekt definieren und deuten&quot;. Die lernende Person kann das Spatprodukt als $[\vec{a},\vec{b},\vec{c}] = \vec{a} \cdot (\vec{b} \times \vec{c})$ korrekt angeben, die Orientierung deuten und für Volumenberechnungen den Betrag verwenden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-944dd479-9f30-5acb-ab32-3ea0b6dc8e06-description-heading">
+        <p class="section-heading" id="goal-944dd479-9f30-5acb-ab32-3ea0b6dc8e06-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Spatprodukt als $[\vec{a},\vec{b},\vec{c}] = \vec{a} \cdot (\vec{b} \times \vec{c})$ korrekt angeben, die Orientierung deuten und für Volumenberechnungen den Betrag verwenden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-944dd479-9f30-5acb-ab32-3ea0b6dc8e06" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-944dd479-9f30-5acb-ab32-3ea0b6dc8e06-requires-heading">
+          <p class="section-heading" id="goal-944dd479-9f30-5acb-ab32-3ea0b6dc8e06-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-944dd479-9f30-5acb-ab32-3ea0b6dc8e06-reverse-heading">
+          <p class="section-heading" id="goal-944dd479-9f30-5acb-ab32-3ea0b6dc8e06-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-a594dec0-3977-5c43-9432-d4254a7f6130"><span>Volumen von Spaten und Tetraedern mit Spatprodukt berechnen</span><code>a594dec0-3977-5c43-9432-d4254a7f6130</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-e9181209-1506-59df-9053-17f36b91bb06"><span>Volumenformeln räumlicher Körper herleiten (LK)</span><code>e9181209-1506-59df-9053-17f36b91bb06</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-944dd479-9f30-5acb-ab32-3ea0b6dc8e06-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-944dd479-9f30-5acb-ab32-3ea0b6dc8e06-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-265af6af-8eac-5632-b730-800aafcde26a" rel="noreferrer noopener"><span>Skalarprodukt zur Winkelberechnung nutzen</span> <code>265af6af-8eac-5632-b730-800aafcde26a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0a846521-edcc-5c3c-a844-eac061e053ce" rel="noreferrer noopener"><span>Abstände und Längen im Raum bestimmen</span> <code>0a846521-edcc-5c3c-a844-eac061e053ce</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 14</span>
+      <span>Buch-Digest <code>sha256:d5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3aaa5cb57ae815d136b464cecc37d6e44023a24a6352da72fd2232590ecbab81</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-bodies-volume-14-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=944dd479-9f30-5acb-ab32-3ea0b6dc8e06&amp;goalFingerprint=sha256%3A3aaa5cb57ae815d136b464cecc37d6e44023a24a6352da72fd2232590ecbab81&amp;pageFingerprint=sha256%3Ac7289665b09fe0c3eec5945f0169e0286484ffbc28d0cdcd265c9bf74778af91&amp;bookDigest=sha256%3Ad5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a594dec0-3977-5c43-9432-d4254a7f6130" data-goal-id="a594dec0-3977-5c43-9432-d4254a7f6130" data-page-number="5" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44 structure:canonical-goal-211fa3c8-9e74-5c82-8863-0d51700185cd" aria-labelledby="goal-a594dec0-3977-5c43-9432-d4254a7f6130-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a594dec0-3977-5c43-9432-d4254a7f6130-title"><a class="goal-self-link" href="#goal-a594dec0-3977-5c43-9432-d4254a7f6130">Volumen von Spaten und Tetraedern mit Spatprodukt berechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a594dec0-3977-5c43-9432-d4254a7f6130</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li><li><a href="#chapter-5bd341f4ca9aeda4df598cbf">Körper und Figuren im Raum charakterisieren</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3a58326f99fa6bc7daa2f8c05b09f807b53e2de29fde14b353f31b3a45e00477" data-rendered-digest="sha256:371d8b005c1c71607ec342348c9c00fc1a12d0ebadda9192d5817343b3026017" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/a594dec0-3977-5c43-9432-d4254a7f6130/a594dec0-3977-5c43-9432-d4254a7f6130.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Volumen von Spaten und Tetraedern mit Spatprodukt berechnen&quot;. Die lernende Person kann Volumina von Spaten (Parallelepipeden) und Tetraedern aus Koordinaten mithilfe des Spatprodukts bestimmen ($V_{Spat} = |\vec{a} \cdot (\vec{b} \times \vec{c})|$, $V_{Tet} = \frac{1}{6} V_{Spat}$) und passende Kantenvektoren wählen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a594dec0-3977-5c43-9432-d4254a7f6130-description-heading">
+        <p class="section-heading" id="goal-a594dec0-3977-5c43-9432-d4254a7f6130-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Volumina von Spaten (Parallelepipeden) und Tetraedern aus Koordinaten mithilfe des Spatprodukts bestimmen ($V_{Spat} = |\vec{a} \cdot (\vec{b} \times \vec{c})|$, $V_{Tet} = \frac{1}{6} V_{Spat}$) und passende Kantenvektoren wählen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a594dec0-3977-5c43-9432-d4254a7f6130" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a594dec0-3977-5c43-9432-d4254a7f6130-requires-heading">
+          <p class="section-heading" id="goal-a594dec0-3977-5c43-9432-d4254a7f6130-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-944dd479-9f30-5acb-ab32-3ea0b6dc8e06"><span>Spatprodukt korrekt definieren und deuten</span><code>944dd479-9f30-5acb-ab32-3ea0b6dc8e06</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a594dec0-3977-5c43-9432-d4254a7f6130-reverse-heading">
+          <p class="section-heading" id="goal-a594dec0-3977-5c43-9432-d4254a7f6130-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-a594dec0-3977-5c43-9432-d4254a7f6130-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a594dec0-3977-5c43-9432-d4254a7f6130-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 14</span>
+      <span>Buch-Digest <code>sha256:d5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c0971d4e073a9ba69602fb467e29d943bcfe42bdd9e5070b0a78229e2f567e18</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-bodies-volume-14-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=a594dec0-3977-5c43-9432-d4254a7f6130&amp;goalFingerprint=sha256%3Ac0971d4e073a9ba69602fb467e29d943bcfe42bdd9e5070b0a78229e2f567e18&amp;pageFingerprint=sha256%3A870012a616599307e3315c37c7ada4487bd4c64e01af275f43167ab93b085b02&amp;bookDigest=sha256%3Ad5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c71ae268-f28e-59f0-982d-91db8f963378" data-goal-id="c71ae268-f28e-59f0-982d-91db8f963378" data-page-number="6" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44 structure:canonical-goal-211fa3c8-9e74-5c82-8863-0d51700185cd" aria-labelledby="goal-c71ae268-f28e-59f0-982d-91db8f963378-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c71ae268-f28e-59f0-982d-91db8f963378-title"><a class="goal-self-link" href="#goal-c71ae268-f28e-59f0-982d-91db8f963378">Volumen von Zylindern aus Radius und Höhe bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c71ae268-f28e-59f0-982d-91db8f963378</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li><li><a href="#chapter-5bd341f4ca9aeda4df598cbf">Körper und Figuren im Raum charakterisieren</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:039783533618b67355c2dc81e2f8ae91d690f32f2f5a6ec81ebcad32881dc71b" data-rendered-digest="sha256:d563e8ad085220f508010e102403938de842991b96de5f87c6dc1be08d6dec6f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/c71ae268-f28e-59f0-982d-91db8f963378/c71ae268-f28e-59f0-982d-91db8f963378.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Volumen von Zylindern aus Radius und Höhe bestimmen&quot;. Die lernende Person kann die Kreisfläche als Grundfläche eines Zylinders deuten und den Zusammenhang $V = \pi r^2 h$ nutzen, um Volumina aus Skizzen oder Koordinaten zu bestimmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c71ae268-f28e-59f0-982d-91db8f963378-description-heading">
+        <p class="section-heading" id="goal-c71ae268-f28e-59f0-982d-91db8f963378-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Kreisfläche als Grundfläche eines Zylinders deuten und den Zusammenhang $V = \pi r^2 h$ nutzen, um Volumina aus Skizzen oder Koordinaten zu bestimmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. II · GK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c71ae268-f28e-59f0-982d-91db8f963378" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c71ae268-f28e-59f0-982d-91db8f963378-requires-heading">
+          <p class="section-heading" id="goal-c71ae268-f28e-59f0-982d-91db8f963378-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-c71ae268-f28e-59f0-982d-91db8f963378-reverse-heading">
+          <p class="section-heading" id="goal-c71ae268-f28e-59f0-982d-91db8f963378-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-c71ae268-f28e-59f0-982d-91db8f963378-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c71ae268-f28e-59f0-982d-91db8f963378-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0a846521-edcc-5c3c-a844-eac061e053ce" rel="noreferrer noopener"><span>Abstände und Längen im Raum bestimmen</span> <code>0a846521-edcc-5c3c-a844-eac061e053ce</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-c71ae268-f28e-59f0-982d-91db8f963378-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c71ae268-f28e-59f0-982d-91db8f963378-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 14</span>
+      <span>Buch-Digest <code>sha256:d5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c43e4f2cfc633c7e8865ccb6847639640a574ccdfeb965d205c30fa64035f6ce</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-bodies-volume-14-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=c71ae268-f28e-59f0-982d-91db8f963378&amp;goalFingerprint=sha256%3Ac43e4f2cfc633c7e8865ccb6847639640a574ccdfeb965d205c30fa64035f6ce&amp;pageFingerprint=sha256%3Ab5c93226dcbfcdf063c2a55d51efe2cc900137ed55450574058277fafb18e002&amp;bookDigest=sha256%3Ad5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e8237315-654e-5150-97de-49c4cb49b3d1" data-goal-id="e8237315-654e-5150-97de-49c4cb49b3d1" data-page-number="7" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44 structure:canonical-goal-211fa3c8-9e74-5c82-8863-0d51700185cd" aria-labelledby="goal-e8237315-654e-5150-97de-49c4cb49b3d1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e8237315-654e-5150-97de-49c4cb49b3d1-title"><a class="goal-self-link" href="#goal-e8237315-654e-5150-97de-49c4cb49b3d1">Volumen von Kegeln aus Radius und Höhe bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e8237315-654e-5150-97de-49c4cb49b3d1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li><li><a href="#chapter-5bd341f4ca9aeda4df598cbf">Körper und Figuren im Raum charakterisieren</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2d3969155dc3e4f96ebcaa0f00025c0cc3d60291219d128055ac821bc21e0797" data-rendered-digest="sha256:db83eb22703b5736bc3814452a163b2caad38a0ccb0d1456e20f2e6beb349cc1" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/e8237315-654e-5150-97de-49c4cb49b3d1/e8237315-654e-5150-97de-49c4cb49b3d1.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Volumen von Kegeln aus Radius und Höhe bestimmen&quot;. Die lernende Person kann den Faktor $\frac{1}{3}$ als Verhältnis zum entsprechenden Zylinder deuten und den Zusammenhang $V = \frac{1}{3} \pi r^2 h$ nutzen, um Volumina von Kegeln aus Skizzen oder Koordinaten zu bestimmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e8237315-654e-5150-97de-49c4cb49b3d1-description-heading">
+        <p class="section-heading" id="goal-e8237315-654e-5150-97de-49c4cb49b3d1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Faktor $\frac{1}{3}$ als Verhältnis zum entsprechenden Zylinder deuten und den Zusammenhang $V = \frac{1}{3} \pi r^2 h$ nutzen, um Volumina von Kegeln aus Skizzen oder Koordinaten zu bestimmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. II · GK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e8237315-654e-5150-97de-49c4cb49b3d1" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e8237315-654e-5150-97de-49c4cb49b3d1-requires-heading">
+          <p class="section-heading" id="goal-e8237315-654e-5150-97de-49c4cb49b3d1-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-e8237315-654e-5150-97de-49c4cb49b3d1-reverse-heading">
+          <p class="section-heading" id="goal-e8237315-654e-5150-97de-49c4cb49b3d1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e8237315-654e-5150-97de-49c4cb49b3d1-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e8237315-654e-5150-97de-49c4cb49b3d1-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0a846521-edcc-5c3c-a844-eac061e053ce" rel="noreferrer noopener"><span>Abstände und Längen im Raum bestimmen</span> <code>0a846521-edcc-5c3c-a844-eac061e053ce</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e8237315-654e-5150-97de-49c4cb49b3d1-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e8237315-654e-5150-97de-49c4cb49b3d1-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 14</span>
+      <span>Buch-Digest <code>sha256:d5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5532a3ba6e01ec310e19f30efbea95e23803157950dd7e707cd6a227ed314fe8</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-bodies-volume-14-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=e8237315-654e-5150-97de-49c4cb49b3d1&amp;goalFingerprint=sha256%3A5532a3ba6e01ec310e19f30efbea95e23803157950dd7e707cd6a227ed314fe8&amp;pageFingerprint=sha256%3A272172f92ee48b007cd542ebad0196d89242c1a2b59cb4971ac3bf4c60712063&amp;bookDigest=sha256%3Ad5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e9181209-1506-59df-9053-17f36b91bb06" data-goal-id="e9181209-1506-59df-9053-17f36b91bb06" data-page-number="8" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44 structure:canonical-goal-211fa3c8-9e74-5c82-8863-0d51700185cd" aria-labelledby="goal-e9181209-1506-59df-9053-17f36b91bb06-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e9181209-1506-59df-9053-17f36b91bb06-title"><a class="goal-self-link" href="#goal-e9181209-1506-59df-9053-17f36b91bb06">Volumenformeln räumlicher Körper herleiten (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e9181209-1506-59df-9053-17f36b91bb06</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li><li><a href="#chapter-5bd341f4ca9aeda4df598cbf">Körper und Figuren im Raum charakterisieren</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:5fe16dd829173dcde09445a2edfc19cc23febfa34023b4c184c5931ba86d196c" data-rendered-digest="sha256:10b43fc5b3daddc912b145ef65437f06446ce3f1471662b38b70fc285bb467b9" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/e9181209-1506-59df-9053-17f36b91bb06/e9181209-1506-59df-9053-17f36b91bb06.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Volumenformeln räumlicher Körper herleiten (LK)&quot;. Die lernende Person kann die Volumenformel eines ausgewählten räumlichen Körpers durch Zerlegung oder ein geeignetes Integral herleiten und die Herleitung geometrisch begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e9181209-1506-59df-9053-17f36b91bb06-description-heading">
+        <p class="section-heading" id="goal-e9181209-1506-59df-9053-17f36b91bb06-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Volumenformel eines ausgewählten räumlichen Körpers durch Zerlegung oder ein geeignetes Integral herleiten und die Herleitung geometrisch begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e9181209-1506-59df-9053-17f36b91bb06" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e9181209-1506-59df-9053-17f36b91bb06-requires-heading">
+          <p class="section-heading" id="goal-e9181209-1506-59df-9053-17f36b91bb06-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-944dd479-9f30-5acb-ab32-3ea0b6dc8e06"><span>Spatprodukt korrekt definieren und deuten</span><code>944dd479-9f30-5acb-ab32-3ea0b6dc8e06</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e9181209-1506-59df-9053-17f36b91bb06-reverse-heading">
+          <p class="section-heading" id="goal-e9181209-1506-59df-9053-17f36b91bb06-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-e9181209-1506-59df-9053-17f36b91bb06-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e9181209-1506-59df-9053-17f36b91bb06-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 14</span>
+      <span>Buch-Digest <code>sha256:d5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0f02e81447da5c8b38d72e463961dc5b29ca3e486f38825841c9f4626e679e21</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-bodies-volume-14-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=e9181209-1506-59df-9053-17f36b91bb06&amp;goalFingerprint=sha256%3A0f02e81447da5c8b38d72e463961dc5b29ca3e486f38825841c9f4626e679e21&amp;pageFingerprint=sha256%3Ad168ffc7e3e583ea8c3af7c2436667a1977d409840364831f5fdee8c1b83d23c&amp;bookDigest=sha256%3Ad5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-50eb5156-5046-5887-80dc-3128c5f8cbd6" data-goal-id="50eb5156-5046-5887-80dc-3128c5f8cbd6" data-page-number="9" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44 structure:canonical-goal-211fa3c8-9e74-5c82-8863-0d51700185cd structure:canonical-goal-bff7aa8b-1007-5c95-a148-a1b82f47da18" aria-labelledby="goal-50eb5156-5046-5887-80dc-3128c5f8cbd6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-50eb5156-5046-5887-80dc-3128c5f8cbd6-title"><a class="goal-self-link" href="#goal-50eb5156-5046-5887-80dc-3128c5f8cbd6">Längen- und Winkelbeziehungen einfacher Körper untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>50eb5156-5046-5887-80dc-3128c5f8cbd6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li><li><a href="#chapter-5bd341f4ca9aeda4df598cbf">Körper und Figuren im Raum charakterisieren</a></li><li><a href="#chapter-1405a1bf9acfbc29db54427a">Eigenschaften einfacher geometrischer Körper untersuchen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4b0815f7e8b0afe6329bb1963991270383af089033bab28dc7b49912676e71bb" data-rendered-digest="sha256:750962a47a8a431ba958d35fbe0bfc4bb2b8a848e0bfa556f33f1fd609364646" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/50eb5156-5046-5887-80dc-3128c5f8cbd6/50eb5156-5046-5887-80dc-3128c5f8cbd6.jpg" alt="Die lernende Person kann an Würfeln, Quadern, geraden und schiefen Prismen sowie geraden und schiefen Pyramiden Längen- und Winkelbeziehungen aus geometrischen Eigenschaften und geeigneten Vektordarstellungen bestimmen, begründen und deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-50eb5156-5046-5887-80dc-3128c5f8cbd6-description-heading">
+        <p class="section-heading" id="goal-50eb5156-5046-5887-80dc-3128c5f8cbd6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an Würfeln, Quadern, geraden und schiefen Prismen sowie geraden und schiefen Pyramiden Längen- und Winkelbeziehungen aus geometrischen Eigenschaften und geeigneten Vektordarstellungen bestimmen, begründen und deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G8; Sek. I · G9; Sek. II · GK; + 1 weitere Kombinationen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-50eb5156-5046-5887-80dc-3128c5f8cbd6" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-50eb5156-5046-5887-80dc-3128c5f8cbd6-requires-heading">
+          <p class="section-heading" id="goal-50eb5156-5046-5887-80dc-3128c5f8cbd6-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-50eb5156-5046-5887-80dc-3128c5f8cbd6-reverse-heading">
+          <p class="section-heading" id="goal-50eb5156-5046-5887-80dc-3128c5f8cbd6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-eb070ed2-7ef4-5afe-b203-190ebb0116af"><span>Parallelität und Orthogonalität einfacher Körper untersuchen</span><code>eb070ed2-7ef4-5afe-b203-190ebb0116af</code><span class="reference-page">S. 10</span></a></li><li><a href="#goal-636b3e2d-c687-5469-8850-e085df06878d"><span>Körpereigenschaften fachlich begründen</span><code>636b3e2d-c687-5469-8850-e085df06878d</code><span class="reference-page">S. 12</span></a></li><li><a href="#goal-5f548596-9bc3-532e-88a0-81d5029809e9"><span>Volumeninhalte von Körpern berechnen</span><code>5f548596-9bc3-532e-88a0-81d5029809e9</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-9f9c7ece-b81c-55fa-8073-dd816d7d4778"><span>Oberflächeninhalte von Körpern berechnen</span><code>9f9c7ece-b81c-55fa-8073-dd816d7d4778</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-50eb5156-5046-5887-80dc-3128c5f8cbd6-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-50eb5156-5046-5887-80dc-3128c5f8cbd6-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d379e28b-d9d5-5cab-b383-318e0499c0c7" rel="noreferrer noopener"><span>Einfache geometrische Körper im Raum beschreiben</span> <code>d379e28b-d9d5-5cab-b383-318e0499c0c7</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-69eda7f9-1898-5220-932d-e7bec839b7af" rel="noreferrer noopener"><span>Streckenlängen im Raum bestimmen</span> <code>69eda7f9-1898-5220-932d-e7bec839b7af</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9460c3ff-e72d-4107-bc73-087d217200aa" rel="noreferrer noopener"><span>Skalarprodukt als Orthogonalitätskriterium nutzen</span> <code>9460c3ff-e72d-4107-bc73-087d217200aa</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-50eb5156-5046-5887-80dc-3128c5f8cbd6-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-50eb5156-5046-5887-80dc-3128c5f8cbd6-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 14</span>
+      <span>Buch-Digest <code>sha256:d5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3</code></span>
+      <span>Ziel-Fingerprint <code>sha256:76c2582ea504910a6336c29515f141f1a9f35131c6815173ffae1c956f244de8</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-bodies-volume-14-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=50eb5156-5046-5887-80dc-3128c5f8cbd6&amp;goalFingerprint=sha256%3A76c2582ea504910a6336c29515f141f1a9f35131c6815173ffae1c956f244de8&amp;pageFingerprint=sha256%3Ade44087387eac0dda58dca8dc37b6153374158254ca46f94d0e286c4c1658907&amp;bookDigest=sha256%3Ad5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-eb070ed2-7ef4-5afe-b203-190ebb0116af" data-goal-id="eb070ed2-7ef4-5afe-b203-190ebb0116af" data-page-number="10" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44 structure:canonical-goal-211fa3c8-9e74-5c82-8863-0d51700185cd structure:canonical-goal-bff7aa8b-1007-5c95-a148-a1b82f47da18" aria-labelledby="goal-eb070ed2-7ef4-5afe-b203-190ebb0116af-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-eb070ed2-7ef4-5afe-b203-190ebb0116af-title"><a class="goal-self-link" href="#goal-eb070ed2-7ef4-5afe-b203-190ebb0116af">Parallelität und Orthogonalität einfacher Körper untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>eb070ed2-7ef4-5afe-b203-190ebb0116af</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li><li><a href="#chapter-5bd341f4ca9aeda4df598cbf">Körper und Figuren im Raum charakterisieren</a></li><li><a href="#chapter-1405a1bf9acfbc29db54427a">Eigenschaften einfacher geometrischer Körper untersuchen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:28f183a43d3a12ac251786d4fcab8550dc3566e18742c06558e01e17d7f0d479" data-rendered-digest="sha256:ba1a3a78f7cc72d0aac5f94fa385c00b9f78a9fec6cdf42e26ff569b46650446" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/eb070ed2-7ef4-5afe-b203-190ebb0116af/eb070ed2-7ef4-5afe-b203-190ebb0116af.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Parallelität und Orthogonalität einfacher Körper untersuchen&quot;. Die lernende Person kann an einfachen geometrischen Körpern Parallelität und Orthogonalität von Kanten, Flächen oder Raumrichtungen untersuchen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-eb070ed2-7ef4-5afe-b203-190ebb0116af-description-heading">
+        <p class="section-heading" id="goal-eb070ed2-7ef4-5afe-b203-190ebb0116af-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an einfachen geometrischen Körpern Parallelität und Orthogonalität von Kanten, Flächen oder Raumrichtungen untersuchen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G8; Sek. I · G9; Sek. II · GK; + 1 weitere Kombinationen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-eb070ed2-7ef4-5afe-b203-190ebb0116af" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-eb070ed2-7ef4-5afe-b203-190ebb0116af-requires-heading">
+          <p class="section-heading" id="goal-eb070ed2-7ef4-5afe-b203-190ebb0116af-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-50eb5156-5046-5887-80dc-3128c5f8cbd6"><span>Längen- und Winkelbeziehungen einfacher Körper untersuchen</span><code>50eb5156-5046-5887-80dc-3128c5f8cbd6</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-eb070ed2-7ef4-5afe-b203-190ebb0116af-reverse-heading">
+          <p class="section-heading" id="goal-eb070ed2-7ef4-5afe-b203-190ebb0116af-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2"><span>Symmetrien einfacher Körper untersuchen</span><code>b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-636b3e2d-c687-5469-8850-e085df06878d"><span>Körpereigenschaften fachlich begründen</span><code>636b3e2d-c687-5469-8850-e085df06878d</code><span class="reference-page">S. 12</span></a></li><li><a href="#goal-5f548596-9bc3-532e-88a0-81d5029809e9"><span>Volumeninhalte von Körpern berechnen</span><code>5f548596-9bc3-532e-88a0-81d5029809e9</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-9f9c7ece-b81c-55fa-8073-dd816d7d4778"><span>Oberflächeninhalte von Körpern berechnen</span><code>9f9c7ece-b81c-55fa-8073-dd816d7d4778</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-eb070ed2-7ef4-5afe-b203-190ebb0116af-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-eb070ed2-7ef4-5afe-b203-190ebb0116af-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d379e28b-d9d5-5cab-b383-318e0499c0c7" rel="noreferrer noopener"><span>Einfache geometrische Körper im Raum beschreiben</span> <code>d379e28b-d9d5-5cab-b383-318e0499c0c7</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-69eda7f9-1898-5220-932d-e7bec839b7af" rel="noreferrer noopener"><span>Streckenlängen im Raum bestimmen</span> <code>69eda7f9-1898-5220-932d-e7bec839b7af</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9460c3ff-e72d-4107-bc73-087d217200aa" rel="noreferrer noopener"><span>Skalarprodukt als Orthogonalitätskriterium nutzen</span> <code>9460c3ff-e72d-4107-bc73-087d217200aa</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-eb070ed2-7ef4-5afe-b203-190ebb0116af-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-eb070ed2-7ef4-5afe-b203-190ebb0116af-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 14</span>
+      <span>Buch-Digest <code>sha256:d5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e9ed603aa9b65b5f30416f900bbca41c8f7d2478a0c13db6e3ca7e607d945cb3</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-bodies-volume-14-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=eb070ed2-7ef4-5afe-b203-190ebb0116af&amp;goalFingerprint=sha256%3Ae9ed603aa9b65b5f30416f900bbca41c8f7d2478a0c13db6e3ca7e607d945cb3&amp;pageFingerprint=sha256%3A35a0ea09e967b2e32194826cb9a71af88fb37d7e916c38ae45283483be574445&amp;bookDigest=sha256%3Ad5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2" data-goal-id="b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2" data-page-number="11" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44 structure:canonical-goal-211fa3c8-9e74-5c82-8863-0d51700185cd structure:canonical-goal-bff7aa8b-1007-5c95-a148-a1b82f47da18" aria-labelledby="goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2-title"><a class="goal-self-link" href="#goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2">Symmetrien einfacher Körper untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li><li><a href="#chapter-5bd341f4ca9aeda4df598cbf">Körper und Figuren im Raum charakterisieren</a></li><li><a href="#chapter-1405a1bf9acfbc29db54427a">Eigenschaften einfacher geometrischer Körper untersuchen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:328512490536b62a9c9dc87f1c21d91fc8de69ccc6fbea9b04b332bba65de6bb" data-rendered-digest="sha256:807c91daf442546fb1fdf69c501e9f8c6fbd94e96befdcd027c3c3ea7f4888e7" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2/b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Symmetrien einfacher Körper untersuchen&quot;. Die lernende Person kann Symmetrieachsen und Symmetrieebenen einfacher geometrischer Körper bestimmen und fachsprachlich beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2-description-heading">
+        <p class="section-heading" id="goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Symmetrieachsen und Symmetrieebenen einfacher geometrischer Körper bestimmen und fachsprachlich beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G8; Sek. I · G9; Sek. II · GK; + 1 weitere Kombinationen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2-requires-heading">
+          <p class="section-heading" id="goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-eb070ed2-7ef4-5afe-b203-190ebb0116af"><span>Parallelität und Orthogonalität einfacher Körper untersuchen</span><code>eb070ed2-7ef4-5afe-b203-190ebb0116af</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2-reverse-heading">
+          <p class="section-heading" id="goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-636b3e2d-c687-5469-8850-e085df06878d"><span>Körpereigenschaften fachlich begründen</span><code>636b3e2d-c687-5469-8850-e085df06878d</code><span class="reference-page">S. 12</span></a></li><li><a href="#goal-5f548596-9bc3-532e-88a0-81d5029809e9"><span>Volumeninhalte von Körpern berechnen</span><code>5f548596-9bc3-532e-88a0-81d5029809e9</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-9f9c7ece-b81c-55fa-8073-dd816d7d4778"><span>Oberflächeninhalte von Körpern berechnen</span><code>9f9c7ece-b81c-55fa-8073-dd816d7d4778</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d379e28b-d9d5-5cab-b383-318e0499c0c7" rel="noreferrer noopener"><span>Einfache geometrische Körper im Raum beschreiben</span> <code>d379e28b-d9d5-5cab-b383-318e0499c0c7</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-69eda7f9-1898-5220-932d-e7bec839b7af" rel="noreferrer noopener"><span>Streckenlängen im Raum bestimmen</span> <code>69eda7f9-1898-5220-932d-e7bec839b7af</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9460c3ff-e72d-4107-bc73-087d217200aa" rel="noreferrer noopener"><span>Skalarprodukt als Orthogonalitätskriterium nutzen</span> <code>9460c3ff-e72d-4107-bc73-087d217200aa</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 14</span>
+      <span>Buch-Digest <code>sha256:d5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b7d79a05add53c31621e2d41cc657ac1ab04972835384ecc3351b61bc03a1cf8</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-bodies-volume-14-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2&amp;goalFingerprint=sha256%3Ab7d79a05add53c31621e2d41cc657ac1ab04972835384ecc3351b61bc03a1cf8&amp;pageFingerprint=sha256%3Ac080b1c5d671bc01d6b6a312e2ba8733706b3d9424b3647b4d1ca0eb531ea2f5&amp;bookDigest=sha256%3Ad5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-636b3e2d-c687-5469-8850-e085df06878d" data-goal-id="636b3e2d-c687-5469-8850-e085df06878d" data-page-number="12" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44 structure:canonical-goal-211fa3c8-9e74-5c82-8863-0d51700185cd structure:canonical-goal-63dae16c-8cc0-5400-bc0b-b2e9e7d28ffa" aria-labelledby="goal-636b3e2d-c687-5469-8850-e085df06878d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-636b3e2d-c687-5469-8850-e085df06878d-title"><a class="goal-self-link" href="#goal-636b3e2d-c687-5469-8850-e085df06878d">Körpereigenschaften fachlich begründen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>636b3e2d-c687-5469-8850-e085df06878d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li><li><a href="#chapter-5bd341f4ca9aeda4df598cbf">Körper und Figuren im Raum charakterisieren</a></li><li><a href="#chapter-a65822a33489cec1871e6fd6">Körpereigenschaften begründen und Volumen- sowie Oberflächeninhalte berechnen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0792f0e063fe75447af64ee92901b700eb619a7805615cb6ec6cf1f6af705a47" data-rendered-digest="sha256:86eaa051045a4b62d586fc547794d1a42e486770974a832bef719de2891af0a5" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/636b3e2d-c687-5469-8850-e085df06878d/636b3e2d-c687-5469-8850-e085df06878d.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Körpereigenschaften fachlich begründen&quot;. Die lernende Person kann Eigenschaften einfacher Körper fachlich begründen und die verwendeten geometrischen Argumente nachvollziehbar darstellen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-636b3e2d-c687-5469-8850-e085df06878d-description-heading">
+        <p class="section-heading" id="goal-636b3e2d-c687-5469-8850-e085df06878d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Eigenschaften einfacher Körper fachlich begründen und die verwendeten geometrischen Argumente nachvollziehbar darstellen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G9; Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-636b3e2d-c687-5469-8850-e085df06878d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-636b3e2d-c687-5469-8850-e085df06878d-requires-heading">
+          <p class="section-heading" id="goal-636b3e2d-c687-5469-8850-e085df06878d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-50eb5156-5046-5887-80dc-3128c5f8cbd6"><span>Längen- und Winkelbeziehungen einfacher Körper untersuchen</span><code>50eb5156-5046-5887-80dc-3128c5f8cbd6</code><span class="reference-page">S. 9</span></a></li><li><a href="#goal-eb070ed2-7ef4-5afe-b203-190ebb0116af"><span>Parallelität und Orthogonalität einfacher Körper untersuchen</span><code>eb070ed2-7ef4-5afe-b203-190ebb0116af</code><span class="reference-page">S. 10</span></a></li><li><a href="#goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2"><span>Symmetrien einfacher Körper untersuchen</span><code>b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-636b3e2d-c687-5469-8850-e085df06878d-reverse-heading">
+          <p class="section-heading" id="goal-636b3e2d-c687-5469-8850-e085df06878d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-5f548596-9bc3-532e-88a0-81d5029809e9"><span>Volumeninhalte von Körpern berechnen</span><code>5f548596-9bc3-532e-88a0-81d5029809e9</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-636b3e2d-c687-5469-8850-e085df06878d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-636b3e2d-c687-5469-8850-e085df06878d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5d9c156b-e5a4-5e91-9da3-22e858eb1f8e" rel="noreferrer noopener"><span>Teilungsverhältnisse bei Strecken untersuchen</span> <code>5d9c156b-e5a4-5e91-9da3-22e858eb1f8e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f2a12269-6bcb-564a-9fdb-45cfdbd704fc" rel="noreferrer noopener"><span>Teilungsverhältnisse bei Volumina untersuchen</span> <code>f2a12269-6bcb-564a-9fdb-45cfdbd704fc</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 14</span>
+      <span>Buch-Digest <code>sha256:d5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8097e8b44b5bc3103a136c588620f16c9f242f65efbd6871901051377530d5e3</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-bodies-volume-14-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=636b3e2d-c687-5469-8850-e085df06878d&amp;goalFingerprint=sha256%3A8097e8b44b5bc3103a136c588620f16c9f242f65efbd6871901051377530d5e3&amp;pageFingerprint=sha256%3A85bea02e9cda6dd7e20d3ea307697392e39bf45bfd8c3ed08ce44fe2b5b2e999&amp;bookDigest=sha256%3Ad5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5f548596-9bc3-532e-88a0-81d5029809e9" data-goal-id="5f548596-9bc3-532e-88a0-81d5029809e9" data-page-number="13" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44 structure:canonical-goal-211fa3c8-9e74-5c82-8863-0d51700185cd structure:canonical-goal-63dae16c-8cc0-5400-bc0b-b2e9e7d28ffa" aria-labelledby="goal-5f548596-9bc3-532e-88a0-81d5029809e9-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5f548596-9bc3-532e-88a0-81d5029809e9-title"><a class="goal-self-link" href="#goal-5f548596-9bc3-532e-88a0-81d5029809e9">Volumeninhalte von Körpern berechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5f548596-9bc3-532e-88a0-81d5029809e9</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li><li><a href="#chapter-5bd341f4ca9aeda4df598cbf">Körper und Figuren im Raum charakterisieren</a></li><li><a href="#chapter-a65822a33489cec1871e6fd6">Körpereigenschaften begründen und Volumen- sowie Oberflächeninhalte berechnen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:08dad308422eec5bd8226ab5104ef16c4aa20ef04b95c6f24f6da23eb9efe706" data-rendered-digest="sha256:50079a0ba03e9a5e451848573a0c34a5cd22780ac115daf8ada202efa35c0611" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/5f548596-9bc3-532e-88a0-81d5029809e9/5f548596-9bc3-532e-88a0-81d5029809e9.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Volumeninhalte von Körpern berechnen&quot;. Die lernende Person kann Eigenschaften einfacher Körper nutzen, um Volumeninhalte in passenden Situationen zu berechnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5f548596-9bc3-532e-88a0-81d5029809e9-description-heading">
+        <p class="section-heading" id="goal-5f548596-9bc3-532e-88a0-81d5029809e9-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Eigenschaften einfacher Körper nutzen, um Volumeninhalte in passenden Situationen zu berechnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G9; Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5f548596-9bc3-532e-88a0-81d5029809e9" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5f548596-9bc3-532e-88a0-81d5029809e9-requires-heading">
+          <p class="section-heading" id="goal-5f548596-9bc3-532e-88a0-81d5029809e9-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-50eb5156-5046-5887-80dc-3128c5f8cbd6"><span>Längen- und Winkelbeziehungen einfacher Körper untersuchen</span><code>50eb5156-5046-5887-80dc-3128c5f8cbd6</code><span class="reference-page">S. 9</span></a></li><li><a href="#goal-eb070ed2-7ef4-5afe-b203-190ebb0116af"><span>Parallelität und Orthogonalität einfacher Körper untersuchen</span><code>eb070ed2-7ef4-5afe-b203-190ebb0116af</code><span class="reference-page">S. 10</span></a></li><li><a href="#goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2"><span>Symmetrien einfacher Körper untersuchen</span><code>b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-636b3e2d-c687-5469-8850-e085df06878d"><span>Körpereigenschaften fachlich begründen</span><code>636b3e2d-c687-5469-8850-e085df06878d</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-5f548596-9bc3-532e-88a0-81d5029809e9-reverse-heading">
+          <p class="section-heading" id="goal-5f548596-9bc3-532e-88a0-81d5029809e9-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-9f9c7ece-b81c-55fa-8073-dd816d7d4778"><span>Oberflächeninhalte von Körpern berechnen</span><code>9f9c7ece-b81c-55fa-8073-dd816d7d4778</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-5f548596-9bc3-532e-88a0-81d5029809e9-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5f548596-9bc3-532e-88a0-81d5029809e9-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5d9c156b-e5a4-5e91-9da3-22e858eb1f8e" rel="noreferrer noopener"><span>Teilungsverhältnisse bei Strecken untersuchen</span> <code>5d9c156b-e5a4-5e91-9da3-22e858eb1f8e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f2a12269-6bcb-564a-9fdb-45cfdbd704fc" rel="noreferrer noopener"><span>Teilungsverhältnisse bei Volumina untersuchen</span> <code>f2a12269-6bcb-564a-9fdb-45cfdbd704fc</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 14</span>
+      <span>Buch-Digest <code>sha256:d5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ce1ddb2cdb26e3b7e00c5a57a194112c3d53a09bb0cb873f88450cef74ff3341</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-bodies-volume-14-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=5f548596-9bc3-532e-88a0-81d5029809e9&amp;goalFingerprint=sha256%3Ace1ddb2cdb26e3b7e00c5a57a194112c3d53a09bb0cb873f88450cef74ff3341&amp;pageFingerprint=sha256%3A12211ceaed7ee9e53ae612ff066e7f268da01f0402c51138d12af9d5b9b34e6f&amp;bookDigest=sha256%3Ad5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9f9c7ece-b81c-55fa-8073-dd816d7d4778" data-goal-id="9f9c7ece-b81c-55fa-8073-dd816d7d4778" data-page-number="14" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44 structure:canonical-goal-211fa3c8-9e74-5c82-8863-0d51700185cd structure:canonical-goal-63dae16c-8cc0-5400-bc0b-b2e9e7d28ffa" aria-labelledby="goal-9f9c7ece-b81c-55fa-8073-dd816d7d4778-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9f9c7ece-b81c-55fa-8073-dd816d7d4778-title"><a class="goal-self-link" href="#goal-9f9c7ece-b81c-55fa-8073-dd816d7d4778">Oberflächeninhalte von Körpern berechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9f9c7ece-b81c-55fa-8073-dd816d7d4778</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-bf8fb58c8a093083ad583bc2">Punkte, Vektoren und Bewegungen im Raum</a></li><li><a href="#chapter-5bd341f4ca9aeda4df598cbf">Körper und Figuren im Raum charakterisieren</a></li><li><a href="#chapter-a65822a33489cec1871e6fd6">Körpereigenschaften begründen und Volumen- sowie Oberflächeninhalte berechnen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0a3f207f19a1160ad39cb48a976b790f02f0452d7a8e608f1076e6a2aa3099d3" data-rendered-digest="sha256:c2f92d97c89d930aba3c8b26d8a874c20a2d396df87de3b17af21fc0eb1b8a02" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/9f9c7ece-b81c-55fa-8073-dd816d7d4778/9f9c7ece-b81c-55fa-8073-dd816d7d4778.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Oberflächeninhalte von Körpern berechnen&quot;. Die lernende Person kann Eigenschaften einfacher Körper nutzen, um Mantel- und Oberflächeninhalte in passenden Situationen zu berechnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9f9c7ece-b81c-55fa-8073-dd816d7d4778-description-heading">
+        <p class="section-heading" id="goal-9f9c7ece-b81c-55fa-8073-dd816d7d4778-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Eigenschaften einfacher Körper nutzen, um Mantel- und Oberflächeninhalte in passenden Situationen zu berechnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G9; Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9f9c7ece-b81c-55fa-8073-dd816d7d4778" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9f9c7ece-b81c-55fa-8073-dd816d7d4778-requires-heading">
+          <p class="section-heading" id="goal-9f9c7ece-b81c-55fa-8073-dd816d7d4778-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-50eb5156-5046-5887-80dc-3128c5f8cbd6"><span>Längen- und Winkelbeziehungen einfacher Körper untersuchen</span><code>50eb5156-5046-5887-80dc-3128c5f8cbd6</code><span class="reference-page">S. 9</span></a></li><li><a href="#goal-eb070ed2-7ef4-5afe-b203-190ebb0116af"><span>Parallelität und Orthogonalität einfacher Körper untersuchen</span><code>eb070ed2-7ef4-5afe-b203-190ebb0116af</code><span class="reference-page">S. 10</span></a></li><li><a href="#goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2"><span>Symmetrien einfacher Körper untersuchen</span><code>b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-5f548596-9bc3-532e-88a0-81d5029809e9"><span>Volumeninhalte von Körpern berechnen</span><code>5f548596-9bc3-532e-88a0-81d5029809e9</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-9f9c7ece-b81c-55fa-8073-dd816d7d4778-reverse-heading">
+          <p class="section-heading" id="goal-9f9c7ece-b81c-55fa-8073-dd816d7d4778-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-9f9c7ece-b81c-55fa-8073-dd816d7d4778-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9f9c7ece-b81c-55fa-8073-dd816d7d4778-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5d9c156b-e5a4-5e91-9da3-22e858eb1f8e" rel="noreferrer noopener"><span>Teilungsverhältnisse bei Strecken untersuchen</span> <code>5d9c156b-e5a4-5e91-9da3-22e858eb1f8e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f2a12269-6bcb-564a-9fdb-45cfdbd704fc" rel="noreferrer noopener"><span>Teilungsverhältnisse bei Volumina untersuchen</span> <code>f2a12269-6bcb-564a-9fdb-45cfdbd704fc</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 14</span>
+      <span>Buch-Digest <code>sha256:d5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b1d663e951a03e245c7fb43f14097fc76865bcb0d95f7a2713c30efd60610715</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-bodies-volume-14-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=9f9c7ece-b81c-55fa-8073-dd816d7d4778&amp;goalFingerprint=sha256%3Ab1d663e951a03e245c7fb43f14097fc76865bcb0d95f7a2713c30efd60610715&amp;pageFingerprint=sha256%3Acac5bc1ff58d83035ff014074e833575a000aa38feb624f874b8c95427fd01ba&amp;bookDigest=sha256%3Ad5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{
+  "checks": [
+    {
+      "model": "e111 additive potential, with inhibition",
+      "calculation": "-70+8+10-5",
+      "actual": -57,
+      "threshold": -55,
+      "APAccordingToProvidedRule": false,
+      "pass": true
+    },
+    {
+      "model": "e111 same inputs without inhibition",
+      "calculation": "-70+8+10",
+      "actual": -52,
+      "threshold": -55,
+      "APAccordingToProvidedRule": true,
+      "pass": true
+    },
+    {
+      "model": "Hebbian artificial update",
+      "calculation": "0.3 + 0.1*(1*1 + 1*0 + 1*1)",
+      "actual": 0.5,
+      "pass": true
+    },
+    {
+      "model": "conduction1",
+      "distanceM": 1,
+      "speedMPerS": 10,
+      "timeS": 0.1,
+      "pass": true
+    },
+    {
+      "model": "conduction2",
+      "distanceM": 1,
+      "speedMPerS": 50,
+      "timeS": 0.02,
+      "pass": true
+    },
+    {
+      "model": "code frequencies",
+      "spikeCounts": [
+        5,
+        15
+      ],
+      "windowsS": [
+        1,
+        1
+      ],
+      "actualHz": [
+        5.0,
+        15.0
+      ],
+      "equalAmplitudeNotEqualFrequency": true,
+      "pass": true
+    }
+  ],
+  "allPass": true,
+  "syntheticModelArithmeticOnly": true,
+  "actualBiologicalExperimentOrClinicalValidation": false
+}

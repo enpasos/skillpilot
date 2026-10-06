@@ -1,0 +1,560 @@
+{
+  "schemaVersion": 1,
+  "frozenAtUTC": "2026-10-06T05:45:37.125882+00:00",
+  "reviewer": "codex-b007-v2-independent-b",
+  "scope": "fresh independent B: B007 exact author-v2 seven routines / fourteen DE-EN cases / two narrow cards; candidate science KEEP, native/source integration HOLD",
+  "files": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-fourteen-cases-v2-independent-b-v1/README.md",
+      "sha256": "53f0128b8ce391a221186a86dd39fdc5697f95d166e601d2e9ad5362a88acb37",
+      "bytes": 5269
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-fourteen-cases-v2-independent-b-v1/actual-execution-and-final-input-preservation.json",
+      "sha256": "a3319c1b43bb1c1aade9452764d305320daa033d538042fc2472917c62e5dd19",
+      "bytes": 1952
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-fourteen-cases-v2-independent-b-v1/check-independent-materials.py",
+      "sha256": "08644423d05ee9abf3e5bfeeff860400a938fd62a43596cdf17a825e13a85b36",
+      "bytes": 11763
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-fourteen-cases-v2-independent-b-v1/independent-b.review.json",
+      "sha256": "75c9ed574cfd95e86071e821b403f01bb8c2a4ce756eba17e80946d83e81edb5",
+      "bytes": 10197
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-fourteen-cases-v2-independent-b-v1/independent-fourteen-case-review.actual.json",
+      "sha256": "1521581891c73aa34b9227e11346c3781d4de4dbd7535031b7befb73d09fdd51",
+      "bytes": 12637
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-fourteen-cases-v2-independent-b-v1/independent-material-and-continuity.actual.json",
+      "sha256": "55aecb89cf73dd4b673ba5c6e9359666a4f4945a01ff7dcc369ed00b902a6fec",
+      "bytes": 36260
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-fourteen-cases-v2-independent-b-v1/independent-primary-source-boundaries.actual.json",
+      "sha256": "f5c85d69a38464c2cf179390a8e0bc2180ccd0703ef9ec3845bf594d660a3316",
+      "bytes": 6068
+    }
+  ],
+  "substantiveInputBindings": [
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "1937ee365f8d4a69dc9962feec0858ef3ef63fb2eb165a809ae46e1046e588f0",
+      "bytes": 55340
+    },
+    {
+      "path": "app/scripts/config/curriculum-maturity-floor-policy.json",
+      "sha256": "bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+      "sha256": "665f82867dc9019b7bdb369903b9ebad3ac726b1e8ab2bc08476606032230b2a",
+      "bytes": 16164
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/source-projection.receipt.json",
+      "sha256": "f2b2b514c91db2b56acb77c57a2043d8bccdbeb6996aeecfedb79624ef708d32",
+      "bytes": 7422458
+    },
+    {
+      "path": "app/scripts/sourceCoverageAndApplicabilityRegression.test.ts",
+      "sha256": "36b8ea3f4f17dc29e30abf95255b8c5b45a2117fd5a22dead9d23bd575143864",
+      "bytes": 9288
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "b3cb528491bde1905fb184f88211da40865cffa4bbfcf7219a978752bb67e300",
+      "bytes": 983399
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "764c11d951d28be38709d8b01b5eb6d4b3be71e87d9daf5ea4d1dc46f67529a0",
+      "bytes": 1419221
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "76047cec422c555aacd1e04bff597c4f8a70d8ffed5f214ed7412c828bc34898",
+      "bytes": 3714635
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "ad764d083e390ab60f808ecbffb363ac914026894e82c09c977425311ec7ea44",
+      "bytes": 2511173
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_CHEMIE_SEKI_RLP_2015.source-extraction.json",
+      "sha256": "9723891904ea08cdd8ef33ec3eb7e47a5a265a32d88554eddb10984a940f6165",
+      "bytes": 108819
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_CHEMIE_SEKI_RLP_2015.source-extraction.json",
+      "sha256": "a894336996c02f727bd2c9251397e7584e1b851d32576c0f3681506b45f378c9",
+      "bytes": 108809
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_CHEMIE_SEKI_BP2016_V2.source-extraction.json",
+      "sha256": "83f91e666aaf59d2c64b1851f80ad05d0190bc4b6b2525781a741dafb14b003d",
+      "bytes": 146420
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_BIOLOGISCH_CHEMISCHES_PRAKTIKUM_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "sha256": "2343c4fd2e45b590c75885b912ceb4bedcd4fc2aaa6718239936f1dd0a7e7e71",
+      "bytes": 112581
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_CHEMIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "sha256": "d8f6b835b00729a089452e7f2b58f1b5b94a870d3dd8096b558755dc49cd5056",
+      "bytes": 1154770
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_CHEMIE_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json",
+      "sha256": "b777ec5b094eee97f9eea58f50f219950a9822818a16e86cc599cbf264bf288b",
+      "bytes": 75044
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_CHEMIE_SEKII_GYO_2022.source-extraction.json",
+      "sha256": "3a928a968081b9dd32f7783656a2ee05ac5980de8bdaa5629e9a642a1d310269",
+      "bytes": 155247
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-chemie.pdf",
+      "sha256": "f0a2c3795fcbcad1fee8d92d7ab9bc26810609bee0ef1fbd02c830e171220d2f",
+      "bytes": 324637
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_CHEMIE_SEKI_G9.source-extraction.json",
+      "sha256": "f8550a7ed67df1fa8b6eaea1104d3e2e6522b7770087497a0dd9ffd2a01a5ecc",
+      "bytes": 258337
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_CHEMIE_SEKI_BILDUNGSPLAN.source-extraction.json",
+      "sha256": "ec073c3aa3ceb7f35e7b2a95d927697e5e1595bde479f06c6ebea3a6c04f029e",
+      "bytes": 101888
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_CHEMIE_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+      "sha256": "c8754796e80255a6ab7b7a205a02724535ed4d6aae53fba2cb1ee898e4784311",
+      "bytes": 129014
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_CHEMIE_SEKI_RAHMENPLAN_2021.source-extraction.json",
+      "sha256": "f8fe7064ab5d0b5f35bf6b05dced7d97ddbf7d1e4295719aeb52b4a16dfe78af",
+      "bytes": 213758
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_CHEMIE_SEKII_RAHMENPLAN_ERPROBUNGSFASSUNG_2022.source-extraction.json",
+      "sha256": "1781d86d4e930cac1047bb648070794e473253bfdef210d6bdca57ceae5d53a5",
+      "bytes": 236971
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/kc_naturwissenschaften_gymnasium_sek_i_2015.pdf",
+      "sha256": "7b3c69767b4c9a47d87598bee76a28bf7b6d2f6c9b039f2e655a9ad14d47aeac",
+      "bytes": 1361443
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_CHEMIE_SEKI_KC2015.source-extraction.json",
+      "sha256": "c10b5f8ac37aa6770cdc5b9b4980ba285a04dcd95ce76a90784b7d42afb675b9",
+      "bytes": 344410
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_CHEMIE_SEKII_KC2022.source-extraction.json",
+      "sha256": "2ad06989bd935933d8df3b984baff34cb9697c22fdf1db25e5461bbe3fa744bd",
+      "bytes": 498869
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_CHEMIE_SEKI_KLP2019.source-extraction.json",
+      "sha256": "6594569b7ed7e9a65678fe911bc166e52417422cef4f1b9c30835e84902d7466",
+      "bytes": 175727
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_CHEMIE_SEKII_KLP2022.source-extraction.json",
+      "sha256": "63af0e8396ff4787364042f0892bf2e471aeb1fb3c7517c35b834c904de3ee8f",
+      "bytes": 357909
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_CHEMIE_SEKI_RAHMENLEHRPLAN_2014.source-extraction.json",
+      "sha256": "aef5035f5da0970fe5a4465f9633aed8c7b0815ec667a36dfcb77dfa1ae23701",
+      "bytes": 186202
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_CHEMIE_SEKII_MSS_2022.source-extraction.json",
+      "sha256": "a9397191898cdc79a359f4aca711dc8696380e8fa7f249d5b45cdf665b8166d4",
+      "bytes": 509797
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_CHEMIE_SEKI_FACHANFORDERUNGEN_2022.source-extraction.json",
+      "sha256": "125612af7681d03545e40712d25a8d71bf7bb806e7f8d289eab5c89636a10393",
+      "bytes": 241212
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_CHEMIE_SEKII_FACHANFORDERUNGEN_2022.source-extraction.json",
+      "sha256": "27026debce0a6b0366b3d6950fb569b6383c95150abdacaef892eca1cc6dc95e",
+      "bytes": 247685
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_CHEMIE_SEKI_GYM9_2024_2025.source-extraction.json",
+      "sha256": "04fd855508778e19305e23e722d4fab0e2b7f618b31f6dcd5e6f7462b47c72dc",
+      "bytes": 303991
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_CHEMIE_SEKII_GOS_2023_2025.source-extraction.json",
+      "sha256": "b3cf9781a8981fde1bb06b08bcf4294c543d239f9308325f7791551812b20cb7",
+      "bytes": 1249929
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "sha256": "1de76385d9d7c76783fa312da71262a9e69a4b36dac71986e838f3150db42e76",
+      "bytes": 391321
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "sha256": "7038aebf2dd77f84b0db19e1c8cfd453815fb613ec266f256cbfb3027cf87eed",
+      "bytes": 809576
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_CHEMIE_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+      "sha256": "419d722c40c509074616aa89ae2ecb711d70af5e97294d967cae8d1981ab480c",
+      "bytes": 601400
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_CHEMIE_SEKII_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+      "sha256": "7ee52e564ecf96e36733e803d192a90e993f94ead70bd77d1fe1d115d582326e",
+      "bytes": 824455
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+      "sha256": "86c6ba992412c9173a8d2d91e8d26dc0fbd555d03f9000b32d045cfeaca2dd3e",
+      "bytes": 435929
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+      "sha256": "ea18290c2a525c6daa0463da0619c095953f967710cf60814e23fb88821a8a24",
+      "bytes": 466529
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "290d8e449c11758abee976ccf0bf18348a05fe85d7aaf5991be67d136a15c79a",
+      "bytes": 87976
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "427c3cbd19684f4898b49edbbdb57ccbe710d5324c10ec863de54a491243e224",
+      "bytes": 194355
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "b0365a6ba67fb44f0bd87354f52d278274ba8eefa7ad94e7b03db89f90ba6beb",
+      "bytes": 87971
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "69cc519d743369ce82de79d7126930a54a8b4030aab936a438a18670e0338c2c",
+      "bytes": 194355
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "2f72d20e10b5a0c353aa246a6e0bfb3ab1abcf8d0498288ba532b530b6bcd934",
+      "bytes": 68500
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "d9212ea8cc64b446db512f020d5d64dcd0f3ad7029167128a8018114c1cbe8c7",
+      "bytes": 118699
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biologisch_chemisches_praktikum_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "7c19e1746499b0fa79543474f43a630c677265e5067d4b0b49bfa9cf510dcb99",
+      "bytes": 40743
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.m7-energy-four-current-20261005-v1.review.json",
+      "sha256": "862277c1e756299489e9cfcfedddf590b0cd2f441cb1b229d27edf00d8ec2a41",
+      "bytes": 270881
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "5de3296f1a0e50cfe7211f5d1c174a5c8dbe45e01848f50222911b2a0af2a7c8",
+      "bytes": 62084
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "49132f31b0358bb5884db60cc44709aff7eb1ce47462262d6346b039a0454cc8",
+      "bytes": 127669
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.m7-b010-five-prospective-20261005-v1.review.json",
+      "sha256": "f55b57109487599301f07cc251dd31c2084b106ac24376d60573baff2f0beb9c",
+      "bytes": 111304
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.review.json",
+      "sha256": "6ff643f59696332b588ec23d846c9d397b405af21e203aa938080b6289644494",
+      "bytes": 177222
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "1935005ce2f01c99702e2af987d5ada8fd9198c19ce2d1ed910b22dd3edc0b4d",
+      "bytes": 79209
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "446b05ed72826cb94a5def801ce9e02ed3e899502b3ad156432baff0a50882c0",
+      "bytes": 175380
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "9db9a53ac8ef4300dcc7d152b5f34a35490b53382bc10745eab07c985223618a",
+      "bytes": 206357
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "f749a9d2870c76803e34d822fce328073b6066988df87865e9f48cc4621d0934",
+      "bytes": 263460
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "5ce7f99327b7585e38bb975ef4fdd4885c3479bf69556e2645e220302ffa3ee8",
+      "bytes": 335673
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "4a1bda407b3078e3bfb3744566f92d7da7d304eb97841bba11c93c3ccd5c96da",
+      "bytes": 430981
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "336afa38ae697b0356211aa2b827f59b37ac2c11dee06cf48fb836e181621175",
+      "bytes": 293594
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "98c0d136feaf2414b1ff2fbd4b73ce169577c2114dd354fc0e3e1fb72a9e8ca5",
+      "bytes": 706004
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "ae4f292ec7086876fe13595c81060a53328763a57ec3abc9d9bc79e86b2de850",
+      "bytes": 132450
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "31aadba54416add6093cff0eb9b86c59b7af2cada0966b1f35b95f01cd491f72",
+      "bytes": 567178
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "d3dfd43e6af4b195e4911b1012ea0707ac13571b49b60bf5f2a82c52e2300fb0",
+      "bytes": 257557
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "545655ef9bc1086885204970af4d34fea281e39d81f3f97a8a19a7cf1fa04270",
+      "bytes": 309775
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "3c1dff6057d0502eea27b90ccfc66db0d532c2d95d25038b32fadcb279dfde85",
+      "bytes": 274013
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "a652155822a6843a5e07f97cb3efb38523666ac086ad3a66bf35769797470338",
+      "bytes": 1376825
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "dddf50c13902ca2d796611c7e44225b774b5c3e86a668cbc53c6550c8916c5e4",
+      "bytes": 357977
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "f322b78ad1aff3d090a76ef03c695a1f62044e7fa469f7c93995984c1b39a007",
+      "bytes": 782611
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "b12d6fbf1e23aff99bb97383eb407fe6bef62edecd94f6c64db928dcd20e5ff8",
+      "bytes": 597519
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "70f28dddbdfa717dc6099c45c51af7d852cc4d10942cb076e34d1a4110145948",
+      "bytes": 946861
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "de0028d2a247cb130e9369ff25cc11a510ccfee899b6f3b393b3a82e60152562",
+      "bytes": 480628
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "e3310405c9d201b077f18a76ebaf150c44470b95a85d3cb130e53907d9e1f86b",
+      "bytes": 496685
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-baseline.json",
+      "sha256": "27416ff078503ffd5b33084a78226c2a83ab5534519bfcf2b74323149339a817",
+      "bytes": 44499
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "21303dff0ad4a2ffe389629535d6fd1d31c81cd817660d47b38e10c1b434afea",
+      "bytes": 152400
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "sha256": "d16aa527265d69c200be7ebd7e7f664a9d6b273af4f8fded64c43b286b5e0f54",
+      "bytes": 153884
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/in-flight-work-ledger.json",
+      "sha256": "e5673e764730268310ebfe100c0963ae2487ce0c8b9bc4509c8bd1597c267874",
+      "bytes": 1743
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-four-material-corrections-author-v2/README.md",
+      "sha256": "4eeb9d43e5725b2111fc416bb6cce836a79bd7e3936cd617fce793908c0f1843",
+      "bytes": 2492
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-four-material-corrections-author-v2/actual-current-input-preservation-and-turn-revalidation.json",
+      "sha256": "aeb82a72d38a1d413b0058fdc86c2737a1ec4b91253f77de82dd271decefdc1e",
+      "bytes": 4655
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-four-material-corrections-author-v2/actual-five-case-and-label-essential-corrections.json",
+      "sha256": "1fa078ddc17e4a6f5f51ca39ca69bd43fd845de59969acc0b80c0d27efb980bd",
+      "bytes": 36117
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-four-material-corrections-author-v2/cases.de-en.author-candidate.json",
+      "sha256": "e6ac830d56c04345960f2bfc78a1264de95d9df2dfd0df16a4cc9c75bc30c406",
+      "bytes": 106386
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-four-material-corrections-author-v2/finalize-targeted-author-v2.py",
+      "sha256": "5f307c261c067a5c13d55f3f8420a32fdc30d9d7de01137300325d6369f001b0",
+      "bytes": 12336
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-four-material-corrections-author-v2/primary-cards.de-en.author-candidate.json",
+      "sha256": "32458dac7005037d50e0f07f96437ad1a7bf89df2a2dfdeaf9b9868f2020bcb5",
+      "bytes": 4764
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-four-material-corrections-author-v2/seven-routines.de-en.author-candidate.json",
+      "sha256": "adab413bf6e4b26ef6d366243ef3e1de98582dec08c7afc4140de673b312f267",
+      "bytes": 19583
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-four-material-corrections-author-v2/targeted-materials.author-v2.final.freeze.json",
+      "sha256": "e86359b0cea958c6964ad801945810c4621d2a542f426e69e5e92ad1cc303357",
+      "bytes": 4270
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/README.md",
+      "sha256": "1ed0bbcabe543336050dd30333fcfea922b09cb149368af4a5c1874e8a767503",
+      "bytes": 2862
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/authored-case-materials-v1/author-consistency-and-arithmetic.actual.json",
+      "sha256": "78df2bb450b65097504acf88a82ec1fb7e8c0d62a8097e661cf6dcdb2302e557",
+      "bytes": 6476
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/authored-case-materials-v1/author-materials.final.freeze.json",
+      "sha256": "7ad6bbb2fafeda3ef04602cb43adbf92cca8da71995b3111b00035a098916de9",
+      "bytes": 2616
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/authored-case-materials-v1/cases.de-en.author-candidate.json",
+      "sha256": "f557112cdd8ae028e17c5847837578b9fa7dc6c93099d29bba35ca5b4add95bf",
+      "bytes": 103415
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/authored-case-materials-v1/materialize-author-materials.py",
+      "sha256": "e18f4a29752ae5f541f527fa9ed8627cfa8bea88782de1788d12f73897311044",
+      "bytes": 83415
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/authored-case-materials-v1/primary-cards.de-en.author-candidate.json",
+      "sha256": "32458dac7005037d50e0f07f96437ad1a7bf89df2a2dfdeaf9b9868f2020bcb5",
+      "bytes": 4764
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/authored-case-materials-v1/source-boundary-and-material-limitations.author.md",
+      "sha256": "78d2dd36a7292acb34f3e52c4bc63b408284e984b045dbcd0c46141b119aaa56",
+      "bytes": 4987
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/primary-source-and-author-readiness.actual.json",
+      "sha256": "31b1abbd05c9fece06bc8837e2331e55b3d0f629a53ae1c031e457c71ae49111",
+      "bytes": 3413
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/seven-routines-and-fourteen-cases.author.final.freeze.json",
+      "sha256": "bff61973489242df3f772bd9b65a44037c6335751638057851ed53ab05d1cea0",
+      "bytes": 20281
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/seven-routines.de-en.author-candidate.json",
+      "sha256": "c05e2a3abce898384b19074f7d991c7f634ec875e750001df105e36a83793590",
+      "bytes": 19368
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/three-current-goals-and-source-inputs.actual.json",
+      "sha256": "5fd3b2e756e4951a1a78b72ac293a5f62d06431549d5a9d859f92a44e0877fe5",
+      "bytes": 1857574
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json",
+      "sha256": "9eda9bf03bfc2139e999c469fe3be7532ed3abab80673b6313483eb40d0c0e55",
+      "bytes": 877175
+    },
+    {
+      "path": "docs/legal/ai-transparency-inventory.json",
+      "sha256": "76584581f80772b89a2fea21181f52ff67e837c10e4774a38dc226a78d699797",
+      "bytes": 33221
+    },
+    {
+      "path": "docs/qa-ci/chemie-biologie-m7-chemistry-53-current-bindings-continuation-2026-10-06.md",
+      "sha256": "a8ecc7cc6bf57a1cfb3753c74592d9ae283ecde49bbc4fad83c2342fc2c4d570",
+      "bytes": 10216
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.json",
+      "sha256": "fcc381c7c0fc9b18c78180f241c80aa87152b12931fa6111e7e2bda9e3d7b801",
+      "bytes": 2750953
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.md",
+      "sha256": "b65045dd35054b8b5e5f2ec72a01999274deed3279a79a47786c1c98e901b0f9",
+      "bytes": 65168
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-canonical-chemistry-current378.md",
+      "sha256": "69e72f9510d5e25ec7d1efa437a74bf28d958ccf5a869c12615946148d06e147",
+      "bytes": 46475
+    }
+  ],
+  "excludedPeerArtifactsNotRead": [
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-seven-routines-fourteen-cases-independent-a-v1/independent-a.final.freeze.json"
+  ],
+  "candidateScience": {
+    "routinesKeep": 7,
+    "casesKeep": 14,
+    "cardsKeep": 2,
+    "materialScienceBlockers": 0
+  },
+  "sourceRouteAndNativeIntegrationHold": true,
+  "strictCompletionsAdded": 0,
+  "restoredActiveBindings": 0,
+  "activeWrites": false,
+  "humanApproval": false,
+  "humanTrial": false
+}

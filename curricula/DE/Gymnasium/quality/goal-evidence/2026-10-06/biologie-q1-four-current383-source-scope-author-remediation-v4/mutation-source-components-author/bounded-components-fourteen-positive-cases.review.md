@@ -1,0 +1,420 @@
+# Begrenzte Mutations- und Reparaturkomponenten – Autorenkandidaten
+
+Eigene Texte und Aufgaben: CC-BY-4.0. Fiktive, vorgegebene Daten; keine ausgeführten Versuche oder Lernendenleistungen. Die Texte sind Vorschläge für die unabhängige Quellen-, Umfangs- und Aufgabenprüfung. Es wurden keine neuen Ziel-IDs vergeben.
+
+## 1. Gen-, Chromosomen- und Genommutationen am Modell unterscheiden
+
+**Kandidatenschlüssel:** `mutation_levels_gen_chromosome_genome`
+
+**Bindung:** Null-ID-Kandidat
+
+Die lernende Person kann an vorgegebenen DNA- und Chromosomenmodellen Veränderungen innerhalb eines Gens, der Struktur eines Chromosomenabschnitts und der Chromosomenzahl unterscheiden, ihre Zuordnung zum Gen-, Chromosomen- oder Genomniveau begründen und belegte Ursachen sowie unmittelbare Folgen für die genetische Information erklären.
+
+Distinguish gene, chromosome and genome mutations in models
+
+The learner can use supplied DNA and chromosome models to distinguish changes within a gene, in chromosome-segment structure and in chromosome number, justify their classification as gene, chromosome or genome mutations, and explain evidenced causes and immediate consequences for genetic information.
+
+**Quellenumfang**
+
+- SN Klasse10: kennen Ursachen/Typen; Gen/Chromosom/Genom
+- TH9/10: genetische Variabilität mit Gen/Chromosom/Genom, Ursachen/Folgen erläutern
+
+**Vorgeschlagene Vorziele:** 0daa79f6-8f61-5506-98f9-65db83062ba8
+
+### Fall levels-a
+
+**Material DE:** Fiktiver Organismus: 2n=4, die Paare A1/A2 und B1/B2. Fall 1: Im gezeigten Abschnitt von Gen G wird durch einen unkorrigierten Kopierfehler ACGT zu ATGT; Anzahl und große Chromosomenstruktur bleiben gleich. Gleiche gereinigte Menge des G-Proteins zeigt im kontrollierten Modelltest Aktivität 50±2 vor und 20±2 nach der Änderung. Fall 2: Ein Abschnitt von A1 mit zwölf Genen wird versehentlich zweimal statt einmal eingefügt; Anzahl bleibt 4. Fall 3: Eine Keimzelle trägt im Modell durch Fehlverteilung zwei B-Chromosomen statt eines; nach Verschmelzung mit einer normalen Keimzelle liegen fünf Chromosomen vor, darunter drei B.
+
+**Aufgabe DE:** Ordne alle drei Fälle begründet dem Mutationsniveau zu und erkläre die jeweils vorgegebene Ursache. Welche unmittelbare Informationsänderung und welche Funktionsfolge sind belegt? Welche Messung unterscheidet Fall 2 von Fall 3, und was ist über Merkmale noch offen?
+
+**Lösung DE:** 1 Genmutation nach unkorrigiertem Kopierfehler: lokale Sequenzänderung; die gegebene G-Proteinaktivität ist im kontrollierten Test geringer. 2 Chromosomenmutation durch Abschnittsverdopplung: zusätzliche Kopien der zwölf Gene auf A1, aber weiterhin vier Chromosomen. 3 Genommutation durch Fehlverteilung bei Keimzellbildung: Zahl 4→5, dadurch zusätzliche Kopien der Information des ganzen B-Chromosoms. Anzahl und Abschnittsstruktur sind getrennte Größen. Die Proteindaten betreffen nur Fall 1 und diese Testfunktion; für Fall 2/3 folgen ohne weitere Daten keine bestimmten Merkmale oder Krankheitsbefunde.
+
+**Material EN:** Fictional organism:2n=4, pairs A1/A2 and B1/B2. Case 1:an uncorrected copying error changes the shown region of gene G from ACGT to ATGT; chromosome number and large-scale structure are unchanged. Equal purified amounts of G protein have controlled model-test activity 50±2 before and 20±2 after the change. Case 2:a segment of A1 containing twelve genes is mistakenly inserted twice instead of once; number stays 4. Case 3:model mis-segregation gives one gamete two B chromosomes instead of one; fusion with a normal gamete produces five chromosomes, including three B.
+
+**Task EN:** Classify all three cases by mutation level and explain each supplied cause. Which immediate information changes and functional consequence are supported? Which measurement separates cases 2/3, and what remains unknown about traits?
+
+**Solution EN:** 1 Gene mutation after an uncorrected copying error:a local sequence change; given G-protein activity is lower in the controlled test. 2 Chromosome mutation through segment duplication:extra copies of twelve genes on A1, but still four chromosomes. 3 Genome mutation after mis-segregation during gamete formation:number 4→5, adding copies of the information of a whole B chromosome. Number and segment structure are distinct. Protein data apply only to case 1 and this test function; cases 2/3 establish no particular trait or disease without further data.
+
+**Positive Leistungsmerkmale**
+
+- Explain type and given cause from actual model changes
+- Separate gene sequence/segment copy/whole chromosome information consequences
+- Use controlled protein data only for the measured case/function; leave unmeasured traits open
+
+### Fall levels-b
+
+**Material DE:** Neues fiktives Modell: 2n=6 (A1/A2, B1/B2, C1/C2). L: Beim Kopieren geht im gezeigten Abschnitt eines Gens eine Base verloren; sonst unverändert. M: Ein Abschnitt mit acht Genen auf C1 wird nach zwei Brüchen in umgekehrter Orientierung wieder verbunden; Zahl 6. N: Fehlverteilung bei Keimzellbildung lässt in einer Keimzelle das C-Chromosom fehlen; mit einer normalen Keimzelle entstehen fünf Chromosomen, C2 fehlt. Es gibt keine Protein- oder Merkmalsmessungen.
+
+**Aufgabe DE:** Erkläre die Zuordnung und die vorgegebenen Ursachen von L/M/N. Welche unmittelbaren Informationsfolgen sind jeweils belegt? Warum reicht das Wort Verlust ohne den Maßstab nicht zur Zuordnung oder zur Vorhersage eines Merkmals?
+
+**Lösung DE:** L Genmutation durch Kopierfehler: veränderte Sequenz und eine Base weniger im Abschnitt. M strukturelle Chromosomenmutation nach Brüchen und umgekehrtem Wiederverbinden: Abschnittsorientierung verändert, Anzahl unverändert. N Genommutation durch Fehlverteilung: ein ganzes Chromosom und die darauf vorhandene Informationskopie fehlen. Eine Base und ein ganzes Chromosom betreffen unterschiedliche Ebenen. Ohne Genkontext/Funktionsdaten ergibt sich aus L kein bestimmter Proteinbefund und aus keinem Fall ein bestimmtes Merkmal.
+
+**Material EN:** New fictional model:2n=6 (A1/A2, B1/B2, C1/C2). L:copying loses one base in the shown gene region; otherwise unchanged. M:a segment containing eight genes on C1 is rejoined in reversed orientation after two breaks; number 6. N:mis-segregation during gamete formation leaves one gamete without C; fusion with a normal gamete gives five chromosomes, with C2 absent. No protein or trait measurements are supplied.
+
+**Task EN:** Explain the classification and supplied causes of L/M/N. Which immediate information consequences are supported? Why is loss insufficient without scale for classification or trait prediction?
+
+**Solution EN:** L is a gene mutation caused by copying error:altered sequence, one fewer base in the region. M is a structural chromosome mutation after breaks and reverse rejoining:segment orientation changes, count does not. N is a genome mutation after mis-segregation:a whole chromosome and its information copy are absent. One base and a whole chromosome affect different levels. Without gene context/function data, L establishes no particular protein result, and none of the cases establishes a particular trait.
+
+**Positive Leistungsmerkmale**
+
+- Classify fresh changes with evidence and supplied cause
+- Explain sequence/orientation/information-copy consequences
+- Separate immediate information changes from unmeasured function/traits
+
+## 2. Punkt- und Genommutationen am Modell einordnen
+
+**Kandidatenschlüssel:** `point_and_genome_mutation`
+
+**Bindung:** Null-ID-Kandidat
+
+Die lernende Person kann in vorgegebenen Fällen eine Änderung an einer einzelnen Basenpaarposition von einer Änderung der Chromosomenzahl unterscheiden und als Punkt- beziehungsweise Genommutation einordnen.
+
+Classify point and genome mutations in models
+
+The learner can distinguish a change at a single base-pair position from a change in chromosome number in supplied cases and classify them as point or genome mutations.
+
+**Quellenumfang**
+
+- ST Schuljahrgang10/Einführungsphase: ausdrücklich Genom- und Punktmutation
+
+**Vorgeschlagene Vorziele:** 0daa79f6-8f61-5506-98f9-65db83062ba8
+
+### Fall point-genome-a
+
+**Material DE:** Schulmodell: Referenz-Gen ACTA; Variante ATTA, sonst alle genetischen Informationen unverändert. Referenz-Chromosomensatz A1, A2, B1, B2; zweite Variante A1, A2, B1, B2, B3. Punktmutation bedeutet in diesem Material eine Änderung an genau einer Basenpaarposition; gezeigt werden Substitutionen.
+
+**Aufgabe DE:** Vergleiche die Veränderungen und begründe Punkt-/Genomzuordnung. Kann eine unveränderte Chromosomenzahl eine Punktmutation ausschließen?
+
+**Lösung DE:** ACTA→ATTA verändert eine Position C→T: Punktmutation im festgelegten Modell. B3 erhöht die Chromosomenzahl 4→5: Genommutation. Unveränderte Anzahl schließt eine lokale Sequenzänderung nicht aus. Es wird keine universelle Punktmutationsdefinition über alle Fachkonventionen behauptet.
+
+**Material EN:** School model: reference gene ACTA; variant ATTA, all other genetic information unchanged. Reference complement A1, A2, B1, B2; second variant A1, A2, B1, B2, B3. In this material, a point mutation affects exactly one base-pair position; examples are substitutions.
+
+**Task EN:** Compare changes and justify point/genome classification. Can an unchanged chromosome count rule out a point mutation?
+
+**Solution EN:** ACTA→ATTA changes one position, C→T: a point mutation under the model definition. B3 raises number 4→5: a genome mutation. Unchanged number does not rule out local sequence change. The working definition is not asserted as universal across terminology conventions.
+
+**Positive Leistungsmerkmale**
+
+- Locate single altered position
+- Count whole chromosomes independently
+- Explain evidence limit of chromosome counting
+
+### Fall point-genome-b
+
+**Material DE:** Neuer fiktiver Ausgangssatz 2n=6. P: in einem Gen GCAA→GCTA, Zahl 6. Q: homologes Chromosom C2 fehlt, Zahl 5. DNA-Sequenzen einzelner Gene wurden bei Q nicht gemessen.
+
+**Aufgabe DE:** Erkläre beide Kategorien. Welche zusätzliche Untersuchung wäre nötig, um eine weitere Punktmutation bei Q zu prüfen?
+
+**Lösung DE:** P: eine Basenposition A→T, Punktmutation. Q: Zahländerung, Genommutation. Sequenzvergleich eines definierten Genabschnitts wäre nötig, um dort eine zusätzliche Punktmutation festzustellen; die Zahl 5 zeigt sie nicht.
+
+**Material EN:** New fictional baseline 2n=6. P: gene GCAA→GCTA, number 6. Q: homologous chromosome C2 is absent, number 5. Individual gene sequences were not measured in Q.
+
+**Task EN:** Explain both categories. What extra investigation would be needed to check for an additional point mutation in Q?
+
+**Solution EN:** P changes one base position, A→T: point mutation. Q changes chromosome number: genome mutation. Sequence comparison of a defined gene region would be needed to establish an additional point mutation there; count 5 does not establish it.
+
+**Positive Leistungsmerkmale**
+
+- Use fresh sequence/count data
+- Separate simultaneous possible change levels
+- Name a matching sequence test without diagnosis
+
+## 3. Mutagene Einflüsse und begründeten Schutz erklären
+
+**Kandidatenschlüssel:** `mutagen_causes_and_protection`
+
+**Bindung:** Null-ID-Kandidat
+
+Die lernende Person kann anhand eines kontrollierten Modells erklären, wie mutagene Einflüsse die Häufigkeit bleibender Veränderungen der Erbinformation erhöhen können, und aus vorgegebenen Expositionsdaten begründete Möglichkeiten zur Verringerung des Einflusses ableiten.
+
+Explain mutagenic influences and justified protection
+
+The learner can use a controlled model to explain how mutagenic influences can increase the frequency of persistent changes to genetic information and derive justified ways of reducing the influence from supplied exposure data.
+
+**Quellenumfang**
+
+- BY12 GA/EA: Ursachen und Schutzsensibilisierung ausdrücklich
+- MV10: Mutagene und Gefahrenpotenzial im Alltag reflektieren
+- SN10: Mutagenursachen kennen
+- ST10: Mutagene und genetische Umweltrisiken bewerten
+- TH9/10: Mutationsursachen erläutern; Schutz ist didaktische Ergänzung ohne zusätzliche amtliche Schutzklausel
+
+**Vorgeschlagene Vorziele:** Noch gesondert zu bestimmen; keine unbelegte Rekombinationspflicht.
+
+### Fall mutagen-protection-a
+
+**Material DE:** Fiktive physikalische Einwirkung R erzeugt im Modell DNA-Schäden; nicht behobene Veränderungen können bei weiterer Kopie dauerhaft werden. Drei sonst gleiche Gruppen mit je 1000 Zelllinien: ohne R3 bestätigte neue Sequenzänderungen; mit R27; R hinter einer für R getesteten Abschirmung 6. Gleiche Zeit, gleiche Kopienzahl, gleiche Prüfmethode.
+
+**Aufgabe DE:** Erkläre den Ursachenweg und vergleiche die Häufigkeiten. Begründe den Schutz durch Abschirmung im Modell und seine Grenze. Bedeutet 3 ohne R, dass Mutation nur durch R entstehen kann?
+
+**Lösung DE:** R→DNA-Schaden→mögliche bleibende Sequenzänderung bei nicht erfolgreicher Korrektur. Beobachtet 0,3%,2,7%,0,6%; R-Gruppe neunfach gegenüber Kontrolle. Abschirmung reduziert hier Einwirkung/Änderungshäufigkeit, beseitigt sie nicht. Die Kontrollfälle zeigen Hintergrundveränderungen; ein Mutagen ist keine notwendige Ursache jeder Mutation. Keine Übertragung dieser Zahlen auf Personen.
+
+**Material EN:** Fictional physical influence R damages DNA in this model; unresolved changes may become persistent on later copying. Otherwise identical groups,1000 cell lineages each: no R3 confirmed new sequence changes; R27; R behind a barrier tested for R6. Same time, copy number and assay.
+
+**Task EN:** Explain the causal path and compare frequencies. Justify barrier protection in this model and its limit. Do 3 cases without R mean mutation can arise only from R?
+
+**Solution EN:** R→DNA damage→possible persistent sequence change if correction fails. Observed rates 0.3%,2.7%,0.6%; R is ninefold control. The barrier reduces influence/change frequency here without eliminating it. Control cases show background changes; a mutagen is not necessary for every mutation. These rates do not transfer to people.
+
+**Positive Leistungsmerkmale**
+
+- Connected cause explanation
+- Correct controlled comparison and nonzero baseline
+- A justified protective action and no absolute-protection claim
+
+### Fall mutagen-protection-b
+
+**Material DE:** Fiktiver chemischer Stoff M reagiert im Modell mit DNA. Gleiches Material in 1000 Zelllinien je Gruppe: geschlossene Ersatzanlage ohne M-Kontakt 2 neue Änderungen; offene M-Anwendung 18; offene Anwendung mit ungeprüfter Papierabdeckung 17. Materialkarte: Papier hält M nicht zurück, geschlossene Ersatzanlage verhindert den Kontakt unter den angegebenen Bedingungen.
+
+**Aufgabe DE:** Werte die Daten aus und wähle eine begründete Schutzoption. Warum genügt ein sichtbarer Gegenstand als Schutzbeleg nicht? Begrenze die Aussage über einzelne Zellen.
+
+**Lösung DE:** Die Kontaktgruppen zeigen 1,8%/1,7%, die kontaktvermeidende Gruppe 0,2%. Im Material ist die geschlossene Ersatzanlage begründet; Papier hat keine belegte Schutzwirkung gegen M. Gruppendaten bedeuten nicht, dass jede exponierte Zelle mutiert oder die Kontrolle frei von allen Veränderungen ist.
+
+**Material EN:** Fictional chemical M reacts with DNA in this model. 1000 lineages per group: closed substitute system without M contact 2 new changes; open M use 18; open use with untested paper cover 17. Material card: paper does not retain M; the closed substitute system prevents contact under stated conditions.
+
+**Task EN:** Interpret data and choose a justified protective option. Why is a visible covering alone insufficient evidence of protection? Limit claims about individual cells.
+
+**Solution EN:** Contact groups show 1.8%/1.7%, the contact-avoiding group 0.2%. The closed substitute system is justified by the material; paper has no established protection against M. Group data do not mean every exposed cell mutates or control has no changes.
+
+**Positive Leistungsmerkmale**
+
+- Match measure to influence and evidence
+- Use fresh controlled rates
+- Avoid deterministic cell/health conclusion
+
+## 4. Folgen somatischer und Keimbahnmutationen im Zelllinienmodell unterscheiden
+
+**Kandidatenschlüssel:** `somatic_and_germline`
+
+**Bindung:** Null-ID-Kandidat
+
+Die lernende Person kann an einem vorgegebenen Zelllinienmodell erklären, wie Zeitpunkt und betroffene Zelllinie die Ausbreitung einer Mutation im Organismus und ihre mögliche Weitergabe durch Keimzellen beeinflussen.
+
+Distinguish somatic and germline mutation consequences in lineage models
+
+The learner can use a supplied lineage model to explain how timing and affected lineage influence a mutation’s spread within an organism and possible transmission through gametes.
+
+**Quellenumfang**
+
+- MV10: Auswirkungen auf Körperzellen und Keimbahn
+- BY12 GA/EA: somatische Mutation und Keimbahnmutation
+
+**Vorgeschlagene Vorziele:** 1d2b1038-dcd5-529a-b085-9e14f1d58c76
+
+### Fall lineage-a
+
+**Material DE:** Fiktives Tier: Körperzelllinie K und keimzellbildende Linie G sind bereits getrennt. Dieselbe DNA-Änderung tritt entweder in K oder in G auf. Alle Tochterzellen einer betroffenen Zelle erhalten im Modell die Änderung; zwischen K und G gibt es keinen Zellwechsel. Nur aus G entstehen Keimzellen für geschlechtliche Fortpflanzung.
+
+**Aufgabe DE:** Verfolge beide Änderungen. Welche kann über eine beteiligte Keimzelle in Nachkommen gelangen? Warum ist auch die somatische Änderung eine Mutation?
+
+**Lösung DE:** K: Änderung bleibt in ihrer Körperzell-Abstammungslinie und wird in diesem Tiermodell nicht über Keimzellen weitergegeben. G: betroffene Keimzellen können sie weitergeben, wenn sie tatsächlich zur Befruchtung beitragen. Beide verändern Erbinformation; Vererbung an Nachkommen ist kein Definitionskriterium jeder Mutation.
+
+**Material EN:** Fictional animal: somatic lineage K and gamete-forming lineage G are already separate. The same DNA change occurs in either K or G. All daughter cells inherit it in this model; cells do not move between K/G. Only G produces gametes for sexual reproduction.
+
+**Task EN:** Trace both changes. Which can enter offspring through a participating gamete? Why is the somatic change still a mutation?
+
+**Solution EN:** K change stays in its somatic descendants and is not transmitted via gametes in this animal model. G can transmit it if an affected gamete actually participates in fertilisation. Both alter genetic information; offspring inheritance is not a defining condition for every mutation.
+
+**Positive Leistungsmerkmale**
+
+- Follow actual lineage separation
+- State conditional germline transmission
+- Distinguish cellular inheritance from offspring inheritance
+
+### Fall lineage-b
+
+**Material DE:** Neues fiktives Tiermodell: Mutation E entsteht in der Zygote vor Trennung der Zelllinien und bleibt in beiden Linien. Mutation S entsteht spät in einer Körperzelle. Mutation G entsteht in einer einzelnen fertigen Keimzelle; genau diese Keimzelle wird im angegebenen Fall nicht für die Befruchtung verwendet.
+
+**Aufgabe DE:** Vergleiche Ausbreitung und mögliche Weitergabe von E/S/G. Kann aus dem Wort Keimbahnmutation allein abgeleitet werden, dass der gegebene Nachkomme die Änderung trägt?
+
+**Lösung DE:** E erreicht hier beide Linien und kann über betroffene Keimzellen weitergegeben werden. S betrifft nur späte somatische Nachkommen. G ist keimbahnbezogen, wird aber in dieser Befruchtung nicht übertragen. Betroffene Linie, Zeitpunkt und verwendete Keimzelle sind entscheidend; daraus folgt keine bestimmte Erkrankung.
+
+**Material EN:** New fictional animal model: E arises in the zygote before lineages separate and persists in both. S arises late in a somatic cell. G arises in one mature gamete; that exact gamete is not used for fertilisation in the given case.
+
+**Task EN:** Compare spread and potential transmission of E/S/G. Does the word germline mutation alone establish that the given offspring carries it?
+
+**Solution EN:** E reaches both lineages here and can pass through affected gametes. S affects only late somatic descendants. G is germline-related but is not transmitted in this fertilisation. Lineage, timing and participating gamete matter; no particular disease follows.
+
+**Positive Leistungsmerkmale**
+
+- Transfer to early versus late timing
+- Use fertilisation information
+- Do not treat germline change as guaranteed transmission
+
+## 5. Mutation und Modifikation mit Kontrolldaten unterscheiden
+
+**Kandidatenschlüssel:** `mutation_vs_modification`
+
+**Bindung:** Null-ID-Kandidat
+
+Die lernende Person kann an vorgegebenen Vergleichsdaten begründen, ob ein Merkmalsunterschied auf einer Änderung genetischer Information oder auf einer Umweltwirkung bei unveränderter genetischer Information beruht, und die Grenzen eines Merkmalsbefunds benennen.
+
+Distinguish mutation and modification using controlled data
+
+The learner can use supplied comparison data to justify whether a trait difference results from altered genetic information or an environmental influence without such alteration, and state the limits of trait observations.
+
+**Quellenumfang**
+
+- MV10: Mutation/Modifikation vergleichen
+- SN10: Vielfalt/Information auf Mutation und Modifikation anwenden
+- ST10: kriteriengeleitet vergleichen und folgern
+- TH9/10: genetische und umweltbedingte Variabilität erläutern
+
+**Vorgeschlagene Vorziele:** Noch gesondert zu bestimmen; keine unbelegte Rekombinationspflicht.
+
+### Fall mutation-modification-a
+
+**Material DE:** Fiktive Pflanzenklone besitzen zunächst dieselbe Erbinformation. Im Modell bleibt sie während der Lichtänderung unverändert; der untersuchte Abschnitt bestätigt dies. Gruppe L: wenig Licht, Blätter 12 Einheiten; Gruppe H: viel Licht, Blätter 20; Abschnitt bleibt bei beiden unverändert. Neue Stecklinge im gleichen Licht zeigen beide 16. Variante M besitzt eine bestätigte bleibende DNA-Änderung; ihre Blätter messen 16 und unterscheiden sich äußerlich hier nicht.
+
+**Aufgabe DE:** Begründe den Modifikationsfall und den Mutationsfall. Warum beweist ein gleiches Aussehen keine unveränderte DNA?
+
+**Lösung DE:** L/H: im Modell umweltbedingte Merkmalsänderung ohne genetische Änderung, unter gleichen Bedingungen rückgeführt: Modifikation. M: gemessene DNA-Änderung, Mutation trotz gleichem Blattwert. Aussehen allein trennt die Ursachen nicht; der Befund betrifft den definierten Abschnitt und die angegebenen Bedingungen.
+
+**Material EN:** Fictional plant clones initially have identical genetic information. The model stipulates that this information remains unchanged during the light shift; the assayed region confirms this. L under low light has leaves 12 units; H under high light 20; the region remains unchanged. New cuttings under equal light both reach 16. Variant M has a confirmed persistent DNA change and leaves 16, without a visible difference here.
+
+**Task EN:** Justify modification and mutation classifications. Why does similar appearance not prove unchanged DNA?
+
+**Solution EN:** L/H are environmental trait changes without genetic alteration in the model, and equal conditions remove the difference:modification. M is a measured DNA change, a mutation despite equal leaf value. Appearance alone does not distinguish causes; the result is bounded to the defined region and conditions.
+
+**Positive Leistungsmerkmale**
+
+- Use genotype and environment controls
+- Explain mutation can lack visible effect
+- Bound conclusions to measured material
+
+### Fall mutation-modification-b
+
+**Material DE:** Fiktive Varianten A/B: in gemeinsamer Umgebung Blattlänge 8/10; DNA am untersuchten Gen unterscheidet sich an einer Position. Höhere Temperatur verändert die Blattwerte vorübergehend auf 14/16, ohne weitere Sequenzänderung. Nach Rückkehr sinken sie auf 8/10. Die DNA-Unterschiede wurden vor und nach dem Temperaturwechsel bestätigt.
+
+**Aufgabe DE:** Trenne die bestätigte genetische Variante von der zusätzlichen Umweltwirkung. Welche kausale Aussage über den Unterschied 8/10 bleibt offen?
+
+**Lösung DE:** Die bestätigte genetische Variante besteht unter beiden Temperaturen. Die zusätzliche 6-Einheiten-Änderung hängt im Modell von der Temperatur ab und ist eine Modifikation. Merkmale können mehrere Beiträge besitzen. Eine einzelne Sequenzänderung beweist ohne weitere Funktionsdaten nicht, dass sie allein jeden Unterschied verursacht.
+
+**Material EN:** Fictional variants A/B: common environment leaf lengths 8/10; the assayed gene differs at one position. Higher temperature temporarily shifts lengths to 14/16 without further sequence changes. Return restores 8/10. The DNA differences were confirmed before/after the temperature change.
+
+**Task EN:** Separate the confirmed genetic variant from the additional environmental effect. What causal claim about the 8/10 difference remains open?
+
+**Solution EN:** The confirmed genetic variant persists at both temperatures. The additional 6-unit shift depends on temperature in the model and is a modification. Traits can have multiple contributions. A sequence difference alone does not prove it solely causes every difference without further functional data.
+
+**Positive Leistungsmerkmale**
+
+- Separate persistent genotype from reversible environmental shift
+- Recognise coexistence
+- Avoid claiming all between-line differences are caused by one measured variant
+
+## 6. Mutationsfolgen für eine gemessene Proteinfunktion begründen
+
+**Kandidatenschlüssel:** `protein_function_from_mutation_data`
+
+**Bindung:** Zusatzmaterial zu ffef97e3-12d6-5090-9816-46ab9e57fae2
+
+Die lernende Person kann in einem vorgegebenen Genkontext eine Mutation mit der Änderung des codierten Proteins verknüpfen und mithilfe kontrollierter Funktionsdaten begründen, welche Wirkung im untersuchten Modell belegt ist.
+
+Justify mutation effects on a measured protein function
+
+The learner can connect a mutation to a change in the encoded protein within a supplied gene context and use controlled functional data to justify the effect supported in the studied model.
+
+**Quellenumfang**
+
+- BY12 GA/EA: Wirkung auf Funktion des codierten Proteins erläutern
+
+**Vorgeschlagene Vorziele:** 475eebb4-4eb0-524f-b1ec-4a672bf856d2
+
+### Fall protein-function-a
+
+**Material DE:** Fiktives intronfreies Gen, codierender DNA-Strang 5′→3′, Start und Leseraster vorgegeben: Referenz ATG GAA TTC TAA; Variante V ATG GAC TTC TAA; Variante W ATG GAG TTC TAA. Materialcode: AUG=Met, GAA/GAG=Glu, GAC=Asp, UUC=Phe, UAA=Stopp. Gleiche gereinigte Proteinmenge, gleiche Bedingungen: Aktivität Referenz 100±4, V12±2, W98±4 Einheiten.
+
+**Aufgabe DE:** Leite mRNA/Produktfolgen ab und verbinde sie mit den gemessenen Aktivitäten. Welche Wirkung ist für V belegt und was darf aus W nicht allgemein geschlossen werden?
+
+**Lösung DE:** Referenz AUG GAA UUC UAA→Met–Glu–Phe; V AUG GAC UUC UAA→Met–Asp–Phe; W AUG GAG UUC UAA→Met–Glu–Phe. V zeigt bei kontrollierter Menge im Test stark reduzierte Aktivität. W ist synonym und hier nicht klar abweichend; das beweist nicht, dass jede synonyme Mutation in jedem Genkontext funktionsneutral ist. Keine klinische Diagnose.
+
+**Material EN:** Fictional intron-free gene, coding strand 5′→3′, fixed start/frame: reference ATG GAA TTC TAA; V ATG GAC TTC TAA; W ATG GAG TTC TAA. Code:AUG=Met, GAA/GAG=Glu, GAC=Asp, UUC=Phe, UAA=stop. Equal purified protein amounts and conditions:activity reference 100±4, V12±2, W98±4 units.
+
+**Task EN:** Derive mRNA/product sequences and connect them to activity measurements. What effect is supported for V, and what universal claim cannot be drawn from W?
+
+**Solution EN:** Reference AUG GAA UUC UAA→Met–Glu–Phe; V AUG GAC UUC UAA→Met–Asp–Phe; W AUG GAG UUC UAA→Met–Glu–Phe. V has strongly reduced tested activity at controlled quantity. W is synonymous and shows no clear difference here; this does not prove every synonymous mutation neutral in every gene context. No clinical diagnosis.
+
+**Positive Leistungsmerkmale**
+
+- Correct codon/product link
+- Use measured function rather than sequence alone
+- Account for equal amounts and measurement spread
+
+### Fall protein-function-b
+
+**Material DE:** Neues fiktives Bindungsprotein: intronfreier markierter Abschnitt des codierenden DNA-Strangs, 5′→3′. Referenz GAA GGT (=Glu–Gly). Variante P GAC GGT (=Asp–Gly), Variante D verliert das ganze GGT-Codon. Rest und Leseraster sind gleich, alle Proteine liegen im Test mit 1µM vor. Ligandenbindung: Referenz 40±3, P75±3, D39±3 Einheiten. Materialcode ist vorgegeben; keine Daten zu anderen Proteinaufgaben.
+
+**Aufgabe DE:** Erkläre die beiden Gen-/Proteinänderungen und den Funktionsbefund. Warum folgt weder jede Mutation ist Funktionsverlust noch D ist in allen Funktionen unverändert?
+
+**Lösung DE:** P: Basensubstitution, Glu→Asp, im Test höhere Bindung. D: Deletion eines ganzen Codons, Verlust von Gly ohne Leserasterverschiebung im gegebenen Abschnitt; Bindung im Streubereich der Referenz. Funktionswirkungen hängen vom Kontext und der gemessenen Funktion ab; höhere Bindung ist keine Aussage über Gesundheit oder sämtliche Aufgaben.
+
+**Material EN:** New fictional binding protein:intron-free marked segment of the coding DNA strand, 5′→3′. Reference GAA GGT (=Glu–Gly). P has GAC GGT (=Asp–Gly); D loses the entire GGT codon. Rest/frame unchanged; all proteins tested at 1µM. Ligand binding:reference 40±3, P75±3, D39±3 units. Supplied code; no other function data.
+
+**Task EN:** Explain both gene/protein changes and functional findings. Why do neither every mutation loses function nor D is unchanged in all functions follow?
+
+**Solution EN:** P is a base substitution, Glu→Asp, and increased tested binding. D deletes one whole codon, losing Gly without shifting the given frame; binding lies within reference spread. Functional effects depend on context and tested function; higher binding says nothing about health or all protein roles.
+
+**Positive Leistungsmerkmale**
+
+- Mechanism for both alterations
+- Explain in-frame deletion
+- Use fresh gain/no-clear-change functional data
+
+## 7. Bedeutung von Fehlerkontrolle und DNA-Reparatur erklären
+
+**Kandidatenschlüssel:** `replication_error_control_and_repair`
+
+**Bindung:** Null-ID-Kandidat
+
+Die lernende Person kann an einem einfachen Kopiermodell erklären, wie Fehlerkontrolle und Reparatur zur Erhaltung genetischer Information beitragen, und begründen, weshalb nicht jede fehlerhafte Paarung zu einer bleibenden Mutation wird und Reparatur keinen vollkommenen Schutz garantiert.
+
+Explain the significance of error control and DNA repair
+
+The learner can use a simple copying model to explain how error control and repair help preserve genetic information, and justify why not every mispairing becomes a persistent mutation and repair does not guarantee perfect protection.
+
+**Quellenumfang**
+
+- TH9/10: Bedeutung von Fehlerkontrolle und Reparatur
+- BY12 GA/EA2.4 Inhalte: Bedeutung von Reparaturenzymen; EA PCR-Vergleich bleibt eigene Pflicht
+
+**Vorgeschlagene Vorziele:** e70d8a85-2dea-5165-919b-200fee9f4db4
+
+### Fall repair-a
+
+**Material DE:** Fiktives Kopiermodell: alter Matrizenstrang 3′–T A C G–5′, neuer Strang 5′–A T A C–3′. Regel A–T/C–G; der neue Strang ist markiert. Kontroll-/Reparaturmodell vergleicht Paarungen, entfernt den falschen neuen Baustein und ergänzt ihn anhand des intakten alten Strangs. Bei 10000 Kopierpositionen werden 30 Fehlpaarungen gefunden,24 davon korrigiert.
+
+**Aufgabe DE:** Lokalisiere und korrigiere die Fehlpaarung. Erkläre Kontrolle, Reparatur und Informationskonstanz. Was bedeutet die verbleibende Zahl 6, und weshalb sind 30 Fehlpaarungen nicht automatisch 30 dauerhafte Mutationen?
+
+**Lösung DE:** Position 3: C–A statt C–G; neuer Strang wird 5′–A T G C–3′. Kontrolle findet den Unterschied, Reparatur stellt im Modell die vorgesehene Paarung anhand der intakten Vorlage her. 30−24=6 zunächst nicht korrigierte Fehlpaarungen; erst der weitere Verlauf zeigt bleibende Veränderungen. Erfolgreiche Korrektur verhindert deren Fixierung, aber nicht jeder Fehler wird behoben.
+
+**Material EN:** Fictional copying model:old template 3′–T A C G–5′, new 5′–A T A C–3′. Rule A–T/C–G; new strand marked. Control/repair checks pairings, removes the wrong new base and replaces it using the intact old strand. Among 10000 copied positions,30 mispairs are found and 24 corrected.
+
+**Task EN:** Locate and correct the mispair. Explain checking, repair and information stability. What does the remaining 6 mean, and why are 30 mispairs not automatically 30 persistent mutations?
+
+**Solution EN:** Position 3 is C–A rather than C–G; new strand becomes 5′–A T G C–3′. Checking detects the mismatch; repair restores pairing using the intact template. 30−24=6 initially unresolved mispairs; later events determine persistence. Successful correction prevents fixation, but not every error is repaired.
+
+**Positive Leistungsmerkmale**
+
+- Correct orientation/site/base
+- Connect checking and template-based restoration
+- Separate mismatch from fixed mutation and no error-free claim
+
+### Fall repair-b
+
+**Material DE:** Neues fiktives Modell: alte Vorlage 3′–G T A C–5′, neue Kopie 5′–C A G G–3′. Intakte Vorlage und neue Kopie sind markiert. Modell R korrigiert anhand der Vorlage, Modell N erkennt den Fehler, korrigiert aber nicht. Nach erneuter Verdopplung entstehen aus der unkorrigierten Kopie im Modell auch dauerhaft geänderte Tochter-Duplexe.
+
+**Aufgabe DE:** Bestimme richtige Kopie und Fehlerposition. Vergleiche R/N mechanistisch. Warum ist Erkennen ohne Korrigieren keine ausreichende Informationssicherung, und warum darf daraus kein universeller Reparaturwirkungsgrad folgen?
+
+**Lösung DE:** Richtige Kopie 5′–C A T G–3′; Position 3 ist G statt T gegenüber A. R entfernt den falschen neuen Baustein und setzt T ein. Bei N bleibt die Kopie verändert und kann die Änderung an Tochter-Duplexe weitergeben. Erkennen allein stellt die Sequenz nicht wieder her. Das Einzelfallmodell liefert weder eine reale Fehlerhäufigkeit noch einen universellen Reparaturwirkungsgrad.
+
+**Material EN:** New fictional model:old template 3′–G T A C–5′, new copy 5′–C A G G–3′. Intact template/new copy marked. R repairs using the template; N detects but does not repair. After another copying round, the unrepaired copy can produce daughter duplexes with persistent altered sequence in this model.
+
+**Task EN:** Determine correct copy and error site. Compare R/N mechanistically. Why is detection without correction insufficient information protection, and why does this establish no universal repair efficiency?
+
+**Solution EN:** Correct copy 5′–C A T G–3′; position 3 has G instead of T opposite A. R removes the wrong new base and inserts T. N retains the altered copy, which can pass changes to daughter duplexes. Detection alone does not restore sequence. This single model establishes neither real error frequency nor universal repair efficiency.
+
+**Positive Leistungsmerkmale**
+
+- Solve fresh complementary sequence
+- Explain different downstream copying consequences
+- Respect intact-template/model boundary
+

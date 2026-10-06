@@ -1,0 +1,1121 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Mathematik M7: Q2 Analytische Geometrie im Raum (19 aktuelle Ziele)</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Mathematik M7: Q2 Analytische Geometrie im Raum (19 aktuelle Ziele)</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>19 atomare Lernziele</dt><dd>9 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-math-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-71894e7ef4af5f94dc6093d2" aria-label="Mathematik"><a href="#goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f"><span class="toc-entry-label">Mathematik</span></a></h2>
+          <span class="toc-entry-meta"><span>19 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-math-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-3fb62939875ba85ae30720f7" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-ec6447d1-97da-5b77-94ae-4973b43f094e"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 13</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:geometry-and-advanced-analysis" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-a5c625ae0ae8fa0e0ca6ed41" aria-label="Analytische Geometrie, lineare Algebra und vertiefte Analysis"><a href="#goal-ec6447d1-97da-5b77-94ae-4973b43f094e"><span class="toc-entry-label">Analytische&#160;<wbr>Geometrie,&#160;<wbr>lineare&#160;<wbr>Algebra&#160;<wbr>und&#160;<wbr>vertiefte&#160;<wbr>Analysis</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 13</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-f6232b63-8a2a-5041-817b-f13cab43523d" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-0ae0946c35f19e72c2f5c18f" aria-label="Geraden, Ebenen und Gleichungsformen im Raum"><a href="#goal-ec6447d1-97da-5b77-94ae-4973b43f094e"><span class="toc-entry-label">Geraden,&#160;<wbr>Ebenen&#160;<wbr>und&#160;<wbr>Gleichungsformen&#160;<wbr>im&#160;<wbr>Raum</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 13</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-ed62ab23-4991-52e2-93fc-a1052fd0063a" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-2af6cb8861d6eef31569df3d" aria-label="Ebenen durch verschiedene Gleichungsformen beschreiben"><a href="#goal-ec6447d1-97da-5b77-94ae-4973b43f094e"><span class="toc-entry-label">Ebenen&#160;<wbr>durch&#160;<wbr>verschiedene&#160;<wbr>Gleichungsformen&#160;<wbr>beschreiben</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 13</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-bundesland-supplements" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-dfefd5ef67d7bfcb62fbc0f8" aria-label="Bundeslandspezifische Ergänzungen"><a href="#goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f"><span class="toc-entry-label">Bundeslandspezifische&#160;<wbr>Ergänzungen</span></a></h3>
+          <span class="toc-entry-meta"><span>18 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:goal-book-supplement-sekii" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-9ae78d411bc36afcaa44e04b" aria-label="Sekundarstufe II"><a href="#goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II</span></a></h4>
+          <span class="toc-entry-meta"><span>18 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:goal-book-supplement-SekII-LinearAlgebra" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-93fac35d185944d96f1b2638" aria-label="Lineare Algebra und analytische Geometrie"><a href="#goal-baf7276f-60a0-4d96-b959-d63acfb929de"><span class="toc-entry-label">Lineare&#160;<wbr>Algebra&#160;<wbr>und&#160;<wbr>analytische&#160;<wbr>Geometrie</span></a></h5>
+          <span class="toc-entry-meta"><span>13 Lernziele</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:goal-book-supplement-SekII-Sonstiges" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-24efbf6e8587a8be6c3c9490" aria-label="Weitere fachliche Ziele"><a href="#goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f"><span class="toc-entry-label">Weitere&#160;<wbr>fachliche&#160;<wbr>Ziele</span></a></h5>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f" data-goal-id="24174bba-a654-5f81-8de3-ca5bd09d9b6f" data-page-number="1" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-Sonstiges" aria-labelledby="goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f-title"><a class="goal-self-link" href="#goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f">Lagebeziehung zwischen Gerade und Ebene untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>24174bba-a654-5f81-8de3-ca5bd09d9b6f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-24efbf6e8587a8be6c3c9490">Weitere fachliche Ziele</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:aeca7f49adf5bd2034b65ce6131ce33572afa0fa137e9fae437519e27eecdb44" data-rendered-digest="sha256:375d1f4449e8a94e2ac1848c7ac658d12fa88ac0df27bc2e8cd263738f64d9a1" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/24174bba-a654-5f81-8de3-ca5bd09d9b6f/24174bba-a654-5f81-8de3-ca5bd09d9b6f.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Lagebeziehung zwischen Gerade und Ebene untersuchen&quot;. Die lernende Person kann die Lagebeziehung zwischen einer Geraden und einer Ebene mithilfe vektorieller und koordinatenmäßiger Darstellungen begründet klassifizieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f-description-heading">
+        <p class="section-heading" id="goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Lagebeziehung zwischen einer Geraden und einer Ebene mithilfe vektorieller und koordinatenmäßiger Darstellungen begründet klassifizieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW:</strong> Sek. II · LK</li><li><strong>HE, SH:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f-requires-heading">
+          <p class="section-heading" id="goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f-reverse-heading">
+          <p class="section-heading" id="goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-8eb14d81-353a-4909-9464-61be7b1ba5b8"><span>Gerade-Ebene- und Ebene-Ebene-Abstände im Raum bestimmen</span><code>8eb14d81-353a-4909-9464-61be7b1ba5b8</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-5f90df42-8a71-534d-b995-b8f7dcaf1661"><span>Parameterabhängige Winkel und Lagebeziehungen untersuchen</span><code>5f90df42-8a71-534d-b995-b8f7dcaf1661</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-6b2a1c04-8c28-51ff-905b-9c9492a26cc3"><span>Spezielle Lagen von Geraden und Ebenen begründen (LK)</span><code>6b2a1c04-8c28-51ff-905b-9c9492a26cc3</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-effe43eb-cabe-56cb-a228-35887d7915c1" rel="noreferrer noopener"><span>Geraden im Raum parametrisch darstellen</span> <code>effe43eb-cabe-56cb-a228-35887d7915c1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9cc650e0-100d-5ae1-a83b-2b854ab7c5c8" rel="noreferrer noopener"><span>Koordinatenform einer Ebene aufstellen und interpretieren</span> <code>9cc650e0-100d-5ae1-a83b-2b854ab7c5c8</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c0e34fa8-fde5-5a4e-9b84-c5d5db719b58" rel="noreferrer noopener"><span>Mathematische Probleme erkennen und formulieren</span> <code>c0e34fa8-fde5-5a4e-9b84-c5d5db719b58</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5748633c-113f-5ea8-9041-24da55919de7" rel="noreferrer noopener"><span>Projektionen auf Koordinatenebenen untersuchen</span> <code>5748633c-113f-5ea8-9041-24da55919de7</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fac75b4a-4ec2-5d38-bbce-9b002c8a4904" rel="noreferrer noopener"><span>Abstandsverfahren im Raum auswählen und anwenden</span> <code>fac75b4a-4ec2-5d38-bbce-9b002c8a4904</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c7b4c144a959fd245bf20d6fb3e5df58428f7c44323cb835978755c966004b07</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=24174bba-a654-5f81-8de3-ca5bd09d9b6f&amp;goalFingerprint=sha256%3Ac7b4c144a959fd245bf20d6fb3e5df58428f7c44323cb835978755c966004b07&amp;pageFingerprint=sha256%3A3c3433d7343eae7f8527ecc6ac5ea2f93d3bb87b38cee7a974a3a9a1b305e25e&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-baf7276f-60a0-4d96-b959-d63acfb929de" data-goal-id="baf7276f-60a0-4d96-b959-d63acfb929de" data-page-number="2" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-LinearAlgebra" aria-labelledby="goal-baf7276f-60a0-4d96-b959-d63acfb929de-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-baf7276f-60a0-4d96-b959-d63acfb929de-title"><a class="goal-self-link" href="#goal-baf7276f-60a0-4d96-b959-d63acfb929de">Schnittpunkte von Geraden mit Ebenen berechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>baf7276f-60a0-4d96-b959-d63acfb929de</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-93fac35d185944d96f1b2638">Lineare Algebra und analytische Geometrie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a2049ee4118def7c190802cfb4682fcc50a8825b5555598fc09497a8c4dc21a3" data-rendered-digest="sha256:e0af72dd9029595a379bffbd8f7720d06bd859adfc43a4cd90aeeeb19be40a8c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/baf7276f-60a0-4d96-b959-d63acfb929de/baf7276f-60a0-4d96-b959-d63acfb929de.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Schnittpunkte von Geraden mit Ebenen berechnen&quot;. Die lernende Person kann Schnittpunkte von Geraden mit Ebenen mithilfe von Parametergleichungen und Ebenengleichungen berechnen und die Ergebnisse geometrisch deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-baf7276f-60a0-4d96-b959-d63acfb929de-description-heading">
+        <p class="section-heading" id="goal-baf7276f-60a0-4d96-b959-d63acfb929de-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Schnittpunkte von Geraden mit Ebenen mithilfe von Parametergleichungen und Ebenengleichungen berechnen und die Ergebnisse geometrisch deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-baf7276f-60a0-4d96-b959-d63acfb929de" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-baf7276f-60a0-4d96-b959-d63acfb929de-requires-heading">
+          <p class="section-heading" id="goal-baf7276f-60a0-4d96-b959-d63acfb929de-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-baf7276f-60a0-4d96-b959-d63acfb929de-reverse-heading">
+          <p class="section-heading" id="goal-baf7276f-60a0-4d96-b959-d63acfb929de-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-baf7276f-60a0-4d96-b959-d63acfb929de-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-baf7276f-60a0-4d96-b959-d63acfb929de-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-effe43eb-cabe-56cb-a228-35887d7915c1" rel="noreferrer noopener"><span>Geraden im Raum parametrisch darstellen</span> <code>effe43eb-cabe-56cb-a228-35887d7915c1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fa02cf14-0411-4fe3-8be7-a62c69743e26" rel="noreferrer noopener"><span>Zwischen Koordinaten- und Normalenform von Ebenen wechseln</span> <code>fa02cf14-0411-4fe3-8be7-a62c69743e26</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d76766a5-ce07-5c7a-987b-157f2998b05e" rel="noreferrer noopener"><span>Zwischen Ebenenformen umformen</span> <code>d76766a5-ce07-5c7a-987b-157f2998b05e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ce491ec0-c558-5872-86fd-289e60a38403" rel="noreferrer noopener"><span>Punktprobe und Lage eines Punktes zur Ebene prüfen</span> <code>ce491ec0-c558-5872-86fd-289e60a38403</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ea4bd128-17ab-5a8b-ae98-29552d774fb0" rel="noreferrer noopener"><span>Ebenengleichung aus geometrischen Bedingungen bestimmen</span> <code>ea4bd128-17ab-5a8b-ae98-29552d774fb0</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-36e0de23-1e3b-5c69-888f-e5e19e79cbbe" rel="noreferrer noopener"><span>Normalenform und Hessesche Normalenform einer Ebene anwenden (LK)</span> <code>36e0de23-1e3b-5c69-888f-e5e19e79cbbe</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-baf7276f-60a0-4d96-b959-d63acfb929de-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-baf7276f-60a0-4d96-b959-d63acfb929de-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0148be2a3e0704cd8903759903d47ccec7ae0191cf4cf48247f50f6411b7e388</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=baf7276f-60a0-4d96-b959-d63acfb929de&amp;goalFingerprint=sha256%3A0148be2a3e0704cd8903759903d47ccec7ae0191cf4cf48247f50f6411b7e388&amp;pageFingerprint=sha256%3A37330c7522fe74ce8361f567c6789b61381cee7823d7cb13aa5afd8f6a2b58b2&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8eb14d81-353a-4909-9464-61be7b1ba5b8" data-goal-id="8eb14d81-353a-4909-9464-61be7b1ba5b8" data-page-number="3" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-LinearAlgebra" aria-labelledby="goal-8eb14d81-353a-4909-9464-61be7b1ba5b8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8eb14d81-353a-4909-9464-61be7b1ba5b8-title"><a class="goal-self-link" href="#goal-8eb14d81-353a-4909-9464-61be7b1ba5b8">Gerade-Ebene- und Ebene-Ebene-Abstände im Raum bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8eb14d81-353a-4909-9464-61be7b1ba5b8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-93fac35d185944d96f1b2638">Lineare Algebra und analytische Geometrie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c98359ecf26be95141c303bc76c5ff3a632c8e00ac33bf8674e299249687472a" data-rendered-digest="sha256:5cb9ca56ffe1f0055c03994db8199b288d444f18222ba9279af23c56f24cea64" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/8eb14d81-353a-4909-9464-61be7b1ba5b8/8eb14d81-353a-4909-9464-61be7b1ba5b8.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Gerade-Ebene- und Ebene-Ebene-Abstände im Raum bestimmen&quot;. Die lernende Person kann Gerade-Ebene- und Ebene-Ebene-Abstände im Raum mithilfe analytischer Verfahren bestimmen und die Ergebnisse geometrisch deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8eb14d81-353a-4909-9464-61be7b1ba5b8-description-heading">
+        <p class="section-heading" id="goal-8eb14d81-353a-4909-9464-61be7b1ba5b8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Gerade-Ebene- und Ebene-Ebene-Abstände im Raum mithilfe analytischer Verfahren bestimmen und die Ergebnisse geometrisch deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW:</strong> Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8eb14d81-353a-4909-9464-61be7b1ba5b8" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8eb14d81-353a-4909-9464-61be7b1ba5b8-requires-heading">
+          <p class="section-heading" id="goal-8eb14d81-353a-4909-9464-61be7b1ba5b8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f"><span>Lagebeziehung zwischen Gerade und Ebene untersuchen</span><code>24174bba-a654-5f81-8de3-ca5bd09d9b6f</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8eb14d81-353a-4909-9464-61be7b1ba5b8-reverse-heading">
+          <p class="section-heading" id="goal-8eb14d81-353a-4909-9464-61be7b1ba5b8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8eb14d81-353a-4909-9464-61be7b1ba5b8-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8eb14d81-353a-4909-9464-61be7b1ba5b8-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5" rel="noreferrer noopener"><span>Schnittwinkel über Richtungs- und Normalenvektoren bestimmen</span> <code>57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-8eb14d81-353a-4909-9464-61be7b1ba5b8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8eb14d81-353a-4909-9464-61be7b1ba5b8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b804f1f2bd4a27e869b3c5362f65b952941d342dc3b59cd0b3049745a29c832a</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=8eb14d81-353a-4909-9464-61be7b1ba5b8&amp;goalFingerprint=sha256%3Ab804f1f2bd4a27e869b3c5362f65b952941d342dc3b59cd0b3049745a29c832a&amp;pageFingerprint=sha256%3Afe85fdc996a1aef95b2281c889c9e987c4d247032d7ccd1128636c1617673d70&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-265af6af-8eac-5632-b730-800aafcde26a" data-goal-id="265af6af-8eac-5632-b730-800aafcde26a" data-page-number="4" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-Sonstiges" aria-labelledby="goal-265af6af-8eac-5632-b730-800aafcde26a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-265af6af-8eac-5632-b730-800aafcde26a-title"><a class="goal-self-link" href="#goal-265af6af-8eac-5632-b730-800aafcde26a">Skalarprodukt zur Winkelberechnung nutzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>265af6af-8eac-5632-b730-800aafcde26a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-24efbf6e8587a8be6c3c9490">Weitere fachliche Ziele</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d0f1b97fa5e2a89af7b87aedb20946d8d352aba4aab42728edbd2e696fcb3978" data-rendered-digest="sha256:fbf9c1f600a8ccb795cb42d4f3f228aa653d68cee5376bf889d88e07f333806a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/265af6af-8eac-5632-b730-800aafcde26a/265af6af-8eac-5632-b730-800aafcde26a.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Skalarprodukt zur Winkelberechnung nutzen&quot;. Die lernende Person kann das Skalarprodukt nutzen, um den Winkel zwischen zwei Vektoren zu berechnen und das Ergebnis geometrisch zu deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-265af6af-8eac-5632-b730-800aafcde26a-description-heading">
+        <p class="section-heading" id="goal-265af6af-8eac-5632-b730-800aafcde26a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Skalarprodukt nutzen, um den Winkel zwischen zwei Vektoren zu berechnen und das Ergebnis geometrisch zu deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-265af6af-8eac-5632-b730-800aafcde26a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-265af6af-8eac-5632-b730-800aafcde26a-requires-heading">
+          <p class="section-heading" id="goal-265af6af-8eac-5632-b730-800aafcde26a-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-265af6af-8eac-5632-b730-800aafcde26a-reverse-heading">
+          <p class="section-heading" id="goal-265af6af-8eac-5632-b730-800aafcde26a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-265af6af-8eac-5632-b730-800aafcde26a-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-265af6af-8eac-5632-b730-800aafcde26a-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8" rel="noreferrer noopener"><span>Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben</span> <code>be0e8715-3c3a-5ffb-937a-0b6bce4f01d8</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-265af6af-8eac-5632-b730-800aafcde26a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-265af6af-8eac-5632-b730-800aafcde26a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-492463cf-6cb2-5a5a-98e0-c1d77c36c256" rel="noreferrer noopener"><span>Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen</span> <code>492463cf-6cb2-5a5a-98e0-c1d77c36c256</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3256476b-ec65-4038-9f5a-a8808fbcf207" rel="noreferrer noopener"><span>Punkt-Gerade-Abstände im Raum bestimmen</span> <code>3256476b-ec65-4038-9f5a-a8808fbcf207</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3016ec37-1c2e-47db-83f5-e767923bc97e" rel="noreferrer noopener"><span>Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen</span> <code>3016ec37-1c2e-47db-83f5-e767923bc97e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-bda6a659-9640-53a5-8be0-24705ab623ef" rel="noreferrer noopener"><span>Winkel zwischen zwei Ebenen berechnen</span> <code>bda6a659-9640-53a5-8be0-24705ab623ef</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-509ae03b-96b1-4bb1-b015-b83d14569dae" rel="noreferrer noopener"><span>Gerade-Gerade-Abstände im Raum bestimmen</span> <code>509ae03b-96b1-4bb1-b015-b83d14569dae</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0a846521-edcc-5c3c-a844-eac061e053ce" rel="noreferrer noopener"><span>Abstände und Längen im Raum bestimmen</span> <code>0a846521-edcc-5c3c-a844-eac061e053ce</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-944dd479-9f30-5acb-ab32-3ea0b6dc8e06" rel="noreferrer noopener"><span>Spatprodukt korrekt definieren und deuten</span> <code>944dd479-9f30-5acb-ab32-3ea0b6dc8e06</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bda32b95b4ec915e4df9146944c1555801c52128911128e752687e61a87120ad</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=265af6af-8eac-5632-b730-800aafcde26a&amp;goalFingerprint=sha256%3Abda32b95b4ec915e4df9146944c1555801c52128911128e752687e61a87120ad&amp;pageFingerprint=sha256%3Ae872a204028b845f6461fb0d2338afa202099bda8eb7125d6ed05029a3213e65&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9460c3ff-e72d-4107-bc73-087d217200aa" data-goal-id="9460c3ff-e72d-4107-bc73-087d217200aa" data-page-number="5" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-LinearAlgebra" aria-labelledby="goal-9460c3ff-e72d-4107-bc73-087d217200aa-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9460c3ff-e72d-4107-bc73-087d217200aa-title"><a class="goal-self-link" href="#goal-9460c3ff-e72d-4107-bc73-087d217200aa">Skalarprodukt als Orthogonalitätskriterium nutzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9460c3ff-e72d-4107-bc73-087d217200aa</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-93fac35d185944d96f1b2638">Lineare Algebra und analytische Geometrie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:571856e805dd50b0b7595790d5813a58ff3299eeb8bd2c1adaf13509a3da263d" data-rendered-digest="sha256:3178c7090e4ad05eef2b93aeef8d73c44122b9bbc1cf521448fcfe1d864ccaba" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/9460c3ff-e72d-4107-bc73-087d217200aa/9460c3ff-e72d-4107-bc73-087d217200aa.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Skalarprodukt als Orthogonalitätskriterium nutzen&quot;. Die lernende Person kann das Skalarprodukt zweier Vektoren berechnen und den Wert 0 als Kriterium für Orthogonalität deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9460c3ff-e72d-4107-bc73-087d217200aa-description-heading">
+        <p class="section-heading" id="goal-9460c3ff-e72d-4107-bc73-087d217200aa-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Skalarprodukt zweier Vektoren berechnen und den Wert 0 als Kriterium für Orthogonalität deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9460c3ff-e72d-4107-bc73-087d217200aa" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9460c3ff-e72d-4107-bc73-087d217200aa-requires-heading">
+          <p class="section-heading" id="goal-9460c3ff-e72d-4107-bc73-087d217200aa-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-9460c3ff-e72d-4107-bc73-087d217200aa-reverse-heading">
+          <p class="section-heading" id="goal-9460c3ff-e72d-4107-bc73-087d217200aa-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-ec6447d1-97da-5b77-94ae-4973b43f094e"><span>Normalenvektor einer Ebene bestimmen und nutzen</span><code>ec6447d1-97da-5b77-94ae-4973b43f094e</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-18be713b-7d90-4f01-b60a-5582ac4df0e8"><span>Schnittwinkel zwischen geometrischen Objekten berechnen</span><code>18be713b-7d90-4f01-b60a-5582ac4df0e8</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-9460c3ff-e72d-4107-bc73-087d217200aa-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9460c3ff-e72d-4107-bc73-087d217200aa-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8" rel="noreferrer noopener"><span>Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben</span> <code>be0e8715-3c3a-5ffb-937a-0b6bce4f01d8</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-9460c3ff-e72d-4107-bc73-087d217200aa-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9460c3ff-e72d-4107-bc73-087d217200aa-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-50eb5156-5046-5887-80dc-3128c5f8cbd6" rel="noreferrer noopener"><span>Längen- und Winkelbeziehungen einfacher Körper untersuchen</span> <code>50eb5156-5046-5887-80dc-3128c5f8cbd6</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-eb070ed2-7ef4-5afe-b203-190ebb0116af" rel="noreferrer noopener"><span>Parallelität und Orthogonalität einfacher Körper untersuchen</span> <code>eb070ed2-7ef4-5afe-b203-190ebb0116af</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2" rel="noreferrer noopener"><span>Symmetrien einfacher Körper untersuchen</span> <code>b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1911970c4244b72cc1c25f1f7bdf57b72a8a382ec5ba9aa954714681b0faff50</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=9460c3ff-e72d-4107-bc73-087d217200aa&amp;goalFingerprint=sha256%3A1911970c4244b72cc1c25f1f7bdf57b72a8a382ec5ba9aa954714681b0faff50&amp;pageFingerprint=sha256%3A93089c60943bb3dfa0cb6285fae1daea8fe77ac748c7bbd1a6690906698ddeb0&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-18be713b-7d90-4f01-b60a-5582ac4df0e8" data-goal-id="18be713b-7d90-4f01-b60a-5582ac4df0e8" data-page-number="6" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-LinearAlgebra" aria-labelledby="goal-18be713b-7d90-4f01-b60a-5582ac4df0e8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-18be713b-7d90-4f01-b60a-5582ac4df0e8-title"><a class="goal-self-link" href="#goal-18be713b-7d90-4f01-b60a-5582ac4df0e8">Schnittwinkel zwischen geometrischen Objekten berechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>18be713b-7d90-4f01-b60a-5582ac4df0e8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-93fac35d185944d96f1b2638">Lineare Algebra und analytische Geometrie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:755c2fb27827fac0a675889e36c0607d47d7e5f2c7bac624d19e2f4dfaf7b78a" data-rendered-digest="sha256:a52b8ef162b3f1145216130e30a6233cccb34d3da8714a3bc2cee76fb860d5ee" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/18be713b-7d90-4f01-b60a-5582ac4df0e8/18be713b-7d90-4f01-b60a-5582ac4df0e8.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Schnittwinkel zwischen geometrischen Objekten berechnen&quot;. Die lernende Person kann die Größe des Schnittwinkels zwischen zwei sich schneidenden geometrischen Objekten berechnen und das Ergebnis geometrisch deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-18be713b-7d90-4f01-b60a-5582ac4df0e8-description-heading">
+        <p class="section-heading" id="goal-18be713b-7d90-4f01-b60a-5582ac4df0e8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Größe des Schnittwinkels zwischen zwei sich schneidenden geometrischen Objekten berechnen und das Ergebnis geometrisch deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, HE:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-18be713b-7d90-4f01-b60a-5582ac4df0e8" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-18be713b-7d90-4f01-b60a-5582ac4df0e8-requires-heading">
+          <p class="section-heading" id="goal-18be713b-7d90-4f01-b60a-5582ac4df0e8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-9460c3ff-e72d-4107-bc73-087d217200aa"><span>Skalarprodukt als Orthogonalitätskriterium nutzen</span><code>9460c3ff-e72d-4107-bc73-087d217200aa</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-18be713b-7d90-4f01-b60a-5582ac4df0e8-reverse-heading">
+          <p class="section-heading" id="goal-18be713b-7d90-4f01-b60a-5582ac4df0e8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-18be713b-7d90-4f01-b60a-5582ac4df0e8-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-18be713b-7d90-4f01-b60a-5582ac4df0e8-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fa02cf14-0411-4fe3-8be7-a62c69743e26" rel="noreferrer noopener"><span>Zwischen Koordinaten- und Normalenform von Ebenen wechseln</span> <code>fa02cf14-0411-4fe3-8be7-a62c69743e26</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d76766a5-ce07-5c7a-987b-157f2998b05e" rel="noreferrer noopener"><span>Zwischen Ebenenformen umformen</span> <code>d76766a5-ce07-5c7a-987b-157f2998b05e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ce491ec0-c558-5872-86fd-289e60a38403" rel="noreferrer noopener"><span>Punktprobe und Lage eines Punktes zur Ebene prüfen</span> <code>ce491ec0-c558-5872-86fd-289e60a38403</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ea4bd128-17ab-5a8b-ae98-29552d774fb0" rel="noreferrer noopener"><span>Ebenengleichung aus geometrischen Bedingungen bestimmen</span> <code>ea4bd128-17ab-5a8b-ae98-29552d774fb0</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-36e0de23-1e3b-5c69-888f-e5e19e79cbbe" rel="noreferrer noopener"><span>Normalenform und Hessesche Normalenform einer Ebene anwenden (LK)</span> <code>36e0de23-1e3b-5c69-888f-e5e19e79cbbe</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-18be713b-7d90-4f01-b60a-5582ac4df0e8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-18be713b-7d90-4f01-b60a-5582ac4df0e8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008" rel="noreferrer noopener"><span>Geraden, Ebenen und Schnittfiguren analysieren</span> <code>2f8a3a90-717d-5ac1-b54e-facca26e9008</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3ce857b1abeb6353516113a9e3100cf296d4cf6fe2ba3d75bec3ad880a0daddd</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=18be713b-7d90-4f01-b60a-5582ac4df0e8&amp;goalFingerprint=sha256%3A3ce857b1abeb6353516113a9e3100cf296d4cf6fe2ba3d75bec3ad880a0daddd&amp;pageFingerprint=sha256%3A8b6e8db5b1ab2fa4cb4d9c80f3310ced2da56ea8491f4b31477c112b3a5fa5a5&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3def350a-c01c-51c3-be74-b3de20ee53e1" data-goal-id="3def350a-c01c-51c3-be74-b3de20ee53e1" data-page-number="7" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-Sonstiges" aria-labelledby="goal-3def350a-c01c-51c3-be74-b3de20ee53e1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3def350a-c01c-51c3-be74-b3de20ee53e1-title"><a class="goal-self-link" href="#goal-3def350a-c01c-51c3-be74-b3de20ee53e1">Schnittpunkt von Gerade und Ebene berechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3def350a-c01c-51c3-be74-b3de20ee53e1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-24efbf6e8587a8be6c3c9490">Weitere fachliche Ziele</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e8e1bb1c08b6230261801033d4489c8f5e903daf641effd30eb2e7d78da632ab" data-rendered-digest="sha256:1ccdd3f29e45d5e758b99c781b6154f0df6d06f126fc0fb68fb74b2462cd1451" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/3def350a-c01c-51c3-be74-b3de20ee53e1/3def350a-c01c-51c3-be74-b3de20ee53e1.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Schnittpunkt von Gerade und Ebene berechnen&quot;. Die lernende Person kann den Schnittpunkt einer Geraden mit einer Ebene über ein lineares Gleichungssystem bestimmen und geometrisch interpretieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3def350a-c01c-51c3-be74-b3de20ee53e1-description-heading">
+        <p class="section-heading" id="goal-3def350a-c01c-51c3-be74-b3de20ee53e1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Schnittpunkt einer Geraden mit einer Ebene über ein lineares Gleichungssystem bestimmen und geometrisch interpretieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, HE, SH:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3def350a-c01c-51c3-be74-b3de20ee53e1" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3def350a-c01c-51c3-be74-b3de20ee53e1-requires-heading">
+          <p class="section-heading" id="goal-3def350a-c01c-51c3-be74-b3de20ee53e1-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-3def350a-c01c-51c3-be74-b3de20ee53e1-reverse-heading">
+          <p class="section-heading" id="goal-3def350a-c01c-51c3-be74-b3de20ee53e1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-6b2a1c04-8c28-51ff-905b-9c9492a26cc3"><span>Spezielle Lagen von Geraden und Ebenen begründen (LK)</span><code>6b2a1c04-8c28-51ff-905b-9c9492a26cc3</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-3def350a-c01c-51c3-be74-b3de20ee53e1-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3def350a-c01c-51c3-be74-b3de20ee53e1-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-effe43eb-cabe-56cb-a228-35887d7915c1" rel="noreferrer noopener"><span>Geraden im Raum parametrisch darstellen</span> <code>effe43eb-cabe-56cb-a228-35887d7915c1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ea4bd128-17ab-5a8b-ae98-29552d774fb0" rel="noreferrer noopener"><span>Ebenengleichung aus geometrischen Bedingungen bestimmen</span> <code>ea4bd128-17ab-5a8b-ae98-29552d774fb0</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-3def350a-c01c-51c3-be74-b3de20ee53e1-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3def350a-c01c-51c3-be74-b3de20ee53e1-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e75ec65a-9692-5871-b90b-fbebe38ae0c3" rel="noreferrer noopener"><span>Besondere Lagen von Geraden und Ebenen begründen</span> <code>e75ec65a-9692-5871-b90b-fbebe38ae0c3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-bd3576b8-f4e5-542a-a8a2-74524d9cee21" rel="noreferrer noopener"><span>Sachprobleme mit Geraden und Ebenen modellieren</span> <code>bd3576b8-f4e5-542a-a8a2-74524d9cee21</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3aea4d33-4170-5ecc-82b0-3a3974cc2237" rel="noreferrer noopener"><span>Schnittfiguren von Ebenen mit Polyedern bestimmen (LK)</span> <code>3aea4d33-4170-5ecc-82b0-3a3974cc2237</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7d37513b-fa1a-54cc-9e2a-9279a381f0f0" rel="noreferrer noopener"><span>Transformationsargumente für Flächen und Volumina nutzen (LK)</span> <code>7d37513b-fa1a-54cc-9e2a-9279a381f0f0</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bfc1d274d3131ec3fde4a98731d189fad362818d38f406267d2726af22c8ca47</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=3def350a-c01c-51c3-be74-b3de20ee53e1&amp;goalFingerprint=sha256%3Abfc1d274d3131ec3fde4a98731d189fad362818d38f406267d2726af22c8ca47&amp;pageFingerprint=sha256%3A2e911ce1607b91299d5aa8ccb8892d72e668de43fcb27ca83114e0f3d0c19b16&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6b2a1c04-8c28-51ff-905b-9c9492a26cc3" data-goal-id="6b2a1c04-8c28-51ff-905b-9c9492a26cc3" data-page-number="8" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-Sonstiges" aria-labelledby="goal-6b2a1c04-8c28-51ff-905b-9c9492a26cc3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6b2a1c04-8c28-51ff-905b-9c9492a26cc3-title"><a class="goal-self-link" href="#goal-6b2a1c04-8c28-51ff-905b-9c9492a26cc3">Spezielle Lagen von Geraden und Ebenen begründen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6b2a1c04-8c28-51ff-905b-9c9492a26cc3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-24efbf6e8587a8be6c3c9490">Weitere fachliche Ziele</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8031e9262a0956fefdb3615a1c49d1a0559d9185b9ca093cbfdc946f111b708b" data-rendered-digest="sha256:e5c260386213a2ce29ee773200e08f0a9e36c2c71c8338ea6429cd7b21d2fdff" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/6b2a1c04-8c28-51ff-905b-9c9492a26cc3/6b2a1c04-8c28-51ff-905b-9c9492a26cc3.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Spezielle Lagen von Geraden und Ebenen begründen (LK)&quot;. Die lernende Person kann besondere Lagebeziehungen von Geraden und Ebenen im Raum analysieren, rechnerisch begründen und die Ergebnisse geometrisch interpretieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6b2a1c04-8c28-51ff-905b-9c9492a26cc3-description-heading">
+        <p class="section-heading" id="goal-6b2a1c04-8c28-51ff-905b-9c9492a26cc3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann besondere Lagebeziehungen von Geraden und Ebenen im Raum analysieren, rechnerisch begründen und die Ergebnisse geometrisch interpretieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6b2a1c04-8c28-51ff-905b-9c9492a26cc3" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6b2a1c04-8c28-51ff-905b-9c9492a26cc3-requires-heading">
+          <p class="section-heading" id="goal-6b2a1c04-8c28-51ff-905b-9c9492a26cc3-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-3def350a-c01c-51c3-be74-b3de20ee53e1"><span>Schnittpunkt von Gerade und Ebene berechnen</span><code>3def350a-c01c-51c3-be74-b3de20ee53e1</code><span class="reference-page">S. 7</span></a></li><li><a href="#goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f"><span>Lagebeziehung zwischen Gerade und Ebene untersuchen</span><code>24174bba-a654-5f81-8de3-ca5bd09d9b6f</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-6b2a1c04-8c28-51ff-905b-9c9492a26cc3-reverse-heading">
+          <p class="section-heading" id="goal-6b2a1c04-8c28-51ff-905b-9c9492a26cc3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-6b2a1c04-8c28-51ff-905b-9c9492a26cc3-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6b2a1c04-8c28-51ff-905b-9c9492a26cc3-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-effe43eb-cabe-56cb-a228-35887d7915c1" rel="noreferrer noopener"><span>Geraden im Raum parametrisch darstellen</span> <code>effe43eb-cabe-56cb-a228-35887d7915c1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5" rel="noreferrer noopener"><span>Schnittwinkel über Richtungs- und Normalenvektoren bestimmen</span> <code>57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fac75b4a-4ec2-5d38-bbce-9b002c8a4904" rel="noreferrer noopener"><span>Abstandsverfahren im Raum auswählen und anwenden</span> <code>fac75b4a-4ec2-5d38-bbce-9b002c8a4904</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-6b2a1c04-8c28-51ff-905b-9c9492a26cc3-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6b2a1c04-8c28-51ff-905b-9c9492a26cc3-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7d37513b-fa1a-54cc-9e2a-9279a381f0f0" rel="noreferrer noopener"><span>Transformationsargumente für Flächen und Volumina nutzen (LK)</span> <code>7d37513b-fa1a-54cc-9e2a-9279a381f0f0</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:895224851631cca316b85e67e5a7f12a1ca38e00b60299e43dcd24b2a17a91ab</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=6b2a1c04-8c28-51ff-905b-9c9492a26cc3&amp;goalFingerprint=sha256%3A895224851631cca316b85e67e5a7f12a1ca38e00b60299e43dcd24b2a17a91ab&amp;pageFingerprint=sha256%3A4cfcc9c3f243783d2f8e09a06e60a440c6d18c3c6fe7f7998faa5e99d727acdc&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-69beb31d-5d02-4505-9500-3ec81af86f1e" data-goal-id="69beb31d-5d02-4505-9500-3ec81af86f1e" data-page-number="9" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-LinearAlgebra" aria-labelledby="goal-69beb31d-5d02-4505-9500-3ec81af86f1e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-69beb31d-5d02-4505-9500-3ec81af86f1e-title"><a class="goal-self-link" href="#goal-69beb31d-5d02-4505-9500-3ec81af86f1e">Lagebeziehungen von Geraden im Raum untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>69beb31d-5d02-4505-9500-3ec81af86f1e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-93fac35d185944d96f1b2638">Lineare Algebra und analytische Geometrie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:37db14aee3f73df6f2647c6623f9d4f9de2a47d0866b2a1fdf1095a83d4d2ecc" data-rendered-digest="sha256:33208acb48af6f4451fca8372a91fe7c1e6552e73fb1f531d4a6c6e93813bb1a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/69beb31d-5d02-4505-9500-3ec81af86f1e/69beb31d-5d02-4505-9500-3ec81af86f1e.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Lagebeziehungen von Geraden im Raum untersuchen&quot;. Die lernende Person kann Lagebeziehungen zweier Geraden im Raum untersuchen, dazu auch lineare Gleichungssysteme systematisch lösen und die Ergebnisse geometrisch deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-69beb31d-5d02-4505-9500-3ec81af86f1e-description-heading">
+        <p class="section-heading" id="goal-69beb31d-5d02-4505-9500-3ec81af86f1e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Lagebeziehungen zweier Geraden im Raum untersuchen, dazu auch lineare Gleichungssysteme systematisch lösen und die Ergebnisse geometrisch deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW:</strong> Sek. II · LK</li><li><strong>HE, SH:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-69beb31d-5d02-4505-9500-3ec81af86f1e" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-69beb31d-5d02-4505-9500-3ec81af86f1e-requires-heading">
+          <p class="section-heading" id="goal-69beb31d-5d02-4505-9500-3ec81af86f1e-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-69beb31d-5d02-4505-9500-3ec81af86f1e-reverse-heading">
+          <p class="section-heading" id="goal-69beb31d-5d02-4505-9500-3ec81af86f1e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-5f90df42-8a71-534d-b995-b8f7dcaf1661"><span>Parameterabhängige Winkel und Lagebeziehungen untersuchen</span><code>5f90df42-8a71-534d-b995-b8f7dcaf1661</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-0f4f9957-8afe-4aab-9dd8-c26c9aee2afd"><span>Lagebeziehungen von Ebenen sowie von Geraden und Ebenen untersuchen (LK)</span><code>0f4f9957-8afe-4aab-9dd8-c26c9aee2afd</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-69beb31d-5d02-4505-9500-3ec81af86f1e-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-69beb31d-5d02-4505-9500-3ec81af86f1e-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-effe43eb-cabe-56cb-a228-35887d7915c1" rel="noreferrer noopener"><span>Geraden im Raum parametrisch darstellen</span> <code>effe43eb-cabe-56cb-a228-35887d7915c1</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-69beb31d-5d02-4505-9500-3ec81af86f1e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-69beb31d-5d02-4505-9500-3ec81af86f1e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-edaf0bb4-e12e-5a6c-b484-91124ba209f3" rel="noreferrer noopener"><span>Geradenscharen untersuchen (LK)</span> <code>edaf0bb4-e12e-5a6c-b484-91124ba209f3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e75ec65a-9692-5871-b90b-fbebe38ae0c3" rel="noreferrer noopener"><span>Besondere Lagen von Geraden und Ebenen begründen</span> <code>e75ec65a-9692-5871-b90b-fbebe38ae0c3</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:39020f8196aab69eee5dfa80f9ed3706c37e34aa50c047bae4260fc41594e5c4</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=69beb31d-5d02-4505-9500-3ec81af86f1e&amp;goalFingerprint=sha256%3A39020f8196aab69eee5dfa80f9ed3706c37e34aa50c047bae4260fc41594e5c4&amp;pageFingerprint=sha256%3Af2d3cf414991789fe2f7fab12d6399a66d23793fa65c2b8cce8961aa5fa41fbc&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0f4f9957-8afe-4aab-9dd8-c26c9aee2afd" data-goal-id="0f4f9957-8afe-4aab-9dd8-c26c9aee2afd" data-page-number="10" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-LinearAlgebra" aria-labelledby="goal-0f4f9957-8afe-4aab-9dd8-c26c9aee2afd-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0f4f9957-8afe-4aab-9dd8-c26c9aee2afd-title"><a class="goal-self-link" href="#goal-0f4f9957-8afe-4aab-9dd8-c26c9aee2afd">Lagebeziehungen von Ebenen sowie von Geraden und Ebenen untersuchen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0f4f9957-8afe-4aab-9dd8-c26c9aee2afd</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-93fac35d185944d96f1b2638">Lineare Algebra und analytische Geometrie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3cbffc6b2ad80b1e5760065e7669fa45f05ba64f5b7b4c8d80de95f09ea4f230" data-rendered-digest="sha256:62bf9a778d03f4ad6b8e0a66ab1e39b29dfb77967f3d11221b2c0070d5ca7a4e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/0f4f9957-8afe-4aab-9dd8-c26c9aee2afd/0f4f9957-8afe-4aab-9dd8-c26c9aee2afd.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Lagebeziehungen von Ebenen sowie von Geraden und Ebenen untersuchen (LK)&quot;. Die lernende Person kann die Lagebeziehung zweier Ebenen untersuchen, dazu das zugehörige lineare Gleichungssystem systematisch lösen und die Lösungsmenge geometrisch interpretieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0f4f9957-8afe-4aab-9dd8-c26c9aee2afd-description-heading">
+        <p class="section-heading" id="goal-0f4f9957-8afe-4aab-9dd8-c26c9aee2afd-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Lagebeziehung zweier Ebenen untersuchen, dazu das zugehörige lineare Gleichungssystem systematisch lösen und die Lösungsmenge geometrisch interpretieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, HE, SH:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0f4f9957-8afe-4aab-9dd8-c26c9aee2afd" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0f4f9957-8afe-4aab-9dd8-c26c9aee2afd-requires-heading">
+          <p class="section-heading" id="goal-0f4f9957-8afe-4aab-9dd8-c26c9aee2afd-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-69beb31d-5d02-4505-9500-3ec81af86f1e"><span>Lagebeziehungen von Geraden im Raum untersuchen</span><code>69beb31d-5d02-4505-9500-3ec81af86f1e</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-0f4f9957-8afe-4aab-9dd8-c26c9aee2afd-reverse-heading">
+          <p class="section-heading" id="goal-0f4f9957-8afe-4aab-9dd8-c26c9aee2afd-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0f4f9957-8afe-4aab-9dd8-c26c9aee2afd-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0f4f9957-8afe-4aab-9dd8-c26c9aee2afd-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fa02cf14-0411-4fe3-8be7-a62c69743e26" rel="noreferrer noopener"><span>Zwischen Koordinaten- und Normalenform von Ebenen wechseln</span> <code>fa02cf14-0411-4fe3-8be7-a62c69743e26</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d76766a5-ce07-5c7a-987b-157f2998b05e" rel="noreferrer noopener"><span>Zwischen Ebenenformen umformen</span> <code>d76766a5-ce07-5c7a-987b-157f2998b05e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ce491ec0-c558-5872-86fd-289e60a38403" rel="noreferrer noopener"><span>Punktprobe und Lage eines Punktes zur Ebene prüfen</span> <code>ce491ec0-c558-5872-86fd-289e60a38403</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ea4bd128-17ab-5a8b-ae98-29552d774fb0" rel="noreferrer noopener"><span>Ebenengleichung aus geometrischen Bedingungen bestimmen</span> <code>ea4bd128-17ab-5a8b-ae98-29552d774fb0</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-36e0de23-1e3b-5c69-888f-e5e19e79cbbe" rel="noreferrer noopener"><span>Normalenform und Hessesche Normalenform einer Ebene anwenden (LK)</span> <code>36e0de23-1e3b-5c69-888f-e5e19e79cbbe</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-0f4f9957-8afe-4aab-9dd8-c26c9aee2afd-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0f4f9957-8afe-4aab-9dd8-c26c9aee2afd-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008" rel="noreferrer noopener"><span>Geraden, Ebenen und Schnittfiguren analysieren</span> <code>2f8a3a90-717d-5ac1-b54e-facca26e9008</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc" rel="noreferrer noopener"><span>Ebenenscharen in Koordinatengleichung untersuchen (LK)</span> <code>fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f3d741b5fae1e6f19154775582bf5eb21eccefc563f6e4ad125c9d72200110d2</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=0f4f9957-8afe-4aab-9dd8-c26c9aee2afd&amp;goalFingerprint=sha256%3Af3d741b5fae1e6f19154775582bf5eb21eccefc563f6e4ad125c9d72200110d2&amp;pageFingerprint=sha256%3A100d3e821267d1b81405716f46ada69e335129fe185d4135dc58c889b15c3fc5&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5f90df42-8a71-534d-b995-b8f7dcaf1661" data-goal-id="5f90df42-8a71-534d-b995-b8f7dcaf1661" data-page-number="11" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-LinearAlgebra" aria-labelledby="goal-5f90df42-8a71-534d-b995-b8f7dcaf1661-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5f90df42-8a71-534d-b995-b8f7dcaf1661-title"><a class="goal-self-link" href="#goal-5f90df42-8a71-534d-b995-b8f7dcaf1661">Parameterabhängige Winkel und Lagebeziehungen untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5f90df42-8a71-534d-b995-b8f7dcaf1661</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-93fac35d185944d96f1b2638">Lineare Algebra und analytische Geometrie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a54dee14f07c5df6e482e198713cb19fd64fb9660b76056cdf042eb513d5fc36" data-rendered-digest="sha256:67c50c8fcc82d3fe15cb7666adf65e6f0b8b22490c09c6105689e4cef048020a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/5f90df42-8a71-534d-b995-b8f7dcaf1661/5f90df42-8a71-534d-b995-b8f7dcaf1661.png" alt="Die lernende Person kann in räumlichen Konfigurationen mit einem zusätzlichen Parameter Winkel zwischen einer Geraden und einer Ebene sowie zwischen zwei Ebenen untersuchen und Parameterwerte bestimmen, für die eine vorgegebene Winkel-, Orthogonalitäts-, Parallelitäts- oder Lagebedingung erfüllt ist.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5f90df42-8a71-534d-b995-b8f7dcaf1661-description-heading">
+        <p class="section-heading" id="goal-5f90df42-8a71-534d-b995-b8f7dcaf1661-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in räumlichen Konfigurationen mit einem zusätzlichen Parameter Winkel zwischen einer Geraden und einer Ebene sowie zwischen zwei Ebenen untersuchen und Parameterwerte bestimmen, für die eine vorgegebene Winkel-, Orthogonalitäts-, Parallelitäts- oder Lagebedingung erfüllt ist.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW:</strong> Sek. II · LK</li><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5f90df42-8a71-534d-b995-b8f7dcaf1661" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5f90df42-8a71-534d-b995-b8f7dcaf1661-requires-heading">
+          <p class="section-heading" id="goal-5f90df42-8a71-534d-b995-b8f7dcaf1661-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-69beb31d-5d02-4505-9500-3ec81af86f1e"><span>Lagebeziehungen von Geraden im Raum untersuchen</span><code>69beb31d-5d02-4505-9500-3ec81af86f1e</code><span class="reference-page">S. 9</span></a></li><li><a href="#goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f"><span>Lagebeziehung zwischen Gerade und Ebene untersuchen</span><code>24174bba-a654-5f81-8de3-ca5bd09d9b6f</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-5f90df42-8a71-534d-b995-b8f7dcaf1661-reverse-heading">
+          <p class="section-heading" id="goal-5f90df42-8a71-534d-b995-b8f7dcaf1661-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-5f90df42-8a71-534d-b995-b8f7dcaf1661-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5f90df42-8a71-534d-b995-b8f7dcaf1661-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-bda6a659-9640-53a5-8be0-24705ab623ef" rel="noreferrer noopener"><span>Winkel zwischen zwei Ebenen berechnen</span> <code>bda6a659-9640-53a5-8be0-24705ab623ef</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-5f90df42-8a71-534d-b995-b8f7dcaf1661-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5f90df42-8a71-534d-b995-b8f7dcaf1661-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008" rel="noreferrer noopener"><span>Geraden, Ebenen und Schnittfiguren analysieren</span> <code>2f8a3a90-717d-5ac1-b54e-facca26e9008</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bf9b7131a37afdd6bf51d1e379d981101268b7b7b83ecccc95e780eaa3a3f750</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=5f90df42-8a71-534d-b995-b8f7dcaf1661&amp;goalFingerprint=sha256%3Abf9b7131a37afdd6bf51d1e379d981101268b7b7b83ecccc95e780eaa3a3f750&amp;pageFingerprint=sha256%3A2507d72d742f2ce3b759285b5d9ef115807c1d72f954317342e925493c2bcc2f&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-857c1c46-5d94-5dfb-9697-9a9fd04103c3" data-goal-id="857c1c46-5d94-5dfb-9697-9a9fd04103c3" data-page-number="12" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-Sonstiges" aria-labelledby="goal-857c1c46-5d94-5dfb-9697-9a9fd04103c3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-857c1c46-5d94-5dfb-9697-9a9fd04103c3-title"><a class="goal-self-link" href="#goal-857c1c46-5d94-5dfb-9697-9a9fd04103c3">Schnittgerade zweier Ebenen bestimmen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>857c1c46-5d94-5dfb-9697-9a9fd04103c3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-24efbf6e8587a8be6c3c9490">Weitere fachliche Ziele</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:26a90f19d6813b2d38354dbe1719202ecfb357b86d6820a40b59ecf07f73784e" data-rendered-digest="sha256:7a8e7a82cc9f892b5b79a7f31e7c4e29e59bf700f9e503db26bc2f6a1cf4beea" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/857c1c46-5d94-5dfb-9697-9a9fd04103c3/857c1c46-5d94-5dfb-9697-9a9fd04103c3.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Schnittgerade zweier Ebenen bestimmen (LK)&quot;. Die lernende Person kann die Schnittgerade zweier Ebenen berechnen, in Parameterform angeben und die Lage begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-857c1c46-5d94-5dfb-9697-9a9fd04103c3-description-heading">
+        <p class="section-heading" id="goal-857c1c46-5d94-5dfb-9697-9a9fd04103c3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Schnittgerade zweier Ebenen berechnen, in Parameterform angeben und die Lage begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-857c1c46-5d94-5dfb-9697-9a9fd04103c3" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-857c1c46-5d94-5dfb-9697-9a9fd04103c3-requires-heading">
+          <p class="section-heading" id="goal-857c1c46-5d94-5dfb-9697-9a9fd04103c3-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-857c1c46-5d94-5dfb-9697-9a9fd04103c3-reverse-heading">
+          <p class="section-heading" id="goal-857c1c46-5d94-5dfb-9697-9a9fd04103c3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-857c1c46-5d94-5dfb-9697-9a9fd04103c3-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-857c1c46-5d94-5dfb-9697-9a9fd04103c3-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-effe43eb-cabe-56cb-a228-35887d7915c1" rel="noreferrer noopener"><span>Geraden im Raum parametrisch darstellen</span> <code>effe43eb-cabe-56cb-a228-35887d7915c1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9cc650e0-100d-5ae1-a83b-2b854ab7c5c8" rel="noreferrer noopener"><span>Koordinatenform einer Ebene aufstellen und interpretieren</span> <code>9cc650e0-100d-5ae1-a83b-2b854ab7c5c8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d76766a5-ce07-5c7a-987b-157f2998b05e" rel="noreferrer noopener"><span>Zwischen Ebenenformen umformen</span> <code>d76766a5-ce07-5c7a-987b-157f2998b05e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-bd3576b8-f4e5-542a-a8a2-74524d9cee21" rel="noreferrer noopener"><span>Sachprobleme mit Geraden und Ebenen modellieren</span> <code>bd3576b8-f4e5-542a-a8a2-74524d9cee21</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-857c1c46-5d94-5dfb-9697-9a9fd04103c3-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-857c1c46-5d94-5dfb-9697-9a9fd04103c3-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008" rel="noreferrer noopener"><span>Geraden, Ebenen und Schnittfiguren analysieren</span> <code>2f8a3a90-717d-5ac1-b54e-facca26e9008</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b16541754c13324044025170506d8db396a8745284712400a06aedd71a68c2ef</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=857c1c46-5d94-5dfb-9697-9a9fd04103c3&amp;goalFingerprint=sha256%3Ab16541754c13324044025170506d8db396a8745284712400a06aedd71a68c2ef&amp;pageFingerprint=sha256%3Aaba5c129f23d59f9f67f32b9ad3dd5b3ba534fc1935a6937231302fc8ab54f89&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ec6447d1-97da-5b77-94ae-4973b43f094e" data-goal-id="ec6447d1-97da-5b77-94ae-4973b43f094e" data-page-number="13" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:geometry-and-advanced-analysis structure:canonical-goal-f6232b63-8a2a-5041-817b-f13cab43523d structure:canonical-goal-ed62ab23-4991-52e2-93fc-a1052fd0063a" aria-labelledby="goal-ec6447d1-97da-5b77-94ae-4973b43f094e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ec6447d1-97da-5b77-94ae-4973b43f094e-title"><a class="goal-self-link" href="#goal-ec6447d1-97da-5b77-94ae-4973b43f094e">Normalenvektor einer Ebene bestimmen und nutzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ec6447d1-97da-5b77-94ae-4973b43f094e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-a5c625ae0ae8fa0e0ca6ed41">Analytische Geometrie, lineare Algebra und vertiefte Analysis</a></li><li><a href="#chapter-0ae0946c35f19e72c2f5c18f">Geraden, Ebenen und Gleichungsformen im Raum</a></li><li><a href="#chapter-2af6cb8861d6eef31569df3d">Ebenen durch verschiedene Gleichungsformen beschreiben</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3bc44a3d365cc865e418893aa3e36a67b218271f0d2291b8e7bcfb275782cc4e" data-rendered-digest="sha256:1fdae20ce9a86512970c7687a6ef78698dc4073b9cf76268bbe0000ee160cfa4" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/ec6447d1-97da-5b77-94ae-4973b43f094e/ec6447d1-97da-5b77-94ae-4973b43f094e.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Normalenvektor einer Ebene bestimmen und nutzen&quot;. Die lernende Person kann einen von null verschiedenen Normalenvektor zu einer Ebene bestimmen, ihn als zu allen Richtungsvektoren der Ebene orthogonalen Vektor deuten und für die Beschreibung ihrer Orientierung nutzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ec6447d1-97da-5b77-94ae-4973b43f094e-description-heading">
+        <p class="section-heading" id="goal-ec6447d1-97da-5b77-94ae-4973b43f094e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann einen von null verschiedenen Normalenvektor zu einer Ebene bestimmen, ihn als zu allen Richtungsvektoren der Ebene orthogonalen Vektor deuten und für die Beschreibung ihrer Orientierung nutzen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ec6447d1-97da-5b77-94ae-4973b43f094e" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ec6447d1-97da-5b77-94ae-4973b43f094e-requires-heading">
+          <p class="section-heading" id="goal-ec6447d1-97da-5b77-94ae-4973b43f094e-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-9460c3ff-e72d-4107-bc73-087d217200aa"><span>Skalarprodukt als Orthogonalitätskriterium nutzen</span><code>9460c3ff-e72d-4107-bc73-087d217200aa</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ec6447d1-97da-5b77-94ae-4973b43f094e-reverse-heading">
+          <p class="section-heading" id="goal-ec6447d1-97da-5b77-94ae-4973b43f094e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-8cb5c712-9c58-5910-8c63-8c3736369b80"><span>Punkte an Ebenen spiegeln</span><code>8cb5c712-9c58-5910-8c63-8c3736369b80</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-ec6447d1-97da-5b77-94ae-4973b43f094e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ec6447d1-97da-5b77-94ae-4973b43f094e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-66a96282-340d-5220-91a6-cc97e2ec2220" rel="noreferrer noopener"><span>Punkt-Normalen-Form einer Ebene aufstellen</span> <code>66a96282-340d-5220-91a6-cc97e2ec2220</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fa02cf14-0411-4fe3-8be7-a62c69743e26" rel="noreferrer noopener"><span>Zwischen Koordinaten- und Normalenform von Ebenen wechseln</span> <code>fa02cf14-0411-4fe3-8be7-a62c69743e26</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7bb3c312-f714-55e6-a31f-f31605a93760" rel="noreferrer noopener"><span>Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK)</span> <code>7bb3c312-f714-55e6-a31f-f31605a93760</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-bda6a659-9640-53a5-8be0-24705ab623ef" rel="noreferrer noopener"><span>Winkel zwischen zwei Ebenen berechnen</span> <code>bda6a659-9640-53a5-8be0-24705ab623ef</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5" rel="noreferrer noopener"><span>Schnittwinkel über Richtungs- und Normalenvektoren bestimmen</span> <code>57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9cc1b94ba503ac997ccb4e90b8dcf33c83e4bbb70a5a368bf4ffe8958a047ec2</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=ec6447d1-97da-5b77-94ae-4973b43f094e&amp;goalFingerprint=sha256%3A9cc1b94ba503ac997ccb4e90b8dcf33c83e4bbb70a5a368bf4ffe8958a047ec2&amp;pageFingerprint=sha256%3Aedb1f9ea6ec92e848fdb89e9831a5613ebab335d3aa6f61068bddcb994407add&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8cb5c712-9c58-5910-8c63-8c3736369b80" data-goal-id="8cb5c712-9c58-5910-8c63-8c3736369b80" data-page-number="14" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-LinearAlgebra" aria-labelledby="goal-8cb5c712-9c58-5910-8c63-8c3736369b80-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8cb5c712-9c58-5910-8c63-8c3736369b80-title"><a class="goal-self-link" href="#goal-8cb5c712-9c58-5910-8c63-8c3736369b80">Punkte an Ebenen spiegeln</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8cb5c712-9c58-5910-8c63-8c3736369b80</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-93fac35d185944d96f1b2638">Lineare Algebra und analytische Geometrie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2e60acf59a31cc071114c24f37800785ce4e983207168138ed829fbf47860edf" data-rendered-digest="sha256:1ea22177e1b8298cb295043a2ca7e3f1d6c4a9d7910339f3621eee1668d4a22d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/8cb5c712-9c58-5910-8c63-8c3736369b80/8cb5c712-9c58-5910-8c63-8c3736369b80.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Punkte an Ebenen spiegeln&quot;. Die lernende Person kann Punkte an Ebenen spiegeln, Lotfußpunkte bzw. gleiche Abstände zur Spiegelebene nutzen und die Konstruktion rechnerisch sowie geometrisch begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8cb5c712-9c58-5910-8c63-8c3736369b80-description-heading">
+        <p class="section-heading" id="goal-8cb5c712-9c58-5910-8c63-8c3736369b80-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Punkte an Ebenen spiegeln, Lotfußpunkte bzw. gleiche Abstände zur Spiegelebene nutzen und die Konstruktion rechnerisch sowie geometrisch begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, HE:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8cb5c712-9c58-5910-8c63-8c3736369b80" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8cb5c712-9c58-5910-8c63-8c3736369b80-requires-heading">
+          <p class="section-heading" id="goal-8cb5c712-9c58-5910-8c63-8c3736369b80-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ec6447d1-97da-5b77-94ae-4973b43f094e"><span>Normalenvektor einer Ebene bestimmen und nutzen</span><code>ec6447d1-97da-5b77-94ae-4973b43f094e</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8cb5c712-9c58-5910-8c63-8c3736369b80-reverse-heading">
+          <p class="section-heading" id="goal-8cb5c712-9c58-5910-8c63-8c3736369b80-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad"><span>Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden</span><code>79c4cd21-af64-5925-968e-9bc1f74cd0ad</code><span class="reference-page">S. 15</span></a></li><li><a href="#goal-fcd1d180-ddce-5408-8c5d-70e417b179e7"><span>Punkte in allgemeinen Raumkonfigurationen spiegeln (LK)</span><code>fcd1d180-ddce-5408-8c5d-70e417b179e7</code><span class="reference-page">S. 17</span></a></li><li><a href="#goal-a97c7cce-1343-5d04-926f-4a4f323b3c21"><span>Geraden in allgemeinen Raumkonfigurationen spiegeln (LK)</span><code>a97c7cce-1343-5d04-926f-4a4f323b3c21</code><span class="reference-page">S. 18</span></a></li><li><a href="#goal-985d5529-a586-50eb-bd7f-2db2be8906d1"><span>Ebenen in allgemeinen Raumkonfigurationen spiegeln (LK)</span><code>985d5529-a586-50eb-bd7f-2db2be8906d1</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8cb5c712-9c58-5910-8c63-8c3736369b80-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8cb5c712-9c58-5910-8c63-8c3736369b80-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fac75b4a-4ec2-5d38-bbce-9b002c8a4904" rel="noreferrer noopener"><span>Abstandsverfahren im Raum auswählen und anwenden</span> <code>fac75b4a-4ec2-5d38-bbce-9b002c8a4904</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-8cb5c712-9c58-5910-8c63-8c3736369b80-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8cb5c712-9c58-5910-8c63-8c3736369b80-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9" rel="noreferrer noopener"><span>Raumorientierung und Volumenprobleme lösen</span> <code>1878f680-095c-511d-aaed-e98393f7fde9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4da0c3f44dd58fb32acd8295367510ad7c4b9a047973b230291f1bbee30df096</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=8cb5c712-9c58-5910-8c63-8c3736369b80&amp;goalFingerprint=sha256%3A4da0c3f44dd58fb32acd8295367510ad7c4b9a047973b230291f1bbee30df096&amp;pageFingerprint=sha256%3A52875b4cc589d11633e6e93a94937686a56fcf35ecbb2d65aca57c960f8af912&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad" data-goal-id="79c4cd21-af64-5925-968e-9bc1f74cd0ad" data-page-number="15" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-LinearAlgebra" aria-labelledby="goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad-title"><a class="goal-self-link" href="#goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad">Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>79c4cd21-af64-5925-968e-9bc1f74cd0ad</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-93fac35d185944d96f1b2638">Lineare Algebra und analytische Geometrie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:60bab740018efa5ff1015a2ff7191df1ad24495a7cca4c3d47283cc9d365f543" data-rendered-digest="sha256:a5f052527782638f3bd2d051747b242e1a7cf178d8337b11f81bd704abebd92f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/79c4cd21-af64-5925-968e-9bc1f74cd0ad/79c4cd21-af64-5925-968e-9bc1f74cd0ad.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden&quot;. Die lernende Person kann ein Lotfußpunktverfahren erarbeiten und anwenden, um den Abstand eines Punktes von einer Ebene zu bestimmen und geometrisch zu begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad-description-heading">
+        <p class="section-heading" id="goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann ein Lotfußpunktverfahren erarbeiten und anwenden, um den Abstand eines Punktes von einer Ebene zu bestimmen und geometrisch zu begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, HE:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad-requires-heading">
+          <p class="section-heading" id="goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8cb5c712-9c58-5910-8c63-8c3736369b80"><span>Punkte an Ebenen spiegeln</span><code>8cb5c712-9c58-5910-8c63-8c3736369b80</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad-reverse-heading">
+          <p class="section-heading" id="goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c2c49659-5917-5be5-a3bd-e46f1b17126f"><span>Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)</span><code>c2c49659-5917-5be5-a3bd-e46f1b17126f</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-36e0de23-1e3b-5c69-888f-e5e19e79cbbe" rel="noreferrer noopener"><span>Normalenform und Hessesche Normalenform einer Ebene anwenden (LK)</span> <code>36e0de23-1e3b-5c69-888f-e5e19e79cbbe</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008" rel="noreferrer noopener"><span>Geraden, Ebenen und Schnittfiguren analysieren</span> <code>2f8a3a90-717d-5ac1-b54e-facca26e9008</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f90c9f0f2464037c7c5dad29666c41a849156457fed237d0fbb4c19d26c1bb63</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=79c4cd21-af64-5925-968e-9bc1f74cd0ad&amp;goalFingerprint=sha256%3Af90c9f0f2464037c7c5dad29666c41a849156457fed237d0fbb4c19d26c1bb63&amp;pageFingerprint=sha256%3A1818fb28e46128c4b5a956e3aa54a197579f14b2b1cb4acb09d6075b854952dd&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c2c49659-5917-5be5-a3bd-e46f1b17126f" data-goal-id="c2c49659-5917-5be5-a3bd-e46f1b17126f" data-page-number="16" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-LinearAlgebra" aria-labelledby="goal-c2c49659-5917-5be5-a3bd-e46f1b17126f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c2c49659-5917-5be5-a3bd-e46f1b17126f-title"><a class="goal-self-link" href="#goal-c2c49659-5917-5be5-a3bd-e46f1b17126f">Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c2c49659-5917-5be5-a3bd-e46f1b17126f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-93fac35d185944d96f1b2638">Lineare Algebra und analytische Geometrie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e8c30316ab8b0bff31ae299b4fe6aeffd8863146361ce234f88181c079155d7b" data-rendered-digest="sha256:5966496ff68ea1a5a2f54f037eff936906f3477175c9cfdceeaed637afbfadcf" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/c2c49659-5917-5be5-a3bd-e46f1b17126f/c2c49659-5917-5be5-a3bd-e46f1b17126f.jpg" alt="Die lernende Person kann Lotfußpunktverfahren zur Bestimmung des kürzesten Abstands zwischen Punkt und Gerade, Punkt und Ebene, zwei parallelen oder windschiefen Geraden, einer Geraden und einer zu ihr parallelen Ebene sowie zwei parallelen Ebenen entwickeln, auswählen und anwenden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c2c49659-5917-5be5-a3bd-e46f1b17126f-description-heading">
+        <p class="section-heading" id="goal-c2c49659-5917-5be5-a3bd-e46f1b17126f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Lotfußpunktverfahren zur Bestimmung des kürzesten Abstands zwischen Punkt und Gerade, Punkt und Ebene, zwei parallelen oder windschiefen Geraden, einer Geraden und einer zu ihr parallelen Ebene sowie zwei parallelen Ebenen entwickeln, auswählen und anwenden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c2c49659-5917-5be5-a3bd-e46f1b17126f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c2c49659-5917-5be5-a3bd-e46f1b17126f-requires-heading">
+          <p class="section-heading" id="goal-c2c49659-5917-5be5-a3bd-e46f1b17126f-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad"><span>Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden</span><code>79c4cd21-af64-5925-968e-9bc1f74cd0ad</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c2c49659-5917-5be5-a3bd-e46f1b17126f-reverse-heading">
+          <p class="section-heading" id="goal-c2c49659-5917-5be5-a3bd-e46f1b17126f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-fcd1d180-ddce-5408-8c5d-70e417b179e7"><span>Punkte in allgemeinen Raumkonfigurationen spiegeln (LK)</span><code>fcd1d180-ddce-5408-8c5d-70e417b179e7</code><span class="reference-page">S. 17</span></a></li><li><a href="#goal-a97c7cce-1343-5d04-926f-4a4f323b3c21"><span>Geraden in allgemeinen Raumkonfigurationen spiegeln (LK)</span><code>a97c7cce-1343-5d04-926f-4a4f323b3c21</code><span class="reference-page">S. 18</span></a></li><li><a href="#goal-985d5529-a586-50eb-bd7f-2db2be8906d1"><span>Ebenen in allgemeinen Raumkonfigurationen spiegeln (LK)</span><code>985d5529-a586-50eb-bd7f-2db2be8906d1</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-c2c49659-5917-5be5-a3bd-e46f1b17126f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c2c49659-5917-5be5-a3bd-e46f1b17126f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3256476b-ec65-4038-9f5a-a8808fbcf207" rel="noreferrer noopener"><span>Punkt-Gerade-Abstände im Raum bestimmen</span> <code>3256476b-ec65-4038-9f5a-a8808fbcf207</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-509ae03b-96b1-4bb1-b015-b83d14569dae" rel="noreferrer noopener"><span>Gerade-Gerade-Abstände im Raum bestimmen</span> <code>509ae03b-96b1-4bb1-b015-b83d14569dae</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-c2c49659-5917-5be5-a3bd-e46f1b17126f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c2c49659-5917-5be5-a3bd-e46f1b17126f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008" rel="noreferrer noopener"><span>Geraden, Ebenen und Schnittfiguren analysieren</span> <code>2f8a3a90-717d-5ac1-b54e-facca26e9008</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1fd20eeb0da9cdb0649a574013a8d8f5077d8bfa22b4f32fcdcf9d083965f32d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=c2c49659-5917-5be5-a3bd-e46f1b17126f&amp;goalFingerprint=sha256%3A1fd20eeb0da9cdb0649a574013a8d8f5077d8bfa22b4f32fcdcf9d083965f32d&amp;pageFingerprint=sha256%3Aa2643096e6d9f83b8d48de78bd900531201b30bc332a0ef11a31527f3da1baa5&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-fcd1d180-ddce-5408-8c5d-70e417b179e7" data-goal-id="fcd1d180-ddce-5408-8c5d-70e417b179e7" data-page-number="17" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-LinearAlgebra" aria-labelledby="goal-fcd1d180-ddce-5408-8c5d-70e417b179e7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-fcd1d180-ddce-5408-8c5d-70e417b179e7-title"><a class="goal-self-link" href="#goal-fcd1d180-ddce-5408-8c5d-70e417b179e7">Punkte in allgemeinen Raumkonfigurationen spiegeln (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>fcd1d180-ddce-5408-8c5d-70e417b179e7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-93fac35d185944d96f1b2638">Lineare Algebra und analytische Geometrie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:bb9021406a1de4a4d7dc735e21bdc43f3a1566b12af6901de22245e3f361e5c2" data-rendered-digest="sha256:24235d6fd8d2939c52874dde905339583ad8d727cafc3cf0527f29e76593f314" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/fcd1d180-ddce-5408-8c5d-70e417b179e7/fcd1d180-ddce-5408-8c5d-70e417b179e7.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Punkte in allgemeinen Raumkonfigurationen spiegeln (LK)&quot;. Die lernende Person kann Punkte in allgemeinen räumlichen Konfigurationen spiegeln und die Ergebnisse geometrisch prüfen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-fcd1d180-ddce-5408-8c5d-70e417b179e7-description-heading">
+        <p class="section-heading" id="goal-fcd1d180-ddce-5408-8c5d-70e417b179e7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Punkte in allgemeinen räumlichen Konfigurationen spiegeln und die Ergebnisse geometrisch prüfen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, HE:</strong> Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fcd1d180-ddce-5408-8c5d-70e417b179e7" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-fcd1d180-ddce-5408-8c5d-70e417b179e7-requires-heading">
+          <p class="section-heading" id="goal-fcd1d180-ddce-5408-8c5d-70e417b179e7-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8cb5c712-9c58-5910-8c63-8c3736369b80"><span>Punkte an Ebenen spiegeln</span><code>8cb5c712-9c58-5910-8c63-8c3736369b80</code><span class="reference-page">S. 14</span></a></li><li><a href="#goal-c2c49659-5917-5be5-a3bd-e46f1b17126f"><span>Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)</span><code>c2c49659-5917-5be5-a3bd-e46f1b17126f</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-fcd1d180-ddce-5408-8c5d-70e417b179e7-reverse-heading">
+          <p class="section-heading" id="goal-fcd1d180-ddce-5408-8c5d-70e417b179e7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-a97c7cce-1343-5d04-926f-4a4f323b3c21"><span>Geraden in allgemeinen Raumkonfigurationen spiegeln (LK)</span><code>a97c7cce-1343-5d04-926f-4a4f323b3c21</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-fcd1d180-ddce-5408-8c5d-70e417b179e7-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-fcd1d180-ddce-5408-8c5d-70e417b179e7-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008" rel="noreferrer noopener"><span>Geraden, Ebenen und Schnittfiguren analysieren</span> <code>2f8a3a90-717d-5ac1-b54e-facca26e9008</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8d51b8f36f268a48f5ecead70088ffe8bf72e2c5671c9500684e37e75eb3d92f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=fcd1d180-ddce-5408-8c5d-70e417b179e7&amp;goalFingerprint=sha256%3A8d51b8f36f268a48f5ecead70088ffe8bf72e2c5671c9500684e37e75eb3d92f&amp;pageFingerprint=sha256%3A8237d60692e0fa64cf0dcbbb1b4f5ee6e229a641c4ee89ac4a50ca39019c3da4&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a97c7cce-1343-5d04-926f-4a4f323b3c21" data-goal-id="a97c7cce-1343-5d04-926f-4a4f323b3c21" data-page-number="18" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-LinearAlgebra" aria-labelledby="goal-a97c7cce-1343-5d04-926f-4a4f323b3c21-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a97c7cce-1343-5d04-926f-4a4f323b3c21-title"><a class="goal-self-link" href="#goal-a97c7cce-1343-5d04-926f-4a4f323b3c21">Geraden in allgemeinen Raumkonfigurationen spiegeln (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a97c7cce-1343-5d04-926f-4a4f323b3c21</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-93fac35d185944d96f1b2638">Lineare Algebra und analytische Geometrie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e49940b3d327ba539aef28d21ec8db69bab4a7be8761265dbf94e45f6113e34d" data-rendered-digest="sha256:2f00d894f425382a15ebaa87d367472c4e7a0af0454afd358b13197ddb1ab597" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/a97c7cce-1343-5d04-926f-4a4f323b3c21/a97c7cce-1343-5d04-926f-4a4f323b3c21.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Geraden in allgemeinen Raumkonfigurationen spiegeln (LK)&quot;. Die lernende Person kann Geraden in allgemeinen räumlichen Konfigurationen spiegeln, geeignete Lot- bzw. Symmetriebedingungen aufstellen und die Ergebnisse geometrisch prüfen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a97c7cce-1343-5d04-926f-4a4f323b3c21-description-heading">
+        <p class="section-heading" id="goal-a97c7cce-1343-5d04-926f-4a4f323b3c21-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Geraden in allgemeinen räumlichen Konfigurationen spiegeln, geeignete Lot- bzw. Symmetriebedingungen aufstellen und die Ergebnisse geometrisch prüfen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, HE:</strong> Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a97c7cce-1343-5d04-926f-4a4f323b3c21" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a97c7cce-1343-5d04-926f-4a4f323b3c21-requires-heading">
+          <p class="section-heading" id="goal-a97c7cce-1343-5d04-926f-4a4f323b3c21-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8cb5c712-9c58-5910-8c63-8c3736369b80"><span>Punkte an Ebenen spiegeln</span><code>8cb5c712-9c58-5910-8c63-8c3736369b80</code><span class="reference-page">S. 14</span></a></li><li><a href="#goal-c2c49659-5917-5be5-a3bd-e46f1b17126f"><span>Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)</span><code>c2c49659-5917-5be5-a3bd-e46f1b17126f</code><span class="reference-page">S. 16</span></a></li><li><a href="#goal-fcd1d180-ddce-5408-8c5d-70e417b179e7"><span>Punkte in allgemeinen Raumkonfigurationen spiegeln (LK)</span><code>fcd1d180-ddce-5408-8c5d-70e417b179e7</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a97c7cce-1343-5d04-926f-4a4f323b3c21-reverse-heading">
+          <p class="section-heading" id="goal-a97c7cce-1343-5d04-926f-4a4f323b3c21-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-985d5529-a586-50eb-bd7f-2db2be8906d1"><span>Ebenen in allgemeinen Raumkonfigurationen spiegeln (LK)</span><code>985d5529-a586-50eb-bd7f-2db2be8906d1</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-a97c7cce-1343-5d04-926f-4a4f323b3c21-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a97c7cce-1343-5d04-926f-4a4f323b3c21-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008" rel="noreferrer noopener"><span>Geraden, Ebenen und Schnittfiguren analysieren</span> <code>2f8a3a90-717d-5ac1-b54e-facca26e9008</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8bb1bb839cc28c85570d9c41a3fff0841b8805dec4360f5a15a00ea15e24e821</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=a97c7cce-1343-5d04-926f-4a4f323b3c21&amp;goalFingerprint=sha256%3A8bb1bb839cc28c85570d9c41a3fff0841b8805dec4360f5a15a00ea15e24e821&amp;pageFingerprint=sha256%3A4bdc263401e8b2dd249fbba4627a0feb54cca9b69cabcf1a90c1892ace15c725&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-985d5529-a586-50eb-bd7f-2db2be8906d1" data-goal-id="985d5529-a586-50eb-bd7f-2db2be8906d1" data-page-number="19" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-LinearAlgebra" aria-labelledby="goal-985d5529-a586-50eb-bd7f-2db2be8906d1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-985d5529-a586-50eb-bd7f-2db2be8906d1-title"><a class="goal-self-link" href="#goal-985d5529-a586-50eb-bd7f-2db2be8906d1">Ebenen in allgemeinen Raumkonfigurationen spiegeln (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>985d5529-a586-50eb-bd7f-2db2be8906d1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-93fac35d185944d96f1b2638">Lineare Algebra und analytische Geometrie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:cf54e59eaf5edb3a7ac481d4b370906f984053f3416a37dfab8f96fee5f31d32" data-rendered-digest="sha256:83be70d668cd815cb73c26a1abc1da2d69ba4329d7e45ce9a3b686d254fb37f1" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/985d5529-a586-50eb-bd7f-2db2be8906d1/985d5529-a586-50eb-bd7f-2db2be8906d1.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Ebenen in allgemeinen Raumkonfigurationen spiegeln (LK)&quot;. Die lernende Person kann Ebenen in allgemeinen räumlichen Konfigurationen spiegeln, geeignete Symmetriebedingungen aufstellen und die Ergebnisse geometrisch prüfen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-985d5529-a586-50eb-bd7f-2db2be8906d1-description-heading">
+        <p class="section-heading" id="goal-985d5529-a586-50eb-bd7f-2db2be8906d1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Ebenen in allgemeinen räumlichen Konfigurationen spiegeln, geeignete Symmetriebedingungen aufstellen und die Ergebnisse geometrisch prüfen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, HE:</strong> Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-985d5529-a586-50eb-bd7f-2db2be8906d1" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-985d5529-a586-50eb-bd7f-2db2be8906d1-requires-heading">
+          <p class="section-heading" id="goal-985d5529-a586-50eb-bd7f-2db2be8906d1-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8cb5c712-9c58-5910-8c63-8c3736369b80"><span>Punkte an Ebenen spiegeln</span><code>8cb5c712-9c58-5910-8c63-8c3736369b80</code><span class="reference-page">S. 14</span></a></li><li><a href="#goal-c2c49659-5917-5be5-a3bd-e46f1b17126f"><span>Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)</span><code>c2c49659-5917-5be5-a3bd-e46f1b17126f</code><span class="reference-page">S. 16</span></a></li><li><a href="#goal-a97c7cce-1343-5d04-926f-4a4f323b3c21"><span>Geraden in allgemeinen Raumkonfigurationen spiegeln (LK)</span><code>a97c7cce-1343-5d04-926f-4a4f323b3c21</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-985d5529-a586-50eb-bd7f-2db2be8906d1-reverse-heading">
+          <p class="section-heading" id="goal-985d5529-a586-50eb-bd7f-2db2be8906d1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-985d5529-a586-50eb-bd7f-2db2be8906d1-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-985d5529-a586-50eb-bd7f-2db2be8906d1-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008" rel="noreferrer noopener"><span>Geraden, Ebenen und Schnittfiguren analysieren</span> <code>2f8a3a90-717d-5ac1-b54e-facca26e9008</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 19 von 19</span>
+      <span>Buch-Digest <code>sha256:8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bc8a369e485f9d5af36a764fa179a571f7ede18b196f6674da9284809678d0ba</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q2-analytic-spatial-geometry-19-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=985d5529-a586-50eb-bd7f-2db2be8906d1&amp;goalFingerprint=sha256%3Abc8a369e485f9d5af36a764fa179a571f7ede18b196f6674da9284809678d0ba&amp;pageFingerprint=sha256%3A8e534424c3b0d0192b1877566fb358a791aa832d328cadd6fa4d2e18028e7c68&amp;bookDigest=sha256%3A8fc0521217dde581829a570f0441e87514b5113352b62bcadee22f26e1dc0228&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

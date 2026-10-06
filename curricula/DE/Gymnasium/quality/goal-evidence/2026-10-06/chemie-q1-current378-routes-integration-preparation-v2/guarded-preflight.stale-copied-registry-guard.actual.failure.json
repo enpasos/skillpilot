@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "stage": "read-only preflight",
+  "exitCode": 1,
+  "diagnosis": "Old plan predates current Biology registration; current Chemistry entry is structurally identical. New preservation precondition follows current protected snapshot and preserves all foreign raw entries exactly. No review or approval change.",
+  "copiedOldGuards": {
+    "beforeWholeFileSHA256": "d54d5b188e23f10eef7dfb2f0f56ee3355c237703deb70ff12fec88e7adbd1eb",
+    "beforeChemistryRawEntrySHA256": "c4ef7ea51b9663f0f0269229cde0f33eb3bfe3e37e71658258b27d677fe060c2",
+    "foreignRawEntryGuards": [
+      {
+        "subject": "mathematik",
+        "sha256": "ac9a95f1ffaabc50caa651c0f5b42e737b8780e7ae0c656b66901e6f543de2a0"
+      },
+      {
+        "subject": "physik",
+        "sha256": "274f2e8d624da0bc1ef72087580f44f774cdb7d8d6ad3c48cebac5cc62455d4e"
+      },
+      {
+        "subject": "biologie",
+        "sha256": "717413312661cf30fbd0b6129121ab2011ebe01f56c8dd390b67597b2cf7f2fe"
+      }
+    ]
+  },
+  "activeWrites": 0
+}

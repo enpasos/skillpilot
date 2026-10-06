@@ -1,0 +1,14 @@
+{
+  "startedAtUTC": "2026-10-06T03:28:24.161518+00:00",
+  "completedAtUTC": "2026-10-06T03:28:24.669546+00:00",
+  "commandArgv": [
+    "app/node_modules/.bin/tsx",
+    "tmp/chemie-q1-p-binding-audit-20261006.mts"
+  ],
+  "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-q1-current378-routes-native-d-preparation-20261006-v1",
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "node:fs:573\n  return binding.open(\n                 ^\n\nError: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/chemie-q1-current378-routes-native-d-preparation-20261006-v1/curricula/DE/Gymnasium/quality/goal-evidence/prompts/chemistry-positive-understanding-evidence-profile-criteria-v1.md'\n    at Object.openSync (node:fs:573:18)\n    at readFileSync (node:fs:452:35)\n    at reviewPositiveGoalEvidenceConfig (/home/enpasos/projects/skillpilot/tmp/chemie-q1-current378-routes-native-d-preparation-20261006-v1/app/scripts/positiveGoalEvidenceReview.ts:327:25)\n    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/chemie-q1-current378-routes-native-d-preparation-20261006-v1/tmp/chemie-q1-p-binding-audit-20261006.mts:12:18)\n    at Array.map (<anonymous>)\n    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/chemie-q1-current378-routes-native-d-preparation-20261006-v1/tmp/chemie-q1-p-binding-audit-20261006.mts:11:55)\n    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)\n    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {\n  errno: -2,\n  code: 'ENOENT',\n  syscall: 'open',\n  path: '/home/enpasos/projects/skillpilot/tmp/chemie-q1-current378-routes-native-d-preparation-20261006-v1/curricula/DE/Gymnasium/quality/goal-evidence/prompts/chemistry-positive-understanding-evidence-profile-criteria-v1.md'\n}\n\nNode.js v20.20.2\n",
+  "activeWrites": false,
+  "nativeCodeModified": false
+}

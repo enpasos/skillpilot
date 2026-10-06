@@ -1,0 +1,89 @@
+{
+  "independentNCBIStandardCodeMappings": {
+    "ATG": "M",
+    "GAA": "E",
+    "GAG": "E",
+    "GAC": "D",
+    "TTT": "F",
+    "TTC": "F",
+    "TGA": "*",
+    "TAA": "*",
+    "TAG": "*",
+    "AAA": "K",
+    "AAG": "K",
+    "TGC": "C",
+    "TGT": "C",
+    "GGT": "G"
+  },
+  "anticodon": {
+    "codon5to3": "GAA",
+    "pairedAnticodon3to5": "CUU",
+    "sameAnticodon5to3": "UUC",
+    "antiparallelComplementCorrect": true
+  },
+  "proteinFunctionA": {
+    "referenceRange": [
+      96,
+      104
+    ],
+    "VRange": [
+      10,
+      14
+    ],
+    "WRange": [
+      94,
+      102
+    ],
+    "VStronglyReducedInSuppliedAssay": true,
+    "WOverlapsReference": true,
+    "statisticalSignificanceClaimMade": false,
+    "equalPurifiedCompleteProteinAmountsGiven": true
+  },
+  "UVDecision": {
+    "exposureCentralValues": {
+      "A": 100,
+      "B": 25,
+      "C": 10
+    },
+    "allOptionsFeasibleAndParticipationPreserved": true,
+    "givenPriorityChoice": "C",
+    "conditionalFixedScheduleChoice": "B",
+    "unitsAreDiseaseProbabilities": false
+  },
+  "PAHDecision": {
+    "fiveDayCentralExposureSums": {
+      "A": 60,
+      "B": 10,
+      "C": 55
+    },
+    "dailyRanges": {
+      "A": [
+        11,
+        13
+      ],
+      "B": [
+        1.5,
+        2.5
+      ],
+      "C": [
+        10,
+        12
+      ]
+    },
+    "AAndCRangesOverlap": true,
+    "BLowerThanBoth": true,
+    "statisticalErrorAggregationPerformed": false,
+    "busSafetyAndAccessGiven": true,
+    "weatherTransferRequiresNewMeasurements": true
+  },
+  "repairExamples": {
+    "aCorrectNewStrand5to3": "ATGC",
+    "bCorrectNewStrand5to3": "CATG",
+    "wrongPositionBoth": 3
+  },
+  "modelConventionCases": [
+    "mechanism-pro-euk-a",
+    "protein-function-a"
+  ],
+  "threeResidueFunctionalEnzymeClaimMade": false
+}

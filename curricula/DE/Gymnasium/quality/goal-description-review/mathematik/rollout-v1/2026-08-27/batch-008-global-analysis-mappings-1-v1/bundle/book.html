@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v1">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Mathematik Lernzielbeschreibungs-Review – Rollout Batch 008, Zuordnungen analysieren</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    h1 { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<article class="goal-page" id="goal-2bb4bb91-7929-483a-b735-44275f6b5cdc" data-goal-id="2bb4bb91-7929-483a-b735-44275f6b5cdc" data-page-number="1" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-2bb4bb91-7929-483a-b735-44275f6b5cdc-title">
+    <header class="goal-header">
+      <h1 id="goal-2bb4bb91-7929-483a-b735-44275f6b5cdc-title"><a class="goal-self-link" href="#goal-2bb4bb91-7929-483a-b735-44275f6b5cdc">Zuordnungen analysieren</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2bb4bb91-7929-483a-b735-44275f6b5cdc</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0c501f62a4ec4ac8f42127f7ec31f73ba980af47c110cd2a0e5184bc28b6e953" data-rendered-digest="sha256:584c4cc030f80c9044a676d334452a656fe11aee80e1d476d5715e0da049dbd7" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/2bb4bb91-7929-483a-b735-44275f6b5cdc/2bb4bb91-7929-483a-b735-44275f6b5cdc.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Zuordnungen analysieren&quot;. Die lernende Person kann Zuordnungstabellen erstellen, grafisch darstellen und einfache funktionale Zusammenhänge deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2bb4bb91-7929-483a-b735-44275f6b5cdc-description-heading">
+        <p class="section-heading" id="goal-2bb4bb91-7929-483a-b735-44275f6b5cdc-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Zuordnungstabellen erstellen, grafisch darstellen und einfache funktionale Zusammenhänge deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2bb4bb91-7929-483a-b735-44275f6b5cdc" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2bb4bb91-7929-483a-b735-44275f6b5cdc-requires-heading">
+          <p class="section-heading" id="goal-2bb4bb91-7929-483a-b735-44275f6b5cdc-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2bb4bb91-7929-483a-b735-44275f6b5cdc-reverse-heading">
+          <p class="section-heading" id="goal-2bb4bb91-7929-483a-b735-44275f6b5cdc-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2bb4bb91-7929-483a-b735-44275f6b5cdc-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2bb4bb91-7929-483a-b735-44275f6b5cdc-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ca8b2e67-7d14-5baf-8404-26820fe3d548" rel="noreferrer noopener"><span>Brüche und Dezimalbrüche ineinander umwandeln</span> <code>ca8b2e67-7d14-5baf-8404-26820fe3d548</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2f565855-bcd6-4da5-bc80-4b72a2d93d50" rel="noreferrer noopener"><span>Dezimalzahlen auf der Zahlengeraden, im Stellenwertsystem und als Bruch darstellen</span> <code>2f565855-bcd6-4da5-bc80-4b72a2d93d50</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b41cb496-dad5-596e-9c23-cdcbdab3ec2e" rel="noreferrer noopener"><span>Anteilssachprobleme mit rationalen Zahlen modellieren</span> <code>b41cb496-dad5-596e-9c23-cdcbdab3ec2e</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2bb4bb91-7929-483a-b735-44275f6b5cdc-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2bb4bb91-7929-483a-b735-44275f6b5cdc-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7dea79d2-67f2-4d92-b6cc-ad1b953dca3d" rel="noreferrer noopener"><span>Funktionen als eindeutige Zuordnungen charakterisieren</span> <code>7dea79d2-67f2-4d92-b6cc-ad1b953dca3d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-093397e0-eec8-45bb-9a5a-a24827876df5" rel="noreferrer noopener"><span>Dreisatz in proportionalen Sachsituationen anwenden</span> <code>093397e0-eec8-45bb-9a5a-a24827876df5</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c1f50bcc-7848-4e49-b9de-0ec030cc6bca" rel="noreferrer noopener"><span>Proportionale Zusammenhänge mit Quotientengleichheit prüfen</span> <code>c1f50bcc-7848-4e49-b9de-0ec030cc6bca</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f3167cab-bb23-4bb9-8a27-22e3c5015d44" rel="noreferrer noopener"><span>Proportionale Funktionen als Ursprungsgeraden deuten und darstellen</span> <code>f3167cab-bb23-4bb9-8a27-22e3c5015d44</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fa72cf74-a31e-402e-90d7-422c118f4a5b" rel="noreferrer noopener"><span>Umgekehrt proportionale Größen mit Hyperbeln beschreiben</span> <code>fa72cf74-a31e-402e-90d7-422c118f4a5b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-09f47964-2cd0-410e-93ee-9632b582fc91" rel="noreferrer noopener"><span>Funktionsbegriff und Darstellungen verstehen</span> <code>09f47964-2cd0-410e-93ee-9632b582fc91</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e02c58a2-2a32-49bd-b110-7b307e0317fb" rel="noreferrer noopener"><span>Funktionsbegriff und Darstellungen verstehen</span> <code>e02c58a2-2a32-49bd-b110-7b307e0317fb</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f39c49c7-003b-471a-a33e-6cfea1d7b7b1" rel="noreferrer noopener"><span>Tabellen erstellen und beschriften</span> <code>f39c49c7-003b-471a-a33e-6cfea1d7b7b1</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 1 von 1</span>
+      <span>Buch-Digest <code>sha256:2ad4148f56d395e632b0927f178afeb87ef6938c4752d3bf7e3701a02129121b</code></span>
+      <span>Ziel-Fingerprint <code>sha256:79a7e1894ae833a5baad3b9217881fc0bddc92449632ac1daa5ffa510aaccf1d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827&amp;edition=curricular-atomic-v1&amp;goalId=2bb4bb91-7929-483a-b735-44275f6b5cdc&amp;goalFingerprint=sha256%3A79a7e1894ae833a5baad3b9217881fc0bddc92449632ac1daa5ffa510aaccf1d&amp;pageFingerprint=sha256%3A25a63c429675e1becebf098ef63441e716e0c844caeb8e061a73dc36945f7a62&amp;bookDigest=sha256%3A2ad4148f56d395e632b0927f178afeb87ef6938c4752d3bf7e3701a02129121b&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

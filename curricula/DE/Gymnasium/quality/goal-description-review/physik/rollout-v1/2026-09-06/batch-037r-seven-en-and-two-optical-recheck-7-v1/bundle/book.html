@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik B037r – sieben ergänzte Übersetzungen und zwei korrigierte optische Bildkontexte</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Physik B037r – sieben ergänzte Übersetzungen und zwei korrigierte optische Bildkontexte</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>7 atomare Lernziele</dt><dd>5 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:e6e15ab8617f522116e6a58ec9de711874525f34c27a5b269ee1e4d81d332022</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-physics-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-6747d2e0bbbbd4b4358ff0fa" aria-label="Physik"><a href="#goal-39ef1e8a-9203-5192-8c76-8e0c3322646f"><span class="toc-entry-label">Physik</span></a></h2>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-bundesland-supplements" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-dfefd5ef67d7bfcb62fbc0f8" aria-label="Bundeslandspezifische Ergänzungen"><a href="#goal-39ef1e8a-9203-5192-8c76-8e0c3322646f"><span class="toc-entry-label">Bundeslandspezifische&#160;<wbr>Ergänzungen</span></a></h3>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:goal-book-supplement-sekii" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-9ae78d411bc36afcaa44e04b" aria-label="Sekundarstufe II"><a href="#goal-39ef1e8a-9203-5192-8c76-8e0c3322646f"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II</span></a></h4>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:goal-book-supplement-SekII-Biophysik" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-fd87770e15dd0f86eb2eb4ee" aria-label="Biophysik"><a href="#goal-39ef1e8a-9203-5192-8c76-8e0c3322646f"><span class="toc-entry-label">Biophysik</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:goal-book-supplement-SekII-Physik-und-Gesellschaft" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-0b55b01e0bf503b3eff53dde" aria-label="Physik und Gesellschaft"><a href="#goal-2973da95-2cfc-5817-9c99-3c0c82777369"><span class="toc-entry-label">Physik&#160;<wbr>und&#160;<wbr>Gesellschaft</span></a></h5>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-39ef1e8a-9203-5192-8c76-8e0c3322646f" data-goal-id="39ef1e8a-9203-5192-8c76-8e0c3322646f" data-page-number="1" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-Biophysik" aria-labelledby="goal-39ef1e8a-9203-5192-8c76-8e0c3322646f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-39ef1e8a-9203-5192-8c76-8e0c3322646f-title"><a class="goal-self-link" href="#goal-39ef1e8a-9203-5192-8c76-8e0c3322646f">Farbsehen und additive Farbmischung deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>39ef1e8a-9203-5192-8c76-8e0c3322646f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-fd87770e15dd0f86eb2eb4ee">Biophysik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:35084f5a0fdd7bbb76040096c0f9663a199d4ebaf84531d35bc67cf01d38ca9b" data-rendered-digest="sha256:42826667e5ce6f028a09b630fbfc95340e2493fcdcb6bd8b3de1944b62c95632" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/39ef1e8a-9203-5192-8c76-8e0c3322646f/39ef1e8a-9203-5192-8c76-8e0c3322646f.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Farbsehen und additive Farbmischung deuten&quot;. Die lernende Person kann additive Farbmischung als physiologischen Effekt des Farbsehens erklaeren und graphische Darstellungen empirischer Daten fachlich auswerten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-39ef1e8a-9203-5192-8c76-8e0c3322646f-description-heading">
+        <p class="section-heading" id="goal-39ef1e8a-9203-5192-8c76-8e0c3322646f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann additive Farbmischung als physiologischen Effekt des Farbsehens erklaeren und graphische Darstellungen empirischer Daten fachlich auswerten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-39ef1e8a-9203-5192-8c76-8e0c3322646f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-39ef1e8a-9203-5192-8c76-8e0c3322646f-requires-heading">
+          <p class="section-heading" id="goal-39ef1e8a-9203-5192-8c76-8e0c3322646f-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-39ef1e8a-9203-5192-8c76-8e0c3322646f-reverse-heading">
+          <p class="section-heading" id="goal-39ef1e8a-9203-5192-8c76-8e0c3322646f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-39ef1e8a-9203-5192-8c76-8e0c3322646f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-39ef1e8a-9203-5192-8c76-8e0c3322646f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-cdab9fd1-5054-4a7e-8c9a-4474062ddd23" rel="noreferrer noopener"><span>Additive und subtraktive Farbmischung unterscheiden</span> <code>cdab9fd1-5054-4a7e-8c9a-4474062ddd23</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d2e6f87d-795b-5631-a7cc-0bfb5dc5142e" rel="noreferrer noopener"><span>Physikalische Informationen aus Quellen auswerten</span> <code>d2e6f87d-795b-5631-a7cc-0bfb5dc5142e</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 7</span>
+      <span>Buch-Digest <code>sha256:e6e15ab8617f522116e6a58ec9de711874525f34c27a5b269ee1e4d81d332022</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e3b8890f03b7470a89105333c214c31eb8db08eff4d5b077ffe742f5184c3985</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b037r-seven-en-and-two-optical-recheck-7-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=39ef1e8a-9203-5192-8c76-8e0c3322646f&amp;goalFingerprint=sha256%3Ae3b8890f03b7470a89105333c214c31eb8db08eff4d5b077ffe742f5184c3985&amp;pageFingerprint=sha256%3Ac77f569e18c55d52e8e5fcd012a2103dd159e3dbe2af21cdfb0175ebdd192d14&amp;bookDigest=sha256%3Ae6e15ab8617f522116e6a58ec9de711874525f34c27a5b269ee1e4d81d332022&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8fe0ebf1-8256-53d2-9b01-fdb945e57a59" data-goal-id="8fe0ebf1-8256-53d2-9b01-fdb945e57a59" data-page-number="2" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-Biophysik" aria-labelledby="goal-8fe0ebf1-8256-53d2-9b01-fdb945e57a59-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8fe0ebf1-8256-53d2-9b01-fdb945e57a59-title"><a class="goal-self-link" href="#goal-8fe0ebf1-8256-53d2-9b01-fdb945e57a59">Linsenaugen im Tierreich physikalisch vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8fe0ebf1-8256-53d2-9b01-fdb945e57a59</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-fd87770e15dd0f86eb2eb4ee">Biophysik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d46a39b144c143f994e4f3945bc8db089e56423e91258ada1db3ee28aebe925c" data-rendered-digest="sha256:761e078f3e06485f2c307dc723cd65907bde3fdd351b704f31f98a84bc2fda0e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/8fe0ebf1-8256-53d2-9b01-fdb945e57a59/8fe0ebf1-8256-53d2-9b01-fdb945e57a59.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Linsenaugen im Tierreich physikalisch vergleichen&quot;. Die lernende Person kann Aufbau und Aufloesungsvermoegen unterschiedlicher Linsenaugen recherchieren, Modellgrenzen reflektieren und die Passung biologischer Systeme zu Anforderungen begruenden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8fe0ebf1-8256-53d2-9b01-fdb945e57a59-description-heading">
+        <p class="section-heading" id="goal-8fe0ebf1-8256-53d2-9b01-fdb945e57a59-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Aufbau und Aufloesungsvermoegen unterschiedlicher Linsenaugen recherchieren, Modellgrenzen reflektieren und die Passung biologischer Systeme zu Anforderungen begruenden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8fe0ebf1-8256-53d2-9b01-fdb945e57a59" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8fe0ebf1-8256-53d2-9b01-fdb945e57a59-requires-heading">
+          <p class="section-heading" id="goal-8fe0ebf1-8256-53d2-9b01-fdb945e57a59-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-8fe0ebf1-8256-53d2-9b01-fdb945e57a59-reverse-heading">
+          <p class="section-heading" id="goal-8fe0ebf1-8256-53d2-9b01-fdb945e57a59-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8fe0ebf1-8256-53d2-9b01-fdb945e57a59-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8fe0ebf1-8256-53d2-9b01-fdb945e57a59-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-84ddb244-e560-592f-9d43-e84c801fe5b4" rel="noreferrer noopener"><span>Linsenauge mit geometrischer Optik modellieren</span> <code>84ddb244-e560-592f-9d43-e84c801fe5b4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d2e6f87d-795b-5631-a7cc-0bfb5dc5142e" rel="noreferrer noopener"><span>Physikalische Informationen aus Quellen auswerten</span> <code>d2e6f87d-795b-5631-a7cc-0bfb5dc5142e</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 7</span>
+      <span>Buch-Digest <code>sha256:e6e15ab8617f522116e6a58ec9de711874525f34c27a5b269ee1e4d81d332022</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b0e4b32abbbdc6cc4bbd4a785cf6eb03afbb4bb4230108d8befe29238b93df70</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b037r-seven-en-and-two-optical-recheck-7-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=8fe0ebf1-8256-53d2-9b01-fdb945e57a59&amp;goalFingerprint=sha256%3Ab0e4b32abbbdc6cc4bbd4a785cf6eb03afbb4bb4230108d8befe29238b93df70&amp;pageFingerprint=sha256%3Aa11fa64f2681feaa09278df3fc05bade27afec44ac8fdc4da60b1a59f4b5cf56&amp;bookDigest=sha256%3Ae6e15ab8617f522116e6a58ec9de711874525f34c27a5b269ee1e4d81d332022&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2973da95-2cfc-5817-9c99-3c0c82777369" data-goal-id="2973da95-2cfc-5817-9c99-3c0c82777369" data-page-number="3" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-Physik-und-Gesellschaft" aria-labelledby="goal-2973da95-2cfc-5817-9c99-3c0c82777369-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2973da95-2cfc-5817-9c99-3c0c82777369-title"><a class="goal-self-link" href="#goal-2973da95-2cfc-5817-9c99-3c0c82777369">Physikalische Erkenntnisse in gesellschaftlich-politischen Kontexten einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2973da95-2cfc-5817-9c99-3c0c82777369</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-0b55b01e0bf503b3eff53dde">Physik und Gesellschaft</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e91d9eaeab4506a8a0a96049e6d2644d71473b375e846090af7218de9ed584bb" data-rendered-digest="sha256:233d88d1e6ba9581bd0044945ffcf73cb8636fc3dacf2707d6c31796d755aee4" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/2973da95-2cfc-5817-9c99-3c0c82777369/2973da95-2cfc-5817-9c99-3c0c82777369.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Physikalische Erkenntnisse in gesellschaftlich-politischen Kontexten einordnen&quot;. Die lernende Person kann an Beispielen erlaeutern, wie gesellschaftliche oder politische Entwicklungen die Wahrnehmung, Akzeptanz und Nutzung physikalischer Erkenntnisse beeinflussen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2973da95-2cfc-5817-9c99-3c0c82777369-description-heading">
+        <p class="section-heading" id="goal-2973da95-2cfc-5817-9c99-3c0c82777369-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an Beispielen erlaeutern, wie gesellschaftliche oder politische Entwicklungen die Wahrnehmung, Akzeptanz und Nutzung physikalischer Erkenntnisse beeinflussen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-2973da95-2cfc-5817-9c99-3c0c82777369" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2973da95-2cfc-5817-9c99-3c0c82777369-requires-heading">
+          <p class="section-heading" id="goal-2973da95-2cfc-5817-9c99-3c0c82777369-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2973da95-2cfc-5817-9c99-3c0c82777369-reverse-heading">
+          <p class="section-heading" id="goal-2973da95-2cfc-5817-9c99-3c0c82777369-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2973da95-2cfc-5817-9c99-3c0c82777369-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2973da95-2cfc-5817-9c99-3c0c82777369-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d2e6f87d-795b-5631-a7cc-0bfb5dc5142e" rel="noreferrer noopener"><span>Physikalische Informationen aus Quellen auswerten</span> <code>d2e6f87d-795b-5631-a7cc-0bfb5dc5142e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b378c8b3-5e83-5abf-8243-b0f345037bfc" rel="noreferrer noopener"><span>Physikalische Bewertungen begründet formulieren</span> <code>b378c8b3-5e83-5abf-8243-b0f345037bfc</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 7</span>
+      <span>Buch-Digest <code>sha256:e6e15ab8617f522116e6a58ec9de711874525f34c27a5b269ee1e4d81d332022</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0f6e42dd1006cd2af34eba6bcceb5692fd94bac4c8ceff0687e4f117bcf0cb71</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b037r-seven-en-and-two-optical-recheck-7-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=2973da95-2cfc-5817-9c99-3c0c82777369&amp;goalFingerprint=sha256%3A0f6e42dd1006cd2af34eba6bcceb5692fd94bac4c8ceff0687e4f117bcf0cb71&amp;pageFingerprint=sha256%3A4d1cb9c425cd2b4dbc209860be17aaa5a99cbcbda3439ea51abd13240620ce4d&amp;bookDigest=sha256%3Ae6e15ab8617f522116e6a58ec9de711874525f34c27a5b269ee1e4d81d332022&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d81576e9-0320-5a90-8a1d-cd824981f2f6" data-goal-id="d81576e9-0320-5a90-8a1d-cd824981f2f6" data-page-number="4" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-Physik-und-Gesellschaft" aria-labelledby="goal-d81576e9-0320-5a90-8a1d-cd824981f2f6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d81576e9-0320-5a90-8a1d-cd824981f2f6-title"><a class="goal-self-link" href="#goal-d81576e9-0320-5a90-8a1d-cd824981f2f6">Verantwortung naturwissenschaftlicher Forschung reflektieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d81576e9-0320-5a90-8a1d-cd824981f2f6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-0b55b01e0bf503b3eff53dde">Physik und Gesellschaft</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:dbcb5d42dcf00ab30cdb466573d3e82a003a6be3f7570c19686f1bdd83bbcf60" data-rendered-digest="sha256:de51d24105e4cfa34c5c933316e60d9b20db631861f7192cf6117cbe09db5920" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/d81576e9-0320-5a90-8a1d-cd824981f2f6/d81576e9-0320-5a90-8a1d-cd824981f2f6.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Verantwortung naturwissenschaftlicher Forschung reflektieren&quot;. Die lernende Person kann Verantwortung von Forschungsgemeinschaft und einzelnen Forschenden fuer Gesellschaft und Politik anhand physikalisch-technischer Beispiele reflektieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d81576e9-0320-5a90-8a1d-cd824981f2f6-description-heading">
+        <p class="section-heading" id="goal-d81576e9-0320-5a90-8a1d-cd824981f2f6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Verantwortung von Forschungsgemeinschaft und einzelnen Forschenden fuer Gesellschaft und Politik anhand physikalisch-technischer Beispiele reflektieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d81576e9-0320-5a90-8a1d-cd824981f2f6" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d81576e9-0320-5a90-8a1d-cd824981f2f6-requires-heading">
+          <p class="section-heading" id="goal-d81576e9-0320-5a90-8a1d-cd824981f2f6-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-d81576e9-0320-5a90-8a1d-cd824981f2f6-reverse-heading">
+          <p class="section-heading" id="goal-d81576e9-0320-5a90-8a1d-cd824981f2f6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-d81576e9-0320-5a90-8a1d-cd824981f2f6-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d81576e9-0320-5a90-8a1d-cd824981f2f6-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d2e6f87d-795b-5631-a7cc-0bfb5dc5142e" rel="noreferrer noopener"><span>Physikalische Informationen aus Quellen auswerten</span> <code>d2e6f87d-795b-5631-a7cc-0bfb5dc5142e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b378c8b3-5e83-5abf-8243-b0f345037bfc" rel="noreferrer noopener"><span>Physikalische Bewertungen begründet formulieren</span> <code>b378c8b3-5e83-5abf-8243-b0f345037bfc</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 7</span>
+      <span>Buch-Digest <code>sha256:e6e15ab8617f522116e6a58ec9de711874525f34c27a5b269ee1e4d81d332022</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5fa7fd774a120685fbdcd12113cf0e506feae365e0251dda6e901d9ca88452b3</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b037r-seven-en-and-two-optical-recheck-7-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=d81576e9-0320-5a90-8a1d-cd824981f2f6&amp;goalFingerprint=sha256%3A5fa7fd774a120685fbdcd12113cf0e506feae365e0251dda6e901d9ca88452b3&amp;pageFingerprint=sha256%3A9fd99f018056259598ce67628ebb97c3d63454480fc36a23e6e5953e1eb11aee&amp;bookDigest=sha256%3Ae6e15ab8617f522116e6a58ec9de711874525f34c27a5b269ee1e4d81d332022&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-af1c3116-5b55-55f5-86da-8c2cfe2c550c" data-goal-id="af1c3116-5b55-55f5-86da-8c2cfe2c550c" data-page-number="5" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-Physik-und-Gesellschaft" aria-labelledby="goal-af1c3116-5b55-55f5-86da-8c2cfe2c550c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-af1c3116-5b55-55f5-86da-8c2cfe2c550c-title"><a class="goal-self-link" href="#goal-af1c3116-5b55-55f5-86da-8c2cfe2c550c">Gesundheitsrisiken physikalischer Technologien beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>af1c3116-5b55-55f5-86da-8c2cfe2c550c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-0b55b01e0bf503b3eff53dde">Physik und Gesellschaft</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d85a7f50937e53fe8196904fe0d47c23dc4c54ff851fc52d719925ab1f6a1ec3" data-rendered-digest="sha256:56524ee618e1ab21ad25d0aa593308600092427d06a1960abd63d94428fef9ee" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/af1c3116-5b55-55f5-86da-8c2cfe2c550c/af1c3116-5b55-55f5-86da-8c2cfe2c550c.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Gesundheitsrisiken physikalischer Technologien beurteilen&quot;. Die lernende Person kann Gesundheitsrisiken und Sicherheitsfragen bei physikalisch-technischen Anwendungen, einschliesslich digitaler Technologien, fachlich begruenden und Handlungsoptionen ableiten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-af1c3116-5b55-55f5-86da-8c2cfe2c550c-description-heading">
+        <p class="section-heading" id="goal-af1c3116-5b55-55f5-86da-8c2cfe2c550c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Gesundheitsrisiken und Sicherheitsfragen bei physikalisch-technischen Anwendungen, einschliesslich digitaler Technologien, fachlich begruenden und Handlungsoptionen ableiten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-af1c3116-5b55-55f5-86da-8c2cfe2c550c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-af1c3116-5b55-55f5-86da-8c2cfe2c550c-requires-heading">
+          <p class="section-heading" id="goal-af1c3116-5b55-55f5-86da-8c2cfe2c550c-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-af1c3116-5b55-55f5-86da-8c2cfe2c550c-reverse-heading">
+          <p class="section-heading" id="goal-af1c3116-5b55-55f5-86da-8c2cfe2c550c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-af1c3116-5b55-55f5-86da-8c2cfe2c550c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-af1c3116-5b55-55f5-86da-8c2cfe2c550c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d2e6f87d-795b-5631-a7cc-0bfb5dc5142e" rel="noreferrer noopener"><span>Physikalische Informationen aus Quellen auswerten</span> <code>d2e6f87d-795b-5631-a7cc-0bfb5dc5142e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b378c8b3-5e83-5abf-8243-b0f345037bfc" rel="noreferrer noopener"><span>Physikalische Bewertungen begründet formulieren</span> <code>b378c8b3-5e83-5abf-8243-b0f345037bfc</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 7</span>
+      <span>Buch-Digest <code>sha256:e6e15ab8617f522116e6a58ec9de711874525f34c27a5b269ee1e4d81d332022</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a8f4444f7cb1bddf31a7d0ac9163fb1027b8b6509565a28a0716dac5b9325487</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b037r-seven-en-and-two-optical-recheck-7-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=af1c3116-5b55-55f5-86da-8c2cfe2c550c&amp;goalFingerprint=sha256%3Aa8f4444f7cb1bddf31a7d0ac9163fb1027b8b6509565a28a0716dac5b9325487&amp;pageFingerprint=sha256%3Aa61a52f7f2c56ac7d7aa915450870810de944d09040291ca14cb03ab321ba62a&amp;bookDigest=sha256%3Ae6e15ab8617f522116e6a58ec9de711874525f34c27a5b269ee1e4d81d332022&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-02876b2e-7cf0-5de6-ad04-d4ee95b7f80e" data-goal-id="02876b2e-7cf0-5de6-ad04-d4ee95b7f80e" data-page-number="6" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-Physik-und-Gesellschaft" aria-labelledby="goal-02876b2e-7cf0-5de6-ad04-d4ee95b7f80e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-02876b2e-7cf0-5de6-ad04-d4ee95b7f80e-title"><a class="goal-self-link" href="#goal-02876b2e-7cf0-5de6-ad04-d4ee95b7f80e">Photovoltaische Kennlinien und Maximum-Power-Point untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>02876b2e-7cf0-5de6-ad04-d4ee95b7f80e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-0b55b01e0bf503b3eff53dde">Physik und Gesellschaft</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:451884ca5c30294d07b1c7e3026c4e30abcf635547fad0902dbdd861582bd424" data-rendered-digest="sha256:3f33785334bf7d00b330b357dab9d81220e89af2be8bc78ee5980e3dc42e9070" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/02876b2e-7cf0-5de6-ad04-d4ee95b7f80e/02876b2e-7cf0-5de6-ad04-d4ee95b7f80e.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Photovoltaische Kennlinien und Maximum-Power-Point untersuchen&quot;. Die lernende Person kann U-I-Kennlinien von Solarzellen bei unterschiedlicher Bestrahlung experimentell aufnehmen, Leistungskurven auswerten und den Maximum-Power-Point bestimmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-02876b2e-7cf0-5de6-ad04-d4ee95b7f80e-description-heading">
+        <p class="section-heading" id="goal-02876b2e-7cf0-5de6-ad04-d4ee95b7f80e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann U-I-Kennlinien von Solarzellen bei unterschiedlicher Bestrahlung experimentell aufnehmen, Leistungskurven auswerten und den Maximum-Power-Point bestimmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-02876b2e-7cf0-5de6-ad04-d4ee95b7f80e" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-02876b2e-7cf0-5de6-ad04-d4ee95b7f80e-requires-heading">
+          <p class="section-heading" id="goal-02876b2e-7cf0-5de6-ad04-d4ee95b7f80e-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-02876b2e-7cf0-5de6-ad04-d4ee95b7f80e-reverse-heading">
+          <p class="section-heading" id="goal-02876b2e-7cf0-5de6-ad04-d4ee95b7f80e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-92076a27-46cd-5c33-b3d8-aa68329af7c4"><span>Photovoltaikanlagen als technische Systeme erklaeren</span><code>92076a27-46cd-5c33-b3d8-aa68329af7c4</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-02876b2e-7cf0-5de6-ad04-d4ee95b7f80e-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-02876b2e-7cf0-5de6-ad04-d4ee95b7f80e-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-46e42b07-c098-5d65-8ef5-8472b7c4d8e2" rel="noreferrer noopener"><span>Elektrische Leistung und Wirkungsgrad bilanzieren</span> <code>46e42b07-c098-5d65-8ef5-8472b7c4d8e2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0dd1e39c-8557-5a4e-b467-caae964fff67" rel="noreferrer noopener"><span>Solarmodule in Schaltungen experimentell untersuchen</span> <code>0dd1e39c-8557-5a4e-b467-caae964fff67</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 7</span>
+      <span>Buch-Digest <code>sha256:e6e15ab8617f522116e6a58ec9de711874525f34c27a5b269ee1e4d81d332022</code></span>
+      <span>Ziel-Fingerprint <code>sha256:472a53bc9c8d9ae1ea2f310d797526812e88a0b148213a500a469500eda248ff</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b037r-seven-en-and-two-optical-recheck-7-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=02876b2e-7cf0-5de6-ad04-d4ee95b7f80e&amp;goalFingerprint=sha256%3A472a53bc9c8d9ae1ea2f310d797526812e88a0b148213a500a469500eda248ff&amp;pageFingerprint=sha256%3Afe9a58e0415d118887880a3aa62a4180e8fde8e0c1a1a96ff4f0eb5cd639a496&amp;bookDigest=sha256%3Ae6e15ab8617f522116e6a58ec9de711874525f34c27a5b269ee1e4d81d332022&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-92076a27-46cd-5c33-b3d8-aa68329af7c4" data-goal-id="92076a27-46cd-5c33-b3d8-aa68329af7c4" data-page-number="7" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-sekii structure:goal-book-supplement-SekII-Physik-und-Gesellschaft" aria-labelledby="goal-92076a27-46cd-5c33-b3d8-aa68329af7c4-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-92076a27-46cd-5c33-b3d8-aa68329af7c4-title"><a class="goal-self-link" href="#goal-92076a27-46cd-5c33-b3d8-aa68329af7c4">Photovoltaikanlagen als technische Systeme erklaeren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>92076a27-46cd-5c33-b3d8-aa68329af7c4</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-9ae78d411bc36afcaa44e04b">Sekundarstufe II</a></li><li><a href="#chapter-0b55b01e0bf503b3eff53dde">Physik und Gesellschaft</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:5678f4271ba0e77846a8985027561f0e620a5fc12cb848a345cb780bbed88e7f" data-rendered-digest="sha256:67944998430b1aed7479fcd1e75904ea43cccc13233158670012113b80cb5376" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/92076a27-46cd-5c33-b3d8-aa68329af7c4/92076a27-46cd-5c33-b3d8-aa68329af7c4.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Photovoltaikanlagen als technische Systeme erklaeren&quot;. Die lernende Person kann grundlegende Komponenten photovoltaischer Anlagen und deren Funktion im Energieuebertragungssystem fachlich beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-92076a27-46cd-5c33-b3d8-aa68329af7c4-description-heading">
+        <p class="section-heading" id="goal-92076a27-46cd-5c33-b3d8-aa68329af7c4-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann grundlegende Komponenten photovoltaischer Anlagen und deren Funktion im Energieuebertragungssystem fachlich beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-92076a27-46cd-5c33-b3d8-aa68329af7c4" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-92076a27-46cd-5c33-b3d8-aa68329af7c4-requires-heading">
+          <p class="section-heading" id="goal-92076a27-46cd-5c33-b3d8-aa68329af7c4-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-02876b2e-7cf0-5de6-ad04-d4ee95b7f80e"><span>Photovoltaische Kennlinien und Maximum-Power-Point untersuchen</span><code>02876b2e-7cf0-5de6-ad04-d4ee95b7f80e</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-92076a27-46cd-5c33-b3d8-aa68329af7c4-reverse-heading">
+          <p class="section-heading" id="goal-92076a27-46cd-5c33-b3d8-aa68329af7c4-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-92076a27-46cd-5c33-b3d8-aa68329af7c4-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-92076a27-46cd-5c33-b3d8-aa68329af7c4-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-30a936ec-e427-57fe-bf3e-4abd64b1f0c1" rel="noreferrer noopener"><span>Energieversorgung mit Energieübertragungsketten beschreiben</span> <code>30a936ec-e427-57fe-bf3e-4abd64b1f0c1</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 7</span>
+      <span>Buch-Digest <code>sha256:e6e15ab8617f522116e6a58ec9de711874525f34c27a5b269ee1e4d81d332022</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6f6871b9c1c07d677bf92b7e9324b23ac6a173d923ee65dc6560124f7c6b0701</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b037r-seven-en-and-two-optical-recheck-7-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=92076a27-46cd-5c33-b3d8-aa68329af7c4&amp;goalFingerprint=sha256%3A6f6871b9c1c07d677bf92b7e9324b23ac6a173d923ee65dc6560124f7c6b0701&amp;pageFingerprint=sha256%3A3022ef8f281e6d8d4167f7910bc0ece0c297295cb58a4bda558fee4276041aa4&amp;bookDigest=sha256%3Ae6e15ab8617f522116e6a58ec9de711874525f34c27a5b269ee1e4d81d332022&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

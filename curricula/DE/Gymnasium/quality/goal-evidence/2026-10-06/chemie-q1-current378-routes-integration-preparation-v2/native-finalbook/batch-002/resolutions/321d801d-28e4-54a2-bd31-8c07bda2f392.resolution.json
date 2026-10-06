@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-q1-current378-routes-20261006-v1-002-resolution-321d801d-28e4-54a2-bd31-8c07bda2f392",
+  "goal": {
+    "goalId": "321d801d-28e4-54a2-bd31-8c07bda2f392",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:389a0a30d96916874c9aec75f657c191745ca11d3e2bc99f0712816805c6dbac",
+    "pageFingerprint": "sha256:021af8aadd46332e1a53efd6df12c41fe3dfd020957c1fdec7af7e964d2a2879",
+    "goalReviewContextFingerprint": "sha256:243ad685e997bd7a1726fceff7a8e8a21f7610f2be509827137f4c4252583b39",
+    "finalText": {
+      "titleDe": "Hybridisierungsmodell und Molecular Modelling vergleichen",
+      "titleEn": "Compare the hybridization model and molecular modelling",
+      "descriptionDe": "Die lernende Person kann Darstellungen organischer Moleküle aus Hybridisierungsmodell und Molecular Modelling hinsichtlich Aussagekraft, Vor- und Nachteilen vergleichen.",
+      "descriptionEn": "The learner can compare representations of organic molecules from the hybridization model and molecular modelling with respect to explanatory power, advantages, and disadvantages."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-q1-current378-routes-20261006-v1-002-a",
+      "campaignDigest": "sha256:bcf91aaa9045b257673cceb341eba635ea37b204fcce0915d9c06259ffacb885",
+      "roundId": "chemie-q1-current378-routes-20261006-v1-002-first-pass-a",
+      "independenceGroupId": "chemie-q1-current378-routes-20261006-v1-002-independent-a",
+      "reviewInputFingerprint": "sha256:f4858f854862cb60412daaf6e5c6d29880b35b4fb6e9062c585d49fc6a191ebe",
+      "goalReviewContextFingerprint": "sha256:243ad685e997bd7a1726fceff7a8e8a21f7610f2be509827137f4c4252583b39",
+      "batchId": "chemie-q1-current378-routes-20261006-v1-002-first-pass-a.batch-001",
+      "runId": "codex-chemie-final378-current-d-independent-a-20261006-002",
+      "runManifestDigest": "sha256:6c11a8ef8aa8a855d8cd5c56bf73db5bb258c2dc3b4572f660423ae4539f7415",
+      "resultsDigest": "sha256:e1adf41f065af4999e5c4eda4e85725ffb44ec720f73d36df680c37f715c60a1",
+      "recordId": "chemie-final378-current-d-a-321d801d-20261006",
+      "recordDigest": "sha256:cf5d9e634c48aae0b9ce4fc72b0776e363cae1da29c279a3935e13db7858ae69"
+    },
+    "second": {
+      "campaignId": "chemie-q1-current378-routes-20261006-v1-002-b",
+      "campaignDigest": "sha256:68f3a347f500f9b108a82d0275e8efbdc0d1efd9a245f83c64d04149561f304f",
+      "roundId": "chemie-q1-current378-routes-20261006-v1-002-first-pass-b",
+      "independenceGroupId": "chemie-q1-current378-routes-20261006-v1-002-independent-b",
+      "reviewInputFingerprint": "sha256:f4858f854862cb60412daaf6e5c6d29880b35b4fb6e9062c585d49fc6a191ebe",
+      "goalReviewContextFingerprint": "sha256:243ad685e997bd7a1726fceff7a8e8a21f7610f2be509827137f4c4252583b39",
+      "batchId": "chemie-q1-current378-routes-20261006-v1-002-first-pass-b.batch-001",
+      "runId": "chemie-current378-native-d-b-20261006-002",
+      "runManifestDigest": "sha256:976787c7d332570e1371178b52f16456f1483e34413e1167211cda5d336a0ba3",
+      "resultsDigest": "sha256:ab79e15f1f51601a654a85803330d522ad97589e35ba4dc7dbd42ff356c96358",
+      "recordId": "chemie-current378-native-d-b-002-321d801d-28e4-54a2-bd31-8c07bda2f392",
+      "recordDigest": "sha256:cf23d6598247764578ed44ab17c48c42a9c8164f55521b9ede4f2079845749cf"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:f7a464818c9143fd0711ad5af9aabeaec7571ab098ec07bbe12674dc205769e5"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-current378-native53-synthesis-20261006-v2-002",
+    "manifestDigest": "sha256:220b3d9edabe06aea61a9a79321db13e6b4ae1307c7237d4813db33b40ae405a",
+    "manifestFingerprint": "sha256:40bc5a003840b2b96dfbabf4430bf3fce784248fa01e2ba359825a6d669b7772",
+    "decisionId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-current378-native53-synthesis-20261006-v2-002-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex operator synthesis after two actual independent current-description reviews, targeted scientific reuse and native v5 binding guard",
+    "synthesizedAt": "2026-10-06T03:39:45.723Z",
+    "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Hybridisierungsmodell und Molecular Modelling vergleichen. Der dokumentierte native Deltaumfang ist externalReverseRequires, pageFingerprint. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+    "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Compare the hybridization model and molecular modelling. The measured native delta fields are externalReverseRequires, pageFingerprint. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Hybridisierungsmodelle betonen lokale Orbitalrichtung und σ/π-Bindungen, Computer-Modelle räumliche Geometrie aus Annahmen; keines zeigt automatisch die vollständige Elektronendynamik.",
+      "essentialUnderstandingEn": "Hybridization models emphasize local orbital direction and sigma/pi bonds, while computer models show spatial geometry based on assumptions; neither automatically shows full electron dynamics.",
+      "observablePerformanceDe": "Die lernende Person vergleicht für dasselbe Molekül zwei Darstellungen und begründet, welche Frage zu Bindungstyp oder Raumform jeweils besser beantwortet wird.",
+      "observablePerformanceEn": "The learner compares two representations of the same molecule and justifies which better answers a bonding or spatial-shape question.",
+      "transferExpectationDe": "Für ein neues Molekül mit stereochemischer Frage wählt sie ein geeignetes Modell und benennt eine Einschränkung gegenüber experimentellen Daten.",
+      "transferExpectationEn": "For a fresh molecule with a stereochemical question, they choose a suitable model and identify a limit relative to experimental data."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-38d27f61726f6e45bb5f927c920a2d281dc8e524d291c79a436bd87c52a27c94",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:004b148fc78adf1fd9e56e6967acbe0477dcf81fe9cc189e43d80074c5229b6f"
+}

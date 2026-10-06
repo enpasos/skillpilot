@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Mathematik B028 – J8: Gleichungssysteme, Ungleichungen und Bruchterme</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Mathematik B028 – J8: Gleichungssysteme, Ungleichungen und Bruchterme</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>6 atomare Lernziele</dt><dd>6 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:95da8393c3e44772b0a2b0325935aeee32d4df5ebeed5a205e808a99de095800</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-math-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-71894e7ef4af5f94dc6093d2" aria-label="Mathematik"><a href="#goal-e42c208d-9555-43cc-92f5-5bb4c0688726"><span class="toc-entry-label">Mathematik</span></a></h2>
+          <span class="toc-entry-meta"><span>6 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-structure:sek1" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-bb6ea7db6205d9bb2743e598" aria-label="Sekundarstufe I"><a href="#goal-e42c208d-9555-43cc-92f5-5bb4c0688726"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>I</span></a></h3>
+          <span class="toc-entry-meta"><span>6 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:j8" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-4d69e0dfe1f6609dc9bb4822" aria-label="Jahrgangsstufe 8"><a href="#goal-e42c208d-9555-43cc-92f5-5bb4c0688726"><span class="toc-entry-label">Jahrgangsstufe&#160;<wbr>8</span></a></h4>
+          <span class="toc-entry-meta"><span>6 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-structure:j8-fractions" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-2f2c45eafc53b1939f40c08e" aria-label="Bruchterme umformen und Bruchgleichungen lösen"><a href="#goal-797ee047-b8dd-45cf-880e-98571a56c690"><span class="toc-entry-label">Bruchterme&#160;<wbr>umformen&#160;<wbr>und&#160;<wbr>Bruchgleichungen&#160;<wbr>lösen</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 5</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-structure:j8-additional-competencies" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-76b2710b35458825892d1cb2" aria-label="Weitere Kompetenzen"><a href="#goal-e42c208d-9555-43cc-92f5-5bb4c0688726"><span class="toc-entry-label">Weitere&#160;<wbr>Kompetenzen</span></a></h5>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-structure:split-s16-e6eb42c7-454f-49bf-b598-64d2935d2735" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-91c81dd912a2708f9d0aa6bc" aria-label="Lineare Gleichungen und Ungleichungen lösen"><a href="#goal-f17935b0-189f-5e0c-988d-ce508b710097"><span class="toc-entry-label">Lineare&#160;<wbr>Gleichungen&#160;<wbr>und&#160;<wbr>Ungleichungen&#160;<wbr>lösen</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-e42c208d-9555-43cc-92f5-5bb4c0688726" data-goal-id="e42c208d-9555-43cc-92f5-5bb4c0688726" data-page-number="1" data-chapter-ids="structure:goal-book-math-root structure:canonical-structure:sek1 structure:canonical-structure:j8 structure:canonical-structure:j8-additional-competencies" aria-labelledby="goal-e42c208d-9555-43cc-92f5-5bb4c0688726-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e42c208d-9555-43cc-92f5-5bb4c0688726-title"><a class="goal-self-link" href="#goal-e42c208d-9555-43cc-92f5-5bb4c0688726">Lineare Gleichungssysteme mit zwei Variablen lösen und Lösungsvielfalt untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e42c208d-9555-43cc-92f5-5bb4c0688726</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-bb6ea7db6205d9bb2743e598">Sekundarstufe I</a></li><li><a href="#chapter-4d69e0dfe1f6609dc9bb4822">Jahrgangsstufe 8</a></li><li><a href="#chapter-76b2710b35458825892d1cb2">Weitere Kompetenzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2a2f0a5316c75f491e76b5f43c93f2ef7a4bb73ab3669e89dc385f9148ee1acc" data-rendered-digest="sha256:2d37809ce5a5166c871cdb7d29639278d02e7f1a5bef7f069cc3692fad7bcf97" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/e42c208d-9555-43cc-92f5-5bb4c0688726/e42c208d-9555-43cc-92f5-5bb4c0688726.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Lineare Gleichungssysteme mit zwei Variablen lösen und Lösungsvielfalt untersuchen&quot;. Die lernende Person kann lineare Gleichungssysteme mit zwei Variablen grafisch und rechnerisch lösen, Fragen der Lösbarkeit und Lösungsvielfalt untersuchen und die Ergebnisse fachsprachlich begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e42c208d-9555-43cc-92f5-5bb4c0688726-description-heading">
+        <p class="section-heading" id="goal-e42c208d-9555-43cc-92f5-5bb4c0688726-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann lineare Gleichungssysteme mit zwei Variablen grafisch und rechnerisch lösen, Fragen der Lösbarkeit und Lösungsvielfalt untersuchen und die Ergebnisse fachsprachlich begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, HE:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e42c208d-9555-43cc-92f5-5bb4c0688726" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e42c208d-9555-43cc-92f5-5bb4c0688726-requires-heading">
+          <p class="section-heading" id="goal-e42c208d-9555-43cc-92f5-5bb4c0688726-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-e42c208d-9555-43cc-92f5-5bb4c0688726-reverse-heading">
+          <p class="section-heading" id="goal-e42c208d-9555-43cc-92f5-5bb4c0688726-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e42c208d-9555-43cc-92f5-5bb4c0688726-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e42c208d-9555-43cc-92f5-5bb4c0688726-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-cc60f759-1168-5fc0-8ff5-5f7a2533e61c" rel="noreferrer noopener"><span>Lösbarkeit und Lösungsvielfalt linearer Gleichungen untersuchen</span> <code>cc60f759-1168-5fc0-8ff5-5f7a2533e61c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e09072f9-67d9-412c-b872-24ecbf329232" rel="noreferrer noopener"><span>Funktionswerte linearer Funktionen berechnen und deuten</span> <code>e09072f9-67d9-412c-b872-24ecbf329232</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2f598bc7-c117-47d7-bb81-0f08ad679b91" rel="noreferrer noopener"><span>Schnittpunkte zweier Geraden berechnen</span> <code>2f598bc7-c117-47d7-bb81-0f08ad679b91</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e42c208d-9555-43cc-92f5-5bb4c0688726-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e42c208d-9555-43cc-92f5-5bb4c0688726-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-df9ecf0f-f4c9-5859-b99e-11cb62f6bb35" rel="noreferrer noopener"><span>Aufgabe 2 (Jahrgangsstufe 8, 6 BE)</span> <code>df9ecf0f-f4c9-5859-b99e-11cb62f6bb35</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 6</span>
+      <span>Buch-Digest <code>sha256:95da8393c3e44772b0a2b0325935aeee32d4df5ebeed5a205e808a99de095800</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2ec004288c6a0a0b1879a2e2d1622e6d31e277a49a02d1f72606b0de124c82e1</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-j8-algebra-systems-inequalities-fractions-6-v1-20260902&amp;edition=curricular-atomic-v1&amp;goalId=e42c208d-9555-43cc-92f5-5bb4c0688726&amp;goalFingerprint=sha256%3A2ec004288c6a0a0b1879a2e2d1622e6d31e277a49a02d1f72606b0de124c82e1&amp;pageFingerprint=sha256%3Af93309996a00e2fbef42c37653c332a869551052129b5c0d2237cd4a2c8e6e12&amp;bookDigest=sha256%3A95da8393c3e44772b0a2b0325935aeee32d4df5ebeed5a205e808a99de095800&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f17935b0-189f-5e0c-988d-ce508b710097" data-goal-id="f17935b0-189f-5e0c-988d-ce508b710097" data-page-number="2" data-chapter-ids="structure:goal-book-math-root structure:canonical-structure:sek1 structure:canonical-structure:j8 structure:canonical-structure:j8-additional-competencies structure:canonical-structure:split-s16-e6eb42c7-454f-49bf-b598-64d2935d2735" aria-labelledby="goal-f17935b0-189f-5e0c-988d-ce508b710097-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f17935b0-189f-5e0c-988d-ce508b710097-title"><a class="goal-self-link" href="#goal-f17935b0-189f-5e0c-988d-ce508b710097">Lineare Ungleichungen lösen und Lösungsmengen darstellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f17935b0-189f-5e0c-988d-ce508b710097</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-bb6ea7db6205d9bb2743e598">Sekundarstufe I</a></li><li><a href="#chapter-4d69e0dfe1f6609dc9bb4822">Jahrgangsstufe 8</a></li><li><a href="#chapter-76b2710b35458825892d1cb2">Weitere Kompetenzen</a></li><li><a href="#chapter-91c81dd912a2708f9d0aa6bc">Lineare Gleichungen und Ungleichungen lösen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f17935b0-189f-5e0c-988d-ce508b710097-description-heading">
+        <p class="section-heading" id="goal-f17935b0-189f-5e0c-988d-ce508b710097-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann lineare Ungleichungen mit Äquivalenzumformungen lösen, bei Multiplikation oder Division durch negative Zahlen die Ordnungsrichtung korrekt umkehren und die Lösungsmenge auf der Zahlengeraden oder in Intervallschreibweise darstellen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, HE:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f17935b0-189f-5e0c-988d-ce508b710097" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f17935b0-189f-5e0c-988d-ce508b710097-requires-heading">
+          <p class="section-heading" id="goal-f17935b0-189f-5e0c-988d-ce508b710097-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-f17935b0-189f-5e0c-988d-ce508b710097-reverse-heading">
+          <p class="section-heading" id="goal-f17935b0-189f-5e0c-988d-ce508b710097-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-f17935b0-189f-5e0c-988d-ce508b710097-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f17935b0-189f-5e0c-988d-ce508b710097-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-325771e1-602d-4bca-a199-a8f39a2d3dee" rel="noreferrer noopener"><span>Lineare Gleichungen systematisch lösen</span> <code>325771e1-602d-4bca-a199-a8f39a2d3dee</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-f17935b0-189f-5e0c-988d-ce508b710097-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f17935b0-189f-5e0c-988d-ce508b710097-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-df9ecf0f-f4c9-5859-b99e-11cb62f6bb35" rel="noreferrer noopener"><span>Aufgabe 2 (Jahrgangsstufe 8, 6 BE)</span> <code>df9ecf0f-f4c9-5859-b99e-11cb62f6bb35</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 6</span>
+      <span>Buch-Digest <code>sha256:95da8393c3e44772b0a2b0325935aeee32d4df5ebeed5a205e808a99de095800</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9e8b7f2914956c279da4f23fbb943a3194c4eb4cc446eabe53a08eef214d5a77</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-j8-algebra-systems-inequalities-fractions-6-v1-20260902&amp;edition=curricular-atomic-v1&amp;goalId=f17935b0-189f-5e0c-988d-ce508b710097&amp;goalFingerprint=sha256%3A9e8b7f2914956c279da4f23fbb943a3194c4eb4cc446eabe53a08eef214d5a77&amp;pageFingerprint=sha256%3A1c1a98a777fd50c3061f7d5657c6a954853119dd5a3434b54bcfbeb3c8493a75&amp;bookDigest=sha256%3A95da8393c3e44772b0a2b0325935aeee32d4df5ebeed5a205e808a99de095800&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-15512e77-31e3-5222-8a6b-84791618e5ce" data-goal-id="15512e77-31e3-5222-8a6b-84791618e5ce" data-page-number="3" data-chapter-ids="structure:goal-book-math-root structure:canonical-structure:sek1 structure:canonical-structure:j8 structure:canonical-structure:j8-additional-competencies" aria-labelledby="goal-15512e77-31e3-5222-8a6b-84791618e5ce-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-15512e77-31e3-5222-8a6b-84791618e5ce-title"><a class="goal-self-link" href="#goal-15512e77-31e3-5222-8a6b-84791618e5ce">Bruchterme addieren und subtrahieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>15512e77-31e3-5222-8a6b-84791618e5ce</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-bb6ea7db6205d9bb2743e598">Sekundarstufe I</a></li><li><a href="#chapter-4d69e0dfe1f6609dc9bb4822">Jahrgangsstufe 8</a></li><li><a href="#chapter-76b2710b35458825892d1cb2">Weitere Kompetenzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:38c9c6db1a798acba0fe9f4ca6e168dcdc8cdc8fd8c7bf5e3e75bff3e8b4e9d0" data-rendered-digest="sha256:1e8d4ceb693790b78f5fef6ae54800279ef1aded611700d6805babf5d878e163" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/15512e77-31e3-5222-8a6b-84791618e5ce/15512e77-31e3-5222-8a6b-84791618e5ce.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Bruchterme addieren und subtrahieren&quot;. Die lernende Person kann Bruchterme mit geeigneten Hauptnennern addieren und subtrahieren und die Umformungsschritte nachvollziehbar begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-15512e77-31e3-5222-8a6b-84791618e5ce-description-heading">
+        <p class="section-heading" id="goal-15512e77-31e3-5222-8a6b-84791618e5ce-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Bruchterme mit geeigneten Hauptnennern addieren und subtrahieren und die Umformungsschritte nachvollziehbar begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. I · G9</li><li><strong>HE:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-15512e77-31e3-5222-8a6b-84791618e5ce" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-15512e77-31e3-5222-8a6b-84791618e5ce-requires-heading">
+          <p class="section-heading" id="goal-15512e77-31e3-5222-8a6b-84791618e5ce-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-15512e77-31e3-5222-8a6b-84791618e5ce-reverse-heading">
+          <p class="section-heading" id="goal-15512e77-31e3-5222-8a6b-84791618e5ce-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-797ee047-b8dd-45cf-880e-98571a56c690"><span>Bruchgleichungen lösen und als Schnittprobleme deuten</span><code>797ee047-b8dd-45cf-880e-98571a56c690</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-0a154cbd-1218-4553-835c-a754e9901bba"><span>Formeln mit Brüchen nach Variablen auflösen</span><code>0a154cbd-1218-4553-835c-a754e9901bba</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-15512e77-31e3-5222-8a6b-84791618e5ce-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-15512e77-31e3-5222-8a6b-84791618e5ce-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f7a9a0b4-ec64-468f-8da4-59c5055eac1d" rel="noreferrer noopener"><span>Bruchterme auf einen gemeinsamen Nenner bringen</span> <code>f7a9a0b4-ec64-468f-8da4-59c5055eac1d</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-15512e77-31e3-5222-8a6b-84791618e5ce-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-15512e77-31e3-5222-8a6b-84791618e5ce-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e96bc8e4-463b-5e86-b0c4-2c87b74d68f5" rel="noreferrer noopener"><span>Aufgabe 4 (Jahrgangsstufe 8, 6 BE)</span> <code>e96bc8e4-463b-5e86-b0c4-2c87b74d68f5</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 6</span>
+      <span>Buch-Digest <code>sha256:95da8393c3e44772b0a2b0325935aeee32d4df5ebeed5a205e808a99de095800</code></span>
+      <span>Ziel-Fingerprint <code>sha256:55deddef6e9553077c85c3c88d019a02e64cb2e73bb4c6af30e91186059b006b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-j8-algebra-systems-inequalities-fractions-6-v1-20260902&amp;edition=curricular-atomic-v1&amp;goalId=15512e77-31e3-5222-8a6b-84791618e5ce&amp;goalFingerprint=sha256%3A55deddef6e9553077c85c3c88d019a02e64cb2e73bb4c6af30e91186059b006b&amp;pageFingerprint=sha256%3Aa9a59beabe00dc56393312e38763eb5dc3c311fa005e7e0c73de9db3335a3fea&amp;bookDigest=sha256%3A95da8393c3e44772b0a2b0325935aeee32d4df5ebeed5a205e808a99de095800&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-76478e47-5ff9-5de1-b601-5e6e436ad855" data-goal-id="76478e47-5ff9-5de1-b601-5e6e436ad855" data-page-number="4" data-chapter-ids="structure:goal-book-math-root structure:canonical-structure:sek1 structure:canonical-structure:j8 structure:canonical-structure:j8-additional-competencies" aria-labelledby="goal-76478e47-5ff9-5de1-b601-5e6e436ad855-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-76478e47-5ff9-5de1-b601-5e6e436ad855-title"><a class="goal-self-link" href="#goal-76478e47-5ff9-5de1-b601-5e6e436ad855">Bruchterme multiplizieren und dividieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>76478e47-5ff9-5de1-b601-5e6e436ad855</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-bb6ea7db6205d9bb2743e598">Sekundarstufe I</a></li><li><a href="#chapter-4d69e0dfe1f6609dc9bb4822">Jahrgangsstufe 8</a></li><li><a href="#chapter-76b2710b35458825892d1cb2">Weitere Kompetenzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:33c18766bb8b3e37d3bcfdeba108d87bdd9cfd0c2aecfc673dedb53229caefe6" data-rendered-digest="sha256:5c9fedae130b7657d3d2d9f6fa4d0fba375a413a79b823da47aaca81f47af656" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/76478e47-5ff9-5de1-b601-5e6e436ad855/76478e47-5ff9-5de1-b601-5e6e436ad855.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Bruchterme multiplizieren und dividieren&quot;. Die lernende Person kann Bruchterme multiplizieren und dividieren, Definitionsbedingungen beachten und die entstehenden Terme sinnvoll kürzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-76478e47-5ff9-5de1-b601-5e6e436ad855-description-heading">
+        <p class="section-heading" id="goal-76478e47-5ff9-5de1-b601-5e6e436ad855-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Bruchterme multiplizieren und dividieren, Definitionsbedingungen beachten und die entstehenden Terme sinnvoll kürzen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. I · G9</li><li><strong>HE:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-76478e47-5ff9-5de1-b601-5e6e436ad855" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-76478e47-5ff9-5de1-b601-5e6e436ad855-requires-heading">
+          <p class="section-heading" id="goal-76478e47-5ff9-5de1-b601-5e6e436ad855-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-76478e47-5ff9-5de1-b601-5e6e436ad855-reverse-heading">
+          <p class="section-heading" id="goal-76478e47-5ff9-5de1-b601-5e6e436ad855-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-797ee047-b8dd-45cf-880e-98571a56c690"><span>Bruchgleichungen lösen und als Schnittprobleme deuten</span><code>797ee047-b8dd-45cf-880e-98571a56c690</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-0a154cbd-1218-4553-835c-a754e9901bba"><span>Formeln mit Brüchen nach Variablen auflösen</span><code>0a154cbd-1218-4553-835c-a754e9901bba</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-76478e47-5ff9-5de1-b601-5e6e436ad855-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-76478e47-5ff9-5de1-b601-5e6e436ad855-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c420e0be-1e74-4050-834c-d8da7f41095a" rel="noreferrer noopener"><span>Bruchterme strukturieren, erweitern und kürzen</span> <code>c420e0be-1e74-4050-834c-d8da7f41095a</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-76478e47-5ff9-5de1-b601-5e6e436ad855-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-76478e47-5ff9-5de1-b601-5e6e436ad855-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e96bc8e4-463b-5e86-b0c4-2c87b74d68f5" rel="noreferrer noopener"><span>Aufgabe 4 (Jahrgangsstufe 8, 6 BE)</span> <code>e96bc8e4-463b-5e86-b0c4-2c87b74d68f5</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 6</span>
+      <span>Buch-Digest <code>sha256:95da8393c3e44772b0a2b0325935aeee32d4df5ebeed5a205e808a99de095800</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6a92aeffed41301f459fb7982616cd82b994e42afd865118e233ec3ef8a89e29</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-j8-algebra-systems-inequalities-fractions-6-v1-20260902&amp;edition=curricular-atomic-v1&amp;goalId=76478e47-5ff9-5de1-b601-5e6e436ad855&amp;goalFingerprint=sha256%3A6a92aeffed41301f459fb7982616cd82b994e42afd865118e233ec3ef8a89e29&amp;pageFingerprint=sha256%3A545ece27b421e0f189d498d3272707ba07c41610030417d0dcf145a90831728d&amp;bookDigest=sha256%3A95da8393c3e44772b0a2b0325935aeee32d4df5ebeed5a205e808a99de095800&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-797ee047-b8dd-45cf-880e-98571a56c690" data-goal-id="797ee047-b8dd-45cf-880e-98571a56c690" data-page-number="5" data-chapter-ids="structure:goal-book-math-root structure:canonical-structure:sek1 structure:canonical-structure:j8 structure:canonical-structure:j8-fractions" aria-labelledby="goal-797ee047-b8dd-45cf-880e-98571a56c690-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-797ee047-b8dd-45cf-880e-98571a56c690-title"><a class="goal-self-link" href="#goal-797ee047-b8dd-45cf-880e-98571a56c690">Bruchgleichungen lösen und als Schnittprobleme deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>797ee047-b8dd-45cf-880e-98571a56c690</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-bb6ea7db6205d9bb2743e598">Sekundarstufe I</a></li><li><a href="#chapter-4d69e0dfe1f6609dc9bb4822">Jahrgangsstufe 8</a></li><li><a href="#chapter-2f2c45eafc53b1939f40c08e">Bruchterme umformen und Bruchgleichungen lösen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1bf61b645b372ce898c8765745096ebb7ce26b82f64be0d9bb77c835c22c6000" data-rendered-digest="sha256:6745858d6bf2bba49e81f479298d468ac8fe08f48ad341317ea39bc8a58fb63e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/797ee047-b8dd-45cf-880e-98571a56c690/797ee047-b8dd-45cf-880e-98571a56c690.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Bruchgleichungen lösen und als Schnittprobleme deuten&quot;. Die lernende Person kann Bruchgleichungen rechnerisch lösen und in einfachen Fällen als Schnittprobleme von Funktionsgraphen interpretieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-797ee047-b8dd-45cf-880e-98571a56c690-description-heading">
+        <p class="section-heading" id="goal-797ee047-b8dd-45cf-880e-98571a56c690-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Bruchgleichungen rechnerisch lösen und in einfachen Fällen als Schnittprobleme von Funktionsgraphen interpretieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, RP:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, SN, ST:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-797ee047-b8dd-45cf-880e-98571a56c690" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-797ee047-b8dd-45cf-880e-98571a56c690-requires-heading">
+          <p class="section-heading" id="goal-797ee047-b8dd-45cf-880e-98571a56c690-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-15512e77-31e3-5222-8a6b-84791618e5ce"><span>Bruchterme addieren und subtrahieren</span><code>15512e77-31e3-5222-8a6b-84791618e5ce</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-76478e47-5ff9-5de1-b601-5e6e436ad855"><span>Bruchterme multiplizieren und dividieren</span><code>76478e47-5ff9-5de1-b601-5e6e436ad855</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-797ee047-b8dd-45cf-880e-98571a56c690-reverse-heading">
+          <p class="section-heading" id="goal-797ee047-b8dd-45cf-880e-98571a56c690-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-797ee047-b8dd-45cf-880e-98571a56c690-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-797ee047-b8dd-45cf-880e-98571a56c690-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-325771e1-602d-4bca-a199-a8f39a2d3dee" rel="noreferrer noopener"><span>Lineare Gleichungen systematisch lösen</span> <code>325771e1-602d-4bca-a199-a8f39a2d3dee</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-bc6e4c14-d4f7-537e-8e83-9b5c0086e807" rel="noreferrer noopener"><span>Graphen einfacher Hyperbeln mit Asymptoten zeichnen</span> <code>bc6e4c14-d4f7-537e-8e83-9b5c0086e807</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f7a9a0b4-ec64-468f-8da4-59c5055eac1d" rel="noreferrer noopener"><span>Bruchterme auf einen gemeinsamen Nenner bringen</span> <code>f7a9a0b4-ec64-468f-8da4-59c5055eac1d</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-797ee047-b8dd-45cf-880e-98571a56c690-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-797ee047-b8dd-45cf-880e-98571a56c690-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e96bc8e4-463b-5e86-b0c4-2c87b74d68f5" rel="noreferrer noopener"><span>Aufgabe 4 (Jahrgangsstufe 8, 6 BE)</span> <code>e96bc8e4-463b-5e86-b0c4-2c87b74d68f5</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 6</span>
+      <span>Buch-Digest <code>sha256:95da8393c3e44772b0a2b0325935aeee32d4df5ebeed5a205e808a99de095800</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bcc1cfb36f6a45b5bc6e27e2218328d006aa6c0e134838fdab004374d987b491</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-j8-algebra-systems-inequalities-fractions-6-v1-20260902&amp;edition=curricular-atomic-v1&amp;goalId=797ee047-b8dd-45cf-880e-98571a56c690&amp;goalFingerprint=sha256%3Abcc1cfb36f6a45b5bc6e27e2218328d006aa6c0e134838fdab004374d987b491&amp;pageFingerprint=sha256%3A1c494a8509e52291ab139275104fa7b02317798820a167bc4886b65248e03a39&amp;bookDigest=sha256%3A95da8393c3e44772b0a2b0325935aeee32d4df5ebeed5a205e808a99de095800&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0a154cbd-1218-4553-835c-a754e9901bba" data-goal-id="0a154cbd-1218-4553-835c-a754e9901bba" data-page-number="6" data-chapter-ids="structure:goal-book-math-root structure:canonical-structure:sek1 structure:canonical-structure:j8 structure:canonical-structure:j8-fractions" aria-labelledby="goal-0a154cbd-1218-4553-835c-a754e9901bba-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0a154cbd-1218-4553-835c-a754e9901bba-title"><a class="goal-self-link" href="#goal-0a154cbd-1218-4553-835c-a754e9901bba">Formeln mit Brüchen nach Variablen auflösen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0a154cbd-1218-4553-835c-a754e9901bba</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-bb6ea7db6205d9bb2743e598">Sekundarstufe I</a></li><li><a href="#chapter-4d69e0dfe1f6609dc9bb4822">Jahrgangsstufe 8</a></li><li><a href="#chapter-2f2c45eafc53b1939f40c08e">Bruchterme umformen und Bruchgleichungen lösen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:dfe6938a73c366280ae7ee93589fc806b92456b4d537eb8e6d32d01f6799294e" data-rendered-digest="sha256:32727e3c30d9b2241c7b0866a7b7adf896b74fd2d8ba473bb80d781fd9e558ea" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/0a154cbd-1218-4553-835c-a754e9901bba/0a154cbd-1218-4553-835c-a754e9901bba.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Formeln mit Brüchen nach Variablen auflösen&quot;. Die lernende Person kann Formeln mit Bruchtermen, besonders aus naturwissenschaftlichen Kontexten, nach einer gesuchten Variablen auflösen und die Umformungen nachvollziehbar begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0a154cbd-1218-4553-835c-a754e9901bba-description-heading">
+        <p class="section-heading" id="goal-0a154cbd-1218-4553-835c-a754e9901bba-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Formeln mit Bruchtermen, besonders aus naturwissenschaftlichen Kontexten, nach einer gesuchten Variablen auflösen und die Umformungen nachvollziehbar begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, SN, ST:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0a154cbd-1218-4553-835c-a754e9901bba" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0a154cbd-1218-4553-835c-a754e9901bba-requires-heading">
+          <p class="section-heading" id="goal-0a154cbd-1218-4553-835c-a754e9901bba-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-15512e77-31e3-5222-8a6b-84791618e5ce"><span>Bruchterme addieren und subtrahieren</span><code>15512e77-31e3-5222-8a6b-84791618e5ce</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-76478e47-5ff9-5de1-b601-5e6e436ad855"><span>Bruchterme multiplizieren und dividieren</span><code>76478e47-5ff9-5de1-b601-5e6e436ad855</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-0a154cbd-1218-4553-835c-a754e9901bba-reverse-heading">
+          <p class="section-heading" id="goal-0a154cbd-1218-4553-835c-a754e9901bba-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0a154cbd-1218-4553-835c-a754e9901bba-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0a154cbd-1218-4553-835c-a754e9901bba-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-325771e1-602d-4bca-a199-a8f39a2d3dee" rel="noreferrer noopener"><span>Lineare Gleichungen systematisch lösen</span> <code>325771e1-602d-4bca-a199-a8f39a2d3dee</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f7a9a0b4-ec64-468f-8da4-59c5055eac1d" rel="noreferrer noopener"><span>Bruchterme auf einen gemeinsamen Nenner bringen</span> <code>f7a9a0b4-ec64-468f-8da4-59c5055eac1d</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-0a154cbd-1218-4553-835c-a754e9901bba-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0a154cbd-1218-4553-835c-a754e9901bba-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e96bc8e4-463b-5e86-b0c4-2c87b74d68f5" rel="noreferrer noopener"><span>Aufgabe 4 (Jahrgangsstufe 8, 6 BE)</span> <code>e96bc8e4-463b-5e86-b0c4-2c87b74d68f5</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 6</span>
+      <span>Buch-Digest <code>sha256:95da8393c3e44772b0a2b0325935aeee32d4df5ebeed5a205e808a99de095800</code></span>
+      <span>Ziel-Fingerprint <code>sha256:838ee82e40e65b23269f4a28247336f3ecdccd299b6b1751b2735d32915c87f4</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-j8-algebra-systems-inequalities-fractions-6-v1-20260902&amp;edition=curricular-atomic-v1&amp;goalId=0a154cbd-1218-4553-835c-a754e9901bba&amp;goalFingerprint=sha256%3A838ee82e40e65b23269f4a28247336f3ecdccd299b6b1751b2735d32915c87f4&amp;pageFingerprint=sha256%3A28e7348172c699d760e81a07aafff449484562ca3c69427efdf183d5c290fd13&amp;bookDigest=sha256%3A95da8393c3e44772b0a2b0325935aeee32d4df5ebeed5a205e808a99de095800&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Biologie M7: dreizehn aktuelle E.1–E.3-/BW-Sek-I-Ziele nach MV-Scope- und Bildbindung</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Biologie M7: dreizehn aktuelle E.1–E.3-/BW-Sek-I-Ziele nach MV-Scope- und Bildbindung</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>13 atomare Lernziele</dt><dd>6 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-4f5d4296002eb1bc70a26646" aria-label="Biologie"><a href="#goal-1042bb24-96ba-553b-a956-abaf9c74dc43"><span class="toc-entry-label">Biologie</span></a></h2>
+          <span class="toc-entry-meta"><span>13 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-78370970-54ec-579e-ab99-d16cce22e27d" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-420fa1c6964b92340b26e9f6" aria-label="Einführungsphase Zellbiologie"><a href="#goal-1042bb24-96ba-553b-a956-abaf9c74dc43"><span class="toc-entry-label">Einführungsphase&#160;<wbr>Zellbiologie</span></a></h3>
+          <span class="toc-entry-meta"><span>12 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-goal-765df889-5828-564a-ab47-c10312c956f4" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-52df5a1fffd5392c7c9b3915" aria-label="Struktur und Funktion von Zellen"><a href="#goal-1042bb24-96ba-553b-a956-abaf9c74dc43"><span class="toc-entry-label">Struktur&#160;<wbr>und&#160;<wbr>Funktion&#160;<wbr>von&#160;<wbr>Zellen</span></a></h4>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-goal-d876ff49-b03c-5294-8938-2bdd2b6c2929" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-feb700e9d1f22710b70f7b6b" aria-label="Struktur und Funktion von Proteinen und Enzymen"><a href="#goal-d06adc48-b845-54af-b17c-06b5cb910b11"><span class="toc-entry-label">Struktur&#160;<wbr>und&#160;<wbr>Funktion&#160;<wbr>von&#160;<wbr>Proteinen&#160;<wbr>und&#160;<wbr>Enzymen</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-goal-7d2d7ce7-57da-5f50-81f4-9fa53ae839f8" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-4a79ddb1cdecc9aff5a6436a" aria-label="Humanbiologische Aspekte"><a href="#goal-e1484671-208b-5ad1-a71d-7d994fb2174b"><span class="toc-entry-label">Humanbiologische&#160;<wbr>Aspekte</span></a></h4>
+          <span class="toc-entry-meta"><span>6 Lernziele</span><span>erste zugehörige Lernzielseite 6</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-b4176012-f93a-5dd2-84b3-edd6a9932367" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-4977846395f7dee76f9bcb1d" aria-label="Genetik, Vererbung und Gentechnik (Sek I)"><a href="#goal-62e52002-b8df-533e-9972-028f3ee60cd1"><span class="toc-entry-label">Genetik,&#160;<wbr>Vererbung&#160;<wbr>und&#160;<wbr>Gentechnik&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 13</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-1042bb24-96ba-553b-a956-abaf9c74dc43" data-goal-id="1042bb24-96ba-553b-a956-abaf9c74dc43" data-page-number="1" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-78370970-54ec-579e-ab99-d16cce22e27d structure:canonical-goal-765df889-5828-564a-ab47-c10312c956f4" aria-labelledby="goal-1042bb24-96ba-553b-a956-abaf9c74dc43-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1042bb24-96ba-553b-a956-abaf9c74dc43-title"><a class="goal-self-link" href="#goal-1042bb24-96ba-553b-a956-abaf9c74dc43">Endosymbiontentheorie erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1042bb24-96ba-553b-a956-abaf9c74dc43</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-420fa1c6964b92340b26e9f6">Einführungsphase Zellbiologie</a></li><li><a href="#chapter-52df5a1fffd5392c7c9b3915">Struktur und Funktion von Zellen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:77abed0f1902cf403eb441ec421927c0f83987bfb117d753aad27b71673b8c47" data-rendered-digest="sha256:8312e05db52ee2e9ef0ee38d7f8a7970a65ba8ea54c280065d817497f8aadefe" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/1042bb24-96ba-553b-a956-abaf9c74dc43/1042bb24-96ba-553b-a956-abaf9c74dc43.png" alt="Unter den Zellmodellen zeigen zwei vereinfachte Bildfolgen die Aufnahme früherer Bakterien als Modell für Mitochondrien und Chloroplasten; das Bild zeigt keine unabhängigen Belege wie eigene DNA.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1042bb24-96ba-553b-a956-abaf9c74dc43-description-heading">
+        <p class="section-heading" id="goal-1042bb24-96ba-553b-a956-abaf9c74dc43-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Endosymbiontentheorie als Modell für die Entstehung eukaryotischer Zellen mit Mitochondrien und Chloroplasten erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1042bb24-96ba-553b-a956-abaf9c74dc43" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1042bb24-96ba-553b-a956-abaf9c74dc43-requires-heading">
+          <p class="section-heading" id="goal-1042bb24-96ba-553b-a956-abaf9c74dc43-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-1042bb24-96ba-553b-a956-abaf9c74dc43-reverse-heading">
+          <p class="section-heading" id="goal-1042bb24-96ba-553b-a956-abaf9c74dc43-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-1042bb24-96ba-553b-a956-abaf9c74dc43-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1042bb24-96ba-553b-a956-abaf9c74dc43-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f" rel="noreferrer noopener"><span>Zelltypen unterscheiden</span> <code>7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-fc8c4b02-02f2-5ad6-b481-224d36121da1" rel="noreferrer noopener"><span>Zellorganellen zuordnen</span> <code>fc8c4b02-02f2-5ad6-b481-224d36121da1</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-1042bb24-96ba-553b-a956-abaf9c74dc43-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1042bb24-96ba-553b-a956-abaf9c74dc43-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-bbbc9609-ee7e-5849-956e-047b7a753ce9" rel="noreferrer noopener"><span>Blattgewebe und Ursprung der Zellorganellen</span> <code>bbbc9609-ee7e-5849-956e-047b7a753ce9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 13</span>
+      <span>Buch-Digest <code>sha256:8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c6c32eea22fe849856d7d00b7ddf757dfd454ab2ece04b76e92e583b7bd94a09</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-m7-ephase-layer-a-thirteen-current-20261001-v2&amp;edition=curricular-atomic-v1&amp;goalId=1042bb24-96ba-553b-a956-abaf9c74dc43&amp;goalFingerprint=sha256%3Ac6c32eea22fe849856d7d00b7ddf757dfd454ab2ece04b76e92e583b7bd94a09&amp;pageFingerprint=sha256%3A6647d12ee62c4bc63ae86ea5b8a9240b8a4587464c3302617a87c9100467beff&amp;bookDigest=sha256%3A8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6199e4c7-06d1-559a-98ab-acf805a478ba" data-goal-id="6199e4c7-06d1-559a-98ab-acf805a478ba" data-page-number="2" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-78370970-54ec-579e-ab99-d16cce22e27d structure:canonical-goal-765df889-5828-564a-ab47-c10312c956f4" aria-labelledby="goal-6199e4c7-06d1-559a-98ab-acf805a478ba-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6199e4c7-06d1-559a-98ab-acf805a478ba-title"><a class="goal-self-link" href="#goal-6199e4c7-06d1-559a-98ab-acf805a478ba">Vom Einzeller zum Vielzeller</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6199e4c7-06d1-559a-98ab-acf805a478ba</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-420fa1c6964b92340b26e9f6">Einführungsphase Zellbiologie</a></li><li><a href="#chapter-52df5a1fffd5392c7c9b3915">Struktur und Funktion von Zellen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:86f54ab9b3d75009c30602a8055dbca92ae676a6642cceeb889569c120761d90" data-rendered-digest="sha256:bb7093f6d1f9b146fe223e36f6d001b2e66726246fa980136da524d2e90e73b6" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/6199e4c7-06d1-559a-98ab-acf805a478ba/6199e4c7-06d1-559a-98ab-acf805a478ba.png" alt="Drei große Comicfelder in einer Wasserwelt zeigen eine einzelne grüne Zelle, mehrere ähnliche Zellen in einem einfachen Verband und einen zusammenhängenden hydraähnlichen Vielzeller mit verschieden angeordneten Zellgruppen. Keine Abstammungspfeile.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6199e4c7-06d1-559a-98ab-acf805a478ba-description-heading">
+        <p class="section-heading" id="goal-6199e4c7-06d1-559a-98ab-acf805a478ba-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Einzeller, Zellverbände und Vielzeller anhand ihrer Zellorganisation als unterschiedliche Organisationsformen vergleichen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-6199e4c7-06d1-559a-98ab-acf805a478ba" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6199e4c7-06d1-559a-98ab-acf805a478ba-requires-heading">
+          <p class="section-heading" id="goal-6199e4c7-06d1-559a-98ab-acf805a478ba-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-6199e4c7-06d1-559a-98ab-acf805a478ba-reverse-heading">
+          <p class="section-heading" id="goal-6199e4c7-06d1-559a-98ab-acf805a478ba-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-6199e4c7-06d1-559a-98ab-acf805a478ba-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6199e4c7-06d1-559a-98ab-acf805a478ba-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-6199e4c7-06d1-559a-98ab-acf805a478ba-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6199e4c7-06d1-559a-98ab-acf805a478ba-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-bbbc9609-ee7e-5849-956e-047b7a753ce9" rel="noreferrer noopener"><span>Blattgewebe und Ursprung der Zellorganellen</span> <code>bbbc9609-ee7e-5849-956e-047b7a753ce9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 13</span>
+      <span>Buch-Digest <code>sha256:8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f15692e433cbc63ca44683e156c460304e79e810c85e2f7ef3ef45284a0dcac1</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-m7-ephase-layer-a-thirteen-current-20261001-v2&amp;edition=curricular-atomic-v1&amp;goalId=6199e4c7-06d1-559a-98ab-acf805a478ba&amp;goalFingerprint=sha256%3Af15692e433cbc63ca44683e156c460304e79e810c85e2f7ef3ef45284a0dcac1&amp;pageFingerprint=sha256%3A224e429a441c63608d7550d51ba814eb1652bb0f9c66e3e3db18a5a93606f971&amp;bookDigest=sha256%3A8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d06adc48-b845-54af-b17c-06b5cb910b11" data-goal-id="d06adc48-b845-54af-b17c-06b5cb910b11" data-page-number="3" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-78370970-54ec-579e-ab99-d16cce22e27d structure:canonical-goal-d876ff49-b03c-5294-8938-2bdd2b6c2929" aria-labelledby="goal-d06adc48-b845-54af-b17c-06b5cb910b11-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d06adc48-b845-54af-b17c-06b5cb910b11-title"><a class="goal-self-link" href="#goal-d06adc48-b845-54af-b17c-06b5cb910b11">pH-Abhängigkeit der Enzymaktivität deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d06adc48-b845-54af-b17c-06b5cb910b11</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-420fa1c6964b92340b26e9f6">Einführungsphase Zellbiologie</a></li><li><a href="#chapter-feb700e9d1f22710b70f7b6b">Struktur und Funktion von Proteinen und Enzymen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c678bc75c40b14c1c6f0509e3a62ff993bc1434f80f40c759852d84953cf87fb" data-rendered-digest="sha256:3a49d53d449e99611363eb9ddeb16cdbb0f5356b341d488605be428b10a30fbb" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/d06adc48-b845-54af-b17c-06b5cb910b11/d06adc48-b845-54af-b17c-06b5cb910b11.png" alt="Das mittlere Bildfeld zeigt eine qualitative Aktivitätskurve mit pH-Optimum und ein vereinfachtes Enzym-Substrat-Modell; die anderen Faktoren sind ergänzender Vergleich.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d06adc48-b845-54af-b17c-06b5cb910b11-description-heading">
+        <p class="section-heading" id="goal-d06adc48-b845-54af-b17c-06b5cb910b11-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus kontrollierten Daten die pH-Abhängigkeit einer Enzymaktivität mit einem Aktivitätsoptimum deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-d06adc48-b845-54af-b17c-06b5cb910b11" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d06adc48-b845-54af-b17c-06b5cb910b11-requires-heading">
+          <p class="section-heading" id="goal-d06adc48-b845-54af-b17c-06b5cb910b11-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-d06adc48-b845-54af-b17c-06b5cb910b11-reverse-heading">
+          <p class="section-heading" id="goal-d06adc48-b845-54af-b17c-06b5cb910b11-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-d06adc48-b845-54af-b17c-06b5cb910b11-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d06adc48-b845-54af-b17c-06b5cb910b11-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0dbe758c-73c8-530b-bbbd-fb55540f942f" rel="noreferrer noopener"><span>Enzymkatalyse beschreiben</span> <code>0dbe758c-73c8-530b-bbbd-fb55540f942f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-d06adc48-b845-54af-b17c-06b5cb910b11-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d06adc48-b845-54af-b17c-06b5cb910b11-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-21bca0dc-27b0-5fe7-8c33-0e1859174f90" rel="noreferrer noopener"><span>Enzymaktivität bei Substrat- und pH-Änderung</span> <code>21bca0dc-27b0-5fe7-8c33-0e1859174f90</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 13</span>
+      <span>Buch-Digest <code>sha256:8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490</code></span>
+      <span>Ziel-Fingerprint <code>sha256:df467c1d3bd0e2a33fe8a17eba5c21bcc03a926232e0a176119a17d6e67af2de</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-m7-ephase-layer-a-thirteen-current-20261001-v2&amp;edition=curricular-atomic-v1&amp;goalId=d06adc48-b845-54af-b17c-06b5cb910b11&amp;goalFingerprint=sha256%3Adf467c1d3bd0e2a33fe8a17eba5c21bcc03a926232e0a176119a17d6e67af2de&amp;pageFingerprint=sha256%3A1c86b5c4bfeacd79537ec82ea0e54976e4e9adec7dee68a7fe208c4025d59814&amp;bookDigest=sha256%3A8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d71e2310-2331-5e66-b7df-c2807fccb329" data-goal-id="d71e2310-2331-5e66-b7df-c2807fccb329" data-page-number="4" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-78370970-54ec-579e-ab99-d16cce22e27d structure:canonical-goal-765df889-5828-564a-ab47-c10312c956f4" aria-labelledby="goal-d71e2310-2331-5e66-b7df-c2807fccb329-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d71e2310-2331-5e66-b7df-c2807fccb329-title"><a class="goal-self-link" href="#goal-d71e2310-2331-5e66-b7df-c2807fccb329">Organisationsstufen eines Vielzellers erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d71e2310-2331-5e66-b7df-c2807fccb329</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-420fa1c6964b92340b26e9f6">Einführungsphase Zellbiologie</a></li><li><a href="#chapter-52df5a1fffd5392c7c9b3915">Struktur und Funktion von Zellen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c5143752e3f027e0dd745cfd95d4caa46d08ef8f6ecb4ee45aa3c4374192d4fc" data-rendered-digest="sha256:03a00a5b454b4c3e4478b7386592a6b8259f934e95dc9dd1479ea57f4b3a5fce" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/d71e2310-2331-5e66-b7df-c2807fccb329/d71e2310-2331-5e66-b7df-c2807fccb329.png" alt="Das bestehende Pflanzenbild zeigt oben Zelle, Blattgewebe, Blattorgan und ganze Pflanze als Organisationsstufen; die unteren vier Lebenskennzeichen sind ergänzender Bildkontext.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d71e2310-2331-5e66-b7df-c2807fccb329-description-heading">
+        <p class="section-heading" id="goal-d71e2310-2331-5e66-b7df-c2807fccb329-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Zelle, Gewebe, Organ und Organismus an einem vielzelligen Lebewesen in ihrer Beziehung erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-d71e2310-2331-5e66-b7df-c2807fccb329" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d71e2310-2331-5e66-b7df-c2807fccb329-requires-heading">
+          <p class="section-heading" id="goal-d71e2310-2331-5e66-b7df-c2807fccb329-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-d71e2310-2331-5e66-b7df-c2807fccb329-reverse-heading">
+          <p class="section-heading" id="goal-d71e2310-2331-5e66-b7df-c2807fccb329-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-d71e2310-2331-5e66-b7df-c2807fccb329-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d71e2310-2331-5e66-b7df-c2807fccb329-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-8d35381e-d646-512c-b0c2-bb90c4974208" rel="noreferrer noopener"><span>Biologie als Wissenschaft vom Leben beschreiben</span> <code>8d35381e-d646-512c-b0c2-bb90c4974208</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-e0d04e58-1591-5230-bfa6-5c685b56d25b" rel="noreferrer noopener"><span>Bau der Pflanzenzelle beschreiben</span> <code>e0d04e58-1591-5230-bfa6-5c685b56d25b</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-d71e2310-2331-5e66-b7df-c2807fccb329-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d71e2310-2331-5e66-b7df-c2807fccb329-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-bbbc9609-ee7e-5849-956e-047b7a753ce9" rel="noreferrer noopener"><span>Blattgewebe und Ursprung der Zellorganellen</span> <code>bbbc9609-ee7e-5849-956e-047b7a753ce9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 13</span>
+      <span>Buch-Digest <code>sha256:8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9d8439205080c0b008c0a8d10279dcb1c93ec1014fd93b6790fb530f825ad362</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-m7-ephase-layer-a-thirteen-current-20261001-v2&amp;edition=curricular-atomic-v1&amp;goalId=d71e2310-2331-5e66-b7df-c2807fccb329&amp;goalFingerprint=sha256%3A9d8439205080c0b008c0a8d10279dcb1c93ec1014fd93b6790fb530f825ad362&amp;pageFingerprint=sha256%3Aa00454a1701614b8fae71ff4a54a7aba1c2b8a9318d20c2196ceaa52294494b1&amp;bookDigest=sha256%3A8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e063b97d-9e03-5094-8c73-72a3eeec803d" data-goal-id="e063b97d-9e03-5094-8c73-72a3eeec803d" data-page-number="5" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-78370970-54ec-579e-ab99-d16cce22e27d structure:canonical-goal-765df889-5828-564a-ab47-c10312c956f4" aria-labelledby="goal-e063b97d-9e03-5094-8c73-72a3eeec803d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e063b97d-9e03-5094-8c73-72a3eeec803d-title"><a class="goal-self-link" href="#goal-e063b97d-9e03-5094-8c73-72a3eeec803d">Ein einfaches Biomembranmodell darstellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e063b97d-9e03-5094-8c73-72a3eeec803d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-420fa1c6964b92340b26e9f6">Einführungsphase Zellbiologie</a></li><li><a href="#chapter-52df5a1fffd5392c7c9b3915">Struktur und Funktion von Zellen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c33dd99e9d09623254ee3d9d0f2cc2233219fc20d4ac9317c54778e46b9f19ec" data-rendered-digest="sha256:ae55f48e53248c8d7d85779c7121237a6b688ca92a597735441486b8855c79c3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/e063b97d-9e03-5094-8c73-72a3eeec803d/e063b97d-9e03-5094-8c73-72a3eeec803d.png" alt="Alle drei Bildfelder zeigen die vereinfachte Lipiddoppelschicht als Grenze; Kanal und Pumpe sind Beispiele eingelagerter Proteine. Das Bild benennt die polaren und unpolaren Lipidseiten nicht ausdrücklich.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e063b97d-9e03-5094-8c73-72a3eeec803d-description-heading">
+        <p class="section-heading" id="goal-e063b97d-9e03-5094-8c73-72a3eeec803d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann eine Biomembran als Lipiddoppelschicht mit eingelagerten Transportproteinen und selektiver Durchlässigkeit schematisch darstellen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-e063b97d-9e03-5094-8c73-72a3eeec803d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e063b97d-9e03-5094-8c73-72a3eeec803d-requires-heading">
+          <p class="section-heading" id="goal-e063b97d-9e03-5094-8c73-72a3eeec803d-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-e063b97d-9e03-5094-8c73-72a3eeec803d-reverse-heading">
+          <p class="section-heading" id="goal-e063b97d-9e03-5094-8c73-72a3eeec803d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e063b97d-9e03-5094-8c73-72a3eeec803d-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e063b97d-9e03-5094-8c73-72a3eeec803d-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-fc8c4b02-02f2-5ad6-b481-224d36121da1" rel="noreferrer noopener"><span>Zellorganellen zuordnen</span> <code>fc8c4b02-02f2-5ad6-b481-224d36121da1</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e063b97d-9e03-5094-8c73-72a3eeec803d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e063b97d-9e03-5094-8c73-72a3eeec803d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1b566274-a107-5ade-aee7-602e7413f562" rel="noreferrer noopener"><span>Kartoffelzellen unter Salzstress und Katalase</span> <code>1b566274-a107-5ade-aee7-602e7413f562</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 13</span>
+      <span>Buch-Digest <code>sha256:8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490</code></span>
+      <span>Ziel-Fingerprint <code>sha256:798f5b72f1a6f2ffe91889cdac5e5d35ecc9d5808f9808d57136397a740655dd</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-m7-ephase-layer-a-thirteen-current-20261001-v2&amp;edition=curricular-atomic-v1&amp;goalId=e063b97d-9e03-5094-8c73-72a3eeec803d&amp;goalFingerprint=sha256%3A798f5b72f1a6f2ffe91889cdac5e5d35ecc9d5808f9808d57136397a740655dd&amp;pageFingerprint=sha256%3A55adc3ffb96b6059c684a55250c1476db2b5106d83d2477a9eabf11ca4189149&amp;bookDigest=sha256%3A8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e1484671-208b-5ad1-a71d-7d994fb2174b" data-goal-id="e1484671-208b-5ad1-a71d-7d994fb2174b" data-page-number="6" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-78370970-54ec-579e-ab99-d16cce22e27d structure:canonical-goal-7d2d7ce7-57da-5f50-81f4-9fa53ae839f8" aria-labelledby="goal-e1484671-208b-5ad1-a71d-7d994fb2174b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e1484671-208b-5ad1-a71d-7d994fb2174b-title"><a class="goal-self-link" href="#goal-e1484671-208b-5ad1-a71d-7d994fb2174b">Zellzyklusabschnitte erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e1484671-208b-5ad1-a71d-7d994fb2174b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-420fa1c6964b92340b26e9f6">Einführungsphase Zellbiologie</a></li><li><a href="#chapter-4a79ddb1cdecc9aff5a6436a">Humanbiologische Aspekte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6492554c19defb8dbd153c47636eb491b22e1c10a032c9d69ff50d2b8c16c573" data-rendered-digest="sha256:f53bae3dedbad88baab0aa94594e7652429dd0f88fe8fd32935c75ca6278eaa9" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/e1484671-208b-5ad1-a71d-7d994fb2174b/e1484671-208b-5ad1-a71d-7d994fb2174b.png" alt="Vier farbige Comicfelder zeigen G1, S mit der Aufschrift „DNA wird verdoppelt“, G2 und M als Zelle bei der Teilung in zwei Tochterzellen mit gleich dargestellten Kernen. Die Zeichnung zeigt keine quantitativen DNA-Mengen und keine einzelnen Chromosomen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e1484671-208b-5ad1-a71d-7d994fb2174b-description-heading">
+        <p class="section-heading" id="goal-e1484671-208b-5ad1-a71d-7d994fb2174b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann G1-, S-, G2- und M-Phase einer eukaryotischen Zelle einordnen und die DNA-Verdopplung vor der Zellteilung erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-e1484671-208b-5ad1-a71d-7d994fb2174b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e1484671-208b-5ad1-a71d-7d994fb2174b-requires-heading">
+          <p class="section-heading" id="goal-e1484671-208b-5ad1-a71d-7d994fb2174b-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-e1484671-208b-5ad1-a71d-7d994fb2174b-reverse-heading">
+          <p class="section-heading" id="goal-e1484671-208b-5ad1-a71d-7d994fb2174b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e1484671-208b-5ad1-a71d-7d994fb2174b-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e1484671-208b-5ad1-a71d-7d994fb2174b-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e1484671-208b-5ad1-a71d-7d994fb2174b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e1484671-208b-5ad1-a71d-7d994fb2174b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-a3b69e34-57f2-577c-b320-1b547b9df9d2" rel="noreferrer noopener"><span>Keimende Bohnen zwischen Atmung und Temperatur</span> <code>a3b69e34-57f2-577c-b320-1b547b9df9d2</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 13</span>
+      <span>Buch-Digest <code>sha256:8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a8802d05344ce93e47c23fbf919ec2000397866f18fe9792de7bd1a115cabc6c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-m7-ephase-layer-a-thirteen-current-20261001-v2&amp;edition=curricular-atomic-v1&amp;goalId=e1484671-208b-5ad1-a71d-7d994fb2174b&amp;goalFingerprint=sha256%3Aa8802d05344ce93e47c23fbf919ec2000397866f18fe9792de7bd1a115cabc6c&amp;pageFingerprint=sha256%3Addcf4bc1ce5fa459309d0f53ee175bfe1eaafd30f44a8203fbcc7bc8b3b917b5&amp;bookDigest=sha256%3A8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e76315b1-2fed-525c-8efa-ca09da46f632" data-goal-id="e76315b1-2fed-525c-8efa-ca09da46f632" data-page-number="7" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-78370970-54ec-579e-ab99-d16cce22e27d structure:canonical-goal-765df889-5828-564a-ab47-c10312c956f4" aria-labelledby="goal-e76315b1-2fed-525c-8efa-ca09da46f632-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e76315b1-2fed-525c-8efa-ca09da46f632-title"><a class="goal-self-link" href="#goal-e76315b1-2fed-525c-8efa-ca09da46f632">Diffusion und Osmose erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e76315b1-2fed-525c-8efa-ca09da46f632</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-420fa1c6964b92340b26e9f6">Einführungsphase Zellbiologie</a></li><li><a href="#chapter-52df5a1fffd5392c7c9b3915">Struktur und Funktion von Zellen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c33dd99e9d09623254ee3d9d0f2cc2233219fc20d4ac9317c54778e46b9f19ec" data-rendered-digest="sha256:ae55f48e53248c8d7d85779c7121237a6b688ca92a597735441486b8855c79c3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/e76315b1-2fed-525c-8efa-ca09da46f632/e76315b1-2fed-525c-8efa-ca09da46f632.png" alt="Die oberen zwei Bildfelder zeigen Teilchenbewegung entlang eines Gefälles und Wasserbewegung durch einen Kanal zur Seite mit höherer Konzentration gelöster Stoffe; das untere ATP-Feld ist ergänzender Kontrast.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e76315b1-2fed-525c-8efa-ca09da46f632-description-heading">
+        <p class="section-heading" id="goal-e76315b1-2fed-525c-8efa-ca09da46f632-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei veränderten Konzentrationsbedingungen die Richtung von Diffusion und osmotischer Wasserbewegung an einer geeigneten Membran erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-e76315b1-2fed-525c-8efa-ca09da46f632" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e76315b1-2fed-525c-8efa-ca09da46f632-requires-heading">
+          <p class="section-heading" id="goal-e76315b1-2fed-525c-8efa-ca09da46f632-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-e76315b1-2fed-525c-8efa-ca09da46f632-reverse-heading">
+          <p class="section-heading" id="goal-e76315b1-2fed-525c-8efa-ca09da46f632-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e76315b1-2fed-525c-8efa-ca09da46f632-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e76315b1-2fed-525c-8efa-ca09da46f632-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e76315b1-2fed-525c-8efa-ca09da46f632-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e76315b1-2fed-525c-8efa-ca09da46f632-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1b566274-a107-5ade-aee7-602e7413f562" rel="noreferrer noopener"><span>Kartoffelzellen unter Salzstress und Katalase</span> <code>1b566274-a107-5ade-aee7-602e7413f562</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 13</span>
+      <span>Buch-Digest <code>sha256:8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b6e12712b161021fc5121eb17679a808a1acf145f13a138559ecee307df4ea13</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-m7-ephase-layer-a-thirteen-current-20261001-v2&amp;edition=curricular-atomic-v1&amp;goalId=e76315b1-2fed-525c-8efa-ca09da46f632&amp;goalFingerprint=sha256%3Ab6e12712b161021fc5121eb17679a808a1acf145f13a138559ecee307df4ea13&amp;pageFingerprint=sha256%3Af07172b6839902473e64b706854e502b5d354665501c20c239ba5e7ecbd8c869&amp;bookDigest=sha256%3A8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ec88fc1d-ee0f-5a01-9464-dc358241050e" data-goal-id="ec88fc1d-ee0f-5a01-9464-dc358241050e" data-page-number="8" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-78370970-54ec-579e-ab99-d16cce22e27d structure:canonical-goal-7d2d7ce7-57da-5f50-81f4-9fa53ae839f8" aria-labelledby="goal-ec88fc1d-ee0f-5a01-9464-dc358241050e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ec88fc1d-ee0f-5a01-9464-dc358241050e-title"><a class="goal-self-link" href="#goal-ec88fc1d-ee0f-5a01-9464-dc358241050e">Mitose und Meiose vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ec88fc1d-ee0f-5a01-9464-dc358241050e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-420fa1c6964b92340b26e9f6">Einführungsphase Zellbiologie</a></li><li><a href="#chapter-4a79ddb1cdecc9aff5a6436a">Humanbiologische Aspekte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:203de5d2d8275ea46197ab05461741c5aa9fc18cb9bd87254c1fa5eaa1c1b633" data-rendered-digest="sha256:28c2da4fc48484bb5d1e2b4081cd5df137ae7287bb110d063a4b19687313f4f7" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/ec88fc1d-ee0f-5a01-9464-dc358241050e/ec88fc1d-ee0f-5a01-9464-dc358241050e.png" alt="Oben entstehen aus einer Zelle durch Mitose zwei Tochterzellen mit rotem und blauem Einzelchromatid. Unten entstehen nach zwei meiotischen Teilungen vier Zellen mit je einem roten oder blauen Einzelchromatid.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ec88fc1d-ee0f-5a01-9464-dc358241050e-description-heading">
+        <p class="section-heading" id="goal-ec88fc1d-ee0f-5a01-9464-dc358241050e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Mitose und Meiose anhand von Teilungszahl, Tochterzellzahl und Chromosomensatz vergleichen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ec88fc1d-ee0f-5a01-9464-dc358241050e" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ec88fc1d-ee0f-5a01-9464-dc358241050e-requires-heading">
+          <p class="section-heading" id="goal-ec88fc1d-ee0f-5a01-9464-dc358241050e-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-ec88fc1d-ee0f-5a01-9464-dc358241050e-reverse-heading">
+          <p class="section-heading" id="goal-ec88fc1d-ee0f-5a01-9464-dc358241050e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-ec88fc1d-ee0f-5a01-9464-dc358241050e-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ec88fc1d-ee0f-5a01-9464-dc358241050e-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-ec88fc1d-ee0f-5a01-9464-dc358241050e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ec88fc1d-ee0f-5a01-9464-dc358241050e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-a3b69e34-57f2-577c-b320-1b547b9df9d2" rel="noreferrer noopener"><span>Keimende Bohnen zwischen Atmung und Temperatur</span> <code>a3b69e34-57f2-577c-b320-1b547b9df9d2</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 13</span>
+      <span>Buch-Digest <code>sha256:8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c89d34b8acfeb732498ddc89add27c494864e88f5fb2abcc3b1986c94027501d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-m7-ephase-layer-a-thirteen-current-20261001-v2&amp;edition=curricular-atomic-v1&amp;goalId=ec88fc1d-ee0f-5a01-9464-dc358241050e&amp;goalFingerprint=sha256%3Ac89d34b8acfeb732498ddc89add27c494864e88f5fb2abcc3b1986c94027501d&amp;pageFingerprint=sha256%3Aaf647d43a494793b6077d8ef0ad22c1fc08e0dd050ff6beb23c7679058f4b313&amp;bookDigest=sha256%3A8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0dd8380d-b542-5126-8d8e-f95d9ccded90" data-goal-id="0dd8380d-b542-5126-8d8e-f95d9ccded90" data-page-number="9" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-78370970-54ec-579e-ab99-d16cce22e27d structure:canonical-goal-7d2d7ce7-57da-5f50-81f4-9fa53ae839f8" aria-labelledby="goal-0dd8380d-b542-5126-8d8e-f95d9ccded90-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0dd8380d-b542-5126-8d8e-f95d9ccded90-title"><a class="goal-self-link" href="#goal-0dd8380d-b542-5126-8d8e-f95d9ccded90">Freie Trisomie 21 als Genommutation erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0dd8380d-b542-5126-8d8e-f95d9ccded90</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-420fa1c6964b92340b26e9f6">Einführungsphase Zellbiologie</a></li><li><a href="#chapter-4a79ddb1cdecc9aff5a6436a">Humanbiologische Aspekte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:be3ca040c15dea30ffd6bf15bde444cdc603b7ffe36d11d8db0276da1fde8c3b" data-rendered-digest="sha256:17d14b21457d1f267a09d86cffe1a2182af263352cb9e7ae7e6ce0a84cdc1cdc" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/0dd8380d-b542-5126-8d8e-f95d9ccded90/0dd8380d-b542-5126-8d8e-f95d9ccded90.png" alt="Vereinfachtes Modell nur für Chromosom 21: Links enthält eine Keimzelle zwei einzelne Chromosomen 21; eine solche Keimzelle kann durch eine Fehlverteilung entstehen. Rechts trägt eine zweite Keimzelle ein Chromosom 21. Pfeile führen zur Zelle mit drei getrennten Chromosomen 21. Weitere Chromosomen und die Meioseschritte sind nicht dargestellt; die Farben dienen nur der Unterscheidung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0dd8380d-b542-5126-8d8e-f95d9ccded90-description-heading">
+        <p class="section-heading" id="goal-0dd8380d-b542-5126-8d8e-f95d9ccded90-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann am Beispiel einer freien Trisomie 21 erklären, wie eine Fehlverteilung von Chromosomen zu einer Genommutation mit einem zusätzlichen Chromosom 21 führen kann.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. I · G9; Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0dd8380d-b542-5126-8d8e-f95d9ccded90" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0dd8380d-b542-5126-8d8e-f95d9ccded90-requires-heading">
+          <p class="section-heading" id="goal-0dd8380d-b542-5126-8d8e-f95d9ccded90-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-0dd8380d-b542-5126-8d8e-f95d9ccded90-reverse-heading">
+          <p class="section-heading" id="goal-0dd8380d-b542-5126-8d8e-f95d9ccded90-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0dd8380d-b542-5126-8d8e-f95d9ccded90-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0dd8380d-b542-5126-8d8e-f95d9ccded90-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-0dd8380d-b542-5126-8d8e-f95d9ccded90-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0dd8380d-b542-5126-8d8e-f95d9ccded90-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-f0564118-a46e-52a1-9f0a-2d7906f35691" rel="noreferrer noopener"><span>Chromosomen und frühe Entwicklung im Fallmaterial</span> <code>f0564118-a46e-52a1-9f0a-2d7906f35691</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 13</span>
+      <span>Buch-Digest <code>sha256:8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f658d04d24e864b314e14bec7e107233f802386b36499f739e1477cd4597e176</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-m7-ephase-layer-a-thirteen-current-20261001-v2&amp;edition=curricular-atomic-v1&amp;goalId=0dd8380d-b542-5126-8d8e-f95d9ccded90&amp;goalFingerprint=sha256%3Af658d04d24e864b314e14bec7e107233f802386b36499f739e1477cd4597e176&amp;pageFingerprint=sha256%3Ae5cba05fcc0ac379e1ee1a762eb3f1c294e63c1432de84cd099bd63bd38849cb&amp;bookDigest=sha256%3A8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2517be3f-e42f-5e41-889d-70f00dc24686" data-goal-id="2517be3f-e42f-5e41-889d-70f00dc24686" data-page-number="10" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-78370970-54ec-579e-ab99-d16cce22e27d structure:canonical-goal-7d2d7ce7-57da-5f50-81f4-9fa53ae839f8" aria-labelledby="goal-2517be3f-e42f-5e41-889d-70f00dc24686-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2517be3f-e42f-5e41-889d-70f00dc24686-title"><a class="goal-self-link" href="#goal-2517be3f-e42f-5e41-889d-70f00dc24686">Frühe Embryonalentwicklung skizzieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2517be3f-e42f-5e41-889d-70f00dc24686</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-420fa1c6964b92340b26e9f6">Einführungsphase Zellbiologie</a></li><li><a href="#chapter-4a79ddb1cdecc9aff5a6436a">Humanbiologische Aspekte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8e5b7bef04f6c9a7870f95a5cf60bd16049042d5c92c75f81c390d5e964cd620" data-rendered-digest="sha256:abf32ed2cc203d59a983f4cff6542dfeafbb0e817e8ea41f9affec84f910f2ba" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/2517be3f-e42f-5e41-889d-70f00dc24686/2517be3f-e42f-5e41-889d-70f00dc24686.png" alt="Vier vereinfachte Stufen von links nach rechts: Ein Spermium erreicht die Eizelle; die befruchtete Zelle zeigt zwei Vorkerne; frühe Teilungen führen zu vier Zellen; zuletzt ist eine Blastocyste mit Hohlraum und seitlicher innerer Zellmasse dargestellt. Zwischenstadien sind ausgelassen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2517be3f-e42f-5e41-889d-70f00dc24686-description-heading">
+        <p class="section-heading" id="goal-2517be3f-e42f-5e41-889d-70f00dc24686-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Entwicklung von der Befruchtung über die ersten Zellteilungen bis zur Blastocyste in Grundzügen skizzieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2517be3f-e42f-5e41-889d-70f00dc24686" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2517be3f-e42f-5e41-889d-70f00dc24686-requires-heading">
+          <p class="section-heading" id="goal-2517be3f-e42f-5e41-889d-70f00dc24686-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2517be3f-e42f-5e41-889d-70f00dc24686-reverse-heading">
+          <p class="section-heading" id="goal-2517be3f-e42f-5e41-889d-70f00dc24686-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c5435624-7b6a-5330-b8cc-0d3186e19911"><span>Embryonale Schädigungen anhand von Befunden beurteilen</span><code>c5435624-7b6a-5330-b8cc-0d3186e19911</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2517be3f-e42f-5e41-889d-70f00dc24686-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2517be3f-e42f-5e41-889d-70f00dc24686-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2517be3f-e42f-5e41-889d-70f00dc24686-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2517be3f-e42f-5e41-889d-70f00dc24686-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-f0564118-a46e-52a1-9f0a-2d7906f35691" rel="noreferrer noopener"><span>Chromosomen und frühe Entwicklung im Fallmaterial</span> <code>f0564118-a46e-52a1-9f0a-2d7906f35691</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 13</span>
+      <span>Buch-Digest <code>sha256:8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2822a4060c28ed90d2b100764538de9cbc7ade6173a145fba13029ed54d29d13</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-m7-ephase-layer-a-thirteen-current-20261001-v2&amp;edition=curricular-atomic-v1&amp;goalId=2517be3f-e42f-5e41-889d-70f00dc24686&amp;goalFingerprint=sha256%3A2822a4060c28ed90d2b100764538de9cbc7ade6173a145fba13029ed54d29d13&amp;pageFingerprint=sha256%3Ac5fdfc8971b76343812df63484c7267b5b788e9fc1bec15700b271ba26e15be1&amp;bookDigest=sha256%3A8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-37147890-84e4-5ba7-80e1-92fbf2070d7c" data-goal-id="37147890-84e4-5ba7-80e1-92fbf2070d7c" data-page-number="11" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-78370970-54ec-579e-ab99-d16cce22e27d structure:canonical-goal-7d2d7ce7-57da-5f50-81f4-9fa53ae839f8" aria-labelledby="goal-37147890-84e4-5ba7-80e1-92fbf2070d7c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-37147890-84e4-5ba7-80e1-92fbf2070d7c-title"><a class="goal-self-link" href="#goal-37147890-84e4-5ba7-80e1-92fbf2070d7c">Aussagegrenzen eines Karyogramms einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>37147890-84e4-5ba7-80e1-92fbf2070d7c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-420fa1c6964b92340b26e9f6">Einführungsphase Zellbiologie</a></li><li><a href="#chapter-4a79ddb1cdecc9aff5a6436a">Humanbiologische Aspekte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:467bb2397a4efffa2cfbf015db54f6168f30fd6e750955cabfc32deb2c68e802" data-rendered-digest="sha256:face9ffd1e6ddbedbd9c1248882c4eb64ac4986d25350bd52f95037fefd45fd3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/37147890-84e4-5ba7-80e1-92fbf2070d7c/37147890-84e4-5ba7-80e1-92fbf2070d7c.png" alt="Drei getrennte Informationsquellen: links ein schematisch verkürzter Karyogrammbogen mit Lupe, in der Mitte ein leerer klinischer Befundbogen mit Stethoskop und rechts eine leere Sprechblase für die Selbstauskunft. Ein Fragezeichen zwischen den Karten erinnert daran, dass das Karyogramm weder körperliche Befunde noch Geschlechtsidentität einer Person allein belegt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-37147890-84e4-5ba7-80e1-92fbf2070d7c-description-heading">
+        <p class="section-heading" id="goal-37147890-84e4-5ba7-80e1-92fbf2070d7c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in einem vorgegebenen Fall Kerngeschlecht, somatisches und psychisches Geschlecht anhand der jeweils passenden Informationen unterscheiden und erklären, welche Aussagen das Karyogramm dazu erlaubt und welche nicht.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-37147890-84e4-5ba7-80e1-92fbf2070d7c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-37147890-84e4-5ba7-80e1-92fbf2070d7c-requires-heading">
+          <p class="section-heading" id="goal-37147890-84e4-5ba7-80e1-92fbf2070d7c-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-37147890-84e4-5ba7-80e1-92fbf2070d7c-reverse-heading">
+          <p class="section-heading" id="goal-37147890-84e4-5ba7-80e1-92fbf2070d7c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-37147890-84e4-5ba7-80e1-92fbf2070d7c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-37147890-84e4-5ba7-80e1-92fbf2070d7c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-37147890-84e4-5ba7-80e1-92fbf2070d7c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-37147890-84e4-5ba7-80e1-92fbf2070d7c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-f0564118-a46e-52a1-9f0a-2d7906f35691" rel="noreferrer noopener"><span>Chromosomen und frühe Entwicklung im Fallmaterial</span> <code>f0564118-a46e-52a1-9f0a-2d7906f35691</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 13</span>
+      <span>Buch-Digest <code>sha256:8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490</code></span>
+      <span>Ziel-Fingerprint <code>sha256:db7341637daa4e7bcf98275df21d0a6363c107f5f34ea7499289e9808683fdf5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-m7-ephase-layer-a-thirteen-current-20261001-v2&amp;edition=curricular-atomic-v1&amp;goalId=37147890-84e4-5ba7-80e1-92fbf2070d7c&amp;goalFingerprint=sha256%3Adb7341637daa4e7bcf98275df21d0a6363c107f5f34ea7499289e9808683fdf5&amp;pageFingerprint=sha256%3A7d0de6861a4dfb7d6f0b86f2e4db62243cebc624b5a0c3f0eaeea4c65c5cdc6d&amp;bookDigest=sha256%3A8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c5435624-7b6a-5330-b8cc-0d3186e19911" data-goal-id="c5435624-7b6a-5330-b8cc-0d3186e19911" data-page-number="12" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-78370970-54ec-579e-ab99-d16cce22e27d structure:canonical-goal-7d2d7ce7-57da-5f50-81f4-9fa53ae839f8" aria-labelledby="goal-c5435624-7b6a-5330-b8cc-0d3186e19911-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c5435624-7b6a-5330-b8cc-0d3186e19911-title"><a class="goal-self-link" href="#goal-c5435624-7b6a-5330-b8cc-0d3186e19911">Embryonale Schädigungen anhand von Befunden beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c5435624-7b6a-5330-b8cc-0d3186e19911</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-420fa1c6964b92340b26e9f6">Einführungsphase Zellbiologie</a></li><li><a href="#chapter-4a79ddb1cdecc9aff5a6436a">Humanbiologische Aspekte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:14c1c1be8d5dbe49bf892c0e3c8c1f1ee6a40f03b170ec5272f13d0776dc05a8" data-rendered-digest="sha256:940e9e25295de404e0f28a49dee1e721a0e06bcf9ecb69dc0eac7c2bd0a61f65" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/c5435624-7b6a-5330-b8cc-0d3186e19911/c5435624-7b6a-5330-b8cc-0d3186e19911.png" alt="Ein symbolischer Tropfen zeigt einen möglichen Einfluss auf eine frühe Zellgruppe; der gepunktete Pfeil bezeichnet nur eine zu prüfende Vermutung. Zwei Karten mit schematischen Zellzeichen werden unter einer Lupe betrachtet, darüber steht ein Fragezeichen. Die Zeichen sind keine Messwerte und erlauben allein keine Aussage über eine individuelle Schädigung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c5435624-7b6a-5330-b8cc-0d3186e19911-description-heading">
+        <p class="section-heading" id="goal-c5435624-7b6a-5330-b8cc-0d3186e19911-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an einem konkreten Beispiel die möglichen Folgen eines teratogenen Einflusses auf die embryonale Entwicklung anhand vorliegender Befunde beurteilen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-c5435624-7b6a-5330-b8cc-0d3186e19911" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c5435624-7b6a-5330-b8cc-0d3186e19911-requires-heading">
+          <p class="section-heading" id="goal-c5435624-7b6a-5330-b8cc-0d3186e19911-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2517be3f-e42f-5e41-889d-70f00dc24686"><span>Frühe Embryonalentwicklung skizzieren</span><code>2517be3f-e42f-5e41-889d-70f00dc24686</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c5435624-7b6a-5330-b8cc-0d3186e19911-reverse-heading">
+          <p class="section-heading" id="goal-c5435624-7b6a-5330-b8cc-0d3186e19911-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-c5435624-7b6a-5330-b8cc-0d3186e19911-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c5435624-7b6a-5330-b8cc-0d3186e19911-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-c5435624-7b6a-5330-b8cc-0d3186e19911-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c5435624-7b6a-5330-b8cc-0d3186e19911-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-f0564118-a46e-52a1-9f0a-2d7906f35691" rel="noreferrer noopener"><span>Chromosomen und frühe Entwicklung im Fallmaterial</span> <code>f0564118-a46e-52a1-9f0a-2d7906f35691</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 13</span>
+      <span>Buch-Digest <code>sha256:8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3c63560ddd83909202c74c227d175aa710b3a03959aba31c0686a659e35b9cfa</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-m7-ephase-layer-a-thirteen-current-20261001-v2&amp;edition=curricular-atomic-v1&amp;goalId=c5435624-7b6a-5330-b8cc-0d3186e19911&amp;goalFingerprint=sha256%3A3c63560ddd83909202c74c227d175aa710b3a03959aba31c0686a659e35b9cfa&amp;pageFingerprint=sha256%3A44b084911769d0238c64a287036854acda686b5f1c8a9e0c2e82f15615ff1e4f&amp;bookDigest=sha256%3A8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-62e52002-b8df-533e-9972-028f3ee60cd1" data-goal-id="62e52002-b8df-533e-9972-028f3ee60cd1" data-page-number="13" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-b4176012-f93a-5dd2-84b3-edd6a9932367" aria-labelledby="goal-62e52002-b8df-533e-9972-028f3ee60cd1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-62e52002-b8df-533e-9972-028f3ee60cd1-title"><a class="goal-self-link" href="#goal-62e52002-b8df-533e-9972-028f3ee60cd1">Geschlechtschromosomen bei der Geschlechtsbestimmung erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>62e52002-b8df-533e-9972-028f3ee60cd1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-4977846395f7dee76f9bcb1d">Genetik, Vererbung und Gentechnik (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:19b4c5d4ae39ae616d7eb1c8b4921c6039ed7d9b1d6ba5ee5bf72b8737fa4fa2" data-rendered-digest="sha256:25ec831c6839c9a61339345e92715f133005dc35770f7827d28b82aa18c5644e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/62e52002-b8df-533e-9972-028f3ee60cd1/62e52002-b8df-533e-9972-028f3ee60cd1.png" alt="Zwei vereinfachte Alternativen: Eine Eizelle mit einem X-Typen-Badge verbindet sich oben mit einer X-tragenden Samenzelle zu einer Zelle mit den Badges XX und unten mit einer Y-tragenden Samenzelle zu einer Zelle mit XY. Die Badges benennen nur Geschlechtschromosomentypen; alle übrigen Chromosomen sind ausgeblendet. Körpermerkmale und Geschlechtsidentität sind nicht dargestellt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-62e52002-b8df-533e-9972-028f3ee60cd1-description-heading">
+        <p class="section-heading" id="goal-62e52002-b8df-533e-9972-028f3ee60cd1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an einer vereinfachten Chromosomenkonstellation erklären, wie Geschlechtschromosomen an der chromosomalen Geschlechtsbestimmung beim Menschen beteiligt sind.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-62e52002-b8df-533e-9972-028f3ee60cd1" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-62e52002-b8df-533e-9972-028f3ee60cd1-requires-heading">
+          <p class="section-heading" id="goal-62e52002-b8df-533e-9972-028f3ee60cd1-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-62e52002-b8df-533e-9972-028f3ee60cd1-reverse-heading">
+          <p class="section-heading" id="goal-62e52002-b8df-533e-9972-028f3ee60cd1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 13</span>
+      <span>Buch-Digest <code>sha256:8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d1bdf44c12b42414cb1849cb8b8cea0391b9121ccda5284e40d10ae780ef4707</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-biologie-m7-ephase-layer-a-thirteen-current-20261001-v2&amp;edition=curricular-atomic-v1&amp;goalId=62e52002-b8df-533e-9972-028f3ee60cd1&amp;goalFingerprint=sha256%3Ad1bdf44c12b42414cb1849cb8b8cea0391b9121ccda5284e40d10ae780ef4707&amp;pageFingerprint=sha256%3A3b53a6876c03b73a5b68b488378856d6e6ed91f7825d8b491be76305bac5cd89&amp;bookDigest=sha256%3A8cfc35bc07bd880b42c47a4638c7d341c18d766c4a27d8d06a1d9bf41c38e490&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

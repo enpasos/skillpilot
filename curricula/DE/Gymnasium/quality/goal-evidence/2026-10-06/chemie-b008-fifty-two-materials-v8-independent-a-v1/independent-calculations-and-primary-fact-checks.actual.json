@@ -1,0 +1,708 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent A",
+  "reviewedAtUTC": "2026-10-06T06:06:16.522294+00:00",
+  "calculationMethod": "fresh reviewer Python arithmetic/regression from actual supplied numbers;authorcalculation/outputnotusedasproofof correctness;noauthorgenerator executed",
+  "calculations": [
+    {
+      "caseIndices": [
+        2
+      ],
+      "calculation": "weak-acid tenfold dilution within sqrt approximation",
+      "hydrogenIonFactor": 0.31622776601683794,
+      "pHRise": 0.5,
+      "dissociatedFractionFactor": 3.1622776601683795,
+      "strongAcidTransferPHRise": 1.0,
+      "result": "correct with stated limits"
+    },
+    {
+      "caseIndices": [
+        3
+      ],
+      "calculation": "mass-action addition/removal signs",
+      "additionA": "denominator increases,Q<K,forward net reaction",
+      "removalC": "numerator decreases,Q<K,forward net reaction",
+      "catalyst": "unchangedK at fixed temperature",
+      "result": "correct"
+    },
+    {
+      "caseIndices": [
+        6
+      ],
+      "calculation": "grams per100mL solution to g/L",
+      "NaClMasses_g": [
+        0,
+        0.5,
+        1,
+        1.5
+      ],
+      "concentrations_g_L": [
+        0,
+        5,
+        10,
+        15
+      ],
+      "result": "own real values still required; not the c-scale of case13"
+    },
+    {
+      "caseIndices": [
+        7
+      ],
+      "calculation": "example saturation bracket",
+      "NaCl_g_per10gWater": [
+        3.5,
+        3.8
+      ],
+      "equivalent_g_per100gWater": [
+        35,
+        38
+      ],
+      "result": "plausible ambient bracket, not an observed learner solubility or exact saturation value"
+    },
+    {
+      "caseIndices": [
+        8
+      ],
+      "calculation": "1:1 titration concentration=cbaseVbase/Valiquot",
+      "cA_mol_L": 0.008,
+      "cB_mol_L": 0.016,
+      "ratio": 2.0,
+      "commonBaseError": "both absolute results scale identically;ratio cancels ifsamebase",
+      "result": "correct"
+    },
+    {
+      "caseIndices": [
+        9,
+        11,
+        14
+      ],
+      "calculation": "linear calibration and dilution",
+      "slope_L_mg": 0.07999999999999999,
+      "intercept": 0.010000000000000037,
+      "standardResiduals": [
+        -3.642919299551295e-17,
+        0.0,
+        5.551115123125783e-17,
+        0.0
+      ],
+      "meanU": 0.29,
+      "diluted_mg_L": 3.4999999999999996,
+      "originalFactor2_mg_L": 6.999999999999999,
+      "factor4Correction_mg_L": 13.999999999999998,
+      "scatterContributionDiluted_mg_L": 0.012500000000000002,
+      "result": "correct; calibration model is not actual kit calibration"
+    },
+    {
+      "caseIndices": [
+        9
+      ],
+      "calculation": "A.810 dilution transfer",
+      "undilutedExtrapolation_mg_L": 10.000000000000002,
+      "twofoldDiluted_mg_L": 5.0,
+      "twofoldDilutedModelAbsorbance": 0.4099999999999999,
+      "backCalculatedOriginal_mg_L": 10.0,
+      "result": "correct provided actual dilution and in-range actual calibration"
+    },
+    {
+      "caseIndices": [
+        14
+      ],
+      "calculation": "A.650 transfer",
+      "directExtrapolation_mg_L": 8.000000000000002,
+      "outsideCalibration": true,
+      "result": "must not accept the8mg/L extrapolation as valid"
+    },
+    {
+      "caseIndices": [
+        12
+      ],
+      "calculation": "replicate means seconds",
+      "means": [
+        92,
+        64,
+        49
+      ],
+      "transfer50Mean": 62.5,
+      "transfer50Spread": 35,
+      "result": "correct limited trend; variable50-degree repetition warns of procedural issue"
+    },
+    {
+      "caseIndices": [
+        13
+      ],
+      "calculation": "provided trend slope; chemistry unit check separately fails",
+      "linearFit": {
+        "slope_uS_cm_per_g_L": 194.6,
+        "intercept_uS_cm": 3.8000000000000114,
+        "residuals": [
+          -0.8000000000000114,
+          0.8999999999999915,
+          0.5999999999999943,
+          -0.6999999999999886
+        ]
+      },
+      "result": "relative trend computable; absolute namedNaCl scale fails A-V8-01"
+    },
+    {
+      "caseIndices": [
+        15
+      ],
+      "calculation": "ln(relative concentration) regression",
+      "logs": [
+        0.0,
+        -0.5000505505980322,
+        -0.9999441168714084,
+        -1.5001351775436502
+      ],
+      "slope_min_inverse": -0.05000299098904327,
+      "intercept": 1.2403582376308009e-05,
+      "k_min_inverse": 0.05000299098904327,
+      "halfTime_min": 13.86211438255421,
+      "residuals": [
+        -1.2403582376308009e-05,
+        -3.304428997574771e-05,
+        0.00010329932708075251,
+        -5.785145472847475e-05
+      ],
+      "changed20MinutePointFit": {
+        "slope": -0.04693502162592864,
+        "intercept": 0.03069209721352273,
+        "residuals": [
+          -0.03069209721352273,
+          -0.06139243155226848,
+          0.2148611547451048,
+          -0.12277662597931371
+        ]
+      },
+      "result": "reference values correct; transferred anomaly needs reliability checks"
+    },
+    {
+      "caseIndices": [
+        17,
+        43
+      ],
+      "calculation": "temperature matched difference and coefficients",
+      "unmatchedDifference_uS_cm": 50,
+      "matchedDifference_uS_cm": 2,
+      "matchedDifferenceWithinGivenRough3Scatter": true,
+      "A20to35RelativeIncrease": 0.2666666666666666,
+      "effectivePerDegreeRelativeCoefficient": 0.017777777777777774,
+      "result": "temperature dependence sign/magnitude plausible; absolute namedNaCl scale fails A-V8-01"
+    },
+    {
+      "caseIndices": [
+        22
+      ],
+      "calculation": "doubling counterexample",
+      "ratios": [
+        2.0,
+        2.0,
+        2.966666666666667
+      ],
+      "result": "reliable ratio2.9667 contradicts universal ratio2 under stated matched conditions"
+    },
+    {
+      "caseIndices": [
+        23
+      ],
+      "calculation": "equilibrium replicates uncertainty",
+      "Q": [
+        4.0,
+        4.1,
+        3.9
+      ],
+      "K": 4.0,
+      "eachWithinPoint2": true,
+      "result": "immediateQ7 is not the stated equilibrium comparison"
+    },
+    {
+      "caseIndices": [
+        25
+      ],
+      "calculation": "mass comparisons",
+      "glassToMetal": 5.0,
+      "glassToPolymer": 10.0,
+      "result": "5 and10 mass ratios only, not lifecycle impact"
+    },
+    {
+      "caseIndices": [
+        26,
+        29
+      ],
+      "calculation": "acid ionisation-solubility model",
+      "pH": [
+        3,
+        4,
+        5
+      ],
+      "pKa": 4,
+      "ratios": [
+        0.1,
+        1,
+        10
+      ],
+      "ionisedFractions": [
+        0.09090909090909091,
+        0.5,
+        0.9090909090909091
+      ],
+      "solubilities_mg_L": [
+        1.1,
+        2,
+        11
+      ],
+      "finalFactor": 10.0,
+      "relativeIncreasePercent": 900.0,
+      "result": "correct model; not efficacy"
+    },
+    {
+      "caseIndices": [
+        27,
+        49,
+        50
+      ],
+      "calculation": "accepted-product solvent/energy intensity",
+      "A": {
+        "fresh_kg_per_kg": 5.0,
+        "energy_kWh_per_kg": 2.5
+      },
+      "B": {
+        "fresh_kg_per_kg": 2.2222222222222223,
+        "energy_kWh_per_kg": 3.5,
+        "circulating_not_fresh_kg_per_kg": 5.555555555555555
+      },
+      "B20Transfer": {
+        "fresh_kg_per_kg": 2.0,
+        "energy_kWh_per_kg": 3.15
+      },
+      "result": "correct;2.22 explicitly rounded; units not addable"
+    },
+    {
+      "caseIndices": [
+        28
+      ],
+      "calculation": "absorbance signal reduction",
+      "percent": 75.00000000000001,
+      "result": "75% specified signal decrease, not100% all-pollutant removal"
+    },
+    {
+      "caseIndices": [
+        30
+      ],
+      "calculation": "tradeoffs and threshold",
+      "GminusFCost_euro": 15,
+      "GminusFEnergy_kWh": 20,
+      "GminusFRemovalPercentagePoints": 25,
+      "FMeets90PercentMinimum": false,
+      "changedG18EnergyMinusF": -2,
+      "result": "correct;residue hazard not determined bymass"
+    },
+    {
+      "caseIndices": [
+        31,
+        36
+      ],
+      "calculation": "allocated reusable material difference",
+      "M10minusE_kg": -20,
+      "M2minusE_kg": 60,
+      "extraCost_euro": 20,
+      "result": "correct;transport andwashing units cannot beadded withkg"
+    },
+    {
+      "caseIndices": [
+        40
+      ],
+      "calculation": "ammonia atom balance",
+      "reactantN": 2,
+      "productN": 2,
+      "reactantH": 6,
+      "productH": 6,
+      "BminusAIndicatorUnits": {
+        "resource": -3,
+        "cost": 1,
+        "loss": -2
+      },
+      "result": "balanced;indicator categories notaddable"
+    },
+    {
+      "caseIndices": [
+        44
+      ],
+      "calculation": "water formation atom conservation",
+      "HAtoms": 4,
+      "OAtoms": 2,
+      "H2OMolecules": 2,
+      "result": "correct reaction product; heattransfer has separate unresolvedsign/contextfinding"
+    },
+    {
+      "caseIndices": [
+        45
+      ],
+      "calculation": "supplied digital interaction rule",
+      "entries": [
+        [
+          "+",
+          "-",
+          "attraction"
+        ],
+        [
+          "-",
+          "+",
+          "attraction"
+        ],
+        [
+          "+",
+          "+",
+          "repulsion"
+        ],
+        [
+          "-",
+          "-",
+          "repulsion"
+        ],
+        [
+          "+",
+          "neutral",
+          "undetermined here"
+        ]
+      ],
+      "result": "internally correct boundedrule;notimplementedapp"
+    },
+    {
+      "caseIndices": [
+        46
+      ],
+      "calculation": "equilibrium table and temperature transfer",
+      "table": [
+        {
+          "x": 0,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "D": 1,
+          "Q": 0.5
+        },
+        {
+          "x": 0.1,
+          "A": 1.9,
+          "B": 0.9,
+          "C": 1.1,
+          "D": 1.1,
+          "Q": 0.7076023391812867
+        },
+        {
+          "x": 0.2,
+          "A": 1.8,
+          "B": 0.8,
+          "C": 1.2,
+          "D": 1.2,
+          "Q": 0.9999999999999999
+        }
+      ],
+      "physicalRootForK2": 0.3944487245360109,
+      "K2RootEquation": "x^2-8x+3=0; choose 0<x<1",
+      "QatK2Root": 2.0000000000000013,
+      "result": "correct K1 solution and feasible K2 transfer; physical x<1"
+    },
+    {
+      "caseIndices": [
+        46
+      ],
+      "calculation": "ionisation energy unitconversion check",
+      "publishedNa_eV": 5.139,
+      "publishedMg_eV": 7.646,
+      "eVto_kJ_per_mol": 96.48533212,
+      "Na_kJ_mol": 495.83812176468,
+      "Mg_kJ_mol": 737.72684938952,
+      "result": "496/738 roundedteachingvalues consistent;primarysearchexcerptonly,fulltable notread"
+    },
+    {
+      "caseIndices": [
+        47,
+        51
+      ],
+      "calculation": "receptoroccupancy",
+      "Kd_uM": 2,
+      "ligand_uM": [
+        0,
+        2,
+        6
+      ],
+      "occupancies": [
+        0.0,
+        0.5,
+        0.75
+      ],
+      "result": "0/.5/.75 correct simplefree-ligand bindingmodel,notclinicaleffect orenzyme kinetics"
+    },
+    {
+      "caseIndices": [
+        47
+      ],
+      "calculation": "ester hydrolysis symbolicatom balance",
+      "equation": "R-C(=O)-O-Rprime + H2O -> R-C(=O)-OH + Rprime-OH",
+      "oxygenCountsBothSides": 3,
+      "hydrogenWater_to_products": 2,
+      "enzymeStoichiometricallyConsumed": false,
+      "result": "correctneutralteachingform;actualpHcharges andsteps simplified"
+    },
+    {
+      "caseIndices": [
+        44
+      ],
+      "calculation": "primaryNISTnearambientNaClheat sign",
+      "sourceTable": "Pitzer,Peiper,Busey1984TableA-11,25°C,1bar",
+      "enthalpyOverRT": 1.566,
+      "R_J_mol_K": 8.314462618,
+      "T_K": 298.15,
+      "standardSolutionEnthalpy_kJ_mol": 3.882046708285792,
+      "result": "positive~3.88,heat uptake atnearambient standardlimit;not room-temperature NaCl heatrelease"
+    }
+  ],
+  "localPrimarySourceReads": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b008-nine-source-operator-structural-current-author-candidate-v3/primary-inputs/by8.actual-main.txt",
+      "sha256": "fe612cdda18cf5ca7efb5461c733b7926bc0e04185e2ab2ef6e9a859d19c206b",
+      "bytes": 28819,
+      "actuallyRead": true,
+      "readLineRanges": [
+        [
+          30,
+          52
+        ],
+        [
+          60,
+          75
+        ]
+      ],
+      "purpose": "guidedperformance,ownquestion,lower interpretation/model scope,givenarguments"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b008-nine-source-operator-structural-current-author-candidate-v3/primary-inputs/by9-ntg.actual-main.txt",
+      "sha256": "da1d35908ed26f1a4e254726e58c26a37e5365944e1506b1d86455ec337ab661",
+      "bytes": 27574,
+      "actuallyRead": true,
+      "readLineRanges": [
+        [
+          35,
+          50
+        ],
+        [
+          58,
+          80
+        ]
+      ],
+      "purpose": "ownplanning,quantitative,models,ownargumentfinding andcareer"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b008-nine-source-operator-structural-current-author-candidate-v3/primary-inputs/by10-ch.actual-main.txt",
+      "sha256": "d70317f520f004b7912781d8ad151cee45ff611bb1613f4ddd228d2eed0e3bb8",
+      "bytes": 29473,
+      "actuallyRead": true,
+      "readLineRanges": [
+        [
+          30,
+          52
+        ]
+      ],
+      "purpose": "ownexecution,quantitative,validity andhypothesis-guidedmodels"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b008-nine-source-operator-structural-current-author-candidate-v3/primary-inputs/by11.actual-main.txt",
+      "sha256": "71f0a0d1a96ec179ebb3eeaa3e94f790f5779b010dc018174fe4b89e3241a7f8",
+      "bytes": 22419,
+      "actuallyRead": true,
+      "readLineRanges": [
+        [
+          30,
+          55
+        ],
+        [
+          63,
+          88
+        ]
+      ],
+      "purpose": "analyses,theoryhypothesis,digitaldata,C11.1.6actualcomplexorganiccontexts,transform,sources,decision,influences"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b008-nine-source-operator-structural-current-author-candidate-v3/primary-inputs/by12-ga.actual-main.txt",
+      "sha256": "af063034aff131dae50254312ed27ef20b0cb9c955603e28bea47f92ee7e1432",
+      "bytes": 32151,
+      "actuallyRead": true,
+      "readLineRanges": [
+        [
+          73,
+          98
+        ],
+        [
+          109,
+          148
+        ],
+        [
+          162,
+          190
+        ]
+      ],
+      "purpose": "E1-12alternatives,ownreflection,fivevaliditycriteria,K5/6/7/9,K11at138-140,K13,decision,sustainability"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b008-nine-source-operator-structural-current-author-candidate-v3/primary-inputs/actual-primary-pdf-pages/ni-i-physical-page-054.txt",
+      "sha256": "b43f1cf0ec63fd3cdb3699a329787a26ff6dcc426e1487517af76ce19bf91e4b",
+      "bytes": 1079,
+      "actuallyRead": true,
+      "readLineRanges": null,
+      "purpose": "actual54quantitativeplanning,execution,protocol"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b008-nine-source-operator-structural-current-author-candidate-v3/primary-inputs/actual-primary-pdf-pages/ni-i-physical-page-060.txt",
+      "sha256": "ee04ae7753c8dfaa4f9a11a26865d60fce9492897beefe6212f819f4bd9e3b0b",
+      "bytes": 1568,
+      "actuallyRead": true,
+      "readLineRanges": null,
+      "purpose": "actual60qualitativeANDquantitativeexecution,protocol"
+    }
+  ],
+  "webPrimarySourceChecks": [
+    {
+      "url": "https://www.hach.com/p-sodium-chloride-standard-solution-100-scm-500-ml/2971849",
+      "role": "manufacturerprimary calibrationstandard",
+      "actualAccess": "firstwebopen succeeded;line638 actualproductdescription read; laterretries timedout",
+      "readFinding": "49mg/L NaCl standard100µS/cm at25°C",
+      "inference": "case13roughlytenfoldconcentration mismatch; named NaCl permitsphysicalcalibrationcomparison,synthetic label doesnot excuse scale",
+      "caseIndices": [
+        13,
+        17,
+        43
+      ]
+    },
+    {
+      "url": "https://cz.hach.com/standardni-roztok-konduktivity-1-000-s-cm-nacl-50-ml/product?id=24757728278",
+      "actualAccess": "primarysearchresult gives491mg/L and1000µS/cm;fullopen403",
+      "adoptedAsFullReadSource": false,
+      "role": "corroboratingsnippet only,not neededforfirststandardfinding"
+    },
+    {
+      "url": "https://srd.nist.gov/jpcrdreprint/1.555709.pdf",
+      "role": "primarythermodynamicfit paper Pitzer,Peiper,Busey1984",
+      "actualAccess": "webfullPDFopensuccess;TableA-11 PDFpageindex65 parsedcaption and25degree1barrow read;screenshotrequested;directurllib403",
+      "readFinding": "standard NaClsolution enthalpy/(RT)=+1.566 at25°C,1bar;independentconversion~+3.88kJ/mol",
+      "caseIndices": [
+        44
+      ],
+      "notAll103PagesRead": true
+    },
+    {
+      "url": "https://janaf.nist.gov/pdf/JANAF-FourthEd-1998-Chlorine.pdf",
+      "actualAccess": "websearchprimarysnippet0.922kcal/mol;webopenerror,directurllib403",
+      "adoptedAsFullReadSource": false,
+      "role": "not thebasis of A-V8-02;accessible1984tableused"
+    },
+    {
+      "url": "https://www.tcichemicals.com/OP/en/p/B0790",
+      "role": "supplierprimarysubstanceidentity andspectralreference",
+      "actualAccess": "webopenandselectedpropertiesread",
+      "readFinding": "CAS3844-45-9,BrilliantBlueFCF/AcidBlue9,absorption627–631nm in0.02mol/Lammoniumacetate,not actualaqueouskitcalibration orsafetyapproval",
+      "caseIndices": [
+        9
+      ]
+    },
+    {
+      "url": "https://ozone.unep.org/20-questions-and-answers",
+      "role": "institutionalprimaryhistoricalscientificoverview",
+      "actualAccess": "webopen,introduction/timeline selectedpassagesread",
+      "readFinding": "atmosphericscience,1985Vienna,1987Montreal,observational/technicalcontext retained;owncultural/socialcardsdistinct",
+      "caseIndices": [
+        38,
+        41
+      ]
+    },
+    {
+      "url": "https://www.unep.org/ozonaction/who-we-are/about-montreal-protocol",
+      "role": "primaryinstitutionalhistory",
+      "actualAccess": "webopenselectedaboutparagraphsread",
+      "readFinding": "science/technical/economic evolution andfinancialsupportcontext;notcurrentlegalpermissions",
+      "caseIndices": [
+        38,
+        41
+      ]
+    },
+    {
+      "url": "https://www.basf.com/global/en/who-we-are/history/chronology/1902-1924/1913",
+      "role": "companyprimaryhistory,corporateperspective disclosed",
+      "actualAccess": "webopen1913plantparagraphread",
+      "readFinding": "Oppauindustrialammoniasynthesis1913 andindustrialacademiccooperation",
+      "caseIndices": [
+        39,
+        40
+      ]
+    },
+    {
+      "url": "https://www.fhi.mpg.de/history",
+      "role": "institutionprimaryhistory,perspective disclosed",
+      "actualAccess": "webopenfoundation,funding,cooperationand1933termination/resignationsectionsread",
+      "readFinding": "funding/institutional/politicalresearchconditionsaresupported;teachercultural/ecologicalcardsnotarchivalfacts",
+      "caseIndices": [
+        39
+      ]
+    },
+    {
+      "url": "https://www.rcsb.org/docs/general-help/glossary",
+      "role": "PDBinstitutionprimarydefinitions",
+      "actualAccess": "selectedactive-site,amide,peptide,allosterydefinitionsread",
+      "readFinding": "active-sitecontactsandamide/catalyticconceptplausibility;thisglossarydoesnot independentlyproveeverysuppliedscaffoldgeometry",
+      "caseIndices": [
+        47
+      ]
+    },
+    {
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/NSRDS/nbsnsrds34.pdf",
+      "role": "primaryionisationtable",
+      "actualAccess": "searchsnippetNa5.139eV/Mg7.646eV only;notfullPDFread",
+      "readFinding": "convertednumbersconsistentwith496/738kJ/mol",
+      "caseIndices": [
+        46
+      ]
+    },
+    {
+      "url": "https://pubchem.ncbi.nlm.nih.gov/periodic-table/ionization-energy/",
+      "actualAccess": "searchsnippetcorroborates;openJSonly",
+      "adoptedAsFullReadSource": false
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3659166/",
+      "actualAccess": "primarypapersearchsnippet;opencaptcha",
+      "adoptedAsFullReadSource": false,
+      "role": "notusedasactualreadproof;organicmodelplausibilityassessedfromsuppliedrulesandchemicalreasoning"
+    },
+    {
+      "url": "https://www.nobelprize.org/prizes/chemistry/1918/haber/facts/",
+      "actualAccess": "ownwebopenfetcherror;authorreports403",
+      "adoptedAsFullReadSource": false
+    },
+    {
+      "url": "https://www.nobelprize.org/uploads/2018/06/haber-lecture.pdf",
+      "actualAccess": "authorreports403;not independentlyopenednow",
+      "adoptedAsFullReadSource": false
+    }
+  ],
+  "K11EffectiveActualReference": {
+    "lineRange": [
+      138,
+      140
+    ],
+    "correction": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-nine-twenty-six-operator-and-prerequisite-author-v6/actual-K11-primary-line-reference.correction.json",
+      "sha256": "54e65cd892410e381f395d077ab4bacfaff365daecbb98c2006cee2fcd4d5217",
+      "bytes": 739
+    },
+    "old141_151ReferenceEffective": false
+  },
+  "modelScientificChecks": {
+    "lower": "NaClionicmobility,waterdipoleorientation,atomconservingreaction anddigitalchargelogicconsistent;heattransferunclear/wrongifsameNaCl",
+    "upperComplex": "hypotheticalprotonatedscaffoldhasvalidvalences,carbonylOacceptor,ammoniumcharge,phenylhydrophobicregion;approximateamide/phenylplanesandtetrahedralcarbonsplausible;actualspatialkitandarrangementrequired;samegroupcountdoesnotguaranteebindingoractivation",
+    "enzyme": "ester+waterhydrolysisbalanced;adaptiveESandreleasedEappropriatelybounded;neutralproductsnotexactactualpHspeciation",
+    "atomic": "approximateouter-shell/risingnuclearcharge comparisoncannotcalculateexactIE;nofalseprecision",
+    "equilibrium": "concentrationmass-actioncalculationcorrectasexplicitidealmodel;activity/kineticlimitsretained"
+  },
+  "analogueDigitalProtocolFeasibility": "ordinaryteacherpreparedprint/card/spatialkit,computer/spreadsheet,actualmoderator/audience andauthorisedlabequipmentcanprovideperformances;noneisalreadyperformedorappimplemented"
+}

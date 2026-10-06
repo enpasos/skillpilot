@@ -1,0 +1,19 @@
+node:fs:1521
+  const result = binding.readdir(
+                         ^
+
+Error: ENOENT: no such file or directory, scandir '/home/enpasos/projects/skillpilot/tmp/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-20261006-v2-native-scope/curricula/DE/Gymnasium/quality/memory-card-review'
+    at readdirSync (node:fs:1521:26)
+    at loadMemoryReviewOriginReferences (/home/enpasos/projects/skillpilot/tmp/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-20261006-v2-native-scope/app/scripts/applicabilityCompiler.ts:476:23)
+    at buildApplicabilityCompilation (/home/enpasos/projects/skillpilot/tmp/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-20261006-v2-native-scope/app/scripts/applicabilityCompiler.ts:794:55)
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/native-jurisdiction-diagnostics.mts:7:14)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: '/home/enpasos/projects/skillpilot/tmp/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-20261006-v2-native-scope/curricula/DE/Gymnasium/quality/memory-card-review'
+}
+
+Node.js v20.20.2

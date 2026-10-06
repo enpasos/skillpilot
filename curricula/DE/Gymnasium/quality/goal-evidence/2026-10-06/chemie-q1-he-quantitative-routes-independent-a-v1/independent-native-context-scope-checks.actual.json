@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent-a",
+  "checkedAtUTC": "2026-10-06T03:00:00.009Z",
+  "status": "PASS independently rebuilt three full native page sets and isolated native applicability compilation",
+  "inputCodeAndConfigs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/review-views/chemie-m7-full-canonical.view.json",
+      "sha256": "5ac1afb7147381c2f7a5da05d28d62a929f8150642e8f42332148e4a820d42c0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-quantitative-reviewed-integration-candidate-v1/full-current.metadata-corrected.config.json",
+      "sha256": "e551d2ee3df4d8c8668bc7f43946b456309de7f98523bf88f3b76e740757a9f2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-quantitative-reviewed-integration-candidate-v1/prospective-input-tree/curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "sha256": "640f7ce8f4f13eec771d4786973bb21598a8daefca4d064a40755a4102e8225d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-quantitative-reviewed-integration-candidate-v1/prospective-input-tree/curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json",
+      "sha256": "fbff1bc1bc554879c82d48a18030c2a4d9f13938983da1578a8b2f77381faab7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-quantitative-routes-author-candidate-v1/semantic-kinds.author-binding-candidate.json",
+      "sha256": "21e10673e81bdf6fef552e2179d4a8da62b4410cf5ce3db6e80f108f5209c01d"
+    },
+    {
+      "path": "tmp/chemie-q1-he-quantitative-routes-author-20261006-v1-native-scope/app/scripts/applicabilityCompiler.ts",
+      "sha256": "3d3d11b120962b8b233da33174ca6e5e140ef60db9cfb4bade1bdfbe676c9cbc"
+    },
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "3d3d11b120962b8b233da33174ca6e5e140ef60db9cfb4bade1bdfbe676c9cbc"
+    },
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "97eacf1152c859fd4a766f1d3f136449b20bc8af3d626b4c0f048bb6b3a7e2aa"
+    },
+    {
+      "path": "app/scripts/goalEvidenceProfileModel.ts",
+      "sha256": "50c932f1bb2e6db266756113dbbb82af9d59e172825d2039cdc9dcd9a10c3a26"
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+      "sha256": "59f8f412cbe9be4dc033396581e14960d0b0f12e3b17b5d48c35e5d6fae71e64"
+    },
+    {
+      "path": "app/src/utils/authoring/canonicalAuthoring.ts",
+      "sha256": "3199f2803cf29646872eee927b6bad47831f09e519f33ca061efc022acc31e43"
+    },
+    {
+      "path": "app/src/hooks/useLandscapes.ts",
+      "sha256": "642a03395bea24b85c6dd52afe5b4300b61705f8e06f6e034e3530ed0b194910"
+    }
+  ],
+  "isolated497InputRowsVerifiedWithCandidateCanonicalOverlay": true,
+  "nativePageCounts": {
+    "beforeReviewed": 378,
+    "route": 378,
+    "live": 376
+  },
+  "all378CurricularOwnNativePositivePayloadsExact": true,
+  "strict104NativeCanonicalContextsExact": true,
+  "strict34ThreeStateWholePagesExactlyReproduced": true,
+  "strict70BeforeToRouteWholePagesExact": true,
+  "nativeContainsDiagnostics": [],
+  "terminalRows": [
+    {
+      "goalId": "4cb74d76-99f1-5264-b1e3-448cda47b005",
+      "effectiveRequires": [
+        "0d59b62e-d3f9-5969-b961-0c5e26316c04"
+      ],
+      "canonicalRequires": [
+        "0d59b62e-d3f9-5969-b961-0c5e26316c04"
+      ],
+      "tags": [
+        "LK",
+        "Practice",
+        "Assessment",
+        "SekII"
+      ],
+      "coveredGoalIds": [
+        "0d59b62e-d3f9-5969-b961-0c5e26316c04"
+      ]
+    },
+    {
+      "goalId": "171b47e2-2c53-50f2-a145-a26b896fd73f",
+      "effectiveRequires": [
+        "3d6699ae-ebbd-5a55-8798-b809a9d74f0a",
+        "18819a59-2442-530f-a7c3-26755398ec66"
+      ],
+      "canonicalRequires": [
+        "3d6699ae-ebbd-5a55-8798-b809a9d74f0a",
+        "18819a59-2442-530f-a7c3-26755398ec66"
+      ],
+      "tags": [
+        "LK",
+        "Practice",
+        "Assessment",
+        "SekII"
+      ],
+      "coveredGoalIds": [
+        "3d6699ae-ebbd-5a55-8798-b809a9d74f0a",
+        "18819a59-2442-530f-a7c3-26755398ec66"
+      ]
+    }
+  ],
+  "nativeCompilerSummary": {
+    "goals": 479,
+    "errors": 0,
+    "warnings": 1,
+    "diagnostics": 2240
+  },
+  "nativeScopeRows": [
+    {
+      "goalId": "d3cd250f-5221-589d-aa1c-44a4692d1acb",
+      "title": "Ascorbinsäure und Parabene quantitativ bestimmen (LK)",
+      "goalType": "cluster",
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "child-union",
+          "source": "2 visible child goal(s)"
+        }
+      ]
+    },
+    {
+      "goalId": "3d6699ae-ebbd-5a55-8798-b809a9d74f0a",
+      "title": "Ascorbinsäure quantitativ bestimmen (LK)",
+      "goalType": "atomic",
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-b014-five-current-20261005-v1.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-energy-four-current-20261005-v1.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-energy13-current-20261005-v1.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-q1-fourteen-current-20261005-v4.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.review.json",
+          "mappingStrength": "partial"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.json",
+          "mappingStrength": "exact"
+        }
+      ]
+    },
+    {
+      "goalId": "18819a59-2442-530f-a7c3-26755398ec66",
+      "title": "Vorgegebenen Paraben-Ester quantitativ bestimmen (LK)",
+      "goalType": "atomic",
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-b014-five-current-20261005-v1.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-energy-four-current-20261005-v1.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-energy13-current-20261005-v1.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-q1-fourteen-current-20261005-v4.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.json",
+          "mappingStrength": "exact"
+        }
+      ]
+    },
+    {
+      "goalId": "4cb74d76-99f1-5264-b1e3-448cda47b005",
+      "title": "Parabenrezeptur anhand eines datierten Fallblatts bewerten (LK)",
+      "goalType": "atomic",
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "assessment-requires",
+          "source": "requires 0d59b62e-d3f9-5969-b961-0c5e26316c04"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "assessment-requires",
+          "source": "requires 0d59b62e-d3f9-5969-b961-0c5e26316c04"
+        }
+      ]
+    },
+    {
+      "goalId": "171b47e2-2c53-50f2-a145-a26b896fd73f",
+      "title": "Zwei Analyten in einer Modellprobe quantitativ bestimmen (LK)",
+      "goalType": "atomic",
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "assessment-requires",
+          "source": "requires 18819a59-2442-530f-a7c3-26755398ec66"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "assessment-requires",
+          "source": "requires 3d6699ae-ebbd-5a55-8798-b809a9d74f0a"
+        }
+      ]
+    }
+  ],
+  "modelsDigest": {
+    "before": "a7a0718f8062157fc69c3a9749889a1dd3264d15b3fbb3e85f92863c6a10e576",
+    "route": "c6f584375cae23a97949908e1b79ea467cf0fcaa3485a282cf804d65452403b2",
+    "live": "b9648712dc74bf0bb4996081ac235fbfb749fee3e51794ec49d58fdcb35caaf3"
+  },
+  "independentBConclusionsRead": false,
+  "restoredNativeDBindings": 0,
+  "newScientificCompletions": 0,
+  "fullCQRExecuted": false,
+  "floorCertificationIssued": false,
+  "activeWrites": false,
+  "humanApproval": false,
+  "humanTrial": false
+}

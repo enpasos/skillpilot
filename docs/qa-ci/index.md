@@ -67,6 +67,9 @@ Use this page by role: start with the overview documents, then jump to a review 
 - [B010 und Biologie-Genregulation: Fortsetzung vom 5. Oktober](chemie-biologie-m7-b010-tf-methylation-continuation-2026-10-05.md)
 - [Aktueller Q1-/Bakterien-/E-Phasen-Stand vom 5. Oktober](chemie-biologie-m7-q1-bacteria-e7-continuation-2026-10-05.md)
 - [NI und quantitative Anwendungen: Zwischenstand vom 6. Oktober](chemie-biologie-m7-ni-quantitative-continuation-2026-10-06.md)
+- [Chemie-Achterpaket und 53 aktuelle Beschreibungsbindungen vom 6. Oktober](chemie-biologie-m7-chemistry-53-current-bindings-continuation-2026-10-06.md)
+- [Geprüfte Chemie-/Biologie-Kandidaten und nächste Integration vom 6. Oktober](chemie-biologie-m7-reviewed-candidate-continuation-2026-10-06.md)
+- [Chemie/Biologie: Commit-Zwischenstand und offene Kandidatenbefunde vom 6. Oktober](chemie-biologie-m7-commit-checkpoint-2026-10-06.md)
 
 ## Review Lanes
 

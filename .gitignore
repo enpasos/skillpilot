@@ -47,6 +47,11 @@ spring-server/src/main/resources/static/
 # Curriculum assets
 curricula/**/*.pdf
 curricula/**/*.html 
+# Exact native review-bundle snapshots are versioned evidence, unlike public builds.
+!curricula/**/quality/**/bundle/book.pdf
+!curricula/**/quality/**/bundle/book.html
+# Generated transport archives stay local; version their manifests and review inputs.
+curricula/**/quality/**/*.zip
 # Complete official-source text is a local extraction cache, not review content.
 /curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-energy-four-candidate-review-a/sources/he-chemie-kc2024.txt
 # The current two-goal D-v2 review binds exact PDF/HTML bytes across blind rounds.

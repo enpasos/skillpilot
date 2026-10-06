@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v1">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik Lernzielbeschreibungs-Re-Review – Magnetismus und Induktion Q1/Q2 (16)</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    h1 { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<article class="goal-page" id="goal-106417ed-80db-5490-a1ee-bb4160d3f2b4" data-goal-id="106417ed-80db-5490-a1ee-bb4160d3f2b4" data-page-number="1" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-106417ed-80db-5490-a1ee-bb4160d3f2b4-title">
+    <header class="goal-header">
+      <h1 id="goal-106417ed-80db-5490-a1ee-bb4160d3f2b4-title"><a class="goal-self-link" href="#goal-106417ed-80db-5490-a1ee-bb4160d3f2b4">Magnetfeldmodelle für geraden Leiter und lange Spule auswählen und anwenden</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>106417ed-80db-5490-a1ee-bb4160d3f2b4</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ca8637bc410974e5003cb2dc1bab6d1bb4a1e33ea129af7e27a69ff03574b3dd" data-rendered-digest="sha256:b45c0ea4b75f1b3c2e06ef9155193e78e993e68169c407652e92bfdc1c217299" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/106417ed-80db-5490-a1ee-bb4160d3f2b4/106417ed-80db-5490-a1ee-bb4160d3f2b4.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Magnetfeldmodelle für geraden Leiter und lange Spule auswählen und anwenden&quot;. Die lernende Person kann für einen idealisierten langen geraden stromdurchflossenen Leiter in Luft und für das Innere einer idealisierten langen Spule mit homogenem linearem Kern das passende Magnetfeldmodell auswählen, den Betrag mit B = μ₀ · I/(2πr) beziehungsweise B ≈ μ₀ · μᵣ · (N/ℓ) · I bestimmen, die Richtung mit der Rechte-Hand-Regel angeben und die unterschiedlichen Gültigkeitsgrenzen begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-106417ed-80db-5490-a1ee-bb4160d3f2b4-description-heading">
+        <p class="section-heading" id="goal-106417ed-80db-5490-a1ee-bb4160d3f2b4-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für einen idealisierten langen geraden stromdurchflossenen Leiter in Luft und für das Innere einer idealisierten langen Spule mit homogenem linearem Kern das passende Magnetfeldmodell auswählen, den Betrag mit B = μ₀ · I/(2πr) beziehungsweise B ≈ μ₀ · μᵣ · (N/ℓ) · I bestimmen, die Richtung mit der Rechte-Hand-Regel angeben und die unterschiedlichen Gültigkeitsgrenzen begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-106417ed-80db-5490-a1ee-bb4160d3f2b4" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-106417ed-80db-5490-a1ee-bb4160d3f2b4-requires-heading">
+          <p class="section-heading" id="goal-106417ed-80db-5490-a1ee-bb4160d3f2b4-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-106417ed-80db-5490-a1ee-bb4160d3f2b4-reverse-heading">
+          <p class="section-heading" id="goal-106417ed-80db-5490-a1ee-bb4160d3f2b4-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-37f28bc4-def2-57cf-a06b-191dfd228205"><span>Selbstinduktion und Induktivität</span><code>37f28bc4-def2-57cf-a06b-191dfd228205</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-106417ed-80db-5490-a1ee-bb4160d3f2b4-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-106417ed-80db-5490-a1ee-bb4160d3f2b4-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0f6b798b-594e-5480-8c5f-95e2486a4d85" rel="noreferrer noopener"><span>Magnetische Felder und Feldlinienbilder</span> <code>0f6b798b-594e-5480-8c5f-95e2486a4d85</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-106417ed-80db-5490-a1ee-bb4160d3f2b4-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-106417ed-80db-5490-a1ee-bb4160d3f2b4-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-dbe230d5-31e1-5fca-8e11-2226821952ff" rel="noreferrer noopener"><span>Prüfungsaufgabe: Magnetfelder berechnen und Induktion anwenden</span> <code>dbe230d5-31e1-5fca-8e11-2226821952ff</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 1 von 16</span>
+      <span>Buch-Digest <code>sha256:54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6e7bb22629aecef659aa77d7681b80224fd2709c8ad1afa67b7ffb6e0de02a0f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-q1-q2-magnetism-induction-recheck-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=106417ed-80db-5490-a1ee-bb4160d3f2b4&amp;goalFingerprint=sha256%3A6e7bb22629aecef659aa77d7681b80224fd2709c8ad1afa67b7ffb6e0de02a0f&amp;pageFingerprint=sha256%3Afbdc63f19f668ba47762d95c0378d5c5649db8b8f867c32cf62e885bef4ec6a5&amp;bookDigest=sha256%3A54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c6355a22-24cf-5d8b-88af-ea11711460fb" data-goal-id="c6355a22-24cf-5d8b-88af-ea11711460fb" data-page-number="2" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-c6355a22-24cf-5d8b-88af-ea11711460fb-title">
+    <header class="goal-header">
+      <h1 id="goal-c6355a22-24cf-5d8b-88af-ea11711460fb-title"><a class="goal-self-link" href="#goal-c6355a22-24cf-5d8b-88af-ea11711460fb">Kraft auf stromdurchflossene Leiter</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c6355a22-24cf-5d8b-88af-ea11711460fb</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:86be1b307ceedd83a6ffa52d73a6f85261ff1a9ea6ee6f08dcb8512a67cad70a" data-rendered-digest="sha256:6f7d04887dab0ca468f24f1afde6c87b0371a7cbf4851495dc7b7150df98b62a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/c6355a22-24cf-5d8b-88af-ea11711460fb/c6355a22-24cf-5d8b-88af-ea11711460fb.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Kraft auf stromdurchflossene Leiter&quot;. Die lernende Person kann Betrag und Richtung der Kraft auf ein gerades stromdurchflossenes Leiterstück im homogenen Magnetfeld mit F = B · I · ℓ · sin(α) bestimmen, wobei α der Winkel zwischen Strom- und Feldrichtung ist, und bei senkrechter Anordnung B aus einer Kraftmessung mit B = F/(I · ℓ) ermitteln.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c6355a22-24cf-5d8b-88af-ea11711460fb-description-heading">
+        <p class="section-heading" id="goal-c6355a22-24cf-5d8b-88af-ea11711460fb-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Betrag und Richtung der Kraft auf ein gerades stromdurchflossenes Leiterstück im homogenen Magnetfeld mit F = B · I · ℓ · sin(α) bestimmen, wobei α der Winkel zwischen Strom- und Feldrichtung ist, und bei senkrechter Anordnung B aus einer Kraftmessung mit B = F/(I · ℓ) ermitteln.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-c6355a22-24cf-5d8b-88af-ea11711460fb" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c6355a22-24cf-5d8b-88af-ea11711460fb-requires-heading">
+          <p class="section-heading" id="goal-c6355a22-24cf-5d8b-88af-ea11711460fb-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-c6355a22-24cf-5d8b-88af-ea11711460fb-reverse-heading">
+          <p class="section-heading" id="goal-c6355a22-24cf-5d8b-88af-ea11711460fb-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-c6355a22-24cf-5d8b-88af-ea11711460fb-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c6355a22-24cf-5d8b-88af-ea11711460fb-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0f6b798b-594e-5480-8c5f-95e2486a4d85" rel="noreferrer noopener"><span>Magnetische Felder und Feldlinienbilder</span> <code>0f6b798b-594e-5480-8c5f-95e2486a4d85</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-c6355a22-24cf-5d8b-88af-ea11711460fb-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c6355a22-24cf-5d8b-88af-ea11711460fb-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-26c1e946-e858-57ef-a19b-d6bb295c76f4" rel="noreferrer noopener"><span>Vorschlag A (GK) - Felder und Induktion</span> <code>26c1e946-e858-57ef-a19b-d6bb295c76f4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-58c4b989-5cd0-5bf2-99d1-a0163fc837a1" rel="noreferrer noopener"><span>Vorschlag A (GK) - Felder und Induktion im Sensorprüfstand</span> <code>58c4b989-5cd0-5bf2-99d1-a0163fc837a1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ba29e928-a287-5de7-b3fe-5c8c3731363b" rel="noreferrer noopener"><span>Magnetfeld, Leiterkraft und Lorentzkraft</span> <code>ba29e928-a287-5de7-b3fe-5c8c3731363b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d02438ba-0cc9-5993-831e-5e44d35e32c4" rel="noreferrer noopener"><span>Drehmoment auf Magnetnadeln und Dipole</span> <code>d02438ba-0cc9-5993-831e-5e44d35e32c4</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 2 von 16</span>
+      <span>Buch-Digest <code>sha256:54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:58a4cdd4883979a2e1ef515bf4c7ffed9fdbe159db558aac44e16fd50c1fc80e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-q1-q2-magnetism-induction-recheck-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=c6355a22-24cf-5d8b-88af-ea11711460fb&amp;goalFingerprint=sha256%3A58a4cdd4883979a2e1ef515bf4c7ffed9fdbe159db558aac44e16fd50c1fc80e&amp;pageFingerprint=sha256%3Af5cd58a8da1f86d0209074e68715617c51cf3590338331f40d3adaa56a7ad1a3&amp;bookDigest=sha256%3A54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3b866aea-3e4d-5f23-91de-759148382710" data-goal-id="3b866aea-3e4d-5f23-91de-759148382710" data-page-number="3" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-3b866aea-3e4d-5f23-91de-759148382710-title">
+    <header class="goal-header">
+      <h1 id="goal-3b866aea-3e4d-5f23-91de-759148382710-title"><a class="goal-self-link" href="#goal-3b866aea-3e4d-5f23-91de-759148382710">Kreisbahnen geladener Teilchen quantitativ bestimmen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3b866aea-3e4d-5f23-91de-759148382710</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2e407a3bb13681d5089019ed0fc9978cec8f6c1e73e5ab5648e0657084a650cb" data-rendered-digest="sha256:81419b51e9f1bf965bb924643602bba10799af3e8d9a4a87643bf8810398a9d6" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/3b866aea-3e4d-5f23-91de-759148382710/3b866aea-3e4d-5f23-91de-759148382710.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Kreisbahnen geladener Teilchen quantitativ bestimmen&quot;. Die lernende Person kann im nichtrelativistischen Modell für ein geladenes Teilchen mit zur Feldrichtung senkrechter Geschwindigkeit in einem homogenen Magnetfeld Bahnradius und Umlaufzeit aus Lorentz- und Zentripetalkraft bestimmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3b866aea-3e4d-5f23-91de-759148382710-description-heading">
+        <p class="section-heading" id="goal-3b866aea-3e4d-5f23-91de-759148382710-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann im nichtrelativistischen Modell für ein geladenes Teilchen mit zur Feldrichtung senkrechter Geschwindigkeit in einem homogenen Magnetfeld Bahnradius und Umlaufzeit aus Lorentz- und Zentripetalkraft bestimmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. II · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3b866aea-3e4d-5f23-91de-759148382710" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3b866aea-3e4d-5f23-91de-759148382710-requires-heading">
+          <p class="section-heading" id="goal-3b866aea-3e4d-5f23-91de-759148382710-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-3b866aea-3e4d-5f23-91de-759148382710-reverse-heading">
+          <p class="section-heading" id="goal-3b866aea-3e4d-5f23-91de-759148382710-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-2d62b444-796e-548d-aeee-cfd9c6665ddc"><span>Zyklotron und Synchrotron als Kreisbeschleuniger vergleichen</span><code>2d62b444-796e-548d-aeee-cfd9c6665ddc</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-3b866aea-3e4d-5f23-91de-759148382710-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3b866aea-3e4d-5f23-91de-759148382710-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8c9394cb-f54a-508d-9750-4c49e31b3fa9" rel="noreferrer noopener"><span>Lorentzkraft auf freie Ladungen</span> <code>8c9394cb-f54a-508d-9750-4c49e31b3fa9</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-3b866aea-3e4d-5f23-91de-759148382710-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3b866aea-3e4d-5f23-91de-759148382710-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-86015397-23c4-5ed7-b893-bc619ec961a8" rel="noreferrer noopener"><span>Vorschlag A (LK) - Adaptive Ladespur (Felder/Induktion)</span> <code>86015397-23c4-5ed7-b893-bc619ec961a8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-cf892388-6cb4-5981-adf2-7168aeb948b1" rel="noreferrer noopener"><span>Vorschlag A (LK) - Feldregelung und Transformatorwirkungsgrad</span> <code>cf892388-6cb4-5981-adf2-7168aeb948b1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 3 von 16</span>
+      <span>Buch-Digest <code>sha256:54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e899fc22beb6521026f118067dbea8b404f30f4df121a397c69afb48d45842a4</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-q1-q2-magnetism-induction-recheck-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=3b866aea-3e4d-5f23-91de-759148382710&amp;goalFingerprint=sha256%3Ae899fc22beb6521026f118067dbea8b404f30f4df121a397c69afb48d45842a4&amp;pageFingerprint=sha256%3A65efc9d2b303b17c5ac147df58abe8b89c6d6ec429afd917d0dcabf4ce505c84&amp;bookDigest=sha256%3A54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-7fe6f8a1-5580-4e37-bf8e-9772964a6b0a" data-goal-id="7fe6f8a1-5580-4e37-bf8e-9772964a6b0a" data-page-number="4" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-7fe6f8a1-5580-4e37-bf8e-9772964a6b0a-title">
+    <header class="goal-header">
+      <h1 id="goal-7fe6f8a1-5580-4e37-bf8e-9772964a6b0a-title"><a class="goal-self-link" href="#goal-7fe6f8a1-5580-4e37-bf8e-9772964a6b0a">Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreiben</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>7fe6f8a1-5580-4e37-bf8e-9772964a6b0a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0d642d4cec5c2c37dbfbcec4545716359263a4da3eeac96f07096636c13b462b" data-rendered-digest="sha256:ef3c6abd0c55ac1682c7b82a2d624f7b200393ab7981d07f91a5169a6e6f7686" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/7fe6f8a1-5580-4e37-bf8e-9772964a6b0a/7fe6f8a1-5580-4e37-bf8e-9772964a6b0a.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreiben&quot;. Die lernende Person kann die Geschwindigkeit eines geladenen Teilchens beim Eintritt in ein homogenes Magnetfeld in feldparallele und feldsenkrechte Komponenten zerlegen und daraus mithilfe der Lorentzkraft Gerad-, Kreis- oder Schraubenbahnen qualitativ deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-7fe6f8a1-5580-4e37-bf8e-9772964a6b0a-description-heading">
+        <p class="section-heading" id="goal-7fe6f8a1-5580-4e37-bf8e-9772964a6b0a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Geschwindigkeit eines geladenen Teilchens beim Eintritt in ein homogenes Magnetfeld in feldparallele und feldsenkrechte Komponenten zerlegen und daraus mithilfe der Lorentzkraft Gerad-, Kreis- oder Schraubenbahnen qualitativ deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. II · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7fe6f8a1-5580-4e37-bf8e-9772964a6b0a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-7fe6f8a1-5580-4e37-bf8e-9772964a6b0a-requires-heading">
+          <p class="section-heading" id="goal-7fe6f8a1-5580-4e37-bf8e-9772964a6b0a-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-7fe6f8a1-5580-4e37-bf8e-9772964a6b0a-reverse-heading">
+          <p class="section-heading" id="goal-7fe6f8a1-5580-4e37-bf8e-9772964a6b0a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-7fe6f8a1-5580-4e37-bf8e-9772964a6b0a-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7fe6f8a1-5580-4e37-bf8e-9772964a6b0a-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8c9394cb-f54a-508d-9750-4c49e31b3fa9" rel="noreferrer noopener"><span>Lorentzkraft auf freie Ladungen</span> <code>8c9394cb-f54a-508d-9750-4c49e31b3fa9</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-7fe6f8a1-5580-4e37-bf8e-9772964a6b0a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7fe6f8a1-5580-4e37-bf8e-9772964a6b0a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 4 von 16</span>
+      <span>Buch-Digest <code>sha256:54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1eb5d0c364344a666d54e06264adb3c91cac98892bc23bcce85e47140c7d81f0</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-q1-q2-magnetism-induction-recheck-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=7fe6f8a1-5580-4e37-bf8e-9772964a6b0a&amp;goalFingerprint=sha256%3A1eb5d0c364344a666d54e06264adb3c91cac98892bc23bcce85e47140c7d81f0&amp;pageFingerprint=sha256%3A64da00c62ef2abdc0a9a937e3b2e8e27211771d352c058c549ac866bbe80b5ff&amp;bookDigest=sha256%3A54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b39ae8fb-4358-5866-8adf-3d5365368eeb" data-goal-id="b39ae8fb-4358-5866-8adf-3d5365368eeb" data-page-number="5" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-b39ae8fb-4358-5866-8adf-3d5365368eeb-title">
+    <header class="goal-header">
+      <h1 id="goal-b39ae8fb-4358-5866-8adf-3d5365368eeb-title"><a class="goal-self-link" href="#goal-b39ae8fb-4358-5866-8adf-3d5365368eeb">Hall-Effekt anwenden</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b39ae8fb-4358-5866-8adf-3d5365368eeb</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:de9aee8faa6c5b097293be96e4ebd7ef00f3d0db36fa8a8d611c83ddc453acea" data-rendered-digest="sha256:43ca21515e83df6116cab2ba83fb9b434e6eb1b6d0c84e09e54852931df8f21d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/b39ae8fb-4358-5866-8adf-3d5365368eeb/b39ae8fb-4358-5866-8adf-3d5365368eeb.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Hall-Effekt anwenden&quot;. Die lernende Person kann die Hall-Spannung in einem stromdurchflossenen Leiter im Magnetfeld bestimmen und aus ihrem Betrag beziehungsweise Vorzeichen erklären, wie der Hall-Effekt zur Messung von Magnetfeldern oder zur Bestimmung des Ladungsträgertyps genutzt wird.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b39ae8fb-4358-5866-8adf-3d5365368eeb-description-heading">
+        <p class="section-heading" id="goal-b39ae8fb-4358-5866-8adf-3d5365368eeb-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Hall-Spannung in einem stromdurchflossenen Leiter im Magnetfeld bestimmen und aus ihrem Betrag beziehungsweise Vorzeichen erklären, wie der Hall-Effekt zur Messung von Magnetfeldern oder zur Bestimmung des Ladungsträgertyps genutzt wird.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b39ae8fb-4358-5866-8adf-3d5365368eeb" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b39ae8fb-4358-5866-8adf-3d5365368eeb-requires-heading">
+          <p class="section-heading" id="goal-b39ae8fb-4358-5866-8adf-3d5365368eeb-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-b39ae8fb-4358-5866-8adf-3d5365368eeb-reverse-heading">
+          <p class="section-heading" id="goal-b39ae8fb-4358-5866-8adf-3d5365368eeb-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b39ae8fb-4358-5866-8adf-3d5365368eeb-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b39ae8fb-4358-5866-8adf-3d5365368eeb-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8c9394cb-f54a-508d-9750-4c49e31b3fa9" rel="noreferrer noopener"><span>Lorentzkraft auf freie Ladungen</span> <code>8c9394cb-f54a-508d-9750-4c49e31b3fa9</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-b39ae8fb-4358-5866-8adf-3d5365368eeb-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b39ae8fb-4358-5866-8adf-3d5365368eeb-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d8442d03-8b7e-54b7-9d9a-dc31ce541daa" rel="noreferrer noopener"><span>Magnetische Messverfahren und Technik</span> <code>d8442d03-8b7e-54b7-9d9a-dc31ce541daa</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 5 von 16</span>
+      <span>Buch-Digest <code>sha256:54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4424e080678909f0ca3021623987379b2d7e887ee492f64d46233a44b8137172</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-q1-q2-magnetism-induction-recheck-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=b39ae8fb-4358-5866-8adf-3d5365368eeb&amp;goalFingerprint=sha256%3A4424e080678909f0ca3021623987379b2d7e887ee492f64d46233a44b8137172&amp;pageFingerprint=sha256%3A088a26397b6e032133983664f2875825b86e73543e0607cb484ecdaf0f3c6cfa&amp;bookDigest=sha256%3A54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2d62b444-796e-548d-aeee-cfd9c6665ddc" data-goal-id="2d62b444-796e-548d-aeee-cfd9c6665ddc" data-page-number="6" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-2d62b444-796e-548d-aeee-cfd9c6665ddc-title">
+    <header class="goal-header">
+      <h1 id="goal-2d62b444-796e-548d-aeee-cfd9c6665ddc-title"><a class="goal-self-link" href="#goal-2d62b444-796e-548d-aeee-cfd9c6665ddc">Zyklotron und Synchrotron als Kreisbeschleuniger vergleichen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2d62b444-796e-548d-aeee-cfd9c6665ddc</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:dae9e55e5f6771a4f49a99501e7362c5cf69fde8452094125c320ec8317c2507" data-rendered-digest="sha256:f3eafc7bc2d081a01f7025617f311bbc10f814b8eaf1e5033ff7d0c1d4bbf747" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/2d62b444-796e-548d-aeee-cfd9c6665ddc/2d62b444-796e-548d-aeee-cfd9c6665ddc.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Zyklotron und Synchrotron als Kreisbeschleuniger vergleichen&quot;. Die lernende Person kann Zyklotron und Synchrotron anhand der gemeinsamen Rollen elektrischer Felder beim Beschleunigen und magnetischer Felder bei der Bahnführung vergleichen, die feste Hochfrequenztaktung mit wachsendem Bahnradius beim idealisierten nichtrelativistischen Zyklotron von der angepassten Beschleunigungsphase und Magnetfeldstärke bei näherungsweise konstantem Synchrotronradius unterscheiden und daraus wesentliche Modell- und Betriebsgrenzen begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2d62b444-796e-548d-aeee-cfd9c6665ddc-description-heading">
+        <p class="section-heading" id="goal-2d62b444-796e-548d-aeee-cfd9c6665ddc-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Zyklotron und Synchrotron anhand der gemeinsamen Rollen elektrischer Felder beim Beschleunigen und magnetischer Felder bei der Bahnführung vergleichen, die feste Hochfrequenztaktung mit wachsendem Bahnradius beim idealisierten nichtrelativistischen Zyklotron von der angepassten Beschleunigungsphase und Magnetfeldstärke bei näherungsweise konstantem Synchrotronradius unterscheiden und daraus wesentliche Modell- und Betriebsgrenzen begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-2d62b444-796e-548d-aeee-cfd9c6665ddc" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2d62b444-796e-548d-aeee-cfd9c6665ddc-requires-heading">
+          <p class="section-heading" id="goal-2d62b444-796e-548d-aeee-cfd9c6665ddc-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-3b866aea-3e4d-5f23-91de-759148382710"><span>Kreisbahnen geladener Teilchen quantitativ bestimmen</span><code>3b866aea-3e4d-5f23-91de-759148382710</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-2d62b444-796e-548d-aeee-cfd9c6665ddc-reverse-heading">
+          <p class="section-heading" id="goal-2d62b444-796e-548d-aeee-cfd9c6665ddc-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2d62b444-796e-548d-aeee-cfd9c6665ddc-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2d62b444-796e-548d-aeee-cfd9c6665ddc-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-741774ef-15fc-4bcf-a370-e2c5cf4257d0" rel="noreferrer noopener"><span>Geladene Teilchen in homogenen elektrischen Feldern untersuchen</span> <code>741774ef-15fc-4bcf-a370-e2c5cf4257d0</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2d62b444-796e-548d-aeee-cfd9c6665ddc-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2d62b444-796e-548d-aeee-cfd9c6665ddc-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d441ee2f-9230-5751-832b-5b0b5cf14605" rel="noreferrer noopener"><span>Q1-Klausuraufgaben Physik selbstständig lösen</span> <code>d441ee2f-9230-5751-832b-5b0b5cf14605</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d1306bda-35ff-53e9-9458-3cbc128874d8" rel="noreferrer noopener"><span>Zyklotron und Strahlentherapie fachlich bewerten</span> <code>d1306bda-35ff-53e9-9458-3cbc128874d8</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 6 von 16</span>
+      <span>Buch-Digest <code>sha256:54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1189d2e1290be4f6f28211f3094acd2c49268ecbd98389024998aa63410e4e62</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-q1-q2-magnetism-induction-recheck-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=2d62b444-796e-548d-aeee-cfd9c6665ddc&amp;goalFingerprint=sha256%3A1189d2e1290be4f6f28211f3094acd2c49268ecbd98389024998aa63410e4e62&amp;pageFingerprint=sha256%3Af872a05828c763318ca8e3dfa470b6b3d1588faaa7a1f3434d70088193e8f9fd&amp;bookDigest=sha256%3A54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a522c8c0-f3a4-5568-acae-3010ed9feb87" data-goal-id="a522c8c0-f3a4-5568-acae-3010ed9feb87" data-page-number="7" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-a522c8c0-f3a4-5568-acae-3010ed9feb87-title">
+    <header class="goal-header">
+      <h1 id="goal-a522c8c0-f3a4-5568-acae-3010ed9feb87-title"><a class="goal-self-link" href="#goal-a522c8c0-f3a4-5568-acae-3010ed9feb87">Bewegungsinduktion und Ladungstrennung</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a522c8c0-f3a4-5568-acae-3010ed9feb87</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:117e1181a3be37f1276daa763be42eab497f02cce61214ea6ed112beeb9535e6" data-rendered-digest="sha256:3bbd0c6c0ce65cc46b383e53f685077a40c8dcc2b412b9d4991e42bc23296eb8" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/a522c8c0-f3a4-5568-acae-3010ed9feb87/a522c8c0-f3a4-5568-acae-3010ed9feb87.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Bewegungsinduktion und Ladungstrennung&quot;. Die lernende Person kann die Entstehung einer elektrischen Spannung an einem im Magnetfeld bewegten Leiterstück als Folge der Lorentzkraft auf die Leitungselektronen qualitativ erklären.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a522c8c0-f3a4-5568-acae-3010ed9feb87-description-heading">
+        <p class="section-heading" id="goal-a522c8c0-f3a4-5568-acae-3010ed9feb87-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Entstehung einer elektrischen Spannung an einem im Magnetfeld bewegten Leiterstück als Folge der Lorentzkraft auf die Leitungselektronen qualitativ erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. I · G9</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a522c8c0-f3a4-5568-acae-3010ed9feb87" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a522c8c0-f3a4-5568-acae-3010ed9feb87-requires-heading">
+          <p class="section-heading" id="goal-a522c8c0-f3a4-5568-acae-3010ed9feb87-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-a522c8c0-f3a4-5568-acae-3010ed9feb87-reverse-heading">
+          <p class="section-heading" id="goal-a522c8c0-f3a4-5568-acae-3010ed9feb87-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-1a037489-3c95-540b-8cae-0acd360358ee"><span>Induktion durch Änderung des magnetischen Flusses</span><code>1a037489-3c95-540b-8cae-0acd360358ee</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a522c8c0-f3a4-5568-acae-3010ed9feb87-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a522c8c0-f3a4-5568-acae-3010ed9feb87-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8c9394cb-f54a-508d-9750-4c49e31b3fa9" rel="noreferrer noopener"><span>Lorentzkraft auf freie Ladungen</span> <code>8c9394cb-f54a-508d-9750-4c49e31b3fa9</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-a522c8c0-f3a4-5568-acae-3010ed9feb87-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a522c8c0-f3a4-5568-acae-3010ed9feb87-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-50328a4f-91e8-5c8b-8d61-8f9c98a5cddf" rel="noreferrer noopener"><span>Q2-Klausuraufgaben Physik selbstständig lösen</span> <code>50328a4f-91e8-5c8b-8d61-8f9c98a5cddf</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 7 von 16</span>
+      <span>Buch-Digest <code>sha256:54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:005c6a2a0b3831b80641ba0f9e0bdaa13dc619598652f3d3da7deab16d010316</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-q1-q2-magnetism-induction-recheck-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=a522c8c0-f3a4-5568-acae-3010ed9feb87&amp;goalFingerprint=sha256%3A005c6a2a0b3831b80641ba0f9e0bdaa13dc619598652f3d3da7deab16d010316&amp;pageFingerprint=sha256%3A97a939de27b5a13e54ebe523da10f7c04740792119844d531343f6df9a71d6e0&amp;bookDigest=sha256%3A54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1a037489-3c95-540b-8cae-0acd360358ee" data-goal-id="1a037489-3c95-540b-8cae-0acd360358ee" data-page-number="8" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-1a037489-3c95-540b-8cae-0acd360358ee-title">
+    <header class="goal-header">
+      <h1 id="goal-1a037489-3c95-540b-8cae-0acd360358ee-title"><a class="goal-self-link" href="#goal-1a037489-3c95-540b-8cae-0acd360358ee">Induktion durch Änderung des magnetischen Flusses</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1a037489-3c95-540b-8cae-0acd360358ee</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1a037489-3c95-540b-8cae-0acd360358ee-description-heading">
+        <p class="section-heading" id="goal-1a037489-3c95-540b-8cae-0acd360358ee-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für ein homogenes Magnetfeld den magnetischen Fluss Φ = B · A · cos(α) durch die von einer Leiterschleife aufgespannte Fläche beschreiben, wobei α der Winkel zwischen Feldrichtung und Flächennormale ist, und qualitativ erklären, dass eine zeitliche Änderung dieses Flusses eine Induktionsspannung hervorruft.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-1a037489-3c95-540b-8cae-0acd360358ee" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1a037489-3c95-540b-8cae-0acd360358ee-requires-heading">
+          <p class="section-heading" id="goal-1a037489-3c95-540b-8cae-0acd360358ee-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a522c8c0-f3a4-5568-acae-3010ed9feb87"><span>Bewegungsinduktion und Ladungstrennung</span><code>a522c8c0-f3a4-5568-acae-3010ed9feb87</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-1a037489-3c95-540b-8cae-0acd360358ee-reverse-heading">
+          <p class="section-heading" id="goal-1a037489-3c95-540b-8cae-0acd360358ee-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-eb1ea150-ec6c-5000-bce3-f46c820dccf8"><span>Induktionsgesetz und Lenz’sche Regel</span><code>eb1ea150-ec6c-5000-bce3-f46c820dccf8</code><span class="reference-page">S. 9</span></a></li><li><a href="#goal-fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c"><span>Technische Anwendungen des Induktionsgesetzes qualitativ erklären</span><code>fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-1a037489-3c95-540b-8cae-0acd360358ee-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1a037489-3c95-540b-8cae-0acd360358ee-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-26c1e946-e858-57ef-a19b-d6bb295c76f4" rel="noreferrer noopener"><span>Vorschlag A (GK) - Felder und Induktion</span> <code>26c1e946-e858-57ef-a19b-d6bb295c76f4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-50328a4f-91e8-5c8b-8d61-8f9c98a5cddf" rel="noreferrer noopener"><span>Q2-Klausuraufgaben Physik selbstständig lösen</span> <code>50328a4f-91e8-5c8b-8d61-8f9c98a5cddf</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-58c4b989-5cd0-5bf2-99d1-a0163fc837a1" rel="noreferrer noopener"><span>Vorschlag A (GK) - Felder und Induktion im Sensorprüfstand</span> <code>58c4b989-5cd0-5bf2-99d1-a0163fc837a1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-2825b528-00ee-52d0-870e-686890cb1195" rel="noreferrer noopener"><span>Signalleitungsgeschwindigkeit in Nervenzellen messen und feldphysikalisch einordnen</span> <code>2825b528-00ee-52d0-870e-686890cb1195</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 8 von 16</span>
+      <span>Buch-Digest <code>sha256:54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:01dd51f3e5a40538c9334c80ca1cba7b0d1a5e8fcf58874bbe8e8fad3ca9e768</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-q1-q2-magnetism-induction-recheck-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=1a037489-3c95-540b-8cae-0acd360358ee&amp;goalFingerprint=sha256%3A01dd51f3e5a40538c9334c80ca1cba7b0d1a5e8fcf58874bbe8e8fad3ca9e768&amp;pageFingerprint=sha256%3A3d2bcc24e1f2625884bcdb3fba1fd78591b0766e9ba3184769605ba34bdde843&amp;bookDigest=sha256%3A54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-eb1ea150-ec6c-5000-bce3-f46c820dccf8" data-goal-id="eb1ea150-ec6c-5000-bce3-f46c820dccf8" data-page-number="9" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-eb1ea150-ec6c-5000-bce3-f46c820dccf8-title">
+    <header class="goal-header">
+      <h1 id="goal-eb1ea150-ec6c-5000-bce3-f46c820dccf8-title"><a class="goal-self-link" href="#goal-eb1ea150-ec6c-5000-bce3-f46c820dccf8">Induktionsgesetz und Lenz’sche Regel</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>eb1ea150-ec6c-5000-bce3-f46c820dccf8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:dc74c6f10abfa4bff8f83f1e5e6bf401c26798cbb9b5067616bbb196e515f406" data-rendered-digest="sha256:9de29a22e1d91ac6205a163055dd1e455ef7be634dbb098c1874b306a3b33dda" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/eb1ea150-ec6c-5000-bce3-f46c820dccf8/eb1ea150-ec6c-5000-bce3-f46c820dccf8.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Induktionsgesetz und Lenz’sche Regel&quot;. Die lernende Person kann für eine Spule mit N gleichartigen Windungen die mittlere Induktionsspannung mit U_ind = −N · ΔΦ/Δt bestimmen und für einen geschlossenen Stromkreis die Richtung des Induktionsstroms mit der Lenz’schen Regel als Wirkung gegen die Flussänderung begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-eb1ea150-ec6c-5000-bce3-f46c820dccf8-description-heading">
+        <p class="section-heading" id="goal-eb1ea150-ec6c-5000-bce3-f46c820dccf8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für eine Spule mit N gleichartigen Windungen die mittlere Induktionsspannung mit U_ind = −N · ΔΦ/Δt bestimmen und für einen geschlossenen Stromkreis die Richtung des Induktionsstroms mit der Lenz’schen Regel als Wirkung gegen die Flussänderung begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-eb1ea150-ec6c-5000-bce3-f46c820dccf8" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-eb1ea150-ec6c-5000-bce3-f46c820dccf8-requires-heading">
+          <p class="section-heading" id="goal-eb1ea150-ec6c-5000-bce3-f46c820dccf8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1a037489-3c95-540b-8cae-0acd360358ee"><span>Induktion durch Änderung des magnetischen Flusses</span><code>1a037489-3c95-540b-8cae-0acd360358ee</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-eb1ea150-ec6c-5000-bce3-f46c820dccf8-reverse-heading">
+          <p class="section-heading" id="goal-eb1ea150-ec6c-5000-bce3-f46c820dccf8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-37f28bc4-def2-57cf-a06b-191dfd228205"><span>Selbstinduktion und Induktivität</span><code>37f28bc4-def2-57cf-a06b-191dfd228205</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-d18d4190-ddc1-5181-b1b6-e79947b737c2"><span>Induktionsgesetz in Ableitungsform anwenden</span><code>d18d4190-ddc1-5181-b1b6-e79947b737c2</code><span class="reference-page">S. 16</span></a></li><li><a href="#goal-e5c33afc-a233-50ff-a17f-63c085dfb89c"><span>Wirbelströme und Waltenhofen-Pendel</span><code>e5c33afc-a233-50ff-a17f-63c085dfb89c</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-eb1ea150-ec6c-5000-bce3-f46c820dccf8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-eb1ea150-ec6c-5000-bce3-f46c820dccf8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0ceb4400-3e8f-586c-a669-a8877906bd8d" rel="noreferrer noopener"><span>Lernkarten - Q2</span> <code>0ceb4400-3e8f-586c-a669-a8877906bd8d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-26c1e946-e858-57ef-a19b-d6bb295c76f4" rel="noreferrer noopener"><span>Vorschlag A (GK) - Felder und Induktion</span> <code>26c1e946-e858-57ef-a19b-d6bb295c76f4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-50328a4f-91e8-5c8b-8d61-8f9c98a5cddf" rel="noreferrer noopener"><span>Q2-Klausuraufgaben Physik selbstständig lösen</span> <code>50328a4f-91e8-5c8b-8d61-8f9c98a5cddf</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-58c4b989-5cd0-5bf2-99d1-a0163fc837a1" rel="noreferrer noopener"><span>Vorschlag A (GK) - Felder und Induktion im Sensorprüfstand</span> <code>58c4b989-5cd0-5bf2-99d1-a0163fc837a1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-82feb329-c3bc-58ba-a5b0-6ccdf226dbeb" rel="noreferrer noopener"><span>Induktionsgesetz und Wirbelstrombremse</span> <code>82feb329-c3bc-58ba-a5b0-6ccdf226dbeb</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-abe032d3-97dd-5eaf-964e-0439cea27ac2" rel="noreferrer noopener"><span>Abiturprüfung Physik (GK) - Vorschläge A bis D</span> <code>abe032d3-97dd-5eaf-964e-0439cea27ac2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-f4eac786-a8e1-5f23-aedf-17bc70fc347f" rel="noreferrer noopener"><span>Abiturprüfung Physik (GK, 2026/2) - Vorschläge A bis D</span> <code>f4eac786-a8e1-5f23-aedf-17bc70fc347f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 9 von 16</span>
+      <span>Buch-Digest <code>sha256:54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3df7a3da385e749c48dd44579d3ccb0deff8fd15f5eed24dd7d37f097b829091</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-q1-q2-magnetism-induction-recheck-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=eb1ea150-ec6c-5000-bce3-f46c820dccf8&amp;goalFingerprint=sha256%3A3df7a3da385e749c48dd44579d3ccb0deff8fd15f5eed24dd7d37f097b829091&amp;pageFingerprint=sha256%3Ae7b6a4ce4ac653536d5ca4271514f69922e9983ef3f2fe464dc435e72785d4af&amp;bookDigest=sha256%3A54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e5c33afc-a233-50ff-a17f-63c085dfb89c" data-goal-id="e5c33afc-a233-50ff-a17f-63c085dfb89c" data-page-number="10" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-e5c33afc-a233-50ff-a17f-63c085dfb89c-title">
+    <header class="goal-header">
+      <h1 id="goal-e5c33afc-a233-50ff-a17f-63c085dfb89c-title"><a class="goal-self-link" href="#goal-e5c33afc-a233-50ff-a17f-63c085dfb89c">Wirbelströme und Waltenhofen-Pendel</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e5c33afc-a233-50ff-a17f-63c085dfb89c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:02e522f53ad4f7e371753f29527bcc7759b2d4b27d660093f999fcd831417f33" data-rendered-digest="sha256:6c194aacbebff6d5598d1eec808eed9682dd6513cb0f280e893770e6d0272cb0" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/e5c33afc-a233-50ff-a17f-63c085dfb89c/e5c33afc-a233-50ff-a17f-63c085dfb89c.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Wirbelströme und Waltenhofen-Pendel&quot;. Die lernende Person kann die Entstehung von Wirbelströmen in massiven Leitern mit Induktionsgesetz und Lenz’scher Regel erklären sowie ihre bremsende Wirkung am Waltenhofen-Pendel und ihre Verringerung durch Blechpakete in Transformatorenkernen begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e5c33afc-a233-50ff-a17f-63c085dfb89c-description-heading">
+        <p class="section-heading" id="goal-e5c33afc-a233-50ff-a17f-63c085dfb89c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Entstehung von Wirbelströmen in massiven Leitern mit Induktionsgesetz und Lenz’scher Regel erklären sowie ihre bremsende Wirkung am Waltenhofen-Pendel und ihre Verringerung durch Blechpakete in Transformatorenkernen begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e5c33afc-a233-50ff-a17f-63c085dfb89c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e5c33afc-a233-50ff-a17f-63c085dfb89c-requires-heading">
+          <p class="section-heading" id="goal-e5c33afc-a233-50ff-a17f-63c085dfb89c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-eb1ea150-ec6c-5000-bce3-f46c820dccf8"><span>Induktionsgesetz und Lenz’sche Regel</span><code>eb1ea150-ec6c-5000-bce3-f46c820dccf8</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e5c33afc-a233-50ff-a17f-63c085dfb89c-reverse-heading">
+          <p class="section-heading" id="goal-e5c33afc-a233-50ff-a17f-63c085dfb89c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-e5c33afc-a233-50ff-a17f-63c085dfb89c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e5c33afc-a233-50ff-a17f-63c085dfb89c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-50328a4f-91e8-5c8b-8d61-8f9c98a5cddf" rel="noreferrer noopener"><span>Q2-Klausuraufgaben Physik selbstständig lösen</span> <code>50328a4f-91e8-5c8b-8d61-8f9c98a5cddf</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-82feb329-c3bc-58ba-a5b0-6ccdf226dbeb" rel="noreferrer noopener"><span>Induktionsgesetz und Wirbelstrombremse</span> <code>82feb329-c3bc-58ba-a5b0-6ccdf226dbeb</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 10 von 16</span>
+      <span>Buch-Digest <code>sha256:54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:792d5b99c20693a3fe1cf9e6922049b032d9d87f1216c6db8e2957c3f4f939dc</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-q1-q2-magnetism-induction-recheck-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=e5c33afc-a233-50ff-a17f-63c085dfb89c&amp;goalFingerprint=sha256%3A792d5b99c20693a3fe1cf9e6922049b032d9d87f1216c6db8e2957c3f4f939dc&amp;pageFingerprint=sha256%3A6d4b0fc07721460e3ef5b707741c721ca27942e26ea6e4daf136ebbe7c1f43e8&amp;bookDigest=sha256%3A54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-37f28bc4-def2-57cf-a06b-191dfd228205" data-goal-id="37f28bc4-def2-57cf-a06b-191dfd228205" data-page-number="11" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-37f28bc4-def2-57cf-a06b-191dfd228205-title">
+    <header class="goal-header">
+      <h1 id="goal-37f28bc4-def2-57cf-a06b-191dfd228205-title"><a class="goal-self-link" href="#goal-37f28bc4-def2-57cf-a06b-191dfd228205">Selbstinduktion und Induktivität</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>37f28bc4-def2-57cf-a06b-191dfd228205</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:07491a1384e111309392dcc3254792e5c5cef096e649caaf89e93803d5fa0c66" data-rendered-digest="sha256:ef1ddf0a035374d66b81c38c74670f0fc062deba96b4a73e0366ec162b47cf64" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/37f28bc4-def2-57cf-a06b-191dfd228205/37f28bc4-def2-57cf-a06b-191dfd228205.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Selbstinduktion und Induktivität&quot;. Die lernende Person kann phänomenologisch erklären, wie eine Spule bei Ein- und Ausschaltvorgängen durch eine der Stromänderung entgegenwirkende Selbstinduktionsspannung reagiert, und die Induktivität als Maß für die Stärke dieses Zusammenhangs deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-37f28bc4-def2-57cf-a06b-191dfd228205-description-heading">
+        <p class="section-heading" id="goal-37f28bc4-def2-57cf-a06b-191dfd228205-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann phänomenologisch erklären, wie eine Spule bei Ein- und Ausschaltvorgängen durch eine der Stromänderung entgegenwirkende Selbstinduktionsspannung reagiert, und die Induktivität als Maß für die Stärke dieses Zusammenhangs deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-37f28bc4-def2-57cf-a06b-191dfd228205" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-37f28bc4-def2-57cf-a06b-191dfd228205-requires-heading">
+          <p class="section-heading" id="goal-37f28bc4-def2-57cf-a06b-191dfd228205-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-106417ed-80db-5490-a1ee-bb4160d3f2b4"><span>Magnetfeldmodelle für geraden Leiter und lange Spule auswählen und anwenden</span><code>106417ed-80db-5490-a1ee-bb4160d3f2b4</code><span class="reference-page">S. 1</span></a></li><li><a href="#goal-eb1ea150-ec6c-5000-bce3-f46c820dccf8"><span>Induktionsgesetz und Lenz’sche Regel</span><code>eb1ea150-ec6c-5000-bce3-f46c820dccf8</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-37f28bc4-def2-57cf-a06b-191dfd228205-reverse-heading">
+          <p class="section-heading" id="goal-37f28bc4-def2-57cf-a06b-191dfd228205-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0"><span>Ein- und Ausschaltvorgänge analysieren</span><code>692db5b6-8be1-5c7b-8307-3a02afb21ea0</code><span class="reference-page">S. 12</span></a></li><li><a href="#goal-a1389d4e-dc97-5557-babe-a31a2bd57217"><span>Energie gespeicherter Magnetfelder</span><code>a1389d4e-dc97-5557-babe-a31a2bd57217</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-37f28bc4-def2-57cf-a06b-191dfd228205-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-37f28bc4-def2-57cf-a06b-191dfd228205-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-50328a4f-91e8-5c8b-8d61-8f9c98a5cddf" rel="noreferrer noopener"><span>Q2-Klausuraufgaben Physik selbstständig lösen</span> <code>50328a4f-91e8-5c8b-8d61-8f9c98a5cddf</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-86015397-23c4-5ed7-b893-bc619ec961a8" rel="noreferrer noopener"><span>Vorschlag A (LK) - Adaptive Ladespur (Felder/Induktion)</span> <code>86015397-23c4-5ed7-b893-bc619ec961a8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-acf192a8-c398-51dc-a03b-672ab55df957" rel="noreferrer noopener"><span>Selbstinduktion, Einschaltvorgaenge und Feldenergie</span> <code>acf192a8-c398-51dc-a03b-672ab55df957</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-cf892388-6cb4-5981-adf2-7168aeb948b1" rel="noreferrer noopener"><span>Vorschlag A (LK) - Feldregelung und Transformatorwirkungsgrad</span> <code>cf892388-6cb4-5981-adf2-7168aeb948b1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ac4ba260-6086-5fcc-bea2-c06f1425a1cc" rel="noreferrer noopener"><span>Elektromagnetischen Schwingkreis analysieren</span> <code>ac4ba260-6086-5fcc-bea2-c06f1425a1cc</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a" rel="noreferrer noopener"><span>Kondensator und Spule im Wechselstromkreis analysieren</span> <code>ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 11 von 16</span>
+      <span>Buch-Digest <code>sha256:54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:764f9a1dd26c85fb6bbb2c4f71590fce545d969630d8b3efb5217f1d0063bfb2</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-q1-q2-magnetism-induction-recheck-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=37f28bc4-def2-57cf-a06b-191dfd228205&amp;goalFingerprint=sha256%3A764f9a1dd26c85fb6bbb2c4f71590fce545d969630d8b3efb5217f1d0063bfb2&amp;pageFingerprint=sha256%3A1f22b5822061bef5e0e71c9972c332c2695e3c45878f2ee5f0242845c683d156&amp;bookDigest=sha256%3A54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0" data-goal-id="692db5b6-8be1-5c7b-8307-3a02afb21ea0" data-page-number="12" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-title">
+    <header class="goal-header">
+      <h1 id="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-title"><a class="goal-self-link" href="#goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0">Ein- und Ausschaltvorgänge analysieren</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>692db5b6-8be1-5c7b-8307-3a02afb21ea0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:37f463e5aacdbb1dee87d10eb90868f0481527b8396c232fb1b6e555d58185d1" data-rendered-digest="sha256:b5cef719b2591636becb102a7ba494d3c781b1ecafb4df36fd1fe7faa94865be" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/692db5b6-8be1-5c7b-8307-3a02afb21ea0/692db5b6-8be1-5c7b-8307-3a02afb21ea0.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Ein- und Ausschaltvorgänge analysieren&quot;. Die lernende Person kann Strom- und Spannungsverläufe beim Ein- und Ausschalten eines idealisierten RL-Stromkreises mit der Zeitkonstante τ = L/R quantitativ analysieren und die Induktivität aus einem solchen Verlauf bestimmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-description-heading">
+        <p class="section-heading" id="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Strom- und Spannungsverläufe beim Ein- und Ausschalten eines idealisierten RL-Stromkreises mit der Zeitkonstante τ = L/R quantitativ analysieren und die Induktivität aus einem solchen Verlauf bestimmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-requires-heading">
+          <p class="section-heading" id="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-37f28bc4-def2-57cf-a06b-191dfd228205"><span>Selbstinduktion und Induktivität</span><code>37f28bc4-def2-57cf-a06b-191dfd228205</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-reverse-heading">
+          <p class="section-heading" id="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-692db5b6-8be1-5c7b-8307-3a02afb21ea0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-50328a4f-91e8-5c8b-8d61-8f9c98a5cddf" rel="noreferrer noopener"><span>Q2-Klausuraufgaben Physik selbstständig lösen</span> <code>50328a4f-91e8-5c8b-8d61-8f9c98a5cddf</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-86015397-23c4-5ed7-b893-bc619ec961a8" rel="noreferrer noopener"><span>Vorschlag A (LK) - Adaptive Ladespur (Felder/Induktion)</span> <code>86015397-23c4-5ed7-b893-bc619ec961a8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-acf192a8-c398-51dc-a03b-672ab55df957" rel="noreferrer noopener"><span>Selbstinduktion, Einschaltvorgaenge und Feldenergie</span> <code>acf192a8-c398-51dc-a03b-672ab55df957</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-cf892388-6cb4-5981-adf2-7168aeb948b1" rel="noreferrer noopener"><span>Vorschlag A (LK) - Feldregelung und Transformatorwirkungsgrad</span> <code>cf892388-6cb4-5981-adf2-7168aeb948b1</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 12 von 16</span>
+      <span>Buch-Digest <code>sha256:54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:02ae80b7ac55ac76cc2831b8482f71c0d5e90200a83840d1bd73d8e6f7c737ad</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-q1-q2-magnetism-induction-recheck-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=692db5b6-8be1-5c7b-8307-3a02afb21ea0&amp;goalFingerprint=sha256%3A02ae80b7ac55ac76cc2831b8482f71c0d5e90200a83840d1bd73d8e6f7c737ad&amp;pageFingerprint=sha256%3A6d71ffaed29063bb00edbfe6841996ae5f3eae6b8fcf91a4141e49318dfbef59&amp;bookDigest=sha256%3A54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a1389d4e-dc97-5557-babe-a31a2bd57217" data-goal-id="a1389d4e-dc97-5557-babe-a31a2bd57217" data-page-number="13" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-a1389d4e-dc97-5557-babe-a31a2bd57217-title">
+    <header class="goal-header">
+      <h1 id="goal-a1389d4e-dc97-5557-babe-a31a2bd57217-title"><a class="goal-self-link" href="#goal-a1389d4e-dc97-5557-babe-a31a2bd57217">Energie gespeicherter Magnetfelder</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a1389d4e-dc97-5557-babe-a31a2bd57217</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:afba99c847d0ba7af902e019a712256ac908a84a36bb5da675e446ebf9723054" data-rendered-digest="sha256:e608d1993fba6a6419405dd01234b2b316373f4c1ea201ba81b13a9edcf506c5" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/a1389d4e-dc97-5557-babe-a31a2bd57217/a1389d4e-dc97-5557-babe-a31a2bd57217.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Energie gespeicherter Magnetfelder&quot;. Die lernende Person kann die in einer idealisierten Spule mit konstanter Induktivität gespeicherte magnetische Energie mit W = 1/2 · L · I² bestimmen und Energieaufnahme und -abgabe bei technischen Anwendungen physikalisch begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a1389d4e-dc97-5557-babe-a31a2bd57217-description-heading">
+        <p class="section-heading" id="goal-a1389d4e-dc97-5557-babe-a31a2bd57217-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die in einer idealisierten Spule mit konstanter Induktivität gespeicherte magnetische Energie mit W = 1/2 · L · I² bestimmen und Energieaufnahme und -abgabe bei technischen Anwendungen physikalisch begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. II · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a1389d4e-dc97-5557-babe-a31a2bd57217" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a1389d4e-dc97-5557-babe-a31a2bd57217-requires-heading">
+          <p class="section-heading" id="goal-a1389d4e-dc97-5557-babe-a31a2bd57217-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-37f28bc4-def2-57cf-a06b-191dfd228205"><span>Selbstinduktion und Induktivität</span><code>37f28bc4-def2-57cf-a06b-191dfd228205</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a1389d4e-dc97-5557-babe-a31a2bd57217-reverse-heading">
+          <p class="section-heading" id="goal-a1389d4e-dc97-5557-babe-a31a2bd57217-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-a1389d4e-dc97-5557-babe-a31a2bd57217-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a1389d4e-dc97-5557-babe-a31a2bd57217-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-50328a4f-91e8-5c8b-8d61-8f9c98a5cddf" rel="noreferrer noopener"><span>Q2-Klausuraufgaben Physik selbstständig lösen</span> <code>50328a4f-91e8-5c8b-8d61-8f9c98a5cddf</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-86015397-23c4-5ed7-b893-bc619ec961a8" rel="noreferrer noopener"><span>Vorschlag A (LK) - Adaptive Ladespur (Felder/Induktion)</span> <code>86015397-23c4-5ed7-b893-bc619ec961a8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-acf192a8-c398-51dc-a03b-672ab55df957" rel="noreferrer noopener"><span>Selbstinduktion, Einschaltvorgaenge und Feldenergie</span> <code>acf192a8-c398-51dc-a03b-672ab55df957</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-cf892388-6cb4-5981-adf2-7168aeb948b1" rel="noreferrer noopener"><span>Vorschlag A (LK) - Feldregelung und Transformatorwirkungsgrad</span> <code>cf892388-6cb4-5981-adf2-7168aeb948b1</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 13 von 16</span>
+      <span>Buch-Digest <code>sha256:54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5e6964fbb584c7a8c8b9a81847b749c5e3537c62fbc8138232041e05b5e29d5f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-q1-q2-magnetism-induction-recheck-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=a1389d4e-dc97-5557-babe-a31a2bd57217&amp;goalFingerprint=sha256%3A5e6964fbb584c7a8c8b9a81847b749c5e3537c62fbc8138232041e05b5e29d5f&amp;pageFingerprint=sha256%3Aaa3084809e718a4cc3fef2fb662213d626d471fbaf212d22a57e8ce9029837e0&amp;bookDigest=sha256%3A54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c" data-goal-id="fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c" data-page-number="14" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c-title">
+    <header class="goal-header">
+      <h1 id="goal-fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c-title"><a class="goal-self-link" href="#goal-fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c">Technische Anwendungen des Induktionsgesetzes qualitativ erklären</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c453558f407b3e39f46ca7ca11ad07983c5cab63c4317ae548e52218f4115881" data-rendered-digest="sha256:e4fc797ab55832c09c0d6cd8bf06e288c94e6552d2bf95e8e2205c217149f436" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c/fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Technische Anwendungen des Induktionsgesetzes qualitativ erklären&quot;. Die lernende Person kann für eine vorgegebene technische Anwendung – etwa Generator, Transformator, Induktionsladegerät oder Induktionskochplatte – qualitativ erklären, wodurch sich der magnetische Fluss ändert, welche Spannung und bei geschlossenem Stromkreis welche Ströme induziert werden und welchem technischen Zweck dies dient.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c-description-heading">
+        <p class="section-heading" id="goal-fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für eine vorgegebene technische Anwendung – etwa Generator, Transformator, Induktionsladegerät oder Induktionskochplatte – qualitativ erklären, wodurch sich der magnetische Fluss ändert, welche Spannung und bei geschlossenem Stromkreis welche Ströme induziert werden und welchem technischen Zweck dies dient.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c-requires-heading">
+          <p class="section-heading" id="goal-fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1a037489-3c95-540b-8cae-0acd360358ee"><span>Induktion durch Änderung des magnetischen Flusses</span><code>1a037489-3c95-540b-8cae-0acd360358ee</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c-reverse-heading">
+          <p class="section-heading" id="goal-fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-ffbbf243-c2eb-4330-b050-837de994c130"><span>Elektromagnetische Felder im Maxwell-Überblick beschreiben</span><code>ffbbf243-c2eb-4330-b050-837de994c130</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-50328a4f-91e8-5c8b-8d61-8f9c98a5cddf" rel="noreferrer noopener"><span>Q2-Klausuraufgaben Physik selbstständig lösen</span> <code>50328a4f-91e8-5c8b-8d61-8f9c98a5cddf</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-dbe230d5-31e1-5fca-8e11-2226821952ff" rel="noreferrer noopener"><span>Prüfungsaufgabe: Magnetfelder berechnen und Induktion anwenden</span> <code>dbe230d5-31e1-5fca-8e11-2226821952ff</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-af1094c1-511a-5aae-9e0a-3e9196a82d9a" rel="noreferrer noopener"><span>Idealen Transformator quantitativ deuten</span> <code>af1094c1-511a-5aae-9e0a-3e9196a82d9a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 14 von 16</span>
+      <span>Buch-Digest <code>sha256:54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2240618c91f0bc5bea4d0074aca2690a3a3dfd9731c6909fe48a3bc9f4fbafb7</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-q1-q2-magnetism-induction-recheck-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c&amp;goalFingerprint=sha256%3A2240618c91f0bc5bea4d0074aca2690a3a3dfd9731c6909fe48a3bc9f4fbafb7&amp;pageFingerprint=sha256%3A512fb6b2595f5d529960a398ef1e702d9d5a956e5338f13795d3dc5a99fb9be8&amp;bookDigest=sha256%3A54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ffbbf243-c2eb-4330-b050-837de994c130" data-goal-id="ffbbf243-c2eb-4330-b050-837de994c130" data-page-number="15" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-ffbbf243-c2eb-4330-b050-837de994c130-title">
+    <header class="goal-header">
+      <h1 id="goal-ffbbf243-c2eb-4330-b050-837de994c130-title"><a class="goal-self-link" href="#goal-ffbbf243-c2eb-4330-b050-837de994c130">Elektromagnetische Felder im Maxwell-Überblick beschreiben</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ffbbf243-c2eb-4330-b050-837de994c130</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3c9402150d144e71c78e853ff1626bf3dd65287e0edfa29ecc45e8befb4e6636" data-rendered-digest="sha256:e6ec09116fdb60971ff6fec7e889f226a3b90485ff36f75b3bcec4a6396f10c4" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/ffbbf243-c2eb-4330-b050-837de994c130/ffbbf243-c2eb-4330-b050-837de994c130.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Elektromagnetische Felder im Maxwell-Überblick beschreiben&quot;. Die lernende Person kann die vier Maxwell-Gleichungen qualitativ als Aussagen über elektrische Ladungen als Quellen elektrischer Felder, die Quellenfreiheit des Magnetfelds, Wirbel elektrischer Felder durch zeitlich veränderliche Magnetfelder sowie Wirbel magnetischer Felder durch Ströme und zeitlich veränderliche elektrische Felder einordnen und ihr Zusammenwirken beschreiben, ohne sie formal herzuleiten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ffbbf243-c2eb-4330-b050-837de994c130-description-heading">
+        <p class="section-heading" id="goal-ffbbf243-c2eb-4330-b050-837de994c130-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die vier Maxwell-Gleichungen qualitativ als Aussagen über elektrische Ladungen als Quellen elektrischer Felder, die Quellenfreiheit des Magnetfelds, Wirbel elektrischer Felder durch zeitlich veränderliche Magnetfelder sowie Wirbel magnetischer Felder durch Ströme und zeitlich veränderliche elektrische Felder einordnen und ihr Zusammenwirken beschreiben, ohne sie formal herzuleiten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW, HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-ffbbf243-c2eb-4330-b050-837de994c130" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ffbbf243-c2eb-4330-b050-837de994c130-requires-heading">
+          <p class="section-heading" id="goal-ffbbf243-c2eb-4330-b050-837de994c130-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c"><span>Technische Anwendungen des Induktionsgesetzes qualitativ erklären</span><code>fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ffbbf243-c2eb-4330-b050-837de994c130-reverse-heading">
+          <p class="section-heading" id="goal-ffbbf243-c2eb-4330-b050-837de994c130-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-ffbbf243-c2eb-4330-b050-837de994c130-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ffbbf243-c2eb-4330-b050-837de994c130-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-50328a4f-91e8-5c8b-8d61-8f9c98a5cddf" rel="noreferrer noopener"><span>Q2-Klausuraufgaben Physik selbstständig lösen</span> <code>50328a4f-91e8-5c8b-8d61-8f9c98a5cddf</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 15 von 16</span>
+      <span>Buch-Digest <code>sha256:54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9ea2179827c9927fa73def7c07eb2809e1decd7f839caca9a4a4a6fc35807862</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-q1-q2-magnetism-induction-recheck-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=ffbbf243-c2eb-4330-b050-837de994c130&amp;goalFingerprint=sha256%3A9ea2179827c9927fa73def7c07eb2809e1decd7f839caca9a4a4a6fc35807862&amp;pageFingerprint=sha256%3Addeeaa20f7c1d8b21e023365f91e261f86ee0ae3d1f42a28b084dbbd7dfacb3d&amp;bookDigest=sha256%3A54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2" data-goal-id="d18d4190-ddc1-5181-b1b6-e79947b737c2" data-page-number="16" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-title">
+    <header class="goal-header">
+      <h1 id="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-title"><a class="goal-self-link" href="#goal-d18d4190-ddc1-5181-b1b6-e79947b737c2">Induktionsgesetz in Ableitungsform anwenden</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d18d4190-ddc1-5181-b1b6-e79947b737c2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:42ae30f63a9d1f48b08dc77f1cd052fe542225cd3b2a3c0e8527aadc183531a6" data-rendered-digest="sha256:3f1004ea4eec92e7582906faef7246cec15637638bab14217e30a49fd9ef4205" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/d18d4190-ddc1-5181-b1b6-e79947b737c2/d18d4190-ddc1-5181-b1b6-e79947b737c2.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Induktionsgesetz in Ableitungsform anwenden&quot;. Die lernende Person kann bei einem differenzierbaren zeitabhängigen magnetischen Fluss die momentane Induktionsspannung einer Spule mit N gleichartigen Windungen mit U_ind(t) = −N · dΦ(t)/dt bestimmen und den zeitlichen Spannungsverlauf physikalisch deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-description-heading">
+        <p class="section-heading" id="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei einem differenzierbaren zeitabhängigen magnetischen Fluss die momentane Induktionsspannung einer Spule mit N gleichartigen Windungen mit U_ind(t) = −N · dΦ(t)/dt bestimmen und den zeitlichen Spannungsverlauf physikalisch deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. II · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d18d4190-ddc1-5181-b1b6-e79947b737c2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-requires-heading">
+          <p class="section-heading" id="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-eb1ea150-ec6c-5000-bce3-f46c820dccf8"><span>Induktionsgesetz und Lenz’sche Regel</span><code>eb1ea150-ec6c-5000-bce3-f46c820dccf8</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-reverse-heading">
+          <p class="section-heading" id="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d18d4190-ddc1-5181-b1b6-e79947b737c2-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-50328a4f-91e8-5c8b-8d61-8f9c98a5cddf" rel="noreferrer noopener"><span>Q2-Klausuraufgaben Physik selbstständig lösen</span> <code>50328a4f-91e8-5c8b-8d61-8f9c98a5cddf</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-86015397-23c4-5ed7-b893-bc619ec961a8" rel="noreferrer noopener"><span>Vorschlag A (LK) - Adaptive Ladespur (Felder/Induktion)</span> <code>86015397-23c4-5ed7-b893-bc619ec961a8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-acf192a8-c398-51dc-a03b-672ab55df957" rel="noreferrer noopener"><span>Selbstinduktion, Einschaltvorgaenge und Feldenergie</span> <code>acf192a8-c398-51dc-a03b-672ab55df957</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-cf892388-6cb4-5981-adf2-7168aeb948b1" rel="noreferrer noopener"><span>Vorschlag A (LK) - Feldregelung und Transformatorwirkungsgrad</span> <code>cf892388-6cb4-5981-adf2-7168aeb948b1</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 16 von 16</span>
+      <span>Buch-Digest <code>sha256:54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e779dacc231c01467f281b8dbe76aab4e0376a814c360d70709772e9afbded29</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-q1-q2-magnetism-induction-recheck-16-v1-20260828&amp;edition=curricular-atomic-v1&amp;goalId=d18d4190-ddc1-5181-b1b6-e79947b737c2&amp;goalFingerprint=sha256%3Ae779dacc231c01467f281b8dbe76aab4e0376a814c360d70709772e9afbded29&amp;pageFingerprint=sha256%3Ac99c95aae5f25c7c62914478c3416f8181db44c0d1f75abeb317ce1bf26339aa&amp;bookDigest=sha256%3A54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

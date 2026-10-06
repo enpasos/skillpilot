@@ -1,0 +1,144 @@
+{
+  "reviewer": "independent-b",
+  "checkedAtUTC": "2026-10-06T03:24:19.900082+00:00",
+  "status": "PASS targeted v4 delta/core/task-state/actual scope checks",
+  "changedWholeGoals": {
+    "00139854-e5a7-5c12-ab50-2268c80bf776": [
+      "requires"
+    ],
+    "c91350bc-7d2e-523c-bd50-0324bccfcf98": [
+      "requires"
+    ],
+    "bf6c39f0-1e44-53b2-8ff6-025f2e36e125": [
+      "requires"
+    ],
+    "4cb74d76-99f1-5264-b1e3-448cda47b005": [
+      "examData.reviewStatus",
+      "examData.solutionContent",
+      "examData.taskContent",
+      "extendedData.terminalRouteCandidate.machineContentReview",
+      "extendedData.terminalRouteCandidate.machineReviewEvidence",
+      "extendedData.terminalRouteCandidate.purpose"
+    ],
+    "171b47e2-2c53-50f2-a145-a26b896fd73f": [
+      "examData.reviewStatus",
+      "examData.solutionContent",
+      "examData.taskContent",
+      "extendedData.terminalRouteCandidate.machineContentReview",
+      "extendedData.terminalRouteCandidate.machineReviewEvidence"
+    ]
+  },
+  "unchangedWholeGoals": 474,
+  "routeRows": [
+    {
+      "goalId": "00139854-e5a7-5c12-ab50-2268c80bf776",
+      "removedSinceV3": [
+        "0d59b62e-d3f9-5969-b961-0c5e26316c04"
+      ],
+      "addedSinceV3": [],
+      "oldActiveExpandedAtomCount": 65,
+      "preservedOriginalActiveAtomicPrerequisites": 64,
+      "originalNonClusterPrerequisitesPreserved": true,
+      "onlyMissingFormerActiveAtomicId": "d3cd250f-5221-589d-aa1c-44a4692d1acb",
+      "formerQuantitativePerformanceRemainsAsHEOnlyANDAndSeparateTerminal": true,
+      "examDataExact": true
+    },
+    {
+      "goalId": "c91350bc-7d2e-523c-bd50-0324bccfcf98",
+      "removedSinceV3": [
+        "0d59b62e-d3f9-5969-b961-0c5e26316c04"
+      ],
+      "addedSinceV3": [],
+      "oldActiveExpandedAtomCount": 65,
+      "preservedOriginalActiveAtomicPrerequisites": 64,
+      "originalNonClusterPrerequisitesPreserved": true,
+      "onlyMissingFormerActiveAtomicId": "d3cd250f-5221-589d-aa1c-44a4692d1acb",
+      "formerQuantitativePerformanceRemainsAsHEOnlyANDAndSeparateTerminal": true,
+      "examDataExact": true
+    },
+    {
+      "goalId": "bf6c39f0-1e44-53b2-8ff6-025f2e36e125",
+      "removedSinceV3": [
+        "0d59b62e-d3f9-5969-b961-0c5e26316c04"
+      ],
+      "addedSinceV3": [],
+      "oldActiveExpandedAtomCount": 65,
+      "preservedOriginalActiveAtomicPrerequisites": 64,
+      "originalNonClusterPrerequisitesPreserved": true,
+      "onlyMissingFormerActiveAtomicId": "d3cd250f-5221-589d-aa1c-44a4692d1acb",
+      "formerQuantitativePerformanceRemainsAsHEOnlyANDAndSeparateTerminal": true,
+      "examDataExact": true
+    }
+  ],
+  "taskRows": [
+    {
+      "goalId": "4cb74d76-99f1-5264-b1e3-448cda47b005",
+      "rawVerdict": "KEEP",
+      "priorOwnFull24of24ContentVerdict": "KEEP frozen B-v2",
+      "coreMaterialsPromptsSolutionAndScoringExact": true,
+      "reviewStatusBefore": "needs_review",
+      "reviewStatusAfter": "released",
+      "machineStateOnlyNoHumanOrLearnerEvidence": true,
+      "onlyReviewNotesReplacedByUnchangedPassingRequirement": true,
+      "changedPaths": [
+        "examData.reviewStatus",
+        "examData.solutionContent",
+        "examData.taskContent",
+        "extendedData.terminalRouteCandidate.machineContentReview",
+        "extendedData.terminalRouteCandidate.machineReviewEvidence",
+        "extendedData.terminalRouteCandidate.purpose"
+      ]
+    },
+    {
+      "goalId": "171b47e2-2c53-50f2-a145-a26b896fd73f",
+      "rawVerdict": "KEEP",
+      "priorOwnFull24of24ContentVerdict": "KEEP frozen B-v2",
+      "coreMaterialsPromptsSolutionAndScoringExact": true,
+      "reviewStatusBefore": "needs_review",
+      "reviewStatusAfter": "released",
+      "machineStateOnlyNoHumanOrLearnerEvidence": true,
+      "onlyReviewNotesReplacedByUnchangedPassingRequirement": true,
+      "changedPaths": [
+        "examData.reviewStatus",
+        "examData.solutionContent",
+        "examData.taskContent",
+        "extendedData.terminalRouteCandidate.machineContentReview",
+        "extendedData.terminalRouteCandidate.machineReviewEvidence"
+      ]
+    }
+  ],
+  "scopeComparisons": {
+    "active474_BYRawNodes": 474,
+    "retained407_477Node_BYRawNodes": 477,
+    "inactive479_v1_BYRawNodes": 475,
+    "inactive479_v3_BYRawNodes": 475,
+    "v4_BYRawNodes": 473,
+    "retained407ToV4RemovedBYGoalIds": [
+      "0d59b62e-d3f9-5969-b961-0c5e26316c04",
+      "18819a59-2442-530f-a7c3-26755398ec66",
+      "3d6699ae-ebbd-5a55-8798-b809a9d74f0a",
+      "d3cd250f-5221-589d-aa1c-44a4692d1acb"
+    ],
+    "v4AddedBYGoalIdsRelativeToRetained407": [],
+    "v3ToV4RemovedBYGoalIds": [
+      "0d59b62e-d3f9-5969-b961-0c5e26316c04",
+      "4cb74d76-99f1-5264-b1e3-448cda47b005"
+    ],
+    "activeToV4RemovedBYGoalIds": [
+      "d3cd250f-5221-589d-aa1c-44a4692d1acb"
+    ],
+    "v4AddedBYGoalIdsRelativeToActive": [],
+    "active376_BYRawCurricularAtoms": 376,
+    "candidate378_BYRawCurricularAtoms": 375,
+    "rawCountsAreNotPrimarySourceCoverage": true
+  },
+  "all104StrictWholeGoalsExactAndRetainedBY": true,
+  "allOtherCompiledApplicabilityExactVsV3": true,
+  "noNewBYRootOrRequiresInfluxForSixHEGoals": true,
+  "ownNativePhysicalFileCount": 497,
+  "nativeDFreigabe": false,
+  "fullCQRRun": false,
+  "activeWrites": false,
+  "humanApproval": false,
+  "humanTrial": false
+}

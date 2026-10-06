@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "stage": "one-paraben-classification-check",
+  "commandArgv": [
+    "app/node_modules/.bin/tsx",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-routes-native-d-preparation-v1/check-one-paraben-classification-binding.mts"
+  ],
+  "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-q1-current378-routes-native-d-preparation-20261006-v1",
+  "startedAtUTC": "2026-10-06T03:15:45.145281+00:00",
+  "completedAtUTC": "2026-10-06T03:15:45.541166+00:00",
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'sha256:f98153a2f25d11d1dddf20dd59c670eeb34dc7ed302a248e647920367fbab8a7'\n- 'sha256:3e428ba5cdae8ea563b1ffe9925471efe0f6e427ab91e40b232176338b51af1d'\n    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/chemie-q1-current378-routes-native-d-preparation-20261006-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-routes-native-d-preparation-v1/check-one-paraben-classification-binding.mts:12:8)\n    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)\n    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 'sha256:f98153a2f25d11d1dddf20dd59c670eeb34dc7ed302a248e647920367fbab8a7',\n  expected: 'sha256:3e428ba5cdae8ea563b1ffe9925471efe0f6e427ab91e40b232176338b51af1d',\n  operator: 'strictEqual'\n}\n\nNode.js v20.20.2\n",
+  "nativeCodeModified": false,
+  "activeWrites": false,
+  "scienceReviewDecision": null
+}

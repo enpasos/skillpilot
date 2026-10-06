@@ -1,0 +1,561 @@
+{
+  "schemaVersion": 1,
+  "licenseExpression": "Apache-2.0",
+  "createdAtUTC": "2026-10-06T05:19:55.534128+00:00",
+  "reviewer": "Codex independent A; not the author of the reviewed B007 material",
+  "independence": {
+    "authorSelfReview": false,
+    "priorPeerConclusionsRead": false,
+    "newPeerOutputsRead": false
+  },
+  "decision": "revise_bounded_author_materials_then_recheck_changed_fields",
+  "reviewScope": "All seven DE/EN descriptions/prerequisite proposals/semantic boundaries, all fourteen complete actual DE/EN materials/tasks/solutions/criteria/transfer contexts, both narrow cards, exact byte checks, selected actual primary-source boundaries. Not all 403 source obligations.",
+  "compoundAuthorFreeze": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/seven-routines-and-fourteen-cases.author.final.freeze.json",
+    "sha256": "bff61973489242df3f772bd9b65a44037c6335751638057851ed53ab05d1cea0",
+    "bytes": 20281,
+    "expectedSha256": "bff61973489242df3f772bd9b65a44037c6335751638057851ed53ab05d1cea0",
+    "exact": true
+  },
+  "inputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/seven-routines.de-en.author-candidate.json",
+      "sha256": "c05e2a3abce898384b19074f7d991c7f634ec875e750001df105e36a83793590",
+      "bytes": 19368
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/authored-case-materials-v1/cases.de-en.author-candidate.json",
+      "sha256": "f557112cdd8ae028e17c5847837578b9fa7dc6c93099d29bba35ca5b4add95bf",
+      "bytes": 103415
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/authored-case-materials-v1/primary-cards.de-en.author-candidate.json",
+      "sha256": "32458dac7005037d50e0f07f96437ad1a7bf89df2a2dfdeaf9b9868f2020bcb5",
+      "bytes": 4764
+    }
+  ],
+  "findings": [
+    {
+      "findingId": "A-F01",
+      "severity": "material_revision_required",
+      "topic": "Exact German H-code lookup text",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/authored-case-materials-v1/cases.de-en.author-candidate.json",
+      "caseLocalKey": "label-same-exclamation-different-warning",
+      "fieldPaths": [
+        "material.de[1]",
+        "expectedResponseOrSolution.de"
+      ],
+      "literalProblem": "The H319 lookup entry says verursacht starke Augenreizung; H315 says reizt die Haut. Meanings and assigned codes are correct, but the table presents them as the H-code statement text without marking a paraphrase.",
+      "requiredCorrection": "Use the official German H319 wording Verursacht schwere Augenreizung and H315 wording Verursacht Hautreizungen in the lookup table, or explicitly distinguish paraphrase from official statement. Keep the correct EN statements and symbol ambiguity countercase.",
+      "primaryReferences": [
+        {
+          "url": "https://eur-lex.europa.eu/eli/reg_impl/2025/1186/oj?locale=de",
+          "access": "official-domain search result inspected",
+          "supports": "German H319 statement"
+        },
+        {
+          "url": "https://eur-lex.europa.eu/eli/reg_impl/2025/523/oj/deu",
+          "access": "official-domain search result inspected",
+          "supports": "German H315 statement"
+        },
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52018XC0409(01)",
+          "access": "full page fetched and relevant table inspected",
+          "supports": "H315/H319 meanings; H225/H226/H228 distinctions"
+        }
+      ],
+      "doesNotMean": "No incorrect hazard code, actual product classification or authorization for real use was found."
+    },
+    {
+      "findingId": "A-F02",
+      "severity": "material_revision_required",
+      "topic": "Separate salt weighing lacks supplied equipment and tare instruction",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/authored-case-materials-v1/cases.de-en.author-candidate.json",
+      "caseLocalKey": "preparation-salt-water-performed-log",
+      "fieldPaths": [
+        "material.de[0]",
+        "material.en[0]",
+        "material.de[1]",
+        "material.en[1]",
+        "boundSimulatorSpecification.actionVocabulary"
+      ],
+      "literalProblem": "The supplied kit lists one beaker, a stirring rod and a balance. The beaker already contains the weighed water when 2.0 g salt must be weighed separately. A weighing dish/second vessel and its tare operation are not specified.",
+      "requiredCorrection": "Supply a clean weighing dish or second suitable vessel and a transfer tool, and explicitly tare that salt-weighing container before weighing. Align the simulated action feedback and successful log with that separate operation.",
+      "evidenceBasis": "Literal provided kit and imposed action order; this is an operational completeness finding, not an external equipment standard.",
+      "doesNotMean": "The salt/water quantities, dissolution assumption, stop-on-spill rule and requirement for a performed supervised/simulator log are sound."
+    },
+    {
+      "findingId": "A-F03",
+      "severity": "material_revision_required",
+      "topic": "W-1 mixed-composition catch-all conflicts with accepted known-mixture transfer",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/authored-case-materials-v1/cases.de-en.author-candidate.json",
+      "caseLocalKey": "disposal-identified-local-streams",
+      "fieldPaths": [
+        "material.de[0]",
+        "material.en[0]",
+        "transferOrCountercase.de",
+        "transferOrCountercase.en"
+      ],
+      "literalProblem": "W-1 sends unknown or mixed compositions to the teacher without a route. Its transfer nevertheless requires W-B for known NaCl/water newly containing a copper compound. Literal mixed composition covers this known mixture, and the rule gives no precedence. The original admitted ethanol/water and salt/water solutions are themselves mixtures.",
+      "requiredCorrection": "Narrow the hold rule to unknown or unambiguously unassignable/incompatible combinations, and explicitly state that the documented aqueous copper category takes precedence for the stated salt-plus-copper case. Otherwise accept the held decision for this transfer instead of requiring W-B.",
+      "evidenceBasis": "Internal consistency of the supplied synthetic local W-1 instruction; no national disposal rule is being substituted.",
+      "doesNotMean": "No drain permission or actual waste treatment is proposed; W-2 correctly holds the unidentified residue."
+    },
+    {
+      "findingId": "A-F04",
+      "severity": "assessment_revision_required",
+      "topic": "Required spatial interpretation is not elicited by the learner prompt",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/authored-case-materials-v1/cases.de-en.author-candidate.json",
+      "caseLocalKey": "volume-fraction-contraction-no-denominator-swap",
+      "fieldPaths": [
+        "learnerTask.de",
+        "learnerTask.en",
+        "assessmentCriteria[3].required",
+        "assessmentCriteria[3].text"
+      ],
+      "literalProblem": "Criterion 4 requires rejecting a separate constituent region in the homogeneous mixture. The learnerTask only asks for the fraction, denominator distinction and other ratio; it never asks whether ethanol occupies a separate 40.0 mL region.",
+      "requiredCorrection": "Add a direct DE/EN prompt for this interpretation, or make the unprompted criterion optional. Preserve the correct 40% input-volume fraction and the distinct 41.7% final-volume ratio.",
+      "primaryReferences": [
+        {
+          "url": "https://goldbook.iupac.org/terms/view/V06643/html",
+          "access": "current primary-domain search result inspected; direct term fetch failed",
+          "supports": "Input constituent volumes, before mixing, determine the volume-fraction denominator"
+        }
+      ]
+    },
+    {
+      "findingId": "A-F05",
+      "severity": "source_receipt_correction",
+      "topic": "Parenthesized-example statement page is off by one",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/authored-case-materials-v1/source-boundary-and-material-limitations.author.md",
+      "fieldPaths": [
+        "Source boundaries paragraph containing p. 6 states that parenthesized examples are suggestions"
+      ],
+      "literalProblem": "The actual PDF puts the explicit parenthesized-examples statement on printed page 7, physical zero-based page 7, continuing the discussion that starts on printed page 6.",
+      "requiredCorrection": "Cite printed p.7, or pp.6-7 for the continuing guidance. Retain the correct mandatory solutions/safety p.11 and facultative solubility/temperature p.12 distinction.",
+      "primaryReferences": [
+        {
+          "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf",
+          "localPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-chemie.pdf",
+          "physicalPageIndices": [
+            6,
+            7,
+            11,
+            12
+          ],
+          "access": "official PDF fetched; local actual PDF pages read as layout text"
+        }
+      ]
+    },
+    {
+      "findingId": "A-F06",
+      "severity": "clarification_recommended",
+      "topic": "Avoid implying a one-pictogram/one-hazard-class correspondence",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-three-safety-solutions-source-boundary-author-v1/seven-routines.de-en.author-candidate.json",
+      "routineLocalKey": "label",
+      "fieldPaths": [
+        "prototypes[label].positiveUnderstandingAuthorCandidate.essentialUnderstandingDe",
+        "prototypes[label].positiveUnderstandingAuthorCandidate.essentialUnderstandingEn",
+        "cases[label].essentialUnderstanding"
+      ],
+      "literalProblem": "The singular wording ein Piktogramm kennzeichnet eine Gefahrenklasse / a pictogram denotes a hazard class is unnecessarily narrow. The actual exclamation-mark cases correctly cover skin irritation, eye irritation and respiratory irritation under a shared symbol.",
+      "requiredCorrection": "Say that pictograms signal types/classes of hazards and that one symbol can cover different concrete hazards, whose associated statements must be read.",
+      "evidenceBasis": "The case material itself demonstrates several hazard classes associated with a shared symbol; do not infer unique class or substance identity."
+    }
+  ],
+  "routineDecisions": [
+    {
+      "localKey": "label",
+      "candidateGoalId": "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+      "titleDe": "Gefahrstoffkennzeichnungen deuten",
+      "descriptionDeRead": true,
+      "descriptionEnRead": true,
+      "requiresAuthorProposal": [],
+      "semanticAtomic": true,
+      "atomicityDecision": "atomic",
+      "decision": "revise_material_keep_atomic",
+      "reason": "One label interpretation routine; bounded lookup is part of that interpretation. Correct shared-symbol cases; apply A-F01 and recommended A-F06. Proposed empty prerequisites are plausible for supplied paper-label data, not lab use. Existing card may be retained only after changed semantic fingerprint review.",
+      "sourceClearance": "selected source contribution only; exact applicability/stage/projection binding pending",
+      "nativeDPAorMApproval": false
+    },
+    {
+      "localKey": "handling",
+      "candidateGoalId": null,
+      "titleDe": "Stoffbezogene Schutzmaßnahmen begründen",
+      "descriptionDeRead": true,
+      "descriptionEnRead": true,
+      "requiresAuthorProposal": [
+        "9e656697-fc05-5aa9-9aca-871af2e89eb7"
+      ],
+      "semanticAtomic": true,
+      "atomicityDecision": "atomic",
+      "decision": "keep_bounded_candidate",
+      "reason": "One context-specific precaution justification routine. Label interpretation prerequisite is coherent; disposal and full independent risk assessment are excluded. Changed aerosol/dust exposure is handled without generic PPE permission.",
+      "sourceClearance": "selected source contribution only; exact applicability/stage/projection binding pending",
+      "nativeDPAorMApproval": false
+    },
+    {
+      "localKey": "disposal",
+      "candidateGoalId": null,
+      "titleDe": "Vorgegebene Entsorgungswege begründet auswählen",
+      "descriptionDeRead": true,
+      "descriptionEnRead": true,
+      "requiresAuthorProposal": [],
+      "semanticAtomic": true,
+      "atomicityDecision": "atomic",
+      "decision": "revise_material_keep_atomic",
+      "reason": "One route-selection routine plus withholding when decisive data are absent. No universal route table is memorized. Resolve W-1 catch-all A-F03; W-2 remains coherent. Label mastery is not logically required when complete local composition/rules are supplied.",
+      "sourceClearance": "selected source contribution only; exact applicability/stage/projection binding pending",
+      "nativeDPAorMApproval": false
+    },
+    {
+      "localKey": "preparation",
+      "candidateGoalId": null,
+      "titleDe": "Lösungen nach Arbeitsanweisung herstellen",
+      "descriptionDeRead": true,
+      "descriptionEnRead": true,
+      "requiresAuthorProposal": [
+        "13d4f336-ab16-54a7-9479-c920b458f385"
+      ],
+      "semanticAtomic": true,
+      "atomicityDecision": "atomic",
+      "decision": "revise_material_keep_atomic",
+      "reason": "One performed instruction-following preparation routine across selected phases/solvents. General lab safety prerequisite is coherent. Apply A-F02. A hypothetical expected log is insufficient. Facilitator action logs test model actions and do not certify physical laboratory competence.",
+      "sourceClearance": "selected source contribution only; exact applicability/stage/projection binding pending",
+      "nativeDPAorMApproval": false
+    },
+    {
+      "localKey": "solubility",
+      "candidateGoalId": null,
+      "titleDe": "Löslichkeit und Sättigung aus Daten erklären",
+      "descriptionDeRead": true,
+      "descriptionEnRead": true,
+      "requiresAuthorProposal": [],
+      "semanticAtomic": true,
+      "atomicityDecision": "atomic",
+      "decision": "keep_bounded_candidate_source_role_pending",
+      "reason": "One capacity/saturation routine with solute, solvent, temperature and attained equilibrium supplied. Same-routine explanations and capacity arithmetic are coherent. HE mandatory p.11 alone does not establish saturation/temperature core; actual p.12 is facultative. NI 5/6 property-description row supports only a partial contribution.",
+      "sourceClearance": "selected source contribution only; exact applicability/stage/projection binding pending",
+      "nativeDPAorMApproval": false
+    },
+    {
+      "localKey": "mass_fraction",
+      "candidateGoalId": null,
+      "titleDe": "Massenanteile berechnen und deuten",
+      "descriptionDeRead": true,
+      "descriptionEnRead": true,
+      "requiresAuthorProposal": [],
+      "semanticAtomic": true,
+      "atomicityDecision": "atomic",
+      "decision": "keep_bounded_candidate",
+      "reason": "One calculate-and-interpret routine; total constituent mass is the denominator. Water-only loss is explicitly supplied, and unknown remaining composition stays undecided. No preparation or saturation evidence is inferred.",
+      "sourceClearance": "selected source contribution only; exact applicability/stage/projection binding pending",
+      "nativeDPAorMApproval": false
+    },
+    {
+      "localKey": "volume_fraction",
+      "candidateGoalId": null,
+      "titleDe": "Volumenanteile berechnen und deuten",
+      "descriptionDeRead": true,
+      "descriptionEnRead": true,
+      "requiresAuthorProposal": [],
+      "semanticAtomic": true,
+      "atomicityDecision": "atomic",
+      "decision": "revise_one_assessment_keep_atomic",
+      "reason": "One calculate-and-interpret routine using before-mixing constituent-volume sums. Same-temperature data and contraction distinction are correct. Apply prompt/criterion alignment A-F04; do not substitute final mixture volume.",
+      "sourceClearance": "selected source contribution only; exact applicability/stage/projection binding pending",
+      "nativeDPAorMApproval": false
+    }
+  ],
+  "caseDecisions": [
+    {
+      "caseLocalKey": "label-same-exclamation-different-warning",
+      "routineLocalKey": "label",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "decision": "revise",
+      "reason": "A-F01; paired symbol meanings and missing-information response otherwise coherent.",
+      "recordStatusRetained": "ai_candidate",
+      "validationStatusRetained": "needs_human_review",
+      "evidenceLevelRetained": "E1",
+      "generalizationLevelRetained": "G1",
+      "actualLearnerPerformance": false,
+      "nativeProfileApproval": false
+    },
+    {
+      "caseLocalKey": "label-flame-and-bounded-lookup",
+      "routineLocalKey": "label",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "decision": "keep_bounded_candidate",
+      "reason": "H225/H228/H226 meanings and lookup are correct; flame does not identify alcohol or state. Apply any shared essential-understanding wording clarification A-F06.",
+      "recordStatusRetained": "ai_candidate",
+      "validationStatusRetained": "needs_human_review",
+      "evidenceLevelRetained": "E1",
+      "generalizationLevelRetained": "G1",
+      "actualLearnerPerformance": false,
+      "nativeProfileApproval": false
+    },
+    {
+      "caseLocalKey": "handling-eye-splash-task",
+      "routineLocalKey": "handling",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "decision": "keep_bounded_candidate",
+      "reason": "Complete fictional activity/local instruction; splash route explains goggles, dust mask is unsuitable for eyes, spraying requires fresh authorization.",
+      "recordStatusRetained": "ai_candidate",
+      "validationStatusRetained": "needs_human_review",
+      "evidenceLevelRetained": "E1",
+      "generalizationLevelRetained": "G1",
+      "actualLearnerPerformance": false,
+      "nativeProfileApproval": false
+    },
+    {
+      "caseLocalKey": "handling-dust-versus-closed-vessel",
+      "routineLocalKey": "handling",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "decision": "keep_bounded_candidate",
+      "reason": "Closed intact transport and open dust-producing weighing have different exposures; missing required extraction stops open weighing, loose closure invalidates transport.",
+      "recordStatusRetained": "ai_candidate",
+      "validationStatusRetained": "needs_human_review",
+      "evidenceLevelRetained": "E1",
+      "generalizationLevelRetained": "G1",
+      "actualLearnerPerformance": false,
+      "nativeProfileApproval": false
+    },
+    {
+      "caseLocalKey": "disposal-identified-local-streams",
+      "routineLocalKey": "disposal",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "decision": "revise",
+      "reason": "A-F03; category decisions are valid only after the catch-all/precedence ambiguity is resolved.",
+      "recordStatusRetained": "ai_candidate",
+      "validationStatusRetained": "needs_human_review",
+      "evidenceLevelRetained": "E1",
+      "generalizationLevelRetained": "G1",
+      "actualLearnerPerformance": false,
+      "nativeProfileApproval": false
+    },
+    {
+      "caseLocalKey": "disposal-missing-identity-hold",
+      "routineLocalKey": "disposal",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "decision": "keep_bounded_candidate",
+      "reason": "W-2 distinguishes documented sugar/water from unidentified clear residue; U is no decision, not a waste stream. Reliable copper identification enables S-2.",
+      "recordStatusRetained": "ai_candidate",
+      "validationStatusRetained": "needs_human_review",
+      "evidenceLevelRetained": "E1",
+      "generalizationLevelRetained": "G1",
+      "actualLearnerPerformance": false,
+      "nativeProfileApproval": false
+    },
+    {
+      "caseLocalKey": "preparation-salt-water-performed-log",
+      "routineLocalKey": "preparation",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "decision": "revise",
+      "reason": "A-F02; correct performed-log requirement, finite salt/water quantities and supervised stop-on-deviation rule.",
+      "recordStatusRetained": "ai_candidate",
+      "validationStatusRetained": "needs_human_review",
+      "evidenceLevelRetained": "E1",
+      "generalizationLevelRetained": "G1",
+      "actualLearnerPerformance": false,
+      "nativeProfileApproval": false
+    },
+    {
+      "caseLocalKey": "preparation-bound-phase-solvent-transfer",
+      "routineLocalKey": "preparation",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "decision": "keep_as_model_material_only",
+      "reason": "Full action/feedback sequences exist for liquid/water, solid/ethanolic solvent and gas/water. Gas partial pressure/temperature/capacity are model context, not measured kinetics or equilibrium proof. No real gas/petrol procedure or actual lab mastery follows.",
+      "recordStatusRetained": "ai_candidate",
+      "validationStatusRetained": "needs_human_review",
+      "evidenceLevelRetained": "E1",
+      "generalizationLevelRetained": "G1",
+      "actualLearnerPerformance": false,
+      "nativeProfileApproval": false
+    },
+    {
+      "caseLocalKey": "solubility-clear-saturated-countercase",
+      "routineLocalKey": "solubility",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "decision": "keep_bounded_candidate",
+      "reason": "9.6 g limit, 2.4 g spare and saturated clear B are correct; doubled-water countercase gives 19.2 g total limit and 9.6 g spare.",
+      "recordStatusRetained": "ai_candidate",
+      "validationStatusRetained": "needs_human_review",
+      "evidenceLevelRetained": "E1",
+      "generalizationLevelRetained": "G1",
+      "actualLearnerPerformance": false,
+      "nativeProfileApproval": false
+    },
+    {
+      "caseLocalKey": "solubility-residue-water-and-temperature",
+      "routineLocalKey": "solubility",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "decision": "keep_bounded_candidate",
+      "reason": "24 g dissolved / 8 g residue; after water addition 36 g limit, 32 g dissolved and 4 g spare. Attained equilibrium matters; 40-degree data are needed.",
+      "recordStatusRetained": "ai_candidate",
+      "validationStatusRetained": "needs_human_review",
+      "evidenceLevelRetained": "E1",
+      "generalizationLevelRetained": "G1",
+      "actualLearnerPerformance": false,
+      "nativeProfileApproval": false
+    },
+    {
+      "caseLocalKey": "mass-fraction-total-mass-and-dilution",
+      "routineLocalKey": "mass_fraction",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "decision": "keep_bounded_candidate",
+      "reason": "12/120 gives 10%; 12/108 is a different ratio; dilution gives 8%, proportional scaling 10%.",
+      "recordStatusRetained": "ai_candidate",
+      "validationStatusRetained": "needs_human_review",
+      "evidenceLevelRetained": "E1",
+      "generalizationLevelRetained": "G1",
+      "actualLearnerPerformance": false,
+      "nativeProfileApproval": false
+    },
+    {
+      "caseLocalKey": "mass-fraction-documented-solvent-loss",
+      "routineLocalKey": "mass_fraction",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "decision": "keep_bounded_candidate",
+      "reason": "12.5% becomes rounded 14.3% after specified water-only loss; end total mass alone cannot prove remaining solute mass. Added-water countercase gives 10%.",
+      "recordStatusRetained": "ai_candidate",
+      "validationStatusRetained": "needs_human_review",
+      "evidenceLevelRetained": "E1",
+      "generalizationLevelRetained": "G1",
+      "actualLearnerPerformance": false,
+      "nativeProfileApproval": false
+    },
+    {
+      "caseLocalKey": "volume-fraction-input-sum-and-scaling",
+      "routineLocalKey": "volume_fraction",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "decision": "keep_bounded_candidate",
+      "reason": "25% in initial and proportional batch; changed input ratio 40%. Additivity is local, not presumed for other ratios.",
+      "recordStatusRetained": "ai_candidate",
+      "validationStatusRetained": "needs_human_review",
+      "evidenceLevelRetained": "E1",
+      "generalizationLevelRetained": "G1",
+      "actualLearnerPerformance": false,
+      "nativeProfileApproval": false
+    },
+    {
+      "caseLocalKey": "volume-fraction-contraction-no-denominator-swap",
+      "routineLocalKey": "volume_fraction",
+      "completeMaterialTaskSolutionCriteriaTransferReadDeEn": true,
+      "decision": "revise_assessment",
+      "reason": "A-F04; 40% and fresh 30% use input sums; 41.7% uses a different final-volume denominator. Spatial interpretation is scientifically sound but must be elicited.",
+      "recordStatusRetained": "ai_candidate",
+      "validationStatusRetained": "needs_human_review",
+      "evidenceLevelRetained": "E1",
+      "generalizationLevelRetained": "G1",
+      "actualLearnerPerformance": false,
+      "nativeProfileApproval": false
+    }
+  ],
+  "cardDecisions": [
+    {
+      "cardLocalKey": "mass_fraction_definition",
+      "decision": "keep_scientific_candidate",
+      "necessaryAsNarrowRecallCandidate": true,
+      "frontAndBackReadDeEn": true,
+      "reason": "One compact definition and its denominator; application and preparation remain ordinary understanding cases. The mass denominator includes every constituent; the volume denominator uses the sum of same-temperature constituent volumes before mixing.",
+      "cardId": null,
+      "originGoalId": null,
+      "deckId": null,
+      "memoryGoalIds": [],
+      "nativeMApproval": false,
+      "activationApproved": false,
+      "actualCompositionVisibilityVerified": false,
+      "pending": [
+        "actual current ordinary-goal ID",
+        "current memory_required goal fingerprint decision",
+        "concrete card ID and kept/necessary origin trace",
+        "concrete canonical deck and memoryGoalIds",
+        "same-view actual learner-facing visibility proof"
+      ]
+    },
+    {
+      "cardLocalKey": "volume_fraction_definition",
+      "decision": "keep_scientific_candidate",
+      "necessaryAsNarrowRecallCandidate": true,
+      "frontAndBackReadDeEn": true,
+      "reason": "One compact definition and its denominator; application and preparation remain ordinary understanding cases. The mass denominator includes every constituent; the volume denominator uses the sum of same-temperature constituent volumes before mixing.",
+      "cardId": null,
+      "originGoalId": null,
+      "deckId": null,
+      "memoryGoalIds": [],
+      "nativeMApproval": false,
+      "activationApproved": false,
+      "actualCompositionVisibilityVerified": false,
+      "pending": [
+        "actual current ordinary-goal ID",
+        "current memory_required goal fingerprint decision",
+        "concrete card ID and kept/necessary origin trace",
+        "concrete canonical deck and memoryGoalIds",
+        "same-view actual learner-facing visibility proof"
+      ]
+    }
+  ],
+  "existingLabelMemory": {
+    "readCardId": "chem_basics_001",
+    "originGoalId": "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+    "memoryGoalId": "1e372b97-6f1c-596c-8a8b-fc03193d784a",
+    "deckId": "de_gymnasium_chemistry_basics_seki",
+    "existingContentUnchangedByThisReview": true,
+    "changedOrdinaryDescriptionRequiresFreshFingerprintReview": true,
+    "nativeMReapproved": false
+  },
+  "sourceBoundaryDecisions": [
+    {
+      "source": "HE official G9 PDF printed p.11 / physical index 11",
+      "decision": "keep_separate_source_contributions",
+      "reason": "Separate labelling, disposal and precautions support three routines. The solutions row includes solid/liquid/gas starting phases, different solvents and BOTH mass and volume fractions; selected examples do not discharge the whole original row."
+    },
+    {
+      "source": "HE official G9 PDF printed p.12 / physical index 12",
+      "decision": "facultative_not_mandatory_core",
+      "reason": "Saturation categories and temperature-dependent solubility are in facultative content. The fixed-temperature model cases are scientifically sound; prospective exact source role must preserve this status."
+    },
+    {
+      "source": "NI source record ni-chemistry-seki-kc2015-st-5-6-1-kompetenz-003-cdaa7726 plus actual PDF physical index 50",
+      "decision": "partial_only",
+      "reason": "Describing typical properties such as flammability and solubility for grades 5/6 is broader and different from calculating capacity/saturation. No exact full NI claim."
+    },
+    {
+      "source": "BW raw rows 3.2.1.1(3), 3.2.1.2(3), actual PDF physical indices 14 and 17",
+      "decision": "partial_companion_boundaries_open",
+      "reason": "Hazard potential for people/environment and particle-model explanation of phase changes/dissolving/diffusion/Brownian motion are retained companion obligations. These selected label/calculation cases do not clear those full rows."
+    },
+    {
+      "source": "IUPAC M03722 and V06643 current official-domain indexed definitions, version 5.0.0 (2025)",
+      "decision": "scientific_definitions_match",
+      "reason": "Total mass includes all constituents; volume fraction denominator is the sum of constituent volumes before mixing. Direct term/format opens failed; successful direct-fetch access is not claimed."
+    }
+  ],
+  "counts": {
+    "routines": 7,
+    "cases": 14,
+    "requiredCriteriaActuallyPresent": 46,
+    "newNarrowCards": 2,
+    "retainedMappingRows": 413,
+    "retainedDistinctSourceObligations": 403,
+    "all403SubstantivelyReviewed": false
+  },
+  "currentStrictInheritedBaseline": {
+    "chemie": "112/378",
+    "biologie": "67/383"
+  },
+  "strictCompletionsAdded": 0,
+  "restoredBindingsAdded": 0,
+  "activeWrites": false,
+  "nativeGateApproval": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "remainingWork": [
+    "Correct the specific author fields in a new frozen author packet and recheck them independently",
+    "Review all actual source/stage/target bindings before full national clearance",
+    "Assign actual new IDs and validate requires/routes/placements",
+    "Bind current native D/P/A/M only after their own gates; no scientific card KEEP equals native M",
+    "Review actual visualizations separately; no image work performed here",
+    "Obtain actual learner evidence and human review where required; synthetic E1/G1 remain unchanged"
+  ]
+}

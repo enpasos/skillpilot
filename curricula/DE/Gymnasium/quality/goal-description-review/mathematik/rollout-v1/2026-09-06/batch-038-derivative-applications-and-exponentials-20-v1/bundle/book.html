@@ -1,0 +1,1128 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Mathematik – B038 Ableitungsanwendungen und Exponentialfunktionen (20 Ziele)</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Mathematik – B038 Ableitungsanwendungen und Exponentialfunktionen (20 Ziele)</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>20 atomare Lernziele</dt><dd>9 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-math-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-71894e7ef4af5f94dc6093d2" aria-label="Mathematik"><a href="#goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3"><span class="toc-entry-label">Mathematik</span></a></h2>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-math-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-3fb62939875ba85ae30720f7" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:analysis-basics" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-31000ff68809987e85218d62" aria-label="Grundlagen der Analysis und mathematische Modelle"><a href="#goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3"><span class="toc-entry-label">Grundlagen&#160;<wbr>der&#160;<wbr>Analysis&#160;<wbr>und&#160;<wbr>mathematische&#160;<wbr>Modelle</span></a></h4>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-fa273adc-25c0-4ba7-90da-57e68c59390e" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-f631f640868fadea3daff719" aria-label="Ableitungseinstieg und Differentialrechnung (Sek II)"><a href="#goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3"><span class="toc-entry-label">Ableitungseinstieg&#160;<wbr>und&#160;<wbr>Differentialrechnung&#160;<wbr>(Sek&#160;<wbr>II)</span></a></h5>
+          <span class="toc-entry-meta"><span>6 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-6fc51848-6705-532f-9dfe-2070bef2f9ad" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-de86d7ec21f0c3d77aea483d" aria-label="Differentialrechnung, Untersuchung und Optimierung"><a href="#goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3"><span class="toc-entry-label">Differentialrechnung,&#160;<wbr>Untersuchung&#160;<wbr>und&#160;<wbr>Optimierung</span></a></h6>
+          <span class="toc-entry-meta"><span>6 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:5" data-chapter-id="structure:canonical-goal-38234acf-d0f8-4ff9-a6f8-852d1596a692" data-chapter-depth="5">
+          <h6 class="toc-entry-heading" id="chapter-7599368bd251bc85d2e1ffa4" aria-label="Ableitungen zur Funktionsuntersuchung und Optimierung nutzen"><a href="#goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3"><span class="toc-entry-label">Ableitungen&#160;<wbr>zur&#160;<wbr>Funktionsuntersuchung&#160;<wbr>und&#160;<wbr>Optimierung&#160;<wbr>nutzen</span></a></h6>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-528cab0b-399d-4d4b-97ea-c32733eb821c" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-262c9f1b57e9da5b6872db26" aria-label="Exponential-, logarithmische und periodische Modelle (Sek II)"><a href="#goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c"><span class="toc-entry-label">Exponential-,&#160;<wbr>logarithmische&#160;<wbr>und&#160;<wbr>periodische&#160;<wbr>Modelle&#160;<wbr>(Sek&#160;<wbr>II)</span></a></h5>
+          <span class="toc-entry-meta"><span>14 Lernziele</span><span>erste zugehörige Lernzielseite 7</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-4047af71-de53-5dc3-80c6-a7c78fb4bfe4" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-d8d6b15878bceaadd55e5f70" aria-label="Exponentialfunktionen"><a href="#goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c"><span class="toc-entry-label">Exponentialfunktionen</span></a></h6>
+          <span class="toc-entry-meta"><span>14 Lernziele</span><span>erste zugehörige Lernzielseite 7</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:5" data-chapter-id="structure:canonical-goal-48e7615d-3e6e-4b5c-9df3-310e510f91f0" data-chapter-depth="5">
+          <h6 class="toc-entry-heading" id="chapter-0024049bbc9a5428cd1cead1" aria-label="Natürliche Exponentialfunktion, Logarithmus und Modelle"><a href="#goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c"><span class="toc-entry-label">Natürliche&#160;<wbr>Exponentialfunktion,&#160;<wbr>Logarithmus&#160;<wbr>und&#160;<wbr>Modelle</span></a></h6>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 7</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3" data-goal-id="350fc8b1-ead0-4239-b28a-217cbd3bd1c3" data-page-number="1" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-fa273adc-25c0-4ba7-90da-57e68c59390e structure:canonical-goal-6fc51848-6705-532f-9dfe-2070bef2f9ad structure:canonical-goal-38234acf-d0f8-4ff9-a6f8-852d1596a692" aria-labelledby="goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3-title"><a class="goal-self-link" href="#goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3">Monotonie und Extremstellen mit der ersten Ableitung untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>350fc8b1-ead0-4239-b28a-217cbd3bd1c3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-f631f640868fadea3daff719">Ableitungseinstieg und Differentialrechnung (Sek II)</a></li><li><a href="#chapter-de86d7ec21f0c3d77aea483d">Differentialrechnung, Untersuchung und Optimierung</a></li><li><a href="#chapter-7599368bd251bc85d2e1ffa4">Ableitungen zur Funktionsuntersuchung und Optimierung nutzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a701ba7ac896d644ccfc21bdb1b14eb74328c8d0f993309407da6d380b106105" data-rendered-digest="sha256:54b0fca002e5f24f6bfc506744c79bc965b6a3f60d3976701cf234ac5c923c55" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/350fc8b1-ead0-4239-b28a-217cbd3bd1c3/350fc8b1-ead0-4239-b28a-217cbd3bd1c3.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Monotonie und Extremstellen mit der ersten Ableitung untersuchen&quot;. Die lernende Person kann aus der ersten Ableitung Rückschlüsse auf Monotonieverhalten und Extremstellen ziehen und diese Zusammenhänge bei der Untersuchung ganzrationaler Funktionen nutzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3-description-heading">
+        <p class="section-heading" id="goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus der ersten Ableitung Rückschlüsse auf Monotonieverhalten und Extremstellen ziehen und diese Zusammenhänge bei der Untersuchung ganzrationaler Funktionen nutzen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3-requires-heading">
+          <p class="section-heading" id="goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3-reverse-heading">
+          <p class="section-heading" id="goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3"><span>Krümmung und Wendestellen mit der zweiten Ableitung untersuchen</span><code>b3604df4-15a8-41c8-a8b0-50dadd698bd3</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-d5feba00-4336-4f26-8dba-0537a797eddb"><span>Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden</span><code>d5feba00-4336-4f26-8dba-0537a797eddb</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-250daae6-58fd-59e4-8a11-f994e789ee47"><span>Einfache Parametertransformationen in Funktionsuntersuchungen nutzen</span><code>250daae6-58fd-59e4-8a11-f994e789ee47</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-d78946f9-1f5f-462c-a99c-fe01054042dd"><span>Ganzrationale Funktionen mit Differentialrechnung analysieren</span><code>d78946f9-1f5f-462c-a99c-fe01054042dd</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-858113c5-e53b-57bb-b01f-ba95c3ddcb6f" rel="noreferrer noopener"><span>Ableitungen elementarer Funktionen berechnen</span> <code>858113c5-e53b-57bb-b01f-ba95c3ddcb6f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-845440ce-f63f-5835-903f-739145ca27bd" rel="noreferrer noopener"><span>Zusammenhang von f und f′ am Graphen beschreiben</span> <code>845440ce-f63f-5835-903f-739145ca27bd</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-450a77d6-2814-571a-af1e-78c9fa61ed2c" rel="noreferrer noopener"><span>Extremwertprobleme modellieren</span> <code>450a77d6-2814-571a-af1e-78c9fa61ed2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2919b3f3-aca2-5add-beeb-de1b9e0eafd8" rel="noreferrer noopener"><span>Trigonometrische und ganzrationale Funktionen vergleichen</span> <code>2919b3f3-aca2-5add-beeb-de1b9e0eafd8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6947245e-6bd7-52d7-9bc2-0c60cfa447c5" rel="noreferrer noopener"><span>Parameterwerte aus vorgegebenen Funktionseigenschaften bestimmen</span> <code>6947245e-6bd7-52d7-9bc2-0c60cfa447c5</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5397f642abcfeb55c78616307e07d301525d9978cb9a01a2b832477b5360e4d5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=350fc8b1-ead0-4239-b28a-217cbd3bd1c3&amp;goalFingerprint=sha256%3A5397f642abcfeb55c78616307e07d301525d9978cb9a01a2b832477b5360e4d5&amp;pageFingerprint=sha256%3A0987ed9aef00e9b068ea1dff28b2bae9e27698f589d573e0bcbfa4ff3ba6e5d1&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3" data-goal-id="b3604df4-15a8-41c8-a8b0-50dadd698bd3" data-page-number="2" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-fa273adc-25c0-4ba7-90da-57e68c59390e structure:canonical-goal-6fc51848-6705-532f-9dfe-2070bef2f9ad structure:canonical-goal-38234acf-d0f8-4ff9-a6f8-852d1596a692" aria-labelledby="goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3-title"><a class="goal-self-link" href="#goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3">Krümmung und Wendestellen mit der zweiten Ableitung untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b3604df4-15a8-41c8-a8b0-50dadd698bd3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-f631f640868fadea3daff719">Ableitungseinstieg und Differentialrechnung (Sek II)</a></li><li><a href="#chapter-de86d7ec21f0c3d77aea483d">Differentialrechnung, Untersuchung und Optimierung</a></li><li><a href="#chapter-7599368bd251bc85d2e1ffa4">Ableitungen zur Funktionsuntersuchung und Optimierung nutzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:86a16e794418e8ef2762e8697f410556383a4c3e0276d5fee32ec814dbe72546" data-rendered-digest="sha256:f10968918385fd96d884b0d8317287430baf9f0a032ed1e182caf08aaa9a1694" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/b3604df4-15a8-41c8-a8b0-50dadd698bd3/b3604df4-15a8-41c8-a8b0-50dadd698bd3.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Krümmung und Wendestellen mit der zweiten Ableitung untersuchen&quot;. Die lernende Person kann das Krümmungsverhalten von Funktionsgraphen mit Hilfe der zweiten Ableitung untersuchen, Wendestellen bestimmen und die zugehörige Änderungsrate im Kontext deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3-description-heading">
+        <p class="section-heading" id="goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Krümmungsverhalten von Funktionsgraphen mit Hilfe der zweiten Ableitung untersuchen, Wendestellen bestimmen und die zugehörige Änderungsrate im Kontext deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3-requires-heading">
+          <p class="section-heading" id="goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3"><span>Monotonie und Extremstellen mit der ersten Ableitung untersuchen</span><code>350fc8b1-ead0-4239-b28a-217cbd3bd1c3</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3-reverse-heading">
+          <p class="section-heading" id="goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-d5feba00-4336-4f26-8dba-0537a797eddb"><span>Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden</span><code>d5feba00-4336-4f26-8dba-0537a797eddb</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-250daae6-58fd-59e4-8a11-f994e789ee47"><span>Einfache Parametertransformationen in Funktionsuntersuchungen nutzen</span><code>250daae6-58fd-59e4-8a11-f994e789ee47</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-d78946f9-1f5f-462c-a99c-fe01054042dd"><span>Ganzrationale Funktionen mit Differentialrechnung analysieren</span><code>d78946f9-1f5f-462c-a99c-fe01054042dd</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-858113c5-e53b-57bb-b01f-ba95c3ddcb6f" rel="noreferrer noopener"><span>Ableitungen elementarer Funktionen berechnen</span> <code>858113c5-e53b-57bb-b01f-ba95c3ddcb6f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-450a77d6-2814-571a-af1e-78c9fa61ed2c" rel="noreferrer noopener"><span>Extremwertprobleme modellieren</span> <code>450a77d6-2814-571a-af1e-78c9fa61ed2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2919b3f3-aca2-5add-beeb-de1b9e0eafd8" rel="noreferrer noopener"><span>Trigonometrische und ganzrationale Funktionen vergleichen</span> <code>2919b3f3-aca2-5add-beeb-de1b9e0eafd8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-79444ef9-cc85-5ac4-a3bc-f10d3ffbfd16" rel="noreferrer noopener"><span>Ortskurven von Wendepunkten bestimmen (LK)</span> <code>79444ef9-cc85-5ac4-a3bc-f10d3ffbfd16</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6947245e-6bd7-52d7-9bc2-0c60cfa447c5" rel="noreferrer noopener"><span>Parameterwerte aus vorgegebenen Funktionseigenschaften bestimmen</span> <code>6947245e-6bd7-52d7-9bc2-0c60cfa447c5</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d4f2d4e2-a831-5ee2-b9c6-bb9e79986aeb" rel="noreferrer noopener"><span>Sachzusammenhänge mit Extremstellen modellieren</span> <code>d4f2d4e2-a831-5ee2-b9c6-bb9e79986aeb</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b88cbf71-5e3e-55e3-ba94-6789408d38d6" rel="noreferrer noopener"><span>Sachzusammenhänge mit Wendestellen modellieren</span> <code>b88cbf71-5e3e-55e3-ba94-6789408d38d6</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4b16fce6-84cc-52ae-98ca-f88cc518cc28" rel="noreferrer noopener"><span>Anschlussbedingungen ohne Sprung und Knick modellieren</span> <code>4b16fce6-84cc-52ae-98ca-f88cc518cc28</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e3b6f1323c0cb5b06628a779b01b0614d3a2a2babe98e2e5b9728b6d75259310</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=b3604df4-15a8-41c8-a8b0-50dadd698bd3&amp;goalFingerprint=sha256%3Ae3b6f1323c0cb5b06628a779b01b0614d3a2a2babe98e2e5b9728b6d75259310&amp;pageFingerprint=sha256%3Abb3006aff5241eb4c7accf0f5736716be52d9fadf00529b7fda2759afff86538&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d5feba00-4336-4f26-8dba-0537a797eddb" data-goal-id="d5feba00-4336-4f26-8dba-0537a797eddb" data-page-number="3" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-fa273adc-25c0-4ba7-90da-57e68c59390e structure:canonical-goal-6fc51848-6705-532f-9dfe-2070bef2f9ad structure:canonical-goal-38234acf-d0f8-4ff9-a6f8-852d1596a692" aria-labelledby="goal-d5feba00-4336-4f26-8dba-0537a797eddb-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d5feba00-4336-4f26-8dba-0537a797eddb-title"><a class="goal-self-link" href="#goal-d5feba00-4336-4f26-8dba-0537a797eddb">Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d5feba00-4336-4f26-8dba-0537a797eddb</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-f631f640868fadea3daff719">Ableitungseinstieg und Differentialrechnung (Sek II)</a></li><li><a href="#chapter-de86d7ec21f0c3d77aea483d">Differentialrechnung, Untersuchung und Optimierung</a></li><li><a href="#chapter-7599368bd251bc85d2e1ffa4">Ableitungen zur Funktionsuntersuchung und Optimierung nutzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f96a78c0a5f9685c2cd5f619cc7d063d4a5c1d4058904986a98d0e0f6b09a7c0" data-rendered-digest="sha256:03f1bba5a846cf61e447725e8442fdd47c26a6bfac587b1f0c653cc706c7505b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/d5feba00-4336-4f26-8dba-0537a797eddb/d5feba00-4336-4f26-8dba-0537a797eddb.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden&quot;. Die lernende Person kann bei Extrem- und Wendestellen zwischen notwendigen und hinreichenden Bedingungen unterscheiden und typische Fehlschlüsse fachlich begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d5feba00-4336-4f26-8dba-0537a797eddb-description-heading">
+        <p class="section-heading" id="goal-d5feba00-4336-4f26-8dba-0537a797eddb-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei Extrem- und Wendestellen zwischen notwendigen und hinreichenden Bedingungen unterscheiden und typische Fehlschlüsse fachlich begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d5feba00-4336-4f26-8dba-0537a797eddb" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d5feba00-4336-4f26-8dba-0537a797eddb-requires-heading">
+          <p class="section-heading" id="goal-d5feba00-4336-4f26-8dba-0537a797eddb-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3"><span>Monotonie und Extremstellen mit der ersten Ableitung untersuchen</span><code>350fc8b1-ead0-4239-b28a-217cbd3bd1c3</code><span class="reference-page">S. 1</span></a></li><li><a href="#goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3"><span>Krümmung und Wendestellen mit der zweiten Ableitung untersuchen</span><code>b3604df4-15a8-41c8-a8b0-50dadd698bd3</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-d5feba00-4336-4f26-8dba-0537a797eddb-reverse-heading">
+          <p class="section-heading" id="goal-d5feba00-4336-4f26-8dba-0537a797eddb-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-d78946f9-1f5f-462c-a99c-fe01054042dd"><span>Ganzrationale Funktionen mit Differentialrechnung analysieren</span><code>d78946f9-1f5f-462c-a99c-fe01054042dd</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-d5feba00-4336-4f26-8dba-0537a797eddb-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d5feba00-4336-4f26-8dba-0537a797eddb-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-450a77d6-2814-571a-af1e-78c9fa61ed2c" rel="noreferrer noopener"><span>Extremwertprobleme modellieren</span> <code>450a77d6-2814-571a-af1e-78c9fa61ed2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-08b80080-4895-55df-8ca6-4e8c5eb0f9f5" rel="noreferrer noopener"><span>Funktionsklassen argumentativ vergleichen</span> <code>08b80080-4895-55df-8ca6-4e8c5eb0f9f5</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1afeff0a0b3141d4730b663700e16bdabe70cabe437c63d0e4469450a04c3cce</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=d5feba00-4336-4f26-8dba-0537a797eddb&amp;goalFingerprint=sha256%3A1afeff0a0b3141d4730b663700e16bdabe70cabe437c63d0e4469450a04c3cce&amp;pageFingerprint=sha256%3A68872226a27605ec65e78186096f81307692b3614080523d2f9f512fd6e10183&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-250daae6-58fd-59e4-8a11-f994e789ee47" data-goal-id="250daae6-58fd-59e4-8a11-f994e789ee47" data-page-number="4" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-fa273adc-25c0-4ba7-90da-57e68c59390e structure:canonical-goal-6fc51848-6705-532f-9dfe-2070bef2f9ad structure:canonical-goal-38234acf-d0f8-4ff9-a6f8-852d1596a692" aria-labelledby="goal-250daae6-58fd-59e4-8a11-f994e789ee47-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-250daae6-58fd-59e4-8a11-f994e789ee47-title"><a class="goal-self-link" href="#goal-250daae6-58fd-59e4-8a11-f994e789ee47">Einfache Parametertransformationen in Funktionsuntersuchungen nutzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>250daae6-58fd-59e4-8a11-f994e789ee47</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-f631f640868fadea3daff719">Ableitungseinstieg und Differentialrechnung (Sek II)</a></li><li><a href="#chapter-de86d7ec21f0c3d77aea483d">Differentialrechnung, Untersuchung und Optimierung</a></li><li><a href="#chapter-7599368bd251bc85d2e1ffa4">Ableitungen zur Funktionsuntersuchung und Optimierung nutzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d8141da896b7706ca44d81030935a88fff01101d3cd0d29b70b0d4c819639917" data-rendered-digest="sha256:e57dddf37b3c20d63e7511e85fa24c517e2f426c3d646d8818cc2c7c2fd4ab62" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/250daae6-58fd-59e4-8a11-f994e789ee47/250daae6-58fd-59e4-8a11-f994e789ee47.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Einfache Parametertransformationen in Funktionsuntersuchungen nutzen&quot;. Die lernende Person kann bei einfachen Funktionen der Form $g(x)=a\cdot f(x)+b$ die Wirkung der Parameter auf Lage, Streckung, Monotonie und charakteristische Punkte untersuchen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-250daae6-58fd-59e4-8a11-f994e789ee47-description-heading">
+        <p class="section-heading" id="goal-250daae6-58fd-59e4-8a11-f994e789ee47-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei einfachen Funktionen der Form $g(x)=a\cdot f(x)+b$ die Wirkung der Parameter auf Lage, Streckung, Monotonie und charakteristische Punkte untersuchen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-250daae6-58fd-59e4-8a11-f994e789ee47" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-250daae6-58fd-59e4-8a11-f994e789ee47-requires-heading">
+          <p class="section-heading" id="goal-250daae6-58fd-59e4-8a11-f994e789ee47-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3"><span>Monotonie und Extremstellen mit der ersten Ableitung untersuchen</span><code>350fc8b1-ead0-4239-b28a-217cbd3bd1c3</code><span class="reference-page">S. 1</span></a></li><li><a href="#goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3"><span>Krümmung und Wendestellen mit der zweiten Ableitung untersuchen</span><code>b3604df4-15a8-41c8-a8b0-50dadd698bd3</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-250daae6-58fd-59e4-8a11-f994e789ee47-reverse-heading">
+          <p class="section-heading" id="goal-250daae6-58fd-59e4-8a11-f994e789ee47-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-250daae6-58fd-59e4-8a11-f994e789ee47-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-250daae6-58fd-59e4-8a11-f994e789ee47-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7ba19509-8ee6-50e0-a411-a371f05b1801" rel="noreferrer noopener"><span>Verschiebungen und Streckungen von Funktionsgraphen erkennen</span> <code>7ba19509-8ee6-50e0-a411-a371f05b1801</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-250daae6-58fd-59e4-8a11-f994e789ee47-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-250daae6-58fd-59e4-8a11-f994e789ee47-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-450a77d6-2814-571a-af1e-78c9fa61ed2c" rel="noreferrer noopener"><span>Extremwertprobleme modellieren</span> <code>450a77d6-2814-571a-af1e-78c9fa61ed2c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d0fe8e863af27977a294ef6b4807e73e3858df26c9ba4a6483b125e9e8c912cc</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=250daae6-58fd-59e4-8a11-f994e789ee47&amp;goalFingerprint=sha256%3Ad0fe8e863af27977a294ef6b4807e73e3858df26c9ba4a6483b125e9e8c912cc&amp;pageFingerprint=sha256%3Aee427972cb38a55ca1591eb1373aa19a55181212a01eb9f584eb97cdf4f1ba17&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d78946f9-1f5f-462c-a99c-fe01054042dd" data-goal-id="d78946f9-1f5f-462c-a99c-fe01054042dd" data-page-number="5" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-fa273adc-25c0-4ba7-90da-57e68c59390e structure:canonical-goal-6fc51848-6705-532f-9dfe-2070bef2f9ad" aria-labelledby="goal-d78946f9-1f5f-462c-a99c-fe01054042dd-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d78946f9-1f5f-462c-a99c-fe01054042dd-title"><a class="goal-self-link" href="#goal-d78946f9-1f5f-462c-a99c-fe01054042dd">Ganzrationale Funktionen mit Differentialrechnung analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d78946f9-1f5f-462c-a99c-fe01054042dd</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-f631f640868fadea3daff719">Ableitungseinstieg und Differentialrechnung (Sek II)</a></li><li><a href="#chapter-de86d7ec21f0c3d77aea483d">Differentialrechnung, Untersuchung und Optimierung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8dbfda6d3b4292996d59d6e9973942de4a9f526662964f3dbb88e14549e0fa9b" data-rendered-digest="sha256:72dd50655179b979524ddb6460875aa0d53422a6d01d357f9277c942672bff1d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/d78946f9-1f5f-462c-a99c-fe01054042dd/d78946f9-1f5f-462c-a99c-fe01054042dd.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Ganzrationale Funktionen mit Differentialrechnung analysieren&quot;. Die lernende Person kann ganzrationale Funktionen mit Methoden der Differentialrechnung flexibel untersuchen, Ergebnisse plausibilisieren und digitale Werkzeuge zur Kontrolle reflektiert einsetzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d78946f9-1f5f-462c-a99c-fe01054042dd-description-heading">
+        <p class="section-heading" id="goal-d78946f9-1f5f-462c-a99c-fe01054042dd-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann ganzrationale Funktionen mit Methoden der Differentialrechnung flexibel untersuchen, Ergebnisse plausibilisieren und digitale Werkzeuge zur Kontrolle reflektiert einsetzen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d78946f9-1f5f-462c-a99c-fe01054042dd" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d78946f9-1f5f-462c-a99c-fe01054042dd-requires-heading">
+          <p class="section-heading" id="goal-d78946f9-1f5f-462c-a99c-fe01054042dd-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-350fc8b1-ead0-4239-b28a-217cbd3bd1c3"><span>Monotonie und Extremstellen mit der ersten Ableitung untersuchen</span><code>350fc8b1-ead0-4239-b28a-217cbd3bd1c3</code><span class="reference-page">S. 1</span></a></li><li><a href="#goal-b3604df4-15a8-41c8-a8b0-50dadd698bd3"><span>Krümmung und Wendestellen mit der zweiten Ableitung untersuchen</span><code>b3604df4-15a8-41c8-a8b0-50dadd698bd3</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-d5feba00-4336-4f26-8dba-0537a797eddb"><span>Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden</span><code>d5feba00-4336-4f26-8dba-0537a797eddb</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-d78946f9-1f5f-462c-a99c-fe01054042dd-reverse-heading">
+          <p class="section-heading" id="goal-d78946f9-1f5f-462c-a99c-fe01054042dd-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-d78946f9-1f5f-462c-a99c-fe01054042dd-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d78946f9-1f5f-462c-a99c-fe01054042dd-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-450a77d6-2814-571a-af1e-78c9fa61ed2c" rel="noreferrer noopener"><span>Extremwertprobleme modellieren</span> <code>450a77d6-2814-571a-af1e-78c9fa61ed2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8e1b0d9c-fa32-5ccd-9c11-77e788ae0941" rel="noreferrer noopener"><span>Ganzrationale Funktionen aus Eigenschaften rekonstruieren</span> <code>8e1b0d9c-fa32-5ccd-9c11-77e788ae0941</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0d930b61d5bc6722d3f38933c77c66a996049e1091d17fbe0dd32c568dfb4e19</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=d78946f9-1f5f-462c-a99c-fe01054042dd&amp;goalFingerprint=sha256%3A0d930b61d5bc6722d3f38933c77c66a996049e1091d17fbe0dd32c568dfb4e19&amp;pageFingerprint=sha256%3Ae401b8e0afcd18a20bd162e520d58fca7025b9759c4f022987844221a1fdc92a&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0c7bbd3f-0a04-4f0e-888b-40ab7841fb76" data-goal-id="0c7bbd3f-0a04-4f0e-888b-40ab7841fb76" data-page-number="6" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-fa273adc-25c0-4ba7-90da-57e68c59390e structure:canonical-goal-6fc51848-6705-532f-9dfe-2070bef2f9ad" aria-labelledby="goal-0c7bbd3f-0a04-4f0e-888b-40ab7841fb76-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0c7bbd3f-0a04-4f0e-888b-40ab7841fb76-title"><a class="goal-self-link" href="#goal-0c7bbd3f-0a04-4f0e-888b-40ab7841fb76">Newton-Verfahren zur Nullstellennäherung anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0c7bbd3f-0a04-4f0e-888b-40ab7841fb76</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-f631f640868fadea3daff719">Ableitungseinstieg und Differentialrechnung (Sek II)</a></li><li><a href="#chapter-de86d7ec21f0c3d77aea483d">Differentialrechnung, Untersuchung und Optimierung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0c7bbd3f-0a04-4f0e-888b-40ab7841fb76-description-heading">
+        <p class="section-heading" id="goal-0c7bbd3f-0a04-4f0e-888b-40ab7841fb76-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Newton-Verfahren als iteratives Näherungsverfahren erläutern, für geeignete Funktionen anwenden und die Einsatzgrenzen des Verfahrens reflektieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0c7bbd3f-0a04-4f0e-888b-40ab7841fb76" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0c7bbd3f-0a04-4f0e-888b-40ab7841fb76-requires-heading">
+          <p class="section-heading" id="goal-0c7bbd3f-0a04-4f0e-888b-40ab7841fb76-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-0c7bbd3f-0a04-4f0e-888b-40ab7841fb76-reverse-heading">
+          <p class="section-heading" id="goal-0c7bbd3f-0a04-4f0e-888b-40ab7841fb76-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0c7bbd3f-0a04-4f0e-888b-40ab7841fb76-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0c7bbd3f-0a04-4f0e-888b-40ab7841fb76-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-858113c5-e53b-57bb-b01f-ba95c3ddcb6f" rel="noreferrer noopener"><span>Ableitungen elementarer Funktionen berechnen</span> <code>858113c5-e53b-57bb-b01f-ba95c3ddcb6f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b1dcc191-d046-50de-984a-ee5c17157628" rel="noreferrer noopener"><span>Ableitung als Steigung im Punkt deuten</span> <code>b1dcc191-d046-50de-984a-ee5c17157628</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-0c7bbd3f-0a04-4f0e-888b-40ab7841fb76-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0c7bbd3f-0a04-4f0e-888b-40ab7841fb76-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-78f5003e-9578-545c-b6b3-4b02f31ffcd4" rel="noreferrer noopener"><span>Polynomdivision und numerische Gleichungsverfahren anwenden</span> <code>78f5003e-9578-545c-b6b3-4b02f31ffcd4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-70a21623-6c87-55ae-b534-ab45a3b9b1d2" rel="noreferrer noopener"><span>Konvergenzgeschwindigkeit numerischer Verfahren vergleichen</span> <code>70a21623-6c87-55ae-b534-ab45a3b9b1d2</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a88e0a264e12e1535b7f53fb5cbe24951f6022ae5cd4cff7f3f0d2cc5ebbcfff</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=0c7bbd3f-0a04-4f0e-888b-40ab7841fb76&amp;goalFingerprint=sha256%3Aa88e0a264e12e1535b7f53fb5cbe24951f6022ae5cd4cff7f3f0d2cc5ebbcfff&amp;pageFingerprint=sha256%3A1f750db8559a9db3f42d8cbc47b7480111ea6c5a04c3ea3a816d48318515770d&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c" data-goal-id="781f133a-08bb-54b9-8fda-efa2f8f9b12c" data-page-number="7" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-528cab0b-399d-4d4b-97ea-c32733eb821c structure:canonical-goal-4047af71-de53-5dc3-80c6-a7c78fb4bfe4 structure:canonical-goal-48e7615d-3e6e-4b5c-9df3-310e510f91f0" aria-labelledby="goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c-title"><a class="goal-self-link" href="#goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c">Exponentialen Wachstum und Zerfall deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>781f133a-08bb-54b9-8fda-efa2f8f9b12c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-262c9f1b57e9da5b6872db26">Exponential-, logarithmische und periodische Modelle (Sek II)</a></li><li><a href="#chapter-d8d6b15878bceaadd55e5f70">Exponentialfunktionen</a></li><li><a href="#chapter-0024049bbc9a5428cd1cead1">Natürliche Exponentialfunktion, Logarithmus und Modelle</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:768c1e5c69a7b33686326f8fdb7330eec82fcad1105181ac19103b3ae6e7631e" data-rendered-digest="sha256:9ea5eeec766ad582e8b9374f8663e5746e486b67ce79a50b6a77b8d9e5b7ef17" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/781f133a-08bb-54b9-8fda-efa2f8f9b12c/781f133a-08bb-54b9-8fda-efa2f8f9b12c.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Exponentialen Wachstum und Zerfall deuten&quot;. Die lernende Person kann Wachstums- und Zerfallsprozesse anhand von Tabellen, Graphen und Kontextbeschreibungen erkennen, typische Merkmale benennen und passende Exponentialfunktionen zuordnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c-description-heading">
+        <p class="section-heading" id="goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Wachstums- und Zerfallsprozesse anhand von Tabellen, Graphen und Kontextbeschreibungen erkennen, typische Merkmale benennen und passende Exponentialfunktionen zuordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G9; Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c-requires-heading">
+          <p class="section-heading" id="goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c-reverse-heading">
+          <p class="section-heading" id="goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-346efb31-c400-5bd3-a698-dd9a7e1bc3f7"><span>Parameter exponentieller Funktionen interpretieren</span><code>346efb31-c400-5bd3-a698-dd9a7e1bc3f7</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-dc69a261-31c9-5c6b-af71-ae27877a3dc1"><span>Parameter von $f(x)=a\cdot b^x+c$ deuten</span><code>dc69a261-31c9-5c6b-af71-ae27877a3dc1</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2" rel="noreferrer noopener"><span>Warum Mathematik? – Denken, Muster &amp; Zukunft</span> <code>71cec9fb-3751-4d61-8b34-c5adbbf6e5f2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-858113c5-e53b-57bb-b01f-ba95c3ddcb6f" rel="noreferrer noopener"><span>Ableitungen elementarer Funktionen berechnen</span> <code>858113c5-e53b-57bb-b01f-ba95c3ddcb6f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9634bfe1-39ea-5428-a042-c3f970f811a3" rel="noreferrer noopener"><span>Exponentialfunktionen und Ableitungsregeln anwenden</span> <code>9634bfe1-39ea-5428-a042-c3f970f811a3</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b23fc139f1ecd34e18dee7b602e7a85c3aa43952966e2db8d0835a7472ee653c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=781f133a-08bb-54b9-8fda-efa2f8f9b12c&amp;goalFingerprint=sha256%3Ab23fc139f1ecd34e18dee7b602e7a85c3aa43952966e2db8d0835a7472ee653c&amp;pageFingerprint=sha256%3Aefa1464f1708cac03f05e2a8509fd9f1af58b690f5aeb0dc8f12bdc7caf2283e&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-346efb31-c400-5bd3-a698-dd9a7e1bc3f7" data-goal-id="346efb31-c400-5bd3-a698-dd9a7e1bc3f7" data-page-number="8" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-528cab0b-399d-4d4b-97ea-c32733eb821c structure:canonical-goal-4047af71-de53-5dc3-80c6-a7c78fb4bfe4 structure:canonical-goal-48e7615d-3e6e-4b5c-9df3-310e510f91f0" aria-labelledby="goal-346efb31-c400-5bd3-a698-dd9a7e1bc3f7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-346efb31-c400-5bd3-a698-dd9a7e1bc3f7-title"><a class="goal-self-link" href="#goal-346efb31-c400-5bd3-a698-dd9a7e1bc3f7">Parameter exponentieller Funktionen interpretieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>346efb31-c400-5bd3-a698-dd9a7e1bc3f7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-262c9f1b57e9da5b6872db26">Exponential-, logarithmische und periodische Modelle (Sek II)</a></li><li><a href="#chapter-d8d6b15878bceaadd55e5f70">Exponentialfunktionen</a></li><li><a href="#chapter-0024049bbc9a5428cd1cead1">Natürliche Exponentialfunktion, Logarithmus und Modelle</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:dfa62cb467991b77c4c8f1f60e7cd02e40610c6ff69c5d8ad0b1d6ffa4878ce7" data-rendered-digest="sha256:2af05c3b6033ffd449feac8e0c1039de4d8b8fb9d5ea68dfbaa7dee8ea59d5ea" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/346efb31-c400-5bd3-a698-dd9a7e1bc3f7/346efb31-c400-5bd3-a698-dd9a7e1bc3f7.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Parameter exponentieller Funktionen interpretieren&quot;. Die lernende Person kann Verdopplungs- und Halbwertszeiten bestimmen, den Einfluss des Parameters a in $f(t)=b\cdot a^t$ beschreiben und unterschiedliche Darstellungsmöglichkeiten (Term, Tabelle, Graph) verknüpfen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-346efb31-c400-5bd3-a698-dd9a7e1bc3f7-description-heading">
+        <p class="section-heading" id="goal-346efb31-c400-5bd3-a698-dd9a7e1bc3f7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Verdopplungs- und Halbwertszeiten bestimmen, den Einfluss des Parameters a in $f(t)=b\cdot a^t$ beschreiben und unterschiedliche Darstellungsmöglichkeiten (Term, Tabelle, Graph) verknüpfen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G9; Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-346efb31-c400-5bd3-a698-dd9a7e1bc3f7" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-346efb31-c400-5bd3-a698-dd9a7e1bc3f7-requires-heading">
+          <p class="section-heading" id="goal-346efb31-c400-5bd3-a698-dd9a7e1bc3f7-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c"><span>Exponentialen Wachstum und Zerfall deuten</span><code>781f133a-08bb-54b9-8fda-efa2f8f9b12c</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-346efb31-c400-5bd3-a698-dd9a7e1bc3f7-reverse-heading">
+          <p class="section-heading" id="goal-346efb31-c400-5bd3-a698-dd9a7e1bc3f7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-628928a6-4f48-54dc-952d-dec0e69dc856"><span>Eigenschaften der natürlichen Exponentialfunktion begründen</span><code>628928a6-4f48-54dc-952d-dec0e69dc856</code><span class="reference-page">S. 9</span></a></li><li><a href="#goal-f05acdc5-4949-54c7-b8cd-56ddd1fbdbad"><span>Natürliche Exponentialfunktion für kontinuierliche Prozesse verwenden</span><code>f05acdc5-4949-54c7-b8cd-56ddd1fbdbad</code><span class="reference-page">S. 10</span></a></li><li><a href="#goal-ccd47872-4d9d-44db-8c8d-eda24019b502"><span>Eulersche Zahl e näherungsweise bestimmen</span><code>ccd47872-4d9d-44db-8c8d-eda24019b502</code><span class="reference-page">S. 17</span></a></li><li><a href="#goal-9db266a2-1889-5792-82b0-a7463f0832f1"><span>Exponentialfunktionen in e-Schreibweise umformen</span><code>9db266a2-1889-5792-82b0-a7463f0832f1</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-346efb31-c400-5bd3-a698-dd9a7e1bc3f7-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-346efb31-c400-5bd3-a698-dd9a7e1bc3f7-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9634bfe1-39ea-5428-a042-c3f970f811a3" rel="noreferrer noopener"><span>Exponentialfunktionen und Ableitungsregeln anwenden</span> <code>9634bfe1-39ea-5428-a042-c3f970f811a3</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:65f1c6545f145449d0ee36ce1a661bf0e63caa76fc04617362584633c00fa677</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=346efb31-c400-5bd3-a698-dd9a7e1bc3f7&amp;goalFingerprint=sha256%3A65f1c6545f145449d0ee36ce1a661bf0e63caa76fc04617362584633c00fa677&amp;pageFingerprint=sha256%3A0ee3c6730d17b49c28e246446aeb8f1cf236f905c0cd23db5b85dce8f0fc70cd&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-628928a6-4f48-54dc-952d-dec0e69dc856" data-goal-id="628928a6-4f48-54dc-952d-dec0e69dc856" data-page-number="9" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-528cab0b-399d-4d4b-97ea-c32733eb821c structure:canonical-goal-4047af71-de53-5dc3-80c6-a7c78fb4bfe4 structure:canonical-goal-48e7615d-3e6e-4b5c-9df3-310e510f91f0" aria-labelledby="goal-628928a6-4f48-54dc-952d-dec0e69dc856-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-628928a6-4f48-54dc-952d-dec0e69dc856-title"><a class="goal-self-link" href="#goal-628928a6-4f48-54dc-952d-dec0e69dc856">Eigenschaften der natürlichen Exponentialfunktion begründen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>628928a6-4f48-54dc-952d-dec0e69dc856</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-262c9f1b57e9da5b6872db26">Exponential-, logarithmische und periodische Modelle (Sek II)</a></li><li><a href="#chapter-d8d6b15878bceaadd55e5f70">Exponentialfunktionen</a></li><li><a href="#chapter-0024049bbc9a5428cd1cead1">Natürliche Exponentialfunktion, Logarithmus und Modelle</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4ea9aae846288db456ae21e6131feecc224fa89b55df942361f91bfe2cb6a071" data-rendered-digest="sha256:4c2af2d81f0898f53d53a006405ed7d6fa96c04e4711430d034b581730663745" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/628928a6-4f48-54dc-952d-dec0e69dc856/628928a6-4f48-54dc-952d-dec0e69dc856.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Eigenschaften der natürlichen Exponentialfunktion begründen&quot;. Die lernende Person kann $e^x$ motivieren und wichtige Eigenschaften wie Werte, Ableitung und Verhalten im Unendlichen begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-628928a6-4f48-54dc-952d-dec0e69dc856-description-heading">
+        <p class="section-heading" id="goal-628928a6-4f48-54dc-952d-dec0e69dc856-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann $e^x$ motivieren und wichtige Eigenschaften wie Werte, Ableitung und Verhalten im Unendlichen begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G9; Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-628928a6-4f48-54dc-952d-dec0e69dc856" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-628928a6-4f48-54dc-952d-dec0e69dc856-requires-heading">
+          <p class="section-heading" id="goal-628928a6-4f48-54dc-952d-dec0e69dc856-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-346efb31-c400-5bd3-a698-dd9a7e1bc3f7"><span>Parameter exponentieller Funktionen interpretieren</span><code>346efb31-c400-5bd3-a698-dd9a7e1bc3f7</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-628928a6-4f48-54dc-952d-dec0e69dc856-reverse-heading">
+          <p class="section-heading" id="goal-628928a6-4f48-54dc-952d-dec0e69dc856-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-f05acdc5-4949-54c7-b8cd-56ddd1fbdbad"><span>Natürliche Exponentialfunktion für kontinuierliche Prozesse verwenden</span><code>f05acdc5-4949-54c7-b8cd-56ddd1fbdbad</code><span class="reference-page">S. 10</span></a></li><li><a href="#goal-d900e0a4-0c45-50dd-a37b-01f9f91a134c"><span>Exponentialgleichungen lösen</span><code>d900e0a4-0c45-50dd-a37b-01f9f91a134c</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-49f9059a-876c-5051-8146-d008b5cc691c"><span>Exponential- und Potenzfunktionen asymptotisch vergleichen (LK)</span><code>49f9059a-876c-5051-8146-d008b5cc691c</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-9db266a2-1889-5792-82b0-a7463f0832f1"><span>Exponentialfunktionen in e-Schreibweise umformen</span><code>9db266a2-1889-5792-82b0-a7463f0832f1</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-628928a6-4f48-54dc-952d-dec0e69dc856-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-628928a6-4f48-54dc-952d-dec0e69dc856-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9634bfe1-39ea-5428-a042-c3f970f811a3" rel="noreferrer noopener"><span>Exponentialfunktionen und Ableitungsregeln anwenden</span> <code>9634bfe1-39ea-5428-a042-c3f970f811a3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-06ce2b1b-e888-5322-9ed9-dfc6d322956a" rel="noreferrer noopener"><span>Den natürlichen Logarithmus als Umkehrfunktion der e-Funktion erklären (LK)</span> <code>06ce2b1b-e888-5322-9ed9-dfc6d322956a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2025704554e9b8222bf1f5cdd6fb0d73d5142052f4ade50c0f134fe922bfd045</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=628928a6-4f48-54dc-952d-dec0e69dc856&amp;goalFingerprint=sha256%3A2025704554e9b8222bf1f5cdd6fb0d73d5142052f4ade50c0f134fe922bfd045&amp;pageFingerprint=sha256%3Aab89df39043208af6d7ebc9c4a9b18c37d185b1324315bcf1a5132c2bfa3ea05&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f05acdc5-4949-54c7-b8cd-56ddd1fbdbad" data-goal-id="f05acdc5-4949-54c7-b8cd-56ddd1fbdbad" data-page-number="10" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-528cab0b-399d-4d4b-97ea-c32733eb821c structure:canonical-goal-4047af71-de53-5dc3-80c6-a7c78fb4bfe4 structure:canonical-goal-48e7615d-3e6e-4b5c-9df3-310e510f91f0" aria-labelledby="goal-f05acdc5-4949-54c7-b8cd-56ddd1fbdbad-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f05acdc5-4949-54c7-b8cd-56ddd1fbdbad-title"><a class="goal-self-link" href="#goal-f05acdc5-4949-54c7-b8cd-56ddd1fbdbad">Natürliche Exponentialfunktion für kontinuierliche Prozesse verwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f05acdc5-4949-54c7-b8cd-56ddd1fbdbad</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-262c9f1b57e9da5b6872db26">Exponential-, logarithmische und periodische Modelle (Sek II)</a></li><li><a href="#chapter-d8d6b15878bceaadd55e5f70">Exponentialfunktionen</a></li><li><a href="#chapter-0024049bbc9a5428cd1cead1">Natürliche Exponentialfunktion, Logarithmus und Modelle</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b84e7410038d8844e23e8bb0817344ed1a47f3c55b7577dbbe0fd763fa3f38c7" data-rendered-digest="sha256:69300e1ef3927133d40243ec3d316a47db7af8ffff951dfe3e794e89740aa567" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/f05acdc5-4949-54c7-b8cd-56ddd1fbdbad/f05acdc5-4949-54c7-b8cd-56ddd1fbdbad.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Natürliche Exponentialfunktion für kontinuierliche Prozesse verwenden&quot;. Die lernende Person kann $e^x$ zur Modellierung kontinuierlicher Wachstums- oder Zerfallsprozesse verwenden und Ergebnisse im Kontext deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f05acdc5-4949-54c7-b8cd-56ddd1fbdbad-description-heading">
+        <p class="section-heading" id="goal-f05acdc5-4949-54c7-b8cd-56ddd1fbdbad-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann $e^x$ zur Modellierung kontinuierlicher Wachstums- oder Zerfallsprozesse verwenden und Ergebnisse im Kontext deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G9; Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f05acdc5-4949-54c7-b8cd-56ddd1fbdbad" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f05acdc5-4949-54c7-b8cd-56ddd1fbdbad-requires-heading">
+          <p class="section-heading" id="goal-f05acdc5-4949-54c7-b8cd-56ddd1fbdbad-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-346efb31-c400-5bd3-a698-dd9a7e1bc3f7"><span>Parameter exponentieller Funktionen interpretieren</span><code>346efb31-c400-5bd3-a698-dd9a7e1bc3f7</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-628928a6-4f48-54dc-952d-dec0e69dc856"><span>Eigenschaften der natürlichen Exponentialfunktion begründen</span><code>628928a6-4f48-54dc-952d-dec0e69dc856</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-f05acdc5-4949-54c7-b8cd-56ddd1fbdbad-reverse-heading">
+          <p class="section-heading" id="goal-f05acdc5-4949-54c7-b8cd-56ddd1fbdbad-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-f05acdc5-4949-54c7-b8cd-56ddd1fbdbad-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f05acdc5-4949-54c7-b8cd-56ddd1fbdbad-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c87597fd-4d54-5e9a-a3d0-9a2943d8153c" rel="noreferrer noopener"><span>Exponentielle Modelle auswerten</span> <code>c87597fd-4d54-5e9a-a3d0-9a2943d8153c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9fdd75f6bf3ba443d85c2b049cbced8a6fed4c45b65a83672755d34011d239ac</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=f05acdc5-4949-54c7-b8cd-56ddd1fbdbad&amp;goalFingerprint=sha256%3A9fdd75f6bf3ba443d85c2b049cbced8a6fed4c45b65a83672755d34011d239ac&amp;pageFingerprint=sha256%3A20d7f112ebacc9b36aaa91a244bc733801c669cf493e9a12d7f32c3762f269c6&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d900e0a4-0c45-50dd-a37b-01f9f91a134c" data-goal-id="d900e0a4-0c45-50dd-a37b-01f9f91a134c" data-page-number="11" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-528cab0b-399d-4d4b-97ea-c32733eb821c structure:canonical-goal-4047af71-de53-5dc3-80c6-a7c78fb4bfe4 structure:canonical-goal-48e7615d-3e6e-4b5c-9df3-310e510f91f0" aria-labelledby="goal-d900e0a4-0c45-50dd-a37b-01f9f91a134c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d900e0a4-0c45-50dd-a37b-01f9f91a134c-title"><a class="goal-self-link" href="#goal-d900e0a4-0c45-50dd-a37b-01f9f91a134c">Exponentialgleichungen lösen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d900e0a4-0c45-50dd-a37b-01f9f91a134c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-262c9f1b57e9da5b6872db26">Exponential-, logarithmische und periodische Modelle (Sek II)</a></li><li><a href="#chapter-d8d6b15878bceaadd55e5f70">Exponentialfunktionen</a></li><li><a href="#chapter-0024049bbc9a5428cd1cead1">Natürliche Exponentialfunktion, Logarithmus und Modelle</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:dc8d583e3ef818345ee4faf7ab4568ffe27712e0dfcf4d0d818e751b5ec684af" data-rendered-digest="sha256:60074698f94c67cfa13718229b33977ef007587a03c91de7329961c2f877967b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/d900e0a4-0c45-50dd-a37b-01f9f91a134c/d900e0a4-0c45-50dd-a37b-01f9f91a134c.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Exponentialgleichungen lösen&quot;. Die lernende Person kann Gleichungen der Form $b \cdot a^x = c$ mithilfe logarithmischer Umformungen lösen, Ergebnisse überprüfen und in Sachsituationen interpretieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d900e0a4-0c45-50dd-a37b-01f9f91a134c-description-heading">
+        <p class="section-heading" id="goal-d900e0a4-0c45-50dd-a37b-01f9f91a134c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Gleichungen der Form $b \cdot a^x = c$ mithilfe logarithmischer Umformungen lösen, Ergebnisse überprüfen und in Sachsituationen interpretieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G9; Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d900e0a4-0c45-50dd-a37b-01f9f91a134c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d900e0a4-0c45-50dd-a37b-01f9f91a134c-requires-heading">
+          <p class="section-heading" id="goal-d900e0a4-0c45-50dd-a37b-01f9f91a134c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-628928a6-4f48-54dc-952d-dec0e69dc856"><span>Eigenschaften der natürlichen Exponentialfunktion begründen</span><code>628928a6-4f48-54dc-952d-dec0e69dc856</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-d900e0a4-0c45-50dd-a37b-01f9f91a134c-reverse-heading">
+          <p class="section-heading" id="goal-d900e0a4-0c45-50dd-a37b-01f9f91a134c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-ab720928-9dbc-53c2-a1f8-865dda92122d"><span>Exponentielle Modelle anwenden</span><code>ab720928-9dbc-53c2-a1f8-865dda92122d</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-d900e0a4-0c45-50dd-a37b-01f9f91a134c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d900e0a4-0c45-50dd-a37b-01f9f91a134c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9634bfe1-39ea-5428-a042-c3f970f811a3" rel="noreferrer noopener"><span>Exponentialfunktionen und Ableitungsregeln anwenden</span> <code>9634bfe1-39ea-5428-a042-c3f970f811a3</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f3a035aded7b608a6f73969edc9a93701ddd7093a1253dcbb0b58048c7165c98</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=d900e0a4-0c45-50dd-a37b-01f9f91a134c&amp;goalFingerprint=sha256%3Af3a035aded7b608a6f73969edc9a93701ddd7093a1253dcbb0b58048c7165c98&amp;pageFingerprint=sha256%3A5fe3a21114a5295a9ba8c40d6a730d7e2058b5e65f13c02c44e8b871a06050fe&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ab720928-9dbc-53c2-a1f8-865dda92122d" data-goal-id="ab720928-9dbc-53c2-a1f8-865dda92122d" data-page-number="12" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-528cab0b-399d-4d4b-97ea-c32733eb821c structure:canonical-goal-4047af71-de53-5dc3-80c6-a7c78fb4bfe4 structure:canonical-goal-48e7615d-3e6e-4b5c-9df3-310e510f91f0" aria-labelledby="goal-ab720928-9dbc-53c2-a1f8-865dda92122d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ab720928-9dbc-53c2-a1f8-865dda92122d-title"><a class="goal-self-link" href="#goal-ab720928-9dbc-53c2-a1f8-865dda92122d">Exponentielle Modelle anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ab720928-9dbc-53c2-a1f8-865dda92122d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-262c9f1b57e9da5b6872db26">Exponential-, logarithmische und periodische Modelle (Sek II)</a></li><li><a href="#chapter-d8d6b15878bceaadd55e5f70">Exponentialfunktionen</a></li><li><a href="#chapter-0024049bbc9a5428cd1cead1">Natürliche Exponentialfunktion, Logarithmus und Modelle</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:abfba332af539336cc7a74c46a47996d85e561f0170ad2dc3914151a54929bb8" data-rendered-digest="sha256:38d6906c090793a30c0ade280031595e3fd7d5a892760213c3f44bcb319ef323" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/ab720928-9dbc-53c2-a1f8-865dda92122d/ab720928-9dbc-53c2-a1f8-865dda92122d.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Exponentielle Modelle anwenden&quot;. Die lernende Person kann Daten zu Wachstum oder Zerfall mit exponentiellen Funktionen modellieren, Parameter aus Messwerten bestimmen und Aussagen zur Zukunftsentwicklung treffen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ab720928-9dbc-53c2-a1f8-865dda92122d-description-heading">
+        <p class="section-heading" id="goal-ab720928-9dbc-53c2-a1f8-865dda92122d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Daten zu Wachstum oder Zerfall mit exponentiellen Funktionen modellieren, Parameter aus Messwerten bestimmen und Aussagen zur Zukunftsentwicklung treffen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G9; Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ab720928-9dbc-53c2-a1f8-865dda92122d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ab720928-9dbc-53c2-a1f8-865dda92122d-requires-heading">
+          <p class="section-heading" id="goal-ab720928-9dbc-53c2-a1f8-865dda92122d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-d900e0a4-0c45-50dd-a37b-01f9f91a134c"><span>Exponentialgleichungen lösen</span><code>d900e0a4-0c45-50dd-a37b-01f9f91a134c</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ab720928-9dbc-53c2-a1f8-865dda92122d-reverse-heading">
+          <p class="section-heading" id="goal-ab720928-9dbc-53c2-a1f8-865dda92122d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-ab720928-9dbc-53c2-a1f8-865dda92122d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ab720928-9dbc-53c2-a1f8-865dda92122d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9634bfe1-39ea-5428-a042-c3f970f811a3" rel="noreferrer noopener"><span>Exponentialfunktionen und Ableitungsregeln anwenden</span> <code>9634bfe1-39ea-5428-a042-c3f970f811a3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c87597fd-4d54-5e9a-a3d0-9a2943d8153c" rel="noreferrer noopener"><span>Exponentielle Modelle auswerten</span> <code>c87597fd-4d54-5e9a-a3d0-9a2943d8153c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4ae9e316-509f-517d-bd94-a165817af24f" rel="noreferrer noopener"><span>Begrenzte Wachstums- und Zerfallsprozesse aus Daten modellieren</span> <code>4ae9e316-509f-517d-bd94-a165817af24f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-886caebc-a042-4a94-91f9-6dc184203c42" rel="noreferrer noopener"><span>Asymptotisches Verhalten von Wachstumsmodellen im Kontext deuten</span> <code>886caebc-a042-4a94-91f9-6dc184203c42</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-848af536-c7e5-4df0-a4e9-d5d0ff15244c" rel="noreferrer noopener"><span>Exponentielle, begrenzte und logistische Wachstumsmodelle vergleichen</span> <code>848af536-c7e5-4df0-a4e9-d5d0ff15244c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5fe4218e-4fb0-5339-8764-c989befa244e" rel="noreferrer noopener"><span>Modelle mit Differenzialgleichungen erster Ordnung bilden</span> <code>5fe4218e-4fb0-5339-8764-c989befa244e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:14bc44884bf19c0023880eb2dbdc5533f5cdd707e6152c729572e804482bce8e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=ab720928-9dbc-53c2-a1f8-865dda92122d&amp;goalFingerprint=sha256%3A14bc44884bf19c0023880eb2dbdc5533f5cdd707e6152c729572e804482bce8e&amp;pageFingerprint=sha256%3Ad216051d42619876d619b20b252c2012bd67a526739f695e5a7c8f84bc9da730&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-49f9059a-876c-5051-8146-d008b5cc691c" data-goal-id="49f9059a-876c-5051-8146-d008b5cc691c" data-page-number="13" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-528cab0b-399d-4d4b-97ea-c32733eb821c structure:canonical-goal-4047af71-de53-5dc3-80c6-a7c78fb4bfe4 structure:canonical-goal-48e7615d-3e6e-4b5c-9df3-310e510f91f0" aria-labelledby="goal-49f9059a-876c-5051-8146-d008b5cc691c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-49f9059a-876c-5051-8146-d008b5cc691c-title"><a class="goal-self-link" href="#goal-49f9059a-876c-5051-8146-d008b5cc691c">Exponential- und Potenzfunktionen asymptotisch vergleichen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>49f9059a-876c-5051-8146-d008b5cc691c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-262c9f1b57e9da5b6872db26">Exponential-, logarithmische und periodische Modelle (Sek II)</a></li><li><a href="#chapter-d8d6b15878bceaadd55e5f70">Exponentialfunktionen</a></li><li><a href="#chapter-0024049bbc9a5428cd1cead1">Natürliche Exponentialfunktion, Logarithmus und Modelle</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:71d1b9f67717d9d9a623036a6f3d7cf0eb7174c2c882ac1cbe241ea0cd3fe2e6" data-rendered-digest="sha256:4b1f175e3e2f63fb44820c02d42a466d680cda7a3435924f5e85ef964ec98a22" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/49f9059a-876c-5051-8146-d008b5cc691c/49f9059a-876c-5051-8146-d008b5cc691c.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Exponential- und Potenzfunktionen asymptotisch vergleichen (LK)&quot;. Die lernende Person kann das Wachstum der natürlichen Exponentialfunktion mit Potenzfunktionen vergleichen und Grenzwertverhalten im Unendlichen plausibel begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-49f9059a-876c-5051-8146-d008b5cc691c-description-heading">
+        <p class="section-heading" id="goal-49f9059a-876c-5051-8146-d008b5cc691c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Wachstum der natürlichen Exponentialfunktion mit Potenzfunktionen vergleichen und Grenzwertverhalten im Unendlichen plausibel begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G9; Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-49f9059a-876c-5051-8146-d008b5cc691c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-49f9059a-876c-5051-8146-d008b5cc691c-requires-heading">
+          <p class="section-heading" id="goal-49f9059a-876c-5051-8146-d008b5cc691c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-628928a6-4f48-54dc-952d-dec0e69dc856"><span>Eigenschaften der natürlichen Exponentialfunktion begründen</span><code>628928a6-4f48-54dc-952d-dec0e69dc856</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-49f9059a-876c-5051-8146-d008b5cc691c-reverse-heading">
+          <p class="section-heading" id="goal-49f9059a-876c-5051-8146-d008b5cc691c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-49f9059a-876c-5051-8146-d008b5cc691c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-49f9059a-876c-5051-8146-d008b5cc691c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf" rel="noreferrer noopener"><span>Funktionenscharen und Ortskurven untersuchen</span> <code>1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:36a483d062e9c30b79dfaedb6385d531ddd88f24574bc4f473a513248ed73596</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=49f9059a-876c-5051-8146-d008b5cc691c&amp;goalFingerprint=sha256%3A36a483d062e9c30b79dfaedb6385d531ddd88f24574bc4f473a513248ed73596&amp;pageFingerprint=sha256%3A5c64912e64ee71e9ded5d97d53d06880b1110ff685b14f39d8c3bb86c13ae7e0&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8fa32a68-46eb-414e-8292-a4c4052b2522" data-goal-id="8fa32a68-46eb-414e-8292-a4c4052b2522" data-page-number="14" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-528cab0b-399d-4d4b-97ea-c32733eb821c structure:canonical-goal-4047af71-de53-5dc3-80c6-a7c78fb4bfe4" aria-labelledby="goal-8fa32a68-46eb-414e-8292-a4c4052b2522-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8fa32a68-46eb-414e-8292-a4c4052b2522-title"><a class="goal-self-link" href="#goal-8fa32a68-46eb-414e-8292-a4c4052b2522">Eigenschaften exponentieller Funktionen der Form $a^x$ beschreiben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8fa32a68-46eb-414e-8292-a4c4052b2522</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-262c9f1b57e9da5b6872db26">Exponential-, logarithmische und periodische Modelle (Sek II)</a></li><li><a href="#chapter-d8d6b15878bceaadd55e5f70">Exponentialfunktionen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:653d62c80994e2192356282a34a3e350031c9db032bc6577da5554e570ceb3ed" data-rendered-digest="sha256:938c83277e63c9ff40d9f35f33f1dc30b85b003c77fd307b79a3f2c45dd7d00a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/8fa32a68-46eb-414e-8292-a4c4052b2522/8fa32a68-46eb-414e-8292-a4c4052b2522.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Eigenschaften exponentieller Funktionen der Form $a^x$ beschreiben&quot;. Die lernende Person kann die Eigenschaften exponentieller Funktionen der Form $a^x$ beschreiben und typische Merkmale in Term, Tabelle und Graph fachlich zuordnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8fa32a68-46eb-414e-8292-a4c4052b2522-description-heading">
+        <p class="section-heading" id="goal-8fa32a68-46eb-414e-8292-a4c4052b2522-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Eigenschaften exponentieller Funktionen der Form $a^x$ beschreiben und typische Merkmale in Term, Tabelle und Graph fachlich zuordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G9; Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8fa32a68-46eb-414e-8292-a4c4052b2522" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8fa32a68-46eb-414e-8292-a4c4052b2522-requires-heading">
+          <p class="section-heading" id="goal-8fa32a68-46eb-414e-8292-a4c4052b2522-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-8fa32a68-46eb-414e-8292-a4c4052b2522-reverse-heading">
+          <p class="section-heading" id="goal-8fa32a68-46eb-414e-8292-a4c4052b2522-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb"><span>Besonderheit der natürlichen Exponentialfunktion erläutern</span><code>3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb</code><span class="reference-page">S. 15</span></a></li><li><a href="#goal-fec30a5a-835a-4932-a436-d83549029486"><span>Exponentialfunktionen für Wachstums- und Zerfallsvorgänge nutzen</span><code>fec30a5a-835a-4932-a436-d83549029486</code><span class="reference-page">S. 18</span></a></li><li><a href="#goal-dc69a261-31c9-5c6b-af71-ae27877a3dc1"><span>Parameter von $f(x)=a\cdot b^x+c$ deuten</span><code>dc69a261-31c9-5c6b-af71-ae27877a3dc1</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8fa32a68-46eb-414e-8292-a4c4052b2522-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8fa32a68-46eb-414e-8292-a4c4052b2522-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2" rel="noreferrer noopener"><span>Warum Mathematik? – Denken, Muster &amp; Zukunft</span> <code>71cec9fb-3751-4d61-8b34-c5adbbf6e5f2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-858113c5-e53b-57bb-b01f-ba95c3ddcb6f" rel="noreferrer noopener"><span>Ableitungen elementarer Funktionen berechnen</span> <code>858113c5-e53b-57bb-b01f-ba95c3ddcb6f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-8fa32a68-46eb-414e-8292-a4c4052b2522-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8fa32a68-46eb-414e-8292-a4c4052b2522-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e7013f6e-6051-5c88-8b4b-e054dc8db4cc" rel="noreferrer noopener"><span>Funktionen und Darstellungen analysieren</span> <code>e7013f6e-6051-5c88-8b4b-e054dc8db4cc</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fc3e285f9b26ff024cdf3662dc27f461eb943d11704ee70c0ed41f26f85fbf7d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=8fa32a68-46eb-414e-8292-a4c4052b2522&amp;goalFingerprint=sha256%3Afc3e285f9b26ff024cdf3662dc27f461eb943d11704ee70c0ed41f26f85fbf7d&amp;pageFingerprint=sha256%3Ae885775d248dad6122e9e1c94efaf29f739831855b458251dfcfa69a22e8dc1b&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb" data-goal-id="3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb" data-page-number="15" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-528cab0b-399d-4d4b-97ea-c32733eb821c structure:canonical-goal-4047af71-de53-5dc3-80c6-a7c78fb4bfe4" aria-labelledby="goal-3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb-title"><a class="goal-self-link" href="#goal-3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb">Besonderheit der natürlichen Exponentialfunktion erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-262c9f1b57e9da5b6872db26">Exponential-, logarithmische und periodische Modelle (Sek II)</a></li><li><a href="#chapter-d8d6b15878bceaadd55e5f70">Exponentialfunktionen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a9b4d55b6287739bb7cb40dc8837823491b269093fd29568a5e4868c12e0af7a" data-rendered-digest="sha256:143a42b814bab897abddd8cec163568de8656b409c7dd33b345ff1120a0f4468" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb/3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Besonderheit der natürlichen Exponentialfunktion erläutern&quot;. Die lernende Person kann die Besonderheit der natürlichen Exponentialfunktion fachlich erläutern und ihren herausgehobenen Stellenwert innerhalb exponentieller Funktionen beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb-description-heading">
+        <p class="section-heading" id="goal-3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Besonderheit der natürlichen Exponentialfunktion fachlich erläutern und ihren herausgehobenen Stellenwert innerhalb exponentieller Funktionen beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb-requires-heading">
+          <p class="section-heading" id="goal-3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8fa32a68-46eb-414e-8292-a4c4052b2522"><span>Eigenschaften exponentieller Funktionen der Form $a^x$ beschreiben</span><code>8fa32a68-46eb-414e-8292-a4c4052b2522</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb-reverse-heading">
+          <p class="section-heading" id="goal-3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c3c057a3-caf9-44a5-ae60-639e3119e94a"><span>Ableitungen von $e^x$ und $a^x$ verwenden</span><code>c3c057a3-caf9-44a5-ae60-639e3119e94a</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9634bfe1-39ea-5428-a042-c3f970f811a3" rel="noreferrer noopener"><span>Exponentialfunktionen und Ableitungsregeln anwenden</span> <code>9634bfe1-39ea-5428-a042-c3f970f811a3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c87597fd-4d54-5e9a-a3d0-9a2943d8153c" rel="noreferrer noopener"><span>Exponentielle Modelle auswerten</span> <code>c87597fd-4d54-5e9a-a3d0-9a2943d8153c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fd6d9655500dd4f4ae8cb47f3136034bd6d5257d6b4d94a29ec092b5d5e74969</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb&amp;goalFingerprint=sha256%3Afd6d9655500dd4f4ae8cb47f3136034bd6d5257d6b4d94a29ec092b5d5e74969&amp;pageFingerprint=sha256%3Adb61e27ed83f556115a9a85bf53abf44a3880269f1ca4294370b1ea0fccab6d4&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c3c057a3-caf9-44a5-ae60-639e3119e94a" data-goal-id="c3c057a3-caf9-44a5-ae60-639e3119e94a" data-page-number="16" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-528cab0b-399d-4d4b-97ea-c32733eb821c structure:canonical-goal-4047af71-de53-5dc3-80c6-a7c78fb4bfe4" aria-labelledby="goal-c3c057a3-caf9-44a5-ae60-639e3119e94a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c3c057a3-caf9-44a5-ae60-639e3119e94a-title"><a class="goal-self-link" href="#goal-c3c057a3-caf9-44a5-ae60-639e3119e94a">Ableitungen von $e^x$ und $a^x$ verwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c3c057a3-caf9-44a5-ae60-639e3119e94a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-262c9f1b57e9da5b6872db26">Exponential-, logarithmische und periodische Modelle (Sek II)</a></li><li><a href="#chapter-d8d6b15878bceaadd55e5f70">Exponentialfunktionen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d930d8a0f0a457f67d16a0f1cf74d2cb4022cef4b660aae9af4fafe9d4422467" data-rendered-digest="sha256:6cab7e37eae9b083c46a6e50c5ece4c44a0b915d87fcd4c85f9b706e71827359" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/c3c057a3-caf9-44a5-ae60-639e3119e94a/c3c057a3-caf9-44a5-ae60-639e3119e94a.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Ableitungen von $e^x$ und $a^x$ verwenden&quot;. Die lernende Person kann die Ableitungsfunktionen von $e^x$ und $a^x$ in passenden mathematischen oder anwendungsbezogenen Aufgaben nutzen und die Ergebnisse fachlich einordnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c3c057a3-caf9-44a5-ae60-639e3119e94a-description-heading">
+        <p class="section-heading" id="goal-c3c057a3-caf9-44a5-ae60-639e3119e94a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Ableitungsfunktionen von $e^x$ und $a^x$ in passenden mathematischen oder anwendungsbezogenen Aufgaben nutzen und die Ergebnisse fachlich einordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c3c057a3-caf9-44a5-ae60-639e3119e94a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c3c057a3-caf9-44a5-ae60-639e3119e94a-requires-heading">
+          <p class="section-heading" id="goal-c3c057a3-caf9-44a5-ae60-639e3119e94a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb"><span>Besonderheit der natürlichen Exponentialfunktion erläutern</span><code>3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c3c057a3-caf9-44a5-ae60-639e3119e94a-reverse-heading">
+          <p class="section-heading" id="goal-c3c057a3-caf9-44a5-ae60-639e3119e94a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-c3c057a3-caf9-44a5-ae60-639e3119e94a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c3c057a3-caf9-44a5-ae60-639e3119e94a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-450a77d6-2814-571a-af1e-78c9fa61ed2c" rel="noreferrer noopener"><span>Extremwertprobleme modellieren</span> <code>450a77d6-2814-571a-af1e-78c9fa61ed2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9634bfe1-39ea-5428-a042-c3f970f811a3" rel="noreferrer noopener"><span>Exponentialfunktionen und Ableitungsregeln anwenden</span> <code>9634bfe1-39ea-5428-a042-c3f970f811a3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1341c20b-87ab-51e7-bd4a-50166c27806e" rel="noreferrer noopener"><span>Verknüpfungen von ganzrationalen und Exponentialfunktionen strukturieren</span> <code>1341c20b-87ab-51e7-bd4a-50166c27806e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d6df97ed81f86a231b7451728aa7eded9fc81f632f8b8f8a4727686eb0eff2d6</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=c3c057a3-caf9-44a5-ae60-639e3119e94a&amp;goalFingerprint=sha256%3Ad6df97ed81f86a231b7451728aa7eded9fc81f632f8b8f8a4727686eb0eff2d6&amp;pageFingerprint=sha256%3A1bb00cffef43b42cdadad4078a01e77638d49743013c412cc95a8fe3bd9d83d9&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ccd47872-4d9d-44db-8c8d-eda24019b502" data-goal-id="ccd47872-4d9d-44db-8c8d-eda24019b502" data-page-number="17" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-528cab0b-399d-4d4b-97ea-c32733eb821c structure:canonical-goal-4047af71-de53-5dc3-80c6-a7c78fb4bfe4" aria-labelledby="goal-ccd47872-4d9d-44db-8c8d-eda24019b502-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ccd47872-4d9d-44db-8c8d-eda24019b502-title"><a class="goal-self-link" href="#goal-ccd47872-4d9d-44db-8c8d-eda24019b502">Eulersche Zahl e näherungsweise bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ccd47872-4d9d-44db-8c8d-eda24019b502</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-262c9f1b57e9da5b6872db26">Exponential-, logarithmische und periodische Modelle (Sek II)</a></li><li><a href="#chapter-d8d6b15878bceaadd55e5f70">Exponentialfunktionen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6dd0b6b23e48e7572ba2591f628ba61bb6ea05993f4f34affdf5fbd83a657817" data-rendered-digest="sha256:732c6ad85fda5d4c91b9f4360d937886413b89a58daf3175bfcb984601c1a2f9" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/ccd47872-4d9d-44db-8c8d-eda24019b502/ccd47872-4d9d-44db-8c8d-eda24019b502.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Eulersche Zahl e näherungsweise bestimmen&quot;. Die lernende Person kann die eulersche Zahl e in einfachen Kontexten näherungsweise bestimmen und den Näherungswert als charakteristische Konstante der natürlichen Exponentialfunktion einordnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ccd47872-4d9d-44db-8c8d-eda24019b502-description-heading">
+        <p class="section-heading" id="goal-ccd47872-4d9d-44db-8c8d-eda24019b502-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die eulersche Zahl e in einfachen Kontexten näherungsweise bestimmen und den Näherungswert als charakteristische Konstante der natürlichen Exponentialfunktion einordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ccd47872-4d9d-44db-8c8d-eda24019b502" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ccd47872-4d9d-44db-8c8d-eda24019b502-requires-heading">
+          <p class="section-heading" id="goal-ccd47872-4d9d-44db-8c8d-eda24019b502-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-346efb31-c400-5bd3-a698-dd9a7e1bc3f7"><span>Parameter exponentieller Funktionen interpretieren</span><code>346efb31-c400-5bd3-a698-dd9a7e1bc3f7</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ccd47872-4d9d-44db-8c8d-eda24019b502-reverse-heading">
+          <p class="section-heading" id="goal-ccd47872-4d9d-44db-8c8d-eda24019b502-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-ccd47872-4d9d-44db-8c8d-eda24019b502-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ccd47872-4d9d-44db-8c8d-eda24019b502-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9634bfe1-39ea-5428-a042-c3f970f811a3" rel="noreferrer noopener"><span>Exponentialfunktionen und Ableitungsregeln anwenden</span> <code>9634bfe1-39ea-5428-a042-c3f970f811a3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c87597fd-4d54-5e9a-a3d0-9a2943d8153c" rel="noreferrer noopener"><span>Exponentielle Modelle auswerten</span> <code>c87597fd-4d54-5e9a-a3d0-9a2943d8153c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3773bd34-3631-5fd2-b9b7-dfa01adf5abd" rel="noreferrer noopener"><span>Grundidee von Taylorpolynomen erläutern (LK)</span> <code>3773bd34-3631-5fd2-b9b7-dfa01adf5abd</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1b664036-3c29-5d94-9f42-97069aaa2c53" rel="noreferrer noopener"><span>Exponentialfunktion durch Taylorpolynome annähern (LK)</span> <code>1b664036-3c29-5d94-9f42-97069aaa2c53</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-315093d4-515a-542c-b776-d72a12763d1a" rel="noreferrer noopener"><span>Reihendarstellung der eulerschen Zahl angeben (LK)</span> <code>315093d4-515a-542c-b776-d72a12763d1a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:654c73c874109291e49c42f1baa92d55c094af60d2705f160384b16b1342e9ba</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=ccd47872-4d9d-44db-8c8d-eda24019b502&amp;goalFingerprint=sha256%3A654c73c874109291e49c42f1baa92d55c094af60d2705f160384b16b1342e9ba&amp;pageFingerprint=sha256%3Acc50e847f7d90e13aed33c9c3c3823c96b12840dd35d8ef57131593312493cc7&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-fec30a5a-835a-4932-a436-d83549029486" data-goal-id="fec30a5a-835a-4932-a436-d83549029486" data-page-number="18" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-528cab0b-399d-4d4b-97ea-c32733eb821c structure:canonical-goal-4047af71-de53-5dc3-80c6-a7c78fb4bfe4" aria-labelledby="goal-fec30a5a-835a-4932-a436-d83549029486-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-fec30a5a-835a-4932-a436-d83549029486-title"><a class="goal-self-link" href="#goal-fec30a5a-835a-4932-a436-d83549029486">Exponentialfunktionen für Wachstums- und Zerfallsvorgänge nutzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>fec30a5a-835a-4932-a436-d83549029486</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-262c9f1b57e9da5b6872db26">Exponential-, logarithmische und periodische Modelle (Sek II)</a></li><li><a href="#chapter-d8d6b15878bceaadd55e5f70">Exponentialfunktionen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:81045af91b9307df9671ebc88b6a4aad2594f9d34e039d0b42842d6e1cf47408" data-rendered-digest="sha256:1f4b63d0403b4258d66d017085516210a5e1a5819e3a96cb31d2651c8bb71453" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/fec30a5a-835a-4932-a436-d83549029486/fec30a5a-835a-4932-a436-d83549029486.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Exponentialfunktionen für Wachstums- und Zerfallsvorgänge nutzen&quot;. Die lernende Person kann Exponentialfunktionen zur Beschreibung begrenzter und unbegrenzter Wachstums- und Zerfallsvorgänge verwenden und Ergebnisse im Kontext deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-fec30a5a-835a-4932-a436-d83549029486-description-heading">
+        <p class="section-heading" id="goal-fec30a5a-835a-4932-a436-d83549029486-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Exponentialfunktionen zur Beschreibung begrenzter und unbegrenzter Wachstums- und Zerfallsvorgänge verwenden und Ergebnisse im Kontext deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. I · G9; Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fec30a5a-835a-4932-a436-d83549029486" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-fec30a5a-835a-4932-a436-d83549029486-requires-heading">
+          <p class="section-heading" id="goal-fec30a5a-835a-4932-a436-d83549029486-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8fa32a68-46eb-414e-8292-a4c4052b2522"><span>Eigenschaften exponentieller Funktionen der Form $a^x$ beschreiben</span><code>8fa32a68-46eb-414e-8292-a4c4052b2522</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-fec30a5a-835a-4932-a436-d83549029486-reverse-heading">
+          <p class="section-heading" id="goal-fec30a5a-835a-4932-a436-d83549029486-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-fec30a5a-835a-4932-a436-d83549029486-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-fec30a5a-835a-4932-a436-d83549029486-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c87597fd-4d54-5e9a-a3d0-9a2943d8153c" rel="noreferrer noopener"><span>Exponentielle Modelle auswerten</span> <code>c87597fd-4d54-5e9a-a3d0-9a2943d8153c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9243ae2e3b68eb40fdb5b3411df4a4d13f16e1a957716a1064f7c7641c704d14</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=fec30a5a-835a-4932-a436-d83549029486&amp;goalFingerprint=sha256%3A9243ae2e3b68eb40fdb5b3411df4a4d13f16e1a957716a1064f7c7641c704d14&amp;pageFingerprint=sha256%3Ad3f76098f62629df0364fceb7aa837e04b91810cb676a77799ee044994df2c67&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-dc69a261-31c9-5c6b-af71-ae27877a3dc1" data-goal-id="dc69a261-31c9-5c6b-af71-ae27877a3dc1" data-page-number="19" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-528cab0b-399d-4d4b-97ea-c32733eb821c structure:canonical-goal-4047af71-de53-5dc3-80c6-a7c78fb4bfe4" aria-labelledby="goal-dc69a261-31c9-5c6b-af71-ae27877a3dc1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-dc69a261-31c9-5c6b-af71-ae27877a3dc1-title"><a class="goal-self-link" href="#goal-dc69a261-31c9-5c6b-af71-ae27877a3dc1">Parameter von $f(x)=a\cdot b^x+c$ deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>dc69a261-31c9-5c6b-af71-ae27877a3dc1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-262c9f1b57e9da5b6872db26">Exponential-, logarithmische und periodische Modelle (Sek II)</a></li><li><a href="#chapter-d8d6b15878bceaadd55e5f70">Exponentialfunktionen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:57c549066b8d30d4edfcf018530c516dded7aec7f461798b0339f7ef2f64dd2c" data-rendered-digest="sha256:7ccbdae5ebb2060c77dd4a01129bc0589e11a4d526c23ee0602e26dd9363f24c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/dc69a261-31c9-5c6b-af71-ae27877a3dc1/dc69a261-31c9-5c6b-af71-ae27877a3dc1.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Parameter von $f(x)=a\cdot b^x+c$ deuten&quot;. Die lernende Person kann bei Exponentialfunktionen der Form $f(x)=a\cdot b^x+c$ die Bedeutung von Anfangs- bzw. Streckungsfaktor, Wachstums- oder Zerfallsfaktor und vertikaler Verschiebung beziehungsweise Grenzwert im Kontext erklären.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-dc69a261-31c9-5c6b-af71-ae27877a3dc1-description-heading">
+        <p class="section-heading" id="goal-dc69a261-31c9-5c6b-af71-ae27877a3dc1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei Exponentialfunktionen der Form $f(x)=a\cdot b^x+c$ die Bedeutung von Anfangs- bzw. Streckungsfaktor, Wachstums- oder Zerfallsfaktor und vertikaler Verschiebung beziehungsweise Grenzwert im Kontext erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-dc69a261-31c9-5c6b-af71-ae27877a3dc1" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-dc69a261-31c9-5c6b-af71-ae27877a3dc1-requires-heading">
+          <p class="section-heading" id="goal-dc69a261-31c9-5c6b-af71-ae27877a3dc1-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-781f133a-08bb-54b9-8fda-efa2f8f9b12c"><span>Exponentialen Wachstum und Zerfall deuten</span><code>781f133a-08bb-54b9-8fda-efa2f8f9b12c</code><span class="reference-page">S. 7</span></a></li><li><a href="#goal-8fa32a68-46eb-414e-8292-a4c4052b2522"><span>Eigenschaften exponentieller Funktionen der Form $a^x$ beschreiben</span><code>8fa32a68-46eb-414e-8292-a4c4052b2522</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-dc69a261-31c9-5c6b-af71-ae27877a3dc1-reverse-heading">
+          <p class="section-heading" id="goal-dc69a261-31c9-5c6b-af71-ae27877a3dc1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-dc69a261-31c9-5c6b-af71-ae27877a3dc1-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-dc69a261-31c9-5c6b-af71-ae27877a3dc1-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9634bfe1-39ea-5428-a042-c3f970f811a3" rel="noreferrer noopener"><span>Exponentialfunktionen und Ableitungsregeln anwenden</span> <code>9634bfe1-39ea-5428-a042-c3f970f811a3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4ae9e316-509f-517d-bd94-a165817af24f" rel="noreferrer noopener"><span>Begrenzte Wachstums- und Zerfallsprozesse aus Daten modellieren</span> <code>4ae9e316-509f-517d-bd94-a165817af24f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-adcac2a7-e763-5442-abf2-866532fedcda" rel="noreferrer noopener"><span>Exponentielle, lineare und quadratische Modelle vergleichen</span> <code>adcac2a7-e763-5442-abf2-866532fedcda</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 19 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ef310c9fb9e9abd6d93d4ac8646fa704562032a2bc5ded44afdd8ae7f8407946</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=dc69a261-31c9-5c6b-af71-ae27877a3dc1&amp;goalFingerprint=sha256%3Aef310c9fb9e9abd6d93d4ac8646fa704562032a2bc5ded44afdd8ae7f8407946&amp;pageFingerprint=sha256%3A69f89e8f22890bcde4af30b0782f9c2e1c09300aafdac90f6e56867facd93db1&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9db266a2-1889-5792-82b0-a7463f0832f1" data-goal-id="9db266a2-1889-5792-82b0-a7463f0832f1" data-page-number="20" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:analysis-basics structure:canonical-goal-528cab0b-399d-4d4b-97ea-c32733eb821c structure:canonical-goal-4047af71-de53-5dc3-80c6-a7c78fb4bfe4" aria-labelledby="goal-9db266a2-1889-5792-82b0-a7463f0832f1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9db266a2-1889-5792-82b0-a7463f0832f1-title"><a class="goal-self-link" href="#goal-9db266a2-1889-5792-82b0-a7463f0832f1">Exponentialfunktionen in e-Schreibweise umformen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9db266a2-1889-5792-82b0-a7463f0832f1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-31000ff68809987e85218d62">Grundlagen der Analysis und mathematische Modelle</a></li><li><a href="#chapter-262c9f1b57e9da5b6872db26">Exponential-, logarithmische und periodische Modelle (Sek II)</a></li><li><a href="#chapter-d8d6b15878bceaadd55e5f70">Exponentialfunktionen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:20eee0685486d4a05a2ab56437daf081dfa64e01ca010b51c99a6385a9cb4dd6" data-rendered-digest="sha256:55b7c95338bd64ce7c46482891ec1e0c4443bcd1602eebeba8bf01aa0a65eeaf" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/9db266a2-1889-5792-82b0-a7463f0832f1/9db266a2-1889-5792-82b0-a7463f0832f1.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Exponentialfunktionen in e-Schreibweise umformen&quot;. Die lernende Person kann Exponentialfunktionen zwischen Darstellungen mit beliebiger Basis und der Standardbasis e umformen und den Wachstumsfaktor beziehungsweise Wachstumsparameter aus der jeweils anderen Darstellung bestimmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9db266a2-1889-5792-82b0-a7463f0832f1-description-heading">
+        <p class="section-heading" id="goal-9db266a2-1889-5792-82b0-a7463f0832f1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Exponentialfunktionen zwischen Darstellungen mit beliebiger Basis und der Standardbasis e umformen und den Wachstumsfaktor beziehungsweise Wachstumsparameter aus der jeweils anderen Darstellung bestimmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9db266a2-1889-5792-82b0-a7463f0832f1" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9db266a2-1889-5792-82b0-a7463f0832f1-requires-heading">
+          <p class="section-heading" id="goal-9db266a2-1889-5792-82b0-a7463f0832f1-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-346efb31-c400-5bd3-a698-dd9a7e1bc3f7"><span>Parameter exponentieller Funktionen interpretieren</span><code>346efb31-c400-5bd3-a698-dd9a7e1bc3f7</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-628928a6-4f48-54dc-952d-dec0e69dc856"><span>Eigenschaften der natürlichen Exponentialfunktion begründen</span><code>628928a6-4f48-54dc-952d-dec0e69dc856</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-9db266a2-1889-5792-82b0-a7463f0832f1-reverse-heading">
+          <p class="section-heading" id="goal-9db266a2-1889-5792-82b0-a7463f0832f1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-9db266a2-1889-5792-82b0-a7463f0832f1-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9db266a2-1889-5792-82b0-a7463f0832f1-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9634bfe1-39ea-5428-a042-c3f970f811a3" rel="noreferrer noopener"><span>Exponentialfunktionen und Ableitungsregeln anwenden</span> <code>9634bfe1-39ea-5428-a042-c3f970f811a3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d0a9e407-e654-5940-958f-6f608bf3d654" rel="noreferrer noopener"><span>Produkt- und Kettenregel bei Exponentialverknüpfungen anwenden</span> <code>d0a9e407-e654-5940-958f-6f608bf3d654</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 20 von 20</span>
+      <span>Buch-Digest <code>sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ae46d57358baa93c1bc0d1fe71bc49b10dc45de16743f0e3d5cd80f76a2fec1d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-b038-derivative-applications-and-exponentials-20-v1-20260906&amp;edition=curricular-atomic-v1&amp;goalId=9db266a2-1889-5792-82b0-a7463f0832f1&amp;goalFingerprint=sha256%3Aae46d57358baa93c1bc0d1fe71bc49b10dc45de16743f0e3d5cd80f76a2fec1d&amp;pageFingerprint=sha256%3A4faf8dbb4aa9f36ac5f5090c641804fdff778d209fcb1727913418ebb40f220d&amp;bookDigest=sha256%3Ae2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817&amp;page=20" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

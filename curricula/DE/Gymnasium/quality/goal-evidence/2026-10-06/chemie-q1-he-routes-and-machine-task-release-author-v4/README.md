@@ -1,0 +1,7 @@
+# Inaktiver Chemie-Q1-Nachfolger: präzise HE-Routen und maschinell geprüfte Aufgaben
+
+Die vorhandene Vererbungsgrenze am neuen HE-LK-Paraben-Ziel bleibt erhalten. Zusätzlich entfernen die drei allgemeinen Q1-Aufgaben genau dieses neu eingeführte HE-Verwendungsziel aus ihren zuvor erweiterten Voraussetzungen. Dieses Ziel fehlte im aktiven 376er Stand und ist keine belegte allgemeine BY-Pflicht. Alle ursprünglichen stofflichen Voraussetzungen, Aufgabentexte, Lösungen, Rubriken und bisherige Release-Status der drei Aufgaben bleiben exakt.
+
+Beide neuen 24/24-Aufgaben wurden in zwei unabhängigen Prüfungen fachlich bestätigt; der Kontrollgrenzenbefund ist in v2 konkret behoben. `examData.reviewStatus: released` dokumentiert wie im bestehenden Mathematikverfahren ausschließlich die lokale maschinelle Inhaltsfreigabe. Es behauptet keine menschliche Prüfung, Veröffentlichung, echte Laborleistung oder tatsächliche Lernendenmastery. Die verbliebenen veralteten Autoren-/Reviewhinweise werden durch die gleichlautende Bestehensanforderung ersetzt. Fachliche Materialien, Rechenschritte und Rubriken bleiben exakt. Die menschlichen Release- und Erprobungsgates bleiben getrennt und offen.
+
+Dieser Nachfolger ist noch inaktiv: vollständige native HE-only Scope-/Projektionsnachweise und beide endgültigen D-Bindungsreviews stehen aus. Von 479 WholeGoals ändern sich gegenüber v3 genau fünf; alle 378 curricularAtomic-Text-/P-/Bildkerne bleiben erhalten. Der aktive zentrale Abschlussstand ist unverändert104/376.

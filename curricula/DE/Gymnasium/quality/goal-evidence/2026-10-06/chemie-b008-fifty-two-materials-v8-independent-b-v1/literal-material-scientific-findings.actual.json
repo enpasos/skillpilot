@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent-B",
+  "inputFile": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/fifty-two-cases.de-en.author-candidate.json",
+  "caseIdentifier": "caseKey is the actual author identifier; there is no caseId field",
+  "findingCount": 3,
+  "directlyAffectedCaseCount": 9,
+  "findings": [
+    {
+      "findingId": "B-v8-01",
+      "type": "confirmed_scientific_data_unit_scale_defect",
+      "severity": "revise_before_material_readiness",
+      "cases": [
+        {
+          "caseKey": "lower-chemical-data-interpretation-conductivity-series",
+          "caseArrayIndexZeroBased": 13,
+          "displayNumberOneBased": 14,
+          "candidateKey": "lower-chemical-data-interpretation",
+          "actualAffectedPointers": [
+            "/cases/13/suppliedMaterial/de",
+            "/cases/13/suppliedMaterial/en"
+          ],
+          "literalScientificFinding": "Named aqueous NaCl at 1.0 g/L is assigned approximately 199 uS/cm at 25 C (or 180/230/228 uS/cm at 20/35 C). The concentration/conductivity pairing is about a factor of ten too low. A primary NaCl standard at 1000 mg/L and 25 C has nominal conductivity 1990 uS/cm. Synthetic teaching data do not justify silently changing the physical scale of a named chemical system.",
+          "minimumCorrection": "Either change the NaCl concentration scale to a physically plausible approximately 0.1 g/L system or correct the conductivities. Reconcile all repeated data, units, differences and scatter. Do not blindly multiply a water blank or uncertainty by ten. Preserve the correct trend/confounding/dialogue conclusions."
+        },
+        {
+          "caseKey": "data-validity-temperature-confound",
+          "caseArrayIndexZeroBased": 17,
+          "displayNumberOneBased": 18,
+          "candidateKey": "data-validity",
+          "actualAffectedPointers": [
+            "/cases/17/suppliedMaterial/de",
+            "/cases/17/suppliedMaterial/en",
+            "/cases/17/expectedAnswer/de",
+            "/cases/17/expectedAnswer/en"
+          ],
+          "literalScientificFinding": "Named aqueous NaCl at 1.0 g/L is assigned approximately 199 uS/cm at 25 C (or 180/230/228 uS/cm at 20/35 C). The concentration/conductivity pairing is about a factor of ten too low. A primary NaCl standard at 1000 mg/L and 25 C has nominal conductivity 1990 uS/cm. Synthetic teaching data do not justify silently changing the physical scale of a named chemical system.",
+          "minimumCorrection": "Either change the NaCl concentration scale to a physically plausible approximately 0.1 g/L system or correct the conductivities. Reconcile all repeated data, units, differences and scatter. Do not blindly multiply a water blank or uncertainty by ten. Preserve the correct trend/confounding/dialogue conclusions."
+        },
+        {
+          "caseKey": "upper-scientific-discourse-conductivity-debate",
+          "caseArrayIndexZeroBased": 43,
+          "displayNumberOneBased": 44,
+          "candidateKey": "upper-scientific-discourse",
+          "actualAffectedPointers": [
+            "/cases/43/suppliedMaterial/de",
+            "/cases/43/suppliedMaterial/en"
+          ],
+          "literalScientificFinding": "Named aqueous NaCl at 1.0 g/L is assigned approximately 199 uS/cm at 25 C (or 180/230/228 uS/cm at 20/35 C). The concentration/conductivity pairing is about a factor of ten too low. A primary NaCl standard at 1000 mg/L and 25 C has nominal conductivity 1990 uS/cm. Synthetic teaching data do not justify silently changing the physical scale of a named chemical system.",
+          "minimumCorrection": "Either change the NaCl concentration scale to a physically plausible approximately 0.1 g/L system or correct the conductivities. Reconcile all repeated data, units, differences and scatter. Do not blindly multiply a water blank or uncertainty by ten. Preserve the correct trend/confounding/dialogue conclusions."
+        }
+      ],
+      "primarySupport": {
+        "url": "https://www.hach.com/p-conductivity-standard-solution-1990-scm-nacl-100-ml/210542",
+        "actualSelectedLines": "632-636",
+        "independentlyObserved": "1000 mg/L NaCl; 1990 uS/cm +/-20 uS/cm at 25 C"
+      }
+    },
+    {
+      "findingId": "B-v8-02",
+      "type": "actual_material_provision_under_specified",
+      "severity": "revise_material_setup_information",
+      "cases": [
+        {
+          "caseKey": "lower-guided-hypothesis-investigation-conductivity",
+          "caseArrayIndexZeroBased": 4,
+          "displayNumberOneBased": 5,
+          "candidateKey": "lower-guided-hypothesis-investigation",
+          "label": "known conductivity standard unspecified",
+          "actualAffectedPointers": [
+            "/cases/4/suppliedMaterial/de",
+            "/cases/4/suppliedMaterial/en",
+            "/cases/4/moderatorProtocol/setupAndModeratorPreparation/de",
+            "/cases/4/moderatorProtocol/setupAndModeratorPreparation/en"
+          ],
+          "actualTaskPointers": [
+            "/cases/4/learnerTask/de",
+            "/cases/4/learnerTask/en",
+            "/cases/4/transfer/de",
+            "/cases/4/transfer/en"
+          ],
+          "literalScientificFinding": "The procedure requires a known standard, but the material does not identify/provide its nominal conductivity, reference temperature or labelled uncertainty. Declare a supplied labelled standard and a meter range suitable for the prepared salt solution; distinguish quantitative conductivity from a qualitative indicator.",
+          "minimumCorrection": "Make the actual supplied apparatus/labels/control arrangement explicit in both languages and moderator preparation; keep actual execution unperformed."
+        },
+        {
+          "caseKey": "lower-independently-planned-hypothesis-investigation-ion-series",
+          "caseArrayIndexZeroBased": 6,
+          "displayNumberOneBased": 7,
+          "candidateKey": "lower-independently-planned-hypothesis-investigation",
+          "label": "temperature control and quantitative range unspecified",
+          "actualAffectedPointers": [
+            "/cases/6/suppliedMaterial/de",
+            "/cases/6/suppliedMaterial/en",
+            "/cases/6/moderatorProtocol/setupAndModeratorPreparation/de",
+            "/cases/6/moderatorProtocol/setupAndModeratorPreparation/en"
+          ],
+          "actualTaskPointers": [
+            "/cases/6/learnerTask/de",
+            "/cases/6/learnerTask/en",
+            "/cases/6/transfer/de",
+            "/cases/6/transfer/en"
+          ],
+          "literalScientificFinding": "Equal temperature is an essential controlled variable in the hypothesis, own plan and transfer. No thermometer, explicit meter temperature sensor or teacher-verified fixed-temperature arrangement is supplied. State that provision and the quantitative meter range/resolution suitable for the chosen concentrations; do not assume a qualitative indicator supplies quantitative readings.",
+          "minimumCorrection": "Make the actual supplied apparatus/labels/control arrangement explicit in both languages and moderator preparation; keep actual execution unperformed."
+        },
+        {
+          "caseKey": "lower-independently-planned-hypothesis-investigation-saturation",
+          "caseArrayIndexZeroBased": 7,
+          "displayNumberOneBased": 8,
+          "candidateKey": "lower-independently-planned-hypothesis-investigation",
+          "label": "specified 20-C condition has no declared verification/control arrangement",
+          "actualAffectedPointers": [
+            "/cases/7/suppliedMaterial/de",
+            "/cases/7/suppliedMaterial/en",
+            "/cases/7/moderatorProtocol/setupAndModeratorPreparation/de",
+            "/cases/7/moderatorProtocol/setupAndModeratorPreparation/en"
+          ],
+          "actualTaskPointers": [
+            "/cases/7/learnerTask/de",
+            "/cases/7/learnerTask/en",
+            "/cases/7/transfer/de",
+            "/cases/7/transfer/en"
+          ],
+          "literalScientificFinding": "The water is stated to be at 20 C, but the independently performed repeated saturation plan must hold equal temperature while waiting/stirring. State how that condition is supplied and verified (e.g. teacher-verified fixed-temperature arrangement or supplied thermometer), plus usable balance resolution. This does not assert the stated initial water temperature is false.",
+          "minimumCorrection": "Make the actual supplied apparatus/labels/control arrangement explicit in both languages and moderator preparation; keep actual execution unperformed."
+        },
+        {
+          "caseKey": "upper-hypothesis-investigation-acid-analysis",
+          "caseArrayIndexZeroBased": 8,
+          "displayNumberOneBased": 9,
+          "candidateKey": "upper-hypothesis-investigation",
+          "label": "indicator information and usable titration/calibration setup missing",
+          "actualAffectedPointers": [
+            "/cases/8/suppliedMaterial/de",
+            "/cases/8/suppliedMaterial/en",
+            "/cases/8/moderatorProtocol/setupAndModeratorPreparation/de",
+            "/cases/8/moderatorProtocol/setupAndModeratorPreparation/en"
+          ],
+          "actualTaskPointers": [
+            "/cases/8/learnerTask/de",
+            "/cases/8/learnerTask/en",
+            "/cases/8/transfer/de",
+            "/cases/8/transfer/en"
+          ],
+          "literalScientificFinding": "An authorised unnamed indicator gives no identity, colour transition or transition range from which to justify its suitability for weak-acid titration. Supply those data/label and an authorised usable menu if choice is required. Declare receiving/titration vessels, secure burette holder and pH calibration/buffer information for the pH route. These are equipment/information gaps, not a demand to add own hypothesis formulation.",
+          "minimumCorrection": "Make the actual supplied apparatus/labels/control arrangement explicit in both languages and moderator preparation; keep actual execution unperformed."
+        },
+        {
+          "caseKey": "upper-hypothesis-investigation-colour-analysis",
+          "caseArrayIndexZeroBased": 9,
+          "displayNumberOneBased": 10,
+          "candidateKey": "upper-hypothesis-investigation",
+          "label": "pipette filler is not a pipette; defined dilution provision missing",
+          "actualAffectedPointers": [
+            "/cases/9/suppliedMaterial/de",
+            "/cases/9/suppliedMaterial/en",
+            "/cases/9/moderatorProtocol/setupAndModeratorPreparation/de",
+            "/cases/9/moderatorProtocol/setupAndModeratorPreparation/en"
+          ],
+          "actualTaskPointers": [
+            "/cases/9/learnerTask/de",
+            "/cases/9/learnerTask/en",
+            "/cases/9/transfer/de",
+            "/cases/9/transfer/en"
+          ],
+          "literalScientificFinding": "The kit lists pipette fillers but no actual pipettes or other quantified transfer/dilution apparatus. Supply cuvette/sample handling and volumetric pipettes/flasks or a declared equivalent with volumes/tolerances so a known twofold dilution can actually be made. Retain actual measured standards; synthetic slope does not calibrate the real dye kit.",
+          "minimumCorrection": "Make the actual supplied apparatus/labels/control arrangement explicit in both languages and moderator preparation; keep actual execution unperformed."
+        }
+      ],
+      "primarySupport": {
+        "localInput": "primary-inputs/actual-primary-pdf-pages/ni-i-physical-page-054.txt and ni-i-physical-page-060.txt",
+        "selectedLines": "054:23-29; 060:21-31",
+        "reason": "Actual simple quantitative as well as qualitative experiments and their records are required. Method/control/dilution reasoning has to be executable using stated apparatus/information. Local safety authorisation stays independently pending."
+      }
+    },
+    {
+      "findingId": "B-v8-03",
+      "type": "transfer_requires_actual_measurement_without_new_material_or_data",
+      "severity": "revise_transfer_only",
+      "cases": [
+        {
+          "caseKey": "data-documentation-raw-dissolution",
+          "caseArrayIndexZeroBased": 10,
+          "displayNumberOneBased": 11,
+          "candidateKey": "data-documentation",
+          "actualAffectedPointers": [
+            "/cases/10/transfer/de",
+            "/cases/10/transfer/en"
+          ],
+          "relatedSourcePointers": [
+            "/cases/10/suppliedMaterial/de",
+            "/cases/10/suppliedMaterial/en",
+            "/cases/10/expectedAnswer/de",
+            "/cases/10/expectedAnswer/en"
+          ],
+          "literalScientificFinding": "R1 is a fictional historical teaching sheet, not a current learner experiment. The transfer demands a genuinely later temperature check but supplies neither a later traceable measurement nor an extant sample, thermometer and observed execution setup. A learner cannot retrospectively measure the fictional old sample temperature.",
+          "minimumCorrection": "Supply a separate traceable new temperature-measurement note and ask to append it, or explicitly supply a new supervised measurement setup and require its genuine new log. Preserve the old table, mark the new event separately and forbid retroactive verification claims."
+        }
+      ],
+      "primarySupport": {
+        "localInput": "literal R1 material/task/transfer",
+        "reason": "Authentic documentation distinguishes historical supplied data, actual new measurements and interpretation."
+      }
+    }
+  ],
+  "unadoptedSuggestionsOnly": true,
+  "authorInputsChanged": false,
+  "nativeOrHumanApproval": false,
+  "strictCompletionsAdded": 0
+}

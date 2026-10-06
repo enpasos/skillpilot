@@ -5,7 +5,7 @@ Mathematics, Physics, Chemistry and Biology. Current work targets Chemistry and
 Biology; the achieved Mathematics and Physics M7 floors remain protected.
 
 Current continuation:
-[Chemistry/Biology NI checkpoint and retained Chemistry candidate](../../../../../docs/qa-ci/chemie-biologie-m7-ni-quantitative-continuation-2026-10-06.md).
+[Chemistry/Biology: commit checkpoint and open candidate findings](../../../../../docs/qa-ci/chemie-biologie-m7-commit-checkpoint-2026-10-06.md).
 
 A curricular-atomic goal counts only when all five gates are current at once:
 

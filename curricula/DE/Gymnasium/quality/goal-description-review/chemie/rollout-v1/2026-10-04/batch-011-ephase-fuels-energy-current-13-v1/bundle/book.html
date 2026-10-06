@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Chemie B011: Rohstoffe und Energieumwandlung, 13 aktuelle Ziele</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Chemie B011: Rohstoffe und Energieumwandlung, 13 aktuelle Ziele</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>13 atomare Lernziele</dt><dd>5 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:a3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:chemie-m7-review-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-fd713faf6c8502b7e7241677" aria-label="Chemie – kanonische M7-Prüfsicht"><a href="#goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef"><span class="toc-entry-label">Chemie&#160;<wbr>–&#160;<wbr>kanonische&#160;<wbr>M7-Prüfsicht</span></a></h2>
+          <span class="toc-entry-meta"><span>13 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:442c31c5-c561-5c7a-90bb-2335d779175c" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-61e1c5b7a0d4217b4782dbac" aria-label="Chemie"><a href="#goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef"><span class="toc-entry-label">Chemie</span></a></h3>
+          <span class="toc-entry-meta"><span>13 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:323a222e-5db8-53c5-b2dc-6f9c1d0d277c" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-848991407292c92e1a7e5063" aria-label="Einführungsphase Reaktionsgrundlagen"><a href="#goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef"><span class="toc-entry-label">Einführungsphase&#160;<wbr>Reaktionsgrundlagen</span></a></h4>
+          <span class="toc-entry-meta"><span>13 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:e8c02335-d4e5-565c-8830-628067ce51c3" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-0ddaaf29f79aa4ef0f9a32dd" aria-label="Erdöl und Erdgas – Brennstoffe"><a href="#goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef"><span class="toc-entry-label">Erdöl&#160;<wbr>und&#160;<wbr>Erdgas&#160;<wbr>–&#160;<wbr>Brennstoffe</span></a></h5>
+          <span class="toc-entry-meta"><span>10 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:1848c806-a7b6-5e77-bd16-356a82d0dfd9" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-74ced47e8ad6979b6295f232" aria-label="Mobile Energiewandler"><a href="#goal-b759d50d-0e82-5b10-89a2-fe5271106e50"><span class="toc-entry-label">Mobile&#160;<wbr>Energiewandler</span></a></h5>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 11</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef" data-goal-id="2be9e61a-88ea-56fe-8294-ee46e3c9a8ef" data-page-number="1" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:323a222e-5db8-53c5-b2dc-6f9c1d0d277c goal:e8c02335-d4e5-565c-8830-628067ce51c3" aria-labelledby="goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef-title"><a class="goal-self-link" href="#goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef">Rohstoffvorkommen reflektieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2be9e61a-88ea-56fe-8294-ee46e3c9a8ef</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-848991407292c92e1a7e5063">Einführungsphase Reaktionsgrundlagen</a></li><li><a href="#chapter-0ddaaf29f79aa4ef0f9a32dd">Erdöl und Erdgas – Brennstoffe</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:33385298c9d6e4995cd58031f50dec88ec23c0db10d2b0e86f239946c4a842d9" data-rendered-digest="sha256:cec581e0840d6b35255e2d98489e75393c86131cad58be925aa8665bc2577388" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/2be9e61a-88ea-56fe-8294-ee46e3c9a8ef/2be9e61a-88ea-56fe-8294-ee46e3c9a8ef.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Rohstoffvorkommen reflektieren&quot;. Die lernende Person kann Lagerstätten, Fördermethoden und ökologische Risiken der Erdöl- und Erdgasgewinnung erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef-description-heading">
+        <p class="section-heading" id="goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Lagerstätten und Fördermethoden der Erdöl- und Erdgasgewinnung erläutern und dabei die begrenzte Verfügbarkeit, ökologische Risiken und geopolitische Abhängigkeiten begründet einordnen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef-requires-heading">
+          <p class="section-heading" id="goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef-reverse-heading">
+          <p class="section-heading" id="goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-8ceb1749-fce0-584f-a2b8-0a309282329a"><span>Fraktionierung und Cracken erklären</span><code>8ceb1749-fce0-584f-a2b8-0a309282329a</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-dd58c029-176f-5d99-923e-1c1fda6cf58e" rel="noreferrer noopener"><span>Alkane, Alkene und Alkine beschreiben</span> <code>dd58c029-176f-5d99-923e-1c1fda6cf58e</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 13</span>
+      <span>Buch-Digest <code>sha256:a3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ee501c90dd3c0f67ae21504b34e913fb224a245731a3b2089e90e38b348093e3</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-batch-011-ephase-fuels-energy-current-13-v1-20261004&amp;edition=curricular-atomic-v1&amp;goalId=2be9e61a-88ea-56fe-8294-ee46e3c9a8ef&amp;goalFingerprint=sha256%3Aee501c90dd3c0f67ae21504b34e913fb224a245731a3b2089e90e38b348093e3&amp;pageFingerprint=sha256%3A61d3d3cb2bc61e868ed57a9ea5bebc1e8304ee8e86cf277d3cd1c728df52d76c&amp;bookDigest=sha256%3Aa3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8ceb1749-fce0-584f-a2b8-0a309282329a" data-goal-id="8ceb1749-fce0-584f-a2b8-0a309282329a" data-page-number="2" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:323a222e-5db8-53c5-b2dc-6f9c1d0d277c goal:e8c02335-d4e5-565c-8830-628067ce51c3" aria-labelledby="goal-8ceb1749-fce0-584f-a2b8-0a309282329a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8ceb1749-fce0-584f-a2b8-0a309282329a-title"><a class="goal-self-link" href="#goal-8ceb1749-fce0-584f-a2b8-0a309282329a">Fraktionierung und Cracken erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8ceb1749-fce0-584f-a2b8-0a309282329a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-848991407292c92e1a7e5063">Einführungsphase Reaktionsgrundlagen</a></li><li><a href="#chapter-0ddaaf29f79aa4ef0f9a32dd">Erdöl und Erdgas – Brennstoffe</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:deff8df3d98b1e518e500f3453a96da60796c5ace8672907651a4b201d4bcf0f" data-rendered-digest="sha256:03011b3719d9d3d1bcdb79983f180c4af0dec8f18273cd8739332c7483869064" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/8ceb1749-fce0-584f-a2b8-0a309282329a/8ceb1749-fce0-584f-a2b8-0a309282329a.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Fraktionierung und Cracken erklären&quot;. Die lernende Person kann die fraktionierte Destillation sowie das thermische Cracken qualitativ beschreiben und typische Produkte zuordnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8ceb1749-fce0-584f-a2b8-0a309282329a-description-heading">
+        <p class="section-heading" id="goal-8ceb1749-fce0-584f-a2b8-0a309282329a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die fraktionierte Destillation sowie das thermische Cracken qualitativ beschreiben und typische Produkte zuordnen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8ceb1749-fce0-584f-a2b8-0a309282329a-requires-heading">
+          <p class="section-heading" id="goal-8ceb1749-fce0-584f-a2b8-0a309282329a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2be9e61a-88ea-56fe-8294-ee46e3c9a8ef"><span>Rohstoffvorkommen reflektieren</span><code>2be9e61a-88ea-56fe-8294-ee46e3c9a8ef</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8ceb1749-fce0-584f-a2b8-0a309282329a-reverse-heading">
+          <p class="section-heading" id="goal-8ceb1749-fce0-584f-a2b8-0a309282329a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-8ece9beb-9458-5ea1-8e45-9be04670f464"><span>Brennstoffe vergleichen</span><code>8ece9beb-9458-5ea1-8e45-9be04670f464</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-b95cdf98-fc97-5a94-b133-878922d28156"><span>Erdölprodukte in Alltag, Technik und Umwelt bewerten</span><code>b95cdf98-fc97-5a94-b133-878922d28156</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-8ceb1749-fce0-584f-a2b8-0a309282329a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8ceb1749-fce0-584f-a2b8-0a309282329a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 13</span>
+      <span>Buch-Digest <code>sha256:a3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fd439e6043e209dd0c527be4c70810e318d2a0a812e589473802b03a43339e3b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-batch-011-ephase-fuels-energy-current-13-v1-20261004&amp;edition=curricular-atomic-v1&amp;goalId=8ceb1749-fce0-584f-a2b8-0a309282329a&amp;goalFingerprint=sha256%3Afd439e6043e209dd0c527be4c70810e318d2a0a812e589473802b03a43339e3b&amp;pageFingerprint=sha256%3Aa7a5c30aea318d3cb7568db3da905464a973551cac7e41c213e8f3f4181ff387&amp;bookDigest=sha256%3Aa3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8ece9beb-9458-5ea1-8e45-9be04670f464" data-goal-id="8ece9beb-9458-5ea1-8e45-9be04670f464" data-page-number="3" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:323a222e-5db8-53c5-b2dc-6f9c1d0d277c goal:e8c02335-d4e5-565c-8830-628067ce51c3" aria-labelledby="goal-8ece9beb-9458-5ea1-8e45-9be04670f464-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8ece9beb-9458-5ea1-8e45-9be04670f464-title"><a class="goal-self-link" href="#goal-8ece9beb-9458-5ea1-8e45-9be04670f464">Brennstoffe vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8ece9beb-9458-5ea1-8e45-9be04670f464</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-848991407292c92e1a7e5063">Einführungsphase Reaktionsgrundlagen</a></li><li><a href="#chapter-0ddaaf29f79aa4ef0f9a32dd">Erdöl und Erdgas – Brennstoffe</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:fd52cf0e6a8088eb74497093d36514f710d41ee7e2b94edb360623be269cd939" data-rendered-digest="sha256:f687d4009dd5b7e0d9cf8b1474fc56dc33fa578b57dadc485ba3756a793ce9c1" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/8ece9beb-9458-5ea1-8e45-9be04670f464/8ece9beb-9458-5ea1-8e45-9be04670f464.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Brennstoffe vergleichen&quot;. Die lernende Person kann Verbrennungsreaktionen verschiedener Kohlenwasserstoffe vergleichen und energetische Kennzahlen im Kontext diskutieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8ece9beb-9458-5ea1-8e45-9be04670f464-description-heading">
+        <p class="section-heading" id="goal-8ece9beb-9458-5ea1-8e45-9be04670f464-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Verbrennungsreaktionen verschiedener Kohlenwasserstoffe vergleichen und energetische Kennzahlen im Kontext diskutieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8ece9beb-9458-5ea1-8e45-9be04670f464-requires-heading">
+          <p class="section-heading" id="goal-8ece9beb-9458-5ea1-8e45-9be04670f464-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8ceb1749-fce0-584f-a2b8-0a309282329a"><span>Fraktionierung und Cracken erklären</span><code>8ceb1749-fce0-584f-a2b8-0a309282329a</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8ece9beb-9458-5ea1-8e45-9be04670f464-reverse-heading">
+          <p class="section-heading" id="goal-8ece9beb-9458-5ea1-8e45-9be04670f464-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-a0e8f0f2-24e2-5945-a511-597d32e73796"><span>Fossile und nachwachsende Rohstoffe nachhaltig bewerten</span><code>a0e8f0f2-24e2-5945-a511-597d32e73796</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-8ece9beb-9458-5ea1-8e45-9be04670f464-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8ece9beb-9458-5ea1-8e45-9be04670f464-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-801790f9-be3a-51fe-9b0f-3452c1bba887" rel="noreferrer noopener"><span>1. Hauptsatz anwenden</span> <code>801790f9-be3a-51fe-9b0f-3452c1bba887</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 13</span>
+      <span>Buch-Digest <code>sha256:a3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:817c9b559d82cc3a4dfdfa08722bab4dc223b49096fe7db1d9ee9d246a3b238e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-batch-011-ephase-fuels-energy-current-13-v1-20261004&amp;edition=curricular-atomic-v1&amp;goalId=8ece9beb-9458-5ea1-8e45-9be04670f464&amp;goalFingerprint=sha256%3A817c9b559d82cc3a4dfdfa08722bab4dc223b49096fe7db1d9ee9d246a3b238e&amp;pageFingerprint=sha256%3A3986ec42444b0d3d01f6475e530a7d33da2cd5b528c6af94b8fbf2d595ce86b0&amp;bookDigest=sha256%3Aa3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b95cdf98-fc97-5a94-b133-878922d28156" data-goal-id="b95cdf98-fc97-5a94-b133-878922d28156" data-page-number="4" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:323a222e-5db8-53c5-b2dc-6f9c1d0d277c goal:e8c02335-d4e5-565c-8830-628067ce51c3" aria-labelledby="goal-b95cdf98-fc97-5a94-b133-878922d28156-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b95cdf98-fc97-5a94-b133-878922d28156-title"><a class="goal-self-link" href="#goal-b95cdf98-fc97-5a94-b133-878922d28156">Erdölprodukte in Alltag, Technik und Umwelt bewerten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b95cdf98-fc97-5a94-b133-878922d28156</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-848991407292c92e1a7e5063">Einführungsphase Reaktionsgrundlagen</a></li><li><a href="#chapter-0ddaaf29f79aa4ef0f9a32dd">Erdöl und Erdgas – Brennstoffe</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0d518fd24cdb679dd663a16b766ccf7a687c3077f33b80a2945767e5b941558d" data-rendered-digest="sha256:a1500bdc2c0d8104962465e1f3e8956aee15c8913c5d8983842ba073a3dff0a4" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/b95cdf98-fc97-5a94-b133-878922d28156/b95cdf98-fc97-5a94-b133-878922d28156.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Erdölprodukte in Alltag, Technik und Umwelt bewerten&quot;. Die lernende Person kann wichtige Erdölprodukte Einsatzbereichen in Alltag und Technik zuordnen und ökologische Konsequenzen ihres Einsatzes begründet abschätzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b95cdf98-fc97-5a94-b133-878922d28156-description-heading">
+        <p class="section-heading" id="goal-b95cdf98-fc97-5a94-b133-878922d28156-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann wichtige Erdölprodukte Einsatzbereichen in Alltag und Technik zuordnen und ökologische Konsequenzen ihres Einsatzes begründet abschätzen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b95cdf98-fc97-5a94-b133-878922d28156-requires-heading">
+          <p class="section-heading" id="goal-b95cdf98-fc97-5a94-b133-878922d28156-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8ceb1749-fce0-584f-a2b8-0a309282329a"><span>Fraktionierung und Cracken erklären</span><code>8ceb1749-fce0-584f-a2b8-0a309282329a</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-b95cdf98-fc97-5a94-b133-878922d28156-reverse-heading">
+          <p class="section-heading" id="goal-b95cdf98-fc97-5a94-b133-878922d28156-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b95cdf98-fc97-5a94-b133-878922d28156-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b95cdf98-fc97-5a94-b133-878922d28156-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-9198b4cf-e454-562f-83f0-b1b74e68765d" rel="noreferrer noopener"><span>Energieträger kriteriengeleitet bewerten</span> <code>9198b4cf-e454-562f-83f0-b1b74e68765d</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 13</span>
+      <span>Buch-Digest <code>sha256:a3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:32ce8a6c122a01494f60565bd75768370290e28acb51bbbe88ea461642739aa5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-batch-011-ephase-fuels-energy-current-13-v1-20261004&amp;edition=curricular-atomic-v1&amp;goalId=b95cdf98-fc97-5a94-b133-878922d28156&amp;goalFingerprint=sha256%3A32ce8a6c122a01494f60565bd75768370290e28acb51bbbe88ea461642739aa5&amp;pageFingerprint=sha256%3Ae855038db18a5058ce0551366476ffe3d1d97dec2a7b7a0ca0883c3f88cd9ab3&amp;bookDigest=sha256%3Aa3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a0e8f0f2-24e2-5945-a511-597d32e73796" data-goal-id="a0e8f0f2-24e2-5945-a511-597d32e73796" data-page-number="5" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:323a222e-5db8-53c5-b2dc-6f9c1d0d277c goal:e8c02335-d4e5-565c-8830-628067ce51c3" aria-labelledby="goal-a0e8f0f2-24e2-5945-a511-597d32e73796-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a0e8f0f2-24e2-5945-a511-597d32e73796-title"><a class="goal-self-link" href="#goal-a0e8f0f2-24e2-5945-a511-597d32e73796">Fossile und nachwachsende Rohstoffe nachhaltig bewerten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a0e8f0f2-24e2-5945-a511-597d32e73796</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-848991407292c92e1a7e5063">Einführungsphase Reaktionsgrundlagen</a></li><li><a href="#chapter-0ddaaf29f79aa4ef0f9a32dd">Erdöl und Erdgas – Brennstoffe</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:97b63782922ade5cdaa70e9aacb6eb918eab25e16ab8bacad3608c7ebf021151" data-rendered-digest="sha256:bb161f94208839389e868e0432debf81084f5a31b43bb4362a3b094f3d026fb2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/a0e8f0f2-24e2-5945-a511-597d32e73796/a0e8f0f2-24e2-5945-a511-597d32e73796.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Fossile und nachwachsende Rohstoffe nachhaltig bewerten&quot;. Die lernende Person kann die Bedeutung fossiler und nachwachsender Rohstoffe als Energieträger und Grundstoffe recherchieren und im Sinn nachhaltiger Entwicklung bewerten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a0e8f0f2-24e2-5945-a511-597d32e73796-description-heading">
+        <p class="section-heading" id="goal-a0e8f0f2-24e2-5945-a511-597d32e73796-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Bedeutung fossiler und nachwachsender Rohstoffe als Energieträger und Grundstoffe recherchieren und im Sinn nachhaltiger Entwicklung bewerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a0e8f0f2-24e2-5945-a511-597d32e73796-requires-heading">
+          <p class="section-heading" id="goal-a0e8f0f2-24e2-5945-a511-597d32e73796-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8ece9beb-9458-5ea1-8e45-9be04670f464"><span>Brennstoffe vergleichen</span><code>8ece9beb-9458-5ea1-8e45-9be04670f464</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a0e8f0f2-24e2-5945-a511-597d32e73796-reverse-heading">
+          <p class="section-heading" id="goal-a0e8f0f2-24e2-5945-a511-597d32e73796-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-8b98d8ba-65c6-58d7-92f0-45f4b2456573"><span>Maßnahmen zu organischen Rohstoffen quellenkritisch ableiten</span><code>8b98d8ba-65c6-58d7-92f0-45f4b2456573</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a0e8f0f2-24e2-5945-a511-597d32e73796-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a0e8f0f2-24e2-5945-a511-597d32e73796-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-b6327e98-8ab9-5d7f-b826-4023bc1a56a7" rel="noreferrer noopener"><span>Quellen und Argumente zu chemischen Sachverhalten auswerten</span> <code>b6327e98-8ab9-5d7f-b826-4023bc1a56a7</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-a0e8f0f2-24e2-5945-a511-597d32e73796-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a0e8f0f2-24e2-5945-a511-597d32e73796-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 13</span>
+      <span>Buch-Digest <code>sha256:a3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e90b0cb7745cc72363379374d454734e2acea6bfc4b99fa3af3f7cb0e1f2268c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-batch-011-ephase-fuels-energy-current-13-v1-20261004&amp;edition=curricular-atomic-v1&amp;goalId=a0e8f0f2-24e2-5945-a511-597d32e73796&amp;goalFingerprint=sha256%3Ae90b0cb7745cc72363379374d454734e2acea6bfc4b99fa3af3f7cb0e1f2268c&amp;pageFingerprint=sha256%3A3cf1a2c91d281c2027d0540a18f5aa855835402453a59251792ded7c0ab4d7ab&amp;bookDigest=sha256%3Aa3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8b98d8ba-65c6-58d7-92f0-45f4b2456573" data-goal-id="8b98d8ba-65c6-58d7-92f0-45f4b2456573" data-page-number="6" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:323a222e-5db8-53c5-b2dc-6f9c1d0d277c goal:e8c02335-d4e5-565c-8830-628067ce51c3" aria-labelledby="goal-8b98d8ba-65c6-58d7-92f0-45f4b2456573-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8b98d8ba-65c6-58d7-92f0-45f4b2456573-title"><a class="goal-self-link" href="#goal-8b98d8ba-65c6-58d7-92f0-45f4b2456573">Maßnahmen zu organischen Rohstoffen quellenkritisch ableiten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8b98d8ba-65c6-58d7-92f0-45f4b2456573</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-848991407292c92e1a7e5063">Einführungsphase Reaktionsgrundlagen</a></li><li><a href="#chapter-0ddaaf29f79aa4ef0f9a32dd">Erdöl und Erdgas – Brennstoffe</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3b6236df77155676b166145018dc7b77d0822fb5695517608997c76ee64faa42" data-rendered-digest="sha256:86a28e2f39750d7635048295d52e041d95afdf9e85dca38830f9e1207903d007" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/8b98d8ba-65c6-58d7-92f0-45f4b2456573/8b98d8ba-65c6-58d7-92f0-45f4b2456573.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Maßnahmen zu organischen Rohstoffen quellenkritisch ableiten&quot;. Die lernende Person kann aus der Abhängigkeit von wenigen begrenzt verfügbaren organischen Rohstoffen Maßnahmen zur Einsparung und zur Erschließung alternativer Rohstoff- und Energiequellen ableiten, dabei Vertrauenswürdigkeit und Urheberschaft der verwendeten Quellen prüfen und Quellenangaben sowie Zitate kennzeichnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8b98d8ba-65c6-58d7-92f0-45f4b2456573-description-heading">
+        <p class="section-heading" id="goal-8b98d8ba-65c6-58d7-92f0-45f4b2456573-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus der Abhängigkeit von wenigen begrenzt verfügbaren organischen Rohstoffen Maßnahmen zur Einsparung und zur Erschließung alternativer Rohstoff- und Energiequellen ableiten, dabei Vertrauenswürdigkeit und Urheberschaft der verwendeten Quellen prüfen und Quellenangaben sowie Zitate kennzeichnen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8b98d8ba-65c6-58d7-92f0-45f4b2456573-requires-heading">
+          <p class="section-heading" id="goal-8b98d8ba-65c6-58d7-92f0-45f4b2456573-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a0e8f0f2-24e2-5945-a511-597d32e73796"><span>Fossile und nachwachsende Rohstoffe nachhaltig bewerten</span><code>a0e8f0f2-24e2-5945-a511-597d32e73796</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8b98d8ba-65c6-58d7-92f0-45f4b2456573-reverse-heading">
+          <p class="section-heading" id="goal-8b98d8ba-65c6-58d7-92f0-45f4b2456573-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8b98d8ba-65c6-58d7-92f0-45f4b2456573-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8b98d8ba-65c6-58d7-92f0-45f4b2456573-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-b6327e98-8ab9-5d7f-b826-4023bc1a56a7" rel="noreferrer noopener"><span>Quellen und Argumente zu chemischen Sachverhalten auswerten</span> <code>b6327e98-8ab9-5d7f-b826-4023bc1a56a7</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-8b98d8ba-65c6-58d7-92f0-45f4b2456573-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8b98d8ba-65c6-58d7-92f0-45f4b2456573-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 13</span>
+      <span>Buch-Digest <code>sha256:a3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1359765ff0295f6264ce062974fa0e78a5fe63c42a3cbc0928dc797298cfc90c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-batch-011-ephase-fuels-energy-current-13-v1-20261004&amp;edition=curricular-atomic-v1&amp;goalId=8b98d8ba-65c6-58d7-92f0-45f4b2456573&amp;goalFingerprint=sha256%3A1359765ff0295f6264ce062974fa0e78a5fe63c42a3cbc0928dc797298cfc90c&amp;pageFingerprint=sha256%3A4d05ed9b264e1c3468e2689a76ac0001871ef0d35d1b2fb2fa0be2c492769854&amp;bookDigest=sha256%3Aa3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-4928d5d1-e790-5883-9349-3b03a1c63b99" data-goal-id="4928d5d1-e790-5883-9349-3b03a1c63b99" data-page-number="7" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:323a222e-5db8-53c5-b2dc-6f9c1d0d277c goal:e8c02335-d4e5-565c-8830-628067ce51c3" aria-labelledby="goal-4928d5d1-e790-5883-9349-3b03a1c63b99-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-4928d5d1-e790-5883-9349-3b03a1c63b99-title"><a class="goal-self-link" href="#goal-4928d5d1-e790-5883-9349-3b03a1c63b99">Innere Energie und Enthalpie in Reaktionssystemen abgrenzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4928d5d1-e790-5883-9349-3b03a1c63b99</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-848991407292c92e1a7e5063">Einführungsphase Reaktionsgrundlagen</a></li><li><a href="#chapter-0ddaaf29f79aa4ef0f9a32dd">Erdöl und Erdgas – Brennstoffe</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3fe8ae78ae5dbd7582baa035f4cc8041a1473d5764e09ec03c011618e2327191" data-rendered-digest="sha256:8268bb2b8294b1178bbf30e12cc405713a7ce0d668208a0a71fc6c6820732d23" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/4928d5d1-e790-5883-9349-3b03a1c63b99/4928d5d1-e790-5883-9349-3b03a1c63b99.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Innere Energie und Enthalpie in Reaktionssystemen abgrenzen&quot;. Die lernende Person kann unterschiedliche Reaktionssysteme unterscheiden, Wärme und Arbeit als Formen der Energieänderung in einem geschlossenen System mit variablem Volumen beschreiben und innere Energie bzw. Reaktionsenergie von Enthalpie bzw. Reaktionsenthalpie abgrenzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4928d5d1-e790-5883-9349-3b03a1c63b99-description-heading">
+        <p class="section-heading" id="goal-4928d5d1-e790-5883-9349-3b03a1c63b99-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann unterschiedliche Reaktionssysteme unterscheiden, Wärme und Arbeit als Formen der Energieänderung in einem geschlossenen System mit variablem Volumen beschreiben und innere Energie bzw. Reaktionsenergie von Enthalpie bzw. Reaktionsenthalpie abgrenzen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4928d5d1-e790-5883-9349-3b03a1c63b99-requires-heading">
+          <p class="section-heading" id="goal-4928d5d1-e790-5883-9349-3b03a1c63b99-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-4928d5d1-e790-5883-9349-3b03a1c63b99-reverse-heading">
+          <p class="section-heading" id="goal-4928d5d1-e790-5883-9349-3b03a1c63b99-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-3e433dae-99f9-5a95-ad63-d5fa0b5f6836"><span>Reaktionsenthalpien aus Bindungsverhältnissen begründen</span><code>3e433dae-99f9-5a95-ad63-d5fa0b5f6836</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-4663fd80-1618-5211-8020-18f4b80979fc"><span>Standard-Reaktionsenthalpien aus Bildungsenthalpien berechnen</span><code>4663fd80-1618-5211-8020-18f4b80979fc</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-4928d5d1-e790-5883-9349-3b03a1c63b99-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4928d5d1-e790-5883-9349-3b03a1c63b99-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-a9c22adc-b543-5b0c-a2d8-3189facdff08" rel="noreferrer noopener"><span>Warum Chemie? - Relevanz und Orientierung</span> <code>a9c22adc-b543-5b0c-a2d8-3189facdff08</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-1286f2fe-89b7-4454-8e11-85b6abd6e278" rel="noreferrer noopener"><span>Exotherme und endotherme Reaktionen unterscheiden</span> <code>1286f2fe-89b7-4454-8e11-85b6abd6e278</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-4928d5d1-e790-5883-9349-3b03a1c63b99-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4928d5d1-e790-5883-9349-3b03a1c63b99-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-cc803809-fa7f-517c-b356-9f2f7caf21a5" rel="noreferrer noopener"><span>Energiekonzept auf Donator-Akzeptor-Reaktionen anwenden</span> <code>cc803809-fa7f-517c-b356-9f2f7caf21a5</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-dc5173e8-6e63-58d3-a79b-bd74ef3cb98b" rel="noreferrer noopener"><span>Grenzen der Umwandlung von Wärme in Arbeit erklären</span> <code>dc5173e8-6e63-58d3-a79b-bd74ef3cb98b</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 13</span>
+      <span>Buch-Digest <code>sha256:a3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:433518507b3ad6ad482b3666f933e61a155b596243abae516639faf69a440b10</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-batch-011-ephase-fuels-energy-current-13-v1-20261004&amp;edition=curricular-atomic-v1&amp;goalId=4928d5d1-e790-5883-9349-3b03a1c63b99&amp;goalFingerprint=sha256%3A433518507b3ad6ad482b3666f933e61a155b596243abae516639faf69a440b10&amp;pageFingerprint=sha256%3A0bb390f2964966a2239f89c0d24d1903060dc86b6ff8ba319dbe525a85f265bc&amp;bookDigest=sha256%3Aa3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3e433dae-99f9-5a95-ad63-d5fa0b5f6836" data-goal-id="3e433dae-99f9-5a95-ad63-d5fa0b5f6836" data-page-number="8" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:323a222e-5db8-53c5-b2dc-6f9c1d0d277c goal:e8c02335-d4e5-565c-8830-628067ce51c3" aria-labelledby="goal-3e433dae-99f9-5a95-ad63-d5fa0b5f6836-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3e433dae-99f9-5a95-ad63-d5fa0b5f6836-title"><a class="goal-self-link" href="#goal-3e433dae-99f9-5a95-ad63-d5fa0b5f6836">Reaktionsenthalpien aus Bindungsverhältnissen begründen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3e433dae-99f9-5a95-ad63-d5fa0b5f6836</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-848991407292c92e1a7e5063">Einführungsphase Reaktionsgrundlagen</a></li><li><a href="#chapter-0ddaaf29f79aa4ef0f9a32dd">Erdöl und Erdgas – Brennstoffe</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3574aba0e2a59d7602e88b1692387af7ecb0990c028acd153a6cf4e929f9376c" data-rendered-digest="sha256:761c05be463bd5d367deb9bd8167414957e5c7489d620f213f4af7acf5f1105a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/3e433dae-99f9-5a95-ad63-d5fa0b5f6836/3e433dae-99f9-5a95-ad63-d5fa0b5f6836.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Reaktionsenthalpien aus Bindungsverhältnissen begründen&quot;. Die lernende Person kann Unterschiede experimentell bestimmter oder vorgegebener Reaktionsenthalpien auf Grundlage der Bindungsverhältnisse begründen und Systeme als energiereich oder energiearm einstufen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3e433dae-99f9-5a95-ad63-d5fa0b5f6836-description-heading">
+        <p class="section-heading" id="goal-3e433dae-99f9-5a95-ad63-d5fa0b5f6836-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Unterschiede experimentell bestimmter oder vorgegebener Reaktionsenthalpien auf Grundlage der Bindungsverhältnisse begründen und Systeme als energiereich oder energiearm einstufen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3e433dae-99f9-5a95-ad63-d5fa0b5f6836-requires-heading">
+          <p class="section-heading" id="goal-3e433dae-99f9-5a95-ad63-d5fa0b5f6836-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-4928d5d1-e790-5883-9349-3b03a1c63b99"><span>Innere Energie und Enthalpie in Reaktionssystemen abgrenzen</span><code>4928d5d1-e790-5883-9349-3b03a1c63b99</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-3e433dae-99f9-5a95-ad63-d5fa0b5f6836-reverse-heading">
+          <p class="section-heading" id="goal-3e433dae-99f9-5a95-ad63-d5fa0b5f6836-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-3e433dae-99f9-5a95-ad63-d5fa0b5f6836-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3e433dae-99f9-5a95-ad63-d5fa0b5f6836-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-0b6a6a15-b355-5be8-abc9-4ef8df11bcb6" rel="noreferrer noopener"><span>Stoffklasseneigenschaften bindungsbezogen vergleichen</span> <code>0b6a6a15-b355-5be8-abc9-4ef8df11bcb6</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-3e433dae-99f9-5a95-ad63-d5fa0b5f6836-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3e433dae-99f9-5a95-ad63-d5fa0b5f6836-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 13</span>
+      <span>Buch-Digest <code>sha256:a3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:74933d9a19e53a3bd1889f962568b5cea022dc82a52b20c5f13e61f55d41cdbb</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-batch-011-ephase-fuels-energy-current-13-v1-20261004&amp;edition=curricular-atomic-v1&amp;goalId=3e433dae-99f9-5a95-ad63-d5fa0b5f6836&amp;goalFingerprint=sha256%3A74933d9a19e53a3bd1889f962568b5cea022dc82a52b20c5f13e61f55d41cdbb&amp;pageFingerprint=sha256%3A96b4e25408769f11cd7da88427bf71cbd7ffa8455a051cde3b3cfb2e6e3313ce&amp;bookDigest=sha256%3Aa3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-4663fd80-1618-5211-8020-18f4b80979fc" data-goal-id="4663fd80-1618-5211-8020-18f4b80979fc" data-page-number="9" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:323a222e-5db8-53c5-b2dc-6f9c1d0d277c goal:e8c02335-d4e5-565c-8830-628067ce51c3" aria-labelledby="goal-4663fd80-1618-5211-8020-18f4b80979fc-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-4663fd80-1618-5211-8020-18f4b80979fc-title"><a class="goal-self-link" href="#goal-4663fd80-1618-5211-8020-18f4b80979fc">Standard-Reaktionsenthalpien aus Bildungsenthalpien berechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4663fd80-1618-5211-8020-18f4b80979fc</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-848991407292c92e1a7e5063">Einführungsphase Reaktionsgrundlagen</a></li><li><a href="#chapter-0ddaaf29f79aa4ef0f9a32dd">Erdöl und Erdgas – Brennstoffe</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1b55ed4a01610b6574acba79b8ef98266ee67d3362f9dde0c993d5e21a086a3d" data-rendered-digest="sha256:d1acbe32ed8df39181d83db69b537ecfb1c30ecdfbf0288e5bf8af091f15a9c6" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/4663fd80-1618-5211-8020-18f4b80979fc/4663fd80-1618-5211-8020-18f4b80979fc.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Standard-Reaktionsenthalpien aus Bildungsenthalpien berechnen&quot;. Die lernende Person kann Reaktionen als exotherm oder endotherm charakterisieren, indem sie Standard-Reaktionsenthalpien aus tabellierten molaren Standard-Bildungsenthalpien berechnet und das Vorzeichen fachlich deutet.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4663fd80-1618-5211-8020-18f4b80979fc-description-heading">
+        <p class="section-heading" id="goal-4663fd80-1618-5211-8020-18f4b80979fc-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Reaktionen als exotherm oder endotherm charakterisieren, indem sie Standard-Reaktionsenthalpien aus tabellierten molaren Standard-Bildungsenthalpien berechnet und das Vorzeichen fachlich deutet.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4663fd80-1618-5211-8020-18f4b80979fc-requires-heading">
+          <p class="section-heading" id="goal-4663fd80-1618-5211-8020-18f4b80979fc-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-4928d5d1-e790-5883-9349-3b03a1c63b99"><span>Innere Energie und Enthalpie in Reaktionssystemen abgrenzen</span><code>4928d5d1-e790-5883-9349-3b03a1c63b99</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-4663fd80-1618-5211-8020-18f4b80979fc-reverse-heading">
+          <p class="section-heading" id="goal-4663fd80-1618-5211-8020-18f4b80979fc-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-4663fd80-1618-5211-8020-18f4b80979fc-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4663fd80-1618-5211-8020-18f4b80979fc-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-4a08f31f-204c-5339-9d9f-5d2af28d5d5c" rel="noreferrer noopener"><span>Enthalpien berechnen</span> <code>4a08f31f-204c-5339-9d9f-5d2af28d5d5c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-4663fd80-1618-5211-8020-18f4b80979fc-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4663fd80-1618-5211-8020-18f4b80979fc-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 13</span>
+      <span>Buch-Digest <code>sha256:a3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fb38b8f392efc4273a1365c3956204ccae234e2a86ce893f16ceb1521bb20fa9</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-batch-011-ephase-fuels-energy-current-13-v1-20261004&amp;edition=curricular-atomic-v1&amp;goalId=4663fd80-1618-5211-8020-18f4b80979fc&amp;goalFingerprint=sha256%3Afb38b8f392efc4273a1365c3956204ccae234e2a86ce893f16ceb1521bb20fa9&amp;pageFingerprint=sha256%3Ae095ae9cb782e143ce77d5539c762534d70851fd8c8d6c9caf091a1bec04c566&amp;bookDigest=sha256%3Aa3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3c9bfa10-9a13-50cc-96c8-6213e28d6c54" data-goal-id="3c9bfa10-9a13-50cc-96c8-6213e28d6c54" data-page-number="10" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:323a222e-5db8-53c5-b2dc-6f9c1d0d277c goal:e8c02335-d4e5-565c-8830-628067ce51c3" aria-labelledby="goal-3c9bfa10-9a13-50cc-96c8-6213e28d6c54-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3c9bfa10-9a13-50cc-96c8-6213e28d6c54-title"><a class="goal-self-link" href="#goal-3c9bfa10-9a13-50cc-96c8-6213e28d6c54">Halogenkohlenwasserstoffe quellenkritisch bewerten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3c9bfa10-9a13-50cc-96c8-6213e28d6c54</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-848991407292c92e1a7e5063">Einführungsphase Reaktionsgrundlagen</a></li><li><a href="#chapter-0ddaaf29f79aa4ef0f9a32dd">Erdöl und Erdgas – Brennstoffe</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:dcc60d0011d658d520898b9926d900dc6dcff358038baa49d4d4395acfd8d151" data-rendered-digest="sha256:73f040992136c98323526f5457b65510496bd2b790ed6af9e9a115168f58b989" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/3c9bfa10-9a13-50cc-96c8-6213e28d6c54/3c9bfa10-9a13-50cc-96c8-6213e28d6c54.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Halogenkohlenwasserstoffe quellenkritisch bewerten&quot;. Die lernende Person kann den Einsatz von Halogenkohlenwasserstoffen in Alltag und Technik recherchieren, Auswirkungen auf Mensch und Umwelt bei Freisetzung abwägen, die Vertrauenswürdigkeit verwendeter Informationen prüfen, Quellen belegen und Zitate kennzeichnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3c9bfa10-9a13-50cc-96c8-6213e28d6c54-description-heading">
+        <p class="section-heading" id="goal-3c9bfa10-9a13-50cc-96c8-6213e28d6c54-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Einsatz von Halogenkohlenwasserstoffen in Alltag und Technik recherchieren, Auswirkungen auf Mensch und Umwelt bei Freisetzung abwägen, die Vertrauenswürdigkeit verwendeter Informationen prüfen, Quellen belegen und Zitate kennzeichnen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3c9bfa10-9a13-50cc-96c8-6213e28d6c54-requires-heading">
+          <p class="section-heading" id="goal-3c9bfa10-9a13-50cc-96c8-6213e28d6c54-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-3c9bfa10-9a13-50cc-96c8-6213e28d6c54-reverse-heading">
+          <p class="section-heading" id="goal-3c9bfa10-9a13-50cc-96c8-6213e28d6c54-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-3c9bfa10-9a13-50cc-96c8-6213e28d6c54-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3c9bfa10-9a13-50cc-96c8-6213e28d6c54-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-a9c22adc-b543-5b0c-a2d8-3189facdff08" rel="noreferrer noopener"><span>Warum Chemie? - Relevanz und Orientierung</span> <code>a9c22adc-b543-5b0c-a2d8-3189facdff08</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-b6327e98-8ab9-5d7f-b826-4023bc1a56a7" rel="noreferrer noopener"><span>Quellen und Argumente zu chemischen Sachverhalten auswerten</span> <code>b6327e98-8ab9-5d7f-b826-4023bc1a56a7</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-d4928773-3be8-5cf1-907c-ef07c96751e8" rel="noreferrer noopener"><span>Halogenalkan-Hydroxid-Reaktionsgleichungen formulieren</span> <code>d4928773-3be8-5cf1-907c-ef07c96751e8</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-3c9bfa10-9a13-50cc-96c8-6213e28d6c54-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3c9bfa10-9a13-50cc-96c8-6213e28d6c54-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 13</span>
+      <span>Buch-Digest <code>sha256:a3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:53ce6066e98e374b7174c7ac15147e0f377d53433c2050ca380f1c40cb32fa73</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-batch-011-ephase-fuels-energy-current-13-v1-20261004&amp;edition=curricular-atomic-v1&amp;goalId=3c9bfa10-9a13-50cc-96c8-6213e28d6c54&amp;goalFingerprint=sha256%3A53ce6066e98e374b7174c7ac15147e0f377d53433c2050ca380f1c40cb32fa73&amp;pageFingerprint=sha256%3A269fae1fae4c8b81b260244a1917dc7684a89f87ac5d9e0a32d89e8d048088cb&amp;bookDigest=sha256%3Aa3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b759d50d-0e82-5b10-89a2-fe5271106e50" data-goal-id="b759d50d-0e82-5b10-89a2-fe5271106e50" data-page-number="11" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:323a222e-5db8-53c5-b2dc-6f9c1d0d277c goal:1848c806-a7b6-5e77-bd16-356a82d0dfd9" aria-labelledby="goal-b759d50d-0e82-5b10-89a2-fe5271106e50-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b759d50d-0e82-5b10-89a2-fe5271106e50-title"><a class="goal-self-link" href="#goal-b759d50d-0e82-5b10-89a2-fe5271106e50">Brennstoffzellen verstehen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b759d50d-0e82-5b10-89a2-fe5271106e50</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-848991407292c92e1a7e5063">Einführungsphase Reaktionsgrundlagen</a></li><li><a href="#chapter-74ced47e8ad6979b6295f232">Mobile Energiewandler</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:fdb49b85bc5c1329c63024ae1cad443fd2f8b71c48cd3c07f8eb5f01162b9cc4" data-rendered-digest="sha256:2239016f48080d4d822bc65b60f88b7a70b3d57455a2809ff3852245c1cb5d49" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/b759d50d-0e82-5b10-89a2-fe5271106e50/b759d50d-0e82-5b10-89a2-fe5271106e50.png" alt="Comic-Schema einer Wasserstoff-Sauerstoff-Brennstoffzelle. Der Wasserstofftank speichert den Energieträger; die Zelle wandelt dessen chemische Energie in Strom und Wärme um. Elektronen fließen außen von der negativen Anode durch die Lampe zur positiven Kathode, Protonen durch die PEM-Membran. Sauerstoff reagiert an der Kathode zu Wasser. Große Zeilen zeigen die ausgeglichenen Elektroden- und Gesamtreaktionen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b759d50d-0e82-5b10-89a2-fe5271106e50-description-heading">
+        <p class="section-heading" id="goal-b759d50d-0e82-5b10-89a2-fe5271106e50-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Vorgänge an den Elektroden einer Wasserstoff-Sauerstoff-Brennstoffzelle beschreiben, die ablaufenden Reaktionen geeignet darstellen und ihren Einsatz als Energiewandler mit Wasserstoff als gespeichertem Energieträger erläutern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b759d50d-0e82-5b10-89a2-fe5271106e50-requires-heading">
+          <p class="section-heading" id="goal-b759d50d-0e82-5b10-89a2-fe5271106e50-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-b759d50d-0e82-5b10-89a2-fe5271106e50-reverse-heading">
+          <p class="section-heading" id="goal-b759d50d-0e82-5b10-89a2-fe5271106e50-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-6b82f80e-f493-5e6b-9709-2d4eca98c137"><span>Lithium-Ionen-Akkumulator einordnen</span><code>6b82f80e-f493-5e6b-9709-2d4eca98c137</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-27e4fe9b-4796-579b-8f7d-06c65fb600c0"><span>Blei-Akkumulator beschreiben</span><code>27e4fe9b-4796-579b-8f7d-06c65fb600c0</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b759d50d-0e82-5b10-89a2-fe5271106e50-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b759d50d-0e82-5b10-89a2-fe5271106e50-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-f0939f88-a6af-5334-ac4d-5d54732af25a" rel="noreferrer noopener"><span>Galvanische Elemente deuten</span> <code>f0939f88-a6af-5334-ac4d-5d54732af25a</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-b759d50d-0e82-5b10-89a2-fe5271106e50-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b759d50d-0e82-5b10-89a2-fe5271106e50-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-ecce0306-13dc-5563-a097-afe69805a8d6" rel="noreferrer noopener"><span>Brennstoffzellen bewerten</span> <code>ecce0306-13dc-5563-a097-afe69805a8d6</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 13</span>
+      <span>Buch-Digest <code>sha256:a3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ba2c0bf28adf64d8b55b6e81294c95b83a23c82b4a5ba5aab87a1512556ee613</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-batch-011-ephase-fuels-energy-current-13-v1-20261004&amp;edition=curricular-atomic-v1&amp;goalId=b759d50d-0e82-5b10-89a2-fe5271106e50&amp;goalFingerprint=sha256%3Aba2c0bf28adf64d8b55b6e81294c95b83a23c82b4a5ba5aab87a1512556ee613&amp;pageFingerprint=sha256%3A0025da00c295144dbef25a0282c2372604b892800714bd57fb4681d31bd753d8&amp;bookDigest=sha256%3Aa3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-27e4fe9b-4796-579b-8f7d-06c65fb600c0" data-goal-id="27e4fe9b-4796-579b-8f7d-06c65fb600c0" data-page-number="12" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:323a222e-5db8-53c5-b2dc-6f9c1d0d277c goal:1848c806-a7b6-5e77-bd16-356a82d0dfd9" aria-labelledby="goal-27e4fe9b-4796-579b-8f7d-06c65fb600c0-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-27e4fe9b-4796-579b-8f7d-06c65fb600c0-title"><a class="goal-self-link" href="#goal-27e4fe9b-4796-579b-8f7d-06c65fb600c0">Blei-Akkumulator beschreiben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>27e4fe9b-4796-579b-8f7d-06c65fb600c0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-848991407292c92e1a7e5063">Einführungsphase Reaktionsgrundlagen</a></li><li><a href="#chapter-74ced47e8ad6979b6295f232">Mobile Energiewandler</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:fdbfe4bfb250f09ad73c829be506629a7f0a2ffb73059c84bbf150b35a296f11" data-rendered-digest="sha256:e2bd21492ad66420b7238d90dead23c47c60cad1dec6d0ead37359889712be14" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/27e4fe9b-4796-579b-8f7d-06c65fb600c0/27e4fe9b-4796-579b-8f7d-06c65fb600c0.png" alt="Zwei Comicfelder vergleichen Entladen und Laden eines Blei-Akkus mit voneinander getrennten Platten in Schwefelsäure. Beim Entladen fließen Elektronen außen vom Minuspol durch eine Lampe zum Pluspol; chemische Energie wird elektrisch nutzbar, und die Platten bilden Bleisulfat. Beim Laden treibt das Ladegerät den umgekehrten äußeren Elektronenfluss und die Rückbildung von Blei beziehungsweise Bleidioxid an. Die Stoffpfeile sind qualitative Umwandlungen, keine vollständigen Reaktionsgleichungen. Die graue Hülle ist ein isolierender Behälter. Ein Starterakku und ein Gewicht verweisen auf Anwendung und hohe Masse.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-27e4fe9b-4796-579b-8f7d-06c65fb600c0-description-heading">
+        <p class="section-heading" id="goal-27e4fe9b-4796-579b-8f7d-06c65fb600c0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die elektrochemischen Prozesse im Blei-Akkumulator qualitativ deuten und Chancen sowie Grenzen als Energiespeicher benennen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-27e4fe9b-4796-579b-8f7d-06c65fb600c0-requires-heading">
+          <p class="section-heading" id="goal-27e4fe9b-4796-579b-8f7d-06c65fb600c0-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-b759d50d-0e82-5b10-89a2-fe5271106e50"><span>Brennstoffzellen verstehen</span><code>b759d50d-0e82-5b10-89a2-fe5271106e50</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-27e4fe9b-4796-579b-8f7d-06c65fb600c0-reverse-heading">
+          <p class="section-heading" id="goal-27e4fe9b-4796-579b-8f7d-06c65fb600c0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-27e4fe9b-4796-579b-8f7d-06c65fb600c0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-27e4fe9b-4796-579b-8f7d-06c65fb600c0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 13</span>
+      <span>Buch-Digest <code>sha256:a3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fb1c97896d2356dbe7b9eb3e157a56780835d20e1e6a31a46727482b9e585790</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-batch-011-ephase-fuels-energy-current-13-v1-20261004&amp;edition=curricular-atomic-v1&amp;goalId=27e4fe9b-4796-579b-8f7d-06c65fb600c0&amp;goalFingerprint=sha256%3Afb1c97896d2356dbe7b9eb3e157a56780835d20e1e6a31a46727482b9e585790&amp;pageFingerprint=sha256%3A144fb8a7e0a7b65a8dc709cf62d7c72fa0b7d490a7831e85fa1cfc8abc8daab5&amp;bookDigest=sha256%3Aa3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6b82f80e-f493-5e6b-9709-2d4eca98c137" data-goal-id="6b82f80e-f493-5e6b-9709-2d4eca98c137" data-page-number="13" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:323a222e-5db8-53c5-b2dc-6f9c1d0d277c goal:1848c806-a7b6-5e77-bd16-356a82d0dfd9" aria-labelledby="goal-6b82f80e-f493-5e6b-9709-2d4eca98c137-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6b82f80e-f493-5e6b-9709-2d4eca98c137-title"><a class="goal-self-link" href="#goal-6b82f80e-f493-5e6b-9709-2d4eca98c137">Lithium-Ionen-Akkumulator einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6b82f80e-f493-5e6b-9709-2d4eca98c137</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-848991407292c92e1a7e5063">Einführungsphase Reaktionsgrundlagen</a></li><li><a href="#chapter-74ced47e8ad6979b6295f232">Mobile Energiewandler</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f8b67096e4b5b1529a397065036f72826ef968bce688e6662369d9637f34a847" data-rendered-digest="sha256:029f4c64789a024a58ed8e61464306c34f7fc746e42e465aad251da096622bbc" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/6b82f80e-f493-5e6b-9709-2d4eca98c137/6b82f80e-f493-5e6b-9709-2d4eca98c137.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Lithium-Ionen-Akkumulator einordnen&quot;. Die lernende Person kann Aufbau und Funktionsweise eines Lithium-Ionen-Akkus in vereinfachter Form erläutern und Nutzungsmöglichkeiten nennen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6b82f80e-f493-5e6b-9709-2d4eca98c137-description-heading">
+        <p class="section-heading" id="goal-6b82f80e-f493-5e6b-9709-2d4eca98c137-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Aufbau und Funktionsweise eines Lithium-Ionen-Akkus in vereinfachter Form erläutern und Nutzungsmöglichkeiten nennen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6b82f80e-f493-5e6b-9709-2d4eca98c137-requires-heading">
+          <p class="section-heading" id="goal-6b82f80e-f493-5e6b-9709-2d4eca98c137-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-b759d50d-0e82-5b10-89a2-fe5271106e50"><span>Brennstoffzellen verstehen</span><code>b759d50d-0e82-5b10-89a2-fe5271106e50</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-6b82f80e-f493-5e6b-9709-2d4eca98c137-reverse-heading">
+          <p class="section-heading" id="goal-6b82f80e-f493-5e6b-9709-2d4eca98c137-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-6b82f80e-f493-5e6b-9709-2d4eca98c137-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6b82f80e-f493-5e6b-9709-2d4eca98c137-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-7a5a8e37-7078-5974-a4d8-edf7d4cbbfc3" rel="noreferrer noopener"><span>Elektrofahrzeuge analysieren (LK)</span> <code>7a5a8e37-7078-5974-a4d8-edf7d4cbbfc3</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 13</span>
+      <span>Buch-Digest <code>sha256:a3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:59baf691a10b091b7006d5438e6a0d8012fe8250bbc0dfcb65684c75058fd74a</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-batch-011-ephase-fuels-energy-current-13-v1-20261004&amp;edition=curricular-atomic-v1&amp;goalId=6b82f80e-f493-5e6b-9709-2d4eca98c137&amp;goalFingerprint=sha256%3A59baf691a10b091b7006d5438e6a0d8012fe8250bbc0dfcb65684c75058fd74a&amp;pageFingerprint=sha256%3A1a3e0b3a56a9a3ef9bc0bea44242fb6654fa7c03c99aa1db26c00248dfa31051&amp;bookDigest=sha256%3Aa3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

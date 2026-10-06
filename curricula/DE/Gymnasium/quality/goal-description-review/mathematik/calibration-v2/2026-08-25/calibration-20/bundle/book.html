@@ -1,0 +1,983 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v1">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-v1&quot;,&quot;maxWidthPixels&quot;:1600,&quot;maxHeightPixels&quot;:1200,&quot;jpegQuality&quot;:0.82,&quot;webpQuality&quot;:0.9,&quot;maxBytes&quot;:1500000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Lernzielbuch Mathematik – Kalibrierung positiver Verständnisnachweise V2</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    h1 { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<article class="goal-page" id="goal-cf474eab-1379-4877-907e-58b0892ce734" data-goal-id="cf474eab-1379-4877-907e-58b0892ce734" data-page-number="1" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-cf474eab-1379-4877-907e-58b0892ce734-title">
+    <header class="goal-header">
+      <h1 id="goal-cf474eab-1379-4877-907e-58b0892ce734-title"><a class="goal-self-link" href="#goal-cf474eab-1379-4877-907e-58b0892ce734">Natürliche Zahlen darstellen und am Zahlenstrahl verorten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>cf474eab-1379-4877-907e-58b0892ce734</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:21a8db395aac50364dd02f4441d88c3daf216530c590d0de9a6a4fb0b3719480" data-rendered-digest="sha256:7df4f6e9d74d6957c004ce82c267ab5e1a35680554e6beb93f2a80cbf46b1447" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/mathematik/cf474eab-1379-4877-907e-58b0892ce734/cf474eab-1379-4877-907e-58b0892ce734.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Natürliche Zahlen darstellen und am Zahlenstrahl verorten&quot;. Die lernende Person kann natürliche Zahlen in Ziffern und Worten darstellen, sie am Zahlenstrahl sicher eintragen und ihre Positionen anhand der Skalierung begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-cf474eab-1379-4877-907e-58b0892ce734-description-heading">
+        <p class="section-heading" id="goal-cf474eab-1379-4877-907e-58b0892ce734-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann natürliche Zahlen in Ziffern und Worten darstellen, sie am Zahlenstrahl sicher eintragen und ihre Positionen anhand der Skalierung begründen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-cf474eab-1379-4877-907e-58b0892ce734-requires-heading">
+          <p class="section-heading" id="goal-cf474eab-1379-4877-907e-58b0892ce734-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-cf474eab-1379-4877-907e-58b0892ce734-reverse-heading">
+          <p class="section-heading" id="goal-cf474eab-1379-4877-907e-58b0892ce734-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-cf474eab-1379-4877-907e-58b0892ce734-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-cf474eab-1379-4877-907e-58b0892ce734-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-cf474eab-1379-4877-907e-58b0892ce734-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-cf474eab-1379-4877-907e-58b0892ce734-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9ef6c4fa-b97a-5d7a-86c1-96690f02d916" rel="noreferrer noopener"><span>Natürliche Zahlen ordnen und vergleichen</span> <code>9ef6c4fa-b97a-5d7a-86c1-96690f02d916</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c9e01667-24c4-56a2-8cf4-dfb6c360d7b9" rel="noreferrer noopener"><span>Rationale Zahlen an der Zahlengeraden darstellen und ordnen</span> <code>c9e01667-24c4-56a2-8cf4-dfb6c360d7b9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 1 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0a488db79a96cee93789b1148477cbfa46d9f1935afe8a443b04f23d20571c95</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=cf474eab-1379-4877-907e-58b0892ce734&amp;goalFingerprint=sha256%3A0a488db79a96cee93789b1148477cbfa46d9f1935afe8a443b04f23d20571c95&amp;pageFingerprint=sha256%3A9c6a5dd3b70f97351f1bcbe69a58173abdd48ee88e0dcc0e08b62de4f0b2b4f6&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6b0075bb-f71c-59f6-ab98-fb894568cc26" data-goal-id="6b0075bb-f71c-59f6-ab98-fb894568cc26" data-page-number="2" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-6b0075bb-f71c-59f6-ab98-fb894568cc26-title">
+    <header class="goal-header">
+      <h1 id="goal-6b0075bb-f71c-59f6-ab98-fb894568cc26-title"><a class="goal-self-link" href="#goal-6b0075bb-f71c-59f6-ab98-fb894568cc26">Brüche als Zahlen, Anteile und Quotienten deuten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6b0075bb-f71c-59f6-ab98-fb894568cc26</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d28e5a78b3a5a0232de89a351b4f06fa7ff78fd5318368ff5d18bfaca006c584" data-rendered-digest="sha256:33f43936749652f272f192bda4a09a2fa2d7a1a44513d5b3cd61c047c531a6c2" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/mathematik/6b0075bb-f71c-59f6-ab98-fb894568cc26/6b0075bb-f71c-59f6-ab98-fb894568cc26.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Brüche als Zahlen, Anteile und Quotienten deuten&quot;. Die lernende Person kann Brüche situationsbezogen als Anteil, Quotient oder Zahl deuten, dabei das Bezugs-Ganze benennen, eine passende Darstellung auswählen und zugehörige Ganze oder Teilmengen bestimmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6b0075bb-f71c-59f6-ab98-fb894568cc26-description-heading">
+        <p class="section-heading" id="goal-6b0075bb-f71c-59f6-ab98-fb894568cc26-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Brüche situationsbezogen als Anteil, Quotient oder Zahl deuten, dabei das Bezugs-Ganze benennen, eine passende Darstellung auswählen und zugehörige Ganze oder Teilmengen bestimmen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6b0075bb-f71c-59f6-ab98-fb894568cc26-requires-heading">
+          <p class="section-heading" id="goal-6b0075bb-f71c-59f6-ab98-fb894568cc26-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-6b0075bb-f71c-59f6-ab98-fb894568cc26-reverse-heading">
+          <p class="section-heading" id="goal-6b0075bb-f71c-59f6-ab98-fb894568cc26-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-6b0075bb-f71c-59f6-ab98-fb894568cc26-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6b0075bb-f71c-59f6-ab98-fb894568cc26-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-624764d6-becd-5f9b-ada3-0d4f9d143073" rel="noreferrer noopener"><span>Stellenwertsystem und Zahlendarstellungen verstehen</span> <code>624764d6-becd-5f9b-ada3-0d4f9d143073</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-6b0075bb-f71c-59f6-ab98-fb894568cc26-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6b0075bb-f71c-59f6-ab98-fb894568cc26-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-7676b0f9-340d-4a91-ab1f-92745a8f88db" rel="noreferrer noopener"><span>Irrationalität von Wurzelzahlen begründen und reelle Zahlen einordnen</span> <code>7676b0f9-340d-4a91-ab1f-92745a8f88db</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b41cb496-dad5-596e-9c23-cdcbdab3ec2e" rel="noreferrer noopener"><span>Anteilssachprobleme mit rationalen Zahlen modellieren</span> <code>b41cb496-dad5-596e-9c23-cdcbdab3ec2e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1" rel="noreferrer noopener"><span>Quadratwurzeln iterativ mit dem Heron-Verfahren approximieren</span> <code>c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97" rel="noreferrer noopener"><span>Bruchdarstellungen verwenden und wechseln</span> <code>f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f8704a7b-e93d-4e32-b0f9-1b171545fe28" rel="noreferrer noopener"><span>Quadratwurzeln definieren und schätzen</span> <code>f8704a7b-e93d-4e32-b0f9-1b171545fe28</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-fb81062a-4929-5f09-8d92-f9cf4b106c17" rel="noreferrer noopener"><span>Aufgabe 1 (Jahrgangsstufe 6, 6 BE)</span> <code>fb81062a-4929-5f09-8d92-f9cf4b106c17</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 2 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9604d01052c94e72127792fca66eb96faec0a50818c23c66eba24479ebeb710d</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=6b0075bb-f71c-59f6-ab98-fb894568cc26&amp;goalFingerprint=sha256%3A9604d01052c94e72127792fca66eb96faec0a50818c23c66eba24479ebeb710d&amp;pageFingerprint=sha256%3A80dd2f8778cd3a99b8c313976f42bcc95e42f7aa8479324cb2645376f45e231c&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2242c379-ddbb-4f03-8aed-13f49a4674e8" data-goal-id="2242c379-ddbb-4f03-8aed-13f49a4674e8" data-page-number="3" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-2242c379-ddbb-4f03-8aed-13f49a4674e8-title">
+    <header class="goal-header">
+      <h1 id="goal-2242c379-ddbb-4f03-8aed-13f49a4674e8-title"><a class="goal-self-link" href="#goal-2242c379-ddbb-4f03-8aed-13f49a4674e8">Median bestimmen und mit dem arithmetischen Mittel vergleichen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2242c379-ddbb-4f03-8aed-13f49a4674e8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8c22958271c4a3291a2121c4a767cfc434f2d4eab46fbff2b623a605ddb0eea0" data-rendered-digest="sha256:39969266004252bcd29a39850a1b04b8e07ff5596c7880c2dc229408c7b583f2" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/mathematik/2242c379-ddbb-4f03-8aed-13f49a4674e8/2242c379-ddbb-4f03-8aed-13f49a4674e8.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Median bestimmen und mit dem arithmetischen Mittel vergleichen&quot;. Die lernende Person kann zu Datensätzen den Median bestimmen, ihn als weiteren Lagewert neben dem arithmetischen Mittel deuten und die Aussagekraft beider Kenngrößen in Sachzusammenhängen kritisch vergleichen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2242c379-ddbb-4f03-8aed-13f49a4674e8-description-heading">
+        <p class="section-heading" id="goal-2242c379-ddbb-4f03-8aed-13f49a4674e8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zu Datensätzen den Median bestimmen, ihn als weiteren Lagewert neben dem arithmetischen Mittel deuten und die Aussagekraft beider Kenngrößen in Sachzusammenhängen kritisch vergleichen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2242c379-ddbb-4f03-8aed-13f49a4674e8-requires-heading">
+          <p class="section-heading" id="goal-2242c379-ddbb-4f03-8aed-13f49a4674e8-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2242c379-ddbb-4f03-8aed-13f49a4674e8-reverse-heading">
+          <p class="section-heading" id="goal-2242c379-ddbb-4f03-8aed-13f49a4674e8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2242c379-ddbb-4f03-8aed-13f49a4674e8-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2242c379-ddbb-4f03-8aed-13f49a4674e8-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-15505229-efec-4d01-8e71-acf15f9c2424" rel="noreferrer noopener"><span>Arithmetisches Mittel bestimmen und deuten</span> <code>15505229-efec-4d01-8e71-acf15f9c2424</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71d43fcc-d787-4874-ae4a-2336364e9c0a" rel="noreferrer noopener"><span>Grundaufgaben der Prozentrechnung lösen</span> <code>71d43fcc-d787-4874-ae4a-2336364e9c0a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-72b6bfa5-8e34-4029-8f85-0277207c485e" rel="noreferrer noopener"><span>Prozentangaben in Texten deuten und prüfen</span> <code>72b6bfa5-8e34-4029-8f85-0277207c485e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-91571d3f-3651-4477-ba21-320fc4077453" rel="noreferrer noopener"><span>Absolute und relative Häufigkeiten bestimmen und darstellen</span> <code>91571d3f-3651-4477-ba21-320fc4077453</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-acbb7e26-f85f-405b-a3e5-affa6add6711" rel="noreferrer noopener"><span>Diagramme kritisch interpretieren</span> <code>acbb7e26-f85f-405b-a3e5-affa6add6711</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2242c379-ddbb-4f03-8aed-13f49a4674e8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2242c379-ddbb-4f03-8aed-13f49a4674e8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-616c72a4-972d-5cc0-b903-e2a24bcb150c" rel="noreferrer noopener"><span>Lageparameter für Datenanalysen auswählen und vergleichen</span> <code>616c72a4-972d-5cc0-b903-e2a24bcb150c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b819973b-4cad-48a4-9f7e-f74b5e75ea6c" rel="noreferrer noopener"><span>Datenverteilungen mithilfe von Kenngrößen und Boxplots vergleichen und deuten</span> <code>b819973b-4cad-48a4-9f7e-f74b5e75ea6c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 3 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1c76dda01bd509d5c102611a6b978f987beecb946c9904e77a873787ab807871</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=2242c379-ddbb-4f03-8aed-13f49a4674e8&amp;goalFingerprint=sha256%3A1c76dda01bd509d5c102611a6b978f987beecb946c9904e77a873787ab807871&amp;pageFingerprint=sha256%3Adcd15925027e459287ec9d0e22b77424f58b937c0b3568081b20f023420e08e4&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8dd9f210-2683-5902-acab-e3be22725232" data-goal-id="8dd9f210-2683-5902-acab-e3be22725232" data-page-number="4" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-8dd9f210-2683-5902-acab-e3be22725232-title">
+    <header class="goal-header">
+      <h1 id="goal-8dd9f210-2683-5902-acab-e3be22725232-title"><a class="goal-self-link" href="#goal-8dd9f210-2683-5902-acab-e3be22725232">Darstellungsform auswählen und begründen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8dd9f210-2683-5902-acab-e3be22725232</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c016cda41bb13375f1ec5eec23ca3fdace458322e4bd174ce9b7601e7fca5cd2" data-rendered-digest="sha256:1117755acd2fe93e2daf2473909d4bc20f7baa5357bd4a99528fe983532ea201" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/mathematik/8dd9f210-2683-5902-acab-e3be22725232/8dd9f210-2683-5902-acab-e3be22725232.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Darstellungsform auswählen und begründen&quot;. Die lernende Person kann für unterschiedliche Fragestellungen zwischen Tabelle, Graph, Term und Skizze wählen und anhand der benötigten Information begründen, warum die Wahl besser passt als eine plausible Alternative.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8dd9f210-2683-5902-acab-e3be22725232-description-heading">
+        <p class="section-heading" id="goal-8dd9f210-2683-5902-acab-e3be22725232-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für unterschiedliche Fragestellungen zwischen Tabelle, Graph, Term und Skizze wählen und anhand der benötigten Information begründen, warum die Wahl besser passt als eine plausible Alternative.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8dd9f210-2683-5902-acab-e3be22725232-requires-heading">
+          <p class="section-heading" id="goal-8dd9f210-2683-5902-acab-e3be22725232-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-8dd9f210-2683-5902-acab-e3be22725232-reverse-heading">
+          <p class="section-heading" id="goal-8dd9f210-2683-5902-acab-e3be22725232-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8dd9f210-2683-5902-acab-e3be22725232-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8dd9f210-2683-5902-acab-e3be22725232-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2" rel="noreferrer noopener"><span>Warum Mathematik? – Denken, Muster &amp; Zukunft</span> <code>71cec9fb-3751-4d61-8b34-c5adbbf6e5f2</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-8dd9f210-2683-5902-acab-e3be22725232-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8dd9f210-2683-5902-acab-e3be22725232-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0272c501-2931-5e52-b62f-af068db63c44" rel="noreferrer noopener"><span>Aus Term einen Graphen erstellen</span> <code>0272c501-2931-5e52-b62f-af068db63c44</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3f4d1340-1fbb-5109-b9c2-08fc61303133" rel="noreferrer noopener"><span>Darstellung erstellen und beschriften</span> <code>3f4d1340-1fbb-5109-b9c2-08fc61303133</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 4 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:377ebf71de434b0f58f9472b5ebf9a47539d8b59aec4e23010a2a4b54eef7baa</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=8dd9f210-2683-5902-acab-e3be22725232&amp;goalFingerprint=sha256%3A377ebf71de434b0f58f9472b5ebf9a47539d8b59aec4e23010a2a4b54eef7baa&amp;pageFingerprint=sha256%3A97e82b4244ee746905339efbc17d750b52cd60ec92bbf4ef409f2c6d66886de2&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e09072f9-67d9-412c-b872-24ecbf329232" data-goal-id="e09072f9-67d9-412c-b872-24ecbf329232" data-page-number="5" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-e09072f9-67d9-412c-b872-24ecbf329232-title">
+    <header class="goal-header">
+      <h1 id="goal-e09072f9-67d9-412c-b872-24ecbf329232-title"><a class="goal-self-link" href="#goal-e09072f9-67d9-412c-b872-24ecbf329232">Funktionswerte linearer Funktionen berechnen und deuten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e09072f9-67d9-412c-b872-24ecbf329232</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:eaa6c0b5db3d036986120533a1867030897dc1fac344483821a82e01f0d921dc" data-rendered-digest="sha256:f9b89bf3b4c16c5c7851e267287f6454b6f2b34dafaad45e4add1aff13572970" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/mathematik/e09072f9-67d9-412c-b872-24ecbf329232/e09072f9-67d9-412c-b872-24ecbf329232.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Funktionswerte linearer Funktionen berechnen und deuten&quot;. Die lernende Person kann zu gegebenen x-Werten die zugehörigen Funktionswerte linearer Funktionen berechnen und die Ergebnisse als Punkte im Graphen oder als Werte im Sachzusammenhang deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e09072f9-67d9-412c-b872-24ecbf329232-description-heading">
+        <p class="section-heading" id="goal-e09072f9-67d9-412c-b872-24ecbf329232-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zu gegebenen x-Werten die zugehörigen Funktionswerte linearer Funktionen berechnen und die Ergebnisse als Punkte im Graphen oder als Werte im Sachzusammenhang deuten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e09072f9-67d9-412c-b872-24ecbf329232-requires-heading">
+          <p class="section-heading" id="goal-e09072f9-67d9-412c-b872-24ecbf329232-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-e09072f9-67d9-412c-b872-24ecbf329232-reverse-heading">
+          <p class="section-heading" id="goal-e09072f9-67d9-412c-b872-24ecbf329232-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e09072f9-67d9-412c-b872-24ecbf329232-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e09072f9-67d9-412c-b872-24ecbf329232-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186" rel="noreferrer noopener"><span>Lineare Funktionen beschreiben</span> <code>af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e09072f9-67d9-412c-b872-24ecbf329232-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e09072f9-67d9-412c-b872-24ecbf329232-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-10a77422-6ceb-57ce-a90f-0ebc1179aaae" rel="noreferrer noopener"><span>Aufgabe 7 (Jahrgangsstufe 8, 6 BE)</span> <code>10a77422-6ceb-57ce-a90f-0ebc1179aaae</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3010d965-b9b9-4dc5-9d04-d706725e9a30" rel="noreferrer noopener"><span>Exponentielle Zunahme und Abnahme beschreiben und von linearem Wachstum abgrenzen</span> <code>3010d965-b9b9-4dc5-9d04-d706725e9a30</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-31207307-0cf9-4a56-bf14-90196dc2b3d4" rel="noreferrer noopener"><span>Exponentielles Wachstum in Graphen, Tabellen und Kontexten deuten</span> <code>31207307-0cf9-4a56-bf14-90196dc2b3d4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-42e19186-6769-41ac-a7bf-ab39bdb50661" rel="noreferrer noopener"><span>Exponentielles Wachstum in Termen, Tabellen und Graphen beschreiben</span> <code>42e19186-6769-41ac-a7bf-ab39bdb50661</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4553367f-6265-511b-8632-46d99109e69b" rel="noreferrer noopener"><span>Aufgabe 1 (Jahrgangsstufe 8, 8 BE)</span> <code>4553367f-6265-511b-8632-46d99109e69b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-546bf0b3-6921-416b-a2ef-8fd37d429dc7" rel="noreferrer noopener"><span>Lineare Gleichungssysteme lösen und deuten</span> <code>546bf0b3-6921-416b-a2ef-8fd37d429dc7</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-78238608-aaaa-4d12-a9de-54f325e9cf6f" rel="noreferrer noopener"><span>Graphverlauf exponentieller Funktionen der Form $b\cdot a^x$ anhand von $a$ und $b$ beschreiben</span> <code>78238608-aaaa-4d12-a9de-54f325e9cf6f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-aed3ca99-815b-40b8-ae91-e11bf92f51da" rel="noreferrer noopener"><span>Logarithmen als Umkehrung exponentieller Zusammenhänge nutzen</span> <code>aed3ca99-815b-40b8-ae91-e11bf92f51da</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c088fd81-fe4f-4282-99af-ebc0d1a7d202" rel="noreferrer noopener"><span>Exponentialgleichungen mit Logarithmen lösen</span> <code>c088fd81-fe4f-4282-99af-ebc0d1a7d202</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7" rel="noreferrer noopener"><span>Parameter exponentieller Funktionen aus Gleichung und Werten deuten</span> <code>c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e42c208d-9555-43cc-92f5-5bb4c0688726" rel="noreferrer noopener"><span>Lineare Gleichungssysteme mit zwei Variablen lösen und Lösungsvielfalt untersuchen</span> <code>e42c208d-9555-43cc-92f5-5bb4c0688726</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 5 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4bac72bd976367f0db2d40311fe57f8dc65a71a20f2d0bd98903044ce2628f20</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=e09072f9-67d9-412c-b872-24ecbf329232&amp;goalFingerprint=sha256%3A4bac72bd976367f0db2d40311fe57f8dc65a71a20f2d0bd98903044ce2628f20&amp;pageFingerprint=sha256%3Aa8bc40deca41ff0f9f0ecee301a06740a91452e87f12da8a2d04c6caaa318d65&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-570d5931-f126-5bb4-8b7f-db236d6b727f" data-goal-id="570d5931-f126-5bb4-8b7f-db236d6b727f" data-page-number="6" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-570d5931-f126-5bb4-8b7f-db236d6b727f-title">
+    <header class="goal-header">
+      <h1 id="goal-570d5931-f126-5bb4-8b7f-db236d6b727f-title"><a class="goal-self-link" href="#goal-570d5931-f126-5bb4-8b7f-db236d6b727f">Eine Kreistangente im Berührpunkt konstruieren</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>570d5931-f126-5bb4-8b7f-db236d6b727f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-570d5931-f126-5bb4-8b7f-db236d6b727f-description-heading">
+        <p class="section-heading" id="goal-570d5931-f126-5bb4-8b7f-db236d6b727f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in einem gegebenen Punkt eines Kreises die Tangente als Senkrechte zum Radius konstruieren und die Konstruktion geometrisch begründen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-570d5931-f126-5bb4-8b7f-db236d6b727f-requires-heading">
+          <p class="section-heading" id="goal-570d5931-f126-5bb4-8b7f-db236d6b727f-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-570d5931-f126-5bb4-8b7f-db236d6b727f-reverse-heading">
+          <p class="section-heading" id="goal-570d5931-f126-5bb4-8b7f-db236d6b727f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-743e5470-ff39-551e-9aba-529656418c66"><span>Kreistangenten von einem äußeren Punkt konstruieren</span><code>743e5470-ff39-551e-9aba-529656418c66</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-570d5931-f126-5bb4-8b7f-db236d6b727f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-570d5931-f126-5bb4-8b7f-db236d6b727f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c31d3a7a-778b-5ae3-9aa4-7b5674047f83" rel="noreferrer noopener"><span>Parallele und senkrechte Geraden konstruieren</span> <code>c31d3a7a-778b-5ae3-9aa4-7b5674047f83</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-21342eb9-9cfd-4fbf-b28e-60aa2b48f702" rel="noreferrer noopener"><span>Kreisbeziehungen am Kreis begründen und nutzen</span> <code>21342eb9-9cfd-4fbf-b28e-60aa2b48f702</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-36728db8-da44-4add-97b8-0fdd7cfd9c41" rel="noreferrer noopener"><span>Satz des Thales begründen und anwenden</span> <code>36728db8-da44-4add-97b8-0fdd7cfd9c41</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 6 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a1de30a271de7ce96e8c3159b119f23532ea3580ab3040b782a061f8f63528f4</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=570d5931-f126-5bb4-8b7f-db236d6b727f&amp;goalFingerprint=sha256%3Aa1de30a271de7ce96e8c3159b119f23532ea3580ab3040b782a061f8f63528f4&amp;pageFingerprint=sha256%3A2178d255fa9677f257dd2aa1197626c9ea810c463eb0f40d3dbfb8c1e1adf6fa&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-743e5470-ff39-551e-9aba-529656418c66" data-goal-id="743e5470-ff39-551e-9aba-529656418c66" data-page-number="7" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-743e5470-ff39-551e-9aba-529656418c66-title">
+    <header class="goal-header">
+      <h1 id="goal-743e5470-ff39-551e-9aba-529656418c66-title"><a class="goal-self-link" href="#goal-743e5470-ff39-551e-9aba-529656418c66">Kreistangenten von einem äußeren Punkt konstruieren</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>743e5470-ff39-551e-9aba-529656418c66</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-743e5470-ff39-551e-9aba-529656418c66-description-heading">
+        <p class="section-heading" id="goal-743e5470-ff39-551e-9aba-529656418c66-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann von einem Punkt außerhalb eines Kreises die beiden Tangenten mithilfe des Thaleskreises konstruieren und die Berührpunkte durch den rechten Winkel zwischen Radius und Tangente begründen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-743e5470-ff39-551e-9aba-529656418c66-requires-heading">
+          <p class="section-heading" id="goal-743e5470-ff39-551e-9aba-529656418c66-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-570d5931-f126-5bb4-8b7f-db236d6b727f"><span>Eine Kreistangente im Berührpunkt konstruieren</span><code>570d5931-f126-5bb4-8b7f-db236d6b727f</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-743e5470-ff39-551e-9aba-529656418c66-reverse-heading">
+          <p class="section-heading" id="goal-743e5470-ff39-551e-9aba-529656418c66-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-743e5470-ff39-551e-9aba-529656418c66-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-743e5470-ff39-551e-9aba-529656418c66-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-36728db8-da44-4add-97b8-0fdd7cfd9c41" rel="noreferrer noopener"><span>Satz des Thales begründen und anwenden</span> <code>36728db8-da44-4add-97b8-0fdd7cfd9c41</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-743e5470-ff39-551e-9aba-529656418c66-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-743e5470-ff39-551e-9aba-529656418c66-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3045f00d-a5b9-547c-b568-593aeac9ffa3" rel="noreferrer noopener"><span>Aufgabe 5 (Jahrgangsstufe 8, 7 BE)</span> <code>3045f00d-a5b9-547c-b568-593aeac9ffa3</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 7 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9415c3c4b36a2ed965ee2279f684a5120dc6aa75b0741366c8916c4e6c9afbac</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=743e5470-ff39-551e-9aba-529656418c66&amp;goalFingerprint=sha256%3A9415c3c4b36a2ed965ee2279f684a5120dc6aa75b0741366c8916c4e6c9afbac&amp;pageFingerprint=sha256%3Ad8cc3397af53e776e69dd72b446101c5897777e68f584ad447eeaa346fdb667e&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0c8c1ae9-135e-4fe5-bf67-e497eb3a9909" data-goal-id="0c8c1ae9-135e-4fe5-bf67-e497eb3a9909" data-page-number="8" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-0c8c1ae9-135e-4fe5-bf67-e497eb3a9909-title">
+    <header class="goal-header">
+      <h1 id="goal-0c8c1ae9-135e-4fe5-bf67-e497eb3a9909-title"><a class="goal-self-link" href="#goal-0c8c1ae9-135e-4fe5-bf67-e497eb3a9909">Sinussatz herleiten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0c8c1ae9-135e-4fe5-bf67-e497eb3a9909</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7fead0000586a145039d23b8b703e4c4e44b84732684fb26f74fdd0fb80a796b" data-rendered-digest="sha256:e8c4d4cc5d6ccd5551442b1fb9f6ee9018c50a6b380cb0b6bc3b6ee72afe0e38" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/mathematik/0c8c1ae9-135e-4fe5-bf67-e497eb3a9909/0c8c1ae9-135e-4fe5-bf67-e497eb3a9909.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Sinussatz herleiten&quot;. Die lernende Person kann den Sinussatz für ein allgemeines Dreieck aus bekannten geometrischen Beziehungen herleiten und jeden Schritt der Seiten-Winkel-Beziehung begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0c8c1ae9-135e-4fe5-bf67-e497eb3a9909-description-heading">
+        <p class="section-heading" id="goal-0c8c1ae9-135e-4fe5-bf67-e497eb3a9909-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Sinussatz für ein allgemeines Dreieck aus bekannten geometrischen Beziehungen herleiten und jeden Schritt der Seiten-Winkel-Beziehung begründen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0c8c1ae9-135e-4fe5-bf67-e497eb3a9909-requires-heading">
+          <p class="section-heading" id="goal-0c8c1ae9-135e-4fe5-bf67-e497eb3a9909-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-0c8c1ae9-135e-4fe5-bf67-e497eb3a9909-reverse-heading">
+          <p class="section-heading" id="goal-0c8c1ae9-135e-4fe5-bf67-e497eb3a9909-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0c8c1ae9-135e-4fe5-bf67-e497eb3a9909-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0c8c1ae9-135e-4fe5-bf67-e497eb3a9909-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d" rel="noreferrer noopener"><span>Sinus- und Kosinuswerte am Einheitskreis im Gradmaß deuten</span> <code>97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71a483ba-9680-4654-bb5e-5ab5427f0919" rel="noreferrer noopener"><span>Trigonometrie am rechtwinkligen Dreieck anwenden</span> <code>71a483ba-9680-4654-bb5e-5ab5427f0919</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-0c8c1ae9-135e-4fe5-bf67-e497eb3a9909-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0c8c1ae9-135e-4fe5-bf67-e497eb3a9909-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-105027ea-45ec-5086-80a9-34a52e25e860" rel="noreferrer noopener"><span>Sinus- und Kosinussatz herleiten</span> <code>105027ea-45ec-5086-80a9-34a52e25e860</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 8 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d7a32df4fc4e502c16ece9ecd2cdaf19e9d1f92d7f196c6ac7bd6ebcadf1dbb1</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=0c8c1ae9-135e-4fe5-bf67-e497eb3a9909&amp;goalFingerprint=sha256%3Ad7a32df4fc4e502c16ece9ecd2cdaf19e9d1f92d7f196c6ac7bd6ebcadf1dbb1&amp;pageFingerprint=sha256%3A30cfb61a529d19ee848347398046f199dae9d559fd1ea583c5c05428b886ea08&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-27b63e2e-6a34-483e-8e5a-fe0f49670d1d" data-goal-id="27b63e2e-6a34-483e-8e5a-fe0f49670d1d" data-page-number="9" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-27b63e2e-6a34-483e-8e5a-fe0f49670d1d-title">
+    <header class="goal-header">
+      <h1 id="goal-27b63e2e-6a34-483e-8e5a-fe0f49670d1d-title"><a class="goal-self-link" href="#goal-27b63e2e-6a34-483e-8e5a-fe0f49670d1d">Wachstums- und Abklingvorgänge exponentiell modellieren und Ergebnisse im Kontext bewerten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>27b63e2e-6a34-483e-8e5a-fe0f49670d1d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3d31355a685bfc018d54490f5f33230c3a73f665bbbc8c3d7418b0fadcb96fc2" data-rendered-digest="sha256:b434e8ae53bbd7993d2b01f7fdbf21f439d764a4875098e64ac534e9f16de994" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/mathematik/27b63e2e-6a34-483e-8e5a-fe0f49670d1d/27b63e2e-6a34-483e-8e5a-fe0f49670d1d.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Wachstums- und Abklingvorgänge exponentiell modellieren und Ergebnisse im Kontext bewerten&quot;. Die lernende Person kann realitätsnahe Wachstums- und Abklingvorgänge graphisch und rechnerisch mit geeigneten exponentiellen Modellen beschreiben, Modellannahmen variieren, Grenzen des Modells benennen und Ergebnisse im Sachzusammenhang kritisch bewerten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-27b63e2e-6a34-483e-8e5a-fe0f49670d1d-description-heading">
+        <p class="section-heading" id="goal-27b63e2e-6a34-483e-8e5a-fe0f49670d1d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann realitätsnahe Wachstums- und Abklingvorgänge graphisch und rechnerisch mit geeigneten exponentiellen Modellen beschreiben, Modellannahmen variieren, Grenzen des Modells benennen und Ergebnisse im Sachzusammenhang kritisch bewerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-27b63e2e-6a34-483e-8e5a-fe0f49670d1d-requires-heading">
+          <p class="section-heading" id="goal-27b63e2e-6a34-483e-8e5a-fe0f49670d1d-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-27b63e2e-6a34-483e-8e5a-fe0f49670d1d-reverse-heading">
+          <p class="section-heading" id="goal-27b63e2e-6a34-483e-8e5a-fe0f49670d1d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-27b63e2e-6a34-483e-8e5a-fe0f49670d1d-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-27b63e2e-6a34-483e-8e5a-fe0f49670d1d-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-42e19186-6769-41ac-a7bf-ab39bdb50661" rel="noreferrer noopener"><span>Exponentielles Wachstum in Termen, Tabellen und Graphen beschreiben</span> <code>42e19186-6769-41ac-a7bf-ab39bdb50661</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3c1d6ce7-099e-4267-9ff2-3d1526209a89" rel="noreferrer noopener"><span>Logarithmus definieren und einfache Werte bestimmen</span> <code>3c1d6ce7-099e-4267-9ff2-3d1526209a89</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3010d965-b9b9-4dc5-9d04-d706725e9a30" rel="noreferrer noopener"><span>Exponentielle Zunahme und Abnahme beschreiben und von linearem Wachstum abgrenzen</span> <code>3010d965-b9b9-4dc5-9d04-d706725e9a30</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86" rel="noreferrer noopener"><span>Warum Mathematik? – Entdecken, Muster &amp; Alltag</span> <code>65365dce-f33f-49d8-9516-42f75883aa86</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-27b63e2e-6a34-483e-8e5a-fe0f49670d1d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-27b63e2e-6a34-483e-8e5a-fe0f49670d1d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-af7905d0-e684-5ea3-99ac-8a045455370e" rel="noreferrer noopener"><span>Aufgabe 1 (Jahrgangsstufe 10, 10 BE)</span> <code>af7905d0-e684-5ea3-99ac-8a045455370e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 9 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d2380f0c4ef65415fa058eb649e019a092edd41a2d79e2d45b9003f54e03c7c0</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=27b63e2e-6a34-483e-8e5a-fe0f49670d1d&amp;goalFingerprint=sha256%3Ad2380f0c4ef65415fa058eb649e019a092edd41a2d79e2d45b9003f54e03c7c0&amp;pageFingerprint=sha256%3A4ba4855a1bc4fcbb4ab78a4e87d72ff7847a98967d1ffc1016865c6ae71df0e3&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2143e9e8-b176-545b-b2fa-91bbb6c8cf5c" data-goal-id="2143e9e8-b176-545b-b2fa-91bbb6c8cf5c" data-page-number="10" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-2143e9e8-b176-545b-b2fa-91bbb6c8cf5c-title">
+    <header class="goal-header">
+      <h1 id="goal-2143e9e8-b176-545b-b2fa-91bbb6c8cf5c-title"><a class="goal-self-link" href="#goal-2143e9e8-b176-545b-b2fa-91bbb6c8cf5c">Momentane Änderungsrate qualitativ verstehen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2143e9e8-b176-545b-b2fa-91bbb6c8cf5c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9bdef9550dd318fcec434b78e7c516f5d450ecf87e916840a83f40983d6fb404" data-rendered-digest="sha256:1794ad286e3dfb8a4634ab1d0c5d9ae5ace4c96e9fb267ee4d493adcfc5848a4" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/mathematik/2143e9e8-b176-545b-b2fa-91bbb6c8cf5c/2143e9e8-b176-545b-b2fa-91bbb6c8cf5c.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Momentane Änderungsrate qualitativ verstehen&quot;. Die lernende Person kann die momentane Änderungsrate qualitativ als Grenzfall mittlerer Änderungsraten beschreiben und am Graphen als Tangentensteigung verorten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2143e9e8-b176-545b-b2fa-91bbb6c8cf5c-description-heading">
+        <p class="section-heading" id="goal-2143e9e8-b176-545b-b2fa-91bbb6c8cf5c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die momentane Änderungsrate qualitativ als Grenzfall mittlerer Änderungsraten beschreiben und am Graphen als Tangentensteigung verorten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2143e9e8-b176-545b-b2fa-91bbb6c8cf5c-requires-heading">
+          <p class="section-heading" id="goal-2143e9e8-b176-545b-b2fa-91bbb6c8cf5c-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2143e9e8-b176-545b-b2fa-91bbb6c8cf5c-reverse-heading">
+          <p class="section-heading" id="goal-2143e9e8-b176-545b-b2fa-91bbb6c8cf5c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2143e9e8-b176-545b-b2fa-91bbb6c8cf5c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2143e9e8-b176-545b-b2fa-91bbb6c8cf5c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b42bdfcc-3db7-5697-8b3e-69e50962ca86" rel="noreferrer noopener"><span>Grenzwerte des Differenzenquotienten bestimmen</span> <code>b42bdfcc-3db7-5697-8b3e-69e50962ca86</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2143e9e8-b176-545b-b2fa-91bbb6c8cf5c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2143e9e8-b176-545b-b2fa-91bbb6c8cf5c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-296fdd9f-59a4-5d3d-9512-cfc78c8ac3e0" rel="noreferrer noopener"><span>Ableitungen am Graphen deuten</span> <code>296fdd9f-59a4-5d3d-9512-cfc78c8ac3e0</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 10 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:44b4adeb92abeb732c6c65a46b9f0924d32c02e666a3ff1c607890089dc99ae5</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=2143e9e8-b176-545b-b2fa-91bbb6c8cf5c&amp;goalFingerprint=sha256%3A44b4adeb92abeb732c6c65a46b9f0924d32c02e666a3ff1c607890089dc99ae5&amp;pageFingerprint=sha256%3Ae1fc298413d26b04a4d889a675701ecf2d030510bd2f341ad4270af77e0bc769&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3bfc2747-03e2-57db-b13f-01f78835eefd" data-goal-id="3bfc2747-03e2-57db-b13f-01f78835eefd" data-page-number="11" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-3bfc2747-03e2-57db-b13f-01f78835eefd-title">
+    <header class="goal-header">
+      <h1 id="goal-3bfc2747-03e2-57db-b13f-01f78835eefd-title"><a class="goal-self-link" href="#goal-3bfc2747-03e2-57db-b13f-01f78835eefd">Konvergenz und Grenzen numerischer Verfahren reflektieren</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3bfc2747-03e2-57db-b13f-01f78835eefd</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3bfc2747-03e2-57db-b13f-01f78835eefd-description-heading">
+        <p class="section-heading" id="goal-3bfc2747-03e2-57db-b13f-01f78835eefd-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an einem numerischen Verfahren beurteilen, ob und wie zuverlässig die Näherungen konvergieren, und ein Abbruchkriterium sowie eine relevante Fehlerquelle begründen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3bfc2747-03e2-57db-b13f-01f78835eefd-requires-heading">
+          <p class="section-heading" id="goal-3bfc2747-03e2-57db-b13f-01f78835eefd-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-3bfc2747-03e2-57db-b13f-01f78835eefd-reverse-heading">
+          <p class="section-heading" id="goal-3bfc2747-03e2-57db-b13f-01f78835eefd-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-3bfc2747-03e2-57db-b13f-01f78835eefd-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3bfc2747-03e2-57db-b13f-01f78835eefd-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-70a21623-6c87-55ae-b534-ab45a3b9b1d2" rel="noreferrer noopener"><span>Konvergenzgeschwindigkeit numerischer Verfahren vergleichen</span> <code>70a21623-6c87-55ae-b534-ab45a3b9b1d2</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-3bfc2747-03e2-57db-b13f-01f78835eefd-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3bfc2747-03e2-57db-b13f-01f78835eefd-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-78f5003e-9578-545c-b6b3-4b02f31ffcd4" rel="noreferrer noopener"><span>Polynomdivision und numerische Gleichungsverfahren anwenden</span> <code>78f5003e-9578-545c-b6b3-4b02f31ffcd4</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 11 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3d2ac11108abfd720bef9cd8d4881f361b0205169b6d767145f589e86be8c92f</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=3bfc2747-03e2-57db-b13f-01f78835eefd&amp;goalFingerprint=sha256%3A3d2ac11108abfd720bef9cd8d4881f361b0205169b6d767145f589e86be8c92f&amp;pageFingerprint=sha256%3Aba1a2f30471fc29cb0fa745f87caf86b7401ca885ea5a529ebb2e69dc7217881&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2afba4a2-287d-5e8f-aeee-a3bcf8652236" data-goal-id="2afba4a2-287d-5e8f-aeee-a3bcf8652236" data-page-number="12" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-2afba4a2-287d-5e8f-aeee-a3bcf8652236-title">
+    <header class="goal-header">
+      <h1 id="goal-2afba4a2-287d-5e8f-aeee-a3bcf8652236-title"><a class="goal-self-link" href="#goal-2afba4a2-287d-5e8f-aeee-a3bcf8652236">Integral als Bestand und Flächeninhalt verstehen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2afba4a2-287d-5e8f-aeee-a3bcf8652236</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:24e25b5070d120dd9773f93177b19575dadabdd40f0bb47abb1f208dc563f4d3" data-rendered-digest="sha256:e43b5ddcc537722a1977b0fe80142da9e5649b24cb5adbb319c272d202b2239b" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/mathematik/2afba4a2-287d-5e8f-aeee-a3bcf8652236/2afba4a2-287d-5e8f-aeee-a3bcf8652236.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Integral als Bestand und Flächeninhalt verstehen&quot;. Die lernende Person kann ein bestimmtes Integral je nach Situation als orientierten Flächeninhalt oder Bestandsänderung deuten und aus Änderungsrate und Anfangsbestand einen Bestand bestimmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2afba4a2-287d-5e8f-aeee-a3bcf8652236-description-heading">
+        <p class="section-heading" id="goal-2afba4a2-287d-5e8f-aeee-a3bcf8652236-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann ein bestimmtes Integral je nach Situation als orientierten Flächeninhalt oder Bestandsänderung deuten und aus Änderungsrate und Anfangsbestand einen Bestand bestimmen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2afba4a2-287d-5e8f-aeee-a3bcf8652236-requires-heading">
+          <p class="section-heading" id="goal-2afba4a2-287d-5e8f-aeee-a3bcf8652236-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2afba4a2-287d-5e8f-aeee-a3bcf8652236-reverse-heading">
+          <p class="section-heading" id="goal-2afba4a2-287d-5e8f-aeee-a3bcf8652236-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2afba4a2-287d-5e8f-aeee-a3bcf8652236-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2afba4a2-287d-5e8f-aeee-a3bcf8652236-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-858113c5-e53b-57bb-b01f-ba95c3ddcb6f" rel="noreferrer noopener"><span>Ableitungen elementarer Funktionen berechnen</span> <code>858113c5-e53b-57bb-b01f-ba95c3ddcb6f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2" rel="noreferrer noopener"><span>Warum Mathematik? – Denken, Muster &amp; Zukunft</span> <code>71cec9fb-3751-4d61-8b34-c5adbbf6e5f2</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2afba4a2-287d-5e8f-aeee-a3bcf8652236-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2afba4a2-287d-5e8f-aeee-a3bcf8652236-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-23c8b5f9-ab35-4071-a3d4-b76a669a0995" rel="noreferrer noopener"><span>Gesamtbestände und Gesamteffekte aus Änderungsraten oder Randfunktionen ermitteln</span> <code>23c8b5f9-ab35-4071-a3d4-b76a669a0995</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-809ef78a-f282-5593-89be-0f2cb95570ac" rel="noreferrer noopener"><span>Bestände und Mittelwerte modellieren</span> <code>809ef78a-f282-5593-89be-0f2cb95570ac</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9441bb35-2a2f-4edc-9d8a-bc58c257054d" rel="noreferrer noopener"><span>Graphen von Flächeninhaltsfunktionen skizzieren</span> <code>9441bb35-2a2f-4edc-9d8a-bc58c257054d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6" rel="noreferrer noopener"><span>Flächen unter Graphen näherungsweise bestimmen</span> <code>94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-ece68088-71a8-466b-874c-09e6baac19fc" rel="noreferrer noopener"><span>Bestände aus Änderungsraten und Anfangsbestand rekonstruieren und deuten</span> <code>ece68088-71a8-466b-874c-09e6baac19fc</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 12 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9296843f95a39eff2e4c0e1ef2686ded4ab014303b9fb21f0a0bd2e74aa0bfba</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=2afba4a2-287d-5e8f-aeee-a3bcf8652236&amp;goalFingerprint=sha256%3A9296843f95a39eff2e4c0e1ef2686ded4ab014303b9fb21f0a0bd2e74aa0bfba&amp;pageFingerprint=sha256%3Af3f90cb3ba1a16e5799749588eb9830cf13b9b113e6313b00050c340a01cb36c&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6481fc23-d923-5ffc-ba49-f499328f43b8" data-goal-id="6481fc23-d923-5ffc-ba49-f499328f43b8" data-page-number="13" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-6481fc23-d923-5ffc-ba49-f499328f43b8-title">
+    <header class="goal-header">
+      <h1 id="goal-6481fc23-d923-5ffc-ba49-f499328f43b8-title"><a class="goal-self-link" href="#goal-6481fc23-d923-5ffc-ba49-f499328f43b8">Geeignete Lösungsstrategien für lineare Gleichungssysteme auswählen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6481fc23-d923-5ffc-ba49-f499328f43b8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e326b0de800a869dc20dc15d76db9be5ffd5977576fc2b052697fc8b1043d982" data-rendered-digest="sha256:8a34d41efd8dfcd49137af4cdd60c00217600a95d4b3ec7ac3e69d7d38665dfa" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/mathematik/6481fc23-d923-5ffc-ba49-f499328f43b8/6481fc23-d923-5ffc-ba49-f499328f43b8.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Geeignete Lösungsstrategien für lineare Gleichungssysteme auswählen&quot;. Die lernende Person kann anhand der Struktur eines linearen Gleichungssystems aus einer analytisch-geometrischen Problemstellung eine geeignete Lösungsstrategie wählen und erklären, warum sie hier günstiger ist als eine plausible Alternative.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6481fc23-d923-5ffc-ba49-f499328f43b8-description-heading">
+        <p class="section-heading" id="goal-6481fc23-d923-5ffc-ba49-f499328f43b8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann anhand der Struktur eines linearen Gleichungssystems aus einer analytisch-geometrischen Problemstellung eine geeignete Lösungsstrategie wählen und erklären, warum sie hier günstiger ist als eine plausible Alternative.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6481fc23-d923-5ffc-ba49-f499328f43b8-requires-heading">
+          <p class="section-heading" id="goal-6481fc23-d923-5ffc-ba49-f499328f43b8-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-6481fc23-d923-5ffc-ba49-f499328f43b8-reverse-heading">
+          <p class="section-heading" id="goal-6481fc23-d923-5ffc-ba49-f499328f43b8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-6481fc23-d923-5ffc-ba49-f499328f43b8-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6481fc23-d923-5ffc-ba49-f499328f43b8-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6" rel="noreferrer noopener"><span>Lineare Gleichungssysteme in der Analytischen Geometrie systematisch lösen</span> <code>27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-436532fe-cee6-5a13-a4be-05522435937b" rel="noreferrer noopener"><span>Lösungsmengen linearer Gleichungssysteme geometrisch deuten</span> <code>436532fe-cee6-5a13-a4be-05522435937b</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-6481fc23-d923-5ffc-ba49-f499328f43b8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6481fc23-d923-5ffc-ba49-f499328f43b8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008" rel="noreferrer noopener"><span>Geraden, Ebenen und Schnittfiguren analysieren</span> <code>2f8a3a90-717d-5ac1-b54e-facca26e9008</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 13 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7b5427e0e290bd6d7efbdd7444ace53eb4dee19588854ace33e0e3f710e806b5</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=6481fc23-d923-5ffc-ba49-f499328f43b8&amp;goalFingerprint=sha256%3A7b5427e0e290bd6d7efbdd7444ace53eb4dee19588854ace33e0e3f710e806b5&amp;pageFingerprint=sha256%3A9b2c41ef1a459948c85399d9323a243b176fcdd1f0afba5228e5c092de90ef4e&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-10a33d93-dc20-5edd-ae3b-32338d05407c" data-goal-id="10a33d93-dc20-5edd-ae3b-32338d05407c" data-page-number="14" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-10a33d93-dc20-5edd-ae3b-32338d05407c-title">
+    <header class="goal-header">
+      <h1 id="goal-10a33d93-dc20-5edd-ae3b-32338d05407c-title"><a class="goal-self-link" href="#goal-10a33d93-dc20-5edd-ae3b-32338d05407c">Zustände in Markov-Ketten vorwärts berechnen und deuten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>10a33d93-dc20-5edd-ae3b-32338d05407c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c70950b5a95a1fda40df8146972fc3dacf96d6bdfb73b228ad22e14864ff3d38" data-rendered-digest="sha256:423b9b7900f20d540c1d1b015fa86424853eb1ef251ecc575dc3a3161719c052" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/mathematik/10a33d93-dc20-5edd-ae3b-32338d05407c/10a33d93-dc20-5edd-ae3b-32338d05407c.png" alt="Vierstufige Infografik zur Vorwärtsrechnung einer Markov-Kette mit Spaltenvektoren: Anfangszustand 60 Prozent A und 40 Prozent B, Übergangsmatrix, Zustände 50 zu 50 und 45 zu 55 sowie Deutung nach zwei Schritten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-10a33d93-dc20-5edd-ae3b-32338d05407c-description-heading">
+        <p class="section-heading" id="goal-10a33d93-dc20-5edd-ae3b-32338d05407c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Zustandsentwicklungen in Markov-Ketten mit Anfangsvektor und Übergangsmatrix vorwärts berechnen und die Ergebnisse als Verteilungen deuten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-10a33d93-dc20-5edd-ae3b-32338d05407c-requires-heading">
+          <p class="section-heading" id="goal-10a33d93-dc20-5edd-ae3b-32338d05407c-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-10a33d93-dc20-5edd-ae3b-32338d05407c-reverse-heading">
+          <p class="section-heading" id="goal-10a33d93-dc20-5edd-ae3b-32338d05407c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-3d4d510c-0fd7-55ea-9b79-1db8d640758f"><span>Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen</span><code>3d4d510c-0fd7-55ea-9b79-1db8d640758f</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-10a33d93-dc20-5edd-ae3b-32338d05407c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-10a33d93-dc20-5edd-ae3b-32338d05407c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9bf67cce-4c8f-5497-8e64-825b83c6aa40" rel="noreferrer noopener"><span>Stochastische Übergangsmatrizen für Markov-Ketten prüfen</span> <code>9bf67cce-4c8f-5497-8e64-825b83c6aa40</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-10a33d93-dc20-5edd-ae3b-32338d05407c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-10a33d93-dc20-5edd-ae3b-32338d05407c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0de1e45c-aea9-5e53-932a-027dcf509efa" rel="noreferrer noopener"><span>Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)</span> <code>0de1e45c-aea9-5e53-932a-027dcf509efa</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-33c6e64c-5955-5b07-85d4-74a97b19dd56" rel="noreferrer noopener"><span>Matrixpotenzen in Übergangsprozessen deuten</span> <code>33c6e64c-5955-5b07-85d4-74a97b19dd56</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-57aff94e-91b8-5cc6-9f85-3f317ecf36ca" rel="noreferrer noopener"><span>Übergangsprozesse mit Matrizen modellieren (GK)</span> <code>57aff94e-91b8-5cc6-9f85-3f317ecf36ca</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e4656e83-3f33-5bda-b0bc-d4b63ec4653e" rel="noreferrer noopener"><span>Übergangsprozesse und Grenzverhalten mit Matrizen untersuchen (LK)</span> <code>e4656e83-3f33-5bda-b0bc-d4b63ec4653e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 14 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a8604222eec4121c90d5635beee8c97e49c2b0eda4e0b278f30977b8df89d7c5</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=10a33d93-dc20-5edd-ae3b-32338d05407c&amp;goalFingerprint=sha256%3Aa8604222eec4121c90d5635beee8c97e49c2b0eda4e0b278f30977b8df89d7c5&amp;pageFingerprint=sha256%3Ae70e560fac67d5f6d78e34bf9ae479cd039ec51fa6f2dd81c70d060b2866c3ad&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3d4d510c-0fd7-55ea-9b79-1db8d640758f" data-goal-id="3d4d510c-0fd7-55ea-9b79-1db8d640758f" data-page-number="15" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-3d4d510c-0fd7-55ea-9b79-1db8d640758f-title">
+    <header class="goal-header">
+      <h1 id="goal-3d4d510c-0fd7-55ea-9b79-1db8d640758f-title"><a class="goal-self-link" href="#goal-3d4d510c-0fd7-55ea-9b79-1db8d640758f">Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3d4d510c-0fd7-55ea-9b79-1db8d640758f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:81c28760394a4229429a65c74d320364fe081e465107f3218525e14e3cd2343c" data-rendered-digest="sha256:bcc50abe86f958c6c95b73a4dced655daaa3728c7d013ca3e51187f351b72f66" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/mathematik/3d4d510c-0fd7-55ea-9b79-1db8d640758f/3d4d510c-0fd7-55ea-9b79-1db8d640758f.png" alt="Vierstufige Infografik zur Rückwärtsprüfung einer Markov-Kette mit Spaltenvektoren: späterer Zustand und Matrix, berechneter Vorgänger, Zulässigkeitsprüfung, Eindeutigkeitsprüfung und Warnhinweise zu negativen Anteilen und singulären Matrizen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3d4d510c-0fd7-55ea-9b79-1db8d640758f-description-heading">
+        <p class="section-heading" id="goal-3d4d510c-0fd7-55ea-9b79-1db8d640758f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann beurteilen, ob aus einem späteren Zustand einer Markov-Kette ein zulässiger früherer Zustand sinnvoll und eindeutig bestimmt werden kann, und ihre Entscheidung begründen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3d4d510c-0fd7-55ea-9b79-1db8d640758f-requires-heading">
+          <p class="section-heading" id="goal-3d4d510c-0fd7-55ea-9b79-1db8d640758f-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-10a33d93-dc20-5edd-ae3b-32338d05407c"><span>Zustände in Markov-Ketten vorwärts berechnen und deuten</span><code>10a33d93-dc20-5edd-ae3b-32338d05407c</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-3d4d510c-0fd7-55ea-9b79-1db8d640758f-reverse-heading">
+          <p class="section-heading" id="goal-3d4d510c-0fd7-55ea-9b79-1db8d640758f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-3d4d510c-0fd7-55ea-9b79-1db8d640758f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3d4d510c-0fd7-55ea-9b79-1db8d640758f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-57aff94e-91b8-5cc6-9f85-3f317ecf36ca" rel="noreferrer noopener"><span>Übergangsprozesse mit Matrizen modellieren (GK)</span> <code>57aff94e-91b8-5cc6-9f85-3f317ecf36ca</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e4656e83-3f33-5bda-b0bc-d4b63ec4653e" rel="noreferrer noopener"><span>Übergangsprozesse und Grenzverhalten mit Matrizen untersuchen (LK)</span> <code>e4656e83-3f33-5bda-b0bc-d4b63ec4653e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 15 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7dfdb466bd1e879eadea7fa3df42c3c6fb09edd09a5fff915a082651da3d61d2</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=3d4d510c-0fd7-55ea-9b79-1db8d640758f&amp;goalFingerprint=sha256%3A7dfdb466bd1e879eadea7fa3df42c3c6fb09edd09a5fff915a082651da3d61d2&amp;pageFingerprint=sha256%3A5e441a6944dadc670f0f3da5ad756bab966aaa90f01824ca459875e2393b9521&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-508292f2-671b-4fd3-acbf-53d705e44693" data-goal-id="508292f2-671b-4fd3-acbf-53d705e44693" data-page-number="16" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-508292f2-671b-4fd3-acbf-53d705e44693-title">
+    <header class="goal-header">
+      <h1 id="goal-508292f2-671b-4fd3-acbf-53d705e44693-title"><a class="goal-self-link" href="#goal-508292f2-671b-4fd3-acbf-53d705e44693">Bedingte Wahrscheinlichkeiten mit Baumdiagrammen und Vierfeldertafeln bestimmen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>508292f2-671b-4fd3-acbf-53d705e44693</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:bd4459dce129f1d47962cbf5942001178db05a7112ccbad51f5b918cb5610aa3" data-rendered-digest="sha256:676e87695f570fc1594d75eb8e43c7b91c32763473314248b684caccabfa5960" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/mathematik/508292f2-671b-4fd3-acbf-53d705e44693/508292f2-671b-4fd3-acbf-53d705e44693.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Bedingte Wahrscheinlichkeiten mit Baumdiagrammen und Vierfeldertafeln bestimmen&quot;. Die lernende Person kann aus einer Bedingung den passenden Bezugsraum bestimmen und eine bedingte Wahrscheinlichkeit mit Baumdiagramm oder Vier- beziehungsweise Mehrfeldertafel berechnen und deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-508292f2-671b-4fd3-acbf-53d705e44693-description-heading">
+        <p class="section-heading" id="goal-508292f2-671b-4fd3-acbf-53d705e44693-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus einer Bedingung den passenden Bezugsraum bestimmen und eine bedingte Wahrscheinlichkeit mit Baumdiagramm oder Vier- beziehungsweise Mehrfeldertafel berechnen und deuten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-508292f2-671b-4fd3-acbf-53d705e44693-requires-heading">
+          <p class="section-heading" id="goal-508292f2-671b-4fd3-acbf-53d705e44693-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-508292f2-671b-4fd3-acbf-53d705e44693-reverse-heading">
+          <p class="section-heading" id="goal-508292f2-671b-4fd3-acbf-53d705e44693-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-508292f2-671b-4fd3-acbf-53d705e44693-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-508292f2-671b-4fd3-acbf-53d705e44693-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-efc3506a-5f35-4d77-9498-d70a091a470b" rel="noreferrer noopener"><span>Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen</span> <code>efc3506a-5f35-4d77-9498-d70a091a470b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4ac925cf-3862-4810-be2a-d92efff7d735" rel="noreferrer noopener"><span>Wahrscheinlichkeiten verknüpfter Ereignisse berechnen</span> <code>4ac925cf-3862-4810-be2a-d92efff7d735</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2" rel="noreferrer noopener"><span>Warum Mathematik? – Denken, Muster &amp; Zukunft</span> <code>71cec9fb-3751-4d61-8b34-c5adbbf6e5f2</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-508292f2-671b-4fd3-acbf-53d705e44693-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-508292f2-671b-4fd3-acbf-53d705e44693-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-77940875-ad1e-5272-9002-3ca9db810a18" rel="noreferrer noopener"><span>Zufallsexperimente und Modelle vergleichen</span> <code>77940875-ad1e-5272-9002-3ca9db810a18</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c2831918-26f1-421e-90fb-ce707689594e" rel="noreferrer noopener"><span>Bedingte und gemeinsame Wahrscheinlichkeiten im Kontext unterscheiden</span> <code>c2831918-26f1-421e-90fb-ce707689594e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 16 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e057214fb0b39334999c222a12b0a8dbafdec84e2cf4231c5ff2a87eb31d7361</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=508292f2-671b-4fd3-acbf-53d705e44693&amp;goalFingerprint=sha256%3Ae057214fb0b39334999c222a12b0a8dbafdec84e2cf4231c5ff2a87eb31d7361&amp;pageFingerprint=sha256%3A4593e68d586a6221bc0c4981b94da45872e7dbb6ccf0a8e65bb82d7658b041fd&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-28d098ab-f33f-5baf-8261-f1c0c0f711fa" data-goal-id="28d098ab-f33f-5baf-8261-f1c0c0f711fa" data-page-number="17" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-28d098ab-f33f-5baf-8261-f1c0c0f711fa-title">
+    <header class="goal-header">
+      <h1 id="goal-28d098ab-f33f-5baf-8261-f1c0c0f711fa-title"><a class="goal-self-link" href="#goal-28d098ab-f33f-5baf-8261-f1c0c0f711fa">Voraussetzung und Folgerung in Wenn-Dann-Aussagen unterscheiden</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>28d098ab-f33f-5baf-8261-f1c0c0f711fa</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-28d098ab-f33f-5baf-8261-f1c0c0f711fa-description-heading">
+        <p class="section-heading" id="goal-28d098ab-f33f-5baf-8261-f1c0c0f711fa-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in einer mathematischen Wenn-Dann-Aussage Voraussetzung und Folgerung eindeutig benennen und den Geltungsbereich der Aussage angeben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-28d098ab-f33f-5baf-8261-f1c0c0f711fa-requires-heading">
+          <p class="section-heading" id="goal-28d098ab-f33f-5baf-8261-f1c0c0f711fa-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-28d098ab-f33f-5baf-8261-f1c0c0f711fa-reverse-heading">
+          <p class="section-heading" id="goal-28d098ab-f33f-5baf-8261-f1c0c0f711fa-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-740ab443-776a-5c7a-8f1d-2b0b59a5ed32"><span>Umkehrung und Kontraposition bilden</span><code>740ab443-776a-5c7a-8f1d-2b0b59a5ed32</code><span class="reference-page">S. 18</span></a></li><li><a href="#goal-e2bf726a-126c-5c66-9fbb-6e04c129bb0f"><span>Äquivalenz durch Begründung oder Gegenbeispiel prüfen</span><code>e2bf726a-126c-5c66-9fbb-6e04c129bb0f</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-28d098ab-f33f-5baf-8261-f1c0c0f711fa-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-28d098ab-f33f-5baf-8261-f1c0c0f711fa-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-50b9426f-ebec-526d-8b9d-e61d9707a46e" rel="noreferrer noopener"><span>Annahmen und Begriffe klären</span> <code>50b9426f-ebec-526d-8b9d-e61d9707a46e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3de1d5b0-0a26-5124-b066-92b65a882c5e" rel="noreferrer noopener"><span>Begründen oder widerlegen</span> <code>3de1d5b0-0a26-5124-b066-92b65a882c5e</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-28d098ab-f33f-5baf-8261-f1c0c0f711fa-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-28d098ab-f33f-5baf-8261-f1c0c0f711fa-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2b497114-66ce-5f38-9b4d-dd17a2f4088f" rel="noreferrer noopener"><span>Fehlschlüsse erkennen und korrigieren</span> <code>2b497114-66ce-5f38-9b4d-dd17a2f4088f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-591cb948-f313-5b1c-a9cb-3df8162eeb8b" rel="noreferrer noopener"><span>Kettenschlüsse nachvollziehen und bilden</span> <code>591cb948-f313-5b1c-a9cb-3df8162eeb8b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a8d4eb81-b77a-53e3-813a-dbfeed09f1bf" rel="noreferrer noopener"><span>Quantoren richtig interpretieren</span> <code>a8d4eb81-b77a-53e3-813a-dbfeed09f1bf</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9" rel="noreferrer noopener"><span>Beweis durch Widerspruch</span> <code>c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d21a1303-50fc-5e38-aeda-eeae3392c74b" rel="noreferrer noopener"><span>Direkten Beweis führen</span> <code>d21a1303-50fc-5e38-aeda-eeae3392c74b</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 17 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fde711a0d32d82377b61c84e7e446a1e2f40d59dfb815d59ad211189e97b1121</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=28d098ab-f33f-5baf-8261-f1c0c0f711fa&amp;goalFingerprint=sha256%3Afde711a0d32d82377b61c84e7e446a1e2f40d59dfb815d59ad211189e97b1121&amp;pageFingerprint=sha256%3Acfe9e492ee5107f9c11fe9b90212fa1963677124d07f2eab62c35e3601c54bf1&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-740ab443-776a-5c7a-8f1d-2b0b59a5ed32" data-goal-id="740ab443-776a-5c7a-8f1d-2b0b59a5ed32" data-page-number="18" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-740ab443-776a-5c7a-8f1d-2b0b59a5ed32-title">
+    <header class="goal-header">
+      <h1 id="goal-740ab443-776a-5c7a-8f1d-2b0b59a5ed32-title"><a class="goal-self-link" href="#goal-740ab443-776a-5c7a-8f1d-2b0b59a5ed32">Umkehrung und Kontraposition bilden</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>740ab443-776a-5c7a-8f1d-2b0b59a5ed32</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-740ab443-776a-5c7a-8f1d-2b0b59a5ed32-description-heading">
+        <p class="section-heading" id="goal-740ab443-776a-5c7a-8f1d-2b0b59a5ed32-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zu einer mathematischen Implikation die Umkehrung und die Kontraposition korrekt formulieren und beide von der Ausgangsaussage unterscheiden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-740ab443-776a-5c7a-8f1d-2b0b59a5ed32-requires-heading">
+          <p class="section-heading" id="goal-740ab443-776a-5c7a-8f1d-2b0b59a5ed32-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-28d098ab-f33f-5baf-8261-f1c0c0f711fa"><span>Voraussetzung und Folgerung in Wenn-Dann-Aussagen unterscheiden</span><code>28d098ab-f33f-5baf-8261-f1c0c0f711fa</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-740ab443-776a-5c7a-8f1d-2b0b59a5ed32-reverse-heading">
+          <p class="section-heading" id="goal-740ab443-776a-5c7a-8f1d-2b0b59a5ed32-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-740ab443-776a-5c7a-8f1d-2b0b59a5ed32-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-740ab443-776a-5c7a-8f1d-2b0b59a5ed32-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-81527aac-1abf-588d-acae-b82a86564b06" rel="noreferrer noopener"><span>Beweis durch Kontraposition</span> <code>81527aac-1abf-588d-acae-b82a86564b06</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 18 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c67a4843ff8ec5ed3ac500836ec60e6bc28dd28384f509767e56bf72f137e970</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=740ab443-776a-5c7a-8f1d-2b0b59a5ed32&amp;goalFingerprint=sha256%3Ac67a4843ff8ec5ed3ac500836ec60e6bc28dd28384f509767e56bf72f137e970&amp;pageFingerprint=sha256%3A1217d9be348af2c7d53a7e76a2f9726d93c4d17b87ed3196350dd9e2cd6662b7&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e2bf726a-126c-5c66-9fbb-6e04c129bb0f" data-goal-id="e2bf726a-126c-5c66-9fbb-6e04c129bb0f" data-page-number="19" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-e2bf726a-126c-5c66-9fbb-6e04c129bb0f-title">
+    <header class="goal-header">
+      <h1 id="goal-e2bf726a-126c-5c66-9fbb-6e04c129bb0f-title"><a class="goal-self-link" href="#goal-e2bf726a-126c-5c66-9fbb-6e04c129bb0f">Äquivalenz durch Begründung oder Gegenbeispiel prüfen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e2bf726a-126c-5c66-9fbb-6e04c129bb0f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e2bf726a-126c-5c66-9fbb-6e04c129bb0f-description-heading">
+        <p class="section-heading" id="goal-e2bf726a-126c-5c66-9fbb-6e04c129bb0f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann prüfen, ob eine mathematische Aussage und ihre Umkehrung beide gelten, und eine behauptete Äquivalenz durch Begründungen bestätigen oder durch ein Gegenbeispiel widerlegen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e2bf726a-126c-5c66-9fbb-6e04c129bb0f-requires-heading">
+          <p class="section-heading" id="goal-e2bf726a-126c-5c66-9fbb-6e04c129bb0f-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-28d098ab-f33f-5baf-8261-f1c0c0f711fa"><span>Voraussetzung und Folgerung in Wenn-Dann-Aussagen unterscheiden</span><code>28d098ab-f33f-5baf-8261-f1c0c0f711fa</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e2bf726a-126c-5c66-9fbb-6e04c129bb0f-reverse-heading">
+          <p class="section-heading" id="goal-e2bf726a-126c-5c66-9fbb-6e04c129bb0f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e2bf726a-126c-5c66-9fbb-6e04c129bb0f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e2bf726a-126c-5c66-9fbb-6e04c129bb0f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3de1d5b0-0a26-5124-b066-92b65a882c5e" rel="noreferrer noopener"><span>Begründen oder widerlegen</span> <code>3de1d5b0-0a26-5124-b066-92b65a882c5e</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e2bf726a-126c-5c66-9fbb-6e04c129bb0f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e2bf726a-126c-5c66-9fbb-6e04c129bb0f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2b497114-66ce-5f38-9b4d-dd17a2f4088f" rel="noreferrer noopener"><span>Fehlschlüsse erkennen und korrigieren</span> <code>2b497114-66ce-5f38-9b4d-dd17a2f4088f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 19 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a4f8cbeba8de70358a16ca696fbc16951e13084369b5e5368be2510ec76bc4c8</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=e2bf726a-126c-5c66-9fbb-6e04c129bb0f&amp;goalFingerprint=sha256%3Aa4f8cbeba8de70358a16ca696fbc16951e13084369b5e5368be2510ec76bc4c8&amp;pageFingerprint=sha256%3A56ca149c25626b0c9b5ce85c648ae6b8e0f615da06b64ef1f16c7c1715263d14&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f9c24dd8-eaa5-5395-8679-820c1a74e7b7" data-goal-id="f9c24dd8-eaa5-5395-8679-820c1a74e7b7" data-page-number="20" data-chapter-ids="structure:mathematik structure:positive-understanding-evidence-kalibrierung-v2" aria-labelledby="goal-f9c24dd8-eaa5-5395-8679-820c1a74e7b7-title">
+    <header class="goal-header">
+      <h1 id="goal-f9c24dd8-eaa5-5395-8679-820c1a74e7b7-title"><a class="goal-self-link" href="#goal-f9c24dd8-eaa5-5395-8679-820c1a74e7b7">Strategien nach Kriterien vergleichen (LK)</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f9c24dd8-eaa5-5395-8679-820c1a74e7b7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Kalibrierung V2 – positive Verständnisnachweise</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4f43b8e7ce8c346ca2500cde352e1ef996cba3bf89bebd2fdfa233219e3cb786" data-rendered-digest="sha256:4c5505c477e6c496e05994627e99737f67d3dfdf30acf952ff37ec12017b04f1" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/mathematik/f9c24dd8-eaa5-5395-8679-820c1a74e7b7/f9c24dd8-eaa5-5395-8679-820c1a74e7b7.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Strategien nach Kriterien vergleichen (LK)&quot;. Die lernende Person kann zwei Lösungsstrategien anhand konkreter Kriterien wie Aufwand, Genauigkeit und Robustheit vergleichen und begründen, welche für den vorliegenden Fall geeigneter ist.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f9c24dd8-eaa5-5395-8679-820c1a74e7b7-description-heading">
+        <p class="section-heading" id="goal-f9c24dd8-eaa5-5395-8679-820c1a74e7b7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zwei Lösungsstrategien anhand konkreter Kriterien wie Aufwand, Genauigkeit und Robustheit vergleichen und begründen, welche für den vorliegenden Fall geeigneter ist.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f9c24dd8-eaa5-5395-8679-820c1a74e7b7-requires-heading">
+          <p class="section-heading" id="goal-f9c24dd8-eaa5-5395-8679-820c1a74e7b7-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-f9c24dd8-eaa5-5395-8679-820c1a74e7b7-reverse-heading">
+          <p class="section-heading" id="goal-f9c24dd8-eaa5-5395-8679-820c1a74e7b7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-f9c24dd8-eaa5-5395-8679-820c1a74e7b7-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f9c24dd8-eaa5-5395-8679-820c1a74e7b7-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2" rel="noreferrer noopener"><span>Warum Mathematik? – Denken, Muster &amp; Zukunft</span> <code>71cec9fb-3751-4d61-8b34-c5adbbf6e5f2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3de1d5b0-0a26-5124-b066-92b65a882c5e" rel="noreferrer noopener"><span>Begründen oder widerlegen</span> <code>3de1d5b0-0a26-5124-b066-92b65a882c5e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c8698478-4662-5b52-a3e5-7994604ff0de" rel="noreferrer noopener"><span>Alternative Strategie vorschlagen</span> <code>c8698478-4662-5b52-a3e5-7994604ff0de</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-11f7090c-3e44-522f-9b77-1e07cceffc0f" rel="noreferrer noopener"><span>Modellgrenzen diskutieren</span> <code>11f7090c-3e44-522f-9b77-1e07cceffc0f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-f9c24dd8-eaa5-5395-8679-820c1a74e7b7-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f9c24dd8-eaa5-5395-8679-820c1a74e7b7-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-95aa25c9-bf7f-53ee-bde2-df67cad3d46b" rel="noreferrer noopener"><span>Strategien optimieren (LK)</span> <code>95aa25c9-bf7f-53ee-bde2-df67cad3d46b</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 20 von 20</span>
+      <span>Buch-Digest <code>sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bc5c37ff36e6d56c17069af31704955c8b6bcddf8a1ff58a5ecd7f510b8da32b</code></span>
+      <a href="https://skillpilot.com/lernzielbuch?bookId=de-de-gym-math-positive-understanding-evidence-calibration-v2&amp;edition=curricular-atomic-v1&amp;goalId=f9c24dd8-eaa5-5395-8679-820c1a74e7b7&amp;goalFingerprint=sha256%3Abc5c37ff36e6d56c17069af31704955c8b6bcddf8a1ff58a5ecd7f510b8da32b&amp;pageFingerprint=sha256%3A98dff62f0db3fcdcae1a4ca7dafe8a6fd0b71e3f43bbfd6a7ad77e8ab4c7cfb4&amp;bookDigest=sha256%3Af4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73&amp;page=20" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

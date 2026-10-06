@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join, relative } from 'node:path'
 import {
+  getAllJsonFiles,
   hasOnlyPartialMappingSourceEvidence,
   intersectApplicabilityJurisdictions,
 } from './applicabilityCompiler'
@@ -38,6 +42,29 @@ const entry = (goalId: string, requiredByGoalId: string) => ({
   requiredByGoalId,
 })
 const isEligible = (goal: { kind: string } | undefined) => goal?.kind === 'ordinary'
+
+test('curriculum discovery excludes QA snapshots while keeping live source and mapping inputs', () => {
+  const root = mkdtempSync(join(tmpdir(), 'skillpilot-curriculum-discovery-'))
+  try {
+    const paths = [
+      'DE/Gymnasium/canonical/live.de.json',
+      'DE/Gymnasium/mapping/DE-HE/live.review.json',
+      'DE/Gymnasium/quality/goal-evidence/candidate/mapping/DE-HE/snapshot.json',
+      'DE/Gymnasium/quality/goal-evidence/candidate/canonical/snapshot.de.json',
+      'DE/Gymnasium/quality-backup/mapping/DE-HE/live.json',
+    ]
+    paths.forEach((file) => {
+      const absolute = join(root, file)
+      mkdirSync(join(absolute, '..'), { recursive: true })
+      writeFileSync(absolute, JSON.stringify({ landscapeId: 'same-live-id', goals: [] }))
+    })
+    assert.deepEqual(getAllJsonFiles(root).map((file) => relative(root, file)).sort(), [
+      paths[0], paths[1], paths[4],
+    ].sort())
+  } finally {
+    rmSync(root, { recursive: true, force: true })
+  }
+})
 
 function checker(
   goals: SourceCoverageGoalLike[],

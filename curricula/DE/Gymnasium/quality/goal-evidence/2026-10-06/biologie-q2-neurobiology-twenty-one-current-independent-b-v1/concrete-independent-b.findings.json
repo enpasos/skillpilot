@@ -1,0 +1,121 @@
+{
+  "findings": [
+    {
+      "findingId": "B-N21-P-001",
+      "goalId": "8b23f8fb-555d-5720-b5f2-dd6f28a0e786",
+      "layer": "P",
+      "affectedFields": [
+        "profile.expectations",
+        "profile.applicationCaseBriefs"
+      ],
+      "boundInputs": {
+        "currentWholeGoalSha256": "sha256:872fc0518da74eb5d958c3a1b0885669fd1b436cbc70e5c31cc6847b4ae83bd8",
+        "proposedWholeGoalSha256": "sha256:872fc0518da74eb5d958c3a1b0885669fd1b436cbc70e5c31cc6847b4ae83bd8",
+        "authorProfileObjectSha256": "sha256:abf48c626d52797feb8ec10878087264110136483ca57723c28be40768242d74",
+        "nativeInMemoryCandidateBinding": {
+          "goalId": "8b23f8fb-555d-5720-b5f2-dd6f28a0e786",
+          "goalFingerprint": "sha256:16926b337f2ac0f583d8445553c25233e8c3282f023b1615cf0fc82899bdc208",
+          "reviewInputFingerprint": "sha256:edad0df51437985827eb65e99ceb4ce8df413daf54d026a1934c98cb86225696",
+          "profileFingerprint": "sha256:bf1cda72e1485cd71020b6c43826336042e04c33fc3df490d4db36d4ad20a5f0",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1",
+          "applicationCases": 2
+        }
+      },
+      "verdict": "REVISE",
+      "reason": "The5/15 equal-height impulses correctly test frequency code and the fresh group patterns test place/population code. Neither case asks the learner to explain stimulus→channel/receptor-potential→neural-signal generation, despite its essential expectation and goal text.",
+      "remedy": "Require positive stimulus→receptor-signal transduction and a fresh intervention alongside all three coding representations; retain the21 IDs.",
+      "activeChangeMade": false
+    },
+    {
+      "findingId": "B-N21-P-002",
+      "goalId": "c05e217f-33fc-5a11-ba75-1397fad3ae0a",
+      "layer": "P",
+      "affectedFields": [
+        "profile.applicationCaseBriefs.fresh-contextual-transfer.taskDemandDe/En",
+        "profile.applicationCaseBriefs.fresh-contextual-transfer.expectedPerformanceDe/En"
+      ],
+      "boundInputs": {
+        "currentWholeGoalSha256": "sha256:4276e15156bb9349fa0b3c71cfdd1c42c151b3978cdfdc99147338f53b3a3408",
+        "proposedWholeGoalSha256": "sha256:4276e15156bb9349fa0b3c71cfdd1c42c151b3978cdfdc99147338f53b3a3408",
+        "authorProfileObjectSha256": "sha256:a0493adcdf4e4851597c37747a00e5737071202cc13fed1bf5a88de79424dd3d",
+        "nativeInMemoryCandidateBinding": {
+          "goalId": "c05e217f-33fc-5a11-ba75-1397fad3ae0a",
+          "goalFingerprint": "sha256:7ef9f4807629a2ba0ba6d359f03c877a5a5d0832d3c6f7cbb3b1aaff3816c190",
+          "reviewInputFingerprint": "sha256:434f3cfd23b0652a42ea0f87dab6f403254ac02d140e2190aa927add276f427d",
+          "profileFingerprint": "sha256:34452c4a3870451cd83a33c532ee236426f973bb33e7fa1711c45171804bd674",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1",
+          "applicationCases": 2
+        }
+      },
+      "verdict": "REVISE",
+      "reason": "Case1 correctly explains negative cortisol feedback without negative concentrations. Case2 supplies only cortisol→glucose availability; that one-way link does not specify the second hormonal feedback loop which task and expected answer claim to explain. Add its actual hormone/target/feedback model and ask for a bounded causal effect.",
+      "remedy": "Specify the second hormonal loop and its feedback with reviewed material, or require its independently justified construction with actual prerequisites; do not count the one-way Cortisol→glucose link as that loop.",
+      "activeChangeMade": false
+    },
+    {
+      "findingId": "B-N21-P-003",
+      "goalId": "a46cafde-7359-5249-8754-19aaa3174ba4",
+      "layer": "P",
+      "affectedFields": [
+        "profile.expectations.bounded-mechanism-and-transfer.essentialUnderstandingDe/En"
+      ],
+      "boundInputs": {
+        "currentWholeGoalSha256": "sha256:2e2ce97e4b9471e1acfaa9ab29c9151f9a0277b8bf3856eea80166473bb6cf71",
+        "proposedWholeGoalSha256": "sha256:0f5c928928838d8bcf4c9c5d490f263deef5bcda24ec49b54c10f604d76383b9",
+        "authorProfileObjectSha256": "sha256:eb35dae7558e73c7b8b5a4126dfd3253b7248432c69c7d6ab5d20fec9651d4c4",
+        "nativeInMemoryCandidateBinding": {
+          "goalId": "a46cafde-7359-5249-8754-19aaa3174ba4",
+          "goalFingerprint": "sha256:330d851a9dd67fa6671bb216c9f7bc8b101d3a379dd87fa94c98640e0f3dbae3",
+          "reviewInputFingerprint": "sha256:41b98ad7300f54dae4c59a80f630529cb8f6b26c5c07126d65cc3cfebcf2f89c",
+          "profileFingerprint": "sha256:1f26f482e3e975b627a9d0c2bc68a7e74ab9de38cae9f80dd358423611176924",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1",
+          "applicationCases": 2
+        }
+      },
+      "verdict": "REVISE",
+      "reason": "Both cases positively explain changed network output: strengthening A changes its effect, while a stronger inhibitory input can counter a local strengthening. The essential DE/EN text additionally contains internal review bookkeeping, which is not learner understanding and must be removed.",
+      "remedy": "Remove internal counting/unreviewed-goals language; retain scientific comparison of explanation levels and both positive network cases.",
+      "activeChangeMade": false
+    },
+    {
+      "findingId": "B-N21-D-001",
+      "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+      "layer": "description/source",
+      "affectedFields": [
+        "description",
+        "descriptionEn"
+      ],
+      "boundInputs": {
+        "currentWholeGoalSha256": "sha256:64d2ad3379efd8c7c9713f30587be8d64aa42912af565c624793d51f39ba31bf",
+        "proposedWholeGoalSha256": "sha256:64d2ad3379efd8c7c9713f30587be8d64aa42912af565c624793d51f39ba31bf",
+        "authorProfileObjectSha256": "sha256:35187aa8a5c7431b2f50794751e3f3ecfb1ae8e9c02f501d67682d75e03cf3b5",
+        "nativeInMemoryCandidateBinding": {
+          "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+          "goalFingerprint": "sha256:72335c0700212a217a03c03dbb5b97cfcd865cb92e02a0539385039a3b964810",
+          "reviewInputFingerprint": "sha256:ca91d278a992ee081e9e45a6a3da7e98df076973b3c9c4d93c29ff55711342b1",
+          "profileFingerprint": "sha256:ca853f290c3eb3bb3ccccf9a656ae998321fb9d8db3a9473d4d9f65513d7bbbe",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1",
+          "applicationCases": 2
+        }
+      },
+      "verdict": "REVISE",
+      "reason": "The unchanged claim to explain neurodegenerative diseases such as Alzheimer is broader than the HE principle/example requirement and the bounded models tested. Bind the text explicitly to principle-level supplied disorder models; disease-wide clinical explanation is not demonstrated.",
+      "remedy": "Bound the claim to explaining principle-level supplied neuronal disorder models and functional effects. Preserve the actual BY Depression and MS/Parkinson duties separately; do not replace them by Alzheimer.",
+      "activeChangeMade": false
+    }
+  ],
+  "primarySourceFindings": "thirty-three.he-by-primary-binding-judgments.json plus lower-source-audit/regional-primary-component-audit.json",
+  "entirePackageVerdict": "REVISE_BEFORE_SOURCE_SCOPE_ADOPTION"
+}

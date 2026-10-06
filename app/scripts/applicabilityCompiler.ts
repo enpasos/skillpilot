@@ -242,13 +242,16 @@ function loadSupportedJurisdictions(): SupportedJurisdiction[] {
 const SUPPORTED_JURISDICTIONS = loadSupportedJurisdictions()
 const SUPPORTED_JURISDICTION_SET = new Set<SupportedJurisdiction>(SUPPORTED_JURISDICTIONS)
 
-function getAllJsonFiles(dir: string, files: string[] = []): string[] {
+export function getAllJsonFiles(dir: string, files: string[] = []): string[] {
   const entries = readdirSync(dir, { withFileTypes: true })
     .sort((a, b) => a.name.localeCompare(b.name))
 
   for (const entry of entries) {
     const file = join(dir, entry.name)
     if (entry.isDirectory()) {
+      // Review inputs and historical snapshots are not live curriculum sources.
+      // Their explicit QA bindings are checked by the dedicated review tools.
+      if (entry.name === 'quality') continue
       getAllJsonFiles(file, files)
       continue
     }

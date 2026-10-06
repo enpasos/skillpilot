@@ -1,0 +1,29 @@
+/home/enpasos/projects/skillpilot/app/scripts/checkCurriculumMaturityFloors.ts:107
+  throw new Error([
+        ^
+
+
+Error: Curriculum maturity regression detected by canonical-gymnasium-maturity-floors-v1.
+Biologie [08a43a1b-d97e-522c-9dfa-c950a493364e]: current M1 is below protected floor M6
+  global CQR-003 fail: 11/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.
+    - DE-SH: 4 assigned atomic goal(s) without source-backed Lehrplan evidence
+    - DE-MV: 3 assigned atomic goal(s) without source-backed Lehrplan evidence
+    - DE-SN: 3 assigned atomic goal(s) without source-backed Lehrplan evidence
+    - DE-ST: 3 assigned atomic goal(s) without source-backed Lehrplan evidence
+    - DE-TH: 3 assigned atomic goal(s) without source-backed Lehrplan evidence
+    - DE-SH: 142/146 source-backed view atomic goal(s)
+    - DE-MV: 166/169 source-backed view atomic goal(s)
+    - DE-SN: 181/184 source-backed view atomic goal(s)
+    - DE-ST: 182/185 source-backed view atomic goal(s)
+    - DE-TH: 183/186 source-backed view atomic goal(s)
+  global CQR-501 warn: 7 active and 0 obsolete accepted applicability warning(s) need review; 1344 partial-only diagnostic finding(s) are non-blocking.
+    - non-blocking partial-only applicability diagnostics APV-202: 1344
+    - active warning type APV-203: 7
+    - diagnostic finding type APV-202: 1344
+Restore the fachliche quality gates or obtain an explicit product-owner decision before changing the protected floor.
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/checkCurriculumMaturityFloors.ts:107:9)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2

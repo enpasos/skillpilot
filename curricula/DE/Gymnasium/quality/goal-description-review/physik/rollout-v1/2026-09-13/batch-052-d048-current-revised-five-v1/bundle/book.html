@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik B052 – Aktuelle Modell- und Anwendungsziele</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Physik B052 – Aktuelle Modell- und Anwendungsziele</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>5 atomare Lernziele</dt><dd>12 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:07e975976ecd6cf91dd2775a586fadd365a892c81fa8fada8d110c11f68424c9</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-physics-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-6747d2e0bbbbd4b4358ff0fa" aria-label="Physik"><a href="#goal-6e7c35e0-7a38-5996-a42e-005038eff0db"><span class="toc-entry-label">Physik</span></a></h2>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-physics-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-546e47201fdf10d52f5a936c" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-6e7c35e0-7a38-5996-a42e-005038eff0db"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-e-phase" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-25f6161a11157cd3d11bdc8c" aria-label="Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen"><a href="#goal-1232febe-868a-4dac-b4c2-e35789434601"><span class="toc-entry-label">Einführungsphase:&#160;<wbr>Mechanik,&#160;<wbr>Gravitation,&#160;<wbr>Thermodynamik&#160;<wbr>und&#160;<wbr>Drehbewegungen</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-structure:physics-e2-newton-and-conservation" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-3abc206cadd2c11db2255314" aria-label="E.2 Newton&#39;sche Axiome und Erhaltungssätze"><a href="#goal-1232febe-868a-4dac-b4c2-e35789434601"><span class="toc-entry-label">E.2&#160;<wbr>Newton&#39;sche&#160;<wbr>Axiome&#160;<wbr>und&#160;<wbr>Erhaltungssätze</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-e9d616d8-685f-4129-a36f-dae7a280bae7" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-aa80cecbe8027f70cf8924a8" aria-label="Erhaltungssätze"><a href="#goal-1232febe-868a-4dac-b4c2-e35789434601"><span class="toc-entry-label">Erhaltungssätze</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:5" data-chapter-id="structure:canonical-goal-912febf0-754a-4409-9f8b-7d66810edc08" data-chapter-depth="5">
+          <h6 class="toc-entry-heading" id="chapter-65c846b20142eb9313514862" aria-label="Impuls"><a href="#goal-1232febe-868a-4dac-b4c2-e35789434601"><span class="toc-entry-label">Impuls</span></a></h6>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-q4" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-2d62da14bfd408e36bddc43b" aria-label="Q4 Struktur von Materie, Raum und Zeit"><a href="#goal-6e7c35e0-7a38-5996-a42e-005038eff0db"><span class="toc-entry-label">Q4&#160;<wbr>Struktur&#160;<wbr>von&#160;<wbr>Materie,&#160;<wbr>Raum&#160;<wbr>und&#160;<wbr>Zeit</span></a></h4>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-72c2bf5d-c62b-5744-9971-4c117f2a432d" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-e7579a8a9eb50a1caf8b3c4f" aria-label="Kernphysik"><a href="#goal-6e7c35e0-7a38-5996-a42e-005038eff0db"><span class="toc-entry-label">Kernphysik</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-620d4320-6b93-500b-8a62-86d02b1ed1f0" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-df06eca134857aef0b9af082" aria-label="Festkörperphysik"><a href="#goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec"><span class="toc-entry-label">Festkörperphysik</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-bundesland-supplements" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-dfefd5ef67d7bfcb62fbc0f8" aria-label="Bundeslandspezifische Ergänzungen"><a href="#goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"><span class="toc-entry-label">Bundeslandspezifische&#160;<wbr>Ergänzungen</span></a></h3>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:goal-book-supplement-crossstage" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-184fe7fcafd22ffbec8cd5c0" aria-label="Stufenübergreifend"><a href="#goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"><span class="toc-entry-label">Stufenübergreifend</span></a></h4>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:goal-book-supplement-CrossStage-Sonstiges" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-4b9986bc08048aa19ec18f4d" aria-label="Weitere fachliche Ziele"><a href="#goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"><span class="toc-entry-label">Weitere&#160;<wbr>fachliche&#160;<wbr>Ziele</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-6e7c35e0-7a38-5996-a42e-005038eff0db" data-goal-id="6e7c35e0-7a38-5996-a42e-005038eff0db" data-page-number="1" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-72c2bf5d-c62b-5744-9971-4c117f2a432d" aria-labelledby="goal-6e7c35e0-7a38-5996-a42e-005038eff0db-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6e7c35e0-7a38-5996-a42e-005038eff0db-title"><a class="goal-self-link" href="#goal-6e7c35e0-7a38-5996-a42e-005038eff0db">Potenzialtopfmodell für Kerne</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6e7c35e0-7a38-5996-a42e-005038eff0db</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-e7579a8a9eb50a1caf8b3c4f">Kernphysik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:52b36f88813860a55022792a47166c691051af71c0dc864f124fb8908fc34388" data-rendered-digest="sha256:685e0df6ea076186e456eb928e3e42e1afcaaf66a170eb772544aba921d1ac00" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/6e7c35e0-7a38-5996-a42e-005038eff0db/6e7c35e0-7a38-5996-a42e-005038eff0db.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Potenzialtopfmodell für Kerne&quot;. Die lernende Person kann im vereinfachten Potenzialtopfmodell eines Kerns die Bindungsenergie eines Teilchens als Energieabstand seines gebundenen Zustands zur freien Schwelle qualitativ erklären und von der Topftiefe unterscheiden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6e7c35e0-7a38-5996-a42e-005038eff0db-description-heading">
+        <p class="section-heading" id="goal-6e7c35e0-7a38-5996-a42e-005038eff0db-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann im vereinfachten Potenzialtopfmodell eines Kerns die Bindungsenergie eines Teilchens als Energieabstand seines gebundenen Zustands zur freien Schwelle qualitativ erklären und von der Topftiefe unterscheiden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6e7c35e0-7a38-5996-a42e-005038eff0db" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6e7c35e0-7a38-5996-a42e-005038eff0db-requires-heading">
+          <p class="section-heading" id="goal-6e7c35e0-7a38-5996-a42e-005038eff0db-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-6e7c35e0-7a38-5996-a42e-005038eff0db-reverse-heading">
+          <p class="section-heading" id="goal-6e7c35e0-7a38-5996-a42e-005038eff0db-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-6e7c35e0-7a38-5996-a42e-005038eff0db-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6e7c35e0-7a38-5996-a42e-005038eff0db-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-51bc5513-6879-548f-b19a-9746b667f1a3" rel="noreferrer noopener"><span>Wellenfunktion und Wahrscheinlichkeitsdeutung</span> <code>51bc5513-6879-548f-b19a-9746b667f1a3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-cde9b548-2cf4-59ad-b5d4-a71872afbe56" rel="noreferrer noopener"><span>Bindungsenergie und Massendefekt</span> <code>cde9b548-2cf4-59ad-b5d4-a71872afbe56</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-6e7c35e0-7a38-5996-a42e-005038eff0db-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6e7c35e0-7a38-5996-a42e-005038eff0db-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5a5bc118-4420-5bb7-94c3-67837f2ce0dd" rel="noreferrer noopener"><span>Kernreaktionen und Kernmodelle</span> <code>5a5bc118-4420-5bb7-94c3-67837f2ce0dd</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 5</span>
+      <span>Buch-Digest <code>sha256:07e975976ecd6cf91dd2775a586fadd365a892c81fa8fada8d110c11f68424c9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:473cf50124e52c45d3d3f372adeaa2b20995613282b325f9b4f49258a56f52e8</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-052-d048-current-revised-five-v1-20260913&amp;edition=curricular-atomic-v1&amp;goalId=6e7c35e0-7a38-5996-a42e-005038eff0db&amp;goalFingerprint=sha256%3A473cf50124e52c45d3d3f372adeaa2b20995613282b325f9b4f49258a56f52e8&amp;pageFingerprint=sha256%3A0e8cde7a16e452597807d7fed9df75a18304041ec1c7a4dd7223931e41b431f8&amp;bookDigest=sha256%3A07e975976ecd6cf91dd2775a586fadd365a892c81fa8fada8d110c11f68424c9&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec" data-goal-id="853dbe54-85b0-59ab-8f3a-000c2b7746ec" data-page-number="2" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-620d4320-6b93-500b-8a62-86d02b1ed1f0" aria-labelledby="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-title"><a class="goal-self-link" href="#goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec">Supraleitung qualitativ verstehen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>853dbe54-85b0-59ab-8f3a-000c2b7746ec</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-df06eca134857aef0b9af082">Festkörperphysik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9da94522e0bd0164aede4797bf15b03624cb1d47f3ef05fe80c0092960201776" data-rendered-digest="sha256:ffa245757db7a9baaabab4c31ea4698c782c4492985186841b226963a44dc8ce" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/853dbe54-85b0-59ab-8f3a-000c2b7746ec/853dbe54-85b0-59ab-8f3a-000c2b7746ec.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Supraleitung qualitativ verstehen&quot;. Die lernende Person kann das Verschwinden des elektrischen Gleichstromwiderstands unterhalb einer kritischen Temperatur und die Verdrängung eines Magnetfelds im Meißner-Zustand qualitativ beschreiben und damit einfache Anwendungen und Beobachtungen der Supraleitung erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-description-heading">
+        <p class="section-heading" id="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Verschwinden des elektrischen Gleichstromwiderstands unterhalb einer kritischen Temperatur und die Verdrängung eines Magnetfelds im Meißner-Zustand qualitativ beschreiben und damit einfache Anwendungen und Beobachtungen der Supraleitung erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>HE:</strong> Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-requires-heading">
+          <p class="section-heading" id="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-reverse-heading">
+          <p class="section-heading" id="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-df010b2b-b182-5f7e-bbe4-49b72e48c27a" rel="noreferrer noopener"><span>Bändermodell und Dotierung</span> <code>df010b2b-b182-5f7e-bbe4-49b72e48c27a</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-853dbe54-85b0-59ab-8f3a-000c2b7746ec-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0f5346d6-de1b-5e38-aaba-68db205e594b" rel="noreferrer noopener"><span>Festkoerperphysik und Halbleiterelektronik</span> <code>0f5346d6-de1b-5e38-aaba-68db205e594b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 5</span>
+      <span>Buch-Digest <code>sha256:07e975976ecd6cf91dd2775a586fadd365a892c81fa8fada8d110c11f68424c9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:41135a7613d5b492595c981184fa670acc5e4184cad76445824a7c03e07332a3</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-052-d048-current-revised-five-v1-20260913&amp;edition=curricular-atomic-v1&amp;goalId=853dbe54-85b0-59ab-8f3a-000c2b7746ec&amp;goalFingerprint=sha256%3A41135a7613d5b492595c981184fa670acc5e4184cad76445824a7c03e07332a3&amp;pageFingerprint=sha256%3Acdc1d321941dacf1b3428190cee96e8bbd0ac46ce13cb35ccce1a79cd05440f3&amp;bookDigest=sha256%3A07e975976ecd6cf91dd2775a586fadd365a892c81fa8fada8d110c11f68424c9&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1232febe-868a-4dac-b4c2-e35789434601" data-goal-id="1232febe-868a-4dac-b4c2-e35789434601" data-page-number="3" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-e-phase structure:canonical-structure:physics-e2-newton-and-conservation structure:canonical-goal-e9d616d8-685f-4129-a36f-dae7a280bae7 structure:canonical-goal-912febf0-754a-4409-9f8b-7d66810edc08" aria-labelledby="goal-1232febe-868a-4dac-b4c2-e35789434601-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1232febe-868a-4dac-b4c2-e35789434601-title"><a class="goal-self-link" href="#goal-1232febe-868a-4dac-b4c2-e35789434601">Unfallphysik: Kraftstoß und Knautschzone</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1232febe-868a-4dac-b4c2-e35789434601</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-25f6161a11157cd3d11bdc8c">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-3abc206cadd2c11db2255314">E.2 Newton&#39;sche Axiome und Erhaltungssätze</a></li><li><a href="#chapter-aa80cecbe8027f70cf8924a8">Erhaltungssätze</a></li><li><a href="#chapter-65c846b20142eb9313514862">Impuls</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:00df3f01c0445d45b17e946502103b98508c57a16c6440d4f3cb57067feadc33" data-rendered-digest="sha256:4dbcb755fb5b0f0915543e9c4f6fa7097aa64d6d659fbd95ce1107c73a0052cd" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/1232febe-868a-4dac-b4c2-e35789434601/1232febe-868a-4dac-b4c2-e35789434601.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Unfallphysik: Kraftstoß und Knautschzone&quot;. Die lernende Person kann mit der Impulsänderung und der Stoßdauer erklären, wie Knautschzonen die mittlere Kraft bei einem Verkehrsunfall verringern, und die Bedeutung von Sicherheitsabständen für die Vermeidung oder Abschwächung eines Aufpralls begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1232febe-868a-4dac-b4c2-e35789434601-description-heading">
+        <p class="section-heading" id="goal-1232febe-868a-4dac-b4c2-e35789434601-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei gleicher Impulsänderung mit der verlängerten Stoßdauer erklären, wie eine Knautschzone den Betrag der mittleren Kraft bei einem Verkehrsunfall verringert.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-1232febe-868a-4dac-b4c2-e35789434601" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1232febe-868a-4dac-b4c2-e35789434601-requires-heading">
+          <p class="section-heading" id="goal-1232febe-868a-4dac-b4c2-e35789434601-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-1232febe-868a-4dac-b4c2-e35789434601-reverse-heading">
+          <p class="section-heading" id="goal-1232febe-868a-4dac-b4c2-e35789434601-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-1232febe-868a-4dac-b4c2-e35789434601-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1232febe-868a-4dac-b4c2-e35789434601-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e790de73-f8e5-4027-bc05-9f12a0e8c9cb" rel="noreferrer noopener"><span>Kraftstoß</span> <code>e790de73-f8e5-4027-bc05-9f12a0e8c9cb</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-1232febe-868a-4dac-b4c2-e35789434601-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1232febe-868a-4dac-b4c2-e35789434601-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7c0b94b9-2af7-59d4-bfae-278a3418f6a8" rel="noreferrer noopener"><span>Kontextaufgaben zu Sport, Verkehr und Sicherheit lösen</span> <code>7c0b94b9-2af7-59d4-bfae-278a3418f6a8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 5</span>
+      <span>Buch-Digest <code>sha256:07e975976ecd6cf91dd2775a586fadd365a892c81fa8fada8d110c11f68424c9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:dd77eeac6a4345492886cb79ae9f45899bfa340766b43b4332dc209815a0f08b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-052-d048-current-revised-five-v1-20260913&amp;edition=curricular-atomic-v1&amp;goalId=1232febe-868a-4dac-b4c2-e35789434601&amp;goalFingerprint=sha256%3Add77eeac6a4345492886cb79ae9f45899bfa340766b43b4332dc209815a0f08b&amp;pageFingerprint=sha256%3Aa5968ffeebf335303527172f3dbb40ba374ab8b39dd69740cc049bf6bd101811&amp;bookDigest=sha256%3A07e975976ecd6cf91dd2775a586fadd365a892c81fa8fada8d110c11f68424c9&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2" data-goal-id="89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2" data-page-number="4" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-crossstage structure:goal-book-supplement-CrossStage-Sonstiges" aria-labelledby="goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2-title"><a class="goal-self-link" href="#goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2">Waagerechter Wurf analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-184fe7fcafd22ffbec8cd5c0">Stufenübergreifend</a></li><li><a href="#chapter-4b9986bc08048aa19ec18f4d">Weitere fachliche Ziele</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:63ff949fccec93b2fd3da1463ad62acd9d9ee6adbd4f775bc25bc1197b140342" data-rendered-digest="sha256:e03393b63ef62360bf3d65f05db493f3b07979d13ac5eea4dea42b6171e82792" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2.png" alt="Didaktische Visualisierung zum Lernziel &quot;Waagerechter Wurf analysieren&quot;. Die lernende Person kann den waagerechten Wurf experimentell untersuchen, bei vernachlässigbarem Luftwiderstand und konstanter Fallbeschleunigung als Überlagerung gleichförmiger horizontaler und gleichmäßig beschleunigter vertikaler Bewegung deuten und die Flugbahn im x-y-Diagramm darstellen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2-description-heading">
+        <p class="section-heading" id="goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den waagerechten Wurf experimentell untersuchen, bei vernachlässigbarem Luftwiderstand und konstanter Fallbeschleunigung als Überlagerung gleichförmiger horizontaler und gleichmäßig beschleunigter vertikaler Bewegung deuten und die Flugbahn im x-y-Diagramm darstellen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. I · G9</li><li class="applicability-more">+ 3 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2-requires-heading">
+          <p class="section-heading" id="goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2-reverse-heading">
+          <p class="section-heading" id="goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d6dc0e02-831d-4894-a61a-852bcc74f147" rel="noreferrer noopener"><span>Modellierung und Idealisierung von Bewegungen</span> <code>d6dc0e02-831d-4894-a61a-852bcc74f147</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-68c90ba6-c438-463c-9a53-cf61062d416a" rel="noreferrer noopener"><span>Bezugssysteme und Geschwindigkeitsüberlagerung</span> <code>68c90ba6-c438-463c-9a53-cf61062d416a</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-2b9e565f-d9b4-5e23-b5b7-b7977cecff06" rel="noreferrer noopener"><span>Mehrphasenbewegung und Modellprüfung</span> <code>2b9e565f-d9b4-5e23-b5b7-b7977cecff06</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-dd99528a-bae5-5b78-89e6-c6092c927f8d" rel="noreferrer noopener"><span>Mehrschrittige Bewegungsmodelle mit Reibung und Chaos analysieren</span> <code>dd99528a-bae5-5b78-89e6-c6092c927f8d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-dfd2628f-b44e-51b3-86e8-99158861be8c" rel="noreferrer noopener"><span>Prüfungsaufgabe: Wurf- und Bremsbewegungen modellieren</span> <code>dfd2628f-b44e-51b3-86e8-99158861be8c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-fbecbd60-5db3-51e8-94be-d66b066ffa06" rel="noreferrer noopener"><span>Schiefen Wurf beschreiben</span> <code>fbecbd60-5db3-51e8-94be-d66b066ffa06</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 5</span>
+      <span>Buch-Digest <code>sha256:07e975976ecd6cf91dd2775a586fadd365a892c81fa8fada8d110c11f68424c9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d589a725624dabbd81123d28bee9c6dd653735297c2a93a044d9165583e7616c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-052-d048-current-revised-five-v1-20260913&amp;edition=curricular-atomic-v1&amp;goalId=89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2&amp;goalFingerprint=sha256%3Ad589a725624dabbd81123d28bee9c6dd653735297c2a93a044d9165583e7616c&amp;pageFingerprint=sha256%3A31610bf44516dde836512f25e12a289d5c15ed17135adcdfaf6e354b408b1510&amp;bookDigest=sha256%3A07e975976ecd6cf91dd2775a586fadd365a892c81fa8fada8d110c11f68424c9&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-12260012-cf04-5409-b57d-f5b3a46d9126" data-goal-id="12260012-cf04-5409-b57d-f5b3a46d9126" data-page-number="5" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-crossstage structure:goal-book-supplement-CrossStage-Sonstiges" aria-labelledby="goal-12260012-cf04-5409-b57d-f5b3a46d9126-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-12260012-cf04-5409-b57d-f5b3a46d9126-title"><a class="goal-self-link" href="#goal-12260012-cf04-5409-b57d-f5b3a46d9126">Fallbewegung mit Luftwiderstand und Grenzgeschwindigkeit</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>12260012-cf04-5409-b57d-f5b3a46d9126</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-184fe7fcafd22ffbec8cd5c0">Stufenübergreifend</a></li><li><a href="#chapter-4b9986bc08048aa19ec18f4d">Weitere fachliche Ziele</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2b74e2dcdfe46796647dd106e6f7dee816f9afa182c570bcf06d936a7bbbea33" data-rendered-digest="sha256:ed0dd13b7fff350893ee146b3071caf1f0e75f37287e4ac66470fdee2ef0775b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/12260012-cf04-5409-b57d-f5b3a46d9126/12260012-cf04-5409-b57d-f5b3a46d9126.png" alt="Didaktische Visualisierung zum Lernziel &quot;Fallbewegung mit Luftwiderstand und Grenzgeschwindigkeit&quot;. Die lernende Person kann eine Fallbewegung mit Luftwiderstand mithilfe einfacher Modelle qualitativ beschreiben und bei vernachlässigbarem Auftrieb die Grenzgeschwindigkeit aus dem Gleichgewicht von Gewichtskraft und Luftwiderstand erklären.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-12260012-cf04-5409-b57d-f5b3a46d9126-description-heading">
+        <p class="section-heading" id="goal-12260012-cf04-5409-b57d-f5b3a46d9126-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann eine Fallbewegung mit Luftwiderstand mithilfe einfacher Modelle qualitativ beschreiben und bei vernachlässigbarem Auftrieb die Grenzgeschwindigkeit aus dem Gleichgewicht von Gewichtskraft und Luftwiderstand erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BW:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-12260012-cf04-5409-b57d-f5b3a46d9126" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-12260012-cf04-5409-b57d-f5b3a46d9126-requires-heading">
+          <p class="section-heading" id="goal-12260012-cf04-5409-b57d-f5b3a46d9126-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-12260012-cf04-5409-b57d-f5b3a46d9126-reverse-heading">
+          <p class="section-heading" id="goal-12260012-cf04-5409-b57d-f5b3a46d9126-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-12260012-cf04-5409-b57d-f5b3a46d9126-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-12260012-cf04-5409-b57d-f5b3a46d9126-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-09029573-864f-40ca-bf8a-cee7bf6dcb73" rel="noreferrer noopener"><span>Freier Fall experimentell untersuchen</span> <code>09029573-864f-40ca-bf8a-cee7bf6dcb73</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5f289cdc-fda1-4058-b44f-041ba1398e79" rel="noreferrer noopener"><span>Grundgleichung der Mechanik anwenden</span> <code>5f289cdc-fda1-4058-b44f-041ba1398e79</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-12260012-cf04-5409-b57d-f5b3a46d9126-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-12260012-cf04-5409-b57d-f5b3a46d9126-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026" rel="noreferrer noopener"><span>E-Phase-Klausuraufgaben Physik selbstständig lösen</span> <code>7f83e25c-38f7-5ac2-8f9c-ec54eeef1026</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b7e366e2-8323-5171-83a1-1f536c2062d8" rel="noreferrer noopener"><span>Prüfungsaufgabe: Einen Fall mit Luftwiderstand modellieren</span> <code>b7e366e2-8323-5171-83a1-1f536c2062d8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-dd99528a-bae5-5b78-89e6-c6092c927f8d" rel="noreferrer noopener"><span>Mehrschrittige Bewegungsmodelle mit Reibung und Chaos analysieren</span> <code>dd99528a-bae5-5b78-89e6-c6092c927f8d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-761a0879-fc15-5d0c-a2b7-2b439efecd5b" rel="noreferrer noopener"><span>Numerische Simulation von Bewegungen</span> <code>761a0879-fc15-5d0c-a2b7-2b439efecd5b</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 5</span>
+      <span>Buch-Digest <code>sha256:07e975976ecd6cf91dd2775a586fadd365a892c81fa8fada8d110c11f68424c9</code></span>
+      <span>Ziel-Fingerprint <code>sha256:76c34dd624131915273a0a6f5ba0cf883c50c6492740a1796f41c5c66bfa369a</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physik-rollout-v1-batch-052-d048-current-revised-five-v1-20260913&amp;edition=curricular-atomic-v1&amp;goalId=12260012-cf04-5409-b57d-f5b3a46d9126&amp;goalFingerprint=sha256%3A76c34dd624131915273a0a6f5ba0cf883c50c6492740a1796f41c5c66bfa369a&amp;pageFingerprint=sha256%3Ab72f108561805685591036eb8d7a1e4057c2c4fe9cb670f76bac0abd1f95eb5e&amp;bookDigest=sha256%3A07e975976ecd6cf91dd2775a586fadd365a892c81fa8fada8d110c11f68424c9&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

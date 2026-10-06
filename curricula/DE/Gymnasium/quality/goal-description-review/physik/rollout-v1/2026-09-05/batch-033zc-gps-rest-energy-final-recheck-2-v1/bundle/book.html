@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik B033zc – GPS und Ruheenergie: abschließende Beschreibungsprüfung</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Physik B033zc – GPS und Ruheenergie: abschließende Beschreibungsprüfung</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>2 atomare Lernziele</dt><dd>4 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:1f675da9a0451115db11e9cf3400179f1f330a9e9c7e9d66d05262166d83493b</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-physics-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-6747d2e0bbbbd4b4358ff0fa" aria-label="Physik"><a href="#goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e"><span class="toc-entry-label">Physik</span></a></h2>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-physics-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-546e47201fdf10d52f5a936c" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-q4" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-2d62da14bfd408e36bddc43b" aria-label="Q4 Struktur von Materie, Raum und Zeit"><a href="#goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e"><span class="toc-entry-label">Q4&#160;<wbr>Struktur&#160;<wbr>von&#160;<wbr>Materie,&#160;<wbr>Raum&#160;<wbr>und&#160;<wbr>Zeit</span></a></h4>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-157c404a-e14b-598a-9389-6924f8f9262e" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-b11db4fba365d197361f5a29" aria-label="Spezielle Relativitätstheorie"><a href="#goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e"><span class="toc-entry-label">Spezielle&#160;<wbr>Relativitätstheorie</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e" data-goal-id="a9169a74-de19-54a9-a8ac-a2ce43c7342e" data-page-number="1" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-157c404a-e14b-598a-9389-6924f8f9262e" aria-labelledby="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-title"><a class="goal-self-link" href="#goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e">GPS und Relativitätstheorie</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a9169a74-de19-54a9-a8ac-a2ce43c7342e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-b11db4fba365d197361f5a29">Spezielle Relativitätstheorie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8229e3ed8c6b93b9519ea7cc6d9fd2c7d68238a845f75c32aea5a8ce32c2407e" data-rendered-digest="sha256:20f43c29bce9eab3d0d54f3a3042dda14d4ebbaf095e57e9cfc2416775295e95" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/a9169a74-de19-54a9-a8ac-a2ce43c7342e/a9169a74-de19-54a9-a8ac-a2ce43c7342e.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;GPS und Relativitätstheorie&quot;. Die lernende Person kann qualitativ erklären, wie Bewegung und Gravitation den Gang von GPS-Satellitenuhren gegenüber einer erdgebundenen Zeitreferenz beeinflussen und warum relativistische Zeitkorrekturen für eine präzise Positionsbestimmung erforderlich sind.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-description-heading">
+        <p class="section-heading" id="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann qualitativ erklären, wie Bewegung und Gravitation den Gang von GPS-Satellitenuhren gegenüber einer erdgebundenen Zeitreferenz beeinflussen und warum relativistische Zeitkorrekturen für eine präzise Positionsbestimmung erforderlich sind.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-requires-heading">
+          <p class="section-heading" id="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-reverse-heading">
+          <p class="section-heading" id="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6" rel="noreferrer noopener"><span>Zeitdilatation erläutern</span> <code>19aef2ed-eb46-55b1-9486-ee83f7520bb6</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-f532c772-7b6e-59aa-ad65-e0eeafc3767f" rel="noreferrer noopener"><span>Relativitaet und Raumzeit</span> <code>f532c772-7b6e-59aa-ad65-e0eeafc3767f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 2</span>
+      <span>Buch-Digest <code>sha256:1f675da9a0451115db11e9cf3400179f1f330a9e9c7e9d66d05262166d83493b</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c62c8bf24c0f1d8064d0f863d8e82e99654ee8b2f80c4bb80d3e444a4bf95cfc</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b033zc-gps-rest-energy-final-recheck-2-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=a9169a74-de19-54a9-a8ac-a2ce43c7342e&amp;goalFingerprint=sha256%3Ac62c8bf24c0f1d8064d0f863d8e82e99654ee8b2f80c4bb80d3e444a4bf95cfc&amp;pageFingerprint=sha256%3A3dabc0e1548dbf1116f9f24a1f3fe002b031391815a8ad128cd76d50759d466b&amp;bookDigest=sha256%3A1f675da9a0451115db11e9cf3400179f1f330a9e9c7e9d66d05262166d83493b&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a" data-goal-id="bfea7a23-1ce1-4a42-badd-1fc9bf30124a" data-page-number="2" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-157c404a-e14b-598a-9389-6924f8f9262e" aria-labelledby="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-title"><a class="goal-self-link" href="#goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a">Masse-Energie-Äquivalenz einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>bfea7a23-1ce1-4a42-badd-1fc9bf30124a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-b11db4fba365d197361f5a29">Spezielle Relativitätstheorie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:acbbb9f0592b4bb5102e8a38254215219c4a015b95d72c38abe6f07cb1b1fcbc" data-rendered-digest="sha256:4fdac0ea2152ed5d6043167f7ccf6eaf144f8f38da1d0e02909b693c7333dc16" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/bfea7a23-1ce1-4a42-badd-1fc9bf30124a/bfea7a23-1ce1-4a42-badd-1fc9bf30124a.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Masse-Energie-Äquivalenz einordnen&quot;. Die lernende Person kann die Masse-Energie-Äquivalenz E₀ = m₀c² als Beziehung zwischen Ruheenergie und invarianter Masse fachlich einordnen und an qualitativen Beispielen deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-description-heading">
+        <p class="section-heading" id="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Masse-Energie-Äquivalenz E₀ = m₀c² als Beziehung zwischen Ruheenergie und invarianter Masse fachlich einordnen und an qualitativen Beispielen deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-requires-heading">
+          <p class="section-heading" id="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-reverse-heading">
+          <p class="section-heading" id="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6" rel="noreferrer noopener"><span>Zeitdilatation erläutern</span> <code>19aef2ed-eb46-55b1-9486-ee83f7520bb6</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 2</span>
+      <span>Buch-Digest <code>sha256:1f675da9a0451115db11e9cf3400179f1f330a9e9c7e9d66d05262166d83493b</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6151dd3896ba664ec5f3ff9bbc2bd445c055bc6730ee05af402191daca85234c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b033zc-gps-rest-energy-final-recheck-2-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=bfea7a23-1ce1-4a42-badd-1fc9bf30124a&amp;goalFingerprint=sha256%3A6151dd3896ba664ec5f3ff9bbc2bd445c055bc6730ee05af402191daca85234c&amp;pageFingerprint=sha256%3Ae382bfea8c013f1c703193f94bffa4295caf1881e63c0eea6dfc620b29716486&amp;bookDigest=sha256%3A1f675da9a0451115db11e9cf3400179f1f330a9e9c7e9d66d05262166d83493b&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik B033z – Finale Nachprüfung der Zeitdilatation/Längenkontraktion- und Lorentz/Geschwindigkeitsaddition-Splits samt direkt veralteter curricularAtomic-Kontexte</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Physik B033z – Finale Nachprüfung der Zeitdilatation/Längenkontraktion- und Lorentz/Geschwindigkeitsaddition-Splits samt direkt veralteter curricularAtomic-Kontexte</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>9 atomare Lernziele</dt><dd>4 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-physics-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-6747d2e0bbbbd4b4358ff0fa" aria-label="Physik"><a href="#goal-a684bec1-ba59-59d0-98d2-4ca37236f64c"><span class="toc-entry-label">Physik</span></a></h2>
+          <span class="toc-entry-meta"><span>9 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-physics-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-546e47201fdf10d52f5a936c" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-a684bec1-ba59-59d0-98d2-4ca37236f64c"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>9 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:physics-q4" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-2d62da14bfd408e36bddc43b" aria-label="Q4 Struktur von Materie, Raum und Zeit"><a href="#goal-a684bec1-ba59-59d0-98d2-4ca37236f64c"><span class="toc-entry-label">Q4&#160;<wbr>Struktur&#160;<wbr>von&#160;<wbr>Materie,&#160;<wbr>Raum&#160;<wbr>und&#160;<wbr>Zeit</span></a></h4>
+          <span class="toc-entry-meta"><span>9 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-157c404a-e14b-598a-9389-6924f8f9262e" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-b11db4fba365d197361f5a29" aria-label="Spezielle Relativitätstheorie"><a href="#goal-a684bec1-ba59-59d0-98d2-4ca37236f64c"><span class="toc-entry-label">Spezielle&#160;<wbr>Relativitätstheorie</span></a></h5>
+          <span class="toc-entry-meta"><span>9 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c" data-goal-id="a684bec1-ba59-59d0-98d2-4ca37236f64c" data-page-number="1" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-157c404a-e14b-598a-9389-6924f8f9262e" aria-labelledby="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-title"><a class="goal-self-link" href="#goal-a684bec1-ba59-59d0-98d2-4ca37236f64c">Relativitätspostulate formulieren und erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a684bec1-ba59-59d0-98d2-4ca37236f64c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-b11db4fba365d197361f5a29">Spezielle Relativitätstheorie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1d85951d5c0900e51d791a3e7eda6948af957d5b14b5346041f5769fad2717e2" data-rendered-digest="sha256:c3914f35d42054a832cb2fea7c06d63dd0361b07582fea0ae7f3c60ea7f32b2f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/a684bec1-ba59-59d0-98d2-4ca37236f64c/a684bec1-ba59-59d0-98d2-4ca37236f64c.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Relativitätspostulate formulieren und erläutern&quot;. Die lernende Person kann das Relativitätsprinzip und die Invarianz der Lichtgeschwindigkeit als Postulate der speziellen Relativitätstheorie formulieren und ihre Bedeutung für physikalische Beschreibungen in Inertialsystemen erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-description-heading">
+        <p class="section-heading" id="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Relativitätsprinzip und die Invarianz der Lichtgeschwindigkeit als Postulate der speziellen Relativitätstheorie formulieren und ihre Bedeutung für physikalische Beschreibungen in Inertialsystemen erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a684bec1-ba59-59d0-98d2-4ca37236f64c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-requires-heading">
+          <p class="section-heading" id="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-reverse-heading">
+          <p class="section-heading" id="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6"><span>Zeitdilatation erläutern</span><code>19aef2ed-eb46-55b1-9486-ee83f7520bb6</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-0c305cf9-3923-51cf-a9ae-5849edc99c9f"><span>Längenkontraktion erläutern</span><code>0c305cf9-3923-51cf-a9ae-5849edc99c9f</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-57ec031c-9a91-5331-81a7-6ef900f7c63e"><span>Lorentztransformationen anwenden</span><code>57ec031c-9a91-5331-81a7-6ef900f7c63e</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-2239cb67-82cb-585f-ab82-e1f2510eb4f7"><span>Relativistische Geschwindigkeitsaddition anwenden</span><code>2239cb67-82cb-585f-ab82-e1f2510eb4f7</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a684bec1-ba59-59d0-98d2-4ca37236f64c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-266b6cf8-d49d-5197-862c-9998fcf179a5" rel="noreferrer noopener"><span>Lernkarten - Q4</span> <code>266b6cf8-d49d-5197-862c-9998fcf179a5</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a08e33db-d821-457b-86dd-870e7648c5f4" rel="noreferrer noopener"><span>Einstein-Synchronisation erläutern</span> <code>a08e33db-d821-457b-86dd-870e7648c5f4</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 9</span>
+      <span>Buch-Digest <code>sha256:695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3a8fa9754acbf5657b47f85f8e78a7b8c627116bebd6b63a9eb830479179f784</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b033z-relativity-final-splits-current-recheck-9-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=a684bec1-ba59-59d0-98d2-4ca37236f64c&amp;goalFingerprint=sha256%3A3a8fa9754acbf5657b47f85f8e78a7b8c627116bebd6b63a9eb830479179f784&amp;pageFingerprint=sha256%3A5f183afff92faef20f04631bffa1ba67beb06da0e3ded74cd7fba5a8b77944a3&amp;bookDigest=sha256%3A695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6" data-goal-id="19aef2ed-eb46-55b1-9486-ee83f7520bb6" data-page-number="2" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-157c404a-e14b-598a-9389-6924f8f9262e" aria-labelledby="goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6-title"><a class="goal-self-link" href="#goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6">Zeitdilatation erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>19aef2ed-eb46-55b1-9486-ee83f7520bb6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-b11db4fba365d197361f5a29">Spezielle Relativitätstheorie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6deadf30bfcc31b0248499633658df381af2b35a81a2003ca9f26bfcaae1470d" data-rendered-digest="sha256:096a3d485bc4ded0fabeb74206c4a1cd7f3022c18547fbf9eb830b20bd5b2ca7" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/19aef2ed-eb46-55b1-9486-ee83f7520bb6/19aef2ed-eb46-55b1-9486-ee83f7520bb6.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Zeitdilatation erläutern&quot;. Die lernende Person kann Zeitdilatation mithilfe einfacher Beispiele und Gedankenexperimente erläutern und zugehörige experimentelle Nachweise qualitativ diskutieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6-description-heading">
+        <p class="section-heading" id="goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Zeitdilatation mithilfe einfacher Beispiele und Gedankenexperimente erläutern und zugehörige experimentelle Nachweise qualitativ diskutieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6-requires-heading">
+          <p class="section-heading" id="goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a684bec1-ba59-59d0-98d2-4ca37236f64c"><span>Relativitätspostulate formulieren und erläutern</span><code>a684bec1-ba59-59d0-98d2-4ca37236f64c</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6-reverse-heading">
+          <p class="section-heading" id="goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e"><span>GPS und Relativitätstheorie</span><code>a9169a74-de19-54a9-a8ac-a2ce43c7342e</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-6ebb6182-f221-5f4c-b112-4ac72b104321"><span>Minkowski-Diagramme nutzen</span><code>6ebb6182-f221-5f4c-b112-4ac72b104321</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-79da5c34-86b2-5c10-9726-9de886ccef7d"><span>Geschwindigkeitsabhängige „relativistische Masse“ herleiten und einordnen</span><code>79da5c34-86b2-5c10-9726-9de886ccef7d</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a"><span>Masse-Energie-Äquivalenz einordnen</span><code>bfea7a23-1ce1-4a42-badd-1fc9bf30124a</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-f532c772-7b6e-59aa-ad65-e0eeafc3767f" rel="noreferrer noopener"><span>Relativitaet und Raumzeit</span> <code>f532c772-7b6e-59aa-ad65-e0eeafc3767f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 9</span>
+      <span>Buch-Digest <code>sha256:695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca</code></span>
+      <span>Ziel-Fingerprint <code>sha256:87cdce8484cb29c9c2c214592718686428a03a02061b4f6c45d6836306435b7b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b033z-relativity-final-splits-current-recheck-9-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=19aef2ed-eb46-55b1-9486-ee83f7520bb6&amp;goalFingerprint=sha256%3A87cdce8484cb29c9c2c214592718686428a03a02061b4f6c45d6836306435b7b&amp;pageFingerprint=sha256%3A844e532ceb44cdbb3fd9b536d29ed4699f6161dcb624afef86d7f1e638539a4d&amp;bookDigest=sha256%3A695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0c305cf9-3923-51cf-a9ae-5849edc99c9f" data-goal-id="0c305cf9-3923-51cf-a9ae-5849edc99c9f" data-page-number="3" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-157c404a-e14b-598a-9389-6924f8f9262e" aria-labelledby="goal-0c305cf9-3923-51cf-a9ae-5849edc99c9f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0c305cf9-3923-51cf-a9ae-5849edc99c9f-title"><a class="goal-self-link" href="#goal-0c305cf9-3923-51cf-a9ae-5849edc99c9f">Längenkontraktion erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0c305cf9-3923-51cf-a9ae-5849edc99c9f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-b11db4fba365d197361f5a29">Spezielle Relativitätstheorie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0c305cf9-3923-51cf-a9ae-5849edc99c9f-description-heading">
+        <p class="section-heading" id="goal-0c305cf9-3923-51cf-a9ae-5849edc99c9f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Längenkontraktion mithilfe einfacher Beispiele und Gedankenexperimente erläutern und zugehörige experimentelle Nachweise qualitativ diskutieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-0c305cf9-3923-51cf-a9ae-5849edc99c9f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0c305cf9-3923-51cf-a9ae-5849edc99c9f-requires-heading">
+          <p class="section-heading" id="goal-0c305cf9-3923-51cf-a9ae-5849edc99c9f-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a684bec1-ba59-59d0-98d2-4ca37236f64c"><span>Relativitätspostulate formulieren und erläutern</span><code>a684bec1-ba59-59d0-98d2-4ca37236f64c</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-0c305cf9-3923-51cf-a9ae-5849edc99c9f-reverse-heading">
+          <p class="section-heading" id="goal-0c305cf9-3923-51cf-a9ae-5849edc99c9f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-0c305cf9-3923-51cf-a9ae-5849edc99c9f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0c305cf9-3923-51cf-a9ae-5849edc99c9f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 9</span>
+      <span>Buch-Digest <code>sha256:695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8481f06d51a5ffce86b90dfc0c4fa802d485c6eac7bc215efcadc9fbda66266e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b033z-relativity-final-splits-current-recheck-9-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=0c305cf9-3923-51cf-a9ae-5849edc99c9f&amp;goalFingerprint=sha256%3A8481f06d51a5ffce86b90dfc0c4fa802d485c6eac7bc215efcadc9fbda66266e&amp;pageFingerprint=sha256%3Af480c75d3e0548677ca303ac653fe96771947b8c672e61454bd114dfa7aa345e&amp;bookDigest=sha256%3A695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e" data-goal-id="a9169a74-de19-54a9-a8ac-a2ce43c7342e" data-page-number="4" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-157c404a-e14b-598a-9389-6924f8f9262e" aria-labelledby="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-title"><a class="goal-self-link" href="#goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e">GPS und Relativitätstheorie</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a9169a74-de19-54a9-a8ac-a2ce43c7342e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-b11db4fba365d197361f5a29">Spezielle Relativitätstheorie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8229e3ed8c6b93b9519ea7cc6d9fd2c7d68238a845f75c32aea5a8ce32c2407e" data-rendered-digest="sha256:20f43c29bce9eab3d0d54f3a3042dda14d4ebbaf095e57e9cfc2416775295e95" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/a9169a74-de19-54a9-a8ac-a2ce43c7342e/a9169a74-de19-54a9-a8ac-a2ce43c7342e.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;GPS und Relativitätstheorie&quot;. Anwendung der Zeitdilatation im Alltag: Warum Navigationssysteme ohne die Korrekturen der speziellen (und allgemeinen) Relativitätstheorie nicht funktionieren würden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-description-heading">
+        <p class="section-heading" id="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-description-heading">Lernzielbeschreibung</p>
+        <p>Anwendung der Zeitdilatation im Alltag: Warum Navigationssysteme ohne die Korrekturen der speziellen (und allgemeinen) Relativitätstheorie nicht funktionieren würden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-requires-heading">
+          <p class="section-heading" id="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6"><span>Zeitdilatation erläutern</span><code>19aef2ed-eb46-55b1-9486-ee83f7520bb6</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-reverse-heading">
+          <p class="section-heading" id="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a9169a74-de19-54a9-a8ac-a2ce43c7342e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-f532c772-7b6e-59aa-ad65-e0eeafc3767f" rel="noreferrer noopener"><span>Relativitaet und Raumzeit</span> <code>f532c772-7b6e-59aa-ad65-e0eeafc3767f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 9</span>
+      <span>Buch-Digest <code>sha256:695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ba6f81eadec207d44b366cf0615862e9adc10770f7d900bfb6c62e3b5f1b74f7</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b033z-relativity-final-splits-current-recheck-9-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=a9169a74-de19-54a9-a8ac-a2ce43c7342e&amp;goalFingerprint=sha256%3Aba6f81eadec207d44b366cf0615862e9adc10770f7d900bfb6c62e3b5f1b74f7&amp;pageFingerprint=sha256%3A18bb73c8a557a55b3bba725a9ec4517aa7be19a4313b2d8ab4bd7f6a0894e088&amp;bookDigest=sha256%3A695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6ebb6182-f221-5f4c-b112-4ac72b104321" data-goal-id="6ebb6182-f221-5f4c-b112-4ac72b104321" data-page-number="5" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-157c404a-e14b-598a-9389-6924f8f9262e" aria-labelledby="goal-6ebb6182-f221-5f4c-b112-4ac72b104321-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6ebb6182-f221-5f4c-b112-4ac72b104321-title"><a class="goal-self-link" href="#goal-6ebb6182-f221-5f4c-b112-4ac72b104321">Minkowski-Diagramme nutzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6ebb6182-f221-5f4c-b112-4ac72b104321</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-b11db4fba365d197361f5a29">Spezielle Relativitätstheorie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:5e190fe9879c4b00213e2dba8795e30c8d4e2b92276edbc1ca93328c16876b53" data-rendered-digest="sha256:44c1ae9819230f2aeda66f708e2aeee03f2bfd0b570c8410cb3cec18ba60c752" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/6ebb6182-f221-5f4c-b112-4ac72b104321/6ebb6182-f221-5f4c-b112-4ac72b104321.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Minkowski-Diagramme nutzen&quot;. Die lernende Person kann Minkowski-Diagramme zur Veranschaulichung relativistischer Effekte einsetzen und einfache Aussagen über Gleichzeitigkeit und Weltlinien treffen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6ebb6182-f221-5f4c-b112-4ac72b104321-description-heading">
+        <p class="section-heading" id="goal-6ebb6182-f221-5f4c-b112-4ac72b104321-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Minkowski-Diagramme zur Veranschaulichung relativistischer Effekte einsetzen und einfache Aussagen über Gleichzeitigkeit und Weltlinien treffen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>BY, NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-6ebb6182-f221-5f4c-b112-4ac72b104321" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6ebb6182-f221-5f4c-b112-4ac72b104321-requires-heading">
+          <p class="section-heading" id="goal-6ebb6182-f221-5f4c-b112-4ac72b104321-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6"><span>Zeitdilatation erläutern</span><code>19aef2ed-eb46-55b1-9486-ee83f7520bb6</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-6ebb6182-f221-5f4c-b112-4ac72b104321-reverse-heading">
+          <p class="section-heading" id="goal-6ebb6182-f221-5f4c-b112-4ac72b104321-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-6ebb6182-f221-5f4c-b112-4ac72b104321-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6ebb6182-f221-5f4c-b112-4ac72b104321-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-f532c772-7b6e-59aa-ad65-e0eeafc3767f" rel="noreferrer noopener"><span>Relativitaet und Raumzeit</span> <code>f532c772-7b6e-59aa-ad65-e0eeafc3767f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 9</span>
+      <span>Buch-Digest <code>sha256:695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c0d44819ebf638d76cde29a0d91a9d6c5e6931b283196fde07d52ba333485d8e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b033z-relativity-final-splits-current-recheck-9-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=6ebb6182-f221-5f4c-b112-4ac72b104321&amp;goalFingerprint=sha256%3Ac0d44819ebf638d76cde29a0d91a9d6c5e6931b283196fde07d52ba333485d8e&amp;pageFingerprint=sha256%3A743b3ee11b21ebdf79ae8064b2d84936aa18650d3c97a9c9d86c8369ed92a03d&amp;bookDigest=sha256%3A695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-57ec031c-9a91-5331-81a7-6ef900f7c63e" data-goal-id="57ec031c-9a91-5331-81a7-6ef900f7c63e" data-page-number="6" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-157c404a-e14b-598a-9389-6924f8f9262e" aria-labelledby="goal-57ec031c-9a91-5331-81a7-6ef900f7c63e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-57ec031c-9a91-5331-81a7-6ef900f7c63e-title"><a class="goal-self-link" href="#goal-57ec031c-9a91-5331-81a7-6ef900f7c63e">Lorentztransformationen anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>57ec031c-9a91-5331-81a7-6ef900f7c63e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-b11db4fba365d197361f5a29">Spezielle Relativitätstheorie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4c71775fb31b57da660d291f3c66165ccdc31da35dba33969267a222947971d5" data-rendered-digest="sha256:766fa6ff4b59d3356431610d978eb92a919032e4015f68a4ced631e42663aa26" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/57ec031c-9a91-5331-81a7-6ef900f7c63e/57ec031c-9a91-5331-81a7-6ef900f7c63e.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Lorentztransformationen anwenden&quot;. Die lernende Person kann Raum- und Zeitkoordinaten von Ereignissen zwischen gleichförmig relativ bewegten Inertialsystemen mit Lorentztransformationen umrechnen und die Ergebnisse physikalisch interpretieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-57ec031c-9a91-5331-81a7-6ef900f7c63e-description-heading">
+        <p class="section-heading" id="goal-57ec031c-9a91-5331-81a7-6ef900f7c63e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Raum- und Zeitkoordinaten von Ereignissen zwischen gleichförmig relativ bewegten Inertialsystemen mit Lorentztransformationen umrechnen und die Ergebnisse physikalisch interpretieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-57ec031c-9a91-5331-81a7-6ef900f7c63e" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-57ec031c-9a91-5331-81a7-6ef900f7c63e-requires-heading">
+          <p class="section-heading" id="goal-57ec031c-9a91-5331-81a7-6ef900f7c63e-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a684bec1-ba59-59d0-98d2-4ca37236f64c"><span>Relativitätspostulate formulieren und erläutern</span><code>a684bec1-ba59-59d0-98d2-4ca37236f64c</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-57ec031c-9a91-5331-81a7-6ef900f7c63e-reverse-heading">
+          <p class="section-heading" id="goal-57ec031c-9a91-5331-81a7-6ef900f7c63e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-57ec031c-9a91-5331-81a7-6ef900f7c63e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-57ec031c-9a91-5331-81a7-6ef900f7c63e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-f532c772-7b6e-59aa-ad65-e0eeafc3767f" rel="noreferrer noopener"><span>Relativitaet und Raumzeit</span> <code>f532c772-7b6e-59aa-ad65-e0eeafc3767f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 9</span>
+      <span>Buch-Digest <code>sha256:695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a5f950d3f0bf5b66120e4146ea69a1946711376a55c332148dad7907b7e64c84</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b033z-relativity-final-splits-current-recheck-9-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=57ec031c-9a91-5331-81a7-6ef900f7c63e&amp;goalFingerprint=sha256%3Aa5f950d3f0bf5b66120e4146ea69a1946711376a55c332148dad7907b7e64c84&amp;pageFingerprint=sha256%3Ad368d18faca15420895ae485f71f29f9b550a52a047a05f8a76d3e11d42edb38&amp;bookDigest=sha256%3A695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2239cb67-82cb-585f-ab82-e1f2510eb4f7" data-goal-id="2239cb67-82cb-585f-ab82-e1f2510eb4f7" data-page-number="7" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-157c404a-e14b-598a-9389-6924f8f9262e" aria-labelledby="goal-2239cb67-82cb-585f-ab82-e1f2510eb4f7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2239cb67-82cb-585f-ab82-e1f2510eb4f7-title"><a class="goal-self-link" href="#goal-2239cb67-82cb-585f-ab82-e1f2510eb4f7">Relativistische Geschwindigkeitsaddition anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2239cb67-82cb-585f-ab82-e1f2510eb4f7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-b11db4fba365d197361f5a29">Spezielle Relativitätstheorie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2239cb67-82cb-585f-ab82-e1f2510eb4f7-description-heading">
+        <p class="section-heading" id="goal-2239cb67-82cb-585f-ab82-e1f2510eb4f7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Geschwindigkeiten bei kollinearer Bewegung zwischen gleichförmig relativ bewegten Inertialsystemen mit der relativistischen Geschwindigkeitsaddition umrechnen und die Grenzfälle einordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-2239cb67-82cb-585f-ab82-e1f2510eb4f7" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2239cb67-82cb-585f-ab82-e1f2510eb4f7-requires-heading">
+          <p class="section-heading" id="goal-2239cb67-82cb-585f-ab82-e1f2510eb4f7-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a684bec1-ba59-59d0-98d2-4ca37236f64c"><span>Relativitätspostulate formulieren und erläutern</span><code>a684bec1-ba59-59d0-98d2-4ca37236f64c</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-2239cb67-82cb-585f-ab82-e1f2510eb4f7-reverse-heading">
+          <p class="section-heading" id="goal-2239cb67-82cb-585f-ab82-e1f2510eb4f7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-2239cb67-82cb-585f-ab82-e1f2510eb4f7-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2239cb67-82cb-585f-ab82-e1f2510eb4f7-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 9</span>
+      <span>Buch-Digest <code>sha256:695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca</code></span>
+      <span>Ziel-Fingerprint <code>sha256:79b8e7ed5d70a915cab522e5c4f5a4237b70b34f47784e238efc77f1abdd8758</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b033z-relativity-final-splits-current-recheck-9-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=2239cb67-82cb-585f-ab82-e1f2510eb4f7&amp;goalFingerprint=sha256%3A79b8e7ed5d70a915cab522e5c4f5a4237b70b34f47784e238efc77f1abdd8758&amp;pageFingerprint=sha256%3Ab8fab644d278f197a413db41cb278ded085eac0830d8a4f550be77cfe27c2661&amp;bookDigest=sha256%3A695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-79da5c34-86b2-5c10-9726-9de886ccef7d" data-goal-id="79da5c34-86b2-5c10-9726-9de886ccef7d" data-page-number="8" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-157c404a-e14b-598a-9389-6924f8f9262e" aria-labelledby="goal-79da5c34-86b2-5c10-9726-9de886ccef7d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-79da5c34-86b2-5c10-9726-9de886ccef7d-title"><a class="goal-self-link" href="#goal-79da5c34-86b2-5c10-9726-9de886ccef7d">Geschwindigkeitsabhängige „relativistische Masse“ herleiten und einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>79da5c34-86b2-5c10-9726-9de886ccef7d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-b11db4fba365d197361f5a29">Spezielle Relativitätstheorie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d53ad6ee8dc52cfc04566f97b3ad4be90e5ad400002bb07bb22ebb53b36fe9ad" data-rendered-digest="sha256:a4047bf4b767def43507b334df8d3356c271feaac9a778cb0edabdc8982f21c6" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/79da5c34-86b2-5c10-9726-9de886ccef7d/79da5c34-86b2-5c10-9726-9de886ccef7d.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Geschwindigkeitsabhängige „relativistische Masse“ herleiten und einordnen&quot;. Die lernende Person kann für ein massives Teilchen mit fester Ruhemasse $m_0$ die historische geschwindigkeitsabhängige Konvention $m_{\mathrm{rel}}=\gamma m_0=E/c^2$ herleiten, sie von der invarianten Ruhemasse unterscheiden und erklären, dass in moderner Darstellung Energie und Impulsbetrag – nicht die invariante Masse – mit der Geschwindigkeit relativ zu einem Inertialsystem zunehmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-79da5c34-86b2-5c10-9726-9de886ccef7d-description-heading">
+        <p class="section-heading" id="goal-79da5c34-86b2-5c10-9726-9de886ccef7d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für ein massives Teilchen mit fester Ruhemasse $m_0$ die historische geschwindigkeitsabhängige Konvention $m_{\mathrm{rel}}=\gamma m_0=E/c^2$ herleiten, sie von der invarianten Ruhemasse unterscheiden und erklären, dass in moderner Darstellung Energie und Impulsbetrag – nicht die invariante Masse – mit der Geschwindigkeit relativ zu einem Inertialsystem zunehmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-79da5c34-86b2-5c10-9726-9de886ccef7d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-79da5c34-86b2-5c10-9726-9de886ccef7d-requires-heading">
+          <p class="section-heading" id="goal-79da5c34-86b2-5c10-9726-9de886ccef7d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6"><span>Zeitdilatation erläutern</span><code>19aef2ed-eb46-55b1-9486-ee83f7520bb6</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-79da5c34-86b2-5c10-9726-9de886ccef7d-reverse-heading">
+          <p class="section-heading" id="goal-79da5c34-86b2-5c10-9726-9de886ccef7d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-79da5c34-86b2-5c10-9726-9de886ccef7d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-79da5c34-86b2-5c10-9726-9de886ccef7d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-f532c772-7b6e-59aa-ad65-e0eeafc3767f" rel="noreferrer noopener"><span>Relativitaet und Raumzeit</span> <code>f532c772-7b6e-59aa-ad65-e0eeafc3767f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 9</span>
+      <span>Buch-Digest <code>sha256:695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bc6c107f55173b70d1dbe29432b063debe6238eae56ff92ee7ff1eb4c7f1f7db</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b033z-relativity-final-splits-current-recheck-9-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=79da5c34-86b2-5c10-9726-9de886ccef7d&amp;goalFingerprint=sha256%3Abc6c107f55173b70d1dbe29432b063debe6238eae56ff92ee7ff1eb4c7f1f7db&amp;pageFingerprint=sha256%3Ae42cdcc5d7a49235e92b8c475beadaedbfc977ef3d1e6d8fd776fb670969c509&amp;bookDigest=sha256%3A695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a" data-goal-id="bfea7a23-1ce1-4a42-badd-1fc9bf30124a" data-page-number="9" data-chapter-ids="structure:goal-book-physics-root structure:goal-book-physics-sekii-gk-lk structure:canonical-structure:physics-q4 structure:canonical-goal-157c404a-e14b-598a-9389-6924f8f9262e" aria-labelledby="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-title"><a class="goal-self-link" href="#goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a">Masse-Energie-Äquivalenz einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>bfea7a23-1ce1-4a42-badd-1fc9bf30124a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-6747d2e0bbbbd4b4358ff0fa">Physik</a></li><li><a href="#chapter-546e47201fdf10d52f5a936c">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-2d62da14bfd408e36bddc43b">Q4 Struktur von Materie, Raum und Zeit</a></li><li><a href="#chapter-b11db4fba365d197361f5a29">Spezielle Relativitätstheorie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:acbbb9f0592b4bb5102e8a38254215219c4a015b95d72c38abe6f07cb1b1fcbc" data-rendered-digest="sha256:4fdac0ea2152ed5d6043167f7ccf6eaf144f8f38da1d0e02909b693c7333dc16" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/bfea7a23-1ce1-4a42-badd-1fc9bf30124a/bfea7a23-1ce1-4a42-badd-1fc9bf30124a.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Masse-Energie-Äquivalenz einordnen&quot;. Die lernende Person kann die Masse-Energie-Äquivalenz E = mc² als relativistische Grundbeziehung fachlich einordnen und an qualitativen Beispielen deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-description-heading">
+        <p class="section-heading" id="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Masse-Energie-Äquivalenz E = mc² als relativistische Grundbeziehung fachlich einordnen und an qualitativen Beispielen deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. II · G8 · GK; Sek. II · G8 · LK</li><li><strong>HB, HE, HH, MV, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>NI:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-requires-heading">
+          <p class="section-heading" id="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-19aef2ed-eb46-55b1-9486-ee83f7520bb6"><span>Zeitdilatation erläutern</span><code>19aef2ed-eb46-55b1-9486-ee83f7520bb6</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-reverse-heading">
+          <p class="section-heading" id="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bfea7a23-1ce1-4a42-badd-1fc9bf30124a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4a58df57-f791-502f-8b8d-9ba155e46035" rel="noreferrer noopener"><span>Q4-Klausuraufgaben Physik selbstständig lösen</span> <code>4a58df57-f791-502f-8b8d-9ba155e46035</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 9</span>
+      <span>Buch-Digest <code>sha256:695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca</code></span>
+      <span>Ziel-Fingerprint <code>sha256:61114113e25ffe28ee8b504d4b63d2e16cfae9a678458b5e215ae229eb770c22</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-b033z-relativity-final-splits-current-recheck-9-v1-20260905&amp;edition=curricular-atomic-v1&amp;goalId=bfea7a23-1ce1-4a42-badd-1fc9bf30124a&amp;goalFingerprint=sha256%3A61114113e25ffe28ee8b504d4b63d2e16cfae9a678458b5e215ae229eb770c22&amp;pageFingerprint=sha256%3A385255008ea1dbd80dbc571d73aefcca7db0105f6e30847ffc35a0148f743fef&amp;bookDigest=sha256%3A695b7e0e53c4d5dffc50fc6a7c0a9ea2f54c1676197d031a4810e667c6195bca&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

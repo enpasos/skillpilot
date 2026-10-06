@@ -1,0 +1,13 @@
+# B007 v2 targeted independent A follow-up
+
+All **six own A v1 findings are resolved** in the current author-v2 packet. Fresh complete bilingual reading covered its **five changed cases** and the label routine essential. [Field-bound resolutions](independent-a-followup.review.json) give scientific **candidate KEEP** for the corrected material.
+
+The official H315/H319 lookup wording is corrected. The salt routine supplies and separately tares a weighing dish, uses a clean spatula, secures the water beaker and records complete transfer in its actual action protocol. W-1 now holds unknown or unmatched compositions and explicitly accepts identified aqueous copper plus salt without organic solvent. The contraction task directly asks the existing fourth criterion. The source guidance citation is printed p.7 (eighth physical page), and the shared-symbol essential allows different hazard classes.
+
+[Actual byte checks](current-byte-and-preservation-checks.actual.json) verify author-v2 freeze `e86359b0cea958c6964ad801945810c4621d2a542f426e69e5e92ad1cc303357`, its seven outputs/six input bindings, all original ten-plus-62 bindings and every old A artifact. **Nine whole raw case objects and six whole raw routine objects are byte-exact v1; the complete two-card file is byte-exact.** All seven titles, descriptions and prerequisite proposals are exact v1. Fourteen cases contain 46 required criteria; numerical audits are unchanged and the 23 prior independent arithmetic checks remain applicable.
+
+The [fresh source receipt](primary-source-followup.actual.json) distinguishes actual retained Hessen PDF reads from [BAuA indexed primary text](https://www.baua.de/DE/Angebote/Publikationen/Praxis/Poster/GHS-01.pdf?__blob=publicationFile&v=17). Direct BAuA opens failed; no successful PDF download is claimed. Hessen printed p.11 retains complete solutions and separate safety contributions, while printed p.12 saturation/temperature is facultative. Quantitative-saturation exact source/stage routes remain held; none of the 403 original whole-source obligations is cleared here.
+
+All material remains `ai_candidate / needs_human_review`, E1/G1. Simulated action logs do not establish physical laboratory competence or observed learner performance. Both narrow cards retain scientific candidate KEEP with actual IDs/decks/memory origins/composition visibility pending. This follow-up adds no native D/P/A/M/V approval, human approval/trial, active integration or strict completion. Chemistry **112/378**, Biology **67/383**, gain **0**. Only this new independent-A follow-up directory was written; old A and author packets remain intact.
+
+Own technical review evidence and audit script are Apache-2.0; linked sources retain their separate rights.

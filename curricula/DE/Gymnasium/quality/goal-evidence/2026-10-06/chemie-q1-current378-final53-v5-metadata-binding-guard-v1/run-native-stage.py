@@ -1,0 +1,5 @@
+from pathlib import Path
+import sys,subprocess,json,datetime
+ROOT=Path('/home/enpasos/projects/skillpilot');REL=Path('curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-final53-v5-metadata-binding-guard-v1');ISO=ROOT/'tmp/chemie-q1-current378-routes-native-d-preparation-20261006-v1'
+stage=sys.argv[1];argv=sys.argv[2:];start=datetime.datetime.now(datetime.timezone.utc).isoformat();r=subprocess.run(argv,cwd=ISO,capture_output=True,text=True)
+p=ROOT/REL/'terminal'/f'{stage}.actual.receipt.json';p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps({'schemaVersion':1,'stage':stage,'commandArgv':argv,'cwd':str(ISO),'startedAtUTC':start,'completedAtUTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'exitCode':r.returncode,'stdout':r.stdout,'stderr':r.stderr,'nativeCodeModified':False,'preparedV4InputsModified':False,'activeWrites':False,'scienceReviewDecision':None},ensure_ascii=False,indent=2)+'\n');print(r.stdout,end='');print(r.stderr,end='',file=sys.stderr);sys.exit(r.returncode)

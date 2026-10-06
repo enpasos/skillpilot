@@ -1,0 +1,516 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T04:45:23.592510+00:00",
+  "selectedActualPassingMachineChecks": [
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/layer-a.stage-1.actual.receipt.json",
+      "receiptSha256": "9037b1b0d2ec389ed3af6be8f4156348e800e468c9a10e2d9e75b07e30bb781b",
+      "stdoutActualSha256": "3bcda1cfd55fe900f143841b5dc292bd4a0a3fc3d0ff3a5ef9039996a548656b",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "python",
+        "scripts/validate_schemas.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/layer-a.stage-2.actual.receipt.json",
+      "receiptSha256": "3ff7dd62f41a94e264e4ff3326836b35270553e8b7fe5c94c871a19aa8964115",
+      "stdoutActualSha256": "9fdd107cb87b98d8c5d227e8852ebec29c43741d2b54f6fd9ed46d116eaedfe7",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:graph"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/layer-a.stage-3.actual.receipt.json",
+      "receiptSha256": "74700502863cd464527e5a69d0ca743eb6039d5103f05103029bf9aa1a7884a2",
+      "stdoutActualSha256": "6cc577258fd596ab9811f6982797b30f9e473a87fb70d003bf41f8179cb0e4ab",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:composition-views"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/layer-a.stage-4.actual.receipt.json",
+      "receiptSha256": "51735a7efe76ababe523a28e6669e7b053f175a516321c1bc2dc52808bfdb9ed",
+      "stdoutActualSha256": "31f7b3dbdc5a4e8d74f7d5fdc17ca29e41e58fad0700750fdd00937c6e31715b",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-visualization-assets"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/remaining-layer-a-after-discovery-fix.stage-1.actual.receipt.json",
+      "receiptSha256": "2d9d5450c1f487797f555ee81edb3bb91004ad902e3703fe98443142c5225deb",
+      "stdoutActualSha256": "fec8b2a4ad1044fe8a9cad70a64ef4b13ebd60d83297b0e07a230b9dc12976a6",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-visualization-qa",
+        "--",
+        "--subjects=chemie"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/remaining-layer-a-after-discovery-fix.stage-2.actual.receipt.json",
+      "receiptSha256": "8ff497ac88fc3e49635310e4eee2e990e1cbfb7c0d3fdc90fea11048c81e0f3d",
+      "stdoutActualSha256": "6f61f7cfdcefcd0d082fbc56a898069e5380e0e4de33f72f6d4e5759615caeb8",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+        "--check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/books.stage-1.actual.receipt.json",
+      "receiptSha256": "42e65391c69e6995fae0fe2aac58a98512784d21d9a928e5b656a1de151ea5b8",
+      "stdoutActualSha256": "0035c79746ae4f29e32c3f04e6363b58bc6eb09a49c4c605947c3b2bd741fadd",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:goal-books"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/books.stage-2.actual.receipt.json",
+      "receiptSha256": "9be9e2620de9a94159a0fd38573288938d6fb2616f27dbe81c801318b5a96dc5",
+      "stdoutActualSha256": "7c2e9c2a65e4ddce40dacd309764869b27f63e74c0e2e30002ec759177cb1ce2",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-book-publication"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/projection-after-retained-copy-relocation.stage-1.actual.receipt.json",
+      "receiptSha256": "bf04da8ddc573bbd36a3343585f55fc072b780063188316afa00103bbb929f3c",
+      "stdoutActualSha256": "815e4fc0a29cb3c9e43cc58fbd7bf278b0b74617d23339851c2cba9a8598a183",
+      "stderrActualSha256": "a5986972bda57edf5900b7fb01c7ffa66c6a999ae36f67d05ee06dd7646fa833",
+      "commandArgv": [
+        "backend/gradlew",
+        "-p",
+        "backend",
+        "test",
+        "--tests",
+        "com.skillpilot.backend.controller.LearnerControllerIntegrationTest.learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals",
+        "--no-daemon"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/reviewed-evidence-watch.stage-2.actual.receipt.json",
+      "receiptSha256": "de2a6ea172cb468452d8436a15b399ff514db7340c0f2d1f28cf571eb4038ed9",
+      "stdoutActualSha256": "e82aa0aa93de049d61e4bbd3baaa475470794d54a471d721172ca65a8d6e5f8e",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "bash",
+        "scripts/run_canonical_chemistry_evidence_watch.sh"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/current-memory-and-application.stage-1.actual.receipt.json",
+      "receiptSha256": "54dcb0f3e7aae457a25a01e17533019d31d12d252078825732a823ef5798a00d",
+      "stdoutActualSha256": "86ea246b4a655019982b7a1b8f077463045ef518668fefc4922d80b1b46dc330",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:memory-card-review:check:all"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/current-memory-and-application.stage-3.actual.receipt.json",
+      "receiptSha256": "7e0d790284c56d404bb2f04892658f9af4a1d180abb25e19d9035087ddbfa10a",
+      "stdoutActualSha256": "df5b7a1c85c190314bc10c677db4a58d5a6fa83f0c7fab7de17d910cc42b2d96",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "node",
+        "scripts/check_ai_transparency_inventory.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/current-memory-and-application.stage-4.actual.receipt.json",
+      "receiptSha256": "879c87e0d5624648682bd84d9c418e1ca4eea82b69c9d4f58e0f31536c86e334",
+      "stdoutActualSha256": "2ed608583ba5b4841441622f2b8877b990e40c78a69e16c19056a76f43008d83",
+      "stderrActualSha256": "b9f99a1c0f6ff2c022ba306b9d9d1d783a5c37fc4ce62b7547d4bc1abd81cb02",
+      "commandArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/final-current-central.stage-1.actual.receipt.json",
+      "receiptSha256": "72135b77cf8d522e4823d1172850bf9e3496414131a23683f601bc147e4dd768",
+      "stdoutActualSha256": "945613cb5023c02928afe8e386ff59a908dcbd7a2af8cfa356b499e5b710be34",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/reportDeepUnderstandingRollout.ts",
+        "--mode=check",
+        "--format=json"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/final-current-documentation.stage-1.actual.receipt.json",
+      "receiptSha256": "bd1d48e0415202ce90c4ba5a7b46f05fdf8ccfaec2ac323d3b54097505a8713a",
+      "stdoutActualSha256": "d007c571ccff20869f66886734a8d2c6e74bc69a7e72e85cbc7d0a1783dffa5a",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-links"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/final-current-documentation.stage-2.actual.receipt.json",
+      "receiptSha256": "1d5300fbef2493a5021873749d68a9c3dee6c9b297327695995bd2847c0260ad",
+      "stdoutActualSha256": "2ba0d2aa99b03ea9fd1b2f717a2ad5dfae44e11d2fbb85e8d14551f368c1efe0",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-indexes"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/final-current-documentation.stage-3.actual.receipt.json",
+      "receiptSha256": "052996ce1aecfdd0102c44275058591b55ca7e878767eae3dd2d6c59cc0eba7b",
+      "stdoutActualSha256": "053f034242f79dcb819124fa3a192f69ccb3c2f8ff51a53954fe2ffb6f0c1516",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-doc-notices"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/final-current-documentation.stage-4.actual.receipt.json",
+      "receiptSha256": "5881e932722482b6f76a7ec1c4b03943c7de35d92bd9db5fa90bce36741297dd",
+      "stdoutActualSha256": "b9d70d7acf26466f4103877c96568903885fd8497ad661b72e597be4de75c626",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-status-registry"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/final-current-status-refreshed.stage-1.actual.receipt.json",
+      "receiptSha256": "3231872009f202896749444376da4340802f1b288c270e717c84ea50e16f6acb",
+      "stdoutActualSha256": "389ceee89ed1081de6f1d3d5ad7fdcb5b5500928914a89ab424ec89b103be861",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/generateCurriculumQualityStatus.ts"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/final-current-status-refreshed.stage-2.actual.receipt.json",
+      "receiptSha256": "2dacaa51b6e3aa5f779b532b4628ff2aca880118030f7d252de5df8306c0503b",
+      "stdoutActualSha256": "7d756bba94d8c9c0003a062d6d09601debd400e52d37e0de99a4c4d127640113",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/generateCurriculumQualityStatus.ts",
+        "--check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/final-current-status-refreshed.stage-3.actual.receipt.json",
+      "receiptSha256": "7a93407dc7f4e98974a4caaa4b6e9209ddb691ffd61866cc4c017ab4003c5881",
+      "stdoutActualSha256": "338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/checkCurriculumMaturityFloors.ts"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/final-affected-regression.stage-1.actual.receipt.json",
+      "receiptSha256": "85417a3fcb3a0e69fb6ee04472c926eae10f9a70aa6e83515c8348ab6c0566e2",
+      "stdoutActualSha256": "fdf00646ea03f5d9cac5f5c442e270b07017a7876fcf1d17fb4bd41ad760a0f0",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "app/node_modules/.bin/tsx",
+        "--test",
+        "app/scripts/sourceCoverageAndApplicabilityRegression.test.ts"
+      ],
+      "exitCode": 0
+    },
+    {
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/final-affected-regression.stage-2.actual.receipt.json",
+      "receiptSha256": "819f44b81ac8f666d6999141e5ca35566a64bdfe48b7c892837d738590879f68",
+      "stdoutActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrActualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "commandArgv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "currentInputs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "21303dff0ad4a2ffe389629535d6fd1d31c81cd817660d47b38e10c1b434afea",
+      "bytes": 152400
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/in-flight-work-ledger.json",
+      "sha256": "e5673e764730268310ebfe100c0963ae2487ce0c8b9bc4509c8bd1597c267874",
+      "bytes": 1743
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "764c11d951d28be38709d8b01b5eb6d4b3be71e87d9daf5ea4d1dc46f67529a0",
+      "bytes": 1419221
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "b3cb528491bde1905fb184f88211da40865cffa4bbfcf7219a978752bb67e300",
+      "bytes": 983399
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "76047cec422c555aacd1e04bff597c4f8a70d8ffed5f214ed7412c828bc34898",
+      "bytes": 3714635
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "ad764d083e390ab60f808ecbffb363ac914026894e82c09c977425311ec7ea44",
+      "bytes": 2511173
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "sha256": "d16aa527265d69c200be7ebd7e7f664a9d6b273af4f8fded64c43b286b5e0f54",
+      "bytes": 153884
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json",
+      "sha256": "9eda9bf03bfc2139e999c469fe3be7532ed3abab80673b6313483eb40d0c0e55",
+      "bytes": 877175
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-baseline.json",
+      "sha256": "27416ff078503ffd5b33084a78226c2a83ab5534519bfcf2b74323149339a817",
+      "bytes": 44499
+    },
+    {
+      "path": "app/scripts/config/curriculum-maturity-floor-policy.json",
+      "sha256": "bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243
+    },
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "1937ee365f8d4a69dc9962feec0858ef3ef63fb2eb165a809ae46e1046e588f0",
+      "bytes": 55340
+    },
+    {
+      "path": "app/scripts/sourceCoverageAndApplicabilityRegression.test.ts",
+      "sha256": "36b8ea3f4f17dc29e30abf95255b8c5b45a2117fd5a22dead9d23bd575143864",
+      "bytes": 9288
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+      "sha256": "665f82867dc9019b7bdb369903b9ebad3ac726b1e8ab2bc08476606032230b2a",
+      "bytes": 16164
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/source-projection.receipt.json",
+      "sha256": "f2b2b514c91db2b56acb77c57a2043d8bccdbeb6996aeecfedb79624ef708d32",
+      "bytes": 7422458
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.json",
+      "sha256": "fcc381c7c0fc9b18c78180f241c80aa87152b12931fa6111e7e2bda9e3d7b801",
+      "bytes": 2750953
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.md",
+      "sha256": "b65045dd35054b8b5e5f2ec72a01999274deed3279a79a47786c1c98e901b0f9",
+      "bytes": 65168
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-canonical-chemistry-current378.md",
+      "sha256": "69e72f9510d5e25ec7d1efa437a74bf28d958ccf5a869c12615946148d06e147",
+      "bytes": 46475
+    },
+    {
+      "path": "docs/legal/ai-transparency-inventory.json",
+      "sha256": "76584581f80772b89a2fea21181f52ff67e837c10e4774a38dc226a78d699797",
+      "bytes": 33221
+    },
+    {
+      "path": "docs/qa-ci/chemie-biologie-m7-chemistry-53-current-bindings-continuation-2026-10-06.md",
+      "sha256": "a8ecc7cc6bf57a1cfb3753c74592d9ae283ecde49bbc4fad83c2342fc2c4d570",
+      "bytes": 10216
+    }
+  ],
+  "currentMaturityAndCQR303": [
+    {
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "subject": "Biologie",
+      "maturity": "M6",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "warn",
+        "summary": "Deep curriculum QA is incomplete: 67/383 current curricularAtomic goals strictly complete.",
+        "metrics": {
+          "expectedGoals": 383,
+          "remaining": 316,
+          "strictComplete": 67,
+          "currentDescriptionResolutions": 67,
+          "currentPositiveEvidenceProfiles": 67,
+          "currentSemanticAtomicityDecisions": 383,
+          "currentMemoryReviewDecisions": 383,
+          "currentVisualizationQaRecords": 67,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    },
+    {
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "subject": "Chemie",
+      "maturity": "M6",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "warn",
+        "summary": "Deep curriculum QA is incomplete: 112/378 current curricularAtomic goals strictly complete.",
+        "metrics": {
+          "expectedGoals": 378,
+          "remaining": 266,
+          "strictComplete": 112,
+          "currentDescriptionResolutions": 112,
+          "currentPositiveEvidenceProfiles": 112,
+          "currentSemanticAtomicityDecisions": 201,
+          "currentMemoryReviewDecisions": 378,
+          "currentVisualizationQaRecords": 359,
+          "deferredVisualizations": 17,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        },
+        "details": [
+          "17 current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V."
+        ]
+      }
+    },
+    {
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "subject": "Mathematik",
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 807 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 807,
+          "remaining": 0,
+          "strictComplete": 807,
+          "currentDescriptionResolutions": 807,
+          "currentPositiveEvidenceProfiles": 807,
+          "currentSemanticAtomicityDecisions": 807,
+          "currentMemoryReviewDecisions": 807,
+          "currentVisualizationQaRecords": 807,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    },
+    {
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "subject": "Physik",
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 478 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 478,
+          "remaining": 0,
+          "strictComplete": 478,
+          "currentDescriptionResolutions": 478,
+          "currentPositiveEvidenceProfiles": 478,
+          "currentSemanticAtomicityDecisions": 478,
+          "currentMemoryReviewDecisions": 478,
+          "currentVisualizationQaRecords": 478,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    }
+  ],
+  "protectedFloorCount": 9,
+  "strictProgressReceipt": "final-current-strict-progress-and-preservation.actual.json",
+  "finalCentralRegistryOnlySubsequentChange": "foreign raw JSON restoration; entire parsed payload exact",
+  "GitHubCIVerified": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "deploymentOrPublication": false,
+  "unboundedChemistryBiologyM7GoalComplete": false
+}

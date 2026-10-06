@@ -1,0 +1,1116 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Mathematik M7: Q4 LK komplexe Zahlen und Zahlentheorie</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Mathematik M7: Q4 LK komplexe Zahlen und Zahlentheorie</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>20 atomare Lernziele</dt><dd>10 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-math-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-71894e7ef4af5f94dc6093d2" aria-label="Mathematik"><a href="#goal-22b66c1e-50b1-505f-a388-c39131a4e1c3"><span class="toc-entry-label">Mathematik</span></a></h2>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-math-sekii-gk-lk" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-3fb62939875ba85ae30720f7" aria-label="Sekundarstufe II (GK und LK)"><a href="#goal-22b66c1e-50b1-505f-a388-c39131a4e1c3"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>II&#160;<wbr>(GK&#160;<wbr>und&#160;<wbr>LK)</span></a></h3>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-structure:function-families" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-fcdc49a2e5d99f1c219fc577" aria-label="Funktionenscharen, Argumentieren und komplexe Zahlen"><a href="#goal-22b66c1e-50b1-505f-a388-c39131a4e1c3"><span class="toc-entry-label">Funktionenscharen,&#160;<wbr>Argumentieren&#160;<wbr>und&#160;<wbr>komplexe&#160;<wbr>Zahlen</span></a></h4>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-a5f07620-a895-52db-a0cc-1d05bf64c3d6" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-0ad791b25fd545a71eeacc3f" aria-label="Problemlösen und Argumentieren"><a href="#goal-c1f08d89-d65a-5041-8ff3-37538f771b8c"><span class="toc-entry-label">Problemlösen&#160;<wbr>und&#160;<wbr>Argumentieren</span></a></h5>
+          <span class="toc-entry-meta"><span>11 Lernziele</span><span>erste zugehörige Lernzielseite 10</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-552111c6-965a-557a-9450-3fe5ed2d09cd" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-5f6502b8c29b5175b5c70c01" aria-label="Zahlentheorie und Kryptologie im Vertiefungskurs (LK)"><a href="#goal-c1f08d89-d65a-5041-8ff3-37538f771b8c"><span class="toc-entry-label">Zahlentheorie&#160;<wbr>und&#160;<wbr>Kryptologie&#160;<wbr>im&#160;<wbr>Vertiefungskurs&#160;<wbr>(LK)</span></a></h6>
+          <span class="toc-entry-meta"><span>11 Lernziele</span><span>erste zugehörige Lernzielseite 10</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:5" data-chapter-id="structure:canonical-goal-0ffa6e50-011d-5702-8c5e-85d708eda2e8" data-chapter-depth="5">
+          <h6 class="toc-entry-heading" id="chapter-9d6c90e6c86ede43632f58c4" aria-label="Euklidischen und erweiterten euklidischen Algorithmus anwenden (LK)"><a href="#goal-c1f08d89-d65a-5041-8ff3-37538f771b8c"><span class="toc-entry-label">Euklidischen&#160;<wbr>und&#160;<wbr>erweiterten&#160;<wbr>euklidischen&#160;<wbr>Algorithmus&#160;<wbr>anwenden&#160;<wbr>(LK)</span></a></h6>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 10</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:5" data-chapter-id="structure:canonical-goal-9220b6b6-c023-501b-ad8f-e42e4f51d979" data-chapter-depth="5">
+          <h6 class="toc-entry-heading" id="chapter-938a062ca30f6905384cc21f" aria-label="Modulare Arithmetik und chinesischen Restsatz nutzen (LK)"><a href="#goal-d8cbf2bd-2512-5661-b431-4aea7e688912"><span class="toc-entry-label">Modulare&#160;<wbr>Arithmetik&#160;<wbr>und&#160;<wbr>chinesischen&#160;<wbr>Restsatz&#160;<wbr>nutzen&#160;<wbr>(LK)</span></a></h6>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 13</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:5" data-chapter-id="structure:canonical-goal-cdde4164-0d23-52e4-b1e8-9f412a48c999" data-chapter-depth="5">
+          <h6 class="toc-entry-heading" id="chapter-52e712a98ec56988b02164b3" aria-label="Primzahltests und Faktorisierungsverfahren erläutern (LK)"><a href="#goal-d32f599e-3b38-5557-8ad3-565bcd99f4c6"><span class="toc-entry-label">Primzahltests&#160;<wbr>und&#160;<wbr>Faktorisierungsverfahren&#160;<wbr>erläutern&#160;<wbr>(LK)</span></a></h6>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 19</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:canonical-goal-248d7dc3-6d85-55b3-8859-584c79869d75" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-f5be34bb6309cb1bba5d024e" aria-label="Komplexe Zahlen"><a href="#goal-22b66c1e-50b1-505f-a388-c39131a4e1c3"><span class="toc-entry-label">Komplexe&#160;<wbr>Zahlen</span></a></h5>
+          <span class="toc-entry-meta"><span>9 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:4" data-chapter-id="structure:canonical-goal-36f16d92-7430-50c3-8696-cf486470f771" data-chapter-depth="4">
+          <h6 class="toc-entry-heading" id="chapter-35962e6c233e9a3e1945ea6d" aria-label="Komplexe Zahlen algebraisch multiplizieren und dividieren"><a href="#goal-9a0987cd-1e6e-5c09-a602-9fda43b8f655"><span class="toc-entry-label">Komplexe&#160;<wbr>Zahlen&#160;<wbr>algebraisch&#160;<wbr>multiplizieren&#160;<wbr>und&#160;<wbr>dividieren</span></a></h6>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 8</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-22b66c1e-50b1-505f-a388-c39131a4e1c3" data-goal-id="22b66c1e-50b1-505f-a388-c39131a4e1c3" data-page-number="1" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-248d7dc3-6d85-55b3-8859-584c79869d75" aria-labelledby="goal-22b66c1e-50b1-505f-a388-c39131a4e1c3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-22b66c1e-50b1-505f-a388-c39131a4e1c3-title"><a class="goal-self-link" href="#goal-22b66c1e-50b1-505f-a388-c39131a4e1c3">Komplexe Zahlen in algebraischer Form additiv nutzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>22b66c1e-50b1-505f-a388-c39131a4e1c3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-f5be34bb6309cb1bba5d024e">Komplexe Zahlen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:26cd7c44bc8e6994e17f5587ca6b7bc207f8aef9903123d24e81372f23a137ad" data-rendered-digest="sha256:fdb0b48fbf3fdea545199d0a6567419c595ea8910e86684c1a9d1a4a08931126" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/22b66c1e-50b1-505f-a388-c39131a4e1c3/22b66c1e-50b1-505f-a388-c39131a4e1c3.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Komplexe Zahlen in algebraischer Form additiv nutzen&quot;. Die lernende Person kann Real- und Imaginärteil identifizieren, komplexe Zahlen in der Form a + bi darstellen und sie addieren oder subtrahieren.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-22b66c1e-50b1-505f-a388-c39131a4e1c3-description-heading">
+        <p class="section-heading" id="goal-22b66c1e-50b1-505f-a388-c39131a4e1c3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Real- und Imaginärteil identifizieren, komplexe Zahlen in der Form a + bi darstellen und sie addieren oder subtrahieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-22b66c1e-50b1-505f-a388-c39131a4e1c3" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-22b66c1e-50b1-505f-a388-c39131a4e1c3-requires-heading">
+          <p class="section-heading" id="goal-22b66c1e-50b1-505f-a388-c39131a4e1c3-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-22b66c1e-50b1-505f-a388-c39131a4e1c3-reverse-heading">
+          <p class="section-heading" id="goal-22b66c1e-50b1-505f-a388-c39131a4e1c3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-9a0987cd-1e6e-5c09-a602-9fda43b8f655"><span>Komplexe Zahlen algebraisch multiplizieren</span><code>9a0987cd-1e6e-5c09-a602-9fda43b8f655</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d"><span>Komplexe Zahlen algebraisch dividieren</span><code>5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d</code><span class="reference-page">S. 9</span></a></li><li><a href="#goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2"><span>Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen</span><code>4f64f771-20ba-581a-86ba-bcdb1759e4d2</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-a7fb1a7a-8315-5bcb-842e-48293293dfcc"><span>Grundrechenarten in der Gaußschen Zahlenebene deuten</span><code>a7fb1a7a-8315-5bcb-842e-48293293dfcc</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-5922affd-b1f9-5ad9-963e-25d3734c3b72"><span>Gleichungen in der Menge der komplexen Zahlen lösen</span><code>5922affd-b1f9-5ad9-963e-25d3734c3b72</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-22b66c1e-50b1-505f-a388-c39131a4e1c3-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-22b66c1e-50b1-505f-a388-c39131a4e1c3-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2" rel="noreferrer noopener"><span>Warum Mathematik? – Denken, Muster &amp; Zukunft</span> <code>71cec9fb-3751-4d61-8b34-c5adbbf6e5f2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-858113c5-e53b-57bb-b01f-ba95c3ddcb6f" rel="noreferrer noopener"><span>Ableitungen elementarer Funktionen berechnen</span> <code>858113c5-e53b-57bb-b01f-ba95c3ddcb6f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a9ed219d-d497-55e5-a4e0-4d45d2554f6b" rel="noreferrer noopener"><span>Einfache Integrale berechnen</span> <code>a9ed219d-d497-55e5-a4e0-4d45d2554f6b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-304111dd-426b-520b-a275-3fa37da1b0e0" rel="noreferrer noopener"><span>Matrizen multiplizieren</span> <code>304111dd-426b-520b-a275-3fa37da1b0e0</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b980ff18c478dfa95b944486306a37c6bb2d0b4085b39b355406da99c5bb730a</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=22b66c1e-50b1-505f-a388-c39131a4e1c3&amp;goalFingerprint=sha256%3Ab980ff18c478dfa95b944486306a37c6bb2d0b4085b39b355406da99c5bb730a&amp;pageFingerprint=sha256%3Ad59567b9dab8f3c61eb2c6b8bdda6f95cb51214d8c82f4bf25c8cbdba37c8f92&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2" data-goal-id="4f64f771-20ba-581a-86ba-bcdb1759e4d2" data-page-number="2" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-248d7dc3-6d85-55b3-8859-584c79869d75" aria-labelledby="goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2-title"><a class="goal-self-link" href="#goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2">Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4f64f771-20ba-581a-86ba-bcdb1759e4d2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-f5be34bb6309cb1bba5d024e">Komplexe Zahlen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6e3834d0a3025c433ec7f9406313f100f512376b88beb31968ec6bf623a1ee79" data-rendered-digest="sha256:63343b028b81f2bef4c645d43dd6634dac21fed27dcef6129bd9935dbc810c78" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/4f64f771-20ba-581a-86ba-bcdb1759e4d2/4f64f771-20ba-581a-86ba-bcdb1759e4d2.png" alt="Die lernende Person kann komplexe Zahlen in der Gaußschen Zahlenebene und in Polarform $z=r\cdot e^{i\varphi}=r\cdot(\cos\varphi+i\cdot\sin\varphi)$ mit $r\ge 0$ darstellen, ihren Betrag und für $z\ne 0$ ein Argument bestimmen sowie Darstellungen mit $\varphi=\omega t$ fachsprachlich deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2-description-heading">
+        <p class="section-heading" id="goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann komplexe Zahlen in der Gaußschen Zahlenebene und in Polarform $z=r\cdot e^{i\varphi}=r\cdot(\cos\varphi+i\cdot\sin\varphi)$ mit $r\ge 0$ darstellen, ihren Betrag und für $z\ne 0$ ein Argument bestimmen sowie Darstellungen mit $\varphi=\omega t$ fachsprachlich deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2-requires-heading">
+          <p class="section-heading" id="goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-22b66c1e-50b1-505f-a388-c39131a4e1c3"><span>Komplexe Zahlen in algebraischer Form additiv nutzen</span><code>22b66c1e-50b1-505f-a388-c39131a4e1c3</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2-reverse-heading">
+          <p class="section-heading" id="goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-a7fb1a7a-8315-5bcb-842e-48293293dfcc"><span>Grundrechenarten in der Gaußschen Zahlenebene deuten</span><code>a7fb1a7a-8315-5bcb-842e-48293293dfcc</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-eda8580e-1f10-5dbd-9aaf-92367f40a6bd"><span>Komplexe Zahlen als 2×2-Matrizen darstellen (LK)</span><code>eda8580e-1f10-5dbd-9aaf-92367f40a6bd</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-8e18154d-41d6-592e-ba98-537edad338e8"><span>Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK)</span><code>8e18154d-41d6-592e-ba98-537edad338e8</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-9b339361-7719-573d-a913-432246c502ee"><span>Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)</span><code>9b339361-7719-573d-a913-432246c502ee</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0cda3c7da0e32989db40a40d20f30ca5bce090b4c4f8a01fa6f36f06f1ac3ff4</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=4f64f771-20ba-581a-86ba-bcdb1759e4d2&amp;goalFingerprint=sha256%3A0cda3c7da0e32989db40a40d20f30ca5bce090b4c4f8a01fa6f36f06f1ac3ff4&amp;pageFingerprint=sha256%3A83151d170e632802174b9c0451f68f11cc9ebe67340f6872898154bc1f2fc451&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5922affd-b1f9-5ad9-963e-25d3734c3b72" data-goal-id="5922affd-b1f9-5ad9-963e-25d3734c3b72" data-page-number="3" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-248d7dc3-6d85-55b3-8859-584c79869d75" aria-labelledby="goal-5922affd-b1f9-5ad9-963e-25d3734c3b72-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5922affd-b1f9-5ad9-963e-25d3734c3b72-title"><a class="goal-self-link" href="#goal-5922affd-b1f9-5ad9-963e-25d3734c3b72">Gleichungen in der Menge der komplexen Zahlen lösen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5922affd-b1f9-5ad9-963e-25d3734c3b72</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-f5be34bb6309cb1bba5d024e">Komplexe Zahlen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:5fbce9daf08199a1b4a9130eaf892ee46755521520518f86d713bec6c69404e1" data-rendered-digest="sha256:1a17100e1ee02b27b53cf18e3f39963f987d40d3dec92a6d6bc99a814860c907" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/5922affd-b1f9-5ad9-963e-25d3734c3b72/5922affd-b1f9-5ad9-963e-25d3734c3b72.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Gleichungen in der Menge der komplexen Zahlen lösen&quot;. Die lernende Person kann einfache Gleichungen in der Menge der komplexen Zahlen lösen, insbesondere quadratische Gleichungen mit nichtreellen Lösungen, und die Lösungen in geeigneter Form darstellen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5922affd-b1f9-5ad9-963e-25d3734c3b72-description-heading">
+        <p class="section-heading" id="goal-5922affd-b1f9-5ad9-963e-25d3734c3b72-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann einfache Gleichungen in der Menge der komplexen Zahlen lösen, insbesondere quadratische Gleichungen mit nichtreellen Lösungen, und die Lösungen in geeigneter Form darstellen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5922affd-b1f9-5ad9-963e-25d3734c3b72" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5922affd-b1f9-5ad9-963e-25d3734c3b72-requires-heading">
+          <p class="section-heading" id="goal-5922affd-b1f9-5ad9-963e-25d3734c3b72-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-22b66c1e-50b1-505f-a388-c39131a4e1c3"><span>Komplexe Zahlen in algebraischer Form additiv nutzen</span><code>22b66c1e-50b1-505f-a388-c39131a4e1c3</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-5922affd-b1f9-5ad9-963e-25d3734c3b72-reverse-heading">
+          <p class="section-heading" id="goal-5922affd-b1f9-5ad9-963e-25d3734c3b72-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-5922affd-b1f9-5ad9-963e-25d3734c3b72-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5922affd-b1f9-5ad9-963e-25d3734c3b72-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a8525adc-fad3-53f5-953f-213bd37b09e8" rel="noreferrer noopener"><span>Komplexe Zahlen sicher anwenden</span> <code>a8525adc-fad3-53f5-953f-213bd37b09e8</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:179614ddf2bec95c5c3f3b38a613537caa38f7575b24b6a52cdb5ef7fc36d53a</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=5922affd-b1f9-5ad9-963e-25d3734c3b72&amp;goalFingerprint=sha256%3A179614ddf2bec95c5c3f3b38a613537caa38f7575b24b6a52cdb5ef7fc36d53a&amp;pageFingerprint=sha256%3A82eea8c2affd610b26b8b9468517b8d2a6ff68faeb8b927380a637e45fd45f2e&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a7fb1a7a-8315-5bcb-842e-48293293dfcc" data-goal-id="a7fb1a7a-8315-5bcb-842e-48293293dfcc" data-page-number="4" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-248d7dc3-6d85-55b3-8859-584c79869d75" aria-labelledby="goal-a7fb1a7a-8315-5bcb-842e-48293293dfcc-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a7fb1a7a-8315-5bcb-842e-48293293dfcc-title"><a class="goal-self-link" href="#goal-a7fb1a7a-8315-5bcb-842e-48293293dfcc">Grundrechenarten in der Gaußschen Zahlenebene deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a7fb1a7a-8315-5bcb-842e-48293293dfcc</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-f5be34bb6309cb1bba5d024e">Komplexe Zahlen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e38302ca8e3bdf0ff97164c052113155208b97f9e151c289bf842cd68d4f45f5" data-rendered-digest="sha256:c853a726b28bc27ce9b325f9191f29a4e0ddeeb6037da8e98c9b4999dc72341f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/a7fb1a7a-8315-5bcb-842e-48293293dfcc/a7fb1a7a-8315-5bcb-842e-48293293dfcc.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Grundrechenarten in der Gaußschen Zahlenebene deuten&quot;. Die lernende Person kann Addition, Subtraktion, Multiplikation und Division komplexer Zahlen in der Gaußschen Zahlenebene geometrisch deuten, insbesondere als Verschiebung, Streckung oder Drehung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a7fb1a7a-8315-5bcb-842e-48293293dfcc-description-heading">
+        <p class="section-heading" id="goal-a7fb1a7a-8315-5bcb-842e-48293293dfcc-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Addition, Subtraktion, Multiplikation und Division komplexer Zahlen in der Gaußschen Zahlenebene geometrisch deuten, insbesondere als Verschiebung, Streckung oder Drehung.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a7fb1a7a-8315-5bcb-842e-48293293dfcc" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a7fb1a7a-8315-5bcb-842e-48293293dfcc-requires-heading">
+          <p class="section-heading" id="goal-a7fb1a7a-8315-5bcb-842e-48293293dfcc-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-22b66c1e-50b1-505f-a388-c39131a4e1c3"><span>Komplexe Zahlen in algebraischer Form additiv nutzen</span><code>22b66c1e-50b1-505f-a388-c39131a4e1c3</code><span class="reference-page">S. 1</span></a></li><li><a href="#goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2"><span>Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen</span><code>4f64f771-20ba-581a-86ba-bcdb1759e4d2</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a7fb1a7a-8315-5bcb-842e-48293293dfcc-reverse-heading">
+          <p class="section-heading" id="goal-a7fb1a7a-8315-5bcb-842e-48293293dfcc-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-a7fb1a7a-8315-5bcb-842e-48293293dfcc-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a7fb1a7a-8315-5bcb-842e-48293293dfcc-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a8525adc-fad3-53f5-953f-213bd37b09e8" rel="noreferrer noopener"><span>Komplexe Zahlen sicher anwenden</span> <code>a8525adc-fad3-53f5-953f-213bd37b09e8</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ea55af27bfbe031c5ea76854c307698db0c8e9f804aec5edc4c8665a6716c3b1</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=a7fb1a7a-8315-5bcb-842e-48293293dfcc&amp;goalFingerprint=sha256%3Aea55af27bfbe031c5ea76854c307698db0c8e9f804aec5edc4c8665a6716c3b1&amp;pageFingerprint=sha256%3A0d76b1e992954d03e6bad6e5aecb8c497cb08512d6e370f5f9f4b60943d8aed4&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-eda8580e-1f10-5dbd-9aaf-92367f40a6bd" data-goal-id="eda8580e-1f10-5dbd-9aaf-92367f40a6bd" data-page-number="5" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-248d7dc3-6d85-55b3-8859-584c79869d75" aria-labelledby="goal-eda8580e-1f10-5dbd-9aaf-92367f40a6bd-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-eda8580e-1f10-5dbd-9aaf-92367f40a6bd-title"><a class="goal-self-link" href="#goal-eda8580e-1f10-5dbd-9aaf-92367f40a6bd">Komplexe Zahlen als 2×2-Matrizen darstellen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>eda8580e-1f10-5dbd-9aaf-92367f40a6bd</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-f5be34bb6309cb1bba5d024e">Komplexe Zahlen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:faf179c27596c7d20b4584f5451e51dac0b6ca30df62f42abdfb73626a81cae2" data-rendered-digest="sha256:5ad51f229fa4acbeaa418859e1daf931d36956c64e70eae966d71b76386fcee5" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/eda8580e-1f10-5dbd-9aaf-92367f40a6bd/eda8580e-1f10-5dbd-9aaf-92367f40a6bd.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Komplexe Zahlen als 2×2-Matrizen darstellen (LK)&quot;. Die lernende Person kann eine komplexe Zahl durch eine passende 2×2-Matrix repräsentieren und die Matrixdarstellung fachsprachlich deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-eda8580e-1f10-5dbd-9aaf-92367f40a6bd-description-heading">
+        <p class="section-heading" id="goal-eda8580e-1f10-5dbd-9aaf-92367f40a6bd-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann eine komplexe Zahl durch eine passende 2×2-Matrix repräsentieren und die Matrixdarstellung fachsprachlich deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-eda8580e-1f10-5dbd-9aaf-92367f40a6bd" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-eda8580e-1f10-5dbd-9aaf-92367f40a6bd-requires-heading">
+          <p class="section-heading" id="goal-eda8580e-1f10-5dbd-9aaf-92367f40a6bd-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2"><span>Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen</span><code>4f64f771-20ba-581a-86ba-bcdb1759e4d2</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-eda8580e-1f10-5dbd-9aaf-92367f40a6bd-reverse-heading">
+          <p class="section-heading" id="goal-eda8580e-1f10-5dbd-9aaf-92367f40a6bd-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-eda8580e-1f10-5dbd-9aaf-92367f40a6bd-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-eda8580e-1f10-5dbd-9aaf-92367f40a6bd-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8dc2c87a-cfc6-5f15-89e5-634107f5c9c7" rel="noreferrer noopener"><span>Abbildungsmatrix aus Basisbildern bestimmen</span> <code>8dc2c87a-cfc6-5f15-89e5-634107f5c9c7</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-eda8580e-1f10-5dbd-9aaf-92367f40a6bd-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-eda8580e-1f10-5dbd-9aaf-92367f40a6bd-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a8525adc-fad3-53f5-953f-213bd37b09e8" rel="noreferrer noopener"><span>Komplexe Zahlen sicher anwenden</span> <code>a8525adc-fad3-53f5-953f-213bd37b09e8</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3442a4a53b793c2601d52f09d9b2e63f864d5380eb41d118dd8458c82d772f15</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=eda8580e-1f10-5dbd-9aaf-92367f40a6bd&amp;goalFingerprint=sha256%3A3442a4a53b793c2601d52f09d9b2e63f864d5380eb41d118dd8458c82d772f15&amp;pageFingerprint=sha256%3Acff11279d0746dd4132fad3fb2eed5ed659a662fa7bcceae73c12c249feea930&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8e18154d-41d6-592e-ba98-537edad338e8" data-goal-id="8e18154d-41d6-592e-ba98-537edad338e8" data-page-number="6" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-248d7dc3-6d85-55b3-8859-584c79869d75" aria-labelledby="goal-8e18154d-41d6-592e-ba98-537edad338e8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8e18154d-41d6-592e-ba98-537edad338e8-title"><a class="goal-self-link" href="#goal-8e18154d-41d6-592e-ba98-537edad338e8">Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8e18154d-41d6-592e-ba98-537edad338e8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-f5be34bb6309cb1bba5d024e">Komplexe Zahlen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:01be7c0ba7bf5970b81540cca2237b427f2229df831d707fc80ad847b63d52d9" data-rendered-digest="sha256:0973555534830cff3dd3409eef6fd7550d2836b0195d1834f6538db37f7041a3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/8e18154d-41d6-592e-ba98-537edad338e8/8e18154d-41d6-592e-ba98-537edad338e8.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK)&quot;. Die lernende Person kann Lösungen von Gleichungen der Form z^n = 1 bestimmen und die n-ten Einheitswurzeln am Einheitskreis geometrisch deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8e18154d-41d6-592e-ba98-537edad338e8-description-heading">
+        <p class="section-heading" id="goal-8e18154d-41d6-592e-ba98-537edad338e8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Lösungen von Gleichungen der Form z^n = 1 bestimmen und die n-ten Einheitswurzeln am Einheitskreis geometrisch deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-8e18154d-41d6-592e-ba98-537edad338e8" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8e18154d-41d6-592e-ba98-537edad338e8-requires-heading">
+          <p class="section-heading" id="goal-8e18154d-41d6-592e-ba98-537edad338e8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2"><span>Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen</span><code>4f64f771-20ba-581a-86ba-bcdb1759e4d2</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8e18154d-41d6-592e-ba98-537edad338e8-reverse-heading">
+          <p class="section-heading" id="goal-8e18154d-41d6-592e-ba98-537edad338e8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-9b339361-7719-573d-a913-432246c502ee"><span>Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)</span><code>9b339361-7719-573d-a913-432246c502ee</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-8e18154d-41d6-592e-ba98-537edad338e8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8e18154d-41d6-592e-ba98-537edad338e8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a8525adc-fad3-53f5-953f-213bd37b09e8" rel="noreferrer noopener"><span>Komplexe Zahlen sicher anwenden</span> <code>a8525adc-fad3-53f5-953f-213bd37b09e8</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a798c33895a061a7eb5ced5594c484eceba78b99724283bc4785adcd993a9740</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=8e18154d-41d6-592e-ba98-537edad338e8&amp;goalFingerprint=sha256%3Aa798c33895a061a7eb5ced5594c484eceba78b99724283bc4785adcd993a9740&amp;pageFingerprint=sha256%3Af82fe69401dc01b1ca9b9000916a79b180a15590ff9581629bf0d3e45f245018&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9b339361-7719-573d-a913-432246c502ee" data-goal-id="9b339361-7719-573d-a913-432246c502ee" data-page-number="7" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-248d7dc3-6d85-55b3-8859-584c79869d75" aria-labelledby="goal-9b339361-7719-573d-a913-432246c502ee-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9b339361-7719-573d-a913-432246c502ee-title"><a class="goal-self-link" href="#goal-9b339361-7719-573d-a913-432246c502ee">Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9b339361-7719-573d-a913-432246c502ee</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-f5be34bb6309cb1bba5d024e">Komplexe Zahlen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:165a287cdfc09afabd53f2efd4efdcea2331ed3bce9a579094d2ca6bc68a1e53" data-rendered-digest="sha256:f0e0251f7d88f7b8f54947128b4a4f71701a77de063deb869dc258630c22c49b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/9b339361-7719-573d-a913-432246c502ee/9b339361-7719-573d-a913-432246c502ee.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)&quot;. Die lernende Person kann Folgen komplexer Zahlen im Zusammenhang mit der Mandelbrot-Menge auf Beschränktheit untersuchen und die Mandelbrot-Menge mit geeigneter Software veranschaulichen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9b339361-7719-573d-a913-432246c502ee-description-heading">
+        <p class="section-heading" id="goal-9b339361-7719-573d-a913-432246c502ee-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Folgen komplexer Zahlen im Zusammenhang mit der Mandelbrot-Menge auf Beschränktheit untersuchen und die Mandelbrot-Menge mit geeigneter Software veranschaulichen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9b339361-7719-573d-a913-432246c502ee" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9b339361-7719-573d-a913-432246c502ee-requires-heading">
+          <p class="section-heading" id="goal-9b339361-7719-573d-a913-432246c502ee-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2"><span>Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen</span><code>4f64f771-20ba-581a-86ba-bcdb1759e4d2</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-8e18154d-41d6-592e-ba98-537edad338e8"><span>Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK)</span><code>8e18154d-41d6-592e-ba98-537edad338e8</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-9b339361-7719-573d-a913-432246c502ee-reverse-heading">
+          <p class="section-heading" id="goal-9b339361-7719-573d-a913-432246c502ee-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-9b339361-7719-573d-a913-432246c502ee-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9b339361-7719-573d-a913-432246c502ee-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a8525adc-fad3-53f5-953f-213bd37b09e8" rel="noreferrer noopener"><span>Komplexe Zahlen sicher anwenden</span> <code>a8525adc-fad3-53f5-953f-213bd37b09e8</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a4fd97979e06eb33292219bc2e43f1cd73d43faecbcbe560425b9aecfbb20f35</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=9b339361-7719-573d-a913-432246c502ee&amp;goalFingerprint=sha256%3Aa4fd97979e06eb33292219bc2e43f1cd73d43faecbcbe560425b9aecfbb20f35&amp;pageFingerprint=sha256%3A45bc3e84ec78a6d98a614558e6106728a76aed15d00429926439214a652917d0&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9a0987cd-1e6e-5c09-a602-9fda43b8f655" data-goal-id="9a0987cd-1e6e-5c09-a602-9fda43b8f655" data-page-number="8" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-248d7dc3-6d85-55b3-8859-584c79869d75 structure:canonical-goal-36f16d92-7430-50c3-8696-cf486470f771" aria-labelledby="goal-9a0987cd-1e6e-5c09-a602-9fda43b8f655-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9a0987cd-1e6e-5c09-a602-9fda43b8f655-title"><a class="goal-self-link" href="#goal-9a0987cd-1e6e-5c09-a602-9fda43b8f655">Komplexe Zahlen algebraisch multiplizieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9a0987cd-1e6e-5c09-a602-9fda43b8f655</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-f5be34bb6309cb1bba5d024e">Komplexe Zahlen</a></li><li><a href="#chapter-35962e6c233e9a3e1945ea6d">Komplexe Zahlen algebraisch multiplizieren und dividieren</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:bc1153b6d884818f786f3ec840bc7d61870831744126b11f88f9ad0387e6f65c" data-rendered-digest="sha256:9bd1e54154a43e1e3e06d74649467b7a862c623f4b0e46eeb1583a5f01ca288a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/9a0987cd-1e6e-5c09-a602-9fda43b8f655/9a0987cd-1e6e-5c09-a602-9fda43b8f655.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Komplexe Zahlen algebraisch multiplizieren&quot;. Die lernende Person kann komplexe Zahlen in algebraischer Form multiplizieren, die Beziehung $i^2=-1$ nutzen und Ergebnisse als $a+bi$ darstellen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9a0987cd-1e6e-5c09-a602-9fda43b8f655-description-heading">
+        <p class="section-heading" id="goal-9a0987cd-1e6e-5c09-a602-9fda43b8f655-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann komplexe Zahlen in algebraischer Form multiplizieren, die Beziehung $i^2=-1$ nutzen und Ergebnisse als $a+bi$ darstellen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-9a0987cd-1e6e-5c09-a602-9fda43b8f655" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9a0987cd-1e6e-5c09-a602-9fda43b8f655-requires-heading">
+          <p class="section-heading" id="goal-9a0987cd-1e6e-5c09-a602-9fda43b8f655-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-22b66c1e-50b1-505f-a388-c39131a4e1c3"><span>Komplexe Zahlen in algebraischer Form additiv nutzen</span><code>22b66c1e-50b1-505f-a388-c39131a4e1c3</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-9a0987cd-1e6e-5c09-a602-9fda43b8f655-reverse-heading">
+          <p class="section-heading" id="goal-9a0987cd-1e6e-5c09-a602-9fda43b8f655-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d"><span>Komplexe Zahlen algebraisch dividieren</span><code>5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-9a0987cd-1e6e-5c09-a602-9fda43b8f655-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9a0987cd-1e6e-5c09-a602-9fda43b8f655-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a8525adc-fad3-53f5-953f-213bd37b09e8" rel="noreferrer noopener"><span>Komplexe Zahlen sicher anwenden</span> <code>a8525adc-fad3-53f5-953f-213bd37b09e8</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f280e6296af70e36cbc4f634dd8668b0cac5cefc5149cd968569996e18087d47</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=9a0987cd-1e6e-5c09-a602-9fda43b8f655&amp;goalFingerprint=sha256%3Af280e6296af70e36cbc4f634dd8668b0cac5cefc5149cd968569996e18087d47&amp;pageFingerprint=sha256%3Ada6e6e492987eb5a24e937d3f4dedeba67192396f63b0df614b1df362fb94300&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d" data-goal-id="5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d" data-page-number="9" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-248d7dc3-6d85-55b3-8859-584c79869d75 structure:canonical-goal-36f16d92-7430-50c3-8696-cf486470f771" aria-labelledby="goal-5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d-title"><a class="goal-self-link" href="#goal-5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d">Komplexe Zahlen algebraisch dividieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-f5be34bb6309cb1bba5d024e">Komplexe Zahlen</a></li><li><a href="#chapter-35962e6c233e9a3e1945ea6d">Komplexe Zahlen algebraisch multiplizieren und dividieren</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f0afdea61e4021db8042a59f2f915993a59d3dacfe4f752c876dad0fd210cd96" data-rendered-digest="sha256:bb47d5b7d10c5921321f4db1e5dc0c7d4390389a5a6ce1efe4c768f79c53cf54" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d/5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Komplexe Zahlen algebraisch dividieren&quot;. Die lernende Person kann komplexe Zahlen in algebraischer Form dividieren, konjugiert komplexe Zahlen nutzen und Ergebnisse als $a+bi$ darstellen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d-description-heading">
+        <p class="section-heading" id="goal-5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann komplexe Zahlen in algebraischer Form dividieren, konjugiert komplexe Zahlen nutzen und Ergebnisse als $a+bi$ darstellen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d-requires-heading">
+          <p class="section-heading" id="goal-5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-22b66c1e-50b1-505f-a388-c39131a4e1c3"><span>Komplexe Zahlen in algebraischer Form additiv nutzen</span><code>22b66c1e-50b1-505f-a388-c39131a4e1c3</code><span class="reference-page">S. 1</span></a></li><li><a href="#goal-9a0987cd-1e6e-5c09-a602-9fda43b8f655"><span>Komplexe Zahlen algebraisch multiplizieren</span><code>9a0987cd-1e6e-5c09-a602-9fda43b8f655</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d-reverse-heading">
+          <p class="section-heading" id="goal-5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a8525adc-fad3-53f5-953f-213bd37b09e8" rel="noreferrer noopener"><span>Komplexe Zahlen sicher anwenden</span> <code>a8525adc-fad3-53f5-953f-213bd37b09e8</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f469f1689c2764898336e2cd09602b30953b5e3eed770f9157a917a12091bfcd</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d&amp;goalFingerprint=sha256%3Af469f1689c2764898336e2cd09602b30953b5e3eed770f9157a917a12091bfcd&amp;pageFingerprint=sha256%3A1c4f8398323757cb96270c83d97bd22a162dfd96f1fd53235c52ef9b010fc7f1&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c1f08d89-d65a-5041-8ff3-37538f771b8c" data-goal-id="c1f08d89-d65a-5041-8ff3-37538f771b8c" data-page-number="10" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-a5f07620-a895-52db-a0cc-1d05bf64c3d6 structure:canonical-goal-552111c6-965a-557a-9450-3fe5ed2d09cd structure:canonical-goal-0ffa6e50-011d-5702-8c5e-85d708eda2e8" aria-labelledby="goal-c1f08d89-d65a-5041-8ff3-37538f771b8c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c1f08d89-d65a-5041-8ff3-37538f771b8c-title"><a class="goal-self-link" href="#goal-c1f08d89-d65a-5041-8ff3-37538f771b8c">Euklidischen Algorithmus anwenden (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c1f08d89-d65a-5041-8ff3-37538f771b8c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-0ad791b25fd545a71eeacc3f">Problemlösen und Argumentieren</a></li><li><a href="#chapter-5f6502b8c29b5175b5c70c01">Zahlentheorie und Kryptologie im Vertiefungskurs (LK)</a></li><li><a href="#chapter-9d6c90e6c86ede43632f58c4">Euklidischen und erweiterten euklidischen Algorithmus anwenden (LK)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b4ee453e7fd2eae655067370b1a46392dad3a157dbcdaeb990413ddba24fb7e6" data-rendered-digest="sha256:bf2727dcda7ddf325918900e915046642dfa3764f51eda454c9ac1bded033813" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/c1f08d89-d65a-5041-8ff3-37538f771b8c/c1f08d89-d65a-5041-8ff3-37538f771b8c.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Euklidischen Algorithmus anwenden (LK)&quot;. Die lernende Person kann den euklidischen Algorithmus erläutern und an Beispielen zur Bestimmung des größten gemeinsamen Teilers anwenden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c1f08d89-d65a-5041-8ff3-37538f771b8c-description-heading">
+        <p class="section-heading" id="goal-c1f08d89-d65a-5041-8ff3-37538f771b8c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den euklidischen Algorithmus erläutern und an Beispielen zur Bestimmung des größten gemeinsamen Teilers anwenden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c1f08d89-d65a-5041-8ff3-37538f771b8c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c1f08d89-d65a-5041-8ff3-37538f771b8c-requires-heading">
+          <p class="section-heading" id="goal-c1f08d89-d65a-5041-8ff3-37538f771b8c-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-c1f08d89-d65a-5041-8ff3-37538f771b8c-reverse-heading">
+          <p class="section-heading" id="goal-c1f08d89-d65a-5041-8ff3-37538f771b8c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c371b3f0-dd0e-5263-b616-de6c362f70db"><span>Erweiterten euklidischen Algorithmus anwenden (LK)</span><code>c371b3f0-dd0e-5263-b616-de6c362f70db</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-d8cbf2bd-2512-5661-b431-4aea7e688912"><span>Modulare Arithmetik nutzen (LK)</span><code>d8cbf2bd-2512-5661-b431-4aea7e688912</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-c1f08d89-d65a-5041-8ff3-37538f771b8c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c1f08d89-d65a-5041-8ff3-37538f771b8c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2" rel="noreferrer noopener"><span>Warum Mathematik? – Denken, Muster &amp; Zukunft</span> <code>71cec9fb-3751-4d61-8b34-c5adbbf6e5f2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4ae439c0-ce3c-5c96-9755-9899bc70e948" rel="noreferrer noopener"><span>Argumentation formalisieren und präzisieren (LK)</span> <code>4ae439c0-ce3c-5c96-9755-9899bc70e948</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-dd1d9f9c-0a4e-5d01-95d8-f6993163b20c" rel="noreferrer noopener"><span>Beweislücken identifizieren (LK)</span> <code>dd1d9f9c-0a4e-5d01-95d8-f6993163b20c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-c1f08d89-d65a-5041-8ff3-37538f771b8c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c1f08d89-d65a-5041-8ff3-37538f771b8c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4c319dfd-ebb1-504b-a036-c780e1915900" rel="noreferrer noopener"><span>Formale Verfahren und Werkzeuge reflektiert einsetzen</span> <code>4c319dfd-ebb1-504b-a036-c780e1915900</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:45eaa15b32c78f0928fc478ad3157da9b228e06ac90ba5351c4d9cf8b9437b9f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=c1f08d89-d65a-5041-8ff3-37538f771b8c&amp;goalFingerprint=sha256%3A45eaa15b32c78f0928fc478ad3157da9b228e06ac90ba5351c4d9cf8b9437b9f&amp;pageFingerprint=sha256%3A543d216ba7b22a1fa5181a1027b93154d598f2818d748595e83194ac4698c5cc&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c371b3f0-dd0e-5263-b616-de6c362f70db" data-goal-id="c371b3f0-dd0e-5263-b616-de6c362f70db" data-page-number="11" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-a5f07620-a895-52db-a0cc-1d05bf64c3d6 structure:canonical-goal-552111c6-965a-557a-9450-3fe5ed2d09cd structure:canonical-goal-0ffa6e50-011d-5702-8c5e-85d708eda2e8" aria-labelledby="goal-c371b3f0-dd0e-5263-b616-de6c362f70db-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c371b3f0-dd0e-5263-b616-de6c362f70db-title"><a class="goal-self-link" href="#goal-c371b3f0-dd0e-5263-b616-de6c362f70db">Erweiterten euklidischen Algorithmus anwenden (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c371b3f0-dd0e-5263-b616-de6c362f70db</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-0ad791b25fd545a71eeacc3f">Problemlösen und Argumentieren</a></li><li><a href="#chapter-5f6502b8c29b5175b5c70c01">Zahlentheorie und Kryptologie im Vertiefungskurs (LK)</a></li><li><a href="#chapter-9d6c90e6c86ede43632f58c4">Euklidischen und erweiterten euklidischen Algorithmus anwenden (LK)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6d10ecf6063a794f079e0ada138d5bfac679c38274662fd7b698aa502d30a4c5" data-rendered-digest="sha256:0654c570b52d272838df768474f5e848524a370593b9667f2b396c02ed12d37b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/c371b3f0-dd0e-5263-b616-de6c362f70db/c371b3f0-dd0e-5263-b616-de6c362f70db.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Erweiterten euklidischen Algorithmus anwenden (LK)&quot;. Die lernende Person kann den erweiterten euklidischen Algorithmus anwenden und eine Darstellung des größten gemeinsamen Teilers als Linearkombination bestimmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c371b3f0-dd0e-5263-b616-de6c362f70db-description-heading">
+        <p class="section-heading" id="goal-c371b3f0-dd0e-5263-b616-de6c362f70db-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den erweiterten euklidischen Algorithmus anwenden und eine Darstellung des größten gemeinsamen Teilers als Linearkombination bestimmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c371b3f0-dd0e-5263-b616-de6c362f70db" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c371b3f0-dd0e-5263-b616-de6c362f70db-requires-heading">
+          <p class="section-heading" id="goal-c371b3f0-dd0e-5263-b616-de6c362f70db-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-c1f08d89-d65a-5041-8ff3-37538f771b8c"><span>Euklidischen Algorithmus anwenden (LK)</span><code>c1f08d89-d65a-5041-8ff3-37538f771b8c</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c371b3f0-dd0e-5263-b616-de6c362f70db-reverse-heading">
+          <p class="section-heading" id="goal-c371b3f0-dd0e-5263-b616-de6c362f70db-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-16767f5e-5f21-5adb-8365-01b0d64c28f4"><span>Euklidische Algorithmen digital nachvollziehen (LK)</span><code>16767f5e-5f21-5adb-8365-01b0d64c28f4</code><span class="reference-page">S. 12</span></a></li><li><a href="#goal-d8cbf2bd-2512-5661-b431-4aea7e688912"><span>Modulare Arithmetik nutzen (LK)</span><code>d8cbf2bd-2512-5661-b431-4aea7e688912</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-a7c2aa01-4942-597f-a65f-ebb913d0019b"><span>Chinesischen Restsatz formulieren und Voraussetzungen prüfen (LK)</span><code>a7c2aa01-4942-597f-a65f-ebb913d0019b</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-c371b3f0-dd0e-5263-b616-de6c362f70db-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c371b3f0-dd0e-5263-b616-de6c362f70db-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2" rel="noreferrer noopener"><span>Warum Mathematik? – Denken, Muster &amp; Zukunft</span> <code>71cec9fb-3751-4d61-8b34-c5adbbf6e5f2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4ae439c0-ce3c-5c96-9755-9899bc70e948" rel="noreferrer noopener"><span>Argumentation formalisieren und präzisieren (LK)</span> <code>4ae439c0-ce3c-5c96-9755-9899bc70e948</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-dd1d9f9c-0a4e-5d01-95d8-f6993163b20c" rel="noreferrer noopener"><span>Beweislücken identifizieren (LK)</span> <code>dd1d9f9c-0a4e-5d01-95d8-f6993163b20c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-c371b3f0-dd0e-5263-b616-de6c362f70db-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c371b3f0-dd0e-5263-b616-de6c362f70db-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4c319dfd-ebb1-504b-a036-c780e1915900" rel="noreferrer noopener"><span>Formale Verfahren und Werkzeuge reflektiert einsetzen</span> <code>4c319dfd-ebb1-504b-a036-c780e1915900</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fa5483313253bb1145ad2899c8aff6db6f695767df18dcd869c0092a4444f9cb</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=c371b3f0-dd0e-5263-b616-de6c362f70db&amp;goalFingerprint=sha256%3Afa5483313253bb1145ad2899c8aff6db6f695767df18dcd869c0092a4444f9cb&amp;pageFingerprint=sha256%3Ace92b399f41fc3d6315326a52e9b2c3e515282edd76edb695981114fb71341b7&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-16767f5e-5f21-5adb-8365-01b0d64c28f4" data-goal-id="16767f5e-5f21-5adb-8365-01b0d64c28f4" data-page-number="12" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-a5f07620-a895-52db-a0cc-1d05bf64c3d6 structure:canonical-goal-552111c6-965a-557a-9450-3fe5ed2d09cd structure:canonical-goal-0ffa6e50-011d-5702-8c5e-85d708eda2e8" aria-labelledby="goal-16767f5e-5f21-5adb-8365-01b0d64c28f4-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-16767f5e-5f21-5adb-8365-01b0d64c28f4-title"><a class="goal-self-link" href="#goal-16767f5e-5f21-5adb-8365-01b0d64c28f4">Euklidische Algorithmen digital nachvollziehen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>16767f5e-5f21-5adb-8365-01b0d64c28f4</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-0ad791b25fd545a71eeacc3f">Problemlösen und Argumentieren</a></li><li><a href="#chapter-5f6502b8c29b5175b5c70c01">Zahlentheorie und Kryptologie im Vertiefungskurs (LK)</a></li><li><a href="#chapter-9d6c90e6c86ede43632f58c4">Euklidischen und erweiterten euklidischen Algorithmus anwenden (LK)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:95301a356a84aebb4a1b8a70de13fb1e716b4df2cdbf9e019e24f512348a16f6" data-rendered-digest="sha256:c0640feeb54748ad92249a290e90839cffae3e906583607925a57cab7d592937" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/16767f5e-5f21-5adb-8365-01b0d64c28f4/16767f5e-5f21-5adb-8365-01b0d64c28f4.jpg" alt="Die lernende Person kann die Schritte einer Implementierung des euklidischen oder erweiterten euklidischen Algorithmus in einer Tabellenkalkulation oder Programmierumgebung den mathematischen Operationen zuordnen und das Ergebnis an einem Beispiel prüfen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-16767f5e-5f21-5adb-8365-01b0d64c28f4-description-heading">
+        <p class="section-heading" id="goal-16767f5e-5f21-5adb-8365-01b0d64c28f4-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Schritte einer Implementierung des euklidischen oder erweiterten euklidischen Algorithmus in einer Tabellenkalkulation oder Programmierumgebung den mathematischen Operationen zuordnen und das Ergebnis an einem Beispiel prüfen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-16767f5e-5f21-5adb-8365-01b0d64c28f4" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-16767f5e-5f21-5adb-8365-01b0d64c28f4-requires-heading">
+          <p class="section-heading" id="goal-16767f5e-5f21-5adb-8365-01b0d64c28f4-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-c371b3f0-dd0e-5263-b616-de6c362f70db"><span>Erweiterten euklidischen Algorithmus anwenden (LK)</span><code>c371b3f0-dd0e-5263-b616-de6c362f70db</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-16767f5e-5f21-5adb-8365-01b0d64c28f4-reverse-heading">
+          <p class="section-heading" id="goal-16767f5e-5f21-5adb-8365-01b0d64c28f4-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-d8cbf2bd-2512-5661-b431-4aea7e688912"><span>Modulare Arithmetik nutzen (LK)</span><code>d8cbf2bd-2512-5661-b431-4aea7e688912</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-16767f5e-5f21-5adb-8365-01b0d64c28f4-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-16767f5e-5f21-5adb-8365-01b0d64c28f4-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2" rel="noreferrer noopener"><span>Warum Mathematik? – Denken, Muster &amp; Zukunft</span> <code>71cec9fb-3751-4d61-8b34-c5adbbf6e5f2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4ae439c0-ce3c-5c96-9755-9899bc70e948" rel="noreferrer noopener"><span>Argumentation formalisieren und präzisieren (LK)</span> <code>4ae439c0-ce3c-5c96-9755-9899bc70e948</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-dd1d9f9c-0a4e-5d01-95d8-f6993163b20c" rel="noreferrer noopener"><span>Beweislücken identifizieren (LK)</span> <code>dd1d9f9c-0a4e-5d01-95d8-f6993163b20c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-16767f5e-5f21-5adb-8365-01b0d64c28f4-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-16767f5e-5f21-5adb-8365-01b0d64c28f4-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4c319dfd-ebb1-504b-a036-c780e1915900" rel="noreferrer noopener"><span>Formale Verfahren und Werkzeuge reflektiert einsetzen</span> <code>4c319dfd-ebb1-504b-a036-c780e1915900</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:40d52bd7baebcd73e8d1885c4da299ce6b2f0b9a68588aa17568a1d9da69c8e5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=16767f5e-5f21-5adb-8365-01b0d64c28f4&amp;goalFingerprint=sha256%3A40d52bd7baebcd73e8d1885c4da299ce6b2f0b9a68588aa17568a1d9da69c8e5&amp;pageFingerprint=sha256%3A7e2535eda568658313655044fda39ddebce650f85f677cbd28ad65c80c0c68bf&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d8cbf2bd-2512-5661-b431-4aea7e688912" data-goal-id="d8cbf2bd-2512-5661-b431-4aea7e688912" data-page-number="13" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-a5f07620-a895-52db-a0cc-1d05bf64c3d6 structure:canonical-goal-552111c6-965a-557a-9450-3fe5ed2d09cd structure:canonical-goal-9220b6b6-c023-501b-ad8f-e42e4f51d979" aria-labelledby="goal-d8cbf2bd-2512-5661-b431-4aea7e688912-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d8cbf2bd-2512-5661-b431-4aea7e688912-title"><a class="goal-self-link" href="#goal-d8cbf2bd-2512-5661-b431-4aea7e688912">Modulare Arithmetik nutzen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d8cbf2bd-2512-5661-b431-4aea7e688912</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-0ad791b25fd545a71eeacc3f">Problemlösen und Argumentieren</a></li><li><a href="#chapter-5f6502b8c29b5175b5c70c01">Zahlentheorie und Kryptologie im Vertiefungskurs (LK)</a></li><li><a href="#chapter-938a062ca30f6905384cc21f">Modulare Arithmetik und chinesischen Restsatz nutzen (LK)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9ec190eb1c8e3b7eef6a47db4632700c285e958acead2f069043175d84d46348" data-rendered-digest="sha256:601e477e4deb1d16ac66156cc1c8844fc5ccbcc934017235f34bfb2e9edf201a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/d8cbf2bd-2512-5661-b431-4aea7e688912/d8cbf2bd-2512-5661-b431-4aea7e688912.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Modulare Arithmetik nutzen (LK)&quot;. Die lernende Person kann Potenzen modulo $n$ effizient berechnen und die Rechenschritte fachsprachlich erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d8cbf2bd-2512-5661-b431-4aea7e688912-description-heading">
+        <p class="section-heading" id="goal-d8cbf2bd-2512-5661-b431-4aea7e688912-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Potenzen modulo $n$ effizient berechnen und die Rechenschritte fachsprachlich erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d8cbf2bd-2512-5661-b431-4aea7e688912" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d8cbf2bd-2512-5661-b431-4aea7e688912-requires-heading">
+          <p class="section-heading" id="goal-d8cbf2bd-2512-5661-b431-4aea7e688912-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-c1f08d89-d65a-5041-8ff3-37538f771b8c"><span>Euklidischen Algorithmus anwenden (LK)</span><code>c1f08d89-d65a-5041-8ff3-37538f771b8c</code><span class="reference-page">S. 10</span></a></li><li><a href="#goal-c371b3f0-dd0e-5263-b616-de6c362f70db"><span>Erweiterten euklidischen Algorithmus anwenden (LK)</span><code>c371b3f0-dd0e-5263-b616-de6c362f70db</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-16767f5e-5f21-5adb-8365-01b0d64c28f4"><span>Euklidische Algorithmen digital nachvollziehen (LK)</span><code>16767f5e-5f21-5adb-8365-01b0d64c28f4</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-d8cbf2bd-2512-5661-b431-4aea7e688912-reverse-heading">
+          <p class="section-heading" id="goal-d8cbf2bd-2512-5661-b431-4aea7e688912-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-a7c2aa01-4942-597f-a65f-ebb913d0019b"><span>Chinesischen Restsatz formulieren und Voraussetzungen prüfen (LK)</span><code>a7c2aa01-4942-597f-a65f-ebb913d0019b</code><span class="reference-page">S. 14</span></a></li><li><a href="#goal-474fe553-d868-50d9-a19b-761e64f21c0d"><span>Kleinen Satz von Fermat beweisen (LK)</span><code>474fe553-d868-50d9-a19b-761e64f21c0d</code><span class="reference-page">S. 17</span></a></li><li><a href="#goal-97b03cce-6641-5ec9-a6d2-f31838e2dbb9"><span>RSA-Verfahren mathematisch erläutern und anwenden (LK)</span><code>97b03cce-6641-5ec9-a6d2-f31838e2dbb9</code><span class="reference-page">S. 18</span></a></li><li><a href="#goal-d32f599e-3b38-5557-8ad3-565bcd99f4c6"><span>Primzahltests erläutern (LK)</span><code>d32f599e-3b38-5557-8ad3-565bcd99f4c6</code><span class="reference-page">S. 19</span></a></li><li><a href="#goal-1c1754b7-2cd3-5635-824d-ce93f7b99514"><span>Faktorisierungsverfahren erläutern (LK)</span><code>1c1754b7-2cd3-5635-824d-ce93f7b99514</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-d8cbf2bd-2512-5661-b431-4aea7e688912-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d8cbf2bd-2512-5661-b431-4aea7e688912-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4c319dfd-ebb1-504b-a036-c780e1915900" rel="noreferrer noopener"><span>Formale Verfahren und Werkzeuge reflektiert einsetzen</span> <code>4c319dfd-ebb1-504b-a036-c780e1915900</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:690dc03c9b7bdc9857295b5e6b889d49fe5c675d799f297bddd7ed06c085b193</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=d8cbf2bd-2512-5661-b431-4aea7e688912&amp;goalFingerprint=sha256%3A690dc03c9b7bdc9857295b5e6b889d49fe5c675d799f297bddd7ed06c085b193&amp;pageFingerprint=sha256%3Aaa177abe93cf27396facd7fe8fc91eeaf824882295bf929296bbc241a47f36d5&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a7c2aa01-4942-597f-a65f-ebb913d0019b" data-goal-id="a7c2aa01-4942-597f-a65f-ebb913d0019b" data-page-number="14" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-a5f07620-a895-52db-a0cc-1d05bf64c3d6 structure:canonical-goal-552111c6-965a-557a-9450-3fe5ed2d09cd structure:canonical-goal-9220b6b6-c023-501b-ad8f-e42e4f51d979" aria-labelledby="goal-a7c2aa01-4942-597f-a65f-ebb913d0019b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a7c2aa01-4942-597f-a65f-ebb913d0019b-title"><a class="goal-self-link" href="#goal-a7c2aa01-4942-597f-a65f-ebb913d0019b">Chinesischen Restsatz formulieren und Voraussetzungen prüfen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a7c2aa01-4942-597f-a65f-ebb913d0019b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-0ad791b25fd545a71eeacc3f">Problemlösen und Argumentieren</a></li><li><a href="#chapter-5f6502b8c29b5175b5c70c01">Zahlentheorie und Kryptologie im Vertiefungskurs (LK)</a></li><li><a href="#chapter-938a062ca30f6905384cc21f">Modulare Arithmetik und chinesischen Restsatz nutzen (LK)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4ddfe48ba4754d8b311965fa1676da12dd271d99fb8485c86ec3c229bdf210d1" data-rendered-digest="sha256:6bce7fb0a5f9403496f23d35c9fa4425aeab9a2b72150c0ea54923cb959deadc" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/a7c2aa01-4942-597f-a65f-ebb913d0019b/a7c2aa01-4942-597f-a65f-ebb913d0019b.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Chinesischen Restsatz formulieren und Voraussetzungen prüfen (LK)&quot;. Die lernende Person kann den chinesischen Restsatz für paarweise teilerfremde Moduln formulieren, die Voraussetzungen prüfen und die Eindeutigkeit der Lösung modulo des Produktmoduls deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a7c2aa01-4942-597f-a65f-ebb913d0019b-description-heading">
+        <p class="section-heading" id="goal-a7c2aa01-4942-597f-a65f-ebb913d0019b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den chinesischen Restsatz für paarweise teilerfremde Moduln formulieren, die Voraussetzungen prüfen und die Eindeutigkeit der Lösung modulo des Produktmoduls deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-a7c2aa01-4942-597f-a65f-ebb913d0019b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a7c2aa01-4942-597f-a65f-ebb913d0019b-requires-heading">
+          <p class="section-heading" id="goal-a7c2aa01-4942-597f-a65f-ebb913d0019b-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-c371b3f0-dd0e-5263-b616-de6c362f70db"><span>Erweiterten euklidischen Algorithmus anwenden (LK)</span><code>c371b3f0-dd0e-5263-b616-de6c362f70db</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-d8cbf2bd-2512-5661-b431-4aea7e688912"><span>Modulare Arithmetik nutzen (LK)</span><code>d8cbf2bd-2512-5661-b431-4aea7e688912</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a7c2aa01-4942-597f-a65f-ebb913d0019b-reverse-heading">
+          <p class="section-heading" id="goal-a7c2aa01-4942-597f-a65f-ebb913d0019b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-701b3942-9f70-548e-9d02-a34b7e64aa17"><span>Konstruktiven Beweis des chinesischen Restsatzes erläutern (LK)</span><code>701b3942-9f70-548e-9d02-a34b7e64aa17</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4df9761da446ce45cdfdf05f263fee72a5debc610288faeac23b010f0c241c82</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=a7c2aa01-4942-597f-a65f-ebb913d0019b&amp;goalFingerprint=sha256%3A4df9761da446ce45cdfdf05f263fee72a5debc610288faeac23b010f0c241c82&amp;pageFingerprint=sha256%3Ad77a595478fe0dc9b5398bcff21690f564e00d4eb01faeac6f13f105b830a3b3&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-701b3942-9f70-548e-9d02-a34b7e64aa17" data-goal-id="701b3942-9f70-548e-9d02-a34b7e64aa17" data-page-number="15" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-a5f07620-a895-52db-a0cc-1d05bf64c3d6 structure:canonical-goal-552111c6-965a-557a-9450-3fe5ed2d09cd structure:canonical-goal-9220b6b6-c023-501b-ad8f-e42e4f51d979" aria-labelledby="goal-701b3942-9f70-548e-9d02-a34b7e64aa17-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-701b3942-9f70-548e-9d02-a34b7e64aa17-title"><a class="goal-self-link" href="#goal-701b3942-9f70-548e-9d02-a34b7e64aa17">Konstruktiven Beweis des chinesischen Restsatzes erläutern (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>701b3942-9f70-548e-9d02-a34b7e64aa17</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-0ad791b25fd545a71eeacc3f">Problemlösen und Argumentieren</a></li><li><a href="#chapter-5f6502b8c29b5175b5c70c01">Zahlentheorie und Kryptologie im Vertiefungskurs (LK)</a></li><li><a href="#chapter-938a062ca30f6905384cc21f">Modulare Arithmetik und chinesischen Restsatz nutzen (LK)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:899dedaafd5da414f3ca08abf94fff5c69ff2ec57a6755d69d780318be1ceb7f" data-rendered-digest="sha256:108d0a49ca7dea31dc2c860be16e0ab32b863dff0ec60ac79dbcc2e63b4b53c3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/701b3942-9f70-548e-9d02-a34b7e64aa17/701b3942-9f70-548e-9d02-a34b7e64aa17.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Konstruktiven Beweis des chinesischen Restsatzes erläutern (LK)&quot;. Die lernende Person kann den konstruktiven Beweis des chinesischen Restsatzes mit den Hilfsprodukten M_i, modularen Inversen y_i sowie der Eindeutigkeit modulo des Produktmoduls nachvollziehen und fachsprachlich erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-701b3942-9f70-548e-9d02-a34b7e64aa17-description-heading">
+        <p class="section-heading" id="goal-701b3942-9f70-548e-9d02-a34b7e64aa17-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den konstruktiven Beweis des chinesischen Restsatzes mit den Hilfsprodukten M_i, modularen Inversen y_i sowie der Eindeutigkeit modulo des Produktmoduls nachvollziehen und fachsprachlich erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-701b3942-9f70-548e-9d02-a34b7e64aa17" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-701b3942-9f70-548e-9d02-a34b7e64aa17-requires-heading">
+          <p class="section-heading" id="goal-701b3942-9f70-548e-9d02-a34b7e64aa17-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a7c2aa01-4942-597f-a65f-ebb913d0019b"><span>Chinesischen Restsatz formulieren und Voraussetzungen prüfen (LK)</span><code>a7c2aa01-4942-597f-a65f-ebb913d0019b</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-701b3942-9f70-548e-9d02-a34b7e64aa17-reverse-heading">
+          <p class="section-heading" id="goal-701b3942-9f70-548e-9d02-a34b7e64aa17-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-e4eaff7f-1e3d-54ea-8a59-02864948b5eb"><span>Chinesischen Restsatz nutzen (LK)</span><code>e4eaff7f-1e3d-54ea-8a59-02864948b5eb</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:cac22e9808792c8c239a9c53646a391e4b7f7781f71104b36c9c3f99732330e8</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=701b3942-9f70-548e-9d02-a34b7e64aa17&amp;goalFingerprint=sha256%3Acac22e9808792c8c239a9c53646a391e4b7f7781f71104b36c9c3f99732330e8&amp;pageFingerprint=sha256%3A861dfb04af7278af074d6d9d48dbd823dc6c4f78a07a09b0e8e0aa8d8d9227ed&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e4eaff7f-1e3d-54ea-8a59-02864948b5eb" data-goal-id="e4eaff7f-1e3d-54ea-8a59-02864948b5eb" data-page-number="16" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-a5f07620-a895-52db-a0cc-1d05bf64c3d6 structure:canonical-goal-552111c6-965a-557a-9450-3fe5ed2d09cd structure:canonical-goal-9220b6b6-c023-501b-ad8f-e42e4f51d979" aria-labelledby="goal-e4eaff7f-1e3d-54ea-8a59-02864948b5eb-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e4eaff7f-1e3d-54ea-8a59-02864948b5eb-title"><a class="goal-self-link" href="#goal-e4eaff7f-1e3d-54ea-8a59-02864948b5eb">Chinesischen Restsatz nutzen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e4eaff7f-1e3d-54ea-8a59-02864948b5eb</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-0ad791b25fd545a71eeacc3f">Problemlösen und Argumentieren</a></li><li><a href="#chapter-5f6502b8c29b5175b5c70c01">Zahlentheorie und Kryptologie im Vertiefungskurs (LK)</a></li><li><a href="#chapter-938a062ca30f6905384cc21f">Modulare Arithmetik und chinesischen Restsatz nutzen (LK)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:705faf3747c223cd5c05ae80645f27cc05339a86181b20ff9940aa19b01645d7" data-rendered-digest="sha256:3ca944b1395c8ecd4c69eabe62f4b235436fb0c2e6d69b7cd7d4b3089fcae436" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/e4eaff7f-1e3d-54ea-8a59-02864948b5eb/e4eaff7f-1e3d-54ea-8a59-02864948b5eb.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Chinesischen Restsatz nutzen (LK)&quot;. Die lernende Person kann simultane Kongruenzen unter Bezug auf den chinesischen Restsatz lösen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e4eaff7f-1e3d-54ea-8a59-02864948b5eb-description-heading">
+        <p class="section-heading" id="goal-e4eaff7f-1e3d-54ea-8a59-02864948b5eb-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann simultane Kongruenzen unter Bezug auf den chinesischen Restsatz lösen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-e4eaff7f-1e3d-54ea-8a59-02864948b5eb" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e4eaff7f-1e3d-54ea-8a59-02864948b5eb-requires-heading">
+          <p class="section-heading" id="goal-e4eaff7f-1e3d-54ea-8a59-02864948b5eb-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-701b3942-9f70-548e-9d02-a34b7e64aa17"><span>Konstruktiven Beweis des chinesischen Restsatzes erläutern (LK)</span><code>701b3942-9f70-548e-9d02-a34b7e64aa17</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e4eaff7f-1e3d-54ea-8a59-02864948b5eb-reverse-heading">
+          <p class="section-heading" id="goal-e4eaff7f-1e3d-54ea-8a59-02864948b5eb-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-474fe553-d868-50d9-a19b-761e64f21c0d"><span>Kleinen Satz von Fermat beweisen (LK)</span><code>474fe553-d868-50d9-a19b-761e64f21c0d</code><span class="reference-page">S. 17</span></a></li><li><a href="#goal-97b03cce-6641-5ec9-a6d2-f31838e2dbb9"><span>RSA-Verfahren mathematisch erläutern und anwenden (LK)</span><code>97b03cce-6641-5ec9-a6d2-f31838e2dbb9</code><span class="reference-page">S. 18</span></a></li><li><a href="#goal-d32f599e-3b38-5557-8ad3-565bcd99f4c6"><span>Primzahltests erläutern (LK)</span><code>d32f599e-3b38-5557-8ad3-565bcd99f4c6</code><span class="reference-page">S. 19</span></a></li><li><a href="#goal-1c1754b7-2cd3-5635-824d-ce93f7b99514"><span>Faktorisierungsverfahren erläutern (LK)</span><code>1c1754b7-2cd3-5635-824d-ce93f7b99514</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-e4eaff7f-1e3d-54ea-8a59-02864948b5eb-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e4eaff7f-1e3d-54ea-8a59-02864948b5eb-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4c319dfd-ebb1-504b-a036-c780e1915900" rel="noreferrer noopener"><span>Formale Verfahren und Werkzeuge reflektiert einsetzen</span> <code>4c319dfd-ebb1-504b-a036-c780e1915900</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4fdee6a3132e9138f84fad9c42dad32e8d255d8cd9677c51a74fd89dcd4e124e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=e4eaff7f-1e3d-54ea-8a59-02864948b5eb&amp;goalFingerprint=sha256%3A4fdee6a3132e9138f84fad9c42dad32e8d255d8cd9677c51a74fd89dcd4e124e&amp;pageFingerprint=sha256%3Af18adef8e0dcb29ae47d96f2d194f06de7646f773c956d1512a4db6b8f97d313&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-474fe553-d868-50d9-a19b-761e64f21c0d" data-goal-id="474fe553-d868-50d9-a19b-761e64f21c0d" data-page-number="17" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-a5f07620-a895-52db-a0cc-1d05bf64c3d6 structure:canonical-goal-552111c6-965a-557a-9450-3fe5ed2d09cd" aria-labelledby="goal-474fe553-d868-50d9-a19b-761e64f21c0d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-474fe553-d868-50d9-a19b-761e64f21c0d-title"><a class="goal-self-link" href="#goal-474fe553-d868-50d9-a19b-761e64f21c0d">Kleinen Satz von Fermat beweisen (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>474fe553-d868-50d9-a19b-761e64f21c0d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-0ad791b25fd545a71eeacc3f">Problemlösen und Argumentieren</a></li><li><a href="#chapter-5f6502b8c29b5175b5c70c01">Zahlentheorie und Kryptologie im Vertiefungskurs (LK)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:dda462afed02d9e27d83fca292083414c8940317aac76a1fc2fb33de9e4d4ab7" data-rendered-digest="sha256:1301c4dafc41c6f906ba8baff801cda0be8f93277f50567fcbd7559706f16137" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/474fe553-d868-50d9-a19b-761e64f21c0d/474fe553-d868-50d9-a19b-761e64f21c0d.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Kleinen Satz von Fermat beweisen (LK)&quot;. Die lernende Person kann den kleinen Satz von Fermat formulieren, beweisen und seine Aussage in modular-arithmetischen Beispielen deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-474fe553-d868-50d9-a19b-761e64f21c0d-description-heading">
+        <p class="section-heading" id="goal-474fe553-d868-50d9-a19b-761e64f21c0d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den kleinen Satz von Fermat formulieren, beweisen und seine Aussage in modular-arithmetischen Beispielen deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-474fe553-d868-50d9-a19b-761e64f21c0d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-474fe553-d868-50d9-a19b-761e64f21c0d-requires-heading">
+          <p class="section-heading" id="goal-474fe553-d868-50d9-a19b-761e64f21c0d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-d8cbf2bd-2512-5661-b431-4aea7e688912"><span>Modulare Arithmetik nutzen (LK)</span><code>d8cbf2bd-2512-5661-b431-4aea7e688912</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-e4eaff7f-1e3d-54ea-8a59-02864948b5eb"><span>Chinesischen Restsatz nutzen (LK)</span><code>e4eaff7f-1e3d-54ea-8a59-02864948b5eb</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-474fe553-d868-50d9-a19b-761e64f21c0d-reverse-heading">
+          <p class="section-heading" id="goal-474fe553-d868-50d9-a19b-761e64f21c0d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-97b03cce-6641-5ec9-a6d2-f31838e2dbb9"><span>RSA-Verfahren mathematisch erläutern und anwenden (LK)</span><code>97b03cce-6641-5ec9-a6d2-f31838e2dbb9</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-474fe553-d868-50d9-a19b-761e64f21c0d-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-474fe553-d868-50d9-a19b-761e64f21c0d-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5c632c68-fc34-582e-8581-ae9e55ab538f" rel="noreferrer noopener"><span>Induktionsbeweis durchführen</span> <code>5c632c68-fc34-582e-8581-ae9e55ab538f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-474fe553-d868-50d9-a19b-761e64f21c0d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-474fe553-d868-50d9-a19b-761e64f21c0d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4c319dfd-ebb1-504b-a036-c780e1915900" rel="noreferrer noopener"><span>Formale Verfahren und Werkzeuge reflektiert einsetzen</span> <code>4c319dfd-ebb1-504b-a036-c780e1915900</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9540b2026c57c19bd602cc268745529ebf2911291c7f12701272788cb9b6c0df</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=474fe553-d868-50d9-a19b-761e64f21c0d&amp;goalFingerprint=sha256%3A9540b2026c57c19bd602cc268745529ebf2911291c7f12701272788cb9b6c0df&amp;pageFingerprint=sha256%3A9d277a568583566c73ce49227ed261c3980691b4019c010548891c195ee745a2&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-97b03cce-6641-5ec9-a6d2-f31838e2dbb9" data-goal-id="97b03cce-6641-5ec9-a6d2-f31838e2dbb9" data-page-number="18" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-a5f07620-a895-52db-a0cc-1d05bf64c3d6 structure:canonical-goal-552111c6-965a-557a-9450-3fe5ed2d09cd" aria-labelledby="goal-97b03cce-6641-5ec9-a6d2-f31838e2dbb9-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-97b03cce-6641-5ec9-a6d2-f31838e2dbb9-title"><a class="goal-self-link" href="#goal-97b03cce-6641-5ec9-a6d2-f31838e2dbb9">RSA-Verfahren mathematisch erläutern und anwenden (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>97b03cce-6641-5ec9-a6d2-f31838e2dbb9</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-0ad791b25fd545a71eeacc3f">Problemlösen und Argumentieren</a></li><li><a href="#chapter-5f6502b8c29b5175b5c70c01">Zahlentheorie und Kryptologie im Vertiefungskurs (LK)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:900092bb5a4909aa791c3c6a197159f32e6450ee1cdb6d5fc7b8aedb72333f68" data-rendered-digest="sha256:8108eab2eabb258f07bb6f7bfa2818cc9025ddb635e6bb69795269c11e4bbef3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/97b03cce-6641-5ec9-a6d2-f31838e2dbb9/97b03cce-6641-5ec9-a6d2-f31838e2dbb9.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;RSA-Verfahren mathematisch erläutern und anwenden (LK)&quot;. Die lernende Person kann das Prinzip des RSA-Verfahrens als asymmetrisches Verschlüsselungsverfahren erläutern, Nachrichten damit verschlüsseln und die Korrektheit der Entschlüsselung plausibel begründen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-97b03cce-6641-5ec9-a6d2-f31838e2dbb9-description-heading">
+        <p class="section-heading" id="goal-97b03cce-6641-5ec9-a6d2-f31838e2dbb9-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Prinzip des RSA-Verfahrens als asymmetrisches Verschlüsselungsverfahren erläutern, Nachrichten damit verschlüsseln und die Korrektheit der Entschlüsselung plausibel begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-97b03cce-6641-5ec9-a6d2-f31838e2dbb9" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-97b03cce-6641-5ec9-a6d2-f31838e2dbb9-requires-heading">
+          <p class="section-heading" id="goal-97b03cce-6641-5ec9-a6d2-f31838e2dbb9-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-d8cbf2bd-2512-5661-b431-4aea7e688912"><span>Modulare Arithmetik nutzen (LK)</span><code>d8cbf2bd-2512-5661-b431-4aea7e688912</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-e4eaff7f-1e3d-54ea-8a59-02864948b5eb"><span>Chinesischen Restsatz nutzen (LK)</span><code>e4eaff7f-1e3d-54ea-8a59-02864948b5eb</code><span class="reference-page">S. 16</span></a></li><li><a href="#goal-474fe553-d868-50d9-a19b-761e64f21c0d"><span>Kleinen Satz von Fermat beweisen (LK)</span><code>474fe553-d868-50d9-a19b-761e64f21c0d</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-97b03cce-6641-5ec9-a6d2-f31838e2dbb9-reverse-heading">
+          <p class="section-heading" id="goal-97b03cce-6641-5ec9-a6d2-f31838e2dbb9-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-97b03cce-6641-5ec9-a6d2-f31838e2dbb9-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-97b03cce-6641-5ec9-a6d2-f31838e2dbb9-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4c319dfd-ebb1-504b-a036-c780e1915900" rel="noreferrer noopener"><span>Formale Verfahren und Werkzeuge reflektiert einsetzen</span> <code>4c319dfd-ebb1-504b-a036-c780e1915900</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:47834c8af81778cd426bfe4a66f4f46bc80a24927a1b02e08b966e6e5554bbbe</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=97b03cce-6641-5ec9-a6d2-f31838e2dbb9&amp;goalFingerprint=sha256%3A47834c8af81778cd426bfe4a66f4f46bc80a24927a1b02e08b966e6e5554bbbe&amp;pageFingerprint=sha256%3Ae1dea251f1680389dc24b1671c76a253c4fb2d5507275c37ab9fccbded97bfda&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d32f599e-3b38-5557-8ad3-565bcd99f4c6" data-goal-id="d32f599e-3b38-5557-8ad3-565bcd99f4c6" data-page-number="19" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-a5f07620-a895-52db-a0cc-1d05bf64c3d6 structure:canonical-goal-552111c6-965a-557a-9450-3fe5ed2d09cd structure:canonical-goal-cdde4164-0d23-52e4-b1e8-9f412a48c999" aria-labelledby="goal-d32f599e-3b38-5557-8ad3-565bcd99f4c6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d32f599e-3b38-5557-8ad3-565bcd99f4c6-title"><a class="goal-self-link" href="#goal-d32f599e-3b38-5557-8ad3-565bcd99f4c6">Primzahltests erläutern (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d32f599e-3b38-5557-8ad3-565bcd99f4c6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-0ad791b25fd545a71eeacc3f">Problemlösen und Argumentieren</a></li><li><a href="#chapter-5f6502b8c29b5175b5c70c01">Zahlentheorie und Kryptologie im Vertiefungskurs (LK)</a></li><li><a href="#chapter-52e712a98ec56988b02164b3">Primzahltests und Faktorisierungsverfahren erläutern (LK)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:27f2f99931fee5e0f70819cffcd9995f2d76a8c993b41edaa8bc495d8d4fe498" data-rendered-digest="sha256:7d1fe71e8430d5bccf88d41231526a6c89e683ce9690082eb632f04b60a8d478" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/d32f599e-3b38-5557-8ad3-565bcd99f4c6/d32f599e-3b38-5557-8ad3-565bcd99f4c6.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Primzahltests erläutern (LK)&quot;. Die lernende Person kann die Funktionsweise eines Primzahltests, zum Beispiel des Miller-Rabin-Tests, fachsprachlich erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d32f599e-3b38-5557-8ad3-565bcd99f4c6-description-heading">
+        <p class="section-heading" id="goal-d32f599e-3b38-5557-8ad3-565bcd99f4c6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Funktionsweise eines Primzahltests, zum Beispiel des Miller-Rabin-Tests, fachsprachlich erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-d32f599e-3b38-5557-8ad3-565bcd99f4c6" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d32f599e-3b38-5557-8ad3-565bcd99f4c6-requires-heading">
+          <p class="section-heading" id="goal-d32f599e-3b38-5557-8ad3-565bcd99f4c6-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-d8cbf2bd-2512-5661-b431-4aea7e688912"><span>Modulare Arithmetik nutzen (LK)</span><code>d8cbf2bd-2512-5661-b431-4aea7e688912</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-e4eaff7f-1e3d-54ea-8a59-02864948b5eb"><span>Chinesischen Restsatz nutzen (LK)</span><code>e4eaff7f-1e3d-54ea-8a59-02864948b5eb</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-d32f599e-3b38-5557-8ad3-565bcd99f4c6-reverse-heading">
+          <p class="section-heading" id="goal-d32f599e-3b38-5557-8ad3-565bcd99f4c6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-1c1754b7-2cd3-5635-824d-ce93f7b99514"><span>Faktorisierungsverfahren erläutern (LK)</span><code>1c1754b7-2cd3-5635-824d-ce93f7b99514</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-d32f599e-3b38-5557-8ad3-565bcd99f4c6-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d32f599e-3b38-5557-8ad3-565bcd99f4c6-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4c319dfd-ebb1-504b-a036-c780e1915900" rel="noreferrer noopener"><span>Formale Verfahren und Werkzeuge reflektiert einsetzen</span> <code>4c319dfd-ebb1-504b-a036-c780e1915900</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 19 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e70391167d4befedbfe3ab0040e929ac37b4220ffb23fded086cb5459138aabb</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=d32f599e-3b38-5557-8ad3-565bcd99f4c6&amp;goalFingerprint=sha256%3Ae70391167d4befedbfe3ab0040e929ac37b4220ffb23fded086cb5459138aabb&amp;pageFingerprint=sha256%3A76d8f583d18d4d57157ad7aa6f54bd1181c87addd9795fecbe9e6d3adeccfa34&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1c1754b7-2cd3-5635-824d-ce93f7b99514" data-goal-id="1c1754b7-2cd3-5635-824d-ce93f7b99514" data-page-number="20" data-chapter-ids="structure:goal-book-math-root structure:goal-book-math-sekii-gk-lk structure:canonical-structure:function-families structure:canonical-goal-a5f07620-a895-52db-a0cc-1d05bf64c3d6 structure:canonical-goal-552111c6-965a-557a-9450-3fe5ed2d09cd structure:canonical-goal-cdde4164-0d23-52e4-b1e8-9f412a48c999" aria-labelledby="goal-1c1754b7-2cd3-5635-824d-ce93f7b99514-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1c1754b7-2cd3-5635-824d-ce93f7b99514-title"><a class="goal-self-link" href="#goal-1c1754b7-2cd3-5635-824d-ce93f7b99514">Faktorisierungsverfahren erläutern (LK)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1c1754b7-2cd3-5635-824d-ce93f7b99514</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-3fb62939875ba85ae30720f7">Sekundarstufe II (GK und LK)</a></li><li><a href="#chapter-fcdc49a2e5d99f1c219fc577">Funktionenscharen, Argumentieren und komplexe Zahlen</a></li><li><a href="#chapter-0ad791b25fd545a71eeacc3f">Problemlösen und Argumentieren</a></li><li><a href="#chapter-5f6502b8c29b5175b5c70c01">Zahlentheorie und Kryptologie im Vertiefungskurs (LK)</a></li><li><a href="#chapter-52e712a98ec56988b02164b3">Primzahltests und Faktorisierungsverfahren erläutern (LK)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:47550d386d76ece6952b6fc627dc1870c3032f2d7b72d59a03b1cc752c6477ab" data-rendered-digest="sha256:4524b3d50abf8c332232e81f1018812074bd4907670ee9cdc9a71898c8abece5" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/1c1754b7-2cd3-5635-824d-ce93f7b99514/1c1754b7-2cd3-5635-824d-ce93f7b99514.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Faktorisierungsverfahren erläutern (LK)&quot;. Die lernende Person kann die Funktionsweise eines Faktorisierungsverfahrens, zum Beispiel des quadratischen Siebs, fachsprachlich erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1c1754b7-2cd3-5635-824d-ce93f7b99514-description-heading">
+        <p class="section-heading" id="goal-1c1754b7-2cd3-5635-824d-ce93f7b99514-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Funktionsweise eines Faktorisierungsverfahrens, zum Beispiel des quadratischen Siebs, fachsprachlich erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HB, HE, HH, MV, NI, NW, RP, SL, SN, ST, TH:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1c1754b7-2cd3-5635-824d-ce93f7b99514" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1c1754b7-2cd3-5635-824d-ce93f7b99514-requires-heading">
+          <p class="section-heading" id="goal-1c1754b7-2cd3-5635-824d-ce93f7b99514-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-d8cbf2bd-2512-5661-b431-4aea7e688912"><span>Modulare Arithmetik nutzen (LK)</span><code>d8cbf2bd-2512-5661-b431-4aea7e688912</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-e4eaff7f-1e3d-54ea-8a59-02864948b5eb"><span>Chinesischen Restsatz nutzen (LK)</span><code>e4eaff7f-1e3d-54ea-8a59-02864948b5eb</code><span class="reference-page">S. 16</span></a></li><li><a href="#goal-d32f599e-3b38-5557-8ad3-565bcd99f4c6"><span>Primzahltests erläutern (LK)</span><code>d32f599e-3b38-5557-8ad3-565bcd99f4c6</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-1c1754b7-2cd3-5635-824d-ce93f7b99514-reverse-heading">
+          <p class="section-heading" id="goal-1c1754b7-2cd3-5635-824d-ce93f7b99514-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-1c1754b7-2cd3-5635-824d-ce93f7b99514-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1c1754b7-2cd3-5635-824d-ce93f7b99514-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4c319dfd-ebb1-504b-a036-c780e1915900" rel="noreferrer noopener"><span>Formale Verfahren und Werkzeuge reflektiert einsetzen</span> <code>4c319dfd-ebb1-504b-a036-c780e1915900</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 20 von 20</span>
+      <span>Buch-Digest <code>sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:54b6a2bc5aa6d9d69403c2b01c9f35e5e0cdd21f81ddc6d3c1ede61496c097c7</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-q4-lk-complex-number-theory-20-current-20260923-v1&amp;edition=curricular-atomic-v1&amp;goalId=1c1754b7-2cd3-5635-824d-ce93f7b99514&amp;goalFingerprint=sha256%3A54b6a2bc5aa6d9d69403c2b01c9f35e5e0cdd21f81ddc6d3c1ede61496c097c7&amp;pageFingerprint=sha256%3A497d9b69b4cee52c6ecc2195339556dc6f2a1a4608a960d6e7361b06e609e2b1&amp;bookDigest=sha256%3Ad56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d&amp;page=20" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

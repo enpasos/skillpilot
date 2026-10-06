@@ -1,0 +1,401 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "independent_actual_image_review_inputs",
+  "status": "actual_inspections_recorded",
+  "capturedAt": "2026-10-06T02:40:31.989208+00:00",
+  "reviewer": "/root/duration_report_fix",
+  "reviewRound": "A",
+  "independentOfImageAndTextAuthors": true,
+  "authorJudgmentsRead": false,
+  "otherQaOutputsRead": false,
+  "taskKeepLabelUsedAsApproval": false,
+  "inputBoundary": "Only current/proposed four goal texts, final candidate input manifest, actual PNGs and general AGENTS/image policy were used. File hashes bind source containers; no author judgments or other QA findings were used.",
+  "inputContainerBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "sha256:b3cb528491bde1905fb184f88211da40865cffa4bbfcf7219a978752bb67e300",
+      "bytes": 983399
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "sha256:6df07d8f22499340091ebd0605790466d1c189ca1c9b65f09d804899d6fda223",
+      "bytes": 125247
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-three-current383-author-continuation-v2/visualization-final-candidate-inputs.json",
+      "sha256": "sha256:2f778d1ca32822d50484573393dde8f2c62a686bcd8725c97f0f528f44c90193",
+      "bytes": 3605
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-three-current383-author-continuation-v2/proposed-three-goal-objects.candidate.json",
+      "sha256": "sha256:d2a4d386c963404de0d758306b62cf0e051c5721419cce8543fa40fec38a57bc",
+      "bytes": 5176
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-three-current383-author-continuation-v2/replication-preservation-goal.candidate.json",
+      "sha256": "sha256:ab4039755f1002bfbc28757e619a1d8454567f571ab1a1a1e1430099a9b8ba2c",
+      "bytes": 4117
+    }
+  ],
+  "goalTextFingerprintContract": "sha256 UTF-8 JSON of {id,title,titleEn,description,descriptionEn}, ensure_ascii=false, sort_keys=true, separators=(',',':')",
+  "records": [
+    {
+      "goalId": "0daa79f6-8f61-5506-98f9-65db83062ba8",
+      "currentGoalText": {
+        "id": "0daa79f6-8f61-5506-98f9-65db83062ba8",
+        "title": "DNA-Aufbau darstellen",
+        "titleEn": "Depict DNA structure",
+        "description": "Die lernende Person kann Nukleotide, Doppelhelix und Replikation beschreiben.",
+        "descriptionEn": "The learner can describe nucleotides, the double helix, and replication."
+      },
+      "currentGoalTextSha256": "sha256:a7412ae7ddecccb55b3d853c616c52b6dc79a4b55dd025dd7b48b46b3772251b",
+      "proposedGoalText": {
+        "id": "0daa79f6-8f61-5506-98f9-65db83062ba8",
+        "title": "DNA-Aufbau darstellen",
+        "titleEn": "Depict DNA structure",
+        "description": "Die lernende Person kann den Aufbau der DNA aus Nukleotiden modellhaft darstellen und den Zusammenhang zwischen Basenfolge, komplementärer Basenpaarung und Speicherung genetischer Information erklären.",
+        "descriptionEn": "The learner can model DNA structure from nucleotides and explain the relationship between base sequence, complementary base pairing and the storage of genetic information."
+      },
+      "proposedGoalTextSha256": "sha256:ec0d7d8a4d669ce446cb463f8b220426b04627d8334c2126aa0ce8e04c28b0ec",
+      "finalCandidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-three-current383-author-continuation-v2/visualization/0daa79f6-8f61-5506-98f9-65db83062ba8.candidate-v2.png",
+        "sha256": "sha256:7c272daa9df2a8f048a08d29ff57ac5dbac08751e26fb70602353ea6ecc8db88",
+        "bytes": 1327584,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "format": "PNG"
+      },
+      "declaredProvider": "OpenAI / ChatGPT-Codex built-in image_gen",
+      "providerIndependentlyReverified": false,
+      "declaredAltText": "Vereinfachtes DNA-Leitermodell mit Zucker-Phosphat-Rückgraten, komplementären Basenpaaren und entgegengesetzten Richtungspfeilen. Daneben zeigt ein eigenständiges Nukleotidbeispiel Phosphat, Zucker und Base; ein Basenfolgenbeispiel stellt komplementäre Sequenzen gegenüber.",
+      "inspectionViews": [
+        {
+          "kind": "native",
+          "method": "view_image detail original",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-three-current383-author-continuation-v2/visualization/0daa79f6-8f61-5506-98f9-65db83062ba8.candidate-v2.png",
+          "sha256": "sha256:7c272daa9df2a8f048a08d29ff57ac5dbac08751e26fb70602353ea6ecc8db88",
+          "bytes": 1327584,
+          "dimensions": [
+            1672,
+            941
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        {
+          "kind": "actual_360px",
+          "method": "Pillow LANCZOS full-frame proportional derivative, view_image detail original",
+          "sourceSha256": "sha256:7c272daa9df2a8f048a08d29ff57ac5dbac08751e26fb70602353ea6ecc8db88",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-four-current383-independent-visual-review-a-v1/inspection-only/0daa79f6-8f61-5506-98f9-65db83062ba8.360px.inspection.png",
+          "sha256": "sha256:79e282f4d881980ae507c7f98f57fd0045c7808a092732c2567c53b316cb3673",
+          "bytes": 88099,
+          "dimensions": [
+            360,
+            203
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        {
+          "kind": "actual_680px",
+          "method": "Pillow LANCZOS full-frame proportional derivative, view_image detail original",
+          "sourceSha256": "sha256:7c272daa9df2a8f048a08d29ff57ac5dbac08751e26fb70602353ea6ecc8db88",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-four-current383-independent-visual-review-a-v1/inspection-only/0daa79f6-8f61-5506-98f9-65db83062ba8.680px.inspection.png",
+          "sha256": "sha256:9f80f4964a4534e2dfb336b22c627328f7f159203c28adb9f562b27a839e7fe9",
+          "bytes": 282440,
+          "dimensions": [
+            680,
+            383
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        {
+          "kind": "native_detail",
+          "method": "unscaled native crop, view_image detail original",
+          "sourceSha256": "sha256:7c272daa9df2a8f048a08d29ff57ac5dbac08751e26fb70602353ea6ecc8db88",
+          "nativeCropXYXY": [
+            225,
+            340,
+            750,
+            470
+          ],
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-four-current383-independent-visual-review-a-v1/inspection-only/0daa79f6.middle-pair.native-detail.png",
+          "sha256": "sha256:0f9dfc17f6f3615a56c9f0e26aee5a3eed8363133daf78b98b140a889eba4c41",
+          "bytes": 69018,
+          "dimensions": [
+            525,
+            130
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        {
+          "kind": "native_detail",
+          "method": "unscaled native crop, view_image detail original",
+          "sourceSha256": "sha256:7c272daa9df2a8f048a08d29ff57ac5dbac08751e26fb70602353ea6ecc8db88",
+          "nativeCropXYXY": [
+            225,
+            750,
+            750,
+            875
+          ],
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-four-current383-independent-visual-review-a-v1/inspection-only/0daa79f6.bottom-pair.native-detail.png",
+          "sha256": "sha256:78c86f34678cb4e33e674266c8ba895a317ee32bd145d4354a36b24398cd8204",
+          "bytes": 65219,
+          "dimensions": [
+            525,
+            125
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        }
+      ]
+    },
+    {
+      "goalId": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+      "currentGoalText": {
+        "id": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+        "title": "Proteinbiosynthese erklären",
+        "titleEn": "Explain protein biosynthesis",
+        "description": "Die lernende Person kann Transkription und Translation modellhaft darstellen.",
+        "descriptionEn": "The learner can model transcription and translation."
+      },
+      "currentGoalTextSha256": "sha256:510eafd40d731ee19c7cf78e6df8bb4008fe519d0896b62c2d40638e0e216ed7",
+      "proposedGoalText": {
+        "id": "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+        "title": "Proteinbiosynthese erklären",
+        "titleEn": "Explain protein biosynthesis",
+        "description": "Die lernende Person kann den Informationsfluss von einer gegebenen DNA-Sequenz über mRNA zu einem Polypeptid modellhaft darstellen und die Verbindung von Transkription und Translation erklären.",
+        "descriptionEn": "The learner can model the information flow from a supplied DNA sequence via mRNA to a polypeptide and explain the connection between transcription and translation."
+      },
+      "proposedGoalTextSha256": "sha256:4ebf4ffd9d3f26bf3329d0bd31d663fb36e64480cdb8c63a5b7aed9f606949c2",
+      "finalCandidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-three-current383-author-continuation-v2/visualization/475eebb4-4eb0-524f-b1ec-4a672bf856d2.candidate-v1.png",
+        "sha256": "sha256:7f89f7eba0e2c0728e427ca2cca4b46ec524807678bb6a6774a188d2285cc772",
+        "bytes": 1510468,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "format": "PNG"
+      },
+      "declaredProvider": "OpenAI / ChatGPT-Codex built-in image_gen",
+      "providerIndependentlyReverified": false,
+      "declaredAltText": "Vereinfachtes Eukaryotenmodell: DNA im Zellkern liefert durch Transkription eine mRNA. Im Cytoplasma liest ein Ribosom die mRNA; eine tRNA bringt eine Aminosäure zur wachsenden Polypeptidkette. Das Schema zeigt den verbundenen Informationsfluss und keine vollständige RNA-Prozessierung.",
+      "inspectionViews": [
+        {
+          "kind": "native",
+          "method": "view_image detail original",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-three-current383-author-continuation-v2/visualization/475eebb4-4eb0-524f-b1ec-4a672bf856d2.candidate-v1.png",
+          "sha256": "sha256:7f89f7eba0e2c0728e427ca2cca4b46ec524807678bb6a6774a188d2285cc772",
+          "bytes": 1510468,
+          "dimensions": [
+            1672,
+            941
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        {
+          "kind": "actual_360px",
+          "method": "Pillow LANCZOS full-frame proportional derivative, view_image detail original",
+          "sourceSha256": "sha256:7f89f7eba0e2c0728e427ca2cca4b46ec524807678bb6a6774a188d2285cc772",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-four-current383-independent-visual-review-a-v1/inspection-only/475eebb4-4eb0-524f-b1ec-4a672bf856d2.360px.inspection.png",
+          "sha256": "sha256:f19e33bd72ee9f391927d105e869f5e953d33ed6d116dd5021e5a493dd529ce0",
+          "bytes": 109411,
+          "dimensions": [
+            360,
+            203
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        {
+          "kind": "actual_680px",
+          "method": "Pillow LANCZOS full-frame proportional derivative, view_image detail original",
+          "sourceSha256": "sha256:7f89f7eba0e2c0728e427ca2cca4b46ec524807678bb6a6774a188d2285cc772",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-four-current383-independent-visual-review-a-v1/inspection-only/475eebb4-4eb0-524f-b1ec-4a672bf856d2.680px.inspection.png",
+          "sha256": "sha256:0d0c5898535c29bd90f6b02cd8543711d0408b64cdc8b35dc3db5730b042d4fd",
+          "bytes": 333756,
+          "dimensions": [
+            680,
+            383
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        }
+      ]
+    },
+    {
+      "goalId": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+      "currentGoalText": {
+        "id": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+        "title": "Genmutationen analysieren",
+        "titleEn": "Analyze gene mutations",
+        "description": "Die lernende Person kann verschiedene Mutationstypen (Substitution, Deletion, Insertion, Duplikation) erklären und Folgen abschätzen.",
+        "descriptionEn": "The learner can explain different types of mutations (substitution, deletion, insertion, duplication) and estimate consequences."
+      },
+      "currentGoalTextSha256": "sha256:3e7a680b7b08b81df889b8b05cd5e92331ff2ed04f8f2b1d7c5960415b2114b2",
+      "proposedGoalText": {
+        "id": "ffef97e3-12d6-5090-9816-46ab9e57fae2",
+        "title": "Genmutationen analysieren",
+        "titleEn": "Analyze gene mutations",
+        "description": "Die lernende Person kann Substitution, Deletion, Insertion und Duplikation an gegebenen DNA-Fällen unterscheiden und mögliche Folgen für das codierte Protein aus dem Genkontext begründen.",
+        "descriptionEn": "The learner can distinguish substitution, deletion, insertion and duplication in given DNA cases and use the gene context to justify possible consequences for the encoded protein."
+      },
+      "proposedGoalTextSha256": "sha256:1348c81c6bb9ff1b7aa4d9de8196e9ae358dbf9dfa9d9d3a48c5f2166163daea",
+      "finalCandidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-three-current383-author-continuation-v2/visualization/ffef97e3-12d6-5090-9816-46ab9e57fae2.candidate-v1.png",
+        "sha256": "sha256:25efc19cf2535fdd33533a575e3cc6ae29d03d0f78c7e980d562c28460e8ec0d",
+        "bytes": 1353189,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "format": "PNG"
+      },
+      "declaredProvider": "OpenAI / ChatGPT-Codex built-in image_gen",
+      "providerIndependentlyReverified": false,
+      "declaredAltText": "Vier abstrakte Sequenzänderungen: Substitution ersetzt einen Baustein, Deletion entfernt einen markierten Baustein, Insertion fügt einen zusätzlichen hinzu, Duplikation kopiert ein vorhandenes Paar; der Pfeil verbindet das Paar der Ausgangsfolge mit seiner zusätzlichen Kopie.",
+      "inspectionViews": [
+        {
+          "kind": "native",
+          "method": "view_image detail original",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-three-current383-author-continuation-v2/visualization/ffef97e3-12d6-5090-9816-46ab9e57fae2.candidate-v1.png",
+          "sha256": "sha256:25efc19cf2535fdd33533a575e3cc6ae29d03d0f78c7e980d562c28460e8ec0d",
+          "bytes": 1353189,
+          "dimensions": [
+            1672,
+            941
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        {
+          "kind": "actual_360px",
+          "method": "Pillow LANCZOS full-frame proportional derivative, view_image detail original",
+          "sourceSha256": "sha256:25efc19cf2535fdd33533a575e3cc6ae29d03d0f78c7e980d562c28460e8ec0d",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-four-current383-independent-visual-review-a-v1/inspection-only/ffef97e3-12d6-5090-9816-46ab9e57fae2.360px.inspection.png",
+          "sha256": "sha256:3555327d73544928c3c1315fde6d7740349f0f5ed3ca4eabf7d7503490729276",
+          "bytes": 84656,
+          "dimensions": [
+            360,
+            203
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        {
+          "kind": "actual_680px",
+          "method": "Pillow LANCZOS full-frame proportional derivative, view_image detail original",
+          "sourceSha256": "sha256:25efc19cf2535fdd33533a575e3cc6ae29d03d0f78c7e980d562c28460e8ec0d",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-four-current383-independent-visual-review-a-v1/inspection-only/ffef97e3-12d6-5090-9816-46ab9e57fae2.680px.inspection.png",
+          "sha256": "sha256:fec329b49a4fbecf7e16c4f5e2de37e174260f182498750ad19f51efa0fe9032",
+          "bytes": 274275,
+          "dimensions": [
+            680,
+            383
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        }
+      ]
+    },
+    {
+      "goalId": "e70d8a85-2dea-5165-919b-200fee9f4db4",
+      "currentGoalText": {
+        "id": "e70d8a85-2dea-5165-919b-200fee9f4db4",
+        "title": "DNA-Replikation modellhaft erklären",
+        "titleEn": "Explain DNA Replication with a Simple Model",
+        "description": "Die lernende Person kann die Bedeutung der DNA-Replikation erklären und den Ablauf mithilfe eines einfachen DNA-Modells darstellen.",
+        "descriptionEn": "The learner can explain the significance of DNA replication and represent the process using a simple DNA model."
+      },
+      "currentGoalTextSha256": "sha256:6669903b6d9aa48a905fe7ce6aab8415fce61b9156f674ea62bf3e39c8c44b12",
+      "proposedGoalText": {
+        "id": "e70d8a85-2dea-5165-919b-200fee9f4db4",
+        "title": "DNA-Replikation modellhaft erklären",
+        "titleEn": "Explain DNA Replication with a Simple Model",
+        "description": "Die lernende Person kann die Bedeutung der DNA-Replikation erklären und an einem einfachen Modell zeigen, dass bei semikonservativer Replikation jeder neue DNA-Doppelstrang einen ursprünglichen und einen neu gebildeten Einzelstrang enthält.",
+        "descriptionEn": "The learner can explain the significance of DNA replication and use a simple model to show that, in semiconservative replication, each new DNA double strand contains one original and one newly formed single strand."
+      },
+      "proposedGoalTextSha256": "sha256:63e14e971ba0a4df797cdb78873229e206848e9a4459e233b9b01230cc184a31",
+      "finalCandidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-three-current383-author-continuation-v2/visualization/e70d8a85-2dea-5165-919b-200fee9f4db4.candidate-v2.png",
+        "sha256": "sha256:cf296aa3d4d9fb04b087ab7b8bb71e29ce545758cfaa03c5ab39ef34843c6213",
+        "bytes": 1171785,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "format": "PNG"
+      },
+      "declaredProvider": "OpenAI / ChatGPT-Codex built-in image_gen",
+      "providerIndependentlyReverified": false,
+      "declaredAltText": "Vorher: ein DNA-Doppelstrang aus zwei alten blau markierten Strängen. Nachher: zwei gleiche Tochtermodelle mit jeweils einem alten blauen und einem neuen orange markierten Strang. Ein Prozesspfeil verbindet die Vorher- und Nachher-Darstellung; die Legende unterscheidet altes und neues Strangmaterial.",
+      "inspectionViews": [
+        {
+          "kind": "native",
+          "method": "view_image detail original",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-three-current383-author-continuation-v2/visualization/e70d8a85-2dea-5165-919b-200fee9f4db4.candidate-v2.png",
+          "sha256": "sha256:cf296aa3d4d9fb04b087ab7b8bb71e29ce545758cfaa03c5ab39ef34843c6213",
+          "bytes": 1171785,
+          "dimensions": [
+            1672,
+            941
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        {
+          "kind": "actual_360px",
+          "method": "Pillow LANCZOS full-frame proportional derivative, view_image detail original",
+          "sourceSha256": "sha256:cf296aa3d4d9fb04b087ab7b8bb71e29ce545758cfaa03c5ab39ef34843c6213",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-four-current383-independent-visual-review-a-v1/inspection-only/e70d8a85-2dea-5165-919b-200fee9f4db4.360px.inspection.png",
+          "sha256": "sha256:d2648f468e8ef8324d6c331e9a678daa69687a36ba8e7efdb20fd048a531e92b",
+          "bytes": 76502,
+          "dimensions": [
+            360,
+            203
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        {
+          "kind": "actual_680px",
+          "method": "Pillow LANCZOS full-frame proportional derivative, view_image detail original",
+          "sourceSha256": "sha256:cf296aa3d4d9fb04b087ab7b8bb71e29ce545758cfaa03c5ab39ef34843c6213",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-four-current383-independent-visual-review-a-v1/inspection-only/e70d8a85-2dea-5165-919b-200fee9f4db4.680px.inspection.png",
+          "sha256": "sha256:7e32cc831addd06f7b97410d99b2aee3d1fa08d39fd3c01f82da10646e83aaf6",
+          "bytes": 246361,
+          "dimensions": [
+            680,
+            383
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        }
+      ]
+    }
+  ],
+  "inspectionDerivativeProductionAsset": false,
+  "actualViewImageCalls": 14,
+  "nativeFullImageCount": 4,
+  "actual360pxCount": 4,
+  "actual680pxCount": 4,
+  "nativeDetailCropCount": 2,
+  "formatDecision": "1672x941 PNG close to 16:9; main objects fit both full 360px and 680px widths. No aspect-ratio exception needed.",
+  "activeFilesChanged": false,
+  "historicalReviewArtifactsChanged": false,
+  "newScientificClosures": 0,
+  "restoredBindings": 0,
+  "strictCompletionsAdded": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}

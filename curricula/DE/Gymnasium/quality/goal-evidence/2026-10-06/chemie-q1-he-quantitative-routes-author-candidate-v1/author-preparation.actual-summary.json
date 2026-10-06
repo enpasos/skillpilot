@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "documentType": "inactive-author-candidate-preparation-terminal-summary",
+  "checkedAtUTC": "2026-10-06T02:43:17.877538+00:00",
+  "currentInputFilesExact": 11,
+  "historicalReviewed407FilesExact": 407,
+  "historicalFreezeSHA256": "ff7876883da8135572b3650109bc5b11a0ba1f8a0d25b0c47db159214aca06b0",
+  "nativeCodeBindings": [
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "3d3d11b120962b8b233da33174ca6e5e140ef60db9cfb4bade1bdfbe676c9cbc"
+    },
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "97eacf1152c859fd4a766f1d3f136449b20bc8af3d626b4c0f048bb6b3a7e2aa"
+    },
+    {
+      "path": "app/scripts/goalEvidenceProfileModel.ts",
+      "sha256": "50c932f1bb2e6db266756113dbbb82af9d59e172825d2039cdc9dcd9a10c3a26"
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+      "sha256": "59f8f412cbe9be4dc033396581e14960d0b0f12e3b17b5d48c35e5d6fae71e64"
+    },
+    {
+      "path": "app/scripts/sourceCoverageEvidence.ts",
+      "sha256": "1caf8a1db812aef91360f6aaffc38aab6cdd39649502ee3e5690bd18f9f28f4d"
+    },
+    {
+      "path": "app/src/hooks/useLandscapes.ts",
+      "sha256": "642a03395bea24b85c6dd52afe5b4300b61705f8e06f6e034e3530ed0b194910"
+    },
+    {
+      "path": "app/src/utils/authoring/canonicalAuthoring.ts",
+      "sha256": "3199f2803cf29646872eee927b6bad47831f09e519f33ca061efc022acc31e43"
+    }
+  ],
+  "actualExecutedCommands": [
+    {
+      "command": "python curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-quantitative-routes-author-candidate-v1/prepare_candidate.py",
+      "exitCode": 0,
+      "kind": "candidate author generation; no approval"
+    },
+    {
+      "command": "python curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-quantitative-routes-author-candidate-v1/prepare_native_scope.py",
+      "exitCode": 0,
+      "kind": "497 frozen operative/read-only native isolate inputs"
+    },
+    {
+      "command": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-quantitative-routes-author-candidate-v1/measure_native_scope.mts",
+      "exitCode": 0,
+      "execSessionId": 9265,
+      "actualResultPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-quantitative-routes-author-candidate-v1/native-he-only-compiled-scope.actual.json"
+    },
+    {
+      "command": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-quantitative-routes-author-candidate-v1/measure_native_contexts.mts",
+      "exitCode": 0,
+      "execSessionId": 33549,
+      "actualResultPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-quantitative-routes-author-candidate-v1/native-pages-d-p-source-route-footprint.actual.json"
+    },
+    {
+      "command": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-quantitative-routes-author-candidate-v1/prepare_current_strict_binding_inputs.mts",
+      "exitCode": 0,
+      "actualResultPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-quantitative-routes-author-candidate-v1/34-current-strict-d-binding-inputs.author-frozen.json"
+    },
+    {
+      "command": "Python Draft202012Validator against exact candidate canonical and semantic ledger schemas",
+      "exitCode": 0,
+      "actualResultPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-quantitative-routes-author-candidate-v1/targeted-two-schema-validation.actual.json"
+    },
+    {
+      "command": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-quantitative-routes-author-candidate-v1/check_scoped_candidate_graph.mts",
+      "exitCode": 0,
+      "actualResultPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-quantitative-routes-author-candidate-v1/scoped-candidate-graph-author-check.actual.json"
+    }
+  ],
+  "noFullQSOrBuildRun": true,
+  "candidateReadyForIndependentReviewOnly": true,
+  "futureStrictClaim": false,
+  "newScientificCompletions": 0,
+  "restoredBindings": 0,
+  "activeWrites": false,
+  "humanApproval": false,
+  "humanTrial": false
+}

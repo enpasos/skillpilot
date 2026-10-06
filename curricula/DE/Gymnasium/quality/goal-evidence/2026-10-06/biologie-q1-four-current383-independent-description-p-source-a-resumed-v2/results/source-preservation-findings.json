@@ -1,0 +1,110 @@
+{
+  "reviewer": "biologie-q1-four-current383-independent-a-resumed-20261006-v2",
+  "reviewedAt": "2026-10-06T03:00:53.398625+00:00",
+  "scope": "Four current383 candidate targets only; not a reapproval of all other source rows. Snapshot supplies13 nonempty target lanes, not17 nonempty target lanes.",
+  "findings": [
+    {
+      "findingId": "BW-DUPLICATION-PRESERVATION",
+      "goalIds": [
+        "0daa79f6-8f61-5506-98f9-65db83062ba8",
+        "e70d8a85-2dea-5165-919b-200fee9f4db4"
+      ],
+      "decision": "BLOCK_CURRENT_BINDING",
+      "source": "BW 3.3.2(3), printed22/physical24, classes9/10",
+      "actualSourceRequirement": "Simple DNA model, information storage and duplication capability.",
+      "covered": "0daa preserves structure/information; e70 can preserve simple copying.",
+      "hold": "Effective bound e70 page has no BW scope and current source snapshot maps this clause only to 0daa. Removing replication from 0daa without BW e70 mapping/view preservation drops the explicit duplication property.",
+      "remedy": "Add precise partial source relation to existing e70 and appropriate BW9/10 visibility; keep 0daa partial. Rebuild only affected goal/page/source bindings."
+    },
+    {
+      "findingId": "HE-PROTEIN-WHOLE-BULLET",
+      "goalIds": [
+        "475eebb4-4eb0-524f-b1ec-4a672bf856d2"
+      ],
+      "decision": "PARTIAL_COMPONENT_KEEP_WHOLE_BULLET_OPEN",
+      "source": "HE current KC, printed/physical38, Q1.1 basic level GK+LK official second content bullet",
+      "actualSourceRequirement": "Protein biosynthesis in prokaryotes and eukaryotes, transcription, mRNA structure/function, translation, ribosome, tRNA, genetic code including using the Code-Sonne.",
+      "covered": "Connected assisted intron-free sequence model and molecule roles; meaningful prokaryotic disturbance case.",
+      "hold": "A supplied code table and simplified two-case model do not demonstrate the entire official requirement, especially the specific Code-Sonne use and full pro/eukaryotic process context.",
+      "remedy": "Keep corrected primary text and partial475 mapping; locate source-backed existing sequence/code/process goals and bind each exact remaining component, or retain the whole-source point explicitly open. Do not replace a missing component with an arbitrary sibling."
+    },
+    {
+      "findingId": "LOWER-PROTEIN-TRAIT-PRESERVATION",
+      "goalIds": [
+        "475eebb4-4eb0-524f-b1ec-4a672bf856d2"
+      ],
+      "decision": "PARTIAL_COMPONENT_KEEP_WHOLE_CLAUSES_OPEN",
+      "source": "BY B9.3 primary; NW printed34; RP printed42; also SN printed31, ST42–43, TH23",
+      "actualSourceRequirement": "Protein biosynthesis principle plus the role of proteins in trait expression; local sources demand their own degree of model explanation.",
+      "covered": "475 covers the connected biosynthesis model only.",
+      "hold": "Current exact BY9 mapping and broad lower-stage mappings cannot claim the protein→trait clause solely through475. Upper source-backed18b3/5f01 do not automatically establish age-appropriate SekI target scope.",
+      "remedy": "Use existing0263 as a candidate preservation partner only with fresh direct BY9/NW/RP/SN/ST/TH component mappings and actual lower-stage visibility checks. Keep NI bindings unchanged; do not import18b3/5f01 scope merely because their titles mention traits."
+    },
+    {
+      "findingId": "SH-CONNECTED-PROTEIN-SCOPE",
+      "goalIds": [
+        "475eebb4-4eb0-524f-b1ec-4a672bf856d2"
+      ],
+      "decision": "BLOCK_CURRENT_BINDING",
+      "source": "SH2023 SekI actual SF6 printed21/physical23, IK4 printed26/physical28, lower-stage summary printed30–31",
+      "actualSourceRequirement": "Schematic DNA/macromolecule structures and functions, genetic-information transmission; explicit molecular transcription/translation is in the later SekII table.",
+      "covered": "Simple DNA structure0daa is supported in SekI SF6.",
+      "hold": "General lower-stage source mapping does not directly require the detailed connected DNA–mRNA–polypeptide transformation as a compulsory SekI goal.",
+      "remedy": "Remove unsupported475 lower-stage binding or replace it with an exact lower-stage source-backed component/goal; if a genuine SekII source is used, its stage and course must be explicit. Do not move the SekII clause into SekI."
+    },
+    {
+      "findingId": "LOWER-MUTATION-DETAIL-SCOPE",
+      "goalIds": [
+        "ffef97e3-12d6-5090-9816-46ab9e57fae2"
+      ],
+      "decision": "BLOCK_CURRENT_BINDING",
+      "source": "RP printed42; SH printed27/physical29; MV printed26/physical30; SN printed31/physical43; ST42–43; TH23/physical29",
+      "actualSourceRequirement": "RP Individuality across levels; SH genetic variability through mutation/recombination; MV mutation definition/mutagens/body and germline; SN genotype/phenotype with Gen-/Chromosomen-/Genommutation at Kennen; ST mutation with Genom-/Punktmutation; TH explicitly gene-to-protein and mutation causes/consequences.",
+      "covered": "TH can support a carefully partial molecular mutation/consequence operationalisation; HE independently explicitly supports the four-type taxonomy.",
+      "hold": "The listed general lower-stage clauses do not collectively establish all four named sequence types, coding-frame reasoning and protein consequence as the same compulsory atomic goal. RP Individualität source row is not an actual molecular mutation clause.",
+      "remedy": "Adjudicate each source row at its operator and stage. Retain only justified partial components, preserve general mutation/mutagen/recombination content through source-backed existing goals, and remove unsupported wholeffef lower-stage target relations. Do not blanket-delete TH or restore obsolete NI rows."
+    },
+    {
+      "findingId": "BY-MUTATION-WHOLE-CLAUSE",
+      "goalIds": [
+        "ffef97e3-12d6-5090-9816-46ab9e57fae2"
+      ],
+      "decision": "PARTIAL_COMPONENT_KEEP_WHOLE_CLAUSE_OPEN",
+      "source": "Current BY12 grundlegend and erhoeht primary pages, official subsection2.4; supplied B12-EA.2.17 is extraction-local alias",
+      "actualSourceRequirement": "Distinguish mutations induced by mutagenic effects, explain encoded-protein function effects and build understanding of protection from mutagens.",
+      "covered": "475 prerequisite plus ffef sequence-type/consequence component, including one bounded enzyme activity example. The same clause occurs in both real course profiles, so GK/LK is supported.",
+      "hold": "ffef does not teach mutagenic cause and protection behavior; no exact whole-clause closure.",
+      "remedy": "Mark ffef relation partial, retain both current course occurrences/source contexts, and keep unrepresented mutagen/protection components open unless an existing goal genuinely claims them. No presently inspected existing goal was established as complete protection-clause replacement."
+    },
+    {
+      "findingId": "RP-REPLICATION-ATTACHMENT",
+      "goalIds": [
+        "e70d8a85-2dea-5165-919b-200fee9f4db4"
+      ],
+      "decision": "BLOCK_CURRENT_ATTACHMENT_SOURCE_CAN_SUPPORT_REMEDY",
+      "source": "RP printed42/physical44, TF10 Individualität und Entwicklung",
+      "actualSourceRequirement": "Molecular context expressly links complementary base pairing to replication and translation; separate competency addresses meiosis/fertilisation.",
+      "covered": "Actual molecular replication context can support e70 as partial didactic model operationalisation.",
+      "hold": "Current e70 source mapping points to the meiosis/fertilisation competency, which does not claim semiconservative copying.",
+      "remedy": "Bind existing e70 to the actual complementary-base/replication context and correct printed page42; retain independent meiosis/fertilisation clauses through their own existing goals."
+    },
+    {
+      "findingId": "LOWER-SEMICONSERVATIVE-SCOPE",
+      "goalIds": [
+        "e70d8a85-2dea-5165-919b-200fee9f4db4"
+      ],
+      "decision": "BLOCK_CURRENT_BINDING",
+      "source": "BB/BE printed36; NW33–34; HH21,23,27–28; SH19,21,26 and lower-stage summary",
+      "actualSourceRequirement": "Chromosome/DNA, cell-division, genetic-information transmission and simple molecular models vary by source.",
+      "covered": "BY9, HE38, MV25, ST43 and TH22 provide explicit replication or simple zipper-copy context; TH also adds repair outsidee70.",
+      "hold": "BB/BE and NW clauses inspected do not explicitly demand semiconservative molecule copying. HH/SH broad cell/genetic-information context and EPA examples cannot certify the whole detailed mechanism as that exact lower-stage target.",
+      "remedy": "Replace or remove unsupported e70 relations; any remaining partial instructional mapping must identify an actual source clause and stage rather than infer the mechanism from cell division. Preserve explicit source-copy properties in BW and the correctly anchored RP context."
+    }
+  ],
+  "HEFirstBullet": "Original primary first bullet is accurately retained in author correction; 0daa and existinge70 jointly cover schematic structure and semiconservative copying. Both individual relations are partial; GK/LK is explicit.",
+  "BYCourseCorrection": "Initial visual reading of tiny II label and extraction EA alias was checked against structured scope and both actual primary pages and withdrawn. BY mutation course availability is not a blocking finding.",
+  "NI": "Current correctedNI molecular exclusions are not restored or re-reviewed.",
+  "otherCurrentReviewerConclusionsRead": false,
+  "humanApproval": false,
+  "activeWrites": 0
+}

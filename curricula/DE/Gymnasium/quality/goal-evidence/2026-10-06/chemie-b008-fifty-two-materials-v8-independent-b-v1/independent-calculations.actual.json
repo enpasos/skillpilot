@@ -1,0 +1,181 @@
+{
+  "role": "independent arithmetic from literal supplied values, not author self-check adoption",
+  "notActualExperiment": true,
+  "weakAcidTenfoldDilution": {
+    "hydrogenConcentrationRatio": 0.31622776601683794,
+    "deltaPH": 0.5,
+    "strongAcidDeltaPH": 1.0,
+    "bounds": "weak-acid low-dissociation approximation; fixed acid/temperature; water contribution negligible"
+  },
+  "dissolutionMeansSeconds": [
+    92.0,
+    64.0,
+    49.0
+  ],
+  "dissolutionTransfer50C": {
+    "meanSeconds": 62.5,
+    "halfRangeSeconds": 17.5,
+    "interpretation": "large repeat disagreement; no warranted trend conclusion before conditions checked"
+  },
+  "acidTitration": {
+    "cAMolPerL": 0.008,
+    "cBMolPerL": 0.016,
+    "BOverA": 2.0,
+    "bounds": "monoprotic 1:1; volumes consistent; common base-concentration error scales absolute values but cancels ratio"
+  },
+  "linearCalibration": {
+    "slope": 0.07999999999999999,
+    "intercept": 0.010000000000000037,
+    "residuals": [
+      -3.642919299551295e-17,
+      0.0,
+      5.551115123125783e-17,
+      0.0
+    ],
+    "slopeUnits": "L/mg; absorbance dimensionless",
+    "sampleMeanAbsorbance": 0.29,
+    "dilutedMgPerL": 3.4999999999999996,
+    "originalAfterTwofoldDilutionMgPerL": 6.999999999999999,
+    "scatterHalfRangeDilutedMgPerL": 0.0125,
+    "scatterHalfRangeOriginalMgPerL": 0.025,
+    "bounds": "these scatter-only values exclude standards, blank, pipette, regression and sample uncertainties"
+  },
+  "photometricTransfers": {
+    "A0650DiagnosticExtrapolationMgPerL": 8.0,
+    "A0810DiagnosticExtrapolationMgPerL": 10.0,
+    "bothOutsideCalibratedZeroToSixMgPerL": true,
+    "twofoldDilutionOfHypotheticalTenMgPerL": {
+      "dilutedMgPerL": 5,
+      "predictedModelAbsorbance": 0.41000000000000003,
+      "backCalculatedMgPerL": 10
+    },
+    "bounds": "out-of-range raw absorbance is no validated concentration; actual diluted measurement and actual calibration needed; dilute blank-corrected signal, not total absorbance"
+  },
+  "firstOrderKinetics": {
+    "logs": [
+      0.0,
+      -0.5000505505980322,
+      -0.9999441168714084,
+      -1.5001351775436502
+    ],
+    "slope": -0.05000299098904327,
+    "intercept": 1.2403582376308009e-05,
+    "residuals": [
+      -1.2403582376308009e-05,
+      -3.304428997574771e-05,
+      0.00010329932708075251,
+      -5.785145472847475e-05
+    ],
+    "kPerMin": 0.05000299098904327,
+    "halfLifeMin": 13.86211438255421,
+    "transferChanged20Min": {
+      "slope": -0.04693502162592864,
+      "intercept": 0.03069209721352273,
+      "residuals": [
+        -0.03069209721352273,
+        -0.06139243155226848,
+        0.2148611547451048,
+        -0.12277662597931371
+      ],
+      "logDeviationFromOriginalModelAt20Min": 0.30690023563854385
+    },
+    "bounds": "isothermal supplied model; linearity does not establish unique mechanism; small original residuals from rounded inputs"
+  },
+  "conductivityMaterialScaleFailure": {
+    "case14StatedAtOneGramPerL_uSPerCm": 199,
+    "primaryHachStandardAtOneGramPerL25C_uSPerCm": 1990,
+    "ratio": 10.0,
+    "temperatureCaseBMinusA_uSPerCm": 50,
+    "controlBMinusA35_uSPerCm": 2,
+    "qualitativeConfoundConclusionStillCorrect": true,
+    "unitsNeedScientificCorrection": true
+  },
+  "validityRateCounterexample": {
+    "8point9Over3": 2.966666666666667,
+    "3point1To6point2Ratio": 2.0
+  },
+  "packagingMassRatios": {
+    "glassToMetal": 5.0,
+    "glassToPolymer": 10.0
+  },
+  "filterAbsorbanceReductionPercent": 75.0,
+  "solubilityModel": {
+    "pH": [
+      3,
+      4,
+      5
+    ],
+    "ionizedToNeutral": [
+      0.1,
+      1,
+      10
+    ],
+    "totalMgPerL": [
+      1.1,
+      2,
+      11
+    ],
+    "endOverStart": 10.0,
+    "relativeIncreasePercent": 899.9999999999999,
+    "bounds": "fictional monoprotic acid; intrinsic neutral solubility; same-scaffold mass equivalents; no precipitated additional salt; no clinical inference"
+  },
+  "processResourceUse": {
+    "A_freshKgPerAcceptedKg": 5.0,
+    "A_kWhPerAcceptedKg": 2.5,
+    "B_freshKgPerAcceptedKg": 2.2222222222222223,
+    "B_kWhPerAcceptedKg": 3.5,
+    "B_accepted20_transferFreshKgPerKg": 2.0,
+    "B_accepted20_transferKWhPerKg": 3.15,
+    "bounds": "do not count internally recovered 60 kg as fresh; accepted product denominator; unlike units are not additive"
+  },
+  "waterTreatmentComparison": {
+    "GMinusFCostEuros": 15,
+    "GMinusFEnergyKWh": 20,
+    "removalDifferencePercentagePoints": 25,
+    "GChangedEnergySavingVersusF": 2
+  },
+  "reusablePackagingComparison": {
+    "tenCycleMaterialSavingKg": 20,
+    "twoCycleExtraMaterialKg": 60,
+    "extraCostEuros": 20,
+    "bounds": "transport/wash/material units need impact factors before environmental aggregation"
+  },
+  "equilibriumModel": {
+    "QAfterAddition": 0.5,
+    "Qx010": 0.7076023391812867,
+    "Qx020": 0.9999999999999999,
+    "K1SolutionX": 0.2,
+    "K2TransferSolutionRelativeToPostAdditionStateX": 0.3944487245360109,
+    "K2TransferSolutionRelativeToK1StateFurtherX": 0.19444872453601086,
+    "bounds": "fixed stoichiometry/volume; ideal concentration convention; x must keep concentrations positive; temperature changes K separately from rate"
+  },
+  "receptorOccupancy": {
+    "Kd_uMolPerL": 2,
+    "freeLigand_uMolPerL": [
+      0,
+      2,
+      6
+    ],
+    "theta": [
+      0.0,
+      0.5,
+      0.75
+    ],
+    "bounds": "equilibrium free ligand, identical independent 1:1 sites, negligible depletion as simple model; occupancy is not activation or medical efficacy"
+  },
+  "stoichiometry": {
+    "hydrogenWaterCardAtoms": {
+      "H": 4,
+      "O": 2
+    },
+    "ammoniaReactantAtoms": {
+      "N": 2,
+      "H": 6
+    },
+    "ammoniaProductAtoms": {
+      "N": 2,
+      "H": 6
+    },
+    "esterHydrolysis": "R-C(=O)-O-Rprime + H2O -> R-C(=O)-OH + Rprime-OH; enzyme catalytic, not stoichiometrically consumed"
+  }
+}

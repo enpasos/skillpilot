@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-q1-current378-routes-20261006-v1-003-resolution-4663fd80-1618-5211-8020-18f4b80979fc",
+  "goal": {
+    "goalId": "4663fd80-1618-5211-8020-18f4b80979fc",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:fb38b8f392efc4273a1365c3956204ccae234e2a86ce893f16ceb1521bb20fa9",
+    "pageFingerprint": "sha256:cf837047699afc4697094cb3957bc13e10a8146f3230eda65e231c68e45b0555",
+    "goalReviewContextFingerprint": "sha256:ea801391b6c453c24334e168aedefdc32c58ab5f4756dffa47211e572fa17c32",
+    "finalText": {
+      "titleDe": "Standard-Reaktionsenthalpien aus Bildungsenthalpien berechnen",
+      "titleEn": "Calculate standard reaction enthalpies from formation enthalpies",
+      "descriptionDe": "Die lernende Person kann Reaktionen als exotherm oder endotherm charakterisieren, indem sie Standard-Reaktionsenthalpien aus tabellierten molaren Standard-Bildungsenthalpien berechnet und das Vorzeichen fachlich deutet.",
+      "descriptionEn": "The learner can characterize reactions as exothermic or endothermic by calculating standard reaction enthalpies from tabulated molar standard enthalpies of formation and interpreting the sign scientifically."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-q1-current378-routes-20261006-v1-003-a",
+      "campaignDigest": "sha256:d3752c0ca70d2dbd483ca52a05a8beccb71252afc6580ebd10ded7159a007d91",
+      "roundId": "chemie-q1-current378-routes-20261006-v1-003-first-pass-a",
+      "independenceGroupId": "chemie-q1-current378-routes-20261006-v1-003-independent-a",
+      "reviewInputFingerprint": "sha256:8796c7328e7c91935d304d02bdafcb1cf324a19dea1868cb1443cb61970536b1",
+      "goalReviewContextFingerprint": "sha256:ea801391b6c453c24334e168aedefdc32c58ab5f4756dffa47211e572fa17c32",
+      "batchId": "chemie-q1-current378-routes-20261006-v1-003-first-pass-a.batch-001",
+      "runId": "codex-chemie-final378-current-d-independent-a-20261006-003",
+      "runManifestDigest": "sha256:f2bfdfd943a18d60b6e84e04ab395cd0f504e063a888b572575e7f07c6856709",
+      "resultsDigest": "sha256:772c17facbe953904ce36bfd16508430f7958b225fff149e6e599ea5c559b397",
+      "recordId": "chemie-final378-current-d-a-4663fd80-20261006",
+      "recordDigest": "sha256:f88c55d95559e984276101ae62b58b4baa43e411876649a82eb160404501c21a"
+    },
+    "second": {
+      "campaignId": "chemie-q1-current378-routes-20261006-v1-003-b",
+      "campaignDigest": "sha256:77ae1884b6857a7bafa74dbb20b48008a7722443c68cefb56e3a394e08a87cab",
+      "roundId": "chemie-q1-current378-routes-20261006-v1-003-first-pass-b",
+      "independenceGroupId": "chemie-q1-current378-routes-20261006-v1-003-independent-b",
+      "reviewInputFingerprint": "sha256:8796c7328e7c91935d304d02bdafcb1cf324a19dea1868cb1443cb61970536b1",
+      "goalReviewContextFingerprint": "sha256:ea801391b6c453c24334e168aedefdc32c58ab5f4756dffa47211e572fa17c32",
+      "batchId": "chemie-q1-current378-routes-20261006-v1-003-first-pass-b.batch-001",
+      "runId": "chemie-current378-native-d-b-20261006-003",
+      "runManifestDigest": "sha256:9dc7d0753007d592c000c807c875ec3dc64b804df2fffd6e86181544a46460a7",
+      "resultsDigest": "sha256:65620722a69be4b9dd72bc4ed730a00090c2296139ddf42441177f8eef1cc092",
+      "recordId": "chemie-current378-native-d-b-003-4663fd80-1618-5211-8020-18f4b80979fc",
+      "recordDigest": "sha256:be799b390a06783e418976b2b34ad06aa935effb4523f1d83b45c9e72f0dd356"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5249db4064eeecc9a7fd7b11f936577791c7a5e4baea51a24d8ccb9b159b913"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-current378-native53-synthesis-20261006-v2-003",
+    "manifestDigest": "sha256:ab57d2544b079fbd6aaf3382632d5b5d6647432204a1e70340635f686ce67181",
+    "manifestFingerprint": "sha256:c3421d1c0f6a679d9a19c32d050bf8dc3f0cd21a85bd0b87aad7e8ec84a44cda",
+    "decisionId": "chemie-current378-native53-synthesis-20261006-v2-003-decision-013"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-current378-native53-synthesis-20261006-v2-003-decision-013",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex operator synthesis after two actual independent current-description reviews, targeted scientific reuse and native v5 binding guard",
+    "synthesizedAt": "2026-10-06T03:39:45.723Z",
+    "rationaleDe": "Gezielte Wiederherstellung einer bestehenden strengen D-Bindung; kein neuer fachlicher Abschluss. Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die ganze native Seite, DE/EN, vorhandenen P-Vertrag und die konkrete Quellen-/Aufgaben-/Bildbindung von Standard-Reaktionsenthalpien aus Bildungsenthalpien berechnen. Der dokumentierte native Deltaumfang ist pageFingerprint, pageNumber, requires. Historische gültige wissenschaftliche Urteile und innere P-/Bild-Payloads bleiben erhalten. Die v5-Metadatenspiegelung ändert nach tatsächlicher Gegenprobe keine dieser 53 Goal-/Page-/Kontextbindungen. Die einzelnen eigenständigen Begründungen, Transferbeispiele und Prüfbelege bleiben in den zwei gebundenen Records erhalten; keine bloße Hash-Freigabe, kein menschlicher Nachweis.",
+    "rationaleEn": "Targeted renewal of an existing strict description binding, with no new scientific completion. Both actual independent current rounds confirm the complete native page, German/English pair, supplied existing positive contract and specific source/task/image binding for Calculate standard reaction enthalpies from formation enthalpies. The measured native delta fields are pageFingerprint, pageNumber, requires. Preserve valid historical scientific judgments and inner positive/image payloads. The actual v5 comparison shows that its metadata mirror changes none of the 53 goal/page/context bindings. Preserve individual independent rationales, transfer examples and inspection receipts in the two exact bound records; no hash-only scientific approval or human evidence.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die Standard-Reaktionsenthalpie ist die stöchiometrisch gewichtete Differenz der Bildungsenthalpien von Produkten und Edukten für definierte Stoffzustände; ihr Vorzeichen bezeichnet den Wärmeumsatz des Reaktionssystems.",
+      "essentialUnderstandingEn": "Standard reaction enthalpy is the stoichiometrically weighted difference between product and reactant formation enthalpies for defined states of matter; its sign describes the heat change of the reaction system.",
+      "observablePerformanceDe": "Die lernende Person verwendet eine ausgeglichene Reaktionsgleichung und passende Tabellenwerte mit Stoffzuständen, begründet Koeffizienten und Vorzeichen und deutet die berechnete Enthalpie als Wärmeabgabe oder Wärmeaufnahme.",
+      "observablePerformanceEn": "The learner uses a balanced reaction equation and appropriate tabulated values with states of matter, justifies coefficients and signs and interprets the calculated enthalpy as heat release or heat absorption.",
+      "transferExpectationDe": "In einer frischen Aufgabe mit geändertem Aggregatzustand eines Produkts oder umgekehrter Reaktionsrichtung wählt die lernende Person selbst die passenden Werte und begründet die Änderung von Betrag oder Vorzeichen.",
+      "transferExpectationEn": "In a fresh task with a changed physical state of a product or reversed reaction direction, the learner independently chooses appropriate values and explains the change in magnitude or sign."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-446d3ad2ee31b685b580df55e28fda58f054c90585104a4fe07e0e6ee942464f",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:74fc3647b0d3d941a82c308026e716e3649f0eb9f366c3c3eefdef48e2b40653"
+}

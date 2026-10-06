@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Chemie B005 – Symbole und Stöchiometrie (Sek I)</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Chemie B005 – Symbole und Stöchiometrie (Sek I)</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>16 atomare Lernziele</dt><dd>4 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:chemie-m7-review-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-fd713faf6c8502b7e7241677" aria-label="Chemie – kanonische M7-Prüfsicht"><a href="#goal-e0d05c36-eaac-4c75-8ead-3fd5bdafefca"><span class="toc-entry-label">Chemie&#160;<wbr>–&#160;<wbr>kanonische&#160;<wbr>M7-Prüfsicht</span></a></h2>
+          <span class="toc-entry-meta"><span>16 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:442c31c5-c561-5c7a-90bb-2335d779175c" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-61e1c5b7a0d4217b4782dbac" aria-label="Chemie"><a href="#goal-e0d05c36-eaac-4c75-8ead-3fd5bdafefca"><span class="toc-entry-label">Chemie</span></a></h3>
+          <span class="toc-entry-meta"><span>16 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:fb3bdf39-4baf-4510-a192-c8a12fbf5dba" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-d548e16f2c7ea252691f8789" aria-label="Chemische Symbolsprache und Anwendung (Sek I)"><a href="#goal-e0d05c36-eaac-4c75-8ead-3fd5bdafefca"><span class="toc-entry-label">Chemische&#160;<wbr>Symbolsprache&#160;<wbr>und&#160;<wbr>Anwendung&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h4>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:680c7dc6-9af5-58fb-86f5-e003aa78d0f5" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-cc25d203805c53f99ea72096" aria-label="Stoffmenge, molare Groessen und Gase (Sek I)"><a href="#goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0"><span class="toc-entry-label">Stoffmenge,&#160;<wbr>molare&#160;<wbr>Groessen&#160;<wbr>und&#160;<wbr>Gase&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h4>
+          <span class="toc-entry-meta"><span>11 Lernziele</span><span>erste zugehörige Lernzielseite 6</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-e0d05c36-eaac-4c75-8ead-3fd5bdafefca" data-goal-id="e0d05c36-eaac-4c75-8ead-3fd5bdafefca" data-page-number="1" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:fb3bdf39-4baf-4510-a192-c8a12fbf5dba" aria-labelledby="goal-e0d05c36-eaac-4c75-8ead-3fd5bdafefca-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e0d05c36-eaac-4c75-8ead-3fd5bdafefca-title"><a class="goal-self-link" href="#goal-e0d05c36-eaac-4c75-8ead-3fd5bdafefca">Konstante Massenverhältnisse beschreiben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e0d05c36-eaac-4c75-8ead-3fd5bdafefca</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-d548e16f2c7ea252691f8789">Chemische Symbolsprache und Anwendung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f7a2507d8984d03d4075b3bbd48ce9baa15ba9148c76cf0e97c500b4b5ec0fc6" data-rendered-digest="sha256:3cc6a982df61439b43ce70f6346c5bd343f7429d650f599222b970e905b4dd42" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/e0d05c36-eaac-4c75-8ead-3fd5bdafefca/e0d05c36-eaac-4c75-8ead-3fd5bdafefca.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Konstante Massenverhältnisse beschreiben&quot;. Die lernende Person kann konstante Massenverhältnisse an einfachen Oxid- und Sulfidbildungen erkennen und fachlich beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e0d05c36-eaac-4c75-8ead-3fd5bdafefca-description-heading">
+        <p class="section-heading" id="goal-e0d05c36-eaac-4c75-8ead-3fd5bdafefca-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann konstante Massenverhältnisse an einfachen Oxid- und Sulfidbildungen erkennen und fachlich beschreiben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e0d05c36-eaac-4c75-8ead-3fd5bdafefca-requires-heading">
+          <p class="section-heading" id="goal-e0d05c36-eaac-4c75-8ead-3fd5bdafefca-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-e0d05c36-eaac-4c75-8ead-3fd5bdafefca-reverse-heading">
+          <p class="section-heading" id="goal-e0d05c36-eaac-4c75-8ead-3fd5bdafefca-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-9b5d6326-d27c-4ece-8c72-debda705464a"><span>Dalton-Modell und Modellcharakter erläutern</span><code>9b5d6326-d27c-4ece-8c72-debda705464a</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-e675fa94-6e23-59c0-b376-4340bf44c00e"><span>Relative Atommassen und Molekülformeln aus Daten bestimmen</span><code>e675fa94-6e23-59c0-b376-4340bf44c00e</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e0d05c36-eaac-4c75-8ead-3fd5bdafefca-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e0d05c36-eaac-4c75-8ead-3fd5bdafefca-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-1bdaf7f2-ff3b-455a-a7fb-95a44642762a" rel="noreferrer noopener"><span>Massenerhaltung bei Reaktionen erklären</span> <code>1bdaf7f2-ff3b-455a-a7fb-95a44642762a</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 16</span>
+      <span>Buch-Digest <code>sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c525e885c9961f5a873940be26d6fdb55db0eaed9fc3d08cf5c5e2fdaa3b4c63</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-b005-sek1-symbols-stoichiometry-current-16-v1-20260930&amp;edition=curricular-atomic-v1&amp;goalId=e0d05c36-eaac-4c75-8ead-3fd5bdafefca&amp;goalFingerprint=sha256%3Ac525e885c9961f5a873940be26d6fdb55db0eaed9fc3d08cf5c5e2fdaa3b4c63&amp;pageFingerprint=sha256%3A817dad73670ca2f668d8a8053814eb8c6562b4814512e876f9b768172abd0210&amp;bookDigest=sha256%3Ab9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9b5d6326-d27c-4ece-8c72-debda705464a" data-goal-id="9b5d6326-d27c-4ece-8c72-debda705464a" data-page-number="2" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:fb3bdf39-4baf-4510-a192-c8a12fbf5dba" aria-labelledby="goal-9b5d6326-d27c-4ece-8c72-debda705464a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9b5d6326-d27c-4ece-8c72-debda705464a-title"><a class="goal-self-link" href="#goal-9b5d6326-d27c-4ece-8c72-debda705464a">Dalton-Modell und Modellcharakter erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9b5d6326-d27c-4ece-8c72-debda705464a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-d548e16f2c7ea252691f8789">Chemische Symbolsprache und Anwendung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8431cd22270ca4b123157df9abb25e4242131250cea0d364121c2e079913d6bc" data-rendered-digest="sha256:b0e8cdd8154684a1635d0d0cf7020a378bbac0cffc1b0b1168d548c59a2cda96" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/9b5d6326-d27c-4ece-8c72-debda705464a/9b5d6326-d27c-4ece-8c72-debda705464a.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Dalton-Modell und Modellcharakter erläutern&quot;. Die lernende Person kann Daltons Atomhypothese erläutern und den Modellcharakter gegenüber Gesetz und Hypothese fachlich abgrenzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9b5d6326-d27c-4ece-8c72-debda705464a-description-heading">
+        <p class="section-heading" id="goal-9b5d6326-d27c-4ece-8c72-debda705464a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Daltons Atomhypothese erläutern und den Modellcharakter gegenüber Gesetz und Hypothese fachlich abgrenzen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9b5d6326-d27c-4ece-8c72-debda705464a-requires-heading">
+          <p class="section-heading" id="goal-9b5d6326-d27c-4ece-8c72-debda705464a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e0d05c36-eaac-4c75-8ead-3fd5bdafefca"><span>Konstante Massenverhältnisse beschreiben</span><code>e0d05c36-eaac-4c75-8ead-3fd5bdafefca</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-9b5d6326-d27c-4ece-8c72-debda705464a-reverse-heading">
+          <p class="section-heading" id="goal-9b5d6326-d27c-4ece-8c72-debda705464a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-e7c363d4-e02d-4895-8750-ba62c2eb63fe"><span>Chemische Symbole und Formeln sicher nutzen</span><code>e7c363d4-e02d-4895-8750-ba62c2eb63fe</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-5c4788a7-6760-53dc-894e-e04bca6f8cd9"><span>Gasverhalten mit dem kinetischen Teilchenmodell deuten</span><code>5c4788a7-6760-53dc-894e-e04bca6f8cd9</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-9b5d6326-d27c-4ece-8c72-debda705464a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9b5d6326-d27c-4ece-8c72-debda705464a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-277a3c20-6082-5a95-be08-c1e386efe79b" rel="noreferrer noopener"><span>Chemische Modelle nutzen und kritisch vergleichen</span> <code>277a3c20-6082-5a95-be08-c1e386efe79b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-a530ee7d-1002-5f02-ae05-a9d46410ac78" rel="noreferrer noopener"><span>Energieumsatz mit Bindungsänderungen erklären</span> <code>a530ee7d-1002-5f02-ae05-a9d46410ac78</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-72236f2c-771e-4ab6-933a-e549ee49d15b" rel="noreferrer noopener"><span>Kern-Hülle-Modell und Elementarteilchen beschreiben</span> <code>72236f2c-771e-4ab6-933a-e549ee49d15b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-fcaf8c9b-bd81-552e-9d91-43649895471e" rel="noreferrer noopener"><span>Metallmodell aus Stoffeigenschaften entwickeln</span> <code>fcaf8c9b-bd81-552e-9d91-43649895471e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 16</span>
+      <span>Buch-Digest <code>sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2ee89de7e796c06ad763e2a3f2be54947219fcdfe29fa9b39823035e8ee5d7e3</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-b005-sek1-symbols-stoichiometry-current-16-v1-20260930&amp;edition=curricular-atomic-v1&amp;goalId=9b5d6326-d27c-4ece-8c72-debda705464a&amp;goalFingerprint=sha256%3A2ee89de7e796c06ad763e2a3f2be54947219fcdfe29fa9b39823035e8ee5d7e3&amp;pageFingerprint=sha256%3A3817683e3edac6a4c048eb60b72c6d5cada5b0841f7bc4af4c2ebdc667bb8a78&amp;bookDigest=sha256%3Ab9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e7c363d4-e02d-4895-8750-ba62c2eb63fe" data-goal-id="e7c363d4-e02d-4895-8750-ba62c2eb63fe" data-page-number="3" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:fb3bdf39-4baf-4510-a192-c8a12fbf5dba" aria-labelledby="goal-e7c363d4-e02d-4895-8750-ba62c2eb63fe-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e7c363d4-e02d-4895-8750-ba62c2eb63fe-title"><a class="goal-self-link" href="#goal-e7c363d4-e02d-4895-8750-ba62c2eb63fe">Chemische Symbole und Formeln sicher nutzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e7c363d4-e02d-4895-8750-ba62c2eb63fe</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-d548e16f2c7ea252691f8789">Chemische Symbolsprache und Anwendung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:249ef9c54f1f62e65e1bab38cef98dc2d6bdef76bd5e294085a833004bc1ab90" data-rendered-digest="sha256:fabcd7dcdbf593fb66f27ad62626f72bb0ea769b38b4b0d813d69cca3d2f9e9d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/e7c363d4-e02d-4895-8750-ba62c2eb63fe/e7c363d4-e02d-4895-8750-ba62c2eb63fe.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Chemische Symbole und Formeln sicher nutzen&quot;. Die lernende Person kann chemische Symbole deuten und Molekülformeln einfacher Verbindungen fachlich korrekt bilden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e7c363d4-e02d-4895-8750-ba62c2eb63fe-description-heading">
+        <p class="section-heading" id="goal-e7c363d4-e02d-4895-8750-ba62c2eb63fe-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann chemische Symbole deuten und Molekülformeln einfacher Verbindungen fachlich korrekt bilden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e7c363d4-e02d-4895-8750-ba62c2eb63fe-requires-heading">
+          <p class="section-heading" id="goal-e7c363d4-e02d-4895-8750-ba62c2eb63fe-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-9b5d6326-d27c-4ece-8c72-debda705464a"><span>Dalton-Modell und Modellcharakter erläutern</span><code>9b5d6326-d27c-4ece-8c72-debda705464a</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e7c363d4-e02d-4895-8750-ba62c2eb63fe-reverse-heading">
+          <p class="section-heading" id="goal-e7c363d4-e02d-4895-8750-ba62c2eb63fe-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-11bea4c6-7b8a-47e0-8293-2eb1ce34cf66"><span>Einfache Reaktionsgleichungen ableiten</span><code>11bea4c6-7b8a-47e0-8293-2eb1ce34cf66</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0"><span>Stoffmenge und Einheit Mol nutzen</span><code>1dc15fa2-fca4-56b0-b5c1-4d215613dde0</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-8a2ad724-df5e-5986-8de9-560ba43caac2"><span>Molare Masse bestimmen und verwenden</span><code>8a2ad724-df5e-5986-8de9-560ba43caac2</code><span class="reference-page">S. 7</span></a></li><li><a href="#goal-d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a"><span>Zweiatomigkeit gasfoermiger Elementmolekuele begruenden</span><code>d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a</code><span class="reference-page">S. 14</span></a></li><li><a href="#goal-e675fa94-6e23-59c0-b376-4340bf44c00e"><span>Relative Atommassen und Molekülformeln aus Daten bestimmen</span><code>e675fa94-6e23-59c0-b376-4340bf44c00e</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-e7c363d4-e02d-4895-8750-ba62c2eb63fe-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e7c363d4-e02d-4895-8750-ba62c2eb63fe-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-1e372b97-6f1c-596c-8a8b-fc03193d784a" rel="noreferrer noopener"><span>Lernkarten - Chemische Grundlagen</span> <code>1e372b97-6f1c-596c-8a8b-fc03193d784a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-95dc0ee5-a0af-5682-af32-d66e36fbeb50" rel="noreferrer noopener"><span>Chemische Fach- und Symbolsprache ebenengerecht verwenden</span> <code>95dc0ee5-a0af-5682-af32-d66e36fbeb50</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-4285d84a-2c9a-4d51-8250-8bed4daf2d2e" rel="noreferrer noopener"><span>Ionen als Ladungsträger erklären</span> <code>4285d84a-2c9a-4d51-8250-8bed4daf2d2e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-79db6d68-b402-5563-a348-f2784fed8867" rel="noreferrer noopener"><span>Molekulare und ionogene Verbindungen unterscheiden</span> <code>79db6d68-b402-5563-a348-f2784fed8867</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-ddb76915-4d63-5375-901d-4e659f5e9b09" rel="noreferrer noopener"><span>Qualitative Elementaranalyse von Kohlenwasserstoffen auswerten</span> <code>ddb76915-4d63-5375-901d-4e659f5e9b09</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 16</span>
+      <span>Buch-Digest <code>sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0e8bfe30c9724c2e806c68df8a187185fbcf22afaddfda50281beeb8c26a36e9</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-b005-sek1-symbols-stoichiometry-current-16-v1-20260930&amp;edition=curricular-atomic-v1&amp;goalId=e7c363d4-e02d-4895-8750-ba62c2eb63fe&amp;goalFingerprint=sha256%3A0e8bfe30c9724c2e806c68df8a187185fbcf22afaddfda50281beeb8c26a36e9&amp;pageFingerprint=sha256%3A8b5823cd8bee66baac11a828a7ad384a69ed2a921e223675ab36b838b346ef17&amp;bookDigest=sha256%3Ab9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-11bea4c6-7b8a-47e0-8293-2eb1ce34cf66" data-goal-id="11bea4c6-7b8a-47e0-8293-2eb1ce34cf66" data-page-number="4" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:fb3bdf39-4baf-4510-a192-c8a12fbf5dba" aria-labelledby="goal-11bea4c6-7b8a-47e0-8293-2eb1ce34cf66-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-11bea4c6-7b8a-47e0-8293-2eb1ce34cf66-title"><a class="goal-self-link" href="#goal-11bea4c6-7b8a-47e0-8293-2eb1ce34cf66">Einfache Reaktionsgleichungen ableiten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>11bea4c6-7b8a-47e0-8293-2eb1ce34cf66</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-d548e16f2c7ea252691f8789">Chemische Symbolsprache und Anwendung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:93fac07b71bb3f2f9b5ece0e36aeaf671b38acfd12e31aac433c8aea83fd4614" data-rendered-digest="sha256:0559628ebd0eb8562538cdc8a0b074a2290eb761399bedb58a49a23a003c0303" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/11bea4c6-7b8a-47e0-8293-2eb1ce34cf66/11bea4c6-7b8a-47e0-8293-2eb1ce34cf66.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Einfache Reaktionsgleichungen ableiten&quot;. Die lernende Person kann einfache Reaktionsgleichungen aus Reaktionsschemata fachlich korrekt ableiten sowie Teil- und Gesamtgleichungen nutzen, um chemische Reaktionen zu beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-11bea4c6-7b8a-47e0-8293-2eb1ce34cf66-description-heading">
+        <p class="section-heading" id="goal-11bea4c6-7b8a-47e0-8293-2eb1ce34cf66-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann einfache Reaktionsgleichungen aus Reaktionsschemata fachlich korrekt ableiten sowie Teil- und Gesamtgleichungen nutzen, um chemische Reaktionen zu beschreiben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-11bea4c6-7b8a-47e0-8293-2eb1ce34cf66-requires-heading">
+          <p class="section-heading" id="goal-11bea4c6-7b8a-47e0-8293-2eb1ce34cf66-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e7c363d4-e02d-4895-8750-ba62c2eb63fe"><span>Chemische Symbole und Formeln sicher nutzen</span><code>e7c363d4-e02d-4895-8750-ba62c2eb63fe</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-11bea4c6-7b8a-47e0-8293-2eb1ce34cf66-reverse-heading">
+          <p class="section-heading" id="goal-11bea4c6-7b8a-47e0-8293-2eb1ce34cf66-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-22133f29-ef02-4408-8f8d-2bbea3275d91"><span>Einfache Redoxgleichungen mit Oxidationszahlen erstellen</span><code>22133f29-ef02-4408-8f8d-2bbea3275d91</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-9f355f63-4fb7-5638-9538-6e8a246ec4b2"><span>Stoffumsätze einfacher Molekülreaktionen berechnen</span><code>9f355f63-4fb7-5638-9538-6e8a246ec4b2</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-11bea4c6-7b8a-47e0-8293-2eb1ce34cf66-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-11bea4c6-7b8a-47e0-8293-2eb1ce34cf66-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566" rel="noreferrer noopener"><span>Chemische Reaktionen von physikalischen Vorgängen unterscheiden</span> <code>8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-11bea4c6-7b8a-47e0-8293-2eb1ce34cf66-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-11bea4c6-7b8a-47e0-8293-2eb1ce34cf66-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-d726e00e-1f87-5ba5-8c79-76ad4022365e" rel="noreferrer noopener"><span>Kalkkreislauf chemisch beschreiben</span> <code>d726e00e-1f87-5ba5-8c79-76ad4022365e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-414489cb-453e-5de4-ab0f-0fc01175e522" rel="noreferrer noopener"><span>Gipsbildung bei Rauchgaswaesche deuten</span> <code>414489cb-453e-5de4-ab0f-0fc01175e522</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-ddb76915-4d63-5375-901d-4e659f5e9b09" rel="noreferrer noopener"><span>Qualitative Elementaranalyse von Kohlenwasserstoffen auswerten</span> <code>ddb76915-4d63-5375-901d-4e659f5e9b09</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 16</span>
+      <span>Buch-Digest <code>sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f0a794aeab9c1ed095f602a0ba8d15d6e20c194eb0b3e19ea4de75246b8fd5d4</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-b005-sek1-symbols-stoichiometry-current-16-v1-20260930&amp;edition=curricular-atomic-v1&amp;goalId=11bea4c6-7b8a-47e0-8293-2eb1ce34cf66&amp;goalFingerprint=sha256%3Af0a794aeab9c1ed095f602a0ba8d15d6e20c194eb0b3e19ea4de75246b8fd5d4&amp;pageFingerprint=sha256%3A394901c58c345086a2fed830fd265c40ed5b1787c0c4072b75576b49ccfea784&amp;bookDigest=sha256%3Ab9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-22133f29-ef02-4408-8f8d-2bbea3275d91" data-goal-id="22133f29-ef02-4408-8f8d-2bbea3275d91" data-page-number="5" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:fb3bdf39-4baf-4510-a192-c8a12fbf5dba" aria-labelledby="goal-22133f29-ef02-4408-8f8d-2bbea3275d91-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-22133f29-ef02-4408-8f8d-2bbea3275d91-title"><a class="goal-self-link" href="#goal-22133f29-ef02-4408-8f8d-2bbea3275d91">Einfache Redoxgleichungen mit Oxidationszahlen erstellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>22133f29-ef02-4408-8f8d-2bbea3275d91</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-d548e16f2c7ea252691f8789">Chemische Symbolsprache und Anwendung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:cfe32853bddb72e823c5e2eac8d307dc288a4d0f44328d71de70c86348cbfb9c" data-rendered-digest="sha256:032a239035be79cc2a3b9b9763eb25b0aaed57f558eccbb382b74b445e03df6e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/22133f29-ef02-4408-8f8d-2bbea3275d91/22133f29-ef02-4408-8f8d-2bbea3275d91.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Einfache Redoxgleichungen mit Oxidationszahlen erstellen&quot;. Die lernende Person kann Oxidationszahlen nutzen, einfache Redoxteilgleichungen in wässrigen Lösungen formulieren und Redoxgleichungen fachlich korrekt erstellen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-22133f29-ef02-4408-8f8d-2bbea3275d91-description-heading">
+        <p class="section-heading" id="goal-22133f29-ef02-4408-8f8d-2bbea3275d91-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Oxidationszahlen nutzen, einfache Redoxteilgleichungen in wässrigen Lösungen formulieren und Redoxgleichungen fachlich korrekt erstellen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-22133f29-ef02-4408-8f8d-2bbea3275d91-requires-heading">
+          <p class="section-heading" id="goal-22133f29-ef02-4408-8f8d-2bbea3275d91-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-11bea4c6-7b8a-47e0-8293-2eb1ce34cf66"><span>Einfache Reaktionsgleichungen ableiten</span><code>11bea4c6-7b8a-47e0-8293-2eb1ce34cf66</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-22133f29-ef02-4408-8f8d-2bbea3275d91-reverse-heading">
+          <p class="section-heading" id="goal-22133f29-ef02-4408-8f8d-2bbea3275d91-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-22133f29-ef02-4408-8f8d-2bbea3275d91-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-22133f29-ef02-4408-8f8d-2bbea3275d91-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a" rel="noreferrer noopener"><span>Oxidation und Reduktion bei einfachen Reaktionen erkennen</span> <code>bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-22133f29-ef02-4408-8f8d-2bbea3275d91-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-22133f29-ef02-4408-8f8d-2bbea3275d91-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-70b12d1c-abaf-45c6-ae9e-b571e9cbc126" rel="noreferrer noopener"><span>Elektrolyse einfacher Salze deuten</span> <code>70b12d1c-abaf-45c6-ae9e-b571e9cbc126</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-1051c091-a044-5a09-8946-60a4b5e5d185" rel="noreferrer noopener"><span>Photosynthese als Redoxprinzip beschreiben</span> <code>1051c091-a044-5a09-8946-60a4b5e5d185</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 16</span>
+      <span>Buch-Digest <code>sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e5cf2f08468955394dc75794e34b1b99c1821d7662b343cc930cf5d7e4eaabd6</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-b005-sek1-symbols-stoichiometry-current-16-v1-20260930&amp;edition=curricular-atomic-v1&amp;goalId=22133f29-ef02-4408-8f8d-2bbea3275d91&amp;goalFingerprint=sha256%3Ae5cf2f08468955394dc75794e34b1b99c1821d7662b343cc930cf5d7e4eaabd6&amp;pageFingerprint=sha256%3Af17ec6194e3f280cfe96af52b6d66ee88a1cdf0597a545bddb278b03d7d7b01b&amp;bookDigest=sha256%3Ab9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0" data-goal-id="1dc15fa2-fca4-56b0-b5c1-4d215613dde0" data-page-number="6" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:680c7dc6-9af5-58fb-86f5-e003aa78d0f5" aria-labelledby="goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0-title"><a class="goal-self-link" href="#goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0">Stoffmenge und Einheit Mol nutzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1dc15fa2-fca4-56b0-b5c1-4d215613dde0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-cc25d203805c53f99ea72096">Stoffmenge, molare Groessen und Gase (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:5c4a0b09b6390c458efeeb7dd3f7f1aa027c326730277cc38ccbc3386851871a" data-rendered-digest="sha256:2c850b8bd42a32dedf23e1b8b7a97b596fb794d7f9fc99ecc6474e6d19e3fde0" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/1dc15fa2-fca4-56b0-b5c1-4d215613dde0/1dc15fa2-fca4-56b0-b5c1-4d215613dde0.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Stoffmenge und Einheit Mol nutzen&quot;. Die lernende Person kann die Stoffmenge als Teilchenanzahl-bezogene Groesse deuten und die Einheit Mol fachlich korrekt verwenden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0-description-heading">
+        <p class="section-heading" id="goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Stoffmenge als Teilchenanzahl-bezogene Groesse deuten und die Einheit Mol fachlich korrekt verwenden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0-requires-heading">
+          <p class="section-heading" id="goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e7c363d4-e02d-4895-8750-ba62c2eb63fe"><span>Chemische Symbole und Formeln sicher nutzen</span><code>e7c363d4-e02d-4895-8750-ba62c2eb63fe</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0-reverse-heading">
+          <p class="section-heading" id="goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-8a2ad724-df5e-5986-8de9-560ba43caac2"><span>Molare Masse bestimmen und verwenden</span><code>8a2ad724-df5e-5986-8de9-560ba43caac2</code><span class="reference-page">S. 7</span></a></li><li><a href="#goal-dd3fc8fe-2316-5fbc-b569-00651c83bc81"><span>Atomare Masseneinheit und Grammbezug einordnen</span><code>dd3fc8fe-2316-5fbc-b569-00651c83bc81</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-e45c0022-ac0d-5c83-b433-5f68655e382f"><span>Avogadro-Konstante als Teilchenzahlbezug nutzen</span><code>e45c0022-ac0d-5c83-b433-5f68655e382f</code><span class="reference-page">S. 9</span></a></li><li><a href="#goal-1e5a4b89-69f1-5379-811e-c8ec76faad2a"><span>Avogadro-These fuer Gasvolumina erlaeutern</span><code>1e5a4b89-69f1-5379-811e-c8ec76faad2a</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-9f355f63-4fb7-5638-9538-6e8a246ec4b2"><span>Stoffumsätze einfacher Molekülreaktionen berechnen</span><code>9f355f63-4fb7-5638-9538-6e8a246ec4b2</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-1e372b97-6f1c-596c-8a8b-fc03193d784a" rel="noreferrer noopener"><span>Lernkarten - Chemische Grundlagen</span> <code>1e372b97-6f1c-596c-8a8b-fc03193d784a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 16</span>
+      <span>Buch-Digest <code>sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715</code></span>
+      <span>Ziel-Fingerprint <code>sha256:97c0d93de9c190f6ad9aba50cbf1e3f10fb528a6c5a5e70c6eaa1943f4f2f78b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-b005-sek1-symbols-stoichiometry-current-16-v1-20260930&amp;edition=curricular-atomic-v1&amp;goalId=1dc15fa2-fca4-56b0-b5c1-4d215613dde0&amp;goalFingerprint=sha256%3A97c0d93de9c190f6ad9aba50cbf1e3f10fb528a6c5a5e70c6eaa1943f4f2f78b&amp;pageFingerprint=sha256%3A13baee3be1ff0d66f6f4e11e4e6d3f58e4811e698bcb5a1b070a368565969f87&amp;bookDigest=sha256%3Ab9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8a2ad724-df5e-5986-8de9-560ba43caac2" data-goal-id="8a2ad724-df5e-5986-8de9-560ba43caac2" data-page-number="7" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:680c7dc6-9af5-58fb-86f5-e003aa78d0f5" aria-labelledby="goal-8a2ad724-df5e-5986-8de9-560ba43caac2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8a2ad724-df5e-5986-8de9-560ba43caac2-title"><a class="goal-self-link" href="#goal-8a2ad724-df5e-5986-8de9-560ba43caac2">Molare Masse bestimmen und verwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8a2ad724-df5e-5986-8de9-560ba43caac2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-cc25d203805c53f99ea72096">Stoffmenge, molare Groessen und Gase (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2d26dbb32a1606f494c014368d4858727f74287543b313b45c64382eaafa72d5" data-rendered-digest="sha256:f6a24765fafd7b94be0b7edc686dbea80ece072cd8e5d730f045c290c4547604" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/8a2ad724-df5e-5986-8de9-560ba43caac2/8a2ad724-df5e-5986-8de9-560ba43caac2.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Molare Masse bestimmen und verwenden&quot;. Die lernende Person kann molare Massen aus Formeln und Atommassen bestimmen und fuer einfache Stoffmengen- und Massenbezuege verwenden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8a2ad724-df5e-5986-8de9-560ba43caac2-description-heading">
+        <p class="section-heading" id="goal-8a2ad724-df5e-5986-8de9-560ba43caac2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann molare Massen aus Formeln und Atommassen bestimmen und fuer einfache Stoffmengen- und Massenbezuege verwenden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8a2ad724-df5e-5986-8de9-560ba43caac2-requires-heading">
+          <p class="section-heading" id="goal-8a2ad724-df5e-5986-8de9-560ba43caac2-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e7c363d4-e02d-4895-8750-ba62c2eb63fe"><span>Chemische Symbole und Formeln sicher nutzen</span><code>e7c363d4-e02d-4895-8750-ba62c2eb63fe</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0"><span>Stoffmenge und Einheit Mol nutzen</span><code>1dc15fa2-fca4-56b0-b5c1-4d215613dde0</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8a2ad724-df5e-5986-8de9-560ba43caac2-reverse-heading">
+          <p class="section-heading" id="goal-8a2ad724-df5e-5986-8de9-560ba43caac2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-199570f4-b3c3-5e12-877d-ced97e9f6968"><span>Molare Masse von Gasen bestimmen</span><code>199570f4-b3c3-5e12-877d-ced97e9f6968</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-9f355f63-4fb7-5638-9538-6e8a246ec4b2"><span>Stoffumsätze einfacher Molekülreaktionen berechnen</span><code>9f355f63-4fb7-5638-9538-6e8a246ec4b2</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 16</span>
+      <span>Buch-Digest <code>sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715</code></span>
+      <span>Ziel-Fingerprint <code>sha256:baa1af54e84350c21a42a3f3aade47b9186e971ece50337997a174532f98d1fd</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-b005-sek1-symbols-stoichiometry-current-16-v1-20260930&amp;edition=curricular-atomic-v1&amp;goalId=8a2ad724-df5e-5986-8de9-560ba43caac2&amp;goalFingerprint=sha256%3Abaa1af54e84350c21a42a3f3aade47b9186e971ece50337997a174532f98d1fd&amp;pageFingerprint=sha256%3A139ef24044a34d6b8155ee935129f06158148f35f26f6e9b7fe515842acb34f6&amp;bookDigest=sha256%3Ab9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-dd3fc8fe-2316-5fbc-b569-00651c83bc81" data-goal-id="dd3fc8fe-2316-5fbc-b569-00651c83bc81" data-page-number="8" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:680c7dc6-9af5-58fb-86f5-e003aa78d0f5" aria-labelledby="goal-dd3fc8fe-2316-5fbc-b569-00651c83bc81-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-dd3fc8fe-2316-5fbc-b569-00651c83bc81-title"><a class="goal-self-link" href="#goal-dd3fc8fe-2316-5fbc-b569-00651c83bc81">Atomare Masseneinheit und Grammbezug einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>dd3fc8fe-2316-5fbc-b569-00651c83bc81</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-cc25d203805c53f99ea72096">Stoffmenge, molare Groessen und Gase (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:edb8dd08597deb4e9b30ebfa0fe8459caef47ea1701ce04937178b84a9cb44b8" data-rendered-digest="sha256:bbe4b4baa3b29a9981c6f85d30617397fd307e170c0841116bbde33f66681da1" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/dd3fc8fe-2316-5fbc-b569-00651c83bc81/dd3fc8fe-2316-5fbc-b569-00651c83bc81.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Atomare Masseneinheit und Grammbezug einordnen&quot;. Die lernende Person kann die Masseneinheiten u und g im Stoechiometriekontext unterscheiden und in einfachen Teilchen- und Stoffmengenbezuegen nutzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-dd3fc8fe-2316-5fbc-b569-00651c83bc81-description-heading">
+        <p class="section-heading" id="goal-dd3fc8fe-2316-5fbc-b569-00651c83bc81-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Masseneinheiten u und g im Stoechiometriekontext unterscheiden und in einfachen Teilchen- und Stoffmengenbezuegen nutzen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-dd3fc8fe-2316-5fbc-b569-00651c83bc81-requires-heading">
+          <p class="section-heading" id="goal-dd3fc8fe-2316-5fbc-b569-00651c83bc81-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0"><span>Stoffmenge und Einheit Mol nutzen</span><code>1dc15fa2-fca4-56b0-b5c1-4d215613dde0</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-dd3fc8fe-2316-5fbc-b569-00651c83bc81-reverse-heading">
+          <p class="section-heading" id="goal-dd3fc8fe-2316-5fbc-b569-00651c83bc81-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 16</span>
+      <span>Buch-Digest <code>sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715</code></span>
+      <span>Ziel-Fingerprint <code>sha256:cfd2ffdc5decf1ab104e930bd8a027ad4f8ba52390c76503e0920f6a479cbe8e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-b005-sek1-symbols-stoichiometry-current-16-v1-20260930&amp;edition=curricular-atomic-v1&amp;goalId=dd3fc8fe-2316-5fbc-b569-00651c83bc81&amp;goalFingerprint=sha256%3Acfd2ffdc5decf1ab104e930bd8a027ad4f8ba52390c76503e0920f6a479cbe8e&amp;pageFingerprint=sha256%3A0fa7dbb8d02a19831a706399b905b76a38167c812f7bdc52f39c615f5c74db5a&amp;bookDigest=sha256%3Ab9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e45c0022-ac0d-5c83-b433-5f68655e382f" data-goal-id="e45c0022-ac0d-5c83-b433-5f68655e382f" data-page-number="9" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:680c7dc6-9af5-58fb-86f5-e003aa78d0f5" aria-labelledby="goal-e45c0022-ac0d-5c83-b433-5f68655e382f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e45c0022-ac0d-5c83-b433-5f68655e382f-title"><a class="goal-self-link" href="#goal-e45c0022-ac0d-5c83-b433-5f68655e382f">Avogadro-Konstante als Teilchenzahlbezug nutzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e45c0022-ac0d-5c83-b433-5f68655e382f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-cc25d203805c53f99ea72096">Stoffmenge, molare Groessen und Gase (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9625afd490020972af4707fcacc1ad783741b2892d908f68f5976c2061a5bfe0" data-rendered-digest="sha256:f8e3348a89fd9e1f94f0a18543002b2d23ff1072d4e96e48aee75f14a549358c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/e45c0022-ac0d-5c83-b433-5f68655e382f/e45c0022-ac0d-5c83-b433-5f68655e382f.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Avogadro-Konstante als Teilchenzahlbezug nutzen&quot;. Die lernende Person kann die Avogadro-Konstante als Proportionalitaetsfaktor zwischen Stoffmenge und Teilchenzahl deuten und in einfachen Bezuegen anwenden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e45c0022-ac0d-5c83-b433-5f68655e382f-description-heading">
+        <p class="section-heading" id="goal-e45c0022-ac0d-5c83-b433-5f68655e382f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Avogadro-Konstante als Proportionalitaetsfaktor zwischen Stoffmenge und Teilchenzahl deuten und in einfachen Bezuegen anwenden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e45c0022-ac0d-5c83-b433-5f68655e382f-requires-heading">
+          <p class="section-heading" id="goal-e45c0022-ac0d-5c83-b433-5f68655e382f-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0"><span>Stoffmenge und Einheit Mol nutzen</span><code>1dc15fa2-fca4-56b0-b5c1-4d215613dde0</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e45c0022-ac0d-5c83-b433-5f68655e382f-reverse-heading">
+          <p class="section-heading" id="goal-e45c0022-ac0d-5c83-b433-5f68655e382f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 16</span>
+      <span>Buch-Digest <code>sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3d124a0a286d9ffd2dbb7d3ad6ba94c27f2406a519365edd06ebb79d13ef4c3c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-b005-sek1-symbols-stoichiometry-current-16-v1-20260930&amp;edition=curricular-atomic-v1&amp;goalId=e45c0022-ac0d-5c83-b433-5f68655e382f&amp;goalFingerprint=sha256%3A3d124a0a286d9ffd2dbb7d3ad6ba94c27f2406a519365edd06ebb79d13ef4c3c&amp;pageFingerprint=sha256%3Affa5a54a03829b1fa1f684071fc438d2a2d622184daec1bc397eb52991984233&amp;bookDigest=sha256%3Ab9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5c4788a7-6760-53dc-894e-e04bca6f8cd9" data-goal-id="5c4788a7-6760-53dc-894e-e04bca6f8cd9" data-page-number="10" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:680c7dc6-9af5-58fb-86f5-e003aa78d0f5" aria-labelledby="goal-5c4788a7-6760-53dc-894e-e04bca6f8cd9-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5c4788a7-6760-53dc-894e-e04bca6f8cd9-title"><a class="goal-self-link" href="#goal-5c4788a7-6760-53dc-894e-e04bca6f8cd9">Gasverhalten mit dem kinetischen Teilchenmodell deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5c4788a7-6760-53dc-894e-e04bca6f8cd9</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-cc25d203805c53f99ea72096">Stoffmenge, molare Groessen und Gase (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0be30232f2e9da86a08a02a2745c48316486b267007a2a6892bd0e590221a4eb" data-rendered-digest="sha256:62ef794db7cadc679104c6907045d25ca833cedefff94c30d8e21a653167796a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/5c4788a7-6760-53dc-894e-e04bca6f8cd9/5c4788a7-6760-53dc-894e-e04bca6f8cd9.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Gasverhalten mit dem kinetischen Teilchenmodell deuten&quot;. Die lernende Person kann Druck, Temperatur und Volumen von Gasen mit einem kinetischen Teilchenmodell qualitativ deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5c4788a7-6760-53dc-894e-e04bca6f8cd9-description-heading">
+        <p class="section-heading" id="goal-5c4788a7-6760-53dc-894e-e04bca6f8cd9-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Druck, Temperatur und Volumen von Gasen mit einem kinetischen Teilchenmodell qualitativ deuten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5c4788a7-6760-53dc-894e-e04bca6f8cd9-requires-heading">
+          <p class="section-heading" id="goal-5c4788a7-6760-53dc-894e-e04bca6f8cd9-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-9b5d6326-d27c-4ece-8c72-debda705464a"><span>Dalton-Modell und Modellcharakter erläutern</span><code>9b5d6326-d27c-4ece-8c72-debda705464a</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-5c4788a7-6760-53dc-894e-e04bca6f8cd9-reverse-heading">
+          <p class="section-heading" id="goal-5c4788a7-6760-53dc-894e-e04bca6f8cd9-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-1e5a4b89-69f1-5379-811e-c8ec76faad2a"><span>Avogadro-These fuer Gasvolumina erlaeutern</span><code>1e5a4b89-69f1-5379-811e-c8ec76faad2a</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a"><span>Zweiatomigkeit gasfoermiger Elementmolekuele begruenden</span><code>d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 16</span>
+      <span>Buch-Digest <code>sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715</code></span>
+      <span>Ziel-Fingerprint <code>sha256:618cc37abe7c18275b88f403c5f6b4d617c9ff68260581df8161421137148e1b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-b005-sek1-symbols-stoichiometry-current-16-v1-20260930&amp;edition=curricular-atomic-v1&amp;goalId=5c4788a7-6760-53dc-894e-e04bca6f8cd9&amp;goalFingerprint=sha256%3A618cc37abe7c18275b88f403c5f6b4d617c9ff68260581df8161421137148e1b&amp;pageFingerprint=sha256%3A2d61b1a601ad816f7510b159303f1225a1e736c846cd9a6ae73a0139a0ff8d53&amp;bookDigest=sha256%3Ab9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1e5a4b89-69f1-5379-811e-c8ec76faad2a" data-goal-id="1e5a4b89-69f1-5379-811e-c8ec76faad2a" data-page-number="11" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:680c7dc6-9af5-58fb-86f5-e003aa78d0f5" aria-labelledby="goal-1e5a4b89-69f1-5379-811e-c8ec76faad2a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1e5a4b89-69f1-5379-811e-c8ec76faad2a-title"><a class="goal-self-link" href="#goal-1e5a4b89-69f1-5379-811e-c8ec76faad2a">Avogadro-These fuer Gasvolumina erlaeutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1e5a4b89-69f1-5379-811e-c8ec76faad2a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-cc25d203805c53f99ea72096">Stoffmenge, molare Groessen und Gase (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4ffb10d9dfbfe19ae1ef3ddbc60803cf4ef13b4339347a98528bc4b90a4cb768" data-rendered-digest="sha256:84aea46b85d5cdd994a78354e820783bc0fbcc5531bebb142a57c330add3c92c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/1e5a4b89-69f1-5379-811e-c8ec76faad2a/1e5a4b89-69f1-5379-811e-c8ec76faad2a.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Avogadro-These fuer Gasvolumina erlaeutern&quot;. Die lernende Person kann die These von Avogadro fuer gleiche Gasvolumina bei gleichen Bedingungen fachlich erlaeutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1e5a4b89-69f1-5379-811e-c8ec76faad2a-description-heading">
+        <p class="section-heading" id="goal-1e5a4b89-69f1-5379-811e-c8ec76faad2a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die These von Avogadro fuer gleiche Gasvolumina bei gleichen Bedingungen fachlich erlaeutern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1e5a4b89-69f1-5379-811e-c8ec76faad2a-requires-heading">
+          <p class="section-heading" id="goal-1e5a4b89-69f1-5379-811e-c8ec76faad2a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0"><span>Stoffmenge und Einheit Mol nutzen</span><code>1dc15fa2-fca4-56b0-b5c1-4d215613dde0</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-5c4788a7-6760-53dc-894e-e04bca6f8cd9"><span>Gasverhalten mit dem kinetischen Teilchenmodell deuten</span><code>5c4788a7-6760-53dc-894e-e04bca6f8cd9</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-1e5a4b89-69f1-5379-811e-c8ec76faad2a-reverse-heading">
+          <p class="section-heading" id="goal-1e5a4b89-69f1-5379-811e-c8ec76faad2a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-2924f784-5261-54e8-93ee-49ac3b3cd300"><span>Molares Volumen von Gasen nutzen</span><code>2924f784-5261-54e8-93ee-49ac3b3cd300</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 16</span>
+      <span>Buch-Digest <code>sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e816322352ed134533d32620eb388ba7cabb5ba16e1f8fbabd77d5c9eab764fd</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-b005-sek1-symbols-stoichiometry-current-16-v1-20260930&amp;edition=curricular-atomic-v1&amp;goalId=1e5a4b89-69f1-5379-811e-c8ec76faad2a&amp;goalFingerprint=sha256%3Ae816322352ed134533d32620eb388ba7cabb5ba16e1f8fbabd77d5c9eab764fd&amp;pageFingerprint=sha256%3A688276f64a125292fcbc646c4b9b26fb3fdebfa6aa0d28b795f36c7b1a16532b&amp;bookDigest=sha256%3Ab9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2924f784-5261-54e8-93ee-49ac3b3cd300" data-goal-id="2924f784-5261-54e8-93ee-49ac3b3cd300" data-page-number="12" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:680c7dc6-9af5-58fb-86f5-e003aa78d0f5" aria-labelledby="goal-2924f784-5261-54e8-93ee-49ac3b3cd300-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2924f784-5261-54e8-93ee-49ac3b3cd300-title"><a class="goal-self-link" href="#goal-2924f784-5261-54e8-93ee-49ac3b3cd300">Molares Volumen von Gasen nutzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2924f784-5261-54e8-93ee-49ac3b3cd300</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-cc25d203805c53f99ea72096">Stoffmenge, molare Groessen und Gase (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2da231248a43019efccfc184b58f1414f5398f1bbc0b2496134de4577c6ff928" data-rendered-digest="sha256:09f937a3358b5bea99fa5ff2cc63d2afdeacfa40ccc5344832b3307357f8d20a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/2924f784-5261-54e8-93ee-49ac3b3cd300/2924f784-5261-54e8-93ee-49ac3b3cd300.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Molares Volumen von Gasen nutzen&quot;. Die lernende Person kann das molare Volumen von Gasen bei festgelegten Bedingungen beschreiben und fuer einfache Stoffmengen-Volumen-Bezuege verwenden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2924f784-5261-54e8-93ee-49ac3b3cd300-description-heading">
+        <p class="section-heading" id="goal-2924f784-5261-54e8-93ee-49ac3b3cd300-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das molare Volumen von Gasen bei festgelegten Bedingungen beschreiben und fuer einfache Stoffmengen-Volumen-Bezuege verwenden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2924f784-5261-54e8-93ee-49ac3b3cd300-requires-heading">
+          <p class="section-heading" id="goal-2924f784-5261-54e8-93ee-49ac3b3cd300-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1e5a4b89-69f1-5379-811e-c8ec76faad2a"><span>Avogadro-These fuer Gasvolumina erlaeutern</span><code>1e5a4b89-69f1-5379-811e-c8ec76faad2a</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-2924f784-5261-54e8-93ee-49ac3b3cd300-reverse-heading">
+          <p class="section-heading" id="goal-2924f784-5261-54e8-93ee-49ac3b3cd300-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-199570f4-b3c3-5e12-877d-ced97e9f6968"><span>Molare Masse von Gasen bestimmen</span><code>199570f4-b3c3-5e12-877d-ced97e9f6968</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 16</span>
+      <span>Buch-Digest <code>sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715</code></span>
+      <span>Ziel-Fingerprint <code>sha256:64919e2a2875afd5046ed9c20b9c66c52f6c97903c4f05d4f6ce0dd2d20da6db</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-b005-sek1-symbols-stoichiometry-current-16-v1-20260930&amp;edition=curricular-atomic-v1&amp;goalId=2924f784-5261-54e8-93ee-49ac3b3cd300&amp;goalFingerprint=sha256%3A64919e2a2875afd5046ed9c20b9c66c52f6c97903c4f05d4f6ce0dd2d20da6db&amp;pageFingerprint=sha256%3A487694747e93976aab2a560ddacab39159ac2e798c74ab18f078e2b419288f98&amp;bookDigest=sha256%3Ab9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-199570f4-b3c3-5e12-877d-ced97e9f6968" data-goal-id="199570f4-b3c3-5e12-877d-ced97e9f6968" data-page-number="13" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:680c7dc6-9af5-58fb-86f5-e003aa78d0f5" aria-labelledby="goal-199570f4-b3c3-5e12-877d-ced97e9f6968-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-199570f4-b3c3-5e12-877d-ced97e9f6968-title"><a class="goal-self-link" href="#goal-199570f4-b3c3-5e12-877d-ced97e9f6968">Molare Masse von Gasen bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>199570f4-b3c3-5e12-877d-ced97e9f6968</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-cc25d203805c53f99ea72096">Stoffmenge, molare Groessen und Gase (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:5b6d378fc8dbb33aa766d61a7c824a7b9f26d5e69b4474c6811183782dd37169" data-rendered-digest="sha256:70aa4f3e96292b75be0dc6d00582639573b8c09fb08b719a5528458afaaeb46d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/199570f4-b3c3-5e12-877d-ced97e9f6968/199570f4-b3c3-5e12-877d-ced97e9f6968.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Molare Masse von Gasen bestimmen&quot;. Die lernende Person kann molare Massen gasfoermiger Stoffe aus Formeln oder einfachen Gasbezuegen bestimmen und deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-199570f4-b3c3-5e12-877d-ced97e9f6968-description-heading">
+        <p class="section-heading" id="goal-199570f4-b3c3-5e12-877d-ced97e9f6968-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann molare Massen gasfoermiger Stoffe aus Formeln oder einfachen Gasbezuegen bestimmen und deuten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-199570f4-b3c3-5e12-877d-ced97e9f6968-requires-heading">
+          <p class="section-heading" id="goal-199570f4-b3c3-5e12-877d-ced97e9f6968-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8a2ad724-df5e-5986-8de9-560ba43caac2"><span>Molare Masse bestimmen und verwenden</span><code>8a2ad724-df5e-5986-8de9-560ba43caac2</code><span class="reference-page">S. 7</span></a></li><li><a href="#goal-2924f784-5261-54e8-93ee-49ac3b3cd300"><span>Molares Volumen von Gasen nutzen</span><code>2924f784-5261-54e8-93ee-49ac3b3cd300</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-199570f4-b3c3-5e12-877d-ced97e9f6968-reverse-heading">
+          <p class="section-heading" id="goal-199570f4-b3c3-5e12-877d-ced97e9f6968-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 16</span>
+      <span>Buch-Digest <code>sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2fef4bb338d8c435f228d4ad63e999b3d65fd44dc418829ede8d7699e526e5f7</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-b005-sek1-symbols-stoichiometry-current-16-v1-20260930&amp;edition=curricular-atomic-v1&amp;goalId=199570f4-b3c3-5e12-877d-ced97e9f6968&amp;goalFingerprint=sha256%3A2fef4bb338d8c435f228d4ad63e999b3d65fd44dc418829ede8d7699e526e5f7&amp;pageFingerprint=sha256%3A06320ce6d0c3d4946ffa255e33ddc6aede2b8c50d1c7e19aaa8c488effcf12e6&amp;bookDigest=sha256%3Ab9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a" data-goal-id="d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a" data-page-number="14" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:680c7dc6-9af5-58fb-86f5-e003aa78d0f5" aria-labelledby="goal-d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a-title"><a class="goal-self-link" href="#goal-d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a">Zweiatomigkeit gasfoermiger Elementmolekuele begruenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-cc25d203805c53f99ea72096">Stoffmenge, molare Groessen und Gase (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9cd77db2e2afbe3c3f5b6aec980a873061fea005fe76f26d0b30b5ec07553dc9" data-rendered-digest="sha256:a92da09257005aa6adb53a9f7ff70d88f1d8bc71de85ddb84eb44fca31d76703" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a/d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Zweiatomigkeit gasfoermiger Elementmolekuele begruenden&quot;. Die lernende Person kann erklaeren, dass wichtige gasfoermige Elemente als zweiatomige Molekuele auftreten, und diese Schreibweise in Formeln und Reaktionsgleichungen nutzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a-description-heading">
+        <p class="section-heading" id="goal-d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann erklaeren, dass wichtige gasfoermige Elemente als zweiatomige Molekuele auftreten, und diese Schreibweise in Formeln und Reaktionsgleichungen nutzen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a-requires-heading">
+          <p class="section-heading" id="goal-d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e7c363d4-e02d-4895-8750-ba62c2eb63fe"><span>Chemische Symbole und Formeln sicher nutzen</span><code>e7c363d4-e02d-4895-8750-ba62c2eb63fe</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-5c4788a7-6760-53dc-894e-e04bca6f8cd9"><span>Gasverhalten mit dem kinetischen Teilchenmodell deuten</span><code>5c4788a7-6760-53dc-894e-e04bca6f8cd9</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a-reverse-heading">
+          <p class="section-heading" id="goal-d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 16</span>
+      <span>Buch-Digest <code>sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1902ea30ceebc8244a69939c76a7c08841927426af01650b79a85e7905727428</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-b005-sek1-symbols-stoichiometry-current-16-v1-20260930&amp;edition=curricular-atomic-v1&amp;goalId=d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a&amp;goalFingerprint=sha256%3A1902ea30ceebc8244a69939c76a7c08841927426af01650b79a85e7905727428&amp;pageFingerprint=sha256%3A073870d7dd60fe22266703921d5ef497067f03d8eeef6a19e2e19f8c6c68343f&amp;bookDigest=sha256%3Ab9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e675fa94-6e23-59c0-b376-4340bf44c00e" data-goal-id="e675fa94-6e23-59c0-b376-4340bf44c00e" data-page-number="15" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:680c7dc6-9af5-58fb-86f5-e003aa78d0f5" aria-labelledby="goal-e675fa94-6e23-59c0-b376-4340bf44c00e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e675fa94-6e23-59c0-b376-4340bf44c00e-title"><a class="goal-self-link" href="#goal-e675fa94-6e23-59c0-b376-4340bf44c00e">Relative Atommassen und Molekülformeln aus Daten bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e675fa94-6e23-59c0-b376-4340bf44c00e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-cc25d203805c53f99ea72096">Stoffmenge, molare Groessen und Gase (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8ed9f7b2068c4edf2713a041332390d35fbea1fdfcf3ff1316491cd1a8b903a9" data-rendered-digest="sha256:8acc343933b0dacbeb94b2fc50a2bcf51ccbd2d127aa5eec997542dfd70e73d5" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/e675fa94-6e23-59c0-b376-4340bf44c00e/e675fa94-6e23-59c0-b376-4340bf44c00e.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Relative Atommassen und Molekülformeln aus Daten bestimmen&quot;. Die lernende Person kann Versuchsdaten zur Ermittlung relativer Atommassen und zur Molekülformelbestimmung gasförmiger Elemente und binärer Verbindungen auswerten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e675fa94-6e23-59c0-b376-4340bf44c00e-description-heading">
+        <p class="section-heading" id="goal-e675fa94-6e23-59c0-b376-4340bf44c00e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Versuchsdaten zur Ermittlung relativer Atommassen und zur Molekülformelbestimmung gasförmiger Elemente und binärer Verbindungen auswerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e675fa94-6e23-59c0-b376-4340bf44c00e-requires-heading">
+          <p class="section-heading" id="goal-e675fa94-6e23-59c0-b376-4340bf44c00e-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e0d05c36-eaac-4c75-8ead-3fd5bdafefca"><span>Konstante Massenverhältnisse beschreiben</span><code>e0d05c36-eaac-4c75-8ead-3fd5bdafefca</code><span class="reference-page">S. 1</span></a></li><li><a href="#goal-e7c363d4-e02d-4895-8750-ba62c2eb63fe"><span>Chemische Symbole und Formeln sicher nutzen</span><code>e7c363d4-e02d-4895-8750-ba62c2eb63fe</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e675fa94-6e23-59c0-b376-4340bf44c00e-reverse-heading">
+          <p class="section-heading" id="goal-e675fa94-6e23-59c0-b376-4340bf44c00e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 16</span>
+      <span>Buch-Digest <code>sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715</code></span>
+      <span>Ziel-Fingerprint <code>sha256:525aca33b5d90994a6ea25962f0ea53f22cc616c4670bcca34a6dcc9431c93e9</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-b005-sek1-symbols-stoichiometry-current-16-v1-20260930&amp;edition=curricular-atomic-v1&amp;goalId=e675fa94-6e23-59c0-b376-4340bf44c00e&amp;goalFingerprint=sha256%3A525aca33b5d90994a6ea25962f0ea53f22cc616c4670bcca34a6dcc9431c93e9&amp;pageFingerprint=sha256%3A55bb151faf0288392981598ad722df20212b5c6d523f80c171831dd79a6168fc&amp;bookDigest=sha256%3Ab9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9f355f63-4fb7-5638-9538-6e8a246ec4b2" data-goal-id="9f355f63-4fb7-5638-9538-6e8a246ec4b2" data-page-number="16" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:680c7dc6-9af5-58fb-86f5-e003aa78d0f5" aria-labelledby="goal-9f355f63-4fb7-5638-9538-6e8a246ec4b2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9f355f63-4fb7-5638-9538-6e8a246ec4b2-title"><a class="goal-self-link" href="#goal-9f355f63-4fb7-5638-9538-6e8a246ec4b2">Stoffumsätze einfacher Molekülreaktionen berechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9f355f63-4fb7-5638-9538-6e8a246ec4b2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-cc25d203805c53f99ea72096">Stoffmenge, molare Groessen und Gase (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6f633fde5ddf96c717c852816839edb73c62617bedc43d1060c71cd07ae7611a" data-rendered-digest="sha256:328fca4b4f5b3f0df7a43083d438bc7c6faa605200590daf54afbc678db7050c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/9f355f63-4fb7-5638-9538-6e8a246ec4b2/9f355f63-4fb7-5638-9538-6e8a246ec4b2.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Stoffumsätze einfacher Molekülreaktionen berechnen&quot;. Die lernende Person kann Reaktionsgleichungen und Größengleichungen nutzen, um Stoffumsätze bei einfachen Molekülreaktionen zu berechnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9f355f63-4fb7-5638-9538-6e8a246ec4b2-description-heading">
+        <p class="section-heading" id="goal-9f355f63-4fb7-5638-9538-6e8a246ec4b2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Reaktionsgleichungen und Größengleichungen nutzen, um Stoffumsätze bei einfachen Molekülreaktionen zu berechnen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9f355f63-4fb7-5638-9538-6e8a246ec4b2-requires-heading">
+          <p class="section-heading" id="goal-9f355f63-4fb7-5638-9538-6e8a246ec4b2-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-11bea4c6-7b8a-47e0-8293-2eb1ce34cf66"><span>Einfache Reaktionsgleichungen ableiten</span><code>11bea4c6-7b8a-47e0-8293-2eb1ce34cf66</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-1dc15fa2-fca4-56b0-b5c1-4d215613dde0"><span>Stoffmenge und Einheit Mol nutzen</span><code>1dc15fa2-fca4-56b0-b5c1-4d215613dde0</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-8a2ad724-df5e-5986-8de9-560ba43caac2"><span>Molare Masse bestimmen und verwenden</span><code>8a2ad724-df5e-5986-8de9-560ba43caac2</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-9f355f63-4fb7-5638-9538-6e8a246ec4b2-reverse-heading">
+          <p class="section-heading" id="goal-9f355f63-4fb7-5638-9538-6e8a246ec4b2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 16</span>
+      <span>Buch-Digest <code>sha256:b9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715</code></span>
+      <span>Ziel-Fingerprint <code>sha256:db331af99ad23d7bd35483cdfeb5c603576ba334f6d325f1ff4a08ca8f9258df</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-chemie-b005-sek1-symbols-stoichiometry-current-16-v1-20260930&amp;edition=curricular-atomic-v1&amp;goalId=9f355f63-4fb7-5638-9538-6e8a246ec4b2&amp;goalFingerprint=sha256%3Adb331af99ad23d7bd35483cdfeb5c603576ba334f6d325f1ff4a08ca8f9258df&amp;pageFingerprint=sha256%3Ae21479e3358026b40d0360ea3e8efd1c081acde6ff77ce8992ddc4daa84ebc61&amp;bookDigest=sha256%3Ab9ad1b644b09c2a3b0c3072e578533414e18fdbd9e8fdb223fe9201000d99715&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

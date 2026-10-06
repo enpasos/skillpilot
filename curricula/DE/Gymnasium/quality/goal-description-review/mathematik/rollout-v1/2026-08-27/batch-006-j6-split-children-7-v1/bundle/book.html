@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v1">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Mathematik Lernzielbeschreibungs-Review – Rollout Batch 006, neue atomare Geometrieziele Jahrgang 6</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    h1 { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<article class="goal-page" id="goal-99ef0fc2-150a-51e8-bac8-7e40e46917b" data-goal-id="99ef0fc2-150a-51e8-bac8-7e40e46917b" data-page-number="1" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-99ef0fc2-150a-51e8-bac8-7e40e46917b-title">
+    <header class="goal-header">
+      <h1 id="goal-99ef0fc2-150a-51e8-bac8-7e40e46917b-title"><a class="goal-self-link" href="#goal-99ef0fc2-150a-51e8-bac8-7e40e46917b">Volumina von Quadern, Würfeln und daraus zusammengesetzten Körpern bestimmen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>99ef0fc2-150a-51e8-bac8-7e40e46917b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-99ef0fc2-150a-51e8-bac8-7e40e46917b-description-heading">
+        <p class="section-heading" id="goal-99ef0fc2-150a-51e8-bac8-7e40e46917b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Volumina von Quadern, Würfeln und aus ihnen zusammengesetzten Körpern mithilfe von Einheitswürfeln oder aus Kantenlängen bestimmen, zusammengesetzte Körper dazu gezielt in Quader zerlegen oder zu Quadern ergänzen und die Ergebnisse in geeigneten Volumeneinheiten angeben und vergleichen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-99ef0fc2-150a-51e8-bac8-7e40e46917b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-99ef0fc2-150a-51e8-bac8-7e40e46917b-requires-heading">
+          <p class="section-heading" id="goal-99ef0fc2-150a-51e8-bac8-7e40e46917b-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-99ef0fc2-150a-51e8-bac8-7e40e46917b-reverse-heading">
+          <p class="section-heading" id="goal-99ef0fc2-150a-51e8-bac8-7e40e46917b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-99ef0fc2-150a-51e8-bac8-7e40e46917b-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-99ef0fc2-150a-51e8-bac8-7e40e46917b-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-b44f038c-fb1f-527e-b9ad-382214d0328a" rel="noreferrer noopener"><span>Volumenformel des Quaders mit Einheitswürfeln plausibilisieren</span> <code>b44f038c-fb1f-527e-b9ad-382214d0328a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-57fbbf31-9b8c-5408-9af5-fbc73acd12bb" rel="noreferrer noopener"><span>Volumeneinheiten deuten und umrechnen</span> <code>57fbbf31-9b8c-5408-9af5-fbc73acd12bb</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-99ef0fc2-150a-51e8-bac8-7e40e46917b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-99ef0fc2-150a-51e8-bac8-7e40e46917b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-974edafb-ea7b-588e-b88a-547e7a097c70" rel="noreferrer noopener"><span>Aufgabe 5 (Jahrgangsstufe 6, 6 BE)</span> <code>974edafb-ea7b-588e-b88a-547e7a097c70</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-3d49cd27-3a84-50eb-ac35-f0b0bee80df2" rel="noreferrer noopener"><span>Dynamische Zusammenhänge zwischen Größen erläutern</span> <code>3d49cd27-3a84-50eb-ac35-f0b0bee80df2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-415bd48b-8a76-4d4f-bfdd-d085573e7ac3" rel="noreferrer noopener"><span>Volumen von Zylindern berechnen</span> <code>415bd48b-8a76-4d4f-bfdd-d085573e7ac3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2345ae25-5805-4c72-b830-32e63cc6262a" rel="noreferrer noopener"><span>Dichte als abgeleitete Größe verwenden</span> <code>2345ae25-5805-4c72-b830-32e63cc6262a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 1 von 7</span>
+      <span>Buch-Digest <code>sha256:ecf3931954401c4c13d41a394ed55cecd2220a77a9ecffbef03871c00d69bea8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0970d17416a71cfdfc383d62e9083a69918120314e2119287a9d63c2e5450af5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-006-j6-split-children-7-v1-20260827&amp;edition=curricular-atomic-v1&amp;goalId=99ef0fc2-150a-51e8-bac8-7e40e46917b&amp;goalFingerprint=sha256%3A0970d17416a71cfdfc383d62e9083a69918120314e2119287a9d63c2e5450af5&amp;pageFingerprint=sha256%3A0ea733142c375242948c4bfb42af5b5715b1414911b7d4a510dbc9995c9d7f80&amp;bookDigest=sha256%3Aecf3931954401c4c13d41a394ed55cecd2220a77a9ecffbef03871c00d69bea8&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa" data-goal-id="cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa" data-page-number="2" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa-title">
+    <header class="goal-header">
+      <h1 id="goal-cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa-title"><a class="goal-self-link" href="#goal-cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa">Oberflächeninhalte von Quadern und Würfeln aus ihren Seitenflächen berechnen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa-description-heading">
+        <p class="section-heading" id="goal-cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei einem Quader oder Würfel die Flächeninhalte der sechs Seitenflächen aus den Kantenlängen bestimmen, gleich große Seitenflächen berücksichtigen und sie zum Oberflächeninhalt addieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, HE, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW, SL:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa-requires-heading">
+          <p class="section-heading" id="goal-cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa-reverse-heading">
+          <p class="section-heading" id="goal-cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-0bd7dc9b-c7f9-52e6-b374-a019edfd821c" rel="noreferrer noopener"><span>Rechteckflächenformel aus dem Messprinzip erklären</span> <code>0bd7dc9b-c7f9-52e6-b374-a019edfd821c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c823b5a2-82e3-5e22-9c27-c0f41cc5eac6" rel="noreferrer noopener"><span>Elementare Körper erkennen und benennen</span> <code>c823b5a2-82e3-5e22-9c27-c0f41cc5eac6</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-974edafb-ea7b-588e-b88a-547e7a097c70" rel="noreferrer noopener"><span>Aufgabe 5 (Jahrgangsstufe 6, 6 BE)</span> <code>974edafb-ea7b-588e-b88a-547e7a097c70</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 2 von 7</span>
+      <span>Buch-Digest <code>sha256:ecf3931954401c4c13d41a394ed55cecd2220a77a9ecffbef03871c00d69bea8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fe68bd2029a91384ebdfef9623e6531e9a98fbb7f8afcbf3e33d5aeee7c7dd66</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-006-j6-split-children-7-v1-20260827&amp;edition=curricular-atomic-v1&amp;goalId=cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa&amp;goalFingerprint=sha256%3Afe68bd2029a91384ebdfef9623e6531e9a98fbb7f8afcbf3e33d5aeee7c7dd66&amp;pageFingerprint=sha256%3Ac0facf2f0d8347e4e6bb07ed21b8b6ae8a2161f02a20eb6f59953973761bba8a&amp;bookDigest=sha256%3Aecf3931954401c4c13d41a394ed55cecd2220a77a9ecffbef03871c00d69bea8&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2f3d24e7-2450-55d8-97c2-3e106d2854c6" data-goal-id="2f3d24e7-2450-55d8-97c2-3e106d2854c6" data-page-number="3" data-chapter-ids="atlas:7748e0fedff93a25d866 atlas:26e3be1f110ee39b6848" aria-labelledby="goal-2f3d24e7-2450-55d8-97c2-3e106d2854c6-title">
+    <header class="goal-header">
+      <h1 id="goal-2f3d24e7-2450-55d8-97c2-3e106d2854c6-title"><a class="goal-self-link" href="#goal-2f3d24e7-2450-55d8-97c2-3e106d2854c6">Achsenspiegelungen konstruieren</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2f3d24e7-2450-55d8-97c2-3e106d2854c6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Achsenspiegelungen und Punktspiegelungen durchführen</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2f3d24e7-2450-55d8-97c2-3e106d2854c6-description-heading">
+        <p class="section-heading" id="goal-2f3d24e7-2450-55d8-97c2-3e106d2854c6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zu einem Punkt oder einer Figur an einer gegebenen Geraden die Bildpunkte so konstruieren, dass die Verbindungsstrecken senkrecht zur Spiegelachse verlaufen und Ausgangs- und Bildpunkt jeweils denselben Abstand von ihr haben, und diese Bedingungen prüfen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, SN, ST:</strong> Sek. I · G8</li><li><strong>NI, NW, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2f3d24e7-2450-55d8-97c2-3e106d2854c6" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2f3d24e7-2450-55d8-97c2-3e106d2854c6-requires-heading">
+          <p class="section-heading" id="goal-2f3d24e7-2450-55d8-97c2-3e106d2854c6-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2f3d24e7-2450-55d8-97c2-3e106d2854c6-reverse-heading">
+          <p class="section-heading" id="goal-2f3d24e7-2450-55d8-97c2-3e106d2854c6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2f3d24e7-2450-55d8-97c2-3e106d2854c6-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2f3d24e7-2450-55d8-97c2-3e106d2854c6-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-2231c29b-eb4e-51ae-9cb1-eb033bf16099" rel="noreferrer noopener"><span>Parallele und senkrechte Lagebeziehungen erkennen und begründen</span> <code>2231c29b-eb4e-51ae-9cb1-eb033bf16099</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2f3d24e7-2450-55d8-97c2-3e106d2854c6-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2f3d24e7-2450-55d8-97c2-3e106d2854c6-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-47c515c9-2174-58c7-a844-6865fc67c243" rel="noreferrer noopener"><span>Aufgabe 6 (Jahrgangsstufe 6, 6 BE)</span> <code>47c515c9-2174-58c7-a844-6865fc67c243</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 3 von 7</span>
+      <span>Buch-Digest <code>sha256:ecf3931954401c4c13d41a394ed55cecd2220a77a9ecffbef03871c00d69bea8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d93245456fa133acbb08214e54d08ca2f07370595ea9754c39f517e89bd5b118</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-006-j6-split-children-7-v1-20260827&amp;edition=curricular-atomic-v1&amp;goalId=2f3d24e7-2450-55d8-97c2-3e106d2854c6&amp;goalFingerprint=sha256%3Ad93245456fa133acbb08214e54d08ca2f07370595ea9754c39f517e89bd5b118&amp;pageFingerprint=sha256%3Ab2125ddee559af060ee45d7c152d6f23e72ac306a84e75c2f10af381e27db328&amp;bookDigest=sha256%3Aecf3931954401c4c13d41a394ed55cecd2220a77a9ecffbef03871c00d69bea8&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-50e4ecab-d462-5496-b493-b30d699eb100" data-goal-id="50e4ecab-d462-5496-b493-b30d699eb100" data-page-number="4" data-chapter-ids="atlas:7748e0fedff93a25d866 atlas:26e3be1f110ee39b6848" aria-labelledby="goal-50e4ecab-d462-5496-b493-b30d699eb100-title">
+    <header class="goal-header">
+      <h1 id="goal-50e4ecab-d462-5496-b493-b30d699eb100-title"><a class="goal-self-link" href="#goal-50e4ecab-d462-5496-b493-b30d699eb100">Punktspiegelungen konstruieren</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>50e4ecab-d462-5496-b493-b30d699eb100</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li><li>Achsenspiegelungen und Punktspiegelungen durchführen</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-50e4ecab-d462-5496-b493-b30d699eb100-description-heading">
+        <p class="section-heading" id="goal-50e4ecab-d462-5496-b493-b30d699eb100-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zu einem Punkt oder einer Figur bei gegebenem Spiegelzentrum die Bildpunkte so konstruieren, dass das Spiegelzentrum jeweils auf der Verbindungsstrecke liegt und von Ausgangs- und Bildpunkt gleich weit entfernt ist, und diese Bedingung prüfen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, SN, ST:</strong> Sek. I · G8</li><li><strong>NI, NW, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-50e4ecab-d462-5496-b493-b30d699eb100" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-50e4ecab-d462-5496-b493-b30d699eb100-requires-heading">
+          <p class="section-heading" id="goal-50e4ecab-d462-5496-b493-b30d699eb100-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-50e4ecab-d462-5496-b493-b30d699eb100-reverse-heading">
+          <p class="section-heading" id="goal-50e4ecab-d462-5496-b493-b30d699eb100-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-50e4ecab-d462-5496-b493-b30d699eb100-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-50e4ecab-d462-5496-b493-b30d699eb100-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-25593605-5e13-55cc-9a05-8f3d737e15e9" rel="noreferrer noopener"><span>Punktlagen und daraus bestimmte lineare Objekte im Koordinatensystem darstellen</span> <code>25593605-5e13-55cc-9a05-8f3d737e15e9</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-50e4ecab-d462-5496-b493-b30d699eb100-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-50e4ecab-d462-5496-b493-b30d699eb100-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-1cab2bd9-d79a-5468-89dc-05cc63026584" rel="noreferrer noopener"><span>Punktspiegelung an einem gegebenen Zentrum konstruieren und prüfen</span> <code>1cab2bd9-d79a-5468-89dc-05cc63026584</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 4 von 7</span>
+      <span>Buch-Digest <code>sha256:ecf3931954401c4c13d41a394ed55cecd2220a77a9ecffbef03871c00d69bea8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3c6c99decad0254f9c53ee961a66b3a94990458c5a1eee2e290f0c90b27d6dbf</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-006-j6-split-children-7-v1-20260827&amp;edition=curricular-atomic-v1&amp;goalId=50e4ecab-d462-5496-b493-b30d699eb100&amp;goalFingerprint=sha256%3A3c6c99decad0254f9c53ee961a66b3a94990458c5a1eee2e290f0c90b27d6dbf&amp;pageFingerprint=sha256%3A697648f6b7dbda1732de2949aa224d4bec20cf8de56f369c25b16b2366efadbd&amp;bookDigest=sha256%3Aecf3931954401c4c13d41a394ed55cecd2220a77a9ecffbef03871c00d69bea8&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f52e9d72-4995-5c80-91d2-7761ea0cbec0" data-goal-id="f52e9d72-4995-5c80-91d2-7761ea0cbec0" data-page-number="5" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-f52e9d72-4995-5c80-91d2-7761ea0cbec0-title">
+    <header class="goal-header">
+      <h1 id="goal-f52e9d72-4995-5c80-91d2-7761ea0cbec0-title"><a class="goal-self-link" href="#goal-f52e9d72-4995-5c80-91d2-7761ea0cbec0">Netze von Quadern und Würfeln zeichnen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f52e9d72-4995-5c80-91d2-7761ea0cbec0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f52e9d72-4995-5c80-91d2-7761ea0cbec0-description-heading">
+        <p class="section-heading" id="goal-f52e9d72-4995-5c80-91d2-7761ea0cbec0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus den sechs Seitenflächen eines Quaders oder Würfels ein vollständiges, zusammenhängendes Netz zeichnen und prüfen, ob es sich ohne Überlappung zum Körper falten lässt.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HE, HH, SN, ST:</strong> Sek. I · G8</li><li><strong>NI, NW, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-f52e9d72-4995-5c80-91d2-7761ea0cbec0" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f52e9d72-4995-5c80-91d2-7761ea0cbec0-requires-heading">
+          <p class="section-heading" id="goal-f52e9d72-4995-5c80-91d2-7761ea0cbec0-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-f52e9d72-4995-5c80-91d2-7761ea0cbec0-reverse-heading">
+          <p class="section-heading" id="goal-f52e9d72-4995-5c80-91d2-7761ea0cbec0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-f52e9d72-4995-5c80-91d2-7761ea0cbec0-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f52e9d72-4995-5c80-91d2-7761ea0cbec0-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c823b5a2-82e3-5e22-9c27-c0f41cc5eac6" rel="noreferrer noopener"><span>Elementare Körper erkennen und benennen</span> <code>c823b5a2-82e3-5e22-9c27-c0f41cc5eac6</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-f52e9d72-4995-5c80-91d2-7761ea0cbec0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f52e9d72-4995-5c80-91d2-7761ea0cbec0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c34c6132-f85d-59be-8b95-032ddfc0d0de" rel="noreferrer noopener"><span>Quaderdarstellungen zeichnen und verknüpfen</span> <code>c34c6132-f85d-59be-8b95-032ddfc0d0de</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-11c88ea2-8502-5008-bec2-3e491c75ace4" rel="noreferrer noopener"><span>Darstellungsformen gerader Körper verknüpfen</span> <code>11c88ea2-8502-5008-bec2-3e491c75ace4</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 5 von 7</span>
+      <span>Buch-Digest <code>sha256:ecf3931954401c4c13d41a394ed55cecd2220a77a9ecffbef03871c00d69bea8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4e742f29b82dfa3e5f00f446b4e9fa9513c4d7eba95350520cecb3cbbe693e86</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-006-j6-split-children-7-v1-20260827&amp;edition=curricular-atomic-v1&amp;goalId=f52e9d72-4995-5c80-91d2-7761ea0cbec0&amp;goalFingerprint=sha256%3A4e742f29b82dfa3e5f00f446b4e9fa9513c4d7eba95350520cecb3cbbe693e86&amp;pageFingerprint=sha256%3Aa608571b23fd29f7db9633fe0e937f313d094e4ef9e6d882a1aad8e73d6812e8&amp;bookDigest=sha256%3Aecf3931954401c4c13d41a394ed55cecd2220a77a9ecffbef03871c00d69bea8&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6bb52f96-6320-5a34-afb0-db9b471dd4ac" data-goal-id="6bb52f96-6320-5a34-afb0-db9b471dd4ac" data-page-number="6" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-6bb52f96-6320-5a34-afb0-db9b471dd4ac-title">
+    <header class="goal-header">
+      <h1 id="goal-6bb52f96-6320-5a34-afb0-db9b471dd4ac-title"><a class="goal-self-link" href="#goal-6bb52f96-6320-5a34-afb0-db9b471dd4ac">Schrägbilder von Quadern und Würfeln zeichnen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6bb52f96-6320-5a34-afb0-db9b471dd4ac</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6bb52f96-6320-5a34-afb0-db9b471dd4ac-description-heading">
+        <p class="section-heading" id="goal-6bb52f96-6320-5a34-afb0-db9b471dd4ac-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zu einem Quader oder Würfel ein räumlich konsistentes Schrägbild zeichnen, in dem zusammengehörige Körperkanten parallel verlaufen und sichtbare sowie gegebenenfalls verdeckte Kanten regelgerecht dargestellt sind.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HE, HH, SN, ST:</strong> Sek. I · G8</li><li><strong>NI, NW, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-6bb52f96-6320-5a34-afb0-db9b471dd4ac" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6bb52f96-6320-5a34-afb0-db9b471dd4ac-requires-heading">
+          <p class="section-heading" id="goal-6bb52f96-6320-5a34-afb0-db9b471dd4ac-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-6bb52f96-6320-5a34-afb0-db9b471dd4ac-reverse-heading">
+          <p class="section-heading" id="goal-6bb52f96-6320-5a34-afb0-db9b471dd4ac-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-6bb52f96-6320-5a34-afb0-db9b471dd4ac-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6bb52f96-6320-5a34-afb0-db9b471dd4ac-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c823b5a2-82e3-5e22-9c27-c0f41cc5eac6" rel="noreferrer noopener"><span>Elementare Körper erkennen und benennen</span> <code>c823b5a2-82e3-5e22-9c27-c0f41cc5eac6</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-6bb52f96-6320-5a34-afb0-db9b471dd4ac-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6bb52f96-6320-5a34-afb0-db9b471dd4ac-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c34c6132-f85d-59be-8b95-032ddfc0d0de" rel="noreferrer noopener"><span>Quaderdarstellungen zeichnen und verknüpfen</span> <code>c34c6132-f85d-59be-8b95-032ddfc0d0de</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-11c88ea2-8502-5008-bec2-3e491c75ace4" rel="noreferrer noopener"><span>Darstellungsformen gerader Körper verknüpfen</span> <code>11c88ea2-8502-5008-bec2-3e491c75ace4</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 6 von 7</span>
+      <span>Buch-Digest <code>sha256:ecf3931954401c4c13d41a394ed55cecd2220a77a9ecffbef03871c00d69bea8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:13bd589c0dfa56f6572772eee686ee122d305902f919a565d1c97961be84c473</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-006-j6-split-children-7-v1-20260827&amp;edition=curricular-atomic-v1&amp;goalId=6bb52f96-6320-5a34-afb0-db9b471dd4ac&amp;goalFingerprint=sha256%3A13bd589c0dfa56f6572772eee686ee122d305902f919a565d1c97961be84c473&amp;pageFingerprint=sha256%3A1257186fbfe53ea72c91c17287c18be319cc354120d52faf87cb31d18029ce9b&amp;bookDigest=sha256%3Aecf3931954401c4c13d41a394ed55cecd2220a77a9ecffbef03871c00d69bea8&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82" data-goal-id="bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82" data-page-number="7" data-chapter-ids="atlas:7748e0fedff93a25d866" aria-labelledby="goal-bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82-title">
+    <header class="goal-header">
+      <h1 id="goal-bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82-title"><a class="goal-self-link" href="#goal-bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82">Eine orthogonale Ansicht eines Quaders oder Würfels zeichnen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Mathematik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82-description-heading">
+        <p class="section-heading" id="goal-bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zu einem Quader oder Würfel aus einer vorgegebenen Hauptblickrichtung eine orthogonale ebene Ansicht zeichnen und deren Breite und Höhe den entsprechenden Kantenlängen des Körpers zuordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HE, HH, SN, ST:</strong> Sek. I · G8</li><li><strong>NI, NW, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82-requires-heading">
+          <p class="section-heading" id="goal-bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82-reverse-heading">
+          <p class="section-heading" id="goal-bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c823b5a2-82e3-5e22-9c27-c0f41cc5eac6" rel="noreferrer noopener"><span>Elementare Körper erkennen und benennen</span> <code>c823b5a2-82e3-5e22-9c27-c0f41cc5eac6</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c34c6132-f85d-59be-8b95-032ddfc0d0de" rel="noreferrer noopener"><span>Quaderdarstellungen zeichnen und verknüpfen</span> <code>c34c6132-f85d-59be-8b95-032ddfc0d0de</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 7 von 7</span>
+      <span>Buch-Digest <code>sha256:ecf3931954401c4c13d41a394ed55cecd2220a77a9ecffbef03871c00d69bea8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:dfd33d6ba7d4a407eb8af73c1a3f772e0c9148d289e3866ed647b0fcf75e0f05</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-mathematik-rollout-v1-batch-006-j6-split-children-7-v1-20260827&amp;edition=curricular-atomic-v1&amp;goalId=bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82&amp;goalFingerprint=sha256%3Adfd33d6ba7d4a407eb8af73c1a3f772e0c9148d289e3866ed647b0fcf75e0f05&amp;pageFingerprint=sha256%3Abfea0fe9da62db124e984b0f89d77aba638e4c449e6fd85d5c52c9340199b559&amp;bookDigest=sha256%3Aecf3931954401c4c13d41a394ed55cecd2220a77a9ecffbef03871c00d69bea8&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

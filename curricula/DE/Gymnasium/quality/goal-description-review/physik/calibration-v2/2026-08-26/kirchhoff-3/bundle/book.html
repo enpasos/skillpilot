@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v1">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Physik Lernzielbeschreibungs-Kalibrierung V2 – Kirchhoff-Gruppe 3</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    h1 { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<article class="goal-page" id="goal-8a84de16-2fde-58ec-827a-f803e2ce8564" data-goal-id="8a84de16-2fde-58ec-827a-f803e2ce8564" data-page-number="1" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-8a84de16-2fde-58ec-827a-f803e2ce8564-title">
+    <header class="goal-header">
+      <h1 id="goal-8a84de16-2fde-58ec-827a-f803e2ce8564-title"><a class="goal-self-link" href="#goal-8a84de16-2fde-58ec-827a-f803e2ce8564">Strombilanzen an Knoten mit Ladungserhaltung begründen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8a84de16-2fde-58ec-827a-f803e2ce8564</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e311e24caad91ec4f81e68491e1e9a4c0d3a6c4202508099cb83c6f33c7ae843" data-rendered-digest="sha256:c626f13969c64907082dbb3328745fdc00195c23b0bf3e7e3e56c3c1731df3e0" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/8a84de16-2fde-58ec-827a-f803e2ce8564/8a84de16-2fde-58ec-827a-f803e2ce8564.png" alt="Links teilt sich ein Strom von 0,50 Ampere am Knoten in 0,20 und 0,30 Ampere; Stromrichtungen und Strombilanz sind markiert und die Knotenregel wird als Folge der Ladungserhaltung erklärt. Rechts ergänzt eine Spannungsbilanz den Vergleich zur Maschenregel.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8a84de16-2fde-58ec-827a-f803e2ce8564-description-heading">
+        <p class="section-heading" id="goal-8a84de16-2fde-58ec-827a-f803e2ce8564-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an Knoten einfacher Schaltungen Stromrichtungen festlegen, Strombilanzen aufstellen, unbekannte Stromstärken bestimmen oder prüfen und die Knotenregel als Folge der Ladungserhaltung erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8a84de16-2fde-58ec-827a-f803e2ce8564" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8a84de16-2fde-58ec-827a-f803e2ce8564-requires-heading">
+          <p class="section-heading" id="goal-8a84de16-2fde-58ec-827a-f803e2ce8564-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-8a84de16-2fde-58ec-827a-f803e2ce8564-reverse-heading">
+          <p class="section-heading" id="goal-8a84de16-2fde-58ec-827a-f803e2ce8564-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-8f833b36-4126-52db-b210-79fb0023c7d9"><span>Widerstandswirkungen in Reihen- und Parallelschaltungen deuten</span><code>8f833b36-4126-52db-b210-79fb0023c7d9</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8a84de16-2fde-58ec-827a-f803e2ce8564-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8a84de16-2fde-58ec-827a-f803e2ce8564-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-01bebdfc-5819-4610-a03e-ea5e794fc954" rel="noreferrer noopener"><span>Reihen- und Parallelschaltungen für eine Funktion planen</span> <code>01bebdfc-5819-4610-a03e-ea5e794fc954</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-8a84de16-2fde-58ec-827a-f803e2ce8564-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8a84de16-2fde-58ec-827a-f803e2ce8564-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 1 von 3</span>
+      <span>Buch-Digest <code>sha256:bdf6f37a8cbf69230d8570b00c537e57f0dc1a17ea043c76e9be2a4d7adc2c9f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f314fe6e077ec85e1fd251c077e225c010e92f4ead4dfabb8d79f5bc619ca7be</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-calibration-v2-kirchhoff-3-20260826&amp;edition=curricular-atomic-v1&amp;goalId=8a84de16-2fde-58ec-827a-f803e2ce8564&amp;goalFingerprint=sha256%3Af314fe6e077ec85e1fd251c077e225c010e92f4ead4dfabb8d79f5bc619ca7be&amp;pageFingerprint=sha256%3Ab6a58ce942274fac73cb743857b7e717517fcb5662b4e63f195c6b8c4cb2d14e&amp;bookDigest=sha256%3Abdf6f37a8cbf69230d8570b00c537e57f0dc1a17ea043c76e9be2a4d7adc2c9f&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-267170bd-f880-56a7-9719-ffb9751872c5" data-goal-id="267170bd-f880-56a7-9719-ffb9751872c5" data-page-number="2" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-267170bd-f880-56a7-9719-ffb9751872c5-title">
+    <header class="goal-header">
+      <h1 id="goal-267170bd-f880-56a7-9719-ffb9751872c5-title"><a class="goal-self-link" href="#goal-267170bd-f880-56a7-9719-ffb9751872c5">Spannungsbilanzen in Maschen mit Energieerhaltung begründen</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>267170bd-f880-56a7-9719-ffb9751872c5</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-267170bd-f880-56a7-9719-ffb9751872c5-description-heading">
+        <p class="section-heading" id="goal-267170bd-f880-56a7-9719-ffb9751872c5-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in Maschen einfacher Schaltungen eine Umlaufrichtung festlegen, vorzeichenrichtige Spannungsbilanzen aufstellen, unbekannte Spannungen bestimmen oder prüfen und die Maschenregel als Folge der Energieerhaltung erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, SL:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-267170bd-f880-56a7-9719-ffb9751872c5" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-267170bd-f880-56a7-9719-ffb9751872c5-requires-heading">
+          <p class="section-heading" id="goal-267170bd-f880-56a7-9719-ffb9751872c5-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-267170bd-f880-56a7-9719-ffb9751872c5-reverse-heading">
+          <p class="section-heading" id="goal-267170bd-f880-56a7-9719-ffb9751872c5-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-8f833b36-4126-52db-b210-79fb0023c7d9"><span>Widerstandswirkungen in Reihen- und Parallelschaltungen deuten</span><code>8f833b36-4126-52db-b210-79fb0023c7d9</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-267170bd-f880-56a7-9719-ffb9751872c5-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-267170bd-f880-56a7-9719-ffb9751872c5-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-01bebdfc-5819-4610-a03e-ea5e794fc954" rel="noreferrer noopener"><span>Reihen- und Parallelschaltungen für eine Funktion planen</span> <code>01bebdfc-5819-4610-a03e-ea5e794fc954</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-267170bd-f880-56a7-9719-ffb9751872c5-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-267170bd-f880-56a7-9719-ffb9751872c5-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 2 von 3</span>
+      <span>Buch-Digest <code>sha256:bdf6f37a8cbf69230d8570b00c537e57f0dc1a17ea043c76e9be2a4d7adc2c9f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:561d7cc2ed1d8afbe08b688f1426642647dc74bf2a0f04188df439a59ecb5ba0</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-calibration-v2-kirchhoff-3-20260826&amp;edition=curricular-atomic-v1&amp;goalId=267170bd-f880-56a7-9719-ffb9751872c5&amp;goalFingerprint=sha256%3A561d7cc2ed1d8afbe08b688f1426642647dc74bf2a0f04188df439a59ecb5ba0&amp;pageFingerprint=sha256%3A031ab8d9e104a84dfc5ffdc10e8a20679bf41c16312b7da1be4dfa876dce7dda&amp;bookDigest=sha256%3Abdf6f37a8cbf69230d8570b00c537e57f0dc1a17ea043c76e9be2a4d7adc2c9f&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8f833b36-4126-52db-b210-79fb0023c7d9" data-goal-id="8f833b36-4126-52db-b210-79fb0023c7d9" data-page-number="3" data-chapter-ids="atlas:3400bf6ce29cb6d09086" aria-labelledby="goal-8f833b36-4126-52db-b210-79fb0023c7d9-title">
+    <header class="goal-header">
+      <h1 id="goal-8f833b36-4126-52db-b210-79fb0023c7d9-title"><a class="goal-self-link" href="#goal-8f833b36-4126-52db-b210-79fb0023c7d9">Widerstandswirkungen in Reihen- und Parallelschaltungen deuten</a></h1>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8f833b36-4126-52db-b210-79fb0023c7d9</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li>Physik</li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7aed8bc4dde945b32ac0ec706fd693d3262762d8500c08804d94d1d99b46bafa" data-rendered-digest="sha256:bb9f2c067c5b3a97ee46555d217881ae8806c5962637c3fdd91e66e3247cb5ef" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/8f833b36-4126-52db-b210-79fb0023c7d9/8f833b36-4126-52db-b210-79fb0023c7d9.png" alt="Bei konstant 6 Volt erhöht ein zweiter 3-Ohm-Widerstand in Reihe den Gesamtwiderstand von 3 auf 6 Ohm und senkt den Strom von 2 auf 1 Ampere. Ein zweiter paralleler 6-Ohm-Zweig senkt den Gesamtwiderstand von 6 auf 3 Ohm und erhöht den Gesamtstrom von 1 auf 2 Ampere. Der Grenzfall unendlichen Widerstands führt zum offenen Stromkreis und Strom null.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8f833b36-4126-52db-b210-79fb0023c7d9-description-heading">
+        <p class="section-heading" id="goal-8f833b36-4126-52db-b210-79fb0023c7d9-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei konstanter Quellenspannung vorhersagen und begründen, wie das Hinzufügen, Entfernen oder Ändern eines Widerstands in einer Reihen- oder Parallelschaltung den Gesamtwiderstand und die Stromstärken beeinflusst, und die Vorhersage an einem Grenzfall prüfen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>BW, NW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8f833b36-4126-52db-b210-79fb0023c7d9" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8f833b36-4126-52db-b210-79fb0023c7d9-requires-heading">
+          <p class="section-heading" id="goal-8f833b36-4126-52db-b210-79fb0023c7d9-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8a84de16-2fde-58ec-827a-f803e2ce8564"><span>Strombilanzen an Knoten mit Ladungserhaltung begründen</span><code>8a84de16-2fde-58ec-827a-f803e2ce8564</code><span class="reference-page">S. 1</span></a></li><li><a href="#goal-267170bd-f880-56a7-9719-ffb9751872c5"><span>Spannungsbilanzen in Maschen mit Energieerhaltung begründen</span><code>267170bd-f880-56a7-9719-ffb9751872c5</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8f833b36-4126-52db-b210-79fb0023c7d9-reverse-heading">
+          <p class="section-heading" id="goal-8f833b36-4126-52db-b210-79fb0023c7d9-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-8f833b36-4126-52db-b210-79fb0023c7d9-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8f833b36-4126-52db-b210-79fb0023c7d9-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-3631c8f7-ff48-57ff-b7ee-8397ff1d166a" rel="noreferrer noopener"><span>Sek-I-Abschlussaufgaben Physik selbstständig lösen</span> <code>3631c8f7-ff48-57ff-b7ee-8397ff1d166a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-c2e0fc31-27a2-5727-9025-a824db9150d2" rel="noreferrer noopener"><span>Axonsegmente als elektrische Schaltungen modellieren</span> <code>c2e0fc31-27a2-5727-9025-a824db9150d2</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Seite 3 von 3</span>
+      <span>Buch-Digest <code>sha256:bdf6f37a8cbf69230d8570b00c537e57f0dc1a17ea043c76e9be2a4d7adc2c9f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:cead667accf577c772b3f0a4da1e6a6d6aa849d45d488568468f6992f38ac152</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-physics-calibration-v2-kirchhoff-3-20260826&amp;edition=curricular-atomic-v1&amp;goalId=8f833b36-4126-52db-b210-79fb0023c7d9&amp;goalFingerprint=sha256%3Acead667accf577c772b3f0a4da1e6a6d6aa849d45d488568468f6992f38ac152&amp;pageFingerprint=sha256%3Ad0d284a44e3df18320549f1b45e39e9e356d58d610b6641121f3dc549305778b&amp;bookDigest=sha256%3Abdf6f37a8cbf69230d8570b00c537e57f0dc1a17ea043c76e9be2a4d7adc2c9f&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>
