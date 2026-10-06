@@ -125,9 +125,12 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   }
 
   const biology = checkGoalBookSourceAtlasInputs('app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json', root)
-  assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 363, publishedCurricularAtomicGoals: 363, sourceViews: 20, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
+  // Two reviewed atomic splits and 18 NI atoms extend the former 363-goal atlas.
+  assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 383, publishedCurricularAtomicGoals: 383, sourceViews: 20, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
+  // Current direct source bindings add methylation in BY/HE, transcription
+  // factors in BY, and the separate bacterial-fission atom in HE LK.
   assert.deepEqual(biology.receipt.scopes.filter(s => s.stage === 'SekII').map(s => [s.key, s.goalIds.length]), [
-    ['DE-BY/SekII/GK', 88], ['DE-BY/SekII/LK', 115], ['DE-HE/SekII/GK', 76], ['DE-HE/SekII/LK', 157],
+    ['DE-BY/SekII/GK', 90], ['DE-BY/SekII/LK', 117], ['DE-HE/SekII/GK', 77], ['DE-HE/SekII/LK', 159],
   ])
   // The reviewed gel-method binding adds this existing atom to both BY profiles.
   const gelGoalId = '8eb86a82-122d-5cae-8f80-bb2850b29c2f'
@@ -150,7 +153,8 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     const configPath = `app/scripts/config/goal-books/de-gym-${subject}-national-atlas.inputs.json`
     const config = readGoalBookSourceAtlasInputConfig(configPath, root)
     const snapshotPaths = new Set(config.sourceDocumentSnapshots?.map(snapshot => snapshot.path))
-    assert.equal(snapshotPaths.size, subject === 'biology' ? 16 : 30)
+    // Biology retains its 16 original snapshots and the corrected Hessen KC PDF.
+    assert.equal(snapshotPaths.size, subject === 'biology' ? 17 : 30)
     const checkoutRoot = mkdtempSync(resolve(tmpdir(), 'skillpilot-atlas-without-downloads-'))
     try {
       // Copy only the required repository inputs and published derivation, not

@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-10-05T14:46:52.786Z
+Generated: 2026-10-06T00:57:58.898Z
 
 Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
@@ -16,31 +16,31 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 473 |
+| Alle Ziele in der Landschaft | 474 |
 | Atomare Ziele im Visualisierungs-Scope | 376 |
-| Ziele mit primaerem Visualisierungslink | 355 |
-| Coverage | 94.4% |
+| Ziele mit primaerem Visualisierungslink | 358 |
+| Coverage | 95.2% |
 | Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 376 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
 | Review-Ledger-Dateien | 20 |
-| Offene Provider-Deferred-Ziele | 21 |
+| Offene Provider-Deferred-Ziele | 18 |
 | Offene Quality-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 0 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 1 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 4 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 125 |
+| `accepted` | 124 |
 | `ai_candidate` | 2 |
 | `ai-reviewed` | 5 |
-| `pilot` | 223 |
+| `pilot` | 227 |
 
 ## Ledger Decisions
 
@@ -73,7 +73,7 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen dokumentierten `deferred_provider_limitation`- bzw. `deferred_quality_review`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
 - Beide Deferred-Arten bleiben offene Bildarbeit und erfuellen das strenge M7-Visualisierungsgate nicht. `deferred_quality_review` bezeichnet ein nach fachlicher Pruefung zurueckgezogenes Bild, nicht ein Providerproblem.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind 21 Provider- und 0 Quality-Deferred-Ziel(e).
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind 18 Provider- und 0 Quality-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -81,7 +81,6 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Batch | Goal ID | Title | Decision |
 | --- | --- | --- | --- |
-| 018 | `ca216bc6-5205-5b46-abbd-fd5628e4ca5b` | Acidität begründen | `deferred_provider_limitation` |
 | 018 | `62149f36-87c0-5a2d-8a78-e7d4203f58c2` | Aminosäuren charakterisieren | `deferred_provider_limitation` |
 | 018 | `e5941581-0aba-5354-b4b9-d0249d4538a8` | Azo- und Triphenylmethanfarbstoffe mechanistisch darstellen | `deferred_provider_limitation` |
 | 018 | `f0f67a7a-b06a-50b9-8edc-1f2a0d97520d` | Bindungsverhältnisse aromatischer Systeme modellieren | `deferred_provider_limitation` |
@@ -90,19 +89,16 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | 018 | `3de28598-672f-5753-8a45-8f559c2f9dc2` | Funktionelle Gruppen qualitativ nachweisen | `deferred_provider_limitation` |
 | 018 | `0b5342b9-512d-573f-90d5-7522aee35efa` | Individuelle Verdauungs- und Resorptionsunterschiede begründen | `deferred_provider_limitation` |
 | 018 | `eb7537dd-d11b-50e9-a6d7-51a78e96fc4e` | Intermolekulare Kräfte vergleichen | `deferred_provider_limitation` |
-| 018 | `950c73c6-4ed1-488a-9267-1142e95e0055` | Ionenbindung und Ionengitter beschreiben | `deferred_provider_limitation` |
 | 018 | `8761cfd2-aa1a-56f1-9272-9cf66ef4b271` | Kohlenhydrate analysieren | `deferred_provider_limitation` |
 | 018 | `360fccb9-896d-5e67-bf5d-5732621604c9` | Nahrungsmittelinhaltsstoffe strukturbezogen einordnen | `deferred_provider_limitation` |
 | 018 | `f4d5a02d-711b-5a6b-a41d-971359c1f64d` | Optische Aktivität und Polarimetrie auswerten | `deferred_provider_limitation` |
 | 018 | `f0f2c5f8-06f1-5774-a176-d96505727acf` | pE/pH- und Pourbaix-Diagramme | `deferred_provider_limitation` |
 | 018 | `197bc2c5-835e-59e7-9263-5684e89799cc` | Peptidbindungen erklären | `deferred_provider_limitation` |
 | 018 | `10f657bc-6044-5fbb-ba8e-6e5ba55d2bc5` | Redoxbasierte Konservierung | `deferred_provider_limitation` |
-| 018 | `6765f741-42a6-55c5-a218-81b883b1f5ae` | Seifen herstellen | `deferred_provider_limitation` |
 | 018 | `e56040b5-1da8-5080-b358-086d04922339` | Silikone herstellen und strukturbezogen vergleichen | `deferred_provider_limitation` |
 | 018 | `0773a104-aaeb-5e96-a615-2a2bec3eb096` | Tensidstrukturen optimieren | `deferred_provider_limitation` |
 | 018 | `127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a` | Zucker in Alltag und Ernährung bewerten | `deferred_provider_limitation` |
-
-Weitere 1 Eintraege stehen in der JSON-Begleitdatei.
+| 018 | `3dbd84de-51cb-5ff7-801b-077a54520fed` | σ-Komplex-Mechanismus | `deferred_provider_limitation` |
 
 ### Open Quality Deferred
 
@@ -130,7 +126,10 @@ Keine Eintraege.
 
 | Goal ID | Title | Link status | Latest ledger decision |
 | --- | --- | --- | --- |
+| `ca216bc6-5205-5b46-abbd-fd5628e4ca5b` | Acidität begründen | `pilot` | `deferred_provider_limitation` |
 | `27e4fe9b-4796-579b-8f7d-06c65fb600c0` | Blei-Akkumulator beschreiben | `pilot` | `deferred_provider_limitation` |
+| `950c73c6-4ed1-488a-9267-1142e95e0055` | Einfache Ionengitter modellieren und Stoffeigenschaften erklären | `pilot` | `deferred_provider_limitation` |
+| `6765f741-42a6-55c5-a218-81b883b1f5ae` | Seifen herstellen | `pilot` | `deferred_provider_limitation` |
 
 ### Accepted Review Without Link
 

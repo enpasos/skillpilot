@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-05T14:46:52.786Z",
+  "generatedAt": "2026-10-06T00:57:58.898Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "chemie",
@@ -10,24 +10,24 @@
     "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/chemie-deferred-2026-07-17"
   },
   "summary": {
-    "totalGoals": 473,
+    "totalGoals": 474,
     "atomicGoalsInScope": 376,
-    "goalsWithPrimaryVisualization": 355,
-    "coveragePercent": 94.4,
+    "goalsWithPrimaryVisualization": 358,
+    "coveragePercent": 95.2,
     "goalsAccountedForByAssetOrDeferred": 376,
     "accountedCoveragePercent": 100,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
-      "accepted": 125,
+      "accepted": 124,
       "ai_candidate": 2,
       "ai-reviewed": 5,
-      "pilot": 223
+      "pilot": 227
     },
     "linkedVisualizationReviewStatuses": {
-      "accepted": 125,
+      "accepted": 124,
       "ai_candidate": 2,
       "ai-reviewed": 5,
-      "pilot": 223
+      "pilot": 227
     },
     "reviewLedgerFiles": 20,
     "reviewDecisionCounts": {
@@ -43,13 +43,13 @@
       "rejected_after_user_review_replaced": 2,
       "rejected_regenerated": 33
     },
-    "openProviderDeferredGoals": 21,
+    "openProviderDeferredGoals": 18,
     "openQualityDeferredGoals": 0,
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 0,
     "regularUnlinkedGoals": 0,
     "coverageGatePassed": true,
-    "linkedWithoutAcceptedReview": 1,
+    "linkedWithoutAcceptedReview": 4,
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
@@ -60,13 +60,6 @@
   },
   "qualityQueues": {
     "openProviderDeferred": [
-      {
-        "batch": "018",
-        "goalId": "ca216bc6-5205-5b46-abbd-fd5628e4ca5b",
-        "title": "Acidität begründen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Die Acetat-Grenzstrukturen zeigen gleichzeitig zwei negativ geladene Sauerstoffatome beziehungsweise inkonsistente Ladungen; außerdem ist die sichtbare Dezimalschreibweise fehlerhaft."
-      },
       {
         "batch": "018",
         "goalId": "62149f36-87c0-5a2d-8a78-e7d4203f58c2",
@@ -125,13 +118,6 @@
       },
       {
         "batch": "018",
-        "goalId": "950c73c6-4ed1-488a-9267-1142e95e0055",
-        "title": "Ionenbindung und Ionengitter beschreiben",
-        "decision": "deferred_provider_limitation",
-        "notes": "Das Ionengitter selbst ist korrekt, aber die gezielt vereinfachte zweite Tafel enthält weiterhin einen großen Reaktionspfeil und ein Doppelpfeilsymbol, obwohl genau diese missverständliche Reaktionslesart ausgeschlossen wurde."
-      },
-      {
-        "batch": "018",
         "goalId": "8761cfd2-aa1a-56f1-9272-9cf66ef4b271",
         "title": "Kohlenhydrate analysieren",
         "decision": "deferred_provider_limitation",
@@ -171,13 +157,6 @@
         "title": "Redoxbasierte Konservierung",
         "decision": "deferred_provider_limitation",
         "notes": "Die Reaktionsgleichung erscheint entgegen der Vorgabe doppelt; im Schutzgasbild zeigen O₂-Pfeile in die Packung hinein und vermitteln Sauerstoffzufuhr statt Sauerstoffreduktion."
-      },
-      {
-        "batch": "018",
-        "goalId": "6765f741-42a6-55c5-a218-81b883b1f5ae",
-        "title": "Seifen herstellen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Die gezeichnete Glycerin-/Triacylglycerid-Struktur besitzt vier Hydroxygruppen beziehungsweise ungültige Valenzen."
       },
       {
         "batch": "018",
@@ -238,10 +217,31 @@
   "consistency": {
     "linkedWithoutAcceptedReview": [
       {
+        "goalId": "ca216bc6-5205-5b46-abbd-fd5628e4ca5b",
+        "title": "Acidität begründen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/chemie/ca216bc6-5205-5b46-abbd-fd5628e4ca5b/ca216bc6-5205-5b46-abbd-fd5628e4ca5b.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
         "goalId": "27e4fe9b-4796-579b-8f7d-06c65fb600c0",
         "title": "Blei-Akkumulator beschreiben",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/chemie/27e4fe9b-4796-579b-8f7d-06c65fb600c0/27e4fe9b-4796-579b-8f7d-06c65fb600c0.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "950c73c6-4ed1-488a-9267-1142e95e0055",
+        "title": "Einfache Ionengitter modellieren und Stoffeigenschaften erklären",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/chemie/950c73c6-4ed1-488a-9267-1142e95e0055/950c73c6-4ed1-488a-9267-1142e95e0055.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "6765f741-42a6-55c5-a218-81b883b1f5ae",
+        "title": "Seifen herstellen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/chemie/6765f741-42a6-55c5-a218-81b883b1f5ae/6765f741-42a6-55c5-a218-81b883b1f5ae.png",
         "latestDecision": "deferred_provider_limitation"
       }
     ],
@@ -287,6 +287,14 @@
       "area": "Pharmazie",
       "reviewStatus": "accepted",
       "url": "/assets/goal-visualizations/chemie/96d3f50b-62f7-5db4-8426-43b4a0c26543/96d3f50b-62f7-5db4-8426-43b4a0c26543.jpg"
+    },
+    {
+      "goalId": "ca216bc6-5205-5b46-abbd-fd5628e4ca5b",
+      "title": "Acidität begründen",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/chemie/ca216bc6-5205-5b46-abbd-fd5628e4ca5b/ca216bc6-5205-5b46-abbd-fd5628e4ca5b.png"
     },
     {
       "goalId": "4b9810b0-5d3d-59d8-a948-c3f6dd6303c7",
@@ -454,7 +462,7 @@
       "phase": "Q1",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/db66635f-f1d1-5f70-bcc0-fed1ae424e52/db66635f-f1d1-5f70-bcc0-fed1ae424e52.jpg"
+      "url": "/assets/goal-visualizations/chemie/db66635f-f1d1-5f70-bcc0-fed1ae424e52/db66635f-f1d1-5f70-bcc0-fed1ae424e52.png"
     },
     {
       "goalId": "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
@@ -858,11 +866,11 @@
     },
     {
       "goalId": "1f5ee84f-245a-5a1e-a260-f960f26523e9",
-      "title": "Duengemittel chemisch einordnen",
+      "title": "Düngemittel chemisch einordnen",
       "phase": "GLOBAL",
       "area": "Elementgruppen und Salze",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/1f5ee84f-245a-5a1e-a260-f960f26523e9/1f5ee84f-245a-5a1e-a260-f960f26523e9.jpg"
+      "url": "/assets/goal-visualizations/chemie/1f5ee84f-245a-5a1e-a260-f960f26523e9/1f5ee84f-245a-5a1e-a260-f960f26523e9.png"
     },
     {
       "goalId": "3d3231f9-039d-5ce5-9e8e-af219c7fee08",
@@ -887,6 +895,14 @@
       "area": "",
       "reviewStatus": "accepted",
       "url": "/assets/goal-visualizations/chemie/2652caef-b557-58b9-9b28-70db62625ce5/2652caef-b557-58b9-9b28-70db62625ce5.jpg"
+    },
+    {
+      "goalId": "950c73c6-4ed1-488a-9267-1142e95e0055",
+      "title": "Einfache Ionengitter modellieren und Stoffeigenschaften erklären",
+      "phase": "GLOBAL",
+      "area": "Atombau und Bindung",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/chemie/950c73c6-4ed1-488a-9267-1142e95e0055/950c73c6-4ed1-488a-9267-1142e95e0055.png"
     },
     {
       "goalId": "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
@@ -1154,7 +1170,7 @@
     },
     {
       "goalId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
-      "title": "Esterreaktionen reversibel deuten",
+      "title": "Esterreaktionen und ihre Reversibilität deuten",
       "phase": "Q1",
       "area": "",
       "reviewStatus": "pilot",
@@ -1354,7 +1370,7 @@
     },
     {
       "goalId": "414489cb-453e-5de4-ab0f-0fc01175e522",
-      "title": "Gipsbildung bei Rauchgaswaesche deuten",
+      "title": "Gipsbildung bei Rauchgaswäsche deuten",
       "phase": "GLOBAL",
       "area": "Elementgruppen und Salze",
       "reviewStatus": "accepted",
@@ -2445,8 +2461,8 @@
       "title": "Reaktionen von Alkalimetallen und Alkalimetalloxiden mit Wasser deuten",
       "phase": "GLOBAL",
       "area": "Elementgruppen und Salze",
-      "reviewStatus": "accepted",
-      "url": "/assets/goal-visualizations/chemie/16a80de2-b5e0-5467-a9b3-5860730d7d8b/16a80de2-b5e0-5467-a9b3-5860730d7d8b.jpg"
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/chemie/16a80de2-b5e0-5467-a9b3-5860730d7d8b/16a80de2-b5e0-5467-a9b3-5860730d7d8b.png"
     },
     {
       "goalId": "536030f8-70dc-519d-8039-92290c68d95d",
@@ -2687,6 +2703,14 @@
       "area": "Pharmazie",
       "reviewStatus": "accepted",
       "url": "/assets/goal-visualizations/chemie/f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528/f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528.jpg"
+    },
+    {
+      "goalId": "6765f741-42a6-55c5-a218-81b883b1f5ae",
+      "title": "Seifen herstellen",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/chemie/6765f741-42a6-55c5-a218-81b883b1f5ae/6765f741-42a6-55c5-a218-81b883b1f5ae.png"
     },
     {
       "goalId": "e874ee60-4569-5830-81bf-11f86f0c63ac",
@@ -2986,11 +3010,11 @@
     },
     {
       "goalId": "8a491e3b-5d0b-51d3-9b14-0977ec035dd6",
-      "title": "Wasserhärte quantifizieren (LK)",
+      "title": "Wasserhärte unterscheiden und Enthärtung erklären (LK)",
       "phase": "Q1",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/8a491e3b-5d0b-51d3-9b14-0977ec035dd6/8a491e3b-5d0b-51d3-9b14-0977ec035dd6.jpg"
+      "url": "/assets/goal-visualizations/chemie/8a491e3b-5d0b-51d3-9b14-0977ec035dd6/8a491e3b-5d0b-51d3-9b14-0977ec035dd6.png"
     },
     {
       "goalId": "93b914d4-747d-5b22-90ff-ac6320514b44",
