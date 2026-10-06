@@ -3,9 +3,20 @@
 **Stand: 6. Oktober 2026.** Diese Integration verbindet die reale SkillPilot-
 Lernlogik mit einer Gemini Custom App und einem importierbaren Coach-Skill.
 Sie ist ein lokaler Kandidat, keine veröffentlichte oder ausgerollte Beta.
-Die [synthetische PoC-Bewertung](gemini-custom-apps-poc.md) bleibt unverändert;
-ihre erfolgreichen Probe-Schreibzugriffe beweisen keinen echten Lernablauf.
-Aktuelle tatsächliche Gemini-Abnahme gehört in ein separates Prüfprotokoll.
+Die [synthetische PoC-Bewertung](gemini-custom-apps-poc.md) bleibt als eigener
+historischer Befund erhalten. Das separate
+[Integrations-Prüfprotokoll](gemini-integration-evidence-2026-10-06.json)
+belegt inzwischen im tatsächlichen Gemini-Webhost den Skill-Import, echte
+Lernwerkzeuge, gespeicherten Fortschritt und Fortsetzung in einem neuen Chat.
+Getestet wurde ein eigenes Operator-Testprofil in einer separaten lokalen
+Datenbank, mit vom Testagenten eingereichten fachlichen Aufgabenlösungen.
+Dies ist keine Mehrnutzer- oder Langzeit-Lernstudie.
+
+Der korrigierte Renderer liefert im geprüften Host einen sichtbaren Link zum
+richtigen öffentlichen Lernzielbild; das geöffnete Bild lädt vollständig.
+Ein eingebettetes Bild wurde nicht beobachtet. Kartenübung, Verified Recall,
+Prüfungen und negative Sicherheitsfälle benötigen zusätzlich zu ihren lokalen
+Tests eigene Host-Abnahme. Eine Produktionsbereitstellung wurde nicht vorgenommen.
 
 ## Komponenten und Grenzen
 
@@ -51,7 +62,7 @@ abgelehnt. Das Archiv enthielt den Eintrag `LICENSE` ohne Dateiendung.
 Der korrigierte Kandidat nennt dieselben Lizenzbytes `LICENSE.txt`;
 `.txt` gehört zu den vom Importer unterstützten Dateitypen. Die fehlende
 Endung ist eine plausible Ursache des beobachteten Fehlers, kein bestätigter
-Root Cause. Der folgende Host-Retest prüft den korrigierten Kandidaten;
+Root Cause. Der anschließende Host-Retest bestätigte den korrigierten Kandidaten;
 die erste Ablehnung bleibt als historischer Befund erhalten.
 
 Der **korrigierte Skill-ZIP-Import ist im tatsächlichen Gemini-Host bestätigt**:
@@ -63,9 +74,13 @@ Toolvertrags. Der Inhalts-Hash entspricht dem kanonischen Skill-Text nach
 Entfernung des Frontmatters und äußerem Whitespace-Trim.
 Der tatsächlich getestete ZIP-Hash lautet
 `2a5f5de47cd04345196cd21f0ab4dc4e0b3247b509a9deaaa0e2f8cd74d30a40`.
-Damit sind Import und gespeicherte Anweisungen nachgewiesen. Ob Gemini sie im
-Lernchat korrekt anwendet, echten Fortschritt speichert und in einem neuen
-Chat weiterlernt, benötigt weiterhin eigene Host-Prüfungen.
+Damit sind Import und gespeicherte Anweisungen nachgewiesen. Die anschließenden
+getrennten Host-Prüfungen belegten den normalen Lernstart mit Skill und App,
+einen erfolgreichen Mastery-Write nach fachlicher Aufgabenlösung und denselben
+gespeicherten Zustand im neuen Chat. Der Retest mit den korrigierten Renderer-
+Bytes speicherte um **01:59:31 UTC** den nächsten Erfolg (`stateVersion=10`)
+und lud ihn um **02:02:53 UTC** in einem weiteren neuen Chat. Unabhängige
+kanonische Zustandsabfragen bestätigen jeweils genau ein neu gemeistertes Ziel.
 
 Google schaltet Skills schrittweise frei. Für Custom Apps nennt Google
 derzeit ein persönliches Konto ab 18 Jahren, US-Zugang, Englisch und aktivierte
@@ -232,6 +247,15 @@ voneinander und von anderen Provider-Schlüsseln verschieden sein. Nur
 Umgebungsbindung. Fehlende oder widersprüchliche Einstellungen verhindern den
 Start. Bei deaktiviertem Adapter existieren keine Gemini-Lernsession- oder
 MCP-Routen und keine aktiven Gemini-Datenbank-Repositories.
+
+Der globale Wert `skillpilot.public-base-url` bezeichnet dagegen den
+öffentlichen SkillPilot-Origin für Cockpit- und kanonische Asset-Links, nicht
+den Gemini-Gateway. Für Lernzielbilder muss dieser Origin gültige öffentliche
+HTTPS-Assets unter `/api/ui/assets/…` ausliefern. Der Gemini-Renderer gibt
+daraus ausschließlich validierte Bild- und Direktlinks aus. Ein privater
+`localhost`-Origin ist für die Anzeige im entfernten Gemini-Host ungeeignet.
+Beim lokalen Test dürfen bereits öffentliche Assets genutzt werden, während
+Lernerprofil, Lernsession und Schreibzugriffe in der Entwicklungsdatenbank bleiben.
 
 Die private Zusatzdatei über `SPRING_CONFIG_ADDITIONAL_LOCATION=file:/…`
 einbinden. Danach den Backend-Prozess mit dem festgelegten JDK starten und in
@@ -435,7 +459,8 @@ getestete Paket im tatsächlichen Gemini-Konto diese Abläufe zeigen:
 - echter Lernkontext, autorisierte Aufgabe, ausreichende unabhängige Evidenz,
   bestätigter Mastery-Write und identischer Fortschritt im Cockpit;
 - weitere Aufgabe beziehungsweise backendgewähltes Nachfolgeziel erst nach
-  erkennbarer Zustimmung, mit korrekter Bilddarstellung;
+  erkennbarer Zustimmung, mit korrektem Lernzielbild oder sichtbarem,
+  funktionierendem Direktlink zum kanonischen Bild;
 - denselben gespeicherten Zustand in einem neuen Chat wieder laden;
 - Ablehnung, Wiederholung, abgelaufene Session und widersprüchliche Version
   verändern oder überschreiben keinen unautorisierten Lernstand;
@@ -445,10 +470,13 @@ getestete Paket im tatsächlichen Gemini-Konto diese Abläufe zeigen:
 Für jeden Nachweis Paket-/Quellhash, tatsächlichen Host, Zeitpunkt, Toolstatus
 und kanonische Zustandsänderung erfassen. Keine Tokens, Callbacks mit Konto-ID,
 Chattranskripte, Antworten oder dauerhaften Lerner-IDs veröffentlichen.
-Die bekannte neue-Chat-Dispatch-Störung aus dem PoC bleibt ein offener
-Hostbefund, bis eine kontrollierte Wiederholung mit gesundem Endpoint und
-aktivem Skill/App den vollständigen Ablauf bestätigt. Ihre Ursache ist
-nicht nachgewiesen.
+Die neue-Chat-Dispatch-Störung des synthetischen PoC bleibt als historischer
+Fehlversuch dokumentiert; ihre Ursache ist nicht nachgewiesen. Die spätere
+Integration bestand kontrollierte Wiederholungen mit gesundem Endpoint,
+erneut ausgewähltem Skill und App und derselben ursprünglichen Lernsession.
+Echte Kontextaufrufe luden den gespeicherten Zustand und zeigten das richtige
+Nachfolgeziel. Das beweist diesen geprüften Ablauf, keine allgemeine
+Verfügbarkeitsgarantie für andere Konten oder spätere Host-Versionen.
 
 Die lokale Umsetzung autorisiert keine Produktionsbereitstellung, öffentliche
 Beta-Verteilung, Portal-Veröffentlichung oder Änderung bestehender Credentials.
