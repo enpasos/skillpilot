@@ -57,7 +57,7 @@ The important distinction is source evidence vs. runtime readiness: the source m
 | Biologie | SekII | 5 | 0 | 0 | 0 | 0 | 5 | dual: 0; G8 only: 0; G9 only: 0; none: 5 |
 | Biologie | SekI+SekII | 1 | 1 | 0 | 0 | 1 | 0 | dual: 0; G8 only: 0; G9 only: 0; none: 1 |
 | Chemie | SekI | 15 | 15 | 0 | 5 | 10 | 0 | dual: 0; G8 only: 0; G9 only: 2; none: 13 |
-| Chemie | SekII | 15 | 0 | 0 | 0 | 0 | 15 | dual: 0; G8 only: 0; G9 only: 0; none: 15 |
+| Chemie | SekII | 16 | 0 | 0 | 0 | 0 | 16 | dual: 0; G8 only: 0; G9 only: 0; none: 16 |
 | Chemie | SekI+SekII | 1 | 1 | 0 | 0 | 1 | 0 | dual: 0; G8 only: 0; G9 only: 0; none: 1 |
 | Deutsch | SekI | 15 | 15 | 0 | 5 | 10 | 0 | dual: 0; G8 only: 0; G9 only: 2; none: 13 |
 | Deutsch | SekII | 15 | 0 | 0 | 0 | 0 | 15 | dual: 0; G8 only: 0; G9 only: 0; none: 15 |
@@ -180,6 +180,7 @@ The important distinction is source evidence vs. runtime readiness: the source m
 | Chemie | `DE-BW` | SekII | - | - | - | 126 | Chemie Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | `curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_CHEMIE_SEKII_BP2016_V2.source-extraction.json` | - | - |
 | Chemie | `DE-HB` | SekII | - | - | - | 88 | DE-HB - Chemie Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | `curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_CHEMIE_SEKII_GYO_2022.source-extraction.json` | - | - |
 | Chemie | `DE-HE` | SekII | - | - | - | 202 | Chemie Oberstufe (Hessen, KC 2024 Source-Extraction) | `curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024.source-extraction.json` | - | - |
+| Chemie | `DE-HE` | SekII | - | - | - | 202 | Chemie Oberstufe (Hessen, KC 2024 Source-Extraction) | `curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json` | - | - |
 | Chemie | `DE-HH` | SekII | - | - | - | 97 | DE-HH - Chemie Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | `curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_CHEMIE_SEKII_BILDUNGSPLAN_2022.source-extraction.json` | - | - |
 | Chemie | `DE-MV` | SekII | - | - | - | 122 | DE-MV - Chemie Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2022 Erprobungsfassung Source-Extraction) | `curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_CHEMIE_SEKII_RAHMENPLAN_ERPROBUNGSFASSUNG_2022.source-extraction.json` | - | - |
 | Chemie | `DE-NI` | SekII | - | - | - | 333 | DE-NI - Chemie Oberstufe (Niedersachsen, KC 2022 Source-Extraction) | `curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_CHEMIE_SEKII_KC2022.source-extraction.json` | - | - |

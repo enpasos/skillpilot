@@ -143,9 +143,32 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   }
   assert.ok(biology.receipt.scopes.filter(s => s.stage === 'SekII').every(s => s.witnesses.every(w => w.coverage === 'direct')), 'No coarse mapped-cluster inheritance into biology GK/LK')
   const chemistry = checkGoalBookSourceAtlasInputs('app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json', root)
-  assert.deepEqual(chemistry.receipt.counts, { canonicalCurricularAtomicGoals: 376, publishedCurricularAtomicGoals: 358, sourceViews: 48, unresolvedSourceScopeDecisions: 496, omittedGoals: 18 })
+  // Three reviewed content atoms replace one former compound atom (+2).
+  // The source atlas publishes HE LK use and ascorbic-acid analysis; the authored
+  // quantitative paraben transfer remains explicitly outside source coverage.
+  assert.deepEqual(chemistry.receipt.counts, { canonicalCurricularAtomicGoals: 378, publishedCurricularAtomicGoals: 359, sourceViews: 48, unresolvedSourceScopeDecisions: 496, omittedGoals: 19 })
   assert.equal(chemistry.receipt.omittedGoals.filter(g => g.reason === 'unresolved-source-scope').length, 8)
-  assert.equal(chemistry.receipt.omittedGoals.filter(g => g.reason === 'no-reviewed-mapped-source-witness').length, 10)
+  assert.equal(chemistry.receipt.omittedGoals.filter(g => g.reason === 'no-reviewed-mapped-source-witness').length, 11)
+  for (const [goalId, sourceGoalId] of [
+    ['0d59b62e-d3f9-5969-b961-0c5e26316c04', 'he-chem-sekii-q1-5-b05-a01-e1183390'],
+    ['3d6699ae-ebbd-5a55-8798-b809a9d74f0a', 'he-chem-sekii-q1-5-b04-a01-6d016bf3'],
+  ]) {
+    assert.deepEqual(chemistry.receipt.scopes.filter(s => s.goalIds.includes(goalId)).map(s => s.key), ['DE-HE/SekII/LK'], 'The new HE LK source atoms must not be imported into another source scope')
+    assert.deepEqual(chemistry.receipt.scopes.flatMap(s => s.witnesses.filter(w => w.goalId === goalId).map(w => [s.key, w.sourceGoalId, w.mappedTargetGoalId, w.coverage, w.profileBasis])), [
+      ['DE-HE/SekII/LK', sourceGoalId, goalId, 'direct', 'source-metadata'],
+    ], 'Paraben use and ascorbic-acid analysis must retain their distinct direct source operators')
+  }
+  const quantitativeParabenGoalId = '18819a59-2442-530f-a7c3-26755398ec66'
+  assert.deepEqual(chemistry.receipt.omittedGoals.filter(g => g.goalId === quantitativeParabenGoalId), [
+    { goalId: quantitativeParabenGoalId, reason: 'no-reviewed-mapped-source-witness' },
+  ], 'An authored quantitative transfer must not be presented as the source paraben-use operator')
+  assert.ok(chemistry.receipt.scopes.every(s => !s.goalIds.includes(quantitativeParabenGoalId)))
+  const formerCompoundGoalId = 'd3cd250f-5221-589d-aa1c-44a4692d1acb'
+  assert.ok(chemistry.receipt.scopes.every(s => !s.goalIds.includes(formerCompoundGoalId)), 'The former compound atom is now a cluster, not an atlas atom')
+  assert.ok(chemistry.receipt.omittedGoals.every(g => g.goalId !== formerCompoundGoalId))
+  assert.deepEqual(chemistry.receipt.scopes.filter(s => s.jurisdiction === 'DE-BY' || (s.jurisdiction === 'DE-HE' && s.stage === 'SekII')).map(s => [s.key, s.goalIds.length]), [
+    ['DE-BY/SekI/', 91], ['DE-BY/SekII/GK', 111], ['DE-BY/SekII/LK', 142], ['DE-HE/SekII/GK', 112], ['DE-HE/SekII/LK', 141],
+  ], 'HE-only integration must preserve BY source coverage and the HE GK scope')
   assert.deepEqual([...new Set(chemistry.receipt.scopes.flatMap(s => s.witnesses.filter(w => w.profileBasis === 'authored-view').map(() => s.jurisdiction)))].sort(), ['DE-BB', 'DE-BE'])
   // Every grouped witness expands back to the exact original provenance record.
   for (const [subject, result] of [['biology', biology], ['chemistry', chemistry]] as const) {
