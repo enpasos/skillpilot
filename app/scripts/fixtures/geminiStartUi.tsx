@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { StrictMode, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { MemoryRouter } from 'react-router-dom'
