@@ -23,6 +23,14 @@ the directory mode `0700` and the files `0600`. The private directory and
 
 The complete config, Spring configuration, callback procedure and lifecycle
 limits are in [the integration runbook](../../../docs/deploy/gemini-integration.md#lokalen-oauth-gateway-und-spring-adapter-starten).
+For a controlled deployment, also follow the
+[backend rollout and operator activation steps](../../../docs/deploy/gemini-integration.md#produktionsrollout-und-anschließende-aktivierung).
+The ordinary backend deploy does not start this process or configure its HTTPS
+edge. The gateway must share the backend's network namespace because both the
+upstream URL and Spring's peer check require loopback. Keep the existing
+backend listener, database and other provider settings; publish only the
+gateway on its own stable HTTPS origin. The CLI reads `.runtime/` beside this
+installed gateway source, with no alternate configuration-directory option.
 The current gateway is an operator profile for a controlled integration test;
 it is not an accepted public multi-user OAuth service. A fixed confidential
 client and the exact scope set `skillpilot.read skillpilot.write` are required.

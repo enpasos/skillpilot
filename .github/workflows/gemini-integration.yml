@@ -133,6 +133,7 @@ jobs:
         working-directory: app
       - uses: ./.github/actions/ubuntu-apt
       - name: Install pinned Chromium for the ordinary learning entry
+        timeout-minutes: 15
         working-directory: app
         run: npx --no-install playwright install --with-deps chromium
       - name: Verify import archive source, license, reproducibility and frontend copy

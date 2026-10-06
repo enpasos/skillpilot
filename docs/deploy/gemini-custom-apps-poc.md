@@ -3,14 +3,14 @@
 Stand: **6. Oktober 2026**. Auftrag:
 [Issue #70](https://github.com/enpasos/skillpilot/issues/70) und der ausdrückliche
 Wunsch des Product Owners, den PoC selbstständig zu planen und umzusetzen.
-Diese technische Betriebsdokumentation fällt gemäß [LICENSING.md](../../LICENSING.md)
+Diese technische Betriebsdokumentation fällt gemäß [LICENSING.md](https://github.com/enpasos/skillpilot/blob/main/LICENSING.md)
 unter **Apache-2.0**.
 
 ## Ergebnis und Ziel
 
 **Der technische MCP-Durchstich funktioniert; die Fortsetzung in einem neuen
 Chat ist noch nicht zuverlässig nachgewiesen. Die PoC-Bewertung ist abgeschlossen.** Der PoC unter
-[`ai/gemini/poc`](../../ai/gemini/poc/) enthält einen kleinen, getrennten
+[`ai/gemini/poc`](https://github.com/enpasos/skillpilot/tree/main/ai/gemini/poc) enthält einen kleinen, getrennten
 MCP-Canary. Er soll feststellen, ob die normale Gemini-Web-App einen eigenen
 MCP-Server verbinden, seine Werkzeuge erkennen und eine bestätigte synthetische
 Schreibaktion ausführen kann. Lokale Protokolltests beantworten diese
@@ -194,7 +194,7 @@ automatisierte HTTPS-Writes belegen weder Gemini-Schreibfreigabe noch
 Gemini-Persistenz.
 
 Die temporäre HTTPS-Testadresse und Start-/Stoppbefehle stehen im
-[PoC-Runbook](../../ai/gemini/poc/README.md). Der Loopback-Callback dient
+[PoC-Runbook](https://github.com/enpasos/skillpilot/blob/main/ai/gemini/poc/README.md). Der Loopback-Callback dient
 ausschließlich dem automatisierten Test. Die tatsächliche Google-Callback-URI
 ist exakt und ausschließlich privat gepinnt: Ihr Ursprung ist
 `https://oauth-redirect.googleusercontent.com`, ihr `user_bound_custom-mcp`-

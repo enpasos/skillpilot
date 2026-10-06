@@ -286,6 +286,121 @@ geeignete Clientregistrierung, langlebige Grant-Verwaltung und eine gesonderte
 Abnahme. Der aktuelle Verbindungsschlüssel oder Client-Secret darf nicht an
 eine allgemeine Nutzergruppe verteilt werden.
 
+## Produktionsrollout und anschließende Aktivierung
+
+Ein Backend-Rollout nach bestandener CI installiert zunächst die neue
+Provider-Lane. **Er allein stellt noch keine Gemini-Verbindung bereit.** Der
+normale [Deployment-Einstieg](deployment.md) `./deploy_skillpilot.sh` baut
+WebGUI, Skill-Download und gemeinsames Spring-Backend. Er installiert oder
+startet keinen Node-Gateway und richtet keinen Gemini-Domainnamen,
+TLS-Endpunkt oder OAuth-Client ein. Ein reiner Java-Artefaktwechsel liefert
+auch keine aktualisierte WebGUI.
+
+| Stand | Tatsächlicher Effekt |
+| --- | --- |
+| Neues Backend, Gemini weiterhin deaktiviert | Neue Datenbanktabellen; keine Gemini-Beans, Security-Chain, Scheduler oder Routen |
+| Zusätzlicher WebGUI-Build | Gemini-Auswahl und Skill-Download vorhanden; eine Lernsession benötigt weiterhin den aktivierten Backend-Adapter |
+| Gemini-Adapter korrekt aktiviert | First-party Launch und interne MCP-Route verfügbar; öffentliches OAuth und MCP benötigen zusätzlich den Gateway |
+| Gateway, HTTPS und exakt gepinnter Callback eingerichtet | Verbindung für das kontrollierte Operator-Konto testbar; kein automatisches Mehrnutzer-Onboarding |
+
+Liquibase führt die additive Änderung `039-add-gemini-connector-v1` auch bei
+deaktiviertem Gemini aus. Sie legt ausschließlich
+`gemini_v1_learning_session`, `gemini_v1_session_idempotency`, deren Indizes und
+Foreign Keys an. Sie migriert keine vorhandenen Lernenden, Mastery-Werte,
+OAuth-Grants oder Claude-/OpenAI-Sitzungen. Vor dem üblichen Backend-Rollout
+die vorhandene PostgreSQL-Sicherung verwenden; danach den ausgeführten
+ChangeSet im Liquibase-Ledger prüfen. Die Gemini-Lane ist im Java-Default
+`enabled=false`; alle wirksamen Beans tragen dieselbe Aktivierungsbedingung.
+`GeminiV1DisabledContextTest` prüft fehlende operative Beans und MVC-Routen,
+`GeminiV1RuntimeValidationTest` die Ablehnung fehlender Schlüssel, fremder
+Audiences und widersprüchlicher öffentlicher URLs. Diese lokalen Tests sind
+keine Produktions- oder Gemini-Host-Abnahme.
+
+### Konkrete Operator-Folge
+
+1. Den freigegebenen Commit und seine CI-Prüfungen festhalten und über den
+   bestehenden Deployment-Einstieg ausrollen. Gemini zunächst deaktiviert
+   lassen. Gemeinsame Readiness und die vorhandenen Provider prüfen.
+2. Einen eigenen, dauerhaft verfügbaren HTTPS-Origin mit gültigem Zertifikat
+   wählen. Für den laufenden Betrieb sollen OAuth-Issuer, Ressourcenname und
+   Callback stabil bleiben; eine feste VPN-IP ist nicht erforderlich. Den
+   Beispiel-Domainnamen nicht als eingerichteten Dienst behandeln.
+3. Den Node-22-Gateway aus demselben geprüften Commit im **gleichen
+   Netzwerk-Namespace** wie das bestehende Spring-Backend installieren.
+   Auf einem gewöhnlichen Host können beide Prozesse nebeneinander laufen.
+   Separate Container brauchen einen ausdrücklich gemeinsamen Namespace;
+   zwei unabhängige Container auf demselben Host teilen ihr Loopback nicht.
+   Der Upstream bleibt die exakte HTTP-Loopback-Adresse
+   `http://127.0.0.1:<bestehender-backend-port>/gemini/v1/mcp`.
+4. Die fünf eigenen Schlüssel privat bereitstellen: Gemini-Session-Signing,
+   Gemini-Capability, Gateway-Assertion, Operator-Zustimmung und vertraulicher
+   OAuth-Client. Mindestens 32 zufällige Bytes je Schlüssel verwenden und
+   keinen bestehenden Provider-Schlüssel ersetzen. Nur der Assertion-Schlüssel
+   ist zwischen dem Gemini-Gateway und Gemini-Spring-Adapter identisch.
+   Die Gateway-Dateien liegen unter `.runtime/` **der installierten
+   Gateway-Kopie**; der CLI bietet keinen abweichenden Config-Verzeichnis-
+   Parameter. Eigentümer und Dateirechte müssen dem Gateway-Prozess das Lesen
+   erlauben, ohne die Dateien öffentlich zugänglich zu machen.
+5. Den `skillpilot.gemini.connector.v1`-Block aus der obigen Spring-
+   Zusatzkonfiguration mit dem gewählten Origin einrichten. **Nicht** die
+   lokalen Beispielwerte `server.address`, `server.port` oder eine
+   Entwicklungsdatenbank auf die bestehende Produktion übertragen. Der
+   Adapter verwendet dieselbe produktive Datasource und kanonische Lernlogik
+   wie das vorhandene Backend; seine Session-/Replaytabellen bleiben getrennt.
+6. Die Zusatzdatei für den tatsächlichen Spring-Service lesbar installieren
+   und über `SPRING_CONFIG_ADDITIONAL_LOCATION=file:/…/gemini-v1.yml` in das
+   vorhandene, normalerweise `/etc/skillpilot/skillpilot.env` genannte
+   systemd-EnvironmentFile einbinden. Bereits vorhandene Zusatzkonfiguration
+   erhalten. Die YAML-Platzhalter benötigen dort
+   `GEMINI_GATEWAY_SECRET`, `GEMINI_SESSION_SIGNING_SECRET` und
+   `GEMINI_CAPABILITY_SECRET`; dieselbe Gateway-Secret-Datei nutzt den ersten
+   Wert. `enabled: true` aktiviert erst nach vollständiger Konfiguration.
+   Spring verweigert bei ungültigen Werten den Start des gemeinsamen Prozesses;
+   deshalb die exakte Konfiguration vor dem Neustart prüfen. Keine Secret-
+   Werte in Shell-Ausgaben oder Release-Protokolle schreiben.
+7. Den Gateway als eigenen überwachten Node-Prozess starten, Loopback-
+   Health prüfen und den eigenen HTTPS-vHost ausschließlich auf diesen
+   Gateway schalten. Anschließend öffentliche Health-/OAuth-Metadaten und
+   den exakten Ressourcenwert `<origin>/mcp` kontrollieren.
+8. Für das vorgesehene eigene Gemini-Konto den unbekannten Callback zunächst
+   ablehnen lassen, aus diesem Verbindungsversuch privat erfassen und genau
+   pinnen. Gateway neu starten, Custom App erneut verbinden, Skill importieren
+   und eine frische WebGUI-Lernsession mit einem Testprofil starten. Erst echte
+   Tool-Aufrufe und kanonische Zustandskontrollen belegen diesen Betrieb.
+
+Der Gateway bindet selbst ausschließlich an `127.0.0.1`; Port und Upstream
+wählen `GEMINI_GATEWAY_PORT` und `GEMINI_BACKEND_MCP_URL`. Es ist keine
+weiter entfernte Backend-URL zulässig. Vorhandene globale Listener-,
+Forwarded-Header-, Datasource-, OpenAI- und Claude-Einstellungen benötigen
+für Gemini keine Änderung. Der Edge darf `/gemini/v1/**` nicht öffentlich auf
+Spring veröffentlichen. Am eigenen Gemini-HTTPS-vHost bleiben die folgenden
+Gateway-Pfade unverändert; andere Pfade erhalten `404`:
+
+```text
+/mcp
+/authorize  /consent  /token  /revoke
+/health  /privacy
+/.well-known/oauth-authorization-server
+/.well-known/oauth-protected-resource
+/.well-known/oauth-protected-resource/mcp
+```
+
+Den bestehenden OpenAI-/Claude-vHost nicht für Gemini umwidmen. Proxy- und
+Service-Logs dürfen keine Authorization-Header, Bodies oder vollständigen
+OAuth-Querystrings speichern; für Zugriffsprotokolle genügen Pfad, Methode
+und Status. Querystrings auf `/authorize` enthalten private Zustands- und
+Callbackwerte. Der aktuelle Gateway läuft als ein Operator-Prozess ohne
+gemeinsamen OAuth-Speicher für mehrere Instanzen. Neustarts löschen seine
+Grants, und auch ohne Neustart benötigt das Konto spätestens nach einer
+Stunde eine neue Verbindung. Diese Betriebsgrenze bleibt nach einem
+Produktionsrollout bestehen.
+
+Zum Zurücknehmen der Aktivierung den eigenen Gemini-vHost sperren, den
+Gateway stoppen und Gemini im Spring-Zusatzblock auf `enabled: false` setzen;
+anschließend den gemeinsamen Backend-Prozess regulär neu starten. Vorhandene
+Lernerdaten und die additiven Tabellen erhalten. Ein Gateway-Neustart ist
+kein Mastery-Rollback und verlängert keine Lernsession.
+
 ## Lokale Prüfung und CI
 
 ```bash
