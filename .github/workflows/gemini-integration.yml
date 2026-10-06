@@ -69,6 +69,7 @@ jobs:
       - run: npm test
       - uses: ./.github/actions/ubuntu-apt
       - name: Install tools for real nginx configuration validation
+        timeout-minutes: 10
         working-directory: .
         run: |
           sudo apt-get update
