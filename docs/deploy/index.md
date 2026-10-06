@@ -27,6 +27,8 @@ This page groups deployment-facing operational documentation.
 - [SkillPilot Claude personal Git marketplace: release runbook](claude-personal-marketplace-release.md)
 - [Persönliche Claude-Konten: Installation und Updates vereinfachen](claude-personal-plugin-update-options.md)
 - [Claude personal marketplace: support readiness and incident runbook](claude-support-readiness-runbook.md)
+- [Gemini Custom apps: isolierter technischer PoC](gemini-custom-apps-poc.md)
+- [SkillPilot in Gemini: lokaler Integrationskandidat](gemini-integration.md)
 
 ## Maintenance
 

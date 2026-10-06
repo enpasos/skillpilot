@@ -103,6 +103,7 @@ jobs:
           if not expected:
               raise SystemExit('No Gemini backend test classes found')
           reports = Path('backend/build/test-results/test')
+          total_tests = 0
           for name in sorted(expected):
               report = reports / f'TEST-{name}.xml'
               if not report.is_file():
@@ -110,7 +111,8 @@ jobs:
               suite = ET.parse(report).getroot()
               if int(suite.get('tests', 0)) == 0 or any(int(suite.get(key, 0)) for key in ['failures', 'errors', 'skipped']):
                   raise SystemExit(f'Gemini test did not pass completely: {name}')
-          print(f'{len(expected)} Gemini backend test classes executed without skips')
+              total_tests += int(suite.get('tests', 0))
+          print(f'{total_tests} Gemini backend tests in {len(expected)} test classes: failures=0 errors=0 skipped=0')
           PY
       - name: Preserve historical provider artifacts
         run: node scripts/check_openai_plugin_review_freeze.mjs

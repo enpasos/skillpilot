@@ -4,10 +4,10 @@ export const GEMINI_SKILL_HELP_URL = 'https://support.google.com/gemini/answer/1
 
 const de = {
   title: 'Gemini (Beta)',
-  hint: 'Lerne mit deinem SkillPilot-Lernprofil in Gemini. Diese Integration wird noch erprobt; die Fortsetzung in einem neuen Chat ist noch nicht zuverlässig bestätigt.',
+  hint: 'Lerne mit deinem SkillPilot-Lernprofil in Gemini. Für diese Betaversion brauchst du eine freigeschaltete SkillPilot-Verbindung sowie Custom Apps und Skills in Gemini.',
   setupTitle: 'Einmalig: Custom App und Coach-Skill einrichten',
   access: 'Google schaltet Custom Apps und Skills schrittweise frei. Custom Apps benötigen derzeit ein persönliches Google-Konto ab 18 Jahren, US-Zugang, Englisch und aktivierte „Keep Activity“. Prüfe, ob dein Konto beide Funktionen anbietet.',
-  appSetup: 'Verbinde die Custom App mit dem Namen „SkillPilot“ über den freigegebenen MCP-Zugang des Betatests. Die passende Serveradresse und deine persönlichen Zugangsdaten erhältst du beim Beta-Onboarding.',
+  appSetup: 'Verbinde die Custom App mit dem Namen „SkillPilot“ über den freigegebenen MCP-Zugang des Betatests. Nutze die Serveradresse und Verbindungsdaten für deinen freigegebenen Betatest.',
   download: 'Gemini Coach-Skill herunterladen',
   skillSetup: 'Importiere die ZIP-Datei in Gemini unter Settings → Skills. Wähle in einem neuen Chat über „/“ den Skill „skillpilot-coach-v1“ und über „@“ die Custom App „SkillPilot“. Beide müssen aktiv sein.',
   appHelp: 'Google: Custom Apps',
@@ -26,10 +26,10 @@ const de = {
 
 const en: typeof de = {
   title: 'Gemini (Beta)',
-  hint: 'Learn with your SkillPilot learning profile in Gemini. This integration is still being tested; reliable continuation in a new chat has not yet been confirmed.',
+  hint: 'Learn with your SkillPilot learning profile in Gemini. This beta requires approved SkillPilot access and custom apps and Skills in Gemini.',
   setupTitle: 'One-time setup: custom app and coaching Skill',
   access: 'Google is gradually rolling out custom apps and Skills. Custom apps currently require a personal Google account, age 18 or over, US access, English, and Keep Activity enabled. Check that your account offers both features.',
-  appSetup: 'Connect the custom app named “SkillPilot” using the approved MCP access for the beta test. Your beta onboarding supplies the server address and your personal connection credentials.',
+  appSetup: 'Connect the custom app named “SkillPilot” using the approved MCP access for the beta test. Use the server address and connection details for your approved beta test.',
   download: 'Download the Gemini coaching Skill',
   skillSetup: 'Import the ZIP in Gemini under Settings → Skills. In a new chat, use “/” to select “skillpilot-coach-v1” and “@” to select the custom app “SkillPilot”. Both must be active.',
   appHelp: 'Google: custom apps',
