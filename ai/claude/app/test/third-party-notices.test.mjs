@@ -9,13 +9,13 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const expectedPackages = Object.freeze({
   "goal-visualization.html": Object.freeze([
     "@modelcontextprotocol/ext-apps@1.7.4",
-    "@modelcontextprotocol/sdk@1.30.0",
+    "@modelcontextprotocol/sdk@1.31.0",
     "zod-to-json-schema@3.25.2",
     "zod@4.4.3"
   ]),
   "memory-card-practice.html": Object.freeze([
     "@modelcontextprotocol/ext-apps@1.7.4",
-    "@modelcontextprotocol/sdk@1.30.0",
+    "@modelcontextprotocol/sdk@1.31.0",
     "katex@0.16.27",
     "zod-to-json-schema@3.25.2",
     "zod@4.4.3"
