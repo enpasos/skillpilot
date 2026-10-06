@@ -15,7 +15,7 @@ import {
   goalBookFrontMatterPageCount,
   inspectGoalBookPdfArtifact,
 } from './goalBookRenderer'
-import { buildGoalBookOriginalSources, serializeGoalBookOriginalSources } from './goalBookOriginalSources'
+import { buildGoalBookOriginalSources, goalBookOriginalSourceMappingPaths, serializeGoalBookOriginalSources } from './goalBookOriginalSources'
 import { checkGoalBookSourceAtlasInputs, readGoalBookSourceAtlasInputConfig, type GoalBookSourceAtlasInputConfig } from './goalBookSourceAtlasInputs'
 import { MAX_GOAL_BOOK_ORIGINAL_SOURCES_BYTES, parseGoalBookOriginalSources } from '../src/utils/goalBookOriginalSources'
 import {
@@ -374,7 +374,8 @@ export const verifyPublishedGoalBook = async (
 
   // The supplement contains evidence only. It cannot alter the shared goal,
   // applicability, PDF or feedback model, and must match current source inputs.
-  const originalSources = await buildGoalBookOriginalSources(publishedModel)
+  const originalSources = buildGoalBookOriginalSources(publishedModel, REPOSITORY_ROOT,
+    goalBookOriginalSourceMappingPaths(publishedModel, REPOSITORY_ROOT, paths.configPath))
   const originalSourcesRaw = await readFile(paths.originalSourcesPath, 'utf8')
   if (Buffer.byteLength(originalSourcesRaw) > MAX_GOAL_BOOK_ORIGINAL_SOURCES_BYTES) {
     fail('original sources exceed the browser runtime size budget')

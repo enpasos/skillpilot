@@ -1,0 +1,15 @@
+// SPDX-License-Identifier: Apache-2.0
+import {readFileSync, writeFileSync} from 'node:fs'
+import {resolve} from 'node:path'
+import {createHash} from 'node:crypto'
+import {validatePositiveGoalEvidenceRecordSemantics} from '../../../../../../../app/scripts/positiveGoalEvidenceProfileModel'
+const root=process.cwd(),own=resolve(root,'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-fifteen-current-independent-d-b-v3'),prep=resolve(root,'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-fourteen-current-native-candidate-v3'),iso=resolve(root,'tmp/chemie-q1-fourteen-current-native-physically-isolated-20261005-v3')
+const read=(p:string)=>JSON.parse(readFileSync(p,'utf8')),sha=(p:string)=>'sha256:'+createHash('sha256').update(readFileSync(p)).digest('hex')
+const future=read(resolve(iso,'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json')),semantic=read(resolve(iso,'curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json')),kind=new Map(semantic.decisions.map((x:any)=>[x.goalId,x.semanticKind]))
+const paths=[resolve(prep,'positive-evidence.review.jsonl'),resolve(iso,'curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b002-q1-organic-current-9-v2.review.jsonl')]
+const selected=paths.flatMap(p=>readFileSync(p,'utf8').trim().split('\n').map(l=>({sourcePath:p,sourceSHA256:sha(p),record:JSON.parse(l)}))).filter(x=>x.sourcePath===paths[0]||x.record.goalId==='bd36dc58-c93e-5247-9e82-da2f9e4e2bed')
+const rows=selected.map(({sourcePath,sourceSHA256,record})=>{const goal=future.goals.find((g:any)=>g.id===record.goalId),digests=Object.fromEntries(goal.resourceLinks.filter((l:any)=>l.type==='goal-visualization').map((l:any)=>[l.url,sha(resolve(iso,'app/public',l.url.slice(1)))])),errors=validatePositiveGoalEvidenceRecordSemantics(record,goal,digests,kind.get(goal.id) as string);return {goalId:goal.id,sourcePath,sourceSHA256,goalFingerprint:record.goalFingerprint,reviewInputFingerprint:record.reviewInputFingerprint,status:record.status,reviewAuthority:record.reviewAuthority,evidenceLevel:record.evidenceLevel,maximumClaimScope:record.maximumClaimScope,resourceDigests:digests,errors,scope:goal.id==='bd36dc58-c93e-5247-9e82-da2f9e4e2bed'?'unchanged_valid_current_profile_binding_only':'independently_science_reviewed_P14_now_exact_future_input_binding'}})
+if(rows.length!==15||rows.some(x=>x.errors.length))throw Error(JSON.stringify(rows))
+writeFileSync(resolve(own,'external-current-positive-profiles.input.jsonl'),selected.map(x=>JSON.stringify(x.record)).join('\n')+'\n')
+writeFileSync(resolve(own,'external-current-positive-inputs.actual.receipt.json'),JSON.stringify({authority:'native_semantic_binding_verification_not_new_human_approval_or_practical_trial',bookPageProfileIsNull:true,externalProfilesActuallyProvided:true,count:rows.length,rows,activeWrites:0},null,2)+'\n')
+console.log(JSON.stringify({currentPositiveProfiles:rows.length,blockingIssues:0,activeWrites:0}))

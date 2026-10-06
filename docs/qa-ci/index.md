@@ -64,6 +64,9 @@ Use this page by role: start with the overview documents, then jump to a review 
 - [Gesicherter Commit-Zwischenstand vom 5. Oktober](chemie-biologie-m7-commit-checkpoint-2026-10-05.md)
 - [Biologie: aktuelle Gelelektrophorese-Fortsetzung vom 5. Oktober](chemie-biologie-m7-gel-fortsetzung-2026-10-05.md)
 - [Chemie: fünf aktuelle Redox-/Titrationsabschlüsse vom 5. Oktober](chemie-biologie-m7-redox-titration-fortsetzung-2026-10-05.md)
+- [B010 und Biologie-Genregulation: Fortsetzung vom 5. Oktober](chemie-biologie-m7-b010-tf-methylation-continuation-2026-10-05.md)
+- [Aktueller Q1-/Bakterien-/E-Phasen-Stand vom 5. Oktober](chemie-biologie-m7-q1-bacteria-e7-continuation-2026-10-05.md)
+- [NI und quantitative Anwendungen: Zwischenstand vom 6. Oktober](chemie-biologie-m7-ni-quantitative-continuation-2026-10-06.md)
 
 ## Review Lanes
 

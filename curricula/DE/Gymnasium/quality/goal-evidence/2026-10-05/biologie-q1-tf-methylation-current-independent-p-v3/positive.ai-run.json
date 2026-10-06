@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-q1-tf-methylation-current-independent-p-20261005-v3.run-001",
+  "bundleFingerprint": "sha256:b9d53d3e68328abd742e7e7160655c57f4d8f16a7276d91418643da776a40759",
+  "bookDigest": "sha256:5800da8946e8de73111bb5a37a26c8285e743a2720ece7c51731f0013cc42af2",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex inherited session; exact backend deployment identifier not exposed",
+  "role": "assessment_adversarial_reviewer",
+  "promptFamilyId": "biology-positive-understanding-evidence-profile-independent-review-v2",
+  "promptFingerprint": "sha256:751d025c7be07bf85d376d96d8a3d1d5f4d340b265bdf24b8f3025eca8ec637f",
+  "criteriaFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+  "generationParametersFingerprint": "sha256:8994c6e44a5549d541cad6d17371d31f963f8be49192f9c409ac8fb4b8ae48bc",
+  "independenceGroupId": "biologie-q1-tf-methylation-current-independent-p-20261005-v3",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "946ce2e7-c30d-5670-839d-003b0619c284",
+    "0ac51522-352c-50d1-8b95-8d3992b4db15"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:5800da8946e8de73111bb5a37a26c8285e743a2720ece7c51731f0013cc42af2"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:e9136d7fa0c388849e923452b3acb58e0e0bff3fd18ec61edaef679da36b17fb"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:751d025c7be07bf85d376d96d8a3d1d5f4d340b265bdf24b8f3025eca8ec637f"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:2f1d6dab8c3041f972681277e8b49695b150efddf3ee000a6ed2d518d22758e7"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:0df88d79abeb78b39ad73be3100de29761addd17dfe11d3e2ef9ebf2a42ed507"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-10-05T17:55:28Z",
+  "completedAt": "2026-10-05T17:59:05.528906+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:1bbb1f512392701023703e030865f3ce2262634f8e3fd49015032f0be6d5f24f",
+  "toolchainVersion": "codex-cli-current-session"
+}

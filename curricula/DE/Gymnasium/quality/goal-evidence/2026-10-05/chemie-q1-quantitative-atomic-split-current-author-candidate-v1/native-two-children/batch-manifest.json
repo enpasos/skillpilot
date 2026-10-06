@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-q1-two-quantitative-children-20261005-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-quantitative-atomic-split-current-author-candidate-v1/batch.two-children.config.json",
+  "configDigest": "sha256:3b641acff72ca3c1f3393842de4bd3a00bbae22c6a26d062688f8df364d2c54e",
+  "goalIds": [
+    "3d6699ae-ebbd-5a55-8798-b809a9d74f0a",
+    "18819a59-2442-530f-a7c3-26755398ec66"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 378,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-quantitative-atomic-split-current-author-candidate-v1/book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:5ddbc22f327ba2b62c084b0942d587071552f55c2a0296535dce3a5c70b3ff4e"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:4635ff220b6e5421252f02d59dbef629ac66bf695797af60fe404bc758a5ea7f",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:9eaebaa6835b9585c57aef5137e3600a9676a445d5531b462f1ae4afac223479",
+    "reviewInputFingerprint": "sha256:795acf99d8121e99d183bf02e2a08517dd88df051674b4b2907163a3cdded297",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-q1-two-quantitative-children-20261005-v1-a",
+        "campaignDigest": "sha256:c7e09efb6376dda64c287d6967737cbaf1f3b352842cb879f2eaab54349578d0",
+        "roundId": "chemie-q1-two-quantitative-children-20261005-v1-first-pass-a",
+        "independenceGroupId": "chemie-q1-two-quantitative-children-20261005-v1-independent-a",
+        "batchId": "chemie-q1-two-quantitative-children-20261005-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:02760f61e6d983e0fba93d2d37aaf8347e2f356926461aa91077197d802004a9"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-q1-two-quantitative-children-20261005-v1-b",
+        "campaignDigest": "sha256:f9863a590651fa295d3ffd14a9c026b3186d0fefb660807680e8d37688c8f370",
+        "roundId": "chemie-q1-two-quantitative-children-20261005-v1-first-pass-b",
+        "independenceGroupId": "chemie-q1-two-quantitative-children-20261005-v1-independent-b",
+        "batchId": "chemie-q1-two-quantitative-children-20261005-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:22afafaf4296c04e376ad6784131dd014228d8beaea86f3fc3e465f20eb00aa5"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

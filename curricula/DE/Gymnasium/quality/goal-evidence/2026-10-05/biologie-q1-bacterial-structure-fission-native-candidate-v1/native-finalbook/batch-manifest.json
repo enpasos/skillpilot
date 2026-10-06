@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-q1-bacterial-structure-fission-native-20261005-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-native-candidate-v1/batch.config.json",
+  "configDigest": "sha256:937ce0ee94ea3733595f9a8d933865b76fc312224bc0e02a7a31d290bb83cbff",
+  "goalIds": [
+    "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f",
+    "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+    "49dbe8fa-7c4a-5ef5-9cd7-a40b60bf88dd"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 365,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-native-candidate-v1/book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:aa50be237a3dbeff1e9ad32b3acbdaafef4bb7b6b009f3c54cc464576c3f673b"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:2ef155bef9210064eceb9b6d44f676c260e4ea2f5005a6d80d9b5ead4d7f19fe",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e892aeafda50c9acf03c7d6108a8a32f362571a808ca2ac011133f15b483d411",
+    "reviewInputFingerprint": "sha256:59ae1d2236c9565c295b4c63d1d685f127eaa337b6a607f27bbba0f91d1efb9c",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-q1-bacterial-structure-fission-native-20261005-v1-a",
+        "campaignDigest": "sha256:147894c82e9964f3600733b006f27274d8b3678763032dec944bd9e7b8d52590",
+        "roundId": "biologie-q1-bacterial-structure-fission-native-20261005-v1-first-pass-a",
+        "independenceGroupId": "biologie-q1-bacterial-structure-fission-native-20261005-v1-independent-a",
+        "batchId": "biologie-q1-bacterial-structure-fission-native-20261005-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:fa65935e97e787324af18bff4e5edd862ae0ea720aa0728a706bbde1c52e32db"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-q1-bacterial-structure-fission-native-20261005-v1-b",
+        "campaignDigest": "sha256:d4d3f07fcb5051dfeb6b38b251b609d5d03e078ba8112444b6545d17794e8784",
+        "roundId": "biologie-q1-bacterial-structure-fission-native-20261005-v1-first-pass-b",
+        "independenceGroupId": "biologie-q1-bacterial-structure-fission-native-20261005-v1-independent-b",
+        "batchId": "biologie-q1-bacterial-structure-fission-native-20261005-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:573ecd5cbdd53ece0d003cc81d5faab652a7346957994d07a9e93734170364bf"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

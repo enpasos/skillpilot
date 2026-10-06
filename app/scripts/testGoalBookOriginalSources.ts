@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { GoalBookModel } from './goalBookModel'
-import { buildGoalBookOriginalSources, serializeGoalBookOriginalSources } from './goalBookOriginalSources'
+import { buildGoalBookOriginalSources, goalBookOriginalSourceMappingPaths, serializeGoalBookOriginalSources } from './goalBookOriginalSources'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const loadBook = (subject: string): GoalBookModel => JSON.parse(readFileSync(
@@ -156,6 +156,71 @@ try {
   assert.equal(build().evidence.length, 1, 'same locator retains one genuine witness, not repeated mapping exports')
   write(mappingPath, { ...mapping('leaf'), sourceExtractionPath: '../outside.json' })
   assert.throws(build, /repository-relative/u, 'source references cannot escape the repository')
+
+  reset()
+  const historicalMappingPath = 'curricula/DE/Gymnasium/mapping/history.review.json'
+  const historicalExtractionPath = 'curricula/DE/Gymnasium/input/history.json'
+  write(historicalExtractionPath, { ...baselineExtraction,
+    sourceDocument: { ...baselineExtraction.sourceDocument, key: 'OLD', title: 'Earlier original', url: 'https://example.org/2024.pdf' },
+    sourceGoals: [sourceGoal('source', { sourceRef: '2025 section, S. 39' })],
+  })
+  write(historicalMappingPath, { ...mapping('leaf'), sourceExtractionPath: historicalExtractionPath })
+  write(extractionPath, { ...baselineExtraction,
+    sourceDocuments: [baselineExtraction.sourceDocument,
+      { ...baselineExtraction.sourceDocument, key: 'CURRENT', title: 'Current original', url: 'https://example.org/2025.pdf' }],
+    sourceGoals: [sourceGoal('source', { sourceDocumentKey: 'CURRENT', sourceRef: '2025 section, S. 39' })],
+  })
+  const retainedHistoricalBytes = readFileSync(resolve(temporaryRoot, historicalMappingPath))
+  const retainedExtractionBytes = readFileSync(resolve(temporaryRoot, historicalExtractionPath))
+  assert.equal(build().documents.length, 2, 'legacy discovery demonstrates the retained conflicting mapping')
+  const selected = () => buildGoalBookOriginalSources(model, temporaryRoot, [mappingPath])
+  assert.deepEqual(selected().documents.map(({ url }) => url), ['https://example.org/2025.pdf'],
+    'current mapping selection excludes historical false document/page combinations')
+  assert.equal(selected().evidence[0].sourceRef, '2025 section, S. 39')
+  assert.deepEqual(selected().goals.leaf.map(({ evidenceIds }) => evidenceIds.length), [1, 0, 0],
+    'explicit mapping selection retains duration and jurisdiction restrictions')
+  assert.deepEqual(readFileSync(resolve(temporaryRoot, historicalMappingPath)), retainedHistoricalBytes)
+  assert.deepEqual(readFileSync(resolve(temporaryRoot, historicalExtractionPath)), retainedExtractionBytes,
+    'retained historical evidence is never rewritten to remove it from current citations')
+  write(mappingPath, mapping('topic'))
+  assert.equal(selected().evidence[0].kind, 'inherited', 'selected mappings preserve nearest ancestor witnesses')
+  write(extractionPath, { ...baselineExtraction, sourceDocuments: [baselineExtraction.sourceDocument,
+    { ...baselineExtraction.sourceDocument, key: 'OTHER', url: 'https://example.org/other.pdf' }],
+  })
+  assert.equal(selected().evidence.length, 0, 'selection never waives ambiguous document binding')
+  for (const invalidSelection of [[], [mappingPath, mappingPath], [''], ['../outside.json']]) {
+    assert.throws(() => buildGoalBookOriginalSources(model, temporaryRoot, invalidSelection),
+      /mapping selection|repository-relative/u, 'invalid explicit selections never fall back to historical discovery')
+  }
+  assert.throws(() => buildGoalBookOriginalSources(model, temporaryRoot, ['missing.json']), /ENOENT/u)
+  write(mappingPath, { ...mapping('leaf'), targetLandscapeId: 'different-landscape' })
+  assert.throws(selected, /different landscape/u)
+  write(mappingPath, { ...mapping('leaf'), sourceExtractionPath: undefined })
+  assert.throws(selected, /no extraction/u)
+  write(mappingPath, mapping('leaf'))
+  write(extractionPath, baselineExtraction)
+  const publicationConfigPath = 'app/scripts/config/goal-books/fixture.json'
+  const companionPath = publicationConfigPath.replace(/\.json$/u, '.inputs.json')
+  const inputCompanion = {
+    schemaVersion: 1, bookId: model.book.id, landscapePath: model.source.landscapePath,
+    semanticKindLedgerPath: model.source.semanticKindLedgerPath,
+    manifestPath: model.source.compositionViewManifestPath, mappingPaths: [mappingPath],
+  }
+  write(companionPath, inputCompanion)
+  assert.deepEqual(goalBookOriginalSourceMappingPaths(model, temporaryRoot, publicationConfigPath), [mappingPath])
+  // Registered default calls use the same companion path as all three build entry points.
+  const registeredCompanionPath = 'app/scripts/config/goal-books/de-gym-math-national-atlas.inputs.json'
+  write(registeredCompanionPath, inputCompanion)
+  assert.equal(build().evidence.length, 1, 'registered default projection honors the present active input companion')
+  for (const invalidCompanion of [
+    { schemaVersion: 2 }, { bookId: 'another-book' }, { landscapePath: 'another-landscape.json' },
+    { semanticKindLedgerPath: 'another-ledger.json' }, { manifestPath: 'another-manifest.json' },
+    { mappingPaths: [] }, { mappingPaths: [mappingPath, mappingPath] }, { mappingPaths: 'all-reviews' },
+  ]) {
+    write(companionPath, { ...inputCompanion, ...invalidCompanion })
+    assert.throws(() => goalBookOriginalSourceMappingPaths(model, temporaryRoot, publicationConfigPath),
+      /does not match|mapping selection/u, 'present invalid companions never use legacy review discovery')
+  }
 } finally {
   rmSync(temporaryRoot, { recursive: true, force: true })
 }

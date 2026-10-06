@@ -1,0 +1,36 @@
+{
+  "schemaPath": "docs/landscape-runtime.schema.json",
+  "schemaSHA256": "d25cf1c930d1a21838264b34d713f32788715089c6b8ff2b7430bdbc6079e59a",
+  "rows": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-five-kept-native-import-bindings-v1/canonical.before-native-import.inactive.snapshot.json",
+      "sha256": "3ab6920a0b1190efd102c679c1e020bf67f7cab6939d304c05f1ff2fe4f21b96",
+      "errors": [
+        {
+          "path": [
+            "goals",
+            463
+          ],
+          "message": "'dimensionTags' is a required property"
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ni-five-kept-native-import-bindings-v1/canonical.after-native-import.inactive.snapshot.json",
+      "sha256": "6302c4c6b116e09bd863d41b70e26f60fa5a169dea9f17ead180f2b868c8b60b",
+      "errors": [
+        {
+          "path": [
+            "goals",
+            463
+          ],
+          "message": "'dimensionTags' is a required property"
+        }
+      ]
+    }
+  ],
+  "allPassed": false,
+  "failedDirectProbePreserved": true,
+  "reason": "Inactive canonical authoring snapshots lack runtime-level dimensionTags; unchanged native authoring contract and existing quality-artifact parser apply, no runtime conversion or runtime-schema pass claimed.",
+  "schemaOrValidatorChanges": 0
+}

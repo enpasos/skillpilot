@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:e892aeafda50c9acf03c7d6108a8a32f362571a808ca2ac011133f15b483d411",
+  "reviewInputFingerprint": "sha256:59ae1d2236c9565c295b4c63d1d685f127eaa337b6a607f27bbba0f91d1efb9c",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-q1-bacterial-structure-fission-native-20261005-v1-a",
+      "roundId": "biologie-q1-bacterial-structure-fission-native-20261005-v1-first-pass-a",
+      "independenceGroupId": "biologie-q1-bacterial-structure-fission-native-20261005-v1-independent-a",
+      "runIds": [
+        "biologie-q1-bacterial-structure-fission-current-independent-d-a-20261005-v1"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::Codex reviewer; exact model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-q1-bacterial-structure-fission-native-20261005-v1-b",
+      "roundId": "biologie-q1-bacterial-structure-fission-native-20261005-v1-first-pass-b",
+      "independenceGroupId": "biologie-q1-bacterial-structure-fission-native-20261005-v1-independent-b",
+      "runIds": [
+        "biologie-bacterial-structure-fission-root-independent-b-20261005-v1"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::Inherited Codex session; exact runtime model identifier not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI Codex"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f",
+      "firstRecordId": "biologie-q1-bacterial-structure-fission-current-independent-d-a-20261005-v1.record-001",
+      "secondRecordId": "bio-bacterial-root-b-v1-7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f",
+      "firstRunId": "biologie-q1-bacterial-structure-fission-current-independent-d-a-20261005-v1",
+      "secondRunId": "biologie-bacterial-structure-fission-root-independent-b-20261005-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+      "firstRecordId": "biologie-q1-bacterial-structure-fission-current-independent-d-a-20261005-v1.record-002",
+      "secondRecordId": "bio-bacterial-root-b-v1-5b2571d9-f079-52b2-b21b-8f389c7409f4",
+      "firstRunId": "biologie-q1-bacterial-structure-fission-current-independent-d-a-20261005-v1",
+      "secondRunId": "biologie-bacterial-structure-fission-root-independent-b-20261005-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "49dbe8fa-7c4a-5ef5-9cd7-a40b60bf88dd",
+      "firstRecordId": "biologie-q1-bacterial-structure-fission-current-independent-d-a-20261005-v1.record-003",
+      "secondRecordId": "bio-bacterial-root-b-v1-49dbe8fa-7c4a-5ef5-9cd7-a40b60bf88dd",
+      "firstRunId": "biologie-q1-bacterial-structure-fission-current-independent-d-a-20261005-v1",
+      "secondRunId": "biologie-bacterial-structure-fission-root-independent-b-20261005-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

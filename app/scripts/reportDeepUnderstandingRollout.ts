@@ -1279,38 +1279,108 @@ const validateResolutionIndex = async (
   return { ready, claimedGoalIds, historicalClaimedGoalIds, issues }
 }
 
+export type ResolutionSupersessionChain = { goalId: string; indexPaths: string[] }
+
+/** Historical resolutions can be replaced more than once. For each goal there
+ * must be one linear chain, with all historical indices still registered. */
+export const buildResolutionSupersessionChains = (
+  supersessions: NonNullable<DeepUnderstandingSubjectConfig['resolutionSupersessions']>,
+  indexPaths: readonly string[],
+  currentGoalIds: ReadonlySet<string>,
+): { chains: ResolutionSupersessionChain[]; invalidGoalIds: Set<string>; issues: string[] } => {
+  const grouped = new Map<string, typeof supersessions>()
+  supersessions.forEach((edge) => {
+    const edges = grouped.get(edge.goalId) ?? []
+    edges.push(edge)
+    grouped.set(edge.goalId, edges)
+  })
+  const registered = new Set(indexPaths)
+  const chains: ResolutionSupersessionChain[] = []
+  const invalidGoalIds = new Set<string>()
+  const issues: string[] = []
+  for (const [goalId, edges] of grouped) {
+    const next = new Map<string, string>()
+    const previous = new Map<string, string>()
+    const nodes = new Set<string>()
+    let invalid = !currentGoalIds.has(goalId)
+    for (const { supersededIndexPath: from, replacementIndexPath: to } of edges) {
+      if (
+        from === to || !registered.has(from) || !registered.has(to)
+        || next.has(from) || previous.has(to)
+      ) invalid = true
+      next.set(from, to)
+      previous.set(to, from)
+      nodes.add(from)
+      nodes.add(to)
+    }
+    const starts = [...nodes].filter((node) => !previous.has(node))
+    const terminals = [...nodes].filter((node) => !next.has(node))
+    const ordered: string[] = []
+    const visited = new Set<string>()
+    let node: string | undefined = starts.length === 1 ? starts[0] : undefined
+    while (node !== undefined && !visited.has(node)) {
+      ordered.push(node)
+      visited.add(node)
+      node = next.get(node)
+    }
+    if (
+      invalid || starts.length !== 1 || terminals.length !== 1
+      || node !== undefined || visited.size !== nodes.size
+      || ordered.at(-1) !== terminals[0]
+    ) {
+      invalidGoalIds.add(goalId)
+      issues.push(`invalid description-resolution supersession chain for ${goalId}`)
+    } else chains.push({ goalId, indexPaths: ordered })
+  }
+  return { chains, invalidGoalIds, issues }
+}
+
+type ResolutionIndexValidation = {
+  path: string
+  ready: ReadonlySet<string>
+  claimedGoalIds: ReadonlySet<string>
+  historicalClaimedGoalIds: ReadonlySet<string>
+  issues: readonly string[]
+}
+
+export const hasIntactResolutionSupersessionChain = (
+  chain: ResolutionSupersessionChain,
+  validatedIndices: readonly ResolutionIndexValidation[],
+): boolean => {
+  if (chain.indexPaths.length < 2 || new Set(chain.indexPaths).size !== chain.indexPaths.length) return false
+  return chain.indexPaths.every((path, position) => {
+    const matching = validatedIndices.filter((index) => index.path === path)
+    if (matching.length !== 1) return false
+    const index = matching[0]
+    if (index.issues.length > 0 || !index.historicalClaimedGoalIds.has(chain.goalId)) return false
+    return position === chain.indexPaths.length - 1
+      ? index.claimedGoalIds.has(chain.goalId) && index.ready.has(chain.goalId)
+      : !index.claimedGoalIds.has(chain.goalId)
+  })
+}
+
 const loadDescriptionReadyGoals = async (
   config: DeepUnderstandingSubjectConfig,
   scope: AuthoritativeScope,
   issues: string[],
 ): Promise<Set<string>> => {
-  const validationResults: Array<{
-    path: string
-    ready: Set<string>
-    claimedGoalIds: Set<string>
-    historicalClaimedGoalIds: Set<string>
-  }> = []
+  const validationResults: ResolutionIndexValidation[] = []
   const ownerByGoalId = new Map<string, string>()
   const uniqueClaims = new Set<string>()
   const supersededByIndex = new Map<string, Set<string>>()
   const withdrawnByIndex = new Map<string, Map<string, string>>()
-  const supersededGoalOwners = new Set<string>()
-  for (const supersession of config.resolutionSupersessions ?? []) {
-    const { goalId, supersededIndexPath, replacementIndexPath } = supersession
-    if (
-      supersededIndexPath === replacementIndexPath
-      || !config.resolutionIndexPaths.includes(supersededIndexPath)
-      || !config.resolutionIndexPaths.includes(replacementIndexPath)
-      || !scope.atomicGoalIds.has(goalId)
-      || supersededGoalOwners.has(goalId)
-    ) {
-      addIssue(issues, config.subject, `invalid description-resolution supersession for ${goalId}`)
-      continue
+  const supersessions = config.resolutionSupersessions ?? []
+  const supersededGoalOwners = new Set(supersessions.map(({ goalId }) => goalId))
+  const { chains, invalidGoalIds, issues: chainIssues } = buildResolutionSupersessionChains(
+    supersessions, config.resolutionIndexPaths, scope.atomicGoalIds,
+  )
+  chainIssues.forEach((issue) => addIssue(issues, config.subject, issue))
+  for (const { goalId, indexPaths } of chains) {
+    for (const historicalPath of indexPaths.slice(0, -1)) {
+      const goalIds = supersededByIndex.get(historicalPath) ?? new Set<string>()
+      goalIds.add(goalId)
+      supersededByIndex.set(historicalPath, goalIds)
     }
-    supersededGoalOwners.add(goalId)
-    const goalIds = supersededByIndex.get(supersededIndexPath) ?? new Set<string>()
-    goalIds.add(goalId)
-    supersededByIndex.set(supersededIndexPath, goalIds)
   }
   const withdrawnGoalOwners = new Set<string>()
   for (const withdrawal of config.resolutionWithdrawals ?? []) {
@@ -1344,15 +1414,10 @@ const loadDescriptionReadyGoals = async (
       }
     })
   }
-  for (const supersession of config.resolutionSupersessions ?? []) {
-    const oldIndex = validationResults.find(({ path }) => path === supersession.supersededIndexPath)
-    const replacement = validationResults.find(({ path }) => path === supersession.replacementIndexPath)
-    if (
-      !oldIndex?.historicalClaimedGoalIds.has(supersession.goalId)
-      || !replacement?.ready.has(supersession.goalId)
-      || oldIndex.claimedGoalIds.has(supersession.goalId)
-    ) {
-      addIssue(issues, config.subject, `description-resolution supersession lacks an intact old claim and current replacement for ${supersession.goalId}`)
+  for (const chain of chains) {
+    if (!hasIntactResolutionSupersessionChain(chain, validationResults)) {
+      invalidGoalIds.add(chain.goalId)
+      addIssue(issues, config.subject, `description-resolution supersession lacks an intact old claim and current replacement for ${chain.goalId}`)
     }
   }
   for (const withdrawal of config.resolutionWithdrawals ?? []) {
@@ -1367,7 +1432,7 @@ const loadDescriptionReadyGoals = async (
   const ready = new Set<string>()
   validationResults.forEach((result) => {
     result.ready.forEach((goalId) => {
-      if (uniqueClaims.has(goalId)) ready.add(goalId)
+      if (uniqueClaims.has(goalId) && !invalidGoalIds.has(goalId)) ready.add(goalId)
     })
   })
   validateCurrentCanonicalBindingAudits(config, scope, ready, issues)

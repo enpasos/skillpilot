@@ -19,7 +19,7 @@ import {
   type GoalBookPublicationIndex,
 } from './checkGoalBookPublication'
 import { loadGoalBookBuildInputs, type GoalBookModel } from './goalBookModel'
-import { buildGoalBookOriginalSources, serializeGoalBookOriginalSources } from './goalBookOriginalSources'
+import { buildGoalBookOriginalSources, goalBookOriginalSourceMappingPaths, serializeGoalBookOriginalSources } from './goalBookOriginalSources'
 import { writeGoalBookPdf, writeGoalBookRenderManifest } from './goalBookRenderer'
 import {
   GOAL_BOOK_BUILD_CACHE_FILE,
@@ -219,7 +219,8 @@ export const buildGoalBookPublications = async (options: GoalBookPublicationsBui
       const paths = goalBookPublicationPaths(definition, stagingDirectory)
       const { model } = await loadGoalBookBuildInputs(paths.configPath)
       const modelBytes = serialize(model)
-      const originalSources = await buildGoalBookOriginalSources(model)
+      const originalSources = buildGoalBookOriginalSources(model, REPOSITORY_ROOT,
+        goalBookOriginalSourceMappingPaths(model, REPOSITORY_ROOT, paths.configPath))
       parseGoalBookOriginalSources(originalSources, model)
       const sourceBytes = serializeGoalBookOriginalSources(originalSources)
       if (Buffer.byteLength(sourceBytes) > MAX_GOAL_BOOK_ORIGINAL_SOURCES_BYTES) {

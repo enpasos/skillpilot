@@ -1,0 +1,7 @@
+# Independent Chemie D-A: two new atoms and two affected contexts
+
+Two new full operative description reviews (3d6699ae and18819a59) and two targeted existing-context/page binding reviews (70b34ae7 anddb66635f) independently KEEP. Actual complete PDF pages3,4,11,12 and loaded HTML, current original pictures, current HE39/40 sources and BY context were read. Practical method choice, controlled planning, actual execution and content evaluation remain explicit. The paraben determination is an authored LK analytical transfer with no normative source-coverage claim; the separate paraben-use atom remains.
+
+Manual science was frozen before native records or other individual description decisions. `results/` contains only native D10 batches001 and005 (four exact records); the six earlier safe goals are not new self-approvals. Both unchanged native individual-batch validations pass (Exit0). Full-round assembly must include the separate original reviewer’s six safe-binding reuse records. This dossier does not claim a completed ten-goal campaign by one reviewer or publication/human acceptance.
+
+Historical author236 files, own28-file pre-native science and technical9-file input freeze were rechecked byte-exact. No active canonical, registry, image, QA ledger or in-flight ledger was written. Strict current net increase0; independent second round, current P/A/M/V integration and central strict check remain required. Human approval and trial stay false.

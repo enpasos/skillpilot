@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:b9d53d3e68328abd742e7e7160655c57f4d8f16a7276d91418643da776a40759",
+  "reviewInputFingerprint": "sha256:957205d56ebb9e47609a19f04bef246b970cc6dff78d232d6a1f5298610f5399",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3-a",
+      "roundId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3-first-pass-a",
+      "independenceGroupId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3-independent-a",
+      "runIds": [
+        "biologie-q1-tf-methylation-current-independent-d-a-20261005-v3.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex inherited session; exact backend deployment identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3-b",
+      "roundId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3-first-pass-b",
+      "independenceGroupId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3-independent-b",
+      "runIds": [
+        "biologie-tf-methylation-root-independent-b-20261005-v3"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::Inherited Codex session; exact runtime model identifier not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "946ce2e7-c30d-5670-839d-003b0619c284",
+      "firstRecordId": "biologie-q1-tf-methylation-current-independent-d-a-20261005-v3.run-001.goal-1",
+      "secondRecordId": "bio-tf-methylation-root-b-v3-946ce2e7-c30d-5670-839d-003b0619c284",
+      "firstRunId": "biologie-q1-tf-methylation-current-independent-d-a-20261005-v3.run-001",
+      "secondRunId": "biologie-tf-methylation-root-independent-b-20261005-v3",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0ac51522-352c-50d1-8b95-8d3992b4db15",
+      "firstRecordId": "biologie-q1-tf-methylation-current-independent-d-a-20261005-v3.run-001.goal-2",
+      "secondRecordId": "bio-tf-methylation-root-b-v3-0ac51522-352c-50d1-8b95-8d3992b4db15",
+      "firstRunId": "biologie-q1-tf-methylation-current-independent-d-a-20261005-v3.run-001",
+      "secondRunId": "biologie-tf-methylation-root-independent-b-20261005-v3",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+      "firstRecordId": "biologie-q1-tf-methylation-current-independent-d-a-20261005-v3.run-001.goal-3",
+      "secondRecordId": "bio-tf-methylation-root-b-v3-8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+      "firstRunId": "biologie-q1-tf-methylation-current-independent-d-a-20261005-v3.run-001",
+      "secondRunId": "biologie-tf-methylation-root-independent-b-20261005-v3",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

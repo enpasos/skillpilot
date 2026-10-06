@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "biologie-ni-existing-pedigree-targeted-current-context-20261006-v1",
+  "reviewedAt": "2026-10-05T22:21:31.584721+00:00",
+  "reviewer": "Codex Root; independent of NI author; unchanged pedigree positive profile context; materialized technically by delegated agent",
+  "goals": [
+    {
+      "goalId": "440854be-7f06-5678-91cb-ba8dcab56959",
+      "reason": "Der neue einfache Mendel-Vorgänger unterstützt genau die bereits gültige Prüfung monohybrider autosomaler/gonosomaler dominant-rezessiver Erbmodelle unter angegebenen klassischen Modellannahmen. Im ersten Fall stützen mögliche Trägereltern autosomal-rezessiv; die voll penetrante erbliche dominante und das einfache X-rezessive Modell passen nicht zu nicht betroffenem Vater und betroffener Tochter. Im zweiten Fall bleiben verschiedene Modelle mit passenden mütterlichen Trägerannahmen offen; betroffener Vater und Sohn beweisen keine väterliche X-Weitergabe. Diese expliziten Modell-/Trägerbegründungen tragen Diploidie und Weitergabe, ohne molekulare Rekombinationsschritte oder individuelle Diagnose zu behaupten. Eine separate DNA-Aufbaukompetenz ist dafür kein erforderlicher Vorgänger. Die positive Erwartung und der bestehende Bildkörper ändern sich nicht; nur der aktuelle requires-Eingang wird nativ neu gebunden. Die zwei anderen gültigen Profile derselben Config bleiben innerlich und, soweit ihre Eingänge unverändert sind, auch äußerlich erhalten.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "read-family-pattern",
+            "essentialUnderstandingDe": "Die Symbolfolge im Familienstammbaum zeigt beobachtete Merkmale und Eltern-Kind-Beziehungen über Generationen; ein Symbol legt den Genotyp nicht automatisch fest.",
+            "essentialUnderstandingEn": "Symbols in a family pedigree show observed traits and parent-child relations across generations; a symbol does not automatically establish a genotype.",
+            "observablePerformanceDe": "Die lernende Person liest in einem neuen Familienstammbaum Generationen, Verwandtschaft und betroffene sowie nicht betroffene Personen richtig ab.",
+            "observablePerformanceEn": "The learner correctly reads generations, kinship and affected versus unaffected people in a new family pedigree."
+          },
+          {
+            "id": "test-inheritance-models",
+            "essentialUnderstandingDe": "Unter offengelegten einfachen monohybriden Modellannahmen können Verteilung nach Generation und Geschlecht Erbgänge stützen oder ausschließen; kleine Stammbäume können mehrere Erklärungen offenlassen.",
+            "essentialUnderstandingEn": "Under stated simple single-trait model assumptions, patterns by generation and sex can support or exclude inheritance models; small pedigrees can leave several explanations open.",
+            "observablePerformanceDe": "Die lernende Person prüft für einen neuen Stammbaum dominante/rezessive und autosomale/gonosomale Erklärungen an konkreten Personen und begründet, welche Deutung sicher, plausibel oder offen ist.",
+            "observablePerformanceEn": "For a new pedigree, the learner tests dominant/recessive and autosomal/sex-linked explanations against specific individuals and explains which interpretation is supported, plausible or unresolved."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "read-family-pattern",
+            "test-inheritance-models"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "parent-child-pattern",
+            "textDe": "Betroffenheitsmuster von Eltern und Kindern in einem neuen Stammbaum wechseln.",
+            "textEn": "Change affected parent-child patterns in a new pedigree."
+          },
+          {
+            "id": "sex-pattern",
+            "textDe": "Geschlechterverteilung und Zahl beobachteter Verwandter ändern.",
+            "textEn": "Change sex distribution and the number of observed relatives."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "unaffected-parents-affected-daughter",
+            "taskDemandDe": "Ein neuer kleiner Stammbaum zeigt zwei nicht betroffene Eltern und eine betroffene Tochter. Prüfe unter der ausdrücklich vereinfachten Annahme eines monohybriden Merkmals mit vollständiger Penetranz autosomal-rezessive, autosomal-dominante und X-chromosomal-rezessive Erklärungen; benenne die Grenze der Deutung.",
+            "taskDemandEn": "A fresh small pedigree shows two unaffected parents and an affected daughter. Under the stated simplified assumption of a single-trait model with complete penetrance, test autosomal recessive, autosomal dominant and X-linked recessive explanations and state the interpretation limit.",
+            "expectedPerformanceDe": "Die lernende Person erkennt autosomal-rezessiv als passend, während ein erbliches autosomal-dominantes Modell mit vollständiger Penetranz und X-chromosomal-rezessiv bei nicht betroffenem Vater im einfachen Modell nicht passen; sie erklärt, warum der reale Erbgang aus einem kleinen Stammbaum nicht klinisch sicher feststeht.",
+            "expectedPerformanceEn": "The learner identifies autosomal recessive as fitting, while a fully penetrant inherited autosomal dominant pattern and X-linked recessive inheritance with an unaffected father do not fit the simple model; they explain why a small real pedigree does not establish a clinical diagnosis.",
+            "understandingFocusDe": "Ein konkretes Muster wird gegen Modellannahmen geprüft, ohne individuelle Vorhersage.",
+            "understandingFocusEn": "A concrete pattern is tested against stated model assumptions without an individual prediction."
+          },
+          {
+            "id": "affected-father-mixed-children",
+            "taskDemandDe": "Ein zweiter Stammbaum zeigt einen betroffenen Vater, eine nicht betroffene Mutter, einen betroffenen Sohn und eine nicht betroffene Tochter. Vergleiche unter vollständiger Penetranz plausible monohybride Erbgänge und prüfe, ob die Beobachtung einen davon eindeutig beweist.",
+            "taskDemandEn": "A second pedigree shows an affected father, an unaffected mother, an affected son and an unaffected daughter. Under complete penetrance, compare plausible single-trait inheritance models and check whether the observation proves any one model uniquely.",
+            "expectedPerformanceDe": "Die lernende Person erkennt, dass X-chromosomal-dominant wegen der nicht betroffenen Tochter im einfachen Modell nicht passt, während autosomal-dominant sowie autosomal-rezessiv oder X-chromosomal-rezessiv mit passenden mütterlichen Trägerannahmen möglich bleiben; Vater und Sohn allein beweisen keine direkte X-Weitergabe.",
+            "expectedPerformanceEn": "The learner recognizes that X-linked dominant inheritance does not fit the unaffected daughter under the simple model, while autosomal dominant and autosomal or X-linked recessive models remain possible with suitable maternal carrier assumptions; an affected father and son alone do not prove direct paternal X transmission.",
+            "understandingFocusDe": "Transfer auf ein mehrdeutiges Muster mit begründeter Ausschluss- und Unsicherheitsaussage.",
+            "understandingFocusEn": "Transfer to an ambiguous pattern with justified exclusion and uncertainty."
+          }
+        ]
+      }
+    }
+  ]
+}

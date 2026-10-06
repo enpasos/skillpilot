@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-tf-methylation-current-integration-candidate-v4/batch.config.json",
+  "configDigest": "sha256:0ed475a57c73699dee186e5e602df59432badb0866d231feb8963a4577465ce7",
+  "goalIds": [
+    "946ce2e7-c30d-5670-839d-003b0619c284",
+    "0ac51522-352c-50d1-8b95-8d3992b4db15",
+    "8eb86a82-122d-5cae-8f80-bb2850b29c2f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 364,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-tf-methylation-current-source-consumer-candidate-v3/book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:56ad8b0059902dc4219ed2a98b00d2c331ab52acac83122007334426851322ae"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:5800da8946e8de73111bb5a37a26c8285e743a2720ece7c51731f0013cc42af2",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:31d3fd11a4be9a60589fd289590b063797d93c225a3cf4a79fbb08da2a0256fd",
+    "reviewInputFingerprint": "sha256:e1e9625be3c1194d6a8beb61557a8d2dea88cec54b72caec715df5b0c1e249fc",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3-a",
+        "campaignDigest": "sha256:0b82375eee081b77d71a679f3a058d21dabb649d51323e3696eeadd1df02a278",
+        "roundId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3-first-pass-a",
+        "independenceGroupId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3-independent-a",
+        "batchId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:4435f1f97563d529a6796a346b5cd9ff66fc3340e59f1cbf1ffc2c360a9c7773"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3-b",
+        "campaignDigest": "sha256:359b0dacbed54005e3f481d5bd7d0b48bbc79c561e3cb7e8f74493b82987a75b",
+        "roundId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3-first-pass-b",
+        "independenceGroupId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3-independent-b",
+        "batchId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:9b4c886e86330303803a3ab8b3a8060f8d6426827b9d23e7d0b5a36cc2efae36"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

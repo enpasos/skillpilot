@@ -1,0 +1,41 @@
+{
+  "atUTC": "2026-10-05T23:01:48.076667+00:00",
+  "status": "Actual current Bio383/Chem376 native data: all46 reviewed Java expected totals and complete target ID sets equal previous independently retained measurement; no Java adjustment warranted",
+  "measurementPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-current-layer-a-inventory-projections-v2/before-expectation-patch-bio383-chem376.actual.json",
+  "measurementSHA256": "775fa540e0bf0a75c791ec3c42ec42f5050e3d6425f9f9a7019bc2e50d9bd859",
+  "totalComparedCases": 46,
+  "allExpectedTotalsMatch": true,
+  "allTargetIDSetsEqualPriorActualMeasurement": true,
+  "backendTestContractUnchanged": true,
+  "reviewedContracts": [
+    {
+      "source": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+      "sourceSHA256": "b90e89fc74f2c048911daae8869473eb777c267ba8f9d8a55026bfd9bcc46a13",
+      "lineStart": 1485,
+      "lineEnd": 1556,
+      "retainedExcerpt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-current-layer-a-inventory-projections-v2/LearnerControllerIntegrationTest.reviewed-contract.snapshot.txt",
+      "retainedExcerptSHA256": "c9441ca51b2087a99fc0245b8420de58624171be4742715799a2ba34551df76f"
+    },
+    {
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "sourceSHA256": "6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+      "lineStart": 8268,
+      "lineEnd": 8311,
+      "retainedExcerpt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-current-layer-a-inventory-projections-v2/LearnerService.reviewed-counter-contract.snapshot.txt",
+      "retainedExcerptSHA256": "71bafff5ebc32baa121dedeec21f06ec6e50fced4fc5fa31420972e037f5dc22"
+    },
+    {
+      "source": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+      "sourceSHA256": "9a6aa635641b463967211cbc149bfa23d4b3fa24ff78a5350b36c3f05dba3b96",
+      "lineStart": 539,
+      "lineEnd": 640,
+      "retainedExcerpt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-current-layer-a-inventory-projections-v2/CompositionViewService.reviewed-scope-contract.snapshot.txt",
+      "retainedExcerptSHA256": "b5c7724c727336a2875e6441a318de3c49e3b237af0ee5743f3ae9df2988e0c3"
+    }
+  ],
+  "backendTestsRun": false,
+  "runtimeCodeChanged": false,
+  "javaCodeChanged": false,
+  "humanApproval": false,
+  "limitation": "Pure-data app measurement with unchanged projection role collector/filters; not a backend/API execution. New NI canonical supplement is not automatically made a target by existing explicitly authored SekI composition views. No scope or applicability inference was added. Final Chemistry378 measurement remains pending."
+}

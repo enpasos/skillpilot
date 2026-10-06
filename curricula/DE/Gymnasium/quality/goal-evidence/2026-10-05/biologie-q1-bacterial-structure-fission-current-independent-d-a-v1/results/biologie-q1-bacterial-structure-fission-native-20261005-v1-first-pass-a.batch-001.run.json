@@ -1,0 +1,84 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-q1-bacterial-structure-fission-current-independent-d-a-20261005-v1",
+  "campaignId": "biologie-q1-bacterial-structure-fission-native-20261005-v1-a",
+  "roundId": "biologie-q1-bacterial-structure-fission-native-20261005-v1-first-pass-a",
+  "batchId": "biologie-q1-bacterial-structure-fission-native-20261005-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:fa65935e97e787324af18bff4e5edd862ae0ea720aa0728a706bbde1c52e32db",
+  "bundleFingerprint": "sha256:e892aeafda50c9acf03c7d6108a8a32f362571a808ca2ac011133f15b483d411",
+  "bookDigest": "sha256:2ef155bef9210064eceb9b6d44f676c260e4ea2f5005a6d80d9b5ead4d7f19fe",
+  "provider": "OpenAI Codex",
+  "model": "Codex reviewer; exact model identifier not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:4af2873e5ffb01a1e3e24e950bb903de5f6a5a6df9117006a2dc419cf2b8b563",
+  "independenceGroupId": "biologie-q1-bacterial-structure-fission-native-20261005-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f",
+    "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+    "49dbe8fa-7c4a-5ef5-9cd7-a40b60bf88dd"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:f7b0f812d14a144f377fb0f802c4426a317508ecdd5491d75f92b79e2c55b188"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:be1d00fc04afb3e4f6d6823df89fa7dc60ea8d11dbd4e3d3a3f4002e85dbc2f9"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:8d9d55ad0bb644d2dc35755336b92dbf4dbe5d59e862902851ab905d3a245d71"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:40d1abfb13c91b374d1a6de6510bd7dcce0b977573783a6e7a528e2c56e1312e"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:ff0844f61d15761fcd6e8d1af41ecdc450034329db4ebe797304b7a6c2beb039"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:4a65119c94fd8aded6fb8bfa037b4c642016db498e9327a9a5fd9a421c735afe"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:8f2db51fd9a7d422704072241bc1a2cd9c2482dc8cedc0d782891bbd27aee73b"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:417261dcaae88c453d80e09f02b0a5c47582cf61512e09e45cc78ea268bd0922"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:fa65935e97e787324af18bff4e5edd862ae0ea720aa0728a706bbde1c52e32db"
+    }
+  ],
+  "startedAt": "2026-10-05T18:53:21.128028+00:00",
+  "completedAt": "2026-10-05T18:56:24.822579+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:c7a488bd91321cc67e8fb58a291afc6c87be35a0c7bd52bd627e63850cb9b51f",
+  "toolchainVersion": "goal-description-review-v1"
+}

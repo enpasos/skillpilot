@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-10-05T14:30:36.250Z
+Generated: 2026-10-06T00:13:52.828Z
 Rules version: curriculum-quality-v5
 
 ## Summary
@@ -28,8 +28,8 @@ Rules version: curriculum-quality-v5
 
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Biologie (Gymnasium, DE) | M6 | 441 | 390 | 17/17 | 16/16 | 1 | 1 | 0 |
-| Chemie (Gymnasium, DE) | M6 | 473 | 405 | 32/32 | 16/16 | 1 | 1 | 0 |
+| Biologie (Gymnasium, DE) | M6 | 464 | 412 | 17/17 | 16/16 | 1 | 1 | 0 |
+| Chemie (Gymnasium, DE) | M6 | 474 | 405 | 32/32 | 16/16 | 1 | 1 | 0 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Deutsch (Gymnasium, DE) | M6 | 354 | 291 | 31/31 | 16/16 | 1 | 0 | 0 |
 | Englisch (Gymnasium, DE) | M0 | 130 | 104 | 2/2 | 2/16 | 0 | 2 | 0 |
@@ -64,9 +64,9 @@ Rules version: curriculum-quality-v5
 | Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Hamburg Bildungsplan Gymnasium 2011 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 7 | 0 | 7 | 0% | - |  |
 | Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Mecklenburg-Vorpommern Rahmenplan 2022 Source-Extraction) | DE-MV | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 12 | 0 | 12 | 0% | - |  |
 | Biologie (Gymnasium, DE) | DE-NI - Biologie Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 1/1 URL; local cache 0/1 | 3/3 | - | 18 | 124 | 4 | 120 | 3% | - |  |
-| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Nordrhein-Westfalen KLP Gymnasium 2019 Source-Extraction) | DE-NW | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 11 | 0 | 0 | 0% | - |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Nordrhein-Westfalen KLP Gymnasium 2019 Source-Extraction) | DE-NW | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 11 | 0 | 1 | 0% | - |  |
 | Biologie (Gymnasium, DE) | DE-RP - Biologie Sekundarstufe I (Rheinland-Pfalz, Lehrplan BCP 2014 Source-Extraction) | DE-RP | 1/1 URL; local cache 0/1 | 3/3 | - | 12 | 47 | 2 | 45 | 4% | - |  |
-| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Schleswig-Holstein Fachanforderungen 2023 Source-Extraction) | DE-SH | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 9 | 0 | 0 | 0% | - |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Schleswig-Holstein Fachanforderungen 2023 Source-Extraction) | DE-SH | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 9 | 0 | 1 | 0% | - |  |
 | Biologie (Gymnasium, DE) | DE-SL - Biologie Sekundarstufe I (Saarland, Naturwissenschaften 5/6 2012 Source-Extraction) | DE-SL | 1/1 URL; local cache 0/1 | 3/3 | - | 9 | 75 | 1 | 74 | 1% | - |  |
 | Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Sachsen Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 10 | 0 | 10 | 0% | - |  |
 | Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Sachsen-Anhalt Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 11 | 0 | 11 | 0% | - |  |
@@ -361,7 +361,7 @@ Rules version: curriculum-quality-v5
 
 | Curriculum | Complete | DE source-view atoms | Raw atoms | Source-backed states | Extracted source goals | Registered source originals | Fully covered originals | Unregistered source goals | Extracted source atoms | Unregistered source atoms | Unsupported assignments | Unmapped source atoms | Partial | Error | Max source-backed view coverage |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Biologie (Gymnasium, DE) | 16/16 | 365 | 390 | 16 | 999 | 999 | 999 | 0 | 999 | 0 | 0 | 0 | 0 | 0 | 362 (100%) |
+| Biologie (Gymnasium, DE) | 16/16 | 385 | 412 | 16 | 999 | 999 | 999 | 0 | 999 | 0 | 0 | 0 | 0 | 0 | 364 (100%) |
 | Chemie (Gymnasium, DE) | 16/16 | 336 | 405 | 16 | 5865 | 5865 | 5865 | 0 | 5865 | 0 | 0 | 0 | 0 | 0 | 334 (100%) |
 | Chinesisch (Gymnasium, DE) | 2/16 | 170 | 181 | 2 | 399 | 399 | 399 | 0 | 399 | 0 | 0 | 0 | 0 | 0 | 170 (100%) |
 | Deutsch (Gymnasium, DE) | 16/16 | 268 | 291 | 16 | 6222 | 6222 | 6222 | 0 | 6222 | 0 | 0 | 0 | 0 | 0 | 268 (100%) |

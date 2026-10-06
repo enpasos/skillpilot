@@ -1,0 +1,226 @@
+{
+  "prepare": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "key": "d18-prepare",
+        "argv": [
+          "app/node_modules/.bin/tsx",
+          "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/native-input-root/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+          "prepare",
+          "--config",
+          "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/batch.config.json"
+        ],
+        "chunk_id": "5024c5",
+        "wall_time_seconds": 1.001143346,
+        "session_id": 96180,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "key": "d5-prepare",
+        "argv": [
+          "app/node_modules/.bin/tsx",
+          "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/native-input-root/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+          "prepare",
+          "--config",
+          "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/existing-five-bindings.batch.config.json"
+        ],
+        "chunk_id": "40e5af",
+        "wall_time_seconds": 1.001122644,
+        "session_id": 73574,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "key": "p13-materialize",
+        "argv": [
+          "app/node_modules/.bin/tsx",
+          "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/native-input-root/app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+          "--config",
+          "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/positive.thirteen.native-author.config.json",
+          "--candidates",
+          "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/positive-evidence.thirteen.candidates.json",
+          "--write"
+        ],
+        "chunk_id": "e2cdfb",
+        "wall_time_seconds": 0.6944831,
+        "exit_code": 0,
+        "original_token_count": 49,
+        "output": "Wrote curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/positive.thirteen.native-author.review.jsonl: 13 current AI candidate profile(s).\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "key": "p5-materialize",
+        "argv": [
+          "app/node_modules/.bin/tsx",
+          "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/native-input-root/app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+          "--config",
+          "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/positive.five-predecessor.native-author.config.json",
+          "--candidates",
+          "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/positive-evidence.five-predecessor.candidates.json",
+          "--write"
+        ],
+        "chunk_id": "335a53",
+        "wall_time_seconds": 0.56338151,
+        "exit_code": 0,
+        "original_token_count": 51,
+        "output": "Wrote curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/positive.five-predecessor.native-author.review.jsonl: 5 current AI candidate profile(s).\n"
+      }
+    }
+  ],
+  "checks": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "key": "p13-check",
+        "cmd": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/native-input-root/app/scripts/positiveGoalEvidenceReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/positive.thirteen.native-author.config.json",
+        "chunk_id": "571f50",
+        "wall_time_seconds": 0.76522852,
+        "exit_code": 0,
+        "original_token_count": 76,
+        "output": "# Positive Goal Evidence Review: biologie-ni-current-native-thirteen-author-20261005-v2\nScope: Thirteen inactive own bilingual NI author profiles, actual operator/stage boundaries; independent/human approval pending\nConfigured goals: 13\nApproved: 0\nNeeds human review: 13\nRejected: 0\nBlocking issues: 0\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "key": "p5-check",
+        "cmd": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/native-input-root/app/scripts/positiveGoalEvidenceReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/positive.five-predecessor.native-author.config.json",
+        "chunk_id": "faaf72",
+        "wall_time_seconds": 0.679489084,
+        "exit_code": 0,
+        "original_token_count": 70,
+        "output": "# Positive Goal Evidence Review: biologie-ni-five-predecessor-native-author-20261005-v2\nScope: Five inactive NI predecessor profiles:3 exact payload carry-forward +2 new bounded author profiles\nConfigured goals: 5\nApproved: 0\nNeeds human review: 5\nRejected: 0\nBlocking issues: 0\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "key": "atomicity13-check",
+        "cmd": "app/node_modules/.bin/tsx app/scripts/semanticAtomicityReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/atomicity.thirteen.native-author.config.json",
+        "chunk_id": "8a3281",
+        "wall_time_seconds": 0.352748614,
+        "exit_code": 0,
+        "original_token_count": 88,
+        "output": "# Semantic Atomicity Review: biologie-ni-thirteen-inactive-author-a-v2\nScope: 13 inactive current NI ordinary author candidates\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 13\nCurrent reviewed atomic: 13\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "key": "memory13-check",
+        "cmd": "app/node_modules/.bin/tsx app/scripts/memoryCardReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/memory.thirteen.native-author.config.json --write-report",
+        "chunk_id": "ccd266",
+        "wall_time_seconds": 0.326291035,
+        "exit_code": 0,
+        "original_token_count": 414,
+        "output": "# Memory Card Review: biologie-ni-thirteen-inactive-author-m-v2\nScope: 13 ordinary + 2 memory inactive NI candidates\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 13\nCurrent no-memory decisions: 11\nCurrent memory-required decisions: 2\nCurrent needs developer review: 0\nMemory goals in scope: 2\nTraced memory goals: 2\nKnown deck IDs: 3\nDeck files: 6\nCard rows: 54\nPrimary cards in scope: 10\nKept primary cards: 10\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 0\nComposition visibility scopes: 2\nMemory-required goals checked in views: 4\nMemory-required goals without visible memory node: 0\n\nMemory-required decisions\n- Heimische Laubbäume kennen und erkennen [87ce1746-9904-56ad-9705-ffabbd918c5b]: Inactive author proposal; independent current binding review pending. Die Artennamen mit den unterscheidenden kompakten Merkmalskombinationen müssen ohne Antwortliste verfügbar sein. Vier neue Karten fehlen im bestehenden Kerndeck und bilden genau diese Auswahl ab.\n- Merkmale und Gemeinsamkeiten der fünf Wirbeltiergruppen nennen [9425347d-25bd-5095-9198-7574f255c938]: Inactive author proposal; independent current binding review pending. Der Operator nennen verlangt verfügbare kompakte Merkmale für alle fünf Gruppen und gemeinsame Merkmale. Das bestehende Kerndeck enthält diese sechs Karten nicht.\n\nWrote curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/memory.thirteen.native-author.report.md\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "key": "visibility-actual",
+        "cmd": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/verify_memory_visibility.mts",
+        "chunk_id": "28cace",
+        "wall_time_seconds": 0.46599201,
+        "exit_code": 0,
+        "original_token_count": 33,
+        "output": "{\"inactiveViewsCompiled\":2,\"actualVisiblePairs\":4,\"negativeMissingMemoryWitnesses\":2,\"scopeErrors\":0,\"currentStrictNetIncrease\":0}\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "key": "protect49",
+        "cmd": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/verify_current_protection.mts 49",
+        "chunk_id": "eeceb3",
+        "wall_time_seconds": 1.000935138,
+        "session_id": 67583,
+        "original_token_count": 0,
+        "output": ""
+      }
+    }
+  ],
+  "commands": [
+    [
+      "d18-prepare",
+      [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/native-input-root/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "prepare",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/batch.config.json"
+      ]
+    ],
+    [
+      "d5-prepare",
+      [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/native-input-root/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "prepare",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/existing-five-bindings.batch.config.json"
+      ]
+    ],
+    [
+      "p13-materialize",
+      [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/native-input-root/app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/positive.thirteen.native-author.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/positive-evidence.thirteen.candidates.json",
+        "--write"
+      ]
+    ],
+    [
+      "p5-materialize",
+      [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/native-input-root/app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/positive.five-predecessor.native-author.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/positive-evidence.five-predecessor.candidates.json",
+        "--write"
+      ]
+    ]
+  ],
+  "checkCommands": [
+    [
+      "p13-check",
+      "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/native-input-root/app/scripts/positiveGoalEvidenceReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/positive.thirteen.native-author.config.json"
+    ],
+    [
+      "p5-check",
+      "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/native-input-root/app/scripts/positiveGoalEvidenceReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/positive.five-predecessor.native-author.config.json"
+    ],
+    [
+      "atomicity13-check",
+      "app/node_modules/.bin/tsx app/scripts/semanticAtomicityReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/atomicity.thirteen.native-author.config.json"
+    ],
+    [
+      "memory13-check",
+      "app/node_modules/.bin/tsx app/scripts/memoryCardReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/memory.thirteen.native-author.config.json --write-report"
+    ],
+    [
+      "visibility-actual",
+      "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/verify_memory_visibility.mts"
+    ],
+    [
+      "protect49",
+      "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/verify_current_protection.mts 49"
+    ]
+  ]
+}

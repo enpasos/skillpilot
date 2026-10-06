@@ -1,0 +1,61 @@
+{
+  "atUTC": "2026-10-05T23:09:02.597797+00:00",
+  "status": "All46 actual post-application native Biology383/Chemistry378 totals and complete target-IDsets agree with whole unchanged Java expected-count contract; independent46 audit passed",
+  "measurement": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-current-layer-a-inventory-projections-v2/final-projection-bio383-chem378.actual.json",
+    "sha256": "6f3e34158e137eedb0c71cb568619d3ee48f9de362504f8e11e0901e7a88dba2",
+    "bytes": 194100
+  },
+  "independentTechnicalAudit": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-current-layer-a-inventory-projections-v2/independent-projection46-audit/bio383-chem378.final.independent.actual.json",
+    "sha256": "07154c2fb0c78e464982259b8434e251a4727d2369a9f12487819d86faeff323",
+    "bytes": 32077
+  },
+  "reviewedBackendContracts": [
+    {
+      "source": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+      "sourceSHA256": "b90e89fc74f2c048911daae8869473eb777c267ba8f9d8a55026bfd9bcc46a13",
+      "lineStart": 1485,
+      "lineEnd": 1556,
+      "retainedExcerpt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-current-layer-a-inventory-projections-v2/LearnerControllerIntegrationTest.reviewed-contract.snapshot.txt",
+      "retainedExcerptSHA256": "c9441ca51b2087a99fc0245b8420de58624171be4742715799a2ba34551df76f"
+    },
+    {
+      "source": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "sourceSHA256": "6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+      "lineStart": 8268,
+      "lineEnd": 8311,
+      "retainedExcerpt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-current-layer-a-inventory-projections-v2/LearnerService.reviewed-counter-contract.snapshot.txt",
+      "retainedExcerptSHA256": "71bafff5ebc32baa121dedeec21f06ec6e50fced4fc5fa31420972e037f5dc22"
+    },
+    {
+      "source": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+      "sourceSHA256": "9a6aa635641b463967211cbc149bfa23d4b3fa24ff78a5350b36c3f05dba3b96",
+      "lineStart": 539,
+      "lineEnd": 640,
+      "retainedExcerpt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-current-layer-a-inventory-projections-v2/CompositionViewService.reviewed-scope-contract.snapshot.txt",
+      "retainedExcerptSHA256": "b5c7724c727336a2875e6441a318de3c49e3b237af0ee5743f3ae9df2988e0c3"
+    }
+  ],
+  "wholeJavaBeforeSnapshot": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-current-layer-a-inventory-projections-v2/LearnerControllerIntegrationTest.before.snapshot.txt",
+    "sha256": "b90e89fc74f2c048911daae8869473eb777c267ba8f9d8a55026bfd9bcc46a13",
+    "bytes": 107365
+  },
+  "actualJavaTestFile": {
+    "path": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+    "sha256": "b90e89fc74f2c048911daae8869473eb777c267ba8f9d8a55026bfd9bcc46a13",
+    "bytes": 107365
+  },
+  "totalComparedCases": 46,
+  "allExpectedTotalsMatch": true,
+  "allWholeTargetIDSetsEqualPriorActualMeasurement": true,
+  "javaExpectedCounterChanges": 0,
+  "compositionViewWrites": 0,
+  "backendTestsRun": false,
+  "runtimeCodeChanged": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "newScientificClosures": 0,
+  "restoredScientificBindings": 0
+}

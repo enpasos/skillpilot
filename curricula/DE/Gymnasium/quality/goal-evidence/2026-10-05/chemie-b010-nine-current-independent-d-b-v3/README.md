@@ -1,0 +1,13 @@
+# B010 independent D-B: current v3 exact carries and two actual page rechecks
+
+**9 KEEP candidate records**: seven exact native-input carries from this reviewer’s frozen B-v2 dossier; two targeted actual corrected-image page/context reviews. No A records read. No new historical full reviews, operative integration, M7 closure, human approval or human trial claimed.
+
+The 104 author-frozen files and 21 prior B-review artifacts remain byte-exact. All seven carried native review-input goals are exactly equal, including canonical semantics, DE/EN text, full page payload, image and sources/context; their goal and page fingerprints remain identical. Only 16a and 1f have new image/alt/page bindings; their title/descriptions, goal fingerprints and sources/context remain equal. The native book/model campaign metadata is current v3, and each carry is explicitly disclosed in the record rationale.
+
+Two fresh PDF pages (physical 6/11) and two actual HTML articles were independently captured and viewed. Current reviewed PNG bytes, new exact approved alts, native source digests and extracted PDF rendered JPEG digests match. All descriptions, breadcrumbs and prerequisites are visible. Corrected sodium is on the upper water surface without a flame; corrected phosphate no longer points to nitrate. Additional removed uptake arrows are honestly reflected in the 1f alt. These are substantive actual image/page checks, not mechanical hash repairs. Prior defect observations, old JPGs and first held PNGs remain historical evidence.
+
+The old stale source-atlas receipt is resolved by a genuinely newly generated native atlas: all **103** raw input byte bindings, including the current v3 Canon SHA, were independently verified. Existing source/operator reviews are carried where unchanged; atlas freshness is not claimed as a new source-science review. Native generation/check terminal logs remain in the untouched author dossier.
+
+The first local HTML capture attempted a file URL and could not resolve root /assets paths; its failed helper is retained with the actual failure receipt. The second local routed capture used exact unchanged HTML and image bytes, actually exited 0, and its receipt records every loaded image SHA. This is local evidence, not remote host or human acceptance.
+
+Native round validator results are recorded separately; results stay `candidate` / `ai_candidate` and positive-understanding-evidence-v2 expectations are authored, not observed learner performance. 950 and d726 use exact prior reviewed page bindings; no repeat science review. H₂/Halogen/HCl and 722/e0 source holds remain untouched. Active Canon, QA, Registry, Ledger and protected subjects have no writes from this review.

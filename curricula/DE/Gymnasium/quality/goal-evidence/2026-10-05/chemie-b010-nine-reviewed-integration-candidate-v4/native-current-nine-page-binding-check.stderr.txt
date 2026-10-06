@@ -1,0 +1,24 @@
+
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+Error: Transform failed with 5 errors:
+/home/enpasos/projects/skillpilot/tmp/chemie-b010-five-corrected-native-isolated-20261005-v3/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-nine-reviewed-integration-candidate-v4/check-current-native-nine-page-bindings.ts:9:30: ERROR: Top-level await is currently not supported with the "cjs" output format
+/home/enpasos/projects/skillpilot/tmp/chemie-b010-five-corrected-native-isolated-20261005-v3/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-nine-reviewed-integration-candidate-v4/check-current-native-nine-page-bindings.ts:10:28: ERROR: Top-level await is currently not supported with the "cjs" output format
+/home/enpasos/projects/skillpilot/tmp/chemie-b010-five-corrected-native-isolated-20261005-v3/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-nine-reviewed-integration-candidate-v4/check-current-native-nine-page-bindings.ts:11:13: ERROR: Top-level await is currently not supported with the "cjs" output format
+/home/enpasos/projects/skillpilot/tmp/chemie-b010-five-corrected-native-isolated-20261005-v3/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-nine-reviewed-integration-candidate-v4/check-current-native-nine-page-bindings.ts:16:0: ERROR: Top-level await is currently not supported with the "cjs" output format
+/home/enpasos/projects/skillpilot/tmp/chemie-b010-five-corrected-native-isolated-20261005-v3/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-nine-reviewed-integration-candidate-v4/check-current-native-nine-page-bindings.ts:18:0: ERROR: Top-level await is currently not supported with the "cjs" output format
+    at failureErrorWithLog (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:1467:15)
+    at /home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:736:50
+    at responseCallbacks.<computed> (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:603:9)
+    at handleIncomingPacket (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:658:12)
+    at Socket.readFromStdout (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:581:7)
+    at Socket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:191:23) {
+  name: 'TransformError'
+}
+
+Node.js v20.20.2

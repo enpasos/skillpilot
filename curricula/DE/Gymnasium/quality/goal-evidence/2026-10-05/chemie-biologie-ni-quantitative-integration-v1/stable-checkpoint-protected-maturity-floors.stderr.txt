@@ -1,0 +1,21 @@
+/home/enpasos/projects/skillpilot/app/scripts/checkCurriculumMaturityFloors.ts:107
+  throw new Error([
+        ^
+
+
+Error: Curriculum maturity regression detected by canonical-gymnasium-maturity-floors-v1.
+Chemie [c436b994-8f44-5134-b9f8-0c9f5d6a5ba0]: current M1 is below protected floor M6
+  global CQR-004 fail: 3 upper-secondary course-level mapping issue(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed as LK-only.
+    - curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-ni-quantitative-integration-v1/chemistry-attempt.before-stable-restoration/curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.review.json: missing source-extraction file curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json
+    - curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-quantitative-atomic-split-current-author-candidate-v1/prospective-input-tree/curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.review.json: canonical goal 0d59b62e-d3f9-5969-b961-0c5e26316c04 is missing
+    - curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-quantitative-reviewed-integration-candidate-v1/prospective-input-tree/curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.review.json: missing source-extraction file curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json
+    - curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-quantitative-reviewed-integration-candidate-v1/source-metadata-before-current-typographic-correction/curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.review.json: missing source-extraction file curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json
+    - curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-seven-reviewed-integration-candidate-v3/prospective-input-tree/curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-paraben-use-author-proposal-20261005-v1.review.json: canonical goal 0d59b62e-d3f9-5969-b961-0c5e26316c04 is missing
+    - curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-six-source-operator-remediation-current-candidate-v1/prospective-input-tree/curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-paraben-use-author-proposal-20261005-v1.review.json: canonical goal 0d59b62e-d3f9-5969-b961-0c5e26316c04 is missing
+Restore the fachliche quality gates or obtain an explicit product-owner decision before changing the protected floor.
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/checkCurriculumMaturityFloors.ts:107:9)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2

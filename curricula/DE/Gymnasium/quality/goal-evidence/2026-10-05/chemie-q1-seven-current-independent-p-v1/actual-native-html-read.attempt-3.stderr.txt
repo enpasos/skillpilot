@@ -1,0 +1,45 @@
+browserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /home/enpasos/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/tmp/playwright_chromiumdev_profile-tOphhA --remote-debugging-pipe --no-startup-window
+<launched> pid=977266
+[pid=977266][err] [1005/230631.138507:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[pid=977266][err] Received signal 11 SI_KERNEL000000000000
+[pid=977266][err]  Possibly a General Protection Fault, can be due to a non-canonical address dereference. See "Intel 64 and IA-32 Architectures Software Developer’s Manual", Volume 1, Section 3.3.7.1.
+[pid=977266][err] #0 0x591968b1cf5a (/home/enpasos/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell+0x3954f59)
+[pid=977266][err] #1 0x59196bf4ed24 (/home/enpasos/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell+0x6d86d23)
+[pid=977266][err] #2 0x7fea84042520 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x4251f)
+[pid=977266][err]   r8: 00007fea8421bd20  r9: 0000000000000000 r10: 0000000000000021 r11: 0000000000000293
+[pid=977266][err]  r12: 00a4000000000000 r13: 0000000000000008 r14: 0000000000000006 r15: 00007fea841d8513
+[pid=977266][err]   di: 00007fea841d8511  si: 0000246800004018  bp: 000000000000414c  bx: 0000246800008a00
+[pid=977266][err]   dx: 00007fea841d8511  ax: 0000000000000008  cx: 00000000fffffff8  sp: 00007fea7fff98b0
+[pid=977266][err]   ip: 00007fea84044c1d efl: 0000000000010206 cgf: 002b000000000033 erf: 0000000000000000
+[pid=977266][err]  trp: 000000000000000d msk: 0000000000000000 cr2: 0000000000000000
+[pid=977266][err] [end of stack trace]
+Call log:
+[2m  - <launching> /home/enpasos/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/tmp/playwright_chromiumdev_profile-tOphhA --remote-debugging-pipe --no-startup-window[22m
+[2m  - <launched> pid=977266[22m
+[2m  - [pid=977266][err] [1005/230631.138507:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory[22m
+[2m  - [pid=977266][err] Received signal 11 SI_KERNEL000000000000[22m
+[2m  - [pid=977266][err]  Possibly a General Protection Fault, can be due to a non-canonical address dereference. See "Intel 64 and IA-32 Architectures Software Developer’s Manual", Volume 1, Section 3.3.7.1.[22m
+[2m  - [pid=977266][err] #0 0x591968b1cf5a (/home/enpasos/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell+0x3954f59)[22m
+[2m  - [pid=977266][err] #1 0x59196bf4ed24 (/home/enpasos/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell+0x6d86d23)[22m
+[2m  - [pid=977266][err] #2 0x7fea84042520 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x4251f)[22m
+[2m  - [pid=977266][err]   r8: 00007fea8421bd20  r9: 0000000000000000 r10: 0000000000000021 r11: 0000000000000293[22m
+[2m  - [pid=977266][err]  r12: 00a4000000000000 r13: 0000000000000008 r14: 0000000000000006 r15: 00007fea841d8513[22m
+[2m  - [pid=977266][err]   di: 00007fea841d8511  si: 0000246800004018  bp: 000000000000414c  bx: 0000246800008a00[22m
+[2m  - [pid=977266][err]   dx: 00007fea841d8511  ax: 0000000000000008  cx: 00000000fffffff8  sp: 00007fea7fff98b0[22m
+[2m  - [pid=977266][err]   ip: 00007fea84044c1d efl: 0000000000010206 cgf: 002b000000000033 erf: 0000000000000000[22m
+[2m  - [pid=977266][err]  trp: 000000000000000d msk: 0000000000000000 cr2: 0000000000000000[22m
+[2m  - [pid=977266][err] [end of stack trace][22m
+[2m  - [pid=977266] <gracefully close start>[22m
+[2m  - [pid=977266] <kill>[22m
+[2m  - [pid=977266] <will force kill>[22m
+[2m  - [pid=977266][err] [0100/000000.157056:WARNING:sandbox/policy/linux/sandbox_linux.cc:405] InitializeSandbox() called with multiple threads in process gpu-process.[22m
+[2m  - [pid=977266] <process did exit: exitCode=null, signal=SIGSEGV>[22m
+[2m  - [pid=977266] starting temporary directories cleanup[22m
+[2m  - [pid=977266] finished temporary directories cleanup[22m
+[2m  - [pid=977266] <gracefully close end>[22m
+
+    at /home/enpasos/projects/skillpilot/tmp/chemie-q1-seven-current-independent-p-v1-native-root/read-frozen-html.cjs:17:28
+    at Object.<anonymous> (/home/enpasos/projects/skillpilot/tmp/chemie-q1-seven-current-independent-p-v1-native-root/read-frozen-html.cjs:54:3)

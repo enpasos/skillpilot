@@ -1,0 +1,101 @@
+        String requestedSchoolForm = normalizeValue(normalizedRequestedScope.get("schoolForm"));
+        String authoredSchoolForm = normalizeValue(asString(authoredScope.get("schoolForm")));
+        String requestedStage = normalizeValue(normalizedRequestedScope.get(STAGE_KEY));
+        String authoredStage = normalizeValue(asString(authoredScope.get(STAGE_KEY)));
+        return StringUtils.hasText(requestedSchoolForm)
+                && requestedSchoolForm.equals(authoredSchoolForm)
+                && StringUtils.hasText(requestedStage)
+                && requestedStage.equals(authoredStage);
+    }
+
+    /**
+     * Resolves a committed learner scope without weakening its authored stage
+     * semantics.
+     *
+     * <p>Repository composition views may deliberately omit Level-2
+     * dimensions that do not narrow their applicability, for example a
+     * DE-wide Sek-I view or a duration-neutral Sek-II view. Such a reviewed
+     * scope is a compatible authored subset, not a heuristic fallback. School
+     * form and stage must still match exactly, and unknown dimensions remain
+     * fail-closed. Package offering identity remains exact in
+     * {@link PackageCompositionViewState}; only this learner adapter selects
+     * the most specific compatible authored offering.</p>
+     */
+    public Map<String, Object> findLearnerScopeView(
+            String landscapeId,
+            Map<String, String> requestedScope) {
+        Map<String, String> normalizedRequestedScope =
+                normalizeScope(requestedScope == null ? Map.of() : requestedScope);
+        if (!isConstrainedLearnerScope(normalizedRequestedScope)) {
+            return null;
+        }
+        if (packageState == null) {
+            return findRepositoryMatchingView(
+                    landscapeId,
+                    normalizedRequestedScope,
+                    true);
+        }
+
+        if (!StringUtils.hasText(landscapeId)) {
+            return null;
+        }
+        List<PackageOfferingMatch> matches = packageState.offeringsByLandscapeId()
+                .getOrDefault(landscapeId.trim(), List.of())
+                .stream()
+                .map(offering -> new PackageOfferingMatch(
+                        offering,
+                        scoreScopeMatch(offering.scope(), normalizedRequestedScope)))
+                .filter(match -> match.score() != null)
+                .filter(match -> hasExactLearnerAnchorScope(
+                        match.offering().scope(),
+                        normalizedRequestedScope))
+                .sorted(Comparator
+                        .<PackageOfferingMatch>comparingInt(match -> match.score().scopeSize())
+                        .reversed()
+                        .thenComparingInt(match -> match.score().courseFallbackCount())
+                        .thenComparingInt(match -> match.score().coursePreferenceRank())
+                        .thenComparing(match -> match.offering().offeringId()))
+                .toList();
+        if (matches.isEmpty()) {
+            return null;
+        }
+        return packageState.resolveOfferingDocument(
+                matches.get(0).offering().offeringId());
+    }
+
+    private static boolean isConstrainedLearnerScope(
+            Map<String, String> normalizedRequestedScope) {
+        return LEARNER_SCOPE_DIMENSIONS.containsAll(normalizedRequestedScope.keySet())
+                && StringUtils.hasText(normalizedRequestedScope.get("schoolForm"))
+                && StringUtils.hasText(normalizedRequestedScope.get(STAGE_KEY))
+                && !"ALL".equals(normalizeValue(
+                        normalizedRequestedScope.get("jurisdiction")));
+    }
+
+    public Map<String, Object> findViewById(String viewId) {
+        if (!StringUtils.hasText(viewId)) {
+            return null;
+        }
+        String normalizedViewId = viewId.trim();
+        if (packageState != null) {
+            return packageState.findViewDocumentById(normalizedViewId);
+        }
+        if (normalizedViewId.startsWith("merged:")) {
+            List<Map<String, Object>> sourceViews = Arrays.stream(normalizedViewId.substring("merged:".length()).split("\\+"))
+                    .map(String::trim)
+                    .filter(StringUtils::hasText)
+                    .map(this::findSingleViewById)
+                    .filter(Objects::nonNull)
+                    .toList();
+            if (sourceViews.isEmpty()) {
+                return null;
+            }
+            if (sourceViews.size() == 1) {
+                return Collections.unmodifiableMap(new LinkedHashMap<>(sourceViews.get(0)));
+            }
+            return mergeViews(
+                    asString(sourceViews.get(0).get("landscapeId")),
+                    asStringMap(sourceViews.get(0).get("scope")),
+                    sourceViews);
+        }
+        return findSingleViewById(normalizedViewId);

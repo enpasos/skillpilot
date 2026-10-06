@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:588bad85c33b1ece7a8c1f3f3659d83450a7c7b098b88dd74fa968b11cdec247",
+  "reviewInputFingerprint": "sha256:74cd6d52b80cf963494ad617917a48eaee89bd2e1be91faa67a1bf9aa38dd324",
+  "goalCount": 7,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-ephase-seven-current365-20261005-v2-a",
+      "roundId": "biologie-ephase-seven-current365-20261005-v2-first-pass-a",
+      "independenceGroupId": "biologie-ephase-seven-current365-20261005-v2-independent-a",
+      "runIds": [
+        "biologie-ephase-seven-current365-independent-d-a-20261005-v2"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::Codex reviewer; exact model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-ephase-seven-current365-20261005-v2-b",
+      "roundId": "biologie-ephase-seven-current365-20261005-v2-first-pass-b",
+      "independenceGroupId": "biologie-ephase-seven-current365-20261005-v2-independent-b",
+      "runIds": [
+        "biologie-ephase-seven-root-independent-b-current365-20261005-v1"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::Inherited Codex session; exact runtime model identifier not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI Codex"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 7,
+    "unavailable": 0,
+    "requiresSynthesis": 7
+  },
+  "goals": [
+    {
+      "goalId": "56663bb4-dad6-5ffd-a486-00f29600ef66",
+      "firstRecordId": "biologie-ephase-seven-current365-independent-d-a-20261005-v2.record-001",
+      "secondRecordId": "bio-ephase-seven-root-b-current365-v1-56663bb4-dad6-5ffd-a486-00f29600ef66",
+      "firstRunId": "biologie-ephase-seven-current365-independent-d-a-20261005-v2",
+      "secondRunId": "biologie-ephase-seven-root-independent-b-current365-20261005-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9d931642-2287-5277-adb2-082403ad25af",
+      "firstRecordId": "biologie-ephase-seven-current365-independent-d-a-20261005-v2.record-002",
+      "secondRecordId": "bio-ephase-seven-root-b-current365-v1-9d931642-2287-5277-adb2-082403ad25af",
+      "firstRunId": "biologie-ephase-seven-current365-independent-d-a-20261005-v2",
+      "secondRunId": "biologie-ephase-seven-root-independent-b-current365-20261005-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a545b28f-81de-5495-a537-c81cb66daaba",
+      "firstRecordId": "biologie-ephase-seven-current365-independent-d-a-20261005-v2.record-003",
+      "secondRecordId": "bio-ephase-seven-root-b-current365-v1-a545b28f-81de-5495-a537-c81cb66daaba",
+      "firstRunId": "biologie-ephase-seven-current365-independent-d-a-20261005-v2",
+      "secondRunId": "biologie-ephase-seven-root-independent-b-current365-20261005-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "861fbc18-06a1-56e3-8619-fd47534d7a5d",
+      "firstRecordId": "biologie-ephase-seven-current365-independent-d-a-20261005-v2.record-004",
+      "secondRecordId": "bio-ephase-seven-root-b-current365-v1-861fbc18-06a1-56e3-8619-fd47534d7a5d",
+      "firstRunId": "biologie-ephase-seven-current365-independent-d-a-20261005-v2",
+      "secondRunId": "biologie-ephase-seven-root-independent-b-current365-20261005-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7a79fda6-d629-5aea-9305-fc19f174bc4a",
+      "firstRecordId": "biologie-ephase-seven-current365-independent-d-a-20261005-v2.record-005",
+      "secondRecordId": "bio-ephase-seven-root-b-current365-v1-7a79fda6-d629-5aea-9305-fc19f174bc4a",
+      "firstRunId": "biologie-ephase-seven-current365-independent-d-a-20261005-v2",
+      "secondRunId": "biologie-ephase-seven-root-independent-b-current365-20261005-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e566ae2f-1294-55c0-ba4c-6aeb4954118c",
+      "firstRecordId": "biologie-ephase-seven-current365-independent-d-a-20261005-v2.record-006",
+      "secondRecordId": "bio-ephase-seven-root-b-current365-v1-e566ae2f-1294-55c0-ba4c-6aeb4954118c",
+      "firstRunId": "biologie-ephase-seven-current365-independent-d-a-20261005-v2",
+      "secondRunId": "biologie-ephase-seven-root-independent-b-current365-20261005-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "dd196715-a463-5379-8cdb-7a951372f5fd",
+      "firstRecordId": "biologie-ephase-seven-current365-independent-d-a-20261005-v2.record-007",
+      "secondRecordId": "bio-ephase-seven-root-b-current365-v1-dd196715-a463-5379-8cdb-7a951372f5fd",
+      "firstRunId": "biologie-ephase-seven-current365-independent-d-a-20261005-v2",
+      "secondRunId": "biologie-ephase-seven-root-independent-b-current365-20261005-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

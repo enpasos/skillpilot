@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import './testDeepUnderstandingSupersessionChains'
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'

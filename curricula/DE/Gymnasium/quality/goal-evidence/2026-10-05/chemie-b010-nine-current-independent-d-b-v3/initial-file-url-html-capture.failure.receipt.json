@@ -1,0 +1,9 @@
+{
+  "helperPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-nine-current-independent-d-b-v3/capture-two-native-html-pages.mjs",
+  "helperSHA256": "e12f820f5a9d3bbde030ec99ae8e4fc48358e4b7c52a738d06df2b6ab26307f1",
+  "actualExitCode": 1,
+  "actualError": "page.waitForFunction: Timeout 30000ms exceeded at helper line 16",
+  "causeObserved": "Frozen HTML references /assets paths; file URL has no local asset root",
+  "resolution": "Second retained helper serves exact frozen unchanged HTML plus exact local future image files through bounded local Playwright route. No HTML or native renderer changes. Second command actually exit 0 and native HTML receipt records exact loaded asset SHAs.",
+  "activeWrites": 0
+}

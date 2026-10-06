@@ -1,0 +1,34 @@
+{
+  "checkedAtUTC": "2026-10-05T21:29:14.239232+00:00",
+  "command": [
+    "python",
+    "tmp/biologie-ni-eighteen-current-independent-p-20261005-v1/finalize_own_native_p.py"
+  ],
+  "commandWorkingDirectory": "/home/enpasos/projects/skillpilot",
+  "helperSHA256": "a119c8429608cf37058bd2efb6fc2ea9f2c182b62820d67c0a760a5de7356f3d",
+  "checks": [
+    {
+      "schema": "contracts/goal-evidence/v2/goal-evidence-review-config.schema.json",
+      "schemaSHA256": "7233823673664115846059a5aab3eaa600c504f5975a9b24f8b7cf860e8b946d",
+      "input": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-eighteen-current-independent-p-v1/positive.eighteen.current.config.json",
+      "inputSHA256": "db60f709bf93ea5750b2a956dcd6a67ac349c978ca80f033e45f6ad72ac64f01",
+      "rowsPassed": 1,
+      "exitCode": 0,
+      "unchangedExistingSchema": true
+    },
+    {
+      "schema": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaSHA256": "331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944",
+      "input": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-eighteen-current-independent-p-v1/positive.eighteen.current.review.jsonl",
+      "inputSHA256": "9c5ea6730103488b412bfd173869d26ad10de893781c93b9eb85c34854355fcb",
+      "rowsPassed": 18,
+      "exitCode": 0,
+      "unchangedExistingSchema": true
+    }
+  ],
+  "ownFilesJSONParseCount": 12,
+  "ownFilesJSONLRowParseCount": 18,
+  "scientificResolutionFromSchema": false,
+  "noValidatorExceptions": true,
+  "activeWrites": 0
+}

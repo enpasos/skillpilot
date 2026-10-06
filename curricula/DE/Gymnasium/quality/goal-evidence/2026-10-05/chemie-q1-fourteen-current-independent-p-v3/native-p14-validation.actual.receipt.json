@@ -1,0 +1,49 @@
+{
+  "status": "PASS_inactive_native_candidate_validation",
+  "commands": [
+    {
+      "name": "p14-native-materialize",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "p.config.json",
+        "--candidates",
+        "p.candidates.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-fourteen-current-independent-p-v3/native-isolated",
+      "startedAt": "2026-10-05T18:12:24.573115+00:00",
+      "completedAt": "2026-10-05T18:12:25.248942+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-fourteen-current-independent-p-v3/p14-native-materialize.stdout.txt",
+      "stdoutSHA256": "ea178455a0a6ce48d4ac3ff287fb62c8058f7a387e69a2525d11a0d26fc7f3ff",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-fourteen-current-independent-p-v3/p14-native-materialize.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "p14-native-check",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=p.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-fourteen-current-independent-p-v3/native-isolated",
+      "startedAt": "2026-10-05T18:12:25.249265+00:00",
+      "completedAt": "2026-10-05T18:12:25.782314+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-fourteen-current-independent-p-v3/p14-native-check.stdout.txt",
+      "stdoutSHA256": "a385ff7daa5efb0ca7e6d9382f0708388e53e8cfe9eb446216256ba3c7f78ca1",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-fourteen-current-independent-p-v3/p14-native-check.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "fullGlobalQSRun": false,
+  "candidateProfiles": 14,
+  "applicationCases": 28,
+  "humanApproval": false,
+  "strictClosureClaim": 0,
+  "newCanonicalOperativeBindingsPendingRebase": true,
+  "activeWrites": 0
+}

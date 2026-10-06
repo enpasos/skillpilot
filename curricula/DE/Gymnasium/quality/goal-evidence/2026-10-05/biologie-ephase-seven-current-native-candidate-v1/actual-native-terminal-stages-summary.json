@@ -1,0 +1,252 @@
+{
+  "requiredTerminalStages": [
+    {
+      "stage": "source-atlas-materialization",
+      "recordedAtUTC": "2026-10-05T19:02:10.784554+00:00",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-ephase-seven-current-native-isolated-20261005-v1",
+      "exitCode": 0,
+      "elapsedSeconds": 0.8728085129987448,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/source-atlas-materialization.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/source-atlas-materialization.stderr.txt",
+      "humanApproval": false,
+      "activeWrites": 0
+    },
+    {
+      "stage": "source-atlas-check",
+      "recordedAtUTC": "2026-10-05T19:02:48.967509+00:00",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json",
+        "--check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-ephase-seven-current-native-isolated-20261005-v1",
+      "exitCode": 0,
+      "elapsedSeconds": 1.167694167001173,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/source-atlas-check.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/source-atlas-check.stderr.txt",
+      "humanApproval": false,
+      "activeWrites": 0
+    },
+    {
+      "stage": "d-seven-prepare",
+      "recordedAtUTC": "2026-10-05T19:04:14.677909+00:00",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "prepare",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/batch.config.json"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-ephase-seven-current-native-isolated-20261005-v1",
+      "exitCode": 0,
+      "elapsedSeconds": 7.227491735000513,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/d-seven-prepare.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/d-seven-prepare.stderr.txt",
+      "humanApproval": false,
+      "activeWrites": 0
+    },
+    {
+      "stage": "d-seven-check",
+      "recordedAtUTC": "2026-10-05T19:06:32.615655+00:00",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/batch.config.json"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-ephase-seven-current-native-isolated-20261005-v1",
+      "exitCode": 0,
+      "elapsedSeconds": 0.8081001829996239,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/d-seven-check.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/d-seven-check.stderr.txt",
+      "humanApproval": false,
+      "activeWrites": 0
+    },
+    {
+      "stage": "positive-author-materialization",
+      "recordedAtUTC": "2026-10-05T19:02:11.393877+00:00",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/positive.validation-only.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/positive-evidence.candidates.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-ephase-seven-current-native-isolated-20261005-v1",
+      "exitCode": 0,
+      "elapsedSeconds": 0.6431976720050443,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/positive-author-materialization.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/positive-author-materialization.stderr.txt",
+      "humanApproval": false,
+      "activeWrites": 0
+    },
+    {
+      "stage": "positive-author-check",
+      "recordedAtUTC": "2026-10-05T19:02:48.642370+00:00",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/positive.validation-only.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-ephase-seven-current-native-isolated-20261005-v1",
+      "exitCode": 0,
+      "elapsedSeconds": 0.8477604789950419,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/positive-author-check.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/positive-author-check.stderr.txt",
+      "humanApproval": false,
+      "activeWrites": 0
+    },
+    {
+      "stage": "atomicity-seven-existing-check",
+      "recordedAtUTC": "2026-10-05T19:02:12.389830+00:00",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/atomicity.seven-existing.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-ephase-seven-current-native-isolated-20261005-v1",
+      "exitCode": 0,
+      "elapsedSeconds": 0.34110895299818367,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/atomicity-seven-existing-check.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/atomicity-seven-existing-check.stderr.txt",
+      "humanApproval": false,
+      "activeWrites": 0
+    },
+    {
+      "stage": "atomicity-full-existing-check",
+      "recordedAtUTC": "2026-10-05T19:02:48.339605+00:00",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/full-atomicity.existing.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-ephase-seven-current-native-isolated-20261005-v1",
+      "exitCode": 0,
+      "elapsedSeconds": 0.5318302800005767,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/atomicity-full-existing-check.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/atomicity-full-existing-check.stderr.txt",
+      "humanApproval": false,
+      "activeWrites": 0
+    },
+    {
+      "stage": "memory-shared-origin-closure-check",
+      "recordedAtUTC": "2026-10-05T19:06:31.708937+00:00",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/memory.shared-origin-closure.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-ephase-seven-current-native-isolated-20261005-v1",
+      "exitCode": 0,
+      "elapsedSeconds": 0.2873520430002827,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/memory-shared-origin-closure-check.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/memory-shared-origin-closure-check.stderr.txt",
+      "humanApproval": false,
+      "activeWrites": 0
+    },
+    {
+      "stage": "memory-full-existing-check",
+      "recordedAtUTC": "2026-10-05T19:02:29.993471+00:00",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/full-memory.existing.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-ephase-seven-current-native-isolated-20261005-v1",
+      "exitCode": 0,
+      "elapsedSeconds": 0.3424756949971197,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/memory-full-existing-check.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/memory-full-existing-check.stderr.txt",
+      "humanApproval": false,
+      "activeWrites": 0
+    },
+    {
+      "stage": "qa-current-check",
+      "recordedAtUTC": "2026-10-05T19:02:48.936275+00:00",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject=biologie",
+        "--check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-ephase-seven-current-native-isolated-20261005-v1",
+      "exitCode": 0,
+      "elapsedSeconds": 1.1262417760008248,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/qa-current-check.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/qa-current-check.stderr.txt",
+      "humanApproval": false,
+      "activeWrites": 0
+    },
+    {
+      "stage": "current-protection",
+      "recordedAtUTC": "2026-10-05T19:04:14.057479+00:00",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/reportDeepUnderstandingRollout.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/future-protection-biology-only.config.json",
+        "--mode=check",
+        "--format=json"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-ephase-seven-current-native-isolated-20261005-v1",
+      "exitCode": 0,
+      "elapsedSeconds": 5.444287446007365,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/current-protection.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/current-protection.stderr.txt",
+      "humanApproval": false,
+      "activeWrites": 0
+    },
+    {
+      "stage": "original-sources",
+      "recordedAtUTC": "2026-10-05T19:06:33.613099+00:00",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/compile-original-sources.mts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-ephase-seven-current-native-isolated-20261005-v1",
+      "exitCode": 0,
+      "elapsedSeconds": 1.0321360910020303,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/original-sources.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/original-sources.stderr.txt",
+      "humanApproval": false,
+      "activeWrites": 0
+    },
+    {
+      "stage": "views-and-context",
+      "recordedAtUTC": "2026-10-05T19:06:34.546255+00:00",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/check-views-and-context.mts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-ephase-seven-current-native-isolated-20261005-v1",
+      "exitCode": 0,
+      "elapsedSeconds": 0.8904037210013485,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/views-and-context.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current-native-candidate-v1/views-and-context.stderr.txt",
+      "humanApproval": false,
+      "activeWrites": 0
+    }
+  ],
+  "failedNarrowMemoryProbesRetained": [
+    "memory-seven-existing-check",
+    "memory-seven-plus-traced-node-check"
+  ],
+  "allRequiredTerminalStagesPassed": true,
+  "authorCandidateOnly": true,
+  "humanApproval": false
+}

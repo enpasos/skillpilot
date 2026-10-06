@@ -1,0 +1,70 @@
+    void learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals() throws Exception {
+        String[][] scopes = {
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BW", "81", "81" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BY", "129", "129" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HB", "97", "97" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HE", "129", "129" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-NI", "88", "88" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-RP", "77", "77" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-SL", "60", "60" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BB", "83", "83" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BE", "83", "83" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BW", "74", "74" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BY", "89", "89" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-HB", "74", "74" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-HE", "89", "89" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-HH", "58", "58" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-MV", "57", "57" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-NI", "78", "78" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-NW", "59", "59" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-RP", "58", "58" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SH", "58", "58" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SL", "58", "58" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SN", "58", "58" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-ST", "58", "58" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-TH", "58", "58" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "151", "151" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "111", "111" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "142", "142" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "150", "150" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "142", "142" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "148", "148" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "150", "150" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "150", "150" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "148", "148" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "146", "146" }
+        };
+        SoftAssertions softly = new SoftAssertions();
+
+        for (String[] scope : scopes) {
+            String subject = scope[0];
+            String subjectLandscapeId = scope[1];
+            String jurisdiction = scope[2];
+            Learner learner = new Learner();
+            learner.setSkillpilotId("duration-science-" + subject.toLowerCase(Locale.ROOT) + "-"
+                    + jurisdiction.toLowerCase(Locale.ROOT));
+            learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+            learner.setPersonalCurriculum(canonicalGymnasiumSubjectPersonalCurriculum(
+                    subjectLandscapeId, jurisdiction, "G8", "GK", true, false));
+            learnerRepository.save(learner);
+
+            JsonNode g8State = objectMapper.readTree(getRequest(
+                    "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
+            int g8Total = g8State.path("goals").path("personalized").path("total_atomic").asInt();
+
+            learner.setPersonalCurriculum(canonicalGymnasiumSubjectPersonalCurriculum(
+                    subjectLandscapeId, jurisdiction, "G9", "GK", true, false));
+            learnerRepository.save(learner);
+
+            JsonNode g9State = objectMapper.readTree(getRequest(
+                    "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
+            int g9Total = g9State.path("goals").path("personalized").path("total_atomic").asInt();
+
+            assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", "GK");
+            assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", "GK");
+            softly.assertThat(g8Total).as(subject + " " + jurisdiction + " G8 total")
+                    .isEqualTo(Integer.parseInt(scope[3]));
+            softly.assertThat(g9Total).as(subject + " " + jurisdiction + " G9 total")
+                    .isEqualTo(Integer.parseInt(scope[4]));
+        }
+        softly.assertAll();

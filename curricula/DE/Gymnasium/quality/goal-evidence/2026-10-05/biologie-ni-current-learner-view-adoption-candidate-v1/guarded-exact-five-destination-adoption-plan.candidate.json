@@ -1,0 +1,74 @@
+{
+  "atUTC": "2026-10-05T23:36:14.693413+00:00",
+  "status": "INACTIVE guarded exact five-destination proposal; root independent content review and application required",
+  "destinations": [
+    {
+      "destination": "curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-seki-biology.view.json",
+      "beforeSHA256": "2f380acfae1c4482d1ddbf6a8da4d86a496ed00bd60f13e71ce02a147ac9efa6",
+      "afterCandidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-current-learner-view-adoption-candidate-v1/prospective-input-tree/curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-seki-biology.view.json",
+      "afterSHA256": "9b179a8157f181a1ba24b0ccbd9e3c7ffe201ad60579290d5f5b0a1fd8e640c6",
+      "wholeScopePreserved": true,
+      "onlyAddedNode": {
+        "kind": "canonicalSubtree",
+        "goalId": "9cd0dbbc-9507-5879-8c4f-df54529969ec"
+      },
+      "insertedInStructure": "biology-seki",
+      "onlyTextInsertion": "One comma and one canonicalSubtree line after d4c1e36c; every prior byte/line preserved otherwise."
+    },
+    {
+      "destination": "curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json",
+      "beforeSHA256": "ec93f9a598c2c178668546dcc0bc7024c546cc1a8263a81f75e61c5bbfc2412e",
+      "afterCandidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-current-learner-view-adoption-candidate-v1/prospective-input-tree/curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json",
+      "afterSHA256": "4c6c11ccf1feba7a1cee085aec0db376d638162a8781e9bf74b2066a408ceebc",
+      "wholeScopePreserved": true,
+      "onlyAddedNode": {
+        "kind": "canonicalSubtree",
+        "goalId": "9cd0dbbc-9507-5879-8c4f-df54529969ec"
+      },
+      "insertedInStructure": "biology-root",
+      "onlyTextInsertion": "One comma and one canonicalSubtree line after d4c1e36c; every prior byte/line preserved otherwise."
+    },
+    {
+      "destination": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-biology-full.config.json",
+      "afterCandidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-current-learner-view-adoption-candidate-v1/canonical-biology-full.config.candidate.json",
+      "beforeSHA256": "cb5bb2553163566f30c71264e187623f3152ce43b988f9279be39e48c06db73d",
+      "afterSHA256": "8690b5b865399e0d1d2ccd37d74b18100793a919f7c7038c07d48bbfcd41d3a9"
+    },
+    {
+      "destination": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+      "afterCandidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-current-learner-view-adoption-candidate-v1/LearnerControllerIntegrationTest.counts-only.minimal-bytes-v2.candidate.txt",
+      "beforeSHA256": "b90e89fc74f2c048911daae8869473eb777c267ba8f9d8a55026bfd9bcc46a13",
+      "afterSHA256": "da0d64ba6adc6b14c2f5fcc1a29d1a42e905be949687278e19dd9a5d69765af0"
+    },
+    {
+      "destination": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "beforeSHA256": "45e25e7e6e8aa192370841cf517bcdecd682971ee04c5e1e0f227b9a6b183063",
+      "afterCandidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-current-learner-view-adoption-candidate-v1/registry.bio-memory-only.exact-raw-splice.candidate.txt",
+      "afterSHA256": "068562a388cadfa4ea4531385076282f23f0ed916b356fc1b928222b315c84c1",
+      "onlyFieldChange": "subjects[subject=biologie].memoryReviewConfigPath",
+      "oldValue": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-eighteen-current-reviewed-integration-candidate-v2/full-memory.config.json",
+      "newValue": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-current-learner-view-adoption-candidate-v1/full-memory.current-learner-views.config.json"
+    }
+  ],
+  "additiveNewMemoryConfig": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-current-learner-view-adoption-candidate-v1/full-memory.current-learner-views.config.json",
+    "sha256": "62d31df965a62a8f5e4c837f1ed25208e0c23eafd11f9a8b0919ce854cd7a3fe",
+    "actualFrozen383ScienceLedgersReusedExactly": true,
+    "reportPath": "docs/qa-ci/status/memory-card-review-canonical-biology-full.md"
+  },
+  "requirements": [
+    "Root independently reads whole two views and applicability/grade/source/projection proof",
+    "Verify every destination beforeSHA256 and every candidate afterSHA256 immediately before applying",
+    "Preserve all historical frozen author/independent review/index/ledger bytes",
+    "After local integration run current central Bio check, standard active-memory discovery/check-all, affected composition/projection check and protected maturity floors at stable integration",
+    "Regenerate current native memory audit report from new active config",
+    "Do not infer human approval or clinical/learner performance from machine QA"
+  ],
+  "protectedAll67StrictIdsNativeWhole383AndSourceConsumerExact": true,
+  "scientificGateAuthorizationsChanged": false,
+  "newScientificClosures": 0,
+  "runtimeCodeChanged": false,
+  "backendTestsRun": false,
+  "humanApproval": false,
+  "activeWrites": false
+}

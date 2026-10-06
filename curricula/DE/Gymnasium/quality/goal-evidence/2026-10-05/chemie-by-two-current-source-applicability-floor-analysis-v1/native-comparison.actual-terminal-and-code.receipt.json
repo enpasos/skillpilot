@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "actual_bounded_native_he_only_counterfactual_commands",
+  "status": "analysis_not_active_floor_repair",
+  "atUTC": "2026-10-06T00:02:13.288384+00:00",
+  "commands": [
+    {
+      "command": "app/node_modules/.bin/tsx tmp/chemie-b008-source-operator-author-20261006-v3/read_current_chem_applicability.mts",
+      "exitCode": 0,
+      "purpose": "Pure native current applicability compilation; target2 and aggregate actual evidence saved."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx tmp/chemie-b008-source-operator-author-20261006-v3/compare_he_only_native_models.mts",
+      "attempt": 1,
+      "exitCode": 1,
+      "failure": "Named import parseGoalBookConfig is private/not exported; failed before any input computation or output writes. Own helper changed to use the unchanged actual frozen config objects directly; native checker/model code not modified."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx tmp/chemie-b008-source-operator-author-20261006-v3/compare_he_only_native_models.mts",
+      "attempt": 2,
+      "exitCode": 0,
+      "purpose": "Native whole378/full359 model computation, whole378 canonicalContext comparison and actual D10 per-goal input computation; P semantic and review input payloads compared in full."
+    }
+  ],
+  "nativeCodeSHA256": [
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "97eacf1152c859fd4a766f1d3f136449b20bc8af3d626b4c0f048bb6b3a7e2aa"
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+      "sha256": "59f8f412cbe9be4dc033396581e14960d0b0f12e3b17b5d48c35e5d6fae71e64"
+    },
+    {
+      "path": "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+      "sha256": "eff84dcf0d823c15b0827cb898b30d44f29c7ee219b67b4d2505b134536529cf"
+    },
+    {
+      "path": "app/scripts/goalEvidenceProfileModel.ts",
+      "sha256": "50c932f1bb2e6db266756113dbbb82af9d59e172825d2039cdc9dcd9a10c3a26"
+    },
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "3d3d11b120962b8b233da33174ca6e5e140ef60db9cfb4bade1bdfbe676c9cbc"
+    }
+  ],
+  "ownHelperSHA256": [
+    {
+      "path": "tmp/chemie-b008-source-operator-author-20261006-v3/read_current_chem_applicability.mts",
+      "sha256": "0eeab3c6bcaa0491ddbb0684ea82e352b6535e767004c7b8440957ffcd0e47b3"
+    },
+    {
+      "path": "tmp/chemie-b008-source-operator-author-20261006-v3/compare_he_only_native_models.mts",
+      "sha256": "6cbcdc5422a342c3f1dfc5488c4844c5f6f79293c829446aa00b5a05b80369d2"
+    }
+  ],
+  "sourceSnapshotCanonicalSHA256": "82ebe1f0eeb46674f9dfb8f31e91df8e6bad46c144cf7e9fca0ddb01aee02abd",
+  "fullFloorOrCentralFuturePASSClaim": false,
+  "noAssessmentRouteAuthorshipOrAdoption": true,
+  "noInventedBYMapping": true,
+  "sourceObligationsChanged": false,
+  "activeWrites": false,
+  "gitWrites": false,
+  "historicalWrites": false,
+  "newScientificClosures": 0,
+  "restoredScientificBindings": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}

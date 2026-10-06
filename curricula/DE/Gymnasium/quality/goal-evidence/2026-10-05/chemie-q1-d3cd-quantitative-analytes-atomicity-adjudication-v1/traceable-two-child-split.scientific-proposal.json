@@ -1,0 +1,43 @@
+{
+  "proposalOnly": true,
+  "stableOldGoalId": "d3cd250f-5221-589d-aa1c-44a4692d1acb",
+  "preferredGraphChange": "Convert old stable goal to aggregate cluster with two new atomic children; preserve old descriptions/provenance/history explicitly. Both children remain mandatory.",
+  "children": [
+    {
+      "semanticKey": "ascorbic-acid-controlled-quantification",
+      "title": "Ascorbinsäure quantitativ bestimmen (LK)",
+      "titleEn": "Determine ascorbic acid quantitatively (LK)",
+      "description": "Die lernende Person kann eine geeignete quantitative Bestimmung von Ascorbinsäure anhand ihrer Molekülstruktur auswählen, mit Kontrollproben planen und durchführen und den Gehalt unter Berücksichtigung von Kalibrierung oder Reaktionsstöchiometrie, Verdünnung und Verfahrensgrenzen bestimmen.",
+      "descriptionEn": "The learner can select a suitable quantitative determination of ascorbic acid using its molecular structure, plan and carry it out with control samples, and determine the content while accounting for calibration or reaction stoichiometry, dilution, and method limitations.",
+      "sourceRole": "HEQ1.5B04 quantitative ascorbic component; existing BY/HE LK applicability retained",
+      "proposedRequires": [
+        "db66635f-f1d1-5f70-bcc0-fed1ae424e52"
+      ]
+    },
+    {
+      "semanticKey": "specified-paraben-ester-controlled-quantification",
+      "title": "Vorgegebenen Paraben-Ester quantitativ bestimmen (LK)",
+      "titleEn": "Determine a specified paraben ester quantitatively (LK)",
+      "description": "Die lernende Person kann eine geeignete quantitative Bestimmung eines vorgegebenen p-Hydroxybenzoesäureesters anhand seiner Molekülstruktur auswählen, mit Kontrollproben planen und durchführen und den Gehalt unter Berücksichtigung von Kalibrierung oder Reaktionsstöchiometrie, Verdünnung und Verfahrensgrenzen bestimmen.",
+      "descriptionEn": "The learner can select a suitable quantitative determination of a specified p-hydroxybenzoic acid ester using its molecular structure, plan and carry it out with control samples, and determine the content while accounting for calibration or reaction stoichiometry, dilution, and method limitations.",
+      "sourceRole": "Declared authored LK analytical transfer; preserve existing BY/HE LK applicability, no full normative HEB05 assay claim",
+      "proposedRequires": [
+        "70b34ae7-4481-590c-9a02-516464750832"
+      ]
+    }
+  ],
+  "parentContains": "47a40c98-ab20-5246-85e3-3abe5a9e95ed keeps stable aggregate plus new0d59 use goal",
+  "terminalPrerequisite": "14577339-9e0c-5b44-8e47-91e1a4947367 must require BOTH children in place of old compound goal; no prerequisite burden removed",
+  "oldWorkflowPNGKeepForAggregate": {
+    "sha256": "47a02abeb096fa7d40ce0bc00409e593902740428b95d7bbbaff19d64b3f04f3",
+    "reason": "Actual correct general two-analyte workflow; the atomicity error is not an image error."
+  },
+  "atomicDenominator": {
+    "current": 376,
+    "oldCandidate": 377,
+    "newSplitPredictedOnly": 378,
+    "mustVerifyNativeActual": true
+  },
+  "scienceClosuresPredictedAfterIndependentReviewOnly": 8,
+  "noActualNewClosure": true
+}

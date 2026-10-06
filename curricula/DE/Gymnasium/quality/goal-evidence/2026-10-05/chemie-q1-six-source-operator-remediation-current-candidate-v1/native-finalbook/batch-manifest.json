@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-q1-six-operator-plus-lk-proposal-20261005-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-six-source-operator-remediation-current-candidate-v1/batch.config.json",
+  "configDigest": "sha256:d01d5a0acb331fddf2cc60decccadce7e5e500df058486b15c41ed346703a97d",
+  "goalIds": [
+    "70b34ae7-4481-590c-9a02-516464750832",
+    "057a6826-f599-53b1-bdd1-5a83037a1494",
+    "39c85aa0-b01f-56ec-a148-b8009bf650f5",
+    "d742ecb0-0795-5446-a95d-9503d4618475",
+    "d76b80a2-5156-54f4-b3a1-546beddf0e14",
+    "d3cd250f-5221-589d-aa1c-44a4692d1acb",
+    "10f657bc-6044-5fbb-ba8e-6e5ba55d2bc5",
+    "0d59b62e-d3f9-5969-b961-0c5e26316c04"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 377,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-six-source-operator-remediation-current-candidate-v1/book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:ab1ae475f308d44fa3b8cdd66d2ae15fb538ad13cd0c6b733e8d8e5de7ac3b95"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:5bc2d2a9d63f758679b1407c8b871658e9339f7c2dfaf83be6d48f79af33c66b",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:ae83f18669fa5ec23b37d5f6e48ffd70e8896c5c9e10c3cd55b57ba34a74afcf",
+    "reviewInputFingerprint": "sha256:07cc3b8f81fb5e348ab020de6bf8f87383b252cf3fe06e67f41b72d99f150f4b",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-q1-six-operator-plus-lk-proposal-20261005-v1-a",
+        "campaignDigest": "sha256:7efdc4b262cb54e0878010db030e287f982b3104bc3688340150eaefe19db721",
+        "roundId": "chemie-q1-six-operator-plus-lk-proposal-20261005-v1-first-pass-a",
+        "independenceGroupId": "chemie-q1-six-operator-plus-lk-proposal-20261005-v1-independent-a",
+        "batchId": "chemie-q1-six-operator-plus-lk-proposal-20261005-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:95f4f754bdabef31b3409048a06a658ac1e1e9c79767cb9c26b94b24772fccab"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-q1-six-operator-plus-lk-proposal-20261005-v1-b",
+        "campaignDigest": "sha256:fb7b0da41ebf3c3a1656d9e5a505c316434aa9c52a4c3d008939e71e9406f6af",
+        "roundId": "chemie-q1-six-operator-plus-lk-proposal-20261005-v1-first-pass-b",
+        "independenceGroupId": "chemie-q1-six-operator-plus-lk-proposal-20261005-v1-independent-b",
+        "batchId": "chemie-q1-six-operator-plus-lk-proposal-20261005-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:baf36edfeb7a42425ed1cab5c007210f21a7d776f869d54b559f5840de86ea5c"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "commands": [
+    {
+      "name": "safe-dual-summarize",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-six-source-operator-remediation-current-candidate-v1/batch.config.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-q1-seven-reviewed-integration-candidate-v3-native-root",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-seven-reviewed-integration-candidate-v3/safe-dual-summarize.stdout.txt",
+      "stdoutSHA256": "fbe29b902af488ee502fc873e4dfdee641f659704acf5eed5c4295408155baee",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-seven-reviewed-integration-candidate-v3/safe-dual-summarize.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "safe-synthesis-manifest",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-six-source-operator-remediation-current-candidate-v1/batch.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-six-source-operator-remediation-current-candidate-v1/native-finalbook-v2/synthesis-authoring.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-q1-seven-reviewed-integration-candidate-v3-native-root",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-seven-reviewed-integration-candidate-v3/safe-synthesis-manifest.stdout.txt",
+      "stdoutSHA256": "ce2367466e12cce0c9654c952eeae836daec9f2e5cd3fe6b55b491d97f4297b5",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-seven-reviewed-integration-candidate-v3/safe-synthesis-manifest.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "safe-seven-resolutions",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-six-source-operator-remediation-current-candidate-v1/batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-six-source-operator-remediation-current-candidate-v1/native-finalbook-v2/synthesis-decisions.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-q1-seven-reviewed-integration-candidate-v3-native-root",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-seven-reviewed-integration-candidate-v3/safe-seven-resolutions.stdout.txt",
+      "stdoutSHA256": "4c1874a62342da74c6b5173a4b01001df85964e0af91c5c66d8c7dfe83b27068",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-seven-reviewed-integration-candidate-v3/safe-seven-resolutions.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "safe-seven-final-index",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-six-source-operator-remediation-current-candidate-v1/batch.config.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-q1-seven-reviewed-integration-candidate-v3-native-root",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-seven-reviewed-integration-candidate-v3/safe-seven-final-index.stdout.txt",
+      "stdoutSHA256": "117f574c6a435d592148c58110d646b991fa3bf4c50e75aa6b96dba3b0ec7364",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-seven-reviewed-integration-candidate-v3/safe-seven-final-index.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "safe-seven-final-index-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-six-source-operator-remediation-current-candidate-v1/batch.config.json"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-q1-seven-reviewed-integration-candidate-v3-native-root",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-seven-reviewed-integration-candidate-v3/safe-seven-final-index-check.stdout.txt",
+      "stdoutSHA256": "ada8727625f1860609f89688d17b1ce30e535af7c1c6cebaca9131d45d8c872f",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-seven-reviewed-integration-candidate-v3/safe-seven-final-index-check.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "activeWrites": 0,
+  "newHumanApproval": false
+}

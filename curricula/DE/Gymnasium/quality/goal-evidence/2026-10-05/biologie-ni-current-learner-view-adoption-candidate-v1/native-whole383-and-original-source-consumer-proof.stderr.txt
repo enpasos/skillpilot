@@ -1,0 +1,17 @@
+node:fs:448
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/biologie-ni-current-learner-view-adoption-candidate-v1-native-root/curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_biology_lower_secondary_source_extraction_to_canonical_biology.review.json'
+    at readFileSync (node:fs:448:20)
+    at readJson (/home/enpasos/projects/skillpilot/app/scripts/goalBookOriginalSources.ts:47:73)
+    at loadCandidates (/home/enpasos/projects/skillpilot/app/scripts/goalBookOriginalSources.ts:140:21)
+    at buildGoalBookOriginalSources (/home/enpasos/projects/skillpilot/app/scripts/goalBookOriginalSources.ts:228:27)
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-current-learner-view-adoption-candidate-v1/prove-native-book-and-input-preservation.mts:33:21) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/tmp/biologie-ni-current-learner-view-adoption-candidate-v1-native-root/curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_biology_lower_secondary_source_extraction_to_canonical_biology.review.json'
+}
+
+Node.js v20.20.2

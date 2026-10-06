@@ -1,0 +1,25 @@
+/home/enpasos/projects/skillpilot/app/scripts/checkCurriculumMaturityFloors.ts:107
+  throw new Error([
+        ^
+
+
+Error: Curriculum maturity regression detected by canonical-gymnasium-maturity-floors-v1.
+Chemie [c436b994-8f44-5134-b9f8-0c9f5d6a5ba0]: current M1 is below protected floor M6
+  global CQR-003 fail: 15/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.
+    - DE-BY: 2 assigned atomic goal(s) without source-backed Lehrplan evidence
+    - DE-BY: 334/336 source-backed view atomic goal(s)
+  global CQR-501 warn: 1 active and 0 obsolete accepted applicability warning(s) need review; 2240 partial-only diagnostic finding(s) are non-blocking.
+    - non-blocking partial-only applicability diagnostics APV-202: 2240
+    - active warning type APV-203: 1
+    - diagnostic finding type APV-202: 2240
+  canonical-chemistry-sek2 (M0) CQR-101 fail: Effective route coverage has missing route segments.
+    - No effective terminal path: Verwendung von Parabenen beurteilen (LK) [0d59b62e-d3f9-5969-b961-0c5e26316c04]
+  canonical-chemistry-sek2 (M0) CQR-102 warn: Direct atomic route coverage still needs migration work.
+    - No direct atomic terminal path: Verwendung von Parabenen beurteilen (LK) [0d59b62e-d3f9-5969-b961-0c5e26316c04]
+Restore the fachliche quality gates or obtain an explicit product-owner decision before changing the protected floor.
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/checkCurriculumMaturityFloors.ts:107:9)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2

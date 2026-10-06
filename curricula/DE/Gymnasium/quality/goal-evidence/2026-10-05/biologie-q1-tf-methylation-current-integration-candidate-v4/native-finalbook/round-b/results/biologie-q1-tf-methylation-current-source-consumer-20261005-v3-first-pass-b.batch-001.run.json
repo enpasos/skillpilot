@@ -1,0 +1,72 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-tf-methylation-root-independent-b-20261005-v3",
+  "campaignId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3-b",
+  "roundId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3-first-pass-b",
+  "batchId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:95ea8fd1621ddde52a0f74322b1825f8ef65cc82ccff00d040f8d2e3f4d15ac0",
+  "bundleFingerprint": "sha256:b9d53d3e68328abd742e7e7160655c57f4d8f16a7276d91418643da776a40759",
+  "bookDigest": "sha256:5800da8946e8de73111bb5a37a26c8285e743a2720ece7c51731f0013cc42af2",
+  "provider": "OpenAI Codex",
+  "model": "Inherited Codex session; exact runtime model identifier not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:81743142c4755e3605bba5cb3593d8ec6edd2a2ff218628b3651c771af61ba5e",
+  "independenceGroupId": "biologie-q1-tf-methylation-current-source-consumer-20261005-v3-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "946ce2e7-c30d-5670-839d-003b0619c284",
+    "0ac51522-352c-50d1-8b95-8d3992b4db15",
+    "8eb86a82-122d-5cae-8f80-bb2850b29c2f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:d648377968da4af738524fe4fde2aa926de599078345559507773e21679d219c"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:2f1d6dab8c3041f972681277e8b49695b150efddf3ee000a6ed2d518d22758e7"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:a8fd6799c0a4bdef221ba27cc51affb06baf45fe0a21ad86579a05ec6a3ab671"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:0df88d79abeb78b39ad73be3100de29761addd17dfe11d3e2ef9ebf2a42ed507"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:2f0d24e8ccd8eeb170ce2e5c0e6bfc9d31b56183838e5f5e647b43e89edf01bc"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:2f39d4de6f66e18925875a1d3713863c2739baa9ab62819621b051b274090bb7"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:dfecd792194e37243285f86c5df73b30cc4a55c1e061eb542455e56f7072aae1"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:95ea8fd1621ddde52a0f74322b1825f8ef65cc82ccff00d040f8d2e3f4d15ac0"
+    }
+  ],
+  "startedAt": "2026-10-05T17:44:11.205680+00:00",
+  "completedAt": "2026-10-05T17:49:52.911450+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:15531de651188e0bbe42ff596ff5147eb253080a47a274e05a10b8f15a822ae9",
+  "toolchainVersion": "goal-description-review-v2"
+}

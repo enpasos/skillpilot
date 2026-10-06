@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-ni-existing-five-source-bindings-author-20261005-v2",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/existing-five-bindings.batch.config.json",
+  "configDigest": "sha256:1768075e51d52207a3167cc6fcbf048f1f54fb6f79cde69d7fba4ed922a7adde",
+  "goalIds": [
+    "0380f992-723a-513d-8c3f-8ca7f8e0394f",
+    "28850d2e-062d-5341-ac66-bd787a8fc84f",
+    "440854be-7f06-5678-91cb-ba8dcab56959",
+    "ec88fc1d-ee0f-5a01-9464-dc358241050e",
+    "0dbe758c-73c8-530b-bbbd-fb55540f942f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 383,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/canonical.biologie.current.inactive.snapshot.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:9d4fa7e5cbb25da44039ecd2c69f6e1f25d79c8a7424953c85717fb2a12f6c89"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:2f3cf34810a08f3dfa6555257d40b1f473e85b628aac61bfa63c7b6ab07f0729",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:96d346e34bb36f339531fcab4b1f2076ff8bc9604307c0d79606e6674bef0860",
+    "reviewInputFingerprint": "sha256:51d03774099c881040247b216a8e13e45ede292e7d4f02f968a7e80808cc8510",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-ni-existing-five-source-bindings-author-20261005-v2-a",
+        "campaignDigest": "sha256:9df02b6ea13f70613c51ff2f558e23d791be4863fb4fc782e4bd0a69e18cd032",
+        "roundId": "biologie-ni-existing-five-source-bindings-author-20261005-v2-first-pass-a",
+        "independenceGroupId": "biologie-ni-existing-five-source-bindings-author-20261005-v2-independent-a",
+        "batchId": "biologie-ni-existing-five-source-bindings-author-20261005-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:e07218873362e7e2c57f94b2f22760bb2ee1423151b7fb7df4717b1d04c77899"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-ni-existing-five-source-bindings-author-20261005-v2-b",
+        "campaignDigest": "sha256:b9407501ec96ca78663476dd7f806704d734f1594cd24e1cba5fc7c30333107c",
+        "roundId": "biologie-ni-existing-five-source-bindings-author-20261005-v2-first-pass-b",
+        "independenceGroupId": "biologie-ni-existing-five-source-bindings-author-20261005-v2-independent-b",
+        "batchId": "biologie-ni-existing-five-source-bindings-author-20261005-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:e34de4ea43cf35ba9cb63adea83b338273bc9871ed6c23892d6ac9a854d78a5d"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

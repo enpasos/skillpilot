@@ -1,0 +1,468 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex technical Q1 integration synthesis after both actual complete current independent records were read",
+  "synthesizedAt": "2026-10-05T19:06:14.577Z",
+  "batch": {
+    "batchId": "chemie-q1-fourteen-current-20261005-v4",
+    "batchManifestDigest": "sha256:65c7809e85f93cbb38ef35e464578dc81d821b32e05257987ef24f48aa995fe3",
+    "configDigest": "sha256:80d12bd7256824c2d7e996346fa3ba7e64635b8ab46f79a9327cb9053f37273c",
+    "bundleFingerprint": "sha256:f3ee9d6f7b2fdcbdfe7a7c2733787057977acd65b8105afde07762a85f091f4d",
+    "bookDigest": "sha256:baa6c4fc6992bdc52be70e5d35c68ec53c4232b71142c486a6c79eb7ed5324e3",
+    "reviewInputFingerprint": "sha256:824517468fa505eb2a69412bcdcdbd572eed64d74d02c10508899e45aa28299c",
+    "dualSummaryDigest": "sha256:fa972acd13a5b3c66146de9412eaf25e211ee3a875ceb731d14937bf947fb5ac",
+    "canonicalLandscapeDigest": "sha256:0fd3c538b5b554606ea8b073fa8c4cd3e27c376599cc416f0e8d2452b70be3be"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-q1-fourteen-current-20261005-v4-a",
+      "campaignDigest": "sha256:14f1a9ddf19fcaea794f63cc12831e9990f26fbdbb9acef0b97d902d74fba8a1",
+      "roundId": "chemie-q1-fourteen-current-20261005-v4-first-pass-a",
+      "independenceGroupId": "chemie-q1-fourteen-current-20261005-v4-independent-a",
+      "reviewInputFingerprint": "sha256:824517468fa505eb2a69412bcdcdbd572eed64d74d02c10508899e45aa28299c",
+      "batchId": "chemie-q1-fourteen-current-20261005-v4-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:62209ac774e1325eae4b88cbfd1231419eb51741a0d03be6ed801a884531329b",
+      "runId": "chemie-q1-fifteen-current-independent-d-a-20261005-v2",
+      "runManifestDigest": "sha256:7e13060f80fe83750624e24544bb00fb76bb4c4f8385ad831f1f14ca2d39a015",
+      "resultsDigest": "sha256:e622457dcd297888575f89dcae6422eb067b9ddcada0db83fe80c2290574bc4f"
+    },
+    "second": {
+      "campaignId": "chemie-q1-fourteen-current-20261005-v4-b",
+      "campaignDigest": "sha256:f3f4b61e1266fab6aa5b925447bed85436c80b5848d896d704ec30495dd9f584",
+      "roundId": "chemie-q1-fourteen-current-20261005-v4-first-pass-b",
+      "independenceGroupId": "chemie-q1-fourteen-current-20261005-v4-independent-b",
+      "reviewInputFingerprint": "sha256:824517468fa505eb2a69412bcdcdbd572eed64d74d02c10508899e45aa28299c",
+      "batchId": "chemie-q1-fourteen-current-20261005-v4-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:28e6be1878eec2ae12021c1410c7639753c293dca012d9716ad264295781268b",
+      "runId": "chemie-q1-fifteen-current-independent-d-b-v4-run-001",
+      "runManifestDigest": "sha256:de9849cb3c99e6e568c3d21a00786e6a5f400b03ff6031827aefcdaea2fa3d5f",
+      "resultsDigest": "sha256:6e72566b83ab26b013af7925eee014f92345f3d38fee57b72786ee0cbcf0eaeb"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5-decision-001",
+      "goalId": "a3788e40-b540-5bed-be37-b33053528422",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7792898d5d7fc270f728cce983914e05270d20b754a561ebfc55d53cc67b5f6a",
+      "pageFingerprint": "sha256:86545fc54cc10e106f47135bfb797240793382e13d6fdbc180cc5a53fe2dc363",
+      "goalReviewContextFingerprint": "sha256:ca1d939ebbd57f3614780fd55524b67cffee5fc8fdb2387d98e0ffad409324e7",
+      "finalText": {
+        "titleDe": "Carbonsäuren beschreiben",
+        "titleEn": "Describe carboxylic acids",
+        "descriptionDe": "Die lernende Person kann Carboxygruppen in Struktur- und Skelettformeln erkennen und ihren sauren Charakter anhand geeigneter Beobachtungen nachweisen, homologe Reihen darstellen und Strukturformeln schreiben.",
+        "descriptionEn": "The learner can recognize carboxyl groups in structural and skeletal formulas and demonstrate their acidic character using suitable observations, represent homologous series, and write structural formulas."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-q1-fifteen-current-independent-d-a-20261005-v2.record-001",
+          "recordDigest": "sha256:d2cbeabc6f0db7ecf853c5b77c03b01f2faa94c6aa6b2bca961e6a8ea4e73ff0"
+        },
+        "second": {
+          "recordId": "chemie-q1-independent-b-v4-a3788e40-b540-5bed-be37-b33053528422",
+          "recordDigest": "sha256:bcf08dc3b85eaa757fa3ef16c792d3da6a80cc122960b1a068c641df8e61c2af"
+        }
+      },
+      "rationaleDe": "Beide Runden begrenzen die Stoffklassen-Erkennung auf COOH, saure Beobachtung und Reihendarstellung; keine exklusive Säureidentifikation. Nomenklatur/Eigenschaften bleiben eigene Begleiter.",
+      "rationaleEn": "Both rounds bound compound-class recognition to COOH, acidic observations and series representations without exclusive identification; naming and property companions remain separate."
+    },
+    {
+      "decisionId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5-decision-002",
+      "goalId": "ca216bc6-5205-5b46-abbd-fd5628e4ca5b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1d7791edbd313503ce2600f101c967f0ab70d438091d87fe8fa89982b897fe2c",
+      "pageFingerprint": "sha256:212a34156bb057fb96288cc9183565a1cbc092632279a212f5828dc94051d826",
+      "goalReviewContextFingerprint": "sha256:50883d22317ef70cf7c29b28ee3ac000e39334a007f6b076928186aeefa1e617",
+      "finalText": {
+        "titleDe": "Acidität begründen",
+        "titleEn": "Justify acidity",
+        "descriptionDe": "Die lernende Person kann die Acidität von Alkohol-Molekülen und Carbonsäure-Molekülen vergleichen und den Einfluss polarer Bindungen, induktiver Effekte und Mesomerie auf die Säurestärke von Carbonsäuren erklären.",
+        "descriptionEn": "The learner can compare the acidity of alcohol molecules and carboxylic acid molecules and explain the influence of polar bonds, inductive effects, and resonance on the acid strength of carboxylic acids."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-q1-fifteen-current-independent-d-a-20261005-v2.record-002",
+          "recordDigest": "sha256:3cd6824791f4a0538bcc9508b39eb5742e197e507fc6dcfb4ea329066e8122d6"
+        },
+        "second": {
+          "recordId": "chemie-q1-independent-b-v4-ca216bc6-5205-5b46-abbd-fd5628e4ca5b",
+          "recordDigest": "sha256:5f69e94aa6726c43f293d5761f3733cb0ea699042f426e2ca4191e75c7847479"
+        }
+      },
+      "rationaleDe": "Beide Runden erklären Säurestärke durch konjugierte Base, eine delokalisierte Carboxylatladung und getrennte induktive Effekte; Substitutionsbeispiele sind kompatibel. Das exakte aktuelle PNG bleibt erhalten.",
+      "rationaleEn": "Both rounds explain acidity through the conjugate base, one delocalised carboxylate charge and distinct inductive effects; substitution examples are compatible. Preserve the exact current PNG."
+    },
+    {
+      "decisionId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5-decision-003",
+      "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:990d8f544f1164ac9e1d206aa685e346c54d17d59d4191ffa3744ec3fe7890d9",
+      "pageFingerprint": "sha256:a2b0f10dad292923f594768f8a435cc1a65a323ab4fe24223b3ac05f805edc1d",
+      "goalReviewContextFingerprint": "sha256:9be03a673c2fa9370c5d2cac0052b5b3d3631b57a3202fbabc43756fc1dd9d6b",
+      "finalText": {
+        "titleDe": "Esterbildung und Estereigenschaften erklären",
+        "titleEn": "Explain ester formation and ester properties",
+        "descriptionDe": "Die lernende Person kann die Bildung von Estern aus Alkoholen und Carbonsäuren aus experimentellen Beobachtungen ableiten, Kondensationsreaktionen formulieren, Stoffeigenschaften mithilfe zwischenmolekularer Wechselwirkungen begründen und Einsatzbereiche von Estern in Alltagsprodukten und Technik nennen.",
+        "descriptionEn": "The learner can derive the formation of esters from alcohols and carboxylic acids from experimental observations, formulate condensation reactions, justify ester properties using intermolecular interactions, and name uses of esters in everyday products and technology."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-q1-fifteen-current-independent-d-a-20261005-v2.record-003",
+          "recordDigest": "sha256:90f2f92632e4146737aa6ba2b87c9a34eec0dc7d24bb66f0afff958e9da30587"
+        },
+        "second": {
+          "recordId": "chemie-q1-independent-b-v4-70b34ae7-4481-590c-9a02-516464750832",
+          "recordDigest": "sha256:6fca7b4eec7aa2bbbbcef149579e92a563b0bb956704475fdd2ec05c322212df"
+        }
+      },
+      "rationaleDe": "Der konkrete englische Titelbefund ist von beiden Runden an tatsächlichem aktuellem PDF/HTML und DE/EN aufgelöst. Formation/condensation, zwischenmolekulare Eigenschaften und Einsatz gehören zum jetzigen gleichwertigen Titel; beide P-Fälle bleiben exakt. HE-Ganzgruppen-Nomenklatur/Mechanismus-HOLDs bleiben offen.",
+      "rationaleEn": "Both rounds resolve the English-title defect against actual current PDF/HTML and DE/EN. Formation, condensation, intermolecular properties and uses match the corrected equivalent title; both P cases remain exact. Whole HE-group naming and mechanism HOLDs remain open."
+    },
+    {
+      "decisionId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5-decision-004",
+      "goalId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:53f8b3fe772a4b48a5b16f7143ba3b7497dea90edbf235b8d7f465955d11975a",
+      "pageFingerprint": "sha256:3fda7c92114f6abc79bb4cc6ea2abb45f78642b0eda64dd69b10a57c99e1251e",
+      "goalReviewContextFingerprint": "sha256:b8c15845e37b3dab15839554c8949ad4f2aba678316277fa369487d3da356998",
+      "finalText": {
+        "titleDe": "Esterreaktionen und ihre Reversibilität deuten",
+        "titleEn": "Interpret ester reactions and their reversibility",
+        "descriptionDe": "Die lernende Person kann Veresterung und saure Esterhydrolyse als reversible Reaktionen deuten, sie von der unter alkalischen Bedingungen praktisch irreversiblen Bildung von Carboxylatsalzen unterscheiden, Reaktionsprodukte bilanzieren und damit Alltagsbeobachtungen zu Estern erklären.",
+        "descriptionEn": "The learner can interpret esterification and acidic ester hydrolysis as reversible reactions, distinguish them from the effectively irreversible formation of carboxylate salts under alkaline conditions, balance reaction products, and use this distinction to explain everyday observations involving esters."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-q1-fifteen-current-independent-d-a-20261005-v2.record-004",
+          "recordDigest": "sha256:6e0fa4d8241d8616520c527bc0b8739baa67115b28a1fc0109e8acfbe925b88c"
+        },
+        "second": {
+          "recordId": "chemie-q1-independent-b-v4-667bc303-e9b8-570b-84f1-61cc8bdfd006",
+          "recordDigest": "sha256:b7b3f5c5761076fbaa881899fdba9ce6878677d0053cdaa4d364ec05a544c942"
+        }
+      },
+      "rationaleDe": "Beide Runden erhalten bedingungsabhängige saure Reversibilität versus praktisch einseitige alkalische Carboxylatbildung. Produktbilanz und Alltagserklärung sind derselbe Reaktionszusammenhang, keine LK-Mechanismus-Mitfreigabe.",
+      "rationaleEn": "Both rounds preserve condition-dependent acidic reversibility versus effectively one-way alkaline carboxylate formation. Product balance and everyday explanations assess the same relation without releasing the separate advanced mechanism."
+    },
+    {
+      "decisionId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5-decision-005",
+      "goalId": "4da0839d-ab6d-53c1-ac21-c9872555ae16",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fc624b930c46df30af35588cf5c7b4c756d4aa7b49330b40cadb1fdfe1e62ac6",
+      "pageFingerprint": "sha256:3544e5bd4b69a25fc26e74279f45a92dee7c914c183fec3362d998b65f5b538e",
+      "goalReviewContextFingerprint": "sha256:587fe846860706a854fd6d5ef0193e3c6c011e8e5e6ea5fff38cb9e5708baf57",
+      "finalText": {
+        "titleDe": "Alkalische Esterhydrolyse mechanistisch vertiefen (LK)",
+        "titleEn": "Deepen the mechanism of alkaline ester hydrolysis (LK)",
+        "descriptionDe": "Die lernende Person kann Mechanismen der alkalischen Esterhydrolyse mit geeigneten Zwischenstufen und Reaktionsschritten vertiefend deuten.",
+        "descriptionEn": "The learner can interpret mechanisms of alkaline ester hydrolysis in depth using suitable intermediates and reaction steps."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-q1-fifteen-current-independent-d-a-20261005-v2.record-005",
+          "recordDigest": "sha256:97b7b82031d656b5f93767b7da3d25b6984c2e55a4fd82e5d1d656d5d7de36c4"
+        },
+        "second": {
+          "recordId": "chemie-q1-independent-b-v4-4da0839d-ab6d-53c1-ac21-c9872555ae16",
+          "recordDigest": "sha256:9546cf799ac1129bde57902bd496486bfe6d8ec063a823b4a76608265862af99"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen den LK-Acylmechanismus mit richtig geladener tetraedrischer Zwischenstufe und Protonenübertragung. Die aktuelle exakte HE-Mechanismusquelle ersetzt die falsche Di-/Trisäurebindung.",
+      "rationaleEn": "Both rounds confirm the advanced acyl mechanism, correctly charged tetrahedral intermediate and proton transfer. The exact current HE mechanism clause replaces the false di/tricarboxylic-acid binding."
+    },
+    {
+      "decisionId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5-decision-006",
+      "goalId": "9d97f628-c3ea-5dc0-8723-b17b16297af3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9386dc45590d5f118b2624b916e0d44d8e2d92dc826a47786de662e5bed325e1",
+      "pageFingerprint": "sha256:a7fb17d2b170a16ddaa5ebe96d39cf35b3b9df1c46f7d9481523139c6a4487b9",
+      "goalReviewContextFingerprint": "sha256:e27bbd6fb746da9e90a17f16559ea123b2c1077c6103012c05ea54f37e800fb6",
+      "finalText": {
+        "titleDe": "Transesterifizierung planen",
+        "titleEn": "Plan transesterification",
+        "descriptionDe": "Die lernende Person kann Transesterifizierungen planen und Gleichgewichte beurteilen.",
+        "descriptionEn": "The learner can plan transesterifications and assess equilibria."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-q1-fifteen-current-independent-d-a-20261005-v2.record-006",
+          "recordDigest": "sha256:cf8fe0f954da885b7d78469e6d6c9c75d29789abdca74e184c3d2ddf9b4083fc"
+        },
+        "second": {
+          "recordId": "chemie-q1-independent-b-v4-9d97f628-c3ea-5dc0-8723-b17b16297af3",
+          "recordDigest": "sha256:b4505644357ae165347175f37a51d882f0e5b78ecfae4a43ea939e51eb29d994"
+        }
+      },
+      "rationaleDe": "Beide Runden prüfen Alkoholrestetausch, Planung und Gleichgewichtsbeurteilung einschließlich neuer Bedingungen. HE Q2.1 LK ist der Quellenanker; Q1-Navigation wird nicht als normative Q1-Pflicht ausgegeben.",
+      "rationaleEn": "Both rounds assess alcohol-residue exchange, planning and equilibrium reasoning under changed conditions. HE Q2.1 advanced level is the source anchor; Q1 navigation is not claimed as a normative Q1 requirement."
+    },
+    {
+      "decisionId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5-decision-007",
+      "goalId": "6765f741-42a6-55c5-a218-81b883b1f5ae",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bbaa4abd92d234f414439e96203338dc3dc7ab71a3ac12dec4075c88c63f443a",
+      "pageFingerprint": "sha256:2bfc48e14fd6bdffd838c1c85b3f64eb6e224082a77c8eb2faf2e6f364b5685b",
+      "goalReviewContextFingerprint": "sha256:ac00140ec9e7d247635b49a2fb96d22c41f0fc0f8f151b65ae74aaf233c413c7",
+      "finalText": {
+        "titleDe": "Seifen herstellen",
+        "titleEn": "Prepare soaps",
+        "descriptionDe": "Die lernende Person kann die alkalische Hydrolyse von Fetten zur Herstellung von Seife durchführen, die Bildung von Glycerin und Fettsäuresalzen anhand der Esterstruktur erklären und die Seife durch Aussalzen von der wässrigen Phase trennen.",
+        "descriptionEn": "The learner can carry out the alkaline hydrolysis of fats to prepare soap, explain the formation of glycerol and fatty acid salts using the ester structure, and separate the soap from the aqueous phase by salting out."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-q1-fifteen-current-independent-d-a-20261005-v2.record-007",
+          "recordDigest": "sha256:674a7d9a4a6e7af422264ef634233a6535a8cd62071df8bc43b5c5cf33017d89"
+        },
+        "second": {
+          "recordId": "chemie-q1-independent-b-v4-6765f741-42a6-55c5-a218-81b883b1f5ae",
+          "recordDigest": "sha256:f7fbd461331c49511f4091c25882daf8fbfc195de66972f26f890e4737234af7"
+        }
+      },
+      "rationaleDe": "Beide Runden erhalten die tatsächlich erforderliche betreute Verseifungsdurchführung, Glycerin/3 Fettsäuresalze und Aussalzen als Trennung. Neue Fettfälle sind kompatibel. P bleibt E1/G1 needs_human_review; keine echte Praxis wird aus dem PNG abgeleitet.",
+      "rationaleEn": "Both rounds retain required actual supervised saponification, glycerol and three fatty-acid salts, and salting out as separation. Different fat cases are compatible. P remains E1/G1 needs_human_review; an image does not establish practical performance."
+    },
+    {
+      "decisionId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5-decision-008",
+      "goalId": "6966df95-f125-5ecc-af8e-0442545d9f17",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8b8e10c8986185b84c28ed8f2287a62e3f0fb894dd9701e83a02702df90969ab",
+      "pageFingerprint": "sha256:e70ba63e99a2250e493a0146afad5da61a997c0362443cd9fda5c9a42e173e40",
+      "goalReviewContextFingerprint": "sha256:782fe4f8228a3233a0cc3caab5eccb352522e3cd714158fcb630edd23a8c0277",
+      "finalText": {
+        "titleDe": "Micellenbildung deuten",
+        "titleEn": "Interpret micelle formation",
+        "descriptionDe": "Die lernende Person kann aus der amphiphilen Struktur von Seifen ihre Anordnung an Grenzflächen und in Micellen, ihre Emulgatorwirkung und die Verringerung der Oberflächenspannung von Wasser erklären.",
+        "descriptionEn": "The learner can use the amphiphilic structure of soaps to explain their arrangement at interfaces and in micelles, their emulsifying action, and the reduction of the surface tension of water."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-q1-fifteen-current-independent-d-a-20261005-v2.record-008",
+          "recordDigest": "sha256:2bef08b95c5d3a5db249968ca02f954416fed8b6c2e9a7d8b6e607787cf80e8a"
+        },
+        "second": {
+          "recordId": "chemie-q1-independent-b-v4-6966df95-f125-5ecc-af8e-0442545d9f17",
+          "recordDigest": "sha256:1688110b423c3284920f57efa53e0a8999ed4a8d21cc3082516173d45d2420ad"
+        }
+      },
+      "rationaleDe": "Beide Runden verbinden Amphiphilie, Orientierung, Micellen/Grenzfläche, Emulgieren und Oberflächenspannung. Schematische Öltröpfchen sind keine maßstäbliche gewöhnliche Micelle; der pH-Brønsted-Begleiter bleibt separat.",
+      "rationaleEn": "Both rounds connect amphiphilicity, orientation, micelles/interfaces, emulsification and surface tension. Schematic oil droplets are not scale depictions of ordinary micelles; the pH/Brønsted companion remains separate."
+    },
+    {
+      "decisionId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5-decision-009",
+      "goalId": "e874ee60-4569-5830-81bf-11f86f0c63ac",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0d5fb5f135770ac288c1fa2966b4e32fcd6c855474c757ae958583afabfa4af9",
+      "pageFingerprint": "sha256:dc61e6fdb19747fedfca277e08afc8efd9ca1b9e4ce30900bdfa10d34f74d391",
+      "goalReviewContextFingerprint": "sha256:74ca5be9a92d9aef81728f00f62016dded0c09af3eef5abca5adc46ebd864861",
+      "finalText": {
+        "titleDe": "Seifen und moderne Tenside vergleichen",
+        "titleEn": "Compare soaps and modern surfactants",
+        "descriptionDe": "Die lernende Person kann Seifen von modernen Tensiden anhand von Aufbau und Eigenschaften unterscheiden und Vor- sowie Nachteile verschiedener Tenside fachlich bewerten.",
+        "descriptionEn": "The learner can distinguish soaps from modern surfactants based on structure and properties and evaluate advantages and disadvantages of different surfactants."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-q1-fifteen-current-independent-d-a-20261005-v2.record-009",
+          "recordDigest": "sha256:e00079dc7a7ab7d9c45b96ee0c5dc07e266135be685e27e150f5e6041f60f4c2"
+        },
+        "second": {
+          "recordId": "chemie-q1-independent-b-v4-e874ee60-4569-5830-81bf-11f86f0c63ac",
+          "recordDigest": "sha256:f3ea799c1bb4b58f0f5413c05e384f3c649a07ddd3ebe1aafac20e659e0447b3"
+        }
+      },
+      "rationaleDe": "Beide Runden erhalten den tatsächlichen BY-SekI-Vergleichs-/Bewertungsoperator. Kopfgruppen/Anwendungsdaten tragen bedingte Vor- und Nachteile; keine universelle Synthetik-/Bioabbaubarkeitseigenschaft. Eigenes aktuelles P ist extern vorhanden, auch wenn A wegen Null im Buchfeld create empfiehlt.",
+      "rationaleEn": "Both rounds retain the actual BY lower-secondary compare/evaluate operator. Head groups and application data support conditional advantages and disadvantages, without universal synthetic-surfactant or biodegradability properties. Current P exists externally even though A recommends create from the null book field."
+    },
+    {
+      "decisionId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5-decision-010",
+      "goalId": "1837690e-cfb1-5b1c-96c8-0fb40d6d5d69",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f5dc96676c6951d7d1cef87060a5ce7f1aebb7bf77f2fd772c4b3840ff71499d",
+      "pageFingerprint": "sha256:cd77b8264f7b47569bf30a4ab755b0267d4606f1aeacff255a250267b3cd2ab9",
+      "goalReviewContextFingerprint": "sha256:ccc0f4145d22f69685821090c0848aa55b4256d6aa58bf737585f157b29f757e",
+      "finalText": {
+        "titleDe": "Waschvorgänge beeinflussen",
+        "titleEn": "Influence washing processes",
+        "descriptionDe": "Die lernende Person kann den Einfluss von Temperatur, Wasserhärte und Tensidkonzentration auf die Waschwirkung erklären und dabei Dispergiervermögen, Micellenbildung und die Bildung schwer löslicher Kalkseifen berücksichtigen.",
+        "descriptionEn": "The learner can explain the influence of temperature, water hardness, and surfactant concentration on washing action, taking dispersing capacity, micelle formation, and the formation of poorly soluble calcium and magnesium soaps into account."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-q1-fifteen-current-independent-d-a-20261005-v2.record-010",
+          "recordDigest": "sha256:ba4bc868751d4ac1f5f9152b61cc6140165e2bfa79519bb6f17ce12a0be6e9e2"
+        },
+        "second": {
+          "recordId": "chemie-q1-independent-b-v4-1837690e-cfb1-5b1c-96c8-0fb40d6d5d69",
+          "recordDigest": "sha256:2594ba728cf2c6b08671d21cf51657d7760e25b722bc28e2a72ecf287f9356cd"
+        }
+      },
+      "rationaleDe": "Beide Runden prüfen einen kontrollierten Waschfaktoren-Zusammenhang samt Dispergierung/Micellen und Kalkseifen. Neue Datenfälle sind kompatibel, keine unbegrenzte Temperatur-/Konzentrations- oder Schaumgarantie.",
+      "rationaleEn": "Both rounds assess a controlled washing-factor relation including dispersion/micelles and insoluble soaps. New data cases are compatible; there is no unlimited temperature, concentration or foam guarantee."
+    },
+    {
+      "decisionId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5-decision-011",
+      "goalId": "8a491e3b-5d0b-51d3-9b14-0977ec035dd6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9f64e39c5bb8312b4c1e3803af1c3c18c01c8b0c4efe2361b004fd2c8b518836",
+      "pageFingerprint": "sha256:3073bcc1ea81f8fda16838bdd606eab70b0ee122c98cbd01166cfc0a6ac944f4",
+      "goalReviewContextFingerprint": "sha256:3f22bc0d0fdc801a9b84e59a20ef506841ae947b0dc0c1c88de3325d2b2a8e44",
+      "finalText": {
+        "titleDe": "Wasserhärte unterscheiden und Enthärtung erklären (LK)",
+        "titleEn": "Distinguish water hardness and explain softening (LK)",
+        "descriptionDe": "Die lernende Person kann temporäre, permanente und Gesamthärte anhand der beteiligten Ionen unterscheiden und die Wirkung geeigneter Enthärtungsverfahren erklären.",
+        "descriptionEn": "The learner can distinguish temporary, permanent, and total water hardness using the ions involved and explain how suitable water-softening methods work."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-q1-fifteen-current-independent-d-a-20261005-v2.record-011",
+          "recordDigest": "sha256:8dfce0877d8a3ce51cff70057b523871b24ed086456b4d944fe011e218efc9fa"
+        },
+        "second": {
+          "recordId": "chemie-q1-independent-b-v4-8a491e3b-5d0b-51d3-9b14-0977ec035dd6",
+          "recordDigest": "sha256:abb36a79b255b800ce3eac0763e75235c19b501b80436d344ef4fcfabee5b8a8"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen temporäre/permanente/Gesamthärte und Ionenaustausch, das calciumbezogene Carbonatbeispiel statt universellem MgCO3. Der frühere Titelclip ist am tatsächlichen aktuellen Bild nicht reproduzierbar.",
+      "rationaleEn": "Both rounds confirm temporary/permanent/total hardness and ion exchange, using a calcium carbonate example rather than universal MgCO3. The earlier title-clipping concern is not reproduced in actual current views."
+    },
+    {
+      "decisionId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5-decision-012",
+      "goalId": "e9ea1606-5018-5a36-9ac2-8359747a65d4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:97927c97eb56f951b3cbe4a4279fbc6c20c053362882d38507be654ac55d255a",
+      "pageFingerprint": "sha256:ebb68f16fcafe71fabd3d21cc3af4ec00ac2e9e82425dda95fd70c4f758677da",
+      "goalReviewContextFingerprint": "sha256:ba131cf59427422d0dee40fad0fb8b95f2ba721e6ed57ef26798c4acf58abc50",
+      "finalText": {
+        "titleDe": "Biologische Abbaubarkeit",
+        "titleEn": "Biodegradability",
+        "descriptionDe": "Die lernende Person kann Kriterien der Tensid-Bioabbaubarkeit erläutern.",
+        "descriptionEn": "The learner can explain criteria of surfactant biodegradability."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-q1-fifteen-current-independent-d-a-20261005-v2.record-012",
+          "recordDigest": "sha256:779207f34e59c540f016b0a810ec7d3257591bc4eeefeb163dfcb357a4609c01"
+        },
+        "second": {
+          "recordId": "chemie-q1-independent-b-v4-e9ea1606-5018-5a36-9ac2-8359747a65d4",
+          "recordDigest": "sha256:968243bb8b5130fbd4fd8805d33bcc2fe2cf4b46103468ce62175295981e35c5"
+        }
+      },
+      "rationaleDe": "Beide Runden begrenzen die Kompetenz auf Abbaubarkeitskriterien und trennen Primärwirkungverlust von geeigneten Endpunkten/Umwandlung. Testbedingungen und Grenzen bleiben nötig; spezielle LK-Wege und Rechtsfreigabe werden nicht mit behauptet.",
+      "rationaleEn": "Both rounds limit the competence to biodegradability criteria, distinguishing primary functional loss from suitable endpoints and transformation. Conditions and limits remain necessary; advanced pathways and legal clearance are not claimed."
+    },
+    {
+      "decisionId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5-decision-013",
+      "goalId": "33e845cc-1a7b-50d5-99b3-8079575c4e6a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1f24cb04358344399da46dc463502387775681fb4767e547a2c3a2b5a56e75b3",
+      "pageFingerprint": "sha256:a97c05e85f7a9451e799c45adcfcf1aaeb9c2690364c08905fa60d164f6c0454",
+      "goalReviewContextFingerprint": "sha256:e0b7aadef2519974416c235d27907eae7627c6f9e721df53563280636459ad7f",
+      "finalText": {
+        "titleDe": "Konservierungsmethoden vergleichen",
+        "titleEn": "Compare preservation methods",
+        "descriptionDe": "Die lernende Person kann historische und moderne Verfahren der Lebensmittelkonservierung gegenüberstellen und Risiken benennen.",
+        "descriptionEn": "The learner can contrast historical and modern methods of food preservation and name risks."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-q1-fifteen-current-independent-d-a-20261005-v2.record-013",
+          "recordDigest": "sha256:2acfcd24760d057ea17c8629521ee17683e8be5f89c2bebae0ee8aecb2afaba3"
+        },
+        "second": {
+          "recordId": "chemie-q1-independent-b-v4-33e845cc-1a7b-50d5-99b3-8079575c4e6a",
+          "recordDigest": "sha256:d0fcb6c3d8097dc602998c5c446a5495fe499291925392c2c11e646276179e96"
+        }
+      },
+      "rationaleDe": "Beide Runden verbinden historische/moderne Wirkprinzipien mit konkreten kontextabhängigen Risiken; modern ist keine Sicherheitsgarantie. Besondere Sorbin-/Redox- oder quantitative Quellen-HOLDs bleiben offen.",
+      "rationaleEn": "Both rounds relate historical/modern operating principles to concrete contextual risks; modern is no safety guarantee. Specific sorbate, redox or quantitative source HOLDs remain open."
+    },
+    {
+      "decisionId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5-decision-014",
+      "goalId": "db66635f-f1d1-5f70-bcc0-fed1ae424e52",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8a3d98faf2d6ccafe1575200b87a4ecd222f89bbe7f045d2a27299f1599e5899",
+      "pageFingerprint": "sha256:650103a26bbe5fc841ed60f5bdb39ea8c568862feb33da703272ea572b789762",
+      "goalReviewContextFingerprint": "sha256:3c013a6f87511c4625577ac7df9a7ae0cdd2cc27c3ce162935a2711699b9d93a",
+      "finalText": {
+        "titleDe": "Ascorbinsäure nachweisen",
+        "titleEn": "Detect ascorbic acid",
+        "descriptionDe": "Die lernende Person kann einen qualitativen Nachweis von Ascorbinsäure durchführen und die beobachtete Reduktion des Nachweisreagenzes mit der antioxidativen Wirkung der Ascorbinsäure erklären.",
+        "descriptionEn": "The learner can carry out a qualitative test for ascorbic acid and explain the observed reduction of the test reagent through the antioxidant action of ascorbic acid."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-q1-fifteen-current-independent-d-a-20261005-v2.record-014",
+          "recordDigest": "sha256:431393da6894b19f352f3cba8cec52fce047c9b59e2b01fbe6b985d2dd7e8615"
+        },
+        "second": {
+          "recordId": "chemie-q1-independent-b-v4-db66635f-f1d1-5f70-bcc0-fed1ae424e52",
+          "recordDigest": "sha256:f605014dc9dc510026ef227a92149fc9cf0d6b77022123911b1af64d238f47e2"
+        }
+      },
+      "rationaleDe": "Beide Runden erhalten tatsächlichen qualitativen betreuten Nachweis, Reduktion des Reagenzes durch Elektronendonator-Ascorbat und Matrixgrenzen. Iod-/DCPIP-Fälle sind passende Varianten; keine Konzentrationsbestimmung oder behauptete Erprobung.",
+      "rationaleEn": "Both rounds retain actual supervised qualitative testing, reagent reduction by electron-donating ascorbate and matrix limits. Iodine and DCPIP are suitable variants; no concentration determination or trial is claimed."
+    },
+    {
+      "decisionId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5-decision-015",
+      "goalId": "bd36dc58-c93e-5247-9e82-da2f9e4e2bed",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:13e57adc1c2ca4b566ae973c7a9c87111c9ea49f5d395933fabc91652df87ce3",
+      "pageFingerprint": "sha256:2d74f7e3a3cc02bc2886c9679935a62546f0152d0c57aae3c98ff36762263c8b",
+      "goalReviewContextFingerprint": "sha256:c6403cd872f6f1c60c1e98e328b5c191c23ca5718df95392c750217a2055a7a1",
+      "finalText": {
+        "titleDe": "Di- und Tricarbonsäuren strukturell beschreiben (LK)",
+        "titleEn": "Describe di- and tricarboxylic acids structurally (LK)",
+        "descriptionDe": "Die lernende Person kann Di- und Tricarbonsäuren anhand mehrerer Carboxylgruppen strukturell beschreiben und geeignete Strukturformeln verwenden.",
+        "descriptionEn": "The learner can structurally describe di- and tricarboxylic acids using multiple carboxyl groups and suitable structural formulas."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-q1-fifteen-current-independent-d-a-20261005-v2.record-015",
+          "recordDigest": "sha256:d363e3c0920325f03c90e7c502b3e975a8168a1ea35cf8b00392fbb3bef13d8d"
+        },
+        "second": {
+          "recordId": "chemie-q1-independent-b-v4-bd36dc58-c93e-5247-9e82-da2f9e4e2bed",
+          "recordDigest": "sha256:5695672def971947507d999e2bcf0bb670371b4b37ae95bc5d161c4e640dc4b4"
+        }
+      },
+      "rationaleDe": "Beide Runden reparieren ausschließlich die bestehende aktuelle Seiten-/Quellen-/Voraussetzungsbindung. Die gültige unveränderte Di-/Trisäure-Strukturkompetenz und P/V bleiben erhalten, kein neuer fachlicher Abschluss.",
+      "rationaleEn": "Both rounds repair only the current page/source/prerequisite binding. Preserve the valid unchanged di/tricarboxylic-acid structure competence and P/V; this is not a new scientific completion."
+    }
+  ],
+  "manifestFingerprint": "sha256:a64d801c3d1da7653c05d26f85adcf5cf40b980c833276b4d69751ffe3cd1515"
+}

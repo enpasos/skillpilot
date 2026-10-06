@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUTC": "2026-10-05T23:44:35.913286+00:00",
+  "recordKind": "Observed tool terminals and independent child-process native receipts; no inferred command execution",
+  "successfulActualOuterExecutions": [
+    {
+      "sessionId": 15549,
+      "script": "audit_native_views_and_projection.mts",
+      "actualExitCode": 0
+    },
+    {
+      "sessionId": 9002,
+      "script": "audit_native_memory_and_negative_witnesses.py",
+      "actualExitCode": 0
+    },
+    {
+      "sessionId": 59401,
+      "script": "audit_native_whole_book_sources.mts",
+      "actualExitCode": 0
+    },
+    {
+      "sessionId": 87218,
+      "script": "audit_final_candidate_plan.py",
+      "actualExitCode": 0
+    }
+  ],
+  "provisionalFailedReviewerExecutions": [
+    {
+      "chunkId": "0b6b0a",
+      "script": "audit_native_memory_and_negative_witnesses.py",
+      "actualExitCode": 1,
+      "reason": "Wrong bootstrap ROOT parents index; failed before any native execution or alias creation; corrected to actual repository root"
+    },
+    {
+      "sessionId": 55847,
+      "script": "audit_final_candidate_plan.py",
+      "actualExitCode": 1,
+      "reason": "Assumed source-witness helper spelling did not occur in actual source; actual hasExactLearnerAnchorScope normalized stage body was subsequently inspected and asserted"
+    }
+  ],
+  "childNativeActualReceipts": [
+    "independent-native-memory383-final-views.actual.receipt.json",
+    "independent-native-negative-missing-tree.actual.receipt.json",
+    "independent-native-negative-missing-vertebrate.actual.receipt.json"
+  ],
+  "activeWrites": false,
+  "newScientificCompletions": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}

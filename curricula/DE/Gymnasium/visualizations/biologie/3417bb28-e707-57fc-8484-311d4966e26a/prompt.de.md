@@ -1,0 +1,25 @@
+# Lernzielvisualisierung: Variabilität durch Mutation und Rekombination erklären
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `3417bb28-e707-57fc-8484-311d4966e26a`
+- Titel: Variabilität durch Mutation und Rekombination erklären
+- Beschreibung: Die lernende Person kann an einfachen Beispielen erklären, wie Veränderungen von Genen durch Mutation und neue Kombinationen vorhandener Erbinformation durch Rekombination Unterschiede zwischen Individuen einer Art hervorbringen.
+
+## Generator
+
+- Provider: OpenAI built-in image_gen; model identifier not exposed
+- Status: pilot
+- Quellbild: `3417bb28-e707-57fc-8484-311d4966e26a.png`
+- Public Asset: `/assets/goal-visualizations/biologie/3417bb28-e707-57fc-8484-311d4966e26a/3417bb28-e707-57fc-8484-311d4966e26a.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational. Asset: SkillPilot Biology German Gymnasium goal illustration, one PNG raster image. Friendly abstract comic, warm pale yellow/blue/green palette, rounded shapes, bold clear outlines, natural soft background, like a helpful illustrated biology textbook. Wide landscape near16:9, about1600x900 or native close equivalent. Composition must work at360px mobile and680px PC without cropping: large dominant biological objects, generous space, only essential short large handwritten German labels, no fine print. No photorealism, sterile engineering schematic, SVG, logo, watermarks, UI or exercise answers. This is orientation and a supplied model, never an assessment. No notebook/person perspective unless specifically requested.
+Primary request: clearly distinguish gene change and new combination in a deliberately non-molecular supplied model. Two large soft rounded panels. LEFT header exactly 'Mutation': one abstract information tile labelled 'Gen' before an arrow and the corresponding tile labelled 'Gen*' after it; one tile detail/color symbol changes, not the entire organism magically. A small paired leaf-trait example below has a dotted connecting arrow and a question mark, conveying a possible rather than guaranteed visible effect. RIGHT header exactly 'Rekombination': two parent information strips each with exactly two distinct existing tile colors/shapes; after one arrow, two offspring strips use new combinations of those existing tile types, with no third novel tile/color created. Single large bottom label exactly 'vereinfachtes Modell'. No DNA strands, codons, mutation sequences, transcription, replication, molecular repair or purposeful mutations. Keep tile counts and the distinction correct; mostly objects, very few big labels, readable360px.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

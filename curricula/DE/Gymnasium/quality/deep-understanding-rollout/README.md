@@ -1,7 +1,11 @@
 # Deep-understanding rollout progress
 
-This directory configures the deterministic progress report for the delegated
-Mathematics and Physics deep-understanding rollout.
+This directory configures the central deterministic five-gate report for
+Mathematics, Physics, Chemistry and Biology. Current work targets Chemistry and
+Biology; the achieved Mathematics and Physics M7 floors remain protected.
+
+Current continuation:
+[Chemistry/Biology NI checkpoint and retained Chemistry candidate](../../../../../docs/qa-ci/chemie-biologie-m7-ni-quantitative-continuation-2026-10-06.md).
 
 A curricular-atomic goal counts only when all five gates are current at once:
 
@@ -15,8 +19,9 @@ A curricular-atomic goal counts only when all five gates are current at once:
 5. the visualization-QA record is current and passes the repository's existing
    content/asset binding and approval checks. Technical
    `deferred_provider_limitation` remains unfinished work and never completes
-   gate V. An ordinary missing link, stale asset, stale text, rejection or
-   explicit human error finding also leaves the gate open.
+   gate V. An ordinary missing link, stale asset, stale text or rejected machine
+   review leaves the gate open. Human image approvals and findings remain
+   separate release evidence; neither grants nor vetoes machine gate V.
 
 The denominator is never configured manually. It is recomputed from the
 authoritative semantic-kind ledger after checking complete canonical coverage,

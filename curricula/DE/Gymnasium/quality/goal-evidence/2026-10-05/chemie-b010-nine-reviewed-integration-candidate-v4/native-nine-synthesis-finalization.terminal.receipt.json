@@ -1,0 +1,102 @@
+{
+  "commands": [
+    {
+      "name": "dual-summarize",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-corrected-image-current-candidate-v3/batch.config.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-b010-five-corrected-native-isolated-20261005-v3",
+      "startedAtUTC": "2026-10-05T18:05:51.962204+00:00",
+      "completedAtUTC": "2026-10-05T18:05:52.802264+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-nine-reviewed-integration-candidate-v4/dual-summarize.stdout.txt",
+      "stdoutSHA256": "e20d710b98d1798995cbe35d5b168b767f90b8d7914ba18dea740a3aefedc154",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-nine-reviewed-integration-candidate-v4/dual-summarize.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "synthesis-manifest-generate",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-corrected-image-current-candidate-v3/batch.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-corrected-image-current-candidate-v3/native-finalbook/synthesis-authoring.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-b010-five-corrected-native-isolated-20261005-v3",
+      "startedAtUTC": "2026-10-05T18:05:52.802643+00:00",
+      "completedAtUTC": "2026-10-05T18:05:53.812465+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-nine-reviewed-integration-candidate-v4/synthesis-manifest-generate.stdout.txt",
+      "stdoutSHA256": "569d947aafde08e534695eff1a2c6c3fa0e1f20e7670b48d84efaa26c1a17a94",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-nine-reviewed-integration-candidate-v4/synthesis-manifest-generate.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "nine-resolutions-materialize",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-corrected-image-current-candidate-v3/batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-corrected-image-current-candidate-v3/native-finalbook/synthesis-decisions.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-b010-five-corrected-native-isolated-20261005-v3",
+      "startedAtUTC": "2026-10-05T18:05:53.812924+00:00",
+      "completedAtUTC": "2026-10-05T18:05:55.318348+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-nine-reviewed-integration-candidate-v4/nine-resolutions-materialize.stdout.txt",
+      "stdoutSHA256": "5350fe1ac6d9c00f17edf76c237983e97ae295e1da77c3fdeb9a3a6b9700a864",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-nine-reviewed-integration-candidate-v4/nine-resolutions-materialize.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "nine-final-index-materialize",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-corrected-image-current-candidate-v3/batch.config.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-b010-five-corrected-native-isolated-20261005-v3",
+      "startedAtUTC": "2026-10-05T18:05:55.318787+00:00",
+      "completedAtUTC": "2026-10-05T18:05:56.600066+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-nine-reviewed-integration-candidate-v4/nine-final-index-materialize.stdout.txt",
+      "stdoutSHA256": "a16d3dc5be4e31753e347782256e2bd21ea1869d1cfae008c3574153c7ff8e14",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-nine-reviewed-integration-candidate-v4/nine-final-index-materialize.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "nine-final-index-check",
+      "args": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-five-corrected-image-current-candidate-v3/batch.config.json"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-b010-five-corrected-native-isolated-20261005-v3",
+      "startedAtUTC": "2026-10-05T18:05:56.600548+00:00",
+      "completedAtUTC": "2026-10-05T18:05:57.819888+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-nine-reviewed-integration-candidate-v4/nine-final-index-check.stdout.txt",
+      "stdoutSHA256": "faf0b885f605d900bb9aac54d9f0a334528bd6d13d51352fcff4c35bc4697a80",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-nine-reviewed-integration-candidate-v4/nine-final-index-check.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "humanApproval": false,
+  "activeWrites": 0
+}

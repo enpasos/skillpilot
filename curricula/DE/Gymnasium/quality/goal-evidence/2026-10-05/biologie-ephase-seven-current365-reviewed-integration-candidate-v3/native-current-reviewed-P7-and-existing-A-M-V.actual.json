@@ -1,0 +1,107 @@
+{
+  "commands": [
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current365-reviewed-integration-candidate-v3/positive-evidence.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current365-reviewed-integration-candidate-v3/positive-evidence.candidates.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-q1-bacterial-structure-fission-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T20:14:22.338254+00:00",
+      "completedAtUTC": "2026-10-05T20:14:22.907753+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current365-reviewed-integration-candidate-v3/p7-native-materialize.stdout.txt",
+      "stdoutSHA256": "cfe47a9e5b563dc9f14850842d4756f42db22556322bc25e762c0f499e12e0c6",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current365-reviewed-integration-candidate-v3/p7-native-materialize.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current365-reviewed-integration-candidate-v3/positive-evidence.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-q1-bacterial-structure-fission-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T20:14:22.908286+00:00",
+      "completedAtUTC": "2026-10-05T20:14:23.389729+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current365-reviewed-integration-candidate-v3/p7-native-current-check.stdout.txt",
+      "stdoutSHA256": "65405d89b821d018d8a361c5bf02b83fce7111b26169d9eada8e6e669f502997",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current365-reviewed-integration-candidate-v3/p7-native-current-check.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-reviewed-integration-candidate-v2/full-atomicity.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-q1-bacterial-structure-fission-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T20:14:23.390348+00:00",
+      "completedAtUTC": "2026-10-05T20:14:23.699342+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current365-reviewed-integration-candidate-v3/a365-current-preservation-check.stdout.txt",
+      "stdoutSHA256": "221333c1873ffbeeb238556219d705431ec9e5e701a8d4da776b9c61a9a94f56",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current365-reviewed-integration-candidate-v3/a365-current-preservation-check.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-reviewed-integration-candidate-v2/full-memory.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-q1-bacterial-structure-fission-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T20:14:23.699886+00:00",
+      "completedAtUTC": "2026-10-05T20:14:24.015756+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current365-reviewed-integration-candidate-v3/m365-current-preservation-check.stdout.txt",
+      "stdoutSHA256": "cf4c7cc90fe903d6d4666e52bae8b6f28353089d84ab5039e933db2edad53bbf",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current365-reviewed-integration-candidate-v3/m365-current-preservation-check.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject=biologie",
+        "--check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-q1-bacterial-structure-fission-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T20:14:24.016357+00:00",
+      "completedAtUTC": "2026-10-05T20:14:24.672139+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current365-reviewed-integration-candidate-v3/v49-existing-current-preservation-check.stdout.txt",
+      "stdoutSHA256": "d5dd066915f98b2427bd60be89081b04791f6d28b0b13da4fa0fdbbbcca23b84",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current365-reviewed-integration-candidate-v3/v49-existing-current-preservation-check.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json",
+        "--check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-q1-bacterial-structure-fission-native-isolated-20261005-v1",
+      "startedAtUTC": "2026-10-05T20:14:24.672716+00:00",
+      "completedAtUTC": "2026-10-05T20:14:25.441658+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current365-reviewed-integration-candidate-v3/source-atlas-current365-check.stdout.txt",
+      "stdoutSHA256": "d299ae8dae164168ab6674037ebaaa0762bce4ef2e2c0f2bd01bcf7e14094497",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ephase-seven-current365-reviewed-integration-candidate-v3/source-atlas-current365-check.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "newScienceReviewClaimed": false,
+  "humanApproval": false,
+  "activeWrites": 0
+}

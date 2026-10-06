@@ -1,0 +1,17 @@
+node:internal/fs/promises:637
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/chemie-q1-quantitative-atomic-split-native-isolated-20261005-v1/curricula/DE/Gymnasium/quality/goal-evidence/prompts/chemistry-positive-understanding-evidence-profile-criteria-v1.md'
+    at async open (node:internal/fs/promises:637:25)
+    at async readFile (node:internal/fs/promises:1249:14)
+    at async Promise.all (index 2)
+    at async buildPositiveGoalEvidenceCandidateRecords (/home/enpasos/projects/skillpilot/tmp/chemie-q1-quantitative-atomic-split-native-isolated-20261005-v1/app/scripts/materializePositiveGoalEvidenceCandidates.ts:183:56)
+    at async main (/home/enpasos/projects/skillpilot/tmp/chemie-q1-quantitative-atomic-split-native-isolated-20261005-v1/app/scripts/materializePositiveGoalEvidenceCandidates.ts:289:19) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/tmp/chemie-q1-quantitative-atomic-split-native-isolated-20261005-v1/curricula/DE/Gymnasium/quality/goal-evidence/prompts/chemistry-positive-understanding-evidence-profile-criteria-v1.md'
+}
+
+Node.js v20.20.2

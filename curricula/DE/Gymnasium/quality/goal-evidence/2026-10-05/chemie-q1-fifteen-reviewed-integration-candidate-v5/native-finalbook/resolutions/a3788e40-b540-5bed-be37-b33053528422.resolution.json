@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-q1-fourteen-current-20261005-v4-resolution-a3788e40-b540-5bed-be37-b33053528422",
+  "goal": {
+    "goalId": "a3788e40-b540-5bed-be37-b33053528422",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:7792898d5d7fc270f728cce983914e05270d20b754a561ebfc55d53cc67b5f6a",
+    "pageFingerprint": "sha256:86545fc54cc10e106f47135bfb797240793382e13d6fdbc180cc5a53fe2dc363",
+    "goalReviewContextFingerprint": "sha256:ca1d939ebbd57f3614780fd55524b67cffee5fc8fdb2387d98e0ffad409324e7",
+    "finalText": {
+      "titleDe": "Carbonsäuren beschreiben",
+      "titleEn": "Describe carboxylic acids",
+      "descriptionDe": "Die lernende Person kann Carboxygruppen in Struktur- und Skelettformeln erkennen und ihren sauren Charakter anhand geeigneter Beobachtungen nachweisen, homologe Reihen darstellen und Strukturformeln schreiben.",
+      "descriptionEn": "The learner can recognize carboxyl groups in structural and skeletal formulas and demonstrate their acidic character using suitable observations, represent homologous series, and write structural formulas."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-q1-fourteen-current-20261005-v4-a",
+      "campaignDigest": "sha256:14f1a9ddf19fcaea794f63cc12831e9990f26fbdbb9acef0b97d902d74fba8a1",
+      "roundId": "chemie-q1-fourteen-current-20261005-v4-first-pass-a",
+      "independenceGroupId": "chemie-q1-fourteen-current-20261005-v4-independent-a",
+      "reviewInputFingerprint": "sha256:824517468fa505eb2a69412bcdcdbd572eed64d74d02c10508899e45aa28299c",
+      "goalReviewContextFingerprint": "sha256:ca1d939ebbd57f3614780fd55524b67cffee5fc8fdb2387d98e0ffad409324e7",
+      "batchId": "chemie-q1-fourteen-current-20261005-v4-first-pass-a.batch-001",
+      "runId": "chemie-q1-fifteen-current-independent-d-a-20261005-v2",
+      "runManifestDigest": "sha256:7e13060f80fe83750624e24544bb00fb76bb4c4f8385ad831f1f14ca2d39a015",
+      "resultsDigest": "sha256:e622457dcd297888575f89dcae6422eb067b9ddcada0db83fe80c2290574bc4f",
+      "recordId": "chemie-q1-fifteen-current-independent-d-a-20261005-v2.record-001",
+      "recordDigest": "sha256:d2cbeabc6f0db7ecf853c5b77c03b01f2faa94c6aa6b2bca961e6a8ea4e73ff0"
+    },
+    "second": {
+      "campaignId": "chemie-q1-fourteen-current-20261005-v4-b",
+      "campaignDigest": "sha256:f3f4b61e1266fab6aa5b925447bed85436c80b5848d896d704ec30495dd9f584",
+      "roundId": "chemie-q1-fourteen-current-20261005-v4-first-pass-b",
+      "independenceGroupId": "chemie-q1-fourteen-current-20261005-v4-independent-b",
+      "reviewInputFingerprint": "sha256:824517468fa505eb2a69412bcdcdbd572eed64d74d02c10508899e45aa28299c",
+      "goalReviewContextFingerprint": "sha256:ca1d939ebbd57f3614780fd55524b67cffee5fc8fdb2387d98e0ffad409324e7",
+      "batchId": "chemie-q1-fourteen-current-20261005-v4-first-pass-b.batch-001",
+      "runId": "chemie-q1-fifteen-current-independent-d-b-v4-run-001",
+      "runManifestDigest": "sha256:de9849cb3c99e6e568c3d21a00786e6a5f400b03ff6031827aefcdaea2fa3d5f",
+      "resultsDigest": "sha256:6e72566b83ab26b013af7925eee014f92345f3d38fee57b72786ee0cbcf0eaeb",
+      "recordId": "chemie-q1-independent-b-v4-a3788e40-b540-5bed-be37-b33053528422",
+      "recordDigest": "sha256:bcf08dc3b85eaa757fa3ef16c792d3da6a80cc122960b1a068c641df8e61c2af"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:fa972acd13a5b3c66146de9412eaf25e211ee3a875ceb731d14937bf947fb5ac"
+  },
+  "status": "resolved",
+  "decision": "current_after_revision",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5",
+    "manifestDigest": "sha256:5c5ed2335a6d58f5a8a64a3fffebf2957dfcf27e33b72879633210a7a15783c6",
+    "manifestFingerprint": "sha256:a64d801c3d1da7653c05d26f85adcf5cf40b980c833276b4d69751ffe3cd1515",
+    "decisionId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-q1-fifteen-current-reviewed-synthesis-20261005-v5-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex technical Q1 integration synthesis after both actual complete current independent records were read",
+    "synthesizedAt": "2026-10-05T19:06:14.577Z",
+    "rationaleDe": "Beide Runden begrenzen die Stoffklassen-Erkennung auf COOH, saure Beobachtung und Reihendarstellung; keine exklusive Säureidentifikation. Nomenklatur/Eigenschaften bleiben eigene Begleiter.",
+    "rationaleEn": "Both rounds bound compound-class recognition to COOH, acidic observations and series representations without exclusive identification; naming and property companions remain separate.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Carboxygruppe verbindet Carbonyl- und Hydroxygruppe am selben Kohlenstoff; ihr saurer Charakter ist beobachtbar, aber allein kein exklusiver Stoffnachweis.",
+      "essentialUnderstandingEn": "A carboxyl group has carbonyl and hydroxyl functions on the same carbon; acidic behaviour is observable but is not an exclusive substance identification.",
+      "observablePerformanceDe": "Die lernende Person erkennt COOH in vollständigen und Skelettformeln, schreibt eine homologe Reihe und verknüpft passende Indikatorbeobachtungen mit saurem Verhalten.",
+      "observablePerformanceEn": "The learner identifies COOH in full and skeletal formulas, writes a homologous series and connects suitable indicator observations with acidic behaviour.",
+      "transferExpectationDe": "Sie unterscheidet bei neuen isomeren Formeln eine Carbonsäure von einem Ester und begründet, warum eine saure Probe ohne Strukturinformation nicht eindeutig zugeordnet ist.",
+      "transferExpectationEn": "The learner distinguishes a carboxylic acid from an ester in unfamiliar isomeric formulas and explains why an acidic sample alone is not identified uniquely."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-7f1b8f4934da62f9ece55801e08d2d1d96ef691e3ad025801f8b0933e16d296d",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale, evidenceProfileRecommendation; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale, evidenceProfileRecommendation; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:e9ec848f7769a21ad9e7cf0caa905c7f53b7660fa44400e105deaad4c2ef6fa6"
+}

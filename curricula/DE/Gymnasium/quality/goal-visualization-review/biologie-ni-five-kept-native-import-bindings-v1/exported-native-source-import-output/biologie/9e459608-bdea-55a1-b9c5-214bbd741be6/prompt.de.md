@@ -1,0 +1,29 @@
+# Lernzielvisualisierung: Abschnittsaustausch bei der Meiose erläutern
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `9e459608-bdea-55a1-b9c5-214bbd741be6`
+- Titel: Abschnittsaustausch bei der Meiose erläutern
+- Beschreibung: Die lernende Person kann an vorgegebenen Meiose-Chromosomenmodellen erläutern, wie der Austausch entsprechender Abschnitte zwischen Nichtschwesterchromatiden homologer Chromosomen neue Kombinationen der Erbinformation in Keimzellen erzeugt.
+
+## Generator
+
+- Provider: OpenAI built-in image_gen; model identifier not exposed
+- Status: pilot
+- Quellbild: `9e459608-bdea-55a1-b9c5-214bbd741be6.png`
+- Public Asset: `/assets/goal-visualizations/biologie/9e459608-bdea-55a1-b9c5-214bbd741be6/9e459608-bdea-55a1-b9c5-214bbd741be6.png`
+
+## Prompt
+
+```text
+Use case: precise-object-edit / targeted scientific educational correction.
+Edit target: the single referenced existing friendly comic illustration "Abschnittsaustausch". Keep the entire two-panel composition, all chromosome shapes and colors, sister-pair grouping, centromeres, before/after arrow, exchange arrows, text, background and approachable style.
+Correct ONLY the marked exchange regions in the left "Vorher" panel. The two existing dashed rectangular boxes currently mark interior pieces that stop ABOVE the chromatid tips, whereas the "Nachher" panel shows the entire distal tips exchanged. This is a factual mismatch.
+Remove those two existing rectangular boxes completely. Instead show a fine short dotted boundary across EACH INNER lower chromatid arm at exactly the same vertical level as the orange/blue color boundary in "Nachher". The exchange indication applies to the WHOLE part below this boundary INCLUDING THE ROUNDED TIP of each inner chromatid. If a subtle dashed outline is used, it must follow the whole distal tip down to its end, not enclose a middle segment. Do not add any boundary or exchanged color to the two outer chromatids. Keep both inner regions corresponding in position and equal length.
+The left chromosomes themselves remain all-orange and all-blue before the exchange. The right after-model stays exactly unchanged: outer chromatids unaltered, inner orange chromatid with a blue distal tip and inner blue chromatid with an orange distal tip. Existing short opposing exchange arrows can stay, linking the inner arms.
+One opaque PNG, landscape near 16:9 at about 1600 x 900 or the existing near-native size. This is a minimal factual correction, not a redesign. No extra text or labels, no other objects, no photorealism or sterile restyling. Main mechanism and changed boundaries must be clear at 360px image width.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

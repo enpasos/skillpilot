@@ -1,0 +1,18 @@
+node:fs:448
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/biologie-q1-bacterial-structure-fission-native-isolated-20261005-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-native-candidate-v1/native-finalbook/bundle/book-model.json'
+    at readFileSync (node:fs:448:20)
+    at read (/home/enpasos/projects/skillpilot/tmp/biologie-q1-bacterial-structure-fission-native-isolated-20261005-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-native-candidate-v1/compile-current-original-sources.mts:8:40)
+    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/biologie-q1-bacterial-structure-fission-native-isolated-20261005-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-native-candidate-v1/compile-current-original-sources.mts:10:72)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/tmp/biologie-q1-bacterial-structure-fission-native-isolated-20261005-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-native-candidate-v1/native-finalbook/bundle/book-model.json'
+}
+
+Node.js v20.20.2

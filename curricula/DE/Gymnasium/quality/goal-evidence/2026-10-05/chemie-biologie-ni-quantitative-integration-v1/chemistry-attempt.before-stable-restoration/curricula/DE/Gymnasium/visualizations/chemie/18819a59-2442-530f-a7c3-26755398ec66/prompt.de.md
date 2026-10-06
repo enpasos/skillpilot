@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Vorgegebenen Paraben-Ester quantitativ bestimmen (LK)
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `18819a59-2442-530f-a7c3-26755398ec66`
+- Titel: Vorgegebenen Paraben-Ester quantitativ bestimmen (LK)
+- Beschreibung: Die lernende Person kann eine geeignete quantitative Bestimmung eines vorgegebenen p-Hydroxybenzoesäureesters anhand seiner Molekülstruktur auswählen, mit Kontrollproben planen und durchführen und den Gehalt unter Berücksichtigung von Kalibrierung oder Reaktionsstöchiometrie, Verdünnung und Verfahrensgrenzen bestimmen.
+
+## Generator
+
+- Provider: OpenAI ChatGPT/Codex image_gen
+- Status: pending-independent-actual-review
+- Quellbild: `18819a59-2442-530f-a7c3-26755398ec66.png`
+- Public Asset: `/assets/goal-visualizations/chemie/18819a59-2442-530f-a7c3-26755398ec66/18819a59-2442-530f-a7c3-26755398ec66.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational. Create a NEW opaque PNG SkillPilot chemistry illustration landscape near16:9 about1600x900. Friendly clear abstract comic, pale sky-blue and cream, rounded panels, navy outlines and large rounded readable lettering consistent with educational chemistry pictures; key analytic distinction visible at360px phone and680px PC. Three generous panels for ONE analyte. Top exact title 'Paraben-Ester bestimmen'. Left 'Probe & Kontrollen': sample bottle 'Probe', distinct 'Blindprobe', three reference-standard vials 'Standards'; short analyte label 'Methylparaben (Beispiel)', no unnecessary molecular diagram. Center 'Trennen & messen': clear cartoon HPLC sequence pump→column→detector and separate chromatogram with vertical axis 'Signal', horizontal 'Zeit'; one main analyte peak with shaded integrated peak area. Right 'Kalibrieren': SEPARATE simple calibration graph vertical axis 'Peakfläche' horizontal 'Konzentration', three blue reference-standard points on a rising straight line only in a clearly bounded working interval; dotted sample guides intersect the line WITHIN interval. A simple dilution flask and large captions 'Verdünnung beachten' and 'Selektivität prüfen'. Scientific invariants: time on chromatogram and concentration on calibration distinct; content calibrated from area, never retention time; no out-of-range extrapolation. Pump column detector in order. HPLC one suitable method example, not mandatory in every school or all parabens. Standards and blank-control present. Methylparaben only specific example. No ascorbic acid/redox titration, no legal or lab execution claims, no fake equations. Only large short labels, no dense tiny compulsory text. No photograph or sterile technical redesign or SVG.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

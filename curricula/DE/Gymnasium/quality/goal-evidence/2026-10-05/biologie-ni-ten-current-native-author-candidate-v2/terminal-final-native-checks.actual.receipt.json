@@ -1,0 +1,140 @@
+{
+  "candidateOnly": true,
+  "authorTechnicalValidationOnly": true,
+  "currentIndependentDReviews": 0,
+  "currentIndependentVApprovals": 0,
+  "humanApprovals": 0,
+  "activeInputsBefore": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "45f3d79713ba3c5e0817df9e8da04989aacab3daf65e275838af9f35c91abfba",
+      "bytes": 923937
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "e4a357fe595902573af1f618add7667d0463e1c6053d47756d88bdff1ef4f2e0",
+      "bytes": 122813
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/biologie.semantic-kinds.json",
+      "sha256": "2ddc4d5e4a5cb8763aef980e64364a5e0b1d358c02c8baffa94780e23328c56c",
+      "bytes": 142708
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json",
+      "sha256": "698e5b500bba02f192152a33a82af153bf5b6b2e3bde2127c34df1ded1013a2e",
+      "bytes": 9343
+    }
+  ],
+  "activeInputsAfterExactlyIdentical": true,
+  "allChecksPassed": true,
+  "results": [
+    {
+      "check": "D18",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "tmp/biologie-ni-ten-current-native-author-candidate-v2-native-root/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/batch.config.json"
+      ],
+      "exitCode": 0,
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/terminal-final-native-checks/D18.actual.stdout.txt",
+      "sha256": "426ba6202b59cfc0507bb069375b2092dd127159b0c02d081c834bf4eebb6afb"
+    },
+    {
+      "check": "D5",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "tmp/biologie-ni-ten-current-native-author-candidate-v2-native-root/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/existing-five-bindings.batch.config.json"
+      ],
+      "exitCode": 0,
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/terminal-final-native-checks/D5.actual.stdout.txt",
+      "sha256": "e25bcd6e852633e607f0d008ea59fee0425f6d8323c3ccaf0724efd089d4d5ec"
+    },
+    {
+      "check": "P13",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "tmp/biologie-ni-ten-current-native-author-candidate-v2-native-root/app/scripts/positiveGoalEvidenceReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/positive.thirteen.native-author.config.json"
+      ],
+      "exitCode": 0,
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/terminal-final-native-checks/P13.actual.stdout.txt",
+      "sha256": "52da62134f9e309a77fe29463029694547d0c96e9615323d8b1fc1e279c360e9"
+    },
+    {
+      "check": "P5",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "tmp/biologie-ni-ten-current-native-author-candidate-v2-native-root/app/scripts/positiveGoalEvidenceReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/positive.five-predecessor.native-author.config.json"
+      ],
+      "exitCode": 0,
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/terminal-final-native-checks/P5.actual.stdout.txt",
+      "sha256": "b50e862356554e3988298d14f97474994471c964ca37fe0264a51f4f3a27c028"
+    },
+    {
+      "check": "A13",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/atomicity.thirteen.native-author.config.json"
+      ],
+      "exitCode": 0,
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/terminal-final-native-checks/A13.actual.stdout.txt",
+      "sha256": "a0a694f2f0cfa91de1ca6ec7b8d4762746b375ef0d4f9461e0a140cdbbdb9132"
+    },
+    {
+      "check": "M13cards10visibility",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/memory.thirteen.native-author.config.json"
+      ],
+      "exitCode": 0,
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/terminal-final-native-checks/M13cards10visibility.actual.stdout.txt",
+      "sha256": "dc03437e75899e6bddbc45a822d219a130c9f50c8e539cdf238d6d7480af1dec"
+    },
+    {
+      "check": "actualViews",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/verify_memory_visibility.mts"
+      ],
+      "exitCode": 0,
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/terminal-final-native-checks/actualViews.actual.stdout.txt",
+      "sha256": "0bb788a0a447207f626df863654e86aedac816ca94d95ae7c7ef72a0d032f069"
+    },
+    {
+      "check": "atlas383",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/check_native_atlas.mts"
+      ],
+      "exitCode": 0,
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/terminal-final-native-checks/atlas383.actual.stdout.txt",
+      "sha256": "862b4f8c933c8fa660d1b9d088b1108d2ed87e952f164946f94beffe391d4d9b"
+    },
+    {
+      "check": "protected49",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/verify_current_protection.mts",
+        "49"
+      ],
+      "exitCode": 0,
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-ten-current-native-author-candidate-v2/terminal-final-native-checks/protected49.actual.stdout.txt",
+      "sha256": "35e0c9a011477fca1022c97605d02a18503d023822457977d92af06085dceb88"
+    }
+  ],
+  "newScienceClosures": 0,
+  "restoredBindingClaims": 0
+}

@@ -1,0 +1,300 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-b010-nine-current-reviewed-synthesis-20261005-v4",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex B010 reviewed integration synthesis after actual independent A/B record comparison",
+  "synthesizedAt": "2026-10-05T17:55:02.115Z",
+  "batch": {
+    "batchId": "chemie-b010-five-corrected-image-current-20261005-v3",
+    "batchManifestDigest": "sha256:433148d5257587fd896f74cb03af1737499be49f4b6c24ea8a0b51b9ec448863",
+    "configDigest": "sha256:3afc6d9831bc5560c43c5c61e0d6863d58ecc5d06fdf78b1d2b9afd1953f377f",
+    "bundleFingerprint": "sha256:17de5b533130d87a4fff2dcc660af8a1cf68986ea19fa7824265b26987fffcd7",
+    "bookDigest": "sha256:bfbc4ff204938d39615ca5391087d7c21719f15e8ca6d3544ae7250e1bfc7c58",
+    "reviewInputFingerprint": "sha256:a3fa3ea950c4f75063466fa1163c7cf34153581ebcbe970c5b878f77a131aeed",
+    "dualSummaryDigest": "sha256:23a8bcb060fa881bb6231357b7299aeba709a2e4693928fe9215d2450f254767",
+    "canonicalLandscapeDigest": "sha256:15f646660b2ace23815ec36c3492a9a77a2943fcb3cb4789789f38337b44cd60"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-b010-five-corrected-image-current-20261005-v3-a",
+      "campaignDigest": "sha256:4e2cfb7e36246a984b6d1229294fe28df3e9ca76ecf176682d79cd6dc8e77909",
+      "roundId": "chemie-b010-five-corrected-image-current-20261005-v3-first-pass-a",
+      "independenceGroupId": "chemie-b010-five-corrected-image-current-20261005-v3-independent-a",
+      "reviewInputFingerprint": "sha256:a3fa3ea950c4f75063466fa1163c7cf34153581ebcbe970c5b878f77a131aeed",
+      "batchId": "chemie-b010-five-corrected-image-current-20261005-v3-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:9a68a993cfce47cf05e60414a94bc631dbe8dddd7637dea184a41a49a46ac4eb",
+      "runId": "chemie-b010-nine-independent-current-d-a-20261005-v3",
+      "runManifestDigest": "sha256:7c2635e6a323d0806340b2febf3d6095f76edb89e0b3ebafd3ceba07c8e79deb",
+      "resultsDigest": "sha256:2ba85f5782e8489bcfb8368f7cc0e64bf8f26aa89884905aee0558332edfdbb6"
+    },
+    "second": {
+      "campaignId": "chemie-b010-five-corrected-image-current-20261005-v3-b",
+      "campaignDigest": "sha256:02c9a9c0b8eddb8760533c6e30fb8e6e08e5743daa84a3db0c086a1bf5d15001",
+      "roundId": "chemie-b010-five-corrected-image-current-20261005-v3-first-pass-b",
+      "independenceGroupId": "chemie-b010-five-corrected-image-current-20261005-v3-independent-b",
+      "reviewInputFingerprint": "sha256:a3fa3ea950c4f75063466fa1163c7cf34153581ebcbe970c5b878f77a131aeed",
+      "batchId": "chemie-b010-five-corrected-image-current-20261005-v3-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:97ed6da11e4fc748569619dc21cce1d83045031b738ec42c9da9b9de1ed529ef",
+      "runId": "chemie-b010-nine-current-independent-d-b-v3-run-001",
+      "runManifestDigest": "sha256:2854d6bd80dcdc29c9247e39ebef0900d259b43c394ca305bdf7b7b5cd4816ce",
+      "resultsDigest": "sha256:71d4f572a20ae3a30f5a211d4c610c0aac78c4baa2055bf4eb4a8f408edfae08"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-b010-nine-current-reviewed-synthesis-20261005-v4-decision-001",
+      "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6f0e432626ddfe21d61e8ebfa35fc812211258768ea5091c872b269a6319cf1f",
+      "pageFingerprint": "sha256:574302e99e83f328e122c30b8d41b1a8c751a19db442f02bbb26c19d62ea8e21",
+      "goalReviewContextFingerprint": "sha256:2179c9b76196ab15aad7830e18a502d5c3d149f66f65dba0c492a2f4972cf6c2",
+      "finalText": {
+        "titleDe": "Stoffe und Eigenschaften beschreiben",
+        "titleEn": "Describe substances and properties",
+        "descriptionDe": "Die lernende Person kann Stoffe anhand von Eigenschaftsmerkmalen beschreiben und ordnen.",
+        "descriptionEn": "The learner can describe and classify substances based on properties."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-b010-nine-independent-current-d-a-20261005-v3.fcc73fb5-7413-557f-aea3-b9692a66ee75",
+          "recordDigest": "sha256:b8e9d32010efdf1a2f41d8203675e476593f57183fc444f2fa0690f358b81ed5"
+        },
+        "second": {
+          "recordId": "chemie-b010-independent-b-v3-fcc73fb5-7413-557f-aea3-b9692a66ee75",
+          "recordDigest": "sha256:e5b8c3f952ab8068aea4951ad29e3e46a7291a350f2d10c0ed0ebc80312efbc4"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Runden erhalten die unveränderte Stoffeigenschafts-Kompetenz und prüfen den passenden neuen Rückverweis zum Halogenziel. Unterschiedliche Beispiele wie Löslichkeit und Dichte sind kompatible Evidenzvarianten. Nur die aktuelle Seitenbindung wird ersetzt; kein neuer fachlicher Abschluss und keine neue P-Autorenschaft.",
+      "rationaleEn": "Both independent current rounds preserve the unchanged substance-property competence and check its appropriate new reverse link to the halogen goal. Solubility and density examples are compatible evidence variations. Replace only the current page binding, without a new scientific completion or P authorship."
+    },
+    {
+      "decisionId": "chemie-b010-nine-current-reviewed-synthesis-20261005-v4-decision-002",
+      "goalId": "42a84bca-d27e-581f-a43a-eee424f0504d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cb2615bbcbaf11d17039a279480013c17f6aea1b8e8171b47f81d8008ba89b48",
+      "pageFingerprint": "sha256:7fa19f50ac286b359c3c9e5d489b33928d1b12017d0921806f786baddd63d6a3",
+      "goalReviewContextFingerprint": "sha256:45c9fa329b287223255fc2c073dd8f6fd1721a08b70c038bf6394cdb3d991b2f",
+      "finalText": {
+        "titleDe": "Elemente, Verbindungen und Gemische unterscheiden",
+        "titleEn": "Distinguish elements, compounds, and mixtures",
+        "descriptionDe": "Die lernende Person kann Reinstoffe, Stoffgemische, Elemente und Verbindungen fachlich voneinander abgrenzen und mit Teilchenvorstellungen beschreiben.",
+        "descriptionEn": "The learner can distinguish pure substances, mixtures, elements, and compounds and describe them using particle ideas."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-b010-nine-independent-current-d-a-20261005-v3.42a84bca-d27e-581f-a43a-eee424f0504d",
+          "recordDigest": "sha256:7da990662b7633a7025832344f37850481c09bf45a379df6523765b9b674f4a0"
+        },
+        "second": {
+          "recordId": "chemie-b010-independent-b-v3-42a84bca-d27e-581f-a43a-eee424f0504d",
+          "recordDigest": "sha256:4bcd7dfcc361015b03a796af7a8476e5bc686111425cac07c436800568d24d6f"
+        }
+      },
+      "rationaleDe": "Beide Runden stimmen in Stoffarten-, Element-/Verbindungs- und Teilchenabgrenzung überein, einschließlich des zweiatomigen Elements als Gegenbeispiel. Die unveränderte Grundlage wird zum aktuellen Halogen-Nachfolger rückverbunden. Die Text-/P-Nachweise bleiben erhalten; nur die belegte aktuelle Seiten-/Kontextbindung wird ersetzt.",
+      "rationaleEn": "Both rounds agree on substance types, elements, compounds and particle-based classification, including the diatomic-element counterexample. Bind the unchanged foundation to its current halogen successor. Preserve text and P evidence and replace only the actually reviewed current page/context binding."
+    },
+    {
+      "decisionId": "chemie-b010-nine-current-reviewed-synthesis-20261005-v4-decision-003",
+      "goalId": "950c73c6-4ed1-488a-9267-1142e95e0055",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4c4a83eea4565c28074c30b147b0519a7dacc38752ccebaf0a37181a65e0ebda",
+      "pageFingerprint": "sha256:4bac3ffc01546321907c18ce9e7c92ab6694b18422edc1d14e5b4f77a130cb85",
+      "goalReviewContextFingerprint": "sha256:6821ccbdac9cd0ac7db437eccba4bf24f18a23f6f115515f02340779976d4d9b",
+      "finalText": {
+        "titleDe": "Einfache Ionengitter modellieren und Stoffeigenschaften erklären",
+        "titleEn": "Model simple ionic lattices and explain material properties",
+        "descriptionDe": "Die lernende Person kann einfache Ionengitter wie Natriumchlorid modellieren, ihre räumliche Anordnung einschließlich der Koordinationszahl beschreiben und typische Stoffeigenschaften durch elektrostatische Kräfte und Ionenbeweglichkeit erklären.",
+        "descriptionEn": "The learner can model simple ionic lattices such as sodium chloride, describe their spatial arrangement including coordination number, and explain typical material properties through electrostatic forces and ion mobility."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b010-nine-independent-current-d-a-20261005-v3.950c73c6-4ed1-488a-9267-1142e95e0055",
+          "recordDigest": "sha256:0491cff579071f1e7c1cb9b4d80694398a38ba3ad24ca43e21afad9328a28fcc"
+        },
+        "second": {
+          "recordId": "chemie-b010-independent-b-v3-950c73c6-4ed1-488a-9267-1142e95e0055",
+          "recordDigest": "sha256:0c096aff06fddbe8446535ad02a480d55096057f0deb9c6eff29139adfe96965"
+        }
+      },
+      "rationaleDe": "Die unabhängigen Runden stimmen in räumlich wiederholtem Ionengitter, Koordinationszahl sowie Kraft-/Beweglichkeits-Erklärung überein. Unterschiedliche Transferbeispiele prüfen denselben Modellzusammenhang. HE10.1 trägt die Gesamtbreite; BY C8.4 bleibt nur der ausgewiesene Teilzeuge. Das tatsächlich geprüfte sechszählige PNG bleibt exakt. Keine diskreten NaCl-Moleküle, historische Quellenneustarts oder Bildleistung als Lernerfolg.",
+      "rationaleEn": "The independent rounds agree on spatially repeating ionic lattices, coordination number and explanations through forces and ion mobility. Different transfer cases assess the same model relation. HE10.1 supports the full scope while BY C8.4 remains the specified partial witness. Preserve the actually reviewed six-neighbour PNG. No discrete NaCl molecules, repeated historical source reviews or inferred learner performance."
+    },
+    {
+      "decisionId": "chemie-b010-nine-current-reviewed-synthesis-20261005-v4-decision-004",
+      "goalId": "16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c7845ba61700e6ce2c3ad51e0b6fe1efd79c2de1da3c64745e44a5987a9be7d5",
+      "pageFingerprint": "sha256:00fb00e9db329d0db2227ffacf13d8cf356514f1b00e9feb7a9af6ac847700e0",
+      "goalReviewContextFingerprint": "sha256:6d404fa93e6bf2a2da86834fe2f58074eed14ee020454876aeda2e2bf3dedda2",
+      "finalText": {
+        "titleDe": "Reaktionen von Alkalimetallen und Alkalimetalloxiden mit Wasser deuten",
+        "titleEn": "Interpret reactions of alkali metals and alkali metal oxides with water",
+        "descriptionDe": "Die lernende Person kann Reaktionen von Alkalimetallen und ihren Oxiden mit Wasser anhand der Produkte vergleichen und erklären, weshalb alkalische Lösungen entstehen.",
+        "descriptionEn": "The learner can compare reactions of alkali metals and their oxides with water using the products and explain why alkaline solutions form."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b010-nine-independent-current-d-a-20261005-v3.16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+          "recordDigest": "sha256:9b90db154a5b479c445c3bf92fbf2476705eb6858e21eaf65c5dc416f04d1681"
+        },
+        "second": {
+          "recordId": "chemie-b010-independent-b-v3-16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+          "recordDigest": "sha256:e20c1f1a67e6bedc0efbcc042bd17731331c9910a55522a12640d80d5ead3932"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Fortsetzungen haben die tatsächliche neue PNG-Seite in PDF/HTML geprüft: Natrium an eindeutiger oberer Oberfläche ohne Flamme; richtige Metall-/Oxidprodukte und OH⁻ als alkalische Ursache. Lithium-/Kalium-Transferbeispiele sind kompatible einfache Datenfälle und keine universelle Peroxid-/Superoxidbehauptung. Der konkrete alte Bild-HOLD ist gelöst. Unveränderte Quellen-/Operator- und Zieltexte bleiben erhalten; e0 und H₂/Halogen/HCl bleiben ausgeschlossen.",
+      "rationaleEn": "Both independent continuations viewed the actual new PNG page in PDF/HTML: sodium on a clear upper surface without flame, correct metal/oxide products and OH⁻ as the cause of alkalinity. Lithium/potassium transfer examples are compatible simple supplied-data cases, not universal peroxide/superoxide claims. The specific historical image HOLD is resolved. Preserve unchanged source/operator and goal texts; exclude e0 and the hydrogen/halogen/HCl HOLD."
+    },
+    {
+      "decisionId": "chemie-b010-nine-current-reviewed-synthesis-20261005-v4-decision-005",
+      "goalId": "58486300-3f84-5aa1-9ed4-66186af62669",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2fe0dd9b7b342fd56b10083ddf7617761dd1808007b98e5ccf447f151e13749f",
+      "pageFingerprint": "sha256:06b166edc25461c4b34e96b19c1fd5815187985a2b37f699ed6fb19572139ec6",
+      "goalReviewContextFingerprint": "sha256:3db7fd605d2a8518b28819728c5d56ba4d9f743512f1e106983f006c18888348",
+      "finalText": {
+        "titleDe": "Halogene und ihre Verwendung charakterisieren",
+        "titleEn": "Characterize halogens and their uses",
+        "descriptionDe": "Die lernende Person kann typische Eigenschaften ausgewählter Halogene beschreiben und Verwendungen der elementaren Stoffe sowie ihrer Verbindungen mit den jeweils passenden Stoffeigenschaften begründen.",
+        "descriptionEn": "The learner can describe typical properties of selected halogens and justify uses of the elemental substances and their compounds using the relevant properties of each substance."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b010-nine-independent-current-d-a-20261005-v3.58486300-3f84-5aa1-9ed4-66186af62669",
+          "recordDigest": "sha256:65aeddfefdc7a1449160c51517e68e986025eb43da523212e46628eae65e26f4"
+        },
+        "second": {
+          "recordId": "chemie-b010-independent-b-v3-58486300-3f84-5aa1-9ed4-66186af62669",
+          "recordDigest": "sha256:ed13908bb765667e64cc4dc4f46d8d36a678ee787eb7e035e95c9da990edddbe"
+        }
+      },
+      "rationaleDe": "Beide Runden verlangen stoffgenaue Eigenschaften und Verwendungen und unterscheiden elementare Halogene von ihren Verbindungen, insbesondere Fluorid-Zahnpasta von F₂. HE9.2 belegt diesen begrenzten Alltags-/Eigenschaftsanteil; Metallreaktion und H₂/Halogen/HCl werden nicht mitfreigegeben. Das unveränderte JPG ist unabhängig tatsächlich KEEP-geprüft; semantisch kein offener Dissens.",
+      "rationaleEn": "Both rounds require substance-specific properties and uses and distinguish elemental halogens from compounds, especially fluoride toothpaste from F₂. HE9.2 supports this bounded everyday/property part; metal reactions and hydrogen/halogen/HCl are not released. The unchanged JPG has an actual independent KEEP review; no unresolved semantic dissent."
+    },
+    {
+      "decisionId": "chemie-b010-nine-current-reviewed-synthesis-20261005-v4-decision-006",
+      "goalId": "b5086548-169e-5d63-a14a-dabf631fa013",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ce2e0341e7253b66b4c7fd8623e291a9876d9d6a07bc38ff1a457d188b8856e9",
+      "pageFingerprint": "sha256:e47106d7f2ea9690674f655de1d957a5e6de7154d82d1bb9573113e5189aeff6",
+      "goalReviewContextFingerprint": "sha256:8bef007615098738d58e5ecb5e1bc921182cebc300c2e60872007a800f791480",
+      "finalText": {
+        "titleDe": "Halogenide, Sulfate, Nitrate und Carbonate einordnen",
+        "titleEn": "Classify halides, sulfates, nitrates, and carbonates",
+        "descriptionDe": "Die lernende Person kann ausgewaehlte Salzklassen wie Halogenide, Sulfate, Nitrate und Carbonate anhand ihrer Ionen fachlich einordnen.",
+        "descriptionEn": "The learner can classify selected salt classes such as halides, sulfates, nitrates, and carbonates by their ions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-b010-nine-independent-current-d-a-20261005-v3.b5086548-169e-5d63-a14a-dabf631fa013",
+          "recordDigest": "sha256:944cd24fc6b712572385bfdbf373c8ca6c9372e4cd7d5d64d4be3f0367196b36"
+        },
+        "second": {
+          "recordId": "chemie-b010-independent-b-v3-b5086548-169e-5d63-a14a-dabf631fa013",
+          "recordDigest": "sha256:bcbc8ef4efe0daecfde606c1fbc466506f858811719b6a7504c0d3dc4da76385"
+        }
+      },
+      "rationaleDe": "Beide Runden erhalten die unveränderte anionenbasierte Salzklassen-Kompetenz und prüfen ihre tatsächlichen neuen Anwendungskontexte und Rückverweise. Ladungsneutralitäts- und neue-Kationen-Beispiele sind kompatible Evidenz. Die vollständige aktuelle Seite ist lesbar; der frühere unbestätigte Clippingverdacht wurde tatsächich widerlegt. Nur Seiten-/Kontextbindung, kein neuer fachlicher Abschluss.",
+      "rationaleEn": "Both rounds preserve the unchanged anion-based salt-class competence and check its actual new application contexts and reverse links. Charge-neutrality and changed-cation cases are compatible evidence. The complete current page is readable; the earlier unconfirmed clipping suspicion was actually disproved. Replace only page/context binding, not scientific completion."
+    },
+    {
+      "decisionId": "chemie-b010-nine-current-reviewed-synthesis-20261005-v4-decision-007",
+      "goalId": "d726e00e-1f87-5ba5-8c79-76ad4022365e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fc47e3a48f79697f198f61d9c0e8a204257fe1a0438b590882838132f4ed483a",
+      "pageFingerprint": "sha256:c74e16c5e7d663470dcdcd6dc9f3eb75252a67ad7da01bb251d463f0bd8377aa",
+      "goalReviewContextFingerprint": "sha256:f35fadfd37f3d05ce71d4cc6d314117f04fef4a2bb7610866abd7fa95cd6d8a9",
+      "finalText": {
+        "titleDe": "Kalkkreislauf chemisch beschreiben",
+        "titleEn": "Describe the lime cycle chemically",
+        "descriptionDe": "Die lernende Person kann die wesentlichen Stoffumwandlungen im Kalkkreislauf chemisch beschreiben und mit Carbonaten verknuepfen.",
+        "descriptionEn": "The learner can chemically describe the essential transformations in the lime cycle and connect them to carbonates."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-b010-nine-independent-current-d-a-20261005-v3.d726e00e-1f87-5ba5-8c79-76ad4022365e",
+          "recordDigest": "sha256:ace4a05d8dbe63493fe9b9412f4af7452dd801da3ae45d91bbe4419b48bcf246"
+        },
+        "second": {
+          "recordId": "chemie-b010-independent-b-v3-d726e00e-1f87-5ba5-8c79-76ad4022365e",
+          "recordDigest": "sha256:0517d85a4e4738ac1b5dede9d8f5647e2d4592256e1781d519e1d1716a1ec478"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden haben die aktuelle PNG-Seite statt des alten behaltenen JPG gesehen und die drei Kalkumwandlungen samt Carbonat-, Wasser- und CO₂-Bezug bestätigt. Das heutige PNG und der Salz-Breadcrumb sind tatsächlich geprüft. Die Zielsemantik bleibt unverändert; die 11bea-Voraussetzungsfrage bleibt getrennt offen. Nur gezielte aktuelle Bild-/Seitenbindung.",
+      "rationaleEn": "Both independent rounds viewed the current PNG page rather than the retained historical JPG and confirmed the three lime transformations and carbonate, water and CO₂ relations. The current PNG and salt breadcrumb were actually checked. Goal semantics remain unchanged and the 11bea prerequisite issue stays separately open. Only a targeted current image/page binding."
+    },
+    {
+      "decisionId": "chemie-b010-nine-current-reviewed-synthesis-20261005-v4-decision-008",
+      "goalId": "414489cb-453e-5de4-ab0f-0fc01175e522",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:09b0403cc7266fc45af14b88192eaf53fc50c5de6d78b915f789874cccd66973",
+      "pageFingerprint": "sha256:01589d6871353cecfd9836078abf3ab6a5c594ca455587c6717e69b67235c589",
+      "goalReviewContextFingerprint": "sha256:740de25a847f01701b5df0b0c668a3aad513731983349217c6dad3d74452dd31",
+      "finalText": {
+        "titleDe": "Gipsbildung bei Rauchgaswäsche deuten",
+        "titleEn": "Interpret gypsum formation in flue-gas desulfurization",
+        "descriptionDe": "Die lernende Person kann an einem vereinfachten Schema der kalkhaltigen Rauchgaswäsche erklären, wie Schwefeldioxid unter Beteiligung von Oxidation als Sulfat im Gips gebunden wird.",
+        "descriptionEn": "The learner can use a simplified diagram of lime-based flue-gas scrubbing to explain how sulfur dioxide is captured as sulfate in gypsum through oxidation."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b010-nine-independent-current-d-a-20261005-v3.414489cb-453e-5de4-ab0f-0fc01175e522",
+          "recordDigest": "sha256:9318c82275a063b399fb313ed80deeb1de2ea006d0d531d2f7b5356599db0b96"
+        },
+        "second": {
+          "recordId": "chemie-b010-independent-b-v3-414489cb-453e-5de4-ab0f-0fc01175e522",
+          "recordDigest": "sha256:fb33645c7080f76c6cc6b6ad180d25821771a2f5674d77cfe922ab8099d3d651"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die einheitliche vereinfachte Rauchgas-/Gips-Erklärung mit notwendiger Oxidation von Schwefel(IV) zu Sulfat und korrektem Dihydrat. Unterschiedliche Sauerstoff-/Stoffstrom-Transferfälle sind kompatibel. HE10.3 trägt diesen abgegrenzten Anwendungsfall, keine vollständige Anlagenplanung. Das vorhandene JPG bleibt nach tatsächlicher unabhängiger KEEP-Prüfung erhalten.",
+      "rationaleEn": "Both rounds confirm one coherent simplified flue-gas/gypsum explanation requiring oxidation from sulfur(IV) to sulfate and the correct dihydrate. Oxygen and material-flow transfer cases are compatible. HE10.3 supports this bounded application, not full plant engineering. Preserve the existing JPG after actual independent KEEP review."
+    },
+    {
+      "decisionId": "chemie-b010-nine-current-reviewed-synthesis-20261005-v4-decision-009",
+      "goalId": "1f5ee84f-245a-5a1e-a260-f960f26523e9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a0a222539be74e6452023ce4598a54238ca21fdd649fe196d0df040109ca6a15",
+      "pageFingerprint": "sha256:0ad0342dbbe9b3552b0a1f3af05e2e6998d606266b4a9dd403f9d46dca657063",
+      "goalReviewContextFingerprint": "sha256:7eff772eaddb6e6b1f9014a6e3aec95f7339b87fcfa6dd7ba4c92690017833cc",
+      "finalText": {
+        "titleDe": "Düngemittel chemisch einordnen",
+        "titleEn": "Classify fertilizers chemically",
+        "descriptionDe": "Die lernende Person kann ausgewählte mineralische Düngemittel als Quellen von Nährstoffionen einordnen und anhand vorgegebener Angaben zu Pflanzenbedarf, Düngermenge und Stofftransport einen einfachen Nutzen-Risiko-Bezug begründen.",
+        "descriptionEn": "The learner can classify selected mineral fertilizers as sources of nutrient ions and use supplied information on plant demand, fertilizer amount and substance transport to justify a simple benefit-risk relationship."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b010-nine-independent-current-d-a-20261005-v3.1f5ee84f-245a-5a1e-a260-f960f26523e9",
+          "recordDigest": "sha256:b33c9ab9a61bb5dc5cf6746f6b84a699ccb41812a92753f533178a0fb1ff842f"
+        },
+        "second": {
+          "recordId": "chemie-b010-independent-b-v3-1f5ee84f-245a-5a1e-a260-f960f26523e9",
+          "recordDigest": "sha256:ed041b5866584a41a8eb75dd7a0a611afb1d1ae5c719a341470b66cd953a1a89"
+        }
+      },
+      "rationaleDe": "Beide Runden prüfen die integrierte Salzionen-/Daten-/Transport-Kompetenz und haben die konkrete neue PDF-/HTML-/PNG-Seite mit richtiger Phosphat-Bodenbindung und Abschwemmung sowie getrenntem NH₄⁺→NO₃⁻ gesehen. Der alte Phosphat→Nitrat-Pfeilfehler ist fachlich behoben; zusätzliche entfernte Pflanzenaufnahme-Pfeile sind offen dokumentiert und im Alt nicht behauptet. PO₄³⁻ bleibt schematische Kategorie, keine dominante freie Bodenspezies. Bedarf, Dosis und vorgegebene Bedingungen begrenzen das Urteil; kein Agronomie- oder Feldversuchsabschluss.",
+      "rationaleEn": "Both rounds assess the integrated salt-ion, supplied-data and transport competence and viewed the actual new PDF/HTML/PNG page with correct phosphate soil binding/runoff and distinct NH₄⁺→NO₃⁻. The historical phosphate-to-nitrate arrow error is substantively resolved; removed plant-uptake arrows are disclosed and not claimed by the alt. PO₄³⁻ remains a schematic category, not the dominant free soil species. Demand, dose and supplied conditions bound the judgment; no agronomy or field-trial completion."
+    }
+  ],
+  "manifestFingerprint": "sha256:c3f9e562bf86ecfccad3fe8e817c044a75fb8813f6c7ea7c55dc8c0712945ba0"
+}

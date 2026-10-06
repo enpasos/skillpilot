@@ -1,0 +1,38 @@
+        return parentMap;
+    }
+
+    private com.skillpilot.backend.api.GoalStats computeAtomicStats(Map<String, LearningGoal> goals,
+            Set<String> scope, Map<String, Double> mastery) {
+        if (goals == null || goals.isEmpty()) {
+            return new com.skillpilot.backend.api.GoalStats(0, 0);
+        }
+
+        long total = 0;
+        long mastered = 0;
+        for (LearningGoal g : goals.values()) {
+            if ("cluster".equals(resolveNodeType(g))) {
+                continue;
+            }
+            if (scope != null && !scope.isEmpty() && !scope.contains(g.getId())) {
+                continue;
+            }
+            total++;
+            if (mastery.getOrDefault(g.getId(), 0.0) >= 0.9) {
+                mastered++;
+            }
+        }
+
+        return new com.skillpilot.backend.api.GoalStats(mastered, total);
+    }
+
+    private String resolveNodeType(LearningGoal goal) {
+        if (goal == null) {
+            return "atomic";
+        }
+        String type = goal.getType();
+        if (type != null && !type.isBlank()) {
+            return type;
+        }
+        String resolved = (goal.getContains() != null && !goal.getContains().isEmpty()) ? "cluster" : "atomic";
+        goal.setType(resolved);
+        return resolved;

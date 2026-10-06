@@ -3382,10 +3382,19 @@ function readActiveDeepUnderstandingReviewConfigs(): Map<string, ActiveDeepUnder
 function readSemanticConfigs(): Map<string, ReviewConfig[]> {
   const configsByLandscapeId = new Map<string, ReviewConfig[]>()
   const activeByLandscapeId = readActiveDeepUnderstandingReviewConfigs()
+  for (const [landscapeId, active] of activeByLandscapeId) {
+    const configs = active.semanticAtomicityConfigPaths.map((configPath) => {
+      const config = loadJson<ReviewConfig>(resolve(repoRoot, configPath))
+      if (config.landscapeId !== landscapeId) {
+        throw new Error(`Active semantic-atomicity review config has wrong landscape ID: ${configPath}`)
+      }
+      return config
+    })
+    configsByLandscapeId.set(landscapeId, configs)
+  }
   collectFiles(semanticAtomicityRoot, (fileName) => /\.config\.json$/i.test(fileName)).forEach((file) => {
     const config = loadJson<ReviewConfig>(file)
-    const active = activeByLandscapeId.get(config.landscapeId)
-    if (active && !active.semanticAtomicityConfigPaths.includes(toRepoPath(file))) return
+    if (activeByLandscapeId.has(config.landscapeId)) return
     const existing = configsByLandscapeId.get(config.landscapeId) ?? []
     existing.push(config)
     configsByLandscapeId.set(config.landscapeId, existing)
@@ -4339,17 +4348,22 @@ function readSourceGoalClosureByLandscapeId(): Map<string, Map<string, Set<strin
 }
 
 let allGoalMappingFilesCache: Array<GoalMappingFile & { file: string }> | null = null
-function readAllGoalMappingFiles(): Array<GoalMappingFile & { file: string }> {
-  if (allGoalMappingFilesCache) return allGoalMappingFilesCache
-  const mappingRoot = resolve(repoRoot, 'curricula/DE')
-  if (!existsSync(mappingRoot)) {
-    allGoalMappingFilesCache = []
-    return allGoalMappingFilesCache
-  }
-  allGoalMappingFilesCache = collectFiles(mappingRoot, (fileName) => fileName.endsWith('.json'))
-    .filter((file) => file.replace(/\\/g, '/').includes('/mapping/'))
+export function readAllGoalMappingFiles(
+  mappingRoot = resolve(repoRoot, 'curricula/DE'),
+): Array<GoalMappingFile & { file: string }> {
+  const useDefaultCache = mappingRoot === resolve(repoRoot, 'curricula/DE')
+  if (useDefaultCache && allGoalMappingFilesCache) return allGoalMappingFilesCache
+  const mappingFiles = collectFiles(mappingRoot, (fileName) => fileName.endsWith('.json'))
+    .filter((file) => {
+      const directories = relative(mappingRoot, file).replace(/\\/g, '/').split('/').slice(0, -1)
+      // Match runtime discovery: quality owns review inputs, historical copies
+      // and candidates, including mapping snapshots. Explicitly supplied
+      // mappings remain subject to the same strict consistency checks.
+      return directories.includes('mapping') && !directories.includes('quality')
+    })
     .map((file) => ({ ...loadJson<GoalMappingFile>(file), file: toRepoPath(file) }))
-  return allGoalMappingFilesCache
+  if (useDefaultCache) allGoalMappingFilesCache = mappingFiles
+  return mappingFiles
 }
 
 function readGoalMappingFilesForReport(report: CoverageReport): Array<GoalMappingFile & { file: string }> {

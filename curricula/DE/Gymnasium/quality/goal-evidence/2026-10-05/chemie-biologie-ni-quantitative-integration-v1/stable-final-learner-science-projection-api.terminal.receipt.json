@@ -1,0 +1,22 @@
+{
+  "startedAtUTC": "2026-10-05T23:45:24.863106+00:00",
+  "completedAtUTC": "2026-10-05T23:49:43.993934+00:00",
+  "command": [
+    "./backend/gradlew",
+    "-p",
+    "backend",
+    "--no-daemon",
+    "--max-workers=2",
+    "-Dorg.gradle.java.home=/home/enpasos/projects/skillpilot/tmp/amazon-corretto-25.0.2.10.1",
+    "-Dorg.gradle.java.installations.paths=/home/enpasos/projects/skillpilot/tmp/amazon-corretto-25.0.2.10.1",
+    "test",
+    "--tests",
+    "com.skillpilot.backend.controller.LearnerControllerIntegrationTest.learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals"
+  ],
+  "cwd": "/home/enpasos/projects/skillpilot",
+  "exitCode": 0,
+  "stdoutSHA256": "e8492583186cc344911755ef483f7decfe3bd4cbdd85be05df5a9aacb49fffb7",
+  "stderrSHA256": "a5986972bda57edf5900b7fb01c7ffa66c6a999ae36f67d05ee06dd7646fa833",
+  "humanApproval": false,
+  "humanTrial": false
+}

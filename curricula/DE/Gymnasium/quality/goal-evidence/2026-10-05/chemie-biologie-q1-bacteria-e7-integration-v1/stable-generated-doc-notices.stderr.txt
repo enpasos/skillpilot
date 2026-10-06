@@ -1,0 +1,19 @@
+node:fs:448
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-reviewed-integration-candidate-v2/full-memory.report.md'
+    at readFileSync (node:fs:448:20)
+    at checkGeneratedMarkdownNotice (/home/enpasos/projects/skillpilot/app/scripts/checkGeneratedMarkdownNotices.ts:10:16)
+    at Array.flatMap (<anonymous>)
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/checkGeneratedMarkdownNotices.ts:47:41)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-reviewed-integration-candidate-v2/full-memory.report.md'
+}
+
+Node.js v20.20.2

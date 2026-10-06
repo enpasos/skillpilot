@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { dirname, isAbsolute, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { GoalBookModel, GoalBookApplicabilityScope } from './goalBookModel'
@@ -6,6 +6,7 @@ import type {
   GoalBookOriginalSourcesPayload,
   GoalBookOriginalSourcesEvidence,
 } from '../src/utils/goalBookOriginalSources'
+import { goalBookDefinitionById } from '../src/utils/goalBookPublicationRegistry'
 
 export type GoalBookOriginalSourcesIndex = GoalBookOriginalSourcesPayload
 
@@ -49,6 +50,47 @@ const reviewFiles = (root: string, path: string): string[] => readdirSync(localP
   .flatMap((entry) => entry.isDirectory() ? reviewFiles(root, `${path}/${entry.name}`)
     : entry.isFile() && entry.name.endsWith('.review.json') ? [`${path}/${entry.name}`] : [])
 
+/** Source-derived atlases own their current mapping selection in the checked
+ * build-input companion. Retained mapping reviews are history, not additional
+ * current witnesses. Older authored atlases without a companion keep their
+ * existing review discovery; an invalid present companion never falls back.
+ */
+export const goalBookOriginalSourceMappingPaths = (
+  model: GoalBookModel,
+  repositoryRoot = REPOSITORY_ROOT,
+  publicationConfigPath?: string,
+): readonly string[] | undefined => {
+  const root = resolve(repositoryRoot)
+  const definition = goalBookDefinitionById(model.book.id)
+  const configPath = publicationConfigPath ?? (definition && `app/${definition.configPath}`)
+  if (!configPath) return undefined
+  const relativeConfigPath = isAbsolute(configPath) ? relative(root, configPath) : configPath
+  if (!relativeConfigPath.endsWith('.json')) throw new Error('Original-source publication config must be JSON')
+  const companionPath = relativeConfigPath.replace(/\.json$/u, '.inputs.json')
+  if (!existsSync(localPath(root, companionPath))) return undefined
+  const companion = readJson(root, companionPath)
+  if (companion.schemaVersion !== 1
+    || companion.bookId !== model.book.id
+    || companion.landscapePath !== model.source.landscapePath
+    || companion.semanticKindLedgerPath !== model.source.semanticKindLedgerPath
+    || companion.manifestPath !== model.source.compositionViewManifestPath) {
+    throw new Error(`Original-source input companion does not match the current book: ${companionPath}`)
+  }
+  return validateMappingPaths(companion.mappingPaths, root)
+}
+
+const validateMappingPaths = (value: unknown, root: string): string[] => {
+  if (!Array.isArray(value) || !value.length
+    || value.some((path) => typeof path !== 'string' || !path || path !== path.trim())
+    || new Set(value).size !== value.length) {
+    throw new Error('Original-source mapping selection must contain unique nonempty paths')
+  }
+  return (value as string[]).map((path) => {
+    localPath(root, path)
+    return path
+  }).sort(compare)
+}
+
 // Only explicit source metadata is used. Canonical phase/tags and view titles are
 // not source evidence. A collection covering both stages does not locate a goal.
 const facet = <D extends Dimension>(levels: Row[], dimension: D): Facets[D] | null => {
@@ -91,14 +133,20 @@ const officialUrl = (document: Row): string | null => {
   } catch { return null }
 }
 
-const loadCandidates = (model: GoalBookModel, root: string): Candidate[] => {
+const loadCandidates = (model: GoalBookModel, root: string, mappingPaths?: readonly string[]): Candidate[] => {
   const result: Candidate[] = []
   const extractionCache = new Map<string, Row>()
-  for (const mappingPath of reviewFiles(root, 'curricula/DE/Gymnasium/mapping')) {
+  for (const mappingPath of mappingPaths ?? reviewFiles(root, 'curricula/DE/Gymnasium/mapping')) {
     const mapping = readJson(root, mappingPath)
-    if (string(mapping.targetLandscapeId) !== model.book.landscapeId) continue
+    if (string(mapping.targetLandscapeId) !== model.book.landscapeId) {
+      if (mappingPaths) throw new Error(`Original-source selected mapping targets a different landscape: ${mappingPath}`)
+      continue
+    }
     const sourceExtractionPath = string(mapping.sourceExtractionPath)
-    if (!sourceExtractionPath) continue
+    if (!sourceExtractionPath) {
+      if (mappingPaths) throw new Error(`Original-source selected mapping has no extraction: ${mappingPath}`)
+      continue
+    }
     let extraction = extractionCache.get(sourceExtractionPath)
     if (!extraction) {
       extraction = readJson(root, sourceExtractionPath)
@@ -162,6 +210,7 @@ const matchScope = (candidate: Candidate, scope: GoalBookApplicabilityScope): Di
 export const buildGoalBookOriginalSources = (
   model: GoalBookModel,
   repositoryRoot = REPOSITORY_ROOT,
+  mappingPaths = goalBookOriginalSourceMappingPaths(model, repositoryRoot),
 ): GoalBookOriginalSourcesIndex => {
   const root = resolve(repositoryRoot)
   const landscape = readJson(root, model.source.landscapePath)
@@ -175,7 +224,8 @@ export const buildGoalBookOriginalSources = (
     if (goalById.has(normalized)) parents.set(normalized, [...(parents.get(normalized) ?? []), id])
   }
   const candidatesByTarget = new Map<string, Candidate[]>()
-  for (const candidate of loadCandidates(model, root)) {
+  const selectedMappingPaths = mappingPaths === undefined ? undefined : validateMappingPaths(mappingPaths, root)
+  for (const candidate of loadCandidates(model, root, selectedMappingPaths)) {
     candidatesByTarget.set(candidate.mappedTargetGoalId, [...(candidatesByTarget.get(candidate.mappedTargetGoalId) ?? []), candidate])
   }
   const index: GoalBookOriginalSourcesIndex = {

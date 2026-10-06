@@ -1,0 +1,276 @@
+{
+  "capturedAt": "2026-10-05T20:52:02.594268+00:00",
+  "status": "completed_current_integrated_technical_qs_bundle",
+  "strictProgress": {
+    "chemie": {
+      "completed": 104,
+      "currentCurricularAtomic": 376
+    },
+    "biologie": {
+      "completed": 49,
+      "currentCurricularAtomic": 365
+    },
+    "mathematik": {
+      "completed": 807,
+      "currentCurricularAtomic": 807
+    },
+    "physik": {
+      "completed": 478,
+      "currentCurricularAtomic": 478
+    }
+  },
+  "nativeChecks": [
+    {
+      "name": "integrated-central-after-e7-current",
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/integrated-central-after-e7-current.terminal.receipt.json",
+      "receiptSHA256": "b11ad08c1762c15d7ec16826d322bb24c20f98347a3ea1fa5b6394413830d631",
+      "exitCode": 0,
+      "completedAt": "2026-10-05T20:23:06.123014+00:00",
+      "command": [
+        "node",
+        "app/node_modules/.bin/tsx",
+        "app/scripts/reportDeepUnderstandingRollout.ts",
+        "--config=curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+        "--mode=check",
+        "--format=json"
+      ]
+    },
+    {
+      "name": "integrated-current-in-flight-ledger-after-e7",
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/integrated-current-in-flight-ledger-after-e7.terminal.receipt.json",
+      "receiptSHA256": "7dbc96c4d09cfc1d66fdf0b9a970814e66273df3ecabd156b0a72a2d6ae057d2",
+      "exitCode": 0,
+      "completedAt": "2026-10-05T20:25:03.682114+00:00",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/check-current-in-flight-ledger-after-e7.ts"
+      ]
+    },
+    {
+      "name": "stable-current-quality-status-after-e7",
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/stable-current-quality-status-after-e7.terminal.receipt.json",
+      "receiptSHA256": "fdca9ca62a32e81dc240c68c8ddcb7f073a0d95cc625effe5cae5263b9bc2103",
+      "exitCode": 0,
+      "completedAt": "2026-10-05T20:28:26.279835+00:00",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:curriculum-status"
+      ]
+    },
+    {
+      "name": "stable-protected-maturity-floors-after-e7",
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/stable-protected-maturity-floors-after-e7.terminal.receipt.json",
+      "receiptSHA256": "7f16907aa899f2a314e821db4556e94dcc2fc475e7fa67eb1b8167e651256601",
+      "exitCode": 0,
+      "completedAt": "2026-10-05T20:33:01.515163+00:00",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:curriculum-maturity-floors"
+      ]
+    },
+    {
+      "name": "stable-full-application-build",
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/stable-full-application-build.terminal.receipt.json",
+      "receiptSHA256": "e8ce0ffaf891f92308876b4caf0810f3d30deaf527e6a54f52407ec48050f07b",
+      "exitCode": 0,
+      "completedAt": "2026-10-05T20:33:52.549817+00:00",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build"
+      ]
+    },
+    {
+      "name": "stable-curriculum-schema-after-stream-format-repair",
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/stable-curriculum-schema-after-stream-format-repair.terminal.receipt.json",
+      "receiptSHA256": "cb932bcb7b277759828205e504afdb1de664c2d1c1f936947e6c1095890fb148",
+      "exitCode": 0,
+      "completedAt": "2026-10-05T20:34:33.513690+00:00",
+      "command": [
+        "python",
+        "scripts/validate_schemas.py"
+      ]
+    },
+    {
+      "name": "stable-original-source-compiler-tests",
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/stable-original-source-compiler-tests.terminal.receipt.json",
+      "receiptSHA256": "79fb322b05fcc2a4b54c4dd8b444df04589f1667e5b21bc3d862f83d3948f2d6",
+      "exitCode": 0,
+      "completedAt": "2026-10-05T20:37:43.818039+00:00",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:goal-book-original-sources"
+      ]
+    },
+    {
+      "name": "stable-current-biologie-memory-report",
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/stable-current-biologie-memory-report.terminal.receipt.json",
+      "receiptSHA256": "1431374543611a9d84a1770735333f3a4b1408bb62bd1b546a976cdbfa30469d",
+      "exitCode": 0,
+      "completedAt": "2026-10-05T20:44:54.934399+00:00",
+      "command": [
+        "node",
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-reviewed-integration-candidate-v2/full-memory.config.json",
+        "--mode=check",
+        "--write-report"
+      ]
+    },
+    {
+      "name": "stable-current-chemie-memory-report",
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/stable-current-chemie-memory-report.terminal.receipt.json",
+      "receiptSHA256": "bb48f475eef29dc84af3f3c3c9c2f170995060ed6ebdcb8402737cab755dc965",
+      "exitCode": 0,
+      "completedAt": "2026-10-05T20:45:00.035979+00:00",
+      "command": [
+        "node",
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-fifteen-reviewed-integration-candidate-v5/m-current-full.config.json",
+        "--mode=check",
+        "--write-report"
+      ]
+    },
+    {
+      "name": "stable-current365-default-memory-audit-report",
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/stable-current365-default-memory-audit-report.terminal.receipt.json",
+      "receiptSHA256": "40045dcb136c3b68ba0a07f03c30f2f7999903f006edd2fdd59da2e3bb0a0123",
+      "exitCode": 0,
+      "completedAt": "2026-10-05T20:49:38.223849+00:00",
+      "command": [
+        "node",
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-biology-full.config.json",
+        "--mode=check",
+        "--write-report"
+      ]
+    },
+    {
+      "name": "stable-docs-indexes",
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/stable-docs-indexes.terminal.receipt.json",
+      "receiptSHA256": "ba1d71383b6bd7f380d800eee925bb6b380ed9678bb46db578ac15fbd22a4be8",
+      "exitCode": 0,
+      "completedAt": "2026-10-05T20:37:38.642148+00:00",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-indexes"
+      ]
+    },
+    {
+      "name": "stable-docs-links-final-current-e7-dossier",
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/stable-docs-links-final-current-e7-dossier.terminal.receipt.json",
+      "receiptSHA256": "672fe297b04a321476fdf93a09e073793824f49c88042fea51569cf16911fe2a",
+      "exitCode": 0,
+      "completedAt": "2026-10-05T20:52:02.465291+00:00",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-links"
+      ]
+    },
+    {
+      "name": "stable-generated-doc-notices-after-current365-audit-routing",
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/stable-generated-doc-notices-after-current365-audit-routing.terminal.receipt.json",
+      "receiptSHA256": "816473873880238ebcdd03f60d1993923f44ed7fa63867966864ab3336d08923",
+      "exitCode": 0,
+      "completedAt": "2026-10-05T20:50:20.170769+00:00",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-doc-notices"
+      ]
+    },
+    {
+      "name": "stable-generated-status-registry-after-native-regeneration",
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/stable-generated-status-registry-after-native-regeneration.terminal.receipt.json",
+      "receiptSHA256": "724028b001be1b026f6f4b78dbbddb1b09deba2fbe79b72114df2d5fc7a46cad",
+      "exitCode": 0,
+      "completedAt": "2026-10-05T20:46:39.227903+00:00",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-status-registry"
+      ]
+    },
+    {
+      "name": "stable-visualization-assets-after-preserved-orphan-removal",
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/stable-visualization-assets-after-preserved-orphan-removal.terminal.receipt.json",
+      "receiptSHA256": "89586eb60f47e8ff10cf73cd3627874c73672465ae711c1b18e55ecfebb374a5",
+      "exitCode": 0,
+      "completedAt": "2026-10-05T20:47:04.017405+00:00",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-visualization-assets"
+      ]
+    },
+    {
+      "name": "stable-terminology-after-lossless-diagnostic-archiving",
+      "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/stable-terminology-after-lossless-diagnostic-archiving.terminal.receipt.json",
+      "receiptSHA256": "196890e185bd0e424f59d5afacf75ab0d5475c1867c1c81d051245f5b54c34e0",
+      "exitCode": 0,
+      "completedAt": "2026-10-05T20:50:29.538745+00:00",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:terminology"
+      ]
+    }
+  ],
+  "protectedCurrentInputs": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "0fd3c538b5b554606ea8b073fa8c4cd3e27c376599cc416f0e8d2452b70be3be",
+      "bytes": 1363993
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "45f3d79713ba3c5e0817df9e8da04989aacab3daf65e275838af9f35c91abfba",
+      "bytes": 923937
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "e4a357fe595902573af1f618add7667d0463e1c6053d47756d88bdff1ef4f2e0",
+      "bytes": 122813
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/in-flight-work-ledger.json",
+      "sha256": "29d38617c9c064951fac6bf6a01d33942b1c4f51be7144c97b30025946b1a1de",
+      "bytes": 1597
+    }
+  ],
+  "allNineMaturityFloorsPass": true,
+  "machineM7ForChemistryBiologyAchieved": false,
+  "CQR303ChemistryBiologyComplete": false,
+  "newClosuresFromThisTechnicalBundle": 0,
+  "humanApproval": false,
+  "humanTrial": false,
+  "liveGithubCIExecutionClaimed": false,
+  "backendJavaExecutionClaimed": false
+}

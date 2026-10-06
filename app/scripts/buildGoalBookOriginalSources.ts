@@ -4,9 +4,10 @@ import { fileURLToPath } from 'node:url'
 import { GOAL_BOOK_PUBLICATION_REGISTRY } from '../src/utils/goalBookPublicationRegistry'
 import { MAX_GOAL_BOOK_ORIGINAL_SOURCES_BYTES, parseGoalBookOriginalSources } from '../src/utils/goalBookOriginalSources'
 import { parseAndValidateGoalBookModel } from './goalBookModel'
-import { buildGoalBookOriginalSources, serializeGoalBookOriginalSources } from './goalBookOriginalSources'
+import { buildGoalBookOriginalSources, goalBookOriginalSourceMappingPaths, serializeGoalBookOriginalSources } from './goalBookOriginalSources'
 
 const publicRoot = fileURLToPath(new URL('../public/lernzielbuch/', import.meta.url))
+const repositoryRoot = fileURLToPath(new URL('../../', import.meta.url))
 const args = process.argv.slice(2)
 if (args.length > 1 || (args.length === 1 && args[0] !== '--check')) {
   throw new Error('Usage: tsx scripts/buildGoalBookOriginalSources.ts [--check]')
@@ -16,7 +17,8 @@ for (const definition of GOAL_BOOK_PUBLICATION_REGISTRY) {
   const model = parseAndValidateGoalBookModel(await readFile(
     resolve(publicRoot, `${definition.artifactStem}.book-model.json`), 'utf8',
   ))
-  const index = await buildGoalBookOriginalSources(model)
+  const index = buildGoalBookOriginalSources(model, repositoryRoot,
+    goalBookOriginalSourceMappingPaths(model, repositoryRoot, `app/${definition.configPath}`))
   const serialized = serializeGoalBookOriginalSources(index)
   if (Buffer.byteLength(serialized) > MAX_GOAL_BOOK_ORIGINAL_SOURCES_BYTES) {
     throw new Error(`Original sources exceed the browser size budget: ${definition.bookId}`)

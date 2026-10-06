@@ -1,0 +1,86 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "chemie-q1-seven-current-independent-p-20261005-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "goalId": "d3cd250f-5221-589d-aa1c-44a4692d1acb",
+  "goalFingerprint": "sha256:3cfe9c92bf2f295f272a8577762b1dbd070dd3ed5e55b37cb4e67e8fc18b9fab",
+  "reviewInputFingerprint": "sha256:9ba5a64b4d13c3875c7a26b5e6401cea57b9f592cb6dc8e87fc58a000627f9ee",
+  "profileFingerprint": "sha256:7c3cc42fed4e85fadf64eb2147c920ef3ae46a0b0b325759895056eba3a9230e",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-05T21:12:17.351482+00:00",
+  "reviewer": "Codex independent P7 reviewer /root/bio_original_sources_binding",
+  "reason": "Independent semantic P review requires actual future structure-based planning AND execution of BOTH ascorbic and specified paraben assays, own raw values/controls; arithmetic1690.752mg/L and calibrated50mg/L checked separately. Fresh matrix interference/out-of-range remeasurement preserves method limits. Paraben analytical transfer does not replace HE LK paraben-use operator; no AI-observed laboratory work. Seven complete bilingual profile payloads KEEP exactly after manual independent review; E1/G1, ai_candidate, needs_human_review. No human approval, learner observation, trial, integration or operative strict closure.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "procedure",
+    "expectations": [
+      {
+        "id": "both-analytes-structure-method",
+        "essentialUnderstandingDe": "Ascorbinsäure und ein vorgegebener Paraben-Ester sind beide zu bestimmen. Redoxaktivität kann eine passende stöchiometrische Ascorbinsäurebestimmung begründen; ein geeignetes kalibriertes Trenn-/Messverfahren kann den vorgegebenen Paraben-Ester bestimmen. Eine gemeinsame Methode oder ein beliebiges ODER ersetzt die beiden Fälle nicht.",
+        "essentialUnderstandingEn": "Both ascorbic acid and a specified paraben ester must be determined. Redox activity can justify a suitable stoichiometric ascorbic-acid assay; an appropriate calibrated separation/measurement method can determine the specified paraben ester. A shared method or an arbitrary either/or does not replace both cases.",
+        "observablePerformanceDe": "Molekülstrukturen für die Methodenwahl nutzen und jeAnalyten eine passende kontrollierte quantitative Bestimmung begründen.",
+        "observablePerformanceEn": "Use molecular structures to select methods and justify an appropriate controlled quantitative determination for each analyte."
+      },
+      {
+        "id": "planned-carried-out-controlled-assays",
+        "essentialUnderstandingDe": "Quantitatives Bestimmen umfasst tatsächliche Planung und Durchführung mit geeigneten Kontrollproben, Kalibrierung beziehungsweise Reaktionsstöchiometrie und einem bekannten Verdünnungs-/Probenbezug. Eine vorgelegte Rechnung allein belegt keine Durchführung.",
+        "essentialUnderstandingEn": "Quantitative determination includes actual planning and execution with appropriate controls, calibration or reaction stoichiometry and a known dilution/sample basis. A submitted calculation alone does not demonstrate execution.",
+        "observablePerformanceDe": "Beide freigegebenen Schulbestimmungen planen und durchführen, eigene Messwerte mit Blind-/Kontrollproben dokumentieren und den jeweiligen Gehalt korrekt berechnen.",
+        "observablePerformanceEn": "Plan and carry out both authorised school assays, document the learner’s own readings with blank/control samples and correctly calculate each content."
+      },
+      {
+        "id": "axes-range-specificity",
+        "essentialUnderstandingDe": "Eine chromatographische Zeitachse identifiziert Peaklagen, die Kalibrierungsachse zeigt Konzentration. Kalibrierungsgleichungen gelten im angegebenen Arbeitsbereich; Matrixstörungen, weitere Reduktionsmittel oder koeluierende Komponenten begrenzen die Spezifität.",
+        "essentialUnderstandingEn": "A chromatographic time axis locates peaks, whereas a calibration axis shows concentration. Calibration equations apply in the stated working range; matrix interference, other reducing agents or coeluting components limit specificity.",
+        "observablePerformanceDe": "Zeit und Konzentration unterscheiden, Einheiten sowie Verdünnungen vollständig berücksichtigen und bei ungeeigneten Kontrollen beziehungsweise Arbeitsbereich zusätzliche Messung statt scheinpräziser Gehaltsangabe verlangen.",
+        "observablePerformanceEn": "Distinguish time from concentration, fully account for units and dilutions, and require additional measurement rather than a falsely precise content when controls or range are unsuitable."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "both-analytes-structure-method",
+        "planned-carried-out-controlled-assays",
+        "axes-range-specificity"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "fresh-controlled-chemical-case",
+        "textDe": "Frische Probe und beide Analyten; veränderte Verdünnung/Blindwert/Kalibrierung; Strukturbegründung; tatsächlich eigene Planungs-/Durchführungsnachweise; problematische Matrix oder außerhalb liegender Messwert.",
+        "textEn": "Fresh sample and both analytes; changed dilution/blank/calibration; structural justification; the learner’s actual planning/execution evidence; problematic matrix or out-of-range reading."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "own-ascorbic-and-paraben-assays",
+        "taskDemandDe": "Plane und führe passende freigegebene Bestimmungen von Ascorbinsäure und einem vorgegebenen p-Hydroxybenzoesäureester in geeigneten Schulproben durch. Begründe aus den Strukturen eine kontrollierte redoxstöchiometrische Ascorbinsäurebestimmung und ein geeignetes kalibriertes Parabenverfahren. Lege eigene Rohwerte, Kontrollen, Kalibrierung und Probenvorbereitung vor. Zusätzliche Rechenkontrolle: Ascorbin/I₂1:1, c(I₂)=0,005mol/L, Verbrauch12,40mL minus Blindwert0,40mL in25mL einer vierfach verdünnten Probe; M=176,12g/mol. Paraben-Kalibrierung A=120c+20 für c inmg/L, A=620, Verdünnungsfaktor10.",
+        "taskDemandEn": "Plan and carry out suitable authorised assays of ascorbic acid and a specified p-hydroxybenzoic-acid ester in appropriate school samples. Use structures to justify a controlled redox-stoichiometric ascorbic assay and an appropriate calibrated paraben method. Submit the learner’s own raw readings, controls, calibration and sample preparation. Additional calculation check: ascorbic/I₂1:1, c(I₂)=0.005mol/L, consumption12.40mL minus blank0.40mL in25mL of a fourfold-diluted sample; M=176.12g/mol. Paraben calibration A=120c+20 for c inmg/L, A=620 and dilution factor10.",
+        "expectedPerformanceDe": "Die eigenen Planungs-/Durchführungsergebnisse decken beide Analyten ab; zusätzliche Rechendaten allein schließen das Ziel nicht. Kontrollrechnung: n=0,000060mol, m=10,5672mg in25mL verdünnter Probe; Originalgehalt1690,752mg/L. Paraben: c=(620−20)/120=5mg/L Messlösung,50mg/L Original bei gültigem Arbeitsbereich. Keine Behauptung, Redoxtitration sei ohne Störstoffkontrolle ascorbinspezifisch.",
+        "expectedPerformanceEn": "The learner’s own planning/execution covers both analytes; extra calculation data alone do not complete the goal. Check: n=0.000060mol, m=10.5672mg in25mL diluted sample; original content1690.752mg/L. Paraben: c=(620−20)/120=5mg/L measured solution and50mg/L original within the valid working range. Do not claim a redox titration is ascorbic-specific without interference controls.",
+        "understandingFocusDe": "Tatsächlich beide quantitative Bestimmungen und vollständiger Probenbezug.",
+        "understandingFocusEn": "Actual determination of both analytes and complete sample basis."
+      },
+      {
+        "id": "fresh-matrix-and-range-investigation",
+        "taskDemandDe": "Plane und führe beide Bestimmungen an frischen geeigneten Proben mit veränderter Verdünnung erneut durch. Ein Matrixzusatz führt bei der Redoxtitration zu Mehrverbrauch; ein Parabenpeak liegt außerhalb des kalibrierten Konzentrationsbereichs. Entwickle und prüfe passende Kontroll- beziehungsweise Verdünnungsschritte und berichte nur tragfähige Gehalte.",
+        "taskDemandEn": "Plan and carry out both determinations again on fresh appropriate samples with changed dilution. A matrix addition increases redox-titration consumption, while a paraben peak lies outside the calibrated concentration range. Develop and test appropriate controls or dilution steps and report only supported contents.",
+        "expectedPerformanceDe": "Eigene Messprotokolle belegen den neuen Ansatz für beide Analyten. Zusätzlicher Reduktionsmittelverbrauch wird nicht vollständig Ascorbinsäure zugerechnet; Kontrolle beziehungsweise geeignetes spezifischeres Verfahren ist nötig. Parabenprobe wird neu geeignet verdünnt und im gültigen Bereich gemessen; Verdünnungsfaktor wird zurückgerechnet. Keine bloße lineare Extrapolation und keine automatische Übertragung einer Peakzeit in Konzentration.",
+        "expectedPerformanceEn": "The learner’s own records demonstrate the fresh approach for both analytes. Extra reducing-agent consumption is not attributed entirely to ascorbic acid; controls or a suitable more-specific method are required. The paraben sample is suitably diluted and remeasured within range with dilution accounted for. Do not merely extrapolate linearly or automatically turn peak time into concentration.",
+        "understandingFocusDe": "Frischer Experimentaltransfer und Methoden-/Kalibrierungsgrenzen.",
+        "understandingFocusEn": "Fresh experimental transfer and method/calibration limits."
+      }
+    ]
+  }
+}

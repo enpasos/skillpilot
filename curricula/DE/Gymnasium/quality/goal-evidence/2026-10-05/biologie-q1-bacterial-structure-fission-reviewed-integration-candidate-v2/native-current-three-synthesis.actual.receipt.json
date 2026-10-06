@@ -1,0 +1,97 @@
+{
+  "commands": [
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-native-candidate-v1/batch.config.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-q1-bacterial-structure-fission-native-isolated-20261005-v1",
+      "startedAt": "2026-10-05T19:31:55.547072+00:00",
+      "completedAt": "2026-10-05T19:31:56.426773+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-reviewed-integration-candidate-v2/dual-three-summarize.stdout.txt",
+      "stdoutSHA256": "04435fecacf99f2ff82f8470d3b73d199dd66faf2075882f7b13008fda8b8916",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-reviewed-integration-candidate-v2/dual-three-summarize.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-native-candidate-v1/batch.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-native-candidate-v1/native-finalbook/synthesis-authoring.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-q1-bacterial-structure-fission-native-isolated-20261005-v1",
+      "startedAt": "2026-10-05T19:31:56.427425+00:00",
+      "completedAt": "2026-10-05T19:31:57.342829+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-reviewed-integration-candidate-v2/three-synthesis-manifest.stdout.txt",
+      "stdoutSHA256": "9d1d5a7a7cfb5e21d032de8f34b353ac20076b4f806800d76c13416fa67370a7",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-reviewed-integration-candidate-v2/three-synthesis-manifest.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-native-candidate-v1/batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-native-candidate-v1/native-finalbook/synthesis-decisions.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-q1-bacterial-structure-fission-native-isolated-20261005-v1",
+      "startedAt": "2026-10-05T19:31:57.343508+00:00",
+      "completedAt": "2026-10-05T19:31:58.422867+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-reviewed-integration-candidate-v2/three-resolutions-materialize.stdout.txt",
+      "stdoutSHA256": "ea563e803b383c07cd60955beb899172a5a97b0de4c5a7396730b586ef5aaf4e",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-reviewed-integration-candidate-v2/three-resolutions-materialize.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-native-candidate-v1/batch.config.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-q1-bacterial-structure-fission-native-isolated-20261005-v1",
+      "startedAt": "2026-10-05T19:31:58.423545+00:00",
+      "completedAt": "2026-10-05T19:31:59.512470+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-reviewed-integration-candidate-v2/three-index-materialize.stdout.txt",
+      "stdoutSHA256": "e930c50d337b1f067517fac2ba24c027739e182ecc11b79d21ef182878cf64c0",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-reviewed-integration-candidate-v2/three-index-materialize.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-native-candidate-v1/batch.config.json"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/biologie-q1-bacterial-structure-fission-native-isolated-20261005-v1",
+      "startedAt": "2026-10-05T19:31:59.513389+00:00",
+      "completedAt": "2026-10-05T19:32:00.606488+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-reviewed-integration-candidate-v2/three-index-current-check.stdout.txt",
+      "stdoutSHA256": "4c900bc22e3139e5276199a0882ecbaac3a084141c54f0641b3468fe614502ff",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-q1-bacterial-structure-fission-reviewed-integration-candidate-v2/three-index-current-check.stderr.txt",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "activeWrites": 0,
+  "humanApproval": false
+}

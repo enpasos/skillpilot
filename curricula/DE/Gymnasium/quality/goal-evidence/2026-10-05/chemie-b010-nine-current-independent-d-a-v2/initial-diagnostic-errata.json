@@ -1,0 +1,25 @@
+{
+  "ownPreparationDiagnostics": [
+    {
+      "command": "Python rasterization and page8 get_text dict JSON dump",
+      "actualExit": 1,
+      "cause": "PDF image block contains bytes, JSON serialization failed after all nine raster files were successfully written",
+      "resolution": "Subsequent extraction explicitly selects text lines; no frozen input changed"
+    },
+    {
+      "command": "node capture-exact-html.cjs initial",
+      "actualExit": 1,
+      "cause": "Reviewer script assumed h1 goal heading; native goal heading is h2.goal-title",
+      "resolution": "Own diagnostic selector changed to actual .goal-title; native source and frozen HTML unchanged"
+    }
+  ],
+  "initialClippingObservation": {
+    "status": "rejected_after_exact_PDF_reinspection",
+    "rootAlsoIndependentlyObservedCompleteTitle": true,
+    "actualPhysicalPDFPage": 8,
+    "titleTextOriginX": 28.3359375,
+    "titleText": "Halogenide, Sulfate, Nitrate und Carbonate",
+    "meaning": "No demonstrated native title defect; initial exported-image viewing impression is not sufficient evidence"
+  },
+  "humanApproval": false
+}

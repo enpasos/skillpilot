@@ -1,0 +1,61 @@
+{
+  "status": "46 current native app data totals agree exactly with existing Java assertions; no Java adjustment required",
+  "atUTC": "2026-10-05T20:31:52.242901+00:00",
+  "method": "Existing unmodified app role collector and goal filters over actual current Canonical/composition views; not an actual backend learner API response",
+  "reviewedBackendContracts": [
+    {
+      "source": {
+        "path": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+        "sha256": "b90e89fc74f2c048911daae8869473eb777c267ba8f9d8a55026bfd9bcc46a13",
+        "bytes": 107365
+      },
+      "reviewedLines": [
+        1486,
+        1555
+      ],
+      "retainedExcerpt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-current-layer-a-inventory-projections-v1/LearnerControllerIntegrationTest.reviewed-contract.snapshot.txt",
+        "sha256": "7d1eb2364d6bdfaf86d8b100199fcec0a15c6e887c1d95187c801ef8725e4bbc",
+        "bytes": 4600
+      }
+    },
+    {
+      "source": {
+        "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+        "sha256": "6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+        "bytes": 529427
+      },
+      "reviewedLines": [
+        8268,
+        8305
+      ],
+      "retainedExcerpt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-current-layer-a-inventory-projections-v1/LearnerService.reviewed-contract.snapshot.txt",
+        "sha256": "6de6bc435f93dfa96161f277842b1204d17857d6bc5fd528ff28a324918f1869",
+        "bytes": 1270
+      }
+    },
+    {
+      "source": {
+        "path": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+        "sha256": "9a6aa635641b463967211cbc149bfa23d4b3fa24ff78a5350b36c3f05dba3b96",
+        "bytes": 43524
+      },
+      "reviewedLines": [
+        540,
+        640
+      ],
+      "retainedExcerpt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-current-layer-a-inventory-projections-v1/CompositionViewService.reviewed-contract.snapshot.txt",
+        "sha256": "3e99947624b50a038974fe96c084bbd692e187ecc94194003b1b62aeca824646",
+        "bytes": 4862
+      }
+    }
+  ],
+  "totalComparedCases": 46,
+  "allJavaExpectedTotalsMatch": true,
+  "removedB010SubtreeCounterfactual": "This is an explanatory current-data counterfactual, NOT a historical baseline. Removing only bf001d50 would omit the two element-group atoms in BB/BE/HB/NI and three in BY/HE. Current Java expectations already include those roles. No expected-count adjustment is justified.",
+  "newBiologyFissionGoal": "Current new fission atom belongs to Q1/SekII and is absent from the actual SekI target set; all fourteen Bio G8/G9 totals match unchanged.",
+  "backendTestsRun": false,
+  "runtimeOrJavaCodeChanged": false
+}
