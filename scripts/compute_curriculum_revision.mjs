@@ -29,6 +29,9 @@ function listRuntimeJson(root) {
   const files = [];
   const visit = (directory) => {
     for (const entry of readdirSync(directory, { withFileTypes: true })) {
+      // Quality evidence is outside the runtime input tree. Skip its directories
+      // before inspecting archived links; runtime symlinks remain forbidden.
+      if (entry.isDirectory() && entry.name === "quality") continue;
       const path = resolve(directory, entry.name);
       if (entry.isSymbolicLink()) {
         throw new Error(`Symlink is forbidden in curriculum runtime inputs: ${path}`);

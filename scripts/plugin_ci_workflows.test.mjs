@@ -100,6 +100,7 @@ test('current OpenAI contract, submission and runtime checks remain active', () 
     'npm --prefix "ai/openai app" test',
     'scripts/openai_plugin_release.test.mjs',
     'scripts/plugin_ci_workflows.test.mjs',
+    'scripts/compute_curriculum_revision.test.mjs',
     'scripts/check_openai_plugin_versioning.mjs',
     'scripts/check_openai_coach_v11_candidate.test.mjs',
     'scripts/openai_plugin_submission.test.mjs',
