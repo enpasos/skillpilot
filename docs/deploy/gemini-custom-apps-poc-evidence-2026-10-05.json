@@ -1,0 +1,571 @@
+{
+  "recordedAt": "2026-10-06T00:50:33.737998+00:00",
+  "issue": "https://github.com/enpasos/skillpilot/issues/70",
+  "pocVersion": "0.1.0",
+  "nodeVersion": "22.22.0",
+  "sdkVersion": "1.30.0",
+  "protocolVersion": "2025-11-25",
+  "actualGeminiHost": true,
+  "localTests": {
+    "observedOn": "2026-10-06",
+    "passed": 36,
+    "failed": 0,
+    "skipped": 0,
+    "nodeVersion": "22.22.0"
+  },
+  "existingOAuthEvidenceTests": {
+    "passed": 17,
+    "failed": 0
+  },
+  "historicalOpenAIArtifacts": "PASS",
+  "sourceHashes": {
+    "ai/gemini/poc/.gitignore": "dc30edb81a10fa68014b3320af44794afff8f1c22882d8f1e1b8a46045f8e269",
+    "ai/gemini/poc/README.md": "49efa5bcee638a788d56643398d358ca5f1ca47c40a95c6419c777b8f2a43093",
+    "ai/gemini/poc/package-lock.json": "d51ec21e3a113f6bd38415bb082c097ccc2e46d6918fba21e8ab2b290b2f99fc",
+    "ai/gemini/poc/package.json": "9e4babb9eae2412e47e7a4065d2bbcb47deb60debbda8348b68170bd30ec2a8d",
+    "ai/gemini/poc/scripts/create-session.mjs": "c21c6274f91dab76cea23bce6237570e0d273f780798e9890fbc442b1930ae14",
+    "ai/gemini/poc/scripts/package_skill.py": "15d0aa6195c0b3c337e2aa27215b89fe9805d237204374f7e4de6878cbbf2aa4",
+    "ai/gemini/poc/scripts/smoke.mjs": "11a63f399734da36ec035e0a6bfff148809e3bfee3defd2b6273855613e2e73e",
+    "ai/gemini/poc/server/app.mjs": "3ba288c829c3a5f45b904040d2c6f465f6373ed8f40186341ff67697f7fae5ce",
+    "ai/gemini/poc/server/cli.mjs": "35fd95c39c45b52c54740b393314fc1435c19efdc4996057af3514adbb8fc180",
+    "ai/gemini/poc/server/oauth.mjs": "2a12ffd07e2c41ddffb92b468b5086d3615482404c9bf27ced6971fdf3ac1fb6",
+    "ai/gemini/poc/server/probe-store.mjs": "c8d945a2c99bb1a3365133e323c723a95fe6ef1b44856cf0c1ef5252f512e612",
+    "ai/gemini/poc/server/public-proxy.mjs": "be58204a09a628246b02bebb0be82cb38a3f95d5729e8ed590ab4989708d3a13",
+    "ai/gemini/poc/skill/SKILL.md": "f44677418730cdbdc5f80b8e516a6cd5ebba70967305c45964e2950476bf339c",
+    "ai/gemini/poc/test/oauth.test.mjs": "fda9e7c926966a3ebda2ad3f83e052e26143012e6e702e6796ef418f0cd4a8c7",
+    "ai/gemini/poc/test/protocol.test.mjs": "a89c20f088f7e2dbb8fc98569184be43c72673b73acf0c52484bccc5d0571bb7",
+    "ai/gemini/poc/test/public-proxy.test.mjs": "4c1a4eb223f7ec3eba885796aa55b0bc073cff9e135c2f7e9baed6745f53d78c",
+    ".github/workflows/gemini-poc.yml": "db90eb2e7511f467d9b00cdffb0fed51fad24140e75e27e9b45c8620ae2b1181",
+    "docs/deploy/gemini-custom-apps-poc.md": "39a859946769188dbe6062245193be451e61438c3dfbcd7d77f3d5ab6e99c312"
+  },
+  "localRoundTrip": {
+    "observedAt": "2026-10-05T19:22:49.365Z",
+    "executor": "local-automated-mcp-client",
+    "actualGeminiHost": false,
+    "status": "PASS_LOCAL_ONLY",
+    "protocolVersion": "2025-11-25",
+    "checks": [
+      "401 discovery",
+      "resource metadata",
+      "explicit OAuth consent",
+      "S256 code exchange",
+      "SDK MCP initialize/discovery",
+      "independent temporary probe session",
+      "persisted synthetic marker",
+      "idempotent exact replay",
+      "later context",
+      "redacted trace"
+    ],
+    "stateVersionBefore": 0,
+    "stateVersionAfter": 1
+  },
+  "httpsRoundTrip": {
+    "observedAt": "2026-10-05T19:22:33.955Z",
+    "executor": "automated-mcp-client-over-public-https",
+    "actualGeminiHost": false,
+    "status": "PASS_HTTPS_ONLY",
+    "protocolVersion": "2025-11-25",
+    "checks": [
+      "401 discovery",
+      "resource metadata",
+      "explicit OAuth consent",
+      "S256 code exchange",
+      "SDK MCP initialize/discovery",
+      "independent temporary probe session",
+      "persisted synthetic marker",
+      "idempotent exact replay",
+      "later context",
+      "redacted trace"
+    ],
+    "stateVersionBefore": 0,
+    "stateVersionAfter": 1,
+    "origin": "https://essential-christopher-dancing-gore.trycloudflare.com",
+    "publicOperatorEndpoint": "BLOCKED"
+  },
+  "skillArchive": {
+    "entries": [
+      "SKILL.md",
+      "LICENSE"
+    ],
+    "reproducible": true,
+    "sha256": "61b78505ab5018a3defe0648eb4d3c04ef3e6cd4a14ecd3a211c4e242cfb2c8b"
+  },
+  "hostAcceptance": {
+    "assessedOn": "2026-10-05",
+    "recordScope": "HISTORICAL_BEFORE_AUTHENTICATED_BROWSER_HANDOFF",
+    "status": "NOT_RUN",
+    "reason": "No authenticated Google test browser or usable US-VPN access available in this workspace. Signed-out German web access is not account eligibility evidence."
+  },
+  "accessRevalidation": {
+    "observedAt": "2026-10-05T19:24:47.874322+00:00",
+    "windowsEdgeExecutableFound": true,
+    "windowsInteropExecution": "UNAVAILABLE_EXEC_FORMAT_ERROR",
+    "debugEndpoints": [
+      {
+        "target": "linux-loopback",
+        "port": 9222,
+        "reachable": false,
+        "errorType": "URLError"
+      },
+      {
+        "target": "linux-loopback",
+        "port": 9223,
+        "reachable": false,
+        "errorType": "URLError"
+      },
+      {
+        "target": "windows-host-gateway",
+        "port": 9222,
+        "reachable": false,
+        "errorType": "URLError"
+      },
+      {
+        "target": "windows-host-gateway",
+        "port": 9223,
+        "reachable": false,
+        "errorType": "URLError"
+      }
+    ],
+    "authenticatedGeminiAccess": "NOT_AVAILABLE_TO_AGENT",
+    "vpnTest": "NOT_RUN_NO_US_VPN_ACCESS"
+  },
+  "completionAudit": {
+    "assessedOn": "2026-10-05",
+    "recordScope": "HISTORICAL_BEFORE_AUTHENTICATED_BROWSER_HANDOFF",
+    "planning": "COMPLETE",
+    "isolatedPocImplementation": "COMPLETE",
+    "localAndAutomatedHttpsTests": "PASS_NON_HOST",
+    "realGeminiWebRoute": "NOT_RUN",
+    "resultAndReproductionDocumentation": "COMPLETE",
+    "fullObjective": "NOT_ACHIEVED"
+  },
+  "blockerAudit": {
+    "recordScope": "HISTORICAL_ACCESS_BLOCKER_RESOLVED_BY_2026_10_06_UI_OBSERVATIONS",
+    "revalidatedAt": "2026-10-05T19:26:08.946619+00:00",
+    "consecutiveGoalTurns": 3,
+    "condition": "No agent-accessible authenticated Gemini test browser and US-VPN test route.",
+    "publicPocHealth": "PASS_200",
+    "browserDebugAccess": "UNAVAILABLE",
+    "requiredExternalChange": "Make an authenticated Gemini test browser and US-VPN test route accessible to this workspace.",
+    "furtherIndependentWork": "No meaningful host acceptance work possible with current access.",
+    "latestTraceInspection": {
+      "eventsAfter2123MESZ": 7,
+      "typesAfter2123MESZ": [
+        "http"
+      ],
+      "newOAuthEvents": 0,
+      "newToolEvents": 0,
+      "realGeminiInvocation": "NOT_PROVEN"
+    }
+  },
+  "accessHandoff20261006": {
+    "observedAt": "2026-10-05T23:32:15.735308+00:00",
+    "browser": "separate visible Chromium through WSLg",
+    "control": "VERIFIED_LOOPBACK_CDP_9222",
+    "profile": "separate ignored test profile",
+    "userActionRequired": [
+      "complete personal Google sign-in",
+      "make US-VPN test route available"
+    ],
+    "accountEligibility": "NOT_VERIFIED",
+    "actualGeminiHostAcceptance": "NOT_RUN"
+  },
+  "signedInBrowserObservation20261006": {
+    "observedAt": "2026-10-05T23:38:44.953472+00:00",
+    "browserControl": "VERIFIED_LOOPBACK_CDP",
+    "signIn": "OWNER_REPORTED_AND_GEMINI_SETTINGS_ACCESS_OBSERVED",
+    "geminiLanguage": "en",
+    "languageMechanism": "hl=en app URL parameter; English Settings label and html lang en verified",
+    "workspaceNetworkCountry": "DE",
+    "countrySource": "cloudflare-cdn-cgi-trace",
+    "connectedAppsPage": "VISIBLE",
+    "customAppsHeading": "VISIBLE",
+    "customAppSetup": "NOT_TESTED",
+    "actualMcpConnection": "NOT_RUN",
+    "usVpnComparison": "NOT_RUN"
+  },
+  "usRouteAndCustomAppEntryObservation20261006": {
+    "observedOn": "2026-10-06",
+    "browser": "existing signed-in Linux Chromium",
+    "browserControl": "VERIFIED_LOOPBACK_CDP_9222",
+    "vpnProvider": "Mullvad",
+    "vpnProviderEvidence": "OWNER_REPORTED_STARTED",
+    "browserNetworkCountry": "US",
+    "browserCountrySource": "https-cloudflare-cdn-cgi-trace",
+    "shellNetworkCountry": "US",
+    "shellCountrySource": "independent-cloudflare-cdn-cgi-trace",
+    "geminiLanguage": "en",
+    "htmlLanguage": "en",
+    "connectedAppsUrl": "https://gemini.google.com/apps?hl=en",
+    "actions": [
+      "reload Connected Apps in existing signed-in browser",
+      "click Custom apps chip"
+    ],
+    "customAppInput": {
+      "element": "INPUT",
+      "ariaLabel": "Add a custom app link to get started",
+      "placeholder": "https://your-app-link.com/mcp"
+    },
+    "nextButton": "VISIBLE",
+    "afterNext": {
+      "dialog": "Connect to an MCP server",
+      "additionalSettings": "VISIBLE",
+      "showMore": "VISIBLE",
+      "actualOAuthFlow": "NOT_RUN"
+    },
+    "hostAccess": "PASS_US_ROUTE_AND_USABLE_URL_ENTRY",
+    "freshLoginOrNewBrowserSession": "NOT_RUN",
+    "actualMcpConnection": "NOT_RUN",
+    "oauthFlow": "NOT_RUN",
+    "toolDiscoveryAndCalls": "NOT_RUN",
+    "confirmedSyntheticWrite": "NOT_RUN",
+    "newChat": "NOT_RUN",
+    "geminiCanaryCompatibility": "NOT_PROVEN"
+  },
+  "temporaryHttpsTransportRevalidation20261006": {
+    "observedOn": "2026-10-06",
+    "oldQuickTunnelHttpStatus": 530,
+    "replacementQuickTunnelHttpStatus": 530,
+    "replacementTransport7844Precheck": "NO_PASS",
+    "resultScope": "TEMPORARY_TUNNEL_TRANSPORT_ONLY",
+    "actualGeminiConnectionAttempt": "NOT_RUN",
+    "geminiResult": "NONE",
+    "historicalHttpsRoundTrip": "PRESERVED_2026_10_05_PASS_HTTPS_ONLY"
+  },
+  "temporaryHttpsTransportRecovery20261006": {
+    "observedOn": "2026-10-06",
+    "transport": "temporary anonymous localhost.run SSH tunnel",
+    "outboundPort": 22,
+    "origin": "https://5b1f865c65f79c.lhr.life",
+    "healthHttpStatus": 200,
+    "publicOperatorEndpointHttpStatus": 404,
+    "resultScope": "TEMPORARY_TUNNEL_TRANSPORT_ONLY"
+  },
+  "httpsRoundTrip20261006": {
+    "observedAt": "2026-10-06T00:05:06.291Z",
+    "executor": "automated-mcp-client-over-public-https",
+    "actualGeminiHost": false,
+    "status": "PASS_HTTPS_ONLY",
+    "protocolVersion": "2025-11-25",
+    "checks": [
+      "full automated HTTPS round trip",
+      "persisted synthetic marker",
+      "idempotent exact replay"
+    ],
+    "stateVersionBefore": 0,
+    "stateVersionAfter": 1,
+    "origin": "https://5b1f865c65f79c.lhr.life",
+    "publicOperatorEndpoint": "BLOCKED"
+  },
+  "currentHostAcceptance20261006": {
+    "assessedOn": "2026-10-06",
+    "actualGeminiHost": true,
+    "hostAccess": "PASS_US_ROUTE_AND_USABLE_URL_ENTRY",
+    "mcpHostAcceptance": "PASS_CORE_CANARY_WITH_HOST_LIMITATIONS",
+    "oauthAndDiscovery": "PASS",
+    "refresh": "PASS_WITH_EXPLICIT_PROFILE",
+    "read": "PASS",
+    "deniedWrite": "PASS",
+    "approvedWrite": "PASS",
+    "exactReplay": "PASS",
+    "newChat": "FAIL_OBSERVED_CHAT_DISPATCH",
+    "reason": "Actual consumer Gemini connected, read the synthetic context, requested manual write approval, persisted a marker and replayed it without mutation. A fresh chat and its retry did not dispatch read tools despite successful discovery and a healthy server.",
+    "fullObjective": "ACHIEVED_POC_IMPLEMENTATION_AND_PRACTICAL_ASSESSMENT",
+    "fullIssue70Acceptance": "NOT_ACHIEVED; full backend learning integration and beta are outside this PoC",
+    "reliableHostContinuation": "NOT_PROVEN"
+  },
+  "initialEvidence20261005": {
+    "recordedAt": "2026-10-05T19:23:22.577385+00:00",
+    "actualGeminiHost": false,
+    "localTests": {
+      "passed": 27,
+      "failed": 0,
+      "skipped": 0
+    },
+    "sourceHashes": {
+      "ai/gemini/poc/.gitignore": "dc30edb81a10fa68014b3320af44794afff8f1c22882d8f1e1b8a46045f8e269",
+      "ai/gemini/poc/README.md": "8828223ed41002903e6b5cbd2d6517d3b71f136de3be3b2aa6b66b86b3707c44",
+      "ai/gemini/poc/package-lock.json": "d51ec21e3a113f6bd38415bb082c097ccc2e46d6918fba21e8ab2b290b2f99fc",
+      "ai/gemini/poc/package.json": "9e4babb9eae2412e47e7a4065d2bbcb47deb60debbda8348b68170bd30ec2a8d",
+      "ai/gemini/poc/scripts/create-session.mjs": "c21c6274f91dab76cea23bce6237570e0d273f780798e9890fbc442b1930ae14",
+      "ai/gemini/poc/scripts/package_skill.py": "15d0aa6195c0b3c337e2aa27215b89fe9805d237204374f7e4de6878cbbf2aa4",
+      "ai/gemini/poc/scripts/smoke.mjs": "574d06dcfab11d33e5d3db366bbbf4001cd627bfab698370ce787e51eeb86f6b",
+      "ai/gemini/poc/server/app.mjs": "dc80a348bd499a0bfb8804393d177928460941666d1c28f1fba5d5d00562df1f",
+      "ai/gemini/poc/server/cli.mjs": "b15552202af36d3c11b35501cac2619e87ac749d5acf4d5f6fe7949f58fed05e",
+      "ai/gemini/poc/server/oauth.mjs": "869f29a10694cc4d567193bb2dc18b037068aa04e948bf00f637bdd780d9bd44",
+      "ai/gemini/poc/server/probe-store.mjs": "c8d945a2c99bb1a3365133e323c723a95fe6ef1b44856cf0c1ef5252f512e612",
+      "ai/gemini/poc/server/public-proxy.mjs": "be58204a09a628246b02bebb0be82cb38a3f95d5729e8ed590ab4989708d3a13",
+      "ai/gemini/poc/skill/SKILL.md": "f44677418730cdbdc5f80b8e516a6cd5ebba70967305c45964e2950476bf339c",
+      "ai/gemini/poc/test/oauth.test.mjs": "a88fe7bac9f93b28b0344dda8fb99ba8d2d8d49105919d114c8504dec7c57043",
+      "ai/gemini/poc/test/protocol.test.mjs": "894f7e2ca8433498871225c803d6b3fa028a1a2fa89682d0e3e9b7054d5c3ca8",
+      "ai/gemini/poc/test/public-proxy.test.mjs": "4c1a4eb223f7ec3eba885796aa55b0bc073cff9e135c2f7e9baed6745f53d78c"
+    }
+  },
+  "recordScope": "CURRENT_POC_ASSESSMENT_WITH_PRESERVED_HISTORICAL_RECORDS",
+  "localRoundTrip20261006": {
+    "observedAt": "2026-10-06T00:34:08.413Z",
+    "executor": "local-automated-mcp-client",
+    "actualGeminiHost": false,
+    "status": "PASS_LOCAL_ONLY",
+    "protocolVersion": "2025-11-25",
+    "sdkVersion": "1.30.0",
+    "checks": [
+      "401 discovery",
+      "resource metadata",
+      "explicit OAuth consent",
+      "S256 code exchange",
+      "SDK MCP initialize/discovery",
+      "independent temporary probe session",
+      "persisted synthetic marker",
+      "idempotent exact replay",
+      "later context",
+      "redacted trace"
+    ],
+    "stateVersionBefore": 0,
+    "stateVersionAfter": 1
+  },
+  "httpsRoundTripFinal20261006": {
+    "observedAt": "2026-10-06T00:49:36.854Z",
+    "executor": "automated-mcp-client-over-public-https",
+    "actualGeminiHost": false,
+    "status": "PASS_HTTPS_ONLY",
+    "protocolVersion": "2025-11-25",
+    "sdkVersion": "1.30.0",
+    "checks": [
+      "401 discovery",
+      "resource metadata",
+      "explicit OAuth consent",
+      "S256 code exchange",
+      "SDK MCP initialize/discovery",
+      "independent temporary probe session",
+      "persisted synthetic marker",
+      "idempotent exact replay",
+      "later context",
+      "redacted trace"
+    ],
+    "origin": "https://840518030c40a1.lhr.life",
+    "publicOperatorEndpoint": "BLOCKED",
+    "stateVersionBefore": 0,
+    "stateVersionAfter": 1
+  },
+  "actualGeminiObservation20261006": {
+    "executor": "actual signed-in Gemini Web, controlled through loopback CDP",
+    "actualGeminiHost": true,
+    "syntheticOnly": true,
+    "browser": "separate Linux Chromium through WSLg",
+    "language": "en",
+    "vpnProviderEvidence": "Mullvad started, owner-reported",
+    "initialMode": "Flash UI label; underlying API model not measured",
+    "successfulWriteMode": "Pro, selected from the 3.1 Pro UI menu; underlying API model not measured",
+    "initialOrigin": "https://d487fefc13b041.lhr.life",
+    "successfulWriteOrigin": "https://840518030c40a1.lhr.life",
+    "configuration": {
+      "clientId": "skillpilot-gemini-poc",
+      "clientAuthMethod": "client_secret_post",
+      "scope": "poc:probe",
+      "audience": "https://840518030c40a1.lhr.life/mcp",
+      "allowRefreshResourceOmission": true,
+      "refreshOmissionDefault": false,
+      "exactCallbackPinning": true
+    },
+    "callback": {
+      "origin": "https://oauth-redirect.googleusercontent.com",
+      "pathPattern": "/r/user_bound_custom-mcp-<account-redacted>-<temporary-origin-with-underscores>",
+      "exactValue": "PRIVATE_RUNTIME_ONLY",
+      "pkce": "S256",
+      "stateObservedLengths": [
+        1167,
+        1168
+      ],
+      "stateMaximum": 4096
+    },
+    "initialOAuthAndDiscovery": {
+      "status": "PASS",
+      "codeExchangeAt": "2026-10-06T00:23:52.737Z",
+      "tokenHttpStatus": 200,
+      "initializeAt": "2026-10-06T00:23:53.609Z",
+      "toolsListAt": "2026-10-06T00:23:54.802Z",
+      "incomingProtocolVersion": "2025-11-25",
+      "toolNames": [
+        "get_skillpilot_poc_status",
+        "get_skillpilot_poc_context",
+        "record_skillpilot_poc_completion"
+      ]
+    },
+    "measuredCorrections": [
+      {
+        "area": "OAuth state",
+        "observation": "Gemini sends 1166–1168 characters; the initial 512 limit rejected it",
+        "correction": "finite 4096 bound; unchanged exact state round trip"
+      },
+      {
+        "area": "browser consent",
+        "observation": "no-referrer consent form produced Origin null; redirect-chain form CSP blocked callback handoff",
+        "correction": "strict-origin on authorization page and explicit escaped pinned callback link for HTML clients; cross-origin/null consent remains rejected"
+      },
+      {
+        "area": "client authentication",
+        "observedAt": "2026-10-06T00:22:53Z",
+        "observation": "Gemini sends client_secret_post",
+        "correction": "explicit Post profile; Basic remains the default and no method fallback exists"
+      },
+      {
+        "area": "refresh resource",
+        "observedAt": "2026-10-06T00:29:22.799Z",
+        "observation": "immediate native refresh omits resource, rejected under strict profile",
+        "correction": "explicit single-audience omission option, default off; validate client/grant and retain original audience, scope, lifetime, rotation and reuse revocation",
+        "standardsStatus": "Observed omission does not meet MCP client resource requirement; bounded RFC 8707 interoperability accommodation",
+        "suppliedInvalidResources": "REJECTED"
+      }
+    ],
+    "refresh": {
+      "status": "PASS_WITH_EXPLICIT_PROFILE",
+      "omittedResourceAcceptedAt": "2026-10-06T00:31:16.249Z",
+      "tokenHttpStatus": 200,
+      "laterSuppliedResourceRefreshAt": "2026-10-06T00:44:32.279Z"
+    },
+    "read": {
+      "status": "PASS",
+      "initialContextAt": "2026-10-06T00:31:35.729Z",
+      "initialStatusAt": "2026-10-06T00:31:36.698Z",
+      "newOriginStatusAt": "2026-10-06T00:43:35.421Z",
+      "newOriginContextAt": "2026-10-06T00:43:47.147Z",
+      "modelReported": {
+        "syntheticOnly": true,
+        "completed": false,
+        "stateVersion": 0
+      }
+    },
+    "deniedWrite": {
+      "status": "PASS",
+      "uiDecision": "Deny",
+      "observedAt": "2026-10-06T00:32:26.948Z",
+      "stateVersionBefore": 0,
+      "stateVersionAfter": 0,
+      "completionToolInvoked": false,
+      "subsequentActualServerContextAt": "2026-10-06T00:32:58.804Z",
+      "subsequentActualServerStateVersion": 0
+    },
+    "approvedWrite": {
+      "status": "PASS",
+      "uiDecision": "Allow",
+      "toolCallAt": "2026-10-06T00:44:33.823Z",
+      "httpStatus": 200,
+      "proof": {
+        "observedAt": "2026-10-06T00:44:35.101Z",
+        "executor": "actual Gemini Web UI through CDP",
+        "action": "Allow",
+        "completedBefore": false,
+        "completedAfter": true,
+        "stateVersionBefore": 0,
+        "stateVersionAfter": 1,
+        "persistedReceiptPresent": true,
+        "savedAt": "2026-10-06T00:44:33.822Z",
+        "verifiedAt": "2026-10-06T00:44:51.593Z",
+        "verification": "fresh store loaded persisted file after the external Gemini write"
+      },
+      "modelSavedClaimAfterSuccessfulTool": "OBSERVED"
+    },
+    "exactReplay": {
+      "status": "PASS",
+      "uiDecision": "Allow",
+      "toolCallAt": "2026-10-06T00:45:47.233Z",
+      "httpStatus": 200,
+      "proof": {
+        "observedAt": "2026-10-06T00:45:48.695Z",
+        "executor": "actual Gemini Web UI through CDP",
+        "manualApprovalClicked": true,
+        "completed": true,
+        "stateVersion": 1,
+        "sameReceipt": true
+      },
+      "modelReportedSameReceiptAndStateVersion": "OBSERVED"
+    },
+    "newChat": {
+      "status": "FAIL_OBSERVED_CHAT_DISPATCH",
+      "attempts": [
+        {
+          "at": "2026-10-06T00:46:23Z",
+          "initializeAndToolsListHttpStatus": 200,
+          "toolsCallCount": 0,
+          "modelResult": "tools unavailable"
+        },
+        {
+          "at": "2026-10-06T00:48:35Z",
+          "initializeAndToolsListHttpStatus": 200,
+          "toolsCallCount": 0,
+          "modelResult": "generic error"
+        }
+      ],
+      "serverHealthAfterAttempts": {
+        "observedAt": "2026-10-06T00:49:30.710Z",
+        "origin": "https://840518030c40a1.lhr.life",
+        "status": 200,
+        "healthy": true
+      },
+      "cause": "UNCONFIRMED",
+      "persistedSyntheticMarker": "completed=true, stateVersion=1; actual new-chat read not achieved"
+    },
+    "earlierInterruption": {
+      "status": "OBSERVED_INCOMPLETE_HOST_FLOW",
+      "contextHttpStatus": 200,
+      "contextStateVersion": 0,
+      "afterDeniedWrite": "model unavailable response and another pending retry interrupted by operator",
+      "cause": "UNCONFIRMED",
+      "notEquivalentToInterruptedConfirmedWrite": true
+    },
+    "temporaryOriginRotation": {
+      "oldOrigin": "https://d487fefc13b041.lhr.life",
+      "oldHealthHttpStatus": 502,
+      "newOrigin": "https://840518030c40a1.lhr.life",
+      "classification": "TRANSPORT_ONLY; later old-origin chat failures are confounded, not Gemini acceptance failures",
+      "requirement": "No fixed IP or permanent domain is required; the public origin must remain usable and unchanged during a test. Re-pin callback and reconnect after rotation."
+    },
+    "finalNetworkCountry": {
+      "observedAt": "2026-10-06T00:49:47Z",
+      "browser": "US",
+      "shell": "US",
+      "source": "independent HTTPS Cloudflare trace probes; IPs omitted"
+    },
+    "notRun": [
+      "fresh personal Google login/new browser profile",
+      "actual Skill ZIP import",
+      "interruption during a confirmed write",
+      "real SkillPilot mastery/learning-session flow",
+      "actual-host OAuth revocation",
+      "external US beta onboarding"
+    ]
+  },
+  "completionAudit20261006": {
+    "planning": "COMPLETE",
+    "isolatedPocImplementation": "COMPLETE",
+    "localTests": "PASS_36_OF_36",
+    "automatedHttps": "PASS_NON_HOST",
+    "actualCoreMcpCanary": "PASS_WITH_EXPLICIT_PROFILE",
+    "actualNewChat": "FAIL_OBSERVED_CHAT_DISPATCH",
+    "assessmentAndReproductionDocumentation": "COMPLETE",
+    "pocObjective": "ACHIEVED",
+    "fullIssue70": "NOT_ACHIEVED_OUTSIDE_POC_SCOPE",
+    "productionProviderChanges": "NONE",
+    "publicationOrProductionDeployment": "NONE"
+  },
+  "sourceHashScope": "CURRENT_FINAL_POC_SOURCE_AND_DOCUMENTATION; original 5 October hashes retained under initialEvidence20261005",
+  "sourceHashesRecordedAt": "2026-10-06T00:51:19.972318+00:00",
+  "finalVerification": {
+    "nodeVersion": "22.22.0",
+    "pocTests": {
+      "passed": 36,
+      "failed": 0,
+      "skipped": 0
+    },
+    "localSmokeAt": "2026-10-06T00:34:08.413Z",
+    "httpsSmokeAt": "2026-10-06T00:49:36.854Z",
+    "httpsClientAuthMethod": "client_secret_post",
+    "automatedSmokesActualGeminiHost": false,
+    "privacyAudit": "PASS_NO_PRIVATE_CREDENTIALS_OR_RAW_ACCOUNT_CALLBACK_IN_PUBLIC_ARTIFACTS",
+    "trackedProductionChanges": "NONE",
+    "independentArtifactReview": "PASS: current source hashes, historical evidence, ZIP, test count, privacy and host/non-host result separation",
+    "publicFilesChecked": 19,
+    "whitespace": "PASS"
+  }
+}
