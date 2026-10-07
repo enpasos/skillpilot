@@ -1,0 +1,9 @@
+# Human20 independent A: science checkpoint
+
+Independent A actually read20 whole bilingual goals,40 complete DEEN material/task/model-answer cases,20 operative P profiles and the scoped whole BY10/HE-G9 original sources. The first immutable science seal records17 case/profile passes and three actual holds; goal texts remain KEEP20. A did not author texts, cases or images and did not read peer findings before that first seal.
+
+Five whole cases on ordinals5/7/16/19 were subsequently corrected by the author. Independent A reread the eight whole cases/four operative profiles, retained35 unchanged cases/16 profiles/all20 goal texts exactly and resolved its three actual findings. The additional English resistance-negation issue was peer-reported after A's first seal, then independently confirmed/resolved; it is not falsely attributed to A's original blind review. Actual official NIH function/food sections were checked for the new vitamin-C/collagen and calcium/bone/tooth examples. The native preimage P20 check passed with0 blockers; E1/G1/ai_candidate/needs_human_review remains truthful.
+
+This checkpoint does not claim final V20 or D20: actual selected20 full/360/680 raster images and actual final native20 pages remain pending. No active writes, strict gain0, no human approval or trial.
+
+Current entry: neutral-human20-independent-a-science-commit-checkpoint.entry.json. The portable current source receipt preserves official URLs, PDF/HTML and whole scoped-read digests plus verified reproduction methods. Four local cache witness labels in the original immutable first receipt are historical context only, not required file inputs; that sealed history remains untouched. No full official text is committed. Failed local reader/CLI attempts are documented truthfully; only corrected actual successful native output is counted.

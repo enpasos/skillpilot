@@ -29,6 +29,14 @@ export function preservesMemoryVisibilityScopes(previous: unknown, active: unkno
   return true
 }
 
+// An additional required coverage check strengthens the existing evidence.
+// Once required, coverage cannot be disabled by a successor configuration.
+export function preservesMemoryVisibilityCoverageRequirement(previous: unknown, active: unknown): boolean {
+  if (![undefined, false, true].includes(previous as undefined | boolean)
+    || ![undefined, false, true].includes(active as undefined | boolean)) return false
+  return previous === active || (previous !== true && active === true)
+}
+
 export const defaultMemoryCardReviewConfigDir = 'curricula/DE/Gymnasium/quality/memory-card-review'
 const activeReviewRegistryPath = 'curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json'
 
@@ -158,10 +166,13 @@ export function discoverActiveMemoryCardReviewConfigs(
     const active = JSON.parse(readFileSync(resolve(repoRoot, activePath), 'utf8')) as Record<string, unknown>
     // Evidence routing preserves the checked subject, goal scope and card
     // requirements. Additional views expand the existing visibility checks.
-    for (const field of ['reviewId', 'landscapeId', 'landscapePath', 'ruleVersion', 'scope', 'visibilityScopeCoverageRequired']) {
+    for (const field of ['reviewId', 'landscapeId', 'landscapePath', 'ruleVersion', 'scope']) {
       if (JSON.stringify(active[field]) !== JSON.stringify(previous[field])) {
         throw new Error(`Active memory-card review config changes ${field}: ${activePath}`)
       }
+    }
+    if (!preservesMemoryVisibilityCoverageRequirement(previous.visibilityScopeCoverageRequired, active.visibilityScopeCoverageRequired)) {
+      throw new Error(`Active memory-card review config weakens or changes required visibility coverage: ${activePath}`)
     }
     if (JSON.stringify(active.visibilityScopes) !== JSON.stringify(previous.visibilityScopes)
       && !preservesMemoryVisibilityScopes(previous.visibilityScopes, active.visibilityScopes)) {

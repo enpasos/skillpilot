@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-cqr003-four-current-sealed-paired-20261007-v1-four",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-five-reviewed-integration-preparation-technical-20261007-v1/native-d-four.batch.config.json",
+  "configDigest": "sha256:6a0fb2033f2c242849eeb9a2237fa650e7f8a6a95f620b4ca276e7323e6addf4",
+  "goalIds": [
+    "05358518-f66c-5c1b-ad3f-d16211d0fc1c",
+    "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+    "e70d8a85-2dea-5165-919b-200fee9f4db4",
+    "ffef97e3-12d6-5090-9816-46ab9e57fae2"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 391,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-five-reviewed-integration-preparation-technical-20261007-v1/native-full391.future-active.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:7ed0962803831730944bf63484ee0423ec20b9ed76dd49e8e70e0a276144011f"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:62cb4cc1658759ed03ab0223bb452ac512efd312f033b8f5427b9730e7ac96dd",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:7486d9a3437722da869e1c3c8f6f2c1b1d2fa76df5f39f9fa131948432fd5c0d",
+    "reviewInputFingerprint": "sha256:a94dbfdd466057535cb23945df8ffb107d22d7490142b032f02301874d0ac91e",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biology-cqr003-four-prerequisite-source-current-20261007-v1-a",
+        "campaignDigest": "sha256:7082bb23736df116f8f4596ca750ff9533e1c641fdbdbadd720c8303d1ee0a94",
+        "roundId": "biology-cqr003-four-prerequisite-source-independent-a-20261007-v1",
+        "independenceGroupId": "biology-cqr003-four-prerequisite-source-independent-a-20261007",
+        "batchId": "biology-cqr003-four-prerequisite-source-independent-a-20261007-v1.batch-001",
+        "batchInputFingerprint": "sha256:113b6334a2d8e83e70593a9ebec4788752a51a2b1eb7a068811f11d3dc35842a"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biology-cqr003-four-prerequisite-source-current-20261007-v1-b",
+        "campaignDigest": "sha256:4c6d5fc00da4cff86dd65ecfa2e9bcabad0d76527fc2963628c524f4c3774404",
+        "roundId": "biology-cqr003-four-prerequisite-source-independent-b-20261007-v1",
+        "independenceGroupId": "biology-cqr003-four-prerequisite-source-independent-b-20261007",
+        "batchId": "biology-cqr003-four-prerequisite-source-independent-b-20261007-v1.batch-001",
+        "batchInputFingerprint": "sha256:bce209548375752e91809ff6a31d2bb4152b91f6cfa1af8c56b78cc5692f2dbc"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

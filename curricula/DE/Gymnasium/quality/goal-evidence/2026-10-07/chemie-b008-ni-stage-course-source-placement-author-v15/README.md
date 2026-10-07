@@ -1,0 +1,13 @@
+# B008 v15: NI stage-/kursbezogene Quellen- und Platzierungskandidaten
+
+Inaktives Authorpaket; **strikt +0**, keine aktiven Änderungen. V12 (122 Payloads) und V14 (74 Payloads) wurden vollständig erneut auf unveränderte Bytes geprüft. Die 26 ganzen DE/EN-Texte und 52 Materialfälle bleiben unverändert.
+
+Aus tatsächlichen NI-Primärtabellen und Operatorbezügen entstehen 46 konkret begründete partielle Quell-/Kindbindungen, 19 reine Quellenmetadatenvorschläge und drei explizite Sichten. Alle 371 früheren NI-Familienbindungen und alle 1646 nationalen ursprünglichen Quellenpflichten bleiben vollständig erhalten; es gibt keine neue Quell-ID und keinen Quellenabschluss. Alle 41 betroffenen Quellentscheidungen sind ehrlich zur unabhängigen Prüfung offen.
+
+SekI umfasst konkrete Komponenten des angeleiteten und selbst geplanten realen Experimentierens, Protokollierung, Datenauswertung und Messabweichungen, Modellkritik, Recherche, Darstellung, Präsentation sowie lebensweltliche Anwendungen und Berufsfelder. Ein Papierfall ersetzt kein tatsächliches Experiment. Die Berufsfelderquelle trägt ausdrücklich nur die Erkennungskomponente, keine behauptete vollständige persönliche Berufswahlroutine.
+
+Die gemeinsame gA/eA-Oberstufenroute nutzt tatsächlich gemeinsame Quellen (technische SkillPilot-Sichten GK/LK). Fett markierte eA-Pflichten werden gemäß der echten Seite 11 ausschließlich eA zugeordnet und nicht auf GK übertragen. Die hier hinzugefügten konkreten Quellen sind alle GK_LK. Hypothesenoperator, Quellenintention/-urheberschaft, Datenvalidität und komplexe Modelldomänen bleiben genau begrenzte Komponenten und dokumentierte Prüfpunkte; ein Operatorverzeichnis erzeugt keine neue volle Themenpflicht. Sieben konkrete Voraussetzungen sind in der Oberstufensicht explizit prerequisiteOnly, ohne dadurch eine Quellpflicht zu behaupten.
+
+Der echte native Compilerlauf zeigt über 43 Sichten **111 → 98 CPV-009**, drei fehlerfreie NI-Kandidatensichten mit 91/164/190 Zielseiten und 395 volle reine Modellseiten. Es gibt keine zusätzlichen Änderungen an den 169 geschützten Ziel-/Seiteninhalten gegenüber V14. Acht vorherige geschützte Kontextänderungen und 16 ursprüngliche BY-Pflichten ohne aktuelle Facetroute bleiben offen.
+
+Einstieg: `bounded-neutral-ni-source-placement-review-entry.json`. Primärbezüge, Quellenmetadaten, partielle Mappings und tatsächliche Sichten benötigen unabhängige Quellen-/Platzierungsprüfung. Nationale Quellen-QS, tatsächliche D/P-Seitenprüfung, neue Kindbilder und M7-Integration bleiben getrennte offene Schritte. Menschliche Freigaben werden nicht behauptet.

@@ -1,0 +1,129 @@
+{
+  "artifactKind": "actual-completed-checks-before-terminal-application-backend-checkpoint",
+  "checks": [
+    {
+      "check": "schema-first-stable",
+      "command": "python3 scripts/validate_schemas.py",
+      "actualTerminalExitCode": 0,
+      "observedSessionId": 28204,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-schema.actual.log.txt",
+      "logSha256": "sha256:51ba23002ac9c2cc4b06c6472e6f504cd196c032a9ddfb0b3b18ef0c8392613e"
+    },
+    {
+      "check": "nine-protected-maturity-floors",
+      "command": "npm --prefix app run check:curriculum-maturity-floors",
+      "actualTerminalExitCode": 0,
+      "observedSessionId": null,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-maturity-floors.actual.log.txt",
+      "logSha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6"
+    },
+    {
+      "check": "quality-status-current",
+      "command": "npm --prefix app run quality:curriculum-status:check",
+      "actualTerminalExitCode": 0,
+      "observedSessionId": 85206,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-generated-status-check.actual.log.txt",
+      "logSha256": "sha256:20363a83e28b5d31426bfb566a2246c93ad0216c272d23b6e76d5bafe1e16d9c"
+    },
+    {
+      "check": "source-coverage-current",
+      "command": "npm --prefix app run quality:source-coverage-audit:check",
+      "actualTerminalExitCode": 0,
+      "observedSessionId": 86086,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-source-coverage-check.actual.log.txt",
+      "logSha256": "sha256:d8432c27d9aa0411529ea36d44ff78c4d771b3bf0d8573c99a1d859efc2243aa"
+    },
+    {
+      "check": "source-memory-regressions",
+      "command": "npm --prefix app run quality:source-coverage-evidence:test",
+      "actualTerminalExitCode": 0,
+      "observedSessionId": 43950,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-source-memory-regressions.actual.log.txt",
+      "logSha256": "sha256:68b42af167aa224480fadb7fcbf530db1306e77c0d6c3ac0f1c58a6248033951"
+    },
+    {
+      "check": "graph",
+      "command": "npm --prefix app run validate:graph",
+      "actualTerminalExitCode": 0,
+      "observedSessionId": 73456,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-graph.actual.log.txt",
+      "logSha256": "sha256:9fdd107cb87b98d8c5d227e8852ebec29c43741d2b54f6fd9ed46d116eaedfe7"
+    },
+    {
+      "check": "composition-views",
+      "command": "npm --prefix app run validate:composition-views",
+      "actualTerminalExitCode": 0,
+      "observedSessionId": 81650,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-composition-views.actual.log.txt",
+      "logSha256": "sha256:132027b2343a6e6d349886e85d7755d58d4275301280bd54cc468e4c9def4daf"
+    },
+    {
+      "check": "lint",
+      "command": "npm --prefix app run lint",
+      "actualTerminalExitCode": 0,
+      "observedSessionId": 66948,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-lint.actual.log.txt",
+      "logSha256": "sha256:c31ee7aee37f3feee12610fa6bfbd1ee3b3252ef1922ddb19febfb56dd5d50bc"
+    },
+    {
+      "check": "projection-roles",
+      "command": "npm --prefix app run test:composition-projection-roles",
+      "actualTerminalExitCode": 0,
+      "observedSessionId": 24940,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-projection-roles.actual.log.txt",
+      "logSha256": "sha256:aac8f6dd4764c98773bccc630c00ffa8855dd31094805aa0a28a8e27d6ab5d9f"
+    },
+    {
+      "check": "runtime-curriculum-catalog",
+      "command": "npm --prefix app run test:runtime-curriculum-catalog",
+      "actualTerminalExitCode": 0,
+      "observedSessionId": null,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-runtime-catalog.actual.log.txt",
+      "logSha256": "sha256:e60615ab6936928b798499e0d3e182121f23527cfd3689cbed9b929fbd817f08"
+    },
+    {
+      "check": "strict-five-gate-regressions",
+      "command": "npm --prefix app run test:deep-understanding-rollout",
+      "actualTerminalExitCode": 0,
+      "observedSessionId": 75616,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-strict-gates-tests.actual.log.txt",
+      "logSha256": "sha256:6ad780f84e714dcf1d6df2a61057b64dee1a5d1c6b9ef53cf6cc59374d75c32e"
+    },
+    {
+      "check": "current-four-subject-visual-qa",
+      "command": "npm --prefix app run check:goal-visualization-qa -- --subjects=mathematik,physik,chemie,biologie",
+      "actualTerminalExitCode": 0,
+      "observedSessionId": 38865,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-visual-qa.actual.log.txt",
+      "logSha256": "sha256:a14d9da66ad8978b5e23f859978d760dd50837f1da034fef5b5692bb9a475aec"
+    },
+    {
+      "check": "memory-current-reports",
+      "command": "npm --prefix app run quality:memory-card-review:report:all",
+      "actualTerminalExitCode": 0,
+      "observedSessionId": 86942,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-memory-reports.actual.log.txt",
+      "logSha256": "sha256:1086b14c5bef8c0dd03f28cd8233c59ae07143bd83b270fe9d1718429ac51d84"
+    },
+    {
+      "check": "duration-offerings",
+      "command": "npm --prefix app run check:gymnasium-duration-offerings",
+      "actualTerminalExitCode": 0,
+      "observedSessionId": null,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-duration-offerings.actual.log.txt",
+      "logSha256": "sha256:becb399e54dcb98dc5a9ebcbf775c8d80abe37826e517a8fe2a856f6ba06aabe"
+    },
+    {
+      "check": "chemistry-watch-after-reviewed-native-registration",
+      "command": "./scripts/run_canonical_chemistry_evidence_watch.sh",
+      "actualTerminalExitCode": 0,
+      "observedSessionId": 17787,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-chemistry-evidence-watch-after-registration.actual.log.txt",
+      "logSha256": "sha256:e82aa0aa93de049d61e4bbd3baaa475470794d54a471d721172ca65a8d6e5f8e"
+    }
+  ],
+  "applicationBuild": "running after concrete native atlas repair",
+  "targetedBackend": "running after proven six Memory visibility fixture repairs",
+  "priorWholeBackendSuite": "2300 tests, 245 result files, zero failure/error; predates latest visibility fixture checks",
+  "dependencyAudit": "actual exit 1, unchanged dependencies, 28 findings, separate scope"
+}

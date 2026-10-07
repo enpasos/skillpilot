@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:98c3a01c889e3ef430c86ec14f40837ff3b90c9396837d194cb897e4540dca24",
+  "reviewInputFingerprint": "sha256:9484e13895f20ecb10b8885e6ca6481382e2a926cd271a81cf12d0fea88f61a0",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-11675-terminal-route-campaign-a-20261007-v1",
+      "roundId": "biologie-11675-terminal-route-independent-a-20261007-v1",
+      "independenceGroupId": "biologie-11675-terminal-route-independent-a-20261007-v1",
+      "runIds": [
+        "biologie-11675-terminal-current-context-independent-a-root-20261007-v1.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-11675-terminal-route-campaign-b-20261007-v1",
+      "roundId": "biologie-11675-terminal-route-independent-b-20261007-v1",
+      "independenceGroupId": "biologie-11675-terminal-route-independent-b-20261007-v1",
+      "runIds": [
+        "biologie-11675-terminal-route-independent-b-20261007-v1.actual-current-context.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex runtime identity)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "11675f1a-5de2-5926-be78-1e8275f19f5b",
+      "firstRecordId": "biologie-11675-terminal-current-context-independent-a-root-20261007-v1.run-001.11675",
+      "secondRecordId": "biologie-11675-terminal-route-independent-b-20261007-v1.11675-current-context",
+      "firstRunId": "biologie-11675-terminal-current-context-independent-a-root-20261007-v1.run-001",
+      "secondRunId": "biologie-11675-terminal-route-independent-b-20261007-v1.actual-current-context.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "beforeBindings": {
+    "canonical": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "sha256:eab30c3f1ea6b9a2e16b2d005d9511f7e4f621becc75ee344a52ca746a5705e4",
+      "bytes": 1419490
+    },
+    "kinds": {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "sha256": "sha256:8ca18185d69e34ed6c982393420f69676408d551d2a1c4209bb507c10ae79c9c",
+      "bytes": 153884
+    },
+    "qa": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json",
+      "sha256": "sha256:31d51e60d2967a58ce7b71007a5173f2e6a82d1368f2bf6400ee84759cd05c5e",
+      "bytes": 892950
+    },
+    "registry": {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "sha256:a5ba6f4926ef4a2a126606ec17255eb90461eccff6d2190fd6bdb449eed29543",
+      "bytes": 160606
+    }
+  },
+  "canonicalChangedFields": [
+    {
+      "goalId": "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+      "changedFields": [
+        "resourceLinks",
+        "descriptionEn",
+        "description",
+        "title",
+        "titleEn",
+        "extendedData"
+      ]
+    },
+    {
+      "goalId": "f0939f88-a6af-5334-ac4d-5d54732af25a",
+      "changedFields": [
+        "extendedData",
+        "resourceLinks"
+      ]
+    },
+    {
+      "goalId": "f97b9c87-16d0-58fd-bcb2-c51574aa36d0",
+      "changedFields": [
+        "contains"
+      ]
+    },
+    {
+      "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+      "changedFields": [
+        "descriptionEn",
+        "description",
+        "extendedData",
+        "resourceLinks"
+      ]
+    },
+    {
+      "goalId": "1c1420c2-a8e2-520f-8015-6df637a973bd",
+      "changedFields": [
+        "descriptionEn",
+        "description",
+        "requires",
+        "extendedData",
+        "resourceLinks"
+      ]
+    }
+  ],
+  "newSupportGoal": "417e65ec-68be-5f2e-9452-c3ba9b1d362f",
+  "supportParentAppend": "f97b9c87-16d0-58fd-bcb2-c51574aa36d0",
+  "wholeCanonicalOther474Exact": true,
+  "existingSemanticKindsClassificationExact": true,
+  "memorySupportKind": "memory",
+  "atomicityConfigReplacements": [
+    {
+      "oldConfigPath": "curricula/DE/Gymnasium/quality/semantic-atomicity/chemie-b014-five-current-20261005-v1/canonical-chemistry-ephase-redox-protolysis.config.json",
+      "replacementConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-plus-d2cc-reviewed-integration-preparation-technical-20261007-v1/atomicity/3.residual.future-active.config.json",
+      "retainedRecordLinesExact": true,
+      "removedGoalIds": [
+        "1c1420c2-a8e2-520f-8015-6df637a973bd"
+      ]
+    },
+    {
+      "oldConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-final18-native-paired-integration-preparation-technical-20261007-v1/atomicity/canonical-chemistry-sek1-foundations.future-active.config.json",
+      "replacementConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-plus-d2cc-reviewed-integration-preparation-technical-20261007-v1/atomicity/12.residual.future-active.config.json",
+      "retainedRecordLinesExact": true,
+      "removedGoalIds": [
+        "9e656697-fc05-5aa9-9aca-871af2e89eb7"
+      ]
+    }
+  ],
+  "otherSubjectsMustRemainExactAtApply": true,
+  "wholeRegistryOverwriteAllowed": false,
+  "activeWrites": 0
+}

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:45e70ba95114df7d288183d8f1798ba86309658c436fd134cc53b4980485591e",
+  "reviewInputFingerprint": "sha256:af11bc3d891bcbb7fb6a76b2f157435f2a28b7a7cd067849cd0c332cca061eb0",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-cellcycle-evolution-two-current391-campaign-a-20261007-v1",
+      "roundId": "biologie-cellcycle-evolution-two-current391-independent-a-20261007-v1",
+      "independenceGroupId": "biologie-cellcycle-evolution-two-current391-independent-a-20261007-v1",
+      "runIds": [
+        "biologie-cellcycle-evolution-two-independent-a-final-20261007-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex independent A reviewer; exact serving revision not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-cellcycle-evolution-two-current391-campaign-b-20261007-v1",
+      "roundId": "biologie-cellcycle-evolution-two-current391-independent-b-20261007-v1",
+      "independenceGroupId": "biologie-cellcycle-evolution-two-current391-independent-b-20261007-v1",
+      "runIds": [
+        "biologie-cellcycle-evolution-two-current391-independent-b-20261007-v1.actual-independent-b.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex runtime identity)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+      "firstRecordId": "biologie-cellcycle-evolution-two-independent-a-final-20261007-v1:9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+      "secondRecordId": "biologie-cellcycle-evolution-two-current391-independent-b-20261007-v1.9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+      "firstRunId": "biologie-cellcycle-evolution-two-independent-a-final-20261007-v1",
+      "secondRunId": "biologie-cellcycle-evolution-two-current391-independent-b-20261007-v1.actual-independent-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "05358518-f66c-5c1b-ad3f-d16211d0fc1c",
+      "firstRecordId": "biologie-cellcycle-evolution-two-independent-a-final-20261007-v1:05358518-f66c-5c1b-ad3f-d16211d0fc1c",
+      "secondRecordId": "biologie-cellcycle-evolution-two-current391-independent-b-20261007-v1.05358518-f66c-5c1b-ad3f-d16211d0fc1c",
+      "firstRunId": "biologie-cellcycle-evolution-two-independent-a-final-20261007-v1",
+      "secondRunId": "biologie-cellcycle-evolution-two-current391-independent-b-20261007-v1.actual-independent-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

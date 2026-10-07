@@ -1,0 +1,51 @@
+{
+  "role": "Byte-exact durable copies of actually rendered review PDF/HTML, retained with generic non-cache extensions",
+  "artifacts": [
+    {
+      "localRenderPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b007-b014-four-current479-native-refresh-author-20261007-v2/native/four/book.pdf",
+      "trackedExactSnapshot": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b007-b014-four-current479-native-refresh-author-20261007-v2/native/four/book.pdf.bin",
+        "sha256": "92ab9af9b84e9f3ec22e6df3275a63e80481a53a52101130f5e757863726d5c5",
+        "bytes": 527676
+      },
+      "role": "Exact author-render artifact bytes; not curriculum source evidence or publication"
+    },
+    {
+      "localRenderPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b007-b014-four-current479-native-refresh-author-20261007-v2/native/four/bundle/book.pdf",
+      "trackedExactSnapshot": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b007-b014-four-current479-native-refresh-author-20261007-v2/native/four/bundle/book.pdf.bin",
+        "sha256": "92ab9af9b84e9f3ec22e6df3275a63e80481a53a52101130f5e757863726d5c5",
+        "bytes": 527676
+      },
+      "role": "Exact author-render artifact bytes; not curriculum source evidence or publication"
+    },
+    {
+      "localRenderPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b007-b014-four-current479-native-refresh-author-20261007-v2/visualization/four-original-assets-display-widths-360-680.review-input.html",
+      "trackedExactSnapshot": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b007-b014-four-current479-native-refresh-author-20261007-v2/visualization/four-original-assets-display-widths-360-680.review-input.html.bin",
+        "sha256": "c63130abedda7ef264cf35867b8dd18389fda2bc562beafdd22077921c92da59",
+        "bytes": 2032
+      },
+      "role": "Exact author-render artifact bytes; not curriculum source evidence or publication"
+    },
+    {
+      "localRenderPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b007-b014-four-current479-native-refresh-author-20261007-v2/native/four/book.html",
+      "trackedExactSnapshot": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b007-b014-four-current479-native-refresh-author-20261007-v2/native/four/book.html.bin",
+        "sha256": "890d5fe6e60dcacfcf23e3a3135a70c72889fa1bef7d88dfb3b99ab11a21c884",
+        "bytes": 42884
+      },
+      "role": "Exact author-render artifact bytes; not curriculum source evidence or publication"
+    },
+    {
+      "localRenderPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b007-b014-four-current479-native-refresh-author-20261007-v2/native/four/bundle/book.html",
+      "trackedExactSnapshot": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b007-b014-four-current479-native-refresh-author-20261007-v2/native/four/bundle/book.html.bin",
+        "sha256": "890d5fe6e60dcacfcf23e3a3135a70c72889fa1bef7d88dfb3b99ab11a21c884",
+        "bytes": 42884
+      },
+      "role": "Exact author-render artifact bytes; not curriculum source evidence or publication"
+    }
+  ],
+  "restoration": "For each artifact, copy trackedExactSnapshot.path bytes to localRenderPath if a relocated native review needs that generated cache path. Check the declared SHA-256 first. No regenerated content may masquerade as these actual bytes."
+}

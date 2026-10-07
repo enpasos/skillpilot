@@ -1,0 +1,63 @@
+# SPDX-License-Identifier: Apache-2.0
+from pathlib import Path
+from copy import deepcopy
+from datetime import datetime,timezone
+import hashlib,json,re
+ROOT=Path.cwd();OWN=Path(__file__).resolve().parent;V12=OWN.parent/'chemie-b008-current169-routing-placement-author-v12';assert not(OWN/'author.final.freeze.json').exists()
+def read(p):return json.loads(p.read_text())
+def bind(p):b=p.read_bytes();return{'path':str(p.relative_to(ROOT)),'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b)}
+def h(v):return hashlib.sha256(json.dumps(v,ensure_ascii=False,sort_keys=True).encode()).hexdigest()
+def write(p,d):p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+freeze=read(V12/'author.final.freeze.json');assert bind(V12/'author.final.freeze.json')['sha256']=='b90bb589b55d6d4ed998d3463e2675d9296d75583b1ee1a31a68881093b74015'
+for b in freeze['payloads']:assert bind(ROOT/b['path'])==b
+candidate=read(V12/'candidate/canonical.current503-source-routing.author-candidate.json');by={g['id']:g for g in candidate['goals']};guard=read(V12/'current169-protected-guard-and-field-intents.author.json');ids=guard['routineGoalIds'];familyModel='277a3c20-6082-5a95-be08-c1e386efe79b';familyData='49b13b33-34b7-5e4e-861c-b21082cb9922';sourceRows=read(V12/'exact-original1646-current-source-witness-and-primary-review-routes.author-input.json');views=read(V12/'actual-bounded-primary-witness-child-selections-and-remaining43-view-holds.author.json')['all43AffectedCurrentViews'];receipt=read(V12/'inputs/source-projection.current.receipt.json.bin');receiptScopes={s['viewId']:s for s in receipt['scopes']};allMappings=[];primaryRecords=[];sourceInputs=[];regionViews=[];unsupportedGK=[]
+selectedKeys={'sek1-model-use-criticism','upper-model-use-criticism','data-documentation','lower-chemical-data-interpretation','upper-quantitative-hypothesis-data-evaluation','data-validity','upper-theory-based-question-hypothesis','lower-chemical-question-hypothesis'};metadata=[]
+for key in selectedKeys:
+ gid=ids[key];old=deepcopy(by[gid]['applicability']);new=deepcopy(old);new['jurisdiction']=list(dict.fromkeys(old['jurisdiction']+['DE-BB','DE-BE']));by[gid]['applicability']=new;metadata.append({'candidateKey':key,'goalId':gid,'field':'applicability','before':old,'after':new,'role':'AUTHOR proposed source/prerequisite scope only; no independent semantic approval','allFourDEENTitleDescriptionFieldsExact':True})
+for land in ['BB','BE']:
+ for stage,name in [('lower-secondary',f'DE_{land}_CHEMIE_SEKI_RLP_2015.source-extraction.json'),('upper-secondary',f'DE_{land}_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json')]:
+  sourcePath=ROOT/f'curricula/DE/Gymnasium/input/{land}/{stage}/source-extraction'/name;source=read(sourcePath);snapshot=OWN/'inputs'/(land+'-'+stage+'.source-extraction.current.json.bin');snapshot.parent.mkdir(parents=True,exist_ok=True);snapshot.write_bytes(sourcePath.read_bytes());sourceInputs.append({'currentBinding':bind(sourcePath),'exactSnapshot':bind(snapshot),'actualSourceDocument':source['sourceDocument']});bySource={g['id']:g for g in source['sourceGoals']};isLower=stage=='lower-secondary';primaryName='joint-SekI'if isLower else'joint-SekII';primPdf=OWN/'primary'/(primaryName+'.actual.pdf.bin');assert bind(ROOT/source['sourceDocument']['path'])['sha256']==bind(primPdf)['sha256'];primaryRecords.append({'jurisdiction':'DE-'+land,'stage':'SekI'if isLower else'SekII','sourceDocument':source['sourceDocument'],'exactCurrentOriginalPdf':bind(ROOT/source['sourceDocument']['path']),'durableActualPdf':bind(primPdf),'BEandBBActualBytesIdentical':True})
+  original=[r for r in sourceRows['originalWholeDuties']if r['sourceExtractionPath']==str(sourcePath.relative_to(ROOT))];assert len(original)==(12 if isLower else 2)
+  for row in original:
+   model=row['familyGoalId']==familyModel;assert model or row['familyGoalId']==familyData
+   keys=['sek1-model-use-criticism'if isLower else'upper-model-use-criticism']if model else['data-documentation','lower-chemical-data-interpretation'if isLower else'upper-quantitative-hypothesis-data-evaluation','data-validity']
+   page=int(re.search(r'S\. (\d+)',row['sourceSpan']).group(1))if isLower else(38 if model else 41)
+   proofPaths=[OWN/'primary'/(primaryName+'.physical-page-'+str(n).zfill(3)+'.txt')for n in ([page,20]if isLower and model else[page,20,21]if isLower else[page,11,12]if model else[page,42,11,12])]
+   if page==43 and isLower:modelSourceLimits='The original amino-acid classification is only a molecule/functional-group component; neither biochemical receptor competence nor all chemistry topic coverage follows from it.'
+   elif not isLower:modelSourceLimits='The actual original topic is LK-only; keep the complete original LK duty and other mappings. Never use unspecified metadata to project it into GK.'
+   else:modelSourceLimits='Keep the complete original topic and its other reviewed canonical targets; this is only the operator/model/data component. A generic hypothesis/table case does not complete water stoichiometry or the topic union.'
+   newMaps=[{'legacyGoalId':row['sourceGoalId'],'canonicalGoalId':ids[k],'matchType':'partial','reviewDecisionId':row['sourceGoalId'],'candidateKey':k,'authoritativeIndependentApproval':False}for k in keys]
+   allMappings.append({'originArrayIndex':row['originArrayIndex'],'currentOriginalSourceGoalId':row['sourceGoalId'],'currentOriginalSourceWholeValueSha256':h(bySource[row['sourceGoalId']]),'wholeOriginalSourceGoal':bySource[row['sourceGoalId']],'wholeOriginalSourceText':row['actualWholeSourceText'],'oldFamilyId':row['familyGoalId'],'proposedSpecificChildMappings':newMaps,'stage':'SekI'if isLower else'SekII','actualCourseScope':'unspecified SekI level scope with the retained D-H primary progression'if isLower else'LK only for this exact original topic','sourceOperatorContext':[bind(p)for p in proofPaths],'wholeActualPrimaryContexts':[p.read_text()for p in proofPaths],'wholeOriginalContentCoverageAndAllOtherCanonicalTargetsPreserved':True,'wholeOriginalSourceClosure':False,'sourceScopeLimits':modelSourceLimits,'scientificStatus':'author_candidate_requires_independent_source_and_mapping_review'})
+  if not isLower:
+   for suffix,page in [('3-2-4-inhalte-013-8b062625',38),('3-2-5-inhalte-013-aed46f7b',41)]:
+    sid=land.lower()+'-chemistry-sekii-rlp-'+suffix;old=bySource[sid];new=deepcopy(old);new['courseLevel']='LK';new['tags']=list(dict.fromkeys([t for t in old['tags']if not t.startswith(('course:','courseLevel:'))]+['course:LK']));unsupportedGK.append({'jurisdiction':'DE-'+land,'actualSourceGoalId':sid,'wholeOriginalSourceGoal':old,'wholeOriginalSourceGoalSha256':h(old),'candidateCourseCorrectedSourceGoal':new,'actualPrimaryProof':bind(OWN/'primary'/('joint-SekII.physical-page-'+str(page).zfill(3)+'.txt')),'actualTableColumn':'Leistungskurs (zusätzlich zum Grundkurs)','currentUnspecifiedProjectionIntoGKUnsupported':True,'oldHistoricalSourceFilesOrReviewsChanged':False,'sourceDutyRetainedAsLK':True,'newIndependentScopeReviewRequired':True})
+ for v in [r for r in views if r['scope']['jurisdiction']=='DE-'+land]:
+  view=read(ROOT/v['candidateBinding']['path']);scope=v['scope'];lower=scope['stage']=='SekI';course=scope.get('courseProfile');modelKey='sek1-model-use-criticism'if lower else'upper-model-use-criticism';dataKeys=['data-documentation','lower-chemical-data-interpretation'if lower else'upper-quantitative-hypothesis-data-evaluation','data-validity'];nodeChanges=[]
+  if not lower and course=='GK':
+   src=read(ROOT/f'curricula/DE/Gymnasium/input/{land}/upper-secondary/source-extraction/DE_{land}_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json');bySrc={g['id']:g for g in src['sourceGoals']};supplement=[]
+   for role,suffix,keys,page in [('model','3-2-5-inhalte-002-30235589',[modelKey],41),('data','3-2-5-inhalte-004-5e5b9299',dataKeys,41)]:
+    sid=land.lower()+'-chemistry-sekii-rlp-'+suffix;goal=bySrc[sid];s=receiptScopes[v['viewId']];currentGroupMatches=[receipt['witnessGroups'][n]for n in s['witnessGroupRefs']if receipt['witnessGroups'][n]['sourceGoalId']==sid];assert currentGroupMatches,sid
+    supplement.append({'currentExistingSourceGoalId':sid,'currentWholeSourceGoal':goal,'currentWholeSourceGoalSha256':h(goal),'currentGKScopeWitnessGroups':currentGroupMatches,'specificProposedChildIds':[ids[k]for k in keys],'specificCandidateKeys':keys,'actualPrimaryProofs':[bind(OWN/'primary'/('joint-SekII.physical-page-'+str(n).zfill(3)+'.txt'))for n in[41,42,11,12]],'sourceCourse':'GK shared content (also LK), verified against the actual GK table column','claim':'author_candidate_partial_component; does not claim all contexts of the broad routine complete','wholeOriginalLKSurfaceCatalysisAndConductometryDutiesRetained':True,'newIndependentSourceReviewRequired':True})
+   write(OWN/'gk-authentic-source-supplements'/(land+'.actual-current-topic-source-proposals.json'),{'role':'Genuine current GK topic/source witnesses replace the use of two LK-only topics; process duties remain distinct','supplementalPartialComponentProposals':supplement,'sourceSourceGoalIDsInvented':False,'wholeSourceApproval':False})
+  def walk(nodes):
+   out=[]
+   for originalNode in nodes:
+    node=deepcopy(originalNode)
+    if node.get('kind')=='goalEntry'and node.get('goalId')in[familyModel,familyData]:
+     keys=[modelKey]if node['goalId']==familyModel else dataKeys;replacements=[{'kind':'goalEntry','goalId':ids[k],**({'projectionRole':node['projectionRole']}if'projectionRole'in node else{})}for k in keys];out.extend(replacements);nodeChanges.append({'oldNode':node,'candidateNodes':replacements,'claim':'explicit stage/course/operator child subset; no whole-cluster expansion','GKSourceBasis':'actual shared chemical-equilibrium GK topics and general E5/E7/E8/E9 duties, never LK-only surface/cond.'if course=='GK'else None});continue
+    if'children'in node:node['children']=walk(node['children'])
+    out.append(node)
+   return out
+  view['rootNodes']=walk(view['rootNodes']);assert len(nodeChanges)==2
+  if not lower:
+   prereqKeys=['sek1-model-use-criticism','lower-chemical-data-interpretation','upper-theory-based-question-hypothesis','lower-chemical-question-hypothesis'];view['rootNodes'].append({'kind':'structure','id':land.lower()+'-b008-reviewed-source-route-prerequisites-'+course.lower(),'label':'Voraussetzungen der Quellenroutinen (Kandidatenprüfung)','children':[{'kind':'goalEntry','goalId':ids[k],'projectionRole':'prerequisiteOnly'}for k in prereqKeys]})
+  path=OWN/'source-view-candidates'/(view['viewId']+'.bounded-author-candidate.json');write(path,view);regionViews.append({'viewId':view['viewId'],'scope':view['scope'],'exactV12CurrentBefore':v['candidateBinding'],'candidateView':bind(path),'actualTwoChangedNodes':nodeChanges,'wholeOldOriginalSourceDutiesRetained':True,'newSourceApproval':False})
+# Preserve all semantic bodies and all prior current non-routine metadata exactly.
+old=read(V12/'candidate/canonical.current503-source-routing.author-candidate.json');oldBy={g['id']:g for g in old['goals']}
+for g in candidate['goals']:
+ if g['id']in {ids[k]for k in selectedKeys}:
+  for f in['title','titleEn','description','descriptionEn','requires','contains']:assert g[f]==oldBy[g['id']][f]
+ else:assert g==oldBy[g['id']]
+write(OWN/'candidate/canonical.current503-bb-be-source-metadata.author-candidate.json',candidate)
+write(OWN/'exact-bb-be-current-original-duties-and-specific-child-source-proposals.json',{'role':'Genuine whole primary/operator stage/course reading and explicit source-original child subsets; not independent approval','currentPrimaryBindings':primaryRecords,'exactSourceInputs':sourceInputs,'original28UniqueFamilySourceDuties':allMappings,'wholeNational1646DutiesDeleted':0,'wholeSourceStatusesPromoted':0,'uncheckedChildrenMappedAutomatically':0,'whole26DEENTitleDescriptionAndRequiresPreserved':True,'all52MaterialCasesPreserved':True,'newSourceSpecificMetadata':metadata,'newCurrentTargetViews':regionViews,'currentGKUnsupportedLKOnlyWitnesses':unsupportedGK,'authorCandidateStatus':'requires independent source/placement/protected-context QA','strictGain':0,'activeWrites':0,'humanApproval':False})
+print(json.dumps({'specificOriginalSourceDutyRows':len(allMappings),'explicitChildMappingCandidates':sum(len(r['proposedSpecificChildMappings'])for r in allMappings),'sourceViewsWithTwoExplicitParentReplacements':len(regionViews),'newSourceSpecificMetadataProposals':len(metadata),'actualLKOnlySourceScopeCorrections':len(unsupportedGK),'wholeNationalDutiesPreserved':1646,'goalTextsChanged':0,'materialCasesChanged':0,'strictGain':0}))

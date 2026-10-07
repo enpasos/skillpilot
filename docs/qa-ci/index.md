@@ -75,6 +75,7 @@ Use this page by role: start with the overview documents, then jump to a review 
 - [25 weitere aktuelle Chemieziele vom 7. Oktober](chemie-biologie-m7-twenty-five-current-chemistry-continuation-2026-10-07.md)
 - [Commit-Zwischenstand vom 7. Oktober: 151/378 Chemie, 74/390 Biologie und offene Bildbefunde](chemie-biologie-m7-commit-checkpoint-2026-10-07.md)
 - [Aktuelle Neuro21-Fortsetzung: 151/378 Chemie, 95/390 Biologie und erhaltene M7-Untergrenzen](chemie-biologie-m7-neuro21-continuation-2026-10-07.md)
+- [Aktueller Commit-Zwischenstand: 173/378 Chemie, 134/391 Biologie und gesicherte offene Kandidaten](chemie-biologie-m7-ecology34-commit-checkpoint-2026-10-07.md)
 
 ## Review Lanes
 

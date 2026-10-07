@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-cellcycle-evolution-two-current391-reviewed-paired-20261007-v1-two",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cellcycle-evolution-two-reviewed-integration-preparation-technical-20261007-v1/native-d-two.batch.config.json",
+  "configDigest": "sha256:fc34466bd5802d74195735b2c066ec13819b99669a46b5c557f21cf50c4c063c",
+  "goalIds": [
+    "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+    "05358518-f66c-5c1b-ad3f-d16211d0fc1c"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 391,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cellcycle-evolution-two-reviewed-integration-preparation-technical-20261007-v1/native-full391.future-active.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cellcycle-evolution-two-current391-author-v1/candidate/canonical.current474-two-new-raster-author.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:29ed7d9aa936b9fd3209577dc7081c3c04d32ebbd5a9d28f80bb076a8cf6c05d"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:8476a9c1f9cf9b5fda36074e3358fa671bc13c63476ac990e7e1bf5f62674ec5",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:45e70ba95114df7d288183d8f1798ba86309658c436fd134cc53b4980485591e",
+    "reviewInputFingerprint": "sha256:af11bc3d891bcbb7fb6a76b2f157435f2a28b7a7cd067849cd0c332cca061eb0",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-cellcycle-evolution-two-current391-campaign-a-20261007-v1",
+        "campaignDigest": "sha256:847390bf9a99a55ffab71155fad683c65bb5c3ec66493b8e942f422a23270752",
+        "roundId": "biologie-cellcycle-evolution-two-current391-independent-a-20261007-v1",
+        "independenceGroupId": "biologie-cellcycle-evolution-two-current391-independent-a-20261007-v1",
+        "batchId": "biologie-cellcycle-evolution-two-current391-independent-a-20261007-v1.batch-001",
+        "batchInputFingerprint": "sha256:0f69ce5afbd7cef4449b4fa7088482795b29be0fb8d1f1fdbdef7484919484fa"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-cellcycle-evolution-two-current391-campaign-b-20261007-v1",
+        "campaignDigest": "sha256:75b44bc405ad1101510f4ee26e27012980b583ba7361fe73359e8bcaabbcf5e0",
+        "roundId": "biologie-cellcycle-evolution-two-current391-independent-b-20261007-v1",
+        "independenceGroupId": "biologie-cellcycle-evolution-two-current391-independent-b-20261007-v1",
+        "batchId": "biologie-cellcycle-evolution-two-current391-independent-b-20261007-v1.batch-001",
+        "batchInputFingerprint": "sha256:7acc9a0f3b63b49eea9a77d884e337bded83c6a6884f7d92ef49dde765f8b892"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

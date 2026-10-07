@@ -1,0 +1,17 @@
+node:internal/fs/promises:637
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/prompts/biology-goal-description-understanding-evidence-review-criteria-v1.md'
+    at async open (node:internal/fs/promises:637:25)
+    at async readFile (node:internal/fs/promises:1249:14)
+    at async Promise.all (index 6)
+    at async buildGoalBookReviewBundle (/home/enpasos/projects/skillpilot/app/scripts/exportGoalBookReviewBundle.ts:411:7)
+    at async <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-11675-terminal-route-author-20261007-v1/materialize-actual-one-page-and-whole-endpoint.mts:31:46) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/prompts/biology-goal-description-understanding-evidence-review-criteria-v1.md'
+}
+
+Node.js v20.20.2

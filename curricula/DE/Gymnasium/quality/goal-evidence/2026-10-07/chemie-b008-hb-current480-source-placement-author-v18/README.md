@@ -1,0 +1,13 @@
+# B008 v18: Bremen source components
+
+Inert author packet: strict +0, active writes0, no independent or human approval. Current Chemistry remains173/378 (480whole goals); source candidate504whole/395curricularAtomic/7memory. Previous v17 and all older freezes remain unchanged.
+
+Actual whole primary-page reading distinguishes the 2022 restriction to grades5–9, current grade8/9 chemistry, common upper standards developed in E/Q, GK/LK depth, compulsory Q topics and choices among elective themes. The existing seven upper process-source texts are retained structured aggregates, not seven new verbatim page14 quotes. Their operative anchor candidates point to actual9/10/11/12/15 with separate whole-page context receipts, while all raw historical fields remain exact. Lower inquiry is not added just because its operator vocabulary exists. Career relevance and simple model operators remain partial; personal career choice and complex receptor/enzyme model domains remain HOLD.
+
+17 whole current source goals supply39 specific partial course/component bindings,16 applicability proposals,7 bounded anchors, three views (7lower targets;13upper targets plus6prerequisiteOnly in each). All60 original HB family duties and all1646 original national duties remain retained and open. The original16BY facets and58STtwo-hour-elective duty routes remain HOLD. Whole26DEEN texts and52whole materials are exact binding reuse, not new scientific review or actual learner performance.
+
+Actual native43view compilation:68→54CPV-009, no other new errors, threeHBmodels87/156/187pages. Current full378/candidate395pure pages verified. Protected165/173pages exact outside pagination; exactly the old8requires/reverseRequires contexts remain HOLD, with no new protected context change. Current417eMemory, four Chemistry fixes andd2ccreverse context are preserved. Full schema/build runs remain bundled at stable root integration; no schema exceptions added.
+
+All new raw official PDF text stays in ignored local tmp. Portable own reading/finding receipts bind the official URL, exact source PDF, extraction method and page digest and explain bounded findings without exporting full official text. The initial wrong-cwd helper failure is retained as actual diagnostic history.
+
+Neutral independent-review entry: bounded-neutral-hb-source-placement-review-entry.json. Independent source/anchor/component/course/placement review is pending. Whole26D/P/A/M/V, eight routing contexts and source facets are not completed by this technical result. Next bounded package: Schleswig-Holstein11CPV-009. No publication or human trial claim.

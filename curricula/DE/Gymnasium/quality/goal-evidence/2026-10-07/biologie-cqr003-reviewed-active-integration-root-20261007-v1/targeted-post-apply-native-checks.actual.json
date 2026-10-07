@@ -1,0 +1,128 @@
+{
+  "checks": [
+    {
+      "check": "native-current-D4",
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-five-reviewed-integration-preparation-technical-20261007-v1/native-d-four.batch.config.json"
+      ],
+      "startedAt": "2026-10-07T11:25:50.610835+00:00",
+      "finishedAt": "2026-10-07T11:25:51.776017+00:00",
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-reviewed-active-integration-root-20261007-v1/native-current-D4.stdout.actual.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-reviewed-active-integration-root-20261007-v1/native-current-D4.stderr.actual.txt"
+    },
+    {
+      "check": "A391",
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-biology-full.config.json"
+      ],
+      "startedAt": "2026-10-07T11:25:50.611466+00:00",
+      "finishedAt": "2026-10-07T11:25:50.961033+00:00",
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-reviewed-active-integration-root-20261007-v1/A391.stdout.actual.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-reviewed-active-integration-root-20261007-v1/A391.stderr.actual.txt"
+    },
+    {
+      "check": "M391",
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-biology-full.config.json"
+      ],
+      "startedAt": "2026-10-07T11:25:50.612903+00:00",
+      "finishedAt": "2026-10-07T11:25:50.965779+00:00",
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-reviewed-active-integration-root-20261007-v1/M391.stdout.actual.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-reviewed-active-integration-root-20261007-v1/M391.stderr.actual.txt"
+    },
+    {
+      "check": "VQA",
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--check",
+        "--subject=biologie"
+      ],
+      "startedAt": "2026-10-07T11:25:50.614944+00:00",
+      "finishedAt": "2026-10-07T11:25:51.621471+00:00",
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-reviewed-active-integration-root-20261007-v1/VQA.stdout.actual.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-reviewed-active-integration-root-20261007-v1/VQA.stderr.actual.txt"
+    },
+    {
+      "check": "P-current-1",
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-five-reviewed-integration-preparation-technical-20261007-v1/positive/ffef97e3.other-two.future-active.config.json"
+      ],
+      "startedAt": "2026-10-07T11:25:50.961095+00:00",
+      "finishedAt": "2026-10-07T11:25:51.439286+00:00",
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-reviewed-active-integration-root-20261007-v1/P-current-1.stdout.actual.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-reviewed-active-integration-root-20261007-v1/P-current-1.stderr.actual.txt"
+    },
+    {
+      "check": "P-current-2",
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-five-reviewed-integration-preparation-technical-20261007-v1/positive/ffef97e3.future-active.config.json"
+      ],
+      "startedAt": "2026-10-07T11:25:50.965842+00:00",
+      "finishedAt": "2026-10-07T11:25:51.442965+00:00",
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-reviewed-active-integration-root-20261007-v1/P-current-2.stdout.actual.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-reviewed-active-integration-root-20261007-v1/P-current-2.stderr.actual.txt"
+    },
+    {
+      "check": "P-current-3",
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-five-reviewed-integration-preparation-technical-20261007-v1/positive/e70d8a85.other-two.future-active.config.json"
+      ],
+      "startedAt": "2026-10-07T11:25:51.439350+00:00",
+      "finishedAt": "2026-10-07T11:25:51.929356+00:00",
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-reviewed-active-integration-root-20261007-v1/P-current-3.stdout.actual.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-reviewed-active-integration-root-20261007-v1/P-current-3.stderr.actual.txt"
+    },
+    {
+      "check": "P-current-4",
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-five-reviewed-integration-preparation-technical-20261007-v1/positive/e70d8a85.future-active.config.json"
+      ],
+      "startedAt": "2026-10-07T11:25:51.443049+00:00",
+      "finishedAt": "2026-10-07T11:25:51.923662+00:00",
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-reviewed-active-integration-root-20261007-v1/P-current-4.stdout.actual.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-reviewed-active-integration-root-20261007-v1/P-current-4.stderr.actual.txt"
+    }
+  ],
+  "newM7Completions": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}

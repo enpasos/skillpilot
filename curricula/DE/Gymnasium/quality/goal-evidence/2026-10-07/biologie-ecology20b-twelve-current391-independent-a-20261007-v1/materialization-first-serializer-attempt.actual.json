@@ -1,0 +1,11 @@
+{
+  "artifactKind": "dossier-serialization-attempt-diagnostic",
+  "exitCode": 1,
+  "failedAt": "actual combined internal/external context comparison",
+  "actualError": "KeyError: externalRequires",
+  "cause": "Dossier helper guessed the key externalRequires; actual native contract uses externalPrerequisites. No validator or curriculum error. Already serialized D/P/V payloads remain exact and resume checks byte equality.",
+  "fix": "Read actual native externalPrerequisites contract; preserve first run timestamps and exact prior payloads.",
+  "scienceFindingsChanged": false,
+  "activeWrites": 0,
+  "humanApproval": false
+}

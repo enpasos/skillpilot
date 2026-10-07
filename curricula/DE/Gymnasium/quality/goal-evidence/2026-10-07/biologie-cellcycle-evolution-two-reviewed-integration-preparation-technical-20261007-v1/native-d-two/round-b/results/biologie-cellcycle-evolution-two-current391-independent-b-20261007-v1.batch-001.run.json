@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-cellcycle-evolution-two-current391-independent-b-20261007-v1.actual-independent-b.run-001",
+  "campaignId": "biologie-cellcycle-evolution-two-current391-campaign-b-20261007-v1",
+  "roundId": "biologie-cellcycle-evolution-two-current391-independent-b-20261007-v1",
+  "batchId": "biologie-cellcycle-evolution-two-current391-independent-b-20261007-v1.batch-001",
+  "batchInputFingerprint": "sha256:7acc9a0f3b63b49eea9a77d884e337bded83c6a6884f7d92ef49dde765f8b892",
+  "bundleFingerprint": "sha256:45e70ba95114df7d288183d8f1798ba86309658c436fd134cc53b4980485591e",
+  "bookDigest": "sha256:8476a9c1f9cf9b5fda36074e3358fa671bc13c63476ac990e7e1bf5f62674ec5",
+  "provider": "OpenAI",
+  "model": "GPT-6 (Codex runtime identity)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:586d40fc84cfb83b4b9961aaef43fdc0b12e5895bf8535e61b208a426e5a7a5a",
+  "independenceGroupId": "biologie-cellcycle-evolution-two-current391-independent-b-20261007-v1",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+    "05358518-f66c-5c1b-ad3f-d16211d0fc1c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:7acc9a0f3b63b49eea9a77d884e337bded83c6a6884f7d92ef49dde765f8b892"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:dc5d6c3eeb51534e76409950103c1cf6f82f57be1cbc5246302ecd54200578f3"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:147156ad77e549bb01487c5507115e64bae2fbe0f445669dd93f333e3a9a0d93"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:4c6436570365e51bb1bdec465cf21d5f6eb52598ebc6e1e4c4168cd277c12904"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-10-07T13:53:40.357715+00:00",
+  "completedAt": "2026-10-07T14:04:25.607445+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:04d8f0b28d149137f28352e7b766dbe609248d828728004bde4c7cdde49b0802",
+  "toolchainVersion": "skillpilot-native-description-review-v2"
+}

@@ -3,6 +3,7 @@ import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { ApplicabilityMap, LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { normalizeJurisdictionCode, type KnownJurisdiction } from '../src/utils/jurisdictionMetadata'
+import { discoverActiveMemoryCardReviewConfigs } from './memoryCardReviewConfigDiscovery'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
@@ -475,11 +476,11 @@ function loadCanonicalGoalApplicabilityOverrideRegistry(): LoadedCanonicalGoalAp
 
 function loadMemoryReviewOriginReferences(): Map<string, MemoryReviewOriginReference[]> {
   const referencesByMemoryGoalKey = new Map<string, MemoryReviewOriginReference[]>()
-  const reviewDir = join(curriculaDir, 'DE', 'Gymnasium', 'quality', 'memory-card-review')
-  const configFiles = readdirSync(reviewDir, { withFileTypes: true })
-    .filter((entry) => entry.isFile() && entry.name.endsWith('.config.json'))
-    .map((entry) => join(reviewDir, entry.name))
-    .sort((left, right) => left.localeCompare(right))
+  // The central registry owns current Memory evidence, including successors
+  // outside the original authoring directory. Discovery validates that the
+  // retained scope and visibility requirements are preserved.
+  const configFiles = discoverActiveMemoryCardReviewConfigs()
+    .map(({ configPath }) => resolve(repoRoot, configPath))
 
   for (const configFile of configFiles) {
     const config = JSON.parse(readFileSync(configFile, 'utf8')) as {
@@ -1325,6 +1326,31 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
       return changed
     }
 
+    const refreshMemoryReviewOriginApplicability = (): boolean => {
+      // Prerequisite closure can widen an origin after its initial compilation.
+      // Memory support must follow that final reviewed scope in the same fixed point.
+      let changed = false
+      for (const goal of canonical.landscape.goals) {
+        const key = goalKey(canonical.landscape.landscapeId, goal.id)
+        for (const reference of memoryReviewOriginReferencesByMemoryGoalKey.get(key) ?? []) {
+          const originApplicability = compiledByGoalId.get(
+            goalKey(canonical.landscape.landscapeId, reference.originGoalId),
+          ) ?? {}
+          for (const value of originApplicability[SUPPORTED_DIMENSION] ?? []) {
+            const jurisdiction = normalizeJurisdictionCode(value)
+            if (!isSupportedJurisdiction(jurisdiction)) continue
+            changed = addJurisdictionApplicability(canonical.landscape.landscapeId, goal.id, jurisdiction, {
+              dimension: SUPPORTED_DIMENSION,
+              value: jurisdiction,
+              kind: 'memory-review-origin',
+              source: `${reference.reviewId}:${reference.originGoalId} (${reference.reviewPath})`,
+            }) || changed
+          }
+        }
+      }
+      return changed
+    }
+
     canonical.landscape.goals.forEach((goal) => {
       compileGoal(canonical.landscape.landscapeId, goal.id)
     })
@@ -1355,6 +1381,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
       }
 
       applicabilityChanged = refreshRequiresDerivedApplicability() || applicabilityChanged
+      applicabilityChanged = refreshMemoryReviewOriginApplicability() || applicabilityChanged
       applicabilityChanged = propagateChildUnionApplicability() || applicabilityChanged
     }
 

@@ -1,0 +1,51 @@
+{
+  "CIrunId": 37605960654,
+  "CIhead": "f697026bc98364490feaf809c1b9e6aac94a616b",
+  "CIjobId": 112745191752,
+  "actualCISuite": {
+    "tests": 2300,
+    "failed": 3,
+    "skipped": 9,
+    "elapsed": "56m19s"
+  },
+  "observedFailures": [
+    "Biology BW G8/G9 stale expected81 actual82",
+    "status reader completion exceeded10s",
+    "scope replacement H2 row lock exceeded2000ms"
+  ],
+  "focusedThreeBeforeCacheChange": [
+    {
+      "name": "statusWaitsForConcurrentPeriodAndMasteryUpdateThenReadsOneCommittedState()",
+      "classname": "com.skillpilot.backend.service.LearnerServiceTest",
+      "time": "7.648",
+      "errors": 0,
+      "failures": 0
+    },
+    {
+      "name": "concurrentScopeReplacementNeverMergesTwoExclusiveSelections()",
+      "classname": "com.skillpilot.backend.service.LearnerServiceTest",
+      "time": "2.057",
+      "errors": 0,
+      "failures": 0
+    },
+    {
+      "name": "learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals()",
+      "classname": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest",
+      "time": "37.264",
+      "errors": 0,
+      "failures": 0
+    }
+  ],
+  "projectionFix": "Only explicit BW baseline81\u219282, validated by actual learner state test. All other fixtures/assertions exact.",
+  "cacheChange": {
+    "property": "spring.test.context.cache.maxSize",
+    "value": 4,
+    "verifiedDependency": "local pinned Spring test7.0.9 ContextCache class constants",
+    "default": 32,
+    "reason": "CI retained31 Spring contexts holding complete curriculum and publication model snapshots. Bound retained test contexts within existing3g heap; runtime code and assertion/transaction timeouts unchanged.",
+    "causation": "Resource pressure is an inference, not an observed GC trace. Focused concurrency tests passed unchanged before this setting. Full suite validation at stable integration remains required."
+  },
+  "currentMainGreen": false,
+  "fullSuiteAfterCacheSetting": "pending-stable-Chem4-integration",
+  "humanApproval": false
+}

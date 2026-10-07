@@ -1,0 +1,9 @@
+# B008 v14: BB/BE begrenzte Quellen- und Platzierungskandidaten
+
+Inaktives Authorpaket; **strikt +0**, keine aktiven Änderungen. V12 bleibt vollständig und hashgenau erhalten. 26 ganze DE/EN-Zielbeschreibungen und 52 vollständige Materialfälle werden unverändert wiederverwendet.
+
+28 bestehende vollständige Quellenpflichten werden in den Vorschlägen auf 48 konkrete partielle Kindbindungen verteilt. Acht zusätzliche partielle Bindungen nutzen echte bestehende GK-Quellen zum chemischen Gleichgewicht. Keine Quell-ID wird erfunden, gelöscht oder vollständig freigegeben. Vier derzeit unspezifizierte Oberstufenpflichten (Oberflächenkatalyse-Modell und Konduktometrie jeweils BB/BE) liegen in den tatsächlichen LK-Tabellenspalten. Die vorgeschlagene Kurskorrektur erhält die LK-Pflichten; sie ersetzt keine GK-Pflicht. Alle 32 betroffenen Quellentscheidungen bleiben ausdrücklich zur unabhängigen Prüfung offen.
+
+Die sechs BB/BE-Sichten enthalten explizite stage-/kursbezogene Kindmengen. Die tatsächlichen nativen Compilerläufe zeigen über alle 43 B008-Sichten **123 → 111 CPV-009**, sechs fehlerfreie BB/BE-Kandidatensichten mit 92/142/166 Zielseiten je Land und 395 volle reine Modellseiten. Es gibt keine neuen Compilerfehler und keine zusätzliche Änderung an den 169 geschützten Ziel-/Seiteninhalten gegenüber V12. Dessen acht bereits bekannte Kontextänderungen und die 16 ursprünglichen Pflichten ohne aktuelle Facetroute bleiben offen.
+
+Einstieg: `bounded-neutral-bb-be-source-placement-review-entry.json`. Unabhängige Prüfung ist für die tatsächlichen Primär-/Operatorbezüge, vier Kurskorrekturen, acht Quellenmetadaten und sechs Platzierungen erforderlich. Nationale Quellen-QS, echte D/P-Seitenreviews und Kindbilder fehlen weiter; dieses Authorpaket ist keine M7-Integration und keine menschliche Freigabe.

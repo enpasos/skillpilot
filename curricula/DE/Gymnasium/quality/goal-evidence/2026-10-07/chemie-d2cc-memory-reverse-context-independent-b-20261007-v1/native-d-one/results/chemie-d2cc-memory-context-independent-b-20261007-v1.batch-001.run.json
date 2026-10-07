@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-d2cc-memory-context-independent-b-20261007-v1.run-001",
+  "campaignId": "chemie-d2cc-memory-context-campaign-b-20261007-v1",
+  "roundId": "chemie-d2cc-memory-context-independent-b-20261007-v1",
+  "batchId": "chemie-d2cc-memory-context-independent-b-20261007-v1.batch-001",
+  "batchInputFingerprint": "sha256:7431397a5d76a8807cf5708b522a9c812405a1e7d085c2bce722903e1bfdcc4e",
+  "bundleFingerprint": "sha256:b283e1de2e27a0cee7bc52ed284851a77509de7f64bdc250ab95a16275d7f73b",
+  "bookDigest": "sha256:ce35f95e7dd07a5eaeaf5c1939f03c086e2a8b4dd97250f6f8387893ad41f78c",
+  "provider": "OpenAI",
+  "model": "GPT-6 (Codex runtime identity)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:004cc7e32584208c73aaf0e4306a9da6dff1ee286279b2b96d2a6dad1885409c",
+  "independenceGroupId": "chemie-d2cc-memory-context-independent-b-20261007-v1",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "d2ccd1d5-56f7-583f-9724-e97441367f91"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:852ee3fa32221c4d0455d68f6bcf741e870b79a6dd1e1b00f348c524756865eb"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:945344155dd059a57a7b4f96ea98805532a1b2dcf1c1c6c5a1bbc86e49d6b80c"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:f4b87c60d253b8749cb376100fd2a9db6fdc074376bc44703e9f555925d9d11b"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:7431397a5d76a8807cf5708b522a9c812405a1e7d085c2bce722903e1bfdcc4e"
+    }
+  ],
+  "startedAt": "2026-10-07T11:27:34.324148+00:00",
+  "completedAt": "2026-10-07T11:29:27.440683+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:19df7ffe54c7ef2603182e89114bc30a75c5188fc56ccb7249eb4429fcfb1cae",
+  "toolchainVersion": "skillpilot-native-description-review-v2"
+}

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "independent-a-portable-current-original-primary-scoped-reading-receipt",
+  "recordedAt": "2026-10-07T15:55:24.537274+00:00",
+  "sourceEntries": [
+    {
+      "sourceKey": "BY10",
+      "key": "BY10",
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/10/biologie",
+      "sha256": "d260f03e09a4b5a35ccfd0df3d1cef25c26d193762ac3bfba31e784d9eaa5396",
+      "textSHA": "9668f0b1732d60dd5a0324bb1b640e5216cb521eb48bb4a58e3257c9d4d71535",
+      "bytes": 110851,
+      "sourceStageAndCourse": "Gymnasium Jahrgang10, common grade curriculum; no upper-secondary GK/LK expansion",
+      "wholeSectionsActuallyRead": [
+        "Lernbereich2 whole competences and content",
+        "3.1 whole competences and content",
+        "3.2 whole competences and content",
+        "3.3 whole competences and content",
+        "3.4 whole competences and content"
+      ],
+      "actualCharacterSpanStart": 6002,
+      "actualCharacterSpanEndExclusive": 21560,
+      "actualWholeScopedTextSha256": "e19cdafc9fc28b3ef60ee6a327de32c7875335b12bd161efa0307d00d88ef57f",
+      "ownSourceBoundary": "Only the selected sixteen explanatory/classification/assessment competences; no actual clinical recommendations or new full-country coverage. Grade10 comparison3.4 excludes biochemical substeps/reduction-equivalent performance. Flat sourceRef B10.3.2–12 follows extracted competence ordinal, not an actual numbered subsection3.12.",
+      "actualRawDocumentAndExtractedTextDigestsReverifiedLocally": true,
+      "portableReproductionSteps": [
+        "Fetch the official URL into a local cache without committing its full text",
+        "Parse HTML with BeautifulSoup html.parser",
+        "Select main and get_text(separator='\\n', strip=True)",
+        "Select the whole scoped LB2 through3.4 section and compare the stored whole source/scoped text digests"
+      ]
+    },
+    {
+      "sourceKey": "HEG9",
+      "key": "HEG9",
+      "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-biologie.pdf",
+      "sha256": "93257f9be96e9bd288d187eb63e3e33ca28debdb2511dcd068e9abf82bc5b5f1",
+      "textSHA": "a5257875958dbe480de5f5a2864187142dd069c36a38e80b214f50f786a4a422",
+      "bytes": 329365,
+      "sourceStageAndCourse": "G9 Gymnasium Jahrgang5",
+      "wholeSectionsActuallyRead": [
+        "5.2 whole printed9–10, physical10–11",
+        "5.3 whole printed11, physical12"
+      ],
+      "actualWholePageTextDigests": [
+        {
+          "physicalPage": 10,
+          "printedPage": 9,
+          "sha256": "bb93546db6463f92476c3ade87c19a579322d5406cc5f5f41642733c4e9c9fa7"
+        },
+        {
+          "physicalPage": 11,
+          "printedPage": 10,
+          "sha256": "a2b1f9c7b1ea809034a318e00b28fab01538011d281065ca00a13f88b80143cc"
+        },
+        {
+          "physicalPage": 12,
+          "printedPage": 11,
+          "sha256": "3ed8ba6f1e446d5d149ae12f45c710dfab14c8a092df43e7f3efd34cf65462fb"
+        }
+      ],
+      "ownSourceBoundary": "Four selected explanatory competences only. Adjacent mammal behaviours/other animal facts, nutrient tests and actual own-body observations are distinct duties; reading the whole source does not approve or claim those performances.",
+      "actualRawDocumentAndExtractedTextDigestsReverifiedLocally": true,
+      "portableReproductionSteps": [
+        "Fetch the official PDF URL into a local cache without committing its full text",
+        "Run pdftotext -layout <local-pdf> <local-text>",
+        "Split layout text on form-feed and select physical10–12, printed9–11; compare the stored PDF, full extraction and whole-page text digests"
+      ]
+    }
+  ],
+  "exactLiveRawAndExtractionHashesEqualAuthorInputWitnesses": true,
+  "rawOfficialSourcesCopiedToDossier": false,
+  "thirdPartySourceRightsNotChanged": true,
+  "humanApproval": false,
+  "historicalExactScientificReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-human20-current391-independent-a-20261007-v1/actual-two-primary-whole-scoped-readings.independent-a.json",
+    "sha256": "cc3a18dbc5c0ca081ff5aa76d5137307a70b7ff41e81e78b319e90bb223540ca",
+    "bytes": 3344
+  },
+  "historicalLocalWitnessLabelsAreContextOnlyNotRequiredFileInputs": true,
+  "scientificReadingNotRepeatedOrReplacedByHashes": true,
+  "rawOfficialTextExported": false
+}

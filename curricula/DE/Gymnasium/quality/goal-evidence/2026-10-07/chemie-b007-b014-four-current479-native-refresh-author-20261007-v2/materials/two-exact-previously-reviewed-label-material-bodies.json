@@ -1,0 +1,189 @@
+{
+  "role": "Two exact full B007v2 bodies; native briefs losslessly compose their supplied material, tasks, solutions and transfer",
+  "cases": [
+    {
+      "caseLocalKey": "label-same-exclamation-different-warning",
+      "routineLocalKey": "label",
+      "candidateGoalId": "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+      "currentOriginGoalId": "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+      "title": {
+        "de": "Gleiches Piktogramm, verschiedene Warnungen",
+        "en": "Same pictogram, different warnings"
+      },
+      "recordStatus": "ai_candidate",
+      "validationStatus": "needs_human_review",
+      "evidenceLevel": "E1",
+      "generalizationLevel": "G1",
+      "syntheticMaterial": true,
+      "actualLearnerPerformanceRecorded": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "nativeProfileBound": false,
+      "independentReviewStatus": "pending",
+      "candidateSourceGoalIds": [
+        "he-chem-seki-8-1-b07-a01-26ab40c7"
+      ],
+      "sourceClearance": "candidate source references only; no nationwide exact-coverage approval",
+      "essentialUnderstanding": {
+        "de": "Ein Piktogramm weist auf bestimmte Gefahrenarten hin; dasselbe Symbol kann zu verschiedenen Gefahrenklassen und konkreten Warnungen gehören. Die konkrete Aussage ergibt sich zusammen mit dem zugehörigen Warnhinweis; Nachschlagen dient dieser selben Deutung und ist keine eigenständige freie Webrecherche.",
+        "en": "A pictogram indicates particular types of hazard; the same symbol can apply to different hazard classes and specific warnings. Its specific meaning is read together with the associated hazard statement; lookup serves that interpretation rather than becoming a separate free web-research task."
+      },
+      "material": {
+        "de": [
+          "Zwei fiktive Unterrichtsetiketten, keine vollständigen Produktetiketten: A zeigt das rote Rauten-Piktogramm mit Ausrufezeichen und H315. B zeigt dieselbe Raute mit Ausrufezeichen und H319.",
+          "Bereitgestellte Nachschlagetabelle: H315 = Verursacht Hautreizungen; H319 = Verursacht schwere Augenreizung. Die Stoffe werden nicht ausgegeben und nicht verwendet.",
+          "Auf einem dritten Etikettenauszug C ist das Ausrufezeichen sichtbar; der Warnhinweis ist verdeckt. Es liegen keine weiteren Angaben zu C vor."
+        ],
+        "en": [
+          "Two fictional teaching labels, not complete product labels: A shows the red-diamond exclamation-mark pictogram with H315. B shows the same exclamation-mark diamond with H319.",
+          "Supplied lookup table: H315 = causes skin irritation; H319 = causes serious eye irritation. No substances are supplied or used.",
+          "A third label excerpt C shows the exclamation mark but its hazard statement is covered. No other details about C are provided."
+        ]
+      },
+      "learnerTask": {
+        "de": "Deute A und B mithilfe der Tabelle. Begründe, warum das gleiche Piktogramm keine identische konkrete Gefahr beweist. Welche Angabe musst du für C aus der bereitgestellten vollständigen Stoffinformation anfordern?",
+        "en": "Interpret A and B using the table. Explain why the same pictogram does not establish the same specific hazard. Which detail must you request for C from the supplied complete substance information?"
+      },
+      "expectedResponseOrSolution": {
+        "de": "A warnt vor Hautreizung, B vor schwerer Augenreizung. Das Piktogramm allein unterscheidet diese konkreten Warnungen nicht. Für C benötige ich den zugehörigen Warnhinweis beziehungsweise seinen H-Code und die eindeutige Zuordnung zur Stoffinformation; aus dem Ausrufezeichen allein entscheide ich nicht zwischen Haut und Augen.",
+        "en": "A warns of skin irritation; B warns of serious eye irritation. The pictogram alone does not distinguish these specific warnings. For C I need the associated hazard statement or H-code and its unambiguous substance-information entry; the exclamation mark alone does not decide between skin and eye hazards."
+      },
+      "assessmentCriteria": [
+        {
+          "criterionLocalKey": "label-same-exclamation-different-warning-criterion-1",
+          "required": true,
+          "text": {
+            "de": "A und B werden anhand ihrer unterschiedlichen Hinweise richtig gedeutet.",
+            "en": "A and B are correctly interpreted from their different statements."
+          },
+          "binding": "same routine essential understanding"
+        },
+        {
+          "criterionLocalKey": "label-same-exclamation-different-warning-criterion-2",
+          "required": true,
+          "text": {
+            "de": "Die Antwort verknüpft Symbol und konkreten Hinweis, statt alle Ausrufezeichen gleichzusetzen.",
+            "en": "The answer connects symbol and specific statement rather than treating all exclamation marks identically."
+          },
+          "binding": "same routine essential understanding"
+        },
+        {
+          "criterionLocalKey": "label-same-exclamation-different-warning-criterion-3",
+          "required": true,
+          "text": {
+            "de": "Bei C wird der fehlende Warnhinweis gezielt angefordert; eine konkrete Gefahr wird nicht erfunden.",
+            "en": "For C the missing hazard statement is requested; a specific hazard is not invented."
+          },
+          "binding": "same routine essential understanding"
+        }
+      ],
+      "transferOrCountercase": {
+        "de": {
+          "task": "Neues Etikett D: Ausrufezeichen und H335. Nachschlageeintrag: Kann die Atemwege reizen. Deute D und vergleiche es mit B.",
+          "expected": "D betrifft die Atemwege, B die Augen. Das gemeinsame Symbol erlaubt nicht, D nur als Augenwarnung zu lesen."
+        },
+        "en": {
+          "task": "New label D: exclamation mark and H335. Lookup entry: may cause respiratory irritation. Interpret D and compare it with B.",
+          "expected": "D concerns the respiratory tract, B the eyes. Their shared symbol does not make D an eye-only warning."
+        }
+      },
+      "materialAndSourceLimitations": {
+        "de": "Nur die vorgelegten Kennzeichnungsausschnitte werden geprüft. Kein vollständiger CLP-Klassifizierungsentscheid, kein Umgang und keine Entsorgung; das Material behauptet keine echte Produkteinstufung.",
+        "en": "Assessment covers only supplied label excerpts. It is not a complete CLP classification, handling or disposal decision, and claims no actual product classification."
+      }
+    },
+    {
+      "caseLocalKey": "label-flame-and-bounded-lookup",
+      "routineLocalKey": "label",
+      "candidateGoalId": "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+      "currentOriginGoalId": "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+      "title": {
+        "de": "Flamme und gezieltes Nachschlagen",
+        "en": "Flame and targeted lookup"
+      },
+      "recordStatus": "ai_candidate",
+      "validationStatus": "needs_human_review",
+      "evidenceLevel": "E1",
+      "generalizationLevel": "G1",
+      "syntheticMaterial": true,
+      "actualLearnerPerformanceRecorded": false,
+      "humanApproval": false,
+      "humanTrial": false,
+      "nativeProfileBound": false,
+      "independentReviewStatus": "pending",
+      "candidateSourceGoalIds": [
+        "he-chem-seki-8-1-b07-a01-26ab40c7"
+      ],
+      "sourceClearance": "candidate source references only; no nationwide exact-coverage approval",
+      "essentialUnderstanding": {
+        "de": "Ein Piktogramm weist auf bestimmte Gefahrenarten hin; dasselbe Symbol kann zu verschiedenen Gefahrenklassen und konkreten Warnungen gehören. Die konkrete Aussage ergibt sich zusammen mit dem zugehörigen Warnhinweis; Nachschlagen dient dieser selben Deutung und ist keine eigenständige freie Webrecherche.",
+        "en": "A pictogram indicates particular types of hazard; the same symbol can apply to different hazard classes and specific warnings. Its specific meaning is read together with the associated hazard statement; lookup serves that interpretation rather than becoming a separate free web-research task."
+      },
+      "material": {
+        "de": [
+          "Fiktive Unterrichtsetiketten: L zeigt Flamme und H225; F zeigt Flamme und H228. In einem dritten Auszug M stehen Flamme und H226; dessen Klartext fehlt.",
+          "Bereitgestellte Tabelle: H225 = Flüssigkeit und Dampf sind leicht entzündbar; H228 = entzündbarer Feststoff; H226 = Flüssigkeit und Dampf sind entzündbar.",
+          "Diese Auszüge enthalten keine Angaben zur Entsorgung oder vollständigen Arbeitsfreigabe. Es wird keine reale Tätigkeit durchgeführt."
+        ],
+        "en": [
+          "Fictional teaching labels: L shows flame and H225; F shows flame and H228. A third excerpt M shows flame and H226 but omits its statement text.",
+          "Supplied table: H225 = highly flammable liquid and vapour; H228 = flammable solid; H226 = flammable liquid and vapour.",
+          "These excerpts provide no disposal information or complete permission to work. No real activity is performed."
+        ]
+      },
+      "learnerTask": {
+        "de": "Deute L und F und ergänze für M den fehlenden Klartext aus der Tabelle. Begründe an L und F, welche konkreten Informationen erst der Warnhinweis liefert. Beurteile die Behauptung: „Die Flamme beweist, dass jeder dieser Stoffe ein flüssiger Alkohol ist.“",
+        "en": "Interpret L and F and look up the missing statement for M. Use L and F to explain which specifics come from the statement. Assess the claim: “The flame proves that each substance is a liquid alcohol.”"
+      },
+      "expectedResponseOrSolution": {
+        "de": "L warnt vor einer leicht entzündbaren Flüssigkeit und ihrem Dampf; F vor einem entzündbaren Feststoff. Für M lautet der Tabelleneintrag: Flüssigkeit und Dampf sind entzündbar. Die Flamme kennzeichnet die Brennbarkeitsgefahr in diesen Auszügen; weder genaue Stoffidentität noch gleicher Aggregatzustand ergeben sich allein daraus. Die Alkoholbehauptung ist unbegründet.",
+        "en": "L warns of a highly flammable liquid and its vapour; F of a flammable solid. The table supplies “flammable liquid and vapour” for M. The flame denotes the flammability hazard in these excerpts; exact identity and matching physical state do not follow from it alone. The alcohol claim is unsupported."
+      },
+      "assessmentCriteria": [
+        {
+          "criterionLocalKey": "label-flame-and-bounded-lookup-criterion-1",
+          "required": true,
+          "text": {
+            "de": "Die unterschiedlichen Angaben zu Flüssigkeit/Dampf und Feststoff werden richtig zugeordnet.",
+            "en": "Liquid/vapour and solid statements are assigned correctly."
+          },
+          "binding": "same routine essential understanding"
+        },
+        {
+          "criterionLocalKey": "label-flame-and-bounded-lookup-criterion-2",
+          "required": true,
+          "text": {
+            "de": "M wird aus der konkret bereitgestellten Tabelle ergänzt.",
+            "en": "M is completed from the specific supplied table."
+          },
+          "binding": "same routine essential understanding"
+        },
+        {
+          "criterionLocalKey": "label-flame-and-bounded-lookup-criterion-3",
+          "required": true,
+          "text": {
+            "de": "Die Stoffidentität wird nicht aus dem Piktogramm abgeleitet.",
+            "en": "Substance identity is not inferred from the pictogram."
+          },
+          "binding": "same routine essential understanding"
+        }
+      ],
+      "transferOrCountercase": {
+        "de": {
+          "task": "Ein weiterer Flammen-Auszug hat keinen lesbaren H-Code. Darfst du ihn mit H225 ergänzen, weil L dasselbe Symbol trägt?",
+          "expected": "Nein. Ich benötige den zum neuen Stoff gehörenden Warnhinweis; gleiche Symbole rechtfertigen keine Übernahme."
+        },
+        "en": {
+          "task": "Another flame excerpt has no readable H-code. May you fill it with H225 because L has the same symbol?",
+          "expected": "No. I need that substance’s own statement; matching symbols do not justify copying the statement."
+        }
+      },
+      "materialAndSourceLimitations": {
+        "de": "Das Nachschlagen bleibt auf die mitgelieferte Tabelle begrenzt. GHS-Feinheiten außerhalb dieser Auszüge, Feuerbekämpfung und vollständige Risikobeurteilung werden nicht geprüft.",
+        "en": "Lookup is limited to the supplied table. GHS details beyond these excerpts, firefighting and full risk assessment are not assessed."
+      }
+    }
+  ],
+  "originalBodiesUnchanged": true,
+  "newScienceReviewClaim": false
+}

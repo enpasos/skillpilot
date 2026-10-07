@@ -1,0 +1,15 @@
+/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts:440
+  throw new Error(`Goal-book model: ${message}`)
+        ^
+
+
+Error: Goal-book model: semantic-kind ledger binds curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json, expected curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/candidate/canonical.before-twelve-links.exact.json.
+    at fail (/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts:440:9)
+    at parseSemanticKindLedger (/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts:815:5)
+    at buildGoalBookModel (/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts:1889:30)
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/materialize-final-twelve-native-author.mts:63:19)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2

@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "role": "Technical native source-atlas receipt repair after independently reviewed current curriculum integrations",
+  "results": [
+    {
+      "subject": "chemistry",
+      "totalGeneratedOutputs": 51,
+      "sourceViews": 48,
+      "nonReceiptOutputBytesExact": true,
+      "receiptOnlyVerifiedInputSHAChanges": true,
+      "changedPaths": [],
+      "receiptPath": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/source-projection.receipt.json",
+      "receiptSha256": "ff4311273ee3b3d0157eaf04c54dda58a5580f9b612006893f5c1891efb01d48",
+      "receiptLeafDiff": [],
+      "allOtherReceiptFieldsExact": true,
+      "actualNativeRegenerateExitCode": 0,
+      "actualNativeCheckExitCode": 0
+    },
+    {
+      "subject": "biology",
+      "totalGeneratedOutputs": 25,
+      "sourceViews": 22,
+      "nonReceiptOutputBytesExact": true,
+      "receiptOnlyVerifiedInputSHAChanges": true,
+      "changedPaths": [
+        "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/source-projection.receipt.json"
+      ],
+      "receiptPath": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/source-projection.receipt.json",
+      "receiptSha256": "300077d6d2bed26ac0cda32a8500d54c7fcb8e4a3716d1f28b5180a505850a8a",
+      "receiptLeafDiff": [
+        {
+          "path": ".inputBindings[0].sha256",
+          "before": "sha256:bcb557fad123746d33122d285d2b9093ed11ea2d21a09a44a869ec5ad44083db",
+          "after": "sha256:007d968e828f198bbd6c45c1b4a01c948c2eb3c88d4a9170a25c4a9bf104a8c5"
+        },
+        {
+          "path": ".inputBindings[77].sha256",
+          "before": "sha256:7c8155ae9efd785e67d83ddb4097ce55502e97ec1ac9be82f94e76415d65893c",
+          "after": "sha256:4c095a5ada18ab9cf012712b1df3b7de59908e416321da7cb63ac01cf449dfbb"
+        }
+      ],
+      "allOtherReceiptFieldsExact": true,
+      "actualNativeRegenerateExitCode": 0,
+      "actualNativeCheckExitCode": 0
+    }
+  ],
+  "all70SourceViewBytesExact": true,
+  "newScientificCompletions": 0,
+  "newSourceReviews": 0,
+  "newPlacementReviews": 0,
+  "humanApproval": false,
+  "runtimeAssetPreparationRerun": false,
+  "requiredNextCheck": "Root actual bundled application build and goal-book publication verification"
+}

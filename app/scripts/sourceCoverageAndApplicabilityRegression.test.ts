@@ -1,9 +1,12 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
-import { join, relative } from 'node:path'
+import { dirname, join, relative, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { discoverActiveMemoryCardReviewConfigs } from './memoryCardReviewConfigDiscovery'
 import {
+  buildApplicabilityCompilation,
   getAllJsonFiles,
   hasOnlyPartialMappingSourceEvidence,
   intersectApplicabilityJurisdictions,
@@ -43,6 +46,43 @@ const entry = (goalId: string, requiredByGoalId: string) => ({
 })
 const isEligible = (goal: { kind: string } | undefined) => goal?.kind === 'ordinary'
 
+test('active Memory evidence resolves a successor outside the authoring directory and cannot weaken required visibility', () => {
+  const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
+  mkdirSync(join(repoRoot, 'tmp'), { recursive: true })
+  const root = mkdtempSync(join(repoRoot, 'tmp', 'memory-evidence-discovery-'))
+  const local = (path: string) => relative(repoRoot, join(root, path))
+  const write = (path: string, value: unknown) => {
+    mkdirSync(dirname(join(root, path)), { recursive: true })
+    writeFileSync(join(root, path), JSON.stringify(value))
+  }
+  try {
+    const config = {
+      reviewId: 'memory-review', landscapeId: 'fixture-landscape',
+      landscapePath: local('landscape.json'), ruleVersion: 'memory-card-review-v1',
+      scope: { label: 'Whole fixture', rootGoalIds: ['root'] },
+      visibilityScopes: [{ label: 'Checked view', viewPath: local('view.json') }],
+      reviewPath: local('legacy/old.records.jsonl'), reportPath: local('legacy/old.md'),
+    }
+    write('landscape.json', { landscapeId: config.landscapeId })
+    write('legacy/old.config.json', config)
+    write('successor/current.config.json', { ...config, reviewPath: local('successor/current.records.jsonl'), reportPath: local('successor/current.md'), visibilityScopeCoverageRequired: true })
+    write('registry.json', { subjects: [{ landscapePath: config.landscapePath, memoryReviewConfigPath: local('successor/current.config.json') }] })
+    const selected = discoverActiveMemoryCardReviewConfigs(local('legacy'), local('registry.json'))
+    assert.equal(selected.length, 1)
+    assert.equal(selected[0].configPath, local('successor/current.config.json'))
+    assert.equal(selected[0].reportPath, local('successor/current.md'))
+    // The same route must fail closed if a previously mandatory coverage check
+    // is disabled, rather than silently falling back to historical evidence.
+    write('legacy/old.config.json', { ...config, visibilityScopeCoverageRequired: true })
+    write('successor/current.config.json', { ...config, visibilityScopeCoverageRequired: false })
+    assert.throws(() => discoverActiveMemoryCardReviewConfigs(local('legacy'), local('registry.json')), /required visibility coverage/)
+    write('successor/current.config.json', config)
+    assert.throws(() => discoverActiveMemoryCardReviewConfigs(local('legacy'), local('registry.json')), /required visibility coverage/)
+  } finally {
+    rmSync(root, { recursive: true, force: true })
+  }
+})
+
 test('curriculum discovery excludes QA snapshots while keeping live source and mapping inputs', () => {
   const root = mkdtempSync(join(tmpdir(), 'skillpilot-curriculum-discovery-'))
   try {
@@ -63,6 +103,62 @@ test('curriculum discovery excludes QA snapshots while keeping live source and m
     ].sort())
   } finally {
     rmSync(root, { recursive: true, force: true })
+  }
+})
+
+test('active Memory support follows the final origin scope after prerequisite closure', () => {
+  const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
+  const reports = new Map(buildApplicabilityCompilation().reports.map((report) => [report.landscapeId, report]))
+  let checkedRelationships = 0
+  let originsExtendedByPrerequisites = 0
+  const memorySupportIdsByLandscape = new Map<string, Set<string>>()
+  for (const configRef of discoverActiveMemoryCardReviewConfigs()) {
+    const config = JSON.parse(readFileSync(resolve(repoRoot, configRef.configPath), 'utf8')) as {
+      landscapeId: string; reviewId: string; reviewPath: string
+    }
+    const report = reports.get(config.landscapeId)
+    assert(report, `Missing current applicability report for ${config.landscapeId}`)
+    const goals = new Map(report.goals.map((goal) => [goal.goalId, goal]))
+    const records = readFileSync(resolve(repoRoot, config.reviewPath), 'utf8').split(/\r?\n/).filter(Boolean)
+    for (const line of records) {
+      const record = JSON.parse(line) as { status: string; goalId: string; memoryGoalIds?: string[] }
+      if (record.status !== 'memory_required') continue
+      const origin = goals.get(record.goalId)
+      assert(origin, `Missing Memory origin ${record.goalId}`)
+      const originScope = origin.compiledApplicability.jurisdiction ?? []
+      if (originScope.some((value) => origin.evidence.some((e) => e.value === value && e.kind === 'requires-closure')
+        && !origin.evidence.some((e) => e.value === value && ['mapping', 'provenance', 'override'].includes(e.kind)))) {
+        originsExtendedByPrerequisites++
+      }
+      for (const supportId of record.memoryGoalIds ?? []) {
+        const supportIds = memorySupportIdsByLandscape.get(config.landscapeId) ?? new Set<string>()
+        supportIds.add(supportId)
+        memorySupportIdsByLandscape.set(config.landscapeId, supportIds)
+        const support = goals.get(supportId)
+        assert(support, `Missing Memory support ${supportId}`)
+        for (const value of originScope) {
+          assert(support.compiledApplicability.jurisdiction?.includes(value), `${supportId} loses final ${value} origin scope`)
+          assert(support.evidence.some((e) => e.value === value && e.kind === 'memory-review-origin'
+            && e.source === `${config.reviewId}:${record.goalId} (${config.reviewPath})`),
+          `${supportId} has no active Memory-origin evidence for ${value}`)
+        }
+        checkedRelationships++
+      }
+    }
+  }
+  assert(checkedRelationships > 0, 'The active Memory corpus must exercise origin relationships')
+  assert(originsExtendedByPrerequisites > 0, 'The active corpus must exercise origin scope growth during prerequisite closure')
+  const floorPolicy = JSON.parse(readFileSync(resolve(repoRoot, 'app/scripts/config/curriculum-maturity-floor-policy.json'), 'utf8')) as {
+    floors: Array<{ landscapeId: string; minimumMaturity: string }>
+  }
+  const protectedLandscapes = new Set(floorPolicy.floors
+    .filter((floor) => /^M[67]$/.test(floor.minimumMaturity))
+    .map((floor) => floor.landscapeId))
+  for (const [landscapeId, supportIds] of memorySupportIdsByLandscape) {
+    if (!protectedLandscapes.has(landscapeId)) continue
+    const staleBindings = reports.get(landscapeId)!.findings
+      .filter((finding) => finding.code === 'APV-203' && supportIds.has(finding.goalId ?? ''))
+    assert.deepEqual(staleBindings, [], `Committed Memory scopes must match their final reviewed origins in ${landscapeId}`)
   }
 })
 

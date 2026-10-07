@@ -1,0 +1,390 @@
+{
+  "derivedStandardBatchSize": 20,
+  "sourceSeals": {
+    "originalA": {
+      "seal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-current-independent-a-20261007-v1/first-pass.freeze.json",
+        "sha256": "sha256:528ce068b15e1499b9ff151e603eeff84f9100a0253eb452830f789155a0149f",
+        "bytes": 1714
+      },
+      "verifiedPayloads": 5
+    },
+    "originalATechnical": {
+      "seal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-current-independent-a-20261007-v1/technical-followup/technical.final.freeze.json",
+        "sha256": "sha256:f4ccfb044a588155848440029f6178bbc5d5f5e2abde9a19cdde3ec78f196621",
+        "bytes": 1461
+      },
+      "verifiedPayloads": 4
+    },
+    "originalB": {
+      "seal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b007-b014-four-current-independent-b-20261007-v2/reviewer-b.final.freeze.json",
+        "sha256": "sha256:cf05ba71c839fbf5898a95a1e80ab5a79baf8a48bf516e8b7ed3bed2fdad96a5",
+        "bytes": 14807
+      },
+      "verifiedPayloads": 47
+    },
+    "correctedA": {
+      "seal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-two-corrected-current-native-independent-a-20261007-v1/reviewer.final.seal.json",
+        "sha256": "sha256:6e0a2954cfd48776ffbf65845206994b860c13e04e4035c1b68894863af696ec",
+        "bytes": 5322
+      },
+      "verifiedPayloads": 27
+    },
+    "correctedB": {
+      "seal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-two-corrected-current-independent-b-followup-20261007-v1/reviewer-b.final.freeze.json",
+        "sha256": "sha256:8bace0ae5ec9e732f73dff3c89b36c7d3e54e17384743dfe4fe82b962874adfc",
+        "bytes": 3834
+      },
+      "verifiedPayloads": 20
+    },
+    "contextA": {
+      "seal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-d2cc-memory-reverse-context-current-independent-a-20261007-v1/reviewer.final.seal.json",
+        "sha256": "sha256:8070f4c94f945e82f06c96dc2e801041a86129b8476bec65393010a4441798ea",
+        "bytes": 4445
+      },
+      "verifiedPayloads": 22
+    },
+    "contextB": {
+      "seal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-d2cc-memory-reverse-context-independent-b-20261007-v1/reviewer.final.sealed.json",
+        "sha256": "sha256:8e46c221a00ac96ef43b621232ca3440dc1e2b3229ed92f2d29ee63d893ad427",
+        "bytes": 3927
+      },
+      "verifiedPayloads": 20
+    },
+    "imageAuthor": {
+      "seal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-two-corrected-raster-current-native-author-20261007-v1/author.final.freeze.json",
+        "sha256": "sha256:d8f932d9526b1eccd25a37104f81088452ed7fa1f757ac5f6e6c57ff8e853ad0",
+        "bytes": 10094
+      },
+      "verifiedPayloads": 54
+    }
+  },
+  "lineage": [
+    {
+      "side": "a",
+      "campaign": {
+        "$schema": "https://skillpilot.com/schemas/goal-description-review/v2/goal-description-review-campaign.schema.json",
+        "schemaVersion": 2,
+        "campaignId": "chemie-four-current-technical-lineage-a-20261007-v1",
+        "roundId": "chemie-four-current-source-science-a-derived-20261007-v1",
+        "bundleFingerprint": "sha256:96094e14ef135b42a2caa604c73480a1626d1c78d995e588c64656e90a8efa1c",
+        "bookDigest": "sha256:db674f96563f342117cef38ecc336aa975ddc840918af153a39b8238b7727bea",
+        "reviewInputFingerprint": "sha256:2b58bb92c4666d96189d183424b6c8772237031dc1cca37e12a883885a5b6fcc",
+        "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+        "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+        "recordSchemaDigest": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+        "reviewerRole": "internal_ai_reviewer",
+        "reviewPass": "first_pass",
+        "independenceGroupId": "chemie-four-current-sealed-origin-a-technical-20261007-v1",
+        "blindToOtherReviews": true,
+        "batchSize": 20,
+        "goalCount": 4,
+        "batches": [
+          {
+            "batchId": "chemie-four-current-source-science-a-derived-20261007-v1.batch-001",
+            "ordinal": 1,
+            "goalIds": [
+              "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+              "f0939f88-a6af-5334-ac4d-5d54732af25a",
+              "28bb9d15-f865-5843-a035-6066580fea64",
+              "1c1420c2-a8e2-520f-8015-6df637a973bd"
+            ],
+            "recordSchemaDigest": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+            "batchInputFingerprint": "sha256:8ffadf1a290b10b26eba00bd6acaec13f0f6363d211bfc9c385c2d42ad038566"
+          }
+        ],
+        "reviewPolicy": {
+          "humanApprovalRequired": true,
+          "aiRecordsAreCandidatesOnly": true
+        }
+      },
+      "records": [
+        {
+          "goalId": "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+          "segment": "original-good-JPEG-current-v4-4batch-origin",
+          "originalRecords": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-current-independent-a-20261007-v1/technical-followup/results/chemie-b007-b014-four-current-refresh-independent-a-20261007-v2.batch-001.records.jsonl",
+            "sha256": "sha256:4f89c3a871edbb1a09e998ec74c2410375c18d3d988456ebc5d4cd67916d2fa8",
+            "bytes": 14950
+          },
+          "originalRun": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-current-independent-a-20261007-v1/technical-followup/results/chemie-b007-b014-four-current-refresh-independent-a-20261007-v2.batch-001.run.json",
+            "sha256": "sha256:0162e8347d8fd0efa9131f0e6d449ab03fad533da5b654747815fc86dcb49a0e",
+            "bytes": 3642
+          },
+          "originalRunId": "chemie-four-current-root-independent-a-20261007-v1",
+          "originalCampaignId": "chemie-b007-b014-four-current-refresh-campaign-a-20261007-v4",
+          "originalRoundId": "chemie-b007-b014-four-current-refresh-independent-a-20261007-v2",
+          "originalIndependenceGroupId": "chemie-b007-b014-four-current-refresh-independent-a-20261007-v2",
+          "originalScientificStartedAt": "2026-10-07T10:46:21+00:00",
+          "originalScientificCompletedAt": "2026-10-07T10:48:06.203041+00:00",
+          "sourceGoalFingerprint": "sha256:79a120a44dc6e946f1523025c55aef98cd38f09a800e7f0cecad4bf7443f34b7",
+          "sourcePageFingerprint": "sha256:f193f47b18e6b2facb094aed62aa248e6c650f98406031525a4020ba616f94b7",
+          "currentPageFingerprint": "sha256:f193f47b18e6b2facb094aed62aa248e6c650f98406031525a4020ba616f94b7",
+          "wholeCanonicalContextAndDEENExact": true,
+          "semanticPrerequisiteAndDependentIDsExact": true,
+          "actualImageDigestAndAltExact": true,
+          "changedRepresentationScope": "Current four-goal pages and approved AI QA state from sealed scientific judgments; internal/external prerequisite rendering changes only. No new semantic relationship.",
+          "scientificRecordFieldsUnchanged": true,
+          "originalNativeBatchSize": 4
+        },
+        {
+          "goalId": "f0939f88-a6af-5334-ac4d-5d54732af25a",
+          "segment": "fresh-corrected-PNG-current-2batch-origin",
+          "originalRecords": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-two-corrected-current-native-independent-a-20261007-v1/native-d-two/results/chemie-two-corrected-current-independent-a-20261007-v1.batch-001.records.jsonl",
+            "sha256": "sha256:7a92d6fc9a794c67ad1a91d1e3903d65d0be81146ef5e8d3a98d1bc07cca4cb5",
+            "bytes": 7720
+          },
+          "originalRun": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-two-corrected-current-native-independent-a-20261007-v1/native-d-two/results/chemie-two-corrected-current-independent-a-20261007-v1.batch-001.run.json",
+            "sha256": "sha256:d386ea88d5af139ec125c0f6a55c656614ac21a0b80443a1f707a152bcabc55c",
+            "bytes": 2414
+          },
+          "originalRunId": "chemie-two-corrected-current-independent-a-20261007-v1.run-001",
+          "originalCampaignId": "chemie-two-corrected-current-campaign-a-20261007-v1",
+          "originalRoundId": "chemie-two-corrected-current-independent-a-20261007-v1",
+          "originalIndependenceGroupId": "chemie-two-corrected-current-independent-a-20261007-v1",
+          "originalScientificStartedAt": "2026-10-07T11:14:44Z",
+          "originalScientificCompletedAt": "2026-10-07T11:16:32.256626Z",
+          "sourceGoalFingerprint": "sha256:23db8e4a7b103a6af83860e0e7d67cad8fbcd9c6883561e1a5f7e88013565723",
+          "sourcePageFingerprint": "sha256:98db54c58c43b6378ef3b025e7705a99d498c780e593c211bd1fd5b91af88e4a",
+          "currentPageFingerprint": "sha256:f2c932d28bf93341ce126a48346ead90b9fa45b5666a4f04f2cd22063db10a8b",
+          "wholeCanonicalContextAndDEENExact": true,
+          "semanticPrerequisiteAndDependentIDsExact": true,
+          "actualImageDigestAndAltExact": true,
+          "changedRepresentationScope": "Current four-goal pages and approved AI QA state from sealed scientific judgments; internal/external prerequisite rendering changes only. No new semantic relationship.",
+          "scientificRecordFieldsUnchanged": true,
+          "originalNativeBatchSize": 2
+        },
+        {
+          "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+          "segment": "original-good-JPEG-current-v4-4batch-origin",
+          "originalRecords": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-current-independent-a-20261007-v1/technical-followup/results/chemie-b007-b014-four-current-refresh-independent-a-20261007-v2.batch-001.records.jsonl",
+            "sha256": "sha256:4f89c3a871edbb1a09e998ec74c2410375c18d3d988456ebc5d4cd67916d2fa8",
+            "bytes": 14950
+          },
+          "originalRun": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-current-independent-a-20261007-v1/technical-followup/results/chemie-b007-b014-four-current-refresh-independent-a-20261007-v2.batch-001.run.json",
+            "sha256": "sha256:0162e8347d8fd0efa9131f0e6d449ab03fad533da5b654747815fc86dcb49a0e",
+            "bytes": 3642
+          },
+          "originalRunId": "chemie-four-current-root-independent-a-20261007-v1",
+          "originalCampaignId": "chemie-b007-b014-four-current-refresh-campaign-a-20261007-v4",
+          "originalRoundId": "chemie-b007-b014-four-current-refresh-independent-a-20261007-v2",
+          "originalIndependenceGroupId": "chemie-b007-b014-four-current-refresh-independent-a-20261007-v2",
+          "originalScientificStartedAt": "2026-10-07T10:46:21+00:00",
+          "originalScientificCompletedAt": "2026-10-07T10:48:06.203041+00:00",
+          "sourceGoalFingerprint": "sha256:3e5559e1a403aae6be59a0b4e4b5b63433d482c9904f0c4c9ac3a9797c92cd97",
+          "sourcePageFingerprint": "sha256:e7a4487c8d9c4a6806b8339baed769b2ec50002d647a1e3552133c8a351546d3",
+          "currentPageFingerprint": "sha256:e7a4487c8d9c4a6806b8339baed769b2ec50002d647a1e3552133c8a351546d3",
+          "wholeCanonicalContextAndDEENExact": true,
+          "semanticPrerequisiteAndDependentIDsExact": true,
+          "actualImageDigestAndAltExact": true,
+          "changedRepresentationScope": "Current four-goal pages and approved AI QA state from sealed scientific judgments; internal/external prerequisite rendering changes only. No new semantic relationship.",
+          "scientificRecordFieldsUnchanged": true,
+          "originalNativeBatchSize": 4
+        },
+        {
+          "goalId": "1c1420c2-a8e2-520f-8015-6df637a973bd",
+          "segment": "fresh-corrected-PNG-current-2batch-origin",
+          "originalRecords": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-two-corrected-current-native-independent-a-20261007-v1/native-d-two/results/chemie-two-corrected-current-independent-a-20261007-v1.batch-001.records.jsonl",
+            "sha256": "sha256:7a92d6fc9a794c67ad1a91d1e3903d65d0be81146ef5e8d3a98d1bc07cca4cb5",
+            "bytes": 7720
+          },
+          "originalRun": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-two-corrected-current-native-independent-a-20261007-v1/native-d-two/results/chemie-two-corrected-current-independent-a-20261007-v1.batch-001.run.json",
+            "sha256": "sha256:d386ea88d5af139ec125c0f6a55c656614ac21a0b80443a1f707a152bcabc55c",
+            "bytes": 2414
+          },
+          "originalRunId": "chemie-two-corrected-current-independent-a-20261007-v1.run-001",
+          "originalCampaignId": "chemie-two-corrected-current-campaign-a-20261007-v1",
+          "originalRoundId": "chemie-two-corrected-current-independent-a-20261007-v1",
+          "originalIndependenceGroupId": "chemie-two-corrected-current-independent-a-20261007-v1",
+          "originalScientificStartedAt": "2026-10-07T11:14:44Z",
+          "originalScientificCompletedAt": "2026-10-07T11:16:32.256626Z",
+          "sourceGoalFingerprint": "sha256:7cf484189ead8e3724cfb4c9329b5c9d956b875fe327a779d698c68e8342f14f",
+          "sourcePageFingerprint": "sha256:d0da23f06fba83778e6cc681705dec1dc917bb8510b856b783cb882e8bdb6986",
+          "currentPageFingerprint": "sha256:25fb540fdb07655dc7c8a807ccab26b25bb14940d009c697e82bd54e2fd395a2",
+          "wholeCanonicalContextAndDEENExact": true,
+          "semanticPrerequisiteAndDependentIDsExact": true,
+          "actualImageDigestAndAltExact": true,
+          "changedRepresentationScope": "Current four-goal pages and approved AI QA state from sealed scientific judgments; internal/external prerequisite rendering changes only. No new semantic relationship.",
+          "scientificRecordFieldsUnchanged": true,
+          "originalNativeBatchSize": 2
+        }
+      ]
+    },
+    {
+      "side": "b",
+      "campaign": {
+        "$schema": "https://skillpilot.com/schemas/goal-description-review/v2/goal-description-review-campaign.schema.json",
+        "schemaVersion": 2,
+        "campaignId": "chemie-four-current-technical-lineage-b-20261007-v1",
+        "roundId": "chemie-four-current-source-science-b-derived-20261007-v1",
+        "bundleFingerprint": "sha256:96094e14ef135b42a2caa604c73480a1626d1c78d995e588c64656e90a8efa1c",
+        "bookDigest": "sha256:db674f96563f342117cef38ecc336aa975ddc840918af153a39b8238b7727bea",
+        "reviewInputFingerprint": "sha256:2b58bb92c4666d96189d183424b6c8772237031dc1cca37e12a883885a5b6fcc",
+        "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+        "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+        "recordSchemaDigest": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+        "reviewerRole": "internal_ai_reviewer",
+        "reviewPass": "first_pass",
+        "independenceGroupId": "chemie-four-current-sealed-origin-b-technical-20261007-v1",
+        "blindToOtherReviews": true,
+        "batchSize": 20,
+        "goalCount": 4,
+        "batches": [
+          {
+            "batchId": "chemie-four-current-source-science-b-derived-20261007-v1.batch-001",
+            "ordinal": 1,
+            "goalIds": [
+              "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+              "f0939f88-a6af-5334-ac4d-5d54732af25a",
+              "28bb9d15-f865-5843-a035-6066580fea64",
+              "1c1420c2-a8e2-520f-8015-6df637a973bd"
+            ],
+            "recordSchemaDigest": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+            "batchInputFingerprint": "sha256:e85260842b2b34e56058da61cb642e83b3d2e3897e315275d06cd32d8526263b"
+          }
+        ],
+        "reviewPolicy": {
+          "humanApprovalRequired": true,
+          "aiRecordsAreCandidatesOnly": true
+        }
+      },
+      "records": [
+        {
+          "goalId": "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+          "segment": "original-good-JPEG-current-v4-4batch-origin",
+          "originalRecords": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b007-b014-four-current-independent-b-20261007-v2/native-campaign-results/chemie-b007-b014-four-current-refresh-independent-b-20261007-v2.batch-001.records.jsonl",
+            "sha256": "sha256:75a239f45ce52ee9b2b6e147758741cf8f3c271b6eeaf32d9e5af7010c0f2e83",
+            "bytes": 14693
+          },
+          "originalRun": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b007-b014-four-current-independent-b-20261007-v2/native-campaign-results/chemie-b007-b014-four-current-refresh-independent-b-20261007-v2.batch-001.run.json",
+            "sha256": "sha256:07b273e4892656133c7473803355325375fa62c63d90408f22233723ba480fc7",
+            "bytes": 3661
+          },
+          "originalRunId": "chemie-b007-b014-four-current-blind-b-native-20261007-v4",
+          "originalCampaignId": "chemie-b007-b014-four-current-refresh-campaign-b-20261007-v4",
+          "originalRoundId": "chemie-b007-b014-four-current-refresh-independent-b-20261007-v2",
+          "originalIndependenceGroupId": "chemie-b007-b014-four-current-refresh-independent-b-20261007-v2",
+          "originalScientificStartedAt": "2026-10-07T10:39:59.113579+00:00",
+          "originalScientificCompletedAt": "2026-10-07T10:45:50.313272+00:00",
+          "sourceGoalFingerprint": "sha256:79a120a44dc6e946f1523025c55aef98cd38f09a800e7f0cecad4bf7443f34b7",
+          "sourcePageFingerprint": "sha256:f193f47b18e6b2facb094aed62aa248e6c650f98406031525a4020ba616f94b7",
+          "currentPageFingerprint": "sha256:f193f47b18e6b2facb094aed62aa248e6c650f98406031525a4020ba616f94b7",
+          "wholeCanonicalContextAndDEENExact": true,
+          "semanticPrerequisiteAndDependentIDsExact": true,
+          "actualImageDigestAndAltExact": true,
+          "changedRepresentationScope": "Current four-goal pages and approved AI QA state from sealed scientific judgments; internal/external prerequisite rendering changes only. No new semantic relationship.",
+          "scientificRecordFieldsUnchanged": true,
+          "originalNativeBatchSize": 4
+        },
+        {
+          "goalId": "f0939f88-a6af-5334-ac4d-5d54732af25a",
+          "segment": "fresh-corrected-PNG-current-2batch-origin",
+          "originalRecords": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-two-corrected-current-independent-b-followup-20261007-v1/native-campaign-results/chemie-two-corrected-current-independent-b-20261007-v1.batch-001.records.jsonl",
+            "sha256": "sha256:c8fbbdbb572fe68900727d40abb757ae32a23dc00d4e437cd3fc5f637d375dca",
+            "bytes": 8383
+          },
+          "originalRun": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-two-corrected-current-independent-b-followup-20261007-v1/native-campaign-results/chemie-two-corrected-current-independent-b-20261007-v1.batch-001.run.json",
+            "sha256": "sha256:504a541a96a8a0f4c4c5fdcb2ce1463bb464bd5ec0250e496a9689a1bea45a83",
+            "bytes": 3534
+          },
+          "originalRunId": "chemie-two-corrected-current-native-independent-b-20261007-v1",
+          "originalCampaignId": "chemie-two-corrected-current-campaign-b-20261007-v1",
+          "originalRoundId": "chemie-two-corrected-current-independent-b-20261007-v1",
+          "originalIndependenceGroupId": "chemie-two-corrected-current-independent-b-20261007-v1",
+          "originalScientificStartedAt": "2026-10-07T11:14:28.994Z",
+          "originalScientificCompletedAt": "2026-10-07T11:17:52.588486+00:00",
+          "sourceGoalFingerprint": "sha256:23db8e4a7b103a6af83860e0e7d67cad8fbcd9c6883561e1a5f7e88013565723",
+          "sourcePageFingerprint": "sha256:98db54c58c43b6378ef3b025e7705a99d498c780e593c211bd1fd5b91af88e4a",
+          "currentPageFingerprint": "sha256:f2c932d28bf93341ce126a48346ead90b9fa45b5666a4f04f2cd22063db10a8b",
+          "wholeCanonicalContextAndDEENExact": true,
+          "semanticPrerequisiteAndDependentIDsExact": true,
+          "actualImageDigestAndAltExact": true,
+          "changedRepresentationScope": "Current four-goal pages and approved AI QA state from sealed scientific judgments; internal/external prerequisite rendering changes only. No new semantic relationship.",
+          "scientificRecordFieldsUnchanged": true,
+          "originalNativeBatchSize": 2
+        },
+        {
+          "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+          "segment": "original-good-JPEG-current-v4-4batch-origin",
+          "originalRecords": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b007-b014-four-current-independent-b-20261007-v2/native-campaign-results/chemie-b007-b014-four-current-refresh-independent-b-20261007-v2.batch-001.records.jsonl",
+            "sha256": "sha256:75a239f45ce52ee9b2b6e147758741cf8f3c271b6eeaf32d9e5af7010c0f2e83",
+            "bytes": 14693
+          },
+          "originalRun": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b007-b014-four-current-independent-b-20261007-v2/native-campaign-results/chemie-b007-b014-four-current-refresh-independent-b-20261007-v2.batch-001.run.json",
+            "sha256": "sha256:07b273e4892656133c7473803355325375fa62c63d90408f22233723ba480fc7",
+            "bytes": 3661
+          },
+          "originalRunId": "chemie-b007-b014-four-current-blind-b-native-20261007-v4",
+          "originalCampaignId": "chemie-b007-b014-four-current-refresh-campaign-b-20261007-v4",
+          "originalRoundId": "chemie-b007-b014-four-current-refresh-independent-b-20261007-v2",
+          "originalIndependenceGroupId": "chemie-b007-b014-four-current-refresh-independent-b-20261007-v2",
+          "originalScientificStartedAt": "2026-10-07T10:39:59.113579+00:00",
+          "originalScientificCompletedAt": "2026-10-07T10:45:50.313272+00:00",
+          "sourceGoalFingerprint": "sha256:3e5559e1a403aae6be59a0b4e4b5b63433d482c9904f0c4c9ac3a9797c92cd97",
+          "sourcePageFingerprint": "sha256:e7a4487c8d9c4a6806b8339baed769b2ec50002d647a1e3552133c8a351546d3",
+          "currentPageFingerprint": "sha256:e7a4487c8d9c4a6806b8339baed769b2ec50002d647a1e3552133c8a351546d3",
+          "wholeCanonicalContextAndDEENExact": true,
+          "semanticPrerequisiteAndDependentIDsExact": true,
+          "actualImageDigestAndAltExact": true,
+          "changedRepresentationScope": "Current four-goal pages and approved AI QA state from sealed scientific judgments; internal/external prerequisite rendering changes only. No new semantic relationship.",
+          "scientificRecordFieldsUnchanged": true,
+          "originalNativeBatchSize": 4
+        },
+        {
+          "goalId": "1c1420c2-a8e2-520f-8015-6df637a973bd",
+          "segment": "fresh-corrected-PNG-current-2batch-origin",
+          "originalRecords": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-two-corrected-current-independent-b-followup-20261007-v1/native-campaign-results/chemie-two-corrected-current-independent-b-20261007-v1.batch-001.records.jsonl",
+            "sha256": "sha256:c8fbbdbb572fe68900727d40abb757ae32a23dc00d4e437cd3fc5f637d375dca",
+            "bytes": 8383
+          },
+          "originalRun": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-two-corrected-current-independent-b-followup-20261007-v1/native-campaign-results/chemie-two-corrected-current-independent-b-20261007-v1.batch-001.run.json",
+            "sha256": "sha256:504a541a96a8a0f4c4c5fdcb2ce1463bb464bd5ec0250e496a9689a1bea45a83",
+            "bytes": 3534
+          },
+          "originalRunId": "chemie-two-corrected-current-native-independent-b-20261007-v1",
+          "originalCampaignId": "chemie-two-corrected-current-campaign-b-20261007-v1",
+          "originalRoundId": "chemie-two-corrected-current-independent-b-20261007-v1",
+          "originalIndependenceGroupId": "chemie-two-corrected-current-independent-b-20261007-v1",
+          "originalScientificStartedAt": "2026-10-07T11:14:28.994Z",
+          "originalScientificCompletedAt": "2026-10-07T11:17:52.588486+00:00",
+          "sourceGoalFingerprint": "sha256:7cf484189ead8e3724cfb4c9329b5c9d956b875fe327a779d698c68e8342f14f",
+          "sourcePageFingerprint": "sha256:d0da23f06fba83778e6cc681705dec1dc917bb8510b856b783cb882e8bdb6986",
+          "currentPageFingerprint": "sha256:25fb540fdb07655dc7c8a807ccab26b25bb14940d009c697e82bd54e2fd395a2",
+          "wholeCanonicalContextAndDEENExact": true,
+          "semanticPrerequisiteAndDependentIDsExact": true,
+          "actualImageDigestAndAltExact": true,
+          "changedRepresentationScope": "Current four-goal pages and approved AI QA state from sealed scientific judgments; internal/external prerequisite rendering changes only. No new semantic relationship.",
+          "scientificRecordFieldsUnchanged": true,
+          "originalNativeBatchSize": 2
+        }
+      ]
+    }
+  ],
+  "newBlindScientificRuns": 0,
+  "providerModelDiversityClaimed": false,
+  "rootImageAuthorNotCorrectedIndependentReviewer": true,
+  "humanApproval": false,
+  "strictGain": 0
+}

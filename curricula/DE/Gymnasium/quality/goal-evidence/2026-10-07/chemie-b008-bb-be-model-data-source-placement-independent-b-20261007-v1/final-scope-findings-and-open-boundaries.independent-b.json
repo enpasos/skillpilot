@@ -1,0 +1,53 @@
+{
+  "verdict": "PASS_BOUNDED_COMPONENTS_WITH_EXPLICIT_OPEN_WHOLE_SOURCE_AND_TARGET_BOUNDARIES",
+  "acceptedPartialSourceBindings": 56,
+  "acceptedCourseScopeCorrections": 4,
+  "acceptedBoundedOperatorPrerequisiteMetadata": 8,
+  "acceptedBoundedOperatorViewLocations": 6,
+  "resolvedFinding": {
+    "id": "B-V14-DELTA-01",
+    "finding": "Vier SekII-Views enthalten zusätzlich jeweils einen prerequisiteOnly-Block; nur zwei Knotenänderungen war als vollständige Deltabeschreibung unzutreffend.",
+    "resolution": "Tatsächliche zusätzliche vier IDs/Rollen gegen die requires-Closure geprüft; nur echte Voraussetzungen, keine weitere Zielaufnahme. Eigenes Audit dokumentiert alle zusätzlichen Blöcke ausdrücklich.",
+    "resolved": true
+  },
+  "openBoundaries": [
+    {
+      "id": "B-V14-WHOLE-SOURCE-32",
+      "status": "OPEN",
+      "scope": "Alle 32 ganzen Source-Pflichten",
+      "reason": "Diese Prüfung entscheidet nur die 56 Operatoranteile. Bestehende Inhaltszuordnungen bleiben erhalten; ihre Inhaltsleistung wird nicht aus generischen Operatorstandards neu als erfüllt behauptet."
+    },
+    {
+      "id": "B-V14-UPPER-MODEL-WHOLE",
+      "status": "OPEN",
+      "scope": "86d34f1f-692d-5522-a9a4-a71c65b24de7, BB/BE SekII GK/LK",
+      "reason": "Die gelesenen 15 Seiten und vier konkreten Source-Kontexte belegen Gleichgewichts-/LK-Oberflächenmodellierung, nicht die vollständige DE/EN-Bereichsliste einschließlich Wirkstoff–Rezeptor, Substrat–Enzym, Molekülgeometrie sowie analoger UND digitaler Modellleistung. Keine vollständige Ziel-/nationale Quellenfreigabe aus diesen Partialbindungen."
+    },
+    {
+      "id": "B-V14-UPPER-DATA-WHOLE",
+      "status": "OPEN",
+      "scope": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+      "reason": "Ein Konduktometrie- oder K-Berechnungsbullet trägt einen quantitativen Operatoranteil, nicht allein sämtliche selbständigen Hypothesen-, Digital- und fachübergreifenden Leistungsanteile des ganzen Ziels. Allgemeine E-Standards und vollständige aktuelle D/P-Leistungsnachweise bleiben erforderlich."
+    },
+    {
+      "id": "B-V14-OTHER-STAGES-NATIONAL",
+      "status": "OUTSIDE_REVIEW",
+      "scope": "Andere Länder/Quellen/Platzierungen und geschützte 169",
+      "reason": "Keine nationale Atlasfreigabe, keine neue Prüfung unveränderter Ziele und keine Aussage über unberührte Quellen-/Seiten-/Kontextbindungen."
+    },
+    {
+      "id": "B-V14-D26-P52-A-M-V",
+      "status": "OUTSIDE_REVIEW",
+      "scope": "D26/P52 und weitere M7-Gates",
+      "reason": "Dieser Auftrag ist eine begrenzte unabhängige Source-/Component-/Placement-Prüfung. Native D26/P52, Gesamtatomarität, Memory, Bilder und strenge Schnittmenge sind hier nicht freigegeben."
+    }
+  ],
+  "machineSourceComponentReviewOnly": true,
+  "newWholeSourceDecisionsAllowedAsCompleteFromThisArtifact": 0,
+  "newWholeTargetM7CompletionsClaimed": 0,
+  "strictGain": 0,
+  "humanApproval": false,
+  "humanTrial": false,
+  "activeWrites": 0,
+  "noPeerOrAuthorVerdictReadBeforeOwnFirstSeal": true
+}

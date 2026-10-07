@@ -1,0 +1,1121 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Biologie: zwanzig aktuelle Ökologieziele</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Biologie: zwanzig aktuelle Ökologieziele</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>20 atomare Lernziele</dt><dd>9 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-4f5d4296002eb1bc70a26646" aria-label="Biologie"><a href="#goal-85441f5a-aa66-55dd-bca4-a1c4cb0a745f"><span class="toc-entry-label">Biologie</span></a></h2>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-35fa60c7c11185f541ee3a95" aria-label="Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)"><a href="#goal-85441f5a-aa66-55dd-bca4-a1c4cb0a745f"><span class="toc-entry-label">Biologische&#160;<wbr>Erkenntnisgewinnung&#160;<wbr>und&#160;<wbr>Wissenschaftsverständnis&#160;<wbr>(Sek&#160;<wbr>II)</span></a></h3>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-cbde2ff0-3488-55ef-a652-e0c0aa7937cb" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-01ead4a4815786785794c07b" aria-label="Ökologie &amp; Stoffwechsel"><a href="#goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad"><span class="toc-entry-label">Ökologie&#160;<wbr>&amp;&#160;<wbr>Stoffwechsel</span></a></h3>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-goal-df1892b7-4518-5b0f-8909-8885968504d4" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-bcce20ac9b36aaebb3ab15b2" aria-label="Q3.1 Strukturen und Zusammenhänge in Ökosystemen"><a href="#goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad"><span class="toc-entry-label">Q3.1&#160;<wbr>Strukturen&#160;<wbr>und&#160;<wbr>Zusammenhänge&#160;<wbr>in&#160;<wbr>Ökosystemen</span></a></h4>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-649ec9bc-faf9-5266-b0f7-8dae366d870c" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-7e9134405c8f28a24a7375d3" aria-label="Einfluss des Menschen auf Ökosysteme, Nachhaltigkeit, Biodiversität"><a href="#goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f"><span class="toc-entry-label">Einfluss&#160;<wbr>des&#160;<wbr>Menschen&#160;<wbr>auf&#160;<wbr>Ökosysteme,&#160;<wbr>Nachhaltigkeit,&#160;<wbr>Biodiversität</span></a></h3>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 7</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-goal-43673384-387a-51ea-9d04-6831b0ad7e2d" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-b2f35d296339e4d6e62bfdd9" aria-label="Einfluss des Menschen auf Ökosysteme, Nachhaltigkeit, Biodiversität"><a href="#goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f"><span class="toc-entry-label">Einfluss&#160;<wbr>des&#160;<wbr>Menschen&#160;<wbr>auf&#160;<wbr>Ökosysteme,&#160;<wbr>Nachhaltigkeit,&#160;<wbr>Biodiversität</span></a></h4>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 7</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-goal-a89ac355-a725-5b16-8915-8bbe411b3263" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-9de78327d3df9a96313e37cb" aria-label="Q4.2 Dynamik von Lebensgemeinschaften"><a href="#goal-02cabf54-0b70-572c-b85a-7409e686a48e"><span class="toc-entry-label">Q4.2&#160;<wbr>Dynamik&#160;<wbr>von&#160;<wbr>Lebensgemeinschaften</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 10</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-f2bb2b91-2fda-57b6-9f57-ba94b2758dd7" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-553df1b5b4fdb7b03f1a752c" aria-label="Wirbeltiere, Angepasstheit und Tierhaltung (Sek I)"><a href="#goal-e4791f8d-ea87-504b-979e-2f976e72e66d"><span class="toc-entry-label">Wirbeltiere,&#160;<wbr>Angepasstheit&#160;<wbr>und&#160;<wbr>Tierhaltung&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 11</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-6411f627-1baa-5349-90af-ad7691d6bb65" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-9c72fb29a633e8ecb6aede34" aria-label="Lebensräume, Ökologie und Artenschutz (Sek I)"><a href="#goal-ebf5730d-4e40-5d16-ae93-05106bcd2f70"><span class="toc-entry-label">Lebensräume,&#160;<wbr>Ökologie&#160;<wbr>und&#160;<wbr>Artenschutz&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>9 Lernziele</span><span>erste zugehörige Lernzielseite 12</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-85441f5a-aa66-55dd-bca4-a1c4cb0a745f" data-goal-id="85441f5a-aa66-55dd-bca4-a1c4cb0a745f" data-page-number="1" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" aria-labelledby="goal-85441f5a-aa66-55dd-bca4-a1c4cb0a745f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-85441f5a-aa66-55dd-bca4-a1c4cb0a745f-title"><a class="goal-self-link" href="#goal-85441f5a-aa66-55dd-bca4-a1c4cb0a745f">Biodiversität begründen und nachhaltig einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>85441f5a-aa66-55dd-bca4-a1c4cb0a745f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-35fa60c7c11185f541ee3a95">Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:31ae05573f1e9943231de599c014456dfc19d6249d80c5f024743639f4712814" data-rendered-digest="sha256:bd7e3a565cedf4e3b907c1868597a69d74dfd6e48fba8a0b06a2a9196b9a7e93" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/85441f5a-aa66-55dd-bca4-a1c4cb0a745f/85441f5a-aa66-55dd-bca4-a1c4cb0a745f.png" alt="Gesunde Pflanzen derselben Blühphase zeigen Variation; weitere Felder zeigen Arten und Ökosysteme. Ein abstrahiertes Verzweigungsschema zu Evolution und schützende Hände ergänzen die drei Ebenen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-85441f5a-aa66-55dd-bca4-a1c4cb0a745f-description-heading">
+        <p class="section-heading" id="goal-85441f5a-aa66-55dd-bca4-a1c4cb0a745f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Entstehung und Bedeutung von Biodiversität sowie Gründe für deren Schutz und nachhaltige Nutzung erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-85441f5a-aa66-55dd-bca4-a1c4cb0a745f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-85441f5a-aa66-55dd-bca4-a1c4cb0a745f-requires-heading">
+          <p class="section-heading" id="goal-85441f5a-aa66-55dd-bca4-a1c4cb0a745f-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-85441f5a-aa66-55dd-bca4-a1c4cb0a745f-reverse-heading">
+          <p class="section-heading" id="goal-85441f5a-aa66-55dd-bca4-a1c4cb0a745f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-85441f5a-aa66-55dd-bca4-a1c4cb0a745f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-85441f5a-aa66-55dd-bca4-a1c4cb0a745f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0beb4ca2-2437-557a-9db2-ccda1cbcfa0a" rel="noreferrer noopener"><span>Biologische Sachverhalte mit Basiskonzepten erschließen</span> <code>0beb4ca2-2437-557a-9db2-ccda1cbcfa0a</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-85441f5a-aa66-55dd-bca4-a1c4cb0a745f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-85441f5a-aa66-55dd-bca4-a1c4cb0a745f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6a342288d6462e843d9db3b3e6f0c96a844ff9f95dbd3c87cf58a4a6968e4c7f</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=85441f5a-aa66-55dd-bca4-a1c4cb0a745f&amp;goalFingerprint=sha256%3A6a342288d6462e843d9db3b3e6f0c96a844ff9f95dbd3c87cf58a4a6968e4c7f&amp;pageFingerprint=sha256%3Acf00546a9b6f84ec9a63f0c55f00849e1d9bc67c375607560995c16c6a946b7d&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f2306104-e846-5c25-bfbf-5f3e33db623a" data-goal-id="f2306104-e846-5c25-bfbf-5f3e33db623a" data-page-number="2" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" aria-labelledby="goal-f2306104-e846-5c25-bfbf-5f3e33db623a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f2306104-e846-5c25-bfbf-5f3e33db623a-title"><a class="goal-self-link" href="#goal-f2306104-e846-5c25-bfbf-5f3e33db623a">Anwendungen der Biologie nachhaltig bewerten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f2306104-e846-5c25-bfbf-5f3e33db623a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-35fa60c7c11185f541ee3a95">Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e04bbd51067cfda45c90623b12601f3b4386e48b817d18c4b977808d991f9aa6" data-rendered-digest="sha256:0970ff380de251df3ce6821a46af2ed37ef438a4691e08b86cb7907c2e7d8a96" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/f2306104-e846-5c25-bfbf-5f3e33db623a/f2306104-e846-5c25-bfbf-5f3e33db623a.png" alt="Ökologie, Ökonomie, Politik und Soziales sind als vier Perspektiven um eine Waage zum Abwägen angeordnet.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f2306104-e846-5c25-bfbf-5f3e33db623a-description-heading">
+        <p class="section-heading" id="goal-f2306104-e846-5c25-bfbf-5f3e33db623a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Auswirkungen von Anwendungen der Biologie im Sinne nachhaltiger Entwicklung aus ökologischer, ökonomischer, politischer und sozialer Perspektive beurteilen und bewerten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-f2306104-e846-5c25-bfbf-5f3e33db623a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f2306104-e846-5c25-bfbf-5f3e33db623a-requires-heading">
+          <p class="section-heading" id="goal-f2306104-e846-5c25-bfbf-5f3e33db623a-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-f2306104-e846-5c25-bfbf-5f3e33db623a-reverse-heading">
+          <p class="section-heading" id="goal-f2306104-e846-5c25-bfbf-5f3e33db623a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-f2306104-e846-5c25-bfbf-5f3e33db623a-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f2306104-e846-5c25-bfbf-5f3e33db623a-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-241825f3-c26c-5ddd-9c3b-1f0460384390" rel="noreferrer noopener"><span>Folgen von Entscheidungen lokal und global reflektieren</span> <code>241825f3-c26c-5ddd-9c3b-1f0460384390</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-9a0b6a24-2946-50ca-8a2a-703735650e5a" rel="noreferrer noopener"><span>Bewertungsprozesse ethisch reflektieren</span> <code>9a0b6a24-2946-50ca-8a2a-703735650e5a</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-f2306104-e846-5c25-bfbf-5f3e33db623a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f2306104-e846-5c25-bfbf-5f3e33db623a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0cf35e5e7515ae997a3fa7f6a7d6dffd0049f66ae5fce5e2d72ee1063daeb7af</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=f2306104-e846-5c25-bfbf-5f3e33db623a&amp;goalFingerprint=sha256%3A0cf35e5e7515ae997a3fa7f6a7d6dffd0049f66ae5fce5e2d72ee1063daeb7af&amp;pageFingerprint=sha256%3Ab3246696aa944c9d7d8e60b6f05775e7101c7b12374f87bdf7a37e6be8f3d0dc&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad" data-goal-id="8e7c6b98-fb1a-5f08-8531-685a4ffba4ad" data-page-number="3" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-cbde2ff0-3488-55ef-a652-e0c0aa7937cb structure:canonical-goal-df1892b7-4518-5b0f-8909-8885968504d4" aria-labelledby="goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad-title"><a class="goal-self-link" href="#goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad">Stoffkreisläufe bewerten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8e7c6b98-fb1a-5f08-8531-685a4ffba4ad</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-01ead4a4815786785794c07b">Ökologie &amp; Stoffwechsel</a></li><li><a href="#chapter-bcce20ac9b36aaebb3ab15b2">Q3.1 Strukturen und Zusammenhänge in Ökosystemen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0b8cdea4471e051e809039538d960d01a7a2aaf05fe9daf4546318bc7b6fa6ca" data-rendered-digest="sha256:af2fb27e980979543c53ef3a7c58786c711d2b3dafef59b884d819e6d7e2a386" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/8e7c6b98-fb1a-5f08-8531-685a4ffba4ad/8e7c6b98-fb1a-5f08-8531-685a4ffba4ad.png" alt="Ein schematischer Kohlenstoffkreislauf verbindet CO₂, Pflanzen, Tiere, Zersetzer und Boden; Sonnenenergie und Wärme stehen außerhalb der Stoffpfeile.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad-description-heading">
+        <p class="section-heading" id="goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Stoffkreisläufe (z. B. Kohlenstoff, Stickstoff) analysieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW:</strong> Sek. I · G9</li><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad-requires-heading">
+          <p class="section-heading" id="goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad-reverse-heading">
+          <p class="section-heading" id="goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-80a61704-a372-5ba3-adb8-340fbde05433"><span>Abiotische Faktoren und Klima</span><code>80a61704-a372-5ba3-adb8-340fbde05433</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f"><span>Anthropogene Eingriffe analysieren</span><code>fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ea5d75af-d97f-593a-bea4-722a41d12eb8" rel="noreferrer noopener"><span>Trophische Beziehungen erklären</span> <code>ea5d75af-d97f-593a-bea4-722a41d12eb8</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-3368ad5a-1f5e-534c-aa25-b3b5d1fdceac" rel="noreferrer noopener"><span>Mischwald unter Trockenstress und Borkenkäferdruck</span> <code>3368ad5a-1f5e-534c-aa25-b3b5d1fdceac</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ac4a650d-45a9-519d-9e4d-1f87910f8844" rel="noreferrer noopener"><span>Ökosystem praktisch untersuchen</span> <code>ac4a650d-45a9-519d-9e4d-1f87910f8844</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-de1c19a2-2f8a-57bf-bd58-ecc460f47987" rel="noreferrer noopener"><span>Ökotoxikologie einordnen</span> <code>de1c19a2-2f8a-57bf-bd58-ecc460f47987</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-5ef8ffbf-aed6-5952-910a-1553580bac54" rel="noreferrer noopener"><span>Pflanzliche Anpassungen</span> <code>5ef8ffbf-aed6-5952-910a-1553580bac54</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-5bfb8ede-235c-580f-b2c9-4eb84bba4d0a" rel="noreferrer noopener"><span>Tierische Anpassungen</span> <code>5bfb8ede-235c-580f-b2c9-4eb84bba4d0a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7c655747ab7b9c735dd2e61c29be59163fed45a24fab19591ae0bb76aa08d6f9</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=8e7c6b98-fb1a-5f08-8531-685a4ffba4ad&amp;goalFingerprint=sha256%3A7c655747ab7b9c735dd2e61c29be59163fed45a24fab19591ae0bb76aa08d6f9&amp;pageFingerprint=sha256%3Adfedfe9da0d958890b7e2381c9ccc7b38c88f4462ce2f38bf66d26c5f2db69dc&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-89ce2fc2-67ff-587a-b448-227cb68f53e1" data-goal-id="89ce2fc2-67ff-587a-b448-227cb68f53e1" data-page-number="4" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-cbde2ff0-3488-55ef-a652-e0c0aa7937cb structure:canonical-goal-df1892b7-4518-5b0f-8909-8885968504d4" aria-labelledby="goal-89ce2fc2-67ff-587a-b448-227cb68f53e1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-89ce2fc2-67ff-587a-b448-227cb68f53e1-title"><a class="goal-self-link" href="#goal-89ce2fc2-67ff-587a-b448-227cb68f53e1">Populationsdynamik modellieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>89ce2fc2-67ff-587a-b448-227cb68f53e1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-01ead4a4815786785794c07b">Ökologie &amp; Stoffwechsel</a></li><li><a href="#chapter-bcce20ac9b36aaebb3ab15b2">Q3.1 Strukturen und Zusammenhänge in Ökosystemen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:13bd2cbe0ab75010a7a900725d0b9c38ee7c0d59393208e0cf837f4eed83aeb5" data-rendered-digest="sha256:176ae954be0ca0e0197fe59c059fe1b5fab934dc3ef89ab0ef2fe32268425d73" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/89ce2fc2-67ff-587a-b448-227cb68f53e1/89ce2fc2-67ff-587a-b448-227cb68f53e1.png" alt="Zwei als Modelle bezeichnete Diagramme vergleichen exponentielles und logistisches Populationswachstum über die Zeit mit einer Kapazitätsgrenze K.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-89ce2fc2-67ff-587a-b448-227cb68f53e1-description-heading">
+        <p class="section-heading" id="goal-89ce2fc2-67ff-587a-b448-227cb68f53e1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Populationen mit logistischer/exponentieller Dynamik und Dichteeffekten modellieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-89ce2fc2-67ff-587a-b448-227cb68f53e1" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-89ce2fc2-67ff-587a-b448-227cb68f53e1-requires-heading">
+          <p class="section-heading" id="goal-89ce2fc2-67ff-587a-b448-227cb68f53e1-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-89ce2fc2-67ff-587a-b448-227cb68f53e1-reverse-heading">
+          <p class="section-heading" id="goal-89ce2fc2-67ff-587a-b448-227cb68f53e1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-89ce2fc2-67ff-587a-b448-227cb68f53e1-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-89ce2fc2-67ff-587a-b448-227cb68f53e1-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ea5d75af-d97f-593a-bea4-722a41d12eb8" rel="noreferrer noopener"><span>Trophische Beziehungen erklären</span> <code>ea5d75af-d97f-593a-bea4-722a41d12eb8</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-89ce2fc2-67ff-587a-b448-227cb68f53e1-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-89ce2fc2-67ff-587a-b448-227cb68f53e1-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d8aa00020aadb66e10f830f0701ee105c2be0d348d0a8c975870db1ca7dc4fac</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=89ce2fc2-67ff-587a-b448-227cb68f53e1&amp;goalFingerprint=sha256%3Ad8aa00020aadb66e10f830f0701ee105c2be0d348d0a8c975870db1ca7dc4fac&amp;pageFingerprint=sha256%3A0bf8c2b3bde07d078508a07962aa07d734cc9cdf561aedfa1302f11cbe270f40&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-80a61704-a372-5ba3-adb8-340fbde05433" data-goal-id="80a61704-a372-5ba3-adb8-340fbde05433" data-page-number="5" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-cbde2ff0-3488-55ef-a652-e0c0aa7937cb structure:canonical-goal-df1892b7-4518-5b0f-8909-8885968504d4" aria-labelledby="goal-80a61704-a372-5ba3-adb8-340fbde05433-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-80a61704-a372-5ba3-adb8-340fbde05433-title"><a class="goal-self-link" href="#goal-80a61704-a372-5ba3-adb8-340fbde05433">Abiotische Faktoren und Klima</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>80a61704-a372-5ba3-adb8-340fbde05433</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-01ead4a4815786785794c07b">Ökologie &amp; Stoffwechsel</a></li><li><a href="#chapter-bcce20ac9b36aaebb3ab15b2">Q3.1 Strukturen und Zusammenhänge in Ökosystemen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:985b77e15a604f7d7c8d183869eaec87bf32fcf38bbd63069a78335d92f4de6c" data-rendered-digest="sha256:cd51c8f729e8ae6471640d33e909f213cf3549d64193a038368ee7fa7b3a9ab0" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/80a61704-a372-5ba3-adb8-340fbde05433/80a61704-a372-5ba3-adb8-340fbde05433.png" alt="Pflanzen an verschiedenen Standorten stehen neben Licht, Wasser und Temperatur. Eine große schematische Kurve zeigt die Fotosyntheserate in Abhängigkeit von der Temperatur.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-80a61704-a372-5ba3-adb8-340fbde05433-description-heading">
+        <p class="section-heading" id="goal-80a61704-a372-5ba3-adb8-340fbde05433-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Klima- und Standortfaktoren als Steuergrößen von Ökosystemen bewerten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. II · LK</li><li><strong>MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-80a61704-a372-5ba3-adb8-340fbde05433" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-80a61704-a372-5ba3-adb8-340fbde05433-requires-heading">
+          <p class="section-heading" id="goal-80a61704-a372-5ba3-adb8-340fbde05433-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad"><span>Stoffkreisläufe bewerten</span><code>8e7c6b98-fb1a-5f08-8531-685a4ffba4ad</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-80a61704-a372-5ba3-adb8-340fbde05433-reverse-heading">
+          <p class="section-heading" id="goal-80a61704-a372-5ba3-adb8-340fbde05433-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-2d061f9f-bc88-51e0-af33-f6e8e00b2dee"><span>Ökologische Nische als Faktorengefüge erklären</span><code>2d061f9f-bc88-51e0-af33-f6e8e00b2dee</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-80a61704-a372-5ba3-adb8-340fbde05433-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-80a61704-a372-5ba3-adb8-340fbde05433-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-80a61704-a372-5ba3-adb8-340fbde05433-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-80a61704-a372-5ba3-adb8-340fbde05433-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:494c0cb169e6632a39d0e29631c86c9f92ef6198acb71678e93d04f3bc915118</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=80a61704-a372-5ba3-adb8-340fbde05433&amp;goalFingerprint=sha256%3A494c0cb169e6632a39d0e29631c86c9f92ef6198acb71678e93d04f3bc915118&amp;pageFingerprint=sha256%3Aa5248660a35c48e995366e9105cb74c043e8a891922a52c4c9225cd081e2c125&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2d061f9f-bc88-51e0-af33-f6e8e00b2dee" data-goal-id="2d061f9f-bc88-51e0-af33-f6e8e00b2dee" data-page-number="6" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-cbde2ff0-3488-55ef-a652-e0c0aa7937cb structure:canonical-goal-df1892b7-4518-5b0f-8909-8885968504d4" aria-labelledby="goal-2d061f9f-bc88-51e0-af33-f6e8e00b2dee-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2d061f9f-bc88-51e0-af33-f6e8e00b2dee-title"><a class="goal-self-link" href="#goal-2d061f9f-bc88-51e0-af33-f6e8e00b2dee">Ökologische Nische als Faktorengefüge erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2d061f9f-bc88-51e0-af33-f6e8e00b2dee</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-01ead4a4815786785794c07b">Ökologie &amp; Stoffwechsel</a></li><li><a href="#chapter-bcce20ac9b36aaebb3ab15b2">Q3.1 Strukturen und Zusammenhänge in Ökosystemen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4b800cef26c8f2a34a5e5381b898a9d4a4461c41c79f765d92d16c909ee2db78" data-rendered-digest="sha256:67d83460a3f07202abff1711c99218357994be84c9ac94260a052983358414cd" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/2d061f9f-bc88-51e0-af33-f6e8e00b2dee/2d061f9f-bc88-51e0-af33-f6e8e00b2dee.png" alt="Eine Maus ist von Nahrung, Versteck, Wasser, Temperatur, Räubern und Konkurrenz als biotischen und abiotischen Umweltfaktoren umgeben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2d061f9f-bc88-51e0-af33-f6e8e00b2dee-description-heading">
+        <p class="section-heading" id="goal-2d061f9f-bc88-51e0-af33-f6e8e00b2dee-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann biotische Einflussfaktoren auf Lebewesen beschreiben und die ökologische Nische als Zusammenspiel biotischer und abiotischer Faktoren erklären, das die Biozönose eines Ökosystems mitbestimmt.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d061f9f-bc88-51e0-af33-f6e8e00b2dee" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2d061f9f-bc88-51e0-af33-f6e8e00b2dee-requires-heading">
+          <p class="section-heading" id="goal-2d061f9f-bc88-51e0-af33-f6e8e00b2dee-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-80a61704-a372-5ba3-adb8-340fbde05433"><span>Abiotische Faktoren und Klima</span><code>80a61704-a372-5ba3-adb8-340fbde05433</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-2d061f9f-bc88-51e0-af33-f6e8e00b2dee-reverse-heading">
+          <p class="section-heading" id="goal-2d061f9f-bc88-51e0-af33-f6e8e00b2dee-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2d061f9f-bc88-51e0-af33-f6e8e00b2dee-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2d061f9f-bc88-51e0-af33-f6e8e00b2dee-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ea5d75af-d97f-593a-bea4-722a41d12eb8" rel="noreferrer noopener"><span>Trophische Beziehungen erklären</span> <code>ea5d75af-d97f-593a-bea4-722a41d12eb8</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2d061f9f-bc88-51e0-af33-f6e8e00b2dee-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2d061f9f-bc88-51e0-af33-f6e8e00b2dee-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ecfda09c22b6a20ecaa81a1caaa9e721a8ba41d35a96503dece15cc7156d8ffd</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=2d061f9f-bc88-51e0-af33-f6e8e00b2dee&amp;goalFingerprint=sha256%3Aecfda09c22b6a20ecaa81a1caaa9e721a8ba41d35a96503dece15cc7156d8ffd&amp;pageFingerprint=sha256%3A12ba2c603456a7ffd1cd7b012c522b911164b1af931d2828b2736626cf2707da&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f" data-goal-id="fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f" data-page-number="7" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-649ec9bc-faf9-5266-b0f7-8dae366d870c structure:canonical-goal-43673384-387a-51ea-9d04-6831b0ad7e2d" aria-labelledby="goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f-title"><a class="goal-self-link" href="#goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f">Anthropogene Eingriffe analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-7e9134405c8f28a24a7375d3">Einfluss des Menschen auf Ökosysteme, Nachhaltigkeit, Biodiversität</a></li><li><a href="#chapter-b2f35d296339e4d6e62bfdd9">Einfluss des Menschen auf Ökosysteme, Nachhaltigkeit, Biodiversität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6dec1291700c60a748bbac3c03c8e31365abd06d1209d1ec5e2e193daafb642e" data-rendered-digest="sha256:f5b4b7cef608796669959e162a1a595edd1ab0989df8b05a1454e3e568fdbdf6" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f/fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f.png" alt="Landnutzung, Nährstoffeintrag und Erwärmung werden als Einflüsse auf einen Wasserlebensraum und seinen Sauerstoffhaushalt gezeigt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f-description-heading">
+        <p class="section-heading" id="goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Auswirkungen von Landnutzung, Verschmutzung und Klimawandel beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW:</strong> Sek. I · G9</li><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f-requires-heading">
+          <p class="section-heading" id="goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8e7c6b98-fb1a-5f08-8531-685a4ffba4ad"><span>Stoffkreisläufe bewerten</span><code>8e7c6b98-fb1a-5f08-8531-685a4ffba4ad</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f-reverse-heading">
+          <p class="section-heading" id="goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-ae3f50bf-33c7-535f-8d13-191ee330c0fa"><span>Nachhaltige Nutzung planen</span><code>ae3f50bf-33c7-535f-8d13-191ee330c0fa</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-52eda3e1-4d0c-5c41-b177-a749e068e5a7" rel="noreferrer noopener"><span>Wiedervernaessung eines Niedermoors</span> <code>52eda3e1-4d0c-5c41-b177-a749e068e5a7</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-5a068c8d-2876-57bc-a826-c3808b38a63b" rel="noreferrer noopener"><span>Menschliche Umweltanpassung mit natürlicher Selektion vergleichen</span> <code>5a068c8d-2876-57bc-a826-c3808b38a63b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-7749de90-68f4-53a6-b474-b6414f16f09e" rel="noreferrer noopener"><span>Renaturierung und Wiederansiedlung</span> <code>7749de90-68f4-53a6-b474-b6414f16f09e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-7247dc5e-9d58-5aa0-8082-5097847539a4" rel="noreferrer noopener"><span>Globale Folgen lokaler Eingriffe erklären</span> <code>7247dc5e-9d58-5aa0-8082-5097847539a4</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1288c59e8513611e123ec03460fc238d4bd508844e800c529b74f4b49b600e69</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f&amp;goalFingerprint=sha256%3A1288c59e8513611e123ec03460fc238d4bd508844e800c529b74f4b49b600e69&amp;pageFingerprint=sha256%3A904d5ba83bfb243ae1420d081b17e2a60639e1960724e8f6fe52e5f51ec5f1fe&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ae3f50bf-33c7-535f-8d13-191ee330c0fa" data-goal-id="ae3f50bf-33c7-535f-8d13-191ee330c0fa" data-page-number="8" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-649ec9bc-faf9-5266-b0f7-8dae366d870c structure:canonical-goal-43673384-387a-51ea-9d04-6831b0ad7e2d" aria-labelledby="goal-ae3f50bf-33c7-535f-8d13-191ee330c0fa-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ae3f50bf-33c7-535f-8d13-191ee330c0fa-title"><a class="goal-self-link" href="#goal-ae3f50bf-33c7-535f-8d13-191ee330c0fa">Nachhaltige Nutzung planen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ae3f50bf-33c7-535f-8d13-191ee330c0fa</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-7e9134405c8f28a24a7375d3">Einfluss des Menschen auf Ökosysteme, Nachhaltigkeit, Biodiversität</a></li><li><a href="#chapter-b2f35d296339e4d6e62bfdd9">Einfluss des Menschen auf Ökosysteme, Nachhaltigkeit, Biodiversität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:43fb032759dd5de0772e8c768f5ef55448bec9bc8b3c384dda575ffcc413bc27" data-rendered-digest="sha256:fb13580c96e0e14707d1671a3ff0633b0b6f64f1020a88d0eb3cc90c5180dc2f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/ae3f50bf-33c7-535f-8d13-191ee330c0fa/ae3f50bf-33c7-535f-8d13-191ee330c0fa.png" alt="Eine Kulturlandschaft mit Wasser und Boden steht über drei leeren Planungsfeldern: Ziel, Maßnahme und Kontrolle; Zukunft bezeichnet die langfristige Perspektive.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ae3f50bf-33c7-535f-8d13-191ee330c0fa-description-heading">
+        <p class="section-heading" id="goal-ae3f50bf-33c7-535f-8d13-191ee330c0fa-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Konzepte nachhaltiger Ressourcennutzung erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ae3f50bf-33c7-535f-8d13-191ee330c0fa" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ae3f50bf-33c7-535f-8d13-191ee330c0fa-requires-heading">
+          <p class="section-heading" id="goal-ae3f50bf-33c7-535f-8d13-191ee330c0fa-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f"><span>Anthropogene Eingriffe analysieren</span><code>fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ae3f50bf-33c7-535f-8d13-191ee330c0fa-reverse-heading">
+          <p class="section-heading" id="goal-ae3f50bf-33c7-535f-8d13-191ee330c0fa-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-05ff76d0-5850-5984-9855-45e77f06a94e"><span>Biodiversität schützen</span><code>05ff76d0-5850-5984-9855-45e77f06a94e</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-ae3f50bf-33c7-535f-8d13-191ee330c0fa-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ae3f50bf-33c7-535f-8d13-191ee330c0fa-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-ae3f50bf-33c7-535f-8d13-191ee330c0fa-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ae3f50bf-33c7-535f-8d13-191ee330c0fa-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-52eda3e1-4d0c-5c41-b177-a749e068e5a7" rel="noreferrer noopener"><span>Wiedervernaessung eines Niedermoors</span> <code>52eda3e1-4d0c-5c41-b177-a749e068e5a7</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-68bb29c8-7ef2-5c0c-a072-0c7dfc87a76c" rel="noreferrer noopener"><span>Ökologischen Fußabdruck beurteilen</span> <code>68bb29c8-7ef2-5c0c-a072-0c7dfc87a76c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-71b21aef-796b-5506-a593-8d96b3d4b636" rel="noreferrer noopener"><span>Endokrine Umweltstoffe reflektieren</span> <code>71b21aef-796b-5506-a593-8d96b3d4b636</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ca6d4912-f4d2-5c57-86d9-70aa090cc32f" rel="noreferrer noopener"><span>Klimafolgen für Biodiversität</span> <code>ca6d4912-f4d2-5c57-86d9-70aa090cc32f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:79eeb3a9061e3f1e7d23ddd70ffdf3406efa83ff93b63d01c874d0a95c7db777</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=ae3f50bf-33c7-535f-8d13-191ee330c0fa&amp;goalFingerprint=sha256%3A79eeb3a9061e3f1e7d23ddd70ffdf3406efa83ff93b63d01c874d0a95c7db777&amp;pageFingerprint=sha256%3A5f5d03992a35eda1cc4c9b0eea520bbd40bf26a697c763f6bbe2eda43fe5b999&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-05ff76d0-5850-5984-9855-45e77f06a94e" data-goal-id="05ff76d0-5850-5984-9855-45e77f06a94e" data-page-number="9" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-649ec9bc-faf9-5266-b0f7-8dae366d870c structure:canonical-goal-43673384-387a-51ea-9d04-6831b0ad7e2d" aria-labelledby="goal-05ff76d0-5850-5984-9855-45e77f06a94e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-05ff76d0-5850-5984-9855-45e77f06a94e-title"><a class="goal-self-link" href="#goal-05ff76d0-5850-5984-9855-45e77f06a94e">Biodiversität schützen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>05ff76d0-5850-5984-9855-45e77f06a94e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-7e9134405c8f28a24a7375d3">Einfluss des Menschen auf Ökosysteme, Nachhaltigkeit, Biodiversität</a></li><li><a href="#chapter-b2f35d296339e4d6e62bfdd9">Einfluss des Menschen auf Ökosysteme, Nachhaltigkeit, Biodiversität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:bc97b24e40d5fbdc230e6ddbc09eaf9bfe1917731e7609374a76826bdb20ea45" data-rendered-digest="sha256:a67a3106db498b70f832f5f94a3418461ceb429c4d627c3f3b360ece95087507" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/05ff76d0-5850-5984-9855-45e77f06a94e/05ff76d0-5850-5984-9855-45e77f06a94e.png" alt="Erhalten und Verbinden von Lebensräumen wird mit beobachtenden Lernenden verbunden; das Heft ist zur schreibenden Person ausgerichtet.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-05ff76d0-5850-5984-9855-45e77f06a94e-description-heading">
+        <p class="section-heading" id="goal-05ff76d0-5850-5984-9855-45e77f06a94e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Bedeutung von Biodiversität und Schutzstrategien begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 2 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-05ff76d0-5850-5984-9855-45e77f06a94e" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-05ff76d0-5850-5984-9855-45e77f06a94e-requires-heading">
+          <p class="section-heading" id="goal-05ff76d0-5850-5984-9855-45e77f06a94e-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ae3f50bf-33c7-535f-8d13-191ee330c0fa"><span>Nachhaltige Nutzung planen</span><code>ae3f50bf-33c7-535f-8d13-191ee330c0fa</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-05ff76d0-5850-5984-9855-45e77f06a94e-reverse-heading">
+          <p class="section-heading" id="goal-05ff76d0-5850-5984-9855-45e77f06a94e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-05ff76d0-5850-5984-9855-45e77f06a94e-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-05ff76d0-5850-5984-9855-45e77f06a94e-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-05ff76d0-5850-5984-9855-45e77f06a94e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-05ff76d0-5850-5984-9855-45e77f06a94e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-52eda3e1-4d0c-5c41-b177-a749e068e5a7" rel="noreferrer noopener"><span>Wiedervernaessung eines Niedermoors</span> <code>52eda3e1-4d0c-5c41-b177-a749e068e5a7</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-25eaa5cf-e8f9-573d-8a53-8ae9d1cd02e2" rel="noreferrer noopener"><span>Ökosystemdienstleistungen bewerten</span> <code>25eaa5cf-e8f9-573d-8a53-8ae9d1cd02e2</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ce768cf8fb66338cb9838fdba5c3f229861a3c1bb84206d81f3d5c68cb1e4c24</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=05ff76d0-5850-5984-9855-45e77f06a94e&amp;goalFingerprint=sha256%3Ace768cf8fb66338cb9838fdba5c3f229861a3c1bb84206d81f3d5c68cb1e4c24&amp;pageFingerprint=sha256%3A355fc6e54a9a89174e8d1a71f56b0e0c121bc86cbeee762ae413dcaa9d865504&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-02cabf54-0b70-572c-b85a-7409e686a48e" data-goal-id="02cabf54-0b70-572c-b85a-7409e686a48e" data-page-number="10" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-649ec9bc-faf9-5266-b0f7-8dae366d870c structure:canonical-goal-a89ac355-a725-5b16-8915-8bbe411b3263" aria-labelledby="goal-02cabf54-0b70-572c-b85a-7409e686a48e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-02cabf54-0b70-572c-b85a-7409e686a48e-title"><a class="goal-self-link" href="#goal-02cabf54-0b70-572c-b85a-7409e686a48e">Artenvielfalt und Sukzession</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>02cabf54-0b70-572c-b85a-7409e686a48e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-7e9134405c8f28a24a7375d3">Einfluss des Menschen auf Ökosysteme, Nachhaltigkeit, Biodiversität</a></li><li><a href="#chapter-9de78327d3df9a96313e37cb">Q4.2 Dynamik von Lebensgemeinschaften</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:776d942459d40289c2c5e4c188d527066084cadd1ac32a0383f676c906af1516" data-rendered-digest="sha256:78c82b8df454f09914d95652279435b4a916d749a3f7c51892db6f91896d7d18" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/02cabf54-0b70-572c-b85a-7409e686a48e/02cabf54-0b70-572c-b85a-7409e686a48e.png" alt="Eine mögliche Sukzession führt von Kräutern über weitere Vegetation und Sträucher zu jungem Wald; eine Störung und erneuter Bewuchs sind gesondert dargestellt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-02cabf54-0b70-572c-b85a-7409e686a48e-description-heading">
+        <p class="section-heading" id="goal-02cabf54-0b70-572c-b85a-7409e686a48e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Wechselwirkungen zwischen Artenvielfalt und Sukzession erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. I · G9</li><li><strong>HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-02cabf54-0b70-572c-b85a-7409e686a48e" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-02cabf54-0b70-572c-b85a-7409e686a48e-requires-heading">
+          <p class="section-heading" id="goal-02cabf54-0b70-572c-b85a-7409e686a48e-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-02cabf54-0b70-572c-b85a-7409e686a48e-reverse-heading">
+          <p class="section-heading" id="goal-02cabf54-0b70-572c-b85a-7409e686a48e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-02cabf54-0b70-572c-b85a-7409e686a48e-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-02cabf54-0b70-572c-b85a-7409e686a48e-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-52d195f7-af13-570a-adc5-0eb27eaab6da" rel="noreferrer noopener"><span>Ökologische Modelle anwenden</span> <code>52d195f7-af13-570a-adc5-0eb27eaab6da</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-02cabf54-0b70-572c-b85a-7409e686a48e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-02cabf54-0b70-572c-b85a-7409e686a48e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2d7cae7358d5a1803b8ef331ba29f0d8950d9942f1cb57e8f9d4153d5b1504c3</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=02cabf54-0b70-572c-b85a-7409e686a48e&amp;goalFingerprint=sha256%3A2d7cae7358d5a1803b8ef331ba29f0d8950d9942f1cb57e8f9d4153d5b1504c3&amp;pageFingerprint=sha256%3Ad891a8731382e0b5d95eb130f6fe713693cbcf9ad104cac0ae795570c516740d&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e4791f8d-ea87-504b-979e-2f976e72e66d" data-goal-id="e4791f8d-ea87-504b-979e-2f976e72e66d" data-page-number="11" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-f2bb2b91-2fda-57b6-9f57-ba94b2758dd7" aria-labelledby="goal-e4791f8d-ea87-504b-979e-2f976e72e66d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e4791f8d-ea87-504b-979e-2f976e72e66d-title"><a class="goal-self-link" href="#goal-e4791f8d-ea87-504b-979e-2f976e72e66d">Verbreitung und Umweltfaktoren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e4791f8d-ea87-504b-979e-2f976e72e66d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-553df1b5b4fdb7b03f1a752c">Wirbeltiere, Angepasstheit und Tierhaltung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2adbd3d3511f215ddbc846674e412a2255829d08da108d9fb69c49842f3c14c5" data-rendered-digest="sha256:e34dda719c81d2bf68257921474649761ed211279ebf9064d845511c34735271" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/e4791f8d-ea87-504b-979e-2f976e72e66d/e4791f8d-ea87-504b-979e-2f976e72e66d.png" alt="Eine ausdrücklich schematische Landschaftskarte zeigt räumliche Eidechsenbeobachtungen; daneben stehen Sonnen- und Schattenplatz mit unterschiedlichen Temperaturen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e4791f8d-ea87-504b-979e-2f976e72e66d-description-heading">
+        <p class="section-heading" id="goal-e4791f8d-ea87-504b-979e-2f976e72e66d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Verbreitungskarten deuten und abiotische Faktoren berücksichtigen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE, NI, NW:</strong> Sek. I · G9</li><li><strong>SH:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-e4791f8d-ea87-504b-979e-2f976e72e66d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e4791f8d-ea87-504b-979e-2f976e72e66d-requires-heading">
+          <p class="section-heading" id="goal-e4791f8d-ea87-504b-979e-2f976e72e66d-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-e4791f8d-ea87-504b-979e-2f976e72e66d-reverse-heading">
+          <p class="section-heading" id="goal-e4791f8d-ea87-504b-979e-2f976e72e66d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e4791f8d-ea87-504b-979e-2f976e72e66d-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e4791f8d-ea87-504b-979e-2f976e72e66d-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-321ea315-37fe-5f9e-8fa8-dd631bb447c7" rel="noreferrer noopener"><span>Entwicklung und Vergleich</span> <code>321ea315-37fe-5f9e-8fa8-dd631bb447c7</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e4791f8d-ea87-504b-979e-2f976e72e66d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e4791f8d-ea87-504b-979e-2f976e72e66d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2f462b79-4ebc-5ab5-9e72-91135c5252c7" rel="noreferrer noopener"><span>Körpertemperatur regulieren</span> <code>2f462b79-4ebc-5ab5-9e72-91135c5252c7</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ad6489e3fc90a1506cc646d1067a5646ce51ba811b4777fccbb8250a46a8ac4d</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=e4791f8d-ea87-504b-979e-2f976e72e66d&amp;goalFingerprint=sha256%3Aad6489e3fc90a1506cc646d1067a5646ce51ba811b4777fccbb8250a46a8ac4d&amp;pageFingerprint=sha256%3Ade85f265477eef466ef1bbca921d95e69ef214d1d9d14b54d550d7b18aa1cb01&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ebf5730d-4e40-5d16-ae93-05106bcd2f70" data-goal-id="ebf5730d-4e40-5d16-ae93-05106bcd2f70" data-page-number="12" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-6411f627-1baa-5349-90af-ad7691d6bb65" aria-labelledby="goal-ebf5730d-4e40-5d16-ae93-05106bcd2f70-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ebf5730d-4e40-5d16-ae93-05106bcd2f70-title"><a class="goal-self-link" href="#goal-ebf5730d-4e40-5d16-ae93-05106bcd2f70">Lebensräume typisieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ebf5730d-4e40-5d16-ae93-05106bcd2f70</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9c72fb29a633e8ecb6aede34">Lebensräume, Ökologie und Artenschutz (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e5415b976e885eb0c36136a77a5d7d5bc57d6554f1dc6dc2dcb1f7c2c281b463" data-rendered-digest="sha256:35d62dd757f680fcb97543f0ea1832a2ffd939e1bb965f41d29ca9e77ef7c972" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/ebf5730d-4e40-5d16-ae93-05106bcd2f70/ebf5730d-4e40-5d16-ae93-05106bcd2f70.png" alt="Laubwald mit Kronen- und Bodenbereich neben einem Teich mit Ufer und Wasserfläche.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ebf5730d-4e40-5d16-ae93-05106bcd2f70-description-heading">
+        <p class="section-heading" id="goal-ebf5730d-4e40-5d16-ae93-05106bcd2f70-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Lebensräume typisieren und Teilbereiche unterscheiden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ebf5730d-4e40-5d16-ae93-05106bcd2f70" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ebf5730d-4e40-5d16-ae93-05106bcd2f70-requires-heading">
+          <p class="section-heading" id="goal-ebf5730d-4e40-5d16-ae93-05106bcd2f70-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-ebf5730d-4e40-5d16-ae93-05106bcd2f70-reverse-heading">
+          <p class="section-heading" id="goal-ebf5730d-4e40-5d16-ae93-05106bcd2f70-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-f95b3b49-dacd-5d17-be2d-98b404b709c3"><span>Typische Pflanzen und Tiere zuordnen</span><code>f95b3b49-dacd-5d17-be2d-98b404b709c3</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-8e7f50cb-bad6-5356-b142-b7d026b7f374"><span>Abiotische Faktoren messen</span><code>8e7f50cb-bad6-5356-b142-b7d026b7f374</code><span class="reference-page">S. 15</span></a></li><li><a href="#goal-0842054a-1d57-53b0-b0f1-9f10374d6699"><span>Boden als Biotop und Biozönose untersuchen</span><code>0842054a-1d57-53b0-b0f1-9f10374d6699</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-ebf5730d-4e40-5d16-ae93-05106bcd2f70-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ebf5730d-4e40-5d16-ae93-05106bcd2f70-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-860c80f9-e463-598b-8ef8-79f65c12f235" rel="noreferrer noopener"><span>Fotosynthese und Zellatmung (Sek I)</span> <code>860c80f9-e463-598b-8ef8-79f65c12f235</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a5b993096d8006d9ad545e278075639a9439c525423b5c8b394dfe9a71d70b6f</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=ebf5730d-4e40-5d16-ae93-05106bcd2f70&amp;goalFingerprint=sha256%3Aa5b993096d8006d9ad545e278075639a9439c525423b5c8b394dfe9a71d70b6f&amp;pageFingerprint=sha256%3A2212e2bba8dad1d02f9891448be08445c034a3f9db2fab51695c3b2c8ba2761c&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f95b3b49-dacd-5d17-be2d-98b404b709c3" data-goal-id="f95b3b49-dacd-5d17-be2d-98b404b709c3" data-page-number="13" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-6411f627-1baa-5349-90af-ad7691d6bb65" aria-labelledby="goal-f95b3b49-dacd-5d17-be2d-98b404b709c3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f95b3b49-dacd-5d17-be2d-98b404b709c3-title"><a class="goal-self-link" href="#goal-f95b3b49-dacd-5d17-be2d-98b404b709c3">Typische Pflanzen und Tiere zuordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f95b3b49-dacd-5d17-be2d-98b404b709c3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9c72fb29a633e8ecb6aede34">Lebensräume, Ökologie und Artenschutz (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:50b92d0b20b8d33718d2b8429f7159e55e4c645c5da3c484153621ca1ac940be" data-rendered-digest="sha256:851878da96f3ad87b379d4a591b18f71cc292b944b258022bafed13ec33dc498" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/f95b3b49-dacd-5d17-be2d-98b404b709c3/f95b3b49-dacd-5d17-be2d-98b404b709c3.png" alt="Große Merkmalskarten zeigen Eichenblatt und Eichel, Buchenblatt sowie eine Assel neben zwei beobachtenden Kindern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f95b3b49-dacd-5d17-be2d-98b404b709c3-description-heading">
+        <p class="section-heading" id="goal-f95b3b49-dacd-5d17-be2d-98b404b709c3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann typische Pflanzen und Tiere eines Waldes oder Gewässers bestimmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-f95b3b49-dacd-5d17-be2d-98b404b709c3" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f95b3b49-dacd-5d17-be2d-98b404b709c3-requires-heading">
+          <p class="section-heading" id="goal-f95b3b49-dacd-5d17-be2d-98b404b709c3-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ebf5730d-4e40-5d16-ae93-05106bcd2f70"><span>Lebensräume typisieren</span><code>ebf5730d-4e40-5d16-ae93-05106bcd2f70</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-f95b3b49-dacd-5d17-be2d-98b404b709c3-reverse-heading">
+          <p class="section-heading" id="goal-f95b3b49-dacd-5d17-be2d-98b404b709c3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-a8af382c-0410-5aef-8908-b72b2fb8a476"><span>Beziehungen im Oekosystem</span><code>a8af382c-0410-5aef-8908-b72b2fb8a476</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8824e9b4091e8090ecb9abcc0adee4ac4f979d3e6d517886313b640534e4d149</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=f95b3b49-dacd-5d17-be2d-98b404b709c3&amp;goalFingerprint=sha256%3A8824e9b4091e8090ecb9abcc0adee4ac4f979d3e6d517886313b640534e4d149&amp;pageFingerprint=sha256%3A412ced2da34fb1b4fae35e76054cff67c2d5d0957c9d5b2ea7a9e016d4c1df90&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a8af382c-0410-5aef-8908-b72b2fb8a476" data-goal-id="a8af382c-0410-5aef-8908-b72b2fb8a476" data-page-number="14" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-6411f627-1baa-5349-90af-ad7691d6bb65" aria-labelledby="goal-a8af382c-0410-5aef-8908-b72b2fb8a476-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a8af382c-0410-5aef-8908-b72b2fb8a476-title"><a class="goal-self-link" href="#goal-a8af382c-0410-5aef-8908-b72b2fb8a476">Beziehungen im Oekosystem</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a8af382c-0410-5aef-8908-b72b2fb8a476</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9c72fb29a633e8ecb6aede34">Lebensräume, Ökologie und Artenschutz (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1b776a1db1d9efbe8cc2bf95a3ce4571ae7264ff08539f6c2c2b11d8ac3a4552" data-rendered-digest="sha256:f53e163ad2fe8f1dbda7c5a4b38224f13e91172324392862cdb9a3165e4f754c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/a8af382c-0410-5aef-8908-b72b2fb8a476/a8af382c-0410-5aef-8908-b72b2fb8a476.png" alt="Ein Nahrungsnetz zeigt Blatt, Raupe, Meise und Waldkauz sowie Eichel, Waldmaus und Waldkauz; tote Streu führt zu Zersetzern. Die Pfeile zeigen von Nahrung zum Fresser.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a8af382c-0410-5aef-8908-b72b2fb8a476-description-heading">
+        <p class="section-heading" id="goal-a8af382c-0410-5aef-8908-b72b2fb8a476-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Nahrungsketten und -netze darstellen und Beziehungen zwischen Organismen beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-a8af382c-0410-5aef-8908-b72b2fb8a476" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a8af382c-0410-5aef-8908-b72b2fb8a476-requires-heading">
+          <p class="section-heading" id="goal-a8af382c-0410-5aef-8908-b72b2fb8a476-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-f95b3b49-dacd-5d17-be2d-98b404b709c3"><span>Typische Pflanzen und Tiere zuordnen</span><code>f95b3b49-dacd-5d17-be2d-98b404b709c3</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a8af382c-0410-5aef-8908-b72b2fb8a476-reverse-heading">
+          <p class="section-heading" id="goal-a8af382c-0410-5aef-8908-b72b2fb8a476-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-b6b82292-471b-577e-bff9-9e7951b0a642"><span>Biodiversität und Biotopschutz</span><code>b6b82292-471b-577e-bff9-9e7951b0a642</code><span class="reference-page">S. 16</span></a></li><li><a href="#goal-c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86"><span>Stoff- und Energiefluss im Boden darstellen</span><code>c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-a8af382c-0410-5aef-8908-b72b2fb8a476-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a8af382c-0410-5aef-8908-b72b2fb8a476-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-64569988-1fbe-5a0b-a685-3a7da99d0229" rel="noreferrer noopener"><span>Mundwerkzeuge von Insekten als Nahrungsanpassung vergleichen</span> <code>64569988-1fbe-5a0b-a685-3a7da99d0229</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3132034b4b95785120dc256ff61c09495002a1fc5524b2bfc22c125f51d05fa8</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=a8af382c-0410-5aef-8908-b72b2fb8a476&amp;goalFingerprint=sha256%3A3132034b4b95785120dc256ff61c09495002a1fc5524b2bfc22c125f51d05fa8&amp;pageFingerprint=sha256%3A0fce421378d5ccaeae51ce933b54b70d6232faeb27acc3d69c499a8cbd87c366&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8e7f50cb-bad6-5356-b142-b7d026b7f374" data-goal-id="8e7f50cb-bad6-5356-b142-b7d026b7f374" data-page-number="15" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-6411f627-1baa-5349-90af-ad7691d6bb65" aria-labelledby="goal-8e7f50cb-bad6-5356-b142-b7d026b7f374-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8e7f50cb-bad6-5356-b142-b7d026b7f374-title"><a class="goal-self-link" href="#goal-8e7f50cb-bad6-5356-b142-b7d026b7f374">Abiotische Faktoren messen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8e7f50cb-bad6-5356-b142-b7d026b7f374</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9c72fb29a633e8ecb6aede34">Lebensräume, Ökologie und Artenschutz (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4823297142b79a9118ca70912f7c410f3280a2cfd8f4f58c603cbb1138b0021e" data-rendered-digest="sha256:172d3263e39da6a500431580fcaae2213715d5c0f05c3e50f6ff8849e0f21a20" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/8e7f50cb-bad6-5356-b142-b7d026b7f374/8e7f50cb-bad6-5356-b142-b7d026b7f374.png" alt="Zwei Lernende vergleichen Schatten und Lichtung mit Temperatur-, Licht- und Feuchtemessung. Ein leeres Protokoll ist zur schreibenden Person ausgerichtet.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8e7f50cb-bad6-5356-b142-b7d026b7f374-description-heading">
+        <p class="section-heading" id="goal-8e7f50cb-bad6-5356-b142-b7d026b7f374-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann abiotische Faktoren erheben und deren Einfluss auf Lebewesen erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-8e7f50cb-bad6-5356-b142-b7d026b7f374" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8e7f50cb-bad6-5356-b142-b7d026b7f374-requires-heading">
+          <p class="section-heading" id="goal-8e7f50cb-bad6-5356-b142-b7d026b7f374-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ebf5730d-4e40-5d16-ae93-05106bcd2f70"><span>Lebensräume typisieren</span><code>ebf5730d-4e40-5d16-ae93-05106bcd2f70</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8e7f50cb-bad6-5356-b142-b7d026b7f374-reverse-heading">
+          <p class="section-heading" id="goal-8e7f50cb-bad6-5356-b142-b7d026b7f374-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-b6b82292-471b-577e-bff9-9e7951b0a642"><span>Biodiversität und Biotopschutz</span><code>b6b82292-471b-577e-bff9-9e7951b0a642</code><span class="reference-page">S. 16</span></a></li><li><a href="#goal-0842054a-1d57-53b0-b0f1-9f10374d6699"><span>Boden als Biotop und Biozönose untersuchen</span><code>0842054a-1d57-53b0-b0f1-9f10374d6699</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:90c835db806ea4c95267c778c0247ed73fbb1b2fdd935ac1efc8a7f90f793341</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=8e7f50cb-bad6-5356-b142-b7d026b7f374&amp;goalFingerprint=sha256%3A90c835db806ea4c95267c778c0247ed73fbb1b2fdd935ac1efc8a7f90f793341&amp;pageFingerprint=sha256%3Adc0276a83749474eb2e79901614cc649e1b61e46d752dbcbc9ca3061fc703f04&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b6b82292-471b-577e-bff9-9e7951b0a642" data-goal-id="b6b82292-471b-577e-bff9-9e7951b0a642" data-page-number="16" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-6411f627-1baa-5349-90af-ad7691d6bb65" aria-labelledby="goal-b6b82292-471b-577e-bff9-9e7951b0a642-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b6b82292-471b-577e-bff9-9e7951b0a642-title"><a class="goal-self-link" href="#goal-b6b82292-471b-577e-bff9-9e7951b0a642">Biodiversität und Biotopschutz</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b6b82292-471b-577e-bff9-9e7951b0a642</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9c72fb29a633e8ecb6aede34">Lebensräume, Ökologie und Artenschutz (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6d8ac66535dd21b4c13d68a8cb8ae43e1eceea110a7d7380662cf30c22ef1529" data-rendered-digest="sha256:86b7a2d8f9bd071cc5466d4bbac17f5d16c7cc75b057ead0578820f941e39ad1" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/b6b82292-471b-577e-bff9-9e7951b0a642/b6b82292-471b-577e-bff9-9e7951b0a642.png" alt="Eine kurz gemähte Fläche steht neben einem geschützten Blühstreifen und einem vielfältigen Rückzugsraum.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b6b82292-471b-577e-bff9-9e7951b0a642-description-heading">
+        <p class="section-heading" id="goal-b6b82292-471b-577e-bff9-9e7951b0a642-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Bedeutung von Artenvielfalt und Biotopschutz begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-b6b82292-471b-577e-bff9-9e7951b0a642" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b6b82292-471b-577e-bff9-9e7951b0a642-requires-heading">
+          <p class="section-heading" id="goal-b6b82292-471b-577e-bff9-9e7951b0a642-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a8af382c-0410-5aef-8908-b72b2fb8a476"><span>Beziehungen im Oekosystem</span><code>a8af382c-0410-5aef-8908-b72b2fb8a476</code><span class="reference-page">S. 14</span></a></li><li><a href="#goal-8e7f50cb-bad6-5356-b142-b7d026b7f374"><span>Abiotische Faktoren messen</span><code>8e7f50cb-bad6-5356-b142-b7d026b7f374</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-b6b82292-471b-577e-bff9-9e7951b0a642-reverse-heading">
+          <p class="section-heading" id="goal-b6b82292-471b-577e-bff9-9e7951b0a642-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-804d7449-c5b5-512f-8f55-a4a6746f678c"><span>Boden für nachhaltige Lebensmittelproduktion beurteilen</span><code>804d7449-c5b5-512f-8f55-a4a6746f678c</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2d980e400a7b480ccf4fa79b6422e755d54cf9edf9f343af60f5ffd4e16108b7</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=b6b82292-471b-577e-bff9-9e7951b0a642&amp;goalFingerprint=sha256%3A2d980e400a7b480ccf4fa79b6422e755d54cf9edf9f343af60f5ffd4e16108b7&amp;pageFingerprint=sha256%3A58d2c2be0a39f801a38b1198883f57319ff27f26078b597ac8c43e92b9e31793&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0842054a-1d57-53b0-b0f1-9f10374d6699" data-goal-id="0842054a-1d57-53b0-b0f1-9f10374d6699" data-page-number="17" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-6411f627-1baa-5349-90af-ad7691d6bb65" aria-labelledby="goal-0842054a-1d57-53b0-b0f1-9f10374d6699-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0842054a-1d57-53b0-b0f1-9f10374d6699-title"><a class="goal-self-link" href="#goal-0842054a-1d57-53b0-b0f1-9f10374d6699">Boden als Biotop und Biozönose untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0842054a-1d57-53b0-b0f1-9f10374d6699</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9c72fb29a633e8ecb6aede34">Lebensräume, Ökologie und Artenschutz (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:5cae70b41b156e80af9dccc6de49938662f5b6d136492413942c582eda97d9c7" data-rendered-digest="sha256:30c926b8c6af18b3b3ed39609f8cfe11b5c8549c4a2d155e6b4c11e2ce50e758" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/0842054a-1d57-53b0-b0f1-9f10374d6699/0842054a-1d57-53b0-b0f1-9f10374d6699.png" alt="Bodenprofil mit Streu, Oberboden und Unterboden, Bodenprobe, Regenwurm und Assel; ein leeres digitales Protokoll zeigt zur bedienenden Person.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0842054a-1d57-53b0-b0f1-9f10374d6699-description-heading">
+        <p class="section-heading" id="goal-0842054a-1d57-53b0-b0f1-9f10374d6699-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Boden untersuchen, Ergebnisse auch digital protokollieren und daraus Biotop und Biozönose des Bodens erschließen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY, NI:</strong> Sek. I · G9</li><li><strong>HB:</strong> Sek. I · G8</li><li><strong>RP, SH:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0842054a-1d57-53b0-b0f1-9f10374d6699" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0842054a-1d57-53b0-b0f1-9f10374d6699-requires-heading">
+          <p class="section-heading" id="goal-0842054a-1d57-53b0-b0f1-9f10374d6699-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ebf5730d-4e40-5d16-ae93-05106bcd2f70"><span>Lebensräume typisieren</span><code>ebf5730d-4e40-5d16-ae93-05106bcd2f70</code><span class="reference-page">S. 12</span></a></li><li><a href="#goal-8e7f50cb-bad6-5356-b142-b7d026b7f374"><span>Abiotische Faktoren messen</span><code>8e7f50cb-bad6-5356-b142-b7d026b7f374</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-0842054a-1d57-53b0-b0f1-9f10374d6699-reverse-heading">
+          <p class="section-heading" id="goal-0842054a-1d57-53b0-b0f1-9f10374d6699-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86"><span>Stoff- und Energiefluss im Boden darstellen</span><code>c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:43debccd4744f2a8904a8eabc321290df91afefeafba919172b94cfc499a75ba</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=0842054a-1d57-53b0-b0f1-9f10374d6699&amp;goalFingerprint=sha256%3A43debccd4744f2a8904a8eabc321290df91afefeafba919172b94cfc499a75ba&amp;pageFingerprint=sha256%3A14088859e3ebc6ecd04130d399f85f45cfb3d22adc64203f4f2157eb164e1cd9&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86" data-goal-id="c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86" data-page-number="18" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-6411f627-1baa-5349-90af-ad7691d6bb65" aria-labelledby="goal-c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86-title"><a class="goal-self-link" href="#goal-c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86">Stoff- und Energiefluss im Boden darstellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9c72fb29a633e8ecb6aede34">Lebensräume, Ökologie und Artenschutz (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:17d0e3b538edb7e7c8ccdbbebb1e7aa967ae8df87162d14c58773b69dcd8277d" data-rendered-digest="sha256:92dfdf2d38bdbc7146d209dd21263e14d90c81d8dff538a71a387431df07ecfc" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86/c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86.png" alt="Streu und Zersetzer führen zu Humus und gelösten Mineralsalzen im Bodenwasser, die eine Pflanzenwurzel aufnimmt; Sonnenenergie und Wärme werden getrennt dargestellt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86-description-heading">
+        <p class="section-heading" id="goal-c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Stoff- und Energiefluss innerhalb der Bodenbiozönose darstellen und Humusbildung sowie Mineralisierung als zeitliche Veränderung beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY, NI:</strong> Sek. I · G9</li><li><strong>HB:</strong> Sek. I · G8</li><li><strong>RP, SH:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86-requires-heading">
+          <p class="section-heading" id="goal-c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a8af382c-0410-5aef-8908-b72b2fb8a476"><span>Beziehungen im Oekosystem</span><code>a8af382c-0410-5aef-8908-b72b2fb8a476</code><span class="reference-page">S. 14</span></a></li><li><a href="#goal-0842054a-1d57-53b0-b0f1-9f10374d6699"><span>Boden als Biotop und Biozönose untersuchen</span><code>0842054a-1d57-53b0-b0f1-9f10374d6699</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86-reverse-heading">
+          <p class="section-heading" id="goal-c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-d8d365e0-8561-546d-b004-c72202ad460e"><span>Kohlenstoffkreislauf im Bodenökosystem darstellen</span><code>d8d365e0-8561-546d-b004-c72202ad460e</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:47e83424c76cc6151b2c1d29ff6149649cf5f6fccba9336b1f892363964342fa</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86&amp;goalFingerprint=sha256%3A47e83424c76cc6151b2c1d29ff6149649cf5f6fccba9336b1f892363964342fa&amp;pageFingerprint=sha256%3A26328b215306d66bbe0b005c69bba36a72c7d2acef46b608100103600b89f6c4&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d8d365e0-8561-546d-b004-c72202ad460e" data-goal-id="d8d365e0-8561-546d-b004-c72202ad460e" data-page-number="19" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-6411f627-1baa-5349-90af-ad7691d6bb65" aria-labelledby="goal-d8d365e0-8561-546d-b004-c72202ad460e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d8d365e0-8561-546d-b004-c72202ad460e-title"><a class="goal-self-link" href="#goal-d8d365e0-8561-546d-b004-c72202ad460e">Kohlenstoffkreislauf im Bodenökosystem darstellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d8d365e0-8561-546d-b004-c72202ad460e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9c72fb29a633e8ecb6aede34">Lebensräume, Ökologie und Artenschutz (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:546658e47e739605262538dfb02edf2d8976e442241f7b36481654f1ae4811f6" data-rendered-digest="sha256:4bc39d89c31b4ce8b018e604959fd34ccb02707a927ea21d58c1705fe83f9746" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/d8d365e0-8561-546d-b004-c72202ad460e/d8d365e0-8561-546d-b004-c72202ad460e.png" alt="C-Markierungen verfolgen Kohlenstoff von CO₂ über Pflanze und tote Streu zu Bodentieren, Zersetzern und Boden. Zellatmung von Pflanze und Zersetzern führt zurück zu CO₂.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d8d365e0-8561-546d-b004-c72202ad460e-description-heading">
+        <p class="section-heading" id="goal-d8d365e0-8561-546d-b004-c72202ad460e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann einen einfachen Kohlenstoffatomkreislauf als Wechselwirkung zwischen Organismen und unbelebter Materie darstellen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY, NI:</strong> Sek. I · G9</li><li><strong>HB:</strong> Sek. I · G8</li><li><strong>SH:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-d8d365e0-8561-546d-b004-c72202ad460e" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d8d365e0-8561-546d-b004-c72202ad460e-requires-heading">
+          <p class="section-heading" id="goal-d8d365e0-8561-546d-b004-c72202ad460e-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86"><span>Stoff- und Energiefluss im Boden darstellen</span><code>c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-d8d365e0-8561-546d-b004-c72202ad460e-reverse-heading">
+          <p class="section-heading" id="goal-d8d365e0-8561-546d-b004-c72202ad460e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-804d7449-c5b5-512f-8f55-a4a6746f678c"><span>Boden für nachhaltige Lebensmittelproduktion beurteilen</span><code>804d7449-c5b5-512f-8f55-a4a6746f678c</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 19 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4b3b6955da109fadbc29b5da11d72bde8cd589fc1bea67573b7db5636d5796d1</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=d8d365e0-8561-546d-b004-c72202ad460e&amp;goalFingerprint=sha256%3A4b3b6955da109fadbc29b5da11d72bde8cd589fc1bea67573b7db5636d5796d1&amp;pageFingerprint=sha256%3A241e1ee782ae20b7079e77946d90632f2d147eb0e8042338921cbf5557eb4b09&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-804d7449-c5b5-512f-8f55-a4a6746f678c" data-goal-id="804d7449-c5b5-512f-8f55-a4a6746f678c" data-page-number="20" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-6411f627-1baa-5349-90af-ad7691d6bb65" aria-labelledby="goal-804d7449-c5b5-512f-8f55-a4a6746f678c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-804d7449-c5b5-512f-8f55-a4a6746f678c-title"><a class="goal-self-link" href="#goal-804d7449-c5b5-512f-8f55-a4a6746f678c">Boden für nachhaltige Lebensmittelproduktion beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>804d7449-c5b5-512f-8f55-a4a6746f678c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9c72fb29a633e8ecb6aede34">Lebensräume, Ökologie und Artenschutz (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a08801c17a047264ddf65c91b8a2fdd62e470cd608c1fc69dac2e5e2a351b473" data-rendered-digest="sha256:7443e46a5c66aee47c11e6ca3f31de02660c83532063c0735947865b0009951b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/804d7449-c5b5-512f-8f55-a4a6746f678c/804d7449-c5b5-512f-8f55-a4a6746f678c.png" alt="Unbedeckter Boden mit Wasserabfluss und Erosion wird mit bewachsenem Boden und Versickerung verglichen; eine Waage verbindet Boden, Ertrag und Zukunft.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-804d7449-c5b5-512f-8f55-a4a6746f678c-description-heading">
+        <p class="section-heading" id="goal-804d7449-c5b5-512f-8f55-a4a6746f678c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Bedeutung des Bodens für nachhaltige Lebensmittelproduktion beurteilen und Gefahren für das Bodenökosystem durch verkettete menschliche Einflüsse charakterisieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY, NI:</strong> Sek. I · G9</li><li><strong>HB:</strong> Sek. I · G8</li><li><strong>SH:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-804d7449-c5b5-512f-8f55-a4a6746f678c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-804d7449-c5b5-512f-8f55-a4a6746f678c-requires-heading">
+          <p class="section-heading" id="goal-804d7449-c5b5-512f-8f55-a4a6746f678c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-b6b82292-471b-577e-bff9-9e7951b0a642"><span>Biodiversität und Biotopschutz</span><code>b6b82292-471b-577e-bff9-9e7951b0a642</code><span class="reference-page">S. 16</span></a></li><li><a href="#goal-d8d365e0-8561-546d-b004-c72202ad460e"><span>Kohlenstoffkreislauf im Bodenökosystem darstellen</span><code>d8d365e0-8561-546d-b004-c72202ad460e</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-804d7449-c5b5-512f-8f55-a4a6746f678c-reverse-heading">
+          <p class="section-heading" id="goal-804d7449-c5b5-512f-8f55-a4a6746f678c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 20 von 20</span>
+      <span>Buch-Digest <code>sha256:8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f13d51fd5b469b07708fc816e1958f3e980ed3f63b026c68e0d6c4a0ad2b5de4</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-ecology20-current391-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=804d7449-c5b5-512f-8f55-a4a6746f678c&amp;goalFingerprint=sha256%3Af13d51fd5b469b07708fc816e1958f3e980ed3f63b026c68e0d6c4a0ad2b5de4&amp;pageFingerprint=sha256%3A0398cce78345b588d68f0ae8d7c97a802288b135f43d4c4f2cca858aa5f2eba9&amp;bookDigest=sha256%3A8ffb5396897ce1be6020df522ce9377cefbe00e6a7e29cbef27bd393c90371f2&amp;page=20" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

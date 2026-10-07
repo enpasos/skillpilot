@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-current-sealed-paired-technical-20261007-v1-four",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-plus-d2cc-reviewed-integration-preparation-technical-20261007-v1/native-d-four.batch.config.json",
+  "configDigest": "sha256:f55f925aa367e0c7cb7f707583cac9f7f28f9efcf43286fe0550f100129d473a",
+  "goalIds": [
+    "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+    "f0939f88-a6af-5334-ac4d-5d54732af25a",
+    "28bb9d15-f865-5843-a035-6066580fea64",
+    "1c1420c2-a8e2-520f-8015-6df637a973bd"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 378,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-plus-d2cc-reviewed-integration-preparation-technical-20261007-v1/native-full378.inert.book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-plus-d2cc-reviewed-integration-preparation-technical-20261007-v1/candidate/canonical.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:2dbcadc40ee5ba3eabe91e1b6d0537d83647dba391f7ca68fa863f16e3164f11"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:db674f96563f342117cef38ecc336aa975ddc840918af153a39b8238b7727bea",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:96094e14ef135b42a2caa604c73480a1626d1c78d995e588c64656e90a8efa1c",
+    "reviewInputFingerprint": "sha256:2b58bb92c4666d96189d183424b6c8772237031dc1cca37e12a883885a5b6fcc",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-four-current-technical-lineage-a-20261007-v1",
+        "campaignDigest": "sha256:534ca40af2481e1f4ad50440d14c97371f32ac86edd0248bd28bf98019b030b8",
+        "roundId": "chemie-four-current-source-science-a-derived-20261007-v1",
+        "independenceGroupId": "chemie-four-current-sealed-origin-a-technical-20261007-v1",
+        "batchId": "chemie-four-current-source-science-a-derived-20261007-v1.batch-001",
+        "batchInputFingerprint": "sha256:8ffadf1a290b10b26eba00bd6acaec13f0f6363d211bfc9c385c2d42ad038566"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-four-current-technical-lineage-b-20261007-v1",
+        "campaignDigest": "sha256:99f65db2db9a588e268aae75172d2e4a178238d0bbfb4bde2feb6de4707e34b6",
+        "roundId": "chemie-four-current-source-science-b-derived-20261007-v1",
+        "independenceGroupId": "chemie-four-current-sealed-origin-b-technical-20261007-v1",
+        "batchId": "chemie-four-current-source-science-b-derived-20261007-v1.batch-001",
+        "batchInputFingerprint": "sha256:e85260842b2b34e56058da61cb642e83b3d2e3897e315275d06cd32d8526263b"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

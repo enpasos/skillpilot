@@ -1,0 +1,11 @@
+{
+  "role": "Retained actual final-freeze preparation assertion failure",
+  "actualExitCode": 1,
+  "file": "first-independent-a-scientific-findings-partial.actual.json",
+  "actualPayloadSha256": "162645f83120c87019db7d5f25de0e837aff7cbc434bfcdd22e473167d0cc41d",
+  "incorrectlyComparedSealManifestSha256": "12fc2a7584c73f6a949261851f495b8d6ed3814f011466527c114918a700832e",
+  "cause": "Earlier reported immutable seal digests identify freeze manifests, not their contained payload files",
+  "correction": "Verify each original freeze-manifest digest and then every contained exact payload digest separately",
+  "historicalBytesChanged": false,
+  "humanApproval": false
+}

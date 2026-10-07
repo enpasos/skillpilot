@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-current-sealed-paired-technical-20261007-v1-context-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex technical integrator; Root-delegated factual sealed A/B KEEP synthesis, no new scientific reviewer",
+  "synthesizedAt": "2026-10-07T11:42:20.278Z",
+  "batch": {
+    "batchId": "chemie-current-sealed-paired-technical-20261007-v1-context",
+    "batchManifestDigest": "sha256:b9ecebfccb3fc631c733e66b39d21307a9c119d5342d30ad0512b33fa7a984b4",
+    "configDigest": "sha256:b105e1dc0cd69e3767a51e7517acbfd936a8dbe84b5eb2e4b36c76c7b7029be5",
+    "bundleFingerprint": "sha256:b283e1de2e27a0cee7bc52ed284851a77509de7f64bdc250ab95a16275d7f73b",
+    "bookDigest": "sha256:ce35f95e7dd07a5eaeaf5c1939f03c086e2a8b4dd97250f6f8387893ad41f78c",
+    "reviewInputFingerprint": "sha256:b26fd5ef6fd1c9eb78ca5e74f8f9213016c9cdc3228081903878815d59fca151",
+    "dualSummaryDigest": "sha256:5363a2095150b58a7f92a1d0091a03dbafda67752e82ab9f5e3bc84e8348ca2a",
+    "canonicalLandscapeDigest": "sha256:f86209b8f750c0b576b63f34d19fb91458f2a35d6e183a8429a023e1dec53a84"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-d2cc-memory-context-campaign-a-20261007-v1",
+      "campaignDigest": "sha256:2c2863e172e850abac731ff8cb1780a119f0604d79a3a75e563d8f68dea9111d",
+      "roundId": "chemie-d2cc-memory-context-independent-a-20261007-v1",
+      "independenceGroupId": "chemie-d2cc-memory-context-independent-a-20261007-v1",
+      "reviewInputFingerprint": "sha256:b26fd5ef6fd1c9eb78ca5e74f8f9213016c9cdc3228081903878815d59fca151",
+      "batchId": "chemie-d2cc-memory-context-independent-a-20261007-v1.batch-001",
+      "batchInputFingerprint": "sha256:002139cb933920d193ccf4aa9331536802eaef717b67467090b6a704cc716a38",
+      "runId": "chemie-d2cc-memory-context-independent-a-20261007-v1.run-001",
+      "runManifestDigest": "sha256:7b23071eff873e0fd1aae8afb6eb49a038213a69c683c86b8c215b2553e4160d",
+      "resultsDigest": "sha256:267b3bcaaccb584e9342218aa3092d058ffb89ce01f88c21a126ad4b9673f595"
+    },
+    "second": {
+      "campaignId": "chemie-d2cc-memory-context-campaign-b-20261007-v1",
+      "campaignDigest": "sha256:d8a4c9d79450c59874bb76f8d925d960925709410c8e32f571ef87b9ddeaa27e",
+      "roundId": "chemie-d2cc-memory-context-independent-b-20261007-v1",
+      "independenceGroupId": "chemie-d2cc-memory-context-independent-b-20261007-v1",
+      "reviewInputFingerprint": "sha256:b26fd5ef6fd1c9eb78ca5e74f8f9213016c9cdc3228081903878815d59fca151",
+      "batchId": "chemie-d2cc-memory-context-independent-b-20261007-v1.batch-001",
+      "batchInputFingerprint": "sha256:7431397a5d76a8807cf5708b522a9c812405a1e7d085c2bce722903e1bfdcc4e",
+      "runId": "chemie-d2cc-memory-context-independent-b-20261007-v1.run-001",
+      "runManifestDigest": "sha256:deaf4ae56c83ae3516e3115946ac779620ad14e3655e25261a467b1440c8e319",
+      "resultsDigest": "sha256:19df7ffe54c7ef2603182e89114bc30a75c5188fc56ccb7249eb4429fcfb1cae"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-current-sealed-paired-technical-20261007-v1-context-decision-d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ac9de7e503ad973109172b3c35acf3a6a29c588d2262d6a4b6eeaa436561dda3",
+      "pageFingerprint": "sha256:49c3619edd75442687e618974e5db3ad97a59fbdb5992e296a188481dd810173",
+      "goalReviewContextFingerprint": "sha256:1f0a9559b05852b0ed02553bb77efc042e62265b61b8331afdd023b81971f8dd",
+      "finalText": {
+        "titleDe": "Saure, alkalische und neutrale Lösungen unterscheiden",
+        "titleEn": "Distinguish acidic, alkaline, and neutral solutions",
+        "descriptionDe": "Die lernende Person kann saure, neutrale und alkalische Lösungen in geeigneten Schulversuchen anhand der Farbskala des jeweils verwendeten Indikators unterscheiden und die Ergebnisse groben pH-Bereichen zuordnen.",
+        "descriptionEn": "The learner can distinguish acidic, neutral and alkaline solutions in suitable school experiments using the colour scale for the indicator used and assign the results to broad pH ranges."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-d2cc-memory-context-independent-a-20261007-v1.run-001.d2cc",
+          "recordDigest": "sha256:f908bf7ddf300334bb4559809db853fa551ec208aa7ef53a9494fe21ef7d5b57"
+        },
+        "second": {
+          "recordId": "chemie-d2cc-memory-context-independent-b-20261007-v1.record-d2ccd1d5-56f7-583f-9724-e97441367f91",
+          "recordDigest": "sha256:db46c72e8adb2e571a77e8417f8d64cb91c9a1bc85029dd6a42d3ace29a3e699"
+        }
+      },
+      "rationaleDe": "Technische Zusammenführung echter versiegelter unabhängiger A/B KEEP-Urteile. Vierziele: Originalgood9e/28 mit unveränderten JPEGs und frisch korrigierte f093/1c PNGs mit eigenen unabhängigen A/B; aktuelles Vierzielbuch nur interne/externe Linkdarstellung und aus tatsächlichen Urteilen abgeleiteter AI-QA-Zustand. Kontextfall: neue tatsächliche d2cc Reverse-Memory-Seite mit eigenem gezieltem A/B. Explizite Provenienz im D4-provenance-segments bzw. exact-scientific-campaign-lineage. Keine neue blinde Wissenschaftsgeneration, kein anderer Provider-/Modellnachweis, keine menschliche Freigabe oder strenger Nettozuwachs. A: Gezielter aktueller Seiten-/Kontextpass: Der einzige semantisch neue Verweis nennt das Memory-Ziel 417e65ec korrekt als direkt aufbauendes Ziel. Dieses Ziel requires d2cc, während d2cc weiterhin allein die Lösungen-Grundlage voraussetzt. Tatsächliche PDF-Seite 3, vollständige DE/EN-Texte und neutraler Memory-Kontext wurden gelesen; die Seite zeigt den neuen Link ohne Überlagerung. Im vollständigen Buch ändern sich ausschließlich externalReverseRequires und pageFingerprint. Im nativen Einzielbuch sind bestehende Links erwartungsgemäß extern. Unveränderte Quellen, P-Körper und Bildsubstanz erhalten hier keinen neuen fachlichen Review; ihre bisherige Bewertung benötigt exakte Integrationsbindungen. Details und Scope-Grenzen: first-scientific-pass.md. B: Eigenständiger erster B-Pass ausschließlich zur neu hinzugefügten umgekehrten Voraussetzung d2cc→Memory417e; keine Peerurteile gelesen. Die wirkliche PDF-Seite3 und das unveränderte tatsächliche PNG wurden angesehen. Das Memory-Ziel ist auf der Seite korrekt unter direkt aufbauenden Zielen außerhalb dieses Buchs ausgewiesen: Sein requires enthält d2cc, während d2cc weiterhin nur Löslichkeit voraussetzt und nicht das Memory-Ziel. Die grundlegende Beobachtungs-/Indikator-Einordnung kann sinnvolles didaktisches Vorwissen für die spätere ausgewählte Namen/Formel-Wiederholung sein, ohne selbst diese Recallleistung zu verlangen oder sie durch Farbzuordnung zu beweisen. DE/EN, Zielkompetenz, schulische grobe pH-Kategorien und Bildfunktion bleiben unverändert; die neue Beziehung erzeugt weder eine Rückwärts-Masterybehauptung noch eine Inhalts-Erweiterung oder einen Zyklus. KEEP für diesen Zusatzkontext. Bestehende P-, Asset- und Primärquellenentscheidungen bleiben außerhalb der erneuten fachlichen Prüfung; none bedeutet hier kein P-Änderungsbedarf aus der allein geprüften Kontextänderung und keine neue P-Körperfreigabe. Keine ganze Bundesland-/Quellenabdeckung, menschliche Freigabe oder neue M7-Komplettierung.",
+      "rationaleEn": "Technical synthesis of genuine sealed independent A/B KEEP judgments. Original good9e/28 and fresh corrected imagef093/1c science remain separate source segments. Current native four-page context only converts internal/external references and reflects exact judged AI QA state. The d2cc context has its own actual targeted A/B. No new blind scientific generation, provider/model diversity, human approval or strict gain. A: Classification follows the colour scale of the indicator actually used and concerns broad pH ranges. Recalling substance names and formulas is a subsequent, separate memory competence. B: An indicator colour is interpreted using the scale of the indicator actually used to classify a school sample as acidic, neutral or alkaline and assign a broad pH range. Colour alone identifies neither an acid nor its formula; another indicator can give the same colour a different meaning."
+    }
+  ],
+  "manifestFingerprint": "sha256:d6e8a50dcd8d0631d10c22358ba1ae732be42f370299003ae984a0c0b31df6d2"
+}

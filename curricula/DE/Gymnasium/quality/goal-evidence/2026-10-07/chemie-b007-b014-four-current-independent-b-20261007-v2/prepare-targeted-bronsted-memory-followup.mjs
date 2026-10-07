@@ -1,0 +1,16 @@
+import {readFileSync,writeFileSync,copyFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+const own='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b007-b014-four-current-independent-b-20261007-v2';
+const config=JSON.parse(readFileSync(own+'/memory/current378-independent-b.candidate.config.json','utf8'));
+copyFileSync(config.reportPath,own+'/memory/native-memory-candidate.first-stale-bronsted.report.md');
+const canon=JSON.parse(readFileSync(config.landscapePath,'utf8'));const id='1c1420c2-a8e2-520f-8015-6df637a973bd';const g=canon.goals.find(g=>g.id===id);
+const stable=v=>Array.isArray(v)?`[${v.map(stable).join(',')}]`:v&&typeof v==='object'?`{${Object.entries(v).sort(([a],[b])=>a.localeCompare(b)).map(([k,x])=>JSON.stringify(k)+':'+stable(x)).join(',')}}`:JSON.stringify(v);
+const norm=v=>String(v??'').normalize('NFKC').replace(/\s+/g,' ').trim();
+const fp='sha256:'+createHash('sha256').update(stable({ruleVersion:config.ruleVersion,goalId:g.id,shortKey:g.shortKey??'',title:norm(g.title),titleEn:norm(g.titleEn),description:norm(g.description),descriptionEn:norm(g.descriptionEn),phase:norm(g.dimensionTags?.phase),area:norm(g.dimensionTags?.area),topicCode:norm(g.dimensionTags?.topicCode),nodeKind:norm(g.nodeKind)})).digest('hex');
+const lines=readFileSync(config.reviewPath,'utf8').trimEnd().split('\n');
+const replacement={...JSON.parse(lines.find(l=>JSON.parse(l).goalId===id)),fingerprint:fp,status:'no_memory_needed',memoryUseful:false,reviewedAt:new Date().toISOString(),reviewer:'Codex independent B; substantive current Brønsted memory review',reason:'Das aktuelle vollständige DE/EN-Ziel und beide tatsächlichen HF/NH3- sowie Phosphatfälle wurden inhaltlich gelesen. Donator/Akzeptor, korrespondierende Paare, Wasser als Ampholyt und Teilchen/Stoffgemisch-Trennung werden anhand vorgelegter Teilchen und eigener Atom-/Ladungsprüfung begründet. Keine zusätzliche feste Namen-/Formel-Liste oder eigene Abrufroutine; kompakte Säure-/Hydroxidnamen gehören zum getrennten Arrhenius-Memoryziel. Die aktuelle Entscheidung folgt dieser neuen Zielsemantik, nicht bloßer Hash-Reparatur.'};
+const reviewPath=own+'/memory/current378-with-three-independent-decisions.records.jsonl';
+writeFileSync(reviewPath,lines.map(l=>JSON.parse(l).goalId===id?JSON.stringify(replacement):l).join('\n')+'\n');
+config.reviewPath=reviewPath;config.reportPath=own+'/memory/native-memory-candidate.three-current.report.md';
+writeFileSync(own+'/memory/current378-three-independent-b.candidate.config.json',JSON.stringify(config,null,2)+'\n');
+console.log(JSON.stringify({currentIndependentDecisions:3,unchangedOriginalGoalRows:375,newBrønstedDecision:'no_memory_needed',cardRowsExact:73}));

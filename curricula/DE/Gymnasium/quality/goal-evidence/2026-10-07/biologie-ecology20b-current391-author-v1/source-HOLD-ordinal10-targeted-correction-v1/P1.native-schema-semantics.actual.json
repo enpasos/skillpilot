@@ -1,0 +1,39 @@
+{
+  "runs": [
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/source-HOLD-ordinal10-targeted-correction-v1/P1.still-source-HOLD.author.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/source-HOLD-ordinal10-targeted-correction-v1/P1.still-source-HOLD.author.candidate.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/source-HOLD-ordinal10-targeted-correction-v1/materialize-valid.stdout.actual.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/source-HOLD-ordinal10-targeted-correction-v1/materialize-valid.stderr.actual.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/source-HOLD-ordinal10-targeted-correction-v1/P1.still-source-HOLD.author.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/source-HOLD-ordinal10-targeted-correction-v1/nativecheck.stdout.actual.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/source-HOLD-ordinal10-targeted-correction-v1/nativecheck.stderr.actual.txt"
+    }
+  ],
+  "prevalidationRejectedUppercaseReviewId": true,
+  "reviewIdNormalizedToExistingNativeContract": true,
+  "noContractOrValidatorChange": true,
+  "stillSourceHOLD": true,
+  "commonTwelveUnchanged": true,
+  "independentScientificRecheckPending": true,
+  "strictGainClaimed": 0,
+  "activeWrites": 0
+}

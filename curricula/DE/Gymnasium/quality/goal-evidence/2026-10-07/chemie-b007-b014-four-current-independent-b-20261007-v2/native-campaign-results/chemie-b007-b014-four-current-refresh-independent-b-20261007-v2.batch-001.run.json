@@ -1,0 +1,85 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-b007-b014-four-current-blind-b-native-20261007-v4",
+  "campaignId": "chemie-b007-b014-four-current-refresh-campaign-b-20261007-v4",
+  "roundId": "chemie-b007-b014-four-current-refresh-independent-b-20261007-v2",
+  "batchId": "chemie-b007-b014-four-current-refresh-independent-b-20261007-v2.batch-001",
+  "batchInputFingerprint": "sha256:848ac0e3d88d0aa5e3bd5ad096792917d66cdd2e3a0a9428416a03879cb4606b",
+  "bundleFingerprint": "sha256:62aa3d7eee6eb1143d8b85d46fba75724a4e8710b12b87ecffd33fb253934368",
+  "bookDigest": "sha256:b030d4642b1d8357d0389df43c4f7a68bde927da56c710922afd1d1ce6e747ba",
+  "provider": "OpenAI",
+  "model": "GPT-6 (Codex session; exact model version not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:0e3b32cd459cdd8cdfe18fc78fd544fea6e281f4181317fc4d7c0059624120e1",
+  "independenceGroupId": "chemie-b007-b014-four-current-refresh-independent-b-20261007-v2",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+    "f0939f88-a6af-5334-ac4d-5d54732af25a",
+    "28bb9d15-f865-5843-a035-6066580fea64",
+    "1c1420c2-a8e2-520f-8015-6df637a973bd"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:6899bd3a6ab9ebc26ec37a96774aa82e93704d9cbf65fd83323f4679407b597e"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:92ab9af9b84e9f3ec22e6df3275a63e80481a53a52101130f5e757863726d5c5"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:052b3ab093bbcd02a73f9db8ee787cbea09505e46402015165a49301ada6db33"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:890d5fe6e60dcacfcf23e3a3135a70c72889fa1bef7d88dfb3b99ab11a21c884"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:96112571b200536c46e5aecd813de6c753e022c1e59de9cfc7d3607bc3f74538"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:51de05f25e3933860bca07fd477b2670ff5e2f9807089ec5bbe084681fc18a60"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:62af84c8914f53cbe6ae343ae01c11e64dd1922c0fae304face6c8532204f85e"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:97f634b53aa0430fe2ea46efbbeec3acd8cbec194d4d808c208e005f40780f3a"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:848ac0e3d88d0aa5e3bd5ad096792917d66cdd2e3a0a9428416a03879cb4606b"
+    }
+  ],
+  "startedAt": "2026-10-07T10:39:59.113579+00:00",
+  "completedAt": "2026-10-07T10:45:50.313272+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:75a239f45ce52ee9b2b6e147758741cf8f3c271b6eeaf32d9e5af7010c0f2e83",
+  "toolchainVersion": "codex-native-independent-review-v1"
+}

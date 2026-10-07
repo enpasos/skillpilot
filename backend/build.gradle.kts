@@ -69,6 +69,9 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    // Each Spring test context retains the current curriculum and publication models.
+    // Bound their retained count within the test JVM's existing heap budget.
+    systemProperty("spring.test.context.cache.maxSize", "4")
     // Keep CI failure details actionable even when the JUnit report is unavailable.
     testLogging {
         events("failed")

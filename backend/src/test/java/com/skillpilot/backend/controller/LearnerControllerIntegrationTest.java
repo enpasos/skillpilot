@@ -1485,7 +1485,7 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BW", "81", "81" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BW", "82", "82" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BY", "129", "129" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HB", "97", "97" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HE", "129", "129" },
@@ -1562,14 +1562,18 @@ public class LearnerControllerIntegrationTest {
                 { "Informatik", CANONICAL_INFORMATICS_ID, "DE-BE", "25", "25" },
                 { "Informatik", CANONICAL_INFORMATICS_ID, "DE-BW", "4", "4" },
                 { "Informatik", CANONICAL_INFORMATICS_ID, "DE-BY", "34", "34" },
-                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-HH", "21", "21" },
+                // Current reviewed Memory-origin applicability adds the database
+                // node in HH/NI/NW/RP/SN and the formal-language node in SH.
+                // Native before/after target-set evidence is retained in the
+                // 2026-10-07 Memory Sek-I projection count follow-up dossier.
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-HH", "22", "22" },
                 { "Informatik", CANONICAL_INFORMATICS_ID, "DE-MV", "24", "24" },
-                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-NI", "21", "21" },
-                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-NW", "19", "19" },
-                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-RP", "17", "17" },
-                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-SH", "26", "26" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-NI", "22", "22" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-NW", "20", "20" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-RP", "18", "18" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-SH", "27", "27" },
                 { "Informatik", CANONICAL_INFORMATICS_ID, "DE-SL", "28", "28" },
-                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-SN", "28", "28" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-SN", "29", "29" },
                 { "Informatik", CANONICAL_INFORMATICS_ID, "DE-ST", "21", "21" },
                 { "Informatik", CANONICAL_INFORMATICS_ID, "DE-TH", "23", "23" },
                 { "Latein", CANONICAL_LATIN_ID, "DE-BB", "28", "28" },

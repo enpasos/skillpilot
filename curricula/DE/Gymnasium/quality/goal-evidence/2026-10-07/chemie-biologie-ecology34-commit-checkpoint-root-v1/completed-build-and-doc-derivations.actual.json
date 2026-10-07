@@ -1,0 +1,59 @@
+{
+  "artifactKind": "terminal-application-books-artifact-and-doc-derivation-checks",
+  "checks": [
+    {
+      "check": "application-and-four-book-publication",
+      "command": "npm --prefix app run build:application",
+      "actualTerminalExitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-application-build-after-atlas.actual.log.txt",
+      "logSha256": "sha256:9a8eb27b8487c8381d48537447089ec4cbb33184beee82149470e3834d505f19"
+    },
+    {
+      "check": "frontend-shell-current-native",
+      "command": "npm --prefix app run check:frontend-shell-assets",
+      "actualTerminalExitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-frontend-shell-current-native.actual.log.txt",
+      "logSha256": "sha256:c916dec6d8aa49ced2cb5eced42f6ba7fb81c54bc09e9f5485088cffb0de79e4"
+    },
+    {
+      "check": "ai-transparency-current-artifact",
+      "command": "npm --prefix app run check:ai-transparency-artifact",
+      "actualTerminalExitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-ai-transparency-current-native.actual.log.txt",
+      "logSha256": "sha256:751db094434901b505a8f1538b44edc6248f53d8ffe653f9672c8078cf4fc9c4"
+    },
+    {
+      "check": "docs-indexes",
+      "command": "npm --prefix app run check:docs-indexes",
+      "actualTerminalExitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-docs-indexes.actual.log.txt",
+      "logSha256": "sha256:2ba0d2aa99b03ea9fd1b2f717a2ad5dfae44e11d2fbb85e8d14551f368c1efe0"
+    },
+    {
+      "check": "generated-doc-notices",
+      "command": "npm --prefix app run check:generated-doc-notices",
+      "actualTerminalExitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-generated-doc-notices.actual.log.txt",
+      "logSha256": "sha256:3bfdd39084a64fb75e29a5e2167fc208a168898cfa24bd491b5e8978fc24122d"
+    },
+    {
+      "check": "generated-status-registry-after-native-regeneration",
+      "command": "npm --prefix app run check:generated-status-registry",
+      "actualTerminalExitCode": 0,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-generated-status-registry-after-regeneration.actual.log.txt",
+      "logSha256": "sha256:b9d70d7acf26466f4103877c96568903885fd8497ad661b72e597be4de75c626"
+    }
+  ],
+  "applicationBuildObservedTerminalSession": 48418,
+  "rebuiltCurrentBooks": [
+    "chemie",
+    "biologie"
+  ],
+  "historicalUnchangedBooksReusedAfterExactNativeInputOutputHashChecks": [
+    "mathematik",
+    "physik"
+  ],
+  "freshFullBackendSuiteClaim": false,
+  "runtimeDeployment": false,
+  "publicationOperation": false
+}

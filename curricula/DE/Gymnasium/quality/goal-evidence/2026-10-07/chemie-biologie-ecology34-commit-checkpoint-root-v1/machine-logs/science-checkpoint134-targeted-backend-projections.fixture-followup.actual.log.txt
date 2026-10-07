@@ -1,0 +1,74 @@
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/home/enpasos/.gradle/wrapper/dists/gradle-9.7.1-bin/1w1c7tv4s851m17nbqdsro2tv/gradle-9.7.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :compileJava UP-TO-DATE
+> Task :generateClaudePluginPublication UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :compileTestJava
+> Task :processTestResources UP-TO-DATE
+> Task :testClasses
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+> Task :test
+
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by net.bytebuddy.dynamic.loading.ClassInjector$UsingUnsafe$Dispatcher$CreationAction (file:/home/enpasos/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy/1.18.11/8fcc3779ff85fae5164cd1b977798ca1af388e06/byte-buddy-1.18.11.jar)
+WARNING: Please consider reporting this to the maintainers of class net.bytebuddy.dynamic.loading.ClassInjector$UsingUnsafe$Dispatcher$CreationAction
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+2026-10-07T18:55:17.550+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2026-10-07T18:55:17.550+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.server.servlet.context.AnnotationConfigServletWebServerApplicationContext@16a35bd, started on Wed Oct 07 18:48:54 CEST 2026
+2026-10-07T18:55:17.554+02:00  INFO 169405 --- [skillpilot-backend] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-07T18:55:17.560+02:00  INFO 169405 --- [skillpilot-backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-07T18:55:17.569+02:00  INFO 169405 --- [skillpilot-backend] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-07T18:55:17.570+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists chat_session cascade 
+Hibernate: drop table if exists chat_session cascade 
+2026-10-07T18:55:17.571+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists chat_start_code cascade 
+Hibernate: drop table if exists chat_start_code cascade 
+2026-10-07T18:55:17.571+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists claude_binding_grant cascade 
+Hibernate: drop table if exists claude_binding_grant cascade 
+2026-10-07T18:55:17.572+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists claude_connection cascade 
+Hibernate: drop table if exists claude_connection cascade 
+2026-10-07T18:55:17.572+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists claude_pending_launch cascade 
+Hibernate: drop table if exists claude_pending_launch cascade 
+2026-10-07T18:55:17.572+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists curriculum_champion cascade 
+Hibernate: drop table if exists curriculum_champion cascade 
+2026-10-07T18:55:17.573+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists goal_feedback_export_batch cascade 
+Hibernate: drop table if exists goal_feedback_export_batch cascade 
+2026-10-07T18:55:17.573+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists goal_feedback_submission cascade 
+Hibernate: drop table if exists goal_feedback_submission cascade 
+2026-10-07T18:55:17.573+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner cascade 
+Hibernate: drop table if exists learner cascade 
+2026-10-07T18:55:17.574+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_client_state cascade 
+Hibernate: drop table if exists learner_client_state cascade 
+2026-10-07T18:55:17.574+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_copy_sources cascade 
+Hibernate: drop table if exists learner_copy_sources cascade 
+2026-10-07T18:55:17.575+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_goal_completion cascade 
+Hibernate: drop table if exists learner_goal_completion cascade 
+2026-10-07T18:55:17.575+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_learning_plan cascade 
+Hibernate: drop table if exists learner_learning_plan cascade 
+2026-10-07T18:55:17.575+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists mastery cascade 
+Hibernate: drop table if exists mastery cascade 
+2026-10-07T18:55:17.575+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_binding_grant cascade 
+Hibernate: drop table if exists openai_de_binding_grant cascade 
+2026-10-07T18:55:17.576+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_connection cascade 
+Hibernate: drop table if exists openai_de_connection cascade 
+2026-10-07T18:55:17.576+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_idempotency cascade 
+Hibernate: drop table if exists openai_de_idempotency cascade 
+2026-10-07T18:55:17.577+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_learning_session cascade 
+Hibernate: drop table if exists openai_de_learning_session cascade 
+2026-10-07T18:55:17.577+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_pending_launch cascade 
+Hibernate: drop table if exists openai_de_pending_launch cascade 
+2026-10-07T18:55:17.578+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_session_migration cascade 
+Hibernate: drop table if exists openai_de_session_migration cascade 
+2026-10-07T18:55:17.578+02:00 DEBUG 169405 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists planned_goal cascade 
+Hibernate: drop table if exists planned_goal cascade 
+2026-10-07T18:55:17.582+02:00  INFO 169405 --- [skillpilot-backend] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-07T18:55:17.584+02:00  INFO 169405 --- [skillpilot-backend] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+BUILD SUCCESSFUL in 6m 46s
+6 actionable tasks: 2 executed, 4 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html

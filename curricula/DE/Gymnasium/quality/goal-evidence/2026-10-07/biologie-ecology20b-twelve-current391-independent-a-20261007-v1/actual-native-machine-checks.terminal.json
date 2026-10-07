@@ -1,0 +1,47 @@
+{
+  "artifactKind": "actual-independent-a-targeted-machine-checks",
+  "actualD": {
+    "command": "npx --prefix app tsx app/scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle <author/round-a/review-bundle-manifest.json> --input <author/round-a/description-review-input.json> --campaign <author/round-a/description-review-campaign.json> --batches-dir <author/round-a/batches> --results-dir <own/native-results>",
+    "exitCode": 0,
+    "stdout": "Goal-description review campaign results valid: 12\n",
+    "capturedFromActualToolOutput": true
+  },
+  "otherActualNativeResults": [
+    {
+      "label": "PV",
+      "cmd": "npx --prefix app tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-twelve-current391-independent-a-20261007-v1/check-own-final-PV-native.mts",
+      "actual": {
+        "chunk_id": "66c163",
+        "wall_time_seconds": 0.839645466,
+        "exit_code": 0,
+        "original_token_count": 351,
+        "output": "{\"role\":\"Independent A actual native closed-schema/semantic P and current-image V validation after own complete scientific and page review\",\"records\":12,\"completeBilingualCommonCasePairs\":24,\"conditionalBYEAExtensions\":1,\"closedV2ProfileSchemaErrors\":0,\"nativePositiveSemanticsErrors\":0,\"exactUnchangedAuthorV3ProfilePayloads\":true,\"allV3ProfileBodiesUnchangedFromActualRasterV1\":true,\"allActualMaterialsExactFirstOwnScienceInputs\":true,\"actualPNGDigestsBound\":12,\"sourceAndCandidateImageBytesEqual\":12,\"nativeVisualizationApprovalCurrent\":12,\"actualWidthCapturesBound\":24,\"actualNativePageCapturesBound\":12,\"actualPublicAssetCLIStillPendingIntegration\":true,\"reviewAuthority\":\"ai_candidate\",\"status\":\"needs_human_review\",\"evidenceLevel\":\"E1\",\"maximumClaimScope\":\"G1\",\"realLearnerPerformance\":false,\"humanApproval\":false,\"activeWrites\":0,\"strictGainClaimed\":0,\"inputs\":[{\"path\":\"curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-twelve-current391-independent-a-20261007-v1/P12.actual-raster-independent-a.review.jsonl\",\"sha256\":\"sha256:f5c8bff00bae81f82259a5b04446f3653765bc9ec0851f2a9f4cf1ff231fbe25\"},{\"path\":\"curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-twelve-current391-independent-a-20261007-v1/V12.actual-raster-widths-pages-independent-a.final.json\",\"sha256\":\"sha256:9635f34df85d3d752ecdc1fa007dc29d1324b89fc55b8b41bdcf63dbf94520f8\"}]}\n"
+      }
+    },
+    {
+      "label": "A",
+      "cmd": "npx --prefix app tsx app/scripts/semanticAtomicityReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-twelve-current391-independent-a-20261007-v1/A12.final-raster-binding.config.json --mode=check",
+      "actual": {
+        "chunk_id": "bb3fb7",
+        "wall_time_seconds": 0.467375448,
+        "exit_code": 0,
+        "original_token_count": 91,
+        "output": "# Semantic Atomicity Review: canonical-biology-full\nScope: Twelve unchanged goals; exact retained A/M decisions and final raster binding check\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 12\nCurrent reviewed atomic: 12\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n"
+      }
+    },
+    {
+      "label": "M",
+      "cmd": "npx --prefix app tsx app/scripts/memoryCardReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-twelve-current391-independent-a-20261007-v1/M12.final-raster-binding.config.json --mode=check",
+      "actual": {
+        "chunk_id": "110e36",
+        "wall_time_seconds": 0.482868118,
+        "exit_code": 0,
+        "original_token_count": 200,
+        "output": "# Memory Card Review: canonical-biology-full\nScope: Twelve unchanged goals; exact retained A/M decisions and final raster binding check\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 12\nCurrent no-memory decisions: 12\nCurrent memory-required decisions: 0\nCurrent needs developer review: 0\nMemory goals in scope: 0\nTraced memory goals: 0\nKnown deck IDs: 3\nDeck files: 6\nCard rows: 54\nPrimary cards in scope: 0\nKept primary cards: 0\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 0\nComposition visibility scopes: 8\nMemory-required goals checked in views: 0\nMemory-required goals without visible memory node: 0\n"
+      }
+    }
+  ],
+  "activeWrites": 0,
+  "strictGainClaimed": 0,
+  "humanApproval": false
+}

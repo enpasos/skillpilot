@@ -1,0 +1,11 @@
+# Independent first B pass: only d2cc memory reverse context
+
+Decision: **keep**. Scientific pass sealed before any peer verdict was read.
+
+The sole full-book semantic delta adds Memory417e to d2cc external reverse prerequisites. It is a successor/support goal whose requires points to d2cc. d2cc does not gain Memory417e as a prerequisite. The basic experimental distinction supplies meaningful acid/alkaline/neutral context for later bounded name/formula recall while retaining an independent supplied-scale classification competence. Indicator observations do not identify a chemical species/formula and do not establish recall mastery. The two tasks stay distinct. Mastering the dependent Memory goal cannot infer mastery of unmastered prerequisites. The added edge is directional and does not form a cycle in the supplied relation.
+
+The complete neutral d2cc DE/EN text was read to check that the contextual addition did not widen it. The actual physical PDFpage3 was freshly rendered from the real bound PDF, visually inspected and text-extracted. It places the new support under directly building external goals with the correct title and ID. The unchanged actual primary PNG was viewed and its canonical/frontend/backend bytes matched the existing bound digest. The broad school pH labels and supplied-indicator caveat remain consistent with the stated classification competence. This is a current-context inspection of the same image, not a new V approval.
+
+No P-case, deck-card or primary-source history was rerun or reapproved. The native record's none profile recommendation means no change requested to the retained P from this isolated context addition, not a claim of a fresh full P review. No full country/source/placement approval, learner performance, Human Approval or Trial is claimed. Strict gain0. No active writes.
+
+Binding: the native one-goal page fingerprint is49c3619e..., while the full-book delta after fingerprint is86992d15...; they have different page/navigation/internal-external link contexts. The genuine round B record copies the scoped frozen native input49c3619e... exactly, not the full-book digest. Original A/B campaignId, roundId and independenceGroupId are each different. Both native actual inputs match; only A metadata was read for independence checking. No A or other reviewer output was read.

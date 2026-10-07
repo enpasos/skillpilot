@@ -1,0 +1,53 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-four-current-technical-lineage-b-20261007-v1.run-001",
+  "campaignId": "chemie-four-current-technical-lineage-b-20261007-v1",
+  "roundId": "chemie-four-current-source-science-b-derived-20261007-v1",
+  "batchId": "chemie-four-current-source-science-b-derived-20261007-v1.batch-001",
+  "batchInputFingerprint": "sha256:e85260842b2b34e56058da61cb642e83b3d2e3897e315275d06cd32d8526263b",
+  "bundleFingerprint": "sha256:96094e14ef135b42a2caa604c73480a1626d1c78d995e588c64656e90a8efa1c",
+  "bookDigest": "sha256:db674f96563f342117cef38ecc336aa975ddc840918af153a39b8238b7727bea",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex; technical source-lineage materialization, no new sampling",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:963794849a9d78a4bc5f9516c39e20218a4dd918c470c3067f44e8679231891f",
+  "independenceGroupId": "chemie-four-current-sealed-origin-b-technical-20261007-v1",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+    "f0939f88-a6af-5334-ac4d-5d54732af25a",
+    "28bb9d15-f865-5843-a035-6066580fea64",
+    "1c1420c2-a8e2-520f-8015-6df637a973bd"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:b9529c7ef6931c3148456eb5010a8f5fc1ab3c321bd6ac48fb9c519ff54ec90c"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:c552d6f8be8b5700aba7a0f337274b6286b166a1ffbbcea179366e3918a39b6c"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e85260842b2b34e56058da61cb642e83b3d2e3897e315275d06cd32d8526263b"
+    }
+  ],
+  "startedAt": "2026-10-07T10:39:59.113Z",
+  "completedAt": "2026-10-07T11:17:52.588Z",
+  "status": "completed",
+  "outputDigest": "sha256:f6736e7276e920d33a03267b4657f14e5d8c0cf7f2759780c9c7bdc6333ca375",
+  "toolchainVersion": "technical-sealed-science-source-lineage-v1"
+}

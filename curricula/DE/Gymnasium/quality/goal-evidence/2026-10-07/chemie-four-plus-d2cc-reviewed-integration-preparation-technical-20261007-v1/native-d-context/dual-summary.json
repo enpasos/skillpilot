@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:b283e1de2e27a0cee7bc52ed284851a77509de7f64bdc250ab95a16275d7f73b",
+  "reviewInputFingerprint": "sha256:b26fd5ef6fd1c9eb78ca5e74f8f9213016c9cdc3228081903878815d59fca151",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-d2cc-memory-context-campaign-a-20261007-v1",
+      "roundId": "chemie-d2cc-memory-context-independent-a-20261007-v1",
+      "independenceGroupId": "chemie-d2cc-memory-context-independent-a-20261007-v1",
+      "runIds": [
+        "chemie-d2cc-memory-context-independent-a-20261007-v1.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex; session-exposed agent identity::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-d2cc-memory-context-campaign-b-20261007-v1",
+      "roundId": "chemie-d2cc-memory-context-independent-b-20261007-v1",
+      "independenceGroupId": "chemie-d2cc-memory-context-independent-b-20261007-v1",
+      "runIds": [
+        "chemie-d2cc-memory-context-independent-b-20261007-v1.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex runtime identity)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "firstRecordId": "chemie-d2cc-memory-context-independent-a-20261007-v1.run-001.d2cc",
+      "secondRecordId": "chemie-d2cc-memory-context-independent-b-20261007-v1.record-d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "firstRunId": "chemie-d2cc-memory-context-independent-a-20261007-v1.run-001",
+      "secondRunId": "chemie-d2cc-memory-context-independent-b-20261007-v1.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

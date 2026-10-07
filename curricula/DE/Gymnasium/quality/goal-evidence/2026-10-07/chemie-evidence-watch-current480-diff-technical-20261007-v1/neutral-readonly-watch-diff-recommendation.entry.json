@@ -1,0 +1,39 @@
+{
+  "role": "Readonly recommendation for genuine reviewed-change technical synchronization; native baseline capture has not been executed",
+  "actualStructuralDiff": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-evidence-watch-current480-diff-technical-20261007-v1/actual-whole479-to480-canonical-field-diff-and-watch-effect.json",
+    "sha256": "ab09ca3a38bff43c8b603734fa6f05a90df0ce9c258524e198b229bd4fff79ce",
+    "bytes": 28465
+  },
+  "actualVerifiedExistingReviewLineage": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-evidence-watch-current480-diff-technical-20261007-v1/actual-existing-independent-review-and-native-binding-lineage.verification.json",
+    "sha256": "0dfb47f944588a89218128c0bf7d0a74c1ce1e793fcabfd8b6fcd94a60c15682",
+    "bytes": 10872
+  },
+  "oldWatchBaselineExactImmutableSnapshot": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-evidence-watch-current480-diff-technical-20261007-v1/before/chemistry-evidence-watch-baseline-20261007-093006.exact.json.bin",
+    "sha256": "d7a1601c71a692d1d077198f4ce4063a627cf1e11429f14b5cb17876a0570bae",
+    "bytes": 44499
+  },
+  "nativeHashModeUnchanged": "canonical-evidence-json-v1",
+  "actualWatchChangedPaths": [
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json"
+  ],
+  "actualWatchAddedPaths": [],
+  "actualWatchRemovedPaths": [],
+  "actualUnchangedWatchedPaths": 145,
+  "recommendedAction": "After retaining this immutable old baseline and passing the Root stable-integration gates, run existing native capture-baseline then render-delta/render-status and check-delta. This synchronizes already reviewed canonical changes; it is not a subject-matter review, gate lowering or M7 gain.",
+  "existingNativeCommands": [
+    "python scripts/canonical_chemistry_evidence_watch.py capture-baseline",
+    "python scripts/canonical_chemistry_evidence_watch.py render-delta",
+    "python scripts/canonical_chemistry_evidence_watch.py render-status",
+    "python scripts/canonical_chemistry_evidence_watch.py self-test",
+    "python scripts/canonical_chemistry_evidence_watch.py check-delta"
+  ],
+  "newScientificContentOrReviewsIntroduced": false,
+  "pendingM7SourceOrCandidateHoldsStillOpen": true,
+  "activeBaselineChangedHere": false,
+  "activeWrites": 0,
+  "strictGainClaimed": 0,
+  "humanApproval": false
+}

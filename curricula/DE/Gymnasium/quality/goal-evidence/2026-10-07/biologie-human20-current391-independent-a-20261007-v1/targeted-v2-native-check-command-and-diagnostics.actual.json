@@ -1,0 +1,31 @@
+{
+  "role": "Actual independent A technical command execution and diagnostics; no independent science substituted by hashes",
+  "actualSuccessfulCommand": "./node_modules/.bin/tsx scripts/positiveGoalEvidenceReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-human20-current391-author-v1/science-correction-v2/P20.current-text-preimage.author-targeted-v2.config.json --mode=check",
+  "actualCwd": "app",
+  "actualExitCode": 0,
+  "stdout": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-human20-current391-independent-a-20261007-v1/P20-science-v2-preimage-native-independent-a.actual.log",
+    "sha256": "f0694fe3a99450c86b70c584e56b13015040dea38ccefaa3fa1baac9da8bc5ad",
+    "bytes": 330
+  },
+  "stderr": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-human20-current391-independent-a-20261007-v1/P20-science-v2-preimage-native-independent-a.actual.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "earlierReadOnlyAttempts": [
+    {
+      "attempt": "Read four whole neutral materials and native candidate profiles",
+      "actualError": "KeyError: 4 after first complete material read; candidate top-level object has goals array, corrected reader selected goals and reread the whole four inputs",
+      "contentChangesMade": 0
+    },
+    {
+      "attempt": "Native P config argument initially used ../curricula prefix from app",
+      "actualExitCode": 1,
+      "actualError": "Configured path must stay inside the repository",
+      "resolution": "Use repository-relative config argument as required by native parser; no config or gate content change"
+    }
+  ],
+  "activeWrites": 0,
+  "humanApproval": false
+}

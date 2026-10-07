@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-10-07T09:30:55.994Z
+Generated: 2026-10-07T16:17:48.984Z
 Rules version: curriculum-quality-v5
 
 ## Summary
@@ -16,20 +16,20 @@ Rules version: curriculum-quality-v5
 | --- | ---: |
 | Curricula | 21 |
 | M0 | 11 |
-| M1 | 1 |
+| M1 | 0 |
 | M2 | 1 |
 | M3 | 0 |
 | M4 | 0 |
 | M5 | 0 |
-| M6 | 6 |
+| M6 | 7 |
 | M7 | 2 |
 
 ## Curricula
 
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Biologie (Gymnasium, DE) | M1 | 473 | 420 | 17/22 | 11/16 | 1 | 2 | 2 |
-| Chemie (Gymnasium, DE) | M6 | 479 | 409 | 32/32 | 16/16 | 1 | 1 | 0 |
+| Biologie (Gymnasium, DE) | M6 | 474 | 421 | 17/22 | 16/16 | 1 | 1 | 0 |
+| Chemie (Gymnasium, DE) | M6 | 480 | 410 | 32/32 | 16/16 | 1 | 1 | 0 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Deutsch (Gymnasium, DE) | M6 | 354 | 291 | 31/31 | 16/16 | 1 | 0 | 0 |
 | Englisch (Gymnasium, DE) | M0 | 130 | 104 | 2/2 | 2/16 | 0 | 2 | 0 |
@@ -48,7 +48,7 @@ Rules version: curriculum-quality-v5
 | Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Spanisch (Gymnasium, DE) | M0 | 83 | 59 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Tschechisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 1 | 1 |
-| Wirtschaftswissenschaften (Gymnasium, DE) | M2 | 370 | 333 | 30/30 | 16/16 | 1 | 1 | 1 |
+| Wirtschaftswissenschaften (Gymnasium, DE) | M2 | 370 | 333 | 30/30 | 16/16 | 1 | 2 | 1 |
 
 ## Mapping Pipeline
 
@@ -366,8 +366,8 @@ Rules version: curriculum-quality-v5
 
 | Curriculum | Complete | DE source-view atoms | Raw atoms | Source-backed states | Extracted source goals | Registered source originals | Fully covered originals | Unregistered source goals | Extracted source atoms | Unregistered source atoms | Unsupported assignments | Unmapped source atoms | Partial | Error | Max source-backed view coverage |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Biologie (Gymnasium, DE) | 11/16 | 393 | 420 | 16 | 685 | 685 | 685 | 0 | 685 | 0 | 5 | 0 | 0 | 5 | 364 (100%) |
-| Chemie (Gymnasium, DE) | 16/16 | 338 | 409 | 16 | 5865 | 5865 | 5865 | 0 | 5865 | 0 | 0 | 0 | 0 | 0 | 336 (100%) |
+| Biologie (Gymnasium, DE) | 16/16 | 393 | 421 | 16 | 685 | 685 | 685 | 0 | 685 | 0 | 0 | 0 | 0 | 0 | 364 (100%) |
+| Chemie (Gymnasium, DE) | 16/16 | 338 | 410 | 16 | 5865 | 5865 | 5865 | 0 | 5865 | 0 | 0 | 0 | 0 | 0 | 336 (100%) |
 | Chinesisch (Gymnasium, DE) | 2/16 | 170 | 181 | 2 | 399 | 399 | 399 | 0 | 399 | 0 | 0 | 0 | 0 | 0 | 170 (100%) |
 | Deutsch (Gymnasium, DE) | 16/16 | 268 | 291 | 16 | 6222 | 6222 | 6222 | 0 | 6222 | 0 | 0 | 0 | 0 | 0 | 268 (100%) |
 | Englisch (Gymnasium, DE) | 2/16 | 89 | 104 | 2 | 103 | 103 | 103 | 0 | 103 | 0 | 0 | 0 | 0 | 0 | 89 (100%) |

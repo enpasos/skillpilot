@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "nativeChecks": {
+    "docs-indexes": {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-indexes"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-07T16:46:31.147423+00:00",
+      "finishedAt": "2026-10-07T16:46:33.174182+00:00",
+      "exitCode": 0,
+      "logPath": "/home/enpasos/projects/skillpilot/tmp/ci-repair-20261007/science-checkpoint134-docs-indexes.actual.log",
+      "logSha256": "2ba0d2aa99b03ea9fd1b2f717a2ad5dfae44e11d2fbb85e8d14551f368c1efe0",
+      "writes": 0,
+      "docsLinksCheckRun": false
+    },
+    "generated-doc-notices": {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-doc-notices"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-07T16:46:32.200728+00:00",
+      "finishedAt": "2026-10-07T16:46:33.283106+00:00",
+      "exitCode": 0,
+      "logPath": "/home/enpasos/projects/skillpilot/tmp/ci-repair-20261007/science-checkpoint134-generated-doc-notices.actual.log",
+      "logSha256": "3bfdd39084a64fb75e29a5e2167fc208a168898cfa24bd491b5e8978fc24122d",
+      "writes": 0,
+      "docsLinksCheckRun": false
+    },
+    "generated-status-registry-after-regeneration": {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-status-registry"
+      ],
+      "startedAt": "2026-10-07T16:47:48.893625+00:00",
+      "finishedAt": "2026-10-07T16:47:49.631793+00:00",
+      "exitCode": 0,
+      "logPath": "/home/enpasos/projects/skillpilot/tmp/ci-repair-20261007/science-checkpoint134-generated-status-registry-after-regeneration.actual.log",
+      "logSha256": "b9d70d7acf26466f4103877c96568903885fd8497ad661b72e597be4de75c626"
+    }
+  },
+  "initialRegistryFailure": {
+    "exitCode": 1,
+    "cause": "Generated README had stale centrally registered current chemistry Memory report path",
+    "nativeRemediationCommand": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "docs:generated-status-registry"
+    ],
+    "generatedFile": "docs/qa-ci/status/README.md",
+    "changedTableRows": 1,
+    "generatedNoticeHeaderUnchanged": true,
+    "generatedReadmeSha256": "4ee5f4e1bb3f9dc8e81f7f7eab878c29875135f5bd7ba6fd64dbb2d6f0ddcda3"
+  },
+  "artifactPreservationProof": "tmp/ci-repair-20261007/science-checkpoint134-provider-artifact-preservation.actual.json",
+  "artifactPreservationProofSha256": "c6b5e7dc394db39e584ffaf9b5bb3660534f3cbbaac03150b924b246d23768bb",
+  "generatedBookIgnoreProof": "tmp/ci-repair-20261007/science-checkpoint134-generated-goal-books-git-ignore.actual.json",
+  "generatedBookIgnoreProofSha256": "d85b250ccef571854548c2ca0f50d62f2f622be4a7097f06d7c2b887f0030821",
+  "runtimeAssetPreparationRerun": false,
+  "buildRun": false,
+  "docsLinksCheckRun": false,
+  "sourceCodeChanges": 0,
+  "newScientificCompletions": 0,
+  "humanApproval": false
+}

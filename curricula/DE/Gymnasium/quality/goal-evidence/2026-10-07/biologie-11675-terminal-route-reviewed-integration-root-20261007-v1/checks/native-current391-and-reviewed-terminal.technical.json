@@ -1,0 +1,151 @@
+{
+  "seals": {
+    "author": {
+      "seal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-11675-terminal-route-author-20261007-v1/author-terminal-and-one-context.inputs.freeze.json",
+        "sha256": "sha256:ff4237cb0020129b3a45872ade989072b4a8f4e10b12c140d47046e886d04c46",
+        "bytes": 12170
+      },
+      "verifiedFiles": 61
+    },
+    "A": {
+      "seal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-11675-terminal-route-independent-a-root-20261007-v1/independent-a.final.freeze.json",
+        "sha256": "sha256:46043a12b6e69d922a1f420495f3fa9dbc3b0d8b2014e385ff4b4d85bada64ed",
+        "bytes": 2045
+      },
+      "verifiedFiles": 6
+    },
+    "B": {
+      "seal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-11675-terminal-route-independent-b-20261007-v1/final-terminal-review.independent-b.seal.json",
+        "sha256": "sha256:3e1a61a09ca9069fe5742481079e57717cf9a9fca90f65a5c65952399108c91b",
+        "bytes": 3369
+      },
+      "verifiedFiles": 10
+    },
+    "currentB": {
+      "seal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-11675-terminal-route-independent-b-20261007-v1/current-context-followup/current-context.independent-b.final.seal.json",
+        "sha256": "sha256:a262aa3a3030e894bae1c566f9b7941b53f6c2d1976e5cf4b2f19706c17b91cf",
+        "bytes": 3630
+      },
+      "verifiedFiles": 22
+    }
+  },
+  "canonical": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-11675-terminal-route-reviewed-integration-root-20261007-v1/candidate/canonical.future-active.json",
+    "sha256": "sha256:c6f4ca7d5b8ba2bd48acd85d635aed29505a5691e4b62a713c5bec8cf7675ac8",
+    "bytes": 1059906
+  },
+  "schemaPASS": true,
+  "wholeGoals": 474,
+  "curricularAtomic": 391,
+  "all391PagesExactAuthorReviewedBeforeRelease": true,
+  "other390OriginalPageBindingsUnchanged": true,
+  "allOriginalSourcesAndScopeExact": true,
+  "kindChanges": [
+    {
+      "goalId": "28788f27-f079-5d78-936f-b7684760ff31",
+      "before": "sha256:f3f57bbecf6dad54c0db25072c9e1dbde22845e3bd64708686c6e75e8e05bc1f",
+      "after": "sha256:b5deea5e0cb87271175d394400d5829f9581e602daac529da9a1a1d275010708",
+      "classificationUnchanged": true
+    }
+  ],
+  "newEndpointKind": {
+    "goalId": "e8caebd4-57bc-5c2f-881d-0b1693777c64",
+    "sourceFingerprint": "sha256:2646985bfae84fd0a40f888767114bb6844fde9f4bee2bdf887d33c6e69c8673",
+    "semanticKind": "practiceAssessment",
+    "decisionStatus": "authoritative",
+    "decisionBasis": "reviewed-current-pilot-practice-assessment"
+  },
+  "nativeRoute": {
+    "scopeId": "canonical-biology-sek2",
+    "label": "Sekundarstufe II",
+    "selectedAtomicGoals": 239,
+    "maturity": "M4",
+    "rules": [
+      {
+        "id": "CQR-101",
+        "status": "pass",
+        "summary": "Effective route coverage is complete for the configured scope.",
+        "metrics": {
+          "selectedAtomicGoals": 239,
+          "missingMotivationPath": 0,
+          "missingTerminalPath": 0
+        }
+      },
+      {
+        "id": "CQR-102",
+        "status": "pass",
+        "summary": "Direct atomic route coverage is complete for the configured scope.",
+        "metrics": {
+          "selectedAtomicGoals": 239,
+          "missingDirectMotivationPath": 0,
+          "missingDirectTerminalPath": 0
+        }
+      },
+      {
+        "id": "CQR-103",
+        "status": "pass",
+        "summary": "No scoped cluster-level requires remain.",
+        "metrics": {
+          "scopedClusterRequires": 0
+        }
+      },
+      {
+        "id": "CQR-201",
+        "status": "pass",
+        "summary": "All configured terminal autonomy goals have examData.",
+        "metrics": {
+          "terminalAutonomyGoals": 18,
+          "terminalAutonomyGoalsWithExamData": 18,
+          "terminalAutonomyGoalsWithoutExamData": 0
+        }
+      },
+      {
+        "id": "CQR-202",
+        "status": "pass",
+        "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+        "metrics": {
+          "terminalAutonomyGoals": 18,
+          "concreteExamData": 18,
+          "weakExamData": 0
+        }
+      },
+      {
+        "id": "CQR-203",
+        "status": "pass",
+        "summary": "All terminal autonomy examData has release and coverage metadata.",
+        "metrics": {
+          "terminalAutonomyGoals": 18,
+          "releasedCoverageCompleteExamData": 18,
+          "releaseCoverageIncompleteExamData": 0
+        }
+      }
+    ]
+  },
+  "newEndpointApplicability": {
+    "goalId": "e8caebd4-57bc-5c2f-881d-0b1693777c64",
+    "title": "ENG und EKG in begrenzten Modellen vergleichen",
+    "goalType": "atomic",
+    "compiledApplicability": {
+      "jurisdiction": [
+        "DE-BY"
+      ]
+    },
+    "evidence": [
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BY",
+        "kind": "assessment-requires",
+        "source": "requires 11675f1a-5de2-5926-be78-1e8275f19f5b"
+      }
+    ]
+  },
+  "nativeCQR104": "not_configured: Biology native route profile has no compositionViewStage",
+  "activeWrites": 0,
+  "strictGain": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}

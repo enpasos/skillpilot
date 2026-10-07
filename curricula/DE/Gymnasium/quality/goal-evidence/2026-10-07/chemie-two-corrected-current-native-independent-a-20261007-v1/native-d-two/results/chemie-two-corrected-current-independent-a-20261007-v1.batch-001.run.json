@@ -1,0 +1,51 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-two-corrected-current-independent-a-20261007-v1.run-001",
+  "campaignId": "chemie-two-corrected-current-campaign-a-20261007-v1",
+  "roundId": "chemie-two-corrected-current-independent-a-20261007-v1",
+  "batchId": "chemie-two-corrected-current-independent-a-20261007-v1.batch-001",
+  "batchInputFingerprint": "sha256:7b15641bdbc6024f7bbc8c5a36e31c7bd9b7ce68515158de0062c283140364f4",
+  "bundleFingerprint": "sha256:2050375bf795ccd786b599221336c1794b31a525fd9632c1f6bc7c51199632b9",
+  "bookDigest": "sha256:1e284f8745634a16574fc9047a8e7e42274dc5e4b1eb5579600bb0c4db2b0384",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex; session-exposed agent identity",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:be1fb91ac4237ff738e02c3b6e2e4569e93aa41f40066bcdf0df7294425221d7",
+  "independenceGroupId": "chemie-two-corrected-current-independent-a-20261007-v1",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "f0939f88-a6af-5334-ac4d-5d54732af25a",
+    "1c1420c2-a8e2-520f-8015-6df637a973bd"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:7e2d7234eb5fc718bbda816b9ae31f54571ed404aa0d5f5539035b8eddadc3bd"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:67cd96e2bb92fe481200c2c87e5dc8cf9226a1e690b4fc59e90cd1779e663648"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:7b15641bdbc6024f7bbc8c5a36e31c7bd9b7ce68515158de0062c283140364f4"
+    }
+  ],
+  "startedAt": "2026-10-07T11:14:44Z",
+  "completedAt": "2026-10-07T11:16:32.256626Z",
+  "status": "completed",
+  "outputDigest": "sha256:7a92d6fc9a794c67ad1a91d1e3903d65d0be81146ef5e8d3a98d1bc07cca4cb5",
+  "toolchainVersion": "independent-codex-current-native-review-v1"
+}

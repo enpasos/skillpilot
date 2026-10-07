@@ -1,0 +1,12 @@
+{
+  "role": "Retained actual failed path invocation before corrected native checks",
+  "failedAtStep": "A20/M20 final raster binding check",
+  "actualExitCodes": {"A": 1, "M": 1},
+  "incorrectArgument": "--config=../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-independent-a-20261007-v1/[A|M]20.final-raster-binding.config.json",
+  "actualError": "ENOENT: config was resolved under /home/enpasos/projects/curricula instead of /home/enpasos/projects/skillpilot/curricula",
+  "cause": "These native CLIs resolve relative config arguments against the repository root, not app working directory",
+  "correction": "Use repository-relative curricula/... config arguments without ../",
+  "subsequentNativeChecks": "A20 and M20 both completed with exit 0; exact outputs retained separately",
+  "historicalReviewChanged": false,
+  "humanApproval": false
+}

@@ -1,0 +1,185 @@
+{
+  "before": {
+    "scopeId": "canonical-biology-sek2",
+    "label": "Sekundarstufe II",
+    "selectedAtomicGoals": 239,
+    "maturity": "M0",
+    "rules": [
+      {
+        "id": "CQR-101",
+        "status": "fail",
+        "summary": "Effective route coverage has missing route segments.",
+        "metrics": {
+          "selectedAtomicGoals": 239,
+          "missingMotivationPath": 0,
+          "missingTerminalPath": 1
+        },
+        "details": [
+          "No effective terminal path: Elektrische Summensignale bei ENG und EKG erklären [11675f1a-5de2-5926-be78-1e8275f19f5b]"
+        ]
+      },
+      {
+        "id": "CQR-102",
+        "status": "warn",
+        "summary": "Direct atomic route coverage still needs migration work.",
+        "metrics": {
+          "selectedAtomicGoals": 239,
+          "missingDirectMotivationPath": 0,
+          "missingDirectTerminalPath": 1
+        },
+        "details": [
+          "No direct atomic terminal path: Elektrische Summensignale bei ENG und EKG erklären [11675f1a-5de2-5926-be78-1e8275f19f5b]"
+        ]
+      },
+      {
+        "id": "CQR-103",
+        "status": "pass",
+        "summary": "No scoped cluster-level requires remain.",
+        "metrics": {
+          "scopedClusterRequires": 0
+        }
+      },
+      {
+        "id": "CQR-201",
+        "status": "pass",
+        "summary": "All configured terminal autonomy goals have examData.",
+        "metrics": {
+          "terminalAutonomyGoals": 17,
+          "terminalAutonomyGoalsWithExamData": 17,
+          "terminalAutonomyGoalsWithoutExamData": 0
+        }
+      },
+      {
+        "id": "CQR-202",
+        "status": "pass",
+        "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+        "metrics": {
+          "terminalAutonomyGoals": 17,
+          "concreteExamData": 17,
+          "weakExamData": 0
+        }
+      },
+      {
+        "id": "CQR-203",
+        "status": "pass",
+        "summary": "All terminal autonomy examData has release and coverage metadata.",
+        "metrics": {
+          "terminalAutonomyGoals": 17,
+          "releasedCoverageCompleteExamData": 17,
+          "releaseCoverageIncompleteExamData": 0
+        }
+      }
+    ]
+  },
+  "after": {
+    "scopeId": "canonical-biology-sek2",
+    "label": "Sekundarstufe II",
+    "selectedAtomicGoals": 239,
+    "maturity": "M2",
+    "rules": [
+      {
+        "id": "CQR-101",
+        "status": "pass",
+        "summary": "Effective route coverage is complete for the configured scope.",
+        "metrics": {
+          "selectedAtomicGoals": 239,
+          "missingMotivationPath": 0,
+          "missingTerminalPath": 0
+        }
+      },
+      {
+        "id": "CQR-102",
+        "status": "pass",
+        "summary": "Direct atomic route coverage is complete for the configured scope.",
+        "metrics": {
+          "selectedAtomicGoals": 239,
+          "missingDirectMotivationPath": 0,
+          "missingDirectTerminalPath": 0
+        }
+      },
+      {
+        "id": "CQR-103",
+        "status": "pass",
+        "summary": "No scoped cluster-level requires remain.",
+        "metrics": {
+          "scopedClusterRequires": 0
+        }
+      },
+      {
+        "id": "CQR-201",
+        "status": "pass",
+        "summary": "All configured terminal autonomy goals have examData.",
+        "metrics": {
+          "terminalAutonomyGoals": 18,
+          "terminalAutonomyGoalsWithExamData": 18,
+          "terminalAutonomyGoalsWithoutExamData": 0
+        }
+      },
+      {
+        "id": "CQR-202",
+        "status": "fail",
+        "summary": "1 terminal autonomy examData item(s) are placeholders or incomplete.",
+        "metrics": {
+          "terminalAutonomyGoals": 18,
+          "concreteExamData": 17,
+          "weakExamData": 1
+        },
+        "details": [
+          "Weak examData: ENG und EKG in begrenzten Modellen vergleichen [e8caebd4-57bc-5c2f-881d-0b1693777c64] (reviewStatus=needs_review)"
+        ]
+      },
+      {
+        "id": "CQR-203",
+        "status": "warn",
+        "summary": "1 terminal autonomy examData item(s) lack release or coverage metadata.",
+        "metrics": {
+          "terminalAutonomyGoals": 18,
+          "releasedCoverageCompleteExamData": 17,
+          "releaseCoverageIncompleteExamData": 1
+        },
+        "details": [
+          "Incomplete exam release/coverage: ENG und EKG in begrenzten Modellen vergleichen [e8caebd4-57bc-5c2f-881d-0b1693777c64] (reviewStatus is not released)"
+        ]
+      }
+    ]
+  },
+  "oldGlobalEndpointCompiledScope": {
+    "jurisdiction": [
+      "DE-HE"
+    ]
+  },
+  "newGlobalEndpointCompiledScope": {
+    "jurisdiction": [
+      "DE-HE"
+    ]
+  },
+  "newEndpointCompiledScope": {
+    "jurisdiction": [
+      "DE-BY"
+    ]
+  },
+  "newEndpointFullApplicabilityEvidence": {
+    "goalId": "e8caebd4-57bc-5c2f-881d-0b1693777c64",
+    "title": "ENG und EKG in begrenzten Modellen vergleichen",
+    "goalType": "atomic",
+    "compiledApplicability": {
+      "jurisdiction": [
+        "DE-BY"
+      ]
+    },
+    "evidence": [
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BY",
+        "kind": "assessment-requires",
+        "source": "requires 11675f1a-5de2-5926-be78-1e8275f19f5b"
+      }
+    ]
+  },
+  "existingJurisdictionScopesChanged": [],
+  "existingJurisdictionScopesChecked": 473,
+  "nativeCQR104": "not_configured: actual Biology profile has no compositionViewStage; no CQR-104 pass claimed",
+  "authorCandidateCQR202And203": "CQR-202 fail / CQR-203 warn until two actual independent endpoint reviews and explicit machine release integration",
+  "activeWrites": 0,
+  "newHumanApprovalsClaimed": 0
+}

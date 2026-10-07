@@ -1,0 +1,53 @@
+{
+  "runs": [
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-author-v2/M20.current.native.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 1,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-author-v2/checks/M20-original-whole-ledger-diagnostic.stdout.actual.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-author-v2/checks/M20-original-whole-ledger-diagnostic.stderr.actual.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-author-v2/A20.current.native.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-author-v2/checks/A20.stdout.actual.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-author-v2/checks/A20.stderr.actual.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-author-v2/M20.current.native.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-author-v2/checks/M20.stdout.actual.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-author-v2/checks/M20.stderr.actual.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-author-v2/M391.current.native.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-author-v2/checks/M391.stdout.actual.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-author-v2/checks/M391.stderr.actual.txt"
+    }
+  ],
+  "diagnostic": "Full ledgers contain 371 and 27 out-of-selected-scope records; M20 checks exact unchanged 20 rows with zero in-scope cards; independent full M391 checks all actual 27 cards and eight required visibility scopes. No review content or gate modified."
+}

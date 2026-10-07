@@ -1,5 +1,13 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
+## Aktuelle Fortsetzung: ausschließlich Chemie und Biologie
+
+Der [Commit-Zwischenstand vom 7. Oktober](chemie-biologie-m7-ecology34-commit-checkpoint-2026-10-07.md)
+setzt den Chemie-/Biologie-Auftrag fort: aktuell 173/378 Chemie und 134/391
+Biologie streng abgeschlossen. Mathematik-M7 und Physik-M7 bleiben erhalten.
+Die folgenden älteren Arbeitsstände und damaligen Nutzersteuerungen sind
+historische Momentaufnahmen; menschliche Release-Gates bleiben getrennt.
+
 ## Aktueller Auftrag: Mathematik bis M7, Physik M7 erhalten
 
 Am 20. September wurde ausdrücklich beauftragt, Mathematik nach denselben

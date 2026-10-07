@@ -1,0 +1,42 @@
+{
+  "finding": {
+    "code": "APV-203",
+    "severity": "warning",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "417e65ec-68be-5f2e-9452-c3ba9b1d362f",
+    "title": "Säuren- und Basennamen mit Formeln abrufen",
+    "dimension": "jurisdiction",
+    "message": "Compiled applicability differs from the currently committed applicability field."
+  },
+  "goal": {
+    "goalId": "417e65ec-68be-5f2e-9452-c3ba9b1d362f",
+    "title": "Säuren- und Basennamen mit Formeln abrufen",
+    "goalType": "atomic",
+    "compiledApplicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HE"
+      ]
+    },
+    "evidence": [
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BY",
+        "kind": "requires-closure",
+        "source": "required by f97b9c87-16d0-58fd-bcb2-c51574aa36d0"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HE",
+        "kind": "provenance",
+        "source": "curricula/DE/Gymnasium/input/DE-HE/upper-secondary/ (curricula/DE/Gymnasium/provenance/source-landscape-registry.json#2f391ba2-ba1e-40e4-a8d2-dff049516c13)"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HE",
+        "kind": "requires-closure",
+        "source": "required by f97b9c87-16d0-58fd-bcb2-c51574aa36d0"
+      }
+    ]
+  }
+}

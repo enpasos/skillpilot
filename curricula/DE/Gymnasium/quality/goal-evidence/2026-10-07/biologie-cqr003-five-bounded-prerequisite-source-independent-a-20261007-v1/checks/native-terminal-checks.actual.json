@@ -1,0 +1,34 @@
+{
+  "recordedAt": "2026-10-07T11:02:29.565648+00:00",
+  "nativeD": {
+    "exitCode": 0,
+    "output": "Goal-description review campaign results valid: 4",
+    "capture": "Observed direct exec tool result d9260a"
+  },
+  "nativeA": {
+    "exitCode": 0,
+    "currentReviewedAtomic": 1,
+    "missing": 0,
+    "stale": 0,
+    "obsolete": 0,
+    "capture": "Observed direct exec tool result 638673"
+  },
+  "nativeMFirstAttempt": {
+    "exitCode": 1,
+    "cause": "Isolated one-goal config omitted an explicit card-review file; native checker required the derived file even though no primary cards are in scope.",
+    "capture": "Observed direct exec tool result c4f315"
+  },
+  "nativeMFollowUp": {
+    "exitCode": 0,
+    "command": [
+      "node_modules/.bin/tsx",
+      "scripts/memoryCardReview.ts",
+      "--config=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cqr003-five-bounded-prerequisite-source-independent-a-20261007-v1/native-A-M/memory-card-review.config.json",
+      "--mode=check"
+    ],
+    "stdoutPath": "checks/native-M-follow-up.stdout.txt",
+    "stderrPath": "checks/native-M-follow-up.stderr.txt",
+    "remediation": "Explicit empty isolated card ledger; current no_memory_needed decision remains unchanged; no active card/config changes."
+  },
+  "fullBuildOrGateAcceptanceClaimed": false
+}

@@ -1,0 +1,11 @@
+# Chemistry evidence watch: actual current480 diff
+
+Readonly analysis for the commit checkpoint. Exactly one watched path differs, with no added/removed watch paths. The native hash mode is unchanged: it excludes only goal-visualization resource-link metadata and retains texts, graph relations, source provenance and memory scope. The before479 sealed snapshot and HEAD reproduce the09:30 baseline2e63a6cf exactly; current480 matches the already reviewed/technically sealed integration candidate exactly and yields283f74fc.
+
+The full JSON field diff records four existing goal changes plus the parent contains append and the one added reviewed memory417e.474 old whole goal bodies and all top-level metadata/order are unchanged. No applicability or other source scope field of an existing goal changes. D2cc itself, including its direct requires, is whole-value exact: its actual reverse context gains only the downstream memory goal. The new memory is outside the unchanged378 curricularAtomic denominator.
+
+Existing scientific judgments remain original evidence, not repeated reviews: paired9e/28 whole text/source/case science, final corrected f093/1c actual PNG/source/page/P-compatible A/B judgments, genuine d2cc reverse-context A/B, actual compact-card decisions and seven current real visibility scopes. All original seals and actual payload bytes are verified. The original stale28 A-check diagnostic remains history; the subsequent current A/M pass and paired28 binding are authoritative. Technical packaging and hash verification are never called new scientific review or human approval.
+
+Old rolling watch baseline bytes are preserved here as an immutable exact .json.bin snapshot. No baseline capture, active file change, new source closure, M7 completion or quality-floor change was performed. A native baseline synchronization is recommended only as technical registration of these already reviewed changes after the Root stable-integration checks. Keep all pending candidate/source holds and separate human release gates.
+
+Neutral entry: neutral-readonly-watch-diff-recommendation.entry.json. Full changed values, actual hash effects and verified existing review/validation references are provided in the two linked JSON artifacts.

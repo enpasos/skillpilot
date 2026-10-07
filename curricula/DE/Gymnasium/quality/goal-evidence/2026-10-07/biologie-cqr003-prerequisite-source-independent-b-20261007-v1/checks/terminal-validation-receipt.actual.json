@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "checks": [
+    {
+      "check": "native single D campaign",
+      "command": "node --import tsx scripts/validateGoalDescriptionReviewCampaignResults.ts with own native-b manifest/input/campaign/batches/results",
+      "exitCode": 0,
+      "terminalOutput": "Goal-description review campaign results valid: 4"
+    },
+    {
+      "check": "native scoped semantic atomicity",
+      "exitCode": 0,
+      "goals": 4,
+      "atomic": 4,
+      "missing": 0,
+      "stale": 0
+    },
+    {
+      "check": "native scoped memory review",
+      "exitCode": 0,
+      "goals": 4,
+      "noMemory": 4,
+      "missing": 0,
+      "stale": 0,
+      "scopeIncludesNoRequiredMemory": true,
+      "globalM6Claim": false,
+      "visibilityScopeCoverageRequired": true,
+      "activeVisibilityScopesPreserved": 8,
+      "finalNativeOutput": "Composition visibility scopes: 8; memory-required goals without visible memory node: 0"
+    },
+    {
+      "check": "native CQR003 independent isolated rerun",
+      "exitCode": 0,
+      "status": "pass",
+      "unsupported": 0,
+      "sourceUnmapped": 0,
+      "scientificWholeSourceClaim": false
+    }
+  ],
+  "receiptNotes": "The first own A/M fixture used an omitted landscapeId; terminal checks failed closed and were repaired by reading the real candidate landscapeId. The final scoped native checks passed. An initial probe preparation used the isolate working directory as repo root and was corrected before the actual native probe ran. No failed attempt counted as evidence."
+}

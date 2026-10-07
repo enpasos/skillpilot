@@ -1,0 +1,85 @@
+{
+  "role": "Independent A genuine first scientific findings, before peer review, author-only image production not seen",
+  "reviewerRole": "independent_reviewer_a",
+  "model": "OpenAI Codex; exact serving revision not exposed",
+  "reviewedAtUtc": "2026-10-07T12:18:42.463539+00:00",
+  "inputFreeze": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-author-v2/author.text-and-P-inputs.first.freeze.json",
+    "sha256": "10aeea5d3cb1eb5f74728b4f529ecbd1b9379522073a8cfceaedc03fff5b3b26",
+    "bytes": 3097
+  },
+  "actualInputsRead": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-author-v2/current20-whole-DEEN-goals.actual.json",
+      "sha256": "d4f91d11536724895329df9f1bcff5279c5d69efc90177f9676aad7b1d49eb4b",
+      "bytes": 33751
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-author-v2/materials/twenty-whole-goals-forty-complete-DEEN-cases.author.json",
+      "sha256": "84f36a0eeea8b7de02b4ab85337700f0961b27b697746352df51b92fe616b99c",
+      "bytes": 128564
+    }
+  ],
+  "actualWholeDescriptionsRead": 20,
+  "actualCompleteMaterialCasesRead": 20,
+  "completeMaterialsReadGoalPositions": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "remainingCompleteMaterialCasesUnread": 20,
+  "currentNativePageAndImageReviewPending": true,
+  "peerResultsRead": false,
+  "findings": [
+    {
+      "findingId": "BIO20-A-P-02-ARACHNID",
+      "goalId": "f95b3b49-dacd-5d17-be2d-98b404b709c3",
+      "caseId": "ecology20-02-case-1",
+      "severity": "must_fix",
+      "affectedFields": [
+        "material.de",
+        "material.en",
+        "modelAnswer.de",
+        "modelAnswer.en",
+        "copiedPApplicationCaseBrief"
+      ],
+      "actualProblem": "Eight legs without antennae do not establish a true spider. Ticks, mites and harvestmen also belong to arachnids. The generic key and expected spider classification overstate the visible features, despite correctly declining species identification.",
+      "boundedCorrection": "Use Spinnentier / arachnid in the generic branch and answer, or supply additional true-spider diagnostic features. No operative goal-text change needed.",
+      "independentlyCheckedPrimaryFactSource": {
+        "title": "Burke Museum: Myth Eight legs always means spider",
+        "url": "https://www.burkemuseum.org/collections-and-research/biology/arachnology-and-entomology/spider-myths/myth-eight-legs-always-means-spider",
+        "claimParaphrase": "Eight-legged arachnids include groups other than true spiders."
+      },
+      "verdict": "REVISE_P"
+    },
+    {
+      "findingId": "BIO20-A-P-06-LIVING-COMMUNITY",
+      "goalId": "0842054a-1d57-53b0-b0f1-9f10374d6699",
+      "caseId": "ecology20-06-case-1",
+      "severity": "must_clarify",
+      "affectedFields": [
+        "modelAnswer.de",
+        "modelAnswer.en",
+        "copiedPApplicationCaseBrief"
+      ],
+      "actualProblem": "The expected answer uses plant components as evidence of the biocenosis, although leaf-litter samples contain dead plant material. It should distinguish actually observed living organisms from dead organic substrate; leaf fragments alone are not a living community member.",
+      "boundedCorrection": "State living plants or roots where actually observed, and distinguish dead litter as substrate/food from living organisms. Keep actual own investigation and digital protocol requirements intact.",
+      "verdict": "REVISE_P"
+    }
+  ],
+  "positiveEarlyChecks": [
+    "Habitat classifications retain uncertainty between pond/lake.",
+    "Food-web matter/energy arrows run food to consumer and decomposition receives remains from every trophic level.",
+    "Actual abiotic measurement and soil tasks require performance rather than fabricated readings, retain units and uncertainty, and never claim E2/learner performance.",
+    "Soil matter cycles are distinct from energy dissipation and humus is a temporal store, not permanent matter disappearance."
+  ],
+  "machineM7ClosureClaim": false,
+  "humanApproval": false
+}

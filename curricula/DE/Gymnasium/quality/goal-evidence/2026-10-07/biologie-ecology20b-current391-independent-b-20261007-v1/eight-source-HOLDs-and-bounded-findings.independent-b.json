@@ -1,0 +1,79 @@
+{
+  "SOURCEHOLDs": [
+    {
+      "ordinal": 9,
+      "goalId": "de1c19a2-2f8a-57bf-bd58-ecc460f47987",
+      "status": "SOURCEHOLD",
+      "wholeGoalApproved": false
+    },
+    {
+      "ordinal": 10,
+      "goalId": "691b0711-4427-5b39-b2ef-20f607d15c13",
+      "status": "SOURCEHOLD",
+      "wholeGoalApproved": false
+    },
+    {
+      "ordinal": 12,
+      "goalId": "eccf935c-48e3-53dd-b472-5e794241279b",
+      "status": "SOURCEHOLD",
+      "wholeGoalApproved": false
+    },
+    {
+      "ordinal": 15,
+      "goalId": "7749de90-68f4-53a6-b474-b6414f16f09e",
+      "status": "SOURCEHOLD",
+      "wholeGoalApproved": false
+    },
+    {
+      "ordinal": 17,
+      "goalId": "4ef85d98-5e20-540b-9adf-89592febc438",
+      "status": "SOURCEHOLD",
+      "wholeGoalApproved": false
+    },
+    {
+      "ordinal": 18,
+      "goalId": "f36a52b8-acd7-5a3d-83e2-0af74acc9c96",
+      "status": "SOURCEHOLD",
+      "wholeGoalApproved": false
+    },
+    {
+      "ordinal": 19,
+      "goalId": "64a31f9a-27b2-5321-b2a8-47188d001c6b",
+      "status": "SOURCEHOLD",
+      "wholeGoalApproved": false
+    },
+    {
+      "ordinal": 20,
+      "goalId": "b7b84b6a-1c99-5474-99c5-9a72a1cd505b",
+      "status": "SOURCEHOLD",
+      "wholeGoalApproved": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "B20b-HOLD10-DE-MATH-01",
+      "ordinal": 10,
+      "goalId": "691b0711-4427-5b39-b2ef-20f607d15c13",
+      "caseId": "ecology20b-10-case-1",
+      "field": "modelAnswer.de",
+      "status": "OPEN_OUTSIDE_APPROVED_TWELVE",
+      "finding": "„eine Erwartung darf nicht ganzzahlig sein“ ist mathematisch falsch; Erwartungswerte können ganzzahlig oder nicht ganzzahlig sein. Das EN „need not be an integer“ ist richtig.",
+      "requiredCorrection": "„Eine Erwartung muss nicht ganzzahlig sein.“",
+      "blocksAnyApprovedTwelveGoal": false
+    },
+    {
+      "id": "B20b-LV-CONDITIONAL-ID-01",
+      "ordinal": 4,
+      "status": "BOUNDED_IDENTITY_NOTE",
+      "finding": "Die getrennte Erweiterung trägt außen ihre BY-EA-ID, innen wholeConditionalCase.id denselben String wie gemeinsamer Fall1. Gemeinsame zwei Fälle bleiben vollständig; der separate Körper darf nicht als Ersetzung von gemeinsamem Fall1 oder als dritter gemeinsamer Nachweis serialisiert werden.",
+      "commonScientificCaseVerdictAffected": false,
+      "nativeIdentityMustPreserveOuterConditionalScope": true
+    }
+  ],
+  "noPeerAArtifactsReadBeforeOwnFirstSeal": true,
+  "actualImagesNotYetSeenOrApproved": true,
+  "noActiveWrites": true,
+  "noNationalOrWholePassageClosure": true,
+  "strictGain": 0,
+  "humanApproval": false
+}

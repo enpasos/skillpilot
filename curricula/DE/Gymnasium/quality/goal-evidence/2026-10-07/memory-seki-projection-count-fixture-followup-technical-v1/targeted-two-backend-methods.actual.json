@@ -1,0 +1,522 @@
+{
+  "artifactRole": "Actual terminal backend projection checkpoint, precise existing count-fixture follow-up only",
+  "completedAt": "2026-10-07T16:57:38.246261+00:00",
+  "command": "cd backend && ./gradlew test --tests com.skillpilot.backend.controller.LearnerControllerIntegrationTest.learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals --tests com.skillpilot.backend.controller.LearnerControllerIntegrationTest.learnerStateUsesReviewedAdditionalM6SekIDurationProjectionForAtomicTotals --no-daemon --max-workers=2",
+  "existingGradleLimits": {
+    "springTestContextCacheMaxSize": 4,
+    "testMaxHeapSize": "3g"
+  },
+  "initialFailureKept": {
+    "originalPath": "tmp/ci-repair-20261007/science-checkpoint134-targeted-backend-projections.actual.xml",
+    "originalSha256": "d0514148f6cd8691914b521c58aeb501bde87f72734ca4c9e9dd59a527a38107",
+    "suite": {
+      "name": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest",
+      "tests": "2",
+      "skipped": "0",
+      "failures": "1",
+      "errors": "0",
+      "timestamp": "2026-10-07T16:36:29.210Z",
+      "hostname": "DESKTOP-T1D4NQE",
+      "time": "138.084"
+    },
+    "tests": [
+      {
+        "attributes": {
+          "name": "learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals()",
+          "classname": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest",
+          "time": "94.001"
+        },
+        "status": "PASS",
+        "failures": []
+      },
+      {
+        "attributes": {
+          "name": "learnerStateUsesReviewedAdditionalM6SekIDurationProjectionForAtomicTotals()",
+          "classname": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest",
+          "time": "18.337"
+        },
+        "status": "FAIL",
+        "failures": [
+          {
+            "attributes": {
+              "message": "org.opentest4j.AssertionFailedError: [Informatik DE-HH G8 total] \nexpected: 21\n but was: 22",
+              "type": "org.opentest4j.AssertionFailedError"
+            },
+            "message": "org.opentest4j.AssertionFailedError: [Informatik DE-HH G8 total] \nexpected: 21\n but was: 22"
+          }
+        ]
+      }
+    ],
+    "role": "Faithful selected XML attributes/testcase verdict extraction; original full XML bytes remain unchanged in separate local execution evidence."
+  },
+  "followupTerminalExitCode": 0,
+  "followupBuildConclusion": "BUILD SUCCESSFUL in 6m 46s",
+  "followupActualResult": {
+    "originalPath": "backend/build/test-results/test/TEST-com.skillpilot.backend.controller.LearnerControllerIntegrationTest.xml",
+    "originalSha256": "60da7fa0ace9642dbfe3702264c6ecc21830962dcc4d6d3c049a9a52fc6e115e",
+    "suite": {
+      "name": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest",
+      "tests": "2",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-07T16:48:53.624Z",
+      "hostname": "DESKTOP-T1D4NQE",
+      "time": "383.906"
+    },
+    "tests": [
+      {
+        "attributes": {
+          "name": "learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals()",
+          "classname": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest",
+          "time": "122.211"
+        },
+        "status": "PASS",
+        "failures": []
+      },
+      {
+        "attributes": {
+          "name": "learnerStateUsesReviewedAdditionalM6SekIDurationProjectionForAtomicTotals()",
+          "classname": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest",
+          "time": "236.937"
+        },
+        "status": "PASS",
+        "failures": []
+      }
+    ],
+    "role": "Faithful selected XML attributes/testcase verdict extraction; original full XML bytes remain unchanged in separate local execution evidence."
+  },
+  "actualLocalExecutionLogs": [
+    {
+      "path": "tmp/ci-repair-20261007/science-checkpoint134-targeted-backend-projections.actual.log",
+      "sha256": "c1210b990977e4cd7e40c8afe78faafed3872497132c6d4dd9b3e834f53d8b70"
+    },
+    {
+      "path": "tmp/ci-repair-20261007/science-checkpoint134-targeted-backend-projections.fixture-followup.actual.log",
+      "sha256": "23eb01ba45ee3097a53d782531255a395476f38354c6fd66211f1f258c0140f8"
+    }
+  ],
+  "earlierFullSuite": {
+    "state": "Earlier completed actual full suite; not a new full suite after this fixture follow-up",
+    "tests": 2300,
+    "failures": 0,
+    "errors": 0,
+    "resultFiles": 245,
+    "headersPath": "tmp/ci-repair-20261007/prior-full-suite-result-headers.before-targeted.json",
+    "headersSha256": "c5495bbd5ab86b2b8a19068b560cc8b575a0289f290c2bb43244f489e28e5985"
+  },
+  "existingAdditionalM6MethodScopesActuallyPassed": [
+    {
+      "subject": "Informatik",
+      "landscapeConstant": "CANONICAL_INFORMATICS_ID",
+      "jurisdiction": "DE-BB",
+      "G8": 25,
+      "G9": 25
+    },
+    {
+      "subject": "Informatik",
+      "landscapeConstant": "CANONICAL_INFORMATICS_ID",
+      "jurisdiction": "DE-BE",
+      "G8": 25,
+      "G9": 25
+    },
+    {
+      "subject": "Informatik",
+      "landscapeConstant": "CANONICAL_INFORMATICS_ID",
+      "jurisdiction": "DE-BW",
+      "G8": 4,
+      "G9": 4
+    },
+    {
+      "subject": "Informatik",
+      "landscapeConstant": "CANONICAL_INFORMATICS_ID",
+      "jurisdiction": "DE-BY",
+      "G8": 34,
+      "G9": 34
+    },
+    {
+      "subject": "Informatik",
+      "landscapeConstant": "CANONICAL_INFORMATICS_ID",
+      "jurisdiction": "DE-HH",
+      "G8": 22,
+      "G9": 22
+    },
+    {
+      "subject": "Informatik",
+      "landscapeConstant": "CANONICAL_INFORMATICS_ID",
+      "jurisdiction": "DE-MV",
+      "G8": 24,
+      "G9": 24
+    },
+    {
+      "subject": "Informatik",
+      "landscapeConstant": "CANONICAL_INFORMATICS_ID",
+      "jurisdiction": "DE-NI",
+      "G8": 22,
+      "G9": 22
+    },
+    {
+      "subject": "Informatik",
+      "landscapeConstant": "CANONICAL_INFORMATICS_ID",
+      "jurisdiction": "DE-NW",
+      "G8": 20,
+      "G9": 20
+    },
+    {
+      "subject": "Informatik",
+      "landscapeConstant": "CANONICAL_INFORMATICS_ID",
+      "jurisdiction": "DE-RP",
+      "G8": 18,
+      "G9": 18
+    },
+    {
+      "subject": "Informatik",
+      "landscapeConstant": "CANONICAL_INFORMATICS_ID",
+      "jurisdiction": "DE-SH",
+      "G8": 27,
+      "G9": 27
+    },
+    {
+      "subject": "Informatik",
+      "landscapeConstant": "CANONICAL_INFORMATICS_ID",
+      "jurisdiction": "DE-SL",
+      "G8": 28,
+      "G9": 28
+    },
+    {
+      "subject": "Informatik",
+      "landscapeConstant": "CANONICAL_INFORMATICS_ID",
+      "jurisdiction": "DE-SN",
+      "G8": 29,
+      "G9": 29
+    },
+    {
+      "subject": "Informatik",
+      "landscapeConstant": "CANONICAL_INFORMATICS_ID",
+      "jurisdiction": "DE-ST",
+      "G8": 21,
+      "G9": 21
+    },
+    {
+      "subject": "Informatik",
+      "landscapeConstant": "CANONICAL_INFORMATICS_ID",
+      "jurisdiction": "DE-TH",
+      "G8": 23,
+      "G9": 23
+    },
+    {
+      "subject": "Latein",
+      "landscapeConstant": "CANONICAL_LATIN_ID",
+      "jurisdiction": "DE-BB",
+      "G8": 28,
+      "G9": 28
+    },
+    {
+      "subject": "Latein",
+      "landscapeConstant": "CANONICAL_LATIN_ID",
+      "jurisdiction": "DE-BE",
+      "G8": 28,
+      "G9": 28
+    },
+    {
+      "subject": "Latein",
+      "landscapeConstant": "CANONICAL_LATIN_ID",
+      "jurisdiction": "DE-BW",
+      "G8": 28,
+      "G9": 28
+    },
+    {
+      "subject": "Latein",
+      "landscapeConstant": "CANONICAL_LATIN_ID",
+      "jurisdiction": "DE-BY",
+      "G8": 28,
+      "G9": 28
+    },
+    {
+      "subject": "Latein",
+      "landscapeConstant": "CANONICAL_LATIN_ID",
+      "jurisdiction": "DE-HB",
+      "G8": 28,
+      "G9": 28
+    },
+    {
+      "subject": "Latein",
+      "landscapeConstant": "CANONICAL_LATIN_ID",
+      "jurisdiction": "DE-HH",
+      "G8": 28,
+      "G9": 28
+    },
+    {
+      "subject": "Latein",
+      "landscapeConstant": "CANONICAL_LATIN_ID",
+      "jurisdiction": "DE-MV",
+      "G8": 28,
+      "G9": 28
+    },
+    {
+      "subject": "Latein",
+      "landscapeConstant": "CANONICAL_LATIN_ID",
+      "jurisdiction": "DE-NI",
+      "G8": 27,
+      "G9": 27
+    },
+    {
+      "subject": "Latein",
+      "landscapeConstant": "CANONICAL_LATIN_ID",
+      "jurisdiction": "DE-NW",
+      "G8": 27,
+      "G9": 27
+    },
+    {
+      "subject": "Latein",
+      "landscapeConstant": "CANONICAL_LATIN_ID",
+      "jurisdiction": "DE-RP",
+      "G8": 28,
+      "G9": 28
+    },
+    {
+      "subject": "Latein",
+      "landscapeConstant": "CANONICAL_LATIN_ID",
+      "jurisdiction": "DE-SH",
+      "G8": 28,
+      "G9": 28
+    },
+    {
+      "subject": "Latein",
+      "landscapeConstant": "CANONICAL_LATIN_ID",
+      "jurisdiction": "DE-SL",
+      "G8": 28,
+      "G9": 28
+    },
+    {
+      "subject": "Latein",
+      "landscapeConstant": "CANONICAL_LATIN_ID",
+      "jurisdiction": "DE-SN",
+      "G8": 28,
+      "G9": 28
+    },
+    {
+      "subject": "Latein",
+      "landscapeConstant": "CANONICAL_LATIN_ID",
+      "jurisdiction": "DE-ST",
+      "G8": 28,
+      "G9": 28
+    },
+    {
+      "subject": "Latein",
+      "landscapeConstant": "CANONICAL_LATIN_ID",
+      "jurisdiction": "DE-TH",
+      "G8": 28,
+      "G9": 28
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "landscapeConstant": "CANONICAL_POLITICS_ECONOMICS_ID",
+      "jurisdiction": "DE-BB",
+      "G8": 19,
+      "G9": 19
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "landscapeConstant": "CANONICAL_POLITICS_ECONOMICS_ID",
+      "jurisdiction": "DE-BE",
+      "G8": 19,
+      "G9": 19
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "landscapeConstant": "CANONICAL_POLITICS_ECONOMICS_ID",
+      "jurisdiction": "DE-HB",
+      "G8": 14,
+      "G9": 14
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "landscapeConstant": "CANONICAL_POLITICS_ECONOMICS_ID",
+      "jurisdiction": "DE-HE",
+      "G8": 30,
+      "G9": 30
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "landscapeConstant": "CANONICAL_POLITICS_ECONOMICS_ID",
+      "jurisdiction": "DE-HH",
+      "G8": 21,
+      "G9": 21
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "landscapeConstant": "CANONICAL_POLITICS_ECONOMICS_ID",
+      "jurisdiction": "DE-MV",
+      "G8": 17,
+      "G9": 17
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "landscapeConstant": "CANONICAL_POLITICS_ECONOMICS_ID",
+      "jurisdiction": "DE-NW",
+      "G8": 27,
+      "G9": 27
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "landscapeConstant": "CANONICAL_POLITICS_ECONOMICS_ID",
+      "jurisdiction": "DE-RP",
+      "G8": 18,
+      "G9": 18
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "landscapeConstant": "CANONICAL_POLITICS_ECONOMICS_ID",
+      "jurisdiction": "DE-SH",
+      "G8": 34,
+      "G9": 34
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "landscapeConstant": "CANONICAL_POLITICS_ECONOMICS_ID",
+      "jurisdiction": "DE-SL",
+      "G8": 18,
+      "G9": 18
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "landscapeConstant": "CANONICAL_POLITICS_ECONOMICS_ID",
+      "jurisdiction": "DE-SN",
+      "G8": 19,
+      "G9": 19
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "landscapeConstant": "CANONICAL_POLITICS_ECONOMICS_ID",
+      "jurisdiction": "DE-ST",
+      "G8": 19,
+      "G9": 19
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "landscapeConstant": "CANONICAL_POLITICS_ECONOMICS_ID",
+      "jurisdiction": "DE-TH",
+      "G8": 18,
+      "G9": 18
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "landscapeConstant": "CANONICAL_ECONOMICS_ID",
+      "jurisdiction": "DE-BB",
+      "G8": 82,
+      "G9": 82
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "landscapeConstant": "CANONICAL_ECONOMICS_ID",
+      "jurisdiction": "DE-BE",
+      "G8": 82,
+      "G9": 82
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "landscapeConstant": "CANONICAL_ECONOMICS_ID",
+      "jurisdiction": "DE-BY",
+      "G8": 128,
+      "G9": 128
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "landscapeConstant": "CANONICAL_ECONOMICS_ID",
+      "jurisdiction": "DE-HB",
+      "G8": 40,
+      "G9": 40
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "landscapeConstant": "CANONICAL_ECONOMICS_ID",
+      "jurisdiction": "DE-HH",
+      "G8": 38,
+      "G9": 38
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "landscapeConstant": "CANONICAL_ECONOMICS_ID",
+      "jurisdiction": "DE-MV",
+      "G8": 26,
+      "G9": 26
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "landscapeConstant": "CANONICAL_ECONOMICS_ID",
+      "jurisdiction": "DE-NI",
+      "G8": 47,
+      "G9": 47
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "landscapeConstant": "CANONICAL_ECONOMICS_ID",
+      "jurisdiction": "DE-NW",
+      "G8": 48,
+      "G9": 48
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "landscapeConstant": "CANONICAL_ECONOMICS_ID",
+      "jurisdiction": "DE-RP",
+      "G8": 40,
+      "G9": 40
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "landscapeConstant": "CANONICAL_ECONOMICS_ID",
+      "jurisdiction": "DE-SH",
+      "G8": 46,
+      "G9": 46
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "landscapeConstant": "CANONICAL_ECONOMICS_ID",
+      "jurisdiction": "DE-SL",
+      "G8": 40,
+      "G9": 40
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "landscapeConstant": "CANONICAL_ECONOMICS_ID",
+      "jurisdiction": "DE-SN",
+      "G8": 37,
+      "G9": 37
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "landscapeConstant": "CANONICAL_ECONOMICS_ID",
+      "jurisdiction": "DE-ST",
+      "G8": 37,
+      "G9": 37
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "landscapeConstant": "CANONICAL_ECONOMICS_ID",
+      "jurisdiction": "DE-TH",
+      "G8": 78,
+      "G9": 78
+    }
+  ],
+  "existingAdditionalM6MethodNumberOfEndpointScopeChecks": 112,
+  "fixtureFieldPatch": {
+    "sourcePath": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+    "afterSha256": "d06cde2414307e48a38d148a0b900e1168cb223721c77cd806bbef5eb07e8226",
+    "changedExistingInformaticsRows": [
+      "DE-HH",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SN"
+    ],
+    "otherTestDataOrAssertionsChangedByThisFollowup": false,
+    "nativeBeforeAfterEvidence": "all-twenty-eight-native-target-set-deltas.actual.json",
+    "preexistingParentBioBW82ExpectationKept": true
+  },
+  "activeProductionEditsByThisFollowup": false,
+  "newScientificReviewsClaimed": false,
+  "newM7Closures": 0,
+  "humanApproval": false
+}

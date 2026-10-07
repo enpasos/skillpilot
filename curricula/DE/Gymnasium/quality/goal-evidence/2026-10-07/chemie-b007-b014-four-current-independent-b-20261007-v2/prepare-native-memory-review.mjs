@@ -1,0 +1,33 @@
+import {createHash} from 'node:crypto';
+import {readFileSync,writeFileSync,readdirSync,mkdirSync} from 'node:fs';
+import {resolve} from 'node:path';
+const own='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b007-b014-four-current-independent-b-20261007-v2';
+const author='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b007-b014-four-current479-native-refresh-author-20261007-v2';
+const registry=JSON.parse(readFileSync('curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json','utf8'));
+const current=JSON.parse(readFileSync(registry.subjects.find(s=>s.subject==='chemie').memoryReviewConfigPath,'utf8'));
+const landscapePath=author+'/memory/canonical.current480-with-exact-support-node.inactive.validation-only.json';
+const landscape=JSON.parse(readFileSync(landscapePath,'utf8'));
+const byId=new Map(landscape.goals.map(g=>[g.id,g]));
+const stable=v=>Array.isArray(v)?`[${v.map(stable).join(',')}]`:v&&typeof v==='object'?`{${Object.entries(v).sort(([a],[b])=>a.localeCompare(b)).map(([k,x])=>JSON.stringify(k)+':'+stable(x)).join(',')}}`:JSON.stringify(v);
+const digest=v=>'sha256:'+createHash('sha256').update(v).digest('hex');
+const norm=v=>String(v??'').normalize('NFKC').replace(/\s+/g,' ').trim();
+const goalfp=g=>digest(stable({ruleVersion:current.ruleVersion,goalId:g.id,shortKey:g.shortKey??'',title:norm(g.title),titleEn:norm(g.titleEn),description:norm(g.description),descriptionEn:norm(g.descriptionEn),phase:norm(g.dimensionTags?.phase),area:norm(g.dimensionTags?.area),topicCode:norm(g.dimensionTags?.topicCode),nodeKind:norm(g.nodeKind)}));
+const rows=readFileSync(current.reviewPath,'utf8').trimEnd().split('\n');
+const now=new Date().toISOString();
+const changed=new Map();
+for (const id of ['9e656697-fc05-5aa9-9aca-871af2e89eb7','28bb9d15-f865-5843-a035-6066580fea64']){
+ const old=JSON.parse(rows.find(l=>JSON.parse(l).goalId===id));
+ changed.set(id,{...old,fingerprint:goalfp(byId.get(id)),status:'memory_required',memoryUseful:true,memoryGoalIds:[id.startsWith('9e65')?'1e372b97-6f1c-596c-8a8b-fc03193d784a':'417e65ec-68be-5f2e-9452-c3ba9b1d362f'],deckIds:[id.startsWith('9e65')?'de_gymnasium_chemistry_basics_seki':'de_gymnasium_chemistry_arrhenius_names_formulas'],reviewedAt:now,reviewer:'Codex independent B; machine review only',reason:id.startsWith('9e65')?'Aktuelle begrenzte Kennzeichnungsdeutung tatsächlich geprüft. Die kompakte vorhandene GHS-Bedeutungskarte chem_basics_001 bleibt als grundlegender Symbolabruf notwendig; konkrete H-Codes und fehlende Stoffangaben werden in bereitgestellten Informationen nachgeschlagen. Kein Entsorgungs-/Handlungsdeck und kein Mastery-Nachweis durch Kartenabruf.':'Die neun ausdrücklich verlangten Stoffnamen und Formeln sowie gebräuchlichen Lösungsnamen benötigen kompakten Abruf. Alle 18 tatsächlichen DE/EN-Primärkarten wurden einzeln fachlich und auf Gegenrichtung, Formeln sowie Stoff/Lösung-Unterscheidung geprüft. Arrhenius-Erklärung und frischer Teilchentransfer werden durch Aufgaben belegt, nicht durch Memory. Der konkrete neue Memoryknoten bleibt bis separater geprüfter Integration inaktiv.'});
+}
+mkdirSync(own+'/memory',{recursive:true});
+const reviewPath=own+'/memory/current378-with-two-independent-decisions.records.jsonl';
+writeFileSync(reviewPath,rows.map(l=>changed.has(JSON.parse(l).goalId)?JSON.stringify(changed.get(JSON.parse(l).goalId)):l).join('\n')+'\n');
+const oldcards=readFileSync(current.cardReviewPath,'utf8').trimEnd().split('\n');
+const deck=JSON.parse(readFileSync(author+'/reused-evidence/de_gymnasium_chemistry_arrhenius_names_formulas.de.reviewed.inactive.candidate.json','utf8'));
+const cardRows=deck.cards.map(c=>({schemaVersion:1,reviewId:current.reviewId,ruleVersion:current.ruleVersion,landscapeId:current.landscapeId,deckId:deck.deckId,cardId:c.id,fingerprint:digest(stable({ruleVersion:current.ruleVersion,deckId:deck.deckId,cardId:c.id,front:c.front,back:c.back,category:c.category,tags:c.tags})),status:'kept',necessary:true,originGoalIds:['28bb9d15-f865-5843-a035-6066580fea64'],reviewedAt:now,reviewer:'Codex independent B; machine card review only',reason:'Diese tatsächliche primäre Karte wurde DE/EN einzeln auf Formel, Stoffname, Gegenrichtung und gegebenenfalls den ausdrücklich getrennten Lösungsnamen geprüft. Kompakter Abrufteil des Arrhenius-Ziels; keine Salznamen-/Mastery-/Humanfreigabe.'}));
+const cardReviewPath=own+'/memory/current55-exact-plus18-independently-read.cards.review.jsonl';writeFileSync(cardReviewPath,oldcards.concat(cardRows.map(c=>JSON.stringify(c))).join('\n')+'\n');
+const viewFiles=readdirSync(author+'/memory/current-visibility-inputs').sort();
+const config={...current,landscapePath,reviewPath,cardReviewPath,reportPath:own+'/memory/native-memory-candidate.report.md',visibilityScopeCoverageRequired:true,visibilityScopes:current.visibilityScopes.map((s,i)=>({...s,viewPath:author+'/memory/current-visibility-inputs/'+viewFiles[i]}))};
+writeFileSync(own+'/memory/current378-independent-b.candidate.config.json',JSON.stringify(config,null,2)+'\n');
+writeFileSync(own+'/memory/preparation-preservation.actual.json',JSON.stringify({generatedAt:now,reusedBaselineReview:current.reviewPath,reusedBaselineCards:current.cardReviewPath,unchangedGoalRows:rows.length-2,newActualDecisions:2,unchangedCardRows:oldcards.length,newActualCardDecisions:18,actualCandidateGoalCount:landscape.goals.length,curricularIncrease:0,activeWrites:0,humanApproval:false},null,2)+'\n');
+console.log(JSON.stringify({goalRows:rows.length,newlyReviewedGoals:2,cardRows:oldcards.length+cardRows.length,newlyReviewedCards:18,config:own+'/memory/current378-independent-b.candidate.config.json'}));

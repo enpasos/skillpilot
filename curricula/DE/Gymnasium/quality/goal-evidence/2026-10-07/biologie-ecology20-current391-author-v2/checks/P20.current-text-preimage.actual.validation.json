@@ -1,0 +1,36 @@
+{
+  "authorRole": "author-not-independent-review",
+  "commands": [
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-author-v2/P20.current-text-preimage.author.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-author-v2/P20.current-text-preimage.author.candidates.json"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-author-v2/P20.current-text-preimage.author.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "profiles": 20,
+  "casePairs": 40,
+  "wholeTwentyGoalsEqualActive": true,
+  "wholeCanonicalCount": 473,
+  "aiCandidateNeedsHumanReview": 20,
+  "approved": 0,
+  "E1G1": 20,
+  "inventedReviewRunIds": false,
+  "realLearnerEvidence": false,
+  "strictGainClaimed": 0,
+  "finalRasterAndNativePageReviewPending": true
+}

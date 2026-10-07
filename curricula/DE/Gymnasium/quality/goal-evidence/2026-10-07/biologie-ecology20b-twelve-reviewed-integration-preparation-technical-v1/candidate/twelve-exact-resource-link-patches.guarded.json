@@ -1,0 +1,590 @@
+{
+  "role": "inactive prospective reviewed12 preparation; Root applies only after exact A/B review and own technical checks",
+  "beforeBindings": {
+    "canonical": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "sha256:fd847b068f9b0d6a62b7ebcfb4d66e859eb3e24457ccc674c16bddfc76dc33f7",
+      "bytes": 1080790
+    },
+    "kinds": {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/biologie.semantic-kinds.json",
+      "sha256": "sha256:4c095a5ada18ab9cf012712b1df3b7de59908e416321da7cb63ac01cf449dfbb",
+      "bytes": 152765
+    },
+    "qa": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/biologie.qa.json",
+      "sha256": "sha256:241cd2f4a875f799d07ed186b09bf249db9b068c264c63ffde285e40a4d81e6b",
+      "bytes": 582775
+    },
+    "registry": {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "sha256:38bc89a0c3a0e2dfbf1894756a3955aac2c5caa4e94a908efa8282338cced53c",
+      "bytes": 164277
+    },
+    "ledger": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/in-flight-work-ledger.json",
+      "sha256": "sha256:2c99a3dc1fac00964e6ce5c52a566f3af1cc68a1d43e522ade0fc49c81e6a40e",
+      "bytes": 1385
+    }
+  },
+  "selectedGoalIds": [
+    "ea5d75af-d97f-593a-bea4-722a41d12eb8",
+    "5ef8ffbf-aed6-5952-910a-1553580bac54",
+    "5bfb8ede-235c-580f-b2c9-4eb84bba4d0a",
+    "52d195f7-af13-570a-adc5-0eb27eaab6da",
+    "914fb22b-e19e-5f5e-adfd-eff27bf5f1f5",
+    "4c037a86-d04e-58c7-85e8-75a5b26b8d36",
+    "68bb29c8-7ef2-5c0c-a072-0c7dfc87a76c",
+    "ac4a650d-45a9-519d-9e4d-1f87910f8844",
+    "e6120e08-b704-553c-a038-b4e7a82828d1",
+    "258218b2-8b29-559b-b48f-9525b7cdefbc",
+    "ca6d4912-f4d2-5c57-86d9-70aa090cc32f",
+    "25eaa5cf-e8f9-573d-8a53-8ae9d1cd02e2"
+  ],
+  "wholeCanonicalCount": 474,
+  "curricularAtomicCount": 391,
+  "exactOtherGoalBodies": 462,
+  "protectedStrictGoalIds": [
+    "01819a6c-f965-5b33-8c4e-07affb3c659f",
+    "0263fb84-33b1-52a3-a47e-dad56be7c9bc",
+    "02cabf54-0b70-572c-b85a-7409e686a48e",
+    "0380f992-723a-513d-8c3f-8ca7f8e0394f",
+    "04d770b3-ba5e-5438-88ca-110cbaeba62c",
+    "05358518-f66c-5c1b-ad3f-d16211d0fc1c",
+    "05ff76d0-5850-5984-9855-45e77f06a94e",
+    "080b10c7-f308-57ff-b067-3bd189e37fea",
+    "0842054a-1d57-53b0-b0f1-9f10374d6699",
+    "08fa0412-7bcb-53b5-8660-5c4effa680ff",
+    "0ac51522-352c-50d1-8b95-8d3992b4db15",
+    "0b55e592-3335-52e4-8b4f-79c53f32400b",
+    "0d5a960d-480f-55fb-9116-c08fffe217b3",
+    "0daa79f6-8f61-5506-98f9-65db83062ba8",
+    "0dbe758c-73c8-530b-bbbd-fb55540f942f",
+    "0dd8380d-b542-5126-8d8e-f95d9ccded90",
+    "0f1549f6-8341-53b0-8161-5eaeb2b37809",
+    "1042bb24-96ba-553b-a956-abaf9c74dc43",
+    "11675f1a-5de2-5926-be78-1e8275f19f5b",
+    "11e90f71-a9a4-5a57-b619-ad5d81e81f96",
+    "19758e09-1bc4-5ee4-bf52-89b3bc28e947",
+    "1984fd66-c117-5c29-87b3-1c1626e4ba81",
+    "1b38144f-cdbd-5dfe-a792-94669bdc31d8",
+    "2164195d-2987-54d6-8f9a-cbb1c3a3b6cb",
+    "2381d2bb-176c-5903-8c6e-82f4bd5023a4",
+    "2517be3f-e42f-5e41-889d-70f00dc24686",
+    "26aa47b7-e5cc-5131-8980-0ec3271758b6",
+    "28850d2e-062d-5341-ac66-bd787a8fc84f",
+    "2ae2da43-73d5-578f-84f4-be0585a7d8f9",
+    "2d061f9f-bc88-51e0-af33-f6e8e00b2dee",
+    "2eaabe90-46bf-555e-876b-d853434a322d",
+    "3417bb28-e707-57fc-8484-311d4966e26a",
+    "347110a1-1d2e-5195-8acc-64e7e3893ce5",
+    "359e6313-cd86-54d1-bee5-8e680101dc32",
+    "36d3bf01-e68b-55be-8e20-5652ada36a51",
+    "37147890-84e4-5ba7-80e1-92fbf2070d7c",
+    "3891b735-9d0d-5eef-b653-6ad58b9181f6",
+    "3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04",
+    "3d6b2504-346e-521f-8372-7269ec3a7091",
+    "440854be-7f06-5678-91cb-ba8dcab56959",
+    "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+    "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+    "49dbe8fa-7c4a-5ef5-9cd7-a40b60bf88dd",
+    "4f631f78-e13a-58e5-9092-f4db0b8d377a",
+    "56663bb4-dad6-5ffd-a486-00f29600ef66",
+    "5a47f591-f2ac-5457-872a-22c89c2dbe93",
+    "5b2571d9-f079-52b2-b21b-8f389c7409f4",
+    "5c2ce7b1-30ba-5e9c-99de-1ffac126ec13",
+    "5eb7c923-469d-5934-b1e8-292e1bb40d95",
+    "6199e4c7-06d1-559a-98ab-acf805a478ba",
+    "62e52002-b8df-533e-9972-028f3ee60cd1",
+    "6a5a9a7a-635c-5cd9-841f-c6b812d147e5",
+    "6ae33a8e-874c-53ee-858f-c64f1848cfbc",
+    "713e062d-2bb9-5fbc-8040-129387c7d3ca",
+    "72fac740-85c5-593f-9115-8a98d0106bf1",
+    "73b66ead-e44a-5486-98e3-1fb3f99620a6",
+    "78748ef2-93fb-5ec3-8c1e-90e42b9ea863",
+    "7a79fda6-d629-5aea-9305-fc19f174bc4a",
+    "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f",
+    "804d7449-c5b5-512f-8f55-a4a6746f678c",
+    "80a61704-a372-5ba3-adb8-340fbde05433",
+    "85441f5a-aa66-55dd-bca4-a1c4cb0a745f",
+    "861fbc18-06a1-56e3-8619-fd47534d7a5d",
+    "87ce1746-9904-56ad-9705-ffabbd918c5b",
+    "89ce2fc2-67ff-587a-b448-227cb68f53e1",
+    "8b23f8fb-555d-5720-b5f2-dd6f28a0e786",
+    "8e7c6b98-fb1a-5f08-8531-685a4ffba4ad",
+    "8e7f50cb-bad6-5356-b142-b7d026b7f374",
+    "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+    "8f6933b1-6e02-5512-acf2-a90a7fb9cb75",
+    "9344c5ce-a07a-5d02-8c56-35320f19a934",
+    "9425347d-25bd-5095-9198-7574f255c938",
+    "946ce2e7-c30d-5670-839d-003b0619c284",
+    "97b24279-def0-5ce6-8726-a1cac9cd38ad",
+    "9b966664-906b-5a5d-8008-cae18de043aa",
+    "9d830422-acc7-5fa8-aee9-4dae4cedbf49",
+    "9d931642-2287-5277-adb2-082403ad25af",
+    "9e459608-bdea-55a1-b9c5-214bbd741be6",
+    "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+    "a46cafde-7359-5249-8754-19aaa3174ba4",
+    "a545b28f-81de-5495-a537-c81cb66daaba",
+    "a8af382c-0410-5aef-8908-b72b2fb8a476",
+    "aab2a358-b2ee-57a5-a957-8fb9845506b1",
+    "ac9e824f-003c-50ac-8751-2b8456004c63",
+    "ae3f50bf-33c7-535f-8d13-191ee330c0fa",
+    "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+    "b6b82292-471b-577e-bff9-9e7951b0a642",
+    "bfb5dfb6-8e35-5452-b581-96e061d8b826",
+    "c05e217f-33fc-5a11-ba75-1397fad3ae0a",
+    "c5435624-7b6a-5330-b8cc-0d3186e19911",
+    "c824f2d9-e266-5e1b-b9aa-79ecb8eb0f86",
+    "c9a06264-cce2-54dd-9604-46dd5949f02e",
+    "ce19b80f-d392-5851-ac92-750c85adfb3e",
+    "ceb54223-197c-5289-a9c6-19358912e144",
+    "d06adc48-b845-54af-b17c-06b5cb910b11",
+    "d0c3e6a7-581b-57bd-8027-e940c6b77af8",
+    "d137e36c-bcdd-5e81-98fa-59af778f1439",
+    "d71e2310-2331-5e66-b7df-c2807fccb329",
+    "d7f1ce33-002e-5da6-9a74-bcfb28ea06d3",
+    "d8d365e0-8561-546d-b004-c72202ad460e",
+    "d97f6957-fbc9-569c-8648-f7df5eb9dfd8",
+    "dd196715-a463-5379-8cdb-7a951372f5fd",
+    "e063b97d-9e03-5094-8c73-72a3eeec803d",
+    "e1117126-4e78-5a37-a645-2debc167219b",
+    "e1484671-208b-5ad1-a71d-7d994fb2174b",
+    "e3fb5f1d-e277-5e28-8883-45821b972607",
+    "e4791f8d-ea87-504b-979e-2f976e72e66d",
+    "e566ae2f-1294-55c0-ba4c-6aeb4954118c",
+    "e70d8a85-2dea-5165-919b-200fee9f4db4",
+    "e76315b1-2fed-525c-8efa-ca09da46f632",
+    "ebf5730d-4e40-5d16-ae93-05106bcd2f70",
+    "ec88fc1d-ee0f-5a01-9464-dc358241050e",
+    "eda5b810-d9d3-5319-9c4f-5b48715b26f2",
+    "f2306104-e846-5c25-bfbf-5f3e33db623a",
+    "f539fe51-1f6f-5e04-abfe-af3d2e4d2aad",
+    "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+    "f6280154-d57c-599c-94bf-73313005a6df",
+    "f95b3b49-dacd-5d17-be2d-98b404b709c3",
+    "fc8c4b02-02f2-5ad6-b481-224d36121da1",
+    "fdc82200-dfc1-53ec-a5b9-bd4cfaf1e35f",
+    "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+    "ffef97e3-12d6-5090-9816-46ab9e57fae2"
+  ],
+  "strictBaselineReport": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-cellcycle-evolution-two-reviewed-active-integration-root-v1/active-after-two-central.actual.json",
+    "sha256": "sha256:6054328f6e3db41502695c081d7e2dd96a5387db70c1be9ce975de418c78bef7",
+    "bytes": 180874
+  },
+  "rows": [
+    {
+      "goalId": "ea5d75af-d97f-593a-bea4-722a41d12eb8",
+      "changedFields": [
+        "resourceLinks"
+      ],
+      "oldValue": null,
+      "newValue": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "ea5d75af-d97f-593a-bea4-722a41d12eb8",
+          "title": "Visualisierung: Trophische Beziehungen erklären",
+          "url": "/assets/goal-visualizations/biologie/ea5d75af-d97f-593a-bea4-722a41d12eb8/ea5d75af-d97f-593a-bea4-722a41d12eb8.png",
+          "provider": "OpenAI ChatGPT/Codex built-in image_gen",
+          "description": "Nahrungsnetz aus Wiesenpflanzen, Heuschrecke, Frosch, Maus und Storch mit Energiezufuhr durch die Sonne und Wärmeabgabe.",
+          "altText": "Nahrungsnetz aus Wiesenpflanzen, Heuschrecke, Frosch, Maus und Storch mit Energiezufuhr durch die Sonne und Wärmeabgabe.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "sourceRasterPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/candidates/ea5d75af-d97f-593a-bea4-722a41d12eb8/candidate-v2.png",
+      "selectedRasterPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/selected-images/ea5d75af-d97f-593a-bea4-722a41d12eb8.png",
+      "sha256": "613c21f23c0900675be1a25caa6d172930bd52e42153b657d477fa99105cacda",
+      "width": 1672,
+      "height": 941,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/candidates/ea5d75af-d97f-593a-bea4-722a41d12eb8/revision-v2.prompt.md",
+      "futureCanonicalPNG": "curricula/DE/Gymnasium/visualizations/biologie/ea5d75af-d97f-593a-bea4-722a41d12eb8/ea5d75af-d97f-593a-bea4-722a41d12eb8.png",
+      "futureAppPNG": "app/public/assets/goal-visualizations/biologie/ea5d75af-d97f-593a-bea4-722a41d12eb8/ea5d75af-d97f-593a-bea4-722a41d12eb8.png",
+      "futureBackendPNG": "backend/src/main/resources/static/assets/goal-visualizations/biologie/ea5d75af-d97f-593a-bea4-722a41d12eb8/ea5d75af-d97f-593a-bea4-722a41d12eb8.png",
+      "authorCandidateOnly": true,
+      "actualIndependentImageApproval": false
+    },
+    {
+      "goalId": "5ef8ffbf-aed6-5952-910a-1553580bac54",
+      "changedFields": [
+        "resourceLinks"
+      ],
+      "oldValue": null,
+      "newValue": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "5ef8ffbf-aed6-5952-910a-1553580bac54",
+          "title": "Visualisierung: Pflanzliche Anpassungen",
+          "url": "/assets/goal-visualizations/biologie/5ef8ffbf-aed6-5952-910a-1553580bac54/5ef8ffbf-aed6-5952-910a-1553580bac54.png",
+          "provider": "OpenAI ChatGPT/Codex built-in image_gen",
+          "description": "Vergleich schematischer trockener und feuchter Blätter: Cuticula, innere Gewebe und Wasserabgabe durch die unteren Spaltöffnungen.",
+          "altText": "Vergleich schematischer trockener und feuchter Blätter: Cuticula, innere Gewebe und Wasserabgabe durch die unteren Spaltöffnungen.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "sourceRasterPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/candidates/5ef8ffbf-aed6-5952-910a-1553580bac54/candidate-v2.png",
+      "selectedRasterPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/selected-images/5ef8ffbf-aed6-5952-910a-1553580bac54.png",
+      "sha256": "bf7613f5b37dfd47cda790914f7bde9bc6a99ba122d65f0c512c7981db7496e3",
+      "width": 1672,
+      "height": 941,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/candidates/5ef8ffbf-aed6-5952-910a-1553580bac54/revision-v2.prompt.md",
+      "futureCanonicalPNG": "curricula/DE/Gymnasium/visualizations/biologie/5ef8ffbf-aed6-5952-910a-1553580bac54/5ef8ffbf-aed6-5952-910a-1553580bac54.png",
+      "futureAppPNG": "app/public/assets/goal-visualizations/biologie/5ef8ffbf-aed6-5952-910a-1553580bac54/5ef8ffbf-aed6-5952-910a-1553580bac54.png",
+      "futureBackendPNG": "backend/src/main/resources/static/assets/goal-visualizations/biologie/5ef8ffbf-aed6-5952-910a-1553580bac54/5ef8ffbf-aed6-5952-910a-1553580bac54.png",
+      "authorCandidateOnly": true,
+      "actualIndependentImageApproval": false
+    },
+    {
+      "goalId": "5bfb8ede-235c-580f-b2c9-4eb84bba4d0a",
+      "changedFields": [
+        "resourceLinks"
+      ],
+      "oldValue": null,
+      "newValue": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "5bfb8ede-235c-580f-b2c9-4eb84bba4d0a",
+          "title": "Visualisierung: Tierische Anpassungen",
+          "url": "/assets/goal-visualizations/biologie/5bfb8ede-235c-580f-b2c9-4eb84bba4d0a/5bfb8ede-235c-580f-b2c9-4eb84bba4d0a.png",
+          "provider": "OpenAI ChatGPT/Codex built-in image_gen",
+          "description": "Polarfuchs mit kompakter Körperform und kleinen Ohren gegenüber Fennek mit großen gut durchbluteten Ohren und unterschiedlichen Wärmebeziehungen.",
+          "altText": "Polarfuchs mit kompakter Körperform und kleinen Ohren gegenüber Fennek mit großen gut durchbluteten Ohren und unterschiedlichen Wärmebeziehungen.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "sourceRasterPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/candidates/5bfb8ede-235c-580f-b2c9-4eb84bba4d0a/candidate-v1.png",
+      "selectedRasterPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/selected-images/5bfb8ede-235c-580f-b2c9-4eb84bba4d0a.png",
+      "sha256": "87023c9455942d9ffc3023e0cf3ba21f448640a2f41ab151aab9105b4b10ecfd",
+      "width": 1672,
+      "height": 941,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/5bfb8ede-235c-580f-b2c9-4eb84bba4d0a.prompt.md",
+      "futureCanonicalPNG": "curricula/DE/Gymnasium/visualizations/biologie/5bfb8ede-235c-580f-b2c9-4eb84bba4d0a/5bfb8ede-235c-580f-b2c9-4eb84bba4d0a.png",
+      "futureAppPNG": "app/public/assets/goal-visualizations/biologie/5bfb8ede-235c-580f-b2c9-4eb84bba4d0a/5bfb8ede-235c-580f-b2c9-4eb84bba4d0a.png",
+      "futureBackendPNG": "backend/src/main/resources/static/assets/goal-visualizations/biologie/5bfb8ede-235c-580f-b2c9-4eb84bba4d0a/5bfb8ede-235c-580f-b2c9-4eb84bba4d0a.png",
+      "authorCandidateOnly": true,
+      "actualIndependentImageApproval": false
+    },
+    {
+      "goalId": "52d195f7-af13-570a-adc5-0eb27eaab6da",
+      "changedFields": [
+        "resourceLinks"
+      ],
+      "oldValue": null,
+      "newValue": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "52d195f7-af13-570a-adc5-0eb27eaab6da",
+          "title": "Visualisierung: Ökologische Modelle anwenden",
+          "url": "/assets/goal-visualizations/biologie/52d195f7-af13-570a-adc5-0eb27eaab6da/52d195f7-af13-570a-adc5-0eb27eaab6da.png",
+          "provider": "OpenAI ChatGPT/Codex built-in image_gen",
+          "description": "Idealisierte Bestandskurven: grüne Hasenpopulation steigt vor der orangefarbenen Luchspopulation an; Wetter zeigt eine mögliche Modellstörung.",
+          "altText": "Idealisierte Bestandskurven: grüne Hasenpopulation steigt vor der orangefarbenen Luchspopulation an; Wetter zeigt eine mögliche Modellstörung.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "sourceRasterPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/candidates/52d195f7-af13-570a-adc5-0eb27eaab6da/candidate-v2.png",
+      "selectedRasterPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/selected-images/52d195f7-af13-570a-adc5-0eb27eaab6da.png",
+      "sha256": "bd8f1b79250eef66fffb6353d22a8f783636ad37c632790252ca7ef598edb9de",
+      "width": 1672,
+      "height": 941,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/candidates/52d195f7-af13-570a-adc5-0eb27eaab6da/revision-v2.prompt.md",
+      "futureCanonicalPNG": "curricula/DE/Gymnasium/visualizations/biologie/52d195f7-af13-570a-adc5-0eb27eaab6da/52d195f7-af13-570a-adc5-0eb27eaab6da.png",
+      "futureAppPNG": "app/public/assets/goal-visualizations/biologie/52d195f7-af13-570a-adc5-0eb27eaab6da/52d195f7-af13-570a-adc5-0eb27eaab6da.png",
+      "futureBackendPNG": "backend/src/main/resources/static/assets/goal-visualizations/biologie/52d195f7-af13-570a-adc5-0eb27eaab6da/52d195f7-af13-570a-adc5-0eb27eaab6da.png",
+      "authorCandidateOnly": true,
+      "actualIndependentImageApproval": false
+    },
+    {
+      "goalId": "914fb22b-e19e-5f5e-adfd-eff27bf5f1f5",
+      "changedFields": [
+        "resourceLinks"
+      ],
+      "oldValue": null,
+      "newValue": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "914fb22b-e19e-5f5e-adfd-eff27bf5f1f5",
+          "title": "Visualisierung: Schutz- und Managementstrategien",
+          "url": "/assets/goal-visualizations/biologie/914fb22b-e19e-5f5e-adfd-eff27bf5f1f5/914fb22b-e19e-5f5e-adfd-eff27bf5f1f5.png",
+          "provider": "OpenAI ChatGPT/Codex built-in image_gen",
+          "description": "Schematischer Vergleich befestigter und naturnaher Flussufer mit Lebensraumschutz und Beobachtung zur Maßnahmenkontrolle.",
+          "altText": "Schematischer Vergleich befestigter und naturnaher Flussufer mit Lebensraumschutz und Beobachtung zur Maßnahmenkontrolle.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "sourceRasterPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/candidates/914fb22b-e19e-5f5e-adfd-eff27bf5f1f5/candidate-v1.png",
+      "selectedRasterPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/selected-images/914fb22b-e19e-5f5e-adfd-eff27bf5f1f5.png",
+      "sha256": "c38a83fa145e058a944838bdeb32f1865fdf876b88154749f91352eb93fb1531",
+      "width": 1672,
+      "height": 941,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/914fb22b-e19e-5f5e-adfd-eff27bf5f1f5.prompt.md",
+      "futureCanonicalPNG": "curricula/DE/Gymnasium/visualizations/biologie/914fb22b-e19e-5f5e-adfd-eff27bf5f1f5/914fb22b-e19e-5f5e-adfd-eff27bf5f1f5.png",
+      "futureAppPNG": "app/public/assets/goal-visualizations/biologie/914fb22b-e19e-5f5e-adfd-eff27bf5f1f5/914fb22b-e19e-5f5e-adfd-eff27bf5f1f5.png",
+      "futureBackendPNG": "backend/src/main/resources/static/assets/goal-visualizations/biologie/914fb22b-e19e-5f5e-adfd-eff27bf5f1f5/914fb22b-e19e-5f5e-adfd-eff27bf5f1f5.png",
+      "authorCandidateOnly": true,
+      "actualIndependentImageApproval": false
+    },
+    {
+      "goalId": "4c037a86-d04e-58c7-85e8-75a5b26b8d36",
+      "changedFields": [
+        "resourceLinks"
+      ],
+      "oldValue": null,
+      "newValue": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "4c037a86-d04e-58c7-85e8-75a5b26b8d36",
+          "title": "Visualisierung: Torpor und Winterschlaf",
+          "url": "/assets/goal-visualizations/biologie/4c037a86-d04e-58c7-85e8-75a5b26b8d36/4c037a86-d04e-58c7-85e8-75a5b26b8d36.png",
+          "provider": "OpenAI ChatGPT/Codex built-in image_gen",
+          "description": "Torpor und Winterschlaf mit abgesenkter Körpertemperatur und Stoffwechselrate; kurze Wiedererwärmungsphasen im längeren Winterverlauf.",
+          "altText": "Torpor und Winterschlaf mit abgesenkter Körpertemperatur und Stoffwechselrate; kurze Wiedererwärmungsphasen im längeren Winterverlauf.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "sourceRasterPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/candidates/4c037a86-d04e-58c7-85e8-75a5b26b8d36/candidate-v2.png",
+      "selectedRasterPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/selected-images/4c037a86-d04e-58c7-85e8-75a5b26b8d36.png",
+      "sha256": "0a8a51db6257cfd1d4ad09823a16b74696ad4d867c801c44518defdfac101446",
+      "width": 1672,
+      "height": 941,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/candidates/4c037a86-d04e-58c7-85e8-75a5b26b8d36/revision-v2.prompt.md",
+      "futureCanonicalPNG": "curricula/DE/Gymnasium/visualizations/biologie/4c037a86-d04e-58c7-85e8-75a5b26b8d36/4c037a86-d04e-58c7-85e8-75a5b26b8d36.png",
+      "futureAppPNG": "app/public/assets/goal-visualizations/biologie/4c037a86-d04e-58c7-85e8-75a5b26b8d36/4c037a86-d04e-58c7-85e8-75a5b26b8d36.png",
+      "futureBackendPNG": "backend/src/main/resources/static/assets/goal-visualizations/biologie/4c037a86-d04e-58c7-85e8-75a5b26b8d36/4c037a86-d04e-58c7-85e8-75a5b26b8d36.png",
+      "authorCandidateOnly": true,
+      "actualIndependentImageApproval": false
+    },
+    {
+      "goalId": "68bb29c8-7ef2-5c0c-a072-0c7dfc87a76c",
+      "changedFields": [
+        "resourceLinks"
+      ],
+      "oldValue": null,
+      "newValue": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "68bb29c8-7ef2-5c0c-a072-0c7dfc87a76c",
+          "title": "Visualisierung: Ökologischen Fußabdruck beurteilen",
+          "url": "/assets/goal-visualizations/biologie/68bb29c8-7ef2-5c0c-a072-0c7dfc87a76c/68bb29c8-7ef2-5c0c-a072-0c7dfc87a76c.png",
+          "provider": "OpenAI ChatGPT/Codex built-in image_gen",
+          "description": "Ökologischer Fußabdruck für Ernährung, Mobilität und Wohnen wird mit Biokapazität verglichen; mögliche Handlungsalternativen bleiben offen.",
+          "altText": "Ökologischer Fußabdruck für Ernährung, Mobilität und Wohnen wird mit Biokapazität verglichen; mögliche Handlungsalternativen bleiben offen.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "sourceRasterPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/candidates/68bb29c8-7ef2-5c0c-a072-0c7dfc87a76c/candidate-v1.png",
+      "selectedRasterPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/selected-images/68bb29c8-7ef2-5c0c-a072-0c7dfc87a76c.png",
+      "sha256": "3381ed1dd550d381d4408c8f0d37a5d741f8b77b7aa4b42def6e84b3596d2ac5",
+      "width": 1672,
+      "height": 941,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/68bb29c8-7ef2-5c0c-a072-0c7dfc87a76c.prompt.md",
+      "futureCanonicalPNG": "curricula/DE/Gymnasium/visualizations/biologie/68bb29c8-7ef2-5c0c-a072-0c7dfc87a76c/68bb29c8-7ef2-5c0c-a072-0c7dfc87a76c.png",
+      "futureAppPNG": "app/public/assets/goal-visualizations/biologie/68bb29c8-7ef2-5c0c-a072-0c7dfc87a76c/68bb29c8-7ef2-5c0c-a072-0c7dfc87a76c.png",
+      "futureBackendPNG": "backend/src/main/resources/static/assets/goal-visualizations/biologie/68bb29c8-7ef2-5c0c-a072-0c7dfc87a76c/68bb29c8-7ef2-5c0c-a072-0c7dfc87a76c.png",
+      "authorCandidateOnly": true,
+      "actualIndependentImageApproval": false
+    },
+    {
+      "goalId": "ac4a650d-45a9-519d-9e4d-1f87910f8844",
+      "changedFields": [
+        "resourceLinks"
+      ],
+      "oldValue": null,
+      "newValue": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "ac4a650d-45a9-519d-9e4d-1f87910f8844",
+          "title": "Visualisierung: Ökosystem praktisch untersuchen",
+          "url": "/assets/goal-visualizations/biologie/ac4a650d-45a9-519d-9e4d-1f87910f8844/ac4a650d-45a9-519d-9e4d-1f87910f8844.png",
+          "provider": "OpenAI ChatGPT/Codex built-in image_gen",
+          "description": "Freilanduntersuchung mit Probeflächen, Beobachtung, Temperaturmessung und zur schreibenden Person ausgerichtetem Feldprotokoll.",
+          "altText": "Freilanduntersuchung mit Probeflächen, Beobachtung, Temperaturmessung und zur schreibenden Person ausgerichtetem Feldprotokoll.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "sourceRasterPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/candidates/ac4a650d-45a9-519d-9e4d-1f87910f8844/candidate-v1.png",
+      "selectedRasterPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/selected-images/ac4a650d-45a9-519d-9e4d-1f87910f8844.png",
+      "sha256": "af279ee1b8e8b54f8df3ff83a98ecbdf12b8cdf6e2616d8b718bfd3c2a592215",
+      "width": 1672,
+      "height": 941,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/ac4a650d-45a9-519d-9e4d-1f87910f8844.prompt.md",
+      "futureCanonicalPNG": "curricula/DE/Gymnasium/visualizations/biologie/ac4a650d-45a9-519d-9e4d-1f87910f8844/ac4a650d-45a9-519d-9e4d-1f87910f8844.png",
+      "futureAppPNG": "app/public/assets/goal-visualizations/biologie/ac4a650d-45a9-519d-9e4d-1f87910f8844/ac4a650d-45a9-519d-9e4d-1f87910f8844.png",
+      "futureBackendPNG": "backend/src/main/resources/static/assets/goal-visualizations/biologie/ac4a650d-45a9-519d-9e4d-1f87910f8844/ac4a650d-45a9-519d-9e4d-1f87910f8844.png",
+      "authorCandidateOnly": true,
+      "actualIndependentImageApproval": false
+    },
+    {
+      "goalId": "e6120e08-b704-553c-a038-b4e7a82828d1",
+      "changedFields": [
+        "resourceLinks"
+      ],
+      "oldValue": null,
+      "newValue": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "e6120e08-b704-553c-a038-b4e7a82828d1",
+          "title": "Visualisierung: Selektionsstrategien und Lebenszyklen",
+          "url": "/assets/goal-visualizations/biologie/e6120e08-b704-553c-a038-b4e7a82828d1/e6120e08-b704-553c-a038-b4e7a82828d1.png",
+          "provider": "OpenAI ChatGPT/Codex built-in image_gen",
+          "description": "r/K als idealisiertes Kontinuum: viele Nachkommen in einer gestörten Umgebung gegenüber wenigen intensiver betreuten Nachkommen in einer stabileren Umgebung.",
+          "altText": "r/K als idealisiertes Kontinuum: viele Nachkommen in einer gestörten Umgebung gegenüber wenigen intensiver betreuten Nachkommen in einer stabileren Umgebung.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "sourceRasterPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/candidates/e6120e08-b704-553c-a038-b4e7a82828d1/candidate-v1.png",
+      "selectedRasterPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/selected-images/e6120e08-b704-553c-a038-b4e7a82828d1.png",
+      "sha256": "d8b467ee1a86b728619fdf5c8bec4aee8be1f85ed16d414f48b2c5d745285c56",
+      "width": 1672,
+      "height": 941,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/e6120e08-b704-553c-a038-b4e7a82828d1.prompt.md",
+      "futureCanonicalPNG": "curricula/DE/Gymnasium/visualizations/biologie/e6120e08-b704-553c-a038-b4e7a82828d1/e6120e08-b704-553c-a038-b4e7a82828d1.png",
+      "futureAppPNG": "app/public/assets/goal-visualizations/biologie/e6120e08-b704-553c-a038-b4e7a82828d1/e6120e08-b704-553c-a038-b4e7a82828d1.png",
+      "futureBackendPNG": "backend/src/main/resources/static/assets/goal-visualizations/biologie/e6120e08-b704-553c-a038-b4e7a82828d1/e6120e08-b704-553c-a038-b4e7a82828d1.png",
+      "authorCandidateOnly": true,
+      "actualIndependentImageApproval": false
+    },
+    {
+      "goalId": "258218b2-8b29-559b-b48f-9525b7cdefbc",
+      "changedFields": [
+        "resourceLinks"
+      ],
+      "oldValue": null,
+      "newValue": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "258218b2-8b29-559b-b48f-9525b7cdefbc",
+          "title": "Visualisierung: Verhaltensanpassungen",
+          "url": "/assets/goal-visualizations/biologie/258218b2-8b29-559b-b48f-9525b7cdefbc/258218b2-8b29-559b-b48f-9525b7cdefbc.png",
+          "provider": "OpenAI ChatGPT/Codex built-in image_gen",
+          "description": "Vogelszenen zu Balz, Revierabgrenzung und gemeinsamer Jungenpflege mit schematischem Aufwand und möglichen Fortpflanzungs- und Überlebensbezügen.",
+          "altText": "Vogelszenen zu Balz, Revierabgrenzung und gemeinsamer Jungenpflege mit schematischem Aufwand und möglichen Fortpflanzungs- und Überlebensbezügen.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "sourceRasterPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/candidates/258218b2-8b29-559b-b48f-9525b7cdefbc/candidate-v1.png",
+      "selectedRasterPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/selected-images/258218b2-8b29-559b-b48f-9525b7cdefbc.png",
+      "sha256": "eee53f0645b8f67a05944cd9d594bb705dae0fb7d2800bdad853900c5addf9f1",
+      "width": 1672,
+      "height": 941,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/258218b2-8b29-559b-b48f-9525b7cdefbc.prompt.md",
+      "futureCanonicalPNG": "curricula/DE/Gymnasium/visualizations/biologie/258218b2-8b29-559b-b48f-9525b7cdefbc/258218b2-8b29-559b-b48f-9525b7cdefbc.png",
+      "futureAppPNG": "app/public/assets/goal-visualizations/biologie/258218b2-8b29-559b-b48f-9525b7cdefbc/258218b2-8b29-559b-b48f-9525b7cdefbc.png",
+      "futureBackendPNG": "backend/src/main/resources/static/assets/goal-visualizations/biologie/258218b2-8b29-559b-b48f-9525b7cdefbc/258218b2-8b29-559b-b48f-9525b7cdefbc.png",
+      "authorCandidateOnly": true,
+      "actualIndependentImageApproval": false
+    },
+    {
+      "goalId": "ca6d4912-f4d2-5c57-86d9-70aa090cc32f",
+      "changedFields": [
+        "resourceLinks"
+      ],
+      "oldValue": null,
+      "newValue": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "ca6d4912-f4d2-5c57-86d9-70aa090cc32f",
+          "title": "Visualisierung: Klimafolgen für Biodiversität",
+          "url": "/assets/goal-visualizations/biologie/ca6d4912-f4d2-5c57-86d9-70aa090cc32f/ca6d4912-f4d2-5c57-86d9-70aa090cc32f.png",
+          "provider": "OpenAI ChatGPT/Codex built-in image_gen",
+          "description": "Schematische Verlagerung geeigneter Gebirgslebensräume bei Erwärmung und mögliche zeitliche Verschiebung zwischen Blüten und Bestäubern.",
+          "altText": "Schematische Verlagerung geeigneter Gebirgslebensräume bei Erwärmung und mögliche zeitliche Verschiebung zwischen Blüten und Bestäubern.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "sourceRasterPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/candidates/ca6d4912-f4d2-5c57-86d9-70aa090cc32f/candidate-v1.png",
+      "selectedRasterPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/selected-images/ca6d4912-f4d2-5c57-86d9-70aa090cc32f.png",
+      "sha256": "ed9461baf5c6a161981d044707b7849ee43aa8725ecf72e27b9afa805f368fff",
+      "width": 1672,
+      "height": 941,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/ca6d4912-f4d2-5c57-86d9-70aa090cc32f.prompt.md",
+      "futureCanonicalPNG": "curricula/DE/Gymnasium/visualizations/biologie/ca6d4912-f4d2-5c57-86d9-70aa090cc32f/ca6d4912-f4d2-5c57-86d9-70aa090cc32f.png",
+      "futureAppPNG": "app/public/assets/goal-visualizations/biologie/ca6d4912-f4d2-5c57-86d9-70aa090cc32f/ca6d4912-f4d2-5c57-86d9-70aa090cc32f.png",
+      "futureBackendPNG": "backend/src/main/resources/static/assets/goal-visualizations/biologie/ca6d4912-f4d2-5c57-86d9-70aa090cc32f/ca6d4912-f4d2-5c57-86d9-70aa090cc32f.png",
+      "authorCandidateOnly": true,
+      "actualIndependentImageApproval": false
+    },
+    {
+      "goalId": "25eaa5cf-e8f9-573d-8a53-8ae9d1cd02e2",
+      "changedFields": [
+        "resourceLinks"
+      ],
+      "oldValue": null,
+      "newValue": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "25eaa5cf-e8f9-573d-8a53-8ae9d1cd02e2",
+          "title": "Visualisierung: Ökosystemdienstleistungen bewerten",
+          "url": "/assets/goal-visualizations/biologie/25eaa5cf-e8f9-573d-8a53-8ae9d1cd02e2/25eaa5cf-e8f9-573d-8a53-8ae9d1cd02e2.png",
+          "provider": "OpenAI ChatGPT/Codex built-in image_gen",
+          "description": "Feuchtgebiet mit Wasserreinigung, Wasserrückhalt, Schilfrohstoffen und Erholung; Geldwert und ökologische Werte werden gemeinsam abgewogen.",
+          "altText": "Feuchtgebiet mit Wasserreinigung, Wasserrückhalt, Schilfrohstoffen und Erholung; Geldwert und ökologische Werte werden gemeinsam abgewogen.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "sourceRasterPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/candidates/25eaa5cf-e8f9-573d-8a53-8ae9d1cd02e2/candidate-v2.png",
+      "selectedRasterPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20b-current391-author-v1/selected-images/25eaa5cf-e8f9-573d-8a53-8ae9d1cd02e2.png",
+      "sha256": "e4375693141df7a5063ebcf5215fafbb137bb0d439e3fd4015f3faa38557baa7",
+      "width": 1672,
+      "height": 941,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-ecology20b-current391-image-author-root-20261007-v1/candidates/25eaa5cf-e8f9-573d-8a53-8ae9d1cd02e2/revision-v2.prompt.md",
+      "futureCanonicalPNG": "curricula/DE/Gymnasium/visualizations/biologie/25eaa5cf-e8f9-573d-8a53-8ae9d1cd02e2/25eaa5cf-e8f9-573d-8a53-8ae9d1cd02e2.png",
+      "futureAppPNG": "app/public/assets/goal-visualizations/biologie/25eaa5cf-e8f9-573d-8a53-8ae9d1cd02e2/25eaa5cf-e8f9-573d-8a53-8ae9d1cd02e2.png",
+      "futureBackendPNG": "backend/src/main/resources/static/assets/goal-visualizations/biologie/25eaa5cf-e8f9-573d-8a53-8ae9d1cd02e2/25eaa5cf-e8f9-573d-8a53-8ae9d1cd02e2.png",
+      "authorCandidateOnly": true,
+      "actualIndependentImageApproval": false
+    }
+  ],
+  "newSubjectGoalsOrTextChanges": 0,
+  "sourceOrRequiresOrApplicabilityChanges": 0,
+  "activeWrites": 0,
+  "strictGainClaimed": 0
+}

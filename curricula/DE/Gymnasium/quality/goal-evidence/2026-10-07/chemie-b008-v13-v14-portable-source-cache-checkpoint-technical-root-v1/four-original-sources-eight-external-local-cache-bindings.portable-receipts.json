@@ -1,0 +1,399 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "portable-technical-historical-source-receipts-v1",
+  "createdAtUTC": "2026-10-07T17:02:50.462444+00:00",
+  "role": "Technical successor receipts; preservation of actual historical evidence, no source review restart or scientific approval",
+  "sourceCount": 4,
+  "externalLocalRawCacheFileCount": 8,
+  "sourceReceipts": [
+    {
+      "sourceKey": "HE-G9",
+      "officialSourceTitle": "Lehrplan Chemie Gymnasium Hessen G9",
+      "officialSourceUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf",
+      "existingSourceMetadata": {
+        "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_CHEMIE_SEKI_G9.source-extraction.json",
+        "sha256": "f8550a7ed67df1fa8b6eaea1104d3e2e6522b7770087497a0dd9ffd2a01a5ecc",
+        "bytes": 258337
+      },
+      "existingLocalOriginalPdfLocationLabel": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-chemie.pdf",
+      "existingLocalOriginalPdfIsTracked": false,
+      "expectedOfficialPdfSha256": "f0a2c3795fcbcad1fee8d92d7ab9bc26810609bee0ef1fbd02c830e171220d2f",
+      "expectedOfficialPdfBytes": 324637,
+      "expectedWholeLayoutTextSha256": "17f6eee9b50926158ccd190d8938c710b2c7df62d852326574ffac80d48550ed",
+      "expectedWholeLayoutTextBytes": 94315,
+      "expectedPhysicalPageCount": 29,
+      "actualPdftotextVersion": "pdftotext version 22.02.0",
+      "historicalLocalRawCache": [
+        {
+          "historicalLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-he-current-source-facet-boundary-author-v13/primary/HE-G9.actual.pdf.bin",
+          "expectedSha256": "f0a2c3795fcbcad1fee8d92d7ab9bc26810609bee0ef1fbd02c830e171220d2f",
+          "expectedBytes": 324637,
+          "referenceRole": "External local historical witness; not an operative repository file requirement"
+        },
+        {
+          "historicalLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-he-current-source-facet-boundary-author-v13/primary/HE-G9.full.actual.txt",
+          "expectedSha256": "17f6eee9b50926158ccd190d8938c710b2c7df62d852326574ffac80d48550ed",
+          "expectedBytes": 94315,
+          "referenceRole": "External local historical witness; not an operative repository file requirement"
+        }
+      ],
+      "historicalActuallyReadWholePageReceipts": [
+        {
+          "physicalPage1Based": 3,
+          "wholeLayoutPageSha256": "3bf0df68b641dbce33356ba455996ef03f61695d7159fa67d15ab5a71a5b3367",
+          "wholeLayoutPageBytes": 5085,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-he-current-source-facet-boundary-author-v13/primary/HE-G9.physical-page-003.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 4,
+          "wholeLayoutPageSha256": "4656ad2c2ea173bcac88783a06ef680ace1da21428eeb65a31e6b2cecb667bc3",
+          "wholeLayoutPageBytes": 4638,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-he-current-source-facet-boundary-author-v13/primary/HE-G9.physical-page-004.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 5,
+          "wholeLayoutPageSha256": "e74e5a94ac8f4bfd98552b138d694308877cfb7f47533974b1fce4c6de9108bc",
+          "wholeLayoutPageBytes": 5153,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-he-current-source-facet-boundary-author-v13/primary/HE-G9.physical-page-005.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 6,
+          "wholeLayoutPageSha256": "f0b2cd1774879788ddf81e1daeca0ed30dd8a063e7f01d04b7ad7260708cd82a",
+          "wholeLayoutPageBytes": 5127,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-he-current-source-facet-boundary-author-v13/primary/HE-G9.physical-page-006.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        }
+      ],
+      "reproduction": {
+        "fetch": "Fetch officialSourceUrl into a local temporary directory; verify expectedOfficialPdfSha256 before extraction",
+        "extractArgv": [
+          "pdftotext",
+          "-layout",
+          "<local-official-pdf-with-verified-sha256>",
+          "<local-tmp-layout-output>"
+        ],
+        "select": "Split full layout bytes on form-feed 0x0c; physical page N is element N-1, without stripping whitespace",
+        "verify": "Verify whole-text and selected whole-page digests; retain official full texts locally only"
+      },
+      "retainedSourceScopeBoundary": "HE G9 SekI only; no current extracted process-source atom or G8 facet invented",
+      "localSourceAndPageBytesActuallyReproduced": true,
+      "newScientificReadingOrApproval": false,
+      "independentApproval": false,
+      "wholeOriginalSourceDutyClosed": false,
+      "rawOfficialFullTextCommittedByThisReceipt": false,
+      "humanApproval": false
+    },
+    {
+      "sourceKey": "HE-SekII-current2026",
+      "officialSourceTitle": "Kerncurriculum Chemie gymnasiale Oberstufe Hessen 2024 (Stand 21.04.2026)",
+      "officialSourceUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2026-07/kcgo_chemie_21.04.2026.pdf",
+      "existingSourceMetadata": {
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json",
+        "sha256": "b59c73ba9bcda71630a80246a3727a1a8a2abd4a4f0b0aa9af115c74a8cdc005",
+        "bytes": 380949
+      },
+      "existingLocalOriginalPdfLocationLabel": "curricula/DE/Gymnasium/input/HE/upper-secondary/kcgo_chemie_21.04.2026.pdf",
+      "existingLocalOriginalPdfIsTracked": false,
+      "expectedOfficialPdfSha256": "628c84dbaadebccf93c6854c58e00a337fd855985aaadc8b998de3dcb1243c3e",
+      "expectedOfficialPdfBytes": 527976,
+      "expectedWholeLayoutTextSha256": "ea597a94f92f9d321e3ea55dc3691402eb91c2aa260e2aa6edc870c6add204e7",
+      "expectedWholeLayoutTextBytes": 131484,
+      "expectedPhysicalPageCount": 52,
+      "actualPdftotextVersion": "pdftotext version 22.02.0",
+      "historicalLocalRawCache": [
+        {
+          "historicalLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-he-current-source-facet-boundary-author-v13/primary/HE-SekII-current2026.actual.pdf.bin",
+          "expectedSha256": "628c84dbaadebccf93c6854c58e00a337fd855985aaadc8b998de3dcb1243c3e",
+          "expectedBytes": 527976,
+          "referenceRole": "External local historical witness; not an operative repository file requirement"
+        },
+        {
+          "historicalLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-he-current-source-facet-boundary-author-v13/primary/HE-SekII-current2026.full.actual.txt",
+          "expectedSha256": "ea597a94f92f9d321e3ea55dc3691402eb91c2aa260e2aa6edc870c6add204e7",
+          "expectedBytes": 131484,
+          "referenceRole": "External local historical witness; not an operative repository file requirement"
+        }
+      ],
+      "historicalActuallyReadWholePageReceipts": [
+        {
+          "physicalPage1Based": 23,
+          "wholeLayoutPageSha256": "d2d3cce1269457b285dd94a42b811cc40f5ad662081ad09d43bf9543262a1f76",
+          "wholeLayoutPageBytes": 2198,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-he-current-source-facet-boundary-author-v13/primary/HE-SekII-current2026.physical-page-023.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 24,
+          "wholeLayoutPageSha256": "fdfaf2332851c302fb78189bf27c432a1a3c5a93b0cc837887434e9ad77146d1",
+          "wholeLayoutPageBytes": 2251,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-he-current-source-facet-boundary-author-v13/primary/HE-SekII-current2026.physical-page-024.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 25,
+          "wholeLayoutPageSha256": "ef570380eacfb393e3def162d8846c555d5ba7727d260c9277df61c888801d18",
+          "wholeLayoutPageBytes": 372,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-he-current-source-facet-boundary-author-v13/primary/HE-SekII-current2026.physical-page-025.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 26,
+          "wholeLayoutPageSha256": "d946d8a1d8570b4d7bcafe2ce7e6f7660087e71ebf16afdbaee4ae92b1672cef",
+          "wholeLayoutPageBytes": 2270,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-he-current-source-facet-boundary-author-v13/primary/HE-SekII-current2026.physical-page-026.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 27,
+          "wholeLayoutPageSha256": "e49464ad80351a80c6bfeef5a7b76c7da96bbf53f5c9ee0a7190f5ac0bde109c",
+          "wholeLayoutPageBytes": 2299,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-he-current-source-facet-boundary-author-v13/primary/HE-SekII-current2026.physical-page-027.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 28,
+          "wholeLayoutPageSha256": "b6dbe4c57b6f614539070ea0b8f4714891d67430c9f38c1ede9225a2350bf9ad",
+          "wholeLayoutPageBytes": 805,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-he-current-source-facet-boundary-author-v13/primary/HE-SekII-current2026.physical-page-028.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        }
+      ],
+      "reproduction": {
+        "fetch": "Fetch officialSourceUrl into a local temporary directory; verify expectedOfficialPdfSha256 before extraction",
+        "extractArgv": [
+          "pdftotext",
+          "-layout",
+          "<local-official-pdf-with-verified-sha256>",
+          "<local-tmp-layout-output>"
+        ],
+        "select": "Split full layout bytes on form-feed 0x0c; physical page N is element N-1, without stripping whitespace",
+        "verify": "Verify whole-text and selected whole-page digests; retain official full texts locally only"
+      },
+      "retainedSourceScopeBoundary": "HE SekII current general standards: bounded components; no current extracted operator-source atom or whole source approval",
+      "localSourceAndPageBytesActuallyReproduced": true,
+      "newScientificReadingOrApproval": false,
+      "independentApproval": false,
+      "wholeOriginalSourceDutyClosed": false,
+      "rawOfficialFullTextCommittedByThisReceipt": false,
+      "humanApproval": false
+    },
+    {
+      "sourceKey": "joint-SekI",
+      "officialSourceTitle": "Rahmenlehrplan Berlin-Brandenburg Teil C Chemie Jahrgangsstufen 7-10, 2015",
+      "officialSourceUrl": "https://bildungsserver.berlin-brandenburg.de/fileadmin/bbb/unterricht/rahmenlehrplaene/Rahmenlehrplanprojekt/amtliche_Fassung/Teil_C_Chemie_2015_11_10.pdf",
+      "existingSourceMetadata": {
+        "path": "curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_CHEMIE_SEKI_RLP_2015.source-extraction.json",
+        "sha256": "9723891904ea08cdd8ef33ec3eb7e47a5a265a32d88554eddb10984a940f6165",
+        "bytes": 108819
+      },
+      "existingLocalOriginalPdfLocationLabel": "curricula/DE/Gymnasium/input/BB/lower-secondary/Teil_C_Chemie_2015_11_10.pdf",
+      "existingLocalOriginalPdfIsTracked": false,
+      "expectedOfficialPdfSha256": "db3034e29ec36b53d911d8732e29b1866f30444fa29c41ff8a0cea5106b833ce",
+      "expectedOfficialPdfBytes": 1043935,
+      "expectedWholeLayoutTextSha256": "e9ddcd1ba058d9c607894204d32a6d354ba987536f2d98c6329cd83abae67aa2",
+      "expectedWholeLayoutTextBytes": 96033,
+      "expectedPhysicalPageCount": 45,
+      "actualPdftotextVersion": "pdftotext version 22.02.0",
+      "historicalLocalRawCache": [
+        {
+          "historicalLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekI.actual.pdf.bin",
+          "expectedSha256": "db3034e29ec36b53d911d8732e29b1866f30444fa29c41ff8a0cea5106b833ce",
+          "expectedBytes": 1043935,
+          "referenceRole": "External local historical witness; not an operative repository file requirement"
+        },
+        {
+          "historicalLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekI.full.actual.txt",
+          "expectedSha256": "e9ddcd1ba058d9c607894204d32a6d354ba987536f2d98c6329cd83abae67aa2",
+          "expectedBytes": 96033,
+          "referenceRole": "External local historical witness; not an operative repository file requirement"
+        }
+      ],
+      "historicalActuallyReadWholePageReceipts": [
+        {
+          "physicalPage1Based": 20,
+          "wholeLayoutPageSha256": "2539052bb7cf0f605352e2e4abfda01659be7de3fd259d5bd19ff9fc824661c6",
+          "wholeLayoutPageBytes": 3765,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekI.physical-page-020.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 21,
+          "wholeLayoutPageSha256": "b6356fd844ba3d20f927b2dd2e99eaac8268be7fba75f381edd9301433804528",
+          "wholeLayoutPageBytes": 2256,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekI.physical-page-021.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 30,
+          "wholeLayoutPageSha256": "34281190e57f51aa5d6c9d3987ebec4bee4975479211921d8a698224d5f988ec",
+          "wholeLayoutPageBytes": 2411,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekI.physical-page-030.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 32,
+          "wholeLayoutPageSha256": "596617d81589f43edef2d3dd5f280dae367b7fe5991d1279ca046b33d9c53ebb",
+          "wholeLayoutPageBytes": 2305,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekI.physical-page-032.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 33,
+          "wholeLayoutPageSha256": "7758c817ca673944ffbcaf3ca4e3cc06093437f6df144f6b2d48117c7ab0b8ae",
+          "wholeLayoutPageBytes": 2404,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekI.physical-page-033.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 34,
+          "wholeLayoutPageSha256": "59621d28199b6103951c4da84651e7d199f6c6d2ddc5ed8b2668e8fd6ce78eea",
+          "wholeLayoutPageBytes": 2704,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekI.physical-page-034.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 36,
+          "wholeLayoutPageSha256": "03c0536dd3eb1471d118d200d7a805b5b0dd4101a2c71ac4041b218aab28d403",
+          "wholeLayoutPageBytes": 2895,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekI.physical-page-036.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 37,
+          "wholeLayoutPageSha256": "3a52007ba13f7a68f6c038f22543339e5991eb495fd3b98dabf9b26958e370ff",
+          "wholeLayoutPageBytes": 2734,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekI.physical-page-037.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 39,
+          "wholeLayoutPageSha256": "a6068492c5ed84b419202cf42c1dcf79212005ccf3e7e76cac814a0586be8b5c",
+          "wholeLayoutPageBytes": 3274,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekI.physical-page-039.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 43,
+          "wholeLayoutPageSha256": "a9c8843972f63c0c2b4911d0fcf40661e96fd637b2e697bb2424001cd426dd7a",
+          "wholeLayoutPageBytes": 2609,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekI.physical-page-043.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        }
+      ],
+      "reproduction": {
+        "fetch": "Fetch officialSourceUrl into a local temporary directory; verify expectedOfficialPdfSha256 before extraction",
+        "extractArgv": [
+          "pdftotext",
+          "-layout",
+          "<local-official-pdf-with-verified-sha256>",
+          "<local-tmp-layout-output>"
+        ],
+        "select": "Split full layout bytes on form-feed 0x0c; physical page N is element N-1, without stripping whitespace",
+        "verify": "Verify whole-text and selected whole-page digests; retain official full texts locally only"
+      },
+      "retainedSourceScopeBoundary": "BB/BE SekI: original content duties retained; only explicit model/data/operator components proposed",
+      "localSourceAndPageBytesActuallyReproduced": true,
+      "newScientificReadingOrApproval": false,
+      "independentApproval": false,
+      "wholeOriginalSourceDutyClosed": false,
+      "rawOfficialFullTextCommittedByThisReceipt": false,
+      "humanApproval": false
+    },
+    {
+      "sourceKey": "joint-SekII",
+      "officialSourceTitle": "Rahmenlehrplan Berlin-Brandenburg Gymnasiale Oberstufe Teil C Chemie 2022",
+      "officialSourceUrl": "https://bildungsserver.berlin-brandenburg.de/fileadmin/bbb/unterricht/rahmenlehrplaene/gymnasiale_oberstufe/curricula/2022/Teil_C_RLP_GOST_2022_Chemie.pdf",
+      "existingSourceMetadata": {
+        "path": "curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json",
+        "sha256": "62c33d8b008d50ab57bed1a05deee2f1b9770a3bb127c4377b79cfb1b1b18529",
+        "bytes": 365069
+      },
+      "existingLocalOriginalPdfLocationLabel": "curricula/DE/Gymnasium/input/BB/upper-secondary/Teil_C_RLP_GOST_2022_Chemie.pdf",
+      "existingLocalOriginalPdfIsTracked": false,
+      "expectedOfficialPdfSha256": "2fa91c684e7a8735cb21f05c9106260ce22b34f3614ee22cd5c8c7deb10c3ad5",
+      "expectedOfficialPdfBytes": 600706,
+      "expectedWholeLayoutTextSha256": "22d5c7b5242cc7191c95ab6a095b43d35708e6676b6da3d8087135d8d59f694c",
+      "expectedWholeLayoutTextBytes": 160390,
+      "expectedPhysicalPageCount": 55,
+      "actualPdftotextVersion": "pdftotext version 22.02.0",
+      "historicalLocalRawCache": [
+        {
+          "historicalLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekII.actual.pdf.bin",
+          "expectedSha256": "2fa91c684e7a8735cb21f05c9106260ce22b34f3614ee22cd5c8c7deb10c3ad5",
+          "expectedBytes": 600706,
+          "referenceRole": "External local historical witness; not an operative repository file requirement"
+        },
+        {
+          "historicalLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekII.full.actual.txt",
+          "expectedSha256": "22d5c7b5242cc7191c95ab6a095b43d35708e6676b6da3d8087135d8d59f694c",
+          "expectedBytes": 160390,
+          "referenceRole": "External local historical witness; not an operative repository file requirement"
+        }
+      ],
+      "historicalActuallyReadWholePageReceipts": [
+        {
+          "physicalPage1Based": 11,
+          "wholeLayoutPageSha256": "34c8e2523273000d0b924891e104304da77bb206f12778acef4a5f0a55618dc1",
+          "wholeLayoutPageBytes": 3130,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekII.physical-page-011.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 12,
+          "wholeLayoutPageSha256": "96c159f96a51f259a9526250b036ad12e709ee550805de291564936db8575038",
+          "wholeLayoutPageBytes": 2596,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekII.physical-page-012.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 38,
+          "wholeLayoutPageSha256": "ca804dfded3070905dba51c9423b27bbdd9a314fe43b07c2ea93fc88857fd9ac",
+          "wholeLayoutPageBytes": 2910,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekII.physical-page-038.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 41,
+          "wholeLayoutPageSha256": "b3e7cb62bc776a72152c59b049af4f32b8d341efa375c48fe03134c26a2cf72e",
+          "wholeLayoutPageBytes": 3317,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekII.physical-page-041.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        },
+        {
+          "physicalPage1Based": 42,
+          "wholeLayoutPageSha256": "c805f1b6e453fb3fffcdf98091ba2661048169371f16c6659b9263a93e03cfdd",
+          "wholeLayoutPageBytes": 5498,
+          "historicalReadEvidenceLocationLabel": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-bb-be-model-data-source-placement-author-v14/primary/joint-SekII.physical-page-042.txt",
+          "currentCheck": "Actual reconstruction and frozen historical page digest, no repeated scientific approval"
+        }
+      ],
+      "reproduction": {
+        "fetch": "Fetch officialSourceUrl into a local temporary directory; verify expectedOfficialPdfSha256 before extraction",
+        "extractArgv": [
+          "pdftotext",
+          "-layout",
+          "<local-official-pdf-with-verified-sha256>",
+          "<local-tmp-layout-output>"
+        ],
+        "select": "Split full layout bytes on form-feed 0x0c; physical page N is element N-1, without stripping whitespace",
+        "verify": "Verify whole-text and selected whole-page digests; retain official full texts locally only"
+      },
+      "retainedSourceScopeBoundary": "BB/BE SekII: explicit GK/LK table boundaries retained; four LK-only corrections and GK equilibrium component proposals remain bounded",
+      "localSourceAndPageBytesActuallyReproduced": true,
+      "newScientificReadingOrApproval": false,
+      "independentApproval": false,
+      "wholeOriginalSourceDutyClosed": false,
+      "rawOfficialFullTextCommittedByThisReceipt": false,
+      "humanApproval": false
+    }
+  ],
+  "rawLocationLabelsAreNotOperativeFileInputs": true,
+  "localHistoricalPayloadsRemainUnchanged": true,
+  "activeWrites": 0,
+  "strictGain": 0,
+  "humanApproval": false,
+  "independentSourceApproval": false
+}
